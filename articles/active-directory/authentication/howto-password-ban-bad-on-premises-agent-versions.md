@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 89d64a28d2fe43464995e434c9f3807047b29492
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1d27aa46148e0169909a7aaf05baaac18b050a34
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913636"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423663"
 ---
-# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Előzetes verzió: Azure AD jelszó védelmi ügynök korábbi verziók
+# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Előzetes verzió:  Az Azure AD jelszó védelmi ügynök korábbi verziók
 
 |     |
 | --- |
@@ -26,7 +26,7 @@ ms.locfileid: "50913636"
 
 ## <a name="12250"></a>1.2.25.0
 
-Kiadás dátuma: 2018/11/01 /.
+Kiadás dátuma: 11/01/2018
 
 Javításokat tartalmaz:
 
@@ -43,7 +43,7 @@ Változások:
 
 ## <a name="12100"></a>1.2.10.0
 
-Kiadás dátuma: 2018/8/17 /.
+Kiadás dátuma: 8/17/2018
 
 Javításokat tartalmaz:
 
@@ -67,7 +67,7 @@ Javításokat tartalmaz:
 
 ## <a name="11103"></a>1.1.10.3
 
-Kiadás dátuma: 2018/6/15 /.
+Kiadás dátuma: 6/15/2018
 
 Kezdeti nyilvános előzetes kiadás
 

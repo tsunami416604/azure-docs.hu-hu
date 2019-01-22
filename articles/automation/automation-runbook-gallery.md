@@ -3,18 +3,18 @@ title: Azure Automation forgatókönyv- és katalógusok
 description: Runbookjai és moduljai a Microsoft és a Közösség érhetők el, hogy telepítheti és használhatja az Azure Automation-környezetben.  Ez a cikk bemutatja, hogyan férhet hozzá ezekhez az erőforrásokhoz és működhet közre a runbookok a katalógusba.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5b87d04466a2c94ed233edf4069ec1a30b10d03a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7330d826cb196a664f06198a0e83f73bd7763ef9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634320"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428105"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation forgatókönyv- és katalógusok
 Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, számos forgatókönyv esetében, amely már a Microsoft és a Közösség által készített érheti el.  Ezekben a forgatókönyvekben, módosítás nélkül használhatja, vagy kiindulási pontként használhatja őket, és az adott igények szerint szerkesztheti őket.
@@ -108,4 +108,5 @@ Kérelmek küldése [User Voice](https://feedback.azure.com/forums/246290-azure-
 ## <a name="next-steps"></a>További lépések
 * Forgatókönyvekkel való ismerkedéshez tekintse meg [létrehozása vagy importálása az Azure Automation-runbook](automation-creating-importing-runbook.md)
 * A forgatókönyvek PowerShell és a PowerShell-munkafolyamat közötti különbségek ismertetése: [Learning PowerShell-munkafolyamat](automation-powershell-workflow.md)
+
 

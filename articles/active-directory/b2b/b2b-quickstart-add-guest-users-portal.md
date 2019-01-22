@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Vendégfelhasználók hozzáadása az Azure portálon'
+title: 'Gyors útmutató: Vendégfelhasználók hozzáadása az Azure Portalon'
 description: Ez a rövid útmutató bemutatja, hogyan vehetnek fel az Azure AD rendszergazdák B2B vendégfelhasználókat az Azure portálon és végigvezet a B2B-meghívási munkafolyamat lépésein.
 services: active-directory
 ms.service: active-directory
@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.date: 07/02/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: ed49eed6dbfce9a71f13770e3ddcaec6557cf875
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.openlocfilehash: 5e62d8679a76c024b0dcada5cfaad50659fcd4c8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986545"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431690"
 ---
-# <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Rövid útmutató: Vendégfelhasználók felvétele a címtárhoz az Azure portálon
+# <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Gyors útmutató: Vendég felhasználók hozzáadása a címtárhoz az Azure Portalon
 
 A címtárba vendégfelhasználóként felvéve bárkit meghívhat a szervezetben végzett közös munkára. Utána küldhet érvényesítési hivatkozást tartalmazó meghívó e-mailt de küldhet közvetlen hivatkozást is a megosztani kívánt alkalmazáshoz. A vendégfelhasználók saját munkahelyi, iskolai vagy közösségi identitásukkal jelentkezhetnek be.
 
@@ -35,7 +35,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 ## <a name="add-a-new-guest-user-in-azure-ad"></a>Új vendégfelhasználó felvétele Azure AD-ben
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/) Azure AD rendszergazdaként.
-2. A bal oldali panelen válassza az **Azure Active Directory** gombot.
+2. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
 3.  A **Kezelés** alatt válassza a **Felhasználókat**.
 
     ![Válassza az Azure Active Directory elemet.](media/quickstart-add-users-portal/quickstart-users-portal-user.png)

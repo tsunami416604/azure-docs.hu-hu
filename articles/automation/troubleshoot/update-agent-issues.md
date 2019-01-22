@@ -7,14 +7,14 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 9a16498c527af2d23840c53af11103f7580d80bb
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 5637d409233abc68983bd7cf1e55f406f15e3b59
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582558"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432988"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>A Windows ügynök ellenőrzésének az eredménye az Update Management ismertetése
 
@@ -51,14 +51,14 @@ Az operációs rendszer ellenőrzi a hibrid Runbook-feldolgozó fut-e a követke
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
-|A Windows Server 2008 R2 RTM-re, a Windows Server 2008 | Támogatja az értékelések csak frissíteni.         |
+|Windows Server 2008 R2 RTM, Windows Server 2008 | Támogatja az értékelések csak frissíteni.         |
 |A Windows Server 2008 R2 SP1 és újabb verziók |.NET-keretrendszer 4.5.1-es vagy újabb verzió szükséges. ([Töltse le a .NET-keretrendszer](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0-s vagy újabb szükség. ([Windows Management Framework 4.0 letöltése](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 megbízhatóság növelése érdekében ajánlott.  ([Töltse le a Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
 ### <a name="net-451"></a>.NET 4.5.1
 
 A .NET-keretrendszer ellenőrzi, hogy a rendszer számára legalább [.NET-keretrendszer 4.5.1-es](https://www.microsoft.com/download/details.aspx?id=30653) telepítve.
 
-### <a name="wmf-51"></a>A WMF 5.1
+### <a name="wmf-51"></a>WMF 5.1
 
 A WMF ellenőrzi, hogy a rendszer rendelkezik-e a Windows Management Framework (WMF) szükséges verziója. [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) a legkorábbi támogatott verziója. Javasoljuk, hogy telepítse [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) a hibrid Runbook-feldolgozó megbízhatóságának növelése érdekében.
 
@@ -201,3 +201,4 @@ CheckResultMessageArguments : {}
 ## <a name="next-steps"></a>További lépések
 
 A hibrid forgatókönyv-feldolgozók használata további problémák hibaelhárítása: [hibaelhárítása a hibrid Runbook-feldolgozók](hybrid-runbook-worker.md).
+

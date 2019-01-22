@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: aef88a4fbc7d71ee1438333afd9773d1aba3ed9c
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 519b9e73e63285f167fca76061f84752ff676916
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359153"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431503"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés az Azure IoT Edge-ben
 
@@ -81,7 +81,7 @@ Ebben a szakaszban létre fog hozni egy build folyamatot, amely automatikusan fu
     
     ![Build modul lemezképek feladat konfigurálása](./media/how-to-ci-cd/build-and-push.png)
 
-1. A második **Azure IoT Edge** feladat, a frissítés a **megjelenített neve** való **Azure IoT Edge - modul lemezképek leküldéses**, és a a **művelet** legördülő menü listáról válassza ki **modul rendszerképeket**. Válassza ki a Tárolóregisztrációs adatbázis típusa, ellenőrizze, hogy konfigurálja, és válassza ki ugyanazt a beállításjegyzékben a code(module.json). Az a **. template.json fájlt** vezérlőelem, válassza ki a **deployment.template.json** fájlt, amely az IoT Edge-megoldást ismertet. Válassza a **alapértelmezett platform**, ugyanarra a platformra válasszon a beépített modul rendszerképeket. Ez a feladat összes modul rendszerkép leküldése a tárolóregisztrációs adatbázis választott. És a container registry hitelesítő adatai a is hozzáadhat a **deployment.json** fájl találhatja meg a fájl elérési útja kimeneti változókat. Az alias beállítása `edge` esetében a változót. Ha a modul rendszerképek üzemeltetésére több tároló-beállításjegyzékek, szeretné-e ez a feladat ismétlődő, különböző tároló-beállításjegyzék és a használata **modul(ok) megkerülése** megkerülhetik a lemezképeket, amelyek nem a speciális beállításai között szereplő adott beállításjegyzékhez.
+1. A második **Azure IoT Edge** feladat, a frissítés a **megjelenített neve** való **Azure IoT Edge - modul lemezképek leküldéses**, és a a **művelet** legördülő menü listáról válassza ki **modul rendszerképeket**. Válassza ki a Tárolóregisztrációs adatbázis típusa, ellenőrizze, hogy konfigurálja, és válassza ki ugyanazt a beállításjegyzékben a code(module.json). Az a **. template.json fájlt** vezérlőelem, válassza ki a **deployment.template.json** fájlt, amely az IoT Edge-megoldást ismertet. Válassza a **alapértelmezett platform**, ugyanarra a platformra válasszon a beépített modul rendszerképeket. Ez a feladat összes modul rendszerkép leküldése a tárolóregisztrációs adatbázis választott. És a container registry hitelesítő adatai a is hozzáadhat a **deployment.json** fájlt. Ha a modul rendszerképek üzemeltetésére több tároló-beállításjegyzékek, szeretné-e ez a feladat ismétlődő, különböző tároló-beállításjegyzék és a használata **modul(ok) megkerülése** megkerülhetik a lemezképeket, amelyek nem a speciális beállításai között szereplő adott beállításjegyzékhez.
 
     ![Leküldéses modul lemezképek feladat konfigurálása](./media/how-to-ci-cd/push.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directoryban egy globális rendszergazda hozzáférési szintjének emelése |} A Microsoft Docs
-description: Ismerteti, hogyan lehet az Azure Active Directoryban az Azure portal vagy a REST API használatával egy globális rendszergazda hozzáférési szintjének emelése.
+title: Az Azure-előfizetések és a felügyeleti csoportok kezelése hozzáférési szintjének emelése |} A Microsoft Docs
+description: Összes előfizetés és a felügyeleti csoportok az Azure Active Directoryban az Azure portal vagy a REST API használata kezelheti egy globális rendszergazda hozzáférési szintjének emelése módját ismerteti.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,32 +12,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2f66078a817f5e6ad7296df11634a1a6130a055
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 7552018c32078295c164023f909a604c6522c32f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321665"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437470"
 ---
-# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Az Azure Active Directoryban egy globális rendszergazda hozzáférési szintjének emelése
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Az Azure-előfizetések és a felügyeleti csoportok kezelése hozzáférési szintjének emelése
 
-Ha Ön egy [globális rendszergazdai](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) az Azure Active Directoryban (Azure AD), előfordulhat, azt szeretné, tegye a következőket:
-
-- Egy Azure-előfizetéshez való hozzáférés visszaszerzéséhez, amikor a felhasználó elveszíti a hozzáférést
-- Adja meg egy másik felhasználó, és saját kezűleg el az Azure-előfizetéshez
-- Tekintse meg a szervezeten belüli összes Azure-előfizetések
-- Minden Azure-előfizetés eléréséhez egy automation-alkalmazást (például számlázási vagy naplózási alkalmazás) engedélyezése
-
-Ez a cikk ismerteti a különböző módon, hogy szintre emelhet, a hozzáférés az Azure ad-ben.
+Globális rendszergazdaként az Azure Active Directoryban (Azure AD) akkor nem tudja elérni az összes előfizetés és a felügyeleti csoportok a címtárban. Ez a cikk leírja, hogyan, hogy szintre emelhet, a hozzáférés az összes előfizetés és a felügyeleti csoportok.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="overview"></a>Áttekintés
+## <a name="why-would-you-need-to-elevate-your-access"></a>Miért érdemes lenne szükség van a hozzáférési szintjének emelése?
 
-Az Azure AD és az Azure-erőforrások egymástól függetlenül biztonságosak. Azt jelenti az Azure AD szerepkör-hozzárendelések nem biztosíthat hozzáférést az Azure-erőforrásokhoz, és Azure szerepkör-hozzárendelések nem biztosíthat hozzáférést az Azure ad-hez. Azonban ha az Azure AD globális rendszergazda, hozzárendelheti saját kezűleg hozzáférés az összes Azure-előfizetések és a felügyeleti csoportok a címtárban. Akkor használja ezt a funkciót, ha nem rendelkezik hozzáféréssel az Azure-előfizetések erőforrásaihoz, például virtuális gépeket vagy a storage-fiókok, és ezek az erőforrások eléréséhez a globális rendszergazda jogosultságot használni kívánt.
+Ha egy globális rendszergazdai, előfordulhat, hogy azt szeretné, a következő lehet:
+
+- Azure-előfizetés vagy a felügyeleti csoportok való hozzáférés visszaszerzéséhez, amikor a felhasználó elveszíti a hozzáférést
+- Adja meg egy másik felhasználó, vagy saját kezűleg elérni az Azure-előfizetés vagy a felügyeleti csoportok
+- Tekintse meg az összes Azure-előfizetések vagy a szervezet felügyeleti csoportok
+- Lehetővé teszi egy automation-alkalmazást (például számlázási vagy naplózási alkalmazás) eléréséhez az Azure-előfizetések vagy a felügyeleti csoportok
+
+## <a name="how-does-elevate-access-work"></a>Hogyan szintjének emelése a hozzáférés munkahelyi?
+
+Az Azure AD és az Azure-erőforrások egymástól függetlenül biztonságosak. Azt jelenti az Azure AD szerepkör-hozzárendelések nem biztosíthat hozzáférést az Azure-erőforrásokhoz, és Azure szerepkör-hozzárendelések nem biztosíthat hozzáférést az Azure ad-hez. Azonban ha Ön egy [globális rendszergazdai](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) az Azure AD-ben rendelhet saját kezűleg hozzáférés az Azure-előfizetések és a felügyeleti csoportok a címtárban. Akkor használja ezt a funkciót, ha nem rendelkezik hozzáféréssel az Azure-előfizetések erőforrásaihoz, például virtuális gépeket vagy a storage-fiókok, és ezek az erőforrások eléréséhez a globális rendszergazda jogosultságot használni kívánt.
 
 Ha Ön a hozzáférési szintjének emelése, akkor hozzá lesz rendelve a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) gyökérszintű hatókörben Azure-ban szerepet (`/`). Ez lehetővé teszi, hogy az összes erőforrás megtekintéséhez és hozzárendeléséhez a hozzáférést minden olyan előfizetés vagy a felügyeleti csoport a címtárban. Felhasználói hozzáférés rendszergazdája szerepkör-hozzárendeléseit a PowerShell használatával eltávolítható.
 
@@ -55,19 +57,29 @@ Kövesse az alábbi lépéseket az Azure portal használatával egy globális re
 
    ![Az Azure AD tulajdonságok – képernyőkép](./media/elevate-access-global-admin/aad-properties.png)
 
-1. A **Access management az Azure-erőforrások**, a kapcsoló beállítása **Igen**.
+1. A **Access management az Azure-erőforrások**, a váltógomb beállítása **Igen**.
 
    ![Hozzáférés-kezelés az Azure-erőforrásokhoz – képernyőkép](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   Ha beállította a kapcsoló **Igen**, az Azure RBAC a gyökérszintű hatókörben (/) a felhasználói hozzáférés rendszergazdája szerepkör van rendelve. Ezzel engedélyt ad meg szerepkörök hozzárendelése az összes Azure-előfizetések és az Azure AD-címtárhoz társított felügyeleti csoportokat. Ez a kapcsoló csak az Azure AD globális rendszergazdai szerepkörrel felruházott felhasználók számára érhető el.
+   Ha beállította a váltógomb **Igen**, az Azure RBAC a gyökérszintű hatókörben (/) a felhasználói hozzáférés rendszergazdája szerepkör van rendelve. Ezzel engedélyt ad meg szerepkörök hozzárendelése az összes Azure-előfizetések és az Azure AD-címtárhoz társított felügyeleti csoportokat. Ezzel a kapcsolóval csak az Azure AD globális rendszergazdai szerepkörrel felruházott felhasználók számára érhető el.
 
-   Ha beállította a kapcsoló **nem**, az Azure RBAC-ben a felhasználói hozzáférés rendszergazdája szerepkör törlődik a felhasználói fiók. Szerepkörök az összes Azure-előfizetések és az Azure AD-címtárhoz társított felügyeleti csoport már nem rendelhet hozzá. Megtekintheti, és kezelheti a csak az Azure-előfizetések és a felügyeleti csoportot, amelyhez rendelkezik hozzáféréssel.
+   Ha beállította a váltógomb **nem**, az Azure RBAC-ben a felhasználói hozzáférés rendszergazdája szerepkör törlődik a felhasználói fiók. Szerepkörök az összes Azure-előfizetések és az Azure AD-címtárhoz társított felügyeleti csoport már nem rendelhet hozzá. Megtekintheti, és kezelheti a csak az Azure-előfizetések és a felügyeleti csoportot, amelyhez rendelkezik hozzáféréssel.
 
 1. Kattintson a **mentése** a beállítás mentéséhez.
 
-   Ez a beállítás a globális tulajdonság nem, és csak a bejelentkezett felhasználó vonatkozik.
+   Ez a beállítás a globális tulajdonság nem, és csak a jelenleg bejelentkezett felhasználóra vonatkozik. A globális rendszergazdai szerepkör összes tagja számára nem jogosultságszintjének emelése.
 
-1. Végre kell hajtania az emelt szintű hozzáférési feladatokat. Amikor elkészült, a kapcsoló állítsa vissza a **nem**.
+1. Jelentkezzen ki, és jelentkezzen be újra a frissítés a hozzáférést.
+
+    Akkor most már elérhetők az összes előfizetés és a felügyeleti csoportok a címtárban. Láthatja, hogy Önhöz rendelve a felhasználói hozzáférés rendszergazdája szerepkör gyökérszintű hatókörben.
+
+   ![Előfizetés szerepkör-hozzárendeléseit a legfelső szintű hatóköre – képernyőkép](./media/elevate-access-global-admin/iam-root.png)
+
+1. Győződjön meg a kívánt módosításokat, ha szeretné tenni az emelt szintű hozzáférés.
+
+    További információ a szerepkörök hozzárendelése: [rbac-RÓL és az Azure portal-hozzáférés kezelése](role-assignments-portal.md). Ha az Azure AD Privileged Identity Management (PIM) használ, tekintse meg [Fedezze fel az Azure erőforrások kezeléséhez a PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) vagy [erőforrás-szerepkörök hozzárendelése az Azure PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+
+1. Amikor elkészült, állítsa be a **Access management az Azure-erőforrások** válthat vissza a **nem**. Mivel ez egy felhasználói beállítás, akkor be kell jelentkeznie ugyanazon felhasználóként, hozzáférési szintjének emelése használt.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -89,16 +101,22 @@ RoleDefinitionName : User Access Administrator
 RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9
 ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
+CanDelegate        : False
 ```
 
 ### <a name="remove-a-role-assignment-at-the-root-scope-"></a>A gyökérszintű hatókörben (/) szerepkör-hozzárendelés eltávolítása
 
-A gyökérszintű hatókörben egy felhasználó a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés eltávolítása (`/`), használja a [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) parancsot.
+A gyökérszintű hatókörben egy felhasználó a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés eltávolítása (`/`), kövesse az alábbi lépéseket.
 
-```azurepowershell
-Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
-  -RoleDefinitionName "User Access Administrator" -Scope "/"
-```
+1. Jelentkezzen be, eltávolíthatja az emelt szintű hozzáférés. Ez lehet ugyanaz a felhasználó hozzáférést és a egy másik globális rendszergazda emelt szintű hozzáféréssel a gyökérszintű hatókörben jogosultságszintjének emeléséhez használt.
+
+
+1. Használja a [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) parancsot a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés eltávolítása.
+
+    ```azurepowershell
+    Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
+      -RoleDefinitionName "User Access Administrator" -Scope "/"
+    ```
 
 ## <a name="rest-api"></a>REST API
 

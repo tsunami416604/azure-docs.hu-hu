@@ -3,22 +3,22 @@ title: Runbook végrehajtása az Azure Automationben
 description: Ismerteti, hogyan dolgozza fel az Azure Automation-runbook részletei.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bb6236203a1165361505c8699ba94bff54e41c2a
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 859ef4c28b858b00fcc9c7c73a3a706a11225113
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247350"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430721"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
-Ha az Azure Automationben elindít egy runbookot, létrejön egy feladat. Egy feladat a runbook egyszeri futtatási példánya. Egy Azure Automation-feldolgozó rendelt minden egyes feladat futtatása. Feldolgozók számos Azure-fiókok által megosztott, miközben másik Automation-fiókok feladatok különítve egymástól. Melyik worker keresztül services, a kérés a feladat nem irányítás. Egyetlen runbook fut egyszerre sok feladat lehet. A feladatok ugyanazt az Automation-fiók végrehajtási környezetének felhasználhatók. Egyidejűleg futtatja a feladatot, a gyakrabban azok elirányíthatók az azonos tesztkörnyezetben. A védőfal ugyanabban a folyamatban futó feladatok hatással lehetnek egymással, például fut-e a `Disconnect-AzureRMAccount` parancsmagot. Futtatja ezt a parancsmagot lenne válassza le a megosztott védőfalfolyamat minden egyes forgatókönyv-feladatot. A runbookok listája az Azure Portalon történő megtekintésekor az összes minden runbook elindított feladatok állapotának sorolja fel. Megtekintheti a feladatok minden runbook minden egyes állapotának nyomon követését. Legfeljebb 30 napig feladatnaplóit tárolódnak. A különböző feladatok állapotai leírását [feladatállapotok](#job-statuses).
+Ha az Azure Automationben elindít egy runbookot, létrejön egy feladat. A feladat a runbook egyszeri futtatási példánya. Egy Azure Automation-feldolgozó rendelt minden egyes feladat futtatása. Feldolgozók számos Azure-fiókok által megosztott, miközben másik Automation-fiókok feladatok különítve egymástól. Melyik worker keresztül services, a kérés a feladat nem irányítás. Egyetlen runbook fut egyszerre sok feladat lehet. A feladatok ugyanazt az Automation-fiók végrehajtási környezetének felhasználhatók. Egyidejűleg futtatja a feladatot, a gyakrabban azok elirányíthatók az azonos tesztkörnyezetben. A védőfal ugyanabban a folyamatban futó feladatok hatással lehetnek egymással, például fut-e a `Disconnect-AzureRMAccount` parancsmagot. Futtatja ezt a parancsmagot lenne válassza le a megosztott védőfalfolyamat minden egyes forgatókönyv-feladatot. A runbookok listája az Azure Portalon történő megtekintésekor az összes minden runbook elindított feladatok állapotának sorolja fel. Megtekintheti a feladatok minden runbook minden egyes állapotának nyomon követését. Legfeljebb 30 napig feladatnaplóit tárolódnak. A különböző feladatok állapotai leírását [feladatállapotok](#job-statuses).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -34,21 +34,21 @@ A feladatok az Azure-erőforrások elérését azáltal, hogy az Azure-előfizet
 
 ## <a name="job-statuses"></a>Feladatállapotok
 
-A következő táblázat ismerteti a különféle lehetséges állapotait feladat. PowerShell kétféle típusú hibák megszakítást nem okozó hibákat tartalmaz. Megszakítást okozó hiba a runbook állapotának beállítása **sikertelen** Ha. Nem okozó még a bekövetkezésük után folytatja a parancsfájl engedélyezi. Egy nem megszakító hiba például használja a `Get-ChildItem` parancsmag és egy elérési út nem létezik. PowerShell látja, hogy az elérési út nem létezik, hibát jelez és továbbra is fennáll, a következő mappát. Ez a hiba nem a runbook állapotának beállítása **sikertelen** és lehetett megjelölni **befejezve**. Használhatja egy runbookot, hogy állítsa le az egy nem megszakító hibát kényszerítéséhez `-ErrorAction Stop` a parancsmagról.
+Az alábbi táblázat bemutatja a feladatok különféle lehetséges állapotait. PowerShell kétféle típusú hibák megszakítást nem okozó hibákat tartalmaz. Megszakítást okozó hiba a runbook állapotának beállítása **sikertelen** Ha. Nem okozó még a bekövetkezésük után folytatja a parancsfájl engedélyezi. Egy nem megszakító hiba például használja a `Get-ChildItem` parancsmag és egy elérési út nem létezik. PowerShell látja, hogy az elérési út nem létezik, hibát jelez és továbbra is fennáll, a következő mappát. Ez a hiba nem a runbook állapotának beállítása **sikertelen** és lehetett megjelölni **befejezve**. Használhatja egy runbookot, hogy állítsa le az egy nem megszakító hibát kényszerítéséhez `-ErrorAction Stop` a parancsmagról.
 
 | status | Leírás |
 |:--- |:--- |
 | Befejezve |A feladat sikeresen befejeződött. |
 | Meghiúsult |A [grafikus és a PowerShell-munkafolyamati runbookok](automation-runbook-types.md), a runbook fordítása sikertelen. A [PowerShell-parancsprogram runbookok](automation-runbook-types.md), a runbook nem indult el, vagy a feladat kivétel történt. |
 | Sikertelen volt a Várakozás az erőforrásokat, |A feladat sikertelen volt, mert elérte a [igazságos elosztás](#fair-share) háromszor korlátozhatja, és az azonos ellenőrzőpont vagy kezdete a forgatókönyv és minden alkalommal, amikor indított. |
-| Várakozási sorba helyezve |A feladat felszabaduljanak, amely segítségével elindítható, hogy egy automatizálási feldolgozó erőforrások vár. |
+| Várakozási sorba helyezve |A feladat arra vár, hogy egy automatizálási feldolgozó erőforrásai felszabaduljanak, és elindulhasson. |
 | Indítás |A feladat hozzá lett rendelve egy feldolgozóhoz, és a rendszer elindítja. |
 | Folytatás |A rendszer folytatja a feladat felfüggesztését követően annak. |
 | Fut |A feladat fut. |
 | Futó erőforrások vár |A feladat lett távolítva a memóriából, mert elérte a [igazságos elosztás](#fair-share) korlátot. Folytatja a hamarosan az utolsó ellenőrzőponttól. |
-| Leállítva |A feladatot leállította a felhasználó, mielőtt befejeződhetett volna. |
+| Leállítva |A feladatot leállította a felhasználó, mielőtt az befejeződött volna. |
 | Leállítás |A rendszer a feladat leállítása folyamatban van. |
-| Felfüggesztve |A felhasználó által, a rendszer vagy a runbook egy parancsa felfüggesztette a feladatot. Ha egy runbook nem tartalmaz egy ellenőrzőpontot, a runbook elejétől kezdődik. Ha ellenőrzőponttal rendelkezik, ez indítsa el újra, és az utolsó ellenőrzőponttól folytatni. A runbook csak akkor a rendszer által felfüggeszthető, ha kivétel lép fel. Alapértelmezés szerint ErrorActionPreference értéke **Folytatás**, tehát a feladat a hiba továbbra is működik. Ha ezt a preferenciaváltozót **leállítása**, majd a feladat felfüggeszti az hiba. Érvényes [grafikus és a PowerShell-munkafolyamati runbookok](automation-runbook-types.md) csak. |
+| Felfüggesztve |A felhasználó, a rendszer vagy a runbook egy parancsa felfüggesztette a feladatot. Ha egy runbook nem tartalmaz egy ellenőrzőpontot, a runbook elejétől kezdődik. Ha ellenőrzőponttal rendelkezik, ez indítsa el újra, és az utolsó ellenőrzőponttól folytatni. A runbook csak akkor a rendszer által felfüggeszthető, ha kivétel lép fel. Alapértelmezés szerint ErrorActionPreference értéke **Folytatás**, tehát a feladat a hiba továbbra is működik. Ha ezt a preferenciaváltozót **leállítása**, majd a feladat felfüggeszti az hiba. Érvényes [grafikus és a PowerShell-munkafolyamati runbookok](automation-runbook-types.md) csak. |
 | Felfüggesztés |A rendszer megpróbálja a feladat felfüggesztését a felhasználó a kérelmet. A runbook felfüggesztés előtt el kell érnie a következő ellenőrzőpontot. Ha már elhagyta az utolsó ellenőrzőpontot, majd a felfüggesztés előtt befejeződött. Érvényes [grafikus és a PowerShell-munkafolyamati runbookok](automation-runbook-types.md) csak. |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Az Azure Portalról a feladat állapotának megtekintése
@@ -77,9 +77,9 @@ Azt is megteheti, megtekintheti a feladat összegző részleteit egy adott runbo
 
 ### <a name="job-summary"></a>Feladat összegzése
 
-Megtekintheti az összes feladat egy adott runbookhoz és azok állapotával létrehozott listáját. Szűrhet az ebben a listában, a feladat állapotát és a feladat utolsó módosításának időtartománya. A részletes információkat és a kimenet megtekintéséhez kattintson a feladat nevére. A feladat részletes nézetében a runbook-paraméterek, amelyeket a feladathoz az értékeket tartalmaz.
+Megtekintheti az összes feladat egy adott runbookhoz és azok állapotával létrehozott listáját. Szűrhet az ebben a listában, a feladat állapotát és a feladat utolsó módosításának időtartománya. A részletes információkat és a kimenet megtekintéséhez kattintson a feladat nevére. A feladat részletes nézetében megtalálhatók azon runbook-paraméterek értékei, amelyek meg lettek adva a feladathoz.
 
-A következő lépések segítségével a runbook-feladatok megtekintése.
+Az egy adott runbookhoz tartozó feladatok a következő lépésekkel tekinthetők meg.
 
 1. Az Azure Portalon válassza ki a **Automation** , és válassza ki az Automation-fiók nevére.
 2. Válassza ki a hub **Runbookok** majd a a **Runbookok** lapon válasszon ki egy runbookot a listából.
@@ -144,3 +144,4 @@ Egy másik lehetőség, hogy a runbook optimalizálása gyermek runbookok haszn�
 ## <a name="next-steps"></a>További lépések
 
 * A runbook indítása az Azure Automation segítségével különböző módszerekkel kapcsolatos további tudnivalókért lásd: [runbook elindítása az Azure Automationben](automation-starting-a-runbook.md)
+

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: e5e9901d6265b48a7b57cdf2c146ebb623ad5c3d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 501659a93306342c7a212d135b4fdd89be096451
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992202"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428169"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Az Azure-beli virtuális hálózathoz a topológia megtekintése
 
@@ -46,7 +46,7 @@ Használhatja a [az Azure portal](#azure-portal), a [Azure CLI-vel](#azure-cli),
 
 6. Válassza ki **topológia letöltése** letölti a lemezképet szerkeszthető, svg-formátumú fájlként.
 
-Az ábrán látható erőforrások a virtuális hálózatban a hálózati összetevők egy részét. Például az a hálózati biztonsági csoport jelenik meg, amíg nem jelennek meg a benne lévő biztonsági szabályokat a diagram. Nem különbözteti meg a diagramon, bár a sorok két kapcsolat egyik képviselik: *Tartalmazottsági* vagy *kapcsolódó*. A virtuális hálózat és az erőforrások közötti kapcsolat típusát az erőforrások teljes listájának megtekintéséhez, létrehozásához a topológia a [PowerShell](#powershell) vagy a [Azure CLI-vel](#azure-cli).
+Az ábrán látható erőforrások a virtuális hálózatban a hálózati összetevők egy részét. Például az a hálózati biztonsági csoport jelenik meg, amíg nem jelennek meg a benne lévő biztonsági szabályokat a diagram. Nem különbözteti meg a diagramon, bár a sorok mutatják be két olyan kapcsolat egyikét: *Tartalmazottsági* vagy *kapcsolódó*. A virtuális hálózat és az erőforrások közötti kapcsolat típusát az erőforrások teljes listájának megtekintéséhez, létrehozásához a topológia a [PowerShell](#powershell) vagy a [Azure CLI-vel](#azure-cli).
 
 ## <a name = "azure-cli"></a>Tekintse meg topológia – Azure CLI-vel
 
@@ -85,7 +85,7 @@ A fióknak rendelkeznie kell a szükséges [engedélyek](required-rbac-permissio
 
 A parancsok a következő lépések futtatható:
 - Az Azure Cloud shellben kiválasztásával **Kipróbálom** felső bármilyen parancs, jobb. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület, amely rendelkezik közös Azure-eszközök előre telepítve és konfigurálva a fiókjával való használat.
-- Által a számítógépről futtatja a Powershellt. Ha a számítógépről futtatja a PowerShell, a cikkben ismertetett lépések verziójának 5.7.0 megkövetelése és újabb verzióiban az AzureRm-modul. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Által a számítógépről futtatja a Powershellt. Ha a számítógépről futtatja a PowerShell, a cikkben ismertetett lépések verziójának 5.7.0 megkövetelése és újabb verzióiban az AzureRm-modul. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 A fióknak rendelkeznie kell a szükséges [engedélyek](required-rbac-permissions.md).
 
@@ -132,18 +132,18 @@ A topológiában visszaadott összes erőforrásnak rendelkeznie kell egy másik
 | Kapcsolat típusa | Példa                                                                                                |
 | ---               | ---                                                                                                    |
 | Tartalmazottsági       | Virtuális hálózat egy alhálózatot tartalmaz. Egy alhálózat egy hálózati adaptert tartalmaz.                            |
-| Kapcsolódó        | Hálózati adapter kapcsolódik egy virtuális Gépet. Nyilvános IP-cím egy hálózati adapter társítva. |
+| Társított        | Hálózati adapter kapcsolódik egy virtuális Gépet. Nyilvános IP-cím egy hálózati adapter társítva. |
 
 ## <a name="properties"></a>Tulajdonságok
 
 Adott vissza a topológiában az összes erőforrás a következő tulajdonságokkal rendelkezik:
 
-- **Név**: az erőforrás neve
-- **ID**: az URI az erőforrás.
-- **Hely**: az Azure-régió, hogy az erőforrás megtalálható.
-- **Társítások**: a hivatkozott objektum társításának listáját. Minden társítás rendelkezik a következő tulajdonságokkal:
-    - **AssociationType**: hivatkozik az gyermekobjektum és a szülő közötti kapcsolatot. Érvényes értékek a következők *Contains* vagy *társított*.
-    - **Név**: a hivatkozott erőforrás nevét.
+- **Név**: Az erőforrás neve
+- **ID**: Az erőforrás URI azonosítója.
+- **Hely**: Az Azure-régió, hogy az erőforrás megtalálható.
+- **Társítások**: A hivatkozott objektum társításának listáját. Minden társítás rendelkezik a következő tulajdonságokkal:
+    - **AssociationType**: Hivatkozik az gyermekobjektum és a szülő közötti kapcsolatot. Érvényes értékek a következők *Contains* vagy *társított*.
+    - **Név**: A hivatkozott erőforrás neve.
     - **Erőforrás-azonosító**:-az erőforrás URI-ját a társítás hivatkozik.
 
 ## <a name="next-steps"></a>További lépések

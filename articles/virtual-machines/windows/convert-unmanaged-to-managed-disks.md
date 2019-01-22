@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 26ddc1df8353a8a8b0e0c54a0c906c8d8b6b45b9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: fecf17d95231cc37a141cfb72397f44ce2e980b5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495341"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435600"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows virtuális gép átalakítása nem felügyeltről felügyelt a managed Disks szolgáltatásba
 
 Ha rendelkezik meglévő Windows virtuális gépek (VM), amely a nem felügyelt lemezeket használ, a virtuális gépek keresztül felügyelt lemezek használata alakíthatja a [Azure Managed Disks](managed-disks-overview.md) szolgáltatás. Ez a folyamat az operációsrendszer-lemez és a bármely más csatolt lemez alakítja.
 
-Ez a cikk bemutatja, hogyan átalakítása a virtuális gépek Azure PowerShell használatával. Ha szeretné telepíteni, vagy frissít a csomagon belül, lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps).
+Ez a cikk bemutatja, hogyan átalakítása a virtuális gépek Azure PowerShell használatával. Ha szeretné telepíteni, vagy frissít a csomagon belül, lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/azurerm/install-azurerm-ps).
 
 ## <a name="before-you-begin"></a>Előkészületek
 

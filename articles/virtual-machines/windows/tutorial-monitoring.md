@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ce90ea447f7dcf4df1451294acf9f7fd093ad6ee
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 1bee08800eb5b480024001f742e8965cbd609a73
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408642"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428885"
 ---
-# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: Azure-beli Windows rendszerű virtuális gépek monitorozása és frissítése
+# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: Figyelheti és frissítheti a Windows virtuális gép az Azure-ban
 
 Az Azure-monitorozás ügynökökkel gyűjti a rendszerindítási és teljesítményadatokat az Azure-beli virtuális gépekről, tárolja ezeket az adatokat az Azure Storage-ban, valamint hozzáférést nyújt a portálon, az Azure PowerShell modulon és az Azure CLI-n keresztül. A frissítéskezeléssel kezelheti az Azure-beli Windows rendszerű virtuális gépek frissítéseit és javításait.
 
@@ -40,7 +40,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A módosítások és a leltár monitorozása
 > * Speciális monitorozás beállítása
 
-Az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket.
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 

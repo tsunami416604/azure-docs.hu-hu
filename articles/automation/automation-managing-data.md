@@ -3,18 +3,18 @@ title: Azure Automation-adatok kezelése
 description: Ez a cikk egy Azure Automation környezet kezeléséhez több témaköröket tartalmazza.  Jelenleg magában foglalja az adatok megőrzésére és biztonsági mentése az Azure Automation-vészhelyreállítás az Azure Automationben.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 05da900e9ddf4cbb99df5c6d62ddb569059e2c4b
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: b133947a7daf1977f084ee4008599882b51d9e8b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42054677"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428477"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation-adatok kezelése
 Ez a cikk egy Azure Automation környezet kezeléséhez több témaköröket tartalmazza.
@@ -76,4 +76,5 @@ Az alábbi táblázat a rendelkezésre álló elsődleges és másodlagos régi�
 | Kelet-Japán |Nyugat-Japán |
 
 Az, hogy egy elsődleges régióban adat elvész nem túl valószínű esetben Microsoft próbál helyreállítani. Ha az elsődleges adatok nem állíthatók be, majd a földrajzi feladatátvétel megy végbe, és az érintett ügyfelek értesítjük erről az előfizetés keretében.
+
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: a7ab2e76280458326539fe83d3507dfb4e4a486e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c99ee1f520496148e22e540fa1f41f9bd74ae6a5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023094"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436212"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files-problémák hibaelhárítása
 
@@ -61,7 +61,7 @@ Rendszerhiba: 53-as vagy 67-es rendszerhiba akkor fordulhat elő, ha az Azure Fi
 
 Ha a tűzfal- vagy Internetszolgáltatói blokkolja a 445-ös ellenőrzéséhez használja a [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) eszköz vagy `Test-NetConnection` parancsmagot. 
 
-Használatához a `Test-NetConnection` parancsmag, az AzureRM PowerShell modulnak telepítve kell lennie, lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) további információt. Ne felejtse el kicserélni a `<your-storage-account-name>` és a `<your-resoure-group-name>` elemet a tárfiók vonatkozó neveivel.
+Használatához a `Test-NetConnection` parancsmag, az AzureRM PowerShell modulnak telepítve kell lennie, lásd: [Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) további információt. Ne felejtse el kicserélni a `<your-storage-account-name>` és a `<your-resoure-group-name>` elemet a tárfiók vonatkozó neveivel.
 
    
     $resourceGroupName = "<your-resource-group-name>"

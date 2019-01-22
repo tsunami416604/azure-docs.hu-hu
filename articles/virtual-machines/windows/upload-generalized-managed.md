@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 93d5cbdb44d3014b547141d59ce96cf607276846
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a5b9f7abbb17aeefa3647e965c63c1f6dc4b0a7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234612"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429259"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Általános VHD feltöltése és ezzel hozzon létre új virtuális gépeket az Azure-ban
 
@@ -32,7 +32,7 @@ Mintaparancsprogram lásd [mintaparancsfájl VHD feltöltése az Azure-ba, és h
 
 - Minden olyan VHD feltöltése az Azure-ba, mielőtt követendő [készítse elő a Windows VHD vagy VHDX, az Azure-bA feltöltendő](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Felülvizsgálat [tervezze meg a migrálás a Managed Disks szolgáltatásba](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) az áttelepítés megkezdése előtt [Managed Disks](managed-disks-overview.md).
-- Ez a cikk az AzureRM-modul, 5.6-os vagy újabb verziója szükséges. Futtatás ` Get-Module -ListAvailable AzureRM.Compute` a verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+- Ez a cikk az AzureRM-modul, 5.6-os vagy újabb verziója szükséges. Futtatás ` Get-Module -ListAvailable AzureRM.Compute` a verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket.
 
 
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>A forrásoldali virtuális gép általánosításához használja a Sysprep

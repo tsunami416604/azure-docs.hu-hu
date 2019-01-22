@@ -3,18 +3,18 @@ title: Azure Automation futtató fiókok kezelése
 description: Ez a cikk azt ismerteti, hogy a futtató fiókok kezelése a PowerShell-lel, vagy a portálon.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7bd84b42cfa61d199d70e02345f9229a45fd7704
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 34c8a7d547acf023af442599708f9c183e5b9ae9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726168"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431197"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -44,8 +44,8 @@ Hozzon létre, vagy frissíteni egy futtató fiókot, jogosultságokkal és enge
 |---|---------|---------|
 |Az Azure AD-alkalmazás létrehozása|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Alkalmazás-fejlesztői szerepkör        |
 |A hitelesítő adatok hozzáadása az alkalmazáshoz.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Alkalmazás-rendszergazda vagy a globális rendszergazda         |
-|Hozzon létre és lekérése egy Azure AD-szolgáltatásnév|[Új AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Alkalmazás-rendszergazda vagy a globális rendszergazda        |
-|Rendelje hozzá, vagy szerezze be az RBAC-szerepkört a megadott rendszerbiztonsági tag|[Új-azurermroleassignment parancsmagot](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-azurermroleassignment parancsmagot](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Felhasználói hozzáférés rendszergazdája vagy tulajdonosa        |
+|Hozzon létre és lekérése egy Azure AD-szolgáltatásnév|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Alkalmazás-rendszergazda vagy a globális rendszergazda        |
+|Rendelje hozzá, vagy szerezze be az RBAC-szerepkört a megadott rendszerbiztonsági tag|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Felhasználói hozzáférés rendszergazdája vagy tulajdonosa        |
 |Hozzon létre, vagy távolítsa el az Automation-tanúsítvány|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Az erőforráscsoporthoz közreműködő         |
 |Hozzon létre vagy egy Automation-kapcsolat eltávolítása|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Az erőforráscsoporthoz közreműködő |
 
@@ -389,3 +389,4 @@ A futtató fiókkal kapcsolatos hasonló problémákat gyorsan elháríthatja a 
 
 * Szolgáltatásnevekkel kapcsolatos további információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](../active-directory/develop/app-objects-and-service-principals.md).
 * Tanúsítványokkal és az Azure-szolgáltatásokkal kapcsolatos további információkért lásd: [tanúsítványok áttekintése az Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
+

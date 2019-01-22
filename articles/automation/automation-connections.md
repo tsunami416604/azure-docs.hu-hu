@@ -3,18 +3,18 @@ title: Kapcsolati objektumok az Azure Automationben
 description: Kapcsolati objektumok az Azure Automationben a runbookból vagy DSC-konfiguráció egy külső szolgáltatás vagy alkalmazás való kapcsolódáshoz szükséges adatokat tartalmazzák. Ez a cikk ismerteti a kapcsolatokat, és hogyan dolgozhatnak velük a szöveges és a grafikus szerzői részleteit.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9687276323598d8600aa6930df8ef18bcc171cc1
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: e00eb5756d34c7ca8cecc741b4832c583a6ed087
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358830"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439017"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Kapcsolati objektumok az Azure Automationben
 
@@ -164,3 +164,4 @@ azure_credential = get_automation_runas_credential(runas_connection)
 - Felülvizsgálat [hivatkozások a grafikus létrehozásról](automation-graphical-authoring-intro.md#links-and-workflow) való közvetlen és irányíthatja a runbookokban logikát.  
 
 - Azure Automation PowerShell-modulok és ajánlott eljárások létrehozásához használt saját működjenek integrációs modulként az Azure Automation PowerShell-modulok kapcsolatos további információkért lásd: [integrációs modulok](automation-integration-modules.md).  
+

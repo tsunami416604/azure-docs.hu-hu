@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 63dd7b0aad3ce42eff3c135bd2fdccc8fcb4ed61
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3d2f07a2a5f660a6f22256fa528c2a308fde81ad
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014080"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435362"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>A hálózati biztonsági csoport diagnosztikai naplózás
 
@@ -49,12 +49,12 @@ Használhatja a [az Azure Portal](#azure-portal), [PowerShell](#powershell), vag
     | ---------                                                                                   |---------                                                       |
     | Name (Név)                                                                                        | Egy tetszőleges nevet.  Például: *myNsgDiagnostics*      |
     | **Archiválás tárfiókba**, **egy eseményközpontba Stream**, és **Küldés a Log Analyticsnek** | Kiválaszthatja, hogy annyi célok kiválasztása közben. Minden egyes kapcsolatos további információkért lásd: [destinations jelentkezzen](#log-destinations).                                                                                                                                           |
-    | NAPLÓ                                                                                         | Válassza ki az egyik vagy mindkét naplókategóriák. Az egyes kategóriákhoz tartozó naplózott adatok kapcsolatos további információkért lásd: [kategóriába jelentkezzen](#log-categories).                                                                                                                                             |
+    | LOG                                                                                         | Válassza ki az egyik vagy mindkét naplókategóriák. Az egyes kategóriákhoz tartozó naplózott adatok kapcsolatos további információkért lásd: [kategóriába jelentkezzen](#log-categories).                                                                                                                                             |
 6. Naplók megtekintése és elemzése. További információkért lásd: [megtekintése és -naplók elemzése](#view-and-analyze-logs).
 
 ### <a name="powershell"></a>PowerShell
 
-A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.1.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha futtatja a Powershellt helyileg, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions)].
+A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.1.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha futtatja a Powershellt helyileg, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions)].
 
 Diagnosztikai naplózás engedélyezése kell egy létező NSG azonosítója. Ha nem rendelkezik egy létező NSG-t, létrehozhat egyet a [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup).
 

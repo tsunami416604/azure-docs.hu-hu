@@ -4,7 +4,7 @@ description: Részletes utasítások és példák egy Azure virtuális gép fel�
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: bf363e4b03fb604e1b9af0d30b6e4ac471a41821
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ce25c05d2b3de3fcf6b7318b90590b84f3ee9c52
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980287"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423187"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Az Azure-erőforrások egy Azure virtuális gép esetében jelentkezzen be a felügyelt identitások használatával 
 
@@ -83,8 +83,8 @@ Lásd: [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](se
 
 Például a következő válaszok arra utalhat, hogy a virtuális gép felügyelt identitás az Azure-erőforrások nincs megfelelően konfigurálva:
 
-- PowerShell: *Invoke-WebRequest: nem lehet kapcsolódni a távoli kiszolgáló*
-- CLI: *MSI: nem sikerült beolvasni a származó jogkivonat "http://localhost:50342/oauth2/token" hibával "HTTPConnectionPool (gazdagép"localhost", port = = 50342)* 
+- PowerShell: *Invoke-WebRequest: Nem lehet kapcsolódni a távoli kiszolgáló*
+- CLI: *MSI: Nem sikerült beolvasni a származó jogkivonat "http://localhost:50342/oauth2/token" hibával "HTTPConnectionPool (gazdagép"localhost", port = = 50342)* 
 
 Ha ezek a hibák egyike jelentkezik, térjen vissza az Azure VM a [az Azure portal](https://portal.azure.com) és:
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: cynthn
-ms.openlocfilehash: cd11bb8ae8f22705feb7eebeafde385fcf11fdcd
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d606009ea378de4addb06f9123baf3282637cf85
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637085"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423374"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Adatlemez csatolása egy Windows virtuális géphez a PowerShell-lel
 
@@ -28,11 +28,11 @@ Ez a cikk bemutatja, hogyan új és meglévő lemez csatolása Windows virtuáli
 
 Először tekintse át a következő tippeket:
 * A virtuális gép méretét szabályozza, hány adatlemez csatolható. További információkért lásd: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Premium storage szolgáltatást használja a DS vagy GS sorozatú virtuális gépek például egy Premium Storage-kompatibilis virtuális gép típusa lesz szüksége. További információkért lásd: [Premium Storage: nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Premium storage szolgáltatást használja a DS vagy GS sorozatú virtuális gépek például egy Premium Storage-kompatibilis virtuális gép típusa lesz szüksége. További információkért lásd: [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-A helyi telepítése és használata a PowerShell, az oktatóanyaghoz az Azure PowerShell-modul verzióját 6.0.0 vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha Ön helyileg futtatja a Powershellt, is kell futtatni `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
+A helyi telepítése és használata a PowerShell, az oktatóanyaghoz az Azure PowerShell-modul verzióját 6.0.0 vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha Ön helyileg futtatja a Powershellt, is kell futtatni `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
 
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Üres adatlemez hozzáadása egy virtuális géphez

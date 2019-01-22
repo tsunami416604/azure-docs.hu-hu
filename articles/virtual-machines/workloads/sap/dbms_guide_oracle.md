@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8686130e3b10ece605a6e648badf9aa1dae5e071
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 65c685936fabab65698a077f22c2dfde17469055
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435684"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436416"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Oracle az Azure Virtual Machines DBMS üzembe helyezési SAP számítási feladatokhoz
 
@@ -235,7 +235,7 @@ ms.locfileid: "53435684"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -365,8 +365,8 @@ Minimális konfigurációt:
 | --- | ---| --- | --- |
 | \oracle\<SID > \origlogaA & mirrlogB | Prémium | None | Nem szükséges |
 | \oracle\<SID > \origlogaB & mirrlogA | Prémium | None | Nem szükséges |
-| \oracle\<SID > \sapdata1...n | Prémium | Csak olvasás | Használható |
-| \oracle\<SID > \oraarch | Standard | None | Nem szükséges |
+| \oracle\<SID>\sapdata1...n | Prémium | Csak olvasás | Használható |
+| \oracle\<SID>\oraarch | Standard | None | Nem szükséges |
 | Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | | Nem szükséges |
 
 
@@ -375,13 +375,13 @@ Lemezek kiválasztása online visszaállítási naplók tárolásához IOPs köv
 Teljesítmény-konfigurációkat:
 | Összetevő | Lemez | Gyorsítótárazás | Tárolókészlet |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA | Prémium | None | Használható  |
-| \oracle\<SID > \origlogaB | Prémium | None | Használható |
-| \oracle\<SID > \mirrlogAB | Prémium | None | Használható |
-| \oracle\<SID > \mirrlogBA | Prémium | None | Használható |
-| \oracle\<SID > \sapdata1...n | Prémium | Csak olvasás | Ajánlott  |
-| \oracle\SID\sapdata(n+1) * | Prémium | None | Használható |
-| \oracle\<SID > \oraarch* | Prémium | None | Nem szükséges |
+| \oracle\<SID>\origlogaA | Prémium | None | Használható  |
+| \oracle\<SID>\origlogaB | Prémium | None | Használható |
+| \oracle\<SID>\mirrlogAB | Prémium | None | Használható |
+| \oracle\<SID>\mirrlogBA | Prémium | None | Használható |
+| \oracle\<SID>\sapdata1...n | Prémium | Csak olvasás | Ajánlott  |
+| \oracle\SID\sapdata(n+1)* | Prémium | None | Használható |
+| \oracle\<SID>\oraarch* | Prémium | None | Nem szükséges |
 | Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | Nem szükséges |
 
 *(n+1) – a rendszer, a TEMP és a visszavonás táblahelyeket üzemeltetése. Rendszer- és visszavonási táblahelyeket i/o minta más alkalmazás adatait tartalmazó táblahelyeket eltérnek. Nincs gyorsítótárazás nem a rendszer- és visszavonási táblahelyeket teljesítményét leginkább megfelelő opció kiválasztásához.
@@ -468,7 +468,7 @@ Teljesítmény-konfigurációkat:
 | /Oracle/<SID>/mirrlogAB | Prémium | None | Használható |
 | /Oracle/<SID>/mirrlogBA | Prémium | None | Használható |
 | /Oracle/<SID>/sapdata1...n | Prémium | Csak olvasás | Ajánlott  |
-| /Oracle/SID/sapdata(n+1)* | Prémium | None | Használható |
+| /oracle/SID/sapdata(n+1)* | Prémium | None | Használható |
 | /Oracle/<SID>/oraarch* | Prémium | None | Nem szükséges |
 | Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | Nem szükséges |
 

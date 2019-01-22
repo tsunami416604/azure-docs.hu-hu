@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 92c493a59cc14d61b09e59bdf0fa23be72b7137a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3437aed01efe137a5e67dfc09427c1048fa3e4e2
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232549"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423138"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>Milyen hitelesítési módszerek érhetők el?
 
@@ -58,4 +58,4 @@ Az új jelszó önkiszolgáló kérése használatának megkezdéséhez tekintse
 
 További információ az önkiszolgáló jelszó-visszaállítást a cikkben, [működését: Az Azure AD önkiszolgáló jelszó-visszaállítás](concept-sspr-howitworks.md)
 
-A cikk az Azure multi-factor Authentication többet [működését: Az Azure multi-factor Authentication](concept-mfa-howitworks.md)
+A cikk az Azure multi-factor Authentication többet [működését: Azure Multi-Factor Authentication](concept-mfa-howitworks.md)

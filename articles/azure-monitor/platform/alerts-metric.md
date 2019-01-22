@@ -6,13 +6,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.component: alerts
-ms.openlocfilehash: 4aa6f8fdf4eaa8e439c1a8c8c0202cf49a04433c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: b8252e6575ec7acb46fb69563720cc38796964ce
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584309"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425068"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával metrikákhoz kapcsolódó riasztások
 
@@ -117,13 +117,13 @@ A fentebbi szakaszokban leírt létrehozása, megtekintése és kezelése a metr
 6. A következő parancsot a metrikaalapú riasztási szabály is letilthatja.
 
     ```azurecli
-    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} -enabled false
+    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} --enabled false
     ```
 
 7. A metrikaalapú riasztási szabály a következő paranccsal törölheti.
 
     ```azurecli
-    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} -enabled false
+    az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
 
 ## <a name="next-steps"></a>További lépések
@@ -131,3 +131,4 @@ A fentebbi szakaszokban leírt létrehozása, megtekintése és kezelése a metr
 - [Hozzon létre az Azure Resource Manager-sablonok használatával metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-enable-template.md).
 - [Megismerheti, hogyan riasztást küld a metrika a munkahelyi](alerts-metric-overview.md).
 - [A web hook sémáját metrikákhoz kapcsolódó riasztások ismertetése](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+

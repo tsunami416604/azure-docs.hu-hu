@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 1b380bc20c9f80710ca62672b99649ce3498a8e8
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: dd12acb1212e52eb413dfbf35945cd17902d8db7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223762"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433883"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Az Azure multi-factor Authentication felhasználói adatok gyűjtése
 
@@ -39,10 +39,10 @@ Hitelesítési kísérlet (használt jelentések és hibaelhárítás):
 - Telefonhívás módját (Standard, PIN-kód)
 - SMS-üzenet irányát (egyirányú, kétirányú)
 - SMS-üzenet módját (OTP, OTP + PIN-kód)
-- Mobilalkalmazás mód (Standard, PIN-kód)
+- Mobile App Mode (Standard, PIN)
 - OATH-Token mód (Standard, PIN-kód)
 - Hitelesítés típusa
-- Alkalmazás neve
+- Alkalmazásnév
 - Elsődleges hívás országkód:
 - Elsődleges hívás telefonszám
 - Elsődleges hívás bővítmény
@@ -58,7 +58,7 @@ Hitelesítési kísérlet (használt jelentések és hibaelhárítás):
 - Results (Eredmények)
 - Hitelesített
 - Eredmény
-- Kezdeményező IP-cím
+- Initiating IP Address
 - Eszközök
 - Eszköztoken
 - Az eszköz típusa

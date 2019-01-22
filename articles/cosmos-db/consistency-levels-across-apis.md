@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 76ebbc8cc8dbea4b7f8f8226cf1d8570a421e8cf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a506c696cdb9ca6c6221b54c63d2446b7cb86a69
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034335"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430564"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és Azure Cosmos DB API-k
 
@@ -24,15 +24,198 @@ A következő szakaszok bemutatják az adatok konzisztenciáját, az Apache Cass
 
 ## <a id="cassandra-mapping"></a>Az Apache Cassandra és az Azure Cosmos DB konzisztenciaszintjeinek közötti megfeleltetés
 
-Ez a táblázat az Azure Cosmos DB az Apache Cassandra 4.x-es ügyfél és az alapértelmezett konzisztenciaszint között "következetes Olvasás" hozzárendelést mutatja be. A táblázat több régióban, és egyetlen régióban üzemelő példányok.
+Ez a táblázat az Apache Cassandra és a konzisztenciaszint közötti konzisztencia leképezése az Azure Cosmos DB. Minden Cassandra olvasási és írási konzisztenciaszintet Cosmos DB konzisztencia szintnek megfelelő biztosít erősebb, azaz a szigorúbb garanciát.
 
-| **Az Apache Cassandra 4.x** | **Az Azure Cosmos DB (többrégiós)** | **Az Azure Cosmos DB (egyetlen régióban)** |
-| - | - | - |
-| EGY KÉT HÁ' | Konzisztens előtag | Konzisztens előtag |
-| LOCAL_ONE | Konzisztens előtag | Konzisztens előtag |
-| KVÓRUM, AZ ÖSSZES, SOROS | Korlátozott frissesség az alapértelmezett érték. Erős private preview verzióban van. | Erős |
-| LOCAL_QUORUM | Korlátozott frissesség | Erős |
-| LOCAL_SERIAL | Korlátozott frissesség | Erős |
+
+<table>
+<tr> 
+  <th rowspan="2">Cassandra Konzisztenciaszint</th> 
+  <th rowspan="2">A cosmos DB Konzisztenciaszint</th> 
+  <th colspan="3">Írási konzisztencia leképezés</th> 
+  <th colspan="3">Olvassa el a konzisztencia-leképezés</th> 
+</tr> 
+
+
+ 
+ <tr> 
+  <th>Cassandra</th> 
+  <th>Cosmos DB</th> 
+  <th>Garancia</th> 
+  <th>A Cassandra</th> 
+  <th>To Cosmos DB</th> 
+  <th>Garancia</th> 
+ </tr> 
+ 
+  <tr> 
+  <td rowspan="6">Összes</td> 
+  <td rowspan="6">Erős</td> 
+  <td>Összes</td> 
+  <td>Erős</td> 
+  <td>Linearizálhatóság</td> 
+  <td>MINDEN, A KVÓRUM, SOROS, LOCAL_QUORUM, LOCAL_SERIAL, HÁROM, KÉT, EGY, LOCAL_ONE</td> 
+  <td>Erős</td> 
+  <td>Linearizálhatóság</td> 
+ </tr> 
+ 
+ <tr> 
+  <td rowspan="2">EACH_QUORUM</td> 
+  <td rowspan="2">Erős</td> 
+  <td rowspan="2">Linearizálhatóság</td> 
+  <td>MINDEN, A KVÓRUM, SOROS, LOCAL_QUORUM, LOCAL_SERIAL, HÁROM, A KÉT</td> 
+  <td>Erős</td> 
+  <td >Linearizálhatóság</td> 
+ </tr> 
+ 
+ <tr>
+ <td>LOCAL_ONE, ÉS AZ EGYIK</td>
+  <td>Konzisztens előtag</td>
+   <td>Globális konzisztens előtag</td>
+ </tr>
+ 
+
+ <tr> 
+  <td rowspan="2">SOROS KVÓRUM</td> 
+  <td rowspan="2">Erős</td> 
+  <td rowspan="2">Linearizálhatóság</td> 
+  <td>AZ ÖSSZES, KVÓRUM SOROZAT</td> 
+  <td>Erős</td> 
+  <td >Linearizálhatóság</td> 
+ </tr> 
+
+ <tr>
+   <td>LOCAL_ONE, EGY, LOCAL_QUORUM, LOCAL_SERIAL, KÉT, HÁROM</td>
+   <td>Konzisztens előtag</td>
+   <td>Globális konzisztens előtag</td>
+ </tr>
+ 
+ 
+ <tr> 
+ <td>LOCAL_QUORUM, HÁROM, KÉT, EGY, LOCAL_ONE, <b>ANY</b></td> 
+  <td>Konzisztens előtag</td> 
+  <td>Globális konzisztens előtag</td> 
+  <td>LOCAL_ONE, EGY, KETTŐ, HÁROM, LOCAL_QUORUM, KVÓRUM</td> 
+  <td>Konzisztens előtag</td> 
+  <td>Globális konzisztens előtag</td>
+ </tr> 
+ 
+ 
+  <tr> 
+  <td rowspan="6">EACH_QUORUM</td> 
+  <td rowspan="6">Erős</td> 
+  <td rowspan="2">EACH_QUORUM</td> 
+  <td rowspan="2">Erős</td> 
+  <td rowspan="2">Linearizálhatóság</td> 
+  <td>MINDEN, A KVÓRUM, SOROS, LOCAL_QUORUM, LOCAL_SERIAL, HÁROM, A KÉT</td> 
+  <td>Erős</td> 
+  <td>Linearizálhatóság</td> 
+ </tr> 
+ 
+ <tr>
+ <td>LOCAL_ONE, ÉS AZ EGYIK</td>
+  <td>Konzisztens előtag</td>
+   <td>Globális konzisztens előtag</td>
+ </tr>
+ 
+ 
+ 
+ <tr> 
+  <td rowspan="2">SOROS KVÓRUM</td> 
+  <td rowspan="2">Erős</td> 
+  <td rowspan="2">Linearizálhatóság</td> 
+  <td>AZ ÖSSZES, KVÓRUM SOROZAT</td> 
+  <td>Erős</td> 
+  <td>Linearizálhatóság</td> 
+ </tr> 
+ 
+ <tr>
+ <td>LOCAL_ONE, EGY, LOCAL_QUORUM, LOCAL_SERIAL, KÉT, HÁROM</td>
+  <td>Konzisztens előtag</td>
+   <td>Globális konzisztens előtag</td>
+ </tr>
+ 
+ 
+  <tr> 
+  <td rowspan="2">LOCAL_QUORUM, HÁROM, KÉT, EGY, LOCAL_ONE, BÁRMELY</td> 
+  <td rowspan="2">Konzisztens előtag</td> 
+  <td rowspan="2">Globális konzisztens előtag</td> 
+  <td>Összes</td> 
+  <td>Erős</td> 
+  <td>Linearizálhatóság</td> 
+ </tr> 
+ 
+ <tr>
+ <td>LOCAL_ONE, EGY, KETTŐ, HÁROM, LOCAL_QUORUM, KVÓRUM</td>
+  <td>Konzisztens előtag</td>
+   <td>Globális konzisztens előtag</td>
+ </tr>
+
+
+  <tr> 
+  <td rowspan="4">KVÓRUM</td> 
+  <td rowspan="4">Erős</td> 
+  <td rowspan="2">SOROS KVÓRUM</td> 
+  <td rowspan="2">Erős</td> 
+  <td rowspan="2">Linearizálhatóság</td> 
+  <td>AZ ÖSSZES, KVÓRUM SOROZAT</td> 
+  <td>Erős</td> 
+  <td>Linearizálhatóság</td> 
+ </tr> 
+ 
+ <tr>
+ <td>LOCAL_ONE, EGY, LOCAL_QUORUM, LOCAL_SERIAL, KÉT, HÁROM</td>
+  <td>Konzisztens előtag</td>
+   <td>Globális konzisztens előtag</td>
+ </tr>
+ 
+ 
+ <tr> 
+  <td rowspan="2">LOCAL_QUORUM, HÁROM, KÉT, EGY, LOCAL_ONE, BÁRMELY</td> 
+  <td rowspan="2">Konzisztens előtag </td> 
+  <td rowspan="2">Globális konzisztens előtag </td> 
+  <td>Összes</td> 
+  <td>Erős</td> 
+  <td>Linearizálhatóság</td> 
+ </tr> 
+ 
+ <tr>
+ <td>LOCAL_ONE, EGY, KETTŐ, HÁROM, LOCAL_QUORUM, KVÓRUM</td>
+  <td>Konzisztens előtag</td>
+   <td>Globális konzisztens előtag</td>
+ </tr>
+ 
+ <tr> 
+  <td rowspan="4">LOCAL_QUORUM, HÁROM, KÉT</td> 
+  <td rowspan="4">Kötött elavulás</td> 
+  <td rowspan="2">LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE</td> 
+  <td rowspan="2">Kötött elavulás</td> 
+  <td rowspan="2">Korlátozott frissesség.<br/>
+A legtöbb K verziók vagy t idő mögött.<br/>
+Olvassa el a régióban található legutóbbi véglegesített érték. 
+</td> 
+  
+  <td>QUORUM, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE</td> 
+  <td>Kötött elavulás</td> 
+  <td>Korlátozott frissesség.<br/>
+A legtöbb K verziók vagy t idő mögött. <br/>
+Olvassa el a régióban található legutóbbi véglegesített érték. </td> 
+ </tr> 
+ 
+ <tr>
+ <td>LOCAL_ONE, ÉS AZ EGYIK</td>
+  <td>Konzisztens előtag</td>
+   <td>Régiók szerinti konzisztens előtag</td>
+ </tr>
+ 
+ 
+ <tr> 
+  <td>EGY LOCAL_ONE, BÁRMELY</td> 
+  <td>Konzisztens előtag </td> 
+  <td >Régiók szerinti konzisztens előtag </td> 
+  <td>LOCAL_ONE, EGY, KETTŐ, HÁROM, LOCAL_QUORUM, KVÓRUM</td> 
+  <td>Konzisztens előtag</td> 
+  <td>Régiók szerinti konzisztens előtag</td> 
+ </tr> 
+</table>
 
 ## <a id="mongo-mapping"></a>A MongoDB 3.4-es és az Azure Cosmos DB konzisztenciaszintjeinek közötti megfeleltetés
 

@@ -3,18 +3,18 @@ title: Az Azure Automation Állapotkonfiguráció konfigurációk fordítása
 description: Ez a cikk ismerteti az Azure Automation Desired State Configuration (DSC) konfigurációk fordítása.
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca3c29101e17a7970ba782b5c49267bf9f18482e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d49ab32ace1ad0900c4867a41aba56900ef2bcaa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257156"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423408"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Az Azure Automation konfiguráló DSC-konfigurációk fordítása
 
@@ -130,7 +130,7 @@ További információ a PSCredentials átadott paraméterek: [hitelesítő eszk�
 
 ## <a name="composite-resources"></a>Összetett erőforrások
 
-**Összetett erőforrások** lehetővé teszik, hogy egy konfigurációs belül beágyazott erőforrások, DSC-konfigurációk. Ez lehetővé teszi, hogy több konfiguráció alkalmazása a egy erőforrást. Lásd: [összetett erőforrások: a DSC-konfiguráció használata erőforrásként](/powershell/dsc/authoringresourcecomposite) további részleteket ismerhet meg **összetett erőforrások**.
+**Összetett erőforrások** lehetővé teszik, hogy egy konfigurációs belül beágyazott erőforrások, DSC-konfigurációk. Ez lehetővé teszi, hogy több konfiguráció alkalmazása a egy erőforrást. Lásd: [összetett erőforrások: A DSC-konfiguráció használata erőforrásként](/powershell/dsc/authoringresourcecomposite) további részleteket ismerhet meg **összetett erőforrások**.
 
 > [!NOTE]
 > Ahhoz, hogy **összetett erőforrások** fordítása helyes, akkor előbb ellenőrizze, hogy olyan DSC-erőforrások, az összetett támaszkodik telepítve legyenek az Azure Automation-fiók modulok adattárban, vagy nem megfelelően importálása.
@@ -197,7 +197,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-A fenti DSC-konfiguráció a PowerShell használatával állíthat össze. Az alábbi PowerShell-lel az Azure Automation konfigurációs lekérési állapotkiszolgáló ad hozzá két csomópont-konfigurációk: **ConfigurationDataSample.MyVM1** és **ConfigurationDataSample.MyVM3**:
+A fenti DSC-konfiguráció a PowerShell használatával állíthat össze. Az alábbi PowerShell-lel az Azure Automation konfigurációs lekérési állapotkiszolgáló ad hozzá a két csomópont-konfigurációk: **ConfigurationDataSample.MyVM1** és **ConfigurationDataSample.MyVM3**:
 
 ```powershell
 $ConfigData = @{
@@ -261,7 +261,7 @@ Configuration CredentialSample
 }
 ```
 
-A fenti DSC-konfiguráció a PowerShell használatával állíthat össze. Az alábbi PowerShell-lel az Azure Automation konfigurációs lekérési állapotkiszolgáló ad hozzá két csomópont-konfigurációk: **CredentialSample.MyVM1** és **CredentialSample.MyVM2**.
+A fenti DSC-konfiguráció a PowerShell használatával állíthat össze. Az alábbi PowerShell-lel az Azure Automation konfigurációs lekérési állapotkiszolgáló ad hozzá a két csomópont-konfigurációk: **CredentialSample.MyVM1** és **CredentialSample.MyVM2**.
 
 ```powershell
 $ConfigData = @{
@@ -283,7 +283,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 ```
 
 > [!NOTE]
-> Fordítás befejeződése is megjelenhet egy hibaüzenet szerint: **a "Microsoft.PowerShell.Management" modul nem lett importálva, mert a "Microsoft.PowerShell.Management" beépülő modul már importálták.** Ez az üzenet biztonságosan figyelmen kívül hagyhatja.
+> Fordítás befejeződése jelenhet meg egy hiba szerint: **A "Microsoft.PowerShell.Management" modul nem lett importálva, mert a "Microsoft.PowerShell.Management" beépülő modul már importálták.** Ez az üzenet biztonságosan figyelmen kívül hagyhatja.
 
 ## <a name="importing-node-configurations"></a>Csomópont-konfigurációk importálása
 

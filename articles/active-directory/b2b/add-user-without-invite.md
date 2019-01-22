@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: e7d76138f9d3701fa7e3177227fbeb4386434126
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 7ddd5c0195bdd59deac453fe324b6d8c6898ec2e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983801"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434206"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>B2B együttműködés meghívó nélküli vendégfelhasználók hozzáadása
 
@@ -36,6 +36,6 @@ A könyvtár felhasználó meghívása, ha a vendégfelhasználó kell-e az erő
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 - [B2B együttműködés vendégmeghívás beváltása](redemption-experience.md)
-- [Az Azure Active Directory B2B együttműködés meghívók delegálása](delegate-invitations.md)
+- [Azure Active Directory B2B-együttműködésre szóló meghívók delegálása](delegate-invitations.md)
 - [Hogyan hozzá az információkkal dolgozó szakemberek B2B együttműködési felhasználókat?](add-users-information-worker.md)
 

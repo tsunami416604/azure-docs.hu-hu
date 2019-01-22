@@ -3,19 +3,19 @@ title: Az Azure Automation változásainak követése
 description: A Change Tracking megoldás segítségével azonosíthatja a szoftver- és Windows-szolgáltatás módosításait a környezetében előforduló.
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d08471a3e0faa99cb245709cf72f9af097bc495
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: d29a2020d7e7a16e0bac0802a887a28e12630f03
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213212"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433016"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -200,19 +200,19 @@ A beállításkulcsok módosításainak figyelése célja, hogy kiszűrheti a b�
 > [!div class="mx-tdBreakAll"]
 > |  |
 > |---------|
-> |**HKEY\_helyi\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**     |
+> |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők közös autostart bejegyzéseket, amelyek közvetlenül a Windows Intézőben, és általában futtassa folyamaton belüli Explorer.exe a környezet igénybe vételét.    |
 > |**HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők parancsfájlok, amelyek indítási parancsot.     |
-> |**HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
+> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
 |&nbsp;&nbsp;&nbsp;&nbsp;Kikapcsoláskor futó figyelők parancsprogramok.     |
 > |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitorozza a kulcsok, mielőtt a felhasználó bejelentkezik a Windows-fiókjára betöltött. A kulcs a 64 bites számítógépeken futó 32 bites program szolgál.    |
 > |**HKEY\_helyi\_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed összetevők**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Nyomon követi az alkalmazásbeállítások módosításait.     |
-> |**HKEY\_helyi\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**|
+> |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők közös autostart bejegyzéseket, amelyek közvetlenül a Windows Intézőben, és általában futtassa folyamaton belüli Explorer.exe a környezet igénybe vételét.|
-> |**HKEY\_helyi\_MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers**|
+> |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők közös autostart bejegyzéseket, amelyek közvetlenül a Windows Intézőben, és általában futtassa folyamaton belüli Explorer.exe a környezet igénybe vételét.|
 > |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők ikon kezelő regisztrációs átfedő.|
@@ -226,11 +226,11 @@ A beállításkulcsok módosításainak figyelése célja, hogy kiszűrheti a b�
 |&nbsp;&nbsp;&nbsp;&nbsp;Új az Internet Explorer-bővítmény, például egyéni eszköz menük és egyéni-eszköztárgomb figyelőket.|
 > |**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Új az Internet Explorer-bővítmény, például egyéni eszköz menük és a 64 bites számítógépeken futó 32 bites program egyéni eszköztárgombok figyelőket.|
-> |**HKEY\_helyi\_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32**|
+> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32**|
 |&nbsp;&nbsp;&nbsp;&nbsp;A 32-bites illesztőprogramok wavemapper, wave1 és wave2, msacm.imaadpcm, .msadpcm, .msgsm610 és vidc társított figyeli. A rendszer a [illesztőprogramok] szakaszban hasonló. Az INI-fájl.|
-> |**HKEY\_helyi\_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32**|
+> |**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők a 32-bites illesztőprogramok wavemapper, wave1 és wave2, msacm.imaadpcm, .msadpcm, .msgsm610 és társított vidc 64 bites számítógépeken futó 32 bites program számára. A rendszer a [illesztőprogramok] szakaszban hasonló. Az INI-fájl.|
-> |**HKEY\_helyi\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls**|
+> |**HKEY\_LOCAL\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyeli az ismert vagy gyakran használt rendszer DLL-ek; listája Ez a rendszer megakadályozza, hogy a személyek a gyenge directory Alkalmazásengedélyek rendszer DLL-ek trójai faló verzióiban elvetésével ártó szándékkal használja fel.|
 > |**HKEY\_helyi\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyeli a tudja fogadni az eseményértesítések Winlogon, az interaktív bejelentkezési támogatási modell, a Windows operációs rendszerhez a csomagok listájában.|
@@ -241,10 +241,10 @@ A következő címekre szükség, kifejezetten a Change Tracking megoldásba. Ez
 
 |Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.Azure-automation.us|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.azure-automation.us|
 
 ## <a name="use-change-tracking"></a>A Change Tracking használata
 
@@ -279,3 +279,4 @@ Látogasson el az oktatóanyag a Change Tracking tudhat meg többet a megoldás 
 > [A környezet változásainak hibaelhárítása](automation-tutorial-troubleshoot-changes.md)
 
 * Használat [Log Analytics naplóbeli kereséseivel](../log-analytics/log-analytics-log-searches.md) részletes változáskövetési adatok megtekintéséhez.
+

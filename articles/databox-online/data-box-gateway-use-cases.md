@@ -7,12 +7,12 @@ ms.service: databox
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: alkohli
-ms.openlocfilehash: b4966d03e44591f01bee945c743ea83f57e6da93
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: d1367504182eb8d8335796dc37800c30e0a563b8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54392272"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438592"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Az Azure Data Box Gateway alkalmazási helyzetei
 
@@ -41,7 +41,7 @@ Adatok megtelik az eszközt, az elkezdi az szabályozás a bejövő forgalom (ig
 
 Használja a Data Box-átjáró, ha szeretné megőrizni az adatokat hosszú távon a felhőben. Használhatja a **archív** hosszú távú megőrzésének tárolási szint.
 
-Archív tárolási szintről legalább 180 napig store ritkán hozzáfért adatok van optimalizálva. A **archív** szint a legalacsonyabb tárolási költségeket biztosít, de a legmagasabb hozzáférési költségekkel rendelkezik. További információért ugorjon [archivált adatok hozzáférési szintje](/azure/storage/blobs/storage-blob-storage-tiers.md#archive-access-tier).
+Archív tárolási szintről legalább 180 napig store ritkán hozzáfért adatok van optimalizálva. A **archív** szint a legalacsonyabb tárolási költségeket biztosít, de a legmagasabb hozzáférési költségekkel rendelkezik. További információért ugorjon [archivált adatok hozzáférési szintje](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier).
 
 ### <a name="move-data-to-archive-tier"></a>Adatok áthelyezése az archív szinten
 
@@ -49,14 +49,14 @@ Mielőtt elkezdené, győződjön meg arról, hogy a Data Box futó átjáróesz
 
 - Adatok feltöltése az Azure-bA a szokásos átviteli eljáráson keresztül leírtak szerint használja a Data Box átjáróeszköz [data Transfer Data Box-átjárón keresztül](data-box-gateway-deploy-add-shares.md).
 - Az adatok követően kell helyezze át az archív tárolási szintről. A blob szintjének két módon állíthatja be: Az Azure PowerShell-parancsfájl vagy egy Azure Storage életciklus-felügyeleti szabályzat.  
-    - Ha az Azure powershellel, kövesse az alábbi [lépéseket](/azure/databox/data-box-how-to-set-data-tier.md#use-azure-powershell-to-set-the-blob-tier) az adatok áthelyezése az archív tárolási szintről.
+    - Ha az Azure powershellel, kövesse az alábbi [lépéseket](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) az adatok áthelyezése az archív tárolási szintről.
     - Ha használja az Azure-életciklus-felügyelet, kövesse az alábbi lépéseket az adatok áthelyezése az archív tárolási szintről.
-        - [Regisztráljon](/azure/storage/common/storage-lifecycle-management-concepts.md#register-for-preview) előzetes verziójának Blob életciklus management szolgáltatás használatához az archív szinten.
-        - A következő házirendet, amellyel [az archívum az adatok betöltését](/azure/storage/blobs/storage-lifecycle-management-concepts.md#archive-data-at-ingest.md).
+        - [Regisztráljon](/azure/storage/common/storage-lifecycle-management-concepts#register-for-preview) előzetes verziójának Blob életciklus management szolgáltatás használatához az archív szinten.
+        - A következő házirendet, amellyel [az archívum az adatok betöltését](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest).
 - A blobok archív vannak megjelölve, ha azok már nem módosítható az átjáró, kivéve, ha gyakori vagy ritka elérésű szintre áthelyezett. Ha a fájl a helyi tárolóban, a helyi példány (beleértve a törlések) végzett módosítások nem frissíti a rendszer archív szint.
 - A blob szintről gyakori vagy ritka elérésű módosításával rehydrated kell lennie az archív tárolóban lévő adatok olvasása. [A megosztás frissítése](data-box-gateway-manage-shares.md#refresh-shares) az átjáró nem rehidratálási a blobot.
 
-További információt tudjon meg többet a [kezelése az Azure Blob Storage életciklus](/azure/storage/common/storage-lifecycle-management-concepts.md).
+További információt tudjon meg többet a [kezelése az Azure Blob Storage életciklus](/azure/storage/common/storage-lifecycle-management-concepts).
 
 ## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>Kezdeti tömeges adatátviteli növekményes átviteli követ
 
@@ -66,10 +66,10 @@ Data Box és a Data Box-Gateway használja együtt, ha szeretne egy tömeges fel
 
 Kövesse az alábbi lépéseket az adatok másolásához a Data Box-és feltöltése az Azure Storage.
 
-1. [A Data Box ORDER](/azure/databox/data-box-deploy-ordered.md).
-2. [Állítsa be a Data Box](/azure/databox/data-box-deploy-set-up.md).
-3. [Adatmásolás a Data Boxba SMB-n keresztül](/azure/databox/data-box-deploy-copy-data.md).
-4. [A Data Box visszaadása, ellenőrizze az adatok feltöltése az Azure-bA](/azure/databox/data-box-deploy-picked-up.md).
+1. [A Data Box ORDER](/azure/databox/data-box-deploy-ordered).
+2. [Állítsa be a Data Box](/azure/databox/data-box-deploy-set-up).
+3. [Adatmásolás a Data Boxba SMB-n keresztül](/azure/databox/data-box-deploy-copy-data).
+4. [A Data Box visszaadása, ellenőrizze az adatok feltöltése az Azure-bA](/azure/databox/data-box-deploy-picked-up).
 5. Miután befejeződött az adatok feltöltése az Azure-ba, az Azure storage-tárolók összes adatot kell lennie. A storage-fiókban lévő Data Box nyissa meg a Blob (és fájl) tároló, győződjön meg arról, hogy a rendszer az összes az adatokat másolja. Jegyezze fel a tároló neve, ugyanis ez a név később fogja használni. Például a következő képernyőképen `databox` tároló a növekményes átviteli használható.
 
     ![Az adatok Data Box-tárolóban](media/data-box-gateway-use-cases/data-container1.png)

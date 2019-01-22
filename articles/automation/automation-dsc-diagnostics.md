@@ -3,18 +3,18 @@ title: Azure Automation Állapotkonfiguráció adatokról szóló jelentéseket 
 description: Ez a cikk bemutatja, hogyan küldhet a Desired State Configuration (DSC), hogy további elemzés és kezelés a Log Analytics az Azure Automation Állapotkonfiguráció jelentésadatait.
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 88805f26869ad75830cef1aa074cd90cb947e76f
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 2450ffcbd9fa7bebd5a1b862aa9c35baa5dbdc95
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681738"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425177"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Azure Automation Állapotkonfiguráció adatokról szóló jelentéseket küldeni a Log Analyticshez való továbbítása
 
@@ -127,7 +127,7 @@ Diagnosztika az Azure Automation szolgáltatást két kategóriája rögzíti a 
 | NodeName_s |A felügyelt csomópont neve. |
 | NodeComplianceStatus_s |A csomópont-e megfelelő. |
 | DscReportStatus |Hogy a megfelelőségi ellenőrzés sikeresen lefutott. |
-| ConfigurationMode | Hogyan a konfiguráció alkalmazása a csomópontra. Lehetséges értékek a következők __"ApplyOnly"__,__"ApplyandMonitior"__, és __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: DSC konfigurációjának alkalmazására szolgál, és nem módosítja a további, kivéve, ha egy új konfigurációt a célcsomópont, vagy ha egy kiszolgálóról kéri le egy új konfiguráció leküldésekor. Új konfiguráció kezdeti léptetés DSC nem ellenőrzi az előzőleg konfigurált állapotba való eltéréseket. DSC megkísérli a alkalmazni a konfigurációt, egészen addig, amíg a sikeres előtt __ApplyOnly__ lép érvénybe. </li><li> __ApplyAndMonitor__: Ez az az alapértelmezett érték. Az LCM vonatkozik minden új konfigurációt. Új konfiguráció, kezdeti alkalmazása után a a célcsomópont drifts a kívánt állapotból, ha DSC jelentések naplók az eltérést. DSC megkísérli a alkalmazni a konfigurációt, egészen addig, amíg a sikeres előtt __ApplyAndMonitor__ lép érvénybe.</li><li>__ApplyAndAutoCorrect__: DSC vonatkozik minden új konfigurációt. Kezdeti alkalmazását követően az új konfiguráció a célcsomópont drifts a kívánt állapotból, ha DSC-jelentések a naplókban az eltérés, és majd újra alkalmazza arra a jelenlegi konfiguráció.</li></ul> |
+| ConfigurationMode | Hogyan a konfiguráció alkalmazása a csomópontra. Lehetséges értékek a következők __"ApplyOnly"__,__"ApplyandMonitior"__, és __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: DSC konfigurációjának alkalmazására szolgál, és nem módosítja a további, kivéve, ha egy új konfigurációt a célcsomópont, vagy ha egy kiszolgálóról kéri le egy új konfiguráció leküldésekor. Új konfiguráció kezdeti léptetés DSC nem ellenőrzi az előzőleg konfigurált állapotba való eltéréseket. DSC megkísérli a alkalmazni a konfigurációt, egészen addig, amíg a sikeres előtt __ApplyOnly__ lép érvénybe. </li><li> __ApplyAndMonitor__: Ez az alapértelmezett érték. Az LCM vonatkozik minden új konfigurációt. Új konfiguráció, kezdeti alkalmazása után a a célcsomópont drifts a kívánt állapotból, ha DSC jelentések naplók az eltérést. DSC megkísérli a alkalmazni a konfigurációt, egészen addig, amíg a sikeres előtt __ApplyAndMonitor__ lép érvénybe.</li><li>__ApplyAndAutoCorrect__: DSC vonatkozik minden új konfigurációt. Kezdeti alkalmazását követően az új konfiguráció a célcsomópont drifts a kívánt állapotból, ha DSC-jelentések a naplókban az eltérés, és majd újra alkalmazza arra a jelenlegi konfiguráció.</li></ul> |
 | HostName_s | A felügyelt csomópont neve. |
 | IP-cím | A kezelt csomópontok IPv4-címét. |
 | Kategória | DscNodeStatus |

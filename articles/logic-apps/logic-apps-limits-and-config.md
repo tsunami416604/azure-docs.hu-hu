@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: ef3d26112c631ee0ed3c754394339092020add53
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 327d38de8c51e01851e6f7d37fca73d4cee316b8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332540"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425305"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -265,7 +265,7 @@ Minden logikai alkalmazás ugyanabban a régióban azonos IP-címtartományokat 
 
 A hívások támogatásához, amely [a Microsoft által felügyelt összekötők](../connectors/apis-list.md) márka, a tűzfal beállítása *összes* a [kimenő](#outbound) ezeket az összekötőket, a régiók alapján által használt IP-címek Ha a logic apps léteznek. Ezek a címek meg fog jelenni a **kimenő** fejléc ebben a szakaszban, és régiók szerint vannak rendezve. 
 
-A [Azure Government](/azure-government/documentation-government-welcome) és [Azure China 21Vianet](/azure/china/china-welcome), összekötők fenntartott IP-cím nem érhető el.
+A [Azure Government](/azure-government/documentation-government-overview) és [Azure China 21Vianet](/azure/china/china-welcome), összekötők fenntartott IP-cím nem érhető el.
 
 > [!IMPORTANT]
 > 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/08/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 61e040fc2f7ff70794b49204e3dea01375637641
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
-ms.translationtype: HT
+ms.openlocfilehash: 0c71062bded65f8aa7c259c0678ee6675e2dab38
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336576"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432217"
 ---
 # <a name="create-and-manage-s2s-vpn-connections-with-the-azure-powershell-module"></a>S2S VPN-kapcsolatok létrehozása és felügyelete az Azure PowerShell-modullal
 
@@ -39,11 +39,11 @@ Az alábbi diagram az oktatóanyagban használt topológiát mutatja:
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.3-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.3-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="requirements"></a>Követelmények
 
-Az első oktatóanyag ([VPN-átjáró létrehozása az Azure PowerShell-lel](vpn-gateway-tutorial-create-gateway-powershell.md)) elvégzésével hozza létre a következő erőforrásokat:
+Az első oktatóanyag elvégzéséhez: "[Az Azure PowerShell használatával hozzon létre VPN gateway](vpn-gateway-tutorial-create-gateway-powershell.md)" hozhat létre a következő erőforrásokat:
 
 1. Erőforráscsoport (TestRG1), virtuális hálózat (VNet1) és átjáró-alhálózat
 2. VPN-átjáró (VNet1GW)
@@ -140,7 +140,7 @@ Az Azure VPN-átjárók támogatják a BGP dinamikus útválasztási protokollt.
 * Helyszíni helyi hálózati átjáró ASN-száma
 * Helyszíni helyi hálózati átjáró BGP-társának IP-címe
 
-Ha nem konfigurálta a BGP-tulajdonságokat, a következő parancsokkal adhatja hozzá azokat a VPN-átjáróhoz és a helyi hálózati átjáróhoz: [Set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-6.8.1) és [Set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-6.8.1).
+Ha nem konfigurálta a BGP-tulajdonságok, ezeket a tulajdonságokat a VPN gateway és a helyi hálózati átjáró hozzáadása a következő parancsok használatával: [Set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-6.8.1) and [Set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-6.8.1).
 
 ```azurepowershell-interactive
 $vng1 = Get-AzureRmVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
@@ -168,7 +168,7 @@ A BGP letiltásához módosítsa az -EnableBGP tulajdonság értékét a **$Fals
 Egy választható IPsec/IKE-szabályzat alkalmazásával megadhatja a kapcsolat IPsec/IKE titkosítási algoritmusai és kulcserősségei pontos kombinációját ahelyett, hogy az [alapértelmezett javaslatokat](vpn-gateway-about-vpn-devices.md#ipsec) használná. Az alábbi mintaszkript egy eltérő IPsec/IKE-szabályzatot hoz létre a következő algoritmusokkal és paraméterekkel:
 
 * IKEv2: AES256, SHA256, DHGroup14
-* IPsec: AES128, SHA1, PFS14, 14 400 másodperces és 102 400 000 KB-os SA-élettartam
+* IPsec: AES128, SHA1, PFS14, 102,400,000 KB & SA élettartama 14400 másodperc
 
 ```azurepowershell-interactive
 $connection = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection1 `

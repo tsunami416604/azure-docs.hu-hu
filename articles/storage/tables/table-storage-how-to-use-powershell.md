@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: rogarana
 ms.component: cosmosdb-table
-ms.openlocfilehash: 9aa3431e91196d7c33582d17494ddf0c32fba704
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: af76f67ba97b820d8571fd4f6bd3409396fb27ce
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634473"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433186"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Az Azure Table storage műveleteket az Azure PowerShell használatával 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,7 +32,7 @@ A cikkben található útmutató ismerteti a gyakori Azure Table storage-művele
 
 A cikkben található útmutató bemutatja, hogyan hozhat létre egy új Azure Storage-fiók az egy új erőforráscsoportot, így könnyen eltávolíthatja, ha elkészült. Ha szeretné inkább egy meglévő tárfiókot, is megteheti, helyette.
 
-Példák Azure PowerShell-modul szükséges `AzureRM` 4.4.0 verzió vagy újabb. Egy PowerShell-ablakot a Futtatás `Get-Module -ListAvailable AzureRM` a verzió megkereséséhez. Ha semmi nem jelenik meg, vagy szeretné frissíteni, lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps).
+Példák Azure PowerShell-modul szükséges `AzureRM` 4.4.0 verzió vagy újabb. Egy PowerShell-ablakot a Futtatás `Get-Module -ListAvailable AzureRM` a verzió megkereséséhez. Ha semmi nem jelenik meg, vagy szeretné frissíteni, lásd: [Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps).
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 

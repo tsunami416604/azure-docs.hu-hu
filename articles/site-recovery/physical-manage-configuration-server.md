@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 62a9fd6eee15618e7153fd84030840b429e214ed
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9a5a20ffd5065f155fff6342937e1c17a1905797
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833516"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430483"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 
@@ -37,7 +37,7 @@ A táblázat összefoglalja az előfeltételeket a helyszíni konfigurációs ki
 | IIS | – Nincs már meglévő alapértelmezett webhelye <br> -Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br> – Nincs már meglévő webhely vagy alkalmazás 443-as porton<br>|
 | Hálózati adapter típusa | VMXNET3 (Ha a VMware virtuális gépként telepített) |
 | IP-cím típusa | Statikus |
-| Internetelérés | A kiszolgálónak az URL-hozzáférésre van szüksége: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (horizontális felskálázási Folyamatkiszolgáló nem szükséges) <br> - time.nist.gov <br> - time.windows.com |
+| Internetelérés | A kiszolgálónak az URL-hozzáférésre van szüksége: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (horizontális felskálázási Folyamatkiszolgáló nem szükséges) <br> - time.nist.gov <br> - time.windows.com |
 | Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel)|
 
 ## <a name="download-the-latest-installation-file"></a>Töltse le a legújabb telepítési fájlját
@@ -125,7 +125,7 @@ Futtassa a telepítőfájlt az alábbiak szerint:
 
 
 
-### <a name="create-file-input-for-mysqlcredsfilepath"></a>Hozzon létre a MYSQLCredsFilePath bemeneti fájllal
+### <a name="create-file-input-for-mysqlcredsfilepath"></a>Create file input for MYSQLCredsFilePath
 
 A MySQLCredsFilePath paraméter egy fájl fogadja bemeneti adatként. Hozza létre a fájlt a következő formátumban, és adja át azt MySQLCredsFilePath bemeneti paraméterként.
 ```
@@ -264,7 +264,7 @@ A kiszolgáló frissítése a következőképpen:
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Vagy a kiszolgáló regisztrációjának konfigurációs kiszolgáló (PowerShell)
 
-1. [Telepítés](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) Azure PowerShell-modul
+1. [Telepítés](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) Azure PowerShell-modul
 2. Jelentkezzen be a parancsot az Azure-fiókjába
     
     `Connect-AzureRmAccount`

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 2713f48ce490aa42b6b1aa4e69a71f8f8053d1fb
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: be7aa43ec6001be78fb405290914f19174559530
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426204"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435719"
 ---
-# <a name="how-it-works-azure-ad-self-service-password-reset"></a>Hogyan működik: az Azure AD önkiszolgáló jelszó-visszaállítás
+# <a name="how-it-works-azure-ad-self-service-password-reset"></a>A működési elv: Az Azure AD önkiszolgáló jelszó-visszaállítás
 
 Nem az önkiszolgáló jelszó-visszaállítás (SSPR) munkahelyi? Mi ezt a lehetőséget jelent a felületen? Tudjon meg többet az Azure Active Directory (Azure AD) az SSPR kihívásokra.
 
@@ -89,7 +89,7 @@ Jelszó-visszaállítás módszerként mobilalkalmazás, például a Microsoft A
 * Ha a rendszergazdák egy módszert igényel használt jelszó alaphelyzetbe állítása, ellenőrző kódot csak a lehetőség érhető el.
 * Ha a rendszergazdáknak a két módszer van szükségük lehet használt jelszó alaphelyzetbe állítása, felhasználók is használhatják **vagy** értesítési **vagy** ellenőrzőkódot kívül bármely más módszerek engedélyezve van.
 
-| Az új jelszó kéréséhez szükséges módszerek száma | Az egyik | Két |
+| Az új jelszó kéréséhez szükséges módszerek száma | Az egyik | Kettő |
 | :---: | :---: | :---: |
 | Elérhető Mobile Apps funkciói | Kód | Kód vagy az értesítés |
 
@@ -150,7 +150,7 @@ Ha ez a beállítás értéke **Igen**, majd a jelszó alaphelyzetbe állítás�
 
 Ha ez a beállítás értéke **Igen**, majd *minden rendszergazda* kap egy e-mailt a fájl elsődleges e-mail-címére az Azure ad-ben. Az e-mailben értesíti őket, hogy egy másik rendszergazda az SSPR megváltoztatta a jelszavát.
 
-Példa: Nincsenek négy rendszergazdák környezet. A rendszergazda SSPR segítségével alaphelyzetbe állítja a jelszavát. A rendszergazdák B, C és D őket, az új jelszó kérése e-mailt kapni.
+Példa: Nincsenek négy rendszergazdák környezetben. A rendszergazda SSPR segítségével alaphelyzetbe állítja a jelszavát. A rendszergazdák B, C és D őket, az új jelszó kérése e-mailt kapni.
 
 ## <a name="on-premises-integration"></a>Helyszíni integráció
 
@@ -186,8 +186,8 @@ Ez a vezérlő azt jelzi, hogy a felhasználók, akik látogasson el a jelszó-v
 Az összes-vállalatközi (B2B) konfiguráció teljes mértékben támogatottak a jelszó-visszaállítás, és módosítsa. B2B-felhasználói jelszó-visszaállítás a következő három esetben támogatják:
 
    * **Egy fiókpartner-szervezet egy meglévő Azure AD-bérlővel rendelkező felhasználók**: Ha a szervezetben használt együttműködését abban, meglévő Azure AD-bérlővel, hogy *tiszteletben bármilyen jelszóvisszaállítási szabályzatot engedélyezve vannak a bérlőt*. Jelszó-visszaállítás működéséhez az erőforráspartner-szervezet csak kell győződjön meg arról, hogy engedélyezve van-e az Azure AD SSPR. Semmilyen további díjat nem az Office 365-ügyfelek és a lépéseket követve is engedélyezhető a [jelszókezelés használatának első lépései](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) útmutató.
-   * **Felhasználók, akik keresztül regisztrálnak** önkiszolgáló: Ha a szervezet, hogy partneri használt a [önkiszolgáló](../users-groups-roles/directory-self-service-signup.md) kerülnek a bérlőt a funkciót, azt, hogy értesítse az e-mail-címével, azok regisztrálva a jelszó alaphelyzetbe állítása.
-   * **B2B-felhasználók**: minden olyan új B2B-felhasználók hozta létre az új [Azure AD B2B-funkciói](../active-directory-b2b-what-is-azure-ad-b2b.md) is elérhetik a jelszavaikat az e-mailt, azok regisztrálva a meghívó folyamat során.
+   * **Felhasználók, akik keresztül regisztrálnak** önkiszolgáló: Ha a szervezet, hogy együttműködését abban, használja a [önkiszolgáló](../users-groups-roles/directory-self-service-signup.md) kerülnek a bérlőt a funkciót, azt, hogy értesítse az e-mail-címével, azok regisztrálva a jelszó alaphelyzetbe állítása.
+   * **B2B-felhasználók**: Minden olyan új B2B-felhasználók hozta létre az új [Azure AD B2B-funkciói](../active-directory-b2b-what-is-azure-ad-b2b.md) is elérhetik a jelszavaikat az e-mailt, azok regisztrálva a meghívó folyamat során.
 
 Ez a forgatókönyv teszteléséhez nyissa meg https://passwordreset.microsoftonline.com egy partner felhasználók. Ha egy másodlagos vagy hitelesítési e-mail meghatározott rendelkeznek, új jelszó kérésének módja elvárt módon.
 

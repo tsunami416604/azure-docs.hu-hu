@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: cea882bd1ba2ba12d34690fb47ec1afd6edf5c4c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 423de49faa20289a7c5663ae621f890b63a5752c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982170"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428511"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Egy szervezet meg vendégként
 
 Egy Azure Active Directory (Azure AD) B2B vendégfelhasználó dönt, hogy egy szervezet bármikor hagyja, ha már nincs szükségük használják az alkalmazásokat, hogy a szervezet vagy karbantartása van társítva. A felhasználó hagyhatja egy szervezet saját, forduljon a rendszergazdához, nélkül.
 
-## <a name="leave-an-organization"></a>Egy szervezet
+## <a name="leave-an-organization"></a>Szervezet elhagyása
 
 Egy szervezet felhasználóként jelentkezett be, hogy a [hozzáférési Panel](https://myapps.microsoft.com), tegye a következőket:
 
@@ -44,7 +44,7 @@ Amikor egy felhasználó elhagyja a szervezetet, a felhasználói fiók "töröl
 Igény szerint egy Bérlői rendszergazda véglegesen törölheti a fiókot a 30 napos időszakban bármikor. Ehhez tegye a következőket:
 
 1. Az a [az Azure portal](https://portal.azure.com)válassza **Azure Active Directory**.
-2. A **kezelés**válassza **felhasználók**.
+2. A **Kezelés** alatt válassza a **Felhasználókat**.
 3. Válassza ki **törölt felhasználók**.
 4. A törölt felhasználó melletti jelölőnégyzetet, majd válassza ki és **véglegesen törli a**.
 

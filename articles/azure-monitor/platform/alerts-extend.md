@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: 2028b9555ec20fc5e97511a2a908351b66aec216
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.subservice: alerts
+ms.openlocfilehash: e2f2a739f78072a0479e77e68e84c8f4b395468f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385499"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422226"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>A Log Analytics-riasztások kiterjesztése az Azure-riasztások
 
@@ -62,3 +62,4 @@ Hozzon létre a riasztások továbbra is a [Log Analytics API](../../azure-monit
 * Ismerje meg az eszközöket, [kezdeményezési Log Analyticsből származó riasztások kiterjesztése az Azure-ba való](alerts-extend-tool.md).
 * Tudjon meg többet a [Azure Alerts élmény](../../azure-monitor/platform/alerts-overview.md).
 * Ismerje meg, hogyan hozhat létre [naplóriasztások az Azure Alerts](alerts-unified-log.md).
+

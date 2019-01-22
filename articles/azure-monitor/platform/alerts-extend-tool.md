@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: bdc3646116dfd5f16c0c039c4fb95d11c6593adf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.subservice: alerts
+ms.openlocfilehash: dc8c1733f506870765523b17c1fc3e283ff9cbdb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120993"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423275"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Riasztások kiterjesztése a Log Analytics az Azure-riasztások
 A riasztások szolgáltatása az Azure Log Analyticsben váltja fel az Azure-riasztások. Az átállás részeként a riasztásokat, amelyek eredetileg konfigurálták a Log Analytics kiterjesztik az Azure-bA. Ha nem szeretné automatikusan Azure-ba való áthelyezésének várja, is kezdeményezhet a folyamat:
@@ -24,7 +24,7 @@ A riasztások szolgáltatása az Azure Log Analyticsben váltja fel az Azure-ria
 > [!NOTE]
 > A Microsoft automatikusan kiterjeszti a nyilvános felhő példányát az Azure Alerts szolgáltatáshoz, a Log Analytics létrehozott riasztásokat egy ismétlődő sorozat, amíg befejeződik a 2018. május 14., kezdve. Ha problémába ütközik létrehozása [Műveletcsoportok](../../azure-monitor/platform/action-groups.md), használjon [javítási lépések](alerts-extend-tool.md#troubleshooting) beolvasni a Műveletcsoportok jönnek létre automatikusan. 2018. július 5-ig is használhatja ezeket a lépéseket. *Nem alkalmazható az Azure Government és a Log Analytics szuverén felhő felhasználóinak*. 
 
-## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>1. lehetőség: Az Operations Management Suite portálján kezdeményez
+## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Option 1: Az Operations Management Suite portálján kezdeményez
 Az alábbi lépéseket a munkaterületre vonatkozó riasztások kiterjesztése az Operations Management Suite portálján a ismertetik.  
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
@@ -37,7 +37,7 @@ Az alábbi lépéseket a munkaterületre vonatkozó riasztások kiterjesztése a
 ![Képernyőkép az Operations Management Suite portál riasztási beállítások oldala, amelyen a kiemelt Azure-ba való bővítése](media/alerts-extend-tool/ExtendInto.png)
 6. Megjelenik egy három lépéses varázsló, a **riasztások** ablaktáblán. Olvassa el az áttekintést, és válassza ki **tovább**.
 ![1. lépés a varázsló képernyőképe](media/alerts-extend-tool/ExtendStep1.png)  
-7. A második lépésben látja összegzését, javasolt változtatás ajánlati megfelelő [Műveletcsoportok](../../azure-monitor/platform/action-groups.md) a riasztások. Hasonló műveletek közötti egynél több riasztás is látható, ha a varázsló azokat egyetlen művelettel csoport hozzárendelése javasolja.  Az elnevezési szabályt követik a következőképpen történik: *WorkspaceName_AG_ #Number*. A továbblépéshez válasszon **tovább**.
+7. A második lépésben látja összegzését, javasolt változtatás ajánlati megfelelő [Műveletcsoportok](../../azure-monitor/platform/action-groups.md) a riasztások. Hasonló műveletek közötti egynél több riasztás is látható, ha a varázsló azokat egyetlen művelettel csoport hozzárendelése javasolja.  Az elnevezési szabályt követik a következőképpen történik: *WorkspaceName_AG_#Number*. A továbblépéshez válasszon **tovább**.
 ![2. lépés a varázsló képernyőképe](media/alerts-extend-tool/ExtendStep2.png)  
 8. A varázsló utolsó lépése, jelölje ki **Befejezés**, és győződjön meg arról, amikor a rendszer kéri a folyamat elindításához. Igény szerint megadhat egy e-mail-címet, így értesítést kap a folyamat befejeződik, és az összes riasztás sikeresen helyezte az Azure Alerts szolgáltatáshoz.
 ![3. lépés a varázsló képernyőképe](media/alerts-extend-tool/ExtendStep3.png)
@@ -49,10 +49,10 @@ Riasztások továbbra is megjelennek az Operations Management Suite-portálon, a
 ![Képernyőkép az Operations Management Suite portál riasztási beállítások lap](media/alerts-extend-tool/PostExtendList.png)
 
 
-## <a name="option-2-use-the-alertsversion-api"></a>2. lehetőség: A AlertsVersion API használata
+## <a name="option-2-use-the-alertsversion-api"></a>Option 2: A AlertsVersion API használata
 A Log Analytics AlertsVersion API segítségével riasztások kiterjesztése a Log Analytics az Azure Alerts minden ügyfélről, amely segítségével meghívhatja a REST API-t. Hozzáférhet az API-t a PowerShell használatával [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszközt. Az eredményeket JSON-fájlban.  
 
-Az API használatához, először hozzon létre egy GET kéréssel. Kiértékeli, és ez a javasolt változtatások összegző eredménnyel tér vissza, mielőtt ténylegesen kiterjesztése az Azure-bA egy POST-kérés használatával. Az eredmények sorolják fel a riasztásokat és a egy javasolt listáját [Műveletcsoportok](../../azure-monitor/platform/action-groups.md), JSON formátumban. Hasonló műveletek közötti egynél több riasztás is látható, ha a szolgáltatás javaslatot tesz egy egyetlen művelettel csoporthoz társítandó azokat. Az elnevezési szabályt követik a következőképpen történik: *WorkspaceName_AG_ #Number*.
+Az API használatához, először hozzon létre egy GET kéréssel. Kiértékeli, és ez a javasolt változtatások összegző eredménnyel tér vissza, mielőtt ténylegesen kiterjesztése az Azure-bA egy POST-kérés használatával. Az eredmények sorolják fel a riasztásokat és a egy javasolt listáját [Műveletcsoportok](../../azure-monitor/platform/action-groups.md), JSON formátumban. Hasonló műveletek közötti egynél több riasztás is látható, ha a szolgáltatás javaslatot tesz egy egyetlen művelettel csoporthoz társítandó azokat. Az elnevezési szabályt követik a következőképpen történik: *WorkspaceName_AG_#Number*.
 
 ```
 armclient GET  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
@@ -481,3 +481,4 @@ Minden egyes hibához szervizelés lépései a következők:
 
 * További információ az új [Azure Alerts élmény](../../azure-monitor/platform/alerts-overview.md).
 * Ismerje meg [naplóriasztások az Azure Alerts](alerts-unified-log.md).
+

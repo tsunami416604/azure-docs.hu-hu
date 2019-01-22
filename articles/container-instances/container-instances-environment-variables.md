@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 1fcb72d75dca99b6670ca3ff536403a6268554a2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ce6c3364c594bc515abd9f0c02bd69bf500e4f4e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238148"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436569"
 ---
 # <a name="set-environment-variables"></a>Környezeti változók beállítása
 
@@ -22,7 +22,7 @@ Például, ha futtatja a [microsoft/aci-wordcount] [ aci-wordcount] tárolórend
 
 *NumWords*: A STDOUT küldött szavak számát.
 
-*A MinLength*: word, a megszámlálandó karaktereinek minimális száma. Ha nagyobb figyelmen kívül hagyja a gyakori szavakat, például a "," és "a."
+*A MinLength*: Ahhoz, hogy a megszámlálandó szó karaktereinek minimális száma. Ha nagyobb figyelmen kívül hagyja a gyakori szavakat, például a "," és "a."
 
 Környezeti változókként adja át a titkos kulcsok van szüksége, ha támogatja az Azure Container Instances [értékek biztonságos](#secure-values) Windows- és Linux-tárolókhoz.
 
@@ -38,7 +38,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-A kimenet módosítása esetén a második tároló indítása a `--environment-variables` argumentum hozzáadva, az értékek megadásával a *NumWords* és *MinLength* változókat:
+A kimenet módosítása esetén a második tároló indítása a `--environment-variables` argumentum hozzáadva, az értékek megadásával a *NumWords* és *MinLength* változókat. (Ebben a példában feltételezzük, a parancssori Felületet egy Bash-felület vagy az Azure Cloud Shellben futtatja. A Windows-parancssort, megadhatja a változókat az idézőjelek, például `--environment-variables "NumWords"="5" "MinLength"="8"`.)
 
 ```azurecli-interactive
 az container create \
@@ -79,7 +79,7 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
  ('GUILDENSTERN', 54)]
 ```
 
-## <a name="azure-powershell-example"></a>Az Azure PowerShell-példa
+## <a name="azure-powershell-example"></a>Azure PowerShell example
 
 Környezeti változók beállítása a PowerShell a parancssori felület hasonló, de használja a `-EnvironmentVariable` parancssori argumentum.
 
@@ -255,6 +255,6 @@ Feladatalapú forgatókönyvek, például a kötegelt feldolgozási egy nagy mé
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/
 [azure-instance-log]: /powershell/module/azurerm.containerinstance/get-azurermcontainerinstancelog
-[azure-powershell-install]: /powershell/azure/install-azurerm-ps
+[azure-powershell-install]: /powershell/azure/azurerm/install-azurerm-ps
 [new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 [portal]: https://portal.azure.com

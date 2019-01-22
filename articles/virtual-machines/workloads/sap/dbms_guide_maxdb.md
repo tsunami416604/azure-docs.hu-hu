@@ -1,6 +1,6 @@
 ---
 title: Azure virtuális gépeken MaxDB liveCache és webtartalom-kiszolgáló telepítési SAP |} A Microsoft Docs
-description: SAP MaxDB, liveCache és a webtartalom-kiszolgáló üzembe helyezés az Azure-ban
+description: SAP MaxDB, liveCache, and Content Server deployment on Azure
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5f71e104e97ab886483d50760f0a42936a16717
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 26159c4b563d5f60c40cce9b0b805abe0a7195fd
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157309"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436637"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB, liveCache és a webtartalom-kiszolgáló üzembe helyezés az Azure virtuális gépekhez
 
@@ -235,7 +235,7 @@ ms.locfileid: "54157309"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -322,7 +322,7 @@ SAP az SAP MaxDB 7.9 vagy újabb verziója jelenleg támogatja SAP NetWeaver-ala
 A Microsoft Windows támogatott verzióját az Azure-beli SAP MaxDB DBMS című témakörben talál:
 
 * [SAP-termék rendelkezésre állási mátrix (PAM)][sap-pam]
-* SAP-Jegyzetnek [1928533]
+* SAP Note [1928533]
 
 Erősen ajánlott az operációs rendszer a Microsoft Windows, amely Microsoft Windows 2016 legújabb verzióját használja.
 
@@ -381,14 +381,14 @@ Egyéb SAP MaxDB-specifikus beállításokat átlátható az Azure virtuális g�
 * [1173395]
 
 ## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>SAP liveCache központi Windows-adatait
-### <a name="sap-livecache-version-support"></a>SAP liveCache verzió támogatása
+### <a name="sap-livecache-version-support"></a>SAP liveCache Version Support
 Minimális verziója támogatja az Azure Virtual machines gépeken SAP liveCache **SAP LC/LCAPPS 10.0 SP 25** beleértve **liveCache 7.9.08.31** és **LCA-Build 25**, az engedélyezett **EhP 2 az SAP SCM 7.0** vagy későbbi kiadásaihoz.
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>A Microsoft Windows-verziók és az Azure-beli Virtuálisgép-típusok támogatott SAP liveCache adatbázis-kezelő
 A Microsoft Windows támogatott verzióját az Azure-beli SAP liveCache című témakörben talál:
 
 * [SAP-termék rendelkezésre állási mátrix (PAM)][sap-pam]
-* SAP-Jegyzetnek [1928533]
+* SAP Note [1928533]
 
 Erősen ajánlott az operációs rendszer a Microsoft Windows Server legújabb verzióját használja. 
 
@@ -435,7 +435,7 @@ A legújabb támogatott verzióit SAP-kiszolgálóból, valamint a Microsoft IIS
 Ismerje meg a támogatott Windows-verziót, SAP-kiszolgálóhoz az Azure-ban, lásd:
 
 * [SAP-termék rendelkezésre állási mátrix (PAM)][sap-pam]
-* SAP-Jegyzetnek [1928533]
+* SAP Note [1928533]
 
 Erősen ajánlott a Microsoft Windows Server legújabb verzióját használja.
 
@@ -445,7 +445,7 @@ Ha konfigurálja az SAP az SAP MaxDB adatbázis fájlok tárolására kiszolgál
 
 Ha konfigurálja az SAP webtartalom-kiszolgáló tárolja a fájlokat a fájlrendszer, dedikált logikai meghajtó használata ajánlott. A Windows tárolóhelyek használata lehetővé teszi, hogy is növelheti a logikai lemez méretét és IOPS-teljesítmény, leírtak szerint [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). 
 
-#### <a name="sap-content-server-location"></a>SAP webtartalom-kiszolgáló helye
+#### <a name="sap-content-server-location"></a>SAP Content Server Location
 SAP-kiszolgáló rendelkezik az ugyanazon Azure-régióban és az Azure virtuális hálózat, ahol telepíti az SAP-rendszerhez üzembe helyezni. Szabadon eldöntheti, hogy szeretné-e egy dedikált Azure virtuális gépen, vagy ugyanazon a virtuális Gépen a SAP-rendszer fut, ahol az SAP-kiszolgáló-összetevők üzembe helyezése. 
 
 ![Az Azure virtuális gép dedikált SAP-kiszolgálóhoz](./media/dbms_maxdb_deployment_guide/800-azure-vm-sap-content-server.png)

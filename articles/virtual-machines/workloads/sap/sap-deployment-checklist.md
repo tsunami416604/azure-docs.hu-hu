@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/07/2019
+ms.date: 01/18/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 901dfc502470e52600e3a0fafe3f6b91b7686197
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: e78599a350aff4d0aba5603e8ad7959c945f1aca
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201329"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439153"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Az SAP számítási feladatok az Azure tervezési és telepítési ellenőrzőlista 
 
@@ -36,6 +36,7 @@ Ebben a fázisban tervezett áttelepítés SAP számítási feladatok Azure nyil
 
 1. Ez a dokumentum magas szintű tervezési dokumentum – kell tartalmaznia:
     1. Az aktuális készlet, SAP-összetevők és az alkalmazások és a cél leltár az Azure-ban
+    2. Hozzon létre, és haladjon végig a felelősségi hozzárendelés mátrix (RACI), amely meghatározza a és a különböző felek-hozzárendeléseit. Indítsa el a magas szinten, és működik, több részletes szintek átviteli sebesség a tervezési és az első központi telepítések
     2. A megoldás magas szintű architektúrája
     3. Döntés az Azure-régióban való üzembe helyezéséhez. Az Azure-régiók listája, ellenőrizze a [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/). Az egyes Azure-régiókban elérhető szolgáltatások esetén ellenőrizze a cikk [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/)
     4. A hálózati architektúra az Azure-bA a helyszíni csatlakozni. Indítsa el, hogy ismeri a saját maga a [az Azure Virtual Datacenter tervezet](https://docs.microsoft.com/azure/architecture/vdc/)
@@ -46,7 +47,7 @@ Ebben a fázisban tervezett áttelepítés SAP számítási feladatok Azure nyil
     3.  Üzletmenet-folytonossági és vészhelyreállítási architektúra
     4.  Részletes operációs rendszer, DB, Kernel és az SAP támogatási szervizcsomag-verziót. Nincs olyan, hogy minden olyan SAP NetWeaver és az S/4HANA által támogatott operációsrendszer-kiadás támogatott Azure-beli virtuális gépeken. Ugyanez érvényes adatbázis-kezelő kiadások. Fontos, hogy a következő adatforrások beolvasása igazítás, és szükség esetén frissítse SAP kiadások, az adatbázis-kezelő kiadások vagy kiadásainak listáját ahhoz, hogy az SAP-ben be van jelölve, és az Azure támogatott időszak megadása kötelező. Fontos, hogy SAP között van, és az Azure támogatott kiadás kombinációt az SAP és a Microsoft teljes körű támogatás kötelező. Szükség esetén meg kell terveznie frissítése néhány szoftverösszetevőket. További részleteket a támogatott SAP, az operációs rendszer és az adatbázis-kezelő szoftver leírása itt található helyek:
         1.  SAP támogatási Megjegyzés [#1928533](https://launchpad.support.sap.com/#/notes/1928533). Ez a Megjegyzés határozza meg a minimális operációsrendszer-kiadások támogatott Azure-beli virtuális gépeken. A legtöbb nem HANA-adatbázis szükséges minimális adatbázis verziókban is meghatározza. A Megjegyzés a különböző típusú támogatott SAP az Azure virtuális gép SAP méretezését is jár.
-        2.  SAP támogatási Megjegyzés [#2039619](https://launchpad.support.sap.com/#/notes/2039619). A Megjegyzés: az Azure-ban határozza meg az Oracle-támogatási mátrixa. Vegye figyelembe, hogy Oracle csak objektumokként Windows- és Oracle Linux vendég operációs rendszer az Azure-beli SAP számítási feladatokhoz. Támogatási nyilatkozattal az SAP alkalmazásrétegre futó SAP-példányok is vonatkozik. Azonban Oracle nem támogatja magas rendelkezésre állás az SAP Central Services. Ennek eredményeképpen szüksége lehet egy másik operációs rendszer, és az SAP Central Services, amely nem csatlakozik, az Oracle-adatbázis-kezelő
+        2.  SAP támogatási Megjegyzés [#2039619](https://launchpad.support.sap.com/#/notes/2039619). A Megjegyzés: az Azure-ban határozza meg az Oracle-támogatási mátrixa. Vegye figyelembe, hogy Oracle csak objektumokként Windows- és Oracle Linux vendég operációs rendszer az Azure-beli SAP számítási feladatokhoz. Támogatási nyilatkozattal az SAP alkalmazásrétegre futó SAP-példányok is vonatkozik. Azonban Oracle nem támogatja magas rendelkezésre állás az SAP Central Services Oracle Linux rendszeren. A Windows az SAP az SAP Central Services támogatott Oracle adatbázis-kezelő összetevővel együtt támogatott Windows feladatátvevő fürt Feladatátvevőfürt-megoldást. 
         3.  SAP támogatási Megjegyzés [#2235581](https://launchpad.support.sap.com/#/notes/2235581) támogatási mátrixa beolvasni a különböző operációs rendszereken az SAP HANA-kiadások
         4.  SAP HANA támogatott Azure-beli virtuális gépek és [HANA nagyméretű példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) felsorolt [Itt](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
         5.  [Az SAP-termék rendelkezésre állási mátrix](https://support.sap.com/en/)
@@ -56,14 +57,18 @@ Ebben a fázisban tervezett áttelepítés SAP számítási feladatok Azure nyil
         2.  [Az SAP ASCS/SCS-példány több biztonsági AZONOSÍTÓVAL rendelkező Windows Server feladatátvételi fürtszolgáltatási és -fájlmegosztást az Azure-ban magas rendelkezésre állás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     6.  Magas rendelkezésre állás és vészhelyreállítás recovery architektúrájáról
         1.  RTO és RPO alapján a magas rendelkezésre állás és vészhelyreállítás recovery architektúrájáról kell kinéznie definiálása
-        2.  Magas rendelkezésre állást ugyanabban a zónában ellenőrizze a kívánt adatbázis-kezelő által biztosított lehetőségeket az Azure-ban. A legtöbb adatbázis-kezelő egy szinkron készenléti, javasoljuk, hogy éles rendszerek esetén, amelyek szinkron módszereit kínálnak.
+        2.  Magas rendelkezésre állást ugyanabban a zónában ellenőrizze a kívánt adatbázis-kezelő által biztosított lehetőségeket az Azure-ban. A legtöbb adatbázis-kezelő egy szinkron készenléti, javasoljuk, hogy éles rendszerek esetén, amelyek szinkron módszereit kínálnak. Ellenőrizze az SAP összefügg kezdve a különböző adatbázisokhoz dokumentációja [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) és a kapcsolódó dokumentumok
+            1.  Használatával Windows feladatátvételi fürtszolgáltatás megosztott lemez konfigurációját a DBMS a rétegen, például az SQL Server leírt [Itt](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017) van **nem** támogatott. Ehelyett megoldások, például:
+                1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
+                2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+                3.  [HANA-Rendszerreplikálást](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  Vész-helyreállítási különböző Azure-régióban ellenőrizze, milyen lehetőségek érhetők el a különböző adatbázis-kezelő szolgáltató által. Ezek többsége támogatja az aszinkron replikáció és naplóküldés
         4.  Az SAP alkalmazásrétegre határoznia e futtatná az üzleti regressziós tesztrendszerek, amelyek ideális esetben az éles környezetekben üzemelő példányok replikával, az azonos Azure-régió vagy a DR régióban. Az utóbbi esetben meg célként adott üzleti regressziós rendszer DR célként az éles környezetben
-        5.  Ha nem kívánja a DR-hely nem éles rendszerek, megvizsgáljuk Azure Site Recovery az SAP alkalmazásrétegre replikálása az Azure-beli Vészhelyreállítási régióba életképes módszerként. Lásd még: [vészhelyreállítás egy többrétegű SAP NetWeaver az alkalmazástelepítés beállítása](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap) 
-        6.  Ha úgy dönt, hogy egy kombinált HA/DR konfigurációs egészíti segítségével [Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview) győződjön meg arról, saját magának ismeri a Where rendelkezésre állási zónák érhetők el, és növelni a korlátozások, amelyek segítségével vezeti be az Azure-régiók hálózati késések két rendelkezésre állási zónák között  
+        5.  Ha nem kívánja a DR helyen helyezze el a nem éles rendszerek, megvizsgáljuk Azure Site Recovery az SAP alkalmazásrétegre replikálása az Azure-beli Vészhelyreállítási régióba életképes módszerként. Lásd még: [vészhelyreállítás egy többrétegű SAP NetWeaver az alkalmazástelepítés beállítása](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap) 
+        6.  Ha úgy dönt, hogy egy kombinált HA/DR-konfigurációt használja, kihasználva [Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview) győződjön meg arról, saját magának ismeri az Azure-régiók érhetők el rendelkezésre állási zónák, és korlátozásokat, amelyek segítségével vezeti be a hálózati késések két rendelkezésre állási zónák között  
 3.  Ügyfél vagy Partner hozzon létre egy készlet minden SAP-adapterek (SAP és az SAP). 
 4.  Foundation Services – tervezés – Ez a kialakítás, tervezés beletartozik például a
-    1.  Az Active Directory és a DSN tervezése
+    1.  Az Active Directory és DNS megtervezése
     2.  Az Azure és a hozzárendelés különböző SAP-rendszerek belül a hálózati topológia
     3.  [Szerepkör alapú hozzáférés](https://docs.microsoft.com/azure/role-based-access-control/overview) struktúráját a különböző csapatok által kezelt infrastruktúra és az SAP alkalmazások az Azure-ban
     3.  Erőforráscsoport-topológia 
@@ -78,7 +83,7 @@ Ebben a fázisban tervezett áttelepítés SAP számítási feladatok Azure nyil
 9.  Adja meg a reguláris megtervezéséhez és üzembe helyezési felülvizsgálati kiadása ütemben történik között, mert az ügyfél, rendszerintegrátor a Microsoft és egyéb érintett felek
 
  
-## <a name="pilot-phase-optional"></a>Próbaüzem fázisában (nem kötelező)
+## <a name="pilot-phase-strongly-recommended"></a>Próbaüzem fázisában (erősen javasolt)
  
 A próbaüzem előtt, vagy projekttervezés és-előkészítés párhuzamosan futtathatók. A fázis is módszerek és a tervezési és az előkészítési fázisban végrehajtott tervezési teszteléséhez használható. A próbaüzem fázisában fogalmak valós megvalósíthatósági kiterjesztve is lehet. Javasoljuk, hogy állítsa be, és ellenőrizze a teljes magas rendelkezésre ÁLLÁSÚ és Vészhelyreállítási megoldást és a biztonság kialakítása során próbacélú telepítéshez. Néhány ügyfél esetben méretezhetőség vizsgálatokat is képes elvégezni ebben a fázisban. Más ügyfelek számára a próbaüzem fázisában védőfal SAP-rendszerek telepítése használjuk. Feltételezzük, hogy a rendszer, amely egy próbaprogram futtatása céljából az Azure-bA migrálni kívánt azonosított.
 
@@ -100,6 +105,8 @@ A próbaüzem előtt, vagy projekttervezés és-előkészítés párhuzamosan fu
         3.  Azure Write Accelerator használja az adatbázis-kezelő log meghajtót az M-sorozat. Write accelerator korlátok és használati leírtak szerint [Írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)
         4.  A különböző DBMS-típusokat, ellenőrizze a [általános SAP DBMS dokumentációban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) és az adott DBMS-dokumentáció az általános dokumentum mutat, hogy
         5.  Az SAP Hana-hoz, a további részletek szerepelnek [SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
+        6.  Soha nem csatlakoztatási Azure adatlemezeket az Azure Linux VM segítségével az eszköz azonosítójával. Ehelyett használja a univerzálisan egyedi azonosítót (UUID). Legyen óvatos az adatlemezek csatlakoztatása az Azure, a grafikus eszközök például használatakor. Ellenőrizze a bejegyzéseket az/etc/fstab fájlban, győződjön meg arról, hogy a lemezek csatlakoztatva vannak-e az UUID-azonosítója használatával
+            1.  További információk találhatók [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)
     3.  Hálózat
         1.  Tesztelheti, kiértékelheti a VNet-infrastruktúrát és az SAP-alkalmazások a különböző Azure virtual networkök belül vagy a terjesztési és
             1.  A hub és küllő virtuális hálózati architektúrát, vagy alapján egyetlen Azure virtuális hálózaton belüli microsegmentation megközelítés kiértékelése
@@ -121,12 +128,12 @@ A próbaüzem előtt, vagy projekttervezés és-előkészítés párhuzamosan fu
         1.   Ha az SAP alkalmazásrétegre egy adott Azure rendelkezésre állási zónában definiálása nélkül telepít, győződjön meg róla, hogy az SAP párbeszédpanel példány vagy közbenső példánya egyetlen SAP-rendszerrel futó összes virtuális gép telepítve vannak-e az egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). 
             1.   Abban az esetben nem magas rendelkezésre állásra van szüksége az SAP Central Services és az adatbázis-kezelő, ezek a virtuális gépek ugyanazon rendelkezésre állási csoportban, az SAP alkalmazásrétegre telepíthető
         2.   Az SAP Central Services és a magas rendelkezésre állású passzív replikákkal rendelkező adatbázis-kezelő réteg védelméről, van-e a két csomópont egy külön rendelkezésre állási csoportban SAP Central Services és a egy másik rendelkezésre állási csoportban a két adatbázis-kezelő csomópont
-        3.   Az Azure rendelkezésre állási zónában történő központi telepítésekor rendelkezésre állási csoportok nem tudják hasznosítani. Azonban győződjön meg arról, hogy két különböző rendelkezésre állási zónában történő, amely a legkisebb késés megjelenítése zónák között az aktív és passzív Central Services csomópontok üzembe lenne szüksége.
+        3.   Ha az Azure-beli rendelkezésre állási zónák telepít, a rendelkezésre állási csoportok nem tudják hasznosítani. Azonban győződjön meg arról, hogy két különböző rendelkezésre állási zónában történő, amely a legkisebb késés megjelenítése zónák között az aktív és passzív Central Services csomópontok üzembe lenne szüksége.
             1.   Ne feledje, hogy kell használnia [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) a kis-és Windows vagy támasztja a feladatátvevő fürtök létrehozásáról a DBMS- és SAP Central Services a réteghez tartozó rendelkezésre állási zónák között. [Alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) nem használható a zónaszintű központi telepítések 
     5.   Időtúllépés beállításai
         1.   Ellenőrizze a SAP NetWeaver fejlesztői nyomkövetések különböző SAP-példánya, és győződjön meg arról, hogy sorba kiszolgáló és az SAP-munkafolyamatok közötti kapcsolat szünetek jeleztük. E kapcsolat megszakítások elkerülhető az alábbi két beállításkulcs paraméterek beállításával:
-            1.   HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime 120000 - = lásd még: [Ez a cikk](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10))
-            2.   HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval 120000 - = lásd még: [Ez a cikk](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) 
+            1.   HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000 - see also [this article](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10))
+            2.   HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval = 120000 - see also [this article](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) 
         2.   Annak érdekében, hogy grafikus felhasználói Felülettel időtúllépéssel között egy helyszínen üzembe helyezett SAP grafikus felhasználói felületek és az Azure-ban üzembe helyezett SAP-alkalmazási rétegekben, akkor ellenőrizze-e a következő paraméterek vannak-e beállítva a default.pfl vagy a példány profil:
             1.   rdisp/keepalive_timeout = 3600
             2.   rdisp/életben tartási = 20
@@ -134,11 +141,11 @@ A próbaüzem előtt, vagy projekttervezés és-előkészítés párhuzamosan fu
             1.   SameSubNetDelay = 2
             2.   SameSubNetThreshold = 15
 4.   Tesztelje a magas rendelkezésre állás és vészhelyreállítás helyreállításának folyamata
-    1.   Feladatátvételi helyzetek szimulálása leáll a virtuális gépek vagy az operációs rendszerek üzembe Pánik módban annak érdekében, hogy döntse el, hogy a feladatátvétel konfigurációk megfelelően működni. 
+    1.   Feladatátvételi helyzetek szimulálása leáll a virtuális gépek (Windows vendég operációs rendszer) vagy az operációs rendszerek üzembe Pánik módban (Linux vendég operációs rendszer) annak érdekében, hogy döntse el, hogy a feladatátvétel konfigurációk megfelelően működni. 
     2.   A feladatátvétel végrehajtásához szükséges idő mérjük. Ha túl hosszú az időpontokat, vegye figyelembe:
         1.   SUSE Linux rendszeren SBD eszközök használata helyett az Azure-Elkerítjük ügynök feladatátvételi felgyorsítása érdekében
         2.   Az SAP Hana-hoz Ha túl sokáig tart az adatok újbóli betöltés fontolja meg további tárolási sávszélességet kiépítenie
-    3.   Tesztelje a biztonsági mentési és visszaállítási feladatütemezési, és ha szükséges
+    3.   Tesztelje a biztonsági mentési és visszaállítási sorrendje és időzítése, és ha szükséges. Győződjön meg arról, hogy nem csak biztonsági mentés időpontjai elegendőek. Is visszaállítási tesztelése, és az időzítési végrehajtása a visszaállítást tevékenységekre. Ügyeljen arra, hogy a helyreállítási időt az RTO SLA, ahol az RTO olyan adatbázisra támaszkodik, vagy a virtuális gép visszaállítási folyamat belül
     4.   Tesztelje a DR régióban funkciókat és architektúra
 5.  Biztonsági ellenőrzések
     1.  Teszt érvényességét, az Azure szerepkör-alapú megvalósította a hozzáférés-(vezérléssel RBAC) architektúra. Célja, hogy külön, és korlátozza a hozzáférést és engedélyeket a különböző csapatok különböző. Tegyük fel SAP alapon csapat tagjai virtuális gépek üzembe helyezése, és rendelje hozzá a lemezt az Azure storage-ból egy adott Azure-beli virtuális hálózatban kell lennie. Az SAP-alapon csapat azonban nem kell tudni a saját virtuális hálózatok létrehozása, vagy módosítsa a meglévő virtuális hálózatok beállításait. A másik oldalon a csoport tagjai nem lehet képes virtuális gépek virtuális hálózatokon üzembe helyezhető, SAP-alkalmazás és az adatbázis-kezelő virtuális gépek futnak. Sem a csoport tagjainak képesnek kell lennie, módosítsa a virtuális gépek attribútumait, vagy törölhet virtuális gépeket vagy lemezek is.  
@@ -160,7 +167,8 @@ Ebben a fázisban feltételezzük, hogy egy sikeres kísérleti vagy megvalósí
 3.  Tesztelje, és határozza meg, hogy kívánja-e saját operációsrendszer-lemezképek létrehozása a virtuális géphez az Azure-ban, vagy hogy lemezképek használata az Azure lemezkép-katalógusában ki szeretné. Kép használja ki az Azure-katalógus, hogy tegye meg a megfelelő lemezképet, amely a támogatási szerződés a operációs rendszer gyártója által biztosított tükrözi. Az egyes operációsrendszer-szállítók az Azure-katalógusok ajánlja fel a saját licenc lemezképek. Mások operációsrendszer-lemezképek támogatása az Azure által jegyzett díja tartalmazza. Ha úgy dönt, hogy a saját operációsrendszer-lemezképek létrehozása, dokumentáció ezekben a cikkekben találja:
     1.  Hozhat létre Azure-ban üzembe helyezett Windows virtuális gépek általános rendszerképek [ebben a dokumentációban](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
     2.  Hozhat létre egy Linux virtuális gép alapján az Azure-ban üzembe helyezett általános rendszerképek [ebben a dokumentációban](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
-3.  Győződjön meg arról, hogy a vonatkozó Microsoft támogatási szerződés rendelkezik SAP támogatási követelmények teljesítéséhez. Információ az SAP támogatási megjegyzés található [#2015553](https://launchpad.support.sap.com/#/notes/2015553). Nagyméretű HANA-példányokhoz, tekintse meg a dokumentum [bevezetési követelmények](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements)
+3.  Használatakor a SUSE és a Red Hat Linux-rendszerképeket az Azure Virtuálisgép-katalógusából, szeretné-e használni a képek az SAP az Azure-beli Virtuálisgép-katalógusában a Linux-szállítók által biztosított
+4.  Győződjön meg arról, hogy a vonatkozó Microsoft támogatási szerződés rendelkezik SAP támogatási követelmények teljesítéséhez. Információ az SAP támogatási megjegyzés található [#2015553](https://launchpad.support.sap.com/#/notes/2015553). Nagyméretű HANA-példányokhoz, tekintse meg a dokumentum [bevezetési követelmények](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements)
 4.  Győződjön meg arról, hogy a megfelelő emberek számára minél [tervezett karbantartásával kapcsolatos értesítések](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/), ebben az esetben választhat az állásidő és a virtuális gépek újraindítását időben
 5.  Folyamatosan ellenőrizze az Azure-dokumentáció csatornán, például a Microsoft-bemutatók [Channel9](https://channel9.msdn.com/) az új funkciók, amelyek alkalmazandók lehetnek az üzemelő példányokhoz
 6.  Ellenőrzés SAP-megjegyzések kapcsolódó Azure-ba, például a támogatási Megjegyzés [#1928533](https://launchpad.support.sap.com/#/notes/1928533) új virtuális gépek Termékváltozatait vagy újonnan támogatott operációs rendszerek és adatbázis-kezelő kiadás. Hasonlítsa össze az új virtuális gépek típusai régebbi virtuális gépek elleni típusok a díjszabás, tehát, az üzembe helyezés virtuális gépeken a legjobb ár-teljesítmény arány
@@ -178,7 +186,7 @@ Ebben a fázisban feltételezzük, hogy egy sikeres kísérleti vagy megvalósí
 
  
 ## <a name="production-preparation-phase"></a>Éles előkészítési fázisban 
-Ez a fázis a hol szeretne gyűjteni a élmény és a nem éles környezetekben a tapasztalatainkat és alkalmazza őket a későbbiekben éles környezetekben üzemelő példányok. Emellett a fázis előtt, hogy is kell készíteni a munkát, az adatforgalom, az aktuális üzemeltetési helyet és az Azure között. 
+Ebben a fázisban szeretne gyűjteni a élmény és a nem éles környezetekben a tapasztalatainkat és alkalmazza őket a későbbiekben éles környezetekben üzemelő példányok. Emellett a fázis előtt, hogy is kell készíteni a munkát, az adatforgalom, az aktuális üzemeltetési helyet és az Azure között. 
 
 1.  Haladjon végig szükséges SAP kiadás frissítése során az éles rendszereket az Azure környezetbe történő áthelyezés előtt
 2.  Elfogadom az üzleti tulajdonos a működési és üzleti teszteket szeretne elvégezni, az éles rendszer a migrálás után
@@ -189,8 +197,7 @@ Ez a fázis a hol szeretne gyűjteni a élmény és a nem éles környezetekben 
     3.  Használja az SAP áttelepítési figyelője megvalósított SAP SWPM eszközt heterogén áttelepítések végrehajtásához
     4.  Használja a [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) kombinálja az SAP kiadásban frissítést kell feldolgozni. Ne feledje, hogy a forrás- és adatbázis-kezelő nem minden kombinációját támogatottak. További információ található a meghatározott SAP támogatási kiegészítő DMO különböző kiadásait. Ha például [adatbázis áttelepítési beállítás (DMO) a SUM 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872)
     5.  Tesztelje, hogy az adatforgalom az interneten keresztül vagy expressroute-on keresztül nagyobb átviteli sebesség, abban az esetben át kell helyeznie a biztonsági mentések vagy SAP fájlok exportálása. Vegye figyelembe, hogy az esetet az interneten keresztül helyez át adatokat, előfordulhat, hogy módosítania egyes működik a jövőbeli éles rendszerek esetén a szükséges NSG-t vagy Alkalmazásbiztonsági biztonsági szabályok
-3.  Mielőtt az Azure-bA a régi platformról rendszerek consumption-erőforrásadatok gyűjtésére, például a CPU-használat, a tárterületek átviteli sebességének és IOPS-adatok. Főleg a DBMS réteg egységeket, application layer egység alapján is. Hálózati és tárolási szél is mérése
-4.  ency.
+3.  Mielőtt az Azure-bA a régi platformról rendszerek consumption-erőforrásadatok gyűjtésére, például a CPU-használat, a tárterületek átviteli sebességének és IOPS-adatok. Főleg a DBMS réteg egységeket, application layer egység alapján is. Hálózati és tárolási késés is mérjük.
 4.  Az SAP támogatási megjegyzések, az SAP HANA hardver directory és a SAP PAM újra, győződjön meg arról, hogy nem történt változás a támogatott virtuális gépek az Azure-hoz, a kiadások támogatott operációs rendszer ezen virtuális gépek és a támogatott SAP és az adatbázis-kezelő kiadások, az erőforrások ellenőrzése 
 4.  A legutóbbi változtatásokat, úgy döntött, ha a Virtuálisgép-típusok és az Azure funkcióinak az üzembe helyezési parancsfájlok
 5.  Miután infrastruktúra és az alkalmazás központi telepítési hajtania egy sor ellenőrzést a rendelés érvényesítése:
@@ -202,6 +209,8 @@ Ez a fázis a hol szeretne gyűjteni a élmény és a nem éles környezetekben 
     6.  Az Azure Premium Storage a késés bizalmas lemezek használták, vagy ahol a [egyetlen virtuális gép garantált 99,9 %](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) megadása kötelező
     7.  Azure Write Accelerator helyesen hajtotta-ellenőrzés
         1.  Győződjön meg arról, hogy a virtuális gépen, a tárolóhelyek, vagy a paritásos megfelelően van beépített támogatás az Azure Írásgyorsító lemezek között
+            1.  Ellenőrizze [szoftveres RAID linuxon konfigurálása](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)
+            2.  Ellenőrizze [LVM konfigurálása az Azure-beli Linuxos virtuális gépre](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
     8.  [Az Azure managed disks](https://azure.microsoft.com/services/managed-disks/) kizárólagos használata
     9.  Virtuális gépek a megfelelő rendelkezésre állási csoportokat, és a rendelkezésre állási zónák van telepítve.
     10. Győződjön meg arról, hogy [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) engedélyezve van, a SAP alkalmazás réteget és az SAP DBMS réteg használt virtuális gépeken

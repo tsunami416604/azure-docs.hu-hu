@@ -3,18 +3,18 @@ title: Hibakezelés az Azure Automation grafikus runbookokban
 description: Ez a cikk ismerteti a hibakezelési logika megvalósítását az Azure Automation grafikus runbookokban.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 14112a9a9f64f20540a8f7e1d37cd31017238e59
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d7fe38334b71334d4dae9235643117efdf5fbd5d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192710"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436688"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Hibakezelés az Azure Automation grafikus runbookokban
 
@@ -26,11 +26,11 @@ Gyakran előfordul, hogy ha egy runbooktevékenységgel kapcsolatban megszakít�
 
 A végrehajtás során előforduló PowerShell-hibák megszakítást okozó vagy megszakítást nem okozó típusúak lehetnek. A megszakítást okozó és nem okozó hibák közötti különbség a következő:
 
-* **Megszakítást okozó hiba**: A végrehajtás során bekövetkező súlyos hiba, amely teljes egészében megszakítja a parancs (vagy szkript) végrehajtását. Ilyenek például a nem létező parancsmagok, a parancsmag futását megakadályozó szintaktikai hibák vagy az egyéb végzetes hibák.
+* **Megszakítást okozó hiba**: Súlyos hiba, amely teljes egészében megszakítja a parancs (vagy szkript végrehajtási) végrehajtása közben. Ilyenek például a nem létező parancsmagok, a parancsmag futását megakadályozó szintaktikai hibák vagy az egyéb végzetes hibák.
 
-* **Megszakítást nem okozó hiba**: Nem súlyos hiba, amely a hiba ellenére engedélyezi a végrehajtást. Ilyenek például a műveleti hibák, például a „fájl nem található” vagy az engedélyekkel kapcsolatos problémák.
+* **Megszakítást nem hiba**: Nem súlyos hiba, amely engedélyezi a végrehajtást a hiba ellenére. Ilyenek például a műveleti hibák, például a „fájl nem található” vagy az engedélyekkel kapcsolatos problémák.
 
-Az Azure Automation grafikus runbookok kiegészültek a hibakezelés képességével is. A kivételeket mostantól nem megszakító hibákká változtathatja, valamint hibahivatkozásokat hozhat létre a tevékenységek között. Ez a folyamat lehetővé teszi a runbook szerzője számára a hibák észlelését, és a létrejött vagy váratlan feltételek kezelését.  
+Azure Automation grafikus runbookok továbbfejlesztettük hibakezelési képességekkel is képessége lehetővé teszi. A kivételeket mostantól nem megszakító hibákká változtathatja, valamint hibahivatkozásokat hozhat létre a tevékenységek között. Ez a folyamat lehetővé teszi a runbook szerzője számára a hibák észlelését, és a létrejött vagy váratlan feltételek kezelését.  
 
 ## <a name="when-to-use-error-handling"></a>Mikor érdemes hibakezelést használni?
 
@@ -69,3 +69,4 @@ Az ezen tevékenységekből származó hibahivatkozások egyetlen **hibakezelés
 * További információk a hivatkozásokról és a grafikus runbookokban szereplő hivatkozástípusokról: [Grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md#links-and-workflow).
 
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza.
+

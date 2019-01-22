@@ -3,17 +3,17 @@ title: Figyelőfeladat létrehozása az Azure Automation-fiókban
 description: Ismerje meg, hogyan figyelőfeladat létrehozása az Azure Automation-fiókban, mappában létrehozott új fájlok megtekintéshez.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 4068ce42babb786ca33e1b0d41fdfefc7d3f78be
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7870aca696ec61e707c5c774fd43e6d64c0cab82
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282772"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436756"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Az Azure Automation figyelőjét fájl változásainak követése a helyi számítógép-feladatok létrehozása
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban egy figyelői runbookból nevű **Watch-NewFile** új f
 Egy [automation változó](automation-variables.md) tárolja az időbélyegeket az előző runbook olvasó, és minden egyes fájl tárolja.
 
 1. Válassza ki **változók** alatt **megosztott erőforrások** válassza **+ változó hozzáadása**.
-1. Adja meg a "Watch-NewFileTimestamp" nevet
+1. Enter "Watch-NewFileTimestamp" for the name
 1. Válassza ki a dátum/idő típus.
 1. Kattintson a **létrehozás** gombra. Ezzel létrehozza az automation változó.
 
@@ -90,7 +90,7 @@ A figyelőfeladat két részt tartalmaz. A megfigyelő és a műveletet. A figye
 1. Adja meg a következő értékeket a Paraméterek:
 
    ***EVENTDATA** – hagyja üresen. Adatok a megfigyelő runbook átadva a.  
-   ***Futtatási beállítások** ** -hagyja meg az Azure, az Automation szolgáltatásban futtatja a runbookot.
+   ***Futtatási beállítások** -hagyja meg az Azure, az Automation szolgáltatásban futtatja a runbookot.
 
 1. Kattintson a **OK**, majd válassza ki a figyelő lapra való visszatéréshez.
 1. Kattintson a **OK** a figyelőfeladat létrehozása.
@@ -153,3 +153,4 @@ Erre a hivatkozásra a további információk a létrehozásról saját forgató
 
 > [!div class="nextstepaction"]
 > [Az első PowerShell-forgatókönyvem](automation-first-runbook-textual-powershell.md).
+

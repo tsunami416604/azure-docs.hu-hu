@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: b58b7c7ebc3547153f805f762c4caf3511a5a709
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: aaaec6e02c9280801fbf7e3b5a8eaa1ae4a1ff43
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717501"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429769"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló Stream
 Streamelheti a [Azure-tevékenységnapló](../../azure-monitor/platform/activity-logs-overview.md) közel valós időben által bármely alkalmazás:
@@ -84,7 +84,7 @@ Ha egy napló-profilja már létezik, akkor először távolítsa el a meglévő
    Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
 
-### <a name="via-azure-cli"></a>Az Azure CLI-n keresztül
+### <a name="via-azure-cli"></a>Via Azure CLI
 Ha egy napló-profilja már létezik, akkor először távolítsa el a meglévő log-profilt, és hozzon létre egy új naplóprofil.
 
 1. Használat `az monitor log-profiles list` azonosítását, ha egy napló-profil létezik.
@@ -102,4 +102,5 @@ A tevékenységnapló sémája érhető el a [figyelése az Azure-tevékenységn
 * [A tárfiókhoz a tevékenységnapló archiválása](../../azure-monitor/platform/archive-activity-log.md)
 * [Olvassa el az Azure-tevékenységnapló áttekintése](../../azure-monitor/platform/activity-logs-overview.md)
 * [Egy tevékenységnapló eseményéhez alapuló riasztás beállítása](../../azure-monitor/platform/alerts-log-webhook.md)
+
 

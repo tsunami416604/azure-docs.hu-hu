@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: d339908b9347843da891dd1c7fa038c45cee1dcb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 3b0db93d44827e3f5d0543f28a6f4b5fb0c4818e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382834"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429089"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -173,7 +173,7 @@ Válassza ki a következő beállításokat, amint a képen látható:
 
 Ismételje meg az előző lépéseket bármely más NSG-k, amelyhez hozzá szeretné a traffic analytics engedélyezéséhez. A folyamat-naplók továbbítja a munkaterület, ezért győződjön meg arról, hogy a helyi jogszabályoknak és előírásoknak, az Ön országában lehetővé teszik az adattárolás a régióban, ahol a munkaterület létezik.
 
-Traffic analytics segítségével is konfigurálhatja a [Set-AzureRmNetworkWatcherConfigFlowLog](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) PowerShell-parancsmagot az AzureRm PowerShell-modul verzióját 6.2.1 vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Traffic analytics segítségével is konfigurálhatja a [Set-AzureRmNetworkWatcherConfigFlowLog](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) PowerShell-parancsmagot az AzureRm PowerShell-modul verzióját 6.2.1 vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket.
 
 ## <a name="view-traffic-analytics"></a>A traffic analytics megtekintése
 

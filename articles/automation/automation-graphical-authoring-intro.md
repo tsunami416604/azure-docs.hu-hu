@@ -3,18 +3,18 @@ title: Grafikus létrehozás az Azure Automationben
 description: Grafikus létrehozásról lehetővé teszi a runbookok létrehozása az Azure Automation-kód használata nélkül. A cikk ismerteti a grafikus létrehozásról bemutatása és a grafikus runbookok létrehozásának megkezdéséhez szükséges összes részleteit.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a4cd2cec56a15660a03ac111b1b8962d531479ad
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d637436721ff464f58e41069bb00746fcd82410
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233677"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427236"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus létrehozás az Azure Automationben
 
@@ -111,7 +111,7 @@ Ha megad egy értéket a paraméterhez, ki kell választania egy adatforrás hat
 
 | Adatforrás | Leírás |
 |:--- |:--- |
-| Konstans érték |Adja meg a paraméter értékét. Ez a lehetőség csak a következő adattípusokhoz: Int32, Int64, String, logikai értéket, DateTime, kapcsoló. |
+| Konstans érték |Adja meg a paraméter értékét. Ez a tulajdonság csak a következő adattípusokat érhető el: Int32, Int64, String, logikai értéket, DateTime, váltson. |
 | Tevékenység kimenete |Egy tevékenységgel, amely szerepel az aktuális tevékenység a munkafolyamat kimenetét. Az összes érvényes tevékenységek jelennek meg. Válassza ki a csak a tevékenység kimenetét használja a paraméter értéke. Ha a tevékenység kimenete egy több tulajdonsággal rendelkező objektumot, majd beírhatja be a tulajdonság nevét a tevékenység kiválasztása után. |
 | Forgatókönyv-bemenet |Válassza ki a forgatókönyv bemeneti paramétere a tevékenység-paraméter bemeneteként. |
 | Változóeszköz |Válassza ki a egy automatizálási változó bemenetként. |
@@ -272,7 +272,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 Beállíthat [ellenőrzőpontok](automation-powershell-workflow.md#checkpoints) a grafikus PowerShell-munkafolyamati runbook kiválasztásával *ellenőrzőpont-forgatókönyv* minden olyan tevékenységnél. Ennek hatására a tevékenység futtatása után kell beállítani egy ellenőrzőpontot.
 
-![Ellenőrzőpont](media/automation-graphical-authoring-intro/set-checkpoint.png)
+![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
 Az ellenőrzőpontok csak akkor engedélyezett, a grafikus PowerShell-munkafolyamati runbookok, a grafikus runbookok nem érhető el. Ha a runbook használja az Azure-parancsmagokon, kövesse a Connect-AzureRmAccount bármely alkulcsaihoz tevékenység abban az esetben a runbook fel van függesztve, és újraindítja az ellenőrzőpont egy másik feldolgozón.
 
@@ -288,7 +288,7 @@ A futtató kapcsolat beszerzése tevékenységet (vagyis a Get-AutomationConnect
 
 A következő tevékenységnek, a Connect-AzureRmAccount, hozzáadja a hitelesített fiókhoz tartozó futtató fiók használata a runbook.
 
-![Connect-AzureRmAccount paraméterkészlet](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
+![Connect-AzureRmAccount Parameter Set](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
 
 > [!IMPORTANT]
 > **Add-AzureRmAccount** alias már **Connect-AzureRMAccount**. Ha a Keresés a szalagtár elemmel, ha nem látja, akkor **Connect-AzureRMAccount**, használhat **Add-AzureRmAccount**, vagy frissítheti az a modulokat az Automation-fiókban.

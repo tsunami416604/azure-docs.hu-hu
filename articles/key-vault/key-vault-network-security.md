@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/02/2019
 ms.author: ambapat
-ms.openlocfilehash: 09a19b92a496650f94be208d4f463f1fb3fa4256
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d95ede3b6e99d6791a2642c6059281dedca3fcf2
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001855"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423160"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Az Azure Key Vault-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -79,7 +79,7 @@ Ebben a cikkben részletes útmutatást nyújt az Azure Key Vault-tűzfalak és 
 
 Íme a Key Vault-tűzfalak és virtuális hálózatok konfigurálása a PowerShell használatával:
 
-1. Telepítse a legújabb [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps), és [jelentkezzen be a](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Telepítse a legújabb [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps), és [jelentkezzen be a](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
 2. Elérhető a virtuális hálózati szabályok listája. Ha nem állított be ehhez a kulcstartóhoz tartozó szabályokat, a lista üres lesz.
    ```PowerShell
@@ -115,7 +115,7 @@ Ebben a cikkben részletes útmutatást nyújt az Azure Key Vault-tűzfalak és 
 ## <a name="references"></a>Referencia
 
 * Az Azure CLI 2.0-parancsok: [az keyvault hálózati-szabály](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
-* Az Azure PowerShell-parancsmagokat: [Get-AzureRmKeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurermkeyvault), [hozzáadása AzureRmKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Add-AzureRmKeyVaultNetworkRule), [Remove-AzureRmKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Remove-AzureRmKeyVaultNetworkRule), [Update-AzureRmKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Update-AzureRmKeyVaultNetworkRuleSet)
+* Az Azure PowerShell-parancsmagokat: [Get-AzureRmKeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurermkeyvault), [Add-AzureRmKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Add-AzureRmKeyVaultNetworkRule), [Remove-AzureRmKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Remove-AzureRmKeyVaultNetworkRule), [Update-AzureRmKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Update-AzureRmKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>További lépések
 

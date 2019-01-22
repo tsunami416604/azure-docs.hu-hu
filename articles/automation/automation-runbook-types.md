@@ -3,18 +3,18 @@ title: Az Azure Automation forgatókönyveinek típusai
 description: 'Ismerteti a runbookok, amelyek is használhatja az Azure Automation és szempontokat, akkor figyelembe kell venniük annak meghatározása, amelynek használatához írja be a különböző típusú. '
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ad24f53c7ca58756aa4028c8af2e4a83cfcfe76a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 572d887a14aa25e45f0ad74660c5d3fbb1d32851
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984322"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425628"
 ---
 # <a name="azure-automation-runbook-types"></a>Az Azure Automation forgatókönyveinek típusai
 
@@ -91,7 +91,7 @@ PowerShell-munkafolyamati runbookok alapuló szöveges runbookok [Windows PowerS
 
 ## <a name="python-runbooks"></a>Python-runbookok
 
-Python runbookok összeállításához, a Python 2.  Közvetlenül szerkesztheti a kódot a runbook a szövegszerkesztő használatával az Azure Portalon, vagy használhat offline szövegszerkesztőben, és [importálja a forgatókönyvet](automation-creating-importing-runbook.md) az Azure Automationbe.
+Python runbooks compile under Python 2.  Közvetlenül szerkesztheti a kódot a runbook a szövegszerkesztő használatával az Azure Portalon, vagy használhat offline szövegszerkesztőben, és [importálja a forgatókönyvet](automation-creating-importing-runbook.md) az Azure Automationbe.
 
 ### <a name="advantages"></a>Előnyök
 
@@ -115,3 +115,4 @@ Akkor figyelembe kell vennie az alábbi további szempontok annak meghatározás
 * Grafikus forgatókönyv-készítési kapcsolatos további információkért lásd: [grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md)
 * A PowerShell és a PowerShell közötti különbségek megértéséhez munkafolyamatokat a runbookok, lásd: [Windows PowerShell-munkafolyamat megismerése](automation-powershell-workflow.md)
 * Hozzon létre vagy importáljon egy Runbook való további információkért lásd: [létrehozása vagy egy Runbook importálása](automation-creating-importing-runbook.md)
+

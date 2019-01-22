@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b0bbd3300e48e82e44a7b7fac05f89c8d25e007f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8cddea1757b37ca462611874af7ace1af70c9646
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603497"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425176"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language understanding szószedet gyakori szóhasználatának és fogalmak
 A Language Understanding (LUIS) szószedet ismerteti feltételeit, amelyek találkozhat végzett munka során az intelligens HANGFELISMERÉSI API-szolgáltatást.
@@ -74,7 +74,7 @@ A LUIS a környezetben egy **tartomány** olyan terület, az ismeretek. A tartom
 
 ## <a name="endpoint"></a>Végpont
 
-A [LUIS végpont](https://aka.ms/luis-endpoint-apis) URL-címe, ahol elküldése után a LUIS-lekérdezéseket a [LUIS-alkalmazásokon](#luis-app) létrehozott és közzétett. A végpont URL-címe tartalmazza a régió, a közzétett alkalmazás, valamint az alkalmazás azonosítóját. A végpont található a **[kulcsokat és a végpontok](luis-how-to-manage-keys.md)** lapja az alkalmazás, vagy beszerezheti a végpont URL-CÍMÉT a [alkalmazásadatok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
+A [LUIS végpont](https://aka.ms/luis-endpoint-apis) URL-címe, ahol elküldése után a LUIS-lekérdezéseket a [LUIS-alkalmazásokon](#luis-app) létrehozott és közzétett. A végpont URL-címe tartalmazza a régió, a közzétett alkalmazás, valamint az alkalmazás azonosítóját. A végpont található a **[kulcsokat és a végpontok](luis-how-to-azure-subscription.md)** lapja az alkalmazás, vagy beszerezheti a végpont URL-CÍMÉT a [alkalmazásadatok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
 
 A példában a végpont hasonlóan néz ki:
 
@@ -177,7 +177,7 @@ Ugyanaz, mint a [programozott kulcs](#programmatic-key), átnevezett szerzői m�
 
 ## <a name="subscription-key"></a>Előfizetői azonosító
 
-Az előfizetési kulcs a **végpont** az intelligens HANGFELISMERÉSI szolgáltatás társított kulcs [Azure-ban létrehozott](luis-how-to-azure-subscription.md). Ezt a kulcsot nem kötelező a [kulcs létrehozási](#programmatic-key). Ha egy végpont kulccsal rendelkezik, azt az Authoring Tool kulcs helyett végpont kérelmeket használandó. Láthatja, hogy az aktuális végponti kulcs a végponti URL-cím végén található [ **kulcsokat és a végpontok** oldal](luis-how-to-manage-keys.md) a [LUIS](luis-reference-regions.md) webhelyén. Az értéke, **előfizetési-kulcsa** név-érték pár.
+Az előfizetési kulcs a **végpont** az intelligens HANGFELISMERÉSI szolgáltatás társított kulcs [Azure-ban létrehozott](luis-how-to-azure-subscription.md). Ezt a kulcsot nem kötelező a [kulcs létrehozási](#programmatic-key). Ha egy végpont kulccsal rendelkezik, azt az Authoring Tool kulcs helyett végpont kérelmeket használandó. Láthatja, hogy az aktuális végponti kulcs a végponti URL-cím végén található [ **kulcsokat és a végpontok** oldal](luis-how-to-azure-subscription.md) a [LUIS](luis-reference-regions.md) webhelyén. Az értéke, **előfizetési-kulcsa** név-érték pár.
 
 ## <a name="test"></a>Teszt
 

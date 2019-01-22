@@ -6,13 +6,13 @@ ms.author: snmuvva
 ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
-ms.component: alerts
-ms.openlocfilehash: 24d0965fa2a88bc844a81c7430d46c071a9b874b
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 40cf37c08705384fb664402c3d40efa229cbbcdf
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580042"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422796"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Megismerheti, hogyan riasztást küld a metrika a munkát az Azure monitorban
 
@@ -66,7 +66,7 @@ Tegyük fel, a webes alkalmazás kapja a masszív igény szerint, és további p
 - Célerőforrásnál: myAppServicePlan
 - Metrika: Százalékos processzorhasználat
 - Dimenziók
-  - Példány = *
+  - Instance = *
 - Idő összesítése: Átlag
 - Időszak: Az utolsó 5 perc alatt
 - Gyakorisága: 1 perc
@@ -125,10 +125,10 @@ Ha klasszikus metrikariasztásokat használatát még ma, és keres, ha metriká
 |Microsoft.Storage/storageAccounts | Igen|
 |Microsoft.StreamAnalytics/streamingjobs| Igen|
 |Microsoft.TimeSeriesInsights/environments | Igen|
-|A Microsoft. Webalkalmazás/kiszolgálófarmok | Igen |
-|A Microsoft. Webhelyek / (kivéve a functions) | Igen|
-|A Microsoft. Webalkalmazás/hostingEnvironments/multiRolePools | Nem|
-|A Microsoft. Webalkalmazás/hostingEnvironments/workerPools| Nem
+|Microsoft. Web/serverfarms | Igen |
+|Microsoft. Webhelyek / (kivéve a functions) | Igen|
+|Microsoft. Web/hostingEnvironments/multiRolePools | Nem|
+|Microsoft. Web/hostingEnvironments/workerPools| Nem
 |Microsoft.SQL/Servers | Nem|
 
 ## <a name="next-steps"></a>További lépések
@@ -136,3 +136,4 @@ Ha klasszikus metrikariasztásokat használatát még ma, és keres, ha metriká
 - [Ismerje meg, hogyan hozhat létre, megtekintése és kezelése az Azure-ban metrikákhoz kapcsolódó riasztások](alerts-metric.md)
 - [Ismerje meg, hogyan helyezhet üzembe Azure Resource Manager-sablonok használatával metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-metric-create-templates.md)
 - [További információ a műveletcsoportokról](action-groups.md)
+

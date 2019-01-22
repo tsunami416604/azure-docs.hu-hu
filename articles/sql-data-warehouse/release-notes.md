@@ -10,19 +10,20 @@ ms.component: manage
 ms.date: 11/11/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: a4737f4308f49547178bb216b90589c596f604c9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7a02a7fb8043c63ce47f7f0c7dccf025ab5ab402
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118438"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421453"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései
 
-Az Azure SQL Data Warehouse egy felhőalapú vállalati adatok adattárház (EDW), amely ötvözi a nagymértékben párhuzamos feldolgozási (MPP) gyorsan összetett lekérdezések futtatása több petabájtnyi adat. Az SQL Data Warehouse a big data-megoldások egyik fő összetevőjeként használható. Importálja a big data-adatokat az SQL Data Warehouse-ba egyszerű PolyBase T-SQL lekérdezések használatával, majd az MPP nyújtotta lehetőségeket kiaknázva nagy teljesítményű elemzéseket futtathat. Az adatok integrálásával és elemzésével az adattárház válik azzá az egyetlen egységes forrássá, ahonnan a vállalat a valós adatokat és kielemzett eredményeket lekérheti.
+Az Azure SQL Data Warehouse (az SQL DW) egy felhőalapú vállalati adattárház, amely ötvözi a nagymértékben párhuzamos feldolgozási (MPP) gyorsan összetett lekérdezések futtatása több petabájtnyi adat. Az SQL Data Warehouse a big data-megoldások egyik fő összetevőjeként használható. Importálja a big data-adatokat az SQL Data Warehouse-ba egyszerű PolyBase T-SQL lekérdezések használatával, majd az MPP nyújtotta lehetőségeket kiaknázva nagy teljesítményű elemzéseket futtathat. Az adatok integrálásával és elemzésével az adattárház válik azzá az egyetlen egységes forrássá, ahonnan a vállalat a valós adatokat és kielemzett eredményeket lekérheti.
 
 Kattintson az alábbi hivatkozásokra kattintva további információk az új funkciók és fejlesztések, amelyek az Azure SQL Data Warehouse legújabb verzióját. Ezek a szolgáltatásfrissítések fogadásához az azonosított karbantartási ütemezés során várható.
 
+- [Az SQL DW verzió 10.0.10106.0](./release-notes-10-0-10106-0.md)
 - [A 2018. december](./release-notes-december-2018.md)
 - [2018. október](./release-notes-october-2018.md)
 - [2018. szeptember](./release-notes-september-2018.md)
@@ -39,9 +40,9 @@ Ellenőrizze, hogy melyik kiadás lett, az adattárház lett alkalmazva. Csatlak
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-Példa a kimenetre: ![Az SQL Data Warehouse-verzió](./media/release-notes/sql_data_warehouse_version.png)
+Példa a kimenetre: ![Az SQL Data Warehouse-verzió](./media/release-notes/dw-version.png)
 
-A dátum, győződjön meg arról, melyik kiadás telepítve van az Azure SQL Data Warehouse azonosított használja. 
+Kérjük, győződjön meg arról, melyik kiadás telepítve van az Azure SQL Data Warehouse azonosított verzióját használja. 
 
 
 ## <a name="next-steps"></a>További lépések

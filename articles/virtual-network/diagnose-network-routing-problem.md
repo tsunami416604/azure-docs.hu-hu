@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: jdial
-ms.openlocfilehash: 695d5f1507f766cf0a2ad96d7dcd25f45f98c20e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 56dd13f5c2c0db4af65d8bc5d4ee5c072a161964
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994717"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429634"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Virtuális gép útválasztási problémáinak diagnosztizálása
 
@@ -49,12 +49,12 @@ A következő lépések azt feltételezik, hogy rendelkezik egy meglévő virtu�
     Az előző képen látható példában a felsorolt útvonalak alapértelmezett útvonalakat, amelyek az Azure létrehozza az egyes alhálózatokon. A listában legalább ezeket az útvonalakat tartalmaz, de előfordulhat, hogy további útvonalakat függően előfordulhat, hogy a virtuális hálózat és egy másik virtuális hálózat társviszonyban álló, vagy egy Azure VPN-átjárón keresztül a helyszíni hálózathoz csatlakozik, például engedélyezett képességek. Minden egyes az útvonalakat, és a többi útvonal a hálózati adapter látni kapcsolatos további információkért lásd: [virtuális hálózat forgalmának útválasztása](virtual-networks-udr-overview.md). Ha a lista útvonal sok van, akkor előfordulhat, hogy egyszerűbb kiválasztásához **letöltése**, hogy töltse le az útvonalak listája egy .csv-fájlt.
 
 Érvényes útvonalak a virtuális Gépet az előző lépésekben is tekinthetők meg, bár az érvényes útvonalak keresztül is megtekintheti egy:
-- **Egyes hálózati adapter**: ismerje meg, hogyan [egy hálózati adapter megtekintésére](virtual-network-network-interface.md#view-network-interface-settings).
-- **Az egyes útvonaltábla**: ismerje meg, hogyan [megtekintése egy útválasztási táblázatot](manage-route-table.md#view-details-of-a-route-table).
+- **Egyes hálózati adapter**: Ismerje meg, hogyan [egy hálózati adapter megtekintésére](virtual-network-network-interface.md#view-network-interface-settings).
+- **Az egyes útvonaltábla**: Ismerje meg, hogyan [megtekintése egy útválasztási táblázatot](manage-route-table.md#view-details-of-a-route-table).
 
 ## <a name="diagnose-using-powershell"></a>Diagnosztizálhatja a PowerShell használatával
 
-A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.0.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha Ön helyileg futtatja a Powershellt, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-bA egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions).
+A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.0.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha Ön helyileg futtatja a Powershellt, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-bA egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions).
 
 Az érvényes útvonalak beolvasása a hálózati adapter [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable). Az alábbi példa lekéri nevű hálózati adapter érvényes útvonalaihoz *myVMVMNic*, azaz egy erőforráscsoportba tartozó nevű *myResourceGroup*:
 

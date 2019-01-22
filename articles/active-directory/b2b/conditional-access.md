@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 47d41884a50450399df6273502096e0e630dbcf3
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8938f4bcf012eadb8d4b0ced92b9996bc58236a5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981762"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432047"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Feltételes hozzáférés B2B-együttműködés felhasználók
 
@@ -74,7 +74,7 @@ A jelenlegi kiadásban MFA neve mindig a erőforrás bérlős okait, kiszámíth
 
 Ha Contoso többtényezős hitelesítési szabályzat az App1 számítógépen, de nem App2 engedélyezve van, majd ha megnézzük a Contoso MFA-jogcímet a jogkivonatban, előfordulhat, hogy láthatjuk, a következő problémaleírást:
 
-* 1. napja: Egy felhasználó van az MFA a Contoso és az App1, akkor nincs további MFA fér hozzá a Fabrikam kijelölt alkalmazottai üzenet jelenik meg.
+* Day 1: Egy felhasználó van az MFA a Contoso szervezetben, és az App1, akkor nincs további MFA fér hozzá a Fabrikam kijelölt alkalmazottai üzenet jelenik meg.
 
 * 2. napon: A felhasználó érte el az alkalmazás 2 a Contoso szervezetben, így most már a Fabrikam elérésekor, akkor regisztrálnia kell a multi-factor Authentication van.
 
@@ -84,7 +84,7 @@ Ezenkívül akkor is, ha a Contoso MFA lehetőséggel rendelkezik, nincs mindig 
 
 Végül erőforrás bérlőt többtényezős hitelesítés is használható az msa-k és közösségi azonosítóknak és partneri szervezetek számára, amelyek nem rendelkeznek a többtényezős hitelesítés beállítása az.
 
-Ezért a B2B-felhasználók a multi-factor Authentication a javaslat, hogy mindig szükség van az MFA a meghívó bérlőben. Dupla MFA bizonyos esetekben ez a követelmény vezethet, de fér hozzá a meghívó bérlőben, amikor a végfelhasználók élmény kiszámítható: Éva regisztrálnia kell a multi-factor Authentication a meghívó bérlőben.
+Ezért a B2B-felhasználók a multi-factor Authentication a javaslat, hogy mindig szükség van az MFA a meghívó bérlőben. Ez a követelmény bizonyos esetekben dupla MFA vezethet, de fér hozzá a meghívó bérlőben, amikor a végfelhasználók élmény kiszámítható: A meghívó bérlőben fel a multi-factor Authentication kell regisztrálni.
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Eszköz-, hely- és kockázatalapú feltételes hozzáférés B2B-felhasználók
 
@@ -106,4 +106,4 @@ Az Azure AD B2B együttműködés a következő cikkekben talál:
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 * [Az Azure AD B2B-együttműködés licencelése](licensing-guidance.md)
-* [Az Azure Active Directory B2B-együttműködés – gyakori kérdések (GYIK)](faq.md)
+* [Azure Active Directory vállalatközi együttműködés – gyakori kérdések](faq.md)

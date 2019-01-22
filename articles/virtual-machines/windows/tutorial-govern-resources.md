@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 6377a54cc862bb5f62726c3ce91a41cc6eb0763d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
-ms.translationtype: HT
+ms.openlocfilehash: 6b36cdecb178a7189773abbfe963411e19764401
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311388"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438660"
 ---
-# <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Oktatóanyag: Windowsos virtuális gépek vezérlése az Azure PowerShell-lel
+# <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Oktatóanyag: További információ a Windows virtuális gép irányítás az Azure PowerShell használatával
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-A cikkben szereplő példák használatához az Azure PowerShell 6.0-s vagy újabb verziója szükséges. Ha helyileg futtatja a PowerShellt, és 6.0-snál régebbi verzióval rendelkezik, [frissítsen egy újabb verzióra](/powershell/azure/install-azurerm-ps). Emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. A helyi telepítések estén [az Azure AD PowerShell-modult is le kell töltenie](https://www.powershellgallery.com/packages/AzureAD/), hogy létrehozhasson egy új Azure Active Directory-csoportot.
+A cikkben szereplő példák használatához az Azure PowerShell 6.0-s vagy újabb verziója szükséges. Ha helyileg futtatja a PowerShellt, és 6.0-snál régebbi verzióval rendelkezik, [frissítsen egy újabb verzióra](/powershell/azure/azurerm/install-azurerm-ps). Emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. A helyi telepítések estén [az Azure AD PowerShell-modult is le kell töltenie](https://www.powershellgallery.com/packages/AzureAD/), hogy létrehozhasson egy új Azure Active Directory-csoportot.
 
 ## <a name="understand-scope"></a>A hatókör megismerése
 

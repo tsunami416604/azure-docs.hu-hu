@@ -7,12 +7,12 @@ author: viv-liu
 ms.author: viviali
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6f8bed8aba43d77cdfad49f4fe62a4c7aa2c5ce3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: a37eb68d135d156c25c58bf91489d5b50ac2c170
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368069"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423120"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>A Power BI-Irányítópulton az Azure IoT Central adatok megjelenítése és elemzése
 
@@ -29,7 +29,7 @@ Az Azure IoT Central elemzések Power BI megoldássablon hatékony Power BI-irá
 
 Ez a megoldássablon állítja be a folyamatot, amely beolvassa az adatokat az Azure Blob storage-fiókjában [folyamatos adatexportálás](howto-export-data.md). Ezeket az adatokat az Azure Functions, az Azure Data Factory és Azure SQL Database dolgozza fel, és az adatok átalakítása halad keresztül. A kimenet lehetnek formájában jelenik meg és elemezheti a Power BI-jelentések PBIX-fájlként letölthető. Ezen erőforrások mindegyike jönnek létre az Azure-előfizetésében, így minden egyes összetevő, hogy illeszkedjen az igényeihez szabhatja. Ez a megoldássablon az teljes mértékben nyílt forráskódú, így további információ az architektúra és a megoldás kibővítése meglátogatják a [GitHub-adattárat](https://aka.ms/iotcentralgithubpowerbisolutiontemplate).
 
-## <a name="get-the-azure-iot-central-analytics-solution-templatehttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Első a [Azure IoT Central analitikai megoldássablonját](https://aka.ms/iotcentralpowerbisolutiontemplate) Microsoft AppSource-ból
+## <a name="get-the-azure-iot-central-analytics-solution-templatehttpsbpsolutiontemplatescomnamemicrosoft-iotcontinuousdataexporttemplate-from-microsoft-appsource"></a>Első a [Azure IoT Central analitikai megoldássablonját](https://bpsolutiontemplates.com/?name=Microsoft-IoTContinuousDataExportTemplate) Microsoft AppSource-ból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A sablon beállítása az alábbiak szükségesek:
@@ -52,7 +52,7 @@ A második a jelentés az események mélyebb ismertetőinken és hibák és fig
 
 ## <a name="resources"></a>További források
 
-Látogasson el az appsource-ban lekérése a [Azure IoT Central analitikai megoldássablonját](https://aka.ms/iotcentralpowerbisolutiontemplate).
+Látogasson el az appsource-ban lekérése a [Azure IoT Central analitikai megoldássablonját](https://bpsolutiontemplates.com/?name=Microsoft-IoTContinuousDataExportTemplate).
 
 Látogasson el a [GitHub-adattárat](https://aka.ms/iotcentralgithubpowerbisolutiontemplate) további információ az architektúra és kiterjesztheti a megoldást.
 

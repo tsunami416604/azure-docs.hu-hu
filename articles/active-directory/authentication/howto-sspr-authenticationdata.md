@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: eb3c1177f86f4c595280521f4dbcbe8081f68895
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f30a0d80b40626530ecebdb129daff4a0c5215fc
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296244"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426199"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Jelszó-visszaállítás anélkül, hogy a végfelhasználói regisztrációs üzembe helyezése
 
@@ -75,7 +75,7 @@ A következő mezőket a PowerShell használatával állítható:
 
 * **Másodlagos e-mail-cím**
 * **Mobiltelefon**
-* **Irodai telefon**: csak akkor állítható, ha egy helyszíni címtár nem vagyunk szinkronizálása
+* **Irodai telefon**: Csak akkor állítható, ha egy helyszíni címtár nem vagyunk szinkronizálása
 
 ### <a name="use-powershell-version-1"></a>1. verzió PowerShell-lel
 

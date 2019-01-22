@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/11/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 945dcf5776867a9b892a879569a4b58890cb1975
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 2c496f78650be6fc19197c82dc9534fbd256ac45
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076454"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422592"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>IBM DB2 Azure virtuális gépek DBMS üzembe helyezési SAP számítási feladatokhoz
 
@@ -235,7 +235,7 @@ ms.locfileid: "39076454"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -321,16 +321,16 @@ Az alábbi SAP-megjegyzések kapcsolódó Azure-beli SAP kapcsolatban a dokument
 
 | Megjegyzés száma | Beosztás |
 | --- | --- |
-| [1928533] |SAP-alkalmazások az Azure-on: támogatott termékek és Azure-beli Virtuálisgép-típusok |
-| [2015553] |A Microsoft Azure-beli SAP: támogatás előfeltételei |
+| [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure virtuális gépek típusai |
+| [2015553] |A Microsoft Azure-beli SAP: Támogatás előfeltételei |
 | [1999351] |Továbbfejlesztett Azure Monitoring for SAP hibaelhárítási |
 | [2178632] |Metrikák figyelése a Microsoft Azure-beli SAP-kulcs |
-| [1409604] |A Windows virtualizálási: Enhanced Monitoring |
-| [2191498] |SAP használata Linux az Azure-ral: Enhanced Monitoring |
-| [2233094] |DB6: Azure-ban, IBM DB2-höz használatával Linux, UNIX és a Windows - további információ az SAP-alkalmazások |
-| [2243692] |A Microsoft Azure (IaaS) virtuális gép Linux: SAP-licenccel kapcsolatos problémák |
+| [1409604] |A Windows-virtualizálás: Speciális figyelés |
+| [2191498] |SAP használata Linux az Azure-ral: Speciális figyelés |
+| [2233094] |DB6: SAP-alkalmazások Azure-ban, IBM DB2-höz használatával Linux, UNIX és a Windows - további információ |
+| [2243692] |A Microsoft Azure (IaaS) virtuális gép Linux: Az SAP-licenccel kapcsolatos problémák |
 | [1984787] |SUSE LINUX Enterprise Server 12: Telepítési jegyzetek |
-| [2002167] |Red Hat Enterprise Linux 7.x: telepítés és frissítés |
+| [2002167] |Red Hat Enterprise Linux 7.x: Telepítés és frissítés |
 | [1597355] |Linux-lapozóterület javaslat |
 
 Egy Pull-kérelem-olvassa el ezt a dokumentumot, mint rendelkezik olvassa el a dokumentumot [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) lévő többi útmutató és a [SAP számítási feladatok az Azure-dokumentáció](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 

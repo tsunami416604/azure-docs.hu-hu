@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90b4bc17de60baa59d6c159105674468a63d10f9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 78ad40796a31e0c803b892e0c1b50e66b32c2b0a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430170"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425878"
 ---
-# <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver az SQL Server Azure virtuális gépek DBMS üzembe helyezése
+# <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS deployment for SAP NetWeaver
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -235,7 +235,7 @@ ms.locfileid: "49430170"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -328,9 +328,9 @@ A következő szakaszokban megtalálhatja a fenti hivatkozást a dokumentáció 
 
 Van néhány SQL Server IaaS konkrét információk tudnia kell, mielőtt továbblépne:
 
-* **SQL-Verziótámogatás**: az ügyfelek, az SQL Server 2008 R2 és újabb verziója támogatja a Microsoft Azure virtuális gépen. Korábbi verziók nem támogatottak. Tekintse át az ebben az általános [támogatási nyilatkozattal](https://support.microsoft.com/kb/956893) további részletekért. Általánosságban véve az SQL Server 2008 használata a Microsoft által is támogatott. Azonban jelentős funkciót az SAP, az SQL Server 2008 R2 rendszerben jelent meg, amely miatt az SQL Server 2008 R2 az SAP a minimális kiadásban. Általában érdemes lehet a legújabb SQL Server használata az SAP számítási feladatok futtatásához az Azure IaaS-kiadások. A legújabb SQL Server-verziókban az egyes Azure-szolgáltatások és funkciók jobb integrációt kínálnak. Vagy optimalizálására az Azure IaaS-infrastruktúrát a módosításokat. A tanulmány ezért az SQL Server 2016 és az SQL Server 2017-ben.
-* **SQL-teljesítmény**: Microsoft Azure futtatott virtuális gépek végrehajtása is támogatáshoz képest korlátozottabb más nyilvános felhőalapú virtualizációs megoldások, de az egyes eredmények eltérőek lehetnek. Tekintse meg a cikk [teljesítmény az Azure Virtual machines gépeken az SQL Server ajánlott eljárásai](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
-* **Az Azure piactéren elérhető lemezképekkel**: új Microsoft Azure virtuális gép üzembe helyezése a leggyorsabb módot kínálni arra, hogy a lemezképek használata az Azure Marketplace-ről. Nincsenek a legújabb SQL Server-kiadások tartalmazó lemezképek az Azure piactéren. A képek, ahol az SQL Server már telepítve van az SAP NetWeaver-alkalmazásaihoz azonnal nem használható. A hiba oka az SQL Server alapértelmezett rendezése ezeket a képeket, és nem az SAP NetWeaver-rendszerek által igényelt rendezés belül van telepítve. Az ilyen rendszerképek használatához ellenőrizze a fejezetben leírt lépéseket [SQL Server-lemezkép használatával a Microsoft Azure Marketplace-en kívül][dbms-guide-5.6]. 
+* **SQL-Verziótámogatás**: Az ügyfelek, az SQL Server 2008 R2 és újabb verziója támogatja a Microsoft Azure virtuális gépen. Korábbi verziók nem támogatottak. Tekintse át az ebben az általános [támogatási nyilatkozattal](https://support.microsoft.com/kb/956893) további részletekért. Általánosságban véve az SQL Server 2008 használata a Microsoft által is támogatott. Azonban jelentős funkciót az SAP, az SQL Server 2008 R2 rendszerben jelent meg, amely miatt az SQL Server 2008 R2 az SAP a minimális kiadásban. Általában érdemes lehet a legújabb SQL Server használata az SAP számítási feladatok futtatásához az Azure IaaS-kiadások. A legújabb SQL Server-verziókban az egyes Azure-szolgáltatások és funkciók jobb integrációt kínálnak. Vagy optimalizálására az Azure IaaS-infrastruktúrát a módosításokat. A tanulmány ezért az SQL Server 2016 és az SQL Server 2017-ben.
+* **SQL Performance**: A Microsoft Azure futtatott virtuális gépek végrehajtása is támogatáshoz képest korlátozottabb más nyilvános felhőalapú virtualizációs megoldások, de az egyes eredmények eltérőek lehetnek. Tekintse meg a cikk [teljesítmény az Azure Virtual machines gépeken az SQL Server ajánlott eljárásai](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
+* **Az Azure Marketplace rendszerképekből**: Új Microsoft Azure virtuális gép üzembe helyezése a leggyorsabb módot kínálni arra, hogy egy képet az Azure Marketplace-ről. Nincsenek a legújabb SQL Server-kiadások tartalmazó lemezképek az Azure piactéren. A képek, ahol az SQL Server már telepítve van az SAP NetWeaver-alkalmazásaihoz azonnal nem használható. A hiba oka az SQL Server alapértelmezett rendezése ezeket a képeket, és nem az SAP NetWeaver-rendszerek által igényelt rendezés belül van telepítve. Az ilyen rendszerképek használatához ellenőrizze a fejezetben leírt lépéseket [SQL Server-lemezkép használatával a Microsoft Azure Marketplace-en kívül][dbms-guide-5.6]. 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>A VM-/ VHD-szerkezet SAP-kapcsolódó SQL Server-telepítéseket javaslatok
@@ -392,7 +392,7 @@ Ez a funkció a részletek megtalálhatók a cikkben [SQL Server adatfájljainak
 Éles rendszerek ajánljuk, hogy elkerülése érdekében ez a konfiguráció helyett válassza ki az Elhelyezés a SQL Server-adatok és a naplófájlokat az Azure Premium Storage virtuális merevlemezek helyett közvetlenül az Azure-blobok.
 
 
-## <a name="sql-server-2014-buffer-pool-extension"></a>Az SQL Server 2014 pufferkészlet-bővítmény
+## <a name="sql-server-2014-buffer-pool-extension"></a>SQL Server 2014 Buffer Pool Extension
 Az SQL Server 2014 bevezetett egy új funkciót, amelyet [pufferkészlet-kiterjesztés](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension?view=sql-server-2017). Ez a funkció, amelyet a memóriát, valamint egy második szintű gyorsítótár-kiszolgáló helyi SSD-k vagy a virtuális gép biztonsági SQL Server a pufferkészletben terjeszti ki. A pufferkészlet-bővítmény lehetővé teszi, hogy tartja az adatokat egy nagyobb munkakészletének "a memóriában". Standard szintű Azure Storage eléréséhez képest a hozzáférést a bővítményt a pufferkészlet, helyi SSD-k az Azure virtuális gép található, a számos tényező gyorsabb. A pufferkészlet-kiterjesztés az Azure Premium Storage olvasási gyorsítótárat összehasonlítása, ajánlott az SQL Server-adatfájlok, nincs jelentős előnyökkel várhatóan a pufferkészlet-bővítményeinek. Oka, hogy mindkét gyorsítótárak (SQL Server pufferkészlet-bővítmény és a prémium szintű Storage olvasási gyorsítótár) használ az Azure-beli számítási csomópont helyi lemezeket.
 
 Addig is az SQL Server a pufferkészlet-kiterjesztés kapcsolatos tapasztalatok SAP számítási feladatok vegyes, és még nem teszi lehetővé a egyértelmű javaslatok-e használni minden esetben a. Az ideális eset az, hogy az SAP-alkalmazás szükséges munkakészletének illeszkedik a fő memóriában. A csapattagok pedig nyugodtabban aludhatnak kínál, amelyek akár 4 TB memóriával rendelkező virtuális gépek Azure-ban elérhető munkakészletének megtartása a memóriában, kell lennie. Ezért a pufferkészlet-bővítmény használatát korlátozva, egyes ritka esetekben, és nem lehet egy alapvető technikai esetet.  
@@ -422,8 +422,8 @@ Automatikus biztonsági mentés egy Azure-beli Windows virtuális gépen futó S
 
 Ez a módszer képességeivel kapcsolatos további részletekért ezekben a cikkekben található:
 
-- Az SQL Server 2014: [automatikus biztonsági mentése az SQL Server 2014 virtuális gépeken (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
-- Az SQL Server 2016/2017: [biztonsági mentési v2 automatikus az Azure virtuális gépeken (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
+- SQL Server 2014: [Automatikus biztonsági mentés az SQL Server 2014 virtuális gépeken (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
+- SQL Server 2016/2017: [Biztonsági mentési v2 automatikus az Azure virtuális gépeken (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
 
 Vajon a dokumentációt, láthatja, hogy az a Funkciók, az a legújabb SQL Server-kiadások továbbfejlesztett. További részletek az SQL Server automatikus biztonsági másolatok jelennek meg a cikk [SQL Server Managed Backup a Microsoft Azure-bA](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017). A biztonsági másolat mérete elméleti határértéke 12 TB.  Az automatikus biztonsági másolatok jó módszer a biztonsági mentési legfeljebb 12 TB méretű is lehet. Több blobok írt párhuzamosan, mivel egy nagyobb, mint 100 MB/s átviteli várható. 
  
@@ -450,7 +450,7 @@ Miután az SQL Server-lemezképek az Azure Marketplace-en nem állította be, am
 
 * Nyisson meg egy Windows parancssori ablakban rendszergazdaként.
 * Lépjen a C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
-* Hajtsa végre a parancsot: Setup.exe/test/művelet = REBUILDDATABASE InstanceName = MSSQLSERVER /SQLSYSADMINACCOUNTS =`<local_admin_account_name`> /SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
+* Hajtsa végre a parancsot: Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> van a fiók, amely a rendszergazdai fiókként lett definiálva, a virtuális gép telepítésekor az első alkalommal a gyűjteményből.
 
 A folyamat csak kell néhány percet igénybe. Annak érdekében, hogy győződjön meg arról, hogy a lépés befejeződött a megfelelő eredménnyel, hajtsa végre az alábbi lépéseket:
@@ -519,7 +519,7 @@ SQL Server Always On a leggyakrabban használt magas rendelkezésre állású é
 
 Több ügyfél között az Azure-régiók további vészhelyreállítási funkciók az SQL Server Always On funkció vannak kihasználva. Ügyfél segítségével is lehetővé teszi egy másodlagos másodpéldány a biztonsági mentéshez. 
 
-## <a name="sql-server-transparent-data-encryption"></a>Az SQL Server transzparens adattitkosítás
+## <a name="sql-server-transparent-data-encryption"></a>SQL Server Transparent Data Encryption
 Egy SQL Servert használó ügyfelek száma [transzparens adattitkosítási (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) amikor az SAP az SQL Server telepítése adatbázisok az Azure-ban. Az SAP teljes mértékben támogatott az SQL Server TDE funkcióit (lásd az SAP-Jegyzetnek [#1380493](https://launchpad.support.sap.com/#/notes/1380493)). 
 
 ### <a name="applying-sql-server-tde"></a>TDE SQL-kiszolgáló alkalmazása

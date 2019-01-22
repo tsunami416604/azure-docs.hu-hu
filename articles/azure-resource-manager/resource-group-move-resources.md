@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 32298b78f3b98afb6754e07ad63467f4f995d84f
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 4e53351d4581791df77dbb64d9eb0f25815204f5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382904"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426726"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -98,7 +98,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Portál irányítópultok
 * A Power BI - mind a Power BI Embedded és a Power BI-munkaterület-csoport
 * Nyilvános IP - áthelyezhetők az alapszintű Termékváltozat nyilvános IP-Címére. Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
-* Recovery Services-tároló – hogy regisztrálva legyenek az olyan [korlátozott nyilvános előzetes verzió](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
+* A Recovery Services-tároló – regisztrálhatja az előfizetését [korlátozott nyilvános előzetes verzió](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 * Az Azure Cache redis - Ha az Azure Cache Redis-példány van konfigurálva, és a virtuális hálózat, a példány nem helyezhető át másik előfizetésbe. Lásd: [virtuális hálózatok korlátozások](#virtual-networks-limitations).
 * Scheduler
 * Keresés –, erőforrások nem helyezhetők át több keresési különböző régiókban lévő több műveletet. Helyezze át őket a különböző műveletek.
@@ -305,7 +305,7 @@ A művelet több percig futtathatnak.
 
 ### <a name="recovery-services-limitations"></a>Recovery Services-korlátozások
 
-Recovery Services-tároló áthelyezéséhez regisztrálnia kell a [korlátozott nyilvános előzetes verzió](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
+ Recovery Services-tároló áthelyezéséhez regisztrálhatja az előfizetését [korlátozott nyilvános előzetes verzió](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 
 Jelenleg áthelyezheti egy Recovery Services-tárolót, régiónként, egyszerre. Tárolók, amelyek biztonsági mentése az Azure Files, az Azure File Sync vagy az SQL IaaS virtuális gépek nem helyezhetők át.
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: d80794511f334cd6dc5af418e24fc774b7d8728f
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d89fb86209af2074794d5a5abcdcebadec904799
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867510"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434274"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Útmutató az Azure Active Directory vállalatközi együttműködés licenceléséhez
 
@@ -31,7 +31,7 @@ B2B-vendégként felhasználói licencelés automatikusan kiszámítása és jel
 
 Bizonyos esetekben, ahol a vendégfelhasználó jelentett nem külső felhasználó 1:5 juttatás használatával. Ha a Vendég felhasználó már rendelkezik egy fizetős Azure AD-licencre a felhasználó saját szervezet, a felhasználó nem használja a B2B-vendégként felhasználói licencek egyikét. Emellett a felhasználók használhatják a Vendég ingyenes további licencelési követelmény az Azure AD-funkciók. Vendég felhasználók férhetnek hozzá az Azure AD-funkciók ingyenes, még akkor is, ha nincsenek a fizetős Azure AD-licenceket. 
 
-## <a name="examples-calculating-guest-user-licenses"></a>Példák: A Vendég felhasználói licencek kiszámítása
+## <a name="examples-calculating-guest-user-licenses"></a>Példák: Kiszámítása a Vendég felhasználói licencek
 Miután határozhatja meg, hány vendég felhasználók szeretne hozzáférni a fizetős Azure AD szolgáltatásokba, ellenőrizze, hogy elég fizetett Azure AD-licenc szükséges 1:5 arányú vendégfelhasználóknak. Néhány példa:
 
 - Az Azure AD-alkalmazások vagy szolgáltatások 100 vendégfelhasználók meghívása szeretne, és a hozzáférés-kezelés és üzembe helyezés minden vendégfelhasználó hozzárendelni kívánt. Emellett szeretné 50 vendég felhasználók többtényezős hitelesítés és a feltételes hozzáférés szükséges. Ez a kombináció fedezésére 10 alapszintű Azure AD-licenceket, és 10 Azure AD Premium P1-licenc lesz szüksége. Ha a vendég felhasználók az Identity Protection funkcióinak használatát tervezi, szüksége lesz egy-egy 1:5 vendégfelhasználóknak az Azure AD Premium P2 licenccel.
@@ -50,4 +50,4 @@ Mindkét forgatókönyv esetében, a jobb megoldás, hogy a felhasználókat tag
 Az alábbi forrásanyagokban talál az Azure AD B2B együttműködés:
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-* [Az Azure Active Directory B2B-együttműködés – gyakori kérdések (GYIK)](faq.md)
+* [Azure Active Directory vállalatközi együttműködés – gyakori kérdések](faq.md)

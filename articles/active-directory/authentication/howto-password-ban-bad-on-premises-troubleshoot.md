@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: d9f3ba642a5d00594aa6bdef597d5db43c2fc121
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 008fba2fd6052ac9043de6ec217cb71d17f3ecce
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188980"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427100"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Előzetes verzió: Az Azure AD jelszó-védelem figyelési, jelentéseket és hibaelhárítás
 
@@ -38,7 +38,7 @@ A különböző DC agent-összetevők használatával a következő tartományok
 
 |Összetevő |Esemény tartomány|
 | --- | --- |
-|Tartományvezérlő ügynök jelszó szűrő dll| 10000 – 19999|
+|Tartományvezérlő ügynök jelszó szűrő dll| 10000-19999|
 |Tartományvezérlő ügynök szolgáltatás üzemeltetési folyamata| 20000-29999|
 |Tartományvezérlő ügynök szolgáltatás házirend ellenőrzési logika| 30000-39999|
 

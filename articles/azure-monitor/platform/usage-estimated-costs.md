@@ -9,12 +9,12 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: 6b8940f62b94615b4622f60786e411b9a18b2dee
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1b679e333ba3a84e2d1ffd90a3f47f48a46e236e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001617"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427763"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Használat és becsült költségek figyelése
 
@@ -112,7 +112,7 @@ Szeretne áthelyezni egy előfizetés az új díjszabási modellben, csak adja m
 
 ## <a name="automate-moving-to-the-new-pricing-model"></a>Az új díjszabási modellre való automatizálásához
 
-Az alábbi parancsfájlok van szükség az Azure PowerShell-modul. Ellenőrizze, hogy a legújabb verziót, tekintse meg a [Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0).
+Az alábbi parancsfájlok van szükség az Azure PowerShell-modul. Ellenőrizze, hogy a legújabb verziót, tekintse meg a [Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.1.0).
 
 Miután az Azure PowerShell legújabb verzióját, akkor először futtatni szeretné ``Connect-AzureRmAccount``.
 

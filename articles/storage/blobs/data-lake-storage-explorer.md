@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Használja az Azure Storage Explorer blob létrehozása objektumtárban az Azure Data Lake Storage Gen2 engedélyezve'
+title: 'Gyors útmutató: Adatkezelés az Azure Data Lake Storage Gen2 az Azure Storage Explorer használatával '
 description: Ez a rövid útmutatóban megismerheti, hogyan hozzon létre egy fájlrendszer egy Azure Data Lake Storage Gen2-fiókot, és a egy könyvtárat és a egy fájlt az Azure Storage Explorer használatával. Ezután megtudhatja, hogyan töltheti le a fájlt a helyi számítógépen, és megtekintése az összes fájl egy könyvtár.
 services: storage
 author: tamram
@@ -9,14 +9,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: tamram
-ms.openlocfilehash: e556dbe377f5bba6cbd727ac69c3d4fb9127a2c9
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 5b46d5644536123a9ef3dfc7be87e34d03ee4c4f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385618"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423596"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Gyors útmutató: Blob létrehozása objektumtárban az Azure Storage Explorer használatával
+# <a name="quickstart-use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Gyors útmutató: Az Azure Data Lake Storage Gen2-fiókban lévő adatok kezelése az Azure Storage Explorer használatával
 
 Ebben a rövid útmutató az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) hozhat létre egy könyvtárat és a egy blobot. Ezután megismerheti a blob letöltése a helyi számítógépen, és a egy könyvtár összes BLOB megtekintése. Azt is megtudhatja, hogyan hozzon létre egy pillanatképet egy blobról, könyvtár hozzáférési szabályzatok kezelése, és a egy közös hozzáférésű jogosultságkód létrehozása.
 

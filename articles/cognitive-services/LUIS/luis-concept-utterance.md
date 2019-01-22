@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae090a8cd812868f63c9805b2f5b59769a715090
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 638020ab4f64d800bd9d42f226cb36701720f8d0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975270"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427200"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Jó utterances Mik a LUIS alkalmazás ismertetése
 
@@ -88,7 +88,7 @@ Képzési lehetőségek a lehetséges általában nem determinisztikus: az utter
 
 ## <a name="testing-utterances"></a>Tesztelési kimondott szöveg 
 
-A fejlesztők el kell valódi forgalmat a LUIS alkalmazás tesztelése a kimondott szöveg küldése a [előrejelzési végpont](luis-how-to-manage-keys.md) URL-CÍMÉT. Ezek a kimondott szöveg a szándékok és entitások teljesítményének javítását szolgálják [tekintse át a kimondott szöveg](luis-how-to-review-endoint-utt.md). A LUIS-webhely panel tesztelése az elküldött tesztek nem kap a végponton keresztül, és ezért nem jelentenek aktív tanulás. 
+A fejlesztők el kell valódi forgalmat a LUIS alkalmazás tesztelése a kimondott szöveg küldése a [előrejelzési végpont](luis-how-to-azure-subscription.md) URL-CÍMÉT. Ezek a kimondott szöveg a szándékok és entitások teljesítményének javítását szolgálják [tekintse át a kimondott szöveg](luis-how-to-review-endoint-utt.md). A LUIS-webhely panel tesztelése az elküldött tesztek nem kap a végponton keresztül, és ezért nem jelentenek aktív tanulás. 
 
 ## <a name="review-utterances"></a>Tekintse át a kimondott szöveg
 

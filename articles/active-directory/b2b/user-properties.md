@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/5/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 01693f16b0af59881c22fefb6ec8abe0c4fb3874
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 278c31f3f1880a3df561038d2710a2b5cc3d68e6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996629"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437841"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B együttműködés felhasználó tulajdonságai
 
@@ -27,9 +27,9 @@ A meghívó szervezetet szükségleteinek egy Azure AD B2B együttműködés fel
 
 - 2. állapot: A Microsoft vagy más fiók tárolt és a gazdagép szervezet vendégfelhasználó-kiszolgálókként. Ebben az esetben a Vendég felhasználó bejelentkezik egy Microsoft-fiókjával vagy a közösségi fiók (google.com vagy hasonló). A meghívott felhasználó identitása alatt ajánlat érvényesítési egy Microsoft-fiók a meghívó szervezetet címtárban jön létre.
 
-- 3. állapot: Az állomás a szervezet a helyszíni Active Directoryban tárolt, és szinkronizálja a gazdagép a szervezet Azure-ral AD. Az Azure AD Connect használatával a partner-fiókok szinkronizálása a felhőbe, az Azure AD B2B-felhasználók a UserType = Vendég. Lásd: [helyileg kezelt partner fiókok hozzáférést biztosít a felhőbeli erőforrások](hybrid-on-premises-to-cloud.md).
+- 3. állapot: A gazdagép a szervezet a helyszíni Active Directoryban tárolt, és szinkronizálja a gazdagép a szervezet Azure AD. Az Azure AD Connect használatával a partner-fiókok szinkronizálása a felhőbe, az Azure AD B2B-felhasználók a UserType = Vendég. Lásd: [helyileg kezelt partner fiókok hozzáférést biztosít a felhőbeli erőforrások](hybrid-on-premises-to-cloud.md).
 
-- 4. állapot: Az állomás a szervezet Azure-ban tárolt AD a UserType = Vendég és hitelesítő adatokat, amelyeket a gazdagép szervezet felügyeli.
+- 4. állapot: A gazdagép a szervezet Azure-ban tárolt AD a UserType = Vendég és hitelesítő adatokat, amelyeket a gazdagép szervezet felügyeli.
 
   ![Megjelenítés a meghívót küldő személy monogramja](media/user-properties/redemption-diagram.png)
 
@@ -59,7 +59,7 @@ A vendégfelhasználók számára az állapot 3. és 4 állapot a **forrás** tu
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Az Azure AD B2B együttműködés felhasználói legfontosabb tulajdonságai
 ### <a name="usertype"></a>UserType
 Ez a tulajdonság azt jelzi, hogy a felhasználót, hogy a gazdagép bérlős kapcsolat. Ez a tulajdonság két értékekkel rendelkezhet:
-- Tag: Ez az érték azt jelzi, hogy a gazdagép szervezet és a egy felhasználó a szervezet Bérlista-alkalmazott. Például ennek a felhasználónak el kell érnie a belső helyek vár. Ez a felhasználó nem számít egy külső közreműködő.
+- Tag: Ez az érték azt jelzi, hogy egy alkalmazott a gazdagép szervezet és a egy felhasználó a szervezet Bérlista a. Például ennek a felhasználónak el kell érnie a belső helyek vár. Ez a felhasználó nem számít egy külső közreműködő.
 
 - Vendég: Ez az érték azt jelzi, hogy a felhasználó, aki nem tekinthető a vállalatnak, például egy külső közreműködő, a partner vagy az ügyfél belső. Az ilyen felhasználók várhatóan nem kap egy Vezérigazgató belső emlékeztető vagy vállalati előnnyel jár, például kap.
 
@@ -69,15 +69,15 @@ Ez a tulajdonság azt jelzi, hogy a felhasználót, hogy a gazdagép bérlős ka
 ### <a name="source"></a>Forrás
 Ez a tulajdonság azt jelzi, hogy a felhasználó bejelentkezik.
 
-- Felhasználó meghívása: Ez a felhasználó kapott meghívót, de még nem még sikerült beváltani a meghívót.
+- A meghívott felhasználó: Ez a felhasználó kapott meghívót, de még nem még sikerült beváltani a meghívót.
 
-- Külső Active Directory: Ez a felhasználó külső szervezet van tárolt, és egy Azure AD-fiókot, a másik szervezethez tartozó használatával hitelesíti. Jelentkezzen be az ilyen állapot 1 felel meg.
+- Külső Active Directory: Ez a felhasználó külső szervezet tárolt van, és egy Azure AD-fiókot, a másik szervezethez tartozó használatával hitelesíti. Jelentkezzen be az ilyen állapot 1 felel meg.
 
 - Microsoft-fiók: Ez a felhasználó Microsoft-fiókkal van tárolt, és hitelesíti a Microsoft-fiók használatával. Jelentkezzen be az ilyen állapot 2 felel meg.
 
-- A Windows Server Active Directory: A felhasználó jelentkezett be a helyszíni Active Directoryból, hogy a szervezethez tartozik. Jelentkezzen be az ilyen állapot 3 felel meg.
+- A Windows Server Active Directory: Ez a felhasználó bejelentkezett a helyszíni Active Directoryból, hogy a szervezethez tartozik. Jelentkezzen be az ilyen állapot 3 felel meg.
 
-- Az Azure Active Directory: Ez a felhasználó végzi a hitelesítést egy az Azure AD-fiókkal, amely a szervezethez tartozik. Jelentkezzen be az ilyen állapot 4 felel meg.
+- Azure Active Directory: Ez a felhasználó hitelesíti magát egy az Azure AD-fiókkal, amely a szervezethez tartozik. Jelentkezzen be az ilyen állapot 4 felel meg.
   > [!NOTE]
   > Forrás- és UserType olyan független tulajdonságok. A forrás értéke nem jelenti azt, egy adott érték a UserType.
 

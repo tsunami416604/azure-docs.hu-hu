@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 2035d342a89ace6d286fc205c346591b29646c5d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: fd7e7151d8ec676239ed810fb700149aab0fe0fa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270144"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427402"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Proaktív hálózatmonitorozás riasztások és az Azure Functions használata a csomagrögzítést
 
@@ -35,7 +35,7 @@ A Network watcherrel, riasztási és függvények a belül az Azure-ökosziszté
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A legújabb [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps).
+* A legújabb [Azure PowerShell-lel](/powershell/azure/azurerm/install-azurerm-ps).
 * A Network Watcher egy meglévő példányát. Ha még nem rendelkezik ilyennel, [a Network Watcher-példány létrehozása](network-watcher-create.md).
 * A Network Watcher ugyanabban a régióban egy meglévő virtuális gépet a [Windows bővítmény](../virtual-machines/windows/extensions-nwa.md) vagy [Linux virtuálisgép-bővítmény](../virtual-machines/linux/extensions-nwa.md).
 
@@ -207,7 +207,7 @@ Az ügyfél-azonosító az Azure Active Directory-alkalmazás Alkalmazásazonos�
 
 1. Az Azure Portalon válassza ki a **előfizetések**. Válassza ki az előfizetést, és válassza a **hozzáférés-vezérlés (IAM)**.
 
-    ![IAM funkciók][functions9]
+    ![Functions IAM][functions9]
 
 1. Válassza ki a fiókot használja, és válassza ki a **tulajdonságok**. Másolja az alkalmazás azonosítója.
 

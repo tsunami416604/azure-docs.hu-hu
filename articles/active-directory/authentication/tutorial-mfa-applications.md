@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 098973e2ece3477ec87b154c0304c4ca7e0246d1
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
-ms.translationtype: HT
+ms.openlocfilehash: 5bd27ed71e93edc10fd86395121c524cb54c98e7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163332"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427610"
 ---
-# <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Oktatóanyag: Az Azure Multi-Factor Authentication próbaverziójának bevezetése
+# <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Oktatóanyag: Végezze el az Azure multi-factor Authentication kísérleti bevezetés
 
 Az oktatóanyag végigvezeti egy olyan feltételes hozzáférési szabályzat konfigurálásán, amely engedélyezi az Azure Multi-Factor Authenticationt (Azure MFA-t) az Azure Portalra való bejelentkezéskor. A szabályzat bevezetése és tesztelése tesztfelhasználók egy adott csoportján történik. Az Azure MFA bevezetése a feltételes hozzáféréssel a hagyományos kikényszerítéses módszerrel szemben hatalmas rugalmasságot biztosít a vállalatok és a rendszergazdák számára.
 
@@ -29,7 +29,7 @@ Az oktatóanyag végigvezeti egy olyan feltételes hozzáférési szabályzat ko
 
 * Egy működő Azure AD-bérlő, legalább próbaverziós licenccel.
 * Egy globális rendszergazdai jogosultsággal rendelkező fiók.
-* Egy nem rendszergazdai szintű tesztfelhasználó ismert jelszóval a teszteléshez. Ha létre kell hoznia a felhasználót, tekintse meg az [új felhasználók az Azure Active Directoryhoz történő hozzáadását ismertető rövid útmutatót](../add-users-azure-active-directory.md).
+* Egy nem rendszergazdai tesztfelhasználó ismeri a tesztelésre, ha egy felhasználó létrehozásához szükséges jelszóval, tekintse meg a cikket [a rövid útmutató: Új felhasználók hozzáadása az Azure Active Directory](../add-users-azure-active-directory.md).
 * Egy tesztcsoport a teszteléshez, amelynek a nem rendszergazdai szintű felhasználó a tagja. Ha létre kell hoznia a csoportot, tekintse meg a [csoport létrehozását és a tagok hozzáadását az Azure Active Directoryban](../active-directory-groups-create-azure-portal.md) ismertető cikket.
 
 ## <a name="enable-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication engedélyezése

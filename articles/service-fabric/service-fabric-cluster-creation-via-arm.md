@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: ba870cf722f95fb6516e1969350d3d25ba280a8c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 06e0509f05352a023651d7121aa89e18e375ef32
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043787"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428325"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Az Azure Resource Manager egy Service Fabric-fürt létrehozása 
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ A használt sablon érhető el a [Azure Service Fabric-sablonminták: windows-sa
 A következő paranccsal hozhat létre bármelyik Windows vagy Linux-fürtön, adja meg az operációs rendszer ennek megfelelően kell. A PowerShell és CLI-parancsok is a tanúsítványt a megadott kimeneti *CertificateOutputFolder*, azonban győződjön meg arról, hogy tanúsítványmappa már létrehozott. A parancs a többi paramétert, valamint a VM-Termékváltozatok például vesz igénybe.
 
 > [!NOTE]
-> A következő PowerShell-parancs csak működik az Azure Resource Manager PowerShell-lel verzió > 6.1-es verzióját. Az Azure Resource Manager PowerShell-verzió aktuális verziójának ellenőrzéséhez futtassa a következő PowerShell-parancsot: "Get-Module AzureRM". Hajtsa végre a [ezt a hivatkozást](/powershell/azure/install-azurerm-ps?view=azurermps-6.3.0) frissítése az Azure Resource Manager PowerShell-verzió. 
+> A következő PowerShell-parancs csak működik az Azure Resource Manager PowerShell-lel verzió > 6.1-es verzióját. Az Azure Resource Manager PowerShell-verzió aktuális verziójának ellenőrzéséhez futtassa a következő PowerShell-parancsot: "Get-Module AzureRM". Hajtsa végre a [ezt a hivatkozást](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.3.0) frissítése az Azure Resource Manager PowerShell-verzió. 
 >
 >
 
@@ -292,7 +292,7 @@ Ezen a ponton rendelkezik egy Azure-ban futó biztonságos fürt. Ezután [csatl
 A JSON-szintaxist és egy sablon tulajdonságait: [Microsoft.ServiceFabric/clusters sablonreferenciája](/azure/templates/microsoft.servicefabric/clusters).
 
 <!-- Links -->
-[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[azure-powershell]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#create-a-service-fabric-cluster-resource-manager-template

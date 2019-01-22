@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 11/30/2018
+ms.date: 01/11/2019
 ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 97f884a45a0a07e2b4c48f39483c70248e7a492e
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 1e3dc984de15fa2c94fc5150020f1af1579e2c5c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620387"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434104"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Hitelesítés és hitelesítési hibakódok
 
@@ -167,7 +167,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS80010 | OnPremisePasswordValidationEncryptionException – a hitelesítési ügynök nem tudja visszafejteni a jelszót. |
 | AADSTS80012 | OnPremisePasswordValidationAccountLogonInvalidHours – a felhasználó próbált meg bejelentkezni kívül esik a megengedett óra (ez van megadva az ad-ben). |
 | AADSTS80013 | OnPremisePasswordValidationTimeSkew – a hitelesítési kísérlet után nem fejeződött be esedékes időt torzulása a hitelesítési ügynök és az AD futtató gép között. Javítsa ki az idő szinkronizálása a problémákat. |
-| AADSTS81004 | DesktopSsoIdentityInTicketIsNotAuthenticated – a Kerberos-hitelesítési kísérlet sikertelen volt. |
+| AADSTS81004 | DesktopSsoIdentityInTicketIsNotAuthenticated - Kerberos authentication attempt failed. |
 | AADSTS81005 | DesktopSsoAuthenticationPackageNotSupported – a hitelesítési csomag nem támogatott. |
 | AADSTS81006 | DesktopSsoNoAuthorizationHeader – nincs engedélyeztetési fejléc található. |
 | AADSTS81007 | Közvetlen egyszeri bejelentkezés DesktopSsoTenantIsNotOptIn – a bérlő nincs engedélyezve. |
@@ -204,7 +204,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS90082 | OrgIdWsFederationNotSupported – a kiválasztott hitelesítési házirendet a kérelem jelenleg nem támogatott. |
 | AADSTS90084 | OrgIdWsFederationGuestNotAllowed - vendégfiókok ezen a helyen nem engedélyezett. |
 | AADSTS90085 | OrgIdWsFederationSltRedemptionFailed – a szolgáltatás nem tud jogkivonatok kiállítása, mert a vállalati objektum még nem lett kiépítve. |
-| AADSTS90086 | OrgIdWsTrustDaTokenExpired – a DA felhasználói jogkivonat lejárt. |
+| AADSTS90086 | OrgIdWsTrustDaTokenExpired - The user DA token is expired. |
 | AADSTS90087 | OrgIdWsFederationMessageCreationFromUriFailed - hiba történt az URI-t a WS-Federation üzenetet hoz létre. |
 | AADSTS90090 | GraphRetryableError – a szolgáltatás nem átmenetileg nem érhető el. |
 | AADSTS90091 | GraphServiceUnreachable |
@@ -254,6 +254,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource - erőforrás nincs konfigurálva csak jogkivonatokat fogadni. |
 | AADSTS240001 | BulkAADJTokenUnauthorized – a felhasználó nem jogosult az eszközök regisztrálása az Azure ad-ben. |
 | AADSTS240002 | RequiredClaimIsMissing – a id_token nem használható `urn:ietf:params:oauth:grant-type:jwt-bearer` megadása.|
+| AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest – a címtárbérlőben/az alkalmazás nem található. Ez akkor fordulhat elő, ha az alkalmazás még nem a bérlő rendszergazdája telepítette vagy nem fogadta el a bérlő a egyetlen felhasználója sem. Előfordulhat, hogy van konfigurálva az azonosító értékét az alkalmazás vagy rossz bérlőhöz küldte a a hitelesítési kérést. |
 | AADSTS700020 | A hozzáférési engedély InteractionRequired - műveletet igényel. |
 | AADSTS700022 | InvalidMultipleResourcesScope – a bemeneti paraméter hatókör megadott értéke érvénytelen, mert egynél több erőforrást tartalmaz. |
 | AADSTS700023 | InvalidResourcelessScope - a megadott érték érvénytelen bemeneti paraméter hatókörébe tartozó Ha kérelem egy hozzáférési jogkivonatot. |

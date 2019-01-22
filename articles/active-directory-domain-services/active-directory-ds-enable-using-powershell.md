@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: ergreenl
-ms.openlocfilehash: b58df5ebf5332688424ac6ed2eeb9679487bcdc4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ce6d3815e562e5ada2a70ebaff04f9abc20b714c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240256"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426539"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Engedélyezze az Azure Active Directory Domain Services PowerShell-lel
 Ez a cikk bemutatja, hogyan PowerShell-lel az Azure Active Directory (AD) Domain Services engedélyezéséhez.
 
-## <a name="task-1-install-the-required-powershell-modules"></a>1. feladat: A szükséges PowerShell-modulok telepítéséhez.
+## <a name="task-1-install-the-required-powershell-modules"></a>1. feladat: A szükséges PowerShell-modulok telepítése
 
 ### <a name="install-and-configure-azure-ad-powershell"></a>Az Azure AD PowerShell telepítése és konfigurálása
 Kövesse a cikkben szereplő utasításokat [Azure AD PowerShell-modul telepítéséhez és az Azure AD connect](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 ### <a name="install-and-configure-azure-powershell"></a>Az Azure PowerShell telepítése és konfigurálása
-Kövesse a cikkben szereplő utasításokat [az Azure PowerShell-modul telepítése és csatlakozás az Azure-előfizetéshez](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+Kövesse a cikkben szereplő utasításokat [az Azure PowerShell-modul telepítése és csatlakozás az Azure-előfizetéshez](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 
 ## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>2. feladat: A szükséges szolgáltatásnév létrehozása az Azure AD-címtár
@@ -74,7 +74,7 @@ Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjec
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-## <a name="task-5-create-a-resource-group"></a>5. feladat: Erőforráscsoport létrehozása
+## <a name="task-5-create-a-resource-group"></a>5. feladat: Hozzon létre egy erőforráscsoportot
 Írja be a következő PowerShell-paranccsal hozzon létre egy erőforráscsoportot:
 ```powershell
 $ResourceGroupName = "ContosoAaddsRg"

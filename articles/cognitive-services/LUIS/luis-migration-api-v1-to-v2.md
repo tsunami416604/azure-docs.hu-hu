@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 980470c0f1d24bde52f29c4cd3579e2337898f88
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9542fe14cc262731ca0f2ade65e6e4dfafbc34d7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138823"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427508"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1-v2 áttelepítési útmutatója a LUIS-alkalmazások
 Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-jai elavultak. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
@@ -112,7 +112,7 @@ Az előfizetési végpont kulcs API-k elavultak, 410-es GONE visszaadása.
 |1|/Luis/V1.0/prog/Subscriptions|
 |1|/ luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure [végpont kulcsok](luis-how-to-azure-subscription.md) jönnek létre az Azure Portalon. A LUIS-alkalmazások a kulcsot rendel a **[közzététel](luis-how-to-manage-keys.md)** lap. Nem kell tudni, hogy a tényleges kulcs értékét. LUIS, hogy a hozzárendelés előfizetést a nevet használja. 
+Azure [végpont kulcsok](luis-how-to-azure-subscription.md) jönnek létre az Azure Portalon. A LUIS-alkalmazások a kulcsot rendel a **[közzététel](luis-how-to-azure-subscription.md)** lap. Nem kell tudni, hogy a tényleges kulcs értékét. LUIS, hogy a hozzárendelés előfizetést a nevet használja. 
 
 ## <a name="new-versioning-route"></a>Új versioning útvonal
 A v2-modell most már szerepel egy [verzió](luis-how-to-manage-versions.md). A verziónév érték 10 karakter hosszúságú, az útvonal. Az alapértelmezett verziószáma "0.1".

@@ -3,18 +3,18 @@ title: Az Azure Automation Grpahical runbook SDK áttekintése
 description: Ez a cikk azt ismerteti, hogyan használható az Azure Automation grafikus Runbook SDK
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 702af8311887afc94e7127704d3377e944503324
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: bc9f1feff6d8d45e52c8621d1ec4b36e0a4a4a76
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239927"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434257"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Az Azure Automation grafikus runbook SDK használata
 
@@ -103,7 +103,7 @@ A következő osztályok által megvalósított tevékenységek a `Orchestrator.
 |WorkflowScriptActivity     | Végrehajtja a kódblokkot PowerShell vagy a PowerShell-munkafolyamat (attól függően, a runbook típusa) a runbook kontextusában. Ez egy hatékony eszköz, de nem túlhasználatnak: a felhasználói felület jelennek meg a parancsfájl-blokkon szövegként; a végrehajtó motor fogja kezelni a megadott blokk egy fekete mezőt, és elvégzi a tartalomelemzés, kivéve egy alapszintű szintaxis-ellenőrzés nem tett kísérletek. Ha csupán egyetlen PowerShell-paranccsal meghívni, inkább CommandActivity.        |
 
 > [!NOTE]
-> Saját tevékenységek származtatva a megadott osztályok: Azure Automation nem fogja tudni típusú egyéni tevékenységek használata a runbookok.
+> Saját tevékenységek nem származhat a megadott osztályok: Az Azure Automation nem tudja használni a runbookok az egyéni tevékenység típusa.
 
 CommandActivity és InvokeRunbookActivity paraméter értéke leírók, nincs közvetlen értékeket meg kell adni. Leírók értéket adja meg, hogyan kell a tényleges paraméter értékét mutatni. A következő érték leírók jelenleg áll rendelkezésre:
 
@@ -119,7 +119,7 @@ CommandActivity és InvokeRunbookActivity paraméter értéke leírók, nincs k�
 |PowerShellExpressionValueDescriptor     | Megadja a szabad formátumú PowerShell-kifejezés, amelyek értékelik a tevékenység meghívása előtt.  <br/>Ez egy hatékony eszköz, de nem túlhasználatnak: a felhasználói felület jelennek meg a kifejezés szövegként; a végrehajtó motor fogja kezelni a megadott blokk egy fekete mezőt, és elvégzi a tartalomelemzés, kivéve egy alapszintű szintaxis-ellenőrzés nem tett kísérletek. Ha lehetséges, inkább az érték pontosabb leírók.      |
 
 > [!NOTE]
-> A saját érték leírók származtatva a megadott osztályok: Azure Automation nem fogja tudni az egyéni érték leíró típusok runbookokkal.
+> A saját érték leírók nem származhat a megadott osztályok: Az Azure Automation runbookok használhatja az egyéni érték leíró típusok nem lesz.
 
 Hozza létre a tevékenységek összekapcsolása hivatkozásokat, és hozzáadhatja őket a runbook:
 
@@ -146,3 +146,4 @@ Szerializált formátuma jövőbeli verzióiban változhat `Orchestrator.GraphRu
 ## <a name="next-steps"></a>További lépések
 
 Az Azure Automation grafikus Runbookokban kapcsolatos további információkért lásd: [grafikus létrehozásról bemutatása](automation-graphical-authoring-intro.md)
+

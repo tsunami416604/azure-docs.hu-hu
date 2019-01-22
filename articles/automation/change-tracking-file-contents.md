@@ -3,18 +3,18 @@ title: Fájltartalom-változások megjelenítése az Azure Automationnel
 description: A Change tracking fájl tartalmának módosítása funkcióját használja, amelyek módosultak egy fájl tartalmának megtekintéséhez.
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0582505d66bbef3064359fa4047676c4ba60b4e9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ad011d778ab575c146c202a7940e03a4451979fb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871884"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438001"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>A Change Tracking követett fájl tartalmának megjelenítése
 
@@ -42,7 +42,7 @@ Tartalom nyomon követésének lehetővé teszi, hogy egy fájl tartalmának meg
 
 5. Ha engedélyezve van, a storage-fiók és a SAS URI-k jelennek meg. A SAS URI-k 365 nap után lejár, és azok ismételten létrehozhatók kattintva a **újragenerálása** gombra.
 
-   ![fiók kulcsainak listázása](./media/change-tracking-file-contents/account-keys.png)
+   ![Fiók kulcsainak listázása](./media/change-tracking-file-contents/account-keys.png)
 
 ## <a name="add-a-file"></a>Adjon hozzá egy fájlt
 
@@ -62,7 +62,7 @@ A következő lépések végigvezetik a change tracking fájl bekapcsolása:
 
 1. Az a **változás részletei** lapon láthatja a standard előtt és után bal felső sarokban található információkat, fájlra, majd kattintson **fájltartalom-változások megjelenítése** a fájl tartalmának megtekintéséhez.
 
-  ![változás részletei](./media/change-tracking-file-contents/change-details.png)
+  ![Változás részletei](./media/change-tracking-file-contents/change-details.png)
 
 1. Az új lapon látható a fájl tartalmát egy egymás melletti nézet. Lehetőség kiválasztásával **beágyazott** beágyazott képet a módosítások megtekintéséhez.
 
@@ -76,3 +76,4 @@ Látogasson el az oktatóanyag a Change Tracking tudhat meg többet a megoldás 
 > [A környezet változásainak hibaelhárítása](automation-tutorial-troubleshoot-changes.md)
 
 * Használat [Log Analytics naplóbeli kereséseivel](../log-analytics/log-analytics-log-searches.md) részletes változáskövetési adatok megtekintéséhez.
+

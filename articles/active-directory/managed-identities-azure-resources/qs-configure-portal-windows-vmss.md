@@ -4,7 +4,7 @@ description: Részletes utasításokat a felügyelt identitások az Azure-erőfo
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 0a6440b7fffe1aec26ba4755f21fa2f56935887e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: c71663b0e0b569d32aad525be1a89e4824c05280
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377581"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422286"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy virtuális gép méretezési csoportban az Azure portal használatával
 
@@ -58,7 +58,7 @@ A rendszer által hozzárendelt felügyelt identitás eredetileg anélkül, hogy
 
 3. Alatt **rendszerhez rendelt**, **állapot**, jelölje be **a** majd **mentése**:
 
-   ![Konfiguráció lap képernyőképe](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png)](./Media/MSI-QS-Configure-Portal-Windows-vmss/Create-Windows-vmss-Portal-Configuration-Blade.png#lightbox)  
+   ![Konfiguráció lap képernyőképe](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png)](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png#lightbox)  
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Felügyelt identitás alapértelmezett eltávolítása egy virtuálisgép-méretezési csoportot
 

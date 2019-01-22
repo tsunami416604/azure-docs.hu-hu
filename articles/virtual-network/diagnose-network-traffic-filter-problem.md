@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 366ff0b59835ca3a28cafd5de77c0bd645ff58c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d05adabc9bbabdb9f6d1af9831dbb33afe63cf87
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984228"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424642"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>A virtuális gép hálózati forgalomszűrési problémáinak diagnosztizálása
 
@@ -44,8 +44,8 @@ A következő lépések azt feltételezik, hogy rendelkezik egy meglévő virtu�
 
    A szabályokat, megjelenik az előző ábrán felsorolt kell nevű hálózati adapter **myVMVMNic**. Láthatja, hogy nincsenek **BEJÖVŐPORT-szabályok** a hálózati adapter két különböző hálózati biztonsági csoportokból:
    
-   - **mySubnetNSG**: az alhálózatot, amelyet a hálózati adapterhez van társítva.
-   - **myVMNSG**: a virtuális gép nevű hálózati adapterhez társított **myVMVMNic**.
+   - **mySubnetNSG**: Az alhálózatot, amelyet a hálózati adapter tartozik.
+   - **myVMNSG**: A virtuális gép nevű hálózati adapterhez társított **myVMVMNic**.
 
    A nevű szabályt **DenyAllInBound** van, mi akadályozza bejövő kommunikációt a virtuális géphez, 80-as porton keresztül az internetről, leírtak szerint a [forgatókönyv](#scenario). A szabály listák *0.0.0.0/0* a **forrás**, amely tartalmazza az interneten. Nincs más szabály, a magasabb prioritású (alacsonyabb sorszámú) lehetővé teszi, hogy a 80-as porton bejövő. A 80-as port engedélyezése a virtuális géphez az internetről bejövő, lásd: [egy probléma megoldásához](#resolve-a-problem). Biztonsági szabályok, és hogyan Azure alkalmazza őket kapcsolatos további tudnivalókért lásd: [hálózati biztonsági csoportok](security-overview.md).
 
@@ -72,12 +72,12 @@ A következő lépések azt feltételezik, hogy rendelkezik egy meglévő virtu�
    Ellentétben a **myVMVMNic** hálózati kapcsolat a **myVMVMNic2** hálózati adapter nem rendelkezik egy hálózati biztonsági csoport társítva van hozzá. Minden egyes hálózati adapter és alhálózati rendelkezhet, nulla vagy egy, az NSG tartozik. Minden egyes hálózati adapterhez rendelt az NSG-t vagy alhálózat is változatlan marad, vagy eltérő. Az egyazon hálózati biztonsági csoport tetszőleges számú hálózati adapterek és alhálózatok, amikor a társíthat.
 
 Bár érvényben lévő biztonsági szabályokat is tekinthetők meg a virtuális gép, érvényes biztonsági szabályok egyéni keresztül is megtekintheti:
-- **Hálózati adapter**: ismerje meg, hogyan [egy hálózati adapter megtekintésére](virtual-network-network-interface.md#view-network-interface-settings).
-- **NSG-t**: ismerje meg, hogyan [megtekintése az NSG-KET](manage-network-security-group.md#view-details-of-a-network-security-group).
+- **Hálózati adapter**: Ismerje meg, hogyan [egy hálózati adapter megtekintésére](virtual-network-network-interface.md#view-network-interface-settings).
+- **NSG-T**: Ismerje meg, hogyan [megtekintése az NSG-KET](manage-network-security-group.md#view-details-of-a-network-security-group).
 
 ## <a name="diagnose-using-powershell"></a>Diagnosztizálhatja a PowerShell használatával
 
-A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.0.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha Ön helyileg futtatja a Powershellt, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-bA egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions)].
+A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.0.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha Ön helyileg futtatja a Powershellt, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-bA egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions)].
 
 Hálózati illesztő – esetén az érvényes biztonsági szabályainak lekérése [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup). Az alábbi példa lekéri az érvényben lévő biztonsági szabályokat nevű hálózati adapter *myVMVMNic*, azaz egy erőforráscsoportba tartozó nevű *myResourceGroup*:
 
@@ -154,9 +154,9 @@ Az előző kimeneti hálózati adapter neve van *myVMVMNic felület*.
 
 Függetlenül attól, hogy használta a [PowerShell](#diagnose-using-powershell), vagy a [Azure CLI-vel](#diagnose-using-azure-cli) kimenete, amely tartalmazza a következő információkat kap a probléma diagnosztizálása érdekében:
 
-- **NetworkSecurityGroup**: a hálózati biztonsági csoport azonosítója.
-- **Társítás**:-e a hálózati biztonsági csoport társítva egy *hálózati* vagy *alhálózati*. Ha is társítva egy NSG-t, a kimenetet visszaadja **NetworkSecurityGroup**, **társítás**, és **EffectiveSecurityRules**, minden NSG. Ha az NSG-hez kapcsolódó, vagy közvetlenül a tekintse meg az érvényben lévő biztonsági szabályokat, a parancs futtatása előtt le, szükség lehet Várjon néhány másodpercet a módosítás megjelenik a parancs kimenete.
-- **EffectiveSecurityRules**: részletes magyarázatát tartalmazza minden egyes tulajdonság [hozzon létre egy biztonsági szabályt](manage-network-security-group.md#create-a-security-rule). Szabály neve előtt a létrehozás *defaultSecurityRules /* vannak alapértelmezett biztonsági szabályokat, minden NSG-ben léteznek. Szabály neve előtt a létrehozás *securityRules /* létrehozott szabályok vonatkoznak. Meghatározott szabályok egy [szolgáltatáscímke](security-overview.md#service-tags), mint például **Internet**, **VirtualNetwork**, és **AzureLoadBalancer** számára a  **destinationAddressPrefix** vagy **sourceAddressPrefix** tulajdonságai között is szerepel érték a **expandedDestinationAddressPrefix** tulajdonság. A **expandedDestinationAddressPrefix** tulajdonság a szolgáltatáscímke által jelölt összes címelőtagok sorolja fel.
+- **NetworkSecurityGroup**: A hálózati biztonsági csoport azonosítója.
+- **Társítás**: Hogy a hálózati biztonsági csoport társítva egy *hálózati* vagy *alhálózati*. Ha is társítva egy NSG-t, a kimenetet visszaadja **NetworkSecurityGroup**, **társítás**, és **EffectiveSecurityRules**, minden NSG. Ha az NSG-hez kapcsolódó, vagy közvetlenül a tekintse meg az érvényben lévő biztonsági szabályokat, a parancs futtatása előtt le, szükség lehet Várjon néhány másodpercet a módosítás megjelenik a parancs kimenete.
+- **EffectiveSecurityRules**: A részletes magyarázatát tartalmazza minden egyes tulajdonság [hozzon létre egy biztonsági szabályt](manage-network-security-group.md#create-a-security-rule). Szabály neve előtt a létrehozás *defaultSecurityRules /* vannak alapértelmezett biztonsági szabályokat, minden NSG-ben léteznek. Szabály neve előtt a létrehozás *securityRules /* létrehozott szabályok vonatkoznak. Meghatározott szabályok egy [szolgáltatáscímke](security-overview.md#service-tags), mint például **Internet**, **VirtualNetwork**, és **AzureLoadBalancer** számára a  **destinationAddressPrefix** vagy **sourceAddressPrefix** tulajdonságai között is szerepel érték a **expandedDestinationAddressPrefix** tulajdonság. A **expandedDestinationAddressPrefix** tulajdonság a szolgáltatáscímke által jelölt összes címelőtagok sorolja fel.
 
 A kimenetben szereplő duplikált szabályok megtekintéséhez, hogy mivel az NSG-t mind a hálózati adaptert, és az alhálózathoz van társítva. Mind az NSG-ket az ugyanazon alapértelmezett szabályokkal rendelkeznek, és további ismétlődő szabályokat, előfordulhat, ha saját szabályok, amelyek megegyeznek az NSG-ket is létrehozott.
 
@@ -175,7 +175,7 @@ Ha használja az Azure [portál](#diagnose-using-azure-portal), [PowerShell](#di
 | Protocol (Protokoll)                | TCP                                                                                |
 | Műveletek                  | Engedélyezés                                                                              |
 | Prioritás                | 100                                                                                |
-| Name (Név)                    | Lehetővé teszi a HTTP-All                                                                     |
+| Name (Név)                    | Allow-HTTP-All                                                                     |
 
 Miután létrehozta a szabályt, a 80-as porton engedélyezve van-e az internetről bejövő, mert a szabály prioritása nagyobb, mint az alapértelmezett biztonsági szabály nevű *DenyAllInBound*, amely a forgalom megtagadásához. Ismerje meg, hogyan [hozzon létre egy biztonsági szabályt](manage-network-security-group.md#create-a-security-rule). Ha a hálózati adaptert, és az alhálózathoz társított különböző NSG-ket, létre kell hoznia ugyanaz a szabály a mindkét NSG-k.
 

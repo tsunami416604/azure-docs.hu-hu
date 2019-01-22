@@ -3,22 +3,22 @@ title: Az Azure Automationben ütemezések
 description: Az automatizálási ütemezések runbookok automatikus indításra az Azure automationben ütemezésére szolgálnak. Ismerteti, hogyan hozhat létre és kezelhet az ütemezés szerint, így képes automatikusan elindít egy runbookot egy adott időpontban vagy ismétlődő ütemezés szerint.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3d8492d2a8982c9c85bfc91867f7eb6c2da04e58
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c1c36736e9d023ab1bd2ed607638b600bc468f2c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294764"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437216"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Runbook ütemezése az Azure Automationben
 
-Az Azure Automation és a egy megadott időpontban el egy runbook ütemezése, kapcsolja össze egy vagy több ütemezés. Ütemezés beállítható úgy, hogy futtassa egyszer vagy egy került az óránkénti vagy napi ütemezés runbookok az Azure Portalon. Is ütemezheti őket hetente, havonta, a hét meghatározott napjain vagy a hónap napjait, vagy egy adott nap a hónapban. Egy runbook több ütemezéssel kapcsolható, és egy ütemezés rendelkezhet több runbook hozzá kell kapcsolni.
+Az Azure Automation és a egy megadott időpontban el egy runbook ütemezése, kapcsolja össze egy vagy több ütemezés. Ütemezés beállítható úgy, hogy futtassa egyszer vagy egy került az óránkénti vagy napi ütemezés runbookok az Azure Portalon. Is ütemezheti őket hetente, havonta, a hét meghatározott napjain vagy a hónap napjait, vagy egy adott nap a hónapban. Egy runbook több ütemezéssel is összekapcsolható, és egy ütemezéshez több runbook is kapcsolódhat.
 
 > [!NOTE]
 > Ütemezések jelenleg nem támogatja az Azure Automation DSC-konfigurációk.
@@ -71,7 +71,7 @@ $scheduleName -StartTime "7/01/2016 15:30:00" -MonthInterval 1 `
 
 ## <a name="linking-a-schedule-to-a-runbook"></a>Ütemezés összekapcsolása egy runbook
 
-Egy runbook több ütemezéssel kapcsolható, és egy ütemezés rendelkezhet több runbook hozzá kell kapcsolni. Ha a runbook paraméterekkel rendelkezik, majd megadhat értékeket a számukra. Értékeket kell megadnia minden kötelező paraméterhez, és előfordulhat, hogy adjon meg értékeket a kötelező paramétereket. Ezekkel az értékekkel minden alkalommal, amikor a runbook az ütemezés szerint elindult. Csatolja ugyanazon a runbookon belül egy másik ütemezést, és adja meg a különböző paraméterértékekkel.
+Egy runbook több ütemezéssel is összekapcsolható, és egy ütemezéshez több runbook is kapcsolódhat. Ha a runbook paraméterekkel rendelkezik, majd megadhat értékeket a számukra. Értékeket kell megadnia minden kötelező paraméterhez, és előfordulhat, hogy adjon meg értékeket a kötelező paramétereket. Ezekkel az értékekkel minden alkalommal, amikor a runbook az ütemezés szerint elindult. Csatolja ugyanazon a runbookon belül egy másik ütemezést, és adja meg a különböző paraméterértékekkel.
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Összekapcsolhat egy ütemezést egy runbookhoz, az Azure portal használatával
 
@@ -129,3 +129,4 @@ Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
 ## <a name="next-steps"></a>További lépések
 
 * Ismerkedés az Azure Automation runbookjai, lásd: [Runbook elindítása az Azure Automationben](automation-starting-a-runbook.md)
+

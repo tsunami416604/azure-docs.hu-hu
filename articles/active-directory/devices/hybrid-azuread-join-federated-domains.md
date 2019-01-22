@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2f904690187f6f2b020cb9cc32f9a20712d8bb53
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: baf38b2bb82be06963828e6ad80d958592ac6e99
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107565"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435770"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Oktatóanyag: Hibrid Azure Active Directory-csatlakozás összevont tartományok konfigurálása
 
@@ -73,11 +73,11 @@ Az ebben a cikkben szereplő konfigurációs lépések ezen a varázslón alapul
 
 A hibrid Azure AD-csatlakozáshoz szükséges, hogy az eszközök hozzáférjenek a következő Microsoft-erőforrásokhoz a szervezeti hálózaton:  
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
+- https\://enterpriseregistration.windows.net
+- https\://login.microsoftonline.com
+- HTTPS\://device.login.microsoftonline.com
 - A szervezet biztonsági jegykiadó szolgáltatása (összevont tartományok esetén)
-- https://autologon.microsoftazuread-sso.com (Ha közvetlen egyszeri bejelentkezést használ, vagy tervezi annak használatát)
+- HTTPS\://autologon.microsoftazuread-sso.com (Ha még nem használ vagy tervez használni a közvetlen egyszeri bejelentkezés)
 
 A Windows 10 1803-as verziójától kezdve, ha az összevont tartomány azonnali Hibrid Azure AD-csatlakozása (pl.: AD FS) meghiúsul, az Azure AD Connectre támaszkodunk az Azure AD-ben lévő, később a Hibrid Azure AD-csatlakozáshoz történő eszközregisztráció elvégzéséhez használt számítógép-objektum szinkronizálásához.
 

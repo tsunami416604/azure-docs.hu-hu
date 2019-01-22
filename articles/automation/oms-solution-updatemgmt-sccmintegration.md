@@ -3,18 +3,18 @@ title: SCCM-gyűjtemények használatával az Azure Automation – Update Manage
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a System Center Configuration Managert ezzel a megoldással az SCCM által kezelt számítógépek frissítéseinek kezelésére.
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f3ab50c4fdc080b157212bcc662a2acf6629483d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c3b595e9c4d4b98814d1b68adede97204bf3eb96
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097964"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422728"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>A System Center Configuration Manager integrálása az Update Management
 
@@ -51,3 +51,4 @@ Azon Windows Server rendszerű virtuális gépek frissítéseinek kezeléséhez,
 A konfigurációs módosítás elvégzése után létrehozhat egy új központi telepítést a következő témakörben ismertetett [frissítéstelepítés létrehozását](automation-tutorial-update-management.md#schedule-an-update-deployment) válassza **importált csoportok** a a **típusa** listából válassza ki a megfelelő Configuration Manager-gyűjteményt.
 
 ## <a name="next-steps"></a>További lépések
+

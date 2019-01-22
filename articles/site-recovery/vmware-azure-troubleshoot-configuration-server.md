@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: ramamill
-ms.openlocfilehash: cb965313fda90da3fb0ec0cd418f87795a4e2722
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 0eebfd8b75f428d3b8f6024ed6ee71c18c1309f6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413464"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435974"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Konfigurációs kiszolgáló hibáinak elhárítása
 
@@ -80,7 +80,7 @@ Ez a hiba elkerülése érdekében győződjön meg arról, a rendszeróra ideje
 
 A Site Recovery hitelesítéséhez szükséges tanúsítvány nem hozható létre. Miután meggyőződött arról, hogy a telepítő futtatja egy helyi rendszergazdaként futtassa újra a telepítőt.
 
-## <a name="register-the-source-machine-with-the-configuration-server"></a>A forrásgép regisztrálja a konfigurációs kiszolgáló
+## <a name="register-source-machine-with-configuration-server"></a>Forrásgép regisztrálni a konfigurációs kiszolgáló
 
 ### <a name="if-the-source-machine-runs-windows"></a>Ha a forrásgép Windows fut
 

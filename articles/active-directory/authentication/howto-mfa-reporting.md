@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: dc4cd28fe61c422f65f47c74c7cbc4686d73ab77
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: d9fd7544c61b021bbb5db32087847cbeaddd3918
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628834"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431724"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication jelentései
 
@@ -58,9 +58,9 @@ Ezek az adatok keresztül érhető el a [az Azure portal](https://portal.azure.c
 
 Az MFA bejelentkezési tevékenységeinek jelentéseiben a következő adatokhoz fér hozzá:
 
-**MFA szükséges:** Kötelező-e az MFA a bejelentkezéshez vagy sem. Lehet, hogy az MFA felhasználónkénti MFA, feltételes hozzáférés vagy más okok miatt szükséges. Lehetséges értékek a következők **Igen** vagy **nem**.
+**MFA szükséges:** E többtényezős hitelesítés szükség a bejelentkezéshez, vagy sem. Lehet, hogy az MFA felhasználónkénti MFA, feltételes hozzáférés vagy más okok miatt szükséges. Lehetséges értékek a következők **Igen** vagy **nem**.
 
-**MFA eredménye:** További részletek az MFA teljesítésével vagy megtagadásával kapcsolatban:
+**MFA eredménye:** További információ e MFA teljesítésével vagy megtagadásával:
 
 - Az MFA teljesítése esetén az oszlop a teljesítés módjával kapcsolatos további információkat tartalmaz.
    - Azure Multi-Factor Authentication
@@ -103,7 +103,7 @@ Az MFA bejelentkezési tevékenységeinek jelentéseiben a következő adatokhoz
       - a felhasználó nem található
       - az ellenőrzőkód már volt használva
 
-**MFA hitelesítési módszer:** A módszer, amellyel a felhasználó végrehajtotta az MFA-hitelesítést. A lehetséges értékek:
+**MFA hitelesítési módszer:** A hitelesítési módszer a többtényezős hitelesítés végrehajtásához használt felhasználói. A lehetséges értékek:
 
 - Szöveges üzenet
 - Mobilalkalmazás-értesítés
@@ -112,7 +112,7 @@ Az MFA bejelentkezési tevékenységeinek jelentéseiben a következő adatokhoz
 - Telefonhívás (irodai telefon)
 - Telefonhívás (alternatív hitelesítési telefon)
 
-**MFA-hitelesítés részletei:** A telefonszám kitakarva, például: +X XXXXXXXX64.
+**MFA-hitelesítés részletei:** Kitakarva a telefonszámot, például: + X XXXXXXXX64.
 
 **Feltételes hozzáférés** feltételes hozzáférési szabályzatok is érintett, a bejelentkezési kísérlet többek között további információt:
 

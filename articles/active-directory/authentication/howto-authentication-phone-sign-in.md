@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: librown
-ms.openlocfilehash: b09bb65cdb571c9df95d1922f4132abe5b77907c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0179f87787c91a90edb54a1956a6f10d1dffc4b1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963947"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434189"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Jelszó nélküli telefonnal bejelentkezni a Microsoft Authenticator alkalmazással (nyilvános előzetes verzió)
 
@@ -37,16 +37,21 @@ Nyilvános előzetes verzióként, a rendszergazda először hozzá kell egy sza
 
 ### <a name="steps-to-enable"></a>További lépések elvégzésével
 
-Győződjön meg arról, hogy a legújabb verzióját az Azure Active Directory V2 PowerShell modul nyilvános előzetes kiadását. Kezdésként érdemes lehet eltávolítani, majd telepítse a következő parancsok végrehajtásával ellenőrizheti:
+1. Győződjön meg arról, hogy a nyilvános előzetes kiadását az Azure Active Directory V2 PowerShell-modul legújabb verzióját. Kezdésként érdemes lehet eltávolítani, majd telepítse a következő parancsok végrehajtásával ellenőrizheti:
+    ```powershell
+    Uninstall-Module -Name AzureADPreview
+    Install-Module -Name AzureADPreview
+    ```
 
-1. `Uninstall-Module -Name AzureADPreview`
-2. `Install-Module -Name AzureADPreview`
+2. Hitelesítés az Azure AD V2 PowerShell modul használata az Azure AD-bérlőhöz. A használt fiók biztonsági rendszergazdai vagy globális rendszergazdai vagy kell lennie.
+    ```powershell
+    Connect-AzureAD
+    ```
 
-A jelszó nélküli telefon bejelentkezési előzetes verzió a következő PowerShell-parancsokkal engedélyezheti:
-
-1. `Connect-AzureAD`
-   1. A hitelesítési párbeszédpanelen jelentkezzen be egy olyan fiókkal, a bérlőben. A fiók vagy biztonsági rendszergazdai vagy globális rendszergazdai kell lennie.
-1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+3. Az Authenticator bejelentkezési szabályzat létrehozása:
+    ```powershell
+    New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
+    ```
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>A végfelhasználók hogyan tegye lehetővé telefonnal bejelentkezni?
 

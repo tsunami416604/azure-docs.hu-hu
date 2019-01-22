@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: f0b13480c06e154b85300f4a8a2f8a84db04c31b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5424448207bca3e6db253245ce7197feae5fba21
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582377"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424982"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -105,7 +105,7 @@ Ez a lépés már valószínűleg a bérlő teljes, de, fontos ellenőrizni, hog
 2. Válassza ki **az Azure Active Directory** > **az Azure AD Connect**
 3. Győződjön meg arról, hogy a szinkronizálási állapota **engedélyezve** , és hogy a legutóbbi szinkronizálás kevesebb, mint egy órával ezelőtt történt.
 
-Ha elindít egy új ciklikus szinkronizálási, us utasításokat kell az [Azure AD Connect szinkronizálása: ütemező](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
+Ha elindít egy új ciklikus szinkronizálási, us utasításokat kell az [Azure AD Connect szinkronizálása: A Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
 
 ### <a name="determine-which-authentication-methods-your-users-can-use"></a>Határozza meg, mely a felhasználók használhatják a hitelesítési módszerek
 
@@ -194,7 +194,7 @@ Ha a multi-factor Authentication nem regisztrált felhasználók, megadhatja, ho
 
 | Kulcs | Érték | Alapértelmezett |
 | --- | ----- | ------- |
-| REQUIRE_USER_MATCH | IGAZ/HAMIS | Nincs beállítva (egyenértékű, True) |
+| REQUIRE_USER_MATCH | TRUE/FALSE | Nincs beállítva (egyenértékű, True) |
 
 Ez a beállítás célja határozza meg, mi a teendő, ha a felhasználó nincs regisztrálva az MFA-hoz. Ha a kulcs nem létezik, nincs beállítva, vagy igaz értékre van állítva, a felhasználó nincs regisztrálva, majd a bővítmény nem tud az MFA-hitelesítést. Ha a kulcs értéke FALSE, és a felhasználó nincs regisztrálva, a hitelesítés folytatódik, többtényezős hitelesítés végrehajtása nélkül. Ha egy felhasználó az MFA-ban regisztrálva van, hitelesíteniük kell az MFA akkor is, ha REQUIRE_USER_MATCH hamis értékre van állítva.
 

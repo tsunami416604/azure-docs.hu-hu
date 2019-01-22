@@ -3,25 +3,25 @@ title: Runbook-kimenet és üzenetek az Azure Automationben
 description: Desribes, hogyan hozhat létre és kimenetet és lekérése az Azure Automation runbookjai az üzeneteket.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc1ef2a3ab09ec5b86d1dc0b4c139afd43ba356d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 82382ecc3adf0d0621f51438a082f7807b031fc9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969124"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431214"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
 A legtöbb Azure Automation-runbookok rendelkezik valamilyen kimenetet. Ez a kimenet egy hibaüzenet, a felhasználó vagy egy összetett objektumot egy másik runbookból a használni kívánt lehet. Windows PowerShell biztosít [több adatfolyam](/powershell/module/microsoft.powershell.core/about/about_redirection) , elküldheti a kimenetet egy parancsfájl vagy a munkafolyamat. Az Azure Automation eltérően működik az egyes ezekbe az adatfolyamokba. Ajánlott eljárások használata minden egyes runbook létrehozásakor kövesse.
 
 Az alábbi táblázatban az egyes a Streamek és a közzétett forgatókönyvek esetében az Azure Portalon viselkedésük rövid leírását és mikor [runbook tesztelése](automation-testing-runbook.md). Egyes adatfolyamokkal kapcsolatos további részletekért lásd a későbbi szakaszokban találhatók.
 
-| Stream | Leírás | Közzétéve | Tesztelés |
+| Stream | Leírás | Közzétett | Teszt |
 |:--- |:--- |:--- |:--- |
 | Kimenet |Másik runbookok számára készült objektum. |A feladatelőzményekbe írt. |Megjelennek a Tesztkimenet ablaktáblán. |
 | Figyelmeztetés |A felhasználónak szóló figyelmeztető üzenetet. |A feladatelőzményekbe írt. |Megjelennek a Tesztkimenet ablaktáblán. |
@@ -114,7 +114,7 @@ Ebben a példában a második forgatókönyv nevű *Test-ChildOutputType*, egysz
 
 Az első tevékenység hívások a **AuthenticateTo Azure-beli** runbook és a második tevékenység fut a **Write-Verbose** parancsmagot a **adatforrás** ,  **Tevékenység kimenete** és értékének **mező elérési útja** van **Context.Subscription.SubscriptionName**, amely határozza meg a környezet kimenetét a  **Az Azure-AuthenticateTo** runbook.<br> ![A Write-Verbose parancsmag paraméter adatforrás](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)    
 
-A kimenet az előfizetés nevét.<br> ![Test-ChildOutputType eredmények összesítése](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
+A kimenet az előfizetés nevét.<br> ![Test-ChildOutputType Runbook Results](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
 A kimeneti típusú vezérlőelem a működéssel kapcsolatos megjegyzés. Bemeneti és kimeneti tulajdonságpaneljén kimeneti Type mezőjében írjon be egy értéket, ha rendelkezik, ahhoz, hogy a bejegyzést, hogy a vezérlő beírása után kívül az ellenőrzés gombra.  
 
@@ -162,15 +162,15 @@ Az alábbi táblázat a preferenciaváltozók használható a runbookok, valamin
 
 | Változó | Alapértelmezett érték | Érvényes értékek |
 |:--- |:--- |:--- |
-| WarningPreference |Folytatás |Leállítás<br>Folytatás<br>Folytatáscsendben |
-| ErrorActionPreference |Folytatás |Leállítás<br>Folytatás<br>Folytatáscsendben |
-| VerbosePreference |Folytatáscsendben |Leállítás<br>Folytatás<br>Folytatáscsendben |
+| WarningPreference |Továbbra is |Leállítás<br>Továbbra is<br>Folytatáscsendben |
+| ErrorActionPreference |Továbbra is |Leállítás<br>Továbbra is<br>Folytatáscsendben |
+| VerbosePreference |Folytatáscsendben |Leállítás<br>Továbbra is<br>Folytatáscsendben |
 
 A következő táblázat felsorolja a runbookokban érvényes szabályozó változó értéke a viselkedés.
 
 | Érték | Viselkedés |
 |:--- |:--- |
-| Folytatás |Naplózza az üzenetet, és folytatja a runbook futtatását. |
+| Továbbra is |Naplózza az üzenetet, és folytatja a runbook futtatását. |
 | Folytatáscsendben |Továbbra is fennáll, az üzenet naplózása nélkül a runbook futtatását. Ez az érték a hatása, figyelmen kívül hagyja az üzenetet. |
 | Leállítás |Naplózza az üzenetet, és felfüggeszti a runbook futtatását. |
 
@@ -204,7 +204,7 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 ``` 
 
 ### <a name="graphical-authoring"></a>Grafikus létrehozásról
-Grafikus runbookok esetében, az extra naplózás érhető el tevékenységszintű nyomon követés formájában. Nincsenek a nyomkövetési két szintet: alapszintű és a részletes. Alapszintű nyomon követését, láthatja a kezdési és befejezési idő, az egyes tevékenységek a runbookot, és minden tevékenység-újrapróbálkozások kapcsolatos adatokat. Néhány példa, a kísérletek számát, és a tevékenység kezdési időpontja. A részletes nyomon követését, kap az alapszintű nyomkövetés plusz bemeneti és kimeneti adatokat minden egyes tevékenységhez. Jelenleg a nyomkövetési rekordok használatával írt részletes adatfolyama így engedélyeznie kell a részletes naplózást, ha engedélyezi a nyomkövetési. A grafikus runbookok esetében a nyomkövetés engedélyezve van nincs állapotrekordok naplózására van szükség. Alapszintű nyomkövetés ugyanazt a célt szolgálja, és több információs célokat szolgál.
+Grafikus runbookok esetében, az extra naplózás érhető el tevékenységszintű nyomon követés formájában. Nincsenek nyomkövetési két szintet: Alapszintű, és részletes. Alapszintű nyomon követését, láthatja a kezdési és befejezési idő, az egyes tevékenységek a runbookot, és minden tevékenység-újrapróbálkozások kapcsolatos adatokat. Néhány példa, a kísérletek számát, és a tevékenység kezdési időpontja. A részletes nyomon követését, kap az alapszintű nyomkövetés plusz bemeneti és kimeneti adatokat minden egyes tevékenységhez. Jelenleg a nyomkövetési rekordok használatával írt részletes adatfolyama így engedélyeznie kell a részletes naplózást, ha engedélyezi a nyomkövetési. A grafikus runbookok esetében a nyomkövetés engedélyezve van nincs állapotrekordok naplózására van szükség. Alapszintű nyomkövetés ugyanazt a célt szolgálja, és több információs célokat szolgál.
 
 ![Grafikus szerzői feladat adatfolyamok megtekintése](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
@@ -234,4 +234,5 @@ Történő integráció konfigurálása a Log Analytics összegyűjtését, öss
 ## <a name="next-steps"></a>További lépések
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza
 * Megtudhatja, hogyan tervezhet és gyermek runbookok, lásd: [gyermek runbookok az Azure Automationben](automation-child-runbooks.md)
+
 

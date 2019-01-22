@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 03/15/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 42fbb8b08a2dc24ced436c4a6104f03ae3bca1e9
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.openlocfilehash: 69c8e293186f955e86962a325fce2f54a2eefdc7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982810"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432166"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>A B2B-együttműködés és az Azure Active Directory B2C összehasonlítása
 
@@ -30,14 +30,14 @@ Az alábbi táblázat részletes összehasonlítást ad meg.
 
 B2B együttműködési lehetőségek |     Azure AD B2C önálló ajánlat
 -------- | --------
-Kinek készült: olyan szervezeteknek, ahol igény van a partner szervezetek felhasználóinak hitelesítésére az identitásszolgáltatótól függetlenül. | Mire készült: A mobil- és webalkalmazás ügyfelek meghívása az Azure AD-be, akár egyéni, intézményi vagy szervezeti ügyfelekről legyen is szó.
-Támogatott identitások: Munkahelyi vagy iskolai fiókkal rendelkező alkalmazottak, munkahelyi vagy iskolai fiókkal vagy e-mail címmel rendelkező partnerek. Hamarosan támogatni fogja a közvetlen összevonást.  | Támogatott identitások: Fogyasztói felhasználók helyi vonatkozású fiókkal (bármilyen e-mail-cím vagy felhasználónév), vagy bármely támogatott közösségi identitás közvetlen összevonással.
-Mely címtárban vannak a partner felhasználók: A külső szervezet partner felhasználóit ugyanaz a címtár kezeli, mint az alkalmazottakat, de külön jelölést kapnak. Ugyanúgy kezelhetők, mint az alkalmazottak, hozzáadhatók ugyanahhoz a csoporthoz és így tovább  | Mely címtárban vannak a fogyasztó felhasználók: Az alkalmazás címtárban. Elkülönítve a szervezet alkalmazottaitól és partner címtárától (ha van).
+Célközönsége: Az szervezeteknek, amelyek szeretnék a, függetlenül az identitásszolgáltató egy fiókpartner-szervezet felhasználóinak hitelesítéséhez. | Célközönsége: Ügyfeleink a mobil és webes alkalmazások, e figyelmét személyeket, intézményi vagy a szervezeti felhasználók az Azure AD-be.
+Támogatott identitások: Az alkalmazottak munkahelyi vagy iskolai fiókokhoz, a munkahelyi vagy iskolai fiókkal rendelkező partnerek vagy bármilyen e-mail-címmel. Hamarosan támogatni fogja a közvetlen összevonást.  | Támogatott identitások: Helyi alkalmazás fiókok (bármilyen e-mail-cím vagy a felhasználó neve), vagy bármely identitásrendszerében a felhasználók közvetlen összevonással közösségi identitás támogatott.
+Melyik címtárban a partner felhasználók szerepelnek: Partner szervezet felhasználóitól származó a külső felügyelt alkalmazottak ugyanabban a címtárban, de kifejezetten feliratozva. Ugyanúgy kezelhetők, mint az alkalmazottak, hozzáadhatók ugyanahhoz a csoporthoz és így tovább  | Melyik felhasználó ügyfélentitás található: Az alkalmazás könyvtárában. Elkülönítve a szervezet alkalmazottaitól és partner címtárától (ha van).
 Egyszeri bejelentkezés (SSO) támogatása az összes Azure AD-hez csatlakozó alkalmazásra. Hozzáférést adhat például az Office 365-höz, vagy a helyszíni alkalmazásokhoz és egyéb SaaS-alkalmazásokhoz, amilyen például a Salesforce vagy a Workday.  |  Támogatja az Azure AD B2C bérlőkön belül az ügyfél tulajdonú alkalmazásokra az SSO-t. Egyszeri bejelentkezés az Office 365-höz és más Microsoft- és nem Microsoft SaaS – alkalmazásokhoz nem támogatott.
-Partner életciklus: A vendéglátó/meghívó szervezet felügyeli.  | Ügyféléletciklus: Önkiszolgáló vagy az alkalmazás felügyeli.
-Biztonsági házirend és megfelelőség: A vendéglátó/meghívó szervezet felügyeli (például [feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)).  | Biztonsági házirend és megfelelőség: Az alkalmazás kezeli.
-Védjegyek: A vendéglátó/meghívó szervezet védjegyét használja.  |    Védjegyek: Az alkalmazás kezeli. Általában termékek márkái láthatók, a szervezet inkább háttérbe szorul.
-További információk: [Blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [Dokumentáció](what-is-b2b.md)  | További információk: [Termék oldala](https://azure.microsoft.com/services/active-directory-b2c/), [Dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/)
+Partner életciklus: A gazdagép/meghívása felügyeli szervezet.  | Ügyféléletciklus: Önkiszolgáló és az alkalmazás által felügyelt.
+Biztonsági házirend és megfelelőség: A gazdagép/meghívása felügyeli szervezet (például [feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)).  | Biztonsági házirend és megfelelőség: Az alkalmazás által kezelt.
+Védjegyzési: Gazdagép/meghívott szervezet védjegyét szolgál.  |    Védjegyzési: Felügyelt alkalmazás. Általában termékek márkái láthatók, a szervezet inkább háttérbe szorul.
+További információ: [Blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [dokumentációja](what-is-b2b.md)  | További információ: [Termékoldalán](https://azure.microsoft.com/services/active-directory-b2c/), [dokumentációja](https://docs.microsoft.com/azure/active-directory-b2c/)
 
 
 ### <a name="next-steps"></a>További lépések

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 8b6ed6a7e71da2f302df4b41656c8a63e93be2b0
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 35e39ca4aa00838d7437ec675294b6c3cc62be6f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159073"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426221"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Biztonsági útmutató az Azure multi-factor Authentication használata az Azure AD-fiókok
 
@@ -29,7 +29,7 @@ Két módja van [az Azure MFA engedélyezése minden felhasználó számára](ho
 * Hozzon létre egy multi-factor Auth szolgáltatót, és használatalapú felhasználónkénti vagy hitelesítésenkénti
 
 ### <a name="licenses"></a>Licencek
-![AZ EMS](./media/multi-factor-authentication-security-best-practices/ems.png)
+![EMS](./media/multi-factor-authentication-security-best-practices/ems.png)
 
 Prémium szintű Azure AD vagy Enterprise Mobility + Security-licenccel rendelkezik, ha már rendelkezik Azure MFA. A szervezet nem kell semmi mást a kétlépéses ellenőrzés képesség kiterjesztését minden felhasználó számára. Csak kell egy licencet hozzárendelni egy felhasználóhoz, és ezután többtényezős hitelesítés bekapcsolása.
 

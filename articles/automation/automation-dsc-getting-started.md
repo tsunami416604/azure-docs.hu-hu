@@ -3,24 +3,24 @@ title: Ismerkedés az Azure Automation Állapotkonfiguráció
 description: MAGYARÁZAT és példák a legáltalánosabb feladatokat az Azure Automation állapot Configuration (DSC)
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc1c870d06d6bf4a0db941b261e9aebd317fdcb1
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 19e1721a638dfc750938e09e1626c4e291367723
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634359"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432445"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Ismerkedés az Azure Automation Állapotkonfiguráció
 
 Ez a cikk ismerteti az Azure Automation-konfiguráló szolgáltatása, például a létrehozása, importálása, és konfigurációk esetén kezelheti, gépek előkészítése fordítása és -jelentések megtekintése a leggyakoribb feladatokat végezheti el. Milyen az Azure Automation konfiguráló áttekintése van, lásd: [Azure Automation konfiguráló áttekintése](automation-dsc-overview.md). A Desired State Configuration (DSC) dokumentációja: [Windows PowerShell Desired State Configuration áttekintése](/powershell/dsc/overview).
 
-Ez a cikk részletesen ismerteti az Azure Automation State Configuration használatával. Ha azt szeretné, hogy egy minta környezet nélkül ebben a cikkben ismertetett lépések már be van állítva, a következő Resource Manager-sablon használható: [Azure Automation által felügyelt csomópontra sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Ez a sablon állít be egy befejezett konfigurációs Azure Automation-környezetben, többek között az Azure virtuális gép konfigurációs Azure Automation által kezelt.
+Ez a cikk részletesen ismerteti az Azure Automation State Configuration használatával. Ha azt szeretné, hogy egy minta környezet nélkül ebben a cikkben ismertetett lépések már be van állítva, a következő Resource Manager-sablon is használhatja: [Azure Automation által felügyelt csomópontra sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Ez a sablon állít be egy befejezett konfigurációs Azure Automation-környezetben, többek között az Azure virtuális gép konfigurációs Azure Automation által kezelt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

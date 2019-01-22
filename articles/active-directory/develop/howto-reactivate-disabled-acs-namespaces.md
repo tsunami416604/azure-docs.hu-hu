@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 01/21/2019
 ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 0f0de122dc3dbd770e91a8412430423bee222b30
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 085923dd124a4f973a709f0e59a07ad4137c6901
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577954"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438496"
 ---
-# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Hogyan: Reactivate le van tiltva az Access Control Service-névterek
+# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Útmutató: Letiltott Access Control Service-névterek újraaktiválása
 
 2017 November jelentettük be, hogy a Microsoft Azure Access Control Service (ACS), az Azure Active Directory (Azure AD), a szolgáltatás 2018. November 7 határidővel kivezetjük.
 
@@ -32,7 +32,7 @@ Mivel ezt követően az ACS-előfizetések rendszergazdai e-mail az ACS használ
 
 ## <a name="why-your-namespace-is-disabled"></a>Miért érdemes a névtér le van tiltva
 
-Ha a bővítmény rögzítette még nem található, kezdjük 2018. November 7-as Access Control-névtereket letiltása. Ha lemaradt a kommunikációhoz, és továbbra is szeretné elvégezni a beléptetést a bővítmény 2019. február 4. kövesse az alábbi szakaszokban található.
+Ha a bővítmény rögzítette még nem található, kezdjük 2018. November 7-as Access Control-névtereket letiltása. Kell kért 2019. február 4. a bővítmény már; Ellenkező esetben nem lesz ahhoz, hogy a névterek Powershellen keresztül.
 
 > [!NOTE]
 > A PowerShell-parancsok futtatása, és hosszabbítsa szolgáltatás-rendszergazda vagy az előfizetés társadminisztrátorának kell lennie.
@@ -57,7 +57,7 @@ Az ACS PowerShell használatával az Access Control-névtereket listában, és a
 
         Segítség kérése egy bizonyos paranccsal, futtassa:
 
-        ```
+        ```powershell
         Get-Help [Command-Name] -Full
         ```
     
@@ -79,18 +79,45 @@ Az ACS PowerShell használatával az Access Control-névtereket listában, és a
 
 ## <a name="request-an-extension"></a>Hosszabbítsa
 
-1. Az ACS-névtér felügyeleti portálon lépjen a `https://{your-namespace}.accesscontrol.windows.net`.
-1. Válassza ki a **olvasási feltételek** gombra kattintva, olvassa el a [használati feltételek frissítése](https://azure.microsoft.com/support/legal/access-control/), amely fog irányítja át a frissített használati feltételeket tartalmazó oldalt.
+2019. január 21-én kezdődő új bővítmény kérések jegyében.
 
-    [![Az olvasási feltételek gomb kiválasztása](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png#lightbox)
+Névterek letiltását az ügyfelek, akik bővítmények 2019. február 4. a kért program kezdődik. Továbbra is engedélyezheti újra névterek Powershellen keresztül, de a névterek le lesz tiltva a 48 óra után.
 
-1. Válassza ki **kérelem bővítmény** a szalagcímen az oldal tetején található. A gomb engedélyezése csak a elolvasása után a [használati feltételek frissítése](https://azure.microsoft.com/support/legal/access-control/).
+2019. március 4 után ügyfelek már nem képes bármilyen névterek PowerShell-lel engedélyezze újra.
 
-    [![Válassza ki a bővítmény kérelem gomb](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png#lightbox)
+További bővítmények már nem lesz automatikusan jóváhagyja. Ha áttelepítéséhez további időre van szüksége, forduljon a [az Azure-támogatás](https://portal.azure.com/#create/Microsoft.Support) részletes áttelepítési ütemterv megadását.
 
-1. A bővítmény kérelem regisztrálása után a lap frissül, és a egy új szalagcím, amely a lap tetején.
+### <a name="to-request-an-extension"></a>Egy bővítmény kérése
 
-    [![Frissített oldalt, a frissített szalagcímmel](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png#lightbox)
+1. Jelentkezzen be az Azure Portalon, és hozzon létre egy [új támogatási kérelem](https://portal.azure.com/#create/Microsoft.Support).
+1. Adja meg az új támogatási űrlap, az alábbi példában látható módon.
+
+    | Támogatási kérelem mező | Érték |
+    |-----------------------|--------------------|
+    | **Probléma típusa** | `Technical` |
+    | **Előfizetés** | Az előfizetés beállítása |
+    | **Szolgáltatás** | `All services` |
+    | **Erőforrás** | `General question/Resource not available` |
+    | **Probléma típusa** | `ACS to SAS Migration` |
+    | **Tárgy** | A probléma leírása |
+
+  ![Új műszaki támogatási kérelem](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+
+<!--
+
+1. Navigate to your ACS namespace's management portal by going to `https://{your-namespace}.accesscontrol.windows.net`.
+1. Select the **Read Terms** button to read the [updated Terms of Use](https://azure.microsoft.com/support/legal/access-control/), which will direct you to a page with the updated Terms of Use.
+
+    [![Select the Read Terms button](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png#lightbox)
+
+1. Select **Request Extension** on the banner at the top of the page. The button will only be enabled after you read the [updated Terms of Use](https://azure.microsoft.com/support/legal/access-control/).
+
+    [![Select the Request Extension button](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png#lightbox)
+
+1. After the extension request is registered, the page will refresh with a new banner at the top of the page.
+
+    [![Updated page with refreshed banner](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png#lightbox)
+-->
 
 ## <a name="help-and-support"></a>Súgó és támogatás
 
@@ -99,4 +126,4 @@ Az ACS PowerShell használatával az Access Control-névtereket listában, és a
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át az ACS használatból való kivonást egyaránt az [Útmutató: az Azure Access Control Service át](active-directory-acs-migration.md).
+- Tekintse át az ACS használatból való kivonást egyaránt az [hogyan: Az Azure Access Control Service át](active-directory-acs-migration.md).

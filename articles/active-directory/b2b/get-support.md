@@ -8,23 +8,23 @@ ms.topic: reference
 ms.date: 05/26/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 1474bf13a6d364fcbd90adee09a1a60bcafc2ccb
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 9a4e50934b33bde8d58c8ec1a2d8ae2917fac131
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985277"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438558"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>Támogatás igénybevétele B2B-együttműködés
 
 Olvassa végig a dokumentációt, végezze el a megfelelő műveleteket, de még nem olvasható be, hogy működik? Nyisson meg egy támogatási jegyet (támogatási csomag szükséges):
 
 1. A [az Azure Portalon](https://portal.azure.com), a Súgó és támogatás panelen keresse meg és válassza ki az új támogatási kérelem:
-  - Probléma típusa: technikai
+  - Probléma típusa: Műszaki
   - Előfizetés: Válassza ki az érintett előfizetés
-    - Szolgáltatás: Az Active Directory
+    - Szolgáltatás: Active Directory
     - Támogatási csomag: Válassza ki a megfelelő támogatási csomagot
 
   ![Új támogatási kérelem](media/get-support/new-support-request.png)

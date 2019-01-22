@@ -3,18 +3,18 @@ title: Hitelesítő eszközök az Azure Automationben
 description: Hitelesítő eszközök az Azure Automationben a runbook vagy DSC-konfiguráció számára elérhető erőforrásokhoz történő hitelesítéshez használható biztonsági hitelesítő adatokat tartalmaz. Ez a cikk bemutatja, hogyan hitelesítő eszközök létrehozása és használata őket a runbookból vagy DSC-konfigurációból.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 07452a97ba16d7745d48e210dd90ce077be64683
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9884138127d62e2dc524dc1b6d9e827d1ee0fac8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233439"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439187"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Hitelesítő eszközök az Azure Automationben
 
@@ -33,8 +33,8 @@ A következő táblázatban található parancsmagokkal létrehozása és kezel�
 |:--- |:--- |
 | [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential?view=azuresmps-3.7.0) |Hitelesítőadat-eszköz adatait kérdezi le. Csak kérheti le a hitelesítő adatokat, magát a **Get-AutomationPSCredential** tevékenység. |
 | [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Létrehoz egy új Automation-hitelesítő adat. |
-| [Remove - AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Eltávolítja az automatizálási hitelesítő adatok. |
-| [Set - AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Egy meglévő Automation hitelesítő adat tulajdonságainak beállítása. |
+| [Remove- AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Eltávolítja az automatizálási hitelesítő adatok. |
+| [Set- AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Egy meglévő Automation hitelesítő adat tulajdonságainak beállítása. |
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-parancsmagok
 
@@ -142,4 +142,5 @@ print cred["password"]
 * A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](automation-first-runbook-graphical.md).
 * A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md) 
 * A Python2-forgatókönyvekkel való ismerkedéshez, lásd: [az első Python2-forgatókönyvem](automation-first-runbook-textual-python2.md) 
+
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9157ce7f8f16bc60a6d5c16fa992a5402cf2d7ad
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3ab98669e01c9cfb2d4f46b8ddd83ff69653337b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190730"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434172"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Virtuális gép üzembe helyezése a VHD-ből
 
@@ -37,7 +37,7 @@ Virtuálisgép-rendszerképek kapcsolatos további információkért tekintse me
 
 Ha még nem tette meg, telepítse az Azure PowerShell-lel és az Azure CLI, az alábbi utasítások szerint:
 
-- [Az Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)
+- [Az Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)
 - [Telepítse az Azure CLI 2.0-t.](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
@@ -65,7 +65,7 @@ A virtuális gép üzembe helyezését követően készen áll [igazolja, a Virt
    |  -------------              |   ---------------                                                            |
    | Felhasználói Tárfiók neve   | Ahol a általánosított virtuális merevlemez tárfiók neve                    |
    | Felhasználói tároló neve | Tároló neve, ahol az általánosított virtuális merevlemez                          |
-   | Nyilvános IP-cím DNS-neve      | Nyilvános IP-DNS-név                                                           |
+   | DNS Name for Public IP      | Public IP DNS name                                                           |
    | Rendszergazdai felhasználónév             | Új virtuális gép rendszergazdai fiók felhasználóneve                                  |
    | Rendszergazdai jelszó              | Új virtuális gép rendszergazdai fiók jelszavát                                  |
    | Operációs rendszer típusa                     | Virtuális gép operációs rendszer: `Windows` \| `Linux`                                    |
@@ -76,7 +76,7 @@ A virtuális gép üzembe helyezését követően készen áll [igazolja, a Virt
    | Virtuális gép neve                     | Az új virtuális gép neve                                                           |
    | Virtuális hálózat neve        | A virtuális gép által használt virtuális hálózat neve                                   |
    | Hálózati adapter neve                    | A hálózati kártyát a virtuális hálózaton futó neve               |
-   | VIRTUÁLIS MEREVLEMEZ URL-CÍME                     | Hajtsa végre az operációsrendszer-lemez VHD URL-címe                                                     |
+   | VHD URL                     | Hajtsa végre az operációsrendszer-lemez VHD URL-címe                                                     |
    |  |  |
             
 5. Ezeket az értékeket ad meg, miután kattintson **beszerzési**. 

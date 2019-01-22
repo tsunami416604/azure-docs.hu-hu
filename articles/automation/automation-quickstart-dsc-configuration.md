@@ -3,7 +3,7 @@ title: Azure rövid útmutató – Virtuális gép konfigurálása DSC-vel | Mic
 description: LAMP-verem konfigurálása Linux rendszerű virtuális gépen a Desired State Configurationnel
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 keywords: dsc, konfigurálás, automatizálás
 author: KrisBash
 ms.author: krbash
@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7a9e394213ef40b995cb048c71f14a190e5e7970
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: c0a7bb9dfe8553515816efd53785dbe661cee0fa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243692"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431588"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurálás Linux rendszerű virtuális gépen a Desired State Configurationnel
 
@@ -108,7 +108,7 @@ A konfiguráció importálása:
 
 ## <a name="compile-a-configuration"></a>Konfiguráció fordítása
 
-A DSC-konfigurációkat csomópont-konfigurációvá (MOF-dokumentummá) kell fordítani, mielőtt csomóponthoz lehetne rendelni azokat. A fordítás érvényesíti a konfigurációt, és lehetővé teszi a paraméterértékek bevitelét. A konfigurációk fordításáról további információ: [Konfigurációk fordítása az Azure Automation DSC-ben](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
+A DSC-konfigurációkat csomópont-konfigurációvá (MOF-dokumentummá) kell fordítani, mielőtt csomóponthoz lehetne rendelni azokat. A fordítás érvényesíti a konfigurációt, és lehetővé teszi a paraméterértékek bevitelét. Fordításáról kapcsolatos további információkért lásd: [Az Azure Automation DSC konfigurációk fordítása](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
 
 Konfiguráció fordítása:
 
@@ -145,3 +145,4 @@ Ebben a rövid útmutatóban előkészített egy Linux rendszerű virtuális gé
 * A PowerShell Desired State Configurationről további információkért lásd: [A PowerShell célállapot-konfiguráló áttekintése](https://docs.microsoft.com/powershell/dsc/overview).
 * Az Automation DSC PowerShellről való kezeléséről további információkért lásd: [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0)
 * A jelentéskészítés és a riasztás érdekében a DSC-jelentések Log Analyticsnek való továbbításáról további információkért lásd: [DSC-jelentések továbbítása a Log Analyticsnek](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
+

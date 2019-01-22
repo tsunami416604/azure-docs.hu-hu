@@ -1,6 +1,6 @@
 ---
-title: A PIM - használható az Azure előfizetési követelmények |} A Microsoft Docs
-description: Előfizetés és az Azure AD Privileged Identity Management (PIM) használata a licencelési követelményeket ismerteti.
+title: Használható az Azure PIM - licenckövetelményekért |} A Microsoft Docs
+description: Az Azure AD Privileged Identity Management (PIM) használata a licencelési követelményeket ismerteti.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,53 +13,55 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 06/01/2017
+ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 1554895dcba0c09a3a2e19c284a1cd6f0416cfe1
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: dd4fa72b3e0b57ab227146eae6e2c7d20d0ce47a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190610"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424217"
 ---
-# <a name="subscription-requirements-to-use-pim"></a>A PIM használata előfizetési követelmények
+# <a name="license-requirements-to-use-pim"></a>Licenckövetelmények vonatkoznak, miközben a PIM használata
 
-Az Azure AD Privileged Identity Management érhető el az Azure AD Premium P2 kiadásában részeként. P2, és hogyan viszonyul prémium P1 szintű, az egyéb funkciókról további információ: [Azure Active Directory-kiadások](../active-directory-editions.md).
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatához egy könyvtárat egy érvényes licenccel kell rendelkeznie. Ezenkívül licencet hozzá kell rendelni a rendszergazdák és a megfelelő felhasználók. Ez a cikk ismerteti a PIM használatát tervezi a licenckövetelmények vonatkoznak.
 
->[!NOTE]
-Az Azure Active Directory (Azure AD) Privileged Identity Management volt az előzetes verzióban érhető el, ha voltak próbálja ki a szolgáltatást a bérlő nincs licenc ellenőrzése.  Most, hogy az Azure AD Privileged Identity Management elérte az általános rendelkezésre állás, egy próbaverziós vagy fizetős előfizetésre szerepelnie kell a bérlő követően, 2016. December Privileged Identity Management használatának folytatásához.
-  
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="confirm-your-trial-or-paid-subscription"></a>Erősítse meg a próbaverziós vagy fizetős előfizetésre
+A PIM használatát tervezi, a következő fizetett vagy a próbaverziós licencek a címtárban kell rendelkeznie:
 
-Ha nem biztos abban, hogy a szervezet rendelkezik-e a próbaverzióra vagy vásárolt előfizetést, majd ellenőrizheti, hogy van-e a bérlő előfizetés tartalmazza a V1-ben az Azure Active Directory modul a Windows PowerShell-parancsok segítségével. 
-1. Nyisson meg egy PowerShell-ablakot.
-2. Adja meg `Connect-MsolService` a bérlő felhasználói hitelesítést.
-3. Adja meg `Get-MsolSubscription | ft SkuPartNumber,IsTrial,Status`.
+- Prémium szintű Azure AD P2
+- Enterprise Mobility + Security (EMS) E5
 
-Ez a parancs lekéri a bérlő az előfizetések listáját. Ha nincs visszaadott sor, szüksége lesz egy Azure AD Premium P2 próbaverziójának, vásárlás beszerzése az Azure AD Premium P2 szintű előfizetésre vagy EMS E5 csomagra szóló előfizetés az Azure AD Privileged Identity Management használatához.  A próbaverzió és az Azure AD Privileged Identity Management használatának megkezdése, olvassa el [Ismerkedés az Azure AD Privileged Identity Management](pim-getting-started.md).
+További információkért lásd: [Mi az az Azure Active Directory?](../fundamentals/active-directory-whatis.md).
 
-Ha ez a parancs visszaadja a sor melyik SkuPartNumber "AAD_PREMIUM_P2" vagy "EMSPREMIUM" és a IsTrial értéke "True", ez azt jelzi, hogy az Azure AD Premium P2 próbaverziójára megtalálható a bérlőben.  Ha nincs engedélyezve az előfizetési állapotot, és nem kell vásárolni az Azure AD Premium P2 vagy az EMS E5 előfizetéssel, majd meg kell vásárolnia egy Azure AD Premium P2 szintű előfizetésre, vagy az EMS E5 csomagra szóló előfizetés az Azure AD Privileged Identity Management használatának folytatásához.
+## <a name="which-users-must-have-licenses"></a>Mely felhasználók rendelkeznie kell licencekkel?
 
-Az Azure AD Premium P2 keresztül érhető el egy [Microsoft nagyvállalati szerződés](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), a [Open mennyiségi licencprogramok](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx), és a [Cloud Solution Providers program](https://partner.microsoft.com/cloud-solution-provider). Az Azure és Office 365-előfizetők online az Azure AD Premium P2 szolgáltatást is megvásárolhatják.  További információ a prémium szintű Azure AD díjszabási és online rendezésének módját található [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).
+Minden egyes rendszergazda vagy a felhasználó kommunikál, vagy fogad az egyik előnye a PIM-licenccel kell rendelkeznie. Példák erre vonatkozóan:
 
-## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Az Azure AD Privileged Identity Management bérlő nem érhető el
+- A rendszergazdák az Azure AD-szerepkörök felügyelt PIM használatával
+- A rendszergazdák a felügyelt, miközben a PIM használata Azure-erőforrásszerepkörök
+- A kiemelt szerepkörű Rendszergazda szerepkörhöz hozzárendelt rendszergazdák
+- Címtárszerepkörök a PIM használatával kezelhetők a jogosult felhasználók
+- A felhasználók tudni a PIM kérések jóváhagyása vagy elutasítása
+- A just-in-time vagy közvetlen (időalapú) hozzárendelést egy Azure-erőforrás szerepkörhöz rendelt felhasználók  
+- Hozzáférési felülvizsgálat rendelt felhasználók
+- A hozzáférési felülvizsgálatok végrehajtó felhasználók
 
-Az Azure AD Privileged Identity Management már nem érhető el, a bérlőben ha:
-- A szervezet Azure AD Privileged Identity Management használta, előzetes verzióként állt, és vásárolja meg az Azure AD Premium P2 szintű előfizetésre, vagy az EMS E5 csomagra szóló előfizetés.
-- A szervezet korábban egy Azure AD Premium P2 vagy az EMS E5 próbaverziójának lejárt.
-- A szervezet korábban megvásárolt előfizetés lejárt.
+Licencek hozzárendelése a által használt kapcsolatos információkért lásd: [hozzárendelni, vagy távolítsa el az Azure Active Directory portálon licenceit](../fundamentals/license-users-groups.md).
 
-Ha egy Azure AD Premium P2 szintű előfizetésre, vagy az EMS E5 csomagra szóló előfizetés lejár, vagy egy szervezet, amely előzetes verzióban érhető el az Azure AD Privileged Identity Management használta nem szerezhető be az Azure AD Premium P2- vagy EMS E5 előfizetéssel:
+## <a name="what-happens-when-a-license-expires"></a>Mi történik, ha egy licenc lejár?
+
+Ha egy Azure AD Premium P2, EMS E5 vagy próbaverziós licenc lejár, miközben a PIM szolgáltatás már nem a címtárban érhető el:
 
 - Az Azure AD-szerepkörök állandó szerepkör-hozzárendelések nem érinti.
-- Az Azure Portalon, valamint a Graph API-parancsmagok és az Azure AD Privileged Identity Management PowerShell-felületek az Azure AD Privileged Identity Management bővítmény már nem emelt szintű szerepkörök aktiválása, illetve kezelheti a kiemelt felhasználók eléréséhez, vagy a hozzáférési felülvizsgálatok a kiemelt szerepkörök végrehajtásához.
+- A PIM szolgáltatáshoz az Azure Portalon, valamint a Graph API-parancsmagok és a PowerShell-felületek, miközben a PIM, már nem lesz elérhető a felhasználók emelt szintű szerepkörök aktiválása, emelt szintű hozzáférések kezeléséhez, vagy a kiemelt szerepkörök hozzáférési felülvizsgálatai.
 - Az Azure AD-szerepkörök jogosult szerepkör-hozzárendelés lesz eltávolítva, ahogy a felhasználók többé nem fognak tudni emelt szintű szerepkörök aktiválása.
-- Minden folyamatban lévő hozzáférési felülvizsgálatok az Azure AD-szerepkörök megszűnik, és az Azure AD Privileged Identity Management konfigurációs beállítások törlődnek.
-- Az Azure AD Privileged Identity Management a szerepkör-hozzárendelési módosítások már nem küld e-maileket.
+- Minden folyamatban lévő hozzáférési felülvizsgálatok az Azure AD-szerepkörök megszűnik, és a PIM-konfigurációs beállítások törlődnek.
+- A PIM szerepkör-hozzárendelési módosítások a már nem küld e-maileket.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM használatának megkezdése](pim-getting-started.md)
-- [A PIM segítségével kezelheti az Azure AD címtárszerepkörök](pim-roles.md)
+- [Ismerkedés a PIM-mel](pim-getting-started.md)
+- [Nem kezelheti a PIM szerepkörök](pim-roles.md)

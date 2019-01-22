@@ -4,7 +4,7 @@ description: Részletes utasításokat a rendszer és felhasználó által hozz�
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: daveba
-ms.openlocfilehash: 42664c4f550d17ce8bb2840e88ae45a660608942
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 17c40fca9bb07a2da3fcd575d142c2e197d73bec
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425361"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433288"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy virtuálisgép-méretezési csoportot a REST API-hívások
 
@@ -336,7 +336,7 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    az account get-access-token
    ``` 
 
-4. Az itt található utasításokat követve felügyelt felhasználó által hozzárendelt identitás létrehozása: [felügyelt felhasználó által hozzárendelt identitás létrehozása](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+4. Az itt található utasításokat követve felügyelt felhasználó által hozzárendelt identitás létrehozása: [Hozzon létre egy felhasználó által hozzárendelt felügyelt identitás](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
 5. Hozzon létre egy virtuálisgép-méretezési csoportba a CURL használatával az Azure Resource Manager REST-végpont meghívására. Az alábbi példa létrehoz egy virtuálisgép-méretezési csoport nevű *myVMSS* erőforráscsoportban *myResourceGroup* felügyelt felhasználó által hozzárendelt identitással `ID1`, ahogy az a kérelem törzsében szereplő az érték `"identity":{"type":"UserAssigned"}`. Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
  

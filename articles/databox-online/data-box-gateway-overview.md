@@ -5,14 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4f1ab6d955c81ce6f7b141eef42341f43bb379f6
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: 9670d67fa1eb79e9e5e8c81726c10cc78767fb74
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165317"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435464"
 ---
 # <a name="what-is-azure-data-box-gateway-preview"></a>Mi az az Azure Data Box Gateway (előzetes verzió)? 
 
@@ -39,7 +39,10 @@ A Data Box Gateway az alábbi előnyökkel jár:
 
 - **Egyszerű adatátvitel** – Használatával olyan könnyedén helyezhet át adatokat az Azure Storage-ból vagy az Azure Storage-ba, mintha csak egy helyi hálózati megosztással dolgozna.  
 - **Nagy teljesítmény** – Nagy teljesítményű adatátvitelével problémamentessé válik a hálózati adatátvitel az Azure-ban. 
-- **Gyors hozzáférés** – A legutóbbi fájlokat a gyorsítótárba menti a helyszíni fájlok gyorsabb elérése érdekében.  
+- **Gyors hozzáférés és a magas Adatbetöltési díjait számoljuk fel munkaidőben** -Box adatátjáró rendelkezik a helyi gyorsítótárat, Ön által meghatározott helyi kapacitás méretének van a virtuális eszköz üzembe helyezésekor. Az adatlemez mérete megfelelően meg kell adni a [virtuális eszköz minimális követelmények](data-box-gateway-system-requirements.md#specifications-for-the-virtual-device). A helyi gyorsítótár a következő előnyöket nyújtja:
+    - A helyi gyorsítótár adatbetöltés lehetővé teszi a nagy gyakorisággal. Nagy mennyiségű adatot betöltött csúcs munkaidő alatt, ha a gyorsítótárban tárolják az adatokat, és töltse fel a felhőbe.
+    - A helyi gyorsítótár gyors olvasási hozzáférést biztosít, amíg egy bizonyos küszöbértéket. Amíg az eszköz 50 – 60 %-os teljes, az eszközről az olvasások érhető el a gyorsítótárban, így gyorsabban elérhetővé. Miután a használatban lévő tárterület az eszközön kerül a küszöbérték fölött, majd az eszköz elindítja a helyi fájlok eltávolításához. 
+ 
 - **Korlátozott sávszélesség-használat** – Az Azure-ba akkor is lehet adatot írni, amikor a hálózat használata a csúcsidő során korlátozva van.  
 
 ## <a name="key-capabilities"></a>Főbb képességek
@@ -67,7 +70,7 @@ A Data Box Gateway virtuális eszköz az alábbi műszaki adatokkal rendelkezik:
 | Virtuális processzorok (magok)   | Minimum 4 |            
 | Memory (Memória)  | Minimum 8 GB|
 | Rendelkezésre állás|Egyetlen csomópont|
-| Lemezek| Operációsrendszer-lemez: 250 GB <br> Adatlemez: legalább 2 TB, dinamikusan kiosztott és SSD-másolatokkal kiegészített|
+| Lemezek| Operációsrendszer-lemez: 250 GB <br> Adatlemez: 2 TB-os minimális, dinamikusan kiosztott és SSD-k által kell készíteni|
 | Hálózati illesztők|1 vagy több virtuális hálózati adapter|
 | Natív fájlmegosztási protokollok|SMB és NFS  |
 | Biztonság| Hitelesítés az eszköz és az adatok hozzáférésének feloldásához <br> Átvitel alatt álló adatok titkosítása AES-256 bites titkosítás használatával|

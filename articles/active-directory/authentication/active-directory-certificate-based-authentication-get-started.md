@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: annaba
-ms.openlocfilehash: 3172ba12fbbd0135d1a5a3684145787c83aad040
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7d8c0a837f5618580c5e76e5ca97e19844b95698
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242415"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427168"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Az Azure Active Directory Tanúsítványalapú hitelesítés első lépései
 
@@ -55,7 +55,7 @@ A kapcsolódó információkat a következő eszközplatformokat létezik:
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
-## <a name="step-2-configure-the-certificate-authorities"></a>2. lépés: A hitelesítésszolgáltatók konfigurálása
+## <a name="step-2-configure-the-certificate-authorities"></a>2. lépés: A hitelesítésszolgáltatók konfigurálása
 
 A hitelesítésszolgáltatók konfigurálása az Azure Active Directoryban, minden egyes hitelesítésszolgáltató, töltse fel a következőket:
 
@@ -133,7 +133,7 @@ Egy megbízható hitelesítésszolgáltatótól módosításához használja a [
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
 
-## <a name="step-3-configure-revocation"></a>3. lépés: A visszavont tanúsítványok konfigurálása
+## <a name="step-3-configure-revocation"></a>3. lépés: Visszavont tanúsítványok konfigurálása
 
 Ügyféltanúsítvány visszavonása, hogy az Azure Active Directory hitelesítésszolgáltató adatai részeként feltöltése URL-címeket olvas be a visszavont tanúsítványok listáját (CRL), és gyorsítótárba helyezi azt. Az utolsó időbélyeg közzétételi (**hatályba lépés dátuma** tulajdonság) a visszavont tanúsítványok Listáját a segítségével győződjön meg arról a CRL-t továbbra is érvényes. A visszavont tanúsítványok Listájának rendszeres időközönként vonni a hozzáférést a tanúsítványok, a lista egy részét képező hivatkozik.
 

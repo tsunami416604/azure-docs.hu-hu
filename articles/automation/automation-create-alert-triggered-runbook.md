@@ -3,18 +3,18 @@ title: Használjon olyan riasztást, egy Azure Automation-runbook elindítása
 description: Ismerje meg, hogyan kezdeményezi egy runbook futtatását, amikor az Azure riasztást hoz létre.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d35d2bfdf379d5bf02ebb4b2fd71fb85519c741a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 88fe7740170638e9e0d7398a02dcf83ab81f6ffc
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581646"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421683"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Használjon olyan riasztást, egy Azure Automation-runbook elindítása
 
@@ -232,3 +232,4 @@ Egy klasszikus riasztás létrehozása:
 * Módjai, indítson el egy runbookot, lásd: [runbook elindítása](automation-starting-a-runbook.md).
 * Tevékenységnapló-riasztás létrehozása kapcsolatban lásd: [tevékenységnapló-riasztások létrehozása](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
 * Riasztás létrehozása, közel valós idejű kezelésével kapcsolatos információkért lásd: [riasztási szabályt létrehozni az Azure Portalon](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
+

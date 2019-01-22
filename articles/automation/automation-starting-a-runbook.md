@@ -3,23 +3,23 @@ title: Runbook elindítása az Azure Automationben
 description: A különböző módszereket, amelyek segítségével az Azure Automation forgatókönyv indítása és az Azure portal és a Windows PowerShell használatával részletesen foglalja össze.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2aea370d7de063805eb584cd7d90395ca725b4c
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 41ea6e6a8c09217c0bb34e07bb911329121f8b7b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275487"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424965"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Runbook elindítása az Azure Automationben
 Az alábbi táblázat segítségével meghatározhatja, hogy a metódus elindít egy runbookot, amely a leginkább megfelelő, az adott forgatókönyv az Azure automationben. Ez a cikk a runbook elindítása az Azure Portallal és a Windows PowerShell-lel részleteket tartalmaz. A többi módszer a részletei is szerepelnek az egyéb dokumentáció, amely az alábbi hivatkozásokra kattintva érheti el.
 
-| **METÓDUS** | **JELLEMZŐK** |
+| **METÓDUS** | **CHARACTERISTICS** |
 | --- | --- |
 | [Azure Portal](#starting-a-runbook-with-the-azure-portal) |<li>Az interaktív felhasználói kezelőfelület legegyszerűbb módja.<br> <li>Adja meg a paraméterértékeket egyszerű képernyőt.<br> <li>Könnyedén nyomon követheti a feladat állapota.<br> <li>Az Azure-beli bejelentkezési hitelesített hozzáférést. |
 | [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook) |<li>Hívja meg a Windows PowerShell-parancsmagokkal a parancssorból.<br> <li>Az automatizált megoldás több lépést is részét.<br> <li>Kérelem hitelesítése tanúsítvánnyal vagy OAuth felhasználói, fő / szolgáltatás egyszerű.<br> <li>Adja meg a egyszerű és összetett paraméterértékeket.<br> <li>Feladat állapotának nyomon követése<br> <li>PowerShell-parancsmagok támogatnia kell az ügyfelet. |
@@ -179,4 +179,5 @@ jsmith
 ## <a name="next-steps"></a>További lépések
 * Aktuális a cikkben a runbook-architektúra az Azure és a hibrid Runbook-feldolgozót a helyszíni erőforrások kezelésére runbookok magas szintű áttekintést nyújt. Automation-runbookok végrehajtása a helyi adatközpontban kapcsolatos további információkért tekintse meg [hibrid Runbook-feldolgozók](automation-hybrid-runbook-worker.md).
 * A létrehozás moduláris runbookok egyedi vagy közös funkciók más runbookok által használható kapcsolatos további információkért tekintse meg [gyermek Runbookok](automation-child-runbooks.md).
+
 

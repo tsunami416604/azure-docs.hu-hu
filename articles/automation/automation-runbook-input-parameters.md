@@ -3,18 +3,18 @@ title: Runbook bemeneti paraméterei
 description: Runbook bemeneti paramétereinek növelje a rugalmasságot, a runbookok adatok átadására a runbook indításakor, így. Ez a cikk ismerteti a különböző helyzetekhez, ahol használt bemeneti paraméterek runbookok.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 650effed388dde4419e2ff6aede2f0468551a959
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: d22a2de29e170979d9ab5d61c7f21a47d6aee99c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276686"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433441"
 ---
 # <a name="runbook-input-parameters"></a>Runbook bemeneti paraméterei
 
@@ -112,7 +112,7 @@ Használhatja a [ **Write-Output** ](https://technet.microsoft.com/library/hh849
      * Kötelező – nem
    * **2:**
      
-     * Név – resourceGroupName
+     * Name - resourceGroupName
      * Típus - karakterlánc
      * Kötelező – nem
      * Alapértelmezett érték – egyéni
@@ -151,7 +151,7 @@ A címke a beviteli mező alatt láthatja az attribútumokat, amelyek a paramét
 
 #### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>Indítsa el a közzétett runbookok PowerShell-parancsmagok segítségével, és rendelje hozzá a paraméterek
 
-* **Az Azure Resource Manager-parancsmagok:** elkezdheti az Automation-runbook használatával egy erőforráscsoportban létrehozott [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook).
+* **Az Azure Resource Manager-parancsmagok:** Automation-runbook használatával egy erőforráscsoportban létrehozott megkezdése [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook).
   
   **Példa**
   
@@ -160,7 +160,7 @@ A címke a beviteli mező alatt láthatja az attribútumokat, amelyek a paramét
   
   Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” –ResourceGroupName $resourceGroupName -Parameters $params
   ```
-* **Klasszikus Azure üzemi modell parancsmagok:** elkezdheti az automation-runbook használatával létrehozott egy alapértelmezett erőforráscsoportba tartozó [Start-AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
+* **Klasszikus Azure üzemi modell parancsmagok:** Automation-runbook használatával létrehozott egy alapértelmezett erőforráscsoportba tartozó megkezdése [Start-AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
   
   **Példa**
   
@@ -177,7 +177,7 @@ A címke a beviteli mező alatt láthatja az attribútumokat, amelyek a paramét
 
 #### <a name="start-a-runbook-by-using-an-sdk-and-assign-parameters"></a>Runbook indítása egy SDK-val, és rendelje hozzá a paraméterek
 
-* **Az Azure Resource Manager-metódus:** elindíthat egy runbookot, az SDK-t egy programozási nyelv használatával. Alább láthat egy C# kódrészletet a runbook indítása az Automation-fiókban. Megtekintheti, a kód a [GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
+* **Az Azure Resource Manager-metódus:** Az SDK-t egy programozási nyelv használatával is elindít egy runbookot. Alább láthat egy C# kódrészletet a runbook indítása az Automation-fiókban. Megtekintheti, a kód a [GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
   
   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -196,7 +196,7 @@ A címke a beviteli mező alatt láthatja az attribútumokat, amelyek a paramét
       return response.Job;
       }
   ```
-* **Klasszikus Azure üzemi modell módszer:** elindíthat egy runbookot, az SDK-t egy programozási nyelv használatával. Alább láthat egy C# kódrészletet a runbook indítása az Automation-fiókban. Megtekintheti, a kód a [GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
+* **Klasszikus Azure üzemi modell módszer:** Az SDK-t egy programozási nyelv használatával is elindít egy runbookot. Alább láthat egy C# kódrészletet a runbook indítása az Automation-fiókban. Megtekintheti, a kód a [GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
   
   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -235,15 +235,15 @@ Runbook-feladatok létrehozhatók és az Azure Automation REST API használatán
 
 A kérelem URI-t cserélje le a következő paraméterekkel:
 
-* **előfizetés-azonosító:** az Azure-előfizetés azonosítóját.  
-* **felhőalapú szolgáltatás neve:** nevét a felhőalapú szolgáltatás, amelyre a kérést küldeni kell.  
-* **Automation-fiók-neve:** az automation-fiók a megadott felhőszolgáltatásban lévő üzemeltetett nevét.  
-* **Feladatazonosító:** a feladathoz tartozó GUID. GUID, a PowerShell használatával lehet létrehozni a **[GUID]::NewGuid(). ToString()** parancsot.
+* **előfizetés-azonosító:** Az Azure-előfizetés azonosítóját.  
+* **cloud-service-name:** A felhőalapú szolgáltatás, amely a kérés rendszer neve.  
+* **automation-account-name:** Az automation-fiók a megadott felhőszolgáltatásban lévő üzemeltetett neve.  
+* **job-id:** A feladathoz tartozó GUID azonosítója. GUID, a PowerShell használatával lehet létrehozni a **[GUID]::NewGuid(). ToString()** parancsot.
 
 Annak érdekében, hogy a runbook-feladat paraméterek adhatók át, használja a kérelem törzsében. Az alábbi két tulajdonságot a megadott JSON-formátumban szükséges:
 
-* **Runbook neve:** szükséges. A feladat elindítása a runbook neve.  
-* **Runbook-paraméterek:** nem kötelező. A paraméter (név, érték) listát tartalmazó ahol neve karakterlánc típusúnak kell lennie, és értéke lehet bármely érvényes JSON-érték formázása.
+* **Runbook neve:** Kötelező. A feladat elindítása a runbook neve.  
+* **Runbook paraméterek:** Választható. A paraméter (név, érték) listát tartalmazó ahol neve karakterlánc típusúnak kell lennie, és értéke lehet bármely érvényes JSON-érték formázása.
 
 Ha el szeretné indítani a **Get-AzureVMTextual** a korábban létrehozott runbook **VMName** és **resourceGroupName** meg paraméterként, használja a következő JSON formátummal a a kérelem törzsében.
 
@@ -285,4 +285,5 @@ Amikor egy runbook végrehajtása egy webhookot, az előre meghatározott bemene
 * Módjai, indítson el egy runbookot, lásd: [runbook elindítása](automation-starting-a-runbook.md).
 * Szöveges runbookok szerkesztése, tekintse meg [szöveges runbookok szerkesztése](automation-edit-textual-runbook.md).
 * A grafikus runbookok szerkesztése, tekintse meg [grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md).
+
 

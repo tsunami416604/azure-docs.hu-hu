@@ -3,18 +3,18 @@ title: Kiszolgálók célállapotba történő konfigurálása és eltéréskeze
 description: Oktatóanyag – az Azure Automation konfigurációs kiszolgáló-konfigurációk kezelése
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 000875e4e591bcfe94ec99f8b16c8ec40bf52cf4
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: cb070b57b6d84f87e467b53369420bdc463e0bd8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629882"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434955"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Kiszolgálók célállapotba történő konfigurálása és eltéréskezelés
 
@@ -33,7 +33,7 @@ Az oktatóanyag elvégzéséhez a következőkre van szükség:
 
 - Egy Azure Automation-fiókra. Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg az [Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) kapcsolatos részt.
 - Egy Azure Resource Manager virtuális gép (nem klasszikus) futó Windows Server 2008 R2 vagy újabb. A virtuális gépek létrehozásával kapcsolatos információkért tekintse meg a [Windows virtuális gép létrehozása az Azure Portallal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) című cikket.
-- Az Azure PowerShell modul 3.6-os vagy újabb verziójára. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+- Az Azure PowerShell modul 3.6-os vagy újabb verziójára. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket.
 - Desired State Configuration (DSC) való ismerkedés során bizonyulhat. DSC kapcsolatos információkért lásd: [Windows PowerShell Desired State Configuration áttekintése](https://docs.microsoft.com/powershell/dsc/overview)
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba

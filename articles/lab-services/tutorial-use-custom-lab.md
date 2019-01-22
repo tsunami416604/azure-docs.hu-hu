@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: ab52206230c4dfe2d92c97f1e291ee00a086c570
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: b5abb8d4aad7c58bf673aa578255efe12d32ad4b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470863"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422898"
 ---
-# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet elérése az Azure DevTest Labs szolgáltatásban
-Ebben az oktatóanyagban az [Oktatóanyag: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatásban](tutorial-create-custom-lab.md) című szakaszban létrehozott tesztkörnyezetet használatát ismerheti meg.
+# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Oktatóanyag: Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet elérése
+Ebben az oktatóanyagban létrehozott a labor használata a [oktatóanyag: Labor létrehozása az Azure DevTest Labs](tutorial-create-custom-lab.md) .
 
 Az oktatóanyag során a következő lépéseket hajtja végre:
 
@@ -68,10 +68,12 @@ Ha már nem használja a virtuális gépet, az alábbi lépéseket követve oldj
 1. A virtuális gép oldalán válassza ki az eszköztár **Feloldás** elemét. 
 
     ![A virtuális gép lefoglalásának feloldása](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
-1. A virtuális gép a lefoglalás feloldása előtt leáll. 
+1. A virtuális gép a lefoglalás feloldása előtt leáll. Ez a művelet az értesítésekben állapota látható.  
+3. Lépjen vissza a DevTest Lab lap tetején lévő navigációs menüben található a labor nevére kattint. 
+    
+    ![Lépjen vissza a tesztkörnyezet](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
+1. Győződjön meg arról, hogy a virtuális gép listáján **igényelhető virtuális gépek** lista alján.
 
-    ![Feloldás állapota](./media/tutorial-use-custom-lab/unclaim-status.png) 
-1. Miután a feloldási művelet befejeződött, a virtuális gép megjelenik a **Lefoglalható virtuális gépek** lista alján. 
     
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megismerkedett az Azure DevTest Labs használatával létrehozott tesztkörnyezet elérésének és használatának módjával. A tesztkörnyezetben lévő virtuális gépekhez való hozzáféréssel és azok használatával kapcsolatos további információkért tekintse meg a következőt: 

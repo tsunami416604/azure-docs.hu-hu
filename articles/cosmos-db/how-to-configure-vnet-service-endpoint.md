@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 37cc7dcb3157459f6f6387323cc44d6f97954e92
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ac5dd4d43ec6e0248a5a9939015a344bad421280
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035814"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438983"
 ---
 # <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Azure Cosmos DB-erőforrások eléréséhez a virtuális hálózatok
 
@@ -87,7 +87,7 @@ Gondoskodjon arról, hogy hozzáférést az Azure Cosmos DB-metrikák a portálr
 
 Használja az alábbi lépéseket egy végpontot egy Azure Cosmos DB-fiók konfigurálása az Azure PowerShell használatával:  
 
-1. Telepítés [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) és [jelentkezzen be a](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
+1. Telepítés [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) és [jelentkezzen be a](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
 
 1. A virtuális hálózat egy meglévő alhálózat szolgáltatásvégpont engedélyezése.  
 

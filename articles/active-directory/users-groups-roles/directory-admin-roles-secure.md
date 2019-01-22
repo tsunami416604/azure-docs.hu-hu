@@ -13,16 +13,16 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: da53fa7d20c66b09e06c70222f29f060fa5803c8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c2ee0834b0c6872d96bebe71231f1a9424ff261a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387080"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438150"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD felhőalapú és hibrid telepítések emelt szintű hozzáférés biztonságossá tétele
 
-A legtöbb vagy az összes üzleti eszköz biztonsága az a modern szervezet kiemelt jogosultságú fiókok felügyelheti és kezelheti az informatikai rendszerek biztonságának függ. Gyakran többek között az internetes támadók rosszindulatú actors célozhat meg rendszergazdai fiókok, és gyorsan hozzáférhessenek a bizalmas adatok és rendszerek a hitelesítő adatok ellopására irányuló támadásokkal próbál emelt szintű hozzáférés más elemeit. Cloud services, a megelőzési és a válaszok a közös felelősséget a felhőbeli szolgáltató és az ügyfél a. A végpontok és a felhő legújabb fenyegetések kapcsolatos további információkért lásd: a [a Microsoft Security Intelligence Report](https://www.microsoft.com/security/sir/default.aspx). Ez a cikk segítséget nyújt a fejlesztés egy ütemtervet felé bezárása között az aktuális csomagok és az itt ismertetett útmutatást a hiányosságok pótlásában.
+A legtöbb vagy az összes üzleti eszköz biztonsága az a modern szervezet kiemelt jogosultságú fiókok felügyelheti és kezelheti az informatikai rendszerek biztonságának függ. Gyakran többek között az internetes támadók rosszindulatú actors célozhat meg rendszergazdai fiókok, és gyorsan hozzáférhessenek a bizalmas adatok és rendszerek a hitelesítő adatok ellopására irányuló támadásokkal próbál emelt szintű hozzáférés más elemeit. Cloud services, a megelőzési és a válaszok a közös felelősséget a felhőbeli szolgáltató és az ügyfél a. A végpontok és a felhő legújabb fenyegetések kapcsolatos további információkért lásd: a [a Microsoft Security Intelligence Report](https://www.microsoft.com/security/operations/security-intelligence-report). Ez a cikk segítséget nyújt a fejlesztés egy ütemtervet felé bezárása között az aktuális csomagok és az itt ismertetett útmutatást a hiányosságok pótlásában.
 
 > [!NOTE] 
 > A Microsoft elkötelezett a legmagasabb szintű megbízhatóság, átláthatóság, szabványoknak és előírásoknak való megfelelés. További információ hogyan csökkenti az a Microsoft globális incidenskezelő csapata a felhőszolgáltatások elleni támadások hatásainak, és hogyan biztonsági beépített Microsoft üzleti termékeivel, és a cloud services [Microsoft Trust Center – biztonság](https://www.microsoft.com/trustcenter/security)és a Microsoft megfelelőségi célkitűzések [Microsoft Trust Center – megfelelőségi](https://www.microsoft.com/trustcenter/compliance).
@@ -125,7 +125,7 @@ Az Azure multi-factor Authentication (MFA) megkövetelése bejelentkezéskor vé
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>2. fázis: A leggyakrabban alkalmazott támadási taktikák kockázatának csökkentése
 
-![2. fázis](./media/directory-admin-roles-secure/stage-two.png)
+![2. szakasz](./media/directory-admin-roles-secure/stage-two.png)
 
 A legtöbb gyakori problémák enyhítését célzó ütemterv összpontosít 2. fázis alkalmazott támadási taktikák kockázatának hitelesítő adatok ellopásának és visszaélések és megközelítőleg 2 – 4 héten belül végrehajtható. Ebben a szakaszban az emelt szintű hozzáférés biztonságossá ütemterv az alábbi műveleteket tartalmazza.
 
@@ -222,7 +222,7 @@ Készítse elő a feltételes hozzáférési szabályzatok a helyszíni és felh
 
 ## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>3. fázis: Láthatóság hozhat létre, és teljes mértékben vezérelhetik a felügyeleti tevékenység
 
-![3. fázis](./media/directory-admin-roles-secure/stage-three.png)
+![3. szakasz](./media/directory-admin-roles-secure/stage-three.png)
 
 3. fázis a 2. fázis kockázatcsökkentő épül, és célja, hogy megközelítőleg 1 – 3 hónapon belül kell végrehajtani. A biztonságos emelt szintű hozzáférés védelmének ütemterve ezen szakasza a következő összetevőket tartalmazza.
 
@@ -390,7 +390,7 @@ Ha szeretné meghatározni [Azure-előfizetés tulajdonjogának átruházása m�
 
 Hogyan kezeli a Microsoft Office 365-höz a biztonsági incidensek kapcsolatos további információkért lásd: [biztonsági incidensek kezelése a Microsoft Office 365-ben](https://aka.ms/Office365SIM).
 
-## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>GYAKORI KÉRDÉSEK: Gyakori kérdések léphetünk emelt szintű hozzáférés biztonságossá tétele  
+## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>FAQ: Gyakori kérdések léphetünk emelt szintű hozzáférés biztonságossá tétele  
 
 
 **KÉRDÉS:** Mit tegyek, ha még I még nincs megvalósítva a biztonságos hozzáférést összetevők?
@@ -446,7 +446,7 @@ Hogyan kezeli a Microsoft Office 365-höz a biztonsági incidensek kapcsolatos t
 
 * [Hogyan kockázatbecslés](https://www.microsoft.com/trustcenter/guidance/risk-assessment) -biztonsági és megfelelőségi követelmények a Microsoft cloud services kezelése
 
-### <a name="other-ms-online-services"></a>Más MS Online szolgáltatások 
+### <a name="other-ms-online-services"></a>Other MS Online Services 
 
 * [A Microsoft Intune-ban biztonsági](https://www.microsoft.com/trustcenter/security/intune-security) – az Intune mobileszköz-kezelés, mobilalkalmazás-felügyelet és a felhőalapú számítógép-felügyeleti képességek biztosít.
 

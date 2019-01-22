@@ -3,20 +3,20 @@ title: Azure Automation állapot konfiguráció folyamatos üzembe helyezés a C
 description: Fejlesztési és üzemeltetési folyamatos üzembe helyezés konfiguráló Azure Automation, DSC és a chocolatey-t a package manager használatával.  Példa a teljes JSON Resource Manager-sablon és a PowerShell-forrás.
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d3957038410e7a7d80e1ac710f0c227047b636a7
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 53ecff7df849d19ff7fe1d4c1c8dbd472326b06e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284795"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424455"
 ---
-# <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Példa: Való Automation konfigurációs és a chocolatey-t használó virtuális gépek folyamatos üzembe helyezés
+# <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Példa: Az Automation konfigurációs és a chocolatey-t használó virtuális gépek folyamatos üzembe helyezés
 
 A DevOps-világ vannak, amelyek segítik a különféle pontokat, hogy a folyamatos integrációs folyamat számos eszközt. Azure Automation konfigurációs egy üdvözlő újdonága a beállításokat, amelyeket fejlesztési és üzemeltetési csapatok azonban. Ez a cikk azt ismerteti, hogy egy Windows-számítógép be a folyamatos üzembe helyezés (CD) beállítása. Könnyedén kiterjesztheti a technika tetszőleges számú Windows-számítógépek szükség szerint tartalmazza a szerepkör (egy webhely, a példában), és a további szerepkörök is innen.
 
@@ -58,9 +58,9 @@ Valójában, tárolva kétszer: egyszer pedig egyszerű szövegként, és miutá
 
 Elvileg már végzett a bit tetején, vagy a legtöbb kategóriát. A nuspec létrehozása, a kódja lefordításának és tárolása a NuGet-kiszolgáló egy kis dolog. És már kezelése virtuális gépek. (Ha) a lekérési kiszolgálójának beállítása, a regisztráló a csomópontok (egyszer), és a létrehozása és a (kezdeti) tárolja a konfigurációs van véve a következő lépés a folyamatos üzembe helyezés van szükség. Csomagok vannak frissítve, és telepítve van a tárházhoz, majd frissítse a konfigurációs és csomópont-konfiguráció a lekéréses kiszolgálón (ez szükség szerint ismételje meg).
 
-Ha Ön még nem indul el egy Resource Manager-sablonnal, ez is OK. Számos PowerShell-parancsmagok, amelyek segítségével regisztrálja a virtuális gépek és az összes többi a lekéréses kiszolgálón. További részletekért lásd: Ez a cikk: [gépek előkészítése kezelésre által az Azure Automation Állapotkonfiguráció](automation-dsc-onboarding.md).
+Ha Ön még nem indul el egy Resource Manager-sablonnal, ez is OK. Számos PowerShell-parancsmagok, amelyek segítségével regisztrálja a virtuális gépek és az összes többi a lekéréses kiszolgálón. További részletekért lásd: Ez a cikk: [Gépek előkészítése kezelésre által az Azure Automation Állapotkonfiguráció](automation-dsc-onboarding.md).
 
-## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>1. lépés: A lekéréses kiszolgálón és az automation-fiók beállítása
+## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>1. lépés: A lekéréses kiszolgálón és az automation-fiókot
 
 Jelenleg egy hitelesített (`Connect-AzureRmAccount`) PowerShell-parancssorból: (is igénybe vehet néhány percet, amíg a lekéréses kiszolgálón be van állítva)
 
@@ -69,9 +69,9 @@ New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-
 New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
 ```
 
-Az automation-fiók elérhetősége (más néven helye) valamelyikébe helyezheti: USA keleti RÉGIÓJA 2, USA déli középső Régiója, USA beli államigazgatás – Virginia, Nyugat-Európa, Délkelet-Ázsia, kelet-japán, közép-India és Délkelet-Ausztrália, közép-Kanada, Észak-Európa.
+Az automation-fiók is elhelyezhető bármelyik elérhetősége (más néven hely): USA keleti RÉGIÓJA 2, USA déli középső RÉGIÓJA, USA-beli államigazgatás – Virginia, Nyugat-Európa, Délkelet-Ázsia, kelet-japán, közép-India és Délkelet-Ausztrália, közép-Kanada, Észak-Európa.
 
-## <a name="step-2-vm-extension-tweaks-to-the-resource-manager-template"></a>2. lépés: Virtuális gép bővítmény honlap a Resource Manager-sablon
+## <a name="step-2-vm-extension-tweaks-to-the-resource-manager-template"></a>2. lépés: A Resource Manager-sablont a virtuális gép bővítmény honlap
 
 Ebben a virtuális gép regisztrációhoz (PowerShell DSC bővítmény használatával) részletei [Azure gyorsindítási sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver).
 Ebben a lépésben regisztrálja az új virtuális gép állapota konfigurációs csomópontok listájában a lekéréses kiszolgálón. Ez a regisztráció részeként határozza meg a csomópont-konfigurációt a csomópont a alkalmazni. Ez a csomópont-konfiguráció nem kell a lekéréses kiszolgálón, hogy legyen, amely 4. lépés, ebben az esetben először OK még létezik. De itt a 2. lépésben kell a csomópont nevét, és a konfiguráció neve mellett döntött. Használat ebben a példában a csomópont "isvbox" és a konfigurációs "ISVBoxConfig". Így (a DeploymentTemplate.json adható meg), a csomópont-konfiguráció neve "ISVBoxConfig.isvbox".
@@ -86,7 +86,7 @@ Keresse meg az erőforrást, kattintson a "Üzembe helyezése az Azure Automatio
 Az Azure Portal nemrégiben hozzáadott egy másik módszer lehetővé teszi, hogy kérje le az új modulokat, vagy meglévő-modulok frissítése. Kattintson az Automation-fiók erőforrás, az eszközök csempét, és végül a modulok csempét. A Tallózás a katalógusban ikon lehetővé teszi a katalógusban található modulok listájának megtekintéséhez, a részletek feltárásához és a végső soron az Automation-fiókba importálásához. Ez remek módja a modulok naprakészen tartásához időről időre. És az importálás funkció más modulok számára, győződjön meg arról, semmi nem szinkronizált lekérdezi a függőségek ellenőrzi.
 
 Másik lehetőségként a manuális módszer van. A mappastruktúra a számítógép Windows PowerShell integrációs modulok kissé eltér a mappastruktúra az Azure Automation által várt.
-Ehhez egy kis finomhangolása az Ön részéről. De már nem rögzített, és csak azért alkalmazzuk csak egyszer erőforrásonként (hacsak nem szeretné frissíteni, a jövőben.) A PowerShell-integrációs modulok szerzői további információkért lásd: Ez a cikk: [integrációs modulok készítése az Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
+Ehhez egy kis finomhangolása az Ön részéről. De már nem rögzített, és csak azért alkalmazzuk csak egyszer erőforrásonként (hacsak nem szeretné frissíteni, a jövőben.) A PowerShell-integrációs modulok szerzői további információkért lásd: Ez a cikk: [Az Azure Automation integrációs modulok készítése](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
 
 - Telepítse a modul, amely a következőképpen kell a munkaállomáson:
   - Telepítés [Windows Management Framework, 5-ös verziójának](https://aka.ms/wmf5latest) (Windows 10-es nem szükséges)
@@ -105,7 +105,7 @@ Ehhez egy kis finomhangolása az Ön részéről. De már nem rögzített, és c
 
 A csomagban foglalt példa cChoco és xNetworking hajtja végre ezeket a lépéseket. Tekintse meg a [megjegyzések](#notes) a különleges kezelést cChoco számára.
 
-## <a name="step-4-adding-the-node-configuration-to-the-pull-server"></a>4. lépés: A csomópont-konfiguráció hozzáadása a lekérési kiszolgálón
+## <a name="step-4-adding-the-node-configuration-to-the-pull-server"></a>4. lépés: A csomópont-konfiguráció hozzáadása a pull-kiszolgálóhoz
 
 Nincs mit speciális Ön így importálja a konfigurációt a pull-kiszolgáló és a fordítási először kapcsolatban. Az összes későbbi importálás/fordítható ugyanazt a konfigurációt, pontosan ugyanúgy néznek. Minden alkalommal, amikor a csomag frissítése és a kell leküldenie az éles környezetben teheti meg ezt a lépést – a csomag új verziójának a maradéktalanul a konfigurációs fájl helyességéről. Itt van a konfigurációs fájlt, és a PowerShell:
 
@@ -176,12 +176,12 @@ Get-AzureRmAutomationDscCompilationJob `
 
 Ezen lépések eredménye az új csomópont-konfiguráció "ISVBoxConfig.isvbox" a lekérési kiszolgálón elhelyezni kívánt nevet. A csomópont-konfiguráció neve szerint "configurationName.nodeName" épül.
 
-## <a name="step-5-creating-and-maintaining-package-metadata"></a>5. lépés: Létrehozása és karbantartása csomagok metaadatai
+## <a name="step-5-creating-and-maintaining-package-metadata"></a>5. lépés: Létrehozása és fenntartása csomagok metaadatai
 
 Minden csomag mindössze a csomagtárház szüksége lesz egy nuspec, amely azt ismerteti.
 Adott nuspec kell összeállítani, és a NuGet-kiszolgálón tárolt. Ennek menetét [Itt](https://docs.nuget.org/create/creating-and-publishing-a-package). NuGet-kiszolgálóként MyGet.org is használhatja. Értékesíteni ezt a szolgáltatást, de rendelkezik alapszintű Termékváltozatát, amely ingyenes. NuGet.org címen találja a saját NuGet-kiszolgáló a saját csomagok telepítésével kapcsolatban.
 
-## <a name="step-6-tying-it-all-together"></a>6. lépés: Minden egy helyen összeköthető
+## <a name="step-6-tying-it-all-together"></a>6. lépés: Azok összekötése minden egy helyen
 
 Minden alkalommal, amikor egy verziót adja át a QA és jóvá van hagyva központi telepítéshez, a csomag létrejött, nuspec és nupkg frissítve, és a NuGet-kiszolgálóra telepített. Emellett a konfigurációs (4. lépés a fenti) frissíteni kell, hogy fogadja el az új verziószámmal. Fel kell a pull-kiszolgálónak küldött, és fordítva.
 Ezt követően a szolgáltatás a virtuális gépekhez, kérje le a frissítést, és telepítse az adott konfigurációtól függenek. Ezek a frissítések mindegyike egyszerű – mindössze egy vonal- vagy két PowerShell. Az Azure DevOps, esetén némelyike vannak ágyazva, amely a build összefűzhetők úlohy buildu. Ez [cikk](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) további részleteket. Ez [GitHub-adattárat](https://github.com/Microsoft/vso-agent-tasks) a különböző elérhető összeállítási feladatok részleteit.

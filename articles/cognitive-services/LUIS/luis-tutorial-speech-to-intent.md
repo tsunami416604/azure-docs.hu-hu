@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 8e664e26a2cafc2f0b32ebea0f019918426d956c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2d212ae8f5a12c06f40e025a7a8d786a44194a92
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714580"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438730"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Beszédszolgáltatás integráció a Language Understanding alkalmazással
 A [Speech Service-szel](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) egyetlen kérésben kérhet le hanganyagokat, és adathat vissza LUIS-előrejelzési JSON-objektumokat. A cikkben egy C#-projektet fog letölteni és felhasználni a Visual Studióban arra, hogy mikrofonnal rögzítsen egy kimondott szöveget, és LUIS-előrejelzési adatokhoz jusson. A projekt a Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/)-csomagot használja, amelyet referenciaként már tartalmaz. 
@@ -24,7 +24,7 @@ A [Speech Service-szel](https://docs.microsoft.com/azure/cognitive-services/Spee
 Szüksége lesz egy ingyenes [LUIS][LUIS]-webhelyfiókra az alkalmazás importálásához.
 
 ## <a name="create-luis-endpoint-key"></a>LUIS-végpont kulcsának létrehozása
-Az Azure Portalon [hozzon létre](luis-how-to-azure-subscription.md#create-luis-endpoint-key) egy **Language Understanding-** (LUIS-) kulcsot. 
+Az Azure Portalon [hozzon létre](luis-how-to-azure-subscription.md) egy **Language Understanding-** (LUIS-) kulcsot. 
 
 ## <a name="import-human-resources-luis-app"></a>A Human Resources LUIS-alkalmazás importálása
 A leképezések és a kimondott szöveg ebben a cikkben vannak az emberi erőforrások LUIS érhető el az alkalmazásból a [Azure-minták](https://github.com/Azure-Samples/cognitive-services-language-understanding) GitHub-adattárban. Töltse le a [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json) fájlt, mentse `.json` kiterjesztéssel, és [importálja](luis-how-to-start-new-app.md#import-new-app) a LUIS-ba. 

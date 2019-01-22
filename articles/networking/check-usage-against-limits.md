@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: d57f34da261d51707caf499bfdf1fffa344b72a9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0b15861f663c98d3b873f95a0ea6c485ada91fb6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385515"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421606"
 ---
 # <a name="check-resource-usage-against-limits"></a>Ellenőrizze az erőforrás-használati korlátozások
 
@@ -34,9 +34,9 @@ Ebből a cikkből elsajátíthatja, hogyan tekintsük meg minden egyes hálózat
 4. Válassza ki az előfizetés nevét adja meg szeretné tekinteni a kapcsolódó használati adatok.
 5. A **beállítások**válassza **használat + kvóta**.
 6. Választhat a következő beállításokat:
-    - **Erőforrástípusok**: válassza ki az összes erőforrástípus, vagy válassza ki az adott típusú erőforrás meg szeretné jeleníteni.
-    - **Szolgáltatók**: válassza ki az összes erőforrás-szolgáltató, vagy válasszon **számítási**, **hálózati**, vagy **tárolási**.
-    - **Helyek**: válassza ki az összes Azure-helyen, vagy válassza ki az adott helyeken.
+    - **Erőforrástípusok**: Válassza ki az összes erőforrástípus, vagy válassza ki az adott típusú erőforrás meg szeretné jeleníteni.
+    - **Szolgáltatók**: Válassza ki az összes erőforrás-szolgáltató, vagy válasszon **számítási**, **hálózati**, vagy **tárolási**.
+    - **Helyek**: Válassza ki az összes Azure-helyen, vagy válassza ki az adott helyeken.
     - Kiválaszthatja a megjelenítendő összes erőforrását, vagy csak az erőforrások közül legalább egy telepítési helyét.
 
     A következő képen látható a példa bemutatja, hogy legalább egy erőforrás üzembe helyezve, az USA keleti régiójában és hálózati erőforrásokat:
@@ -47,7 +47,7 @@ Ebből a cikkből elsajátíthatja, hogyan tekintsük meg minden egyes hálózat
 
 ## <a name="powershell"></a>PowerShell
 
-A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.0.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja PowerShell, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-bA.
+A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.0.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja PowerShell, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-bA.
 
 A korlátozások a használati adatok megtekintéséhez [Get-AzureRmNetworkUsage](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.8.0). Az alábbi példa lekéri a használati erőforrásokhoz, amennyiben legalább egy erőforrás üzembe van helyezve az USA keleti régiójában:
 

@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: e91ca2ff438e3ae9e9b3f46e5a8db89f17fb1c8e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: 6cbc4fa071a45e670dae3cc6be66272bc67767f7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295121"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437181"
 ---
-# <a name="tutorial-enabling-password-writeback"></a>Oktatóanyag: Jelszóvisszaíró engedélyezése
+# <a name="tutorial-enabling-password-writeback"></a>Oktatóanyag: A jelszóvisszaírás engedélyezése
 
 Az oktatóanyagban engedélyezzük a jelszóvisszaírót hibrid környezetben. A jelszóvisszaíró használatával az Azure Active Directoryban (Azure AD) végrehajtott jelszómódosítások visszaszinkronizálhatók a helyszíni Active Directory Domain Services- (AD DS-) környezetbe. A jelszóvisszaíró az Azure AD Connect részeként engedélyezett biztonságos mechanizmus, amely a jelszómódosításokat az Azure AD-ből visszaküldi egy meglévő helyszíni címtárba. A jelszóvisszaíró belső működésével kapcsolatos további részleteket [a jelszóvisszaíró működését ismertető](concept-sspr-writeback.md) cikkben olvashat.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure virtuális gépek magas rendelkezésre állású architektúra és SAP NetWeaver forgatókönyvek |} Microsoft Docs
-description: Magas rendelkezésre állású architektúra és SAP NetWeaver Azure virtuális gépeken forgatókönyvei
+title: Az Azure virtuális gépek magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver számára |} A Microsoft Docs
+description: Magas rendelkezésre állású architektúra és forgatókönyvek esetében az SAP NetWeaver az Azure Virtual machines szolgáltatásban
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -14,17 +14,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6612e3fb5368d8d5a4f59c0e5eefc8ef24c04aec
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: de009d1dbc979a534b0fed8cee2afc867c5b79d4
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656924"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426913"
 ---
-# <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és SAP NetWeaver forgatókönyvei
+# <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver számára
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -147,7 +147,7 @@ ms.locfileid: "34656924"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID magas rendelkezésre állású konfiguráció)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP több biztonsági AZONOSÍTÓVAL magas rendelkezésre állású konfiguráció)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -231,183 +231,199 @@ ms.locfileid: "34656924"
 
 ## <a name="terminology-definitions"></a>Terminológiai definíciók
 
-**Magas rendelkezésre állású**: minimálisra csökkentik az informatikai szolgáltatások keresztül redundáns, hibatűrő vagy feladatátvételi védett összetevőinek IT szolgáltatások üzleti folytonosság megadásával technológiák hivatkozik a *azonos*adatközpont. Ebben az esetben az adatközpontban található egy Azure-régiót.
+**Magas rendelkezésre állású**: Informatikai fennakadások minimálisra azáltal, hogy az informatikai szolgáltatások összetevőit redundáns, hibatűrő vagy feladatátvételi védett keresztül üzletmenet technológiák csoportja hivatkozik a *ugyanazon* adatközpontban. Ebben az esetben, az adatközpontban található, egy Azure-régióban.
 
-**Vész-helyreállítási**: is hivatkozik a minimalizálja a IT szolgáltatások megszakítása és a helyreállítási, de keresztben *különböző* adatközpontokban, amelyek több száz többet egy másik miles lehetnek. Ebben az esetben az adatközpontok vagy ügyfélként az Ön által létrehozott helyen lévő különböző Azure-régiók geopolitikai régión belül található.
+**Vész-helyreállítási**: Is hivatkozik a minimálisra csökkentik az informatikai szolgáltatások megszakítás és a helyreállítási de keresztben *különböző* , lehet, hogy több száz mérföld forrásadatok egy másik adatközpontban. A mi esetünkben az adatközpontok különböző Azure-régióban egy geopolitikai régión belül, vagy a Microsoft az Ön által létrehozott helyeken előfordulhat, hogy találhatók.
 
 
 ## <a name="overview-of-high-availability"></a>A magas rendelkezésre állás – Áttekintés
-SAP a magas rendelkezésre állás, az Azure-ban háromféle sorolhatók:
+Az SAP az Azure-ban magas rendelkezésre állású három tartalmaznak:
 
 * **Azure-infrastruktúra magas rendelkezésre állású**: 
 
-    Például a magas rendelkezésre állású (VM) számítási, hálózati, vagy a tároló- és az SAP-alkalmazásokból rendelkezésre állásának növelése előnye tartalmazhatnak.
+    Például a magas rendelkezésre állás (VM) számítási, hálózati, vagy tárolási és annak előnyeit SAP-alkalmazások rendelkezésre állásának növelése tartalmazhatnak.
 
-* **Indítsa újra a virtuális gép Azure-infrastruktúra használatával eléréséhez *magas rendelkezésre állás érdekében* az SAP-alkalmazásokból**: 
+* **Indítsa újra a virtuális gép Azure-infrastruktúra használatával eléréséhez *magasabb rendelkezésre állás* SAP alkalmazások**: 
 
-    Ha úgy dönt, hogy nem használja a Funkciók, például a Windows Server feladatátvételi fürtszolgáltatási (WSFC) vagy támasztja Linux, Azure virtuális gép újraindítása van szükség. Általa védett SAP rendszerek elleni tervezett és nem tervezett leállások a fizikai kiszolgálók Azure-infrastruktúra és a teljes alapul szolgáló Azure platformon.
+    Ha úgy dönt, hogy nem használja a funkciókat, például a Windows Server feladatátvételi fürtszolgáltatási (WSFC) vagy támasztja Linux rendszeren, akkor az Azure virtuális gép újraindítása használt fel. Megvédi SAP-rendszereinket tervezett és nem tervezett leállások ellen a fizikai kiszolgáló Azure-infrastruktúra és a mögöttes Azure platform általános.
 
-* **SAP alkalmazás magas rendelkezésre állású**: 
+* **Az SAP alkalmazások magas rendelkezésre állású**: 
 
-    Teljes SAP rendszer magas rendelkezésre állás biztosítása érdekében, az összes kritikus SAP rendszerösszetevők kell védeni. Példa:
-    * Redundáns SAP alkalmazáskiszolgálók.
-    * Egyedi összetevők. Például lehet egyetlen pont, a hiba (SPOF) összetevő, például egy SAP ASC/SCS példányt vagy egy adatbázis-kezelő rendszer (DBMS).
+    Teljes SAP rendszer magas rendelkezésre állás, az összes kritikus fontosságú SAP rendszerösszetevők kell levédenie. Példa:
+    * Redundáns SAP-alkalmazáskiszolgálók.
+    * Egyedi összetevők. Például lehet a hiba (SPOF) összetevő, például az SAP ASCS/SCS példányhoz vagy egy adatbázis-kezelő rendszer (DBMS) hibaérzékeny pont.
 
-SAP a magas rendelkezésre állás, az Azure-ban eltér az SAP a magas rendelkezésre állás, a helyi fizikai vagy virtuális környezetben. A következő dokumentum [SAP NetWeaver magas rendelkezésre állás és a VMware és a Microsoft Windows Hyper-V virtuális környezetek üzletmenet-folytonosságának] [ sap-ha-bc-virtual-env-hyperv-vmware-white-paper] szabványos SAP magas rendelkezésre állású ismerteti a konfigurációk Windows rendszeren virtualizált környezetben.
+Az SAP az Azure-ban magas rendelkezésre állású SAP magas rendelkezésre állású helyszíni fizikai vagy virtuális környezetben eltér. A következő tanulmány [SAP NetWeaver magas rendelkezésre állás és a VMware és a Microsoft Windows Hyper-V virtuális környezetek üzletmenet-folytonossági] [ sap-ha-bc-virtual-env-hyperv-vmware-white-paper] standard SAP magas rendelkezésre állású ismerteti konfigurációk a Windows virtualizált környezetekben.
 
-Nincs sapinst integrált SAP magas rendelkezésre állású konfiguráció Linux rendszerhez készült Windows van. Linux SAP magas rendelkezésre állású helyszíni kapcsolatos információkért lásd: [magas rendelkezésre állású partneradatok][sap-ha-partner-information].
+Nem tartozik sapinst integrált SAP magas rendelkezésre állású konfiguráció Linux, a Windows van. Linux SAP magas rendelkezésre állású helyszíni kapcsolatos információkért lásd: [magas rendelkezésre állású partneradatok][sap-ha-partner-information].
 
 ## <a name="azure-infrastructure-high-availability"></a>Azure-infrastruktúra magas rendelkezésre állás
 
-### <a name="sla-for-single-instance-virtual-machines"></a>SLA-t egypéldányos virtuális gépekhez
+### <a name="sla-for-single-instance-virtual-machines"></a>Egypéldányos virtuális gépekre vonatkozó SLA
 
-Jelenleg egy prémium szintű Storage 99,9 %-os single-VM szolgáltatásiszint-szerződés. Ha meg szeretne ismerkedni kapcsolatos milyen lehet az egyetlen virtuális gép rendelkezésre állását, a különféle érhető el a termék hozhat létre [Azure szolgáltatói szerződések][azure-sla].
+Jelenleg egy egyetlen virtuális garantált 99,9 %-a premium storage segítségével. Hogy mi lehet az egyetlen virtuális gép rendelkezésre állásának kapcsolatos képet kapjon, hozhat létre a különböző elérhető a termék [Azure szolgáltatásiszint-szerződései][azure-sla].
 
-A számítás alapja havonta vagy 43 200 perc 30 nap. Például egy 0,05 % állásidő megfelel 21,6 perc. A szokásos módon a különböző szolgáltatások rendelkezésre állásának kiszámítása a következőképpen:
+A számítási alapja 30 nap / hó, vagy 43 200 perc. Ha például 21,6 perc 0,05 % üzemkimaradást felel meg. A különböző szolgáltatások rendelkezésre állását a szokásos módon, a következő módon számítható ki:
 
 (Rendelkezésre állási szolgáltatás #1/100) * (rendelkezésre állási szolgáltatás #2/100) * (rendelkezésre állási szolgáltatás #3/100) \*...
 
 Példa:
 
-(99,95/100) * (99,9/100) * (99,9/100) = 0.9975 vagy egy 99.75 % rendelkezésre állását.
+(99,95/100) * (99,9/100) * (99,9/100) = 0.9975 vagy 99.75 %-os általános rendelkezésre állási.
 
-### <a name="multiple-instances-of-virtual-machines-in-the-same-availability-set"></a>Az azonos rendelkezésre állási csoport a virtuális gépek több példánya
-Legalább két példányt az azonos rendelkező összes virtuális gépekhez *rendelkezésre állási csoport*, de tudjuk garantálni, úgy kell legalább egy példány a virtuális gépek csatlakoztatásához legalább 99,95 %-ában.
+### <a name="multiple-instances-of-virtual-machines-in-the-same-availability-set"></a>Az ugyanazon rendelkezésre állási csoportban lévő virtuális gépek több példánya
+Minden virtuális gép, amelynek két vagy több példánya azonos *rendelkezésre állási csoport*, garantáljuk, hogy elérhetőséget virtuálisgép-példányhoz legalább egy legalább 99,95 %-ában.
 
-Ha két vagy több virtuális gépet az azonos rendelkezésre állási készlet része, a rendelkezésre állási csoport összes virtuális gépén van hozzárendelve egy *frissítési tartomány* és egy *tartalék tartomány* az alapul szolgáló Azure platformon.
+Ha két vagy több virtuális gépet az azonos rendelkezésre állási csoport része, minden virtuális gép rendelkezésre állási csoportban van hozzárendelve egy *frissítési tartományt* és a egy *tartalék tartomány* a mögöttes Azure platform.
 
-* **Tartományok frissítése** garantálja, hogy több virtuális gép nem újraindítása van az Azure-infrastruktúra a tervezett karbantartás alatt egy időben. Egyszerre csak egy virtuális gép újraindítása után.
+* **Frissítési tartományok** garantálja, hogy több virtuális gép nem indulnak újra, amely az Azure-infrastruktúra a tervezett karbantartás során egy időben. Egyszerre csak egy virtuális gép újraindul.
 
-* **Tartományok fault** garantálja, hogy a virtuális gépek telepítve vannak a hardverösszetevők közül nem ugyanazt a közös power forrás- és a hálózati kapcsoló. Amikor kiszolgálók, a hálózati kapcsoló vagy egy áramforrásról változni egy nem tervezett leállás, csak egy virtuális gép van hatással.
+* **Tartalék tartományok** garantálja, hogy a virtuális gépek telepítve vannak a hardverösszetevők, amelyek nem rendelkeznek közös áramforrással és hálózati kapcsolóval. Kiszolgálók, a hálózati kapcsoló vagy egy áramforráshoz mennek keresztül egy nem tervezett üzemkimaradások, csak egy virtuális Géphez van hatással.
 
-További információkért lásd: [a Windows Azure virtuális gépek rendelkezésre állásának kezelése][azure-virtual-machines-manage-availability].
+További információkért lásd: [Azure-beli Windows virtuális gépek rendelkezésre állásának kezelése][azure-virtual-machines-manage-availability].
 
-Egy rendelkezésre állási csoportot a magas rendelkezésre állás elérése érdekében szolgál:
+Rendelkezésre állási magas rendelkezésre állásának eléréséhez használatos:
 
-* Redundáns SAP alkalmazáskiszolgálók.  
-* Csomópontokkal rendelkező fürtök két vagy több (például VM) például SAP ASC/SCS példánya vagy egy adatbázis-kezelő SPOFs védelmét.
+* Redundáns SAP-alkalmazáskiszolgálók.  
+* Legalább két csomóponttal (virtuális gépek, a példában), amely védeni SPOFs például az SAP ASCS/SCS példányhoz vagy adatbázis-kezelő-fürtöket.
+
+
+### <a name="azure-availability-zones"></a>Azure-beli rendelkezésre állási zónák
+Azure éppen egy fogalmait bevezetéséről [Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview) során különböző [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/). Hol érhetők el rendelkezésre állási zónák Azure-régióban az Azure-régiók rendelkezik független áramforrásról, hűtéssel és hálózati ellátás több adatközpontban. Egy adott Azure-régión belül különböző zónák ajánlat oka, hogy az alkalmazások üzembe helyezése két vagy három rendelkezésre állási zónák érhető el. Feltételezve, hogy áramforrásokhoz és/vagy hálózati problémák hatással lenne a csak egy rendelkezésre állási zónában infrastruktúráját, az alkalmazás központi telepítésének egy Azure-régióban továbbra is teljes körűen működik. Végül néhány kisebb kapacitással óta egy zónában lévő virtuális gépek elveszhetnek. Azonban a két zónában lévő virtuális gépek továbbra is helyezheti üzembe. Az Azure-régiók zónák kínáló szerepelnek [Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview).
+
+A rendelkezésre állási zónák használja, néhány dolgot figyelembe venni. A szempontok lista, például:
+
+- Az Azure rendelkezésre állási csoportok egy rendelkezésre állási zónán belül nem lehet telepíteni. Meg kell választania egy rendelkezésre állási zónák vagy rendelkezésre állási csoport üzembe helyezési keretet másként egy virtuális gép.
+- Nem használhatja a [alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) megoldásokat hozhat létre feladatátvevő fürt feladatátvételi fürtszolgáltatások Windows vagy Linux rendszerű támasztja alapján. Ehelyett kell használnia a [Azure Standard Load Balancer Termékváltozat](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
+- Azure-beli rendelkezésre állási zónák nem biztosít semmilyen garanciát bizonyos egy régión belül a különböző zónák közötti távolság
+- A hálózati késést a különböző Azure-régiókhoz tartozó különböző Azure rendelkezésre állási zónák között az Azure régiók eltérő lehet. Előfordulhatnak olyan esetek, akkor egy ügyfél ésszerű módon futtatható az üzembe helyezett SAP alkalmazásrétegre különböző zónák között óta a hálózati késés egyik zónából a aktív az adatbázis-kezelő virtuális gép továbbra is elfogadható az egy folyamatot az üzletmenetre. Mivel az ügyfél forgatókönyvek, ahol a késés a aktív az adatbázis-kezelő virtuális gép egy zóna és a egy virtuális Gépet egy másik zónában az SAP alkalmazáspéldány között lehet-e túl zavaró, és nem fogadható el, az SAP business folyamatok lesz. Ennek eredményeképpen az üzembe helyezési architektúra kell lenniük az aktív/aktív architektúra az alkalmazás vagy az aktív/passzív architektúra különböző, ha túl nagy a késés.
+- Használatával [Azure managed disks](https://azure.microsoft.com/services/managed-disks/) Azure rendelkezésre állási zónában történő üzembe helyezéséhez megadása kötelező 
+
 
 ### <a name="planned-and-unplanned-maintenance-of-virtual-machines"></a>A virtuális gépek tervezett és nem tervezett karbantartás
 
-Kétféle esemény Azure platformon hatással lehet a virtuális gépek rendelkezésre állását:
+Kétféle esemény Azure-platform hatással lehet a virtuális gépek rendelkezésre állásának:
 
-* **A tervezett karbantartások** események az alapul szolgáló Azure platformra a Microsoft által készített rendszeres frissítések érhetők el. A frissítések javítása átfogó megbízhatóságát, teljesítményét és, amelyek a virtuális gépek futnak a platform-infrastruktúra biztonságát.
+* **Tervezett karbantartás** események pedig a Microsoft által a mögöttes Azure platformon végzett időszakos frissítések. A frissítések általános megbízhatóságának, teljesítményének és a virtuális gépeket futtató platforminfrastruktúra biztonsági javítása.
 
-* **Nem tervezett karbantartás** események fordulhat elő, ha a hardver- vagy a virtuális gép alapul szolgáló fizikai infrastruktúra valamilyen módon nem sikerült. Helyi hálózati hibák, helyi lemezhiba vagy más állvány szintű hibák tartalmazhat. Ilyen hiba lép fel, az Azure platformon automatikusan áttelepíti a virtuális gépről a nem megfelelő fizikai kiszolgálóra, amelyen a virtuális gépet egy megfelelő fizikai kiszolgálóhoz. Ezek az események ritkán fordul elő, de azok a virtuális gép újraindítására is okozhat.
+* **Nem tervezett karbantartás** események történnek, ha valamilyen módon a mögöttes hardveres vagy fizikai infrastruktúrája a virtuális gép nem sikerült. Helyi hálózati hiba, a helyi lemezek meghibásodása vagy egyéb állványszintű meghibásodások is foglalhat magában. Ilyen hibát észlel, az Azure platform automatikusan áttelepíti a virtuális gép a nem megfelelő állapotú fizikai kiszolgálóra, amelyen a virtuális gép kifogástalan állapotú fizikai kiszolgáló. Ilyen esetek ritkák, de ezek is okozhatják a virtuális gép újraindítását.
 
-További információkért lásd: [a Windows Azure virtuális gépek rendelkezésre állásának kezelése][azure-virtual-machines-manage-availability].
+További információkért lásd: [Azure-beli Windows virtuális gépek rendelkezésre állásának kezelése][azure-virtual-machines-manage-availability].
 
 ### <a name="azure-storage-redundancy"></a>Az Azure Storage-redundancia
-A tárfiókban lévő adatokat mindig replikálódik a tartósság és magas rendelkezésre állás, az Azure Storage SLA még átmeneti hardverhibák esetén állásuk értekezlet biztosításához.
+A tárfiókban lévő adatok mindig replikálódik a tartósság és magas rendelkezésre állás érdekében az Azure Storage SLA átmeneti hardverhibák esetén is teljesíti.
 
-Mivel az Azure Storage tartja az adatok három képek alapértelmezés szerint több Azure lemezre RAID 5 vagy RAID-1 használata nem szükséges.
+Mivel az Azure Storage úgy biztosítja az adatok három rendszerkép alapértelmezés szerint több Azure-lemezek különböző RAID 5 vagy RAID 1 használata nem szükséges.
 
-További információkért lásd: [Azure Storage replikációs][azure-storage-redundancy].
+További információkért lásd: [Azure Storage replikáció][azure-storage-redundancy].
 
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
-Felügyelt lemezek olyan új erőforrást az Azure Resource Manager használható helyett virtuális merevlemezeket (VHD), az Azure storage-fiókok vannak tárolva. Felügyelt lemezek automatikusan igazodnak a rendelkezésre állási csoport a virtuális gép vannak csatolva. Azok a virtuális gép és a rajta futó szolgáltatások rendelkezésre állásának javítása.
+A Managed Disks szolgáltatás az Azure Resource Manager helyett virtuális merevlemezeket (VHD) az Azure storage-fiókokban tárolt ajánlott erőforrástípust. A felügyelt lemezek funkcióval automatikusan összehangolhatja, az Azure rendelkezésre állási csoport a virtuális gép vannak csatolva. Ezek a virtuális gép és a rajta futó szolgáltatások rendelkezésre állásának növelése.
 
-További információkért lásd: [Azure felügyelt lemezekhez – áttekintés][azure-storage-managed-disks-overview].
+További információkért lásd: [Azure Managed Disks – áttekintés][azure-storage-managed-disks-overview].
 
-Azt javasoljuk, hogy felügyelt lemezek használja, mert egyszerűsítése érdekében a központi telepítés és a virtuális gépek felügyeletét.
+Azt javasoljuk, hogy felügyelt lemezek használata, mert azzal az üzembe helyezés és a virtuális gépek felügyeletét.
 
-SAP jelenleg csak a felügyelt premium lemezek. További információkért lásd: SAP Megjegyzés [1928533].
 
-## <a name="utilizing-azure-infrastructure-high-availability-to-achieve-higher-availability-of-sap-applications"></a>Azure-infrastruktúra magas rendelkezésre állás elérése érdekében okhoz *magas rendelkezésre állás érdekében* az SAP-alkalmazásokból
 
-Ha úgy dönt, hogy nem használja a Funkciók, például a WSFC vagy támasztja Linux (jelenleg támogatott csak SUSE Linux Enterprise Server [SLES] 12 és újabb), Azure virtuális gép újraindítása van szükség. Általa védett SAP rendszerek elleni tervezett és nem tervezett leállások a fizikai kiszolgálók Azure-infrastruktúra és a teljes alapul szolgáló Azure platformon.
+## <a name="utilizing-azure-infrastructure-high-availability-to-achieve-higher-availability-of-sap-applications"></a>Azure-infrastruktúra magas rendelkezésre állás elérése érdekében használó *magasabb rendelkezésre állás* az SAP-alkalmazások
 
-Ezzel a módszerrel kapcsolatos további információkért lásd: [használata Azure infrastruktúra virtuális gép újraindítása az SAP rendszer magasabb rendelkezésre állás biztosítása érdekében][sap-higher-availability].
+Ha úgy dönt, hogy nem használja a funkciókat, például a WSFC vagy támasztja (jelenleg csak a SUSE Linux Enterprise Server [SLES] 12 és annál újabb támogatott) Linux rendszeren, akkor az Azure virtuális gép újraindítása használt fel. Megvédi SAP-rendszereinket tervezett és nem tervezett leállások ellen a fizikai kiszolgáló Azure-infrastruktúra és a mögöttes Azure platform általános.
 
-## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Az Azure infrastruktúra-szolgáltatási SAP alkalmazások magas rendelkezésre állás
+Ezzel a módszerrel kapcsolatos további információkért lásd: [igénybevételéhez Azure-infrastruktúra virtuális gép újraindítása a magas rendelkezésre állás az SAP-rendszer eléréséhez][sap-higher-availability].
 
-Teljes SAP rendszer magas rendelkezésre állás biztosítása érdekében, az összes kritikus SAP rendszerösszetevők kell védeni. Példa:
-  * Redundáns SAP alkalmazáskiszolgálók.
-  * Egyedi összetevők. Például lehet egyetlen pont, a hiba (SPOF) összetevő, például egy SAP ASC/SCS példányt vagy egy adatbázis-kezelő rendszer (DBMS).
+## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Magas rendelkezésre állás az SAP-alkalmazások Azure IaaS-on
 
-A következő szakaszok ismertetik az összes három kritikus SAP rendszer összetevőinek magas rendelkezésre állás biztosítása érdekében.
+Teljes SAP rendszer magas rendelkezésre állás, az összes kritikus fontosságú SAP rendszerösszetevők kell levédenie. Példa:
+  * Redundáns SAP-alkalmazáskiszolgálók.
+  * Egyedi összetevők. Például lehet a hiba (SPOF) összetevő, például az SAP ASCS/SCS példányhoz vagy egy adatbázis-kezelő rendszer (DBMS) hibaérzékeny pont.
 
-### <a name="high-availability-architecture-for-sap-application-servers"></a>Az SAP alkalmazáskiszolgálók magas rendelkezésre állású architektúrája
+A következő szakaszok ismertetik az összes három kritikus fontosságú SAP rendszer összetevőinek magas rendelkezésre állás eléréséhez.
 
-> Ez a szakasz a következőkre vonatkozik:
+### <a name="high-availability-architecture-for-sap-application-servers"></a>Az SAP-alkalmazáskiszolgálókhoz magas rendelkezésre állású architektúrával
+
+> Ebben a szakaszban a következőkre vonatkozik:
 >
-> ![Windows][Logo_Windows] A Windows és ![Linux][Logo_Linux] Linux
+> ![Windows][Logo_Windows] Windows és a ![Linux][Logo_Linux] Linux
 >
 
-Általában nem szükséges egy adott magas rendelkezésre állású megoldás az SAP-alkalmazás kiszolgáló és a párbeszédpanel példányok. Magas rendelkezésre állású redundancia által érhetők el, és több párbeszédpanel példányt konfigurálnia az Azure virtuális gépek különböző példányai. Az Azure virtuális gépek két példánya telepítve legalább két SAP alkalmazáspéldányok kell rendelkeznie.
+Általában nincs szükség egy adott magas rendelkezésre állású megoldás esetében az SAP-kiszolgáló és a párbeszédpanel alkalmazáspéldányok. Magas rendelkezésre állás, a redundancia, és Azure-beli virtuális gépek különböző példányainak alkalmazáspéldányok párbeszédpanelen konfigurálja. Az SAP-alkalmazás legalább két példányt az Azure-beli virtuális gépek két példánya telepítve kell lennie.
 
 ![1. ábra: Magas rendelkezésre állású SAP-alkalmazáskiszolgáló][sap-ha-guide-figure-2000]
 
-_**1. ábra:** magas rendelkezésre állású SAP-alkalmazáskiszolgáló_
+_**1. ábra:** Magas rendelkezésre állású SAP-alkalmazáskiszolgáló_
 
-Az összes virtuális gép gazdagép SAP alkalmazáskiszolgáló-példányok az azonos Azure rendelkezésre állási beállított kell elhelyezni. Az Azure rendelkezésre állási csoportok biztosítja, hogy:
+Gazdagép SAP alkalmazáskiszolgáló-példányok Azure egyazon rendelkezésre állási beállítása minden virtuális gépnek kell elhelyeznie. Az Azure rendelkezésre állási csoport biztosítja, hogy:
 
-* Az összes virtuális gép ugyanazon frissítési tartomány részét képezik.  
-    Egy frissítési tartományt biztosítja, hogy a virtuális gépek tervezett karbantartás leállások során egy időben nem frissíti.
+* Az összes virtuális gép az azonos frissítési tartományhoz tartoznak.  
+    Frissítési tartomány biztosítja, hogy a virtuális gépek tervezett karbantartás leállások során egy időben nem frissítenek.
 
-    Az alapvető funkciókat, épít különböző frissítési és a tartalék tartományok belül egy Azure méretezési egység, amely már jelent a a [tartományok frissítése] [ planning-guide-3.2.2] szakasz.
+    Az alapszintű funkcióval rendelkezik, amely a különböző frissítési és tartalék tartományok az Azure skálázási egység épül, a már jelent meg a [frissítési tartományok] [ planning-guide-3.2.2] szakaszban.
 
-* Összes virtuális gépet az azonos tartalék tartományban részét képezik.  
-    A tartalék tartomány biztosítja, hogy telepít virtuális gépeket, hogy nincs hibaérzékeny pontok kialakulását hatással van az összes virtuális gép rendelkezésre állását.
+* Az összes virtuális gép az azonos tartalék tartomány részét képezik.  
+    Tartalék tartomány biztosítja, hogy a virtuális gépek, hogy nem rendszerkritikus meghibásodási pontot hatással van az összes virtuális gépek rendelkezésre állásának vannak-e telepítve.
 
-A frissítés és a tartalék tartományok, amelyek segítségével Azure rendelkezésre állási készlet belül egy Azure méretezési egység száma nem véges. Ha virtuális gépeket tartsa hozzáadása egy egyetlen rendelkezésre állási csoport, két vagy több virtuális gépek végül kat, ugyanabban a tartományban hiba vagy a frissítés.
+A frissítési és tartalék tartományok, amelyek segítségével az Azure rendelkezésre állási csoport egy Azure-beli skálázás egységben lévő szám véges. Virtuális gépek folyamatosan hozzá egy egyetlen rendelkezésre állási csoportban, ha két vagy több virtuális gép lesz végül végül ugyanabban a tartalék és frissítési tartományban.
 
-Ha néhány SAP alkalmazáskiszolgáló-példányok saját dedikált virtuális gépeken, feltéve, hogy rendelkezik-e öt frissítési tartományok, a következő kép jelenik meg. A rendelkezésre állási csoportok frissítés és a tartalék tartományok tényleges maximális száma a jövőben esetleg módosító:
+Ha telepít néhány SAP alkalmazáskiszolgáló-példányok saját dedikált virtuális gépeken, feltéve, hogy van-e öt frissítési tartománnyal, a következő képen látható jelenik meg. Rendelkezésre állási csoporton belül frissítési és tartalék tartományok tényleges maximális száma a későbbiekben változhatnak:
 
-![2. ábra: A magas rendelkezésre állású, SAP alkalmazáskiszolgáló Azure rendelkezésre állási csoportba][planning-guide-figure-3000]
-_**2. ábra:** magas rendelkezésre állású Azure rendelkezésre állási csoportba SAP-alkalmazáskiszolgáló_
+![2. ábra: Magas rendelkezésre állás az SAP-alkalmazáskiszolgálók egy Azure rendelkezésre állási csoportban][planning-guide-figure-3000]
+_**2. ábra:** Magas rendelkezésre állás az SAP-alkalmazáskiszolgálók egy Azure rendelkezésre állási beállítása_
 
-További információkért lásd: [a Windows Azure virtuális gépek rendelkezésre állásának kezelése][azure-virtual-machines-manage-availability].
+További információkért lásd: [Azure-beli Windows virtuális gépek rendelkezésre állásának kezelése][azure-virtual-machines-manage-availability].
 
-További információkért lásd: a [Azure rendelkezésre állási készletek] [ planning-guide-3.2.3] az Azure virtuális gépek tervezési és megvalósítási SAP NetWeaver dokumentum.
+További információkért lásd: a [Azure rendelkezésre állási csoportok] [ planning-guide-3.2.3] a tervezése az Azure virtual machines és a megvalósítási SAP NetWeaver dokumentumra vonatkozó szakaszában.
 
-**Nem felügyelt csak lemezek:** mivel az Azure storage-fiók egy potenciális hibaérzékeny pontok kialakulását, fontos, hogy legalább két az Azure storage-fiókot, legalább két virtuális gép szétosztva. Az ideális beállítás a lemezeket, az egyes virtuális gépek egy SAP párbeszédpanel példányát futtató volna helyezhető üzembe egy másik tárolási fiókot.
+**Csak a nem felügyelt lemezek:** Mivel az Azure storage-fiók egy potenciálisan hibaérzékeny pont, fontos legalább két Azure storage-fiókok, amelyben oszlanak meg legalább két virtuális gép rendelkezik. Egy ideális beállítás minden SAP párbeszédpanel példányát futtató virtuális gép lemezei a egy másik tárfiók üzembe kívánja helyezni.
 
 > [!IMPORTANT]
-> Határozottan javasoljuk, hogy használja-e Azure által kezelt lemezeken a SAP magas rendelkezésre állású telepítéshez. Felügyelt lemezek automatikusan igazodnak a rendelkezésre állási csoport a virtuális gép vannak csatolva, mert azok a virtuális gép és a rajta futó szolgáltatások rendelkezésre állásának javítása.  
+> Javasoljuk, hogy az Azure használt felügyelt lemezek esetében az SAP magas rendelkezésre állású telepítéseit. A felügyelt lemezek funkcióval automatikusan összehangolhatja, a kapcsolódó virtuális gép rendelkezésre állási, mert azok a virtuális gép és a rajta futó szolgáltatások rendelkezésre állásának növelése.  
 >
 
-### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>A Windows egy SAP ASC/SCS példányához magas rendelkezésre állású architektúrája
+### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Magas rendelkezésre állású architektúra a Windows-SAP ASCS/SCS példányhoz
 
 > ![Windows][Logo_Windows] Windows
 >
 
-A WSFC-megoldás segítségével az SAP ASC/SCS példány védelmét. A megoldás két rendelkezik:
+A WSFC-megoldás segítségével megvédheti az SAP ASCS/SCS példányhoz. A megoldás két változatban rendelkezik:
 
-* **Az SAP ASC/SCS példány fürt fürtözött megosztott lemezek használatával**: Ez az architektúra kapcsolatos további információkért lásd: [SAP ASC/SCS példánya a Windows feladatátvevő fürt a fürt egy fürt megosztott lemez] [ sap-high-availability-guide-wsfc-shared-disk].   
+* **Az SAP ASCS/SCS példányhoz fürt fürtözött megosztott lemezek használatával**: Ez az architektúra kapcsolatos további információkért lásd: [egy SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürtre a fürt fürt megosztott lemez használatával][sap-high-availability-guide-wsfc-shared-disk].   
 
-* **Az SAP ASC/SCS példány fájlmegosztást a fürt**: Ez az architektúra kapcsolatos további információkért lásd: [SAP ASC/SCS példány fürtön egy Windows feladatátvevő fürt fájlmegosztás használatával] [ sap-high-availability-guide-wsfc-file-share].
+* **Az SAP ASCS/SCS példányhoz a fájlmegosztást a fürt**: Ez az architektúra kapcsolatos további információkért lásd: [egy SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürtre a fürt fájlmegosztás használatával][sap-high-availability-guide-wsfc-file-share].
 
-### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Magas rendelkezésre állású architektúra egy SAP ASC/SCS példány Linux rendszeren
+### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>-A linuxon futó SAP ASCS/SCS-példányok esetében a magas rendelkezésre állású architektúrával
 
 > ![Linux][Logo_Linux] Linux
 >
-Az SAP ASC/SCS példány fürtszolgáltatással a SLES fürt keretrendszer használatával kapcsolatos további információkért lásd: [magas rendelkezésre állás a SAP NetWeaver a SUSE Linux Enterprise Server Azure virtuális gépeken az SAP-alkalmazásokból] [ sap-suse-ascs-ha].
+A SLES fürt keretrendszer használatával az SAP ASCS/SCS példányhoz fürtszolgáltatással kapcsolatos további információkért lásd: [magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure virtuális gépeken SAP alkalmazások] [ sap-suse-ascs-ha].
 
-### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>SAP NetWeaver multi-SID-konfiguráció egy fürtözött SAP ASC/SCS-példány
+A Red Hat-fürt keretrendszer használatával az SAP ASCS/SCS példányhoz fürtszolgáltatással kapcsolatos további információkért lásd: [Azure virtuális gépek magas rendelkezésre állás az SAP NetWeaver a Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+
+
+### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>SAP NetWeaver több biztonsági AZONOSÍTÓVAL konfigurációs a fürtözött SAP ASCS/SCS példányhoz
 
 > ![Windows][Logo_Windows] Windows
 >
-> Multi-SID jelenleg csak a WSFC használata támogatott. Multi-SID fájlmegosztás és a megosztott lemez használata támogatott.
+> Több SID-vel jelenleg csak a WSFC használata támogatott. Több SID-vel fájlmegosztás és a megosztott lemez használata támogatott.
 >
-Magas rendelkezésre állású architektúra multi-SID kapcsolatos további információkért lásd:
+Több SID-vel magas rendelkezésre állású architektúrával kapcsolatos további információkért lásd:
 
-* [SAP ASC/SCS példányt multi-SID magas rendelkezésre állású Windows Server feladatátvételi fürtszolgáltatás és a fájlmegosztás][sap-ascs-ha-multi-sid-wsfc-file-share]
+* [Az SAP ASCS/SCS példányt több biztonsági AZONOSÍTÓVAL magas rendelkezésre állású Windows Server feladatátvételi fürtszolgáltatás és a megosztott fájl][sap-ascs-ha-multi-sid-wsfc-file-share]
 
-* [SAP ASC/SCS példányt multi-SID magas rendelkezésre állású Windows Server feladatátvételi fürtszolgáltatás és megosztott lemez][sap-ascs-ha-multi-sid-wsfc-shared-disk]
+* [Az SAP ASCS/SCS példány több biztonsági AZONOSÍTÓVAL magas rendelkezésre állású Windows Server feladatátvételi fürtszolgáltatás és megosztott lemez][sap-ascs-ha-multi-sid-wsfc-shared-disk]
 
-### <a name="high-availability-dbms-instance"></a>Magas rendelkezésre állású DBMS példány
+### <a name="high-availability-dbms-instance"></a>Magas rendelkezésre állású DBMS-példány
 
-Az adatbázis-kezelő a rendszer egyetlen pont, forduljon egy SAP rendszerben. Azt a magas rendelkezésre állású megoldás használatával védeni kell. A következő ábrán látható egy SQL Server AlwaysOn magas rendelkezésre állású megoldás az Azure-ban, a Windows Server feladatátvételi fürtszolgáltatási és az Azure belső terheléselosztó. SQL Server AlwaysOn DBMS adatainak és naplókönyvtárainak fájlok replikációja a saját adatbázis-kezelő replikációval. Ebben az esetben a fürt megosztott lemezt, amely egyszerűbbé teszi a teljes telepítés nem szükséges.
+Az adatbázis-kezelő egy SAP-rendszerrel is szerepel egy egyetlen kapcsolattartási pontja. Kell egy magas rendelkezésre állású megoldás megvédheti azokat. A következő ábrán látható egy SQL Server AlwaysOn magas rendelkezésre állású megoldás az Azure-ban, a Windows Server feladatátvételi fürtszolgáltatási és az Azure belső terheléselosztó. Az SQL Server AlwaysOn adathoz és naplófájlhoz az adatbázis-kezelő replikálja a saját DBMS-replikációval történik. Ebben az esetben a fürt megosztott lemezt, amely egyszerűbbé teszi a teljes telepítés nem szükséges.
 
-![3. ábra: Példa egy magas rendelkezésre állású SAP DBMS, az SQL Server AlwaysOn][sap-ha-guide-figure-2003]
+![3. ábra: Az SQL Server AlwaysOn egy magas rendelkezésre állású SAP DBMS – példa][sap-ha-guide-figure-2003]
 
-_**3. ábra:** egy magas rendelkezésre állású SAP DBMS, az SQL Server AlwaysOn – példa_
+_**3. ábra:** Az SQL Server AlwaysOn egy magas rendelkezésre állású SAP DBMS – példa_
 
-Az Azure Resource Manager telepítési modell segítségével az Azure SQL Server adatbázis-kezelő fürtszolgáltatással kapcsolatos további információkért lásd: ezek a cikkek:
+Az Azure Resource Manager-alapú üzemi modell használatával az Azure-beli SQL Server adatbázis-kezelő fürtszolgáltatással kapcsolatos további információkért tanulmányozza a következő cikkeket:
 
-* [Az AlwaysOn rendelkezésre állási csoport az Azure virtuális gépeken kézi konfigurálása erőforrás-kezelő használatával][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
+* [Egy AlwaysOn rendelkezésre állási csoport konfigurálása Azure-beli virtuális gépeken manuálisan Resource Manager használatával][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
 
-* [Egy Azure belső terheléselosztót egy AlwaysOn rendelkezésre állási csoport konfigurálása az Azure-ban][virtual-machines-windows-portal-sql-alwayson-int-listener]
+* [AlwaysOn rendelkezésre állási csoporthoz az Azure belső terheléselosztó konfigurálása az Azure-ban][virtual-machines-windows-portal-sql-alwayson-int-listener]
 
-SAP HANA DBMS az Azure-ban az Azure Resource Manager telepítési modell segítségével fürtszolgáltatással kapcsolatos további információkért lásd: [SAP HANA Azure virtuális gépek (VM) a magas rendelkezésre állású][sap-hana-ha].
+Az Azure Resource Manager-alapú üzemi modell használatával az Azure-beli SAP HANA DBMS fürtszolgáltatással kapcsolatos további információkért lásd: [magas rendelkezésre állás az SAP Hana az Azure-beli virtuális gépek (VM)][sap-hana-ha].

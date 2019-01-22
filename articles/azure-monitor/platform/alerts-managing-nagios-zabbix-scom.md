@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: f45774d8afc8760d0a02cb0c863c9ef100ef1365
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.subservice: alerts
+ms.openlocfilehash: 48fb9d8eaf2003834a420b48d649c830c608fd6e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381865"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421215"
 ---
 # <a name="manage-alerts-from-scom-zabbix-and-nagios-in-azure-monitor"></a>A SCOM, Zabbix és az Azure monitorban Nagios riasztások kezelése
 
@@ -32,3 +32,4 @@ Miután konfigurálta a Log Analytics-ba való importálásuk, ezeket a szolgál
 >  1. Az összes aktivált riasztás példányok az Azure Monitor és az Azure Log Analytics is lesz. Jelenleg nincs lehetőség a kettő közül választhat, vagy csak adott aktivált riasztások fogadása.
 >  1. A SCOM, Zabbix és Nagios összes riasztás a jel típusa "Ismeretlen" lehet, mert a az alapul szolgáló telemetriai adatok típusa nem érhető el.
 >  1. Nagios-riasztások nem állnak állapot-nyilvántartó – például a [feltétel figyelése](https://aka.ms/azure-alerts-overview) riasztás nem kerül majd "Fired" a "Megoldva". Ehelyett a "Fired" és "Megoldva" jelennek meg külön riasztás példány. 
+

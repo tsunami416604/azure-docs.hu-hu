@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: 1ada74f5c85ef327957ec4981e83f68bcafea858
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 95d443eeebf2fe5a8fad185210f88576a5f21f6a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188759"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435295"
 ---
 # <a name="url-path-based-routing-overview"></a>Az URL-alapú útválasztás áttekintése
 
@@ -23,7 +23,7 @@ A következő példában az Application Gateway szolgálja ki a három háttér 
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-A http://contoso.com/video/* URL-hez kapcsolódó kérések a VideoServerPool, a http://contoso.com/images/* URL-hez kapcsolódóak pedig az ImageServerPool készlethez lesznek átirányítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
+A http kérelmeket\://contoso.com/video/* legyenek átirányítva a kérések a VideoServerPool, és a http\://contoso.com/images/* legyenek átirányítva a imageserverpool készlethez lesznek átirányítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
 
 > [!IMPORTANT]
 > A szabályok abban a sorrendben vannak feldolgozva, amelyben a portálon szerepelnek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.
@@ -67,7 +67,7 @@ PathPattern az elérésiút-minták listája. Minden mintának a / jellel kell k
 
 A támogatott minták attól függnek, hogy telepít az Application Gateway v1 vagy v2-es:
 
-#### <a name="v1"></a>V1
+#### <a name="v1"></a>v1
 
 Elérésiút-szabályok nem különbözteti meg.
 
