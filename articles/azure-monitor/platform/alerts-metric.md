@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: b8252e6575ec7acb46fb69563720cc38796964ce
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d871cecda8e7957e3d0d3c37078b8a1fa2ab5214
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425068"
+ms.locfileid: "54451255"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával metrikákhoz kapcsolódó riasztások
 
@@ -31,23 +31,23 @@ Az alábbi eljárás ismerteti, hogyan lehet a metrikaalapú riasztási szabály
     > [!TIP]
     > A legtöbb erőforráspanelek is, hogy **riasztások** azok erőforrás menüben alatt **figyelés**, létrehozhat riasztásokat onnan.
 
-3. Kattintson a **cél kiválasztása**, környezet, amely betölti panelén válassza a célként megadott erőforrás, amelyet módosítani szeretne. Használat **előfizetés** és **erőforrástípus** legördülő listákból a figyelni kívánt erőforrás található. A Keresősáv használatával keresse meg az erőforrást.
+3. Kattintson a **cél kiválasztása**, környezet, amely betölti panelén válassza a célként megadott erőforrás-riasztás kívánt. Használat **előfizetés** és **erőforrástípus** legördülő listákból a figyelni kívánt erőforrás található. A Keresősáv használatával keresse meg az erőforrást.
 
-4. Ha a kiválasztott erőforrás riasztásokat is létrehozhat, a metrikák **elérhető jelek** aljának jobb metrikákat tartalmazza. Metrikákhoz kapcsolódó riasztások a támogatott erőforrástípusok teljes listáját megtekintheti [cikk](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)
+4. Ha a kiválasztott erőforrás riasztásokat is létrehozhat, a metrikák **elérhető jelek** aljának jobb metrikákat tartalmazza. Metrikákhoz kapcsolódó riasztások a támogatott erőforrástípusok teljes listáját megtekintheti [cikk](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
-5. Miután kiválasztotta a célként megadott erőforrás, kattintson a **feltételek hozzáadása**
+5. Miután kiválasztotta a célként megadott erőforrás, kattintson a **feltétel hozzáadása**.
 
 6. Most támogatott az erőforrás jelek listájának megtekintéséhez, válassza ki a riasztást hoznak létre a kívánt metrikát.
 
-7. Az elmúlt 6 óra látni fogja a metrika egy diagram. Adja meg a **időszak**, **gyakorisága**, **operátor** és **küszöbérték**, ez határozza meg, a logikát, amely a metrikaalapú riasztási szabály értékelje ki.
+7. Szükség esetén pontosíthatja a metrika módosításával **időszak** és **összesítési**. Ha a metrika dimenziókat, látni fogja **dimenziók** bemutatott táblázatban. Válassza ki egy vagy több értéket dimenziónként. A metrikariasztás fog futni a kiválasztott értékek összes kombinációjához feltétel kiértékeléséhez. [További információ arról, hogyan működik a többdimenziós metrikák riasztási](alerts-metric-overview.md). Emellett **kiválasztása \***  a dimenziók bármelyikéhez. **Válassza ki \***  a kijelölést a dimenzió összes jelenlegi és jövőbeli érték méretezési csoport dinamikus lesz.
 
-8. A metrika-diagram használatával megadhatja, hogy mi lehet egy ésszerű küszöbértéket.
+8. Az elmúlt 6 óra látni fogja a metrika egy diagram. A riasztási paramétereit; **Feltétel típusa**, **gyakorisága**, **operátor** és **küszöbérték** vagy **érzékenységi**, ezzel határozza meg, amelyek kiértékelik a metrikaalapú riasztási szabály a logikai. [Dinamikus küszöbérték feltételt és érzékenységi lehetőségekkel kapcsolatos további](alerts-dynamic-thresholds.md).
 
-9. Igény szerint, ha a metrika dimenziókat, látni fogja dimenziók bemutatott táblázatban. Válassza ki egy vagy több értéket dimenziónként. A metrikariasztás fog futni a kiválasztott értékek összes kombinációjához feltétel kiértékeléséhez. [További információ arról, hogyan működik a többdimenziós metrikák riasztási](alerts-metric-overview.md). Emellett **kiválasztása \***  a dimenziók bármelyikéhez. **Válassza ki \***  a kijelölést a dimenzió összes jelenlegi és jövőbeli érték méretezési csoport dinamikus lesz.
+9. Ha statikus küszöbérték használ, a metrikadiagram is meghatározásához, hogy mi lehet egy ésszerű küszöbértéket. Dinamikus küszöbérték használja, ha a metrikadiagram jelenik meg a legújabb adatok alapján számított küszöbértékeket.
 
 10. Kattintson a **Kész** gombra.
 
-11. Opcionálisan adja hozzá a másik szempontot, ha figyelemmel szeretné követni egy összetett riasztási szabály
+11. Opcionálisan adja hozzá másik szempontot, ha figyelemmel szeretné követni egy összetett riasztási szabályt. Jelenleg felhasználók lehetnek dinamikus küszöbértékek feltételekkel riasztási szabályok egy feltételt.
 
 12. Töltse ki **riasztás részletei** például **riasztási szabály neve**, **leírás** és **súlyosság**
 
@@ -73,7 +73,7 @@ Megtekintheti és kezelheti a riasztásokat szabályok kezelése panel használa
 
 4. Kattintson a szerkeszteni kívánt a metrikaalapú riasztási szabály neve
 
-5. A szabály szerkesztése, kattintson a **riasztási feltételek** szerkesztéséhez. Módosíthatja a mérőszám, a küszöbérték és a további szükséges mezők
+5. A szabály szerkesztése, kattintson a **riasztási feltételek** szerkesztéséhez. Módosíthatja a mérőszám, a küszöbérték feltétel és a további szükséges mezők
 
     > [!NOTE]
     > Nem lehet szerkeszteni a **Célerőforrásnál** és **riasztás szabálynév** a metrikariasztás létrehozása után.
@@ -92,10 +92,10 @@ A fentebbi szakaszokban leírt létrehozása, megtekintése és kezelése a metr
     az monitor metrics alert --help
     ```
 
-3. Létrehozhat egy egyszerű a metrikaalapú riasztási szabály, amely figyeli, ha a virtuális gép átlagos százalékos Processzorhasználat nagyobb 70-nél
+3. Létrehozhat egy egyszerű a metrikaalapú riasztási szabály, amely figyeli, ha a virtuális gép átlagos százalékos Processzorhasználat nagyobb, mint 90
 
     ```azurecli
-    az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90"
+    az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90" --description {descriptionofthealert}
     ```
 
 4. Egy erőforráscsoport, a következő parancs használatával megtekintheti a metrikákhoz kapcsolódó riasztások
@@ -130,5 +130,6 @@ A fentebbi szakaszokban leírt létrehozása, megtekintése és kezelése a metr
 
 - [Hozzon létre az Azure Resource Manager-sablonok használatával metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-enable-template.md).
 - [Megismerheti, hogyan riasztást küld a metrika a munkahelyi](alerts-metric-overview.md).
+- [Megismerheti, hogyan metrika riasztások küszöbértékeit a dinamikus feltétel munkahelyi](alerts-dynamic-thresholds.md).
 - [A web hook sémáját metrikákhoz kapcsolódó riasztások ismertetése](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
 

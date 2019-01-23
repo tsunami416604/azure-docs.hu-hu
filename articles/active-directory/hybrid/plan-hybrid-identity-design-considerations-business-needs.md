@@ -4,7 +4,7 @@ description: A vállalat üzleti igényei, amelyek vezethet, hogy meghatározza 
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: de690978-84ef-41ad-9dfe-785722d343a1
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/27/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 756d55fe535d424bf796e24968cfdc9c82721c1c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9be8ddb6869a4872ff3eae9b589584f850c7dc96
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312759"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463607"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás az identitáskezelési követelmények meghatározása
 A hibrid identitáskezelési megoldás kialakításának első lépéseként feladata annak megállapítása, hogy ez a megoldás kihasználva lesz az üzleti szervezet követelményeinek.  Hibrid identitás (támogatott összes egyéb felhőalapú megoldások azáltal, hogy hitelesítés) támogató szerepkörként elindul, és mutat be olyan új és érdekes képességeket biztosítanak, zárolásának feloldása új számítási feladatok, a felhasználók számára.  Ezek a számítási feladatok vagy szolgáltatások, a felhasználók elfogadják kívánt fogja diktálni a hibrid identitás követelményeinek.  Ezek a szolgáltatások és számítási feladatok kell kihasználva hibrid identitás a helyszínen és a felhőben.  
@@ -67,7 +67,7 @@ Ezt követően kell az integrációs identitással kapcsolatos követelmények k
 
 * A szervezet használni összevonási, a standard hitelesítési vagy mindkettő?
 * Ez a követelmény az összevonási?  Miatt a következő:
-  * A Kerberos-alapú egyszeri bejelentkezés
+  * Kerberos-based SSO
   * A vállalat egy (vagy a belső fejlesztésű vagy a 3. fél létrehozása) a helyszíni alkalmazások SAML vagy hasonló összevonási funkciókat használó rendelkezik.
   * MFA-n keresztül az intelligens kártyák. RSA SecurID, és így tovább.
   * Ügyfél-hozzáférési szabályokat a címet az alábbi kérdésekre:

@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/18/2019
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: 3a7ec043f1990dd7f380177fd612c8cd88786b07
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 87a80703c473245660a850645ca3fef21bbd80f6
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440226"
+ms.locfileid: "54452717"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Az Azure DNS-altartomány delegálása
 
@@ -47,7 +47,7 @@ Next, copy the four name servers for your subdomain.
 
 Ezután hozzon létre egy név névkiszolgáló (NS) rekordot a **mérnöki** zóna.
 
-1. Keresse meg a szülőtartomány-zónafájljában.
+1. Keresse meg a szülő tartomány zónáját.
 2. Kattintson a **+ Rekordhalmaz** gombra.
 3. Az a **rekordhalmaz hozzáadása** ablak, írja be **mérnöki** a a **neve** szövegmezőben.
 4. A **típus**válassza **NS**.

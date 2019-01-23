@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Objektum-szinkronizálás hibaelhárítása |} A Microsoft Docs'
+title: 'Azure AD Connect: Objektum-szinkronizálás hibaelhárítása |} A Microsoft Docs'
 description: Ez a témakör ismerteti a problémák elhárítása a hibaelhárítási feladat használatával felügyeltobjektum-szinkronizációs.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cfd963ae38d42d245f2eec1ddb76c7af316039ba
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ed13014dd5ad559ed3793ff52ae410be9174ae2b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961127"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461314"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Az Azure AD Connect szinkronizálási objektum-szinkronizálás hibaelhárítása
 Ez a cikk lépéseit kapcsolatos hibák elhárításának felügyeltobjektum-szinkronizációs a hibaelhárítási feladat használatával. Az az Azure Active Directory (Azure AD) Connect hibaelhárítási kipróbálásához, tekintse meg a [Ez a rövid videó](https://aka.ms/AADCTSVideo).

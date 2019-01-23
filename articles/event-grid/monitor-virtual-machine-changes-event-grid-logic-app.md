@@ -8,15 +8,15 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
-ms.date: 11/30/2017
-ms.openlocfilehash: 06fa9b9191104db3b141b6268a90a7c8f206280e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 01/12/2019
+ms.openlocfilehash: e735c9773971a4c594c32e9ae29eeb295c32810c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106073"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473707"
 ---
-# <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Oktatóanyag: Az Azure Event Grid és a Logic Apps a virtuális gépek módosításainak monitorozása
+# <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Oktatóanyag: Virtuális gépek módosításainak monitorozása az Azure Event Grid és a Logic Apps segítségével
 
 Az Azure-beli vagy külső erőforrásokban bekövetkező adott események esetén elindíthat automatizált [logikaialkalmazás-munkafolyamatokat](../logic-apps/logic-apps-overview.md). Ezek az erőforrások közzétehetik az eseményeket az [Azure Event Griden](../event-grid/overview.md). Az eseményrács ezután leküldi az eseményeket a végpontként üzenetsorokkal, webhookokkal vagy [eseményközpontokkal](../event-hubs/event-hubs-what-is-event-hubs.md) rendelkező feliratkozókra. Feliratkozóként logikai alkalmazása fogadhatja az eseményeket az eseményrácsról, és azok alapján automatizált munkafolyamatokat hajthat végre – mindehhez nem szükséges programkódot írnia.
 
@@ -81,9 +81,9 @@ Először hozzon létre egy logikai alkalmazást, és adjon hozzá egy Event Gri
    A Logic Apps Designerben most megjelennek a logikai alkalmazás indítására használható [*összekötők*](../connectors/apis-list.md) és [*triggerek*](../logic-apps/logic-apps-overview.md#logic-app-concepts), valamint a triggerek mögé befűzhető műveletek, amelyek tevékenységeket hajtanak végre. A trigger egy olyan esemény, amely létrehoz egy logikaialkalmazás-példányt és elindítja a logikai alkalmazás munkafolyamatát. 
    A logikai alkalmazásnak az első elemeként egy triggert kell tartalmaznia.
 
-6. A keresőmezőbe írja be szűrőként az „event grid” kifejezést. Válassza ki a következő triggert: **Azure Event Grid – Erőforrásesemény esetén**
+6. A keresőmezőbe írja be szűrőként az „event grid” kifejezést. Ez az eseményindító kiválasztása: **Az Azure Event Grid - erőforrás-esemény**
 
-   ![Az „Azure Event Grid – Erőforrásesemény esetén” trigger kiválasztása](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
+   ![Ez az eseményindító kiválasztása: "Az azure Event Grid - esemény erőforrás"](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
 
 7. Amikor a rendszer erre kéri, jelentkezzen be Azure Event Gridbe az Azure-beli hitelesítő adataival.
 
@@ -101,7 +101,7 @@ Először hozzon létre egy logikai alkalmazást, és adjon hozzá egy Event Gri
    | **Előfizetés** | *{a-virtuális-gép-Azure-előfizetése}* | Válassza az esemény-közzétevő Azure-előfizetését. Ebben az oktatóanyagban válassza a virtuális géphez tartozó Azure-előfizetést. | 
    | **Erőforrás típusa** | Microsoft.Resources.resourceGroups | Válassza az esemény-közzétevő erőforrástípusát. A jelen oktatóanyag esetében válassza a megadott értéket, így a logikai alkalmazás csak az erőforráscsoportokat monitorozza majd. | 
    | **Erőforrás neve** | *{a-virtuális-gép-erőforráscsoportjának-neve}* | Válassza a közzétevő erőforrás nevét. Ebben az oktatóanyagban válassza a virtuális géphez tartozó erőforráscsoportot. | 
-   | A speciális beállítások megjelenítéséhez kattintson a **Speciális beállítások megjelenítése** gombra. | *{lásd a leírásokat}* | * **Előtagszűrő**: Ebben az oktatóanyagban hagyja üresen ezt a beállítást. Az alapértelmezett beállítás minden értéket megenged. Azonban megadhat szűrőként egy előtagsztringet is, például egy elérési útvonalat és egy adott erőforrás paraméterét. <p>* **Utótagszűrő**: Ebben az oktatóanyagban hagyja üresen ezt a beállítást. Az alapértelmezett beállítás minden értéket megenged. Azonban megadhat szűrőként egy utótagsztringet is, például egy fájlnévkiterjesztést, ha csak adott fájltípusokra kíváncsi.<p>* **Feliratkozás neve**: Adjon egy egyedi nevet az eseményfeliratkozásnak. |
+   | A speciális beállítások megjelenítéséhez kattintson a **Speciális beállítások megjelenítése** gombra. | *{lásd a leírásokat}* | * **Előtagszűrő**: Ebben az oktatóanyagban hagyja üresen ezt a beállítást. Az alapértelmezett beállítás minden értéket megenged. Azonban megadhat szűrőként egy előtagsztringet is, például egy elérési útvonalat és egy adott erőforrás paraméterét. <p>* **Szűrő utótag**: Ebben az oktatóanyagban hagyja üresen ezt a beállítást. Az alapértelmezett beállítás minden értéket megenged. Azonban megadhat szűrőként egy utótagsztringet is, például egy fájlnévkiterjesztést, ha csak adott fájltípusokra kíváncsi.<p>* **Előfizetés neve**: Adjon egy egyedi nevet az esemény-előfizetésnek. |
    | | | 
 
    Ha elkészült, az eseményrács-trigger a következő példához hasonlíthat:
@@ -182,8 +182,8 @@ Most adjon hozzá egy [*műveletet*](../logic-apps/logic-apps-overview.md#logic-
    | Beállítás | Ajánlott érték | Leírás | 
    | ------- | --------------- | ----------- | 
    | **Címzett** | *{címzett-e-mail-címe}* |Adja meg a címzett e-mail-címét. Tesztelési célokra használhatja a saját e-mail-címét. | 
-   | **Tárgy** | Frissített erőforrás: **Tárgy**| Adja meg az e-mail tárgymezőjének tartalmát. A jelen oktatóanyag esetében írja be a javasolt szöveget, és válassza az esemény **Tárgy** mezőjét. Itt az e-mail tárgya a frissített erőforrás (virtuális gép) nevét tartalmazza. | 
-   | **Törzs** | Erőforráscsoport: **Témakör** <p>Eseménytípus: **Eseménytípus**<p>Eseményazonosító: **Azonosító**<p>Esemény ideje: **Esemény ideje** | Adja meg az e-mail törzsének tartalmát. A jelen oktatóanyag esetében írja be a javasolt szöveget, és válassza ki az esemény **Témakör**, **Eseménytípus**, **Azonosító** és **Esemény ideje** mezőit, így az e-mail tartalmazza majd az erőforráscsoport nevét, az esemény típusát, az esemény időbélyegét és a frissítés eseményazonosítóját. <p>Ha üres sorokat kíván beszúrni a tartalomba, nyomja le a Shift + Enter billentyűkombinációt. | 
+   | **Tárgy** | Erőforrás frissítése: **Tárgy**| Adja meg az e-mail tárgymezőjének tartalmát. A jelen oktatóanyag esetében írja be a javasolt szöveget, és válassza az esemény **Tárgy** mezőjét. Itt az e-mail tárgya a frissített erőforrás (virtuális gép) nevét tartalmazza. | 
+   | **Törzs** | Erőforráscsoport: **A témakör** <p>Eseménytípus: **Esemény típusa**<p>Eseményazonosító: **Azonosító**<p>Idő: **Esemény időpontja** | Adja meg az e-mail törzsének tartalmát. A jelen oktatóanyag esetében írja be a javasolt szöveget, és válassza ki az esemény **Témakör**, **Eseménytípus**, **Azonosító** és **Esemény ideje** mezőit, így az e-mail tartalmazza majd az erőforráscsoport nevét, az esemény típusát, az esemény időbélyegét és a frissítés eseményazonosítóját. <p>Ha üres sorokat kíván beszúrni a tartalomba, nyomja le a Shift + Enter billentyűkombinációt. | 
    | | | 
 
    > [!NOTE] 

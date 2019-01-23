@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 1398db59199c62e90f8cf5654586bda1c24f2541
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: ac97cf3e269652dc33ce4211947b45631228a697
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055047"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463286"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -113,7 +113,8 @@ A bemeneti csatlakoztatási könyvtár is tartalmaz a **éles**, **átmeneti**, 
 |Fájlok másolása folyamatban|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_STAGING.gz`|
 |Production|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_PRODUCTION.gz`|
 
->**Fontos:** Ne nevezze, alter, és a LUIS-csomag fájlok kibontása.
+> [!IMPORTANT]
+> Ne nevezze, alter, és a LUIS-csomag fájlok kibontása.
 
 ### <a name="packaging-prerequisites"></a>Csomagolási Előfeltételek
 
@@ -262,8 +263,8 @@ Használja a gazdagép https://localhost:5000, API-k tároló.
 
 |Csomag típusa|Módszer|Útválasztás|Lekérdezési paraméterek|
 |--|--|--|--|
-|Közzétéve|[Első](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/ luis/v2.0/apps/{appId}?|a q = {q}<br>& előkészítés<br>[& timezoneOffset]<br>[& részletes]<br>[& log]<br>|
-|Betanított|GET, Post|/ luis/v2.0/apps/{appId}/versions/{versionId}?|a q = {q}<br>[& timezoneOffset]<br>[& részletes]<br>[& log]|
+|Közzétéve|[Első](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& előkészítés<br>[&timezoneOffset]<br>[& részletes]<br>[& log]<br>|
+|Betanított|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[& részletes]<br>[& log]|
 
 A lekérdezési paraméterek konfigurálása módját és a lekérdezésekre adott válaszok adja vissza:
 
@@ -383,3 +384,4 @@ Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és Language 
 
 * Felülvizsgálat [tárolók konfigurálása](luis-container-configuration.md) a konfigurációs beállítások
 * Tekintse meg [– gyakori kérdések (GYIK)](luis-resources-faq.md) LUIS funkció kapcsolatos problémák megoldásához.
+* Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)

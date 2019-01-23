@@ -4,7 +4,7 @@ description: A feltételes hozzáférés-vezérléssel Azure Active Directory el
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 9cfd3f32f6293d5760c4a4ddcf40428a2b9b70f8
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 50f2d3f3ad934668c4a243b387b56db48c3e7d35
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999085"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471803"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>A hibrid identitás bevezetési stratégia kidolgozása
 Ebben a feladatban a hibrid identitáskezelési megoldás, amely aktorcsoportot tárgyalt, az üzleti igényeknek hibrid identitás bevezetési stratégiája határozza meg:
@@ -54,7 +54,7 @@ Az alábbi táblázat segítségével előnyeit és hátrányait az alábbi stra
 | Stratégia | Előnyök | Hátrányai |
 | --- | --- | --- |
 | **Felhőbeli identitások** |Könnyebben kezelhető kis szervezete számára. <br> Semmit nem kell telepítenie a helyszínen. Nincs szükség további hardverre<br>Könnyen használható, ha a felhasználó távozik a szervezettől |Felhasználók kell bejelentkezni, a felhőalapú számítási feladatokat elérésekor <br> Előfordulhat, hogy jelszavakat, és nem lehet azonos a felhőbeli és helyszíni identitások |
-| **Szinkronizált** |Helyszíni jelszóval hitelesíti magát, mind a helyszíni és felhőbeli címtárakban <br>Könnyebben kezelhető kicsi, közepes vagy nagy szervezetek számára <br>Az egyes erőforrások felhasználók rendelkezhetnek egyszeri bejelentkezés (SSO) <br> Szinkronizálási Microsoft előnyben részesített módszere <br> Könnyebben kezelhető |Lehet, hogy egyes ügyfeleknek védhetőek, azok a címtárak szinkronizálásának adott vállalat rendőrségi miatt a felhővel |
+| **Synchronized** |Helyszíni jelszóval hitelesíti magát, mind a helyszíni és felhőbeli címtárakban <br>Könnyebben kezelhető kicsi, közepes vagy nagy szervezetek számára <br>Az egyes erőforrások felhasználók rendelkezhetnek egyszeri bejelentkezés (SSO) <br> Szinkronizálási Microsoft előnyben részesített módszere <br> Könnyebben kezelhető |Lehet, hogy egyes ügyfeleknek védhetőek, azok a címtárak szinkronizálásának adott vállalat rendőrségi miatt a felhővel |
 | **Összevont** |Egyszeri bejelentkezés (SSO) a felhasználók rendelkezhetnek <br>Ha a felhasználó le van állítva, vagy hagyja, a fiók azonnal letiltja, és a hozzáférés visszavonása esetén<br> Támogatja a speciális forgatókönyvek, amelyek nem konfigurálhatók az szinkronizálva |További lépéseket és beállítása <br> Nagyobb karbantartási <br> További hardverre lehet szükség az STS-infrastruktúra <br> Az összevonási kiszolgáló telepítése további hardverre lehet szükség. További szoftverek szükség, az AD FS használata <br> Egyszeri bejelentkezés kiterjedt beállítása szükséges <br> Kritikus pontok hiba, ha az összevonási kiszolgáló nem működik a felhasználók nem tudják hitelesíteni |
 
 ### <a name="client-experience"></a>Ügyfélélmény

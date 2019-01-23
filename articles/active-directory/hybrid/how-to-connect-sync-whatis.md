@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: ismertetése, és testre szabhatja a szinkronizálás |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás |} A Microsoft Docs'
 description: Ismerteti az Azure AD Connect szinkronizálása működik, és hogyan szabhatja testre.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ee4bf802-045b-4da0-986e-90aba2de58d6
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 994169d4280c479ffe1b766a309198c8f4d951b5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 74973371b3d893c1e0c94024a97c77b59fa570fe
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314656"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461943"
 ---
-# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Az Azure AD Connect szinkronizálása: ismertetése, és testre szabhatja a szinkronizálás
+# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás
 Az Azure Active Directory Connect szinkronizálási szolgáltatások (Azure AD Connect szinkronizálási) Azure AD Connect egyik fő összetevője. Ez gondoskodik a azonosító adatok a helyszíni környezet és az Azure AD között szinkronizálja kapcsolatos műveletek. Az Azure AD Connect szinkronizálása a DirSync, Azure AD Sync és az Azure Active Directory-összekötő konfigurálva a Forefront Identity Manager utódja.
 
 Ez a témakör a szóló **Azure AD Connect szinkronizálási** (más néven **szinkronizálási motor**), és felsorolja az összes többi kapcsolódó témakörökre mutató hivatkozásokat. Az Azure AD Connect hivatkozások: [a helyszíni identitások integrálása az Azure Active Directory](whatis-hybrid-identity.md).

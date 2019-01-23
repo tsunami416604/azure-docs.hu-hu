@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ae498cc6aea573e1c610cb50d96552f30be4d75e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 32b457858598ed3dec4a1398cb45310dba877bf3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140880"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447904"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Adatáttekintés és modellezés a Spark segítségével
 
@@ -47,14 +47,14 @@ Beállítási lépéseket és a kód-okat Ez az útmutató egy HDInsight Spark 1
 
 ### <a name="spark-16-notebooks"></a>A Spark 1.6-os notebookok
 
-[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): információt nyújt az adatfeltárás, modellezés és kiértékelés a számos különböző algoritmus végrehajtásához.
+[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): Információt nyújt az adatfeltárás, modellezés és kiértékelés a számos különböző algoritmus végrehajtásához.
 
 ### <a name="spark-20-notebooks"></a>A Spark 2.0 notebookok
 A Spark 2.0-fürt segítségével megvalósított regressziós és besorolási feladatokat külön jegyzetfüzetek és a besorolási notebookot használja egy másik adatkészletet:
 
-- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl információt nyújt az adatfeltárás, modellezés, végrehajtására és pontozás a Spark 2.0-fürtök használatával a NYC Taxi út és diszkont-adatkészlet leírt [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ez a jegyzetfüzet gyorsan megismerheti a kódot, a Spark 2.0 biztosítunk jó kiindulási pont lehet. Részletesebb jegyzetfüzet a NYC i taxik adatait elemzi, lásd a következő notebook ebben a listában. Lásd az alábbi listát, hasonlítsa össze ezeket a notebookokat. 
-- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ez a fájl bemutatja, hogyan hajtsa végre az adatok konvertálását (Spark SQL- és dataframe műveletek), feltárásában, modellezés és a NYC Taxi utazást és a leírt diszkont adatkészlet pontozás [Itt ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ez a fájl bemutatja, hogyan hajtsa végre az adatok konvertálását (Spark SQL- és dataframe műveletek), feltárásában, modellezés és pontozás a jól ismert légitársaság időben indító használatával a 2011 és 2012 adatkészlet. Integráltuk az repülőtér időjárási adatok (például szélsebesség, hőmérséklet, tengerszint stb.) a légitársaság adatkészlet előtt modellezés, ezért ezek időjárási szolgáltatások is tartalmazza, a modellben.
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl információt nyújt az adatfeltárás, modellezés, végrehajtásához és a Spark 2.0 pontozási-fürtöket a NYC Taxi utazást és a leírt diszkont adatkészlet [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ez a jegyzetfüzet gyorsan megismerheti a kódot, a Spark 2.0 biztosítunk jó kiindulási pont lehet. Részletesebb jegyzetfüzet a NYC i taxik adatait elemzi, lásd a következő notebook ebben a listában. Lásd az alábbi listát, hasonlítsa össze ezeket a notebookokat. 
+- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ez a fájl bemutatja, hogyan hajtsa végre az adatok konvertálását (Spark SQL- és dataframe műveletek), feltárásában, modellezés és a NYC Taxi utazást és a leírt diszkont adatkészlet pontozás [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ez a fájl bemutatja, hogyan hajtsa végre az adatok konvertálását (Spark SQL- és dataframe műveletek), feltárásában, modellezés és pontozás a jól ismert légitársaság időben indító adatkészlet 2011 és 2012 használatával. Integráltuk az repülőtér időjárási adatok (például szélsebesség, hőmérséklet, tengerszint stb.) a légitársaság adatkészlet előtt modellezés, ezért ezek időjárási szolgáltatások is tartalmazza, a modellben.
 
 <!-- -->
 
@@ -72,7 +72,7 @@ A Spark 2.0-fürt segítségével megvalósított regressziós és besorolási f
 <!-- -->
 
 > [!NOTE]
-A Spark 2.0 notebookok a NYC taxi és légitársaság repülési késleltetés-adatkészleteken alapuló is igénybe vehet, 10 perc vagy több (függően a HDI-fürt mérete). A fenti listában az első jegyzetfüzet mutatja az adatfeltárás számos aspektusát, megjelenítési és gépi Tanulási modell egy jegyzetfüzetet, futtathat le mintavételezés NYC adatkészlet, amelyben a taxi és diszkont fájlok már előre illesztett kevesebb időt vesz igénybe a képzés: [ Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Ez a jegyzetfüzet (2-3 perc) befejezéséhez sokkal rövidebb ideig tart, és előfordulhat, hogy lehet egy jó kiindulási pontjaként gyorsan megismerheti a kód adtunk meg a Spark 2.0-s. 
+A Spark 2.0 notebookok a NYC taxi és légitársaság repülési késleltetés-adatkészleteken alapuló is igénybe vehet, 10 perc vagy több (függően a HDI-fürt mérete). A fenti listában az első jegyzetfüzet bizonyos szempontokból az adatfeltárás, a Vizualizáció és a gépi Tanulási modell betanítása egy jegyzetfüzetet, futtathat le mintavételezés NYC adatkészlet, amelyben a taxi és diszkont fájlok már előre illesztett kevesebb idő alatt látható: [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Ez a jegyzetfüzet (2-3 perc) befejezéséhez sokkal rövidebb ideig tart, és előfordulhat, hogy lehet egy jó kiindulási pontjaként gyorsan megismerheti a kód adtunk meg a Spark 2.0-s. 
 
 <!-- -->
 
@@ -206,7 +206,7 @@ A kód Adatbetöltési itt látható.
 
 **A KIMENETRE:**
 
-Cella fent ideje: 51.72 másodperc
+Cella fent végrehajtásához felhasznált idő: 51.72 másodperc
 
 ## <a name="data-exploration--visualization"></a>Az adatok feltárása és képi megjelenítés
 Miután az adatok Spark üzembe, az adatelemzési folyamat következő lépése az az adatokat adatáttekintési és vizualizációs mélyrehatóbb ismereteket szerezhet. Ebben a szakaszban azt az SQL-lekérdezések használatával taxi adatok vizsgálatát és jeleníti meg a cél változók és vizuális ellenőrzése az leendő szolgáltatásai. Pontosabban azt jeleníti meg az utasok számát taxi lelassítja tipp összegeket a gyakoriság és hogyan tippek régiónként eltérő fizetési összeg, és írja be a gyakorisága.
@@ -410,7 +410,7 @@ A következő index és a kategorikus funkciók kódolása a kódot:
 
 **A KIMENETRE:**
 
-Cella fent ideje: 1.28 másodperc
+Cella fent végrehajtásához felhasznált idő: 1.28 másodperc
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>A gépi Tanulási funkciók be címkézett pont objektumok létrehozása
 Ez a szakasz bemutatja, hogyan címkézett pont adattípusú értékként kategorikus szöveges adatok indexelése és kódolja azt, hogy a taníthat vagy tesztelhet MLlib logisztikai regressziós és más képbesorolási modellek használható kódot tartalmazza. Címkézett pont objektumok olyan rugalmas elosztott adatkészleteket (RDD) formátumú úgy, hogy a gépi Tanulási algoritmusokat a MLlib többsége által bemeneti adatként van szükség. A [pont feliratú](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) sűrű vagy ritka, a helyi vektor társítva van egy címke/válasz.  
@@ -433,7 +433,7 @@ Az index és a bináris osztályozási funkciói szöveg kódolása a kód itt l
         labPt = LabeledPoint(line.tipped, features)
         return  labPt
 
-    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC RERESSION MODELS
+    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC REGRESSION MODELS
     def parseRowOneHotBinary(line):
         features = np.concatenate((np.array([line.pickup_hour, line.weekday, line.passenger_count,
                                             line.trip_time_in_secs, line.trip_distance, line.fare_amount]), 
@@ -505,7 +505,7 @@ Ez a kód létrehoz egy véletlenszerű mintavételi (25 %-os itt használt) ada
 
 **A KIMENETRE:**
 
-Cella fent ideje: 0,24 másodperc
+Cella fent végrehajtásához felhasznált idő: 0,24 másodperc
 
 ### <a name="feature-scaling"></a>A szolgáltatás méretezése
 A szolgáltatás méretezése adatok normalizálási, más néven adatblokkok, hogy funkciók széles körben folyósított értékekkel van nem adott túlzott mérjük a cél függvényben. Skálázás használja a funkciónak a [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) egység eltérése a szolgáltatások méretezése. Lineáris regresszió a Sztochasztikus átmenetes Grádiens (SGD), számos más gépi tanulási modelleket például rendeződik regressziót vagy támogatási vektor gépek (SVM) betanításához egy népszerű algoritmus használatra MLlib nyújtja.
@@ -548,7 +548,7 @@ A szolgáltatás méretezése adatok normalizálási, más néven adatblokkok, h
 
 **A KIMENETRE:**
 
-Cella fent ideje: 13.17 másodperc
+Cella fent végrehajtásához felhasznált idő: 13.17 másodperc
 
 ### <a name="cache-objects-in-memory"></a>A memóriában objektumok
 A képzés és a gépi Tanulási algoritmusok tesztelési idő objektumokat az osztályozás, regressziós, és szolgáltatások méretezése a bemeneti adatok keret gyorsítótárazásával csökkenthető.
@@ -579,7 +579,7 @@ A képzés és a gépi Tanulási algoritmusok tesztelési idő objektumokat az o
 
 **A KIMENETRE:** 
 
-Cella fent ideje: 0,15 másodperc
+Cella fent végrehajtásához felhasznált idő: 0,15 másodperc
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>E tipp: a bináris osztályozási modell fizetős előrejelzése
 Ez a szakasz bemutatja, hogyan használható három-modellekhez előrejelzésére bináris osztályozási feladatának tipp fizetős taxi útnak-e. A bemutatott modellek a következők:
@@ -636,7 +636,7 @@ Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.481245780
 
 INTERCEPT:-0.0111216486893
 
-Cella fent ideje: 14.43 másodperc
+Cella fent végrehajtásához felhasznált idő: 14.43 másodperc
 
 **A standard metrikák bináris osztályozási modell értékelése**
 
@@ -698,7 +698,7 @@ Idézze = 0.984304060189
 
 F1 Score = 0.984304060189
 
-Cella fent ideje: 57.61 másodperc
+Cella fent végrehajtásához felhasznált idő: 57.61 másodperc
 
 **A ROC-görbe ábrázolásához.**
 
@@ -791,7 +791,7 @@ Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelése é
 
 Terület alatt ROC = 0.985297691373
 
-Cella fent ideje: 31.09 másodperc
+Cella fent végrehajtásához felhasznált idő: 31.09 másodperc
 
 ### <a name="gradient-boosting-trees-classification"></a>Színátmenet kiemelési fák besorolás
 Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékeléséhez, és mentse egy színátmenetes kiemelési fák modellt, az e tipp: a NYC taxi út útnak fizetős és az adatkészlet díjszabás.
@@ -837,7 +837,7 @@ Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékeléséhe
 
 Terület alatt ROC = 0.985297691373
 
-Cella fent ideje: 19.76 másodperc
+Cella fent végrehajtásához felhasznált idő: 19.76 másodperc
 
 ## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>Előrejelzésére regressziós modellek taxi utakat összeget tipp
 Ez a szakasz bemutatja, hogyan használja az ötlet mennyisége előrejelzésére regressziós feladatának három modellt fizetős funkciókat a tip alapján taxi útnak. A bemutatott modellek a következők:
@@ -909,7 +909,7 @@ GYÖKÁTLAGOS = 1.24190115863
 
 R-sqr = 0.608017146081
 
-Cella fent ideje: 58.42 másodperc
+Cella fent végrehajtásához felhasznált idő: 58.42 másodperc
 
 ### <a name="random-forest-regression"></a>Véletlenszerű erdő regresszió
 Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelheti és mentse egy véletlenszerű erdő regressziós, amely előrejelzi a NYC taxi útadatok tipp összege.
@@ -961,7 +961,7 @@ GYÖKÁTLAGOS = 0.891209218139
 
 R-sqr = 0.759661334921
 
-Cella fent ideje: 49.21 másodperc
+Cella fent végrehajtásához felhasznált idő: 49.21 másodperc
 
 ### <a name="gradient-boosting-trees-regression"></a>Színátmenet kiemelési fák regresszió
 Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelése és a egy színátmenetes kiemelési fák modellt, a NYC taxi útadatok tipp összege az mentés.
@@ -1012,7 +1012,7 @@ RMSE = 0.908473148639
 
 R-sqr = 0.753835096681
 
-Cella fent ideje: 34.52 másodperc
+Cella fent végrehajtásához felhasznált idő: 34.52 másodperc
 
 **Diagram**
 
@@ -1099,7 +1099,7 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>A következő lépések
 Most, hogy a Spark MlLib a létrehozott regressziós és besorolási modellek, készen áll a pontszám, és ezek a modellek kiértékelése. A speciális adatáttekintés és modellezés jegyzetfüzet, beleértve a kereszt-ellenőrzés, abszolút, a hyper-paraméter mélyebb ismertetőinken és modell kiértékelése. 
 
-**Használati modell:** pontszám és kiértékelheti a besorolási és regressziós modellek, ebben a témakörben létrehozott kapcsolatban lásd: [pontszám és kiértékelheti a Spark használatával összeállított gépi tanulási modellek](spark-model-consumption.md).
+**Modell-felhasználás:** Pontszám és kiértékelheti a besorolási és regressziós modellek, ebben a témakörben létrehozott kapcsolatban lásd: [pontszám és kiértékelheti a Spark használatával összeállított gépi tanulási modellek](spark-model-consumption.md).
 
-**Kereszt-ellenőrzési és a hiperparaméter kezdik**: lásd: [speciális adatáttekintés és modellezés a Spark segítségével](spark-advanced-data-exploration-modeling.md) meg, hogyan lehet a modellek tanítása az kezdik kereszt-ellenőrzési és a hyper-paraméter
+**Kereszt-ellenőrzési és a hiperparaméter kezdik**: Lásd: [speciális adatáttekintés és modellezés a Spark segítségével](spark-advanced-data-exploration-modeling.md) meg, hogyan lehet a modellek tanítása az kezdik kereszt-ellenőrzési és a hyper-paraméter
 

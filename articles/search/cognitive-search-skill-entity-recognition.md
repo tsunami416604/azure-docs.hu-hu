@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a2bf61c167211e1ff62abe1453ac62227a137d53
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7a7fe9603716575c241ca78ebdc9b674888ca835
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411373"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452207"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Entitások felismerése cognitive szakértelem
 
@@ -43,7 +43,7 @@ Paraméterek kis-és nagybetűket, és minden megadása nem kötelező.
 | kategóriák    | Ki kell nyerni kategóriákat tömbje.  Lehetséges kategória típusok: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Ha nincs kategória áll rendelkezésre, a rendszer minden adja vissza.|
 |defaultLanguageCode |  A bemeneti szöveg nyelvkódja. A következő nyelvek támogatottak: `de, en, es, fr, it`|
 |minimumPrecision | Nem használt. Jövőbeli használatra fenntartva. |
-|includeTypelessEntites | Ha a beállítás igaz értékre, ha a szöveg egy jól ismert entitást tartalmaz, de nem egy támogatott kategóriák osztályozhatók, azt fogja visszaadni részeként a `"entities"` összetett kimeneti mező. Alapértelmezett érték `false` |
+|includeTypelessEntities | Ha a beállítás igaz értékre, ha a szöveg egy jól ismert entitást tartalmaz, de nem egy támogatott kategóriák osztályozhatók, azt fogja visszaadni részeként a `"entities"` összetett kimeneti mező. Alapértelmezett érték `false` |
 
 
 ## <a name="skill-inputs"></a>Ismeretek bemenetek

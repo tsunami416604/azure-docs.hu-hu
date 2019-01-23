@@ -4,7 +4,7 @@ description: Ismerteti a lépéseket, amelyekre szükség van a megvalósítása
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.component: devices
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: cb604bec1860da25e18c1c3a56a012882e5ea58e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: be7cded5b9cd2f7a3f33d1de11f36e82f079fc4b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189513"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448568"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
 
@@ -239,7 +239,7 @@ A következő három módszer összehasonlítása
 |Alkalmazható folyamatok|Kezdőélmény & beállításai|Csak a Kezdőélmény|Csak a Kezdőélmény|
 |Helyi rendszergazdai jogosultság szükséges az elsődleges felhasználó|Igen, alapértelmezés szerint|Konfigurálható|Nem|
 |Eszköz OEM-támogatásra van szüksége|Nem|Igen|Nem|
-|Támogatott verziók|1511-es +|1709-es +|1703-as +|
+|Támogatott verziók|1511+|1709+|1703+|
  
 Válassza ki a központi telepítési módszer vagy módszerek áttekintése a fenti táblázatban, és mindkét módszerrel bevezetésének az alábbi szempontokat megtekintésével:  
 

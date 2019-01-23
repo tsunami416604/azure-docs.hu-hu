@@ -4,7 +4,7 @@ description: A támogatott beállítások áttekintést kaphat az Azure Active D
 services: active-directory.
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
 ms.component: conditional-access
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 46dfb96df7b16fe03bd5c2c69fd9e2e33b04bbd2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0971b5abee872d9a7010f0ce931f09c47808eb80
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408578"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452139"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
@@ -56,7 +56,7 @@ Feltételes hozzáférési szabályzatot rendelhet a következő felhőalapú al
 
 - Microsoft Dynamics 365
 
-- A Microsoft Office 365 Yammeren
+- Microsoft Office 365 Yammer
 
 - A Microsoft Office 365 Exchange online-hoz
 
@@ -126,12 +126,12 @@ Ez a beállítás minden böngésző együttműködik. Azonban teljesítéséhez
 | Operációs rendszer                     | Böngészők                            | Támogatás     |
 | :--                    | :--                                 | :-:         |
 | Windows 10             | Az Internet Explorer, a Microsoft Edge, Chrome-ban     | ![Jelölőnégyzet][1] |
-| A Windows 8 / 8.1        | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
+| Windows 8 / 8.1        | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
 | Windows 7              | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
 | iOS                    | A Safari, az Intune Managed Browser      | ![Jelölőnégyzet][1] |
 | Android                | Chrome-ban, az Intune Managed Browser      | ![Jelölőnégyzet][1] |
-| Windows Phone          | Az Internet Explorer, a Microsoft Edge             | ![Jelölőnégyzet][1] |
-| Windows Server 2016    | Az Internet Explorer, a Microsoft Edge             | ![Jelölőnégyzet][1] |
+| Windows Phone          | Internet Explorer, Microsoft Edge             | ![Jelölőnégyzet][1] |
+| Windows Server 2016    | Internet Explorer, Microsoft Edge             | ![Jelölőnégyzet][1] |
 | Windows Server 2016    | Chrome                              | Hamarosan elérhető |
 | Windows Server 2012 R2 | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
 | Windows Server 2008 R2 | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
@@ -159,7 +159,7 @@ Támogatja a Chrome **7 és Windows 8.1**, hozza létre a következő beállít�
 |Útvonal | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 |Name (Név) | 1 |
 |Típus | REG_SZ (String) |
-|Adatok | {"a minta": "https://device.login.microsoftonline.com","filter": {"Kiállító": {"CN": "Hozzáférés-MS-szervezet"}}}|
+|Adatok | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 A böngészők eszközhitelesítés lehetővé teszi az eszköz azonosítani és egy házirend kialakításnak támogatja. Az eszköz-ellenőrzés sikertelen lesz, ha a böngészőt privát üzemmódban fut-e. 
 
@@ -186,7 +186,7 @@ Ez a beállítás hatással van a hozzáférési kísérletek a következő mobi
 |Office 2016-os, univerzális Office-alkalmazásokat, Office 2013, a onedrive vállalati verzió szinkronizálóügyfél (lásd: [megjegyzések](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), az Office-csoportok támogatása a jövőben tervezünk, SharePoint-alkalmazások támogatása a jövőben tervezünk|Az Office 365 SharePoint Online|Windows 10|
 |Office 2016 MacOS (a Word, Excel, PowerPoint, csak a OneNote). A jövőben tervezünk OneDrive for Business-támogatás|Az Office 365 SharePoint Online|Mac OS X|
 |Office-mobilalkalmazások|Az Office 365 SharePoint Online|Android, iOS|
-|Office Yammer-alkalmazás|Az Office 365 Yammeren|A Windows 10, iOS, Android|
+|Office Yammer-alkalmazás|Office 365 Yammer|Windows 10, iOS, Android|
 |Az Outlook 2016 (a macOS-hez készült Office)|Az Office 365 Exchange online-hoz|Mac OS X|
 |Az Outlook 2016, az Outlook 2013-hoz, a Skype vállalati verzió|Az Office 365 Exchange online-hoz|Windows 8.1, Windows 7|
 |Az Outlook mobilalkalmazás|Az Office 365 Exchange online-hoz|Android, iOS|

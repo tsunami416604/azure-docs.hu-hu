@@ -1,6 +1,6 @@
 ---
 title: LCS előfizetés |} A Microsoft Docs
-description: Egy előfizetés létrehozására szolgáló tuutorial bemutatása.
+description: Bevezető ahhoz az oktatóanyaghoz tartozó előfizetést hoz létre.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: pbutlerm
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c0109839144775e9064db4f8396f19688fcc13e8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ee6c18d1d0dda691f8b108cbe70e05eedae606e5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308634"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446327"
 ---
 # <a name="lcs-subscription"></a>LCS-előfizetés
 

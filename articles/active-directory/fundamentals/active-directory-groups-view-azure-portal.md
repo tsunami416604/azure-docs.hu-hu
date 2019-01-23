@@ -3,7 +3,7 @@ title: 'Gyors útmutató: a munkahelyi csoportok és tagok – Azure Active Dire
 description: Keresse meg, és megtekintheti a szervezet és a hozzárendelt tagjaik kapcsolatos utasításokat.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -12,16 +12,16 @@ ms.date: 09/24/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 002b4bb4ab20e531132b461f90857cfab6aecfd3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7ccd42fa1593e420c3d95ac1b50e8ef5084e68a0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087474"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446408"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
-# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Rövid útmutató: A vállalat csoportjainak és csoporttagjainak megtekintése az Azure Active Directoryban
+# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Gyors útmutató: A munkahelyi csoportok és tagok megtekintése az Azure Active Directoryban
 Megtekintheti a vállalat meglévő csoportjait és csoporttagjait az Azure Portalon. A csoportok az olyan felhasználók (tagok) kezelésére szolgálnak, akiknek azonos hozzáférés és azonos engedélyek szükségesek potenciálisan korlátozott alkalmazásokhoz és szolgáltatásokhoz.
 
 Ebben a rövid útmutatóban megtekinti a vállalat összes meglévő csoportját és az azokhoz rendelt tagokat.
@@ -43,11 +43,11 @@ Hozzon létre egy _MDM policy – West_ nevű új csoportot. Csoportok létrehoz
 
 2. Töltse ki a **Csoport** lapot:
     
-    - **Csoport típusa:** válassza a **Biztonság** lehetőséget.
+    - **Csoport típusa:** Válassza ki **biztonsági**
     
-    - **Csoport neve:** írja be a következőt: _MDM policy – West_
+    - **Csoport neve:** Típus _mobileszköz-kezelési szabályzat – Nyugat-India_
     
-    - **Tagság típusa:** válassza a **Hozzárendelt** lehetőséget.
+    - **Tagság típusa:** Válassza ki **hozzárendelt**.
 
 3. Kattintson a **Létrehozás** gombra.
 
@@ -58,9 +58,9 @@ Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak m
 
 2. Töltse ki a **Felhasználó** lapot:
 
-    - **Név:** írja be a következőt: _Alain Charon_.
+    - **név:** Típus _Alain Charon_.
 
-    - **Felhasználónév:** írja be a következőt: *alain@contoso.com*.
+    - **Felhasználónév:** Típus *alain@contoso.com*.
 
 3. Másolja a **Jelszó** mezőben szereplő, automatikusan előállított jelszót, majd válassza a **Létrehozás** lehetőséget.
 

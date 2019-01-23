@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Kapcsolódási problémáinak elhárítása |} A Microsoft Docs'
+title: 'Azure AD Connect: Csatlakozási problémák elhárítása |} A Microsoft Docs'
 description: Az Azure AD Connect kapcsolati problémáinak hibaelhárítását mutatja be.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5d5eee525c6f071840d186cb6bd54faf9bf2787b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 85c60cf25cd00826df6b48ed6714a646fa44a962
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310667"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474880"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect kapcsolati problémáinak hibaelhárítása
 Ez a cikk azt ismerteti, hogyan működik az Azure AD Connect és az Azure AD közötti kapcsolat és a kapcsolódási problémák elhárítása. Ezek olyan problémák, nagy valószínűséggel olyan környezetben, egy proxykiszolgáló láthatók legyenek.
@@ -46,7 +46,7 @@ Ezen URL-címek a következő táblázat az csatlakozni az Azure AD minden, az a
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Töltse le a Visszavonási listák segítségével. |
 | \*.verisign.com |HTTP/80 |Töltse le a Visszavonási listák segítségével. |
-| \*. entrust.net |HTTP/80 |Töltse le a Visszavonási listák a multi-factor Authentication segítségével. |
+| \*.entrust.net |HTTP/80 |Töltse le a Visszavonási listák a multi-factor Authentication segítségével. |
 | \*.windows.net |HTTPS/443 |Jelentkezzen be az Azure AD segítségével. |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |A multi-factor Authentication használja. |
 | \*.microsoftonline.com |HTTPS/443 |Segítségével a konfigurálása az Azure AD-címtár és az adatok importálása és exportálása. |
@@ -95,7 +95,7 @@ Ha a proxy nem megfelelően van konfigurálva, hibaüzenetet kap: ![proxy200](./
 | Hiba | Hiba szövege | Megjegyzés |
 | --- | --- | --- |
 | 403 |Tiltott |A proxy nem lett megnyitva a kért URL-címéhez. Nyissa meg újra a proxykonfigurációt, és ellenőrizze, hogy a [URL-címek](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) meg vannak nyitva. |
-| 407 |Proxyhitelesítés szükséges |A proxykiszolgáló-bejelentkezés szükséges, és nem. Ha a proxykiszolgáló hitelesítést igényel, győződjön meg róla, hogy ez a beállítás a Machine.config fájlban konfigurálva van. Ügyeljen arra, hogy a felhasználó a varázsló futtatása és a szolgáltatás fiók tartományi fiókokat használ. |
+| 407 |Proxy Authentication Required |A proxykiszolgáló-bejelentkezés szükséges, és nem. Ha a proxykiszolgáló hitelesítést igényel, győződjön meg róla, hogy ez a beállítás a Machine.config fájlban konfigurálva van. Ügyeljen arra, hogy a felhasználó a varázsló futtatása és a szolgáltatás fiók tartományi fiókokat használ. |
 
 ### <a name="proxy-idle-timeout-setting"></a>Üresjárati időkorlát proxybeállítása
 Az Azure AD Connect exportálási kérelmet küld az Azure AD, ha az Azure AD választ létrehozása előtt a kérelem feldolgozását akár 5 percet is igénybe vehet. Ez akkor fordulhat elő, különösen akkor, ha egy csoport objektumok exportálása a kérésben szereplő nagy csoporttagsággal rendelkező számú. Ellenőrizze, a Proxy üresjárati időkorlát 5 perccel későbbinek kell lennie. Ellenkező esetben nem állandó hálózati kapcsolat a probléma az Azure ad-vel az Azure AD Connect-kiszolgálón lehet figyelni.
@@ -116,7 +116,7 @@ Ha követte a fenti lépéseket, és továbbra sem tud csatlakozni, akkor előfo
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
@@ -126,13 +126,13 @@ Ha követte a fenti lépéseket, és továbbra sem tud csatlakozni, akkor előfo
 | Time | URL-cím |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |Csatlakozás: / /*bba900-rögzítési*. microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba900-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
@@ -143,8 +143,8 @@ Ha követte a fenti lépéseket, és továbbra sem tud csatlakozni, akkor előfo
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |Csatlakozás: / /*bba900-rögzítési*. microsoftonline.com:443 |
-| 1/11/2016 8:49 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>Hitelesítési hibák
 Ez a szakasz ismerteti a hibákat, az adal-t (az Azure AD Connect által használt hitelesítési tár) és a PowerShell-lel adhatók vissza. A hiba azt segítenek a Ismerkedjen meg a következő lépésekkel.

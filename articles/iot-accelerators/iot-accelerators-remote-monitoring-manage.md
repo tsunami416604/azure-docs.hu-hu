@@ -9,18 +9,18 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5505ceaa88f1ad792df57f9728f5e4809404942c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a2dc5653b7579d9c5db4667d84e6e5b5082abaab
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599501"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448074"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A figyelési megoldáshoz csatlakoztatott eszközök konfigurálása
 
 Ebben az oktatóanyagban a távoli monitorozási megoldásgyorsítóval konfigurálhatja és kezelheti a csatlakoztatott IoT-eszközöket. A megoldásgyorsító hozzáad egy új eszközt, és konfigurálja az eszközt.
 
-A Contoso új gépet rendelt, amellyel az egyik létesítményét szeretné bővíteni. Amíg az új gép kézbesítésére vár, Ön lefuttat egy szimulációt a megoldás működésének tesztelése érdekében. A szimuláció futtatja, hozzáadhat új eszköz szimulált motor a távoli figyelési megoldásgyorsító és tesztelje, hogy ezt a szimulált eszközt megfelelően válaszol-konfiguráció frissítéseit. Bár ebben az oktatóanyagban szimulált eszközök szerepelnek, az eszközfejlesztők a közvetlen metódusokat olyan [fizikai eszközökön is implementálhatják, amelyek a távoli monitorozási megoldásgyorsítóhoz vannak csatlakoztatva](iot-accelerators-connecting-devices.md).
+A Contoso új gépet rendelt, amellyel az egyik létesítményét szeretné bővíteni. Amíg az új gép kézbesítésére vár, Ön lefuttat egy szimulációt a megoldás működésének tesztelése érdekében. A szimuláció futtatja, hozzáadhat új eszköz szimulált motor a távoli figyelési megoldásgyorsító és tesztelje, hogy ezt a szimulált eszközt megfelelően válaszol-konfiguráció frissítéseit. Bár ebben az oktatóanyagban a szimulált eszközök, eszköz fejlesztő megvalósítható közvetlen metódusok a [valós eszköz csatlakozik a távoli figyelési megoldásgyorsító](iot-accelerators-connecting-devices.md).
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

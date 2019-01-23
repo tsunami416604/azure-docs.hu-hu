@@ -4,7 +4,7 @@ description: Tegye közzé az alkalmazásokat a PingAccess és alkalmazásproxy 
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c5a69e0c15d6d75bb4f182c1d8f62863aae7c760
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 52111d54031b2d458b0bfc727dcb310fbbcbd9ad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140846"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468601"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítéskor az egyszeri bejelentkezést az alkalmazásproxy és a PingAccess
 
@@ -73,13 +73,13 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részlete
 3. Válassza ki **Hozzáadás** a panel tetején.
 4. Válassza ki **helyszíni alkalmazás**.
 5. Töltse ki a kötelező mezőket az új alkalmazással kapcsolatos információkat. A következő útmutatást használhatja a beállításokat:
-   - **Belső URL-cím**: normál esetben adja meg az URL-cím, amellyel az alkalmazás bejelentkezési oldalon a vállalati hálózaton dolgozik. Ebben a forgatókönyvben az összekötőjét a PingAccess proxy kezelni a az alkalmazás első lapját. Ezt a formátumot használja: `https://<host name of your PA server>:<port>`. A port 3000 alapértelmezés szerint, de a PingAccess konfigurálhatja.
+   - **Belső URL-cím**: Normális esetben adja meg az URL-cím, amellyel az alkalmazás bejelentkezési oldalon a vállalati hálózaton dolgozik. Ebben a forgatókönyvben az összekötőjét a PingAccess proxy kezelni a az alkalmazás első lapját. Ezt a formátumot használja: `https://<host name of your PA server>:<port>`. A port 3000 alapértelmezés szerint, de a PingAccess konfigurálhatja.
 
     > [!WARNING]
     > Az ilyen típusú egyszeri Bejelentkezést a belső URL-cím HTTPS protokollt kell használnia, és nem használható http.
 
    - **Az előhitelesítési módszer**: Azure Active Directory
-   - **A fejlécek URL-cím fordításának**: nem
+   - **A fejlécek URL-cím fordításának**: Nem
 
    >[!NOTE]
    >Ha az első alkalmazását, használja a port 3000 elindításához, és térjen vissza a frissítse ezt a beállítást, ha a PingAccess konfiguráció módosítása. Ha ez a második vagy újabb alkalmazás, ez a figyelő a PingAccess konfigurálta megfelelően kell. Tudjon meg többet [figyelői a PingAccess](https://documentation.pingidentity.com/pingaccess/pa31/index.shtml#Listeners.html).

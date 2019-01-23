@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 91e9cb6b436cc78a0c5bd4769d38622abda4c04d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: disks
+ms.openlocfilehash: 6cccf31842825c3e4d50aa67165d19f8ac471695
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977570"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478161"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
 Linux rendszerű virtuális gépek (VM) a könnyű a parancssorból vagy a portálon. Ez az oktatóanyag bemutatja, hogyan annak beállítása, a Microsoft Azure platformon a teljesítmény optimalizálása érdekében. Ez a témakör egy Ubuntu Server rendszerű virtuális gép használja, de a Linux rendszerű virtuális gép használatával is létrehozhat [saját lemezképek sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -33,7 +34,7 @@ Ez a témakör azt feltételezi, hogy már rendelkezik egy működő Azure-előf
 Miután létrehozott egy Linux rendszerű virtuális gép az Azure-ban, két lemezt társítva van. **/ dev/sda** az operációsrendszer-lemezt, **/dev/sdb** az ideiglenes lemez.  Ne használja a fő operációsrendszer-lemez (**/dev/sda**) kivételével az operációs rendszer, mert a gyors Virtuálisgép-rendszerindítás ideje van optimalizálva, és nem biztosít a számítási feladatokhoz megfelelő teljesítmény. Egy vagy több lemez csatolása a virtuális gép első állandó szeretné az adatok nem optimalizált. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Lemezek hozzáadása a méret és teljesítménycéljai
-A virtuális gép mérete alapján, a-sorozatú, a D sorozatú 32 lemezek akár 16 további lemez is csatlakoztatható, és a gépi 64 lemez a G sorozat – egyenként legfeljebb 1 TB-nál. A hely és IOps-követelmények igény szerint további lemezeket ad hozzá. Minden lemezhez tartozik egy 500 IOps teljesítményt célja Standard Storage és lemezenként 5000 IOps legfeljebb a Premium Storage számára.  A Premium Storage-lemezekkel kapcsolatos további információkért lásd: [Premium Storage: nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek](../windows/premium-storage.md)
+A virtuális gép mérete alapján, a-sorozatú, a D sorozatú 32 lemezek akár 16 további lemez is csatlakoztatható, és a gépi 64 lemez a G sorozat – egyenként legfeljebb 1 TB-nál. A hely és IOps-követelmények igény szerint további lemezeket ad hozzá. Minden lemezhez tartozik egy 500 IOps teljesítményt célja Standard Storage és lemezenként 5000 IOps legfeljebb a Premium Storage számára.  A Premium Storage-lemezekkel kapcsolatos további információkért lásd: [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek](../windows/premium-storage.md)
 
 A Premium Storage-lemez, ahol a gyorsítótár-beállítások lettek állítva, vagy a legmagasabb IOps eléréséhez **ReadOnly** vagy **nincs**, le kell tiltania **korlátok** csatlakoztatása közben a Linux rendszerben. Mivel a biztonsági Premium Storage-lemez írási műveletek tartós, a beállítások nem kell korlátok.
 

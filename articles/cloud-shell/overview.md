@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 85d054be6b72c736ec66384b9caec71208f36802
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 1ad85a57762ae4fba30e1699b38eaa52d45ab26e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869363"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447207"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
 Az Azure Cloud Shell egy interaktív, a böngésző által elérhető shell Azure-erőforrások kezeléséhez.
@@ -57,11 +57,16 @@ A cloud Shell biztosít egy integrált grafikus szövegszerkesztőben a nyílt f
 
 [További információ a Cloud Shell-szerkesztő](using-cloud-shell-editor.md).
 
+### <a name="integrated-with-docsmicrosoftcom"></a>Integrálva a docs.microsoft.com webhelyen
+
+Használhatja a Cloud Shellben lévő üzemeltetett dokumentációja közvetlenül a [docs.microsoft.com](https://docs.microsoft.com). Integrálva van a [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview) és [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure) – kattintson a "Kipróbálom" gombra a kódrészletben az ragadó rendszerhéj megnyitásához felhasználói élményt. 
+
 ### <a name="multiple-access-points"></a>Több kapcsolódási pont
 A cloud Shell rugalmas eszköz használható a következő:
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Az Azure parancssori felület "Próbálja ki" dokumentációja](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
+* [Az Azure CLI dokumentációja](https://docs.microsoft.com/cli/azure)
+* [Az Azure PowerShell-dokumentáció](https://docs.microsoft.com/powershell/azure/overview)
 * [Azure-mobilalkalmazás](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [A VS Code Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

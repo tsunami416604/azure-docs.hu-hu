@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4b4c2e35059fa3521a74e1cb0c218c100b12a4ec
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: cb0c72c8a14dd71bbbe9d6cd46224542f7bf3e5b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436722"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470579"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -203,7 +203,10 @@ Az elemekre kattintva részletes információk érhetők el a bejelentkezési m�
 - Dátum
 - Az MFA megadása kötelező
 - Bejelentkezési állapot
- 
+
+> [!NOTE]
+> IP-címeket úgy, hogy ez nem végleges közötti IP-cím és a számítógép ezzel a címmel fizikailag helyét adják ki. IP-címek leképezése a tény, hogy mobilalkalmazás-szolgáltatók és a VPN-eket adja ki az IP-címeket, amelyek nagyon gyakran, ahol használja ténylegesen az ügyféleszközön messze központi készletek bonyolult. Jelenleg az Azure AD-jelentések, IP-cím átalakítása egy fizikai helyhez célja a legjobb nyomkövetéseket, beállításjegyzék-adatok, fordított keresések és egyéb információk alapján.
+
 A **Felhasználók** oldalon teljes körű áttekintést kaphat az összes felhasználói bejelentkezésről a **Tevékenységek** szakaszban található **Bejelentkezések** elemre kattintva.
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/08.png "Sign-in activity")

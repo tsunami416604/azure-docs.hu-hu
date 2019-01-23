@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: ac273ac7d4c6c371670e6b8a8170274602a5318b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 310311c22be25960b15f20d573624f50b0f618b1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536542"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474812"
 ---
 # <a name="install-and-run-containers"></a>Tárolók telepítése és futtatása
 
@@ -55,9 +55,9 @@ Ha jóváhagyja a kérést, majd egy e-mailt kap az utasítások a szerezze be a
 
 Ha azt szeretné, a Face tároló használatához létre kell hoznia az Azure-ban Face erőforrás. Miután létrehozta az erőforrást, majd használja az előfizetési kulcs és a végpont URL-címet az erőforrás a tároló példányosítása. Egy tároló hárítható el kapcsolatos további információkért lásd: [hozható létre egy tárolót a letöltött tárolórendszerkép](#instantiate-a-container-from-a-downloaded-container-image).
 
-A következő lépésekkel hozhat létre, és a egy oldallal erőforrás lévő információk lekéréséhez:
+A következő lépésekkel hozhat létre, és a egy Face erőforrás lévő információk lekéréséhez:
 
-1. Hozzon létre egy Face erőforrást az Azure Portalon.  
+1. Face erőforrás létrehozása az Azure Portalon.  
    Ha azt szeretné, a Face tároló használatára, először létre kell hoznia egy megfelelő ARC-erőforrást az Azure Portalon. További információkért lásd: [a rövid útmutató: Cognitive Services-fiók létrehozása az Azure Portalon](../cognitive-services-apis-create-account.md).
 
 1. A végpont URL-cím és egy előfizetési kulcsra az Azure-beli erőforráshoz kaphat.  
@@ -178,3 +178,4 @@ Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és a futó t
 * Felülvizsgálat [Face áttekintése](Overview.md) további észlelése és arcok azonosítása  
 * Tekintse meg a [Face API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) részleteiről a tároló által támogatott különböző módszereit.
 * Tekintse meg [– gyakori kérdések (GYIK)](FAQ.md) Arcfelismerési funkciókat kapcsolatos problémák megoldásához.
+* Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)

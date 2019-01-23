@@ -5,7 +5,7 @@ services: active-directory
 keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.component: identity-protection
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 11b6766533da65f55430d55bd8aa0b7067783e0c
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: b1077eefbe57b6440caa0171fb7429485eeeb78e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267470"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469185"
 ---
-# <a name="how-to-close-active-risk-events"></a>Útmutató: Zárja be az aktív kockázati események
+# <a name="how-to-close-active-risk-events"></a>kézikönyv: Az aktív kockázati események bezárása
 
 A [kockázati események](../reports-monitoring/concept-risk-events.md), Azure Active Directory észleli a mutatók esetleg feltört felhasználói fiókok esetében. A rendszergazdák szeretne kapni a lezárt, az összes kockázati események, hogy az érintett felhasználók már nem veszélyben vannak.
 
@@ -47,7 +47,7 @@ Gombra kattintva zárja be az aktív kockázati események, a következő lehet�
 
 ## <a name="require-password-reset-with-a-user-risk-policy"></a>Felhasználói kockázati házirendet az új jelszó kérése
 
-Úgy konfigurálja a [felhasználói kockázat feltételes hozzáférési szabályzat](howto-user-risk-policy.md), ha egy megadott felhasználói kockázati szint automatikusan észlelt megkövetelheti a jelszó módosítása. 
+A [felhasználói kockázati feltételes hozzáférési szabályzat](howto-user-risk-policy.md) konfigurálásával jelszómódosítást kötelezővé teheti a jelszómódosítást, ha egy adott felhasználó kockázati szintje automatikusan észlelhető. 
 
 ![Új jelszó létrehozása](./media/howto-close-active-risk-events/13.png)
 

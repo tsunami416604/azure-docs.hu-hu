@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 6ed8bae2e1571722f7a9a0030a48e64c4f7fbc60
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: ''
+ms.openlocfilehash: 90ad5306c1594381409ed2bcbe767e2ffd055531
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106664"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473962"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Az Azure Monitor partnerintegrációk
 | Partnerek |  |  |
@@ -67,7 +67,7 @@ CloudMonix felügyelet, automatizálás, és önjavító tárolószervezéssel p
 
 [Nyissa meg a dokumentációt.][cloudmonix-doc]
 
-## <a name="datadog"></a>Datadoggal
+## <a name="datadog"></a>Datadog
 Datadoggal szolgáltatás felhőméretű alkalmazások figyelése a világ vezető. Ez magában foglal adatok a kiszolgálók, adatbázisok, eszközök és szolgáltatások egységes a teljes verem képviselniük. Ezek a képességek egy adatok SaaS-alapú elemzési platform az állnak rendelkezésre. Ez a szolgáltatás lehetővé teszi, hogy a fejlesztési és operátor csapatok az együttműködés elősegítése érdekében a segítségével elkerülhető az állásidő, oldja meg a teljesítménybeli problémákat, és győződjön meg arról, hogy a fejlesztés és üzembe helyezési ciklust Befejezés időben. Datadoggal és az Azure integrálásával begyűjtheti és mérőszámainak megtekintése az infrastruktúrában. Virtuális gép metrikái összevetését az alkalmazás-szintű metrikákat. Részletekbe menően vizsgálhatja a metrikákat, tetszőleges kombinációjával, tulajdonságok és az egyéni címkéket.
 
 [Nyissa meg a dokumentációt.][datadog-doc]
@@ -115,7 +115,7 @@ Az Azure-ingatlan-integráció figyelése és automatizálási eszközök közö
 ## <a name="newrelic"></a>NewRelic
 [tudj meg többet.][newrelic-doc]
 
-## <a name="opsgenie"></a>Opsgenie segítségével
+## <a name="opsgenie"></a>OpsGenie
 Opsgenie segítségével egy Azure által létrehozott riasztásokról dispatcher funkcionál. Opsgenie segítségével határozza meg a megfelelő értesítendő személyeket és a készenléti ütemezések és azok következményeinek alapján. Értesítheti azokat használja e-mailben, szöveges üzenetben (SMS), telefonhívás vagy leküldéses értesítések küldése. Azure észlelt problémákkal kapcsolatos riasztásokat állít elő. Opsgenie segítségével biztosítja, hogy a megfelelő emberek számára is dolgozunk a probléma.
 
 [Nyissa meg a dokumentációt.][opsgenie-doc]
@@ -186,7 +186,7 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 [influxdata-anchor]: #Influxdata "Influxdata"
 [logicmonitor-anchor]: #logic-monitor "Logikai figyelője"
 [moogsoft-anchor]: #moogsoft "Moogsoft"
-[opsgenie-anchor]: #opsgenie "Opsgenie segítségével"
+[opsgenie-anchor]: #opsgenie "OpsGenie"
 [pagerduty-anchor]: #pagerduty "PagerDuty"
 [qradar-anchor]: #qradar "QRadar"
 [sciencelogic-anchor]: #sciencelogic "ScienceLogic"
@@ -249,3 +249,4 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk-dokumentációt."
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic dokumentációját."
 [turbonomic-doc]: https://turbonomic.com/solutions/technologies/azure-cloud/ "A Turbonomic bemutatása."
+

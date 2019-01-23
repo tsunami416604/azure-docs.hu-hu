@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: technikai kulcsfogalmak |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása: Műszaki fogalmak |} A Microsoft Docs'
 description: Ismerteti a technikai Azure AD Connect szinkronizálása.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 731cfeb3-beaf-4d02-aef4-b02a8f99fd11
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: df3f244b70b52b6145b664c4e575c66542ada5b9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2bf9876fc551b9ab0eb24c03a17f3d789c00530e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314537"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463490"
 ---
-# <a name="azure-ad-connect-sync-technical-concepts"></a>Az Azure AD Connect szinkronizálása: technikai kulcsfogalmak
+# <a name="azure-ad-connect-sync-technical-concepts"></a>Az Azure AD Connect szinkronizálása: Műszaki fogalmak
 Ebben a cikkben található egy összefoglaló az a témakör [ismertetése architektúra](how-to-connect-sync-technical-concepts.md).
 
 Az Azure AD Connect szinkronizálása egy szilárd metakönyvtár szinkronizálási platformra épít.
@@ -86,7 +86,7 @@ Ez természetüknél fogva hoz létre hivatkozást, és Attribútumfolyam kétir
 Minden alkalommal, amikor egy szabály határozza meg, hogy egy új összekötőtér objektuma kell létrehozni, kiépítés nevezzük. Azonban ez a művelet csak kerül sor az összekötőtérben belül, mert azt nem vállalunk a csatlakoztatott adatforrásba mindaddig, amíg az exportálás történik.
 
 ## <a name="additional-resources"></a>További források
-* [Az Azure AD Connect-szinkronizálás: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 
 <!--Image references-->

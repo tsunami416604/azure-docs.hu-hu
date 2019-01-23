@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 48d3bc7ecdd66565372be8347897202cae3ec158
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 97de65acf724d12afd131ede25713e8f29d30bad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579787"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477634"
 ---
 # <a name="configure-recognize-text-containers"></a>Szöveg felismerése tárolók konfigurálása
 
@@ -32,6 +32,7 @@ Konfigurációs beállításai a Computer Vision tárolók hierarchikus, és az 
 * [Számlázás](#billing-configuration-setting)
 * [Végfelhasználói licencszerződés](#eula-configuration-setting)
 * [Fluentd](#fluentd-configuration-settings)
+* [HTTP-proxy hitelesítő adat beállításai](#http-proxy-credentials-settings)
 * [Logging](#logging-configuration-settings)
 * [Csatlakoztatja](#mounts-configuration-settings)
 
@@ -116,6 +117,11 @@ A következő táblázat ismerteti a támogatott konfigurációs beállításait
 | `TlsConnectionEstablishmentTimeoutMs` | Egész szám | Az időkorlát ezredmásodpercben, a Fluentd kiszolgálóval SSL/TLS kapcsolatot létesíteni. Az alapértelmezett érték: 10000 ezredmásodperc (10 másodperc).<br/> Ha `UseTLS` értéke hamis értékre, ezt az értéket figyelmen kívül hagyja. |
 | `UseTLS` | Logikai | Azt jelzi, hogy a tároló kell használnia az SSL/TLS a Fluentd kiszolgálóval való kommunikáció során. Az alapértelmezett értéke FALSE (hamis). |
 
+
+## <a name="http-proxy-credentials-settings"></a>HTTP-proxybeállításai hitelesítő adatok
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
 ## <a name="logging-configuration-settings"></a>Naplózás konfigurációs beállításait
 
 A `Logging` konfigurációs beállításokat az ASP.NET Core naplózás támogatását, a tároló kezelése. A tároló, amely egy ASP.NET Core-alkalmazást is használhatja az ugyanazon konfigurációs beállításokat és értékeket. A következő naplózási szolgáltatók számítógépes Látástechnológiai tárolók támogatja:
@@ -164,3 +170,7 @@ Például a következő parancsot határozza meg a Docker kötési csatlakoztat�
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789 Logging:Disk:Format=json
   ```
+
+## <a name="next-steps"></a>További lépések
+
+* Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)

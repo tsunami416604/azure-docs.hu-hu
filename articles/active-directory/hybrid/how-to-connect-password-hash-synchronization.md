@@ -4,7 +4,7 @@ description: A Jelszókivonat-szinkronizálás működését, és hogyan állít
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f70c92e4f617ff5c2b652900ce3b803f8609d2f9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ff5127e584ab7ddede31ff811824612a3be21f18
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078650"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468063"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása
 A cikk ismerteti, hogy az egy felhőalapú Azure Active Directory (Azure AD) példány egy helyszíni Active Directory-példányból származó felhasználói jelszavakat szinkronizálja szükséges információkat.
@@ -140,6 +140,6 @@ További információ a biztonsági és FIPS: [Jelszókivonat-szinkronizálás A
 Ha problémába ütközik a Jelszókivonat-szinkronizálás, [Jelszókivonat-szinkronizálás hibaelhárítása](tshoot-connect-password-hash-synchronization.md).
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure AD Connect-szinkronizálás: szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 * [A részletes telepítési terv beolvasása az AD FS-ről történő Jelszókivonat-szinkronizálás](https://aka.ms/authenticationDeploymentPlan)

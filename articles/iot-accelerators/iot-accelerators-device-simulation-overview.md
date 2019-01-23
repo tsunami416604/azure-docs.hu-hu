@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 69e3708ef4c31e2dd91b5f50baecc46ea129cf33
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 173963470a77932186b3c51f17ccb406b32a13f3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346446"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452224"
 ---
-# <a name="device-simulation-solution-accelerator-overview"></a>Eszköz szimulálása megoldásgyorsító áttekintése
+# <a name="device-simulation-solution-accelerator-overview"></a>Az eszközszimulációs megoldásgyorsító áttekintése
 
 Egy felhőalapú IoT-megoldás az eszközök csatlakozzon a felhőbeli végpont küldhet telemetriát gyűjthet, például a hőmérsékletet, helyét és állapotát. A megoldás ezt a telemetriát, lehetővé téve a műveleteket, vagy abból insights használ fel.
 
@@ -28,7 +28,7 @@ IoT-megoldások fejlesztésekor a Kísérletezési és tesztelése a folyamat al
 
 ![Minta drónos szimuláció](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-Az Eszközszimuláció meghatározhatja eszközmodellek a fizikai eszközök szimulálásához. Ez a modell üzenetformátumok ikertulajdonságok és módszereket tartalmazza. Összetett eszközműködés JavaScript emellett szimulálhatja is.
+Az Eszközszimuláció meghatározhatja eszközmodellek a valódi eszközön szimulálásához. Ez a modell üzenetformátumok ikertulajdonságok és módszereket tartalmazza. Összetett eszközműködés JavaScript emellett szimulálhatja is.
 
 Több ezer bármely IoT hubhoz csatlakozó eszközök esetében is futtassa a szimulációkat. Annak érdekében, a tesztelés, igény szerint telepítheti egy IoT hubot, valamint Eszközszimuláció, egy különálló környezetben.
 

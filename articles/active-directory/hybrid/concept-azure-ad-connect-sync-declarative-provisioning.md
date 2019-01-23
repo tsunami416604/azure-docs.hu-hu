@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Deklaratív kiépítés ismertetése |} A Microsoft Docs'
+title: 'Azure AD Connect: Deklaratív kiépítés megértése |} A Microsoft Docs'
 description: Az Azure AD Connectben a deklaratív üzembe helyezési konfigurációs modell ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9242ffc0c87ee9f314745463b8287ad7531a982d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 45b145d9a8922bc3da50cef7d9fa7aacf260417d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315034"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471772"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Az Azure AD Connect szinkronizálása: a deklaratív kiépítés ismertetése
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Az Azure AD Connect szinkronizálása: A deklaratív üzembe helyezés ismertetése
 Ez a témakör ismerteti az Azure AD Connect konfigurációs modell. A modell a deklaratív kiépítés neve, és lehetővé teszi, hogy olyan konfigurációs módosítást egyszerű. Sok-sok dolog ebben a témakörben leírt speciális és a legtöbb ügyfél forgatókönyvhöz nem szükséges.
 
 ## <a name="overview"></a>Áttekintés
@@ -91,7 +91,7 @@ A metaverzum-objektum megmarad, amíg nincs egy szinkronizálási szabály ható
 A törölt metaverzum-objektum egy kimenő szinkronizálási szabály társított összes objektumot megjelölve **kiépítése** törlési jelennek meg.
 
 ## <a name="transformations"></a>Átalakítások
-Az átalakítások meghatározásához attribútumok áramlásának módját a forrásról a célra használják. A flow a következők egyike lehet **típusok flow**: közvetlen, állandó vagy kifejezés. Közvetlen folyamat, mint egy attribútumérték folyamatok-átalakítás nélküli további van. Állandó érték megadása esetén a megadott értéket. Egy kifejezés deklaratív üzembe helyezési kifejezés nyelvét használja, Express, hogyan kell lennie az átalakítást. A kifejezés nyelve részletei megtalálhatók a [deklaratív üzembe helyezési kifejezésnyelveket ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) témakör.
+Az átalakítások meghatározásához attribútumok áramlásának módját a forrásról a célra használják. A flow a következők egyike lehet **típusok flow**: Közvetlen, állandó vagy kifejezés. Közvetlen folyamat, mint egy attribútumérték folyamatok-átalakítás nélküli további van. Állandó érték megadása esetén a megadott értéket. Egy kifejezés deklaratív üzembe helyezési kifejezés nyelvét használja, Express, hogyan kell lennie az átalakítást. A kifejezés nyelve részletei megtalálhatók a [deklaratív üzembe helyezési kifejezésnyelveket ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) témakör.
 
 ![Kiépítése, vagy csatlakozzon](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
@@ -158,7 +158,7 @@ Ebben a forgatókönyvben a szinkronizálási szabályok hatókörének módosí
 
 **Áttekintő témakör**
 
-* [Az Azure AD Connect szinkronizálása: ismertetése, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 
 **Referencia-témakörök**

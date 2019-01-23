@@ -1,22 +1,22 @@
 ---
-title: Olvassa el a replikákat az Azure Database for postgresql-hez
+title: Olvasási replikák az Azure Database for PostgreSQL-ben
 description: Ez a cikk ismerteti a olvasható replikák az Azure Database for postgresql-hez.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 7aecfdedba04502ffdc68876635611a2f26d9896
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/22/2019
+ms.openlocfilehash: cb02f0b786ff6f1c7dbef5471fb95ce6516f824c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383499"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466074"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL olvasható replika
 Az olvasási replika funkció teszi, hogy az adatok replikálása az Azure Database for PostgreSQL-kiszolgáló (master) legfeljebb öt csak olvasható kiszolgálók (olvassa el a replikákat) azonos Azure-régióban. Olvasható replika aszinkron módon frissíti a PostgreSQL-motor natív replikációs technológiával.
 
-Replikák olyan új, normál önálló Azure Database for PostgreSQL-kiszolgálók hasonló módon kezelhetők. Ugyanez a díjszabás önálló kiszolgálóként replikák díjszabása.
+Replikák olyan új, normál önálló Azure Database for PostgreSQL-kiszolgálók hasonló módon kezelhetők. Minden egyes olvasható replika számlázzuk ki a virtuális magok kiépített számítási és a felhasznált tárterület GB/hó.
 
 ## <a name="when-to-use-read-replicas"></a>Mikor érdemes használni az olvasási replikák
 Az olvasási replika funkció célja javítsák a teljesítményét és skálázhatóságát olvasásigényű munkaterhelésekhez. Például az olvasási számítási feladatok lehet a replikákra, elkülönített közben a master írási számítási feladatok lehet irányítani.
@@ -117,7 +117,7 @@ Replika létrehozása után, a tarifacsomag (kivéve a, illetve onnan alapszint�
 > [!IMPORTANT]
 > Egy master kiszolgálókonfiguráció frissül az új értékekre, mielőtt a replikák konfigurációs egyenlő vagy nagyobb értékre kell frissíteni. Ez biztosítja, hogy a replikák meg tudják tartani a fő végzett módosításokat.
 
-Különösen a Postgres max_connections nagyobbnak kell lennie, mint a replika érték ellenkező esetben a replika nem fog elindulni a fölérendelt kiszolgáló értéke szükséges. Az Azure Database for postgresql-hez max_connections értéke a kiválasztott sku függvényében. További információkért olvassa el [a korlátok doc](concepts-limits.md). 
+Különösen Postgres igényel a replika kiszolgáló értéke az a paraméter max_connections kell nagyobb vagy egyenlő a fő értékkel, ellenkező esetben a replika nem indul el. Az Azure Database for postgresql-hez max_connections értéke a kiválasztott sku függvényében. További információkért olvassa el [a korlátok doc](concepts-limits.md). 
 
 Hiba történt kísérlet, amely megsérti a frissítés végrehajtásához vezet.
 

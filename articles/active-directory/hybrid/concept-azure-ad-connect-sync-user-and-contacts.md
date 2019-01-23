@@ -4,7 +4,7 @@ description: Ismerteti a felhasználók, csoportok és névjegyeit, állítsa be
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 8d204647-213a-4519-bd62-49563c421602
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 46d0ce28d6381662847917ce83c77780f1bd9e4c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c59065b21935336a77e3fb88c30f12cded341808
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315237"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473928"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Az Azure AD Connect szinkronizálása: Understanding felhasználók, csoportok és partnerek
 Miért kell több Active Directory-erdők és számos különböző központi telepítési topológiák több különböző oka is van. Közös modellek között egy fiók-erőforrások üzembe helyezésének és GAL sync'ed erdők egy egyesülés & megszerzése után. De még akkor is, ha vannak tiszta modelleket, a hibrid modellek is. Az alapértelmezett konfiguráció az Azure AD Connect szinkronizálása nem feltételezi azt minden adott modell, de attól függően, hogyan egyező felhasználó kiválasztott a telepítési útmutatóban, másként figyelhető meg.
@@ -73,6 +73,6 @@ Feltételezzük, hogy ha egy letiltott felhasználó fiókot talál, akkor lesz 
 Ha egy objektum lett exportálva az Azure AD, majd a sourceAnchor többé módosítása nem engedélyezett. Ha az objektum lett exportálva a metaverzum-attribútum **cloudSourceAnchor** van beállítva a **sourceAnchor** Azure AD által elfogadott érték. Ha **sourceAnchor** módosul, és nem egyezik **cloudSourceAnchor**, a szabály **ki az aad-be – a felhasználó csatlakozzon** kivételt fogja kijelezni a hiba **sourceAnchor attribútum módosított**. Ebben az esetben a konfigurációs vagy az adatok ki kell javítani, így az azonos sourceAnchor megtalálható a metaverzumban újra előtt az objektum újra szinkronizálni kell.
 
 ## <a name="additional-resources"></a>További források
-* [Az Azure AD Connect-szinkronizálás: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 

@@ -4,7 +4,7 @@ description: Szembesülnek, ha nem lát megjelenjenek az Azure AD katalógusáb�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 3874e6ff6586726577a2c89e3cf45bbd3343b821
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fd5d833656d4ba395857c84ee8386bc7fb6d704e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040686"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465397"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Nincsenek felhasználók sem lett létrehozva, egy Azure AD katalógusából származó alkalmazásba
 Miután az Automatikus kiépítés konfigurálva lett az alkalmazás (beleértve az ellenőrzése, hogy a alkalmazás Azure ad-hez való csatlakozáshoz az alkalmazás megadott hitelesítő adatok érvényesek), majd felhasználók és csoportok lesznek kiépítve, az alkalmazást. Kiépítés határozza meg az alábbiakat:
@@ -56,8 +56,8 @@ Amikor megjelenik a felhasználó-e, a "kihagyva" a naplók, fontos a kiterjeszt
 - **Egy hatókörszűrőt konfigurálták** **, amely a kiszűri a felhasználó egy attribútumérték alapján**. A szűrők felmerülő további információkért lásd: [hatókörének beállítása szűrőket](define-conditional-rules-for-provisioning-user-accounts.md).
 - **A felhasználó nem "nem hatékony jogosult".** Ha az adott hibaüzenet jelenik meg, mivel probléma adódott az Azure AD-ben tárolt felhasználó-hozzárendelés bejegyzést. A probléma megoldásához, hozzárendelésének megszüntetése a felhasználó (vagy csoport) az alkalmazásból, és kiossza újra. A hozzárendelés további információkért lásd: [felhasználó vagy csoport hozzáférés hozzárendelése](assign-user-or-group-access-portal.md).
 - **Egy kötelező attribútum hiányzik vagy nem ki van töltve, egy felhasználó.** Egy lényeges tudnivaló, hogy beállítása a kiépítés során vegye figyelembe, hogy tekintse át, és az attribútumleképezések és a munkafolyamatok, amelyek meghatározzák, mely felhasználó (vagy csoport) tulajdonságai a folyamat az Azure ad-ből az alkalmazás konfigurálása. A jelen konfiguráció tartalmazza a beállítás a "egyező tulajdonság", amely egyedileg azonosít, és a megfelelő felhasználók vagy csoportok a két rendszer közötti szolgál. Ez fontos folyamattal kapcsolatban további információkért lásd: [testreszabása felhasználói kiépítés attribútum-leképezéshez az SaaS-alkalmazásokhoz az Azure Active Directoryban](customize-application-attributes.md).
-- **Attribútum-leképezések csoportok:** telepítése a csoport nevének és a csoport részletei mellett a tagokat, ha egyes alkalmazások esetében támogatott. Engedélyezheti vagy letilthatja ezt a funkciót engedélyezésével vagy letiltásával a **leképezési** csoport objektumainak látható a **kiépítési** fülre. Csoportok kiépítése engedélyezve van, ha mindenképpen tekintse át a annak érdekében, hogy a megfelelő mezőben használatos a "egyező ID" attribútum-leképezéshez. A megfelelő azonosító a megjelenítési név vagy e-mail-alias lehet. A csoportot és annak tagjait kiépítése nem történt-e a megfelelő tulajdonság üres vagy nem feltöltött csoport az Azure ad-ben.
+- **Attribútum-leképezéshez csoportok:** Ha támogatja az egyes alkalmazások kiépítése a csoport nevét és a csoport részletei mellett a tagok. Engedélyezheti vagy letilthatja ezt a funkciót engedélyezésével vagy letiltásával a **leképezési** csoport objektumainak látható a **kiépítési** fülre. Csoportok kiépítése engedélyezve van, ha mindenképpen tekintse át a annak érdekében, hogy a megfelelő mezőben használatos a "egyező ID" attribútum-leképezéshez. A megfelelő azonosító a megjelenítési név vagy e-mail-alias lehet. A csoportot és annak tagjait kiépítése nem történt-e a megfelelő tulajdonság üres vagy nem feltöltött csoport az Azure ad-ben.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure AD Connect szinkronizálása: a deklaratív kiépítés ismertetése](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)
+[Az Azure AD Connect szinkronizálása: Deklaratív kiépítés ismertetése](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)

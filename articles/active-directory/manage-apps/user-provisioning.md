@@ -4,7 +4,7 @@ description: Hogyan használhatja az Azure AD automatikus kiépítésére, bemut
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: ac58c6b951a03b403375fdc17dcd45f8e624deac
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: edd8e08ee20e7e6331701b55b3d58ebad3848408
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311453"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478484"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Kiépítés és megszüntetés SaaS-alkalmazásokhoz az Azure Active Directory felhasználói automatizálása
 
@@ -57,13 +57,13 @@ Néhány gyakori motivációit ezzel a funkcióval a következők:
 A **Azure AD-kiépítési szolgáltatás** kiosztja az SaaS-alkalmazások és más rendszerekhez, hogy a felhasználók által az egyes alkalmazás gyártója által biztosított felhasználói felügyeleti API-végpontokhoz való csatlakozáshoz. A felhasználói felügyeleti API-végpontokon lehetővé teszik, hogy programozott módon létrehozása, frissítése és eltávolítása a felhasználók Azure AD. A kiválasztott alkalmazások az eszközkiépítési szolgáltatás is létrehozhat frissítése és eltávolítása a további identitáshoz kapcsolódó objektumok, például csoportokat és szerepköröket. 
 
 ![Kiépítés](./media/user-provisioning/provisioning0.PNG)
-*1. ábra: az Azure AD létesítési szolgáltatás*
+*1. ábra: Az Azure AD-kiépítési szolgáltatás*
 
-![Kimenő kiépítési](./media/user-provisioning/provisioning1.PNG)
+![Kimenő kiépítés](./media/user-provisioning/provisioning1.PNG)
 *2. ábra: "Kimenő" felhasználót érintő kiépítési munkafolyamat az Azure ad-ből a népszerű SaaS-alkalmazásokban*
 
 ![Inbound Provisioning](./media/user-provisioning/provisioning2.PNG)
-*3. ábra: "Inbound" felhasználókiépítés munkafolyamatot a népszerű emberi tőke Management (HCM) alkalmazások Azure Active Directory és a Windows Server Active Directory*
+*3. ábra: "Inbound" felhasználói üzembe helyezési munkafolyamatot a népszerű emberi tőke Management (HCM) alkalmazások Azure Active Directory és a Windows Server Active Directory*
 
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Mely alkalmazások és rendszerek is használhatják az Azure AD-felhasználók automatikus átadása?
@@ -103,7 +103,7 @@ Az alkalmazás felügyeleti szolgáltatásban képernyőjéről, a kiépítés k
 
 * **Rendszergazdai hitelesítő adataival** kell adni az Azure ad létesítési szolgáltatás, amely lehetővé teszi, hogy a felhasználókezelési az alkalmazás által biztosított API-hoz csatlakozhat. Ez a szakasz emellett lehetővé teszi e-mail-értesítések engedélyezése, ha sikertelen a hitelesítő adatokat, vagy az üzembe helyezési feladat hiányzóra [karantén](#quarantine).
 
-* **Attribútum-leképezések** konfigurálhatók, amelyek meghatározzák a forrásrendszerben mezők (Példa: Azure ad-ben) lesz azok tartalmát szinkronizálta a mezők a célrendszeren (Példa: ServiceNow). Ha a cél alkalmazás ezt támogatja, ez a szakasz lehetővé teszi, hogy igény szerint állítsa be a felhasználói fiókok mellett csoportok kiépítésének. "Megfelelő tulajdonság" Válassza ki, melyik mezők használt fiókokat a rendszer közötti megfelelő teszi lehetővé. "[Kifejezések](functions-for-customizing-application-data.md)" segítségével módosíthatja, és átalakítása előtt a célrendszer írás a forrásrendszerben lekért értékek. További információkért lásd: [attribútumleképezések testreszabása](customize-application-attributes.md).
+* **Attribútum-leképezések** konfigurálhatók, amelyek meghatározzák a forrásrendszerben mezők (Példa: Az Azure AD) fog rendelkezni a mezőket a célrendszeren szinkronizálja azok tartalmát (Példa: A ServiceNow). Ha a cél alkalmazás ezt támogatja, ez a szakasz lehetővé teszi, hogy igény szerint állítsa be a felhasználói fiókok mellett csoportok kiépítésének. "Megfelelő tulajdonság" Válassza ki, melyik mezők használt fiókokat a rendszer közötti megfelelő teszi lehetővé. "[Kifejezések](functions-for-customizing-application-data.md)" segítségével módosíthatja, és átalakítása előtt a célrendszer írás a forrásrendszerben lekért értékek. További információkért lásd: [attribútumleképezések testreszabása](customize-application-attributes.md).
 
 ![Beállítások](./media/user-provisioning/provisioning_settings1.PNG)
 
@@ -133,7 +133,7 @@ A kiépítési szolgáltatás elindult, az első szinkronizálás, minden eddigi
 
 1. Minden felhasználó és csoport a forrásrendszerből beolvasása a meghatározott attribútumok lekérdezése a [attribútum-leképezések](customize-application-attributes.md).
 2. Szűrheti a felhasználókat és csoportokat ad vissza, bármely konfigurált [hozzárendelések](assign-user-or-group-access-portal.md) vagy [Attribútumalapú hatókörének beállítása szűrőket](define-conditional-rules-for-provisioning-user-accounts.md).
-3. Amikor egy felhasználó található hozzá kell rendelni vagy a kiépítés hatókörébe, a szolgáltatás lekérdezi a célrendszeren egy egyező felhasználó használja a kijelölt [megfelelő attribútumok](customize-application-attributes.md#understanding-attribute-mapping-properties). Példa: Ha egyező attribútum a forrásrendszerben userPrincipal nevét, és leképezi a felhasználónevet a célrendszeren, majd a kiépítési szolgáltatás lekérdezi a célrendszer a felhasználónevek, amelyek megfelelnek a userPrincipal értékeket a forrásrendszerben.
+3. Amikor egy felhasználó található hozzá kell rendelni vagy a kiépítés hatókörébe, a szolgáltatás lekérdezi a célrendszeren egy egyező felhasználó használja a kijelölt [megfelelő attribútumok](customize-application-attributes.md#understanding-attribute-mapping-properties). Példa: Ha egyező attribútum a forrásrendszerben userPrincipal nevét, és leképezi a felhasználónevet a célrendszeren, majd a kiépítési szolgáltatás lekérdezi a felhasználónevek, amelyek megfelelnek a userPrincipal értékeket a forrásrendszerben a célrendszeren.
 4. Ha egyező felhasználó nem található a célrendszeren, létrejön a a forrásrendszerben által visszaadott attribútumokat használ. A felhasználói fiók létrehozása után a kiépítési szolgáltatás észleli, és az új felhasználóval kapcsolatban, hogy a felhasználó az összes jövőbeli műveletek végrehajtásához használt azonosítója a célrendszer gyorsítótárazza.
 5. Ha egyező felhasználó található, frissül a forrásrendszerben által biztosított attribútumok használatával. Miután a fiókjuk egyezik, a kiépítési szolgáltatás észleli, és gyorsítótárazza az új felhasználót, hogy a felhasználó az összes jövőbeli műveletek végrehajtásához használja a célrendszer azonosítója.
 6. Ha az attribútumleképezések nem tartalmaz "hivatkozás" attribútumok, a szolgáltatás további frissítések a célrendszeren létrehozásához és csatolásához a hivatkozott objektumokat hajtja végre. Például egy felhasználó jogosult a "Manager" attribútum a célrendszeren, amely csatolva van a célrendszeren létrehozott egy másik felhasználó.
@@ -197,14 +197,14 @@ A következő táblázat összefoglalja a szinkronizálás időpontjait általá
 
 | Hatókör-konfiguráció | Felhasználók, csoportok és tagok hatókörében | Kezdeti szinkronizálás ideje | Növekményes szinkronizálás ideje |
 | -------- | -------- | -------- | -------- |
-| Hozzárendelt felhasználók és csoportok csak szinkronizálás |  < 1000 |  < 30 perc | < 30 perc |
-| Hozzárendelt felhasználók és csoportok csak szinkronizálás |  1000–10 000 | 142 - 708 perc | < 30 perc |
-| Hozzárendelt felhasználók és csoportok csak szinkronizálás |   10 000 - 100 000 | 1,170 - 2,340 perc | < 30 perc |
-| Minden felhasználó és csoport szinkronizálása az Azure ad-ben |  < 1000 | < 30 perc  | < 30 perc |
-| Minden felhasználó és csoport szinkronizálása az Azure ad-ben |  1000–10 000 | < 30 – 120 perc | < 30 perc |
-| Minden felhasználó és csoport szinkronizálása az Azure ad-ben |  10 000 - 100 000  | 713 - 1,425 perc | < 30 perc |
-| Összes felhasználók szinkronizálása az Azure ad-ben|  < 1000  | < 30 perc | < 30 perc |
-| Összes felhasználók szinkronizálása az Azure ad-ben | 1000–10 000  | 43 - 86 perc | < 30 perc |
+| Hozzárendelt felhasználók és csoportok csak szinkronizálás |  < 1,000 |  < 30 minutes | < 30 minutes |
+| Hozzárendelt felhasználók és csoportok csak szinkronizálás |  1000–10 000 | 142 - 708 perc | < 30 minutes |
+| Hozzárendelt felhasználók és csoportok csak szinkronizálás |   10,000 - 100,000 | 1,170 - 2,340 perc | < 30 minutes |
+| Minden felhasználó és csoport szinkronizálása az Azure ad-ben |  < 1,000 | < 30 minutes  | < 30 minutes |
+| Minden felhasználó és csoport szinkronizálása az Azure ad-ben |  1000–10 000 | < 30 – 120 perc | < 30 minutes |
+| Minden felhasználó és csoport szinkronizálása az Azure ad-ben |  10,000 - 100,000  | 713 - 1,425 perc | < 30 minutes |
+| Összes felhasználók szinkronizálása az Azure ad-ben|  < 1,000  | < 30 minutes | < 30 minutes |
+| Összes felhasználók szinkronizálása az Azure ad-ben | 1000–10 000  | 43 - 86 perc | < 30 minutes |
 
 
 A konfiguráció **szinkronizálási rendelt felhasználók és csoportok csak**, a következő képletek segítségével meghatározhatja a hozzávetőleges minimális és maximális várt **a kezdeti szinkronizálás** időpontok:

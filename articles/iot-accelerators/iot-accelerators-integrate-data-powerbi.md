@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: ae039573cf202059114f23cca86207c117a35ead
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9daf0f0d1c7ca94308bfb0d894366b457a045770
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970401"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470647"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>A Power BI segítségével történő távoli megfigyelési adatok megjelenítése
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag végigvezeti a távoli figyelési megoldás adatok a Power BI
 
 ## <a name="information-needed-from-azure-portal"></a>Az Azure Portalról szükséges információk
 
-1. Navigáljon a [az Azure Portal](https://portal.azure.com) és szükség esetén jelentkezzen be
+1. Navigáljon a [az Azure Portal](https://portal.azure.com) , és jelentkezzen be szükség esetén
 
 2. A bal oldali panelen kattintson az erőforráscsoportok
 
@@ -40,7 +40,7 @@ Ez az oktatóanyag végigvezeti a távoli figyelési megoldás adatok a Power BI
 
     ![Erőforráscsoport](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
 
-5. A bal oldali panelen kattintson a "Kulcsok" szakaszban, és jegyezze fel a következő értékeket a Power bi használhatók:
+5. A bal oldali panelen kattintson a "Kulcsok" szakaszt, és jegyezze fel a következő értékeket a Power bi-ban használható:
 
     - URI
     - Elsődleges kulcs
@@ -49,7 +49,7 @@ Ez az oktatóanyag végigvezeti a távoli figyelési megoldás adatok a Power BI
 
 ## <a name="setting-up-the-stream-in-power-bi"></a>A Power bi-ban a Stream beállítása
   
-1. Nyissa meg a Power bi-ban az asztali alkalmazások és az "Adatok lekérése" kattintson a bal felső sarokban. 
+1. Nyissa meg a Power BI asztali alkalmazás, és kattintson az "Adatok lekérése" a bal felső sarokban. 
 
     ![Adatok lekérése](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
 
@@ -84,11 +84,11 @@ Ez az oktatóanyag végigvezeti a távoli figyelési megoldás adatok a Power BI
 
 ## <a name="creating-a-dashboard"></a>Irányítópult létrehozása
 
-A stream a csatlakozás után készen áll a személyre szabott irányítópultokat hozhat létre! Az irányítópult az alábbi véve a telemetriát a szimulált eszközök által immmited folyamatban, és különböző megjelenítő szűkítése körül, mint például egy példát: 
+A stream a csatlakozás után készen áll a személyre szabott irányítópultokat hozhat létre! Az irányítópult az alábbi egy példa a telemetriát a szimulált eszközök, és különböző szűkítése ábrázoló körülötte például alatt kibocsátott állapotba: 
 
 * Eszköz helyét egy térképen (jobb oldali)
 * Állapot és súlyosság eszközök. (bal felső sarokban)
-* Eszközök szabályokkal helyen, és nincsenek bármely riasztás kezdeti időszak után őket (bal alsó)
+* Eszközök szabályokkal helyen, és ha vannak olyan riasztások kezdeti időszak után őket (bal alsó)
 
 ![A Power bi-Vizualizáció](./media/iot-accelerators-integrate-data-powerbi/visual_data.png)
 

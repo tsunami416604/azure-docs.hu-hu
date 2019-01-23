@@ -5,7 +5,7 @@ services: active-directory
 keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 585a4968672c8bcab0efb988d556e447983dfc5a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 67f3299bcf5b852e05308a8e71004fcd613e83cf
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158703"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446270"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Mi az alapvető védelmet (előzetes verzió)?  
 
@@ -56,7 +56,7 @@ Ez a alapvető házirend nyújt a felhasználók kizárására. Előfordulhat, h
 
 ## <a name="enable-a-baseline-policy"></a>Egy alapkonfiguráció házirend engedélyezése 
 
-Alapkonfiguráció szabályzatok vannak előzetes verzióban érhető el, amíg nincs aktiválva alapértelmezés szerint vannak. A szabályzatot manuálisan engedélyezze, ha szeretné aktiválni kell. Ha explicit módon engedélyezi a referenciakonfiguráció-házirendeket az előnézeti szakaszban, azok aktív marad, ha ez a funkció eléri elérhetőség. A tervezett viselkedést módosítás okát miért, továbbá hogy aktiválják vagy inaktiválják, van egy harmadik lehetőség egy szabályzat állapotának beállításához: **szabályzat automatikus engedélyezés a jövőben**. Ez a beállítás kiválasztásával hagyja meg a házirend le van tiltva az előzetes verzióban, de van a Microsoft automatikusan engedélyezheti őket, amikor ez a funkció eléri elérhetőség. Ha nem kifejezetten engedélyezi a referenciakonfiguráció házirendek most, és ne jelölje be a **szabályzat automatikus engedélyezés a jövőben** lehetőségnél a házirendek letiltott állapotban maradnak amikor ez a funkció eléri elérhetőség.
+Alapkonfiguráció szabályzatok vannak előzetes verzióban érhető el, amíg nincs aktiválva alapértelmezés szerint vannak. A szabályzatot manuálisan engedélyezze, ha szeretné aktiválni kell. Ha explicit módon engedélyezi a referenciakonfiguráció-házirendeket az előnézeti szakaszban, azok aktív marad, ha ez a funkció eléri elérhetőség. A tervezett viselkedést módosítás okát miért, továbbá hogy aktiválják vagy inaktiválják, van egy harmadik lehetőséget egy szabályzat állapotának beállításához: **Szabályzat automatikus engedélyezés a jövőben**. Ez a beállítás kiválasztásával hagyja meg a házirend le van tiltva az előzetes verzióban, de van a Microsoft automatikusan engedélyezheti őket, amikor ez a funkció eléri elérhetőség. Ha nem kifejezetten engedélyezi a referenciakonfiguráció házirendek most, és ne jelölje be a **szabályzat automatikus engedélyezés a jövőben** lehetőségnél a házirendek letiltott állapotban maradnak amikor ez a funkció eléri elérhetőség.
 
 
 **Egy alapkonfiguráció-házirend engedélyezése:**  

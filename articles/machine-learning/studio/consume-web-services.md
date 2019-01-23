@@ -72,7 +72,7 @@ Az a [az Azure Machine Learning Web Services portál](https://services.azureml.n
 1. Kattintson a **WEBSZOLGÁLTATÁSOK** felső menüjében.
 2. Kattintson a webes szolgáltatás, amelynek meg szeretné lekérni a kulcsot.
 
-Kattintson a **használata webszolgáltatás** beolvasni az URI-k kérés-Reposonse és a kötegelt végrehajtási szolgáltatásként és a minta kódja C#, R és Python nyelven.
+Kattintson a **használata webszolgáltatás** beolvasni az URI-k kérés-válasz és a kötegelt végrehajtási szolgáltatásként és a minta kódja C#, R és Python nyelven.
 
 Kattintson a **Swagger API** Swagger lekérése-alapú dokumentáció esetében az API-k a megadott URI-k hívását.
 
@@ -167,7 +167,7 @@ namespace CallRequestResponseService
                 {
                     Console.WriteLine(string.Format("The request failed with status code: {0}", response.StatusCode));
 
-                    // Print the headers - they include the requert ID and the timestamp,
+                    // Print the headers - they include the request ID and the timestamp,
                     // which are useful for debugging the failure
                     Console.WriteLine(response.Headers.ToString());
 
@@ -228,7 +228,7 @@ try:
 except urllib2.HTTPError, error: 
     print("The request failed with status code: " + str(error.code))
 
-    # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+    # Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
     print(error.info())
     print(json.loads(error.read())) 
 ```
@@ -280,7 +280,7 @@ if (httpStatus >= 400)
 {
 print(paste("The request failed with status code:", httpStatus, sep=" "))
 
-# Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+# Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
 print(headers)
 }
 

@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Tervezési alapelvek |} A Microsoft Docs'
+title: 'Azure AD Connect: Tervezési alapelvek |} A Microsoft Docs'
 description: Ez a témakör részletesen bizonyos megvalósítási terv területek
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4114a6c0-f96a-493c-be74-1153666ce6c9
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.workload: Identity
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bf5384333504df023e98650934c77192f23f9f71
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 3d6141ac1fabe1a0391e6ad23276e5bc5ea1afb6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945994"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471778"
 ---
-# <a name="azure-ad-connect-design-concepts"></a>Az Azure AD Connect: Tervezési alapelvei
+# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Tervezési alapelvek
 A jelen dokumentum célja, hogy írja le, amely az Azure AD Connect megvalósítási tervezése során kell gondoltam területeket. Ez a dokumentum az egyes területeken egy részletes bemutatása, és ezek a fogalmak rövid leírását, valamint az egyéb dokumentumokat.
 
 ## <a name="sourceanchor"></a>sourceAnchor
@@ -44,7 +44,7 @@ Az attribútum értékét meg kell felelnie a következő:
 
 * Kevesebb mint 60 karakternél
   * Nincs folyamatban a – z, A-Z karakter, vagy 0 – 9 kódolása, és 3 karakternél fog számítani
-* Egy speciális karaktert tartalmaz: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > (-) '; : , [ ] " \@ _
+* Egy speciális karaktert tartalmaz: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " \@ _
 * Globálisan egyedinek kell lennie
 * Egy karakterlánc, egész szám vagy bináris kell lennie
 * Nem lehet alapján kell a felhasználónak a neve, mert ezek módosíthatja

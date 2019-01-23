@@ -3,7 +3,7 @@ title: Az Azure AD Connect teljesítményét befolyásoló tényezők
 description: Ez a dokumentum ismerteti a különféle tényezők befolyásolják a motor kiépítése az Azure AD Connect. Ezek a tényezők segít a szervezetek számára, hogy azok az Azure AD Connect telepítésének megtervezése, hogy megfelelnek-e a szinkronizálási követelményeknek.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
-ms.openlocfilehash: cdca1b31f9b6cf10113dc0dba70b8f8991bafa2b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 801082164a0110178034c5fbe050ebe8e02b2772
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093969"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474132"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Az Azure AD Connect teljesítményét befolyásoló tényezők
 
@@ -41,7 +41,7 @@ Az alábbi ábrán egy magas szintű architektúra, üzembe helyezésének motor
 
 ![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-A kiépítési motor minden egyes Active Directory-erdő és az Azure ad-hez csatlakozik. A folyamat minden egyes címtárból információ olvasása importálás nevezzük. Exportálás hivatkozik a könyvtárak frissítése az üzembe helyezési motortól. Szinkronizálási kiértékeli, hogy az objektumokat az üzembe helyezési motorjában átkerülnek a szabályokat. Részletesebben megismerni, olvassa el [Azure AD Connect szinkronizálása: az architektúra ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture).
+A kiépítési motor minden egyes Active Directory-erdő és az Azure ad-hez csatlakozik. A folyamat minden egyes címtárból információ olvasása importálás nevezzük. Exportálás hivatkozik a könyvtárak frissítése az üzembe helyezési motortól. Szinkronizálási kiértékeli, hogy az objektumokat az üzembe helyezési motorjában átkerülnek a szabályokat. Részletesebben megismerni, olvassa el [Azure AD Connect szinkronizálása: Az architektúra ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture).
 
 Az Azure AD Connect használja a következő átmeneti területekből, szabályok és folyamatok a szinkronizálás engedélyezése az Active Directoryból az Azure ad-hez:
 

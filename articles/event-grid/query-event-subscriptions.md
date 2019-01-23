@@ -1,29 +1,29 @@
 ---
-title: Lekérdezés Azure esemény rács előfizetések
-description: Ismerteti, hogyan lehet Azure esemény rács előfizetések elemet.
+title: Az Azure Event Grid-előfizetések lekérdezése
+description: Ismerteti, hogyan lehet az Azure Event Grid-előfizetések listázásához.
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/04/2018
-ms.author: tomfitz
-ms.openlocfilehash: 2b46cde4a352e647ee97669f116a6c1926879fa0
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.date: 01/04/2019
+ms.author: spelluru
+ms.openlocfilehash: ac43b85858451149ceabf87c77b42d40fbd4eac4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34302415"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470978"
 ---
-# <a name="query-event-grid-subscriptions"></a>Esemény rács előfizetések lekérdezése 
+# <a name="query-event-grid-subscriptions"></a>Event Grid-előfizetések lekérdezése 
 
-A cikkből megtudhatja, hogyan listázhat a rács esemény-előfizetések az Azure-előfizetéshez. A meglévő esemény rács előfizetések lekérdezésekor fontos ismerni a különböző előfizetések. Az előfizetés le szeretné kérdezni a típusától függően különböző paramétereket megadnia.
+Ez a cikk ismerteti, hogyan kell felsorolni az Event Grid-előfizetések az Azure-előfizetésében. A meglévő Event Grid-előfizetések lekérdezése, esetén fontos tudni, hogy a különböző típusú előfizetések. A lekérdezni kívánt előfizetés alapján különböző paraméterek adnia.
 
-## <a name="resource-groups-and-azure-subscriptions"></a>Erőforrás-csoportok és az Azure-előfizetések
+## <a name="resource-groups-and-azure-subscriptions"></a>Erőforráscsoport- és Azure-előfizetések
 
-Azure-előfizetések és -erőforráscsoportok nem Azure-erőforrások. Ezért esemény rács előfizetések erőforráscsoportokkal vagy Azure-előfizetések nem rendelkezik esemény rács előfizetések az Azure-erőforrások tulajdonságai azonosak. Esemény rács előfizetések erőforráscsoportokkal vagy az Azure-előfizetések globális minősülnek.
+Az Azure-előfizetések és -erőforráscsoportok nem Azure-erőforrások. Ezért event grid-előfizetések, erőforráscsoportok vagy Azure-előfizetés nem rendelkezik azonos tulajdonságokkal event grid-előfizetések az Azure-erőforrásokhoz. Event grid-előfizetések, erőforráscsoportok vagy Azure-előfizetések globális minősülnek.
 
-Ahhoz, hogy a rács esemény-előfizetések az Azure-előfizetés és az erőforráscsoportok, nem kell adja meg a paramétereket. Győződjön meg arról, hogy le szeretné kérdezni az Azure-előfizetés választott. Az alábbi példák nem jelenik meg esemény rács előfizetések egyéni témaköröket és az Azure-erőforrások.
+Event grid-előfizetések Azure-előfizetés és a hozzá tartozó erőforráscsoportok lekéréséhez, nem kell megadnia a paramétereket. Ellenőrizze, hogy kiválasztotta a lekérdezni kívánt Azure-előfizetést. Az alábbi példák az event grid-előfizetések egyéni témaköröket és az Azure-erőforrások nem kap.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -39,7 +39,7 @@ Set-AzureRmContext -Subscription "My Azure Subscription"
 Get-AzureRmEventGridSubscription
 ```
 
-Ahhoz, hogy az esemény rács előfizetések az Azure-előfizetéssel, adja meg a témakörtípus **Microsoft.Resources.Subscriptions**.
+Event grid-előfizetések Azure-előfizetés beszerzéséhez adja meg a témakörtípus **Microsoft.Resources.Subscriptions**.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -53,7 +53,7 @@ PowerShell esetén használja az alábbi parancsot:
 Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 ```
 
-Ahhoz, hogy az esemény rács előfizetések az Azure-előfizetés belül az összes erőforráscsoportra vonatkozóan, adja meg a témakörtípus **Microsoft.Resources.ResourceGroups**.
+Event grid-előfizetések az Azure-előfizetésen belüli összes erőforráscsoport lekéréséhez adja meg a témakörtípus **Microsoft.Resources.ResourceGroups**.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -67,7 +67,7 @@ PowerShell esetén használja az alábbi parancsot:
 Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 ```
 
-Ahhoz, hogy a megadott erőforráscsoport esemény rács előfizetések, adja meg paraméterként az erőforráscsoport nevét.
+Event grid-előfizetések a meghatározott erőforráscsoportban lekéréséhez adja meg az erőforráscsoport nevét paraméterként.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -81,11 +81,11 @@ PowerShell esetén használja az alábbi parancsot:
 Get-AzureRmEventGridSubscription -ResourceGroupName myResourceGroup
 ```
 
-## <a name="custom-topics-and-azure-resources"></a>Egyéni témakörök és az Azure-erőforrások
+## <a name="custom-topics-and-azure-resources"></a>Egyéni témaköröket és az Azure-erőforrások
 
-Esemény rács egyéni témakörök Azure-erőforrások. Esemény rács előfizetések egyéni témakörök és más erőforrások, például a Blob storage-fiók, ezért ugyanolyan módon lekérdezése. Ahhoz, hogy a rács előfizetések esemény egyéni témaköröket, azonosíthatja az erőforrás vagy azonosíthatja az erőforrás helye paramétereket kell megadnia. Nincs lehetőség körben lekérdezés esemény rács előfizetésekhez erőforrások az Azure-előfizetés között.
+Event grid-egyéni témakörök olyan Azure-erőforrások. Event grid-előfizetések egyéni témaköröket és más erőforrások, például Blob storage-fiók, ezért ugyanolyan módon lekérdezése. Event grid-előfizetések egyéni témakörök lekéréséhez, hogy az erőforrás azonosítása, vagy adja meg az erőforrás helyét paramétereket kell megadnia. Nincs lehetőség a széles körben lekérdezés event grid-előfizetések az erőforrások az Azure-előfizetése között.
 
-Ahhoz, hogy a rács előfizetések esemény egyéni témakörök és egyéb erőforrások helyen, adja meg a hely nevét.
+Az egyéni témaköröket és más erőforrások event grid-előfizetések lépjen be egy olyan helyre, adja meg a hely nevét.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -99,7 +99,7 @@ PowerShell esetén használja az alábbi parancsot:
 Get-AzureRmEventGridSubscription -Location westus2
 ```
 
-Ahhoz, hogy egyéni témakörök előfizetések helyét, adja meg a hely és a témakörtípus **Microsoft.EventGrid.Topics**.
+Egyéni témakörök, előfizetések beolvasása egy adott helyre vonatkozóan, adja meg a hely és a témakörtípus **Microsoft.EventGrid.Topics**.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -113,7 +113,7 @@ PowerShell esetén használja az alábbi parancsot:
 Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
 ```
 
-Ahhoz, hogy a storage-fiókokra előfizetések helyét, adja meg a hely és a témakörtípus **Microsoft.Storage.StorageAccounts**.
+Storage-fiókok, előfizetések beolvasása egy adott helyre vonatkozóan, adja meg a hely és a témakörtípus **Microsoft.Storage.StorageAccounts**.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -127,7 +127,7 @@ PowerShell esetén használja az alábbi parancsot:
 Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Storage.StorageAccounts" -Location westus2
 ```
 
-Ahhoz, hogy a rács előfizetések esemény egyéni témakör, adja meg az egyéni témakör nevét és az erőforráscsoport nevét.
+Event grid-előfizetések egy egyéni témakör lekéréséhez adja meg az egyéni témakör nevét és az erőforráscsoport nevét.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -141,7 +141,7 @@ PowerShell esetén használja az alábbi parancsot:
 Get-AzureRmEventGridSubscription -TopicName myCustomTopic -ResourceGroupName myResourceGroup
 ```
 
-Ahhoz, hogy a rács előfizetések esemény egy adott erőforráshoz, adja meg az erőforrás-azonosító.
+Event grid-előfizetések egy adott erőforráshoz lekéréséhez adja meg az erőforrás-azonosítója.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -159,6 +159,6 @@ Get-AzureRmEventGridSubscription -ResourceId $resourceid
 
 ## <a name="next-steps"></a>További lépések
 
-* Esemény kézbesítési és, az újrapróbálkozásokat információt [esemény rács üzenetkézbesítést, és próbálkozzon újra](delivery-and-retry.md).
-* Esemény rácshoz ismertetőért lásd: [esemény rács](overview.md).
-* Ha gyorsan esemény rács segítségével, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md).
+* Eseménykézbesítés és újrapróbálkozás [Event Grid az üzenetek kézbesítését, és ismételje meg](delivery-and-retry.md).
+* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
+* Tekintse meg a gyors kezdéshez Event Grid használatával [az Azure Event Griddel egyéni események létrehozása és útvonal](custom-event-quickstart.md).

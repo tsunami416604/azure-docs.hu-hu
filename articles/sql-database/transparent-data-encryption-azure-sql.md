@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: f484eaf127c1dda0e3389e237ace75f51401a806
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/22/2019
+ms.openlocfilehash: b0b4a89aaf9b00b30e6b4759c8aa168f06d0d008
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959871"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462470"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás az SQL Database és a Data warehouse-bA
 
@@ -61,6 +61,9 @@ Nem kell adatbázisok Azure-ban műveletek visszafejtéséhez. A transzparens ad
 - Adatbázis-másolat létrehozása
 - Az Azure SQL felügyelt példánya a biztonságimásolat-fájl visszaállítása
 
+> [!IMPORTANT]
+> Manuális csak MÁSOLATOT biztonsági másolat szolgáltatás által kezelt TDE titkosítja az adatbázis nem engedélyezett az Azure SQL felügyelt példánya, mivel a titkosításhoz használt tanúsítvány nem érhető el. Pont-az-időponthoz kötött visszaállítás szolgáltatás használatával az ilyen típusú adatbázis áthelyezése egy másik, a felügyelt példányhoz.
+
 Transzparens titkosítás által védett adatbázis exportálásakor az exportált tartalmat, az adatbázis nem titkosított. Az exportált tartalom nem titkosított BACPAC-fájl tárolja. Győződjön meg arról, megfelelően védeni a BACPAC-fájlok és a transzparens adattitkosítás engedélyezése után az új adatbázis importálása befejeződött.
 
 Például az a BACPAC-fájlba exportál egy helyszíni SQL Server-példány, ha az importált tartalom az új adatbázis nem automatikusan titkosítja. Hasonlóképpen ha a BACPAC-fájlba exportálja a helyszíni SQL Server-példány, az új adatbázis is nem automatikusan titkosítja.
@@ -92,10 +95,10 @@ Használja a következő parancsmagokat az Azure SQL Database és a Data warehou
 | [Set-AzureRmSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasetransparentdataencryption) |Engedélyezheti vagy letilthatja a-adatbázis transzparens adattitkosítás|
 | [Get-AzureRmSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption) |Lekéri egy adatbázis transzparens titkosítási állapotát |
 | [Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryptionactivity) |Egy adatbázis a titkosítási folyamat állapotát ellenőrzi |
-| [Adjon hozzá AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) |A Key Vault-kulcs ad hozzá egy SQL Server-példány |
+| [Add-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) |A Key Vault-kulcs ad hozzá egy SQL Server-példány |
 | [Get-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey) |A Key Vault-kulcsok lekérése az Azure SQL database-kiszolgáló  |
-| [Set-azurermsqlservertransparentdataencryptionprotector parancsmag](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) |A transzparens titkosítási védelmet egy SQL Server-példány beállítása |
-| [Get-azurermsqlservertransparentdataencryptionprotector parancsmag](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlservertransparentdataencryptionprotector) |Lekérdezi a transzparens titkosítási védelme |
+| [Set-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) |A transzparens titkosítási védelmet egy SQL Server-példány beállítása |
+| [Get-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlservertransparentdataencryptionprotector) |Lekérdezi a transzparens titkosítási védelme |
 | [Remove-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlserverkeyvaultkey) |A Key Vault-kulcs távolít el egy SQL Server-példány |
 |  | |
 
@@ -108,7 +111,7 @@ Csatlakozás az adatbázis, amely rendszergazdája vagy tagja bejelentkezés has
 
 | Parancs | Leírás |
 | --- | --- |
-| [Az ALTER DATABASE (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | BEÁLLÍTVA TITKOSÍTÁSI be-/ kikapcsolási titkosítja, és mindig visszafejti az adatbázis |
+| [ALTER DATABASE (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | BEÁLLÍTVA TITKOSÍTÁSI be-/ kikapcsolási titkosítja, és mindig visszafejti az adatbázis |
 | [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Titkosítási kulcsok egy adatbázis és a kapcsolódó adatbázis titkosítási állapotával kapcsolatos információkat ad vissza |
 | [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Információt ad vissza a titkosítási állapotát az egyes adatok adatraktár-csomópont és a társított adatbázis titkosítási kulcsai |
 |  | |

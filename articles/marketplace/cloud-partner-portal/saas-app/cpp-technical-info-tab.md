@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: da67213b708b3ff26fe1ddd926c5cb0bba33458d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7a49e69b2e27a38b1a89fedbd6bbd70066b37dc2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788550"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451221"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS-alkalmazás technikai információ lapon
 
@@ -53,8 +53,8 @@ A következő táblázat ismerteti a kötelező mezőket a Microsoft értékesí
 |    Előfizetés azonosítókat előzetes verzió               |    Minden Azure-előfizetési azonosítók tesztelésére előzetes verzióban érhető el az ajánlatot, előtt a nyilvánosan elérhető.               |
 |     Első lépések útmutató              |   Az ügyfelekkel, amelyekkel csatlakozhat a SaaS-alkalmazás megosztásához irányban. Alapszintű HTML-címkéket engedélyezettek, például: &lt;p&gt;, &lt;h1&gt;, &lt;li&gt;stb.                |
 |    Kezdőlap URL-címe  |   A webhely URL-cím lesz ügyfelei számára, hogy az Azure Portalról beszerzése után megjelenni irányítja. Az URL-cím is a végpontot, amely fog kapni a kapcsolat API-k a Microsoft kereskedelmi megkönnyítése érdekében.                |
-|  Kapcsolat Webhook    |  Az összes aszinkron esemény, amelyet a Microsoft küld Önnek a vásárló nevében (például: Azure-előfizetés felment érvénytelen), kérjük, adja meg a kapcsolat webhook. Ha még nem rendelkezik egy webhook rendszer helyben, a legegyszerűbb konfiguráció, hogy egy HTTP végpont logikai alkalmazást, amely minden, az csökkentheti a közzétett események figyelésére és majd őket megfelelően kezelni. További információkért lásd: <a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása</a>                |
-|  Az Azure AD-bérlő és alkalmazás-azonosító      |   Az Azure-portálon belül szükség van egy Active Directory-alkalmazást hoz létre, hogy mi is a kapcsolat ellenőrzése a kettő közötti szolgáltatások egy hitelesített kommunikáció mögött helyezkedik el. Az alábbi mezők AD-alkalmazás létrehozása, és illessze be a megfelelő bérlői azonosító és az alkalmazásazonosító megadása kötelező. Vegye figyelembe, hogy alkalmazásazonosító yoaur publisherID társítva. Ezért győződjön meg arról, hogy azonos App ID hasonlóan minden ajánlat.             |
+|  Connection Webhook    |  Az összes aszinkron esemény, amelyet a Microsoft küld Önnek a vásárló nevében (például: Azure-előfizetés felment érvénytelen), kérjük, adja meg a kapcsolat webhook. Ha még nem rendelkezik egy webhook rendszer helyben, a legegyszerűbb konfiguráció, hogy egy HTTP végpont logikai alkalmazást, amely minden, az csökkentheti a közzétett események figyelésére és majd őket megfelelően kezelni. További információkért lásd: <a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása</a>                |
+|  Az Azure AD-bérlő és alkalmazás-azonosító      |   Az Azure-portálon belül szükség van egy Active Directory-alkalmazást hoz létre, hogy mi is a kapcsolat ellenőrzése a kettő közötti szolgáltatások egy hitelesített kommunikáció mögött helyezkedik el. Az alábbi mezők AD-alkalmazás létrehozása, és illessze be a megfelelő bérlői azonosító és az alkalmazásazonosító megadása kötelező. Vegye figyelembe, hogy a publisherID társítva-e alkalmazás-azonosítóját. Ezért győződjön meg arról, hogy azonos App ID hasonlóan minden ajánlat.             |
 
 
 Végül ha **értékesítsen Rajuk keresztül a Microsoft**, van egy másik új ajánlat eseménykifejezést **csomagok**. 

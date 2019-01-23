@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
-ms.component: metrics
-ms.openlocfilehash: aacfc98a9132a59c90a8f67d5a3877b75fa59dfe
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.subservice: metrics
+ms.openlocfilehash: cb1d08bb7b4c64d8dbcf39a667cb037ff30c38e7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605585"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467895"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Egyéni metrikák az Azure monitorban
 
@@ -92,14 +92,14 @@ Például, ha 4 bejelentkezési tranzakciók során az alkalmazáshoz egy adott 
 |
 
 Ezután az Azure Monitor az eredményül kapott metrika kiadvány a következők lennének:
-* Min.: 4
-* Maximális száma: 16
+* Min: 4
+* Max: 16
 * Összeg: 40
 * Száma: 4
 
 Ha az alkalmazás nem tudja, előzetes összesítésre helyileg, és minden diszkrét minta vagy a gyűjtemény követően azonnal event gridre bocsáthatja ki kell, a nyers mértékértékek el tudná küldeni. Például minden alkalommal, amikor egy bejelentkezési tranzakciónak az alkalmazáshoz, a metrika csak egyetlen mérték az Azure Monitor tesz közzé. Így bejelentkezési tranzakció igénybe vett 12 ms, a metrika kiadvány a következő lesz:
-* Min.: 12
-* Maximális száma: 12
+* Min: 12
+* Max: 12
 * Összeg: 12
 * Száma: 1
 

@@ -2,10 +2,10 @@
 title: Az Azure AD Connect - frissítés az AD FS-farm SSL-tanúsítvány |} A Microsoft Docs
 description: Ez a dokumentum ismerteti a lépéseket egy AD FS-farm SSL-tanúsítvány frissítése az Azure AD Connect használatával.
 services: active-directory
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: 7c781f61-848a-48ad-9863-eb29da78f53c
-ms.service: active-directory
+ms.service: active-directory  
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.component: hybrid
 author: billmath
 ms.custom: seohack1
 ms.author: billmath
-ms.openlocfilehash: 8320eae9e1c12123a4379887124dee810998c4e3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cd9d20065c0be580c415100fae470b362b19a3de
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314502"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474600"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Az Active Directory összevonási szolgáltatások (AD FS) farm SSL-tanúsítvány frissítése
 
@@ -38,7 +38,7 @@ A teljes művelet frissítési SSL-tanúsítványt az AD FS-farm minden összevo
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **AD FS-Farm**: Győződjön meg arról, hogy az AD FS farm Windows Server 2012 R2-alapú vagy újabb.
-* **Az Azure AD Connect**: Gondoskodjon arról, hogy az Azure AD Connect verziója 1.1.553.0 vagy újabb verziója. A feladat használni kívánt **frissítés AD FS SSL-tanúsítvány**.
+* **Azure AD Connect**: Győződjön meg arról, hogy az Azure AD Connect verziója 1.1.553.0 vagy újabb verziója. A feladat használni kívánt **frissítés AD FS SSL-tanúsítvány**.
 
 ![SSL-feladat frissítése](./media/how-to-connect-fed-ssl-update/updatessltask.png)
 
@@ -59,7 +59,7 @@ Ha a lista tartalmazza a kiszolgáló, amely már nem az AD FS-farm része, katt
 >[!NOTE]
 > Kiszolgáló eltávolítása a listából egy AD FS-farm, az Azure AD Connect-kiszolgálók helyi művelet, és frissíti az AD FS-farm, amely az Azure AD Connect helyben tárolja az adatait. Az Azure AD Connect nem módosítja a konfigurációt, az AD FS-ben a változás tükrözése érdekében.    
 
-## <a name="step-2-provide-a-new-ssl-certificate"></a>2. lépés: Adjon meg egy új SSL-tanúsítvány
+## <a name="step-2-provide-a-new-ssl-certificate"></a>2. lépés: Adjon meg egy új SSL-tanúsítvány
 
 Miután jóváhagyta az információ a farm AD FS-kiszolgálók, az Azure AD Connect új SSL-tanúsítványt kér. Adja meg a jelszóval védett PFX-tanúsítvány a telepítés folytatásához.
 
@@ -72,7 +72,7 @@ Miután megadta a tanúsítványt, az Azure AD Connect végighalad egy sorozatá
 -   Érvénytelen a tanúsítvány megbízhatósági láncában.
 -   A tanúsítvány jelszóval védve.
 
-## <a name="step-3-select-servers-for-the-update"></a>3. lépés: Frissítés a kiszolgálók kiválasztása
+## <a name="step-3-select-servers-for-the-update"></a>3. lépés: A frissítés-kiszolgálók kiválasztása
 
 A következő lépésben válassza ki a kiszolgálókat, az SSL-tanúsítvány frissítése rendelkeznie kell. Az offline kiszolgálók nem választható ki a frissítést.
 

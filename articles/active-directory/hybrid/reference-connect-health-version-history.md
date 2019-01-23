@@ -4,7 +4,7 @@ description: Ez a dokumentum ismerteti a kiadások, az Azure AD Connect Health �
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
 ms.service: active-directory
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 08d1589b8b215471983dc76a836dd89f83fd8204
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 25024e5753720ab6e1efcab290d453f944442a4e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053398"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477099"
 ---
-# <a name="azure-ad-connect-health-version-release-history"></a>Az Azure AD Connect Health: Verziókiadások előzményei
+# <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verziókiadások előzményei
 Az Azure Active Directory-csapat rendszeresen frissíti az Azure AD Connect Health új szolgáltatásait és funkcióit. Ez a cikk felsorolja és kiadott funkciókról.
 Az Azure AD Connect Health szinkronizálási szolgáltatás integrálva van az Azure AD Connect-telepítésre. Tudjon meg többet [az Azure AD Connect verziókiadások előzményei](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) szavazhat a visszajelzés funkciót, [Connect Health User Voice-csatorna](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
-## <a name="november-2018"></a>A 2018. november
+## <a name="november-2018"></a>November 2018
 **Általánosan elérhető új funkciók:** 
 * Az Azure AD Connect Health for Sync - diagnosztizálásához és elhárításához a duplikált attribútummal szinkronizálási hibák a portálról
 

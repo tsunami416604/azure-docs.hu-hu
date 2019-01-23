@@ -15,12 +15,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: rogarana
-ms.openlocfilehash: 62ac70134c1bdf9d178d59723ff73561049a4bbf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: disks
+ms.openlocfilehash: ee3f24b7e7a0e4242337aabedc87515b7fabbb9a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993074"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467949"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linux rendszerű virtuális gép átalakítása nem felügyeltről felügyelt a managed Disks szolgáltatásba
 
@@ -37,7 +38,7 @@ Ez a cikk bemutatja, hogyan átalakítása a virtuális gépek az Azure parancss
 ## <a name="convert-single-instance-vms"></a>Egypéldányos virtuális gépek konvertálása
 Ez a szakasz bemutatja, hogyan átalakítása nem felügyeltről felügyelt egypéldányos Azure virtuális gépek felügyelt lemezeket. (Ha a virtuális gépek rendelkezésre állási csoportban, lásd a következő szakaszban.) Ez a folyamat segítségével a virtuális gépek konvertálása a standard szintű felügyelt lemezek nem felügyelt prémium (SSD) nem felügyelt lemezek prémium szintű felügyelt lemezek, illetve a standard szintű (HDD) lemezek.
 
-1. Szabadítsa fel a virtuális gép használatával [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Az alábbi példa felszabadítja a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
+1. Szabadítsa fel a virtuális gép használatával [az vm deallocate](/cli/azure/vm). Az alábbi példa felszabadítja a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -71,7 +72,7 @@ A rendelkezésre állási csoportban lévő összes virtuális gép konvertálá
         --output table
     ```
 
-2. Az összes virtuális gép felszabadítása [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Az alábbi példa felszabadítja a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
+2. Az összes virtuális gép felszabadítása [az vm deallocate](/cli/azure/vm). Az alábbi példa felszabadítja a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 9c2ebcfc376456f63896ebae8331136aff0cdb99
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 36d6733ddc73ace2026ea838cf8f701db95469e6
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119441"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448466"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Például: 3 – semleges egy tűzfal, az udr-t és az NSG-t a hálózatok védelme
 [Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]
@@ -110,13 +110,13 @@ Ebben a példában a következő parancsokat használja az útválasztási tábl
 
 1. Először az útválasztási alaptábla kell létrehozni. Ez a kódrészlet bemutatja a tábla a háttérrendszer alhálózatának. A parancsfájl egy kapcsolódó tábla is létrejön az előtér-alhálózatot.
    
-     Új AzureRouteTable-$BERouteTableName nevezze el "
+     New-AzureRouteTable -Name $BERouteTableName `
    
          -Location $DeploymentLocation `
          -Label "Route table for $BESubnet subnet"
 2. Az útvonaltábla létrehozása után a megadott felhasználó által megadott útvonalakat is hozzáadhatók. A jelen snipped a virtuális berendezés (egy változót, a [0], $VMIP használt adja át a virtuális készülék a parancsfájl a korábbi létrehozásakor rendelt IP-cím) keresztül minden forgalmat (0.0.0.0/0) lesznek irányítva. A parancsfájl egy megfelelő szabályt is létrejön az előtér-táblázatban.
    
-     Get-AzureRouteTable $BERouteTableName |} `
+     Get-AzureRouteTable $BERouteTableName | `
    
          Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
          -NextHopType VirtualAppliance `
@@ -134,7 +134,7 @@ Ebben a példában a következő parancsokat használja az útválasztási tábl
             -NextHopType VNETLocal
 5. Végül az útválasztási tábla létrehozott és feltöltött egy felhasználó által megadott útvonalakat az a tábla most kell kötni egy alhálózathoz. A parancsfájl az előtér-útválasztási tábla is van kötve az előtér-alhálózatot. Íme a kötés parancsfájlt a háttér-alhálózat.
    
-     Set-AzureSubnetRouteTable - VirtualNetworkName $VNetName "
+     Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
    
         -SubnetName $BESubnet `
         -RouteTableName $BERouteTableName
@@ -153,7 +153,7 @@ Az IP-továbbítás beállításához egyetlen paranccsal és virtuális gépek 
 
 1. A Virtuálisgép-példány, amely a virtuális berendezéshez, a tűzfal ebben az esetben nevezik, és az IP-továbbítás engedélyezése (Megjegyzés; piros kiadásától kezdve egy dollárjelet tetszőleges elemre (pl.: $VMName[0]) a referencia szakasz ebben a dokumentumban szereplő parancsfájl egy felhasználó által definiált változó. Zárójelek között, a [0], a nulla képviseli az első virtuális gép, virtuális gépek, a módosítás nélkül használható példa parancsfájl a tömbben, az első virtuális gép (VM-0) kell lennie a tűzfalon):
    
-     Get-AzureVM-nevet a [0] $VMName - ServiceName $ServiceName [0] |} `
+     Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
    
         Set-AzureIPForwarding -Enable
 
@@ -206,7 +206,7 @@ Ebben a példában 7 típusú szabályok van szükségünk, ezek a szabályok t�
      * A második alkalmazás forgalmi szabály a háttérben szabály lehetővé teszi a webkiszolgáló kommunikáljon a AppVM01 kiszolgáló (de nem AppVM02) bármely porton keresztül.
 * Belső szabályokat (belüli virtuális hálózatok közötti forgalom)
   1. Kimenő Internet-szabályhoz: Ez a szabály lehetővé teszi a kiválasztott hálózatok átadása olyan hálózati forgalmát. Ez a szabály általában az alapértelmezett szabály már a tűzfalon, de letiltott állapotban. Ebben a példában ez a szabály engedélyezni kell.
-  2. DNS-szabály: Ez a szabály lehetővé teszi, hogy csak (53-as port) a DNS-forgalom számára a DNS-kiszolgáló. Ebben a környezetben, a háttérkiszolgáló a Frontend alhálózatból legtöbb forgalmat blokkol Ez a szabály kifejezetten engedélyezi az DNS bármely helyi alhálózatról.
+  2. DNS Rule: Ez a szabály lehetővé teszi, hogy csak (53-as port) a DNS-forgalom számára a DNS-kiszolgáló. Ebben a környezetben, a háttérkiszolgáló a Frontend alhálózatból legtöbb forgalmat blokkol Ez a szabály kifejezetten engedélyezi az DNS bármely helyi alhálózatról.
   3. Az alhálózat alhálózati szabály: Ez a szabály az összes olyan kiszolgálónak engedélyezi a háttérrendszer alhálózat bármely az előtér-alhálózat (de nem fordítva) a kiszolgálóhoz való csatlakozáshoz.
 * Hibamentes (forgalomra vonatkozó szabály, amely a fentiek valamelyike nem felel meg):
   1. Minden forgalmi szabály megtagadása: A végső szabályát (tekintetében prioritás) kell lennie, és mint ilyen, ha a forgalom nem sikerül megfelelően a fenti szabály, a rendszer eldobja a szabály által. Ez az alapértelmezett szabály, és általában aktiválva, nem módosított előfizetésekben általában szükség van.
@@ -263,7 +263,7 @@ A második előfeltételként szükséges objektumok olyan szolgáltatások obje
 
 Az értékeket szerkesztheti, amelyek az RDP-szolgáltatás egy adott kiszolgálóhoz. AppVM01 az alapértelmezett szabályok fenti RDP módosítani kell, hogy egy új szolgáltatás neve, leírása és a 8. ábra diagramon használt külső RDP-Port (Megjegyzés: a portok úgy módosul, a 3389-es RDP alapértelmezett ehhez a kiszolgálóhoz használt külső port AppVM01 esetén a külső portra 8025) a módosított szolgáltatást az alábbiakban látható:
 
-![AppVM01 szabály][6]
+![AppVM01 Rule][6]
 
 Ezt a folyamatot meg kell ismételni, a többi kiszolgálón; RDP-szolgáltatások létrehozásához AppVM02 DNS01 és IIS01. Ezek a szolgáltatások létrehozásának fogja elérhetővé tenni a szabály létrehozása egyszerűbb, és viszonylag kézenfekvő a következő szakaszban.
 
@@ -275,7 +275,7 @@ Ezt a folyamatot meg kell ismételni, a többi kiszolgálón; RDP-szolgáltatás
 ### <a name="firewall-rules-creation"></a>Tűzfal-szabályok létrehozása
 Ebben a példában használt tűzfalszabályok három típusa van, hogy, különböző ikonokkal rendelkeznek:
 
-Az alkalmazás átirányítási szabály: ![Alkalmazás átirányítási ikonja][7]
+Az alkalmazás átirányítási szabály: ![Application Redirect Icon][7]
 
 A cél NAT-szabály: ![Cél NAT ikon][8]
 
@@ -312,10 +312,10 @@ Ebben a példában végrehajtásához szükséges minden egyes szabály tulajdon
      
      | Szabály neve | Kiszolgáló | Szolgáltatás | Cél lista |
      | --- | --- | --- | --- |
-     | RDP-IIS01 |IIS01 |IIS01 RDP |10.0.1.4:3389 |
-     | RDP-DNS01 |DNS01 |DNS01 RDP |10.0.2.4:3389 |
-     | RDP-AppVM01 |AppVM01 |AppVM01 RDP |10.0.2.5:3389 |
-     | RDP-AppVM02 |AppVM02 |AppVm02 RDP |10.0.2.6:3389 |
+     | RDP-to-IIS01 |IIS01 |IIS01 RDP |10.0.1.4:3389 |
+     | RDP-to-DNS01 |DNS01 |DNS01 RDP |10.0.2.4:3389 |
+     | RDP-to-AppVM01 |AppVM01 |AppVM01 RDP |10.0.2.5:3389 |
+     | RDP-to-AppVM02 |AppVM02 |AppVm02 RDP |10.0.2.6:3389 |
 
 > [!TIP]
 > Szűkíteni a forrás- és szolgáltatás mezők körét csökkenti a támadási felületet. A legtöbb korlátozott hatókör, amely lehetővé teszi a funkció kell használni.
@@ -399,7 +399,7 @@ Ebben az esetben a következő tűzfalszabályokat helyén kell lennie:
 2. IIS01 RDP-vel
 3. DNS01 RDP-vel
 4. AppVM01 RDP-vel
-5. AppVM02 RDP-vel
+5. RDP to AppVM02
 6. A Web App-forgalom
 7. App-forgalom AppVM01
 8. Kimenő Internet
@@ -407,11 +407,11 @@ Ebben az esetben a következő tűzfalszabályokat helyén kell lennie:
 10. Belüli alhálózatok közötti forgalmat (csak előtér, háttér)
 11. Összes elutasítása
 
-A tényleges tűzfal szabálykészletben valószínűleg fog rendelkezni ezen kívül számos más szabály, a szabályok bármely adott tűzfalon is megkapják az itt felsorolt rétegében eltérő prioritás számok. A lista és a hozzájuk társított számokat is biztosít a relevancia alapján végzett e tizenegy szabályok és a relatív prioritást közülük között. Más szóval; a tényleges tűzfalon a az "RDP való IIS01" lehet, hogy a szabály szám 5, de mindaddig, amíg a "Tűzfal-kezelési" szabály alatt legyen, és az "RDP DNS01" szabály felett platformösszetevő ebben a listában lenne igazítása. A lista fogja is ezzel elősegítve az az alábbi forgatókönyvek áttekinthetőség; így például: "Keretrendszer szabály 9 (DNS)". Is kivonatosan RDP négyet együttesen hívása, "az RDP-szabályok" Ha a forgalmat a forgatókönyv nem kapcsolódik az RDP.
+A tényleges tűzfal szabálykészletben valószínűleg fog rendelkezni ezen kívül számos más szabály, a szabályok bármely adott tűzfalon is megkapják az itt felsorolt rétegében eltérő prioritás számok. A lista és a hozzájuk társított számokat is biztosít a relevancia alapján végzett e tizenegy szabályok és a relatív prioritást közülük között. Más szóval; a tényleges tűzfalon a az "RDP való IIS01" lehet, hogy a szabály szám 5, de mindaddig, amíg a "Tűzfal-kezelési" szabály alatt legyen, és az "RDP DNS01" szabály felett platformösszetevő ebben a listában lenne igazítása. A lista fogja is ezzel elősegítve az az alábbi forgatókönyvek áttekinthetőség; így például: “FW Rule 9 (DNS)”. Is kivonatosan RDP négyet együttesen hívása, "az RDP-szabályok" Ha a forgalmat a forgatókönyv nem kapcsolódik az RDP.
 
 Is az, hogy a hálózati biztonsági csoportok-e a helyi visszahívása az előtérbeli és háttérbeli alhálózatok bejövő internetes forgalom számára.
 
-#### <a name="allowed-internet-to-web-server"></a>(Engedélyezett) Internetes webkiszolgálóra
+#### <a name="allowed-internet-to-web-server"></a>(Allowed) Internet to Web Server
 1. Internetes felhasználói kérések HTTP lapot SecSvc001.CloudApp.Net (Internet Facing Felhőszolgáltatás)
 2. Cloud service pass forgalmat a 80-as porton a tűzfal megfelelő felületéről 10.0.0.4:80 nyitott végpontok
 3. Nincs biztonsági alhálózathoz rendelt hálózati biztonsági csoport, a rendszer tehát az NSG-szabályok tűzfal forgalom engedélyezésére
@@ -527,7 +527,7 @@ Is az, hogy a hálózati biztonsági csoportok-e a helyi visszahívása az előt
     2. Alapértelmezett NSG-szabályok az alhálózat alhálózati forgalom engedélyezéséhez forgalom engedélyezett, állítsa le az NSG-szabály feldolgozása
 11. AppVM02 a válasz fogadása
 
-#### <a name="denied-internet-direct-to-web-server"></a>(Tiltott) A webalkalmazás-kiszolgáló közvetlen Internet
+#### <a name="denied-internet-direct-to-web-server"></a>(Denied) Internet direct to Web Server
 1. Az Internet felhasználó megpróbál hozzáférni a webkiszolgáló IIS01, a FrontEnd001.CloudApp.Net szolgáltatáson keresztül
 2. Végpontleképzőben nincs nyissa meg a HTTP-forgalom, mivel ez lenne halad át a felhőalapú szolgáltatás, és a kiszolgáló nem érhető el.
 3. Ha valamilyen okból a végpontok nyitva, az NSG-t (Internet letiltása) az előtérbeli alhálózat le fog állni a forgalmat
@@ -546,13 +546,13 @@ Is az, hogy a hálózati biztonsági csoportok-e a helyi visszahívása az előt
 4. Ha a fenyegetésészlelés engedélyezése a tűzfalon (amely Ez a dokumentum nem terjed ki, a gyártó dokumentációjában az advanced threat képességek bizonyos hálózati berendezés), akkor is a forgalmat, melyeken engedélyezett az alapszintű továbbítási szabályok a jelen tárgyalt dokumentum sikerült előzhető meg, ha a forgalmat tartalmazta ismert aláírások vagy minták, hogy ez a jelző azt egy komplex veszélyforrások elleni szabályt.
 
 #### <a name="denied-internet-dns-lookup-on-dns-server"></a>(Tiltott) A DNS-kiszolgáló internetes DNS-címkeresés
-1. Az Internet felhasználó megpróbálja megkeresni egy belső DNS-rekordját DNS01 BackEnd001.CloudApp.Net szolgáltatáson keresztül 
+1. Internet user tries to lookup an internal DNS record on DNS01 through BackEnd001.CloudApp.Net service 
 2. Végpontleképzőben nincs megnyitva a DNS-forgalom, mivel ez lenne halad át a felhőalapú szolgáltatás, és a kiszolgáló nem érhető el.
 3. Ha valamilyen okból a végpontok volt megnyitva, a Hálózatibiztonságicsoport-szabály (blokk Internet) az előtérbeli alhálózat le fog állni a forgalmat
 4. Végül a háttérbeli alhálózat UDR útvonal szeretné elküldeni a minden kimenő forgalom DNS01 a következő ugrás a tűzfalat, és a tűzfal meg ezt az aszimmetrikus forgalom és a kimenő válasz nincsenek között legalább három független rétege Thus dobja el a az Internet és DNS01 jogosulatlan vagy illetéktelen hozzáférés megakadályozása a felhő-szolgáltatáson keresztül.
 
 #### <a name="denied-internet-to-sql-access-through-firewall"></a>(Tiltott) Az SQL-hozzáférés tűzfalon keresztüli Internet
-1. Internetes felhasználói SQL adatokat kér SecSvc001.CloudApp.Net (Internet Facing Felhőszolgáltatás)
+1. Internet user requests SQL data from SecSvc001.CloudApp.Net (Internet Facing Cloud Service)
 2. Végpontleképzőben nincs nyitott meg SQL esetén, mivel ez a Felhőszolgáltatás nem kellene átadnia, és a tűzfal nem érhető el.
 3. Ha valamilyen okból SQL végpontok volt megnyitva, a tűzfal szabály feldolgozása lenne kezdete:
    1. Keretrendszer 1. szabály (Keretrendszer Mgmt) nem vonatkoznak, helyezze át a következő szabály
@@ -777,7 +777,7 @@ Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számít
         $FatalError = $true}
     Else { Write-Host "The network config file was found" -ForegroundColor Green
             If (-Not (Select-String -Pattern $DeploymentLocation -Path $NetworkConfigFile)) {
-                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation varible is correct and the netowrk config file matches.' -ForegroundColor Yellow
+                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation variable is correct and the network config file matches.' -ForegroundColor Yellow
                 $FatalError = $true}
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
@@ -967,8 +967,8 @@ Ha szeretne egy mintaalkalmazás telepítése ezzel és más DMZ példák, egy, 
 [3]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectfrontend.png "Hozzon létre egy előtér-hálózati objektumot"
 [4]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectdns.png "Hozzon létre egy DNS-kiszolgáló objektumot"
 [5]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpa.png "RDP-szabályban alapértelmezett példánya"
-[6]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpb.png "AppVM01 szabály"
-[7]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconapplicationredirect.png "Alkalmazás átirányítási ikonja"
+[6]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpb.png "AppVM01 Rule"
+[7]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconapplicationredirect.png "Application Redirect Icon"
 [8]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/icondestinationnat.png "Cél NAT ikon"
 [9]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconpass.png "Pass ikon"
 [10]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulefirewall.png "Tűzfalszabályok kezelése"

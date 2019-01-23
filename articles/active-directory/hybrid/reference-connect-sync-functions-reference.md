@@ -4,7 +4,7 @@ description: Az Azure AD Connect szinkronizálási deklaratív kiépítés kifej
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: db427d0c171e164cb03d7280103fa85e5add4dd1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: cad9cec83ac5cc75ba5b4e5fc395e7f68f7d2770
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157479"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471177"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Az Azure AD Connect szinkronizálása: Functions – referencia
 Az Azure AD Connectben a funkciók a szinkronizálás során egy attribútumérték módosítására szolgálnak.  
@@ -64,7 +64,7 @@ A functions típusait **mvbin**, **mvstr**, és **mvref** többértékű attrib�
 | [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
 | [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#StringFromGuid) |[StringFromSid](#stringfromsid) | |
 | **Dátum és idő** | | | | |
-| [DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[formatDateTime](#formatdatetime) |[most](#now) | |
+| [DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[FormatDateTime](#formatdatetime) |[most](#now) | |
 | [NumFromDate](#numfromdate) | | | | |
 | **Könyvtár** | | | | |
 | [DNComponent](#dncomponent) |[DNComponentRev](#dncomponentrev) |[EscapeDNComponent](#escapedncomponent) | | |
@@ -81,9 +81,9 @@ A functions típusait **mvbin**, **mvstr**, és **mvref** többértékű attrib�
 | [Hiba történt](#error) |[IIF](#iif) |[Kiválasztás](#select) |[Switch](#switch) | |
 | [ahol](#where) |[a](#with) | | | |
 | **Szöveg** | | | | |
-| [GUID AZONOSÍTÓJA](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
+| [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Balra](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
-| [padLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[cserélje le](#replace) | |
+| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[cserélje le](#replace) | |
 | [ReplaceChars](#replacechars) |[Jobbra](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
 | [UCase](#ucase) |[A Word](#word) | | | |
 
@@ -394,7 +394,7 @@ A ConvertFromBase64 függvény a megadott base64-kódolású érték konvertál 
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Forrás: Base64-kódolású karakterlánc  
-* Kódolás: UTF8, Unicode és ASCII,
+* Kódolás: Unicode, ASCII, UTF8
 
 **Példa**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
@@ -431,7 +431,7 @@ Konvertálja az értéket egy egész számot tartalmazó tömb a megfelelő kara
 
 **Példa**  
 `ConvertToBase64("Hello world!")`  
-"SABlAGwAbABvACAAdwBvAHIAbABkACEA" adja vissza
+Returns "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
 - - -
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
@@ -485,11 +485,11 @@ A CStr függvény egy karakterlánc adattípus alakítja.
 `str CStr(ref value)`  
 `str CStr(bool value)`  
 
-* Érték: Egy számértéket, hivatkozási attribútum vagy logikai érték lehet.
+* value: Egy számértéket, hivatkozási attribútum vagy logikai érték lehet.
 
 **Példa**  
 `CStr([dn])`  
-Vissza "cn = János, dc = contoso, dc = com"
+Could return "cn=Joe,dc=contoso,dc=com"
 
 - - -
 ### <a name="dateadd"></a>DateAdd
@@ -510,7 +510,7 @@ Egy dátumot tartalmazó, amelyhez hozzá lett adva egy adott időtartam dátumo
   * h óra
   * n percben
   * s második
-* Érték: A hozzáadandó egységek száma. (Az első jövőbeli dátumokat) pozitív vagy negatív, (az elmúlt dátumok megszerezni) lehet.
+* value: A hozzáadandó egységek száma. (Az első jövőbeli dátumokat) pozitív vagy negatív, (az elmúlt dátumok megszerezni) lehet.
 * dátum: Dátum és idő jelölő dátum, amelyhez az időközt ad hozzá.
 
 **Példa**  
@@ -974,7 +974,7 @@ A NumFromDate függvény dátumot AD dátumformátum adja vissza.
 129699324000000000 beolvasása
 
 - - -
-### <a name="padleft"></a>padLeft
+### <a name="padleft"></a>PadLeft
 **Leírás:**  
 A PadLeft függvény bal-dolgozniuk egy karakterláncot egy megadott Kitöltő karakter használatával megadott hossza.
 
@@ -1086,7 +1086,7 @@ A függvény felismeri a következő különleges monikerek:
 
 * \n – új sor
 * \r – kocsivissza
-* \t – lap
+* \t – Tab
 
 **Példa**  
 `Replace([address],"\r\n",", ")`  
@@ -1223,7 +1223,7 @@ A kapcsoló függvény segítségével értékelt feltételek alapján egyetlen 
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
 * kifejezés: Variant kifejezés szeretne értékelni.
-* Érték: A visszaadandó megfelelő kifejezés igaz-e értéket.
+* value: A visszaadandó megfelelő kifejezés igaz-e értéket.
 
 **Megjegyzés:**  
 A kapcsoló függvény argumentumlista kifejezések és érték párokat tartalmaz. A kifejezések kiértékelése balról jobbra, és a társított az első kifejezés kiértékelése igaz értéket ad vissza. Ha nincsenek megfelelően párosítva a részeit, a futásidejű hiba történik.
@@ -1268,7 +1268,7 @@ A UCase függvény egy karakterlánc karaktereinek összes nagybetűs konvertál
 
 **Példa**  
 `UCase("TeSt")`  
-"TEST" adja vissza.
+Returns "TEST".
 
 - - -
 ### <a name="where"></a>Ahol

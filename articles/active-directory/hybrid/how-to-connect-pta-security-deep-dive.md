@@ -5,7 +5,7 @@ services: active-directory
 keywords: Az Azure AD Connect az átmenő hitelesítés, Active Directory telepítése szükséges összetevők SSO, Azure AD egyszeri bejelentkezés
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7f4750dd527aa53624fa977115a120911511b7d5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 45f99ac99c54caab17ba7b74dc09a46c335c8fe4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185069"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476342"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítés a biztonság részletes bemutatása
 
@@ -52,7 +52,7 @@ További működési, Azure AD szolgáltatás és adat biztonsági kapcsolatos �
 - **Az Azure AD STS**: Állapot nélküli biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS), amely feldolgozza a bejelentkezési kérelmek és a biztonsági jogkivonatokat bocsát felhasználói böngészők, ügyfelek vagy szolgáltatásokhoz szükség szerint.
 - **Az Azure Service Bus**: Biztosítja a felhőalapú vállalati üzenetkezeléssel és továbbítók kommunikációt, amely segítséget nyújt a helyszíni megoldások csatlakoztatása a felhő segítségével.
 - **Az Azure AD Connect hitelesítési ügynökének**: Egy helyszíni összetevő, amely figyeli és a jelszó érvényesítése kérésekre válaszol.
-- **Az Azure SQL Database**: A bérlő hitelesítési ügynökök, ideértve a metaadatok és a titkosítási kulcsok kapcsolatos információkat tartalmazza.
+- **Azure SQL Database**: A bérlő hitelesítési ügynökök, ideértve a metaadatok és a titkosítási kulcsok kapcsolatos információkat tartalmazza.
 - **Az Active Directory**: A helyszíni Active Directory, a felhasználói fiókokhoz és a jelszavukat tárolására.
 
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>Telepítési és regisztrációs a hitelesítési ügynökök

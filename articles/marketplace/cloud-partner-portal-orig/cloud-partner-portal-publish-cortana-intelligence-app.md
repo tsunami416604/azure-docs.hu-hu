@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a6357640ceeb7c5f1bde4eea85aa5265990935f4
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: dd917136dd777226f421d3ae6315798d36de8dc2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157156"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452054"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>Használatával a Cloud Partner portálra a Cortana Intelligence-ajánlat közzététele
 
@@ -31,9 +31,9 @@ A Cloud Partner portálra támogatja a szerepköralapú hozzáférés a portált
 
 Mielőtt ajánlat nevében a közzétevő tehetők közzé fiókra, egyéni felhasználók számára az egyik \"tulajdonosa\" szerepkör szükséges ahhoz, hogy elfogadja a [használati feltételek](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft adatvédelmi nyilatkozatát](https://www.microsoft.com/privacystatement/default.aspx), és [Microsoft Azure Certified Program szerződése](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
-## <a name="to-start-creating-a-cortana-inteligence-offer"></a>A Cortana Inteligence ajánlat létrehozásának megkezdéséhez
+## <a name="to-start-creating-a-cortana-intelligence-offer"></a>A Cortana Intelligence-ajánlat létrehozásának megkezdéséhez
 
-Után minden az előfeltételek teljesülnek, készen áll az Cortana Inteligence ajánlat szerzői műveleteket.
+Után minden az előfeltételek teljesülnek, készen áll a Cortana Intelligence-ajánlat szerzői műveleteket.
 
 1.  Jelentkezzen be a [cloud partner Portalon](http://cloudpartner.azure.com/).
 2.  A bal oldali navigációs sávján válassza **+ új ajánlat**.
@@ -288,7 +288,7 @@ Adja meg a használati feltételeket az alkalmazás. Appsource-on ügyfelei elfo
 >[!Note]
 >Ebben a mezőben fogadja el a tartalom használatával HTML-címkék például html-tartalom < p\>, < h1\>, és a < li\>. Ezekkel a címkékkel formázhatja a tartalom használható. 
 
-### <a name="lead-destination"></a>Cél vezethet
+### <a name="lead-destination"></a>Lead Destination
 
 Válassza ki a CRM-rendszerrel, az érdeklődőket a rendszer hol tárolja. 
 
@@ -298,5 +298,5 @@ A CRM-rendszerrel kapcsolatos további információért szeretné használni, v�
 
 -   [Azure-tábla](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 -   [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
--   [A Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
+-   [Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
 -   [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md)

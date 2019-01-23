@@ -2,17 +2,17 @@
 title: Az Azure Event Grid Eseményforrások
 description: Támogatott eseményforrások ismerteti az Azure Event Gridhez
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/19/2018
-ms.author: tomfitz
-ms.openlocfilehash: adef9d2f2d859c62d3b3b3a542536698fa668f9a
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.date: 01/19/2019
+ms.author: spelluru
+ms.openlocfilehash: 44bd92568db3a762453e1d76a620e6c792cd8913
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498300"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476036"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Az Azure Event Grid zdroje událostí
 
@@ -26,7 +26,7 @@ Fizessen elő az Azure-előfizetések események reagálni az igények változá
 
 |Beosztás |Leírás  |
 |---------|---------|
-| [Oktatóanyag: Az Azure Automation az Event Grid és a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Hozzon létre egy virtuális gépet, amely eseményt küld. Az esemény aktiválása a címkéket a virtuális gép, és a egy Microsoft Teams-csatornához küldött üzenet aktivál egy Automation-runbook. |
+| [Oktatóanyag: Az Event Grid és a Microsoft Teams az Azure Automation](ensure-tags-exists-on-new-virtual-machines.md) |Hozzon létre egy virtuális gépet, amely eseményt küld. Az esemény aktiválása a címkéket a virtuális gép, és a egy Microsoft Teams-csatornához küldött üzenet aktivál egy Automation-runbook. |
 | [Útmutató: az eseményekre a portálon keresztül előfizetés](subscribe-through-portal.md) | A portál használatával feliratkozás Azure-előfizetés eseményeire. |
 | [Az Azure CLI: feliratkozás Azure-előfizetés eseményeire](./scripts/event-grid-cli-azure-subscription.md) |A példaszkript létrehoz egy Event Grid-előfizetés Azure-előfizetéssel, és elküldi az eseményeket egy Webhookot. |
 | [PowerShell: feliratkozás Azure-előfizetés eseményeire](./scripts/event-grid-powershell-azure-subscription.md)| A példaszkript létrehoz egy Event Grid-előfizetés Azure-előfizetéssel, és elküldi az eseményeket egy Webhookot. |
@@ -128,7 +128,7 @@ Fizessen elő a Blob Storage-események válaszolni a blob-események létrehoz�
 | [Rövid útmutató: hozzon létre, és az Azure Portallal Blob storage-események irányítása](blob-event-quickstart-portal.md) | A portál használata a blob storage-események küldéséhez egy WebHook mutatja. |
 | [Az Azure CLI: feliratkozás egy Blob storage-fiók eseményeire](./scripts/event-grid-cli-blob.md) | Feliratkozik egy Blob storage-fiókhoz tartozó esemény hivatkozó szkriptre példát. WebHook elküldi az eseményt. |
 | [PowerShell: feliratkozás egy Blob storage-fiók eseményeire](./scripts/event-grid-powershell-blob.md) | Feliratkozik egy Blob storage-fiókhoz tartozó esemény hivatkozó szkriptre példát. WebHook elküldi az eseményt. |
-| [Resource Manager-sablon: Blob storage- és előfizetés létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Üzembe helyez egy Azure Blob Storage-fiókot, és feliratkozik a vele kapcsolatos eseményekre. Eseményeket küld egy Webhookot. |
+| [Resource Manager-sablon: A Blob storage- és előfizetés létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Üzembe helyez egy Azure Blob Storage-fiókot, és feliratkozik a vele kapcsolatos eseményekre. Eseményeket küld egy Webhookot. |
 | [Áttekintés: reagálás Blob storage-események](../storage/blobs/storage-blob-event-overview.md) | A Blob storage integrálása az Event Grid áttekintése. |
 | [Eseményséma](event-schema-blob-storage.md) | A Blob Storage-események mezőket jeleníti meg. |
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: eb046ceebf9c6233fa5178d18603add2f0c26a29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: dec58b2bb82eeab8b95c59e2775d21d58e18cac4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608017"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450421"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso áttelepítése: Egy Azure Web App és az Azure SQL Database-adatbázishoz a helyszíni alkalmazás újrabontása
 
@@ -31,7 +31,7 @@ Ez a dokumentum az egyik, a cikkeket, amelyek megmutatják, hogyan a fiktív Con
 [6. cikk: Egy alkalmazás újratárolása az Azure virtuális gépek és az SQL Server Always On rendelkezésre állási csoport](contoso-migration-rehost-vm-sql-ag.md) | Bemutatja, hogyan telepíti át a Contoso a SmartHotel alkalmazást. Contoso számára, hogy az alkalmazás virtuális gépeit és a Database Migration service, az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt a Site Recovery használja. | Elérhető
 [7. cikk: Egy Linux alkalmazás újratárolása az Azure virtuális gépek](contoso-migration-rehost-linux-vm.md) | Bemutatja, hogyan Contoso hajtja végre a Linux osTicket alkalmazás lift-and-shift áttelepítés Azure virtuális gépekre, a Site Recovery | Elérhető
 [8. cikk: Egy Linux alkalmazás újratárolása az Azure virtuális gépek és az Azure MySQL-kiszolgáló](contoso-migration-rehost-linux-vm-mysql.md) | Bemutatja, hogyan Contoso áttelepíti a Linux-osTicket alkalmazás Azure-beli virtuális gépek Site Recovery használatával, és az alkalmazás-adatbázis áttelepítése Azure MySQL Server-példány, a MySQL Workbench használatával. | Elérhető
-9. cikk: Alkalmazás újrabontása Azure-webalkalmazáshoz és Azure SQL Database-hez | Bemutatja, hogyan Contoso a SmartHotel alkalmazást áttelepíti egy Azure-webalkalmazást, és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány | Ez a cikk
+9. cikk: Alkalmazás refaktorálása Azure-webalkalmazáshoz és Azure SQL Database-hez | Bemutatja, hogyan Contoso a SmartHotel alkalmazást áttelepíti egy Azure-webalkalmazást, és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány | Ez a cikk
 [10. cikk: Az Azure Web Apps és az Azure MySQL egy Linux-alkalmazás újrabontása](contoso-migration-refactor-linux-app-service-mysql.md) | Bemutatja, hogyan Contoso áttelepíti a Linux-osTicket alkalmazás Azure Web Apps több helyen, a folyamatos készregyártás a GitHub integrálva. Az alkalmazás-adatbázis nekik át egy Azure-beli MySQL-példányt. | Elérhető
 [11. cikk: Refaktorovat a TFS-t az Azure DevOps-szolgáltatásokkal](contoso-migration-tfs-vsts.md) | Bemutatja, hogyan telepíti át a Contoso a saját helyi Team Foundation Server (TFS) központi, migrálás, hogy az Azure-ban az Azure DevOps-szolgáltatásokkal. | Elérhető
 [12. cikk: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Bemutatja, hogyan Contoso áttelepíti, és rearchitects SmartHotel alkalmazás az Azure-bA. Az alkalmazás webes réteg egy Windows-tárolót, és a egy Azure SQL Database-ben az alkalmazás-adatbázis újratervezése azokat. | Elérhető
@@ -56,10 +56,10 @@ A Contoso felhőalapú csapat az áttelepítés célok le van rögzítve. Ezen c
 
 **Követelmények** | **Részletek**
 --- | --- 
-**Alkalmazás** | Az alkalmazás az Azure-ban marad, kritikus fontosságú, mivel még ma.<br/><br/> Teljesítmény ugyanazokat a lehetőségeket azonban jelenleg nem VMWare kell rendelkeznie.<br/><br/> A csapat az alkalmazás be nem szeretné. Most a rendszergazdák egyszerűen áthelyezi az alkalmazás biztonságosan a felhőben.<br/><br/> A csapat szeretné a Windows Server 2008 R2, amelyen az alkalmazás jelenleg fut környezetei már nem.<br/><br/> A csapat emellett szeretné egy modern PaaS-adatbázis platformon, ami minimalizálja a felügyeleti kell esniük az SQL Server 2008 R2.<br/><br/> Contoso szeretné kihasználni a lévő SQL Server-licenc és frissítési garanciával rendelkező, ahol csak lehetséges.<br/><br/> Emellett a Contoso biztosítani szeretné a hibaérzékeny pont a webes szint csökkentése érdekében.
+**App** | Az alkalmazás az Azure-ban marad, kritikus fontosságú, mivel még ma.<br/><br/> Teljesítmény ugyanazokat a lehetőségeket azonban jelenleg nem VMWare kell rendelkeznie.<br/><br/> A csapat az alkalmazás be nem szeretné. Most a rendszergazdák egyszerűen áthelyezi az alkalmazás biztonságosan a felhőben.<br/><br/> A csapat szeretné a Windows Server 2008 R2, amelyen az alkalmazás jelenleg fut környezetei már nem.<br/><br/> A csapat emellett szeretné egy modern PaaS-adatbázis platformon, ami minimalizálja a felügyeleti kell esniük az SQL Server 2008 R2.<br/><br/> Contoso szeretné kihasználni a lévő SQL Server-licenc és frissítési garanciával rendelkező, ahol csak lehetséges.<br/><br/> Emellett a Contoso biztosítani szeretné a hibaérzékeny pont a webes szint csökkentése érdekében.
 **Korlátozások** | Az alkalmazás egy ASP.NET-alkalmazás és a egy ugyanazon a virtuális Gépen futó WCF szolgáltatás áll. Szeretné ez elosztja a két webalkalmazást az Azure App Service használatával. 
 **Azure** | Contoso szeretne áthelyezni az alkalmazás az Azure-ba, de nem szeretné futtatni, a virtuális gépeken. A Contoso biztosítani szeretné kihasználni az Azure PaaS-szolgáltatások a webes és az adatokat. 
-**Fejlesztés és üzemeltetés** | A Contoso biztosítani szeretné egy fejlesztési és üzemeltetési modell, Azure DevOps használatával a buildelési és kiadási folyamatok.
+**DevOps** | A Contoso biztosítani szeretné egy fejlesztési és üzemeltetési modell, Azure DevOps használatával a buildelési és kiadási folyamatok.
 
 ## <a name="solution-design"></a>Megoldásterv
 
@@ -77,7 +77,7 @@ Után rögzíthet célokat és követelményeket állapította meg, a Contoso te
 ### <a name="proposed-solution"></a>Javasolt megoldás
 
 - Az alkalmazás az adatbázisszinten, a Contoso Azure SQL Database képest az SQL Server használatával [Ez a cikk](https://docs.microsoft.com/azure/sql-database/sql-database-features). A Contoso szeretnék felhőszolgáltatót váltani az Azure SQL Database néhány okok miatt:
-    - Az Azure SQL Database felügyelt relációs adatbázis-szolgáltatás. Az adminisztrációt több szolgáltatási szinten kiszámítható teljesítményt kínál. Előny az állásidő, beépített intelligens optimalizálással, és globális méretezhetőség és rendelkezésre állás a dinamikus méretezhetőség.
+    - Az Azure SQL Database felügyelt relációs adatbázis-szolgáltatás. It delivers predictable performance at multiple service levels, with near-zero administration. Előny az állásidő, beépített intelligens optimalizálással, és globális méretezhetőség és rendelkezésre állás a dinamikus méretezhetőség.
     - Contoso kihasználhatja a Data Migration Assistant (DMA) segítségével mérheti fel, és a helyszíni adatbázis migrálása az Azure SQL egyszerűsített.
     - Frissítési garanciával működő a Contoso kedvezményes díjszabást kínál a egy SQL Database, az Azure Hybrid Benefit használatával az SQL Server meglévő licenceinek tudjon cserélni. Ez akár 30 %-os megtakarítás nyújtani.
     - Az SQL Database számos olyan biztonsági funkciók, például mindig titkosított, dinamikus adatmaszkolást és a sorszintű biztonság/fenyegetések észlelése.
@@ -87,7 +87,7 @@ Után rögzíthet célokat és követelményeket állapította meg, a Contoso te
 ### <a name="solution-review"></a>Megoldás áttekintése
 Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrányai listáját.
 
-**Szempontok** | **Részletek**
+**Consideration** | **Részletek**
 --- | ---
 **Szakemberek számára** | A SmartHotel360 alkalmazáskód nem kell módosítani az Azure-ba való migrálásra.<br/><br/> Contoso kihasználhatják a befektetés frissítési garanciával rendelkező SQL Server és a Windows Server az Azure Hybrid Benefit használatával.<br/><br/> Az áttelepítés után a Windows Server 2008 R2 nem kell támogatni. [További információk](https://support.microsoft.com/lifecycle).<br/><br/> Contoso is konfigurálhatja a webes szint, az alkalmazás több példánya, így már nem olyan hibaérzékeny pont.<br/><br/> Az adatbázis már nem SQL Server 2008 R2 elévülési függ.<br/><br/> Az SQL Database támogatja a műszaki követelményeket. A Contoso amelynek megfelelőségét ellenőrizni kell a helyszíni adatbázis, a Database Migration Assistant eszközzel, és talált a rendszer kompatibilis.<br/><br/> SQL-adatbázis, amely a Contoso beállítása nem kell beépített hibatűrő képességgel rendelkezik. Ez biztosítja, hogy az adatréteg már nem feladatátvételi hibaérzékeny pont.
 **Hátrányai** | Az Azure App Services csak egy alkalmazás központi telepítési támogatja minden webes alkalmazáshoz. Ez azt jelenti, hogy a két webalkalmazást üzembe helyezett (egyet a webhelyhez) és a WCF-szolgáltatást kell lennie.<br/><br/> Ha a Contoso Data Migration Assistant helyett Data Migration Service-t használ az adatbázis migrálása, azt nem kell az infrastruktúra készen áll a migrálás adatbázisok ipari méretekben. Contoso kell hozhat létre, ha az elsődleges régióban nem érhető el, győződjön meg arról, hogy feladatátvételt egy másik régióban.
@@ -130,7 +130,7 @@ Itt látható, hogyan Contoso fog futni az áttelepítési:
 > [!div class="checklist"]
 > * **1. lépés: Az Azure-ban egy SQL Database-példány üzembe helyezése**: Contoso látja el egy SQL-példány az Azure-ban. Miután az alkalmazás webhelye migrálása az Azure-ba, a WCF-szolgáltatás webes alkalmazás ezt a példányt fog mutatni.
 > * **2. lépés: A DMA-adatbázis migrálása**: Contoso áttelepíti a Database Migration Assistant alkalmazás adatbázis.
-> * **3. lépés: Webalkalmazások üzembe helyezése**: Contoso látja el a két webalkalmazást.
+> * **3. lépés: Provision Web Apps**: Contoso látja el a két webalkalmazást.
 > * **4. lépés: Állítsa be az Azure DevOps**: Contoso létrehoz egy új Azure DevOps-projektet, és importálja a Git-tárház.
 > * **5. lépés: Kapcsolati karakterláncok konfigurálása**: Contoso konfigurálja a kapcsolati karakterláncokat a webes szint web app, a WCF service web app és az SQL-példány közötti kommunikációhoz.
 > * **6. lépés: Állítsa be a build és a folyamatok felszabadítása**: Utolsó lépésként Contoso beállítja a buildelési és kiadási folyamatok létrehozásához az alkalmazás, és telepíti őket a két különálló Azure Web Apps.
@@ -220,7 +220,7 @@ Contoso rendszergazdák telepítse át a SmartHotel360 adatbázis DMA segítség
     ![DMA](media/contoso-migration-refactor-web-app-sql/dma-9.png)
 
 
-## <a name="step-3-provision-web-apps"></a>3. lépés: Webalkalmazások üzembe helyezése
+## <a name="step-3-provision-web-apps"></a>3. lépés: Provision Web Apps
 
 Adatbázis-kezelő telepíti át, Contoso-rendszergazdák mostantól építhető ki a két webalkalmazást.
 
@@ -294,7 +294,7 @@ Contoso-rendszergazdák mostantól konfigurálhatja az Azure DevOps-hajtsa végr
 
 3. A **válasszon ki egy sablont**, azok válassza ki, hogy az ASP.NET-sablont, közelednek.
 
-     ![ASP.NET-sablonnal](./media/contoso-migration-refactor-web-app-sql/pipeline3.png)
+     ![ASP.NET template](./media/contoso-migration-refactor-web-app-sql/pipeline3.png)
     
 4. A név **ContosoSmartHotelRefactor – ASP.NET-CI** build szolgál. Kattintanak **várólistára & mentése**.
 
@@ -347,7 +347,7 @@ Contoso-rendszergazdák mostantól konfigurálhatja az Azure DevOps-hajtsa végr
 
     ![App service üzembe helyezése](./media/contoso-migration-refactor-web-app-sql/pipeline15.png)
 
-18. A **egy fájl vagy mappa kiválasztása**, találják a **SmartHotel.Registration.Wcf.zip** fájlt, amely a build és a clilck során hozott létre **mentése**. – sql
+18. A **egy fájl vagy mappa kiválasztása**, akkor keresse meg a **SmartHotel.Registration.Wcf.zip** fájlt, amely a build és a clilck során hozott létre **mentése**.
 
     ![A WCF mentése](./media/contoso-migration-refactor-web-app-sql/pipeline16.png)
 

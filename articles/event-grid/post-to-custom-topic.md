@@ -1,37 +1,37 @@
 ---
-title: Egyéni Azure esemény rács a témakör a feladás egy vagy több esemény
-description: Ismerteti, hogyan lehet egy adott esemény egy egyéni témakör utáni Azure esemény rács
+title: Egyéni Azure Event Grid-témakör esemény közzététele
+description: Ismerteti, hogyan lehet egy egyéni témakört az esemény közzététele az Azure Event Gridhez
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.author: tomfitz
-ms.openlocfilehash: e4256de1d9112d785b6d1cd52067fc99144a0a04
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.date: 01/17/2019
+ms.author: spelluru
+ms.openlocfilehash: b219e9475151ecd14d8b45db9501a06cde05875b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34303334"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470596"
 ---
-# <a name="post-to-custom-topic-for-azure-event-grid"></a>Küldje el a témakör egyéni Azure esemény rács
+# <a name="post-to-custom-topic-for-azure-event-grid"></a>Közzététel egyéni témakörben az Azure Event Gridhez
 
-Ez a cikk ismerteti, hogyan elküldeni egy eseményt, egy egyéni témakörbe. Azt illusztrálja, post és esemény adatok formátuma. A [szolgáltatási szint szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) bejegyzéseket, amelyek megfelelnek a várt formátum csak vonatkozik.
+Ez a cikk ismerteti egy egyéni témakört az esemény közzététele. Azt mutatja, hogy a post és az adatok formátumát. A [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) riasztáspéldányhoz tartoznak, amelyekre a várt formátumú.
 
 ## <a name="endpoint"></a>Végpont
 
-A HTTP POST egy egyéni témához küldésekor használja az URI-formátum: `https://<topic-endpoint>?api-version=2018-01-01`.
+Amikor a HTTP POST küld egy egyéni témakör, használja az URI-formátum: `https://<topic-endpoint>?api-version=2018-01-01`.
 
-Például egy érvényes URI-cím lesz: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
+Ha például egy érvényes URI-ja: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
 
-A végpont Azure parancssori felület segítségével egyéni témakör megtekintéséhez használja:
+A végpont egy egyéni témakör az Azure CLI-vel használja:
 
 ```azurecli-interactive
 az eventgrid topic show --name <topic-name> -g <topic-resource-group> --query "endpoint"
 ```
 
-A végpont egy egyéni témakör az Azure PowerShell használatához:
+Egy egyéni témakört az Azure PowerShell használatával a végpont beszerzéséhez használja:
 
 ```powershell
 (Get-AzureRmEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
@@ -39,17 +39,17 @@ A végpont egy egyéni témakör az Azure PowerShell használatához:
 
 ## <a name="header"></a>Fejléc
 
-A kérelem tartalmazza a nevű fejléc értéke `aeg-sas-key` , amely tartalmazza a hitelesítési kulcs.
+A kérelemben, például egy nevű fejléc értéke `aeg-sas-key` , amelyek a hitelesítési kulcsot tartalmaz.
 
-Például egy érvényes fejléc értéke `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
+Ha például egy érvényes fejléc értéke `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
 
-Azure parancssori felület segítségével egyéni témakör kulcs használatához:
+Egy egyéni témakört az Azure CLI-vel a kulcsot használja:
 
 ```azurecli
 az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --query "key1"
 ```
 
-A PowerShell segítségével egyéni témakör kulcs használatához:
+Egy egyéni témakör a PowerShell-lel a kulcs lekéréséhez használja:
 
 ```powershell
 (Get-AzureRmEventGridTopicKey -ResourceGroupName <topic-resource-group> -Name <topic-name>).Key1
@@ -57,7 +57,7 @@ A PowerShell segítségével egyéni témakör kulcs használatához:
 
 ## <a name="event-data"></a>Eseményadatok
 
-Egyéni témaköröket a legfelső szintű adatok tartalmazzák a szabványos erőforrás által definiált eseményként is ugyanazokat a mezőket. Ezek a tulajdonságok egyike, amelyben az egyéni témakörbe egyedi tulajdonságok adatok tulajdonság. Esemény-közzétevő, mint az adatok objektum tulajdonságok meghatározásához. A következő séma használata:
+Egyéni témakörök a legfelső szintű adatok tartalmazzák a standard szintű erőforrás által definiált események, ugyanazokat a mezőket. Ezek a tulajdonságok egyike az egyéni témakörbe egyedi tulajdonságokat tartalmazó adatok tulajdonság. Esemény-közzétevő, mint az adott objektum tulajdonságait határozza meg. Használja a következő mintát követik:
 
 ```json
 [
@@ -74,9 +74,9 @@ Egyéni témaköröket a legfelső szintű adatok tartalmazzák a szabványos er
 ]
 ```
 
-Ezeket a tulajdonságokat, olvassa el [Azure esemény rács esemény séma](event-schema.md). Események az esemény a rács témakörhöz könyvelés, ha a tömb lehet egy teljes mérete legfeljebb 1 MB. A tömb minden esemény értéke legfeljebb 64 KB.
+Ezek a tulajdonságok leírását lásd: [Azure Event Grid-esemény séma](event-schema.md). Az eseményeket egy event grid-témakör az üzenetküldés, ha a tömb rendelkezhet egy teljes mérete legfeljebb 1 MB. A tömbben szereplő minden esemény 64 KB-os korlátozódik.
 
-Például egy érvényes esemény adatkulcsokat van:
+Például egy érvényes adatok eseménysémája van:
 
 ```json
 [{
@@ -94,17 +94,17 @@ Például egy érvényes esemény adatkulcsokat van:
 
 ## <a name="response"></a>Válasz
 
-A témakör a végponthoz könyvelés után kapott választ. A rendszer egy szabványos HTTP-válaszkód a választ. Néhány gyakori válaszok a következők:
+A témakör végpontra könyvelés után kapott választ. A válasz egy normál HTTP-válaszkód. Néhány gyakori válaszokat a következők:
 
 |Eredmény  |Válasz  |
 |---------|---------|
 |Sikeres  | 200 OK  |
-|Eseményadatok formátuma nem megfelelő | 400 Hibás kérés |
-|Érvénytelen a hozzáférési kulcsot | 401 nem engedélyezett |
-|Helytelen végpont | 404 – Nem található |
-|A tömb vagy esemény meghaladja méretkorlátai | 413 payload túl nagy |
+|Eseményadatok formátuma helytelen | 400 Hibás kérés |
+|Érvénytelenek a hozzáférési kulcs | 401-es nem engedélyezett |
+|Nem megfelelő végpont | 404 – Nem található |
+|Tömb vagy esemény meghaladja a méretbeli korlátokat | 413 adattartalom túl nagy |
 
-A hibákat az üzenet törzse formátuma a következő:
+A hibákat az üzenet törzsének formátuma a következő:
 
 ```json
 {
@@ -121,6 +121,6 @@ A hibákat az üzenet törzse formátuma a következő:
 
 ## <a name="next-steps"></a>További lépések
 
-* Esemény kézbesítések figyelésével kapcsolatos további információkért lásd: [figyelő esemény rács üzenetkézbesítést](monitor-event-delivery.md).
-* A hitelesítési kulcs kapcsolatos további információkért lásd: [esemény rács biztonsági és hitelesítési](security-authentication.md).
-* Egy esemény rács Azure-előfizetés létrehozásával kapcsolatos további információkért lásd: [esemény rács előfizetés séma](subscription-creation-schema.md).
+* Esemény kézbesítések figyelésével kapcsolatos további információkért lásd: [figyelő Event Grid üzenetkézbesítése](monitor-event-delivery.md).
+* A hitelesítési kulcs kapcsolatos további információkért lásd: [Event Grid biztonsági és hitelesítési](security-authentication.md).
+* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).

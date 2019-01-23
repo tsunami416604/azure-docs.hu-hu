@@ -4,7 +4,7 @@ description: A gyakori problémák személyek face megismerheti az Azure AD kata
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: b44b72c4414314e4329a7de91f4d1a61914afc6f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 29538d4cab4df328ba9cbff2f30c35626b3360dd
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424969"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477600"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Egy Azure AD katalógusából származó alkalmazás hozzáadása során
 
@@ -86,7 +86,7 @@ Az alábbi leírásokat, az értesítések kapcsolatos további részletekért t
 
 -   **Ügyfélkérés azonosítója** – a megadott kérés azonosítója, a böngésző által készített
 
-    -   Példa – **302fd775-3329-4670-a9f3-bea37004f0bc**
+    -   Example – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
 -   **Szolgáltatásblokk UTC idő** – az időbélyeg, amely során az értesítés történt (UTC)
 
@@ -120,7 +120,7 @@ Az alábbi leírásokat, az értesítések kapcsolatos további részletekért t
 
 -   **Objektumazonosító:** – **(üres is lehet)** az Objektumazonosító, amelyek hajtottak végre a műveletet
 
-    -   Példa – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+    -   Example – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
 -   **Részletek** – a részletes Mi történt a művelet leírása
 

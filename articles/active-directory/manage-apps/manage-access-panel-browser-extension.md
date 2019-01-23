@@ -4,7 +4,7 @@ description: Hogyan lehet az Internet Explorer-bővítmény a saját alkalmazás
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ebd949460f826c9529b9f392bc4a7f4918ee170
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7ccaf272a79268ecd781821593a6041d5653a39b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715040"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471888"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Az Internet Explorer a hozzáférési Panel bővítmény hibaelhárítása
 Ez a cikk a következő problémák elhárításához nyújt segítséget:
@@ -28,7 +28,7 @@ Ez a cikk a következő problémák elhárításához nyújt segítséget:
 * Most már nem fér hozzá az alkalmazások a saját alkalmazások portál használatával az Internet Explorer használatával.
 * Annak ellenére, hogy már telepítette a szoftvert a "Szoftver telepítése" üzenetet látja.
 
-Ha Ön rendszergazda, lásd még: [csoportházirend használatával az Internet Explorer a hozzáférési Panel bővítmény telepítése](deploy-access-panel-browser-extension.md)
+Ha Ön rendszergazda, lásd még: [A hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer](deploy-access-panel-browser-extension.md)
 
 ## <a name="run-the-diagnostic-tool"></a>A diagnosztikai eszköz futtatása
 A hozzáférési Panel bővítmény telepítési problémáinak diagnosztizálhatja letöltésével és futtatásával a hozzáférési Panel diagnosztikai eszköz:

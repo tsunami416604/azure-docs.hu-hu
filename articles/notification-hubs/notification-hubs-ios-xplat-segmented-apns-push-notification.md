@@ -3,8 +3,8 @@ title: Leküldéses értesítések küldése az adott iOS-eszközök Azure Notif
 description: Ebben az oktatóanyagban elsajátíthatja, hogyan használja az Azure Notification Hubs leküldéses értesítések küldéséhez az adott iOS-eszközökre.
 services: notification-hubs
 documentationcenter: ios
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: 6ead4169-deff-4947-858c-8c6cf03cc3b2
 ms.service: notification-hubs
@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: 18caf2b1b96052d93737c8a9815e2e6643a52a67
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: aaaeb4e101147c19af5bd1dc7071cca273255863
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918062"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449759"
 ---
-# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Oktatóanyag: Az adott iOS-eszközök Azure Notification Hubs használatával leküldéses értesítések
+# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése az adott iOS-eszközök Azure Notification Hubs használatával
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a témakör épül, amely a létrehozott alkalmazás [oktatóanyag: leküldéses értesítések iOS-alkalmazások Azure Notification Hubs használatával][get-started]. Az oktatóanyag elindítása előtt már végrehajtotta [oktatóanyag: leküldéses értesítések iOS-alkalmazások Azure Notification Hubs használatával][get-started].
+Ez a témakör épül, amely a létrehozott alkalmazás [oktatóanyag: Leküldéses értesítések iOS-alkalmazások Azure Notification Hubs használatával][get-started]. Az oktatóanyag elindítása előtt már végrehajtotta [oktatóanyag: Leküldéses értesítések iOS-alkalmazások Azure Notification Hubs használatával][get-started].
 
 ## <a name="add-category-selection-to-the-app"></a>Kategóriaválasztó hozzáadása az alkalmazáshoz
 
@@ -59,7 +59,7 @@ Az első lépés, hogy a felhasználói felületi elemeket ad hozzá a meglévő
     ![Xcode felület jelentéskészítő][3]
 
 2. A Segéd-szerkesztőben létrehozása tartalomválogatást összes olyan kapcsolón, és hívja meg őket "WorldSwitch", "PoliticsSwitch", "BusinessSwitch", "TechnologySwitch", "ScienceSwitch", "SportsSwitch"
-3. Hozzon létre egy műveletet a nevű gomb **előfizetés**. A ViewController.h tartalmaznia kell a következő kódot:
+3. Hozzon létre egy műveletet a nevű gomb `subscribe`; a `ViewController.h` tartalmaznia kell a következő kódot:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UISwitch *WorldSwitch;
@@ -135,7 +135,7 @@ Az első lépés, hogy a felhasználói felületi elemeket ad hozzá a meglévő
 
     Ez az osztály tárolására és beolvasására a kategóriák hírei, amely az eszköz megkapja a helyi tároló használ. Emellett ezekben a kategóriákban használatával regisztráljon egy metódust tartalmaz egy [sablon](notification-hubs-templates-cross-platform-push-messages.md) regisztráció.
 
-7. Az AppDelegate.h fájlba a Notifications.h hozzáadása egy importálási utasítást, és az értesítések osztály egy példányának tulajdonság hozzáadása:
+7. Az a `AppDelegate.h` fájlt, adja hozzá az importálási utasítást a `Notifications.h` és a egy példányának tulajdonság hozzáadása a `Notifications` osztály:
 
     ```objc
     #import "Notifications.h"
@@ -143,9 +143,8 @@ Az első lépés, hogy a felhasználói felületi elemeket ad hozzá a meglévő
     @property (nonatomic) Notifications* notifications;
     ```
 
-8. Az a **didFinishLaunchingWithOptions** metódus az AppDelegate.m, adja hozzá a kódot a metódus az elején értesítések példány inicializálásához.  
-
-    `HUBNAME` és `HUBLISTENACCESS` (hubinfo.h-ban definiált) már rendelkezik a `<hub name>` és `<connection string with listen access>` helyőrzőket az értesítési központ nevére és a kapcsolati karakterláncát helyére *DefaultListenSharedAccessSignature* hogy már korábban megkapta
+8. Az a `didFinishLaunchingWithOptions` metódus az `AppDelegate.m`, adja hozzá a kódot, a metódus az elején értesítések példány inicializálásához.  
+    `HUBNAME` és `HUBLISTENACCESS` (meghatározott `hubinfo.h`) már rendelkezik a `<hub name>` és `<connection string with listen access>` helyőrzőket az értesítési központ nevére és a kapcsolati karakterláncát helyére *DefaultListenSharedAccessSignature*korábban beszerzett
 
     ```objc
     self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];
@@ -154,7 +153,7 @@ Az első lépés, hogy a felhasználói felületi elemeket ad hozzá a meglévő
     > [!NOTE]
     > Mivel az ügyfélalkalmazással terjesztett hitelesítő adatok általában nem biztonságosak, csak a figyelési hozzáférés kulcsát terjessze az ügyfélalkalmazással. A figyelési hozzáférés lehetővé teszi, hogy az alkalmazás regisztráljon értesítésekre, a meglévő regisztrációkat azonban nem lehet módosítani, és értesítéseket sem lehet küldeni. A teljes körű hozzáférési kulcsot egy biztonságos háttérszolgáltatásban használja a rendszer értesítések kiküldésére és a meglévő regisztrációk módosítására.
 
-9. Az a **didRegisterForRemoteNotificationsWithDeviceToken** metódus az AppDelegate.m, cserélje le a metódus a kódot az alábbi kódot az eszköz jogkivonatát átadása az értesítések osztály. Az értesítések osztály hajt végre, a kategóriák az értesítések regisztrálása. Ha a felhasználó megváltoztatja a kategóriáinak kiválasztásánál, hívja meg a `subscribeWithCategories` válaszul metódus az **előfizetés** gombra kattintva frissítheti őket.
+9. Az a `didRegisterForRemoteNotificationsWithDeviceToken` metódus az `AppDelegate.m`, cserélje le a metódus a kódot, az eszköz jogkivonatát adja át a következő kódot a `notifications` osztály. A `notifications` osztály hajt végre, a kategóriák az értesítések regisztrálása. Ha a felhasználó megváltoztatja a kategóriáinak kiválasztásánál, hívja meg a `subscribeWithCategories` válaszul metódus az **előfizetés** gombra kattintva frissítheti őket.
 
     > [!NOTE]
     > Az eszköz jogkivonatát által az Apple Push Notification Service (APNS) hozzárendelt is alkalommal tetszőleges időpontban, mert az értesítések értesítés sikertelen végrehajtásának elkerülése érdekében gyakran kell regisztrálni. Ebben a példában a rendszer az alkalmazás minden egyes indításakor regisztrál az értesítésekre. A gyakran, naponta egynél többször futtatott alkalmazások esetén a sávszélesség megőrzése érdekében akár ki is hagyhatja a regisztrációt, ha kevesebb mint egy nap telt el az előző regisztráció óta.
@@ -173,9 +172,9 @@ Az első lépés, hogy a felhasználói felületi elemeket ad hozzá a meglévő
     }];
     ```
 
-    Ezen a ponton meg kell adni a más kódot nem a **didRegisterForRemoteNotificationsWithDeviceToken** metódust.
+    Ezen a ponton meg kell adni a más kódot nem a `didRegisterForRemoteNotificationsWithDeviceToken` metódust.
 
-10. Az alábbi módszerek már befejezze AppDelegate.m jelen kell lenniük a [Ismerkedés a Notification Hubs] [ get-started] oktatóanyag. Ha nem, adja hozzá őket.
+10. Az alábbi módszerek már jelen kell lenniük `AppDelegate.m` befejezze a [Ismerkedés a Notification Hubs] [ get-started] oktatóanyag. Ha nem, adja hozzá őket.
 
     ```objc
     -(void)MessageBox:(NSString *)title message:(NSString *)messageText
@@ -195,7 +194,7 @@ Az első lépés, hogy a felhasználói felületi elemeket ad hozzá a meglévő
 
     Ez a metódus kezeli az alkalmazás egy egyszerű megjelenítésével futtatásakor kapott értesítéseket **UIAlert**.
 
-11. ViewController.m, adjon hozzá egy importálási utasítást az AppDelegate.h, és másolja az alábbi kódot az xcode-ban létrehozott **előfizetés** metódust. Ez a kód frissíti a felhasználó a felhasználói felületen úgy döntött, hogy az új kategória címkék használata az értesítésre való regisztráció.
+11. A `ViewController.m`, adjon hozzá egy `import` nyilatkozata `AppDelegate.h` másolja az alábbi kódot az xcode-ban létrehozott `subscribe` metódus. Ez a kód frissíti a felhasználó a felhasználói felületen úgy döntött, hogy az új kategória címkék használata az értesítésre való regisztráció.
 
     ```objc
     #import "Notifications.h"
@@ -220,9 +219,9 @@ Az első lépés, hogy a felhasználói felületi elemeket ad hozzá a meglévő
     }];
     ```
 
-    Ezzel a módszerrel hoz létre egy **NSMutableArray** kategóriák, és használja a **értesítések** a lista tárolja a helyi tárhely és regisztrál az értesítési központban a megfelelő címkéket az osztály. A kategóriák módosításakor a rendszer újra létrehozza a regisztrációt az új kategóriákkal.
+    Ezzel a módszerrel hoz létre egy `NSMutableArray` kategóriák, és használja a `Notifications` a lista tárolja a helyi tárhely és regisztrál az értesítési központban a megfelelő címkéket az osztály. A kategóriák módosításakor a rendszer újra létrehozza a regisztrációt az új kategóriákkal.
 
-3. ViewController.m, adja hozzá a következő kódot a **viewDidLoad** metódussal adja meg a felhasználói felület a korábban mentett kategóriák alapján.
+12. A `ViewController.m`, adja hozzá a következő kódot a `viewDidLoad` metódussal adja meg a felhasználói felület a korábban mentett kategóriák alapján.
 
     ```objc
     // This updates the UI on startup based on the status of previously saved categories.
@@ -239,11 +238,11 @@ Az első lépés, hogy a felhasználói felületi elemeket ad hozzá a meglévő
     if ([categories containsObject:@"Sports"]) self.SportsSwitch.on = true;
     ```
 
-Az alkalmazás most már tárolhat kategóriák készletét, amikor az alkalmazás indítása az értesítési központon történő regisztrálásához használt eszköz helyi tárolójára. A felhasználó módosíthatja a kijelölt modult, és kattintson a kategóriák a **előfizetés** metódus az eszköz regisztrációjának frissítését. Ezután frissítse az alkalmazásnak, hogy a legfrissebb hírekről szóló értesítések küldése közvetlenül magában az alkalmazásban.
+Az alkalmazás most már tárolhat kategóriák készletét, amikor az alkalmazás indítása az értesítési központon történő regisztrálásához használt eszköz helyi tárolójára. A felhasználó módosíthatja a kijelölt modult, és kattintson a kategóriák a `subscribe` metódus az eszköz regisztrációjának frissítését. Ezután frissítse az alkalmazásnak, hogy a legfrissebb hírekről szóló értesítések küldése közvetlenül magában az alkalmazásban.
 
 ## <a name="optional-send-tagged-notifications"></a>(nem kötelező) Címkézett értesítések küldése
 
-Ha nincs hozzáférése a Visual Studióba, ugorjon a következő szakaszra, és értesítések küldése az alkalmazásból, magát. A megfelelő sablon értesítést is küldhet a [Azure Portal] az értesítési központ hibakeresési lapján. 
+Ha nincs hozzáférése a Visual Studióba, ugorjon a következő szakaszra, és értesítések küldése az alkalmazásból, magát. A megfelelő sablon értesítést is küldhet a [Azure Portal] az értesítési központ hibakeresési lapján.
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
@@ -312,7 +311,7 @@ Ha nincs hozzáférése a Visual Studióba, ugorjon a következő szakaszra, és
     }
     ```
 
-2. A `ViewController.m`, frissítse a **értesítés küldése** művelet a következő kódban látható módon. Hogy az egyes címke használata külön-külön értesítéseket küld, majd elküldi a több platformra.
+2. A `ViewController.m`, frissítse a `Send Notification` művelet a következő kódban látható módon. Hogy az egyes címke használata külön-külön értesítéseket küld, majd elküldi a több platformra.
 
     ```objc
     - (IBAction)SendNotificationMessage:(id)sender
@@ -349,23 +348,15 @@ Ha nincs hozzáférése a Visual Studióba, ugorjon a következő szakaszra, és
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban, értesítéseket küldött az adott iOS-eszközök által regisztrált kategóriák. Megtudhatja, hogyan küldhet leküldéses értesítéseket a honosított, folytassa a következő oktatóanyaggal: 
+Ebben az oktatóanyagban, értesítéseket küldött az adott iOS-eszközök által regisztrált kategóriák. Megtudhatja, hogyan küldhet leküldéses értesítéseket a honosított, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
 >[Honosított leküldéses értesítések küldése](notification-hubs-ios-xplat-localized-apns-push-notification.md)
-
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-subscribed.png
 [2]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios1.png
 [3]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
-
-
-
-
-
-
-
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx

@@ -1,6 +1,6 @@
 ---
 title: Ismerkedés az Azure IoT Hub identitás- és a modul (Node.js) ikermodulja |} A Microsoft Docs
-description: Ismerje meg, hogyan modul identitás létrehozása és frissítése az ikermodul node.js-hez készült IoT SDK-k használatával.
+description: Learn how to create module identity and update module twin using IoT SDKs for Node.js.
 author: chrissie926
 manager: ''
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 4016471be05c1062eb389ab4851330f3a80dbcb2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ae798ecf2ba5f53cdfdef45b74677615d2e0a06d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969026"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447003"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Ismerkedés az IoT Hub identitás- és modul ikermodul Node.js háttérrendszer és a Node.js-eszköz használata
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag végén van két Node.js-alkalmazások:
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
-* Egy IoT hubot.
+* An IoT Hub.
 * Telepítse a legújabb [Node.js SDK](https://github.com/Azure/azure-iot-sdk-node).
 
 Létrehozta az IoT Hubot, és rendelkezik az oktatóanyag további részeinek teljesítéséhez szükséges állomásnévvel és IoT Hub kapcsolati sztringgel.
@@ -116,7 +116,7 @@ Ez az alkalmazás egy új eszközidentitást hoz létre azonosító **myFirstDev
 
 Ebben a szakaszban egy Node.js létrehozása a szimulált eszköz, amely frissíti az ikermodul jelentett tulajdonságokként.
 
-1. **Szerezze be a modul kapcsolati sztringjét** – ezt most megteheti, ha bejelentkezik az [Azure Portalra][lnk-portal]. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice elemet, nyissa meg, és győződjön meg arról, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
+1. **Szerezze be a modul kapcsolati sztringjét** – ezt most megteheti, ha bejelentkezik az [Azure Portalra][lnk-portal]. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresés myFirstDevice, nyissa meg azt, és tekintse meg a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
     ![Az Azure Portal moduladatai][15]
 

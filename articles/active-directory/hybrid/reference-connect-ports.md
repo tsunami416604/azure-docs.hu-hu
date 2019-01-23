@@ -4,7 +4,7 @@ description: Ez a lap nyitva az Azure AD Connect szükséges portokon műszaki �
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: de97b225-ae06-4afc-b2ef-a72a3643255b
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4ae221efe19d548c3b19cfcebc6728390cabf2b1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 38a344fb6e67beae6310480646d84a1fe7730f84
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312605"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461037"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Hibrid identitás – szükséges portok és protokollok
 A következő dokumentum a technikai útmutató a szükséges portok és protokollok a hibrid identitáskezelési megoldás megvalósítása. Használja a következő ábra és a kapcsolódó táblázat.
@@ -32,12 +32,12 @@ Ez a táblázat ismerteti a portok és protokollok, amelyek szükségesek az Azu
 
 | Protokoll | Portok | Leírás |
 | --- | --- | --- |
-| DNS |53-AS (TCP/UDP) |DNS-keresések a cél-erdőben. |
+| DNS |53 (TCP/UDP) |DNS-keresések a cél-erdőben. |
 | Kerberos |88 (TCP/UDP) |Kerberos-hitelesítés az AD-erdőhöz. |
-| MS-RPC |A 135-ÖS (TCP/UDP) |Ha az AD-erdőhöz van kötve az Azure AD Connect varázsló a kezdeti konfiguráció során és a jelszó-szinkronizálás során használt. |
+| MS-RPC |135 (TCP/UDP) |Ha az AD-erdőhöz van kötve az Azure AD Connect varázsló a kezdeti konfiguráció során és a jelszó-szinkronizálás során használt. |
 | LDAP |389-ES (TCP/UDP) |Adatok importálása az AD-ből használja. A Kerberos-bejelentkezési & lezárása titkosítja az adatokat. |
 | RPC | 445-ÖS (TCP/UDP) |Közvetlen egyszeri bejelentkezés az AD-erdő egy számítógép-fiók létrehozásához használt. |
-| LDAP/SSL |A 636-OS (TCP/UDP) |Adatok importálása az AD-ből használja. Az adatátvitel aláírt és titkosított. Csak akkor használja az SSL használata. |
+| LDAP/SSL |636 (TCP/UDP) |Adatok importálása az AD-ből használja. Az adatátvitel aláírt és titkosított. Csak akkor használja az SSL használata. |
 | RPC |49152 – 65535 (véletlenszerű magas RPC Port)(TCP/UDP) |Az Azure AD Connect, ha az AD-erdőhöz van kötve a kezdeti konfiguráció során, és a jelszó-szinkronizálás során használt. Lásd: [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017), és [KB224196](https://support.microsoft.com/kb/224196) további információt. |
 
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>2. táblázat – Azure AD Connect és az Azure AD
@@ -102,7 +102,7 @@ Ez a táblázat bemutatja a következő kimenő portokat és protokollokat, az A
 | Protokoll | Portok | Leírás |
 | --- | --- | --- |
 | HTTPS |443(TCP/UDP) |Kimenő |
-| Azure Service Bus |5671-ES (TCP/UDP) |Kimenő |
+| Azure Service Bus |5671 (TCP/UDP) |Kimenő |
 
 ### <a name="7b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>7b - végpontjai az Azure AD Connect Health agent for (AD FS/szinkronizálása) és az Azure AD
 Végpontok listáját lásd: [a követelmények szakaszt az Azure AD Connect Health-ügynök](how-to-connect-health-agent-install.md#requirements).

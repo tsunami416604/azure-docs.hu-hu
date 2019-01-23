@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bd6c592f0d3d073ec2a05c8f4636086df01ddb06
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352019"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450745"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-alkalmazások ajánlat közzétételi útmutató
 
@@ -140,7 +140,7 @@ A Microsoft a kereskedelmi tranzakciót futtat. A Microsoft az Ön nevében az �
 | Követelmény | Részletek |  
 |:--- |:--- |  
 |Számlázással és méréssel | Az ajánlat havonta átalánydíjat díjszabása. Jelenleg nem támogatottak a használatalapú díjszabás és a használat alapú "igaz felfelé" képességeket. |  
-|Visszavonás | Az ajánlat bármikor visszavonható az ügyfélnek. |  
+|Megszakítás | Az ajánlat bármikor visszavonható az ügyfélnek. |  
 |Tranzakció kezdőlapja | Üzemeltetése egy Azure társmárkás tranzakció kezdőlapja, ahol a felhasználók létrehozása és SaaS-szolgáltatás fiókjuk kezeléséhez. |   
 | Előfizetés API | Elérhetővé teszi egy szolgáltatás, amely az SaaS-előfizetés létrehozása, frissítése és egy felhasználói fiókot és a service-csomag törlése hatással lehet. Kritikus fontosságú API-módosítás támogatnia kell a 24 órán belül. A nem kritikus API-módosítás rendszeres időközönként kiadjuk. |  
 

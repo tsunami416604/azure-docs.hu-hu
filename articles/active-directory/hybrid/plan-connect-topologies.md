@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Támogatott topológiák |} A Microsoft Docs'
+title: 'Azure AD Connect: Támogatott topológiák |} A Microsoft Docs'
 description: Ez a témakör részletesen támogatott és nem támogatott topológiák az Azure AD Connect
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 1034c000-59f2-4fc8-8137-2416fa5e4bfe
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 74b2cea8e3adfb6689d4ac7049e7892f8f0ecf4a
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: be53e26d6277465836163b43fc5ab2529c67deef
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582632"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470188"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure AD) topológiákat, amelyek az Azure AD Connect-szinkronizálást használ, a főbb integrációs megoldása. Ez a cikk is támogatott, és nem támogatott konfigurációkat tartalmaz.
@@ -67,7 +67,7 @@ Közös topológiákat tárgyalja a szakaszok kapcsolatos [külön topológiák]
 
 Feltételezi, hogy az alapértelmezett konfiguráció az Azure AD Connect szinkronizálása:
 
-* Minden felhasználó csak egy engedélyezett fiókkal rendelkezik, és az erdőben, ahol ennek a fióknak-e a felhasználó hitelesítésére szolgál. Ez feltételezi, a jelszókivonatok szinkronizálása, átmenő hitelesítést és összevonási. Ez az erdő származnak a UserPrincipalName és sourceAnchor/immutableid azonosítója.
+* Minden felhasználó csak egy engedélyezett fiókkal rendelkezik, és az erdőben, ahol ennek a fióknak-e a felhasználó hitelesítésére szolgál. Ez feltételezi, a jelszókivonatok szinkronizálása, átmenő hitelesítést és összevonási. UserPrincipalName and sourceAnchor/immutableID come from this forest.
 * Minden felhasználó csak egy postaláda rendelkezik.
 * Az erdő, amely a postaládát egy felhasználó futtatja a legjobb adatminőség attribútumok látható a az Exchange globális cím lista (GAL) rendelkezik. Ha a felhasználó nem postaláda, bármely erdőben való közreműködésre ezeket az attribútumértékeket használható.
 * Rendelkezhetnek hivatkozott postafiókkal, ha nincs egy fiók a bejelentkezéshez használt eltérő erdőben.

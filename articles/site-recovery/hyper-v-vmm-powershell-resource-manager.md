@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: f0ce189ebbec6991a1ec316219d45b96cc85f202
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8d0e00223fcd55a1049900b502b52745837bf8fc
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845943"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462556"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Állítsa be a Hyper-V virtuális gépek vészhelyreállítása egy másodlagos helyre a PowerShell (Resource Manager) használatával
 
@@ -276,4 +276,4 @@ A következő parancsok használatával figyelése a feladatátvételt. Várjon,
 
 ## <a name="next-steps"></a>További lépések
 
-[További](/powershell/module/azurerm.recoveryservices.backup/#recovery) Site Recovery Resource Manager PowerShell-parancsmagokkal kapcsolatos.
+[További](/powershell/module/azurerm.recoveryservices.backup/) Site Recovery Resource Manager PowerShell-parancsmagokkal kapcsolatos.

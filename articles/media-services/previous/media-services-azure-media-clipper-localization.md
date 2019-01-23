@@ -1,28 +1,28 @@
 ---
-title: Azure Media Webmontázskészítő honosítási konfigurálása |} Microsoft Docs
-description: Tudnivalók az Azure Media Webmontázskészítő támogatott nyelvek és honosítási támogatása
+title: Azure Media Clipperrel honosítás konfigurálása |} A Microsoft Docs
+description: További tudnivalók az Azure Media Clipperrel támogatott nyelvek és honosítási támogatás
 services: media-services
-keywords: Klip; subclip; kódolás; adathordozó
+keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: dd0fc87741befd92cc41d0129fafcbc64db7ec9e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 227a312839950652924e75f0bafb474ce7bac588
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788143"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448666"
 ---
-# <a name="configure-localization"></a>Honosítási konfigurálása
-Az Azure Media Webmontázskészítő 18 nyelveken érhető el. A widget nyelvi beállításához meg kell adnia a `language` paraméter inicializálása során. A kívánt nyelvet kód karakterláncban át az alábbi listából:
-- Kínai (egyszerűsített): zh-hans
+# <a name="configure-localization"></a>Honosítás konfigurálása
+Az Azure Media Clipperrel 18 nyelveken érhető el. A widget nyelvének beállítása, meg kell határoznia a `language` paraméter az inicializálás során. Adja át az alábbi listából a kívánt nyelvű kód karakterlánc:
+- Chinese (Simplified): zh-hans
 - Kínai (hagyományos): zh-hant
 - Cseh: cs
 - Holland, Flemish: nl
-- Angol: en
+- Angol nyelvű: en
 - Francia: fr
 - Német: Németország
 - Magyar: hu
@@ -31,13 +31,13 @@ Az Azure Media Webmontázskészítő 18 nyelveken érhető el. A widget nyelvi b
 - Koreai: ko
 - Lengyel: pl
 - Portugál (brazíliai): pt-br
-- Portugál (Portugália): pt-pt
+- Portugál (portugáliai): pt-pt
 - Orosz: ru
 - Spanyol: es
 - Svéd: sv
 - Török: tr
 
-Állítsa be az egyéni szótár, vagy az alapértelmezett nyelv szótár kiterjesztése, meg kell határoznia a `languages` vagy `extraLanguages` paraméter, illetve. Adjon át a következő JSON formátummal egyéni szótár:
+Állítsa be egy egyéni szótár, vagy bővítheti az alapértelmezett nyelv szótár, meg kell adnia a `languages` vagy `extraLanguages` paramétert, illetve. A következő JSON-formátumban egy egyéni szótárba adja át:
 
 ```javascript
 {
@@ -49,7 +49,7 @@ Az Azure Media Webmontázskészítő 18 nyelveken érhető el. A widget nyelvi b
 }
 ```
 
-Például az alábbi példa meghatározza, hogy az angol nyelvű honosított karakterláncok:
+Az alábbi minta például az angol nyelvű honosított karakterláncot határozza meg:
 
 ```javascript
 {
@@ -104,7 +104,7 @@ Például az alábbi példa meghatározza, hogy az angol nyelvű honosított kar
         'AdvancedSettings.allAudioTracks': 'All audio tracks selected',
         'AdvancedSettings.someAudioTracks': '{0} audio tracks selected',
         'AdvancedSettings.includeAllAudioTracks': 'Include all audio tracks',
-        'AssetsPanel.loadingError': 'Failed to retreive assets from server.',
+        'AssetsPanel.loadingError': 'Failed to retrieve assets from server.',
         'AssetsPanel.retry': 'Retry?',
         'CommandBar.prevFrameTitle': 'Move one frame backwards',
         'CommandBar.prevKeyFrameTitle': 'Move one GOP backwards',
@@ -139,7 +139,7 @@ Például az alábbi példa meghatározza, hogy az angol nyelvű honosított kar
 ```
 
 ## <a name="next-steps"></a>További lépések
-A következő lépések Azure Media Webmontázskészítő konfigurálásához:
-- [Az Azure Media Webmontázskészítő eszközök betöltése](media-services-azure-media-clipper-load-assets.md)
+Tekintse meg a következő lépések az Azure Media Clipperrel konfigurálása:
+- [Eszközök betöltése az Azure Media clipperbe](media-services-azure-media-clipper-load-assets.md)
 - [Egyéni billentyűparancsok konfigurálása](media-services-azure-media-clipper-keyboard-shortcuts.md)
-- [A Webmontázskészítő Kivágás-feladatok elküldése](media-services-azure-media-clipper-submit-job.md)
+- [Az a Clipperrel klipekkel kapcsolatos feladatok elküldése](media-services-azure-media-clipper-submit-job.md)

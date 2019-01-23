@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 0fe4a9f05e0f6d1abed7b906cc5cd89854885ae5
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 42477a69616024ae9564d3665a47ff00161ea792
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53992855"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451052"
 ---
 # <a name="what-is-text-analytics"></a>Mi a Text Analytics?
 
@@ -68,7 +68,7 @@ A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. A jele
 
 | Korlát | Érték |
 |------------------------|---------------|
-| Az egyes dokumentumok maximális mérete | 5000 karakter, `String.Length` szerint számolva. |
+| Az egyes dokumentumok maximális mérete | 5000 karakternél által mért [ `StringInfo.LengthInTextElements` ](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Teljes kérés maximális mérete | 1 MB |
 | Egy kérésbe foglalt dokumentumok maximális száma | 1000 dokumentum |
 

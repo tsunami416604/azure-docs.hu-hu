@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 12/31/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 90f3a4571e485e52a47eda34eacf6367aef35933
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 703d255a962dbac7a430404835c6d45c358d99a7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320990"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478101"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -43,7 +43,23 @@ Az LRS vagy GRS tárfiókra van szükség. Mi a GRS használatát javasoljuk, mi
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Nem a saját Azure-fiók létrehozása a virtuális gépek van szüksége?
 Ha Ön olyan előfizetés rendszergazdája, akkor a replikációs szükséges engedélyekkel. Ha nem Ön, szüksége van egy Azure virtuális gép létrehozása az az erőforráscsoport és a Site Recovery konfigurálásakor megadott virtuális hálózat és a kiválasztott tárfiók írási engedélyekkel. [További információk](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
+## <a name="azure-site-recovery-components-upgrade"></a>Az Azure Site Recovery-összetevők frissítése
 
+### <a name="my-mobility-agentconfiguration-serverprocess-server-version-is-very-old-and-my-upgrade-has-failed-how-should-i-upgrade-to-latest-version"></a>A mobilitási ügynök/konfigurációs kiszolgáló/Folyamatkiszolgáló verziója nagyon elavult, és a frissítés sikertelen volt. Hogyan frissítsen a legújabb verziót?
+
+Az Azure Site Recovery N-4 támogatási modelljét követi. Tekintse meg a [támogatási nyilatkozattal](https://aka.ms/asr_support_statement) nagyon régi verzió frissítése a megértéséhez.
+
+### <a name="where-can-i-find-the-release-notesupdate-rollups-of-azure-site-recovery"></a>Hol található a kibocsátási megjegyzések és kumulatív az Azure Site Recovery?
+
+Tekintse meg a [dokumentum](https://aka.ms/asr_update_rollups) kiadási megjegyzéseket talál. Egyes kumulatív frissítést az egyes összetevők telepítési hivatkozások találhatja meg.
+
+### <a name="how-should-i-upgrade-site-recovery-components-for-on-premises-vmware-or-physical-site-to-azure"></a>Hogyan kell frissíteni a helyszíni VMware vagy fizikai helyről az Azure Site Recovery-összetevők?
+
+Tekintse meg a kapott útmutatót [Itt](https://aka.ms/asr_vmware_upgrades) az összetevő frissítését.
+
+## <a name="is-reboot-of-source-machine-mandatory-for-each-upgrade"></a>Minden egyes frissítés esetén a rendszer újraindítása a forrásgép?
+
+Ajánlott, de már nem kötelező minden frissítést. Tekintse meg [Itt](https://aka.ms/asr_vmware_upgrades) vonatkozó irányelvek törlése.
 
 ## <a name="on-premises"></a>Helyszíni követelmények
 
@@ -142,7 +158,7 @@ Nem. Ehhez állítsa be a konfigurációs kiszolgáló az egyes régiókban kell
 Bár lehetséges a konfigurációs kiszolgálón futó Azure virtuális gép kell a helyszíni VMware-infrastruktúra és a virtuális gépek kommunikálnak. Ez adja hozzá a késésük, és hatással van a folyamatban lévő replikáció.
 
 ### <a name="how-do-i-update-the-configuration-server"></a>Hogyan frissíthetem a konfigurációs kiszolgálót?
-[Ismerje meg](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) a konfigurációs kiszolgáló frissítése. A legújabb frissítés információkat a a [Azure frissítéseit tartalmazó lapon](https://azure.microsoft.com/updates/?product=site-recovery). Emellett közvetlenül is letöltheti a legújabb verzióra a konfigurációs kiszolgáló [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+[Ismerje meg](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) a konfigurációs kiszolgáló frissítése. A legújabb frissítés információkat a a [Azure frissítéseit tartalmazó lapon](https://azure.microsoft.com/updates/?product=site-recovery). Emellett közvetlenül is letöltheti a legújabb verzióra a konfigurációs kiszolgáló [Microsoft Download Center](https://aka.ms/asrconfigurationserver). Ha a verzió régebbi, mint a jelenlegi 4 verziók, tekintse meg a [támogatási nyilatkozattal](https://aka.ms/asr_support_statement) frissítési útmutató.
 
 ### <a name="should-i-backup-the-deployed-configuration-server"></a>Kell-e biztonsági a központilag telepített konfigurációs kiszolgálót?
 Azt javasoljuk, hogy a konfigurációs kiszolgáló rendszeres ütemezett biztonsági másolatok készítése. A sikeres feladat-visszavételhez a virtuális gép folyamatban van a feladatátvételben szerepelniük kell a konfigurációs kiszolgáló adatbázisát, és a konfigurációs kiszolgálón fut, és a egy csatlakoztatott állapotban kell lennie. További információ a konfigurációs kiszolgáló gyakori felügyeleti feladatok [Itt](vmware-azure-manage-configuration-server.md).

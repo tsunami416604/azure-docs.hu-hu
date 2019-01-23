@@ -4,7 +4,7 @@ description: Ismerje meg az összekötők lap a Synchronization Service Managert
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 60f1d979-8e6d-4460-aaab-747fffedfc1e
 ms.service: active-directory
@@ -16,16 +16,16 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 592fcd80b80ecbd101dd559aa8baf78a60aaa517
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5c3931fd75ea8e0780b8a7b4f613c865267074c1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312626"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466811"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Összekötők használata az Azure AD Connect szinkronizálása a Service Manager rendszerrel
 
-![Szinkronizálási szolgáltatáskezelő](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
 Az összekötők lap a szinkronizálási motor csatlakozik az összes rendszer kezelésére szolgál.
 
@@ -46,7 +46,7 @@ Az összekötők lap a szinkronizálási motor csatlakozik az összes rendszer k
 
 ### <a name="delete"></a>Törlés
 A törlési művelet használható két különböző dolgok.  
-![Szinkronizálási szolgáltatáskezelő](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
 A beállítás **törlés csak az összekötő-térben** eltávolítható az összes adat, de a konfiguráció megtartása.
 
@@ -57,12 +57,12 @@ Mindkét lehetőség összes objektum szinkronizálása, és a metaverzum-objekt
 ### <a name="configure-run-profiles"></a>Futtatási profilok konfigurálása
 Ez a beállítás lehetővé teszi, hogy megtekintheti a konfigurált összekötők futtatási profilokat.
 
-![Szinkronizálási szolgáltatáskezelő](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>Keresési Összekötőterét
 A keresési összekötő terület művelet hasznos keresheti meg az objektumot, és az adatokkal kapcsolatos problémák elhárítása.
 
-![Szinkronizálási szolgáltatáskezelő](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
 Első lépésként válassza ki a **hatókör**. Kereshet az adatok alapján (RDN, DN-t, rögzítési, részfájának), vagy az objektum (az összes többi beállítást) állapot.  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  

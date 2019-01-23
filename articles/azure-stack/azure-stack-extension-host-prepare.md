@@ -5,21 +5,21 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/27/2018
+ms.date: 01/22/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: ec7b1ad33ec80593b718bdf86a48269fb469e078
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: daf524e6802fbb0548ff2d30d32dc6fbd4bc68cb
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413515"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476393"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure stack-bővítmény gazdagép előkészítése
 
-A bővítmény fogadó Azure Stack védi a szükséges TCP/IP-portok számának csökkentésével. Ez a cikk megvizsgálja a bővítmény gazdagéptől, ami a 1808 frissítés után automatikusan engedélyezve van az Azure Stack frissíteni csomag segítségével az Azure Stack előkészítése.
+A bővítmény fogadó Azure Stack védi a szükséges TCP/IP-portok számának csökkentésével. Ez a cikk megvizsgálja a bővítmény gazdagéptől, ami a 1808 frissítés után automatikusan engedélyezve van az Azure Stack frissíteni csomag segítségével az Azure Stack előkészítése. Ez a cikk az Azure Stack frissítéseinek 1808 1809 és 1811 vonatkozik.
 
 ## <a name="certificate-requirements"></a>Tanúsítványkövetelmények
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 4244520fa30fece53e1d01e50044cfeca496066c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f6aee3c42c7c01d226732245b47dfb87e07a5ce4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973337"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464459"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Nyitott portok és végpontok egy Linux rendszerű virtuális géphez az Azure CLI-vel
 
@@ -42,7 +42,7 @@ A szabályok definiálása egy forrás IP-címtartomány, például jobban kézb
 
 
 ## <a name="create-a-network-security-group-and-rules"></a>A hálózati biztonsági csoport és a szabályok létrehozása
-A hálózati biztonsági csoport létrehozása [az network nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). A következő példában létrehozunk egy hálózati biztonsági csoport nevű *myNetworkSecurityGroup* a a *eastus* helye:
+A hálózati biztonsági csoport létrehozása [az network nsg létrehozása](/cli/azure/network/nsg). A következő példában létrehozunk egy hálózati biztonsági csoport nevű *myNetworkSecurityGroup* a a *eastus* helye:
 
 ```azurecli
 az network nsg create \

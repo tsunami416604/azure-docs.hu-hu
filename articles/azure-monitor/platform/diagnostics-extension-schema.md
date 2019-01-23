@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 064c1b8100e165627d5227b9f24b87aefae2e769
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 92ae1e31a739486871ebff69740f31a495c7b780
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790758"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471650"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Az Azure Diagnostics bővítmény konfigurációs séma verziók és előzményei
 Ezt oldal indexek az Azure Diagnostics bővítmény séma verziója le szállítani, a Microsoft Azure SDK csomag részeként.  
@@ -210,3 +210,4 @@ Ha frissít a projekt az Azure SDK 2.4 az Azure SDK 2.5-ös vagy újabb, meg kel
 * **Cloud service-alkalmazások diagnosztikai adatait csak a szerepkör szintjén, a példány szintjén konfigurálható.**
 * **Minden alkalommal, amikor telepíti az alkalmazását, a diagnosztikai konfigurációja frissül** – funkcióparitási problémák léphetnek fel, ha a Server Explorer a diagnostics konfigurációjának módosítása, és ezt követően telepítse újra az alkalmazást.
 * **Az Azure SDK 2.5-ös és újabb összeomlási memóriaképek vannak-e konfigurálva a diagnosztikai konfigurációs fájlban, nem a kódban** – ha van konfigurálva a kódban összeomlási memóriaképek, kell manuális átvitele a konfiguráció code-ból a konfigurációs fájlt, mert a összeomlási memóriaképek Azure SDK 2.6-os az áttelepítés során nem kerülnek.
+

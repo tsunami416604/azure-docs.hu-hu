@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 69caec10c1be067cf9e8fc7ad83c8daeaced2bda
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 6a0061c03a10f5a5bd518c9ea01d8edd542e4e39
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106690"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470562"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Az Azure Diagnostics 1.2-es konfigurációs séma
 > [!NOTE]
@@ -102,7 +102,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**StorageAccount**|Az adatok tárolásához Azure Storage-fiók neve. Ez is megadható paramétert a Set-AzureServiceDiagnosticsExtension parancsmag végrehajtása közben.|  
 |**LocalResourceDirectory**|A könyvtár a virtuális gép által a Monitoring Agent eseményadatok tárolására használható. Ha nem, az alapértelmezett címtár használatos:<br /><br /> Feldolgozói/webes szerepkör: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Egy virtuális géphez: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Szükséges attribútumok a következők:<br /><br /> -                      **elérési út** – a rendszer az Azure Diagnostics által használandó könyvtárába.<br /><br /> -                      **expandEnvironment** – azt szabályozza, hogy környezeti változókat az elérési útban bontva.|  
 
-## <a name="wadcfg-element"></a>WadCFG elem  
+## <a name="wadcfg-element"></a>WadCFG Element  
 A telemetriai adatokat gyűjteni konfigurációs beállításait határozza meg. A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
@@ -116,7 +116,7 @@ A telemetriai adatokat gyűjteni konfigurációs beállításait határozza meg.
 |**PerformanceCounters**|Lehetővé teszi a teljesítményszámláló-gyűjtemény. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus".](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**WindowsEventLog**|Lehetővé teszi, hogy a gyűjtemény Windows eseménynaplók. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus".](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 
-## <a name="crashdumps-element"></a>CrashDumps elem  
+## <a name="crashdumps-element"></a>CrashDumps Element  
  Lehetővé teszi az összeomlási memóriaképek gyűjteménye. A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
@@ -180,23 +180,24 @@ A telemetriai adatokat gyűjteni konfigurációs beállításait határozza meg.
 |------------------|-----------------|  
 |**MetricAggregation**|Kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML-adattípus időtartama](https://www.w3schools.com/xml/schema_dtypes_date.asp).|  
 
-## <a name="performancecounters-element"></a>PerformanceCounters elem  
+## <a name="performancecounters-element"></a>PerformanceCounters Element  
  Lehetővé teszi a teljesítményszámláló-gyűjtemény. A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
 |**PerformanceCounterConfiguration**|A következő attribútumok szükség:<br /><br /> -                     **counterSpecifier** – a teljesítményszámláló neve. Például: `\Processor(_Total)\% Processor Time`. Teljesítmény listája számlálókat a gazdagépen futó futtassa a parancsot `typeperf`.<br /><br /> -                     **sampleRate** -gyakoriságát. a számláló kell mintát venni.<br /><br /> Nem kötelező attribútum:<br /><br /> **egység** – a számláló mértékegysége.|  
 
-## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration elem  
+## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration Element  
  A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
 |**annotation**|Kötelező attribútum:<br /><br /> **displayName** – Ez a számláló megjelenített neve<br /><br /> Nem kötelező attribútum:<br /><br /> **területi beállítás** – a területi beállítása során használatos évformátum meghatározása a számláló neve|  
 
-## <a name="windowseventlog-element"></a>WindowsEventLog elem  
+## <a name="windowseventlog-element"></a>WindowsEventLog Element  
  A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
 |**Adatforrás**|A Windows Eseménynapló bejegyzéseit, amelyek gyűjtése. Kötelező attribútum:<br /><br /> **név** – az XPath-lekérdezés, amely leírja a windows-eseményeket tudjon gyűjteni. Példa:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Összes eseményének gyűjtéséhez, adja meg a "*".|
+

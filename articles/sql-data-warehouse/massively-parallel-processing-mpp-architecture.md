@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 92e16104edb46298d6e503b7546449ed71041047
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 236b7543772f9e6df9c7ba7f1a9365153593a929
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005750"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473180"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Az Azure SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra
 Ismerje meg, hogyan kombinálja az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) és az Azure storage nagy teljesítménye és skálázhatósága eléréséhez. 
@@ -36,11 +36,11 @@ Az SQL Data Warehouse a tárterület és a számítási műveletek elkülönít�
 * A számítási kapacitás az adatok érintetlenül hagyásával, így csak fizetnie storage.
 * A működési időn belül folytatni tudja a számítási kapacitást.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Storage tárterület
 Az SQL Data warehouse-bA az Azure storage segítségével a felhasználói adatok biztonsága.  Mivel az adatok tárolásának és kezeli az Azure storage, SQL Data Warehouse külön-külön tárhelyet díjat. Az adat, szilánkokra osztott **disztribúciók** a rendszer a teljesítmény optimalizálása érdekében. Kiválaszthatja, melyik horizontális skálázási minta használatával ossza el az adatokat, ha a tábla meghatározása. Az SQL Data Warehouse a horizontális skálázási mintát támogat:
 
 * Kivonat
-* Ciklikus multiplexelés
+* Ciklikus időszeletelés
 * Replikálás
 
 ### <a name="control-node"></a>Vezérlő csomópont
@@ -51,7 +51,7 @@ A vezérlő csomópont a data warehouse az agy. Ez az az előtérbeli rendszer, 
 
 A számítási csomópontok a számítási teljesítményt nyújtanak. Számítási csomópontok feldolgozási disztribúciók térképet. További számítási erőforrásokat kell fizetnie, mint az SQL Data Warehouse újra leképezi a disztribúciók elérhető számítási csomópontjain. Számítási csomópontok tartomány 1 és 60, és határozza meg a szolgáltatási szint a data warehouse-hoz.
 
-Minden számítási csomópont van egy csomópont-azonosító, amely a rendszer láthatók. A számítási csomópont-azonosító alapján keres a sys.pdw_nodes kezdődő rendszernézetek $node_id oszlopban megjelenik. Ezek rendszernézetek listáját lásd: [MPP rendszernézetek](sql-data-warehouse-reference-tsql-statements.md).
+Minden számítási csomópont van egy csomópont-azonosító, amely a rendszer láthatók. A számítási csomópont-azonosító alapján keres a sys.pdw_nodes kezdődő rendszernézetek $node_id oszlopban megjelenik. Ezek rendszernézetek listáját lásd: [MPP rendszernézetek](http://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
 
 ### <a name="data-movement-service"></a>Adatátviteli szolgáltatás
 Az adatátviteli szolgáltatás (DMS) az, hogy koordinálja a számítási csomópontok közötti adatáthelyezés adatok átviteli technológiát. Néhány lekérdezés annak érdekében, hogy a párhuzamos lekérdezések pontos eredményeket adjon vissza adatáthelyezés van szükség. Amikor szükség az adatmozgatás, a DMS biztosítja, hogy a megfelelő adatokat lekérdezi a megfelelő helyre. 

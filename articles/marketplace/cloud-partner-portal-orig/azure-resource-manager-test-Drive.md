@@ -1,6 +1,6 @@
 ---
 title: Az Azure Resource Manager kipróbálása |} A Microsoft Docs
-description: Build Markeplace próbálja ki az Azure Resource MAnager használatával
+description: Hozhat létre a Marketplace-en próbálja ki az Azure Resource Manager használatával
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: pbutlerm
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 87e57a1ee417a4cc69308e8af80dd9b781d60aaf
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b7cbd69a4551605b71930a23f837b467177e3cc3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139265"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451357"
 ---
 <a name="azure-resource-manager-test-drive"></a>Az Azure Resource Manager kipróbálása
 =================================

@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: A deklaratív kiépítés kifejezéseinek |} A Microsoft Docs'
+title: 'Azure AD Connect: Deklaratív kiépítés kifejezések |} A Microsoft Docs'
 description: A deklaratív kiépítés kifejezéseinek ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 26c835e6c2f658f7ad852fdd02dc8974db33e47b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 488309d9d78834896a939c66ccdc7515310103de
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312066"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460493"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Az Azure AD Connect szinkronizálása: deklaratív kiépítés kifejezéseinek ismertetése
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Az Azure AD Connect szinkronizálása: A deklaratív üzembe helyezési kifejezések ismertetése
 Az Azure AD Connect szinkronizálása a deklaratív kiépítés a Forefront Identity Manager 2010 rendszerben bevezetett épül. Ez lehetővé teszi, hogy a teljes körű identitás integrációs üzleti logikát lefordított kód írása nélkül.
 
 Deklaratív kiépítés fontos része az attribútumfolyamok kifejezés nyelve. A használt nyelv alkészlete a Microsoft® Visual Basic® Applications (VBA). Ezen a nyelven a Microsoft Office használja, és a VBScript élménye rendelkező felhasználók is felismeri azt. A deklaratív kiépítés Kifejezésnyelveket csak funkciókat használ, és nem strukturált nyelvet. Nincsenek módszerek vagy utasításokat. Az express programot a folyamat inkább beágyazott függvények.
@@ -32,13 +32,13 @@ További részletekért lásd: [Üdvözli az alkalmazások nyelvi dokumentáció
 Az attribútumok vannak listaobjektum. A függvény csak a megfelelő típusú attribútumokat fogad el. Emellett akkor is kis-és nagybetűket. Mind a nevét, és a attribútumnevek rendelkeznie kell a megfelelő kis-és nagybetűhasználatot, vagy egy hiba lépett fel.
 
 ## <a name="language-definitions-and-identifiers"></a>Nyelvi definíciók és azonosítók
-* Függvények, a neve, és a zárójelek argumentumok: (argument 1, argumentum N) függvénynév.
+* Függvények, a neve, és a zárójelek argumentumok: Függvénynév (argument 1, argumentum N).
 * Attribútumok szögletes zárójelek azonosítja: [attributeName]
 * Paraméterek százalékjelek azonosítja: % ParameterName %
-* Karakterlánc-állandókat idézőjelek között veszi körül: például "Contoso" (Megjegyzés: kell használnia a Egyenes idézőjel "", és nem az ajánlatok intelligens "")
+* A karakterlánc-állandókat idézőjelek között veszi körül: Például "Contoso" (Megjegyzés: kell használnia a Egyenes idézőjel "", és nem az ajánlatok intelligens "")
 * Numerikus értékek idézőjeleket kifejezett és kell lennie a tizedes tört. Hexadecimális értékek van fűzve előtagként & h Ha például a 98052 & HFF
-* Az állandókat ki, a logikai értékek: True, False.
-* Beépített állandók és az sztringkonstansoknak kell megadni, amelyek neve csak: NULL, CRLF, IgnoreThisFlow
+* Logikai értékek az állandókat ki: IGAZ, hamis.
+* Normál és a beépített állandókat, amelyek neve csak van megadva: NULL, CRLF, IgnoreThisFlow
 
 ### <a name="functions"></a>Functions
 Számos függvényt deklaratív kiépítés használja ahhoz, hogy átalakítja a attribútumértékek lehetőségét. Ezek a függvények beágyazhatja, így az eredmény egy függvény egy másik függvénynek átadott.
@@ -93,7 +93,7 @@ Példa:
 
 **Áttekintő témakör**
 
-* [Az Azure AD Connect szinkronizálása: ismertetése, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 
 **Referencia-témakörök**

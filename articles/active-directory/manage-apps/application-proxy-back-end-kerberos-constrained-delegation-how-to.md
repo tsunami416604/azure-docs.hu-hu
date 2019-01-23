@@ -4,7 +4,7 @@ description: A Kerberos által korlátozott delegálás konfigurációi alkalmaz
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2a55e39414cd691c48b015b3aae73f93cbb95aab
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 99f756489c04637d37de5e1baff7e4fe46c3947a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134658"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462691"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>A Kerberos általi korlátozott delegálás konfigurációi alkalmazásproxy hibaelhárítása
 
@@ -64,7 +64,7 @@ Mi látható KCD probléma? Nincsenek számos gyakori megjelölések KCD SSO nem
 
    ![Nem sikerült, mert nem rendelkezik engedéllyel engedélyezési](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-Mindkét ezeket a lemezképeket a azonos tünet megjelenítése: egyszeri bejelentkezés sikertelen. Az alkalmazás felhasználói hozzáférés megtagadva.
+Az azonos tünet mindkét ezeket a lemezképeket megjelenítése: Egyszeri bejelentkezés sikertelen. Az alkalmazás felhasználói hozzáférés megtagadva.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

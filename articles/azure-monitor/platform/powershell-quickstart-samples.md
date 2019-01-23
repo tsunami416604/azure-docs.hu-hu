@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
-ms.component: ''
-ms.openlocfilehash: 72c50871f0d339d5d8f173a50e03aefc72fdcb36
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: ''
+ms.openlocfilehash: d3bd4d80f167a496c9b980891f31d30bc86a0cb2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585334"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473759"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Az Azure Monitor PowerShell gyors üzembe helyezési minták
 Ez a cikk mutatja, a minta PowerShell-parancsok segítségével elérheti az Azure Monitor-funkciók.
@@ -23,7 +23,7 @@ Ez a cikk mutatja, a minta PowerShell-parancsok segítségével elérheti az Azu
 > 
 > 
 
-## <a name="set-up-powershell"></a>PowerShell beállítása
+## <a name="set-up-powershell"></a>Set up PowerShell
 Ha még nem tette, PowerShell beállítása a futást a számítógépen. További információkért lásd: [telepítése és konfigurálása PowerShell](/powershell/azure/overview).
 
 ## <a name="examples-in-this-article"></a>Ebben a cikkben szereplő példák
@@ -387,3 +387,4 @@ Vegye figyelembe, hogy a munkaterület azonosítója tulajdonság vesz igénybe 
 ```
 
 Ezek a parancsok kombinálható több célhelyre történő adatküldéshez.
+

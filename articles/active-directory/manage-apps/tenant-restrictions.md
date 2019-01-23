@@ -4,7 +4,7 @@ description: Bérlői korlátozások használata kezelheti, hogy mely felhaszná
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: yossib
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: 6989fe88fa17bcd99c99ee3e82d82fb403d1aae4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 97cabf7821f223b900f86115c3bd85b12de450d4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096706"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478144"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A felhőalapú alkalmazások használati Bérlőkorlátozások SaaS való hozzáférés kezelése
 
@@ -70,7 +70,7 @@ Bérlői korlátozások engedélyezése a proxy-infrastruktúrán keresztül a k
 
 #### <a name="configuration"></a>Konfiguráció
 
-Az egyes bejövő kérések login.microsoftonline.com, login.microsoft.com és login.windows.net két HTTP-fejlécek beszúrása: *korlátozása-Access-az-bérlők* és *korlátozása-Access-környezet*.
+Az egyes bejövő kérések login.microsoftonline.com, login.microsoft.com és login.windows.net szúrjon be két HTTP-fejlécek: *Korlátozása-Access-az-bérlők* és *korlátozása-Access-környezet*.
 
 A fejlécek a következő elemeket kell tartalmaznia: 
 - A *korlátozása-Access-az-bérlők*, érték \<engedélyezett bérlő listájának\>, azaz engedélyezheti a felhasználók hozzáférhessenek a bérlők vesszővel tagolt listája. Bármely tartomány, amely regisztrálva van a bérlő segítségével azonosíthatja a bérlő ebben a listában. Például hogy engedélyezze a hozzáférést a Contoso és Fabrikam is bérlők számára, a név-érték pár hasonlóan néz ki:  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 

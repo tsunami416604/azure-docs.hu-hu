@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9386f0e0bf552789b027df96e9e54ebcf31d7d34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809731"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448483"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Az alkalmazás a közzétételi portál beállítása
 
@@ -82,15 +82,15 @@ A legtöbb közzétevők hagyja ezeket az alapértelmezett értékeket, a felhas
 
 A következő magyarázatot ezeket a mezőket:
 
-* A csomag fájlneve: A fájl nevét, ha a zip-fájl létrehozása, amely a CRM AppSource csomag az az előző lépésben létrehozott. A fenti példában, a "Microsoft\_SamplePackage.zip".
-* A csomaghely URL-címe: az URL-címe, amely tartalmazza a fent megadott fájl nevét az Azure Storage-fiókhoz. 9. lépés a fenti szakaszban létrehozott URL-címe.
-* Van az alkalmazáscsomag-fájl jelenleg több mint egy crm-csomag: válassza ki Igen **csak** Ha támogatja a különböző verzióinak különböző csomagokkal crm. A legtöbb partnerek számára ez lesz a "No". Ha az Igen lehetőséget választja, meg kell AppSource csomagok létrehozása a megoldás minden egyes verziója. _Megjegyzés: A rendszer nem azzal, hogy ha azok több **zip** fájlokat. Ha több solution.zip fájlt, de csak egyetlen verziója, továbbra is választhat "nem" található. A csomagolás eszköz fog hozzák ezek automatikusan._
+* A csomag neve: A fájl nevét a fenti lépésben létrehozott esetén a zip-fájl létrehozása, amely a CRM AppSource csomag. A fenti példában, a "Microsoft\_SamplePackage.zip".
+* A csomaghely URL-címe: Ez az URL-CÍMÉT az Azure Storage-fiókot, amely tartalmazza a fent megadott fájl nevét. 9. lépés a fenti szakaszban létrehozott URL-címe.
+* Van több crm-csomagot a csomag fájlban: Válassza az Igen **csak** Ha crm, a különböző csomagok több verzióját támogatja. A legtöbb partnerek számára ez lesz a "No". Ha az Igen lehetőséget választja, meg kell AppSource csomagok létrehozása a megoldás minden egyes verziója. _Megjegyzés: Ez azt nem kéri, ha azok több **zip** fájlokat. Ha több solution.zip fájlt, de csak egyetlen verziója, továbbra is választhat "nem" található. A csomagolás eszköz fog hozzák ezek automatikusan._
 
 ### <a name="crm-package-availability"></a>CRM-csomag rendelkezésre állása
 
 Ebben a szakaszban válassza ki, milyen régiók CRM, a csomag számára elérhető lesz. Információ, amelyre régiókban mely országokban szolgálnak tekintse meg a hivatkozást: [http://o365datacentermap.azurewebsites.net/](http://o365datacentermap.azurewebsites.net/)
 
-Megjegyzés: A Németországi való üzembe helyezés "Szuverén és Egyesült Államokbeli kormányzati felhő" szuverén REQUIRES speciális engedélyek és az érvényesítés során a hitelesítésszolgáltató
+Megjegyzés: Németország való üzembe helyezés "Szuverén és Egyesült Államokbeli kormányzati felhő" szuverén REQUIRES speciális engedélyek és az érvényesítés során a hitelesítésszolgáltató
 
 ## <a name="storefront-details"></a>Storefront részletei
 
@@ -182,13 +182,13 @@ Adja meg a használati feltételeket az alkalmazás. Appsource-on ügyfelei elfo
 
 Adja meg az alkalmazás a támogatási URL-CÍMÉT.
 
-### <a name="lead-destination"></a>Cél vezethet
+### <a name="lead-destination"></a>Lead Destination
 
-Válassza ki a CRM-rendszerrel, ahol vezető rendszer tárolja. Ha rendelkezik ilyennel, a következő CRM rendszereket itt válassza a "Azure Table": Salesforce, a Marketo, a Microsoft Dynamics CRM-hez. A CRM-rendszerrel, itt, ahol írunk a végfelhasználók számára, hogy kipróbálják az alkalmazását az appsource-ban (érdeklődők) részleteit. Attól függően, a CRM-rendszerrel választja kattintson a megfelelő URL-címet, végezze el a következő mezők információt
+Válassza ki a CRM-rendszerrel, ahol vezető rendszer tárolja. Ha rendelkezik ilyennel, a következő CRM rendszereket, válassza ki itt "Azure Table": A Salesforce, a Marketo, a Microsoft Dynamics CRM. A CRM-rendszerrel, itt, ahol írunk a végfelhasználók számára, hogy kipróbálják az alkalmazását az appsource-ban (érdeklődők) részleteit. Attól függően, a CRM-rendszerrel választja kattintson a megfelelő URL-címet, végezze el a következő mezők információt
 
 * [Azure-tábla](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
-* [A Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
+* [Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
 * [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md)
 
 ## <a name="storefront-details"></a>Storefront részletei

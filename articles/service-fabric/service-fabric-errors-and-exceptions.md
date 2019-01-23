@@ -1,6 +1,6 @@
 ---
-title: Közös FabricClient kivételek |} Microsoft Docs
-description: A közös kivételeket és alkalmazások és a fürt felügyeleti műveletek végrehajtása közben a FabricClient API-k által is okozott hibák ismerteti.
+title: Közös FabricClient kivételek |} A Microsoft Docs
+description: Gyakori kivételek és hibák, amely alkalmazások és a fürt felügyeleti műveletek végrehajtásakor a FabricClient API-k által is hibajelzést ismerteti.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/20/2018
 ms.author: ryanwi
-ms.openlocfilehash: e854ed42b6af8bc090950e8399e3229e202a2ed0
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 9e29f05c71f9dfe0bcd79135deb30d713fb3abb0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293412"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477093"
 ---
-# <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Közös kivételeket és hibák, amikor a FabricClient API-k használata
-A [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) API-k lehetővé teszik a felügyeleti feladatokat hajthat végre a Service Fabric-alkalmazás, szolgáltatás vagy fürt a fürt- és rendszergazdák. Például alkalmazás központi telepítése, frissítése és eltávolítása, a fürt ellenőrzése, vagy egy szolgáltatás tesztelése. Alkalmazásfejlesztők és a fürt rendszergazdák a FabricClient API-k használhatja a Service Fabric-fürt és az alkalmazások kezelésére szolgáló eszközök fejlesztéséhez.
+# <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Gyakori kivételek és hibák a FabricClient API-k használatakor
+A [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API-k lehetővé teszik a felügyeleti feladatokat hajthat végre egy Service Fabric-alkalmazás, szolgáltatás vagy fürt a fürt és az alkalmazások rendszergazdák. Például alkalmazás központi telepítése, frissítése és eltávolítása, a fürt állapotának ellenőrzése, vagy egy szolgáltatás tesztelése. Az alkalmazásfejlesztők és a fürt rendszergazdái használhatják a FabricClient API-k fejlesztéshez a Service Fabric-fürt és az alkalmazások kezelésére szolgáló eszközök.
 
-Nincsenek számos különböző típusú műveleteket, amelyek FabricClient használatával végezheti el.  Az egyes módszerek is throw kivételek miatt helytelen bemeneti hibák, futásidejű hibák vagy átmeneti infrastruktúra kapcsolatos problémákkal kapcsolatban.  Tekintse meg az API-referenciadokumentáció található mely kivételek egy adott módszerrel. Bizonyos kivételek vannak, azonban számos által is okozhat, amelyek különböző [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) API-k. A következő táblázat a kivételeket a FabricClient API-k által közösen használt.
+Nincsenek műveletek, amelyek a FabricClient használatával végezheti el számos különböző típusú.  Az egyes módszerek nagyvállalat kivételek, hibák helytelen bemenet miatt, futásidejű hibák és átmeneti infrastrukturális problémára.  Tekintse meg az API dokumentációjában található, mely kivételek egy adott módszerrel. Vannak kivételek, azonban, amely szerint számos hibajelzést is eltérő [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API-k. A következő táblázat felsorolja a kivételeket, amelyek közösek a FabricClient API-k között.
 
-| Kivétel | Mikor történt |
+| Kivétel | Mikor lépett fel |
 | --- |:--- |
-| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception#System_Fabric_FabricObjectClosedException) |A [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) objektum zárt állapotban van. Rendelkezési a [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) objektum használja, és a hozható létre egy új [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) objektum. |
-| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |A művelet túllépte az időkorlátot. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) ad vissza, ha a művelet kiszámítása konfigurált MaxOperationTimeout befejezéséhez. |
-| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception#System_UnauthorizedAccessException) |A hozzáférés-ellenőrzést, a művelet sikertelen volt. E_ACCESSDENIED adja vissza. |
-| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) |Futási hiba történt a művelet végrehajtása közben. A FabricClient módszerekkel potenciálisan throw [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException), a [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException_ErrorCode) tulajdonság jelzi a kivétel pontos okát. Hibakódok vannak definiálva a [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) enumerálása. |
-| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception#System_Fabric_FabricTransientException) |A művelet valamilyen egy átmeneti hiba miatt nem sikerült. Egy művelet például meghiúsulhat, mert replikák másodlagosak átmenetileg nem érhető el. Átmeneti kivételek követően újra megkísérelhető a sikertelen műveletek felelnek meg. |
+| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception#System_Fabric_FabricObjectClosedException) |A [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) objektum egy lezárt állapotban van. Tud megszabadulni a [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) objektum használ, és a egy új példányosítható [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) objektum. |
+| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |A művelet túllépte az időkorlátot. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) adja vissza, ha a művelet több mint MaxOperationTimeout befejezéséhez. |
+| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception#System_UnauthorizedAccessException) |A hozzáférés-ellenőrzés a művelet nem sikerült. E_ACCESSDENIED adja vissza. |
+| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) |Futási hiba történt a művelet végrehajtása közben. A FabricClient módszerekkel potenciálisan nagyvállalat [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException), a [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException_ErrorCode) tulajdonság azt jelzi, hogy a kivétel pontos okát. Hibakódok vannak definiálva a [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) enumerálása. |
+| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception#System_Fabric_FabricTransientException) |A művelet valamilyen feltétel átmeneti hiba miatt nem sikerült. Például egy művelet meghiúsulhat, mert a kvórum replikák szolgáltatás átmenetileg nem érhető el. Sikertelen műveletek újrapróbálható átmeneti kivételek felelnek meg. |
 
-Néhány gyakori [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) a hibákat, a adhatók vissza a [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException):
+Néhány gyakori [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) hibák, a visszaadható egy [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException):
 
 | Hiba | Állapot |
 | --- |:--- |
 | CommunicationError |Kommunikációs hiba miatt a művelet sikertelen, próbálja megismételni a műveletet. |
-| InvalidCredentialType |A hitelesítőadat-típus érvénytelen. |
-| InvalidX509FindType |A X509FindType érvénytelen. |
+| InvalidCredentialType |A hitelesítő adatok típusa érvénytelen. |
+| InvalidX509FindType |A X509FindType je neplatná. |
 | InvalidX509StoreLocation |A X509 tárolási helye érvénytelen. |
-| InvalidX509StoreName |A X509 tároló neve érvénytelen. |
+| InvalidX509StoreName |A X509 store neve érvénytelen. |
 | InvalidX509Thumbprint |A X509 tanúsítvány ujjlenyomata karakterlánc érvénytelen. |
 | InvalidProtectionLevel |A védelmi szint érvénytelen. |
-| InvalidX509Store |Nem lehet megnyitni a tanúsítványtárolót a X509. |
+| InvalidX509Store |A X509 nem lehet megnyitni a tanúsítványtárolót. |
 | InvalidSubjectName |A tulajdonos neve érvénytelen. |
-| InvalidAllowedCommonNameList |Köznapi név lista karakterlánc formátuma érvénytelen. Vesszővel tagolt listájának kell lennie. |
+| InvalidAllowedCommonNameList |Köznapi név listában karakterlánc formátuma érvénytelen. Vesszővel tagolt listájának kell lennie. |
 

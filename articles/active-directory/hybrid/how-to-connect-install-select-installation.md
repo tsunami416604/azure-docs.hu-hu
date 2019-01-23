@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: A telepítés típusának kiválasztása |} A Microsoft Docs'
+title: 'Azure AD Connect: A telepítés típusának kiválasztása |} A Microsoft Docs'
 description: Ez a témakör végigvezeti az Azure AD Connect használata a telepítés típusának kiválasztása
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e4185b6b30bdd01492d9aae7ac38e18aaba7eef5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6082d583432e246ba3d45f3e97f4b104710e8727
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312045"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473690"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Használja az Azure AD Connect telepítési típusának kiválasztása
-Az Azure AD Connect két telepítési típussal rendelkezik az új telepítéshez: Express és testre szabható. Ez a témakör segít eldönteni, melyik lehetőség a telepítés során használandó.
+Az Azure AD Connect két telepítési típussal rendelkezik az új telepítéshez: Az expressz és testre szabható. Ez a témakör segít eldönteni, melyik lehetőség a telepítés során használandó.
 
 ## <a name="express"></a>Express
 Express a leggyakoribb megoldás, és minden új telepítések körülbelül 90 %-át használják. Adja meg a megfelelő konfigurációt a leggyakrabban használt ügyfél-forgatókönyvekhez készült.
@@ -43,7 +43,7 @@ A következőket kínálja:
 
 Ha továbbra is használhatja az Express beállításai:
 
-- Ha nem szeretné szinkronizálni az összes szervezeti, továbbra is használhatja az Express és az utolsó oldalon törölje **... a szinkronizálási folyamat indítása x**\*. Ezután futtassa újra a telepítővarázslót, és módosítsa a szervezeti [konfigurációs beállítások](how-to-connect-installation-wizard.md#customize-synchronization-options) és ütemezett szinkronizálás engedélyezése.
+- Ha nem szeretné szinkronizálni az összes szervezeti, továbbra is használhatja az Express és az utolsó oldalon törölje **... a szinkronizálási folyamat indítása x. Ezután futtassa újra a telepítővarázslót, és módosítsa a szervezeti [konfigurációs beállítások](how-to-connect-installation-wizard.md#customize-synchronization-options) és ütemezett szinkronizálás engedélyezése.
 - Szeretné engedélyezni, például a jelszóvisszaírást az Azure AD Premium szolgáltatásainak egyike. Először próbálja ki expressz beolvasni a kezdeti telepítés befejeződött. Ezután futtassa újra a telepítővarázslót, és módosítsa a [konfigurációs lehetőségek](how-to-connect-installation-wizard.md#customize-synchronization-options).
 
 ## <a name="custom"></a>Egyéni

@@ -4,7 +4,7 @@ description: Ez a cikk felsorolja az Azure AD Connect és az Azure AD Sync össz
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 780a4c5cd590b4fa1b4dd5b29fab738cb9a8bb6a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e5d98b1d10051fee6ee5299fcdd8376434109603
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608443"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469763"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -190,30 +190,30 @@ Az Azure AD Connect frissítés sikertelen lesz, ha SQL mindig a rendelkezésre 
 - Ebben a kiadásban az SQL Server 2012 SP4, amely többek között számos biztonsági rések javításokat nyújt az SQL Server Express telepítések frissíti.  Lásd: [Itt](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information) további információ az SQL Server 2012 SP4.
 - Szinkronizálási szabály feldolgozása: kimenő illesztési szinkronizálási szabályokat nincs csatlakozás feltétellel kell megszüntetéséhez alkalmazott Ha a fölérendelt szinkronizálási szabály már nem alkalmazható
 - Számos kisegítő-javítások alkalmazása a Synchronization Service Manager felhasználói felületén és a szinkronizálási Szabályszerkesztővel
-- Az Azure AD Connect varázsló: AD-összekötő fiók létrehozása az Azure AD Connect egy munkacsoporthoz tartozik, ha hiba
-- Az Azure AD Connect varázsló: Az Azure AD bejelentkezési oldalon megjelenítéséhez ellenőrzés be a jelölőnégyzetet, ha bármely nem egyezik az AD és az Azure AD-ellenőrzött tartományok
+- Azure AD Connect Wizard: AD-összekötő fiók létrehozása az Azure AD Connect egy munkacsoporthoz tartozik, ha hiba
+- Azure AD Connect Wizard: Az Azure AD bejelentkezési oldalon megjelenítéséhez ellenőrzés be a jelölőnégyzetet, ha bármely nem egyezik az AD és az Azure AD-ellenőrzött tartományok
 - Automatikus frissítési PowerShell javítsa ki, hogy automatikus frissítési állapota helyesen bizonyos esetekben próbált automatikus frissítés után.
-- Az Azure AD Connect varázsló: Frissített telemetriai korábban hiányzó adatok rögzítése
-- Az Azure AD Connect varázsló: A következő módosításokat használatakor a **felhasználói bejelentkezés módosítása** váltson át az átmenő hitelesítés, az AD FS. feladat:
+- Azure AD Connect Wizard: Frissített telemetriai korábban hiányzó adatok rögzítése
+- Azure AD Connect Wizard: A következő módosításokat használatakor a **felhasználói bejelentkezés módosítása** váltson át az átmenő hitelesítés, az AD FS. feladat:
     - Az átmenő hitelesítés ügynök telepítve van az Azure AD Connect-kiszolgáló és az átmenő hitelesítés szolgáltatás engedélyezve van, mielőtt azt konvertálása felügyeltről összevont felügyelt.
     - Felhasználók már nem konvertálja a felügyelt összevont. Csak a tartomány(ok) konvertálja.
-- Az Azure AD Connect varázsló: Az AD FS több tartomány Regex esetén nem megfelelő felhasználó UPN ' speciális karakter Regex frissítés speciális karakterek támogatása
-- Az Azure AD Connect varázsló: Távolítsa el a jelezhet "Konfigurálása a forráshorgony attribútuma" jelenik meg, amikor nincs változás 
-- Az Azure AD Connect varázsló: A kettős összevonási forgatókönyvben az AD FS támogatás
-- Az Azure AD Connect varázsló: AD FS-jogcímek nem frissülnek az új tartomány konvertálása a felügyelt tartományt összevontra során
-- Az Azure AD Connect varázsló: A telepített csomagok észlelési, találtunk a régi Dirsync vagy az Azure AD szinkronizálása/az Azure AD Connect kapcsolódó termékeket. Mi most megpróbál távolítsa el az elavult termékeket.
-- Az Azure AD Connect varázsló: Javítsa a hiba üzenet leképezése, ha csatlakoztatott a hitelesítési ügynök telepítése sikertelen
-- Az Azure AD Connect varázsló: Eltávolított "Konfiguráció" tároló lapon tartományi szervezeti egységek szűrése
+- Azure AD Connect Wizard: Az AD FS több tartomány Regex esetén nem megfelelő felhasználó UPN ' speciális karakter Regex frissítés speciális karakterek támogatása
+- Azure AD Connect Wizard: Távolítsa el a jelezhet "Konfigurálása a forráshorgony attribútuma" jelenik meg, amikor nincs változás 
+- Azure AD Connect Wizard: A kettős összevonási forgatókönyvben az AD FS támogatás
+- Azure AD Connect Wizard: AD FS-jogcímek nem frissülnek az új tartomány konvertálása a felügyelt tartományt összevontra során
+- Azure AD Connect Wizard: A telepített csomagok észlelési, találtunk a régi Dirsync vagy az Azure AD szinkronizálása/az Azure AD Connect kapcsolódó termékeket. Mi most megpróbál távolítsa el az elavult termékeket.
+- Azure AD Connect Wizard: Javítsa a hiba üzenet leképezése, ha csatlakoztatott a hitelesítési ügynök telepítése sikertelen
+- Azure AD Connect Wizard: Eltávolított "Konfiguráció" tároló lapon tartományi szervezeti egységek szűrése
 - A szinkronizálási motor telepítése: távolítsa el a szinkronizálási motor telepítése msi szükségtelen régi logikai alkalmanként sikertelen
-- Az Azure AD Connect varázsló: A választható funkciók lapon előugró súgószöveg javítás a Jelszókivonat-szinkronizálás
+- Azure AD Connect Wizard: A választható funkciók lapon előugró súgószöveg javítás a Jelszókivonat-szinkronizálás
 - Szinkronizálási motor runtime: Javítsa ki a forgatókönyvet, ahol a CS objektum rendelkezik egy importált delete és szinkronizálási szabályok próbálja meg újra üzembe a objektum.
 - Szinkronizálási motor runtime: Adja hozzá a Súgó hivatkozásra az Online kapcsolat hibaelhárítási útmutató az eseménynaplóban az importálási hiba
 - Szinkronizálási motor runtime: Szinkronizálásütemező összekötők számbavételekor csökkentett memóriahasználata
-- Az Azure AD Connect varázsló: Megoldani a problémát egy egyéni szinkronizálási szolgáltatásfiók nem AD olvasási jogosultsággal rendelkező feloldása
-- Az Azure AD Connect varázsló: A tartomány és az OU-szűrés kijelölések naplózása javítása
-- Az Azure AD Connect varázsló: Az AD FS hozzáadása alapértelmezett jogcímeket MFA forgatókönyvhöz létrehozott összevonási megbízhatósági kapcsolatot kell
-- Az Azure AD Connect varázsló: Az AD FS üzembe helyezése a WAP: Hozzáadásának kiszolgáló meghibásodása esetén új tanúsítvány használatára
-- Az Azure AD Connect varázsló: Amikor onPremCredentials egy tartomány nem inicializált DSSO kivétel 
+- Azure AD Connect Wizard: Megoldani a problémát egy egyéni szinkronizálási szolgáltatásfiók nem AD olvasási jogosultsággal rendelkező feloldása
+- Azure AD Connect Wizard: A tartomány és az OU-szűrés kijelölések naplózása javítása
+- Azure AD Connect Wizard: Az AD FS hozzáadása alapértelmezett jogcímeket MFA forgatókönyvhöz létrehozott összevonási megbízhatósági kapcsolatot kell
+- Azure AD Connect Wizard: Az AD FS üzembe helyezése a WAP: Hozzáadásának kiszolgáló meghibásodása esetén új tanúsítvány használatára
+- Azure AD Connect Wizard: Amikor onPremCredentials egy tartomány nem inicializált DSSO kivétel 
 - Lehetőleg flow az AD distinguishedName attribútum aktív felhasználó.
 - Rögzített formai hibát is az első OOB-szinkronizálási szabály prioritása 99 helyett 100 értékre lett beállítva
 
@@ -240,7 +240,7 @@ Hiba történt a konfiguráció újrapróbálkozási logika, amely egy ArgumentE
 >Ha befejeződött a frissítés új verzióra, azt automatikusan aktivál egy teljes szinkronizálást, és az Azure AD-összekötő teljes importálást és teljes szinkronizálást az AD Connectoron. Mivel ez eltarthat egy ideig, az Azure AD Connect környezet méretétől függően győződjön meg arról, hogy elvégezte-e az ennek támogatásához, vagy tartsa addig, amíg egy erre alkalmas időpontban talált a frissítés a szükséges lépéseket.
 
 >[!NOTE]
->"A AutoUpgrade funkció helytelenül letiltotta az egyes bérlők számára, akik buildek 1.1.524.0 később telepítették. Győződjön meg arról, hogy az Azure AD Connect-példány továbbra is költhetők a pénzügyi AutoUpgrade, futtassa a következő PowerShell-parancsmagot: "Set-ADSyncAutoUpgrade - AutoupGradeState engedélyezve"
+>"A AutoUpgrade funkció helytelenül letiltotta az egyes bérlők számára, akik buildek 1.1.524.0 később telepítették. Győződjön meg arról, hogy az Azure AD Connect-példány továbbra is költhetők a pénzügyi AutoUpgrade, futtassa a következő PowerShell-parancsmagot: “Set-ADSyncAutoUpgrade -AutoupGradeState Enabled”
 
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
@@ -337,7 +337,7 @@ Típus     | Name (Név)                          | Hozzáférés               
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
-Engedélyezés    | Tartományi rendszergazdák                 | Teljes hozzáférés         | Ez az objektum  |
+Engedélyezés    | Domain Admins                 | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Rendszergazdák                | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Tartalom listázása        | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Az összes tulajdonság olvasása  | Ez az objektum  |
@@ -691,11 +691,11 @@ CBool(
   * Az Azure AD-összekötő séma következő attribútumok lettek hozzáadva:
     * Csoport: OnPremisesSamAccountName
     * Csoport: NetBiosName
-    * Csoport: Tartománynév
+    * Csoport: DnsDomainName
     * Felhasználó: OnPremisesDistinguishedName
 
 * A ADSyncDomainJoinedComputerSync parancsmag parancsfájl most már rendelkezik AzureEnvironment nevű új nem kötelező paraméter. A paraméter adja meg, melyik a megfelelő Azure Active Directory-bérlő üzemeltetett régióban használható. Érvényes értékek a következők:
-  * AzureCloud (alapértelmezett)
+  * AzureCloud (default)
   * AzureChinaCloud
   * AzureGermanyCloud
   * USGovernment

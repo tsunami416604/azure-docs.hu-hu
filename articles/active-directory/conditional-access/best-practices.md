@@ -5,7 +5,7 @@ services: active-directory
 keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 08/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 4e9f5a9318db813b1a0f16d3599f74fd98e53ffc
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 62bb9b6b4b0edd9e45b317c3c4e18872bae2eec4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818057"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452836"
 ---
-# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások az Azure Active Directory feltételes hozzáférés
+# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Az Azure Active Directory-beli feltételes hozzáférésre vonatkozó ajánlott eljárások
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy jogosult felhasználók hozzáférésének a felhőalapú alkalmazások. Ez a cikk azt ismerteti kapcsolatban:
 
@@ -54,7 +54,7 @@ Ahhoz, hogy a szabályzat működik, konfigurálnia kell:
 
 
 
-## <a name="what-you-should-know"></a>Tudnivalók
+## <a name="what-you-should-know"></a>Alapismeretek
 
 ### <a name="how-are-assignments-evaluated"></a>Hogyan értékeli a hozzárendeléseket?
 

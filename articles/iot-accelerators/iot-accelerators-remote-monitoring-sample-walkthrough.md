@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 2b6cb711bf0cd2f0ec7f5633bbb36ebaeb203690
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6e21b1d8905dc0f0eda5b6282e345ef52006a75a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605534"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468029"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>A távoli monitorozási megoldásgyorsító áttekintése
 
@@ -47,11 +47,11 @@ Felhőarchitektúra alakult óta a Microsoft, amely az első megoldásgyorsító
 
 A megoldás az eszköz kapcsolat a logikai architektúra egy része a következő összetevőket tartalmazza:
 
-### <a name="physical-devices"></a>Fizikai eszközök
+### <a name="real-devices"></a>Valós eszközök
 
-Fizikai eszközök csatlakoztatása a megoldáshoz. A szimulált eszközök Azure IoT eszközoldali SDK-k használatával viselkedését valósítható meg.
+Valós eszközök csatlakoztatása a megoldáshoz. A szimulált eszközök Azure IoT eszközoldali SDK-k használatával viselkedését valósítható meg.
 
-Telepíthet fizikai eszközökön a megoldásportál az irányítópultról.
+Az irányítópultról a megoldásportálon valódi eszközökön építhető ki.
 
 ### <a name="device-simulation-microservice"></a>Eszköz szimulálása mikroszolgáltatások
 
@@ -66,7 +66,7 @@ Szimulált eszközök a megoldásportálon az irányítópultról építhető ki
 
 ### <a name="iot-hub"></a>IoT Hub
 
-A [az IoT hub](../iot-hub/index.yml) feltölti a felhőbe a fizikai és szimulált eszközök által küldött telemetriát. Az IoT hub teszi az IoT-megoldás háttérszolgáltatás feldolgozásra a szolgáltatások elérhetővé a telemetriát.
+A [az IoT hub](../iot-hub/index.yml) feltölti a felhőbe a valós és szimulált eszközök által küldött telemetriát. Az IoT hub teszi az IoT-megoldás háttérszolgáltatás feldolgozásra a szolgáltatások elérhetővé a telemetriát.
 
 A megoldásban az IoT Hub ezenkívül a következőket teszi:
 
@@ -79,7 +79,7 @@ A megoldásban az IoT Hub ezenkívül a következőket teszi:
 
 A megoldás az adatfeldolgozás és -elemzés a logikai architektúra egy része a következő összetevőket tartalmazza:
 
-### <a name="iot-hub-manager-microservice"></a>Az IoT Hub manager mikroszolgáltatások
+### <a name="iot-hub-manager-microservice"></a>IoT Hub manager microservice
 
 A megoldás magában foglalja a [az IoT Hub manager mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager) például kezelni az interakciók az IoT hubbal:
 
@@ -106,7 +106,7 @@ A szolgáltatás egy RESTful végpontot biztosít a kulcs-érték párok CRUD-m�
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Megoldás gyorsító telepítések esetén használja [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) szabályok, riasztások, konfigurációs beállításokat és az összes többi ritka elérésű tárolási tárolásához.
+Megoldás gyorsító telepítések esetén használja [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) szabályok, a riasztások, a konfigurációs beállításokat és a minden más ritka elérésű tárolási tárolásához.
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Az Azure Stream Analytics manager mikroszolgáltatások
 

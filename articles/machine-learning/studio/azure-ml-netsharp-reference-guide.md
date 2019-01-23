@@ -245,7 +245,7 @@ Készletezésével rétegek kapcsolatos további információkért tanulmányozz
 
 ## <a name="response-normalization-bundles"></a>Válasz normalizálási kötegek
 
-**Válasz normalizálási** egy helyi normalizálási séma Geoffrey Hinton, először bevezetett és mások a tanulmány [épít Classiﬁcation a Konvolúciós Neurális hálózatokat](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf). 
+**Válasz normalizálási** egy helyi normalizálási séma Geoffrey Hinton, először bevezetett és mások a tanulmány [épít besorolás Konvolúciós Neurális hálózatokat és](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf). 
 
 Válasz normalizálási, ezzel elősegítve a Neurális hálózatokkal általánossá szolgál. Egy idegsejt aktiválási nagyon magas szintű ez, ha egy helyi válasz normalizálási réteg elrejti a környező idegsejtek csoportjának viselkedését aktiválási szintjét. Ez a három paraméter használatával történik (`α`, `β`, és `k`) és a egy konvolúciós struktúra (vagy hálózatok alakzat). A cél-réteg minden idegsejt **y** idegsejt megfelel **x** a forrás-rétegben. Aktiválási szintjét **y** adja meg a következő képletet, ahol `f` idegsejt, az aktiválási szint és `Nx` a kernel (vagy a készlet, amely tartalmazza a idegsejtek csoportjának viselkedését a helyek, a **x**), a következő konvolúciós struktúra által meghatározott módon:  
 

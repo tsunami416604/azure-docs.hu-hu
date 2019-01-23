@@ -10,16 +10,16 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh; v-gedod
-ms.openlocfilehash: a86db516e76a91d6e4bec378c47baf6eec13d032
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 73aa9756d7a3af4c6f7185533458e0e322b72666
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959052"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452377"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Küldés és helyi üzleti keresési Bing-API-kérések és válaszok használatával
 
-Egy keresési lekérdezést küld annak a végpontnak, és többek között a helyi vállalati keresési Bing-API a helyi eredményeket is kap a `Ocp-Apim-Subscription-Key` fejlécet, amely szükséges. Együtt el. [fejlécek](local-search-reference.md#headers) és [paraméterek](local-search-reference.md#query-parameters), keresések megadásával testre szabható [földrajzi határokon](specify-geographic-search.md) keresése a terület, és a [kategóriák](local-search-query-response.md) helyen adja vissza.
+Egy keresési lekérdezést küld annak a végpontnak, és többek között a helyi vállalati keresési Bing-API a helyi eredményeket is kap a `Ocp-Apim-Subscription-Key` fejlécet, amely szükséges. Rendelkezésre álló együtt [fejlécek](local-search-reference.md#headers) és [paraméterek](local-search-reference.md#query-parameters), keresések megadásával testre szabható [földrajzi határokon](specify-geographic-search.md) keresése a terület, és a [kategóriák](local-search-query-response.md) helyen adja vissza.
 
 ## <a name="creating-a-request"></a>Egy kérelem létrehozása
 
@@ -54,7 +54,7 @@ A helyi vállalati keresési Bing-API a JSON-válaszok tartalmaznak egy `SearchR
 
 Az API által visszaadott JSON eredmények belefoglalása a következő attribútumokat:
 
-* í_rja be
+* _type
 * Cím
 * entityPresentationInfo
 * Georedundáns

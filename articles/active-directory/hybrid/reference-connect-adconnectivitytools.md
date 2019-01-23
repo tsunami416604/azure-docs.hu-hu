@@ -1,24 +1,24 @@
 ---
-title: 'Az Azure AD Connect: ADConnectivityTools PowerShell-referencia |} A Microsoft Docs'
+title: 'Azure AD Connect: ADConnectivityTools PowerShell-referencia |} A Microsoft Docs'
 description: Ebben a dokumentumban részletes információ a ADConnectivityTools.psm1 PowerShell-modult.
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9d63c35d82a98d816c18dd299a8e0e81baa5bc8d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e398814e9ce8b98d8b1079d6f6c429e829c99d21
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425224"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462097"
 ---
-# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Az Azure AD Connect: ADConnectivityTools PowerShell-referencia
+# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  ADConnectivityTools PowerShell-referencia
 A következő dokumentáció arról nyújt a ADConnectivityTools.psm1 PowerShell-modult, amely tartalmazza az Azure AD Connecttel kapcsolatos referenciainformációk.
 
-## <a name="confirm-dnsconnectivity"></a>Győződjön meg róla DnsConnectivity
+## <a name="confirm-dnsconnectivity"></a>Confirm-DnsConnectivity
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Észleli a helyi Dns-probléma.
@@ -40,7 +40,7 @@ Az Active Directory-összekötő konfigurálásához felhasználónak rendelkezn
 Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM"
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
 ```
@@ -62,7 +62,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-Tartományvezérlők
+#### <a name="-dcs"></a>-DCs
 Adja meg az összehasonlítandó tartományvezérlők.
 
 ```yaml
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-functionallevel"></a>Győződjön meg róla FunctionalLevel
+## <a name="confirm-functionallevel"></a>Confirm-FunctionalLevel
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Ellenőrzi az AD-erdő működési szintje.
@@ -167,7 +167,7 @@ Ellenőrzi, hogy az AD-erdő működési szintjét egy adott MinAdForestVersion 
 Confirm-FunctionalLevel -Forest "test.contoso.com"
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Confirm-FunctionalLevel -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-networkconnectivity"></a>Győződjön meg róla NetworkConnectivity
+## <a name="confirm-networkconnectivity"></a>Confirm-NetworkConnectivity
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Észleli a helyi hálózati problémák léptek fel.
@@ -253,14 +253,14 @@ A helyi hálózati teszteket az AAD Connect képesnek kell lennie kommunikálni 
 Confirm-NetworkConnectivity -SkipDnsPort -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM"
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbose
 ```
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-dcs"></a>-Tartományvezérlők
+#### <a name="-dcs"></a>-DCs
 Adja meg az összehasonlítandó tartományvezérlők.
 
 ```yaml
@@ -310,7 +310,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-targetsarereachable"></a>Győződjön meg róla TargetsAreReachable
+## <a name="confirm-targetsarereachable"></a>Confirm-TargetsAreReachable
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Azt határozza meg, ha a megadott erdő és a társított tartományvezérlők érhetők el.
@@ -331,7 +331,7 @@ Futtatások "pingelje" (e számítógép segítségével érik el a célszámít
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM"
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 ```
@@ -353,7 +353,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-Tartományvezérlők
+#### <a name="-dcs"></a>-DCs
 Adja meg az összehasonlítandó tartományvezérlők.
 
 ```yaml
@@ -372,7 +372,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-validdomains"></a>Győződjön meg róla ValidDomains
+## <a name="confirm-validdomains"></a>Confirm-ValidDomains
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Ellenőrizze a érhetők el, hogy a kapott erdő teljes Tartományneve tartományban
@@ -400,7 +400,7 @@ Ellenőrizze, hogy minden a tartománynak a kapott erdő teljes Tartományneve �
 Confirm-ValidDomains -Forest "test.contoso.com" -Verbose
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Confirm-ValidDomains -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
@@ -461,7 +461,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-validenterpriseadmincredentials"></a>Győződjön meg róla ValidEnterpriseAdminCredentials
+## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Ellenőrzi, ha a felhasználó rendelkezik-e a vállalati rendszergazdai hitelesítő adatokat.
@@ -483,7 +483,7 @@ Ha a felhasználó rendelkezik vállalati rendszergazdai hitelesítő adatokat a
 Confirm-ValidEnterpriseAdminCredentials -DomainName test.contoso.com -Verbose
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Confirm-ValidEnterpriseAdminCredentials -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
@@ -533,7 +533,7 @@ Ha a domainFQDN érvényes, egy DomainFQDNName vagy RootDomainName adja vissza, 
 Get-DomainFQDNData -DomainFQDNDataType DomainFQDNName -Verbose
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Get-DomainFQDNData -DomainFQDNDataType RootDomainName -RunWithCurrentlyLoggedInUserCredentials
 ```
@@ -612,7 +612,7 @@ Próbálja ki a megadott hitelesítő adatok egy ForestFQDN lekérdezni.
 Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -Verbose
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
@@ -693,7 +693,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
-Egyéni-telepítések: Jelző, amelynek értéke $True, ha a felhasználó a "Létrehozás új AD-fiók" az AD-Erdőfiók ablak az aad Connect varázsló a választotta.
+Egyéni-telepítések: Azt a jelzőt, amely értéke $True, ha a felhasználó a "Létrehozás új AD-fiók" az AD-Erdőfiók ablak az aad Connect varázsló a választotta.
 Ha a felhasználó kiválasztott "Használja meglévő AD-fiók" $False.
 Express-telepítések: Ez a változó értéke $True Express-telepítések kell lennie.
 
@@ -751,7 +751,7 @@ Helyi hálózati kapcsolati tesztek futtatja.
 Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM"
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TEST.CONTOSO.COM", "DC2.TEST.CONTOSO.COM"
 ```
@@ -804,7 +804,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-Tartományvezérlők
+#### <a name="-dcs"></a>-DCs
 Adja meg az összehasonlítandó tartományvezérlők.
 
 ```yaml

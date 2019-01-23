@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan hatókörszűrők használata alkalmazásokkal,
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b62679332a45127d7c1a45593c162182886a7150
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 84c4939a93adbb8983cae87fdaa2727904010b03
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719358"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461246"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazások üzembe helyezése és hatókörének beállítása szűrőket
 Ez a cikk célja, hogy azt ismertetik, hogyan hatókörszűrők használata, amelyek meghatározzák, hogy mely felhasználók lesznek kiépítve, egy alkalmazás Attribútumalapú szabályok meghatározásához.
@@ -78,7 +78,7 @@ Hatókörszűrő vannak konfigurálva, az egyes Azure AD-felhasználó kiépít�
 
 7. Adja meg a záradékot egy forrás kiválasztásával **attribútumnév**, egy **operátor**, és a egy **attribútumérték** az egyeztetéshez. A következő operátor használata támogatott:
 
-   a. **EGYENLŐ**. Záradék visszaadja az "true", ha a kiértékelt attribútum a bemeneti karakterlánc pontosan megegyezik (megkülönbözteti a kis-és nagybetűket).
+   a. **EQUALS**. Záradék visszaadja az "true", ha a kiértékelt attribútum a bemeneti karakterlánc pontosan megegyezik (megkülönbözteti a kis-és nagybetűket).
 
    b. **NEM EGYENLŐ**. Záradék "true", ha a kiértékelt attribútum nem egyezik a bemeneti karakterlánc (megkülönbözteti a kis-és nagybetűket) értéket ad vissza.
 

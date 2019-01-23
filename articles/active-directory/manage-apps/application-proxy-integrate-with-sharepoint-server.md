@@ -4,7 +4,7 @@ description: Egy helyszíni SharePoint-kiszolgáló integrálása az Azure AD-al
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 12/10/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 9b8ae85d1a5410677dd9299ebb947c2189a6b663
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: a240e629c5c8f6e43a4c3c52668fcb2b811989b2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166183"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468386"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése
 
@@ -38,7 +38,7 @@ Ez a cikk azt feltételezi, hogy már rendelkezik a SharePoint 2013-as vagy úja
 
 * A közzétett URL-cím SSL szükség van. Az SSL is szükséges a belső URL-cím annak érdekében, hogy hivatkozásokat küldött/leképezve megfelelően.
 
-## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>1. lépés: Konfigurálja a Kerberos által korlátozott delegálás (KCD)
+## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>1. lépés: Configure Kerberos Constrained Delegation (KCD)
 
 Windows-hitelesítést használó helyszíni alkalmazások akkor érhető el, egyszeri bejelentkezés (SSO) a Kerberos hitelesítési protokoll és a Kerberos által korlátozott delegálás (KCD) szolgáltatás. KCD, ha konfigurálva van, lehetővé teszi, hogy egy felhasználó egy Windows-jogkivonat beszerzése az Application Proxy connector akkor is, ha a felhasználó még nem jelentkezett be a Windows közvetlenül. KCD kapcsolatos további információkért lásd: [Kerberos által korlátozott delegálás áttekintése](https://technet.microsoft.com/library/jj553400.aspx).
 
@@ -109,7 +109,7 @@ Konfigurálja a Kerberos, minden összekötő géphez ismételje meg a következ
   
   ![A delegálási beállítások](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
 
-## <a name="step-2-configure-azure-ad-proxy"></a>2. lépés: Az Azure AD-Proxy konfigurálása
+## <a name="step-2-configure-azure-ad-proxy"></a>2. lépés: Az Azure AD-Proxy konfigurálása
 
 Most, hogy konfigurálta a kcd Szolgáltatáshoz, készen áll az Azure AD Application Proxy konfigurálása.
 

@@ -5,7 +5,7 @@ services: active-directory
 keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 68c2178440264aa6a6efce074b299f4e3deaa10f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 20beff7accbc987842141fa7ece9c17f11b0032e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415389"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448806"
 ---
-# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Útmutató: Igényel jóváhagyott ügyfélalkalmazások, a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés 
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>kézikönyv: A jóváhagyott ügyfélalkalmazások szükségesek a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés 
 
 Az alkalmazottak mobileszközöket használnak a személyes és munkahelyi feladatokhoz. Gondoskodik róla, hogy az alkalmazottak számára hatékony munkavégzést, miközben is szeretné megakadályozni az adatvesztést. Az Azure Active Directory (Azure AD) feltételes hozzáférés korlátozhatja a felhőalapú alkalmazások a jóváhagyott ügyfélalkalmazások, amelyek a vállalati adatait védheti a hozzáférést.  
 
@@ -108,13 +108,13 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 1. A **neve** a feltételes hozzáférési szabályzat.
 
-2. **Felhasználók és csoportok**: minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
+2. **Felhasználók és csoportok**: Minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
 
-3. **Felhőalkalmazások:** felhőalapú alkalmazásokat, ki kell választania **Office 365 Exchange Online**.
+3. **Felhőalapú alkalmazások:** Felhőbeli alkalmazásokat, ki kell választania **Office 365 Exchange Online**.
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/07.png)
 
-4. **Feltételek:** , **feltételek**, konfigurálnia kell **eszközplatformok** és **ügyfélalkalmazás**:
+4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **eszközplatformok** és **ügyfélalkalmazás**:
 
     a. Mint **eszközplatformok**válassza **Android** és **iOS**.
 
@@ -137,14 +137,14 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 1. A **neve** a feltételes hozzáférési szabályzat.
 
-2. **Felhasználók és csoportok**: minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
+2. **Felhasználók és csoportok**: Minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
 
 
-3. **Felhőalkalmazások:** felhőalapú alkalmazásokat, ki kell választania **Office 365 Exchange Online**.
+3. **Felhőalapú alkalmazások:** Felhőbeli alkalmazásokat, ki kell választania **Office 365 Exchange Online**.
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/07.png)
 
-4. **Feltételek:** , **feltételek**, konfigurálnia kell **ügyfélalkalmazások (előzetes verzió)**. 
+4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **ügyfélalkalmazások (előzetes verzió)**. 
 
     a. Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 
@@ -188,14 +188,14 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 1. A **neve** a feltételes hozzáférési szabályzat.
 
-2. **Felhasználók és csoportok**: minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
+2. **Felhasználók és csoportok**: Minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
 
 
-3. **Felhőalkalmazások:** felhőalapú alkalmazásokat, ki kell választania **Office 365 Exchange Online** és **Office 365 SharePoint Online**. 
+3. **Felhőalapú alkalmazások:** Felhőbeli alkalmazásokat, ki kell választania **Office 365 Exchange Online** és **Office 365 SharePoint Online**. 
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/02.png)
 
-4. **Feltételek:** , **feltételek**, konfigurálnia kell **eszközplatformok** és **ügyfélalkalmazás**:
+4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **eszközplatformok** és **ügyfélalkalmazás**:
 
     a. Mint **eszközplatformok**válassza **Android** és **iOS**.
 
@@ -220,13 +220,13 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 1. A **neve** a feltételes hozzáférési szabályzat.
 
-2. **Felhasználók és csoportok**: minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
+2. **Felhasználók és csoportok**: Minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
 
-3. **Felhőalkalmazások:** felhőalapú alkalmazásokat, ki kell választania **Office 365 Exchange Online**. Online 
+3. **Felhőalapú alkalmazások:** Felhőbeli alkalmazásokat, ki kell választania **Office 365 Exchange Online**. Online 
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/07.png)
 
-4. **Feltételek:** , **feltételek**, konfigurálnia kell **ügyfélalkalmazás**:
+4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **ügyfélalkalmazás**:
 
     a. Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 
@@ -273,13 +273,13 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 1. A **neve** a feltételes hozzáférési szabályzat.
 
-2. **Felhasználók és csoportok**: minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
+2. **Felhasználók és csoportok**: Minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
 
-3. **Felhőalkalmazások:** felhőalapú alkalmazásokat, ki kell választania **Office 365 Exchange Online** és **Office 365 SharePoint Online**. 
+3. **Felhőalapú alkalmazások:** Felhőbeli alkalmazásokat, ki kell választania **Office 365 Exchange Online** és **Office 365 SharePoint Online**. 
 
      ![Feltételes hozzáférés](./media/app-based-conditional-access/02.png)
 
-4. **Feltételek:** , **feltételek**, konfigurálnia kell **eszközplatformok** és **ügyfélalkalmazás**. 
+4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **eszközplatformok** és **ügyfélalkalmazás**. 
  
     a. Mint **eszközplatformok**válassza **Android** és **iOS**.
 
@@ -309,13 +309,13 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 1. A **neve** a feltételes hozzáférési szabályzat.
 
-2. **Felhasználók és csoportok**: minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
+2. **Felhasználók és csoportok**: Minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
 
-3. **Felhőalkalmazások:** felhőalapú alkalmazásokat, ki kell választania **Office 365 Exchange Online**. 
+3. **Felhőalapú alkalmazások:** Felhőbeli alkalmazásokat, ki kell választania **Office 365 Exchange Online**. 
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/07.png)
 
-4. **Feltételek:** , **feltételek**, konfigurálnia kell **ügyfélalkalmazás**. 
+4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **ügyfélalkalmazás**. 
 
     Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 
@@ -369,13 +369,13 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 1. A **neve** a feltételes hozzáférési szabályzat.
 
-2. **Felhasználók és csoportok**: minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
+2. **Felhasználók és csoportok**: Minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
 
-3. **Felhőalkalmazások:** felhőalapú alkalmazásokat, ki kell választania **Office 365 Exchange Online** és **Office 365 SharePoint Online**. 
+3. **Felhőalapú alkalmazások:** Felhőbeli alkalmazásokat, ki kell választania **Office 365 Exchange Online** és **Office 365 SharePoint Online**. 
 
      ![Feltételes hozzáférés](./media/app-based-conditional-access/02.png)
 
-4. **Feltételek:** , **feltételek**, konfigurálnia kell **eszközplatformok** és **ügyfélalkalmazás**. 
+4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **eszközplatformok** és **ügyfélalkalmazás**. 
  
     a. Mint **eszközplatformok**válassza **Android** és **iOS**.
 
@@ -405,13 +405,13 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 1. A **neve** a feltételes hozzáférési szabályzat.
 
-2. **Felhasználók és csoportok**: minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
+2. **Felhasználók és csoportok**: Minden egyes feltételes hozzáférési szabályzat rendelkeznie kell legalább egy kiválasztott felhasználó vagy csoport.
 
-3. **Felhőalkalmazások:** felhőalapú alkalmazásokat, ki kell választania **Office 365 Exchange Online**. 
+3. **Felhőalapú alkalmazások:** Felhőbeli alkalmazásokat, ki kell választania **Office 365 Exchange Online**. 
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/07.png)
 
-4. **Feltételek:** , **feltételek**, konfigurálnia kell **ügyfélalkalmazások (előzetes verzió)**. 
+4. **Feltételek:** Mint **feltételek**, konfigurálnia kell **ügyfélalkalmazások (előzetes verzió)**. 
 
     Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 

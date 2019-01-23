@@ -5,7 +5,7 @@ services: active-directory
 keywords: Az Azure AD Connect az átmenő hitelesítés, Active Directory telepítése szükséges összetevők SSO, Azure AD egyszeri bejelentkezés
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fdb316f5f5c1f67dbb92fe8847c0ffacce46ae07
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: cb36b9514d98fe32f20e740fbb578ac7daada79c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789092"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478399"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Az Azure Active Directory átmenő hitelesítés: Gyakori kérdések
 
@@ -156,7 +156,7 @@ Ha egy kiszolgálóról távolítja el egy átmenő hitelesítési ügynök, a k
 
 ## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>Van egy régebbi, amely eredetileg beállítása az AD FS-bérlőt.  A Microsoft nemrég áttelepített ESP, de most már nem jelennek meg az Azure AD szolgáltatással szinkronizál UPN módosításokat.  Miért vannak az UPN változásait nincs szinkronizálva?
 
-VÁLASZ: A következő esetekben a helyszíni egyszerű Felhasználónévvel módosítások előfordulhat, hogy nem a szinkronizálás:
+V: A következő esetekben a helyszíni egyszerű Felhasználónévvel módosítások előfordulhat, hogy nem a szinkronizálás:
 
 - Az Azure AD-bérlő 2015. június 15. előtt jött létre
 - Először lett összevonva az Azure AD-bérlővel, az AD FS-hitelesítéshez

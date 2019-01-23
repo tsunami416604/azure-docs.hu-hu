@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: b5f1247c43dcbd836c684dbf41bafd0d319e5f7c
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: cd458ba08f12e9553233a1dd3d7caf03acda56c6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230475"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463507"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Az Azure Diagnostics 1.3 és újabb konfigurációs séma
 > [!NOTE]
@@ -436,14 +436,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**StorageType**|Lehet *tábla*, *Blob*, vagy *TableAndBlob*. Alapértelmezett érték a táblában. TableAndBlob akkor kell kiválasztani, amikor diagnosztikai adatokat írt kétszer – egyszer minden típusa.|  
 |**LocalResourceDirectory**|A könyvtár a virtuális gépen, amelyen a Monitoring Agent tárolja az eseményadatokat. Ha nem, állítsa be, az alapértelmezett könyvtárat használja:<br /><br /> Feldolgozói/webes szerepkör: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Egy virtuális géphez: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Szükséges attribútumok a következők:<br /><br /> - **elérési út** – a rendszer az Azure Diagnostics által használandó könyvtárába.<br /><br /> - **expandEnvironment** – azt szabályozza, hogy környezeti változókat az elérési útban bontva.|  
 
-## <a name="wadcfg-element"></a>WadCFG elem  
+## <a name="wadcfg-element"></a>WadCFG Element  
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG*
 
  Azonosítja, és konfigurálja a telemetriai adatokat gyűjteni.  
 
 
-## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration elem
- *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
+## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration Element
+ *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
 
  Szükséges
 
@@ -469,8 +469,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 
-## <a name="crashdumps-element"></a>CrashDumps elem  
- *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps*
+## <a name="crashdumps-element"></a>CrashDumps Element  
+ *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps*
 
  Az összeomlási memóriaképek gyűjtésének engedélyezéséhez.  
 
@@ -538,7 +538,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
- *Fa: Legfelső szintű – - - WadCFG - PublicConfig DiagnosticMonitorConfiguration - DiagnosticsConfiguration EtwProviders - EtwEventSourceProviderConfiguration*
+ *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderConfiguration*
 
  Konfigurálja a generált események gyűjtését [EventSource osztály](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx).  
 
@@ -572,7 +572,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 
-## <a name="performancecounters-element"></a>PerformanceCounters elem  
+## <a name="performancecounters-element"></a>PerformanceCounters Element  
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - PerformanceCounters*
 
  Lehetővé teszi a teljesítményszámláló-gyűjtemény.  
@@ -589,8 +589,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 
-## <a name="windowseventlog-element"></a>WindowsEventLog elem
- *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
+## <a name="windowseventlog-element"></a>WindowsEventLog Element
+ *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
 
  Lehetővé teszi, hogy a gyűjtemény Windows eseménynaplók.  
 
@@ -618,7 +618,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**fogadóként** |**string**| 1.5-ös hozzá. Választható. A fogadó hely is a diagnosztikai adatok küldése mutat. Ha például az Application Insights vagy az Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
- *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
+ *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
 
  1.9 hozzá.
 
@@ -626,8 +626,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |------------------|-----------------|  
 |**Stats**|Arra utasítja a rendszert, hogy a Docker-tárolók statisztikák gyűjtése|  
 
-## <a name="sinksconfig-element"></a>SinksConfig elem  
- *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig*
+## <a name="sinksconfig-element"></a>SinksConfig Element  
+ *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig*
 
  Diagnosztikai adatok és az ezeken a helyeken hozzárendelt konfiguráció helyek listáját.  
 
@@ -636,7 +636,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**Sink**|Lásd: leírás máshol ezen az oldalon.|  
 
 ## <a name="sink-element"></a>Fogadó-elem
- *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig – fogadó*
+ *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink*
 
  Hozzáadva az 1.5-ös verzióját.  
 
@@ -660,7 +660,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elem|Típus|Leírás|  
 |-------------|----------|-----------------|  
-|**Csatorna**|sztring|Lásd: leírás máshol ezen az oldalon.|  
+|**Channel**|sztring|Lásd: leírás máshol ezen az oldalon.|  
 
 ## <a name="channel-element"></a>Csatorna elem
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - fogadó - csatornák - csatorna*
@@ -675,7 +675,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**name**|**string**|Tekintse meg a csatorna egyedi nevet|  
 
 
-## <a name="privateconfig-element"></a>PrivateConfig elem
+## <a name="privateconfig-element"></a>PrivateConfig Element
  *Fa: Gyökér - DiagnosticsConfiguration - PrivateConfig*
 
  1.3-as verziójában hozzáadva.  
@@ -689,7 +689,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**StorageAccount**|A storage-fiók használata. A következő attribútumok szükségesek.<br /><br /> - **név** – a tárfiók nevére.<br /><br /> - **kulcs** – a tárfiók kulcsa.<br /><br /> - **végpont** – a végpontot, hogy a tárfiók eléréséhez. <br /><br /> -**sasToken** (megadhat egy tárfiókkulcs helyett SAS-tokent a privát config 1.8.1)-hozzá. Ha meg van adva, a tárfiók-kulcsot a rendszer figyelmen kívül hagyja. <br />A SAS-jogkivonat vonatkozó követelmények: <br />– Támogatja a fiók SAS-token <br />- *b*, *t* szolgáltatástípusok szükség. <br /> - *egy*, *c*, *u*, *w* engedélyekre szükség. <br /> - *c*, *o* erőforrástípusok szükség. <br /> – Csak a HTTPS-protokollt támogatja <br /> -Elindítása és a lejárati idő érvényesnek kell lennie.|  
 
 
-## <a name="isenabled-element"></a>IsEnabled elem  
+## <a name="isenabled-element"></a>IsEnabled Element  
  *Fa: Gyökér - DiagnosticsConfiguration - IsEnabled*
 
  Logikai érték. Használat `true` a diagnosztika engedélyezéséhez vagy `false` a diagnosztika letiltásához.
+

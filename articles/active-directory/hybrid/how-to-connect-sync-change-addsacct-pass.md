@@ -1,11 +1,11 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: az AD DS-fiók jelszavának módosítása |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása:  Az AD DS-fiók jelszavának módosítása |} A Microsoft Docs'
 description: Ez a témakör a dokumentum ismerteti az Azure AD Connect frissítése után az AD DS-fiók jelszava megváltozott.
 services: active-directory
 keywords: Az AD DS-fiókot, az Active Directory-fiók, jelszó
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 051ff6aa4e650f884a4712376b5dc420cc86fc3a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1b487651e938beadcada78eaf51b3f50beb7acf1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311674"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470537"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Az AD DS-fiók jelszavának módosítása
 Az AD DS-fiókot az Azure AD Connect a helyszíni Active Directoryval való kommunikációhoz használt felhasználói fiók hivatkozik. Ha megváltoztatja a jelszót az AD DS-fiók, frissítenie kell az Azure AD Connect szinkronizálási szolgáltatás az új jelszóval. Ellenkező esetben a szinkronizálás a helyszíni Active Directoryval már nem szinkronizálhatók megfelelően, és fog történni hibák a következők:
@@ -54,6 +54,6 @@ A Synchronization Service frissítése az új jelszóval:
 ## <a name="next-steps"></a>További lépések
 **Áttekintő témakör**
 
-* [Az Azure AD Connect szinkronizálása: ismertetése, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
 
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

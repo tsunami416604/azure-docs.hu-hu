@@ -4,7 +4,7 @@ description: Ez a témakör ismerteti az előfeltételeket és az Azure AD Conne
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 91b88fda-bca6-49a8-898f-8d906a661f07
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a36868e5bab64883036e0f93352bea5341ff7fe7
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: eb5ad49a26631ca363737406f54b4c794e01ebda
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384053"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472840"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -49,7 +49,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 ### <a name="azure-ad-connect-server"></a>Az Azure AD Connect-kiszolgáló
 * Az Azure AD Connect nem telepíthető Small Business Server vagy Windows Server Essentials 2019 előtt (a Windows Server Essentials 2019 támogatott). A kiszolgáló Windows Server standard vagy jobb kell használnia.
 * Az Azure AD Connect-kiszolgáló egy teljes grafikus felhasználói Felülettel telepítve kell rendelkeznie. Ez **nem támogatott** telepítése server core-on.
-* Az Azure AD Connect telepíteni kell a Windows Server 2008 R2 vagy újabb. Ez a kiszolgáló lehet egy olyan tartományvezérlő vagy tagkiszolgáló gyorsbeállítások használata esetén. Ha egyéni beállításokat használja, a kiszolgáló is lehetnek önálló, és nem kell tartományhoz csatlakoztatni.
+* Az Azure AD Connect telepíteni kell a Windows Server 2008 R2 vagy újabb. Ez a kiszolgáló lehet egy olyan tartományvezérlő vagy tagkiszolgáló gyorsbeállítások használata esetén. If you use custom settings, then the server can also be stand-alone and does not have to be joined to a domain.
 * Ha az Azure AD Connect telepíti a Windows Server 2008 R2 rendszeren, majd győződjön meg arról, a alkalmazni a legújabb gyorsjavítások a Windows Update webhelyről. A telepítés nem sikerül veszéllyel kiszolgálóról indítsa el.
 * Ha azt tervezi, hogy a funkció használatához **jelszó-szinkronizálás**, akkor az Azure AD Connect-kiszolgáló kell lennie a Windows Server 2008 R2 SP1 vagy újabb.
 * Ha azt tervezi, hogy használjon egy **csoportosan felügyelt szolgáltatásfiók**, akkor az Azure AD Connect-kiszolgáló kell lennie a Windows Server 2012 vagy újabb.
@@ -79,7 +79,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
   * Ha a Microsoft Cloud németországi vagy a Microsoft Azure Government felhőben használ, tekintse meg [az Azure AD Connect szinkronizálási szolgáltatás példányai szempontok](reference-connect-instances.md) URL-címek.
 * Az Azure AD Connect (1.1.614.0 verziót, és utána) alapértelmezés szerint használja a TLS 1.2 a szinkronizálási motor és az Azure AD közötti kommunikáció titkosításához. A TLS 1.2-es nem érhető el az alapul szolgáló operációs rendszer, ha az Azure AD Connect növekményes visszavált a régebbi protokollok (a TLS 1.1 és TLS 1.0-s).
 * 1.1.614.0 verziónál régebbi az Azure AD Connect alapértelmezés szerint a szinkronizálási motor és az Azure AD közötti kommunikáció titkosításához használja a TLS 1.0-s. A TLS 1.2-es, kövesse a lépéseket a [engedélyezze a TLS 1.2 az Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
-* Ha csatlakozik az internetre, az a következő beállítást használ egy kimenő proxy a **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** fájlt hozzá kell adni a telepítési varázsló és az Azure ad-ben A csatlakozni az internethez, és az Azure AD sync csatlakoztatása. Ez a szöveg, meg kell adni a fájl alján. Ebben a kódban &lt;PROXYADRESS&gt; tényleges proxy IP-cím vagy a gazdagép nevét jelöli.
+* Ha csatlakozik az internetre, az a következő beállítást használ egy kimenő proxy a **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** fájlt hozzá kell adni a telepítési varázsló és az Azure ad-ben A csatlakozni az internethez, és az Azure AD sync csatlakoztatása. Ez a szöveg, meg kell adni a fájl alján. Ebben a kódban &lt;PROXYADDRESS&gt; tényleges proxy IP-cím vagy a gazdagép nevét jelöli.
 
 ```
     <system.net>
@@ -120,7 +120,7 @@ További információk, problémák adódnak a kapcsolódással, amikor: [csatla
 Az Azure AD Connect a Microsoft PowerShell és a .NET-keretrendszer 4.5.1-es függ. Ez a verzió vagy újabb verzió van telepítve a kiszolgálón van szüksége. A Windows Server verziójától függően tegye a következőket:
 
 * Windows Server 2012R2
-  * A Microsoft PowerShell alapértelmezés szerint telepítve van. Semmit nem kell.
+  * A Microsoft PowerShell alapértelmezés szerint telepítve van. Nincs szükség műveletre.
   * .NET-keretrendszer 4.5.1-es vagy újabb Windows Update szolgáltatáson keresztül érhető el. Győződjön meg arról, hogy telepítette a legújabb frissítéseket a Windows Server, a Vezérlőpulton.
 * Windows Server 2008 R2 és Windows Server 2012
   * A Microsoft PowerShell legújabb verziója érhető el a **Windows Management Framework 4.0**, elérhető [Microsoft Download Center](https://www.microsoft.com/downloads).

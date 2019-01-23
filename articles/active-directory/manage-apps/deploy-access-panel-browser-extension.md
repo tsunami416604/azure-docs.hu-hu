@@ -4,7 +4,7 @@ description: Hogyan lehet az Internet Explorer-bővítmény a saját alkalmazás
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be3950d199b4362caa5fcd3f66b948802cfa1c49
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3a48b2ce4689490b3a38917edfb776a6ea28c478
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877476"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463439"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>A hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer
 Ez az oktatóanyag bemutatja, hogyan csoportházirend használatával távolról telepíteni a felhasználók gépein az Internet Explorer a hozzáférési Panel bővítményt. A bővítmény szükséges az Internet Explorer-felhasználók, akik alkalmazásokat használatával vannak konfigurálva, be kell jelentkeznie az [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso).
@@ -31,7 +31,7 @@ A hozzáférési Panel bővítmény érhető el is [Chrome](https://go.microsoft
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Beállított [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), és a felhasználók gépek csatlakozott a tartományhoz.
-* A csoportházirend-objektumot (GPO) szerkesztését a "Beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai ezzel az engedéllyel rendelkeznek: a tartományi rendszergazdák, a vállalati rendszergazdák és a Csoportházirend-létrehozó tulajdonosok. [Részletek](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+* A csoportházirend-objektumot (GPO) szerkesztését a "Beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek a ezt az engedélyt: A tartományi rendszergazdák, a vállalati rendszergazdák és a Csoportházirend-létrehozó tulajdonosok. [Részletek](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>1. lépés: A terjesztési pont létrehozása
 Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni a bővítményt a kívánt által elérhető hálózati helyen. Ehhez kövesse az alábbi lépéseket:
@@ -44,13 +44,13 @@ Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni
    
     ![Nyissa meg a fájl- és tárolási szolgáltatások](./media/deploy-access-panel-browser-extension/shares.png)
 4. Végezze el a **új megosztás varázsló** , és győződjön meg arról, hogy azt is gépekről érhető el a felhasználók az engedélyekkel. [További információ a megosztásokat.](https://technet.microsoft.com/library/cc753175.aspx)
-5. A következő csomag a Microsoft Windows Installer (.msi fájl): [hozzáférési Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
+5. Töltse le a következő Microsoft Windows Installer-csomag (.msi fájl): [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 6. Másolja a telepítőcsomag a kívánt helyre a megosztáson.
    
     ![Az .msi fájlt másolja a megosztásba.](./media/deploy-access-panel-browser-extension/copy-package.png)
 7. Ellenőrizze, hogy a szerverek, a megosztást a telepítőcsomag elérhetik. 
 
-## <a name="step-2-create-the-group-policy-object"></a>2. lépés: A csoportházirend-objektum létrehozása
+## <a name="step-2-create-the-group-policy-object"></a>2. lépés: A csoportházirend-objektum létrehozása
 1. Jelentkezzen be a kiszolgálóra, amelyen az Active Directory Domain Services (AD DS) telepítése.
 2. Nyissa meg a Server Manager **eszközök** > **csoportházirend-kezelő**.
    
@@ -80,7 +80,7 @@ Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni
 3. Kattintson a jobb gombbal **Szoftvertelepítés**, majd **új** > **csomag...**
    
     ![Hozzon létre egy új szoftver telepítőcsomagját](./media/deploy-access-panel-browser-extension/new-package.png)
-4. Nyissa meg a megosztott mappához, amely tartalmazza a telepítőcsomag a [1. lépés: a terjesztési pont létrehozásának](#step-1-create-the-distribution-point), válassza ki az .msi fájlt, és kattintson **nyílt**.
+4. Nyissa meg a megosztott mappához, amely tartalmazza a telepítőcsomag a [1. lépés: A terjesztési pont létrehozásának](#step-1-create-the-distribution-point), válassza ki az .msi fájlt, és kattintson a **nyílt**.
    
    > [!IMPORTANT]
    > Ha a megosztáshoz a ugyanazon a kiszolgálón található, győződjön meg arról, hogy Ön keresztül érik el az .msi fájl hálózati elérési útját, nem pedig a helyi fájl elérési útját.
@@ -94,10 +94,10 @@ Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni
 
 A bővítmény már telepítve van a kiválasztott szervezeti Egységhez. [További információ a Csoportházirend szoftver telepítése.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
-## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>4. lépés: Automatikus engedélyezése a bővítmény, az Internet Explorer
+## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>4. lépés: A bővítmény automatikus – engedélyezése az Internet Explorer
 A telepítő futtatása mellett minden az Internet Explorer-bővítmény explicit módon engedélyezni kell ahhoz, hogy kell használni. A hozzáférési Panel bővítmény csoportházirend használatával engedélyezéséhez az alábbi lépésekkel:
 
-1. Az a **Csoportházirendkezelés-szerkesztő** ablakban lépjen az attól függően, hogy milyen típusú konfigurációs beállítást választja, a következő útvonalak egyikét [3. lépés: a telepítési csomag hozzárendelése](#step-3-assign-the-installation-package):
+1. Az a **Csoportházirendkezelés-szerkesztő** ablakban lépjen az attól függően, hogy milyen típusú konfigurációs beállítást választja, a következő útvonalak egyikét [3. lépés: A telepítési csomag hozzárendelése](#step-3-assign-the-installation-package):
    
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
@@ -117,8 +117,8 @@ A telepítő futtatása mellett minden az Internet Explorer-bővítmény explici
 
 A bővítmény már engedélyezni kell a gépek a kiválasztott szervezeti egységben. [Tudjon meg többet engedélyezni vagy letiltani a gyakori csoportházirend használatával.](https://technet.microsoft.com/library/dn454941.aspx)
 
-## <a name="step-5-optional-disable-remember-password-prompt"></a>5. lépés (nem kötelező): "A jelszó megjegyzése" üzenet letiltása
-Amikor a felhasználók jelentkezzen be a hozzáférési Panel bővítmény-webhelyeken, az Internet Explorer előfordulhat, hogy megjelenítése a következő megkérdezi "Szeretné a jelszó tárolásához?"
+## <a name="step-5-optional-disable-remember-password-prompt"></a>5. lépés (nem kötelező): "Jegyezze meg jelszót" üzenet letiltása
+When users sign-in to websites using the Access Panel Extension, Internet Explorer may show the following prompt asking "Would you like to store your password?"
 
 ![Jelszó kérése](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
 
@@ -148,10 +148,10 @@ Felhasználók többé nem lesz képes tárolni a hitelesítő adatok vagy az au
 > 
 > 
 
-## <a name="step-6-testing-the-deployment"></a>6. lépés: a központi telepítés tesztelése
+## <a name="step-6-testing-the-deployment"></a>6. lépés: A központi telepítés tesztelése
 Győződjön meg arról, ha a bővítmény telepítése sikeres volt-e az alábbi lépésekkel:
 
-1. Ha üzembe helyezte a használatával **számítógép konfigurációja**, jelentkezzen be egy ügyfélszámítógépre, a kiválasztott szervezeti Egységhez tartozó [2. lépés: a csoportházirend-objektum létrehozása](#step-2-create-the-group-policy-object). Ha üzembe helyezte a használatával **felhasználói konfiguráció**, győződjön meg arról, hogy a szervezeti egységhez tartozó felhasználóként bejelentkezni.
+1. Ha üzembe helyezte a használatával **számítógép konfigurációja**, jelentkezzen be egy ügyfélszámítógépre, a kiválasztott szervezeti Egységhez tartozó [2. lépés: A csoportházirend-objektum létrehozása](#step-2-create-the-group-policy-object). Ha üzembe helyezte a használatával **felhasználói konfiguráció**, győződjön meg arról, hogy a szervezeti egységhez tartozó felhasználóként bejelentkezni.
 2. Modulok teljes körűen módosul a csoportházirend frissítése néhány bejelentkezést is igénybe vehet az ezen a számítógépen. A frissítés kényszerítéséhez nyisson meg egy **parancssor** ablakot, és futtassa az alábbi parancsot: `gpupdate /force`
 3. A gép a telepítés életbe lépéséhez újra kell indítani. Rendszerindítási szokásos közben a bővítményt telepíti jelentősen több időt is igénybe vehet.
 4. Nyissa meg az újraindítás után **az Internet Explorer**. Az ablak jobb felső sarkában kattintson **eszközök** (a fogaskerék ikonra), majd válassza ki **bővítmények kezelése**.

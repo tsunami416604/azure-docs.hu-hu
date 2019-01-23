@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.author: dukek
-ms.component: logs
-ms.openlocfilehash: 2dec2b1f9bdca8c83669b753d424204218f7a9ae
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.subservice: logs
+ms.openlocfilehash: 9bd5ec3471fc3447d1e29d875c154793daf8e9e5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190697"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474030"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure portal használatával
 
@@ -37,9 +37,9 @@ correlationId | Általában egy GUID Azonosítót a karakterláncként. Ugyanaz 
 eventDataId | Az esemény egyedi azonosítója.
 EventName | Az esemény címe.
 szint | Egy esemény szintjét
-erőforrás-szolgáltató neve | Az érintett erőforrás az erőforrás-szolgáltató neve.
+resourceProviderName | Az érintett erőforrás az erőforrás-szolgáltató neve.
 resourceType| Erőforrás típusa, az érintett erőforrás.
-a részállapot | Általában a megfelelő REST HTTP-állapotkódot hívja, de más egy substatus leíró karakterláncban is használható. Példa: OK (HTTP-állapotkód: 200-as), létrehozva (HTTP-állapotkód: 201-es), elfogadva (HTTP-állapotkód: 202), nincs tartalom (HTTP-állapotkód: 204), hibás kérelem (HTTP-állapotkód: 400), nem található (HTTP-állapotkód: 404-es), ütközés (HTTP-állapotkód: 409), belső kiszolgálóhiba (HTTP-állapotkód: 500-as), a szolgáltatás nem érhető el (HTTP-állapotkód: 503-as), és az átjáró időtúllépése (HTTP-állapotkód: 504).
+subStatus | Általában a megfelelő REST HTTP-állapotkódot hívja, de más egy substatus leíró karakterláncban is használható. Példa: OK (HTTP-állapotkód: 200-as), létrehozva (HTTP-állapotkód: 201-es), elfogadva (HTTP-állapotkód: 202), nincs tartalom (HTTP-állapotkód: 204), hibás kérelem (HTTP-állapotkód: 400), nem található (HTTP-állapotkód: 404-es), ütközés (HTTP-állapotkód: 409), belső kiszolgálóhiba (HTTP-állapotkód: 500-as), a szolgáltatás nem érhető el (HTTP-állapotkód: 503-as), és az átjáró időtúllépése (HTTP-állapotkód: 504).
 eventTimestamp | Időbélyeg, ha az esemény jött létre az Azure-szolgáltatás az esemény végének a kérelem feldolgozása.
 submissionTimestamp | Időbélyeg, amikor az eseményt vált elérhetővé a lekérdezéséhez.
 subscriptionId | Az Azure-előfizetést, amelyben a rendszer ezt az eseményt naplózza.
@@ -47,7 +47,7 @@ status | A művelet állapotát leíró karakterlánc. Néhány gyakori értéke
 operationName | A művelet neve.
 category | Ez a tulajdonság nem mindig **ServiceHealth**.
 resourceId | Az érintett erőforrás erőforrás-Azonosítóját.
-Properties.Title | A honosított címe Ehhez a kommunikációhoz. Angol az alapértelmezett érték.
+Properties.title | A honosított címe Ehhez a kommunikációhoz. Angol az alapértelmezett érték.
 Properties.Communication | A HTML-kód kommunikációt honosított részleteit. Angol az alapértelmezett érték.
 Properties.incidentType | A következő értékek egyikét: **Beavatkozás szükséges**, **tájékoztató**, **incidens**, **karbantartási**, vagy **biztonsági**.
 Properties.trackingId | Az incidens, amelyhez ez az esemény társítva. Ezzel az incidenshez kapcsolódó események összekapcsolását.
@@ -95,3 +95,4 @@ Properties.communicationId | A kommunikáció, amelyhez ez az esemény társítv
 ## <a name="next-steps"></a>További lépések
 Kap [riasztási értesítéseket, amikor a szolgáltatás állapotával kapcsolatos értesítés](../../azure-monitor/platform/alerts-activity-log-service-notifications.md) tesznek közzé.  
 Tudjon meg többet [tevékenységnapló-riasztások](../../azure-monitor/platform/activity-log-alerts.md).
+

@@ -1,11 +1,11 @@
 ---
-title: 'Az Azure AD Connect: Az átmenő hitelesítés hibaelhárítása |} A Microsoft Docs'
+title: 'Azure AD Connect: Az átmenő hitelesítés hibáinak elhárítása |} A Microsoft Docs'
 description: Ez a cikk ismerteti, hogyan háríthatók el az Azure Active Directory (Azure AD) átmenő hitelesítés.
 services: active-directory
 keywords: Hibaelhárítás az Azure AD Connect az átmenő hitelesítés, Active Directory, Azure AD egyszeri bejelentkezés, a szükséges összetevők telepítése egyszeri bejelentkezés
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6172195a9914d841e480cd7ebbf9566616911378
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: db3dfc10d6936b063a225e48fd043b6208f10475
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686194"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472772"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítés hibaelhárítása
 
@@ -66,7 +66,7 @@ Navigáljon a **Azure Active Directory** -> **bejelentkezések** a a [Azure Acti
 | 80002 | A hitelesítési ügynök jelszó-érvényesítési kérése túllépte az időkorlátot. | Ellenőrizze, hogy elérhető legyen a hitelesítési ügynök-e az Active Directoryban.
 | 80003 | A hitelesítési ügynök érvénytelen választ kapott. | Ha a probléma rendszeresen reprodukálható, több olyan felhasználóra, ellenőrizze az Active Directory konfigurációját.
 | 80004 | A bejelentkezési kérésben helytelen egyszerű felhasználónevet (UPN-t) használtak. | Kérje meg a felhasználót, hogy jelentkezzen be a helyes felhasználónevet.
-| 80005 | Hitelesítési ügynök: hiba történt. | Átmeneti hiba. Próbálkozzon újra később.
+| 80005 | A hitelesítési ügynök: Hiba történt. | Átmeneti hiba. Próbálkozzon újra később.
 | 80007 | A hitelesítési ügynök nem tudott csatlakozni az Active Directory-hoz. | Ellenőrizze, hogy elérhető legyen a hitelesítési ügynök-e az Active Directoryban.
 | 80010 | A hitelesítési ügynök nem tudta visszafejteni a jelszót. | Ha a probléma rendszeresen reprodukálható, telepítse, és regisztráljon egy új hitelesítési ügynök. És távolítsa el a jelenlegivel. 
 | 80011 | A hitelesítési ügynök nem tudta lekérni a visszafejtési kulcsot. | Ha a probléma rendszeresen reprodukálható, telepítse, és regisztráljon egy új hitelesítési ügynök. És távolítsa el a jelenlegivel.
@@ -95,7 +95,7 @@ Győződjön meg arról, hogy egy csak felhőalapú globális rendszergazdai fi�
 
 ### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Figyelmeztetés jelenik meg, amikor az Azure AD Connect eltávolítása
 
-Ha az átmenő hitelesítés engedélyezve van a bérlő rendelkezik, és megpróbálja eltávolítani az Azure AD Connect, megjeleníti a következő hibaüzenet: "felhasználók nem fognak tudni jelentkezzen be az Azure AD, ha nincsenek más telepítve átmenő hitelesítési ügynökök más kiszolgálókra."
+Ha az átmenő hitelesítés engedélyezve van a bérlő rendelkezik, és megpróbálja eltávolítani az Azure AD Connect, megjeleníti a következő figyelmeztető üzenet: "Felhasználók nem fognak tudni jelentkezzen be az Azure AD, ha nincsenek más kiszolgálókra telepített átmenő hitelesítés ügynökök."
 
 Győződjön meg arról, hogy a telepítő [magas rendelkezésre állású](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) felhasználói bejelentkezés használhatatlanná tévő elkerülése érdekében az Azure AD Connect eltávolítása előtt.
 
@@ -137,7 +137,7 @@ A felhasználói bejelentkezési hibák elhárításához keresse meg a nyomköv
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-Részletekért leíró (az előző példában "1328" jelöli) hiba megnyitása a parancssor használatával, és futtassa a következő parancsot (Megjegyzés: "1328" cserélje le a tényleges hiba száma a naplókban megjelenő):
+Részletekért leíró (az előző példában "1328" jelöli) hiba megnyitása a parancssor használatával, és futtassa a következő parancsot (Megjegyzés: Cserélje le "1328" a tényleges hiba száma a naplókban megjelenő):
 
 `Net helpmsg 1328`
 

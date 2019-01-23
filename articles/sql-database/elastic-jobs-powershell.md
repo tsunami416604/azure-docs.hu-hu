@@ -12,16 +12,16 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 34277aaa6ad6c5b22fb1691af83091e49d3bf5c1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 08571ac8b7e13bc0f414b481a481132793ba865d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021322"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452751"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Rugalmasfeladat-ügynök létrehozása a PowerShell használatával
 
-A [rugalmas feladatok](elastic-jobs-overview.md) lehetővé teszik egy vagy több Transact-SQL- (T-SQL-) szkript több adatbázisban történő, párhuzamos futtatását.
+A [rugalmas feladatok](sql-database-job-automation-overview.md#elastic-database-jobs) lehetővé teszik egy vagy több Transact-SQL- (T-SQL-) szkript több adatbázisban történő, párhuzamos futtatását.
 
 Ebben az oktatóanyagban megismerkedhet a lekérdezések több adatbázisban történő futtatásának lépéseivel:
 
@@ -65,7 +65,7 @@ Ha még nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt [l
 
 ## <a name="create-required-resources"></a>A szükséges erőforrások létrehozása
 
-A rugalmasfeladat-ügynök létrehozásához [feladat-adatbázisként](elastic-jobs-overview.md#job-database) használható (S0 vagy magasabb szintű) adatbázisra van szükség. 
+A rugalmasfeladat-ügynök létrehozásához [feladat-adatbázisként](sql-database-job-automation-overview.md#job-database) használható (S0 vagy magasabb szintű) adatbázisra van szükség. 
 
 *Az alábbi szkript egy új erőforráscsoportot, kiszolgálót és feladat-adatbázisként használható adatbázist hoz létre. A feladatok futtatásához az alábbi szkript létrehoz egy második kiszolgálót is, 2 üres adatbázissal.*
 
@@ -210,7 +210,7 @@ $JobCred = $JobAgent | New-AzureRmSqlElasticJobCredential -Name "jobuser" -Crede
 
 ## <a name="define-the-target-databases-you-want-to-run-the-job-against"></a>Határozza meg azokat a céladatbázisokat, amelyeken a feladatot futtatni szeretné
 
-A [célcsoport](elastic-jobs-overview.md#target-group) határozza meg azt az egy vagy több adatbázist, amely(ek)en az adott feladatlépés végre lesz hajtva. 
+A [célcsoport](sql-database-job-automation-overview.md#target-group) határozza meg azt az egy vagy több adatbázist, amely(ek)en az adott feladatlépés végre lesz hajtva. 
 
 A következő kódrészlet létrehozza a két célcsoportok: *ServerGroup*, és *ServerGroupExcludingDb2*. A *ServerGroup* csoport céladatbázisa a kiszolgálón a végrehajtás időpontjában megtalálható összes adatbázis, a *ServerGroupExcludingDb2* csoporté pedig a kiszolgálón megtalálható összes adatbázis, a *TargetDb2* kivételével:
 

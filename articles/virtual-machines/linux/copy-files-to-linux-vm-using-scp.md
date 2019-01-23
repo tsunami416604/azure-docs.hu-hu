@@ -1,6 +1,6 @@
 ---
-title: Helyezze át a fájlokat, és az SCP Azure Linux virtuális gépekről |} Microsoft Docs
-description: Biztonságosan helyezze a fájlokat, és onnan egy Linux virtuális Gépet az Azure-ban a szolgáltatáskapcsolódási pont és egy SSH-kulcspárral.
+title: Helyezze át a fájlokat az Azure Linux virtuális gépek, a szolgáltatáskapcsolódási pont |} A Microsoft Docs
+description: Biztonságosan áthelyezni a fájlokat, és a egy Linux rendszerű virtuális gép az Azure-ban a szolgáltatáskapcsolódási pont és a egy SSH-kulcspár.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
@@ -15,28 +15,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: danlep
-ms.openlocfilehash: 0231e402848e617a46ca70470ba4d3272ace59f7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: disks
+ms.openlocfilehash: 1f186e410718ce30f48602ce907afb6206597638
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30904505"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465768"
 ---
-# <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Helyezze át a fájlokat, és onnan Linux virtuális gépet a szolgáltatáskapcsolódási pont
+# <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Helyezze át a fájlokat, és a egy SCP használata Linux rendszerű virtuális gépekről
 
-Ez a cikk bemutatja, hogyan helyezze át a fájlok a munkaállomáson akár az Azure Linux virtuális gép vagy egy Azure Linux virtuális gép le a munkaállomás biztonságos másolása (SCP). Fájlok a munkaállomáson és a Linux virtuális gép közötti áthelyezése, gyorsan és biztonságosan, fontos az Azure-infrastruktúra felügyeletéhez. 
+Ez a cikk bemutatja, hogyan helyezze át a fájlokat, akár az Azure Linux VM a munkaállomásáról, vagy az Azure Linux VM le a munkaállomáson biztonságos másolás (SCP) használatával. Fájlok áthelyezése a munkaállomáson és a egy Linux rendszerű virtuális gép között, gyorsan és biztonságosan, fontos az Azure-infrastruktúra kezelésére alkalmas. 
 
-Ez a cikk a Linux virtuális gép üzembe helyezett Azure használatával kell [SSH nyilvános és titkos kulcs fájlok](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Szükség egy SCP-ügyfél a helyi számítógépen. SSH épül, és az alapértelmezett rendszerhéjakba legtöbb Linux és Mac számítógépek és az egyes Windows ismertetése szerepel.
+Ebben a cikkben egy Linux rendszerű virtuális gép az Azure-ban üzembe helyezett kell [SSH nyilvános és titkos kulcs fájljai](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). A helyi számítógépen kell egy SCP-ügyfelet is. SSH-ra épülő, és a legtöbb Linux és Mac számítógépek és a bizonyos Windows parancskörnyezet alapértelmezett bash tartalmazza.
 
 ## <a name="quick-commands"></a>Gyors parancsok
 
-A Linux virtuális gép legfeljebb fájl másolása
+A Linux rendszerű virtuális gép legfeljebb fájl másolása
 
 ```bash
 scp file azureuser@azurehost:directory/targetfile
 ```
 
-Másolja át a fájlt a Linux virtuális gép le
+Fájl másolása le a Linux rendszerű virtuális gépekről
 
 ```bash
 scp azureuser@azurehost:directory/file targetfile
@@ -44,36 +45,36 @@ scp azureuser@azurehost:directory/file targetfile
 
 ## <a name="detailed-walkthrough"></a>Részletes bemutató
 
-Példaként, azt egy Azure-alapú konfigurációs fájl áthelyezése legfeljebb egy Linux virtuális gép és a naplófájl könyvtárának le lekéréses mindkét szolgáltatáskapcsolódási pont és az SSH-kulcsok használatával.   
+Példa arra, hogy áthelyezése az Azure konfigurációs fájl legfeljebb egy Linux rendszerű virtuális gép és a naplófájl könyvtárának le lekéréses mindkét szolgáltatáskapcsolódási pont és az SSH-kulcsok használatával.   
 
-## <a name="ssh-key-pair-authentication"></a>SSH-kulcspár hitelesítés
+## <a name="ssh-key-pair-authentication"></a>SSH-kulcspár hitelesítést
 
-A szállítási réteg SSH SCP-t használ. SSH kezeli a hitelesítést a cél gazdagépen, és a fájl egy titkosított csatornán SSH alapértelmezés szerint biztosított áthelyezi azt. SSH hitelesítés a felhasználónevek és jelszavak használható. Ajánlott biztonsági eljárásként azonban SSH nyilvános és titkos kulcsos hitelesítés használata ajánlott. SSH hitelesítette a kapcsolatot, ha a szolgáltatáskapcsolódási pont majd megkezdi a fájl másolása. Használja a megfelelően konfigurált `~/.ssh/config` és az SSH nyilvános és titkos kulcsokat, a szolgáltatáskapcsolódási pont kapcsolat csak a kiszolgáló nevét (vagy IP-cím) segítségével hozhatók létre. Ha csak egy SSH-kulcsot, SCP megkeresi azt a `~/.ssh/` könyvtár, és azok felhasználását alapértelmezés szerint jelentkezzen be a virtuális gép.
+Szolgáltatáskapcsolódási pont a szállítási réteg SSH használ. SSH kezeli a hitelesítést, a cél gazdagépen, és áthelyezi azt a fájlt egy titkosított csatornán, alapértelmezés szerint az SSH-n keresztül biztosított. SSH-hitelesítésre szolgáló felhasználónév és jelszó használható. Azonban SSH nyilvános és titkos kulcsos hitelesítés ajánlott legjobb biztonsági megoldásként. Miután SSH hitelesítette a kapcsolatot, az SCP majd megkezdi a fájl másolását. Vagyis a megfelelően konfigurált használatával `~/.ssh/config` és az SSH nyilvános és titkos kulcsokat, a szolgáltatáskapcsolódási pont kapcsolat is létesíthető, csak a kiszolgáló nevét (vagy IP-cím). Ha csak egy SSH-kulcsot, SCP keres a a `~/.ssh/` könyvtárat, és jelentkezzen be a virtuális gép alapértelmezés szerint használ.
 
-Konfigurálásáról további információt a `~/.ssh/config` és az SSH nyilvános és titkos kulcsok, lásd: [hozzon létre SSH-kulcsok](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Konfigurálásáról további információt a `~/.ssh/config` SSH nyilvános és titkos kulcsokat, és [SSH-kulcsok létrehozása](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="scp-a-file-to-a-linux-vm"></a>Szolgáltatáskapcsolódási pont a Linux virtuális gép egy fájlt
+## <a name="scp-a-file-to-a-linux-vm"></a>Szolgáltatáskapcsolódási pont egy fájlt a Linuxos virtuális gép
 
-Az első példában másolja azt egy Azure konfigurációs fájl legfeljebb egy Linux virtuális Gépet, amely az automation telepítéséhez használatos. Ez a fájl tartalmazza az Azure API hitelesítő adatait, amely tartalmazza a titkos kulcsok, mert a biztonsági fontos. A titkosított alagút SSH által biztosított védelmet nyújt a fájl tartalmát.
+Az első példa hogy másolja egy Azure konfigurációs fájlt, amellyel automatizálás telepítése Linux virtuális gép legfeljebb. Ez a fájl tartalmazza az Azure API hitelesítő adatait, amely tartalmazza a titkos kulcsokat, mert a biztonsági fontos. A titkosított csatornán, az SSH által biztosított védelmet nyújt a fájl tartalmát.
 
-A következő parancsot, másolja át a helyi *.azure/config* fájl egy Azure virtuális gépre, a teljes tartománynévvel *myserver.eastus.cloudapp.azure.com*. Az Azure virtuális gépen a rendszergazda felhasználónév *azureuser*. A fájl céloz meg a */home/azureuser/* könyvtár. A parancs a saját értékeit helyettesítse.
+A következő parancsot, másolja át a helyi *.azure-/ konfigurációs* fájlt a teljes Tartománynevet az Azure virtuális gép *myserver.eastus.cloudapp.azure.com*. Az Azure virtuális gépen a rendszergazda felhasználónév *azureuser*. A fájl céloz meg, a */home/azureuser/* könyvtár. Helyettesítse be ezt a parancsot a saját értékeire.
 
 ```bash
 scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/config
 ```
 
-## <a name="scp-a-directory-from-a-linux-vm"></a>Szolgáltatáskapcsolódási pont a könyvtárat, a Linux virtuális gépek
+## <a name="scp-a-directory-from-a-linux-vm"></a>Szolgáltatáskapcsolódási pont egy könyvtárat egy Linux rendszerű virtuális gépekről
 
-Az ebben a példában a Linux virtuális gép le a munkaállomás egy könyvtárat a naplófájlok másolja azt. Egy naplófájlt is, vagy nem tartalmazhatnak bizalmas vagy titkos adatok. Azonban a szolgáltatáskapcsolódási pont biztosítja a naplófájlok tartalmát vannak titkosítva. A legegyszerűbb módja a naplózási könyvtár és a fájlok a munkaállomáson le miközben lehetőség van a biztonságos SCP használata a fájlok átvitele esetén.
+Ebben a példában a Linux rendszerű virtuális gép le a munkaállomáson a naplófájlokat tartalmazó könyvtár másolja azt. Előfordulhat, hogy egy naplófájlt, vagy előfordulhat, hogy nem tartalmaznak bizalmas vagy titkos adatokat. Azonban a szolgáltatáskapcsolódási pont biztosítja a naplófájlok tartalmát vannak titkosítva. A fájlok átviteléhez szolgáltatáskapcsolódási pont használata esetén a legegyszerűbb módja, miközben lehetőség van a biztonságos a naplózási könyvtár és a fájlok a munkaállomáson le.
 
-A következő parancsot, másolja át a fájlokat a */otthoni/azureuser/logs/* könyvtárhoz, az Azure virtuális gépen, hogy a helyi könyvtárban:
+A következő parancsot, másolja át a fájlokat a */home/azureuser/logs/* könyvtárat a helyi könyvtárban, az Azure virtuális gépen:
 
 ```bash
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-A `-r` cli jelzőt a rekurzív módon másolása a fájlok és könyvtárak annak a könyvtárnak a ponttól, szerepel a parancs arra utasítja a szolgáltatáskapcsolódási pont.  Is láthatja, hogy a parancssori szintaxist hasonló egy `cp` -parancs másolásával.
+A `-r` parancssorifelület-jelző arra utasítja a szolgáltatáskapcsolódási pont rekurzív módon Másolás a fájlokat és könyvtárakat az a pont a könyvtár szerepel a parancsot.  Szintén figyelje meg, hogy a parancssori szintaxist hasonló egy `cp` -parancs másolásával.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Kezelheti a felhasználókat, az SSH és az ellenőrzése vagy javítása Azure virtuális gépeken Linux a VMAccess bővítmény használatával lemezek](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Kezelheti a felhasználókat, az SSH és ellenőrzést, vagy javítsa ki a lemezeket az Azure Linux rendszerű virtuális gépekhez a VMAccess bővítmény használata](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

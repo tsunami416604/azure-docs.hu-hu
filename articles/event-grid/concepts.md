@@ -2,17 +2,17 @@
 title: Az Azure Event Griddel kapcsolatos fogalmak
 description: Az Azure Event Gridet és a vele kapcsolatos fogalmakat ismerteti. Event Grid számos főbb összetevőit határozza meg.
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: tomfitz
-ms.openlocfilehash: 89f0f5847f157cff59a57f7958508e4f260355c3
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.author: spelluru
+ms.openlocfilehash: 40c749adee08e66319bed88f26c3c898428a41ad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747558"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474353"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Az Azure Event Griddel kapcsolatos fogalmak
 
@@ -62,7 +62,7 @@ További információ az aktuális event grid-előfizetések első: [lekérdezé
 
 A [Event Grid-bővítmény](/cli/azure/azure-cli-extensions-list) az Azure parancssori felület lehetővé teszi, hogy állítsa be a lejárati dátum, amikor egy esemény-előfizetés létrehozása. Ha a REST API-t használ, használja a `api-version=2018-09-15-preview`
 
-Az esemény-előfizetés ezt követően automatikusan lejárt. Beállíthatja egy esemény-előfizetésekhez, amely csak korlátozott ideig szükséges lejárati idejét, és nem kívánja ezen előfizetések törlése foglalkoznia. Például amikor a forgatókönyv teszteléséhez egy esemény-előfizetést hoz létre, érdemes beállíthatja egy lejárati idejét. 
+Az esemény-előfizetés a megadott dátumot követően automatikusan lejár. Beállíthatja egy esemény-előfizetésekhez, amely csak korlátozott ideig szükséges lejárati idejét, és nem kívánja ezen előfizetések törlése foglalkoznia. Például amikor a forgatókönyv teszteléséhez egy esemény-előfizetést hoz létre, érdemes beállíthatja egy lejárati idejét. 
 
 Egy példa egy lejárati beállítása: [előfizetés a speciális szűrők](how-to-filter-events.md#subscribe-with-advanced-filters).
 

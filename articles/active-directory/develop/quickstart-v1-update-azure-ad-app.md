@@ -16,14 +16,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f311f951e09e064b8eac779b1082c666fe029479
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 9a89768a5cf02cc8d4cdce670bdfb5b90f504bdf
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977244"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447462"
 ---
-# <a name="quickstart-update-an-application-in-azure-active-directory"></a>Rövid útmutató: Alkalmazás frissítése az Azure Active Directoryban
+# <a name="quickstart-update-an-application-in-azure-active-directory"></a>Gyors útmutató: Az Azure Active Directory-alkalmazás frissítése
 
 Az alkalmazásokat az Azure Active Directoryban (Azure AD) regisztráló nagyvállalati fejlesztőknek és SaaS-szolgáltatóknak (szoftverszolgáltatók) esetenként konfigurálniuk kell az alkalmazásokat, hogy azok egyéb erőforrásokat, például webes API-kat is használhassanak, hogy más szervezetek számára is elérhetőek legyenek.
 
@@ -44,8 +44,8 @@ Ahhoz, hogy egy webes/bizalmas ügyfélalkalmazás részt vehessen egy hitelesí
 
 Mielőtt az ügyfél hozzáférhet egy erőforrás-alkalmazás webes API-jához (például a Microsoft Graph API-t), a hozzájárulási keretrendszer biztosítja, hogy az ügyfél a kért engedélyek alapján megkapja a szükséges engedélyt. Alapértelmezés szerint minden alkalmazás az **Azure Active Directoryból** (Graph API) és a klasszikus Azure üzemi modellből választhat engedélyeket. A [Graph API „Bejelentkezés és a felhasználói profil olvasása” engedélye](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) alapértelmezés szerint szintén be van jelölve. Ha az ügyfelet egy olyan bérlőre regisztrálja, amely az Office 365-re feliratkozott fiókokkal rendelkezik, a SharePoint és az Exchange Online webes API-jai és engedélyei is választhatók. Kétféle engedély közül választhat minden egyes kívánt API esetében:
 
-- Alkalmazásengedély: Az ügyfélalkalmazásnak a webes API-t közvetlenül a maga nevében kell elérnie (nincs felhasználói környezet). Az ilyen típusú engedély rendszergazdai hozzájárulást igényel, és a natív ügyfélalkalmazások esetében nem alkalmazható.
-- Delegált engedély: Az ügyfélalkalmazásnak a webes API-t a bejelentkezett felhasználó nevében, de a kiválasztott engedély által korlátozott hozzáféréssel kell elérnie. Az ilyen típusú engedély megadható a felhasználó által, hacsak nem igényel rendszergazdai hozzájárulást.
+- Alkalmazásengedélyek: Az ügyfélalkalmazásnak szüksége van a webes API-t közvetlenül magaként (felhasználói környezet) eléréséhez. Az ilyen típusú engedély rendszergazdai hozzájárulást igényel, és a natív ügyfélalkalmazások esetében nem alkalmazható.
+- Delegált engedélyek: Az ügyfélalkalmazásnak szüksége van a webes API eléréséhez, mint a bejelentkezett felhasználó, de az elérés korlátozója a kijelölt engedéllyel. Az ilyen típusú engedély megadható a felhasználó által, hacsak nem igényel rendszergazdai hozzájárulást.
 
   > [!NOTE]
   > A delegált engedély alkalmazáshoz való hozzáadása nem biztosítja automatikusan a hozzájárulást a bérlőn belüli felhasználóknak. A felhasználóknak továbbra is manuálisan kell a futásidőben hozzájárulniuk a delegált engedélyeket, hacsak a rendszergazda nem hagyja azokat jóvá minden felhasználó nevében.
@@ -111,7 +111,7 @@ A következő szakaszban mutatjuk be, hogyan tehetők közzé a hozzáférési h
   ```
 
   > [!NOTE]
-  > Az `id` értékét programozott módon kell előállítani, vagy egy GUID-előállító eszközzel, amilyen a [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Az `id` a webes API által közzétett hatókör egyedi azonosítója. Ha az ügyfél megfelelően van konfigurálva a webes API eléréséhez szükséges engedélyekkel, az Azure AD kioszt a számára egy OAuth2.0 hozzáférési jogkivonatot. Amikor az ügyfél meghívja a webes API-t, bemutatja a hozzáférési jogkivonatot, amelyben a hatókör (scp) jogcíme az ügyfél alkalmazásregisztrációjában igényelt engedélyekre van állítva.
+  > A `id` értéket kell létrejönnie, programozott módon, vagy egy GUID Azonosítót használja az például eszköz generációs [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Az `id` a webes API által közzétett hatókör egyedi azonosítója. Ha az ügyfél megfelelően van konfigurálva a webes API eléréséhez szükséges engedélyekkel, az Azure AD kioszt a számára egy OAuth2.0 hozzáférési jogkivonatot. Amikor az ügyfél meghívja a webes API-t, bemutatja a hozzáférési jogkivonatot, amelyben a hatókör (scp) jogcíme az ügyfél alkalmazásregisztrációjában igényelt engedélyekre van állítva.
   >
   > A későbbiekben igény szerint további hatóköröket is közzétehet. Vegye figyelembe, hogy a webes API több hatókört is közzétehet, amelyek különféle függvényekkel vannak társítva. Az erőforrás a futásidőben a kapott OAuth 2.0 hozzáférési jogkivonatban lévő hatókör (`scp`) jogcímének vagy jogcímeinek értékelésével szabályozhatja a hozzáférést a webes API-hoz.
 
@@ -190,7 +190,7 @@ Az alkalmazás több-bérlős hozzáféréséhez és a bejelentkezési/kijelentk
 
 - [Az Azure Active Directory (AD) felhasználóinak bejelentkeztetése több-bérlős alkalmazásminta használatával](howto-convert-app-to-be-multi-tenant.md)
 - A [több-bérlős kódminták](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant) listája.
-- [Rövid útmutató: Vállalati arculat megjelenítése az Azure AD bejelentkezési oldalán](../fundamentals/customize-branding.md)
+- [Rövid útmutató: Vállalati arculat megjelenítése a bejelentkezési oldal az Azure ad-ben](../fundamentals/customize-branding.md)
 
 ## <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>OAuth 2.0 implicit engedélyezési folyamatának engedélyezése az egyoldalas alkalmazásokon
 

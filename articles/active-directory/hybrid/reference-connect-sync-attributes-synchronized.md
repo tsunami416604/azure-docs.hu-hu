@@ -4,7 +4,7 @@ description: Azure Active Directoryval szinkronizált attribútumok listája.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: c2bb36e0-5205-454c-b9b6-f4990bcedf51
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 08633b52e6b7cfef28635925ad9fcf34e065e9bf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 30ed7ff2026c64c7e40d43597a2747f1144ae125
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251798"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468609"
 ---
-# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Az Azure AD Connect szinkronizálása: az Azure Active Directoryval szinkronizált attribútumok
+# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Az Azure AD Connect szinkronizálása: Az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör az Azure AD Connect sync szinkronizált attribútumok listája.  
 Az attribútumok vannak csoportosítva, a kapcsolódó Azure AD-alkalmazás.
 
@@ -46,7 +46,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | objectSID |X |gépi tulajdonság. AD-felhasználói azonosító az Azure közötti szinkronizálás fenntartásához használt AD és az AD. |
 | pwdLastSet |X |gépi tulajdonság. Ismerje meg, mikor már kiadott jogkivonatokat érvénytelenítéséhez használja. Jelszókivonat szinkronizálása, átmenő hitelesítésének és összevonási is használják. |
 | sourceAnchor |X |gépi tulajdonság. Nem módosítható azonosító karbantartása ADDS és az Azure AD közötti kapcsolat. |
-| a usagelocation érték |X |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
 | userPrincipalName |X |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 
 ## <a name="exchange-online"></a>Exchange Online
@@ -167,7 +167,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | thumbnailphoto |X |X | | |
 | cím |X |X | | |
 | unauthOrig |X |X |X | |
-| a usagelocation érték |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
 | userCertificate |X |X | | |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 | userSMIMECertificates |X |X | | |
@@ -251,7 +251,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | cím |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
-| a usagelocation érték |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 | wWWHomePage |X |X | | |
 
@@ -300,7 +300,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
 | cím |X |X | | |
-| a usagelocation érték |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 | wWWHomePage |X |X | | |
 
@@ -317,7 +317,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | pwdLastSet |X | | |gépi tulajdonság. Ismerje meg, mikor már kiadott jogkivonatokat érvénytelenítéséhez használja. |
 | securityEnabled | | |X |Származtatott groupType. |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosító karbantartása ADDS és az Azure AD közötti kapcsolat. |
-| a usagelocation érték |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |Az UPN-je a felhasználó bejelentkezési azonosítója. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 
 ## <a name="intune"></a>Intune
@@ -336,7 +336,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | pwdLastSet |X | | |gépi tulajdonság. Ismerje meg, mikor már kiadott jogkivonatokat érvénytelenítéséhez használja. Jelszókivonat szinkronizálása, átmenő hitelesítésének és összevonási is használják. |
 | securityEnabled | | |X |GroupType származik |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosító karbantartása ADDS és az Azure AD közötti kapcsolat. |
-| a usagelocation érték |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
@@ -369,7 +369,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | cím |X |X | | |
-| a usagelocation érték |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 
 ## <a name="3rd-party-applications"></a>3. fél alkalmazások
@@ -395,7 +395,7 @@ Ez a csoport olyan készlete, az attribútumokat, amelyek is használható, ha a
 | pwdLastSet |X | | |gépi tulajdonság. Ismerje meg, mikor már kiadott jogkivonatokat érvénytelenítéséhez használja. Jelszókivonat szinkronizálása, átmenő hitelesítésének és összevonási is használják. |
 | sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosító karbantartása ADDS és az Azure AD közötti kapcsolat. |
-| a usagelocation érték |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 
 ## <a name="windows-10"></a>Windows 10
@@ -427,12 +427,12 @@ Ezek az attribútumok a rendszer visszaírja Azure AD-ből a helyszíni Active D
 | Attribútum neve (Csatlakozás a felhasználói felület) |Attribútum neve (amely helyszíni AD) | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Származtatott cloudAnchor az Azure ad-ben. Ez az attribútum az Exchange 2016 és Windows Server 2016 AD jelent meg. |
-| msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Online archív: Használatát teszi lehetővé mail archiválhatja. |
+| msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Online archívum: Archív tárolási szint mail használatát teszi lehetővé. |
 | msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |X | | |Szűrés: Visszaírja a helyszíni szűrése és online védelmét, és a blokkolt küldő adatokat ügyfelekről. |
 | msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |Szűrés: Visszaírja a helyszíni szűrése és online védelmét, és a blokkolt küldő adatokat ügyfelekről. |
 | msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |Szűrés: Visszaírja a helyszíni szűrése és online védelmét, és a blokkolt küldő adatokat ügyfelekről. |
-| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Egyesített üzenetküldési (UM) – Online hangposta engedélyezése: a Microsoft Lync Server által használt integrációs annak jelzéséhez, Lync Server helyszíni, hogy a felhasználó rendelkezik-e az online szolgáltatások hangposta. |
-| msExchUserHoldPolicies| ms-Exc-hUserHoldPolicies |X | | |Pereskedés fenntartási: Lehetővé teszi, hogy a cloud services meghatározni, hogy mely felhasználók Pereskedés tartsa alatt találhatók. |
+| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Engedélyezze az egyesített üzenetküldési (UM) – Online Hangposta: A Microsoft Lync Server által használt integrációs annak jelzéséhez, Lync Server helyszíni, hogy a felhasználó rendelkezik-e az online szolgáltatások hangposta. |
+| msExchUserHoldPolicies| ms-Exc-hUserHoldPolicies |X | | |Pereskedés céllal zároltak közé: Lehetővé teszi, hogy a cloud services annak meghatározására, hogy mely felhasználók alatt Pereskedés tárolásához. |
 | proxyAddresses| proxyAddresses |X |X |X |Csak a cím az Exchange online-hoz kerül beillesztésre oda x500. |
 | publicDelegates| ms-Exch-Public-Delegates  |X | | |Lehetővé teszi az Exchange Online-postaládával, a felhasználók számára a helyszíni Exchange-postaládájába SendOnBehalfTo engedélyeket. Az Azure AD Connect: 1.1.552.0 build igényel vagy után. |
 

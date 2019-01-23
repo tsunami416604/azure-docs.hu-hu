@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 1a0be03c278a152ea56fe0dac5277c39a0878057
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7d5630c082c044ac936f555965aec5a2a00f3544
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412509"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448720"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Az SQL Server Integration Services (SSIS) használatával U-SQL-feladatok ütemezése
 
@@ -40,7 +40,7 @@ Akkor képes a U-SQL parancsfájl különböző helyeken SSIS beépített függv
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>A forgatókönyv 1 használható beágyazott parancsprogram hívása tvfs és tárolt procs
 
-Az Azure Data Lake Analytics feladat Editor, konfigurálja **forrás típusa** , **DirectInput**, és a U-SQL-utasításokat injektálhatnak **USQLStatemnt**.
+Az Azure Data Lake Analytics feladat Editor, konfigurálja **forrás típusa** , **DirectInput**, és a U-SQL-utasításokat injektálhatnak **USQLStatement**.
 
 A könnyű karbantartás és a kód felügyeleti, csak helyezzen rövid U-SQL-szkript, beágyazott parancsfájlokra például hívása meglévő táblázat értékű függvények és tárolt eljárások a U-SQL-adatbázisokban. 
 

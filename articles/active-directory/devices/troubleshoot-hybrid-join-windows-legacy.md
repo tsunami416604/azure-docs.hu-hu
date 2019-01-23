@@ -4,7 +4,7 @@ description: Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott r
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.component: devices
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b5fd5a9544e27092c8b65e18d59701421fc59ef5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 546f9054978f0b9fbe6bb9063905c982de627442
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800859"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445286"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott régebbi verziójú eszközök 
 
@@ -73,7 +73,7 @@ Ez a parancs megjelenít egy párbeszédpanelt, amely biztosítja a join állapo
 ![A munkahelyi csatlakoztatás Windows esetében](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>2. lépés: A hibrid Azure AD join állapot értékelése 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>2. lépés: A hibrid Azure AD join állapot értékelése 
 
 Ha az eszköz nem volt a hibrid Azure AD-hez, megpróbálhatja hibrid Azure AD-csatlakozás ehhez a "Csatlakozás" gombra kattintva. Hibrid Azure AD-csatlakozás ehhez a kísérlet meghiúsul, ha a hiba részleteit jelenik meg.
 
@@ -116,7 +116,7 @@ Ha az eszköz nem volt a hibrid Azure AD-hez, megpróbálhatja hibrid Azure AD-c
 
     ![A munkahelyi csatlakoztatás Windows esetében](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-Az állapotinformációk keresse meg az eseménynaplóban: **alkalmazások és szolgáltatások Log\Microsoft-alapú munkahelyi csatlakoztatás**
+Az állapotinformációk is található eseménynaplóban: **Alkalmazások és szolgáltatások Log\Microsoft – a munkahelyi csatlakoztatás**
   
 **A sikertelen a hibrid Azure AD join leggyakoribb okai a következők:** 
 

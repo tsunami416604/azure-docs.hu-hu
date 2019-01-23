@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Ha már rendelkezik az Azure ad-ben |} A Microsoft Docs'
+title: 'Azure AD Connect: Ha már rendelkezik az Azure ad-ben |} A Microsoft Docs'
 description: Ez a témakör ismerteti, hogyan használja a csatlakozás, ha van meglévő Azure AD-bérlővel.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6425c2cd77cc32e296c75504d3fd01a5b5e583e9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6f0c16a86d4e3dbe582f1471d2b94e1ec85b70b5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311884"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475919"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Az Azure AD Connect: Ha már rendelkezik meglévő bérlővel
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Ha már rendelkezik meglévő bérlővel
 A témakörök használata az Azure AD Connect a legtöbb feltételezi, hogy először a egy új Azure AD-bérlővel, és hogy egyik felhasználó sem, vagy nincs más objektumokat. Ha már elindította az Azure AD-bérlővel, de fel kell töltenie azt a felhasználók és más objektumok, és most szeretné használni a csatlakozás, majd ez a témakör Önnek szól.
 
 ## <a name="the-basics"></a>Az alapok

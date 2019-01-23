@@ -8,14 +8,14 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: a86b22b3327b2353dd37a9f9863337d12a009434
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: df1c0f8256b49e23b720df47c513fba8c62677b5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143573"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475203"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Az Azure IoT hub Event Grid-eseménysémája
 
@@ -115,10 +115,10 @@ Az összes esemény legfelső szintű ugyanazokat az adatokat tartalmazza:
 | -------- | ---- | ----------- |
 | id | sztring | Az esemény egyedi azonosítója. |
 | témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| Tulajdonos | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
+| tárgy | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
 | eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| adatok | objektum | Az IoT Hub eseményadatokat.  |
+| adat | objektum | Az IoT Hub eseményadatokat.  |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
@@ -143,7 +143,7 @@ Az objektum tartalmát minden egyes esemény-közzétevő eltérőek. A **létre
 | -------- | ---- | ----------- |
 | ikereszköz | objektum | Az ikereszközök, amely a felhőalapú represenation alkalmazás eszköz metaadatainak kapcsolatos információk. | 
 | deviceID | sztring | Az ikereszközök egyedi azonosítója. | 
-| Az ETag | sztring | Egy érvényesítő egy ikereszköz-frissítések konzisztencia biztosításához. Minden egyes etag garantáltan ikereszköz minden egyedi. |  
+| ETag | sztring | Egy érvényesítő egy ikereszköz-frissítések konzisztencia biztosításához. Minden egyes etag garantáltan ikereszköz minden egyedi. |  
 | deviceEtag| sztring | Egy érvényesítő frissítések egy eszközjegyzékébe konzisztencia biztosításához. Minden egyes deviceEtag garantáltan eszközjegyzék minden egyedi. |
 | status | sztring | Az ikereszközök e engedélyezése vagy letiltása. | 
 | statusUpdateTime | sztring | Az utolsó ikereszköz Eszközállapot ISO8601 időbélyegzője frissítése. |
@@ -154,7 +154,7 @@ Az objektum tartalmát minden egyes esemény-közzétevő eltérőek. A **létre
 | x509Thumbprint | sztring | Az ujjlenyomat egy egyedi értéket a x509 tanúsítvány, általában használt egy adott tanúsítvány található a tanúsítványtárolóban. Az ujjlenyomat dinamikusan hozzuk létre az SHA1 algoritmusok használatával, és a tanúsítvány ténylegesen nem létezik. | 
 | primaryThumbprint | sztring | Elsődleges ujjlenyomat a x509 a tanúsítványt. |
 | secondaryThumbprint | sztring | Másodlagos ujjlenyomat a x509 a tanúsítványt. | 
-| verzió: | egész szám | Egész szám, amely értéke eggyel mindegyik az eszköz ideje ikereszköz frissül. |
+| version | egész szám | Egész szám, amely értéke eggyel mindegyik az eszköz ideje ikereszköz frissül. |
 | kívánt | objektum | Csak az alkalmazás háttér-írják, és olvassa el az eszköz tulajdonságok egy részét. | 
 | jelentett | objektum | Csak az eszköz által írt, és az alkalmazás háttér által beolvasott tulajdonságok egy részét. |
 | lastUpdated | sztring | Az utolsó ikereszköz eszköztulajdonság ISO8601 időbélyegzője frissítése. | 

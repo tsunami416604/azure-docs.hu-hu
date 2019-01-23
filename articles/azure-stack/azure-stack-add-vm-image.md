@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: e5a4236b-1b32-4ee6-9aaa-fcde297a020f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 1/14/2019
+ms.date: 1/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 3bd86fe8708d2cbb8cbddac4ca35d5afdc68d2e3
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: bac0b2933d4b6d4a88ebbb0402bba0ffd508b395
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306080"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474370"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Egy virtuális gép rendszerképének elérhetővé az Azure Stackben
 
@@ -42,21 +41,21 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
     > [!IMPORTANT]  
     >  Az Azure Stack nem támogatja a dinamikus lemez VHD-k. Egy virtuális Géphez van csatlakoztatva dinamikus lemez átméretezése sikertelen állapotban hagyja a virtuális Gépet. A probléma megoldásához törölje a virtuális Gépet a virtuális gép lemezét, a VHD-blob storage-fiókban lévő törlése nélkül. A, a konvertálás a virtuális Merevlemezt a dinamikus lemezről egy rögzített méretű lemezt, és hozza létre újból a virtuális gép.
 
-   * Legyen hatékonyabb, ha egy rendszerkép feltöltése az Azure Stack blob storage-ba, mint az Azure blob storage-ban, mert a rendszerkép leküldése az Azure Stack lemezképtárban kevesebb időt vesz igénybe.
+   - Legyen hatékonyabb, ha egy rendszerkép feltöltése az Azure Stack blob storage-ba, mint az Azure blob storage-ban, mert a rendszerkép leküldése az Azure Stack lemezképtárban kevesebb időt vesz igénybe.
 
-   * Feltöltése a [Windows Virtuálisgép-lemezkép](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), le a **bejelentkezés az Azure** . lépés: az a [konfigurálása a PowerShell-környezet az Azure Stack-operátorokról](azure-stack-powershell-configure-admin.md) . lépés.  
+   - Feltöltése a [Windows Virtuálisgép-lemezkép](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), le a **bejelentkezés az Azure** . lépés: az a [konfigurálása a PowerShell-környezet az Azure Stack-operátorokról](azure-stack-powershell-configure-admin.md) . lépés.  
 
-   * Jegyezze fel a blob Storage URI, amikor feltölti a lemezképet. A blob storage URI azonosító formátuma a következő: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd.
+   - Jegyezze fel a blob Storage URI, amikor feltölti a lemezképet. A blob storage URI azonosító formátuma a következő: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd.
 
-   * Ahhoz, hogy a blob névtelenül elérhető-e, nyissa meg a storage-fiók blob tárolót, a Virtuálisgép-lemezkép VHD feltöltése. Válassza ki **Blob**, majd válassza ki **hozzáférési szabályzat**. Igény szerint a tároló közös hozzáférésű jogosultságkód létrehozása, és adja meg a blob URI részeként. Ez a lépés biztosítja, hogy a blob hozzáadhatja ezt képként használandó érhető el. Ha a blob nem érhető el névtelenül, a Virtuálisgép-lemezkép létrejön a hibás állapotban.
+   - Ahhoz, hogy a blob névtelenül elérhető-e, nyissa meg a storage-fiók blob tárolót, a Virtuálisgép-lemezkép VHD feltöltése. Válassza ki **Blob**, majd válassza ki **hozzáférési szabályzat**. Igény szerint a tároló közös hozzáférésű jogosultságkód létrehozása, és adja meg a blob URI részeként. Ez a lépés biztosítja, hogy a blob hozzáadhatja ezt képként használandó érhető el. Ha a blob nem érhető el névtelenül, a Virtuálisgép-lemezkép létrejön a hibás állapotban.
 
-   ![Ugrás a storage-fiók BLOB](./media/azure-stack-add-vm-image/image1.png)
+    ![Ugrás a storage-fiók BLOB](./media/azure-stack-add-vm-image/image1.png)
 
-   ![A nyilvános blob-hozzáférés beállítása](./media/azure-stack-add-vm-image/image2.png)
+    ![A nyilvános blob-hozzáférés beállítása](./media/azure-stack-add-vm-image/image2.png)
 
-2. Jelentkezzen be az Azure Stack operátori. Válassza a menüben **minden szolgáltatás**. Ezt követően a **felügyeleti** kategória kiválasztása **számítási** > **Virtuálisgép-rendszerképek** > **Hozzáadás**.
+2. Jelentkezzen be az Azure Stack operátori. A menüben válassza ki a **minden szolgáltatás** > **lemezképek** alatt **számítási** > **Hozzáadás**.
 
-3. A **Virtuálisgép-rendszerkép hozzáadása**, írja be a közzétevő, ajánlat, Termékváltozat és a virtuálisgép-lemezkép verzióját. Ezek neve a szegmensek tekintse meg a Resource Manager-sablonok Virtuálisgép-rendszerkép. Ügyeljen arra, hogy válassza ki a **osType** megfelelő értékét. A **operációs rendszer Lemezblobjának URI azonosítója**, ahol a rendszerképet feltöltöttük Blob URI-t adja meg. Ezután válassza ki **létrehozás** a Virtuálisgép-lemezkép létrehozásának megkezdéséhez.
+3. A **kép létrehozása**, adja meg a név, előfizetés, erőforráscsoport, helyet, operációsrendszer-lemez, operációs rendszer típusa, a tárolási blob URI-t, a fiók típusú tárfiók, és a gyorsítótárazás üzemeltetéséhez. Ezután válassza ki **létrehozás** a Virtuálisgép-lemezkép létrehozásának megkezdéséhez.
 
    ![A lemezkép létrehozásának megkezdése](./media/azure-stack-add-vm-image/image4.png)
 

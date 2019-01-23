@@ -2,21 +2,21 @@
 title: Az Azure Event Grid-előfizetés eseménysémája
 description: Ismerteti a tulajdonságait, amelyet az Azure Event Grid-előfizetés események
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 10/12/2018
-ms.author: tomfitz
-ms.openlocfilehash: ae6513c503b930d9c953f5245a9c98ea096109bb
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.date: 01/12/2019
+ms.author: spelluru
+ms.openlocfilehash: 04bb19c074edff08677d759fb386608f6905e979
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310234"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473435"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Az előfizetések az Azure Event Grid eseménysémája
 
-Ez a cikk a tulajdonságok és a séma az Azure-előfizetés események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
+Ez a cikk a tulajdonságok és a séma az Azure-előfizetés események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
 
 Az Azure-előfizetések és -erőforráscsoportok gridre bocsáthatja ki az azonos esemény típusú. Az eseménytípusok kapcsolatos műveletek és erőforrás-módosítások. Az elsődleges különbség, hogy erőforráscsoportok gridre bocsáthatja ki az eseményeket az erőforrások az erőforráscsoporton belül, és az Azure-előfizetések eseményeire a PowerShell erőforrások küldik az előfizetésből.
 
@@ -237,11 +237,11 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| Tulajdonos | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
+| tárgy | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
 | eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| adatok | objektum | Előfizetés eseményadatokat. |
+| adat | objektum | Előfizetés eseményadatokat. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
@@ -252,8 +252,8 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Engedélyezési | objektum | A kért hitelesítést biztosít a műveletet. |
 | jogcímek | objektum | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | sztring | A hibaelhárítási művelet azonosítója. |
-| Törzsparaméterei | objektum | A művelet részleteit. Ez az objektum csak van hozzáadva, amikor egy meglévő erőforrás frissítése vagy töröl egy erőforrást. |
-| ResourceProvider | sztring | Az erőforrás-szolgáltató a művelethez. |
+| httpRequest | objektum | A művelet részleteit. Ez az objektum csak van hozzáadva, amikor egy meglévő erőforrás frissítése vagy töröl egy erőforrást. |
+| resourceProvider | sztring | Az erőforrás-szolgáltató a művelethez. |
 | resourceUri | sztring | A műveletet az erőforrás URI azonosítója. |
 | operationName | sztring | A művelet, amely kerül. |
 | status | sztring | A művelet állapota. |

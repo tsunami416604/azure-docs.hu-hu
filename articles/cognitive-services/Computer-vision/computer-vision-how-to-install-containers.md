@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6a6468cd71cf83c627f6dd72e5a1fc5564361d50
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f344bb893a453a5f0b00f5cb1d87528b5943f779
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579855"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462946"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
 
@@ -173,3 +173,4 @@ Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és futtatás
 * Felülvizsgálat [számítógépes Látástechnológiai áttekintése](Home.md) tudhat meg többet nyomtatott és kézzel írt szöveg felismerése  
 * Tekintse meg a [Computer Vision API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) részleteiről a tároló által támogatott különböző módszereit.
 * Tekintse meg [– gyakori kérdések (GYIK)](FAQ.md) a Computer Vision funkcióihoz kapcsolódó problémák megoldása.
+* Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)

@@ -8,54 +8,54 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5702c6e9c9d75c6cccb82f1c57684ef7b9898c34
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 73ba80878615f04e1755a4d12014691c5ae2a077
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34666009"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453120"
 ---
 ## <a name="view-device-telemetry"></a>Eszköztelemetria megtekintése
 
-Az eszközről küldött telemetriai adatok megtekintheti a **eszközök** lap a megoldásban.
+Az eszközről küldött telemetriát is megtekintheti a **eszközök** lap a megoldásban.
 
-1. Válassza ki az eszközt, az eszközök listájában kiépítve a **eszközök** lap. A panel az eszközt, beleértve a telemetriát rajzot információit jeleníti meg:
+1. Válassza ki az Ön által üzembe helyezett eszközök listájában az eszközön a **eszközök** lapot. A panel az eszközről, mint például az eszköz telemetriai rajz információit jeleníti meg:
 
     ![Tekintse meg az eszköz részletei](media/iot-suite-visualize-connecting/devicesdetail.png)
 
-1. Válasszon **nyomás** telemetriai megjelenítésének módosítása:
+1. Válasszon **nyomás** telemetriai adatok megjelenítésének módosítása:
 
-    ![Nézet nyomás telemetriai adat](media/iot-suite-visualize-connecting/devicespressure.png)
+    ![Nyomás telemetria megtekintése](media/iot-suite-visualize-connecting/devicespressure.png)
 
-1. Az eszköz diagnosztikai adatainak megtekintésére, görgessen le a **diagnosztika**:
+1. Az eszköz diagnosztikai információ megtekintéséhez görgessen le a **diagnosztikai**:
 
-    ![Nézet eszköz diagnosztika](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
+    ![Eszköz diagnosztika megtekintése](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
 
-## <a name="act-on-your-device"></a>Az eszközön működésre
+## <a name="act-on-your-device"></a>Az eszköz cselekedhet
 
-Az eszközök metódusok meghívása, használja a **eszközök** a távoli figyelésére szolgáló megoldás lapján. Például a távoli figyelésére szolgáló megoldás a **hűtő** eszközök valósítja meg a **FirmwareUpdate** metódust.
+Az eszközök metódusokat hívhat meg, használja a **eszközök** oldal a távoli figyelési megoldásban. Ha például a távoli figyelési megoldás a **hűtő** eszközök megvalósítása egy **FirmwareUpdate** metódus.
 
-1. Válasszon **eszközök** lehetőségre, és navigáljon a **eszközök** lap a megoldásban.
+1. Válasszon **eszközök** navigálhat a **eszközök** lap a megoldásban.
 
-1. Válassza ki az eszközt, az eszközök listájában kiépítve a **eszközök** lap:
+1. Válassza ki az Ön által üzembe helyezett eszközök listájában az eszközön a **eszközök** oldalon:
 
-    ![Válassza ki a fizikai eszköz](media/iot-suite-visualize-connecting/devicesselect.png)
+    ![Válassza ki a valódi eszköz](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. A metódusok hívása az eszközön listájának megjelenítéséhez kattintson **feladatok**, majd **Run metódus**. Ütemezni a feladatot több eszközön futtassa, jelölje ki több eszközre a listában. A **feladatok** panelen láthatók metódus általános a kiválasztott eszközök.
+1. A metódusok meghívása az eszközön listájának megjelenítéséhez válassza **feladatok**, majd **Run metódus**. Ütemezni a feladatot több eszközön futtassa, több eszközt is kijelölhet a listában. A **feladatok** panel megjeleníti a metódus típusú közös kiválasztott összes eszközre.
 
-1. Válasszon **FirmwareUpdate**, a feladat neve **UpdatePhysicalChiller**. Állítsa be **belsővezérlőprogram-verziónként** való **2.0.0**, beállíthatja **belső vezérlőprogram URI** való **http://contoso.com/updates/firmware.bin**, és válassza a **alkalmaz**:
+1. Válasszon **FirmwareUpdate**, állítsa a feladat nevet **UpdatePhysicalChiller**. Állítsa be **belső vezérlőprogram verziója** való **2.0.0-s**állítsa be **belső vezérlőprogram URI** való **http://contoso.com/updates/firmware.bin**, és válassza a **Alkalmaz**:
 
     ![A belső vezérlőprogram-frissítés ütemezése](media/iot-suite-visualize-connecting/deviceschedule.png)
 
-1. Üzenetek sorozatát jeleníti meg a konzolon, a kód fut, miközben a szimulált eszköz kezeli a metódust.
+1. Üzenetek sorozatát eszköz kódja fut, amikor a szimulált eszközt a metódus kezeli a konzolon jeleníti meg.
 
-1. Ha a frissítés befejeződött, a belső vezérlőprogram verziójának megjeleníti a **eszközök** lap:
+1. A frissítés befejeződése után megjelenik-e az új belső vezérlőprogram verziója a a **eszközök** oldalon:
 
     ![A frissítés befejeződött](media/iot-suite-visualize-connecting/complete.png)
 
 > [!NOTE]
-> A megoldásban a feladat állapotának nyomon követése, válassza a **nézet**.
+> Válassza ki a megoldás a feladat állapotának nyomon követéséhez **nézet**.
 
 ## <a name="next-steps"></a>További lépések
 
-A cikk [testre szabhatja a távoli megfigyelési megoldásgyorsító](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) testre szabhatja a megoldásgyorsító néhány módját ismerteti.
+A cikk [testre szabhatja a távoli figyelési megoldásgyorsító](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) néhány módon szabhatja testre a megoldásgyorsító ismerteti.

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/30/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5704cc21b14d83ebc30cd29f52102c751cfb11f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61da17d1dc59a08128671da163d8b3ea27f83994
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248010"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463218"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>A távoli figyelési megoldásgyorsító a CLI-vel üzembe helyezése
 
@@ -62,7 +62,7 @@ Ez a szakasz az alap és normál központi telepítés közötti lényeges kül�
 
 ### <a name="basic"></a>Alapszintű
 
-Alapszintű központi telepítést stíluskalauz amely azt mutatja be a megoldáshoz. Költségek csökkentése érdekében minden mikroszolgáltatás egyetlen virtuális gép helyezik üzembe. A központi telepítés nem használ egy éles használatra kész architektúra.
+Az alapszintű telepítés a megoldás bemutatását szolgálja. Költségek csökkentése érdekében minden mikroszolgáltatás egyetlen virtuális gép helyezik üzembe. A központi telepítés nem használ egy éles használatra kész architektúra.
 
 Alapszintű üzembe helyezéséhez az Azure-előfizetésben hoz létre a következő szolgáltatásokat:
 
@@ -89,7 +89,7 @@ Szabványos telepítés a következő szolgáltatásokat az Azure-előfizetésbe
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Egy teljes körűen felügyelt Kubernetes tárolószervező szolgáltatást, az alapértelmezett érték 3 ügynökök használata|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard csomag | Eszközkezelés, a parancs és vezérlés |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Konfigurációs adatok és eszközök telemetriai például szabályok, a riasztások és az üzenetek tárolására |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Konfigurációs adatok és eszközök telemetriát, például a szabályok, a riasztások és az üzenetek tárolására |
 | 5     | [Az Azure Storage-fiókok](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 – Virtuálisgép-tároló, a streamelési ellenőrzőpontokat 1 |
 | 1     | [APP SERVICE](https://azure.microsoft.com/services/app-service/web/)             | S1 – Standard     | Az Application gateway SSL-en keresztül |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Felhasználói identitások kezelése és biztonsági |

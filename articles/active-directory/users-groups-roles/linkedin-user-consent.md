@@ -1,6 +1,6 @@
 ---
-title: LinkedIn-integráció adatok megosztása az Azure Active Directoryban |} A Microsoft Docs
-description: Azt ismerteti, hogyan a LinkedIn-fiókkapcsolatok Microsoft-alkalmazások az Azure Active Directory-n keresztül adatok megosztása
+title: LinkedIn integrációt az adatok megosztása és jóváhagyás az Azure Active Directory |} A Microsoft Docs
+description: Azt ismerteti, hogyan LinkedIn-integráció oszt meg adatokat a Microsoft-alkalmazások az Azure Active Directory-n keresztül
 services: active-directory
 author: curtand
 manager: mtillman
@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 01/22/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 25060f41528c59d252adbc854704c6060becd907
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 776c793fb797e9388f0852773315f27cd42dde25
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319121"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471718"
 ---
-# <a name="user-consent-and-linkedin-account-connections-data-sharing"></a>Felhasználói beleegyezés és a LinkedIn fiók kapcsolatok az adatok megosztása
+# <a name="linkedin-integration-data-sharing-and-consent"></a>LinkedIn-integráció az adatok megosztása és jóváhagyás
 
 Azure Active Directory (Azure AD) a rendszergazdák a szervezetben, hogy engedélyt adjanak az csatlakoztatása a Microsoft munkahelyi vagy iskolai és a LinkedIn-fiók engedélyezheti a felhasználóknak. Amikor a felhasználóknak a fiókjaik csatlakoztatására, információt és a LinkedIn pillanatai érhetők el egyes Microsoft-alkalmazások és szolgáltatások. Felhasználók saját kapcsolatépítési élményt a Linkedinen fejlesztjük és a Microsoft information renderelésre számíthatnak.
 
-LinkedIn-adatokat a Microsoft-alkalmazások és szolgáltatások megtekintéséhez a felhasználók cconsent saját Microsoft- és a LinkedIn-fiókokkal csatlakozni kell. Csatlakoztathassák a fiókjukat, az Outlook, OneDrive vagy SharePoint online-hoz egy profil kártya valakinek a LinkedIn-információinak megtekintéséhez kattintson az első alkalommal a rendszer kéri. LinkedIn-fiókkapcsolatok nem teljes mértékben engedélyezettek a felhasználók mindaddig, amíg azok hozzájárul a felhasználói élményt és csatlakoztathassák a fiókjukat.
+LinkedIn-adatokat a Microsoft-alkalmazások és szolgáltatások megtekintéséhez felhasználók bele kell egyeznie a saját Microsoft- és LinkedIn-fiók kapcsolódni. Csatlakoztathassák a fiókjukat, az Outlook, OneDrive vagy SharePoint online-hoz egy profil kártya valakinek a LinkedIn-információinak megtekintéséhez kattintson az első alkalommal a rendszer kéri. LinkedIn-fiókkapcsolatok nem teljes mértékben engedélyezettek a felhasználók mindaddig, amíg azok hozzájárul a felhasználói élményt és csatlakoztathassák a fiókjukat.
 
 [!INCLUDE [active-directory-gdpr-note](../../../includes/gdpr-hybrid-note.md)]
 
@@ -31,13 +31,13 @@ LinkedIn-adatokat a Microsoft-alkalmazások és szolgáltatások megtekintéséh
 
 Microsoft-alkalmazások és szolgáltatások LinkedIn információkhoz való hozzáférés megkönnyíti a csatlakozás, és szakmai kapcsolatok létrehozása munkatársakkal, ügyfelek és partnerek belüli és a szervezeten kívüli felhasználók számára. Új felhasználók is gyorsan elsajátíthatja gyorsabban a munkatársakkal való csatlakozás, azokat többet és könnyen fér hozzá a további információkat. Íme egy példa LinkedIn-adatokat hogyan jelenik meg a profil kártya a Microsoft-alkalmazások:
 
-![LinkedIn-fiókkapcsolatok engedélyezése](./media/linkedin-user-consent/display-example.png)
+![LinkedIn-integráció engedélyezése](./media/linkedin-user-consent/display-example.png)
 
-## <a name="enable-and-announce-linkedin-account-connections"></a>Engedélyezze és jelentjük be a LinkedIn-fiókkapcsolatok
+## <a name="enable-and-announce-linkedin-integration"></a>Engedélyezze és jelentjük be a LinkedIn-integráció
 
 Az Azure Active Directory-rendszergazda kezelheti a beállítást a szervezet számára kell lennie. Az összes felhasználó számára, vagy a felhasználók adott csoportja számára engedélyezheti.
 
-1. Engedélyezi vagy letiltja a fiókot kapcsolatok integrációs, kövesse a lépéseket a [LinkedIn-fiókkapcsolatok](linkedin-integration.md).
+1. Engedélyezze vagy tiltsa le az integrációt, kövesse a lépéseket a [LinkedIn-integráció](linkedin-integration.md).
 2. LinkedIn integrálása a szervezet jelentjük be, amikor mutasson a felhasználók számára a gyakori Kérdéseket kapcsolatos [LinkedIn-adatokat a Microsoft-alkalmazások és szolgáltatások](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). A cikk ismerteti, hol LinkedIn-adatokat mutatja be, hogyan csatlakozhat a fiókok és egyéb.
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Felhasználói beleegyezés az adatok eléréséhez a Microsoft és a LinkedIn

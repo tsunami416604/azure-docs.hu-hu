@@ -4,7 +4,7 @@ description: Ez az Azure AD Connect Health oldal bemutatja, hogyan figyelheti he
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: dc0e53d8-403e-462a-9543-164eaa7dd8b3
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d93207e6a5f0acabcf348981e799e801c39f48b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 3d74a78d60959dc404165d0ac8c4483b8bd36a29
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278837"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464085"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Az AD FS monitorozása az Azure AD Connect Health használatával
 Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. Az Azure AD Connect (szinkronizálási szolgáltatás) az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](how-to-connect-health-sync.md) című témakörben tekintheti meg. Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](how-to-connect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
@@ -44,7 +44,7 @@ Az Azure AD Connect Health Használatelemzés elemzi az összevonási kiszolgál
 
 További metrikák kiválasztásához adjon meg egy időtartományt, vagy a csoportosítás módosításához kattintson a jobb gombbal a használatelemzés diagramra, és válassza a Diagram szerkesztése lehetőséget. Ezt követően megadhatja az időtartományt, kiválaszthat egy másik metrikát, illetve módosíthatja a csoportosítást. A hitelesítési forgalom eloszlását különféle „metrikák” alapján tekintheti meg, és mindegyik metrikát csoportosíthatja a következő szakaszban ismertetett vonatkozó „csoportosítási szempont” paraméterek használatával:
 
-**Metrika: Kérelmek száma összesen** – Az AD FS-kiszolgálók által feldolgozott kérelmek teljes száma.
+**Metrika: Kérések összesen** – az összes AD FS-kiszolgálók által feldolgozott kérelmek száma.
 
 |Csoportosítási szempont | Mit jelöl az adott csoportosítás, és miért hasznos? |
 | --- | --- |
@@ -56,16 +56,16 @@ További metrikák kiválasztásához adjon meg egy időtartományt, vagy a csop
 | Hálózati hely | Az összes kérelmet a felhasználó hálózati helye alapján csoportosítja. Ez lehet intranet vagy extranet. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, hogy a forgalom hány százaléka érkezik az intranetről vagy az extranetről. |
 
 
-**Metrika: Összes sikertelen kérelem** – Az összevonási szolgáltatás által feldolgozott sikertelen kérelmek teljes száma. (Ez a metrika csak az AD FS for Windows Server 2012 R2 szolgáltatás esetében elérhető)
+**Metrika: Összes sikertelen kérelem** – sikertelen az összevonási szolgáltatás által feldolgozott kérelmek teljes száma. (Ez a metrika csak az AD FS for Windows Server 2012 R2 szolgáltatás esetében elérhető)
 
 |Csoportosítási szempont | Mit jelöl az adott csoportosítás, és miért hasznos? |
 | --- | --- |
-| Hibatípus | A hibák számát jeleníti meg előre meghatározott hibatípusok szerint. Ez a csoportosítás akkor hasznos, ha szeretné megismerni a gyakori hibatípusokat. <ul><li>Incorrect Username or Password (Helytelen felhasználónév vagy jelszó): A nem megfelelő felhasználónév vagy jelszó okozta hibák.</li> <li>„Extranet Lockout” (Extranet kizárás): A hiba oka, hogy a kérelem az extranetről kizárt felhasználótól érkezett </li><li> „Expired Password” (Lejárt jelszó): A hiba oka, hogy a felhasználó lejárt jelszóval jelentkezett be.</li><li>„Disabled Account” (Letiltott fiók): A hiba oka, hogy a felhasználó letiltott fiókkal jelentkezett be.</li><li>„Device Authentication” (Eszközhitelesítés): A hiba oka, hogy a felhasználó eszközhitelesítéssel való hitelesítése sikertelen volt.</li><li>„User Certificate Authentication” (Felhasználói tanúsítványos hitelesítés): A hiba oka, hogy a felhasználó hitelesítése érvénytelen tanúsítvány miatt sikertelen volt.</li><li>„MFA” (Többtényezős hitelesítés): A hiba oka, hogy a felhasználó többtényezős hitelesítéssel való hitelesítése sikertelen volt.</li><li>„Other Credential” (Egyéb hitelesítő adat): „Issuance Authorization” (Kiadásengedélyezés): Hitelesítési problémák okozta hibák.</li><li>„Issuance Delegation” (Kiadásdelegálás): Kiadásdelegálási problémák okozta hibák.</li><li>„Token Acceptance” (Jogkivonatok elfogadása): A hiba oka, hogy az AD FS elutasított egy külső identitásszolgáltatótól származó jogkivonatot.</li><li>„Protocol” (Protokoll): Protokollproblémák okozta hibák.</li><li>„Unknown” (Ismeretlen): Minden más. Bármely egyéb olyan hiba, amely nem illik a meghatározott kategóriákba.</li> |
+| Hibatípus | A hibák számát jeleníti meg előre meghatározott hibatípusok szerint. Ez a csoportosítás akkor hasznos, ha szeretné megismerni a gyakori hibatípusokat. <ul><li>Helytelen felhasználónév vagy jelszó: Hibák miatt a helytelen felhasználónév vagy jelszó.</li> <li>"Extranet Lockout": Hiba oka, hogy a kérelem az extranetről érkező lett zárolva felhasználó </li><li> "A jelszó lejárt": A hiba oka, hogy a felhasználó lejárt jelszóval jelentkezett be.</li><li>"Disabled Account": A hiba oka, hogy a felhasználó letiltott fiókkal naplózás.</li><li>"Device Authentication": A hiba oka, hogy a felhasználók hitelesítése sikertelen.</li><li>"Felhasználói tanúsítvány hitelesítéséhez": A hiba oka, hogy a felhasználók való hitelesítése érvénytelen tanúsítvány miatt sikertelen volt.</li><li>"MFA": A hiba oka, hogy a felhasználó többtényezős hitelesítéssel való hitelesítése sikertelen volt.</li><li>"Más Credential": "Issuance Authorization": Sikertelen hitelesítési problémák okozta hibák.</li><li>"Issuance Delegation": Kiállítási hibák miatt sikertelen.</li><li>"Token elfogadása": Hiba oka, hogy a jogkivonat egy külső identitásszolgáltatótól az AD FS.</li><li>"Protocol": Protokollproblémák okozta hibák.</li><li>"Ismeretlen": Minden más. Bármely egyéb olyan hiba, amely nem illik a meghatározott kategóriákba.</li> |
 | Kiszolgáló | A hibákat a kiszolgálók alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megismerni a hibák eloszlását a kiszolgálók között. Az egyenetlen eloszlás esetleg jelezheti azt, hogy valamelyik kiszolgáló meghibásodott. |
 | Hálózati hely | A hibákat a kérelmek hálózati helye (intranet vagy extranet) alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megismerni a sikertelen kérelemtípusokat. |
 |  Alkalmazás | A hibákat a célzott alkalmazás (jogcímfelhasználó alkalmazás) alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, hogy melyik célzott alkalmazás kapja a legtöbb hibát. |
 
-**Metrika : Felhasználók száma** – A hitelesítést aktívan az AD FS segítségével végző egyedi felhasználók száma
+**Metrika: Felhasználók száma** – átlagos aktívan az AD FS segítségével történő hitelesítésről egyedi felhasználók száma
 
 |Csoportosítási szempont | Mit jelöl az adott csoportosítás, és miért hasznos? |
 | --- | --- |
@@ -82,7 +82,7 @@ A panel tetején lévő Szűrővel kiszolgálónként szűrheti az adatokat, és
 ## <a name="top-50-users-with-failed-usernamepassword-logins"></a>A felhasználónevet/jelszót leggyakrabban sikertelenül megadó 50 felhasználó
 A sikertelen hitelesítési kérelmek leggyakoribb oka az AD FS-kiszolgálókon, hogy a kérelem érvénytelen hitelesítő adatokkal, azaz rossz felhasználónévvel vagy jelszóval rendelkezik. Általában akkor történik meg, ha a felhasználók bonyolult jelszavakat használnak, elfelejtik vagy elgépelik a jelszavakat.
 
-Azonban más okok miatt is előfordulhat, hogy az AD FS-kiszolgálóknak váratlan számú kérelmet kell kezelniük, például a következő esetekben: egy alkalmazás gyorsítótárazza a felhasználói hitelesítő adatokat, és a hitelesítő adatok lejárnak, vagy pedig egy rosszindulatú felhasználó jól ismert jelszavak sorozatával megpróbál bejelentkezni egy fiókba. Ez a két példa érvényes oka lehet annak, hogy a kérelmek száma hirtelen megnő.
+Azonban más okokból is váratlan számú kérelmet kell kezelniük az AD FS-kiszolgálók, például előfordulhat, hogy: Egy alkalmazás gyorsítótárak felhasználói hitelesítő adatok és a hitelesítő adatok lejárnak, vagy egy rosszindulatú felhasználó megpróbál bejelentkezni a fiók jól ismert jelszavak sorozatával. Ez a két példa érvényes oka lehet annak, hogy a kérelmek száma hirtelen megnő.
 
 Az AD FS szolgáltatáshoz elérhető Azure AD Connect Health jelentést készít a rossz felhasználónév/jelszó megadásával leggyakrabban sikertelenül bejelentkezni próbáló 50 felhasználóról. Ez a jelentés a farmokon lévő összes AD FS-kiszolgáló által létrehozott összes naplózási esemény feldolgozásával készíthető el.
 
@@ -132,7 +132,7 @@ Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentk
 > 
 
 ### <a name="what-is-in-the-report"></a>A jelentés tartalma
-A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. A következő információkat tartalmazza: ![Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4a.png)
+A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. Ez a következő adatokat tartalmazza: ![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4a.png)
 
 | Jelentéselem | Leírás |
 | ------- | ----------- |

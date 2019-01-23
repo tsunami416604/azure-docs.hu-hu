@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: 93bcf30010b6fecd302342d262080fcfe18ed0ce
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 62ccf86d138ff71706aca4c19f548f175e6c09ce
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425237"
+ms.locfileid: "54447615"
 ---
 # <a name="get-started"></a>Gyors útmutató: Azure PowerShell-lel Standard Load Balancer létrehozása
 Ez a rövid útmutató bemutatja, hogyan hozhat létre Standard Load Balancert az Azure PowerShell használatával. A terheléselosztó teszteléséhez két, Windows kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését. További információk a Standard Load Balancerről: [Mi a Standard Load Balancer?](load-balancer-standard-overview.md).
@@ -281,7 +281,7 @@ Az `-AsJob` paraméter háttérfeladatként létrehozza a virtuális gépet, íg
  
 Telepítése az IIS-t egyéni weblappal mindkét háttérszolgáltatás nyújtó virtuális gépen az alábbiak szerint:
 
-1. Kérje le a terheléselosztó nyilvános IP-címét. Kérje le a terheléselosztó nyilvános IP-címét a `Get-AzureRmPublicIPAdress` paranccsal.
+1. Kérje le a terheléselosztó nyilvános IP-címét. Kérje le a terheléselosztó nyilvános IP-címét a `Get-AzureRmPublicIPAddress` paranccsal.
 
   ```azurepowershell-interactive
     Get-AzureRmPublicIPAddress `

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 0675e06564fcacf5f7d14ef6986762f36df18b1b
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: a6941e28bdfd922a68ff484c57031326a9aa5c0b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290322"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452632"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>A Windows Azure Diagnostics bővítményt az alkalmazásteljesítmény-figyelés
 
@@ -43,7 +43,7 @@ Teljesítményszámlálók adatainak összegyűjtése a WAD-n keresztül, akkor 
     }
     ```
 
-    A `scheduledTransferPeriod` határozza meg, hogyan konfigurálta az gyűjtött a számlálók értékeit átkerülnek az Azure storage-táblához, és bármely gyakori a fogadó. 
+    A `scheduledTransferPeriod` határozza meg, hogy milyen gyakran gyűjtött a számlálók értékeit átkerülnek az Azure storage-táblához, és minden konfigurált fogadó. 
 
 3. A teljesítményszámlálók, amelyet szeretne gyűjteni a felvétele a `PerformanceCounterConfiguration` , amely az előző lépésben lett deklarálva. Minden egyes gyűjteni kívánt teljesítményszámláló van definiálva egy `counterSpecifier`, `sampleRate`, `unit`, `annotation`, és minden kapcsolódó `sinks`.
 

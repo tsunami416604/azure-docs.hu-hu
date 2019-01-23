@@ -4,7 +4,7 @@ description: Ismerje meg, speciális tanúsítvány-aláírási beállítások e
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: e7488abb3e82f90f63fa338b84a6516202e504ec
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 368fbf52642b1353b221ce6ebe6f6c40a517c3e6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714530"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473418"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Speciális tanúsítvány-aláírási beállítások katalógusbeli alkalmazásokat az Azure Active Directory a SAML-jogkivonat
 Még ma az Azure Active Directory (Azure AD) több ezer előre integrált alkalmazás támogatja az Azure Active Directory-alkalmazás gyűjtemény. Ez a szám, amely támogatja az egyszeri bejelentkezéshez a SAML 2.0 protokoll használatával több mint 500 alkalmazásokat tartalmaz. Amikor egy felhasználó egy alkalmazást az Azure AD-n keresztül SAML használatával hitelesíti magát, az Azure AD egy tokent az alkalmazást (egy HTTP POST) küld. Ezt követően az alkalmazás ellenőrzi, és jelentkezzen be a felhasználó nem egy felhasználónevet és jelszót kér a jogkivonat alapján. Ezek a SAML-jogkivonatok van bejelentkezve az Azure AD-ben és a standard algoritmusok által létrehozott egyedi tanúsítvánnyal.
@@ -51,7 +51,7 @@ Az Azure AD által támogatott három tanúsítvány-aláírási beállítások:
 
 Az Azure AD SAML-válasz aláírása két aláírási algoritmusokat támogatja:
 
-* **SHA-256 ALGORITMUST**. Azure ad-ben az SAML-válasz aláírásához használja az alapértelmezett algoritmus. A legújabb algoritmust, és úgy viselkedik, mint, több biztonságos, mint az SHA-1. Az alkalmazások többsége támogatja az SHA-256 algoritmust. Ha egy alkalmazás támogatja a csak az SHA-1, az aláírási algoritmus, módosíthatja. Ellenkező esetben javasoljuk, hogy az SHA-256 algoritmust a SAML-válasz aláírása használjon.
+* **SHA-256**. Azure ad-ben az SAML-válasz aláírásához használja az alapértelmezett algoritmus. A legújabb algoritmust, és úgy viselkedik, mint, több biztonságos, mint az SHA-1. Az alkalmazások többsége támogatja az SHA-256 algoritmust. Ha egy alkalmazás támogatja a csak az SHA-1, az aláírási algoritmus, módosíthatja. Ellenkező esetben javasoljuk, hogy az SHA-256 algoritmust a SAML-válasz aláírása használjon.
 
     ![SHA-256 tanúsítvány-aláírási algoritmus](./media/certificate-signing-options/saml-signing-algo-sha256.png)
 

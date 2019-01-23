@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 280c646a3265ff7ab9a3d32412a2be2e3989e22e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bb17916fb4d9b9b3ae1481ead7508214f5956c70
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297469"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464272"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>A Bing Image Search API-lemezkép elemzések lekérése
 
@@ -216,10 +216,10 @@ A `region` mező azonosítja a terület a kép, ahol ismeri fel a Bing az entit�
 
 Az értékeket a téglalap képest relatív szélességét és magasságát az eredeti rendszerkép és 0,0 és 1,0 közé kell esnie. Például, ha a kép 300 x 200-as és a terület felső pontján (10, 20) a bal felső sarokban található és alján, jobb oldali sarokban (290, 150) ponton, akkor a normalizált téglalap:  
 
--   Left: 10 / 300 = 0.03333...  
--   Felső: 20 / 200 = 0,1  
+-   A bal oldalon: 10 / 300 = 0.03333...  
+-   Felső:  20 / 200 = 0.1  
 -   Jobb: 290 / 300 = 0.9667...  
--   Alsó: 150 és 200 = 0,75  
+-   Alsó: 150 / 200 = 0.75  
 
 Használhatja a régiót, amelyben a Bing, az ezt követő insights hívások adja vissza. Ha például vizuálisan hasonló képek a felismert entitás beolvasásához. További információkért lásd: [vágása rendszerképek vizuálisan hasonló és entitások felismerése modulok](#croppingimages). Az alábbiakban látható a régió mezőt és a lekérdezési paraméterek közötti lemezképek levágni használható.  
 
@@ -408,7 +408,7 @@ Az alábbiakban az előző kérelemre adott válasz látható. A válasz egy has
 }
 ```
 
-A kereskedők, a termék online kínáló listáját (lásd a [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offer-offercount) mező), az API-t hívja meg újra, és állítsa be `modules` ShoppingSources való. Ezután adja meg a `insightsToken` lekérdezési paraméter a token található a termék összefoglaló kép.  
+A kereskedők, a termék online kínáló listáját (lásd a [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) mező), az API-t hívja meg újra, és állítsa be `modules` ShoppingSources való. Ezután adja meg a `insightsToken` lekérdezési paraméter a token található a termék összefoglaló kép.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=ShoppingSources&insightsToken=ccid_hb3uRvUk*mid_BF5C252A47F2C765...&mkt=en-us HTTP/1.1    

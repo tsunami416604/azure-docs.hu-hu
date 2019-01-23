@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Fiókok és engedélyek |} A Microsoft Docs'
+title: 'Azure AD Connect: Fiókok és engedélyek |} A Microsoft Docs'
 description: Ez a témakör ismerteti a használt és a létrehozott fiókok és a szükséges engedélyekkel.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef8b621b41bb43c46ef728e28d3b312ac49f1da3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 403fd0679e0850d758dd0e2f65cec3fe2ff79965
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308783"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478603"
 ---
-# <a name="azure-ad-connect-accounts-and-permissions"></a>Az Azure AD Connect: Fiókok és engedélyek
+# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Az Azure AD Connect használt fiókok
 
@@ -41,7 +41,7 @@ E három fiókok Azure AD Connect futtatásához használt mellett is szüksége
 
 - **Helyi rendszergazdai fiók**: A rendszergazda, aki az Azure AD Connectet telepíti, és kik a helyi rendszergazdai engedélyekkel a gépen.
 
-- **Az AD DS vállalati rendszergazdai fiók**: "AD DS-összekötő fiók" létrehozása a fenti használatával.
+- **Az AD DS vállalati rendszergazdai fiók**: Igény szerint használja az "AD DS-összekötő fiók" létrehozása a fent.
 
 - **Az Azure AD globális rendszergazdai fiókját**: az Azure AD-összekötő fiók létrehozása és konfigurálása az Azure ad-ben.
 
@@ -113,14 +113,14 @@ A következő található egy összefoglaló az egyéni telepítési varázsló 
 | AD FS-kiszolgálók |A lista minden egyes kiszolgáló esetén a a varázsló hitelesítő adatait gyűjti, amikor a bejelentkezési hitelesítő adatok a varázslót futtató felhasználó nem elegendőek csatlakoztatása |Tartományi rendszergazda |Telepítés és konfigurálás a az AD FS kiszolgálói szerepkör. |
 | Webalkalmazás-proxy kiszolgálók |A lista minden egyes kiszolgáló esetén a a varázsló hitelesítő adatait gyűjti, amikor a bejelentkezési hitelesítő adatok a varázslót futtató felhasználó nem elegendőek csatlakoztatása |Helyi rendszergazda a célgépen |Telepítés és konfigurálás a WAP-kiszolgálói szerepkör. |
 | Proxy megbízhatósági hitelesítő adatai |Összevonási szolgáltatás bizalmi kapcsolat hitelesítő adatait (a hitelesítő adatok egy megbízható tanúsítványt az FS regisztrálásához használja a proxy |Tartományi fiók, amely az AD FS-kiszolgáló helyi rendszergazdája |A regisztráció FS – WAP megbízható tanúsítvány. |
-| Az AD FS-szolgáltatásfiókot lap, "Használata egy tartományi felhasználói fiókot választja" |AD felhasználói fiók hitelesítő adatait |Tartomány felhasználó |Az AD-felhasználói fiókot, amelynek hitelesítő adatok megadása az AD FS szolgáltatás bejelentkezési fiókként szolgál. |
+| Az AD FS-szolgáltatásfiókot lap, "Használata egy tartományi felhasználói fiókot választja" |AD felhasználói fiók hitelesítő adatait |Domain user |Az AD-felhasználói fiókot, amelynek hitelesítő adatok megadása az AD FS szolgáltatás bejelentkezési fiókként szolgál. |
 
 ### <a name="create-the-ad-ds-connector-account"></a>Az AD DS-összekötő fiók létrehozása
 
 >[!IMPORTANT]
 >Egy új PowerShell-modul elnevezett ADSyncConfig.psm1 jelent meg a build **1.1.880.0** (2018 augusztus jelent meg), amely tartalmaz egy gyűjtemény parancsmagok segítségével konfigurálhatja a megfelelő Active Directory-engedélyek az Azure Active Directory tartományi szolgáltatások Összekötő-fiók.
 >
->További információ: [az Azure AD Connect: konfigurálja az AD DS-összekötő fiók engedély](how-to-connect-configure-ad-ds-connector-account.md)
+>További információ: [az Azure AD Connect: Konfigurálja az AD DS-összekötő fiók engedély](how-to-connect-configure-ad-ds-connector-account.md)
 
 A fióknak meg kell adnia a **csatlakoztassa a címtárakat** lap szerepelnie kell az Active Directory telepítése előtt.  Az Azure AD Connect 1.1.524.0 verziója, és később a beállítást engedélyezve lehetővé teheti a létrehozása az Azure AD Connect varázsló a **AD DS-összekötő fiók** Active Directory segítségével kapcsolódhat.  
 
@@ -149,7 +149,7 @@ Amikor frissít egy verziójáról az Azure AD Connect új kiadása, a következ
 | --- | --- | --- |
 | A felhasználó a telepítési varázsló futtatása |A helyi kiszolgáló rendszergazdája |Bináris fájlok frissítése. |
 | A felhasználó a telepítési varázsló futtatása |ADSyncAdmins tagja |Szinkronizálási szabályok és egyéb konfigurációs módosítások. |
-| A felhasználó a telepítési varázsló futtatása |Ha teljes SQL server: DBO (vagy hasonlót) a szinkronizálási motor adatbázis |Hajtsa végre a módosításokat adatbázis szolgáltatói, például az új oszlopokat tartalmazó táblák frissítése. |
+| A felhasználó a telepítési varázsló futtatása |Ha teljes SQL server használja: DBO (vagy hasonlót) a szinkronizálási motor adatbázis |Hajtsa végre a módosításokat adatbázis szolgáltatói, például az új oszlopokat tartalmazó táblák frissítése. |
 
 ## <a name="more-about-the-created-accounts"></a>A létrehozott fiókokkal kapcsolatos további információkért
 ### <a name="ad-ds-connector-account"></a>Az AD DS-összekötő fiók
@@ -187,10 +187,10 @@ Jelmagyarázat:
 - az önállóan felügyelt szolgáltatásfiókokkal - [önálló felügyelt szolgáltatásfiók](https://technet.microsoft.com/library/dd548356.aspx)
 - csoportosan felügyelt szolgáltatásfiók - [csoportosan felügyelt szolgáltatásfiók](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Express | LocalDB/LocalSQL</br>Egyéni | Távoli SQL</br>Egyéni |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Egyéni | Remote SQL</br>Egyéni |
 | --- | --- | --- | --- |
 | **önálló vagy munkacsoportbeli számítógéphez** | Nem támogatott | **VSA**</br>Helyi fiók (2008)</br>Helyi fiók |  Nem támogatott |
-| **tartományhoz csatlakoztatott gép** | **VSA**</br>Helyi fiók (2008) | **VSA**</br>Helyi fiók (2008)</br>Helyi fiók</br>Tartományi fiók</br>önállóan felügyelt szolgáltatásfiókot, csoportosan felügyelt szolgáltatásfiók | **gMSA**</br>Tartományi fiók |
+| **tartományhoz csatlakoztatott gép** | **VSA**</br>Helyi fiók (2008) | **VSA**</br>Helyi fiók (2008)</br>Helyi fiók</br>Tartományi fiók</br>sMSA,gMSA | **gMSA**</br>Tartományi fiók |
 | **Tartományvezérlő** | **Tartományi fiók** | *gMSA*</br>**Tartományi fiók**</br>sMSA| *gMSA*</br>**Tartományi fiók**|
 
 #### <a name="virtual-service-account"></a>Virtuális szolgáltatásfiók

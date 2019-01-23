@@ -5,7 +5,7 @@ keywords: Az AD FS, ADFS, AD FS-kezelőben, AAD Connect, a csatlakozás, az Azur
 services: active-directory
 documentationcenter: ''
 ms.reviewer: anandyadavmsft
-manager: mtillman
+manager: daveba
 ms.component: hybrid
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: 5ac69c53a6b6c1e4695b88e5806f8e883cd52c66
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: bfdc58b8af9fc5c7c5e56e78b17d97aa60681239
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432053"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462368"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-megbízhatóság kezelése az Azure AD Connect használatával az Azure AD-vel
 
@@ -45,7 +45,7 @@ Kezeli az Azure AD Connect **csak** Azure AD-megbízhatóság kapcsolatos beáll
 | Az Azure AD megbízhatóságának azonosítója | Az Azure AD Connect beállítja az Azure AD-megbízhatóság megfelelő azonosító értékét. Az AD FS egyedileg azonosítja az Azure AD-megbízhatóság azonosító értékének használatával. |
 | Azure AD-végpontok | Az Azure AD Connect gondoskodik arról, hogy a végpont konfigurálva az Azure AD-megbízhatóság mindig a legújabb ajánlott értékeit a rugalmasság és teljesítmény alapján. |
 | Kiadás átalakítási szabályai | Nincsenek számok jogcímszabályok, amelyek szükségesek az optimális teljesítmény érdekében az Azure AD-t egy összevont beállítás funkcióit. Az Azure AD Connect gondoskodik arról, hogy az Azure AD-megbízhatóság mindig van-e konfigurálva a megfelelő ajánlott jogcímszabályok együtt. |
-| Másodlagos-azonosító | Ha a szinkronizálás másodlagos-azonosító használatára van konfigurálva, az Azure AD Connect konfigurálja az AD FS azonosítójával másodlagos hitelesítés végrehajtásához. |
+| Alternate-id | Ha a szinkronizálás másodlagos-azonosító használatára van konfigurálva, az Azure AD Connect konfigurálja az AD FS azonosítójával másodlagos hitelesítés végrehajtásához. |
 | Metaadatok automatikus frissítés | Az Azure AD-megbízhatóság konfigurálva van az automatikus metaadat-frissítést. Az AD FS rendszeresen ellenőrzi a metaadatokat az Azure AD-megbízhatóság és tartja azt naprakészen abban az esetben, ha változik az Azure AD-oldalán. |
 | Integrált Windows-hitelesítés (IWA) | Hibrid Azure AD join művelet során a IWA engedélyezve van az eszköz regisztrációjához megkönnyítése érdekében a régi verziójú eszközök hibrid Azure AD joinnal |
 
@@ -58,12 +58,12 @@ Az Azure AD connect nem az Azure AD-megbízhatóság minden beállítások friss
 | Először át telepítési (express) | None |
 | Először adja át a telepítési (új AD FS-farm) | Létrejön egy új AD FS-farm, és az Azure AD-megbízhatóság jön létre sablon nélkül. |
 | Először át telepítése (meglévő AD FS-farm, meglévő Azure AD-megbízhatóság) | Az Azure AD megbízhatóságának azonosítója, a kiadás átalakítási szabályai, az Azure AD-végpontok, másodlagos-azonosítója (ha szükséges), az automatikus metaadat-frissítés |
-| Az Azure AD-megbízhatóság alaphelyzetbe állítása | A jogkivonatot aláíró tanúsítvánnyal, jogkivonat-aláíró algoritmus, az Azure ad-ben megbízhatóságának azonosítója, a kiállítási átalakítási szabályok, az Azure AD-végpontok, másodlagos-azonosítója (ha szükséges), az automatikus metaadat-frissítés |
+| Azure AD-megbízhatóság alaphelyzetbe állítása | A jogkivonatot aláíró tanúsítvánnyal, jogkivonat-aláíró algoritmus, az Azure ad-ben megbízhatóságának azonosítója, a kiállítási átalakítási szabályok, az Azure AD-végpontok, másodlagos-azonosítója (ha szükséges), az automatikus metaadat-frissítés |
 | Összevonási kiszolgáló hozzáadása | None |
 | WAP-kiszolgáló hozzáadása | None |
 | Eszközbeállítások | Kiadás átalakítási szabályai, az eszközök regisztrációjával kapcsolatos IWA |
 | Összevont tartomány hozzáadása | Ha a tartomány első alkalommal ad hozzá, azt jelenti, a telepítő a egyetlen tartomány-összevonási több tartomány-összevonási módosítása – az Azure AD Connect létrehozza a megbízhatósági előzmények. A megbízhatósági kapcsolatot az Azure ad-vel már konfigurálva van a több tartomány, ha csak kiadás átalakítási szabályai módosultak |
-| Az SSL frissítése | None |
+| Update SSL | None |
 
 Minden művelet, amely során bármilyen érték módosított, az Azure AD Connect teszi biztonsági másolatot a jelenlegi adatvédelmi beállítások, **%ProgramData%\AADConnect\ADFS**
 

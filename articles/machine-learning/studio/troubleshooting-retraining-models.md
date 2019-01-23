@@ -1,5 +1,5 @@
 ---
-Cím: A Machine Learning Studio klasszikus web service titleSuffix átképezési problémáinak hibaelhárítása Azure Machine Learning Studio description: Azonosítsa és javítsa ki a gyakori problémák észlelt.%12%0, ha meg vannak átképezési a az Azure Machine Learning Studio webszolgáltatás-modell.
+Cím: A Machine Learning Studio klasszikus web service titleSuffix átképezési problémáinak hibaelhárítása Azure Machine Learning Studio description: Azonosítsa és javítsa ki, amelyek a az Azure Machine Learning Studio webszolgáltatás-modell átképezési során jelentkező gyakori hibák.
 szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 11/01/2017
@@ -31,7 +31,7 @@ A hely minden a helyére a fő lépések szükségesek a modell újratanítása 
 ### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>Ellenőrizze, hogy van-e a megfelelő JAVÍTÁSI URL-címe
 A JAVÍTÁSI URL-címet használ a pontozási webszolgáltatás hozzáadott új pontozási végponthoz társított egy kell lennie. Számos módon a JAVÍTÁSI URL-cím:
 
-**1. lehetőség: Amellyel programozott módon**
+**1. lehetőség: Programozott módon**
 
 A megfelelő JAVÍTÁSI URL-Címének lekéréséhez:
 

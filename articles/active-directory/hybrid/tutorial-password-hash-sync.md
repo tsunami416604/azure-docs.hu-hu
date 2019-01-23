@@ -4,7 +4,7 @@ description: Bemutatja, hogyan állíthatja be az egy hibrid identitás környez
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a8dfe39dc3d32ca96d6252bac96a2e7abc09eee5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: ed8b2ec0c31adebac72e105ecfc4c5ec28e7b74b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164702"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471871"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Oktatóanyag:  Egyetlen AD-erdő integrálása jelszókivonat-szinkronizálással (PHS)
 
@@ -205,8 +205,8 @@ Most, töltse le és telepítse az Azure AD Connect ideje.  Ha telepítve van a 
 3. Az üdvözlőképernyőn jelölje be a licencfeltételek elfogadását jelző mezőt, és kattintson a **Continue** (Folytatás) gombra.  
 4. Az Express settings (Gyorsbeállítások) képernyőn kattintson a **Use express settings** (Gyorsbeállítások használata) lehetőségre.</br>  
 ![Létrehozás](media/tutorial-password-hash-sync/express1.png)</br>
-5. A csatlakozás az Azure ad Szolgáltatáshoz képernyőn adja meg a felhasználónevet és jelszót a globális rendszergazda Azure ad-ben. Kattintson a **Tovább**gombra.  
-6. A Connect to AD DS (Csatlakozás az AD DS szolgáltatáshoz) képernyőn adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. Kattintson a **Tovább**gombra.  
+5. A csatlakozás az Azure ad Szolgáltatáshoz képernyőn adja meg a felhasználónevet és jelszót a globális rendszergazda Azure ad-ben. Kattintson a **tovább**.  
+6. A Connect to AD DS (Csatlakozás az AD DS szolgáltatáshoz) képernyőn adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. Kattintson a **tovább**.  
 7. A Ready to configure (Konfigurálásra kész) oldalon kattintson az **Install** (Telepítés) lehetőségre.
 8. A telepítés befejezése után kattintson az **Exit** (Kilépés) gombra.
 9. Miután a telepítés befejeződött, jelentkezzen ki, és jelentkezzen be újra a Synchronization Service Managert vagy a szinkronizálási Szabályszerkesztő használata előtt.
@@ -220,7 +220,7 @@ Most ellenőrizzük, hogy a felhasználók a helyszíni címtárban szolgáltat�
 2. A bal oldalon válassza ki a **Azure Active Directory**
 3. A **Kezelés** alatt válassza a **Felhasználókat**.
 4. Győződjön meg arról, hogy megjelenik-e az új felhasználókat a bérlőben</br>
-![Szinkronizálási](media/tutorial-password-hash-sync/synch1.png)</br>
+![Synch](media/tutorial-password-hash-sync/synch1.png)</br>
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Hogy a felhasználók bejelentkezés tesztelése
 

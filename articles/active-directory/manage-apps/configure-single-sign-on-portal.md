@@ -3,7 +3,7 @@ title: Egyszeri bejelentkezés konfigurálása – Azure Active Directory | Micr
 description: Ez az oktatóanyag az Azure Portalon konfigurál SAML-alapú egyszeri bejelentkezést egy alkalmazáshoz az Active Directory (Azure AD) használatával.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: tutorial
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: barbkess
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: aceacdea8b3c86a5c4f26a5f082f4c6cf0b3805d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 73e97a38913b3098ba2e14294ecf621add310428
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011977"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465717"
 ---
-# <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Oktatóanyag: SAML-alapú egyszeri bejelentkezés konfigurálása egy alkalmazáshoz az Azure Active Directory használatával
+# <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Oktatóanyag: Az Azure Active Directory a SAML-alapú egyszeri bejelentkezés az alkalmazás konfigurálása
 
 Ez az oktatóanyag az [Azure Portalon](https://portal.azure.com) konfigurál SAML-alapú egyszeri bejelentkezést egy alkalmazáshoz az Active Directory (Azure AD) használatával. Ez az oktatóanyag során egy [alkalmazásspecifikus oktatóanyag](../saas-apps/tutorial-list.md) nem érhető el. 
 
@@ -35,7 +35,7 @@ Az oktatóanyag az Azure Portalt használja a következőkhöz:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-1. Ha az alkalmazás nincs hozzáadva az Azure AD-bérlővel, [a rövid útmutató: alkalmazás az Azure AD-bérlő hozzáadása](add-application-portal.md).
+1. Ha az alkalmazás nincs hozzáadva az Azure AD-bérlővel, [a rövid útmutató: Vegye fel egy alkalmazást az Azure AD-bérlő](add-application-portal.md).
 
 2. Kérje el az alkalmazás forgalmazójától a [tartomány és az URL-címek konfigurálásával](#configure-domain-and-urls) kapcsolatos szakaszban található adatokat.
 

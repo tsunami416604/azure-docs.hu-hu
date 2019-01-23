@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 253cfd7ddeb04a12a3609ab5e14a37365015a568
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c16a0eeb674e712ec1c3678a2e0002a8ddcfc329
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790877"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464706"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet támogatási erőforrások áthelyezése
 
@@ -68,7 +68,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | ------------- | -------------- | ------------ |
 | automationaccounts | Igen | Igen |
 | automationaccounts/konfigurációk | Igen | Igen |
-| automationaccounts/runbookok | Igen | Igen |
+| automationaccounts/runbooks | Igen | Igen |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -136,7 +136,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
 | networksecuritygroups | Nem | Nem |
-| keskenyeknek | Nem | Nem |
+| reservedips | Nem | Nem |
 | virtualnetworks | Nem | Nem |
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
@@ -180,7 +180,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
 | beállításjegyzékek | Igen | Igen |
-| beállításjegyzékek/buildtasks | Igen | Igen |
+| registries/buildtasks | Igen | Igen |
 | beállításjegyzékek/replikációk | Nem | Nem |
 | beállításjegyzékek/feladatok | Igen | Igen |
 | beállításjegyzékek és webhookok | Igen | Igen |
@@ -291,15 +291,15 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | ------------- | -------------- | ------------ |
 | labcenters | Nem | Nem |
 | Laborgyakorlatok | Igen | Nem |
-| laborok/servicerunners | Igen | Igen |
+| labs/servicerunners | Igen | Igen |
 | laborok/virtuális gép | Igen | Nem |
 | Ütemezések | Nem | Nem |
 
-## <a name="microsoftdns"></a>Microsoft.DNS
+## <a name="microsoftdns"></a>microsoft.dns
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
 | dnszones | Nem | Nem |
-| dnszones/egy | Nem | Nem |
+| dnszones/a | Nem | Nem |
 | dnszones/aaaa | Nem | Nem |
 | dnszones/cname | Nem | Nem |
 | dnszones/mx | Nem | Nem |
@@ -327,7 +327,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
 | Fürtök | Igen | Igen |
-| Névterek | Igen | Igen |
+| névterek | Igen | Igen |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -349,7 +349,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | ------------- | -------------- | ------------ |
 | feladatok | Igen | Igen |
 
-## <a name="microsoftinsights"></a>Microsoft.insights
+## <a name="microsoftinsights"></a>microsoft.insights
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
 | actiongroups | Igen | Igen |
@@ -371,6 +371,11 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
 | tárolók | Igen | Igen |
+
+## <a name="microsoftkusto"></a>Microsoft.Kusto
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | -------------- | ------------ |
+| Fürtök | Igen | Igen |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -468,7 +473,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | frontdoors | Igen | Igen |
 | frontdoorwebapplicationfirewallpolicies | Igen | Igen |
 | interfaceendpoints | Nem | Nem |
-| használatát | Igen | Igen |
+| loadbalancers | Igen | Igen |
 | localnetworkgateways | Igen | Igen |
 | networkintentpolicies | Igen | Igen |
 | hálózati | Igen | Igen |
@@ -485,7 +490,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | serviceendpointpolicies | Igen | Igen |
 | trafficmanagerprofiles | Igen | Igen |
 | virtualhubs | Igen | Igen |
-| virtualnetworkgateways-hez | Igen | Igen |
+| virtualnetworkgateways | Igen | Igen |
 | virtualnetworks | Igen | Igen |
 | virtualnetworktaps | Nem | Nem |
 | virtualwans | Igen | Igen |
@@ -496,7 +501,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
-| Névterek | Igen | Igen |
+| névterek | Igen | Igen |
 | névtér/notificationhubs | Igen | Igen |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
@@ -534,7 +539,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
-| Névterek | Igen | Igen |
+| névterek | Igen | Igen |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -555,7 +560,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
-| Névterek | Igen | Igen |
+| névterek | Igen | Igen |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -624,7 +629,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | környezetek/eventsources | Igen | Igen |
 | környezetek/referencedatasets | Igen | Igen |
 
-## <a name="microsoftvisualstudio"></a>Microsoft.visualstudio
+## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
 | account | Igen | Igen |
@@ -640,7 +645,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | kapcsolatok | Igen | Igen |
 | customapis | Igen | Igen |
 | hostingenvironments | Nem | Nem |
-| kiszolgálófarmok | Igen | Igen |
+| serverfarms | Igen | Igen |
 | Helyek | Igen | Igen |
 | webhelyek/premieraddons | Igen | Igen |
 | helyek és tárhelyek | Igen | Igen |
@@ -655,10 +660,10 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 
 Külső szolgáltatások jelenleg nem támogatják az áthelyezési művelet. Ezek az erőforrás-szolgáltatók a következők:
 
-* 84codes. CloudAMQP
+* 84codes.CloudAMQP
 * AppDynamics.APM
 * Aspera.Transfers
-* Auth0.cloud
+* Auth0.Cloud
 * Citrix.Cloud
 * Citrix.Services
 * CloudSimple.PrivateCloudIaaS

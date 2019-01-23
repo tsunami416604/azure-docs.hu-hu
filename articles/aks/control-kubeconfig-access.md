@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: ae45a268536f6a8fcb4ab27336a1281837cf5dc7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 40588ec29eb6f7c33ba5e1d6071caf5c8ed43424
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045851"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450169"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Hozzáférés megadása a Kubernetes konfigurációs fájl az Azure Kubernetes Service (AKS) az Azure szerepköralapú hozzáférés-vezérlés használatával
 
-Kubernetes-fürtök használata kezelheti a `kubectl` eszközt. Az Azure CLI beolvasni a hozzáférési hitelesítő adatok egyszerű megoldást kínál, és a konfigurációs adatokat szeretne csatlakozni az AKS-fürtök használatával `kubectl`. Korlátot, akik kérheti, hogy a Kubernetes-konfigurációját (*kubeconfig*) adatait és az engedélyeket, majd rendelkezik, használhatja az Azure szerepköralapú hozzáférés-vezérlők (RBAC).
+Kubernetes-fürtök használata kezelheti a `kubectl` eszközt. Az Azure CLI beolvasni a hozzáférési hitelesítő adatok egyszerű megoldást kínál, és a konfigurációs adatokat szeretne csatlakozni az AKS-fürtök használatával `kubectl`. Korlátot, akik kérheti, hogy a Kubernetes-konfigurációját (*kubeconfig*) információt, és korlátozza az engedélyeket, majd rendelkezik, használhatja az Azure szerepköralapú hozzáférés-vezérlők (RBAC).
 
 Ez a cikk bemutatja, hogyan rendelje hozzá ezt a korlátot, akik az AKS-fürt konfigurációs információkat kaphat az RBAC-szerepkörök.
 
@@ -128,7 +128,7 @@ az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 
 ## <a name="next-steps"></a>További lépések
 
-A fokozott biztonságot és a hozzáférés az AKS-fürtök [Azure Active Directory-hitelesítés integrálása][aad-integration].
+AKS-fürtök esetén a hozzáférést a fokozott biztonságot [Azure Active Directory-hitelesítés integrálása][aad-integration].
 
 <!-- LINKS - external -->
 [kubectl-config-use-context]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b9174d98dd6d4dfb5353d6976d074bb4c91373dc
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 16455719f05688793e2aee6f10fa00a707d553c0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678321"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469534"
 ---
 # <a name="interact-with-the-map---mouse-events"></a>Használhatja a térképet - egér események
 
-Ez a cikk bemutatja, hogyan használható [osztály leképezése](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [események](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) tulajdonság a térképen, és a különböző rétegeket, a térkép események kiemeléséhez. Azt is bemutatja, hogyan jelölje ki az eseményeket, amikor egy HTML-jelölő dolgozhat a térkép osztálytulajdonság-események használatával.
+Ez a cikk bemutatja, hogyan használható [osztály leképezése](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [események](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) tulajdonság a térképen, és a különböző rétegeket, a térkép események kiemeléséhez. Azt is bemutatja, hogyan jelölje ki az eseményeket, amikor egy HTML-jelölő dolgozhat a térkép osztálytulajdonság-események használatával.
 
 ## <a name="interact-with-the-map"></a>Használhatja a térképet
 

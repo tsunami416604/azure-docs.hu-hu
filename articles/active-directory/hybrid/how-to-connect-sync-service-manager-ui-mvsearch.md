@@ -4,7 +4,7 @@ description: Ismerje meg a Keresés a Metaverzumban fülre a Synchronization Ser
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 20234dd4-3328-4817-b7ff-268f953d376d
 ms.service: active-directory
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 77b487809d263aad96bcb1ff0a9bd0ca185fff5d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 31a829cdba96e3948d5ed7d7d47d056781520771
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311303"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469355"
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Szinkronizálási szolgáltatáskezelő keresés a Metaverzumban
 
-![Szinkronizálási szolgáltatáskezelő](./media/how-to-connect-sync-service-manager-ui-mvsearch/mvsearch.png)
+![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-mvsearch/mvsearch.png)
 
 A metaverzum-keresés lapon hasznos adatokkal kapcsolatos problémák elhárításához. Felső fele létrehozhat egy lekérdezést attribútumok kombinációja alapján. Ha elégedett a lekérdezés, kattintson az **keresési**. Ez a alsó rácsban látható. Kiválaszthatja, mely oszlopok meg fognak jelenni a **Oszlopbeállítások**.
 

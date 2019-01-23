@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.component: alerts
-ms.openlocfilehash: 79375dbbc7c966f2e972389788cefe8a0fe3692d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 8d3fa6652ddc6e6a79ae1d25681d40242560c506
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582677"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472585"
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Az Azure-előfizetés fontosabb műveleteivel kapcsolatos értesítések naplózása és fogadása
 
@@ -99,3 +99,4 @@ Ebben a rövid útmutatóban egy művelet végrehajtásával létrehozott egy te
 
 > [!div class="nextstepaction"]
 > [Megfigyelési adatok archiválása](./../../azure-monitor/learn/tutorial-archive-data.md)
+

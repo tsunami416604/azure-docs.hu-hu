@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: üzemeltetési feladatok és szempontok |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása: Üzemeltetési feladatok és szempontok |} A Microsoft Docs'
 description: Ez a témakör ismerteti az Azure AD Connect szinkronizálása, és ez az összetevő működő előkészítése operatív feladatokról.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 11390f1ad777d20e31c263b4a694ae5cb31f3fd3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c4dc5ae107cc8babbd425edd6c5de428e130fc3a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311898"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467536"
 ---
-# <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Az Azure AD Connect szinkronizálása: üzemeltetési feladatok és szempontok
+# <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Az Azure AD Connect szinkronizálása: Üzemeltetési feladatok és szempontok
 Ez a témakör célja, az Azure AD Connect szinkronizálási szolgáltatás üzemeltetési feladatok leírására.
 
 ## <a name="staging-mode"></a>Átmeneti mód
@@ -74,8 +74,8 @@ Van már előkészített exportálási módosítja az Azure AD és a helyszíni 
 
 #### <a name="verify"></a>Ellenőrzés
 1. Indítsa el a parancssort, és nyissa meg `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Futtatás: `csexport "Name of Connector" %temp%\export.xml /f:x` az összekötő neve található szinkronizálási szolgáltatás. A "contoso.com – AAD" hasonló névvel rendelkezik az Azure ad-hez.
-3. Futtatás: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` % temp % export.csv, amely a Microsoft Excelben megvizsgálhatók nevű fájlt. Ez a fájl tartalmazza, amelyek az exportálni kívánt összes módosítást.
+2. Futtassa: `csexport "Name of Connector" %temp%\export.xml /f:x` Az összekötő neve szinkronizálási szolgáltatás található. A "contoso.com – AAD" hasonló névvel rendelkezik az Azure ad-hez.
+3. Futtassa: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` A % temp % export.csv, amely a Microsoft Excelben megvizsgálhatók nevű fájllal rendelkezik. Ez a fájl tartalmazza, amelyek az exportálni kívánt összes módosítást.
 4. Hajtsa végre a módosításokat az adatok vagy konfiguráció, és futtassa ezeket a lépéseket újra (importálás és szinkronizálás, és győződjön meg arról) mindaddig, amíg a változtatásokat, hogy exportálni kívánt várható.
 
 **A export.csv fájl ismertetése** a fájlt a legtöbb értetődő. Néhány rövidítések a megértése érdekében:
@@ -152,9 +152,9 @@ write-host "Importing XML" -ForegroundColor Yellow
 $resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
 
 #use an XmlReader to deal with even large files
-$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
 $result=$reader.ReadToDescendant('cs-object')
-do 
+do 
 {
     #create the object placeholder
     #adding them up here means we can enforce consistency
@@ -271,5 +271,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>További lépések
 **Áttekintő témakör**  
 
-* [Az Azure AD Connect szinkronizálása: ismertetése, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)  
+* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)  
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)  

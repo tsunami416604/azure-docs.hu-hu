@@ -1,27 +1,27 @@
 ---
 title: Azure Event Grid SDKs
-description: A témakör ismerteti az SDK-k Azure esemény rács. Ezeket az SDK-k adja meg a felügyeleti, a közzététel és -fogyasztás.
+description: Ismerteti az SDK-k az Azure Event Gridhez. Ezek az SDK-k adja meg a felügyeleti, közzététel és használat.
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 06/29/2018
-ms.author: tomfitz
-ms.openlocfilehash: 3c085074863aa166a5766116b6c63b7dc341ad96
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.date: 01/19/2019
+ms.author: spelluru
+ms.openlocfilehash: 53a1f50647e05b71afe6accb85f8a90cd8b7e253
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130835"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470401"
 ---
-# <a name="event-grid-sdks-for-management-and-publishing"></a>Esemény rács készült SDK-k kezelése és közzététele
+# <a name="event-grid-sdks-for-management-and-publishing"></a>Event Grid készült SDK-k kezelése és közzététele
 
-Esemény rács SDK-kat, amelyek lehetővé teszik programokon keresztül kezelheti az erőforrásokat, és események közzétételéhez biztosít.
+Event Grid nyújt SDK-k, amelyek lehetővé teszik, hogy programozott módon kezelheti az erőforrásokat és események közzététele.
 
-## <a name="management-sdks"></a>Felügyeleti SDK-k
+## <a name="management-sdks"></a>Management SDKs
 
-A felügyeleti SDK-k lehetővé teszik a létrehozása, frissítése és az esemény rács témakörök és előfizetések törlése. Jelenleg a következő SDK-k érhetők el:
+A management SDK-k létrehozása, frissítése és törlése az event grid-témakörök és előfizetések lehetővé teszik. Jelenleg a következő SDK-k érhetők el:
 
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid)
 * [Go](https://github.com/Azure/azure-sdk-for-go)
@@ -30,9 +30,9 @@ A felügyeleti SDK-k lehetővé teszik a létrehozása, frissítése és az esem
 * [Python](https://pypi.python.org/pypi/azure-mgmt-eventgrid)
 * [Ruby](https://rubygems.org/gems/azure_mgmt_event_grid)
 
-## <a name="data-plane-sdks"></a>Adatok vezérlősík SDK-k
+## <a name="data-plane-sdks"></a>Adatok adatsík SDK-k
 
-Az adatok vezérlősík SDK-k lehetővé teszik események témakörök által gondoskodnak a hitelesítéshez, az esemény képező és aszinkron módon közzététel a megadott végpontot a post. Lehetővé teszik az első fél események felhasználásához. Jelenleg a következő SDK-k érhetők el:
+Az adatsík SDK-k lehetővé teszik események témakörökre való közzétételéhez gondoskodva hitelesítéséhez, az esemény képező és aszinkron módon bejegyzés közzététele a megadott végponton. Ezen kívül lehetővé teszik, hogy először a gyártótól származó események felhasználásához. Jelenleg a következő SDK-k érhetők el:
 
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)
 * [Go](https://github.com/Azure/azure-sdk-for-go)
@@ -43,7 +43,7 @@ Az adatok vezérlősík SDK-k lehetővé teszik események témakörök által g
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha például az alkalmazások létrehozásáról: [esemény rács mintakódok](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
-* Esemény rácshoz ismertetőért lásd: [Mi az az esemény rács?](overview.md)
-* Az Azure parancssori felület parancsai esemény rács, lásd: [Azure CLI](/cli/azure/eventgrid).
-* PowerShell esemény rács parancsai, lásd: [PowerShell](/powershell/module/azurerm.eventgrid).
+* Például az alkalmazások létrehozásáról: [Event Grid-Kódminták](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
+* Event Grid bemutatása, lásd: [Mi az Event Grid?](overview.md)
+* Az Azure CLI Event Grid parancsokért lásd: [Azure CLI-vel](/cli/azure/eventgrid).
+* A PowerShellben Event Grid parancsokért lásd: [PowerShell](/powershell/module/azurerm.eventgrid).

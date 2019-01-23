@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: 621cc79c23fa21401f9ec11ee15b84ae3b9b1288
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 862d239227c277a92cbf80e54b010a4b184da016
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411106"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466091"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Virtuális hálózati adapterek létrehozása és a belső DNS használata Azure-beli virtuális gépek névfeloldásához
 
@@ -49,7 +49,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>Virtuális gép üzembe helyezése, és csatlakozzon a virtuális hálózati adapter
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. A `--nics` jelző csatlakozik a virtuális hálózati adapter a virtuális gép az Azure-ban az üzembe helyezés során. A következő példában létrehozunk egy nevű virtuális Gépet `myVM` az Azure Managed Disks és a virtuális hálózati adapter nevű rendeli `myNic` az előző lépésből:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. A `--nics` jelző csatlakozik a virtuális hálózati adapter a virtuális gép az Azure-ban az üzembe helyezés során. A következő példában létrehozunk egy nevű virtuális Gépet `myVM` az Azure Managed Disks és a virtuális hálózati adapter nevű rendeli `myNic` az előző lépésből:
 
 ```azurecli
 az vm create \
@@ -149,7 +149,7 @@ az network nic create \
 ## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>A virtuális gép virtuális hálózati infrastruktúra üzembe helyezése
 Most már rendelkezik egy virtuális hálózatot és alhálózatot, a hálózati biztonsági csoport tűzfalként védi meg az alhálózat blokkolja a 22-es port kivételével az összes bejövő forgalmat az SSH és a egy virtuális hálózati adaptert. Most már telepítheti a meglévő hálózati infrastruktúrában lévő virtuális Gépet.
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. A következő példában létrehozunk egy nevű virtuális Gépet `myVM` az Azure Managed Disks és a virtuális hálózati adapter nevű rendeli `myNic` az előző lépésből:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. A következő példában létrehozunk egy nevű virtuális Gépet `myVM` az Azure Managed Disks és a virtuális hálózati adapter nevű rendeli `myNic` az előző lépésből:
 
 ```azurecli
 az vm create \

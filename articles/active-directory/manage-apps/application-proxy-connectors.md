@@ -3,7 +3,7 @@ title: Az Azure AD-alkalmazásproxy-összekötők ismertetése |} A Microsoft Do
 description: Az Azure AD-alkalmazásproxy összekötőit alapjait ismerteti.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 8b410cc85584f45d4a3e9d7bce180a2c6aa46114
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ca483e84b28b50d963ecc6c2e26499574f546e0f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134971"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473622"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy-összekötők ismertetése
 
@@ -120,9 +120,9 @@ A terheléselosztás történik, az adott összekötőcsoport összekötők köz
 
 Teljesítményét befolyásoló másik tényező között az összekötők, többek között a hálózatkezelés minőségét: 
 
-* **Az online szolgáltatás**: Azure befolyásolja az összekötők teljesítménye lassú vagy nagy késésű kapcsolatok az alkalmazásproxy szolgáltatás. A legjobb teljesítmény érdekében csatlakozzon a szervezet Azure Express route-tal. Ellenkező esetben rendelkezik a hálózatkezelésért felelős csapat, győződjön meg arról, hogy a kapcsolatok az Azure-bA a lehető leghatékonyabb kezelik. 
-* **A háttéralkalmazásokhoz**: bizonyos esetekben vannak további proxykat, az összekötő és a háttérmodul-alkalmazásokkal, amelyek lassú vagy megakadályozzák a kapcsolatok között. Ebben a forgatókönyvben a hiba elhárításához nyisson meg egy böngészőt, az összekötő-kiszolgálóról, és próbálja meg elérni az alkalmazást. Ha az Azure-ban futtatja az összekötők, de az alkalmazások a helyszínen, a tapasztalatok nem a felhasználók várható.
-* **A tartományvezérlők**: az összekötők SSO-t a Kerberos által korlátozott delegálás hajt végre, ha azok a tartományvezérlőkhöz, a háttérkiszolgáló a kérelem elküldése előtt. Az összekötők rendelkezik egy Kerberos-jegyekhez gyorsítótárát, de foglalt környezetekben a tartományvezérlők válaszkészségét befolyásolhatja a teljesítményt. A probléma általában akkor használatos, az Azure-ban futtatva, de az kommunikálni a tartományvezérlők, amelyek a helyszíni összekötők esetében. 
+* **Az online szolgáltatás**: Az alkalmazásproxy-szolgáltatás az Azure-ban a lassú vagy a nagy késésű kapcsolatok befolyásolhatja az összekötők teljesítménye. A legjobb teljesítmény érdekében csatlakozzon a szervezet Azure Express route-tal. Ellenkező esetben rendelkezik a hálózatkezelésért felelős csapat, győződjön meg arról, hogy a kapcsolatok az Azure-bA a lehető leghatékonyabb kezelik. 
+* **A háttéralkalmazásokhoz**: Bizonyos esetekben vannak további proxykat, az összekötő és a háttérmodul-alkalmazásokkal, amelyek lassú vagy megakadályozzák a kapcsolatok között. Ebben a forgatókönyvben a hiba elhárításához nyisson meg egy böngészőt, az összekötő-kiszolgálóról, és próbálja meg elérni az alkalmazást. Ha az Azure-ban futtatja az összekötők, de az alkalmazások a helyszínen, a tapasztalatok nem a felhasználók várható.
+* **A tartományvezérlők**: Az összekötők SSO-t a Kerberos által korlátozott delegálás hajt végre, ha azok a tartományvezérlők lépjen kapcsolatba a kérést küld a háttér előtt. Az összekötők rendelkezik egy Kerberos-jegyekhez gyorsítótárát, de foglalt környezetekben a tartományvezérlők válaszkészségét befolyásolhatja a teljesítményt. A probléma általában akkor használatos, az Azure-ban futtatva, de az kommunikálni a tartományvezérlők, amelyek a helyszíni összekötők esetében. 
 
 A hálózat optimalizálása kapcsolatos további információkért lásd: [Azure Active Directory Application Proxy használata esetén a hálózati topológiai szempontok a](application-proxy-network-topology.md).
 

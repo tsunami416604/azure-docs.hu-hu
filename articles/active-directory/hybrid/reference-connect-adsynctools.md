@@ -2,18 +2,18 @@
 title: 'Azure AD Connect: ADSyncTools PowerShell-referencia |} A Microsoft Docs'
 description: Ebben a dokumentumban részletes információ a ADSyncTools.psm1 PowerShell-modult.
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 54d23bca29c38f258334d7b641b8c1f480da55e1
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3b98686730a0fbd65cd5fd64fe91d8c6fa06286e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054962"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478212"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect:  ADSyncTools PowerShell-referencia
 A következő dokumentáció arról nyújt a ADSyncTools.psm1 PowerShell-modult, amely tartalmazza az Azure AD Connecttel kapcsolatos referenciainformációk.
@@ -39,7 +39,7 @@ Törölje az értéket az mS-Ds-ConsistencyGuid a cél AD-felhasználó
 Example of how to use this cmdlet
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-adsynctoolsadmoduleloaded"></a>Győződjön meg róla ADSyncToolsADModuleLoaded
+## <a name="confirm-adsynctoolsadmoduleloaded"></a>Confirm-ADSyncToolsADModuleLoaded
 
 ### <a name="synopsis"></a>SZINOPSZIS
 {{Töltse ki a Szinopszist}}
@@ -88,7 +88,7 @@ PS C:\> {{ Add example code here }}
 
 {{Hozzáadása példa leírása itt}}
 
-## <a name="connect-adsyncdatabase"></a>Csatlakozás AdSyncDatabase
+## <a name="connect-adsyncdatabase"></a>Connect-AdSyncDatabase
 
 ### <a name="synopsis"></a>SZINOPSZIS
 {{Töltse ki a Szinopszist}}
@@ -114,7 +114,7 @@ PS C:\> {{ Add example code here }}
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-database"></a>-Adatbázis
+#### <a name="-database"></a>-Database
 {{Fill adatbázis leírás}}
 
 ```yaml
@@ -175,7 +175,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-username"></a>-UserName
-{{Fill felhasználónév leírás}}
+{{Fill UserName Description}}
 
 ```yaml
 Type: String
@@ -215,7 +215,7 @@ Az Importálás CSV-fájlt a Import-ADSyncToolsImmutableIdMigration alapján Con
 Import-Csv .\AllSyncUsers.csv | Export-ADSyncToolsConsistencyGuidMigration -Output ".\AllSyncUsers-Report"
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
@@ -237,7 +237,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-userprincipalname"></a>UserPrincipalName –
+#### <a name="-userprincipalname"></a>-UserPrincipalName
 UserPrincipalName
 
 ```yaml
@@ -347,7 +347,7 @@ TEGYE AD objektumot adja vissza: Több erdő támogatása
 Example of how to use this cmdlet
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
@@ -394,7 +394,7 @@ A cél az AD felhasználó GUID formátumú mS-Ds-ConsistencyGuid attribútum é
 Example of how to use this cmdlet
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
@@ -441,7 +441,7 @@ Az értéket adja vissza az ObjectGUID attribútum GUID formátumú cél AD-felh
 Example of how to use this cmdlet
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
@@ -488,7 +488,7 @@ Függvény, amely XML formátumban adja vissza az AAD Connect futtatási előzm�
 Get-ADSyncToolsRunHistory
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Get-ADSyncToolsRunHistory -Days 1
 ```
@@ -535,11 +535,11 @@ Lekérdezések AAD Connect futtatási előzmények működik, és exportálja a 
 #Required Parameters
 ```
 
-$sourcePath = Read-Host - parancssorból "adja meg a naplófájl elérési útja a fájl neve" #"\<forrás_elérési_útja\>" $outputPath = Read-Host-Prompt "adja meg a kibővített fájl elérési útja fájlnévvel rendelkező" #"\<Out_Path\>"
+$sourcePath = Read-Host -Prompt "Enter your log file path with file name" #"\<Source_Path\>" $outputPath = Read-Host -Prompt "Enter your out file path with file name" #"\<Out_Path\>"
  
- Get-ADSyncToolsUsersSourceAnchorChanged - sourcePath $sourcePath - outputPath $outputPath
+ Get-ADSyncToolsUsersSourceAnchorChanged -sourcePath $sourcePath -outputPath $outputPath
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
@@ -580,7 +580,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="import-adsynctoolsimmutableidmigration"></a>Importálás – ADSyncToolsImmutableIdMigration
+## <a name="import-adsynctoolsimmutableidmigration"></a>Import-ADSyncToolsImmutableIdMigration
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Importálás ImmutableID az aad-ből
@@ -602,7 +602,7 @@ Létrehoz egy fájlt az összes Azure AD-Synchronized felhasználóval GUID form
 Import-ADSyncToolsImmutableIdMigration -OutputFile '.\AllSyncUsers.csv'
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
@@ -669,7 +669,7 @@ PS C:\> {{ Add example code here }}
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-query"></a>-Lekérdezés
+#### <a name="-query"></a>-Query
 {{Fill lekérdezés leírásának}}
 
 ```yaml
@@ -728,14 +728,14 @@ Mindegyik tanúsítvány egy elkülönített filename készül biztonsági máso
 Check all users in target OU - Expired Certificates will be copied to separated files and no certificates will be removed
 ```
 
-Remove-ADSyncToolsExpiredCertificates - TargetOU "szervezeti egység felhasználók, OU = = Corp, DC = Contoso, DC = com" - ObjectClass felhasználó
+Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Users,OU=Corp,DC=Contoso,DC=com" -ObjectClass user
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Delete Expired Certs from all Computer objects in target OU - Expired Certificates will be copied to files and removed from AD
 ```
 
-Remove-ADSyncToolsExpiredCertificates - TargetOU "OU = számítógépek, OU = Corp, DC = Contoso, DC = com" - ObjectClass számítógép - BackupOnly $false
+Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Computers,OU=Corp,DC=Contoso,DC=com" -ObjectClass computer -BackupOnly $false
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
@@ -788,7 +788,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="repair-adsynctoolsautoupgradestate"></a>Javítás-ADSyncToolsAutoUpgradeState
+## <a name="repair-adsynctoolsautoupgradestate"></a>Repair-ADSyncToolsAutoUpgradeState
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Rövid leírás
@@ -809,7 +809,7 @@ Hosszú leírás
 Example of how to use this cmdlet
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
@@ -854,7 +854,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="restore-adsynctoolsexpiredcertificates"></a>Visszaállítás – ADSyncToolsExpiredCertificates
+## <a name="restore-adsynctoolsexpiredcertificates"></a>Restore-ADSyncToolsExpiredCertificates
 
 ### <a name="synopsis"></a>SZINOPSZIS
 (EHHEZ) Visszaállítja a AD UserCertificate attribútum certicate-fájlból
@@ -875,7 +875,7 @@ Hosszú leírás
 Example of how to use this cmdlet
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
@@ -901,7 +901,7 @@ Adja meg a cél AD-felhasználó mS-Ds-ConsistencyGuid attribútum
 Example of how to use this cmdlet
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
@@ -997,7 +997,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="trace-adsynctoolsadimport"></a>Nyomkövetés-ADSyncToolsADImport
+## <a name="trace-adsynctoolsadimport"></a>Trace-ADSyncToolsADImport
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Létrehoz egy nyomkövetési fájl és az AD importálás lépés
@@ -1019,7 +1019,7 @@ Nyomkövetések minden, az AAD Connect AD importálás ldap-lekérdezéseket fut
 Example of how to use this cmdlet
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
@@ -1027,7 +1027,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMÉTEREK
 
 #### <a name="-adconnectorxml"></a>-ADConnectorXML
-{{Fill ADConnectorXML leírás}}
+{{Fill ADConnectorXML Description}}
 
 ```yaml
 Type: String
@@ -1041,7 +1041,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dc"></a>-tartományvezérlő
+#### <a name="-dc"></a>-dc
 Az AD-összekötő exportálása XML-fájl
 
 ```yaml
@@ -1057,7 +1057,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-rootdn"></a>-rootDN
-Cél-tartományvezérlő
+Target Domain Controller
 
 ```yaml
 Type: String
@@ -1072,7 +1072,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-filter"></a>-szűrő
-Erdő gyökerének DN
+Forest Root DN
 
 ```yaml
 Type: String
@@ -1121,7 +1121,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="trace-adsynctoolsldapquery"></a>Nyomkövetés-ADSyncToolsLdapQuery
+## <a name="trace-adsynctoolsldapquery"></a>Trace-ADSyncToolsLdapQuery
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Rövid leírás
@@ -1143,14 +1143,14 @@ Hosszú leírás
 Example of how to use this cmdlet
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Another example of how to use this cmdlet
 ```
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-context"></a>-Környezet
+#### <a name="-context"></a>-Context
 Param1 súgó leírása
 
 ```yaml
@@ -1214,7 +1214,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="update-adsynctoolsconsistencyguidmigration"></a>Frissítés-ADSyncToolsConsistencyGuidMigration
+## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Felhasználók frissíti az új ConsistencyGuid (immutableid azonosítója)
@@ -1236,7 +1236,7 @@ Frissíti a felhasználók az új ConsistencyGuid (immutableid azonosítója) é
 Import-Csv .\AllSyncUsersTEST-Report.csv -Delimiter "`t"| Update-ADSyncToolsConsistencyGuidMigration -Output .\AllSyncUsersTEST-Result2 -WhatIf
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Import-Csv .\AllSyncUsersTEST-Report.csv -Delimiter "`t"| Update-ADSyncToolsConsistencyGuidMigration -Output .\AllSyncUsersTEST-Result2
 ```
@@ -1319,7 +1319,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Megerősítése
+#### <a name="-confirm"></a>-Confirm
 A parancsmag futtatása előtt megerősítést fog kérni.
 
 ```yaml

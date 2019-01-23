@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 463b2e8c7e349fa46737a9d630bd027fb28e7780
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f84be4dffb601d3748d951da15050e381e1cecc1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199385"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464850"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Eszköz webalkalmazások az Application Insights Állapotfigyelőt futásidejű
 
@@ -32,11 +32,12 @@ Egy élő webalkalmazást a kód módosítása vagy ismételt telepítése nélk
 
 ![Képernyőkép az App Insights áttekintése gráfok sikertelen kérelmek, a kiszolgáló válaszidejét és a kiszolgálói kérelmekre vonatkozó információkat tartalmazó](./media/monitor-performance-live-website-now/overview-graphs.png)
 
-Háromféleképpen alkalmazhatja az Application Insights szolgáltatást a .NET-webalkalmazásokra:
+Megválaszthatja két útvonal a alkalmazni az Application Insights szolgáltatást a .NET-webalkalmazásokra:
 
 * **Felépítési idő:** [Az Application Insights SDK hozzáadása] [ greenbrown] a webalkalmazás kódjához.
 * **Futási idő:** Webalkalmazását a kiszolgálón, az alább ismertetett, újraépítése és újratelepítése az kód nélkül.
-* **Mindkettő:** Az SDK beépítése a webalkalmazás kódját, és a futásidejű bővítményeket is érvényesek. Így mindkét lehetőség előnyeivel élhet.
+> [!NOTE]
+> Felépítési idő kialakítása használatakor futtatáskor instrumention nem fog működni, akkor is, ha van kapcsolva.
 
 Itt található egy összefoglaló az egyes módszerek eredményeiről:
 

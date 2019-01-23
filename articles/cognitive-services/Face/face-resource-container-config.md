@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: a75f5ec11644bbd64a6bafeb8585371437eedc3b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359442"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476920"
 ---
 # <a name="configure-containers"></a>Tárolók konfigurálása
 
@@ -33,6 +33,7 @@ Konfigurációs beállításai a Face tároló a hierarchikus, és az összes t�
 * [CloudAI](#cloudai-configuration-settings)
 * [Végfelhasználói licencszerződés](#eula-configuration-setting)
 * [Fluentd](#fluentd-configuration-settings)
+* [HTTP-proxy hitelesítő adat beállításai](#http-proxy-credentials-settings)
 * [Logging](#logging-configuration-settings)
 * [Csatlakoztatja](#mounts-configuration-settings)
 
@@ -162,6 +163,11 @@ A következő táblázat ismerteti a támogatott konfigurációs beállításait
 | `TlsConnectionEstablishmentTimeoutMs` | Egész szám | Az időkorlát ezredmásodpercben, a Fluentd kiszolgálóval SSL/TLS kapcsolatot létesíteni. Az alapértelmezett érték: 10000 ezredmásodperc (10 másodperc).<br/> Ha `UseTLS` értéke hamis értékre, ezt az értéket figyelmen kívül hagyja. |
 | `UseTLS` | Logikai | Azt jelzi, hogy a tároló kell használnia az SSL/TLS a Fluentd kiszolgálóval való kommunikáció során. Az alapértelmezett értéke FALSE (hamis). |
 
+
+## <a name="http-proxy-credentials-settings"></a>HTTP-proxybeállításai hitelesítő adatok
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
 ## <a name="logging-configuration-settings"></a>Naplózás konfigurációs beállításait
 
 A `Logging` konfigurációs beállításokat az ASP.NET Core naplózás támogatását, a tároló kezelése. A tároló, amely egy ASP.NET Core-alkalmazást is használhatja az ugyanazon konfigurációs beállításokat és értékeket. A következő naplózási szolgáltatók támogatottak a Face tároló:
@@ -212,3 +218,7 @@ Például a következő parancsot határozza meg a Docker kötési csatlakoztat�
   ```
 
 A Face tároló nem használja a bemeneti vagy kimeneti csatlakoztatja képzési vagy adatbázis-adatok tárolására. Ehelyett a Face tároló adattárolási forgatókönyvekhez képzés és az adatbázis-adatok kezeléséhez nyújt. Storage-forgatókönyvekkel kapcsolatos további információkért lásd: [tárolási forgatókönyv beállítások](#storage-scenario-settings).
+
+## <a name="next-steps"></a>További lépések
+
+* Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: f073637810e9ed1acdf37b0e541ca3f1d518de2a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8491acfd28524ee3bbbd06c788afb668c40c98b9
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345097"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450568"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Új szimulált eszköz üzembe helyezése
 
@@ -147,4 +147,4 @@ Ha már nincs szüksége a megoldásgyorsító, törölje azt a [kiépített meg
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az útmutató bemutatta a távoli figyelési megoldásgyorsító egyéni modellek üzembe helyezése. A javasolt következő lépésre az, hogy ismerje meg, hogyan [egy fizikai eszköz csatlakoztatása a távoli figyelési megoldás](iot-accelerators-connecting-devices-node.md).
+Ez az útmutató bemutatta a távoli figyelési megoldásgyorsító egyéni modellek üzembe helyezése. A javasolt következő lépésre az, hogy ismerje meg, hogyan [egy valós eszköz csatlakoztatása a távoli figyelési megoldás](iot-accelerators-connecting-devices-node.md).

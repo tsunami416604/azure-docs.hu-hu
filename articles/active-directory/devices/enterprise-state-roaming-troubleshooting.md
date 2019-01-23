@@ -5,7 +5,7 @@ services: active-directory
 keywords: Vállalati állapot barangolási beállításokat, a windows-felhő, vállalati állapothordozás kapcsolatos gyakori kérdésekre
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.component: devices
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
@@ -18,12 +18,12 @@ ms.date: 10/25/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 3825d527e520fae87d0dd2712df767090adad4e5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 417b909e4a5272b993a4696c1ef8d6718e055738
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248421"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452938"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Az Azure Active Directoryban hibaelhárítási Enterprise State Roaming beállítások
 
@@ -42,7 +42,7 @@ Hibaelhárítás megkezdése előtt győződjön meg arról, hogy a felhasznál�
 ## <a name="information-to-include-when-you-need-help"></a>Ha segítségre van szüksége adatokat
 Ha az alábbi útmutatót a probléma nem oldódik meg, forduljon a támogatási. Amikor kapcsolatba lép a őket, az alábbi információkat:
 
-* **Általános hibaleírást**: vannak-e a felhasználó által látott hibaüzenetek? Ha ott nem hibaüzenet nélküli hibát, a nem várt viselkedést, hogy észrevette a részletes leírása Milyen funkciók engedélyezettek a szinkronizálási szolgáltatás, és mi az a felhasználó szinkronizálása várt? Van több funkció nem szinkronizálja, vagy azt elkülönül egy?
+* **Általános hibaleírást**: Vannak-e a felhasználó által látott hibaüzenetek? Ha ott nem hibaüzenet nélküli hibát, a nem várt viselkedést, hogy észrevette a részletes leírása Milyen funkciók engedélyezettek a szinkronizálási szolgáltatás, és mi az a felhasználó szinkronizálása várt? Van több funkció nem szinkronizálja, vagy azt elkülönül egy?
 * **Érintett felhasználók** – szinkronizálási működő/sikertelen egy felhasználó vagy több felhasználó van? Hány eszközt felhasználónként van szó? Nem szinkronizálja ezek mindegyike vagy némelyike szinkronizálását, és néhány nem szinkronizálja?
 * **A felhasználó adatai** – milyen identitás az a felhasználó, jelentkezzen be az eszköz használatával? Hogyan, a felhasználó bejelentkezik az eszközre? Azok azok egy része számára engedélyezett a szinkronizálás a kijelölt biztonsági csoport? 
 * **Az eszköz adatai** – az eszköz Azure AD-hez csatlakoztatott vagy tartományhoz csatlakoztatott? Milyen build van az eszköz? Mik a legújabb frissítéseket?
@@ -74,15 +74,15 @@ Az eszköz regisztrálása az Azure ad-vel Enterprise State Roaming igényel. B�
 **Lehetséges probléma**: **WamDefaultSet** és **AzureAdJoined** egyaránt mező értéke "Nem" rendelkeznek, az eszköz volt a tartományhoz csatlakoztatott és az Azure AD-ben regisztrált és nem szinkronizálja az eszköz. Ez látható, ha az eszköz is kell várnia a alkalmazni lehessen a házirend vagy az eszköz a hitelesítés sikertelen, amikor csatlakozik az Azure ad-ben. A felhasználó jogosult az a alkalmazni lehessen a szabályzat néhány óráig várnia. További hibaelhárítási lépéseket tartalmazhatnak automatikus regisztráció újrapróbálkozás kijelentkezés és a biztonsági, illetve a feladat a Feladatütemező indítása. Bizonyos esetekben futtatása "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
 
 
-**Lehetséges probléma**: mezőjére **SettingsUrl** üres és nem szinkronizálja az eszközt. A felhasználó előfordulhat, hogy utoljára bejelentkezett az eszközt ahhoz Enterprise State Roaming engedélyezve lett az Azure Active Directory portálon. Indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Szükség esetén a portálon lépjen a rendszergazdának kellene próbálja **Azure Active Directory** > **eszközök** > **Enterprise State Roaming** letiltását és újraengedélyezését **felhasználók szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön**. Ha újra engedélyezi, indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Ha ez nem oldja meg a problémát, **SettingsUrl** hibás eszköz tanúsítvány esetén üres is lehet. Ebben az esetben fut "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
+**Lehetséges probléma**: A mező **SettingsUrl** üres és nem szinkronizálja az eszközt. A felhasználó előfordulhat, hogy utoljára bejelentkezett az eszközt ahhoz Enterprise State Roaming engedélyezve lett az Azure Active Directory portálon. Indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Szükség esetén a portálon lépjen a rendszergazdának kellene próbálja **Azure Active Directory** > **eszközök** > **Enterprise State Roaming** letiltását és újraengedélyezését **felhasználók szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön**. Ha újra engedélyezi, indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Ha ez nem oldja meg a problémát, **SettingsUrl** hibás eszköz tanúsítvány esetén üres is lehet. Ebben az esetben fut "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming és a multi-factor Authentication hitelesítés 
 
 Bizonyos körülmények között az Enterprise State Roaming sikertelen lehet szinkronizálja az adatokat, ha az Azure multi-factor Authentication hitelesítés van konfigurálva. További részleteket az alábbi tüneteket figyelje, tekintse meg a támogatási dokumentum [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Lehetséges probléma**: Ha az eszköz az Azure Active Directory portálon a többtényezős hitelesítés megkövetelése van konfigurálva, előfordulhat, hogy átadja a beállítások szinkronizálása közben jelentkezik be egy Windows 10 rendszerű eszköz jelszó használatával. Multi-factor Authentication konfigurációjától az ilyen típusú célja egy Azure-rendszergazdai fiók védelme érdekében. Rendszergazda felhasználók továbbra is lehet tudni bejelentkezni a Windows 10-es eszközeiket a Microsoft Passport for Work PIN-KÓDJÁNAK vagy többtényezős hitelesítés elvégzése közben: más Azure-szolgáltatásokhoz az Office 365-höz hasonló szinkronizálni.
+**Lehetséges probléma**: Ha az eszköz az Azure Active Directory portálon a többtényezős hitelesítés megkövetelése van konfigurálva, előfordulhat, hogy átadja beállítások szinkronizálása közben jelentkezik be egy Windows 10 rendszerű eszköz jelszó használatával. Multi-factor Authentication konfigurációjától az ilyen típusú célja egy Azure-rendszergazdai fiók védelme érdekében. Rendszergazda felhasználók továbbra is lehet tudni bejelentkezni a Windows 10-es eszközeiket a Microsoft Passport for Work PIN-KÓDJÁNAK vagy többtényezős hitelesítés elvégzése közben: más Azure-szolgáltatásokhoz az Office 365-höz hasonló szinkronizálni.
 
-**Lehetséges probléma**: szinkronizálás meghiúsulhat, ha a rendszergazda konfigurálja az Active Directory összevonási szolgáltatások multi-factor Authentication feltételes hozzáférési szabályzatot, és az eszközön a hozzáférési jogkivonat lejár. Győződjön meg arról, hogy jelentkezzen be, és jelentkezzen ki, használja a Microsoft Passport for Work PIN-kód, vagy fejezze be a multi-factor Authentication az Office 365-höz hasonló más Azure-szolgáltatások használata közben.
+**Lehetséges probléma**: Szinkronizálás meghiúsulhat, ha a rendszergazda konfigurálja az Active Directory összevonási szolgáltatások multi-factor Authentication feltételes hozzáférési szabályzatot, és az eszközön a hozzáférési jogkivonat lejár. Győződjön meg arról, hogy jelentkezzen be, és jelentkezzen ki, használja a Microsoft Passport for Work PIN-kód, vagy fejezze be a multi-factor Authentication az Office 365-höz hasonló más Azure-szolgáltatások használata közben.
 
 ### <a name="event-viewer"></a>Eseménynapló
 
@@ -166,7 +166,7 @@ A törlési lépésben a következő tisztítás fájlok:
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Ez a felhasználó nem tud bejelentkezni, mert ez a fiók jelenleg le van tiltva 6065:80070533-es Azonosítójú esemény  
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Event ID 6065: 80070533 Ez a felhasználó nem tud bejelentkezni, mert ez a fiók jelenleg le van tiltva  
 
 Az eseménynaplóban alatt SettingSync és hibakeresési naplók Ez a hiba látható, ha a felhasználói hitelesítő adatok lejártak. Ezenkívül azt előfordulhatnak, ha a bérlő automatikusan nem rendelkezett AzureRMS kiépítve. 
 
@@ -175,9 +175,9 @@ Az első esetben a felhasználó hitelesítő adatait, és a bejelentkezési fri
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Eseményazonosító 1098: Hiba: 0xCAA5001C jogkivonat broker művelet sikertelen volt  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Eseményazonosító 1098: Hiba: 0xCAA5001C jogkivonat broker művelet végrehajtása sikertelen volt  
 
-Az eseménynaplóban az AAD/műveleti naplók alapján ez a hiba lehetséges, hogy láthatók az esemény 1104: AAD-felhő AP beépülő modul hívása Get token a következő hibát: 0xC000005F. Ez a probléma akkor fordul elő, ha vannak, hiányzó engedélyeket vagy tulajdonosi attribútumokkal.  
+Az eseménynaplóban az AAD/műveleti naplók alapján ez a hiba az esemény 1104 előfordulhat, hogy láthatók: AAD-felhő AP beépülő modul hívása Get token a következő hibát: 0xC000005F. Ez a probléma akkor fordul elő, ha vannak, hiányzó engedélyeket vagy tulajdonosi attribútumokkal.  
 
 **Javasolt művelet**  
 Folytassa a felsorolt lépésekkel [KB3196528](https://support.microsoft.com/kb/3196528).  

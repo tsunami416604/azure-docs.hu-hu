@@ -4,7 +4,7 @@ description: Ismerteti, hogyan lehet módosítani a konfigurálást az Azure AD 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6579e2ced3742eb1a70ccca96b9608fc6da628ee
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 50088dd00b0410ea32b6b61516021563c7ae061f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190635"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463371"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: Módosítsa az alapértelmezett konfiguráció
 Ez a cikk az a célja, hogy végigvezetik az Azure Active Directory (Azure AD) Connect-szinkronizálás az alapértelmezett konfiguráció módosításához. Néhány gyakori helyzet biztosítja a lépéseket. A Tudásbázis a képes egyszerű módosítja a saját konfigurációjával, a saját üzleti szabályok alapján kell lennie.
@@ -30,7 +30,7 @@ Ez a cikk az a célja, hogy végigvezetik az Azure Active Directory (Azure AD) C
 >
 > A beépített szinkronizálási szabályokat rendelkezik egy ujjlenyomatot. Ha egy módosítást hajt végre ezeket a szabályokat, az ujjlenyomat nem egyeznek meg. A jövőben, ha a alkalmazni az Azure AD Connect új kiadása próbál problémák léphetnek fel. Csak módosításokat a leírt módon ebben a cikkben.
 
-## <a name="synchronization-rules-editor"></a>Szinkronizálási Szabályszerkesztővel
+## <a name="synchronization-rules-editor"></a>Synchronization Rules Editor
 A szinkronizálási Szabályszerkesztővel szolgál, és az alapértelmezett konfiguráció módosítása. Találja meg a **Start** menüt a **az Azure AD Connect** csoport.  
 ![Szinkronizálási Szabályszerkesztő a Start menüben](./media/how-to-connect-sync-change-the-configuration/startmenu2.png)
 
@@ -236,7 +236,7 @@ Elkerülheti a nemkívánatos módosítások exportálna az Azure AD, győződj�
  3. Nyissa meg a Synchronization Service Managert a **Start** > **szinkronizálási szolgáltatás**.
  4. Nyissa meg a **műveletek** fülre és ellenőrizze, nincs művelet állapottal *folyamatban*.
 
-### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>2. lépés: Az adatforrás-attribútum hozzáadása a helyszíni AD-összekötő séma
+### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>2. lépés: Az adatforrás-attribútum hozzáadása a helyszíni AD-összekötő séma
 Nem minden Azure AD-attribútumok is importálja a helyszíni AD-összekötő-térben. Az adatforrás-attribútum hozzáadása az importált attribútumok listáját:
 
  1. Nyissa meg a **összekötők** fülre a Synchronization Service Managert.
@@ -321,7 +321,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
     | Attribútum | Művelet | Érték |
     | --- | --- | --- |
-    | sourceObjectType | EGYENLŐ | Felhasználó |
+    | sourceObjectType | EQUAL | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |
 
     A Hatókörszűrő határozza meg, amelyhez az Azure AD-objektumok a kimenő szinkronizálási szabály vonatkozik. Ebben a példában az azonos Hatókörszűrő használjuk a *ki az ad-hez – felhasználói identitás* out-of-box szinkronizálási szabály. Megakadályozza, hogy a szinkronizálási szabály nem a helyszíni Active Directoryból szinkronizált felhasználói objektumok alkalmazták. Akkor lehet, hogy módosítania kell a Hatókörszűrő megfelelően az Azure AD Connect üzemelő példány.

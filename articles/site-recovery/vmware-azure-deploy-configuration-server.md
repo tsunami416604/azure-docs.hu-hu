@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/11/2018
-ms.author: mayg
-ms.openlocfilehash: 41511b27a84731df203d37d70d20df40f85af4fb
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 01/22/2018
+ms.author: ramamill
+ms.openlocfilehash: 712f8fb2cb951460ad2be36b2899f52d4966fc82
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410761"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468403"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -144,7 +144,7 @@ Folyamatban lévő replikáció megszakítása a szükséges elkerülése érdek
     Tekintse meg [VMware-ből az Azure-bA architektúra](vmware-azure-architecture.md) tudhat meg többet a konfigurációs kiszolgáló és a számítást.
 5. Hol található a konfigurációs kiszolgáló legújabb verzióját?
 
-    A portálon keresztül a konfigurációs kiszolgáló frissítése lépéseiért lásd: [a konfigurációs kiszolgáló frissítése](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Emellett közvetlenül is letöltheti a [Microsoft Download Center](https://aka.ms/asrconfigurationserver). A Site Recovery minden összetevőjét frissítése részletes utasításokért tekintse meg a [Itt](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to).
+    A portálon keresztül a konfigurációs kiszolgáló frissítése lépéseiért lásd: [a konfigurációs kiszolgáló frissítése](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). A Site Recovery minden összetevőjét frissítése részletes utasításokért tekintse meg a [Itt](https://aka.ms/asr_how_to_upgrade).
 6. Honnan tölthetem le a konfigurációs kiszolgáló hozzáférési kódot?
 
     Tekintse meg [Ez a cikk](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) töltheti le a hozzáférési kódot.
@@ -164,6 +164,8 @@ Folyamatban lévő replikáció megszakítása a szükséges elkerülése érdek
 11. Állítható be a konfigurációs kiszolgáló, az Azure-ban?
 
     A helyszíni környezetben, a közvetlen vonal-az-üzemel a Vcenter-kiszolgáló beállításához és adatok átvitel késések minimalizálása érdekében ajánlott. Konfigurációs kiszolgáló ütemezett biztonsági mentéseket elvégezhető [feladat-visszavétel célokra](vmware-azure-manage-configuration-server.md#failback-requirements).
+
+További gyakori kérdések a konfigurációs kiszolgálón, tekintse meg [dokumentációjában a konfigurációs kiszolgáló gyakori kérdésekre](vmware-azure-common-questions.md#configuration-server) .
 
 ## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
 

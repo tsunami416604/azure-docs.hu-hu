@@ -4,7 +4,7 @@ description: Bemutatja, hogyan kommunikáljon az Azure AD alkalmazásproxy-össz
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: a73e652c74f9d88f1e066de190834fc033c13cf0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 472b30b849ef11ae0a42e1b41c25ec5dc341fb27
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135526"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462929"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Együttműködhet a proxy-alkalmazások natív ügyfélalkalmazások engedélyezése
 
@@ -37,7 +37,7 @@ Ez a cikk végigvezeti az Application Proxy és az Azure AD Authentication Libra
 ## <a name="step-1-publish-your-application"></a>1. lépés: Az alkalmazás közzététele
 A proxy-alkalmazások közzététele, mint bármely más alkalmazás, és rendelje hozzá a felhasználók elérhetik az alkalmazást. További információkért lásd: [alkalmazásait közzéteheti az alkalmazásproxy](application-proxy-add-on-premises-application.md).
 
-## <a name="step-2-configure-your-application"></a>2. lépés: Az alkalmazás konfigurálása
+## <a name="step-2-configure-your-application"></a>2. lépés: Az alkalmazás konfigurálása
 A natív alkalmazás a következőképpen konfigurálja:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -51,7 +51,7 @@ A natív alkalmazás a következőképpen konfigurálja:
 További részletes információ egy új alkalmazásregisztráció létrehozásával kapcsolatban lásd: [alkalmazások integrálása az Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
 
-## <a name="step-3-grant-access-to-other-applications"></a>3. lépés: A hozzáférés biztosítása más alkalmazásokhoz
+## <a name="step-3-grant-access-to-other-applications"></a>3. lépés: Hozzáférés biztosítása más alkalmazásokhoz
 A címtárban lévő további alkalmazásokat ki vannak téve a natív alkalmazás engedélyezése:
 
 1. Még mindig **alkalmazásregisztrációk**, válassza ki az imént létrehozott új natív alkalmazást.

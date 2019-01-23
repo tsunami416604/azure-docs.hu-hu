@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Frissítés egy előző verzióról |} A Microsoft Docs'
+title: 'Azure AD Connect: Frissítés korábbi verzióról |} A Microsoft Docs'
 description: Ismerteti a különböző módszerek frissítése a legújabb kiadása az Azure Active Directory Connect, beleértve a helyben frissítés és a egy párhuzamos migrálás.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: Identity
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 17333f6a5e78fb6da607e93cf696bfc766daf3ae
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 4ca1fc4677f0d9a5391973a965faae4e283c4710
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314789"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462538"
 ---
-# <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Az Azure AD Connect: Frissítés egy előző verzióról a legújabbra
+# <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Egy előző verzióról a legújabbra frissítése
 Ez a témakör ismerteti a különböző módszereket, amelyek segítségével az Azure Active Directory (Azure AD) Connect-telepítésre frissítsen a legújabb verziót. Azt javasoljuk, hogy őrizze meg magát a kiadások, az Azure AD Connect az aktuális. Is szereplő lépések segítségével a [párhuzamos migrálás](#swing-migration) szakaszt, ha létrehoz egy jelentős konfigurációs módosítást.
 
 Ha azt szeretné, hogy frissítésre a dirsyncről, [frissítése az Azure AD Szinkronizáló eszközéről (DirSync)](how-to-dirsync-upgrade-get-started.md) helyette.

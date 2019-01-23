@@ -4,7 +4,7 @@ description: A cikk ismerteti, beleegyezik abba, hogy egy alkalmazás, és mit t
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 70413d3467b2f9d5591e6138ed1a7347db58264b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 362671e255f8dc36f9474fd2d4e3117e4cc0c1e4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356699"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477719"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Váratlan hiba történt, amikor beleegyezést ad egy alkalmazás
 
@@ -36,17 +36,17 @@ Bizonyos feltételeknek kell teljesülniük, egy felhasználó, hogy engedélyt 
 Ez a hiba akkor fordul elő, amikor egy felhasználó egy vállalati rendszergazdai jogosultságokkal nem kísérel meg, amely csak a rendszergazda biztosíthat engedélyeket kér az alkalmazás használatát. Ez a hiba megoldhatók a rendszergazda az alkalmazást a szervezet nevében való hozzáférést.
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Házirend miatt engedélyek hiba
-* **AADSTS90093:** az rendszergazdájának &lt;tenantDisplayName&gt; által beállított szabályzat, amely megakadályozza, hogy jegykiadó &lt;nevű alkalmazás&gt; kér, az engedélyeket. Lépjen kapcsolatba az rendszergazdájának &lt;tenantDisplayName&gt;, akik az engedélyeket ehhez az alkalmazáshoz az Ön nevében.
+* **AADSTS90093:** Az rendszergazdájának &lt;tenantDisplayName&gt; által beállított szabályzat, amely megakadályozza, hogy jegykiadó &lt;nevű alkalmazás&gt; kér, az engedélyeket. Lépjen kapcsolatba az rendszergazdájának &lt;tenantDisplayName&gt;, akik az engedélyeket ehhez az alkalmazáshoz az Ön nevében.
 
 Ez a hiba akkor fordul elő, ha egy vállalati rendszergazda kikapcsolja lehetővé teszi a felhasználók számára, hogy engedélyt adjanak az alkalmazásokat, majd egy nem rendszergazdai felhasználó megpróbálja használni olyan alkalmazás, amely engedélyt kell kapnia. Ez a hiba megoldhatók a rendszergazda az alkalmazást a szervezet nevében való hozzáférést.
 
 ## <a name="intermittent-problem-error"></a>Időnként problémákat tapasztalt hiba
-* **AADSTS90090:** úgy tűnik, a bejelentkezési folyamat észlelt egy időszakos probléma rögzítése az engedélyek megadása a próbált &lt;clientAppDisplayName&gt;. Próbálkozzon újra később.
+* **AADSTS90090:** Úgy tűnik, a bejelentkezési folyamat észlelt egy időszakos probléma rögzítése az engedélyek megadása a próbált &lt;clientAppDisplayName&gt;. Próbálkozzon újra később.
 
 Ez a hiba azt jelzi, hogy történt-e egy szolgáltatás időszakos ügyféloldali hiba történt. Megoldható úgy, hogy engedélyt adjanak az újból az alkalmazást.
 
 ## <a name="resource-not-available-error"></a>Erőforrás nem érhető el hiba
-* **AADSTS65005:** az alkalmazás &lt;clientAppDisplayName&gt; a kért erőforrás elérésére jogosult &lt;resourceAppDisplayName&gt; , amely nem érhető el. 
+* **AADSTS65005:** Az alkalmazás &lt;clientAppDisplayName&gt; a kért erőforrás elérésére jogosult &lt;resourceAppDisplayName&gt; , amely nem érhető el. 
 
 Lépjen kapcsolatba az alkalmazás fejlesztőjével.
 
@@ -56,7 +56,7 @@ Lépjen kapcsolatba az alkalmazás fejlesztőjével.
 Győződjön meg arról, hogy az erőforrás elérhető legyen, vagy lépjen kapcsolatba az rendszergazdájának &lt;tenantDisplayName&gt;.
 
 ## <a name="permissions-mismatch-error"></a>Engedélyek verzióeltérési hiba
-* **AADSTS65005:** az alkalmazás hozzáférési erőforrás hozzájárulást kért &lt;resourceAppDisplayName&gt;. A kérelem sikertelen volt, mert nem felel meg hogyan az alkalmazás előre konfigurálva lett alkalmazás regisztrációja során. Forduljon az alkalmazás vendor.* *
+* **AADSTS65005:** Az alkalmazás hozzáférési erőforrás hozzájárulást kért &lt;resourceAppDisplayName&gt;. A kérelem sikertelen volt, mert nem felel meg hogyan az alkalmazás előre konfigurálva lett alkalmazás regisztrációja során. Forduljon az alkalmazás vendor.* *
 
 Ezek a hibák összes fordulhatnak elő, amikor egy felhasználó megpróbál beleegyezik abba, hogy az alkalmazás által kért, amely a szervezet címtárában (bérlő) nem található erőforrás-alkalmazás elérésére jogosult. Ez a helyzet akkor fordulhat elő, több okból:
 

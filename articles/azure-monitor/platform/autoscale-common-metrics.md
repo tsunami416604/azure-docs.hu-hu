@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: d12edc2023deb69118d7c02e053cd2525f6ae684
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.subservice: autoscale
+ms.openlocfilehash: 736ff5565bb279d26e686421cc13f54a73b1c7e9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437724"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461093"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Gyakori metrikák az Azure Monitor automatikus méretezés
 Az Azure Monitor automatikus méretezés lehetővé teszi futó példányok számának méretezése felfelé és lefelé, telemetriai adatok (metrikák) alapján. Ez a dokumentum ismerteti a gyakori metrikák, amelyeket érdemes használni. Az Azure Portalon válassza ki a metrika az erőforrás méretezése által. Méretezhető, hogy egy másik erőforrás közül azonban bármilyen mérőszám is választhat.
@@ -56,7 +56,7 @@ A következő metrikák riasztást hozhat létre:
 | \Processor információkat (_teljes) \Processor gyakorisága |Darabszám |
 | \System\Processes |Darabszám |
 | \Process (aránya _teljes) \Thread száma |Darabszám |
-| \Process (aránya _teljes) \Handle száma |Darabszám |
+| \Process(_Total)\Handle Count |Darabszám |
 | \Memory\% előjegyzett memória kihasználtsága) |Százalék |
 | \Memory\Available Bytes |Bájt |
 | \Memory\Committed bájtok |Bájt |
@@ -72,9 +72,9 @@ A következő metrikák riasztást hozhat létre:
 | \PhysicalDisk (aránya _teljes) \Disk bájt/mp |Bájt/s |
 | Olvasási bájt/mp (%) (_Total) \PhysicalDisk \Disk |Bájt/s |
 | \PhysicalDisk (aránya _teljes) \Disk zapsané Bajty/s |Bájt/s |
-| \Avg \PhysicalDisk (aránya _teljes). Lemezvárólista hossza |Darabszám |
-| \Avg \PhysicalDisk (aránya _teljes). Olvasási Lemezvárólista hossza |Darabszám |
-| \Avg \PhysicalDisk (aránya _teljes). Írási Lemezvárólista hossza |Darabszám |
+| \PhysicalDisk(_Total)\Avg. Lemezvárólista hossza |Darabszám |
+| \PhysicalDisk(_Total)\Avg. Olvasási Lemezvárólista hossza |Darabszám |
+| \PhysicalDisk(_Total)\Avg. Írási Lemezvárólista hossza |Darabszám |
 | \LogicalDisk(_Total)\% szabad terület |Százalék |
 | \LogicalDisk (aránya _teljes) \Free (MB) |Darabszám |
 
@@ -187,3 +187,4 @@ A Virtuálisgép-méretezési csoportok használata a Resource Manager-sablon au
 > A Service Bus erőforrás-csoport fogalma nem létezik, de Azure Resource Manager létrehoz egy alapértelmezett erőforráscsoportba régiónként. Az erőforráscsoport általában a "Default - ServiceBus-[régió]" formátumban van. Például: "Alapértelmezett-ServiceBus-EastUS", 'Alapértelmezett-ServiceBus-WestUS', "Alapértelmezett-ServiceBus-Kelet-Ausztrália" stb.
 >
 >
+

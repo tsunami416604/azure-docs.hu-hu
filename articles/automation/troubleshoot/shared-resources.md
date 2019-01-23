@@ -8,12 +8,12 @@ ms.date: 12/3/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ce78c86cdae9a06100fd17d00e0229805e42983b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 911f592c43865ea8bdfe85c1ad1071c7112ae9b6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848459"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475441"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Megosztott erőforrásokkal kapcsolatos hibák elhárítása
 
@@ -21,7 +21,7 @@ Ez a cikk ismerteti a megoldásokat, amelyek találkozhat az Azure Automationben
 
 ## <a name="modules"></a>Modulok
 
-### <a name="module-stuck-importing"></a>Forgatókönyv: Egy modul elakadt importálása
+### <a name="module-stuck-importing"></a>Forgatókönyv: Modul importálása elakadt
 
 #### <a name="issue"></a>Probléma
 
@@ -39,9 +39,68 @@ A probléma megoldásához el kell távolítania a modul, amely a elakadt a **im
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
+### <a name="module-fails-to-import"></a>Forgatókönyv: Modul importálása sikertelen, vagy a parancsmagok nem hajtható végre, az importálás után
+
+#### <a name="issue"></a>Probléma
+
+Modul importálása sikertelen lesz, vagy sikeresen importálja, de nincs parancsmagok ki kell olvasni.
+
+#### <a name="cause"></a>Ok
+
+Néhány általános oka, hogy egy modul előfordulhat, hogy nem sikerült importálni az Azure Automationhöz a következők:
+
+* A struktúra nem felel meg az Automation kell a struktúra.
+* A modul, amely még nem lett telepítve az Automation-fiók egy másik modul függ.
+* A modul hiányzó függőségeit a mappában.
+* A `New-AzureRmAutomationModule` parancsmagot használják, hogy a modul feltöltése és a teljes elérési útja nem végezték el, vagy a modul még nincs betöltve egy nyilvánosan elérhető URL-cím használatával.
+
+#### <a name="resolution"></a>Megoldás:
+
+A probléma elhárításához a következő megoldások valamelyikét:
+
+* Győződjön meg arról, hogy a modul követi a következő formátumban: ModuleName.Zip **->** ModuleName vagy a verziószám **->** (ModuleName.psm1, ModuleName.psd1)
+* Nyissa meg a .psd1 fájlban, és tekintse meg, ha a modul rendelkezik-e függőségek. Ha igen, töltse fel ezeket a modulokat az Automation-fiókot.
+* Győződjön meg arról, hogy minden hivatkozott .dll modul mappában találhatók.
+
+### <a name="all-modules-suspended"></a>Forgatókönyv: Update-AzureModule.ps1 suspends when updating modules
+
+#### <a name="issue"></a>Probléma
+
+Használatakor a [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbookot, hogy a modul frissítése a frissítési folyamatot felfüggesztett lekérdezi az Azure-modulok frissítése.
+
+#### <a name="cause"></a>Ok
+
+Az alapértelmezett beállítás határozza meg, hány modult egyszerre frissíti a 10 használata esetén a `Update-AzureModule.ps1` parancsfájlt. A frissítési folyamat modulok beüzemelje frissítése folyamatban van egy időben esetén a hibalehetőség.
+
+#### <a name="resolution"></a>Megoldás:
+
+A nem gyakori, hogy minden AzureRM-modul az azonos Automation-fiók szükséges. Azt javasoljuk, hogy az importálás kizárólag az AzureRM-modulok szükséges.
+
+> [!NOTE]
+> Kerülje a importálása a **AzureRM** modul. Importálja a **AzureRM** modulok hatására az összes **AzureRM.\***  modulok importálni, ez azonban nem leronthatja.
+
+Ha felfüggeszti a frissítési folyamat, hozzá kell a `SimultaneousModuleImportJobCount` paramétert a `Update-AzureModules.ps1` szkriptet, és adja meg az alapértelmezett, amely 10 alacsonyabb érték. Ha a logikai értéke 3 vagy 5 használatbavételéhez megvalósítása ajánlott. `SimultaneousModuleImportJobCount` a paraméter a `Update-AutomationAzureModulesForAccount` rendszer runbook, amellyel Azure-modulok frissítése. Ez a változás lehetővé teszi a folyamat futtatási már, de befejezése, nagyobb valószínűséggel lehet. Az alábbi példa bemutatja a paraméter és helyét, a runbook:
+
+ ```powershell
+         $Body = @"
+            {
+               "properties":{
+               "runbook":{
+                   "name":"Update-AutomationAzureModulesForAccount"
+               },
+               "parameters":{
+                    ...
+                    "SimultaneousModuleImportJobCount":"3",
+                    ... 
+               }
+              }
+           }
+"@
+```
+
 ## <a name="run-as-accounts"></a>Futtató fiókok
 
-### <a name="unable-create-update"></a>Forgatókönyv: Ön nem sikerült létrehozni vagy frissíteni a futtató fiók
+### <a name="unable-create-update"></a>Forgatókönyv: Nem tud létrehozni vagy frissíteni a futtató fiók
 
 #### <a name="issue"></a>Probléma
 
@@ -59,7 +118,7 @@ Nem kell az engedélyeket kell létrehozni vagy frissíteni a futtató fiókot, 
 
 Létrehozása vagy frissítése egy futtató fiókot, akkor a különböző erőforrások használják a futtató fiók megfelelő engedélyeket kell rendelkeznie. Létrehozni vagy frissíteni a futtató fiók szükséges engedélyekkel kapcsolatos további információkért lásd: [Futtatás mint fiók engedélyek](../manage-runas-account.md#permissions).
 
-Ha a probléma miatt a zárolást, ellenőrizze, hogy a zárolást az ok gombra. Távolítsa el, és keresse meg az erőforrás zárolva van, a jobb gombbal a zárolást, és válassza **törlése** , távolítsa el a zárolást.
+Ha a probléma miatt a zárolást, ellenőrizze, hogy a zárolást az ok gombra. Távolítsa el azt. Az erőforrás zárolva van, majd keresse meg, kattintson a jobb gombbal a zárolást, és válassza a **törlése** , távolítsa el a zárolást.
 
 ## <a name="next-steps"></a>További lépések
 

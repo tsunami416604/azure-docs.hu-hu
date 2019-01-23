@@ -4,7 +4,7 @@ description: Belső Microsoft Applications (például Office 365) az Azure AD-ve
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ab0face3c211a8ea1477f40167f80330f0423498
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 2a13df5fc609fe7cfddff91841e082c123d758f5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379264"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468752"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Egy Microsoft-alkalmazásba történő bejelentkezésnél
 
@@ -34,11 +34,11 @@ Hogy egy felhasználó kaphat-e a Microsoft által közzétett alkalmazás háro
 
 -   A alkalmazások számára, amely közzéteszi a Microsoft vagy a 3. fél megkötések nélkül bárki használandó, felhasználókat lehet, hogy is hozzáférhetnek, keresztül **rendszergazdai jóváhagyást**. Ez azt jelenti, hogy a rendszergazda azt észlelte, az alkalmazás által a szervezet minden tagja használhatók, így jelentkezzen be az alkalmazás egy globális rendszergazdai fiókkal, és a hozzáférési jogot a szervezet minden tagja.
 
-A probléma elhárításához indítsa el a a [fontolja meg az alkalmazás-hozzáférés az általános problémás területek](#general-problem-areas-with-application-access-to-consider) majd beolvassa a [forgatókönyv: lépésekkel elháríthatja a Microsoft Application hozzáférés](#walkthrough-steps-to-troubleshoot-microsoft-application-access) kerülnek a a részletek.
+A probléma elhárításához, kezdje a [általános problémás területek, fontolja meg az alkalmazás-hozzáférés a](#general-problem-areas-with-application-access-to-consider) majd beolvassa a [forgatókönyv: Microsoft Application hozzáférés hibaelhárítása](#walkthrough-steps-to-troubleshoot-microsoft-application-access) beolvasni a részletek megtekintéséhez.
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Alkalmazás-hozzáférést, fontolja meg az általános problémás területek
 
-Az alábbiakban olyan, az általános problémás területek, amely részletesen is megtekintheti, ha van egy ötlete, hol kell elkezdeni, de javasoljuk, hogy elolvasta a forgatókönyv a gyors induláshoz: [forgatókönyv: lépésekkel elháríthatja a Microsoft Application hozzáférés](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
+Az alábbiakban olyan, az általános problémás területek, amely részletesen is megtekintheti, ha van egy ötlete, hol kell elkezdeni, de javasoljuk, hogy elolvasta a forgatókönyv a gyors induláshoz: [Forgatókönyv: Microsoft Application hozzáférés hibaelhárítása](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
 
 -   [A felhasználói fiókkal kapcsolatos problémák](#problems-with-the-users-account)
 
@@ -204,7 +204,7 @@ A felhasználó a multi-factor authentication szolgáltatás állapotának ellen
 
 9.  A felhasználók listájából válassza ki a felhasználót és **engedélyezése**, **letiltása**, vagy **érvényesítése** a multi-factor authentication igény szerint.
 
-  * **Megjegyzés:**: Ha egy felhasználó egy **kényszerített** állapotba, előfordulhat, hogy beállította azokat **letiltott** ideiglenesen ahhoz, hogy azokat vissza a fiókba. Vissza a k, módosíthatja az állapotuk **engedélyezve** újra a kapcsolattartási adatait a következő bejelentkezéskor során regisztrálja újra hitelesíteni. Azt is megteheti, követheti a lépések a [ellenőrizze a felhasználó hitelesítési kapcsolattartási adatok](#check-a-users-authentication-contact-info) ellenőrizze vagy állítsa be ezeket az adatokat a számukra.
+  * **Megjegyzés**: Ha egy felhasználó egy **kényszerített** állapotba, előfordulhat, hogy beállította azokat **letiltott** ideiglenesen ahhoz, hogy azokat vissza a fiókba. Vissza a k, módosíthatja az állapotuk **engedélyezve** újra a kapcsolattartási adatait a következő bejelentkezéskor során regisztrálja újra hitelesíteni. Azt is megteheti, követheti a lépések a [ellenőrizze a felhasználó hitelesítési kapcsolattartási adatok](#check-a-users-authentication-contact-info) ellenőrizze vagy állítsa be ezeket az adatokat a számukra.
 
 ### <a name="check-a-users-authentication-contact-info"></a>A felhasználó hitelesítési kapcsolattartási adatok ellenőrzése
 

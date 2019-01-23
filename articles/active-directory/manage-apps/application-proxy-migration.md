@@ -4,7 +4,7 @@ description: Válassza ki, melyik proxy megoldás a legjobb, ha frissít, a Micr
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,16 +15,16 @@ ms.date: 07/27/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c4ecb812156eae7402065cff4dc4bae3aef1554b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1517fedd4b4f8d46b0c7367fa4c1319325818b08
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365175"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461349"
 ---
 # <a name="compare-remote-access-solutions"></a>Távelérési megoldások összehasonlítása
 
-Az Azure Active Directory Application Proxy egyike a két távelérési megoldás, amely a Microsoft kínál. A másik pedig a webalkalmazás-Proxy, a helyileg telepített verzióját. Ezek a megoldások két cserélje le a korábbi, amely a Microsoft által kínált termékekre: Microsoft Forefront Threat Management Gateway (TMG) és az egyesített Access-átjáró (UAG). Ez a cikk segítségével azonosíthatja a ezeket a megoldásokat hogyan hasonlítsa össze egymással. Azoknak, továbbra is használja az elavult TMG vagy a UAG megoldásokat Ez a cikk segítségével tervezze meg a migrációt a megfelelőt a Proxy segítségével. 
+Az Azure Active Directory Application Proxy egyike a két távelérési megoldás, amely a Microsoft kínál. A másik pedig a webalkalmazás-Proxy, a helyileg telepített verzióját. Ezek a megoldások két cserélje le a korábbi, amely a Microsoft által kínált termékek: Microsoft Forefront Threat Management Gateway (TMG), és egységes Access-átjárón (UAG). Ez a cikk segítségével azonosíthatja a ezeket a megoldásokat hogyan hasonlítsa össze egymással. Azoknak, továbbra is használja az elavult TMG vagy a UAG megoldásokat Ez a cikk segítségével tervezze meg a migrációt a megfelelőt a Proxy segítségével. 
 
 
 ## <a name="feature-comparison"></a>Szolgáltatások összehasonlítása

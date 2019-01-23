@@ -4,7 +4,7 @@ description: Új viselkedését, hogy hogyan kezeli az egyszerű felhasználón�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 537a92b7-7a84-4c89-88b0-9bce0eacd931
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e20ae31ae64483d4d11b793f1c8656107413c05d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f3460520b8914a25807c77f631aa4c64f3b2efb0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406194"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464867"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
 Ismétlődő attribútumok rugalmassága lehetővé teszi az Azure Active Directoryban, amely kiküszöböli a fennakadások nélkül használható által okozott az **UserPrincipalName** és **ProxyAddress** ütközik a Microsoft egyik futtatásakor szinkronizálás eszközökkel.
@@ -133,7 +133,7 @@ Ha ütközés duplikált attribútummal rendelkező objektum történik az új v
 ## <a name="resolving-conflicts"></a>Ütközések feloldása
 Hibaelhárítási stratégia és a megoldási taktika a hibák kell nem eltérnek a duplikált attribútummal kapcsolatos hibák történtek kezelt módja. Az egyetlen különbség, hogy az időzítő feladat halmokat a bérlő automatikusan adja hozzá a szóban forgó attribútumot a megfelelő objektumot az ütközést megszűnése után a szolgáltatás oldalán keresztül.
 
-A következő cikk ismerteti a különböző hibaelhárítási és megoldási stratégiák: [ismétlődő vagy érvénytelen attribútumok megelőzése az Office 365-ben a címtár-szinkronizálás](https://support.microsoft.com/kb/2647098).
+A következő cikk ismerteti a különböző hibaelhárítási és megoldási stratégiák: [Ismétlődő vagy érvénytelen attribútumok megelőzése az Office 365-ben a címtár-szinkronizálás](https://support.microsoft.com/kb/2647098).
 
 ## <a name="known-issues"></a>Ismert problémák
 Ezek a problémák egyike hatására az adatok elvesztése vagy szolgáltatás teljesítménycsökkenést. Több esztétikai, mások okozhat standard "*előtti rugalmasság*" ismétlődő attribútummal kapcsolatos hibák, az ütközés attribútumot, és a egy másik karanténba helyett hibajelzést okoz bizonyos hibák extra manuális javítás felfelé megkövetelése.

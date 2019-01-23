@@ -4,7 +4,7 @@ description: Ismerje meg, amely a felügyelt eszközök igényel a felhőalapú 
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b59e4898f85de7ad93d9172cdb3c551a17799194
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 2df2d716516cb8e451c054fce3e184e1b4bf3f9b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630483"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447598"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Útmutató: Szükséges felügyelt eszközökre vonatkozó feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>kézikönyv: A felügyelt eszközök szükségesek a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés
 
 Mobileszközök és a felhő-és felhőközpontú világában Azure Active Directory (Azure AD) lehetővé teszi, hogy egyszeri bejelentkezés alkalmazásokhoz és szolgáltatásokhoz bárhonnan. Jogosult felhasználók férhessenek a felhőalapú alkalmazások származó sokféle eszközt, beleértve a mobil- és személyes eszközök is. Sok környezetben azonban csak legyenek elérhetők a eszközöket, amelyek a biztonsági és megfelelőségi szabványoknak legalább néhány alkalmazások rendelkeznek. Ezek az eszközök felügyelt eszközök is ismertek. 
 
@@ -34,9 +34,9 @@ Ez a cikk azt ismerteti, hogy hogyan konfigurálhat feltételes hozzáférési s
 
 A felügyelt eszközök megkövetelése a cloud app access ties **Azure AD feltételes hozzáférés** és **Azure AD eszközkezeléséről** együtt. Ha Ön még nem ismeri a következő területeken, olvassa el a következő témakörök először:
 
-- **[Az Azure Active Directory feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) ** – Ez a cikk ismerteti a feltételes hozzáférés és a kapcsolódó terminológia fogalmi áttekintése.
+- **[Az Azure Active Directory feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)**  – Ez a cikk ismerteti a feltételes hozzáférés és a kapcsolódó terminológia fogalmi áttekintése.
 
-- **[Az Eszközfelügyelet az Azure Active Directory bemutatása](../devices/overview.md) ** – Ez a cikk áttekintést nyújt a különböző beállítások eszközök szervezeti ellenőrzés alatt van. 
+- **[Az Eszközfelügyelet az Azure Active Directory bemutatása](../devices/overview.md)**  – Ez a cikk áttekintést nyújt a különböző beállítások eszközök szervezeti ellenőrzés alatt van. 
 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -60,11 +60,11 @@ Egyszerűen fogalmazva a felügyelt eszközök azok az alatt álló eszközök *
 
 Három lehetősége van az Azure ad-vel regisztrált eszköz lekéréséhez:
 
-- **[Az Azure ad-ben regisztrált eszközök](../devices/overview.md#azure-ad-registered-devices) ** – az Azure ad-vel regisztrált egy személyes eszköz
+- **[Az Azure ad-ben regisztrált eszközök](../devices/overview.md#azure-ad-registered-devices)**  – az Azure ad-vel regisztrált egy személyes eszköz
 
-- **[Az Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#azure-ad-joined-devices) ** – egy szervezeti Windows 10 rendszerű eszköz, amely nem csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben. 
+- **[Az Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#azure-ad-joined-devices)**  – egy szervezeti Windows 10 rendszerű eszköz, amely nem csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben. 
 
-- **[Hibrid Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#hybrid-azure-ad-joined-devices) ** – a Windows 10-es vagy a támogatott régebbi verziójú eszközt, amely csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben.
+- **[Hibrid Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#hybrid-azure-ad-joined-devices)**  – a Windows 10-es vagy a támogatott régebbi verziójú eszközt, amely csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben.
 
 Felügyelt eszközzé válik, egy regisztrált eszközt kell, vagy egy **hibrid Azure AD-hez csatlakoztatott eszköz** vagy egy **megfelelőként megjelölt eszköz**.  
 

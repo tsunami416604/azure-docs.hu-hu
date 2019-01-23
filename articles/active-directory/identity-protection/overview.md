@@ -5,7 +5,7 @@ services: active-directory
 keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.component: identity-protection
@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 75d8503e6179b8ef3578a4a8c62ef1b288657a7b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 73b76561829e6d50918881427894ea310920fce6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576816"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465199"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Mi az Azure Active Directory Identity Protection?
 
-Az Azure Active Directory Identity Protection az Azure AD Premium P2 kiadás, amely lehetővé teszi, hogy funkciója:
+Az Azure Active Directory Identity Protection az Azure AD Premium P2 kiadás egyik szolgáltatása, amely lehetővé teszi a következőket:
 
 - A szervezet identitásait érintő esetleges biztonsági rések észlelése
 
 - Automatikus válaszok észlelt gyanús tevékenységeket, a szervezet identitásait kapcsolódó konfigurálása  
 
-- Gyanús incidensek kivizsgálásában, és azok megoldását megfelelő művelet végrehajtása   
+- Gyanús incidensek kivizsgálása, és a szükséges intézkedések megtétele azok megoldásához   
 
 
 ## <a name="get-started"></a>Bevezetés
@@ -110,7 +110,7 @@ Identity Protection örömét általában az Identity Protection irányítópult
 
 ![Szervizelési](./media/overview/1000.png "szervizelés")
 
-Az irányítópult teszi elérhetővé:
+Az irányítópult hozzáférést biztosít a következőkhöz:
 
 * Például a jelentések **kockázatosként megjelölt felhasználók**, **kockázati események** és **biztonsági rések**
 * Beállítások, például konfigurációját a **biztonsági házirendek**, **értesítések** és **többtényezős hitelesítési regisztráció**
@@ -134,7 +134,7 @@ Automatikus válaszok implementálásához az Azure Active Directory Identity Pr
 
 ## <a name="next-steps"></a>További lépések
 
-- [Channel 9-on: Az Azure AD és az identitás: Identity Protection előzetes verziója](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [Channel 9-on: Az Azure AD és az identitás megjelenítése: Identity Protection előzetes verziója](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 - [Az Azure Active Directory Identity Protection engedélyezése](enable.md)
 

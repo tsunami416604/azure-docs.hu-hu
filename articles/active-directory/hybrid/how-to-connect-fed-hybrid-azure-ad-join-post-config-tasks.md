@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Hibrid Azure AD join utáni konfigurációs feladatok |} A Microsoft Docs'
+title: 'Azure AD Connect: Hibrid Azure AD join utáni konfigurációs feladatok |} A Microsoft Docs'
 description: Ez a dokumentum részletesen szükséges utáni konfigurációs feladatok befejezéséhez a hibrid Azure AD-csatlakozás
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 16fc7f1bb69efe94ce87f213627b78a4afa0fcc2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 31bf3c7ba2365f3fdfd6f2da1dbd1942ada1327e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999230"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475458"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás konfigurálása utáni feladatok
 
@@ -30,12 +30,12 @@ Miután futtatta a szervezetben a hibrid Azure AD-csatlakozás konfigurálása a
 Minden tartományhoz csatlakoztatott eszközök a Windows 10 és Windows Server 2016 fut, automatikusan regisztrálja az Azure AD, ha az összes konfigurációs lépés befejeződött. Ha inkább ellenőrzött bevezetését, mint az automatikus regisztráció, a csoportházirend segítségével szelektív engedélyezése vagy letiltása az automatikus bevezetési.  A csoportházirendet kell állítani a további konfigurációs lépések: az Azure AD elindítása előtt
 * Hozzon létre egy csoportházirend-objektumot az Active Directoryban.
 * Nevezze el azt (például-hibrid Azure AD-csatlakozás).
-* Szerkeszthet, és nyissa meg: számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows Components > regisztrálni az eszközt.
+* & Ugrás szerkesztése:  Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows Components > regisztrálni az eszközt.
 
 >[!NOTE]
 >A 2012 R2 a házirend-beállítások vannak **számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows Components > a munkahelyi csatlakoztatás > Automatikus munkahelyi csatlakozás ügyfélszámítógépek**
 
-* Ez a beállítás letiltása: eszközként regisztrálja a tartományhoz csatlakoztatott számítógépeket.
+* Ez a beállítás letiltása:  Eszközként regisztrálja a tartományhoz csatlakoztatott számítógépeket.
 * Érvényes, és kattintson az OK gombra.
 * Kapcsolja a csoportházirend-Objektumot a megfelelő helyre (szervezeti egység, biztonsági csoportot, vagy az összes eszköz tartományhoz).
 
@@ -69,7 +69,7 @@ Ha a szervezete a Jelszókivonat-szinkronizálás és átmenő hitelesítés az 
 Windows régebbi verziójú eszközök regisztrálása, győződjön meg arról, hogy az Azure AD-szabályzat lehetővé teszi a felhasználóknak eszközöket regisztrálni kell. 
 
 * Jelentkezzen be a fiók az Azure Portalon.
-* Nyissa meg: az Azure Active Directory > eszközök > eszközbeállítások
+* Ugrás:  Az Azure Active Directory > eszközök > eszközbeállítások
 * Állítsa be az "A felhasználók regisztrálhatják eszközeiket az Azure ad-vel" minden.
 * Kattintson a Save (Mentés) gombra.
 
@@ -87,8 +87,8 @@ Ez a telepítő az eszköz a rendszer a felhasználó környezetében futó üte
 
 * Hozzon létre egy csoportházirend-objektumot az Active Directory – Ha még nem hozott létre.
 * Nevezze el azt (például-hibrid Azure AD-csatlakozás).
-* Szerkeszthet, és nyissa meg: számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows Components > az eszköz regisztrálása
-* Engedélyezése: Tartományhoz csatlakoztatott számítógépeket eszközként regisztrálja.
+* & Ugrás szerkesztése:  Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows Components > az eszköz regisztrálása
+* Engedélyezése:  Regisztrálja a tartományhoz csatlakoztatott számítógépeket eszközként
 * Érvényes, és kattintson az OK gombra.
 * Kapcsolja a csoportházirend-Objektumot a megfelelő helyre (szervezeti egység, biztonsági csoportot, vagy az összes eszköz tartományhoz).
 

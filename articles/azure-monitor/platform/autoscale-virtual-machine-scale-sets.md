@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: c7b4da7292600f3d477d5c16263660eb6d4d4226
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.subservice: autoscale
+ms.openlocfilehash: 074f090d295ef5eafad48e57f68dad019bf7eab9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051272"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470035"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Automatikus méretezés speciális konfigurálása Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok
 Horizontális le- és a Virtual Machine Scale Sets alapuló teljesítmény-mérőszám küszöbértékén, ismétlődő ütemezés szerint, vagy egy adott dátumot kibővített is. Skálázási műveletek értesítései e-mailt és webhookot is konfigurálhatja. Ez az útmutató bemutatja egy példa az összes ezeket az objektumokat a Virtuálisgép-méretezési Resource Manager-sablon használatával.
@@ -29,7 +29,7 @@ Ez az útmutató használjuk [Azure erőforrás-kezelő](https://resources.azure
 1. Egy alapszintű automatikus méretezési beállítás új méretezési csoport üzembe helyezése. Ebben a cikkben az Azure katalógusából a rövid útmutató, amely rendelkezik egy Windows egy méretezési csoport egy alapszintű automatikus méretezési sablonnal. Linux méretezési csoportok ugyanúgy működnek.
 2. A méretezési készlet létrehozása után keresse meg a méretezési csoport erőforrás az Azure Resource Explorerben. A következő Microsoft.Insights csomópont alatt láthatja.
 
-    ![Az Azure Explorer](media/autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
+    ![Azure Explorer](media/autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
     A sablon végrehajtása hozott létre egy alapértelmezett automatikus skálázási beállítás neve **"autoscalewad"**. A jobb oldalon tekintheti meg az automatikus méretezési beállítás a teljes meghatározását. Ebben az esetben az alapértelmezett automatikus skálázási beállítás együttműködik a CPU-alapú % horizontális felskálázást és a horizontális leskálázási szabály.  
 

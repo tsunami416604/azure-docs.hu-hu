@@ -4,7 +4,7 @@ description: A gyakori problémák személyek face értenie, amikor jelszó egys
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 223532a169dc1655d8c20a7bd60ecb68d9b5052b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7d0ed35c28717fdbabc4a549f090779e9438b8a7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834298"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469695"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Jelszavas egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálása során
 
@@ -213,7 +213,7 @@ Az alábbiakban azt ismerteti, több milyen az értesítés azt jelenti, hogy el
 
 -   **Ügyfélkérés azonosítója** – a megadott kérés azonosítója, a böngésző által készített
 
-    -   Példa – **302fd775-3329-4670-a9f3-bea37004f0bc**
+    -   Example – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
 -   **Szolgáltatásblokk UTC idő** – az időbélyeg, amely során az értesítés történt (UTC)
 
@@ -239,15 +239,15 @@ Az alábbiakban azt ismerteti, több milyen az értesítés azt jelenti, hogy el
 
 -   **Megjelenítendő név** – **(üres is lehet)** a hiba részletes megjelenített neve
 
-    -   Példa ** – **alkalmazásproxy-beállítások**\*
+    -   Példa * – **alkalmazásproxy-beállítások**
 
 -   **Állapot** – az értesítésre adott állapota
 
-    -   Példa ** – **nem sikerült**\*
+    -   Példa * – **nem sikerült**
 
 -   **Objektumazonosító:** – **(üres is lehet)** az Objektumazonosító, amelyek hajtottak végre a műveletet
 
-    -   Példa – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+    -   Example – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
 -   **Részletek** – a részletes Mi történt a művelet leírása
 

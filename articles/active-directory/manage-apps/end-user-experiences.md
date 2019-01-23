@@ -3,7 +3,7 @@ title: Azure Active Directory-alkalmazást – végfelhasználói élményének 
 description: Az Azure Active Directory (Azure AD) többféleképpen testre szabható is telepíthet központilag alkalmazásokat a végfelhasználók számára a szervezetben.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: b1a4ec4b3a75d1337c011275591af11da8c45a6a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0adc9b72dc752788b76e8383be91233a5c3958c7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629115"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462119"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory-alkalmazások a végfelhasználói élmény
 Az Azure Active Directory (Azure AD) többféleképpen testre szabható is telepíthet központilag alkalmazásokat a szervezet a végfelhasználók számára:

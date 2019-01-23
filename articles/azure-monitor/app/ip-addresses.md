@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 01/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 24e11f186d9114fab5b21e8cfec6438178839550
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7c3a7c4d961a5ae2fe243ced1e13087d5cdb7a6f
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358541"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452921"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és a Log Analytics által használt IP-címek
 A [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) szolgáltatást használ egy IP-címek számát. Előfordulhat, hogy szeretne, ezeket a címeket, ha az alkalmazás, figyelt tűzfal mögött található.
@@ -28,7 +28,7 @@ A [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)
 > 
 
 > [!TIP]
-> Feliratkozás egy RSS-hírcsatorna hozzáadásával, ezen a lapon https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/application-insights/ip-addresses.md.atom , a kedvenc RSS/ATOM olvasó kap értesítést a legutóbbi változtatásokat.
+> Feliratkozás egy RSS-hírcsatorna hozzáadásával, ezen a lapon https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom , a kedvenc RSS/ATOM olvasó kap értesítést a legutóbbi változtatásokat.
 > 
 > 
 

@@ -1,24 +1,17 @@
 ---
-title: Az Azure DNS-delegálás áttekintése | Microsoft Docs
+title: Az Azure DNS-delegálás áttekintése
 description: Ismerje meg, hogyan módosíthatja a tartományok delegálását és használhatja tartományszolgáltatóként az Azure DNS-névkiszolgálóit.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/18/2017
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: a00cc00dee3a505f88abef3ecf99f49aa027c30b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
-ms.translationtype: HT
+ms.openlocfilehash: d1de1212280c6767862233f990c9fc5e0cf97473
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170504"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461026"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>DNS-zónák delegálása az Azure DNS-sel
 
@@ -58,13 +51,16 @@ Az alábbi képen egy példa DNS-lekérdezés látható. A contoso.net és a par
 ![DNS-névkiszolgáló](./media/dns-domain-delegation/image1.png)
 
 1. Az ügyfél lekéri a `www.partners.contoso.net` címet a helyi DNS-kiszolgálóról.
-1. A helyi DNS-kiszolgálón nem található meg a rekord, így lekéri azt a gyökér-névkiszolgálótól.
-1. A gyökér-névkiszolgálón sem található meg a rekord, azonban ismeri a `.net`-névkiszolgáló címét, és megadja azt a DNS-kiszolgálónak.
-1. A DNS-kiszolgáló elküldi a kérést a `.net`-névkiszolgálónak. Ezen sem található meg a rekord, azonban ismeri a contoso.net névkiszolgáló címét. Ebben az esetben ez egy DNS-zóna, amely az Azure DNS-en fut.
-1. A `contoso.net` zónában nem található meg a rekord, azonban ismeri a `partners.contoso.net` névkiszolgálója címét, és ezt adja vissza válaszként. Ebben az esetben ez egy DNS-zóna, amely az Azure DNS-en fut.
-1. A DNS-kiszolgáló lekéri a `partners.contoso.net` IP-címét a `partners.contoso.net` zónából. Ezen megtalálható az „A” rekord, és az IP-címet adja vissza válaszként.
-1. A DNS-kiszolgáló megadja az IP-címet az ügyfélnek.
-1. Az ügyfél csatlakozik a `www.partners.contoso.net` webhelyhez.
+2. A helyi DNS-kiszolgálón nem található meg a rekord, így lekéri azt a gyökér-névkiszolgálótól.
+3. A gyökér-névkiszolgálón sem található meg a rekord, azonban ismeri a `.net`-névkiszolgáló címét, és megadja azt a DNS-kiszolgálónak.
+4. A helyi DNS-kiszolgáló a kérést küld a `.net` kiszolgáló nevét.
+5. A `.net` kiszolgáló neve nem található a rekord, de tudja címét a `contoso.net` kiszolgáló nevét. Ebben az esetben reagáljon az Azure DNS Szolgáltatásban üzemeltetett DNS-zóna számára a névkiszolgáló címét.
+6. A helyi DNS-kiszolgáló elküldi a kérelmet a névkiszolgálóját a `contoso.net` az Azure DNS-ben üzemeltetett zónában.
+7. A zóna `contoso.net` nem található a rekord, de a névkiszolgálója `partners.contoso.net` és fűzi hozzá a címet. Ebben az esetben érdemes az Azure DNS Szolgáltatásban üzemeltetett DNS-zónában.
+8. A helyi DNS-kiszolgáló elküldi a kérelmet a névkiszolgálóját a `partners.contoso.net` zóna.
+9. A `partners.contoso.net` zóna a-rekordra van, és az IP-cím válaszol.
+10. A helyi DNS-kiszolgáló biztosítja az IP-címet az ügyfélnek
+11. Az ügyfél csatlakozik a `www.partners.contoso.net` webhelyhez.
 
 A delegálások a névkiszolgálói rekordok két példányával rendelkeznek: egy a gyermekzónára mutató szülőzónában, egy pedig magában a gyermekzónában található. A „contoso.net” zóna a „net” névkiszolgálói rekordjai mellett a „contoso.net” névkiszolgálói rekordjait is tartalmazza. Ezek a rekordok az úgynevezett mérvadó névkiszolgálói rekordok, és a gyermekzóna tetején találhatók.
 

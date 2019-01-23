@@ -4,7 +4,7 @@ description: Ez a dokumentum ismerteti, és az Office 365 és az Azure ad-ben t�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 5595fb2f-2131-4304-8a31-c52559128ea4
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8b5abe252ab9b3389680508537ea1d6f3823f910
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: abc01239a2bf61c39f99fe880bf17d7958a1597c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311863"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477926"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Többtartományos támogatás az Azure AD összevonási szolgáltatásához
 Az alábbi dokumentáció használata több legfelső szintű tartományt és altartományt, ha az Office 365 vagy Azure AD-tartomány összevonása nyújt útmutatást.
@@ -102,7 +102,7 @@ A következő lépések segítségével távolítsa el a Microsoft Online adatv�
 1. Nyissa meg az AD FS összevonási kiszolgálón **AD FS-kezelőben.**
 2. Bontsa ki a bal oldali **megbízhatósági kapcsolatok** és **függő entitás Megbízhatóságai**
 3. A jobb oldalon törölje a **a Microsoft Office 365 Identity Platform** bejegyzés.
-   ![Távolítsa el a Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
+   ![Remove Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
 4. A gépen, amelyen [Azure Active Directory modul Windows Powershellhez készült](https://msdn.microsoft.com/library/azure/jj151815.aspx) telepítve van a következő parancs futtatásával: `$cred=Get-Credential`.  
 5. Adja meg a felhasználónevet és jelszót egy globális rendszergazda összevonja a az Azure AD-tartomány.
 6. Adja meg a PowerShellben `Connect-MsolService -Credential $cred`
@@ -168,7 +168,7 @@ A következő lépések használatával adjon hozzá egy egyéni jogcímszabály
 ## <a name="next-steps"></a>További lépések
 Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](how-to-connect-post-installation.md).
 
-Ismerkedjen meg a következő, a telepítéssel engedélyezett szolgáltatásokkal: az [Automatikus frissítés](how-to-connect-install-automatic-upgrade.md), a [Véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md) és az [Azure AD Connect Health](how-to-connect-health-sync.md).
+További információkért ezekről a szolgáltatásokról, amelyek a telepítéssel engedélyezett szolgáltatásokkal: [Automatikus frissítés](how-to-connect-install-automatic-upgrade.md), [véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md), és [az Azure AD Connect Health](how-to-connect-health-sync.md).
 
 Ismerje meg részletesebben a következő általános témaköröket: [az ütemező és a szinkronizálási események indítása](how-to-connect-sync-feature-scheduler.md).
 

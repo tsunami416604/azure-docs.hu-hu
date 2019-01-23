@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8549a35eed0c1f61c087b9056e4564577170f5f6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9c6e88eb2e3f3e1b6e6ce2b7f8984799397af582
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141815"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451613"
 ---
-# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Méretezhető adatelemzés az Azure Data Lake: egy végpontok közötti forgatókönyv
+# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Méretezhető adatelemzés az Azure Data Lake: Egy végpontok közötti forgatókönyv
 Ez az útmutató bemutatja, hogyan használható az Azure Data Lake adatáttekintés és a bináris osztályozási feladatok NYC taxi út mintán és adatkészlet előrejelzési e tipp egy diszkont fizeti díjszabás. Emellett végigvezeti a lépéseken, a [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), a végpontok közötti, az adatgyűjtés a tanítási modell, majd a központi telepítését egy webszolgáltatás, amelyet a modell tesz közzé.
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
@@ -146,7 +146,7 @@ Hajtsa végre a U-SQL használatával, nyissa meg a Visual Studióban kattintson
 
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
-### <a name="ingest"></a>Adatbetöltés: A nyilvános blob adatainak olvasása
+### <a name="ingest"></a>Adatok betöltése céljából: A nyilvános blob adatainak olvasása
 Az Azure blobban lévő adatok helyét hivatkozott **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** használatával képes kinyerni és **Extractors.Csv()**. Helyettesítse be a saját tároló neve és a tárfiók nevét az alábbi parancsfájlok a container_name@blob_storage_account_name wasb-címét. Mivel ugyanazt a formátumot a fájlneveket, lehetőség használni **út\_data_ {\*\}.csv** , olvassa el az összes 12 útadatokat tartalmazó fájlt. 
 
     ///Read in Trip data
@@ -374,7 +374,7 @@ Utazás és diszkont táblák medallion, hack_license és pickup_time összekapc
 
 Utas száma az egyes fenyegetési, a rekordokat, átlagos tipp összeg, tipp összeg varianciáját, Formabontó lelassítja százaléka számának kiszámítása.
 
-    // contigency table
+    // contingency table
     @trip_summary8 =
         SELECT passenger_count,
                COUNT(*) AS cnt,
@@ -452,7 +452,7 @@ Két lehetőség áll rendelkezésre, hogy az adatok lekérése az Azure Machine
 * Az első lehetőség, használhatja az Azure Blob lett írva a mintavételezett adatok (az a **adat-mintavételezés** . a fenti lépés) és a Python használatával hozhat létre, és az Azure Machine Learning modellek üzembe helyezése. 
 * A második lehetőség, a lekérdezheti, ha az Azure Data Lake az adatokat egy Hive-lekérdezést közvetlenül használatával. Ez a beállítás megköveteli, hogy hozzon létre egy új HDInsight-fürtöt, vagy használjon egy meglévő HDInsight-fürtöt, mutasson a Hive-táblákat az Azure Data Lake Storage NY i taxik adatait.  Mindkét ezek a beállítások az alábbi szakaszok ismertetik. 
 
-## <a name="option-1-use-python-to-build-and-deploy-machine-learning-models"></a>1. lehetőség: A machine learning-modellek létrehozása és üzembe helyezése a Python használatával
+## <a name="option-1-use-python-to-build-and-deploy-machine-learning-models"></a>Option 1: Készíthet és helyezhet üzembe a machine learning-modellek a Python használata
 Hozhat létre, és a Python használata a machine learning-modellek üzembe helyezése, a Jupyter Notebook létrehozása a helyi gépen, vagy az Azure Machine Learning Studióban. A Jupyter Notebook megadott [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) ismerje meg, megjelenítheti az adatokat, funkciófejlesztési, modellezés és üzembe helyezés a teljes kódját tartalmazza. Ez a cikk csak a modellezésre és a központi telepítési terjed ki. 
 
 ### <a name="import-python-libraries"></a>Python-kódtárakat importálása
@@ -592,7 +592,7 @@ Szeretné üzembe helyezése a gépi tanulási modell, miután állították ös
   
        ![c4](./media/data-lake-walkthrough/c4-call-API.PNG)
 
-## <a name="option-2-create-and-deploy-models-directly-in-azure-machine-learning"></a>2. lehetőség: Hozzon létre, és közvetlenül az Azure Machine Learning modellek üzembe helyezése
+## <a name="option-2-create-and-deploy-models-directly-in-azure-machine-learning"></a>Option 2: Hozzon létre, és közvetlenül az Azure Machine Learning modellek üzembe helyezése
 Az Azure Machine Learning Studio tudja olvasni az adatokat közvetlenül az Azure Data Lake Store, és hozzon létre és helyezhet üzembe modelleket majd használni. Ez a megközelítés használja a Hive-tábla, amely az Azure Data Lake Store mutat. Ehhez az szükséges, hogy egy külön Azure HDInsight-fürt építhető ki, amelyen létrehozták a Hive-táblában. A következő szakaszok bemutatják, hogyan teheti ezt. 
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>HDInsight Linux-fürt létrehozása

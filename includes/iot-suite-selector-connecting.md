@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e241317231f3c607c373cb8a54e4b5bf6601b8e7
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 64cbf8f8704dbb216a15247caf741ff43690496a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620761"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54457066"
 ---
 > [!div class="op_single_selector"]
 > * [C Windowson](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -21,7 +21,7 @@ ms.locfileid: "52620761"
 > * [C Raspberry Pi-on](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 > * [Node.js (általános)](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
 > * [Node.js Raspberry Pi-on](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
-> * [Az MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
+> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
 Ez az oktatóanyag végrehajtása egy **hűtő** eszköz, amely a következő telemetriát küldi a távoli figyelési [megoldásgyorsító](../articles/iot-accelerators/about-iot-accelerators.md):
 
@@ -41,7 +41,7 @@ Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nin
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Mielőtt bármilyen kódot írna az eszközhöz, a távoli figyelési megoldásgyorsító üzembe helyezése, és adjon hozzá egy új fizikai eszköz a megoldáshoz.
+Mielőtt bármilyen kódot írna az eszközhöz, a távoli figyelési megoldásgyorsító üzembe helyezése, és adjon hozzá új valós eszközöknek a megoldáshoz.
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító üzembe helyezése
 
@@ -62,17 +62,17 @@ A távoli figyelési megoldáshoz egy eszköz hozzáadásához kövesse az aláb
 
 1. Válasszon **+ új eszköz**, és válassza a **fizikai** , a **eszköztípus**:
 
-    ![Fizikai eszköz hozzáadása](media/iot-suite-selector-connecting/devicesprovision.png)
+    ![Valós eszköz hozzáadása](media/iot-suite-selector-connecting/devicesprovision.png)
 
 1. Adja meg **fizikai-hűtő** az eszköz azonosítójával. Válassza ki a **szimmetrikus kulcs** és **kulcsok automatikus létrehozása** beállítások:
 
     ![Válassza ki az eszköz beállításai](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. Válasszon **alkalmazása**. Majd jegyezze fel a **Eszközazonosító**, **elsődleges kulcs**, és **kapcsolati karakterlánc – elsődleges kulcs** értékeket:
+1. Válassza az **Alkalmaz** lehetőséget. Majd jegyezze fel a **Eszközazonosító**, **elsődleges kulcs**, és **kapcsolati karakterlánc – elsődleges kulcs** értékeket:
 
     ![Olvashatók be hitelesítő adatok](media/iot-suite-selector-connecting/credentials.png)
 
-Sikeresen hozzáadott egy fizikai eszköz a távoli figyelési megoldásgyorsító és feljegyzett az eszköz kapcsolati karakterláncát. A következő szakaszokban az ügyfélalkalmazás, amely az eszköz kapcsolati karakterláncát használja a megoldáshoz történő csatlakoztatásáról valósíthatja meg.
+Sikeresen hozzáadott egy igazi eszközön a távoli figyelési megoldásgyorsító és feljegyzett az eszköz kapcsolati karakterláncát. A következő szakaszokban az ügyfélalkalmazás, amely az eszköz kapcsolati karakterláncát használja a megoldáshoz történő csatlakoztatásáról valósíthatja meg.
 
 Az ügyfélalkalmazás valósítja meg a beépített **hűtő** eszköz modellje. Egy megoldás gyorsító eszközmodell megadja egy eszközről a következőket:
 

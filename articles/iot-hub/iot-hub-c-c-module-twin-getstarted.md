@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 80d96bcb6b6073987f07ed6954f25023ab1133a4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 853dc443a994601e3900ed16da534254f6af07db
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247517"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452444"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-c-backend-and-c-device"></a>Ismerkedés az IoT Hub identitás- és modul ikermodul háttérrendszer C és C eszköz használatával
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag végén két C alkalmazásokkal rendelkezik:
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes Azure-fiók](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
-* Egy IoT hubot.
+* An IoT Hub.
 * A legújabb [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c).
 
 Létrehozta az IoT Hubot, és rendelkezik az oktatóanyag további részeinek teljesítéséhez szükséges állomásnévvel és IoT Hub kapcsolati sztringgel.
@@ -176,7 +176,7 @@ Ez az alkalmazás egy új eszközidentitást hoz létre azonosító **myFirstDev
 
 Ebben a szakaszban létrehozza a C alkalmazás az a szimulált eszköz, amely frissíti az ikermodul jelentett tulajdonságokként.
 
-1. **A modul kapcsolati sztring lekérése** – Ha bejelentkezik az [az Azure portal](https://portal.azure.com). Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice elemet, nyissa meg, és győződjön meg arról, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
+1. **A modul kapcsolati sztring lekérése** – Ha bejelentkezik az [az Azure portal](https://portal.azure.com). Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresés myFirstDevice, nyissa meg azt, és tekintse meg a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
     ![Az Azure Portal moduladatai](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG)
 

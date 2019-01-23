@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Felhasználói bejelentkezés |} A Microsoft Docs'
+title: 'Azure AD Connect: Felhasználói bejelentkezés |} A Microsoft Docs'
 description: Az Azure AD Connect felhasználói bejelentkezési az egyéni beállításokhoz.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 547b118e-7282-4c7f-be87-c035561001df
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 38086d0e975956aefe4fcde4eda67d939d58f617
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 57f1879e79dfdfe8eff421deb466b3098f5a5c60
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365842"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463456"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Az Azure AD Connect felhasználói bejelentkezési lehetőségek
 Az Azure Active Directory (Azure AD) Connect lehetővé teszi, hogy a felhasználókat, hogy jelentkezzen be a felhő- és a helyszíni erőforrásokhoz ugyanazt a jelszót. Ez a cikk azokat a fogalmakat minden identitás-modell segítségével válassza ki az Azure ad-ben való bejelentkezéshez használni kívánt identitást.
@@ -65,10 +65,10 @@ Az átmenő hitelesítést a felhasználó jelszava ellenőrzi a helyszíni Acti
 Az átmenő hitelesítés a helyszíni környezetben a Windows Server 2012 R2 tartományhoz csatlakoztatott gép egy egyszerű ügynököt használ. Ez az ügynök a jelszó érvényesítése kéréseket figyeli. Az Internet felé bejövő portra nincs szükség.
 
 Emellett engedélyezheti egyszeri bejelentkezést a tartományhoz csatlakoztatott gépeket, amelyek a vállalati hálózaton lévő felhasználók számára. Az egyszeri bejelentkezést az engedélyezett felhasználók csak meg kell adnia egy felhasználónevet, amelyekkel biztonságos felhőalapú erőforrások eléréséhez.
-![Az átmenő hitelesítés](./media/plan-connect-user-signin/pta.png)
+![Átmenő hitelesítés](./media/plan-connect-user-signin/pta.png)
 
 További információkért lásd:
-- [Az átmenő hitelesítés](how-to-connect-pta.md)
+- [Átmenő hitelesítés](how-to-connect-pta.md)
 - [Egyszeri bejelentkezés](how-to-connect-sso.md)
 
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>Amely egy új vagy meglévő farmot használ a Windows Server 2012 R2 AD FS-Összevonás
@@ -125,7 +125,7 @@ Az Azure AD bejelentkezési oldal az UPN-utótagot, amely a helyszíni Active Di
 
 | Állapot | Leírás | Beavatkozás szükséges |
 |:--- |:--- |:--- |
-| Ellenőrizve |Az Azure AD Connect található egy egyező ellenőrzött tartomány Azure AD-ben. Ebben a tartományban az összes felhasználó által a helyszíni hitelesítő adataikkal jelentkezhetnek be. |Nem kell módosítania. |
+| Ellenőrizve |Az Azure AD Connect található egy egyező ellenőrzött tartomány Azure AD-ben. Ebben a tartományban az összes felhasználó által a helyszíni hitelesítő adataikkal jelentkezhetnek be. |Nincs szükség beavatkozásra. |
 | Nincs ellenőrizve |Az Azure AD Connect talált egyező egyéni tartományt az Azure ad-ben, de nem ellenőrzi, hogy. Ez a tartomány felhasználói UPN-utótagját változnak az alapértelmezett. onmicrosoft.com utótag fog szerepelni, ha a tartomány nem ellenőrzött szinkronizálás után. | [Az egyéni tartomány ellenőrzése az Azure ad-ben.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | Nincs hozzáadva |Az Azure AD Connect nem talált egy egyéni tartományt, amely megfelelt annak az UPN-utótagot. Ez a tartomány felhasználói UPN-utótagját változnak az alapértelmezett. onmicrosoft.com utótag, ha a tartomány nem hozzáadva, és ellenőrizte az Azure-ban. | [Adja hozzá, és ellenőrizze az egyéni tartományt, amely megfelel az UPN-utótagot.](../fundamentals/add-custom-domain.md) |
 

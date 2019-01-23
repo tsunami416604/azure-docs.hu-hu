@@ -3,8 +3,8 @@ title: Ismerkedés az Azure Notification Hubs Baiduval való használatával | M
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan használható az Azure Notification Hubs leküldéses értesítések Android-eszközökre történő küldéséhez a Baidu segítségével.
 services: notification-hubs
 documentationcenter: android
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
@@ -12,67 +12,69 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: d8ece15e7e8fa3b74fbefc78aea65683229712ca
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: 3ff0d0db554fe514fdd6be6383b6d1a19f1c39ec
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246769"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451459"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Ismerkedés a Notification Hubs Baiduval való használatával
+
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-A felhőalapú Baidu-értesítés egy kínai felhőszolgáltatás, amellyel leküldéses értesítések küldhetők mobileszközökre. 
+A felhőalapú Baidu-értesítés egy kínai felhőszolgáltatás, amellyel leküldéses értesítések küldhetők mobileszközökre.
 
 Mivel a Google Play és az FCM (Firebase Cloud Messaging) nem érhető el Kínában, más alkalmazás-áruházakat és leküldési szolgáltatásokat kell használni. Ilyen például az értesítési központ által jelenleg használt Baidu is.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az oktatóanyaghoz a következőkre lesz szükség:
 
-* Android SDK (feltételezzük, hogy Android Studiót használ), amelyet az <a href="https://go.microsoft.com/fwlink/?LinkId=389797">Android webhelyéről</a> tölthet le
+* Android SDK (feltételezzük, hogy Android Studiót használ), amelyet az [Android webhelyéről](https://go.microsoft.com/fwlink/?LinkId=389797) tölthet le
 * [Baidu Push Android SDK]
 
 > [!NOTE]
 > Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F).
-> 
-> 
 
 ## <a name="create-a-baidu-account"></a>Baidu-fiók létrehozása
+
 A Baidu használatához Baidu-fiókkal kell rendelkeznie. Ha már rendelkezik ilyen fiókkal, jelentkezzen be a [Baidu portál], és ugorjon a következő lépésre. Egyéb esetben a következőkben leírtak szerint hozhat létre Baidu-fiókot.  
 
 1. Lépjen a [Baidu portál], és kattintson a **登录** (**Bejelentkezés**) hivatkozásra. A fiókregisztrálás megkezdéséhez kattintson a **立即注册** (**Regisztrálás**) gombra.
-   
+
     ![Baidu-regisztráció](./media/notification-hubs-baidu-get-started/BaiduRegistration.png)
 
 2. A kért adatok – telefonszám/e-mail-cím, jelszó és ellenőrzőkód – megadása után kattintson a 注册 (**Regisztráció**) elemre.
-   
+
     ![Baidu-regisztráció – adatok megadása](./media/notification-hubs-baidu-get-started/BaiduRegistrationInput.png)
 
 3. A rendszer elküld egy e-mailt a megadott címre, amelyben megtalálható a Baidu-fiók aktiválására szolgáló hivatkozás.
-   
+
     ![Baidu-regisztráció – regisztráció megerősítése](./media/notification-hubs-baidu-get-started/BaiduConfirmation.png)
 
 4. Jelentkezzen be az e-mail fiókjába, nyissa meg a Baidu aktiválási levelét, majd kattintson az aktiválási hivatkozásra a Baidu-fiók aktiválásához.
-   
+
     ![Baidu-regisztráció – aktiváló e-mail](./media/notification-hubs-baidu-get-started/BaiduActivationEmail.png)
 
 A Baidu-fiók aktiválása után jelentkezzen be a [Baidu portál].
 
 ## <a name="create-a-baidu-cloud-push-project"></a>Felhőalapú Baidu-értesítési projekt létrehozása
+
 Felhőalapú Baidu-értesítési projekt létrehozásakor megkapja az alkalmazásazonosítóját, az API-kulcsot és a titkos kulcsot.
 
 1. A [Baidu portál] való bejelentkezés után kattintson a **更多>>** (**továbbiak**) gombra.
-   
+
     ![Regisztráció – továbbiak](./media/notification-hubs-baidu-get-started/BaiduRegistrationMore.png)
 
 2. Görgessen lefelé a **站长与开发者服务** (**Webmesteri és fejlesztői szolgáltatások**) szakaszban, majd kattintson a **百度云推送** (**Felhőalapú Baidu-értesítés**) elemre.
-   
+
     ![Baidu nyitott felhőplatform](./media/notification-hubs-baidu-get-started/BaiduOpenCloudPlatform.png)
 
 3. A következő oldalon kattintson a jobb felső sarokban található **登录** (**Bejelentkezés**) elemre.
-   
+
     ![Baidu – bejelentkezés](./media/notification-hubs-baidu-get-started/BaiduLogin.png)
 
 4. Ezután kattintson az oldal **创建应用** (**Alkalmazás létrehozása**) elemére.
@@ -80,55 +82,54 @@ Felhőalapú Baidu-értesítési projekt létrehozásakor megkapja az alkalmazá
     ![Baidu – alkalmazás létrehozása](./media/notification-hubs-baidu-get-started/BaiduCreateApplication.png)
 
 5. A következő oldalon kattintson az 创建新应用 (**Új alkalmazás létrehozása**) elemre.
-   
+
     ![Baidu – új alkalmazás létrehozása](./media/notification-hubs-baidu-get-started/BaiduCreateNewApplication.png)
 
 6. Adjon meg egy alkalmazásnevet, majd kattintson a 创建 (**Létrehozás**) parancsra.
-   
+
     ![](./media/notification-hubs-baidu-get-started/BaiduCreateApplicationDoCreate.png)
 
 7. A felhőalapú Baidu-értesítési projekt sikeres létrehozása után megjelenő oldalon megtalálja az **alkalmazásazonosítót**, az **API-kulcsot** és a **titkos kulcsot**. Jegyezze fel az API- és a titkos kulcsot, mert ezekre később szükség lesz.
-   
+
     ![Baidu leküldéses értesítés – titkos kulcsok](./media/notification-hubs-baidu-get-started/BaiduGetSecrets.png)
 
 8. A bal oldali ablaktábla 创建通知 (**Értesítés létrehozása**) elemére kattintva konfigurálhatja a projektet a leküldéses értesítésekhez.
-   
+
     ![](./media/notification-hubs-baidu-get-started/BaiduCreateNotification.png)
 
-
 ## <a name="configure-a-new-notification-hub"></a>Új értesítési központ konfigurálása
-[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
+[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 &emsp;&emsp;6. Az értesítési központban válassza az **Értesítési szolgáltatások**, majd a **Baidu (Android China)** lehetőséget.
 
-&emsp;&emsp;![Azure Notification Hubs – Baidu](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
+&emsp;&emsp;&emsp;&emsp;![Azure Notification Hubs – Baidu](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
 &emsp;&emsp;7. Görgessen lefelé a Baidu-értesítések beállítási szakaszáig. Adja meg a felhőalapú Baidu-értesítési projekt Baidu-konzoljában korábban beszerzett API-kulcsot és titkos kulcsot. Ezután kattintson a Save (Mentés) gombra.
 
-&emsp;&emsp;![Azure Notification Hubs – Baidu, titkos kulcsok](./media/notification-hubs-baidu-get-started/NotificationHubBaiduConfigure.png)
+&emsp;&emsp;&emsp;&emsp;![Azure Notification Hubs – Baidu, titkos kulcsok](./media/notification-hubs-baidu-get-started/NotificationHubBaiduConfigure.png)
 
 Ezzel konfigurálta az értesítési központot a Baiduval folytatott együttműködésre, és rendelkezésére állnak a **kapcsolati sztringek** is, amelyekkel regisztrálhatja az alkalmazást a leküldéses értesítések küldéséhez és fogadásához.
 
 Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenSharedAccessSignature` és `DefaultFullSharedAccessSignature` kapcsolati karakterláncokat.
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
+
 1. Az Android Studióban hozzon létre egy új Android-projektet (File (Fájl) > New (Új) > New Project (Új projekt)).
 
     ![Azure Notification Hubs – Baidu, új projekt](./media/notification-hubs-baidu-get-started/AndroidNewProject.png)
 
-2.  Adjon meg egy alkalmazásnevet, és győződjön meg arról, hogy a Minimum Required SDK (minimális SDK-követelmény) verziószáma API 16: Android 4.1. **Győződjön meg arról is, hogy a csomagnév (应用包名) megegyezik a felhőalapú Baidu-értesítési portálon szereplővel**
+2. Adjon meg egy alkalmazásnevet, és győződjön meg arról, hogy a minimálisan szükséges SDK-verziójának értéke API 16: Android 4.1. **Győződjön meg arról is, hogy a csomagnév (应用包名) megegyezik a felhőalapú Baidu-értesítési portálon szereplővel**
 
-    ![Azure Notification Hubs – Baidu Min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png)
-    ![Azure Notification Hubs – Baidu Min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Az Azure Notification Hubs – Baidu Min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs – Baidu Min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
-3.  Kattintson a Next (Tovább) gombra, majd folytassa a varázsló használatát, amíg a Create Activity (Tevékenység létrehozása) ablak meg nem jelenik. Győződjön meg arról, hogy az Empty Activity (Üres tevékenység) lehetőség van kiválasztva, majd válassza a Finish (Befejezés) lehetőséget egy új Android-alkalmazás létrehozásához.
+3. Kattintson a Next (Tovább) gombra, majd folytassa a varázsló használatát, amíg a Create Activity (Tevékenység létrehozása) ablak meg nem jelenik. Győződjön meg arról, hogy az Empty Activity (Üres tevékenység) lehetőség van kiválasztva, majd válassza a Finish (Befejezés) lehetőséget egy új Android-alkalmazás létrehozásához.
 
     ![Azure Notification Hubs – Baidu, tevékenység hozzáadása](./media/notification-hubs-baidu-get-started/AndroidAddActivity.png)
 
-4.  Győződjön meg arról, hogy a Project Build Target (Projekt célbuildje) beállítás értéke megfelelő.
+4. Győződjön meg arról, hogy a Project Build Target (Projekt célbuildje) beállítás értéke megfelelő.
 
-5.  Ezután vegyen fel Azure Notification Hubs-kódtárakat. Az alkalmazás `Build.Gradle` fájljában adja hozzá az alábbi sorokat a dependencies (függőségek) szakaszhoz.
+5. Ezután vegyen fel Azure Notification Hubs-kódtárakat. Az alkalmazás `Build.Gradle` fájljában adja hozzá az alábbi sorokat a dependencies (függőségek) szakaszhoz.
 
     ```javascript
     compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
@@ -145,7 +146,7 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
     }
     ```
 
-    A listák ütközésének elkerülése érdekében adja hozzá az alábbi kódot a **Manifest.xml** fájlban.
+    A lista ütközés elkerülése érdekében adja hozzá a következő kódot a projekt `Manifest.xml` fájlt:
 
     ```xml
     <manifest package="YOUR.PACKAGE.NAME"
@@ -160,15 +161,15 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
         tools:replace="android:allowBackup,icon,theme,label">
     ```
 
-6.  Töltse le és csomagolja ki a [Baidu Push Android SDK]. Másolja a `pushservice-x.y.z jar` fájlt a libs mappába. Ezután másolja a `.so` fájlokat az Android alkalmazás `src/main/jniLibs` (hozzon létre egy új mappát) mappáiba.
+6. Töltse le és csomagolja ki a [Baidu Push Android SDK-t](http://push.baidu.com/doc/android/api). Másolja a `pushservice-x.y.z jar` fájlt a libs mappába. Ezután másolja a `.so` fájlokat az Android alkalmazás `src/main/jniLibs` (hozzon létre egy új mappát) mappáiba.
 
     ![Azure Notification Hubs – Baidu SDK kódtárak](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. Kattintson a jobb gombbal a libs mappa pushervice-x.y.z.jar fájljára, kattintson az Add as Library (Hozzáadás kódtárként) lehetőségre, és vegye fel a kódtárat a projektbe.
+7. A projekt `libs` mappában kattintson a jobb gombbal a a `pushervice-x.y.z.jar` ; fájl kiválasztása **Add as Library** , többek között ebben a könyvtárban a projektben.
 
     ![Azure Notification Hubs – Baidu, hozzáadás kódtárként](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 
-8. Nyissa meg az Android-projekt **AndroidManifest.xml** fájlját, majd adja hozzá a Baidu SDK által igényelt engedélyeket. **Cserélje le a `YOURPACKAGENAME` karakterláncot saját csomagjának nevére**.
+8. Nyissa meg az Android-projekt `AndroidManifest.xml` fájlt, és adja hozzá a Baidu SDK szükséges engedélyeket. **Cserélje le a `YOURPACKAGENAME` karakterláncot saját csomagjának nevére**.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -201,7 +202,7 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
         android:configChanges="orientation|keyboardHidden"
         android:label="MediaListActivity"
         android:launchMode="singleTask" />
- 
+
     <!-- Push application definition message -->
     <receiver android:name=".MyPushMessageReceiver">
         <intent-filter>
@@ -280,9 +281,9 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
         public static String NotificationHubConnectionString = "...";
     }
     ```
-    
+
     Állítsa az `API_KEY` sztring értékét a felhőalapú Baidu-projektből lekért API_KEY értékre.
-    
+
     Állítsa a `NotificationHubName` sztring értékét az értesítési központ [Azure Portal] található nevére, majd a `NotificationHubConnectionString` sztringnek adja meg az [Azure Portal] származó `DefaultListenSharedAccessSignature` értéket.
 
 11. Nyissa meg a MainActivity.java fájlt, majd adja hozzá a következőket az onCreate metódushoz:
@@ -475,35 +476,39 @@ A leküldéses értesítések küldése általában olyan háttérszolgáltatás
 Az egyszerűség kedvéért ez az oktatóanyag konzolalkalmazással mutatja be, hogyan küldhet értesítéseket a .NET SDK-val. Az értesítéseknek ASP.NET-háttérrendszerből történő küldéséhez azonban következő lépésként [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) oktatóanyagot ajánljuk. 
 
 Íme néhány megközelítés az értesítések küldéséhez:
-* **REST-felület**: A [REST-felület](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx) használatával bármilyen háttérplatformon támogathatja az értesítéseket.
-* **Microsoft Azure Notification Hubs .NET SDK**: A Visual Studio NuGet-csomagkezelőjében futtassa a következő parancsot: [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
-* **Node.js**: [A Notification Hubs használata a Node.js-ből](notification-hubs-nodejs-push-notification-tutorial.md).
-* **Mobile Apps**: A [Leküldéses értesítések hozzáadása Mobile Apps-alkalmazáshoz](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) témakörben találhat példát arra, hogy hogyan küldhetők értesítések a Notification Hubs szolgáltatással integrált Azure App Service Mobile Apps háttéralkalmazásból.
-* **Java/PHP**: „A Notification Hubs használata Javából/PHP-ből” ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) témakörben találhat példát arra, hogyan küldhetők értesítések a REST API-k használatával.
+
+* **REST-felület**:  A használatával bármilyen háttérplatformon támogathatja a értesítéseket a [REST-felület](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
+* **A Microsoft Azure Notification Hubs .NET SDK-val**: Az a Nuget Package Manager Visual Studio, futtassa [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+* **Node.js**: [Node.js-ből a Notification Hubs használatával miként](notification-hubs-nodejs-push-notification-tutorial.md).
+* **A Mobile Apps**: Egy példa bemutatja, hogyan küldhet értesítéseket a Notification Hubs szolgáltatással integrált Azure App Service Mobile Apps háttérrendszerből: [leküldéses értesítések hozzáadása a mobilalkalmazáshoz](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
+* **Java / PHP**: Példa bemutatja, hogyan küldhetők értesítések a REST API-k használatával, tekintse meg az "a Notification Hubs használata javából/PHP-ből" ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>(Nem kötelező) Értesítések küldése .NET-konzolalkalmazásból.
+
 Ebben a szakaszban az értesítések .NET-konzolalkalmazásból történő küldését mutatjuk be.
 
 1. Hozzon létre egy új Visual C#-konzolalkalmazást:
-   
+
     ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. A Package Manager Console (Csomagkezelő konzol) ablakban az **Alapértelmezett projekt** értékeként adja meg az új konzolalkalmazás-projektet, majd a konzolablakban hajtsa végre az alábbi parancsot:
-   
-        Install-Package Microsoft.Azure.NotificationHubs
-   
-    Ez az utasítás hozzáad egy, az Azure Notification Hubs SDK-ra mutató hivatkozást a <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet-csomaggal</a>.
-   
+
+    ```shell
+    Install-Package Microsoft.Azure.NotificationHubs
+    ```
+
+    Ez az utasítás hozzáad egy, az Azure Notification Hubs SDK-ra mutató hivatkozást a [Microsoft.Azure.Notification Hubs NuGet-csomaggal](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. Nyissa meg a `Program.cs` fájlt, és adja hozzá a következő using utasítást:
-   
+
     ```csharp
     using Microsoft.Azure.NotificationHubs;
     ```
 
 4. A `Program` osztályban adja hozzá a következő metódust, és cserélje le a `DefaultFullSharedAccessSignatureSASConnectionString` és a `NotificationHubName` elemeket a saját értékeire.
-   
+
     ```csharp
     private static async void SendNotificationAsync()
     {

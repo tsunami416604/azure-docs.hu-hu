@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d7acb24a6fef0435d59e5a07f5312f1e6368fe52
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ca29526ab8abbfffcf5e58939acbd1c9b4798a51
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140183"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451723"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technikai útmutató a Cortana Intelligence Megoldássablon prediktív karbantartás a légi közlekedésben
 
@@ -143,7 +143,7 @@ Ez [folyamat](../../data-factory/concepts-pipelines-activities.md) egyetlen tev�
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 A [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) kísérletezéshez felhasznált esetében ez a megoldássablon fennmaradó hasznos élettartama (RUL) felépítette egy repülőmotor biztosít. A kísérlet az adatkészletben használt, és módosítást igényel, vagy az adatok adott helyettesítő állapotba hozni.
 
-További információ az Azure Machine Learning-kísérletek létrehozásának módja: [prediktív karbantartás: 1. lépés a 3-ból, adat-előkészítési és funkciófejlesztési feladatok](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
+További információ az Azure Machine Learning-kísérletek létrehozásának módja: [prediktív karbantartás: 1. lépés a 3, adat-előkészítési és funkciófejlesztési feladatok](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
 
 ## <a name="monitor-progress"></a>A figyelő folyamatban
 Az Adatgenerátor indul el, miután dehidratált megkezdi a folyamat, és a megoldás összetevői, indítsa el a data factory által kiadott parancsok művelet következő be megkezdése. Kétféleképpen figyelheti a folyamatot.
@@ -162,7 +162,7 @@ Az Adatgenerátor indul el, miután dehidratált megkezdi a folyamat, és a mego
 ### <a name="set-up-the-cold-path-dashboard"></a>A ritka elérésű útvonal irányítópult beállítása
 A ritka elérésű útvonal adatok folyamat célja (ciklus) repülőjegyet befejeződésekor egyes repülőmotor prediktív RUL (fennmaradó hasznos élettartama) beolvasásához. Az előrejelzési eredmények, amelyek az elmúlt 3 órában repülőjegyet befejezte a repülőgép-hajtóművek előrejelzésére szolgáló 3 óránként frissül.
 
-Power BI adatforrásként, az előrejelzési eredményeket tároló Azure SQL Database-adatbázishoz kapcsolódik. Megjegyzés: 1) a megoldás üzembe helyezése, az előrejelzési jelenik meg az adatbázisban 3 órát vehet.
+Power BI adatforrásként, az előrejelzési eredményeket tároló Azure SQL Database-adatbázishoz kapcsolódik. Megjegyzés: 1.) a megoldás üzembe helyezése, az előrejelzési 3 órát vehet megjelenik az adatbázisban.
 A pbix-fájl, melyet a generátor letöltési néhány kezdőérték adatokat tartalmaz, így azonnal is létrehozhat a Power BI-irányítópulton. 2.) ebben a lépésben a szükséges előfeltétel, hogy töltse le és telepítse az ingyenes szoftvereket [Power BI desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/).
 
 Az alábbi lépéseket leírja, hogyan csatlakozhat az SQL-adatbázis, amely a megoldás üzembe helyezése tartalmazó adatok (például előrejelzési eredményeket) megjelenítési időpontjában hoz létre a pbix-fájlt.
@@ -174,7 +174,7 @@ Az alábbi lépéseket leírja, hogyan csatlakozhat az SQL-adatbázis, amely a m
    * Egyszer **"Azure SQL Database"** a megoldássablon az ábra a színe zöldre vált, kattintson rá, és kattintson a **"Nyitott"**.
    * Egy új böngészőlapon vagy-ablakban, amely megjeleníti az Azure portal oldalán láthatja. Kattintson a **"Erőforráscsoportok"** bal oldali panelen.
    * Válassza ki az előfizetést, a megoldás üzembe helyezése használja, és válassza **"YourSolutionName\_ResourceGroup"**.
-   * Az új pop ki panelen, kattintson a ![SQL ikon](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonra az adatbázis eléréséhez. Ez az ikon mellett van az adatbázis nevét (például **"pmaintenancedb"**), és a **adatbázis-kiszolgáló neve** a Server name tulajdonság van felsorolva, és hasonlóan kell kinéznie  **YourSoutionName.database.windows.net**.
+   * Az új pop ki panelen, kattintson a ![SQL ikon](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonra az adatbázis eléréséhez. Ez az ikon mellett van az adatbázis nevét (például **"pmaintenancedb"**), és a **adatbázis-kiszolgáló neve** a Server name tulajdonság van felsorolva, és hasonlóan kell kinéznie  **YourSolutionName.database.windows.net**.
    * Az adatbázis **felhasználónév** és **jelszó** ugyanaz, mint a felhasználónév és jelszó korábban rögzíti a megoldás üzembe helyezése során.
 2. Frissítse az adatforrást a ritka elérésű útvonal fájlját a Power BI Desktopban.
    
@@ -182,7 +182,7 @@ Az alábbi lépéseket leírja, hogyan csatlakozhat az SQL-adatbázis, amely a m
      
      ![Lekérdezések szerkesztése](./media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
    * Látni fogja a két táblázat **RemainingUsefulLife** és **PMResult**. Válassza ki az első táblázat, és kattintson a ![lekérdezési beállítások ikon](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png) melletti **"Forrás"** alatt **alkalmazott lépések** a jobb oldali **"Lekérdezés beállításai"** panel. Hagyja figyelmen kívül a megjelenő figyelmeztető üzeneteket.
-   * Cserélje le a kiugró ablakban **"Kiszolgáló"** és **"Adatbázis"** a saját kiszolgáló és az adatbázis nevét, és kattintson a **"OK"**. A kiszolgáló nevét, győződjön meg arról, adja meg az 1433-as porton (**YourSoutionName.database.windows.net, 1433-as**). Hagyja meg az adatbázis mező **pmaintenancedb**. Figyelmen kívül hagyhatja a figyelmeztetéseket, a képernyőn megjelenő.
+   * Cserélje le a kiugró ablakban **"Kiszolgáló"** és **"Adatbázis"** a saját kiszolgáló és az adatbázis nevét, és kattintson a **"OK"**. A kiszolgáló nevét, győződjön meg arról, adja meg az 1433-as porton (**YourSolutionName.database.windows.net, 1433-as**). Hagyja meg az adatbázis mező **pmaintenancedb**. Figyelmen kívül hagyhatja a figyelmeztetéseket, a képernyőn megjelenő.
    * A következő kiugró ablakban, a két lehetőség a bal oldali panelen láthatja (**Windows** és **adatbázis**). Kattintson a **"Adatbázis"**, töltse ki a **'Felhasználónév'** és **'Password'** (azt a felhasználónevet és jelszót, amikor először üzembe helyezte a megoldást és létrehozott egy Azure SQL-adatbázis). A ***válassza ki, melyik szintre legyenek érvényesek a beállítások***, ellenőrizze az adatbázis-szintű beállítás. Kattintson a **"Csatlakozás"**.
    * Kattintson a második táblázat **PMResult** kattintson ![navigációs ikonja](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) melletti **"Forrás"** alatt **alkalmazott lépések** a jobb oldali **"Lekérdezés beállításai"** panelen, és frissítse a kiszolgáló és az adatbázis nevének, mint a fenti lépéseket, és kattintson az OK gombra.
    * Miután, interaktív van az előző oldalra, zárja be az ablakot. Egy üzenet jelenik meg – kattintson **alkalmaz**. Végül kattintson a **mentése** gombra kattintva mentse a módosításokat. A Power BI-fájl most létesített kapcsolat a kiszolgálóval. Ha a Vizualizációk üres, győződjön meg arról, törölje a jelet a választott beállításokat, a Vizualizációk adatok megjelenítése a jelmagyarázat jobb felső sarkában a radír ikonra kattintva. A frissítés gomb használatával új adatokat tükrözik a vizualizációt. Kezdetben csak látható a kezdőérték-adatok a Vizualizációk az adat-előállító 3 óránként ütemezett módon. 3 óra után látni fogja a Vizualizációk megjelennek, amikor az adatok frissítése új előrejelzéseket.
@@ -210,7 +210,7 @@ A következő lépések végigvezetik hogyan jelenítheti meg a Stream Analytics
 
 1. Adja hozzá a Power BI-kimenet az Azure Stream Analytics (ASA).
    
-   * Meg kell kövesse a [Azure Stream Analytics és a Power bi-ban: egy elemző irányítópultban a valós idejű streamelési adatok láthatóságának](../../stream-analytics/stream-analytics-power-bi-dashboard.md) állíthatja be a kimenet az Azure Stream Analytics-feladat, a Power BI-irányítópulton.
+   * Meg kell kövesse a [Azure Stream Analytics és a Power bi-ban: A valós idejű streamelési adatok láthatóságának egy elemző irányítópultban](../../stream-analytics/stream-analytics-power-bi-dashboard.md) állíthatja be a kimenet az Azure Stream Analytics-feladat, a Power BI-irányítópulton.
    * Az ASA-lekérdezésben található három kimenetek, amelyek **aircraftmonitor**, **aircraftalert**, és **flightsbyhour**. A lekérdezés a lekérdezés fülre kattintva tekintheti meg. Ezek a táblák mindegyike megfelelő, hozzá kell kimenet az ASA. Az első kimeneti hozzáadásakor (**aircraftmonitor**) Győződjön meg arról, a **kimeneti Alias**, **adatkészlet neve** és **táblanév** az azonos (vannak**aircraftmonitor**). Hozzáadásához ismételje meg a lépéseket a kimenetek **aircraftalert**, és **flightsbyhour**. Miután hozzáadta a három kimeneti táblák és az ASA-feladat elindult, egy megerősítő üzenetet ("Stream Analytics indítása feladat maintenancesa02asapbi sikeres") szerezheti be.
 2. Jelentkezzen be [online a Power bi-ban](http://www.powerbi.com)
    

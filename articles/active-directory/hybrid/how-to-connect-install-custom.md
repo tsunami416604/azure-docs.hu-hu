@@ -1,11 +1,11 @@
 ---
-title: 'Azure AD Connect: Testre szabott telepítés | Microsoft Docs'
+title: 'Azure AD Connect: Egyéni telepítés |} A Microsoft Docs'
 description: Ez a dokumentum az Azure AD Connect egyéni telepítési beállításait részletezi. Ezeknek az utasításoknak a használatával telepítheti az Active Directoryt az Azure AD Connecten keresztül.
 services: active-directory
 keywords: mi az Azure AD Connect, az Active Directory telepítése, az Azure AD szükséges összetevői
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
@@ -15,17 +15,17 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a1cdf332e34df5f0b3d2058ba5980b67582f14a2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 394f61f9fca06f5471edc62e99be8fa6bb415e40
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248826"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471633"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
 
-Mielőtt elkezdené telepíteni az Azure AD Connect szolgáltatást, bizonyosodjon meg róla, hogy [letöltötte az Azure AD Connectet](https://go.microsoft.com/fwlink/?LinkId=615771), és elvégezte az [Azure AD Connect: Hardware and prerequisites](how-to-connect-install-prerequisites.md) (Azure AD Connect: hardver és előfeltételek) témakörben leírt lépéseket. Emellett győződjön meg róla, hogy a rendelkezésre állnak az [Azure AD Connect-fiókok és -engedélyek](reference-connect-accounts-permissions.md) szakaszban ismertetett fiókok.
+Az Azure AD Connect telepítése előtt győződjön meg arról, hogy [töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) és befejeződött a témakörben leírt lépéseket [az Azure AD Connect: Hardverkövetelmények és előfeltételek](how-to-connect-install-prerequisites.md). Emellett győződjön meg róla, hogy a rendelkezésre állnak az [Azure AD Connect-fiókok és -engedélyek](reference-connect-accounts-permissions.md) szakaszban ismertetett fiókok.
 
 Ha az egyedi beállítások nem felelnek meg a topológiának, például a DirSync-frissítésnek, lásd az egyéb forgatókönyvek leírását a [dokumentációban](#related-documentation).
 
@@ -42,7 +42,7 @@ Amikor a szinkronizálási szolgáltatásokat telepíti, a választható konfigu
 | --- | --- |
 | Meglévő SQL Server használata |A használatával megadhatja az SQL Server nevét és a példány nevét. Válassza ezt a lehetőséget, ha már rendelkezik adatbázis-kiszolgálóval, amelyet használni kíván. Adja meg a példány nevét, majd vesszővel elválasztva egy portszámot az **Instance Name** (Példány neve) mezőben, ha az SQL Serveren nincs engedélyezve a tallózás. |
 | Meglévő szolgáltatásfiók használata |Alapértelmezés szerint az Azure AD Connect egy helyi szolgáltatásfiókot használ, amelyet a szinkronizálási szolgáltatások használhatnak. Amennyiben távoli SQL-kiszolgálót vagy egy hitelesítést igénylő proxyt használ, egy **felügyelt szolgáltatásfiókra** lesz szüksége, vagy egy, a tartományban lévő szolgáltatásfiókra, és ismernie kell a jelszót. Ezekben az esetekben adja meg a használni kívánt fiókot. Bizonyosodjon meg róla, hogy a telepítést futtató felhasználó rendszergazda az SQL Serveren, hogy létre lehessen hozni bejelentkezési adatokat a szolgáltatásfiókhoz.  További információ: [Azure AD Connect-fiókok és -engedélyek](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>A legújabb buildben az SQL-rendszergazda sávon kívül kiépítheti az adatbázist, majd az Azure AD Connect-rendszergazda adatbázis-tulajdonosi jogosultságokkal telepítheti.  További információ: [Az Azure AD Connect telepítése SQL-lel delegált rendszergazdai engedélyekkel](how-to-connect-install-sql-delegation.md).|
-| Egyéni szinkronizálási csoportok megadása |Alapértelmezés szerint az Azure AD Connect létrehoz négy helyi csoportot a kiszolgálón a szinkronizálási szolgáltatások telepítésekor. Ezek a csoportok a következők: Administrators (Rendszergazdák) csoport, Operators (Operátorok) csoport, Browse (Tallózás) csoport és Password Reset (Jelszó-visszaállítás) csoport. Itt megadhatja a saját csoportjait. A csoportoknak helyi csoportoknak kell lenniük a kiszolgálón, és nem lehetnek a tartományban. |
+| Egyéni szinkronizálási csoportok megadása |Alapértelmezés szerint az Azure AD Connect létrehoz négy helyi csoportot a kiszolgálón a szinkronizálási szolgáltatások telepítésekor. Ezek a csoportok a következők: A Rendszergazdák csoport, felelősök, tallózási csoport és a jelszó alaphelyzetbe állítása csoport. Itt megadhatja a saját csoportjait. A csoportoknak helyi csoportoknak kell lenniük a kiszolgálón, és nem lehetnek a tartományban. |
 
 ### <a name="user-sign-in"></a>Felhasználói bejelentkezés
 A szükséges összetevők telepítését követően a rendszer megkéri, hogy válassza ki a felhasználók egyszeri bejelentkezésének módját. Az alábbi táblázat tartalmazza az elérhető beállítások rövid ismertetését. A bejelentkezési módok teljes leírásáért lásd: [Felhasználói bejelentkezés](plan-connect-user-signin.md).
@@ -129,14 +129,14 @@ Az erdők közötti megfeleltetés szolgáltatás segítségével meghatározhat
 | [Mail attribútum](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |Ez a beállítás összekapcsolja a felhasználókat és a kapcsolattartókat, amennyiben a levél attribútum ugyanazzal az értékkel rendelkezik különböző felhőkben. Használja ezt a beállítást, ha a kapcsolattartók a GALSync használatával lettek létrehozva. Ha ez a beállítás ki van választva, azok a felhasználói objektumok, amelyek Mail attribútuma nincs feltöltve adatokkal, nem lesznek szinkronizálva az Azure AD-be. |
 | [ObjectSID és msExchangeMasterAccountSID/ msRTCSIP-OriginatorSid](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |Ez a beállítás összeköt egy fiókerdőben található engedélyezett felhasználót egy erőforráserdőben található letiltott felhasználóval. Az Exchange ezt a konfigurációt csatolt postaládaként ismeri. A beállítás akkor is használható, ha csak a Lync szolgáltatást használja, és az Exchange nincs jelen az erőforráserdőben. |
 | sAMAccountName and MailNickName (sAMAccountName és MailNickName) |Ez a beállítás azokat az attribútumokat csatlakoztatja, ahol a felhasználó bejelentkezési azonosítója várhatóan megtalálható. |
-| A specific attribute (Egy adott attribútum) |Ez a beállítás lehetővé teszi, hogy kiválassza a saját attribútumát. Ha ez a beállítás ki van választva, azok a felhasználói objektumok, amelyek (kiválasztott) attribútuma nincs feltöltve adatokkal, nem lesznek szinkronizálva az Azure AD-be. **Korlátozás:** Mindenképp olyan attribútumot kell választania, amely már megtalálható a metaverzumban. Amennyiben egy egyedi attribútumot választ (amely nem tartozik a metaverzumba), a varázsló nem képes befejezni a feladatot. |
+| A specific attribute (Egy adott attribútum) |Ez a beállítás lehetővé teszi, hogy kiválassza a saját attribútumát. Ha ez a beállítás ki van választva, azok a felhasználói objektumok, amelyek (kiválasztott) attribútuma nincs feltöltve adatokkal, nem lesznek szinkronizálva az Azure AD-be. **Korlátozás:** Győződjön meg arról, hogy már megtalálható a metaverzumban olyan attribútumot kell választania. Amennyiben egy egyedi attribútumot választ (amely nem tartozik a metaverzumba), a varázsló nem képes befejezni a feladatot. |
 
 #### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>Válassza ki, hogyan történjen a felhasználók azonosítása az Azure AD – Source Anchor (Forráshorgony) használatával
 A sourceAnchor egy olyan attribútum, amely a felhasználói objektum élettartama alatt megváltoztathatatlan. Ez a helyszíni felhasználót az Azure AD-felhasználóval összekötő elsődleges kulcs.
 
 | Beállítás | Leírás |
 | --- | --- |
-| Let Azure manage the source anchor for me (Az Azure kezelje a forráshorgonyt) | Válassza ezt a lehetőséget, ha azt szeretné, hogy az Azure AD válassza ki az attribútumot. Ha ezt a lehetőséget választja, az Azure AD Connect varázsló a sourceAnchor attribútumválasztási logikát alkalmazza, amelyről a cikk [Az Azure AD Connect tervezési alapelvei – Az ms-DS-ConsistencyGuid használata sourceAnchorként](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) szakaszában található leírás. A varázsló értesíti arról, hogy melyik attribútum lett kiválasztva a forráshorgony-attribútumként az egyéni telepítés befejezése után. |
+| Let Azure manage the source anchor for me (Az Azure kezelje a forráshorgonyt) | Válassza ezt a lehetőséget, ha azt szeretné, hogy az Azure AD válassza ki az attribútumot. Ha ezt a lehetőséget választja, az Azure AD Connect varázsló a sourceAnchor Attribútumválasztási logikát a cikk a szakaszban vonatkozik-e [az Azure AD Connect: Tervezési alapelvei – az ms-DS-ConsistencyGuid használata sourceanchorként](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). A varázsló értesíti arról, hogy melyik attribútum lett kiválasztva a forráshorgony-attribútumként az egyéni telepítés befejezése után. |
 | A specific attribute (Egy adott attribútum) | Válassza ezt a lehetőséget, ha meglévő AD-attribútumot szeretne megadni forráshorgony-attribútumként. |
 
 Mivel az attribútum nem módosítható, megfelelő attribútumot kell választania a tervezés során. Egy jó jelölt az objectGUID. Ez az attribútum nem változik, hacsak a felhasználói fiókot nem helyezi át az erdők/tartományok között. Ne használjon olyan attribútumokat, amelyek változhatnak, ha a felhasználó megházasodik vagy más pozícióba kerül. Nem használhat olyan attribútumokat, amelyek tartalmazzák a @-sign jelet, így az e-mail-cím vagy a userPrincipalName nem használható. Az attribútum továbbá különbséget tesz a kis- és a nagybetűk között, ezért amikor az objektumokat az erdők között mozgatja, ügyeljen a kis-/nagybetűk megőrzésére. A bináris attribútumok base64-kódolásúak, az egyéb típusú attribútumok azonban megmaradnak kódolatlan állapotban. Összevonási forgatókönyvekben és néhány Azure AD felületen ez az attribútum immutableID néven ismert. A forráshorgonnyal kapcsolatban további információt a [tervezési alapelvek](plan-connect-design-concepts.md#sourceanchor) leírásában talál.
@@ -159,7 +159,7 @@ A képernyő segítségével beállíthatja a választható szolgáltatásokat a
 >[!WARNING]
 >Az Azure AD Connect az **1.0.8641.0-s** verzióig bezárólag az Azure Access Control szolgáltatást használta a jelszavak visszaírására.  Ezt a szolgáltatást **2018. november 7-vel** megszüntetjük.  Amennyiben az Azure AD Connect valamely érintett verzióját használja, és a jelszóvisszaírás engedélyezve van, a szolgáltatás megszüntetését követően a felhasználók esetleg nem lesznek többé képesek módosítani vagy visszaállítani a jelszavukat. Az Azure AD Connect érintett verzióiban a jelszóvisszaírás nem lesz támogatva.
 >
->Az Access Control Service szolgáltatással kapcsolatos további információért lásd a [Migrálás az Azure Access Control Service-ből](../develop/active-directory-acs-migration.md) című cikket.
+>További információ az Azure Access Control service lásd [hogyan: A hozzáférés-vezérlés az Azure-szolgáltatás áttelepítése](../develop/active-directory-acs-migration.md)
 >
 >Az Azure AD Connect legújabb verziójának letöltéséhez kattintson [ide](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
 
@@ -371,12 +371,12 @@ Amikor a Verify (Ellenőrzés) gombra kattint, az Azure AD Connect ellenőrzi a 
 
 **Intranetkapcsolat ellenőrzése**
 
-* Összevonási FQDN feloldása: Az Azure AD Connect ellenőrzi, hogy az összevonási FQDN feloldható-e DNS-sel a kapcsolat létrehozásához. Ha az Azure AD Connect nem tudja feloldani az FQDN-t, az ellenőrzés sikertelen lesz. Az ellenőrzés sikeres befejezéséhez biztosítsa egy DNS-rekord meglétét az FQDN összevonási szolgáltatás számára.
-* DNS A-rekord: Az Azure AD Connect ellenőrzi, hogy az összevonási szolgáltatáshoz létezik-e egy A-rekord. Az A-rekord hiányában az ellenőrzés sikertelen lesz. Az ellenőrzés sikeres befejezéséhez hozzon létre az összevonási FQDN számára egy A-rekordot (és ne egy CNAME-rekordot).
+* Összevonási FQDN feloldása: Az Azure AD Connect ellenőrzi, hogy ha az összevonási FQDN feloldható-e DNS-kapcsolat biztosításához. Ha az Azure AD Connect nem tudja feloldani az FQDN-t, az ellenőrzés sikertelen lesz. Az ellenőrzés sikeres befejezéséhez biztosítsa egy DNS-rekord meglétét az FQDN összevonási szolgáltatás számára.
+* DNS A record: Az Azure AD Connect ellenőrzi, hogy az összevonási szolgáltatás egy A rekordot. Az A-rekord hiányában az ellenőrzés sikertelen lesz. Az ellenőrzés sikeres befejezéséhez hozzon létre az összevonási FQDN számára egy A-rekordot (és ne egy CNAME-rekordot).
 
 **Extranet kapcsolat ellenőrzése**
 
-* Összevonási FQDN feloldása: Az Azure AD Connect ellenőrzi, hogy az összevonási FQDN feloldható-e DNS-sel a kapcsolat létrehozásához.
+* Összevonási FQDN feloldása: Az Azure AD Connect ellenőrzi, hogy ha az összevonási FQDN feloldható-e DNS-kapcsolat biztosításához.
 
 ![Befejezve](./media/how-to-connect-install-custom/completed.png)
 
@@ -385,7 +385,7 @@ Amikor a Verify (Ellenőrzés) gombra kattint, az Azure AD Connect ellenőrzi a 
 A teljes körű hitelesítés sikerességének ellenőrzéséhez manuálisan kell végrehajtania egyet vagy többet a következő tesztek közül:
 
 * Miután a szinkronizálás véget ért, az Azure AD Connect Összevont bejelentkezés ellenőrzése további feladatának használatával ellenőrizze egy választott helyszíni felhasználói fiók hitelesítését.
-* Ellenőrizze, hogy be tud-e jelentkezni böngészőből egy, a tartományhoz csatlakozó gépről az intraneten: csatlakozzon a https://myapps.microsoft.com helyhez, és ellenőrizze a bejelentkezést a fiókkal, amelybe be van jelentkezve. A beépített AD DS rendszergazdai fiók nincs szinkronizálva, és nem használható az ellenőrzéshez.
+* Ellenőrizze, hogy egy tartományhoz csatlakozó gépről az intraneten böngészőből bejelentkezhet: Csatlakozás https://myapps.microsoft.com , és ellenőrizze a bejelentkezést a fiókjával. A beépített AD DS rendszergazdai fiók nincs szinkronizálva, és nem használható az ellenőrzéshez.
 * Ellenőrizze, hogy be tud jelentkezni egy, az extraneten lévő eszközről. Egy otthoni gépről vagy mobileszközről csatlakozzon a https://myapps.microsoft.com helyre, és adja meg hitelesítő adatait.
 * Ellenőrizze a gazdag ügyféllel való bejelentkezést. Csatlakozzon a https://testconnectivity.microsoft.com helyhez, lépjen az **Office 365** lapra, és válassza az **Office 365 Single Sign-On Test** (Office 365 egyszeri bejelentkezés tesztelése) lehetőséget.
 
@@ -416,7 +416,7 @@ Miután a telepítés befejeződött, jelentkezzen ki, majd ismét jelentkezzen 
 
 Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](how-to-connect-post-installation.md).
 
-Ismerkedjen meg a következő, a telepítéssel engedélyezett szolgáltatásokkal: a [Véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md) és az [Azure AD Connect Health](how-to-connect-health-sync.md).
+További információkért ezekről a szolgáltatásokról, amelyek a telepítéssel engedélyezett szolgáltatásokkal: [Véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md) és [az Azure AD Connect Health](how-to-connect-health-sync.md).
 
 Ismerje meg részletesebben a következő általános témaköröket: [az ütemező és a szinkronizálási események indítása](how-to-connect-sync-feature-scheduler.md).
 

@@ -4,7 +4,7 @@ description: Ismerteti az árnyékmásolat-attribútumok működéséről az Azu
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 62278fa031c28fb32f882e438df0194c4db04efd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 12067b4413924717228547fccdc3ef07d07beaf8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315223"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470375"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Az Azure AD Connect szinkronizálási szolgáltatás árnyékmásolat attribútumok
 A legtöbb attribútumok ugyanúgy szerepelnek az Azure ad-ben az, ha azok a helyszíni Active Directoryban. De néhány attribútumokhoz néhány speciális kezelést, és lehet, hogy az Azure ad-attribútum értéke eltér az Azure AD Connect szinkronizálja.
@@ -55,7 +55,7 @@ Postaláda-felhasználónak, a helyszínen vagy az Exchange online-ban csak elle
 | Attribútum | Érték |
 | --- | --- |
 | a helyszíni proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
-| Exchange online-hoz proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
+| Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
 Ebben az esetben **smtp:abbie.spencer@fabrikam.com** el lett távolítva, mivel az adott tartomány nem ellenőriztük. Azonban az Exchange is hozzá **SIP:abbie.spencer@fabrikamonline.com**. Fabrikam nem használt helyszíni Lync vagy a Skype, de az Azure ad-ben, és hozzá tartozó Exchange online-hoz készítse elő.
 

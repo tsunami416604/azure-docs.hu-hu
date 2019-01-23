@@ -4,7 +4,7 @@ description: Az informatikai szakemberek számára írt, ez a cikk útmutatást 
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: barbkess
 ms.custom: seohack1
-ms.openlocfilehash: 844f569b7c425f6a67acabe491508aa8d5fb00f5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d717b9a89b2c22712821d96014e2f60ee4c0e4d6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634133"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463643"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Az Azure Active Directory-üzleti alkalmazások fejlesztése
 Ez az útmutató áttekintést fejlesztése – üzletági (LoB) alkalmazásokat az Azure Active Directory (AD). A célközönség az Active Directory vagy Office 365 globális rendszergazdái.
@@ -41,8 +41,8 @@ Az alkalmazások regisztrálásának lehetővé teszi, hogy minden felhasználó
   * Az Azure Active Directoryhoz, oAuth-engedélyezési kiszolgáló (az alkalmazás által elérhetővé tett API-k biztonságos)
 * Deklarálja szükség az alkalmazás működéséhez szükséges engedélyekkel, megfelelően működik, beleértve:
 
-     - Alkalmazásengedélyek (csak a globális rendszergazdák). Példa: egy másik Azure AD alkalmazás vagy szerepkör a csoporttagság megváltozott azóta viszonyított egy Azure Resource, erőforráscsoport, vagy az előfizetés szerepkörtagság
-     - Delegált engedélyek (minden felhasználó). Például: Azure AD-be, és olvasási profil
+     - Alkalmazásengedélyek (csak a globális rendszergazdák). Példa: Szerepkörtagság egy másik Azure AD alkalmazás vagy szerepkör a csoporttagság megváltozott azóta viszonyított egy Azure Resource, erőforráscsoport, vagy előfizetésbe
+     - Delegált engedélyek (minden felhasználó). Példa: Az Azure AD-be, és olvasási profil
 
 > [!NOTE]
 > Alapértelmezés szerint minden tag regisztrálhat egy alkalmazást. Meghatározott tagok alkalmazások regisztrálása engedélyeinek korlátozása kapcsolatban lásd: [hogyan alkalmazások felvétele az Azure ad-ben](../develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).

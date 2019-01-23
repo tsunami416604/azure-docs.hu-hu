@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: 2376ade49b990ff22683a14ecd4ae6b4dda356c3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.component: disks
+ms.openlocfilehash: 3627891df429745c66bb85aed5182ff934268027
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434543"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475424"
 ---
 # <a name="configure-software-raid-on-linux"></a>Szoftveres RAID konfigurálása Linuxban
 Egy általános forgatókönyv szoftveres RAID Linux rendszerű virtuális gépeken használhatja az Azure több csatlakoztatott adatlemezt nyújtjuk egyetlen RAID eszközként. Általában ez segítségével javíthatja a teljesítményt, és csak egyetlen lemez használatához képest nagyobb átviteli sebességet teszi lehetővé.
@@ -121,7 +122,7 @@ Ebben a példában a /dev/sdc hozunk létre egy egyetlen lemezpartíció. Az új
 
 1. A fájlrendszer létrehozása az új RAID-eszközön
    
-    a. **CentOS, Oracle Linux, SLES 12, openSUSE és Ubuntu**
+    a. **CentOS, Oracle Linux, SLES 12, openSUSE, and Ubuntu**
 
     ```bash   
     sudo mkfs -t ext4 /dev/md127

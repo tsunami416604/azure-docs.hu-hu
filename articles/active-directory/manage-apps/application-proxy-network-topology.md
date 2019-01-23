@@ -4,7 +4,7 @@ description: Hálózati topológia szempontjai foglalkozik, amikor az Azure AD-a
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 976118514dbcb4cee9675ae357d857e7b90e8c0c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e7cfb9dffdebfc5abaaf5840a6c81af6a7e9d556
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140479"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474667"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Hálózati topológia szempontjai Azure Active Directory Application Proxy használatával
 
@@ -79,17 +79,17 @@ Ha rendelkezik egy dedikált VPN vagy ExpressRoute hivatkozást az Azure és a v
 
 Nincs kicsit vezérelheti a felhasználók és az alkalmazásproxy szolgáltatás közötti kapcsolat is van. Felhasználók férhetnek hozzá az alkalmazások egy otthoni hálózatot, egy kávézóban vagy más országban. Ehelyett optimalizálhatja az alkalmazásproxy-szolgáltatás kapcsolatot az alkalmazásproxy-összekötők az alkalmazásokra. Vegye fontolóra a következő minták a környezetben.
 
-### <a name="pattern-1-put-the-connector-close-to-the-application"></a>1. minta: Az közel az alkalmazás-összekötő elhelyezése
+### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Pattern 1: A közel az alkalmazás-összekötő elhelyezése
 
 Az összekötő a célalkalmazás közelében helyezze az ügyfél hálózatán. Ez a konfiguráció minimálisra csökkenti a topográfia ábrán 3. lépés, mivel az összekötő és az alkalmazás bezárása. 
 
 Ha az összekötő kell a tartományvezérlőre egy üzemel, ez a minta azért előnyösebb. Legtöbb ügyfelünk akkor használja ezt a mintát, mivel a legtöbb forgatókönyvhöz jól működik. Ez a minta mintával 2 a szolgáltatás és az összekötő közötti forgalom optimalizálása érdekében is kombinálhatók.
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>2. minta: Kihasználhatja az ExpressRoute a Microsoft társviszony-létesítés
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>2. minta: A Microsoft társviszony-létesítési ExpressRoute előnyeit
 
 Ha az ExpressRoute állítsa be a Microsoft társviszony-létesítés, használhatja a gyorsabb ExpressRoute-kapcsolat Application Proxy és az összekötő közötti forgalom. Az összekötő továbbra is a hálózat, az alkalmazás közelében van.
 
-### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>3. minta: Kihasználhatja az ExpressRoute privát társviszony-létesítést az
+### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>Pattern 3: A privát társviszony-létesítés ExpressRoute előnyeit
 
 Ha rendelkezik egy dedikált VPN vagy az ExpressRoute állítsa be a magánhálózati társviszony-létesítés Azure és a vállalati hálózat között, hogy egy másik lehetőséget. Ebben a konfigurációban a virtuális hálózat az Azure-ban általában a vállalati hálózat kiterjesztése minősül. Így az összekötő telepítése az Azure-adatközpontban, és továbbra is megfelelnek a kis késés az összekötő-alkalmazás kapcsolat.
 
@@ -111,15 +111,15 @@ Ez a szakasz ismerteti azokat a lépéseket néhány olyan gyakori helyzetet ker
 
 Ebben az esetben azt hívása minden kapcsolat egy "ugrást", és number azokat könnyebb leírásáért lásd:
 
-- **1 Ugrás**: az alkalmazásproxy-szolgáltatás felhasználó
-- **Ugrás a 2**: alkalmazásproxy-szolgáltatás és az alkalmazásproxy-összekötő
-- **Ugrás a 3**: az alkalmazásproxy-összekötő a célalkalmazás 
+- **1 Ugrás**: Felhasználó számára az alkalmazásproxy-szolgáltatás
+- **Ugrás a 2**: Application Proxy szolgáltatás és az alkalmazásproxy-összekötő
+- **Ugrás a 3**: A célalkalmazásnak alkalmazásproxy-összekötő 
 
 ### <a name="use-case-1"></a>Használja az 1. eset
 
-**Forgatókönyv:** az alkalmazás nem rendelkező felhasználók ugyanabban a régióban az Egyesült Államokban, a szervezet hálózatban található. Nem az ExpressRoute VPN létezik vagy az Azure-adatközpontban és a vállalati hálózat között.
+**Forgatókönyv:** Az alkalmazás a szervezeti hálózatához az Egyesült Államokban, a felhasználók ugyanabban a régióban van. Nem az ExpressRoute VPN létezik vagy az Azure-adatközpontban és a vállalati hálózat között.
 
-**Javaslat:** kövesse minta 1, az előző szakaszban ismertetett. Nagyobb késésű fontolja meg ExpressRoute segítségével, ha szükséges.
+**Javaslat:** Hajtsa végre az 1., a minta az előző szakaszban ismertetett. Nagyobb késésű fontolja meg ExpressRoute segítségével, ha szükséges.
 
 Ez az egy egyszerű minta. Ugrás 3 optimalizálása úgy, hogy az összekötő közel az alkalmazást. Ez azért is kézenfekvő lehet, mert az összekötő általában telepítve van a üzemel az alkalmazás és az Adatközpont KCD műveletek végrehajtásához.
 
@@ -127,9 +127,9 @@ Ez az egy egyszerű minta. Ugrás 3 optimalizálása úgy, hogy az összekötő 
 
 ### <a name="use-case-2"></a>Használja a 2. eset
 
-**Forgatókönyv:** az alkalmazás nem az Egyesült Államokban, egy vállalati hálózaton lévő felhasználókkal globálisan terjednek. Nem az ExpressRoute VPN létezik vagy az Azure-adatközpontban és a vállalati hálózat között.
+**Forgatókönyv:** Az alkalmazás globálisan terjednek felhasználókkal az Egyesült Államokban, egy vállalati hálózaton van. Nem az ExpressRoute VPN létezik vagy az Azure-adatközpontban és a vállalati hálózat között.
 
-**Javaslat:** kövesse minta 1, az előző szakaszban ismertetett. 
+**Javaslat:** Hajtsa végre az 1., a minta az előző szakaszban ismertetett. 
 
 Újra az egyik optimalizálása Ugrás 3, ahol elhelyezi az összekötő közel az alkalmazást. Ugrás 3 nem általában költséges, ha az összes ugyanazon a régión belül. Azonban 1 Ugrás lehet drágább, attól függően, ahol a felhasználó tagja, mivel a világ különböző kell férnie az alkalmazásproxy-példány az Egyesült Államokban. Fontos megjegyezni, hogy a proxy megoldással kapcsolatos folyamatban terjednek globálisan felhasználók hasonló jellemzőkkel rendelkezik.
 
@@ -137,9 +137,9 @@ Ez az egy egyszerű minta. Ugrás 3 optimalizálása úgy, hogy az összekötő 
 
 ### <a name="use-case-3"></a>Használja a 3. eset
 
-**Forgatókönyv:** az alkalmazás szerepel a szervezeti hálózatához az adatközpontjába. A Microsoft társviszony-létesítési ExpressRoute létezik az Azure és a vállalati hálózat között.
+**Forgatókönyv:** Az alkalmazás szerepel a szervezeti hálózatához az adatközpontjába. A Microsoft társviszony-létesítési ExpressRoute létezik az Azure és a vállalati hálózat között.
 
-**Javaslat:** hajtsa végre az 1. és 2, az előző szakaszban ismertetett mintákat.
+**Javaslat:** Hajtsa végre az 1. és 2, az előző szakaszban ismertetett mintákat.
 
 Először helyezze el az alkalmazást a lehető legközelebb az összekötőt. Ezt követően a rendszer automatikusan használja az ExpressRoute az ugrások 2. 
 
@@ -149,9 +149,9 @@ Ha az ExpressRoute-kapcsolat a Microsoft társviszony-létesítés használ, a p
 
 ### <a name="use-case-4"></a>Használati eset 4
 
-**Forgatókönyv:** az alkalmazás szerepel a szervezeti hálózatához az adatközpontjába. ExpressRoute privát társviszony-létesítést az Azure és a vállalati hálózat között van.
+**Forgatókönyv:** Az alkalmazás szerepel a szervezeti hálózatához az adatközpontjába. ExpressRoute privát társviszony-létesítést az Azure és a vállalati hálózat között van.
 
-**Javaslat:** kövesse minta 3, az előző szakaszban ismertetett.
+**Javaslat:** Hajtsa végre a 3, a minta az előző szakaszban ismertetett.
 
 Az összekötő jelölje be az Azure-adatközpontban, amely a vállalati hálózaton, ExpressRoute privát társviszony-létesítésen keresztül csatlakozik. 
 
@@ -161,9 +161,9 @@ Az összekötő helyezhető az Azure-adatközpontba. Mivel az összekötő tová
 
 ### <a name="use-case-5"></a>Használati eset 5
 
-**Forgatókönyv:** az alkalmazás szerepel a szervezeti hálózatához az Európai Unió, az alkalmazásproxy-példány és a legtöbb felhasználó az Egyesült Államokban.
+**Forgatókönyv:** Az alkalmazás van egy vállalati hálózaton az Európai Unió, az alkalmazásproxy-példány és a legtöbb felhasználó az Egyesült Államokban.
 
-**Javaslat:** az összekötő az alkalmazás közelében helyezze el. USA-beli felhasználók elérő történik, ugyanabban a régióban kell Application Proxy példányát, mert 1 Ugrás nem túl drága. Ugrás 3 optimalizáltuk. Fontolja meg az ExpressRoute használatát Ugrás 2 optimalizálása érdekében. 
+**Javaslat:** Az összekötő az alkalmazás közelében helyezze el. USA-beli felhasználók elérő történik, ugyanabban a régióban kell Application Proxy példányát, mert 1 Ugrás nem túl drága. Ugrás 3 optimalizáltuk. Fontolja meg az ExpressRoute használatát Ugrás 2 optimalizálása érdekében. 
 
 ![Az összekötő és alkalmazás az EU, az USA-felhasználók és a proxy bemutató ábra.](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 

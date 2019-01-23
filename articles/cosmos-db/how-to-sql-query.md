@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2a88b130c92f7b9074fd248afc97f0ea6b4c13bb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d101931fb2a4184ff9ffffc0aed4fc90fee2cbd5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042138"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452955"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>SQL query példák használatával adatokat lekérdezni az Azure Cosmos DB-ből
 
@@ -506,7 +506,7 @@ Az operátor például az alábbi lekérdezést a hívásokat is beágyazhatja.
 
 Mint más lekérdezési operátorokkal Ha bármely elem a feltételes kifejezésben hivatkozott tulajdonságai hiányoznak, vagy ha az összehasonlított típusok különböznek, majd azok az elemek nem tartoznak a lekérdezési eredményekben.
 
-A Coalesce (?) operátor segítségével hatékonyan ellenőrizze, a tulajdonság (más néven) van megadva) egy elem. Ez az operátor akkor hasznos, ha a szolgáltatásban tárolt részben strukturált lekérdezését vagy vegyes típusú adatokat. Például a lekérdezés visszaadja a "lastName" Ha jelen van, vagy a "Vezetéknév" Ha nincs jelen.
+A Coalesce (?) operátor segítségével hatékonyan egy tulajdonságot egy elem meglétének ellenőrzése. Ez az operátor akkor hasznos, ha a szolgáltatásban tárolt részben strukturált lekérdezését vagy vegyes típusú adatokat. Például a lekérdezés visszaadja a "lastName" Ha jelen van, vagy a "Vezetéknév" Ha nincs jelen.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -2263,7 +2263,7 @@ Az alábbi példa bemutatja, hogyan használható a queryDocuments az API a Java
 9. Értékelés technikák nagy méretű adatbázisok lekérdezése [https://dl.acm.org/citation.cfm?id=152611](https://dl.acm.org/citation.cfm?id=152611)
 10. Párhuzamos relációs adatbázis-rendszerek, nyomja meg a számítógép IEEE Egyesületre, 1994 fel
 11. Lu, Ooi, Tan, párhuzamos relációs adatbázis-rendszerek, nyomja meg a számítógép IEEE Egyesületre, 1994 fel.
-12. Christopher Olston, Benjamin Reed Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: A Pig Latin: Nem így idegen nyelvű adatfeldolgozási vagy SIGMOD 2008.
+12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: Nem így idegen nyelvű adatfeldolgozási vagy SIGMOD 2008.
 13. G. Graefe. A lekérdezés optimalizálásához kaszkádokban keretében. IEEE-adatok Eng. BULL., 18(3): 1995.
 
 [1]: ./media/how-to-sql-query/sql-query1.png

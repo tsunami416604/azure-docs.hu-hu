@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan automatikus felhasználói fiók kiépítése a
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: af5d7174a2726a6ff8a62477149606ec5d43e94e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: def3c6aea7b915e8665367d4da27c1314374000c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357208"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463065"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: Jelentések automatikus felhasználói fiók kiépítése
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: -Jelentések automatikus felhasználói fiók kiépítése
 
 
 Az Azure Active Directory tartalmazza egy [létesítési szolgáltatás felhasználói fiók](user-provisioning.md) , amelynek segítségével automatizálhatja a kiépítési megszüntetést felhasználói fiókok a SaaS-alkalmazások és más rendszerek, teljes körű identitás-életciklus céljából felügyeleti. Az Azure AD támogatja az összes, az alkalmazások és rendszerek "Kiemelt" szakaszában összekötők előre integrált felhasználókiépítés a [Azure AD alkalmazáskatalógusában](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
@@ -40,9 +40,9 @@ Ez a cikk bemutatja, hogyan ellenőrizheti az üzembe helyezés állapotát az f
 
 Ebben a cikkben alább meghatározott, az alábbi feltételek:
 
-* **Forrás-rendszer** -, akik az Azure AD létesítési szolgáltatás szinkronizálja a tárházban. Az Azure Active Directory a forrásrendszerben a legtöbb előre integrált összekötők kiépítése, azonban vannak kivételek (Példa: Workday bejövő szinkronizálási).
+* **Forrás-rendszer** -, akik az Azure AD létesítési szolgáltatás szinkronizálja a tárházban. Az Azure Active Directory a forrásrendszerben előre integrált üzembe helyezési összekötők a legtöbb, a azonban vannak kivételek (Példa: Munkanapi bejövő szinkronizálási).
 
-* **Cél rendszer** -, akik az Azure AD létesítési szolgáltatás szinkronizálja a tárházban. Ez általában az SaaS-alkalmazás (példák: Salesforce, ServiceNow, a Google Apps, a Dropbox Business), de néhány esetben lehet egy helyszíni rendszer, például az Active Directory (Példa: bejövő szinkronizálás Workday az Active Directory).
+* **Cél rendszer** -, akik az Azure AD létesítési szolgáltatás szinkronizálja a tárházban. Ez általában az SaaS-alkalmazás (példák: A Salesforce, ServiceNow, a Google Apps, Dropbox Business), de néhány esetben lehet egy helyszíni rendszer, például az Active Directory (Példa: Munkanapi bejövő szinkronizálási az Active Directory).
 
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Bevezetés a jelentések az Azure felügyeleti portálján a kiépítés
@@ -68,7 +68,7 @@ Az üzembe helyezési összefoglaló jelentés jelenik meg a a **kiépítési** 
 
 Az üzembe helyezési összefoglaló jelentés kell lennie a helyi rendszergazdák áttekintés a létesítési feladat működési állapotának az ellenőrzéséhez.
 
- ![Összefoglaló jelentés](./media/check-status-user-account-provisioning/summary_report.PNG)
+ ![Összefoglaló jelentés](./media/check-status-user-account-provisioning/summary_report.PNG)
 
 ## <a name="provisioning-audit-logs"></a>Üzembe helyezési naplók
 A kiépítési szolgáltatás által végzett tevékenységek tárolja, amely az Azure AD naplóit, amely lehet megtekinteni a **Auditnaplók** lapjára az **fiók üzembe helyezésének** kategória. Esemény típusú naplózott tevékenységek a következők:
@@ -83,11 +83,11 @@ A kiépítési szolgáltatás által végzett tevékenységek tárolja, amely az
 
 Ha megnézzük a kiépítés események az egyes felhasználók számára, az események általában történnek az itt látható sorrendben:
 
-1. Importálás esemény: felhasználói veszi át a forrásrendszerben.
+1. Esemény importálása: Felhasználói veszi át a forrásrendszerben.
 
-2. Importálás esemény: célrendszer lekérik a lekért felhasználói meglétének ellenőrzése.
+2. Esemény importálása: Célrendszer kérdezi le a lekért felhasználói meglétének ellenőrzése.
 
-3. Szinkronizálási szabály esemény: rendszerekből a forrás- és felhasználói adatok értékeli ki a konfigurált attribútum-leképezési szabályok és meghatározni, hogy milyen műveletet, ha vannak szabad elvégezni Hatókörszűrő szemben.
+3. Szinkronizálási szabály esemény: Felhasználói adatokat a forrás- és rendszerek értékeli ki a konfigurált attribútum-leképezési szabályok és meghatározni, hogy milyen műveletet, ha vannak szabad elvégezni Hatókörszűrő szemben.
 
 4. Esemény exportálása: Ha a szinkronizálási szabály esemény során, hogy a művelet legyen-e végre (Hozzáadás, Update, Delete), majd a művelet eredményeit rögzíti az exportálási esemény.
 

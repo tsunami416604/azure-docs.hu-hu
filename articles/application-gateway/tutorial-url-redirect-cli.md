@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3a3862cf1f2367b5aa031bfdbef9e8ed6ad1b171
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: eae26868e2684f6c95fb2860506c18d17096f98c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412488"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465751"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Oktatóanyag: Hozzon létre egy application gateway URL-cím-alapú átirányítása az Azure CLI használatával
 
@@ -182,7 +182,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-redirection-configuration"></a>Átirányítási konfiguráció hozzáadása
 
-A figyelő átirányítását az [az network application-gateway redirect-config create](/cli/azure/network/application-gateway#az-network_application_gateway_redirect_config_create) paranccsal konfigurálhatja.
+A figyelő átirányítását az [az network application-gateway redirect-config create](/cli/azure/network/application-gateway) paranccsal konfigurálhatja.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \

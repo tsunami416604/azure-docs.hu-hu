@@ -3,7 +3,7 @@ title: Rövid útmutató eléréséhez, és hozzon létre egy új bérlőt – A
 description: Azure Active Directoryban található, illetve hogyan hozhat létre egy új bérlőt a szervezetén belül kapcsolatos utasításokat.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: cd179d371ec75a2e6ca258a1efbc2361e50a5438
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5c5116062e4a20168516c8a57c40c5fce6cd9689
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083271"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452360"
 ---
-# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: Az Azure Active Directoryban hozzon létre egy új bérlőt
+# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: Hozzon létre egy új bérlőt az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) portált használva elvégezheti valamennyi felügyeleti feladatát, a szervezet számára új bérlő létrehozását is beleértve. 
 
 Ebből a rövid útmutatóból megtudhatja, hogyan érheti el az Azure portált és az Azure Active Directory-t, és megtudhatja, hogyan hozhat létre alapszintű bérlőt a szervezete számára.

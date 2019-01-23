@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 6b3f862acd5aba39a7ad6eb0ce2f0a9b4a9e5307
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 27cef0287156d4cf76914704b849cb646c21dd7d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973657"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467485"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes Linux rendszerű virtuális gép létrehozása az Azure CLI-vel
 Gyorsan létrehozhat egy virtuális gépet (VM) az Azure-ban, használhatja egy egyetlen Azure CLI-paranccsal, amely minden szükséges támogató erőforrások létrehozása az alapértelmezett értékeket használja. Erőforrások, például egy virtuális hálózat, nyilvános IP-cím és hálózati biztonsági csoport szabályait a rendszer automatikusan létrehozza. Az éles környezet még nagyobb mértékben használja, előfordulhat, hogy a kívánt időben az erőforrások létrehozásához, és hozzáadhatja őket a virtuális gépek. Ez a cikk végigvezeti egy virtuális Gépet, és a támogató erőforrások egyenként mindegyike létrehozása.
@@ -333,7 +333,7 @@ Kimenet:
 ```
 
 ## <a name="create-a-virtual-nic"></a>Hozzon létre egy virtuális hálózati Adaptert
-Virtuális hálózati adapterek (NIC) programozott módon érhető el, mert használati szabályokat alkalmazhat. Attól függően, a [Virtuálisgép-méret](sizes.md), több virtuális hálózati adapter csatlakoztatása egy virtuális Gépet. A következő [az network nic létrehozása](/cli/azure/network/nic#az_network_nic_create) parancs létrehoz egy hálózati Adaptert *myNic* , és társíthatja azt a hálózati biztonsági csoport. A nyilvános IP-cím *myPublicIP* is kapcsolódik a virtuális hálózati adaptert.
+Virtuális hálózati adapterek (NIC) programozott módon érhető el, mert használati szabályokat alkalmazhat. Attól függően, a [Virtuálisgép-méret](sizes.md), több virtuális hálózati adapter csatlakoztatása egy virtuális Gépet. A következő [az network nic létrehozása](/cli/azure/network/nic) parancs létrehoz egy hálózati Adaptert *myNic* , és társíthatja azt a hálózati biztonsági csoport. A nyilvános IP-cím *myPublicIP* is kapcsolódik a virtuális hálózati adaptert.
 
 ```azurecli
 az network nic create \

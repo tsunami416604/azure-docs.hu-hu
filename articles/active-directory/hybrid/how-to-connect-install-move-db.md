@@ -3,19 +3,19 @@ title: Azure AD Connect-adatbázis áthelyezése SQL Server Expressről SQL Serv
 description: Ez a dokumentum azt mutatja be, hogyan helyezhető át az Azure AD Connect-adatbázis a helyi SQL Server Expressről egy távoli SQL Serverre.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cbc86405225cca0d5144b48b113cf41607ce16f4
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 8f9d530531d5f72e92bdb7362879199ce6a4853c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434120"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474846"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect-adatbázis áthelyezése SQL Server Expressről SQL Serverre 
 
@@ -59,7 +59,7 @@ Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távol
 ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db7.png)
  
  
-16. A hitelesítő adatok megadása után a piros kereszt ikon egy zöld pipa ikonra változik. Kattintson a **Tovább**gombra.
+16. A hitelesítő adatok megadása után a piros kereszt ikon egy zöld pipa ikonra változik. Kattintson a **tovább**.
 ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db8.png)
  
  

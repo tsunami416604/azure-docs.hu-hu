@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4aa7e8b45f3791212280226b396ed9eb0f86538c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 422c0477accab65b53071d22d067d96547bfeb8a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135474"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450562"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Speciális adatáttekintés és modellezés a Spark segítségével
 
@@ -47,16 +47,16 @@ Példák CV és a Hiperparaméter modellezési ismétlés jelennek meg a binári
 > 
 > 
 
-## <a name="setup-spark-clusters-and-notebooks"></a>A telepítő: Spark-fürtök és jegyzetfüzetek
+## <a name="setup-spark-clusters-and-notebooks"></a>A telepítő: A Spark-fürtök és jegyzetfüzetek
 Beállítási lépéseket és a kód-okat Ez az útmutató egy HDInsight Spark 1.6-os használatával. De Jupyter notebookok a HDInsight Spark 1.6-os és a Spark 2.0 fürtök biztosított. A jegyzetfüzetek és a rájuk mutató hivatkozást leírása tartalmazza a [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) az azokat tartalmazó GitHub-adattárban. Továbbá, a kód itt és a társított notebookok az általános és működnie kell bármelyik Spark-fürtön. Ha nem használja a HDInsight Spark, a fürt beállítása és lehet, hogy a felügyeleti lépések kissé eltérhetnek az itt látható. Az egyszerűség kedvéért az alábbiakban a, a Jupyter notebookok a Spark 1.6-os és a 2.0-s verzióját kell futtatni a pyspark kernel a Jupyter Notebook Server mutató hivatkozásokat:
 
 ### <a name="spark-16-notebooks"></a>A Spark 1.6-os notebookok
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): a notebook #1 és a hiperparaméter finomhangolása és kereszt-ellenőrzés, modell fejlesztési témaköröket tartalmazza.
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): A notebook #1 és a hiperparaméter finomhangolása és kereszt-ellenőrzés, modell fejlesztési témaköröket tartalmazza.
 
 ### <a name="spark-20-notebooks"></a>A Spark 2.0 notebookok
 
-[Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl információt nyújt az adatfeltárás, modellezés és a Spark 2.0 fürtök pontozási végrehajtásához.
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl információt nyújt az adatfeltárás, modellezés és a Spark 2.0 fürtök pontozási végrehajtásához.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -187,7 +187,7 @@ A kód Adatbetöltési itt látható.
 
 **OUTPUT**
 
-Cella fent ideje: 276.62 másodperc
+Cella fent végrehajtásához felhasznált idő: 276.62 másodperc
 
 ## <a name="data-exploration--visualization"></a>Az adatok feltárása és képi megjelenítés
 Miután az adatok Spark üzembe, az adatelemzési folyamat következő lépése az az adatokat adatáttekintési és vizualizációs mélyrehatóbb ismereteket szerezhet. Ebben a szakaszban azt az SQL-lekérdezések használatával taxi adatok vizsgálatát és jeleníti meg a cél változók és vizuális ellenőrzése az leendő szolgáltatásai. Pontosabban azt jeleníti meg az utasok számát taxi lelassítja tipp összegeket a gyakoriság és hogyan tippek régiónként eltérő fizetési összeg, és írja be a gyakorisága.
@@ -383,7 +383,7 @@ A következő index és a kategorikus funkciók kódolása a kódot:
 
 **OUTPUT**
 
-Cella fent ideje: 3.14 másodperc
+Cella fent végrehajtásához felhasznált idő: 3.14 másodperc
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>A gépi Tanulási funkciók be címkézett pont objektumok létrehozása
 Ez a szakasz tartalmazza a kódot, címkézett pont adattípusú értékként kategorikus szöveges adatok indexelése és kódolása azt jeleníti meg. Ez előkészíti taníthat vagy tesztelhet MLlib logisztikai regressziós és más képbesorolási modellek használható. Címkézett pont objektumok olyan rugalmas elosztott adatkészleteket (RDD) formátumú úgy, hogy a gépi Tanulási algoritmusokat a MLlib többsége által bemeneti adatként van szükség. A [pont feliratú](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) sűrű vagy ritka, a helyi vektor társítva van egy címke/válasz.
@@ -403,7 +403,7 @@ Az index és a bináris osztályozási funkciói szöveg kódolása a kód itt l
         labPt = LabeledPoint(line.tipped, features)
         return  labPt
 
-    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC RERESSION MODELS
+    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC REGRESSION MODELS
     def parseRowOneHotBinary(line):
         features = np.concatenate((np.array([line.pickup_hour, line.weekday, line.passenger_count,
                                             line.trip_time_in_secs, line.trip_distance, line.fare_amount]), 
@@ -476,7 +476,7 @@ Ez a kód létrehoz egy véletlenszerű mintavételi (25 %-os itt használt) ada
 
 **OUTPUT**
 
-Cella fent ideje: 0.31 másodperc
+Cella fent végrehajtásához felhasznált idő: 0.31 másodperc
 
 ### <a name="feature-scaling"></a>A szolgáltatás méretezése
 A szolgáltatás méretezése adatok normalizálási, más néven adatblokkok, hogy funkciók széles körben folyósított értékekkel van nem adott túlzott mérjük a cél függvényben. Skálázás használja a funkciónak a [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) egység eltérése a szolgáltatások méretezése. Lineáris regresszió a Sztochasztikus átmenetes Grádiens (SGD) használható MLlib nyújtja. SGD számos más gépi tanulási modelleket például rendeződik regressziót vagy támogatási vektor gépek (SVM) betanításához egy népszerű algoritmus.   
@@ -517,7 +517,7 @@ A szolgáltatás méretezése adatok normalizálási, más néven adatblokkok, h
 
 **OUTPUT**
 
-Cella fent ideje: 11.67 másodperc
+Cella fent végrehajtásához felhasznált idő: 11.67 másodperc
 
 ### <a name="cache-objects-in-memory"></a>A memóriában objektumok
 A képzés és a gépi Tanulási algoritmusok tesztelési idő objektumokat az osztályozás, regressziós és szolgáltatások méretezése a bemeneti adatok keret gyorsítótárazásával csökkenthető.
@@ -548,7 +548,7 @@ A képzés és a gépi Tanulási algoritmusok tesztelési idő objektumokat az o
 
 **OUTPUT** 
 
-Cella fent ideje: 0.13 másodperc
+Cella fent végrehajtásához felhasznált idő: 0.13 másodperc
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>E tipp: a bináris osztályozási modell fizetős előrejelzése
 Ez a szakasz bemutatja, hogyan használható három-modellekhez előrejelzésére bináris osztályozási feladatának tipp fizetős taxi útnak-e. A bemutatott modellek a következők:
@@ -667,7 +667,7 @@ Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.481245780
 
 INTERCEPT:-0.0111216486893
 
-Cella fent ideje: 14.43 másodperc
+Cella fent végrehajtásához felhasznált idő: 14.43 másodperc
 
 **A standard metrikák bináris osztályozási modell értékelése**
 
@@ -728,7 +728,7 @@ Idézze = 0.984174341679
 
 F1 Pontozása = 0.984174341679
 
-Cella fent ideje: 2.67 másodperc
+Cella fent végrehajtásához felhasznált idő: 2.67 másodperc
 
 **A ROC-görbe ábrázolásához.**
 
@@ -796,7 +796,7 @@ Ebben a szakaszban a kód bemutatja, hogyan menteni a logisztikai regressziós m
 
 **OUTPUT**
 
-Cella fent ideje: 34.57 másodperc
+Cella fent végrehajtásához felhasznált idő: 34.57 másodperc
 
 ### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>(Rugalmas regressziós) logisztikai regressziós modell MLlib a CrossValidator folyamat függvény használata
 Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelése és a egy logisztikai regressziós modellt a Mentés [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , amely a fedélzeti e tipp NYC taxi utazást és diszkont adatkészlet útnak fizetnek. A modell tanítása az érvényesítési (CV) és a hiperparaméter kezdik az valósítja meg az MLlib CrossValidator folyamat funkcióval a CV paraméteres.   
@@ -852,7 +852,7 @@ Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelése é
 
 **OUTPUT**
 
-Cella fent ideje: 107.98 másodperc
+Cella fent végrehajtásához felhasznált idő: 107.98 másodperc
 
 **A ROC-görbe ábrázolásához.**
 
@@ -939,7 +939,7 @@ Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelése é
 
 Terület alatt ROC = 0.985336538462
 
-Cella fent ideje: 26.72 másodperc
+Cella fent végrehajtásához felhasznált idő: 26.72 másodperc
 
 ### <a name="gradient-boosting-trees-classification"></a>Színátmenet kiemelési fák besorolás
 Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékeléséhez, és mentse egy színátmenetes kiemelési fák modellt, az e tipp: a NYC taxi út útnak fizetős és az adatkészlet díjszabás.
@@ -983,7 +983,7 @@ Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékeléséhe
 
 Terület alatt ROC = 0.985336538462
 
-Cella fent ideje: 28.13 másodperc
+Cella fent végrehajtásához felhasznált idő: 28.13 másodperc
 
 ## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>Tipp összeg előrejelzésére regressziós modellek (nem használ CV)
 Ez a szakasz bemutatja, hogyan használható három modellekhez a regressziós feladat: a fizetős funkciókat a tip alapján taxi útnak tipp összeg előrejelzésére. A bemutatott modellek a következők:
@@ -998,9 +998,9 @@ Ezek a modellek a bevezetésben is ismerteti. Minden modell létrehozásához a 
 2. **Minta értékelés** egy tesztelési adathalmazon metrikákkal
 3. **Modell mentése** későbbi felhasználásra blobba   
 
-> AZURE Megjegyzés: Kereszt-ellenőrzés nem használható ebben a szakaszban a három regressziós modellek, mivel ez a részletek a logisztikai regressziós modellek látható volt. Egy példa a nettó rugalmas CV lineáris regresszió használata biztosítja a függelék – az ebben a témakörben.
+> AZ AZURE MEGJEGYZÉS: Kereszt-ellenőrzés nem használható ebben a szakaszban a három regressziós modellek, mivel ez a részletek a logisztikai regressziós modellek látható volt. Egy példa a nettó rugalmas CV lineáris regresszió használata biztosítja a függelék – az ebben a témakörben.
 > 
-> AZURE Megjegyzés: Tapasztalataink lehet LinearRegressionWithSGD modellek convergence problémái, és paramétereket kell lennie a módosított/optimalizált gondosan beszerzése érvényes modellt. Az átszervezés változók skálázás jelentősen nyújtanak segítséget. A függelék: az ebben a témakörben látható rugalmas nettó regressziós is használható LinearRegressionWithSGD helyett.
+> AZ AZURE MEGJEGYZÉS: Tapasztalataink LinearRegressionWithSGD modellek convergence problémái lehetnek, és paramétereket kell lennie a módosított/optimalizált gondosan beszerzése érvényes modellt. Az átszervezés változók skálázás jelentősen nyújtanak segítséget. A függelék: az ebben a témakörben látható rugalmas nettó regressziós is használható LinearRegressionWithSGD helyett.
 > 
 > 
 
@@ -1060,7 +1060,7 @@ RMSE = 1.23485131376
 
 R-sqr = 0.597963951127
 
-Cella fent ideje: 38.62 másodperc
+Cella fent végrehajtásához felhasznált idő: 38.62 másodperc
 
 ### <a name="random-forest-regression"></a>Véletlenszerű erdő regresszió
 Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelheti és mentse egy véletlenszerű erdőmodell, amely előrejelzi a NYC taxi útadatok tipp összege.   
@@ -1116,7 +1116,7 @@ GYÖKÁTLAGOS = 0.931981967875
 
 R-sqr = 0.733445485802
 
-Cella fent ideje: 25.98 másodperc
+Cella fent végrehajtásához felhasznált idő: 25.98 másodperc
 
 ### <a name="gradient-boosting-trees-regression"></a>Színátmenet kiemelési fák regresszió
 Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelése és a egy színátmenetes kiemelési fák modellt, a NYC taxi útadatok tipp összege az mentés.
@@ -1167,7 +1167,7 @@ RMSE = 0.928172197114
 
 R-sqr = 0.732680354389
 
-Cella fent ideje: 20.9 másodperc
+Cella fent végrehajtásához felhasznált idő: 20.9 másodperc
 
 **Diagram**
 
@@ -1260,7 +1260,7 @@ A kód ebben a szakaszban mutatja be, hogyan rugalmas net lineáris regresszió 
 
 **OUTPUT**
 
-Cella fent ideje: 161.21 másodperc
+Cella fent végrehajtásához felhasznált idő: 161.21 másodperc
 
 **Az R-SQR metrika kiértékelése**
 
@@ -1376,7 +1376,7 @@ GYÖKÁTLAGOS = 0.906972198262
 
 R-sqr = 0.740751197012
 
-Cella fent ideje: 69.17 másodperc
+Cella fent végrehajtásához felhasznált idő: 69.17 másodperc
 
 ### <a name="clean-up-objects-from-memory-and-print-model-locations"></a>Memória és a nyomtatási modell helyekről származó objektumok törlése
 Használat `unpersist()` törli a memóriában gyorsítótárazott objektumokat.
@@ -1438,5 +1438,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>A következő lépések
 Most, hogy a Spark MlLib a létrehozott regressziós és besorolási modellek, készen áll a pontszám, és ezek a modellek kiértékelése.
 
-**Használati modell:** pontszám és kiértékelheti a besorolási és regressziós modellek, ebben a témakörben létrehozott kapcsolatban lásd: [pontszám és kiértékelheti a Spark használatával összeállított gépi tanulási modellek](spark-model-consumption.md).
+**Modell-felhasználás:** Pontszám és kiértékelheti a besorolási és regressziós modellek, ebben a témakörben létrehozott kapcsolatban lásd: [pontszám és kiértékelheti a Spark használatával összeállított gépi tanulási modellek](spark-model-consumption.md).
 

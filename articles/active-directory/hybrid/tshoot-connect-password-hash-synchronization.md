@@ -4,7 +4,7 @@ description: Ez a cikk ismerteti a jelszó Jelszókivonat-szinkronizálási hib�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 036933c6b6e86856871c5f59f08fea20a0343ad7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 23787c777f20025d9310fac2efe0f429d66c4586
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314845"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470443"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>A Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása
 Ez a témakör a Jelszókivonat-szinkronizálás hibáinak elhárítása a lépéseit ismerteti. Ha a jelszavak nem szinkronizál a várt módon, az összes felhasználó vagy felhasználók alcsoportjaihoz lehet.
@@ -233,7 +233,7 @@ Kövesse az alábbi lépéseket meghatározni, miért jelszó szinkronizálása 
 3. Ha a funkció nincs engedélyezve az Azure ad-ben, vagy ha a szinkronizálási csatorna állapota nem érhető el, futtassa a Connect telepítővarázsló. Válassza ki **szinkronizálási beállítások testreszabása**, és törölje a jelet a jelszó-szinkronizálás. Ez a változás ideiglenesen letiltja a szolgáltatást. Ezután futtassa újra a varázslót, és újból a jelszó-szinkronizálás engedélyezése. Futtassa a szkriptet, győződjön meg arról, hogy a konfiguráció megfelelő a újra.
 
 4. Keressen hibákat az eseménynaplóban. Keresse meg a következő események, amely azt jelzi a hiba:
-    * Forrás: "A címtár-szinkronizálás" azonosító: 0, 611, 652, ha ezek az események 655 kapcsolati probléma van. Az eseménynapló-üzenet esetében probléma erdő információkat tartalmaz. További információkért lásd: [csatlakozási probléma](#connectivity problem).
+    * Forrás: "A címtár-szinkronizálás" Azonosítójú esemény: 0, 611, 652, ha ezek az események 655 kapcsolati probléma van. Az eseménynapló-üzenet esetében probléma erdő információkat tartalmaz. További információkért lásd: [csatlakozási probléma](#connectivity problem).
 
 5. Ha nem érkezett szívverés jelenik meg, vagy ha semmi más működött, futtassa [teljes az összes jelszó-szinkronizálás aktiválása](#trigger-a-full-sync-of-all-passwords). Csak egyszer futtassa a szkriptet.
 
@@ -417,5 +417,5 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 ## <a name="next-steps"></a>További lépések
 * [A Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](how-to-connect-password-hash-synchronization.md)
-* [Az Azure AD Connect-szinkronizálás: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

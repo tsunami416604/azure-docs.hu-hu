@@ -4,7 +4,7 @@ description: Ez a cikk ismerteti, amely az Azure AD Connect Health üzembe helye
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 7e0e2e19f2f21fa3199cbc4911fed3427cbc162c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 35bbc44a8a54071530806576294163cb7ba627ea
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280516"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478297"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Az Azure Active Directory Connect Health műveletei
 Ez a témakör ismerteti a különféle műveleteket hajthat végre az Azure Active Directory (Azure AD) Connect Health használatával.
@@ -64,6 +64,7 @@ Az Azure AD Connect Health for Active Directory összevonási szolgáltatások (
 
 1. Nyissa meg a **kiszolgáló** panelt a a **kiszolgálólista** panelen válassza a kiszolgáló nevét, el kell távolítani.
 2. Az a **kiszolgáló** paneljén, az műveletsávon kattintson **törlése**.
+![Képernyőkép az Azure AD Connect Health-kiszolgáló törlése](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Erősítse meg a megerősítés mezőben írja be a kiszolgáló nevét.
 4. Kattintson a **Törlés** gombra.
 
@@ -86,8 +87,9 @@ Ha törölni egy szolgáltatáspéldány, vegye figyelembe a következőket:
 * A művelet végrehajtása után ha szeretné figyelni a szolgáltatást, távolítsa el, és telepítse újra a Health-ügynököt az összes kiszolgálón. A művelet végrehajtása után ha szeretné figyelni újra ugyanazon a kiszolgálón, távolítsa el, telepítse újra a, és regisztrálja a Health Agent, az adott kiszolgálón.
 
 #### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>Szolgáltatáspéldány törlése az Azure AD Connect Health szolgáltatás
-1. Nyissa meg a **szolgáltatás** panelt a a **lista** panelen válassza a szolgáltatás azonosítója (a farm nevét), amely a el kívánja távolítani.
-2. Az a **kiszolgáló** paneljén, az műveletsávon kattintson **törlése**.
+1. Nyissa meg a **szolgáltatás** panelt a a **lista** panelen válassza a szolgáltatás azonosítója (a farm nevét), amely a el kívánja távolítani. 
+2. Az a **szolgáltatás** paneljén, az műveletsávon kattintson **törlése**. 
+![Képernyőkép az Azure AD Connect Health szolgáltatás törlése](./media/how-to-connect-health-operations/DeleteServer.png)
 3. Erősítse meg a megerősítés mezőben írja be a szolgáltatás nevét (például: sts.contoso.com).
 4. Kattintson a **Törlés** gombra.
    <br><br>
@@ -110,8 +112,8 @@ Minden más szerepkörök (például felhasználói rendszergazdák vagy a DevTe
 ### <a name="access-scope"></a>Hozzáférési hatókör
 Az Azure AD Connect Health két szinten hozzáférés kezelését támogatja:
 
-* **Minden szolgáltatáspéldány**: a legtöbb esetben ajánlott elérési útja. Azt szabályozza a hozzáférést az összes service-példány (például AD FS-farm) által az Azure AD Connect Health által figyelt összes szerepkör-típusa.
-* **Szolgáltatáspéldány**: bizonyos esetekben szükség lehet a szerepkör-típusok, vagy egy szolgáltatáspéldány-alapú hozzáférés elkülönítse. Ebben az esetben a szolgáltatás példányszintű hozzáférést is kezelheti.  
+* **Minden szolgáltatáspéldány**: Ez a legtöbb esetben ajánlott elérési. Azt szabályozza a hozzáférést az összes service-példány (például AD FS-farm) által az Azure AD Connect Health által figyelt összes szerepkör-típusa.
+* **Szolgáltatáspéldány**: Bizonyos esetekben szüksége lehet, hogy elkülönítse a szerepkör-típusok, vagy egy szolgáltatáspéldány-alapú hozzáférés. Ebben az esetben a szolgáltatás példányszintű hozzáférést is kezelheti.  
 
 Engedélyt kapnak, ha egy végfelhasználó hozzáfér a directory vagy a szolgáltatás szintű példány.
 
@@ -120,7 +122,7 @@ A következő lépések bemutatják, hogyan engedélyezi a hozzáférést.
 #### <a name="step-1-select-the-appropriate-access-scope"></a>1. lépés: Válassza ki a megfelelő hozzáférési hatókör
 A felhasználói hozzáférés engedélyezéséhez a *minden szolgáltatáspéldány* szintű Azure AD Connect Health belül, nyissa meg az Azure AD Connect Health fő panelje.<br>
 
-#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. lépés: A felhasználók és csoportok hozzáadása és a szerepkörök hozzárendelésére
+#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. lépés: Felhasználók és csoportok hozzáadása, és a szerepkörök hozzárendelésére
 1. Az a **konfigurálása** területén kattintson **felhasználók**.<br>
    ![Képernyőkép az Azure AD Connect Health erőforrás oldalsáv](./media/how-to-connect-health-operations/startRBAC.png)
 2. Válassza a **Hozzáadás** lehetőséget.
@@ -140,7 +142,7 @@ Most már a listán szereplő felhasználók és csoportok rendelkezik hozzáfé
 >
 >
 
-#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3. lépés: Felhasználók vagy csoportok megoszthatja a panel helye
+#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3. lépés: A panel helye megoszthatja a felhasználók vagy csoportok
 1. Engedélyek hozzárendelése után a felhasználó hozzáférhet-e az Azure AD Connect Health címen [Itt](https://aka.ms/aadconnecthealth).
 2. A panelen a felhasználó rögzítheti a panelt, vagy különböző részeit, az irányítópulton. Egyszerűen kattintson a **rögzítés az irányítópulton** ikonra.<br>
    ![Képernyőkép az Azure AD Connect Health RBAC PIN-kód panelen, a rögzítés ikonja kiemelve](./media/how-to-connect-health-operations/RBAC_pin_blade.png)

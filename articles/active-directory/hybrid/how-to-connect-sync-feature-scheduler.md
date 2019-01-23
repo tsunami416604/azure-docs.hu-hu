@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: ütemező |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása: A Scheduler |} A Microsoft Docs'
 description: Ez a témakör ismerteti az Azure AD Connect szinkronizálási beépített ütemezési funkció.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d8deb03d03446c1452d73a7c08df4cf14ffcd5b5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8099194feed3761e32686ab15e8738b10ffd4e8b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311023"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462317"
 ---
-# <a name="azure-ad-connect-sync-scheduler"></a>Az Azure AD Connect szinkronizálása: ütemező
+# <a name="azure-ad-connect-sync-scheduler"></a>Az Azure AD Connect szinkronizálása: Scheduler
 Ez a témakör ismerteti a beépített scheduler az Azure AD Connect-szinkronizálással (más néven) a szinkronizálási motor).
 
 Ez a funkció a build 1.1.105.0 (kiadás dátuma: 2016. február) jelent meg.
@@ -123,7 +123,7 @@ Ha az ütemező jelenleg fut egy szinkronizálási ciklust, szüksége lehet ál
 Ha egy szinkronizálási ciklus fut, nem konfigurációmódosításokat. Sikerült megvárni, amíg az ütemező a folyamat befejeződött, de is leállíthatja, így a módosítások azonnal elvégezhetők. Az aktuális ciklus leállítása nem káros, függőben lévő módosítások feldolgozása a következő futtatáskor.
 
 1. Indítsa el a Feladatütemező leállítása a PowerShell-parancsmaggal az aktuális ciklus kommunikációnkat `Stop-ADSyncSyncCycle`.
-2. Ha 1.1.281 előtt egy buildet használ, majd leállítása az ütemező nem állítja le a jelenlegi feladat az aktuális összekötő. Állítsa le az összekötő kényszerítéséhez az alábbi műveleteket: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+2. Ha 1.1.281 előtt egy buildet használ, majd leállítása az ütemező nem állítja le a jelenlegi feladat az aktuális összekötő. Az összekötő leállítani a kényszerítéséhez a következő műveleteket: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
    * Indítsa el **szinkronizálási szolgáltatás** a start menüből. Lépjen a **összekötők**, jelölje ki az összekötő állapotát az **futó**, és válassza ki **leállítása** a műveletekből.
 
 Az ütemező még mindig aktív, és ismét elindul a Tovább lehetőséget.

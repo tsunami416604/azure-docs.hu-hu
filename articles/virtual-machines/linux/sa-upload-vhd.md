@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 1ca6f2a0f8246e730206ea2a431f7968273a6e8d
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: efb8887085ad1f6f47667b1305191e514de74330
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412342"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468182"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Töltse fel, és a egy Linux virtuális gép létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -69,7 +69,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-Adja meg az URI-t a lemez (`--image`) rendelkező [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). A következő példában létrehozunk egy nevű virtuális Gépet `myVM` korábban feltöltött a virtuális lemez segítségével:
+Adja meg az URI-t a lemez (`--image`) rendelkező [az virtuális gép létrehozása](/cli/azure/vm). A következő példában létrehozunk egy nevű virtuális Gépet `myVM` korábban feltöltött a virtuális lemez segítségével:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -186,9 +186,9 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
-Nem felügyelt lemezekkel rendelkező virtuális Gépet létrehozni, adja meg az URI-t a lemez (`--image`) rendelkező [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). A következő példában létrehozunk egy nevű virtuális Gépet `myVM` korábban feltöltött a virtuális lemez segítségével:
+Nem felügyelt lemezekkel rendelkező virtuális Gépet létrehozni, adja meg az URI-t a lemez (`--image`) rendelkező [az virtuális gép létrehozása](/cli/azure/vm). A következő példában létrehozunk egy nevű virtuális Gépet `myVM` korábban feltöltött a virtuális lemez segítségével:
 
-Adja meg, hogy a `--image` paraméterrel [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) , hogy az egyéni lemez mutasson. Ügyeljen arra, hogy `--storage-account` megegyezik a tárfiókban, az egyéni lemez tárolására. Nem kell ugyanazt a tárolót használja az egyéni lemez a virtuális gépek tárolására. Ellenőrizze, hogy további tárolókat ugyanúgy, mint a korábbi lépések létrehozása az egyéni lemez feltöltése előtt.
+Adja meg, hogy a `--image` paraméterrel [az virtuális gép létrehozása](/cli/azure/vm) , hogy az egyéni lemez mutasson. Ügyeljen arra, hogy `--storage-account` megegyezik a tárfiókban, az egyéni lemez tárolására. Nem kell ugyanazt a tárolót használja az egyéni lemez a virtuális gépek tárolására. Ellenőrizze, hogy további tárolókat ugyanúgy, mint a korábbi lépések létrehozása az egyéni lemez feltöltése előtt.
 
 A következő példában létrehozunk egy nevű virtuális Gépet `myVM` a egyéni lemezről:
 

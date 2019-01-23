@@ -4,7 +4,7 @@ description: Segít a hibrid identitáskezelési feladatokat minden életciklus 
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 420b6046-bd9b-4fce-83b0-72625878ae71
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5590f1fc3716582da090b8429f8bcf4fc7911dbe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6512cb71cc8ca973a778b7e172afcd9e056421ed
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251763"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478382"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Hibrid identitás-életciklus bevezetési stratégiája határozza meg
 Ebben a feladatban meg fogja definiálni, a hibrid identitáskezelési megoldás az üzleti szükségletek kielégítése céljából, amelyet a megadott identity management stratégiája [határozza meg a hibrid identitáskezelési feladatokat](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -43,9 +43,9 @@ Kifinomult informatikai nagyvállalatok számára fiókjainak tartalmazza a hite
 Szerepköralapú hozzáférés-vezérlőelemet használ szerepkörök (RBAC) és kiépítési szabályzatok kiértékelése, tesztelése és az üzleti folyamatokat és a felhasználók hozzáférésének engedélyezésére vonatkozó szabályok. Kulcs rendszergazdák kiépítési szabályzatok létrehozása és a felhasználók szerepkörökhöz rendelése és erőforrásokra vonatkozó ezek a szerepkörök definiáló jogosultságok beállítása. RBAC kibővíti az identitáskezelési megoldás szoftveres folyamatok használhatja, és csökkentheti a felhasználói manuális beavatkozás a kiépítési folyamat során.
 Az Azure AD RBAC lehetővé teszi, hogy a cég, amely egy egyéni teheti meg, ha rendelkezik hozzáféréssel az Azure portal-műveletek számának korlátozása. RBAC használatával férhet hozzá a portálon, a hitelesítésszolgáltatói rendszergazdák hozzáférés delegálása a következő hozzáférés-felügyeleti módszerek használatával:
 
-* **Csoport alapú szerepkör-hozzárendelés**: rendelhet hozzáférés az Azure AD-csoportokat, ingyeneseket szinkronizálja a helyi Active Directoryból. Ez lehetővé teszi, hogy a meglévő befektetések által a szervezet tett eszközök és csoportok kezelése a folyamatok. Prémium szintű Azure AD a delegált csoport felügyeleti funkciót is használhatja.
-* **Használja ki a beépített szerepkörök az Azure-ban**: három szerepkört is használhatja – tulajdonos, közreműködő és olvasó, győződjön meg arról, hogy felhasználók és csoportok engedélye csak a feladataik elvégzéséhez szükséges feladatokat végezheti el.
-* **Erőforrásokhoz való hozzáférés részletes**: szerepköröket rendelhet felhasználókat és csoportokat egy adott előfizetés, erőforráscsoport vagy például egy webhely vagy az adatbázis egy önálló Azure-erőforrás. Így biztosítható, hogy a felhasználók rendelkeznek minden az erőforrásokhoz való hozzáférés, és nem kell kezelniük, erőforrásokhoz sem fér hozzá.
+* **Csoport alapú szerepkör-hozzárendelés**: Hozzáférés a helyi Active Directoryból hozzárendelheti az Azure AD-csoportokat, ingyeneseket szinkronizálja. Ez lehetővé teszi, hogy a meglévő befektetések által a szervezet tett eszközök és csoportok kezelése a folyamatok. Prémium szintű Azure AD a delegált csoport felügyeleti funkciót is használhatja.
+* **Használja ki a beépített szerepkörök az Azure-ban**: Három szerepkört is használhatja – tulajdonos, közreműködő és olvasó, győződjön meg arról, hogy felhasználók és csoportok engedélye csak a feladataik elvégzéséhez szükséges feladatokat végezheti el.
+* **Erőforrásokhoz való hozzáférés részletes**: Szerepköröket rendelhet felhasználókat és csoportokat egy adott előfizetés, erőforráscsoport vagy például egy webhely vagy az adatbázis egy önálló Azure-erőforrás. Így biztosítható, hogy a felhasználók rendelkeznek minden az erőforrásokhoz való hozzáférés, és nem kell kezelniük, erőforrásokhoz sem fér hozzá.
 
 ## <a name="provisioning-and-other-customization-options"></a>Kiépítés és egyéb testreszabási lehetőségek
 A csapat segítségével üzleti terveket és követelmények mennyi úgy dönt, hogy az identitáskezelési megoldás testreszabása. Például a nagyvállalati szükség lehet a többfázisú bevezetési terv a munkafolyamatok és a egy növekményes üzembe helyezés területtől széles körben használt alkalmazások idősorán alapuló egyéni adapterek. Előfordulhat, hogy egy másik testreszabási csomagot adja meg két vagy több alkalmazás teljes szervezeten belül, a sikeres tesztelés után ki kell építeni. Alkalmazás felhasználói beavatkozás testre szabható, és eljárásai az erőforrásoknak az Automatikus kiépítés befogadásához megváltozhat.
@@ -93,7 +93,7 @@ Tekintse át a következő táblázat segítségével összehasonlíthatja a szi
 
 | Szinkronizálási lehetőséget | Előnyök | Hátrányai |
 | --- | --- | --- |
-| Szinkronizálási-alapú (a DirSync vagy az aad Connect) |Felhasználók és csoportok szinkronizálása a helyszíni és felhőbeli <br>  **A házirend-szabályozás**: fiók szabályzatokat is létrehozhatnak az Active Directory, amely lehetővé teszi a rendszergazda a jelszóházirendek, munkaállomás, korlátozások, a zárolás kibővített vezérlők kezeléséhez, és több, nem kell további feladatok végrehajtását a felhőben.  <br>  **Hozzáférés-vezérlés**: korlátozhatja a hozzáférést a felhőszolgáltatáshoz, hogy a szolgáltatások érhetők el a vállalati környezetben keresztül online kiszolgálót vagy mindkettőt. <br>  Csökkentett segélykérő hívások számát: Ha a felhasználók kevesebb jelszót kell fejben rendelkeznek, azok kevésbé valószínű, hogy felejtse el őket. <br>  Biztonság: Felhasználói identitások és információk védettek, mert a kezelt kiszolgálók és egyszeri bejelentkezést, a használt szolgáltatások mindegyikét, és ellenőrzött helyszíni. <br>  Erős hitelesítés támogatása: a felhőalapú szolgáltatás erős hitelesítést (más néven a kéttényezős hitelesítés) is használhatja. Azonban ha erős hitelesítés használata esetén kell használnia az egyszeri bejelentkezés. | |
+| Szinkronizálási-alapú (a DirSync vagy az aad Connect) |Felhasználók és csoportok szinkronizálása a helyszíni és felhőbeli <br>  **A házirend-szabályozás**: Active Directory, amely lehetővé teszi a rendszergazda tudja felügyelni a jelszóházirendek, munkaállomás, korlátozások, zárolás kibővített vezérlők és több, nem kell további feladatokat a felhőben szabályzatainak beállítása.  <br>  **Hozzáférés-vezérlés**: Korlátozhatja a hozzáférést a felhőszolgáltatáshoz, hogy a szolgáltatások érhetők el a vállalati környezetben keresztül online kiszolgálók, vagy mindkettőt. <br>  Támogatási hívások szűkíteni: Ha a felhasználók kevesebb jelszót kell fejben rendelkeznek, valószínűleg kevesebb felejtse el őket. <br>  Biztonság: Felhasználói identitások és információk védettek, mert a kezelt kiszolgálók és egyszeri bejelentkezést, a használt szolgáltatások mindegyikét, és a helyszínen felügyelt. <br>  Erős hitelesítés támogatása: A felhőalapú szolgáltatás erős hitelesítést (más néven a kéttényezős hitelesítés) is használhatja. Azonban ha erős hitelesítés használata esetén kell használnia az egyszeri bejelentkezés. | |
 | Összevonás-alapú (AD FS) n keresztül |Biztonságijogkivonat-szolgáltatás (STS) által engedélyezett. Az STS szolgáltatással történő egyszeri bejelentkezéses hozzáférést biztosítanak a Microsoft felhőszolgáltatással való konfigurálásakor, hozhat létre egy összevont megbízhatósági kapcsolat a helyszíni STS és az Azure AD-bérlőben már megadott összevont tartomány között. <br> Lehetővé teszi, hogy a végfelhasználók számára, hogy ugyanazokat a hitelesítő adatok használatával férhet hozzá több erőforrást <br>a végfelhasználók nem kell több hitelesítőadat-készletek kezelése. Még, a felhasználóknak meg kell adnia a hitelesítő adataikat a programban részt vevő erőforrásokhoz, minden egyes támogatott B2B és B2C-forgatókönyveket. |Speciális személyzetet igényel üzembe helyezése és karbantartása dedikált helyszíni AD FS-kiszolgálók. Erős hitelesítés használatára vonatkozó korlátozások vonatkoznak, ha azt tervezi, hogy az STS az AD FS használata. További információkért lásd: [speciális beállításainak konfigurálása az AD FS 2.0](https://go.microsoft.com/fwlink/?linkid=235649). |
 
 > [!NOTE]

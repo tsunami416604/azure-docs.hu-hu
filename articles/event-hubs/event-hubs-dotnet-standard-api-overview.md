@@ -9,19 +9,19 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
-ms.openlocfilehash: 9b952bd96828c4f2c140cb2d75cecb9379895a63
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: f8cd167d8de738674939180e0d81fc9282434155
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746643"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450454"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard API – áttekintés
 
 Ez a cikk összefoglaltuk a kulcsot az Azure Event Hubs [.NET Standard ügyféloldali API-k](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/). Jelenleg két .NET Standard klienskódtárak Event hubs:
 
-* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): az összes alapvető futásidejű műveleteket biztosít.
-* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): lehetővé teszi, hogy a feldolgozott események szerinti nyomon követést, és a egy eseményközpontba olvasni a legegyszerűbb módja, további funkciókkal bővíti a.
+* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): Minden modul alapszintű műveleteket biztosít.
+* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): Hozzáadja a további funkciókat, amely lehetővé teszi, hogy a feldolgozott események szerinti nyomon követést és legegyszerűbb módja egy eseményközpontba olvasni.
 
 ## <a name="event-hubs-client"></a>Event Hubs-ügyfél
 
@@ -65,7 +65,7 @@ Események fogadása az Event Hubs javasolt módját használja a [Event Process
 
 #### <a name="create-a-receiver"></a>Fogadó létrehozása
 
-Fogadók kötődnek, adott partíciókra, így minden események fogadásához az eseményközpontokban, több példányt kell létrehoznia. Tanácsos a partíciós adatok programozás útján lekéréséhez fix kódolása a partíció azonosítók helyett. Ehhez használhatja a [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) metódust.
+Fogadók kötődnek, adott partíciókra, így minden események fogadásához az eseményközpontokban, több példányt kell létrehoznia. Tanácsos a partíciós adatok programozott módon, lekéréséhez fix kódolása a partíció azonosítók helyett. Ehhez használhatja a [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) metódust.
 
 ```csharp
 // Create a list to keep track of the receivers

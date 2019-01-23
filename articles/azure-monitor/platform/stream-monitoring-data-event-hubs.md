@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 7225bc8121ddab8809ebb1c409a3af59dbcc42f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.subservice: ''
+ms.openlocfilehash: 424dc1611622a1dfc37419fd443d860698020524
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118387"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468233"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
@@ -89,7 +89,7 @@ A [Linux Azure diagnosztikai ügynök](../../virtual-machines/extensions/diagnos
 > [!NOTE]
 > Nem tudja beállítani streamelési vendég operációs rendszer monitorozási adatok a portálon egy eseményközpontba. Ehelyett manuálisan kell szerkeszteni a konfigurációs fájlban.
 
-### <a name="windows-data"></a>Windows-adatok
+### <a name="windows-data"></a>Windows data
 
 A [Windows Azure diagnosztikai ügynök](./../../azure-monitor/platform/diagnostics-extension-overview.md) küldéséhez használható monitorozási adatok egy Windows-gépről egy eseményközpontba. Ehhez adja hozzá az event hubs a WAD-konfigurációs fájl a privateConfig szakaszában fogadóként. [Ebben a cikkben további információt az event hub fogadó ad hozzá a Windows Azure diagnosztikai ügynök](./../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
@@ -120,4 +120,5 @@ A figyelési adatok útválasztást egy eseményközpontba, és az Azure Monitor
 * [A tárfiókhoz a tevékenységnapló archiválása](../../azure-monitor/platform/archive-activity-log.md)
 * [Olvassa el az Azure-tevékenységnapló áttekintése](../../azure-monitor/platform/activity-logs-overview.md)
 * [Egy tevékenységnapló eseményéhez alapuló riasztás beállítása](../../azure-monitor/platform/alerts-log-webhook.md)
+
 

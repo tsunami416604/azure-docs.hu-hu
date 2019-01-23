@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: bc3ee549a4219441b657b89bef56d35dfac6626a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.subservice: logs
+ms.openlocfilehash: b01afe1626fe27a20e7b7103ccb020e4414f774f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547490"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476462"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Az Azure diagnosztikai naplóinak archiválása
 
@@ -165,3 +165,4 @@ A PT1H.json fájlt belül minden egyes esemény tárolja a "rekord" tömb, a kö
 * [Stream-diagnosztikai naplók az Event Hubs-névtér](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Az Azure Monitor szolgáltatással az Azure Active Directory naplóinak archiválása](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [További információ a diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md)
+

@@ -2,22 +2,22 @@
 title: Az Azure Event Griddel Container Registry eseménysémája
 description: Az Azure Event Griddel Container Reigstry események biztosított tulajdonságokat ismerteti
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/13/2018
-ms.author: tomfitz
-ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.date: 01/13/2019
+ms.author: spelluru
+ms.openlocfilehash: 6f00d4f249543ece0eb8db4a8e040300d55b2de8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42059471"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462844"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Tároló-beállításjegyzék Azure Event Grid eseménysémája
 
-Ez a cikk a séma és a Container Registry-események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
+Ez a cikk a séma és a Container Registry-események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
 
 ## <a name="available-event-types"></a>Rendelkezésre álló események típusai
 
@@ -100,11 +100,11 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| Tulajdonos | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
+| tárgy | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
 | eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| adatok | objektum | A BLOB storage-eseményadatok. |
+| adat | objektum | A BLOB storage-eseményadatok. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
@@ -114,7 +114,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | -------- | ---- | ----------- |
 | id | sztring | Az esemény azonosítója. |
 | időbélyeg | sztring | Az az időpont, amikor az esemény történt. |
-| művelet | sztring | A művelet, amely magában foglalja a megadott esemény. |
+| action | sztring | A művelet, amely magában foglalja a megadott esemény. |
 | cél | objektum | A cél az esemény. |
 | kérelem | objektum | A kérelem, ami az esemény jön létre. |
 
@@ -134,7 +134,7 @@ A kérelem objektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | id | sztring | Az esemény által kezdeményezett kérelem azonosítója. |
-| cím | sztring | Az IP vagy állomásnév, esetleg az ügyfél kapcsolata az eseményt inicializáló portjával. Ez az érték a szabványos http-kérelem a RemoteAddr. |
+| addr | sztring | Az IP vagy állomásnév, esetleg az ügyfél kapcsolata az eseményt inicializáló portjával. Ez az érték a szabványos http-kérelem a RemoteAddr. |
 | gazdagép | sztring | A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem http-állomásfejlécet által megadott. |
 | method | sztring | A kérelmi metódust, ami az esemény jön létre. |
 | USERAGENT | sztring | A felhasználói ügynök fejléc a kérelem. |

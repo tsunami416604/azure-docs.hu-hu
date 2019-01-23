@@ -4,7 +4,7 @@ description: Meghatározhatja a data protection stratégiát a hibrid identitás
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e76fd1f4-340a-492a-84d9-e05f3b7cc396
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 20782679a4e73c029d6c83fd3bc57914b4d28691
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bef5671637b26f4fd0d0c27211edca946c395cdf
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865046"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468556"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Adja meg a hibrid identitáskezelési megoldás az adatvédelmi stratégiát?
 Ebben a feladatban az adatvédelmi stratégiát a hibrid identitáskezelési megoldás az üzleti szükségletek kielégítése céljából, amelyet a megadott fogja definiálni:
@@ -118,19 +118,19 @@ Miután a felhasználó hitelesítése az Azure AD-vel, fontos értékelheti ki 
 
 Minden interakció x. ábra bemutatta a diagram egy szerint az Azure AD hozzáférési adatvezérlési forgatókönyvek jelöli. Az alábbiakban az egyes forgatókönyvek leírását rendelkezik:
 
-  1. Feltételes hozzáférés az alkalmazásokhoz a helyszínen üzemeltetett: a Windows Server 2012 R2 AD FS Szolgáltatásának használatához konfigurált alkalmazások hozzáférési házirendekkel regisztrált eszközökön is használhatja.
+  1. Feltételes hozzáférés az alkalmazásokhoz a helyszínen üzemeltetett: Regisztrált eszközök hozzáférési házirendekkel használható alkalmazásokhoz, amelyek a Windows Server 2012 R2 AD FS használatára vannak konfigurálva.
 
-  2. Hozzáférés-vezérlés az Azure Portal: az Azure emellett lehetővé teszi a portálon való hozzáférés vezérlése szerepköralapú hozzáférés-vezérlés (RBAC) használatával). Ez a módszer lehetővé teszi, hogy a vállalat, amely az Azure Portalon teheti meg egy egyéni műveletek számának korlátozására. Az RBAC használatával férhet hozzá a portálon, a rendszergazdák a következő hozzáférés-felügyeleti módszerek használatával is adhat a hozzáférést:
+  2. Hozzáférés-vezérlés az Azure Portalra:  Az Azure emellett lehetővé teszi a portálon való hozzáférés vezérlése szerepköralapú hozzáférés-vezérlés (RBAC) használatával). Ez a módszer lehetővé teszi, hogy a vállalat, amely az Azure Portalon teheti meg egy egyéni műveletek számának korlátozására. Az RBAC használatával férhet hozzá a portálon, a rendszergazdák a következő hozzáférés-felügyeleti módszerek használatával is adhat a hozzáférést:
 
-   - Csoport alapú szerepkör-hozzárendelés: rendelhet hozzáférés az Azure AD-csoportokat, ingyeneseket szinkronizálja a helyi Active Directoryból. Ez lehetővé teszi a meglévő befektetések által a szervezet tett eszközök és csoportok kezelése a folyamatok. Prémium szintű Azure AD a delegált csoport felügyeleti funkciót is használhatja.
-   - Beépített szerepkörök használata az Azure-ban: három szerepkört is használhatja – tulajdonos, közreműködő és olvasó, győződjön meg arról, hogy felhasználók és csoportok engedélye csak a feladataik elvégzéséhez szükséges feladatokat végezheti el.
-   -  Erőforrásokhoz való hozzáférés részletes: szerepköröket rendelhet felhasználókat és csoportokat egy adott előfizetés, erőforráscsoport vagy például egy webhely vagy az adatbázis egy önálló Azure-erőforrás. Így biztosítható, hogy a felhasználók rendelkeznek minden az erőforrásokhoz való hozzáférés, és nem kell kezelniük, erőforrásokhoz sem fér hozzá.
+   - Csoport alapú szerepkör-hozzárendelés: Hozzáférés a helyi Active Directoryból hozzárendelheti az Azure AD-csoportokat, ingyeneseket szinkronizálja. Ez lehetővé teszi a meglévő befektetések által a szervezet tett eszközök és csoportok kezelése a folyamatok. Prémium szintű Azure AD a delegált csoport felügyeleti funkciót is használhatja.
+   - Használja a beépített szerepkörök az Azure-ban: Három szerepkört is használhatja – tulajdonos, közreműködő és olvasó, győződjön meg arról, hogy felhasználók és csoportok engedélye csak a feladataik elvégzéséhez szükséges feladatokat végezheti el.
+   -  Erőforrásokhoz való hozzáférés részletes: Szerepköröket rendelhet felhasználókat és csoportokat egy adott előfizetés, erőforráscsoport vagy például egy webhely vagy az adatbázis egy önálló Azure-erőforrás. Így biztosítható, hogy a felhasználók rendelkeznek minden az erőforrásokhoz való hozzáférés, és nem kell kezelniük, erőforrásokhoz sem fér hozzá.
 
    > [!NOTE]
    > Ha alkalmazásokat fejleszt, és testre szeretne szabni a hozzáférés-vezérlést a számukra, akkor is az Azure AD alkalmazás-szerepkörök használata a hitelesítéshez. Tekintse át ezt [WebApp-RoleClaims-DotNet-példa](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) hogyan hozhat létre az alkalmazást, ez a funkció használatához.
 
 
-  3. Feltételes hozzáférés az Office 365-alkalmazások a Microsoft Intune-nal: IT-rendszergazdák feltételes hozzáférési eszközházirendek a vállalati erőforrások biztonságossá tétele, ezzel lehetővé téve az információkkal dolgozó szakemberek a megfelelő eszközök hozzáférését a szolgáltatások egy időben építhető ki. 
+  3. Feltételes hozzáférés az Office 365-alkalmazások a Microsoft Intune-nal:  IT-rendszergazdák feltételes hozzáférési szabályzatok biztonságossá tétele a vállalati erőforrásokhoz, lehetővé téve az információkkal dolgozó szakemberek a megfelelő eszközök hozzáférését a szolgáltatásokat helyezhet üzembe. 
   
   4. Feltételes hozzáférés a Saas-alkalmazások: [Ez a funkció](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) lehetővé teszi, hogy konfigurálja a multi-factor authentication alkalmazás hozzáférési szabályok és a nem megbízható hálózaton lévő felhasználók hozzáférésének blokkolása. A multi-factor authentication szolgáltatás szabályokat alkalmazhat az alkalmazáshoz, vagy csak a megadott biztonsági csoportokban lévő felhasználók rendelt valamennyi felhasználó. Felhasználók kizárhatók a multi-factor authentication követelményeinek, ha az alkalmazás IP-címek, hogy a szervezeten belüli hálózati érnek el.
 
@@ -139,11 +139,11 @@ A hozzáférés-vezérlés beállításai a többrétegű megközelítést haszn
 ## <a name="define-incident-response-options"></a>Az incidensmegoldás beállítások definiálása
 Segítheti az Azure ad-ben informatikai biztonsági kockázatok identitás felhasználó tevékenységét-figyelési szolgáltatás által a környezetben. Informatikai használhatja az Azure AD hozzáférési és használati jelentések értékes információkhoz juthat az integritásra és a munkahely címtárában biztonságát. Ezekkel az információkkal rendszergazda megadhatja jobban, hogy ahol lehetséges, hogy egészülnek biztonsági kockázatokat, úgy, hogy azok megfelelően tervezi, hogy ezek a kockázatok csökkentése.  [Az Azure AD Premium előfizetéssel](../fundamentals/active-directory-get-started-premium.md) tartozik egy biztonsági jelentések, ami lehetővé teszi, hogy ezeket az adatokat. [Az Azure AD-jelentések](../reports-monitoring/overview-reports.md) kategóriái a következők:
 
-* **Anomáliadetektálási jelentések**: bejelentkezési eseményeket, észlelt a rendellenes kell tartalmaznia. A cél, hogy győződjön meg arról, hogy tisztában az ilyen tevékenység, és lehetővé teszi győződjön meg arról, hogy az esemény gyanúsnak meghatározása.
-* **Integrált alkalmazás jelentés**: hogyan használja a szervezet a felhőalapú alkalmazások betekintést nyújt. Az Azure Active Directory több ezer felhőalapú alkalmazások integrációt kínál.
-* **Hibajelentések**: a külső alkalmazások fiókok kiépítése során esetlegesen előforduló hibákat jelölnek.
-* **Felhasználó-specifikus jelentések**: eszköz/bejelentkezési tevékenység egy adott felhasználó adatainak megjelenítése.
-* **A Tevékenységnaplók**: az elmúlt 24 órában, legutóbbi 7 nap, vagy elmúlt 30 napban, valamint a tevékenység módosításainak és jelszó alaphelyzetbe állítása és regisztrációs tevékenység belül az összes naplózott esemény rekordot tartalmaz.
+* **Anomáliadetektálási jelentések**: Bejelentkezési eseményeket, észlelt a rendellenes kell tartalmaznia. A cél, hogy győződjön meg arról, hogy tisztában az ilyen tevékenység, és lehetővé teszi győződjön meg arról, hogy az esemény gyanúsnak meghatározása.
+* **Integrált alkalmazás jelentés**: Hogyan használja a szervezet a felhőalapú alkalmazások betekintést. Az Azure Active Directory több ezer felhőalapú alkalmazások integrációt kínál.
+* **Hibajelentések**: Adja meg a külső alkalmazások fiókok kiépítése során esetlegesen előforduló hibákat.
+* **Felhasználó-specifikus jelentések**: Eszköz/bejelentkezési tevékenység egy adott felhasználó adatainak megjelenítése.
+* **A Tevékenységnaplók**: Az elmúlt 24 órában, legutóbbi 7 nap, vagy elmúlt 30 napban, valamint a tevékenység módosításainak és jelszó alaphelyzetbe állítása és regisztrációs tevékenység belül az összes naplózott esemény rekordot tartalmaz.
 
 > [!TIP]
 > Egy másik jelentést, amely segíthet az Incidensmegoldási csapat dolgozik egy esetet is a [kiszivárgott hitelesítő adatokkal rendelkező felhasználó](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) jelentést. Ez a jelentés egyezéseket feltárásával a kiszivárgott hitelesítő adatok listája és a bérlő között.

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: f6191ba2f6ca86e07842030c0fca0a65b8c9d09a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.date: 01/22/2019
+ms.openlocfilehash: 420d3c256f9bf2d0884e98312a5a66aea08b13bc
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584496"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450881"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
@@ -39,7 +39,8 @@ Az Azure SQL Database felügyelt példánya is telepíthető a két hardver gene
 | Hardver | Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokkal, SSD virtuális mag csatolt = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorokkal, SSD, virtuális mag eNVM gyors = 1. LP (a hyper-szál) |
 | Compute | 8, 16, 24 virtuális mag | 8, 16, 24, 32, 40, 64, 80 virtuális magok |
 | Memory (Memória) | 7 GB / virtuális mag | 5.1 GB / virtuális mag |
-| Maximális tárterület (üzletileg kritikus) | 1 TB | 1 TB-os, 2 TB vagy 4 TB-os attól függően, a magok számát |
+| Maximális tárterület (általános célú) |  8 TB | 1 TB |
+| Maximális tárterület (üzletileg kritikus) | 8 TB | 1 TB-os, 2 TB vagy 4 TB-os attól függően, a magok számát |
 
 ### <a name="service-tier-characteristics"></a>Szolgáltatási szint tulajdonságok
 
@@ -48,15 +49,14 @@ Felügyelt példány két szolgáltatási csomagban – általános célú és a
 | **Funkció** | **Általános célú** | **Üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Memória) | Gen4: 56GB – 156GB<br/>Gen5: 44GB – 440GB<br/>\*Arányos virtuális magok száma | Gen4: 56GB – 156GB <br/> Gen5: 41GB – 408GB<br/>\*Arányos virtuális magok száma |
+| Memory (Memória) | Gen4: 56GB-156GB<br/>Gen5: 44GB-440GB<br/>\*Arányos virtuális magok száma | Gen4: 56GB-156GB <br/> Gen5: 41GB-408GB<br/>\*Arányos virtuális magok száma |
 | Maximális tárméret | 8 TB | A gen 4: 1 TB <br/> A gen 5: <br/>– 1 TB-os 8, 16 virtuális mag<br/>– A 24 virtuális mag 2 TB<br/>– 4 TB-os 32, 40, 64, 80 virtuális magok |
 | Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány | Határozza meg a maximális tárhelyméretet a példány |
 | Egy példány adatbázisok maximális száma | 100 | 100 |
 | Maximális adatbázisfájlok példányonként | Legfeljebb 280 | – 32 767 fájlt adatbázisonként |
-| Adatok/Log/iops-érték (becsült) | fájlonkénti 500-7500<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11-K – 110K (1375 / virtuális mag) |
-| Példány Log átviteli sebesség | 22MB/s-példányonként | 3MB/s / virtuális mag<br/>Maximális száma 48MB/s |
+| Adatok/Log/iops-érték (becsült) | fájlonkénti 500-7500<br/>\*[Fájl méretétől függ] (https://docs.microsoft.com/azure/virtual-machines ce Log átviteli sebesség | 22MB/s-példányonként | 3MB/s / virtuális mag<br/>Maximális száma 48MB/s |
 | A fájlmegosztásra (becsült) | 100 – 250 MB/s fájlonként<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24-48MB/s / virtuális mag |
-| IO-késés (becsült) | 5 – 10 ms | 1 – 2 ms |
+| IO-késés (becsült) | 5-10 ms | 1-2 ms |
 | Max. tempDB mérete | 192-1920 GB (24 GB / virtuális mag) | Nincsenek megkötések - korlátozza a maximális példányméret |
 
 **Megjegyzések**:
@@ -72,10 +72,10 @@ Csak a felügyelt Instanced hozható létre [támogatott régiók](https://azure
 Felügyelt példány üzembe helyezési jelenleg csak a következő típusú előfizetések a használatát támogatja:
 
 - [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/)
+- [Pay-as-you-go](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Felhőszolgáltató (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
 - [Nagyvállalati fejlesztés és tesztelés](https://azure.microsoft.com/offers/ms-azr-0148p/)
-- [Fejlesztés/tesztelés használatalapú fizetéssel](https://azure.microsoft.com/offers/ms-azr-0023p/)
+- [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
 
 > [!NOTE]
 > Ez a korlátozás csak átmenetileg létezik. Új előfizetés-típusok a jövőben engedélyezve lesz.
@@ -91,11 +91,11 @@ Az alábbi táblázatban láthatók a támogatott előfizetések alapértelmezet
 
 |Előfizetés típusa| Felügyelt példány alhálózatok maximális száma | Példányok maximális száma |Maximális száma a csoportházirend által felügyelt példány *|BC maximális száma a felügyelt példány *|
 | :---| :--- | :--- |:--- |:--- |
-|Utólagos, használatalapú fizetés|1 *|4 *|4 *|1 *|
-|CSP |1 *|4 *|4 *|1 *|
-|Fejlesztés/tesztelés használatalapú fizetéssel|1 *|4 *|4 *|1 *|
-|Nagyvállalati Szerződés – Fejlesztés és tesztelés|1 *|4 *|4 *|1 *|
-|Nagyvállalati szerződés|3 **|12 **|12 **|3 **|
+|Utólagos, használatalapú fizetés|1*|4*|4*|1*|
+|CSP |1*|4*|4*|1*|
+|Fejlesztés/tesztelés használatalapú fizetéssel|1*|4*|4*|1*|
+|Nagyvállalati Szerződés – Fejlesztés és tesztelés|1*|4*|4*|1*|
+|Nagyvállalati szerződés|3**|12**|12**|3**|
 
 \* Vagy telepítheti 1 BC vagy az egyik alhálózat 4 GP-példány, hogy az alhálózat "példány egységek" száma soha nem meghaladja a 4.
 
@@ -119,10 +119,10 @@ A következő példákban üzembe helyezési esetekre, nem üres alhálózattal,
 |:---|:---|:---|:---|
 |1|1 BC és legfeljebb 8 GP<br>2 BC és akár 4 általános védelmi|–| –|
 |2|0 BC, akár 4 általános védelmi|1 BC, akár 4 általános védelmi<br>2 BC, 0 A CSOPORTHÁZIREND|–|
-|2|BC 1, 0 A CSOPORTHÁZIREND|0 BC, legfeljebb 8 GP<br>1 BC, akár 4 általános védelmi|–|
+|2|1 BC, 0 GP|0 BC, legfeljebb 8 GP<br>1 BC, akár 4 általános védelmi|–|
 |2|2 BC, 0 A CSOPORTHÁZIREND|0 BC, akár 4 általános védelmi|–|
-|3|BC 1, 0 A CSOPORTHÁZIREND|BC 1, 0 A CSOPORTHÁZIREND|0 BC, akár 4 általános védelmi|
-|3|BC 1, 0 A CSOPORTHÁZIREND|0 BC, akár 4 általános védelmi|0 BC, akár 4 általános védelmi|
+|3|1 BC, 0 GP|1 BC, 0 GP|0 BC, akár 4 általános védelmi|
+|3|1 BC, 0 GP|0 BC, akár 4 általános védelmi|0 BC, akár 4 általános védelmi|
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>SQL felügyelt példánya a nagyobb kvótát beszerzése
 

@@ -8,13 +8,13 @@ ms.date: 06/26/2018
 ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
-manager: mtillman
-ms.openlocfilehash: 59df0dc61be1f670f21b94fe24e56a2f040f950e
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+manager: daveba
+ms.openlocfilehash: da2ae0262ef8380f31f37bfbbe5ddca45c72ebd1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426808"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468097"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Az Azure AD UserPrincipalName feltöltése
 
@@ -84,13 +84,13 @@ Felhasználói objektum a frissítések szinkronizálása az Azure AD-bérlővel
 ## <a name="upn-scenarios"></a>Egyszerű felhasználónév forgatókönyvek
 Az alábbiakban megtekinteni, hogyan az egyszerű felhasználónév alapján van kiszámítva az adott esethez.
 
-### <a name="scenario-1-non-verified-upn-suffix--initial-synchronization"></a>1. forgatókönyv: Nem ellenőrzött UPN-utótagot – kezdeti szinkronizálás
+### <a name="scenario-1-non-verified-upn-suffix--initial-synchronization"></a>1. forgatókönyv: A nem ellenőrzött UPN-utótagot – kezdeti szinkronizálás
 
 ![Scenario1](./media/plan-connect-userprincipalname/example1.png)
 
 A helyszíni felhasználói objektum:
 - mailNickName: &lt;nincs beállítva&gt;
-- proxyAddresses: {SMTP:us1@contoso.com}
+- proxyAddresses        : {SMTP:us1@contoso.com}
 - e-mail: us2@contoso.com
 - userPrincipalName: us3@contoso.com"
 
@@ -104,13 +104,13 @@ Az Azure AD-bérlő felhasználói objektum:
 - UserPrincipalName: us1@contoso.onmicrosoft.com
 
 
-### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>2. forgatókönyv: Nem ellenőrzött UPN-utótagot – beállítása a helyszíni mailNickName attribútum
+### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>2. forgatókönyv: A nem ellenőrzött UPN-utótagot – beállítása a helyszíni mailNickName attribútum
 
 ![Scenario2](./media/plan-connect-userprincipalname/example2.png)
 
 A helyszíni felhasználói objektum:
 - mailNickName: us4
-- proxyAddresses: {SMTP:us1@contoso.com}
+- proxyAddresses        : {SMTP:us1@contoso.com}
 - e-mail: us2@contoso.com
 - UserPrincipalName: us3@contoso.com
 
@@ -122,13 +122,13 @@ Az Azure AD-bérlő felhasználói objektum:
 - mailNickName: us4
 - UserPrincipalName: us1@contoso.onmicrosoft.com
 
-### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>3. eset: Nem ellenőrzött UPN-utótagot – frissítés a helyszíni userPrincipalName attribútum
+### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>3. forgatókönyv: A nem ellenőrzött UPN-utótagot – frissítés a helyszíni userPrincipalName attribútum
 
 ![Scenario3](./media/plan-connect-userprincipalname/example3.png)
 
 A helyszíni felhasználói objektum:
 - mailNickName: us4
-- proxyAddresses: {SMTP:us1@contoso.com}
+- proxyAddresses        : {SMTP:us1@contoso.com}
 - e-mail: us2@contoso.com
 - UserPrincipalName: us5@contoso.com
 
@@ -147,7 +147,7 @@ Az Azure AD-bérlő felhasználói objektum:
 
 A helyszíni felhasználói objektum:
 - mailNickName: us4
-- proxyAddresses: {SMTP:us6@contoso.com}
+- proxyAddresses        : {SMTP:us6@contoso.com}
 - e-mail: us7@contoso.com
 - UserPrincipalName: us5@contoso.com
 
@@ -164,7 +164,7 @@ Az Azure AD-bérlő felhasználói objektum:
 
 A helyszíni felhasználói objektum:
 - mailNickName: us4
-- proxyAddresses: {SMTP:us6@contoso.com}
+- proxyAddresses        : {SMTP:us6@contoso.com}
 - e-mail: us7@contoso.com
 - UserPrincipalName: us5@verified.contoso.com
 

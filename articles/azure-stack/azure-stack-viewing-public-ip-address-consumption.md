@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 1/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 072702b323a41e4c4c51edc7054ad41591dde4d7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 6d202ab9e2f6a8e96eb494d3d93caf66624f8364
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303531"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465194"
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Nyilvános IP-címek használatának megtekintése az Azure Stackben
 
@@ -36,6 +36,7 @@ A csempe célja biztosíthat az Azure Stack-operátorok érteni, ezen a helyen h
 A **nyilvános IP-címek** menüpont alatt **bérlői erőforrások** csak ezen nyilvános IP-címek listája, amelyeket *explicit módon a bérlők által létrehozott*. A menüelem megtalálhatja a **erőforrás-szolgáltatók**, **hálózati** ablaktáblán. Száma **használható** nyilvános IP-címek a a **nyilvános IP-készletek használati** csempe mindig eltér a (nagyobb) a száma a **nyilvános IP-címek** alatt csempe **A bérlői erőforrások**.
 
 ## <a name="view-the-public-ip-address-usage-information"></a>A nyilvános IP-cím használati adatok megtekintése
+
 A régió felhasznált nyilvános IP-címek teljes száma megtekintése:
 
 1. Válassza ki az Azure Stack rendszergazdai portálon **minden szolgáltatás**. Ezt követően a **felügyeleti** kategória kiválasztása **hálózati**.
@@ -46,6 +47,7 @@ A régió felhasznált nyilvános IP-címek teljes száma megtekintése:
 A **használható** számot jelöli száma hozzárendelt nyilvános IP-címeket nyilvános IP-címkészleteket. A **ingyenes** szám azt jelzi, a nyilvános IP-címek számának a nyilvános IP-cím címkészletek, amely nincs hozzárendelve, és továbbra is elérhető. A **% használható** szám számát jelöli, használt vagy címek hozzárendelve százalékos arányában nyilvános IP-címkészletek az adott helyen lévő nyilvános IP-címek teljes száma.
 
 ## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>Bérlői előfizetések által létrehozott nyilvános IP-címek megtekintése
+
 Válassza ki **nyilvános IP-címek** alatt **bérlői erőforrások**. Tekintse át az explicit módon egy adott régióban bérlői előfizetések által létrehozott nyilvános IP-címek listáját.
 
 ![Bérlő nyilvános IP-címek](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
@@ -55,6 +57,7 @@ Válassza ki **nyilvános IP-címek** alatt **bérlői erőforrások**. Tekintse
 A hálózati vezérlő nem rendel hozzá egy címet az erőforrás mindaddig, amíg egy felületet, a hálózati kártya (NIC), egy terheléselosztó vagy a virtuális hálózati átjáró van kötve. Ha egy felület nyilvános IP-cím van kötve, a hálózati vezérlő IP-címet foglal le. A cím jelenik meg a **cím** mező.
 
 ## <a name="view-the-public-ip-address-information-summary-table"></a>A nyilvános IP-információk összegzése címtábláján megtekintése
+
 Eltérő esetben, amelyek meghatározzák, hogy a cím megjelenik egy listában, vagy egy másik nyilvános IP-címek vannak hozzárendelve.
 
 | **Nyilvános IP-cím hozzárendelés eset** | **Megjelenik a használat összegzése** | **A bérlő nyilvános IP-címek listája jelenik meg** |
@@ -66,4 +69,5 @@ Eltérő esetben, amelyek meghatározzák, hogy a cím megjelenik egy listában,
 | Nyilvános IP-cím implicit módon hoztunk létre IaaS Virtuálisgép-példányok és kimenő NAT-hoz a virtuális hálózaton. Jön létre a háttérben, amikor egy bérlő létrehoz egy Virtuálisgép-példánnyal, hogy a virtuális gépek képes információkat küldeni az internethez. |Igen |Nem |
 
 ## <a name="next-steps"></a>További lépések
+
 [Az Azure Stack Tárfiókok kezelése](azure-stack-manage-storage-accounts.md)

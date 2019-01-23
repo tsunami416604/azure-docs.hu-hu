@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció módosításának |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció módosításának |} A Microsoft Docs'
 description: Az Azure AD Connect szinkronizálása az alapértelmezett konfiguráció módosításának ajánlott eljárásokat biztosít.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 7638a031-1635-4942-94c3-fce8f09eed5e
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ad19916dc49c2bee870eef77611d120cc66b44cd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f071d97df6932bec5ae4161511ba33369cc1828c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312199"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461177"
 ---
-# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: ajánlott eljárások az alapértelmezett konfiguráció módosítása
+# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció módosításának ajánlott eljárásai
 Ez a témakör az a célja, hogy támogatott és nem támogatott az Azure AD Connect szinkronizálási módosításait ismertetik.
 
 Az Azure AD Connect által létrehozott "formájában is működik", amely a helyszíni Active Directory szinkronizálását az Azure AD legtöbb környezet számára. Azonban bizonyos esetekben, szükség egy adott lenne szükség, vagy a követelmény teljesítéséhez konfiguráció egyes módosítások alkalmazásához.
@@ -73,5 +73,5 @@ A klónozott erről a szabályról a hatókör, illesztés és átalakítások v
 ## <a name="next-steps"></a>További lépések
 **Áttekintő témakör**
 
-* [Az Azure AD Connect szinkronizálása: ismertetése, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

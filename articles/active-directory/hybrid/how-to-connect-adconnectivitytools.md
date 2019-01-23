@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure AD Connect: Mi az a PowerShell-modul ADConnectivityTool |} A Microsoft Docs'
+title: 'Azure AD Connect: Mi az a PowerShell-modul ADConnectivityTool |} A Microsoft Docs'
 description: Ez a dokumentum bemutatja az új ADConnectivity PowerShell-modul
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e6f85d327fff1ee32dca6dfb2231b28e6dc96c61
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 537fc7a6e0a68281ae190db5ec7fef65e413bcbe
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965633"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475883"
 ---
 # <a name="what-is-the-adconnectivitytool-powershell-module"></a>Mi az a ADConnectivityTool PowerShell-modult?
 
@@ -73,7 +73,7 @@ Ha a felhasználó ezt a funkciót futtat, miután egy zárhatók (vagy ha nincs
 
 
 ## <a name="next-steps"></a>További lépések
-- [Azure AD Connect: fiókok és engedélyek](reference-connect-accounts-permissions.md)
+- [Azure AD Connect: Fiókok és engedélyek](reference-connect-accounts-permissions.md)
 - [Az Expressz telepítés](how-to-connect-install-express.md)
 - [Egyéni telepítés](how-to-connect-install-custom.md)
 - [ADConnectivityTools referencia](reference-connect-adconnectivitytools.md)

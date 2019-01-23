@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: concepts
 ms.date: 12/11/2018
 ms.author: barclayn
-ms.openlocfilehash: 44507e919b7ed827eb3c08101a04849faf92293c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ec814bf641dea6f47b907e9f9e2646dfcf84ade1
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310277"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451748"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -56,7 +56,7 @@ Jelenleg Azure dedikált HSM-be csak révén a HSM-EK jelszóalapú hitelesíté
 
 ### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>KÉRDÉS: Azure dedikált HSM üzemelteti a HSM-EK a számomra?
 
-A Microsoft csak a Gemalto SafeNet Luna hálózati hardveres biztonsági MODULT a dedikált HSM szolgáltatáson keresztül biztosít, és nem tárolható a biztosított eszközökkel minden ügyfél.
+A Microsoft csak a Gemalto SafeNet Luna hálózati hardveres biztonsági MODULT a dedikált HSM szolgáltatáson keresztül biztosít, és nem tárolható az ügyfél által biztosított eszközöket.
 
 ### <a name="q-does-azure-dedicated-hsm-support-pinetf-features-or-meet-pci-hsm-v1-or-v2-certification-requirements"></a>KÉRDÉS: Nem Azure dedikált HSM-be PIN-kód/ETH-szolgáltatásokat támogatják, és megfelel a PCI HSM v1 vagy v2-minősítési követelmények?
 
@@ -256,7 +256,7 @@ Kérő megszüntetés, mielőtt egy ügyfél zeroized Crossover HSM ügyféleszk
 
 Dedikált HSM rendelkezések SafeNet hálózati HSM 7 berendezések (modell A790). Itt található egy összefoglaló az egyes műveletek esetében a maximális teljesítményt: 
 
-* RSA 2048-BITES: 10 000 tranzakció / másodperc
+* RSA-2048: 10 000 tranzakció / másodperc
 * ECC P256: 20 000 tranzakció / másodperc
 * AES-GCM: 17,000 tranzakció / másodperc
 

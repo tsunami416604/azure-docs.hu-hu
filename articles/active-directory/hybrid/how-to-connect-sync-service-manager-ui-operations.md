@@ -4,7 +4,7 @@ description: Ismerje meg a művelet lapon a Synchronization Service Managert, az
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 97a26565-618f-4313-8711-5925eeb47cdc
 ms.service: active-directory
@@ -16,16 +16,16 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92de95cb3192fb9f551bea631ef878070f9173cf
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 57d5dd17a180c946043c307e31e1c89e91f1219e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315055"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467689"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>A szinkronizálási szolgáltatáskezelő műveleti lapon
 
-![Szinkronizálási szolgáltatáskezelő](./media/how-to-connect-sync-service-manager-ui-operations/operations.png)
+![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-operations/operations.png)
 
 A műveletek lapon láthatók a legutóbbi operations eredményeinek. Ezen a lapon az kulcs megértéséhez, valamint a hibaelhárítás.
 
@@ -37,7 +37,7 @@ A **állapot** oszlop a legfontosabb információt, és bemutatja a legsúlyosab
 | status | Megjegyzés |
 | --- | --- |
 | leállított-\* |A Futtatás nem sikerült végrehajtani. Ha például a távoli rendszer nem működik, és nem érhető el. |
-| leállítva hiba-korlát |Több mint 5000 hibák vannak. A Futtatás hibák nagy száma miatt automatikusan le lett állítva. |
+| stopped-error-limit |Több mint 5000 hibák vannak. A Futtatás hibák nagy száma miatt automatikusan le lett állítva. |
 | Befejezett -\*-hibák |A Futtatás befejeződött, de hibák (kevesebb mint 5000) meg kell vizsgálni. |
 | Befejezett -\*– figyelmeztetés |A Futtatás befejeződött, de egyes adatokat nem szerepel a várt állapota. Ha hibákat észlel, majd ezt az üzenetet általában a csak a hiba. Hibák elhárítása, amíg nem kell vizsgálni – figyelmeztetések. |
 | sikeres |Nincs probléma. |

@@ -2,17 +2,17 @@
 title: Az Azure Event Grid eseménykezelők
 description: Támogatott eseménykezelők ismerteti az Azure Event Gridhez
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/21/2018
-ms.author: tomfitz
-ms.openlocfilehash: 12cc5a918044e3bc74e34f2e05adc9773dee5421
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.date: 01/21/2019
+ms.author: spelluru
+ms.openlocfilehash: 33604a16f5895e20d4475d1dd8b27c34184feb72
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498657"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478467"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Az Azure Event Grid eseménykezelők
 
@@ -26,7 +26,7 @@ Azure Automation segítségével a runbookok automatizált eseményeinek feldolg
 
 |Beosztás  |Leírás  |
 |---------|---------|
-|[Oktatóanyag: Az Azure Automation az Event Grid és a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Hozzon létre egy virtuális gépet, amely eseményt küld. Az esemény aktiválása a címkéket a virtuális gép, és a egy Microsoft Teams-csatornához küldött üzenet aktivál egy Automation-runbook. |
+|[Oktatóanyag: Az Event Grid és a Microsoft Teams az Azure Automation](ensure-tags-exists-on-new-virtual-machines.md) |Hozzon létre egy virtuális gépet, amely eseményt küld. Az esemény aktiválása a címkéket a virtuális gép, és a egy Microsoft Teams-csatornához küldött üzenet aktivál egy Automation-runbook. |
 
 ## <a name="azure-functions"></a>Azure Functions
 

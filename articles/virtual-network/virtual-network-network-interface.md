@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: a26deba97d1ed61f2a6f3b54dafe9f651167ab5b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 381c9a2af0f1743509db4495603c0e26da5c1736
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424370"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474519"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy egy hálózati adapter törlése
 
@@ -38,7 +38,7 @@ Jelentkezzen be, vagy csatlakozhat az Azure-ban, a fiókot hozzá kell rendelni 
 
 ## <a name="create-a-network-interface"></a>Hozzon létre egy hálózati adaptert
 
-Az Azure portal használatával a virtuális gép létrehozásakor a portálon az alapértelmezett beállításokkal, létrehoz egy hálózati adaptert. Ha szeretné inkább adja meg a hálózati kapcsolati beállítások, egyéni beállításokkal rendelkező hálózati adaptert létrehozni, és a hálózati adaptert egy virtuális géphez csatolni a virtuális gép (a PowerShell vagy az Azure CLI) létrehozásakor. Hozzon létre egy hálózati adaptert, és adja hozzá egy meglévő virtuális gépre (a PowerShell vagy az Azure CLI) is. Megtudhatja, hogyan hozzon létre egy virtuális gépet egy meglévő hálózati adapter vagy a hozzá, vagy távolítsa el a hálózati adapterek a meglévő virtuális gépekről, lásd: [hozzáadása vagy eltávolítása a hálózati adapterek](virtual-network-network-interface-vm.md). Mielőtt létrehozna egy hálózati adapter, rendelkeznie kell egy meglévő [virtuális hálózat](manage-virtual-network.md#create-a-virtual-network) azonos helyen és előfizetést hoz létre egy hálózati adapterrel.
+Az Azure portal használatával a virtuális gép létrehozásakor a portálon az alapértelmezett beállításokkal, létrehoz egy hálózati adaptert. Ha szeretné inkább adja meg a hálózati kapcsolati beállítások, egyéni beállításokkal rendelkező hálózati adaptert létrehozni, és a hálózati adaptert egy virtuális géphez csatolni a virtuális gép (a PowerShell vagy az Azure CLI) létrehozásakor. Hozzon létre egy hálózati adaptert, és adja hozzá egy meglévő virtuális gépre (a PowerShell vagy az Azure CLI) is. Megtudhatja, hogyan hozzon létre egy virtuális gépet egy meglévő hálózati adapter vagy a hozzá, vagy távolítsa el a hálózati adapterek a meglévő virtuális gépekről, lásd: [hozzáadása vagy eltávolítása a hálózati adapterek](virtual-network-network-interface-vm.md). Mielőtt létrehozna egy hálózati adapter, rendelkeznie kell egy meglévő [virtuális hálózat](manage-virtual-network.md) azonos helyen és előfizetést hoz létre egy hálózati adapterrel.
 
 1. A szöveget tartalmazó mezőbe *erőforrások keresése* írja be az Azure portal tetején *hálózati adapterek*. Amikor **hálózati adapterek** jelennek meg a keresési eredmények közül válassza ki azt.
 2. Válassza ki **+ Hozzáadás** alatt **hálózati adapterek**.
@@ -69,7 +69,7 @@ A portál nem biztosít arra, hogy egy hálózati adapter létrehozásakor rende
 |Eszköz|Parancs|
 |---|---|
 |parancssori felület|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
-|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface#create)|
+|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Hálózatiadapter-beállítások megtekintése
 
@@ -158,7 +158,7 @@ Módosíthatja az alhálózaton, de nem a virtuális hálózat, amely egy háló
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Ad hozzá, vagy távolítsa el az alkalmazásbiztonsági csoportok
 
-Csak adja hozzá a hálózati adaptert, vagy egy hálózati adapter eltávolítása a portál használatával, ha egy virtuális géphez csatlakoztatott hálózati adapter van egy biztonsági csoportot. A hálózati adapter hozzáadása PowerShell vagy az Azure CLI használatával, vagy egy hálózati adapter eltávolítása egy biztonsági csoportot, hogy a virtuális géphez csatlakoztatott hálózati adapter, vagy nem. Tudjon meg többet [az alkalmazásbiztonsági csoportok](security-overview.md#application-security-groups) és annak [hozzon létre egy alkalmazásbiztonsági csoportot](manage-network-security-group.md#create-an-application-security-group).
+Csak adja hozzá a hálózati adaptert, vagy egy hálózati adapter eltávolítása a portál használatával, ha egy virtuális géphez csatlakoztatott hálózati adapter van egy biztonsági csoportot. A hálózati adapter hozzáadása PowerShell vagy az Azure CLI használatával, vagy egy hálózati adapter eltávolítása egy biztonsági csoportot, hogy a virtuális géphez csatlakoztatott hálózati adapter, vagy nem. Tudjon meg többet [az alkalmazásbiztonsági csoportok](security-overview.md#application-security-groups) és annak [hozzon létre egy alkalmazásbiztonsági csoportot](manage-network-security-group.md).
 
 1. Az a *erőforrások, szolgáltatások és dokumentumok keresése* a portál tetején lévő mezőbe írja be a nevét, amely rendelkezik egy hálózati adapter, amelyet szeretne hozzáadni, vagy távolítsa el, egy biztonsági csoportot a virtuális gép. Amikor a virtuális gép neve megjelenik a keresési eredmények között, kattintson rá.
 2. A **BEÁLLÍTÁSOK** területen válassza a **Hálózatkezelés** elemet.  Válassza ki **konfigurálása az alkalmazásbiztonsági csoportok**az alkalmazásbiztonsági csoportok hozzáadása a hálózati adapter kívánt jelölje be, és törölje az alkalmazásbiztonsági csoportok, amelyek a el kívánja távolítani, a hálózati adapter majd **mentése**. Csak az azonos virtuális hálózatban található hálózati adapterek az ugyanahhoz az alkalmazásbiztonsági csoporthoz lehet hozzáadni. Az alkalmazásbiztonsági csoporthoz léteznie kell a hálózati adapter ugyanazon a helyen.

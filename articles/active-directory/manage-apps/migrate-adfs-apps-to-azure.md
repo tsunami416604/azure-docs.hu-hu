@@ -3,7 +3,7 @@ title: Az AD FS az Azure AD-alkalmazások áthelyezése. | Microsoft Docs
 description: Ebből a cikkből megkönnyíti a szervezetek számára, kifejezetten az összevont SaaS-alkalmazásokhoz az Azure AD-alkalmazások áthelyezése.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 7657ac2e2d5a169607c73b8934328ce41ecea78e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: cf8ce4d39d0097c1ec1866a0aad071a2b5d8908f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141934"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474268"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Az AD FS az Azure AD-alkalmazások áthelyezése 
 
@@ -92,8 +92,8 @@ Ebben a táblázatban összefoglaltuk az AD FS, az Azure AD és az SaaS-alkalmaz
 
 ### <a name="representing-the-app-in-azure-ad-or-ad-fs"></a>Az alkalmazás megjelenítése az Azure AD-ben vagy az AD FS-ben
 A migrálás első lépéseként mérje fel az alkalmazás helyszíni konfigurációját, majd képezze le az Azure AD-be. Az alábbi táblázatban egy AD FS-beli függő entitás konfigurációjának elemeit képeztük le a megfelelő elemekre az Azure AD-ben.  
-- AD FS-beli kifejezés: Függő entitás vagy függő entitás megbízhatósága.
-- Azure AD-beli kifejezés: Vállalati alkalmazás vagy alkalmazásregisztráció (az alkalmazás típusától függően).
+- Az AD FS-beli kifejezés: Függő entitás vagy függő entitás megbízhatóságának.
+- Azure AD-beli kifejezés: Vállalati alkalmazás vagy alkalmazás regisztrációja (alkalmazás függően).
 
 |Alkalmazáskonfigurációs elem|Leírás|Hely az AD-FS-beli konfigurációban|A megfelelő hely az Azure AD-beli konfigurációban|SAML-jogkivonat eleme|
 |-----|-----|-----|-----|-----|
@@ -124,7 +124,7 @@ A következő táblázat ismerteti az identitásszolgáltató konfigurációs f�
 |IdP </br>kijelentkezés </br>URL-cím|Az identitásszolgáltató az alkalmazás által használt kijelentkezési URL-címe (ahová a rendszer átirányítja a felhasználót, amikor kijelentkezik az alkalmazásból).|Az AD FS esetében a kijelentkezési URL-cím vagy azonos a bejelentkezési URL-címmel, vagy megegyezik vele, de a „wa=wsignout1.0” utótaggal egészül ki. Például: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Az Azure AD megfelelő értéke attól függ, hogy az alkalmazás támogatja-e az SAML 2.0-alapú kijelentkezést.</br></br>Ha az alkalmazás támogatja az SAML-alapú kijelentkezést, az érték azt a mintát követi, ahol a {bérlőazonosító} helyére a bérlő azonosítóját kell írni. Az Azure Portalon az **Azure Active Directory** > **Tulajdonságok** területen **Címtár-azonosító** néven található: https&#58;//login.microsoftonline.com/{bérlőazonosító}/saml2</br></br>Ha az alkalmazás nem támogatja az SAML-alapú kijelentkezést: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
 |Jogkivonat </br>aláírás </br>tanúsítvány|A tanúsítvány, amelynek a titkos kulcsát az identitásszolgáltató a kiállított jogkivonatok aláírásához használja. Igazolja, hogy a jogkivonat attól az identitásszolgáltatótól származik, amellyel az alkalmazás megbízhatósági kapcsolata konfigurálva van.|Az AD FS jogkivonat-aláíró tanúsítványa az AD FS-kezelőben a **Tanúsítványok** területen található.|Az Azure AD-ben a jogkivonat-aláíró tanúsítvány az Azure Portalon, az alkalmazás **egyszeri bejelentkezési** tulajdonságainál található **SAML aláíró tanúsítvány** néven. Innen letöltheti a tanúsítványt, hogy feltöltse az alkalmazásba.</br></br> Ha az alkalmazás több tanúsítvánnyal is rendelkezik, az összes tanúsítvány megtalálható az összevonási metaadatokat tartalmazó XML-fájlban.|
 |Azonosító/</br>„kiállító”|Az identitásszolgáltató az alkalmazás által használt azonosítója (más néven „Kiállítóazonosító”).</br></br>Az SAML-jogkivonatban ez az érték a **Kiállító** elemként található meg.|Az AD FS esetében az azonosító általában az összevonási szolgáltatás azonosítója az AD FS-kezelőben, amely a **Szolgáltatás** > **Összevonási szolgáltatás tulajdonságainak szerkesztése** területen található. Például: http&#58;//fs.contoso.com/adfs/services/trust.|Az Azure AD megfelelő értéke azt a mintát követi, ahol a {bérlőazonosító} helyére a bérlő azonosítóját kell írni. Az Azure Portalon az **Azure Active Directory** > **Tulajdonságok** területen **Címtár-azonosító**néven található: https&#58;//sts.windows.net/{bérlőazonosító}/|
-|IdP </br>összevonás </br>metaadatok|Az identitásszolgáltató nyilvánosan elérhető összevonási metaadatainak helye. (Az összevonási metaadatokat egyes alkalmazások alternatív megoldásként használják, hogy a rendszergazdának ne kelljen egyenként konfigurálnia az URL-címeket, azonosítókat és jogkivonat-aláíró tanúsítványokat.)|Az AD FS összevonási metaadatainak URL-címe az AD FS-kezelőben a **Szolgáltatás** > **Végpontok** > **Metaadatok** > **Típus: összevonási metaadatok** területen található. Például: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Az Azure AD megfelelő értéke a https&#58;//login.microsoftonline.com/{BérlőTartományNeve}/FederationMetadata/2007-06/FederationMetadata.xml. mintát követi. Ahol a {BérlőTartományNeve} helyére a bérlő nevét kell írni „contoso.onmicrosoft.com” formátumban. </br></br>További információkat itt talál: [Összevonási metaadatok](../develop/azure-ad-federation-metadata.md).
+|IdP </br>összevonás </br>metaadatok|Az identitásszolgáltató nyilvánosan elérhető összevonási metaadatainak helye. (Az összevonási metaadatokat egyes alkalmazások alternatív megoldásként használják, hogy a rendszergazdának ne kelljen egyenként konfigurálnia az URL-címeket, azonosítókat és jogkivonat-aláíró tanúsítványokat.)|Keresse meg az AD FS összevonási metaadatainak URL-címe az AD FS-kezelőben **szolgáltatás** > **végpontok** > **metaadatok**  >   **Írja be: Összevonási metaadatok**. Például: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Az Azure AD megfelelő értéke a https&#58;//login.microsoftonline.com/{BérlőTartományNeve}/FederationMetadata/2007-06/FederationMetadata.xml. mintát követi. Ahol a {BérlőTartományNeve} helyére a bérlő nevét kell írni „contoso.onmicrosoft.com” formátumban. </br></br>További információkat itt talál: [Összevonási metaadatok](../develop/azure-ad-federation-metadata.md).
 
 ## <a name="moving-saas-apps"></a>SaaS-alkalmazások áthelyezése
 Áthelyezés SaaS-alkalmazásokhoz az AD FS vagy más identitásszolgáltatóról az Azure AD a mai nap manuális folyamat. Alkalmazásspecifikus útmutatásért lásd a [Marketplace-en található SaaS-alkalmazások integrálását ismertető oktatóanyagok listáját](../saas-apps/tutorial-list.md).
@@ -210,13 +210,13 @@ A hozzáférés ellenőrzéséhez győződjön meg róla, hogy a felhasználó l
 ### <a name="configure-the-saas-app"></a>Az SaaS-alkalmazás konfigurálása
 A helyszíni összevonási megoldásról az Azure AD-re való váltás folyamata attól függ, hogy az érintett SaaS-alkalmazás támogatja-e több identitásszolgáltató használatát. Itt találja a több identitásszolgáltató használatának támogatására vonatkozó gyakori kérdéseket:
 
-   **K: Mit jelent, ha egy adott alkalmazás több identitásszolgáltatót támogat?**
+   **K: Mit jelent az alkalmazás több identitásszolgáltatót támogat?**
     
-   V: A több identitásszolgáltató használatát támogató SaaS-alkalmazásokban az új identitásszolgáltató (esetünkben az Azure AD) minden adata megadható a bejelentkezési felület módosításainak véglegesítése előtt. Miután végzett a konfiguráció megadásával, átválthatja az alkalmazás hitelesítési konfigurációját, hogy az Azure AD-re mutasson.
+   V: Több identitásszolgáltató használatát támogató SaaS-alkalmazások lehetővé teszik a bejelentkezési felület módosításainak adja meg az összes, az új identitásszolgáltató (esetünkben az Azure AD) véglegesítése előtt kapcsolatban. Miután végzett a konfiguráció megadásával, átválthatja az alkalmazás hitelesítési konfigurációját, hogy az Azure AD-re mutasson.
 
-   **K: Mi a jelentősége, hogy egy SaaS-alkalmazás támogatja-e több identitásszolgáltató használatát?**
+   **K: Miért nem számít, hogy az SaaS-alkalmazás támogatja több identitásszolgáltató használatát?**
 
-   V: Ha az alkalmazás nem támogatja több identitásszolgáltató használatát, a rendszergazdának meg kell jelölnie egy rövid szerviz- vagy karbantartási időszakot. Az alkalmazás ezalatt nem lesz elérhető, mivel a rendszergazda konfigurálja az Azure AD-t az alkalmazás új identitásszolgáltatójaként. A felhasználókat tájékoztatni kell, hogy a szolgáltatáskimaradás közben nem fognak tudni a bejelentkezni fiókba.
+   V: Ha nem támogatja a több identitásszolgáltató használatát, a rendszergazdának meg kell időszak megadása az elkülönített rövid idő, a szolgáltatási vagy karbantartási szolgáltatáskimaradás konfigurálja az Azure ad-ben, az alkalmazás új Identitásszolgáltatójaként. A felhasználókat tájékoztatni kell, hogy a szolgáltatáskimaradás közben nem fognak tudni a bejelentkezni fiókba.
 
    Ha az alkalmazás támogatja több identitásszolgáltató használatát, az új identitásszolgáltató konfigurálása előre elvégezhető. A rendszergazda az Azure átállításakor az identitásszolgáltatót is egyszerűen átválthatja.
 
@@ -231,7 +231,7 @@ A korábban az **Identitás** > **Egyszeri bejelentkezés beállításai** felü
 
 ![Az Azure AD kiválasztása hitelesítési szolgáltatásként](media/migrate-adfs-apps-to-azure/migrate10.png)
 
-### <a name="optional-configure-user-provisioning-in-azure-ad"></a>Választható: Felhasználók átadásának konfigurálása az Azure AD-ben
+### <a name="optional-configure-user-provisioning-in-azure-ad"></a>Nem kötelező: Felhasználók átadásának konfigurálása az Azure ad-ben
 Ha szeretné megtudni, hogyan kezelje közvetlenül az Azure AD a felhasználókiépítést egy SaaS-alkalmazásban, tekintse meg [A felhasználókiépítés és -megszüntetés automatizálása az SaaS-alkalmazásokban az Azure Active Directoryval](user-provisioning.md) témakort.
 
 ## <a name="next-steps"></a>További lépések

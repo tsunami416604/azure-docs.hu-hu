@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 519867b1e0607a769948c86af263c172e810d107
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 9a2512c488ac368205da11d79de479a888735729
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078116"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448703"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Virtuális gép közzététele az Azure piactéren
 
@@ -84,7 +84,7 @@ A Termékváltozat a szülő ajánlat az Azure Marketplace-en alatt jelenik meg,
     - Ajánlat beállításai
     - Termékváltozatok
     - Piactér
-    - Támogatás minden egyes nézet tartalmazza a kérik a mezők halmaza alapján. Szükséges, piros csillag jelöl, mezők (\*)
+    - Támogatás minden egyes nézet tartalmazza a kérik a mezők halmaza alapján. Kötelező mezők szerepelnek a piros csillaggal (\*)
 
 ## <a name="to-configure-offer-settings"></a>Az ajánlat beállításainak konfigurálása
 
@@ -138,7 +138,7 @@ Ez a mező lehetővé teszi, hogy a rendelkezésre állási termékváltozat def
 
 Ez a Termékváltozat is üzembe helyezhetők az ügyfelek számára minden nyilvános Azure-régióban, amely rendelkezik a Marketplace-integráció.
 
-**Az Azure Government Cloud**
+**Azure Government Cloud**
 
 Ez a Termékváltozat a Azure Government felhőben is telepíthető. Közzététel előtt [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), azt javasoljuk, hogy a kiadók és a megoldás együttműködik hitelesíti a várt módon. Szakasz és vizsgálat [kérése egy próbafiókot](https://azure.microsoft.com/offers/ms-azr-usgov-0044p). 
 
@@ -238,7 +238,7 @@ A **lemez verziója**válassza **+ új verzió**. Ez a lehetőség a következő
 
 A Virtuálisgép-lemezkép verziója szükséges a [sémantická verze](http://semver.org/) formátumban. Verziók az űrlap X.Y.Z, ha X, Y és Z egész számoknak kell lenniük. A lemezképek különböző termékváltozatban különböző fő- és alverzió verziók is rendelkezhet. A Termékváltozat belül verziók csak kell lennie a növekményes változásokat, amely növelheti a javítást (X.Y.Z a – Z).
 
-#### <a name="os-vhd-url"></a>OS VHD URL-CÍME
+#### <a name="os-vhd-url"></a>OS VHD URL
 
 Adja meg a [közös hozzáférésű jogosultságkód URI Azonosítójának](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md) az operációs rendszer virtuális Merevlemeze számára létrehozott.
 

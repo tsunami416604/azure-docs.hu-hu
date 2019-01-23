@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció ismertetése |} A Microsoft Docs'
 description: Ez a cikk ismerteti az Azure AD Connect szinkronizálása az alapértelmezett konfigurációt.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bd708d279649138fcb17362491da4eb7539c478b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6de48b0f4c7c69ab0c6acb4099234b853d2c1523
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313956"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478569"
 ---
-# <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
+# <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció ismertetése
 Ez a cikk ismerteti az out-of-box konfigurációs szabályok. Dokumentumok, és ezek a szabályok milyen hatással van a konfigurációs szabályok. Ez azt is bemutatja az Azure AD Connect-szinkronizálással használható alapértelmezett konfigurációt. A célja, hogy az olvasó felismeri a deklaratív kiépítés nevű konfigurációs modell egy való életből vett példában működéséről. Ez a cikk azt feltételezi, hogy már telepítette, és a telepítővarázsló használata az Azure AD Connect-szinkronizálás beállítása.
 
 Szeretné megtudni, a konfigurációs modell részleteit, olvassa el a [ismertetése deklaratív kiépítés](concept-azure-ad-connect-sync-declarative-provisioning.md).
@@ -125,7 +125,7 @@ Az a célunk az alapértelmezett beállításokkal:
 * Az attribútumokat, amelyek a globális Címlista (globális címlista) található postaláda-erdőből szinkronizálódnak. Ha nincs postaláda található bármely másik erdőben használja.
 * Ha talál egy hivatkozott postafiókkal, a társított engedélyezett fiók az objektum, melyet az Azure ad Szolgáltatásba exportálni kell található.
 
-### <a name="synchronization-rule-editor"></a>Szinkronizálási Szabályszerkesztő
+### <a name="synchronization-rule-editor"></a>Synchronization Rule Editor
 A konfiguráció lehet megtekinteni és módosítani a szinkronizálási szabályok szerkesztő (SRE) eszközzel, és a egy parancsikont a start menüben található.
 
 ![Szinkronizálási Szabályszerkesztővel ikon](./media/concept-azure-ad-connect-sync-default-configuration/sre.png)
@@ -134,7 +134,7 @@ A SRE resource kit eszköz, telepítve van az Azure AD Connect-szinkronizáláss
 
 ![Bejövő szinkronizálási szabály](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
 
-Ezen az ablaktáblán megjelenik a konfigurációs létrehozott összes szinkronizálási szabályokat. A tábla minden sora egy szinkronizálási szabály. Szabályok típusai mellett balra, a két különböző felsorolt: bejövő és kimenő. Bejövő és kimenő a metaverzumba nézetéből. Főleg kívánja fókusz ebben a cikkben áttekintjük a bejövő szabályok. A szinkronizálási szabályok tényleges listáját az ad-ben az észlelt séma függ. A fenti képen a fiókerdő (fabrikamonline.com) nem rendelkezik minden olyan szolgáltatások, például Exchange és a Lync, és ezeknek a szolgáltatásoknak nincs szinkronizálási szabály létrejött. Az erőforrás-erdő (res.fabrikamonline.com) szinkronizálási szabályok található ezeknek a szolgáltatásoknak. A szabály a tartalom észlelt verziójától függően eltér. Például az Exchange 2013 egy központi telepítésben vannak konfigurálva, mint az Exchange 2010/2007 további attribútumfolyamok.
+Ezen az ablaktáblán megjelenik a konfigurációs létrehozott összes szinkronizálási szabályokat. A tábla minden sora egy szinkronizálási szabály. A bal oldali szabálytípusokat alatt a két különböző láthatók: Bejövő és kimenő. Bejövő és kimenő a metaverzumba nézetéből. Főleg kívánja fókusz ebben a cikkben áttekintjük a bejövő szabályok. A szinkronizálási szabályok tényleges listáját az ad-ben az észlelt séma függ. A fenti képen a fiókerdő (fabrikamonline.com) nem rendelkezik minden olyan szolgáltatások, például Exchange és a Lync, és ezeknek a szolgáltatásoknak nincs szinkronizálási szabály létrejött. Az erőforrás-erdő (res.fabrikamonline.com) szinkronizálási szabályok található ezeknek a szolgáltatásoknak. A szabály a tartalom észlelt verziójától függően eltér. Például az Exchange 2013 egy központi telepítésben vannak konfigurálva, mint az Exchange 2010/2007 további attribútumfolyamok.
 
 ### <a name="synchronization-rule"></a>Szinkronizálási szabály
 A szinkronizálási szabály egy konfigurációs objektumot az attribútumok áramló, ha teljesül egy feltétel. Írja le, hogy az adott összekötőtérben objektum tartozik a metaverzumba, más néven objektumhoz tartozó is szolgál **illesztési** vagy **megfelelő**. A szinkronizálási szabályok rendelkezik egy elsőbbséget érték, amely jelzi, hogyan kapcsolódnak egymáshoz. A szinkronizálási szabály alacsonyabb numerikus értékkel rendelkezik nagyobb prioritással, és a egy attribútum folyamat ütközik, nagyobb prioritással wins az ütközés feloldásának.
@@ -145,7 +145,7 @@ Mivel ez a szabály az out-of-box szabály, figyelmeztetés jelenik meg a szabá
 
 ![Szinkronizálási szabályok figyelmeztetés](./media/concept-azure-ad-connect-sync-default-configuration/warningeditrule.png)
 
-A szinkronizálási szabály rendelkezik négy konfigurációs szakaszokat: leírás, hatókörkezeléséhez kapcsolódó szűrő illesztési szabályokat és átalakításokat.
+A szinkronizálási szabály négy configuration részből áll: Leírás, Scoping szűrő, illesztési szabályokat és átalakításokat.
 
 #### <a name="description"></a>Leírás
 Az első szakaszban biztosít alapvető információkat, például a nevét és leírását.
@@ -187,7 +187,7 @@ Transzformációs szakaszából határozza meg az összes attribútum folyamatok
 
 Ez a konfiguráció a környezet-fiók-erőforrás erdő telepítés helyezi várható található engedélyezett fióknak az erdő és a egy letiltott fiók az erőforráserdőben Exchange-hez és a Lync beállításokkal. A szinkronizálási szabály egyszerre a bejelentkezéshez szükséges attribútumokat tartalmazza, és ezek az attribútumok áramlásának az erdőből, ha már van egy engedélyezett. Ezek attribútumfolyamok épülnek, több szinkronizálási szabály.
 
-Átalakítás is rendelkezik különböző: állandó, a közvetlen és a kifejezést.
+Átalakítás különböző típusú lehet: Állandó közvetlen és kifejezés.
 
 * Az adatáramlás mindig folyamatok szoftveresen kötött értéket. A fenti esetben mindig beállítja az értéket **igaz** a metaverzum-attribútum neve **accountEnabled**.
 * Közvetlen folyamat mindig folyamatok az attribútum a forrásban, mint a target attribútum-van.
@@ -216,7 +216,7 @@ Most áttekintett néhány egyéni szinkronizálási szabály, de a szabályok m
 
 A élveznek a szinkronizálási szabályait állítja be a csoportok a telepítővarázsló. A csoportban található összes szabály ugyanazzal a névvel rendelkezik, de más csatlakoztatott könyvtárban csatlakoznak. A telepítővarázsló lehetővé teszi a szabály **a az AD-ből – felhasználói csatlakozás** legmagasabb prioritású és végiglépkedve át az összes kapcsolódó AD-címtár. Majd folytatja az a következő csoportok szabályok egy előre meghatározott sorrendben. A szabályok egy csoporton belül ad hozzá a sorrendet, az összekötők lettek hozzáadva a varázslóban. Egy másik összekötő varázslóval kerül, ha a szinkronizálási szabályok rendezi újra, és az új összekötő szabályok utolsó az egyes csoportokban vannak beszúrva.
 
-### <a name="putting-it-all-together"></a>A teljes kép
+### <a name="putting-it-all-together"></a>Végső összeállítás
 Most már tudjuk elegendő kapcsolatos szinkronizálási szabályok tudják a konfigurációt a különböző szinkronizálási szabályok működésének megismerése. Ha egy felhasználó és a rendszer a metaverzumba hozzájáruló attribútumok tekinti meg, a szabályokat alkalmazza a rendszer a következő sorrendben:
 
 | Name (Név) | Megjegyzés |
@@ -236,6 +236,6 @@ Most már tudjuk elegendő kapcsolatos szinkronizálási szabályok tudják a ko
 
 **Áttekintő témakör**
 
-* [Az Azure AD Connect szinkronizálása: ismertetése, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 

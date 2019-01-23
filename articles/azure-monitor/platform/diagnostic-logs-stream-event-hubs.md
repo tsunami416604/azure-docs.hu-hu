@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 2143ebdddc71973b64b8b77be55b4d0c2b84df64
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: ''
+ms.openlocfilehash: 1ef779e64995c6996538b68b892cb45f11788067
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578988"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477464"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream Azure diagnosztikai naplók egy eseményközpontba
 **[Az Azure diagnosztikai naplók](diagnostic-logs-overview.md)**  továbbítható bármely alkalmazás a beépített "Exportálás az Event Hubs" lehetőség használatával, a portálon, vagy az Event Hub engedélyezési szabály azonosítója a diagnosztikai beállítást az Azure-on keresztül engedélyezésével közel valós időben PowerShell-parancsmagok vagy az Azure parancssori felület.
@@ -91,7 +91,7 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizati
 
 Az Event Hub engedélyezési szabály azonosítója egy karakterláncérték, ebben a formátumban: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, például `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Jelenleg nem választhat egy adott eseményközpont neve a PowerShell használatával.
 
-### <a name="via-azure-cli"></a>Az Azure CLI-n keresztül
+### <a name="via-azure-cli"></a>Via Azure CLI
 
 Keresztül streamelésének engedélyezéséhez a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest), használhatja a [az monitor diagnostic-settings létrehozása](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) parancsot.
 
@@ -198,3 +198,4 @@ A Windows Azure Diagnostics-ügynök használatával, a számítási erőforrás
 * [Az Azure Monitor szolgáltatással Stream Azure Active Directory-naplók](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [További információk az Azure Diagnostics-naplókról](diagnostic-logs-overview.md)
 * [Bevezetés az Event Hubs használatába](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+

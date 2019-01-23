@@ -3,7 +3,7 @@ title: Adja hozzá a helyszíni alkalmazás – az Azure Active Directory alkalm
 description: Az Azure Active Directory (Azure AD) egy alkalmazásproxy-szolgáltatás, amely lehetővé teszi a felhasználók hozzáférhessenek a helyszíni alkalmazásokhoz bejelentkezik az Azure AD-fiókja van. Ez az oktatóanyag bemutatja, hogyan használható az alkalmazásproxy használatával a környezet előkészítése a, majd, és az Azure portal használatával az Azure AD-bérlő helyszíni alkalmazás hozzáadása.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 926a339bc8214c989da4ef934ae41012eea58d1e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0ea948760c7639f24031a0177df0d42f9706d006
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120733"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471214"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 
@@ -81,7 +81,7 @@ Nyissa meg a következő portokat **kimenő** forgalmat.
 
 A tűzfal szabályozza az adatforgalmat a felhasználók helye szerint, 80-as és 443-as, a forgalmat is nyissa meg a hálózati szolgáltatásként futó Windows-szolgáltatások.
 
-Ha még alkalmazásproxy használ, előfordulhat az összekötő telepítve van egy régebbi verzióját.  Ez az oktatóanyag az összekötő legújabb verziójának telepítéséhez. Verziók 1.5.132.0 korábban is szükséges a következő portok megnyitásához: 5671, 8080-as, 9350 – 9091, 9090, 9352-es, 10100 – 10120. 
+Ha még alkalmazásproxy használ, előfordulhat az összekötő telepítve van egy régebbi verzióját.  Ez az oktatóanyag az összekötő legújabb verziójának telepítéséhez. Verziók 1.5.132.0 korábban is szükséges a következő portok megnyitásához: 5671, 8080, 9090-9091, 9350, 9352, 10100–10120. 
 
 ### <a name="allow-access-to-urls"></a>URL-címek való hozzáférés engedélyezése
 
@@ -89,7 +89,7 @@ A következő URL-hozzáférés engedélyezése:
 
 | URL-cím | Hogyan használja fel azokat |
 | --- | --- |
-| \*. msappproxy.net<br>\*. servicebus.windows.net | Az összekötő és az alkalmazásproxy-felhőszolgáltatás közötti kommunikáció |
+| \*.msappproxy.net<br>\*.servicebus.windows.net | Az összekötő és az alkalmazásproxy-felhőszolgáltatás közötti kommunikáció |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az Azure az alábbi URL-címek segítségével tanúsítványok |
 | login.windows.net<br>login.microsoftonline.com | Az összekötő URL-használ a regisztrációs folyamat során. |
 

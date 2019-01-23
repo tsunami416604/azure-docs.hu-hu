@@ -3,19 +3,19 @@ title: 'Oktatóanyag:  Az Azure-ban az átmenő hitelesítés (ESP) egyerdős AD
 description: Bemutatja, hogyan állíthatja be az átmenő hitelesítést használó hibrid identitás környezetben.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 140161e88ee572d728a7f9c923c9528ea6755cc1
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 6bbf9cbea0671aaa73ddc5402f3102eea3154e6c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165454"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467909"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Oktatóanyag:  Egyetlen AD-erdő integrálása átmenő hitelesítéssel (PTA)
 
@@ -209,7 +209,7 @@ Most, hogy egy bérlő és a egy globális rendszergazda, adja hozzá az egyéni
 3. Válassza az **Egyéni tartomány hozzáadása** lehetőséget.</br>
 ![Egyéni](media/tutorial-federation/custom1.png)</br>
 4. A **egyéni tartománynevek**, adja meg az egyéni tartomány nevét a mezőbe, majd kattintson **hozzáadni Domain**.
-5. Az egyéni tartomány neve képernyőjén lesz megadva TXT vagy MX adatokkal.  Ezt az információt a DNS-információkat a tartományregisztráló a tartományba, szerepelnie kell.  Lépjen a tartományregisztráló van szüksége, hogy írja be a TXT vagy MX adatokat a tartomány DNS-beállításait.  Ez lehetővé teszi az Azure a tartomány ellenőrzéséhez.  Ez győződjön meg arról, hogy az Azure akár 24 óráig is eltarthat.  További információkért lásd: a [egyéni tartomány hozzáadása](../../active-directory/fundamentals/add-custom-domain.md) dokumentációját.</br>
+5. Az egyéni tartomány neve képernyőjén lesz megadva TXT vagy MX adatokkal.  Ezt az információt a DNS-információkat a tartományregisztráló a tartományba, szerepelnie kell.  So you need to go to your domain registrar, enter either the TXT or MX information in the DNS settings for your domain.  Ez lehetővé teszi az Azure a tartomány ellenőrzéséhez.  Ez győződjön meg arról, hogy az Azure akár 24 óráig is eltarthat.  További információkért lásd: a [egyéni tartomány hozzáadása](../../active-directory/fundamentals/add-custom-domain.md) dokumentációját.</br>
 ![Egyéni](media/tutorial-federation/custom2.png)</br>
 6. Annak érdekében, hogy ellenőrizve van, kattintson az ellenőrzés gombra.</br>
 ![Egyéni](media/tutorial-federation/custom3.png)</br>
@@ -223,10 +223,10 @@ Most, töltse le és telepítse az Azure AD Connect ideje.  Ha telepítve van a 
 4. Az Express beállítások képernyőn kattintson a **Testreszabás**.  
 5. A szükséges összetevők telepítése képernyőn. Kattintson az **Install** (Telepítés) gombra.  
 6. A felhasználói bejelentkezési képernyőn válassza ki a **átmenő hitelesítés** és **egyszeri bejelentkezés engedélyezése** kattintson **tovább**.</br>
-![ESP](media/tutorial-passthrough-authentication/pta1.png)</b>
+![PTA](media/tutorial-passthrough-authentication/pta1.png)</b>
 7. A csatlakozás az Azure ad Szolgáltatáshoz képernyőn, adja meg a felhasználónevet és jelszót a fentiekben létrehozott globális rendszergazdai, és kattintson a **tovább**.
 2. Kattintson a csatlakozás a könyvtárak képernyő **könyvtár hozzáadása**.  Válassza ki **új AD-fiók létrehozása** , és írja be a contoso\rendszergazda felhasználónévvel és jelszóval, és kattintson a **OK**.
-3. Kattintson a **Tovább**gombra.
+3. Kattintson a **tovább**.
 4. Az Azure AD bejelentkezés konfigurálása képernyőn válassza ki a **Folytatás ellenőrzött tartományok összes UPN-utótagot egyeztetés nélkül** kattintson **tovább.**
 5. Kattintson a tartomány és az OU-szűrés képernyő, **tovább**.
 6. Az egyedi azonosítása a felhasználók képernyő, kattintson **tovább**.

@@ -4,7 +4,7 @@ description: Ez a témakör a javítási lépések userCertificate attribútum �
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 0882976df898d36f1d5a5ff06e0de5c747613719
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ffc8832fa2da9d4bfad23752a5bc767ace2b573e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312080"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478620"
 ---
-# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Az Azure AD Connect szinkronizálása: userCertificate attribútum által okozott LargeObject hibák
+# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Az Azure AD Connect szinkronizálása: UserCertificate attribútum által okozott LargeObject hibák kezelése
 
 Az Azure AD kikényszeríti a maximálisan megengedett **15** értékek tanúsítvány a **userCertificate** attribútum. Az Azure AD Connect több mint 15 értéket tartalmazó objektumot exportálja az Azure ad-ben, ha az Azure AD adja vissza egy **LargeObject** történt a következő üzenettel:
 
@@ -41,7 +41,7 @@ Az objektumok listájában, a bérlőben LargeObject-hibák beszerzéséhez hasz
 ## <a name="mitigation-options"></a>Megoldás beállításai
 A LargeObject hiba megszüntetéséig egyéb attribútumainak módosítása ugyanazon az objektumon nem lehet exportálni az Azure ad-hez. A hiba elhárításához fontolja meg a következő beállításokat:
 
- * Azure AD Connect 1.1.524.0 hozhat létre frissítése vagy után. Az Azure AD Connect 1.1.524.0, az out-of-box szinkronizálási szabályok frissítve lett-e, nem exportálhatja a attribútumok userCertificate és a userSMIMECertificate, ha az attribútumok több mint 15 értéket kell létrehozni. Az Azure AD Connect frissítése a részletekért tekintse meg a cikk [az Azure AD Connect: frissítés egy előző verzióról a legújabbra](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+ * Azure AD Connect 1.1.524.0 hozhat létre frissítése vagy után. Az Azure AD Connect 1.1.524.0, az out-of-box szinkronizálási szabályok frissítve lett-e, nem exportálhatja a attribútumok userCertificate és a userSMIMECertificate, ha az attribútumok több mint 15 értéket kell létrehozni. Az Azure AD Connect frissítése a részletekért tekintse meg a cikk [az Azure AD Connect: Frissítés egy előző verzióról a legújabbra](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
 
  * Alkalmazzon egy **kimenő szinkronizálási szabály** az Azure AD Connectben exportálhatók egy **null érték helyett a tényleges értékek objektumok 15-nél több tanúsítvány értékekkel**. Ez a beállítás akkor megfelelő, ha nincs szüksége a tanúsítvány értékeket nelze exportovat do Azure AD-objektum több mint 15 értéket. A szinkronizálási szabály megvalósítása a részletekért tekintse meg a következő szakaszban [Implementing szinkronizálási szabályt, amely korlátozza az exportálási userCertificate attribútum](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
 
@@ -106,7 +106,7 @@ Meglévő szinkronizálási szabály, amely engedélyezve és konfigurálva user
 
     | Attribútum | Művelet | Érték |
     | --- | --- | --- |
-    | sourceObjectType | EGYENLŐ | Felhasználó |
+    | sourceObjectType | EQUAL | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |
 
 ### <a name="step-3-create-the-outbound-sync-rule-required"></a>3. lépés A szükséges kimenő szinkronizálási szabály létrehozása

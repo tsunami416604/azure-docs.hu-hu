@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure AD Connect: ADSyncConfig PowerShell-referencia |} A Microsoft Docs'
+title: 'Azure AD Connect: ADSyncConfig PowerShell-referencia |} A Microsoft Docs'
 description: Ebben a dokumentumban részletes információ a ADSyncConfig.psm1 PowerShell-modult.
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84be07eeb112711de35853162b798b5f6ed0b2aa
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 015823ee9674c2c704cdea13e44ced06e5b9644c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422762"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463524"
 ---
-# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Az Azure AD Connect: ADSyncConfig PowerShell-referencia
+# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  ADSyncConfig PowerShell-referencia
 A következő dokumentáció arról nyújt a ADSyncConfig.psm1 PowerShell-modult, amely tartalmazza az Azure AD Connecttel kapcsolatos referenciainformációk.
 
 
@@ -63,7 +63,7 @@ Find objects with disabled inheritance in 'Contoso' domain (by default returns '
 
 Get-ADSyncObjectsWithInheritanceDisabled - SearchBase "Contoso"
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Find 'user' objects with disabled inheritance in 'Contoso' domain
 ```
@@ -159,7 +159,7 @@ Opcionálisan megadhat egy DistinguishedName ADobjectDN paraméterben ezek az en
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -267,7 +267,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Megerősítése
+#### <a name="-confirm"></a>-Confirm
 A parancsmag futtatása előtt megerősítést fog kérni.
 
 ```yaml
@@ -326,7 +326,7 @@ Opcionálisan megadhat egy DistinguishedName ADobjectDN paraméterben ezek az en
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -434,7 +434,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Megerősítése
+#### <a name="-confirm"></a>-Confirm
 A parancsmag futtatása előtt megerősítést fog kérni.
 
 ```yaml
@@ -488,7 +488,7 @@ Opcionálisan megadhat egy DistinguishedName ADobjectDN paraméterben ezek az en
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -596,7 +596,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Megerősítése
+#### <a name="-confirm"></a>-Confirm
 A parancsmag futtatása előtt megerősítést fog kérni.
 
 ```yaml
@@ -649,7 +649,7 @@ Opcionálisan megadhat egy DistinguishedName ADobjectDN paraméterben ezek az en
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -757,7 +757,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Megerősítése
+#### <a name="-confirm"></a>-Confirm
 A parancsmag futtatása előtt megerősítést fog kérni.
 
 ```yaml
@@ -810,7 +810,7 @@ Ezeket az engedélyeket az erdőben lévő összes tartományban vannak megadva.
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -878,7 +878,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Megerősítése
+#### <a name="-confirm"></a>-Confirm
 A parancsmag futtatása előtt megerősítést fog kérni.
 
 ```yaml
@@ -935,7 +935,7 @@ Opcionálisan megadhat egy DistinguishedName ADobjectDN paraméterben ezek az en
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -1043,7 +1043,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Megerősítése
+#### <a name="-confirm"></a>-Confirm
 A parancsmag futtatása előtt megerősítést fog kérni.
 
 ```yaml
@@ -1174,7 +1174,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Megerősítése
+#### <a name="-confirm"></a>-Confirm
 A parancsmag futtatása előtt megerősítést fog kérni.
 
 ```yaml
@@ -1228,7 +1228,7 @@ Ebben az esetben ADobjectDN lesz, amely megfelel a GroupWriteback szolgáltatás
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
 
-#### <a name="example-2"></a>2. PÉLDA
+#### <a name="example-2"></a>EXAMPLE 2
 ```
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -1336,7 +1336,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Megerősítése
+#### <a name="-confirm"></a>-Confirm
 A parancsmag futtatása előtt megerősítést fog kérni.
 
 ```yaml

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 53361ed460917fff42008283429967eff2e80ab2
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 0609a653327640c542457822e41143b9b39dd6d4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345096"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462199"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító testreszabása
 
@@ -77,7 +77,7 @@ A helyi felhasználói felület fejlesztési környezet beállítása a folyamat
 
 ## <a name="customize-the-layout"></a>Az elrendezés testreszabása
 
-A távoli figyelési megoldás minden egyes oldalához tevődik össze a vezérlők, a továbbiakban *panelek* a forráskódban. A **irányítópult** lap öt panelek épül fel: áttekintése, térkép, riasztások, telemetriai adatokat és elemzések. A forráskód minden lapon és a hozzá tartozó panelek meghatározó annak a [számítógépek-remote-monitoring-mire](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub-adattárban. Például, ha a kódot, amely meghatározza a **irányítópult** oldalon, az elrendezését, és a panelek az oldalon található a [irányítópult src/components/oldalak](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) mappát.
+A távoli figyelési megoldás minden egyes oldalához tevődik össze a vezérlők, a továbbiakban *panelek* a forráskódban. A **irányítópult** lap öt panelek épül fel: Áttekintés, térkép, riasztások, telemetriai adatok és Analytics. A forráskód minden lapon és a hozzá tartozó panelek meghatározó annak a [számítógépek-remote-monitoring-mire](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub-adattárban. Például, ha a kódot, amely meghatározza a **irányítópult** oldalon, az elrendezését, és a panelek az oldalon található a [irányítópult src/components/oldalak](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) mappát.
 
 A panelek saját elrendezés és a méretezés kezelése, mivel könnyen módosíthatja az oldal elrendezése. A következő módosításokat a **PageContent** eleme a `src/components/pages/dashboard/dashboard.js` fájlt:
 
@@ -365,7 +365,7 @@ A **irányítópult** oldalon megjelennek a KPI-k a **Analytics** panel. Ezen KP
       openCriticalCount: (acc.openCriticalCount || 0) + (isCritical && isOpen ? 1 : 0),
       totalWarningCount: (acc.totalWarningCount || 0) + (isWarning ? 1 : 0),
       totalCriticalCount: (acc.totalCriticalCount || 0) + (isCritical ? 1 : 0),
-      alarmsPerDeviceId: updatedAlarmsPerDeviceId
+      alertsPerDeviceId: updatedAlertsPerDeviceId
     };
     ```
 

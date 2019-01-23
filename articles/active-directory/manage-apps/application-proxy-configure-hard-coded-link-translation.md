@@ -4,7 +4,7 @@ description: Az Azure AD-alkalmazásproxy összekötőit alapjait ismerteti.
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 73854cba151dfbebe53862a39fbe980502192c2d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 6476793bc0c7398bb407a8ad2b245f48613717b7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230063"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461552"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Átirányítási szoftveresen kötött mutató hivatkozásokat az Azure AD-alkalmazásproxyval közzétett alkalmazások
 
@@ -33,9 +33,9 @@ Ha a bérlő nem használhat egyéni tartományokat, többféle módon más, ame
 
 **1. lehetőség: A Managed Browsert használhassák** – Ez a megoldás csak akkor alkalmazható, ha azt tervezi, hogy a javasolt vagy szükséges, hogy a felhasználók az alkalmazás eléréséhez az Intune Managed Browser keresztül. Az összes közzétett URL-címek azt fogja kezelni. 
 
-**2. lehetőség: A MyApps bővítmény használata** – Ez a megoldás a felhasználónak az egy ügyféloldali bővítmény telepítéséhez, de azt fogja kezelni az minden közzétett URL-címeket, és a legnépszerűbb böngészőkben működik. 
+**2. lehetőség: A MyApps bővítményével** – Ez a megoldás a felhasználónak az egy ügyféloldali bővítmény telepítéséhez, de azt fogja kezelni az minden közzétett URL-címeket, és a legnépszerűbb böngészőkben működik. 
 
-**3. lehetőség: Használja a hivatkozás fordítási beállítás** – Ez egy nem rendszergazdai ügyféloldali beállítás, amely nem látható a felhasználók számára. Csak azonban azt fogja kezelni a HTML és CSS URL-címeket. Változtatható belső URL-címek Javascript keresztül létrehozott (például) nem fog működni.  
+**3. lehetőség: A hivatkozás a fordítási beállítással** – Ez egy nem rendszergazdai ügyféloldali beállítás, amely nem látható a felhasználók számára. Csak azonban azt fogja kezelni a HTML és CSS URL-címeket. Változtatható belső URL-címek Javascript keresztül létrehozott (például) nem fog működni.  
 
 Ezeket a funkciókat folyamatosan dolgozik, függetlenül attól, hol találhatók a felhasználók a hivatkozásokat. Ha alkalmazások, amelyek közvetlenül a belső végpontok vagy -portokat, leképezheti belső URL-közzétett külső Application Proxy URL-címeket. 
 
@@ -46,13 +46,13 @@ Ezeket a funkciókat folyamatosan dolgozik, függetlenül attól, hol találhat�
 >Vagy, ha az alkalmazást konfigurálnia kell a hivatkozás fordítási SharePoint, lásd: [konfigurálása a SharePoint 2013-hoz készült másodlagos címek leképezése](https://technet.microsoft.com/library/cc263208.aspx) egy másik módszer a leképezés hivatkozásokat. 
 
  
-### <a name="option-1-intune-managed-browser-integration"></a>1. lehetőség: Az Intune által felügyelt böngésző-integráció 
+### <a name="option-1-intune-managed-browser-integration"></a>Option 1: Az Intune által felügyelt böngésző-integráció 
 
 Az Intune Managed Browser használatával további védelme érdekében az alkalmazás és a tartalom. Ez a megoldás használatához meg kell szükséges vagy ajánlott felhasználói hozzáférés az alkalmazást az Intune Managed Browser. Belső URL-címekhez alkalmazásproxyval közzétett ismeri fel a Managed Browser lesz, és a rendszer átirányítja a megfelelő külső URL-CÍMÉT. Ez biztosítja, hogy működik a szokott belső URL-címet, és ha a felhasználó a böngésző kerül, és közvetlenül a belső URL-cím-típusok, akkor is, ha a felhasználó távoli működik.  
 
 További információkért, hogyan konfigurálhatja ezt a beállítást, többek között tekintse át a [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) dokumentációját.  
 
-### <a name="option-2-myapps-browser-extension"></a>2. lehetőség: MyApps böngészőbővítmény 
+### <a name="option-2-myapps-browser-extension"></a>Option 2: MyApps böngészőbővítmény 
 
 A MyApps böngésző kiterjesztésű belső URL-címekhez alkalmazásproxyval közzétett ismeri fel a bővítmény és a megfelelő külső URL-címre irányítja át. Ez biztosítja, hogy működik a szokott belső URL-címet, és ha a felhasználó a böngésző címsorában kerül, és közvetlenül a belső URL-cím-típusok, akkor is, ha a felhasználó távoli működik.  
 
@@ -85,7 +85,7 @@ A helyszíni alkalmazások belső hivatkozások közös két típusa van:
 
 Hivatkozás fordítási engedélyezve van minden alkalmazáshoz, hogy a felhasználói élmény felett az alkalmazásonkénti szintjén. Kapcsolja be a hivatkozás fordítási egy alkalmazáshoz, ha azt szeretné, hogy a hivatkozások *a* nem fordítható le, az alkalmazás hivatkozásokat tartalmaz *való* , amelyet az alkalmazás. 
 
-Tegyük fel például, hogy három olyan alkalmazásokkal rendelkezik, hogy az összes hivatkozás egymáshoz alkalmazásproxyn keresztül közzétett: előnyöket, a költségek és a megtételéhez szükséges. Van egy negyedik alkalmazást, visszajelzés, alkalmazásproxyn keresztül közzétett nem.
+Tegyük fel például, hogy három olyan alkalmazásokkal rendelkezik, hogy az összes hivatkozás egymáshoz alkalmazásproxyn keresztül közzétett: Előnyök, a költségek és a megtételéhez szükséges. Van egy negyedik alkalmazást, visszajelzés, alkalmazásproxyn keresztül közzétett nem.
 
 Hivatkozás fordítási az előnyök alkalmazás engedélyezésekor a költségek és utazási mutató hivatkozásokat tartalmaz a rendszer átirányítja a külső URL-címek ezen alkalmazások esetén, de visszajelzés mutató hivatkozás nem irányítja át, mert nincsenek külső URL-CÍMÉT. Vissza előnyeit a költségek és utazás hivatkozások nem működik, mert a hivatkozás fordítási nincs engedélyezve ezen két alkalmazások esetén.
 

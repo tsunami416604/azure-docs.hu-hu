@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure StorSimple virtuális tömb riasztások megtekintése és kezelése |} Microsoft Docs
-description: Ismerteti a StorSimple virtuális tömb riasztási feltételek és a súlyosság, és a StorSimple Manager szolgáltatás segítségével kezelheti a riasztásokat.
+title: A Microsoft Azure StorSimple Virtual Array riasztások megtekintése és kezelése |} A Microsoft Docs
+description: Ismerteti a StorSimple Virtual Array riasztási feltételeket és a súlyosság és a StorSimple Manager szolgáltatás használata kezelheti a riasztásokat.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,157 +15,155 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d4d680e3460fbeff73c2f334c6461da7967374d
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 0cd3f506205a3ee4f4435b16fd2185eeb20aef3c
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27786407"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447224"
 ---
-# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Riasztások kezelése a StorSimple virtuális tömb StorSimple Eszközkezelő
+# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Riasztások kezelése a StorSimple Virtual Array az a StorSimple Eszközkezelő
 
 ## <a name="overview"></a>Áttekintés
 
-A riasztások funkciók a StorSimple Device Manager-módot biztosít a áttekintheti, és törölje a StorSimple virtuális tömbök valós idejű alapon kapcsolatos riasztásokat. A riasztások használhatja a **szolgáltatási összegző** panelt, és központilag figyelheti a ügynökállapottal kapcsolatos hibákkal a StorSimple virtuális tömbök és a teljes Microsoft Azure StorSimple megoldáshoz.
+A StorSimple-Eszközkezelő szolgáltatásban a riasztások a szolgáltatás oly módon, hogy tekintse át, és törölje a valós idejű alapon StorSimple Virtual Arrayt kapcsolatos riasztásokat biztosít. A riasztások használhatja a **szolgáltatás összefoglalás** központilag figyelheti a StorSimple Virtual Arrayt és a teljes Microsoft Azure StorSimple megoldás az állapotbeli problémák panel.
 
-Ez az oktatóanyag leírja a riasztási értesítéseket, a közös riasztási feltételek, a riasztások súlyossági szintjei konfigurálása és megtekintése, és nyomon követéséhez értesítések. Ezenkívül azt is riasztás rövid összefoglaló táblák, amelyekkel gyorsan keresse meg az adott riasztásra, és megfelelő választ.
+Ez az oktatóanyag leírja a riasztási értesítések, a gyakori riasztási feltételek, a riasztás súlyossági szintek konfigurálása és megtekintése és nyomon követheti a riasztások. Továbbá a riasztás rövid összefoglaló táblát is, amelyeket gyorsan keresse meg az adott riasztásra, és megfelelő választ tartalmazza.
 
 ![Riasztások lap](./media/storsimple-virtual-array-manage-alerts/alerts1.png)
 
 ## <a name="configure-alert-settings"></a>A riasztási beállítások konfigurálása
 
-Kiválaszthatja, hogy szeretné-e az egyes a StorSimple virtuális tömbök riasztási feltétel e-mailben értesítést kapni. Ezenkívül azonosítsa a más riasztási értesítés címzettjeinek írja be az e-mail címüket a **további e-mailek címzettjeinek** mezőbe pontosvesszővel elválasztva.
+Kiválaszthatja, hogy szeretné-e a StorSimple Virtual Arrayt minden riasztási feltétel e-mailben értesítést. Ezenkívül azonosítsa a más riasztási értesítés címzettjeinek írja be az e-mail címüket a **e-mail további címzettjei** mezőbe pontosvesszővel elválasztva.
 
 > [!NOTE]
-> Legfeljebb 20 e-mail cím adható virtuális tömb adhat meg.
+> Megadhat egy legfeljebb 20 e-mail-címek száma virtuális tömb.
 
-
-Egy virtuális tömb kapcsolódó e-mail értesítések engedélyezése után az értesítési listán tagjai minden alkalommal, amikor egy kritikus riasztás esetén e-mailt fog kapni. Az üzenetek küldését  *storsimple-alerts-noreply@mail.windowsazure.com*  és leírja a riasztást kiváltó körülmény. Címzettek kattintva **Unsubscribe** maguk eltávolítása az e-mail értesítési listán.
+Miután engedélyezte a virtuális tömb kapcsolódó e-mail értesítések, a notification lista tagjainak minden alkalommal, amikor egy kritikus riasztás esetén e-mail üzenetet fog kapni. Az üzenetek küldését *storsimple-alerts-noreply@mail.windowsazure.com* és leírja a riasztási feltételt. Rákattinthat a címzettek **Unsubscribe** eltávolítása magukat az e-mail értesítési listája.
 
 #### <a name="to-enable-email-notification-for-alerts"></a>Riasztásokhoz kapcsolódó e-mail értesítések engedélyezése
 
-1. Nyissa meg a StorSimple eszköz Manager szolgáltatáshoz, és a a **felügyeleti** szakaszt, válassza ki, és kattintson **eszközök**. Az eszközök jelenik meg a listában jelölje ki, és kattintson az eszköz.
+1. Nyissa meg a StorSimple-Eszközkezelő szolgáltatás és a a **felügyeleti** szakaszt, válassza ki, és kattintson a **eszközök**. Az eszközök jelennek meg a listában válassza ki, és kattintson az eszköz.
    
-    ![a riasztási beállítások](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
-2. Ezzel megnyílik a **beállítások** panelen. Az a **eszközbeállítások** szakaszban jelölje be **általános**. Ezzel megnyílik a **általános beállítások** panelen.
+    ![riasztási beállítások](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
+2. Megnyílik a **beállítások** panelen. Az a **eszközbeállítások** szakaszban jelölje be **általános**. Megnyílik a **általános beállítások** panelen.
    
-    ![riasztások értesítési konfiguráció](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
-3. Az a **általános beállítások** paneljén lépjen **riasztási beállítások** szakaszt, és állítsa be a következőket:
+    ![riasztások értesítési konfigurációja](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
+3. Az a **általános beállítások** panelen lépjen a **riasztási beállítások** szakaszt, és állítsa be a következőket:
    
    1. Az a **e-mail értesítő engedélyezése** mezőben válassza **Igen**.
-   2. Az a **szolgáltatás-rendszergazdák E-mail** mezőben válassza **Igen** Ha a szolgáltatás-rendszergazda kíván, és minden társrendszergazdák a riasztási értesítéseket.
-   3. Az a **további e-mailek címzettjeinek** mezőbe írja be a többi a riasztási értesítéseket kapjanak címzett e-mail címét. Írja be nevét a formátumban  *someone@somewhere.com* . Az e-mail címek elválasztásához használjon pontosvesszőt. Legfeljebb 20 e-mail címeket a virtuális eszköz konfigurálása
+   2. Az a **E-mail-szolgáltatás-rendszergazdák** mezőben válassza **Igen** Ha azt szeretné, hogy a szolgáltatás-rendszergazda, és az összes többi rendszergazda is megkapja a riasztási értesítéseket.
+   3. Az a **e-mail további címzettjei** mezőbe írja be annak az összes többi címzett, akiknek meg kell kapniuk a riasztási értesítéseket. A következő formátumban adja meg a neveket *someone@somewhere.com*. Az e-mail címeket pontosvesszővel. Beállíthatja, hogy egy legfeljebb 20 e-mail-címek száma virtuális eszközt.
       
-       ![riasztások értesítési konfiguráció](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
-   4. Egy teszt e-mail értesítést küldeni, kattintson a **teszt e-mail küldése**. A tesztértesítés továbbítja a StorSimple Device Manager szolgáltatás jelennek-állapotüzenetek.
+       ![riasztások értesítési konfigurációja](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
+   4. Egy teszt e-mail értesítés küldése, kattintson a **tesztelő e-mail küldése**. A StorSimple-Eszközkezelő szolgáltatás állapotüzenetek jelenik meg, akkor továbbítja a tesztértesítés.
       
-       ![Riasztások által küldött értesítő e-mail tesztelése](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
+       ![Figyelmeztetéseket küldött értesítő e-mail tesztelése](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
-      > Ha a teszt értesítési üzenet nem küldhető el, a StorSimple Device Manager szolgáltatás egy megfelelő üzenetet jelenít meg. Kattintson a **OK**, várjon néhány percet, és próbálja meg újra elküldeni az értesítési tesztüzenet.
-      > 
-      > 
+      > Nem lehet elküldeni az értesítési tesztüzenet, ha a StorSimple-Eszközkezelő szolgáltatás egy megfelelő üzenet jelenik meg. Kattintson a **OK**, várjon néhány percet, és próbálja meg újból elküldeni az értesítési tesztüzenet.
+      >
+      >
    5. Kattintson a lap alján **mentése** kattintva mentse a konfigurációt. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra.
       
-      ![Riasztások által küldött értesítő e-mail tesztelése](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
+      ![Figyelmeztetéseket küldött értesítő e-mail tesztelése](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
 
-## <a name="common-alert-conditions"></a>Gyakori riasztási állapot
+## <a name="common-alert-conditions"></a>Gyakori riasztási feltételek
 
-A StorSimple virtuális tömb feltételek különböző válaszul riasztásokat állít elő. A leggyakoribb riasztások feltételek a következők:
+A StorSimple Virtual Array feltételek különböző válaszul riasztásokat állít elő. Az alábbiakban a leggyakoribb riasztási feltételeket:
 
-* **Kapcsolódási problémák** – ezek a riasztások fordulhat elő, ha az adatok átvitele nehézségekbe ütközik. Kommunikációs problémák adatátvitel során fordulhatnak elő, hogy és az Azure storage-fiók vagy a virtuális eszközök és a StorSimple Device Manager szolgáltatás közötti kapcsolat hiánya miatt. Kommunikációs problémák nagyon nehéz javítsa ki, mert nincs olyan sok ponton felmerülő hibákat. Meg kell először mindig ellenőrizze, hogy hálózati kapcsolatot és az Internet-hozzáférés elérhető speciális hibaelhárítás be a folytatás előtt. Portok és a tűzfal beállításaival kapcsolatos információkért látogasson el [StorSimple virtuális tömb rendszerkövetelmények](storsimple-ova-system-requirements.md). Segítség a hibaelhárításban, [kapcsolatos problémák elhárítása a Test-Connection parancsmaggal](storsimple-troubleshoot-deployment.md).
-* **Teljesítményproblémák** – ezek a riasztások vannak okozza, ha a rendszer nem optimális, például a nagy terhelés alatt van.
+* **Kapcsolódási problémák** – ezek a riasztások fordulhat elő, ha nehézségekbe ütközik az adatok átvitele. Kommunikációs előfordulhatnak problémák az adatok átvitel során, és az Azure storage-fiókból vagy a virtuális eszközök és a StorSimple-Eszközkezelő szolgáltatás közötti kapcsolat hiánya miatt. Kommunikációs problémák az egyes nagyon nehéz javításához, mert vannak olyan sok meghibásodási pontokat. Először mindig ellenőrizze, hogy hálózati kapcsolatot és az Internet-hozzáférés érhetők el speciális hibaelhárítás be a folytatás előtt. Portok és a tűzfal beállításaival kapcsolatos további információkért lépjen [StorSimple Virtual Array rendszerkövetelményei](storsimple-ova-system-requirements.md). Segítség a hibaelhárításban, [hibaelhárítás a Test-Connection parancsmaggal](storsimple-troubleshoot-deployment.md).
+* **Teljesítménnyel kapcsolatos problémák** – ezek a riasztások okozott végrehajtásakor a rendszer nem optimális, például a nagy terhelés alatt van.
 
-Ezenkívül jelenhet meg biztonsági, a frissítések vagy a sikertelen feladatok kapcsolatos riasztásokat.
+Ezenkívül láthatja a biztonság, a frissítések és a sikertelen feladatok kapcsolatos riasztások.
 
 ## <a name="alert-severity-levels"></a>Riasztások súlyossági szintjei
 
-Riasztások különböző súlyossági szintek, attól függően, hogy a hatás, hogy a riasztás helyzet és a riasztás választ az rendelkezik. A súlyossági szintek a következők:
+Riasztások különböző fontossági szintek, attól függően, a hatást, amelyet a riasztás helyzet fog rendelkezni, illetve a riasztásra adott válasz nincs szükség van. A súlyossági szintek a következők:
 
-* **Kritikus** – Ez a riasztás olyan feltétel, amely érinti a sikeres, a rendszer teljesítménye válaszul van. TEENDŐ annak érdekében, hogy a StorSimple szolgáltatás nem szakad meg.
-* **Figyelmeztetés** – Ez az állapot kritikus, ha nem sikerül válhat. Vizsgálja meg a helyzet kell, és teendője kell törölnie a problémát.
-* **Információ** – Ez a riasztás információkat tartalmaznak, amelyek nyomon követése és a rendszer kezelése hasznos lehet.
+* **Kritikus fontosságú** – Ez a riasztás egy feltételt, amely befolyásolja a rendszer teljesítményét a sikeres válasz szerepel. TEENDŐ ahhoz, hogy a StorSimple szolgáltatás ne szakadjon meg.
+* **Figyelmeztetés** – Ez az állapot kritikus fontosságú, ha nem szűnik meg válhat. Vizsgálja meg a helyzet kell, és semmit sem kell törölnie a problémát.
+* **Információk** – Ez a riasztás tartalmaz információkat, amelyek hasznosak lehetnek a követés és a rendszer kezelése.
 
-## <a name="view-and-track-alerts"></a>Megtekintheti, és nyomon követéséhez értesítések
+## <a name="view-and-track-alerts"></a>Riasztások megtekintése és nyomon követése
 
-A StorSimple Device Manager szolgáltatás összefoglaló panel biztosít kiadványok súlyossági szint szerint, a virtuális eszközön értesítések száma.
+A StorSimple-Eszközkezelő szolgáltatás összefoglalás panelén biztosít egy gyors áttekintés a virtuális eszközökön a súlyossági szint szerint rendezett riasztások számát.
 
 ![Riasztások irányítópult](./media/storsimple-virtual-array-manage-alerts/alerts14.png)
 
-Milyen súlyossági szintről megnyitásához kattintson a **riasztások** panelen. Az eredmények csak az adott súlyossági szint megfelelő riasztások tartalmazzák.
+A súlyossági szintet megnyitásához kattintson a **riasztások** panelen. Az eredmények tartalmazzák a csak azokat a riasztásokat, amelyek megfelelnek a súlyossági szintet.
 
-![Riasztások jelentés riasztástípusnak hatóköre](./media/storsimple-virtual-array-manage-alerts/alerts15.png)
+![Riasztási jelentés riasztási típus hatóköre](./media/storsimple-virtual-array-manage-alerts/alerts15.png)
 
-Kattintson a listában, hogy több információt a riasztást, többek között a legutóbbi, a riasztás érkezett jelentés, az eszközön, és a riasztás feloldásához jelenítse meg a javasolt művelet a riasztás előfordulásainak száma a riasztást.
+Kattintson egy riasztásra, a listában, hogy több információt a riasztás, beleértve az utolsó időpont, a riasztás lett jelentve, az eszköz és a javasolt művelet a riasztás feloldásához jelenítse meg a riasztás előfordulásainak száma.
 
-![Riasztások listája és részletek](./media/storsimple-virtual-array-manage-alerts/alerts16.png)
+![Lista riasztások és részletek](./media/storsimple-virtual-array-manage-alerts/alerts16.png)
 
-A riasztás részleteit szövegfájlba másolhatja, ha elküldi az adatokat a Microsoft Support van szüksége. A javaslat követni és a riasztási feltétel helyszíni feloldva, után törölje a riasztást a listából. Válassza ki a riasztást a listából, és kattintson a **egyértelmű**. Több riasztás törléséhez minden riasztás választásához kattintson a bármely oszlop, kivéve a **riasztás** oszlop, és kattintson **törölje** törölni kell minden riasztás kiválasztása után.
+Egy szövegfájlba másolhatja a riasztás részleteit, ha elküldi a Microsoft Support kell. Miután a javaslatot követi és feloldva a riasztási feltételt a helyszíni, törölje a riasztást a listából. Válassza ki a riasztást a listából, és kattintson a **egyértelmű**. Több riasztás törléséhez jelölje ki minden riasztást, kattintson bármely másik oszlopot kivéve a **riasztás** oszlop, és kattintson **törölje a jelet** törölni kell minden riasztás kiválasztása után.
 
-Amikor rákattint **egyértelmű**, lesz lehetősége van arra, hogy a riasztás és a lépéseket, amelyek vett igénybe, ha a probléma megoldására vonatkozó megjegyzések. 
+Amikor rákattint **egyértelmű**, meg a riasztás és a lépéseket, akkor a probléma megoldásához igénybe vett kapcsolatos megjegyzéseit lehetőséget kell.
 
 ![riasztási megjegyzések](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
 
-Egyes események törlődik a rendszer, ha egy másik esemény akkor váltódik ki, új információkkal. 
+Néhány esemény törlődik a rendszer, ha egy másik eseményt akkor indítja el az új adatokkal.
 
-## <a name="sort-and-review-alerts"></a>A rendezés és tekintse át a riasztások
+## <a name="sort-and-review-alerts"></a>Rendezés, és tekintse át a riasztások
 
-A **riasztások** panel is legfeljebb 250 riasztások megjelenítése. Túllépte a riasztások számát is, ha nem az összes riasztás jelenik meg az alapértelmezett nézetben. Kombinálhatja testreszabása, mely riasztások jelennek meg a következő mezőket:
+A **riasztások** panelen legfeljebb 250 riasztások tudja megjeleníteni. A riasztások száma túllépte az, ha nem az összes riasztás megjelenik az alapértelmezett nézet. Kombinálhatja a következő mezőket, testreszabása a riasztások jelennek meg:
 
-* **Állapot** – jelenítheti meg vagy **aktív** vagy **nincs bejelölve** riasztásokat. Aktív továbbra is folyamatban figyelmeztetéseket a rendszeren, amíg üres riasztások vagy manuálisan törölték egy rendszergazda, vagy programozott módon nincs bejelölve, mert a rendszer a riasztást kiváltó körülmény frissülnek az új adatokkal.
-* **Súlyossági** – az összes súlyossági szint (kritikus, figyelmeztetés, tájékoztatás), vagy csak egy bizonyos súlyossági, például csak a kritikus riasztások riasztások jelenítheti meg.
-* **Forrás** – forrásokból származó riasztások megjelenítése, vagy korlátozza azok, amelyeket a szolgáltatás vagy egyet vagy mind a virtuális eszközök a riasztásokat.
-* **Időtartománynak** – megadásával a **a** és **való** dátumok és időbélyegeket, vessen egy pillantást riasztások érdekli időszakban.
+* **Állapot** – megjelenítheti vagy **aktív** vagy **nincs bejelölve** riasztásokat. Az Active továbbra is folyamatban van a figyelmeztetéseket a rendszerén, amíg átesett riasztások vagy manuálisan törölték a rendszergazda által, vagy programozott módon törölve, mert a rendszer a riasztási feltétel frissülnek az új adatokkal.
+* **Súlyosság** – megjelenítheti az összes súlyossági szint (kritikus, figyelmeztetés, információ), vagy csak egy bizonyos fontosság, például csak a kritikus riasztások riasztásokat.
+* **Forrás** – riasztások megjelenítésének kezdete forrásokból, vagy korlátozza a riasztásokat, amelyek a szolgáltatás vagy a egyikét vagy mindegyikét a virtuális eszközök származnak.
+* **Időtartomány** – megadásával a **a** és **való** dátum- és időbélyegek, tekintse meg riasztások során az Önt érdeklő időszakot.
 
-## <a name="alerts-quick-reference"></a>Riasztások rövid összefoglalása
+## <a name="alerts-quick-reference"></a>Riasztásainak rövid összefoglalója
 
-A következő táblázat a StorSimple-riasztásokat, amelyek akkor léphetnek fel, valamint további információkra és ajánlásokra ahol az rendelkezésre áll olyan. A StorSimple virtuális tömb riasztások egyet a következő kategóriákba sorolhatók:
+Az alábbi táblázatok sorolják fel, amelyek akkor fordulhatnak, valamint a további információk és javaslatok, ha elérhetők a StorSimple-riasztásokat. A StorSimple Virtual Array riasztások az alábbi kategóriák valamelyikébe tartoznak:
 
-* [Felhő csatlakozási riasztások](#cloud-connectivity-alerts)
-* [Konfigurációs riasztásokat](#configuration-alerts)
-* [Figyelmeztetések](#job-failure-alerts)
-* [Teljesítményével kapcsolatos riasztások](#performance-alerts)
+* [Felhőbeli csatlakozási riasztások](#cloud-connectivity-alerts)
+* [Riasztások konfigurálása](#configuration-alerts)
+* [Feladat miatti riasztások](#job-failure-alerts)
+* [Az alkalmazásteljesítmény miatti riasztások](#performance-alerts)
 * [Biztonsági riasztások](#security-alerts)
 
-### <a name="cloud-connectivity-alerts"></a>Felhő csatlakozási riasztások
+### <a name="cloud-connectivity-alerts"></a>Felhőbeli csatlakozási riasztások
 
-| Figyelmeztető szöveg | Esemény | További információ / javasolt műveletek |
+| Riasztás szövege | Esemény | További információ / ajánlott műveletek |
 |:--- |:--- |:--- |
-| Eszköz  *<device name>*  nem csatlakozik a felhőhöz. |Az elnevezett eszköz nem lehet kapcsolódni a felhőben. |Nem sikerült csatlakozni a felhőhöz. A hiba lehetséges oka a következők egyikét:<ul><li>Az eszközön a hálózati beállításokkal probléma lehet.</li><li>A tárfiók hitelesítő adatait a probléma lehet.</li></ul>Kapcsolódási problémák elhárításával kapcsolatos további információkért látogasson el a [helyi webes felhasználói felület](storsimple-ova-web-ui-admin.md) az eszköz. |
+| Eszköz <*eszköznév*> nem csatlakozik a felhőben. |Az elnevezett eszköz nem lehet csatlakozni a felhőben. |Nem létesíthető kapcsolat a felhővel. Ezt a következők egyike okozhatja:<ul><li>Előfordulhat, hogy probléma adódott a hálózati beállításokat az eszközön.</li><li>Előfordulhat, hogy a tárfiók hitelesítő adatait a probléma.</li></ul>Kapcsolódási problémák hibaelhárításával kapcsolatos további információkért látogasson el a [helyi webes felületén](storsimple-ova-web-ui-admin.md) az eszköz. |
 
-### <a name="configuration-alerts"></a>Konfigurációs riasztásokat
+### <a name="configuration-alerts"></a>Riasztások konfigurálása
 
-| Figyelmeztető szöveg | Esemény | További információ / javasolt műveletek |
+| Riasztás szövege | Esemény | További információ / ajánlott műveletek |
 |:--- |:--- |:--- |
-| A helyszíni virtuális eszközök konfigurációját nem támogatott. |Lassú teljesítmény. |A jelenlegi konfiguráció teljesítménycsökkenést eredményezhet. Győződjön meg arról, hogy a kiszolgáló megfelel-e a minimális konfigurációs követelményeinek. További információkért látogasson el [a StorSimple virtuális tömb követelményei](storsimple-ova-system-requirements.md). |
-| Futtatja kiosztott lemezterület <*eszköznév*>. |Figyelmeztetés. |Kevés a kiosztott lemezterület. Szabadítson fel lemezterületet, fontolja meg a munkaterhelések áthelyezése egy másik kötetre vagy megosztásra vagy adatok törlése. |
+| A helyszíni virtuális eszközök konfigurációját nem támogatott. |A teljesítmény lecsökkenését tapasztalhatja. |A jelenlegi konfiguráció teljesítményromlást eredményezhet. Győződjön meg arról, hogy a kiszolgáló megfelel-e a minimális konfigurációs követelményeinek. További információért ugorjon [StorSimple Virtual Array – követelmények](storsimple-ova-system-requirements.md). |
+| Elfogy létesített lemezterület <*eszköznév*\>. |Figyelmeztetés. |Kevés a létesített lemezterület. Szabadítson fel lemezterületet, fontolja meg a számítási feladatok áthelyezése egy másik kötetet vagy megosztást vagy töröl adatokat. |
 
-### <a name="job-failure-alerts"></a>Figyelmeztetések
+### <a name="job-failure-alerts"></a>Feladat miatti riasztások
 
-| Figyelmeztető szöveg | Esemény | További információ / javasolt műveletek |
+| Riasztás szövege | Esemény | További információ / ajánlott műveletek |
 |:--- |:--- |:--- |
-| A biztonsági mentési <*eszköznév*> nem sikerült végrehajtani. |Biztonsági mentési feladat sikertelen. |Nem sikerült létrehozni a biztonsági másolat. Vegye figyelembe a következők egyikét:<ul><li>Kapcsolódási problémák megakadályozzák, hogy a biztonsági mentési művelet sikeres befejezését. Győződjön meg arról, hogy nincsenek-e kapcsolódási problémák. Kapcsolódási problémák elhárításával kapcsolatos további információkért látogasson el a [helyi webes felhasználói felület](storsimple-ova-web-ui-admin.md) a virtuális eszköz.</li><li>Elérte a rendelkezésre álló tár vonatkozó korlátozást. Szabadítson fel lemezterületet, fontolja meg a törlése minden biztonsági másolatának már nem szükséges.</li></ul> Javítsa ki a hibákat, törölheti a riasztást, és próbálja megismételni a műveletet. |
-| A klón <*eszköznév*> nem sikerült végrehajtani. |Klónozza a feladat sikertelen. |Nem sikerült létrehozni a klónozott. Vegye figyelembe a következők egyikét:<ul><li>A biztonságimásolat-lista nem lehet érvényes. Frissítse a listát ellenőrizze az érvényességét.</li><li>Kapcsolódási problémák megakadályozzák, hogy a Klónozási művelet sikeres befejezését. Győződjön meg arról, hogy nincsenek-e kapcsolódási problémák.</li><li>Elérte a rendelkezésre álló tár vonatkozó korlátozást. Szabadítson fel lemezterületet, fontolja meg a törlése minden biztonsági másolatának már nem szükséges.</li></ul>Javítsa ki a hibákat, törölheti a riasztást, és próbálja megismételni a műveletet. |
+| A biztonsági mentési <*eszköznév* \> nem sikerült végrehajtani. |Biztonsági mentési feladat sikertelen. |Nem sikerült létrehozni a biztonsági mentést. Vegye figyelembe az alábbi lehetőségek közül:<ul><li>Kapcsolódási problémák akadályozzák meg a biztonságimásolat-készítési művelet sikeres befejeződését. Győződjön meg arról, hogy nincsenek kapcsolódási problémák. Kapcsolódási problémák hibaelhárításával kapcsolatos további információkért látogasson el a [helyi webes felületén](storsimple-ova-web-ui-admin.md) a virtuális eszköz.</li><li>Elérte a rendelkezésre álló tár határértéket. Szabadítson fel lemezterületet, érdemes a törlése minden biztonsági már nem szükséges.</li></ul> A problémák megoldásához, törölje a riasztást, és próbálja megismételni a műveletet. |
+| Klónozás forrása: <*eszköznév* \> nem sikerült végrehajtani. |Klónozza a feladat sikertelen. |Nem sikerült létrehozni a klónt. Vegye figyelembe az alábbi lehetőségek közül:<ul><li>A biztonsági mentési lista nem lehet érvényes. Ellenőrizze, hogy továbbra is érvényes a lista frissítéséhez.</li><li>Kapcsolódási problémák akadályozzák meg a Klónozási művelet sikeres befejeződését. Győződjön meg arról, hogy nincsenek kapcsolódási problémák.</li><li>Elérte a rendelkezésre álló tár határértéket. Szabadítson fel lemezterületet, érdemes a törlése minden biztonsági már nem szükséges.</li></ul>A problémák megoldásához, törölje a riasztást, és próbálja megismételni a műveletet. |
 
 ### <a name="networking-alerts"></a>Hálózatkezelés riasztások
-| Figyelmeztető szöveg | Esemény | További információ / javasolt műveletek |
+| Riasztás szövege | Esemény | További információ / ajánlott műveletek |
 |:--- |:--- |:--- |
-| Nem sikerült kapcsolódni a hitelesítési szolgáltatás. |DataPath hiba |A hitelesítéshez használt URL-cím nem érhető el. Győződjön meg arról, hogy a tűzfalszabályok tartalmazza-e a StorSimple eszközhöz megadott URL-mintával. Az Azure portál URL-mintával további információkért látogasson el [StorSimple virtuális tömb hálózati követelményei](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).|
+| Nem sikerült csatlakozni a hitelesítési szolgáltatást. |DataPath hiba |A hitelesítéshez használt URL-cím nem érhető el. Győződjön meg arról, hogy a tűzfalszabályokban szerepel-e a StorSimple eszközhöz megadott URL-mintával. További információ az Azure Portalon URL-minta, nyissa meg [StorSimple Virtual Array hálózati követelményei](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).|
 
-### <a name="performance-alerts"></a>Teljesítményével kapcsolatos riasztások
+### <a name="performance-alerts"></a>Az alkalmazásteljesítmény miatti riasztások
 
-| Figyelmeztető szöveg | Esemény | További információ / javasolt műveletek |
+| Riasztás szövege | Esemény | További információ / ajánlott műveletek |
 |:--- |:--- |:--- |
-| Adatátvitel váratlan késést tapasztal. |Lassú az adatátvitelt. |Sávszélesség-szabályozási hiba történik, amikor a túllépi a méretezhetőségi célok tároló szolgáltatás. A tároló szolgáltatás ezt a végzi annak érdekében, hogy nincs egyetlen ügyfél vagy a bérlői csökkenti a többi szolgáltatás használhatja. Az Azure storage-fiók elhárításával kapcsolatos további információkért látogasson el [figyelése, diagnosztizálása és elhárítása a Microsoft Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
-| Kevés a szabad lemezterület helyi lefoglalás <*eszköznév*>. |Lassú válasz időpontja. |a kiépített mérete 10 %-át <*eszköznév*> le foglalva a helyi eszközön, és most kevés a foglalt területet. Terhelése <*eszköznév*> generál egy nagyobb mértékű forgalom, vagy előfordulhat, hogy nemrég áttelepített nagy mennyiségű adatot. Emiatt előfordulhat, a csökkentett teljesítményt. Fontolja meg a probléma megoldásához az alábbi műveletek egyikét:<ul><li>Növelje meg a felhő sávszélesség erre az eszközre.</li><li>Csökkentse vagy munkaterhelések áthelyezése egy másik kötetet vagy megosztást.</li></ul> |
+| Az adatátvitel nem várt késedelmeket tapasztal. |Lassú az adatátvitelhez. |Szabályozási hibák fordulhatnak elő, ha túllépi a skálázhatósági célokat, a storage szolgáltatás. A storage szolgáltatás azért teszi ezt, győződjön meg arról, hogy nincs egyetlen ügyfél vagy a bérlő használhatják a mások rovására service. Hibaelhárítás az Azure storage-fiókot további információért látogasson el [figyelése, diagnosztizálása és hibaelhárítása a Microsoft Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
+| Kevés a szabad lemezterület helyi foglalás <*eszköznév*\>. |Lassú válasz ideje. |számára kiosztott teljes méret 10 %-át <*eszköznév* \> fenntartva a helyi eszközön, és most kevés a a foglalt területet. A számítási feladatok a <*eszköznév* \> generál egy magasabb aránya adatváltozású vagy, előfordulhat, hogy nemrégiben áttelepítette-e nagy mennyiségű adat. Ez kisebb teljesítményt eredményezhet. Fontolja meg a probléma megoldásához az alábbi műveletek egyikét:<ul><li>Növelje a felhő sávszélesség erre az eszközre.</li><li>Csökkentse vagy számítási feladatok áthelyezése egy másik kötetet vagy megosztást.</li></ul> |
 
 ### <a name="security-alerts"></a>Biztonsági riasztások
 
-| Figyelmeztető szöveg | Esemény | További információ / javasolt műveletek |
+| Riasztás szövege | Esemény | További információ / ajánlott műveletek |
 |:--- |:--- |:--- |
-| A jelszó <*eszköznév*> múlva le fog járni <*szám*> nap. |Jelszó figyelmeztetés. |A jelszó lejár < szám < nap. Fontolja meg a jelszót. További információkért látogasson el [megváltoztatása a StorSimple virtuális tömb eszköz rendszergazdai jelszava](storsimple-virtual-array-change-device-admin-password.md). |
+| A jelszó <*eszköznév* \> le fog járni <*szám* \> nap. |Jelszó figyelmeztetés. |A jelszó lejár, a <*szám* \> nap. Fontolja meg a jelszó módosítását. További információért ugorjon [a StorSimple Virtual Array eszköz rendszergazdai jelszavának módosítása](storsimple-virtual-array-change-device-admin-password.md). |
 
 ## <a name="next-steps"></a>További lépések
 
-* [További tudnivalók a StorSimple virtuális tömb](storsimple-ova-overview.md).
-
+* [További információ a StorSimple Virtual Array](storsimple-ova-overview.md).

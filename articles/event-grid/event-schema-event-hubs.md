@@ -2,21 +2,21 @@
 title: Az Azure Event Grid event hubs eseménysémája
 description: Az event hubs-események az Azure Event Griddel biztosított tulajdonságait ismerteti
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
-ms.author: tomfitz
-ms.openlocfilehash: e301f3895126ed52b8d4c1f046f69dfcedb3563c
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.date: 01/17/2019
+ms.author: spelluru
+ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42060167"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475407"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>Az event hubs az Azure Event Grid eseménysémája
 
-Ez a cikk a tulajdonságok és a séma event hubs-események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
+Ez a cikk a tulajdonságok és a séma event hubs-események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
 
 Mintaszkriptek és oktatóanyagok listáját lásd: [az Event Hubs eseményforrás](event-sources.md#event-hubs).
 
@@ -60,11 +60,11 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| Tulajdonos | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
+| tárgy | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
 | eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| adatok | objektum | Event hub eseményadatokat. |
+| adat | objektum | Event hub eseményadatokat. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
@@ -73,7 +73,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | fileUrl | sztring | A capture-fájl elérési útja. |
-| Fájltípus | sztring | A rögzítési fájl fájl típusa. |
+| fileType | sztring | A rögzítési fájl fájl típusa. |
 | partitionId | sztring | A szegmens azonosítóját. |
 | sizeInBytes | egész szám | A fájl mérete. |
 | eventCount | egész szám | A fájl az események száma. |

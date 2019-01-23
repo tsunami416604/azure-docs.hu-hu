@@ -4,7 +4,7 @@ description: Az objektum nem szinkronizálja az Azure AD okozó hibák elhárít
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b66aeb0832058c56e63c56c0420c7793eb2a632a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5b64472c6388a642c817fb67c97e963ecfa14c2c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312423"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478654"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Az Azure ad-val nem szinkronizálódó objektumok hibaelhárítása
 
@@ -39,7 +39,7 @@ Indítsa el [Synchronization Service Managert](how-to-connect-sync-service-manag
 
 ## <a name="operations"></a>Műveletek
 A Műveletek lap a Synchronization Service Managert el, ahol el kell indítania az a hibaelhárítást. A műveletek lapon láthatók a legutóbbi operations eredményeinek.  
-![Szinkronizálási szolgáltatáskezelő](./media/tshoot-connect-object-not-syncing/operations.png)  
+![Sync Service Manager](./media/tshoot-connect-object-not-syncing/operations.png)  
 
 Felső részén látható minden Futtatás időrendi sorrendben. Alapértelmezés szerint a műveletek naplófájlformátumának tartja az elmúlt hét nap, de ez a beállítás is módosítható a [scheduler](how-to-connect-sync-feature-scheduler.md). Kívánt összes futtatás, amelyek nem szerepelnek a sikeres állapotú. A rendezés a fejlécek kattintva módosíthatja.
 
@@ -47,8 +47,8 @@ A **állapot** oszlop a legfontosabb információt, és bemutatja a legsúlyosab
 
 | status | Megjegyzés |
 | --- | --- |
-| leállított – * |A Futtatás nem sikerült végrehajtani. Ha például a távoli rendszer nem működik, és nem érhető el. |
-| leállítva hiba-korlát |Több mint 5000 hibák vannak. A Futtatás hibák nagy száma miatt automatikusan le lett állítva. |
+| stopped-* |A Futtatás nem sikerült végrehajtani. Ha például a távoli rendszer nem működik, és nem érhető el. |
+| stopped-error-limit |Több mint 5000 hibák vannak. A Futtatás hibák nagy száma miatt automatikusan le lett állítva. |
 | Befejezett -\*-hibák |A Futtatás befejeződött, de hibák (kevesebb mint 5000) meg kell vizsgálni. |
 | Befejezett -\*– figyelmeztetés |A Futtatás befejeződött, de egyes adatokat nem szerepel a várt állapota. Ha hibákat észlel, majd ezt az üzenetet általában a csak a hiba. Hibák elhárítása, amíg nem kell vizsgálni – figyelmeztetések. |
 | sikeres |Nincs probléma. |
@@ -56,7 +56,7 @@ A **állapot** oszlop a legfontosabb információt, és bemutatja a legsúlyosab
 Amikor kiválaszt egy sort, az alsó frissíti az adott Futtatás részleteinek megjelenítéséhez. A bal szélén az alsó, lehetséges, hogy egy lista üzenettel **lépés #**. Ez a lista csak akkor jelenik meg, ha több tartományt az erdőben, ahol minden egyes tartományhoz egy lépés képviseli. A tartomány nevét a cím alatt található **partíció**. A **szinkronizálási statisztika**, talál további információt a feldolgozott módosítások számát. Kattinthat a hivatkozásokra kattintva a módosított objektumok listája. Ha hibákkal objektummal rendelkezik, ezek a hibák jelennek meg **szinkronizálási hibák**.
 
 ### <a name="troubleshoot-errors-in-operations-tab"></a>Műveleti lapon kapcsolatos hibák elhárítása
-![Szinkronizálási szolgáltatáskezelő](./media/tshoot-connect-object-not-syncing/errorsync.png)  
+![Sync Service Manager](./media/tshoot-connect-object-not-syncing/errorsync.png)  
 Ha hibákat, mindkét hiba és a hiba, maga az objektum olyan hivatkozásokat, amelyek további információval.
 
 Indítsa el a hiba karakterlánca kattintva (**szinkronizálási szabály-hiba-függvény által indított** a képen látható). Először megnyílik az objektum áttekintést. A tényleges hiba megtekintéséhez kattintson a gombra **Híváslánc**. A nyomkövetés a hiba hibakeresési szintű információkat nyújt.
@@ -103,7 +103,7 @@ Emellett megtekintheti az a **PasswordSync** oszlopot, amely a bejövő összek�
 
 A leszármaztatási lapról érheti el a metaverzumba kattintva [Metaverzumbeli objektumának tulajdonságait](#mv-attributes).
 
-Az összes lap alján a rendszer két gomb: **előzetes** és **Log**.
+Az összes lap alján két gomb a következők: **Előzetes verzió** és **Log**.
 
 ### <a name="preview"></a>Előzetes verzió
 Az előzetes verziójú szolgáltatásainak weblapján szolgál egy egyetlen objektum szinkronizálásához. Ez akkor hasznos, ha néhány egyéni szinkronizálási szabály hibaelhárítást, és szeretné látni a változás hatását egy önálló objektumon. Választhat **teljes szinkronizálás** és **különbözeti szinkronizálási**. Között lehetőség kiválasztásával **előzetes létrehozása**, ami a memória, csak tartja a módosítás és **véglegesítése előzetes**, amely frissíti a metaverzumba, és előkészíti a cél összekötőterek összes módosítását.  
@@ -127,7 +127,7 @@ Ha nem látja az objektumot, majd azt nem még érte el a metaverzumba. Keresse 
 
 ### <a name="mv-attributes"></a>MV-attribútumok
 Az attribútumok lapon láthatja, hogy az értékeket, és mely összekötő viszonyított azt.  
-![Szinkronizálási szolgáltatáskezelő](./media/tshoot-connect-object-not-syncing/mvobject.png)  
+![Sync Service Manager](./media/tshoot-connect-object-not-syncing/mvobject.png)  
 
 Ha egy objektum nem szinkronizálja, majd keresse meg a következő attribútumok metaverzumban található:
 - Az attribútum **cloudFiltered** jelen, és állítsa **igaz**? Ha van, akkor a ismertetett lépések szerint szűrve [attribútum alapú szűrést](how-to-connect-sync-configure-filtering.md#attribute-based-filtering).
@@ -135,7 +135,7 @@ Ha egy objektum nem szinkronizálja, majd keresse meg a következő attribútumo
 
 ### <a name="mv-connectors"></a>MV-összekötők
 Az összekötők lapon látható minden összekötő szóközt, amely rendelkezik az objektum reprezentációját.  
-![Szinkronizálási szolgáltatáskezelő](./media/tshoot-connect-object-not-syncing/mvconnectors.png)  
+![Sync Service Manager](./media/tshoot-connect-object-not-syncing/mvconnectors.png)  
 Az összekötő kell rendelkeznie:
 
 - Minden egyes Active Directory-erdőben, a felhasználó jelennek meg. E ábrázolás foreignSecurityPrincipals és a Contact objektumot is tartalmazhat.

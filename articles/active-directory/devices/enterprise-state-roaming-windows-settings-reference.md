@@ -5,7 +5,7 @@ services: active-directory
 keywords: Vállalati állapothordozás, a windows-felhő
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.component: devices
 ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 45bf554e457e48704684fe8ac3b32c29f3f646b2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 351a982fa9ca3c0975c425137220ec9872f0de04
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189282"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448125"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
 Forrásul vagy a biztonsági másolat a Windows 10-es beállítások teljes listáját a következő: 
@@ -31,7 +31,7 @@ Az alábbi táblázat összefoglalja azokat az eszközöket és a szinkronizál�
 
 | Fiók típusa és a művelet | Asztal | Mobiltelefon |
 | --- | --- | --- |
-| Az Azure Active Directory: szinkronizálás |Igen |Nem |
+| Azure Active Directory: sync |Igen |Nem |
 | Az Azure Active Directory: biztonsági mentés/visszaállítás |Nem |Nem |
 | Microsoft-fiók: szinkronizálás |Igen |Igen |
 | Microsoft-fiók: biztonsági mentés/visszaállítás |Nem |Igen |
