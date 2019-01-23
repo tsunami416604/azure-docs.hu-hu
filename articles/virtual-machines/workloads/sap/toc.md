@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: a9e46bdb97899957f09a847f0fef03a6fec5dc6a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452896"
+---
 # Áttekintés
 ## [Első lépések](get-started.md)
 ## [Tanúsítványok](sap-certifications.md)
@@ -68,7 +76,6 @@
 ### [Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-across-regions.md)
 ## [SAP Business One az Azure Virtual Machinesban](business-one-azure.md)
 ## [SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója](cal-ides-erp6-erp7-sp3-sql.md)
-## [SAP NetWeaver a Linux rendszerű, Azure-beli virtuális gépeken](suse-quickstart.md)
 ## [Az Azure SAP LaMa összekötője](lama-installation.md)
 ## Magas rendelkezésre állás (HA) Windowson és Linuxon
 ### [Áttekintés](sap-high-availability-guide-start.md)
