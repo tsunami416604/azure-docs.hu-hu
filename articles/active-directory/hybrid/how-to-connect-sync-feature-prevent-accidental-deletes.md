@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: véletlen törlések megakadályozása |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása: Véletlen törlések megakadályozása |} A Microsoft Docs'
 description: Ez a témakör ismerteti a megakadályozása véletlen törlések (véletlen törlések megakadályozása) szolgáltatást az Azure AD Connectben.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6a535d776da216029b905fb604ed378449a81082
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 25bc3d0c0517278f20cba4fd4beb2fc4d82b66f1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314628"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464153"
 ---
-# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Az Azure AD Connect szinkronizálása: véletlen törlések megakadályozása
+# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Az Azure AD Connect szinkronizálása: Véletlen törlések megakadályozása
 Ez a témakör ismerteti a megakadályozása véletlen törlések (véletlen törlések megakadályozása) szolgáltatást az Azure AD Connectben.
 
 Amikor az Azure AD Connect telepítésének megakadályozása véletlen törlések alapértelmezés szerint engedélyezve van és nem engedélyezte a az export-több mint 500 törlést. A funkció célja, hogy meggátolja a konfiguráció és a helyszíni címtár olyan véletlen módosításait, amelyek nagy számú felhasználót és egyéb objektumot érintenek.
@@ -53,7 +53,7 @@ Ha ez nem várt, vizsgálja meg, és javítási műveleteket. Ha szeretné látn
 2. Lépjen a **összekötők**.
 3. Válassza ki az összekötő típusú **Azure Active Directory**.
 4. A **műveletek** a jobb oldalon válassza ki a **keresési Összekötőterét**.
-5. Az előugró alatt **hatókör**válassza **leválasztott óta** , és válassza ki egyszerre a múltban. Kattintson a **keresési**. Ezen a lapon megtekintheti az összes objektum törölve lesz. Minden elem kattintva kaphat további információt az objektum. Is **oszlop beállítás** lehet a rácsban látható további attribútumok hozzáadása.
+5. Az előugró alatt **hatókör**válassza **leválasztott óta** , és válassza ki egyszerre a múltban. Kattintson a **Keresés** gombra. Ezen a lapon megtekintheti az összes objektum törölve lesz. Minden elem kattintva kaphat további információt az objektum. Is **oszlop beállítás** lehet a rácsban látható további attribútumok hozzáadása.
 
 ![Keresési Összekötőterét](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
@@ -68,5 +68,5 @@ Ha ez nem várt, vizsgálja meg, és javítási műveleteket. Ha szeretné látn
 ## <a name="next-steps"></a>További lépések
 **Áttekintő témakör**
 
-* [Az Azure AD Connect szinkronizálása: ismertetése, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

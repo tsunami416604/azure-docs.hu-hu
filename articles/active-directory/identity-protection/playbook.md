@@ -5,7 +5,7 @@ services: active-directory
 keywords: az Azure active directory identity protection, a cloud discovery, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
 ms.service: active-directory
 ms.component: conditional-access
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 5c2a37f3753292c6db847a4a9152bd4506f8fa5e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 7e706b1dd9c7dd79285666885cb6ada89d8126b2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580491"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460524"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Az Azure Active Directory Identity Protection-forgatókönyv
 
@@ -115,7 +115,7 @@ Ez a szakasz biztosít lépéseket a felhasználói kockázat és bejelentkezés
 
 ### <a name="user-risk-security-policy"></a>Felhasználói kockázati biztonsági házirend
 
-További információkért lásd: [konfigurálása a felhasználói kockázati házirend](howto-user-risk-policy.md).
+További információ: [A felhasználó kockázati szabályzat konfigurálása](howto-user-risk-policy.md).
 
 ![Felhasználói kockázat](./media/playbook/02.png "forgatókönyv")
 
@@ -140,7 +140,7 @@ További információkért lásd: [konfigurálása a felhasználói kockázati h
 
 ### <a name="sign-in-risk-security-policy"></a>Biztonsági házirend bejelentkezési kockázat
 
-További információkért lásd: [a bejelentkezési kockázati szabályzat konfigurálásának](howto-sign-in-risk-policy.md).
+További információ: [A bejelentkezési kockázati szabályzat konfigurálása](howto-sign-in-risk-policy.md).
 
 ![Bejelentkezési kockázati](./media/playbook/01.png "forgatókönyv")
 

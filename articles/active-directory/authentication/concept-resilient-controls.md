@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 73bd86591f2d8604e0eb9553f99c311b6d421603
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9e13b8872fab89bef6ec952fe2ee0b901a25092e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424034"
+ms.locfileid: "54452547"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Hozzon létre egy rugalmas hozzáférés-vezérlési felügyeleti stratégia az Azure Active Directoryval
 
@@ -199,7 +199,7 @@ Az aktiválás sorrend:
 
 1. Zárja ki SalesAdmins és SalesforceContingency a már létező eszközmegfelelőségi szabályzat a Salesforce-hoz. Ellenőrizze, hogy egy felhasználó a SalesforceContingency csoport hozzáférhet a Salesforce-ban.
 2. 1 házirend engedélyezése: Ellenőrizze, hogy SalesContingency kívüli felhasználók nem férhetnek hozzá a Salesforce-ban. Ellenőrizze a SalesAdmins felhasználóinak és SalesforceContingency férhet hozzá a Salesforce.
-3. Szabályzat 2 engedélyezése: Győződjön meg arról, SalesContigency csoportnak Windows/Mac irodába férhessenek hozzá a Salesforce, de továbbra is elérheti a mobileszközükről. Ellenőrizze, hogy SalesAdmin továbbra is elérheti a Salesforce bármilyen eszközről.
+3. Szabályzat 2 engedélyezése: Győződjön meg arról, SalesContingency csoportnak Windows/Mac irodába férhessenek hozzá a Salesforce, de továbbra is elérheti a mobileszközükről. Ellenőrizze, hogy SalesAdmin továbbra is elérheti a Salesforce bármilyen eszközről.
 4. Tiltsa le a már létező eszközmegfelelőségi szabályzat, a Salesforce-hoz.
 
 ### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Jelszókivonat-szinkronizálás telepítése, még akkor is, ha összevont vagy átmenő hitelesítés használata

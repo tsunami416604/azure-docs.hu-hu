@@ -12,18 +12,18 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: eda71351b0375789d41808f9351cf000945b5f4c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606809"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449401"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
 
 A cikk ismerteti az Elastic Jobs használatának megkezdéséhez számos példaforgatókönyvek T-SQL használatával.
 
-A példákban a [tárolt eljárások](#job-stored-procedures) és [nézetek](#job-views) érhető el a [ *feladat adatbázis*](elastic-jobs-overview.md#job-database).
+A példákban a [tárolt eljárások](#job-stored-procedures) és [nézetek](#job-views) érhető el a [ *feladat adatbázis*](sql-database-job-automation-overview.md#job-database).
 
 A Transact-SQL (T-SQL) létrehozása, konfigurálása, hajtsa végre és feladatok kezelésére szolgál. A feladatügynök létrehozása nem támogatott a T-SQL, ezért először létre kell hoznia egy *feladatügynök* a portálról, vagy [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent).
 
@@ -53,7 +53,7 @@ GO
 ## <a name="create-a-target-group-servers"></a>Hozzon létre egy célcsoportot (kiszolgálók)
 
 Az alábbi példa bemutatja, hogyan szemben az összes adatbázist feladat végrehajtása a kiszolgálón.  
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsot:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 
 ```sql
@@ -78,7 +78,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ## <a name="exclude-a-single-database"></a>Önálló adatbázis kizárása
 
 Az alábbi példa bemutatja, hogyan hajtsa végre a feladat összes adatbázisokhoz a kiszolgáló, kivéve az adatbázis nevesített *MappingDB*.  
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsot:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -121,7 +121,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>Hozzon létre egy célcsoportot (készletek)
 
 Az alábbi példa bemutatja, hogyan, amelyekre legalább egy rugalmas készletekben található összes adatbázishoz.  
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsot:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -146,7 +146,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>Új sémára nagyszámú adatbázis üzembe helyezése
 
 Az alábbi példa bemutatja, hogyan új sémákat telepíteni az összes adatbázishoz.  
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsot:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 
 ```sql
@@ -195,7 +195,7 @@ Alapértelmezés szerint a feladat ügynök fognak kinézni, a visszaadott eredm
 2. További internal_execution_id UniqueIdentifier adattípusú oszlop.
 3. Egy nem fürtözött index nevű "amelynek neve IX_<TableName>_Internal_Execution_ID" internal_execution_id oszlopában.
 
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsokat:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsokat:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -266,7 +266,7 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 ## <a name="view-job-definitions"></a>Feladatdefiníciók megtekintése
 
 Az alábbi példa bemutatja, hogyan aktuális feladatdefiníciók megtekintéséhez.  
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsot:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -287,7 +287,7 @@ select * from jobs.jobsteps
 ## <a name="begin-ad-hoc-execution-of-a-job"></a>A feladat alkalmi végrehajtásának megkezdése
 
 Az alábbi példa bemutatja, hogyan azonnal elindul egy feladat.  
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsot:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -310,7 +310,7 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 ## <a name="schedule-execution-of-a-job"></a>Egy feladat végrehajtásának ütemezése
 
 Az alábbi példa bemutatja, hogyan egy jövőbeli végrehajtási feladat ütemezése.  
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsot:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -325,7 +325,7 @@ EXEC jobs.sp_update_job
 ## <a name="monitor-job-execution-status"></a>Feladat-végrehajtási állapotának figyelése
 
 Az alábbi példa bemutatja az összes feladat-végrehajtási állapot részleteit megtekintheti.  
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsot:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -354,7 +354,7 @@ ORDER BY start_time DESC
 ## <a name="cancel-a-job"></a>Feladatok megszakítása
 
 Az alábbi példa bemutatja, hogyan megszakítani a feladatot.  
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsot:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -373,7 +373,7 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ## <a name="delete-old-job-history"></a>Régi feladatelőzmények törlése
 
 Az alábbi példa bemutatja, hogyan adott dátum előtt feladatelőzmények törlése.  
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsot:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -387,7 +387,7 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>Egy feladat és a feladatelőzmények törlése
 
 Az alábbi példa bemutatja, hogyan törölhet egy feladatot, és az összes kapcsolódó feladatelőzményeket.  
-Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) , és futtassa a következő parancsot:
+Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -402,7 +402,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 ## <a name="job-stored-procedures"></a>Feladat tárolt eljárások
 
-A következő tárolt eljárások a [feladatok adatbázis](elastic-jobs-overview.md#job-database).
+A következő tárolt eljárások a [feladatok adatbázis](sql-database-job-automation-overview.md#job-database).
 
 
 
@@ -1190,13 +1190,13 @@ GO
 
 ## <a name="job-views"></a>Feladat nézetek
 
-A következő nézetek érhetők el a [feladatok adatbázis](elastic-jobs-overview.md#job-database).
+A következő nézetek érhetők el a [feladatok adatbázis](sql-database-job-automation-overview.md#job-database).
 
 
 |Nézet  |Leírás  |
 |---------|---------|
 |[jobs_executions](#jobsexecutions-view)     |  Látható feladat-végrehajtási előzményei.      |
-|[Feladatok](#jobs-view)     |   Az összes feladat látható.      |
+|[jobs](#jobs-view)     |   Az összes feladat látható.      |
 |[job_versions](#jobversions-view)     |   Az összes feladat verzió látható.      |
 |[feladatlépésnél](#jobsteps-view)     |     Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.    |
 |[jobstep_versions](#jobstepversions-view)     |     Minden egyes feladat összes verzióját az összes lépéseit mutatja be.    |
@@ -1206,7 +1206,7 @@ A következő nézetek érhetők el a [feladatok adatbázis](elastic-jobs-overvi
 
 ### <a name="jobsexecutions-view"></a>jobs_executions megtekintése
 
-[feladatok]. [jobs_executions]
+[jobs].[jobs_executions]
 
 Látható feladat-végrehajtási előzményei.
 
@@ -1235,7 +1235,7 @@ Látható feladat-végrehajtási előzményei.
 
 ### <a name="jobs-view"></a>feladatok megtekintése
 
-[feladatok]. [feladatok]
+[jobs].[jobs]
 
 Az összes feladat látható.
 
@@ -1279,7 +1279,7 @@ Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.
 |**step_name**  |nvarchar(128)  |(A feladathoz) egyedi neve a lépéshez.|
 |**command_type**   |nvarchar(50)   |A feladat lépésben végrehajtandó parancs típusa. V1, az értéknek meg kell egyeznie a és "TSql" az alapértelmezett érték.|
 |**command_source** |nvarchar(50)|  A parancs helye. A 1-es "Beágyazott" az alapértelmezett beállítás, és csak elfogadható érték.|
-|**A parancs**|   nvarchar(max)|  Rugalmas feladatok command_type keresztül hajtja végre a parancsokat.|
+|**command**|   nvarchar(max)|  Rugalmas feladatok command_type keresztül hajtja végre a parancsokat.|
 |**credential_name**|   nvarchar(128)   |Végrehajtási a feladat segítségével az adatbázishoz kötődő hitelesítő adat nevét.|
 |**target_group_name**| nvarchar(128)   |A célcsoport neve.|
 |**target_group_id**|   UniqueIdentifier|   A célként megadott csoport egyedi azonosítója.|
@@ -1316,9 +1316,9 @@ Az összes cél csoportok listája.
 |**target_group_name**| nvarchar(128)   |A célcsoportot, egy adatbázis-gyűjtemény neve. 
 |**target_group_id**    |UniqueIdentifier   |A célként megadott csoport egyedi azonosítója.
 
-### <a name="targetgroupsmembers-view"></a>target_groups_members megtekintése
+### <a name="targetgroupsmembers-view"></a>target_groups_members view
 
-[feladatok]. [target_groups_members]
+[jobs].[target_groups_members]
 
 Minden célként megadott csoport minden tagját mutatja.
 
@@ -1332,8 +1332,8 @@ Minden célként megadott csoport minden tagját mutatja.
 |**refresh_credential_name**    |nvarchar(128)  |Az adatbázis nevét a célként megadott csoport tagja való kapcsolódáshoz használt hitelesítő adatok hatókörét.|
 |**subscription_id**    |UniqueIdentifier|  Az előfizetés egyedi azonosítója.|
 |**resource_group_name**    |nvarchar(128)| Neve az erőforráscsoport, amelyben megtalálható a célként megadott csoport tagja.|
-|**kiszolgálónév**    |nvarchar(128)  |A célként megadott csoportban lévő logikai kiszolgáló nevét. A megadott csak target_type "SqlServer"-e. |
-|**adatbázisnév**  |nvarchar(128)  |A célként megadott csoportban szereplő adatbázis nevét. Megadott csak amikor target_type "SqlDatabase".|
+|**server_name**    |nvarchar(128)  |A célként megadott csoportban lévő logikai kiszolgáló nevét. A megadott csak target_type "SqlServer"-e. |
+|**database_name**  |nvarchar(128)  |A célként megadott csoportban szereplő adatbázis nevét. Megadott csak amikor target_type "SqlDatabase".|
 |**elastic_pool_name**  |nvarchar(128)| A célként megadott csoportban lévő a rugalmas készlet neve. Megadott csak amikor target_type "SqlElasticPool".|
 |**shard_map_name** |nvarchar(128)| A célként megadott csoportban lévő horizontális skálázási térképet neve. Megadott csak amikor target_type "SqlShardMap".|
 

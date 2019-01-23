@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 7e70fe52646c2f61e97b4eee2badd7884d95d5f5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260464"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449554"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Gyakori kérdések: Azure – Azure replikálás
 
@@ -101,8 +101,8 @@ Az alábbi képernyőfelvételen látható a példa szemlélteti. A képernyők�
 ### <a name="how-far-back-can-i-recover"></a>Milyen biztonsági állíthatja helyre?
 A legrégebbi helyreállítási pont használható érték 72 óra.
 
-### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-pruned"></a>Mi történik, ha az egy replikációs házirendet, 24 órában és a egy probléma megakadályozza, hogy a Site Recovery létrehozni helyreállítási pontokból 24 óránál tovább áll? Törlődnek a korábbi helyreállítási pontokhoz?
-Nem, a Site Recovery fogja megőrizni a korábbi helyreállítási pontjait ebben az esetben. 
+### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Mi történik, ha az egy replikációs házirendet, 24 órában és a egy probléma megakadályozza, hogy a Site Recovery létrehozni helyreállítási pontokból 24 óránál tovább áll? Elvesznek az előző helyreállítási pontokhoz?
+Nem, a Site Recovery fogja megőrizni a korábbi helyreállítási pontjait. Függően a helyreállítási pontok megőrzési időtartamát, 24 órában ebben az esetben a Site Recovery váltja fel legrégebbi pont csak akkor, ha van egy új pontok generációja. Ebben az esetben minden olyan új helyreállítási pont jön létre, néhány probléma miatt nem lesz, mint a régi pontok csoportengedély változatlan marad eljut a adatmegőrzési időszak után.
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Miután egy virtuális gépen engedélyezve van a replikáció, hogyan módosíthatom a replikációs szabályzat? 
 Lépjen a **Site Recovery-tároló** > **Site Recovery-infrastruktúra** > **replikációs házirendek**. Válassza ki a házirendet, amelyet szerkeszteni és menteni a módosításokat. Minden olyan változás túl a meglévő replikálását alkalmazza. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: fdc4885c079a3659d394517f0a10394eff0720c8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 19e9690905fd993d59b186d59cc257b6b57e78b2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119153"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449826"
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>2 – példa semleges védheti alkalmazásait egy tűzfallal és NSG-k
 [Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]
@@ -202,7 +202,7 @@ Mivel a webkiszolgáló IIS01 és a tűzfal az ugyanazon a Felhőszolgáltatáso
 3. Ha valamilyen okból a végpontok volt megnyitva, NSG-szabály (Internet, virtuális hálózatok közötti) 5 le fog állni a forgalmat
 
 #### <a name="denied-web-dns-lookup-on-dns-server"></a>(Tiltott) A DNS-kiszolgáló DNS-címkeresés webes
-1. Az Internet felhasználó megpróbálja megkeresni egy belső DNS-rekordját DNS01 a BackEnd001.CloudApp.Net szolgáltatáson keresztül
+1. Internet user tries to lookup an internal DNS record on DNS01 through the BackEnd001.CloudApp.Net service
 2. Nincsenek nyissa meg a DNS-végpontok, mivel ez a Felhőszolgáltatás nem kellene átadnia, és a kiszolgáló nem érhető el.
 3. Ha valamilyen okból a végpontok volt megnyitva, NSG-szabály (Internet, virtuális hálózatok közötti) 5 le fog állni a forgalmat (Megjegyzés: a szabály 1 (DNS) két okból nem alkalmazhatók, először a forrás címe az interneten, ez a szabály csak a helyi virtuális hálózat, mint a forrás vonatkozik Ez a egy olyan engedélyezési szabály, ezért soha nem lenne megtagadják a forgalmat)
 
@@ -422,7 +422,7 @@ Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számít
         $FatalError = $true}
     Else { Write-Host "The network config file was found" -ForegroundColor Green
             If (-Not (Select-String -Pattern $DeploymentLocation -Path $NetworkConfigFile)) {
-                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation varible is correct and the netowrk config file matches.' -ForegroundColor Yellow
+                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation variable is correct and the network config file matches.' -ForegroundColor Yellow
                 $FatalError = $true}
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 

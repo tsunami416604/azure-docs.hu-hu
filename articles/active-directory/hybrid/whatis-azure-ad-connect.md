@@ -3,19 +3,19 @@ title: Mi az Azure AD Connect és a Connect Health. | Microsoft Docs
 description: Szinkronizálását és figyelni a helyszíni környezetet az Azure ad-vel használt eszközöket írja le.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
 ms.date: 11/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fbd6edb02dfc4080d7692e43324a5b3981091f9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1c18200bb36b75a07d7b26e3ea0016ec35efdd87
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109463"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460499"
 ---
 # <a name="what-is-azure-ad-connect"></a>Mi az Azure AD Connect?
 

@@ -1,6 +1,6 @@
 ---
 title: Adatok entitások |} A Microsoft Docs
-description: Adatok entites áttekintése.
+description: Entitások adatainak áttekintése.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: pbutlerm
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7b321ab04df405c56cab0952942b0d6e142da6d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 579856ab87aaf8d051f2e3c161bb2d0e2f693ed5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809853"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446578"
 ---
 # <a name="data-entities"></a>Adatok entitások
 
@@ -29,7 +29,7 @@ Ez a cikk határozza meg, és az adatentitások nyújt áttekintést. Az entitá
 
 Egy entitáshoz fizikai adatbázistáblák végrehajtásából absztrakciója. Például normalizált táblákban, előfordulhat, hogy egy vevő tábla tárolja szinte minden egyes ügyfél az adatokat, és ezután a többi egy kis készletét kapcsolódó táblák között lehetnek elosztva. Ebben az esetben egy denormalizált nézet, amelyben mindegyik sor tartalmazza az összes adatot az ügyfél-tábla és a kapcsolódó táblák az entitáshoz tartozó ügyfelek fogalmat jelenik meg. Egy entitáshoz olyan formátumra, amely megkönnyíti a fejlesztési és integrációs magában foglalja egy üzleti fogalom. Egy entitáshoz hálója jellege egyszerűbbé teheti az alkalmazások fejlesztése és testreszabása. Később a absztrakciós insulates származó a verziók közötti fizikai táblák elkerülhetetlen forgalommal is.
 
-Összefoglalásképpen: entitáshoz fogalmi absztrakciós és a beágyazás (denormalizált nézet) az alapul szolgáló táblasémákat, amelyek kulcsfontosságú fogalmakat és funkciókat biztosít.
+Összefoglalásképpen: Entitáshoz fogalmi absztrakciós és a beágyazás (denormalizált nézet) az alapul szolgáló táblasémákat, amelyek kulcsfontosságú fogalmakat és funkciókat biztosít.
 
 ## <a name="capabilities"></a>Funkciók
 

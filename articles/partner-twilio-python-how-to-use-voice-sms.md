@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 63eb894c64919826922fa60f4e12894542a97c69
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994165"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447360"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz a Pythonban
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a Twilio API-t szolgáltatással az Azure-ban. Az ismertetett forgatókönyvek között megtalálható, így a telefonhívás, és a egy rövid üzenetet szolgáltatást (SMS) üzenetet küld. A Twilio és az alkalmazások használata hanghívási és SMS további információkért lásd: a [lépések](#NextSteps) szakaszban.
@@ -51,9 +51,9 @@ Az alábbiakban látható egy Twilio-műveletek listájához. Ismerje meg az egy
 * **&lt;Vonalbontás&gt;**: A hívás véget ér.
 * **&lt;Felfüggesztés&gt;**: A megadott számú másodperc vár beavatkozás nélkül.
 * **&lt;Play&gt;**: Hang lejátszása.
-* **&lt;Várólista&gt;**: Adja hozzá a hívók egy üzenetsorba.
+* **&lt;Queue&gt;**: Adja hozzá a hívók egy üzenetsorba.
 * **&lt;Rekord&gt;**: A hang, a hívó rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
-* **&lt;Átirányítási&gt;**: Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
+* **&lt;Redirect&gt;**: Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
 * **&lt;Elutasítás&gt;**: A Twilio-számra bejövő hívás elutasítja, számlázási nélkül.
 * **&lt;Tegyük fel, hogy&gt;**: Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
 * **&lt;SMS&gt;**: SMS üzenetet küld.
@@ -82,14 +82,14 @@ Egy Python-alkalmazás, amely a Twilio szolgáltatás használja, és az Azure-b
 
 Első, [új Azure Linux virtuális gép beállítás] [azure_vm_setup] való működésre gazdagépként, az új Python-webalkalmazás számára. Ha a virtuális gép fut, tegye elérhetővé alkalmazását egy nyilvános portot, az alább ismertetett kell.
 
-### <a name="add-an-incoming-rule"></a>Adjon hozzá egy bejövő szabályt
+### <a name="add-an-incoming-rule"></a>Add An Incoming Rule
   1. Nyissa meg az [a hálózati biztonsági csoport] [azure_nsg] oldalát.
   2. Válassza ki a hálózati biztonsági csoportot, amely megfelel a virtuális géppel.
   3. Adja hozzá és **kimenő szabály** a **80-as port**. Ügyeljen arra, hogy engedélyezi a bejövő bármilyen címről.
 
 ### <a name="set-the-dns-name-label"></a>Állítsa be a DNS-névcímke
   1. Nyissa meg az [a nyilvános IP-címek] [azure_ips] lapját.
-  2. Válassza ki a nyilvános IP-címet adott correspends, a virtuális géppel.
+  2. Válassza ki a nyilvános IP-cím, amely megfelel a virtuális géppel.
   3. Állítsa be a **DNS-névcímke** a a **konfigurációs** szakaszban. Esetén ebben a példában ez lesz a következőhöz hasonló *your tartománycímkéjét*. centralus.cloudapp.azure.com
 
 Miután a virtuális gép ssh-n keresztül kapcsolódni tud a webes keretrendszer, a választott telepítheti (a legtöbb jól ismert Python folyamatban lévő két [Flask](http://flask.pocoo.org/) és [Django](https://www.djangoproject.com)). Bármelyiket csak futtatásával telepítheti a `pip install` parancsot.

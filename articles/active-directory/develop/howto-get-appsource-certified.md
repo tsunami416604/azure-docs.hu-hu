@@ -17,12 +17,12 @@ ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 30dff14f322bcd66ea56b4b12843a6293cd95326
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6a1e3d2362ab711ee50f9ca94737883893e2ffd5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423796"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450337"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>AppSource Certified beszerzése az Azure Active Directory
 
@@ -49,7 +49,7 @@ Több-bérlős kapcsolatos további információkért lásd: [Azure Active Direc
 
 A *egybérlős alkalmazás* olyan alkalmazás, amely csak a meghatározott Azure-felhasználók történő bejelentkezések fogad AD-példányt. Külső felhasználókat (beleértve a személyes, munkahelyi vagy iskolai fiókok más szervezetek) egy egybérlős alkalmazást minden felhasználó, hogy az alkalmazás regisztrálva van az Azure AD-példányt, amely a Vendég fiók hozzáadása után bejelentkezhet. 
 
-Az Azure AD-keresztül, a vendég felhasználók is hozzáadhat a [Azure AD B2B együttműködés](../b2b/what-is-b2b.md) és ehhez [programozottan](../../active-directory-b2c/code-samples.md). B2B használata esetén a felhasználók egy önkiszolgáló portált, jelentkezzen be a meghívót nem igénylő hozhat létre. További információ: [önkiszolgáló portál az Azure AD B2B együttműködés előfizetési](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
+Az Azure AD-keresztül, a vendég felhasználók is hozzáadhat a [Azure AD B2B együttműködés](../b2b/what-is-b2b.md) és ehhez [programozott módon](../../active-directory-b2c/code-samples.md). B2B használata esetén a felhasználók egy önkiszolgáló portált, jelentkezzen be a meghívót nem igénylő hozhat létre. További információ: [önkiszolgáló portál az Azure AD B2B együttműködés előfizetési](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
 
 Egybérlős alkalmazások engedélyezheti a *kapcsolatfelvételi* tapasztal, de az egyetlen kattintással/ingyenes próbaverziója által AppSource javasolt engedélyezni szeretné, ha több bérlős üzemmód engedélyezése az alkalmazás helyett.
 

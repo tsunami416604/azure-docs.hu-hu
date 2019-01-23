@@ -4,7 +4,7 @@ description: Hibaelhárítás az Azure Active Directory hibrid-hez csatlakoztato
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.component: devices
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1d96c1e8adee55127a50b2d7c374418c22bfec4c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f9a32058bb9d9cb2f1fa2d04c8002f06fa80edeb
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050565"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446102"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott Windows 10 és Windows Server 2016-eszközök 
 
@@ -37,7 +37,7 @@ Ez a cikk feltételezi, hogy [konfigurált hibrid Azure Active Directory-hez csa
 
 - [Vállalati barangolás beállításai](../active-directory-windows-enterprise-state-roaming-overview.md)
 
-- [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
+- [Vállalati Windows Hello](../active-directory-azureadjoin-passport-deployment.md)
 
 
 Ez a dokumentum nyújt hibaelhárítási útmutatót kapcsolatos lehetséges problémák megoldását. 
@@ -45,7 +45,7 @@ Ez a dokumentum nyújt hibaelhárítási útmutatót kapcsolatos lehetséges pro
 
 A Windows 10 és Windows Server 2016, a hibrid Azure Active Directory join támogatja a Windows 10, 2015 novemberi frissítés vagy újabb verzió. Az Évfordulós frissítés használatát javasoljuk.
 
-## <a name="step-1-retrieve-the-join-status"></a>1. lépés: Az illesztési állapot lekérése 
+## <a name="step-1-retrieve-the-join-status"></a>1. lépés: A csatlakozás állapotának lekérése 
 
 **A csatlakozás állapotának lekéréséhez:**
 
@@ -59,8 +59,8 @@ A Windows 10 és Windows Server 2016, a hibrid Azure Active Directory join támo
     | Az eszköz állapotát |}  +----------------------------------------------------------------------+
     
         AzureAdJoined: YES
-     EnterpriseJoined: Nincs DeviceId: 5820fbe9-60c8-43b0-bb11-44aee233e4e7 ujjlenyomat: B753A6679CE720451921302CA873794D94C6204A KeyContainerId: bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider: Microsoft Platform titkosításszolgáltató TpmProtected: Igen KeySignTest:: emelt szintű tesztelni kell futtatnia.
-                  Identitásszolgáltató: login.windows.net TenantId: 72b988bf-86f1-41af-91ab-2d7cd011db47 TenantName: Contoso AuthCodeUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/authorize AccessTokenUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/token MdmUrl: https://enrollment.manage-beta.microsoft.com/EnrollmentServer/Discovery.svc MdmTouUrl: https://portal.manage-beta.microsoft.com/TermsOfUse.aspx dmComplianceUrl: https://portal.manage-beta.microsoft.com/?portalAction=Compliance SettingsUrl : eyJVcmlzIjpbImh0dHBzOi8va2FpbGFuaS5vbmUubWljcm9zb2Z0LmNvbS8iLCJodHRwczovL2thaWxhbmkxLm9uZS5taWNyb3NvZnQuY29tLyJdfQ == JoinSrvVersion: 1.0-ás JoinSrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/device/ JoinSrvId: urn: ms-drs:enterpriseregistration.windows.net KeySrvVersion: 1.0-ás KeySrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/key/ KeySrvId: urn: ms-drs:enterpriseregistration.windows.net DomainJoined: Igen tartománynév: CONTOSO
+     EnterpriseJoined: NINCS az eszközazonosító: 5820fbe9-60c8-43b0-bb11-44aee233e4e7 Thumbprint: B753A6679CE720451921302CA873794D94C6204A KeyContainerId: bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider: Microsoft Platform Crypto Provider TpmProtected: Igen KeySignTest:: Emelt szintű tesztelni kell futtatnia.
+                  Idp: login.windows.net TenantId: 72b988bf-86f1-41af-91ab-2d7cd011db47 TenantName: Contoso AuthCodeUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/authorize AccessTokenUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/token MdmUrl: https://enrollment.manage-beta.microsoft.com/EnrollmentServer/Discovery.svc MdmTouUrl: https://portal.manage-beta.microsoft.com/TermsOfUse.aspx dmComplianceUrl: https://portal.manage-beta.microsoft.com/?portalAction=Compliance SettingsUrl: eyJVcmlzIjpbImh0dHBzOi8va2FpbGFuaS5vbmUubWljcm9zb2Z0LmNvbS8iLCJodHRwczovL2thaWxhbmkxLm9uZS5taWNyb3NvZnQuY29tLyJdfQ== JoinSrvVersion: 1.0 JoinSrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/device/ JoinSrvId: urn:ms-drs:enterpriseregistration.windows.net KeySrvVersion: 1.0-s KeySrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/key/ KeySrvId: urn:ms-drs:enterpriseregistration.windows.net DomainJoined: Igen, tartománynév: CONTOSO
     
     +----------------------------------------------------------------------+
     | Felhasználói állapot |}  +----------------------------------------------------------------------+
@@ -69,15 +69,15 @@ A Windows 10 és Windows Server 2016, a hibrid Azure Active Directory join támo
                NgcKeyId: {C7A9AEDC-780E-4FDA-B200-1AE15561A46B}
         WorkplaceJoined: NO
           WamDefaultSet: YES
-    WamDefaultAuthority: szervezetek WamDefaultId: https://login.microsoft.com WamDefaultGUID: {B16898C6-A148-4967-9171-64D755DA8520} (AzureAd) AzureAdPrt: Igen
+    WamDefaultAuthority: szervezetek WamDefaultId: https://login.microsoft.com       WamDefaultGUID: {B16898C6-A148-4967-9171-64D755DA8520} AzureAdPrt (AzureAd): IGEN
 
 
 
-## <a name="step-2-evaluate-the-join-status"></a>2. lépés: Értékelése a csatlakozás állapota 
+## <a name="step-2-evaluate-the-join-status"></a>2. lépés: A csatlakozás állapota kiértékelése 
 
 Tekintse át a következő mezőket, és győződjön meg arról, hogy rendelkeznek-e a várt értékek:
 
-### <a name="azureadjoined--yes"></a>AzureAdJoined: Igen  
+### <a name="azureadjoined--yes"></a>AzureAdJoined : IGEN  
 
 Ez a mező jelzi, hogy az eszköz csatlakozott-e az Azure ad-ben. Ha az érték **nem**, az Azure ad join még nem fejeződött be. 
 
@@ -93,7 +93,7 @@ Ez a mező jelzi, hogy az eszköz csatlakozott-e az Azure ad-ben. Ha az érték 
 
 - Ha a számítógép TPM, rossz állapotban lehet.
 
-- Van egy kiszolgálóhiba, a szolgáltatások a dokumentum a korábban feljegyzett, hogy ki kell újra ellenőrzése. Gyakori alkalmazási helyzetek:
+- Van egy kiszolgálóhiba, a szolgáltatások a dokumentum a korábban feljegyzett, hogy ki kell újra ellenőrzése. Néhány gyakori példa:
 
     - Az összevonási kiszolgálón nincs engedélyezve a WS-Trust végpontok
 
@@ -103,19 +103,19 @@ Ez a mező jelzi, hogy az eszköz csatlakozott-e az Azure ad-ben. Ha az érték 
 
 ---
 
-### <a name="domainjoined--yes"></a>DomainJoined: Igen  
+### <a name="domainjoined--yes"></a>DomainJoined: IGEN  
 
 Ez a mező jelzi, hogy az eszköz csatlakozott a helyszíni Active Directory-e. Ha az érték **nem**, az eszköz nem hajtható végre, a hibrid Azure AD-csatlakozás.  
 
 ---
 
-### <a name="workplacejoined--no"></a>WorkplaceJoined: nem  
+### <a name="workplacejoined--no"></a>WorkplaceJoined : NO  
 
 Ez a mező jelzi, hogy az eszköz regisztrálva van-e személyes eszközként az Azure AD-vel (megjelölve *munkahelyhez csatlakoztatott*). Ennek az értéknek kell lennie **nem** egy tartományhoz csatlakoztatott számítógép, amely egyben hibrid Azure AD-csatlakoztatott. Ha az érték **Igen**, egy munkahelyi vagy iskolai fiókot hozzá lett adva, a hibrid Azure AD-csatlakozás a befejezése előtt. Ebben az esetben a fiók figyelmen kívül hagyja az Évfordulós frissítés Windows 10 (1607-es) verziójának használatakor.
 
 ---
 
-### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet: Igen és AzureADPrt: Igen
+### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet: Igen, és AzureADPrt: IGEN
   
 Ezek a mezők azt jelzik, hogy a felhasználó sikeresen hitelesítést az Azure AD az eszközre való bejelentkezéskor. Ha az értékek **nem**, előfordulhat, hogy onnan:
 

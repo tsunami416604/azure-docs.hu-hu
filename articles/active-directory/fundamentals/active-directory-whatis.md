@@ -3,18 +3,18 @@ title: Mi az az Azure Active Directory? | Microsoft Docs
 description: További információ az Azure Active Directoryban, beleértve a szükséges terminológia célközönség, licencelés alapjai és társított szolgáltatások.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 80c3108d468465e68d554b3d36c527c5ccd4a13c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 44533ea4430bb7cd3bc7e0b6451892cc68bacc19
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085926"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450217"
 ---
 # <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory? 
 Az Azure Active Directory (Azure AD) a Microsoft felhőalapú identitás- és hozzáférés felügyeleti szolgáltatása. Az Azure AD segítségével az alkalmazottak bejelentkezhet és elérheti az erőforrásokat:
@@ -52,7 +52,7 @@ Az Azure AD-implementáció javítása érdekében is hozzáadhat fizetős képe
 
 - **"Használatalapú fizetés" funkció licenceket.** A szolgáltatás további licenceket, például az Azure Active Directory üzleti és ügyfél közötti (B2C) is kaphat. B2C segítségével biztosíthat identitás- és hozzáférés-kezelés az ügyfelek által használt alkalmazások számára. További információkért lásd: [Azure Active Directory B2C dokumentációja](../../active-directory-b2c/index.yml).
 
-Az Azure ad-hez Azure-előfizetéssel való társításáról szóló további információkért lásd: [hogyan: társítsa Azure-előfizetés hozzáadása az Azure Active Directory vagy](active-directory-how-subscriptions-associated-directory.md) és licencek hozzárendelése a felhasználók kapcsolatos további információkért lásd: [Hogyan: rendelje hozzá, vagy távolítsa el az Azure Active Directory-licenceket](license-users-groups.md).
+Az Azure ad-hez Azure-előfizetéssel való társításáról szóló további információkért lásd: [hogyan: Hozzárendelése vagy Azure-előfizetés hozzáadása az Azure Active Directoryhoz](active-directory-how-subscriptions-associated-directory.md) és licencek hozzárendelése a felhasználók kapcsolatos további információkért lásd: [hogyan: Rendelje hozzá, vagy távolítsa el az Azure Active Directory-licenceket](license-users-groups.md).
 
 ## <a name="terminology"></a>Terminológia
 Jobb megértése érdekében az Azure AD és a hozzá tartozó dokumentáció, tekintse át az alábbi feltételek.

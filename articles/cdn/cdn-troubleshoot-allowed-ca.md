@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 79b8cfa061bafb43cbcf2ec8a43638fd14c2fcd0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 11651c2721756a4f750a5a5e78f86fdbd363fb9d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954037"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462589"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Hitelesítésszolgáltatók engedélyezett az Azure CDN egyéni HTTPS engedélyezése
 
@@ -33,13 +33,10 @@ Az Azure Content Delivery Network (CDN) egyéni tartomány egy **Azure CDN Stand
 A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 
 - AddTrust külső hitelesítésszolgáltató legfelső szintű
-- AlphaSSL legfelső szintű hitelesítésszolgáltató
-- Infrastruktúra AME hitelesítésszolgáltató 01
-- Infrastruktúra AME hitelesítésszolgáltató 02
+- AlphaSSL Root CA
+- AME Infra CA 01
+- AME Infra CA 02
 - Ameroot
-- Hozzáférési pont legfelső szintű hitelesítésszolgáltató
-- Hozzáférési pont legfelső szintű hitelesítésszolgáltató 2013-hoz
-- Hozzáférési pont legfelső szintű hitelesítésszolgáltató 2014
 - APCA-DM3P
 - Az autopilot legfelső szintű hitelesítésszolgáltató
 - Baltimore CyberTrust legfelsőbb szintű
@@ -59,33 +56,33 @@ A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 - Sokfelé kell tárolnia a titkosítási DV TLS hitelesítésszolgáltató
 - Entrust-legfelső szintű hitelesítésszolgáltató
 - Entrust-legfelső szintű hitelesítésszolgáltató - G2 csomag
-- Hitelesítésszolgáltató Entrust.NET (2048)
+- Entrust.net Certification Authority (2048)
 - GeoTrust globális hitelesítésszolgáltató
 - GeoTrust elsődleges hitelesítésszolgáltató
 - GeoTrust elsődleges hitelesítésszolgáltató - G2 csomag
-- Geotrust RSA CA-2018.
+- Geotrust RSA CA 2018
 - GlobalSign
 - Bővített ellenőrzés CA - SHA256 - G2 GlobalSign
 - GlobalSign szervezet érvényesítési CA - G2 csomag
-- GlobalSign legfelső szintű hitelesítésszolgáltató
+- GlobalSign Root CA
 - Go Daddy legfelső szintű hitelesítésszolgáltató - G2 csomag
 - Go Daddy biztonságos hitelesítésszolgáltató - G2 csomag
-- RapidSSL RSA CA-2018.
-- Legfelső szintű Hivatal
+- QuoVadis legfelső szintű CA2 G3 csomag
+- RapidSSL RSA CA 2018
 - A Symantec osztály 3 Bővített SSL CA - G3 csomag
 - A Symantec osztály 3 biztonságos kiszolgáló CA - G4
 - A Microsoft a Symantec Enterprise Mobile Root
 - Thawte elsődleges legfelső szintű hitelesítésszolgáltató
 - Thawte elsődleges legfelső szintű hitelesítésszolgáltató - G2 csomag
 - Thawte elsődleges legfelső szintű hitelesítésszolgáltató - G3 csomag
-- Thawte RSA CA-2018.
-- Hitelesítésszolgáltató Thawte időbélyegző
-- TrustAsia TLS RSA hitelesítésszolgáltató
+- Thawte RSA CA 2018
+- Thawte Timestamping CA
+- TrustAsia TLS RSA CA
 - SSL-Hitelesítésszolgáltatói VeriSign osztály 3 bővített ellenőrzés
 - A VeriSign osztály 3 bővített ellenőrzés SSL kiszolgáló által Kezdeményezett hitelesítésszolgáltató
 - 3. a VeriSign osztály nyilvános elsődleges hitelesítésszolgáltató - G5
 - A VeriSign nemzetközi kiszolgáló CA - 3 osztályban
-- Időbélyegzési fájlszolgáltatási gyökerén VeriSign idő
+- VeriSign Time Stamping Service Root
 - A VeriSign univerzális legfelső szintű hitelesítésszolgáltató
 
 

@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 8a8883989a731265fb358c119d44fa4243b54a5e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 305aa28127e453c01de9b55ab6cb0ff3471afad9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103944"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473809"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Az Azure Diagnostics hibaelhárítása
 Ez a cikk ismerteti a hibaelhárítási információkat, amelyek megfelelőek az Azure Diagnostics használatával. Az Azure diagnostics kapcsolatos további információkért lásd: [Azure Diagnostics – áttekintés](diagnostics-extension-overview.md).
@@ -64,20 +64,20 @@ Ha nem szerepel megjeleníthető adat a megadott metrika, ellenőrizze **diagnos
 - \Memory\Available Bytes
 - \ASP.NET alkalmazások (__teljes__) \Requests/Sec
 - \ASP.NET alkalmazások (__teljes__) \Errors összes/mp
-- \ASP.NET\Requests várólistára helyezve
+- \ASP.NET\Requests Queued
 - Elutasított \ASP.NET\Requests
 - \Processor(w3wp)\% processzoridő
 - \Process(w3wp)\Private Bytes
-- \Process(WaIISHost)\% processzoridő
-- (WaIISHost) \Process \Private bájtok
+- \Process(WaIISHost)\% Processor Time
+- \Process(WaIISHost)\Private Bytes
 - \Process(WaWorkerHost)\% Processor Time
 - \Process(WaWorkerHost)\Private Bytes
-- \Memory\Page chyby stránkování/s
+- \Memory\Page Faults/sec
 - \.NET CLR memória (_globális_)\% Szemétgyűjtéssel töltött idő
 - (C:) \LogicalDisk \Disk Zapsané Bajty/s
 - Olvasási bájt/mp (C:) \LogicalDisk \Disk
-- (D:) \LogicalDisk \Disk Zapsané Bajty/s
-- Olvasási bájt/mp (D:) \LogicalDisk \Disk
+- \LogicalDisk(D:)\Disk Write Bytes/sec
+- \LogicalDisk(D:)\Disk Read Bytes/sec
 
 Ha a konfiguráció megfelelően van-e állítva, de továbbra sem látja a metrikaadatokat, az alábbi irányelvek használatával háríthatja el.
 
@@ -204,7 +204,7 @@ Ez a kód a négy táblát hoz létre:
 | Esemény | Tábla neve |
 | --- | --- |
 | szolgáltató = "prov1" &lt;Event id = "1" /&gt; |WADEvent + MD5("prov1") + "1" |
-| szolgáltató = "prov1" &lt;Event id = "2" eventDestination = "dest1" /&gt; |WADdest1 |
+| provider=”prov1” &lt;Event id=”2” eventDestination=”dest1” /&gt; |WADdest1 |
 | szolgáltató = "prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5("prov1") |
 | szolgáltató = "prov2" &lt;DefaultEvents eventDestination = "dest2" /&gt; |WADdest2 |
 
@@ -293,3 +293,4 @@ A portál felülete, a virtual machines bizonyos teljesítményszámlálók alap
 - Az adatok a storage-ban van-e számláló nevek angol nyelven. Ha a számlálók neve nem angol nyelven, a portál metrikadiagram aktívnak, nem történik meg. **Kockázatcsökkentési**: A gép nyelv az angol nyelvű rendszerfiókok értékre módosítani. Ehhez válassza ki a **Vezérlőpult** > **régió** > **felügyeleti** > **beállításainak**. Ezután törölje a jelölését **üdvözlő képernyő és a system fiók** úgy, hogy az egyéni nyelvi a rendszer nem alkalmazza a rendszer fiók.
 
 - Ha helyettesítő karaktereket használ (\*) a teljesítményszámlálók nevét, a portál nem tudnia kell korrelálni a beállított és a gyűjtött számláló, ha a teljesítményszámlálók érkezik az Azure Storage-fogadó. **Kockázatcsökkentési**: Ellenőrizze, hogy használjon helyettesítő elemeket, és bontsa ki a portál rendelkezik, a (\*), a teljesítményszámlálók adatait szeretné irányítani a ["Az Azure Monitor"-fogadó](diagnostics-extension-schema.md#diagnostics-extension-111).
+

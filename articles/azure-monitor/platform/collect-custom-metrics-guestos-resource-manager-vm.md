@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
-ms.component: metrics
-ms.openlocfilehash: a4581ec70c5d13f215b115c51493a1994ffa8fd4
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.subservice: metrics
+ms.openlocfilehash: 49c37c5dd2910cda234c479dc624f6c6ae92f6c1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412894"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467919"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolja a Windows virtuális gép Resource Manager-sablon használatával
 
@@ -51,7 +51,7 @@ Nyissa meg a *azuredeploy.parameters.json* fájl
 
 1. Hozzon létre egy egyedi dnsname a virtuális gép számára.
 
-### <a name="modify-azuredeployjson"></a>Azuredeploy.json módosítása
+### <a name="modify-azuredeployjson"></a>Modify azuredeploy.json
 
 Nyissa meg a *azuredeploy.json* fájl
 
@@ -286,3 +286,4 @@ A Resource Manager-sablon üzembe helyezéséhez használhatja azt az Azure Powe
 
 ## <a name="next-steps"></a>További lépések
 - Tudjon meg többet [egyéni metrikákat](metrics-custom-overview.md).
+

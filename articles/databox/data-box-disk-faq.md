@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Data Box Disk GYIK | Microsoft Docs in data
-description: Gyakori kérdések és válaszok az Azure Data Box Disk felhőalapú megoldással kapcsolatban, amellyel nagy mennyiségű adatot vihet át az Azure-ba
+description: Gyakran ismételt kérdéseket tartalmaz, valamint választ ad az Azure Data Box-lemezek, egy felhőalapú megoldás, amely lehetővé teszi nagy mennyiségű adat átvitele az Azure-bA
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 4320e56b04761c6adcae1db259eeecf332fbd781
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 68bc3302874849a69249a50dcecd46024ad939ef
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158788"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448329"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
@@ -125,7 +125,7 @@ A.  Nem. A Data Box Disk-lemezekkel jelenleg csak egyetlen általános célú va
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>K. Mi az az eszközkészlet érhető el a Data Box-lemezek az adataimat?
 A. A Data Box-lemezek érhető el az eszközkészlet három eszközöket tartalmaz:
  - **Data Box-lemez zárolásának feloldásához eszköz**: Az eszköz zárolásának feloldásához a titkosított lemezek, a Microsoft szállított használható. A lemezek segítségével az eszköz zárolásának feloldása, amikor meg kell adnia a Data Box-lemezrendelését az Azure Portalon a hozzáférési kulcs. 
- - **Data Box Disk fürtérvényesítési eszköz**: Ezzel az eszközzel ellenőrizze a mérete, a formátum és a blob neve az Azure elnevezési convnetions megfelelően használja. Emellett a másolt adatokat, majd ellenőrizze az adatokat az Azure-bA feltöltött használt az ellenőrzőösszegek állít elő.
+ - **Data Box Disk fürtérvényesítési eszköz**: Ezzel az eszközzel ellenőrizze a mérete, a formátum és a blob neve az Azure elnevezési konvencióinak megfelelően használja. Emellett a másolt adatokat, majd ellenőrizze az adatokat az Azure-bA feltöltött használt az ellenőrzőösszegek állít elő.
  - **Data Box lemez felosztása Fájlmásoló eszközt**: Használja ezt az eszközt, ha több lemezeket használ, és a egy nagy méretű adathalmazt, amelyek felosztása és lemez minden másolt kell rendelkeznie. Ez az eszköz Windows jelenleg érhető el.
 
 Az eszközkészlet Windows és Linux egyaránt érhető el. Az eszközkészlet Itt töltheti le:

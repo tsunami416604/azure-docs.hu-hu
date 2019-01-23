@@ -4,7 +4,7 @@ description: Útmutató a konfigurált SAML-alapú összevont egyszeri bejelentk
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 17114818105935d8d6a7ac647f1d98c097e78efd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8f545aad7256764780a68f4b43ee30bf68749187
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356639"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469712"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Egy összevont egyszeri bejelentkezés beállított, katalógusban nem szereplő alkalmazásba történő bejelentkezésnél
 
@@ -34,7 +34,7 @@ A probléma elhárításához ellenőrizze az alkalmazás konfigurációját az 
 
 ## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a címtárban
 
-*Hiba AADSTS70001: Alkalmazás-azonosítójú "https://contoso.com" nem található a címtárban*.
+*Hiba AADSTS70001: Alkalmazás-azonosító "https://contoso.com" nem található a címtárban*.
 
 **Lehetséges ok**
 
@@ -66,7 +66,7 @@ Miután frissítette az Azure ad-ben az azonosító értékét, és azt van megf
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel. 
 
-*AADSTS50011. hiba: A címet "https://contoso.com" nem felel meg a válasz címek konfigurálva az alkalmazáshoz* 
+*Hiba AADSTS50011: A válaszcím https://contoso.com"nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel* 
 
 **Lehetséges ok** 
 
@@ -100,7 +100,7 @@ Miután frissítése az Azure ad-ben a válasz URL-Címének értékét, és azt
 
 ## <a name="user-not-assigned-a-role"></a>Felhasználói szerepkör nincs hozzárendelve
 
-*AADSTS50105. hiba: A bejelentkezett felhasználó "brian@contoso.com" nincs hozzárendelve egy szerepkörhöz az alkalmazáshoz*
+*Hiba AADSTS50105: A bejelentkezett felhasználó "brian@contoso.com" nincs hozzárendelve egy szerepkörhöz az alkalmazáshoz*
 
 **Lehetséges ok**
 
@@ -134,7 +134,7 @@ Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse a
 
 11. A kurzort a **felhasználói** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a felhasználó profilfényképének vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
 
-12. **Választható lehetőség:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név alapján, vagy e-mail-cím** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
+12. **Nem kötelező:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név vagy e-mail cím alapján** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
 
 13. Amikor elkészült, válassza a felhasználók, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
 
@@ -146,7 +146,7 @@ Után rövid idő alatt a kiválasztott felhasználók tudják elindítani ezeke
 
 ## <a name="not-a-valid-saml-request"></a>Nem egy érvényes SAML-kérelmet
 
-*AADSTS75005. hiba: A kérés nem érvényes egy Saml2 protokoll üzenetet.*
+*Hiba AADSTS75005: A kérés nem érvényes egy Saml2 protokoll üzenetet.*
 
 **Lehetséges ok**
 
@@ -170,7 +170,7 @@ Ellenőrizni kell az Azure AD SAML végrehajtása támogatja az egyszeri bejelen
 
 ## <a name="no-resource-in-requiredresourceaccess-list"></a>Nincs erőforrás requiredResourceAccess listában
 
-*AADSTS65005. hiba: Az ügyfélalkalmazás kért erőforrás elérésére "00000002-0000-0000-c000-000000000000'. A kérelem nem sikerült, mert az ügyfél nem megadva ehhez az erőforráshoz a requiredResourceAccess listájára*.
+*Hiba AADSTS65005: Az ügyfélalkalmazás kért erőforrás elérésére "00000002-0000-0000-c000-000000000000'. A kérelem nem sikerült, mert az ügyfél nem megadva ehhez az erőforráshoz a requiredResourceAccess listájára*.
 
 **Lehetséges ok**
 
@@ -202,7 +202,7 @@ Után az alkalmazás újbóli beállításához kell tudni bejelentkezni az alka
 
 ## <a name="certificate-or-key-not-configured"></a>Tanúsítvány és kulcs nincs konfigurálva
 
-AADSTS50003. hiba: Nincs aláíró kulcs beállítva.
+Hiba AADSTS50003: Nincs konfigurálva aláírási kulcsát.
 
 **Lehetséges ok**
 

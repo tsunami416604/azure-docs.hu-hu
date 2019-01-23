@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 62220104329e36fbb2e6f7d3b5b48bcaeaba3660
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 66119ffab8c6117e223468834b59e6d6b19409a0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082946"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445062"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 Customer Engagement kirakat részletei lap
 
@@ -76,7 +76,7 @@ Ha a következő táblázat ismerteti ezen a lapon a mezőket:
 |      Mező            |    Leírás                 |
 |  ---------------      |  ---------------               |
 | Az ajánlat embléma (png formátumú, 48 x 48) | Töltsön fel egy képet, az alkalmazás keresési oldalon jelenik meg. Formátum: PNG és 48 x 48 képpontos kell lennie. |
-| Az ajánlat embléma (png formátumú, 216 x 216) | Töltse fel egy képet az alkalmazás részletei lapon disaply lesz. Formátum: PNG és mérete 216 x 216 képpont lehet. |
+| Az ajánlat embléma (png formátumú, 216 x 216) | Töltsön fel egy képet, az alkalmazás részletei lapon jelenik meg. Formátum: PNG és mérete 216 x 216 képpont lehet. |
 | Videók                | Az alkalmazás, amely legfeljebb négy promóciós vagy intézet videókat tölthet fel.  Az egyes videók adja meg a videó neve, URL-címe (YouTube vagy Vimeo csak) és kapcsolódó miniatűrjén PNG formátumú és a méretezett 1280 x 720 képpont.  | 
 | Dokumentumok             | Töltse fel a termék promóciós vagy intézet dokumentum PDF formátumban, és legfeljebb három.  Minden egyes dokumentum esetében adja meg a dokumentum nevét.  |
 | Képernyőképek           | Töltsön fel egy legfeljebb öt rendszerképek az alkalmazás felhasználói felületén a PNG formátumú és a méretezett 1280 x 720 képpont.  Ezek a képernyőfelvételek az appsource-ban az alkalmazás részletek lapon fog megjelenni. |

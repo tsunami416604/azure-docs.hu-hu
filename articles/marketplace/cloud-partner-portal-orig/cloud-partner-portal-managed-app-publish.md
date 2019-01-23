@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bc044c8b59c939163336ecab01546fc26a7a2643
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 6e5bcd6d9923b4051d44d51ff1a2534bc5e02f41
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810623"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445660"
 ---
 <a name="publish-an-azure-managed-application-to-azure-marketplace"></a>Az Azure Marketplace-en az Azure által felügyelt alkalmazás közzététele 
 ========================================================
@@ -88,7 +88,7 @@ A Termékváltozat alatt jelenik meg a szülő ajánlat az Azure Marketplace-en 
 
 3.  Egy új ajánlat \"szerkesztő\" megtekintése most megnyílik, és elkezdheti a szerzői.
 
-4.  A \"űrlapok\" meg kell adni, hogy szükség belül a bal oldalon láthatók a \"szerkesztő\" megtekintése. Minden egyes \"űrlap\" automatikusan kitölti a mezőket egy készlete áll. Szükséges, piros csillag jelölt mezők (\*).
+4.  A \"űrlapok\" meg kell adni, hogy szükség belül a bal oldalon láthatók a \"szerkesztő\" megtekintése. Minden egyes \"űrlap\" automatikusan kitölti a mezőket egy készlete áll. Szükséges, piros csillaggal jelölt mezők (\*).
 
     > Nincsenek a kezelt alkalmazás készítéséhez 4 fő űrlapok
 
@@ -162,7 +162,7 @@ applianceMainTemplate.json – a központi telepítési sablon fájlt, a megold�
 
 applianceCreateUIDefinition.json – Ez a fájl létrehozásához a felhasználói felület üzembe helyezés a megoldás alkalmazás az Azure.com webhelyen Portalra használják. További részleteket talál a ide - e a fájl létrehozása <https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview>
 
-mainTemplate.json – a sablon fájlt, amely csak a Microsoft.Solution/appliances erőforrást tartalmazza. A érdemes figyelembe vennie az erőforrás-tulajdonságok a következők:
+mainTemplate.json - the template file that contains only the Microsoft.Solution/appliances resource. A érdemes figyelembe vennie az erőforrás-tulajdonságok a következők:
 
 -   \"milyen\" -az érték lehet \"Marketplace-en\" piactér által felügyelt alkalmazás forgatókönyv esetén
 -   \"ManagedResourceGroupId\": az erőforráscsoport, az ügyfél\'s-előfizetés, ahol a applianceMainTemplate.json definiált összes erőforrást üzembe helyezve.

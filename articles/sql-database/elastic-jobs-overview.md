@@ -1,161 +1,36 @@
 ---
 title: Azure SQL rugalmas adatbázis-feladatok | Microsoft Docs
-description: Rugalmas adatbázis-feladatok használatával Transact-SQL- (T-SQL-) szkripteket futtathat egy vagy több Azure SQL-adatbáziskészleten
+description: Transact-SQL (T-SQL) szkriptek futtatásához egy vagy több Azure SQL Database-adatbázisok több rugalmas adatbázis-feladatok konfigurálása
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
-ms.topic: overview
+ms.topic: howto
 author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 manager: craigg
-ms.date: 07/26/2018
-ms.openlocfilehash: f91632bfe16ea145a087656ffc946e4a76e07466
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/22/2018
+ms.openlocfilehash: d8af5e3919b731677b40726c37462832adc06677
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608671"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449095"
 ---
-# <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>Adatbáziscsoportok kezelése rugalmas adatbázis-feladatokkal
+# <a name="create-configure-and-manage-elastic-jobs"></a>Létrehozása, konfigurálása és kezelése rugalmas feladatokkal
 
-**Rugalmas adatbázis-feladatok** segítségével egy vagy több T-SQL-szkriptet párhuzamosan, nagy számú adatbázison, ütemezve vagy igény szerint futtathat.
+Ebből a cikkből megtudhatja, létrehozása, konfigurálása és kezelése rugalmas feladatokkal. Ha még nem használta a rugalmas feladatok [tudjon meg többet az Azure SQL Database, a feladat automation fogalmak](sql-database-job-automation-overview.md).
 
-**Adatbázisok bármilyen kombinációján futtathat feladatokat**: egy vagy több különálló adatbázison, egy kiszolgáló összes adatbázisán, egy rugalmas készletben található összes adatbázison vagy egy szegmenstérképen – ráadásul a további rugalmasság érdekében adott adatbázisokat is bevonhat vagy kizárhat. **A feladatok több kiszolgálón, több készleten, vagy akár különböző előfizetésekhez tartozó adatbázisokon is futtathatók.** A kiszolgálókat és készleteket a rendszer futásidőben dinamikusan veszi számba, ezért a feladatok az összes olyan adatbázison futnak, amelyek a célcsoportban a végrehajtáskor megtalálhatók.
+## <a name="create-and-configure-the-agent"></a>Az ügynök létrehozása és konfigurálása
 
-Az alábbi képen egy feladatügynök látható, amely különböző típusú célcsoportokon hajt végre feladatokat:
-
-![Rugalmas feladat ügynökének elméleti modellje](media/elastic-jobs-overview/conceptual-diagram.png)
-
-
-## <a name="why-use-elastic-jobs"></a>Miért érdemes rugalmas feladatokat használni?
-
-### <a name="manage-many-databases"></a>Több adatbázist kezelhet
-
-- Az adminisztratív feladatok futtatását hétköznapokra, munkaidő utánra stb. ütemezheti.
-- Üzembe helyezhet sémamódosításokat, kezelheti a hitelesítő adatokat, teljesítményadatokat vagy bérlői (ügyfél-) telemetriát gyűjthet. Frissítheti a referenciaadatokat (az összes adatbázis által közösen használt információkat).
-- Az indexek újraépítésével javíthatja a lekérdezési teljesítményt. Úgy konfigurálhatja a feladatokat, hogy a rendszer egy adott adatbázis-gyűjteményen rendszeres időközönként hajtsa őket végre, például csúcsidőn kívül.
-- A lekérdezési adatokat az adatbázis-készletekből folyamatosan egy központi táblába gyűjtheti. A teljesítménylekérdezések folyamatosan végrehajthatók, illetve konfigurálhatók úgy, hogy további végrehajtandó feladatokat indítsanak el.
-
-### <a name="collect-data-for-reporting"></a>Adatokat gyűjthet jelentéskészítéshez
-
-- Összesítheti az Azure SQL Database-adatbázisok egy gyűjteményéből származó adatokat egy céltáblában.
-- Olyan hosszabban futó adatfeldolgozási lekérdezéseket hajthat végre nagy adatbáziskészleteken, amilyen például az ügyfél-telemetria gyűjtése. A rendszer az eredményeket egyetlen céltáblában gyűjti össze a további elemzéshez.
-
-### <a name="reduce-overhead"></a>Csökkentheti a többletterhelést
-
-- Általában mindegyik adatbázist függetlenül kell csatlakoztatnia, hogy Transact-SQL utasításokat futtasson vagy egyéb adminisztratív feladatokat hajtson végre. Egy feladat kezeli a bejelentkezéseket egy célcsoport összes adatbázisába. Emellett meghatározhat, fenntarthat és megőrizhet Transact-SQL-szkripteket, amelyeket Azure SQL Database-adatbázisok egy csoportján futtat.
-
-### <a name="accounting"></a>Könyvelés
-
-- A feladatok naplózzák az egyes adatbázisokhoz kötődő végrehajtások állapotát. Hiba esetén a rendszer automatikusan újrapróbálkozik.
-
-### <a name="flexibility"></a>Rugalmasság
-
-- Meghatározhatja Azure SQL Database-adatbázisok egyéni csoportjait, valamint a feladatok futtatásának ütemezését.
-
-
-## <a name="elastic-job-components"></a>Rugalmas feladat összetevői
-
-|Összetevő  | Leírás (további részletek a táblázat alatt találhatók) |
-|---------|---------|
-|[**Rugalmas feladat ügynöke**](#elastic-job-agent) |  Az az Azure-erőforrás, amelyet a feladatok futtatására és kezelésére hoz létre.   |
-|[**Feladat-adatbázis**](#job-database)    |    A feladatügynök által a feladatadatok, a feladatdefiníciók és egyebek tárolására használt Azure SQL Database.      |
-|[**Célcsoport**](#target-group)      |  Azon kiszolgálók, készletek, adatbázisok és szegmenstérképek, amelyeken egy feladatot kíván futtatni.       |
-|[**Feladat**](#job)  |  A feladatok egy vagy több [feladatlépésből](#job-step) álló munkaegységek. A feladatlépések meghatározzák a futtatandó T-SQL-szkriptet, valamint a szkript végrehajtásához szükséges egyéb részleteket.  |
-
-
-### <a name="elastic-job-agent"></a>Rugalmas feladat ügynöke
-
-A rugalmasfeladat-ügynök a feladatok létrehozásához, futtatásához és kezeléséhez használt Azure-erőforrás. A rugalmasfeladat-ügynök egy Azure-erőforrás, amelyet a portálon hozhat létre (a [PowerShell](elastic-jobs-powershell.md) és a REST is támogatott). 
-
-**Rugalmasfeladat-ügynök** létrehozásához szükség van egy meglévő SQL-adatbázisra. Az ügynök [*feladat-adatbázisként*](#job-database) konfigurálja a meglévő adatbázist.
-
-A rugalmasfeladat-ügynök használata ingyenes. A feladat-adatbázis díjszabása megegyezik bármely más SQL-adatbáziséval.
-
-### <a name="job-database"></a>Feladat-adatbázis
-
-A *feladat-adatbázis* feladatok meghatározására, valamint a feladat-végrehajtások állapotának és előzményeinek nyomon követésére szolgál. A *feladat-adatbázis* emellett az ügynökmetaadatok, a naplók, az eredmények és a feladatdefiníciók tárolására is szolgál, valamint számos hasznos tárolt eljárást és más adatbázis-objektumokat tartalmaz a feladatok T-SQL használatával történő létrehozásához, futtatásához és kezeléséhez.
-
-A jelenlegi előzetes verzióban egy meglévő (S0 vagy magasabb szintű) Azure SQL Database szükséges a rugalmasfeladat-ügynök létrehozásához.
-
-A *feladat-adatbázisnak* nem kell feltétlenül újnak lennie, azonban fontos, hogy üres legyen, és S0 vagy magasabb szolgáltatásszinten működjön. A *feladat-adatbázis* javasolt szolgáltatásszintje S1 vagy magasabb, ez azonban függ a feladat(ok) teljesítményigényétől, a feladatlépések számától, valamint feladatok futtatásának számától és gyakoriságától. Például egy S0 szintű adatbázis elegendő lehet egy óránként mindössze néhány feladatot futtató feladatügynök számára, percenként futtatott feladatok esetén azonban előfordulhat, hogy ez a teljesítmény nem elegendő, és érdemes magasabb szolgáltatásszintet választani.
-
-
-#### <a name="job-database-permissions"></a>Feladat-adatbázis engedélyei
-
-Feladatügynök létrehozásakor a séma, a táblák és a *jobs_reader* nevű szerepkör a *feladat-adatbázisban* jön létre. A szerepkör a következő engedéllyel jön létre, és célja, hogy részletesebb hozzáférés-vezérlést biztosítson a rendszergazdák számára a feladatok monitorozásához:
-
-
-|Szerepkörnév  |'jobs' sémaengedélyek  |'jobs_internal' sémaengedélyek  |
-|---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    None     |
-
-> [!IMPORTANT]
-> Mielőtt adatbázis-rendszergazdaként hozzáférést biztosítana a *feladat-adatbázishoz*, fontolja meg a lehetséges biztonsági következményeket. A feladatok létrehozásához és szerkesztéséhez szükséges engedélyekkel rendelkező rosszindulatú felhasználó létrehozhat vagy szerkeszthet egy olyan feladatot, amely tárolt hitelesítő adattal csatlakozik a rosszindulatú felhasználó által vezérelt adatbázishoz, ezáltal a felhasználó meghatározhatja a hitelesítő adathoz tartozó jelszót.
-
-
-
-### <a name="target-group"></a>Célcsoport
-
-A *célcsoport* határozza meg az azokat az adatbázisokat, amelyeket az adott feladatlépés végre lesz hajtva. A célcsoport tetszőleges számban és kombinációban tartalmazhatja a következőket:
-
-- **Azure SQL Server** – Ha meg van adva egy kiszolgáló, a feladat végrehajtásának időpontjában a kiszolgálón található összes adatbázis a csoport része lesz. A master adatbázis hitelesítő adatait meg kell adni ahhoz, hogy a csoportot a rendszer a feladat végrehajtása előtt számba vegye és frissítse.
-- **Rugalmas készlet** – Ha meg van adva egy rugalmas készlet, a feladat végrehajtásának időpontjában a rugalmas készletben található összes adatbázis a csoport tagja lesz. Kiszolgáló esetén a master adatbázis hitelesítő adatait meg kell adni ahhoz, hogy a csoport a feladat futtatása előtt frissíthető legyen.
-- **Önálló adatbázis** – adjon meg egy vagy több egyedi adatbázist, amelyet a csoport részévé kíván tenni.
-- **Szegmenstérkép** – egy szegmenstérkép adatbázisai.
-
-> [!TIP]
-> A feladat végrehajtásakor a *dinamikus számbavételezés* újra kiértékeli a célcsoportokban található adatbázisokat, amelyek kiszolgálókat és készletet is tartalmaznak. A dinamikus számbavételezéssel biztosítható, hogy **a feladatok a feladat végrehajtásakor a kiszolgálón vagy a készletben létező összes adatbázison fussanak**. Az adatbázisok listájának futásidőben történő ismételt kiértékelése különösen hasznos olyan esetekben, amikor a készlet- vagy a kiszolgálótagság gyakran változik.
-
-A készletek és az önálló adatbázisok megadhatók úgy, hogy a csoport részét képezzék vagy ki legyenek zárva a csoportból. Ez lehetővé teszi, hogy az adatbázisok tetszőleges kombinációjából hozzon létre céladatbázist. Hozzáadhat például egy kiszolgálót egy céladatbázishoz, miközben kizárja egy rugalmas készlet egyes adatbázisait (vagy egy egész rugalmas készletet).
-
-A célcsoportok több előfizetésből és több régióból származó adatbázisokat is tartalmazhatnak. Vegye figyelembe, hogy a régiók közötti végrehajtás magasabb késéssel jár, mint a régión belüli.
-
-Az alábbi példákban az látható, hogyan történik a különböző célcsoport-meghatározások dinamikus számba vétele a feladat végrehajtásának pillanatában, a feladat által futtatandó adatbázisok megadásához:
-
-![Példák célcsoportokra](media/elastic-jobs-overview/targetgroup-examples1.png)
-
-Az **1. példában** olyan célcsoport szerepel, amely egyedi adatbázisok listáját tartalmazza. Ha egy feladatlépést e célcsoport használatával hajt végre, akkor a szóban forgó műveletet a rendszer az összes adatbázison elvégzi.<br>
-A **2. példában** olyan célcsoport szerepel, amely célhelyként egy Azure SQL Server-kiszolgálót tartalmaz. Ha egy feladatlépést e célcsoport használatával hajt végre, akkor a kiszolgáló dinamikus számba vételével a rendszer képes a kiszolgálón aktuálisan megtalálható adatbázisok listájának összeállítására. A szóban forgó műveletet a rendszer az összes adatbázison elvégzi.<br>
-A **3. példában** a *2. példában* lévőhöz hasonló célcsoport szerepel, amelyből viszont egy adott adatbázis ki van zárva. A szóban forgó műveletet a rendszer *nem* végzi el a kizárt adatbázison.<br>
-A **4. példában** olyan célcsoport szerepel, amely célhelyként egy rugalmas készletet tartalmaz. A *2. példához* hasonlóan a feladat futtatása során a készlet dinamikus számba vételével a rendszer képes a készletben lévő adatbázisok listájának összeállítására.
-<br><br>
-
-
-![Példák célcsoportokra](media/elastic-jobs-overview/targetgroup-examples2.png)
-
-Az **5. példában** és a **6. példában** olyan speciális forgatókönyvek szerepelnek, ahol Azure SQL Server-kiszolgálók, rugalmas készletek és adatbázisok kombinálásával foglalunk bele vagy zárunk ki szabályokat.<br>
-A **7. példa** azt mutatja be, hogy a feladat futtatása során a szilánkleképezésben szereplő szilánkok is kiértékelhetők.
-
-### <a name="job"></a>Feladat
-
-A *feladatok* ütemezetten vagy egyszeri feladatként végrehajtható munkaegységek. Egy feladat egy vagy több *feladatlépésből* áll.
-
-#### <a name="job-step"></a>Feladatlépés
-
-Minden feladatlépés meghatároz egy végrehajtandó T-SQL-szkriptet, egy vagy több célcsoportot, amelyen a T-SQL-szkript futtatható és a feladatügynök számára a céladatbázishoz történő csatlakozáshoz szükséges hitelesítő adatokat. Minden feladatlépés testreszabható időtúllépési és újrapróbálkozási szabályzattal és választhatóan megadható kimeneti paraméterekkel rendelkezik.
-
-#### <a name="job-output"></a>Feladat kimenete
-
-A feladatok lépéseinek eredménye részletesen rögzítve lesz az egyes adatbázisokon, a szkript kimenete pedig a megadott táblában. Megadhat egy adatbázist a feladat által visszaadott adatok tárolásához.
-
-#### <a name="job-history"></a>Feladatelőzmények
-
-A feladatok futtatásának előzményeit a rendszer a *feladat-adatbázisban* tárolja. A rendszertisztítási feladat törli a 45 napnál régebbi végrehajtási előzményeket. A 45 napnál nem régebbi előzmények törléséhez hívja meg az **sp_purge_history** tárolt eljárást a *feladat-adatbázisban*.
-
-## <a name="workflow-to-create-configure-and-manage-jobs"></a>Feladatok létrehozásának, konfigurálásának és kezelésének munkafolyamata
-
-### <a name="create-and-configure-the-agent"></a>Az ügynök létrehozása és konfigurálása
-
-1. Hozzon létre vagy azonosítson egy üres, S0 vagy magasabb szintű SQL-adatbázist. A rendszer ezt fogja *feladat-adatbázisként* használni a rugalmasfeladat-ügynök létrehozásakor.
+1. Hozzon létre vagy azonosítson egy üres, S0 vagy magasabb szintű SQL-adatbázist. Ezt az adatbázist fogja használni a *feladat adatbázis* rugalmas feladat ügynök létrehozása során.
 2. Hozzon létre egy rugalmasfeladat-ügynököt a [portál](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) vagy a [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) használatával.
 
-   ![Rugalmasfeladat-ügynök létrehozása](media/elastic-jobs-overview/create-elastic-job-agent.png)
+   ![Feladatügynök létrehozása](media/elastic-jobs-overview/create-elastic-job-agent.png)
 
-### <a name="create-run-and-manage-jobs"></a>Feladatok létrehozása, futtatása és kezelése
+## <a name="create-run-and-manage-jobs"></a>Feladatok létrehozása, futtatása és kezelése
 
 1. Hozzon létre egy hitelesítő adatot a feladat végrehajtásához a *feladat-adatbázisban* a [PowerShell](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets) vagy a [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) használatával.
 2. Határozza meg a célcsoportot (az adatbázisokat, amelyeken a feladatot futtatni szeretné) a [PowerShell](elastic-jobs-powershell.md#define-the-target-databases-you-want-to-run-the-job-against) vagy a [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) használatával.
@@ -174,8 +49,8 @@ A feladatok [adatbázishoz kötődő hitelesítő adatokat](/sql/t-sql/statement
 Lehetséges, hogy a feladatfuttatáshoz szükséges megfelelő hitelesítő adatok beállítása nem egyértelmű, ezért tartsa szem előtt a következőket:
 
 - Az adatbázishoz kötődő hitelesítő adatokat a *feladat-adatbázisban* kell létrehozni.
-- **A feladat sikeres befejezéséhez minden céladatbázisnak rendelkeznie kell egy [megfelelő engedélyeket](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) tartalmazó bejelentkezési hozzáféréssel** (az alábbi ábrán ez a jobuser).
-- A hitelesítő adatok más feladatokban is felhasználhatók, a jelszavakat pedig titkosítva, biztonságosan tárolja a rendszer, hogy a feladatobjektumokhoz csak olvasási jogosultsággal rendelkező felhasználók ne férhessenek hozzájuk.
+- **Az összes céladatbázis rendelkeznie kell egy bejelentkezés [megfelelő engedélyekkel](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) sikeresen befejeződik a feladat** (`jobuser` az alábbi ábrán).
+- Hitelesítő adatok felhasználhatók a feladatokat, és a hitelesítő adatok jelszavak titkosítva és védve legyen a feladat-objektumokhoz csak olvasási hozzáféréssel rendelkező felhasználók számára.
 
 Az alábbi kép segítséget nyújt a megfelelő hitelesítő adatok megértéséhez és beállításához. **Ne feledje létrehozni a felhasználót minden olyan adatbázisban (minden *célként megjelölt felhasználói adatbázisban*), ahol a feladatot futtatni szeretné**.
 
@@ -186,10 +61,8 @@ Az alábbi kép segítséget nyújt a megfelelő hitelesítő adatok megértés�
 Néhány megfontolandó ajánlott eljárás a rugalmas feladatokkal végzett munkához:
 
 - Az API-k felhasználását korlátozza megbízható személyekre.
-- A hitelesítő adatok a feladatlépés végrehajtásához szükséges minimális engedélyekkel rendelkezzenek. További tudnivalókat az [engedélyezés és az engedélyek az SQL-kiszolgálón való használatát](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server) ismertető cikkben olvashat.
-- Kiszolgáló és/vagy készlet célcsoport használatakor javasoljuk, hogy hozzon létre külön, a master adatbázison jogosultságokkal rendelkező hitelesítő adatot azon adatbázisok megtekintéséhez/listázásához, amely a feladat végrehajtása előtt a kiszolgáló(k) és/vagy készlet(ek) adatbázislistáinak kibontásához lesz használva.
-
-
+- A hitelesítő adatok a feladatlépés végrehajtásához szükséges minimális engedélyekkel rendelkezzenek. További információkért lásd: [engedélyezési és az engedélyek SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
+- Egy kiszolgálón és/vagy a célként megadott csoportot készlettag használatakor, erősen ajánlott külön hitelesítő adatok létrehozása, amellyel bontsa ki a kiszolgáló (ko) és / vagy tárolókészleteit a feladat végrehajtása előtt az adatbázis listák adatbázisok megjelenítéséhez a master adatbázisban az jogosultsággal rendelkező.
 
 ## <a name="agent-performance-capacity-and-limitations"></a>Az ügynök teljesítménye, kapacitása és korlátai
 
@@ -202,20 +75,6 @@ Jelenleg az előzetes verzió 100 feladat egyidejű futtatására képes.
 ### <a name="prevent-jobs-from-reducing-target-database-performance"></a>A feladatok a céladatbázis teljesítményét csökkentő hatásának megakadályozása
 
 Ha szeretné elkerülni, hogy az erőforrások túlterheltek legyenek egy rugalmas SQL-készlet adatbázisain történő feladatvégrehajtás közben, akkor a feladatok esetén konfigurálhatja, hogy azok egyszerre legfeljebb hány adatbázison futhatnak.
-
-##  <a name="differences-between-elastic-jobs-and-sql-server-agent"></a>Különbségek a rugalmas feladatok és az SQL Server Agent között
-
-Fontos kiemelnünk néhány eltérést az SQL Server Agent (amely a helyszínen, valamint a felügyelt SQL Database-példány részeként érhető el) és az Azure SQL Database rugalmasfeladat-ügynöke között (amely jelenleg az SQL Database-hez és az SQL Data Warehouse-hoz érhető el).
-
-
-|  |Rugalmas feladatok  |SQL Server Agent |
-|---------|---------|---------|
-|Hatókör     |  Tetszőleges számú Azure SQL-adatbázis és/vagy Data Warehouse egy Azure-felhőben, amely feladatügynökként működik. A célok lehetnek különböző logikai kiszolgálókon, előfizetésekben és/vagy régiókban. <br><br>A célcsoportok állhatnak egyedi adatbázisokból vagy adattárházakból, illetve egy kiszolgáló, készlet vagy szegmenstérkép összes adatbázisából (a feladat futásidejében dinamikusan számba véve). | Bármely önálló adatbázis az SQL-ügynökével azonos SQL Server-példányban. |
-|Támogatott API-k és eszközök     |  Portál, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
-
-
-
-
 
 ## <a name="best-practices-for-creating-jobs"></a>Ajánlott eljárások feladatok létrehozásához
 

@@ -4,7 +4,7 @@ description: Áttekintése és hibrid identitás kialakítási szempontokat isme
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 100509c4-0b83-4207-90c8-549ba8372cf7
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d85157c3f1aafd33a2b996168f2f9eac613a209c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: d0930de0ac3272d2858e961ec2038093dcc9ccc9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344882"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463014"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory hibrid identitáskezelés – kialakítási szempontok
 Fogyasztói-alapú eszközök vannak proliferating a vállalati világban, és felhő alapú szoftver--szolgáltatásként (SaaS) alkalmazások könnyen fogad el. Ennek eredményeképpen belső adatközpontokra és felhőalapú platformon alkalmazás-hozzáférés felhasználók feletti irányítás is kihívást jelent.  
@@ -49,14 +49,14 @@ A fenti ábrán egy példa egy hibrid identitáskezelési megoldás, amely a hel
 
 Ez az útmutató azokat a lépéseket és feladatokat, amelyekkel a szervezet egyedi igényeinek megfelelő hibrid identitáskezelési megoldás tervezésekor több ismertet. A következő lépések és feladatok során az útmutató mutatja be a releváns technológiákat és beállítási lehetőségeket, a funkcionális és a szolgáltatás szolgáltatásminőségi szintre vonatkozó követelményeinek a szervezet.
 
-**Feltételezések**: rendelkezik némi tapasztalattal a Windows Server, az Active Directory Domain Services és az Azure Active Directory. Ebben a dokumentumban feltételezzük, hogyan ezeket a megoldásokat is az üzleti igényeinek önállóan vagy az integrált megoldást keres.
+**Feltételezések**: Rendelkezik némi tapasztalattal a Windows Server, az Active Directory Domain Services és az Azure Active Directory. Ebben a dokumentumban feltételezzük, hogyan ezeket a megoldásokat is az üzleti igényeinek önállóan vagy az integrált megoldást keres.
 
 ## <a name="design-considerations-overview"></a>Kialakítási szempontok áttekintése
 Ez a dokumentum lépéseket és feladatokat, amelyekkel az igényeinek legjobban megfelelő hibrid identitáskezelési megoldás tervezéséhez nyújt. A lépések bemutatják sorrendben követik egymást. Szempontok a későbbi lépésekben hozott döntések felülvizsgálatát a korábbi lépések azonban tervezési döntések is lehet szükség. Minden kísérlet történik a dokumentum lehetséges tervezési ütközésekre riasztást küld. 
 
 A tervezési, hogy igényeknek leginkább megfelelő csak ha annyiszor megy végig a lépéseken, ahányszor szükséges a dokumentumban ismertetett szempontok érkezik. 
 
-| Hibrid identitás fázis | A témakör listája |
+| Hybrid Identity Phase | A témakör listája |
 | --- | --- |
 | Identitáshoz kapcsolódó követelmények meghatározása |[Üzleti igények meghatározása](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Határozza meg a címtár-szinkronizálás követelményei](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [A multi-factor authentication-követelmények meghatározása](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [A hibrid identitás bevezetési stratégia kidolgozása](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
 | Adatbiztonság erős identitása-megoldáson keresztül továbbfejlesztésének tervezése |[Az adatvédelmi követelmények meghatározása](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [A Tartalomkezelés követelmények meghatározása](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Hozzáférés-vezérlési követelményeinek meghatározása](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Incidensválasz-követelmények meghatározása](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Data protection stratégia kidolgozása](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |

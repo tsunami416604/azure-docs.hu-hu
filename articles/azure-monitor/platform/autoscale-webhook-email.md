@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: c655f117009c0c7c682ad92a951edc7e12255bc2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: autoscale
+ms.openlocfilehash: 248167eca532beb957c723f5074fc1546982efc8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326227"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463311"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Automatikus skálázási műveletek segítségével szeretne küldeni az e-mailt és webhookot riasztási értesítéseket az Azure monitorban
 Ez a cikk bemutatja, hogyan lehet beállítani eseményindítók, hogy hívás meghatározott webes URL-címek, vagy küldjön e-mailek automatikus skálázási műveletek az Azure-ban alapján.  
@@ -113,10 +113,11 @@ Ha az automatikus skálázási értesítés jön létre, a webhook hasznos adata
 | részletek |Igen |A művelet az autoscale szolgáltatás igénybe vett és a példányszám módosítása ismertetése |
 | subscriptionId |Igen |A célként megadott erőforrás méretezése folyamatban van, előfizetés-azonosítója |
 | resourceGroupName |Igen |A célként megadott erőforrás méretezése folyamatban van, az erőforráscsoport neve |
-| Erőforrásnév |Igen |A célként megadott erőforrás folyamatban méretezett neve |
+| resourceName |Igen |A célként megadott erőforrás folyamatban méretezett neve |
 | resourceType |Igen |A három támogatott értékek: "microsoft.classiccompute/domainnames/slots/roles" – Cloud Service szerepkörök, a "microsoft.compute/virtualmachinescalesets" – Virtual Machine Scale Sets, és a "Microsoft.Web/serverfarms" - webalkalmazás |
 | resourceId |Igen |A célként megadott erőforrás méretezése folyamatban van, a Resource Manager-Azonosítót |
 | portalLink |Igen |A célként megadott erőforrás összefoglaló oldala az Azure portál hivatkozása |
 | oldCapacity |Igen |Az aktuális (régi) példányok száma, amikor az automatikus méretezés tartott egy skálázási műveletet |
 | newCapacity |Igen |Az új példányok száma, amelyek az automatikus méretezés az erőforrás méretezése |
 | Tulajdonságok |Nem |Választható. < Kulcs értéke > Set párok (például Dictionary < karakterlánc, karakterlánc >). A Tulajdonságok mező kitöltése nem kötelező. Egy egyéni felhasználói felület vagy a Logic app-alapú munkafolyamat, a kulcsok és értékek, amelyek használatával a hasznos átadhatók is megadhatja. Egyéni tulajdonságok vissza átadása a kimenő webhook hívása egy másik módja az, hogy a webhook URI-JÁT magát (lekérdezési paraméterek) használata |
+

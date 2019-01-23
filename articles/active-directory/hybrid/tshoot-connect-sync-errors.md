@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Szinkronizálási hibák elhárítása |} A Microsoft Docs'
+title: 'Azure AD Connect: Szinkronizálási hibák elhárítása |} A Microsoft Docs'
 description: Ismerteti az Azure AD Connect-szinkronizálás során észlelt hibák elhárítása.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 2209d5ce-0a64-447b-be3a-6f06d47995f8
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c94ecc223c4e2c0533c23e58823bb203064ceef6
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 34a719c8fb62a2b993320d1bd9f97f9d47abf494
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250456"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463310"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Szinkronizálási hibák elhárítása
 Hibák fordulhatnak elő, amikor a azonosító adatok szinkronizálása a Windows Server Active Directory (AD DS) az Azure Active Directory (Azure AD). Ez a cikk szinkronizálási hibák, a lehetséges forgatókönyvek ezeket a hibákat és lehetséges módon javítsa a hibákat okozó némelyike különböző típusainak áttekintése. Ez a cikk a gyakori alkalmazáshiba-típusok tartalmazza, és a lehetséges hibák terjedhet ki.
@@ -30,7 +30,7 @@ Az Azure AD Connect legújabb verziójának \(augusztus 2016-os vagy magasabb\),
 
 2016. szeptember 1-től [Azure Active Directory ismétlődő attribútumok rugalmassága](how-to-connect-syncservice-duplicate-attribute-resiliency.md) funkció alapértelmezés szerint az összes engedélyezzük a *új* Azure Active Directory-bérlők. Ez a funkció automatikusan engedélyezve lesz a meglévő bérlők számára a soron következő hónapban.
 
-Az Azure AD Connect a címtárakban szinkronban tartja a három típusú műveleteket hajtja végre: importálás, a szinkronizálás és az exportálás. Hibák az összes művelet elvégezhető. Ez a cikk elsősorban az Azure Active Directoryba való exportálás során hibák összpontosít.
+Az Azure AD Connect három típusú műveletek szinkronban tartja a címtárakból hajtja végre: Importálás, a szinkronizálás és exportálási. Hibák az összes művelet elvégezhető. Ez a cikk elsősorban az Azure Active Directoryba való exportálás során hibák összpontosít.
 
 ## <a name="errors-during-export-to-azure-ad"></a>Az Azure Active Directoryba való exportálás során hibák
 Azure ad-bA az Azure AD-összekötő az exportálási művelet során előforduló hibák különböző típusú a következő szakasz ismerteti. Ez az összekötő segítségével azonosítható a nevének formátuma folyamatban van a "contoso. *onmicrosoft.com*".
@@ -76,14 +76,14 @@ Az Azure Active Directory-séma nem engedélyezi két vagy több objektum ugyana
 4. Bob is tartalmaz a következő értékeket a **proxyAddresses** attribútum:
    * SMTP bobs@contoso.com
    * SMTP bob.smith@contoso.com
-   * **SMTP bob@contoso.com**
+   * **smtp: bob@contoso.com**
 5. Egy új felhasználóhoz **Bob Taylor**, adnak hozzá a helyszíni Active Directoryban.
 6. Bob Taylor **UserPrincipalName** van beállítva, **bobt@contoso.com**.
 7. **"abcdefghijkl0123456789 ==" "** van a **sourceAnchor** számítja ki az Azure AD Connect használatával Bob Taylor **objectGUID** , a helyszíni Active Directoryban. Bob Taylor objektum még nincs szinkronizálva az Azure Active Directory még.
 8. Bob Taylor rendelkezik a következő értékeket a proxyAddresses attribútum
    * SMTP bobt@contoso.com
    * SMTP bob.taylor@contoso.com
-   * **SMTP bob@contoso.com**
+   * **smtp: bob@contoso.com**
 9. Szinkronizálás során az Azure AD Connect Bob Taylor a helyszíni Active Directory is ismeri fel, és kérje meg Azure AD-be a korábbi módosításokat.
 10. Azure ad-ben először végrehajtja a rögzített egyezést. Azt jelenti, ha bármely objektum immutableid azonosítója egyenlő megkeresi "abcdefghijkl0123456789 ==". Rögzített egyeztetés sikertelen lesz, mivel nincs más objektumot az Azure ad-ben, hogy immutableid azonosítója lesz.
 11. Az Azure AD megpróbálja majd egyezéssel Bob Taylor. Megkeresi azt jelenti, ha bármely objektum proxyAddresses három érték, beleértve az smtp egyenlő: bob@contoso.com
@@ -146,12 +146,12 @@ Az Azure AD Connect megpróbál adjon hozzá egy új objektumot, vagy frissíten
 3. Bob is tartalmaz a következő értékeket a **proxyAddresses** attribútum:
    * SMTP bobs@contoso.com
    * SMTP bob.smith@contoso.com
-   * **SMTP bob@contoso.com**
+   * **smtp: bob@contoso.com**
 4. Egy új felhasználóhoz **Bob Taylor**, adnak hozzá a helyszíni Active Directoryban.
 5. Bob Taylor **UserPrincipalName** van beállítva, **bobt@contoso.com**.
 6. **Bob Taylor** rendelkezik a következő értékeket a **ProxyAddresses** i attribútum. SMTP: bobt@contoso.com ii. SMTP bob.taylor@contoso.com
 7. Bob Taylor objektum sikeresen szinkronizálva az Azure ad-ben.
-8. Rendszergazda úgy döntött, hogy frissítse Bob Taylor **ProxyAddresses** attribútum a következő értékkel: i. **SMTP bob@contoso.com**
+8. Rendszergazda úgy döntött, hogy frissítse Bob Taylor **ProxyAddresses** attribútum a következő értékkel: i. **smtp: bob@contoso.com**
 9. Az Azure AD megpróbálja frissítse Bob Taylor objektumot a fenti értéket, az Azure AD-ben azonban, hogy a művelet sikertelen lesz hogy ProxyAddresses érték már hozzá van rendelve Bob Smith, "AttributeValueMustBeUnique" hibát eredményez.
 
 #### <a name="how-to-fix-attributevaluemustbeunique-error"></a>AttributeValueMustBeUnique hiba javítása

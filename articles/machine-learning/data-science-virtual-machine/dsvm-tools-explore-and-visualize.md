@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: c83c9929019e6e236ead783c0c617e51523a5a8a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: dfe6184779d3c26273e8e7cabef4890360cf7e76
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567383"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446260"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Adatáttekintési és vizualizációs eszközök a Data Science virtuális gépen
 
@@ -32,7 +32,7 @@ Egy kulcs az adatelemzés lépéseként megérteni az adatokat. Megjelenítési 
 | Mi ez?   | Nyílt forráskódú SQL lekérdezési motorja a Big data    |
 | A DSVM támogatott verziói      | Windows, Linux  |
 | Hogyan van azt konfigurálni / telepíteni a dsvm-hez?      |  A telepített `/dsvm/tools/drill*` csak beágyazott módban   |
-| Gyakori használati      |  Forrásgyűjteményben adatfeltárás anélkül, hogy az ETL. Lekérdezése különböző források és formátumok includign CSV, JSON, relációs tábláival, a Hadoop     |
+| Gyakori használati      |  Forrásgyűjteményben adatfeltárás anélkül, hogy az ETL. Különböző adatforrások és formátumokhoz, például a fürt megosztott kötetei szolgáltatás, JSON, relációs tábláival, Hadoop lekérdezése     |
 | Hogyan futtathatja / használata?      | Asztali parancsikon  <br/> [Ismerkedés a részletezés 10 perc múlva](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | A dsvm-hez kapcsolódó eszközök      |   Rattle, Weka, SQL Server Management Studio      |
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bfe2b0c70c8b912f6489ed461f5bcf6f233ed60d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4bf11c0a084cb0241125a1ed546f48c1c5455de3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809765"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449452"
 ---
 <a name="update-an-existing-offer-for-azure-marketplace"></a>Egy létező ajánlat frissítése az Azure Marketplace-en
 ==============================================
@@ -87,7 +87,7 @@ Ahhoz, hogy egy új Termékváltozatban érhető el a létező ajánlat, kövess
 
 1.  Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
 2.  A **minden ajánlat** keresse meg az ajánlat, amelyet szeretne frissíteni.
-3.  Alatt a **termékváltozatok** űrlapot, a clik **adja hozzá az új Termékváltozat** , és adja meg egy **SKU-azonosítója** az előugró.
+3.  Alatt a **termékváltozatok** alkotnak, kattintson a **adja hozzá az új Termékváltozat** , és adja meg egy **SKU-azonosítója** az előugró.
 4.  Kövesse a részletes lépések a többi [közzététele egy virtuális gépet az Azure piactéren](./cloud-partner-portal-publish-virtual-machine.md).
 5.  Kattintson a **közzététel** felhőplatformos termékeiért az új Termékváltozat az élő esemény indításra van a közzététel a munkafolyamatot.
 
@@ -130,45 +130,45 @@ Amíg nem módosul a 2018. November 1. viselkedésmintáit beállítása egy új
 
 | Ország                  | ISO2 kódot | Egyszerűsített Számlázás pénzneme |
 |--------------------------|-----------|-----------------------------|
-| **Algéria**              | DZ        | USD                         |
+| **Algeria**              | DZ        | USD                         |
 | **Argentína**            | AR        | USD                         |
 | **Bahrein**              | BH        | USD                         |
-| **Fehéroroszország**              | SZERINT        | USD                         |
+| **Belarus**              | BY        | USD                         |
 | **Brazília**               | BR        | BRL                         |
 | **Bulgária**             | BG        | EUR                         |
 | **Chile**                | CL        | USD                         |
-| **Kolumbia**             | CO        | USD                         |
-| **Costa Rica**           | A CR        | USD                         |
+| **Colombia**             | CO        | USD                         |
+| **Costa Rica**           | CR        | USD                         |
 | **Horvátország**              | HR        | EUR                         |
 | **Cseh Köztársaság**       | CZ        | EUR                         |
 | **Egyiptom**                | EG        | USD                         |
 | **Guatemala**            | GT        | USD                         |
 | **Hongkong**            | HK        | USD                         |
 | **Magyarország**              | HU        | EUR                         |
-| **Izland**              | VAN        | EUR                         |
+| **Izland**              | IS        | EUR                         |
 | **Indonézia**            | ID (Azonosító)        | USD                         |
 | **Izrael**               | IL        | USD                         |
 | **Jordánia**               | JO        | USD                         |
 | **Kazahsztán**           | KZ        | USD                         |
-| **Kenya**                | KULCSCSERE        | USD                         |
+| **Kenya**                | KE        | USD                         |
 | **Kuvait**               | KW        | USD                         |
 | **Liechtenstein**        | LI        | EUR                         |
 | **Macedónia (V.J.K.)**     | MK        | USD                         |
-| **Malajzia**             | SAJÁT        | USD                         |
+| **Malajzia**             | MY        | USD                         |
 | **Mexikó**               | MX        | USD                         |
-| **Montenegró**           | NEKEM        | USD                         |
+| **Montenegró**           | ME        | USD                         |
 | **Marokkó**              | MA        | USD                         |
 | **Nigéria**              | NG        | USD                         |
-| **Omán**                 | AZ OM        | USD                         |
+| **Oman**                 | OM        | USD                         |
 | **Pakisztán**             | PK        | USD                         |
 | **Paraguay**             | PY        | USD                         |
-| **Peru**                 | ELŐTELEPÍTÉSI KÖRNYEZET        | USD                         |
+| **Peru**                 | PE        | USD                         |
 | **Fülöp-szigetek**          | PH        | USD                         |
 | **Lengyelország\***             | PL        | EUR                         |
-| **Katar**                | QA        | USD                         |
+| **Qatar**                | QA        | USD                         |
 | **Románia**              | RO        | EUR                         |
-| **Szaúd-Arábia**         | SA        | USD                         |
-| **Szerbia**               | RS        | USD                         |
+| **Saudi Arabia**         | SA        | USD                         |
+| **Serbia**               | RS        | USD                         |
 | **Szingapúr**            | SG        | USD                         |
 | **Dél-Afrika**         | ZA        | USD                         |
 | **Thaiföld**             | TH        | USD                         |
