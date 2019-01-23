@@ -1,136 +1,135 @@
-items:
 - name: Notification Hubs – dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Tudnivalók a Notification Hubsról
-    href: notification-hubs-push-notification-overview.md
+    - name: Tudnivalók a Notification Hubsról
+      href: notification-hubs-push-notification-overview.md
 - name: Oktatóanyagok
   items:
-  - name: 1 – Leküldéses értesítések küldése az összes regisztrált eszközre
-    items:
-    - name: Android (Firebase Cloud Messaging)
-      href: notification-hubs-android-push-notification-google-fcm-get-started.md
-    - name: Android (Google Cloud Messaging)
-      href: notification-hubs-android-push-notification-google-gcm-get-started.md
-    - name: Baidu
-      href: notification-hubs-baidu-china-android-notifications-get-started.md
-    - name: Chrome
-      href: notification-hubs-chrome-push-notifications-get-started.md
-    - name: iOS
-      href: notification-hubs-ios-apple-push-notification-apns-get-started.md
-    - name: Kindle
-      href: notification-hubs-kindle-amazon-adm-push-notification.md
-    - name: Windows
-      href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-    - name: Windows Phone
-      href: notification-hubs-windows-mobile-push-notifications-mpns.md
-    - name: Xamarin.Android
-      href: xamarin-notification-hubs-push-notifications-android-gcm.md
-    - name: Xamarin.iOS
-      href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
-  - name: 2 – Leküldéses értesítések küldése megadott eszközökre
-    items:
-    - name: Android
-      href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-    - name: iOS
-      href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
-    - name: Windows
-      href: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-    - name: Windows Phone
-      href: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-  - name: 3 – Honosított leküldéses értesítések küldése
-    items:
-    - name: iOS
-      href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-    - name: Windows
-      href: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
-  - name: 4 – Leküldéses értesítések küldése megadott felhasználóknak
-    items:
-    - name: Android
-      href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-    - name: iOS
-      href: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-    - name: Windows
-      href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-  - name: 5 – Helyalapú leküldéses értesítések küldése
-    items:
-    - name: Windows
-      href: notification-hubs-push-bing-spartial-data-geofencing-notification.md
+    - name: 1 – Leküldéses értesítések küldése az összes regisztrált eszközre
+      items:
+        - name: Android (Firebase Cloud Messaging)
+          href: notification-hubs-android-push-notification-google-fcm-get-started.md
+        - name: Android (Google Cloud Messaging)
+          href: notification-hubs-android-push-notification-google-gcm-get-started.md
+        - name: Baidu
+          href: notification-hubs-baidu-china-android-notifications-get-started.md
+        - name: Chrome
+          href: notification-hubs-chrome-push-notifications-get-started.md
+        - name: iOS
+          href: notification-hubs-ios-apple-push-notification-apns-get-started.md
+        - name: Kindle
+          href: notification-hubs-kindle-amazon-adm-push-notification.md
+        - name: Windows
+          href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+        - name: Windows Phone
+          href: notification-hubs-windows-mobile-push-notifications-mpns.md
+        - name: Xamarin.Android
+          href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Xamarin.iOS
+          href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
+    - name: 2 – Leküldéses értesítések küldése megadott eszközökre
+      items:
+        - name: Android
+          href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+        - name: iOS
+          href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
+        - name: Windows
+          href: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+        - name: Windows Phone
+          href: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
+    - name: 3 – Honosított leküldéses értesítések küldése
+      items:
+        - name: iOS
+          href: notification-hubs-ios-xplat-localized-apns-push-notification.md
+        - name: Windows
+          href: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
+    - name: 4 – Leküldéses értesítések küldése megadott felhasználóknak
+      items:
+        - name: Android
+          href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
+        - name: iOS
+          href: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
+        - name: Windows
+          href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+    - name: 5 – Helyalapú leküldéses értesítések küldése
+      items:
+        - name: Windows
+          href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
 - name: Példák
   items:
-  - name: Kódminták
-    href: https://azure.microsoft.com/resources/samples/?service=notification-hubs
-  - name: PowerShell
-    href: samples-powershell.md
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=notification-hubs'
+    - name: PowerShell
+      href: samples-powershell.md
 - name: Alapelvek
   items:
-  - name: Útmutató a vállalati leküldési architektúrákhoz
-    href: notification-hubs-enterprise-push-notification-architecture.md
-  - name: Eszközregisztrációk
-    href: notification-hubs-push-notification-registration-management.md
-    items:
-    - name: Regisztrációs címkék
-      href: notification-hubs-tags-segment-push-message.md
-    - name: Sablonregisztrációk
-      href: notification-hubs-templates-cross-platform-push-messages.md
+    - name: Útmutató a vállalati leküldési architektúrákhoz
+      href: notification-hubs-enterprise-push-notification-architecture.md
+    - name: Eszközregisztrációk
+      href: notification-hubs-push-notification-registration-management.md
+      items:
+        - name: Regisztrációs címkék
+          href: notification-hubs-tags-segment-push-message.md
+        - name: Sablonregisztrációk
+          href: notification-hubs-templates-cross-platform-push-messages.md
+    - name: Biztonsági modell
+      href: notification-hubs-push-notification-security.md
 - name: Útmutatók
   items:
-  - name: Platformfüggetlen értesítések küldése
-    href: notification-hubs-aspnet-cross-platform-notification.md
-  - name: Részletes tartalom leküldése eszközökre
-    href: notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
-  - name: Ütemezett értesítések küldése
-    href: notification-hubs-send-push-notifications-scheduled.md
-  - name: Értesítési központ létrehozása SDK-k segítségével
-    items:
-    - name: Értesítési központ létrehozása – .NET
-      href: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
-    - name: Értesítési központ létrehozása – Node.js
-      href: notification-hubs-nodejs-push-notification-tutorial.md
-    - name: Értesítési központ létrehozása – Java
-      href: notification-hubs-java-push-notification-tutorial.md
-    - name: Értesítési központ létrehozása – PHP
-      href: notification-hubs-php-push-notification-tutorial.md
-    - name: Értesítési központ létrehozása – Python
-      href: notification-hubs-python-push-notification-tutorial.md
-  - name: Regisztráció az alkalmazás háttérrendszerével
-    href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
-  - name: Jogkivonat-alapú hitelesítés használata Apple-eszközökön
-    href: notification-hubs-push-notification-http2-token-authentification.md
-  - name: Elvetett értesítések hibaelhárítása
-    href: notification-hubs-push-notification-fixer.md
+    - name: Platformfüggetlen értesítések küldése
+      href: notification-hubs-aspnet-cross-platform-notification.md
+    - name: Részletes tartalom leküldése eszközökre
+      href: notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
+    - name: Ütemezett értesítések küldése
+      href: notification-hubs-send-push-notifications-scheduled.md
+    - name: A Notification Hubs üzembe helyezése és kezelése az Azure PowerShell-lel
+      href: notification-hubs-deploy-and-manage-powershell.md
+    - name: Leküldéses értesítések biztonságos küldése a felhasználóknak
+      href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
+    - name: Értesítési központ létrehozása SDK-k segítségével
+      items:
+        - name: Értesítési központ létrehozása – .NET
+          href: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+        - name: Értesítési központ létrehozása – Node.js
+          href: notification-hubs-nodejs-push-notification-tutorial.md
+        - name: Értesítési központ létrehozása – Java
+          href: notification-hubs-java-push-notification-tutorial.md
+        - name: Értesítési központ létrehozása – PHP
+          href: notification-hubs-php-push-notification-tutorial.md
+        - name: Értesítési központ létrehozása – Python
+          href: notification-hubs-python-push-notification-tutorial.md
+    - name: Regisztráció az alkalmazás háttérrendszerével
+      href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
+    - name: Jogkivonat-alapú hitelesítés használata Apple-eszközökön
+      href: notification-hubs-push-notification-http2-token-authentification.md
+    - name: Elvetett értesítések hibaelhárítása
+      href: notification-hubs-push-notification-fixer.md
 - name: Referencia
   items:
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.notificationhubs
-  - name: PowerShell
-    href: /powershell/module/azurerm.notificationhubs
-  - name: REST API
-    href: /rest/api/notificationhubs
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.notificationhubs/allversions
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.notificationhubs
+    - name: PowerShell
+      href: /powershell/module/azurerm.notificationhubs
+    - name: REST API
+      href: /rest/api/notificationhubs
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.notificationhubs/allversions
 - name: További források
   items:
-  - name: GYIK
-    href: notification-hubs-push-notification-faq.md
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/notification-hubs/
-  - name: MSDN-fórum
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs
-  - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-notificationhub
-  - name: Szolgáltatás igénylése
-    href: https://feedback.azure.com/forums/218849-notification-hubs
-  - name: Régiónkénti elérhetőség
-    href: https://azure.microsoft.com/regions/services/
-  - name: Támogatási lehetőségek
-    href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: dcfb667f92f044ae37b0c0c42af337a9c5af49f4
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197708"
+    - name: GYIK
+      href: notification-hubs-push-notification-faq.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/notification-hubs/'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-notificationhub'
+    - name: Szolgáltatás igénylése
+      href: 'https://feedback.azure.com/forums/218849-notification-hubs'
+    - name: Régiónkénti elérhetőség
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Támogatási lehetőségek
+      href: 'https://azure.microsoft.com/support/options/'

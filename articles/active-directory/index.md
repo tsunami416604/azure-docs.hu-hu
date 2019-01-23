@@ -2,29 +2,136 @@
 layout: HubPage
 hide_bc: false
 title: Az Azure Active Directory dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-description: Az Azure Active Directory (Azure AD) a Microsoft több-bérlős felhőalapú könyvtára és identitáskezelési szolgáltatása, amely egyetlen megoldásban egyesíti az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-kezelést és identitásvédelmet.
+description: 'Az Azure Active Directory (Azure AD) a Microsoft több-bérlős felhőalapú könyvtára és identitáskezelési szolgáltatása, amely egyetlen megoldásban egyesíti az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-kezelést és identitásvédelmet.'
 services: active-directory
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
-ms.date: 11/30/2018
+ms.date: 01/16/2019
 ms.author: mtillman
-ms.openlocfilehash: 38efd682c530e79bdea3747bd6f14faa10d399c4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723346"
 ---
+
 <div id="main" class="v2">
     <div class="container">
         <h1>Azure Active Directory-dokumentáció</h1>
-        <p>Az Azure Active Directory (Azure AD) egy több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás.</p>
-        <hr style="margin: 30px 0;" />
+        <p>Az Azure Active Directory (Azure AD) egy több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás.</p><p></p>
+        <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
+            <li>
+                <a href="fundamentals/active-directory-whatis.md">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_overview.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Mi az Azure AD?</h3>
+                                <p>Az Azure Active Directory ismertetése, beleértve az elérhető licencek típusait és a kapcsolódó szolgáltatásokat is.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="fundamentals/add-custom-domain.md">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_get-started.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Egyéni tartománynév hozzáadása</h3>
+                                <p>Vállalati tartománynevek hozzáadása az Azure Active Directoryhoz ismerős felhasználónevek létrehozása céljából.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="fundamentals/customize-branding.md">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Céges márkajelzés megjelenítése</h3>
+                                <p>A vállalat emblémájának és színsémájának hozzáadása az Azure AD bejelentkezési oldalaihoz.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="fundamentals/add-users-azure-active-directory.md">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Csoport létrehozása és tagok hozzáadása</h3>
+                                <p>Alapszintű csoport létrehozása, valamint tagok hozzáadása és eltávolítása.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="fundamentals/active-directory-users-assign-role-azure-portal.md">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Szerepkörök hozzárendelése felhasználókhoz</h3>
+                                <p>Felhasználói szerepkörök hozzárendelése és eltávolítása a szükséges engedélyek alapján.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="/learn/modules/secure-azure-resources-with-conditional-access/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Tanulás</h3>
+                                <p>Azure-erőforrások védelme feltételes hozzáféréssel</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+        </ul>
         <ul class="pivots">
             <li>
                 <a href="#products"></a>
@@ -35,59 +142,6 @@ ms.locfileid: "52723346"
                             <li class="fullSpan">
                                 <a href="#index1" data-linktype="self-bookmark"></a>
                                 <ul class="cardsF cols cols4" id="index1" style="float: left; display: flex; width: 100%; border-bottom: 1px var(--grey-lighter) solid;">  
-                                    <li>
-                                        <ul class="cardsB panelContent" id="cardtypes-B" style="float: left; display: flex; width: 100%;">
-                                            <li>
-                                                <a href="">
-                                                    <div class="cardSize">
-                                                        <div class="cardPadding">
-                                                            <div class="card">
-                                                                <div class="cardImageOuter">
-                                                                    <div class="cardImage">
-                                                                        <img alt="" src="https://docs.microsoft.com/media/common/i_learn-about.svg" data-linktype="external">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="cardText" style="padding-left: 0px">
-                                                                    <h3><a href="fundamentals/index.yml">Alapvető ismeretek</a></h3> 
-                                                                    <p>
-                                                                        <a href="fundamentals/active-directory-whatis.md">Mi az Azure AD?</a><br>
-                                                                        <a href="fundamentals/add-custom-domain.md">Egyéni tartománynév hozzáadása</a><br>
-                                                                        <a href="fundamentals/customize-branding.md">Céges márkajelzés hozzáadása</a><br>
-                                                                        <a href="fundamentals/add-users-azure-active-directory.md">Csoport létrehozása és tagok hozzáadása</a><br>
-                                                                        <a href="fundamentals/active-directory-users-assign-role-azure-portal.md">Szerepkörök hozzárendelése felhasználókhoz</a><br>
-                                                                        <a href="fundamentals/active-directory-how-subscriptions-associated-directory.md">Azure-előfizetés társítása</a><br>
-                                                                        <a href="fundamentals/index.yml"><i>Több megjelenítése &gt;</i></a>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="">
-                                                    <div class="cardSize">
-                                                        <div class="cardPadding">
-                                                            <div class="card">
-                                                                <div class="cardImageOuter">
-                                                                    <div class="cardImage">
-                                                                        <img alt="" src="/learn/achievements/secure-azure-resources-with-conditional-access.svg" data-linktype="external">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="cardText" style="padding-left: 0px">
-                                                                    <h3><a href="/learn/">Fejlessze a készségeit a Microsoft Learnnel</a></h3> 
-                                                                    <p>
-                                                                        <a href="/learn/modules/secure-azure-resources-with-conditional-access/">Azure-erőforrások védelme feltételes hozzáféréssel</a><br>
-                                                                        <a href="/learn/browse/?products=azure-active-directory"><i>További interaktív oktatóanyagok &gt;</i></a><br>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
                                     <li>
                                         <div class="cardSize">
                                             <div class="cardPadding">
@@ -103,7 +157,7 @@ ms.locfileid: "52723346"
                                                         <br><br>
                                                         <h3><a href="authentication/index.yml">Hitelesítés</a></h3>
                                                         <p>
-                                                            <a href="authentication/concept-mfa-howitworks.md">Az Azure MFA működése</a><br>
+                                                            <a href="authentication/concept-mfa-howitworks.md">Működés: Azure MFA</a><br>
                                                             <a href="authentication/concept-sspr-howitworks.md">Azure AD önkiszolgáló jelszómódosítás</a><br>
                                                             <a href="authentication/concept-password-ban-bad.md">Azure AD-jelszóvédelem</a><br>
                                                             <a href="authentication/index.yml"><i>Több megjelenítése &gt;</i></a>
@@ -125,13 +179,6 @@ ms.locfileid: "52723346"
                                                             <a href="/azure/active-directory-b2c/index"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="conditional-access/index.yml">Feltételes hozzáférés</a></h3>
-                                                        <p>
-                                                            <a href="conditional-access/overview.md">Mi az a feltételes hozzáférés?</a><br>
-                                                            <a href="conditional-access/app-based-mfa.md">MFA megkövetelése adott alkalmazásokhoz</a><br>
-                                                            <a href="conditional-access/location-condition.md">Feltételek hely szerint</a><br>
-                                                            <a href="conditional-access/index.yml"><i>Több megjelenítése &gt;</i></a>
-                                                            </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,7 +189,15 @@ ms.locfileid: "52723346"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="develop/index.yml">Fejlesztők</a></h3>
+                                                        <h3><a href="conditional-access/index.yml">Feltételes hozzáférés</a></h3>
+                                                        <p>
+                                                            <a href="conditional-access/overview.md">Mi az a feltételes hozzáférés?</a><br>
+                                                            <a href="conditional-access/app-based-mfa.md">MFA megkövetelése adott alkalmazásokhoz</a><br>
+                                                            <a href="conditional-access/location-condition.md">Feltételek hely szerint</a><br>
+                                                            <a href="conditional-access/index.yml"><i>Több megjelenítése &gt;</i></a>
+                                                            </p>
+                                                        <br><br>
+                                                           <h3><a href="develop/index.yml">Fejlesztők</a></h3>
                                                         <p>
                                                             <a href="develop/about-microsoft-identity-platform.md">A Microsoft identitásplatformja</a><br>
                                                             <a href="develop/v2-oauth2-auth-code-flow.md">OAuth 2.0-kódfolyamat engedély</a><br>
@@ -166,6 +221,16 @@ ms.locfileid: "52723346"
                                                             <a href="/azure/active-directory-domain-services/index"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
                                                         <br><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
                                                         <h3><a href="users-groups-roles/index.yml">Vállalati felhasználók</a></h3>
                                                         <p>
                                                             <a href="users-groups-roles/groups-create-rule.md">Dinamikus csoport létrehozása</a><br>
@@ -181,16 +246,7 @@ ms.locfileid: "52723346"
                                                             <a href="hybrid/how-to-connect-install-custom.md">Az Azure AD Connect egyéni telepítése</a><br>
                                                             <a href="hybrid/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cardSize">
-                                            <div class="cardPadding">
-                                                <div class="card">
-                                                    <div class="cardText">
+                                                        <br><br>
                                                         <h3><a href="governance/index.yml">Identitáskezelés</a></h3>
                                                         <p>
                                                             <a href="governance/create-access-review.md">Hozzáférési felülvizsgálat létrehozása</a><br>
@@ -206,8 +262,17 @@ ms.locfileid: "52723346"
                                                             <a href="identity-protection/howto-unblock-user.md">Felhasználók tiltásának feloldása</a><br>
                                                             <a href="identity-protection/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
-                                                        <br><br>
-                                                        <h3><a href="managed-identities-azure-resources/index.yml">Azure-erőforrások felügyelt identitásai</a></h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3><a href="privileged-identity-management/index.yml">Azure-erőforrások felügyelt identitásai</a></h3>
                                                         <p>
                                                             <a href="managed-identities-azure-resources/tutorial-windows-vm-access-sql.md">Windows rendszerű virtuális gép használata az Azure SQL eléréséhez</a><br>
                                                             <a href="managed-identities-azure-resources/how-to-use-vm-token.md">Azure-beli virtuális gép használata jogkivonat beszerzéséhez</a><br>
