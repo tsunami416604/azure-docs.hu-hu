@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az felismerése |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező felismerése |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés felismerése és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: cfad939e-c8f4-45a0-bd25-c4eb9701acaa
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: b2d5acfcb722845d7f346668597c073319f273f0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 49d501a07f2efa6e9c6e20dfe2a026badf13f624
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448784"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824150"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Oktatóanyag: Azure Active Directory-integráció az felismerése
+# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező felismerése
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan felismerése integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása felismerése, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy felismerése egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Az Azure AD-integráció konfigurálása felismerése, a következőkre van szü
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
 - Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a ide-egy havi próbalehetőség: [próba](https://azure.microsoft.com/pricing/free-trial/).
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a ide-egy havi próbalehetőség: [Próbaverziós ajánlat](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
@@ -59,7 +59,7 @@ Konfigurálása az Azure AD integrálása a felismerése, hozzá kell felismeré
 
 **Felismerése hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -117,7 +117,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://recognizeapp.com/<your-domain>`
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [ügyfél ismeri fel a támogatási csapat](mailto:support@recognizeapp.com) beolvasni a bejelentkezési URL-címet, és beszerezheti azonosító értékét az egyszeri bejelentkezési beállításainak szakaszban az oktatóanyag későbbi részében kifejtett nyissa meg a Service Provider metaadatok URL-címe. . 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [ügyfél ismeri fel a támogatási csapat](mailto:support@recognizeapp.com) beolvasni a bejelentkezési URL-címet, és beszerezheti azonosító értékét az egyszeri bejelentkezési beállításainak szakaszban az oktatóanyag későbbi részében kifejtett nyissa meg a Service Provider metaadatok URL-címe. . 
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -161,12 +161,12 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
    
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/recognize-tutorial/tutorial_recognize_003.png)
 
-1. Nyissa meg a **metaadatok URL-Címhivatkozás** egy üres böngészőt, és töltse le a metaadat-dokumentum alapján. Ezután a EntityDescriptor value(entityID) átmásolhatja a fájlt, és illessze be a **azonosító** szövegmezőjébe **ismeri fel a tartomány és URL-címek szakaszt** az Azure Portalon.
+1. Nyissa meg a **metaadatok URL-Címhivatkozás** egy üres böngészőt, és töltse le a metaadat-dokumentum alapján. Ezután a EntityDescriptor value(entityID) átmásolhatja a fájlt, és illessze be a **azonosító** szövegmezőjébe **ismeri fel a tartomány és URL-címek szakaszt** az Azure Portalon.
     
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/recognize-tutorial/tutorial_recognize_004.png)
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása

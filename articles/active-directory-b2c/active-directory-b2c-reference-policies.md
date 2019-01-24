@@ -3,19 +3,19 @@ title: Az Azure Active Directory B2C felhasználói folyamatok |} A Microsoft Do
 description: További információ az Azure Active Directory B2C-vel és a különböző felhasználói folyamatok létrehozása a bővíthető házirend-keretrendszer.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bcbd26c8e78e29daa78a7e50f2f49b095103f696
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 8da3f5b86ccf1d6038ab410fe7fc6e6840fd0404
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351781"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845503"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói folyamatok
 

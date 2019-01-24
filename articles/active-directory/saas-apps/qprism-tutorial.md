@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az QPrism |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező QPrism |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és QPrism között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 72ab75ba-132b-4f83-a34b-d28b81b6d7bc
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: ddf22491d7531daecf4448e62e8594c3326d7b77
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8278b26f023ada109a8e6fa3965476e3dc4526c7
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420274"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828060"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Oktatóanyag: Azure Active Directory-integráció az QPrism
+# <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező QPrism
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan QPrism integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információk
 
 QPrism az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy QPrism egyszeri bejelentkezés engedélyezve van az előfizetés
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a javaslatokat:
@@ -112,7 +112,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóval és bejelentkezés URL-CÍMÉT. Kapcsolattartó [QPrism ügyfél-támogatási csapatának](mailto:qsupport-ce@quatrro.com) beolvasni ezeket az értékeket. 
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
 
      ![A tanúsítvány letöltési hivatkozás](./media/qprism-tutorial/tutorial_qprism_certificate.png)
 
@@ -156,7 +156,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-qprism-test-user"></a>QPrism tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű QPrism hoz létre. Együttműködik a [QPrism támogatási csapatának](mailto:qsupport-ce@quatrro.com) felhasználót is hozzáadhat a QPrism platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy felhasználói Britta Simon nevű QPrism hoz létre. Együttműködik a [QPrism támogatási csapatának](mailto:qsupport-ce@quatrro.com) felhasználót is hozzáadhat a QPrism platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -188,7 +188,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. A **hozzárendelés hozzáadása**válassza **hozzárendelése**.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 

@@ -11,17 +11,68 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/7/2019
+ms.date: 1/22/2019
 ms.author: raiye
-ms.openlocfilehash: 154b925cc173a1a8fac697e347759764807a3052
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0a9b811f3781cd181c17b9ed92b9ca653ee91af0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107905"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828451"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
+
+>[!NOTE]
+>A január vendég operációs rendszer jelenleg tesszük elérhetővé a megtörténik az automatikus frissítések, a Cloud Service virtuális gépeken. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A következő javításokat szerepelnek a január vendég operációs rendszer. Ez a lista a változhat.
+
+## <a name="january-2019-guest-os"></a>Január 2019 vendég operációs rendszer
+
+| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| Rel 19-01 | [4480961] | A Windows 10 biztonsági | 5.27 | 2019. január 8. |
+| Rel 19-01 | [4480964] | Windows biztonsági | 4.62 | 2019. január 8. |
+| Rel 19-01 | [4480972] | Windows biztonsági | 3.69 | 2019. január 8. |
+| Rel 19-01 | [4480960] | Windows biztonsági | 2.82 | 2019. január 8. |
+| Rel 19-01 | [4480074] | .NET 4.x biztonsága | 4.62 | 2019. január 8. |
+| Rel 19-01 | [4480075] | .NET 4.x biztonsága | 3.69 | 2019. január 8. |
+| Rel 19-01 | [4480076] | .NET 4.x biztonsága | 2.82 | 2019. január 8. |
+| Rel 19-01 | [4480086] | .NET 3.x biztonsága | 4.62 | 2019. január 8. |
+| Rel 19-01 | [4480083] | .NET 3.x biztonsága | 3.69 | 2019. január 8. |
+| Rel 19-01 | [4480085] | .NET 3.x biztonsága | 2.82 | 2019. január 8. |
+| Rel 19-01 | [4480979] | Flash | 3.69, 4.62, 5.27 | 2019. január 8. |
+| Rel 19-01 | [4480965] | Internet Explorer | 2.82, 3.69, 4.62 | 2019. január 8. |
+| – | [4471318] | December nem – a biztonság összegzése | 2.82 | 2018. december 11. |
+| – | [4470641] | December nem biztonsági kumulatív .NET 3.x | 2.82 | 2018. december 11. |
+| – | [4470637] | December nem biztonsági kumulatív .NET 4.x | 2.82 | 2018. december 11. |
+| – | [4471330] | December nem – a biztonság összegzése | 3.69 | 2018. december 11. |
+| – | [4470629] | December nem biztonsági kumulatív .NET 3.x | 3.69 | 2018. december 11. |
+| – | [4470623] | December nem biztonsági kumulatív .NET 4.x | 3.69 | 2018. december 11. |
+| – | [4471320] | December nem – a biztonság összegzése | 4.62 | 2018. december 11. |
+| – | [4470630] | December nem biztonsági kumulatív .NET 3.x | 4.62 | 2018. december 11. |
+| – | [4470622] | December nem biztonsági kumulatív .NET 4.x | 4.62 | 2018. december 11. |
+
+[4480961]: http://support.microsoft.com/kb/4480961
+[4480964]: http://support.microsoft.com/kb/4480964
+[4480972]: http://support.microsoft.com/kb/4480972
+[4480960]: http://support.microsoft.com/kb/4480960
+[4480074]: http://support.microsoft.com/kb/4480074
+[4480075]: http://support.microsoft.com/kb/4480075
+[4480076]: http://support.microsoft.com/kb/4480076
+[4480086]: http://support.microsoft.com/kb/4480086
+[4480083]: http://support.microsoft.com/kb/4480083
+[4480085]: http://support.microsoft.com/kb/4480085
+[4480979]: http://support.microsoft.com/kb/4480979
+[4480965]: http://support.microsoft.com/kb/4480965
+[4471318]: http://support.microsoft.com/kb/4471318
+[4470641]: http://support.microsoft.com/kb/4470641
+[4470637]: http://support.microsoft.com/kb/4470637
+[4471330]: http://support.microsoft.com/kb/4471330
+[4470629]: http://support.microsoft.com/kb/4470629
+[4470623]: http://support.microsoft.com/kb/4470623
+[4471320]: http://support.microsoft.com/kb/4471320
+[4470630]: http://support.microsoft.com/kb/4470630
+[4470622]: http://support.microsoft.com/kb/4470622
 
 ## <a name="december-2018-guest-os"></a>A 2018 december vendég operációs rendszer
 
@@ -65,15 +116,15 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| 18-11-rel | [4466536] | Internet Explorer | 2,80, 3.67, 4.60 | 2018. november 13. |
-| 18-11-rel | [4467694] | Flash | 3.67, 4.60, 5,25 | 2018. november 13. |
-| 18-11-rel | [4467106] | Windows biztonsági | 2,80 | 2018. november 13. |
+| 18-11-rel | [4466536] | Internet Explorer | 2.80, 3.67, 4.60 | 2018. november 13. |
+| 18-11-rel | [4467694] | Flash | 3.67, 4.60, 5.25 | 2018. november 13. |
+| 18-11-rel | [4467106] | Windows biztonsági | 2.80 | 2018. november 13. |
 | 18-11-rel | [4467678] | Windows biztonsági | 3.67 | 2018. november 13. |
 | 18-11-rel | [4467703] | Windows biztonsági | 4.60 | 2018. november 13. |
-| 18-11-rel | [4467691] | A Windows 10 biztonsági | 5,25 | 2018. november 13. |
+| 18-11-rel | [4467691] | A Windows 10 biztonsági | 5.25 | 2018. november 13. |
 | – | [3173426] | Karbantartási frissítését | 3.67 | 2016. július 12-én |
-| – | [4465659] | Karbantartási frissítését | 5,25 | 2018. november 13. |
-| – | [4462923] | Október nem – a biztonság összegzése | 2,80 | 2018. október 9. |
+| – | [4465659] | Karbantartási frissítését | 5.25 | 2018. november 13. |
+| – | [4462923] | Október nem – a biztonság összegzése | 2.80 | 2018. október 9. |
 | – | [4462929] | Október nem – a biztonság összegzése | 3.67 | 2018. október 9. |
 | – | [4462926] | Október nem – a biztonság összegzése | 4.60 | 2018. október 9. |
 | – | [3109976] | Alkalmazás/compat shims | 4.60 | 2016. április 12. |
@@ -97,11 +148,11 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| 18-10 rel | [4462917] | A Windows 10 biztonsági | 5,24 | 2018. október 9. |
+| 18-10 rel | [4462917] | A Windows 10 biztonsági | 5.24 | 2018. október 9. |
 | 18-10 rel | [4462915] | Windows biztonsági | 2.79 | 2018. október 9. |
 | 18-10 rel | [4462931] | Windows biztonsági | 3.66 | 2018. október 9. |
 | 18-10 rel | [4462941] | Windows biztonsági | 4.59 | 2018. október 9. |
-| 18-10 rel | [4462930] | Flash | 3.66, 4.59, 5,24 | 2018. október 9. |
+| 18-10 rel | [4462930] | Flash | 3.66, 4.59, 5.24 | 2018. október 9. |
 | 18-10 rel | [4462949] | Internet Explorer | 2.79, 3.66, 4.59 | 2018. október 9. |
 | – | [4339284] | Időzóna-frissítés | 2.79, 3.66, 4.59 | 2018. július 24. |
 | – | [4457144] | Szeptember nem – a biztonság összegzése | 2.79 | 2018. szeptember 11. |
@@ -156,17 +207,17 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 ## <a name="august-2018-guest-os"></a>2018 augusztus vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| 18-08-rel | [4343887] | A Windows 10 biztonsági | 5.22 | 2018. augusztus 14. |
-| 18-08-rel | [4343899] | Csak a Windows biztonsági | 2.77 | 2018. augusztus 14. |
-| 18-08-rel | [4343896] | Csak a Windows biztonsági | 3.64 | 2018. augusztus 14. |
-| 18-08-rel | [4343888] | Csak a Windows biztonsági | 4.57 | 2018. augusztus 14. |
-| 18-08-rel | [4344177], [4344173] | A .NET 3.5, 4.5-ös biztonsági | 2.77 | 2018. augusztus 14. |
-| 18-08-rel | [4344175], [4344172] | A .NET 3.5, 4.x biztonsági | 3.64 | 2018. augusztus 14. |
-| 18-08-rel | [4344178], [4344171] | A .NET 3.5, 4.x biztonsági | 4.57 | 2018. augusztus 14. |
-| 18-08-rel | [4346742], [4346739] | .NET 3.5-ös, 4.x OOB kiadás | 3.64 | 2018. július 30. |
-| 18-08-rel | [4346745], [4346408] | .NET 3.5-ös, 4.x OOB kiadás | 4.57 | 2018. július 30. |
-| 18-08-rel | [4343902] | Flash | 3.64, 4.57, 5.22 | 2018. augusztus 14. |
-| 18-08-rel | [4343205] | Internet Explorer | 2.77, 3.64, 4.57 | 2018. augusztus 14. |
+| Rel 18-08 | [4343887] | A Windows 10 biztonsági | 5.22 | 2018. augusztus 14. |
+| Rel 18-08 | [4343899] | Csak a Windows biztonsági | 2.77 | 2018. augusztus 14. |
+| Rel 18-08 | [4343896] | Csak a Windows biztonsági | 3.64 | 2018. augusztus 14. |
+| Rel 18-08 | [4343888] | Csak a Windows biztonsági | 4.57 | 2018. augusztus 14. |
+| Rel 18-08 | [4344177], [4344173] | A .NET 3.5, 4.5-ös biztonsági | 2.77 | 2018. augusztus 14. |
+| Rel 18-08 | [4344175], [4344172] | A .NET 3.5, 4.x biztonsági | 3.64 | 2018. augusztus 14. |
+| Rel 18-08 | [4344178], [4344171] | A .NET 3.5, 4.x biztonsági | 4.57 | 2018. augusztus 14. |
+| Rel 18-08 | [4346742], [4346739] | .NET 3.5-ös, 4.x OOB kiadás | 3.64 | 2018. július 30. |
+| Rel 18-08 | [4346745], [4346408] | .NET 3.5-ös, 4.x OOB kiadás | 4.57 | 2018. július 30. |
+| Rel 18-08 | [4343902] | Flash | 3.64, 4.57, 5.22 | 2018. augusztus 14. |
+| Rel 18-08 | [4343205] | Internet Explorer | 2.77, 3.64, 4.57 | 2018. augusztus 14. |
 | – | [4338818] |Július nem – a biztonság összegzése |2.77 | 2018. július 10. |
 | – | [4019990] |D3D fordító frissítést a .NET-hez |2.77 | 2018. július 10. |
 | – | [4338830] |Július nem – a biztonság összegzése |3.64 | 2018. július 10. |
@@ -179,38 +230,38 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 ## <a name="july-2018-guest-os"></a>2018 július vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| 18-07-rel | [4338814] |A Windows 10 biztonsági |5.21 |2018. július 10. |
-| 18-07-rel | [4338823] |Csak a Windows biztonsági |2.76 |2018. július 10. |
-| 18-07-rel | [4338820] |Csak a Windows biztonsági |3.63 |2018. július 10. |
-| 18-07-rel | [4338824] |Csak a Windows biztonsági |4,56 |2018. július 10. |
-| 18-07-rel | [4345459] |Biztonsági kumulatív frissítés |2.76 |2018. július 10. |
-| 18-07-rel | [4345425] |Biztonsági kumulatív frissítés |3.63 |2018. július 10. |
-| 18-07-rel | [4345424] |Biztonsági kumulatív frissítés |4,56 |2018. július 10. |
-| 18-07-rel | [4345418] |Biztonsági kumulatív frissítés |5.21 |2018. július 10. |
-| 18-07-rel | [4338612], [4338602] |A .NET 3.5, 4.x biztonsági |2.76 |2018. július 10. |
-| 18-07-rel | [4338601], [4338604] |A .NET 3.5, 4.x, az 4,5 x biztonsági |3.63 |2018. július 10. |
-| 18-07-rel | [4338613], [4338600], [4338605] |A .NET 3.5, 4.x, az 4,5 x biztonsági |4,56|2018. július 10. |
-| 18-07-rel | [4338832] |Flash |3.63, 4.76, 5.21 |2018. július 10. |
-| 18-07-rel | [4339093] |Internet Explorer |2.76, 3.63, 4.76 |2018. július 10. |
+| Rel 18-07 | [4338814] |A Windows 10 biztonsági |5.21 |2018. július 10. |
+| Rel 18-07 | [4338823] |Csak a Windows biztonsági |2.76 |2018. július 10. |
+| Rel 18-07 | [4338820] |Csak a Windows biztonsági |3.63 |2018. július 10. |
+| Rel 18-07 | [4338824] |Csak a Windows biztonsági |4.56 |2018. július 10. |
+| Rel 18-07 | [4345459] |Biztonsági kumulatív frissítés |2.76 |2018. július 10. |
+| Rel 18-07 | [4345425] |Biztonsági kumulatív frissítés |3.63 |2018. július 10. |
+| Rel 18-07 | [4345424] |Biztonsági kumulatív frissítés |4.56 |2018. július 10. |
+| Rel 18-07 | [4345418] |Biztonsági kumulatív frissítés |5.21 |2018. július 10. |
+| Rel 18-07 | [4338612], [4338602] |A .NET 3.5, 4.x biztonsági |2.76 |2018. július 10. |
+| Rel 18-07 | [4338601], [4338604] |A .NET 3.5, 4.x, az 4,5 x biztonsági |3.63 |2018. július 10. |
+| Rel 18-07 | [4338613], [4338600], [4338605] |A .NET 3.5, 4.x, az 4,5 x biztonsági |4.56|2018. július 10. |
+| Rel 18-07 | [4338832] |Flash |3.63, 4.76, 5.21 |2018. július 10. |
+| Rel 18-07 | [4339093] |Internet Explorer |2.76, 3.63, 4.76 |2018. július 10. |
 | – | [4284826] |Június nem a biztonság összegzése |2.76 |2018. június 12. |
 | – | [4284855] |Június nem a biztonság összegzése |3.63 |2018. június 12. |
-| – | [4284815] |Június nem a biztonság összegzése |4,56 |2018. június 12. |
+| – | [4284815] |Június nem a biztonság összegzése |4.56 |2018. június 12. |
 
 ## <a name="june-2018-guest-os"></a>2018 június vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| 18-06-rel | [4284880] |A Windows 10 biztonsági |5.20 |2018. június 12. |
-| 18-06-rel | [4284867] |Csak a Windows biztonsági |2,75 |2018. június 12. |
-| 18-06-rel | [4284846] |Csak a Windows biztonsági |3.62 |2018. június 12. |
-| 18-06-rel | [4284878] |Csak a Windows biztonsági |4.55 |2018. június 12. |
-| 18-06-rel | [4230450] |Internet Explorer |2,75, 3.62, 4.75 |2018. június 12. |
-| 18-06-rel | [4287903] |Flash |3.62, 4.75, 5.20 |2018. június 12. |
-| – | [4103718] |Előfordulhat, hogy nem a biztonság összegzése |2,75 |2018. május 8. |
+| Rel 18-06 | [4284880] |A Windows 10 biztonsági |5.20 |2018. június 12. |
+| Rel 18-06 | [4284867] |Csak a Windows biztonsági |2.75 |2018. június 12. |
+| Rel 18-06 | [4284846] |Csak a Windows biztonsági |3.62 |2018. június 12. |
+| Rel 18-06 | [4284878] |Csak a Windows biztonsági |4.55 |2018. június 12. |
+| Rel 18-06 | [4230450] |Internet Explorer |2.75, 3.62, 4.75 |2018. június 12. |
+| Rel 18-06 | [4287903] |Flash |3.62, 4.75, 5.20 |2018. június 12. |
+| – | [4103718] |Előfordulhat, hogy nem a biztonság összegzése |2.75 |2018. május 8. |
 | – | [4103730] |Előfordulhat, hogy nem a biztonság összegzése |3.62 |2018. május 8. |
 | – | [4103725] |Előfordulhat, hogy nem a biztonság összegzése |4.55 |2018. május 8. |
-| – | [4040980], [4040977] |Szeptembertől ' 17 .NET nem a biztonság összegzése |2,75 |2017. november 14. |
-| – | [4095874] |Előfordulhat, hogy nem biztonsági .NET 3.5-ös kiadás |2,75 |2018. május 8. |
-| – | [4096495] |Előfordulhat, hogy a .NET 4.x-es nem biztonsági kiadás |2,75 |2018. május 8. |
+| – | [4040980], [4040977] |Szeptembertől ' 17 .NET nem a biztonság összegzése |2.75 |2017. november 14. |
+| – | [4095874] |Előfordulhat, hogy nem biztonsági .NET 3.5-ös kiadás |2.75 |2018. május 8. |
+| – | [4096495] |Előfordulhat, hogy a .NET 4.x-es nem biztonsági kiadás |2.75 |2018. május 8. |
 | – | [4040975] |Szeptembertől ' 17 .NET nem a biztonság összegzése |3.62 |2017. november 14. |
 | – | [4095872] |Előfordulhat, hogy nem biztonsági .NET 3.5-ös kiadás |3.62 |2018. május 8. |
 | – | [4096494] |Előfordulhat, hogy a .NET 4.x-es nem biztonsági kiadás |3.62 |2018. május 8. |
@@ -234,38 +285,38 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | 18-05-rel | [4054856] |.NET 4.7 x biztonsága |5.19 |2018. május 8. |
 | 18-05-rel | [4103768] |Internet Explorer |2.74, 3.61, 4.74 |2018. május 8. |
 | 18-05-rel | [4103729] |Flash |3.61, 4.74, 5.19 |2018. május 8. |
-| – | [4093118] |Április nem a biztonság összegzése |2,73 |2018. április 10. |
+| – | [4093118] |Április nem a biztonság összegzése |2.73 |2018. április 10. |
 | – | [4093123] |Április nem a biztonság összegzése |3.61 |2018. április 10. |
 | – | [4093114] |Április nem a biztonság összegzése |4.74 |2018. április 10. |
-| – | [4093137] |Április SSU |5.19 |2018. április 10. |
+| – | [4093137] |April SSU |5.19 |2018. április 10. |
 | – | [4093753] |Időzóna frissítése |2.74, 3.61, 4.74 |2018. április 10. |
 
 
 ## <a name="april-2018-guest-os"></a>2018 április vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| 18-04-rel | [4093119] |A Windows 10 biztonsági |5.18 |2018. április 10. |
-| 18-04-rel | [4093108] |Csak a Windows biztonsági |2,73 |2018. április 10. |
-| 18-04-rel | [4093122] |Csak a Windows biztonsági |3.60 |2018. április 10. |
-| 18-04-rel | [4093115] |Csak a Windows biztonsági |4,53 |2018. április 10. |
-| 18-04-rel | [4092946] |Internet Explorer |2,73, 3.60, 4,53 |2018. április 10. |
-| 18-04-rel | [4093110] |Flash |3.60, 4,53, 5.18 |2018. április 10. |
-| – | [4088875] |Március nem a biztonság összegzése |2,73 |2018. március 13. |
-| – | [4099950] |Március nem biztonsági kumulatív előfeltételeként|2,73 |2018. március 13. |
+| Rel 18-04 | [4093119] |A Windows 10 biztonsági |5.18 |2018. április 10. |
+| Rel 18-04 | [4093108] |Csak a Windows biztonsági |2.73 |2018. április 10. |
+| Rel 18-04 | [4093122] |Csak a Windows biztonsági |3.60 |2018. április 10. |
+| Rel 18-04 | [4093115] |Csak a Windows biztonsági |4.53 |2018. április 10. |
+| Rel 18-04 | [4092946] |Internet Explorer |2.73, 3.60, 4.53 |2018. április 10. |
+| Rel 18-04 | [4093110] |Flash |3.60, 4.53, 5.18 |2018. április 10. |
+| – | [4088875] |Március nem a biztonság összegzése |2.73 |2018. március 13. |
+| – | [4099950] |Március nem biztonsági kumulatív előfeltételeként|2.73 |2018. március 13. |
 | – | [4088877] |Március nem a biztonság összegzése |3.60 |2018. március 13. |
-| – | [4088876] |Március nem a biztonság összegzése |4,53 |2018. március 13. |
+| – | [4088876] |Március nem a biztonság összegzése |4.53 |2018. március 13. |
 
 ## <a name="march-2018-guest-os"></a>2018 március vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| 18-03-rel | [4088787], [4088776] |A Windows 10 biztonsági |5.17 |2018. március 13. |
-| 18-03-rel | [4088878], [4088880], [4088879] |Csak a Windows biztonsági |2.72, 3.59, 4.52-es verziójának |2018. március 13. |
-| 18-03-rel | [4089187] |Internet Explorer |2.72, 3.59, 4.52-es verziójának |2018. március 13. |
-| 18-03-rel | [4074595] |Flash |3.59, 4.52-es verziójának, 5.17 |2018. március 13. |
+| Rel 18-03 | [4088787], [4088776] |A Windows 10 biztonsági |5.17 |2018. március 13. |
+| Rel 18-03 | [4088878], [4088880], [4088879] |Csak a Windows biztonsági |2.72, 3.59, 4.52 |2018. március 13. |
+| Rel 18-03 | [4089187] |Internet Explorer |2.72, 3.59, 4.52 |2018. március 13. |
+| Rel 18-03 | [4074595] |Flash |3.59, 4.52, 5.17 |2018. március 13. |
 | – | [4074598] |Február nem a biztonság összegzése |2.72 |2018. február 13. |
 | – | [4074593] |Február nem a biztonság összegzése |3.59 |2018. február 13. |
-| – | [4074594] |Február nem a biztonság összegzése |4.52-es verziójának |2018. február 13. |
-| – | [4074837] |Időzóna frissítése |2.72, 3.59, 4.52-es verziójának |2018. február 13. |
+| – | [4074594] |Február nem a biztonság összegzése |4.52 |2018. február 13. |
+| – | [4074837] |Időzóna frissítése |2.72, 3.59, 4.52 |2018. február 13. |
 
 
 ## <a name="february-2018-guest-os"></a>2018 február vendég operációs rendszer
@@ -285,12 +336,12 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 ## <a name="january-2018-guest-os"></a>2018 január vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| 18-01-rel | [4056898], [4056897], [4056899] |Csak a Windows biztonsági |2.70, 3.57, 4,50 |2018. január 3. |
-| 18-01-rel | [4056890], [4056892] |Csak a Windows biztonsági |5.15 |2018. január 3. |
+| Rel 18-01 | [4056898], [4056897], [4056899] |Csak a Windows biztonsági |2.70, 3.57, 4.50 |2018. január 3. |
+| Rel 18-01 | [4056890], [4056892] |Csak a Windows biztonsági |5.15 |2018. január 3. |
 | – | [4054518] |December nem a biztonság összegzése |2.70 |2017. december 12. |
 | – | [4054520] |December nem a biztonság összegzése |3.57 |2017. december 12. |
 | – | [4054519] |December nem a biztonság összegzése |4.50 |2017. december 12. |
-| – | [4051956] |Január időzóna frissítése |2.70, 3.57, 4,50 |2017. december 12. |
+| – | [4051956] |Január időzóna frissítése |2.70, 3.57, 4.50 |2017. december 12. |
 
 
 
@@ -340,7 +391,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | 17-09-rel | [4038782] |A Windows 10-frissítések |5.11 |2017. szeptember 12. |
 | 17-09-rel | [4038779], [4038786], [4038793] |Csak a Windows biztonsági |2.66, 3.53, 4.46 |2017. szeptember 12. |
 | 17-09-rel | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Szeptember .NET-frissítések |2.66, 3.53, 4.46 |2017. szeptember 12. |
-| 17-09-rel | [4036586] |Az Internet explorer |2.66, 3.53, 4.46 |2017. szeptember 12. |
+| 17-09-rel | [4036586] |Internet explorer |2.66, 3.53, 4.46 |2017. szeptember 12. |
 | CVE – 2017-8704 | [4038782] |Szolgáltatásmegtagadás |5.11 |2017. szeptember 12. |
 | – | [4034664] |Augusztus nem a biztonság összegzése  |2.66 |2017. augusztus 8. |
 | – | [4034665] |Augusztus nem a biztonság összegzése |5.11 |2017. augusztus 8. |
@@ -411,9 +462,9 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | 17-05-rel | [4019214] |Csak a Windows biztonsági |3.49 | 2017. május 9. |
 | 17-05-rel | [4018271] |Összesített frissítés az Internet Explorer |3.49 | 2017. május 9. |
 | 17-05-rel | [4010323] |SHA1 tanácsadás |2.62, 4.42, 5.7 | 2017. május 9. |
-| 17-05-rel | [4022344] |A Microsoft biztonsági tanácsadó |5.7 | 2017. május 9. |
-| 17-05-rel | [4022345] |A Microsoft biztonsági tanácsadó |5.7 | 2017. május 9. |
-| 17-05-rel | [4021279] |.NET /ASP.Net core tanácsadás |2.62, 3.49, 4.42, 5.7 | 2017. május 9. |
+| 17-05-rel | [4022344] |Microsoft Security Advisory |5.7 | 2017. május 9. |
+| 17-05-rel | [4022345] |Microsoft Security Advisory |5.7 | 2017. május 9. |
+| 17-05-rel | [4021279] |.Net /ASP.Net Core Advisory |2.62, 3.49, 4.42, 5.7 | 2017. május 9. |
 | – | [4012864] |Időzóna frissítése |2.62, 3.49, 4.42 | 2017. május 9. |
 | – | [4014565] |Április .NET nem a biztonság összegzése |2.62 | 2017. április 11. |
 | – | [4014559] |Április .NET nem a biztonság összegzése |2.62 | 2017. április 11. |
@@ -437,7 +488,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | 17-04-rel |  [4015546]  |Csak a Windows biztonsági |2.61 | 2017. április 11. |
 | 17-04-rel |  [4015547]  |Csak a Windows biztonsági |4.41 | 2017. április 11. |
 | 17-04-rel |  [4015548]  |Csak a Windows biztonsági |3.48 | 2017. április 11. |
-| 17-04-rel |  [4014661]  |Az Internet explorer |2.61, 3.48, 4.41 | 2017. április 11. |
+| 17-04-rel |  [4014661]  |Internet explorer |2.61, 3.48, 4.41 | 2017. április 11. |
 | 17-04-rel |  [4014550]; [4014560]; [4014562]; [4014556]; [4014574] |.NET-biztonság |4.41 | 2017. április 11. |
 | 17-04-rel |  [4014564]; [4014572]; [4014549] |.NET-biztonság |3.48 | 2017. április 11. |
 | 17-04-rel |  [4014566]; [4014552]; [4014573]; [4014558]  |.NET-biztonság |2.61 | 2017. április 11. |
@@ -552,7 +603,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | MS16-100 |[3179577] |Biztonsági frissítés a biztonságos rendszerindítás |4.35, 3.42 |2016. augusztus 9-én |
 | MS16-101 |[3178465] |Biztonsági frissítés a Windows hitelesítési módszerek |4.35, 3.42, 2.54 |2016. augusztus 9-én |
 | MS16-102 |[3182248] |Biztonsági frissítés a Microsoft Windows PDF-könyvtár |4.35, 3.42 |2016. augusztus 9-én |
-| MS16-077 az új kiadás |[3165191] |Biztonsági frissítés a webalkalmazás-Proxy automatikus lekérdezés (WPAD) |4.35, 3.42, 2.54 |2016. augusztus 9-én |
+| MS16-077 az új kiadás |[3165191] |Security Update for Web Proxy Autodiscovery (WPAD) |4.35, 3.42, 2.54 |2016. augusztus 9-én |
 | – |[3172605] |2016. július. kumulatív frissítés a Windows 7 SP1 és a Windows Server 2008 R2 SP1 |2.54 |2016. augusztus 9-én |
 | – |[3172615] |2016. július. kumulatív frissítés a Windows Server 2012 rendszerhez |3.42 |2016. augusztus 9-én |
 | – |[3172614] |2016. július Windows RT 8.1, Windows 8.1 és Windows Server 2012 R2 kumulatív frissítés |4.35 |2016. augusztus 9-én |
@@ -652,7 +703,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | MS16-018 |[3136082] |Biztonsági frissítés a Windows kernelmódú illesztőprogram történő kiterjesztését |4.29, 3.36, 2.48 |2016. február 9-én |
 | MS16-019 |[3137893] |Biztonsági frissítés, a távoli kódfuttatást megoldása érdekében. |4.29, 3.36, 2.48 |2016. február 9-én |
 | MS16-021 |[3133043] |Szolgáltatásmegtagadás megoldása érdekében NPS RADIUS-kiszolgáló biztonsági frissítése |4.29, 3.36, 2.48 |2016. február 9-én |
-| A Microsoft biztonsági tanácsadó |[3109853] |TLS kölcsönös átjárhatóságot javítása érdekében a frissítés |4.29, 3.36 |2016. február 9-én |
+| Microsoft Security Advisory |[3109853] |TLS kölcsönös átjárhatóságot javítása érdekében a frissítés |4.29, 3.36 |2016. február 9-én |
 | Az új kiadás-MS15-101 |[3089662] |A .NET-keretrendszer biztonsági rései jogok kiterjesztése |4.29, 3.36, 2.48 |2016. február 9-én |
 | Az új kiadás-MS15-118 |[3104507] |Biztonsági frissítések, .NET-keretrendszer történő kiterjesztését |4.29, 3.36, 2.48 |2016. február 9-én |
 | Az új kiadás-MS15-128 |[3104503] |Microsoft grafikus összetevő távoli kódfuttatást megoldása érdekében a biztonsági frissítések |4.29, 3.36, 2.48 |2016. február 9-én |
@@ -666,9 +717,9 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | MS16-007 |[3124901] |Biztonsági frissítés a Microsoft Windows távoli kódfuttatást megoldása |4.28, 3.35, 2.47 |2016. január 12-én |
 | MS16-008 |[3124605] |Biztonsági frissítés a Kernel történő kiterjesztését |4.28, 3.35, 2.47 |2016. január 12-én |
 | A Microsoft biztonsági tanácsadó változat |[2755801] |Az Adobe Flash Player az Internet Explorerben a biztonsági frissítés (KB-os csomag: Meghatározandó) - tanácsadó helyőrző |4.28, 3.35 |2016. január 12-én |
-| A Microsoft biztonsági tanácsadó |[3109853] |TLS kölcsönös átjárhatóságot javítása érdekében a frissítés |4.28, 3.35 |2016. január 12-én |
-| A Microsoft biztonsági tanácsadó |[3123479] |Az SHA-1 kivonatoló algoritmust a Microsoft Root Certificate Program elavulása |4.28, 3.35, 2.47 |2016. január 12-én |
-| A Microsoft biztonsági tanácsadó |[2736233] |Frissítések ActiveX Kill BITS |4.28, 3.35, 2.47 |2016. január 12-én |
+| Microsoft Security Advisory |[3109853] |TLS kölcsönös átjárhatóságot javítása érdekében a frissítés |4.28, 3.35 |2016. január 12-én |
+| Microsoft Security Advisory |[3123479] |Az SHA-1 kivonatoló algoritmust a Microsoft Root Certificate Program elavulása |4.28, 3.35, 2.47 |2016. január 12-én |
+| Microsoft Security Advisory |[2736233] |Frissítések ActiveX Kill BITS |4.28, 3.35, 2.47 |2016. január 12-én |
 
 ## <a name="december-2015-guest-os"></a>2015 decemberi vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
@@ -694,7 +745,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | MS15-120 |[3102939] |Szolgáltatásmegtagadás megoldása az IPSec esetében a biztonsági frissítés |4.26, 3.33 |2015. november 10. |
 | MS15-121 |[3081320] |Az Schannel-címek hamisítását biztonsági frissítés |4.26, 3.33, 2.45 |2015. november 10. |
 | MS15-122 |[3105256] |A Kerberos biztonsági funkció figyelmen kívül hagyása cím biztonsági frissítés |4.26, 3.33, 2.45 |2015. november 10. |
-| A Microsoft biztonsági tanácsadó |[3097966] |Akaratlanul közzétett digitális tanúsítványok lehetővé hamisítást |4.26, 3.33, 2.45 |2015. november 10. |
+| Microsoft Security Advisory |[3097966] |Akaratlanul közzétett digitális tanúsítványok lehetővé hamisítást |4.26, 3.33, 2.45 |2015. november 10. |
 
 ## <a name="october-2015-guest-os"></a>2015. október vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
@@ -703,7 +754,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | MS15-108 |[3089659] |JScript és VBScript lehetséges távoli kódfuttatást megoldása érdekében a biztonsági frissítés |2.44 |13, 2015. október |
 | MS15-109 |[3096443] |Windows-Shell történő távoli kódfuttatást biztonsági frissítés |4.25, 3.32, 2.44 |13, 2015. október |
 | MS15-111 |[3096447] |Biztonsági frissítés a Windows-rendszermag történő kiterjesztését |4.25, 3.32, 2.44 |13, 2015. október |
-| A Microsoft biztonsági tanácsadó |[3092627] |2015 szeptember hárítsa el a Windows frissítse vagy az alkalmazás lefagy 3076895 biztonsági frissítés telepítését követően |4.25, 3.32, 2.44 |13, 2015. október |
+| Microsoft Security Advisory |[3092627] |2015 szeptember hárítsa el a Windows frissítse vagy az alkalmazás lefagy 3076895 biztonsági frissítés telepítését követően |4.25, 3.32, 2.44 |13, 2015. október |
 
 ## <a name="september-2015-guest-os"></a>2015 szeptember vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |

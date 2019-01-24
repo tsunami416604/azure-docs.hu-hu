@@ -3,24 +3,24 @@ title: Engedélyezze a korhatáralapú hozzáférés Azure Active Directory B2C 
 description: Ismerje meg az alkalmazás használatával kiskorúak azonosítása.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a9220349249315d807a9dba675f6b074ddd385fa
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: ddc4b7b899385eb7388198973460386a4a0af10c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291096"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845775"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C korhatáralapú hozzáférés engedélyezése
 
 >[!IMPORTANT]
->Ez a funkció jelenleg nyilvános előzetes verzióban. Az éles környezetben ne használja a funkciót. 
+>Ez a funkció nyilvános előzetes verzióban érhető el. Az éles környezetben ne használja a funkciót. 
 >
 
 Korhatáralapú hozzáférés Azure Active Directory (Azure AD) B2C lehetővé teszi az alkalmazás használni kívánt kiskorúak azonosításához. Választhatja a kisebb a jelentkezik be az alkalmazás letiltása. Felhasználók is lépjen vissza az alkalmazást, és azok korcsoport és azok szülői beleegyezési állapotának azonosításához. Az Azure AD B2C blokkolhatja kiskorú szülői beleegyezése nélkül. Az Azure AD B2C is beállíthatja, hogy döntéshozatalra kiskorú, hogy az alkalmazás.
@@ -68,7 +68,7 @@ Korhatáralapú magában foglalja a két kora érték: az életkor valaki már n
 | SG | Szingapúr | None | 21 |
 | SI | Szlovénia | 16 | 18 |
 | SK | Szlovákia | 16 | 18 |
-| A TD | Csád | None | 21 |
+| TD | Csád | None | 21 |
 | TH | Thaiföld | None | 20 |
 | TW | Tajvan | None | 20 | 
 | USA | Egyesült Államok | 13 | 18 |

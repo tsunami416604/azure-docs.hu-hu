@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 6c9bef108c2f272c678879124ae2cd4f9ae093ba
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3f10e5dfd0a4aac859c1a946b5f0a680899e0888
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076227"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852541"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Egy Azure Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre az Azure-erőforrások felügyelt identitásaival
 
@@ -85,7 +85,7 @@ A virtuális gépen a közreműködői engedély segít az MSI-nek, hogy a Terra
 
 `. ~/tfEnv.sh`
 
-Az előző szkript az [AZ CLI 2.0 interaktív bejelentkezési](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) mechanizmust használja az Azure-ral való hitelesítéshez, és a virtuális gép felügyelt identitása közreműködői engedélyének a teljes előfizetésben történő hozzárendeléséhez. 
+Az előző szkript az [AZ CLI 2.0 interaktív bejelentkezési](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) mechanizmust használja az Azure-ral való hitelesítéshez, és a virtuális gép felügyelt identitása közreműködői engedélyének a teljes előfizetésben történő hozzárendeléséhez. 
 
  A virtuális gép távoli Terraform-állapotú háttérrel rendelkezik. Ha engedélyezni szeretné a Terraform-környezeten, másolja a remoteState.tf fájlt a tfTemplate könyvtárból a Terraform-szkriptek gyökérkönyvtárába.  
 

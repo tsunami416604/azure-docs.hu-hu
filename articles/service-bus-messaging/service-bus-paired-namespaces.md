@@ -3,9 +3,9 @@ title: Az Azure Service Bus párosított névterek |} A Microsoft Docs
 description: Párosított névterek megvalósítási részletei és költség
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 2440c8d3-ed2e-47e0-93cf-ab7fbb855d2e
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
-ms.author: spelluru
-ms.openlocfilehash: ac663cc382fcacd4960843c25aa6c95191210116
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: 35c643b9bb4f348b790577e560eaf14d3a19802f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395202"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848344"
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>A párosított névtérhez megvalósítási részletei, és optimalizálhatja a költségeket következmények
 
@@ -58,7 +58,7 @@ A [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOpti
 | Útvonal | [az elsődleges névtér] / x-servicebus-átvitel / [index] [index] [0, BacklogQueueCount) érték esetén |
 | --- | --- |
 | MaxSizeInMegabytes |5120 |
-| MaxDeliveryCount |: egész szám. MaxValue |
+| MaxDeliveryCount |int.MaxValue |
 | DefaultMessageTimeToLive |TimeSpan.MaxValue |
 | AutoDeleteOnIdle |TimeSpan.MaxValue |
 | LockDuration |1 perc |
@@ -69,7 +69,7 @@ Például az első várakozó üzenetsor létrehozott névtér **contoso** nevű
 
 Az üzenetsorok létrehozása, amikor a a kód először ellenőrzi, hogy létezik-e ilyen egy üzenetsorba. Ha az üzenetsor nem létezik, a várólista létrejön. A kód nem létezik távolítsa el a "plusz" mappájában várakozó fájlok számát üzenetsorok. Pontosabban Ha az alkalmazás az elsődleges névtérrel rendelkező **contoso** öt várakozó fájlok számát a várólisták, de az elérési úttal rendelkező várakozó üzenetsor-kérelmek `contoso/x-servicebus-transfer/7` létezik, extra várakozó üzenetsornak továbbra is megtalálható, de nem használatos. A rendszer explicit módon lehetővé teszi, hogy a várakozó fájlok számát a további üzenetsorok léteznie, amely nem használható. A névtér tulajdonosként Ön felelős a várakozó fájlok számát a fel nem használt vagy nemkívánatos üzenetsorokkal karbantartása. Ezt a döntést oka, hogy a Service Bus nem tudja, milyen célra léteznek, a névtérben lévő összes üzenetsor. Továbbá ha a várólista létezik a megadott névvel, de nem felel meg a feltételezett [QueueDescription][QueueDescription], majd a okai a következők a saját módosítható az alapértelmezett viselkedés. Nincs garancia a kód által a várakozó fájlok számát a várólisták módosításai legyenek módosítva. Győződjön meg arról, hogy alaposan tesztelheti a módosításokat.
 
-## <a name="custom-messagesender"></a>Egyéni MessageSender
+## <a name="custom-messagesender"></a>Custom MessageSender
 Küld, ha minden üzenetet meg egy belső [MessageSender] [ MessageSender] objektum, amely a szokásos módon viselkedik, ha minden rendben működik, és átirányítja a felhasználókat a várakozó fájlok számát az üzenetsorok, amikor dolgot "megszegheti." Nem átmeneti hiba fogadásakor az időmérő elindul. Miután egy [TimeSpan] [ TimeSpan] álló időszak a [FailoverInterval] [ FailoverInterval] tulajdonság értéke, amely során nem sikeres üzeneteket küldenek, a feladatátvétel be kell kapcsolni. Ezen a ponton az alábbiakat az egyes entitásokhoz fordulhat elő:
 
 * A ping feladatot hajt végre minden [PingPrimaryInterval] [ PingPrimaryInterval] annak ellenőrzésére, ha az entitás érhető el. Ez a feladat sikeres, ha azonnal az entitást használó összes ügyfél kód elindul, új üzeneteket küld az elsődleges névtér.
@@ -77,9 +77,9 @@ Küld, ha minden üzenetet meg egy belső [MessageSender] [ MessageSender] objek
 
 | Régi tulajdonság neve | Új tulajdonság neve |
 | --- | --- |
-| munkamenet-azonosító |x-ms-munkamenet-azonosító |
-| TimeToLive |az x-ms-élettartam |
-| ScheduledEnqueueTimeUtc |x-ms-elérési útja |
+| munkamenet-azonosító |x-ms-sessionid |
+| TimeToLive |x-ms-timetolive |
+| ScheduledEnqueueTimeUtc |x-ms-path |
 
 Az eredeti elérési úthoz, x-ms-path nevű tulajdonságot is tárolja az üzenetet. Ez a kialakítás lehetővé teszi, hogy számos entitás egyetlen várakozó várólista létezhet tartozó üzenetek. A tulajdonságok a Szifonos vissza úgy van lefordítva.
 

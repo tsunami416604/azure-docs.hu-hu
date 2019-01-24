@@ -3,19 +3,19 @@ title: Használati jelentéskészítési API mintákat, és az Azure Active Dire
 description: Útmutató és a példák a jelentések az Azure AD B2C-bérlőben a felhasználók, hitelesítés és többtényezős hitelesítés.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 544b0618f9135b684846c42bb7edeb37cf599883
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: cce6d71864d1c3e957937e374e90ee95a99e9f3c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445534"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844357"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>A jelentéskészítési API-n keresztül az Azure AD B2C-ben a használati jelentések elérése
 
@@ -97,18 +97,18 @@ if ($oauth.access_token -ne $null) {
 
 
 ## <a name="usage-report-definitions"></a>Használati jelentés definíciók
-* **tenantUserCount**: identitásszolgáltató naponta az elmúlt 30 napban típus szerint a bérlőben található felhasználók száma. (Ha szükséges, egy `TimeStamp` szűrő felhasználószám a megadott dátum az aktuális dátum biztosítja). A jelentés a következőket tartalmazza:
-  * **TotalUserCount**: az összes felhasználói objektumok száma.
-  * **OtherUserCount**: Azure Active Directory-felhasználók (nem Azure AD B2C-felhasználókat).
-  * **LocalUserCount**: az Azure AD B2C felhasználói fiókok száma létrehozott hitelesítő adatokkal rendelkező helyi, az Azure AD B2C-bérlőben.
+* **tenantUserCount**: Identitásszolgáltató naponta az elmúlt 30 napban típus szerint a bérlőben található felhasználók száma. (Ha szükséges, egy `TimeStamp` szűrő felhasználószám a megadott dátum az aktuális dátum biztosítja). A jelentés a következőket tartalmazza:
+  * **TotalUserCount**: Az összes felhasználói objektumok száma.
+  * **OtherUserCount**: Az Azure Active Directory-felhasználók (nem Azure AD B2C-felhasználókat) száma.
+  * **LocalUserCount**: Az Azure AD B2C-bérlő helyi hitelesítő adatokkal létrehozott Azure AD B2C felhasználói fiókok száma.
 
-* **AlternateIdUserCount**: külső Identitásszolgáltatók regisztrált Azure AD B2C felhasználók száma (például Facebook, a Microsoft-fiókkal vagy egy másik Azure Active Directory-bérlővel, más néven egy `OrgId`).
+* **AlternateIdUserCount**: Külső Identitásszolgáltatók regisztrált Azure AD B2C felhasználók száma (például Facebook, a Microsoft-fiókkal vagy egy másik Azure Active Directory-bérlővel, más néven egy `OrgId`).
 
-* **b2cAuthenticationCountSummary**: a napi száma az elmúlt 30 nap, napi és a hitelesítési folyamat számlázható hitelesítések összefoglalása.
+* **b2cAuthenticationCountSummary**: A napi száma az elmúlt 30 nap, napi és a hitelesítési folyamat számlázható hitelesítések összefoglalása.
 
-* **b2cAuthenticationCount**: időn belül hitelesítések számát. Az alapértelmezett érték az elmúlt 30 napban.  (Nem kötelező: kezdete és vége `TimeStamp` paraméterek meghatározása egy adott időszakban.) A parancs kimenete `StartTimeStamp` (ezen a bérlőn tevékenység legkorábbi dátum) és `EndTimeStamp` (legújabb frissítés).
+* **b2cAuthenticationCount**: Egy időtartamon belül hitelesítések számát. Az alapértelmezett érték az elmúlt 30 napban.  (Nem kötelező: A kezdő és a befejezési `TimeStamp` paraméterek meghatározása egy adott időszakban.) A parancs kimenete `StartTimeStamp` (ezen a bérlőn tevékenység legkorábbi dátum) és `EndTimeStamp` (legújabb frissítés).
 
-* **b2cMfaRequestCountSummary**: Összegzés a multi-factor Authentication hitelesítést, nap, és a típusa (SMS vagy szóbeli) napi számát.
+* **b2cMfaRequestCountSummary**: A multi-factor Authentication hitelesítések nap és a típusa (SMS vagy szóbeli) napi száma összefoglalása.
 
 
 ## <a name="limitations"></a>Korlátozások

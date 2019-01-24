@@ -3,9 +3,9 @@ title: Azure Service Bus-üzenettémakörök használata javával |} A Microsoft
 description: Service Bus-üzenettémák és előfizetések használata az Azure-ban.
 services: service-bus-messaging
 documentationcenter: java
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 09/17/2018
-ms.author: spelluru
-ms.openlocfilehash: 501d15ebbb373c100dd735e97bebf2f085a9579e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.author: aschhab
+ms.openlocfilehash: cd2d5812d1b61e1d8fcc00fbc824be8ceac696de
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241313"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849957"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Service Bus-üzenettémák és előfizetések használata javával
 
@@ -67,7 +67,7 @@ Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös 
 1. Kattintson az **Összes erőforrás** elemre, majd az újonnan létrehozott névtér nevére.
 2. A névtér ablakában kattintson a **Megosztott elérési házirendek** elemre.
 3. A **Megosztott elérési házirendek** képernyőn kattintson a **RootManageSharedAccessKey** elemre.
-4. A **Szabályzat: RootManageSharedAccessKey** ablakban az **Elsődleges kapcsolati sztring** melletti **Másolás** gombra kattintva másolja a kapcsolati sztringet a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
+4. Az a **házirend: RootManageSharedAccessKey** ablakban kattintson a **másolási** megjelenítő gombra **elsődleges kapcsolati karakterlánc**, hogy másolja a kapcsolati karakterláncot a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
 
     ![connection-string](./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png)
 5. A későbbi használat érdekében ismételje meg az előző lépést, és másolja ki és illessze be az **Elsődleges kulcs** értékét egy ideiglenes helyre.
@@ -97,7 +97,7 @@ Is szüksége lesz, a következő JAR-fájlok kivételével hozzáadása a Java 
 
 - gson-2.6.2.jar
 - Commons-cli-1.4.jar
-- proton – j – 0.21.0.jar
+- proton-j-0.21.0.jar
 
 Adjon hozzá egy osztályt, egy **fő** módot, majd adja hozzá a következő `import` utasítást a Java-fájl elejéhez:
 

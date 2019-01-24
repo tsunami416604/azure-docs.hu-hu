@@ -3,19 +3,19 @@ title: Áttekintés a felhasználói fiókok az Azure Active Directory B2C |} A 
 description: További információ az Azure Active Directory B2C felhasználói fiókokat.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f517754a8076fc18ed29f7db49f6ff9bfc6c7b3d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4bd3eba54d70ae065ce16845dd4fb9351c069f2d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725760"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853306"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói fiókok áttekintése
 
@@ -29,7 +29,7 @@ A következő típusú fiókok érhetők el:
 
 ## <a name="work-account"></a>Munkahelyi fiók
 
-Egy munkahelyi fiókot az Azure AD-alapú minden bérlő esetében ugyanúgy jön létre. Hozzon létre egy munkahelyi fiókot, használhatja az adatokat a [a rövid útmutató: új felhasználók hozzáadása az Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Munkahelyi fiók használatával jön létre a **új felhasználó** választási lehetőség az Azure Portalon.
+Egy munkahelyi fiókot az Azure AD-alapú minden bérlő esetében ugyanúgy jön létre. Hozzon létre egy munkahelyi fiókot, használhatja az adatokat a [a rövid útmutató: Új felhasználók hozzáadása az Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Munkahelyi fiók használatával jön létre a **új felhasználó** választási lehetőség az Azure Portalon.
 
 Egy új munkahelyi fiók hozzáadásakor meg kell fontolja meg a következő beállításokat:
 

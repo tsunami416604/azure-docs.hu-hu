@@ -4,17 +4,17 @@ description: Ez a cikk végigvezeti az Azure PowerShellhez szükséges Resource 
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/27/2018
+ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: bf23dcdb212c1d7e052b12179084df9ccc941664
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a624540e95d054ef5edadfada29fa13cd47419d6
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434475"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848869"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Az első Resource Graph-lekérdezés futtatása az Azure PowerShell használatával
 
@@ -24,80 +24,49 @@ Ezen folyamatban a modult hozzáadja az Azure PowerShell-telepítéshez, és fut
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+
 ## <a name="add-the-resource-graph-module"></a>A Resource Graph modul hozzáadása
 
-Ahhoz, hogy az Azure PowerShell lekérdezhesse az Azure Resource Graphot, el kell végezni a modul hozzáadását. Ez a modult a helyileg telepített Windows PowerShell-lel és PowerShell Core-ral, valamint az [Azure PowerShell Docker-rendszerképével](https://hub.docker.com/r/azuresdk/azure-powershell/) használható.
+Ahhoz, hogy az Azure PowerShell lekérdezhesse az Azure Resource Graphot, el kell végezni a modul hozzáadását. Ez a modul használható a helyileg telepített PowerShell [Azure Cloud Shell](https://shell.azure.com), vagy a [Azure PowerShell Docker-rendszerkép](https://hub.docker.com/r/azuresdk/azure-powershell/).
 
 ### <a name="base-requirements"></a>Alapszintű követelmények
 
 Az Azure Resource Graph modulhoz az alábbi szoftverek szükségesek:
 
-- Az Azure PowerShell 6.3.0 vagy újabb verziója. Ha még nincs telepítve, kövesse [ezeket az utasításokat](/powershell/azure/azurerm/install-azurerm-ps).
-
-  - A PowerShell Core esetében használja az Azure PowerShell modul **Az** verzióját.
-
-  - A Windows PowerShell esetében használja az Azure PowerShell modul **AzureRm** verzióját.
+- Az Azure PowerShell 1.0.0 vagy újabb verziója. Ha még nincs telepítve, kövesse [ezeket az utasításokat](/powershell/azure/install-az-ps).
 
 - PowerShellGet 2.0.1-es vagy újabb verzió. Ha nincs telepítve vagy frissítve, kövesse [ezeket az utasításokat](/powershell/gallery/installing-psget).
 
-### <a name="cloud-shell"></a>Cloud Shell
+### <a name="install-the-module"></a>A modul telepítése
 
-Az Azure Resource Graph modul Cloud Shellbe való felvételéhez kövesse a PowerShell Core-ra vonatkozó alábbi utasításokat.
+Az Erőforrás-grafikon a modul PowerShell **Az.ResourceGraph**.
 
-### <a name="powershell-core"></a>PowerShell Core
-
-A PowerShell Core Resource Graph modulja az **Az.ResourceGraph**.
-
-1. Egy **felügyeleti** PowerShell Core-parancssorban futtassa a következő parancsot:
+1. Az egy **felügyeleti** PowerShell-parancssorban futtassa a következő parancsot:
 
    ```azurepowershell-interactive
    # Install the Resource Graph module from PowerShell Gallery
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Győződjön meg róla, hogy a modul importálva lett, és a megfelelő verziójú (0.3.0):
+1. Ellenőrizze, hogy a modul importálása, és a megfelelő verziójú (0.7.1):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
    Get-Command -Module 'Az.ResourceGraph' -CommandType 'Cmdlet'
    ```
 
-1. Engedélyezze a fordított aliasokat az **Az** és az **AzureRm** számára a következő paranccsal:
-
-   ```azurepowershell-interactive
-   # Enable backwards alias compatibility
-   Enable-AzureRmAlias
-   ```
-
-### <a name="windows-powershell"></a>Windows PowerShell
-
-A Windows PowerShell Resource Graph modulja az **AzureRm.ResourceGraph**.
-
-1. Egy **felügyeleti** Windows PowerShell-parancssorban futtassa a következő parancsot:
-
-   ```powershell
-   # Install the Resource Graph (prerelease) module from PowerShell Gallery
-   Install-Module -Name AzureRm.ResourceGraph -AllowPrerelease
-   ```
-
-1. Győződjön meg róla, hogy a modul importálva lett, és a megfelelő verziójú (0.1.1-preview):
-
-   ```powershell
-   # Get a list of commands for the imported AzureRm.ResourceGraph module
-   Get-Command -Module 'AzureRm.ResourceGraph' -CommandType 'Cmdlet'
-   ```
-
 ## <a name="run-your-first-resource-graph-query"></a>Az első Resource Graph-lekérdezés futtatása
 
 Miután az Azure PowerShell modul hozzá lett adva a választott környezethez, ideje futtatni egy egyszerű Resource Graph-lekérdezést. A lekérdezés az első öt Azure-erőforrást fogja visszaadni az egyes erőforrások **nevével** és **erőforrástípusával**.
 
-1. Futtassa az első Azure Resource Graph-lekérdezését a `Search-AzureRmGraph` parancsmag használatával:
+1. Futtassa az első Azure Resource Graph-lekérdezését a `Search-AzGraph` parancsmag használatával:
 
    ```azurepowershell-interactive
-   # Login first with Connect-AzureRmAccount if not using Cloud Shell
+   # Login first with Connect-AzAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   Search-AzureRmGraph -Query 'project name, type | limit 5'
+   Search-AzGraph -Query 'project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -107,7 +76,7 @@ Miután az Azure PowerShell modul hozzá lett adva a választott környezethez, 
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
-   Search-AzureRmGraph -Query 'project name, type | limit 5 | order by name asc'
+   Search-AzGraph -Query 'project name, type | limit 5 | order by name asc'
    ```
 
   > [!NOTE]
@@ -117,7 +86,7 @@ Miután az Azure PowerShell modul hozzá lett adva a választott környezethez, 
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   Search-AzureRmGraph -Query 'project name, type | order by name asc | limit 5'
+   Search-AzGraph -Query 'project name, type | order by name asc | limit 5'
    ```
 
 Miután a végső lekérdezés többször is futott, és feltéve, hogy a környezetben semmi sem változik, a visszaadott találatok konzisztensek és a vártnak megfelelőek lesznek – a **Name** tulajdonság szerint lesznek rendezve, és csak az első öt eredmény jelenik meg.
@@ -128,7 +97,7 @@ Ha el szeretné távolítani a Resource Graph modult az Azure PowerShell-környe
 
 ```powershell
 # Remove the Resource Graph module from the Azure PowerShell environment
-Remove-Module -Name 'AzureRm.ResourceGraph'
+Remove-Module -Name 'Az.ResourceGraph'
 ```
 
 > [!NOTE]

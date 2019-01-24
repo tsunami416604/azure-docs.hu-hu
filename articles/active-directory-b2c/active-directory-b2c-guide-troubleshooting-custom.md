@@ -3,19 +3,19 @@ title: Az Azure Active Directory B2C egyéni szabályzatokkal kapcsolatos probl�
 description: Ismerje meg megközelítések a hibák megoldása, az Azure Active Directory B2C-vel egyéni szabályzatok használatakor.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8bb95ae776c329e67e9f9936213a9f4c2a0c8f62
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: be3a3a50d3ace369964814bc7fcc0fa0d353a332
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842594"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54842902"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Az Azure AD B2C-vel egyéni szabályzatok és az identitás-kezelőfelületi keretrendszer hibaelhárítása
 
@@ -56,9 +56,9 @@ Kódrészlet. hiba: `Reason: User is currently logged as a user of 'yourtenant.o
 ## <a name="troubleshoot-the-runtime"></a>A futtatókörnyezet hibaelhárítása
 
 * Használat `Run Now` és `https://jwt.io` be webes vagy mobilalkalmazásaiba függetlenül a házirendek tesztelésére. A webhely úgy viselkedik, mint egy függő fél alkalmazást. Megjeleníti a tartalmát, a JSON webes jogkivonat (JWT) az Azure AD B2C-szabályzat által létrehozott. Létrehoz egy tesztelési kérelem az identitás-kezelőfelületi keretrendszer, használja a következő értékeket:
-    * Name: TestApp
-    * Webalkalmazást vagy webes API: nem
-    * Natív ügyfél: nem
+    * Név: TestApp
+    * Web App/Web API: Nem
+    * Natív ügyfél: Nem
 
 * Az exchange, az ügyfél böngészője és az Azure AD B2C-vel közötti üzenetek nyomon követése, használja a [Fiddler](https://www.telerik.com/fiddler). Ez segíthet álló, ahol a felhasználói interakciósorozat nem működik, a vezénylési lépésekben.
 

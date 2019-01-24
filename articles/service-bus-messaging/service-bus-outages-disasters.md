@@ -2,18 +2,19 @@
 title: Leállások és katasztrófák kezelése az Azure Service Bus-alkalmazásfejlesztések szigetelő |} A Microsoft Docs
 description: Módszerek a lehetséges a Service Bus kimaradás alkalmazások védelmét.
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: 85481deceeadaf4154659d35fccf777f489bd782
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: e9fb1795ecb26fc87fd8f3ff000d125d71e9d594
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393707"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846710"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Ajánlott eljárások az alkalmazások a Service Bus leállásainak és katasztrófákkal szembeni szigetelő
 
@@ -69,7 +70,7 @@ Egy ügyfél mindkét üzenetsorok fogad üzeneteket. Mivel előfordulhat, hogy 
 
 Passzív replikáció használata esetén a következő esetekben üzenetek néha elvész, vagy kétszer érkezett:
 
-* **Üzenet késése vagy az adatvesztés**: Tegyük fel, hogy a küldő egy üzenetet m1 sikeresen elküldte az elsődleges üzenetsornak, és majd a várólista elérhetetlenné válik a címzett megkapja az m1 előtt. A küldő a következő üzenetet m2 küld a másodlagos üzenetsor. Az elsődleges üzenetsornak átmenetileg nem érhető el, ha a fogadó m1 kap, miután újra elérhetővé a várólista válik. Egy esetleges vészhelyzet esetén a fogadó soha nem jelenhet meg az M1 verzióban.
+* **Üzenet késése vagy az adatvesztés**: Tegyük fel, hogy a küldő egy üzenetet m1 sikeresen elküldte az elsődleges üzenetsornak, és ezután a várólista elérhetetlenné válik a címzett megkapja az m1 előtt. A küldő a következő üzenetet m2 küld a másodlagos üzenetsor. Az elsődleges üzenetsornak átmenetileg nem érhető el, ha a fogadó m1 kap, miután újra elérhetővé a várólista válik. Egy esetleges vészhelyzet esetén a fogadó soha nem jelenhet meg az M1 verzióban.
 * **Ismétlődő fogadás**: Tegyük fel, hogy a küldő millió üzenetet küld az elsődleges üzenetsornak. A Service Bus sikeresen m dolgozza fel, de nem tud választ küldeni. Miután a küldési művelet időkorlátja lejár, a küldő m egyforma példányával küld a másodlagos üzenetsor. Ha a fogadó tudja fogadni az m első példányát, mielőtt az elsődleges üzenetsornak elérhetetlenné válik, a fogadó kap mindkét másolat m körülbelül egy időben. Ha a címzett nem tudja fogadni az m első példányát, mielőtt az elsődleges üzenetsornak elérhetetlenné válik, a fogadó csak a második példányt m kezdetben kap, de majd m második másolatot kap, amikor az elsődleges üzenetsornak elérhetővé válik.
 
 A [georeplikáció a Service Bus közvetítőalapú üzenetek] [ Geo-replication with Service Bus Brokered Messages] üzenetküldési entitások passzív replikálását mutatja be.

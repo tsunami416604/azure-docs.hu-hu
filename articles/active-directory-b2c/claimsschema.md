@@ -3,19 +3,19 @@ title: ClaimsSchema – az Azure Active Directory B2C |} A Microsoft Docs
 description: Adja meg az egyéni szabályzat ClaimsSchema elem Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2d11283ccf58fdc356742d6f4042afd15bf6faab
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a49553941b83e323f23f20b794a464f47ef31981
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568642"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849090"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -38,7 +38,7 @@ A **ClaimsSchema** elem definiálja, amely lehet hivatkozni a jogcímtípusok, a
       <UserInputType>TextBox</UserInputType>
 ```
 
-## <a name="claimtype"></a>Takar
+## <a name="claimtype"></a>ClaimType
 
 A **takar** elem tartalmazza a következő attribútumot:
 
@@ -65,13 +65,13 @@ A **DefaultPartnerClaimTypes** tartalmazhatja a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Protokoll | 0: n | Alapértelmezett partnereikkel együtt protokollokat jogcím-típus neve. |
+| Protokoll | 0:n | Alapértelmezett partnereikkel együtt protokollokat jogcím-típus neve. |
 
 A **protokoll** elem tartalmazza a következő attribútumokat:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Name (Név) | Igen | Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek a következők: OAuth1, az OAuth2, egy SAML2, OpenIdConnect, WsFed vagy WsTrust. |
+| Name (Név) | Igen | Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek:  OAuth1, az OAuth2, egy SAML2, OpenIdConnect, WsFed vagy WsTrust. |
 | PartnerClaimType | Igen | A jogcím típusa használni kívánt nevét. |
 
 A következő példában az identitás-kezelőfelületi keretrendszer együttműködő identitásszolgáltató egy SAML2 vagy függő gyártótól származó alkalmazás, amikor a **Vezetéknév** jogcím van leképezve `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, OpenIdConnect és OAuth2, az a jogcím nem leképezve `family_name`.
@@ -107,7 +107,7 @@ A **maszk** elem tartalmazza a következő attribútumokat:
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Típus | Igen | Az igényt maszk típusa. A lehetséges értékek: `Simple` vagy `Regex`. A `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszkot a vezető része egy karakterlánc jogcím van hozzárendelve. A `Regex` érték azt jelzi, hogy a teljes karakterlánc jogcím van hozzárendelve egy reguláris kifejezést.  Ha a `Regex` érték van megadva, nem kötelező attribútum kell definiálni a reguláris kifejezés használata. |
-| reguláris kifejezés | Nem | Ha **típus** értékre van állítva `Regex`, adja meg a reguláris kifejezés használata.
+| Regex | Nem | Ha **típus** értékre van állítva `Regex`, adja meg a reguláris kifejezés használata.
 
 Ez a példa konfigurálja egy **PhoneNumber** jogcím a `Simple` maszk:
 
@@ -152,7 +152,7 @@ A **korlátozás** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Enumerálás | 1: n | A felhasználó egy jogcímet, például egy értéket a legördülő listában válassza ki az elérhető beállítások a felhasználói felületen. |
+| Enumerálás | 1:n | A felhasználó egy jogcímet, például egy értéket a legördülő listában válassza ki az elérhető beállítások a felhasználói felületen. |
 | Mintázat | 1:1 | A reguláris kifejezés használata. |
 
 ### <a name="enumeration"></a>Enumerálás
@@ -163,7 +163,7 @@ A **enumerálás** elem tartalmazza a következő attribútumokat:
 | --------- | -------- | ----------- |
 | Szöveg | Igen | A megjelenítendő karakterlánc, amely a felhasználói felületen ezt a lehetőséget választja a felhasználó számára látható. |
 |Érték | Igen | A jogcím értéke, amely ezzel a beállítással társítva van. |
-| SelectByDefault | Nem | Azt jelzi-e ez a beállítás van kiválasztva a felhasználói felület alapértelmezés szerint. A lehetséges értékek: True vagy FALSE (hamis). |
+| SelectByDefault | Nem | Azt jelzi-e ez a beállítás van kiválasztva a felhasználói felület alapértelmezés szerint. Érvényes értékek: IGAZ vagy hamis. |
 
 Ez a példa konfigurálja egy **Város** legördülő lista jogcímet, és a egy alapértelmezett értéket az `New York`:
 
@@ -190,7 +190,7 @@ A **minta** elem magában foglalhatja a következő attribútumokat:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Válaszban | Igen | Az ilyen típusú jogcímek egyeznie kell annak érdekében, hogy érvényes reguláris kifejezés. |
+| RegularExpression | Igen | Az ilyen típusú jogcímek egyeznie kell annak érdekében, hogy érvényes reguláris kifejezés. |
 | Súgószöveg | Nem | A minta vagy ezt az igényt a reguláris kifejezés. |
 
 Konfigurálja az alábbi példa egy **e-mail** jogcímet reguláris kifejezés bemeneti érvényesítési és súgó szövege:

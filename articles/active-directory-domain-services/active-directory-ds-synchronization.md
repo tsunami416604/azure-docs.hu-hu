@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure Active Directory Domain Services: Szinkronizálás felügyelt tartományokban |} A Microsoft Docs'
+title: 'Az Azure Active Directory tartományi szolgáltatások: Szinkronizálás felügyelt tartományokban |} A Microsoft Docs'
 description: Megismerheti a szinkronizálást az Azure Active Directory Domain Services által felügyelt tartományokhoz
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: e0fc1b64514adb710ebcbdd417f65e9e3b3b3d66
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 40b66b85f88cde28cc6a1c52cb456157d8acd68c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155558"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846937"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Szinkronizálás az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 A következő ábra szemlélteti a szinkronizálás működése az Azure AD Domain Services felügyelt tartomány.
@@ -50,12 +50,12 @@ Ezzel szemben az Azure AD-bérlő egy sokkal egyszerűbb, és egybesimított né
 ## <a name="exclusions---what-isnt-synchronized-to-your-managed-domain"></a>A kizárások – Mi a felügyelt tartomány nincs szinkronizálva
 A következő objektumok vagy attribútumok nincsenek szinkronizálva az Azure AD-bérlővel, vagy a felügyelt tartomány:
 
-* **Kizárt attribútumok:** előfordulhat, hogy ki szeretne zárni bizonyos attribútumok az Azure AD-bérlő szinkronizálja a helyszíni tartomány Azure AD Connect használatával. Ezek az attribútumok kizárt nem érhető el a felügyelt tartományra.
-* **Csoportházirendek:** a rendszer nem szinkronizálja a felügyelt tartományra a helyszíni tartomány konfigurált csoport szabályzatok.
-* **SYSVOL-megosztás:** ehhez hasonlóan a tartalmát a Sysvol-megosztás a helyszíni tartomány nincs szinkronizálva a felügyelt tartományra.
-* **Számítógép-objektumok:** számítógép-objektumok esetében a helyi tartományhoz csatlakoztatott számítógépek nincsenek szinkronizálva a felügyelt tartományra. Ezeket a számítógépeket a felügyelt tartomány bizalmi kapcsolattal rendelkezik, és nem csak a helyi tartományhoz tartoznak. A felügyelt tartományban lévő számítógép-objektumok csak a számítógépeken, explicit módon tartomány-csatlakozott a felügyelt tartományhoz találja.
-* **Felhasználók és csoportok SidHistory attribútumai:** az elsődleges felhasználó elsődleges csoportos biztonsági azonosítókkal való létrehozásához a helyszíni tartomány szinkronizálja a felügyelt tartomány. Azonban a felhasználók és csoportok meglévő SidHistory attribútumok nincsenek szinkronizálva a helyszíni tartomány a felügyelt tartományra.
-* **Szervezeti egység (OU) struktúrák:** nem szinkronizálja a felügyelt tartományra a helyszíni tartomány megadott szervezeti egységek. A felügyelt tartomány két beépített szervezeti egységek találhatók. Alapértelmezés szerint a felügyelt tartomány rendelkezik egy egybesimított Szervezetiegység-struktúrára. Dönthet úgy, hogy azonban [a felügyelt tartományhoz hozzon létre egy egyéni szervezeti](active-directory-ds-admin-guide-create-ou.md).
+* **Kizárt attribútumai:** Előfordulhat, hogy ki szeretne zárni bizonyos attribútumok az Azure AD-bérlő szinkronizálja a helyszíni tartomány Azure AD Connect használatával. Ezek az attribútumok kizárt nem érhető el a felügyelt tartományra.
+* **Csoportházirendek:** A felügyelt tartományra a helyszíni tartomány konfigurált csoportházirendek nincsenek szinkronizálva.
+* **SYSVOL-megosztás:** Hasonlóképpen a Sysvol-megosztás a helyszíni tartomány tartalmát nincsenek szinkronizálva a felügyelt tartományra.
+* **Számítógép-objektumok:** Számítógép-objektumokat a helyszíni tartományhoz csatlakoztatott számítógépek esetében a rendszer nem szinkronizálja a felügyelt tartományra. Ezeket a számítógépeket a felügyelt tartomány bizalmi kapcsolattal rendelkezik, és nem csak a helyi tartományhoz tartoznak. A felügyelt tartományban lévő számítógép-objektumok csak a számítógépeken, explicit módon tartomány-csatlakozott a felügyelt tartományhoz találja.
+* **Felhasználók és csoportok SidHistory attribútumai:** Az elsődleges felhasználói elsődleges csoportos biztonsági azonosítókkal való létrehozásához a helyszíni tartomány szinkronizálja a felügyelt tartományhoz. Azonban a felhasználók és csoportok meglévő SidHistory attribútumok nincsenek szinkronizálva a helyszíni tartomány a felügyelt tartományra.
+* **Szervezeti egység (OU) struktúrák:** Ne szinkronizáljon a felügyelt tartományra a helyszíni tartomány megadott szervezeti egységek. A felügyelt tartomány két beépített szervezeti egységek találhatók. Alapértelmezés szerint a felügyelt tartomány rendelkezik egy egybesimított Szervezetiegység-struktúrára. Dönthet úgy, hogy azonban [a felügyelt tartományhoz hozzon létre egy egyéni szervezeti](active-directory-ds-admin-guide-create-ou.md).
 
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>Hogyan adott attribútumok legyenek szinkronizálva a felügyelt tartomány
 A következő táblázat néhány gyakori attribútumok és ismerteti, hogyan akkor a rendszer szinkronizálja a felügyelt tartományra.
@@ -63,13 +63,13 @@ A következő táblázat néhány gyakori attribútumok és ismerteti, hogyan ak
 | A felügyelt tartomány attribútum | Forrás | Megjegyzések |
 |:--- |:--- |:--- |
 | Egyszerű felhasználónév |A felhasználó UPN attribútum az Azure AD-bérlőben |Az egyszerű felhasználónév attribútum az Azure AD-bérlőből szinkronizálása a felügyelt tartományra van. Ezért jelentkezzen be a felügyelt tartományra a legmegbízhatóbb módszer az UPN-használ. |
-| SAMAccountName: |Felhasználó mailNickname attribútum az Azure AD-bérlővel, vagy automatikusan generált |A SAMAccountName attribútum forrása a mailNickname attribútum az Azure AD-bérlőben. Ha több felhasználói fiók rendelkezik az azonos mailNickname attribútum, a SAMAccountName, automatikusan létrehozott. Ha a felhasználó mailNickname vagy UPN-előtagja hosszabb 20 karakternél, a SAMAccountName jön létre automatikusan SAMAccountName attribútumok a 20 karakterszámot kielégítéséhez. |
+| SAMAccountName |Felhasználó mailNickname attribútum az Azure AD-bérlővel, vagy automatikusan generált |A SAMAccountName attribútum forrása a mailNickname attribútum az Azure AD-bérlőben. Ha több felhasználói fiók rendelkezik az azonos mailNickname attribútum, a SAMAccountName, automatikusan létrehozott. Ha a felhasználó mailNickname vagy UPN-előtagja hosszabb 20 karakternél, a SAMAccountName jön létre automatikusan SAMAccountName attribútumok a 20 karakterszámot kielégítéséhez. |
 | Jelszavak |Az Azure AD-bérlőből a felhasználó jelszavát |(Más néven kiegészítő hitelesítő adatok) az NTLM vagy Kerberos-hitelesítéshez szükséges hitelesítő kivonatokat a rendszer szinkronizálja a az Azure AD-bérlőjében. Ha az Azure AD-bérlő szinkronizált bérlők, a ezeket a hitelesítő adatokat a helyszíni tartomány forrásai. |
-| Elsődleges felhasználó/csoport biztonsági azonosítója |Automatikusan létrehozott |Elsődleges biztonsági azonosítója a felhasználói és csoportfiókok jön létre automatikusan a felügyelt tartományban. Ez az attribútum nem egyezik az elsődleges felhasználói és csoportos biztonsági azonosítója, az objektum a helyszíni AD-tartományhoz. Ez az eltérés oka, hogy a felügyelt tartomány eltérő SID-névtérrel rendelkező, mint a helyszíni tartománnyal. |
+| Elsődleges felhasználó/csoport biztonsági azonosítója |Auto-generated |Elsődleges biztonsági azonosítója a felhasználói és csoportfiókok jön létre automatikusan a felügyelt tartományban. Ez az attribútum nem egyezik az elsődleges felhasználói és csoportos biztonsági azonosítója, az objektum a helyszíni AD-tartományhoz. Ez az eltérés oka, hogy a felügyelt tartomány eltérő SID-névtérrel rendelkező, mint a helyszíni tartománnyal. |
 | Felhasználók és csoportok SID-előzmények |A helyszíni elsődleges felhasználói és csoportos biztonsági azonosítója |A felügyelt tartományban lévő felhasználók és csoportok SidHistory attribútumát értéke egyezik meg a megfelelő elsődleges felhasználó vagy csoport SID a helyszíni tartományban. Ez a funkció segítségével könnyebben lift-and-shift a felügyelt tartományra a helyszíni alkalmazások, mivel nem kell újra-ACL-erőforrásokat. |
 
 > [!NOTE]
-> **Jelentkezzen be a felügyelt tartományra a UPN-formátum:** a SAMAccountName attribútumot lehet néhány felhasználói fiók a felügyelt tartomány számára automatikusan létrehozott. Ha több felhasználó rendelkezik ugyanazon a mailNickname attribútum, vagy a felhasználók rendelkeznek az UPN-előtagok túl hosszú, ezek a felhasználók a SAMAccountName lehet automatikusan létrehozott. Ezért a SAMAccountName formátum (például CONTOSO100\joeuser) nincs mindig megbízhatóan bejelentkezni a tartományba. Felhasználók a SAMAccountName automatikusan generált UPN előtag eltérhet. Az egyszerű felhasználónév formátumban (például "joeuser@contoso100.com") megbízhatóan bejelentkezni a felügyelt tartományhoz.
+> **Jelentkezzen be a felügyelt tartományra a egyszerű felhasználónév formátuma:** A SAMAccountName attribútumot lehet néhány felhasználói fiók a felügyelt tartomány számára automatikusan létrehozott. Ha több felhasználó rendelkezik ugyanazon a mailNickname attribútum, vagy a felhasználók rendelkeznek az UPN-előtagok túl hosszú, ezek a felhasználók a SAMAccountName lehet automatikusan létrehozott. Ezért a SAMAccountName formátum (például CONTOSO100\joeuser) nincs mindig megbízhatóan bejelentkezni a tartományba. Felhasználók a SAMAccountName automatikusan generált UPN előtag eltérhet. Az egyszerű felhasználónév formátumban (például "joeuser@contoso100.com") megbízhatóan bejelentkezni a felügyelt tartományhoz.
 >
 >
 
@@ -91,7 +91,7 @@ Az alábbi táblázat mutatja be, hogyan adott attribútumok az Azure AD-bérlő
 | mailNickname |SAMAccountName (néha lehet automatikusan létrehozott) |
 | mobil |mobil |
 | objektumazonosító |msDS-AzureADObjectId |
-| OnPremiseSecurityIdentifier |tartományvezérlőjére |
+| onPremiseSecurityIdentifier |tartományvezérlőjére |
 | passwordPolicies |userAccountControl (állítja be, vagy törli a DONT_EXPIRE_PASSWORD bites) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | Irányítószám |Irányítószám |
@@ -112,7 +112,7 @@ Az alábbi táblázat mutatja be, hogyan adott attribútumok az Azure AD-bérlő
 | levelezés |levelezés |
 | mailNickname |msDS-AzureADMailNickname |
 | objektumazonosító |msDS-AzureADObjectId |
-| OnPremiseSecurityIdentifier |tartományvezérlőjére |
+| onPremiseSecurityIdentifier |tartományvezérlőjére |
 | securityEnabled |groupType |
 
 ## <a name="password-hash-synchronization-and-security-considerations"></a>Jelszó Jelszókivonat szinkronizálása és biztonsági szempontok

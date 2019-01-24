@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Microsoft irányban |} A Microsoft Docs'
+title: 'Oktatóanyag: Az utasításokat a Microsoft Azure Active Directory-integráció |} A Microsoft Docs'
 description: Ismerje meg, a Microsoft konfigurálása egyszeri bejelentkezéshez utasításokat és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: e0c8986f-2acd-418d-a306-437abc44b640
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 08027326761736fe03e27b7a45ec11c0d514dc22
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6e031a3893bff31814d81418692b84ef26d8f80a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439385"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819713"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>Oktatóanyag: Azure Active Directory-integráció az utasításokat a Microsoft
+# <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>Oktatóanyag: Az utasításokat a Microsoft Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja a Microsoft irányban integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Amelyen a Microsoft Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A Microsoft az egyszeri bejelentkezés egy irányban engedélyezett előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Irányban integrációjának konfigurálása a Microsoft Azure AD-be, szüksége
 
 **Adja hozzá a Microsoft irányban a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -141,7 +141,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     >Egyszeri bejelentkezés a Microsoft irányban kell engedélyeznie a [utasításokat a Microsoft Client támogatási csoportjának](mailto:service@DirectionsOnMicrosoft.com). Értesítést fog kapni, amikor az egyszeri bejelentkezés engedélyezve van.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
@@ -214,7 +214,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
- 
+ 
 Kattintva Microsoft csempére a hozzáférési panelen megjelenő utasításokat, meg kell lekérése automatikusan bejelentkezett, a megjelenő utasításokat a Microsoft-alkalmazáshoz.
 
 A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 

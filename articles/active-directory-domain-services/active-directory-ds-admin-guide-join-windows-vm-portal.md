@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure Active Directory Domain Services: Egy Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományokhoz |} A Microsoft Docs'
+title: 'Az Azure Active Directory tartományi szolgáltatások: A Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományokhoz |} A Microsoft Docs'
 description: A Windows Server virtuális gépek csatlakoztatása az Azure Active Directory tartományi szolgáltatások
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 29316313-c76c-4fb9-8954-5fa5ec82609e
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 748345bf89e7f746b8ef388ad5cabc987a07d1f8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fc55fcef9977abcd8c40752d459088c1132cf2c1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957670"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850365"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Windows Server virtuális gépek csatlakoztatása felügyelt tartományokhoz
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy Windows Server virtuális gépet az Azure portal használatával. Ezután bemutatja hogyan kell a virtuális gép csatlakoztatása az Azure Active Directory Domain Services (Azure AD DS) a felügyelt tartományhoz.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="step-1-create-a-windows-server-virtual-machine"></a>1. lépés: A Windows Server virtuális gép létrehozása
+## <a name="step-1-create-a-windows-server-virtual-machine"></a>1. lépés: Hozzon létre egy Windows Server virtuális gépet
 A virtuális hálózatot, amelyben engedélyezte az Azure AD DS tartományhoz csatlakozó Windows virtuális gép létrehozásához tegye a következőket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -67,7 +67,7 @@ A virtuális hálózatot, amelyben engedélyezte az Azure AD DS tartományhoz cs
 10. Az üzembe helyezés befejezése után megtekintheti a virtuális Géppel kapcsolatos információkat a **áttekintése** lapot.
 
 
-## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>2. lépés: A Windows Server virtuális gép csatlakozás a helyi rendszergazdai fiók használatával
+## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>2. lépés: Csatlakozás a Windows Server virtuális gépet a helyi rendszergazdai fiók használatával
 Ezután csatlakozhat a tartományhoz csatlakozni az újonnan létrehozott Windows Server virtuális gép. A virtuális gép létrehozásakor megadott, a helyi rendszergazdai hitelesítő adatok használata.
 
 A virtuális gép csatlakozik, hajtsa végre az alábbi lépéseket:
@@ -107,9 +107,9 @@ A Windows Server virtuális gép csatlakoztatása az Azure AD DS által felügye
 
 7. Hitelesítő adatok a következő módszerek egyikével adhatja meg:
 
-   * **Egyszerű felhasználónév formátumú**: az egyszerű felhasználónév (UPN) a felhasználói fiók utótag az Azure AD-ben konfigurált (ajánlott) adjon meg. Ebben a példában a felhasználói UPN-utótagját *bob* van *bob@domainservicespreview.onmicrosoft.com*.
+   * **Egyszerű felhasználónév formátumú**: (Ajánlott) Adja meg a felhasználó egyszerű felhasználónév (UPN) utótagot a felhasználói fiók, az Azure ad-ben konfigurált. Ebben a példában a felhasználói UPN-utótagját *bob* van *bob@domainservicespreview.onmicrosoft.com*.
 
-   * **SAMAccountName formátum**: a fiók nevét a SAMAccountName formátumban is megadhat. Ebben a példában a felhasználó *bob* meg kellene *CONTOSO100\bob*.
+   * **SAMAccountName formátum**: A SAMAccountName formátum is megadhat a fiók nevét. Ebben a példában a felhasználó *bob* meg kellene *CONTOSO100\bob*.
 
      > [!TIP]
      > **Azt javasoljuk, hogy az egyszerű felhasználónév formátumban adja meg hitelesítő adatait.**

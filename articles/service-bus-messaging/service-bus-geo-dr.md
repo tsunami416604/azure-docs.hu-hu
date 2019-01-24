@@ -2,18 +2,19 @@
 title: Az Azure Service Bus Geo-disaster recovery |} A Microsoft Docs
 description: Feladatátvétel földrajzi régiót használnak, és hajtsa végre a vészhelyreállítás az Azure Service Busban
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: 0436248dac2812c447d25de16a4ac6b45bd7248f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: d98ff2c5b9d18c36e7d16ec19d3e136be03b8d4c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855177"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848002"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Az Azure Service Bus Geo-disaster recovery
 
@@ -35,13 +36,13 @@ A vész-helyreállítási szolgáltatás metaadatainak vész-helyreállítási v
 
 Ez a cikk a következő kifejezéseket használjuk:
 
--  *Alias*: az Ön által beállított vészhelyreállítási konfiguráció nevét. Az alias egyetlen stabil teljes tartománynévként (FQDN) kapcsolati karakterláncban biztosít. Alkalmazások ez alias a kapcsolati karakterlánc használatával csatlakozni a névtérhez. 
+-  *Alias*: Az Ön által beállított vészhelyreállítási konfiguráció neve. Az alias egyetlen stabil teljes tartománynévként (FQDN) kapcsolati karakterláncban biztosít. Alkalmazások ez alias a kapcsolati karakterlánc használatával csatlakozni a névtérhez. 
 
 -  *Elsődleges és másodlagos névtér*: A névterek, amelyek megfelelnek a címre. Az elsődleges névtér "aktív", és fogadja az üzeneteket (Ez lehet egy meglévő vagy új névtér). A másodlagos névtérre "passzív", és nem fogadhat üzeneteket. A metaadatok között is szinkronizálva, így mindkettő is zökkenőmentesen fogadja az üzeneteket alkalmazás kódja vagy kapcsolati karakterlánc módosítása nélkül. Győződjön meg arról, hogy csak az aktív névteret fogadja az üzeneteket, az aliast kell használnia. 
 
--  *Metaadatok*: például az üzenetsorok, témakörök és előfizetések; és azok tulajdonságait a szolgáltatás a névtérhez társított entitásokat. Vegye figyelembe, hogy csak az entitások és a beállításaik automatikusan replikálja. Üzenetek nem lesznek replikálva. 
+-  *metaadatok*: Entitások, például az üzenetsorok, témakörök és előfizetések; és azok tulajdonságait a névtérhez társított szolgáltatás. Vegye figyelembe, hogy csak az entitások és a beállításaik automatikusan replikálja. Üzenetek nem lesznek replikálva. 
 
--  *Feladatátvétel*: A folyamatát a másodlagos névtér.
+-  *Feladatátvétel*: Folyamat aktiválása a másodlagos névtér.
 
 ## <a name="setup-and-failover-flow"></a>A telepítő és a feladatátvételi folyamat
 

@@ -3,22 +3,22 @@ title: Az Azure Service Bus üzenetküldési entitások felfüggesztése |} A Mi
 description: Felfüggesztése és újraaktiválása Azure Service Bus-üzenet entitások.
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: b7ea8c14bfc3f2ba3720ad919d6c36ec50c3823e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 8feee92e9105259bddf45114ac48a54347266cd7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854479"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845999"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Felfüggesztése és újraaktiválása üzenetküldési entitások (letiltva)
 
@@ -38,10 +38,10 @@ A portál csak lehetővé teszi a teljes körűen le az üzenetsorok. Is tiltsa 
 
 A várólista beállítható állapotok a következők:
 
--   **Aktív**: A várólista aktív.
+-   **Aktív**: Az üzenetsor még aktív.
 -   **Letiltott**: A várólista fel van függesztve.
--   **SendDisabled**: A várólista részben fel függesztve, a receive megengedett.
--   **ReceiveDisabled**: A várólista részlegesen felfüggesztve, küldjön megengedett.
+-   **SendDisabled**: A várólista részlegesen megállíthatja a receive megengedett.
+-   **ReceiveDisabled**: A várólista részlegesen megállíthatja megengedett küldjön.
 
 Az előfizetésekre és -témaköröket, csak **aktív** és **letiltott** akkor állítható be.
 

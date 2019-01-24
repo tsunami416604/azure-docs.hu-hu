@@ -3,19 +3,19 @@ title: Mi az az Azure Active Directory B2C? | Microsoft Docs
 description: Ismerje meg, hogy hozhatja létre és kezelheti az alkalmazásai bejelentkezési folyamatait az Azure Active Directory B2C segítségével.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2f9c4acc1a2a98978e12aaf5356a5bc270b8d017
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b667934fefe0b9afb5aeca786839f5e105be2c4d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724026"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844993"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Mi az az Azure Active Directory B2C?
 
@@ -102,17 +102,17 @@ Az Azure AD B2C-ben a bérlő képviseli az Ön vállalatát, és egyben a felha
 
 Az összes funkció engedélyezéséhez és a használati díjak kifizetéséhez kapcsolja össze az Azure-előfizetését az Azure AD B2C-bérlőjével. Ha lehetővé szeretné tenni az ügyfelei számára az alkalmazásába való bejelentkezést, regisztrálja azt egy Azure AD B2C-bérlőben.
 
-Mielőtt konfigurálná az alkalmazását az Azure AD B2C használatához, először létre kell hoznia egy Azure AD B2C-bérlőt és regisztrálnia kell az alkalmazását. Az alkalmazás regisztráláshoz hajtsa végre az [Oktatóanyag: Alkalmazás regisztrálása az Azure AD B2C-vel való regisztráció és bejelentkezés engedélyezéséhez](tutorial-register-applications.md) lépéseit.
+Mielőtt konfigurálná az alkalmazását az Azure AD B2C használatához, először létre kell hoznia egy Azure AD B2C-bérlőt és regisztrálnia kell az alkalmazását. Az alkalmazás regisztrálásához hajtsa végre a lépéseit [oktatóanyag: Regisztráció és bejelentkezés az Azure AD B2C használatával engedélyezése egy alkalmazás regisztrálása](tutorial-register-applications.md).
   
-Amennyiben Ön ASP.NET webalkalmazás-fejlesztő, állítsa be alkalmazásában a fiókhitelestést az [Oktatóanyag: Webalkalmazások fiókokkal történő hitelesítésének engedélyezése az Azure AD B2C használatával](active-directory-b2c-tutorials-web-app.md) lépéseit követve.
+Ha Ön egy ASP.NET webes alkalmazás fejlesztője, az alkalmazás hitelesítéséhez a lépésekkel, a fiókok beállítása [oktatóanyag: A webalkalmazás az Azure AD B2C használatával fiókokkal történő hitelesítésének engedélyezése](active-directory-b2c-tutorials-web-app.md).
 
-Amennyiben Ön asztalialkalmazás-fejlesztő, állítsa be alkalmazásában a fiókhitelesítést az [Oktatóanyag: Asztali alkalmazások fiókokkal történő hitelesítésének engedélyezése az Azure AD B2C használatával](active-directory-b2c-tutorials-desktop-app.md) lépéseit követve.
+Ha a rendszer egy asztali alkalmazás fejlesztője az alkalmazás beállítása a lépésekkel, a fiókok hitelesítésére [oktatóanyag: Egy asztali alkalmazás az Azure AD B2C használatával fiókokkal történő hitelesítésének engedélyezése](active-directory-b2c-tutorials-desktop-app.md).
 
-Amennyiben Ön Node.js-t használó egyoldalas webalkalmazás-fejlesztő, állítsa be alkalmazásában a fiókhitelesítést az [Oktatóanyag: Egyoldalas webalkalmazás fiókokkal történő hitelesítésének engedélyezése az Azure AD B2C használatával](active-directory-b2c-tutorials-spa.md) lépéseit követve.
+Ha Ön egy egyoldalas alkalmazás fejlesztője Node.js használatával, az alkalmazás hitelesítéséhez a lépésekkel, a fiókok beállítása [oktatóanyag: Egy egyoldalas alkalmazás az Azure AD B2C használatával fiókokkal történő hitelesítésének engedélyezése](active-directory-b2c-tutorials-spa.md).
 
 ## <a name="next-steps"></a>További lépések
 
 Lépjen tovább az oktatóanyagra alkalmazása regisztrációs és bejelentkezési folyamata konfigurálásának megkezdéséhez.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Azure Active Directory B2C-bérlő létrehozása](tutorial-create-tenant.md)
+> [Oktatóanyag: Az Azure Active Directory B2C-bérlő létrehozása](tutorial-create-tenant.md)

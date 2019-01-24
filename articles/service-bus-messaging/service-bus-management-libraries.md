@@ -3,9 +3,9 @@ title: Az Azure Service Bus felügyeleti könyvtárak |} A Microsoft Docs
 description: A Service Bus-névtér és üzenetküldési entitások, a .NET használatával kezelheti.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: b7f63ac8a52da4898abb3d30b71f3ee3a3e1a4b3
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: d6c2cd813e96b40fc9f95785a1fd28e324a0437b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394692"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850958"
 ---
 # <a name="service-bus-management-libraries"></a>A Service Bus felügyeleti könyvtárai
 
@@ -79,4 +79,4 @@ A minta segítségével kezelheti a Service Bus-erőforrásoknál egy közös pr
 ## <a name="next-steps"></a>További lépések
 
 * [A minta eszközfelügyeleti .NET](https://github.com/Azure-Samples/service-bus-dotnet-management/)
-* [Microsoft.Azure.Management.ServiceBus API-referencia](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
+* [Microsoft.Azure.Management.ServiceBus API reference](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

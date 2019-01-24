@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b9fed56746f5b26269f6a70aeedd06ba9b19548f
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 2ff08b0f155be54ee57d2d9999c47aa56a366d09
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018825"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852201"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Hogyan lehet az Azure CLI-vel az Azure Marketplace-rendszerképek keresése a Linux rendszerű virtuális gép
 Ez a témakör ismerteti, hogyan használhatja az Azure CLI az Azure piactéren Virtuálisgép-rendszerképek keresése. Ezen információk használatával adja meg a Piactéri lemezképet, ha egy virtuális Gépet hoz létre programozott módon a CLI-vel Resource Manager-sablonok vagy más eszközök.
@@ -128,7 +128,7 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201706210        
 ```
 
 ## <a name="navigate-the-images"></a>Keresse meg a képek 
-Egy másik helyen megkeresni a rendszerképet módja futtatásához a [az virtuális gép rendszerkép közzétevők listázása](/cli/azure/vm/image#az_vm_image_list_publishers), [az vm list-rendszerképajánlatok](/cli/azure/vm/image#az_vm_image_list_offers), és [az virtuális gép rendszerkép list-skus](/cli/azure/vm/image#az_vm_image_list_skus) parancsok sorrendben. A következő parancsokkal határozza meg ezeket az értékeket:
+Egy másik helyen megkeresni a rendszerképet módja futtatásához a [az virtuális gép rendszerkép közzétevők listázása](/cli/azure/vm/image#az_vm_image_list_publishers), [az vm list-rendszerképajánlatok](/cli/azure/vm/image), és [az virtuális gép rendszerkép list-skus](/cli/azure/vm/image#az_vm_image_list_skus) parancsok sorrendben. A következő parancsokkal határozza meg ezeket az értékeket:
 
 1. Listázza a rendszerkép-közzétevőket.
 2. Listázza egy adott közzétevő ajánlatait.
@@ -249,7 +249,7 @@ UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201
 
 Most már lehetősége van adott URN értéket tovább használni kívánt rendszerképet. Ezt az értéket adja át a `--image` paraméterrel rendelkező virtuális gép létrehozásakor a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. Ne feledje, hogy igény szerint lecserélheti a verziószámot a URN "legutóbbi". Ez a verzió, mindig a rendszerkép legújabb verzióját. 
 
-Ha telepít egy virtuális Gépet a Resource Manager-sablonnal, egyenként a állítsa be a rendszerkép-paraméterek a `imageReference` tulajdonságait. Tekintse meg a [sablonreferenciája](/azure/templates/microsoft.compute/virtualmachines).
+Ha telepít egy virtuális Gépet a Resource Manager-sablonnal, egyenként a állítsa be a rendszerkép-paraméterek a `imageReference` tulajdonságait. Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 

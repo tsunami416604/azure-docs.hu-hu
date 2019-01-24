@@ -3,9 +3,9 @@ title: Az Azure Service Bus hozzáférés-vezérlés közös hozzáférésű jog
 description: Közös hozzáférésű Jogosultságkódokat – áttekintés, az Azure Service busszal SAS hitelesítési adatait a Service Bus hozzáférés-vezérlés áttekintése.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: daefb07761217ff4bb0800dfd9f1f05b6e22c1e1
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.author: aschhab
+ms.openlocfilehash: 3e2fa51bcf6040eb94a9d270a7f5f375f726e62a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284914"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846336"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>A Service Bus hozzáférés-vezérlés közös hozzáférésű jogosultságkódokkal
 
@@ -96,13 +96,13 @@ SAS-token érvénytelen, az összes erőforrás előtaggal van ellátva a `<reso
 
 A használt kulcsok rendszeres újragenerálása ajánlott a [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) objektum. Az elsődleges és másodlagos kulcsok tárolóhelyei, hogy fokozatosan is kulcsainak rotálása létezik. Ha az alkalmazás általánosan az elsődleges kulcsot használ, másolja az elsődleges kulcsot a másodlagos kulcs tárolóhely, és csak ezután újragenerálja az elsődleges kulcs. Az új elsődleges kulcs értékét dokumentumtárára is konfigurálható, az ügyfélalkalmazások számára, amely továbbra is a régi elsődleges kulcsot használja a másodlagos tárolóhelyben hozzáférést. Után minden ügyfelei már frissítettek, létrehozhatja a másodlagos kulcsot végül vonja ki a régi elsődleges kulcsot.
 
-Ha ismeri vagy feltételezhető, hogy a kulcs biztonsága sérült, és a kulcsok visszavonása az kell, újból létrehozhatja is a [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) és a [adni az újragenerálni](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) , egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), és cserélje le őket az új kulcsokkal. Ez az eljárás a régi kulcsok aláírt összes jogkivonatok érvényteleníti.
+Ha ismeri vagy feltételezhető, hogy a kulcs biztonsága sérült, és a kulcsok visszavonása az kell, újból létrehozhatja is a [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) és a [adni az újragenerálni](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) , egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), és cserélje le őket az új kulcsokkal. Ez az eljárás a régi kulcsok aláírt összes jogkivonatok érvényteleníti.
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>A Service Bus közös hozzáférésű Jogosultságkód hitelesítési
 
 Leírása a következő forgatókönyvek között megtalálható az engedélyezési szabályok konfigurálása, valamint SAS-tokeneket, és az ügyfél engedélyezési generációja.
 
-Egy teljes tekintse meg a Service Bus-alkalmazás, amely bemutatja a konfiguráció és a használt SAS engedélyezési, működő minta [közös hozzáférésű Jogosultságkód hitelesítés a Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Egy kapcsolódó minta, amely a SAS-engedélyezési szabályok konfigurálva a névterek vagy témaköröket biztonságossá tételéhez a Service Bus-előfizetések használatát illusztrálja érhető el itt: [használata közös hozzáférésű Jogosultságkód (SAS) hitelesítés a Service Bus-előfizetések](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Egy teljes tekintse meg a Service Bus-alkalmazás, amely bemutatja a konfiguráció és a használt SAS engedélyezési, működő minta [közös hozzáférésű Jogosultságkód hitelesítés a Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Itt érhető el a kapcsolódó minta, amely a SAS-engedélyezési szabályok konfigurálva a névterek vagy témaköröket biztonságossá tételéhez a Service Bus-előfizetések használatát mutatja be: [Közös hozzáférésű Jogosultságkód (SAS) hitelesítés használata a Service Bus-előfizetések](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Hozzáférés a megosztott hozzáférés-engedélyezési szabályok entitás
 
@@ -261,10 +261,10 @@ Az alábbi táblázat bemutatja a Service Bus-erőforrások különféle művele
 | Privát házirendek számbavétele |Kezelés |Minden névtér címe |
 | Megkezdheti a figyelést egy névtérhez |Figyelés |Minden névtér címe |
 | Üzenetek küldése egy figyelőt egy névtérben |Küldés |Minden névtér címe |
-| **várólista** | | |
+| **Queue** | | |
 | Üzenetsor létrehozása |Kezelés |Minden névtér címe |
 | Üzenetsor törlése |Kezelés |Bármely érvényes üzenetsor címe |
-| Üzenetsorok számbavétele |Kezelés |$ Erőforrások/üzenetsorok |
+| Üzenetsorok számbavétele |Kezelés |/$Resources/Queues |
 | Az üzenetsor leírását beolvasása |Kezelés |Bármely érvényes üzenetsor címe |
 | Várólista engedélyezési szabály konfigurálása |Kezelés |Bármely érvényes üzenetsor címe |
 | Történő küldése az üzenetsorba |Küldés |Bármely érvényes üzenetsor címe |
@@ -284,18 +284,18 @@ Az alábbi táblázat bemutatja a Service Bus-erőforrások különféle művele
 | Elküldhet a témakörbe |Küldés |Bármely érvényes témakör címe |
 | **Előfizetés** | | |
 | Előfizetés létrehozása |Kezelés |Minden névtér címe |
-| Előfizetés törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
-| Előfizetések számbavétele |Kezelés |.. / myTopic/előfizetések |
-| Első előfizetés leírása |Kezelés |.. /myTopic/Subscriptions/mySubscription |
-| Abandon, vagy fejezze be az üzenetek Service Bus-módban az üzenet fogadása után |Figyelés |.. /myTopic/Subscriptions/mySubscription |
-| A későbbi beolvasásához üzenet késleltetése |Figyelés |.. /myTopic/Subscriptions/mySubscription |
-| Kézbesítetlen üzenet |Figyelés |.. /myTopic/Subscriptions/mySubscription |
-| A témakör munkamenet társított állapot lekérése |Figyelés |.. /myTopic/Subscriptions/mySubscription |
-| Állítsa be a témakör munkamenethez tartozó állapotát |Figyelés |.. /myTopic/Subscriptions/mySubscription |
+| Előfizetés törlése |Kezelés |../myTopic/Subscriptions/mySubscription |
+| Előfizetések számbavétele |Kezelés |../myTopic/Subscriptions |
+| Első előfizetés leírása |Kezelés |../myTopic/Subscriptions/mySubscription |
+| Abandon, vagy fejezze be az üzenetek Service Bus-módban az üzenet fogadása után |Figyelés |../myTopic/Subscriptions/mySubscription |
+| A későbbi beolvasásához üzenet késleltetése |Figyelés |../myTopic/Subscriptions/mySubscription |
+| Kézbesítetlen üzenet |Figyelés |../myTopic/Subscriptions/mySubscription |
+| A témakör munkamenet társított állapot lekérése |Figyelés |../myTopic/Subscriptions/mySubscription |
+| Állítsa be a témakör munkamenethez tartozó állapotát |Figyelés |../myTopic/Subscriptions/mySubscription |
 | **Szabályok** | | |
-| Szabály létrehozása |Kezelés |.. /myTopic/Subscriptions/mySubscription |
-| Szabály törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
-| Szabályok számbavétele |Kezelheti, vagy hallgassa |.. /myTopic/Subscriptions/mySubscription/Rules 
+| Szabály létrehozása |Kezelés |../myTopic/Subscriptions/mySubscription |
+| Szabály törlése |Kezelés |../myTopic/Subscriptions/mySubscription |
+| Szabályok számbavétele |Kezelheti, vagy hallgassa |../myTopic/Subscriptions/mySubscription/Rules 
 
 ## <a name="next-steps"></a>További lépések
 

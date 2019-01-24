@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: deab8298d09972a4e60be5c72d6d7e43dc2683e6
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329990"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828094"
 ---
 # <a name="publish-azure-application-offer"></a>Az Azure application ajánlat közzététele
 
@@ -36,7 +36,7 @@ A következő táblázat sorolja fel és közzétételi lépésre ismerteti, és
 |  **Közzétételi lépés**           | **idő**    | **Leírás**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | Előfeltételek ellenőrzése         | < 15 perc    | Információt kínálnak, és kínálnak a rendszer érvényesíti a beállításokat.                        |
-| Befolyásolt bevétel beállítások érvényesítése | < 15 perc  |      |
+| Befolyásolt bevétel beállítások érvényesítése | < 15 perc  | Az ajánlat Azure-Erőforrás kihasználtsága attribution be van jelölve.             |
 | Tanúsítvány                  | < 1 nap     | Az ajánlat az Azure hitelesítő csapata által elemzett. Az ajánlat a vírusok, kártevő szoftverek, biztonsági, megfelelőségi és biztonsági problémákat vizsgálja. Az ajánlat be van jelölve, hogy megfelel-e az összes megfelelőségi feltételeket megtekintéséhez. További információkért lásd: [Előfeltételek](./cpp-prerequisites.md). Ha problémát talál, visszajelzés érkezett. |
 | Teszt meghajtó ellenőrzése          | < 2 óra   | (Nem kötelező) Ha jelen egy Test Drive, a Microsoft ellenőrzi, hogy azt telepíthető és replikálja.  |
 | Formátumokat támogató csomagolási és Érdeklődők generálása regisztráció | < 1 óra  | Ajánlat technikai eszközök ügyfél használatra vannak csomagolva, és az átfutási rendszerek konfigurált és telepített. |

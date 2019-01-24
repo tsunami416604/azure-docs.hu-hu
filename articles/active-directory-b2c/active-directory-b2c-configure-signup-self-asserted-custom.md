@@ -3,21 +3,21 @@ title: Módosítása jelentkezzen be az egyéni házirendek és a saját kiszolg
 description: Regisztráljon, és a felhasználó által megadott adatok konfigurálása jogcímek hozzáadását bemutató
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6b2a6d84fffecbe30bd2a47c795ee6143458ee2b
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 326b0289ebb7aa503d41d556bea15017c28f7a1e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345000"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853714"
 ---
-# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Az Azure Active Directory B2C: Bejelentkezés módosítása be új jogcímeket adhatnak hozzá és felhasználó által megadott adatok konfigurálása.
+# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Módosítsa a jelentkezzen be új jogcímeket adhatnak hozzá és felhasználó által megadott adatok konfigurálása.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -266,7 +266,7 @@ A regisztrációs képernyő tesztmódban ehhez hasonlóan kell kinéznie:
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a>Választható lehetőség: Távolítsa el e-mailes ellenőrzés az előfizetési utazás
+## <a name="optional-remove-email-verification-from-signup-journey"></a>Nem kötelező: Távolítsa el e-mailes ellenőrzés előfizetési utazás
 
 E-mail-ellenőrzés kihagyása, hogy a szabályzat Szerző lehet váltani, távolítsa el `PartnerClaimType="Verified.Email"`. Az e-mail-cím lesz szükség, de nem ellenőrzi, kivéve, ha a "Kötelező" = true törlődik.  Alaposan gondolja át, ha ez a beállítás akkor megfelelő, a használati esetek!
 

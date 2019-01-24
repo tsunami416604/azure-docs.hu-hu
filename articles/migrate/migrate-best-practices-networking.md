@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 6d679cc3d24e2f0f2cb79eb2c9f02422d0818c80
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 5cbe0c5e86a1dfd8cc3cb374f0ae7e1c67ae9d77
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215269"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828298"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Ajánlott eljárásokat, és állítsa be a hálózati, számítási feladatok migrálása az Azure-bA
 
@@ -150,7 +150,7 @@ A rendelkezésre állási zónák a magas rendelkezésre állású alkalmazások
 A sikeres áttelepítéshez fontos helyszíni vállalati hálózat csatlakoztatása az Azure. Ez létrehoz egy folyamatosan elérhető kapcsolat, néven egy hibridfelhő-alapú hálózat, ahol szolgáltatások állnak rendelkezésre az Azure felhőalapú vállalati felhasználók számára. Az ilyen típusú hálózat létrehozása két lehetőség van:
 
 - **Helyek közötti VPN:** Egy hely – hely közötti kapcsolat létrehozása a kompatibilis a helyszíni VPN-eszköz és az üzembe helyezett Azure VPN gateway egy virtuális hálózaton. Minden jogosult a helyszíni erőforráshoz hozzáférhet a virtuális hálózatok. Helyek közötti kommunikáció egy titkosított csatornán keresztül továbbítódnak az interneten keresztül. 
-- **Az Azure ExpressRoute:** A helyszíni hálózat és az Azure között egy ExpressRoute-partneren keresztül az Azure ExpressRoute kapcsolat létrehozása. Ez a kapcsolat nem nyilvános, és a forgalom nem halad az interneten keresztül.
+- **Azure ExpressRoute:** A helyszíni hálózat és az Azure között egy ExpressRoute-partneren keresztül az Azure ExpressRoute kapcsolat létrehozása. Ez a kapcsolat nem nyilvános, és a forgalom nem halad az interneten keresztül.
 
 **tudj meg többet:**
 
@@ -164,7 +164,7 @@ Site-to-site VPN implementálásához, állítsa be a VPN-átjáró, az Azure-ba
 - Minden egyes virtuális hálózatok csak egy VPN-átjáróval rendelkezhetnek.
 - Létrehozhat több kapcsolatot a VPN-átjáróhoz. Létrehozhat több kapcsolatot, ha az összes VPN-alagút ossza meg a rendelkezésre álló átjáró sávszélességet.
 - Minden egyes Azure-alapú VPN-átjáró két példányból áll, amelyek aktív-készenléti konfigurációban vannak.
-    - Tervezett karbantartás vagy az aktív példányra való unplaned megszakadása, a feladatátvételt hajt végre, és a készenléti példány automatikusan átveszi, és folytatja a site-to-site vagy VNet – VNet kapcsolat. 
+    - Tervezett karbantartás vagy nem tervezett kimaradás az aktív példányt, a feladatátvételt és a készenléti példány automatikusan átveszi, és folytatja a site-to-site vagy VNet – VNet kapcsolat. 
     - A Váltás következtében a rövid megszakítás.
     - Tervezett karbantartás esetén a kapcsolat 10-15 másodpercen belül lehet visszaállítani.
     - Nem tervezett problémák esetén a kapcsolat helyreállítása hosszabb, körülbelül egy 1.5-ig perccel lesz a legrosszabb esetben.
@@ -392,7 +392,7 @@ Virtuális hálózati Szolgáltatásvégpontok a virtuális hálózat privát c�
 - [Ismerje meg](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) virtuális hálózati Szolgáltatásvégpontok.
 
 
-## <a name="best-practice-control-public-ip-addresses"></a>Ajánlott eljárás: Vezérlő nyilvános IP-címek
+## <a name="best-practice-control-public-ip-addresses"></a>Ajánlott eljárás: Control public IP addresses
 
 Nyilvános IP-címek az Azure-beli virtuális gépek, terheléselosztók, az application Gateway átjárók és VPN-átjárók társítható.
 

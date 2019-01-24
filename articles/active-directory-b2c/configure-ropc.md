@@ -3,19 +3,19 @@ title: Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata
 description: Ismerje meg, hogy az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure AD B2C-ben.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1b07825bd3ff46267764467bba815c1097278084
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: afbcacb299fa76a19cd7aaa20d3a4f2c2eb26d5c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726287"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845877"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure AD B2C-vel
 
@@ -26,14 +26,14 @@ Az erőforrás tulajdonosának jelszavas hitelesítő adatainak (ROPC) folyamata
 
 Az Azure Active Directory (Azure AD) B2C-vel a következő beállítások támogatottak:
 
-- **Natív ügyfél**: felhasználói beavatkozás során a hitelesítés során történik, ha a felhasználó ügyféloldali eszközön fut kódja. Lehet, hogy az eszköz egy mobilalkalmazás, amely egy natív operációs rendszeren, például Android rendszeren fut, vagy a böngészőbe, például a JavaScript futtatása.
-- **Nyilvános client flow**: csak felhasználói hitelesítő adatokat, az alkalmazások által gyűjtött az API-hívással. Nem kap meg az alkalmazás a hitelesítő adatokat.
-- **Új jogcímeket adhatnak hozzá**: új jogcímeket adhatnak hozzá az azonosító jogkivonat tartalma módosítható. 
+- **Natív ügyfél**: Felhasználói beavatkozás során a hitelesítés során történik, ha a kód futtatása egy melletti felhasználói eszközön. Lehet, hogy az eszköz egy mobilalkalmazás, amely egy natív operációs rendszeren, például Android rendszeren fut, vagy a böngészőbe, például a JavaScript futtatása.
+- **Nyilvános client flow**: Csak felhasználói hitelesítő adatokat gyűjtött az alkalmazások által az API-hívással. Nem kap meg az alkalmazás a hitelesítő adatokat.
+- **Új jogcímeket adhatnak hozzá**: Azonosító jogkivonat tartalma is módosítható az új jogcímeket adhatnak hozzá. 
 
 A következő folyamatok nem támogatottak:
 
-- **Kiszolgálók közötti**: az identity protection rendszer kell egy megbízható IP-címet a hívó (a natív ügyfél) a interakció részeként összegyűjtött. Kiszolgálóoldali API-hívással, csak a kiszolgáló IP-címet használja. Ha túllépi a sikertelen hitelesítések a dinamikus küszöbértéket, az identity protection rendszer azonosíthat egy ismétlődő IP-cím egy támadó.
-- **Bizalmas client flow**: az alkalmazás ügyfél-azonosító érvényességét, de az alkalmazás titkos nincs érvényesítve.
+- **Kiszolgálók közötti**: Az identity protection rendszer egy megbízható IP-címet a hívó (a natív ügyfél) a interakció részeként összegyűjtött van szüksége. Kiszolgálóoldali API-hívással, csak a kiszolgáló IP-címet használja. Ha túllépi a sikertelen hitelesítések a dinamikus küszöbértéket, az identity protection rendszer azonosíthat egy ismétlődő IP-cím egy támadó.
+- **Bizalmas client flow**: Az alkalmazás ügyfél-azonosító érvényességét, de az alkalmazás titkos nincs érvényesítve.
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Erőforrás tulajdonosának felhasználói folyamat létrehozása
 
@@ -75,7 +75,7 @@ A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan AP
 | jelszó | Passxword1 |
 | grant_type | jelszó |
 | scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 
 *Client_id* az érték, amely a korábban feljegyzett, az alkalmazás azonosítója. *Offline_access* nem kötelező, ha szeretne kapni a frissítési jogkivonatot. A felhasználónevet és jelszót, amelyekkel az Azure AD B2C-bérlőben található egy meglévő felhasználó hitelesítő adatait kell lennie.
@@ -113,8 +113,8 @@ A POST híváson a kérelem törzse a következő táblázatban a információka
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
-| erőforrás | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| erőforrás | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* és *erőforrás* az alkalmazás-azonosító néven a korábban feljegyzett értékekkel *Refresh_token* a jogkivonat, amely a korábban említett hitelesítési hívás kapott.

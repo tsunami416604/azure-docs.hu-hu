@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Teamphoria |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Teamphoria |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Teamphoria között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: d569c705-6f0f-4ec1-b485-ba82526b5d32
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 554930b18a271a677aeb5e82c3e62a94965a8e7f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8232af95cf8414df67343f5004975b11df4488a0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439609"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826717"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Oktatóanyag: Azure Active Directory-integráció az Teamphoria
+# <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Teamphoria
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Teamphoria integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Teamphoria az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Teamphoria egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -142,13 +142,13 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. **MEGJELENÍTENDŐ név**: a rendszergazda oldalon adja meg a beépülő modul a megjelenítendő nevét.
+    a. **MEGJELENÍTETT NÉV**: A rendszergazda oldalon adja meg a beépülő modul a megjelenítendő nevét.
 
-    b. **GOMB neve**: az egyszeri bejelentkezés használatával jelentkezik be a bejelentkezési oldalon jelenik meg a lap neve.
+    b. **GOMB NEVE**: Az egyszeri bejelentkezés használatával jelentkezik be a bejelentkezési oldalon jelenik meg a lap neve.
 
-    c. **TANÚSÍTVÁNY**: Nyissa meg a Jegyzettömbben, az Azure Portalról korábban letöltött tanúsítvány másolja a tartalmat az azonos, és illessze be ide a mezőbe.
+    c. **TANÚSÍTVÁNY**: Nyissa meg a Jegyzettömbben az Azure Portalról korábban letöltött tanúsítványt, másolja a tartalmat az azonos, és illessze be ide a mezőbe.
 
-    d. **BELÉPÉSI pont**: illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** az Azure Portalról korábban vágólapra másolt.
+    d. **BELÉPÉSI PONT**: Illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** az Azure Portalról korábban vágólapra másolt.
 
     e. Váltás lehetőségét **ON** , majd kattintson a **mentése**.
 

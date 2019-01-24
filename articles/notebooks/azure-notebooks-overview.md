@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: ba06e568b3d7b0125d5868c1ad4a85e5e42f7e18
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ffceeeeb5a55b0fab1dd1cf91aebfcd4cfd852ef
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246211"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848597"
 ---
 # <a name="overview-of-azure-notebooks"></a>Az Azure notebookok áttekintése
 
 Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. [Jupyter](https://jupyter.org/) (korábbi nevén IPython-) egy nyílt forráskódú projekt, amely lehetővé teszi egyszerű egyesítése Markdown szöveget, végrehajtható kódok, állandó adatait, képeket és a Vizualizációk egyetlen, a megosztható vászonra, akkor a *notebook* (képe ajánlatának jupyter.org):
 
-[![](https://jupyter.org/assets/jupyterpreview.png "Jupyter-notebookok")](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Példák a Jupyter notebookok](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 A kód, a grafikus és magyarázó szöveg hatékony kombinációja, miatt Jupyter számos célra, beleértve a data science utasítás, adatok tisztítása és átalakítása, numerikus szimuláció, statisztikai modellezési és fejlesztését a legnépszerűbb vált Machine learning-modellek.
 
@@ -55,9 +55,9 @@ Röviden az Azure-jegyzetfüzetek segítségével munkája hatékonyabbá és í
 
 ## <a name="pricing-and-quotas"></a>Díjszabás és kvóták
 
-Azure notebookok szolgáltatás ingyenes, de a 4 GB memória- és 1 GB-os adatok visszaélések megelőzése érdekében minden projekt. Ezeket a korlátokat keretet túllépő legitim felhasználók továbbra is fut a notebookok a Captcha kihívást lásd:.
+Azure notebookok egy ingyenes szolgáltatás, de minden projekt korlátozódik, 4GB memória, és 1 GB-os adatok visszaélések megelőzése érdekében. Ezeket a korlátokat keretet túllépő legitim felhasználók továbbra is fut a notebookok a Captcha kihívást lásd:.
 
-Minden korlátokat feloldásához jelentkezzen be Azure-jegyzetfüzetek egy olyan fiókkal, az Azure Active Directoryval (például egy vállalati fiók). Ha a fiókhoz társított Azure-előfizetés, használhatja az Azure adatelemzési virtuális gép számítási szinten.
+Minden korlátokat feloldásához jelentkezzen be Azure-jegyzetfüzetek egy olyan fiókkal, az Azure Active Directoryval (például egy vállalati fiók). Ha a fiókhoz társított Azure-előfizetés, csatlakozhat bármely Azure adatelemzési virtuális gép példányok adott előfizetésen belül. További információkért lásd: [kezelése és konfigurálása a projektek - számítási kapacitás](configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ## <a name="available-kernels-and-environments"></a>Notebookokhoz elérhető kernelek és környezetek
 

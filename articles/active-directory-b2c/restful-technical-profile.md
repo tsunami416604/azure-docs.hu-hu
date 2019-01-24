@@ -3,19 +3,19 @@ title: Egy egyéni házirendek az Azure Active Directory B2C egy REST-alapú tec
 description: Adja meg az Azure Active Directory B2C egyéni házirendet egy REST-alapú technikai profilban.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 930cdddd8a9e039fa9c29a348a0a66eb25d254fe
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d9dfef68e35cc07d395bb247af3476e8b73da642
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381277"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843888"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy REST-alapú technikai profilban meghatározása
 
@@ -87,7 +87,7 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 | --------- | -------- | ----------- |
 | ServiceUrl | Igen | A REST API-végpont URL-címe | 
 | AuthenticationType | Igen | A REST-alapú jogcímszolgáltató által végrehajtott hitelesítés típusa. A lehetséges értékek: `None`, `Basic`, vagy `ClientCertificate`. A `None` érték azt jelzi, hogy a REST API-t nem névtelen. A `Basic` érték azt jelzi, hogy a REST API egyszerű HTTP-hitelesítés védi. Csak ellenőrzött felhasználókat, beleértve az Azure AD B2C-vel, hozzáférhet az API-t. A `ClientCertificate` (ajánlott) érték azt jelzi, hogy a REST API korlátozza a hozzáférést az ügyféltanúsítvány-alapú hitelesítés használatával. Csak a szükséges tanúsítványokat, például az Azure AD B2C-vel rendelkező szolgáltatások érhetik el a szolgáltatást. | 
-| Sendclaimsin elemet | Nem | Itt adható meg, hogyan a bemeneti jogcímek között a REST-alapú jogcímszolgáltatótól érkeznek. A lehetséges értékek: `Body` (alapértelmezett), `Form`, `Header`, vagy `QueryString`. A `Body` értéke a bemeneti jogcímek küldött a kéréstörzs JSON formátumban. A `Form` értéke a bemeneti jogcímek, az ampersand a kérelem törzsében szereplő zajlik "és" tagolt formátumú kulcs értékét. A `Header` értéke a bemeneti jogcímek a kérelem fejlécében küldött. A `QueryString` értéke a bemeneti jogcímek a kérelem lekérdezési karakterláncában küldött. | 
+| SendClaimsIn | Nem | Itt adható meg, hogyan a bemeneti jogcímek között a REST-alapú jogcímszolgáltatótól érkeznek. A lehetséges értékek: `Body` (alapértelmezett), `Form`, `Header`, vagy `QueryString`. A `Body` értéke a bemeneti jogcímek küldött a kéréstörzs JSON formátumban. A `Form` értéke a bemeneti jogcímek, az ampersand a kérelem törzsében szereplő zajlik "és" tagolt formátumú kulcs értékét. A `Header` értéke a bemeneti jogcímek a kérelem fejlécében küldött. A `QueryString` értéke a bemeneti jogcímek a kérelem lekérdezési karakterláncában küldött. | 
 | ClaimsFormat | Nem | Megadja a kimeneti jogcímek formátumát. A lehetséges értékek: `Body` (alapértelmezett), `Form`, `Header`, vagy `QueryString`. A `Body` értéke a kimeneti jogcímek küldött a kéréstörzs JSON formátumban. A `Form` értéke a kimeneti jogcímek, az ampersand a kérelem törzsében szereplő zajlik "és" tagolt formátumú kulcs értékét. A `Header` értéke a kimeneti jogcímek a kérelem fejlécében küldött. A `QueryString` értéke a kimeneti jogcímek a kérelem lekérdezési karakterláncában küldött. | 
 | DebugMode | Nem | A technikai profil hibakeresési módban fut. Hibakeresési módban a REST API további információkat adhat vissza. Az adatszolgáltató hiba üzenet című szakaszában talál. | 
 
@@ -159,10 +159,10 @@ A REST API-t kell adja vissza egy hibaüzenet, például a "a felhasználó nem 
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| verzió: | Igen | 1.0.0 | 
+| version | Igen | 1.0.0 | 
 | status | Igen | 409 | 
 | Kód | Nem | A RESTful-végpont szolgáltató, amely hibakód jelenik meg, mikor `DebugMode` engedélyezve van. | 
-| Kérelemazonosító: | Nem | Egy kérés azonosítója, amely RESTful-végpont szolgáltatójáról jelenik meg, mikor `DebugMode` engedélyezve van. | 
+| requestId | Nem | Egy kérés azonosítója, amely RESTful-végpont szolgáltatójáról jelenik meg, mikor `DebugMode` engedélyezve van. | 
 | userMessage | Igen | Egy hibaüzenet a felhasználó számára. | 
 | developerMessage | Nem | A problémáról és annak megoldásáról, amely részletes leírása jelenik meg, mikor `DebugMode` engedélyezve van. | 
 | moreInfo | Nem | További információt, amely mutató URI-t jelenik meg, mikor `DebugMode` engedélyezve van. | 
@@ -171,13 +171,13 @@ Az alábbi példa bemutatja egy REST API-t, amely JSON-formátumú hibaüzenetet
 
 ```JSON
 {
-  "version": "1.0.0",
-  "status": 409,
-  "code": "API12345",
-  "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
-  "userMessage": "Message for the user", 
-  "developerMessage": "Verbose description of problem and how to fix it.", 
-  "moreInfo": "https://restapi/error/API12345/moreinfo" 
+  "version": "1.0.0",
+  "status": 409,
+  "code": "API12345",
+  "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
+  "userMessage": "Message for the user", 
+  "developerMessage": "Verbose description of problem and how to fix it.", 
+  "moreInfo": "https://restapi/error/API12345/moreinfo" 
 }
 ```
 
@@ -200,7 +200,7 @@ public class ResponseContent
 - [A felhasználói adatbevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása](active-directory-b2c-custom-rest-api-netfw.md) 
 - [Biztonságos RESTful-szolgáltatásokat egyszerű HTTP-hitelesítés használatával](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [Biztonságos a RESTful szolgáltatás ügyfél-tanúsítványok használatával](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [Forgatókönyv: A felhasználói bevitel auditáló integrálása a REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő](active-directory-b2c-rest-api-validation-custom.md)
+- [Forgatókönyv: A felhasználói bevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása](active-directory-b2c-rest-api-validation-custom.md)
 
  
 

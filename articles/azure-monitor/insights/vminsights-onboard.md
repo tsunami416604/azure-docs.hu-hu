@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/07/2018
+ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 0610116967a483c811746327c35632951741b201
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e97ac849fa0e590dd2462d8e64b761da23576833
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439170"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845954"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Üzembe helyezése az Azure Monitor-beli virtuális gépek (előzetes verzió)
 Ez a cikk ismerteti, hogyan állítható be az Azure Monitor-beli virtuális gépek. A szolgáltatás figyeli az Azure-beli virtuális gépek (VM) és a virtuálisgép-méretezési csoportok és a környezetében a virtuális gépek operációs rendszer állapotát. A monitorozás tartalmaz, a felderítés és az alkalmazás függőségekkel is üzemelhet őket leképezése. 
@@ -303,113 +303,128 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
 
 1. Mentse a fájlt *installsolutionsforvminsights.json* egy helyi mappába.
 
-1. Értékeinek szerkesztéséhez *WorkspaceName*, *ResourceGroupName*, és *WorkspaceLocation*. Az érték *WorkspaceName* a Log Analytics-munkaterületet, amely tartalmazza a következő munkaterület nevének teljes erőforrás-Azonosítójára van. Az érték *WorkspaceLocation* a régió, a munkaterület van definiálva.
+1. Rögzítheti a tartozó értékeket *WorkspaceName*, *ResourceGroupName*, és *WorkspaceLocation*. Az érték *WorkspaceName* Log Analytics-munkaterület neve. Az érték *WorkspaceLocation* a régió, a munkaterület van definiálva.
 
-1. Készen áll a sablon üzembe helyezése a következő PowerShell-parancs használatával:
+1. Most már készen áll a sablon üzembe helyezésére.
+ 
+    * Használja a következő PowerShell-parancsokat a sablont tartalmazó mappában:
 
-    ```powershell
-    New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
-    ```
+        ```powershell
+        New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+        ```
 
-    A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
+        A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
 
-    ```powershell
-    provisioningState       : Succeeded
-    ```
+        ```powershell
+        provisioningState       : Succeeded
+        ```
 
-### <a name="enable-by-using-azure-policy"></a>Az Azure Policy segítségével
-Az Azure Monitor engedélyezése a virtuális gépek nagy mennyiségű oly módon, hogy elősegíti a következetes megfelelőség és az újonnan létrehozott virtuális gépek automatikus engedélyezése, javasoljuk, hogy [Azure Policy](../../azure-policy/azure-policy-introduction.md). Ezek a házirendek:
+    * A következő parancs futtatása az Azure CLI-vel:
+    
+        ```azurecli
+        az login
+        az account set --subscription "Subscription Name"
+        az group deployment create --name DeploySolutions --resource-group <ResourceGroupName> --template-file InstallSolutionsForVMInsights.json --parameters WorkspaceName=<workspaceName> WorkspaceLocation=<WorkspaceLocation - example: eastus>
 
-* A Log Analytics-ügynököket és a függőségi ügynök üzembe helyezése.
-* Megfelelési eredmények jelentést.
-* Javítsa a nem kompatibilis virtuális gépek.
+        The configuration change can take a few minutes to complete. When it's completed, a message is displayed that's similar to the following and includes the result:
 
-Az Azure Monitor engedélyezése a virtuális gépek a bérlő Azure Policy használatával:
+        ```azurecli
+        provisioningState       : Succeeded
 
-- A kezdeményezés hozzárendelése egy hatókör: felügyeleti csoport, előfizetéshez vagy erőforráscsoporthoz
-- Tekintse át és szervizelése megfelelőségi eredményeit
+### Enable by using Azure Policy
+To enable Azure Monitor for VMs at scale in a way that helps ensure consistent compliance and the automatic enabling of the newly provisioned VMs, we recommend [Azure Policy](../../azure-policy/azure-policy-introduction.md). These policies:
 
-Azure Policy hozzárendelésével kapcsolatos további információkért lásd: [Azure Policy – áttekintés](../../governance/policy/overview.md#policy-assignment) , és tekintse át a [felügyeleti csoportok áttekintése](../../governance/management-groups/index.md) a folytatás előtt.
+* Deploy the Log Analytics agent and the Dependency agent.
+* Report on compliance results.
+* Remediate for non-compliant VMs.
 
-A szabályzatdefiníciók a következő táblázatban láthatók:
+To enable Azure Monitor for VMs by using Azure Policy in your tenant:
 
-|Name (Név) |Leírás |Típus |
+- Assign the initiative to a scope: management group, subscription, or resource group
+- Review and remediate compliance results
+
+For more information about assigning Azure Policy, see [Azure Policy overview](../../governance/policy/overview.md#policy-assignment) and review the [overview of management groups](../../governance/management-groups/index.md) before you continue.
+
+The policy definitions are listed in the following table:
+
+|Name |Description |Type |
 |-----|------------|-----|
-|[Előzetes verzió]: Az Azure Monitor-beli virtuális gépek engedélyezése |Az Azure Monitor engedélyezése a virtuális gépek (VM) a megadott hatókör (felügyeleti csoport, előfizetéshez vagy erőforráscsoportot). Log Analytics-munkaterületet használja paraméterként. |Kezdeményezés |
-|[Előzetes verzió]: Függőségi ügynök üzembe helyezés – virtuális gép rendszerkép (OS) listán nem szereplő naplózása |Jelentések virtuális gépek nem megfelelő, ha a virtuális gép rendszerkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
-|[Előzetes verzió]: Log Analytics-ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő naplózása |Jelentések virtuális gépek nem megfelelő, ha a virtuális gép rendszerkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
-|[Előzetes verzió]: Függőségi ügynök Linux rendszerű virtuális gépek üzembe helyezése |Függőségi ügynök telepítése Linux rendszerű virtuális gépekhez a virtuális gép (OS) rendszerkép definiálása a listában, és az ügynök nincs telepítve. |Szabályzat |
-|[Előzetes verzió]: Függőségi ügynök Windows-beli virtuális gépek üzembe helyezése |Ha a virtuális gép rendszerkép (OS) van definiálva, a listában, és az ügynök nincs telepítve, telepítse a függőségi ügynököt Windows virtuális. |Szabályzat |
-|[Előzetes verzió]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése |Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépekhez a virtuális gép (OS) rendszerkép definiálása a listában, és az ügynök nincs telepítve. |Szabályzat |
-|[Előzetes verzió]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése |Log Analytics ügynök Windows virtuális gépek üzembe helyezése, ha a virtuális gép rendszerkép (OS) van definiálva, a listában, és az ügynök nincs telepítve. |Szabályzat |
+|[Preview]: Enable Azure Monitor for VMs |Enable Azure Monitor for the Virtual Machines (VMs) in the specified scope (management group, subscription, or resource group). Takes Log Analytics workspace as a parameter. |Initiative |
+|[Preview]: Audit Dependency Agent Deployment – VM Image (OS) unlisted |Reports VMs as non-compliant if the VM Image (OS) isn't defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Audit Log Analytics Agent Deployment – VM Image (OS) unlisted |Reports VMs as non-compliant if the VM Image (OS) isn't defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Dependency Agent for Linux VMs |Deploy Dependency Agent for Linux VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Dependency Agent for Windows VMs |Deploy Dependency Agent for Windows VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Log Analytics Agent for Linux VMs |Deploy Log Analytics Agent for Linux VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Log Analytics Agent for Windows VMs |Deploy Log Analytics Agent for Windows VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
 
-(Nem tartalmazza a kezdeményezés-) önálló házirend az alábbiakban ismertetjük:
+Standalone policy (not included with the initiative) is described here:
 
-|Name (Név) |Leírás |Típus |
+|Name |Description |Type |
 |-----|------------|-----|
-|[Előzetes verzió]: Naplózási Log Analytics-munkaterület VM - jelentés eltérés |Virtuális gépek jelentést nem megfelelő, ha azok nem naplózását a házirend/kezdeményezés-hozzárendelést a megadott Log Analytics-munkaterületen. |Szabályzat |
+|[Preview]: Audit Log Analytics Workspace for VM - Report Mismatch |Report VMs as non-compliant if they aren't logging to the Log Analytics workspace specified in the policy/initiative assignment. |Policy |
 
-#### <a name="assign-the-azure-monitor-initiative"></a>Az Azure Monitor kezdeményezés hozzárendelése
-A jelen kezdeti kiadás csak az Azure Portalon hozhat létre a szabályzat-hozzárendelés. Megtudhatja, hogyan hajtsa végre ezeket a lépéseket, tekintse meg [szabályzat-hozzárendelés létrehozása az Azure Portalról](../../governance/policy/assign-policy-portal.md).
+#### Assign the Azure Monitor initiative
+With this initial release, you can create the policy assignment only in the Azure portal. To understand how to complete these steps, see [Create a policy assignment from the Azure portal](../../governance/policy/assign-policy-portal.md).
 
-1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon, válassza a **minden szolgáltatás**, majd keresse meg és válassza a **házirend**.
+1. To launch the Azure Policy service in the Azure portal, select **All services**, and then search for and select **Policy**.
 
-1. Az Azure Policy oldalára bal oldali panelén válassza **hozzárendelések**.  
-    A hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes.
+1. In the left pane of the Azure Policy page, select **Assignments**.  
+    An assignment is a policy that has been assigned to take place within a specific scope.
     
-1. Felső részén a **szabályzat – hozzárendelések** lapon jelölje be **kezdeményezés hozzárendelése**.
+1. At the top of the **Policy - Assignments** page, select **Assign Initiative**.
 
-1. Az a **kezdeményezés hozzárendelése** lapon válassza ki a **hatókör** , kattintson a három pontra (...), és válassza ki a felügyeleti csoportot vagy előfizetést.  
-    Ebben a példában egy hatókör korlátozza a szabályzat-hozzárendelést a csoportosított kényszerítésre kijelölt virtuális gépek.
+1. On the **Assign Initiative** page, select the **Scope** by clicking the ellipsis (...), and select a management group or subscription.  
+    In our example, a scope limits the policy assignment to a grouping of virtual machines for enforcement.
     
-1. Alsó részén a **hatókör** lapon mentse a módosításokat kiválasztásával **kiválasztása**.
+1. At the bottom of the **Scope** page, save your changes by selecting **Select**.
 
-1. (Nem kötelező) A hatókör egy vagy több erőforrás eltávolításához jelölje ki **kizárások**.
+1. (Optional) To remove one or more resources from the scope, select **Exclusions**.
 
-1. Válassza ki a **kezdeményezésdefiníció** három pontra (...) elérhető definíciók listájának megjelenítéséhez jelölje ki  **[Előzetes verzió] engedélyezése az Azure Monitor-beli virtuális gépek**, majd válassza ki a  **Válassza ki**.  
-    A **hozzárendelés neve** mezőt automatikusan kitölti a kiválasztott kezdeményezési nevű, de ezt módosíthatja. Az opcionális leírást is hozzáadhat. A **által hozzárendelt** mezőt automatikusan kitölti éppen bejelentkezett alapján, és ezt az értéket nem kötelező.
+1. Select the **Initiative definition** ellipsis (...) to display the list of available definitions, select **[Preview] Enable Azure Monitor for VMs**, and then select **Select**.  
+    The **Assignment name** box is automatically populated with the initiative name you selected, but you can change it. You can also add an optional description. The **Assigned by** box is automatically populated based on who is logged in, and this value is optional.
     
-1. Az a **Log Analytics-munkaterület** legördülő listában a támogatott régió, válassza ki egy munkaterületet.
+1. In the **Log Analytics workspace** drop-down list for the supported region, select a workspace.
 
     >[!NOTE]
-    >Ha a munkaterület a hozzárendelés hatókörén kívül esik, biztosítson *Log Analytics-közreműködő* engedélyeket a szabályzat-hozzárendelés egyszerű azonosító. Ha nem ezt teszi, mint például láthatja az üzembe helyezési hibák: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... ` Tekintse át a hozzáférést, [hogyan konfigurálhatja manuálisan a felügyelt identitás](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
+    >If the workspace is beyond the scope of the assignment, grant *Log Analytics Contributor* permissions to the policy assignment's Principal ID. If you don't do this, you might see a deployment failure such as: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... `
+    >To grant access, review [how to manually configure the managed identity](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
     >  
-    A **felügyelt identitás** jelölőnégyzet be van jelölve, a kezdeményezés érvényessége a felhasználóhoz egy házirend tartalmazza a *deployIfNotExists* érvénybe.
+    The **Managed Identity** check box is selected, because the initiative being assigned includes a policy with the *deployIfNotExists* effect.
     
-1. Az a **identitás kezelése hely** legördülő listára, válassza ki a megfelelő régiót.
+1. In the **Manage Identity location** drop-down list, select the appropriate region.
 
-1. Válassza a **Hozzárendelés** elemet.
+1. Select **Assign**.
 
-#### <a name="review-and-remediate-the-compliance-results"></a>Tekintse át és szervizelése megfelelőségi eredményeit
+#### Review and remediate the compliance results
 
-Megismerheti a megfelelőségi eredmények áttekintéséhez olvassa el [azonosíthatja a meg nem felelés eredmények](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). A bal oldali panelen válassza ki a **megfelelőségi**, majd keresse meg a  **[Előzetes verzió] engedélyezése az Azure Monitor-beli virtuális gépek** kezdeményezés-beli virtuális gépek nem megfelelő, a hozzárendelés alapján Ön létrehozott.
+You can learn how to review compliance results by reading [identify non-compliance results](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). In the left pane, select **Compliance**, and then locate the **[Preview] Enable Azure Monitor for VMs** initiative for VMs that aren't compliant according to the assignment you created.
 
-![Szabályzatoknak való megfelelés, Azure-beli virtuális gépek](./media/vminsights-onboard/policy-view-compliance-01.png)
+![Policy compliance for Azure VMs](./media/vminsights-onboard/policy-view-compliance-01.png)
 
-A kezdeményezés található házirendek eredményei alapján a virtuális gépek jelentett nem megfelelő a következő esetekben:
+Based on the results of the policies included with the initiative, VMs are reported as non-compliant in the following scenarios:
 
-* A log Analytics vagy a függőségi ügynök nincs telepítve.  
-    Ebben a forgatókönyvben jellemző, a meglévő virtuális gépek hatókör. Csökkentése érdekében, hogy, üzembe helyezése a szükséges ügynökök által [szervizelési feladatokat hozhat létre](../../governance/policy/how-to/remediate-resources.md) lévő nem megfelelő házirendhez.  
-    - [Előzetes verzió]: Deploy Dependency Agent for Linux VMs
-    - [Előzetes verzió]: Deploy Dependency Agent for Windows VMs
-    - [Előzetes verzió]: Deploy Log Analytics Agent for Linux VMs
-    - [Előzetes verzió]: Deploy Log Analytics Agent for Windows VMs
+* Log Analytics or the Dependency agent isn't deployed.  
+    This scenario is typical for a scope with existing VMs. To mitigate it, deploy the required agents by [creating remediation tasks](../../governance/policy/how-to/remediate-resources.md) on a non-compliant policy.  
+    - [Preview]: Deploy Dependency Agent for Linux VMs
+    - [Preview]: Deploy Dependency Agent for Windows VMs
+    - [Preview]: Deploy Log Analytics Agent for Linux VMs
+    - [Preview]: Deploy Log Analytics Agent for Windows VMs
 
-* VM-lemezkép (OS) nem azonosítja a szabályzat-definícióban.  
-    A feltételek a központi telepítésre vonatkozó házirendet, például csak jól ismert Azure Virtuálisgép-rendszerképekből telepített virtuális gépekkel. Ellenőrizze a dokumentációban, megtekintéséhez, hogy támogatott-e a virtuális gép operációs rendszerének. Nem támogatott, ha a központi telepítésre vonatkozó házirendet és a frissítés ismétlődő, vagy módosítsa azt, hogy a rendszerkép megfelelő legyen.  
-    - [Előzetes verzió]: Függőségi ügynök üzembe helyezés – virtuális gép rendszerkép (OS) listán nem szereplő naplózása
-    - [Előzetes verzió]: Log Analytics-ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő naplózása
+* VM Image (OS) isn't identified in the policy definition.  
+    The criteria of the deployment policy include only VMs that are deployed from well-known Azure VM images. Check the documentation to see whether the VM OS is supported. If it isn't supported, duplicate the deployment policy and update or modify it to make the image compliant.  
+    - [Preview]: Audit Dependency Agent Deployment – VM Image (OS) unlisted
+    - [Preview]: Audit Log Analytics Agent Deployment – VM Image (OS) unlisted
 
-* Virtuális gépek nem jelentkezik be a megadott Log Analytics-munkaterületet.  
-    Akkor lehet, hogy néhány virtuális gépet a kezdeményezési hatókörében jelentkeznek be a másik a szabályzat-hozzárendelés megadott Log Analytics-munkaterületet. Ez a szabályzat egy olyan eszköz azonosításához, amely a virtuális gépek egy nem megfelelő munkaterületnek jelentenek.  
-    - [Előzetes verzió]: Audit Log Analytics Workspace for VM - Report Mismatch
+* VMs aren't logging in to the specified Log Analytics workspace.  
+    It's possible that some VMs in the initiative scope are logging in to a Log Analytics workspace other than the one that's specified in the policy assignment. This policy is a tool to identify which VMs are reporting to a non-compliant workspace.  
+    - [Preview]: Audit Log Analytics Workspace for VM - Report Mismatch
 
-### <a name="enable-with-powershell"></a>Engedélyezze a PowerShell-lel
-Engedélyezi az Azure Monitor-beli virtuális gépek több virtuális gép vagy virtuálisgép-méretezési csoportok, használhatja a PowerShell-parancsfájl [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0), az Azure PowerShell-galériából érhető el. Ez a szkript minden virtuális gép és a virtuális gép méretezési csoportot az előfizetésében, a hatókörön belüli erőforráscsoport által meghatározott végighalad *ResourceGroup*, vagy egy egyetlen virtuális gép vagy virtuálisgép-méretezési csoporthoz által megadott *Neve*. Minden virtuális gép vagy a virtuális gép méretezési csoport esetében a szkript ellenőrzi a Virtuálisgép-bővítmény telepítve van-e már. Ha a Virtuálisgép-bővítmény nincs telepítve, a parancsfájl megpróbálja újra kell telepíteni. Ha a Virtuálisgép-bővítmény telepítve van, a parancsfájl telepíti a Log Analytics és a függőségi ügynök Virtuálisgép-bővítmények.
+### Enable with PowerShell
+To enable Azure Monitor for VMs for multiple VMs or virtual machine scale sets, you can use the PowerShell script [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0), available from the Azure PowerShell Gallery. This script iterates through every virtual machine and virtual machine scale set in your subscription, in the scoped resource group that's specified by *ResourceGroup*, or to a single VM or virtual machine scale set that's specified by *Name*. For each VM or virtual machine scale set, the script verifies whether the VM extension is already installed. If the VM extension is not installed, the script tries to reinstall it. If the VM extension is installed, the script installs the Log Analytics and Dependency agent VM extensions.
 
-A szkriptnek szüksége van az Azure PowerShell 5.7.0 modul verzió vagy újabb. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja PowerShell, is futtatni szeretné `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
+This script requires Azure PowerShell module version 5.7.0 or later. Run `Get-Module -ListAvailable AzureRM` to find the version. If you need to upgrade, see [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). If you're running PowerShell locally, you also need to run `Connect-AzureRmAccount` to create a connection with Azure.
 
-A parancsfájl argumentum részletek és a példa használati listájának lekéréséhez futtassa `Get-Help`.
+To get a list of the script's argument details and example usage, run `Get-Help`.
 
 ```powershell
 Get-Help .\Install-VMInsights.ps1 -Detailed

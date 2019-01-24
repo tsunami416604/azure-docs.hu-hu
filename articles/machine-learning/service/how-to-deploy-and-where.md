@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 56c0d5b4ab1fae5812b1730e5a4d3aab0dfbde5e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4d62885743a4e50ece1c032c7b3405d8766d95cd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448194"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850586"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -245,7 +245,7 @@ Azure Container Instancesben való üzembe helyezéséhez használja az alábbi 
     **Becsült időtartam**: Körülbelül 3 perc.
 
     > [!TIP]
-    > Ha üzembe helyezés során hibák, használja `service.get_logs()` az AKS szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
+    > Ha üzembe helyezés során hibák, használja `service.get_logs()` a szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
 
 További információkért lásd: a dokumentáció a a [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) osztályokat.
 
@@ -335,7 +335,7 @@ print(service.state)
 **Becsült időtartam**: Körülbelül 3 perc.
 
 > [!TIP]
-> Ha üzembe helyezés során hibák, használja `service.get_logs()` az AKS szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
+> Ha üzembe helyezés során hibák, használja `service.get_logs()` a szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
 
 További információkért lásd: a dokumentáció a a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) osztályokat.
 

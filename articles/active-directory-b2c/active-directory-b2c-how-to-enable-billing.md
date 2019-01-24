@@ -3,24 +3,24 @@ title: Azure-előfizetés összekapcsolása az Azure Active Directory B2C |} A M
 description: Lépésenkénti útmutató, amellyel egy Azure-előfizetésben helyezi az Azure AD B2C-bérlőt számlázás.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1486e303e4e94ee6140bcd6ed4f52bc433b9aae6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e39b7472904e7635340327d311eb7d4b9123f51e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100055"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853187"
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Egy Azure-előfizetés Azure AD B2C-bérlő csatolása
 
 > [!IMPORTANT]
-> A legfrissebb információkat, a számlázással és a díjszabás az Azure AD B2C-vel van, a következő használat: [Azure AD B2C-díjszabás](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+> Legújabb használati számlázással és az Azure AD B2C díjszabási információit a következő, a következő: [Az Azure AD B2C díjszabása](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 Azure-előfizetéshez az Azure AD B2C használati díjakat számítjuk fel. Azure AD B2C-bérlő jön létre, ha a bérlői rendszergazda explicit módon az Azure AD B2C-bérlő összekapcsolása egy Azure-előfizetést kell. Ez a cikk bemutatja, hogyan.
 

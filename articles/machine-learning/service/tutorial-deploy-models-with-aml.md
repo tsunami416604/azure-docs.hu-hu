@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: a5f13bfa4d0e9962622565cc5ac9c80372b50123
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cf83c99f562029fae932bc294cfc87750c908c99
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107684"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828213"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Oktatóanyag: Egy rendszerkép besorolási modell az Azure Container Instances szolgáltatásban üzembe helyezése
 
@@ -37,7 +37,7 @@ Container Instances szolgáltatásban nem éles környezetekben üzemelő péld�
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb) is elérhető. Futtassa a `tutorials/img-classification-part2-deploy.ipynb` jegyzetfüzet, vagy az Azure-jegyzetfüzetek vagy a saját Jupyter notebook server.
+Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb) is elérhető. Futtassa a *oktatóanyagok/img – osztályozás – part2-deploy.ipynb* notebook vagy [Azure notebookok](https://notebooks.azure.com/) vagy a saját Jupyter notebook server.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -380,6 +380,6 @@ service.delete()
 
 ## <a name="next-steps"></a>További lépések
 
-+ További információ az összes, a [központi telepítési beállítások az Azure Machine Learning szolgáltatás](how-to-deploy-and-where.md). Azure Container Instances, Azure Kubernetes Service-ben, FPGA-kban vagy az Azure IoT Edge a lehetőségek között.
++ További információ az összes, a [központi telepítési beállítások az Azure Machine Learning szolgáltatás](how-to-deploy-and-where.md). Options include Azure Container Instances, Azure Kubernetes Service, FPGAs, and Azure IoT Edge.
 
 + Tekintse meg, hogyan lehet az Azure Machine Learning szolgáltatás a automatikus kiválasztás és a legjobb algoritmus a modell finomhangolása. Emellett a hoz létre ehhez a modellhez. Próbálja ki a [automatikus algoritmus kiválasztása](tutorial-auto-train-models.md) oktatóanyag. 

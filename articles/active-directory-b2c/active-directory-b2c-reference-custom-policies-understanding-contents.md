@@ -3,19 +3,19 @@ title: Egyéni házirendek, az alapszintű csomag az Azure Active Directory B2C 
 description: A témakör az Azure Active Directory B2C-vel egyéni szabályzatok.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ebcd7a677acde12558b0f566bce9172a0d00233b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: cfb3894b98ea562eede4c223ca6125abce65b0d3
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442474"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845571"
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Az Azure AD B2C-vel egyéni szabályzat alapszintű csomag az egyéni szabályzatok ismertetése
 
@@ -49,9 +49,9 @@ Felhasználói utak megfelelő működéséhez a következő jogcímek szükség
 
 | Jogcím típusa | Leírás |
 |-------------|-------------|
-| *Felhasználói azonosító* | Felhasználónév |
+| *UserId* | Felhasználónév |
 | *signInName* | Jelentkezzen be a nevet |
-| *bérlő azonosítója* | Bérlő azonosítója (ID) az Azure AD B2C felhasználói objektum |
+| *tenantId* | Bérlő azonosítója (ID) az Azure AD B2C felhasználói objektum |
 | *objectId* | Objektum azonosítója (ID) az Azure AD B2C felhasználói objektum |
 | *jelszó* | Jelszó |
 | *newPassword* | |
@@ -159,7 +159,7 @@ Ez a szakasz bemutatja a technikai profilok száma a jogcím-szolgáltató már 
 
 | Technikai profil | Leírás |
 |-------------------|-------------|
-| *AAD-közös* | Technikai profil más AAD-xxx technikai profilok szerint hozzáadva |
+| *AAD-Common* | Technikai profil más AAD-xxx technikai profilok szerint hozzáadva |
 | *AAD-UserWriteUsingAlternativeSecurityId* | Közösségi bejelentkezések technikai profil |
 | *AAD-UserReadUsingAlternativeSecurityId* | Közösségi bejelentkezések technikai profil |
 | *AAD-UserReadUsingAlternativeSecurityId-NoError* | Közösségi bejelentkezések technikai profil |
@@ -209,7 +209,7 @@ Ez a szakasz mutatja be a felhasználói utak már deklarálva a *B2C_1A_base* h
 
 | Felhasználói interakciósorozat | Leírás |
 |--------------|-------------|
-| *Regisztráció* | |
+| *SignUp* | |
 | *SignIn* | |
 | *SignUpOrSignIn* | |
 | *EditProfile* | |

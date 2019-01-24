@@ -3,19 +3,19 @@ title: Általános jogcímek átalakítása példák az identitás élmény kere
 description: Az identitás élmény keretrendszer sémát az Azure Active Directory B2C általános jogcímek átalakítása példákat.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8ff418c24e9171d452bca873c4b8f66ada2adb7c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 8cae6ec9693c0fadba059e641fb75e68bbbaec92
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431326"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853094"
 ---
 # <a name="general-claims-transformations"></a>Általános jogcímek átalakítása
 
@@ -30,7 +30,7 @@ Ellenőrzi, hogy a **bemeneti jogcím** vagy nem létezik, és beállítja a **k
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | Bemeneti jogcím | Bemeneti jogcím |Bármelyik | A bemeneti jogcímek, amelynek megléte ellenőrizni kell. |
-| kimeneti jogcím | kimeneti jogcím | logikai | A takar, amelyek a ClaimsTransformation meghívása után jön létre. |
+| OutputClaim | outputClaim | logikai | A takar, amelyek a ClaimsTransformation meghívása után jön létre. |
 
 Használja a jogcím-átalakítás annak ellenőrzésére, ha egy jogcímet létezik, vagy minden olyan értéket tartalmaz. A visszatérési érték logikai érték beolvasása, amely azt jelzi, hogy létezik-e a jogcím. Alábbi példa ellenőrzi, hogy létezik-e az e-mail-cím.
 
@@ -60,8 +60,8 @@ A megadott egyszerű szöveges a védőérték és a titkos kulcs kivonata.
 | ---- | ----------------------- | --------- | ----- |
 | Bemeneti jogcím | egyszerű szöveg | sztring | A bemeneti jogcímek titkosítását |
 | Bemeneti jogcím | Salt érték | sztring | A védőérték paramétert. Létrehozhat egy véletlenszerű értéket használ `CreateRandomString` jogcím-átalakítás. |
-| InputParameter | randomizerSecret | sztring | Egy meglévő Azure AD B2C mutat **Szabályzatbejegyzések**. Hozzon létre egy újat: válassza ki az Azure AD B2C-Bérlőben **B2C-beállítások > identitás-kezelőfelületi keretrendszer**. Válassza ki **Szabályzatbejegyzések** a elérhető a bérlői kulcsok megtekintéséhez. Válassza a **Hozzáadás** lehetőséget. A **beállítások**válassza **manuális**. Adjon meg egy nevet (a B2C_1A_ automatikusan hozzáadhatók előtag.). Titkos kód mezőben adja meg minden olyan titkos kulcsot szeretné használni, például a 1234567890. A kulcshasználat, válassza ki a **titkos**. Kattintson a **Létrehozás** gombra. |
-| kimeneti jogcím | Ujjlenyomat | sztring | Az a jogcím-átalakítás után előállított takar meghívása. A konfigurált jogcímszabályok a `plaintext` bemeneti jogcím. |
+| InputParameter | randomizerSecret | sztring | Egy meglévő Azure AD B2C mutat **Szabályzatbejegyzések**. Hozzon létre egy újat: Válassza ki az Azure AD B2C-bérlőben **B2C-beállítások > identitás-kezelőfelületi keretrendszer**. Válassza ki **Szabályzatbejegyzések** a elérhető a bérlői kulcsok megtekintéséhez. Válassza a **Hozzáadás** lehetőséget. A **beállítások**válassza **manuális**. Adjon meg egy nevet (a B2C_1A_ automatikusan hozzáadhatók előtag.). Titkos kód mezőben adja meg minden olyan titkos kulcsot szeretné használni, például a 1234567890. A kulcshasználat, válassza ki a **titkos**. Kattintson a **Létrehozás** gombra. |
+| OutputClaim | Ujjlenyomat | sztring | Az a jogcím-átalakítás után előállított takar meghívása. A konfigurált jogcímszabályok a `plaintext` bemeneti jogcím. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -85,7 +85,7 @@ A megadott egyszerű szöveges a védőérték és a titkos kulcs kivonata.
     - **védőérték**: 487624568
     - **randomizerSecret**: B2C_1A_AccountTransformSecret
 - Kimeneti jogcímek: 
-    - **kimeneti jogcím**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U =
+    - **kimeneti jogcím**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=
 
 
 

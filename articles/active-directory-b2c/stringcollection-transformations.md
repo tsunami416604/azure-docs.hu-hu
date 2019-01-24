@@ -3,19 +3,19 @@ title: Publishedresources-jogcímek átalakítása példák az identitás élmé
 description: Publishedresources jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C a.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 924da8c92bad1c5345d5d1833723a0c4e8ad7d29
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 7bec6846a1bb22893beed8086b6d9e88babc1906
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432664"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847944"
 ---
 # <a name="stringcollection-claims-transformations"></a>Publishedresources jogcím-átalakítás
 
@@ -31,7 +31,7 @@ Egy karakterlánc szabálykészlethez Publishedresources új jogcímet ad.
 | ---- | ----------------------- | --------- | ----- |
 | Bemeneti jogcím | Elem | sztring | A kimeneti jogcímek hozzáadandó takar. |
 | Bemeneti jogcím | gyűjtemény | Publishedresources | [Opcionális] Ha meg van adva, a jogcímek átalakításáról másolja át az elemeket a gyűjteményhez, és hozzáadja az elem a kimeneti gyűjtemény jogcímek végéhez. |
-| kimeneti jogcím | gyűjtemény | Publishedresources | A ClaimTypes, amelyek előállítják a ClaimsTransformation meghívása után. |
+| OutputClaim | gyűjtemény | Publishedresources | A ClaimTypes, amelyek előállítják a ClaimsTransformation meghívása után. |
 
 Használja a jogcím-átalakítás karakterláncnak hozzá egy új vagy meglévő Publishedresources. A gyakran használják a **AAD-UserWriteUsingAlternativeSecurityId** technikai profil. Egy új közösségi fiók jön létre, mielőtt **CreateOtherMailsFromEmail** jogcímek átalakítását a ClaimType olvassa be, és hozzáadja az értéket a **otherMails** takar. 
 
@@ -65,7 +65,7 @@ A következő jogcímek átalakítását hozzáadja a **e-mail** takar a **other
 | ---- | ----------------------- | --------- | ----- |
 | Bemeneti jogcím | gyűjtemény | Publishedresources | [Opcionális] Ha meg van adva, a jogcímek átalakításáról másolja át az elemeket a gyűjteményhez, és hozzáadja az elem a kimeneti gyűjtemény jogcímek végéhez. |
 | InputParameter | Elem | sztring | A kimeneti jogcímek hozzáadandó érték. |
-| kimeneti jogcím | gyűjtemény | Publishedresources | A ClaimTypes ez ClaimsTransformation meghívása után előállított. |
+| OutputClaim | gyűjtemény | Publishedresources | A ClaimTypes ez ClaimsTransformation meghívása után előállított. |
 
 Használja a jogcím-átalakítás karakterlánc-érték hozzáadása egy új vagy meglévő Publishedresources. Az alábbi példa hozzáad egy állandó e-mail-címet (admin@contoso.com), a **otherMails** jogcím. 
 
@@ -99,7 +99,7 @@ A megadott karakterlánc gyűjteményt az első elem beolvasása.
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | Bemeneti jogcím | gyűjtemény | Publishedresources | A ClaimTypes lekérni az elemet használják a jogcímek átalakítását. |
-| kimeneti jogcím | extractedItem | sztring | A ClaimTypes, amelyek előállítják a ClaimsTransformation meghívása után. Az első elem a gyűjteményben. |
+| OutputClaim | extractedItem | sztring | A ClaimTypes, amelyek előállítják a ClaimsTransformation meghívása után. Az első elem a gyűjteményben. |
 
 Az alábbi példa beolvassa a **otherMails** jogcím és az első elemét adja vissza a **e-mail** jogcím. 
 

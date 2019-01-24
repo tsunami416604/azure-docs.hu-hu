@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Klue |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Klue |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Klue között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 08341008-980b-4111-adb2-97bbabbf1e47
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 4afe11d6d241e86b57ebb40d54e4c2dceb63a46c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9312006af84e74aa039d762abdfc6edba79a47fb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123056"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824796"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-klue"></a>Oktatóanyag: Azure Active Directory-integráció az Klue
+# <a name="tutorial-azure-active-directory-integration-with-klue"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Klue
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Klue integrálása az Azure Active Directory (Azure AD).
 
@@ -136,9 +136,9 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     | Attribútum neve      | Attribútum értéke      |
     | ------------------- | -------------------- |
-    | first_name          | User.givenName |
-    | last_name           | User.surname |
-    | e-mailben               | User.userPrincipalName|
+    | first_name          | user.givenname |
+    | last_name           | user.surname |
+    | e-mail               | user.userprincipalname|
 
     a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -206,7 +206,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja Klue Britta Simon nevű felhasználó létrehozásához. Klue támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Klue elérésére, ha még nem létezik tett kísérlet során.
 
 > [!Note]
-> Ha manuálisan hozzon létre egy felhasználót, lépjen kapcsolatba kell [Klue támogatási csapatának](mailto:support@klue.com).
+> Ha manuálisan hozzon létre egy felhasználót, lépjen kapcsolatba kell [Klue támogatási csapatának](mailto:support@klue.com).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8543f00ccaecd8fd3f46132b05c2af925e6de10a
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 3646c6167f901fe43080d39df42fdb127b1c7fc2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352359"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828145"
 ---
 # <a name="using-a-cloud-dvr"></a>Egy felhőalapú DVR használata
 
@@ -37,8 +37,7 @@ A **videókhoz** támogatja a legfeljebb három egyidejűleg zajló **LiveOutput
 > [!NOTE]
 > **LiveOutput**s létrehozás indítása és leállítása, ha törli. Ha töröl a **LiveOutput**, nem törli az alapul szolgáló **eszköz** és a tartalom az eszközben. 
 >
-> Miután közzétette **Streamelési lokátor**s tartozó objektum a **LiveOutput**, az esemény (akár a DVR időszak hossza) továbbra is meg szeretné jeleníteni a befejezési idő, amíg a **Streamelési lokátor**  vagy a mai napig tartó, amikor törli a lokátor, amelyik előbb bekövetkezik.   
-  
+> Miután közzétette a **LiveOutput** eszköz használatával egy **StreamingLocator**, a **videókhoz** (akár a DVR időszak hossza) továbbra is csak megtekinthető a **StreamingLocator**a lejárati vagy törlését, amelyik először bekövetkezik.
 
 ## <a name="next-steps"></a>További lépések
 

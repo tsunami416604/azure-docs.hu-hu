@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 467af0f04708c9c6758531fb1cd71d79e9ddd6d7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 44f61d7b90018b76b1903a04d219dcf0226f95e0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302969"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852320"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Kezelheti, telepítheti és figyelheti a modellek az Azure Machine Learning szolgáltatás
 
@@ -39,7 +39,7 @@ Az egyes lépések egymástól függetlenül, vagy egy egyetlen központi telep�
 
 Modell regisztrálását segítségével tárolja és verzió a modellek az Azure-felhőben, a munkaterületén. A modell beállításjegyzék megkönnyíti a betanított modellek rendszerezéséhez és nyomon követésére.
  
-A regisztrált modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy modell regisztrálni a neve megegyezik egy meglévő, a beállításjegyzék növeli a verziót. Használható kereséskor a modellek regisztrálása során is megadható további metaadat-címkéket. Az Azure Machine Learning szolgáltatás támogatja a Python 3 betölthető modellel tárolt modelleket. 
+A regisztrált modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy modell regisztrálni a neve megegyezik egy meglévő, a beállításjegyzék növeli a verziót. Használható kereséskor a modellek regisztrálása során is megadható további metaadat-címkéket. Az Azure Machine Learning szolgáltatásban minden olyan modell, amely tölthetők be a Python 3 támogatja. 
 
 Lemezkép által használt modellek nem törölhető.
 
@@ -63,13 +63,13 @@ Naplózás és figyelés az SDK-összetevők a lemezképet is tartalmazhatnak. A
 Az Azure Machine Learning a népszerű keretrendszereket támogat, de általában is dolgozhat bármely keretrendszer, amely a pip telepítve lehet.
 
 A munkaterület létrehozása után úgy más számos egyéb Azure-erőforrások használta a munkaterülethez.
-A lemezkép létrehozására használt összes objektum munkaterületét az Azure storage-fiókban vannak tárolva. A rendszerkép létrehozása és az Azure Container Registry tárolja. A kép, amely is tárolódnak a regisztrációs adatbázisba, és kérdezhetők le, keresse meg a lemezkép létrehozásakor megadhat további metaadat-címkéket.
+A lemezkép létrehozására használt összes objektum munkaterületét az Azure storage-fiókban vannak tárolva. A rendszerkép létrehozásakor megadhat további metaadat-címkéket. A metaadat-címkéket is tárolódnak a regisztrációs adatbázisba, és kérdezhetők le a lemezkép található.
 
 További információkért tekintse meg a beállítás, és regisztrálja a lemezkép szakaszában [modellek üzembe helyezése](how-to-deploy-and-where.md#configureimage).
 
 ## <a name="step-3-deploy-image"></a>3. lépés: Rendszerkép üzembe helyezése
 
-Regisztrált lemezképeket telepíthet a felhőben vagy a peremhálózati eszközökre. Az üzembehelyezési folyamat létrehoz figyeléséhez szükséges erőforrásokat, terheléselosztás és automatikus méretezés a modellt. A telepített szolgáltatásokhoz való hozzáférés az üzembe helyezés során a biztonsági eszközök biztosításával leköthetőek tanúsítványalapú hitelesítéssel. Újabb-rendszerkép használata egy meglévő telepítéshez frissíteni is lehet.
+Regisztrált lemezképeket telepíthet a felhőben vagy a peremhálózati eszközökre. Az üzembe helyezési folyamat figyeléséhez, terheléselosztás és automatikus méretezési szükséges összes erőforrást a modellt hoz létre. A telepített szolgáltatásokhoz való hozzáférés az üzembe helyezés során a biztonsági eszközök biztosításával leköthetőek tanúsítványalapú hitelesítéssel. Újabb-rendszerkép használata egy meglévő telepítéshez frissíteni is lehet.
 
 Webszolgáltatások üzembe helyezéséhez is kereshetők. Kereshet például egy adott modell- vagy képfájl, központi telepítések.
 

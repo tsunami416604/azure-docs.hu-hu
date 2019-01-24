@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: dea12d7188b716b4a832a33bb173201e68dbe20f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8fd523b50ec5d7161da5d9d778386914136097dc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189744"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828196"
 ---
 # <a name="configuring-asset-delivery-policies"></a>Adategység-kézbesítési házirendek konfigurálása
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
@@ -229,7 +229,7 @@ Válasz:
 ### <a name="link-asset-with-asset-delivery-policy"></a>Az adategység továbbítási házirendjét hivatkozás eszköz
 Lásd: [hivatkozás eszköz az adategység továbbítási házirendjét](#link_asset_with_asset_delivery_policy)
 
-## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption állít be objektumtovábbítási szabályzatot
+## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption asset delivery policy
 ### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>A CommonEncryption típusú tartalomkulcs létrehozása és csatolása az eszközhöz
 Objektumtovábbítási szabályzat DynamicCommonEncryption megadásakor ügyeljen arra, hogy az eszköz egy tartalomkulcsot CommonEncryption típusú mutató hivatkozás kell. További információkért lásd: [Tartalomkulcs létrehozása](media-services-rest-create-contentkey.md)).
 
@@ -355,7 +355,7 @@ A következő felsorolás ismerteti segítségével konfigurálja a kézbesíté
         None = 0,
 
         /// <summary>
-        /// Use PlayReady License acquistion protocol
+        /// Use PlayReady License acquisition protocol
         ///
         </summary>
         PlayReadyLicense = 1,
@@ -367,7 +367,7 @@ A következő felsorolás ismerteti segítségével konfigurálja a kézbesíté
         BaselineHttp = 2,
 
         /// <summary>
-        /// Use Widevine License acquistion protocol
+        /// Use Widevine License acquisition protocol
         ///
         </summary>
         Widevine = 3

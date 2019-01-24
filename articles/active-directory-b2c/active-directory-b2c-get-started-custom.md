@@ -3,19 +3,19 @@ title: Az Azure Active Directory B2C-vel egyéni szabályzatok – első lépés
 description: Az Azure Active Directory B2C-vel egyéni szabályzatok – első lépések útmutató.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b4ff8b607f9fded02a519b5f2a3abdfeedf93d88
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 235b72393801717bb5d7258d6492dc4c943fe232
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181778"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852303"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-vel egyéni szabályzatok – első lépések
 
@@ -29,7 +29,7 @@ Ha Ön nem rendelkezik ilyennel, akkor [létrehozása az Azure AD B2C-bérlő](t
 
 ## <a name="add-signing-and-encryption-keys"></a>Aláírási és titkosítási kulcsok hozzáadása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása. 
 
     ![Átváltás az Azure AD B2C-bérlőre](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
@@ -68,9 +68,9 @@ Ha már rendelkezik egy [Facebook-alkalmazás titkos](active-directory-b2c-setup
 
 ## <a name="register-applications"></a>Alkalmazások regisztrálása
 
-Az Azure AD B2C megköveteli, hogy regisztráljon, és a felhasználók használt két alkalmazás regisztrálása: IdentityExperienceFramework (webalkalmazás), és a delegált engedély a IdentityExperienceFramework alkalmazásból (egy natív alkalmazást) ProxyIdentityExperienceFramework. Helyi fiókok csak a bérlő szerepel. A felhasználói Regisztrálás az egyedi e-mail cím és jelszó kombinációja a bérlő regisztrált alkalmazások eléréséhez.
+Az Azure AD B2C szükséges, hogy regisztráljon, és a felhasználók használt két alkalmazás regisztrálása: IdentityExperienceFramework (webalkalmazás), és a delegált engedély a IdentityExperienceFramework alkalmazásból (egy natív alkalmazást) ProxyIdentityExperienceFramework. Helyi fiókok csak a bérlő szerepel. A felhasználói Regisztrálás az egyedi e-mail cím és jelszó kombinációja a bérlő regisztrált alkalmazások eléréséhez.
 
-### <a name="register-the-identityexperienceframework-application"></a>A IdentityExperienceFramework alkalmazás regisztrálása
+### <a name="register-the-identityexperienceframework-application"></a>Register the IdentityExperienceFramework application
 
 1. Válasszon **minden szolgáltatás** az Azure portal bal felső sarkában lévő keresése és kiválasztása **Azure Active Directory**, majd válassza ki **alkalmazásregisztrációk**.
 2. Válassza az **Új alkalmazás regisztrálása** elemet.
@@ -80,7 +80,7 @@ Az Azure AD B2C megköveteli, hogy regisztráljon, és a felhasználók használ
 6. Kattintson a **Create** (Létrehozás) gombra. 
 7. Miután elkészült, az alkalmazás azonosítóját, és mentse későbbi használatra.
 
-### <a name="register-the-proxyidentityexperienceframework-application"></a>A ProxyIdentityExperienceFramework alkalmazás regisztrálása
+### <a name="register-the-proxyidentityexperienceframework-application"></a>Register the ProxyIdentityExperienceFramework application
 
 1. Válassza ki **alkalmazásregisztrációk**, majd válassza ki **új alkalmazásregisztráció**.
 2. A **neve**, adja meg `ProxyIdentityExperienceFramework`.

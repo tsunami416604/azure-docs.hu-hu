@@ -3,19 +3,19 @@ title: UserJourneys |} A Microsoft Docs
 description: Adja meg az egyéni szabályzat UserJourneys elem Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 231a3e87692e47ec33f8a613832acf5102257c96
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c6933a3d50807f38c0704f41dff7c9bcb3351949
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567060"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850639"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -31,7 +31,7 @@ A **UserJourneys** elem tartalmazza a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| UserJourney | 1: n | Felhasználói út, amely meghatározza az összes szükséges teljes körű felhasználói folyamat szerkezeteket. | 
+| UserJourney | 1:n | Felhasználói út, amely meghatározza az összes szükséges teljes körű felhasználói folyamat szerkezeteket. | 
 
 A **UserJourney** elem tartalmazza a következő attribútumot:
 
@@ -43,7 +43,7 @@ A **UserJourney** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| OrchestrationSteps | 1: n | Egy vezénylési sorozat, amely egy sikeres tranzakció kell követnie. Minden felhasználói interakciósorozat sorrendben végrehajtott vezénylési lépésekből rendezett listáját tartalmazza. Ha valamelyik lépés meghiúsul, a tranzakció sikertelen lesz. |
+| OrchestrationSteps | 1:n | Egy vezénylési sorozat, amely egy sikeres tranzakció kell követnie. Minden felhasználói interakciósorozat sorrendben végrehajtott vezénylési lépésekből rendezett listáját tartalmazza. Ha valamelyik lépés meghiúsul, a tranzakció sikertelen lesz. |
 
 ## <a name="orchestrationsteps"></a>OrchestrationSteps
 
@@ -57,7 +57,7 @@ A **OrchestrationSteps** elem tartalmazza a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| OrchestrationStep | 1: n | Egy rendezett vezénylési lépés. | 
+| OrchestrationStep | 1:n | Egy rendezett vezénylési lépés. | 
 
 A **OrchestrationStep** elem tartalmazza a következő attribútumokat:
 
@@ -73,9 +73,9 @@ A **OrchestrationStep** elem magában foglalhatja a következő elemeket:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- | 
-| Az Előfeltételek | 0: n | A vezénylési lépés végrehajtásához kell biztosítani az Előfeltételek listáját. | 
-| ClaimsProviderSelections | 0: n | A jogcímeket szolgáltató beállításokat a vezénylési lépés listája. | 
-| ClaimsExchanges | 0: n | A vezénylési lépés jogcím cseréje egy listája. | 
+| Az Előfeltételek | 0:n | A vezénylési lépés végrehajtásához kell biztosítani az Előfeltételek listáját. | 
+| ClaimsProviderSelections | 0:n | A jogcímeket szolgáltató beállításokat a vezénylési lépés listája. | 
+| ClaimsExchanges | 0:n | A vezénylési lépés jogcím cseréje egy listája. | 
 
 #### <a name="preconditions"></a>Az Előfeltételek
 
@@ -83,7 +83,7 @@ A **előfeltételeket** elem tartalmazza a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- | 
-| Előfeltétel | 0: n | Attól függően, a technikai profil használja vagy átirányítja az ügyfelet, a jogcímeket szolgáltató kiválasztása vagy révén az Exchange server hívás jogcímek megfelelően. | 
+| Előfeltétel | 0:n | Attól függően, a technikai profil használja vagy átirányítja az ügyfelet, a jogcímeket szolgáltató kiválasztása vagy révén az Exchange server hívás jogcímek megfelelően. | 
 
 
 ##### <a name="precondition"></a>Előfeltétel
@@ -99,7 +99,7 @@ A **előfeltétel** elemeket a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Érték | 1: n | A lekérdezendő ClaimTypeReferenceId. Egy másik értéket elem tartalmazza az ellenőrizendő értékkel.</li></ul>|
+| Érték | 1:n | A lekérdezendő ClaimTypeReferenceId. Egy másik értéket elem tartalmazza az ellenőrizendő értékkel.</li></ul>|
 | Műveletek | 1:1 | Az előfeltétel-ellenőrzés belül egy vezénylési lépés teljesülése esetén végrehajtandó művelet. Ha az érték a `Action` értékre van állítva `SkipThisOrchestrationStep`, a társított `OrchestrationStep` nem hajtható végre. | 
 
 ### <a name="preconditions-examples"></a>Az Előfeltételek példák
@@ -158,7 +158,7 @@ Az Előfeltételek ellenőrzéséhez több előfeltételeket. Az alábbi példa 
 </OrchestrationStep>
 ```
 
-## <a name="claimsproviderselection"></a>Hiányzik a ClaimsProviderSelection
+## <a name="claimsproviderselection"></a>ClaimsProviderSelection
 
 Egy vezénylési lépés típusú `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp` tartalmazhat, amelyek egy felhasználó bejelentkezhessen a Jogcímszolgáltatók listáját. Az elemek sorrendjét a `ClaimsProviderSelections` elemek szabályozza az identitás-szolgáltatóktól, a felhasználó számára megjelenő sorrendjét.
 
@@ -166,7 +166,7 @@ A **hiányzik a ClaimsProviderSelection** elem tartalmazza a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Hiányzik a ClaimsProviderSelection | 0: n | Választható Jogcímszolgáltatók listáját jeleníti meg.|
+| ClaimsProviderSelection | 0:n | Választható Jogcímszolgáltatók listáját jeleníti meg.|
 
 A **hiányzik a ClaimsProviderSelection** elem tartalmazza a következő attribútumokat: 
 
@@ -218,7 +218,7 @@ A **ClaimsExchanges** elem tartalmazza a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| ClaimsExchange | 0: n | Attól függően, a technikai profil használja vagy átirányítja az ügyfelet a ClaimsProviderSelection kiválasztott vagy révén az Exchange server hívás jogcímek megfelelően. | 
+| ClaimsExchange | 0:n | Attól függően, a technikai profil használja vagy átirányítja az ügyfelet a ClaimsProviderSelection kiválasztott vagy révén az Exchange server hívás jogcímek megfelelően. | 
 
 A **ClaimsExchange** elem tartalmazza a következő attribútumokat:
 

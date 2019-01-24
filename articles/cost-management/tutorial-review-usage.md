@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 928b8fd8ef076afa2c60c870fb705a9a682003d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e96119abd4fc77c576fb65281c3f48b8263e020d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093607"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849974"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -89,19 +89,27 @@ A virtuálisgép-példányok azonosítóit a **List of Candidates** (Jelöltek l
 
 A használattal kapcsolatos hatékonysági hiányosságok felderítéséről szóló oktatóvideóért tekintse meg a [virtuális gépek méretének optimalizálását a Cloudynben](https://youtu.be/1xaZBNmV704).
 
-Az Azure Cost Management költségcsökkentési javaslatokat is ad az Azure-szolgáltatásokra vonatkozóan. További információkat a [javaslatok alapján történő költségoptimalizálással foglalkozó oktatóanyagban](tutorial-acm-opt-recommendations.md) talál.
+Az Azure Cost Management költségcsökkentési javaslatokat is ad az Azure-szolgáltatásokra vonatkozóan. További információkért lásd: [oktatóanyag: A javaslatok a költségek optimalizálása](tutorial-acm-opt-recommendations.md).
 
 ## <a name="create-alerts-for-unusual-spending"></a>Szokatlan kiadásokra figyelmeztető riasztások létrehozása
 
-Az érintetteket automatikusan figyelmeztetheti a rendellenes kiadásokról és a túlköltekezési kockázatokról. A költségvetés és a költségek küszöbértékeit használó jelentések alapján gyorsan és egyszerűen hozhat létre riasztásokat.
+Riasztások automatikusan értesíti a résztvevőket kiadások rendellenességeket és a túlköltekezés kockázatok teszi lehetővé. A jelentésekkel, hogy támogatási riasztásokat a költségvetés alapján, és a költségek küszöbértékei riasztásokat is létrehozhat.
 
-Riasztásokat bármely kiadáshoz és bármely költségjelentés alapján létrehozhat. Példánkban a rendszer a tényleges időalapú költségeket tartalmazó jelentés alapján értesíti, amint az Azure-beli virtuális gépekkel kapcsolatos kiadások megközelítik a teljes költségkeretet. Az összes további lépés szükséges a riasztás létrehozásához. A portál tetején lévő menüben kattintson a **Costs**(Költségek) > **Cost Analysis**(Költségelemzés) > **Actual Cost Over Time** (Tényleges időalapú költségek) elemre. A **Groups** (Csoportok) alatt állítsa be a **Service** (Szolgáltatás), a **Filter on the service** (Szűrés a következő szolgáltatásra) alatt pedig az **Azure/VM** (Azure/virtuális gép) lehetőséget. A jelentés jobb felső sarkában kattintson az **Actions** (Műveletek) gombra, majd válassza a **Schedule report** (Jelentés ütemezése) lehetőséget.
+Ez a példa a **tényleges időalapú költségeket tartalmazó** jelentés értesítés küldése, amikor egy Azure-beli virtuális gépen a kiadások érvényessége a teljes költségvetést. Ebben a forgatókönyvben 20 000 teljes költségvetése rendelkezik, és értesítést kaphat, ha a költségek hamarosan eléri a költségvetést, $9000 és további riasztás fele amikor a költségek elérik a 10 000 dollárt szeretné.
 
-A jelentés mentésére vagy ütemezésére szolgáló mező **Scheduling** (Ütemezés) lapján állítsa be a jelentés elküldését a saját e-mail-címére a kívánt gyakorisággal. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Az e-mailben küldött jelentés az összes használt címkét, csoportosítást és szűrőt tartalmazza majd. Kattintson a **Threshold** (Küszöbérték) lapra, és válassza az **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget. Ha a teljes költségvetése 20 000 dollár, és szeretne értesítést kapni, amikor a költségek elérik ennek a felét, hozzon létre egy **vörös riasztást** 10 000 és egy **sárga riasztást** 9000 dollárra. A megadott értékekben ne használjon vesszőt. Ezután válassza ki az egymást követő riasztások számát. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat. Mentse az ütemezett jelentést.
+1. A Cloudyn portál tetején lévő menüben válassza ki a **költségek** > **költségelemzés** > **tényleges időalapú költségeket tartalmazó**. 
+2. A **Groups** (Csoportok) alatt állítsa be a **Service** (Szolgáltatás), a **Filter on the service** (Szűrés a következő szolgáltatásra) alatt pedig az **Azure/VM** (Azure/virtuális gép) lehetőséget. 
+3. Felső válassza ki a jelentést, jobb **műveletek** majd **jelentés ütemezése**.
+4. Használatával küldjön saját magának egy e-mailt a jelentés ütemezett időközönként, válassza ki a **ütemezés** lapján a **menteni vagy ütemezheti** jelentés párbeszédpanel. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Minden olyan címkék, csoportosítás és a szűrés, az e-mailben elküldött jelentésben szereplő használja. 
+5. Válassza ki a **küszöbérték** lapot, majd **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget. 
+   1. Az a **vörös színű riasztásra** küszöbérték mezőbe írja be a 10000. 
+   2. Az a **sárga riasztást** küszöbérték mezőbe írja be a 9000. 
+   3. Az a **egymást követő riasztások számát** fogadásához egymást követő riasztások számát adja meg. Amikor megjelenik a riasztásokat, amelyek a megadott teljes száma, nem küld további riasztásokat is. 
+6. Kattintson a **Mentés** gombra.
 
 ![A példában a költségkeret-beállítási küszöbértékek alapján piros, sárga és riasztások megjelenítése](./media/tutorial-review-usage/schedule-alert01.png)
 
-Azt is megteheti, hogy a Cost Percentage vs. Budget (Költségszázalék a költségvetési küszöbértékhez képest) mutatót választja a riasztások alapjául. Ennek a mutatónak a használatával pontos összegek helyett a költségvetés százalékos arányában határozhatja meg a küszöböket.
+Azt is beállíthatja a **Cost Percentage vs. Költségvetés** költségszázalék a riasztásokat. Ez lehetővé teszi, hogy a küszöbérték megadása helyett a költségvetés százalékos.
 
 ## <a name="export-data"></a>Adatok exportálása
 

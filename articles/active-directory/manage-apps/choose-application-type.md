@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 10f2b30addd874d39a6193c810ccbdf4ac1a06e6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ab68c8f73d4b53f441b8f46f466371cd1d03ad41
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473316"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846812"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Az alkalmazástípus kiválasztása, amikor egy alkalmazás hozzáadása az Azure Active Directoryban
 További információ a négy típusú alkalmazások Azure Active Directory (Azure AD) adhat hozzá. Ha egy alkalmazás az Azure Active Directoryban ad hozzá, a program felszólítja válasszon egyet a négy alkalmazástípus. 
@@ -68,11 +68,11 @@ Az alábbiakban a támogatott **egyszeri bejelentkezési** módhoz az Azure AD-a
 
 -   **Az Azure AD egyszeri bejelentkezés le van tiltva** – válassza ki az Azure AD egyszeri bejelentkezés le van tiltva **egyszeri bejelentkezési mód** Ha még nem állnak készen áll az alkalmazás integrálása az egyszeri bejelentkezés az Azure ad-vel, vagy egyszerűen csak a tesztelt próbálhatja ki
 
--   **Csatolt bejelentkezés** – válassza ki a [csatolt bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **egyszeri bejelentkezési mód** Ha egy alkalmazást, amely az egyszeri bejelentkezés megoldás már csatlakoztatva van, vagy ha csak át szeretné a felhasználók számára az egyszerű hivatkozás közzététele saját [alkalmazás-hozzáférési Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) vagy [Office 365 alkalmazásindítójában](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
+-   **Csatolt bejelentkezés** – válassza ki a [csatolt bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **egyszeri bejelentkezési mód** Ha egy alkalmazást, amely az egyszeri bejelentkezés megoldás már csatlakoztatva van, vagy ha csak át szeretné a felhasználók számára az egyszerű hivatkozás közzététele saját [alkalmazás-hozzáférési Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) vagy [Office 365 alkalmazásindítójában](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
 
--   **Jelszóalapú bejelentkezés** – válassza ki a [jelszóalapú bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **egyszeri bejelentkezési mód** , ha az alkalmazás egy HTML-felhasználónév és jelszó mező jelenik meg, és szeretné tárolni, hogy a felhasználónév és a jelszó biztonságosan megismétlését, később az alkalmazáshoz
+-   **Jelszóalapú bejelentkezés** – válassza ki a [jelszóalapú bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **egyszeri bejelentkezési mód** , ha az alkalmazás egy HTML-felhasználónév és jelszó mező jelenik meg, és szeretné tárolni, hogy a felhasználónév és a jelszó biztonságosan megismétlését, később az alkalmazáshoz
 
--   **SAML-alapú bejelentkezés** – válassza ki a [SAML-alapú bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) módba, ha az alkalmazás támogatja az SAML- vagy OpenID Connect protokollok, vagy hogy képes legyen leképezni a felhasználók az adott alkalmazás-szerepkörök szabályok alapján szeretne egyszeri bejelentkezés Az SAML-jogcímek az meghatározott *
+-   **SAML-alapú bejelentkezés** – válassza ki a [SAML-alapú bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) módba, ha az alkalmazás támogatja az SAML- vagy OpenID Connect protokollok, vagy hogy képes legyen leképezni a felhasználók az adott alkalmazás-szerepkörök szabályok alapján szeretne egyszeri bejelentkezés Az SAML-jogcímek az meghatározott *
 
    >[!NOTE]
    >Ez a beállítás nem érhető el, ha egy alkalmazás a proxy van konfigurálva.

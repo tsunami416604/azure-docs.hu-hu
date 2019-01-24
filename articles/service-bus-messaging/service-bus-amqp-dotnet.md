@@ -3,23 +3,23 @@ title: Az Azure Service Bus .NET-tel és az AMQP 1.0-s |} A Microsoft Docs
 description: Az AMQP használatával a .NET használatával az Azure Service Bus használatával
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
-ms.author: spelluru
-ms.openlocfilehash: ad789b7a65fd12abb2a6e92c7c8896677de80cec
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: f5713fe3333f291d8d28a6ef3df48572507661be
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702238"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853204"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>A Service Bus, a .NET használata az AMQP 1.0 használatával
 
@@ -71,25 +71,25 @@ Csak a közvetlenül az üzenet törzse AMQP típusainak szerializálására .NE
 | sbyte |bájt |Az AMQP-érték |
 | rövid |rövid |Az AMQP-érték |
 | int |int |Az AMQP-érték |
-| hossz |hossz |Az AMQP-érték |
+| hosszú |hosszú |Az AMQP-érték |
 | lebegőpontos |lebegőpontos |Az AMQP-érték |
 | double |double |Az AMQP-érték |
 | tizedes tört |decimal128 |Az AMQP-érték |
 | CHAR |CHAR |Az AMQP-érték |
 | DateTime |időbélyeg |Az AMQP-érték |
-| GUID |UUID |Az AMQP-érték |
-| byte] |Bináris |Az AMQP-érték |
+| GUID |uuid |Az AMQP-érték |
+| byte[] |Bináris |Az AMQP-érték |
 | sztring |sztring |Az AMQP-érték |
 | System.Collections.IList |lista |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. |
 | System.Array |tömb |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. |
-| System.Collections.IDictionary |Térkép |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. Megjegyzés: a csak karakterlánc-kulcsok használata támogatott. |
+| System.Collections.IDictionary |térkép |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. Megjegyzés: a csak karakterlánc-kulcsok használata támogatott. |
 | URI |Karakterlánc leírt (lásd az alábbi táblázatban) |Az AMQP-érték |
 | DateTimeOffset |Mennyi ideig leírt (lásd az alábbi táblázatban) |Az AMQP-érték |
 | Időtartam |Mennyi ideig leírt (lásd az alábbi) |Az AMQP-érték |
 | Stream |Bináris |Az AMQP-adatok (több is lehet). Az adatok szakaszok a nyers bájt, olvassa el a Stream-objektumból. |
 | Egyéb objektum |Bináris |Az AMQP-adatok (több is lehet). Az objektum, amely a DataContractSerializer vagy az alkalmazás által biztosított serializátor használ a szerializált bináris tartalmazza. |
 
-| Typ .NET | A csatlakoztatott AMQP leírt típusa | Megjegyzések |
+| .NET Type | A csatlakoztatott AMQP leírt típusa | Megjegyzések |
 | --- | --- | --- |
 | URI |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
@@ -107,10 +107,10 @@ Van néhány kisebb eltérés, a Service Bus .NET API viselkedését az AMQP és
 
 A [.NET API-k](/dotnet/api/) tegye elérhetővé az AMQP protokollt viselkedését vezérlő több beállítások:
 
-* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: meghatározza a kezdeti kredit egy hivatkozást a alkalmazni. Az alapértelmezett érték a 0.
-* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: AMQP keret maximális méretét érhető el a kapcsolatot az egyeztetés során vezérlők nyissa meg az idő. Az alapértelmezett érték a 65 536 bájt.
-* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: batchable adatátvitel esetén ez az érték határozza meg, a maximális késleltetés dispositions küldéséhez. Alapértelmezés szerint öröklik a küldők és fogadók. Az egyes küldő/fogadó felülbírálhatja az alapértelmezett beállítás, amely 20 ezredmásodperc.
-* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: szabályozza, hogy az AMQP-kapcsolatok létrehozása történik SSL-kapcsolaton keresztül. Az alapértelmezett érték **igaz**.
+* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: Azt szabályozza, hogy a kezdeti kredit egy hivatkozást a alkalmazni. Az alapértelmezett érték a 0.
+* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: Vezérlők AMQP keret maximális méretét érhető el a kapcsolatot az egyeztetés során nyissa meg az időt. Az alapértelmezett érték a 65 536 bájt.
+* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: Batchable adatátvitel esetén ezt az értéket a maximális késleltetés dispositions küldési határozza meg. Alapértelmezés szerint öröklik a küldők és fogadók. Az egyes küldő/fogadó felülbírálhatja az alapértelmezett beállítás, amely 20 ezredmásodperc.
+* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: Azt szabályozza, hogy az AMQP-kapcsolatok létrehozása történik SSL-kapcsolaton keresztül. Az alapértelmezett érték **igaz**.
 
 ## <a name="next-steps"></a>További lépések
 

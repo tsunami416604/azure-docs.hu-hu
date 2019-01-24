@@ -2,20 +2,20 @@
 title: Az Azure Stack adatközpont integrációja - identitás
 description: 'Útmutató: Azure Stack az AD FS integrálhatók az adatközponttaql, az AD FS'
 services: azure-stack
-author: jeffgilb
+author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/08/19
-ms.author: jeffgilb
-ms.reviewer: wfayed
+ms.date: 01/23/19
+ms.author: patricka
+ms.reviewer: thoroet
 keywords: ''
-ms.openlocfilehash: 63ac30728cceae76f869f5529905cd6d3dde9ae2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4f599379de07a9628ee81425ddac2374411bdf97
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263796"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852762"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
@@ -193,16 +193,21 @@ A következő eljárás olyan számítógépen, amelyen a hálózati kapcsolat �
 
 Ez az eljárás, amely képes kommunikálni az Azure Stack a rendszerjogosultságú végpont, és hozzáférjen a metaadat-fájlt az előző lépésben létrehozott számítógépet használni.
 
-1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet.
+1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és a kiemelt végponthoz csatlakozik.
 
    ```PowerShell  
    $federationMetadataFileContent = get-content c:\metadata.xml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
-   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
    ```
 
-2. Futtassa a következő parancsot a környezetnek megfelelő paraméterekkel az alapértelmezett szolgáltatója előfizetés tulajdonosának frissítése:
+2. Most, hogy a kiemelt végponthoz csatlakozik, futtassa a következő parancsot, a környezetnek megfelelő paraméterek használatával:
+
+    ```PowerShell
+    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
+    ```
+
+3. Futtassa a következő parancsot a környezetnek megfelelő paraméterekkel az alapértelmezett szolgáltatója előfizetés tulajdonosának frissítése:
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"

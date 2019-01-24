@@ -3,19 +3,19 @@ title: Nyelvi testreszabás az Azure Active Directory B2C |} A Microsoft Docs
 description: További információ a nyelvi testreszabása.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e115db18770ef304d823ff9c35d7d2cf302d5ccf
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0eee98ebb449cd1b96ae9805010e55499e006474
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187762"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845036"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C a nyelvi testreszabás
 
@@ -191,12 +191,12 @@ Chrome és a Firefox beállított nyelvet is kérhetnek. Ha egy támogatott nyel
 | finn               | fi            |
 | francia                | fr            |
 | gudzsaráti              | Gu            |
-| hindi                 | szia            |
+| hindi                 | hi            |
 | horvát              | óra            |
 | magyar             | hu            |
 | olasz               | it            |
 | japán              | ja            |
-| kannada               | KN            |
+| kannada               | kn            |
 | koreai                | ko            |
 | malajálam             | ml            |
 | maráthi               | MR            |
@@ -209,7 +209,7 @@ Chrome és a Firefox beállított nyelvet is kérhetnek. Ha egy támogatott nyel
 | Portugál – Portugália | pt-pt         |
 | román              | ro            |
 | orosz               | ru            |
-| szlovák                | SK            |
+| szlovák                | sk            |
 | svéd               | sv            |
 | tamil                 | TA            |
 | telugu                | Te            |

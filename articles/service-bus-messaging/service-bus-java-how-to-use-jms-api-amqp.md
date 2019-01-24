@@ -3,9 +3,9 @@ title: Az AMQP 1.0 használata a Java Service Bus API |} A Microsoft Docs
 description: Hogyan használható a Java Message Service (JMS) az Azure Service Bus és az Advanced Message Queuing AMQP protokoll 1.0-s.
 services: service-bus-messaging
 documentationcenter: java
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
-ms.author: spelluru
-ms.openlocfilehash: fbd74b227afd2191616100d74c7864eacf015add
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: aschhab
+ms.openlocfilehash: f0c3aac95b1d19dc3f217cc146532254d8740ca0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308070"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853289"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>A Service Bus és az AMQP 1.0-t a Java Message Service (JMS) API használata
 A speciális Message Queuing AMQP protokoll 1.0-s egy hatékony, megbízható, alkalmazásszintű üzenetkezelő protokoll, amely nagy teherbírású, többplatformos üzenetkezelési alkalmazások létrehozásához használható.
@@ -41,14 +41,14 @@ Az Apache Qpid JMS AMQP 1.0-s ügyféloldali kódtár legújabb verzióját töl
 
 Hozzá kell adnia a következő négy JAR-fájlok az Apache Qpid JMS AMQP 1.0-s terjesztési archívból a Java OSZTÁLYÚTVONAL összeállításakor és a Service Bus JMS alkalmazások futtatásához:
 
-* geronimo-jms\_1.1\_specifikációja-1.0.jar
+* geronimo-jms\_1.1\_spec-1.0.jar
 * qpid-jms - client-[version] .jar
 
 > ! [MEGJEGYZÉS] JMS JAR neve és verziója megváltozott. További információkért lásd: [Qpid JMS - AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
 
 ## <a name="coding-java-applications"></a>Kódolási Java-alkalmazások
 ### <a name="java-naming-and-directory-interface-jndi"></a>Java-kiosztási és a Directory Interface (JNDI)
-JMS a Java-kiosztási és a Directory Interface (JNDI) használatával hozzon létre egy logikai és fizikai nevének elkülönítése. Két típusú JMS objektumok használatával JNDI feloldása: ConnectionFactory és a célkiszolgálón. JNDI, amelybe különböző címtárszolgáltatások név feloldása feladatkörök kezelésére is csatlakoztathatja szolgáltató modellt használ. Az Apache Qpid JMS AMQP 1.0 könyvtár tartalmaz egy egyszerű tulajdonságok fájlalapú JNDI szolgáltató, amely konfigurálva van a következő tulajdonságok fájl használatával formázása:
+JMS a Java-kiosztási és a Directory Interface (JNDI) használatával hozzon létre egy logikai és fizikai nevének elkülönítése. Két típusú JMS objektumok feloldása JNDI használatával: ConnectionFactory és a cél. JNDI, amelybe különböző címtárszolgáltatások név feloldása feladatkörök kezelésére is csatlakoztathatja szolgáltató modellt használ. Az Apache Qpid JMS AMQP 1.0 könyvtár tartalmaz egy egyszerű tulajdonságok fájlalapú JNDI szolgáltató, amely konfigurálva van a következő tulajdonságok fájl használatával formázása:
 
 ```
 # servicebus.properties - sample JNDI configuration

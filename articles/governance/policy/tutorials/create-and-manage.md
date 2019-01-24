@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7cfcb71567931b1581618cf8f2239fb004befff8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ecebeef509f1f23e34ade6a79b8ffe39d4cbb0a5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087031"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845622"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából
 
@@ -110,7 +110,7 @@ Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet v
     }
     ```
 
-    A *mező* a szabályzatbeli szabályban tulajdonság a következő értékek egyikének kell lennie: név, típus, hely, címkék vagy alias. Példa egy aliasra: `"Microsoft.Compute/VirtualMachines/Size"`.
+    A *mező* a szabályzatbeli szabályban tulajdonság a következő értékek egyikének kell lennie: Név, típus, hely, címkék vagy alias. Példa egy aliasra: `"Microsoft.Compute/VirtualMachines/Size"`.
 
     További Azure-szabályzatmintákért lásd: [Az Azure Policy mintái](../samples/index.md).
 
@@ -160,12 +160,12 @@ Használjon az alábbi példában láthatóhoz hasonló kéréstörzset:
 
 A PowerShell-példa folytatása előtt győződjön meg arról, hogy telepítette az Azure PowerShell legújabb verzióját. A szabályzatparaméterek a 3.6.0-ás verzióban lettek hozzáadva. Ha egy korábbi verzióval rendelkezik, a példák egy hibaüzenet a paraméter nem található adja vissza.
 
-Szabályzatdefiníciót a `New-AzureRmPolicyDefinition` parancsmag használatával is létrehozhat.
+Szabályzatdefiníciót a `New-AzPolicyDefinition` parancsmag használatával is létrehozhat.
 
 Szabályzatdefiníció fájlból történő létrehozásához adja meg a fájl elérési útját. Külső fájl esetében használja az alábbi példát:
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
     -Name 'denyCoolTiering' `
     -DisplayName 'Deny cool access tiering for storage' `
     -Policy 'https://raw.githubusercontent.com/Azure/azure-policy-samples/master/samples/Storage/storage-account-access-tier/azurepolicy.rules.json'
@@ -174,7 +174,7 @@ $definition = New-AzureRmPolicyDefinition `
 Helyi fájl esetében használja a következő példát:
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
     -Name 'denyCoolTiering' `
     -Description 'Deny cool access tiering for storage' `
     -Policy 'c:\policies\coolAccessTier.json'
@@ -183,7 +183,7 @@ $definition = New-AzureRmPolicyDefinition `
 Beágyazott szabállyal rendelkező szabályzatdefiníció létrehozásához használja a következő példát:
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition -Name 'denyCoolTiering' -Description 'Deny cool access tiering for storage' -Policy '{
+$definition = New-AzPolicyDefinition -Name 'denyCoolTiering' -Description 'Deny cool access tiering for storage' -Policy '{
     "if": {
         "allOf": [{
                 "field": "type",
@@ -238,7 +238,7 @@ $parameters = '{
     }
 }'
 
-$definition = New-AzureRmPolicyDefinition -Name 'storageLocations' -Description 'Policy to specify locations for storage accounts.' -Policy $policy -Parameter $parameters
+$definition = New-AzPolicyDefinition -Name 'storageLocations' -Description 'Policy to specify locations for storage accounts.' -Policy $policy -Parameter $parameters
 ```
 
 ### <a name="view-policy-definitions-with-powershell"></a>Szabályzatdefiníciók megtekintése a PowerShell használatával
@@ -246,7 +246,7 @@ $definition = New-AzureRmPolicyDefinition -Name 'storageLocations' -Description 
 Az előfizetés összes szabályzatdefiníciójának megtekintéséhez használja az alábbi parancsot:
 
 ```azurepowershell-interactive
-Get-AzureRmPolicyDefinition
+Get-AzPolicyDefinition
 ```
 
 Visszaadja az összes elérhető szabályzatdefiníciót, köztük a beépített szabályzatokat is. Minden szabályzat az alábbi formátumban lesz visszaadva:
@@ -338,7 +338,7 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
 1. Adja meg a kezdeményezés **nevét** és **leírását**.
 
-   Ebben a példában azt ellenőrzi, hogy vannak-e erőforrások tételről szóló biztonságossá. Adja a kezdeményezésnek a **Biztonságossá tétel** nevet, és állítsa be a következő leírást: **Ez a kezdeményezés az erőforrások biztosításához kapcsolódó szabályzatdefiníciók kezelésére lett létrehozva**.
+   Ebben a példában azt ellenőrzi, hogy vannak-e erőforrások tételről szóló biztonságossá. Adja meg a kezdeményezés **biztonságossá tétel** és állítsa be a leírást, mint: **A kezdeményezés erőforrások biztosításához kapcsolódó szabályzatdefiníciók kezelésére lett létrehozva**.
 
 1. A **Kategória** megadásakor válasszon a meglévő lehetőségek közül, vagy hozzon létre új kategóriát.
 
@@ -367,7 +367,7 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
 1. A **Létrehozás** területen válassza a **Definíciók** elemet az Azure Policy lap bal oldalán.
 
-1. Keresse meg a korában létrehozott **Biztonságossá tétel** kezdeményezési definíciót, és kattintson rá. Kattintson az oldal tetején található **Hozzárendelés** lehetőségre a **Biztonságossá tétel: kezdeményezés hozzárendelése** oldal megnyitásához.
+1. Keresse meg a korában létrehozott **Biztonságossá tétel** kezdeményezési definíciót, és kattintson rá. Válassza ki **hozzárendelése** nyissa meg a lap tetején a **biztonságossá tétel: Kezdeményezés hozzárendelése** lapot.
 
    ![Definíció hozzárendelése](../media/create-and-manage/assign-definition.png)
 
@@ -375,13 +375,13 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
    ![Kattintás a jobb gombbal egy sorra.](../media/create-and-manage/select-right-click.png)
 
-1. A **Biztonságossá tétel: kezdeményezés hozzárendelése** oldalon adja meg a következő példaadatokat. A saját adatait is használhatja.
+1. Töltse ki a **biztonságossá tétel: Kezdeményezés hozzárendelése** lap a következő példaadatok megadásával. A saját adatait is használhatja.
 
-   - Hatókör: A felügyeleti csoport vagy előfizetés, ahová a kezdeményezést mentette lesz az alapértelmezett.  A hatókör módosításához mentse a kezdeményezést egy előfizetésbe vagy erőforráscsoportba a mentési helyen belül.
-   - Kizárások: a hatókörön belül bármely erőforrást konfigurálhatja úgy, hogy a kezdeményezési hozzárendelés ne legyen alkalmazva rá.
-   - Kezdeményezési definíció és hozzárendelés neve: Biztonságossá tétel (a rendszer automatikusan a hozzárendelt kezdeményezés nevével tölti fel a mezőt).
-   - Leírás: Ez a kezdeményezési hozzárendelés ennek a szabályzatdefiníció-csoportnak a kikényszerítésére lett létrehozva.
-   - Hozzárendelte: A kitöltése automatikus az éppen bejelentkezett felhasználó alapján. Ennek a mezőnek a kitöltése nem kötelező, tehát megadhatók egyedi értékek.
+   - Hatály: A felügyeleti csoport vagy a kezdeményezés mentett előfizetés lesz az alapértelmezett.  A hatókör módosításához mentse a kezdeményezést egy előfizetésbe vagy erőforráscsoportba a mentési helyen belül.
+   - Kizárásokat: Állítsa be, hogy a kezdeményezés-hozzárendelés nem alkalmazható őket a hatókörön belüli erőforrásokat.
+   - Kezdeményezési definíció és a hozzárendelés neve: Biztonságos (előre fel van töltve, érvényessége a felhasználóhoz a kezdeményezés nevét) beolvasása.
+   - Leírás: Ez a kezdeményezési hozzárendelés személyre szabott Ez a csoport a szabályzatdefiníciók kényszerítése.
+   - Hozzárendelte: Automatikusan kitölti a alapján éppen bejelentkezett. A mező kitöltése nem kötelező, megadhatók egyéni értékek.
 
 1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ebben a mezőben _kell_ ellenőrizni kell, ha a szabályzat vagy a kezdeményezés érvényessége a felhasználóhoz tartalmaznak egy házirendet, az a [deployIfNotExists](../concepts/effects.md#deployifnotexists) érvénybe. Mivel nem az ebben az oktatóanyagban használt házirendet, hagyja üresen a mezőt. További információkat a [felügyelt identitásokkal](../../../active-directory/managed-identities-azure-resources/overview.md) és [a szervizelési biztonság működésével](../how-to/remediate-resources.md#how-remediation-security-works) kapcsolatos cikkben találhat.
 
@@ -408,15 +408,15 @@ A következő példában bármely SQL-kiszolgálóverzió megengedett egyetlen e
 
 Központi telepítés egy hozzárendelt szabályzatot vagy kezdeményezést. Ebben az esetben két helyen tekinthet meg:
 
-- A központi telepítéssel célzott erőforráscsoporthoz: válassza ki **központi telepítések** a majd az oldal bal oldalán kattintson a a **üzemelő példány neve** a sikertelen üzembe helyezés. Az elutasított erőforrás _Tiltott_ állapotúként jelenik meg a listában. Ha tudni szeretné, hogy melyik szabályzat vagy kezdeményezés és hozzárendelés utasította el az erőforrás használatát, az üzembe helyezés áttekintési oldalán kattintson a **Sikertelen. A részletekért kattintson ide ->** elemre. A lap jobb oldalán megnyílik egy ablak a hibára vonatkozó információkkal. Alatt **hiba részleteinek** vannak, a kapcsolódó csoportházirend-objektumok a GUID megváltozott.
+- A központi telepítéssel célzott erőforráscsoporthoz: Válassza ki **központi telepítések** a majd az oldal bal oldalán kattintson a a **üzemelő példány neve** a sikertelen üzembe helyezés. Az elutasított erőforrás _Tiltott_ állapotúként jelenik meg a listában. Ha tudni szeretné, hogy melyik szabályzat vagy kezdeményezés és hozzárendelés utasította el az erőforrás használatát, az üzembe helyezés áttekintési oldalán kattintson a **Sikertelen. A részletekért kattintson ide ->** elemre. A lap jobb oldalán megnyílik egy ablak a hibára vonatkozó információkkal. Alatt **hiba részleteinek** vannak, a kapcsolódó csoportházirend-objektumok a GUID megváltozott.
 
   ![Szabályzat-hozzárendelés által elutasított üzembe helyezés](../media/create-and-manage/rg-deployment-denied.png)
 
-- Az Azure Policy oldalon: Az oldal bal oldalán válassza a **Megfelelőség** elemet, és kattintson **Az SQL Server 12.0-s verziójának megkövetelése** szabályzatra. A megnyíló oldalon látni fogja, hogy nőtt a **Megtagadás** értéke. Alatt a **események** lapon is itt jelennének meg akik próbált meg a központi telepítés, amely a szabályzat által megtagadva.
+- Az Azure Policy oldalon: Válassza ki **megfelelőségi** a lapot, majd kattintson a bal oldalán található a **szükséges SQL Server 12.0-s verziót** házirend. A megnyíló oldalon látni fogja, hogy nőtt a **Megtagadás** értéke. Alatt a **események** lapon is itt jelennének meg akik próbált meg a központi telepítés, amely a szabályzat által megtagadva.
 
   ![Hozzárendelt szabályzatok megfelelőségének áttekintése](../media/create-and-manage/compliance-overview.png)
 
-Ebben a példában Trent Baker, a Contoso egyik vezető virtualizálási szakembere végezte el a kijelölt feladatot. Kivételt Trent engedélyezni kell, azonban bármely erőforráscsoport nem - 12.0-ás SQL-kiszolgálók nem szeretnénk. Létrehoztunk egy új erőforráscsoportot **SQLServers_Excluded** néven, és most kivételt biztosítunk a számára a szabályzat-hozzárendelés alól.
+Ebben a példában Trent Baker, a Contoso vezető virtualizációs szakemberek számára, egyik műveletet végzett szükséges munkát. Kivételt Trent engedélyezni kell, azonban bármely erőforráscsoport nem - 12.0-ás SQL-kiszolgálók nem szeretnénk. Létrehoztunk egy új erőforráscsoportot **SQLServers_Excluded** néven, és most kivételt biztosítunk a számára a szabályzat-hozzárendelés alól.
 
 ### <a name="update-assignment-with-exclusion"></a>Hozzárendelés frissítése egy kizárással
 

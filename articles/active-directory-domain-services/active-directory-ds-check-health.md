@@ -4,7 +4,7 @@ description: A health-oldal használatával az Azure Portalon a felügyelt tarto
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: aee8492c73ace608abaeca9d833494e041d2b9dd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fe5776dad4c4b9ae96484ac266a23e87658cf578
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969004"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852831"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD Domain Services felügyelt tartomány állapotának ellenőrzése
 
@@ -32,7 +32,7 @@ A health-oldal használatával az Azure Portalon, Ön képesek arra, hogy mi tö
 2. Kattintson a tartomány állapotának megtekintéséhez.
 3. Kattintson a bal oldali navigációs ablaktáblában **egészségügyi**.
 
-A következő képen látható egy minta health-oldal mutatja be: ![health (példa)](./media/active-directory-domain-services-alerts/health-page.png)
+A következő képen látható egy minta health-oldal mutatja be: ![Példa health-oldal](./media/active-directory-domain-services-alerts/health-page.png)
 
 >[!NOTE]
 > A felügyelt tartomány állapotának abban az esetben minden órában. A felügyelt tartomány módosítások elvégzése után várja meg, amíg a következő értékelési ciklus során frissített a felügyelt tartomány állapotának megtekintéséhez. A jobb felső sarokban lévő "Legutóbbi értékelésének" időbélyeg jeleníti meg, ha a felügyelt tartomány állapotának legutóbbi értékelésének.
@@ -53,7 +53,7 @@ Figyelők a felügyelt tartományhoz, amely rendszeresen figyeli az Azure AD Dom
 
 Az Azure AD tartományi szolgáltatások jelenleg a következőket figyeli:
  - Backup
- - Szinkronizálás az Azure ad-vel
+ - Szinkronizálás az Azure AD-vel
 
 ### <a name="the-backup-monitor"></a>A "backup" figyelő
 Ez figyeli, hogy rendszeresen készítsen biztonsági másolatokat a felügyelt tartomány végrehajtása. A következő táblázat ismerteti, hogy milyen hatással vannak a biztonsági mentési figyelő részletei oszlopában:

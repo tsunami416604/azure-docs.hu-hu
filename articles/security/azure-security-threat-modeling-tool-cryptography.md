@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: be702571d178fc67eeb92de4e52a48d5bef72b18
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844651"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824626"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Biztonsági keret: Titkosítás |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -27,9 +27,9 @@ ms.locfileid: "52844651"
 | **Webalkalmazás** | <ul><li>[Csak a jóváhagyott szimmetrikus blokktitkosító és a kulcshosszok](#cipher-length)</li><li>[Használható jóváhagyott titkosítási mód letiltása és a szimmetrikus titkosítási inicializálási vektor ismert](#vector-ciphers)</li><li>[Jóváhagyott aszimmetrikus algoritmusok, kulcshosszok és kitöltési használata](#padding)</li><li>[Jóváhagyott véletlenszerű szám generátorok használata](#numgen)</li><li>[Ne használja a szimmetrikus stream Rejtjelek](#stream-ciphers)</li><li>[Jóváhagyott HMAC-val, MAC és beállítható kivonatoló algoritmusok használata](#mac-hash)</li><li>[Csak a jóváhagyott titkosítási kivonatot funkciók használata](#hash-functions)</li></ul> |
 | **Adatbázis** | <ul><li>[Erős titkosítási algoritmusok használatával titkosítja az adatokat az adatbázisban](#strong-db)</li><li>[SSIS-csomagok titkosítást és digitálisan aláírt](#ssis-signed)</li><li>[Adja hozzá a digitális aláírás kritikus adatbázis biztonságos elemekhez](#securables-db)</li><li>[SQL server EKM védelme érdekében titkosítási kulcsok használata](#ekm-keys)</li><li>[AlwaysEncrypted szolgáltatást használhatja, ha a titkosítási kulcsok nem szabad felfedni adatbázismotor](#keys-engine)</li></ul> |
 | **IoT-eszköz** | <ul><li>[Titkosítási kulcsok biztonságos Store IoT-eszköz](#keys-iot)</li></ul> | 
-| **IoT átjáró** | <ul><li>[Hozzon létre egy véletlenszerű szimmetrikus kulcs megfelelő hosszúságú az IoT Hub-hitelesítés](#random-hub)</li></ul> | 
-| **Dynamics CRM Mobile ügyfél** | <ul><li>[Győződjön meg arról, egy másik felügyeleti szabályzat van érvényben, amely egy PIN-kód használatát igényli, és lehetővé teszi a távoli törlése](#pin-remote)</li></ul> | 
-| **Dynamics CRM Outlook-ügyfelének** | <ul><li>[Győződjön meg, hogy egy másik felügyeleti szabályzat, amely egy PIN-kód/jelszó vagy automatikus zárolás igényel, és titkosítja az összes adatot (pl. Bitlocker)](#bitlocker)</li></ul> | 
+| **IoT Cloud Gateway** | <ul><li>[Hozzon létre egy véletlenszerű szimmetrikus kulcs megfelelő hosszúságú az IoT Hub-hitelesítés](#random-hub)</li></ul> | 
+| **Dynamics CRM Mobile Client** | <ul><li>[Győződjön meg arról, egy másik felügyeleti szabályzat van érvényben, amely egy PIN-kód használatát igényli, és lehetővé teszi a távoli törlése](#pin-remote)</li></ul> | 
+| **Dynamics CRM Outlook-ügyfelének** | <ul><li>[Győződjön meg, hogy egy másik felügyeleti szabályzat, amely egy PIN-kód/jelszó vagy automatikus zárolás igényel, és titkosítja az összes adatot (pl. BitLocker)](#bitlocker)</li></ul> | 
 | **Identitáskezelési kiszolgáló** | <ul><li>[Győződjön meg arról, hogy aláíró kulcsok vannak leváltani Identitáskiszolgálók használatakor](#rolled-server)</li><li>[Gondoskodjon arról, hogy erős titkosítási szempontból ügyfél-azonosító, titkos Ügyfélkód használt az Identity Serverben](#client-server)</li></ul> | 
 
 ## <a id="cipher-length"></a>Csak a jóváhagyott szimmetrikus blokktitkosító és a kulcshosszok
@@ -37,18 +37,18 @@ ms.locfileid: "52844651"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>Termékek csak szimmetrikus blokktitkosító és társított kulcshosszokat, amely kifejezetten a kriptográfiai Advisor a szervezet által jóváhagyott kell használnia. A Microsoft engedélyezett szimmetrikus algoritmusok belefoglalása a következő blokktitkosító:</p><ul><li>Új kódot AES-128, az AES-192 és az AES-256-ot is elfogadható</li><li>A meglévő kódot a visszamenőleges kompatibilitás érdekében három-kulcsot a 3DES fogadható el</li><li>A termékek szimmetrikus blokktitkosító használatával:<ul><li>Advanced Encryption Standard (AES) az új kód megadása kötelező</li><li>Három kulcsot triple Data Encryption Standard (3DES) érték átadása is megengedett a meglévő kódot a visszamenőleges kompatibilitás érdekében</li><li>Az összes többi blokktitkosító, RC2, DES, 2 kulcs 3DES, DESX és bonító, beleértve a régi adatok csak akkor használható, és le kell cserélni, ha a titkosításhoz használt</li></ul></li><li>Blokk szimmetrikus titkosítási algoritmusok 128 bites minimális kulcshosszúság szükség. Új kódja: AES esetében ajánlott csak blokk titkosítási algoritmus (AES-128, az AES-192 és az AES-256 megfelelőek az összes)</li><li>Három-kulcsot a 3DES jelenleg elfogadható, ha már használatban a meglévő kód; AES való használata javasolt. DES, DESX, RC2 és bonító rendszer már nem tekinthető biztonságosnak. Ezek az algoritmusok számára az előző verziókkal való kompatibilitás érdekében meglévő adatok csak akkor használható, és adatokat kell használatával újra titkosíthatja a javasolt blokktitkosító</li></ul><p>Vegye figyelembe, hogy a szimmetrikus blokktitkosító egy jóváhagyott titkosítási mód, amely egy megfelelő inicializáló vektort (IV) használatát igényli együtt kell használni. Egy megfelelő IV általában egy véletlenszerű számot, majd soha többé nem állandó érték</p><p>Örökölt vagy más módon nem jóváhagyott titkosítási algoritmusokat és kulcshosszokat kisebb használatát (szemben az új adatok) meglévő adat beolvasására vonatkozóan engedélyezhető a szervezet kriptográfiai tábla áttekintése után. Azonban meg kell fájlt egy kivételt a követelménnyel szemben. Emellett vállalati üzemelő példánya esetében a termékek megfontolandó figyelmeztetés rendszergazdák gyenge titkosítás segítségével adatokat olvasni. Az ilyen figyelmeztetést magyarázó és gyakorlatban hasznosítható kell lennie. Bizonyos esetekben célszerű lehet szeretné, hogy a csoportházirend szabályozza a gyenge titkosítás használata</p><p>Engedélyezett felügyelt titkosítási agilitás .NET algoritmusokat (sorrendben)</p><ul><li>AesCng (FIPS-kompatibilis)</li><li>AuthenticatedAesCng (FIPS-kompatibilis)</li><li>AESCryptoServiceProvider (FIPS-kompatibilis)</li><li>AESManaged (nem érvényes a FIPS-kompatibilis)</li></ul><p>Vegye figyelembe, hogy ezek az algoritmusok egyike segítségével megadható az `SymmetricAlgorithm.Create` vagy `CryptoConfig.CreateFromName` módszerek a machine.config fájl módosítása nélkül. Vegye figyelembe azt is, hogy a .NET, .NET 3.5-ös előtti verzióiban AES neve `RijndaelManaged`, és `AesCng` és `AuthenticatedAesCng` vannak > Codeplex webhelyen keresztül érhető el, és az alapjául szolgáló operációs rendszer a CNG szükséges</p>
+| **Lépések** | <p>Termékek csak szimmetrikus blokktitkosító és társított kulcshosszokat, amely kifejezetten a kriptográfiai Advisor a szervezet által jóváhagyott kell használnia. A Microsoft engedélyezett szimmetrikus algoritmusok belefoglalása a következő blokktitkosító:</p><ul><li>Új kódot AES-128, az AES-192 és az AES-256-ot is elfogadható</li><li>A meglévő kódot a visszamenőleges kompatibilitás érdekében három-kulcsot a 3DES fogadható el</li><li>A termékek szimmetrikus blokktitkosító használatával:<ul><li>Advanced Encryption Standard (AES) az új kód megadása kötelező</li><li>Három kulcsot triple Data Encryption Standard (3DES) érték átadása is megengedett a meglévő kódot a visszamenőleges kompatibilitás érdekében</li><li>Az összes többi blokktitkosító, RC2, DES, 2 kulcs 3DES, DESX és bonító, beleértve a régi adatok csak akkor használható, és le kell cserélni, ha a titkosításhoz használt</li></ul></li><li>Blokk szimmetrikus titkosítási algoritmusok 128 bites minimális kulcshosszúság szükség. Új kódja: AES esetében ajánlott csak blokk titkosítási algoritmus (AES-128, az AES-192 és az AES-256 megfelelőek az összes)</li><li>Három-kulcsot a 3DES jelenleg elfogadható, ha már használatban a meglévő kód; AES való használata javasolt. DES, DESX, RC2 és bonító rendszer már nem tekinthető biztonságosnak. Ezek az algoritmusok számára az előző verziókkal való kompatibilitás érdekében meglévő adatok csak akkor használható, és adatokat kell használatával újra titkosíthatja a javasolt blokktitkosító</li></ul><p>Vegye figyelembe, hogy a szimmetrikus blokktitkosító egy jóváhagyott titkosítási mód, amely egy megfelelő inicializáló vektort (IV) használatát igényli együtt kell használni. Egy megfelelő IV általában egy véletlenszerű számot, majd soha többé nem állandó érték</p><p>Örökölt vagy más módon nem jóváhagyott titkosítási algoritmusokat és kulcshosszokat kisebb használatát (szemben az új adatok) meglévő adat beolvasására vonatkozóan engedélyezhető a szervezet kriptográfiai tábla áttekintése után. Azonban meg kell fájlt egy kivételt a követelménnyel szemben. Emellett vállalati üzemelő példánya esetében a termékek megfontolandó figyelmeztetés rendszergazdák gyenge titkosítás segítségével adatokat olvasni. Az ilyen figyelmeztetést magyarázó és gyakorlatban hasznosítható kell lennie. Bizonyos esetekben célszerű lehet szeretné, hogy a csoportházirend szabályozza a gyenge titkosítás használata</p><p>Engedélyezett felügyelt titkosítási agilitás .NET algoritmusokat (sorrendben)</p><ul><li>AesCng (FIPS-kompatibilis)</li><li>AuthenticatedAesCng (FIPS-kompatibilis)</li><li>AESCryptoServiceProvider (FIPS-kompatibilis)</li><li>AESManaged (non-FIPS-compliant)</li></ul><p>Vegye figyelembe, hogy ezek az algoritmusok egyike segítségével megadható az `SymmetricAlgorithm.Create` vagy `CryptoConfig.CreateFromName` módszerek a machine.config fájl módosítása nélkül. Vegye figyelembe azt is, hogy a .NET, .NET 3.5-ös előtti verzióiban AES neve `RijndaelManaged`, és `AesCng` és `AuthenticatedAesCng` vannak > Codeplex webhelyen keresztül érhető el, és az alapjául szolgáló operációs rendszer a CNG szükséges</p>
 
 ## <a id="vector-ciphers"></a>Használható jóváhagyott titkosítási mód letiltása és a szimmetrikus titkosítási inicializálási vektor ismert
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -59,7 +59,7 @@ ms.locfileid: "52844651"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -70,7 +70,7 @@ ms.locfileid: "52844651"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -81,7 +81,7 @@ ms.locfileid: "52844651"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -92,7 +92,7 @@ ms.locfileid: "52844651"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -103,7 +103,7 @@ ms.locfileid: "52844651"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -114,7 +114,7 @@ ms.locfileid: "52844651"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Egy titkosítási algoritmus kiválasztása](https://technet.microsoft.com/library/ms345262(v=sql.130).aspx) |
@@ -125,7 +125,7 @@ ms.locfileid: "52844651"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Azonosítsa a forráshelyet, a digitális aláírások csomagok](https://msdn.microsoft.com/library/ms141174.aspx), [fenyegetések és biztonsági rések kockázatait (Integration Services)](https://msdn.microsoft.com/library/bb522559.aspx) |
@@ -136,18 +136,18 @@ ms.locfileid: "52844651"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [ALÁÍRÁS (Transact-SQL) hozzáadása](https://msdn.microsoft.com/library/ms181700) |
-| **Lépések** | Azokban az esetekben, ahol egy biztonságos kritikus adatbázis integritása rendelkezik-e vissza kell igazolnia digitális aláírások kell használni. Adatbázis biztonságos elemekhez, például a tárolt eljárás, függvény, szerelvény vagy az eseményindító digitális aláírással. Az alábbi példában az, amikor ez akkor lehet hasznos: ossza meg velünk tegyük fel, az ISV (független szoftverszállító) nyújtott támogatás kézbesíti az ügyfeleknek egy szoftverfrissítési. Működtessenek, mielőtt a független Szoftvergyártók szeretné győződjön meg arról, hogy a szoftver biztonságos adatbázis nem módosították vagy véletlenül, vagy egy rosszindulatú kísérlet során. A biztonságos digitális aláírással, ha az ISV ellenőrizheti a digitális aláírás és ellenőrizni az integritását.| 
+| **Hivatkozások**              | [ADD SIGNATURE (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
+| **Lépések** | Azokban az esetekben, ahol egy biztonságos kritikus adatbázis integritása rendelkezik-e vissza kell igazolnia digitális aláírások kell használni. Adatbázis biztonságos elemekhez, például a tárolt eljárás, függvény, szerelvény vagy az eseményindító digitális aláírással. Az alábbi példában az, amikor ez akkor lehet hasznos: Tegyük fel, ossza meg velünk az ISV (független szoftverszállító) nyújtott támogatás kézbesíti az ügyfeleknek egy szoftverfrissítési. Működtessenek, mielőtt a független Szoftvergyártók szeretné győződjön meg arról, hogy a szoftver biztonságos adatbázis nem módosították vagy véletlenül, vagy egy rosszindulatú kísérlet során. A biztonságos digitális aláírással, ha az ISV ellenőrizheti a digitális aláírás és ellenőrizni az integritását.| 
 
 ## <a id="ekm-keys"></a>SQL server EKM védelme érdekében titkosítási kulcsok használata
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az SQL Server bővíthető kulcskezelés (EKM)](https://msdn.microsoft.com/library/bb895340), [bővíthető kulcskezelés az Azure Key Vault (SQL Server) használatával](https://msdn.microsoft.com/library/dn198405) |
@@ -158,7 +158,7 @@ ms.locfileid: "52844651"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | SQL Azure, OnPrem |
 | **Attribútumok**              | SQL-verzió - 12-es MsSQL2016 |
 | **Hivatkozások**              | [Always Encrypted (adatbázismotor)](https://msdn.microsoft.com/library/mt163865) |
@@ -169,7 +169,7 @@ ms.locfileid: "52844651"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszköz | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | Eszköz operációs rendszere – a Windows IoT Core, eszközkapcsolat – Azure IoT eszközoldali SDK-k |
 | **Hivatkozások**              | [A Windows IoT Core TPM](https://developer.microsoft.com/windows/iot/docs/tpm), [állítsa be a TPM-eszköz Windows IoT Core-on](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm), [Azure IoT eszköz SDK-t TPM-eszköz](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
@@ -191,8 +191,8 @@ Ahogy látható, az eszköz elsődleges kulcs nem szerepel a kódban. Ehelyett t
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | IoT átjáró | 
-| **SDL fázis**               | Felépítés |  
+| **Összetevő**               | IoT Cloud Gateway | 
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | Átjáró kiválasztása – Azure IoT Hub |
 | **Hivatkozások**              | –  |
@@ -203,29 +203,29 @@ Ahogy látható, az eszköz elsődleges kulcs nem szerepel a kódban. Ehelyett t
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM Mobile ügyfél | 
-| **SDL fázis**               | Környezet |  
+| **SDL Phase**               | Környezet |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
 | **Lépések** | Győződjön meg arról, egy másik felügyeleti szabályzat van érvényben, amely egy PIN-kód használatát igényli, és lehetővé teszi a távoli törlése |
 
-## <a id="bitlocker"></a>Győződjön meg, hogy egy másik felügyeleti szabályzat, amely egy PIN-kód/jelszó vagy automatikus zárolás igényel, és titkosítja az összes adatot (pl. Bitlocker)
+## <a id="bitlocker"></a>Győződjön meg, hogy egy másik felügyeleti szabályzat, amely egy PIN-kód/jelszó vagy automatikus zárolás igényel, és titkosítja az összes adatot (pl. BitLocker)
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM Outlook-ügyfelének | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Győződjön meg, hogy egy másik felügyeleti szabályzat, amely egy PIN-kód/jelszó vagy automatikus zárolás igényel, és titkosítja az összes adatot (pl. Bitlocker) |
+| **Lépések** | Győződjön meg, hogy egy másik felügyeleti szabályzat, amely egy PIN-kód/jelszó vagy automatikus zárolás igényel, és titkosítja az összes adatot (pl. BitLocker) |
 
 ## <a id="rolled-server"></a>Győződjön meg arról, hogy aláíró kulcsok vannak leváltani Identitáskiszolgálók használatakor
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Identitáskezelési kiszolgáló | 
-| **SDL fázis**               | Környezet |  
+| **Összetevő**               | Identity Server | 
+| **SDL Phase**               | Környezet |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Identitáskezelési kiszolgáló - kulcsokat, aláírás és titkosítás ](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
@@ -235,8 +235,8 @@ Ahogy látható, az eszköz elsődleges kulcs nem szerepel a kódban. Ehelyett t
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Identitáskezelési kiszolgáló | 
-| **SDL fázis**               | Felépítés |  
+| **Összetevő**               | Identity Server | 
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |

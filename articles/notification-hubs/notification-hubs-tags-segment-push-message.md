@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 01/23/2019
 ms.author: jowargo
-ms.openlocfilehash: f52900d06049623a0a81e509abdc5e9ef76f95e5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 31a22aabc7b0f1d51a673ef8642037103badcc02
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451476"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828162"
 ---
 # <a name="routing-and-tag-expressions"></a>Az Útválasztás és címke kifejezések
 
@@ -29,8 +29,7 @@ Címke kifejezések lehetővé teszik adott csoportok cél az eszközök, vagy m
 
 ## <a name="targeting-specific-registrations"></a>Célcsoport-kezelési adott regisztrációk
 
-A cél egyetlen módja a adott értesítési regisztrációk az, hogy címkéket társíthat, majd célként ezen címkék. Az [Regisztrációkezelés](notification-hubs-push-notification-registration-management.md), leküldéses értesítéseket egy alkalmazáshoz tartozik az eszköz regisztrálása egy értesítési központ kezelni fogadásához. A regisztráció egy értesítési központ létrehozása után az alkalmazás háttérrendszerével küldhet leküldéses értesítéseket rá.
-Az alkalmazás háttérrendszerével választhat a regisztrációk egy adott értesítés a cél a következő módon:
+A cél egyetlen módja a adott értesítési regisztrációk az, hogy címkéket társíthat, majd célként ezen címkék. Az [Regisztrációkezelés](notification-hubs-push-notification-registration-management.md), leküldéses értesítéseket egy alkalmazáshoz tartozik az eszköz regisztrálása egy értesítési központ kezelni fogadásához. A regisztráció egy értesítési központ létrehozása után az alkalmazás háttérrendszerével küldhet leküldéses értesítéseket rá. Az alkalmazás háttérrendszerével választhat a regisztrációk egy adott értesítés a cél a következő módon:
 
 1. **Szórási**: az értesítési központ összes regisztrációk az értesítés fogadásához.
 2. **Címke**: a megadott kód tartalmazó összes regisztrációk az értesítés fogadásához.
@@ -71,6 +70,9 @@ A képen látható Ágnes a Beatles frissítései iránt, és Bob olyan frissít
 Miközben kódolhatja több problémáit a címkéket (például "band_Beatles" vagy "follows_Charlie"), a címkék olyan egyszerű karakterláncok és a nem értékkel rendelkező tulajdonságok. A regisztráció csak a, illetve az adott címkével hiánya egyezik.
 
 Címkék használata a érdeklődési körök küldését teljes lépésenkénti oktatóanyagot, tekintse meg a [híreket használhatatlanná tévő](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
+
+> [!NOTE]
+> Az Azure Notification Hubs regisztrációs / 60 címkék legfeljebb támogat.
 
 ## <a name="using-tags-to-target-users"></a>A célként megadott felhasználók számára címkék használatával
 

@@ -3,19 +3,19 @@ title: Predikátumok és PredicateValidations – az Azure Active Directory B2C 
 description: Közösségi fiók jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C a.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d00bbddc6523f75b3208a41296b5b94f9f06a5ed
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 24aa6bf67b3b841b950e047a5c2509f04a3546b7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432171"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850858"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikátumok és PredicateValidations
 
@@ -35,14 +35,14 @@ A **predikátumokat** elem tartalmazza a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Predikátum | 1: n | Predikátumok listája. | 
+| Predikátum | 1:n | Predikátumok listája. | 
 
 A **predikátum** elem tartalmazza a következő attribútumokat:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A predikátum használt azonosító. Más elemek használhatja ezt az azonosítót a házirendben. |
-| Módszer | Igen | Az érvényesítéshez használandó módszer típusa. A lehetséges értékek: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**, vagy **IsDateRange**. A **IsLengthRange** érték ellenőrzi, hogy a megadott minimális és maximális paraméter tartományán belül van-e egy karakterlánc jogcím értékének hossza. A **MatchesRegex** értékét ellenőrzi, hogy egy karakterlánc jogcím értéke megegyezik-e egy reguláris kifejezést. A **IncludesCharacters** értékét ellenőrzi, hogy jogcím egy karakterláncértéket tartalmaz egy karakterkészlet. A **IsDateRange** értékét ellenőrzi, hogy egy olyan dátumértéket jogcím megadott minimális és maximális paraméterek számos között. |
+| Módszer | Igen | Az érvényesítéshez használandó módszer típusa. Érvényes értékek: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**, vagy **IsDateRange**. A **IsLengthRange** érték ellenőrzi, hogy a megadott minimális és maximális paraméter tartományán belül van-e egy karakterlánc jogcím értékének hossza. A **MatchesRegex** értékét ellenőrzi, hogy egy karakterlánc jogcím értéke megegyezik-e egy reguláris kifejezést. A **IncludesCharacters** értékét ellenőrzi, hogy jogcím egy karakterláncértéket tartalmaz egy karakterkészlet. A **IsDateRange** értékét ellenőrzi, hogy egy olyan dátumértéket jogcím megadott minimális és maximális paraméterek számos között. |
 
 A **predikátum** elem a következő elemeket tartalmazza:
 
@@ -55,7 +55,7 @@ A **paraméterek** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Paraméter | 1: n | A karakterlánc érvényesítési metódus típusú paramétereit. | 
+| Paraméter | 1:n | A karakterlánc érvényesítési metódus típusú paramétereit. | 
 
 A **paraméter** elem tartalmazza a következő attribútumokat:
 
@@ -134,7 +134,7 @@ A **PredicateValidations** elem tartalmazza a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateValidation | 1: n | A predikátum érvényesítési listája. | 
+| PredicateValidation | 1:n | A predikátum érvényesítési listája. | 
 
 A **PredicateValidation** elem tartalmazza a következő attribútumot:
 
@@ -146,13 +146,13 @@ A **PredicateValidation** elem tartalmazza a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateGroups | 1: n | Predikátum csoportok listája. | 
+| PredicateGroups | 1:n | Predikátum csoportok listája. | 
 
 A **PredicateGroups** elem tartalmazza a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateGroup | 1: n | Predikátumok listája. | 
+| PredicateGroup | 1:n | Predikátumok listája. | 
 
 A **PredicateGroup** elem tartalmazza a következő attribútumot:
 
@@ -165,7 +165,7 @@ A **PredicateGroup** elem a következő elemeket tartalmazza:
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 |  A predikátum, hogy a felhasználók tudni, hogy milyen előnyöket leírását, adjon meg. | 
-| PredicateReferences | 1: n | Predikátumhivatkozások listáját. | 
+| PredicateReferences | 1:n | Predikátumhivatkozások listáját. | 
 
 A **PredicateReferences** elem tartalmazza a következő attribútumokat:
 
@@ -177,7 +177,7 @@ A **PredicateReferences** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateReference | 1: n | A predikátum hivatkozik. | 
+| PredicateReference | 1:n | A predikátum hivatkozik. | 
 
 A **PredicateReference** elem tartalmazza a következő attribútumokat:
 
@@ -262,7 +262,7 @@ A **predikátumokat** és **PredicateValidationsInput** szabályozhatja, hogy a 
 Alapszintű ellenőrzés határozza meg, miután összevonni őket, és létrehozhat egy csoportot, amely a szabályzatban használhatja jelszóházirendek:
 
 - **SimplePassword** érvényesíti a DisallowedWhitespace AllowedAADCharacters és IsLengthBetween8And64
-- **StrongPassword** érvényesíti a DisallowedWhitespace, AllowedAADCharacters, IsLengthBetween8And64. Az utolsó csoport `CharacterClasses` fut egy további készletét predikátumok `MatchAtLeast` 3 értékre. A felhasználó jelszavának 8 – 16 karakter, és három a következő karakterek között kell lennie: kisbetűk, nagybetűs, számmal vagy szimbólummal.
+- **StrongPassword** érvényesíti a DisallowedWhitespace, AllowedAADCharacters, IsLengthBetween8And64. Az utolsó csoport `CharacterClasses` fut egy további készletét predikátumok `MatchAtLeast` 3 értékre. A felhasználó jelszavának 8 – 16 karakter, és hármat a következő karakterek között kell lennie: Kisbetűk, nagybetűk, számmal vagy szimbólummal.
 - **CustomPassword** csak DisallowedWhitespace, AllowedAADCharacters érvényesíti. Felhasználói biztosíthat, így minden bármely hosszúságú jelszót, mindaddig, amíg a karakterek érvényesek.
 
 ```XML

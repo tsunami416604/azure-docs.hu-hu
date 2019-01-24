@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure Active Directory Domain Services: A felügyelt tartományok Csoportházirend-kezelése |} A Microsoft Docs'
+title: 'Az Azure Active Directory tartományi szolgáltatások: A csoportházirend a felügyelt tartomány felügyeletéhez |} A Microsoft Docs'
 description: Csoportházirend felügyelete az Azure Active Directory Domain Services által felügyelt tartományokhoz
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 31805f7588a58eb1682ce50fd55dd14b967d6099
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e92c153158bc53a143bbc4c4c90c6007937fcc8f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158340"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848172"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD tartományi szolgáltatásokkal felügyelt tartományban a Csoportházirend-kezelése
 Az Azure Active Directory Domain Services beépített csoportházirend-objektumok (GPO) tartalmazza a "AADDC felhasználók" és "AADDC számítógépek" tárolók. Testre szabhatja a beépített csoportházirend-objektumokat a csoportházirend a felügyelt tartományon. Az "AAD DC rendszergazdák" csoport tagjai ezenkívül a felügyelt tartomány hozhat létre saját egyéni szervezeti egységekhez. Azok is egyéni csoportházirend-objektumok létrehozásához, és hozzárendelheti őket az alábbi egyéni szervezeti egységek. Az "AAD DC rendszergazdák" csoportba tartozó felhasználók kapnak a felügyelt tartomány csoportházirend felügyeleti jogosultságokkal.

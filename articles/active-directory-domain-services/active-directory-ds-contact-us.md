@@ -4,7 +4,7 @@ description: Lépjen kapcsolatba az Azure AD tartományi szolgáltatások termé
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: ergreenl
-ms.openlocfilehash: cedf09cd9dae23b3ea00d08b4a19ceb496e4958d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: feb3f17268443feddcbecd751c9da4bf16051ee5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155966"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849158"
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Az Azure AD Domain Services - kapcsolat
 ## <a name="contact-the-product-team"></a>Lépjen kapcsolatba a termékcsoport
 Ha problémákba ütközik a felügyelt tartomány, ellenőrizze, hogy ha a lépéseket leírt a [hibaelhárítási útmutatója](active-directory-ds-troubleshooting.md) megoldani a problémát. Ha továbbra is problémába ütközik, nyugodtan lépjen kapcsolatba velünk.
 
-Előfordulhat, hogy e-mailt küldjön: [Azure AD tartományi szolgáltatások visszajelzési funkciójához](mailto:aaddsfb@microsoft.com).
+Előfordulhat, hogy e-mail minket: [Az Azure AD Domain Services visszajelzési](mailto:aaddsfb@microsoft.com).
 
 Győződjön meg arról, hogy tartalmazzák a következő, így tudjuk a problémát vizsgálni.
 

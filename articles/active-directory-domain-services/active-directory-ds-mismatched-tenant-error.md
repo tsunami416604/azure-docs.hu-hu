@@ -4,7 +4,7 @@ description: A meglévő Azure AD Domain Services felügyelt tartományok nem eg
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: ergreenl
-ms.openlocfilehash: b73739ca6d392af191d1a51eca2d646a8a5cd4c4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7f69214304161c091a4550aff770b6333656972c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955072"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844211"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Nem egyező könyvtár ki a hibákat a meglévő Azure AD Domain Services felügyelt tartományok
 Meglévő Azure AD tartományi szolgáltatásokkal felügyelt tartományban van. Ha az Azure Portalon keresse meg, és megtekintheti a felügyelt tartományhoz, a következő hibaüzenet jelenik meg:
@@ -37,11 +37,11 @@ Az új Azure Portalon (és a kifejezetten az Azure AD Domain Services-bővítmé
 
 Röviden nem engedélyezheti a felügyelt tartomány a "contoso.com" Azure AD-bérlővel tulajdonosa egy másik Azure AD-bérlő "fabrikam.com" Azure-előfizetéshez tartozó virtuális hálózat. 
 
-**Érvényes konfigurációs**: Ebben a telepítési forgatókönyvben a Contoso a felügyelt tartomány engedélyezve van a Contoso Azure AD-bérlő számára. A felügyelt tartomány a Contoso Azure AD-bérlő által birtokolt Azure-előfizetéshez tartozó virtuális hálózat van közzétéve. Ezért a felügyelt tartomány és is a virtuális hálózat tartozik az Azure AD-bérlőhöz. Ez a konfiguráció érvényes és teljes mértékben támogatott.
+**Érvényes konfigurációs**: Ez a telepítési forgatókönyvben a Contoso a felügyelt tartomány engedélyezve van a Contoso Azure AD-bérlő. A felügyelt tartomány a Contoso Azure AD-bérlő által birtokolt Azure-előfizetéshez tartozó virtuális hálózat van közzétéve. Ezért a felügyelt tartomány és is a virtuális hálózat tartozik az Azure AD-bérlőhöz. Ez a konfiguráció érvényes és teljes mértékben támogatott.
 
 ![Érvényes bérlő konfigurációjához](./media/getting-started/valid-tenant-config.png)
 
-**Eltérő bérlők konfigurációs**: Ebben a telepítési forgatókönyvben a Contoso a felügyelt tartomány engedélyezve van a Contoso Azure AD-bérlő számára. A felügyelt tartomány azonban egy virtuális hálózatot, amelyhez tartozik egy Azure-előfizetést a Fabrikam az Azure AD-bérlő tulajdonában van közzétéve. Ezért a felügyelt tartomány és a virtuális hálózat tartozik két különböző Azure AD-bérlőt. Ez a konfiguráció az eltérő bérlők konfigurációs, és nem támogatott. A virtuális hálózaton át kell helyezni az Azure AD-bérlőhöz (vagyis a Contoso), a felügyelt tartományhoz. Tekintse meg a [feloldási](#resolution) című szakasz részletezi.
+**Eltérő bérlők konfigurációs**: Ez a telepítési forgatókönyvben a Contoso a felügyelt tartomány engedélyezve van a Contoso Azure AD-bérlő. A felügyelt tartomány azonban egy virtuális hálózatot, amelyhez tartozik egy Azure-előfizetést a Fabrikam az Azure AD-bérlő tulajdonában van közzétéve. Ezért a felügyelt tartomány és a virtuális hálózat tartozik két különböző Azure AD-bérlőt. Ez a konfiguráció az eltérő bérlők konfigurációs, és nem támogatott. A virtuális hálózaton át kell helyezni az Azure AD-bérlőhöz (vagyis a Contoso), a felügyelt tartományhoz. Tekintse meg a [feloldási](#resolution) című szakasz részletezi.
 
 ![Eltérő bérlők konfiguráció](./media/getting-started/mismatched-tenant-config.png)
 

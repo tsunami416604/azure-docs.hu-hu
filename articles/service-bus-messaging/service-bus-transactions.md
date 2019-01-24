@@ -3,9 +3,9 @@ title: Tranzakció-feldolgozási az Azure Service Bus – áttekintés |} A Micr
 description: Azure Service Bus elemi tranzakciókat és keresztül történő küldési áttekintése
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 64449247-1026-44ba-b15a-9610f9385ed8
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2018
-ms.author: spelluru
-ms.openlocfilehash: 6be1605ee1bb385c303d100729238a8eb71605d0
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: 69dc9c974c259f51ac0c6c9d64bfcda7ee65e181
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407331"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844585"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Tranzakciófeldolgozás a Service Bus – áttekintés
 
@@ -38,7 +38,7 @@ A Service Bus támogatja az egyetlen üzenetküldő entitásra (üzenetsor, tém
 A tranzakció hatókörén belül végrehajtható műveletek a következők:
 
 * **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: Send, SendAsync, SendBatch, SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: teljes körű, CompleteAsync, Szolgáltatásműveletnek, AbandonAsync, kézbesítetlen, DeadletterAsync, késleltetése, DeferAsync, RenewLock, RenewLockAsync 
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: Teljes körű, CompleteAsync, Szolgáltatásműveletnek, AbandonAsync, kézbesítetlen, DeadletterAsync, késleltetése, DeferAsync, RenewLock, RenewLockAsync 
 
 Kap műveletek nem szerepelnek, mivel feltételezzük, hogy az alkalmazás beszerzi az üzenetek a [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) mód valamely kap hurok vagy egy [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) visszahívást, és csak ekkor megnyílik az adott tranzakció-hatókörben, az üzenet feldolgozására.
 

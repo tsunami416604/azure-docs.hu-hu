@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure Active Directory Domain Services: Jelszóházirend |} A Microsoft Docs'
+title: 'Az Azure Active Directory tartományi szolgáltatások: Jelszóházirend |} A Microsoft Docs'
 description: A felügyelt tartományok jelszóházirendeket ismertetése
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: dcc1de5fa0ac1f394d0fe12fd24a1d6e745df83e
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 0bb3ccb3841b60f6c94ac1d6126bd2b0d44af092
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284608"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852694"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Jelszó- és fiókzárolási házirendet a felügyelt tartományok
 Ez a cikk bemutatja a felügyelt tartomány alapértelmezett jelszóházirendeket. Emellett ismerteti, hogyan konfigurálhatja ezeket a szabályzatokat.
@@ -60,7 +60,7 @@ A felügyelt tartományban a következő jelszóházirendek alapértelmezés sze
 A felügyelt tartományban a következő fiókzárolási házirendek alapértelmezés szerint vannak konfigurálva:
 * Fiókzárolás időtartama: 30
 * Sikertelen bejelentkezési kísérletek engedélyezett száma: 5
-* Alaphelyzetbe állítása sikertelen bejelentkezési kísérlet után száma: 30 perc
+* Alaphelyzetbe állítása sikertelen bejelentkezési próbálkozások száma után: 30 perc
 
 Hatékony felhasználói fiókok zárolt 30 percig öt érvénytelen jelszavak használata 2 percen belül. Fiókok 30 perc után lesznek automatikusan feloldani.
 
@@ -113,7 +113,7 @@ Egy egyéni FGPP létrehozása a felügyelt tartomány:
   ![Részletes Jelszóházirendek a alkalmazni](./media/how-to/fgpp-applied.png)
 
 > [!TIP]
-> **Az egyénijelszó-szabályzatoknak az egyéni szervezeti felhasználói fiókok:** finom részletes jelszóházirendek csak csoportok alkalmazhatók. Csak az egyéni szervezeti felhasználók egyéni jelszó szabályzatának konfigurálása, hozzon létre egy csoportot, amely a felhasználót tartalmazza, amelynek.
+> **A alkalmazni az egyéni szervezeti felhasználói fiókok esetében egyéni jelszóházirendek:** Finom részletes jelszóházirendek csak a csoportok alkalmazhatók. Csak az egyéni szervezeti felhasználók egyéni jelszó szabályzatának konfigurálása, hozzon létre egy csoportot, amely a felhasználót tartalmazza, amelynek.
 >
 >
 

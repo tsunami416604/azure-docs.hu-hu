@@ -4,17 +4,17 @@ description: Az Azure házirend értékelések és hatások határozza meg a meg
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 71911c3e196a05b9e10c719afe8f3b44522e6b02
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: cc5d59d523f87cac6ec8533d6af1342c58ba45f7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437912"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853629"
 ---
 # <a name="getting-compliance-data"></a>A megfelelőségi adatok beszerzése
 
@@ -29,6 +29,8 @@ Mielőtt megnézzük a jelentés a megfelelőségi módszereket, tekintsük át 
 
 > [!WARNING]
 > Ha a megfelelőségi állapot elvártnak megfelelően **nincs regisztrálva**, ellenőrizze, hogy a **Microsoft.PolicyInsights** erőforrás-szolgáltató regisztrálva van, és, hogy a felhasználó rendelkezik-e a megfelelő szerepköralapú hozzáférés-ellenőrzés () RBAC) engedélyekkel leírtak szerint [Itt](../overview.md#rbac-permissions-in-azure-policy).
+
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="evaluation-triggers"></a>Értékelés eseményindítók
 
@@ -145,9 +147,9 @@ A REST API-val lekérheti a portálon elérhető ugyanazokat az információkat 
 Az alábbi példák az Azure PowerShell használatához hozhatnak létre egy hitelesítési tokent ebben a példában kóddal. Ezután cserélje le a $restUri a példákban egy JSON-objektumot, majd a program értelmezni tudja beolvasni a karakterláncot.
 
 ```azurepowershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
+# Login first with Connect-AzAccount if not using Cloud Shell
 
-$azContext = Get-AzureRmContext
+$azContext = Get-AzContext
 $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
 $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
 $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
@@ -283,29 +285,33 @@ Házirend-események lekérdezésével kapcsolatos további információkért l�
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Az Azure PowerShell-modul házirend érhető el, a PowerShell-galériából [AzureRM.PolicyInsights](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights). A PowerShellGet használata esetén telepítheti a modul használatával `Install-Module -Name AzureRM.PolicyInsights` (Ellenőrizze, hogy a legújabb [Azure PowerShell-lel](/powershell/azure/azurerm/install-azurerm-ps) telepítve van):
+Az Azure PowerShell-modul házirend érhető el, a PowerShell-galériából [Az.PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights). A PowerShellGet használata esetén telepítheti a modul használatával `Install-Module -Name Az.PolicyInsights` (Ellenőrizze, hogy a legújabb [Azure PowerShell-lel](/powershell/azure/install-az-ps) telepítve van):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
-Install-Module -Name AzureRM.PolicyInsights
+Install-Module -Name Az.PolicyInsights
 
 # Import the downloaded module
-Import-Module AzureRM.PolicyInsights
+Import-Module Az.PolicyInsights
 
-# Login with Connect-AzureRmAccount if not using Cloud Shell
-Connect-AzureRmAccount
+# Login with Connect-AzAccount if not using Cloud Shell
+Connect-AzAccount
 ```
 
-A modul rendelkezik három parancsmag segítségével:
+A modul rendelkezik a következő parancsmagokat:
 
-- `Get-AzureRmPolicyStateSummary`
-- `Get-AzureRmPolicyState`
-- `Get-AzureRmPolicyEvent`
+- `Get-AzPolicyStateSummary`
+- `Get-AzPolicyState`
+- `Get-AzPolicyEvent`
+- `Get-AzPolicyRemediation`
+- `Remove-AzPolicyRemediation`
+- `Start-AzPolicyRemediation`
+- `Stop-AzPolicyRemediation`
 
 Példa: Az állapot összegzése első a legfelső hozzárendelt szabályzathoz a nem megfelelő erőforrások számát vesszük figyelembe.
 
 ```azurepowershell-interactive
-PS> Get-AzureRmPolicyStateSummary -Top 1
+PS> Get-AzPolicyStateSummary -Top 1
 
 NonCompliantResources : 15
 NonCompliantPolicies  : 1
@@ -316,7 +322,7 @@ PolicyAssignments     : {/subscriptions/{subscriptionId}/resourcegroups/RG-Tags/
 Példa: Az állapot rekord beolvasása a legtöbb kiértékelte a erőforrás esetében (alapértelmezés: csökkenő sorrendben-tárhelyek időbélyegző szerint).
 
 ```azurepowershell-interactive
-PS> Get-AzureRmPolicyState -Top 1
+PS> Get-AzPolicyState -Top 1
 
 Timestamp                  : 5/22/2018 3:47:34 PM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -342,7 +348,7 @@ PolicyDefinitionCategory   : tbd
 Példa: Az összes nem megfelelő virtuális hálózati erőforrás adatainak beszerzése.
 
 ```azurepowershell-interactive
-PS> Get-AzureRmPolicyState -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'"
+PS> Get-AzPolicyState -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'"
 
 Timestamp                  : 5/22/2018 4:02:20 PM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -368,7 +374,7 @@ PolicyDefinitionCategory   : tbd
 Példa: Nem kompatibilis virtuális hálózati erőforrások, amelyek adott dátum után történt kapcsolatos események beolvasása.
 
 ```azurepowershell-interactive
-PS> Get-AzureRmPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
+PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
 
 Timestamp                  : 5/19/2018 5:18:53 AM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -393,16 +399,16 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-A **PrincipalOid** mező segítségével egy adott felhasználó lekérése az Azure PowerShell-parancsmaggal `Get-AzureRmADUser`. Cserélje le **{principalOid}** a válasz az előző példából kap.
+A **PrincipalOid** mező segítségével egy adott felhasználó lekérése az Azure PowerShell-parancsmaggal `Get-AzADUser`. Cserélje le **{principalOid}** a válasz az előző példából kap.
 
 ```azurepowershell-interactive
-PS> (Get-AzureRmADUser -ObjectId {principalOid}).DisplayName
+PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
 Trent Baker
 ```
 
 ## <a name="log-analytics"></a>Log Analytics
 
-Ha rendelkezik egy [Log Analytics](../../../log-analytics/log-analytics-overview.md) munkaterület a `AzureActivity` az előfizetéshez kötött megoldás, a kiértékelési ciklusa egyszerű Kusto-lekérdezésekkel meg nem felelés eredményeit is megtekintheti, és a `AzureActivity` tábla. A Log Analytics adataival riasztások beállítható úgy, hogy tekintse meg a meg nem felelés esetén.
+Ha rendelkezik egy [Log Analytics](../../../log-analytics/log-analytics-overview.md) munkaterület a `AzureActivity` az előfizetéshez kötött megoldás, a kiértékelési ciklusa egyszerű Azure adatkezelő lekérdezésekkel meg nem felelés eredményeit is megtekintheti, és a `AzureActivity` a tábla. A Log Analytics adataival riasztások beállítható úgy, hogy tekintse meg a meg nem felelés esetén.
 
 ![Szabályzatoknak való megfelelés, a Log Analytics használatával](../media/getting-compliance-data/compliance-loganalytics.png)
 

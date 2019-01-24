@@ -4,7 +4,7 @@ description: Az Azure AD Domain Services hibaelhárítási útmutató
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: ergreenl
-ms.openlocfilehash: e2b7eb4f5be5e73e70f883f9510e7fc6a13d6bea
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8b752585fc72b7f4be8e7b9320290f8ad56f53c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156086"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844653"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Az Azure AD tartományi szolgáltatások – hibaelhárítási útmutató
 Ez a cikk a problémák jelentkezhetnek, ha beállítása és felügyelete Azure Active Directory (AD) Domain Services hibaelhárítási útmutatók nyújt.
@@ -128,7 +128,7 @@ Ez a hiba elhárításához alkalmazás engedélyezése, és ezután próbálja 
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>A felhasználók nem tudnak bejelentkezni az Azure AD Domain Services által felügyelt tartományba
 Ha az Azure AD-bérlőben egy vagy több felhasználó nem tud bejelentkezni az újonnan létrehozott felügyelt tartományba, hajtsa végre az alábbi hibaelhárítási lépéseket:
 
-* **Bejelentkezési egyszerű felhasználónév formátumban:** próbáljon meg bejelentkezni az egyszerű felhasználónév formátumban (például "joeuser@contoso.com") a SAMAccountName formátum ("CONTOSO\joeuser") helyett. A SAMAccountName előfordulhat, hogy automatikusan generált felhasználók amelynek egyszerű Felhasználónévi előtagját túl hosszú, vagy ugyanaz, mint egy másik felhasználó a felügyelt tartományon. Az egyszerű felhasználónév formátumú garantáltan Azure AD-bérlő belül egyedinek kell lennie.
+* **Jelentkezzen be használatával egyszerű felhasználónév formátuma:** A bejelentkezéshez próbálja az egyszerű felhasználónév (UPN) formátumot használni (például „joeuser@contoso.com”) a SAMAccountName formátum helyett („CONTOSO\joeuser”). A SAMAccountName előfordulhat, hogy automatikusan generált felhasználók amelynek egyszerű Felhasználónévi előtagját túl hosszú, vagy ugyanaz, mint egy másik felhasználó a felügyelt tartományon. Az egyszerű felhasználónév formátumú garantáltan Azure AD-bérlő belül egyedinek kell lennie.
 
 > [!NOTE]
 > Azt javasoljuk, hogy az Azure AD tartományi szolgáltatásokkal felügyelt tartományban jelentkezzen be az egyszerű felhasználónév formátumban.
@@ -136,8 +136,8 @@ Ha az Azure AD-bérlőben egy vagy több felhasználó nem tud bejelentkezni az 
 >
 
 * Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást](active-directory-ds-getting-started-password-sync.md) az első lépéseket ismertető útmutató lépéseinek megfelelően.
-* **Külső fiókok:** biztosítani, hogy az érintett felhasználói fiók ne külső fiók az Azure AD-bérlőben. Külső fiókok például a Microsoft-fiókok (például "joe@live.com") vagy egy külső felhasználói fiókok Azure AD-címtárban. Az Azure AD Domain Services nem rendelkezik ilyen felhasználói fiókokhoz tartozó hitelesítő adatokat, mivel ezek a felhasználók nem tud bejelentkezni a felügyelt tartományhoz.
-* **Fiókok szinkronizálva:** az érintett felhasználói fiókok helyszíni címtárból vannak szinkronizálva, ellenőrizze, hogy:
+* **Külső fiókok:** Ügyeljen arra, hogy az érintett felhasználói fiók ne külső fiók legyen az Azure AD-bérlőben. Külső fiókok például a Microsoft-fiókok (például "joe@live.com") vagy egy külső felhasználói fiókok Azure AD-címtárban. Az Azure AD Domain Services nem rendelkezik ilyen felhasználói fiókokhoz tartozó hitelesítő adatokat, mivel ezek a felhasználók nem tud bejelentkezni a felügyelt tartományhoz.
+* **A szinkronizált fiókok:** Ha az érintett felhasználói fiókok helyszíni címtárból vannak szinkronizálva, ellenőrizze, hogy:
 
   * Van üzembe helyezve, vagy a frissített a [legújabb ajánlott kiadását az Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
   * Konfigurálta az Azure AD Connect [végezzen teljes szinkronizálást](active-directory-ds-getting-started-password-sync.md).
@@ -146,7 +146,7 @@ Ha az Azure AD-bérlőben egy vagy több felhasználó nem tud bejelentkezni az 
 
     1. net stop "Microsoft Azure AD Sync"
     2. a net start "Microsoft Azure AD Sync"
-* **Kizárólag felhőalapú fiókok**: az érintett felhasználói fiók csak felhőalapú felhasználói fiók esetén ellenőrizze, hogy a felhasználó megváltoztatta a jelszavát, miután engedélyezte az Azure AD tartományi szolgáltatásokat. Ezzel a lépéssel létrejönnek az Azure AD tartományi szolgáltatásokhoz szükséges hitelesítő adatok kivonatai.
+* **Kizárólag felhőalapú fiókok**: Ha az érintett felhasználói fiók egy csak felhőalapú felhasználói fiók, győződjön meg arról, hogy a felhasználó megváltoztatta a jelszavát, miután engedélyezte az Azure AD tartományi szolgáltatásokat. Ezzel a lépéssel létrejönnek az Azure AD tartományi szolgáltatásokhoz szükséges hitelesítő adatok kivonatai.
 
 ## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>Nincsenek egy vagy több riasztást a felügyelt tartományon
 

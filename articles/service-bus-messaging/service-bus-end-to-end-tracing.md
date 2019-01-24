@@ -3,22 +3,22 @@ title: Az Azure Service Bus-végpontok nyomkövetés és diagnosztika |} A Micro
 description: A Service Bus-ügyfél-diagnosztika és teljes körű nyomkövetés áttekintése
 services: service-bus-messaging
 documentationcenter: ''
-author: lmolkova
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: lmolkova
-ms.openlocfilehash: 12f9f55544f46bc9c88cab7234f78ad7ee7de2d2
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 2330e395244f33653af415b5db896fdc2aa2024d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790894"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852983"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetést és korrelációs révén a Service Bus-üzenetkezelés
 
@@ -32,8 +32,8 @@ A protokoll alapján a [korrelációs HTTP protokoll](https://github.com/dotnet/
 
 | Tulajdonság neve        | Leírás                                                 |
 |----------------------|-------------------------------------------------------------|
-|  Diagnosztika-azonosító       | Az üzenetsorba a gyártó egy külső hívás egyedi azonosítója. Tekintse meg [Request-Id HTTP-protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) a közösségértékek, szempontok és formátum |
-|  Korrelációs-környezet | Műveleti környezet, amely propagálja összes szolgáltatásban részt vevő művelet feldolgozása. További információkért lásd: [korrelációs-környezet a HTTP protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
+|  Diagnostic-Id       | Az üzenetsorba a gyártó egy külső hívás egyedi azonosítója. Tekintse meg [Request-Id HTTP-protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) a közösségértékek, szempontok és formátum |
+|  Correlation-Context | Műveleti környezet, amely propagálja összes szolgáltatásban részt vevő művelet feldolgozása. További információkért lásd: [korrelációs-környezet a HTTP protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
 
 ## <a name="service-bus-net-client-auto-tracing"></a>Service Bus .NET ügyféloldali auto-nyomkövetés
 
@@ -167,7 +167,7 @@ A következő finomhangolt műveletek teljes listáját:
 | Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken` – A kézbesítetlen levelek megfelelő üzenet zárolási jogkivonata. | 
 | Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken` – A megfelelő üzenet zárolásának megújítása zárolási jogkivonat.<br/>`DateTime LockedUntilUtc` -Új zárolási jogkivonat lejárati dátuma és ideje UTC formátumban. ("Stop" eseménytartalom)|
 | Microsoft.Azure.ServiceBus.Process | A megadott üzenetet kezelő lambda függvény [IReceiverClient.RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) | `Message Message` -Üzenet feldolgozása folyamatban. |
-| Microsoft.Azure.ServiceBus.ProcessSession | Üzenet munkamenet kezelő lambda függvény a megadott [IQueueClient.RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) | `Message Message` -Üzenet feldolgozása folyamatban.<br/>`IMessageSession Session` -Munkamenet feldolgozása folyamatban |
+| Microsoft.Azure.ServiceBus.ProcessSession | Message Session Handler lambda function provided in [IQueueClient.RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) | `Message Message` -Üzenet feldolgozása folyamatban.<br/>`IMessageSession Session` -Munkamenet feldolgozása folyamatban |
 | Microsoft.Azure.ServiceBus.AddRule | [SubscriptionClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule` -A szabály leírása, amely biztosítja a szabály hozzáadásához. |
 | Microsoft.Azure.ServiceBus.RemoveRule | [SubscriptionClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName` -A szabály eltávolításához nevét. |
 | Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules` -Az előfizetéshez tartozó összes szabályok. (Csak "Stop" tartalom) |

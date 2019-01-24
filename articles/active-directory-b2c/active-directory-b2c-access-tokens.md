@@ -3,21 +3,21 @@ title: Az Azure Active Directory B2C hozzáférési jogkivonatok igénylése |} 
 description: Ebből a cikkből megtudhatja, és a egy ügyfélalkalmazás beállítása-és hozzáférési jogkivonat beszerzése.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f3db56c7ce61960fca0e5347b2385bcc65a88354
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015349"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845146"
 ---
-# <a name="azure-ad-b2c-requesting-access-tokens"></a>Az Azure AD B2C: Kérő hozzáférési jogkivonatok
+# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Hozzáférési jogkivonatok kérése
 
 Hozzáférési jogkivonat (néven **hozzáférés\_token** a válaszok az Azure AD B2C-ből a) egy biztonsági jogkivonat erőforrások elérésére szolgál egy ügyfél által védett formája egy [az engedélyezési kiszolgáló](active-directory-b2c-reference-protocols.md), például a webes API-t. Hozzáférési jogkivonatok jelentésekként jelennek meg [JWTs](active-directory-b2c-reference-tokens.md) az importálni kívánt erőforrás-kiszolgáló és a megadott engedélyek a kiszolgálóra vonatkozó adatokat tartalmaznak. Hívja meg az erőforrás-kiszolgáló, ha a hozzáférési jogkivonatot a HTTP-kérelem jelen kell lennie.
 
@@ -106,7 +106,7 @@ További hatóköröket (engedélyeket) kérheti egy erőforrás-nál mit kap az
 Az OpenID Connect standard több speciális "hatókör" értéket adja meg. A következő különleges hatókörök "érhető el a felhasználói profil" engedélyt az mutatják be:
 
 * **openid**: Ez a kérelmek egy azonosító jogkivonat
-* **kapcsolat nélküli\_hozzáférés**: Ez a frissítési jogkivonatot kér (használatával [hitelesítési kód folyamatok](active-directory-b2c-reference-oauth-code.md)).
+* **offline\_access**: Ez a frissítési jogkivonatot kér (használatával [hitelesítési kód folyamatok](active-directory-b2c-reference-oauth-code.md)).
 
 Ha a `response_type` paramétert egy `/authorize` kérelmet tartalmaz `token`, a `scope` paraméternek tartalmaznia kell legalább egy erőforrás hatókör (nem `openid` és `offline_access`), amely megkapja. Ellenkező esetben a `/authorize` kérelem hibával leáll.
 
@@ -114,9 +114,9 @@ Ha a `response_type` paramétert egy `/authorize` kérelmet tartalmaz `token`, a
 
 A sikeres minted **hozzáférés\_token** (vagy a `/authorize` vagy `/token` végpont), a következő jogcímek lesznek jelen:
 
-| Name (Név) | Igénylés | Leírás |
+| Name (Név) | Jogcím | Leírás |
 | --- | --- | --- |
-|Közönség |`aud` |A **Alkalmazásazonosító** az egyetlen erőforrás, amely a token engedélyt biztosít. |
+|Célközönség |`aud` |A **Alkalmazásazonosító** az egyetlen erőforrás, amely a token engedélyt biztosít. |
 |Hatókör |`scp` |Az erőforráshoz rendelt engedélyeket. Megadott engedélyek több helyet fogja elválasztani. |
 |Jogosult fél |`azp` |A **Alkalmazásazonosító** az ügyfélalkalmazás által kezdeményezett a kérelmet. |
 

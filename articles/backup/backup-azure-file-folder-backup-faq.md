@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
-ms.openlocfilehash: 5262c99fae965201d4f9519495163d0e16836a7a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f5695da01752d701e1b688700580982f2d2e6154
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726542"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827414"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Kérdések az Azure Backup-ügynökkel kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure Backup-ügynök összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -29,12 +29,12 @@ Igen, a tároló hitelesítő adatai 48 óra után lejárnak. Ha a fájl lejár,
 ### <a name="what-types-of-drives-can-i-back-up-files-and-folders-from-br"></a>Milyen típusú meghajtókon lévő fájlokról és mappákról tudok biztonsági másolatot készíteni? <br/>
 A következő meghajtókról/kötetekről nem készíthető biztonsági másolat:
 
-* Cserélhető adathordozók: a biztonsági mentés minden forráselemének rögzített állapotban kell lennie.
-* Csak olvasható kötetek: A kötetnek a működéshez írhatónak kell lennie a kötet árnyékmásolat (VSS) számára.
-* Offline kötetek: A kötetnek a működéshez online-nak kell lennie a VSS számára.
-* Hálózati megosztás: A kötetnek helyinek kell lennie a kiszolgáló számára, hogy az online biztonsági mentés használatával biztonsági másolatot lehessen róla készíteni.
-* BitLocker által védett kötetek: A kötetet fel kell oldani a biztonsági mentés megkezdése előtt.
-* Fájlrendszer azonosítása: Csak az NTFS fájlrendszer támogatott.
+* Cserélhető adathordozó: Az összes biztonsági másolati elem forrás kell jelentést rögzített.
+* Csak olvasható kötetek: A köteten a kötet árnyékmásolata szolgáltatás (VSS) működéséhez írhatónak kell lennie.
+* Offline kötetek: A kötet online-hoz a VSS függvénynek kell lennie.
+* Hálózati megosztás: A kötet online biztonsági mentés használatával kell készíteni a kiszolgáló helyi kell lennie.
+* A BitLocker által védett kötetek: A kötet zárolását kell, mielőtt a biztonsági mentés.
+* Fájlrendszer azonosítása: NTFS csak a fájlrendszer támogatott.
 
 ### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>A kiszolgálón lévő milyen fájlokról és mappákról készíthetek biztonsági másolatot?<br/>
 A következő típusok támogatottak:
@@ -43,11 +43,11 @@ A következő típusok támogatottak:
 * Tömörített
 * Ritka
 * Tömörített + ritka
-* Rögzített hivatkozások: Nem támogatott, átugorva
+* A rögzített hivatkozások: Nem támogatott, átugorva
 * Újraelemzési pont: Nem támogatott, átugorva
 * Titkosított + ritka: Nem támogatott, átugorva
-* Tömörített stream: Nem támogatott, átugorva
-* Ritka stream: Nem támogatott, átugorva
+* Tömörített Stream: Nem támogatott, átugorva
+* Ritka Stream: Nem támogatott, átugorva
 
 ### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>Telepíthetem az Azure Backup ügynököt egy olyan Azure virtuális gépre, amelyet az Azure Backup szolgáltatás már támogat a virtuális gép bővítmény használatával? <br/>
 Abszolút. Az Azure Backup virtuálisgép-szintű biztonsági mentést nyújt az Azure virtuális gépeknek az erre szolgáló bővítmény használatával. A vendég Windows operációs rendszeren található fájlok és mappák védelme érdekében telepítse az Azure Backup ügynököt a vendég Windows operációs rendszeren.
@@ -94,7 +94,7 @@ Miután a biztonsági mentés létrehozása sikeresen befejeződött az új gyor
 ### <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>Hová helyezhetem el az Azure Backup-ügynök gyorsítótármappáját, hogy megfelelően működjön?<br/>
 A következő helyek nem ajánlottak a gyorsítótármappa számára:
 
-* Hálózati megosztás vagy cserélhető adathordozó: A gyorsítótármappának helyinek kell lennie az online biztonsági mentés használatával mentést igénylő kiszolgáló számára. A hálózati helyeket vagy cserélhető adathordozóra, például USB-meghajtók nem támogatottak.
+* Hálózati megosztás vagy cserélhető adathordozó: A gyorsítótár helyinek kell lennie az online biztonsági mentés használatával mentést igénylő kiszolgáló számára. A hálózati helyeket vagy cserélhető adathordozóra, például USB-meghajtók nem támogatottak.
 * Offline kötetek: A gyorsítótármappa kell lennie az online biztonsági mentés várt Azure Backup szolgáltatás ügynökének használatával
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supportedbr"></a>Vannak a gyorsítótármappának olyan attribútumai, amelyek nem támogatottak?<br/>

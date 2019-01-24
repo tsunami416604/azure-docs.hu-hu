@@ -1,11 +1,11 @@
 ---
-title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a Slack |} A Microsoft Docs'
+title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása Slack |} A Microsoft Docs'
 description: 'Útmutató: Azure Active Directory beállítása az Automatikus kiépítés és megszüntetni hozzárendeléseket felhasználói fiókok Slack.'
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
-manager: mtillman
+manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: ca73a7f76de61f841af55121823ab045a93632ae
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 5702f59a7924a3ca9eefae33dfcae5c3c16274d8
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014786"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827210"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Slack konfigurálása
 
@@ -36,7 +36,7 @@ Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön m�
 *   Egy Slack-bérlőben a [Plus csomag](https://aadsyncfabric.slack.com/pricing) vagy jobban engedélyezve 
 *   A Slack csapat rendszergazdai engedélyekkel rendelkező felhasználói fiókkal 
 
-Megjegyzés: Az Azure AD létesítési integrációs támaszkodik a [Slack SCIM API](https://api.slack.com/scim), amely Slack csapatok rendelkezésére áll a plusz ikonra a terv, és jobb.
+Megjegyzés: Az Azure AD létesítési integrációs támaszkodik a [Slack SCIM API](https://api.slack.com/scim), amely Slack csapatok rendelkezésére áll a plusz ikonra a terv és a jobb.
 
 ## <a name="assigning-users-to-slack"></a>Felhasználók hozzárendelése Slack
 
@@ -57,7 +57,7 @@ A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt kell
 
 Ez a szakasz végigvezeti az Azure AD-csatlakozás Slack a felhasználói fiók üzembe helyezési API és az eszközkiépítési szolgáltatás létrehozása, konfigurálása frissítése, és tiltsa le a hozzárendelt felhasználói fiókok a Slack, az Azure ad-ben a felhasználó és csoport-hozzárendelések alapján.
 
-**Tipp:** is dönthet úgy, hogy engedélyezve van a SAML-alapú egyszeri bejelentkezés a Slack, a következő szereplő utasítások [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+**Tipp:** Előfordulhat, hogy meg az SAML-alapú egyszeri bejelentkezés Slack számára engedélyezve van, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus fióklétesítés Slack, az Azure ad-ben:

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 151d945bbeda9f7dd496f8469f8f858e8369da8f
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 8961a863f1b268a034310554230096cc0f9d5260
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164415"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844058"
 ---
 # <a name="create-and-clone-projects"></a>Projektek létrehozása és klónozása
 
@@ -30,7 +30,7 @@ Egy projektet is fenntartják, metaadatokat és egyéb konfigurációs beállít
 
 A **saját projektek** : Irányítópult `https://notebooks.azure.com/<userID>/projects` ahol megtekintése, kezelése és hozható létre:
 
-[![](media/my-projects-dashboard.png "Az Azure-jegyzetfüzetekben projektek irányítópult")](media/my-projects-dashboard.png#lightbox)
+[![Az Azure-jegyzetfüzetekben projektek irányítópult](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 Mi mindent az irányítópulton attól függ, hogy jelentkezett be a fiók, amely a felhasználói azonosító tulajdonosa:
 
@@ -105,9 +105,9 @@ A projekt klónozása:
 ## <a name="next-steps"></a>További lépések
 
 - [Ismerkedés a mintafüzetek](azure-notebooks-samples.md)
-- [kézikönyv: Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
-- [kézikönyv: Egy jegyzetfüzetet a csomagok telepítése](install-packages-jupyter-notebook.md)
-- [kézikönyv: Diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
-- [kézikönyv: Adatfájlok használata](work-with-project-data-files.md)
-- [kézikönyv: Adatok erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
-- [kézikönyv: Az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)
+- [Útmutató: Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
+- [Útmutató: Egy jegyzetfüzetet a csomagok telepítése](install-packages-jupyter-notebook.md)
+- [Útmutató: Diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
+- [Útmutató: Adatfájlok használata](work-with-project-data-files.md)
+- [Útmutató: Adatok erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
+- [Útmutató: Az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Virtuális hálózat csatlakoztatása másik virtuális hálózathoz virtuális hálózatok közötti kapcsolattal: Azure CLI | Microsoft Docs'
+title: 'Virtuális hálózat csatlakoztatása másik virtuális hálózathoz virtuális hálózatok közötti kapcsolat használatával: Az Azure CLI |} A Microsoft Docs'
 description: Virtuális hálózatokat csatlakoztathat egymáshoz virtuális hálózatok közötti kapcsolat és az Azure CLI használatával.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2fc25235325db8a403c2b258dd5e4b3effc46ace
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: dda4f68046b81d96cfe92d5e8b09eab23df0003b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971960"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846309"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása az Azure CLI használatával
 
@@ -74,11 +74,11 @@ Ebben a cikkben kétféle lépéssorozatot láthat virtuális hálózatok közö
 
 Ebben a gyakorlatban igény szerint kombinálhatja a konfigurációkat, vagy csak kiválaszthat egyet, amelyet használni kíván. Az összes konfiguráció a virtuális hálózatok közötti kapcsolattípust használja. A hálózati adatforgalom a közvetlenül egymáshoz csatlakoztatott virtuális hálózatok között zajlik. Ebben a gyakorlatban a TestVNet4 forgalma nem a TestVNet5 felé irányul.
 
-* [Azonos előfizetésben található virtuális hálózatok](#samesub): a konfiguráció lépései a TestVNet1 és TestVNet4 hálózatot használják.
+* [Található virtuális hálózatok ugyanabban az előfizetésben:](#samesub) A konfiguráció lépései a TestVNet1 és TestVNet4 hálózatot használják.
 
   ![v2v ábra](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
-* [Eltérő előfizetésben található virtuális hálózatok](#difsub): a konfiguráció lépései a TestVNet1 és TestVNet5 hálózatot használják.
+* [Virtuális hálózatok különböző előfizetésekben található:](#difsub) Ez a konfiguráció lépései a TestVNet1 és testvnet5 hálózatot használják.
 
   ![v2v ábra](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
@@ -97,31 +97,31 @@ A példákban a következő értékeket használjuk:
 
 **Értékek a TestVNet1-hez:**
 
-* Virtuális hálózat neve: TestVNet1
+* Virtuális hálózat neve: A TestVNet1
 * Erőforráscsoport: TestRG1
-* Hely: East US
-* TestVNet1: 10.11.0.0/16 és 10.12.0.0/16
-* Előtér: 10.11.0.0/24
+* Hely: USA keleti régiója
+* A TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
+* Előtérbeli: 10.11.0.0/24
 * Háttér: 10.12.0.0/24
-* Átjáróalhálózat: 10.12.255.0/27
+* Átjáró-alhálózat: 10.12.255.0/27
 * Átjáró neve: VNet1GW
-* Nyilvános IP-cím: VNet1GWIP
-* VPN típusa: RouteBased
-* Kapcsolat (1–4): VNet1toVNet4
-* Kapcsolat (1–5): VNet1toVNet5 (virtuális hálózatokhoz eltérő előfizetésekben)
+* Nyilvános IP-címe: VNet1GWIP
+* VPNType: Útvonalalapú
+* Connection(1to4): VNet1toVNet4
+* Connection(1to5): VNet1toVNet5 (virtuális hálózatok különböző előfizetésekben)
 
 **Értékek a TestVNet4-hez:**
 
-* Virtuális hálózat neve: TestVNet4
-* TestVNet2: 10.41.0.0/16 és 10.42.0.0/16
-* Előtér: 10.41.0.0/24
+* Virtuális hálózat neve: A TestVNet4
+* TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
+* Előtérbeli: 10.41.0.0/24
 * Háttér: 10.42.0.0/24
-* Átjáróalhálózat: 10.42.255.0/27
+* Átjáró-alhálózat: 10.42.255.0/27
 * Erőforráscsoport: TestRG4
-* Hely: West US
+* Hely: USA nyugati régiója
 * Átjáró neve: VNet4GW
-* Nyilvános IP-cím: VNet4GWIP
-* VPN típusa: RouteBased
+* Nyilvános IP-címe: VNet4GWIP
+* VPNType: Útvonalalapú
 * Kapcsolat: VNet4toVNet1
 
 ### <a name="Connect"></a>1. lépés – Csatlakozás az előfizetéshez
@@ -133,7 +133,7 @@ A példákban a következő értékeket használjuk:
 1. Hozzon létre egy erőforráscsoportot.
 
   ```azurecli
-  az group create -n TestRG1  -l eastus
+  az group create -n TestRG1  -l eastus
   ```
 2. Hozza létre a TestVNet1-et és az alhálózatait. Ez a példa létrehoz egy TestVNet1 nevű virtuális hálózatot és egy FrontEnd nevű alhálózatot.
 
@@ -148,11 +148,11 @@ A példákban a következő értékeket használjuk:
 4. Hozza létre a háttérrendszer alhálózatát.
   
   ```azurecli
-  az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestRG1 --address-prefix 10.12.0.0/24 
+  az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestRG1 --address-prefix 10.12.0.0/24 
   ```
 5. Hozza létre az átjáró-alhálózatot. Figyelje meg, hogy az átjáró alhálózatának neve „GatewaySubnet”. A név megadása kötelező. A példában az átjáróalhálózat /27-es alhálózatot használ. Bár lehetséges akár /29-es átjáróalhálózatot is létrehozni, javasolt egy ennél nagyobb, több címmel rendelkező alhálózatot létrehozni: legalább /28-asat vagy /27-eset. Ez elegendő címet biztosít az esetleges későbbi konfigurációkhoz.
 
-  ```azurecli 
+  ```azurecli 
   az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestRG1 --address-prefix 10.12.255.0/27
   ```
 6. Kérje egy nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt átjáróhoz. Vegye figyelembe, hogy az AllocationMethod értéke Dynamic. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása az átjáró számára dinamikusan történik.
@@ -171,7 +171,7 @@ A példákban a következő értékeket használjuk:
 1. Hozzon létre egy erőforráscsoportot.
 
   ```azurecli
-  az group create -n TestRG4  -l westus
+  az group create -n TestRG4  -l westus
   ```
 2. Hozza létre a TestVNet4-et.
 
@@ -182,13 +182,13 @@ A példákban a következő értékeket használjuk:
 3. Hozzon létre további alhálózatokat a TestVNet4-hez.
 
   ```azurecli
-  az network vnet update -n TestVNet4 --address-prefixes 10.41.0.0/16 10.42.0.0/16 -g TestRG4 
-  az network vnet subnet create --vnet-name TestVNet4 -n BackEnd -g TestRG4 --address-prefix 10.42.0.0/24 
+  az network vnet update -n TestVNet4 --address-prefixes 10.41.0.0/16 10.42.0.0/16 -g TestRG4 
+  az network vnet subnet create --vnet-name TestVNet4 -n BackEnd -g TestRG4 --address-prefix 10.42.0.0/24 
   ```
 4. Hozza létre az átjáró-alhálózatot.
 
   ```azurecli
-   az network vnet subnet create --vnet-name TestVNet4 -n GatewaySubnet -g TestRG4 --address-prefix 10.42.255.0/27
+   az network vnet subnet create --vnet-name TestVNet4 -n GatewaySubnet -g TestRG4 --address-prefix 10.42.255.0/27
   ```
 5. Kérjen egy nyilvános IP-címet.
 
@@ -218,18 +218,18 @@ Most már két, VPN-átjáróval rendelkező virtuális hálózata van. A követ
   Példa a kimenetre:
 
   ```
-  "activeActive": false, 
-  "bgpSettings": { 
-    "asn": 65515, 
-    "bgpPeeringAddress": "10.12.255.30", 
-    "peerWeight": 0 
-   }, 
-  "enableBgp": false, 
-  "etag": "W/\"ecb42bc5-c176-44e1-802f-b0ce2962ac04\"", 
-  "gatewayDefaultSite": null, 
-  "gatewayType": "Vpn", 
-  "id": "/subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW", 
-  "ipConfigurations":
+  "activeActive": false, 
+  "bgpSettings": { 
+    "asn": 65515, 
+    "bgpPeeringAddress": "10.12.255.30", 
+    "peerWeight": 0 
+   }, 
+  "enableBgp": false, 
+  "etag": "W/\"ecb42bc5-c176-44e1-802f-b0ce2962ac04\"", 
+  "gatewayDefaultSite": null, 
+  "gatewayType": "Vpn", 
+  "id": "/subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW", 
+  "ipConfigurations":
   ```
 
   Másolja ki az **„id”:** kifejezés utáni idézőjelek közti értékeket.
@@ -247,7 +247,7 @@ Most már két, VPN-átjáróval rendelkező virtuális hálózata van. A követ
 3. Hozza létre a TestVNet1–TestVNet4 kapcsolatot. Ebben a lépésben a TestVNet1 felől a TestVNet4 felé irányuló kapcsolatot hozza létre. A példák egy megosztott kulcsra is hivatkoznak. A megosztott kulcshoz használhatja a saját értékeit. Fontos, hogy a megosztott kulcs azonos legyen mindkét kapcsolathoz. A kapcsolat létrehozása egy kis időt vesz igénybe.
 
   ```azurecli
-  az network vpn-connection create -n VNet1ToVNet4 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "aabbcc" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG4/providers/Microsoft.Network/virtualNetworkGateways/VNet4GW 
+  az network vpn-connection create -n VNet1ToVNet4 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "aabbcc" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG4/providers/Microsoft.Network/virtualNetworkGateways/VNet4GW 
   ```
 4. Hozza létre a TestVNet4–TestVNet1 kapcsolatot. Ez a lépés az előzőhöz hasonló. A különbség annyi, hogy ezúttal a TestVNet4 felől a TestVNet1 felé irányuló kapcsolatot hozza létre. Ügyeljen arra, hogy a megosztott kulcsok megegyezzenek. A kapcsolat létrehozása néhány percet vesz igénybe.
 
@@ -286,16 +286,16 @@ A további kapcsolatok létrehozásakor fontos ellenőrizni, hogy az új virtuá
 
 * Virtuális hálózat neve: TestVNet5
 * Erőforráscsoport: TestRG5
-* Hely: Japan East
-* TestVNet5: 10.51.0.0/16 és 10.52.0.0/16
-* Előtér: 10.51.0.0/24
+* Hely: Kelet-Japán
+* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
+* Előtérbeli: 10.51.0.0/24
 * Háttér: 10.52.0.0/24
-* Átjáróalhálózat: 10.52.255.0.0/27
+* Átjáró-alhálózat: 10.52.255.0.0/27
 * Átjáró neve: VNet5GW
-* Nyilvános IP-cím: VNet5GWIP
-* VPN típusa: RouteBased
+* Nyilvános IP-címe: VNet5GWIP
+* VPNType: Útvonalalapú
 * Kapcsolat: VNet5toVNet1
-* Kapcsolat típusa: VNet2VNet
+* ConnectionType: VNet2VNet
 
 ### <a name="TestVNet5"></a>7. lépés – A TestVNet5 létrehozása és konfigurálása
 
@@ -304,7 +304,7 @@ Ezt a lépést az új előfizetés (5. előfizetés) környezetében kell elvég
 1. Győződjön meg róla, hogy az 5. előfizetéshez csatlakozik, majd hozzon létre egy erőforráscsoportot.
 
   ```azurecli
-  az group create -n TestRG5  -l japaneast
+  az group create -n TestRG5  -l japaneast
   ```
 2. Hozza létre a TestVNet5-öt.
 
@@ -362,7 +362,7 @@ Ez a lépés két CLI-munkamenetre van felosztva, amelyek jelölése **[1. előf
 
   Másolja ki az „id:” kifejezés kimenetét. Küldje el e-mailben vagy másképp a VNet-átjáró (VNet5GW) azonosítóját és nevét az 1. előfizetés rendszergazdájának.
 
-3. **[1. előfizetés]** Ebben a lépésben a TestVNet1 felől a TestVNet5 felé irányuló kapcsolatot hozza létre. A megosztott kulcshoz saját értékeket is használhat, azonban a kulcsnak mindkét kapcsolat esetében azonosnak kell lennie. A kapcsolat létrehozása egy kis időt vehet igénybe. Kapcsolódjon az 1. előfizetéshez.
+3. **[1. előfizetés]** Ebben a lépésben a TestVNet1 felől a TestVNet5 felé irányuló kapcsolatot hozza létre. A megosztott kulcshoz saját értékeket is használhat, azonban a kulcsnak mindkét kapcsolat esetében azonosnak kell lennie. A kapcsolat létrehozása egy kis időt vehet igénybe. Kapcsolódjon az 1. előfizetéshez.
 
   ```azurecli
   az network vpn-connection create -n VNet1ToVNet5 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW

@@ -3,9 +3,9 @@ title: Service Bus-üzenetsorok használata PHP |} A Microsoft Docs
 description: Ismerje meg, hogyan használhatók a Service Bus-üzenetsorok az Azure-ban. A PHP nyelven írt kódmintákat.
 services: service-bus-messaging
 documentationcenter: php
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 09/10/2018
-ms.author: spelluru
-ms.openlocfilehash: 08894741f4b7c4d3ccb808a4e70ec1eeb4f6af49
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: c320e06881c73feb228b9d5f49243d7e1d321f52
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392193"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847561"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Service Bus-üzenetsorok használata PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -162,7 +162,7 @@ A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.
 
 ## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy üzenetsorból
 
-Üzenetek fogadása egy üzenetsorból legjobb módja az, hogy használjon egy `ServiceBusRestProxy->receiveQueueMessage` metódust. Üzenetek fogadhatók két különböző módban: [ *ReceiveAndDelete* ](/dotnet/api/microsoft.servicebus.messaging.receivemode) és [ *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). A **PeekLock** az alapértelmezett érték.
+Üzenetek fogadása egy üzenetsorból legjobb módja az, hogy használjon egy `ServiceBusRestProxy->receiveQueueMessage` metódust. Két különböző módban lehet üzeneteket fogadni: [*ReceiveAndDelete* ](/dotnet/api/microsoft.servicebus.messaging.receivemode) és [ *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). A **PeekLock** az alapértelmezett érték.
 
 Használata esetén [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód, kap egy egylépéses művelet; azt jelenti, amikor a Service Bus egy üzenetsorban lévő üzenet egy olvasási kérést kap, feldolgozottként jelöli meg az üzenetet, és visszaadja az alkalmazásnak. A [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód a legegyszerűbb modell, és az olyan forgatókönyvekben működik a legjobban, ha az alkalmazás működését nem zavarja, hogy hiba esetén nem dolgoz fel üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, jelölte, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
 

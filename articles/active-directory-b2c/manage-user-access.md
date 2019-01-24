@@ -3,19 +3,19 @@ title: Az Azure Active Directory B2C felhasználói hozzáférés felügyelete |
 description: Ismerje meg, hogyan kiskorúak azonosítása, dátum születési idő és az országot adatok gyűjtése és használati feltételek elfogadása beszerzése az alkalmazás Azure AD B2C használatával.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6709fb8ae328f749b367c58f95b8a9ef8da9bc65
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 982587fa7da41ea1de5fd11bb054f87039596da1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054500"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852031"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói hozzáférés felügyelete
 
@@ -36,7 +36,7 @@ Ha egy felhasználó egy kisebb azonosítottak, állíthatja be a felhasználói
 
 - **Egy aláírt JWT id_token küldése az alkalmazásnak**: A felhasználónak regisztrálva van a címtárban, és a egy jogkivonatot adott vissza az alkalmazásba. Az alkalmazás ezután folytatja az üzleti szabályok alkalmazásával. Például az alkalmazás folytathatja a szülői beleegyezési folyamat. Fogadásához válassza ezt a módszert használja, a **korcsoport** és **consentProvidedForMinor** jogcímek az alkalmazásból.
 
-- **Az előjel nélküli JSON-jogkivonat küldhet az alkalmazáshoz**: Azure AD B2C-vel értesíti az alkalmazást, hogy a felhasználó egy kisebb, és biztosítja a szülői jóváhagyás a felhasználó állapotát. Az alkalmazás ezután folytatja az üzleti szabályok alkalmazásával. A JSON-jogkivonat nem fejeződik be az alkalmazás a sikeres hitelesítés. Az alkalmazás fel kell dolgoznia a jogcím szerepel a jogkivonatban JSON, amely szerint a nem hitelesített felhasználó **neve**, **e-mail**, **korcsoport**, és **consentProvidedForMinor**.
+- **Az előjel nélküli JSON-jogkivonat küldhet az alkalmazáshoz**: Az Azure AD B2C az alkalmazás értesítést küld az, hogy a felhasználó egy kisebb, és biztosítja a szülői jóváhagyás a felhasználó állapotát. Az alkalmazás ezután folytatja az üzleti szabályok alkalmazásával. A JSON-jogkivonat nem fejeződik be az alkalmazás a sikeres hitelesítés. Az alkalmazás fel kell dolgoznia a jogcím szerepel a jogkivonatban JSON, amely szerint a nem hitelesített felhasználó **neve**, **e-mail**, **korcsoport**, és **consentProvidedForMinor**.
 
 - **Felhasználó letiltása**: Ha egy felhasználó egy kisebb, és nem lett megadva a szülői hozzájárulást kér, az Azure AD B2C-vel is értesíti a felhasználót, hogy ő blokkolva van. Nem jogkivonat kiadott, hozzáférés le lesz tiltva, és a felhasználói fiók nem jön létre egy regisztrációs utazás közben. Alkalmazza ezt az értesítést, adjon meg egy megfelelő HTML/CSS tartalomlap tájékoztatja a felhasználó és a jelen a megfelelő beállításokat. Az alkalmazás új regisztrációs semmilyen további műveletet van szüksége.
 

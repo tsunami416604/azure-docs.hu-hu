@@ -3,18 +3,19 @@ title: Az Azure Service Bus-üzenetsorok, témakörök és előfizetések üzene
 description: Service Bus üzenetküldési entitásokról áttekintése.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: spelluru
-ms.openlocfilehash: c4899db41f9c60bf6efb40c4d53aaa35f22ad275
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.author: aschhab
+ms.openlocfilehash: 7cacabf4f171189810e943043b5513e20113d962
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312884"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847031"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)
 
@@ -73,7 +74,7 @@ Lehetséges szűrőértéket kapcsolatos további információkért lásd: a dok
 További információk és példák a Service Bus-üzenetkezelés használatával tekintse meg az alábbi speciális témakörök:
 
 * [A Service Bus üzenetkezelésének áttekintése](service-bus-messaging-overview.md)
-* [Gyors útmutató: Az Azure portal és a .NET használatával üzenetek küldése és fogadása](service-bus-quickstart-portal.md)
+* [Rövid útmutató: Az Azure portal és a .NET használatával üzenetek küldése és fogadása](service-bus-quickstart-portal.md)
 * [Oktatóanyag: Az Azure Portallal és az üzenettémák, előfizetések készlet frissítése](service-bus-tutorial-topics-subscriptions-portal.md)
 
 

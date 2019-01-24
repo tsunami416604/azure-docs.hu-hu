@@ -8,15 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 30ad0c5ee069df4cd58cb76b779f611d0272d571
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0f8d6290e779872d73b0cf7a9d0d820d2ea5e007
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741589"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848155"
 ---
 # <a name="os-patching-for-hdinsight"></a>Operációs rendszer javításai a HDInsight 
-Felügyelt Apache Hadoop-szolgáltatás HDInsight gondoskodik az operációs rendszer, a HDInsight-fürtök által használt szoftvert futtató virtuális gépek javítása. 2016. augusztus 1-től módosítottuk a vendég operációs rendszer javítási házirend Linux-alapú HDInsight-fürtök (3.4-es vagy újabb verzió). Az új házirend az a célja, hogy jelentősen csökkentheti a javítás miatt újraindítások száma. Javítás virtuális gépeken (VM) az új házirend továbbra Linux-fürtökön minden hétfőn vagy csütörtök 12 AM UTC lépcsőzetes módon díjtól bármely adott fürtben található csomópontok között. Azonban bármely adott virtuális gép csak újraindítás legfeljebb 30 naponta miatt a vendég operációs rendszer javításait. Emellett az újonnan létrehozott fürt első újraindítás nem történik meg hamarabb fürt létrehozás dátumától számítva 30 napnál. Javítások től lép érvénybe, ha a virtuális gépek indulnak újra.
+
+> [!IMPORTANT]
+> Ubuntu-rendszerképek válnak elérhetővé az új HDInsight-fürt létrehozása közzétehető 3 hónapon belül. Január a 2019-tól futó fürtök vannak **nem** automatikus tudjon fókuszálni. Ügyfeleink a futó fürt javítására irányuló szkriptműveletek vagy más mechanizmusok kell használnia.
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Az operációs rendszer javítási ütemezése a Linux-alapú HDInsight-fürtök konfigurálása
 Egy HDInsight-fürtön lévő virtuális gépek kell alkalmanként indítani, hogy fontos biztonsági javításokat is telepíthető. 2016. augusztus 1. új Linux-alapú HDInsight-fürtök (3.4-es vagy újabb verzió) újraindulásakor az alábbi ütemezés:

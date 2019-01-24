@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 292a9ecd012be030df8cf792f9991591d43c8db9
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 18e8b7699a388dabbf0e4f5cff7d4fb927e549c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383073"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853816"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso áttelepítése: Helyszíni számítási feladatok Azure-ba való migrálásának értékelése
 
@@ -206,7 +206,7 @@ Eredmények jelennek meg, amint azok elérhetők. Ha Contoso hibákat javít, ak
 > [!NOTE]
 > Nagy méretű értékelések:
 > - Egyidejűleg futtathatók több értékelést, és az értékelések állapotát megtekintheti a a **összes értékelés** lapot.
-> - Értékelések egyesíthetők egy [SQL Server-adatbázis](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017#import-assessment-results-into-a-sql-server-database).
+> - Értékelések egyesíthetők egy [SQL Server-adatbázis](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017).
 > - Értékelések egyesíthetők egy [Power BI-jelentés](https://docs.microsoft.com/sql/dma/dma-powerbiassesreport?view=ssdt-18vs2017).
 
 ## <a name="step-3-prepare-for-vm-assessment-by-using-azure-migrate"></a>3. lépés: Felkészülés a virtuális gépek Azure Migrate használatával

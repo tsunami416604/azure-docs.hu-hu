@@ -5,15 +5,15 @@ author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 0e204e945960ddaf452db1907568e4102631c28f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2b6d982f514f347dc2a59f9ca8f3c33b8c24849b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467587"
+ms.locfileid: "54827448"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor Metrikaböngészőjének
 
@@ -112,7 +112,7 @@ Megnyílik a riasztási szabály létrehozása panelre az alapul szolgáló metr
 
 ![Riasztási szabály létrehozása](./media/metrics-charts/016.png)
 
-Kivétel ez [cikk](alerts-metric.md) további metrikákhoz kapcsolódó riasztások beállításával kapcsolatban.
+Tekintse meg ezt [cikk](alerts-metric.md) további metrikákhoz kapcsolódó riasztások beállításával kapcsolatban.
 
 ## <a name="lock-boundaries-of-chart-y-axis"></a>Zárolási határok diagram y tengely
 
@@ -138,6 +138,16 @@ Az irányítópult konfigurált diagram rögzítése:
 Miután a diagramot, kattintson a a **diagram műveletek** menüben kattintson a jobb felső sarokban, a diagram, és kattintson a **rögzítés az irányítópulton**.
 
 ![metrika kép](./media/metrics-charts/00013.png)
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+*A diagram nem látható semmilyen adatot.*
+
+* Szűrők a diagramok a panelen a alkalmazni. Győződjön meg arról, hogy Ön összpontosítunk, egy diagram, amíg nem állította be egy szűrőt, amely nem tartalmazza a másik az adatokat.
+
+* Ha azt szeretné, a különböző szűrőivel beállíthatja a különböző diagramok különböző paneljein hozzon létre őket, mentse azokat, külön Kedvencek. Ha azt szeretné, is rögzítheti őket az irányítópulton, hogy tekintheti meg őket egymással párhuzamosan.
+
+* Ha az egyik tulajdonsága, amely nincs meghatározva a metrikát a diagram szegmentálhatja, majd lesz semmi a diagramra. Törölje a Szegmentálás (megosztás), vagy válasszon egy másik tulajdonságot.
 
 ## <a name="next-steps"></a>További lépések
 

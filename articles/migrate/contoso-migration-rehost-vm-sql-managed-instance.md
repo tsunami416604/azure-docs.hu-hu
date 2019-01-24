@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 3564288c55716a9c64ae2460048cb255a60dcc02
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6e15d4376fae576f615cac7c094f53dfcc22618e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469576"
+ms.locfileid: "54826615"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso áttelepítése: Egy Azure virtuális gép és az SQL Database felügyelt példánya a helyszíni alkalmazások újratárolása
 
@@ -432,7 +432,7 @@ A forrás beállítása környezeti Contoso rendszergazdák tegye a következők
 
 Most a Contoso-rendszergazdák a cél replikálási környezet konfigurálása:
 
-1. A **infrastruktúra előkészítése** > **cél**, ezek a tárolóbeállítások selecs.
+1. A **infrastruktúra előkészítése** > **cél**, akkor válassza ki a célbeállítások.
 2. A Site Recovery ellenőrzi, hogy nincs-e a storage-fiók és a célként megadott hálózat.
 
 ### <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
@@ -473,7 +473,7 @@ Most Contoso rendszergazdák is replikáljon WebVM.
 
     ![A replikáció engedélyezése – válassza ki a virtuális Gépet](./media/contoso-migration-rehost-vm-sql-managed-instance/enable-replication3.png)
 
-5. Ellenőrizze, hogy a megfelelő replikációs szabályzat van kiválasztva, és engedélyezze a replikációt azoknál **WEBVM**. Ezek tracs replikáció állapotát a **feladatok**. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
+5. Ellenőrizze, hogy a megfelelő replikációs szabályzat van kiválasztva, és engedélyezze a replikációt azoknál **WEBVM**. A replikáció állapotát nyomon követik **feladatok**. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 6. A **Essentials** az Azure Portalon, megjelenik az állapotot az Azure-bA replikáló virtuális gépek:
 
     ![Infrastruktúranézet](./media/contoso-migration-rehost-vm-sql-managed-instance/essentials.png)
@@ -519,7 +519,7 @@ Contoso rendszergazdák kell a Database Migration Service-projekt létrehozása,
         ![Database Migration Service - migrálási beállítások konfigurálása](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
 
 5. A migrálási beállítások mentéséhez, és futtassa az áttelepítés.
-6. A **áttekintése**, azok monitos a migrálás állapota.
+6. A **áttekintése**, azok a migrálási állapotának figyelése.
 
     ![Database Migration Service - figyelő](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
 

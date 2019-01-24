@@ -4,7 +4,7 @@ description: Kezelése, beleértve a kapcsolattartási adatok módosítása, vag
 services: active-directory
 keywords: többtényezős hitelesítés ügyfél, a hitelesítési probléma, a korrelációs azonosító
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: richagi
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
-ms.openlocfilehash: c3fd74731dbed2c2f36d97b3cb42b383f8e4ca0f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 762033bbe05b9e1ee497180e004eb8aaa47ba195
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345089"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827397"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>A kétlépéses ellenőrzés beállításainak kezelése
 Ez a cikk a kétlépéses ellenőrzés vagy a multi-factor Authentication hitelesítés beállításainak frissítésével kapcsolatos kérdésekre ad választ. Ha a fiókjához regisztrálással kapcsolatos problémák merülnek fel, tekintse meg [problémákat tapasztal a kétlépéses ellenőrzéssel](multi-factor-authentication-end-user-troubleshoot.md) hibaelhárítási segítséget.

@@ -11,28 +11,53 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: d948be88fd75202dea010520d3531f151d6934b0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104084"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847543"
 ---
 # <a name="manage-and-configure-projects"></a>Projektek kezelése és konfigurálása
 
 A projekt Azure notebookok lényegében a mögöttes Linux rendszerű virtuális gép, amelyben Jupyter notebookok futtatja, a fájl mappa és a leíró metaadatok együtt egy konfigurációs. Az Azure-jegyzetfüzetekben projekt-irányítópult lehetővé teszi a fájlok kezelése és egyéb konfigurálása a projekt jellemzői:
 
-- Projekt metaadatokban egy név, leírás, a projekt megosztása, és hogy a projekt nyilvános vagy privát használt azonosító.
-- Kezelheti a projekt jegyzetfüzet, adatokat és egyéb fájlokat, és ahogy bármely más fájlrendszerrel.
-- A projekt környezet Indítási parancsfájlok vagy közvetlenül a terminálban keresztül konfigurálhatja.
-- A terminál segítségével hozzáférhet a naplókhoz.
+- A számítási kapacitás, amelyen futtatja a projektet, amely lehet az ingyenes szint vagy egy Azure virtuális gépen.
+- Projekt metaadatok, amely tartalmaz egy név, leírás, a projekt megosztása, és hogy a projekt nyilvános vagy privát használt azonosító.
+- A projekt jegyzetfüzet, adatokat és egyéb fájlokat, amelyek akkor kezelheti, mint bármely más fájlrendszer.
+- A projekt környezetet, ezáltal az indítási parancsfájlok vagy közvetlenül a terminálban keresztül kezelheti.
+- Naplók, amelyet a terminál segítségével fér hozzá.
 
 > [!Note]
-> Nem kezelheti a projekt nem Ön a tulajdonosa, kivéve, ha a projekt tulajdonosa által végrehajtott, egy közreműködő. Az itt leírtak szerint a felügyeleti és konfigurációs funkciók ellenkező esetben Önnek nem érhetők el.
+> Csak a projekt tulajdonosa, aki eredetileg létrehozta a projektet, az itt leírtak szerint a felügyeleti és konfigurációs funkciók érhetők el. Akkor is, azonban a-projekt klónozása a saját fiókba, ebben az esetben tulajdonosa lenni, és konfigurálhatja a projekt igény szerint.
 
 Azure notebookok a mögöttes virtuális gép elindul, ha a jegyzetfüzet vagy más fájl futtatását. A kiszolgáló automatikusan menti a fájlokat, és 60 perc inaktivitás után leáll. A kiszolgáló is bármikor leállíthatja a **leállítási** parancsot (billentyűparancs: h).
+
+## <a name="compute-tier"></a>COMPUTE-kapacitás
+
+A **futtatása** legördülő listából válassza ki a projekt irányítópultján Itt választhatja ki a számítási kapacitás, amelyen futtatja a projektet. Alapértelmezés szerint a projektek futnak a **ingyenes számítási** szint, amely a 4 GB memóriát és 1 GB adatot visszaélések megelőzése érdekében:
+
+![COMPUTE csomag legördülő listából válassza ki a projekt irányítópultján](media/project-compute-tier-list.png)
+
+Elkerülheti, hogy ezek a korlátozások használatával már kiépített egy Azure-előfizetésében lévő másik virtuális gépet. A virtuális gépen Jupyter is telepíteni kell. Az adatelemző virtuális gép rendszerképekkel jó döntések mert alapértelmezés szerint a Jupyter tartalmazzák.
+
+Bármely megfelelően konfigurált Azure virtuális gép használatával csatlakozhat a **közvetlen számítási** lehetőséget a legördülő listában. Ez a beállítás megadását kéri megjelenjen a listában) (név, IP-címet a virtuális gép és portot (általában 8000, mely JupyterHub figyeli az alapértelmezett portot) és a virtuális gép hitelesítő adatainak:
+
+![Rákérdezés a közvetlen Compute option server adatainak összegyűjtése](media/project-compute-tier-direct.png)
+
+Az alábbi feltételek teljesülése esetén a legördülő listában megtalálhatók [adatelemzési virtuális gépet (DSVM)](/azure/machine-learning/data-science-virtual-machine) példányok. (Ha ezek a feltételek nem teljesülnek, továbbra is csatlakozhat a dsvm-hez a közvetlen Compute option megnyitva az Azure Portalon szerzett értékek.)
+
+- Egy olyan fiókkal, amely használja az Azure Active Directory (AAD), például egy vállalati fiók jelentkezett be az Azure-jegyzetfüzeteket.
+- A fiók Azure-előfizetés csatlakoztatva van.
+- Egy vagy több virtuális gépekkel rendelkezik, az adott előfizetésben való legalább olvasó access, az adatelemző virtuális gép Linux (Ubuntu) lemezképet használó.
+
+![A legördülő listából válassza ki a projekt irányítópultján található adatok adatelemzési virtuálisgép-példányok](media/project-compute-tier-dsvm.png)
+
+Amikor kiválaszt egy DSVM-példányt, Azure notebookok kérheti az adott gép hitelesítő adatainak a virtuális gép létrehozásakor használt.
+
+Új DSVM-példány létrehozásához kövesse az utasításokat [hozzon létre egy Ubuntu adatelemző virtuális gép](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Ön *kell* használja a **adatelemző virtuális gép Linux (Ubuntu)** képfájl, mert az Azure notebookok nem jeleníti meg, amely a Windows- vagy CentOS lemezképeket Dsvm.
 
 ## <a name="edit-project-metadata"></a>Projekt metaadatainak szerkesztése
 
@@ -66,7 +91,7 @@ A **+ új** parancsot (billentyűparancs: n) hoz létre az új fájlokat vagy ma
 
 ### <a name="upload-files"></a>Fájlok feltöltése
 
-A **feltöltése** parancs adatok importálása más két lehetőséget biztosít: **URL-CÍMRŐL** és **a számítógép**. További információkért lásd: [használata az adatfájlokat az Azure-jegyzetfüzet projektek](work-with-project-data-files.md).
+A **feltöltése** parancs adatok importálása más két lehetőséget biztosít: **URL-címről** és **számítógépről**. További információkért lásd: [használata az adatfájlokat az Azure-jegyzetfüzet projektek](work-with-project-data-files.md).
 
 ### <a name="select-file-specific-commands"></a>Válassza ki a fájl-specifikus parancsok
 
@@ -127,11 +152,11 @@ Adjon hozzá egy lépést, először válassza **+ Hozzáadás**, majd válassza
 
 Az adatokat, majd a projekt választott művelet típusától függ:
 
-- **A Requirements.txt**: a második legördülő listában válassza ki a *requirements.txt* fájlt, amely a projektben már van. Ezután válassza ki a harmadik legördülő listában megjelenő egy Python-verzió. Használatával egy *requirements.txt* fájlt, az Azure-jegyzetfüzetek futtatása `pip install -r` együtt a *requirements.txt* fájl a notebook server indítása során. Nincs explicit módon telepíteni szeretné a notebook magát a csomagok.
+- **A Requirements.txt**: A második legördülő listában válassza ki a *requirements.txt* fájlt, amely a projektben már van. Ezután válassza ki a harmadik legördülő listában megjelenő egy Python-verzió. Használatával egy *requirements.txt* fájlt, az Azure-jegyzetfüzetek futtatása `pip install -r` együtt a *requirements.txt* fájl a notebook server indítása során. Nincs explicit módon telepíteni szeretné a notebook magát a csomagok.
 
-- **Héjszkript**: a második legördülő listában válassza ki a projekt bash héjparancsfájl (általában egy fájl a *.sh* kiterjesztéssel), amely tartalmazza a környezet inicializálása futtatni kívánt parancs.
+- **Héjszkript**: A második legördülő listában válassza ki a projekt bash héjparancsfájl (általában egy fájl a *.sh* kiterjesztéssel), amely tartalmazza a környezet inicializálása futtatni kívánt parancs.
 
-- **Environment.yml**: a második legördülő listában válassza ki egy *environments.yml* fájl Pro projekty v Pythonu egy conda-környezetben.
+- **Environment.yml**: A második legördülő listában válassza ki egy *environments.yml* fájl Pro projekty v Pythonu egy conda-környezetben.
 
 Ha elkészült a lépések hozzáadásával, válassza ki a **mentése**.
 
@@ -186,5 +211,5 @@ A parancs egy Python-jegyzetfüzetet egyik kódcellájába is használja:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Útmutató: adatok soubory projektu használata](work-with-project-data-files.md)
+- [Útmutató: Soubory projektu adatok használata](work-with-project-data-files.md)
 - [Hozzáférés felhőbeli adatok történő használatát](access-data-resources-jupyter-notebooks.md)

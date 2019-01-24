@@ -3,19 +3,19 @@ title: Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókka
 description: Adja meg a regisztráció és bejelentkezés Gyorsműveletek az alkalmazások az Azure Active Directory B2C fiókkal rendelkező ügyfelek számára.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 23e44763b773835583d255104771d2329851aac8
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 1681fd0639c176d9a6a00f656c515c089973b554
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181414"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845860"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal Gyorsműveletek beállítása
 
@@ -44,12 +44,12 @@ Gyorsműveletek fiók használatára az identitásszolgáltatójaként az Azure 
 8. Válassza ki**创建应用**(alkalmazás létrehozása).
 9. A megerősítő oldalon válassza ki a**应用管理**(Alkalmazáskezelés) az alkalmazás felügyeleti lapra való visszatéréshez.
 10. Válassza ki**查看**(megtekintése) mellett a létrehozott alkalmazást.
-11. Válassza ki**修改**(Szerkesztés).
+11. Select **修改** (edit).
 12. Másolás a **Alkalmazásazonosító** és **ALKALMAZÁSKULCS**. Mindkét ezeket az értékeket az identitásszolgáltató hozzáadása a bérlőhöz van szüksége.
 
 ## <a name="configure-qq-as-an-identity-provider"></a>Gyorsműveletek konfigurálása identitás-szolgáltatóként
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a68e4f70dac7aace9d49a41ecf282525ce6b1fd6
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 665ceabe062fce454db377a384b1d12ba6868c40
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752877"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851725"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Hitelesítés a egy privát Docker regisztrációs adatbázist
 
@@ -26,13 +26,15 @@ Az Azure Container Registry támogatja a Docker-műveletek nem hitelesített vag
 
 ## <a name="individual-login-with-azure-ad"></a>Egyéni bejelentkezési az Azure ad-vel
 
-Például a rendszerképek lekérése és leküldése a lemezképek a fejlesztői munkaállomáson közvetlenül, a beállításjegyzék használata során hitelesítést végezni a [az acr bejelentkezési](/cli/azure/acr?view=azure-cli-latest#az-acr-login) parancsot a [Azure CLI-vel](/cli/azure/install-azure-cli):
+Például a képek lekérése és leküldése a képek egy fejlesztői munkaállomáson közvetlenül, a beállításjegyzék használata során hitelesítést végezni a [az acr bejelentkezési](/cli/azure/acr?view=azure-cli-latest#az-acr-login) parancsot a [Azure CLI-vel](/cli/azure/install-azure-cli):
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
 Amikor bejelentkezés a következővel `az acr login`, a parancssori Felületet használja a jogkivonatot, jön létre, amikor hajtja végre [az bejelentkezési](/cli/azure/reference-index#az-login) zökkenőmentesen hitelesítéséhez a beállításjegyzék-munkamenet. Miután ezzel a módszerrel bejelentkezett a hitelesítő adatok-e a gyorsítótárazott és az azt követő `docker` parancsok nem igényelnek, egy felhasználónevet vagy jelszót. Ha a jogkivonat lejár, frissítheti, használatával a `az acr login` újra hitelesítse magát újra a parancsot. Használatával `az acr login` biztosít az Azure-identitások [szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md).
+
+Bizonyos esetekben érdemes lehet, hogy jelentkezzen be a beállításjegyzék a saját egyéni identitás az Azure AD-ben. Szolgáltatások közötti forgatókönyvek esetén, vagy nem kívánja az egyes hozzáférés kezelése a munkacsoport igényeinek kezeléséhez is bejelentkezhet a következővel egy [-identitás az Azure-erőforrások](container-registry-authentication-managed-identity.md).
 
 ## <a name="service-principal"></a>Szolgáltatásnév
 

@@ -4,7 +4,7 @@ description: Biztosít, javítsa ki őket az Azure Active Directory-Tevékenysé
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 65747da92a3cad770cd9d474d27645782f7306b9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 461c61fdd38fe8801a71c1ac34cd3e7114838207
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998741"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825357"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Hibaelhárítás az Azure Active Directory-Tevékenységnaplók tartalomcsomag-hibái naplók 
 
@@ -38,9 +38,9 @@ A Power BI-tartalomcsomag használata az Azure Active Directory (Azure AD), eset
 
 A cikk ismerteti a lehetséges okok és a hibák kijavításához információt.
  
-## <a name="refresh-failed"></a>A frissítés nem sikerült 
+## <a name="refresh-failed"></a>Nem sikerült a frissítés. 
  
-**Hogyan ezt a hibát az illesztett**: e-mailt a Power bi-ban vagy a frissítési előzmények sikertelen állapotát. 
+**Hogyan ezt a hibát az illesztett**: E-mailben a Power bi-ban vagy a frissítési előzmények sikertelen állapotát. 
 
 
 | Ok | Hogyan háríthatja el a |
@@ -51,7 +51,7 @@ A cikk ismerteti a lehetséges okok és a hibák kijavításához információt.
  
 ## <a name="failed-to-update-data-source-credentials"></a>Az adatforrás hitelesítő adatainak frissítése sikertelen 
  
-**Hogyan ezt a hibát az illesztett**: A Power bi-ban, amikor csatlakozik az Azure AD tevékenység-naplók. 
+**Hogyan ezt a hibát az illesztett**: A Power bi-ban, az Azure AD tevékenység naplók tartalomcsomaghoz való csatlakozáskor. 
 
 | Ok | Hogyan háríthatja el a |
 | ---   | ---        |
@@ -62,7 +62,7 @@ A cikk ismerteti a lehetséges okok és a hibák kijavításához információt.
 
 ## <a name="data-import-is-too-slow"></a>Adatok importálása az túl lassú 
  
-**Hogyan ezt a hibát az illesztett**: A Power bi-ban, a tartalomcsomag csatlakoztatása után az importálási folyamat elindítja az irányítópulton előkészítése az Azure Active Directory naplói. Az üzenet jelenik meg: **adatok importálása...**  anélkül, hogy bármilyen további folyamatban van.  
+**Hogyan ezt a hibát az illesztett**: A Power bi-ban, a tartalomcsomag csatlakoztatása után az importálási folyamat elindítja az irányítópulton előkészítése az Azure Active Directory naplói. A következő üzenet jelenik meg: **Adatok importálása...**  anélkül, hogy bármilyen további folyamatban van.  
 
 | Ok | Hogyan háríthatja el a |
 | ---   | ---        |

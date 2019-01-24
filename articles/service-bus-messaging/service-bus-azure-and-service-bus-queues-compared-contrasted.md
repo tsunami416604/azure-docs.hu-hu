@@ -3,29 +3,29 @@ title: Az Azure Storage-üzenetsorok és Service Bus-üzenetsorok összehasonlí
 description: Kétféle típusú Azure-ban elérhető várólisták közötti különbségeket és hasonlóságokat elemzi.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: 0254762de49f37c591a7847fe9b40b3ecbabe1bd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: c59d79a7c6ac0590861c99daa01438b184cd71ff
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261060"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852796"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tároló-üzenetsorok és Service Bus-üzenetsorok összehasonlítása
-Ez a cikk elemzi a közötti különbségeket és hasonlóságokat a Microsoft Azure jelenleg elérhető két típusú: tároló-üzenetsorok és Service Bus-üzenetsorok. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
+Ez a cikk elemzi a közötti különbségeket és hasonlóságokat a Microsoft Azure jelenleg elérhető két típusa: Tároló-üzenetsorok és Service Bus-üzenetsorok. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
 
 ## <a name="introduction"></a>Bevezetés
-Az Azure két típusú várólista mechanizmusokat támogatja: **tárolási üzenetsorok** és **Service Bus-üzenetsorok**.
+Az Azure két típusú várólista mechanizmusokat támogatja: **Tárolási üzenetsorok** és **Service Bus-üzenetsorok**.
 
 **Tárolási üzenetsorok**, amelyek részét képezik a [az Azure storage](https://azure.microsoft.com/services/storage/) infrastruktúra, a szolgáltatás egy egyszerű REST-alapú GET és PUT/BETEKINTÉSI felületet biztosít a megbízható, állandó belül, és a szolgáltatások közötti üzenetküldési.
 
@@ -68,7 +68,7 @@ Ez a szakasz az alapvető üzenetsor-kezelési funkciói biztosítják a tárol�
 | Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Garantált rendezése |**Nem** <br/><br>További információkért tekintse meg az első a "További információ" részben.</br> |**Igen – első-First Out (FIFO)**<br/><br>(ügyféladatoknak munkamenetek üzenetküldése) |
-| Kézbesítési garanciával |**A legalább egyszeri** |**A legalább egyszeri**<br/><br/>**A legtöbb – egyszeri** |
+| Kézbesítési garanciával |**At-Least-Once** |**At-Least-Once**<br/><br/>**At-Most-Once** |
 | Atomi műveletnek támogatása |**Nem** |**Igen**<br/><br/> |
 | Viselkedés fogadása |**Nem kizáró**<br/><br/>(befejezése azonnal Ha új üzenet nem található) |**Időtúllépés rendelkező/nem blokkolja-e**<br/><br/>(kínál hosszú lekérdezések vagy az ["Comet technikával"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nem kizáró**<br/><br/>(használatával .NET API-t csak kezelt) |
 | Leküldéses stílusú API |**Nem** |**Igen**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) és **OnMessage** munkamenetek .NET API-t. |
@@ -131,7 +131,7 @@ Ez a szakasz hasonlítja össze a Storage-üzenetsorok és Service Bus-üzenetso
 | Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Várólista maximális mérete |**500 TB**<br/><br/>(legfeljebb egy [egyetlen a tárfiókok kapacitásával](../storage/common/storage-introduction.md#queue-storage)) |**1 GB – 80 GB**<br/><br/>(az üzenetsorok létrehozásakor meghatározott, és [particionálás engedélyezése](service-bus-partitioning.md) – a "További információk" című szakaszában talál) |
-| Maximális üzenetméret |**64 KB-OS**<br/><br/>(48 KB-os használatakor **Base64** kódolás)<br/><br/>Az Azure támogatja a nagy méretű üzenetek üzenetsorok és blobok – ekkor is sorba kombinálásával egyetlen cikkre legfeljebb 200 GB. |**256 KB-os** vagy **1 MB**<br/><br/>(beleértve mind a fejléc szövegét, a fejléc maximális mérete: 64 KB-os).<br/><br/>Attól függ, a [szolgáltatásszint](service-bus-premium-messaging.md). |
+| Maximális üzenetméret |**64 KB**<br/><br/>(48 KB-os használatakor **Base64** kódolás)<br/><br/>Az Azure támogatja a nagy méretű üzenetek üzenetsorok és blobok – ekkor is sorba kombinálásával egyetlen cikkre legfeljebb 200 GB. |**256 KB-os** vagy **1 MB**<br/><br/>(beleértve mind a fejléc szövegét, a fejléc maximális mérete: 64 KB).<br/><br/>Attól függ, a [szolgáltatásszint](service-bus-premium-messaging.md). |
 | Üzenetek maximális Élettartama |**Végtelen** (től 2017-07-27 api-version) |**TimeSpan.Max** |
 | Várólista maximális száma |**Korlátlan** |**10,000**<br/><br/>(szolgáltatás névterenként) |
 | Egyidejű ügyfelek maximális száma |**Korlátlan** |**Korlátlan**<br/><br/>(100 egyidejű kapcsolathoz megadott korlátot csak vonatkozik a TCP protokoll-alapú kommunikációt) |
@@ -155,7 +155,7 @@ Ez a szakasz a tároló-üzenetsorok és Service Bus-üzenetsorok által biztos�
 | Natív C++ |**Igen** |**Igen** |
 | Java API |**Igen** |**Igen** |
 | PHP-API |**Igen** |**Igen** |
-| NODE.js API |**Igen** |**Igen** |
+| Node.js API |**Igen** |**Igen** |
 | Tetszőleges metaadatok támogatása |**Igen** |**Nem** |
 | Várólista elnevezési szabályok |**Legfeljebb 63 karakter**<br/><br/>(Az üzenetsor nevének betűjét kisbetűnek kell lennie.) |**Legfeljebb 260 karakter**<br/><br/>(Várólista elérési útját és nevét az identitásokban nem számítanak.) |
 | Várólista hossza függvény beolvasása |**Igen**<br/><br/>(Becsült érték Ha üzenetek lejárati idővel rendelkeznek az Élettartamon túli nélkül törlése folyamatban van.) |**Igen**<br/><br/>(Pontos, időponthoz érték.) |

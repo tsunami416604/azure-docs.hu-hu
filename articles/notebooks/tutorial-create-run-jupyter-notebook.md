@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: dcee7df0b5da53bd7014a26f1f09695fe874833d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244584"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849655"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Oktatóanyag: létrehozása és futtatása a Jupyter notebook Python használatával
 
@@ -128,7 +128,7 @@ Készen áll az adatfájlban és a projekt környezet beállítása hogy mostant
 1. Mert rendelkezik egy *requirements.txt* fájl a környezet beállításaiban látja az üzenetet, "Várakozás a tároló befejezéséhez a előkészítésére." Választhat **OK** zárja be az üzenetet, és folytatni a munkát a notebook; kód cellák, azonban nem tudja futtatni, amíg a környezet teljes van beállítva.
 1. A Notebookban egy üres kódcellába Jupyter kapcsolaton alapértelmezett nyílik meg.
 
-    [![](media/tutorial/tutorial-new-notebook.png "Kezdeti nézete egy új jegyzetfüzetet az Azure-jegyzetfüzetekben")](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Kezdeti nézete egy új jegyzetfüzetet az Azure-jegyzetfüzetekben](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>A notebook felület bemutatása
 
@@ -144,7 +144,7 @@ Az ablak tetején jelenik meg a következő elemek:
 (F) jelzi, hogy a notebook megbízható (alapértelmezett érték a **nem megbízható**).
 (G) a kernel a jegyzetfüzet futtatásához egy tevékenységet jelző együtt használja.
 
-[![](media/tutorial/tutorial-notebook-ui.png "A Jupyter felület területeit elsődleges felhasználói felület")](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![A Jupyter felület területeit elsődleges felhasználói felület](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter biztosít beépített Ismerkedjen meg az elsődleges felhasználói felületi elemeket. A bemutató első lépésként válassza ki a **súgó** > **felhasználói felületet bemutató** parancs, és kattintson az előugró ablakok keresztül.
 

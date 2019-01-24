@@ -3,7 +3,7 @@ title: Lehetséges okai a "Meg nem innen érheti el" hibaüzenet, az Azure Activ
 description: Hárítsa el a lehetséges okok a "Meg nem innen érheti el" hibaüzenetet kap.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.component: user-help
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: c34b096766b6b7dda26c51559bf58e40d95715e7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: eb924a612188d905eb6c7127067fed2fd4b0f218
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651474"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825527"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>A "Meg nem innen érheti el" hibaüzenetet a lehetséges okok
 Arról, hogy a, hibaüzenetet kaphat közben: a szervezet belső webalkalmazásokat vagy szolgáltatásokat, **nem érheti el itt**. Ez az üzenet azt jelenti, a szervezet rendelkezik egy szabályzatot, amely megakadályozza, hogy az eszköz a szervezet erőforrásaihoz. Bár előfordulhat, hogy végül forduljon az ügyfélszolgálathoz a probléma megoldásához rendelkezik, az alábbiakban néhány dolgot, először próbálja meg.
@@ -32,7 +32,7 @@ A probléma megoldásához telepítse, és futtassa az operációs rendszer alap
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>Győződjön meg arról, hogy egy támogatott operációs rendszert használja
 Győződjön meg arról, hogy az operációs rendszer támogatott verzióját futtatja, többek között:
 
-- **Windows-ügyfél.** Windows 7 vagy újabb.
+- **Windows Client.** Windows 7 vagy újabb.
 
 - **A Windows Server.** A Windows Server 2008 R2 vagy újabb.
 

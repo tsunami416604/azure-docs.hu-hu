@@ -3,19 +3,19 @@ title: OpenId Connect technikai profil meghatározása egy egyéni házirendek a
 description: Adja meg az Azure Active Directory B2C egyéni szabályzat OpenId Connect technikai profil.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9a20b8df1f0d9cddbde4c4886e11967bc8c04160
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e8ee72b9add1947929e5c772edafd55d28edd79b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842408"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851045"
 ---
 # <a name="define-a-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OpenId Connect technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
@@ -77,7 +77,7 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 | --------- | -------- | ----------- |
 | client_id | Igen | Az identitásszolgáltató az alkalmazás azonosítója. |
 | IdTokenAudience | Nem | A id_token célközönségét. Ha meg van adva, az Azure AD B2C-vel ellenőrzi, hogy a jogkivonat az identitásszolgáltató által visszaadott jogcím szerepel-e, és megadott egyenlő. |
-| METAADATOK | Igen | Egy mutató URL-cím egy JSON konfigurációs dokumentum az OpenID Connect-felderítési specifikáció, amely más néven a jól ismert openid konfigurációs végpont megfelelően formázott. |
+| METADATA | Igen | Egy mutató URL-cím egy JSON konfigurációs dokumentum az OpenID Connect-felderítési specifikáció, amely más néven a jól ismert openid konfigurációs végpont megfelelően formázott. |
 | ProviderName | Nem | Az identitásszolgáltató neve. |
 | response_types | Nem | Válasz típusa az OpenID Connect Core 1.0 specifikáció szerint. A lehetséges értékek: `id_token`, `code`, vagy `token`. |
 | response_mode | Nem | A módszer, amely az identitásszolgáltató nem küldi vissza az eredményt az Azure AD B2C-t használja. A lehetséges értékek: `query`, `form_post` (alapértelmezett), vagy `fragment`. |

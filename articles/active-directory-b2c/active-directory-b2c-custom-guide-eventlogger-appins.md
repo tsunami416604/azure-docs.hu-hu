@@ -3,19 +3,19 @@ title: Események az Application Insights az Azure Active Directory B2C használ
 description: Ismerje meg az eseménynaplókat az Application insights szolgáltatásban az Azure AD B2C felhasználói utak engedélyezése egyéni házirendek (előzetes verzió) használatával.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/12/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d7097886b746c225bb420f9a96e2b7ef5c95c913
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 758b9f68349dac025cb3b848f95dd05700637a6a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684739"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849839"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Nyomon követheti a felhasználói viselkedés az Azure Active Directory B2C az Application Insights használatával
 
@@ -227,7 +227,7 @@ Mentse, és töltse fel a *TrustFrameworkExtensions.xml* fájlt. Ezután a függ
 2. Válassza ki **használati** > **események**.
 3. Állítsa be **során** való **utolsó óra** és **által** való **3 perc**.  Előfordulhat, hogy ki kell választania **frissítése** eredmények megtekintéséhez.
 
-![Application Insights használati-események Blase](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)
+![Application Insights USAGE-Events Blase](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)
 
 ## <a name="next-steps"></a>További lépések
 

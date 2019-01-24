@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 5ff3e014-b79f-4a6c-bb0b-38462bea5d10
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 41846e2e7fd047ca573892e39d960a353bc7fd18
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: fd1975239feb6d17d68e7932094a9a161a29f735
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081034"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826513"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deskradar"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Deskradar
 
@@ -125,9 +125,9 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------- |
-    | FirstName | User.givenName |
-    | LastName | User.surname |
-    | E-mail | User.userPrincipalName |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
+    | E-mail | user.userprincipalname |
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -158,7 +158,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 

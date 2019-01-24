@@ -3,22 +3,22 @@ title: Az Azure Service Bus-üzenet adatátvitel, zárolások és elszámolás |
 description: A Service Bus-üzenet adatátvitel és elszámolás műveletek áttekintése
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: spelluru
-ms.openlocfilehash: a1835e26f67427f84abd8a3cf24ad196fec8e99d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: aschhab
+ms.openlocfilehash: a78409a15acb4e60fc4200778d0f33b3fb566e85
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854422"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846441"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Üzenetek átvitele, zárolása és elszámolása
 
@@ -96,7 +96,7 @@ Az alacsony szintű AMQP-ügyfél a Service Bus "előre kiegyenlített" átvitel
 
 ## <a name="settling-receive-operations"></a>Stabilizálódási fogadási műveletek
 
-A fogadási műveletek, a Service Bus API-ügyfelek kétféle explicit módon engedélyezi: *fogadása és törlése* és *betekintési zárolással való*.
+A fogadási műveletek, a Service Bus API-ügyfelek kétféle explicit módon engedélyezése: *Fogadása és-törlés* és *betekintési zárolással való*.
 
 A [fogadása és törlése](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód arra utasítja a közvetítő kell figyelembe venni az összes üzenetet küld a fogadó ügyfél kiegyenlített, mikor küldött. Ez azt jelenti, hogy az üzenet számít felhasznált, amint a közvetítő állapotúra állította, poslat. Ha az üzenet átvitel sikertelen, az üzenet elveszik.
 

@@ -3,19 +3,19 @@ title: Az Azure Active Directory technikai profil meghatározása egy egyéni h�
 description: Adja meg az Azure Active Directory B2C-vel egyéni szabályzatok az Azure Active Directory technikai profil.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cf7b051703e01493f365c1850ab815747321230b
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: dc9cda92ef725bbfc1a12756912656f0c39474cd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381317"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846744"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az Azure Active Directory technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
@@ -259,8 +259,8 @@ A következő technikai profil töröl egy közösségi felhasználói fiók has
 | UserMessageIfClaimsPrincipalDoesNotExist | Nem | A kiváltandó hiba esetén (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírása), adja meg a felhasználói objektum nem létezik. Ha a felhasználó számára megjelenítendő üzenetet. Az érték lehet [honosított](localization.md).| 
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Nem | Emelje a hiba, ha a felhasználói objektum már létezik. A lehetséges értékek: `true` vagy `false`.| 
 | UserMessageIfClaimsPrincipalAlreadyExists | Nem | A kiváltandó hiba esetén (lásd a RaiseErrorIfClaimsPrincipalAlreadyExists attribútum leírása), adja meg a felhasználói objektum már létezik-e a felhasználónak megjelenítendő üzenetet. Az érték lehet [honosított](localization.md).| 
-| ApplicationObjectId | Nem | A bővítményattribútumok alkalmazás objektum azonosítója. Érték: Az alkalmazás ObjectId. További információkért lásd: [egyéni attribútumok használata egyéni profil házirend szerkesztése](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). | 
-| ClientId | Nem | Az ügyfél-azonosítója egy harmadik féltől származó, a bérlő eléréséhez. További információkért lásd: [egyéni attribútumok használata egyéni profil szabályzat szerkesztése](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) | 
+| ApplicationObjectId | Nem | A bővítményattribútumok alkalmazás objektum azonosítója. Érték: Egy alkalmazás ObjectId. További információkért lásd: [egyéni attribútumok használata egyéni profil házirend szerkesztése](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). | 
+| ClientID | Nem | Az ügyfél-azonosítója egy harmadik féltől származó, a bérlő eléréséhez. További információkért lásd: [egyéni attribútumok használata egyéni profil szabályzat szerkesztése](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) | 
 
 
 

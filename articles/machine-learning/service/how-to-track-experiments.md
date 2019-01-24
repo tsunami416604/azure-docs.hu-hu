@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c45023a462a5c01dfde806d7abbb9714aaf09b85
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 99b3a65feb232526cffecac4fec68d56fcd16ccb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189472"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846285"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Kísérletek és az Azure Machine Learning betanítási metrikák követése
 
@@ -60,7 +60,7 @@ Mielőtt hozzáadná a naplózás és a egy kísérlet elküldése, be kell áll
                resource_group = <<resource_group>>)
    ```
   
-## <a name="option-1-use-startlogging"></a>1. lehetőség: Start_logging használata
+## <a name="option-1-use-startlogging"></a>Option 1: Start_logging használata
 
 **start_logging** notebookok – egyéb felhasználási helyzetek egy interaktív Futtatás használatra hoz létre. A munkamenet során naplózott összes metrikák kerülnek a futtatási rekordját a kísérletben.
 
@@ -122,16 +122,16 @@ Az alábbi példában egy egyszerű sklearn Ridge modell helyileg a helyi Jupyte
 
 A parancsfájl végződik ```run.complete()```, amely jelöli meg a futtatást, befejezettként.  Ezt a funkciót általában interaktív notebook olyan forgatókönyvekben használatos.
 
-## <a name="option-2-use-scriptrunconfig"></a>2. lehetőség: ScriptRunConfig használata
+## <a name="option-2-use-scriptrunconfig"></a>Option 2: ScriptRunConfig használata
 
 **ScriptRunConfig** beállítása szkript konfigurációi fut egy osztály van. Ezzel a beállítással adhat hozzá figyelés kódja befejezéséről értesítést, vagy egy vizuális widget figyelése lekéréséhez.
 
 Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel bővítjük. Egy egyszerű paraméter Ismétlés az ismétlés metrikákat rögzítheti a modell és a kísérlet alatt fut, a betanított modellek az alfa értékeknek keresztül hajtja végre. A példában helyben fut egy felhasználó által felügyelt környezetben. 
 
-1. Hozzon létre egy tanítási szkriptet. Ez a kód ```%%writefile%%``` a betanítási kódot írja ki a parancsfájl mappába ```train.py```.
+1. Hozzon létre egy tanítási szkriptet `train.py`.
 
   ```python
-  %%writefile $project_folder/train.py
+  # train.py
 
   import os
   from sklearn.datasets import load_diabetes
@@ -182,10 +182,11 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
   
   ```
 
-2. A ```train.py``` parancsfájl-hivatkozások ```mylib.py```. Ez a fájl lehetővé teszi az alfa értékeknek a ridge modellben használandó listájának beolvasása.
+2. A `train.py` parancsfájl-hivatkozások `mylib.py` lehetővé teszi az alfa értékeknek a ridge modellben használandó listájának beolvasása.
 
   ```python
-  %%writefile $script_folder/mylib.py
+  # mylib.py
+  
   import numpy as np
 
   def get_alphas():
@@ -216,7 +217,31 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
   run = experiment.submit(src)
   ```
+
+## <a name="cancel-a-run"></a>A Futtatás megszakítása
+Futtatás ésőbb elküldésekor, lemondhatja a szolgáltatásokat, akkor is, ha elvesztette az objektumhivatkozás mindaddig, amíg a kísérlet neve ismeri, és futtatási azonosítóját. 
+
+```python
+from azureml.core import Experiment
+exp = Experiment(ws, "my-experiment-name")
+
+# if you don't know the run id, you can list all runs under an experiment
+for r in exp.get_runs():  
+    print(r.id, r.get_status())
+
+# if you know the run id, you can "rehydrate" the run
+from azureml.core import get_run
+r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
   
+# check the returned run type and status
+print(type(r), r.get_status())
+
+# you can only cancel a run if the status is Running
+if r.get_status() == 'Running':
+    r.cancel()
+```
+Vegye figyelembe, hogy jelenleg csak ScriptRun és PipelineRun típusokat támogatja-e a művelet megszakítása.
+
 ## <a name="view-run-details"></a>Futtatás részletei nézet
 
 ### <a name="monitor-run-with-jupyter-notebook-widgets"></a>A figyelő futtatásához a Jupyter notebook widgetek

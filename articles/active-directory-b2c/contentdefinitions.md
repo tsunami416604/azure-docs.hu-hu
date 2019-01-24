@@ -3,19 +3,19 @@ title: ContentDefinitions – az Azure Active Directory B2C |} A Microsoft Docs
 description: Adja meg az egyéni szabályzat ContentDefinitions elem Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f51b058b14525cc5a4af312696330a3a39ea44e1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 1fa5688b5895ed7418161234f6af06fecace631c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381599"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849379"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -95,7 +95,7 @@ A **LocalizedResourcesReferences** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| LocalizedResourcesReference | 1: n | Honosított erőforrás mutató hivatkozásokat a tartalomdefiníció listája. | 
+| LocalizedResourcesReference | 1:n | Honosított erőforrás mutató hivatkozásokat a tartalomdefiníció listája. | 
 
 A **LocalizedResourcesReferences** elem tartalmazza a következő attribútumokat:
 

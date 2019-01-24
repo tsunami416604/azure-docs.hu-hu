@@ -3,22 +3,22 @@ title: Az Azure Active Directory B2C közösségi identitású felhasználók á
 description: Alapfogalmakat tárgyalja a közösségi identitású felhasználók Azure AD B2C-be Graph API-val, az áttelepítés.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b9378face28b4d053dcd5f01b8f87126457cf339
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 0ca73b8bfaca481d3e0404d068a74e1a6b0e4dcb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445143"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846557"
 ---
-# <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Az Azure Active Directory B2C: A közösségi identitású felhasználók áttelepítése
-Ha azt tervezi, az identitásszolgáltató migrálása az Azure AD B2C-vel, szükség lehet a közösségi identitású felhasználók áttelepítése. Ez a cikk azt ismerteti, hogyan telepítheti át meglévő közösségi identitások fiókokat, például: Facebook, a LinkedIn, a Microsoft és a Google-fiókok Azure AD B2C-vel. Ez a cikk az összevont identitások kialakítása, is vonatkozik, azonban ezek áttelepítések kevésbé gyakoriak.
+# <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Felhasználók migrálása közösségi identitásokkal
+Ha azt tervezi, az identitásszolgáltató migrálása az Azure AD B2C-vel, szükség lehet a közösségi identitású felhasználók áttelepítése. Ez a cikk azt ismerteti, hogyan telepítheti át meglévő közösségi identitások fiókokat, például: Facebook, a LinkedIn, a Microsoft és a Google fiókok Azure AD B2C-t. Ez a cikk az összevont identitások kialakítása, is vonatkozik, azonban ezek áttelepítések kevésbé gyakoriak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk a felhasználó áttelepítési cikk folytatása, és közösségi áttelepítési összpontosít. Mielőtt elkezdené, olvassa el a [felhasználóáttelepítés](active-directory-b2c-user-migration.md).
@@ -236,4 +236,4 @@ Küldje el a következő képernyő-adatok:
 > [!NOTE]
 > Ha nem frissíti a UsersData.json fájlt a mintában az adatokkal, is bejelentkezik a minta helyi fiók hitelesítő adatait, de nem a közösségi fiók példák. A közösségi fiókok át, adja meg a tényleges adatok.
 
-További információ a mintaalkalmazás használja, olvassa el [Azure Active Directory B2C: felhasználók áttelepítéséhez](active-directory-b2c-user-migration.md)
+További információ a mintaalkalmazás használja, olvassa el [Azure Active Directory B2C: Felhasználói áttelepítése](active-directory-b2c-user-migration.md)

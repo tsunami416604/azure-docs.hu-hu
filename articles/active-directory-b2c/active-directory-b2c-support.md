@@ -3,21 +3,21 @@ title: Az Azure Active Directory B2C támogatása |} A Microsoft Docs
 description: Fájl támogatási kéréseket az Azure Active Directory B2C módja.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 04eae00d40470d5f6c992d9a0c8c9b0b49d7495f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 003a65e0c9cc70639850ab9bacef5df3762dedc3
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007637"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852438"
 ---
-# <a name="azure-active-directory-b2c-file-support-requests"></a>Az Azure Active Directory B2C: Fájl támogatási kérelmek
+# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Fájltámogatási kérések
 A fájl támogatási kéréseket az Azure Active Directory (Azure AD) B2C az Azure Portalon, az alábbi lépéseket követve:
 
 1. A B2C-bérlő válthat, amely az Azure-előfizetéssel társítva van egy másik bérlőben. Az utóbbi általában az alkalmazottak vagy az Ön számára létrehozott Azure-előfizetésre való regisztráció során alapértelmezett-bérlő. További tudnivalókért lásd: [hogyan egy Azure-előfizetések kapcsolata az Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
@@ -54,7 +54,7 @@ A fájl támogatási kéréseket az Azure Active Directory (Azure AD) B2C az Azu
     ![Támogatás – ügyfél](./media/active-directory-b2c-support/support-contact.png)
 8. Miután a támogatási kérelem küldése, nyomon követheti kattintva **súgó + támogatás** a kezdőpult, majd **támogatási kérelmek kezelése**.
 
-## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Ismert hiba: egy támogatási kérést küldhet a B2C-bérlője kontextusában
+## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Ismert hiba: Egy támogatási kérést küldhet a B2C-bérlője kontextusában
 Ha a fent vázolt 2 kimaradt, és hozzon létre egy támogatási kérést B2C-bérlője kontextusában próbálja, látni fogja a következő hiba.
 
 > [!IMPORTANT]

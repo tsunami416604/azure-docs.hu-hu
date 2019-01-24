@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 128e389a8d6928f9f133fe9d649d0fc7e982e4df
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 57d52412648cbe8a0791aa306075018a2092bf51
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402358"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827329"
 ---
 # <a name="about-azure-vm-backup"></a>Azure virtuális gépek biztonsági mentéséről
 
@@ -40,7 +40,7 @@ Itt látható, hogyan Azure Backup befejeződött a biztonsági mentés az Azure
 
 Az Azure Backup nem titkosítja az adatokat a biztonsági mentési folyamatának részeként. Az Azure Backup támogatja az Azure Disk Encryption használatával titkosított Azure virtuális gépek biztonsági mentését.
 
-- A Bitlocker titkosítást Key(BEK) csak titkosított virtuális gépek biztonsági mentését, és a Blokktitkosítási kulcs titkosítási Key(KEK) együtt támogatott, felügyelt és nem felügyelt Azure-beli virtuális gépek.
+- A BitLocker titkosítást Key(BEK) csak titkosított virtuális gépek biztonsági mentését, és a Blokktitkosítási kulcs titkosítási Key(KEK) együtt támogatott, felügyelt és nem felügyelt Azure-beli virtuális gépek.
 - A BEK(secrets) és a biztonsági mentés KEK(keys) ahhoz, hogy olvassa el, illetve csak akkor, ha a visszaállított vissza a key vaulttal a jogosult felhasználók által használt titkosított.
 - A blokktitkosítási kulcsot is az olyan forgatókönyvekben, ahol rendelkeznek BEk-KEL elveszett, biztonsági mentését, mert a hitelesített felhasználók visszaállítása a blokktitkosítási kulcsot az KeyVault és a titkosított virtuális gép helyreállítása. Kulcsok és titkos kulcsok a titkosított virtuális gépek készül biztonsági másolat titkosított formában, hogy jogosulatlan felhasználók és az Azure nem tudja olvasni, vagy használja a kulcsok és titkos kulcsok készíteni. Csak a megfelelő szintű engedélyeket is biztonsági mentése és visszaállítása titkosított virtuális gépek, valamint a kulcsok és titkok.
 

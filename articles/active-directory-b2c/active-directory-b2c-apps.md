@@ -3,19 +3,19 @@ title: Az Azure Active Directory B2C-vel is használható alkalmazások típusai
 description: További információ a típusú alkalmazások az Azure Active Directory B2C segítségével használhatja.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5d90e9440758f457aca591e5c2792c6670868685
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: acb99468000028abd3a8292844b2ac129a4c95ae
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245480"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844789"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Az Active Directory B2C-ben használható alkalmazások típusok
 

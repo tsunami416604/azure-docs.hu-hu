@@ -3,7 +3,7 @@ title: Az Azure Active Directoryban alkalmazásjelszók kezelése |} A Microsoft
 description: Ezen a lapon segítségével megismerheti az alkalmazásjelszók vannak, és hogy mire szolgálnak a a figyelembe véve a kétlépéses ellenőrzés felhasználók.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: richagi
 ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 836f426be950e33031ff74276218d1ba59f1f2f7
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 80b04f723c4e5b7ea541833df7575be763001ace
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300913"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827635"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>A kétlépéses ellenőrzéshez alkalmazásjelszók kezelése
 
@@ -49,7 +49,7 @@ Hozzon létre, és törli az alkalmazásjelszót a MyApps portálon keresztül.
 
 ### <a name="to-create-an-app-password-using-the-myapps-portal"></a>A MyApps portálról alkalmazásjelszó létrehozása
 
-1. Jelentkezzen be a [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+1. Jelentkezzen be itt: [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
 2. Válassza ki a nevét a jobb felső sarokban, és válassza a **profil**.
 

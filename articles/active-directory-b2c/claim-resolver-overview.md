@@ -3,19 +3,19 @@ title: Az Azure Active Directory B2C-vel egyéni szabályzatok feloldók készü
 description: Ismerje meg a jogcímek feloldók az Azure Active Directory B2C egy egyéni szabályzat használata.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/08/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dccb597cda1f5aba30d18b0f71371caa6ceee9b4
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 6b7f3dc79e3b4c06b2b974e0cdca0bf20221c3ad
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852384"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845010"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók az Azure Active Directory B2C-vel egyéni szabályzatok jogcím feloldók
 
@@ -48,18 +48,18 @@ Az alábbi szakaszok tartalmazzák a rendelkezésre álló jogcímek feloldók.
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
 | {Kulturális környezet: LanguageName} | A kétbetűs ISO-kódja a nyelvhez. | hu |
-| {Kulturális környezet: LCID}   | A nyelvi kód LCID. | 1038 |
+| {Culture:LCID}   | A nyelvi kód LCID. | 1038 |
 | {Kulturális környezet: RegionName} | A kétbetűs ISO-kódja a régióban. | USA |
-| {Kulturális környezet: RFC5646} | A RFC5646 nyelvi kódot. | hu-HU |
+| {Culture:RFC5646} | A RFC5646 nyelvi kódot. | en-US |
 
 ### <a name="policy"></a>Szabályzat
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
-| {A házirend: PolicyId} | A függő entitás szabályzat neve. | B2C_1A_signup_signin |
-| {A házirend: RelyingPartyTenantId} | A függő entitás házirend Bérlőazonosítója. | a tenant.onmicrosoft.com |
-| {A házirend: TenantObjectId} | A függő entitás házirend bérlői objektum azonosítója. | 00000000-0000-0000-0000-000000000000 |
-| {A házirend: TrustFrameworkTenantId} | A bizalmi keretrendszer Bérlőazonosítója. | a tenant.onmicrosoft.com |
+| {Policy:PolicyId} | A függő entitás szabályzat neve. | B2C_1A_signup_signin |
+| {Policy:RelyingPartyTenantId} | A függő entitás házirend Bérlőazonosítója. | your-tenant.onmicrosoft.com |
+| {Policy:TenantObjectId} | A függő entitás házirend bérlői objektum azonosítója. | 00000000-0000-0000-0000-000000000000 |
+| {Policy:TrustFrameworkTenantId} | A bizalmi keretrendszer Bérlőazonosítója. | your-tenant.onmicrosoft.com |
 
 ### <a name="openid-connect"></a>OpenID Connect
 
@@ -67,7 +67,7 @@ Az alábbi szakaszok tartalmazzák a rendelkezésre álló jogcímek feloldók.
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |A `acr_values` lekérdezési karakterlánc paraméter. | – |
 | {OIDC:ClientId} |A `client_id` lekérdezési karakterlánc paraméter. | 00000000-0000-0000-0000-000000000000 |
-| {OIDC:DomainHint} |A `domain_hint` lekérdezési karakterlánc paraméter. | Facebook.com weboldalt |
+| {OIDC:DomainHint} |A `domain_hint` lekérdezési karakterlánc paraméter. | facebook.com |
 | {OIDC:LoginHint} |  A `login_hint` lekérdezési karakterlánc paraméter. | someone@contoso.com |
 | {OIDC:MaxAge} | A `max_age`. | – |
 | {OIDC:Nonce} |A `Nonce` lekérdezési karakterlánc paraméter. | defaultNonce |
@@ -80,10 +80,10 @@ Az alábbi szakaszok tartalmazzák a rendelkezésre álló jogcímek feloldók.
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
 | {Környezet: BuildNumber} | Az identitás-kezelőfelületi keretrendszer verziója (build száma).  | 1.0.507.0 |
-| {Környezet: CorrelationId} | A korrelációs azonosítót.  | 00000000-0000-0000-0000-000000000000 |
-| {Környezet: DateTimeInUtc} |A dátum idő (UTC).  | 10-ES/10/2018. 12:00:00 PM |
-| {Környezet: DeploymentMode} |A házirend üzembe helyezési mód.  | Production |
-| {Környezet: IP-cím} | A felhasználói IP-cím. | 11.111.111.11 |
+| {Context:CorrelationId} | A korrelációs azonosítót.  | 00000000-0000-0000-0000-000000000000 |
+| {Context:DateTimeInUtc} |A dátum idő (UTC).  | 10-ES/10/2018. 12:00:00 PM |
+| {Context:DeploymentMode} |A házirend üzembe helyezési mód.  | Production |
+| {Context:IPAddress} | A felhasználói IP-cím. | 11.111.111.11 |
 
 
 ### <a name="non-protocol-parameters"></a>Nem-protokoll-paraméterek
@@ -92,7 +92,7 @@ A felhasználói interakciósorozatban szereplő jogcím bármely paraméternév
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------------------- | --------|
-| {OAUTH-KV:campaignId} | Lekérdezési karakterlánc paramétereként. | Hawaii |
+| {OAUTH-KV:campaignId} | Lekérdezési karakterlánc paramétereként. | hawaii |
 | {OAUTH-KV:app_session} | Lekérdezési karakterlánc paramétereként. | A3C5R |
 | {OAUTH-KV:loyalty_number} | Lekérdezési karakterlánc paramétereként. | 1234 |
 | {OAUTH-KV: minden olyan egyéni lekérdezési karakterlánc} | Lekérdezési karakterlánc paramétereként. | – |

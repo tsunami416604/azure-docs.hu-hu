@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 2d5c658dabd03eb706c24fbe5e8adb0c46fc65cd
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0c681e7406f5c0c6e205f9dc54ee5eea63b40252
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267317"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853238"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 frissítése
 
@@ -191,6 +191,8 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 
 ## <a name="known-issues-with-the-update-process"></a>A frissítési folyamat ismert problémái
 
+- Futtatásakor a **Get-AzureStackLog** PowerShell-parancsmag futtatása után **Test-AzureStack** a kiemelt végponthoz (EGP) ugyanazon munkamenet **Get-AzureStackLog** sikertelen lesz. A probléma megkerüléséhez, zárja be a EGP-munkamenet, amelyben végre **Test-AzureStack**, és nyisson meg egy új munkamenetet futtatni **Get-AzureStackLog**.
+
 - A 1811 telepítése során frissíteni, győződjön meg arról, hogy a felügyeleti portál összes példánya nincs megnyitva ebben az időszakban. A felhasználói portál nyitva maradhat, de be kell zárni a felügyeleti portálon.
 
 - Futtatásakor [Test-AzureStack](azure-stack-diagnostic-test.md), ha a **AzsInfraRoleSummary** vagy a **AzsPortalApiSummary** teszt sikertelen, a rendszer felszólítja a Futtatás  **Test-AzureStack** együtt a `-Repair` jelzőt.  Ha ezt a parancsot futtatta, a következő hibaüzenettel meghiúsul:  `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`  A probléma egy későbbi kiadásban lesz kijavítva.
@@ -312,7 +314,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
    - Ha az előfizetés korábban jött létre a 1808 frissítése, a felügyelt lemezekkel rendelkező virtuális gép üzembe helyezése egy belső hiba miatt sikertelen lehet. A hiba elhárításához kövesse ezeket a lépéseket minden egyes előfizetés esetén:
       1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Válassza ki **erőforrás-szolgáltatók**, majd **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
-      2. Lépjen az azonos előfizetéshez tartozó **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy **Azure Stack – felügyelt lemez** szerepel a listán.
+      2. Lépjen egy előfizetésen belül **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy a **AzureStack-DiskRP-ügyfél** szerepkör szerepel a listán.
    - Egy több-bérlős környezet van beállítva, ha a virtuális gépek üzembe helyezéséhez egy adott előfizetéshez tartozó és a Vendég címtár egy belső hiba miatt meghiúsulhat. A hiba elhárításához kövesse az alábbi lépéseket a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy jelentkezzen be az SSH-kulcsok használata. Áthidaló megoldásként használja a Linux-bővítményt a Virtuálisgép-hozzáférés SSH-kulcsok megvalósításához a kiépítés után, vagy jelszóalapú hitelesítés használatára.

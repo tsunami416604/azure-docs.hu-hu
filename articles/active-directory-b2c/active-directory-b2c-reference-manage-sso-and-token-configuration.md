@@ -3,19 +3,19 @@ title: Felügyelete egyszeri Bejelentkezéssel és egyéni szabályzatok haszná
 description: Ismerje meg az egyszeri Bejelentkezést és a jogkivonat testreszabása az Azure Active Directory B2C-vel egyéni szabályzatok használatával.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c7ba1f87b877466ff4d9d11e4b3b5a6567e7ae06
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c150c63bfdba70b256e639497c8daaf2a8cc7dbe
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902634"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843412"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés és egyéni szabályzatok használatával az Azure Active Directory B2C jogkivonat testreszabása kezelése
 

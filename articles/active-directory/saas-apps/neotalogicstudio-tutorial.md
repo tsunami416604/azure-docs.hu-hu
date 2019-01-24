@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Neota logikai studióval |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció Neota logikai studióval |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Neota logikai Studio és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 842605e6-a91d-42cc-a0bb-e23e67173ae2
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 667d2a5217f5c2aa29432a99cd0e07fc8d7b3ca7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b6f2c91a9b94aeff1c0fa7ad7df137a30055230b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447036"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827040"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>Oktatóanyag: Azure Active Directory-integráció Neota logikai studióval
+# <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>Oktatóanyag: Az Azure Active Directory-integráció Neota logikai studióval
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Neota logikai Studio integrálható az Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása Neota logikai studióval, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy logikai Studio Neota egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -61,7 +61,7 @@ Az Azure AD-be Neota logikai Studio integráció konfigurálásához, hozzá kel
 
 **Neota logikai Studio hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -133,7 +133,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 1. Egyszeri bejelentkezés az alkalmazáshoz konfigurált beszerzéséhez forduljon [Neota logikai Studio támogatási](https://www.neotalogic.com/contact-us/) csapat, és adja meg nekik a letöltött **metaadatainak XML** fájlt.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
@@ -168,7 +168,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="creating-a-neota-logic-studio-test-user"></a>Neota logikai Studio tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Neota logikai Studio Britta Simon nevű felhasználó hoz létre. a munkahelyi [Neota logikai Studio ügyfél-támogatási csapatának](https://www.neotalogic.com/contact-us/) a felhasználók hozzáadása az Neota logikai Studio platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy Neota logikai Studio Britta Simon nevű felhasználó hoz létre. a munkahelyi [Neota logikai Studio ügyfél-támogatási csapatának](https://www.neotalogic.com/contact-us/) a felhasználók hozzáadása az Neota logikai Studio platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

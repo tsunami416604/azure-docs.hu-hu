@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: e426e38ce5366f7c0d8b8bc20a639d827ea9e261
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200519"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826479"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Az Azure DNS használata saját tartományok
 
@@ -32,7 +32,7 @@ Az Azure DNS a következő előnyöket nyújtja:
 
 * **Nincs szükség az egyéni DNS-megoldások**. Korábban a számos ügyfél létrehozott egyéni DNS-megoldások a virtuális hálózat DNS-zónák kezelése. DNS-zónák kezelése most már elvégezheti a natív Azure-infrastruktúra, amely eltávolítja a létrehozása és kezelése az egyéni DNS-megoldások terhe használatával.
 
-* **Minden gyakori DNS rekordjait típust használja**. Az Azure DNS támogatja A, AAAA, CNAME, MX, NS, PTR, SOA, SRV és txt típusú rekordok.
+* **Minden gyakori DNS rekordjait típust használja**. Azure DNS supports A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, and TXT records.
 
 * **Automatikus állomásnév-rekord-kezelésre**. Egyéni DNS-rekordjait üzemelteti, valamint az Azure automatikusan is kezeli gazdanév-rekordokat a megadott virtuális hálózatokat a virtuális gépek. Ebben a forgatókönyvben optimalizálhatja a tartománynevek egyéni DNS-megoldások létrehozása és alkalmazások módosítása nélkül használhatja.
 
@@ -61,12 +61,12 @@ Az Azure DNS az alábbi képességeket biztosítja:
 
 ## <a name="limitations"></a>Korlátozások
 
-Az Azure DNS rendelkezik, a következő korlátozásokkal:
+Az Azure DNS a következő korlátozások vonatkoznak:
 
 * A regisztráció csak egy virtuális hálózat privát zónánként engedélyezett.
-* Legfeljebb 10 feloldási virtuális hálózatok privát zónánként engedélyezett.
+* Legfeljebb 10 feloldási virtuális hálózatok privát zónánként engedélyezett. Ez a korlátozás a rendszer eltávolítja, ha ez a funkció általánosan elérhető.
 * Egy adott virtuális hálózaton egy regisztrációs virtuális hálózatként kapcsolhatók ki csak egy privát zónához.
-* Egy adott virtuális hálózati feloldási virtuális hálózatként legfeljebb 10 privát zónák kapcsolható ki.
+* Egy adott virtuális hálózati feloldási virtuális hálózatként legfeljebb 10 privát zónák kapcsolható ki. Ez a korlátozás a rendszer eltávolítja, ha ez a funkció általánosan elérhető.
 * Ha megad egy regisztrációs virtuális hálózatnak, a virtuális gépek a kiválasztott virtuális hálózatban, amelyek a saját zóna a DNS-rekordok nincsenek megtekinthető vagy nem olvasható be az Azure Powershell és az Azure CLI API-k. A virtuális gép rekordok valóban regisztrálva van, és feloldja sikeresen megtörtént.
 * Fordított DNS működését csak a privát IP-címteret a regisztrációs virtuális hálózatban.
 * Fordított DNS egy magánhálózati IP-címet, amely nincs regisztrálva a (például egy virtuális hálózatot, amely kapcsolódik a feloldási virtuális hálózatot, egy privát zónához a virtuális gép magánhálózati IP-cím) a saját zóna visszaadja *internal.cloudapp.net* a DNS-utótagként. Azonban ennek az utótagnak nem oldható fel.

@@ -3,18 +3,19 @@ title: Ajánlott eljárások az Azure Service Bus használata a teljesítmény f
 description: Ismerteti, hogyan lehet optimalizálni a teljesítményt felügyelt üzenetváltásokban a Service Bus használatával.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: cfce11546249310ce00e5f19ba81520cc9dd78cf
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: 37e2dcc13ed41911c8117dc1841a389c14e5867f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392635"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848572"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény Service Bus-üzenetkezelés használatával
 
@@ -36,7 +37,7 @@ Amqp-t és SBMP hatékonyabbak, mivel azok a Service Bus kapcsolat fenntartásá
 
 ## <a name="reusing-factories-and-clients"></a>Előállítók és az ügyfelek újbóli használata
 
-Service Bus-ügyfélalkalmazást objektumok, például [QueueClient] [ QueueClient] vagy [MessageSender][MessageSender], keresztül létrehozott egy [ MessagingFactory] [ MessagingFactory] objektum, amely a belső felügyeleti kapcsolatok is biztosít. Javasoljuk, hogy azt ne zárja be üzenetkezelési gyárat vagy üzenetsor, témakör és előfizetés ügyfelek után küldjön egy üzenetet, és ezután hozza létre őket ismét a következő üzenet küldésekor. A Service Bus szolgáltatással létesített kapcsolat bezárása egy üzenetkezelési előállító törli, és újra létre kellene hoznia a gyári létrejön az új kapcsolatot. A kapcsolat létrehozása, amely a azonos gyári és az ügyfél objektumok több műveletek újrafelhasználásával elkerülheti a költséges művelet. Nyugodtan használhatja az [QueueClient] [ QueueClient] objektum üzenetküldésre egyidejű aszinkron műveletek és több szálon. 
+Service Bus-ügyfélalkalmazást objektumok, például [QueueClient] [ QueueClient] vagy [MessageSender][MessageSender], keresztül létrehozott egy [ MessagingFactory] [ MessagingFactory] objektum, amely a belső felügyeleti kapcsolatok is biztosít. Javasoljuk, hogy azt ne zárja be üzenetkezelési gyárat vagy üzenetsor, témakör és előfizetés ügyfelek után küldjön egy üzenetet, és ezután hozza létre őket ismét a következő üzenet küldésekor. A Service Bus szolgáltatással létesített kapcsolat bezárása egy üzenetkezelési előállító törli, és újra létre kellene hoznia a gyári létrejön az új kapcsolatot. A kapcsolat létrehozása, amely a azonos gyári és az ügyfél objektumok több műveletek újrafelhasználásával elkerülheti a költséges művelet. Ezek az objektumok ügyfél egyidejű aszinkron műveleteknél és több szálon biztonságosan használhatja. 
 
 ## <a name="concurrent-operations"></a>Az egyidejű művelet
 
@@ -71,7 +72,7 @@ Az ügyfél egyidejű művelet ütemezi az aszinkron műveletek végrehajtásáv
 
 ## <a name="receive-mode"></a>Fogadás módban
 
-Egy üzenetsor vagy előfizetés ügyfél létrehozásakor megadhatja a receive mód: *betekintési zárolással való* vagy *fogadása és törlése*. Az alapértelmezett mód fogadására van [PeekLock][PeekLock]. Az ebben a módban működő, az ügyfél üzenetet fogadni a Service Bus kérést küld. Miután az ügyfél az üzenetet kapott, azt végezze el az üzenetet kérelmet küld.
+Egy üzenetsor vagy előfizetés ügyfél létrehozásához, megadhatja a receive mód: *Service Bus-* vagy *fogadása és törlése*. Az alapértelmezett mód fogadására van [PeekLock][PeekLock]. Az ebben a módban működő, az ügyfél üzenetet fogadni a Service Bus kérést küld. Miután az ügyfél az üzenetet kapott, azt végezze el az üzenetet kérelmet küld.
 
 Ha a receive mód beállítása [ReceiveAndDelete][ReceiveAndDelete], mindkét lépést egyetlen kérelem van összevonva. Ezek a lépések csökkenteni a műveletek teljes száma, és javítja az általános üzeneteinek átviteli sebessége. Ez a teljesítmény nyereség kockázatára üzenetek elvesztése származnak.
 
@@ -127,38 +128,9 @@ Az üzenet a time-to-live (Élettartam TTL) tulajdonság be van jelölve a kiszo
 
 Prefetching nem befolyásolja a üzenetkezelési számlázandó műveletek száma, és csak a Service Bus-ügyfél protokoll érhető el. A HTTP-protokoll nem támogatja a prefetching. Prefetching áll rendelkezésre, mind a szinkron és aszinkron műveletek kapni.
 
-## <a name="express-queues-and-topics"></a>Express-üzenetsorok és témakörök
-
-Expressz entitások engedélyezése a nagy átviteli sebességű és kisebb késést forgatókönyveket, és csak a Standard szintű üzenetküldés támogatottak. A létrehozott entitásokat [prémium szintű névterek](service-bus-premium-messaging.md) nem támogatják az Expressz beállítás. Az expressz entitásokat egy üzenetet küld egy üzenetsorba vagy témakörbe, ha az üzenet nem azonnal tárolja az üzenetküldési tárolóban. Ehelyett azt a rendszer gyorsítótárazza a memóriában. Ha egy üzenetet az üzenetsorba több másodpercig marad, automatikusan írás állandó tárolóra, így leállás miatt adatvesztés elleni védelem. Az üzenet írása, memória-gyorsítótár növeli az átviteli sebességet, és csökkenti a késést, mert az állandó tároló elküldésekor helyeiket időpontjában nem lehet hozzáférni. Néhány másodpercen belül felhasznált üzeneteket az üzenetkezelési tárba nem szerepel. A következő példában létrehozunk egy expressz témakört.
-
-```csharp
-TopicDescription td = new TopicDescription(TopicName);
-td.EnableExpress = true;
-namespaceManager.CreateTopic(td);
-```
-
-Az expressz entitások, amelyek nem lehet nem kritikus fontosságú adatokat tartalmazó üzenetet küld, ha a küldő kényszerítheti azonnal megőrizni az állandó tároló beállításával az üzenet Service Bus a [ForcePersistence] [ ForcePersistence] tulajdonságot **igaz**.
-
-> [!NOTE]
-> Expressz entitások nem támogatják a tranzakciókat.
-
-## <a name="partitioned-queues-or-topics"></a>A particionált üzenetsorok és témakörök
-
-Belsőleg a Service Bus ugyanazon a csomóponton használ, és dolgozza fel, és a egy üzenetküldési entitásra (üzenetsor vagy témakör) üzenetek tárolására üzenetkezelési tárolja. A [particionált üzenetsorra vagy témakörbe](service-bus-partitioning.md), másrészről, több csomópontra van elosztva, és üzenetküldési tárolók. Particionált üzenetsorok és témakörök nem csupán a felfüggesztési egy nagyobb teljesítményt nyújt, mint a rendszeres üzenetsorokat és üzenettémákat, legintelligensebb lakójuk kiváló rendelkezésre állás. A particionált entitás létrehozásához állítsa a [EnablePartitioning] [ EnablePartitioning] tulajdonságot **igaz**, az alábbi példában látható módon. Particionált entitások kapcsolatos további információkért lásd: [particionált üzenetküldési entitások][Partitioned messaging entities].
-
-> [!NOTE]
-> A particionált entitások nem támogatottak a [prémium szintű Termékváltozat](service-bus-premium-messaging.md). 
-
-```csharp
-// Create partitioned queue.
-QueueDescription qd = new QueueDescription(QueueName);
-qd.EnablePartitioning = true;
-namespaceManager.CreateQueue(qd);
-```
-
 ## <a name="multiple-queues"></a>Több üzenetsort
 
-Ha nem használható egy particionált üzenetsorra vagy témakörbe, vagy a várható terhelés nem kell kezelnie egy egy particionált üzenetsorra vagy témakörbe, több üzenetküldési entitások kell használnia. Több entitás használata esetén hozzon létre dedikált ügyfél-az egyes entitásokhoz ugyanaz az ügyfél az összes entitás helyett.
+A várható terhelést egyetlen particionált üzenetsor vagy témakör nem kell kezelnie, ha több üzenetküldési entitások kell használnia. Több entitás használata esetén hozzon létre dedikált ügyfél-az egyes entitásokhoz ugyanaz az ügyfél az összes entitás helyett.
 
 ## <a name="development-and-testing-features"></a>Fejlesztési és tesztelési funkciók
 
@@ -172,7 +144,7 @@ Az alábbi szakaszok ismertetik a üzenetküldési forgatókönyvre jellemző, �
 
 ### <a name="high-throughput-queue"></a>Nagy átviteli sebességű várólista
 
-Cél: Az átviteli sebességet egy egyetlen várólista maximalizálása érdekében. A küldők és fogadók száma, kis méretű.
+Cél: Maximális átviteli sebességének egyetlen üzenetsorhoz. A küldők és fogadók száma, kis méretű.
 
 * A teljes küldések a várólistába növeléséhez használja több üzenetkezelési gyárat feladók létrehozásához. Minden egyes küldő használja az aszinkron műveletek vagy több szálon.
 * Az üzenetsorból az általános receive arány növelése érdekében a fogadók létrehozásához használja több üzenetkezelési gyárat.
@@ -184,13 +156,13 @@ Cél: Az átviteli sebességet egy egyetlen várólista maximalizálása érdek�
 
 ### <a name="multiple-high-throughput-queues"></a>Több nagy átviteli sebességű üzenetsorok
 
-Cél: Több várólisták teljes átviteli sebesség maximalizálása érdekében. Az átviteli sebességet egy adott üzenetsor, közepes vagy magas.
+Cél: Maximalizálja a teljes átviteli sebességének több üzenetsort. Az átviteli sebességet egy adott üzenetsor, közepes vagy magas.
 
 Maximális átviteli sebesség között több üzenetsort beszerzéséhez használja egyetlen üzenetsorhoz, az átviteli teljesítmény ismertetett beállításokat. Emellett a különböző előállítók használatával létrehozhat elküldeni vagy fogadni a különböző üzenetsorok a ügyfelek.
 
 ### <a name="low-latency-queue"></a>Közel valós idejű várólista
 
-Cél: Egy üzenetsorba vagy témakörbe, végpontok közötti késés minimalizálása érdekében. A küldők és fogadók száma, kis méretű. Az átviteli sebességet a várólista, kis és közepes.
+Cél: Az üzenetsor vagy témakör végpontok közötti késés minimalizálása. A küldők és fogadók száma, kis méretű. Az átviteli sebességet a várólista, kis és közepes.
 
 * Tiltsa le az ügyféloldali kötegelés. Az ügyfél közvetlenül egy üzenetet küld.
 * Tiltsa le a kötegelt store-hozzáférés. A szolgáltatás azonnal ír az üzenetet a tárolóban.
@@ -200,7 +172,7 @@ Cél: Egy üzenetsorba vagy témakörbe, végpontok közötti késés minimaliz�
 
 ### <a name="queue-with-a-large-number-of-senders"></a>A küldők nagy számú üzenetsort
 
-Cél: Az üzenetsor vagy témakör feladók nagy számú az átviteli sebesség maximalizálása érdekében. Minden egyes küldő mérsékelt arány üzeneteket küld. A fogadók szám kisebb.
+Cél: Az üzenetsor vagy témakör feladók nagy számú az átviteli sebesség maximalizálása. Minden egyes küldő mérsékelt arány üzeneteket küld. A fogadók szám kisebb.
 
 A Service Bus használatával legfeljebb 1000 párhuzamos kapcsolatot egy üzenetküldési entitásra (5000-es vagy AMQP használatával). Ezt a korlátot, a névterek szintjén, és a várólisták és témakörök/előfizetések által a korlátot, az egyidejű kapcsolatok száma névterenként fedett. A várólisták Ez a szám megosztott küldők és fogadók között. Ha feladók szükséges összes 1000 kapcsolatot, cserélje le a várólista egy témakört, és egyetlen előfizetéssel. A témakör a küldők, legfeljebb 1000 párhuzamos kapcsolatot fogad el, mivel az előfizetés egy további 1000 egyidejű érkező kapcsolatokat fogad fogadónak is. Ha 1000-nél több egyidejű feladók szükség, a feladó kell üzeneteket küldeni a Service Bus-protokoll HTTP-n keresztül.
 
@@ -215,7 +187,7 @@ A maximális átviteli sebesség érdekében hajtsa végre az alábbi lépéseke
 
 ### <a name="queue-with-a-large-number-of-receivers"></a>A fogadók nagy számú üzenetsort
 
-Cél: Maximalizálhatja az üzenetsor vagy -előfizetést, a fogadók nagy számú receive arányát. Minden címzett gyakorisággal mérsékelt üzeneteket fogad. Feladók a szám kisebb.
+Cél: Maximalizálja az üzenetsor vagy -előfizetést, a fogadók nagy számú receive arányát. Minden címzett gyakorisággal mérsékelt üzeneteket fogad. Feladók a szám kisebb.
 
 A Service Bus lehetővé teszi, hogy az entitás legfeljebb 1000 párhuzamos kapcsolatot. Ha egy üzenetsorban 1000-nél több fogadóval igényel, cserélje le a várólista egy témakört, és több előfizetést is. Az egyes előfizetésekhez legfeljebb 1000 párhuzamos kapcsolatot támogat. Másik lehetőségként fogadók férhetnek hozzá a várólista a HTTP protokollon keresztül.
 
@@ -229,7 +201,7 @@ Maximális átviteli sebesség, tegye a következőket:
 
 ### <a name="topic-with-a-small-number-of-subscriptions"></a>A témakör az előfizetések kis számú
 
-Cél: Az átviteli sebességet, a témakör az előfizetések kis számú maximalizálása érdekében. Egy üzenet érkezik sok előfizetést, ami azt jelenti, az összes előfizetés kombinált receive aránya nagyobb, mint a küldési sebesség. Feladók a szám kisebb. Az előfizetésenként fogadók száma, kis méretű.
+Cél: Maximalizálja a teljesítményt, a témakör az előfizetések kis számú. Egy üzenet érkezik sok előfizetést, ami azt jelenti, az összes előfizetés kombinált receive aránya nagyobb, mint a küldési sebesség. Feladók a szám kisebb. Az előfizetésenként fogadók száma, kis méretű.
 
 Maximális átviteli sebesség, tegye a következőket:
 

@@ -11,14 +11,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: fe63813220d526536a31efb48b6ec29b6ae383e8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 233ce5623195a9a661f67b5c3ded40e68c8eb33a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121141"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843514"
 ---
 # <a name="set-alerts-in-application-insights"></a>Riasztásokat állíthat be az Application insights szolgáltatásban
 [Az Azure Application Insights] [ start] riasztja Önt, a webalkalmazásban a teljesítmény vagy a használati metrikák változásai. 
@@ -89,7 +89,20 @@ Népszerű riasztások a következők:
 * **Kiszolgáló válaszideje** webes alkalmazás kiszolgálói oldalára. Riasztások beállítása, valamint ez a mérőszám, ha azt művelettől aránytalanul magas kérelemarányok megtekintéséhez kövesse figyelemmel: variation jelezheti, hogy az alkalmazás fut-e elegendő erőforrással. 
 * **Kiszolgálókivételek** – őket, hogy rendelkezik egy elvégzése [további telepítési](../../azure-monitor/app/asp-net-exceptions.md).
 
-Ne feledje, hogy [proaktív hibadiagnosztika arány](../../azure-monitor/app/proactive-failure-diagnostics.md) automatikusan figyelni a sebesség, amellyel az alkalmazás válasza, hiba kód-kérelmekre. 
+Ne feledje, hogy [proaktív hibadiagnosztika arány](../../azure-monitor/app/proactive-failure-diagnostics.md) automatikusan figyelni a sebesség, amellyel az alkalmazás válasza, hiba kód-kérelmekre.
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Ki kapja a (klasszikus) riasztási értesítések?
+
+Ez a szakasz csak klasszikus riasztások vonatkozik, és segít optimalizálni a riasztási értesítések biztosítják, hogy csak a kívánt címzettek megkapják az értesítéseket. Ismerje meg jobban a különbség a [klasszikus riasztások](../platform/alerts-classic.overview.md) , majd tekintse át a riasztások új kezelőfelülete a [riasztások áttekintő cikkben](../platform/alerts-overview.md). Riasztás szabályozhatja az új riasztások az értesítési használata élményt [Műveletcsoportok](../platform/action-groups.md).
+
+* A klasszikus riasztási értesítéseket meghatározott címzettek használatát javasoljuk.
+
+* A bármely (beleértve a rendelkezésre állási metrikák), az Application Insights-metrikák riasztásaihoz a **tömeges/csoport** jelölőnégyzetet, a beállítást, ha engedélyezve van, felhasználóknak küld az előfizetésben tulajdonos, közreműködő vagy olvasó szerepkört. Gyakorlatilag _összes_ az előfizetés az Application Insights-erőforráshoz hozzáféréssel rendelkező felhasználók terjed ki, és értesítéseket kap. 
+
+> [!NOTE]
+> Ha jelenleg használja a **tömeges/csoport** jelölőnégyzetet, a beállítást, és tiltsa le, nem állíthatja vissza a módosítást.
+
+Az új riasztás élmény/közel valós idejű riasztások használja, ha értesítse a felhasználókat a szerepkörökhöz alapján kell. A [Műveletcsoportok](../platform/action-groups.md), bármelyik (nem egyesíthet egyetlen lehetőségként) közreműködői vagy tulajdonosi vagy olvasó szerepkört konfigurálható e-mail értesítések küldéséhez felhasználók számára.
 
 ## <a name="automation"></a>Automation
 * [Riasztások beállítása automatizálása a PowerShell használatával](../../azure-monitor/app/powershell-alerts.md)

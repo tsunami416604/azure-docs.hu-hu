@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c199073f-02ce-45c2-b515-8285d4bbbca2
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 8000208dfe15744c891bbf27ad8f9e69f44ef4dc
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 4907179b9cc333103a898056ff951decf81c0f6c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807788"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Oktatóanyag: Az Adobe Creative Cloud az Azure Active Directory-integráció
 
@@ -125,8 +125,8 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az Adobe Creative Cloud, hajts
  
     | Name (Név) | Adatforrás-attribútum|
     |----- | --------- |
-    | FirstName | User.givenName |
-    | LastName | User.surname |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
     | E-mail | user.mail
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -160,7 +160,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az Adobe Creative Cloud, hajts
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 

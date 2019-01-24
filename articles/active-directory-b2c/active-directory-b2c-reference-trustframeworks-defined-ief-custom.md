@@ -3,19 +3,19 @@ title: Referencia - megbízhatósági keretrendszereket az Azure Active Director
 description: Az Azure Active Directory B2C-vel egyéni szabályzatok és az identitás-kezelőfelületi keretrendszer témája.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 00d2f37068c5bedb17ba9a4064d1f5058f5ab72c
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 694d463c158f8c8beb0396edf22ac749c03e9e97
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185779"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845690"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Az Azure AD B2C identitás-kezelőfelületi keretrendszer megbízhatósági keretrendszerek definiálása
 
@@ -52,10 +52,10 @@ TFs a linchpins a nyitott identitás Exchange (OIX) megbízható keretrendszer m
 - **A digitális azonosító adatok, amely rendelkezik felajánlott/kötelező résztvevők leírása**.
 
 - **A technikai házirendek, az éles és az digitális azonosító adatok felhasználását, és így LOA és LOP méréséhez. A megírt házirendek általában a következő kategóriákba tartozó házirendek a következők:**
-    - Identitás-ellenőrző a szabályzatok, például: *erősen hogyan van egy személy azonosító adatok megvizsgált?*
-    - Biztonsági házirendek, például: *információ sértetlenségét és védett bizalmassági erősen hogyan vannak?*
-    - Adatvédelmi szabályzatok, például: *milyen control a felhasználó rendelkezik személyes azonosításra alkalmas adatokat (PII) keresztül*?
-    - Túlélést házirendek, például: *szolgáltató működése megszűnik, ha honnan elérhetőségének folytonosságát és a személyazonosításra alkalmas adatok függvény?*
+    - Az identitás ellenőrzés a szabályzatok, például: *Hogyan erősen az egy személy azonosító adatok megvizsgált?*
+    - Biztonsági házirendek, például: *Hogyan erősen információ sértetlenségét és bizalmas védettek?*
+    - Adatvédelmi szabályzatok, például: *Milyen control a felhasználó rendelkezik személyes azonosításra alkalmas adatokat (PII) keresztül*?
+    - Túlélést házirendek, például: *Ha egy szolgáltató működése megszűnik, hogyan történik elérhetőségének folytonosságát és a személyazonosításra alkalmas adatok függvény?*
 
 - **A technikai profilok az éles és az digitális azonosító adatok felhasználását. Ezek a profilok a következők:**
     - Hatókör felületek, amelynek digitális azonosító adatok egy megadott LOA címen érhető el.

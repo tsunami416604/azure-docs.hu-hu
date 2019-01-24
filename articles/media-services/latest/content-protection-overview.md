@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 01/22/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2a5383952f64edb08717b1a100c74352c9b4246f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 848d6ffbccc809df1ab5c012c38174e13eacc391
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187977"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828256"
 ---
 # <a name="content-protection-overview"></a>A Content protection áttekintése
 
@@ -39,9 +39,9 @@ Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes is
 
 1. Az Azure Media Services-kódot
   
-  * A PlayReady, Widevine és/vagy FairPlay licenc sablonok. A sablonok segítségével jogosultságai és engedélyei a használt DRMs mindegyike konfigurálása
-  * Licenc kézbesítési engedélyezési, adja meg a JWT jogcímszolgáltatói alapján jogosultsági ellenőrzés logikája
-  * Tartalomkulcs, adatfolyam-továbbítási protokollok és a megfelelő DRMs a alkalmazni, meghatározó DRM-titkosítás
+  * Licenc sablonok PlayReady, Widevine és/vagy FairPlay konfigurálása. A sablonok segítségével beállíthatja, hogy jogosultságai és engedélyei a használt DRMs mindegyikéhez.
+  * Adja meg a licenc kézbesítési engedélyezési, adja meg a JWT jogcímszolgáltatói alapján jogosultsági ellenőrzés logikáját.
+  * DRM-titkosítás konfigurálja a tartalomkulcs megadásával, és a streamelési protokollok használandó.
 
   > [!NOTE]
   > Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). A [streamelési protokollokkal és a titkosítási típusokkal](#streaming-protocols-and-encryption-types) kapcsolatos szakaszban megtekintheti, hogy mit mivel érdemes kombinálni.

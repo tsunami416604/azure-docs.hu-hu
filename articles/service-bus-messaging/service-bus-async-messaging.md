@@ -3,23 +3,23 @@ title: Aszinkron üzenetkezelés a Service Bus |} A Microsoft Docs
 description: Azure Service Bus aszinkron üzenetkezelés ismertetése.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f1435549-e1f2-40cb-a280-64ea07b39fc7
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: 9bacce96e65a7aef611bec3ddae8b1872d5f9fae
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 0ecc277e1b9bd94558c54b1c808fdc24f47c402e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391463"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845078"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Aszinkron üzenetkezelési minták és magas rendelkezésre állás
 
@@ -77,7 +77,7 @@ A [párosított névterek] [ paired namespaces] funkció támogatja a forgatók�
 
 * Elsődleges névtér: A névtér, amellyel az alkalmazás használja, a küldési és fogadási műveletek.
 * Másodlagos névtér: A névtér, amely egy biztonsági mentést az elsődleges névtér funkcionál. Logikai alkalmazás nem működik együtt a névtér.
-* Feladatátvételi időköz: az összeget, és fogadja el a normál hibák, mielőtt az alkalmazás ekkor átvált a elsődleges névtérből a másodlagos névtér.
+* Feladatátvételi időköz: Fogadja el a szokásos hibákat előtt az alkalmazás az idő az elsődleges névtér átvált a másodlagos névtérre.
 
 Párosított névterek támogatási *küldése a rendelkezésre állási*. Küldjön a rendelkezésre állási megőrzi az üzenetek küldéséhez. Küldési rendelkezésre állási használatához az alkalmazás az alábbi követelményeknek kell megfelelnie:
 
@@ -109,11 +109,11 @@ public SendAvailabilityPairedNamespaceOptions(
 
 Ezek a paraméterek jelentése a következő:
 
-* *secondaryNamespaceManager*: egy inicializált [NamespaceManager] [ NamespaceManager] a másodlagos névtér-példányt, amely a [PairNamespaceAsync] [ PairNamespaceAsync] metódus segítségével állítsa be a másodlagos névtér. A névtér-kezelő üzenetsorok névtér listájának beszerzése érdekében, és győződjön meg arról, hogy létezik-e a szükséges várakozó fájlok számát a várólisták szolgál. Ha még nem léteznek a kérdéses üzenetsorok, a rendszer létrehozza őket. [NamespaceManager] [ NamespaceManager] képes létrehozni a jogkivonatot az szükséges a **kezelés** jogcím.
+* *secondaryNamespaceManager*: Egy inicializált [NamespaceManager] [ NamespaceManager] a másodlagos névtér-példányt, amely a [PairNamespaceAsync] [ PairNamespaceAsync] metódus segítségével beállíthatja a a másodlagos névtér. A névtér-kezelő üzenetsorok névtér listájának beszerzése érdekében, és győződjön meg arról, hogy létezik-e a szükséges várakozó fájlok számát a várólisták szolgál. Ha még nem léteznek a kérdéses üzenetsorok, a rendszer létrehozza őket. [NamespaceManager] [ NamespaceManager] képes létrehozni a jogkivonatot az szükséges a **kezelés** jogcím.
 * *messagingFactory*: A [MessagingFactory] [ MessagingFactory] példány a másodlagos névtér. A [MessagingFactory] [ MessagingFactory] objektumra küldéséhez használt és, ha a [EnableSyphon] [ EnableSyphon] tulajdonsága **Igaz**, üzenet fogadása a várakozó fájlok számát a várólistákat.
-* *backlogQueueCount*: hozhat létre várakozó fájlok számát a sorok száma. Ez az érték legalább 1 kell lennie. Üzeneteket küld a várakozó fájlok számát, ha ezek a várólisták egyik véletlenszerűen kiválasztott. Ha az érték 1-re, akkor csak egy üzenetsor minden eddiginél használhatók. Ez akkor fordul elő, és a egy várakozó üzenetsor hibákat okoz, ha az ügyfél nem tud próbálkozzon egy másik várakozó üzenetsor és az üzenet küldése sikertelen lehet. Azt javasoljuk, hogy az érték néhány nagyobb értéket, és az alapértelmezett 10 értéket. Ez az alkalmazás által naponta adatok mennyiségétől függően magasabb vagy alacsonyabb értékre módosíthatja. Minden egyes várakozó üzenetsor képes tárolni legfeljebb 5 GB-os üzeneteket.
-* *failoverInterval*: mennyi ideig óraszáma mielőtt bármilyen egyetlen entitás átvált a másodlagos névtérre hibák az elsődleges névtér fogja elfogadni. A feladatátvétel egy entitás az entitás által történik. Egyetlen névtér entitások gyakran élő a Service Bus belül különböző csomópontokon. Hiba történt egy entitás nem jelenti azt, a másik hiba. Ez az érték állíthatja [System.TimeSpan.Zero] [ System.TimeSpan.Zero] történő feladatátvételt a másodlagos azonnal az első, nem átmeneti hiba után. A feladatátvételi időzítő kiváltó hibák lehet bármely [Istransient] [ MessagingException] , amelyben a [IsTransient] [ IsTransient] tulajdonsága hamis, vagy egy [ System.TimeoutException][System.TimeoutException]. Kivételek, mint például [UnauthorizedAccessException] [ UnauthorizedAccessException] nem okozhat a feladatátvétel, mert azt jelzik, hogy az ügyfél nem megfelelően van konfigurálva. A [ServerBusyException] [ ServerBusyException] nem nem ok feladatátvételi, mert a helyes mintát, hogy Várjon 10 másodpercet, majd újból elküldeni az üzenetet.
-* *enableSyphon*: azt jelzi, hogy az adott párosítást kell is syphon térjen vissza az elsődleges névtér a másodlagos névtérre üzeneteit. Általánosságban véve az alkalmazásokat, amelyek üzenetküldés kell ezt az értéket **hamis**; alkalmazásokat, amelyek az üzenetek fogadásához kell beállítania ezt az értéket **igaz**. Ennek oka az, hogy milyen gyakran, nincsenek üzenetküldők-nál kevesebb üzenet fogadók. A fogadók számától függően választhat egy egyetlen alkalmazás példánya Szifonos feladatok kezelésére. Több fogadóval használatával minden egyes várakozó üzenetsor számlázási hatással van.
+* *backlogQueueCount*: A várakozó fájlok számát a várólisták létrehozásához számát. Ez az érték legalább 1 kell lennie. Üzeneteket küld a várakozó fájlok számát, ha ezek a várólisták egyik véletlenszerűen kiválasztott. Ha az érték 1-re, akkor csak egy üzenetsor minden eddiginél használhatók. Ez akkor fordul elő, és a egy várakozó üzenetsor hibákat okoz, ha az ügyfél nem tud próbálkozzon egy másik várakozó üzenetsor és az üzenet küldése sikertelen lehet. Azt javasoljuk, hogy az érték néhány nagyobb értéket, és az alapértelmezett 10 értéket. Ez az alkalmazás által naponta adatok mennyiségétől függően magasabb vagy alacsonyabb értékre módosíthatja. Minden egyes várakozó üzenetsor képes tárolni legfeljebb 5 GB-os üzeneteket.
+* *failoverInterval*: Mennyi ideig óraszáma mielőtt bármilyen egyetlen entitás átvált a másodlagos névtérre hibák az elsődleges névtér fogja elfogadni. A feladatátvétel egy entitás az entitás által történik. Egyetlen névtér entitások gyakran élő a Service Bus belül különböző csomópontokon. Hiba történt egy entitás nem jelenti azt, a másik hiba. Ez az érték állíthatja [System.TimeSpan.Zero] [ System.TimeSpan.Zero] történő feladatátvételt a másodlagos azonnal az első, nem átmeneti hiba után. A feladatátvételi időzítő kiváltó hibák lehet bármely [Istransient] [ MessagingException] , amelyben a [IsTransient] [ IsTransient] tulajdonsága hamis, vagy egy [ System.TimeoutException][System.TimeoutException]. Kivételek, mint például [UnauthorizedAccessException] [ UnauthorizedAccessException] nem okozhat a feladatátvétel, mert azt jelzik, hogy az ügyfél nem megfelelően van konfigurálva. A [ServerBusyException] [ ServerBusyException] nem nem ok feladatátvételi, mert a helyes mintát, hogy Várjon 10 másodpercet, majd újból elküldeni az üzenetet.
+* *enableSyphon*: Azt jelzi, hogy az adott párosítást kell is syphon térjen vissza az elsődleges névtér a másodlagos névtérre üzeneteit. Általánosságban véve az alkalmazásokat, amelyek üzenetküldés kell ezt az értéket **hamis**; alkalmazásokat, amelyek az üzenetek fogadásához kell beállítania ezt az értéket **igaz**. Ennek oka az, hogy milyen gyakran, nincsenek üzenetküldők-nál kevesebb üzenet fogadók. A fogadók számától függően választhat egy egyetlen alkalmazás példánya Szifonos feladatok kezelésére. Több fogadóval használatával minden egyes várakozó üzenetsor számlázási hatással van.
 
 A kód használatához hozzon létre egy elsődleges [MessagingFactory] [ MessagingFactory] példány, egy másodlagos [MessagingFactory] [ MessagingFactory] példány, egy másodlagos [ NamespaceManager] [ NamespaceManager] példány, és a egy [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] példány. A hívás egyszerű: a következő lehet:
 

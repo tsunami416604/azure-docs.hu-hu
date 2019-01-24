@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 95d3f0aac4acdfbd70dcadd8db5c13456e83a7e7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 20aef7f971b4c4bf8dcff98c633aa0b0aa69811a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344312"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828179"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Video- és hangfájlok elemzése
 
@@ -148,9 +148,9 @@ Példa:
 |név|A face neve. "Ismeretlen #0", az azonosított hírességek vagy ügyfél betanított személy is lehet.|
 |magabiztosan|Arcok azonosítása magabiztosan.|
 |leírás|A hírességek leírása. |
-|thumbnalId|A miniatűr képét, arc azonosítója.|
+|thumbnailId|A miniatűr képét, arc azonosítója.|
 |knownPersonId|Ha ez egy ismert személy, a belső azonosítója.|
-|a referenceid megadása|Ha a Bing hírességek, a Bing-azonosító.|
+|referenceId|Ha a Bing hírességek, a Bing-azonosító.|
 |referenceType|Jelenleg csak a Bing.|
 |cím|Ha egy hírességek, akkor annak címe (például: "a Microsoft Vezérigazgatójával").|
 |imageUrl|Ha a hírességek, a kép URL-címe.|

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: f2492e3d49f9b7e965c33ed4419f566e81dd62ed
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 469faeee4706c33b09f89bfbed1bb229a6aea20e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043464"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848371"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB Table .NET API: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -27,8 +27,8 @@ ms.locfileid: "54043464"
 |---|---|
 |**SDK letöltése**|[NuGet](https://aka.ms/acdbtablenuget)|
 |**API-dokumentáció**|[.NET API dokumentációja](https://aka.ms/acdbtableapiref)|
-|**Gyors útmutató**|[Az Azure Cosmos DB: .NET-tel és a Table API-alkalmazás létrehozása](create-table-dotnet.md)|
-|**Oktatóanyag**|[Az Azure Cosmos DB: Fejlesztés a Table API a .NET használatával](tutorial-develop-table-dotnet.md)|
+|**Gyors útmutató**|[Azure Cosmos DB: .NET-tel és a Table API-alkalmazás létrehozása](create-table-dotnet.md)|
+|**Oktatóanyag**|[Azure Cosmos DB: Fejlesztés a Table API a .NET használatával](tutorial-develop-table-dotnet.md)|
 |**Aktuális támogatott keretrendszer**|[A Microsoft .NET-keretrendszer 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
@@ -36,6 +36,9 @@ ms.locfileid: "54043464"
 >
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* Hibajavítások
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 * A hozzáadott többrégiós írási támogatása
@@ -51,7 +54,7 @@ ms.locfileid: "54043464"
 * Szinkron API-k most futtassa a szálkészlet SynchronizationContext együtt.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* TableRequestOptions TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism és TableQueryContinuationTokenLimitInKb hozzáadása
+* Add TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism, and TableQueryContinuationTokenLimitInKb to TableRequestOptions
 * Hibajavítások
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
@@ -72,6 +75,8 @@ Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolg
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |2019. január 22.|--- |
+| [2.0.0](#2.0.0) |2018. szeptember 26.|--- |
 | [1.1.3](#1.1.3) |2018. július 17.|--- |
 | [1.1.1](#1.1.1) |2018. március 26.|--- |
 | [1.1.0](#1.1.0) |2018. február 21.|--- |

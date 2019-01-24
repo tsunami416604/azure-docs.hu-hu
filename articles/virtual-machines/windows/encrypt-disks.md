@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 48eb76e7e076b8496b32878b2292447b1ccbf7f6
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 738bdd303d6e8e41df179021ebca521100ace325
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977123"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828077"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>A Windows virtuális gép virtuális lemezek titkosítása
 Bővített virtuális gép (VM) biztonsági és megfelelőségi virtuális lemezeket az Azure-ban is titkosítva. Lemezek kriptográfiai kulcsokat, egy Azure Key vaultban védett algoritmussal vannak titkosítva. Szabályozhatja a kriptográfiai kulcsokat és naplózhatja azok használatát. Ez a cikk ismerteti a Windows virtuális gép virtuális lemezek titkosítása az Azure PowerShell használatával. Emellett [Linux rendszerű virtuális gép titkosítása az Azure CLI-vel](../linux/encrypt-disks.md).

@@ -3,19 +3,19 @@ title: Megjegyzések az Azure Active Directory B2C-vel egyéni szabályzatok seg
 description: Megjegyzések konfigurálását és karbantartását az Azure AD B2C-vel egyéni szabályzatok a fejlesztők számára készült.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ea884f6fecc1e8a0de1f6a0f8a4daafcdf612e9f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e0a3a295350fc75915cd839d4ac0da8e03866907
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272702"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844976"
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Az Azure Active Directory B2C-vel egyéni házirendet nyilvános előzetes verzió kibocsátási megjegyzései
 Egyéni szabályzatkészlet funkció már elérhető az értékeléshez tartozó összes Azure Active Directory B2C nyilvános előzetes verzióként érhető el (Azure AD B2C-vel) ügyfelek. E szolgáltatáskészlet a fejlesztők a fejlett identitáskezelési a legösszetettebb identitáskezelési megoldások célja.  
@@ -92,15 +92,15 @@ A külső összetevők és a felületek
 
 | Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |-----------------------------------------------------------------------------|-------------|---------|----|-------|
-|   Hibalap, api.error |  | x |  |  |
+|   Error page, api.error |  | x |  |  |
 |   Identitásszolgáltató kiválasztása oldal, api.idpselections |  | x |  |  |
-|   Identitásszolgáltató kiválasztása a regisztrációt, api.idpselections.signup |  | x |  |  |
+|   IDP selection for signup, api.idpselections.signup |  | x |  |  |
 |   Forgot Password, api.localaccountpasswordreset |  | x |  |  |
-|   Helyi fiók bejelentkezési, api.localaccountsignin |  | x |  |  |
+|   Local Account Sign-in, api.localaccountsignin |  | x |  |  |
 |   Helyi fiók regisztrálási, api.localaccountsignup |  | x |  |  |
 |   Többtényezős hitelesítés lap, api.phonefactor |  | x |  |  |
 |   Önálló kiszolgáló által megerősített – például közösségi fiók regisztrációs, api.selfasserted |  | x |  |  |
-|   Önálló kiszolgáló által megerősített profil frissítése, api.selfasserted.profileupdate |  | x |  |  |
+|   Self-asserted profile update, api.selfasserted.profileupdate |  | x |  |  |
 |   Egyesített regisztrációs vagy bejelentkezési oldal, api.signuporsignin |  | x |  |  |
 
 
@@ -120,20 +120,20 @@ A külső összetevők és a felületek
 |---------------------------------|-------------|---------|----|-------|
 | Egyszeri bejelentkezés munkamenet-szolgáltató |  | x |  |  |
 | Külső bejelentkezés munkamenet-szolgáltató |  | x |  |  |
-| SAML egyszeri bejelentkezés munkamenet-szolgáltató |  | x |  |  |
+| SAML SSO  Session Provider |  | x |  |  |
 
 
 ### <a name="security"></a>Biztonság
 | Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |---------------------------------------------|-------------|---------|----|-------|
 | A házirend kulcsok létrehozása, manuális feltöltése |  | x |  |  |
-| A házirend kulcsok – RSA/Cert, titkos kulcsok |  | x |  |  |
+| Policy Keys- RSA/Cert, Secrets |  | x |  |  |
 
 
 ### <a name="developer-interface"></a>Fejlesztői felület
 | Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |---------------------------------------------|-------------|---------|----|-------|
-| Az Azure Portal-IEF UX |  | x |  |  |
+| Azure Portal-IEF UX |  | x |  |  |
 | Application Insights UserJourney naplók  |  | x |  |  |
 | Application Insights-eseménynaplók |x|  |  |  |
 

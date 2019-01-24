@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval Netsuite OneWorld konfigurálása |} A Microsoft Docs'
+title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása Netsuite OneWorld |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Netsuite OneWorld között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 8a6d3994-ee33-4a6f-b0a2-9d0389467f16
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 81e590297283a8fe88d9257e201259056a3e3744
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ef0c2f12e36150b044047214c43e88090bd61f68
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823851"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826574"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Netsuite konfigurálása
 

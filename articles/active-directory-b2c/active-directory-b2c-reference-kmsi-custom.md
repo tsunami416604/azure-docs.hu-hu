@@ -3,19 +3,19 @@ title: Az Azure Active Directory B2C-ben bejelentkezve szeretnék maradni |} A M
 description: Ismerje meg, hogyan állítható be tartsa Me aláírva a (KMSI) az Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fcc81c8eb3a34b0bda5d91a1a67dd2e04e052967
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 517f476853866101cbb33103602494c11cd9e412
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967759"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852456"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Engedélyezze a bejelentkezve maradás (KMSI) az Azure Active Directory B2C-vel
 
@@ -29,7 +29,7 @@ Felhasználók ne engedélyezze ezt a kapcsolót található nyilvános számít
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azure AD B2C-bérlő, amely engedélyezi a helyi fiók, előfizetési, és jelentkezzen be. Ha nem rendelkezik bérlővel, létrehozhat egyet a lépések használatával [oktatóanyag: Azure Active Directory B2C-bérlő létrehozása](tutorial-create-tenant.md).
+Azure AD B2C-bérlő, amely engedélyezi a helyi fiók, előfizetési, és jelentkezzen be. Ha nem rendelkezik bérlővel, létrehozhat egyet a lépések használatával [oktatóanyag: Az Azure Active Directory B2C-bérlő létrehozása](tutorial-create-tenant.md).
 
 ## <a name="add-a-content-definition-element"></a>Adjon hozzá egy tartalomdefiníció elemet 
 

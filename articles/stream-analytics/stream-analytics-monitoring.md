@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 656f749fd2a930c51bfd7d1a99642fae87694846
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 600651b6c9140aba178bf073675c49957987d10d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096615"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844738"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Megismerheti a Stream Analytics-feladat figyelése és lekérdezések figyelése
 
@@ -30,17 +30,17 @@ Az ablakban látható módon jelenik meg:
 ## <a name="metrics-available-for-stream-analytics"></a>Stream Analytics-metrikáit
 | Metrika                 | Meghatározás                               |
 | ---------------------- | ---------------------------------------- |
-| Várakozó bemeneti események       | Bemeneti vannak várakozó események száma. |
-| Adatkonverziós hibák | Nem konvertálható a várt kimeneti sémájának kimeneti események számát. |
-| Korai bemeneti események       | Fogadott korai események száma. |
+| Várakozó bemeneti események       | Bemeneti vannak várakozó események száma. Ez a metrika nullától eltérő értéket, az azt jelenti, hogy a feladat nem tud lépést tartani a beérkező események száma. Ha ez az érték lassan növekvő vagy következetesen nullától eltérő, horizontális felskálázást a feladatot. További információkért látogasson el [ismertetése és módosítása a folyamatos átviteli egységek](stream-analytics-streaming-unit-consumption.md). |
+| Adatkonverziós hibák | Nem konvertálható a várt kimeneti sémájának kimeneti események számát. Hibakezelési házirend "Drop" dobja el az ebben a forgatókönyvben előforduló események is módosítható. |
+| Korai bemeneti események       | Események, amelyek alkalmazás-időbélyeggel korábbi, mint azok érkezési idő szerint több mint 5 perc. |
 | Sikertelen függvénykérések | Nem sikerült az Azure Machine Learning függvényhívások (ha van ilyen) száma. |
 | Függvényesemények        | Az Azure Machine Learning-függvény (ha van ilyen) küldött események száma. |
 | Függvénykérések      | Az Azure Machine Learning-függvény (ha van ilyen)-hívások száma. |
-| A deszerializálás bemeneti hibái       | Nem sikerült deszerializálni események számát.  |
+| A deszerializálás bemeneti hibái       | Nem sikerült deszerializálni a bemeneti események számát.  |
 | Bemeneti esemény bájtokban      | A Stream Analytics-feladatot (bájt) által fogadott adatok mennyisége. Ez használható ellenőrzése, hogy a bemeneti forrás eseményt kap. |
-| Bemeneti események           | A Stream Analytics-feladat, az események száma által fogadott adatok mennyisége. Ez használható ellenőrzése, hogy a bemeneti forrás eseményt kap. |
-| Fogadott bemeneti források       | A bemeneti forrásból érkező események száma. |
-| Késedelmes bemeneti események      | A forrás, amely vagy el lett dobva vagy időbélyegzőik későn érkező események száma be van állítva, késői érkezési tolerancia ablak beállítás esemény rendezése házirend konfigurációja alapján. |
+| Bemeneti események           | A bemeneti események deszerializálni rekordok száma. |
+| Fogadott bemeneti források       | A feladat által fogadott események száma. Ez használható ellenőrzése, hogy a bemeneti forrás eseményt kap. |
+| Késedelmes bemeneti események      | Később, mint a beállított késői érkezési tolerancia ablak érkező események. Tudjon meg többet [Azure Stream Analytics esemény rendelés szempontok](stream-analytics-out-of-order-and-late-events.md) . |
 | Kimenő soron kívüli események    | Fogadott lettek eldobva, vagy egy módosított időbélyeget, az esemény rendezése házirend alapján adott üzemen kívüli események száma. Ez lehet negatív hatással lehet a konfigurációs beállítás Out of rendelés tolerancia ablakban. |
 | Kimeneti események          | A kimeneti tárolóhoz az események száma a Stream Analytics-feladat által küldött adatok mennyisége. |
 | Futásidejű hibák         | Lekérdezés-feldolgozás (kivéve a fürtjét az események vagy outputing eredmények során talált hibákat) kapcsolatos hibák teljes száma |

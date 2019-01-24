@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3e4bbd5b-290e-4951-971b-ec0c1c11aaa2
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: acfc9c5ff98bfcef90144b9a080fe9d220a4c117
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: c70d0d077bb3b3002226bc05eae1fedebe29b03f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062741"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827482"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező MobileIron
 
@@ -102,7 +102,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés MobileIron, hajtsa v
 
 4. Az a **alapszintű SAML-konfigurációja** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
-    ![MobileIron tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+    ![MobileIron Domain and URLs single sign-on information](common/idp-intiated.png)
 
     a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://www.mobileiron.com/<key>`
 
@@ -110,7 +110,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés MobileIron, hajtsa v
 
     c. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![MobileIron tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
+    ![MobileIron Domain and URLs single sign-on information](common/metadata-upload-additional-signon.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<host>.mobileiron.com/user/login.html`
 
@@ -121,7 +121,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés MobileIron, hajtsa v
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-### <a name="configure-mobileiron-single-sign-on"></a>MobileIron egyszeri bejelentkezés konfigurálása
+### <a name="configure-mobileiron-single-sign-on"></a>Configure MobileIron Single Sign-On
 
 1. Egy másik böngészőablakban jelentkezzen be a MobileIron vállalati hely rendszergazdaként.
 

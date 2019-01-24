@@ -3,19 +3,19 @@ title: Az Azure Active Directory B2C-vel egyéni szabályzatok |} A Microsoft Do
 description: Ismerje meg az Azure Active Directory B2C-vel egyéni szabályzatok.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a1457b2aa571b58502b7d819eb3bcf142c10dac1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ca9408c8c7103e99556cf4853c214f59ec6372b9
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725063"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853000"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-vel egyéni szabályzatok
 
@@ -33,7 +33,7 @@ Egyéni szabályzatok olyan konfigurációs fájlokat, amelyek az Azure Active D
 | Attribútum testreszabása | Standard és egyéni attribútumait. | Azonos |
 | Jogkivonat és munkamenet-kezelés | Egyéni jogkivonatot, és több munkamenet-beállításokkal. | Azonos |
 | Identitásszolgáltatók | Előre definiált helyi vagy a közösségi szolgáltató. | OIDC szabványokon alapuló, az OAUTH és a SAML. |
-| Identitáskezelési tevékenységek | Regisztrálási vagy bejelentkezési helyi vagy számos közösségi fiókok.<br><br>Az önkiszolgáló jelszó-visszaállítás.<br><br>Profil szerkesztése.<br><br>A multi-factor Authentication szolgáltatás.<br><br>Testre szabhatja a biztonsági jogkivonat és munkamenet.<br><br>Hozzáférési jogkivonat folyamatokat. | Felhasználói folyamatok használatával egyéni Identitásszolgáltatók megegyező feladatok elvégzéséhez, vagy használjon egyéni hatókörök.<br><br>Építhet ki egy felhasználói fiókot egy másik rendszer regisztrációs időpontjában.<br><br>A saját e-mail-szolgáltató használatával üdvözlő e-mail küldése.<br><br>Ezen kívül az Azure AD B2C-vel a felhasználókhoz tartozó tárolóban.<br><br>Ellenőrizze a felhasználó által megadott megbízható rendszerrel információkat egy API-val. |
+| Identitáskezelési tevékenységek | Regisztrálási vagy bejelentkezési helyi vagy számos közösségi fiókok.<br><br>Az önkiszolgáló jelszó-visszaállítás.<br><br>Profil szerkesztése.<br><br>Multi-Factor Authentication.<br><br>Testre szabhatja a biztonsági jogkivonat és munkamenet.<br><br>Hozzáférési jogkivonat folyamatokat. | Felhasználói folyamatok használatával egyéni Identitásszolgáltatók megegyező feladatok elvégzéséhez, vagy használjon egyéni hatókörök.<br><br>Építhet ki egy felhasználói fiókot egy másik rendszer regisztrációs időpontjában.<br><br>A saját e-mail-szolgáltató használatával üdvözlő e-mail küldése.<br><br>Ezen kívül az Azure AD B2C-vel a felhasználókhoz tartozó tárolóban.<br><br>Ellenőrizze a felhasználó által megadott megbízható rendszerrel információkat egy API-val. |
 
 ## <a name="policy-files"></a>A házirend-fájlok
 

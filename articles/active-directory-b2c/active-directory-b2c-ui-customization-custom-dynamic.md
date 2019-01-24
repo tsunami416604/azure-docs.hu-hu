@@ -3,21 +3,21 @@ title: Az Azure Active Directory B2C felhasználói felületének (UI) egyéni s
 description: Támogatja a HTML5-alapú/CSS tartalom, amely dinamikusan változik a futásidőben több márkajelzési környezeteket.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f078c1389e36b82f95b011ca1fbd7fbd1c4f895e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 87634539b9709e057c0e51297569c1005a7bea1f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834223"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852099"
 ---
-# <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Az Azure Active Directory B2C: Dinamikus tartalom a felhasználói felület konfigurálása egyéni szabályzatok használatával
+# <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Egyéni szabályzatok használatával konfigurálja a felhasználói felület dinamikus tartalom
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -64,7 +64,7 @@ Ez az útmutató akkor:
 * Eltérő eredetű erőforrások megosztása (CORS) a webalkalmazás beállítása.
 * Bírálja felül a `LoadUri` elemeit képeztük le a HTML5-fájlra mutat.
 
-## <a name="step-1-create-an-aspnet-web-app"></a>1. lépés: Egy ASP.NET-webalkalmazás létrehozása
+## <a name="step-1-create-an-aspnet-web-app"></a>1. lépés: ASP.NET-webapp létrehozása
 
 1. A Visual Studióban hozzon létre egy projektet kiválasztásával **fájl** > **új** > **projekt**.
 
@@ -82,7 +82,7 @@ Ez az útmutató akkor:
 
 6. A projekt létrehozásához válassza az **OK** lehetőséget.
 
-## <a name="step-2-create-mvc-view"></a>2. lépés: Az MVC-nézet létrehozása
+## <a name="step-2-create-mvc-view"></a>2. lépés: MVC-nézet létrehozása
 ### <a name="step-21-download-the-b2c-built-in-html5-template"></a>2.1. lépés: A B2C beépített HTML5-sablon letöltése
 A HTML5-alapú egyéni sablont az Azure AD B2C-vel beépített HTML5 sablonon alapul. Letöltheti a [unified.html fájl](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) vagy töltse le a sablont a [alapszintű csomagja](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates/wingtip). Ez a HTML5-fájl használatával hozzon létre egy egyesített regisztrálási vagy bejelentkezési oldal.
 
@@ -119,7 +119,7 @@ A HTML5-alapú egyéni sablont az Azure AD B2C-vel beépített HTML5 sablonon al
 
     ![Miután hozzáadta a HTML5 Unified.cshtml fájl](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-edit-view1.png)
 
-### <a name="step-23-change-the-background-image"></a>2.3. lépés: A háttérkép módosítása
+### <a name="step-23-change-the-background-image"></a>2.3. lépés: Háttérkép módosítása
 
 Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_background_image*, majd cserélje le a `src` értéket **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** vagy bármely más obrázek pozadí is használni szeretné.
 
@@ -143,7 +143,7 @@ Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_backgro
 
 2. A webalkalmazás hibakeresése, és ellenőrizze, hogy a _egységes_ lapon érhető el (például `http://localhost:<Port number>/Home/unified`).
 
-### <a name="step-25-publish-to-azure"></a>2.5. lépés: Közzététel az Azure-bA
+### <a name="step-25-publish-to-azure"></a>2.5. lépés: Közzététel az Azure platformon
 1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **Contoso.AADB2C.UI** projektre, és válassza ki **közzététel**.
 
     ![A Microsoft Azure App Service-ben való közzététele](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish1.png)
@@ -187,7 +187,7 @@ Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_backgro
 
     Miután kiválasztotta **mentése**, az API-alkalmazásba, fogadja el a megadott URL-címekről jövő hívásokat. 
 
-## <a name="step-4-html5-template-validation"></a>4. lépés: HTML5 sablon érvényesítése
+## <a name="step-4-html5-template-validation"></a>4. lépés: HTML5-alapú sablon érvényesítése
 A HTML5-alapú sablon készen áll a használatra. Azonban nem érhető el a a `ContentDefinition` kódot. Hozzáadása előtt `ContentDefinition` az egyéni házirend biztosítja, hogy:
 * A tartalom HTML5 megfelelő és elérhető-e.
 * A webtartalom-kiszolgáló a CORS engedélyezve van.
@@ -239,7 +239,7 @@ Konfigurálása `ContentDefinition`, tegye a következőket:
 
     ![A regisztrálási vagy bejelentkezési szabályzat](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo1.png)
 
-## <a name="step-8-add-dynamic-content"></a>8. lépés: A dinamikus tartalom hozzáadása
+## <a name="step-8-add-dynamic-content"></a>8. lépés: Dinamikus tartalom hozzáadása
 Módosítsa a lekérdezési sztring paramétereként nevű alapján háttérben _campaignId_. Az RP-alkalmazás (webes és mobilalkalmazások) Azure AD B2C-t küld a paraméter. A házirend beolvassa a paramétert, és elküldi az értékét a HTML5-sablont. 
 
 ### <a name="step-81-add-a-content-definition-parameter"></a>8.1. lépés: Tartalomdefiníció paraméter hozzáadása
@@ -292,7 +292,7 @@ Módosítsa a HomeController `unified` fogadja el a campaignId paraméter metód
 
     ![Az oldal háttér módosítása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
 
-### <a name="83-upload-the-changes-and-publish-your-policy"></a>8.3: töltse fel a módosításokat, és a házirend közzététele
+### <a name="83-upload-the-changes-and-publish-your-policy"></a>8.3: Töltse fel a módosításokat, és a házirend közzététele
 1. A Visual Studio-projekt közzététele az Azure App Service-ben.
 
 2. Töltse fel a *SignUpOrSignin.xml* szabályzatot az Azure AD B2C-t.
