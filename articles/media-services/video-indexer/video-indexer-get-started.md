@@ -9,14 +9,14 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 41f3e3fffba0dde5277a39f62ef13d4dfc21c67e
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 72412956d231ea2696c05ba250302faf5f90c91d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292163"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823283"
 ---
-# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>Oktatóanyag: Regisztrálás és az első videó feltöltése
+# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>Oktatóanyag: Regisztráljon, és az első videó feltöltése
 
 Ez az első lépéseket ismertető oktatóanyag bemutatja, hogyan jelentkezhet be a Video Indexer webhelyre, és hogyan töltheti fel az első videóját.
 
@@ -41,7 +41,7 @@ A Video Indexerrel való fejlesztés megkezdéséhez nyissa meg a [Video Indexer
 
 ## <a name="next-steps"></a>További lépések
 
-Most már használhatja a [Video Indexer](video-indexer-view-edit.md) webhelyet vagy a [Video Indexer fejlesztői portált](video-indexer-use-apis.md) a videó elemzéseinek megtekintésére. 
+Most már használhatja a [Video Indexer](video-indexer-view-edit.md) webhely vagy [Video Indexer fejlesztői portál](video-indexer-use-apis.md) az elemzéseket a videó megtekintéséhez. 
 
 ## <a name="see-also"></a>Lásd még
 

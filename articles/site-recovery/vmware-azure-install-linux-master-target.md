@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: befc979b84c5ace3b8c787b184e52f09ada9ea2b
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 7ff73051abc5168b4dc3852a9008adc22d7d56c6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321408"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811859"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez
 Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -185,7 +185,7 @@ Az Azure Site Recovery fő célkiszolgáló szükséges egy adott verzióját az
 #### <a name="download-and-install-additional-packages"></a>További csomagok letöltése és telepítése
 
 > [!NOTE]
-> Győződjön meg arról, hogy van-e internetkapcsolat további csomagok letöltése és telepítése. Ha nem rendelkezik internetkapcsolattal, kell manuálisan keresse meg ezeket a RPM-csomagokat, és telepítse őket.
+> Győződjön meg arról, hogy van-e internetkapcsolat további csomagok letöltése és telepítése. Ha nem rendelkezik internetkapcsolattal, kell manuálisan keresse meg ezeket a Deb-csomagokat, és telepítse őket.
 
  `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
 

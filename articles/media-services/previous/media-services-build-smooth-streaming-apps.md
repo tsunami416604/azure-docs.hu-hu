@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.openlocfilehash: 7b742840f461744e0be8c7a4ab4d9b392238de4e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 9558a924ee151f47033178b0762a39e2d1e1f538
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232685"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828315"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming-Windows Store-alkalmazás létrehozása
 
@@ -69,7 +69,7 @@ További információ a Windows Store-alkalmazás fejlesztése: [fejleszthet nag
 | Name (Név) | Érték |
 | --- | --- |
 | Sablon csoport |Telepített/sablonok/Visual C#Windows Store |
-| Sablon |Üres alkalmazás (XAML) |
+| Sablon |Blank App (XAML) |
 | Name (Név) |SSPlayer |
 | Hely |C:\SSTutorials |
 | Megoldás neve |SSPlayer |
@@ -84,7 +84,7 @@ További információ a Windows Store-alkalmazás fejlesztése: [fejleszthet nag
 
 | Name (Név) | Érték |
 | --- | --- |
-| Referencia-csoport |Windows/bővítmények |
+| Referencia-csoport |Windows/Extensions |
 | Leírások |Válassza ki a Microsoft Smooth Streaming Client SDK Windows 8 és a Microsoft Visual C++ futásidejű csomag |
 
 1. Kattintson az **OK** gombra. 
@@ -142,7 +142,7 @@ Miután hozzáadta a hivatkozásokat, ki kell választania a megcélzott platfor
    Médiatartalom lejátszása a prvku MediaElement vezérlő szolgál. A csúszka vezérlőelemmel sliderProgress nevű szabályozhatja az adathordozó folyamatban van a következő lecke lesz használható.
 3. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
-A prvku MediaElement vezérlő nem támogatja a Smooth Streaming tartalom out-of-box. A Smooth Streaming-támogatás engedélyezése, regisztrálnia kell a Smooth Streaming bájt-stream kezelő fájlnév-kiterjesztésű és MIME-típus.  Történő regisztrálásához használja a MediaExtensionManager.RegisterByteStremHandler metódus a Windows.Media névtér.
+A prvku MediaElement vezérlő nem támogatja a Smooth Streaming tartalom out-of-box. A Smooth Streaming-támogatás engedélyezése, regisztrálnia kell a Smooth Streaming bájt-stream kezelő fájlnév-kiterjesztésű és MIME-típus.  Történő regisztrálásához használja a MediaExtensionManager.RegisterByteStreamHandler metódus a Windows.Media névtér.
 
 A XAML fájlban néhány eseménykezelők kapcsolódnak a vezérlőkkel.  Meg kell adnia ezeket eseménykezelők.
 
@@ -821,7 +821,7 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
 Smooth Streaming bemutató különböző minőségi szintet (átviteli sebességek) és a megoldásuk kódolású, több videó fájlokat tartalmazza. Ebben a leckében, lehetővé teszi a felhasználóknak, hogy nyomon követi. Ebben a leckében az alábbi eljárásokat tartalmazza:
 
 1. Az XAML-fájl módosítása
-2. A kód behand fájl módosítása
+2. Módosítsa a fájl mögötti kódban
 3. Fordítsa le és az alkalmazás tesztelése
 
 **Az XAML-fájl módosítása**

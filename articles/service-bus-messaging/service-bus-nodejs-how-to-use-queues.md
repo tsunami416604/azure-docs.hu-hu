@@ -3,9 +3,9 @@ title: A Service Bus-üzenetsorok használata Node.js-ben |} A Microsoft Docs
 description: Megtudhatja, hogyan használhatja a Service Bus-üzenetsorok az Azure Node.js-alkalmazásból.
 services: service-bus-messaging
 documentationcenter: nodejs
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 09/10/2018
-ms.author: spelluru
-ms.openlocfilehash: 99cf1b8e95e2a07d6ade2e73c097c59fed0d4f56
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: b8036c373541d76ecaaec7664e3bfc3ad3e35703
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394322"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853091"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>Service Bus-üzenetsorok használata a node.js használatával
 
@@ -174,7 +174,7 @@ A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreá
 
 Emellett van egy zárolva van, az üzenetsorban lévő üzenethez társított időtúllépés, és ha az alkalmazás nem tudja feldolgozni az üzenetet, mielőtt a zárolás időkorlát lejárta (pl., ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet zárolását lesz, és adja meg elérhető az újbóli fogadását.
 
-Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a `deleteMessage` módszert hívja meg, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ezt gyakran nevezik *legalább egyszeri feldolgozásnak*, vagyis minden üzenetet legalább egyszer dolgozza, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran érhető el használatával a **üzenetazonosító** tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során.
+Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a `deleteMessage` módszert hívja meg, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ezt gyakran nevezik *legalább egyszeri feldolgozásnak*, vagyis minden üzenetet legalább egyszer dolgozza, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran az üzenet **MessageId** tulajdonságával érhető el, amely állandó marad a kézbesítési kísérletek során.
 
 ## <a name="next-steps"></a>További lépések
 Üzenetsorokkal kapcsolatos további tudnivalókért lásd a következőket.

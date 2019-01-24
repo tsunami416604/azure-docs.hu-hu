@@ -3,19 +3,19 @@ title: A honosítás karakterlánc-azonosítók – Azure Active Directory B2C |
 description: Adja meg a tartalomdefiníció azonosítóját az Azure Active Directory B2C egy egyéni házirendek api.signuporsignin azonosítóval.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7619ebf038e164c9e586118c70e34955ca7c4767
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 72ed1f7f6d9fe9958bbd78b001d727feb5f8861c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222669"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848410"
 ---
 # <a name="localization-string-ids"></a>A honosítás karakterlánc azonosítók
 
@@ -33,7 +33,7 @@ A következő azonosítóval használt azonosítójú tartalomdefiníció `api.s
 | **logonIdentifier_email** | E-mail-cím |
 | **requiredField_email** | Adja meg e-mail-címét |
 | **invalid_email** | Adjon meg egy érvényes e-mail-címet |
-| **email_pattern** | ^ [a-zA-Z0-9.! #$% &'' * +/ =? ^ _'{}|} ~-]+@[a-zA-Z0-9-]+ (?:\\. [ a-zA-Z0 - 9-] +) * $ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
 | **local_intro_username** | Jelentkezzen be a felhasználónevével |
 | **logonIdentifier_username** | Felhasználónév |
 | **requiredField_username** | Adja meg a felhasználónevét |
@@ -110,15 +110,15 @@ Az alábbiakban azonosítójú tartalomdefiníció azonosítóját `api.localacc
 | **ver_fail_no_retry** | Túl sok helytelen kísérletek végrehajtott. Később próbálja meg újra. |
 | **Hónap** | Hónap |
 | **ver_success_msg** | Az e-mail cím ellenőrizve. Most már folytathatja. |
-| **hónap** | Január, február, március, április, május, június, július, augusztus, szeptember, október, November, December |
+| **months** | január, február, március, április, május, június, július, augusztus, szeptember, október, november, december |
 | **ver_fail_server** | Merült fel e-mail címének ellenőrzése. Adjon meg egy érvényes e-mail címet, és próbálkozzon újra. |
 | **error_requiredFieldMissing** | Hiányzik egy kötelező mező. Az összes kötelező mezőt kitöltötte, és próbálkozzon újra. |
 | **initial_intro** | Adja meg a következő adatokat. |
-| **ver_but_resend** | Új kód küldése |
+| **ver_but_resend** | Új kódot kérek |
 | **button_continue** | Létrehozás |
 | **error_passwordEntryMismatch** | A bejegyzés beírt jelszavak nem egyeznek. Mindkét mezőbe ugyanazt a jelszót írja be, és próbálkozzon újra. |
 | **ver_incorrect_format** | Helytelen formátumú. |
-| **ver_but_edit** | E-mail cím módosítása |
+| **ver_but_edit** | E-mail módosítása |
 | **ver_but_verify** | Kód ellenőrzése |
 | **alert_no** | Nem |
 | **ver_info_msg** | Ellenőrző kódot a rendszer elküldte a Beérkezett üzenetek mappájába. Másolja az alábbi beviteli mezőbe. |
@@ -126,7 +126,7 @@ Az alábbiakban azonosítójú tartalomdefiníció azonosítóját `api.localacc
 | **ver_fail_throttled** | Ez az e-mail cím ellenőrzése túl sok kérelem törölték. Kérjük Várjon egy ideig, majd próbálkozzon újra. |
 | **helplink_text** | Mi ez? |
 | **ver_fail_retry** | A kód helytelen. Kérjük, próbálkozzon újból. |
-| **alert_title** | Adatok megadásának megszakítása |
+| **alert_title** | A részletek megadásának megszakítása |
 | **required_field** | Az adat megadása kötelező. |
 | **alert_message** | Biztosan megszakítja az adatai megadását? |
 | **ver_intro_msg** | Ellenőrzés szükség. Kattintson a Küldés gombra. |
@@ -163,16 +163,16 @@ Az alábbiakban azonosítójú tartalomdefiníció azonosítóját `api.phonefac
 | **country_code_label** | Országkód |
 | **cancel_message** | A felhasználó megszakította a multi-factor authentication szolgáltatás |
 | **text_button_send_second_code** | új kód küldése |
-| **code_pattern** | \\D{6} |
+| **code_pattern** | \\d{6} |
 | **intro_mixed** | Nyilvántartásunkban a következő számot az Ön számára. A Microsoft küldjön egy kódot SMS-ben, vagy telefon a hitelesítéséhez. |
 | **intro_mixed_p** | Nyilvántartásunkban a következő számokat az Ön számára. Válasszon egy számot, hogy a Microsoft telefon, vagy küldjön egy kódot SMS-ben történő hitelesítéséhez. |
 | **button_verify_code** | Kód ellenőrzése |
-| **requiredField_code** | Írja be a kapott ellenőrzőkódot |
+| **requiredField_code** | Adja meg a kapott ellenőrzőkódot |
 | **invalid_code** | Adja meg az általunk küldött 6 jegyű kódot |
 | **button_cancel** | Mégse |
 | **local_number_input_placeholder_text** | Telefonszám |
 | **button_retry** | Retry |
-| **alternative_text** | Nincs telefonszámom |
+| **alternative_text** | Nincs nálam a telefonom |
 | **intro_phone_p** | Nyilvántartásunkban a következő számokat az Ön számára. Válassza ki a számát, azt is telefon a hitelesítéséhez. |
 | **intro_phone** | Nyilvántartásunkban a következő számot az Ön számára. Mi lesz phone hitelesítéséhez. |
 | **enter_code_text_intro** | Adja meg az ellenőrzőkódot alább, vagy  |
@@ -182,7 +182,7 @@ Az alábbiakban azonosítójú tartalomdefiníció azonosítóját `api.phonefac
 | **invalid_number** | Érvényes telefonszámot adjon meg |
 | **intro_sms** | Nyilvántartásunkban a következő számot az Ön számára. Küldünk egy kódot SMS-ben történő hitelesítéséhez. |
 | **intro_entry_mixed** | Adjon meg alább egy telefonszámot, amelyre küldhetünk egy kódot SMS-ben, vagy amelyen felhívhatjuk a hitelesítéshez. |
-| **number_pattern** | ^\\+ (?: [0-9] [\\x20-]?) {6,14}[0-9] $ |
+| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ |
 | **intro_sms_p** |Nyilvántartásunkban a következő számokat az Ön számára. Válasszon egy számot, hogy is küldünk egy kódot SMS-ben történő hitelesítéséhez. |
 | **requiredField_countryCode** | Válassza ki az országhívószámot |
 | **requiredField_number** | Adja meg a telefonszámát |

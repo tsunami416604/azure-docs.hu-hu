@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: ca266df563cb7e50463548dd0e786cec8e886ec4
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d3127b7f9bea9a35d9ac25d0724700cad72fa509
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359697"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857148"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -186,15 +186,15 @@ Kattintson egy piros pontra.
 Egy rendelkezésre állási teszt eredménye a tranzakció részleteit láthatja minden összetevőben. Itt a következőket teheti:
 
 * Megvizsgálhatja a kiszolgálótól érkezett választ.
-* Kapcsolódó kiszolgálóoldali telemetriát a sikertelen rendelkezésre állási teszt feldolgozásakor begyűjtött diagnosztizálhatja a hibákat.
+* Diagnosztizálhatja a hibákat a sikertelen rendelkezésre állási teszt feldolgozásakor begyűjtött kapcsolódó kiszolgálóoldali telemetriát.
 * Probléma jelentkezik, vagy munkatétel a Git- vagy Azure célra szolgáló kártyákat, a probléma nyomon követéséhez. A hiba tartalmazni fog egy hivatkozást erre az eseményre.
 * Megnyithatja a webes teszt eredményét a Visual Studióban.
 
 Ismerje meg, további információt a végpontok közötti tranzakció diagnosztikája élmény [Itt](../../azure-monitor/app/transaction-diagnostics.md).
 
-Kattintson ide a részletek a kiszolgáló oldalán kivétel a szintetikus rendelkezésre állási teszt sikertelen okozó kivétel a sorban. Is beszerezheti a [hibakereső pillanatképek](../../azure-monitor/app/snapshot-debugger.md) gazdagabb kód szintű diagnosztikai.
+Kattintson ide a részletek a kiszolgálóoldali kivétel a szintetikus rendelkezésre állási teszt sikertelen okozó kivétel a sorban. Is beszerezheti a [hibakereső pillanatképek](../../azure-monitor/app/snapshot-debugger.md) gazdagabb kód szintű diagnosztikai.
 
-![Ügyféloldali kiszolgálódiagnosztika](./media/monitor-web-app-availability/open-instance-4.png)
+![Kiszolgálóoldali diagnosztikát](./media/monitor-web-app-availability/open-instance-4.png)
 
 ## <a name="alerts"></a> Rendelkezésre állási riasztás
 A rendelkezésre állási adatok használatával a klasszikus riasztások élmény a következő típusú riasztási szabályok veheti fel:
@@ -203,7 +203,7 @@ A rendelkezésre állási adatok használatával a klasszikus riasztások élmé
 3. Teszt átlagos időtartama növekszik meghaladja a küszöbértéket
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Riasztás x-en kívül Y helyek jelentéskészítési hibák
-Az X Y helyek alapértelmezés szerint engedélyezve van a riasztási szabály kívül a [új egyesített riasztások élmény](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), amikor létrehoz egy új rendelkezésre állási teszt. Akkor is az elutasítás kiválasztásával a "klasszikus" lehetőséget, vagy válassza a riasztási szabály letiltása.
+Az X Y helyek alapértelmezés szerint engedélyezve van a riasztási szabály kívül a [új egyesített riasztások élmény](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), amikor létrehoz egy új rendelkezésre állási teszt. Kikapcsolhatja a "klasszikus" lehetőség kiválasztásával, vagy letiltani a riasztási szabály kiválasztása.
 
 ![Hozzon létre felhasználói élményt](./media/monitor-web-app-availability/appinsights-71webtestUpload.png)
 
@@ -297,7 +297,7 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 
     * Rendelkezik a teszt "Parse függő kérelmek" engedélyezve van? Erőforrások, például parancsfájlokat, szigorú ellenőrzés eredményez, amely képeket stb. Előfordulhat, hogy az ilyen típusú hibák nem észrevehető, egy böngészőben. Ellenőrizze az összes képet, szkriptet, stíluslapot és a lap által betöltött többi fájlt. Ha ezek közül bármelyik hibás, a teszt sikertelenként lesz jelentve, még akkor is, ha a fő HTML-oldal megfelelően töltődik be. Ha a tesztet érzéketlenné szeretné tenni az ilyen erőforráshibákkal szemben, egyszerűen törölje a „Függő kérelmek elemzése” jelölőnégyzet jelölését a tesztkonfigurációban. 
 
-    * Az átmeneti hálózati jelekből és hasonlókból származó zajok esélyének csökkentése érdekében győződjön meg róla, hogy be van jelölve az „Enable retries for test failures” (Újrapróbálkozások engedélyezése teszthibák esetén) beállítás. Több helyről is tesztelhet, és az eredményeknek megfelelően kezelheti a riasztási szabály küszöbértékét, hogy meggátolja az indokolatlan riasztásokat okozó helyspecifikus hibákat.
+    * Az átmeneti hálózati jelekből és hasonlókból származó zajok esélyének csökkentése érdekében győződjön meg róla, hogy be van jelölve az „Enable retries for test failures” (Újrapróbálkozások engedélyezése teszthibák esetén) beállítás. Teszt több helyről is, és meggátolja az indokolatlan riasztásokat okozó helyspecifikus problémák elkerülése érdekében megfelelően kezelheti a riasztási szabály küszöbértékét.
 
     * Kattintson bármelyik a piros pötty a rendelkezésre állási származó, vagy minden rendelkezésre állási hiba a keresési ablak miért azt jelenti, hogy a hiba részleteinek megtekintéséhez. A vizsgálat eredményének, valamint a kapcsolódó kiszolgálóoldali telemetriát (Ha engedélyezve van) segíthet megérteni, hogy miért a teszt sikertelen volt. Átmeneti hibák gyakori okai hálózati és kapcsolati problémák. 
 
@@ -356,6 +356,22 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 * *Hogyan futtathatok tesztet ügyféltanúsítványokkal?*
 
     Sajnos azt nem támogatjuk.
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Ki kapja a (klasszikus) riasztási értesítések?
+
+Ez a szakasz csak klasszikus riasztások vonatkozik, és segít optimalizálni a riasztási értesítések biztosítják, hogy csak a kívánt címzettek megkapják az értesítéseket. Ismerje meg jobban a különbség a [klasszikus riasztások](../platform/alerts-classic.overview.md), majd tekintse át a riasztások új kezelőfelülete a [riasztások áttekintő cikkben](../platform/alerts-overview.md). Riasztás szabályozhatja az új riasztások az értesítési használata élményt [Műveletcsoportok](../platform/action-groups.md).
+
+* A klasszikus riasztási értesítéseket meghatározott címzettek használatát javasoljuk.
+
+* Sikertelen X kívül Y helyen, a riasztások a **tömeges/csoport** jelölőnégyzetet, a beállítást, ha engedélyezve van, küld rendszergazda/társadminisztrátor szerepkörrel rendelkező felhasználók számára.  Lényegében _összes_ rendszergazdái a _előfizetés_ értesítéseket kap.
+
+* A rendelkezésre állási metrikák (vagy bármely, függetlenül attól, hogy az Application Insights metrikáit) riasztásaihoz a **tömeges/csoport** jelölőnégyzetet, a beállítás engedélyezve van, ha elküldi az előfizetésben tulajdonosi, közreműködői vagy olvasói szerepkörrel rendelkező felhasználók. Gyakorlatilag _összes_ az előfizetés az Application Insights-erőforráshoz hozzáféréssel rendelkező felhasználók terjed ki, és értesítéseket kap. 
+
+> [!NOTE]
+> Ha jelenleg használja a **tömeges/csoport** jelölőnégyzetet, a beállítást, és tiltsa le, nem állíthatja vissza a módosítást.
+
+Az új riasztás élmény/közel valós idejű riasztások használja, ha értesítse a felhasználókat a szerepkörökhöz alapján kell. A [Műveletcsoportok](../platform/action-groups.md), bármelyik (nem egyesíthet egyetlen lehetőségként) közreműködői vagy tulajdonosi vagy olvasó szerepkört konfigurálható e-mail értesítések küldéséhez felhasználók számára.
+
 
 
 ## <a name="next"></a>Következő lépések

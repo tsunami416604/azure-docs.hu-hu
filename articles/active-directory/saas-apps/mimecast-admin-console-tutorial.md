@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Mim
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 81c50614-f49b-4bbc-97d5-3cf77154305f
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 7d1280525560c5333a5764ac9f962f79bd2284ad
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 9ad9be1d1573bd3c57a3462f1f6ab53152a4469d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54061623"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809734"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Oktatóanyag: Mimecast felügyeleti konzol az Azure Active Directory-integráció
 
@@ -123,7 +123,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Mimecast felügyelet
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 

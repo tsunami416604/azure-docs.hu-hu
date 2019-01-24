@@ -3,19 +3,19 @@ title: Egyéni szabályzat használatával egy hozzáférési jogkivonatot át a
 description: Ismerje meg, hogyan adhat át egy hozzáférési jogkivonatot OAuth2.0 identitásszolgáltatókhoz való egyéni házirendet egy jogcímet, az Azure Active Directory B2C alkalmazását.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7a40ded3ff6af1c519400c755d1ee6d9bd73ba9e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d421cc83b64971ce577caf161631d4dc76d6ce9c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602290"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856570"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Egyéni szabályzat használatával egy hozzáférési jogkivonatot át alkalmazását az Azure Active Directory B2C-vel
 

@@ -3,9 +3,9 @@ title: Az Azure Service Bus-üzenetsorok használata pythonnal |} A Microsoft Do
 description: Ismerje meg, hogyan használható az Azure Service Bus-üzenetsorok, a Python.
 services: service-bus-messaging
 documentationcenter: python
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 08/30/2018
-ms.author: spelluru
-ms.openlocfilehash: cc8fc62811fe019dcaf613a1c0b50d89183e6555
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: 3ef2c07888afbc4b640c79e7d442b9b69b63503a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406192"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852728"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Service Bus-üzenetsorok használata pythonnal
 
@@ -106,7 +106,7 @@ A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreá
 
 Emellett van egy zárolva van, az üzenetsorban lévő üzenethez társított időtúllépés, és ha az alkalmazás nem tudja feldolgozni az üzenetet, mielőtt a zárolás időkorlát lejárta (pl., ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet zárolását lesz, és adja meg elérhető az újbóli fogadását.
 
-Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a **törlése** módszert hívja meg, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ezt gyakran nevezik **legalább egyszeri feldolgozásnak**, vagyis minden üzenetet legalább egyszer dolgozza, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran érhető el használatával a **üzenetazonosító** tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során.
+Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a **törlése** módszert hívja meg, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ezt gyakran nevezik **legalább egyszeri feldolgozásnak**, vagyis minden üzenetet legalább egyszer dolgozza, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran az üzenet **MessageId** tulajdonságával érhető el, amely állandó marad a kézbesítési kísérletek során.
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a Service Bus-üzenetsorok alapjait, tekintse meg ezeket a további cikkeket.

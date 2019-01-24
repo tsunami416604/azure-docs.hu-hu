@@ -3,23 +3,23 @@ title: Az AMQP 1.0 kérés-válasz alapú műveletek az Azure Service Bus |} A M
 description: A Microsoft Azure Service Bus-kérés/válasz alapú műveletek listája.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2018
-ms.author: spelluru
-ms.openlocfilehash: 6ba3d8e4273d0f2ce2626d8876c386a3714d5355
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 113ed80910e396361396a9c1298fc04a55ac4800
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159094"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852475"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>A Microsoft Azure Service Bus AMQP 1.0-s: kérés-válasz alapú műveletek
 
@@ -153,7 +153,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült.|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült.|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében egy egy leképezés a következő bejegyzéseket tartalmazó amqp-érték szakaszból áll:  
@@ -188,7 +188,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – a további üzeneteket tartalmaz<br /><br /> 204: nincs tartalom – nincs további üzenetek|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: Rendben – a további üzeneteket tartalmaz<br /><br /> 204: Nincs tartalom – nincs további üzenetek|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
@@ -226,10 +226,10 @@ A térkép egy üzenetet jelző tartalmaznia kell az alábbi bejegyzéseket:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|üzenetazonosító|sztring|Igen|`amqpMessage.Properties.MessageId` karakterlánc|  
+|message-id|sztring|Igen|`amqpMessage.Properties.MessageId` karakterlánc|  
 |munkamenet-azonosító|sztring|Nem|`amqpMessage.Properties.GroupId as string`|  
-|partíciós kulccsal|sztring|Nem|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
-|keresztül-partíciós kulccsal|sztring|Nem|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
+|partition-key|sztring|Nem|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|via-partition-key|sztring|Nem|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |message|Megjeleníti a tömb|Igen|Az AMQP 1.0-s átviteli kódolt üzenet.|  
   
 #### <a name="response"></a>Válasz  
@@ -238,14 +238,14 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült.|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült.|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** egy leképezés a következő bejegyzéseket tartalmazó szakasz:  
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|sorozatszámok|a hosszú tömbje|Igen|Ütemezett üzenetek sorszáma. Sorszám Mégse szolgál.|  
+|sequence-numbers|a hosszú tömbje|Igen|Ütemezett üzenetek sorszáma. Sorszám Mégse szolgál.|  
   
 ### <a name="cancel-scheduled-message"></a>Ütemezett üzenet törlése  
 
@@ -264,7 +264,7 @@ A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó sza
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|sorozatszámok|a hosszú tömbje|Igen|Ütemezett üzenetek megszakítja a sorozatszámok.|  
+|sequence-numbers|a hosszú tömbje|Igen|Ütemezett üzenetek megszakítja a sorozatszámok.|  
   
 #### <a name="response"></a>Válasz  
 
@@ -272,14 +272,14 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült.|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült.|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** egy leképezés a következő bejegyzéseket tartalmazó szakasz:  
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|sorozatszámok|a hosszú tömbje|Igen|Ütemezett üzenetek sorszáma. Sorszám Mégse szolgál.|  
+|sequence-numbers|a hosszú tömbje|Igen|Ütemezett üzenetek sorszáma. Sorszám Mégse szolgál.|  
   
 ## <a name="session-operations"></a>Munkamenet-műveletek  
   
@@ -308,7 +308,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – a további üzeneteket tartalmaz<br /><br /> 204: nincs tartalom – nincs további üzenetek|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: Rendben – a további üzeneteket tartalmaz<br /><br /> 204: Nincs tartalom – nincs további üzenetek|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** egy leképezés a következő bejegyzéseket tartalmazó szakasz:  
@@ -334,7 +334,7 @@ A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó sza
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|a feladatütemezés-szám|hosszú|Igen|Indítsa el a betekintés, amely feladatütemezést.|  
+|from-sequence-number|hosszú|Igen|Indítsa el a betekintés, amely feladatütemezést.|  
 |üzenetszám|int|Igen|Belepillantás üzenetek maximális száma.|  
 |munkamenet-azonosító|sztring|Igen|Munkamenet-azonosítót.|  
   
@@ -344,7 +344,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – a további üzeneteket tartalmaz<br /><br /> 204: nincs tartalom – nincs további üzenetek|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: Rendben – a további üzeneteket tartalmaz<br /><br /> 204: Nincs tartalom – nincs további üzenetek|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** egy leképezés a következő bejegyzéseket tartalmazó szakasz:  
@@ -385,7 +385,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 ### <a name="get-session-state"></a>A munkamenet-állapot lekérése  
@@ -413,7 +413,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
@@ -439,7 +439,7 @@ A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó sza
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|utolsó frissítés időpontja|időbélyeg|Igen|Szűrés csak egy adott időpont után frissíti munkamenetek tartalmazza.|  
+|last-updated-time|időbélyeg|Igen|Szűrés csak egy adott időpont után frissíti munkamenetek tartalmazza.|  
 |kihagyás|int|Igen|Hagyja ki a munkamenetek száma.|  
 |felső|int|Igen|Munkamenetek maximális számát.|  
   
@@ -449,7 +449,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – a további üzeneteket tartalmaz<br /><br /> 204: nincs tartalom – nincs további üzenetek|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: Rendben – a további üzeneteket tartalmaz<br /><br /> 204: Nincs tartalom – nincs további üzenetek|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
@@ -498,13 +498,13 @@ A **korrelációs szűrő** térkép tartalmaznia kell legalább egy, az alábbi
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |korrelációs azonosító|sztring|Nem||  
-|üzenetazonosító|sztring|Nem||  
+|message-id|sztring|Nem||  
 |erre:|sztring|Nem||  
 |Válasz címzettje|sztring|Nem||  
 |label|sztring|Nem||  
 |munkamenet-azonosító|sztring|Nem||  
 |válasz a munkamenet azonosítója|sztring|Nem||  
-|a Content-type|sztring|Nem||  
+|content-type|sztring|Nem||  
 |properties|térkép|Nem|A Service Bus Maps [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
   
 A **sql szabályművelet** térkép tartalmaznia kell az alábbi bejegyzéseket:  
@@ -519,7 +519,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 ### <a name="remove-rule"></a>Szabály eltávolítása  
@@ -545,7 +545,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 ### <a name="get-rules"></a>Szabályok beolvasása
@@ -572,7 +572,7 @@ A válaszüzenet a következő tulajdonságokat tartalmazza:
 
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
 |szabályok| térkép tömbje|Igen|Szabályok tömbje. Minden egyes szabály egy térkép képviseli.|
 
 A tömb minden egyes leképező bejegyzés a következő tulajdonságokat tartalmazza:
@@ -623,7 +623,7 @@ A tömb minden egyes leképező bejegyzés a következő tulajdonságokat tartal
 | Leíró neve | Leíró kód | Érték |
 | --- | --- | ---|
 | `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | Üres szabály hatására végrehajtott művelet – nincs jelen szabály hatására végrehajtott művelet |
-| `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | SQL-szabály hatására végrehajtott művelet |
+| `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | SQL Rule Action |
 
 `com.microsoft:sql-rule-action:list` van, amelynek első bejegyzés egy karakterlánc, amely az SQL szabályművelet kifejezést tartalmaz, itt ismertetett objektumokból álló tömb.
 
@@ -646,7 +646,7 @@ A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó sza
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|sorozatszámok|a hosszú tömbje|Igen|Sorozatszámok száma.|  
+|sequence-numbers|a hosszú tömbje|Igen|Sorozatszámok száma.|  
 |receiver-settle-mode|ubyte|Igen|**Fogadó kiegyenlítéséhez** AMQP core 1.0-s verzió megadott módú.|  
   
 #### <a name="response"></a>Válasz  
@@ -655,7 +655,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
 |statusDescription|sztring|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
@@ -690,9 +690,9 @@ A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó sza
 |---------|----------------|--------------|--------------------|  
 |állapot törlése|sztring|Igen|completed<br /><br /> elhagyott<br /><br /> Felfüggesztve|  
 |Lock-jogkivonatok|uuid tömbje|Igen|Üzenet zárolási jogkivonat intézkedési állapotának frissítése.|  
-|kézbesítetlen-OK|sztring|Nem|Ha disposition állapot értéke lehet beállítani **felfüggesztve**.|  
-|kézbesítetlen – leírás|sztring|Nem|Ha disposition állapot értéke lehet beállítani **felfüggesztve**.|  
-|tulajdonságok – módosítása|térkép|Nem|Listája a Service Bus közvetítőalapú üzenet tulajdonságainak módosításához.|  
+|deadletter-reason|sztring|Nem|Ha disposition állapot értéke lehet beállítani **felfüggesztve**.|  
+|deadletter-description|sztring|Nem|Ha disposition állapot értéke lehet beállítani **felfüggesztve**.|  
+|properties-to-modify|térkép|Nem|Listája a Service Bus közvetítőalapú üzenet tulajdonságainak módosításához.|  
   
 #### <a name="response"></a>Válasz  
 
@@ -700,7 +700,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Állapotkód|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
+|statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
 |statusDescription|sztring|Nem|Az állapot leírása.|
 
 ## <a name="next-steps"></a>További lépések

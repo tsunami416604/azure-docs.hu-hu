@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5835e8275bedebaca01d585a992930d6856edfd7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: edf99f57fe2166e5ea7f91817dde978015af9348
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53553300"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54841422"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -101,6 +101,10 @@ Csak olvasható közös hozzáférésű jogosultságkód (SAS) URI-t a felügyel
 
 Igen, támogatja a nem felügyelt, és a felügyelt lemezek támogatottak. Azt javasoljuk, hogy az új számítási feladatok a felügyelt lemezek használata, és az aktuális számítási feladatok migrálása felügyelt lemezekre.
 
+**Is szeretnék kerüljenek a nem felügyelt és felügyelt lemezek ugyanazon a virtuális Gépen?**
+
+Nem.
+
 **Ha hozzon létre egy 128 GB-os lemezt, és ezután a 130 GIB-ra méretének növeléséhez, kell fizetnem az a következő lemez mérete (256 GB)?**
 
 Igen.
@@ -124,10 +128,6 @@ Nem. A számítógép neve tulajdonság nem frissíthető. Az új virtuális gé
 **Hol találok az Azure Resource Manager-sablonok minta felügyelt lemezekkel rendelkező virtuális gépek létrehozásához?**
 * [A felügyelt lemezek használatával sablonok listáját.](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
-
-**Is szeretnék kerüljenek a nem felügyelt és felügyelt lemezek ugyanazon a virtuális Gépen?**
-
-Nem.
 
 **Egy blob egy lemezt hoz létre, amikor nincs semmilyen folyamatosan meglévő kapcsolatot, hogy a forrás blob?**
 
@@ -318,7 +318,7 @@ Nem kell frissíteni a meglévő Azure-eszközök létrehozása, csatlakoztatás
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | A verziószám 4.1.0 verzióra: 2017 június kiadás vagy újabb|
 |Azure CLI v1     | A verziószám 0.10.13: 2017 május kiadás vagy újabb|
-|Az Azure CLI v2     | 2.0.12-es verziószám: 2017 július kiadás vagy újabb|
+|Azure CLI v2     | 2.0.12-es verziószám: 2017 július kiadás vagy újabb|
 |AzCopy           | A verziószám 6.1.0: 2017 június kiadás vagy újabb|
 
 **Támogatottak a P4 és a P6 szintű lemezméretek nem felügyelt lemezek és lapblobok esetében?**

@@ -1,22 +1,17 @@
 ---
 layout: LandingPage
-title: Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez – Azure Active Directory | Microsoft Docs
-description: A felhasználói súgó olyan személyeknek szól, akiknek segítségre van szükségük a biztonsági adatok, a kétlépéses ellenőrzés, az új jelszó önkiszolgáló kérése, az eszközkezelés, a Microsoft Authenticator alkalmazás és a Saját alkalmazások portál beállításához és használatához.
+title: 'Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez – Azure Active Directory | Microsoft Docs'
+description: 'A felhasználói súgó olyan személyeknek szól, akiknek segítségre van szükségük a biztonsági adatok, a kétlépéses ellenőrzés, az új jelszó önkiszolgáló kérése, az eszközkezelés, a Microsoft Authenticator alkalmazás és a Saját alkalmazások portál beállításához és használatához.'
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 3ee8834a2ff8b9126fea38b19df115474c36a9e9
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41929658"
 ---
+
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez
 
 Ezeket a tartalmakat azért hoztuk létre, hogy segítséget nyújtsunk a biztonsági adatok és a kétlépéses ellenőrzés beállításához és használatához, az új jelszó önkiszolgáló kérésének elsajátításához, az Azure Active Directory-eszközök beállításához és csatlakoztatásához, valamint a Microsoft Authenticator alkalmazás és a Saját alkalmazások portál beállításához és használatához.
@@ -116,7 +111,7 @@ Ezeket a tartalmakat azért hoztuk létre, hogy segítséget nyújtsunk a bizton
                     <div class="cardText">
                         <h3>Eszközkezelés súgója</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/user-help-join-device-on-network">Munkahelyi eszköz csatlakoztatása</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-join-device-on-network">Munkaeszköz csatlakoztatása</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-register-device-on-network">Személyes eszköz regisztrálása munkavégzéshez</a>
                         </p>
                     </div>

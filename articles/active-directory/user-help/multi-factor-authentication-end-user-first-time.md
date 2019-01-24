@@ -4,7 +4,7 @@ description: A vállalat Azure multi-factor Authentication állítja be, amikor 
 services: active-directory
 keywords: az azure directory, a felhőben, az active directory az oktatóanyag az active directory használata
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: 9f602b08e94071a335d0c88377912ea9b53f37b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a5cb5a879687bdbea043d582526f4dd357a2a620
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244440"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809921"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>A kétlépéses ellenőrzéshez a fiók beállítása
 A kétlépéses ellenőrzés egy kiegészítő biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében. Ha ez a cikk olvasása közben, valószínűleg kapott e-mailt a munkahelyi vagy iskolai rendszergazda multi-factor Authentication hitelesítéssel kapcsolatban. Vagy esetleg próbált meg bejelentkezni, és itt van egy üzenet, hogy további biztonsági ellenőrzés beállítása. Ebben az esetben, ha **nem tud bejelentkezni, amíg el nem végezte az automatikus regisztrációs folyamatot**.
@@ -39,7 +39,7 @@ Ha nem látja a egy ilyen képernyőt, amikor bejelentkezik, kövesse a megjelen
 
 A regisztrációs folyamat az első kérdést a kívánt kapcsolatba lépni velünk. Tekintse meg a beállításokat a táblázatban, és nyissa meg a telepítési lépéseket az egyes módszerek hivatkozások segítségével.
 
-| Kapcsolatfelvétel módja | Leírás |
+| Kapcsolattartási mód | Leírás |
 | --- | --- |
 | [Mobilalkalmazás](#use-a-mobile-app-as-the-contact-method) |- **Értesítések küldése az ellenőrzéshez.** Ez a beállítás leküldéses értesítést az authenticator alkalmazás a okostelefonján vagy táblagépén lévő. Tekintse meg az értesítést, és ha az megbízható, válassza az **hitelesítés** az alkalmazásban. A munkahelyi vagy iskolai szükség lehet PIN-kód megadását, mielőtt Önt a hitelesítéshez.<br>- **Ellenőrzőkód használata.** Ebben a módban az authenticator alkalmazás egy ellenőrző kódot, amely frissíti a 30 másodpercenként hoz létre. A bejelentkezési felületen írja be az aktuális ellenőrzőkódot.<br>A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el. |
 | [Mobiltelefon hívás vagy szöveges üzenet](#use-your-mobile-phone-as-the-contact-method) |- **Telefonhívás** helyezi el az Ön telefonszám automatikus hanghívást indít. A hívás, és nyomja le a hitelesítéshez lenyomja a telefon billentyűzetén a #.<br>- **Szöveges üzenet** egy ellenőrző kódot tartalmazó szöveges üzenetet ér véget. A rendszer a szövegben, a következő válaszoljon az üzenetre, vagy adja meg a bejelentkezési felületen megadott ellenőrző kód. |
