@@ -3,19 +3,19 @@ title: Felhasználói adatokat az Azure Active Directory B2C |} A Microsoft Docs
 description: Ismerje meg, hogyan törölheti, vagy az Azure AD B2C felhasználói adatok exportálása.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 49e9efa537ad1f2a1d7f06dd7f8a68a409c7d4e0
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: fc49191fe6141470ddd5304bdd12cec1d40bd1ee
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058737"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854020"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói adatok kezelése
 
@@ -46,8 +46,8 @@ A vásárlói adatok exportálása az Azure AD B2C-ből a folyamat hasonlít a t
 
 Az Azure AD B2C felhasználói adatok korlátozva:
 
-- **Az Azure Active Directoryban tárolt adatok**: Objektumazonosítóját vagy tetszőleges bejelentkezési nevet, például e-mail-cím vagy felhasználónév használatával kérheti le az Azure AD B2C-hitelesítés felhasználói interakciósorozatban szereplő adatokat. 
-- **Felhasználó-specifikus naplózási események jelentés**: adatok indexelésére használhatja, az az objektum azonosítója.
+- **Az Azure Active Directoryban tárolt adatok**: Az Azure AD B2C-hitelesítés felhasználói interakciósorozatban szereplő adatok Objektumazonosítóját vagy tetszőleges bejelentkezési nevet, például e-mail-cím vagy felhasználónév használatával kérheti le. 
+- **Felhasználó-specifikus naplózási események jelentés**: Adatok indexelésére használhatja, az az objektum azonosítója.
 
 A következő példában egy exportálási adatfolyama leírt lépéseket, az alkalmazás által végzett is végezhet el egy háttérbeli folyamatok vagy a címtárban rendszergazdai szerepkörrel rendelkező felhasználó:
 

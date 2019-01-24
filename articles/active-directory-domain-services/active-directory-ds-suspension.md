@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure Active Directory Domain Services: Felfüggesztve tartományok |} A Microsoft Docs'
-description: Felügyelt tartomány felfüggesztése és törlése
+title: 'Az Azure Active Directory tartományi szolgáltatások: Tartományok felfüggesztve |} A Microsoft Docs'
+description: Managed domain suspension and deletion
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 161a9f1ac517d372884e7606dbd2ef30c910bf6b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1f548fefe1d28e3ca70de12911cb492d78c78629
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968100"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854836"
 ---
 # <a name="suspended-domains"></a>Felfüggesztett tartományok
 Ha nem tudja teljesíteni a felügyelt tartomány egy hosszú ideig Azure Active Directory Domain Services (Azure AD DS), a felügyelt tartomány felfüggesztett állapotba helyezi el. Ez a cikk azt ismerteti, miért felügyelt tartományok fel vannak függesztve, és a egy felfüggesztett tartomány javítása.
@@ -67,7 +67,7 @@ Bizonyos esetekben (például, ha egy érvénytelen a hálózati konfigurációt
 Felügyelt tartomány helyezi a **felfüggesztett** állapot a következő okok miatt:
 
 * Egy vagy több kritikus riasztások még nem lett feloldva 15 napon keresztül. Kritikus riasztások okozhatja egy hibás, hogy az Azure Active Directory tartományi szolgáltatások által használt erőforrások blokkolja a hozzáférést.
-    * Ha például a riasztás [AADDS104: hálózati hiba](active-directory-ds-troubleshoot-nsg.md) a felügyelt tartomány a több mint 15 napon keresztül feloldatlan.
+    * Ha például a riasztás [AADDS104: Hálózati hiba](active-directory-ds-troubleshoot-nsg.md) a felügyelt tartomány a több mint 15 napon keresztül feloldatlan.
 * Egy számlázási probléma az Azure-előfizetésében, vagy az Azure-előfizetés lejárt.
 
 Ha a Microsoft nem tudja kezelni, figyelése, javítása vagy biztonsági mentése a tartomány folyamatosan felügyelt tartományok fel vannak függesztve.

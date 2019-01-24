@@ -3,21 +3,21 @@ title: Oktatóanyag – ASP.NET webes API-hoz való hozzáférés engedélyezés
 description: Arra vonatkozó útmutató, hogyan használhatja az Active Directory B2C-t egy ASP.NET webes API védelmére és meghívására egy ASP.NET-webalkalmazásból.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: bd900071bbcd894d4fe71e0f8a265d98348eb262
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4051c0438cfb7c33f36cf49542e422e54e723cfc
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726406"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856060"
 ---
-# <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Oktatóanyag: ASP.NET webes API-hoz való hozzáférés engedélyezése egy webalkalmazásból az Azure Active Directory B2C használatával
+# <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Oktatóanyag: Az ASP.NET webes API egy webalkalmazásból az Azure Active Directory B2C használatával való hozzáférés engedélyezése
 
 Az oktatóanyag azt mutatja be, hogyan hívhat meg egy Azure Active Directory (Azure AD) B2C-vel védett webes API-erőforrást az ASP.NET-webalkalmazásból.
 
@@ -116,13 +116,13 @@ A **Mintául szolgáló saját webalkalmazás** regisztrálva van a védett **Mi
 
 Most, hogy regisztrálta a webes API-t és meghatározta a hatóköröket, konfigurálnia kell a webes API kódját az Azure AD B2C-bérlő használatához. Ebben az oktatóanyagban egy mintául szolgáló webes API-t fog konfigurálni. 
 
-A mintául szolgáló webes API-t az előfeltételként megadott oktatóanyag elvégzése során letöltött projekt tartalmazza: [Az Azure Active Directory B2C használata felhasználói hitelesítéshez egy ASP.NET-webalkalmazásban – oktatóanyag](active-directory-b2c-tutorials-web-app.md). Ha még nem végezte el az előfeltételnek számító oktatóanyagot, kerítsen erre sort, mielőtt továbblépne.
+A mintául szolgáló webes API-t az előfeltételként szolgáló oktatóanyagot letöltött projekt tartalmazza: [Azure Active Directory B2C használata felhasználói hitelesítéshez egy ASP.NET-webalkalmazásban – oktatóanyag](active-directory-b2c-tutorials-web-app.md). Ha még nem végezte el az előfeltételnek számító oktatóanyagot, kerítsen erre sort, mielőtt továbblépne.
 
 Két projekt szerepel a mintául szolgáló megoldásban:
 
-**Mintául szolgáló webalkalmazás (TaskWebApp):** webalkalmazás feladatlista létrehozáshoz és szerkesztéséhez. A webes alkalmazás használja a **regisztrálási vagy bejelentkezési** való regisztráció vagy bejelentkezés e-mail-címmel rendelkező felhasználók a felhasználói folyamat.
+**Mintául szolgáló webalkalmazás (TaskWebApp):** Webalkalmazás létrehozása és a egy feladatlista szerkesztése. A webes alkalmazás használja a **regisztrálási vagy bejelentkezési** való regisztráció vagy bejelentkezés e-mail-címmel rendelkező felhasználók a felhasználói folyamat.
 
-**Mintául szolgáló webes API-alkalmazás (TaskService):** webes API, amely támogatja a feladatlista létrehozását, olvasását, frissítését és törlését. A webes API-nak az Azure AD B2C biztosít védelmet, és a webalkalmazással hívható meg.
+**Mintául szolgáló webes API alkalmazás (TaskService):** Webes API-t, amely támogatja a létrehozása, olvasása, frissítése és feladatlista törlés. A webes API-nak az Azure AD B2C biztosít védelmet, és a webalkalmazással hívható meg.
 
 A mintául szolgáló webalkalmazás és a webes API a konfigurációs értékeket alkalmazásbeállításokként határozza meg az egyes projektek Web.config fájljában.
 

@@ -4,7 +4,7 @@ description: Biztonságos LDAP (LDAPS) konfigurálása az Azure AD tartományi s
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 850b721cfa78dde23ebc11944bf023de8798cec9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c5bc40d5be5b41000ababa35386bcdda6bf3f83f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236953"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854259"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS-t) az Azure AD Domain Services felügyelt tartomány konfigurálása
 Ez a cikk bemutatja, hogyan engedélyezheti a biztonságos Lightweight Directory Access Protocol (LDAPS) számára az Azure AD tartományi szolgáltatásokkal felügyelt tartományban. A Secure LDAP van más néven "Lightweight Directory Access Protocol (LDAP) Secure Sockets Layer (SSL) rétegen keresztül / Transport Layer Security (TLS)".
@@ -90,7 +90,7 @@ Az előző példában cserélje le a felügyelt tartomány DNS-tartománynév "c
 
 ![Azure AD címtár kiválasztása](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 
-Az újonnan létrehozott önaláírt tanúsítványt a helyi gép tanúsítványtárolójába kerül.
+A rendszer a helyi gép tanúsítványtárolójába helyezi az újonnan létrehozott önaláírt tanúsítványt.
 
 
 ## <a name="next-step"></a>Következő lépés

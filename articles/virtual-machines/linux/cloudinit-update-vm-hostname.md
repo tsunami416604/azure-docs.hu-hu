@@ -14,18 +14,18 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: e985111a28805f861242240a5c2e3d7b6664be4e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 140c542b71ff87f6b7a846888da06e58fa03ce10
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996111"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855329"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>A cloud-init használatával Linux rendszerű virtuális gép az Azure-ban beállított állomásnév
 Ez a cikk bemutatja, hogyan használható [a cloud-init](https://cloudinit.readthedocs.io) konfigurálása egy adott gazdagépnévnek küldenek egy virtuális gép (VM) vagy virtuálisgép-méretezési csoportok (VMSS) kiépítés ideje az Azure-ban. Ezen a cloud-init parancsfájlok futtatása az első rendszerindításkor az Azure-ban kiépített erőforrások után. A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md)
 
 ## <a name="set-the-hostname-with-cloud-init"></a>Állítsa be az állomásnevet a cloud-Init használatával
-Alapértelmezés szerint az állomásnév megegyezik a virtuális gép nevét egy új virtuális gépet az Azure-ban való létrehozásakor.  Ez az alapértelmezett állomásnév módosítani, ha egy virtuális Gépet hoz létre az Azure-ban a cloud-init parancsfájl futtatása [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create), adja meg a cloud-init-fájlt a `--custom-data` váltani.  
+Alapértelmezés szerint az állomásnév megegyezik a virtuális gép nevét egy új virtuális gépet az Azure-ban való létrehozásakor.  Ez az alapértelmezett állomásnév módosítani, ha egy virtuális Gépet hoz létre az Azure-ban a cloud-init parancsfájl futtatása [az virtuális gép létrehozása](/cli/azure/vm), adja meg a cloud-init-fájlt a `--custom-data` váltani.  
 
 A frissítési folyamat működés közben látni, hozzon létre egy fájlt az aktuális felületen *cloud_init_hostname.txt* , és illessze be a következő konfigurációt. Ebben a példában a Cloud shellben, nem a helyi gépén hozzon létre a fájlt. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_hostname.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Győződjön meg arról, hogy a teljes cloud-init-fájlt, másolja, különösen az első sort.  
 
@@ -40,7 +40,7 @@ Ez a rendszerkép üzembe helyezése előtt hozzon létre egy erőforráscsoport
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) , és adja meg a cloud-init fájl `--custom-data cloud_init_hostname.txt` módon:
+Most hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm) , és adja meg a cloud-init fájl `--custom-data cloud_init_hostname.txt` módon:
 
 ```azurecli-interactive 
 az vm create \

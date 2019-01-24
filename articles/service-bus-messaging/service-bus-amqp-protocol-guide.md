@@ -3,23 +3,23 @@ title: Az Azure Service Bus és Event Hubs protokoll – útmutató az AMQP 1.0-
 description: Protokoll – útmutató, kifejezések és az Azure Service Bus és Event Hubs az AMQP 1.0-t leírása
 services: service-bus-messaging,event-hubs
 documentationcenter: .net
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2018
-ms.author: clemensv
-ms.openlocfilehash: c437ffec635064bf301eb417717861b68beca611
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 88f586fac4392e880efc3ef611a7c03177582bff
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476989"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856706"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Az AMQP 1.0-s verziójában az Azure Service Bus és Event Hubs protokoll – útmutató
 
@@ -134,7 +134,7 @@ Az API szintjén "jelenik meg" hívás azt jelenti, hogy egy *folyamat* performa
 
 Lévő üzenet zárolását akkor szabadul fel, ha az átvitel kiegyenlítése a terminál állapotokba *elfogadott*, *elutasított*, vagy *kiadott*. Ha az állapotot az üzenet törlődik a Service Bus *elfogadott*. Ez a Service Bus marad, és kézbesíti a rendszer a következő fogadó amikor az átvitel eléri a többi állapotok valamelyikében. A Service Bus automatikusan áthelyezi az üzenetet az entitás kézbesítetlen levelek várólistájára, amikor eléri az engedélyezett ismétlődő elutasítások vagy kiadásai miatt az entitás kézbesítések maximális száma.
 
-Annak ellenére, hogy a Service Bus API-k közvetlenül nem teszik elérhetővé a ilyen beállítást még ma, alacsonyabb szintű AMQP protokoll ügyfél használhatja-e a hivatkozás-kredit modell kapcsolhatja a kredit az egyes fogadási kérést egy egység kiállító a "leküldéses stílusú" modellbe "pull-stílusú" közötti sok kiállító kreditek hivatkozásra, és további felhasználói beavatkozás nélkül elérhetővé váló majd üzenetfogadáshoz. Leküldéses keresztül támogatott a [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PrefetchCount) vagy [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount) eszköztulajdonság-beállítások. Ha nullától eltérő, az AMQP-ügyfél használja a hivatkozás kreditet.
+Annak ellenére, hogy a Service Bus API-k közvetlenül nem teszik elérhetővé a ilyen beállítást még ma, alacsonyabb szintű AMQP protokoll ügyfél használhatja-e a hivatkozás-kredit modell kapcsolhatja a kredit az egyes fogadási kérést egy egység kiállító a "leküldéses stílusú" modellbe "pull-stílusú" közötti sok kiállító kreditek hivatkozásra, és további felhasználói beavatkozás nélkül elérhetővé váló majd üzenetfogadáshoz. Leküldéses keresztül támogatott a [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) vagy [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount) eszköztulajdonság-beállítások. Ha nullától eltérő, az AMQP-ügyfél használja a hivatkozás kreditet.
 
 Ebben a környezetben fontos megérteni, hogy az üzenet az entitás belül a zárolás lejárta órája elindul, amikor az üzenet forrása az entitás nem az üzenet az üzembe helyezés a keresztülhaladnak a hálózaton. Minden alkalommal, amikor az ügyfél azt jelzi, hogy üzeneteket fogadni hivatkozás kredit kiállításával készültségi, ezért várt lehet aktívan beolvasás üzenetek a hálózaton keresztül, és készen áll az őket. Az üzenet zárolási egyébként lejártak, mielőtt még az üzenetek kézbesítése. Hivatkozás-kredit adatfolyam vezérlés használatát közvetlenül tükröznie kell azonnal készen áll-e elküldeni, a fogadó elérhető üzenetek kezelésére.
 
@@ -228,7 +228,7 @@ Bármely vlastnost alkalmazása szükséges határozza meg kell feleltetni AMQP 
 | tárgy |Alkalmazás által meghatározott üzenetet célú azonosítója, a Service Bus nem értelmezi. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
 | Válasz címzettje |Alkalmazás által meghatározott válasz-elérési út mutató, a Service Bus nem értelmezi. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
 | korrelációs azonosító |Alkalmazás által meghatározott korrelációs azonosító, nem értelmezi a Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| content-type |Alkalmazás által meghatározott tartalomtípus-mutató nem értelmezi a Service Bus, a szervezet számára. |[a contentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
+| content-type |Alkalmazás által meghatározott tartalomtípus-mutató nem értelmezi a Service Bus, a szervezet számára. |[a contentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |Alkalmazás által meghatározott tartalom-kódolás mutató nem értelmezi a Service Bus, a szervezet számára. |Nem a Service Bus API-n keresztül érhető el. |
 | absolute-expiry-time |Deklarálja, mely abszolút azonnali üzenet lejár. A bemeneti (fejléc meg TTL), figyelmen kívül hagyja a kimenetet mérvadó. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
 | létrehozás – ideje |Kijelenti, hogy mely az üzenet létrehozásának. A Service Bus által nem használt |Nem a Service Bus API-n keresztül érhető el. |

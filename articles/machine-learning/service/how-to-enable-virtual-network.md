@@ -1,7 +1,7 @@
 ---
-title: Kísérletek és a egy virtuális hálózaton belül következtetési futtatása
+title: Futtassa a kísérletek & következtetésekhez egy virtuális hálózaton
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan biztonságosan a machine learning-kísérletek és a egy Azure virtuális hálózaton belül következtetési futtatásához. Ez a cikk bemutatja, hogyan hozhat létre a számítási célokhoz, modelleket taníthat be és egy Azure virtuális hálózaton belül következtetési használt. Emellett ismerteti a védett virtuális hálózatok követelményei, mint például a bejövő és kimenő portokat szükséges.
+description: Futtassa a machine learning-kísérletek és következtetési biztonságossá tétele egy Azure virtuális hálózaton belül. Ismerje meg, hogyan hozhat létre a számítási célokhoz modell betanítása és a egy Azure virtuális hálózaton belüli következtetésekhez módjáról. Emellett ismerteti a védett virtuális hálózatok követelményei, mint például a bejövő és kimenő portokat szükséges.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 1890f830f9b2a4b108328de056636335fd3746e3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 21c4a9042a64a58f67f1f94c300b6438895eea5d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248899"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856281"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Biztonságos futtatására kísérletek vagy következtetési egy Azure virtuális hálózaton belül
 
@@ -47,7 +47,7 @@ Használja a Machine Learning Compute a virtuális hálózatban, hálózati köv
 
     - Egy hálózati biztonsági csoport (NSG)
 
-    - Egy nyilvános IP-cím
+    - One public IP address
 
     - Egy terheléselosztó
 
@@ -149,7 +149,7 @@ Virtuális gép vagy HDInsight-fürt használata a munkaterület egy virtuális 
 
     * __forrás__: Válassza a __Service Tag__ lehetőséget.
 
-    * __Forrás szolgáltatáscímkéje__: Válassza ki __AzureMachineLearning__
+    * __Forrás szolgáltatáscímkéje__: Select __AzureMachineLearning__
 
     * __Porttartományok forrás__: Válassza ki __*__
 
@@ -196,11 +196,11 @@ Azure Kubernetes Service hozzáadásához a virtuális hálózatban a munkaterü
 
     - __Kubernetes-szolgáltatást címtartomány__: Válassza ki a Kubernetes-szolgáltatás-címtartományt. Ez a címtartomány CIDR jelölésrendszerben IP-címtartomány használja a fürtcsomópont számára elérhető IP-címek definiálásához. Az összes alhálózat IP-címtartományok nem lehetnek átfedésben. Példa: 10.0.0.0/16.
 
-    - __Kubernetes DNS szolgáltatás IP-cím__: Válassza ki a Kubernetes DNS szolgáltatás IP-címe. Az IP-cím van rendelve a Kubernetes DNS-szolgáltatás. A Kubernetes-szolgáltatást címtartományán belül kell lennie. Példa: 10.0.0.10 címet.
+    - __Kubernetes DNS szolgáltatás IP-cím__: Válassza ki a Kubernetes DNS szolgáltatás IP-címe. Az IP-cím van rendelve a Kubernetes DNS-szolgáltatás. A Kubernetes-szolgáltatást címtartományán belül kell lennie. Példa: 10.0.0.10.
 
     - __Docker híd cím__: Válassza ki a Docker híd címet. Az IP-címet a Docker híd van hozzárendelve. Nem lehet minden olyan alhálózat IP-címtartományok vagy a Kubernetes-szolgáltatás-címtartományt. Példa: 172.17.0.1/16
 
-   ![Az Azure Machine Learning szolgáltatás: A Machine Learning Compute a virtuális hálózati beállítások](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
+   ![Azure Machine Learning service: A Machine Learning Compute a virtuális hálózati beállítások](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
     > [!TIP]
     > Ha már rendelkezik egy AKS-fürt virtuális hálózaton, a munkaterületet is csatlakoztatható. További információkért lásd: [hogyan helyezhet üzembe az aks](how-to-deploy-to-aks.md).

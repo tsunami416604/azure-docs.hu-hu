@@ -3,21 +3,21 @@ title: Oktatóanyag – Asztali alkalmazáson belüli, fiókokkal történő hit
 description: Arra vonatkozó útmutató, hogyan használhatja az Azure Active Directory B2C-t egy asztali .NET-alkalmazás felhasználói bejelentkezésének biztosításához.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: a135dd0b350a6129d94f1c6b0b185c3fb272668f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 357b9f4d307624db838b22581097799d7d7fef4c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834493"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856995"
 ---
-# <a name="tutorial-enable-desktop-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Oktatóanyag: Asztali alkalmazáson belüli, fiókokkal történő hitelesítés engedélyezése az Azure Active Directory B2C használatával
+# <a name="tutorial-enable-desktop-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Oktatóanyag: Az Azure Active Directory B2C fiókkal rendelkező asztali alkalmazás hitelesítés engedélyezése
 
 Az oktatóanyag azt mutatja be, hogyan használhatja az Azure Active Directory (Azure AD) B2C-t felhasználók bejelentkeztetéséhez és regisztrálásához egy asztali Windows megjelenítési alaprendszeri (WPF-) alkalmazásban. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati, vállalati és Azure Active Directory-fiókokon.
 

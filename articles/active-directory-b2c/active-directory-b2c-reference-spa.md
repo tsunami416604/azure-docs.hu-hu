@@ -3,21 +3,21 @@ title: Implicit folyamat használata az Azure Active Directory B2C egyoldalas al
 description: Megtudhatja, hogyan segítségével közvetlenül OAuth 2.0 implicit folyamat az Azure Active Directory B2C egyoldalas alkalmazások készítéséhez.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9e72eafc49167848996328774f7d18198667aa3d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3df6795eb470f123be294f942560c9fb6d817d8d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845246"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856145"
 ---
-# <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Az Azure AD B2C: Egyoldalas alkalmazás jelentkezzen be az OAuth 2.0 implicit folyamat
+# <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Egyoldalas alkalmazás jelentkezzen be az OAuth 2.0 implicit folyamat
 
 Számos modern alkalmazás egylapos alkalmazás előtérrendszerét elsősorban javascriptben írt rendelkezik. Gyakran előfordul az alkalmazás-keretrendszert, például az AngularJS, az Ember.js vagy a Durandal használatával írt. Egyoldalas alkalmazások és más elsősorban a böngészőben futó JavaScript-alapú alkalmazások rendelkeznek a hitelesítés további áttekinthet néhány problémát:
 
@@ -37,7 +37,7 @@ Ismerje meg, hogyan [első saját Azure AD B2C directory, az alkalmazás és a f
 
 Az implicit bejelentkezési folyamat a következőhöz hasonló az alábbi ábra lesz. Az egyes lépések a cikk későbbi részében részletesebben ismertetjük.
 
-![OpenID Connect sávok](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
+![OpenID Connect swimlanes](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
 ## <a name="send-authentication-requests"></a>Hitelesítési kérelem küldése
 Ha a webalkalmazás kell hitelesíteni a felhasználót, és hajtsa végre a felhasználói folyamat, irányítja a felhasználót, hogy a `/authorize` végpont. Ez az interaktív részének a folyamatot, ahol a felhasználó által készített művelet, attól függően, a felhasználói folyamatot. A felhasználó beolvasása az Azure AD-végpont jogkivonat-azonosító.

@@ -3,23 +3,23 @@ title: A Service Bus kézbesíthetetlen levelek sorai |} A Microsoft Docs
 description: Azure Service Bus kézbesíthetetlen levelek sorai áttekintése
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 68b2aa38-dba7-491a-9c26-0289bc15d397
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: eb4057b4cfc6a68fb3489a7ab6fb1ee6b5f41d7d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: aaeebb200197ba6ef15fbcfe02f262a3840197b5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338462"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856112"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>A Service Bus kézbesíthetetlen levelek sorai áttekintése
 
@@ -58,7 +58,7 @@ Alkalmazások a saját kódokat adhat meg a `DeadLetterReason` tulajdonság, de 
 
 Ez a viselkedés nem tiltható le, de beállíthatja [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) nagyon nagy számú.
 
-## <a name="exceeding-timetolive"></a>Az élettartam túllépése
+## <a name="exceeding-timetolive"></a>Exceeding TimeToLive
 
 Ha a [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) vagy [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) tulajdonsága **Igaz** (az alapértelmezett érték **hamis**), minden lejáró üzenetek kerülnek a DLQ megadása a `TTLExpiredException` okkód.
 
@@ -72,7 +72,7 @@ Ha a [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/
 
 Kívül, a rendszer által biztosított kézbesítetlen levelek kezelése alkalmazások is használhatnak a DLQ kifejezetten elutasítás elfogadhatatlan üzeneteket. Ez magában foglalhatja üzeneteket, amelyek nem lehet megfelelően feldolgozni tetszőleges rendszerprobléma miatt, üzeneteket, amelyek rendelkeznek a helytelen formátumú hasznos adat található, vagy üzeneteket, amelyek bizonyos üzenet-szintű biztonsági rendszer használata esetén a hitelesítés sikertelen.
 
-## <a name="dead-lettering-in-forwardto-or-sendvia-scenarios"></a>A ForwardTo vagy küldés forgatókönyvek a kézbesítetlen levelek kezelése
+## <a name="dead-lettering-in-forwardto-or-sendvia-scenarios"></a>Dead-lettering in ForwardTo or SendVia scenarios
 
 Üzeneteket küld az átvitel kézbesítetlen levelek várólistájára vonatkozik az alábbi feltételek:
 

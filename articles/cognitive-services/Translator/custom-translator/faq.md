@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 38ebde9179d79c091edb269c1be4c9c956f34006
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 415866bc4ef396a1b9397c4996d65cf10d78400b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627438"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854785"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -46,7 +46,7 @@ Telepített rendszerek a CategoryID megadásával elérhetők a Microsoft Transl
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Hogyan kihagyása igazítás és használhatatlanná tévő, ha az adatok már igazítva mondat mondat?
 
-Az egyéni a fordítót kihagyja a mondat igazítás és mondat kompatibilitástörő TMX fájlokat és a szöveges fájlokat a `.align` bővítmény. `.align` fájlok biztosíthat a felhasználók számára egy lehetőség egyéni a fordítót mondat használhatatlanná tévő és igazítás folyamat tökéletesen igazított, és nincs további feldolgozás szükséges fájlok számára. Azt javasoljuk, `.align` csak olyan fájlok, tökéletesen igazított kiterjesztése.
+Az egyéni a fordítót kihagyja a mondat igazítás és mondat kompatibilitástörő TMX fájlokat és a szöveges fájlokat a `.align` bővítmény. `.align` fájlok felhasználóknak engedélyezi a használhatatlanná tévő egyéni a fordítót mondat és igazítási folyamat, amely tökéletesen igazított, és nincs további feldolgozás szükséges fájlok kihagyása lehetőség. Azt javasoljuk, `.align` csak olyan fájlok, tökéletesen igazított kiterjesztése.
 
 Kinyert mondatokat száma nem egyezik a két fájlt alap ugyanazzal a névvel, ha egyéni a fordítót továbbra is futtatni fogják a mondat aligner `.align` fájlokat.
 

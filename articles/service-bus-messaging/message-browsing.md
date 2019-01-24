@@ -3,22 +3,22 @@ title: Az Azure Service Bus üzenetek tallózása |} A Microsoft Docs
 description: Keresse meg és betekintés a Service Bus-üzenetek
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
-ms.author: spelluru
-ms.openlocfilehash: 7ce2e870be0178420d80682bd18adbef814c162f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 425cf262b80e83a4d06074a567a2921eee12f9c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857465"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855941"
 ---
 # <a name="message-browsing"></a>Üzenetek tallózása
 
@@ -34,7 +34,7 @@ Belepillantás is üzeneteket adja vissza, amely a kizárt és a többi fogadó 
 
 ## <a name="peek-apis"></a>API-k megtekintése
 
-A [betekintési/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) és [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) mód létezik a klienskódtárak .NET, a Java és az összes fogadó objektumon: **MessageReceiver**, **Lehívása**, **QueueClient**, és **SubscriptionClient**. Belepillantás valamennyi üzenetsorok és -előfizetésekről és a megfelelő kézbesíthetetlen levelek sorai működik.
+A [betekintési/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) és [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) mód létezik a klienskódtárak .NET, a Java és az összes fogadó objektum: **MessageReceiver**, **lehívása**, **QueueClient**, és **SubscriptionClient**. Belepillantás valamennyi üzenetsorok és -előfizetésekről és a megfelelő kézbesíthetetlen levelek sorai működik.
 
 Ismételten meghívásakor a betekintési metódus enumerálása összes üzenetet, amelyek szerepelnek a várólista vagy előfizetési napló sorrendben feladatütemezési száma a legalacsonyabb elérhető sorszámot, amely a legmagasabb. Ez a sorrend, amelyben üzenetek várólistára helyezett is, és nem a sorrendet, amelyben üzenetek idővel előfordulhat, hogy olvassa.
 

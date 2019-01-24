@@ -4,7 +4,7 @@ description: Kötést létrehozni biztonságos LDAP (LDAPS) használatával az A
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: e421d3219f50c0dbb635dfe5b9cb3e9a24d4fa61
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b1266a464e315dfb5b381cc1925591c80aed7f74
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158534"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856859"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Kötést létrehozni biztonságos LDAP (LDAPS) használatával az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 
@@ -28,7 +28,7 @@ ms.locfileid: "50158534"
 Teljes [4. feladat – konfigurálja a felügyelt tartomány elérését az internetről érkező DNS](active-directory-ds-ldaps-configure-dns.md).
 
 
-## <a name="task-5-bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>5. feladat: Kötés az LDAP használata az LDP.exe keresztül a felügyelt tartományhoz
+## <a name="task-5-bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>5. feladat: LDAP használatával LDP.exe keresztül kötést létrehozni a felügyelt tartományhoz
 Használhatja az LDP.exe eszközt, amely tartalmazza a Távoli kiszolgálófelügyelet eszközei csomag kötést létrehozni, és az LDAP kereshet.
 
 Először nyissa meg az LDP, és csatlakozzon ahhoz a felügyelt tartományhoz. Kattintson a **kapcsolat** kattintson **Connect...**  menüjében. Adja meg a felügyelt tartomány DNS-tartománynév. Adja meg a kapcsolatokhoz használandó portot. Az LDAP-kapcsolatokat használja a 389-es portot. LDAPS-kapcsolatok esetén a 636-os portot használja. Kattintson a **OK** a felügyelt tartományhoz csatlakoztatására szolgáló gomb.
@@ -46,7 +46,7 @@ Válassza ki **nézet**, majd válassza ki **fa** menüjében. Az Alap DN mezőt
 További információ - [LDAP-lekérdezés alapjai](https://technet.microsoft.com/library/aa996205.aspx)
 
 
-## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>6. feladat: Zároljuk az interneten keresztül a felügyelt tartomány secure LDAP-hozzáférését
+## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>6. feladat: Zárolását, így a felügyelt tartomány secure LDAP-hozzáférését az interneten keresztül
 > [!NOTE]
 > Ha LDAPS-t a hozzáférést a felügyelt tartomány nincs engedélyezve az interneten keresztül, hagyja ki ezt a konfigurációs feladatot.
 >

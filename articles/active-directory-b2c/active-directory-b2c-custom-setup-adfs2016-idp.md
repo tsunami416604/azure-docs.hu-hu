@@ -3,19 +3,19 @@ title: AD FS hozzáadása egy SAML identitásszolgáltatótól az egyéni szabá
 description: Az SAML-protokoll és az egyéni szabályzatok használata az Azure Active Directory B2C AD FS 2016 beállítása
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7f74da682c72f9effb4dbac49b316ff17f03b534
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 6a371bbe34368e5373589575f367d4b352320ecd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275887"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856451"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AD FS egyéni szabályzatok használatával az Azure Active Directory B2C egy SAML-identitásszolgáltató hozzáadása
 
@@ -169,10 +169,10 @@ Nyisson meg egy böngészőt, és keresse meg az URL-címet. Győződjön meg r�
 
     | LDAP attrubute | A kimenő jogcím típusa |
     | -------------- | ------------------- |
-    | Egyszerű-felhasználónév | userPricipalName |
+    | User-Principal-Name | userPricipalName |
     | vezetéknév; | family_name |
-    | A megadott név | given_name |
-    | -Cím | e-mail |
+    | Given-Name | given_name |
+    | E-Mail-Address | e-mail |
     | Megjelenítendő neve | név |
     
 12.  A tanúsítvány típusa alapján, szükség lehet a KIVONATOLÓ algoritmus beállítása. A függő entitás megbízhatósági (B2C bemutató) tulajdonságai ablakban válassza ki a **speciális** lapon, és módosítsa a **biztonságos kivonatoló algoritmus** való `SHA-256`, és kattintson a **Ok**.  

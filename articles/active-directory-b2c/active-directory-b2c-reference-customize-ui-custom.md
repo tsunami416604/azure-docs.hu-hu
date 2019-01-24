@@ -3,19 +3,19 @@ title: Egyéni házirendek felhasználói út, a felhasználói felület testres
 description: Ismerje meg az Azure Active Directory B2C-vel egyéni szabályzatok.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8c3684f93bbf5b9fe9f5ea9167396b9822e70c48
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1953e23c0676a0c81576a47f3f3ca36c3861935f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841625"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855057"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Egyéni házirendek felhasználói út, a felhasználói felület testreszabása
 
@@ -111,7 +111,7 @@ Előfeltételként hozzon létre egy tárfiókot kell. Azure-előfizetéssel, ho
     c.  A storage blob storage-tároló, neve *containerName*, például *b2c*.
     d.  Az elérési útját a *-Kezdőcsomag* fájlok, például minta *... \B2CTemplates\wingtiptoys*.
 
-Ha követte a fenti lépéseket, a HTML5- és CSS-fájlok, a *felhasználói felület-testreszabási-csomag* fiktív cég **tartománynév** a tárfiók már mutat-e.  Ellenőrizheti, hogy a tartalom megfelelően lett feltöltve az Azure Portalon nyissa meg a kapcsolódó tároló panelen. Másik lehetőségként ellenőrizheti, hogy a tartalom megfelelően lett feltöltve az oldal egy böngészőben elérésével. További információkért lásd: [Azure Active Directory B2C: a lap felhasználói felületének (UI) testreszabási szolgáltatás használatával bemutatható egy segédeszköze](active-directory-b2c-reference-ui-customization-helper-tool.md).
+Ha követte a fenti lépéseket, a HTML5- és CSS-fájlok, a *felhasználói felület-testreszabási-csomag* fiktív cég **tartománynév** a tárfiók már mutat-e.  Ellenőrizheti, hogy a tartalom megfelelően lett feltöltve az Azure Portalon nyissa meg a kapcsolódó tároló panelen. Másik lehetőségként ellenőrizheti, hogy a tartalom megfelelően lett feltöltve az oldal egy böngészőben elérésével. További információkért lásd: [Azure Active Directory B2C: Egy lap felhasználói felületének (UI) testreszabási funkcióról bemutatható segédeszköze](active-directory-b2c-reference-ui-customization-helper-tool.md).
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>A storage-fiók rendelkezzen a CORS-támogatással
 
@@ -126,7 +126,7 @@ Annak ellenőrzéséhez, hogy rendelkezik-e a tárterület üzemelteti a tartalm
 -->
 
 3. A **távoli URL-cím**, adja meg a teljes URL-címet a unified.html tartalom, és kattintson a **kérés küldése**.
-4. Ellenőrizze, hogy a kimenetet a a **eredmények** szakasz tartalmaz *XHR állapota: 200*, ami azt jelenti, hogy a CORS engedélyezve van-e.
+4. Ellenőrizze, hogy a kimenetet a a **eredmények** szakasz tartalmaz *XHR állapota: 200-as*, ami azt jelenti, hogy a CORS engedélyezve van-e.
 <!--
 ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
 -->
@@ -168,4 +168,4 @@ A következő táblázat ismerteti a szerepkördefiníció-azonosítók ismeri f
 | *api.signuporsignin* | **Egyesített regisztrálási vagy bejelentkezési oldal**.  Ezen a lapon mindkét regisztrációs kezeli, és jelentkezzen be a vállalati identitás-szolgáltatóktól, például Facebook vagy a Google + vagy a helyi fiókok közösségi identitásszolgáltatókat használó felhasználók.
 
 ## <a name="next-steps"></a>További lépések
-[Referencia: Egyéni szabályzatok ismertetése dolgozhat a B2C-ben az identitás-kezelőfelületi keretrendszer](active-directory-b2c-reference-custom-policies-understanding-contents.md)
+[Hivatkozás: Egyéni szabályzatok ismertetése dolgozhat a B2C-ben az identitás-kezelőfelületi keretrendszer](active-directory-b2c-reference-custom-policies-understanding-contents.md)

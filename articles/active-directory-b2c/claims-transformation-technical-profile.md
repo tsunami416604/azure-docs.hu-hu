@@ -3,19 +3,19 @@ title: A jogcímek átalakítása technikai profil meghatározása egy egyéni h
 description: Adja meg az Azure Active Directory B2C egyéni házirendet egy jogcím-átalakítási technikai profil.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cd17c146091cd9d35ce35cf2099aa7c6109c9e34
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 0cad532b950d7add0bde06482948e748e09abbb7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303322"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856723"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>A jogcímek átalakítása technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 

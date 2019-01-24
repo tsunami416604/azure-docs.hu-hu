@@ -3,19 +3,19 @@ title: A technikai profil definiálása a JWT jogkivonat kibocsátója egy egyé
 description: A JWT jogkivonat kibocsátója az Azure Active Directory B2C egy egyéni házirendek definiálása a technikai profil.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 25352d12e578c289ccb4ab8aab60dc55a444762e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ae9f55943d4b178096230269215ac771ee1d20a1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413502"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856105"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>A technikai profil meghatározása az egyéni Azure Active Directory B2C-házirendek a JWT jogkivonat kibocsátója
 
@@ -48,7 +48,7 @@ A **InputClaims**, **OutputClaims**, és **PersistClaims** elemek a következők
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | Igen | A jogcímet, amely a felhasználói identitás kell használni az OAuth2 engedélyezési kód jogcím és frissítési jogkivonatok. Alapértelmezés szerint be kell állítani `objectId`, ha nem ad meg egy másik SubjectNamingInfo jogcím típusa. | 
 | SendTokenResponseBodyWithJsonNumbers | Nem | Mindig `true`. Örökölt formátumban, ahol numerikus értékeket karakterláncként JSON számok helyett, beállításra `false`. Ez az attribútum szükség van az ügyfelek, amelyek végrehajtása függőség a korábbi implementálhat, amely az ilyen tulajdonságok karakterláncként ad vissza. | 
-| token_lifetime_secs | Nem | Hozzáférési jogkivonatok élettartama. A védett erőforrások elérését lehetővé tevő OAuth 2.0 tulajdonosi jogkivonat élettartama. Az alapértelmezett érték 3600 másodperc (1 óra). A (inkluzív) minimális érték 300 másodpercig (5 perc). A (inkluzív) maximális érték 86 400 másodperc (24 óra). | 
+| token_lifetime_secs | Nem | Hozzáférési jogkivonatok élettartama. Az OAuth 2.0 a védett erőforrás eléréséhez használt tulajdonosi jogkivonatának életartama. Az alapértelmezett érték 3600 másodperc (1 óra). A (inkluzív) minimális érték 300 másodpercig (5 perc). A (inkluzív) maximális érték 86 400 másodperc (24 óra). | 
 | id_token_lifetime_secs | Nem | Azonosító jogkivonat élettartama. Az alapértelmezett érték 3600 másodperc (1 óra). A (inkluzív) minimális érték 300 másodpercig (5 perc). (A határokat is beleértve) a maximális érték másodperc 86,400 (24 óra). | 
 | refresh_token_lifetime_secs | Nem | Frissítse a jogkivonatok élettartamának. Amely előtt a frissítési jogkivonatok segítségével egy új hozzáférési jogkivonat beszerzése, ha az alkalmazás a offline_access hatókör volt megadva a maximális időtartam. Az alapértelmezett érték 120,9600 másodperc (14 nap). A (inkluzív) minimális érték 86 400 másodperc (24 óra). (A határokat is beleértve) a maximális érték 7,776,000 másodperc (90 nap). | 
 | rolling_refresh_token_lifetime_secs | Nem | Frissítési jogkivonat csúszóablak-élettartama. Ez az időtartam elteltével a felhasználónak kötelező hitelesítse magát újra, attól függetlenül, az érvényességi időtartam legutóbbi az alkalmazás által beszerzett jogkivonat frissítésére. Ha nem szeretné kényszeríteni a csúszóablak-élettartama, állítsa a allow_infinite_rolling_refresh_token `true`. Az alapértelmezett érték 7,776,000 másodperc (90 nap). A (inkluzív) minimális érték 86 400 másodperc (24 óra). (A határokat is beleértve) a maximális érték 31,536,000 másodperc (365 napos). | 

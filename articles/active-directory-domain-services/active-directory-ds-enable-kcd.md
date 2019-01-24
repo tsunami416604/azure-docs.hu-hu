@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure Active Directory Domain Services: A kerberos által korlátozott delegálás engedélyezése |} A Microsoft Docs'
+title: 'Az Azure Active Directory tartományi szolgáltatások: Kerberos által korlátozott delegálás engedélyezése |} A Microsoft Docs'
 description: Az Azure Active Directory Domain Services felügyelt tartományokban a kerberos által korlátozott delegálás engedélyezése
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: da7909853d47f680726464d6d646ca87028fd311
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: fe0b5224bc266b7990e2f7b6a4b3fa6a1b19190d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158782"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854819"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Kerberos által korlátozott delegálás (KCD) konfigurálása felügyelt tartományhoz
 Számos alkalmazás erőforrásokhoz kell hozzáférniük a felhasználó kontextusában. Az Active Directory támogatja a Kerberos-delegálás, amely lehetővé teszi a használatieset-nevű mechanizmus. Delegálás további, korlátozhatja, hogy csak meghatározott erőforrások elérhetők legyenek a felhasználó kontextusában. Az Azure AD Domain Services felügyelt tartomány eltérnek a hagyományos Active Directory-tartományokban, mivel biztonságosabban zárolt üzemmódban.

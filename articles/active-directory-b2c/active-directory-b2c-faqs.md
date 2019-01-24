@@ -3,21 +3,21 @@ title: Gyakori kérdések az Azure Active Directory B2C |} A Microsoft Docs
 description: Gyakori kérdések (GYIK) Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6957a18440dfc225c63a1b1843e2b47af8b841bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8e5e688fe741fdc4a83ae1a3cf13a6c722064407
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842951"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856298"
 ---
-# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
+# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Gyakori kérdések (GYIK) 
 Ez az oldal az Azure Active Directory (Azure AD) B2C-vel kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Miért nem fér hozzá az Azure AD B2C-bővítmény az Azure Portalon?
@@ -61,8 +61,8 @@ A bal oldali menüben, az Azure Portal megnyitása az "Azure AD-B2C", előtt kel
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Hogyan ellenőrzési e-mailek testre (a tartalmat, és az "a:" mező) Azure AD B2C által küldött?
 Használhatja a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/fundamentals/customize-branding.md) ellenőrzési e-mailek tartalmának testreszabása. Ez a két elem az e-mail kifejezetten, testre szabható:
 
-* **A szalagcím emblémája**: jobb alsó látható.
-* **Háttérszín**: tetején látható.
+* **A szalagcím emblémája**: A jobb alsó látható.
+* **Háttérszín**: A felül látható.
 
     ![Képernyőfelvétel a testre szabott visszaigazoló e-mailt](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 9d755d1a3d9ae54d33331eff9b547de70a5fd77f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5aca80a4ebeadc9e54cf99fb4a220c6ee7c37cae
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452890"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857012"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése
 
@@ -63,6 +63,24 @@ Ha Ön már rendelkezik költségkeretet a megtekintéséhez nyissa meg a [előf
 ![Képernyőkép a kiadásokat, korlátot a folyamatban, az Account Center webhelyen kapcsolatos figyelmeztetés](./media/billing-getting-started/spending-limit-banner.PNG)
 
 Kattintson a szalagcímre, és útmutatást követve el kell távolítania a költségkeretet. Ha a hitelkártyaadatokat való regisztráció során adta meg, meg kell adnia, hogy el kell távolítania a költségkeretet. További információkért lásd: [az Azure-költségkeret működési elve és engedélyezése, vagy távolítsa el](https://azure.microsoft.com/pricing/spending-limits/).
+
+Használhatja a [Cloudyn](https://www.cloudyn.com/) szolgáltatás létre riasztásokat, amelyek automatikusan értesíti a résztvevőket kiadások rendellenességeket és a túlköltekezés kockázatokat. A jelentésekkel, hogy támogatási riasztásokat a költségvetés alapján, és a költségek küszöbértékei riasztásokat is létrehozhat. A Cloudyn használatával kapcsolatos további információkért lásd: [oktatóanyag: Tekintse át a használat és költségek](../cost-management/tutorial-review-usage.md).
+
+Ez a példa a **tényleges időalapú költségeket tartalmazó** jelentés értesítés küldése, amikor egy Azure-beli virtuális gépen a kiadások érvényessége a teljes költségvetést. Ebben a forgatókönyvben 20 000 teljes költségvetése rendelkezik, és értesítést kaphat, ha a költségek hamarosan eléri a költségvetést, $9000 és további riasztás fele amikor a költségek elérik a 10 000 dollárt szeretné.
+
+1. A Cloudyn portál tetején lévő menüben válassza ki a **költségek** > **költségelemzés** > **tényleges időalapú költségeket tartalmazó**. 
+2. A **Groups** (Csoportok) alatt állítsa be a **Service** (Szolgáltatás), a **Filter on the service** (Szűrés a következő szolgáltatásra) alatt pedig az **Azure/VM** (Azure/virtuális gép) lehetőséget. 
+3. Felső válassza ki a jelentést, jobb **műveletek** majd **jelentés ütemezése**.
+4. Használatával küldjön saját magának egy e-mailt a jelentés ütemezett időközönként, válassza ki a **ütemezés** lapján a **menteni vagy ütemezheti** jelentés párbeszédpanel. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Minden olyan címkék, csoportosítás és a szűrés, az e-mailben elküldött jelentésben szereplő használja. 
+5. Válassza ki a **küszöbérték** lapot, majd **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget. 
+   1. Az a **vörös színű riasztásra** küszöbérték mezőbe írja be a 10000. 
+   2. Az a **sárga riasztást** küszöbérték mezőbe írja be a 9000. 
+   3. Az a **egymást követő riasztások számát** fogadásához egymást követő riasztások számát adja meg. Amikor megjelenik a riasztásokat, amelyek a megadott teljes száma, nem küld további riasztásokat is. 
+6. Kattintson a **Mentés** gombra.
+
+    ![A példában a költségkeret-beállítási küszöbértékek alapján piros, sárga és riasztások megjelenítése](./media/billing-getting-started/schedule-alert01.png)
+
+Azt is beállíthatja a **Cost Percentage vs. Költségvetés** költségszázalék a riasztásokat. Ez lehetővé teszi, hogy a küszöbérték megadása helyett a költségvetés százalékos.
 
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>A költségek monitorozása az Azure-szolgáltatások használatakor módjai
 

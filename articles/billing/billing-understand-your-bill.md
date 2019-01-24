@@ -13,19 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
+ms.date: 01/23/2019
 ms.author: cwatson
-ms.openlocfilehash: b9b1496c71e61fce815d225310c8beb57e8f9b19
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e1d9c348f83600b48f4b202c8660d9387dfc5484
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584570"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856369"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>A Microsoft Azure-hoz kapcsolódó számlák magyarázata
 Az Azure-elszámolások ismertetése, hasonlítsa össze a számla a részletes napi használatot részletező fájl és a költségkezelési jelentések az Azure Portalon.
 
 Ez a cikk az Azure-ügyfelek a nagyvállalati szerződés (EA-ügyfelek) nem vonatkozik. Ha Ön nagyvállalati szerződéssel rendelkező ügyfelek, [számlázással kapcsolatos tudnivalók az Azure-nagyvállalati szerződéssel rendelkező ügyfelek](billing-understand-your-bill-ea.md).  
+
+Hogyan működik a számlázás az Azure Cloud Solution Provider (az Azure CSP) program ismertetése, beleértve a számlázási ciklus, a díjszabást és a használatot, lásd: [Azure számlázási Konfigurációszolgáltatásokról](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/).
 
 ## <a name="charges"></a>A költségek áttekintése
 
@@ -33,7 +35,7 @@ Ez a cikk az Azure-ügyfelek a nagyvállalati szerződés (EA-ügyfelek) nem von
 
 Ha további információt szeretne kapni, a számla díj, összehasonlíthatja használat és költségek a használatot részletező fájl vagy az Azure Portalon.
 
-### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>1. lehetőség: Használat és költségek összehasonlítandó használati fájlban
+### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>Option 1: Hasonlítsa össze a használat és költségek a használati fájlban
 
 A CSV formátumú részletes használati díjak a számlázási időszak és a napi használati jeleníti meg. A fájlt megtekinteni [az Azure számlázási és napi használati adatainak lekérése](billing-download-azure-invoice-daily-usage-date.md).
 
@@ -69,7 +71,7 @@ További tudnivalókért lásd:
 - [Az Azure-számlák ismertetése](billing-understand-your-invoice.md)
 - [Az Azure részletes használatának megértéséhez](billing-understand-your-invoice.md)
 
-### <a name="option-2-compare-the-usage-and-costs-with-the-azure-portal"></a>2. lehetőség: Hasonlítsa össze a használat és költségek az Azure portal használatával
+### <a name="option-2-compare-the-usage-and-costs-with-the-azure-portal"></a>Option 2: Hasonlítsa össze a használat és költségek az Azure portal használatával
 
 Az Azure Portalon is segít a költségek ellenőrzése. A számlázott használat és a díj gyors áttekintést kaphat, hogy a cost management diagramok megtekintése.
 
@@ -104,7 +106,7 @@ Az Azure-ban létrehozott egyetlen virtuális gép (VM) előfordulhat például,
 - IP-cím-Szolgáltatásóra
 - Bejövő adatforgalom
 - Kimenő adatforgalom
-- Standard szintű felügyelt lemez
+- Standard Managed Disk
 - Standard szintű felügyelt lemez műveletei
 - Standard IO – lemez
 - Standard IO – Block Blob olvasása

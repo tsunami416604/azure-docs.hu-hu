@@ -4,7 +4,7 @@ description: A Windows Server virtuális gépek csatlakoztatása felügyelt tart
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: a083bd2fe730f9723330abf9bce03d760b7442d8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 32b670a4b51c2dc60fe89bc2b9ad0ef18b0ac263
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157258"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856638"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Egy Windows Servert futtató virtuális gép csatlakoztatása felügyelt tartományokhoz Resource Manager-sablon használatával
 Ez a cikk bemutatja, hogyan egy Windows Servert futtató virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz Resource Manager-sablonok használatával.
@@ -38,12 +38,12 @@ A cikkben szereplő feladatok elvégzéséhez szüksége:
 
 ## <a name="install-and-configure-required-tools"></a>Telepítse és konfigurálja a szükséges eszközök
 Az ebben a dokumentumban leírt lépések végrehajtásához a következő lehetőségek bármelyikét használhatja:
-* **Az Azure PowerShell**: [telepítése és konfigurálása](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
-* **Az Azure CLI**: [telepítése és konfigurálása](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
+* **Azure PowerShell**: [Telepítése és konfigurálása](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
+* **Az Azure CLI**: [Telepítése és konfigurálása](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
 
 
-## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>1. lehetőség: Egy új Windows Server virtuális gép létrehozása és csatlakoztatása a felügyelt tartományhoz
-**Gyors üzembe helyezési sablon neve**: [201-vm-tartományhoz való csatlakozás](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
+## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>Option 1: Egy új Windows Server virtuális gép létrehozása és csatlakoztatása a felügyelt tartományhoz
+**Gyors üzembe helyezési sablon neve**: [201-vm-domain-join](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 
 A Windows Server virtuális gép üzembe helyezése és a felügyelt tartományhoz való csatlakozásra, hajtsa végre az alábbi lépéseket:
 1. Keresse meg a [gyors üzembe helyezési sablon](https://azure.microsoft.com/resources/templates/201-vm-domain-join/).
@@ -73,8 +73,8 @@ A Windows Server virtuális gép üzembe helyezése és a felügyelt tartományh
 Miután a telepítés sikeresen befejeződött, az újonnan létrehozott Windows virtuális gép a felügyelt tartományhoz csatlakozik.
 
 
-## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>2. lehetőség: Egy meglévő Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományokhoz
-**Gyors üzembe helyezési sablon**: [201-es vm-domain-illesztési-létező](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
+## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>Option 2: Egy meglévő Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományokhoz
+**Gyors üzembe helyezési sablon**: [201-vm-domain-join-existing](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 
 A Windows Server virtuális gép csatlakoztatása felügyelt tartományokhoz, hajtsa végre az alábbi lépéseket:
 1. Keresse meg a [gyors üzembe helyezési sablon](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).

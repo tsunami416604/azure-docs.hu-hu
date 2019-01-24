@@ -3,19 +3,19 @@ title: Felhasználói folyamat verziók az Azure Active Directory B2C |} A Micro
 description: Ismerje meg a felhasználói folyamatok elérhető az Azure Active Directory B2C verzióit.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 34099292855606ac5c2653c8d790f59db37251f6
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: eed5b27a2bdcc30aaf6befc19c5974936cabf849
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292413"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854159"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói folyamat verziók
 
@@ -41,7 +41,7 @@ Az Azure Active Directory (Azure AD) B2C felhasználói folyamatok segítségév
 
 | Felhasználói folyamat | Ajánlott | Leírás |
 | --------- | ----------- | ----------- |
-| Új jelszó kérése 2. verzió | Nem | Lehetővé teszi egy felhasználó egy új jelszót választhat az e-mailjeikhez ellenőrzése után. Ez a felhasználói folyamat használata esetén konfigurálhatja: <ul><li>[Többtényezős hitelesítés](active-directory-b2c-reference-mfa.md)</li><li>Biztonságijogkivonat-kompatibilitási beállítások</li><li>[Korhatáralapú](basic-age-gating.md)</li><li>[jelszó-összetettségi követelményeknek](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Új jelszó kérése 2. verzió | Nem | Lehetővé teszi egy felhasználó egy új jelszót választhat az e-mailjeikhez ellenőrzése után. Ez a felhasználói folyamat használata esetén konfigurálhatja: <ul><li>[Többtényezős hitelesítés](active-directory-b2c-reference-mfa.md)</li><li>Biztonságijogkivonat-kompatibilitási beállítások</li><li>[Korhatáralapú](basic-age-gating.md)</li><li>[Jelszó-összetettségi követelményeknek](active-directory-b2c-reference-password-complexity.md)</li></ul> |
 | Bejelentkezés 2. verzió | Nem | Lehetővé teszi, hogy a felhasználót, hogy jelentkezzen be a fiókjába. Ez a felhasználói folyamat használata esetén konfigurálhatja: <ul><li>[Többtényezős hitelesítés](active-directory-b2c-reference-mfa.md)</li><li>[Jogkivonat élettartama](active-directory-b2c-reference-tokens.md)</li><li>Biztonságijogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Korhatáralapú](basic-age-gating.md)</li><li>Bejelentkezési oldal testreszabása</li></ul> |
 | Regisztráció 2. verzió | Nem | Lehetővé teszi, hogy a felhasználót, hogy hozzon létre egy fiókot. Ez a felhasználói folyamat használata esetén konfigurálhatja: <ul><li>[Többtényezős hitelesítés](active-directory-b2c-reference-mfa.md)</li><li>[Jogkivonat élettartama](active-directory-b2c-reference-tokens.md)</li><li>Biztonságijogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Korhatáralapú](basic-age-gating.md)</li><li>[Jelszó-összetettségi követelményeknek](active-directory-b2c-reference-password-complexity.md)</li></ul> |
 | Regisztráció és bejelentkezés 2. verzió | Nem | Lehetővé teszi, hogy a felhasználót, hogy hozzon létre egy fiókot, vagy jelentkezzen be fiókjával. Ez a felhasználói folyamat használata esetén konfigurálhatja: <ul><li>[Többtényezős hitelesítés](active-directory-b2c-reference-mfa.md)</li><li>[Korhatáralapú](basic-age-gating.md)</li><li>[Jelszó-összetettségi követelményeknek](active-directory-b2c-reference-password-complexity.md)</li></ul> |

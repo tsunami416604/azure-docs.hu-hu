@@ -3,19 +3,20 @@ title: Virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure Se
 description: A Microsoft.ServiceBus szolgáltatás végpont hozzáadása egy virtuális hálózatot.
 services: service-bus
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: clemensv
-ms.openlocfilehash: 87a89ffd627454752924bfc69e44da87b071b5e5
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.author: aschhab
+ms.openlocfilehash: 3e55da5a6ebb0db26b32f51d67f013cb65438104
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651435"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854802"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Service busszal
 
@@ -34,8 +35,8 @@ Ez a privát és elkülönített kapcsolat, az az alhálózat és a megfelelő S
 > - Azure Monitor
 > - Azure Stream Analytics
 > - Az Azure Event Grid-integráció
-> - Az Azure IoT Hub-útvonalak
-> - Az Azure IoT Device Explorer
+> - Azure IoT Hub Routes
+> - Azure IoT Device Explorer
 > - Azure Data Explorer
 >
 > Az alábbi Microsoft szolgáltatásokra van szükség a virtuális hálózaton

@@ -3,19 +3,19 @@ title: Egész szám-jogcímek átalakítása példák az identitás élmény ker
 description: Egész szám jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C a.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 988e25b6a5ef3f99ae7df9076a40e06b403bb029
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 36412d16328e757b4c28b0c77638e6d87f83b8e0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381520"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855737"
 ---
 # <a name="integer-claims-transformations"></a>Egész szám jogcím-átalakítás
 
@@ -29,8 +29,8 @@ Hosszú adattípus alakít át egy karakterlánc típusú adatokat.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Bemeneti jogcím | hossz | A ClaimType alakítandó karakterlánc. |
-| kimeneti jogcím | kimeneti jogcím | sztring | A takar, amelyek a ClaimsTransformation meghívása után jön létre. |
+| Bemeneti jogcím | Bemeneti jogcím | hosszú | A ClaimType alakítandó karakterlánc. |
+| OutputClaim | outputClaim | sztring | A takar, amelyek a ClaimsTransformation meghívása után jön létre. |
 
 Ebben a példában a `numericUserId` hosszú érték típusú jogcímet alakítja át egy `UserId` jogcím-karakterlánc típusú értéket.
 
@@ -48,7 +48,7 @@ Ebben a példában a `numericUserId` hosszú érték típusú jogcímet alakítj
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **bemeneti jogcím**: (long) 12334
+    - **bemeneti jogcím**: 12334 (hosszú)
 - Kimeneti jogcímek: 
     - **kimeneti jogcím**: "12334" (karakterlánc)
 

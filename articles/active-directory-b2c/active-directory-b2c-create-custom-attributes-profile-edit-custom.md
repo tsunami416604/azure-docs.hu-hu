@@ -3,21 +3,21 @@ title: A saját attribútumokat adhat hozzá egyéni szabályzatokat az Azure Ac
 description: A forgatókönyv a bővítménytulajdonságok és egyéni attribútumok használata, és többek között azokat a felhasználói felületen.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5513e0ff434862ea7eee42cb94ff2a0f67f6d390
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7ebce84e6d8d3e7b1b8d3852951127ce954f9019
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338744"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854054"
 ---
-# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Az Azure Active Directory B2C: Egyéni attribútumok használata egyéni profil szabályzat szerkesztése
+# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Egyéni attribútumok használata egyéni profil szabályzat szerkesztése
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,7 +25,7 @@ Ez a cikk az Azure Active Directory (Azure AD) B2C-címtárban hoz létre egy eg
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Kövesse a cikk a [Azure Active Directory B2C: egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
+Kövesse a cikk a [Azure Active Directory B2C: Egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
 
 ## <a name="use-custom-attributes-to-collect-information-about-your-customers-in-azure-ad-b2c-by-using-custom-policies"></a>Egyéni attribútumok használata az Azure AD B2C-ben az ügyfelek adatainak gyűjtésére egyéni szabályzatok használatával
 Az Azure AD B2C-címtár tartalmaz egy beépített attribútumok. Példa **Utónév**, **Vezetéknév**, **Város**, **irányítószám**, és **userPrincipalName**. Milyen gyakran szeretne létrehozni a példákat a saját attribútumok:
@@ -60,7 +60,7 @@ Utasítások szerepelnek a **további lépések** szakasz ebben a cikkben.
 6. Válassza ki az újonnan létrehozott webalkalmazást.
 7. Válassza ki **beállítások** > **szükséges engedélyek**.
 8. Válassza ki az API-t **Windows Azure Active Directory**.
-9. Jelölje be a négyzetet az Alkalmazásengedélyek: **címtáradatok olvasása és írása**. Ezután válassza a **Save** (Mentés) lehetőséget.
+9. Írjon be egy pipa Alkalmazásengedélyek: **Olvasási és írási címtáradatok**. Ezután válassza a **Save** (Mentés) lehetőséget.
 10. Válasszon **engedélyeket** , majd erősítse meg **Igen**.
 11. A következő azonosítók másolja a vágólapra, és mentse őket:
     * **Alkalmazásazonosító**. Példa: `103ee0e6-f92d-4183-b576-8c3739027780`.
@@ -70,7 +70,7 @@ Utasítások szerepelnek a **további lépések** szakasz ebben a cikkben.
 
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>Az egyéni házirend hozzáadása módosítása a **ApplicationObjectId**
 
-Ha követte a lépéseket a [Azure Active Directory B2C: egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md), letöltött és módosított [fájlok minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) nevű **TrustFrameworkBase.xml**, **TrustFrameworkExtensions.xml**, **SignUpOrSignin.xml**, **ProfileEdit.xml**, és **PasswordReset.xml**. Ebben a lépésben hajtsa végre ezeket a fájlokat további módosításokat.
+Ha követte a lépéseket a [Azure Active Directory B2C: Egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md), letöltött és módosított [fájlok minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) nevű **TrustFrameworkBase.xml**, **TrustFrameworkExtensions.xml**, **SignUpOrSignin.xml**, **ProfileEdit.xml**, és **PasswordReset.xml**. Ebben a lépésben hajtsa végre ezeket a fájlokat további módosításokat.
 
 * Nyissa meg a **TrustFrameworkBase.xml** fájlt, és adja hozzá a `Metadata` szakasz az alábbi példában látható módon. Helyezze be a korábban rögzített Objektumazonosítóját a `ApplicationObjectId` érték és az Alkalmazásazonosítót feljegyzett a `ClientId` érték: 
 
@@ -240,7 +240,7 @@ Ha követte a lépéseket a [Azure Active Directory B2C: egyéni szabályzatok �
 1. Válassza ki a feltöltött egyéni házirendet. Válassza ki **Futtatás most**.
 1. Jelentkezzen egy e-mail címet.
 
-Az azonosító jogkivonat küldi vissza az alkalmazásnak magában foglalja az új bővítménytulajdonság előzi meg egyéni jogcímként **extension_loyaltyId**. Tekintse meg a következő példát:
+Az azonosító jogkivonat küldi vissza az alkalmazásnak magában foglalja az új bővítménytulajdonság előzi meg egyéni jogcímként **extension_loyaltyId**. Lásd a következő példát:
 
 ```json
 {

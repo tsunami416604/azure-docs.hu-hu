@@ -3,19 +3,19 @@ title: A honosítás – az Azure Active Directory B2C |} A Microsoft Docs
 description: Adja meg a honosítás elem egyéni szabályzat az Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e9442302b8d15a3a6a4c9fe148b48845b3535204
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: a0abf2fd3502238af0e0f02cb8f9917cfb90b586
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381318"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854973"
 ---
 # <a name="localization"></a>Honosítás
 
@@ -47,8 +47,8 @@ A **honosítási** elem a következő XML-elemeket tartalmazza
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| SupportedLanguages | 1: n | Támogatott nyelvek listája. | 
-| LocalizedResources | 0: n | Honosított erőforrások listája. |
+| SupportedLanguages | 1:n | Támogatott nyelvek listája. | 
+| LocalizedResources | 0:n | Honosított erőforrások listája. |
 
 ## <a name="supportedlanguages"></a>SupportedLanguages
 
@@ -65,7 +65,7 @@ A **SupportedLanguages** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| SupportedLanguage | 1: n | Tartalom, amely megfelel egy nyelvcímkét RFC 5646 - nyelvek azonosító címkék szerint jeleníti meg. | 
+| SupportedLanguage | 1:n | Tartalom, amely megfelel egy nyelvcímkét RFC 5646 - nyelvek azonosító címkék szerint jeleníti meg. | 
 
 ## <a name="localizedresources"></a>LocalizedResources
 
@@ -79,8 +79,8 @@ A **LocalizedResources** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| LocalizedCollections | 0: n | Teljes gyűjtemények különböző kulturális környezetek határozza meg. Egy gyűjtemény elemek és számos országban különböző karakterláncok különböző számú rendelkezhet. Gyűjtemények közé tartoznak az enumerálások jelennek meg, a jogcím-típusok. Például ország/régió listáját egy legördülő lista a felhasználó számára látható. |
-| LocalizedStrings | 0: n | Meghatározza a karakterláncokat, kivéve azokat, amelyek megjelennek a gyűjtemények, a különböző kulturális környezetek karakterláncok mindegyikét. |
+| LocalizedCollections | 0:n | Teljes gyűjtemények különböző kulturális környezetek határozza meg. Egy gyűjtemény elemek és számos országban különböző karakterláncok különböző számú rendelkezhet. Gyűjtemények közé tartoznak az enumerálások jelennek meg, a jogcím-típusok. Például ország/régió listáját egy legördülő lista a felhasználó számára látható. |
+| LocalizedStrings | 0:n | Meghatározza a karakterláncokat, kivéve azokat, amelyek megjelennek a gyűjtemények, a különböző kulturális környezetek karakterláncok mindegyikét. |
 
 ### <a name="localizedcollections"></a>LocalizedCollections
 
@@ -88,7 +88,7 @@ A **LocalizedCollections** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| LocalizedCollection | 1: n | Támogatott nyelvek listája. |
+| LocalizedCollection | 1:n | Támogatott nyelvek listája. |
 
 #### <a name="localizedcollection"></a>LocalizedCollection
 
@@ -104,7 +104,7 @@ A **LocalizedCollection** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Elem | 0: n | A felhasználó számára egy jogcímet a felhasználói felületen, például egy értéket a legördülő listában válassza ki valamelyik elérhető lehetőség határozza meg. |
+| Elem | 0:n | A felhasználó számára egy jogcímet a felhasználói felületen, például egy értéket a legördülő listában válassza ki valamelyik elérhető lehetőség határozza meg. |
 
 A **elem** elem tartalmazza a következő attribútumokat:
 
@@ -140,7 +140,7 @@ A **LocalizedStrings** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| LocalizedString | 1: n | Honosított karakterlánc. |
+| LocalizedString | 1:n | Honosított karakterlánc. |
 
 A **LocalizedString** elem tartalmazza a következő attribútumokat:
 
@@ -148,7 +148,7 @@ A **LocalizedString** elem tartalmazza a következő attribútumokat:
 | --------- | -------- | ----------- |
 | Elemtípus | Igen | A hivatkozás egy jogcím típusú elem vagy egy felhasználói felület elem a házirendben. A lehetséges értékek: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`, vagy a. A `ClaimType` honosítani az egyik jogcím attribútumait, a karakterlánc megadott értéket használja. A `UxElement` honosítani a felhasználói felületi elemekre a elemtípusú megadott egyik értéket használja. A `ErrorMessage` honosítása, a rendszer hibaüzenetek a elemtípusú megadott értéket használja. A `Predicate` honosítani az egyik érték szolgál a [predikátum](predicates.md) hibaüzeneteket, a karakterlánc megadott módon. A `InputValidation` honosítani az egyik érték szolgál a [PredicateValidation](predicates.md) hibaüzenetek a elemtípusú megadott csoportban. |
 | ElementId | Igen | Ha **ElementType** értékre van állítva `ClaimType`, `Predicate`, vagy `InputValidation`, ez az elem már az ClaimsSchema szakaszban meghatározott jogcím típusa hivatkozást tartalmaz. | 
-| Karakterlánc | Igen | Ha **ElementType** értékre van állítva `ClaimType`, ez az elem egy jogcímtípust attribútuma hivatkozást tartalmaz. A lehetséges értékek: `DisplayName`, `AdminHelpText`, vagy `PatternHelpText`. A `DisplayName` érték szolgál a jogcím megjelenítendő nevét. A `AdminHelpText` értéket állítsa be a jogcím felhasználói súgó szövege nevét használja. A `PatternHelpText` értéket használja a jogcím-minta súgószöveg beállításához. Ha **ElementType** értékre van állítva `UxElement`, ez az elem egy attribútum egy felhasználói felület elem hivatkozást tartalmaz. Ha **ElementType** értékre van állítva `ErrorMessage`, ezt az elemet adja meg a hibaüzenetet azonosítóját. Lásd: [honosítási karakterlánc azonosítók](localization-string-ids.md) teljes listája a `UxElement` azonosítók.|
+| StringId | Igen | Ha **ElementType** értékre van állítva `ClaimType`, ez az elem egy jogcímtípust attribútuma hivatkozást tartalmaz. A lehetséges értékek: `DisplayName`, `AdminHelpText`, vagy `PatternHelpText`. A `DisplayName` érték szolgál a jogcím megjelenítendő nevét. A `AdminHelpText` értéket állítsa be a jogcím felhasználói súgó szövege nevét használja. A `PatternHelpText` értéket használja a jogcím-minta súgószöveg beállításához. Ha **ElementType** értékre van állítva `UxElement`, ez az elem egy attribútum egy felhasználói felület elem hivatkozást tartalmaz. Ha **ElementType** értékre van állítva `ErrorMessage`, ezt az elemet adja meg a hibaüzenetet azonosítóját. Lásd: [honosítási karakterlánc azonosítók](localization-string-ids.md) teljes listája a `UxElement` azonosítók.|
 
 
 Az alábbi példa egy honosított előfizetési lapját jeleníti meg. Az első három **LocalizedString** értékeket a jogcím attribútum értéke. A harmadik módosítja a Folytatás gombra értékét. Az utolsót módosítja a hibaüzenetet.
@@ -222,7 +222,7 @@ Adjon hozzá **LocalizedResources** belüli elemeket a **honosítási** elem lez
 
 Minden egyes **LocalizedResources** elem tartalmazza a szükséges összes **LocalizedStrings** több olyan elemet **LocalizedString** elemek és  **LocalizedCollections** több olyan elemet **LocalizedCollection** elemeket.  Az alábbi példa hozzáadja a regisztrációs oldalon angol nyelvű verzióban: 
 
-Megjegyzés: Ebben a példában hivatkozik egy `Gender` és `City` jogcím-típusokat. Ebben a példában használja, győződjön meg róla, hogy azokat a jogcímeket határoz meg. További információkért lásd: [ClaimsSchema](claimsschema.md).
+Megjegyzés: Ebben a példában egy hivatkozik `Gender` és `City` jogcím-típusokat. Ebben a példában használja, győződjön meg róla, hogy azokat a jogcímeket határoz meg. További információkért lásd: [ClaimsSchema](claimsschema.md).
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.en">

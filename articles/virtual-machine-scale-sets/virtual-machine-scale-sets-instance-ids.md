@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: f15b2154c1bac4d699af91980a4bc2a7192bb0c9
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 5d92aa78b132b661af3cdc53b47c0340a0758dd8
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740875"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855312"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Az Azure Virtuálisgép-méretezési csoport a Példányazonosítók állítsa be a virtuális gépek ismertetése
 Ez a cikk ismerteti a példányok azonosítóit a méretezési csoportok és a surface, a különböző módszereket.
@@ -41,7 +41,7 @@ REST API-val: `GET https://management.azure.com/subscriptions/{subscriptionId}/r
 
 PowerShell: `Get-AzureRmVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (további információkért lásd: a [Powershell-dokumentáció](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmssvm))
 
-Parancssori felület: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (további információkért lásd: a [CLI dokumentációját](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_list_instances)).
+Parancssori felület: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (további információkért lásd: a [CLI dokumentációját](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
 
 Is [resources.azure.com](https://resources.azure.com) vagy a [Azure SDK-k](https://azure.microsoft.com/downloads/) a méretezési csoportban lévő virtuális gépek listáját.
 

@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure Active Directory Domain Services: A felügyelt tartomány DNS-kezelés |} A Microsoft Docs'
+title: 'Az Azure Active Directory tartományi szolgáltatások: A felügyelt tartomány DNS-kezelés |} A Microsoft Docs'
 description: Az Azure Active Directory Domain Services felügyelt tartomány DNS-kezelés
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: f2eea139209a03950217a855b5c8af7bc9a17372
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 0fd6058e95b941591f5cc71bf916c7d201fcfa54
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155303"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855924"
 ---
 # <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD tartományi szolgáltatások által kezelt tartomány DNS-kezelés
-Az Azure Active Directory Domain Services által biztosított DNS-feloldás a felügyelt tartományhoz tartozó (tartománynevek feloldását) DNS-kiszolgáló is tartalmaz. Egyes esetekben szükség lehet DNS konfigurálása a felügyelt tartományon. Szükség lehet, a tartományhoz nem csatlakozó gépek DNS-rekordok létrehozása, konfigurálása a terheléselosztók virtuális IP-címek vagy külső DNS-továbbítók beállítása. Ebből kifolyólag az "AAD DC rendszergazdák" csoportba tartozó felhasználók kapnak a felügyelt tartomány DNS felügyeleti jogosultságokkal.
+Az Azure Active Directory Domain Services által biztosított DNS-feloldás a felügyelt tartományhoz tartozó (tartománynevek feloldását) DNS-kiszolgáló is tartalmaz. Egyes esetekben szükség lehet DNS konfigurálása a felügyelt tartományon. You may need to create DNS records for machines that are not joined to the domain, configure virtual IP addresses for load-balancers or setup external DNS forwarders. Ebből kifolyólag az "AAD DC rendszergazdák" csoportba tartozó felhasználók kapnak a felügyelt tartomány DNS felügyeleti jogosultságokkal.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 42bd12b9479cd1b4f57a7f3ae73f3c32061fed65
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bd1e4da67ef3f2ffce94c62e1dbc151aa4680e54
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996512"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854569"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(ELAVULT) Vázlat használata az Azure Container Service és az Azure Container Registry létrehozása és a Kubernetes-alkalmazás üzembe helyezése
 
@@ -98,7 +98,7 @@ waiting for AAD role to propagate.done
 }
 ```
 
-Most, hogy kész a fürt, importálhatja a hitelesítő adatokat az [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) paranccsal. Ekkor már rendelkezik helyi konfigurációs fájllal a fürthöz, ami a Helm és a Draft számára szükséges.
+Most, hogy kész a fürt, importálhatja a hitelesítő adatokat az [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) paranccsal. Ekkor már rendelkezik helyi konfigurációs fájllal a fürthöz, ami a Helm és a Draft számára szükséges.
 
 ## <a name="install-and-configure-draft"></a>A draft telepítése és konfigurálása
 
@@ -202,7 +202,7 @@ kubernetes                    10.0.0.1       <none>          443/TCP            
 
 Ebben az esetben az üzembe helyezés tartományához használható külső IP-cím: `13.64.108.240`. A tartományt most már leképezheti erre az IP-címre.
 
-### <a name="map-the-ingress-ip-to-a-custom-subdomain"></a>A bejövő IP-cím hozzárendelése egy egyéni altartomány
+### <a name="map-the-ingress-ip-to-a-custom-subdomain"></a>Map the ingress IP to a custom subdomain
 
 A Draft kiadást hoz létre minden egyes létrehozott Helm-diagramhoz – minden egyes alkalmazáshoz, amin dolgozik. Mindegyik kap egy létrehozott nevet, amelyet **draft** , egy _altartomány_ felügyelt legfelső szintű _üzembe helyezési tartomány_ , amelyek. (A jelen példában a `squillace.io`-t használjuk az üzembe helyezés tartományaként.) Az altartomány-viselkedés engedélyezéséhez létre kell hoznia egy A rekordot `'*.draft'` az üzembe helyezés tartományának DNS-bejegyzéseihez, hogy minden egyes létrehozott altartomány a Kubernetes-fürt bejövőforgalom-vezérlőjéhez legyen irányítva. 
 

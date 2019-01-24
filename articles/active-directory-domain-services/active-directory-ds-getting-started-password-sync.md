@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: Jelszókivonat szinkronizálásának engedélyezése | Microsoft Docs'
+title: 'Az Azure Active Directory tartományi szolgáltatások: Jelszókivonat-szinkronizálás engedélyezése |} A Microsoft Docs'
 description: Első lépések az Azure Active Directory tartományi szolgáltatások használatával
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 5a32a0df-a3ca-4ebe-b980-91f58f8030fc
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 9c37eb064fb12ff548763a9c70a2e79219113b67
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 01688ad0b72d931b950f98e90be5e98cab4ebe14
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227365"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856885"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Az Azure Active Directory Domain Servicesre történő jelszókivonat-szinkronizálás engedélyezése
 Az előző feladatokban engedélyezte az Active Directory Domain Servicest az Azure Active Directory (Azure AD) bérlő számára. A következő feladat a jelszókivonatok szinkronizálásának engedélyezése, amely az Azure AD Domain Servicesszel való NT LAN Manager- (NTLM) és Kerberos-hitelesítéshez szükséges. A jelszókivonat-adatok szinkronizálásának beállítása után a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba.
