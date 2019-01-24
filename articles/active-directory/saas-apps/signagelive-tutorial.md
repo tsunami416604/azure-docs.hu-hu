@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: d923f0e7-ad31-4d59-a6fd-f0e895e1a32d
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 451c787730671d11802deb11ffa5707989239a89
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 4a8b45850ef609f908450fbcf35aad6b5c87540b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54234045"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818506"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Signagelive
 
@@ -119,7 +119,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Signagelive, hajtsa 
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 

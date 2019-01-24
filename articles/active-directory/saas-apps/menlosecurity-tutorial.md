@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Menlo biztonsági |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció az Menlo biztonsági |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Menlo biztonsági között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 9e63fe6b-0ad0-405d-9e41-6a1a40a41df8
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: jeedes
-ms.openlocfilehash: a1f7458d52ffdee4cb48e4be0f553e3d57413249
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 70b6693afe1a57e8acd62500d74f860dffc7c692
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428845"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808697"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Oktatóanyag: Azure Active Directory-integráció az Menlo biztonsági
+# <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Oktatóanyag: Az Azure Active Directory-integráció Menlo biztonság
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Menlo biztonsági integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása az Menlo biztonsági, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Menlo biztonsági egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurálja a Menlo biztonsági funkcióinak integrálását az Azure AD-be, s
 
 **Menlo biztonsági hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -143,16 +143,16 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     c. A **SAML-szolgáltató**válassza **Azure Active Directory**.
 
-    d. **SAML 2.0-s végpontjának** : illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt.
+    d. **SAML 2.0-s végpont** : Illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt.
 
-    e. **Szolgáltatás azonosítója (kibocsátó)** : illessze be a **SAML Entitásazonosító** Azure Portalról másolt.
+    e. **Szolgáltatás azonosítója (kibocsátó)** : Illessze be a **SAML Entitásazonosító** Azure Portalról másolt.
 
     f. **X.509-tanúsítvány** : Nyissa meg a **tanúsítvány (Base64)** a Jegyzettömbben az Azure-portálról letöltött, és illessze be ezt a jelölőnégyzetet.
 
     g. Kattintson a **Mentés** gombra a beállítások mentéséhez.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
@@ -188,7 +188,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="creating-a-menlo-security-test-user"></a>Menlo biztonsági tesztfelhasználó létrehozása
  
-Ebben a szakaszban egy Menlo biztonsági Britta Simon nevű felhasználó hoz létre. Együttműködve [Menlo biztonsági ügyfél-támogatási csapatának](https://www.menlosecurity.com/menlo-contact) a felhasználók hozzáadása az Menlo biztonsági platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy Menlo biztonsági Britta Simon nevű felhasználó hoz létre. Együttműködve [Menlo biztonsági ügyfél-támogatási csapatának](https://www.menlosecurity.com/menlo-contact) a felhasználók hozzáadása az Menlo biztonsági platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

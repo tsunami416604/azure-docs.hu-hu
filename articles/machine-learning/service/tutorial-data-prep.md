@@ -11,12 +11,12 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 81afda4227484c19b49ffc4c399e52576629da34
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: eb4d94d93a72844cfa869bd74aef6eeb34b0f8e9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321874"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817503"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
 
@@ -37,7 +37,7 @@ A Python-adatok segítségével előkészítheti a [az Azure Machine Learning Da
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) is elérhető. Futtassa a **regressziós-1-adatok – prep.ipynb** notebook az Azure-jegyzetfüzetekben vagy a saját Jupyter Notebook server.
+Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) is elérhető. Futtassa a **regressziós-1-adatok – prep.ipynb** notebook vagy [Azure notebookok](https://notebooks.azure.com/) vagy a saját Jupyter notebook server.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -1066,7 +1066,7 @@ package.save(file_path)
 
 Az oktatóanyag második részében folytatásához van szüksége a **dflows.dprep** fájlt az aktuális könyvtárban található.
 
-Ha nem folytatja a második, törölje a **dflows.dprep** fájlt az aktuális könyvtárban található. A végrehajtás helyileg vagy az Azure-jegyzetfüzetekben futtat-e a fájl törlése.
+Ha nem folytatja a második, törölje a **dflows.dprep** fájlt az aktuális könyvtárban található. Törli ezt a fájlt, hogy helyileg futtatja a végrehajtási, vagy a [Azure notebookok](https://notebooks.azure.com/).
 
 ## <a name="next-steps"></a>További lépések
 

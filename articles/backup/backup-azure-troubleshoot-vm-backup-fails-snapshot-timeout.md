@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: c779344f4cb0544009952423b6771b75482c3061
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 1ee45699040f58a1317009ab44bb5ac863323869
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353962"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816755"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -113,6 +113,26 @@ A biztonsági mentési művelet sikertelen lehet, mivel a tároló nem frissül 
 **Chybová zpráva**: Jelenleg az Azure Backup nem támogatja a Standard SSD-lemez <br>
 
 Jelenleg az Azure Backup támogatja Standard SSD-lemezeket csak a frissített tárak [azonnali visszaállítása](backup-instant-restore-capability.md).
+
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nem lehet inicializálni a biztonsági mentés, mivel egy másik biztonsági mentési művelet folyamatban van.
+
+**Hibakód:**: UserErrorBackupOperationInProgress <br>
+**Chybová zpráva**: Nem lehet inicializálni a biztonsági mentés, mivel egy másik biztonsági mentési művelet folyamatban van<br>
+
+A legutóbbi biztonsági mentési feladat sikertelen volt, mert folyamatban van egy meglévő biztonsági mentési feladat. Egy új biztonsági mentési feladat nem indítható el, a jelenlegi feladat befejezéséig. Győződjön meg arról, a folyamatban lévő biztonsági mentési művelet elindítása vagy egy másik biztonsági mentési műveletek ütemezése előtt befejeződött. A biztonsági mentési feladatok állapotának ellenőrzéséhez hajtsa végre az alábbi lépéseket:
+
+1. Jelentkezzen be az Azure Portalon, kattintson a **minden szolgáltatás**. Írja be a Recovery Services, és kattintson a **Recovery Services-tárolók**. A Recovery Services-tárolók listája megjelenik.
+2. Recovery services-tárolók listájából válassza ki egy tároló, amelyben a biztonsági mentés konfigurálva.
+3. A tároló irányítópultos menüjében kattintson **biztonsági mentési feladatok** megjeleníti a biztonsági mentési feladatok.
+
+    * Ha egy biztonsági mentési feladat van folyamatban, várjon, amíg végezze el, vagy szakítsa meg a biztonsági mentési feladatot.
+        * A biztonsági mentési feladat kattintson jobb gombbal az a biztonsági mentési feladatot megszakítja, és kattintson a **Mégse** vagy [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0).
+    * Ha a biztonsági mentés egy másik tárban újrakonfigurálása után, majd ellenőrizze, nincsenek a régi tárolóban futó biztonsági mentési feladatok. Ha létezik, törölje a biztonsági mentési feladat.
+        * A biztonsági mentési feladat kattintson jobb gombbal az a biztonsági mentési feladatot megszakítja, és kattintson a **Mégse** vagy [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0)
+4. Ismételje meg a biztonsági mentési műveletet.
+
+Ha az ütemezett biztonsági mentési művelet a következő biztonsági mentési konfigurációval ütköző hosszabb ideig tart majd, tekintse át a [ajánlott eljárások](backup-azure-vms-introduction.md#best-practices), [biztonsági mentésének teljesítményét](backup-azure-vms-introduction.md#backup-performance) és [szempont visszaállítása ](backup-azure-vms-introduction.md#restore-considerations).
+
 
 
 ## <a name="causes-and-solutions"></a>Okait és megoldásait

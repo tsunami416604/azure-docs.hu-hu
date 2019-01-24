@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 8a680f1c745bed7745691ad337ed887cc4fc05c5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 017de43074d4b68c69526ddcc96f98ae826dcd65
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716616"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808731"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -43,15 +43,16 @@ Ha rendelkezik egy fejlett még ma a videószolgáltatás a [örökölt Media Se
 
 ### <a name="new-features"></a>Új funkciók
 
-* Fájlalapú feladat feldolgozása egy HTTP (S) URL-címet a bemenetként is használhatja.
-    Szeretné, hogy már az Azure-ban tárolt tartalmat nem kell, és nem kell objektumok létrehozásához.
+* Fájlalapú feladat feldolgozása egy HTTP (S) URL-címet a bemenetként is használhatja.<br/>Szeretné, hogy már az Azure-ban tárolt tartalmat nem kell, és nem kell objektumok létrehozásához.
 * Bemutatja a [alakítja át az](transforms-jobs-concept.md) fájlalapú feladat feldolgozása. Egy-egy átalakítási segítségével hozhat létre újrahasznosítható konfigurációk esetén az Azure Resource Manager-sablonok létrehozását és feldolgozási beállítások között több, ügyfelek vagy bérlők elkülönítésére.
 * Egy eszköz rendelkezhet [több StreamingLocators](streaming-locators-concept.md) rendelkező különböző dinamikus becsomagolást és a dinamikus titkosítás beállításai.
 * [Content protection szolgáltatása](content-key-policy-concept.md) támogatja a többszörös legfontosabb funkcióit.
 * Akár 24 órát hosszú egy kimeneti adatfolyamba, amely rendelkezik több bitsebességre való átkódolása hírcsatornaelem átkódolása egyféle sávszélességű hozzájárulás a Media Services segítségével élő eseményeket streamelheti.
-* Új alacsony késés LiveEvents élő adatfolyam támogatását.
+* Új alacsony késés LiveEvents élő adatfolyam támogatását. További információkért lásd: [késés](live-event-latency.md).
 * Videókhoz előzetes verziója támogatja a dinamikus becsomagolást és dinamikus titkosítást. Ez lehetővé teszi a content protection előzetes verzió, valamint a DASH vagy HLS csomagolásra.
 * LiveOutput rendszer egyszerűbb, mint a Program entitás az v2 API-k használatához. 
+* Továbbfejlesztett RMTP-támogatása (fokozott stabilitás és további forráskód kódoló).
+* Biztonságos RTMPS betöltését.<br/>Amikor létrehoz egy videókhoz, 4 kap betöltési URL-címeket. A 4 betöltési URL-címek olyan majdnem teljesen megegyezik, rendelkezik a azonos streamelési token (alkalmazásazonosító), csak a port száma rész nem egyezik. Az URL-címek kettő elsődleges és tartalék RTMPS számára.   
 * Szerepköralapú hozzáférés-vezérlés (RBAC) az entitások felett van. 
 
 ## <a name="changes-from-v2"></a>V2-módosítások
@@ -94,9 +95,9 @@ Az alábbi táblázat a v2 és v3 szabhatják kódjának különbségeiről.
 
 |Forgatókönyv|V2 API|V3 API|
 |---|---|---|
-|Hozzon létre egy objektumot, és a egy fájl feltöltése |[v2 .NET típusú példát](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET típusú példát](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
-|Feladat elküldése|[v2 .NET típusú példát](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET típusú példát](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Először hozzon létre egy-egy átalakítási és majd a feladat elküldése mutatja.|
-|Teszi közzé az objektumot az AES-titkosítás |1. ContentKeyAuthorizationPolicyOption létrehozása<br/>2. ContentKeyAuthorizationPolicy létrehozása<br/>3. AssetDeliveryPolicy létrehozása<br/>4. Eszköz létrehozása és töltse fel a feladat vagy terjeszt tartalmat, és használja a kimeneti adategység<br/>5. Az Eszközintelligencia AssetDeliveryPolicy társítása<br/>6. ContentKey létrehozása<br/>7. Az Eszközintelligencia ContentKey csatolása<br/>8. AccessPolicy létrehozása<br/>9. Kereső létrehozása<br/><br/>[v2 .NET típusú példát](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Tartalmi kulcs szabályzat létrehozása<br/>2. Eszköz létrehozása<br/>3. Tartalom feltöltése, vagy JobOutput eszköz használata<br/>4. StreamingLocator létrehozása<br/><br/>[v3 .NET típusú példát](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Hozzon létre egy objektumot, és a egy fájl feltöltése |[v2 .NET example](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET example](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
+|Feladat elküldése|[v2 .NET example](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET example](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Először hozzon létre egy-egy átalakítási és majd a feladat elküldése mutatja.|
+|Teszi közzé az objektumot az AES-titkosítás |1. Create ContentKeyAuthorizationPolicyOption<br/>2. Create ContentKeyAuthorizationPolicy<br/>3. Create AssetDeliveryPolicy<br/>4. Eszköz létrehozása és töltse fel a feladat vagy terjeszt tartalmat, és használja a kimeneti adategység<br/>5. Az Eszközintelligencia AssetDeliveryPolicy társítása<br/>6. ContentKey létrehozása<br/>7. Az Eszközintelligencia ContentKey csatolása<br/>8. Create AccessPolicy<br/>9. Kereső létrehozása<br/><br/>[v2 .NET example](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Tartalmi kulcs szabályzat létrehozása<br/>2. Eszköz létrehozása<br/>3. Tartalom feltöltése, vagy JobOutput eszköz használata<br/>4. StreamingLocator létrehozása<br/><br/>[v3 .NET example](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 
 ## <a name="known-issues"></a>Ismert problémák
 

@@ -4,7 +4,7 @@ description: Rendszergazdai útmutató az Azure Active Directory (Azure AD) Atla
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 65649c3fdc11d74b5888b26b81ae85e10f2788bd
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77aba012d4e8d333d6f57f8f6a7a12927e6a35ec
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426876"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820546"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Az Azure Active Directory Atlassian Jira és való összefolyás felett rendszergazdai útmutatója
 
@@ -67,12 +67,12 @@ A beépülő modul telepítése előtt, vegye figyelembe a következő informác
 
 A beépülő modul Jira és való összefolyás felett alábbi verzióit támogatja:
 
-* Jira-Core és a szoftver: 6.0 való 7.12
-* Jira ügyfélszolgálat: 3.0.0-s 3.5.0
+* Jira Core és a szoftvereket: a 7.12 6.0
+* Jira Service Desk: 3.0.0-s való 3.5.0
 * JIRA 5.2 is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5.2.](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Való összefolyás felett: 5.0-s 5.10
+* Való összefolyás felett: 5.0-s az 5.10.
 * Való összefolyás felett: 6.0.1
-* Való összefolyás felett: 6.1.1.
+* Való összefolyás felett: 6.1.1
 * Való összefolyás felett: 6.2.1
 * Való összefolyás felett: 6.3.4
 * Való összefolyás felett: 6.4.0
@@ -109,31 +109,31 @@ Az alábbi képen látható Jira és való összefolyás felett is a következő
 
 ![Beépülő modul konfigurációs képernyőjén](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-*   **Metaadatok URL-címe**: összevonási metaadatok beolvasása az Azure ad-ből az URL-címe.
+*   **Metaadatok URL-címe**: Az Azure AD összevonási metaadatok beolvasása az URL-címe.
 
-*   **Azonosítók**: az URL-címet, hogy az Azure AD használja a forrás, a kérelem érvényesítéséhez. Vannak leképezve a **azonosító** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/.
+*   **Azonosítók**: Az URL-címet használó Azure ad-ben a forrás, a kérelem ellenőrzése. Vannak leképezve a **azonosító** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/.
 
-*   **Válasz URL-cím**: A válasz URL-cím az identitásszolgáltató (IdP), amely az SAML bejelentkezési kezdeményezi. Vannak leképezve a **válasz URL-cím** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/plugins/servlet/saml/auth.
+*   **Válasz URL-cím**: Az identitásszolgáltató (IdP) kezdeményező SAML bejelentkezési válasz URL-cím. Vannak leképezve a **válasz URL-cím** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/plugins/servlet/saml/auth.
 
-*   **Bejelentkezési URL-**: bejelentkezési URL-cím az identitásszolgáltató SAML bejelentkezési kezdeményező. Vannak leképezve a **bejelentkezés** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/plugins/servlet/saml/auth.
+*   **Bejelentkezési URL-cím**: A bejelentkezési URL-címet az identitásszolgáltató SAML bejelentkezési kezdeményező. Vannak leképezve a **bejelentkezés** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/plugins/servlet/saml/auth.
 
-*   **Identitásszolgáltató Entitásazonosító**: az entitás azonosítója, amely az identitásszolgáltató használja. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe.
+*   **Identitásszolgáltató Entitásazonosító**: Az entitás azonosítója, amely az identitásszolgáltató használja. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe.
 
-*   **Bejelentkezési URL-cím**: az identitásszolgáltató bejelentkezési URL. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
+*   **Bejelentkezési URL-cím**: A bejelentkezési URL-cím az identitásszolgáltató. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
 
-*   **Kijelentkezési URL-címe**: az identitásszolgáltató kijelentkezési URL-címe. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
+*   **Kijelentkezési URL-címe**: A kijelentkezési URL-címe az identitásszolgáltató. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
 
-*   **X.509-tanúsítvány**: az identitásszolgáltató X.509-tanúsítvány. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
+*   **X.509-tanúsítvány**: Az IdP X.509-tanúsítvány. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
 
-*   **Bejelentkezési gomb neve**: a bejelentkezés gombot, amely a szervezet azt szeretné, a bejelentkezési lapon látható, hogy a felhasználók nevét.
+*   **Bejelentkezési gomb neve**: A bejelentkezés gombot, amely a szervezet azt szeretné, a bejelentkezési lapon látható, hogy a felhasználók neve.
 
 *   **SAML-felhasználói azonosító helyek**: A hely, ahol a Jira vagy való összefolyás felett felhasználói azonosítónak a SAML-válasz. Is lehet **NameID** vagy egy egyéni attribútum nevében.
 
 *   **Attribútum neve**: A nevét, ahol a felhasználói azonosítónak.
 
-*   **A Kezdőtartomány felderítésének engedélyezése**: A kijelölt, győződjön meg arról, ha a vállalat használ az Active Directory összevonási szolgáltatások (AD FS) - alapú bejelentkezést - a.
+*   **A Kezdőtartomány felderítésének engedélyezése kezdőlap**: A kijelölést, győződjön meg arról, ha a vállalat használ az Active Directory összevonási szolgáltatások (AD FS) - alapú bejelentkezést - a.
 
-*   **Tartománynév**: A tartománynevet, ha be az AD FS-alapú.
+*   **Tartománynév**: A tartománynév, ha be-e az AD FS-alapú.
 
 *   **Engedélyezze az egyszeri Kijelentkezés**: Győződjön meg arról, ha azt szeretné, jelentkezzen ki, amikor egy felhasználó kijelentkezik a Jira vagy való összefolyás felett az Azure AD-ből a kijelölést.
 
@@ -141,7 +141,7 @@ Az alábbi képen látható Jira és való összefolyás felett is a következő
 
 * **Több tanúsítvány hibákat kap**: Jelentkezzen be Azure ad-ben, és távolítsa el a több tanúsítványt, az alkalmazás elleni elérhető. Győződjön meg arról, hogy csak egy tanúsítványra jelen.
 
-* **A tanúsítvány érvényessége hamarosan lejár az Azure ad-ben**: bővítmények gondoskodik a tanúsítvány automatikus kapcsolódó kulcsváltást. Ha egy tanúsítvány hamarosan lejár, új tanúsítványt kell megjelölni aktív, és fel nem használt tanúsítványok azt törölni kell. Amikor egy felhasználó megpróbál bejelentkezni a Jira ebben a forgatókönyvben a beépülő modul fetches, és menti az új tanúsítványt.
+* **A tanúsítvány érvényessége hamarosan lejár az Azure ad-ben**: A bővítmények a tanúsítvány automatikus helyettesítő gondoskodik. Ha egy tanúsítvány hamarosan lejár, új tanúsítványt kell megjelölni aktív, és fel nem használt tanúsítványok azt törölni kell. Amikor egy felhasználó megpróbál bejelentkezni a Jira ebben a forgatókönyvben a beépülő modul fetches, és menti az új tanúsítványt.
 
 * **Le kívánja tiltani (tiltsa le a biztonságos felügyeleti munkamenet) WebSudo**:
 
@@ -155,13 +155,13 @@ Az alábbi képen látható Jira és való összefolyás felett is a következő
 
   * Adja meg az URL-címet egy böngészőben, és tekintse meg a kap, ha az összevonási metaadatok XML.
 
-* **Belső hiba történt**: tekintse át a naplókat a telepítési naplófájl könyvtárában. Amikor a felhasználó próbál jelentkezzen be az Azure AD SSO használatával a hibát kap, ha a naplók megoszthatja a csapatával.
+* **Belső hiba történt**: Tekintse át a naplókat a telepítési naplófájl könyvtárában. Amikor a felhasználó próbál jelentkezzen be az Azure AD SSO használatával a hibát kap, ha a naplók megoszthatja a csapatával.
 
-* **Van egy "Felhasználói azonosító nem található" hiba történt, amikor a felhasználó megpróbál bejelentkezni**: a felhasználói azonosító létrehozása Jira vagy való összefolyás felett.
+* **Van egy "Felhasználói azonosító nem található" hiba történt, amikor a felhasználó megpróbál bejelentkezni**: A felhasználói azonosító létrehozása Jira vagy való összefolyás felett.
 
-* **"Az alkalmazás nem található" hiba van az Azure ad-ben**: tekintse meg, ha a megfelelő URL-cím van rendelve az alkalmazás Azure AD-ben.
+* **"Az alkalmazás nem található" hiba van az Azure ad-ben**: Tekintse meg, ha a megfelelő URL-cím van rendelve az alkalmazás Azure AD-ben.
 
-* **Támogatásra van szüksége**: keresse fel a [Azure AD SSO integrációs csapat](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). A csapat változásokhoz üzleti 24-48 órában.
+* **Támogatásra van szüksége**: Keresse fel a [Azure AD SSO integrációs csapat](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). A csapat változásokhoz üzleti 24-48 órában.
 
   Az Azure portal csatornán keresztül a Microsoft támogatási jegyet is tehet.
 
@@ -185,12 +185,12 @@ Nem. A beépülő modul által támogatott csak a helyszíni verzióit Jira és 
 
 A beépülő modul alábbi verzióit támogatja:
 
-* Jira-Core és a szoftver: 6.0 való 7.12
-* Jira ügyfélszolgálat: 3.0.0-s 3.5.0
+* Jira Core és a szoftvereket: a 7.12 6.0
+* Jira Service Desk: 3.0.0-s való 3.5.0
 * JIRA 5.2 is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5.2.](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Való összefolyás felett: 5.0-s 5.10
+* Való összefolyás felett: 5.0-s az 5.10.
 * Való összefolyás felett: 6.0.1
-* Való összefolyás felett: 6.1.1.
+* Való összefolyás felett: 6.1.1
 * Való összefolyás felett: 6.2.1
 * Való összefolyás felett: 6.3.4
 * Való összefolyás felett: 6.4.0

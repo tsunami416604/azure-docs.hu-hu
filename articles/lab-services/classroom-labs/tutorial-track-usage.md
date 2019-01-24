@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 9408ae20246d7a48340434c201c4568bc02719cd
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 93d7a6e884cf02fa41838d4a07644c122a43823b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390490"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823827"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Oktatóanyag: A labor létrehozása az Azure Lab Service használatának nyomon követése
 Az oktatóanyag bemutatja, hogyan követheti nyomon a tesztkörnyezet létrehozója/tulajdonosa a tesztkörnyezet használatát.
@@ -44,7 +44,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 ## <a name="view-the-usage-of-vms-in-the-lab"></a>A tesztkörnyezetben lévő virtuális gépek használati adatainak megtekintése 
 
 1. Válassza a **Virtuális gépek** lehetőséget a bal oldali menüben. 
-2. Győződjön meg róla, hogy látható a virtuális gépek állapota és az eddigi üzemórák mennyisége. A virtuális gépek nem számítanak bele a használati idő az utolsó oszlopban látható egy diák töltött idő. 
+2. Győződjön meg róla, hogy látható a virtuális gépek állapota és az eddigi üzemórák mennyisége. Az idő, hogy egy tesztkörnyezet tulajdonos foglalkozik a tanuló virtuális gépek nem számítanak bele a használati idő az utolsó oszlopban látható. 
 
     ![Virtuálisgép-használat](../media/tutorial-track-usage/vm-usage.png)
 

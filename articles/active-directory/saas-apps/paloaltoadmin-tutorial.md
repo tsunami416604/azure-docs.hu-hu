@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: a826eaec-15af-4c85-8855-8a3374d1efb9
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e7dc7874e6b48ecb03300df780118d5205a8773
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 06c32dbd9ee0d960e4cd17476349ba3d1a784d81
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063408"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818999"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Oktatóanyag: Az Azure Active Directory-integráció a Palo Alto Networks - felügyeleti felhasználói Felületéhez
 
@@ -126,7 +126,7 @@ A Palo Alto Networks - felügyeleti felhasználói Felületéhez, az Azure AD eg
 
     | Name (Név) |  Adatforrás-attribútum|
     | --- | --- |
-    | felhasználónév | User.userPrincipalName |
+    | felhasználónév | user.userprincipalname |
     | adminrole | customadmin |
     | | |
 
@@ -163,7 +163,7 @@ A Palo Alto Networks - felügyeleti felhasználói Felületéhez, az Azure AD eg
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
@@ -195,11 +195,11 @@ A Palo Alto Networks - felügyeleti felhasználói Felületéhez, az Azure AD eg
 
 5. A bal oldali panelen válassza ki a **identitásszolgáltató SAML**, majd válassza ki a SAML-alapú identitás-szolgáltató profilban (például **Azure ad felügyeleti felhasználói Felületéhez**), amely az előző lépésben létrehozott.
 
-    ![Az SAML-alapú identitás szolgáltató profilban](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
+    ![The SAML Identity Provider Profile](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
 
 6. Az a **SAML-alapú identitás szolgáltató kiszolgáló profilban** ablakban tegye a következőket:
 
-    ![Az "SAML-alapú identitás szolgáltató kiszolgáló profilban" ablak](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
+    ![The "SAML Identity Provider Server Profile" window](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
   
     a. Az a **Identity Provider SLO URL-cím** mezőben cserélje le a korábban importált SLO URL-cím a következő URL-címe: `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
   

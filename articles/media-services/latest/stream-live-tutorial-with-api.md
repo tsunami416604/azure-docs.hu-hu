@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/16/2019
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 6bd874e6918528d340bca69ebdd91aa060158073
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: c51a36f4380199de1ac62ef3f0c32bd0a8f06c01
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383059"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811213"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Oktatóanyag: A Media Services v3 élő Stream API-k használatával
 
@@ -89,7 +89,7 @@ Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre 
 
 ### <a name="create-a-live-event"></a>Élő esemény létrehozása
 
-Ez a szakasz azt mutatja be, hogyan lehet **átmenő** típusú LiveEvent eseményt létrehozni (ahol a LiveEventEncodingType értéke Nincs). Ha szeretne létrehozni, amely valós idejű kódolás LiveEventEncodingType Standard beállítása engedélyezve van a videókhoz. 
+Ez a szakasz azt mutatja be, hogyan lehet **átmenő** típusú LiveEvent eseményt létrehozni (ahol a LiveEventEncodingType értéke Nincs). Ha szeretne létrehozni egy videókhoz, amelyek engedélyezve van a valós idejű kódolás beállítása LiveEventEncodingType **Standard**. 
 
 Néhány egyéb beállítás, amelyet érdemes lehet megadnia az élő események létrehozásakor:
 
@@ -103,7 +103,9 @@ Néhány egyéb beállítás, amelyet érdemes lehet megadnia az élő eseménye
     
     Az IP-címeket kell lennie a következő formátumok egyikében: IpV4-cím 4 számjegyből, CIDR-címtartományt.
 
-Az esemény létrehozásakor megadhatja, hogy az automatikusan induljon el. 
+* Az esemény létrehozásakor megadhatja, hogy az automatikusan induljon el. 
+
+    Ha autostart értéke igaz, az élő esemény létrehozása után fog elindulni. Ez azt jelenti, a számlázási elindul, amint az élő esemény fut-e. Leállítás explicit módon kell meghívnia, a videókhoz további számlázási leállására erőforráson. További információkért lásd: [videókhoz állapotok és számlázási](live-event-states-billing.md).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6dd063f8d6520e3ee18dcb3899c1cca16d732707
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 60bd3aef20e39a9f451f54164ef3fb8ef682bc3e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608715"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809688"
 ---
 # <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Contoso áttelepítése: Egy Contoso Linux-szolgáltatás desk több régióban az Azure App Service-ben, a Traffic Manager és az Azure-beli MySQL alkalmazás újrabontása
 
@@ -139,26 +139,26 @@ Itt látható, hogyan Contoso az áttelepítés elvégzéséhez:
 
 
 
-## <a name="step-1-provision-azure-app-services"></a>1. lépés: Üzembe helyezése az Azure App Servicesben
+## <a name="step-1-provision-azure-app-services"></a>1. lépés: Provision Azure App Services
 
 Contoso rendszergazdák két Web apps (egy, az egyes régiókban) üzembe helyezése az Azure App Services használatával.
 
 1. Akkor hozzon létre egy webalkalmazás erőforrást, az elsődleges régióban USA keleti RÉGIÓJA 2 (**osticket-eus2**) az Azure Marketplace-ről.
 2. Az erőforrás, helyezze az éles erőforráscsoport **ContosoRG**.
 
-    ![Azure-alkalmazás](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app1.png) 
+    ![Azure App](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app1.png) 
 
 3. Akkor hozzon létre egy új App Service-csomag, az elsődleges régióban (**APP-ÜKtgE-EUS2**), a standard szintű mérettel.
 
-     ![Azure-alkalmazás](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app2.png) 
+     ![Azure App](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app2.png) 
     
 4. Válassza ki a Linux operációs rendszer, a PHP 7.0 futtatókörnyezeti verem, amely egy Docker-tárolót.
 
-    ![Azure-alkalmazás](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app3.png) 
+    ![Azure App](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app3.png) 
 
 5. Akkor hozzon létre egy második webalkalmazás (**osticket-cus**), és az App service-csomag esetében az USA középső régiójában.
 
-    ![Azure-alkalmazás](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app4.png) 
+    ![Azure App](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app4.png) 
 
 
 **További segítségre van szüksége?**
@@ -254,7 +254,7 @@ Contoso rendszergazdák telepítse át az adatbázis biztonsági mentése és vi
 
      ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench9.png)
 
-11. Tney ellenőrizheti a kiszolgáló nevét és a bejelentkezési **áttekintése** a MySQL-példányban, az Azure Portalon.
+11. Ellenőrzik a kiszolgáló nevét és a bejelentkezési **áttekintése** a MySQL-példányban, az Azure Portalon.
 
     ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench10.png)
 

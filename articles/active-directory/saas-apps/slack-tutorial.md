@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ffc5e73f-6c38-4bbb-876a-a7dd269d4e1c
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: fd868e02987c61e6bdd992c45a95cb775d1778ca
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 238999448f719ca8c95d8c170a9f2e6b6d7bc851
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969546"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Oktatóanyag: Slack-az Azure Active Directory-integráció
 
@@ -124,10 +124,10 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Slack, hajtsa végre
 
     | Name (Név) | Adatforrás-attribútum |
     | --- | --- |
-    | first_name | User.givenName |
-    | last_name | User.surname |
+    | first_name | user.givenname |
+    | last_name | user.surname |
     | User.Email | user.mail |
-    | User.Username | User.userPrincipalName |
+    | User.Username | user.userprincipalname |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -157,7 +157,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Slack, hajtsa végre
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 

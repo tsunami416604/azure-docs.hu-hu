@@ -4,7 +4,7 @@ description: Bejelentkezési tevékenységekre vonatkozó jelentések hibakódja
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6f8d3c3017a914f261c7e4f8bbe0e42d1edf8a9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0de3ced9974941399875ca98991430f10d4f8525
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622431"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820155"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai 
 
@@ -43,7 +43,7 @@ Az összes sikertelen bejelentkezések kattintva megjeleníthető a jelentést s
 
 ![Bejelentkezési tevékenység](./media/reference-sign-ins-error-codes/06.png "Sign-in activity")
 
-Szűrt lista elem kijelölésével megnyílik a **tevékenység részletei: bejelentkezések** panelen. Ez a nézet nyújt további információt a sikertelen bejelentkezési esemény, többek között a **bejelentkezési hiba kódja** és **a hiba oka**.
+Szűrt lista elem kijelölésével megnyílik a **tevékenység részletei: Bejelentkezések** panelen. Ez a nézet nyújt további információt a sikertelen bejelentkezési esemény, többek között a **bejelentkezési hiba kódja** és **a hiba oka**.
 
 ![Bejelentkezési tevékenység](./media/reference-sign-ins-error-codes/05.png "Sign-in activity")
 
@@ -135,7 +135,7 @@ Szoftveresen is segítségével végezheti el a bejelentkezési adatokat a [repo
 |53002|A használt alkalmazás nem feltételes hozzáféréshez jóváhagyott alkalmazás. A felhasználónak a jóváhagyott alkalmazások listáján szereplő alkalmazást kell használnia a hozzáféréshez.|
 |53003|A hozzáférés blokkolva a feltételes hozzáférési szabályzatok miatt.|
 |53004|A tartalom elérése előtt a felhasználónak el kell végeznie a többtényezős hitelesítés regisztrációs folyamatát. A felhasználónak regisztrálnia kell többtényezős hitelesítésre.|
-|65001|Az X alkalmazás nem rendelkezik engedéllyel az Y alkalmazás eléréséhez, vagy az engedély vissza lett vonva. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy engedélyezési kérést a bérlő rendszergazdájának, hogy az Y alkalmazás nevében végezzen tevékenységet a Z erőforráson.|
+|65001|Az X alkalmazás nem rendelkezik engedéllyel az Y alkalmazás eléréséhez, vagy az engedély vissza lett vonva. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. Vagy a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás segítségével azonosító x küldjön egy engedélyezési kérést a bérlő rendszergazdájának alkalmazás nevében: Y erőforrás: Z.|
 |65004|A felhasználó elutasította az alkalmazáshoz való hozzáférés jóváhagyását. Kérje meg a felhasználót, hogy jelentkezzen be újra, és hagyja jóvá az alkalmazást|
 |65005|Az alkalmazás által igényelt erőforrás-hozzáférési lista nem tartalmaz az erőforrás által felderíthető alkalmazásokat, vagy az ügyfélalkalmazás olyan erőforrás hozzáférését kérte, amely nincs meghatározva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás rossz kérést adott vissza, vagy az erőforrás nem található. Ha az alkalmazás támogatja az SAML-t, akkor előfordulhat, hogy nem a megfelelő azonosítóval (entitással) konfigurálta az alkalmazást. Próbálja ki az SAML-lel kapcsolatos megoldásokat, amelyek a következő hivatkozáson találhatók: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list)|
 |70000|A hozzáférés érvénytelen az alábbi okok miatt:<ul><li>A szükséges SAML 2.0 helyességi feltétel érvénytelen tárgyjóváhagyási metódussal rendelkezik</li><li>Az alkalmazás OnBehalfOf folyamata nem támogatott a V2-ben</li><li>Elsődleges frissítési jogkivonat nincs aláírva a munkamenetkulccsal</li><li>Érvénytelen külső frissítési jogkivonat</li><li>A megadott hozzáférés egy másik bérlőhöz lett beszerezve.</li></ul>|
@@ -160,7 +160,7 @@ Szoftveresen is segítségével végezheti el a bejelentkezési adatokat a [repo
 |80001|A hitelesítési ügynök nem tudott csatlakozni az Active Directory-hoz. Győződjön meg arról, hogy a hitelesítési ügynök telepítve van egy olyan tartományhoz csatlakozó gépen, amely rálát a felhasználó bejelentkezési kérelmét kiszolgáló tartományvezérlőre.|
 |80002|Belső hiba történt. A jelszó-ellenőrzési kérelem túllépte az időkorlátot. Nem sikerült elküldeni a hitelesítési kérést a belső hibrid identitásszolgáltatásnak. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
 |80003|A hitelesítési ügynök érvénytelen választ kapott. Ismeretlen hiba történt a helyszíni Active Directoryban történő hitelesítésre tett kísérlet során. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
-|80005|Hitelesítési ügynök: Ismeretlen hiba történt a Hitelesítési ügynöktől érkező válasz feldolgozásakor. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
+|80005|A hitelesítési ügynök: Ismeretlen hiba történt a válasz a hitelesítési ügynök feldolgozása közben. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
 |80007|A hitelesítési ügynök nem tudta ellenőrizni a felhasználó jelszavát.|
 |80010|A hitelesítési ügynök nem tudta visszafejteni a jelszót. |
 |80011|A hitelesítési ügynök nem tudta lekérni a titkosítási kulcsot.|

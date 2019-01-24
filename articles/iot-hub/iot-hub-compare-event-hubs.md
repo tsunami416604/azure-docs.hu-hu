@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.openlocfilehash: 830052341c4f0e3488c8e63da59cbef1f72e158a
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 20bb0cb6982bcbea6b18989099322cfd3389b0b0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42054885"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819637"
 ---
-# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT-eszközök csatlakoztatása az Azure-bA: az IoT Hub és az Event Hubs
+# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT-eszközök csatlakoztatása az Azure-bA: Az IoT Hub és az Event Hubs
 
 Az Azure kifejezetten fejlesztette ki kapcsolatot és a kommunikáció segítségével csatlakoztatta az adatait a felhő képességeit a különböző típusú szolgáltatásokat biztosít. Azure IoT Hub és az Azure Event Hubs olyan felhőszolgáltatás, amely képes feldolgozni az adatokat és dolgozhat fel nagy mennyiségű vagy üzleti elemzések készítése adatok tárolására. A két szolgáltatás hasonlóak, hogy mindkét támogatják-e az adatok feldolgozási, alacsony késéssel és magas megbízhatósággal, de azokat különböző felhasználási célokra tervezték. Az IoT Hub célja a kifejezetten az egyedi követelményeinek teljesítéséhez az IoT-eszközök, ipari méretekben, csatlakozik az Azure-felhőbe, miközben a big Data-streamelés az Event Hubs tervezték. Ezért a Microsoft azt javasolja, Azure IoT Hub IoT-eszközök csatlakoztatása az Azure-ba való használatával
 
@@ -30,13 +30,14 @@ Az alábbi táblázat ismerteti, hogyan a két réteg IoT-központ összehasonl�
 | IoT-képesség | Az IoT Hub standard szintű csomag | Alapszintű IoT Hub-csomag | Event Hubs |
 | --- | --- | --- | --- |
 | Eszközről-a-felhőbe üzenetkezelés | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |
-| Protokollok: a websockets protokoll keresztül HTTPS, AMQP és AMQP | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |
-| Protokollok: Mqtt-ről, a websockets protokoll keresztüli mqtt-ről | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
+| Protokoll: A websockets protokoll keresztül HTTPS, AMQP és AMQP | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |
+| Protokoll: Mqtt-ről, a websockets protokoll keresztüli mqtt-ről | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
 | Eszközönkénti identitás | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
 | Fájlfeltöltés az eszközökről | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
 | Device Provisioning Service | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
 | Üzenetküldés a felhőből eszközökre | ![Jelölőnégyzet][checkmark] |  |  |
 | Ikereszköz- és eszközkezelés | ![Jelölőnégyzet][checkmark] |  |  |
+| Eszköz adatfolyamok (előzetes verzió) | ![Jelölőnégyzet][checkmark] |  |  |
 | IoT Edge | ![Jelölőnégyzet][checkmark] |  |  |
 
 Akkor is, ha csak a használati eset eszközről a felhőbe – az adatbetöltés, erősen ajánlott egy szolgáltatás, amely lehetővé teszi az IoT-eszköz csatlakoztatása az IoT Hub használatával. 

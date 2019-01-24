@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a vállalati ScaleX |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció a vállalati ScaleX |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés ScaleX nagyvállalati és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c2379a8d-a659-45f1-87db-9ba156d83183
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 60beecc0895fbfb5d3af7817e8b76e0819c89a99
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fb01aec04af10d3e413213dc9821a27b42a0a9d2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835386"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822977"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Oktatóanyag: Azure Active Directory-integráció a vállalati ScaleX
+# <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Oktatóanyag: Az Azure Active Directory-integráció a vállalati ScaleX
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan ScaleX vállalati integrálása az Azure Active Directory (Azure AD).
 
@@ -168,22 +168,22 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     a. Válassza ki **"Hozzon létre egyszeri bejelentkezés bármely felhasználó, aki hitelesítheti."**
 
-    b. **Szolgáltató saml**: illessze be az értéket ***urn: oasis: nevek: tc: SAML:2.0:nameid-formátum: állandó***
+    b. **Szolgáltató saml**: Illessze be az értéket ***urn: oasis: nevek: tc: SAML:2.0:nameid-formátum: állandó***
 
-    c. **Az ACS-válaszban identitásszolgáltató e-mail mező neve**: illessze be az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. **Az ACS-válaszban identitásszolgáltató e-mail mező neve**: Illessze be az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    d. **Identity Provider EntityDescriptor entitás azonosítója:** illessze be a **SAML Entitásazonosító** az Azure Portalról másolt érték.
+    d. **Identity Provider EntityDescriptor entitás azonosítója:** Illessze be a **SAML Entitásazonosító** az Azure Portalról másolt érték.
 
-    e. **Identitásszolgáltató szolgáltató SingleSignOnService URL-címe:** illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** az Azure Portalról.
+    e. **Identitásszolgáltató szolgáltató SingleSignOnService URL-címe:** Illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** az Azure Portalról.
 
-    f. **Szolgáltató nyilvános X509 identitástanúsítványt:** nyissa meg a X509 tanúsítvány a Jegyzettömbben az Azure-ból letöltött, és illessze be a tartalmakat ebbe a mezőbe. Győződjön meg róla, nincsenek a nincs sortöréseket a tanúsítvány tartalma közepén.
+    f. **Identitás-szolgáltató nyilvános X509 tanúsítvány:** Nyissa meg a X509 tanúsítvány a Jegyzettömbben az Azure-ból letöltött, és illessze be a tartalmakat ebbe a mezőbe. Győződjön meg róla, nincsenek a nincs sortöréseket a tanúsítvány tartalma közepén.
     
-    g. Ellenőrizze a következő jelölőnégyzeteket: **engedélyezve, a NameID titkosítása és a bejelentkezési AuthnRequests.**
+    g. Ellenőrizze a következő jelölőnégyzeteket: **NameID engedélyezve van, titkosítására és AuthnRequests jelentkezzen be.**
 
     h. Kattintson a **frissítés egyszeri bejelentkezési beállításainak** a beállítások mentéséhez.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása

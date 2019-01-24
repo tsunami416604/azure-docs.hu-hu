@@ -8,84 +8,51 @@ author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 10/27/2017
-ms.openlocfilehash: bf47915ba93a4a3a7dec338395cfe0ce6aa3cdf6
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 1/17/2019
+ms.openlocfilehash: ef33d8962848636ee53ac6fd3f084b9c2a59e29d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993841"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820572"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A Visual Studio Code a PySpark interaktív környezetének beállítása
 
-A következő lépések bemutatják, hogyan telepítheti a Python-csomagok futtatásával **HDInsight: A PySpark interaktív**.
+A következő lépések bemutatják, hogyan állíthatja be a PySpark interaktív környezetének a VS Code-ban.
 
-## <a name="set-up-the-pyspark-interactive-environment-on-macos-and-linux"></a>A PySpark interaktív környezetet, macOS és Linux rendszeren
-Ha használ **python 3.x**, kell használnia a parancs **pip3** a következő lépéseket:
+Használjuk a **python/pip** parancsot hozhat létre a virtuális környezet az otthoni elérési úthoz. Ha szeretne egy másik verzióját használja, az alapértelmezett verzió módosítani szeretné **python/pip** manuálisan parancsot. További információ: [update-alternatívák](https://linux.die.net/man/8/update-alternatives).
 
-1. Győződjön meg arról, hogy **Python** és **pip** vannak telepítve.
+1. Telepítés [Python](https://www.python.org/) és [pip](https://pip.pypa.io/en/stable/installing/).
+   
+   + Telepítse a Pythont a [ https://pip.pypa.io/en/stable/installing ](https://www.python.org/).
+   + Instalovat modul pip a [ https://pip.pypa.io/en/stable/installing ](https://pip.pypa.io/en/stable/installing/). (Ha nincs telepítve a Python-telepítés)
+   + Ellenőrizze a Python, és a pip telepítve vannak a következő parancsokkal sikeresen. (Választható lehetőség)
  
-    ![Python-pip verzió](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+        ![Python-pip verzió](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
-2.  A Jupyter telepítése.
-    ```
-    sudo pip install jupyter
-    ```
-   A következő hibaüzenet láthatja a Linux és MacOS rendszeren:
+    > [!NOTE]
+    > Javasoljuk, hogy manuálisan telepítik a Pythont a MacOS alapértelmezett verzió használata helyett.
 
-   ![Hiba: 1](./media/set-up-pyspark-interactive-environment/error1.png)
 
-   ```Resolve:
-    sudo pip uninstall asyncio
-    sudo pip install trollies
-    ```
+2. Telepítés **virtualenv** az alábbi parancs futtatásával.
+   
+   ```
+   pip install virtualenv
+   ```
 
-3. Telepítés **libkrb5-fejlesztési** (a csak Linux). Láthatja, hogy a következő hibaüzenetet kapja:
-
-   ![Hiba: 2](./media/set-up-pyspark-interactive-environment/error2.png)
+3. Csak a Linux-parancsok Csengő futtatásával, ha a hibaüzenetet tapasztal a szükséges csomagok telepítéséhez.
+   
+    ![Python-pip verzió](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
        
-   ```Resolve:
+   ```
    sudo apt-get install libkrb5-dev 
    ```
 
-3. Telepítés **sparkmagic**.
    ```
-   sudo pip install sparkmagic
-   ```
-
-4. Győződjön meg arról, hogy **ipywidgets** megfelelően van-e telepítve a következő futtatásával:
-   ```
-   sudo jupyter nbextension enable --py --sys-prefix widgetsnbextension
-   ```
-   ![Telepítse a burkoló kernelekkel](./media/set-up-pyspark-interactive-environment/ipywidget-enable.png)
- 
-
-5. Telepítse a burkoló kernelekkel. Futtatás **pip megjelenítése sparkmagic**. A kimeneti elérési útját jeleníti meg a **sparkmagic** telepítését. 
-
-    ![sparkmagic helye](./media/set-up-pyspark-interactive-environment/sparkmagic-location.png)
-   
-6. Nyissa meg a helyet, és futtassa:
-
-   ```Python2
-   sudo jupyter-kernelspec install sparkmagic/kernels/pysparkkernel   
-   ```
-   ```Python3
-   sudo jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel
+   sudo apt-get install python-dev
    ```
 
-   ![jupyter kernelspec telepítése](./media/set-up-pyspark-interactive-environment/jupyter-kernelspec-install.png)
-7. Ellenőrizze a telepítés állapotát.
-
-    ```
-    jupyter-kernelspec list
-    ```
-    ![jupyter kernelspec listája](./media/set-up-pyspark-interactive-environment/jupyter-kernelspec-list.png)
-
-    A rendelkezésre álló kernelekkel: 
-    - **python2** és **pysparkkernel** felelnek meg **python 2.x**. 
-    - **python3** és **pyspark3kernel** felelnek meg **python 3.x**. 
-
-8. Indítsa újra a VS Code, és ezután lépjen vissza a parancsprogram-szerkesztő futtató **HDInsight: A PySpark interaktív**.
+4. Indítsa újra a VS Code, és ezután lépjen vissza a parancsprogram-szerkesztő futtató **HDInsight: A PySpark interaktív**.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a ServiceNow |} A Microsoft Docs'
+title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása a ServiceNow |} A Microsoft Docs'
 description: Ismerje meg, hogyan automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből a ServiceNow.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 4d6f06dd-a798-4c22-b84f-8a11f1b8592a
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: b3ef6e2a6b9b51c271372aa3c9342b52a4260788
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 7ee10bcd06877b33669b79e104f0d32f87301c28
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348106"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813270"
 ---
-# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval ServiceNow konfigurálása
+# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Oktatóanyag: A ServiceNow konfigurálása a felhasználók automatikus átadása az Azure Active Directoryval
 
 Ez az oktatóanyag célja, a lépéseket kell elvégeznie a ServiceNow és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből a ServiceNow mutatni.
 
@@ -50,7 +50,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 
 Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználói fiók kiépítése kontextusában csak a felhasználók és csoportok rendelt "", az alkalmazások az Azure AD szinkronizálása.
 
-A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége dönthet arról, hogy mely felhasználók és/vagy az Azure AD-csoportokat a felhasználók, akik hozzáférhetnek a ServiceNow alkalmazás a jelölik. Ha úgy döntött, rendelhet ezeket a felhasználókat a ServiceNow alkalmazás a következő utasításokat: [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége dönthet arról, hogy mely felhasználók és/vagy az Azure AD-csoportokat a felhasználók, akik hozzáférhetnek a ServiceNow alkalmazás a jelölik. Ha úgy döntött, rendelhet ezek a felhasználók a ServiceNow alkalmazás a következő utasításokat: [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 
 > [!IMPORTANT]

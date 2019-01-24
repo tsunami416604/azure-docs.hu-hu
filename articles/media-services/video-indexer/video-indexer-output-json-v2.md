@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 666be9c2ebba9dc9607e4188b2390fff49fd59b9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: e83b634c11d0349f4917c063cde54e03fa1cac40
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554656"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810703"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
 
@@ -37,7 +37,7 @@ Ez a cikk által visszaadott JSON-tartalmak megvizsgálja a **első videó Index
 
 |Name (Név)|Leírás|
 |---|---|
-|Fiókazonosító|A lista VI fiók azonosítóját írja.|
+|accountId|A lista VI fiók azonosítóját írja.|
 |id|A lista azonosítóját.|
 |név|A lista neve.|
 |leírás|A lista leírása.|
@@ -97,7 +97,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 
 |Name (Név)|Leírás|
 |---|---|
-|Fiókazonosító|A videó VI fiók azonosítóját írja.|
+|accountId|A videó VI fiók azonosítóját írja.|
 |id|A videó azonosítóját.|
 |név|A videó neve.
 |state|A videó állapota (feltöltött, feldolgozás, feldolgozás, sikertelen, karanténba helyezett).|
@@ -166,7 +166,7 @@ Előfordulhat, hogy egy ARC Azonosítóját, nevét, a miniatűr, más metaadato
 |audioEffects|A [audioEffects](#audioEffects) dimenzió.|
 |hangulati|A [hangulati](#sentiments) dimenzió.|
 |visualContentModeration|A [visualContentModeration](#visualcontentmoderation) dimenzió.|
-|textualConentModeration|A [textualConentModeration](#textualconentmoderation) dimenzió.|
+|textualContentModeration|A [textualContentModeration](#textualcontentmoderation) dimenzió.|
 |Érzelmek| A [érzelmek](#emotions) dimenzió.|
 |kapcsolatos témakörök|A [témakörök](#topics) dimenzió.|
 
@@ -187,7 +187,7 @@ Példa:
   "audioEffects": ...,
   "sentiments": ...,
   "visualContentModeration": ...,
-  "textualConentModeration": ...
+  "textualContentModeration": ...
 }
 ```
 
@@ -334,9 +334,9 @@ Példa:
 |név|A face neve. Lehet "Ismeretlen #0, az azonosított hírességek vagy ügyfél betanított személy.|
 |magabiztosan|Arcok azonosítása magabiztosan.|
 |leírás|A hírességek leírása. |
-|thumbnalId|A miniatűr képét, arc azonosítója.|
+|thumbnailId|A miniatűr képét, arc azonosítója.|
 |knownPersonId|Ha ez egy ismert személy, a belső azonosítója.|
-|a referenceid megadása|Ha a Bing hírességek, a Bing-azonosító.|
+|referenceId|Ha a Bing hírességek, a Bing-azonosító.|
 |referenceType|Jelenleg csak a Bing.|
 |cím|Ha egy hírességek, akkor annak címe (például: "a Microsoft Vezérigazgatójával").|
 |imageUrl|Ha a hírességek, a kép URL-címe.|
@@ -495,7 +495,7 @@ Példa:
 |---|---|
 |id|A márka azonosítója.|
 |név|A márka neve.|
-|a referenceid megadása | A márka wikipedia URL-címének utótagja. Például a "Target_Corporation" pedig az utótag [ https://en.wikipedia.org/wiki/Target_Corporation ](https://en.wikipedia.org/wiki/Target_Corporation).
+|referenceId | A márka wikipedia URL-címének utótagja. Például a "Target_Corporation" pedig az utótag [ https://en.wikipedia.org/wiki/Target_Corporation ](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | A márka a Wikipedia URL-címet, ha létezik. Például: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |leírás|A márka leírása.|
 |tags|Előre definiált ez csökkenése társított címkék listája.|
@@ -662,7 +662,7 @@ Lehet, hogy videókat, amelyek tartalmazzák a felnőtt vagy pikáns tartalmak c
 ] 
 ```
 
-#### <a name="textualconentmoderation"></a>textualConentModeration 
+#### <a name="textualcontentmoderation"></a>textualContentModeration 
 
 |Name (Név)|Leírás|
 |---|---|
@@ -768,7 +768,7 @@ Video Indexer – lehetővé teszi a legfontosabb témakörök az átiratok köv
 |---|---|
 |id|A témakör azonosítóját.|
 |név|A témakör neve, például: "Pharmaceuticals".|
-|a referenceid megadása|A témakörök hierarchia tükröző útkövetés. Példa: "Állapotát és jólétének / orvosi és egészségügyi / Pharmaceuticals".|
+|referenceId|A témakörök hierarchia tükröző útkövetés. Példa: "Állapotát és jólétének / orvosi és egészségügyi / Pharmaceuticals".|
 |magabiztosan|A [0,1] tartományban konfidencia-pontszám. Újabb sokkal magabiztosabb a munkában.|
 |language|A témakörben használt nyelv.|
 |iptcName|A IPTC adathordozó-neve, kód észlelésekor.|

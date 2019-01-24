@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: f84be4dffb601d3748d951da15050e381e1cecc1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2c8c8233e8d471b0f1934df9ff7e0f2b4b3e3860
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464850"
+ms.locfileid: "54819135"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Eszköz webalkalmazások az Application Insights Állapotfigyelőt futásidejű
 
@@ -36,6 +36,7 @@ Megválaszthatja két útvonal a alkalmazni az Application Insights szolgáltat�
 
 * **Felépítési idő:** [Az Application Insights SDK hozzáadása] [ greenbrown] a webalkalmazás kódjához.
 * **Futási idő:** Webalkalmazását a kiszolgálón, az alább ismertetett, újraépítése és újratelepítése az kód nélkül.
+
 > [!NOTE]
 > Felépítési idő kialakítása használatakor futtatáskor instrumention nem fog működni, akkor is, ha van kapcsolva.
 

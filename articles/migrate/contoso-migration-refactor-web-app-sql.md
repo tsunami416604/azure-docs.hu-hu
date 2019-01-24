@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: dec58b2bb82eeab8b95c59e2775d21d58e18cac4
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 94ed136b48c53bd582a8b3ad210d421764b9f0f6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450421"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808459"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso áttelepítése: Egy Azure Web App és az Azure SQL Database-adatbázishoz a helyszíni alkalmazás újrabontása
 
@@ -347,7 +347,7 @@ Contoso-rendszergazdák mostantól konfigurálhatja az Azure DevOps-hajtsa végr
 
     ![App service üzembe helyezése](./media/contoso-migration-refactor-web-app-sql/pipeline15.png)
 
-18. A **egy fájl vagy mappa kiválasztása**, akkor keresse meg a **SmartHotel.Registration.Wcf.zip** fájlt, amely a build és a clilck során hozott létre **mentése**.
+18. A **egy fájl vagy mappa kiválasztása**, találják a **SmartHotel.Registration.Wcf.zip** fájl, az összeállítás során létrehozása, és kattintson a **mentése**.
 
     ![A WCF mentése](./media/contoso-migration-refactor-web-app-sql/pipeline16.png)
 

@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció IMPAC kockázati Manager |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció IMPAC kockázati Manager |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés IMPAC kockázati Manager és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 4d77390e-898c-4258-a562-a1181dfe2880
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: c086d58a7de4897f93699d2c22b6598896eb50e7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ca0ea482b1cfb2f7af962ae1b7537f79bb60a62b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434480"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823147"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Oktatóanyag: Azure Active Directory-integráció a IMPAC kockázati Managerrel
+# <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Oktatóanyag: Az Azure Active Directory-integráció a IMPAC kockázati Managerrel
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan IMPAC kockázati Manager integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a IMPAC kockázati Managerrel, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy kockázati Manager IMPAC egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD-be a IMPAC kockázati Manager-integráció konfigurálása szükség
 
 **IMPAC kockázati Manager hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -152,7 +152,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 1. Az egyszeri bejelentkezés konfigurálása **IMPAC kockázati Manager** oldalon kell küldenie a letöltött **Certificate(Base64)**, **kijelentkezéses URL-címet, a SAML Entitásazonosító,** és  **SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [IMPAC kockázati Manager támogatási munkacsoportjának](mailto:rmsupport@Impac.co.nz). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -188,7 +188,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-impac-risk-manager-test-user"></a>IMPAC kockázati Manager tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon IMPAC kockázati Manager nevű felhasználó létrehozásához. Együttműködve [IMPAC kockázati Manager támogatási munkacsoportjának](mailto:rmsupport@Impac.co.nz) a felhasználók hozzáadása az IMPAC kockázati Manager platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy Britta Simon IMPAC kockázati Manager nevű felhasználó létrehozásához. Együttműködve [IMPAC kockázati Manager támogatási munkacsoportjának](mailto:rmsupport@Impac.co.nz) a felhasználók hozzáadása az IMPAC kockázati Manager platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -220,7 +220,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

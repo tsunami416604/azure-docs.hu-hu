@@ -13,13 +13,13 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
-ms.date: 01/04/2019
-ms.openlocfilehash: da1cad5c949579e0c66d9cc49f99b7cee9d53f35
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/23/2019
+ms.openlocfilehash: 1ace7ecd42ac36be1c38e52dcef6663439b7db4c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452241"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817823"
 ---
 # <a name="registration-management"></a>Regisztrációkezelés
 
@@ -34,6 +34,9 @@ Eszközregisztráció az egy értesítési központ használatával valósíthat
 ### <a name="registrations"></a>Regisztrációk
 
 Egy regisztrációs a Platformértesítési szolgáltatás (PNS) leíró eszközhöz társítja, címkék, és esetleg egy sablont. A PNS-leíró egy amiatt, eszköztoken vagy GCM regisztrációs azonosító lehet. Címkék segítségével értesítések átirányítása az eszközleírók megfelelő készletét. További információkért lásd: [az Útválasztás és címke kifejezések](notification-hubs-tags-segment-push-message.md). Sablonok regisztrációs átalakítás végrehajtásához használnak. További információért lásd a [Sablonok](notification-hubs-templates-cross-platform-push-messages.md) szakaszt.
+
+> [!NOTE]
+> Az Azure Notification Hubs regisztrációs / 60 címkék legfeljebb támogat.
 
 ### <a name="installations"></a>Telepítések
 

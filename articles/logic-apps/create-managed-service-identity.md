@@ -8,17 +8,17 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
-ms.date: 10/05/2018
-ms.openlocfilehash: 19e6693de673eae6fe0b885580975c4cefc35d60
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/22/2019
+ms.openlocfilehash: a22512a960426cc21f4f012e06b9df4fa86e637e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725148"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807269"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Felügyelt identitások Azure Logic Apps-erőforrások eléréséhez és hitelesítéséhez
 
-A többi Azure Active Directory (Azure AD) bérlő erőforrásaihoz, és a személyazonosság hitelesítéséhez bejelentkezés nélkül, használja a logikai alkalmazás egy [identitás](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén a Felügyeltszolgáltatás-identitást vagy MSI), nem pedig hitelesítő adatok vagy titkos kulcsok. Az Azure felügyeli ezt az identitást, és segít biztosítani a hitelesítő adatait, mert nincs vagy titkos kulcsok elforgatása. Ez a cikk bemutatja, hogyan hozhat létre, és a logikai alkalmazás alapértelmezett felügyelt identitás használatára. Felügyelt identitások kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások?](../active-directory/managed-identities-azure-resources/overview.md)
+A többi Azure Active Directory (Azure AD) bérlő erőforrásaihoz, és a személyazonosság hitelesítéséhez bejelentkezés nélkül, használja a logikai alkalmazás egy [identitás](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén a Felügyeltszolgáltatás-identitást vagy MSI), nem pedig hitelesítő adatok vagy titkos kulcsok. Az Azure felügyeli ezt az identitást, és segít biztosítani a hitelesítő adatait, mert nincs vagy titkos kulcsok elforgatása. Ez a cikk bemutatja, hogyan állíthat be, és a logikai alkalmazás alapértelmezett felügyelt identitás használatára. Felügyelt identitások kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!NOTE]
 > Akkor is jelenleg legfeljebb 10 logikai alkalmazások munkafolyamataiba, a rendszer által hozzárendelt felügyelt minden egyes Azure-előfizetésben azonosítók.
@@ -29,40 +29,42 @@ A többi Azure Active Directory (Azure AD) bérlő erőforrásaihoz, és a szem�
 
 * A logikai alkalmazás, ahol szeretné használni, a rendszer által hozzárendelt felügyelt identitás. Ha a logikai alkalmazás nem rendelkezik, tekintse meg [az első logikai alkalmazás munkafolyamatának létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-<a name="create-identity"></a>
+<a name="enable-identity"></a>
 
-## <a name="create-managed-identity"></a>Hozzon létre felügyelt identitás
+## <a name="enable-managed-identity"></a>Felügyelt identitás engedélyezése
 
-Hozzon létre, vagy egy rendszer által hozzárendelt felügyelt identitás engedélyezése a logikai alkalmazás az Azure portal, az Azure Resource Manager-sablonok vagy az Azure PowerShell használatával. 
+Felügyelt identitások rendszer által hozzárendelt nem kell manuálisan létrehozni az identitásukat. A rendszer által hozzárendelt felügyelt identitást a logikai alkalmazás állíthat be, használhatja az alábbi módszerek: 
+
+* [Azure Portal](#azure-portal) 
+* [Az Azure Resource Manager-sablonok](#template) 
+* [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md) 
+
+<a name="azure-portal"></a>
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás a logikai alkalmazás az Azure Portalon keresztül, kapcsolja be a **regisztrálása az Azure Active Directory** beállítása az a logikai alkalmazás munkafolyamat-beállításokat.
+Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás a logikai alkalmazás az Azure Portalon keresztül, kapcsolja be a **rendszerhez rendelt** a logikai alkalmazás nastavení identity beállítást.
 
 1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a logikai alkalmazás a Logikaialkalmazás-tervezőben.
 
-1. Kövesse az alábbi lépéseket: 
+1. A logikai alkalmazás menüjében alatt **beállítások**válassza **identitás**. 
 
-   1. A logikai alkalmazás menüjében alatt **beállítások**válassza **munkafolyamat-beállítások**. 
+1. A **rendszerhez rendelt** > **állapot**, válassza a **a**. Ezután válassza ki **mentése** > **Igen**.
 
-   1. A **felügyeltszolgáltatás-identitás** > 
-    **regisztrálása az Azure Active Directory**, válassza a **a**.
+   ![Kapcsolja be a felügyelt identitás beállítása](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
 
-   1. Ha elkészült, válassza ki a **mentése** az eszköztáron.
+   A logikai alkalmazás most már rendelkezik egy az Azure Active Directoryban felügyelt rendszer által hozzárendelt identitások:
 
-      ![Kapcsolja be a felügyelt identitás beállítása](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
+   ![GUID azonosítójú objektum](./media/create-managed-service-identity/object-id.png)
 
-      A logikai alkalmazás most már rendelkezik egy ezeket a tulajdonságokat és értékeket az Azure Active Directoryban regisztrált felügyelt rendszer által hozzárendelt identitások:
+   | Tulajdonság | Érték | Leírás | 
+   |----------|-------|-------------| 
+   | **Objektumazonosító:** | <*identity-resource-ID*> | Egy globálisan egyedi azonosítóját (GUID), amely jelöli, a rendszer által hozzárendelt felügyelt identitás a logikai alkalmazás az Azure AD-bérlő | 
+   ||| 
 
-      ![A résztvevő-azonosító és a bérlői azonosító GUID-azonosítói](./media/create-managed-service-identity/principal-tenant-id.png)
+<a name="template"></a>
 
-      | Tulajdonság | Érték | Leírás | 
-      |----------|-------|-------------| 
-      | **Résztvevő-azonosító** | <*résztvevő-azonosító*> | Egy globálisan egyedi azonosítóját (GUID), amely a logikai alkalmazás az Azure AD-bérlő | 
-      | **Bérlő azonosítója** | <*Az Azure-AD-Bérlőazonosító*> | Egy globálisan egyedi azonosítóját (GUID), amely az Azure AD-bérlővel, ahol a logikai alkalmazás most már a tagja. Az Azure AD-bérlőjében található egyszerű szolgáltatás rendelkezik a neve megegyezik a logikaialkalmazás-példányt. | 
-      ||| 
-
-### <a name="deployment-template"></a>Központi telepítési sablon
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
 Ha automatizálni szeretné létrehozni és üzembe helyezése Azure-erőforrások például a logic apps, [Azure Resource Manager-sablonok](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md). Alapértelmezett felügyelt identitás-sablon segítségével a logikai alkalmazás létrehozásához adja hozzá a `"identity"` elem és `"type"` tulajdonságát a logikai alkalmazás munkafolyamat-definíció a központi telepítési sablon: 
 
@@ -109,8 +111,8 @@ Ha az Azure létrehozza a logikai alkalmazást, a logikai alkalmazás munkafolya
 
 | Tulajdonság | Érték | Leírás | 
 |----------|-------|-------------|
-| **principalId** | <*résztvevő-azonosító*> | Egy globálisan egyedi azonosítóját (GUID), amely a logikai alkalmazás az Azure AD-bérlőben | 
-| **bérlő azonosítója** | <*Az Azure-AD-Bérlőazonosító*> | Egy globálisan egyedi azonosítóját (GUID), amely az Azure AD-bérlővel, ahol a logikai alkalmazás most már a tagja. Az Azure AD-bérlőjében található egyszerű szolgáltatás rendelkezik a neve megegyezik a logikaialkalmazás-példányt. | 
+| **principalId** | <*principal-ID*> | Egy globálisan egyedi azonosítóját (GUID), amely a logikai alkalmazás az Azure AD-bérlőben, és néha "Objektumazonosító" néven jelenik meg, vagy `objectID` | 
+| **tenantId** | <*Azure-AD-tenant-ID*> | Egy globálisan egyedi azonosítóját (GUID), amely az Azure AD-bérlővel, ahol a logikai alkalmazás most már a tagja. Az Azure AD-bérlőjében található egyszerű szolgáltatás rendelkezik a neve megegyezik a logikaialkalmazás-példányt. | 
 ||| 
 
 <a name="access-other-resources"></a>
@@ -150,11 +152,23 @@ Miután beállította a logikai alkalmazás egy rendszer által hozzárendelt id
 
 1. Adja meg a szükséges adatokat, hogy a művelet, például a kérés **metódus** és **URI** a hívni kívánt erőforrás helye.
 
+   Tegyük fel például, használja az Azure Active Directory (Azure AD) hitelesítési [az Azure-szolgáltatások, amelyek támogatják az Azure ad-ben egyik](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   Az a **URI** adja meg a végpont URL-címe az Azure szolgáltatás. 
+   Tehát, ha az Azure Resource Manager használata esetén meg ezt az értéket a **URI** tulajdonság:
+
+   `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version-2016-06-01`
+
 1. Válassza a HTTP-művelet **speciális beállítások megjelenítése**. 
 
-1. Az a **hitelesítési** listáról válassza ki **Felügyeltszolgáltatás-identitás**, amely majd bemutatja a **célközönség** tulajdonsága állítható be:
+1. Az a **hitelesítési** listáról válassza ki **felügyelt identitás**. Miután kiválasztotta a hitelesítés a **célközönség** tulajdonság jelenik meg, amelyen az erőforrás-Azonosítójának alapértelmezett értéke:
 
-   ![Válassza a "Felügyelt Szolgáltatásidentitás"](./media/create-managed-service-identity/select-managed-service-identity.png)
+   ![Válassza a "Felügyelt identitás"](./media/create-managed-service-identity/select-managed-service-identity.png)
+
+   > [!IMPORTANT]
+   > 
+   > Az a **célközönség** tulajdonság, az erőforrás-Azonosítójának értéke pontosan egyeznie kell azzal az Azure AD vár, így azokat is szükséges a záró perjeleket. 
+   > Ez az ezen erőforrás-azonosító értékeinek található [táblázat: Azure szolgáltatásokban, amelyek támogatják az Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   > Például ha Azure-erőforrással Manager erőforrás-Azonosítóját használja, győződjön meg arról, az URI-t rendelkezik záró perjellel.
 
 1. Továbbra is a kívánt módon a logikai alkalmazás kiépítésének.
 
@@ -162,23 +176,21 @@ Miután beállította a logikai alkalmazás egy rendszer által hozzárendelt id
 
 ## <a name="remove-managed-identity"></a>Távolítsa el a felügyelt identitás
 
-A rendszer által hozzárendelt felügyelt identitás a logikai alkalmazás letiltásához lépésekkel a hasonló hogyan hozott létre az identitás, az Azure portal, az Azure Resource Manager központi telepítési sablonok vagy az Azure PowerShell használatával. 
+A rendszer által hozzárendelt felügyelt identitás a logikai alkalmazás letiltásához lépésekkel a hasonló hogyan állíthatja be az identitást, az Azure portal, az Azure Resource Manager központi telepítési sablonok vagy az Azure PowerShell használatával. 
 
 A logikai alkalmazás törlése, ha az Azure automatikusan eltávolítja a logikai alkalmazás alapértelmezett identitás az Azure ad-ből.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Logikaialkalmazás-Tervező nyissa meg a logikai alkalmazást.
+Távolítsa el a rendszer által hozzárendelt felügyelt identitás a logikai alkalmazás az Azure Portalon keresztül, kapcsolja ki a **rendszerhez rendelt** a logikai alkalmazás nastavení identity beállítást.
 
-1. Kövesse az alábbi lépéseket: 
+1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a logikai alkalmazás a Logikaialkalmazás-tervezőben.
 
-   1. A logikai alkalmazás menüjében alatt **beállítások**válassza **munkafolyamat-beállítások**. 
-   
-   1. A **felügyeltszolgáltatás-identitás**, válassza a **ki** számára a **regisztrálása az Azure Active Directory** tulajdonság.
+1. A logikai alkalmazás menüjében alatt **beállítások**válassza **identitás**. 
 
-   1. Ha elkészült, válassza ki a **mentése** az eszköztáron.
+1. A **rendszerhez rendelt** > **állapot**, válassza a **ki**. Ezután válassza ki **mentése** > **Igen**.
 
-      ![Kapcsolja ki a felügyelt identitás beállítása](./media/create-managed-service-identity/turn-off-managed-service-identity.png)
+   ![Kapcsolja ki a felügyelt identitás beállítása](./media/create-managed-service-identity/turn-off-managed-service-identity.png)
 
 ### <a name="deployment-template"></a>Központi telepítési sablon
 
@@ -194,4 +206,3 @@ Ha felügyelt identitás a logikai alkalmazás alapértelmezett üzembe helyezé
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
-

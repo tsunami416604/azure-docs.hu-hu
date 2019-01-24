@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: e36673c7baa03e1bcf36c149851e6455cea798fe
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 6e829d617aa978f94b99cc9d018b5ca863eaaef0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945569"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807320"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Az Azure AD-hitelesítés használata az Azure Media Services API .NET-keretrendszerrel történő eléréséhez
 
@@ -80,7 +80,7 @@ Ha csatlakozni szeretne az Azure Media Service API-t a felhasználó-hitelesít�
 
 Ezek a paraméterek értékei található **AzureEnvironments.AzureCloudEnvironment**. A **AzureEnvironments.AzureCloudEnvironment** állandó van a .NET SDK-val lekérheti a megfelelő környezetet egy nyilvános Azure-adatközpontok környezetiváltozó-beállításainak a segítő. 
 
-Előre definiált környezeti beállítások eléréséhez a Media Services csak a nyilvános adatközpontokban tartalmazza. A független vagy a kormányzati felhő-régiók, használhatja **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvrionment**, vagy **AzureGermanCloudEnvironment** jelölik.
+Előre definiált környezeti beállítások eléréséhez a Media Services csak a nyilvános adatközpontokban tartalmazza. A független vagy a kormányzati felhő-régiók, használhatja **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment**, vagy **AzureGermanCloudEnvironment** jelölik.
 
 Az alábbi példakód létrehoz egy jogkivonatot:
     
@@ -122,7 +122,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre az Azure ad-ben és a környez
     }
 
 >[!NOTE]
->Ha arról, hogy a kivétel "a távoli kiszolgáló hibát adott vissza: (401) nem engedélyezett," tekintse meg a [hozzáférés-vezérlés](media-services-use-aad-auth-to-access-ams-api.md#access-control) elérése az Azure Media Services API Azure AD-hitelesítés – áttekintés szakaszában.
+>Ha a kivételt, amely szerint "a távoli kiszolgáló hibát adott vissza: Jogosulatlan (401-es)"tekintse meg a [hozzáférés-vezérlés](media-services-use-aad-auth-to-access-ams-api.md#access-control) elérése az Azure Media Services API Azure AD-hitelesítés – áttekintés szakaszában.
 
 ## <a name="use-service-principal-authentication"></a>Használja az egyszerű szolgáltatásnév hitelesítése
     

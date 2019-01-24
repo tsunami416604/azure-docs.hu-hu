@@ -1,6 +1,6 @@
 ---
-title: Arcfelismerés és az Azure Media Analytics Érzelemfelismerési észlelése |} Microsoft Docs
-description: Ez a témakör bemutatja, hogyan lapokat és az Azure Media Analytics érzelmek észleléséhez.
+title: Arcfelismerés és az Azure Media Analytics Érzelemfelismerési észleléséhez |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan észleli az arcokat és érzelmeket azonosíthat az Azure Media Analytics.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,56 +14,56 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 859e75819f96edd527fceb143faf8357738ce80e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5aab8a5d48b7a7d17aa44b74d65ee70cb9322944
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33789389"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817554"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Arcfelismerés és az Azure Media Analytics Érzelemfelismerési észlelése
 ## <a name="overview"></a>Áttekintés
-A **Azure Media Arcfelismerési érzékelő** media processzor (MP) lehetővé teszi a száma, nyomon követésére típusú áthelyezések, és akkor is fel tudja mérni a célközönség részvételét és reakciót arcfelismerést kifejezések keresztül. Ez a szolgáltatás két funkciókat tartalmazza: 
+A **Azure Media Face detector használatával** médiafeldolgozót. (pont) lehetővé teszi a száma, nyomon követheti a áthelyezések száma – és még mérőműszer célközönség való részvétel és reagálás arckifejezések keresztül. Ez a szolgáltatás két funkciókat tartalmazza: 
 
-* **arcfelismerési észlelése**
+* **Arcfelismerés**
   
-    Arcfelismerési észlelési talál, és nyomon követi a videó emberi lapjaira. Több lapokat észlelhető, és ezt követően nyomon követheti az adott vissza egy JSON-fájlban ideje és helye metaadatokkal körül, mozgás. Során nyomon követése, megkísérli adjon egységes azonosító ugyanazon felületére, amíg a személy van Navigálás a képernyőn, még akkor is, ha kényszerítő vagy röviden hagyja a keret.
+    Arcfelismerés megkeresi és nyomon követi a videó emberi arcokat. Több arcok észlelése, és ezt követően a visszaadott JSON-fájlban időt és tartózkodási helyet metaadatokkal mozgás körül, követni. Során nyomon követése, megkísérli a konzisztens ID adhat az azonos face, bár a személy van Navigálás a képernyőn, még akkor is, ha azok kényszerítő, vagy röviden hagyja a keret.
   
   > [!NOTE]
-  > Ez a szolgáltatás nem végez arcfelismerést. Személy elhagyja a keret vagy a válik fedhetik túl hosszú kap egy új Azonosítót amikor azok tér vissza.
+  > Ez a szolgáltatás nem végez arcfelismerési. Olyan személy, akinek elhagyja a keretet, vagy a válik fedhetik túl sokáig kap egy új azonosító Ha vissza.
   > 
   > 
-* **Érzelemfelismerés**
+* **Érzelemfelismerő**
   
-    Érzelemfelismerés Arcfelismerési észlelési adathordozó-processzor elemzés több érzelmi attribútum vissza a lapok észlel, például Boldogsága, sadness, félelem, utasítás és egyéb választható összetevőként. 
+    Érzelemfelismerő adja vissza elemzési több érzelmi attribútumok az arcok észlelése esetén például boldogság, szomorúság, félelem, düh, és egyéb arcok észlelése médiafeldolgozó választható összetevője. 
 
-A **Azure Media Arcfelismerési érzékelő** felügyeleti csomag jelenleg előzetes verzió.
+A **Azure Media Face detector használatával** felügyeleti csomag jelenleg előzetes verzióban érhető el.
 
-Ez a cikk részletezi kapcsolatos **Azure Media Arcfelismerési érzékelő** és a .NET-keretrendszerhez készült Media Services SDK-val való használatát ismerteti.
+Ez a cikk kapcsolatos részleteket nyújt **Azure Media Face detector használatával** , és bemutatja, hogyan használja a Media Services SDK a .NET-hez.
 
-## <a name="face-detector-input-files"></a>A bemeneti fájlok érzékelő szembesülhetnek
-Videofájlok lejátszását. Jelenleg a következő formátumok használhatók: MP4 MOV és WMV.
+## <a name="face-detector-input-files"></a>A Face detector használatával bemeneti fájlok
+Videofájlok. Jelenleg a következő formátumok támogatottak: MP4 MOV és WMV.
 
-## <a name="face-detector-output-files"></a>Szembesülhetnek érzékelő kimeneti fájlok
-A tapasztalt felderítését és a nyomon követési API magas pontosság arcfelismerési hely észlelési és követési, amely észlelni tudja a videó legfeljebb 64 emberi lapok biztosít. Elülső lapok nyújtanak a legjobb eredmények elérése érdekében, közben ügyféloldali lapok és kis (legfeljebb 24 x 24 képpont) lapok nem feltétlenül legpontosabb.
+## <a name="face-detector-output-files"></a>A Face detector használatával kimeneti fájlok
+Észlelés és követési face API biztosít a nagy pontosságú arcfelismeréssel és követés segítségével, amely egy videóban akár 64 emberi arcokat észleli. Elülső arcok, adja meg a legjobb eredmények elérése érdekében, ügyféloldali arcok közben, és kis arcok (kisebb vagy egyenlő 24 x 24 képpont) előfordulhat, hogy nem olyan pontos.
 
-Az észlelt és a nyomon követett lapok koordináták (bal, felső, szélességét és magasságát) küld vissza a rendszer jelzi a lapok képpont, valamint egy oldallal azonosítószámát, jelezve, hogy egyes követését a lemezkép helyét. Arcfelismerési azonosítószámát nagyon eséllyel fordulnak elő a elülső arcfelismerési ellopása vagy átfedésben vannak a keretében körülmények alaphelyzetbe néhány első hozzárendelt több azonosítók egyének eredményez.
+Az észlelt, és a nyomon követett arcok visszaadott koordinátákkal megadott (balra, felső, szélesség és magasság) jelző arcok a képen képpont, valamint a nyomon követheti, hogy egyes jelző face ID szám helyét. Face ID számok során gyakran fordul elő alaphelyzetbe körülmények között, ha a elülső face elvesztése vagy a keretbe átfedett bizonyos felhasználók több ID első hozzárendelt eredményez.
 
-## <a id="output_elements"></a>A kimeneti JSON-fájl elemeinek
+## <a id="output_elements"></a>A kimenet JSON-fájl elemeinek
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 
-Arcfelismerési érzékelő (ahol az események törik fel, ha túl nagy elérték) töredezettsége (ahol a metaadatokat az időalapú adattömbök is osztható fel és letöltheti a csak találja), és a szegmentálási technikák használja. Néhány egyszerű számítások segítségével átalakíthatja az adatokat. Például, ha egy esemény használatába 6300 (ticks), egy időskálára 2997 (ticks/másodperc), és a 29,97 (keret/mp), majd képkockasebességhez:
+Arcérzékelő töredezettsége (ahol a metaadatok időalapú tömbökben is osztható fel és letöltheti, csak a szükséges), és a szegmentálási módszereket használ a (ahol az események vannak osztva abban az esetben, ha túl nagy kapnak). Néhány egyszerű számítás segítségére lehet az adatok átalakításában. Például, ha egy esemény lépései 6300 (órajelben), egy időskálára 2997 (órajel során végbemenő/másodperc), és képkockasebesség, majd 29,97 (keretek/másodperc):
 
-* Start/időskálára = 2.1 másodperc
-* X Framerate másodperc 63 keretek =
+* kezdési időpont/időskála = 2,1 másodperc
+* Másodperc x Framerate 63 keretek =
 
-## <a name="face-detection-input-and-output-example"></a>Szembesülhetnek észlelési bemeneti és kimeneti példa
+## <a name="face-detection-input-and-output-example"></a>Face észlelési bemeneti és kimeneti példa
 ### <a name="input-video"></a>A bemeneti videó
 [A bemeneti videó](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-preset"></a>A feladat konfigurációja (beállítás)
-A feladat létrehozásakor **Azure Media Arcfelismerési érzékelő**, meg kell adnia egy konfigurációs készletet. A következő konfigurációs készlet folyamat csak arcfelismerési észlelése.
+### <a name="task-configuration-preset"></a>A feladat konfigurációs (előre)
+A feladat létrehozásakor **Azure Media Face detector használatával**, meg kell adnia egy konfigurációs készletet. A következő konfigurációs beállítás van, és az arcfelismerés is használható.
 
 ```json
     {
@@ -74,13 +74,13 @@ A feladat létrehozásakor **Azure Media Arcfelismerési érzékelő**, meg kell
     }
 ```
 
-#### <a name="attribute-descriptions"></a>Az attribútumok leírása
+#### <a name="attribute-descriptions"></a>Attribútum leírása
 | Attribútum neve | Leírás |
 | --- | --- |
-| Mód |Gyors - feldolgozása gyors sebességét, de kevésbé pontos (alapértelmezett).|
+| Mód |Gyors - feldolgozó gyors sebességét, de kevésbé pontos (alapértelmezett).|
 
-### <a name="json-output"></a>JSON kimeneti
-A következő példa a JSON-kimenetét csonkolódott.
+### <a name="json-output"></a>JSON-kimenet
+Az alábbi példa JSON-kimenet csonkolva lettek.
 
 ```json
     {
@@ -130,12 +130,12 @@ A következő példa a JSON-kimenetét csonkolódott.
 ```
 
 
-## <a name="emotion-detection-input-and-output-example"></a>Érzelemfelismerés bemeneti és kimeneti példa
+## <a name="emotion-detection-input-and-output-example"></a>Érzelemfelismerő bemeneti és kimeneti példa
 ### <a name="input-video"></a>A bemeneti videó
 [A bemeneti videó](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-preset"></a>A feladat konfigurációja (beállítás)
-A feladat létrehozásakor **Azure Media Arcfelismerési érzékelő**, meg kell adnia egy konfigurációs készletet. A következő konfigurációs beállítás határozza meg a érzelemfelismerés alapján JSON létrehozásához.
+### <a name="task-configuration-preset"></a>A feladat konfigurációs (előre)
+A feladat létrehozásakor **Azure Media Face detector használatával**, meg kell adnia egy konfigurációs készletet. A következő konfigurációs beállítás megadja, hogy hozzon létre JSON a érzelemfelismerő alapján.
 
 ```json
     {
@@ -149,23 +149,23 @@ A feladat létrehozásakor **Azure Media Arcfelismerési érzékelő**, meg kell
 ```
 
 
-#### <a name="attribute-descriptions"></a>Az attribútumok leírása
+#### <a name="attribute-descriptions"></a>Attribútum leírása
 | Attribútum neve | Leírás |
 | --- | --- |
-| Mód |Lapok: Csak szembesülhetnek észlelése.<br/>PerFaceEmotion: Visszatérési érzelemfelismerési egymástól függetlenül az egyes arcfelismerési észlelése.<br/>AggregateEmotion: Minden lap keretében átlagos érzelemfelismerési visszatérési értékei. |
-| AggregateEmotionWindowMs |Ha a kiválasztott AggregateEmotion módot használja. Megadja azt az időtartamot, ezredmásodpercben minden összesített eredmény létrehozásához használt videó. |
-| AggregateEmotionIntervalMs |Ha a kiválasztott AggregateEmotion módot használja. Itt adhatja meg, milyen gyakorisággal összesített eredmények eredményezett. |
+| Mód |Arcok: Csak arcfelismerés.<br/>PerFaceEmotion: Érzelemfelismerési egymástól függetlenül az egyes arcfelismerés visszaadása.<br/>AggregateEmotion: Keret összes arcok átlagos érzelemfelismerési értékeit visszaadása. |
+| AggregateEmotionWindowMs |Akkor használja, ha AggregateEmotion üzemmódot választja. A videó minden összesített eredmény, ezredmásodpercben létrehozásához használt hosszát adja meg. |
+| AggregateEmotionIntervalMs |Akkor használja, ha AggregateEmotion üzemmódot választja. Itt adhatja meg, milyen gyakorisággal el összesített eredményt. |
 
 #### <a name="aggregate-defaults"></a>Összesített alapértelmezései
-Alább összesített ablakot, és időköz beállítások értékei használata ajánlott. AggregateEmotionWindowMs hosszabb, mint AggregateEmotionIntervalMs kell lennie.
+Alább ajánlottak az összesített ablakot, és időköz beállítások értékeit. AggregateEmotionWindowMs AggregateEmotionIntervalMs hosszabb lehet.
 
-|| Alapértelmezett (s) | Max(s) | Min(s) |
+|| Alapértelmezett érték (s) | Max(s) | Percben |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0.5 |2 |0.25|
-| AggregateEmotionIntervalMs |0.5 |1 |0.25|
+| AggregateEmotionWindowMs |0,5 |2 |0.25|
+| AggregateEmotionIntervalMs |0,5 |1 |0.25|
 
-### <a name="json-output"></a>JSON kimeneti
-Összesített érzelemfelismerési (csonkolt) a kimeneti JSON:
+### <a name="json-output"></a>JSON-kimenet
+JSON-kimenetet az összesített érzelemfelismerési (csonkolt):
 
 ```json
     {
@@ -321,24 +321,24 @@ Alább összesített ablakot, és időköz beállítások értékei használata 
 ```
 
 ## <a name="limitations"></a>Korlátozások
-* A támogatott bemeneti videó formátumnak tartalmaznia kell MP4 MOV és WMV.
-* A észlelhető arcfelismerési mérete tartománya 24 x 24 a 2048 x 2048 képpontban megadva. A tartományon kívül esik a lapok nem fogja észlelni.
-* Minden egyes videó visszaadott oldalak maximális számának 64 esetén.
-* Bizonyos lapok műszaki akadályok; miatt nem észlelhető például nagyon nagy arcfelismerési szögek (head-jelentő), és nagy hangelnyelés. Elülső és közelében elülső lapok van a legjobb eredmények elérése érdekében.
+* A támogatott bemeneti videóformátumok MP4 MOV és WMV tartalmazza.
+* Az észlelhető oldallal mérete tartománya 24 x 24, 2048 x 2048 képpont. Az engedélyezett tartományon kívül esik az arcok észlelése nem történik meg.
+* Minden videó visszaadott arcok legfeljebb 64.
+* Néhány arcok technikai problémák miatt nem észlelhető például nagyon nagy méretű face szög (head-testtartás), és nagy hangelnyelés. Elülső és a közel-elülső arcok rendelkezik a legjobb eredmények elérése érdekében.
 
 ## <a name="net-sample-code"></a>.NET mintakód
 
-A következő program bemutatja hogyan:
+A következő program mutat be, hogyan:
 
-1. Hozzon létre egy eszközt, és adathordozó-fájl feltöltése az objektumba.
-2. Hozzon létre egy feladatot a következő json-készletet tartalmazó konfigurációs fájl alapján arcfelismerési észlelési feladatokkal: 
+1. Hozzon létre egy objektumot, és a egy médiafájlt feltöltése az objektumba.
+2. Hozzon létre egy feladatot a következő json-készletet tartalmazó konfigurációs fájl alapján arcok észlelése feladatokkal: 
 
     ```json
             {
                 "version": "1.0"
             }
     ```
-3. A kimeneti JSON-fájlok letöltésére. 
+3. Töltse le a kimeneti JSON-fájlokat. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
@@ -418,7 +418,7 @@ namespace FaceDetection
             task.InputAssets.Add(asset);
 
             // Add an output asset to contain the results of the job.
-            task.OutputAssets.AddNew("My Face Detectoion Output Asset", AssetCreationOptions.None);
+            task.OutputAssets.AddNew("My Face Detection Output Asset", AssetCreationOptions.None);
 
             // Use the following event handler to check job progress.  
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
@@ -520,7 +520,7 @@ namespace FaceDetection
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-[Azure Media Services elemző áttekintése](media-services-analytics-overview.md)
+[Az Azure Media Services analitikai funkcióinak áttekintése](media-services-analytics-overview.md)
 
 [Az Azure Médiaelemzés bemutatók](http://amslabs.azurewebsites.net/demos/Analytics.html)
 

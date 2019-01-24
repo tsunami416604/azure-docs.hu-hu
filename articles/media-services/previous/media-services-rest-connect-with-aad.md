@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: d9d1fa7d8cf25057339e560c371deb939997b578
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 17c25181709e6c75de2d23fb02fd55c0e6e41ae3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945077"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818030"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Az Azure AD-hitelesítés használata az Azure Media Services API REST-tel eléréséhez
 
@@ -50,7 +50,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 - Tekintse át a [elérése az Azure Media Services API Azure AD-hitelesítés – áttekintés](media-services-use-aad-auth-to-access-ams-api.md) cikk.
 - Telepítse a [Postman](https://www.getpostman.com/) hajtsa végre a jelen cikkben ismertetett REST API-k REST-ügyfél. 
 
-    Ebben az oktatóanyagban uring tudjuk **Postman** , de bármilyen REST eszköz alkalmas lenne. Egyéb alternatívák: **Visual Studio Code** REST beépülő modullal vagy **Telerik Fiddler**. 
+    Ebben az oktatóanyagban használjuk **Postman** , de bármilyen REST eszköz alkalmas lenne. Egyéb választható lehetőségek: **A Visual Studio Code** az REST beépülő modullal vagy **Telerik Fiddler**. 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>A hitelesítési adatok lekérése az Azure Portalról
 
@@ -79,7 +79,7 @@ Az információk lekéréséhez kövesse az alábbi lépéseket:
 5. Válasszon egy meglévő **Azure AD-alkalmazás** , vagy hozzon létre egy újat (lásd alább).
 
     > [!NOTE]
-    > Az Azure Media REST kérelem sikeres, a hívó felhasználónak rendelkeznie kell egy **közreműködői** vagy **tulajdonosa** szerepkör a Media Services-fiók elérésére tett kísérlet. Ha a kivételt, amely szerint "a távoli kiszolgáló hibát adott vissza: (401) nem engedélyezett," Lásd [hozzáférés-vezérlés](media-services-use-aad-auth-to-access-ams-api.md#access-control).
+    > Az Azure Media REST kérelem sikeres, a hívó felhasználónak rendelkeznie kell egy **közreműködői** vagy **tulajdonosa** szerepkör a Media Services-fiók elérésére tett kísérlet. Ha a kivételt, amely szerint "a távoli kiszolgáló hibát adott vissza: Jogosulatlan (401-es)"Lásd [hozzáférés-vezérlés](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
     Ha szeretne létrehozni egy új AD-alkalmazást, kövesse az alábbi lépéseket:
     
@@ -118,7 +118,7 @@ Hozzáadhat AD kapcsolódási paraméterek értékei a web.config vagy az app.co
 
 ## <a name="get-the-access-token-using-postman"></a>A Postman segítségével hozzáférési jogkivonat beszerzése
 
-Ez a szakasz bemutatja, hogyan **Postman** egy REST API-t, amely visszaadja a JWT tulajdonosi jogkivonat (hozzáférési tokenre) végrehajtásához. Minden olyan Media Services REST API hívásához, kell az "Engedélyezés" fejléc hozzáadása a hívásokat, és adja hozzá az értékét "tulajdonosi *your_access_token*" az egyes műveletmeghívásokhoz (ahogyan az ebben az oktatóanyagban a következő szakaszban látható). 
+Ez a szakasz bemutatja, hogyan **Postman** egy REST API-t, amely visszaadja a JWT tulajdonosi jogkivonat (hozzáférési tokenre) végrehajtásához. Minden olyan Media Services REST API hívásához, kell az "Engedélyezés" fejléc hozzáadása a hívásokat, és adja hozzá az értékét "tulajdonosi *your_access_token*" az egyes műveletmeghívásokhoz (ahogyan az ebben az oktatóanyagban a következő szakaszban látható). 
 
 1. Nyissa meg **Postman**.
 2. Válassza a **POST** lehetőséget.
@@ -188,5 +188,5 @@ A visszaadott válasz tartalmazza az eszközöket, amelyek a fiókjában.
 
 ## <a name="next-steps"></a>További lépések
 
-* A mintakód a próbálja [az Azure Media Services használatához Azure AD-hitelesítés: mindkét REST API-n keresztül](https://github.com/willzhan/WAMSRESTSoln)
+* A mintakód a próbálja [Azure AD-hitelesítés az Azure Media Services használatához: Mindkét REST API-n keresztül](https://github.com/willzhan/WAMSRESTSoln)
 * [.NET-tel fájlok feltöltése](media-services-dotnet-upload-files.md)

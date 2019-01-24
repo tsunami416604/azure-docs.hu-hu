@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 493ba5853173c34fbd58236c1a2dd2b28dc59a90
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e5ed2abca6c9a8bab6ee0df7a8aa05e40b48de5e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064307"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-spark"></a>Oktatóanyag: A Cisco Spark az Azure Active Directory-integráció
 
@@ -119,7 +119,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Cisco Spark, hajtsa v�
     
     | Name (Név) |  Adatforrás-attribútum|
     | ---------------|--------- |
-    | egyedi azonosítója | User.userPrincipalName |
+    | egyedi azonosítója | user.userprincipalname |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -149,7 +149,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Cisco Spark, hajtsa v�
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 

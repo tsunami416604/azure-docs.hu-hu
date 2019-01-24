@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 784cb5248dab2b9554c67347e1b9b848e1a9e985
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714300"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820784"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány
 
@@ -50,7 +50,7 @@ Használja az alábbi táblázat segítségével konfigurálja a tanúsítványt
 | Beállítás | Leírás |
 |-|-|
 | Name (Név) | Az App Service-tanúsítvány rövid nevét. |
-| Csupasz tartománynevet tartalmazó állomásnév | Ebben a lépésben az egyik legfontosabb részeit a vásárlási folyamat. A legfelső szintű tartománynév az alkalmazáshoz rendelt használja. Tegye _nem_ illesztenie a tartománynevet `www`. |
+| Csupasz tartománynevet tartalmazó állomásnév | Ha megadja a gyökértartomány, kap egy tanúsítványt, amely biztonságossá teszi a *mindkét* a legfelső szintű tartomány és a `www` altartomány. Biztonságos bármely altartomány csak, adja meg itt az altartomány teljesen minősített tartományneve (például `mysubdomain.contoso.com`). |
 | Előfizetés | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
 | Erőforráscsoport | Az erőforráscsoport, amely tartalmazza a tanúsítványt. Egy új erőforráscsoport használata, vagy válassza ki ugyanazt az erőforráscsoportot, az App Service-alkalmazást. |
 | Tanúsítványváltozat | Határozza meg a tanúsítványt szeretne létrehozni, hogy egy normál tanúsítványt, vagy [helyettesítő tanúsítvány](https://wikipedia.org/wiki/Wildcard_certificate). |
@@ -115,7 +115,7 @@ Használja az alábbi táblázat segítségével konfigurálja a kötés a **SSL
 |-|-|
 | Gazdanév | Az SSL-kötés hozzáadása a tartomány neve. |
 | Privát tanúsítvány ujjlenyomata | Kösse a tanúsítványt. |
-| SSL-típus | <ul><li>**SNI SSL** – több SNI-alapú SSL-kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több SSL-tanúsítvány biztosítson védelmet több tartomány számára ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefox-ot és az Operát) támogatja az SNI-t (átfogóbb böngészőtámogatási információkat a [Kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) című szakaszban talál).</li><li>**IP-based SSL** (IP-alapú SSL) – Csak egy IP-alapú SSL-kötés adható hozzá. Ez a beállítás csak egy SSL-tanúsítványnak engedélyezi egy dedikált nyilvános IP-cím védelmét. A kötés után konfigurálni, kövesse a [a rekord újbóli leképezése az IP SSL-hez](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
+| SSL-típus | <ul><li>**SNI SSL** – több SNI-alapú SSL-kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több SSL-tanúsítvány biztosítson védelmet több tartomány számára ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefox-ot és az Operát) támogatja az SNI-t (átfogóbb böngészőtámogatási információkat a [Kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) című szakaszban talál).</li><li>**IP-based SSL** (IP-alapú SSL) – Csak egy IP-alapú SSL-kötés adható hozzá. Ez a beállítás csak egy SSL-tanúsítványnak engedélyezi egy dedikált nyilvános IP-cím védelmét. Miután konfigurálta a kötés, kövesse a [a rekord újbóli leképezése az IP SSL-hez](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
 
 ## <a name="verify-https-access"></a>HTTPS-hozzáférés ellenőrzése
 
@@ -133,7 +133,7 @@ A tanúsítvány újrakulcsolása összesíti a tanúsítványt, és a egy új t
 
 ## <a name="renew-certificate"></a>Tanúsítvány megújítása
 
-Kapcsolja be a tanúsítvány automatikus megújítását, bármikor, jelölje be a tanúsítványt a [App Service-tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd kattintson a **az automatikus megújítás beállításai** a bal oldali navigációs. 
+Kapcsolja be a tanúsítvány automatikus megújítását, tetszőleges időpontban, válassza a tanúsítványt a [App Service-tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd kattintson a **az automatikus megújítás beállításai** a bal oldali navigációs. 
 
 Válassza ki **a** kattintson **mentése**. Tanúsítványok automatikus megújítása 60 nappal a lejárat előtt, ha engedélyezve van az automatikus megújítását megkezdéséhez.
 

@@ -3,7 +3,7 @@ title: A kétlépéses ellenőrzés – Azure Active Directory hibaelhárítása
 description: Mi a teendő, ha azok problémába az Azure multi-factor Authentication és a kétlépéses ellenőrzés felhasználók ad útmutatást.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.workload: identity
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: fd722da236f3e1fff18e2561756635cd95f098e0
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6cf794d36db865f553c0a4db16506305dab2f4fc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346523"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810176"
 ---
 # <a name="get-help-with-two-step-verification"></a>Segítség a kétlépcsős ellenőrzéshez
 
-A kétlépéses ellenőrzés egy olyan biztonsági funkció, a szervezet védelme érdekében a fiókok az. A kétlépéses ellenőrzés azért biztonságosabb, mint a jelszavak kétféle hitelesítési támaszkodik: valami ismeri, és valami Önnél. A felhasználó által ismert információ a jelszavát, a telefon vagy egy eszköz valami Önnél közben. A kétlépéses ellenőrzés használata segíthet állítsa le a rosszindulatú támadók nem jelentkezik be, Ön akkor is, ha kapnak a jelszavát.
+A kétlépéses ellenőrzés egy olyan biztonsági funkció, a szervezet védelme érdekében a fiókok az. A kétlépéses ellenőrzés azért biztonságosabb, mint egy egyszerű jelszó, mert két külön típusú hitelesítésre támaszkodik: valamire, amit tud, és valamire, ami Önnél van. A felhasználó által ismert információ a jelszavát, a telefon vagy egy eszköz valami Önnél közben. A kétlépéses ellenőrzés használata segíthet állítsa le a rosszindulatú támadók nem jelentkezik be, Ön akkor is, ha kapnak a jelszavát.
 
 A Microsoft biztosít a kétlépéses ellenőrzést, célszerű a szervezet, amely úgy dönt, hogy e funkció használata. Nem tilthatók le Ha a szervezet megköveteli, ugyanúgy, mint a fiók védelme érdekében jelszóval nem tilthatók le.
 

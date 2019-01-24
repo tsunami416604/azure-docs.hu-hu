@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Mixpanel |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Mixpanel |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Mixpanel között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: a2df26ef-d441-44ac-a9f3-b37bf9709bcb
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 9ec0b27defdc4c859415e78e1cb6e43f5ed0b208
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8475cccdac5c864171ac0bad0ad16ed6d6849ecc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435077"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823164"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Oktatóanyag: Azure Active Directory-integráció az Mixpanel
+# <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Oktatóanyag: Mixpanel az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Mixpanel integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a Mixpanel, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A Mixpanel egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a Mixpanel konfigurálásához hozzá kell Mixpanel a 
 
 **Mixpanel hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -137,20 +137,20 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Kattintson a **hozzáférését** fülre, majd **beállításainak módosítása**.
    
-    ![Mixpanel beállításai](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
+    ![Mixpanel Settings](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
 1. A a **az tanúsítványának módosítása** párbeszédpanel lap, kattintson a **fájl kiválasztása** a letöltött tanúsítvány feltöltéséhez, majd **tovább**.
    
-    ![Mixpanel beállításai](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
+    ![Mixpanel Settings](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
 1.  A hitelesítési URL-címe szövegmezőbe a a **módosítsa a hitelesítési URL-címet** párbeszédpanel lapon, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt majd **Tovább**.
    
-   ![Mixpanel beállításai](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
+   ![Mixpanel Settings](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
 1. Kattintson a **Done** (Kész) gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
@@ -195,7 +195,7 @@ Ez a szakasz célja a mixpanelben már létrehozott Britta Simon nevű felhaszn�
 
 1. Az a **csapattag** szövegmezőbe írja be a Britta e-mail címet az Azure-ban.
    
-    ![Mixpanel beállításai](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
+    ![Mixpanel Settings](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
 1. Kattintson a **meghívása**. 
 

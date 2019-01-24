@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: juliako
-ms.openlocfilehash: 618316b6b5979c65bc8906ea7d07c4f4fdf0930d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1477242e10918a9836ceea15d418fb462e193b1b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124610"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811740"
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>Az Azure Media Services streaming feladatátvétel végrehajtása
 
@@ -52,7 +52,7 @@ A következő szempontokat kell figyelembe venni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Két Media Services-fiók egy új vagy meglévő Azure-előfizetést. Lásd: [hogyan hozhat létre egy Media Services-fiók](media-services-portal-create-account.md).
-* Operációs rendszer: Windows 7, Windows 2008 R2 vagy Windows 8-as.
+* Operációs rendszer: Windows 7, Windows 2008 R2 vagy Windows 8-ban.
 * .NET-keretrendszer 4.5-ös vagy a .NET-keretrendszer 4.
 * Visual Studio 2010 SP1 vagy újabb verzió (Professional, Premium, Ultimate vagy Express).
 
@@ -62,7 +62,7 @@ Ebben a szakaszban létre, és állítsa be a C# Konzolalkalmazás-projektet.
 1. Hozzon létre egy új megoldás, amely tartalmazza a C# Konzolalkalmazás-projektet a Visual Studio használatával. Adja meg **HandleRedundancyForOnDemandStreaming** a nevet, majd kattintson a **OK**.
 2. Hozzon létre a **SupportFiles** mappát ugyanazon a szinten, a **HandleRedundancyForOnDemandStreaming.csproj** soubor projektu. Alatt a **SupportFiles** mappában hozzon létre a **OutputFiles** és **MP4Files** mappákat. Másolja be egy .mp4-fájlt a **MP4Files** mappát. (Ebben a példában a **BigBuckBunny.mp4** fájlt használja.) 
 3. Használat **Nuget** hozzáadása a Media Services kapcsolódó DLL-ek mutató hivatkozásokat. A **Visual Studio főmenü**válassza **eszközök** > **kódtár Csomagkezelője** > **Package Manager Console**. A konzol ablakában írja be a **Install-Package windowsazure.mediaservices**, és nyomja le az Enter billentyűt.
-4. Adja hozzá az egyéb hivatkozásokat a projekthez szükséges: System.Configuration System.Runtime.Serialization és System.Web.
+4. Adja hozzá az mutató hivatkozások, amelyek szükségesek a projekthez: System.Configuration, System.Runtime.Serialization, and System.Web.
 5. Cserélje le **használatával** hozzáadott utasítások a **Programs.cs** fájl alábbi olyanokra alapértelmezés szerint:
    
         using System;
@@ -178,7 +178,7 @@ Ebben a szakaszban képes kezelni a redundancia hoz létre.
                 CreateFileInfosForAssetWithRest(_contextTarget, targetAsset, MediaServicesAccountNameTarget, MediaServicesAccountKeyTarget);
         
                 // Check if the AssetFiles are now  associated with the asset.
-                Console.WriteLine("Asset files assocated with the {0} asset:", targetAsset.Name);
+                Console.WriteLine("Asset files associated with the {0} asset:", targetAsset.Name);
                 foreach (var af in targetAsset.AssetFiles)
                 {
                     Console.WriteLine(af.Name);

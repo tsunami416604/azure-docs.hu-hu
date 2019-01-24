@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3afe60e7a00cb4fc4aca5046da8e26aaf3c77a29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 1db379a48d4dafdaa2494d081658296a7145bcd9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198813"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815228"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -63,7 +63,7 @@ Az Azure Disk Encryption támogatott a következő kiszolgáló Linux-disztribú
 | SLES | 12 SP1 | Adatlemez |
 | SLES | Prioritás: 12-SP1 | Adatlemez |
 | SLES | HPC 12 | Adatlemez |
-| SLES | Prioritás: 11 – SP4 | Adatlemez |
+| SLES | Prioritás: 11-SP4 | Adatlemez |
 | SLES | 11 SP4 | Adatlemez |
 
 
@@ -137,7 +137,7 @@ Ha ezt a munkafolyamatot nem lehetséges, a függő entitások [a Storage Servic
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Milyen titkosítási módszert használ az Azure Disk Encryption?
 
-A Windows, ADE használ a Bitlocker AES256 titkosítási módszert (a Windows Server 2012 előtti verziókról AES256WithDiffuser). Linux rendszeren ADE használ az aes-xts-plain64 dmcrypt alapértelmezett egy 256 bites kötetfőkulccsal.
+A Windows, ADE használ a BitLocker AES256 titkosítási módszert (a Windows Server 2012 előtti verziókról AES256WithDiffuser). Linux rendszeren ADE használ az aes-xts-plain64 dmcrypt alapértelmezett egy 256 bites kötetfőkulccsal.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Ha EncryptFormatAll használja, és adja meg a minden kötet esetében, azt az adatot töröl már titkosított adatok meghajtókon?
 Nem, adatokat a rendszer nem törli a már Azure Disk Encryption használatával titkosított meghajtók. Hogyan EncryptFormatAll nem újratitkosítása az operációs rendszer meghajtójának hasonlóan, nem fog újra már a titkosított adatok meghajtójának titkosításához. További információkért lásd: a [EncryptFormatAll feltételek](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        

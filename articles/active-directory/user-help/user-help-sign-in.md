@@ -3,7 +3,7 @@ title: Bejelentkezés a kétlépéses ellenőrzés vagy a biztonsági adatokkal 
 description: Ismerje meg, jelentkezzen be a biztonsági adatokat a különböző identitás-ellenőrzési módszerek használatáról.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,19 +11,19 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 9f7f06df2ab54e7ccb947362b6824097158166ce
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 4bd1ceb03ddce572e0571afb87ec2f0c36a49443
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348386"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810414"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Jelentkezzen be a kétlépéses ellenőrzés vagy a biztonsági adatok
 
 Miután beállította a kétlépéses ellenőrzés vagy biztonsági adatait, jelentkezzen be a munkahelyi vagy iskolai fiókkal a megadott hitelesítési módszerrel képes lesz.
 
 >[!Note]
->Ha továbbra is használja a kétlépéses ellenőrzés élményt, kell állítsa be a hitelesítési módszereket a utasításait a [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md) cikk. Ha a rendszergazda bekapcsolta a biztonsági adatok élményt, meg kell beállítani a hitelesítési módszereket, ezek a részletes útmutatók segítségével:<ul><li>[Hitelesítési alkalmazást használhat a biztonsági adatok beállítása](security-info-setup-auth-app.md)</li><li>[Állítsa be a biztonsági adatok használatára, szöveges üzenetküldés](security-info-setup-text-msg.md)</li><li>[Telefonhívás használandó biztonsági adatainak beállítása](security-info-setup-phone-number.md)</li></ul>
+>Ha továbbra is használja a kétlépéses ellenőrzés élményt, kell állítsa be a hitelesítési módszereket a utasításait a [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md) cikk. Ha a rendszergazda bekapcsolta a biztonsági adatok élményt, meg kell beállítani a hitelesítési módszereket, ezek a részletes útmutatók segítségével:<ul><li>[Hitelesítési alkalmazást használhat a biztonsági adatok beállítása](security-info-setup-auth-app.md)</li><li>[A biztonsági adatok szöveges üzenetben történő hitelesítésének beállítása](security-info-setup-text-msg.md)</li><li>[Telefonhívás használandó biztonsági adatainak beállítása](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Jelentkezzen be az authenticator alkalmazás értesítés a mobileszközén
 

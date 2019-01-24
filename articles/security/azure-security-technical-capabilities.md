@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c74c208e77539833c2bc5e1323713191e29aec64
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249030"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820240"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességek
 
@@ -179,9 +179,9 @@ Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a c
 
 Az adatvédelem a felhőben, a kulcsok egyikét a számlázást a lehetséges állapotok, amelyben az adatok akkor fordulhat elő, és milyen vezérlők érhetők el az állapotban. Az Azure data biztonsággal és a titkosítással kapcsolatos ajánlott az ajánlások a következő adatokat állapotok merülnének fel.
 
-- Inaktív: Ez magában foglalja a tárolási objektum, a tárolók és a fizikai adathordozó statikusan létező típusok kell azt mágneses vagy optikai lemez összes információt.
+- At-rest: Ez magában foglalja a tárolási objektum, a tárolók és a fizikai adathordozó statikusan létező típusok kell azt mágneses vagy optikai lemez összes információt.
 
-- Az átvitel közbeni: Amikor adatátvitel összetevők, helyeket vagy programok, például több, mint a hálózati szolgáltatás közötti busz-(a felhőbe helyszíni és fordítva, beleértve a hibrid kapcsolatok, például az ExpressRoute) közötti, illetve egy bemeneti/kimeneti folyamat során , az, hogy gondoltam mozgó.
+- Átvitel: Ha az adatok között átvitt összetevők, a helyek vagy a programok, például a hálózaton keresztül, egy service bus (a felhőbe helyszíni, és fordítva, beleértve a hibrid kapcsolatok, például az ExpressRoute) közötti, vagy egy bemeneti/kimeneti folyamat során a rendszer teljes, gondolat a mozgásban lévő.
 
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
@@ -216,7 +216,7 @@ Fontolja meg, milyen tárolók használja adatok tárolására. Példa:
 
 Egyes üzletek használ használhatja a Rest-támogatás a meglévő titkosítása.
 
-- Az Azure Storage: Lásd: [az Azure Storage Service Encryption for Data at Rest](https://docs.microsoft.com/azure/storage/storage-service-encryption),
+- Azure Storage: Lásd: [az Azure Storage Service Encryption for Data at Rest](https://docs.microsoft.com/azure/storage/storage-service-encryption),
 
 - SQL Azure: Lásd: [transzparens adattitkosítás (TDE), az SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
 
@@ -248,7 +248,7 @@ Ha támogatja az ügyfél által felügyelt kulcsok, meg kell adnia egy felhaszn
 
 Titkosítás inaktív állapotban magában foglalja a gazdagép, infrastruktúra- és bérlői adatok, az adatvesztés a kulcsokat a rendszer hibája miatt a titkosítást, vagy kártékony tevékenységek azt is jelentheti, hogy a titkosított adatok elvész. Ezért fontos, hogy rendelkezik-e egy átfogó vész helyreállítási történetet rendszerhibák és kártékony tevékenységek rugalmas Rest-megoldást a titkosításhoz.
 
-Titkosítás inaktív állapotban megvalósító szolgáltatásoknak általában továbbra is ki van téve a titkosítási kulcsok vagy marad, hogy adatokat nem titkosított a gazdameghajtó (például az a gazdagép operációs Rendszeréhez oldal fájlja.) Ezért szolgáltatások biztosítania kell a gazdakötet szolgáltatásaik titkosítva van. Megkönnyítése érdekében a számítási csoport engedélyezve van a gazdagép-titkosítás, mely használja a központi [Bitlocker](https://technet.microsoft.com/library/dn306081.aspx) NKP és -bővítmények a DCM-szolgáltatás és az ügynök a gazdakötet titkosításához.
+Titkosítás inaktív állapotban megvalósító szolgáltatásoknak általában továbbra is ki van téve a titkosítási kulcsok vagy marad, hogy adatokat nem titkosított a gazdameghajtó (például az a gazdagép operációs Rendszeréhez oldal fájlja.) Ezért szolgáltatások biztosítania kell a gazdakötet szolgáltatásaik titkosítva van. Megkönnyítése érdekében a számítási csoport engedélyezve van a gazdagép-titkosítás, mely használja a központi [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP és -bővítmények a DCM-szolgáltatás és az ügynök a gazdakötet titkosításához.
 
 A legtöbb szolgáltatások standard szintű Azure-beli virtuális gépeken van megvalósítva. Ilyen szolgáltatásokat kell kapnia [gazdagép titkosítási](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) automatikusan amikor számítási lehetővé teszi, hogy azt. A futó számítási szolgáltatások felügyelt fürtöket gazdagép titkosítási automatikusan engedélyezve lesz, a Windows Server 2016 bevezetési.
 
@@ -370,7 +370,7 @@ A Microsoft Antimalware az Azure Cloud Services és Virtual Machines a vírusok,
 
 [Az Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) segítségével koordinálhatja replikáció, feladatátvétel és helyreállítás munkaterhelések és alkalmazások, hogy elérhetők egy másodlagos helyre, ha az elsődleges hely leáll.
 
-## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>A megfelelőség biztosítása: Cloud services legkörültekintőbben ellenőrzőlista miatt (védelme)
+## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>Megfelelőség biztosítása: Felhőszolgáltatások legkörültekintőbben ellenőrzőlista miatt (védelme)
 
 A Microsoft kifejlesztett [a Cloud Services esedékes Legkörültekintőbben ellenőrzőlista](https://aka.ms/cloudchecklist.download) segítségével a szervezetek gyakorolja szerkezetkialakításra, akkor fontolja meg a felhőre. Szerkezetet biztosít bármilyen méretű és típusú szervezet – titkos vállalkozás és -közszférában működő szervezetek, beleértve a kormányzati minden szintjének és nonprofit – saját teljesítmény, szolgáltatás, az adatkezelést és cégirányítási célok azonosításához és követelmények. Ez lehetővé teszi őket a különböző felhőszolgáltatók, végső soron az egy felhőalapú szolgáltatási szerződés alapját képező, az ajánlatok összehasonlítása.
 
@@ -452,7 +452,7 @@ A felhőalapú alkalmazások összetettek a részek. Győződjön meg arról, ho
 
 A hálózati biztonsági naplózás létfontosságú a hálózati biztonsági rések és az IT-biztonsági és jogszabályi cégirányítási modell betartásáért. Biztonsági csoport nézet kérheti le a konfigurált hálózati biztonsági csoport és a biztonsági szabályokat, valamint az érvényben lévő biztonsági szabályokat. A alkalmazni szabályok listáját, és megadhatja, hogy a nyitott portok irányítását és ss hálózati biztonsági rések.
 
-### <a name="network-watcher"></a>A Network watcher
+### <a name="network-watcher"></a>Hálózati figyelő
 
 [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) egy regionális szolgáltatás, amely lehetővé teszi a figyelési és diagnosztizálási tevékenységet végezhet hálózati szinten lévő, a és az Azure-ból. A hálózati diagnosztikai és vizualizációs eszközök a Network Watcherrel elérhető segítenek megérteni, diagnosztizálása és betekintést nyerhet az Azure-ban a hálózati. A szolgáltatás része, csomagrögzítés, következő ugrási, IP-folyamat ellenőrzése, a biztonsági csoport nézet NSG-Folyamatnaplók. Forgatókönyv szintű monitorozása biztosítja a teljes körű képet szakembereket egyes hálózati erőforrások monitorozása a hálózati erőforrásokhoz.
 

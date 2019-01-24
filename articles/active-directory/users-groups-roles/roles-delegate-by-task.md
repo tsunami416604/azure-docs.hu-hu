@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: bd63e8379051864a19c473779625a925446185f2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 1e679a1d26ce219f7c0248e27d7f9cfffc5fdb4e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445021"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813848"
 ---
 # <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök az Azure Active Directory identity feladat
 
@@ -117,7 +117,7 @@ Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szere
 Eszköz letiltása | Felhőbeli eszközrendszergazda | 
 Eszköz engedélyezése | Felhőbeli eszközrendszergazda | 
 Alapszintű konfiguráció olvasása | Felhasználói szerepkör alapértelmezés ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-Olvassa el a Bitlocker-kulcsok | Biztonsági olvasó | Jelszókezelő, a biztonsági rendszergazda
+Olvassa el a BitLocker-kulcsok | Biztonsági olvasó | Jelszókezelő, a biztonsági rendszergazda
 
 ## <a name="enterprise-applications"></a>Vállalati alkalmazások
 

@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Vodeclic |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Vodeclic |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Vodeclic között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: d77a0f53-e3a3-445e-ab3e-119cef6e2e1d
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: fb985b389139bfd8d54e6c54d101bbfa8a68a6d4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8f53082a2f6a33e934c2e3138d08725ffdf4fa2b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444623"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815412"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Oktatóanyag: Azure Active Directory-integráció az Vodeclic
+# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Vodeclic
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Vodeclic integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Vodeclic az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Előfizetés Vodeclic egyszeri bejelentkezés engedélyezve
 
 > [!NOTE]
@@ -170,7 +170,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-vodeclic-test-user"></a>Vodeclic tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Vodeclic hoz létre. Együttműködik a [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com) a felhasználók hozzáadása az Vodeclic platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Vodeclic hoz létre. Együttműködik a [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com) a felhasználók hozzáadása az Vodeclic platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 > [!NOTE]
 > Alkalmazás követelményeinek megfelelően szüksége lehet beolvasni a gép szerepel az engedélyezési listán. Az, hogy megtörténjen, meg kell osztania a nyilvános IP-címet a [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com).
@@ -205,7 +205,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza ki a **hozzárendelése** gombra.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel segítségével tesztelheti.
 

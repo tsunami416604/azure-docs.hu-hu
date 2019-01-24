@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: fa858ffbae5c1a37851ea114efd0fbc9cf010e68
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 3f01d5342fbeeb5cb5e19af63a0dd91128778859
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200802"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823232"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel
 ## <a name="overview"></a>Áttekintés
@@ -30,7 +30,7 @@ Munkafolyamatok ügyfél döntési logikát tartalmazhatnak, és a bemeneti forr
 
 A példában a munkafolyamatok hozhatja létre a következők:
 
-* Döntési-alapú munkafolyamatok, amelyek névfeloldási forrása tartalmának vizsgálata, és csak a kívánt kimeneti számok kódolása.  Ez hasznos, mivel az elpazarolt nyomon követi a forrás-tartalom elírás upscaling szerint fognak létrejönni.
+* Döntési-alapú munkafolyamatok, amelyek névfeloldási forrása tartalmának vizsgálata, és csak a kívánt kimeneti számok kódolása.  Ez hasznos, mivel az elpazarolt nyomon követi a forrástartalom véletlenül upscaling szerint fognak létrejönni.
 * Több bemeneti fájllal a feliratok, átfedések és való együttes tartalom használható. 
 
 Ezzel az eszközzel is használható, módosíthatja a [munkafolyamatok közzétett](media-services-workflow-designer.md#existing_workflows). 
@@ -74,7 +74,7 @@ Naponta 3 videó mutatja be:
 
 * Parancsfájl-kezelési munkafolyamatok/tervezetek belül
 * A jelenlegi kódoló vonatkozó korlátozások
-* A Q &AMP; A
+* Q&A
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
 > 

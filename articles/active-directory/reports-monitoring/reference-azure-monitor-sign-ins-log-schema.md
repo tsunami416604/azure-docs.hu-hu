@@ -4,7 +4,7 @@ description: A napló-sémát a az Azure Monitor (előzetes verzió) használata
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0c44501a483b9a988c3ef048d12455eb3e5ae337
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2957cd12fb6ef37b3e120b90b1500c6a43bb3e04
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546399"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813423"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>Az Azure Monitor (előzetes verzió) az Azure AD bejelentkezési naplók séma értelmezése
 
@@ -155,13 +155,13 @@ Ez a cikk ismerteti az Azure monitorban az Azure Active Directory (Azure AD) bej
 | Time | Dátuma és időpontja (UTC). |
 | ResourceId | Ez az érték nem leképezett, és biztonságosan figyelmen kívül hagyhatja ezt a mezőt.  |
 | OperationName | A bejelentkezések, az értéke mindig *bejelentkezési tevékenység*. |
-| operationVersion | Az ügyfél által kért REST API-verzió. |
+| OperationVersion | Az ügyfél által kért REST API-verzió. |
 | Kategória | A bejelentkezések, az értéke mindig *bejelentkezési*. | 
 | TenantId | GUID, a naplók társított tenant. |
 | ResultType | A bejelentkezési művelet eredménye lehet *sikeres* vagy *hiba*. | 
 | ResultSignature | Tartalmazza a hiba kódja, ha bármely, a bejelentkezési művelet. |
 | ResultDescription | A bejelentkezési művelet hiba leírását. |
-| durationMs |  Ez az érték nem leképezett, és biztonságosan figyelmen kívül hagyhatja ezt a mezőt.|
+| DurationMs |  Ez az érték nem leképezett, és biztonságosan figyelmen kívül hagyhatja ezt a mezőt.|
 | CallerIpAddress | A kérést leadó ügyfél IP-címét. | 
 | CorrelationId | A nem kötelező GUID, amely az ügyfél által átadott. Ez az érték segít összevetését ügyféloldali műveletek a kiszolgálóoldali műveletek, és ez akkor hasznos, ha követi nyomon, amelyek szolgáltatások naplók. |
 | Identitás | Az identitás a tokenben szereplő leadta a kérelmet. Lehet, hogy egy felhasználói fiókot, rendszerfiók vagy egyszerű szolgáltatást. |

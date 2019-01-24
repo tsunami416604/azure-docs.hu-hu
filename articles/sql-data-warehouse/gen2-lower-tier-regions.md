@@ -9,12 +9,12 @@ ms.component: design
 ms.date: 12/03/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: d3c42c13e58156013167b8570a8845ce9de08b3b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2aa513617f24201dfb341f9ab72ab9e3a221450d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882579"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819356"
 ---
 # <a name="azure-sql-data-warehouse-gen2-support-for-lower-compute-tiers"></a>Azure SQL Data Warehouse Gen2-támogatás a kisebb számítási szintek
 
@@ -29,7 +29,7 @@ A portálon jelenleg nem támogatja a központi vagy a méretezési lehetősége
 Ügyfelek eldönthetik, telepíthet egy új Gen2-példányt, vagy egy meglévő Gen1 adattárházpéldányt a rugalmasság és a következő generációs adattárházak teljesítményét frissítéséhez. 
 
 Próbálja ki [Azure SQL Data Warehouse Compute-optimalizált Gen2 kapacitás.](https://azure.microsoft.com/services/sql-data-warehouse/?v=17.44)
-Frissítés [Azure SQL Warehouse számítási optimalizált Gen1 Gen2-re](https://docs.microsoft.com/azure/sql-data-warehouse/upgrade-to-latest-generation) tekintse meg az Azure SQL Data Warehouse Gen2 ezen működés [Microsoft Mechanics videóját.](https://www.youtube.com/watch?v=Ap8I3UZonzI&feature=youtu.be)
+Frissítés [Azure SQL Data Warehouse számítási optimalizált Gen1 Gen2-re](https://docs.microsoft.com/azure/sql-data-warehouse/upgrade-to-latest-generation) tekintse meg az Azure SQL Data Warehouse Gen2 ezen működés [Microsoft Mechanics videóját.](https://www.youtube.com/watch?v=Ap8I3UZonzI&feature=youtu.be)
 
 
 ## <a name="supported-regions-for-lower-compute-tiers"></a>Támogatott régiók számítási alacsonyabb szinten
@@ -52,4 +52,4 @@ Frissítés [Azure SQL Warehouse számítási optimalizált Gen1 Gen2-re](https:
 
 ## <a name="next-steps"></a>További lépések
 
-- [További](upgrade-to-latest-generation.md) teljesítmény optimalizálása az SQL Data Warehouse frissítésével kapcsolatban. 
+- [További](upgrade-to-latest-generation.md) optimalizált számítási teljesítményt az SQL Data Warehouse frissítésével kapcsolatban. 

@@ -3,7 +3,7 @@ title: Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Dir
 description: Tudnivalók a kockázatos bejelentkezésekre vonatkozó jelentésekről az Azure Active Directory portálon
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8e92288883a7779130e3b7f7a8433b61f76aa18c
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 402aae15ae4fe8e6961fbc76a4ddaa470b8c797a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244715"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807762"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -61,9 +61,9 @@ Az Azure AD minden kiadása biztosítja a kockázatos bejelentkezések jelentés
 
 Az Azure AD ingyenes és alapszintű kiadása biztosít egy listát a kockázatos bejelentkezések, amely az észlelt a felhasználók számára. Minden rekord tartalmazza a következő attribútumokat:
 
-- **Felhasználó** – A bejelentkezési művelet során használt felhasználónév
-- **IP** – Az Azure Active Directoryhoz való csatlakozáshoz használt eszköz IP-címe
-- **Hely** – Az Azure Active Directoryhoz való csatlakozáshoz használt hely
+- **Felhasználói** – a felhasználó a bejelentkezési művelet során használt nevét.
+- **IP** – az Azure Active Directoryban való kapcsolódáshoz használt eszköz IP-cím.
+- **Hely** – Azure Active Directoryban való kapcsolódáshoz használt helyet. Ez az a legjobb erőfeszítés előállításához, nyomkövetéseket, beállításjegyzék-adatok, fordított keresések és egyéb információk alapján.
 - **Bejelentkezés ideje** – A bejelentkezés végrehajtásának időpontja
 - **Állapot** – A bejelentkezés állapota
 
@@ -106,6 +106,9 @@ Egy kockázati esemény kiválasztásakor megkapja az esemény részletes jelent
 - Kockázati események manuális bezárását. 
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/457.png)
+
+> [!IMPORTANT]
+> Egyes esetekben előfordulhat, anélkül, hogy a megfelelő bejelentkezési bejegyzés egy kockázati esemény a [bejelentkezésekre](concept-sign-ins.md). Ennek az az oka az Identity Protection kockázati kiértékeli mindkét **interaktív** és **nem interaktív** bejelentkezések, mivel a bejelentkezések jelentés azt mutatja, csak az interaktív bejelentkezések.
 
 Egy felhasználó kiválasztásakor megkapja a felhasználó részletes jelentési nézetét, amely a következőket teszi lehetővé:
 

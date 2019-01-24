@@ -8,19 +8,19 @@ manager: jeconnoc
 editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
-ms.service: virtual-machines-linux
+ms.service: azure-monitor
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 0039536caf917a051f0ddabd6be7cf2b1be90ba2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 198d6e596faf47528c508a9323ab22de563dfc62
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404902"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819033"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Az Azure Log Analytics Nozzle üzembe helyezése a Cloud Foundry figyelése
 
@@ -63,11 +63,11 @@ A Log Analytics-munkaterületet is létrehozhat, manuálisan vagy egy sablon has
 1. Az Azure Portalon a szolgáltatások listájában keresse az Azure piactéren, és válassza ki a Log Analytics.
 2. Válassza ki **létrehozás**, majd válassza ki az egyik lehetőséget a következő elemeknél:
 
-   * **Log Analytics-munkaterület**: írja be a munkaterület nevét.
+   * **Log Analytics-munkaterület**: Írja be a munkaterület nevét.
    * **Előfizetés**: Ha több előfizetéssel rendelkezik, kiválaszthatja a ugyanaz, mint a CF-telepítés.
-   * **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot, vagy használja ugyanazt a CF-hez üzemelő példány.
+   * **Erőforráscsoport**: Hozzon létre egy új erőforráscsoportot, vagy használja ugyanazt a CF-hez üzemelő példány.
    * **Hely**: Adja meg a helyet.
-   * **A tarifacsomag**: válasszon **OK** befejezéséhez.
+   * **A tarifacsomag**: Válassza ki **OK** befejezéséhez.
 
 További információkért lásd: [Ismerkedés a Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
@@ -78,13 +78,13 @@ További információkért lásd: [Ismerkedés a Log Analytics](https://docs.mic
 3. Írja be a "Cloud Foundry" kifejezést a keresési ablakba, és válassza a "Cloud Foundry figyelési megoldás".
 4. A Cloud Foundry figyelési megoldást sablon első lapon be van töltve, a sablon panel elindításához a "Létrehozás" gombra.
 5. Adja meg a szükséges paramétereket:
-    * **Előfizetés**: válassza ki a Log Analytics-munkaterületet, általában ugyanaz a Cloud Foundry üzembe helyezés az Azure-előfizetést.
+    * **Előfizetés**: Válassza ki a Log Analytics-munkaterületet, általában ugyanaz a Cloud Foundry üzembe helyezés az Azure-előfizetést.
     * **Erőforráscsoport**: Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat a Log Analytics-munkaterületet.
-    * **Erőforráscsoport helye**: válassza ki az erőforráscsoport helyét.
+    * **Erőforráscsoport helye**: Válassza ki az erőforráscsoport helyét.
     * **OMS_Workspace_Name**: Adjon meg egy nevet, ha a munkaterület nem létezik, a sablon létrehoz egy új.
-    * **OMS_Workspace_Region**: válassza ki a munkaterület helyét.
-    * **OMS_Workspace_Pricing_Tier**: válassza ki a Log Analytics-munkaterület Termékváltozat. Tekintse meg a [díjszabási útmutatóját](https://azure.microsoft.com/pricing/details/log-analytics/) referenciaként.
-    * **Jogi feltételek**: kattintson a jogi feltételeket, majd kattintson a "Létrehozás" fogadja el a jogi kifejezés.
+    * **OMS_Workspace_Region**: Válassza ki a munkaterület helyét.
+    * **OMS_Workspace_Pricing_Tier**: Válassza ki a Log Analytics-munkaterület Termékváltozat. Tekintse meg a [díjszabási útmutatóját](https://azure.microsoft.com/pricing/details/log-analytics/) referenciaként.
+    * **Jogi feltételek**: Kattintson a jogi feltételeket, majd kattintson a "Create", fogadja el a jogi kifejezés.
 - Után minden paraméter meg van adva, kattintson a "Létrehozás" a sablon üzembe helyezéséhez. Az üzembe helyezés befejezése után az állapot jelennek meg az értesítési lapon.
 
 

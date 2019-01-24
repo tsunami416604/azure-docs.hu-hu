@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 2efa450b6b0cfa299370df3941224f4f64e91b4b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: cc71aba3e884214b054e0ac4e888a52e38b1c390
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230764"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812539"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
@@ -71,10 +71,10 @@ Az alábbi mappák a készülék a víruskeresővel való ellenőrzésekből kiz
 
 - Az Azure Migrate szolgáltatás a bináris fájlokat tartalmazó mappa. Zárja ki az összes alárendelt mappát.
   %ProgramFiles%\ProfilerService  
-- Az Azure Migrate webes hatóságuknál. Zárja ki az összes alárendelt mappát.
+- Az Azure Migrate webes alkalmazást. Zárja ki az összes alárendelt mappát.
   %SystemDrive%\inetpub\wwwroot
 - Helyi gyorsítótár az adatbázis és naplófájlok. Az Azure migrate szolgáltatás ezt a mappát RW lemezt hozzá kell férnie.
-  %SYSTEMDRIVE%\Profiler
+  %SystemDrive%\Profiler
 
 ## <a name="discovery"></a>Detektálás
 
@@ -159,11 +159,11 @@ Az Azure Migrate jelenleg nem támogatja a költségbecslést [ajánlat nagyvál
 
 ### <a name="what-is-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Mi a különbség a között, helyszíni méretezése és a teljesítményalapú méretezéshez?
 
-A méretezési feltétel teljesítményalapú szerint – a helyszínen a megadása esetén méretezése, Azure Migrate nem veszi figyelembe a teljesítményadatokat a virtuális gépek és a helyszíni konfiguráció alapján a virtuális gépek mérete. Ha a méretezési feltétel teljesítményalapú, a méretezés a kihasználtsági adatok alapján történik. Ha például van egy helyszíni virtuális gép 4 maggal és 8 GB memóriát, valamint 50 CPU-kihasználtság százalékos és 50 %-a memóriahasználat. Ha a méretezési feltétel teljesítményalapú a helyszíni méretezése egy Azure-beli VM Termékváltozata 4 maggal és 8GB memória használata ajánlott, azonban, ha a méretezési feltétel teljesítményalapú alapján, mint 2 magos virtuális gép Termékváltozata, és 4 GB lenne ajánlott, mivel a kihasználtsági százaléka van közben javasolja a méretét. Ehhez hasonlóan a lemezek, a lemezt méretezési attól függ, két értékelés tulajdonságai – a méretezési feltétel és a tárolás típusát. Ha a méretezési feltétel teljesítményalapú és tárolási típus automatikus, a lemez IOPS és átviteli sebesség értékek számítanak azonosíthatja a céllemez típusa (Standard vagy prémium). Ha a méretezési feltétel teljesítményalapú pedig tárolótípus prémium szintű, ajánlott prémium szintű lemezt, a prémium szintű lemez Termékváltozat az Azure-ban van kiválasztva a helyi lemez mérete alapján. Ugyanazt a logikát lemezes méretezési, ha a méretezési feltétel teljesítményalapú van, mint a helyszíni méretezésnél és tároló típusa standard vagy prémium szintű szolgál.
+A méretezési feltétel teljesítményalapú szerint – a helyszínen a megadása esetén méretezése, Azure Migrate nem veszi figyelembe a teljesítményadatokat a virtuális gépek és a helyszíni konfiguráció alapján a virtuális gépek mérete. Ha a méretezési feltétel teljesítményalapú, a méretezés a kihasználtsági adatok alapján történik. Ha például van egy helyszíni virtuális gép 4 maggal és 8 GB memóriát, valamint 50 CPU-kihasználtság százalékos és 50 %-a memóriahasználat. Ha a méretezési feltétel teljesítményalapú a helyszíni méretezése egy Azure-beli VM Termékváltozata 4 maggal és 8GB memória használata ajánlott, azonban, ha a méretezési feltétel teljesítményalapú alapján, mint 2 magos virtuális gép Termékváltozata, és 4 GB lenne ajánlott, mivel a kihasználtsági százaléka van közben javasolja a méretét. Ehhez hasonlóan a lemezek, a lemezt méretezési attól függ, két értékelés tulajdonságai – a méretezési feltétel és a tárolás típusát. Ha a méretezési feltétel teljesítményalapú, a tárolótípus pedig automatikus, a rendszer a lemez IOPS- és átvitelisebesség-értékeit veszi figyelembe a cél lemeztípus (Standard vagy Prémium) azonosításához. Ha a méretezési feltétel teljesítményalapú, a tárolótípus pedig prémium, a rendszer prémium lemezt ajánl. A prémium lemez termékváltozat kiválasztása az Azure-ban a helyszíni lemez mérete alapján történik. A rendszer ugyanezt a logikát használja a lemezméretezéshez, ha a méretezési feltétel helyszíni méretezés, a tárolótípus pedig standard vagy prémium.
 
 ### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Milyen hatással van a teljesítmény előzmények és PERCENTILIS kihasználtságát a javaslatok a méretekkel kapcsolatban?
 
-Ezek a Tulajdonságok teljesítményalapú csak vonatkoznak. Az Azure Migrate a helyszíni gépek teljesítményelőzményeinek gyűjt, és használja azt javasoljuk, az Azure-beli virtuális gép méretét és a lemez típusa. A gyűjtőberendezés folyamatosan profilokat a helyszíni környezetben, valós idejű használati adatok gyűjtéséhez 20 másodpercenként. A berendezés összesíti a 20 másodperces mintákat, és egy adatpont hoz létre minden 15 percben. Az egyetlen pont létrehozásához a készülék csúcsértéke kiválasztja a 20 másodperc-mintákat, és elküldi azt az Azure-bA. Amikor az Azure-ban, a teljesítmény időtartamát és teljesítménye a százalékértékről előzmények, hozzon létre egy értékelést az Azure Migrate a hatékony kihasználtsági értéket számít, és méretezéshez használja. Például ha a teljesítmény időtartamát, 1 nap és a 95. percentilis százalékértékről állított be, az Azure Migrate használja a pontok küldött gyűjtő által az elmúlt egy nap, növekvő sorrendben rendezi őket, és kiválasztja a hatékony ut mint 95 % 15 perc-minta ilization. A 95. percentilis biztosítja, hogy ha kiválasztjuk az esetek 99 % előfordulhat, hogy olyan kiugró adatokat figyelmen kívül. Ha a használati csúcsot az időszakban a felvenni kívánt, és nem szeretné, hogy hagyja ki a kiugró adatokat, akkor válassza az esetek 99.
+Ez a tulajdonságok csak a teljesítményalapú méretezés esetén számítanak. Az Azure Migrate gyűjti a helyszíni gépek teljesítményelőzményeit, és ezeket alapján tesz javaslatot az Azure-beli virtuális gép méretére és lemeztípusára. A gyűjtőberendezés folyamatosan készít profilokat a helyszíni környezetről a kihasználtsággal kapcsolatos valós idejű adatok 20 másodpercenként történő gyűjtéséhez. A berendezés összesíti a 20 másodpercenként vett mintákat, és egyetlen adatpontot hoz létre minden 15 percről. A berendezés úgy hoz létre egyetlen adatpontot, hogy kiválasztja minden 20 másodperces minta csúcsértékét, amelyet elküld az Azure-nak. Amikor értékelést hoz létre az Azure-ban a teljesítmény-időtartam és a teljesítményelőzmények percentilisértéke alapján, az Azure Migrate a tényleges kihasználtsági értéket számítja ki, és azt használja a méretezéshez. Például ha a teljesítmény időtartamát, 1 nap és a 95. percentilis százalékértékről állított be, az Azure Migrate használja a pontok küldött gyűjtő által az elmúlt egy nap, növekvő sorrendben rendezi őket, és kiválasztja a hatékony ut mint 95 % 15 perc-minta ilization. A 95. percentilis biztosítja, hogy ha kiválasztjuk az esetek 99 % előfordulhat, hogy olyan kiugró adatokat figyelmen kívül. Ha az időtartam használati csúcsát szeretné kiválasztani, és nem szeretne lemaradni egyetlen kiugró adatról sem, a 99. percentilist válassza.
 
 ## <a name="dependency-visualization"></a>Függőségek vizualizációja
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Analytics mozdulatok észlelése |} Microsoft Docs
-description: Az Azure Media mozgásérzékelő media processzor (MP) lehetővé teszi egy egyébként hosszú és Eseménytelen video házirendsablonokkal szakaszok hatékonyan azonosításához.
+title: Az Azure Media Analytics mozdulatok észleléséhez |} A Microsoft Docs
+description: Az Azure Media Motion detector használatával médiafeldolgozót. (pont) lehetővé teszi, hogy hatékonyan az egyes szakaszokhoz egy egyébként hosszú és Eseménytelen videó házirendsablonokkal.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,41 +13,41 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 8488b968fe2ab823479d70a98ba86be97b28f67d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 12af87ab0a8b15528acbd9ce8a1bc92f478aba28
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788801"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820971"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Az Azure Media Analytics mozdulatok észlelése
 ## <a name="overview"></a>Áttekintés
-A **Azure Media mozgásérzékelő** media processzor (MP) lehetővé teszi a szakaszok egy egyébként hosszú és Eseménytelen video házirendsablonokkal hatékonyan azonosításához. Mozgásérzékelés statikus kamerák felvételei szakaszok a videó hol mozgásérzékelési jelentkezik azonosításához használhatja. Az időbélyegzőket és a határoló régió, ahol az esemény történt a metaadatokat tartalmazó JSON-fájlt hoz létre.
+A **Azure Media Motion detector használatával** médiafeldolgozót. (pont) lehetővé teszi, hogy hatékonyan az egyes szakaszokhoz egy egyébként hosszú és Eseménytelen videó házirendsablonokkal. Mozgásérzékelés a statikus kamerák felvételei, azonosíthatja a videó szakaszok hol történik a mozgásban lévő adatoknak egyaránt használható. Az időbélyegeket és a határoló régió, ahol az esemény történt egy metaadatokat tartalmazó JSON-fájlt állít elő.
 
-Cél biztonsági videó hírcsatornák, ez a technológia el tudja mozgásérzékelési kategorizálása kapcsolódó eseményeket és vakriasztások például árnyékok és megvilágítási módosításokat. Ez lehetővé teszi, hogy a biztonsági riasztások generálása kamera hírcsatornák közben igényt érdeklő pillanat kinyerése hosszú felügyeleti videók végtelen irreleváns események, éppen címünkre nélkül.
+Biztonsági videóközvetítési céloz, ezt a technológiát is képes mozgásban lévő adatoknak egyaránt kategorizálásához kapcsolódó eseményeket, és a téves, például az árnyékok és megvilágítási módosításokat. Ez lehetővé teszi, hogy a biztonsági riasztások létrehozása a kamera hírcsatornák nélkül végtelen irreleváns eseményekkel rendelkező során képes arra, hogy a lényeges pillanat kinyerése hosszú felügyeleti videók címünkre folyamatban van.
 
-A **Azure Media mozgásérzékelő** felügyeleti csomag jelenleg előzetes verzió.
+A **Azure Media Motion detector használatával** felügyeleti csomag jelenleg előzetes verzióban érhető el.
 
-Ez a cikk részletezi kapcsolatos **Azure Media mozgásérzékelő** és a .NET-keretrendszerhez készült Media Services SDK-val való használatát ismerteti
+Ez a cikk kapcsolatos részleteket nyújt **Azure Media Motion detector használatával** , és bemutatja, hogyan használja a Media Services SDK for .NET
 
-## <a name="motion-detector-input-files"></a>Mozgásérzékelő – érzékelő bemeneti fájlok
-Videofájlok lejátszását. Jelenleg a következő formátumok használhatók: MP4 MOV és WMV.
+## <a name="motion-detector-input-files"></a>Motion detector használatával bemeneti fájlok
+Videofájlok. Jelenleg a következő formátumok támogatottak: MP4 MOV és WMV.
 
-## <a name="task-configuration-preset"></a>A feladat konfigurációja (beállítás)
-A feladat létrehozásakor **Azure Media mozgásérzékelő**, meg kell adnia egy konfigurációs készletet. 
+## <a name="task-configuration-preset"></a>A feladat konfigurációs (előre)
+A feladat létrehozásakor **Azure Media Motion detector használatával**, meg kell adnia egy konfigurációs készletet. 
 
 ### <a name="parameters"></a>Paraméterek
-A következő paramétereket használhatja:
+A következő paraméterek használhatók:
 
 | Name (Név) | Beállítások | Leírás | Alapértelmezett |
 | --- | --- | --- | --- |
-| sensitivityLevel |Karakterlánc: "alacsony", "közepes", "magas" |Beállítja az érzékenységi szint mely mozdulatok jelenti. Ez úgy, hogy a vakriasztások számának módosítása |"közepes" |
-| frameSamplingValue |Pozitív egész szám |A készletek algoritmus gyakorisága futtatja. 1 egyenlő minden keret, 2 azt jelenti, hogy minden második keret, és így tovább. |1 |
-| detectLightChange |Logikai: "true", "false" |Megadja, hogy e könnyű módosítások jelentik az eredmények között |"False" |
-| mergeTimeThreshold |Idő xs: Óó: pp:<br/>. Példa: 00:00:03 |Megadja a időszak mozgásérzékelési események hol vannak a 2 esemény között kell kombinált és jelentése szerint az 1. |00:00:00 |
-| detectionZones |A tömb észlelési zónák:<br/>-Észlelési zóna: 3 vagy több pontok bájttömb<br/>-Pont, az x és y koordináta 0, 1. |Ismerteti a sokszög észlelési zónák használandó listáját.<br/>Eredmények a zónákat az azonosítója, először egy folyamatban "id" a jelentett: 0 |Egy zóna, amely magában foglalja a teljes keret. |
+| sensitivityLevel |Karakterlánc: "alacsony", "közepes", "nagy" |Beállítja az érzékenységi szint melyik mozdulatok jelenti. Módosítsa ezt a módosíthatja a vakriasztások számát. |"közepes" |
+| frameSamplingValue |pozitív egész szám lehet |Beállítja a gyakoriságát, hogy mely algoritmus futtatja. 1 egyenlő minden keret, 2 jelenti, hogy minden második keret, és így tovább. |1 |
+| detectLightChange |Boolean:'true', 'false' |Megadja, hogy az összes kisebb változtatást kell jelenteni az eredményeket,-e |"False" |
+| mergeTimeThreshold |Xs-time: Óó<br/>Példa: 00:00:03 |Az időtartomány mozgáseseményeket hol tárolja a rendszer 2 esemény között lehet kombinált és jelentett 1, adja meg. |00:00:00 |
+| detectionZones |Egy tömb észlelési zónák:<br/>-Észlelési zóna egy 3 vagy több pontok tömbje<br/>– Pont, az x és y koordináta 0, 1-re. |A lista a sokszög alakú észlelési zónák használandó ismerteti.<br/>Eredmények a zónák-azonosító, először egy folyamatban "id" jelentett: 0 |Egy zóna, amely magában foglalja a teljes keret. |
 
-### <a name="json-example"></a>JSON-példa
+### <a name="json-example"></a>Példa JSON
 
 ```json
     {
@@ -79,14 +79,14 @@ A következő paramétereket használhatja:
     }
 ```
 
-## <a name="motion-detector-output-files"></a>Mozgásérzékelő – érzékelő kimeneti fájlok
-A mozgás észlelése a JSON-fájl a kimeneti adategységen, amely a mozgásérzékelési riasztások, és azok kategóriák belül a videó ismerteti adja vissza. A fájl ideje és időtartama észlelte a videóból mozgásérzékelési kapcsolatos információkat tartalmaz.
+## <a name="motion-detector-output-files"></a>Motion detector használatával kimeneti fájlok
+A mozgás észlelése egy JSON-fájlt a kimeneti objektum, amely a mozgásban lévő adatoknak egyaránt riasztásokat és a kategóriák, a videó adja vissza. A fájl tartalmazza a időpontja és időtartama észlelhető a videó a mozgásban lévő információkat.
 
-A Mozgásérzékelési érzékelő API mutatók biztosít, miután egy videó rögzített háttérben mozgó objektumok (például a kamera). A mozgásérzékelő be van tanítva, téves riasztásokat, például a megvilágítási és árnyékmásolat módosítások csökkentése érdekében. Aktuális korlátozások algoritmusok éjszakai stratégiai videók, félig átlátható és kis objektumok tartalmazza.
+A Motion detector használatával API mutatókat biztosít, ha egy videó rögzített háttérben mozgásban lévő objektumok (például egy felügyeleti videó). A Motion detector használatával csökkenti a vakriasztások, például a világítás és árnyékmásolat-módosítások, be van tanítva. Aktuális korlátozások algoritmusok éjszakai vision videókat, félig átlátszó objektumokat és kis méretű objektumok tartalmazza.
 
-### <a id="output_elements"></a>A kimeneti JSON-fájl elemeinek
+### <a id="output_elements"></a>A kimenet JSON-fájl elemeinek
 > [!NOTE]
-> Legújabb kiadása a kimeneti JSON formátumban megváltozott, és az egyes ügyfelek használhatatlanná tévő változást jelöl.
+> A kimenet JSON formátumban a legújabb kiadásban megváltozott, és használhatatlanná tévő változást tüntetheti egyes ügyfelek számára.
 > 
 > 
 
@@ -94,23 +94,23 @@ A következő táblázat ismerteti a kimeneti JSON-fájl elemeinek.
 
 | Elem | Leírás |
 | --- | --- |
-| Verzió |Ez a videó API verziója vonatkozik. A jelenlegi verzió: 2. |
-| időskálára |A videó másodpercenként "ticks". |
-| Eltolás |Időbélyegeket "ticks". az idő eltolása Videó API-k 1.0-s verziójában az mindig 0 lesz. A jövőben támogatott forgatókönyveket, ezt az értéket módosíthatja. |
-| képkockasebességhez |A videó képkockasebessége. |
-| Szélesség, Hosszúság |A szélességét és magasságát képpontban hivatkozik. |
-| Indítás |A start időbélyegzőjéhez viszonyítva a "ticks". |
-| Időtartam |Az esemény, a "ticks" hosszát. |
-| Időköz |Az időköz az egyes bejegyzések az eseményben a "ticks". |
-| Események |Minden esemény-töredéket adott időtartamig belül észlelhető a mozgásérzékelési tartalmazza. |
-| Típus |A jelenlegi verzióban ez a "2" általános mozgásérzékelési. A címke által biztosított videó API-k a rugalmasságot kategorizálásának mozgási későbbi verzióit. |
-| RegionID |Ahogy fent, az mindig 0 lesz ebben a verzióban. Ezt a címkét mozgásérzékelési későbbi verzióiban különböző régiókban található rugalmasságot biztosít a videó API. |
-| Régiók |A terület a videó, ahol az Ön számára legfontosabb mozgásérzékelési hivatkozik. <br/><br/>-az "id" jelöli a régió terület – ebben a verzióban van csak egy, azonosító: 0. <br/>-"type" jelenti. az Ön számára legfontosabb mozgásérzékelő – az a régió alakját. Jelenleg a "téglalap", "sokszög" támogatottak.<br/> Ha a megadott "téglalap", a régiót dimenziója van X, Y, szélességét és magasságát. Az X és Y koordinátáit a 0,0 és 1,0 normalizált skálája régió bal felső Oxykiszolgáló koordinátáit jelölik. A szélesség és magasság határoz meg a 0,0 és 1,0 normalizált skálája terület méretét. Az aktuális verzió X, Y, szélességének és magasságának mindig rögzített 0, 0 és 1, 1. <br/>Ha meg van adva "sokszög", az a régió pontokon dimenziója van. <br/> |
-| töredék |A metaadatok töredék nevű különböző részekre van darabolásos fel. Minden töredéke a start, a időtartama, a időszakának száma és a esemény (eke) tartalmaz. Nincsenek események a töredéket azt jelenti, hogy semmilyen adott kezdő időpontja és időtartama során észlelt. |
-| Szögletes zárójelbe] |Minden egyes zárójel az esemény egy időköz jelöli. Üres szögletes az adott időköz azt jelenti, hogy semmilyen volt észlelhető. |
-| Helyek |Az új belépési események alapján sorolja fel a helyre, ahol a mozgásérzékelési történt. Ez a pontosabb, mint a észlelési zónákat. |
+| Verzió |Ez vonatkozik a Video API verziója. A jelenlegi verzió: 2. |
+| Időskála |"Órajel során végbemenő" a videó másodpercenként. |
+| Eltolás |Időbélyegeket "órajelben." az idő eltolása Videó API-k 1.0-s verziójában ez mindig 0 lesz. A jövőben támogatott forgatókönyveket, ez az érték változhatnak. |
+| Képkockasebesség |Képkockák másodpercenkénti száma a videóban. |
+| Szélesség, Hosszúság |A szélességét és magasságát (képpontban) hivatkozik. |
+| Indítás |A "órajel során végbemenő" a start időbélyegző. |
+| Időtartam |Az esemény, a "órajel során végbemenő" hossza. |
+| Intervallum |Az időköz az egyes bejegyzések az eseményben szereplő "órajel során végbemenő". |
+| Események |Minden egyes esemény töredék idő töltött belül észlelt a mozgásban lévő adatoknak egyaránt tartalmazza. |
+| Típus |A jelenlegi verzióban ez a "2" általános mozgásban lévő adatoknak egyaránt. A címke ad Video API-k a rugalmasság kategorizálásának mozgási későbbi verziók. |
+| RegionID |Amint azt fent kifejtettük, ez mindig 0 lesz ebben a verzióban. Ez a címke rugalmasságot biztosít Video API a mozgásban lévő keresése a későbbi verziókban különböző régiókban. |
+| Régiók |A videó a terület, ahol konkrét mozgásban lévő adatoknak egyaránt vonatkozik. <br/><br/>– az "id" jelöli a régió terület – ebben a verzióban van csak egy, azonosító: 0. <br/>– "type" az Ön számára a mozgásban lévő adatoknak egyaránt régió az alakzat jelöli. Jelenleg a "téglalap" és "sokszög" támogatottak.<br/> "Téglalap" adott meg, ha a régió dimenziók rendelkezik X, Y szélessége és magassága. Az X és Y koordinátái a 0,0 és 1,0 normalizált méretezési régió felső bal XY koordináták képviseli. A szélesség és magasság képviselik a 0,0 és 1,0 a normalizált méretezési terület méretét. A jelenlegi verzió X, Y, szélesség és magasság mindig rögzíteni, 0, 0 és 1, 1. <br/>"Sokszög" adott meg, ha a régió dimenziók pontokat tartalmaz. <br/> |
+| Töredékek |A metaadatok nevű töredék különböző részekre van darabolásos fel. Minden töredék tartalmaz kezdési időpontot, időtartamot, intervallumszámot és esemény(eke)t. Egy kódrészletet az események nem azt jelenti, hogy semmilyen adott kezdő időpontja és időtartama során észlelt. |
+| Szögletes zárójeleket] |Minden egyes zárójel egy időköz az esemény jelöli. Üres szögletes az adott időköz azt jelenti, hogy semmilyen volt észlelhető. |
+| helyek |Ezen események alapján új bejegyzést a helyet, ahol a mozgásban lévő adatoknak egyaránt történt sorolja fel. Ez a pontosabb, mint az észlelési zónák. |
 
-A következő JSON példa mutatja:
+Az alábbi JSON-példa a kimenet látható:
 
 ```json
     {
@@ -157,15 +157,15 @@ A következő JSON példa mutatja:
 ```
 
 ## <a name="limitations"></a>Korlátozások
-* A támogatott bemeneti videó formátumnak tartalmaznia kell MP4 MOV és WMV.
-* Mozgásérzékelés álló háttér videók van optimalizálva. Az algoritmus összpontosít téves riasztásokat, például a megvilágítási érintő változtatások, valamint az árnyékok csökkentése.
-* Néhány mozgásérzékelő – műszaki akadályok; miatt nem észlelhető például éjszaka stratégiai videók, félig átlátható és kis objektumok.
+* A támogatott bemeneti videóformátumok MP4 MOV és WMV tartalmazza.
+* Mozgás észlelése álló háttér-videók van optimalizálva. Az algoritmus a csökkenti a vakriasztások, például a világítás módosításokat, és az árnyékok összpontosít.
+* Néhány mozgásban lévő adatoknak egyaránt technikai problémák miatt nem észlelhető például éjszakai vision videók, félig átlátszó objektumokat és kis méretű objektumok.
 
 ## <a name="net-sample-code"></a>.NET mintakód
 
-A következő program bemutatja hogyan:
+A következő program mutat be, hogyan:
 
-1. Hozzon létre egy eszközt, és adathordozó-fájl feltöltése az objektumba.
+1. Hozzon létre egy objektumot, és a egy médiafájlt feltöltése az objektumba.
 2. Hozzon létre egy feladatot a következő json-készletet tartalmazó konfigurációs fájl alapján Videós mozgásérzékelési észlelési feladatokkal: 
    
     ```json
@@ -198,7 +198,7 @@ A következő program bemutatja hogyan:
             }
     ```
 
-3. A kimeneti JSON-fájlok letöltésére. 
+3. Töltse le a kimeneti JSON-fájlokat. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
@@ -280,7 +280,7 @@ namespace VideoMotionDetection
             task.InputAssets.Add(asset);
 
             // Add an output asset to contain the results of the job.
-            task.OutputAssets.AddNew("My Video Motion Detectoion Output Asset", AssetCreationOptions.None);
+            task.OutputAssets.AddNew("My Video Motion Detection Output Asset", AssetCreationOptions.None);
 
             // Use the following event handler to check job progress.  
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
@@ -382,9 +382,9 @@ namespace VideoMotionDetection
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-[Az Azure Media Services mozgásérzékelő blog](https://azure.microsoft.com/blog/motion-detector-update/)
+[Az Azure Media Services Motion detector használatával blogja](https://azure.microsoft.com/blog/motion-detector-update/)
 
-[Azure Media Services elemző áttekintése](media-services-analytics-overview.md)
+[Az Azure Media Services analitikai funkcióinak áttekintése](media-services-analytics-overview.md)
 
 [Az Azure Médiaelemzés bemutatók](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

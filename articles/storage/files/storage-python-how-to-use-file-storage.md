@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/14/2018
 ms.author: tamram
 ms.component: files
-ms.openlocfilehash: f1ebc059c66615ecf21054e85472b2a6d86dfce6
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 17b44dcaf6731f3882ed417a94532c6d26c7454d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743187"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818965"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Fejlesztés az Azure Files Python használatával
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -125,7 +125,7 @@ Végül, a fájl törléséhez hívja `delete_file`.
 file_service.delete_file('myshare', None, 'myfile')
 ```
 
-## <a name="create-share-snapshot-preview"></a>Hozzon létre a megosztási pillanatképek (előzetes verzió)
+## <a name="create-share-snapshot"></a>Megosztási pillanatkép létrehozása
 A teljes fájlmegosztás idő másolatát egy pontot hozhat létre.
 
 ```python

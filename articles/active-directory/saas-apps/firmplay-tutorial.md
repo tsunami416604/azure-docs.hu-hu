@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: a6799629-7546-43f8-a966-956db32864b1
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: abc29480e5f5531857cbf973d5386727c3d7f2ac
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 929494d5d802dbc545c750386a286029c4bf962d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114528"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809802"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Oktatóanyag: Azure Active Directory-integráció az FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben
+# <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Oktatóanyag: FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben és az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja FirmPlay – az Azure Active Directory (Azure AD) a személyzeti osztályon dolgozók Ügyfélképviseletben.
 
@@ -95,7 +95,7 @@ Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés FirmPlay – a
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Egy FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon tesztfelhasználó létrehozása](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)**  – van egy megfelelője a Britta Simon FirmPlay: alkalmazott Ügyfélképviseletben felvételi, amely csatolva az Azure ad-ben ábrázolása számára.
+1. **[Egy FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon tesztfelhasználó létrehozása](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)**  – egy megfelelője a Britta Simon FirmPlay van: Alkalmazott Ügyfélképviseletben felvételi, amely csatolva az Azure ad-ben ábrázolása számára.
 1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 

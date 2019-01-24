@@ -3,7 +3,7 @@ title: Mi az a MyApps portálról az Azure Active Directoryban? | Microsoft Docs
 description: Ismerje meg, hogyan használható a MyApps portálról (webböngésző, Android-alkalmazás, iPhone és iPad-alkalmazás) SaaS-alkalmazások eléréséhez változata.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
 ms.service: active-directory
 ms.component: user-help
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 1f51fb1d92fdec93fdb57fd25f8ca1cbaeb4fc46
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: a5b2c39e9bfc7203bea43477499daf7e36eaf35d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188929"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822943"
 ---
 # <a name="what-is-the-myapps-portal"></a>Mi az a MyApps portálról?
 
@@ -84,7 +84,7 @@ A jelszóalapú egyszeri bejelentkezés, a kiterjesztést kell használnia. A b�
 A bővítmény letöltheti közvetlenül a következő helyekről:
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
 - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
-- [A Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Ha nem használ egy saját alkalmazások URL-cím `https://myapps.microsoft.com`, az alapértelmezett URL-cím konfigurálása a következő tevékenységek végrehajtásával:
 1. Amíg nem *nem* bejelentkezett a bővítményt, kattintson a bővítmény ikonra a jobb gombbal.

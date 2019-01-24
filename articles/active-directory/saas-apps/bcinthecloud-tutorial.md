@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az BC a felhőben |} A Microsoft Docs'
+title: 'Oktatóanyag: A felhőben az Azure Active Directory-integrációval rendelkező BC |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és BC között a felhőben.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 7dc40d2c-6349-40cb-b304-b098bd03a66c
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/1/2017
 ms.author: jeedes
-ms.openlocfilehash: 5d9d2bb0dc44eab0a419efce0c26a8f30135285e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 33670ce210b7ca7bca276f463d029354dc3282fc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431657"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817486"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>Oktatóanyag: Azure Active Directory-integráció az BC a felhőben
+# <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>Oktatóanyag: A felhőben az Azure Active Directory-integrációval rendelkező BC
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan BC integrálása az Azure Active Directoryval (Azure AD) a felhőben.
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 BC az Azure AD-integráció konfigurálása a felhőben, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy BC az a felhő egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ BC integrációjának konfigurálása az Azure AD-be a felhőben, hozzá kell BC
 
 **A felhőben a katalógusból BC hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -130,7 +130,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 1. Az egyszeri bejelentkezés konfigurálása **BC a felhőben** oldalon kell küldenie a letöltött **metaadatainak XML** való [BC felhőbeli támogatási csoportjának](https://www.bcinthecloud.com/supportcenter/).
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
@@ -166,7 +166,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="creating-a-bc-in-the-cloud-test-user"></a>Egy BC a felhő tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű BC a felhőbeli felhasználó hoz létre. Együttműködve [BC, felhőalapú ügyfél-támogatási csoportjának](https://www.bcinthecloud.com/supportcenter/) felhasználót is hozzáadhat a a BC a felhőalapú alkalmazásokban. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy Britta Simon nevű BC a felhőbeli felhasználó hoz létre. Együttműködve [BC, felhőalapú ügyfél-támogatási csoportjának](https://www.bcinthecloud.com/supportcenter/) felhasználót is hozzáadhat a a BC a felhőalapú alkalmazásokban. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -202,7 +202,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
- Ha rákattint a BC a felhő csempén a hozzáférési panelen, meg kell lekérése automatikusan bejelentkezett a BC a felhőalapú alkalmazásokban való. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+ Ha rákattint a BC a felhő csempén a hozzáférési panelen, meg kell lekérése automatikusan bejelentkezett a BC a felhőalapú alkalmazásokban való. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 

@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Moxi léphet |} A Microsoft Docs'
+title: 'Oktatóanyag: Moxi léphet az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Moxi léphet között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 1135a879-8f00-43b0-ac8a-831593d9586d
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 200382578d7cf2cce96b9cb73097bce632c88767
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e7e130245cd61924c5f70645729551fd9e55702e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425069"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816251"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>Oktatóanyag: Az Azure Active Directory-integráció az Moxi léphet.
+# <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>Oktatóanyag: Moxi léphet az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan léphet Moxi integrálása az Azure Active Directoryval (Azure AD).
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Szeretné konfigurálni az Azure AD-integrációs Moxi léphet, szüksége van a következő elemek:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Moxi Megszólíthatók egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurálása az Azure AD integrálása a Moxi léphet, hozzá kell Moxi léph
 
 **Adja hozzá a Moxi léphet a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -128,7 +128,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 1. Az egyszeri bejelentkezés konfigurálása **Moxi léphet** oldalon kell küldenie a letöltött **metaadatainak XML** való [Moxi léphet támogatási csoport](mailto:support@moxiworks.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
@@ -164,7 +164,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="creating-a-moxi-engage-test-user"></a>Moxi léphet tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű Moxi léphet a felhasználó hoz létre. Együttműködve [ügyfélszolgálathoz Moxi léphet](mailto:support@moxiworks.com) a felhasználók hozzáadása az Moxi léphet platformon.
+Ebben a szakaszban egy Britta Simon nevű Moxi léphet a felhasználó hoz létre. Együttműködve [ügyfélszolgálathoz Moxi léphet](mailto:support@moxiworks.com) a felhasználók hozzáadása az Moxi léphet platformon.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

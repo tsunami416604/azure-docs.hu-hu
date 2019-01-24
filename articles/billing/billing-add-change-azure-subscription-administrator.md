@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 1/23/2019
 ms.author: cwatson
-ms.openlocfilehash: 94d574d16b1b9951ab91a09023f9193723f850a7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4490db0c479abdda19957be98335edeefc08bb59
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583363"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808748"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Adja hozzá, vagy az Azure-előfizetések rendszergazdáinak módosításáról
 
@@ -67,14 +67,14 @@ Csak [Tulajdonos](../role-based-access-control/built-in-roles.md#owner) adható 
 
 ### <a name="adding-a-guest-user-as-a-co-administrator"></a>Vendégfelhasználó hozzáadása társadminisztrátorként
 
-Néhány eltérés, mint a korábban megszokott tagfelhasználó a társ-rendszergazda szerepkörrel vendégfelhasználók a társadminisztrátori szerepkörhöz rendelt jelenhet meg. Vegye figyelembe az alábbi forgatókönyvet:
+[Vendégfelhasználók](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) , amely a társ-rendszergazdaként hozzárendelt szerepkör láthat néhány eltérés, mint a korábban megszokott tagfelhasználó a társ-rendszergazda szerepkörrel. Vegye figyelembe az alábbi forgatókönyvet:
 
 - Az Azure AD munkahelyi vagy iskolai fiókkal rendelkező felhasználó az Azure-előfizetés szolgáltatás-rendszergazdát.
 - "B" felhasználó Microsoft-fiókkal rendelkezik.
 - A felhasználó a társadminisztrátori szerepkörhöz rendel a "b" felhasználónak
 - "B" felhasználó szinte minden funkciója, de nem tudja keresése az Azure AD-címtárban található felhasználók vagy alkalmazások regisztrálását.
 
-A "B" felhasználó sikerült mindent felügyelhetnek alakul. Ez a különbség oka, hogy a Microsoft-fiók hozzáadódik az előfizetés meg vendégként a tag felhasználó helyett. Vendégfelhasználók más alapértelmezett engedélyek rendelkezik, mint a korábban megszokott tagfelhasználó Azure AD-ben. Például tagfelhasználó más felhasználók olvashatja az Azure AD-ben, és a vendég felhasználók nem. Tag felhasználók regisztrálhatnak új szolgáltatásnevek Azure AD-ben, és a vendég felhasználók nem. Vendégfelhasználó képesnek kell lennie a következő feladatok végrehajtására, egy lehetséges megoldás-e az adott hozzárendelése az Azure AD-rendszergazdai szerepköröket a meghívott felhasználónak szüksége van. Például az előző forgatókönyvben, hozzárendelheti a [Címtárolvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkör más felhasználók olvasása és hozzárendelése a [alkalmazásfejlesztő](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) hozhat létre egyszerű szolgáltatások szerepkört. Tagok és vendégfelhasználók és engedélyeiket kapcsolatos további információkért lásd: [Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?](../active-directory/fundamentals/users-default-permissions.md).
+A "B" felhasználó sikerült mindent felügyelhetnek alakul. Ez a különbség oka, hogy a Microsoft-fiók hozzáadódik az előfizetés meg vendégként a tag felhasználó helyett. Vendégfelhasználók más alapértelmezett engedélyek rendelkezik, mint a korábban megszokott tagfelhasználó Azure AD-ben. Például tagfelhasználó más felhasználók olvashatja az Azure AD-ben, és a vendég felhasználók nem. Tag felhasználók regisztrálhatnak új szolgáltatásnevek Azure AD-ben, és a vendég felhasználók nem. Vendégfelhasználó képesnek kell lennie a következő feladatok végrehajtására, egy lehetséges megoldás-e az adott hozzárendelése az Azure AD-rendszergazdai szerepköröket a meghívott felhasználónak szüksége van. Például az előző forgatókönyvben, hozzárendelheti a [Címtárolvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkör más felhasználók olvasása és hozzárendelése a [alkalmazásfejlesztő](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) hozhat létre egyszerű szolgáltatások szerepkört. Tagok és vendégfelhasználók és engedélyeiket kapcsolatos további információkért lásd: [Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?](../active-directory/fundamentals/users-default-permissions.md). 
 
 Vegye figyelembe, hogy a [beépített szerepkörök az Azure-erőforrások](../role-based-access-control/built-in-roles.md) eltérnek a [az Azure AD-rendszergazdai szerepköröket](../active-directory/users-groups-roles/directory-assign-admin-roles.md). A beépített szerepkörök nem hozzáférést minden olyan Azure ad-hez. További információkért lásd: [megérteni a különféle szerepkörök](../role-based-access-control/rbac-and-directory-admin-roles.md).
 

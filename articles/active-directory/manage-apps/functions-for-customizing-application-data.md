@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
-ms.author: barbkess
-ms.openlocfilehash: 61aeb6a80d492a82dffa66491742899df0acc237
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 01/21/2019
+ms.author: chmutali
+ms.openlocfilehash: 05be48817334dacac803eeccf2dc08e5a4bbd407
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470052"
+ms.locfileid: "54823676"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -37,7 +37,7 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
 * A karakterlánc-állandókat Ha egy fordított perjel (\) vagy az idézőjel (") a karakterláncban van szüksége, kell megjelölni a fordított perjel (\) szimbólum. Példa: "Cég neve: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Függvények listája.
-[Hozzáfűzés](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [csatlakozzon](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [cseréje](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Kapcsoló](#switch)
+[Hozzáfűzés](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [csatlakozzon](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [cseréje](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Kapcsoló](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
 
 - - -
 ### <a name="append"></a>Hozzáfűzés
@@ -209,6 +209,32 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | **key** |Szükséges |Karakterlánc |**Kulcs** összehasonlítására **forrás** értéket. |
 | **value** |Szükséges |Karakterlánc |Az érték a **forrás** összekapcsolja a kulcsot. |
 
+- - -
+### <a name="tolower"></a>toLower
+**Függvény:**<br> ToLower (forrás, kulturális környezet)
+
+**Leírás:**<br> Vesz igénybe egy *forrás* értékből, és konvertálja azt a kulturális környezet használatával kisbetűsre szabályok, amelyek a megadott karakterlánc. Ha nincs *kulturális környezet* adatai megadva, Invariáns kulturális környezetet fogja használni.
+
+**Paraméterek:**<br> 
+
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
+| --- | --- | --- | --- |
+| **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
+| **culture** |Optional |Karakterlánc |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
+
+- - -
+### <a name="toupper"></a>ToUpper
+**Függvény:**<br> ToUpper (forrás, kulturális környezet)
+
+**Leírás:**<br> Vesz igénybe egy *forrás* értékből, és konvertálja azt a kulturális környezet használatával nagybetűs szabályok, amelyek a megadott karakterlánc. Ha nincs *kulturális környezet* adatai megadva, Invariáns kulturális környezetet fogja használni.
+
+**Paraméterek:**<br> 
+
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
+| --- | --- | --- | --- |
+| **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
+| **culture** |Optional |Karakterlánc |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
+
 ## <a name="examples"></a>Példák
 ### <a name="strip-known-domain-name"></a>Sáv ismert tartománynév
 Szerezzen be egy felhasználónevet a felhasználó e-mailben egy ismert tartománynévnek sáv kell. <br>
@@ -283,6 +309,18 @@ Ha az állapot-kód nem egyezik az előre definiált beállításokat, használj
 
 * **BEMENETI** (állapot): "QLD"
 * **KIMENETI**: "Ausztrália/Brisbane"
+
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Generált userPrincipalName (UPN) érték átalakítása kisbetű
+
+Az alábbi példában az egyszerű felhasználónevet a PreferredFirstName és PreferredLastName forrás mezők összefűzésével jön létre, és a ToLower függvény a létrehozott karakterlánc összes karakter átalakítása kisbetű működik. 
+
+`ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
+
+**Bemeneti/kimeneti. példa:**
+
+* **BEMENETI** (PreferredFirstName): "János"
+* **BEMENETI** (PreferredLastName): "Smith"
+* **KIMENETI**: "john.smith@contoso.com"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Egyedi érték a userPrincipalName (UPN) attribútum létrehozása
 

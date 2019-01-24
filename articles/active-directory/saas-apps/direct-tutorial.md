@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az közvetlen |} A Microsoft Docs'
+title: 'Oktatóanyag: Közvetlenül az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Ismerje meg az egyszeri bejelentkezés az Azure Active Directory és a közvetlen konfigurálása.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 7c2cd1f0-d14c-42f0-94a8-9b800008b285
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e693a721e5556970607fafd8ff187d3b06c913e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6bb197b820b9f4262eb5c93665c46c14f9497d0f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092886"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822654"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-direct"></a>Oktatóanyag: Azure Active Directory-integráció az közvetlen
+# <a name="tutorial-azure-active-directory-integration-with-direct"></a>Oktatóanyag: Közvetlenül az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható az Azure Active Directory (Azure AD) a közvetlen.
 
@@ -118,7 +118,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/direct-tutorial/tutorial_direct_url1.png)
 
-     Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím: `https://direct4b.com/sso` 
+     Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím: `https://direct4b.com/sso` 
 
 5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -164,7 +164,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="creating-a-direct-test-user"></a>Felhasználó – közvetlen teszt létrehozása
 
-Ebben a szakaszban egy közvetlen Britta Simon nevű felhasználó létrehozásához. Együttműködve [közvetlen támogatási csapat](https://direct4b.com/ja/support.html#inquiry) a felhasználók hozzáadása a közvetlen platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy közvetlen Britta Simon nevű felhasználó létrehozásához. Együttműködve [közvetlen támogatási csapat](https://direct4b.com/ja/support.html#inquiry) a felhasználók hozzáadása a közvetlen platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

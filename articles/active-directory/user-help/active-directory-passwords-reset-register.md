@@ -3,7 +3,7 @@ title: Regisztrálja a önkiszolgáló jelszó-átállítási – Azure Active D
 description: Az Azure AD önkiszolgáló jelszó-hitelesítési adatok regisztrálása alaphelyzetbe állítása
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.assetid: ''
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
-ms.openlocfilehash: f8b4fb8861760d2b5b10f61b3ab6a8c718f849b6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2a9e65e36e31f4b2b382fac2bd9898580be18900
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47107015"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821668"
 ---
 # <a name="register-for-self-service-password-reset"></a>Regisztráció önkiszolgáló jelszó-visszaállításra
 
@@ -31,9 +31,9 @@ Végfelhasználóval teszteljen, mint a jelszó alaphelyzetbe állítása, vagy 
 1. Nyissa meg eszközén a webböngészőt és lépjen a [jelszó-visszaállítási regisztrációs oldalra](https://aka.ms/ssprsetup).
 2. Adja meg a felhasználónevét és jelszavát a rendszergazda által biztosított.
 3. Attól függően, hogy az informatikai részleg által konfigurált egy vagy több, az alábbi lehetőségek érhetők el konfigurálása és ellenőrzése. A rendszergazda a jogosult az információk, ha azok töltheti fel az Ön számára az adatok egy részét.
-    * **Irodai telefon**: csak a rendszergazda ezzel a beállítással adhatja meg.
-    * **Hitelesítéshez használt telefon**: ehhez a beállításhoz, amely hozzáféréssel rendelkezik egy másik telefonszámot. Például egy mobiltelefonszámot, amely képes fogadni, vagy a hívás akkor.
-    * **Hitelesítési E-mail**: ehhez a beállításhoz, amely alaphelyzetbe állítja a jelszó használata nélkül elérheti másodlagos e-mail cím.
+    * **Irodai telefon**: Ez a beállítás csak a rendszergazda állíthatja be.
+    * **Hitelesítéshez használt telefon**: Ehhez a beállításhoz, amely hozzáféréssel rendelkezik egy másik telefonszámot. Például egy mobiltelefonszámot, amely képes fogadni, vagy a hívás akkor.
+    * **Hitelesítési E-mail**: Ehhez a beállításhoz, amely alaphelyzetbe állítja a jelszó használata nélkül elérheti másodlagos e-mail cím.
     * **Biztonsági kérdések**: A rendszergazda által jóváhagyott megadott, megválaszolandó kérdések listája. Nem használja ugyanezt a kérdést és választ egynél többször.
 4. Adja meg, és ellenőrizze, hogy a rendszergazda megköveteli az adatokat. Ha egynél több lehetőség áll rendelkezésre, javasoljuk, hogy regisztrálja a különböző módszerek. Ez nagyobb rugalmasságot biztosít a módszerek nem érhető el. Például, ha utazás közben, és Ön nem fér hozzá az irodai telefonjára.
 

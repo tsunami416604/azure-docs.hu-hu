@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6bdb319eb89c3dad8b3602b0ec4561b962fcc868
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 36a84618a998dd2e06f5563fb8706a1dc8400e59
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608698"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823351"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso áttelepítése: Helyszíni alkalmazás újbóli üzembe helyezése Azure-beli virtuális gépeken
 
@@ -66,7 +66,7 @@ A Contoso felhőalapú csapat az áttelepítés célok le van rögzítve. Ezen c
 
 ## <a name="solution-design"></a>Megoldásterv
 
-özök rögzítés célokat és követelményeket, a Contoso tervek le és tekintse át a telepítési megoldás, és azonosítja az áttelepítési folyamat, beleértve a Contoso az áttelepítés által használt Azure-szolgáltatások.
+Után rögzíthet célokat és követelményeket állapította meg, a Contoso tervez és a egy üzembehelyezési megoldással tekintse át, és azonosítja az áttelepítési folyamat, beleértve a Contoso az áttelepítés által használt Azure-szolgáltatások.
 
 ### <a name="current-app"></a>Aktuális alkalmazás
 
@@ -98,7 +98,7 @@ A megoldástervezési folyamat részeként a Contoso volt az Azure SQL Database 
 
 Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrányai listáját.
 
-**Szempontok** | **Részletek**
+**Consideration** | **Részletek**
 --- | ---
 **Szakemberek számára** | Az alkalmazás virtuális gépek mindkét átkerül az Azure-bA sem kell módosítani, így egyszerű a migrálás.<br/><br/> Mivel a Contoso lift-and-shift mindkét alkalmazás virtuális gép nem használja, speciális konfigurációs vagy az áttelepítési eszközök nélkül az alkalmazás-adatbázis szükséges.<br/><br/> Contoso kihasználhatják a frissítési garanciával rendelkező, az Azure Hybrid Benefit használatával befektetése jelenti.<br/><br/> Contoso teljes hozzáférés az alkalmazás az Azure-beli virtuális gépek megtartja.
 **Hátrányai** | WEBVM és SQLVM futnak a Windows Server 2008 R2. Az operációs rendszer egyes szerepkörök (2018 július) az Azure által támogatott. [További információk](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).<br/><br/> A webes és az adatok szintek, amelyek szükségesek az alkalmazás feladatátvételt egyetlen pont marad.</br><br/> SQLVM fut az SQL Server 2008 R2, amely nem szerepel a alapvető technikai támogatása. Azonban támogatott az Azure virtuális gépek (2018 július). [További információk](https://support.microsoft.com/en-us/help/956893).<br/><br/> Contoso kell az alkalmazást az Azure virtuális gépeket támogató, nem pedig egy felügyelt szolgáltatás, például az Azure App Service és az Azure SQL-adatbázis áthelyezése a folytatáshoz.
@@ -292,7 +292,7 @@ Contoso-rendszergazdák a következő tegye a következőket:
 8. Bejelentkeznek a gép újra, és a konfigurációs kiszolgáló felügyeleti varázslója automatikusan elindul.
 9. A varázsló, válassza ki a hálózati Adaptert replikációs forgalom fogadására. Ez a beállítás a konfigurálás után nem módosítható.
 10. Akkor válassza ki az előfizetést, erőforráscsoportot és a tároló, amelyben a konfigurációs kiszolgálót regisztrálja.
-        ![Tároló](./media/contoso-migration-rehost-vm/cswiz1.png)
+        ![vault](./media/contoso-migration-rehost-vm/cswiz1.png)
 
 10. Töltse le és telepítse a MySQL-kiszolgáló és a VMWare powercli-t.
 11. Ellenőrzést hogy a vCenter-kiszolgáló vagy vSphere-gazdagép teljes Tartománynevét vagy IP-címét adja meg. Hagyja bejelölve az alapértelmezett portot, és adjon meg egy rövid nevet a kiszolgáló az Azure-ban.

@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: cd5ae365-9ed6-43a6-920b-f7814b993949
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 981bcb6bc9160969e7225342a0e4cda6afc3ed7c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: fd97321c638dd95f811ff772a4163ce3c2fd682c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064560"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Oktatóanyag: Trello az Azure Active Directory-integráció
 
@@ -131,8 +131,8 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
     | Name (Név) |  Adatforrás-attribútum|
     | --- | --- |
     | User.Email | user.mail |
-    | User.FirstName | User.givenName |
-    | User.LastName | User.surname |
+    | User.FirstName | user.givenname |
+    | User.LastName | user.surname |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -162,7 +162,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 

@@ -1,5 +1,5 @@
 ---
-title: Azure bejárati ajtajának szolgáltatás – az Azure-hatóságuknál kézbesítési suite terheléselosztás |} A Microsoft Docs
+title: Azure bejárati ajtajának szolgáltatás – az Azure-alkalmazás kézbesítési suite terheléselosztás |} A Microsoft Docs
 description: Ez a cikk segít a további tudnivalók az Azure javasolja a terheléselosztás és a hozzá tartozó kézbesítési alkalmazáscsomag
 services: frontdoor
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 4c9f92481af1e69a111869cb6fc1305923bb0484
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5403b5506a3758ede5ad06640335b873b6b9aa96
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026007"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820821"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Terheléselosztás az Azure alkalmazáskézbesítési csomagjával
 
 ## <a name="introduction"></a>Bevezetés
-A Microsoft Azure több globális és regionális szolgáltatásokat kínál a kezelése, hogyan ossza a hálózati forgalmat és elosztott terhelésű: a Traffic Manager, bejárati ajtajának szolgáltatás, Application Gateway és a Load Balancer.  Együtt az Azure számos régióban és a zónaszintű architektúra, ezek a szolgáltatások együttes használata lehetővé teszi nagy teherbírású, méretezhető, nagy teljesítményű alkalmazásokat hozhat létre.
+A Microsoft Azure több globális és regionális szolgáltatásokat kínál a kezelése, hogyan ossza a hálózati forgalmat és elosztott terhelésű: A TRAFFIC Manager, bejárati ajtajának szolgáltatás, Application Gateway és Load Balancert.  Együtt az Azure számos régióban és a zónaszintű architektúra, ezek a szolgáltatások együttes használata lehetővé teszi nagy teherbírású, méretezhető, nagy teljesítményű alkalmazásokat hozhat létre.
 
 ![Alkalmazáscsomag-kézbesítés ][1]
  
@@ -51,16 +51,16 @@ Load Balancer nagy teljesítményű, kis késleltetésű 4. rétegű terhelésel
 
 ## <a name="choosing-a-global-load-balancer"></a>Egy globális a terheléselosztót választja
 A Traffic Manager és az Azure bejárati ajtajának között globális terheléselosztó globális útválasztás kiválasztásakor érdemes mi hasonló, és mi a két szolgáltatás.   Mindkét szolgáltatás megadása
-- **Többszörös közötti redundancia:** egy adott régióban leáll, ha forgalmat zökkenőmentesen régió felé irányítja a legközelebbi beavatkozása nélkül, az alkalmazás tulajdonosa.
-- **Legközelebb eső régióban útválasztás:** automatikusan adatforgalmat legközelebb eső régió
+- **Többszörös közötti redundancia:** Egy adott régióban leáll, ha forgalmat zökkenőmentesen régió felé irányítja a legközelebbi beavatkozása nélkül, az alkalmazás tulajdonosa.
+- **Legközelebb eső régióban útválasztási:** A legközelebbi régió, automatikusan irányítja a forgalmat
 
 </br>Az alábbi táblázat a Traffic Manager és az Azure bejárati ajtajának szolgáltatás közötti különbségeket ismerteti:</br>
 
 | Traffic Manager | Azure Front Door Service |
 | --------------- | ------------------------ |
-|**Bármely protokoll:** mert Traffic Manager a DNS-rétegben működik, irányíthatja bármilyen típusú hálózati forgalmat; HTTP, a TCP, UDP, stb. | **HTTP-gyorsítás:** bejárati ajtajának forgalom küldése a proxyn keresztül, a Microsoft Edge-hálózat.  Emiatt a HTTP (S)-kérelmek tekintse meg a teljesítmény és a késés fejlesztései csökkenti a késéseket az SSL-egyeztetési és a gyakori elérésű AFD kapcsolatot az alkalmazás használatával.|
-|**A helyszíni útválasztási:** útválasztási egy DNS-rétegben, a forgalom mindig irányul pont-pont.  Útválasztás a fiókirodában, a helyszíni adatközponthoz is igénybe vehet egy közvetlen elérési útja; a saját hálózaton is a Traffic Managerrel. | **Független méretezhetősége:** mert bejárati ajtajának működik együtt a HTTP-kérelem, kéréseket a különböző URL-cím elérési átirányíthatók a másik háttér / regionális szolgáltatási készletek (mikroszolgáltatás-alapú) alapuló szabályokat és az egyes alkalmazás mikroszolgáltatások állapotát.|
-|**A számlázás formátum:** DNS-alapú számlázás méretezi a felhasználóival és a szolgáltatások több felhasználóval rendelkező, trületek magasabb használat, a költségek csökkentése érdekében. |**A beágyazott biztonsági:** bejárati ajtajának lehetővé teszi, hogy a szabályokat, például a sebességkorlátozás és IP-ACL-ing a háttérrendszerekre védelmére, mielőtt a forgalom eléri az alkalmazást. 
+|**Bármely protokoll:** A Traffic Manager a DNS-rétegben működik, mert irányíthatja a bármilyen típusú hálózati forgalmat; HTTP, a TCP, UDP, stb. | **HTTP-gyorsítás:** Az bejárati ajtajának forgalom nem használ proxyt, a Microsoft Edge-hálózatot.  Emiatt a HTTP (S)-kérelmek tekintse meg a teljesítmény és a késés fejlesztései csökkenti a késéseket az SSL-egyeztetési és a gyakori elérésű AFD kapcsolatot az alkalmazás használatával.|
+|**A helyszíni útválasztási:** A DNS-rétegben útválasztás, a forgalom a pont-pont mindig irányul.  Útválasztás a fiókirodában, a helyszíni adatközponthoz is igénybe vehet egy közvetlen elérési útja; a saját hálózaton is a Traffic Managerrel. | **Független méretezhetősége:** Bejárati ajtajának működik együtt a HTTP-kérelem, mert különböző URL-cím elérési utakhoz kérések lehetnek az irányított különböző háttérrendszere / regionális szolgáltatási készletek (mikroszolgáltatás-alapú) alapuló szabályokat és az egyes alkalmazás mikroszolgáltatások állapotát.|
+|**A számlázás formátuma:** DNS-alapú számlázás méretezi a felhasználóival és a szolgáltatások több felhasználóval rendelkező, trületek magasabb használat, a költségek csökkentése érdekében. |**A beágyazott biztonsági:** Bejárati ajtajának lehetővé teszi, hogy a szabályokat, például a sebességkorlátozás és IP-ACL-ing a háttérrendszerekre védelmére, mielőtt a forgalom eléri az alkalmazást. 
 
 </br>A teljesítménnyel, a működési követelmények és a bejárati ajtó a HTTP-munkaterhelések biztonsági funkcióit javasoljuk, ügyfelek bejárati ajtajának használja a HTTP számítási feladatai.    A TRAFFIC Manager és a bejárati ajtajának segítségével párhuzamosan minden forgalmat az alkalmazásához. 
 

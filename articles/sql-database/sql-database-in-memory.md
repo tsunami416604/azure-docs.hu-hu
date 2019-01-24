@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: d2602b79db0950043cc84bbd1626f7c8ec6f402a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 399a0e6dd2b5c83a599aa50973417ba5a9be708d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714389"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813355"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Teljesítmény optimalizálása, memóriabeli technológiákat az SQL Database használatával
 
@@ -70,7 +70,7 @@ További információkért lásd:
 
 ## <a name="in-memory-oltp"></a>Memóriabeli OLTP beállítása
 
-A memóriában tárolt OLTP-k technológia rendkívül gyors adatelérési műveletek biztosít az összes adat a memóriában tartja. Azt is speciális indexek, a lekérdezéseket, és a data-hozzáférést zárolástól mentes natív fordítás javítására használja az OLTP számítási feladatok teljesítményére. Az In-Memory OLTP adatok rendszerezéséhez két módja van:
+A memóriában tárolt OLTP-k technológia rendkívül gyors adatelérési műveletek biztosít az összes adat a memóriában tartja. Azt is speciális indexek, a natív lekérdezéseket és zárolástól mentes adatelérési összeállítása fejlesztésére használja az OLTP számítási feladatok teljesítményére. Az In-Memory OLTP adatok rendszerezéséhez két módja van:
 - **Memóriára optimalizált sortárindex** formátumot, ahol minden sor egy külön memóriabeli objektum. Ez a klasszikus In-Memory OLTP formátum optimalizált nagy teljesítményű OLTP számítási feladatokhoz. Memóriaoptimalizált táblákhoz, a memóriára optimalizált sortárindex formátumban is használható két típusa van:
   - *Tartós táblák* (SCHEMA_AND_DATA), a memória a sor megmaradnak a kiszolgáló újraindítása után. Táblák az ilyen típusú úgy viselkedik, mint egy hagyományos sortárindex táblázat további előnyeinek memóriabeli optimalizálás.
   - *Nem tartós táblák* (SCEMA_ONLY) hol tárolja a sorokat a rendszer nem őrződnek meg az újraindítás után. Ez a tábla típusú ideiglenes adatokat (például az ideiglenes táblák csere) lett tervezve, vagy táblákat, ahol meg kell gyorsan adatok betöltése előtt helyezze át néhány megőrzött tábla (tehát nevű előkészítési táblák).

@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a workdayjel képes |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció a workdayjel képes |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Workday között.
 services: active-directory
 documentationCenter: na
 author: cmmdesai
-manager: mtillman
+manager: daveba
 ms.reviewer: jeedes
 ms.assetid: e9da692e-4a65-4231-8ab3-bc9a87b10bca
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
-ms.openlocfilehash: 9c789f5fec9b31b53d316b23faad5c438b52137c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d44d44b47420e2e05c351e5c607cc71b1c7e1247
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843342"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824440"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workday"></a>Oktatóanyag: Azure Active Directory-integráció a workdayjel képes
+# <a name="tutorial-azure-active-directory-integration-with-workday"></a>Oktatóanyag: A workdayjel képes az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban megismerheti, hogyan integrálható a Workday az Azure Active Directory (Azure AD).
 
@@ -153,7 +153,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 11. Az a **átirányítási URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Átirányítási URL-címek](./media/workday-tutorial/IC7829581.png "átirányítási URL-címek")
+    ![Redirection URLs](./media/workday-tutorial/IC7829581.png "Redirection URLs")
 
     a. Kattintson a **sort ad hozzá a**.
 

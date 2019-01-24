@@ -1,29 +1,29 @@
 ---
-title: Azure Media Webmontázskészítő Kivágás feladatok elküldéséhez |} Microsoft Docs
-description: Azure Media Webmontázskészítő Kivágás-feladatok elküldésekor lépései
+title: Azure Media Clipperrel klipekkel kapcsolatos feladatok elküldése |} A Microsoft Docs
+description: Az Azure Media Clipperrel klipekkel kapcsolatos feladatok elküldésének lépései
 services: media-services
-keywords: Klip; subclip; kódolás; adathordozó
+keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 8372c405087c0dc7a000a65265bb99c395c3a8d6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0894c3677b87fe48c130d648253dadd0d43429f4
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788493"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821447"
 ---
-# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Az Azure Media Webmontázskészítő Kivágás feladatok elküldéséhez
-Az Azure Media Webmontázskészítő szükséges egy **submitSubclipCallback** Kivágás feladat elküldése kezelése végrehajtandó metódus. Ez a függvény megkülönbözteti a Webmontázskészítő kimeneti webszolgáltatásnak HTTP POST megvalósításához. Ez a webszolgáltatás, ahol is elküldhetik a kódolási feladat. A Webmontázskészítő eredménye vagy a Media Encoder Standard megjelenített feladatok készletet, vagy a REST API forgalma dinamikus jegyzék szűrő hívások kódolást. A csatlakoztatott modell szükség, mert a media services-fiók hitelesítő adatait az ügyfél böngészője nem biztonságosak.
+# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Az Azure Media Clipperrel klipekkel kapcsolatos feladatok elküldése
+Az Azure Media Clipperrel van szükség egy **submitSubclipCallback** kapcsolást feladatküldéshez kezeléséhez végrehajtandó módszer. Ez a függvény végrehajtási egy HTTP POST webszolgáltatás Clipperrel kimenetre van. A webszolgáltatás, ahol elküldheti a kódolási feladat. A Clipperrel kimenete vagy a Media Encoder Standard renderelt feladatok készletet, vagy a REST API-val hasznos dinamikusjegyzék-szűrő hívások kódolás. Ez a csatlakoztatott modell szükség, mert a media services-fiók hitelesítő adatai nem biztonságosak, az ügyfél böngészőjében.
 
-A következő feladatütemezési ábra szemlélteti a munkafolyamat a böngészőalapú ügyfél, a webszolgáltatás és az Azure Media Services között: ![Azure Media Webmontázskészítő Szekvenciadiagram](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
+A következő feladatütemezési ábra mutatja be a munkafolyamat a böngészőalapú ügyfél, a webszolgáltatás és az Azure Media Services között: ![Az Azure Media Clipperrel Szekvenciadiagram](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
 
-A fenti ábrán a négy entitások legyenek: a végfelhasználó böngésző, a webes szolgáltatás, a CDN-végpont a Webmontázskészítő erőforrások és az Azure Media Services üzemeltető. Amikor a felhasználók megnyitják a weblapot, a lap lekérése a Webmontázskészítő JavaScript és a CSS-erőforrások az üzemeltetési CDN-végpontot. A végfelhasználó konfigurálja a Kivágás feladat vagy a dinamikus jegyzék szűrő létrehozási hívás a böngészőjükben. Amikor a végfelhasználó ad meg a feladat vagy szűrő létrehozási híváshoz, a böngésző a feladat forgalma egy webszolgáltatás, amelyet telepíteni kell a helyezi. Ez a webszolgáltatás végső soron elküldi a Kivágás feladatot, vagy szűrő létrehozási híváshoz. az Azure Media Services segítségével a media services-fiók hitelesítő adatait.
+A fenti ábrán a négy entitások vannak: a felhasználó böngészőben, a webszolgáltatást, a CDN-végpontot üzemeltető Clipperrel erőforrásokkal és az Azure Media Services. Amikor a végfelhasználó a weblapot, a lap beolvasása a Clipperrel JavaScript és CSS-erőforrásokat üzemeltetési a CDN-végponthoz. A végfelhasználó a Kivágás feladat vagy a dinamikusjegyzék-szűrő létrehozása hívás a böngésző konfigurálja. Amikor a felhasználó ad meg a feladat vagy szűrő létrehozási hívásnak, a böngészőben a feladat hasznos egy webszolgáltatás, amelyet telepítenie kell a program keretében. A webszolgáltatás végső soron elküldi a Kivágás feladatot, vagy szűrő létrehozási hívásnak az Azure Media Services használata a media services-fiók hitelesítő adatait.
 
-Az alábbi példakód mutatja be egy minta **submitSubclipCallback** metódust. Ezzel a módszerrel a HTTP POST, a Media Encoder Standard kódolási beállításkészlet valósíthatja meg. Ha sikeres volt-e a FELADÁS egy vagy több (**eredmény**), a **ígéret** feloldja, ellenkező esetben nem fogadta el a hiba részletes adatait.
+Az alábbi kódmintában látható egy minta **submitSubclipCallback** metódust. Ezzel a módszerrel a HTTP POST, a Media Encoder Standard kódolási előbeállítás valósíthatja meg. Ha sikeres volt-e a bejegyzés (**eredmény**), a **Promise** megoldódott, ellenkező esetben nem fogadta el a hiba részleteit.
 
 ```javascript
 // Submit Subclip Callback
@@ -31,7 +31,7 @@ Az alábbi példakód mutatja be egy minta **submitSubclipCallback** metódust. 
 // Parameter:
 // - subclip: object that represents the subclip (output contract).
 //
-// Returns: a Promise object that, when resolved, retuns true if the operation was accept in the back-end; otherwise, returns false.
+// Returns: a Promise object that, when resolved, returns true if the operation was accept in the back-end; otherwise, returns false.
 var onSubmitSubclip = function (subclip) {
     var promise = new Promise(function (resolve, reject) {
         // TODO: perform the back-end AJAX request to submit the subclip job.
@@ -54,12 +54,12 @@ var subclipper = new subclipper({
     submitSubclipCallback: onSubmitSubclip,
 });
 ```
-A feladat elküldése eredménye a Media Encoder Standard kódolási beállításkészlet megjelenített feladat vagy a REST API hasznos dinamikus jegyzék szűrők.
+A feladat elküldése kimenete a Media Encoder Standard kódolási előbeállítás megjelenített feladat, vagy a REST API-val hasznos dinamikusjegyzék-szűrők számára.
 
-## <a name="submitting-encoding-job-to-create-video"></a>Videó létrehozásához kódolási feladat elküldése
-A keret pontos videó klip létrehozásához Media Encoder Standard kódolási feladat küldése Kódolási feladat által előállított videók megjelenítve, egy új töredékes MP4-fájlokat.
+## <a name="submitting-encoding-job-to-create-video"></a>Hozhat létre a videó kódolási feladat elküldése
+A Media Encoder Standard kódolási feladat létrehozása egy keret pontos videoklipet küldhet. Kódolási feladat a termék jelennek meg a videókat, egy új töredékes MP4-fájlt.
 
-A feladat kimenete szerződés megjelenített levágás egy JSON-objektum a következő tulajdonságokkal:
+A feladat kimeneti szerződés a megjelenített kapcsolást egy JSON-objektum a következő tulajdonságokkal:
 
 ```json
 {
@@ -99,7 +99,7 @@ A feladat kimenete szerződés megjelenített levágás egy JSON-objektum a köv
     "type": "job",
 
     /* Required if "type" === "job" */
-    /* NOTE: This is the preset for the Media Encoder Standard (MES) processor that can be used in the back-end to sumit the subclip job.
+    /* NOTE: This is the preset for the Media Encoder Standard (MES) processor that can be used in the back-end to submit the subclip job.
     The encoding profile ("Codecs" property) depends on the "singleBitrateMp4Profile" and "multiBitrateMp4Profile" option parameters
     specified when creating the widget instance. */
     /* REFERENCE: https://docs.microsoft.com/azure/media-services/media-services-advanced-encoding-with-mes */
@@ -152,10 +152,10 @@ A feladat kimenete szerződés megjelenített levágás egy JSON-objektum a köv
 }
 ```
 
-A Media Encoder Standard végezhető el a kódolási feladat elküldeni a társított a kódolási feladat az adott néven beállítás. Lásd a jelen cikkben alább kódolás elküldése a feladatok használata a [.NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) vagy [REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-encode-asset).
+Hajtsa végre a kódolási feladat elküldéséhez a Media Encoder Standard hozzárendelt feladathoz kódolási előbeállítást. Lásd a kódolás elküldése a jelen cikkben alább feladatokat a következővel: a [.NET SDK-val](https://docs.microsoft.com/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) vagy [REST API-val](https://docs.microsoft.com/azure/media-services/media-services-rest-encode-asset).
 
-## <a name="quickly-creating-video-clips-without-encoding"></a>Gyors létrehozása kódolás nélkül videó videóklipeket
-Ahelyett, hogy egy kódolási feladat, Azure Media Webmontázskészítő használhatja dinamikus manifest-szűrők létrehozásához. Szűrők kódolás nem igényelnek, és nem létrehoz egy új eszközt, gyorsan hozható létre. A szűrő Kivágás kimeneti szerződés egy JSON-objektum a következő tulajdonságokkal:
+## <a name="quickly-creating-video-clips-without-encoding"></a>Gyors létrehozásakor videoklipeket kódolás nélkül
+Ahelyett, hogy a kódolási feladat létrehozása, az Azure Media Clipperrel használhatja dinamikusjegyzék-szűrők létrehozásához. Szűrők nem szükséges kódolás, és gyorsan létrehozhatók, egy új objektumot nem jön létre. Egy szűrő kapcsolást kimeneti szerződése egy JSON-objektum a következő tulajdonságokkal:
 
 ```json
 {
@@ -228,4 +228,4 @@ Ahelyett, hogy egy kódolási feladat, Azure Media Webmontázskészítő haszná
 }
 ```
 
-Küldje el a REST-hívást dinamikus manifest-szűrő létrehozásához, a Küldés a kapcsolódó szűrő hasznos használatával a [REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest).
+Dinamikusjegyzék-szűrő létrehozása a REST-hívást elküldeni, küldje el a kapcsolódó szűrő hasznos használatával a [REST API-val](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest).

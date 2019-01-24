@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 2d4b395abefd25d7e187ae3a15943e53f1aed27b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 4d8e5cb577eb7b3eecc800e7a74b1ddcbbc2c76c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472526"
+ms.locfileid: "54813372"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>A probléma az Azure Active Directory-gyűjtemény alkalmazáshoz történő felhasználókiépítés konfigurálása során a rendszergazdai hitelesítő adatok mentése 
 
@@ -30,7 +30,7 @@ Ha az Azure portal használatával konfigurálhatja [felhasználók automatikus 
 
 SAML-alapú egyszeri bejelentkezést is konfigurálva ugyanahhoz az alkalmazáshoz, ha a hiba legvalószínűbb oka az, hogy az Azure AD belső, alkalmazásonkénti tárolási kapacitása a tanúsítványok és a rendszer túllépte a hitelesítő adatokat.
 
-Az Azure AD jelenleg a tanúsítványok, titkos jogkivonatok, hitelesítő adatok és kapcsolódó konfigurációs adatokat (más néven egy szolgáltatás egyszerű rekord az Azure AD-) alkalmazás egyetlen példánya társított egy kilobájtoktól a petabájtokig maximális tárolási kapacitása nem.
+Jelenleg az Azure AD tárkapacitása legfeljebb 1024 bájt tanúsítványok, titkos jogkivonatok, hitelesítő adatok és kapcsolódó konfigurációs adatok társított egy alkalmazást (más néven a szolgáltatás egyszerű rekord az Azure AD) egy példánya.
 
 Ha SAML-alapú egyszeri bejelentkezés konfigurálva van, a SAML-jogkivonatok aláírásához használt tanúsítvány itt tárolja, és gyakran használ több mint 50 % százalékát.
 

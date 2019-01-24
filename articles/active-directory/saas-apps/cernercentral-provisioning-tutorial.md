@@ -1,11 +1,11 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval Cerner központi konfigurálása |} A Microsoft Docs'
+title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása Cerner központi |} A Microsoft Docs'
 description: Ismerje meg az Azure Active Directory konfigurálása az Automatikus kiépítés felhasználóknak, hogy a Résztvevőlista Cerner közép-India.
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
-manager: mtillman
+manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: bc215061d5f2f139c5912f29f709346cb681ee86
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: eb34a6e7ded4c31c623031104aabbee16b5c4f1c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346631"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819475"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Cerner központi konfigurálása
 
@@ -77,7 +77,7 @@ Felhasználói fiókok Cerner központi üzembe helyezéséhez, szüksége Cerne
 
    * Utasítások:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * A védőfal: https://sandboxcernercentral.com/system-accounts/
+   * Sandbox: https://sandboxcernercentral.com/system-accounts/
 
    * Éles környezetben:  https://cernercentral.com/system-accounts/
 
@@ -85,7 +85,7 @@ Felhasználói fiókok Cerner központi üzembe helyezéséhez, szüksége Cerne
 
    * Utasítások:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * A védőfal: https://sandboxcernercentral.com/system-accounts/
+   * Sandbox: https://sandboxcernercentral.com/system-accounts/
 
    * Éles környezetben:  https://cernercentral.com/system-accounts/
 
@@ -105,7 +105,7 @@ Felhasználói fiókok Cerner központi üzembe helyezéséhez, szüksége Cerne
 
    * Az a **bérlői URL-cím** mezőbe írjon be egy URL-címet az alábbi formátumban "Felhasználói Osztálynévjegyzék-tartomány-azonosító" cserélje le a #4. lépésében beszerzett tartomány azonosítója.
 
-> A védőfal: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Sandbox: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
 > Éles környezetben: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
@@ -129,8 +129,8 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [-
 
 ## <a name="additional-resources"></a>További források
 
-* [Cerner központi: Az Azure AD identity adatok közzététele](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
-* [Oktatóanyag: Az egyszeri bejelentkezés az Azure Active Directory konfigurálása a Cerner közép-India](cernercentral-tutorial.md)
+* [Cerner középső régiója: Közzétételi azonosító adataihoz az Azure AD-vel](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
+* [Oktatóanyag: Cerner központi konfigurálása egyszeri bejelentkezéshez az Azure Active Directoryval](cernercentral-tutorial.md)
 * [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6f894310157432a6e03e6ec4753f5efc2d8ac66d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 149a15353a7fd1d698af306971ecb0949db4c165
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267419"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817231"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso áttelepítése: Egy Azure container és az Azure SQL Database a helyszíni alkalmazás újratervezése
 
@@ -199,7 +199,7 @@ Az Azure container jön létre a webkiszolgáló virtuális gépről az exportá
 
 ## <a name="step-3-provision-azure-service-fabric"></a>3. lépés: Az Azure Service Fabric üzembe helyezése
 
-A SmartHotel360 tárolót az Azure Service Fabric Sluster fog futni. Contoso-rendszergazdák a Service Fabric-fürt a következőképpen hozhat létre:
+A SmartHotel360 tárolót az Azure Service Fabric-fürtöt fog futni. Contoso-rendszergazdák a Service Fabric-fürt a következőképpen hozhat létre:
 
 1. Az Azure Marketplace-ről a Service Fabric erőforrás létrehozása
 
@@ -282,7 +282,7 @@ Contoso fürttanúsítványok a fürt az Azure DevOps-szolgáltatások hozzáfé
 
 8. Az Azure DevOps-szolgáltatásokkal üzembe helyezéshez meg kell határoznia annak a tanúsítvány Base64 értékét. Erre a helyi fejlesztői munkaállomáson PowerShell használatával. Ezek illessze be a kimenetet egy szövegfájlba későbbi használatra.
 
-    ```
+    ```powershell
         [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("C:\path\to\certificate.pfx")) 
     ```
 
@@ -530,7 +530,7 @@ Első lépésként a Contoso rendszergazdák üzembe egy Azure Cosmos database.
 5. A portál megnyitja az új adatbázis > **gyűjtemény** > **dokumentumok** kattintson **új dokumentum**.
 6. Ezek illessze be a következő JSON-kódot a dokumentum ablakban. Ez a mintaadatok egyetlen tweet formájában.
 
-    ```
+    ```json
     {
             "id": "2ed5e734-8034-bf3a-ac85-705b7713d911",
             "tweetId": 927750234331580911,
@@ -565,11 +565,11 @@ Az a Cosmos DB üzembe helyezett a Contoso-rendszergazdák konfigurálhatják az
 
 2. Akkor adja meg a következő két paramétert:
 
-   ```
+   ```xml
    <Parameter Name="SentimentIntegration.CosmosDBEndpoint" Value="[URI]" />
    ```
    
-   ```
+   ```xml
    <Parameter Name="SentimentIntegration.CosmosDBAuthKey" Value="[Key]" />
    ```
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: e658124dc6db2761fb475597a32e663949edfccf
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1714a29e4b27f6363d748ceb180f56ba98c713bb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470749"
+ms.locfileid: "54809530"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
 Észlelt, miközben az adatokat az Azure Backup segítségével a következő táblázatban felsorolt hibák elhárítását:
@@ -57,6 +57,7 @@ ms.locfileid: "54470749"
 | A biztonsági mentés nem sikerült megszakítani a feladatot: <br>Várjon, amíg a feladat befejeződik. |None |
 
 ## <a name="restore"></a>Visszaállítás
+
 | A hiba részletei | Áthidaló megoldás |
 | --- | --- |
 | Egy felhőalapú belső hiba miatt nem sikerült visszaállítani. |<ol><li>A felhőalapú szolgáltatás, amelyhez visszaállítani kívánt DNS-beállításokkal van konfigurálva. Ellenőrizheti: <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings**.<br>Ha **cím** konfigurálva van, akkor a DNS-beállítások konfigurálása.<br> <li>A felhőalapú szolgáltatás, amelyhez a visszaállítani kívánt állítottak **fenntartott IP-cím**, és a felhőszolgáltatás virtuális gépeinek konfigurációjától leállított állapotban van. Ellenőrizheti, hogy egy felhőalapú szolgáltatás a következő PowerShell-parancsmagok használatával lefoglalt IP-címet: **$deployment = Get-AzureDeployment - ServiceName "szolgáltatásnév"-"Éles" $tárolóhely eszközökre. ReservedIPName**. <br><li>Szeretne egy virtuális gépet ugyanazon a felhőszolgáltatáson, a következő speciális hálózati konfigurációk visszaállításához: <ul><li>Terheléselosztó konfigurációját, belső és külső virtuális gépeket.<li>Virtuális gépek több fenntartott IP-címmel. <li>Több hálózati adapterrel rendelkező virtuális gépeket. </ul><li>Válassza ki egy új felhőszolgáltatást a felhasználói felületen vagy lásd [helyreállítási szempontjai](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations) speciális hálózati konfigurációval rendelkező virtuális gépek számára.</ol> |
@@ -100,7 +101,7 @@ Ha a biztonsági mentés több mint 12 óra alatt, vagy a visszaállítási töb
 * A Linux rendszerű Virtuálisgép-ügynök frissítéséhez kövesse a cikkben lévő utasítások [Linuxos Virtuálisgép-ügynök frissítése](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
     > [!NOTE]
-    > Mindig a terjesztésipont-tárház használatával frissítse az ügynököt. 
+    > Mindig a terjesztésipont-tárház használatával frissítse az ügynököt.
 
     Az ügynökkód ne töltse le a Githubról. Ha a legújabb ügynök nem érhető el a terjesztés, lépjen kapcsolatba a beszerezni a legújabb ügynököt utasításokat terjesztési támogatása. Ellenőrizheti a legújabb [Windows Azure Linux-ügynök](https://github.com/Azure/WALinuxAgent/releases) a GitHub-adattárban lévő információkat.
 

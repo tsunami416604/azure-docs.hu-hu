@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az LinkedIn szintjének emelése |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció, a LinkedIn-szintjének emelése |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a LinkedIn jogosultságszint-emelés között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 2ad9941b-c574-42c3-bd0f-5d6ec68537ef
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8b11b5e3e420577590e95c6839673f54c52d078b
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 209f87a77ff6e18fa08943385d9cf61bbf915089
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116176"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822637"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Oktatóanyag: Azure Active Directory-integráció az LinkedIn szintjének emelése
+# <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Oktatóanyag: Az Azure Active Directory-integráció, a LinkedIn-szintjének emelése
 
 Ebben az oktatóanyagban elsajátíthatja a jogosultságszint-emelés LinkedIn integrálása az Azure Active Directory (Azure AD).
 
@@ -137,7 +137,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure fe
 
     | Attribútum neve | Attribútum értéke |
     | --- | --- |
-    | Szervezeti egység| User.Department |
+    | Szervezeti egység| user.department |
 
       ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/userattribute.png)
 
@@ -240,7 +240,7 @@ Ha a hozzáférési panelen a LinkedIn jogosultságszint-emelés csempére katti
 
 ## <a name="additional-resources"></a>További források
 
-* [Oktatóanyag: Konfigurálása LinkedIn jogosultságszint-emelés az Azure Active Directory-felhasználók automatikus](linkedinelevate-provisioning-tutorial.md)
+* [Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a LinkedIn szintjének emelése](linkedinelevate-provisioning-tutorial.md)
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Felhasználók átadásának konfigurálása](linkedinelevate-provisioning-tutorial.md)

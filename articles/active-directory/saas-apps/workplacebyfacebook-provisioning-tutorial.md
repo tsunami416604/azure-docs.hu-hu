@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Által Facebook munkahelyi konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs'
+title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása a Facebook, a munkahelyi |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a munkahely által Facebook között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 6341e67e-8ce6-42dc-a4ea-7295904a53ef
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,91 +14,91 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 2b085d8b825055b5cb318da200eafb6d9000bf4b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 63faea6dffa47aa7b0b9a1cc27052c0b0885aca9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213106"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814357"
 ---
-# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés által Facebook munkahelyi konfigurálása
+# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: A Facebook, a munkahelyi felhasználók automatikus átadása konfigurálása
 
-Ez az oktatóanyag célja a lépéseket kell elvégeznie a Facebook-on és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad által Facebook munkahelyi munkaterületen mutatjuk be.
+Ez az oktatóanyag célja, mutatni, a lépéseket kell elvégeznie a Facebook és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből a munkahelyhez, a Facebook, a munkahelyen.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs munkahelyi által Facebook, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása a munkahely által Facebook, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- A munkahelyi által Facebook egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Azure AD-előfizetés
+- A munkahelyi hálózathoz Facebook egyszeri bejelentkezéses engedélyezett előfizetés szerint
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="assigning-users-to-workplace-by-facebook"></a>Felhasználók hozzárendelése a munkahely által Facebook-on
+## <a name="assigning-users-to-workplace-by-facebook"></a>A Facebook, a munkahelyi felhasználók hozzárendelése
 
-Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" használ annak meghatározásához, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus fiók felhasználókiépítése keretében csak a felhasználók és csoportok "hozzárendelt" az Azure AD-alkalmazáshoz való szinkronizálása.
+Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználói fiók kiépítése kontextusában csak a felhasználók és csoportok rendelt "", az alkalmazások az Azure AD szinkronizálása.
 
-A létesítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége döntse el, hogy mely felhasználók és/vagy az Azure AD-csoportok határoz meg a felhasználókat, akik a Facebook-alkalmazást a munkahelyi hozzáférés szükséges. Ha úgy döntött, rendelhet ezeket a felhasználókat a munkahelyi Facebook alkalmazást itt cikk utasításait követve:
+A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége dönthet arról, hogy mely felhasználók és/vagy az Azure AD-csoportokat a felhasználók, akik hozzáférhetnek a munkahelyen a Facebook-alkalmazás által jelölik. Ha úgy döntött, rendelhet ezeket a felhasználókat a munkahelyhez, Facebook-alkalmazást az alábbi utasításokat:
 
 [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ### <a name="important-tips-for-assigning-users-to-workplace-by-facebook"></a>Felhasználók hozzárendelése a munkahely által Facebook fontos tippek
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó a munkahelyhez által hozzárendelt Facebook teszteli a telepítési konfigurációt. További felhasználók és/vagy csoportok később is rendelhető.
+*   Javasoljuk, hogy egyetlen Azure AD-felhasználót a munkahelyhez által hozzárendelt Facebook az üzembe helyezési konfiguráció tesztelése. További felhasználók és csoportok később is rendelhető.
 
-*   A felhasználó által Facebook munkahelyi hozzárendelésekor ki kell választania egy érvényes felhasználói szerepkörnek. A "Default" szerepkör nem működik történő üzembe helyezéséhez.
+*   A felhasználó által Facebook munkahelyhez hozzárendelésekor jelöljön ki egy érvényes felhasználói szerepkörnek. Az "Alapértelmezett hozzáférés" szerepkör nem működik a kiépítéshez.
 
 ## <a name="enable-user-provisioning"></a>Felhasználó-kiépítés engedélyezése
 
-Ez a szakasz végigvezeti az Azure AD munkahelyi csatlakozás Facebook a felhasználói fiók kiépítése API és a létesítési szolgáltatás létrehozása, konfigurálása frissítése, és tiltsa le a munkahelyi Facebook alapján a felhasználók és csoportok hozzárendelése az Azure AD által hozzárendelt felhasználói fiókok.
+Ez a szakasz végigvezeti az Azure AD-csatlakozás munkahelyi Facebook a felhasználói fiók üzembe helyezési API által és az eszközkiépítési szolgáltatás létrehozása, konfigurálása frissíteni, és tiltsa le a munkahelyi felhasználó és csoport alapján Facebook által hozzárendelt felhasználói fiókok az Azure AD-hozzárendelés.
 
 >[!Tip]
->Is választhatja, hogy a munkahely által Facebook SAML-alapú egyszeri bejelentkezés engedélyezése, utasítások megadott [Azure-portálon](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, bár ez a két funkció egészítse ki egymást.
+>Előfordulhat, hogy meg SAML-alapú egyszeri bejelentkezés előkészítése a munkahely által Facebook, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
 
-### <a name="to-configure-user-account-provisioning-to-workplace-by-facebook-in-azure-ad"></a>Konfigurálhatja a felhasználói fiók kiépítése munkahelyi Facebook által az Azure ad-ben:
+### <a name="to-configure-user-account-provisioning-to-workplace-by-facebook-in-azure-ad"></a>Konfigurálása a felhasználói fiók kiépítése a munkahelyhez Facebook által az Azure ad-ben:
 
-Ez a szakasz célja felvázoló Active Directory felhasználói fiókok által Facebook munkahelyi kiépítés engedélyezése.
+Ez a szakasz célja, az Active Directory felhasználói fiókoknak a munkahelyhez, a Facebook-kiépítés engedélyezése kidolgozására.
 
-Az Azure AD képes való automatikus szinkronizálása a munkahelyi Facebook által hozzárendelt felhasználói fiók adatait. Az automatikus szinkronizálás lehetővé teszi, hogy a munkahelyi hozzáférés előtt megpróbálja az első alkalommal jelentkeznek be a felhasználók hitelesítéséhez szükséges adatok megszerzéséhez Facebook által. Azt is deszerializálni látja el felhasználók a munkahely által Facebook amikor hozzáférés az Azure AD vissza lett vonva.
+Az Azure AD automatikusan szinkronizálhatók a munkahelyhez Facebook által hozzárendelt felhasználói fiók adatainak támogatja. Az automatikus szinkronizálás lehetővé teszi a munkahelyi Facebook, a hozzáférés, először bejelentkezési kísérlet előtt felhasználók hitelesítéséhez szükséges adatok alapján. Is függeszthetők helyezi üzembe a Facebook, a munkahelyi felhasználók amikor hozzáférés az Azure AD vissza lett vonva.
 
-1. Az a [Azure-portálon](https://portal.azure.com), keresse meg a **Azure Active Directory** > **vállalati alkalmazások** > **összes alkalmazás** szakasz.
+1. Az a [az Azure portal](https://portal.azure.com), keresse meg a **Azure Active Directory** > **vállalati alkalmazások** > **mindenalkalmazás** szakaszban.
 
-2. Ha már beállította az egyszeri bejelentkezés munkahelyi által Facebook, keresse meg a munkahely által használja a keresőmezőt Facebook példányát. Máskülönben válassza **Hozzáadás** keresse meg a **által Facebook munkahelyi** az alkalmazás katalógusában. Válassza ki a munkahelyi Facebook által a keresési eredmények közül, és adja hozzá az alkalmazások listáját.
+2. Ha már konfigurálta a Facebook, a munkahelyi az egyszeri bejelentkezés, keresse meg a munkahely által Facebook, a keresőmező használatával példány. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **munkahelyi által Facebook** az alkalmazás-katalógusában. A keresési eredmények közül válassza ki a munkahelyi Facebook szerint, és adja hozzá az alkalmazások listáját.
 
-3. Válassza ki a munkahely által Facebook példányt, majd válassza ki a **kiépítési** fülre.
+3. Válassza ki a munkahely által Facebook-példányát, majd válassza ki a **kiépítési** fülre.
 
-4. Állítsa be a **kiépítési üzemmódját** való **automatikus**. 
+4. Állítsa be a **Kiépítési mód** való **automatikus**. 
 
     ![kiépítés folyamatban](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. Az a **rendszergazdai hitelesítő adataival** szakaszt, írja be a hozzáférési jogkivonat a Facebook-rendszergazda által a munkahelyhez, és adja meg a bérlői URL-cím értéket `https://www.facebook.com/scim/v1/` . Tapasztalja [utasításokat](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) munkahelyi fiókhoz egy hozzáférési jogkivonat létrehozásával. 
+5. Alatt a **rendszergazdai hitelesítő adataival** részen adja meg a hozzáférési jogkivonat Facebook-rendszergazda által a munkahelyen és a bérlői URL-cím értékét állítsa `https://www.facebook.com/scim/v1/` . Tekintse át ezeket [utasításokat](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) létrehozásával egy hozzáférési tokent a munkahelyen. 
 
-6. Az Azure portálon kattintson **kapcsolat tesztelése** biztosításához az Azure AD csatlakozhat a munkahelyi Facebook-alkalmazást. Ha nem sikerül, győződjön meg arról, a Facebook-fiókkal munkahelyi Team rendszergazdai jogosultságokkal rendelkezik.
+6. Az Azure Portalon kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozni tud a munkahelyhez, Facebook-alkalmazást. Ha a kapcsolat hibája esetén, győződjön meg arról, a Facebook-fiók munkahelyi csapat rendszergazdai engedélyekkel rendelkező.
 
-7. Adja meg az e-mail címet vagy egy csoport, az üzembe helyezési hiba értesítéseket kapjanak a **értesítő e-mailt** mezőben, majd jelölje be a jelölőnégyzetet.
+7. Adja meg az e-mail-címét egy személyt vagy csoportot, amelyre az üzembe helyezési hiba értesítéseket szeretné kapni a **értesítő e-mailt** mezőben, majd jelölje be a jelölőnégyzetet.
 
 8. Kattintson a **mentéséhez.**
 
-9. A hozzárendelések szakaszban válassza ki a **szinkronizálása Azure Active Directory-felhasználók által Facebook munkahelyhez.**
+9. A leképezések szakasz alatt válassza ki a **szinkronizálása az Azure Active Directory-felhasználók által Facebook munkahelyhez.**
 
-10. Az a **attribútum-leképezésekhez** szakaszban, tekintse át a felhasználói attribútumok az Azure AD munkahelyi által szinkronizált Facebook-on. A kiválasztott attribútumok **egyező** tulajdonságok kell egyeznie a felhasználói fiókok, a munkahely által használt Facebook a frissítési műveletek. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+10. Az a **attribútumleképezések** területen tekintse át az Azure AD-ből a munkahelyhez által szinkronizált Facebook felhasználói attribútumok. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságai megfelelően a felhasználói fiókok, a munkahely által használt Facebook frissítési műveletek. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-11. Az Azure AD szolgáltatás által Facebook munkahelyi fiókhoz kiépítés engedélyezéséhez módosítsa a **kiépítési állapot** való **a** a a **beállítások** szakasz
+11. Az Azure AD létesítési szolgáltatás a munkahely által Facebook engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakasz
 
 12. Kattintson a **mentéséhez.**
 
-Automatikus kiépítés konfigurálásával kapcsolatos további információkért lásd: [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
+Automatikus üzembe helyezés beállításáról további információkért lásd: [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
 
-Mostantól létrehozhat egy olyan fiókot. Várjon 20 percig győződjön meg arról, hogy a munkahelyi fiók lett szinkronizálva a Facebook által.
+Mostantól létrehozhat egy olyan fiókot. Ellenőrizze, hogy a munkahelyi fiók lett szinkronizálva a Facebook által várja meg, akár 20 percig.
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](workplacebyfacebook-tutorial.md)

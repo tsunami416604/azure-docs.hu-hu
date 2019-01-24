@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az vxMaintain |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező vxMaintain |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és vxMaintain között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 590c7961444a36c8958fd82aaf67b05ee2213e74
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433994"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819900"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Oktatóanyag: Azure Active Directory-integráció az vxMaintain
+# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező vxMaintain
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan vxMaintain integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információk
 
 VxMaintain az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy vxMaintain előfizetés SSO engedélyezése
 
 > [!NOTE]
@@ -161,7 +161,7 @@ Ebben a szakaszban tesztfelhasználó Britta Simon az Azure Portalon létrehozha
  
 ### <a name="create-a-vxmaintain-test-user"></a>VxMaintain tesztfelhasználó létrehozása
 
-Ebben a szakaszban vxMaintain Britta Simon tesztfelhasználót hoz létre. Felhasználók hozzáadása az vxMaintain platformon, dolgozni a [vxMaintain támogatási csapatának](https://www.hubspot.com/company/contact). Mielőtt használná az egyszeri bejelentkezés, hozzon létre, és aktiválja a felhasználókat.
+Ebben a szakaszban vxMaintain Britta Simon tesztfelhasználót hoz létre. Felhasználók hozzáadása az vxMaintain platformon, dolgozni a [vxMaintain támogatási csapatának](https://www.hubspot.com/company/contact). Mielőtt használná az egyszeri bejelentkezés, hozzon létre, és aktiválja a felhasználókat.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

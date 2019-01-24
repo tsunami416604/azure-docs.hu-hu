@@ -1,5 +1,5 @@
 ---
-title: Avanced Media Encoder Premium munkafolyamat-oktatóanyagok
+title: Media Encoder Premium munkafolyamat speciális oktatóanyagok
 description: Ez a dokumentum azt mutatják be, hogyan hajthat végre a Media Encoder Premium munkafolyamat speciális feladatokat, és hogyan hozhat létre komplex munkafolyamatok a munkafolyamat-tervezővel útmutatókat tartalmazza.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 0a20f7629fbc102ae05c51c7388bbfd6915d6204
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 15393f8e10fcda99820d0279d46edf88c7781ff8
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257381"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811964"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Media Encoder Premium munkafolyamat speciális oktatóanyagok
 ## <a name="overview"></a>Áttekintés
@@ -127,7 +127,7 @@ A tulajdonságait határozza meg, hogyan történik a kódolás pontosan. Nézz�
 * Profil és a szintje: AVC profil és szint határozza meg. Kényelmesen részletes tájékoztatást nyújt a különböző szintek és a profilok, kattintson a AVC videó kódoló összetevő található kérdőjel ikonra, és részletesen szintjének jelennek meg a következő súgóoldalt. Ebben a példában használja a központi profil 3.2-es (alapértelmezett) szintjén.
 * Ellenőrzési mód és az átviteli sebesség (KB/s): Ebben a forgatókönyvben egy állandó kimeneti, 1200-as KB/s sávszélességű (CBR) optimalizált
 * Videó formátum: (ügyféloldali információkat, amelyek lehetnek a dekóder javíthatják a megjelenített használja, de nem elengedhetetlen megfelelően dekódolandó) H.264 adatfolyamba írt lekérdezi VUI (videó a használhatósági információk) kapcsolatos információkat tartalmazza:
-* NTSC (jellemző, USA-beli vagy japán használatával 30 képkocka/s)
+* NTSC (typical for US or Japan, using 30 fps)
 * PAL (Európa, 25 fps használatával jellemző)
 * Képcsoporttal mérete mód: a jelen a lezárt GOPs 2 másodperc kulcs időközt Képcsoporttal rögzített méretű beállítása. A beállítás 2 másodperces biztosítja, hogy a dinamikus csomagolás révén az Azure Media Services kompatibilitást biztosít.
 
@@ -280,7 +280,7 @@ Hajtsa végre egy köztes teszt futtatásával ellenőrizze, hogy mindkét MP4 k
 ### <a id="MXF_to_MP4_with_dyn_packaging_audio_tracks"></a>Egy külön lejátszása hozzáadása
 A későbbiekben látni fogjuk Ha az általunk létrehozott .ism-fájlt, a kimeneti MP4-fájlokat a go, is szükséges lesz egy csak MP4-fájlt a hangsávot, az adaptív streameléshez. A fájl létrehozásához, egy további muxer hozzá a munkafolyamathoz (ISO-MPEG-4 Multiplexer), és nyomon követése 1 az AAC-kódoló kimenő pin összekapcsolása a bemeneti PIN-kódját.
 
-![Hang Muxer hozzáadva](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-added.png)
+![Audio Muxer Added](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-added.png)
 
 *Hang Muxer hozzáadva*
 
@@ -293,7 +293,7 @@ Hozzon létre egy harmadik kimeneti fájl összetevő kimeneti a muxer kimenő s
 *Hang Muxer kimeneti fájl létrehozása*
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>Hozzáadás a. ISM SMIL fájl
-A dinamikus becsomagolást is MP4 fájlokat (és a csak hangfájlt tartalmazó MP4) a Media Services eszközben dolgozhat együtt, a is kell a jegyzékfájlt (más néven "SMIL" fájlba: multimédiás integrációs nyelvi szinkronizálva). Ez a fájl azt jelzi, hogy az Azure Media Services milyen MP4-fájlokat a dinamikus csomagolás és melyiket érdemes figyelembe venni a hang streameléshez érhetők el. Egy tipikus Alkalmazásjegyzék-fájl egy egyetlen hang Stream MP4 a készletének így néz ki:
+A dinamikus becsomagolást is MP4-fájlokat (és a csak hangfájlt tartalmazó MP4) a Media Services eszközben dolgozhat együtt, a is kell a jegyzékfájlt (más néven "SMIL" fájlba: Multimédiás integrációs nyelvi szinkronizálva). Ez a fájl azt jelzi, hogy az Azure Media Services milyen MP4-fájlokat a dinamikus csomagolás és melyiket érdemes figyelembe venni a hang streameléshez érhetők el. Egy tipikus Alkalmazásjegyzék-fájl egy egyetlen hang Stream MP4 a készletének így néz ki:
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -692,8 +692,8 @@ Azt is újraírási cliplist XML-kód jön létre a munkafolyamat-indítás köz
 
 Először szükségünk meg tudja határozni, hogy melyik pontból melyik pont csak a videó vágása szeretnénk. Ahhoz, hogy ez kényelmes kevésbé-technikai felhasználóját, hogy a munkafolyamat, tegye közzé a grafikon a legfelső szintű két tulajdonság. Ehhez kattintson a jobb gombbal a Tervező felületére, és válassza ki a "Tulajdonság hozzáadása":
 
-* Első tulajdonság: "ClippingTimeStart" típusú: "IDŐKÓD"
-* A második tulajdonság: "ClippingTimeEnd" típusú: "IDŐKÓD"
+* Első tulajdonság: "ClippingTimeStart" típusa: "IDŐKÓD"
+* Második tulajdonság: "ClippingTimeEnd" of type: "IDŐKÓD"
 
 ![Adja hozzá a tulajdonság párbeszédpanel kapcsolást kezdési ideje](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 

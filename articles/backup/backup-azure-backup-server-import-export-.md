@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
-ms.openlocfilehash: 1a0e196f4d96494aca1c19a7527ac7d81837fb5c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 01b90d6bb18addd6a0235101f86b9d51953cc096
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34606477"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818557"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>A DPM és az Azure Backup Server offline biztonsági mentés munkafolyamata
 Az Azure Backup rendelkezik, amely a hálózati és tárolási költségek csökkentése az Azure-ban adatok kezdeti teljes biztonsági mentés során számos beépített hatékonyság. Kezdeti teljes biztonsági mentés általában nagy mennyiségű adat átvitele, és azt követő biztonsági mentéseket, hogy csak a változásokat/szalagnak transfer képest nagyobb hálózati sávszélesség szükséges. Az Azure Backup tömöríti a kezdeti biztonsági mentés. Kapcsolat nélküli beültetéssel is a folyamatot az Azure Backup lemez is használható a tömörített kezdeti biztonsági mentési adatok offline feltöltése az Azure-bA.
@@ -59,7 +59,7 @@ Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek-e, mielőt
 
 * Egy előkészítési helyet, amely lehet egy hálózati megosztásra vagy bármely további meghajtó a számítógépen, belső vagy külső, a kezdeti másolat tárolásához elegendő lemezterület a jön létre. Például egy 500 GB-os fájlt kiszolgálóról biztonsági mentést próbál, ha arról, hogy az átmeneti területen legalább 500 GB-os. (A tömörítés miatt kisebb használt.)
 * Érdemes az Azure-bA küldendő lemezeket győződjön meg arról, amelyek csak 2,5 hüvelyk SSD vagy 2,5-es vagy 3,5 hüvelykes SATA II. és III belső merevlemez-meghajtókat használ. Használhatja a merevlemez-meghajtók legfeljebb 10 TB. Ellenőrizze a [Azure Import/Export szolgáltatás dokumentációja](../storage/common/storage-import-export-requirements.md#supported-hardware) meghajtó, amely a szolgáltatás támogatja a legújabb csoporton.
-* Egy számítógéphez kell csatlakoztatni kell a SATA meghajtókat (néven egy *másolási számítógép*), ahonnan a biztonsági mentési adatok másolatát a *előkészítési helyét* , a SATA meghajtókat történik. Győződjön meg arról, hogy a Bitlocker engedélyezve van a *másolási számítógép* 
+* Egy számítógéphez kell csatlakoztatni kell a SATA meghajtókat (néven egy *másolási számítógép*), ahonnan a biztonsági mentési adatok másolatát a *előkészítési helyét* , a SATA meghajtókat történik. Győződjön meg arról, hogy a BitLocker engedélyezve van a *másolási számítógép* 
 
 ## <a name="workflow"></a>Munkafolyamat
 Ebben a szakaszban található információk segítségével végezze el az offline biztonsági mentési munkafolyamat, hogy az adatok is lehet az Azure-adatközpont és az Azure Storage-bA feltöltött. Ha kérdései vannak az importálási szolgáltatás vagy a folyamat minden aspektusa, tekintse meg a [importálási szolgáltatás áttekintés](../storage/common/storage-import-export-service.md) korábban hivatkozott dokumentációját.
@@ -74,12 +74,12 @@ Ebben a szakaszban található információk segítségével végezze el az offl
 
     A leírás a bemeneti adatok a következőképpen történik:
 
-    * **Átmeneti hely**: az ideiglenes tárolási helyet, amelyhez a kezdeti biztonsági másolatot íródik. Átmeneti hely lehet egy hálózati megosztásra vagy a helyi számítógépen. Ha a másolási számítógép és a forrásoldali számítógép eltérő, javasoljuk, hogy a teljes elérési útja az előkészítési hely megadása.
-    * **Az Azure importálási feladat nevének**: szerint mely Azure Import szolgáltatás és az Azure Backup nyomon követése az elküldött adatok átvitelét az lemezeket az Azure-bA egyedi nevét.
+    * **Átmeneti hely**: Az ideiglenes tárolási hely, amelyhez a kezdeti biztonsági másolatot íródik. Átmeneti hely lehet egy hálózati megosztásra vagy a helyi számítógépen. Ha a másolási számítógép és a forrásoldali számítógép eltérő, javasoljuk, hogy a teljes elérési útja az előkészítési hely megadása.
+    * **Azure-beli importálási feladat neve**: Az egyedi név szerint mely Azure Import szolgáltatás és az Azure Backup nyomon követése az elküldött adatok átvitelét az lemezeket az Azure-bA.
     * **Az Azure közzétételi beállítások**: Adja meg a közzétételi beállítások fájljának helyi elérési útja.
-    * **Az Azure előfizetés-azonosító**: az előfizetés regisztrációját az Azure közzétételi beállítási fájl letöltött az Azure előfizetés-azonosítója. 
-    * **Az Azure Storage-fiók**: az Azure-előfizetésben az Azure közzétételi beállítási fájl társított storage-fiók nevét.
-    * **Az Azure Storage-tároló**: az Azure storage-fiók, amelybe importálják a biztonsági mentési adatokat a rendeltetési tárolási BLOB nevét.
+    * **Azure-előfizetés azonosítója**: Az előfizetés regisztrációját az Azure közzétételi beállítási fájl letöltött Azure előfizetés-azonosítója. 
+    * **Azure Storage Account**: Az Azure-előfizetésben az Azure közzétételi beállítási fájl társított storage-fiók neve.
+    * **Az Azure Storage-tároló**: Az Azure storage-fiók, amelybe importálják a biztonsági mentési adatokat a rendeltetési tárolási BLOB neve.
 
      Mentse a *előkészítési helyét* és a *Azure importálási feladat nevének* , a lemezek előkészítéséhez szükség van a megadott.  
      
@@ -159,7 +159,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram a SATA meghajtókat a legközelebbi
 
     | Paraméter | Leírás |
     | --- | --- |
-    | egység: | Kötelező bemeneti frissítheti a szállítási adatait az Azure importálási feladat |
+    | u: | Kötelező bemeneti frissítheti a szállítási adatait az Azure importálási feladat |
     | %s:&lt;*átmeneti hely elérési útja*&gt; | Kötelező bemeneti, ha a parancs nem fut a forrásoldali számítógépen. Az átmeneti helyen, a megadott elérési útja biztosítható a **offline biztonsági mentés kezdeményezéséhez** munkafolyamat. |
     | p:&lt;*PublishSettingsFile elérési útja*&gt; | Kötelező bemeneti, ha a parancs nem fut a forrásoldali számítógépen. Biztosítja a elérési útját a **Azure közzétételi beállítások** a megadott fájl a **offline biztonsági mentés kezdeményezéséhez** munkafolyamat. |
     

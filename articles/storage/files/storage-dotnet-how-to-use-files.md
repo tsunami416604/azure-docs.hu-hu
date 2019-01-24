@@ -9,12 +9,12 @@ ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 380a7be6a42109f90da5dbd39ea557c06be4be6a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2d6926b9d6a9b5bc4f3744fbd6fe8864a925ff17
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253703"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819747"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
 
@@ -35,7 +35,7 @@ Az Azure Files szolgáltatással kapcsolatos további információkért lásd: [
 
 ## <a name="understanding-the-net-apis"></a>A .NET API-k ismertetése
 
-Az Azure Files két széleskörű megközelítést nyújt az ügyfélalkalmazásokhoz: az SMB protokollt és a REST-et. A .NET-keretrendszeren ezeket a megközelítéseket a `System.IO` és a `WindowsAzure.Storage` API emeli ki.
+Az Azure Files két széleskörű megközelítést az ügyfélalkalmazások számára nyújt: Server Message Block (SMB) és a többi. A .NET-keretrendszeren ezeket a megközelítéseket a `System.IO` és a `WindowsAzure.Storage` API emeli ki.
 
 API | A következő esetekben használja | Megjegyzések
 ----|-------------|------
@@ -58,8 +58,8 @@ Az Azure Storage ügyféloldali kódtárat bármilyen típusú .NET-alkalmazásb
 ## <a name="use-nuget-to-install-the-required-packages"></a>A szükséges csomagok telepítése a NuGettel
 Két csomagra kell hivatkoznia a projektben az oktatóanyag teljesítéséhez:
 
-* [A Microsoft Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage/): Ez a csomag programozott hozzáférést biztosít a tárfiókja adatforrásaihoz.
-* [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban található kapcsolati sztring elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
+* [A Microsoft Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage/): Ez a csomag a tárfiókja adatforrásaihoz programozás alapú hozzáférést biztosít.
+* [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban, függetlenül attól, hol futnak az alkalmazás kapcsolati karakterlánc elemzéséhez.
 
 A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
 
@@ -324,8 +324,8 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 Ugyanígy másolhat blobokat fájlokba. Ha a forrásobjektum egy blob, hozzon létre egy SAS-t, amely engedélyezi a blobhoz való hozzáférést a másolási művelet során.
 
-## <a name="share-snapshots-preview"></a>Megosztási pillanatképek (előzetes verzió)
-Az Azure Storage ügyféloldali kódtár 8.5-ös verziójától kezdve létrehozhat megosztási pillanatképeket (előzetes verzió). Ezekből felsorolást is készíthet, tallózhat köztük, és törölheti is a megosztási pillanatképeket. A megosztási pillanatképek csak olvashatók, így nem lehet rajtuk írási műveleteket végrehajtani.
+## <a name="share-snapshots"></a>Megosztási pillanatképek
+Az Azure Storage ügyféloldali kódtár 8.5 verziójával kezdve létrehozhat megosztási pillanatkép. Ezekből felsorolást is készíthet, tallózhat köztük, és törölheti is a megosztási pillanatképeket. A megosztási pillanatképek csak olvashatók, így nem lehet rajtuk írási műveleteket végrehajtani.
 
 **Megosztási pillanatképek létrehozása**
 
@@ -469,7 +469,7 @@ Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesró
 * [Using the Azure CLI with Azure Storage (Az Azure parancssori felülete és az Azure Storage együttes használata)](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Azure Files-problémák hibaelhárítása](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>Referencia
+### <a name="reference"></a>Leírások
 * [Az Azure Storage .NET-hez készült ügyféloldali kódtára – referencia](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [Referencia a fájlszolgáltatás REST API-jához](https://msdn.microsoft.com/library/azure/dn167006.aspx)
 

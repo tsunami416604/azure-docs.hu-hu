@@ -1,5 +1,5 @@
 ---
-title: A DRM-mel a content protection rendszer hozzáférést vezérlő – az Azure Media Services-Tervező |} A Microsoft Docs
+title: Egy DRM-mel a content protection rendszert a hozzáférés-vezérléssel – az Azure Media Services |} A Microsoft Docs
 description: További információ a licencelésről a Microsoft Smooth Streaming Client portolása Kit.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3e9909de5ec05710214279357134112804ab4ceb
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 40e7f257df41fa4836b9df692be48a4b6c57fc80
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191241"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812998"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Egy DRM-mel a content protection rendszert a hozzáférés-vezérléssel 
 
@@ -51,7 +51,7 @@ Az alábbi táblázat foglalja össze a különböző platformokon a natív DRM-
 | **Ügyfélplatform** | **Natív DRM** | **AZ EME** |
 | --- | --- | --- | --- |
 | **Okostévére vezérléséhez** | A PlayReady, Widevine és/vagy egyéb | Beágyazott böngésző/EME a PlayReady és/vagy Widevine|
-| **Windows 10** | PlayReady | A Microsoft Edge/IE11 a PlayReady|
+| **Windows 10** | PlayReady | Microsoft Edge/IE11 for PlayReady|
 | **Android-eszközök (telefonon, táblagépen, TV)** |Widevine |A Widevine Chrome |
 | **iOS** | FairPlay | A fairplay rendszerhez Safari (óta 11,2 iOS) |
 | **macOS** | FairPlay | A fairplay rendszerhez (óta a Safari 9 és a Mac OS X 10.11 El Capitan) Safari|
@@ -145,7 +145,7 @@ Az alábbi táblázat a leképezést.
 | **Kulcskezelés** |Nincs szükség referenciaimplementáció |
 | **Tartalomkezelés** |C# Konzolalkalmazás |
 
-Más szóval Identitásszolgáltató és az STS által biztosított Azure ad-ben. A [az Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) a lejátszó szolgál. Azure Media Services és az Azure Media Player támogatja CENC keresztül DASH, a FairPlay HLS keresztül, a PlayReady smooth streaming és az AES-128 titkosítási DASH, HLS vagy smooth.
+Más szóval Identitásszolgáltató és az STS által biztosított Azure ad-ben. A [az Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) a lejátszó szolgál. Az Azure Media Services és az Azure Media Player támogathatóak CENC DASH, a FairPlay HLS keresztül, a PlayReady smooth streaming, valamint a DASH, HLS vagy smooth AES-128 titkosítást.
 
 Az alábbi ábrán látható a teljes struktúra és korábbi technológiai hozzárendelési folyamat:
 

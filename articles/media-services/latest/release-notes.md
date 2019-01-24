@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: bf80f78cc464fe274e83eca2f8afa420c2a8c453
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: a1d52e0c6f87b9075d73508c97bd270d67d3ecf5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229956"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817622"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -34,6 +34,14 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 
 További információkért lásd: [Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="january-2019"></a>2019. január
+
+### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard és a MPI-fájlok 
+
+Kódolás a Media Encoder Standard MP4-fájl létrehozására, ha .mpi új fájl jön létre, és hozzáadódik a kimeneti adategység. A MPI fájl akkor tekinthető, a dinamikus csomagolás és a streamelési forgatókönyvekhez teljesítmény javítása érdekében.
+
+Ne módosítsa vagy távolítsa el az MPI-fájlt, és minden olyan függőséget is a létezik-e a service-ben (vagy sem) egy souboru.
+
 ## <a name="december-2018"></a>2018. december
 
 Az általánosan elérhető kiadás V3 API-frissítések a következők:
@@ -43,7 +51,7 @@ Az általánosan elérhető kiadás V3 API-frissítések a következők:
 * Enumerálás bővíthetőség újraengedélyezése. Ez a funkció az SDK előzetes verziók engedélyezve lett, és véletlenül az előfizetésemet letiltották a GA verzióban.
 * Két előre definiált adatfolyam-továbbítási szabályzat kaptak. **SecureStreaming** mostantól **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** mostantól **Predefined_MultiDrmStreaming**.
 
-## <a name="november-2018"></a>A 2018. november
+## <a name="november-2018"></a>November 2018
 
 A CLI 2.0 modul már elérhető a [Azure Media Services v3 GA](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
 
@@ -54,10 +62,10 @@ A CLI 2.0 modul már elérhető a [Azure Media Services v3 GA](https://docs.micr
 - [az ams-adategység](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
 - [az ams az eszközintelligencia-szűrő](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
 - [az ams tartalom-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams-feladat](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
 - [élő az ams-esemény](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
 - [az ams élő kimenet](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az ams-streamvégpont](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [streamelési az ams-lokátor](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
 - [az ams-fiók legutóbbi](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) – lehetővé teszi a Media szolgáltatás számára fenntartott egységek kezelése
 
@@ -166,7 +174,7 @@ Ha a hozott eszközök vagy Fiókszűrők 09/28 és 10 közötti/12, a Media Ser
 
 ## <a name="may-2018---preview"></a>2018 május – előzetes verzió
 
-### <a name="net-sdk"></a>.NET SDK
+### <a name="net-sdk"></a>.Net SDK
 
 A .net SDK-t a következő funkciók találhatók:
 

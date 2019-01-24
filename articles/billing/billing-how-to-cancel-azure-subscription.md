@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 1/23/2019
 ms.author: cwatson
-ms.openlocfilehash: de5fd6e52ab93132920b1c98188cbea92b9900b5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 88ea3a5daa1a740ab545201bc48b612ea6a56a44
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584349"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810329"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Az Azure-előfizetés megszüntetése
 
@@ -37,10 +37,11 @@ Ha megszakítja egy fizetős Azure-támogatási csomagra, meg kell fizetni az el
 ## <a name="cancel-subscription-using-the-azure-portal"></a>Előfizetés az Azure portal használatával
 
 1. Válassza ki az előfizetését a [az Azure portal előfizetés oldalán](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Válassza ki az előfizetést, szakítsa meg és kattintson a kívánt **előfizetés megszüntetése**.
+2. Válassza ki az előfizetést, amely megszakítja.
+3. Válassza ki **áttekintése**, majd válassza ki **előfizetés megszüntetése**.
 
     ![Képernyőkép a Mégse gomb](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
-1. Kövesse az utasításokat, és fejezze be a törlés.
+3. Kövesse az utasításokat, és fejezze be a törlés.
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Mi történik a lemondom az előfizetésemet?
 

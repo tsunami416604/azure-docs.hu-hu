@@ -3,7 +3,7 @@ title: A biztonsági adatokkal – Azure Active Directory-jelszó alaphelyzetbe 
 description: Saját jelszó visszaállítása, ha elfelejti, a biztonsági adatai, valamint a kétlépéses ellenőrzés használatával hogyan lehet.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,16 +11,16 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: a95d5adb4ee0eb8aa71f7759e3f2b5520bda5ff4
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6bf8c548d81b3cade487f3188cdafae82b5776d9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348391"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815939"
 ---
 # <a name="reset-your-work-or-school-password"></a>A munkahelyi vagy iskolai jelszó visszaállítása
 
-Ha elfelejtette a jelszavát, soha nem lett egy, a céges ügyfélszolgálattól, vagy használja ki a fiók zárolva van, a biztonsági adatok és a mobil eszközére használhatja a jelszó alaphelyzetbe állításához.
+Ha elfelejtette jelszavát, nem kapott jelszót a vállalati támogatási csapattól, vagy ki lett zárva a fiókjából, biztonsági adatai és mobileszköze használatával új jelszót kérhet.
 
 >[!NOTE]
 >Ha ismeri a jelszavát, és csak azt szeretné módosítani, megnyithatja a [Módosítsa jelszavát](#how-to-change-your-password) Ez a cikk lépéseit.<br><br>
@@ -159,7 +159,7 @@ Az alábbiakban néhány gyakori hibák és megoldásaik:
 |Amikor jelszó megváltoztatása, hibaüzenet. |A jelszó tartalmazza egy szót, kifejezést vagy mintát, amely lehetővé teszi a jelszó könnyen kitalálható.| Próbálja meg újra egy erősebb jelszót.|
 |Miután megadtuk a felhasználói azonosító, haladhatok tovább egy oldal, amely arról tájékoztat, "Forduljon a rendszergazdához."|A Microsoft azt észlelte, hogy a felhasználói fiók jelszavát a helyszíni környezetben a rendszergazda felügyeli. Ennek eredményeképpen a "Nem tud belépni fiókjába" hivatkozásra a jelszó nem állítható alaphelyzetbe. |További segítségért forduljon a rendszergazdához.|
 |Miután megadtuk a felhasználói azonosító, hibaüzenetet kapok arról, hogy a, "a fiók nincs engedélyezve a jelszó-visszaállításhoz."|A rendszergazda még nem állította be a fiókját, így a saját jelszavát is alaphelyzetbe állítja.|A rendszergazda még nem kapcsolva a jelszó-visszaállítást a "Nem tud belépni fiókjába" hivatkozást a szervezet számára, vagy még nem rendelkezik licenccel, hogy a funkció használatához.<br><br> A jelszó alaphelyzetbe állítása, be kell jelölnie a "forduljon egy rendszergazdai kapcsolatot" e-mail küldése a vállalat rendszergazdájához, és tudassa vele, hogy alaphelyzetbe állítja a jelszót.|
-|Miután megadtuk a felhasználói azonosító, hibaüzenetet kapok arról, hogy a, "Az a fiók nem sikerült ellenőrizni."|A bejelentkezési folyamat nem tudta ellenőrizni a fiók adatai.|Két oka lehetett ezt az üzenetet látja.<br><br>1. A rendszergazdai jelszó-visszaállítást a szervezet számára engedélyezve van, de még nem regisztrált a szolgáltatás használatához. Regisztrálhat a jelszó-visszaállítás, tekintse meg az alábbi cikkeket, a hitelesítési módszer alapján: [egy hitelesítő alkalmazást (előzetes verzió) használata a biztonsági adatok beállítása](security-info-setup-auth-app.md), [beállítása a biztonsági adatok használata (előzetes verzió)Telefonhívás](security-info-setup-phone-number.md), [Beállítása a biztonsági adatok szöveges üzenetküldés (előzetes verzió) használatához](security-info-setup-text-msg.md), [biztonsági adatok beállítása az e-mailben (előzetes verzió)](security-info-setup-email.md), vagy [beállítása a biztonsági adatok a biztonsági kérdések (előzetes verzió) használata ](security-info-setup-questions.md).<br><br>2. A rendszergazda még nem kapcsolva a jelszó-visszaállítást a szervezet számára. Ebben az esetben meg kell adnia a "forduljon egy rendszergazdai kapcsolat" egy e-mailt küldhet a rendszergazda, alaphelyzetbe állíthassa jelszavát kéri.|
+|Miután megadtuk a felhasználói azonosító, hibaüzenetet kapok arról, hogy a, "Az a fiók nem sikerült ellenőrizni."|A bejelentkezési folyamat nem tudta ellenőrizni a fiók adatai.|Két oka lehetett ezt az üzenetet látja.<br><br>1. A rendszergazdai jelszó-visszaállítást a szervezet számára engedélyezve van, de még nem regisztrált a szolgáltatás használatához. Regisztrálhat a jelszó-visszaállítás, tekintse meg az alábbi cikkekben, a hitelesítési módszer alapján: [Állítsa be a biztonsági adatok egy hitelesítő alkalmazást (előzetes verzió) használata](security-info-setup-auth-app.md), [beállítása a biztonsági adatok telefonhívás (előzetes verzió) használatához](security-info-setup-phone-number.md), [beállítása a biztonsági adatok szöveges üzenetküldés (előzetes verzió) használatához](security-info-setup-text-msg.md), [ Biztonsági adatok beállítása az e-mailben (előzetes verzió)](security-info-setup-email.md), vagy [beállítása a biztonsági adatok a biztonsági kérdések (előzetes verzió) használata](security-info-setup-questions.md).<br><br>2. A rendszergazda még nem kapcsolva a jelszó-visszaállítást a szervezet számára. Ebben az esetben meg kell adnia a "forduljon egy rendszergazdai kapcsolat" egy e-mailt küldhet a rendszergazda, alaphelyzetbe állíthassa jelszavát kéri.|
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: cd3aa913bd17498ddc58994196bc8faa96c4de51
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: fba4020c5e947c135d9e17cfb1d0b2a79ad8a502
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306454"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819339"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Az Azure Stack infrastruktúrájának biztonsági rendszer kialakításához
 
@@ -41,7 +41,7 @@ Mivel az infrastruktúra meghatározott hardveren és szoftverekről, Azure Stac
 Mivel az Azure Stack egy integrált rendszer kerül, a Microsoft határozza meg az Azure Stack-infrastruktúra biztonsági állapotát. Csakúgy, mint az Azure-ban, bérlők felelős azok bérlői számítási feladatok biztonsági rendszerébe. Ez a dokumentum Ez a alapvető ismeretek az Azure Stack-infrastruktúra biztonsági állapotát.
 
 ## <a name="data-at-rest-encryption"></a>Az adatok inaktív adatok titkosítása
-Az összes Azure Stack infrastruktúra és a bérlői adatok titkosítása a Bitlocker használatával. A titkosítás fizikai elvesztése / eltulajdonítása Azure Stack tároló-összetevők ellen védi. További információkért lásd: [adatok inaktív adatok titkosítása az Azure Stackben](azure-stack-security-bitlocker.md).
+Az összes Azure Stack infrastruktúra és a bérlői adatok titkosítása a BitLocker használatával. A titkosítás fizikai elvesztése / eltulajdonítása Azure Stack tároló-összetevők ellen védi. További információkért lásd: [adatok inaktív adatok titkosítása az Azure Stackben](azure-stack-security-bitlocker.md).
 
 ## <a name="data-in-transit-encryption"></a>Adatok az átvitel során titkosítás
 Az Azure Stack infrastruktúra-összetevőket a TLS 1.2 titkosított csatornákon használatával kommunikálni. Titkosítási tanúsítványok önálló kezeli az infrastruktúrát. 

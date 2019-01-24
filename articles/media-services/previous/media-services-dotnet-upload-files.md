@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: juliako
-ms.openlocfilehash: 9edfa8ea0c9e469d09cef7ddbd1c7edda4484b47
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 43da365a6424fa9d489db1f5cd74ff6aeb8f0d7c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444629"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819883"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Fájlok feltöltése Media Services-fiókba a .NET használatával
 > [!div class="op_single_selector"]
@@ -54,9 +54,9 @@ Eszközök létrehozásakor a következő titkosítási beállításokat adhatja
   
     Ha az objektum tárolása titkosítva, konfigurálnia kell a állít be objektumtovábbítási szabályzatot. További információkért lásd: [objektumtovábbítási szabályzat konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md).
 
-Állít be az eszköz titkosítását a egy **CommonEncrypted** lehetőséget, vagy egy **EnvelopeEncypted** lehetőség, hozzá kell rendelni az eszközintelligencia-egy **ContentKey**. További információkért lásd: [létrehozása egy ContentKey](media-services-dotnet-create-contentkey.md). 
+Állít be az eszköz titkosítását a egy **CommonEncrypted** lehetőséget, vagy egy **EnvelopeEncrypted** lehetőség, hozzá kell rendelni az eszközintelligencia-egy **ContentKey**. További információkért lásd: [létrehozása egy ContentKey](media-services-dotnet-create-contentkey.md). 
 
-Ha adja meg az eszköz titkosítását a egy **StorageEncrypted** beállítás, a Media Services SDK for .NET hoz létre egy **StorateEncrypted** **ContentKey** az objektum.
+Ha adja meg az eszköz titkosítását a egy **StorageEncrypted** beállítás, a Media Services SDK for .NET hoz létre egy **StorageEncrypted** **ContentKey** az objektum.
 
 Ez a cikk bemutatja, hogyan használható a Media Services .NET SDK, valamint a Media Services .NET SDK-bővítmények a fájlok feltöltése a Media Services-eszköz.
 

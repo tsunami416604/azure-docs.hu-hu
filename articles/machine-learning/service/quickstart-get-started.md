@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0dab14e9c8f99a10b1dc26c2adb1e88d3b18ee90
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e3569f560224ab8c9a64ababb2fcea7e96e87367
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468155"
+ms.locfileid: "54812454"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Az Azure Machine Learning használatának első lépései az Azure portal használatával
 
@@ -61,7 +61,7 @@ Ez a példa bemutatja, hogyan segíthet a munkaterület a szkriptben létrehozot
 
 ### <a name="open-a-notebook"></a>Notebook megnyitása 
 
-Az Azure-jegyzetfüzetek futtatásához a Machine Learning, amit az előre konfigurált Jupyter notebookokhoz ingyenes felhőalapú platformot biztosít. A munkaterület már el is indíthatja a platform az Azure Machine Learning szolgáltatás munkaterület használatának megkezdéséhez.
+[Az Azure notebookok](https://notebooks.azure.com) ingyenes felhőalapú platformot nyújt a Machine Learning végrehajtásához, amit az előre konfigurált Jupyter-notebookok. A munkaterület már el is indíthatja a platform az Azure Machine Learning szolgáltatás munkaterület használatának megkezdéséhez.
 
 1. A munkaterület oldalán válassza **Fedezze fel az Azure Machine Learning szolgáltatás munkaterület**.
 

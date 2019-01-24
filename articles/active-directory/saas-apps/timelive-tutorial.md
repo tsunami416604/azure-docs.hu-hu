@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az TimeLive |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TimeLive |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és TimeLive között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 34123629-4ad5-465c-a4c1-8299f857e720
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 26e70abc336b7cb13342873784aa2cb4048a47d9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e9be0417e56339fa5c56a72c1b2bd27d5f955ea4
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437321"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820750"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-timelive"></a>Oktatóanyag: Azure Active Directory-integráció az TimeLive
+# <a name="tutorial-azure-active-directory-integration-with-timelive"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TimeLive
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan TimeLive integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 TimeLive az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy TimeLive egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a TimeLive konfigurálásához hozzá kell TimeLive a 
 
 **TimeLive hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -127,17 +127,17 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
 1. Az a **TimeLive konfigurációs** területén kattintson **konfigurálása TimeLive** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![TimeLive konfiguráció](./media/timelive-tutorial/tutorial_timelive_configure.png)
+    ![TimeLive Configuration](./media/timelive-tutorial/tutorial_timelive_configure.png)
 
 1. Egy másik böngészőablakban jelentkezzen be a TimeLive vállalati hely rendszergazdaként.
 
 1. Válassza ki **beállítások** alatt **rendszergazdai beállítások**.
 
-    ![TimeLive konfiguráció](./media/timelive-tutorial/configure1.png)
+    ![TimeLive Configuration](./media/timelive-tutorial/configure1.png)
 
 1. Az a **alkalmazás szabályozó** szakaszban, hajtsa végre az alábbi lépéseket:
     
-    ![TimeLive konfiguráció](./media/timelive-tutorial/configure2.png)
+    ![TimeLive Configuration](./media/timelive-tutorial/configure2.png)
 
     a. Válassza ki **biztonsági** fülre.
 
@@ -151,10 +151,10 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     f. Nyissa meg a letöltött **base-64 kódolású tanúsítvány** a Jegyzettömbben az Azure portálról másolja a tartalmat, és illessze be azt a **X.509-tanúsítvány** szövegmezőbe.
 
-    g. Kattintson a **frissítés**.
+    g. Kattintson az **Update** (Frissítés) elemre.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -222,7 +222,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

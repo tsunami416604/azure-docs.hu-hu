@@ -3,7 +3,7 @@ title: Segítség a elérése és a MyApps portálról az Azure Active Directory
 description: Segítség a bejelentkezéshez, és végrehajtson hétköznapi feladatokat a hozzáférési panelen.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: c67cd675-b567-41e1-8bc2-e06fe0b38d3b
 ms.service: active-directory
 ms.component: user-help
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: a761e6a42e478aafca75709689a022edec2a64db
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 4af0b9cf50d643fda2341e791753e3bdfc8166b1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191036"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812565"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>Hozzáférés és a MyApps portálról hibáinak elhárítása
 
@@ -58,7 +58,7 @@ Emellett letöltheti a bővítmény közvetlenül a következő helyekről:
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
 - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
-- [A Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Ha a bővítmény telepítve van, és továbbra is problémákat tapasztal, amikor, megpróbálkozhat a következőkkel:
 

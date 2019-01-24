@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 981f974450c6761b7e649838abb52acaa9d37067
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 865d00d4a6608e422fdfca1297962913ee205827
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382768"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823436"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Automatizált machine learning-példakísérleteket konfigurálása
 
@@ -235,7 +235,7 @@ Tulajdonság |  Leírás | Alapértelmezett érték
 `model_explainability` | _Nem kötelező_ igaz/hamis <br/>  Igaz lehetővé teszi, hogy minden egyes ismétléskor végrehajtani a funkció fontos kísérletezhet. Használhatja explain_model() módszert is egy adott iteráció engedélyezése funkció fontosságát, igény szerinti, az iteráció kísérlet befejezése után. | False (Hamis)
 `enable_ensembling`|Ez a jelző azt ensembling iteráció engedélyezése az összes többi ismétlésének befejezését követően.| True (Igaz) 
 `ensemble_iterations`|Során, ami lehetőséget választjuk, a végső ensemble részét illesztett folyamat ismétlések száma.| 15
-`experiment_timeout_minutes`| Korlátozza a (minues), hogy mennyi ideig tarthat a teljes kísérlet futtatása | None
+`experiment_timeout_minutes`| Korlátozza a (perc), hogy mennyi ideig tarthat a teljes kísérlet futtatása | None
 
 ## <a name="data-pre-processing-and-featurization"></a>Üzem előtti adatfeldolgozás és a featurization
 
@@ -275,7 +275,7 @@ A következő metrikák besorolási tevékenység minden egyes ismétléskor les
 |Elsődleges metrika|Leírás|Számítás|További paraméterek
 --|--|--|--|
 AUC_Macro| AUC az a terület, a fogadó működő jellemző görbe alatt. Makró minden egyes osztály a AUC számtani középértékét.  | [Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlagos = "makra."|
-AUC_Micro| AUC az a terület, a fogadó működő jellemző görbe alatt. Micro globably számított a valódi pozitívok és az egyes osztályok vakriasztások kombinálásával| [Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlagos = "micro"|
+AUC_Micro| AUC az a terület, a fogadó működő jellemző görbe alatt. Micro globálisan számított a valódi pozitívok és az egyes osztályok vakriasztások kombinálásával| [Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlagos = "micro"|
 AUC_Weighted  | AUC az a terület, a fogadó működő jellemző görbe alatt. Az eredmény az egyes osztályok az egyes osztályok igaz példányok száma szerint számtani súlyozott van.| [Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|átlagos = "súlyozott"
 accuracy|Pontosság pontosan egyezik a valódi címkéket előre jelzett címkékhez százaléka. |[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |None|
 average_precision_score_macro|Átlagos pontosság pontosság-visszahívási görbe elért minden egyes küszöbértéket, a korábbi küszöbértéket, a súly használt fogyasztóktól növekedés az szükséges, a súlyozott átlag foglalja össze. Makró az egyes osztályok átlagos pontosság pontszám középértéke|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|átlagos = "makra."|
@@ -310,7 +310,7 @@ normalized_median_absolute_error|Normalizált medián abszolút hiba osztva az a
 root_mean_squared_error|Root mean squared hiba a cél- és az előrejelzési várt eltéréseinek négyzetgyökét|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|None|
 normalized_root_mean_squared_error|Normalizált legfelső szintű mean squared hiba root mean squared hiba osztva az adatok tartományán:|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Az adatok számos nullával|
 root_mean_squared_log_error|Legfelső szintű mean squared log hiba a várt squared logaritmikus hiba négyzetgyökét|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|None|
-normalized_root_mean_squared_log_error|Noramlized Root mean squared log hiba a root mean squared log hiba osztva az adatok tartományán|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Az adatok számos nullával|
+normalized_root_mean_squared_log_error|Root mean squared log normalizált hiba elosztja az adatokat számos root mean squared log hiba|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Az adatok számos nullával|
 
 ## <a name="explain-the-model"></a>A modell ismertetik.
 
@@ -322,7 +322,7 @@ Kétféleképpen funkció fontos létrehozni.
 
 *   Egy kísérlet után használhatja `explain_model` ismétlések metódust.
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import explain_model
     
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
@@ -339,7 +339,7 @@ Kétféleképpen funkció fontos létrehozni.
 
 *   Funkció fontos összes ismétlésének megtekintéséhez állítsa `model_explainability` jelzőt `True` AutoMLConfig a.  
 
-    ```
+    ```python
     automl_config = AutoMLConfig(task = 'classification',
                                  debug_log = 'automl_errors.log',
                                  primary_metric = 'AUC_weighted',
@@ -356,7 +356,7 @@ Kétféleképpen funkció fontos létrehozni.
 
     Ha végzett, lekérni egy adott iteráció funkció fontos retrieve_model_explanation metódus használatával.
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation
     
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \

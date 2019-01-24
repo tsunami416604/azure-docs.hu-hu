@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 86a3430f6109eb4b61baa0c7014752d07063fe85
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 97910241cb4f903deeeb9ff6971839530903efe2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468745"
+ms.locfileid: "54823012"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Automatizált gépi tanulás a regressziós modell létrehozása
 
@@ -44,11 +44,11 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot meg
 ## <a name="prerequisites"></a>Előfeltételek
 
 > * [Futtassa az adat-előkészítési oktatóanyagot](tutorial-data-prep.md).
-> * Egy automatizált gépi tanulási konfigurálva a környezetben. Példák a következők: Azure notebookok, helyi Python-környezetben vagy egy adatelemző virtuális gép. [Állítsa be az automatikus gépi tanulási](samples-notebooks.md).
+> * Egy automatizált gépi tanulási konfigurálva a környezetben. Példa [Azure notebookok](https://notebooks.azure.com/), helyi Python-környezetben, vagy egy adatelemző virtuális gép. [Állítsa be az automatikus gépi tanulási](samples-notebooks.md).
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb) is elérhető. Futtassa a `regression-part2-automated-ml.ipynb` notebook az Azure-jegyzetfüzetekben vagy a saját Jupyter Notebook server.
+Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb) is elérhető. Futtassa a `regression-part2-automated-ml.ipynb` notebook vagy [Azure notebookok](https://notebooks.azure.com/) vagy a saját Jupyter Notebook server.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 

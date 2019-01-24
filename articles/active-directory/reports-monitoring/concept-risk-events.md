@@ -4,7 +4,7 @@ description: Ez artice Mik azok a kockázati események részletes áttekintést
 services: active-directory
 keywords: az Azure active directory identity protection, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4bca7ed2f10ce6b0231a260a9cf5b7468476343f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 7c352b92edede8bb986a00d5db846bda7b299df2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652149"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808085"
 ---
 # <a name="azure-active-directory-risk-events"></a>Az Azure Active Directory kockázati eseményei
 
@@ -44,6 +44,9 @@ Jelenleg az Azure Active Directory észleli hat kockázati események típusai:
 - [Ismeretlen helyről történő bejelentkezések](#sign-in-from-unfamiliar-locations) 
 
 ![Kockázati esemény](./media/concept-risk-events/91.png)
+
+> [!IMPORTANT]
+> Egyes esetekben előfordulhat, anélkül, hogy a megfelelő bejelentkezési bejegyzés egy kockázati esemény a [bejelentkezésekre](concept-sign-ins.md). Ennek az az oka az Identity Protection kockázati kiértékeli mindkét **interaktív** és **nem interaktív** bejelentkezések, mivel a bejelentkezések jelentés azt mutatja, csak az interaktív bejelentkezések.
 
 Az insight észlelt kockázati eseményekhez kap az Azure AD-előfizetéshez vannak kötve. 
 

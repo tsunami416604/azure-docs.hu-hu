@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 6f7c6c2265fe13eb50aa900e9a51e11edfd90201
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 3be7ad84cf0d45276c136465d7247ec43621aceb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382079"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810958"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő Stream a az Azure Media Services v3
 
@@ -34,17 +34,25 @@ Ez a cikk részletes nyújt útmutatást, és diagramokat, a fő összetevőkrő
 
 Az egy élő adatfolyam-továbbítási munkafolyamat lépései a következők:
 
-1. Hozzon létre egy **élő esemény**.
-2. Hozzon létre egy új **eszköz** objektum.
-3. Hozzon létre egy **élő kimeneti** , és használja az Ön által létrehozott objektum nevét.
-4. Hozzon létre egy **Streamelési házirend** és **tartalom kulcs** Ha DRM a tartalmak szeretne.
-5. Ha nem használ DRM, hozzon létre egy **Streamelési lokátor** a beépített **Streamelési házirend** típusokat.
-6. Az útvonalak listájában a **Streamelési házirend** visszatéréshez használandó URL-címek (ezek a determinisztikus).
-7. A gazdanevének beszerzése a **folyamatos átviteli végponton** érkező adatfolyam szeretné (Győződjön meg arról, hogy a folyamatos átviteli végponton fut). 
-8. Az URL-címet, a 6. lépés kombinálva a a teljes URL-Címének lekéréséhez 7. lépésben az állomásnevet.
-9. Ha szeretné állítani, így a **élő esemény** megtekinthető, le kell állítania az esemény streamelési törlésével a **Streamelési lokátor**.
+1. Győződjön meg arról, hogy a **Streamvégpontok** fut-e. 
+2. Hozzon létre egy **videókhoz**. 
+  
+    Az esemény létrehozásakor megadhat autostart azt. Másik lehetőségként megkezdése az eseményt, amikor készen áll a streamelés elindításához.<br/> Autostart Ha értéke igaz, az élő esemény fogja elindítani a megfelelő létrehozása után. Ez azt jelenti, a számlázási elindul, amint az élő esemény fut-e. Leállítás explicit módon kell meghívnia, a videókhoz további számlázási leállására erőforráson. További információkért lásd: [videókhoz állapotok és számlázási](live-event-states-billing.md).
+3. A betöltés URL-címe és a konfigurálása a helyszíni kódolót, a hírcsatorna-hozzájárulás küldése az URL-cím használatával.<br/>Lásd: [élő kódolók ajánlott](recommended-on-premises-live-encoders.md).
+4. Előnézeti URL-címére, és a segítségével ellenőrizheti, hogy a kódoló a bemeneti ténylegesen fogadja.
+5. Hozzon létre egy új **eszköz** objektum.
+6. Hozzon létre egy **LiveOutput** , és használja az Ön által létrehozott objektum nevét.
 
-További információkért lásd: egy [élő streamelési oktatóanyag](stream-live-tutorial-with-api.md) , amely alapján a [élő .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) minta.
+     A **LiveOutput** archiválja a streamet, a **eszköz**.
+7. Hozzon létre egy **StreamingLocator** a beépített **StreamingPolicy** típusokat.
+
+    Ha azt tervezi, a tartalmak, tekintse át a [Content protection áttekintése](content-protection-overview.md).
+8. Az útvonalak listájában a **Streamelési lokátor** visszatéréshez használandó URL-címek (ezek a determinisztikus).
+9. A gazdanevének beszerzése a **folyamatos átviteli végponton** érkező adatfolyam szeretné.
+10. Az URL-címet a 8. lépés kombinálva a teljes URL-Címének lekéréséhez 9. lépésben az állomásnevet.
+11. Ha szeretné állítani, így a **videókhoz** megtekinthető, le kell állítania az esemény-és törlése a **StreamingLocator**.
+
+További információkért lásd: a [élő streamelési oktatóanyag](stream-live-tutorial-with-api.md).
 
 ## <a name="overview-of-main-components"></a>Fő összetevőinek áttekintése
 
@@ -63,14 +71,7 @@ A Media Services lehetővé teszi, hogy a tartalom, dinamikusan titkosítja (**a
 
 Igény szerint is alkalmazhatók a dinamikus szűrés, amely nyomon követi, formátum, bitsebességre való átkódolása és bemutató idő windows a játékosok megismerése által küldött száma használható. További információkért lásd: [szűrők és dinamikus jegyzékek](filters-dynamic-manifest-overview.md).
 
-### <a name="new-capabilities-for-live-streaming-in-v3"></a>Az élő streameléshez v3 az új képességek
-
-A a v3 API-k a Media Services előnyökkel jár a következő új funkciók:
-
-- Új közel valós idejű módban. További információkért lásd: [késés](live-event-latency.md).
-- Továbbfejlesztett RMTP-támogatása (fokozott stabilitás és további forráskód kódoló).
-- Biztonságos RTMPS betöltését.<br/>Amikor létrehoz egy videókhoz, 4 kap betöltési URL-címeket. A 4 betöltési URL-címek olyan majdnem teljesen megegyezik, rendelkezik a azonos streamelési token (alkalmazásazonosító), csak a port száma rész nem egyezik. Az URL-címek kettő elsődleges és tartalék RTMPS számára.   
-- Akár 24 órát hosszú egy kimeneti adatfolyamba, amely rendelkezik több bitsebességre való átkódolása hírcsatornaelem átkódolása egyféle sávszélességű hozzájárulás a Media Services segítségével élő eseményeket streamelheti. 
+Az élő streameléshez v3 új képességekre vonatkozó további információkért lásd: [Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3](migrate-from-v2-to-v3.md).
 
 ## <a name="liveevent-types"></a>Videókhoz típusok
 
@@ -109,7 +110,7 @@ A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) lehetővé
 > [!NOTE]
 > **LiveOutput**s létrehozás indítása és leállítása, ha törli. Ha töröl a **LiveOutput**, nem törli az alapul szolgáló **eszköz** és a tartalom az eszközben. 
 >
-> Miután közzétette **Streamelési lokátor**s tartozó objektum a **LiveOutput**, az esemény (akár a DVR időszak hossza) továbbra is meg szeretné jeleníteni a befejezési idő, amíg a **Streamelési lokátor**  vagy a mai napig tartó, amikor törli a lokátor, amelyik előbb bekövetkezik.   
+> Miután közzétette a **LiveOutput** eszköz használatával egy **StreamingLocator**, a **videókhoz** (akár a DVR időszak hossza) továbbra is csak megtekinthető a **StreamingLocator**a lejárati vagy törlését, amelyik először bekövetkezik.
 
 További információkért lásd: [a felhőalapú DVR-Funkciókkal](live-event-cloud-dvr.md).
 

@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 7adf1eb3-d063-45d6-96a8-fd53b329b3f3
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 6272565d0c9a4167af229d91255e53a78fc3441d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: a3f5d3c26d3510accb161c47733b309b244fb186
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065239"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822807"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Ceridian Dayforce HCM
 
@@ -136,7 +136,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Ceridian Dayforce HC
     
     | Name (Név) | Adatforrás-attribútum|
     | ---------| --------- |
-    | név  | User.extensionattribute2 |
+    | név  | user.extensionattribute2 |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -166,7 +166,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Ceridian Dayforce HC
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 

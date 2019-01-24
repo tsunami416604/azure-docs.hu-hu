@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Salesforce védőfal |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció, a Salesforce-tesztkörnyezet |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Salesforce-tesztkörnyezet között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: ee54c39e-ce20-42a4-8531-da7b5f40f57c
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 48dcb4a3b1e06ab62905092055ba1b48bd0dddb7
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 33d39e617bd55b88d8f04785d937faf176463ee5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114496"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808816"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Oktatóanyag: Azure Active Directory-integráció a Salesforce-tesztkörnyezet
+# <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Oktatóanyag: Az Azure Active Directory-integráció, a Salesforce-tesztkörnyezet
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Salesforce védőfal integrálása az Azure Active Directory (Azure AD).
 
 Próbakörnyezetbe lefordítja lehetővé teszik, a szervezet több példányának létrehozása a külön környezetek esetében különböző célokra, például a fejlesztés, tesztelés és képzésekről, az adatok és alkalmazások, a Salesforce éles környezetben veszélyeztetése nélkül szervezet.
-További részletekért lásd: [tesztkörnyezet áttekintése](https://help.salesforce.com/articleView?id=create_test_instance.htm&language=en_us&type=5).
+További részletekért lásd: [tesztkörnyezet áttekintése](https://help.salesforce.com/articleView?id=create_test_instance.htm&language=en_us&type=5).
 
 Az Azure AD integrálása a Salesforce védőfal nyújt a következő előnyökkel jár:
 
@@ -219,7 +219,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-25. A a **SAML egyszeri bejelentkezési beállításainak** lapon mezők automatikusan feltölti, írja be a konfiguráció nevét (például: *SPSSOWAAD_Test*) az a **neve** szövegmezőbe, és Kattintson a Mentés gombra.
+25. Az a **SAML egyszeri bejelentkezési beállításainak** lapon mezők automatikusan feltölti, írja be a konfiguráció nevét (például: *SPSSOWAAD_Test*) az a **neve** szövegmezőbe, majd kattintson a mentés.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 

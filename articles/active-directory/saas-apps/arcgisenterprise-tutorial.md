@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 24809e9d-a4aa-4504-95a9-e4fcf484f431
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 1b8e69fbdabffc52efca9beea99297f3c1258ff7
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 9966a0bda7657225a6668f3d98fc8342a87a9bf5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065528"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Oktatóanyag: Az Azure Active Directory-integráció az ArcGIS Enterprise
 
@@ -131,19 +131,19 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
 2. Válassza ki **szervezet > Beállítások szerkesztése**.
 
-    ![Az ArcGIS nagyvállalati konfiguráció](./media/arcgisenterprise-tutorial/configure1.png)
+    ![ArcGIS Enterprise Configuration](./media/arcgisenterprise-tutorial/configure1.png)
 
 3. Válassza ki **biztonsági** fülre.
 
-    ![Az ArcGIS nagyvállalati konfiguráció](./media/arcgisenterprise-tutorial/configure2.png)
+    ![ArcGIS Enterprise Configuration](./media/arcgisenterprise-tutorial/configure2.png)
 
 4. Görgessen le a **SAML vállalati bejelentkezést** szakaszt, és válassza **állítsa be a vállalati bejelentkezési**.
 
-    ![Az ArcGIS nagyvállalati konfiguráció](./media/arcgisenterprise-tutorial/configure3.png)
+    ![ArcGIS Enterprise Configuration](./media/arcgisenterprise-tutorial/configure3.png)
 
 5. Az a **identitásszolgáltató beállítása** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az ArcGIS nagyvállalati konfiguráció](./media/arcgisenterprise-tutorial/configure4.png)
+    ![ArcGIS Enterprise Configuration](./media/arcgisenterprise-tutorial/configure4.png)
 
     a. Adjon meg egy nevet, például **Azure Active Directory teszt** a a **neve** szövegmezőbe.
 
@@ -151,7 +151,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
     c. Kattintson a **speciális beállítások megjelenítése** , és másolja a **Entitásazonosító** értékét, és illessze be azt a **azonosító** szövegmezőjébe a **ArcGIS vállalati tartomány és URL-címek** szakaszban az Azure Portalon.
     
-    ![Az ArcGIS nagyvállalati konfiguráció](./media/arcgisenterprise-tutorial/configure5.png)
+    ![ArcGIS Enterprise Configuration](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. Kattintson a **frissítés IDENTITÁSSZOLGÁLTATÓ**.
 

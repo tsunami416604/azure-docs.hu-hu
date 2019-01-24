@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 31bd3d54b085922de0ec822731eae79fe9a9943b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e2a856dbc3bdf72ad03601618a9d48bb54665f7b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262097"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812063"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Több bemeneti fájlok és összetevő tulajdonságai párbeszédpanel használata a prémium szintű kódoló
 ## <a name="overview"></a>Áttekintés
@@ -268,16 +268,16 @@ A további keret pontos tisztítás:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>1. példa: Átfedi a képet a videó felett
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>1. példa: Kép a videó felett átfedő
 
 ### <a name="presentation"></a>Bemutató
 Fontolja meg egy példa, amelyben meg szeretné átfedő a a bemeneti videó kattintanak, a videó kódolása közben. Ebben a példában a bemeneti videó neve "Microsoft_HoloLens_Possibilities_816p24.mp4", és az embléma "logo.png" nevű. Az alábbi lépéseket is végre kell hajtania:
 
 * Egy munkafolyamat-objektum létrehozása a munkafolyamat fájlja (lásd az alábbi példát).
-* Hozzon létre egy médiaobjektum, amely tartalmazza a két fájlt: az elsődleges fájlnak és MyLogo.png MyInputVideo.mp4.
+* Hozzon létre egy médiaobjektum, amely tartalmazza a két fájlt: Az elsődleges fájlnak és MyLogo.png MyInputVideo.mp4.
 * Feladat küldése a Media Encoder Premium munkafolyamat médiafeldolgozót. a fenti bemeneti eszközökkel, és adja meg a következő konfigurációs karakterlánc.
 
-Konfiguráció:
+Konfigurálás:
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -351,7 +351,7 @@ Ha az embléma videó pozícióját a módosítani kívánt (például érdemes:
 *Felirat pozíciója*
 
 A video-adatfolyamot H.264 kódolásához, adja hozzá a AVC Videókódoló és AAC kódoló összetevő a Tervező felületére. Csatlakozás a PIN-kódok.
-Állítsa be az AAC-kódoló, és válassza ki a konverziós/készlet hang formátum: 2.0-s (L, R).
+Állítsa be az AAC-kódoló, és válassza ki a konverziós/készlet hang formátuma: 2.0-S (L, R).
 
 ![Audio- és kódolók](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
@@ -430,7 +430,7 @@ Letöltheti a minta munkafolyamat [GitHub](https://github.com/Azure/azure-media-
 
 ## <a name="example-2--multiple-audio-language-encoding"></a>2. példa: Több többnyelvű hang kódolása
 
-Több többnyelvű hang kódolási workfkow érhető el a példa [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
+Több többnyelvű hang kódolási munkafolyamatokat érhető el a példa [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
 
 Ez a mappa tartalmaz egy munkafolyamat-minta, amelyek segítségével egy többszörös MP4 fájlok eszközhöz több hangsáv MXF fájl kódolása.
 

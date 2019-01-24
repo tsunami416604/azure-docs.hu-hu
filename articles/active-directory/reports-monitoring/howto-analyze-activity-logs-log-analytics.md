@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan elemezheti az Azure Active Directory-Tevékenys
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2f0f5341ba6818f375d463638979c68689519227
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 759a0da93544e2a17b71d762924981f05c3ea322
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624199"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810775"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Elemezheti az Azure ad-ben tevékenységeket tartalmazó naplók a Log Analytics (előzetes verzió)
 
@@ -93,9 +93,9 @@ Is állíthat be riasztásokat a lekérdezés. Például, konfigurálhat egy ria
 
 Az Azure Active Directory előre felépített Log Analytics nézeteket is letölthet naplókat. A nézetek adja meg a kapcsolódó gyakori helyzetek járó naplózási és bejelentkezési események több jelentést. Akkor is riasztja Önt bármely, a jelentések adatai az előző szakasz lépéseit követve.
 
-* **Az Azure AD fiók kiépítése események**: Ebben a nézetben látható a kiépítési tevékenységgel, például egy üzembe helyezett új felhasználóknak a számát, naplózás kapcsolatos jelentéseket kiépítési hibákhoz, azon felhasználók száma, frissítik és frissítési hibák és a felhasználók száma eltávolítjuk és a kapcsolódó hibák.    
+* **Azure AD-fiók kiépítése események**: Ebben a nézetben látható a kiépítési tevékenységgel, például egy üzembe helyezett új felhasználóknak a számát, naplózás kapcsolatos jelentéseket kiépítési hibákhoz, azon felhasználók száma, frissítik és frissítési hibák és a szolgáltatáskulcs felhasználók és a megfelelő hibák számát.    
 * **Bejelentkezési események**: Ebben a nézetben látható a leginkább releváns jelentések kapcsolódó bejelentkezési tevékenységeket, például az alkalmazás, felhasználó, eszköz, valamint nyomon követése a bejelentkezések száma idővel lemezkapacitásáról által bejelentkezések figyelése.
-* **Felhasználói jóváhagyás végrehajtása**: Ebben a nézetben látható a kapcsolódó felhasználói beleegyezés, jelentések, például a hozzájárulási engedélyezi a felhasználói, a felhasználók számára nyújtott hozzájárulási bejelentkezések, valamint a bejelentkezések a jóváhagyás-alapú alkalmazások összes alkalmazás által. 
+* **A felhasználók beleegyezést**: Ebben a nézetben látható a kapcsolódó felhasználói beleegyezés, jelentések, mint például a jóváhagyás a felhasználó, a felhasználók számára nyújtott hozzájárulási bejelentkezések, valamint a bejelentkezések a jóváhagyás-alapú alkalmazások összes alkalmazás által biztosít. 
 
 További információ [a Log Analytics-nézetek Azure AD-tevékenységnaplókhoz való telepítéséről és használatáról](howto-install-use-log-analytics-views.md). 
 

@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Evernote |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Evernote |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Evernote között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 7a9282f5418737b583e29d99893df3fc81f52955
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8ba80e113de8ea6754d8d2d6446fb26498904e12
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442632"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816806"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Oktatóanyag: Azure Active Directory-integráció az Evernote
+# <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Evernote
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Evernote integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Evernote az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Evernote egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a Evernote konfigurálásához hozzá kell Evernote a 
 
 **Evernote hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -144,7 +144,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Tanúsítvány-beállítás](./media/evernote-tutorial/tutorial_evernote_certx.png)
     
-    a.  **Egyszeri bejelentkezés engedélyezése:** egyszeri bejelentkezés alapértelmezés szerint engedélyezve van (kattintson **letiltása egyszeri bejelentkezés** eltávolítani az egyszeri bejelentkezési követelmény)
+    a.  **Egyszeri bejelentkezés engedélyezése:** Egyszeri bejelentkezés alapértelmezés szerint engedélyezve van (kattintson **letiltása egyszeri bejelentkezés** eltávolítani az egyszeri bejelentkezési követelmény)
 
     b. Beillesztés **SAML egyszeri bejelentkezés szolgáltatás URL-címe** érték, amely az Azure Portalról történő másolta a **SAML-HTTP-kérelem URL-cím** szövegmezőbe.
 
@@ -153,7 +153,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     d.Click **módosítások mentése**
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
@@ -203,11 +203,11 @@ Evernote, esetén kiépítése a manuális feladat.
 
 1. Az a **"Felügyeleti konzol"**, lépjen a **"Felhasználó hozzáadása"**.
 
-    ![Tesztfelhasználó-nevet](./media/evernote-tutorial/create_aaduser_0001.png)
+    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
 
 1. **Adja hozzá a csoport tagjai** a a **E-mail** szövegmezőbe írja be a felhasználói fiók e-mail-címét, és kattintson a **meghívása.**
 
-    ![Tesztfelhasználó-nevet](./media/evernote-tutorial/create_aaduser_0002.png)
+    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0002.png)
     
 1. Miután a rendszer elküldi a meghívót, az Azure Active Directory fióktulajdonos a meghívás elfogadásához egy e-mailt fog kapni.
 
@@ -241,7 +241,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

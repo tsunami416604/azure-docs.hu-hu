@@ -4,7 +4,7 @@ description: Adatmegőrzési házirendek, a jelentés adatai az Azure Active Dir
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0ed23c8efcf43213b288945c2910edf4c97bb63e
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 932290c3b42b0ea55725fbc17de6b81886fe1217
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214470"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822518"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Az Azure Active Directory-jelentés adatmegőrzési szabályai
 
@@ -29,7 +29,7 @@ Ebben a cikkben megismerkedhet a különböző tevékenységre vonatkozó jelent
 
 ### <a name="when-does-azure-ad-start-collecting-data"></a>Ha nem az Azure AD megkezdi az adatok gyűjtését?
 
-| Az Azure AD-kiadástól | Gyűjtemény indítása |
+| Azure AD Edition | Gyűjtemény indítása |
 | :--              | :--   |
 | Prémium szintű Azure AD P1 <br /> Prémium szintű Azure AD P2 | Amikor regisztrál egy előfizetést |
 | Azure AD Free <br /> Azure AD Basic | Az első megnyitásakor a [Azure Active Directory panel](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) vagy használja a [reporting API-k](https://aka.ms/aadreports)  |
@@ -69,7 +69,7 @@ A biztonsági jelek, az adatgyűjtési folyamat akkor kezdődik, amikor, jóváh
 | :--                    | :--           | :--            | :--                 | :--                 |
 | Címtárnaplózás        | 7 nap        |  7 nap        | 30 nap             | 30 nap             |
 | Bejelentkezési tevékenységek       | –           |  –           | 30 nap             | 30 nap             |
-| Az Azure MFA-használat        | 30 nap       |  30 nap       | 30 nap             | 30 nap             |
+| Azure MFA Usage        | 30 nap       |  30 nap       | 30 nap             | 30 nap             |
 
 A naplózási és a bejelentkezési tevékenységre vonatkozó adatok által átirányítására egy Azure storage-fiókot az Azure Monitor használatával a fent vázolt alapértelmezett megőrzési idejénél hosszabb őrizheti meg. További információkért lásd: [archiválása az Azure AD-naplók az Azure storage-fiókba](quickstart-azure-monitor-route-logs-to-storage-account.md).
 

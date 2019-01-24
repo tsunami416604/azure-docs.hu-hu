@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/06/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 73916fca980b9806fea0229cdd25f6f367609c84
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 01c88b9bc64bc1541e97aff26e41c360acfaf6bd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462640"
+ms.locfileid: "54809972"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -65,7 +65,7 @@ Az Azure Event Grid öt fontos alapfogalma:
 * **Események** – Mi történt.
 * **Eseményforrások** – Ahol az esemény történt.
 * **Témakörök** – A végpont, amelyre a közzétevők az eseményeket küldik.
-* **Esemény-előfizetések** -események átirányítása, néha egynél on kezelő a végpontot, illetve a beépített mechanizmus. Az előfizetéseket a kezelők is használják a bejövő események intelligens szűrésére.
+* **Esemény-előfizetések** -események átirányítása, időnként kezelőt egynél több végpontot, illetve a beépített mechanizmusa. Az előfizetéseket a kezelők is használják a bejövő események intelligens szűrésére.
 * **Eseménykezelők** – Az eseményre reagáló alkalmazás vagy szolgáltatás.
 
 További információ ezekről a fogalmakról: [Az Azure Event Grid alapfogalmai](concepts.md).

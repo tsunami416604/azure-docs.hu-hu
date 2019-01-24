@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Shmoop az iskolák |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az Shmoop az iskolák |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Shmoop az iskolák és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 1d75560a-55b3-42e9-bda1-92b01c572d8e
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: b5826fd3067ac337808b9e27040dee808cd6a01c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5c1dbf6429387c02f226e4005164e8824abdc102
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045957"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818948"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Oktatóanyag: Azure Active Directory-integráció az Shmoop az iskolák
+# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Oktatóanyag: Az Azure Active Directory integrációja az Shmoop az iskolák
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Shmoop az iskolák integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információk
 
 Shmoop az iskolák konfigurálni az Azure AD-integráció, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Shmoop az iskolák egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -120,13 +120,13 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Egyszeri bejelentkezés konfigurálása](./media/shmoopforschools-tutorial/tutorial_attribute.png)
 
     > [!NOTE]
-    > Iskolai Shmoop két szerepkör támogatja a felhasználók számára: **oktatói** és **tanulói**. Állítsa be ezeket a szerepköröket az Azure ad-ben, hogy a felhasználók a megfelelő szerepkörök rendelhetők. Az Azure AD-szerepkörök konfigurálása ismertetése: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
+    > Iskolai Shmoop két szerepkör támogatja a felhasználók számára: **Oktatói** és **tanulói**. Állítsa be ezeket a szerepköröket az Azure ad-ben, hogy a felhasználók a megfelelő szerepkörök rendelhetők. Az Azure AD-szerepkörök konfigurálása ismertetése: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
     
 5. Az a **felhasználói attribútumok** című rész a **egyszeri bejelentkezési** párbeszédpanel az SAML-jogkivonat attribútum adja meg az előző képen látható módon.  Ezután az alábbi lépéseket:
 
     | Attribútum neve | Hodnota atributu |
     | -------------- | --------------- |
-    | szerepkör           | User.assignedroles |
+    | szerepkör           | user.assignedroles |
 
     a. Megnyitásához a **attribútum hozzáadása** párbeszédpanelen jelölje ki **attribútum hozzáadása**.
     
@@ -140,13 +140,13 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     d. Hagyja a **Namespace** mező üres.
     
-    e. Válassza ki **Ok**.
+    e. Kattintson az **OK** gombra.
 
 6. Válassza ki a **Mentés** gombot.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+7. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
 
     ![A tanúsítvány letöltési hivatkozás](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
@@ -221,7 +221,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza ki a **hozzárendelése** gombra.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 
@@ -232,7 +232,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [Az SaaS-alkalmazások integrálása az Azure Active Directory oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az IBM Kenexa felmérés vállalati |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció az IBM Kenexa felmérés Enterprise |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az IBM Kenexa felmérés Enterprise között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c7aac6da-f4bf-419e-9e1a-16b460641a52
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 6828617e0ae61a3784e4db3d1c2ecf4ce9862ce2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d8027aca628185b1e3d2e80323c9f83e6832a913
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449492"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823929"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Oktatóanyag: Azure Active Directory-integráció az IBM Kenexa felmérés Enterprise
+# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Oktatóanyag: Az Azure Active Directory-integráció az IBM Kenexa felmérés Enterprise
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan IBM Kenexa felmérés vállalati integrálható az Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Ha szeretne többet is megtudni szoftverek az Azure ad-vel szoftverként (saas b
 
 Az Azure AD-integráció konfigurálása az IBM Kenexa felmérés Enterprise, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Az IBM Kenexa felmérés vállalati SSO-kompatibilis előfizetéssel
 
 > [!NOTE]
@@ -204,7 +204,7 @@ Britta Simon felhasználó hozzárendelése IBM Kenexa felmérés Enterprise, te
 
 1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD SSO konfigurálása a hozzáférési Panel használatával tesztelheti.
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 8ff99b8c5cf839afb8c8e73c18c2c413998ba64a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 30b83613637d97bfe265c4f5a9c911d14da50c4f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261718"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810907"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
 
@@ -43,6 +43,7 @@ Csak egyféle típusú [edition](https://azure.microsoft.com/pricing/details/iot
 | [Monitorozás és diagnosztika](iot-hub-monitor-resource-health.md) | Igen | Igen |
 | [Üzenetküldés a felhőből az eszközre](iot-hub-devguide-c2d-guidance.md) |   | Igen |
 | [Ikereszközök](iot-hub-devguide-device-twins.md), [ikermodulokkal](iot-hub-devguide-module-twins.md), és [Eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
+| [Eszköz adatfolyamok (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Igen |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Igen |
 
 Az IoT Hub is biztosít egy ingyenes csomag, amelynek szinkronban tesztelés és értékelés céljából használják. Rendelkezik a standard szintű, de korlátozott üzenetkezelési keretek összes funkcióját. Az ingyenes vagy alapszintű vagy standard szintű nem verzióról. 
@@ -76,7 +77,7 @@ A támogatott képességek közötti különbség az alapszintű és standard cs
 | [Szolgáltatások statisztikájának beolvasása](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | Igen | Igen |
 | [Hozzon létre vagy az eszköz frissítése](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | Igen | Igen |
 | A PUT-modul | Igen | Igen |
-| [Az IoT Hub lekérdezése](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Igen | Igen |
+| [Query IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Igen | Igen |
 | Lekérdezés-modulok | Igen | Igen |
 | [Fájl feltöltése SAS URI létrehozása](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Igen | Igen |
 | [Értesítés e kötve eszköz](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Igen | Igen |

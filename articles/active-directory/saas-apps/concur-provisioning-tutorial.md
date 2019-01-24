@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Concur konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Concur között.
+title: 'Oktatóanyag: Konfigurálása, beleértve a felhasználók automatikus átadása az Azure Active Directory |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és beleértve között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: df47f55f-a894-4e01-a82e-0dbf55fc8af1
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,115 +14,115 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5832444cd30d60f7b5fe7fe6108acd5604389474
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e6e6d0d51174250954f886790dccc650064a6f45
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210105"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821889"
 ---
-# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Concur konfigurálása
+# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálása, beleértve a felhasználók automatikus átadása
 
-Ez az oktatóanyag célja a lépéseket kell elvégeznie a Concur és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-Concur mutatjuk be.
+Ez az oktatóanyag célja mutatni, a lépéseket kell elvégeznie a beleértve és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből, beleértve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő elemek:
+Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
 
-*   Az Azure Active directory-bérlő.
-*   Egy Concur egyszeri bejelentkezés engedélyezve van az előfizetés.
-*   Egy felhasználói fiókot az Concur Team rendszergazdai engedélyekkel.
+*   Azure Active directory-bérlő.
+*   Egy beleértve az egyszeri bejelentkezés engedélyezve van az előfizetésben.
+*   Egy felhasználói fiók beleértve a csapat rendszergazdai jogosultságokkal rendelkezik.
 
-## <a name="assigning-users-to-concur"></a>Felhasználók hozzárendelése Concur
+## <a name="assigning-users-to-concur"></a>Felhasználók hozzárendelése beleértve
 
-Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" használ annak meghatározásához, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus fiók felhasználókiépítése keretében csak a felhasználók és csoportok "hozzárendelt" az Azure AD-alkalmazáshoz való szinkronizálása.
+Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználói fiók kiépítése kontextusában csak a felhasználók és csoportok rendelt "", az alkalmazások az Azure AD szinkronizálása.
 
-A létesítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége döntse el, hogy mely felhasználók és/vagy az Azure AD-csoportok határoz meg a felhasználók, akik az Concur alkalmazásához való hozzáférést. Ha úgy döntött, itt cikk utasításait követve hozzárendelheti ezeket a felhasználókat az Concur alkalmazás:
+A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége dönthet arról, hogy mely felhasználók és/vagy az Azure AD-csoportokat a felhasználók, akik hozzáférhetnek a beleértve alkalmazását jelölik. Ha úgy döntött, utasításokat követve ezeket a felhasználókat rendelhet beleértve alkalmazásához:
 
 [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-concur"></a>Felhasználók hozzárendelése Concur fontos tippek
+### <a name="important-tips-for-assigning-users-to-concur"></a>Felhasználók hozzárendelése beleértve fontos tippek
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó a kiépítési konfigurációjának tesztelése rendelendő Concur. További felhasználók és/vagy csoportok később is rendelhető.
+*   Javasoljuk, hogy egyetlen Azure AD-felhasználót kell hozzárendelni, beleértve az üzembe helyezési konfiguráció tesztelése. További felhasználók és csoportok később is rendelhető.
 
-*   Amikor egy felhasználó hozzárendelése Concur, ki kell választania egy érvényes felhasználói szerepkörnek. A "Default" szerepkör nem működik történő üzembe helyezéséhez.
+*   Amikor egy felhasználó hozzárendelése beleértve, ki kell választania egy érvényes felhasználói szerepkörnek. Az "Alapértelmezett hozzáférés" szerepkör nem működik a kiépítéshez.
 
 ## <a name="enable-user-provisioning"></a>Felhasználó-kiépítés engedélyezése
 
-Ez a szakasz végigvezeti az Azure AD kapcsolódás Concur a felhasználói fiók kiépítése API és a létesítési szolgáltatás létrehozása, konfigurálása frissítése, és tiltsa le a felhasználók és csoportok hozzárendelése az Azure AD-alapú Concur hozzárendelt felhasználói fiókok.
+Ez a szakasz végigvezeti az Azure AD-csatlakozás, beleértve a felhasználói fiók üzembe helyezési API és az eszközkiépítési szolgáltatás létrehozása, konfigurálása frissítése, és tiltsa le a hozzárendelt felhasználói fiókok Azure AD-ben a felhasználó és csoport-hozzárendelések alapján beleértve a.
 
 > [!Tip] 
-> Dönthet úgy is, SAML-alapú egyszeri bejelentkezést Concur engedélyezni, utasítások megadott [Azure-portálon](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, bár ez a két funkció egészítse ki egymást.
+> Választhatja azt is, beleértve SAML-alapú egyszeri bejelentkezés engedélyezve, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
 
-### <a name="to-configure-user-account-provisioning"></a>Konfigurálhatja a felhasználói fiók kiépítése:
+### <a name="to-configure-user-account-provisioning"></a>Konfigurálása a felhasználói fiók kiépítése:
 
-Ez a szakasz célja helyzeteit vázolják fel, az Active Directory felhasználói fiókoknak az Concur kiépítés engedélyezése.
+Ez a szakasz célja, beleértve az Active Directory felhasználói fiókok kiépítését lehetővé tevő ismertetik.
 
-Lehetővé teszi az alkalmazások kiadás szolgáltatási, nem rendelkezik megfelelő telepítő és a webes szolgáltatás-rendszergazdák profil használatát. A WS-rendszergazdai szerepkör nem tölti fel a rendszergazda profil, amelyekkel a T & E felügyeleti funkcióihoz.
+A költségelszámolás szolgáltatásban van alkalmazások nem megfelelő beállítása és használata a Web Service felügyeleti profil lehet. A rendszergazda profil használja az i & E felügyeleti funkciók nem adja hozzá a WS-felügyeleti szerepkört.
 
-Tanácsadók egyetért vagy az ügyfél rendszergazdának létre kell hoznia egy különálló webes szolgáltatás-rendszergazda profil, és az ügyfél rendszergazda ezt a profilt kell használnia a webes szolgáltatások felügyeleti funkciók (például, amely lehetővé teszi alkalmazások). Ezeket a profilokat kell különíteni az ügyfél rendszergazda napi T & E felügyeleti profil (a T & E felügyeleti profil nem szerepkörrel kell rendelkeznie a WSAdmin rendelt).
+Concur tanácsadók, vagy az ügyfél rendszergazdának létre kell hoznia egy különálló webes szolgáltatás-rendszergazda profil, és az ügyfél-rendszergazda ezt a profilt kell használnia a webes szolgáltatások rendszergazdai funkciókat (például engedélyezésével alkalmazások). Ezeket a profilokat az ügyfél rendszergazdai napi i & E felügyeleti profil (a T & E felügyeleti profil nem rendelkezhet a hozzárendelt WSAdmin szerepkör) külön kell tartani.
 
-Az alkalmazás engedélyezésének használandó a profil létrehozásakor adja meg az ügyfél-rendszergazdai nevet a felhasználói profil mezőkben. Ez a profil tulajdonjoga rendeli hozzá. Egy vagy több profilok létrehozása után az ügyfél jelentkezzen be ezt a profilt kattintson a "*engedélyezése*" gombra a Web Services menü belül Partner alkalmazások.
+Használható az alkalmazás engedélyezése a profil létrehozásakor adja meg az ügyfél rendszergazdanevet a felhasználói profil mezőkbe. Ez hozzárendeli a tulajdonjogát a profilhoz. Egy vagy több profil létrehozása után az ügyfél kell bejelentkeznie a profilt, kattintson a "*engedélyezése*" gombra egy Partner alkalmazás a Web Services menü belül.
 
-A következő okok miatt ez a művelet nem a normál T & E felügyeleti használ a profillal kell végrehajtani.
+A következő okok miatt ez a művelet nem a szokásos T & használata felügyeleti célokra használják profillal kell végrehajtani.
 
-* Az ügyfél rendelkezik, amely kattint kell "*Igen*" a párbeszéd ablak akkor jelenik meg, egy alkalmazás engedélyezése után. Kattintson elfogadja, hogy az ügyfél nem kész a Partner alkalmazás számára az adatok elérését, így Ön vagy a Partner nem gombra, hogy Igen.
+* Az ügyfél rendelkezik az, hogy rákattint az egy "*Igen*" párbeszédet alkalmazás engedélyezése után megjelenő ablakban. Kattintson elismeri, hogy az ügyfél nem hajlandó az adataikhoz való hozzáférésre, így Ön vagy a Partner nem kattintson az Igen gomb Partner alkalmazáshoz.
 
-* Ha egy ügyfél rendszergazda alkalmazás engedélyezve van a T & E rendszergazdai profil elhagyja a céget (ami azt eredményezi, a profil alatt inaktivált), engedélyezve van, hogy a profil nem működik addig, amíg az alkalmazás engedélyezve van egy másik aktív WS-felügyeleti profilt használó alkalmazások. Ezért profilok létrehozása a különböző WS-felügyeleti kellene.
+* Ha egy ügyfél felügyeleti alkalmazás engedélyezve van a T & E rendszergazdai profil távozik a szervezettől (eredő inaktivált folyamatban van a profilban található), engedélyezve van, hogy a profil nem működik addig, amíg az alkalmazás engedélyezve van egy másik aktív WS-felügyeleti profilt használó alkalmazások. Ezért lehet a különböző WS-felügyeleti profilt készíteni.
 
-* Ha egy rendszergazda elhagyja a vállalatot, WS-felügyeleti profilt tartozó név módosíthatja a csere rendszergazdájának igény befolyásolása nélkül az engedélyezett alkalmazás, mert a profilt nem kell inaktivált.
+* Ha egy rendszergazda elhagyja a vállalatot, a neve, a WS-felügyeleti profil társított módosítható a csere rendszergazdájának szükség befolyásolása nélkül az engedélyezett alkalmazás, mert a profilnak nem kell inaktivált.
 
-**Adja meg a felhasználók átadása, hajtsa végre az alábbi lépéseket:**
+**Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a **Concur** bérlő.
+1. Jelentkezzen be a **beleértve** bérlő.
 
-2. Az a **felügyeleti** menü **webszolgáltatások**.
+2. Az a **felügyeleti** menüjében válassza **webszolgáltatások**.
    
-    ![Concur bérlői](./media/concur-provisioning-tutorial/IC721729.png "Concur bérlői")
+    ![Beleértve bérlői](./media/concur-provisioning-tutorial/IC721729.png "beleértve bérlő")
 
-3. A bal oldalon a a **webszolgáltatások** ablaktáblán válassza előbb **Partner alkalmazás engedélyezése**.
+3. A bal oldalon a a **webszolgáltatások** ablaktáblán válassza **Partner kérelem engedélyezéséhez**.
    
-    ![Partner alkalmazás engedélyezése](./media/concur-provisioning-tutorial/ic721730.png "Partner alkalmazás engedélyezése")
+    ![Partner alkalmazás](./media/concur-provisioning-tutorial/ic721730.png "Partner alkalmazás engedélyezése")
 
-4. Az a **alkalmazás engedélyezése** listáról válassza ki **Azure Active Directory**, és kattintson a **engedélyezése**.
+4. Az a **kérelem engedélyezéséhez** listáról válassza ki **Azure Active Directory**, és kattintson a **engedélyezése**.
    
-    ![A Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directoryban")
+    ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
-5. Kattintson a **Igen** bezárásához a **a művelet megerősítéséhez** párbeszédpanel.
+5. Kattintson a **Igen** gombra kattintva zárja be a **művelet megerősítése** párbeszédpanel.
    
-    ![Erősítse meg a műveletet](./media/concur-provisioning-tutorial/ic721732.png "erősítse meg a műveletet")
+    ![A művelet megerősítéséhez](./media/concur-provisioning-tutorial/ic721732.png "művelet megerősítése")
 
-6. Az a [Azure-portálon](https://portal.azure.com), keresse meg a **Azure Active Directory > Vállalati alkalmazások > összes alkalmazás** szakasz.
+6. Az a [az Azure portal](https://portal.azure.com), keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás** szakaszban.
 
-7. Ha már konfigurált Concur egyszeri bejelentkezést, keresse meg a keresési mező Concur példányát. Máskülönben válassza **Hozzáadás** keresse meg a **Concur** az alkalmazás katalógusában. Válassza ki a Concur a keresési eredmények közül, és adja hozzá az alkalmazások listáját.
+7. Ha már konfigurált beleértve az egyszeri bejelentkezés, keresse meg a példány, beleértve a keresési mező használatával. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **beleértve** az alkalmazás-katalógusában. A keresési eredmények közül válassza ki a beleértve, és adja hozzá az alkalmazások listáját.
 
-8. Jelölje ki a Concur példányát, majd válassza ki a **kiépítési** fülre.
+8. Válassza ki azt a példányt, beleértve, majd válassza ki a **kiépítési** fülre.
 
-9. Állítsa be a **kiépítési üzemmódját** való **automatikus**. 
+9. Állítsa be a **Kiépítési mód** való **automatikus**. 
  
     ![kiépítés folyamatban](./media/concur-provisioning-tutorial/provisioning.png)
 
-10. Az a **rendszergazdai hitelesítő adataival** területen adja meg a **felhasználónév** és a **jelszó** Concur rendszergazdától.
+10. Alatt a **rendszergazdai hitelesítő adataival** területén adja meg a **felhasználónév** és a **jelszó** beleértve a rendszergazda azon.
 
-11. Az Azure portálon kattintson **kapcsolat tesztelése** biztosításához az Azure AD csatlakozhat az Concur alkalmazást. Ha nem sikerül, győződjön meg arról, Concur fiókja Team rendszergazdai jogosultságokkal rendelkezik.
+11. Az Azure Portalon kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat beleértve alkalmazását. Ha a kapcsolat hibája esetén, győződjön meg arról, beleértve fiókja csapat rendszergazdai engedélyekkel rendelkező.
 
-12. Adja meg az e-mail címet vagy egy csoport, az üzembe helyezési hiba értesítéseket kapjanak a **értesítő e-mailt** mezőben, majd jelölje be a jelölőnégyzetet.
+12. Adja meg az e-mail-címét egy személyt vagy csoportot, amelyre az üzembe helyezési hiba értesítéseket szeretné kapni a **értesítő e-mailt** mezőben, majd jelölje be a jelölőnégyzetet.
 
 13. Kattintson a **mentéséhez.**
 
-14. A hozzárendelések szakaszban válassza ki a **szinkronizálása Azure Active Directory-felhasználókat Concur.**
+14. A leképezések szakasz alatt válassza ki a **szinkronizálása az Azure Active Directory-felhasználók, beleértve.**
 
-15. Az a **attribútum-leképezésekhez** szakaszban, tekintse át a felhasználói attribútumok, az Azure AD Concur lettek szinkronizálva. A kiválasztott attribútumok **egyező** tulajdonságok használatával felel meg a felhasználói fiókokat a Concur a frissítési műveleteket. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+15. Az a **attribútumleképezések** területen tekintse át a felhasználói attribútumok, beleértve az Azure AD-ből szinkronizált. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, beleértve a frissítési műveletek. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-16. Az Azure AD szolgáltatás Concur kiépítés engedélyezéséhez módosítsa a **kiépítési állapot** való **a** a a **beállítások** szakasz
+16. Az Azure AD létesítési szolgáltatás, beleértve a engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakasz
 
 17. Kattintson a **mentéséhez.**
 
-Mostantól létrehozhat egy olyan fiókot. Akár 20 percig várjon győződjön meg arról, hogy a fiók Concur lett-e szinkronizálva.
+Mostantól létrehozhat egy olyan fiókot. Győződjön meg arról, hogy a szinkronizált fiókkal rendelkező, beleértve a várja meg, akár 20 percig.
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](concur-tutorial.md)
 

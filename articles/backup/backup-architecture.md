@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: raynew
-ms.openlocfilehash: d3e6a17ba9d0712d921d8e0a1d0bcbcd68ce5cfb
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 84890c0658970aa9f61a06764cf902a5e5ee4379
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360278"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812559"
 ---
 # <a name="azure-backup-architecture"></a>Az Azure Backup-architektúra
 
@@ -163,7 +163,7 @@ A deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><b
 - Az Azure virtuális gépek lemezeket használnak tárolják az operációs rendszer, az alkalmazások és az adatokat.
 - Az Azure virtuális gépek rendelkeznek legalább két lemezt. Egy, az operációs rendszer, és a egy ideiglenes lemez. Az adatlemezeket az adatokat azok is lehet. Lemezek VHD-ként tárolja.
 - Virtuális merevlemezeket lapblobként standard vagy prémium szintű tárfiókok az Azure-ban tárolják.
-    - Standard szintű storage: Megbízható, költséghatékony lemeztámogatás, amelyek nem a késésre érzékeny számítási feladatokat futtató virtuális gépek számára. Standard szintű storage standard SSD-lemez vagy használhat standard SSD-lemezeket).
+    - Standard szintű storage: Megbízható, költséghatékony lemeztámogatás, amelyek nem a késésre érzékeny számítási feladatokat futtató virtuális gépek számára. Standard szintű tárolást a standard SSD-lemez vagy HDD a standard szintű lemezek.
     - A Premium storage: Nagy teljesítményű lemezes támogatás. Prémium szintű SSD-lemezeket használ.
 - Nincsenek lemezek különböző teljesítményszint:
     - Standard HDD lemez: Meghajtókra, és költséghatékony tárolási megoldás használják.

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9a2fd8441de099a5423e9681a9dfe3ee12f08cec
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 043c83e2039d87b1650ba17f770ce16a2ad2c13d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54479497"
+ms.locfileid: "54811162"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtök automatikus méretezése
 
@@ -27,9 +27,9 @@ Az Azure HDInsight-fürt automatikus skálázási funkció automatikusan mérete
 > [!Note]
 > Az automatikus skálázás jelenleg csak a támogatott Azure HDInsight Hive, a MapReduce és a Spark fürt 3.6-os verzióját.
 
-Kövesse a [ ](hdinsight-hadoop-create-linux-clusters-portal.md) , és ha egyenlege eléri az 5. lépése **fürtméret**válassza **munkavégző csomópont (előzetes verzió) automatikus skálázási** alább látható módon. 
+Kövesse a [létrehozása Linux-alapú fürtök a HDInsight az Azure portal használatával](hdinsight-hadoop-create-linux-clusters-portal.md) , és ha egyenlege eléri az 5. lépése **fürtméret**, jelölje be **munkavégző csomópont (előzetes verzió) automatikus skálázási** ahogy az alábbi. 
 
-    ![Enable worker node autoscale option](./media/hdinsight-autoscale-clusters/worker-node-autoscale-option.png)
+![Munkavégző csomópont automatikus skálázási beállítás engedélyezése](./media/hdinsight-autoscale-clusters/worker-node-autoscale-option.png)
 
 Ez a beállítás bejelölésével megadhatja:
 

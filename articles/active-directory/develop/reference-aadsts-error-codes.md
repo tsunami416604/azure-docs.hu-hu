@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/11/2019
+ms.date: 01/23/2019
 ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 1e3dc984de15fa2c94fc5150020f1af1579e2c5c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e550eeba9b154e271cdad9df5cdfe9a308efbbe9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434104"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820308"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Hitelesítés és hitelesítési hibakódok
 
@@ -79,7 +79,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS50058 | UserInformationNotProvided – Ez azt jelenti, hogy a felhasználó nem jelentkezett be. Ez a gyakori hiba, amikor a felhasználó nincs hitelesítve, és nem jelentkezett még várt.</br>Ha ezt a hibát egy egyszeri Bejelentkezést a környezetben, ahol a felhasználó korábban bejelentkezett számára javasolt, ez azt jelenti, amely az egyszeri bejelentkezés munkamenet vagy nem található vagy érvénytelen volt.</br>Előfordulhat, hogy vissza ezt a hibát az alkalmazás, ha azonnali = nincs megadva. |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided - bérlő-azonosítási adatok nem található vagy a kérelem vagy hallgatólagos által a megadott hitelesítő adatokat. A felhasználó kapcsolatba léphet a bérlői rendszergazdát, hogy a probléma megoldásához. |
 | AADSTS50061 | SignoutInvalidRequest – a kijelentkezési kérés érvénytelen. |
-| AADSTS50064 | CredentialAuthenticationError – hitelesítő adatok érvényesítése nem sikerült. |
+| AADSTS50064 | CredentialAuthenticationError – felhasználónév vagy jelszó a hitelesítő adatok érvényesítése nem sikerült. |
 | AADSTS50068 | Kijelentkezés SignoutInitiatorNotParticipant – nem sikerült. Az alkalmazás által kezdeményezett kijelentkezés nem a jelenlegi munkamenet résztvevő. |
 | AADSTS50070 | Kijelentkezés SignoutUnknownSessionIdentifier – nem sikerült. A Kijelentkezés kérelemben megadott egy név segítségével azonosítja, amelyek nem feleltek meg a meglévő munkamenet. |
 | AADSTS50071 | SignoutMessageExpired – a kijelentkezési kérés lejárt. |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 76bec0f0e924fe193519f47effb8dd45f6262697
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 750ab99df1d241cf4252c49a5a9ced08a82b1c92
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630325"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809190"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -205,6 +205,9 @@ Ha egy a helyszíni biztonsági mentési megoldást használ, az adott kiszolgá
 
 > [!Note]  
 > Operációs rendszer nélküli (BMR) visszaállítása pedig váratlan helyzeteket eredményezhet, és jelenleg nem támogatott.
+
+> [!Note]  
+> VSS-pillanatképet (beleértve a korábbi verziók lap) jelenleg nem támogatottak a köteteket, felhőbeli rétegezés engedélyezve van. Ha a felhőbeli rétegezés engedélyezve van, használja az Azure fájlmegosztási pillanatképeket fájl visszaállítása biztonsági másolatból.
 
 ### <a name="encryption-solutions"></a>Titkosítási megoldások
 Titkosítási megoldások támogatása attól függ, hogyan használják azokat. Az Azure File Sync ismert használata:

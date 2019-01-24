@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Jive |} A Microsoft Docs'
+title: 'Oktatóanyag: Jive-beli az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Jive között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 9fc5659a-c116-4a1b-a601-333325a26b46
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: cebcfb4614d1f685697bed6914f80237e175fb7b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fa802e137f9fb76c531814f6128cabfc11a44f0f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436556"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812335"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jive"></a>Oktatóanyag: Azure Active Directory-integráció az Jive
+# <a name="tutorial-azure-active-directory-integration-with-jive"></a>Oktatóanyag: Jive-beli az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja a Jive integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Ha szeretné tudni, hogy további információ a SaaS-alkalmazás integráció a
 
 Az Azure AD-integráció konfigurálása a Jive, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A jive-beli egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure ad-ben a Jive-integráció konfigurálása, szüksége Jive hozzáadás
 
 **A Jive hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 737dc40bafa519d59bcbc0ff6510a89cb3a840fa
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c8aa7050163c2b58ca68adcf9a9b4d0bc96bb126
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263203"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808357"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -57,7 +57,7 @@ Az értékelési beállítások az adott igényekhez szabhatók. Az értékelés
 
 **Tulajdonság** | **Részletek**
 --- | ---
-**Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/><br/>Az Azure Migrate jelenleg támogatja 33 régióban áttelepítési célhelyeket. [Régiók megtekintése](https://azure.microsoft.com/global-infrastructure/services/). Az alapértelmezetten beállított célrégió az USA 2. nyugati régiója.
+**Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/><br/>Az Azure Migrate jelenleg támogatja 33 régióban áttelepítési célhelyeket. [Régiók megtekintése](https://azure.microsoft.com/global-infrastructure/services/). Alapértelmezés szerint a célrégióban az USA keleti RÉGIÓJA van beállítva.
 **Tárolás típusa** | A felügyelt lemezeket szeretne lefoglalni az értékelés részét képező összes virtuális gép típusát. Ha a méretezési feltétel teljesítményalapú *helyszíni méretezési* is megadhat a céllemez típusa vagy a prémium szintű lemezek (alapértelmezett), standard SSD-lemez vagy HDD a standard szintű lemezek. A *teljesítményalapú*, a fenti lehetőségek, valamint akkor is választhatja, amely biztosítja, hogy a méretezési javaslat lemezt automatikusan történik a virtuális gépek teljesítményadatait alapján automatikus. Ha például szeretne elérni egy [egypéldányos virtuális gép SLA 99,9 %-os](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/), előfordulhat, hogy szeretne megadni a tárolási típust, amely biztosítja, hogy azok a lemezek az értékelés rendszer azt javasolja, prémium szintű felügyelt lemezek prémium szintű felügyelt lemezek. Vegye figyelembe, hogy az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 **Fenntartott példányok** |  Az értékelés figyelembe veszi, hogy vannak-e [fenntartott példányai](https://azure.microsoft.com/pricing/reserved-vm-instances/) az Azure-ban. Az Azure Migrate ez alapján becsüli meg a költségeket.
 **Méretezési feltétel** | Méretezési alapulhat **teljesítményelőzmények** a helyszíni virtuális gépek (alapértelmezett), vagy **helyszíni**, teljesítményelőzmények figyelembe vétele nélkül.

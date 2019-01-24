@@ -1,11 +1,11 @@
 ---
-title: 'Oktatóanyag: Konfigurálása LinkedIn szintjének emelése a felhasználók automatikus átadása az Azure Active Directoryban |} A Microsoft Docs'
+title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a LinkedIn szintjének emelése |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének LinkedIn megszereznie a felhasználói fiókok.
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
-manager: mtillman
+manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 1dcc198c1a1cc798e991f489e6897d4b930c0593
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3c45388878675f5e0ee7df486747c7df41729694
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348499"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808001"
 ---
-# <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálása LinkedIn szintjének emelése a felhasználók automatikus átadása
+# <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a LinkedIn jogosultságszint-emelés beállítása
 
 
 Ez az oktatóanyag célja, a lépéseket kell elvégeznie a LinkedIn jogosultságszint-emelés és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből való jogosultságszint-emelés LinkedIn mutatni. 
@@ -57,7 +57,7 @@ A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt kell
 
 Ez a szakasz végigvezeti az Azure AD-csatlakozás LinkedIn jogosultságszintjének SCIM felhasználói fiók üzembe helyezési API és az eszközkiépítési szolgáltatás létrehozása, frissítése és letiltását konfigurálása hozzárendelt felhasználói fiókok a LinkedIn jogosultságszint-emelés felhasználó és csoport-hozzárendelés alapján az Azure ad-ben.
 
-**Tipp:** is dönthet úgy, hogy a LinkedIn jogosultságszintjének emeléséhez szereplő utasítások a következő SAML-alapú egyszeri bejelentkezés engedélyezve [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható az Automatikus kiépítés függetlenül ellenére, hogy ezen két funkció kiegészíti egymást.
+**Tipp:** Választhatja azt is, LinkedIn jogosultságszint-emelés SAML-alapú egyszeri bejelentkezés engedélyezve, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható az Automatikus kiépítés függetlenül ellenére, hogy ezen két funkció kiegészíti egymást.
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Konfigurálása automatikus felhasználói fiók kiépítése LinkedIn megszereznie az Azure ad-ben:

@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 1807dc67d09b521e66314fb98535fb2c1225d34f
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: e1618ded270cddca13145195522d7b42a00d6585
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964586"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54841421"
 ---
 Az alábbi táblázat a különböző szolgáltatásszintek korlátait tartalmazza (S1, S2, S3, F1). Az egyes szintek *egységeihez* tartozó költségekről további információt az [IoT Hub Díjszabás](https://azure.microsoft.com/pricing/details/iot-hub/) című oldalon talál.
 
@@ -33,7 +33,7 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat tartalma
 | Eszközidentitások egyetlen hívásban visszaadott<br/> maximális száma |1000 |
 | Egy eszközről a felhőbe irányuló IoT Hub-üzenetek maximális megőrzési ideje |7 nap |
 | Egy eszközről a felhőbe irányuló üzenet maximális mérete |256 KB |
-| Egy eszközről a felhőbe irányuló köteg maximális mérete |Amqp-t és HTTP: az egész köteget a 256 KB <br/>MQTT: az egyes üzenetekhez 256 KB |
+| Egy eszközről a felhőbe irányuló köteg maximális mérete |Amqp-t és HTTP: Az egész köteget a 256 KB <br/>MQTT-RŐL: Az egyes üzenetekhez 256 KB |
 | Egy eszközről a felhőbe irányuló kötegben található üzenetek maximális száma |500 |
 | A felhőből egy eszközre irányuló üzenet maximális mérete |64 KB |
 | A felhőből egy eszközre irányuló üzenetek maximális élettartama |2 nap |
@@ -48,6 +48,8 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat tartalma
 | Egyidejű feladatok maximális száma | 10 (S3 esetén), 5 (S2 esetén), 1 (S1 esetén) |
 | További végpontok maximális száma | 10 (S1, S2 és S3 esetén) |
 | Üzenet-útválasztási szabályok maximális száma | 100 (S1, S2 és S3 esetén) |
+| Egyidejűleg csatlakoztatott eszköz adatfolyamok maximális száma | 50 (az S1, S2, S3, és csak az F1) |
+| Maximális eszköz stream adatátvitel | 300 MB / nap (az S1, S2, S3, és csak az F1) |
 
 
 > [!NOTE]
@@ -72,3 +74,4 @@ Az IoT Hub szolgáltatás szabályozza a kéréseket az alábbi kvóták átlép
 | Ikereszköz-frissítések | 50/mp/egység (S3 esetén), legfeljebb 10/mp vagy 1/mp/egység (S2 esetén), 10/mp (S1 esetén) |
 | Feladatműveletek <br/> (létrehozás, frissítés, listázás, törlés) | 83.33/sec/Unit (5000/perc/egység) (S3 esetén), 1.67/sec/unit (100/perc/egység) (az S2 esetén), 1.67/sec/unit (100/perc/egység) (az S1 esetén) |
 | Feladatok eszközönkénti műveleti teljesítménye | 50/mp/egység (S3 esetén), legfeljebb 10/mp vagy 1/mp/egység (S2 esetén), 10/mp (S1 esetén) |
+| Eszköz stream kezdeményezés sebessége | 5 új adatfolyamok/mp (S1, S2, S3, és csak az F1) |

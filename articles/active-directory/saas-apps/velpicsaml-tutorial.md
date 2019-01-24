@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Velpic SAML |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció az Velpic SAML |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Velpic SAML között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a8fe814801d00b3f27e52484d742cbe6c7b0770
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: eb59c61f89b3b23ce8b0a393ee1e0e842826e90b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114006"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811791"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>Oktatóanyag: Azure Active Directory-integráció az Velpic SAML
+# <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>Oktatóanyag: Az Azure Active Directory-integráció az Velpic SAML
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Velpic SAML integrálható az Azure Active Directory (Azure AD).
 

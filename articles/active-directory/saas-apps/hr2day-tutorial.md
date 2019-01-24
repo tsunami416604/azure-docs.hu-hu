@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az HR2day által Merces |} A Microsoft Docs'
+title: 'Oktatóanyag: HR2day Merces által az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés HR2day Merces által és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 853d08c9-27b1-48d4-b8e7-3705140eb67f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 984e2e9999a2aba7a595034f1fec8bafb976f310
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 327e6d94cbabd679531935ba330d3096d73f8897
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441615"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821022"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Oktatóanyag: Azure Active Directory-integráció az HR2day Merces szerint
+# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Oktatóanyag: HR2day Merces által az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan által Merces HR2day integrálása az Azure Active Directory (Azure AD).
 
@@ -88,11 +88,11 @@ HR2day által Merces, rendelje hozzá a **felhasználónév** az Azure AD- **fel
 
 Az Azure AD egyszeri bejelentkezés az HR2day Merces által tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on): a felhasználók a funkció használatához.
-1. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#creating-an-azure-ad-test-user): tesztelés az Azure AD egyszeri bejelentkezés az Britta Simon.
-1. [Hozzon létre egy HR2day Merces teszt felhasználó](#creating-an-hr2day-by-merces-test-user): hozzon létre egy megfelelője a Britta Simon HR2day által Merces, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assigning-the-azure-ad-test-user): Britta Simon engedélyezése az Azure AD egyszeri bejelentkezés használatára.
-1. [Egyszeri bejelentkezés tesztelése](#testing-single-sign-on): Ellenőrizze, hogy működik-e a konfiguráció.
+1. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on): Engedélyezze a felhasználók a funkció használatához.
+1. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#creating-an-azure-ad-test-user): Tesztelje az Azure AD egyszeri bejelentkezés az Britta Simon.
+1. [Hozzon létre egy HR2day Merces teszt felhasználó](#creating-an-hr2day-by-merces-test-user): Hozzon létre egy megfelelője a Britta Simon HR2day által Merces, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assigning-the-azure-ad-test-user): Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezése.
+1. [Egyszeri bejelentkezés tesztelése](#testing-single-sign-on): Győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -243,7 +243,7 @@ Ebben a szakaszban engedélyezze Britta Simon számára a hozzáférés biztosí
 
 1. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ez a szakasz célja az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.  
 
