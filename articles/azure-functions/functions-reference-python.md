@@ -149,7 +149,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Ha a függvény meghívása HTTP-kérelem a függvényt, átadott `req`. Egy bejegyzés az Azure Blob Storage alapján lehet beolvasni a _azonosító_ URL-útvonal és lehetőségként elérhetővé tegyen `obj` függvény törzsében.
+A függvény meghívásakor a rendszer 'req' értékként adja át a HTTP-kérelmet a függvénynek. A rendszer lekér egy bejegyzést az Azure Blob Storage-ból az útvonal URL-címében található _id_ alapján, és a függvénytörzs 'obj' elemeként elérhetővé teszi.
 
 ## <a name="outputs"></a>Kimenetek
 
