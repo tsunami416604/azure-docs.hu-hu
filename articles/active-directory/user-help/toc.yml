@@ -47,12 +47,24 @@ items:
   items:
   - name: Áttekintés
     href: user-help-auth-app-overview.md
-  - name: Bevezetés
+  - name: Az alkalmazás letöltése és telepítése
     href: microsoft-authenticator-app-how-to.md
-  - name: Biztonsági mentés és helyreállítás
-    href: microsoft-authenticator-app-backup-and-recovery.md
-  - name: Bejelentkezés telefonnal
+  - name: Fiókok hozzáadásának áttekintése
+    href: microsoft-authenticator-app-add-accounts-overview.md
+    items:
+    - name: Munkahelyi vagy iskolai fiók hozzáadása
+      href: microsoft-authenticator-app-add-work-account.md
+    - name: Személyes Microsoft-fiók hozzáadása
+      href: microsoft-authenticator-app-add-personal-account.md
+    - name: Személyes nem Microsoft-fiók hozzáadása
+      href: microsoft-authenticator-app-add-non-microsoft-account.md
+    - name: Fiók manuális hozzáadása
+      href: microsoft-authenticator-app-add-account-manual.md
+    expanded: true
+  - name: Bejelentkezés a Microsoft Authenticator alkalmazással
     href: microsoft-authenticator-app-phone-signin-faq.md
+  - name: Fiókok biztonsági mentése és helyreállítása
+    href: microsoft-authenticator-app-backup-and-recovery.md
   - name: GYIK
     href: microsoft-authenticator-app-faq.md
 - name: A Saját alkalmazások portál súgója
@@ -73,9 +85,9 @@ items:
     href: user-help-register-device-on-network.md
   - name: Az „Innen nem érheti el” üzenet hibaelhárítása
     href: user-help-device-remediation.md
-ms.openlocfilehash: 27d0d3300a19d4c27bec48ebf411c7ac3ee6ad87
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 9ccadb31ce331d3a9dc64aa26d5e8edab900cd1e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649585"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904097"

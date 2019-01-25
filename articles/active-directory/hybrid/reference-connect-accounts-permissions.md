@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 01/24/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 403fd0679e0850d758dd0e2f65cec3fe2ff79965
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 784599d682ab05b599f32b3fb502ed840f031ce8
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478603"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902007"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
@@ -136,7 +136,7 @@ Engedélyezi a választható funkciókat függ, hogy milyen engedélyeket van sz
 | Exchange-levelezés nyilvános mappa |Olvasási engedéllyel a dokumentált attribútumok [Exchange-levelezés nyilvános mappa](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) nyilvános mappákhoz. | 
 | Jelszóvisszaíró |Írási engedélyekkel a dokumentált attribútumok [a jelszókezelés első lépései](../authentication/howto-sspr-writeback.md) a felhasználók számára. |
 | Eszközvisszaíró |A PowerShell-parancsprogram megadott engedélyek [eszközvisszaírás](how-to-connect-device-writeback.md). |
-| Group writeback (Csoportvisszaíró) |Olvassa el, létrehozási, frissítési és törlési csoport objektumok szinkronizálva a **Office 365-csoportok**.  További információ: [Csoportvisszaírás](how-to-connect-preview.md#group-writeback).|
+| Group writeback (Csoportvisszaíró) |Lehetővé teszi, hogy a jelszóvisszaíró **Office 365-csoportok** telepített Exchange-erdőhöz.  További információ: [Csoportvisszaírás](how-to-connect-preview.md#group-writeback).|
 
 ## <a name="upgrade"></a>Frissítés
 Amikor frissít egy verziójáról az Azure AD Connect új kiadása, a következő engedélyek szükségesek:

@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: bc00bd3b61398355c663d133c0c9a66c2a52aa8d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 102191b885d2a4a9234b7783b0a51b09903d3abd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047634"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807456"
 ---
 # <a name="r-developers-guide-to-azure"></a>R – fejlesztői útmutató az Azure-bA
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -37,10 +37,10 @@ Ez a cikk ismerteti a következő Azure-szolgáltatások, amelyek támogatják a
 |-----------------------------------------------------------------|----------------------------------------------------------------------------------|
 |[Adatelemző virtuális gép](#data-science-virtual-machine)    |a data science munkaállomás vagy egy egyéni számítás célként használandó egyéni virtuális gép|
 |[A HDInsight Machine Learning-szolgáltatások](#ml-services-on-hdinsight)            |fürt-alapú rendszer R elemzések futtatása nagyméretű adathalmazok számos csomópont között   |
-|[Az Azure Databricks](#azure-databricks)                            |együttműködési a Spark környezet, amely támogatja az R- és más nyelveken               |
+|[Azure Databricks](#azure-databricks)                            |együttműködési a Spark környezet, amely támogatja az R- és más nyelveken               |
 |[Az Azure Machine Learning Studióban](#azure-machine-learning-studio)  |az Azure machine learning-példakísérleteket az egyéni R-szkriptek futtatása                      |
 |[Azure Batch](#azure-batch)                                      |számos lehetőséget kínál a gazdasági szempontból a fürt több csomópontján futó R-kód|
-|[Az Azure notebookok](#azure-notebooks)                              |egy ingyenes (de legfeljebb) felhőalapú verziója Jupyter notebookok                  |
+|[Azure Notebooks](#azure-notebooks)                              |egy ingyenes felhőalapú verziója Jupyter notebookok                  |
 |[Azure SQL Database](#azure-sql-database)                        |az SQL Server adatbázismotor alapjait az R-szkriptek futtatása                            |
 
 ## <a name="data-science-virtual-machine"></a>Adatelemzési virtuális gép
@@ -48,7 +48,7 @@ A [adatelemző virtuális gép](https://docs.microsoft.com/azure/machine-learnin
 * [A Microsoft R Open](https://mran.microsoft.com/open/)
 * [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 * [Az RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop)
-* [Az RStudio Server](https://www.rstudio.com/products/rstudio/#Server)
+* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server)
 
 A DSVM üzembe lehet helyezni Windows vagy Linux operációs rendszert.  A dsvm-hez két különböző módon használható: egy interaktív munkaállomás vagy egy egyéni fürt egy számítási platform.
 
@@ -73,7 +73,7 @@ Vertikális ezáltal gépi Tanulási szolgáltatásokat, a HDInsight nagyszerű 
 A egy Machine Learning-szolgáltatások fürt létrehozásával kapcsolatos lépésenkénti útmutatóért lásd: a ["Első lépések a Machine Learning-szolgáltatások az Azure HDInsight"](https://docs.microsoft.com/azure/hdinsight/r-server/r-server-get-started) cikk.
 
 ## <a name="azure-databricks"></a>Azure Databricks
-[Az Azure Databricks](https://azure.microsoft.com/services/databricks/) egy a Microsoft Azure cloud services platformra optimalizált Apache Spark-alapú elemzési platform.  Az Apache Spark alapítóival közösen tervezett Databricks integrálva van az Azure-ral, így egyetlen kattintással beállítható, zökkenőmentes munkafolyamatokat tesz lehetővé, valamint olyan interaktív munkaterületet biztosít, amellyel lehetővé válik az adatszakértők, az adatmérnökök és az üzleti elemzők közötti együttműködés.
+Az [Azure Databricks](https://azure.microsoft.com/services/databricks/) a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform.  Az Apache Spark alapítóival közösen tervezett Databricks integrálva van az Azure-ral, így egyetlen kattintással beállítható, zökkenőmentes munkafolyamatokat tesz lehetővé, valamint olyan interaktív munkaterületet biztosít, amellyel lehetővé válik az adatszakértők, az adatmérnökök és az üzleti elemzők közötti együttműködés.
 
 A Databricks az együttműködés a platform notebook rendszer engedélyezve van.  Felhasználók létrehozása, megosztása és jegyzetfüzetek szerkesztése a rendszerek más felhasználókkal.  Ezeket a notebookokat engedélyezése a felhasználóknak, amely végrehajtja a ellen a Spark-fürtök a Databricks környezetben felügyelt kód írására.  Ezeket a notebookokat teljes körűen támogatja az R, és hozzáférést biztosít a felhasználóknak a Spark segítségével is a `SparkR` és `sparklyr` csomagokat.
 
@@ -104,16 +104,17 @@ Ez a csomag egyszerűen alkalmazhatók az Azure ML skálázható platformként a
 ## <a name="azure-batch"></a>Azure Batch
 A nagy méretű az R-munkák használhatja [Azure Batch](https://azure.microsoft.com/services/batch/).  Ezt a szolgáltatást felhőléptékű feladatütemezés és számításkezelés felhőméretben-kezelést biztosít, így az R számítási feladatok több tíz, száz vagy ezer virtuális gép között is méretezheti.  Mivel ez egy általánosított számítástechnikai platformja, van néhány lehetőség az R-munkák futtatása Azure Batch.
 
-Az egyik lehetőség, hogy használja a Microsoft <code>[doAzureParallel](https://github.com/Azure/doAzureParallel)</code> csomagot.  Az R-csomag egy párhuzamos háttéralkalmazásának a `foreach` csomagot.  Minden egyes megismételt lehetővé teszi a `foreach` hurkot, és az Azure Batch-fürtön belül egy csomóponton párhuzamosan futnak.  A csomag szeretné megismerni, olvassa el a ["doAzureParallel: kihasználhatja az Azure rugalmas számítási közvetlenül az R-munkamenet az"](https://azure.microsoft.com/blog/doazureparallel/) blogbejegyzést.
+Az egyik lehetőség, hogy használja a Microsoft <code>[doAzureParallel](https://github.com/Azure/doAzureParallel)</code> csomagot.  Az R-csomag egy párhuzamos háttéralkalmazásának a `foreach` csomagot.  Minden egyes megismételt lehetővé teszi a `foreach` hurkot, és az Azure Batch-fürtön belül egy csomóponton párhuzamosan futnak.  A csomag szeretné megismerni, olvassa el a ["doAzureParallel: Kihasználhatja az Azure rugalmas számítási közvetlenül az R-munkamenet az"](https://azure.microsoft.com/blog/doazureparallel/) blogbejegyzést.
 
 Az R-szkriptek futtatásához az Azure Batch egy másik lehetőség, hogy a kód "RScript.exe" a csomagot, egy Batch-alkalmazások az Azure Portalon.  Részletes útmutatót szeretne, olvassa el a ["R számítási feladatait az Azure Batch."](https://azure.microsoft.com/blog/r-workloads-on-azure-batch/)
 
 Egy harmadik lehetőség a [Azure elosztott adatok mérnöki eszközkészlet](https://github.com/Azure/aztk) (AZTK), amely lehetővé teszi, hogy az Azure Batchben a Docker-tárolók használatával igény szerinti Spark-fürtök kiépítése.  Ez biztosítja, hogy a Spark-feladatok futtatása az Azure-ban gazdaságos megoldást kínál.  Használatával [AZTK a SparklyR](https://github.com/Azure/aztk/wiki/SparklyR-on-Azure-with-AZTK), az R-szkriptek kiterjeszthető a felhőben egyszerűen, és gazdaságosan.
 
 ## <a name="azure-notebooks"></a>Azure Notebooks
+
 [Az Azure notebookok](https://notebooks.azure.com) van egy kis költségigényű, alacsony terhelésű metódus R notebookok való munkavégzés előnyben részesítő fejlesztőknek saját kód használata az Azure-bA.  Egy ingyenes szolgáltatás mindenki számára a fejleszthet és futtathat kódot a böngésző használatával [Jupyter](https://jupyter.org/), amely egy nyílt forráskódú projekt, amely lehetővé teszi a markdown prose weboldalak százmilliárdjainak biztosítják a, a végrehajtható kódok és a egy egyetlen vászonra grafikus.
 
-Noha az Azure notebookok semmibe projektek egy kivitelezhető lehetőség, rendelkezik bizonyos korlátozások, amelyek megkönnyítik a nagy léptékű adatelemzési projektek nem megfelelő.  Jelenleg a szolgáltatás korlátozza az egyes notebook folyamat 4 GB memória, és adatkészletek csak 1 GB-os lehet.  A kisebb méretű elemzések közzététele, ez azonban egy egyszerű és ingyenes lehetőséget.
+Azure notebookok ingyenes szolgáltatási szintjét beállítás kivitelezhető semmibe projektek esetén, minden egyes notebook folyamat 4 GB memória- és 1 GB-TAL adathalmazok korlátozza. Ha ezek a korlátozások túli számítási és az adatok power, azonban futtathatja notebookok adatelemző virtuális gép-példányban. További információkért lásd: [kezelése és konfigurálása az Azure-jegyzetfüzetek projektek - számítási kapacitás](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 [Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/) a Microsoft intelligens, teljes körűen felügyelt relációs adatbázis-szolgáltatás.  Ez lehetővé teszi, hogy használja a teljes SQL Server nem kell minden olyan infrastruktúra nélkül.  Ez magában foglalja [Machine Learning-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-2017), egyike a a legújabb SQL Service kiegészítéseit.

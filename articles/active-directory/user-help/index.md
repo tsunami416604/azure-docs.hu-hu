@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
-title: 'Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez – Azure Active Directory | Microsoft Docs'
-description: 'A felhasználói súgó olyan személyeknek szól, akiknek segítségre van szükségük a biztonsági adatok, a kétlépéses ellenőrzés, az új jelszó önkiszolgáló kérése, az eszközkezelés, a Microsoft Authenticator alkalmazás és a Saját alkalmazások portál beállításához és használatához.'
+title: Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez – Azure Active Directory | Microsoft Docs
+description: A felhasználói súgó olyan személyeknek szól, akiknek segítségre van szükségük a biztonsági adatok, a kétlépéses ellenőrzés, az új jelszó önkiszolgáló kérése, az eszközkezelés, a Microsoft Authenticator alkalmazás és a Saját alkalmazások portál beállításához és használatához.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -10,8 +10,13 @@ ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
+ms.openlocfilehash: c6fe14c9f67d6ce2f432b57b2cbbd0d026cebe85
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901632"
 ---
-
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez
 
 Ezeket a tartalmakat azért hoztuk létre, hogy segítséget nyújtsunk a biztonsági adatok és a kétlépéses ellenőrzés beállításához és használatához, az új jelszó önkiszolgáló kérésének elsajátításához, az Azure Active Directory-eszközök beállításához és csatlakoztatásához, valamint a Microsoft Authenticator alkalmazás és a Saját alkalmazások portál beállításához és használatához.
@@ -81,7 +86,10 @@ Ezeket a tartalmakat azért hoztuk létre, hogy segítséget nyújtsunk a bizton
                     <div class="cardText">
                         <h3>A Microsoft Authenticator alkalmazás súgója</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">Első lépések</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-overview">Áttekintés</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">Az alkalmazás letöltése és telepítése</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-add-accounts-overview">Fiókok hozzáadása</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">Bejelentkezés az alkalmazással</a><br/>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">A fiók hitelesítő adatainak biztonsági mentése és helyreállítása</a>
                         </p>
                     </div>

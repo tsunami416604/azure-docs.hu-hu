@@ -2,20 +2,25 @@
 layout: HubPage
 hide_bc: false
 title: Az Azure Active Directory dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-description: 'Az Azure Active Directory (Azure AD) a Microsoft több-bérlős felhőalapú könyvtára és identitáskezelési szolgáltatása, amely egyetlen megoldásban egyesíti az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-kezelést és identitásvédelmet.'
+description: Az Azure Active Directory (Azure AD) a Microsoft több-bérlős felhőalapú könyvtára és identitáskezelési szolgáltatása, amely egyetlen megoldásban egyesíti az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-kezelést és identitásvédelmet.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: landing-page
-ms.date: 01/16/2019
-ms.author: mtillman
+ms.date: 01/24/2019
+ms.author: barbkess
+ms.openlocfilehash: e8e422e6ba69669b24fc141b2688d6777ab85384
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900969"
 ---
-
 <div id="main" class="v2">
     <div class="container">
         <h1>Azure Active Directory-dokumentáció</h1>
-        <p>Az Azure Active Directory (Azure AD) egy több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás.</p><p></p>
+        <p>Az Azure Active Directory (Azure AD) egy több-bérlős, felhőalapú identitás- és hozzáférés-kezelési szolgáltatás.</p><p></p>
         <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
             <li>
                 <a href="fundamentals/active-directory-whatis.md">
