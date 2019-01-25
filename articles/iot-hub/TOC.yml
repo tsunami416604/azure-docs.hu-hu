@@ -37,8 +37,6 @@ items:
   items:
   - name: Útválasztási üzenetek
     href: tutorial-routing.md
-  - name: Metrikák és diagnosztikai naplók használata
-    href: tutorial-use-metrics-and-diags.md
   - name: Manuális feladatátvétel végrehajtása
     href: tutorial-manual-failover.md
   - name: Eszközök konfigurálása
@@ -304,8 +302,6 @@ items:
       items:
       - name: Eszközök felhőalapú üzenetkezelése a VS Code-hoz készült Azure IoT-eszközökkel
         href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
-      - name: Eszközök felhőalapú üzenetkezelése a Visual Studióhoz készült Cloud Explorerrel
-        href: iot-hub-visual-studio-cloud-device-messaging.md
       - name: Adatmegjelenítés a Power BI-ban
         href: iot-hub-live-data-visualization-in-power-bi.md
       - name: Adatmegjelenítés a Web Apps használatával
@@ -314,8 +310,6 @@ items:
         href: iot-hub-weather-forecast-machine-learning.md
       - name: Eszközfelügyelet VS Code-hoz készült Azure IoT-eszközökkel
         href: iot-hub-device-management-iot-toolkit.md
-      - name: Eszközfelügyelet a Visual Studióhoz készült Cloud Explorerrel
-        href: iot-hub-device-management-visual-studio.md
       - name: Eszközfelügyelet az Azure CLI-hez készült IoT-bővítménnyel
         href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
       - name: Távoli figyelés és értesítések a Logic Apps használatával
@@ -352,8 +346,6 @@ items:
     href: https://docs.microsoft.com/rest/api/iothub/iothubresource
   - name: REST (tanúsítványok)
     href: https://docs.microsoft.com/rest/api/iothub/certificates
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.devices/iothub-allversions
 - name: Kapcsolódó témakörök
   items:
   - name: Megoldások
@@ -420,9 +412,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 7ac517a2d2963993d40899183c020570b2934f80
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 09ae29bcfa6c9941f32c4892d30369ba2183cce7
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247333"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052972"

@@ -279,8 +279,6 @@ items:
       href: sql-database-elastic-query-overview.md
     - name: Rugalmas tranzakciók
       href: sql-database-elastic-transactions-overview.md
-    - name: Rugalmas adatbázis-feladatok
-      href: elastic-jobs-overview.md
   - name: SQL-funkciók összehasonlítása
     href: sql-database-features.md
   - name: Monitorozás és finomhangolás
@@ -307,6 +305,12 @@ items:
         href: sql-database-performance.md
       - name: A Database Advisor teljesítménnyel kapcsolatos javaslatai
         href: sql-database-advisor.md
+  - name: Adatok betöltése és áthelyezése
+    items:
+    - name: SQL-adatszinkronizálás
+      href: sql-database-sync-data.md
+    - name: Tranzakciós replikáció
+      href: sql-database-managed-instance-transactional-replication.md
   - name: Adatbázisfunkciók
     items:
     - name: Adatbázisfunkciók
@@ -317,6 +321,8 @@ items:
       href: sql-database-in-memory.md
     - name: Historikus táblák
       href: sql-database-temporal-tables.md
+    - name: Feladat automatizálása
+      href: sql-database-job-automation-overview.md
 - name: Útmutatók
   items:
   - name: Áttekintés
@@ -329,12 +335,14 @@ items:
       href: sql-database-cloud-migrate.md
     - name: SQL-adatbázis kezelése migrálás után
       href: sql-database-manage-after-migration.md
-    - name: Tranzakciós replikáció konfigurálása
+    - name: Replikáció konfigurálása
       href: replication-to-sql-database.md
     - name: Fenyegetésészlelés konfigurálása
       href: sql-database-threat-detection.md
     - name: Biztonsági másolatok megőrzésének konfigurálása az Azure Blob Storage használatával
       href: sql-database-long-term-backup-retention-configure.md
+    - name: Rugalmas adatbázis-feladatok konfigurálása
+      href: elastic-jobs-overview.md
     - name: Dinamikus adatmaszkolás konfigurálása
       href: sql-database-dynamic-data-masking-get-started-portal.md
     - name: Georeplikáció konfigurálása – Portál
@@ -439,8 +447,6 @@ items:
       href: sql-database-export.md
     - name: Adatszinkronizálás
       items:
-      - name: SQL-adatszinkronizálás
-        href: sql-database-sync-data.md
       - name: Adatszinkronizálási ügynök
         href: sql-database-data-sync-agent.md
       - name: Sémaváltozások replikálása
@@ -682,9 +688,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Rugalmas feladat eltávolítása (elavult)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 500fd22c19e0aab2cbecf0267329d5a86a5ccda2
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 95ea4f676202fe06a1761c98ddb7e3e1a6f12708
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230902"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447989"
