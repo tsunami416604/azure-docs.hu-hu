@@ -40,19 +40,19 @@ items:
   - name: Entitások
     href: entities-overview.md
     items:
-    - name: Fiókszűrők és objektumszűrők
+    - name: Fiók- és objektumszűrők
       href: filters-dynamic-manifest-overview.md
     - name: Objektumok
       href: assets-concept.md
     - name: Tartalomkulcsszabályok
       href: content-key-policy-concept.md
-    - name: Élő események és élő kimenetek
+    - name: LiveEvent események és LiveOutput kimenetek
       href: live-events-outputs-concept.md
     - name: Streamvégpontok
       href: streaming-endpoint-concept.md
-    - name: Streamelési lokátor
+    - name: Streameléskeresők
       href: streaming-locators-concept.md
-    - name: Streamelési szabályok
+    - name: Streamelési szabályzatok
       href: streaming-policy-concept.md
     - name: Átalakítások és feladatok
       href: transforms-jobs-concept.md
@@ -203,9 +203,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure-felhők és -régiók
     href: azure-clouds-regions.md
-ms.openlocfilehash: c30302fa289ade85870db3e89fa70f5e79f61a99
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: dfafe49ba2f520bdc44c5a3e3cad0201d6e56da5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881375"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810856"

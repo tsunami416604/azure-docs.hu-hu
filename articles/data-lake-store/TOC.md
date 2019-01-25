@@ -28,7 +28,7 @@
 ### [Hozzáférés-vezérlés](data-lake-store-access-control.md)
 ### [A tárolt adatok védelme](data-lake-store-secure-data.md)
 ### [Titkosítás](data-lake-store-encryption.md)
-### [Virtuális hálózat integrációja](data-lake-store-network-security.md)
+### [Virtuális hálózat integrációja (előzetes verzió)](data-lake-store-network-security.md)
 
 ## Hitelesítés az 1. generációs Data Lake Storage szolgáltatással
 ### [Hitelesítési lehetőségek](data-lakes-store-authentication-using-azure-active-directory.md)

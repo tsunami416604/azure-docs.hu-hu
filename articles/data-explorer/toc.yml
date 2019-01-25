@@ -1,119 +1,124 @@
+items:
 - name: Az Azure Adatkezelő dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az az Adatkezelő?
-      href: data-explorer-overview.md
+  - name: Mi az az Adatkezelő?
+    href: data-explorer-overview.md
 - name: Gyors útmutatók
   items:
-    - name: Fürt létrehozása – Azure Portal
-      href: create-cluster-database-portal.md
-    - name: Adatok betöltése
-      items:
-        - name: Adatok streamelése – Event Hubs
-          href: ingest-data-event-hub.md
-        - name: Adatok streamelése – Kafka
-          href: ingest-data-kafka.md
-        - name: Adatok kötegelése – Python
-          href: python-ingest-data.md
-        - name: Adatok kötegelése – Node SDK
-          href: node-ingest-data.md
-        - name: Adatok kötegelése – .Net Standard SDK
-          href: net-standard-ingest-data.md
-        - name: Adatok kötegelése – Logstash
-          href: ingest-data-logstash.md
-    - name: Adatok lekérdezése
-      items:
-        - name: Webes felhasználói felület
-          href: web-query-data.md
-        - name: Python
-          href: python-query-data.md
-    - name: Adatok vizualizációja
-      items:
-        - name: Power BI – összekötő
-          href: power-bi-connector.md
-        - name: Power BI – importált lekérdezés
-          href: power-bi-imported-query.md
-        - name: Power BI – SQL-lekérdezés
-          href: power-bi-sql-query.md
+  - name: Fürt létrehozása – Azure Portal
+    href: create-cluster-database-portal.md
+  - name: Adatok betöltése
+    items:
+    - name: Adatok streamelése – Event Hubs
+      href: ingest-data-event-hub.md
+    - name: Adatok streamelése – Kafka
+      href: ingest-data-kafka.md
+    - name: Adatok kötegelése – Python
+      href: python-ingest-data.md
+    - name: Adatok kötegelése – Node SDK
+      href: node-ingest-data.md
+    - name: Adatok kötegelése – .Net Standard SDK
+      href: net-standard-ingest-data.md
+  - name: Adatok lekérdezése
+    items:
+    - name: Webes felhasználói felület
+      href: web-query-data.md
+    - name: Python
+      href: python-query-data.md
+  - name: Adatok vizualizációja
+    items:
+    - name: Power BI – összekötő
+      href: power-bi-connector.md
+    - name: Power BI – importált lekérdezés
+      href: power-bi-imported-query.md
+    - name: Power BI – SQL-lekérdezés
+      href: power-bi-sql-query.md
 - name: Oktatóanyagok
   items:
-    - name: Adatok vizualizációja a Power BI-ban
-      href: visualize-power-bi.md
+  - name: Adatok vizualizációja a Power BI-ban
+    href: visualize-power-bi.md
 - name: Alapelvek
-  expanded: true
   items:
-    - name: Az adatbetöltés áttekintése
-      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
-      href: ingest-data-overview.md
-    - name: Idősorozat-elemzések
-      href: time-series-analysis.md
+  - name: Az adatbetöltés áttekintése
+    displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
+    href: ingest-data-overview.md
+  - name: Idősorozat-elemzések
+    href: time-series-analysis.md
+  expanded: true
 - name: Útmutatók
   items:
-    - name: Első lépések
-      expanded: true
-      items:
-        - name: Lekérdezések írása
-          href: write-queries.md
-        - name: Mintaadatok betöltése
-          href: ingest-sample-data.md
-    - name: Kezelés
-      items:
-        - name: Adatbázis-engedélyek kezelése
-          href: manage-database-permissions.md
-        - name: Fürt állapotának ellenőrzése
-          href: check-cluster-health.md
-        - name: Fürtök skálázásának kezelése
-          href: manage-cluster-scaling.md
-        - name: Adat törlése
-          href: delete-data.md
-        - name: A duplikált adatok kezelése
-          href: dealing-with-duplicates.md
-    - name: Más eszközök használata
-      items:
-        - name: Csatlakozás Databricksből Python használatával
-          href: connect-from-databricks.md
-        - name: Adatok elemzése Jupyter-notebookokkal és Kqlmagickel
-          href: kqlmagic.md
-        - name: Adatok vizualizációja a Grafanában
-          href: grafana.md
-    - name: Hibaelhárítás
-      items:
-        - name: Fürt létrehozása
-          href: troubleshoot-create-cluster.md
-        - name: Csatlakozás fürthöz
-          href: troubleshoot-connect-cluster.md
-        - name: Adatbázisok és táblák használata
-          href: troubleshoot-database-table.md
+  - name: Első lépések
+    items:
+    - name: Lekérdezések írása
+      href: write-queries.md
+    - name: Mintaadatok betöltése
+      href: ingest-sample-data.md
+    expanded: true
+  - name: Kezelés
+    items:
+    - name: Adatbázis-engedélyek kezelése
+      href: manage-database-permissions.md
+    - name: Fürt állapotának ellenőrzése
+      href: check-cluster-health.md
+    - name: Fürtök skálázásának kezelése
+      href: manage-cluster-scaling.md
+    - name: Adat törlése
+      href: delete-data.md
+    - name: A duplikált adatok kezelése
+      href: dealing-with-duplicates.md
+  - name: Más eszközök használata
+    items:
+    - name: Csatlakozás Databricksből Python használatával
+      href: connect-from-databricks.md
+    - name: Adatok elemzése Jupyter-notebookokkal és Kqlmagickel
+      href: kqlmagic.md
+    - name: Adatok vizualizációja a Grafanában
+      href: grafana.md
+  - name: Hibaelhárítás
+    items:
+    - name: Fürt létrehozása
+      href: troubleshoot-create-cluster.md
+    - name: Csatlakozás fürthöz
+      href: troubleshoot-connect-cluster.md
+    - name: Adatbázisok és táblák használata
+      href: troubleshoot-database-table.md
 - name: Referencia
   items:
-    - name: Lekérdezés nyelve
-      href: /azure/kusto/query/
-    - name: Felügyeleti parancsok
-      href: /azure/kusto/management/
-    - name: API-k
-      href: /azure/kusto/api/
-    - name: Eszközök
-      href: /azure/kusto/tools/
-    - name: Alapelvek
-      href: /azure/kusto/concepts/
+  - name: Lekérdezés nyelve
+    href: /azure/kusto/query/
+  - name: Felügyeleti parancsok
+    href: /azure/kusto/management/
+  - name: API-k
+    href: /azure/kusto/api/
+  - name: Eszközök
+    href: /azure/kusto/tools/
+  - name: Alapelvek
+    href: /azure/kusto/concepts/
 - name: További források
   items:
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/tag/azure-data-explorer/'
-    - name: Fórumok
-      items:
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-data-explorer'
-        - name: Microsoft Tech Community
-          href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto'
-        - name: MSDN-fórum
-          href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
-    - name: Termékkel kapcsolatos visszajelzés
-      href: 'http://aka.ms/adefeedback'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
-    - name: Költségbecslő
-      href: 'http://aka.ms/adecostestimator'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?product=data-explorer'
+  - name: Blog
+    href: https://azure.microsoft.com/blog/tag/azure-data-explorer/
+  - name: Fórumok
+    items:
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/azure-data-explorer
+    - name: Microsoft Tech Community
+      href: https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto
+    - name: MSDN-fórum
+      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto
+  - name: Termékkel kapcsolatos visszajelzés
+    href: http://aka.ms/adefeedback
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/data-explorer/
+  - name: Költségbecslő
+    href: http://aka.ms/adecostestimator
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=data-explorer
+ms.openlocfilehash: fd86d2d3ceb8e23567c8bfbfbbee87485d1def58
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021634"
