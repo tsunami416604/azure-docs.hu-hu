@@ -63,9 +63,9 @@
 ### [SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sapase.md)
 ### [SAP MaxDB, liveCache és tartalomkiszolgáló üzembe helyezése az Azure-ban](dbms_guide_maxdb.md)
 ### Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
-### [Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés](sap-hana-availability-overview.md)
-### [Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-one-region.md)
-### [Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-across-regions.md)
+#### [Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés](sap-hana-availability-overview.md)
+#### [Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-one-region.md)
+#### [Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-across-regions.md)
 ## [SAP Business One az Azure Virtual Machinesban](business-one-azure.md)
 ## [SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója](cal-ides-erp6-erp7-sp3-sql.md)
 ## [Az Azure SAP LaMa összekötője](lama-installation.md)
