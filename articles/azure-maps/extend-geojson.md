@@ -47,7 +47,7 @@ A `Circle` geometriai jelölt használatával a `GeoJSON Feature` objektum __kel
    >A kör `radius` használatával jelölt `GeoJSON Feature`a tulajdonságai. A radius-érték _mérőszámok_ típusúnak kell lennie, és `double`.
 
 3. Altípus
-   >A kör geometriai is tartalmaznia kell a `subType` tulajdonság. Ez a tulajdonság egy részének kell lennie a `GeoJSON Feature`a tulajdonságok és a hozzá tartozó értéket kell _Circle_
+   >A körgeometriának a subType tulajdonságot is tartalmaznia kell. Ennek a tulajdonságnak szerepelnie kell a GeoJSON-alakzat tulajdonságai között, és _Circle_ értékűnek kell lennie.
 
 
 #### <a name="example"></a>Példa
