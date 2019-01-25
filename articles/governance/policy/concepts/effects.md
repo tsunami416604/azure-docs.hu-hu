@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0fcb30132a83502b8ca5f58364d78129109b8a9d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c84af250a9e8dbff578f58abc7e3558d95ecbe93
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310844"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904539"
 ---
 # <a name="understand-policy-effects"></a>A szabályzat hatásainak megismerése
 
@@ -257,6 +257,11 @@ A **részletek** a DeployIfNotExists hatást tulajdonsága egyezik a kapcsolód�
   - Például segítségével ellenőrizze, hogy a szülő erőforrás (az a **Ha** feltétel) van ugyanazon a helyen erőforrás egyező kapcsolódó erőforrásként.
 - **roleDefinitionIds** [kötelező]
   - Ez a tulajdonság karakterláncok, amelyek megfelelnek a szerepköralapú hozzáférés-vezérlési szerepkör azonosítója elérhető-e az előfizetés-tartalmaznia kell. További információkért lásd: [szervizelési – konfigurálja a szabályzat-definíció](../how-to/remediate-resources.md#configure-policy-definition).
+- **DeploymentScope** (nem kötelező)
+  - Engedélyezett értékek a következők _előfizetés_ és _ResourceGroup_.
+  - Beállítja a végrehajtandó telepítési típusát. _Előfizetés_ azt jelzi, hogy egy [előfizetési szinten üzembe helyezési]((../../../azure-resource-manager/deploy-to-subscription)), _ResourceGroup_ azt jelzi, hogy egy egy erőforráscsoportba irányuló üzembe helyezés.
+  - A _hely_ tulajdonságot meg kell adni a _üzembe helyezési_ használata előfizetési szintű telepítések esetén.
+  - Alapértelmezett érték a _ResourceGroup_.
 - **Üzembe helyezés** [kötelező]
   - Ez a tulajdonság a teljes körű sablonalapú telepítés tartalmaznia kell, hogy adná a `Microsoft.Resources/deployments` PUT API. További információkért lásd: a [központi telepítések REST API-val](/rest/api/resources/deployments).
 

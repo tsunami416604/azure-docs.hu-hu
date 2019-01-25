@@ -3,7 +3,7 @@ title: Állítsa be a MySQL Azure-beli Linuxos virtuális gépre |} A Microsoft 
 description: Ismerje meg, a MySQL-verem telepítése Linux rendszerű virtuális gép (Ubuntu vagy Red Hat termékcsalád operációs rendszer) az Azure-ban
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
-ms.author: zarhoads
-ms.openlocfilehash: f7120decd4a5d43f88b55e7d7e20992af34cadc4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469571"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888430"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>A MySQL telepítése Azure-ban
 Ebből a cikkből megismerheti, hogyan telepítése és konfigurálása a MySQL a Linux operációs rendszert futtató Azure virtuális gép lesz.
@@ -42,7 +42,7 @@ Tárház csomag használjuk példaként ebben a cikkben MySQL5.6 telepítéséhe
 ### <a name="how-to-install-mysql56-on-ubuntu"></a>Ubuntu rendszeren MySQL5.6 telepítése
 Linux rendszerű virtuális gépek itt lesz használt az Ubuntut, az Azure-ból.
 
-* 1. lépés: Telepítés MySQL 5.6-os kiszolgáló Váltás `root` felhasználói:
+* 1. lépés: Telepítse a MySQL Server 5.6-os Váltás `root` felhasználói:
   
             #[azureuser@mysqlnode:~]sudo su -
   
@@ -59,7 +59,7 @@ Linux rendszerű virtuális gépek itt lesz használt az Ubuntut, az Azure-ból.
 
     ![image](./media/mysql-install/virtual-machines-linux-install-mysql-p2.png)
 
-* 2. lépés: Bejelentkezés MySQL-kiszolgáló
+* 2. lépés: Login MySQL Server
   
     Ha a MySQL-kiszolgáló telepítése befejeződött, MySQL-szolgáltatás automatikusan elindul. MySQL-kiszolgálóhoz bejelentkezhet `root` felhasználói.
     Használja az alábbi parancsot a bejelentkezési és a bemeneti jelszót.
@@ -71,7 +71,7 @@ Linux rendszerű virtuális gépek itt lesz használt az Ubuntut, az Azure-ból.
   
              #[root@mysqlnode ~]# service mysql status
   
-    (b) a MySQL-szolgáltatás indítása
+    (b) Start MySQL Service
   
              #[root@mysqlnode ~]# service mysql start
   
@@ -86,7 +86,7 @@ Linux rendszerű virtuális gépek itt lesz használt az Ubuntut, az Azure-ból.
 ### <a name="how-to-install-mysql-on-red-hat-os-family-like-centos-oracle-linux"></a>MySQL telepítése Red Hat operációsrendszer-termékcsalád például a CentOS, Oracle Linux rendszeren
 Linux rendszerű virtuális gépek itt lesz használt a CentOS vagy Oracle Linux.
 
-* 1. lépés: A MySQL Yum adattár kapcsoló hozzáadása a `root` felhasználói:
+* 1. lépés: A MySQL Yum tárház kapcsoló hozzáadása a `root` felhasználói:
   
             #[azureuser@mysqlnode:~]sudo su -
   
@@ -94,7 +94,7 @@ Linux rendszerű virtuális gépek itt lesz használt a CentOS vagy Oracle Linux
   
             #[root@mysqlnode ~]# wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
             #[root@mysqlnode ~]# yum localinstall -y mysql-community-release-el6-5.noarch.rpm
-* 2. lépés: Szerkessze a fájlt engedélyezéséhez a MySQL-tárházat a MySQL5.6 csomag letöltésére vonatkozó alábbi.
+* 2. lépés: Szerkessze a fájlban az engedélyezéséhez a MySQL-tárházat a MySQL5.6 csomag letöltésére vonatkozó alábbi.
   
             #[root@mysqlnode ~]# vim /etc/yum.repos.d/mysql-community.repo
   
@@ -112,7 +112,7 @@ Linux rendszerű virtuális gépek itt lesz használt a CentOS vagy Oracle Linux
         gpgcheck=1
   
         gpgkey=file:/etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
-* 3. lépés: Telepítés MySQL MySQL adattárból MySQL telepítése:
+* 3. lépés: A MySQL telepítése MySQL adattárból MySQL telepítése:
   
            #[root@mysqlnode ~]#yum install mysql-community-server
   
@@ -154,7 +154,7 @@ Használjuk Linux rendszerű virtuális gép az OpenSUSE itt.
            #[root@mysqlnode ~]# zypper update
   
            #[root@mysqlnode ~]# zypper install mysql-server mysql-devel mysql
-* 2. lépés: A futó MySQL szolgáltatás kezelése
+* 2. lépés: A futó MySQL szolgáltatás kezelése
   
     (a) a MySQL-kiszolgáló állapotának ellenőrzéséhez:
   

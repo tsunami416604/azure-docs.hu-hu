@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 9ad3ca2233237c9cb4aea0a7bd0c476f48613a9c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2f7d671dd70571ce167d9c5abd632cdebff329da
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438235"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888141"
 ---
 # <a name="azure-activity-log-event-schema"></a>Az Azure tevékenységnapló eseménysémája
-A **Azure-tevékenységnapló** , amely bármely Azure-ban bekövetkezett előfizetés-szintű eseményeit betekintést nyújt a bejelentkezés. Ez a cikk ismerteti a eseménysémája egy adatkategóriát. Az adatok sémája eltér attól függően, ha az adatok a portal, PowerShell, CLI-t, vagy közvetlenül a REST API és a segítségével olvas [streamelési adatok a storage vagy az Event Hubs használatával egy Naplóprofil](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Az alábbi példák a séma szerint a portal, PowerShell, CLI és REST API-n keresztül elérhetővé tett. Ezen tulajdonságok leképezése a [Azure diagnosztikai naplók séma](./tutorial-dashboards.md) van megadva a cikk végén található.
+A **Azure-tevékenységnapló** , amely bármely Azure-ban bekövetkezett előfizetés-szintű eseményeit betekintést nyújt a bejelentkezés. Ez a cikk ismerteti a eseménysémája egy adatkategóriát. Az adatok sémája eltér attól függően, ha az adatok a portal, PowerShell, CLI-t, vagy közvetlenül a REST API és a segítségével olvas [streamelési adatok a storage vagy az Event Hubs használatával egy Naplóprofil](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Az alábbi példák a séma szerint a portal, PowerShell, CLI és REST API-n keresztül elérhetővé tett. Ezen tulajdonságok leképezése a [Azure diagnosztikai naplók séma](./diagnostic-logs-schema.md) van megadva a cikk végén található.
 
 ## <a name="administrative"></a>Adminisztratív
 A kategória tartalmazza az összes rekordot létrehozni, frissítési, törlési és műveleti műveleteket hajtja végre a Resource Manageren keresztül. Milyen típusú itt jelennének meg ebbe a kategóriába tartozó eseményeket például a "virtuális gép létrehozása" és "hálózati biztonsági csoport törlése" minden felhasználó vagy alkalmazás használatával a Resource Manager által végrehajtott műveletek az egyes erőforrástípusok műveletként van modellezve. Ha a művelet típusa, Write, Delete vagy műveletet, a rekordokat a kezdő és a sikeres vagy sikertelen a művelet rögzítve lesznek a felügyeleti kategória. A felügyeleti kategória is módosítania kellene a szerepköralapú hozzáférés-vezérlés az előfizetéshez.
@@ -274,7 +274,7 @@ Ebben a kategóriában a az Azure-erőforrások előfordult resource health esem
 | submissionTimestamp |Időbélyeg, amikor az eseményt vált elérhetővé a lekérdezéséhez. |
 | subscriptionId |Azure Subscription Id. |
 | properties |Állítsa be a `<Key, Value>` párok (azaz egy szótárban), az esemény részleteit leíró.|
-| properties.title | Az erőforrás állapotát leíró felhasználóbarát karakterlánc. |
+| properties.title | Az erőforrás állapotát leíró felhasználóbarát karakterláncot. |
 | Properties.details | Felhasználóbarát karakterlánc, amely a hibára vonatkozó további részleteit ismerteti. |
 | properties.currentHealthStatus | Az aktuális állapotát az erőforrás. A következő értékek egyikét: "Elérhető", "Nem érhető el", "Csökkentett teljesítményű" és "Ismeretlen". |
 | properties.previousHealthStatus | Az erőforrás előző állapot. A következő értékek egyikét: "Elérhető", "Nem érhető el", "Csökkentett teljesítményű" és "Ismeretlen". |
@@ -356,9 +356,9 @@ Ez a kategória összes aktiválás az Azure-riasztások rekordot tartalmaz. Itt
 | leírás |A figyelmeztetési esemény statikus szöveges leírása. |
 | eventDataId |A figyelmeztetési esemény egyedi azonosítója. |
 | szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés" és "Tájékoztató" |
-| resourceGroupName |Az érintett erőforrás metrikariasztás esetén az erőforráscsoport neve. Más riasztástípusok esetén, amely tartalmazza a riasztás magát az erőforráscsoport nevét. |
-| resourceProviderName |Metrikariasztás esetén az érintett erőforrás az erőforrás-szolgáltató neve. Más riasztástípusok esetén ez a riasztás magát az erőforrás-szolgáltató nevét. |
-| resourceId | Metrikariasztás esetén az érintett erőforrás erőforrás-azonosító neve. Más riasztástípusok esetén ez a riasztás erőforrásán erőforrás-Azonosítóját. |
+| resourceGroupName |Az érintett erőforrás metrikariasztás esetén az erőforráscsoport neve. Más riasztástípusok, amely tartalmazza a riasztás magát az erőforráscsoport nevét. |
+| resourceProviderName |Metrikariasztás esetén az érintett erőforrás az erőforrás-szolgáltató neve. Más riasztástípusok célszerű a riasztás magát az erőforrás-szolgáltató nevét. |
+| resourceId | Metrikariasztás esetén az érintett erőforrás erőforrás-azonosító neve. Más riasztástípusok esetén a riasztási erőforrásán erőforrás-Azonosítóját. |
 | operationId |Az események, amelyek megfelelnek egy műveletre alkalmaztam között megosztott GUID. |
 | operationName |A művelet neve. |
 | properties |Állítsa be a `<Key, Value>` párok (azaz egy szótárban), az esemény részleteit leíró. |
@@ -570,7 +570,7 @@ Ez a kategória tartalmazza azt a rekordot, bármely Azure Security Center álta
 | subscriptionId |Az Azure előfizetés-azonosítójára. |
 
 ## <a name="recommendation"></a>Ajánlás
-Ez a kategória tartalmazza a rekord az új javaslatok, amelyek akkor jönnek létre, a szolgáltatások. Egy javaslat lehet például "rendelkezésre állási csoportok használata a hibatűrő képesség javítása érdekében." Javaslattételi esemény létrehozható 4 típusa van: Magas rendelkezésre állás, teljesítmény, biztonság és költségek optimalizálása. 
+Ez a kategória tartalmazza a rekord az új javaslatok, amelyek akkor jönnek létre, a szolgáltatások. Egy javaslat lehet például "rendelkezésre állási csoportok használata a hibatűrő képesség javítása érdekében." Javaslattételi esemény létrehozható négy típusa van: Magas rendelkezésre állás, teljesítmény, biztonság és költségek optimalizálása. 
 
 ### <a name="sample-event"></a>Mintaesemény
 ```json
@@ -757,7 +757,7 @@ Ez a kategória összes érvénybe művelet műveletek által végrehajtott reko
 | resourceType | Az új erőforrások, a kiértékelt típusa. A meglévő erőforrások esetében adja vissza "Microsoft.Resources/checkPolicyCompliance". |
 | resourceId | A kiértékelt erőforrás erőforrás-azonosító. |
 | status | A szabályzat-kiértékelés eredménye állapotát leíró karakterlánc. A legtöbb szabályzat értékelések vissza "Succeeded", de egy megtagadási hatást "Sikertelen" adja vissza. Hibák a auditIfNotExists vagy deployIfNotExists is vissza "Sikertelen". |
-| subStatus | A négyzet nincs bejelölve, a házirend-események. |
+| subStatus | A mező üres a házirend-események. |
 | submissionTimestamp | Időbélyeg, amikor az eseményt vált elérhetővé a lekérdezéséhez. |
 | subscriptionId | Az Azure előfizetés-azonosítójára. |
 | properties.isComplianceCheck | Visszaadja a "False", amikor egy új erőforrás üzembe van helyezve, vagy egy meglévő erőforrás Resource Manager-tulajdonságok frissülnek. Az összes többi [értékelési eseményindítók](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) "True" eredményez. |
@@ -768,7 +768,7 @@ Ez a kategória összes érvénybe művelet műveletek által végrehajtott reko
 
 ## <a name="mapping-to-diagnostic-logs-schema"></a>Diagnosztikai naplók séma leképezése
 
-Az Azure-tevékenységnapló egy tárfiókhoz vagy az Event Hubs-névtér közvetítésekor követi-e az adatokat a [Azure diagnosztikai naplók séma](./tutorial-dashboards.md). A következő tulajdonságokat a fenti séma a diagnosztikai naplók séma hozzárendelése:
+Az Azure-tevékenységnapló egy tárfiókhoz vagy az Event Hubs-névtér közvetítésekor követi-e az adatokat a [Azure diagnosztikai naplók séma](./diagnostic-logs-schema.md). A következő tulajdonságokat a fenti séma a diagnosztikai naplók séma hozzárendelése:
 
 | Diagnosztikai naplók sématulajdonság | Tevékenység Log REST API sématulajdonság | Megjegyzések |
 | --- | --- | --- |

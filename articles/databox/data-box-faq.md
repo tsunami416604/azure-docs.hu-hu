@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/16/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: ad52427263c4bbd2effb373b00ef8ff37b8f5b67
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 0f5d51a0e806f132cea94e00e04255bb325cc560
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449571"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904522"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
@@ -36,7 +36,7 @@ A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosított
 A.  Az Azure Data Box szolgáltatást offline adatbetöltéshez hoztuk létre. A szolgáltatás különböző tárolókapacitású termékek egész tárházát kezeli, amelyek mindegyike adatátvitelhez lett igazítva. 
 
 ### <a name="q-what-is-azure-data-box"></a>K. Mi az az Azure Data Box?
-A. Az Azure Data Box több terabájtnyi adat gyors, költséghatékony és biztonságos adatátvitelét teszi lehetővé az Azure-ba, illetve az Azure-ból. A Data Box eszköz az Azure Portalon keresztül rendelhető meg. A Microsoft kiszállít egy 80 TB felhasználható kapacitású tárolóeszközt egy regionális futárcégen keresztül. 
+A. Az Azure Data Box több terabájtnyi adat gyors, költséghatékony és biztonságos adatátvitelét teszi lehetővé az Azure-ba, illetve az Azure-ból. A Data Box eszköz az Azure Portalon keresztül rendelhető meg. A Microsoft, 80 TB felhasználható kapacitás keresztül egy regionális szolgáltatója tárolóeszköz tartalmaz. 
 
 Miután az eszköz megérkezett, gyorsan beállítható a helyi webes felhasználói felülettel. Másolja át a kiszolgálóin található adatokat az eszközre, és küldje vissza az eszközt az Azure-nak. Az Azure-adatközpontban az adatok automatikusan feltöltődnek az eszközről az Azure-ba. A teljes folyamatot végigkövetheti a Data Box szolgáltatásban, az Azure Portalon.
 
@@ -72,16 +72,16 @@ Ellenőrizze az előfizetését. A Data Box csak a Nagyvállalati Szerződés (E
 Ha egy támogatott típusú előfizetéssel rendelkezik, ellenőrizze a hozzáférési szintjét. Megrendelés létrehozására csak az előfizetések közreműködői vagy tulajdonosai jogosultak.
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-am-not-able-to-create-any-additional-orders-why-would-this-be"></a>K. Rendeltem néhány Data Box-eszközt. Nem tudok további rendeléseket létrehozni. Mi lehet ennek az oka?
-A. Legfeljebb 5 aktív megrendelés engedélyezett előfizetésenként és a kereskedelmi korlátokon belül (ez az ország és a kiválasztott régió kombinációjából áll össze). Ha további eszközökre van szüksége, forduljon a Microsoft támogatási szolgálatához az előfizetésére vonatkozó korlátozás bővítéséhez.
+A. Lehetővé tesszük legfeljebb öt aktív rendelések előfizetésenként és kereskedelmi határon belül (ország és a kiválasztott régióban kombinációjával). Ha további eszközökre van szüksége, forduljon a Microsoft támogatási szolgálatához az előfizetésére vonatkozó korlátozás bővítéséhez.
 
 ### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>K. Amikor megpróbálok létrehozni egy rendelést, arról kapok értesítést, hogy a Data Box szolgáltatás nem érhető el. Ez mit jelent?
 A. Ez azt jelenti, hogy a Data Box szolgáltatás nem érhető el az ország és régió kiválasztott kombinációja esetében. A kombináció módosításával valószínűleg elérhetővé válik a Data Box szolgáltatás. Azon régiók listáját, ahol a szolgáltatás elérhető, a [Data Box regionális elérhetőségét](data-box-overview.md#region-availability) ismertető témakörben találja.
 
 ### <a name="q-i-placed-my-data-box-order-few-days-back-when-will-i-receive-my-data-box"></a>K. Néhány napja adtam fel a Data Box-megrendelésem. Mikor fogom megkapni a Data Boxot?
-A. A megrendelések beérkezésekor ellenőrizzük, hogy van-e a rendelésnek megfelelő elérhető eszköz. Ha van, akkor 10 napon belül kiszállítjuk. Elképzelhető, hogy bizonyos időszakokban a kereslet megnövekszik. Ebben az esetben rendelését sorba állítjuk, a rendelés állapotát pedig az Azure Portalon követheti nyomon. Ha a rendelés 90 napon belül sem teljesül, akkor a rendszer automatikusan visszavonja azt. 
+A. A megrendelések beérkezésekor ellenőrizzük, hogy van-e a rendelésnek megfelelő elérhető eszköz. Ha van, akkor 10 napon belül kiszállítjuk. Elképzelhető, hogy bizonyos időszakokban a kereslet megnövekszik. Ebben az esetben rendelését sorba állítjuk, a rendelés állapotát pedig az Azure Portalon követheti nyomon. Ha a rendelés 90 napon belül sem teljesül, akkor a rendszer automatikusan visszavonja azt.
 
 ### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>K. Feltöltöttem a Data Boxom adatokkal, és rendelnem kell egy másikat. Fel lehet adni gyorsan a megrendelést?
-A. Lehetősége van klónozni az előző megrendelését. A klónozással létrehozhat egy, az előzővel azonos megrendelést, amelynek szerkesztheti a részleteit, anélkül, hogy újra meg kellene adnia a címet vagy az értesítési adatokat. 
+A. Lehetősége van klónozni az előző megrendelését. A klónozással létrehozhat egy, az előzővel azonos megrendelést, amelynek szerkesztheti a részleteit, anélkül, hogy újra meg kellene adnia a címet vagy az értesítési adatokat.
 
 ## <a name="configure-and-connect"></a>Konfigurálás és csatlakoztatás
 
@@ -96,6 +96,9 @@ A.  A rendelést csak annak feladását követően, de még a feldolgozását me
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>K. Csatlakoztathatok egy Data Boxot egyszerre több gazdaszámítógéphez adatátvitel céljából?
 A. Igen. Egy Data Boxhoz egyszerre több gazdaszámítógép is csatlakoztatható, és párhuzamosan több másolási feladat is futtatható. További információért ugorjon [oktatóanyag: Adatok másolása az Azure Data Box](data-box-deploy-copy-data.md).
+
+### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>K. Csatlakozhatok 10 GbE interfészek, mind az adatok átviteléhez a Data Box?
+A. Igen. Mind a 10 GbE adapter csatlakozhat a Data Box másolhat adatokat egy időben. További információk az adatok másolása, [oktatóanyag: Adatok másolása az Azure Data Box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -202,19 +205,19 @@ A. Ha az eszköz nem indul el, nyissa meg az ahhoz az Azure Portalon. Egy levél
 A.  Amint az **Adatmásolás** megrendelési állapota **befejeződöttként** jelenik meg, azonnal hozzáférhet az adataihoz.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>K. A feltöltést követően hol lesznek az adataim az Azure-ban?
-A.  A Data Boxra másolt adatok – attól függően, hogy blokkblob, lapblob vagy Azure-fájl formátumúak – a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
+A.  Attól függően, hogy az adatok blokkblob vagy lapblob vagy az Azure files a Data Box, másolja az adatokat, amikor az adatok töltenek fel az Azure Storage-fiókban a következő útvonalak egyikét.
  - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
  -  `https://<storage_account_name>.file.core.windows.net/<sharename>`
  
  Alternatív megoldásként navigálhat az Azure Storage-fiókjából is az Azure Portalon.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>K. Most vettem észre, hogy nem követtem az Azure elnevezési követelményeit a tárolóim esetében. Így is fel lehet tölteni az adataimat az Azure-ba?
-A.  Ha a tárolók nevei nagybetűket tartalmaznak, akkor azokat automatikusan kisbetűsekké alakítja át a rendszer. Ha a nevek valami más szempontból nem megfelelőek (például speciális karaktereket tartalmaznak, más nyelvűek stb.) akkor a feltöltés meghiúsul. További információk a megosztások, tárolók és fájlok elnevezésének ajánlott eljárásairól: 
+A.  Ha a tároló nevének nagybetű, majd ezeket a neveket automatikusan alakulnak kisbetűs. Ha a nevek valami más szempontból nem megfelelőek (például speciális karaktereket tartalmaznak, más nyelvűek stb.) akkor a feltöltés meghiúsul. További információk a megosztások, tárolók és fájlok elnevezésének ajánlott eljárásairól:
 - [Megosztások elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [Blokkblobok és lapblobok konvenciói](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>K. Hogyan tudom ellenőrizni a Data Boxra feltöltött adataimat?
-A.  Az adatmásolást követően a **szállításra való előkészítés** művelet futtatásakor a rendszer ellenőrzi az adatokat. Az ellenőrzési folyamat során létrehoz egy listát az adatfájlokról és azok ellenőrzőösszegeiről. A fájllistát letöltheti és összevetheti a forrásadatok között található fájlokkal. További információ [a szállításra való előkészítésről](data-box-deploy-copy-data.md#prepare-to-ship).
+A.  Az adatmásolást követően a **szállításra való előkészítés** művelet futtatásakor a rendszer ellenőrzi az adatokat. Az ellenőrzési folyamat során létrehoz egy listát az adatfájlokról és azok ellenőrzőösszegeiről. Töltse le a fájlokat, és ellenőrizze a fájlokat a forrásadatok a listában. További információ [a szállításra való előkészítésről](data-box-deploy-picked-up.md#prepare-to-ship).
 
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-data-box"></a>K. Mi történik az adataimmal, miután visszaküldtem a Data Boxot?
 A.  Ha befejeződött az adatok Azure-ba történő másolása, a rendszer a Data Box-lemezeken található adatokat a NIST SP 800-88 Revision 1 útmutatásainak megfelelően biztonságosan törli. További információ [az adatok a Data Boxról történő törléséről](data-box-deploy-picked-up.md#erasure-of-data-from-data-box).

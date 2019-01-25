@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: a50fca059331b28c46adb65903be4e7ba018a36c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b26a1fa3f61c7836bbe3466e4d95f406d16eb31e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052036"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902516"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Az IoT hubhoz az MQTT protokoll használatával kommunikálnak.
 
@@ -45,7 +45,7 @@ Az alábbi táblázat minden támogatott nyelven Kódminták mutató hivatkozás
 
 | Nyelv | Protokoll paraméter |
 | --- | --- |
-| [NODE.js][lnk-sample-node] |azure-iot-device-mqtt |
+| [Node.js][lnk-sample-node] |azure-iot-device-mqtt |
 | [Java][lnk-sample-java] |IotHubClientProtocol.MQTT |
 | [C][lnk-sample-c] |MQTT_Protocol |
 | [C#][lnk-sample-csharp] |TransportType.Mqtt |
@@ -198,20 +198,18 @@ Első lépésként feliratkozik egy eszköz `$iothub/twin/res/#`, a művelet-vá
 
 Kérelem azonosítója bármilyen érvényes érték, egy üzenet tulajdonság értéke lehet megfelelően [az IoT Hub fejlesztői útmutató üzenetkezelési][lnk-messaging], és az egész számként érvényesítési állapota.
 
-A válasz törzse tartalmazza az ikereszköz tulajdonságok szakaszában. Az alábbi kódrészlet például bemutatja a szervezet korlátozott identitás bejegyzés a "Tulajdonságok" tag számára:
+A válasz törzse tartalmazza az ikereszközök a Tulajdonságok szakaszának, a következő választ példában látható módon:
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "telemetrySendFrequency": "5m",
-            "$version": 12
-        },
-        "reported": {
-            "telemetrySendFrequency": "5m",
-            "batteryLevel": 55,
-            "$version": 123
-        }
+    "desired": {
+        "telemetrySendFrequency": "5m",
+        "$version": 12
+    },
+    "reported": {
+        "telemetrySendFrequency": "5m",
+        "batteryLevel": 55,
+        "$version": 123
     }
 }
 ```
@@ -228,7 +226,7 @@ További információkért lásd: [Device twins fejlesztői útmutató][lnk-devg
 
 ### <a name="update-device-twins-reported-properties"></a>Frissítés eszköz ikereszköz jelentett tulajdonságait
 
-Jelentett tulajdonságok frissítésére, az eszköz kibocsát egy kérelmet az IoT hub egy kiadvány keresztül egy kijelölt MQTT témakör alatt. A kérés feldolgozása után az IoT Hub válaszol egy másik témakörre kiadvány keresztül a frissítési művelet sikeres vagy sikertelen állapotát. Ez a témakör ahhoz, hogy az ikereszköz-frissítési kérés eredményét értesítést küldeni, az eszköz által is fizethet. Az implment a kérelem/válasz való interakció típusa, az mqtt-ről, hogy használhatja a hibabeszúrás fogalmát kérelem azonosítója (`$rid`) kezdetben az eszköz a frissítési kérelem által biztosított. A Kérelemazonosító is megtalálható a válasz az, hogy az az adott korábbi irányuló kérelemre adott válasz korrelációját, ha az eszköz IoT hubról.
+Jelentett tulajdonságok frissítésére, az eszköz kibocsát egy kérelmet az IoT hub egy kiadvány keresztül egy kijelölt MQTT témakör alatt. A kérés feldolgozása után az IoT Hub válaszol egy másik témakörre kiadvány keresztül a frissítési művelet sikeres vagy sikertelen állapotát. Ez a témakör ahhoz, hogy az ikereszköz-frissítési kérés eredményét értesítést küldeni, az eszköz által is fizethet. Az MQTT ilyen kapcsolati kérelem/válasz típusú implementálásához azt használhatja a hibabeszúrás fogalmát kérelem azonosítója (`$rid`) kezdetben az eszköz a frissítési kérelem által biztosított. A Kérelemazonosító is megtalálható a válasz az, hogy az az adott korábbi irányuló kérelemre adott válasz korrelációját, ha az eszköz IoT hubról.
 
 A következő szakasz ismerteti, hogyan egy eszközt az IoT Hub az ikereszköz jelentett tulajdonságainak frissítése. a:
 

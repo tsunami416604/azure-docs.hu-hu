@@ -8,16 +8,16 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/16/2018
+ms.date: 01/23/2019
 ms.author: shvija
-ms.openlocfilehash: 3a1054b0c753b3e5dca4cd66ac42e6bc8bdd16ae
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 073d1b54b1c6da2b1178f482d17b4de7abcc8a51
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960702"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888923"
 ---
-# <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Rövid útmutató: Eseményközpont létrehozása az Azure Portallal
+# <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Gyors útmutató: Létrehoz egy eseményközpontot, az Azure portal használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
 Ebben a rövid útmutatóban az [Azure Portal](https://portal.azure.com) használatával hoz létre eseményközpontot.
@@ -32,63 +32,61 @@ A rövid útmutató elvégzéséhez győződjön meg róla, hogy rendelkezik az 
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az erőforráscsoport Azure-erőforrások logikai gyűjteménye. Minden erőforrás üzembe helyezése és kezelése erőforráscsoportban történik. Erőforráscsoport a következő módon hozhat létre:
+Az erőforráscsoport Azure-erőforrások logikai gyűjteménye. Minden erőforrás üzembe helyezése és kezelése erőforráscsoportban történik. Hozzon létre egy erőforráscsoportot:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben válassza az **Erőforráscsoportok** lehetőséget. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
    ![Erőforráscsoportok – Hozzáadás gomb](./media/event-hubs-quickstart-portal/resource-groups1.png)
 
-2. Írjon be egy egyedi nevet az erőforráscsoport számára. A rendszer azonnal ellenőrzi, hogy a név elérhető-e az aktuálisan kiválasztott Azure-előfizetésben.
-
-3. Az **Előfizetés** területen kattintson annak az Azure-előfizetésnek a nevére, amelyben létre szeretné hozni az erőforráscsoportot.
-
-4. Válasszon egy földrajzi helyet az erőforráscsoportnak.
-
-5. Kattintson a **Create** (Létrehozás) gombra.
+2. A **előfizetés**, válassza ki a nevét, az Azure-előfizetést, amelyben szeretné létrehozni az erőforráscsoportot.
+3. Adjon meg egy egyedi **az erőforráscsoport neve**. A rendszer azonnal ellenőrzi, hogy a név elérhető-e az aktuálisan kiválasztott Azure-előfizetésben.
+4. Válassza ki a **régió** az erőforráscsoportnak.
+5. Válassza ki **felülvizsgálat + létrehozás**.
 
    ![Erőforráscsoport – létrehozás](./media/event-hubs-quickstart-portal/resource-groups2.png)
+6. Az a **felülvizsgálat + létrehozás** lapon jelölje be **létrehozás**. 
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
 Egy Event Hubs-névtér egyedi hatókörkezelési tárolót biztosít, amelyre a teljes tartománynevével lehet hivatkozni, és ebben a tárolóban egy vagy több eseményközpontot is létrehozhat. Ha létre szeretne hozni egy névteret az erőforráscsoportban a portál használatával, végezze el az alábbi műveleteket:
 
 1. Az Azure Portalon kattintson az **Erőforrás létrehozása** gombra a képernyő bal felső részén.
-
-2. Kattintson az **Eszközök internetes hálózata**, majd az **Event Hubs** lehetőségre.
-
-3. A **Névtér létrehozása** területen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
-
-   ![Eseményközpont-névtér létrehozása](./media/event-hubs-create/create-event-hub1.png)
-
-4. Miután ellenőrizte, hogy a névtér neve elérhető-e, válassza ki a tarifacsomagot (Basic vagy Standard). Valamint válassza ki azt az Azure-előfizetést, erőforráscsoportot és helyet, amellyel az erőforrást létre kívánja hozni.
- 
-5. A névtér létrehozásához kattintson a **Létrehozás** parancsra. Lehet, hogy néhány percet várnia kell, amíg a rendszer teljes mértékben kiépíti az erőforrásokat.
-6. Válassza a **Riasztások** elemet, majd válassza ki az eseményközpont-névtér nevével rendelkező **üzemelő példányt**. 
-
-   ![Erőforráscsoport – riasztás létrehozásból](./media/event-hubs-quickstart-portal/create-alert.png)
-6. Válassza ki az üzemelő példányban létrehozott erőforrások listájában az eseményközpont-névteret. 
-
-   ![Névtér kiválasztása az üzemelő példányból](./media/event-hubs-quickstart-portal/deployment-namespace.png)
-7. Az **Event Hubs-névtér** oldalon válassza a **Megosztott elérési szabályzatok** lehetőséget, majd kattintson a **RootManageSharedAccessKey** elemre.
+2. Válassza ki **minden szolgáltatás** a bal oldali menüben, és válassza a **csillag (`*`)** melletti **az Event Hubs** a a **Analytics** kategória. Ellenőrizze, hogy **az Event Hubs** adnak hozzá **Kedvencek** a bal oldali navigációs menüben. 
     
-8. Kattintson a másolás gombra, hogy a **RootManageSharedAccessKey** kapcsolati sztringet a vágólapra másolja. Mentse ezt a kapcsolati sztringet egy átmeneti helyre, például a Jegyzettömbbe, mert később szüksége lesz rá.
+   ![Az Event Hubs keresése](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
+3. Válassza ki **az Event Hubs** alatt **Kedvencek** a bal oldali navigációs menü, és válassza a **Hozzáadás** az eszköztáron.
+
+   ![Gomb hozzáadása](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
+4. Az a **névtér létrehozása** lapon, tegye a következőket:
+    1. Adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
+    2. Shoose a tarifacsomagot (Basic vagy Standard).
+    3. Válassza ki a **előfizetés** , amelyre szeretné létrehozni a névteret.
+    4. Válassza ki a **hely** a névtérhez.
+    5. Kattintson a **Létrehozás** gombra. Lehet, hogy néhány percet várnia kell, amíg a rendszer teljes mértékben kiépíti az erőforrásokat.
+
+       ![Eseményközpont-névtér létrehozása](./media/event-hubs-quickstart-portal/create-event-hub1.png)
+5. Frissítse a **az Event Hubs** oldalon tekintheti meg az eseményközpont-névteret. Az eseményközpont létrehozása a riasztások állapotát ellenőrizheti. 
+
+    ![Eseményközpont-névtér létrehozása](./media/event-hubs-quickstart-portal/event-hubs-refresh.png)
+6. Válassza ki a névteret. Megjelenik a kezdőlapja a **Event Hubs-névtér** a portálon. 
+
+   ![A névtér kezdőlapja](./media/event-hubs-quickstart-portal/namespace-home-page.png)
     
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
 Ha eseményközpontot szeretne létrehozni egy névtérben, végezze el a következő műveleteket:
 
-1. Az Event Hubs-névterek oldalon kattintson az **Event Hubs** elemre.
-   
-    ![Válassza az Event Hubs elemet a bal oldali menüben](./media/event-hubs-quickstart-portal/create-event-hub3.png)
-
+1. Az Event Hubs-Namespace oldalon válassza ki a **az Event Hubs** a bal oldali menüben.
 1. Az ablak tetején kattintson a **+ Eseményközpont** elemre.
    
     ![Eseményközpont hozzáadása – gomb](./media/event-hubs-quickstart-portal/create-event-hub4.png)
 1. Adjon egy nevet az eseményközpontnak, majd kattintson a **Létrehozás** elemre.
    
     ![Eseményközpont létrehozása](./media/event-hubs-quickstart-portal/create-event-hub5.png)
+4. Az eseményközpont létrehozása a riasztások állapotát ellenőrizheti. Az eseményközpont létrehozása után megjelenik a listában, az event hubs az alábbi képen látható módon:
 
+    ![Eseményközpont létrehozása](./media/event-hubs-quickstart-portal/event-hub-created.png)
 
 Gratulálunk! A Portal segítségével létrehozott egy Event Hubs-névteret és egy eseményközpontot a névtéren belül. 
 

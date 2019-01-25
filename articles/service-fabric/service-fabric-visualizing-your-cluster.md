@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2018
+ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 459dd86fd614cb185801b074cea70c36dc7f6ccb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: dc979e4aa9882960b86d902266793910ce6fe8b3
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972332"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902958"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
@@ -49,6 +49,11 @@ Az alábbi hivatkozások segítségével töltheti le a Service Fabric Explorer 
 A Service Fabric Explorer egy Service Fabric-fürt HTTP-felügyeleti végpont is üzemel. SFX elindíthatja egy webböngészőben, keresse meg a HTTP-felügyeleti végpont a fürt minden böngészőből – például https://clusterFQDN:19080.
 
 A fejlesztő munkaállomás telepítő, elindíthatja a Service Fabric Explorer a helyi fürtön lévő lépve https://localhost:19080/Explorer. Tekintse meg ebben a cikkben [a fejlesztési környezet előkészítését](service-fabric-get-started.md).
+
+> [!NOTE]
+> Ha hibaüzenetet kap a webböngészőből önaláírt tanúsítvány védi a fürt "ezen a helyen, nem biztonságos". Egyszerűen végrehajtható a legtöbb modern böngésző keresztül letiltásával a figyelmeztetést. Éles környezetben a fürt védelméhez köznapi név és a egy tanúsítvány kibocsátott tanúsítvány használatával. 
+>
+>
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Kapcsolódás a Service Fabric-fürt
 A Service Fabric-fürthöz csatlakozik, szüksége van a fürt felügyeleti végpontja (FQDN vagy IP) és a HTTP felügyeleti végpont portjára (19080 alapértelmezés szerint). Például: https://mysfcluster.westus.cloudapp.azure.com:19080. A "Connect to localhost" jelölőnégyzetet ezen a munkaállomáson a helyi fürthöz való csatlakozáshoz.
@@ -118,6 +123,18 @@ A Service Fabric Explorer segítségével alkalmazáspéldány számára egy ado
 >
 >
 
+## <a name="event-store"></a>Esemény Store
+Az EventStore a platform által biztosított Service Fabric platform eseményeket a Service Fabric Explorert, és a REST API-n keresztül elérhető funkciója. Láthatja, mi történik a fürtben az egyes entitásokhoz például csomópont, service, alkalmazás és az esemény időpontjában a lekérdezéshez egy pillanatképnézet. Emellett az EventStore található további információ a [az EventStore áttekintése](service-fabric-diagnostics-eventstore.md).   
+
+![EventStore][sfx-eventstore]
+
+>[!NOTE]
+>Kezdődően a Service Fabric verziója 6.4. Az EventStore alapértelmezés szerint nincs engedélyezve, és a resource manager-sablonban engedélyezve kell lennie
+
+>[!NOTE]
+>Kezdődően a Service Fabric verziója 6.4. az EventStore API-k csak Azure-on futó Windows-fürtök csak érhetők el. Ez a funkció a Linux, valamint az önálló fürtök portolása dolgozunk.
+
+
 ## <a name="next-steps"></a>További lépések
 * [A Visual Studióban a Service Fabric-alkalmazások kezelése](service-fabric-manage-application-in-visual-studio.md)
 * [A Service Fabric-alkalmazás központi telepítésének PowerShell-lel](service-fabric-deploy-remove-applications.md)
@@ -129,3 +146,4 @@ A Service Fabric Explorer segítségével alkalmazáspéldány számára egy ado
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
+[sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png

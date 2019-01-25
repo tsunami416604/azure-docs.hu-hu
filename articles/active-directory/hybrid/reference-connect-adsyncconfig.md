@@ -5,15 +5,15 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 01/24/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1d2d921e02b56e951b4239c15471995eaf3cd0d1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 723a02c529718ea17750fa72fe568aec6e963118
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813578"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901292"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  ADSyncConfig PowerShell-referencia
 A következő dokumentáció arról nyújt a ADSyncConfig.psm1 PowerShell-modult, amely tartalmazza az Azure AD Connecttel kapcsolatos referenciainformációk.
@@ -1215,7 +1215,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
 ### <a name="description"></a>LEÍRÁS
 A Set-ADSyncUnifiedGroupWritebackPermissions funkciót biztosít az AD szinkronizálási szolgáltatásfiók szükséges többek között a következő engedélyekkel:
 1.
-Általános olvasási/írási, törlési, fa törlése és Create\Delete gyermek minden objektumtípus és alobjektumaihoz
+Általános olvasási/írási, törlési, fa törlése és Create\Delete gyermek az összes csoport típusú objektumokat és alobjektumaihoz
 
 Ezeket az engedélyeket az erdőben lévő összes tartományban érvényesek.
 Opcionálisan megadhat egy DistinguishedName ADobjectDN paraméterben ezek az engedélyek beállítása az AD-objektum csak (beleértve az öröklési sub objektumok).

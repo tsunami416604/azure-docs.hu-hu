@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: f37873fdbc26e1c82b6c1d9e6be8132641d94773
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4705bb8c93381a2487ba94f9dfe3a7e8820f2fd9
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809173"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902465"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Oktatóanyag: Az Azure Active Directory-integráció, a G Suite-tal
 
@@ -75,11 +75,11 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 
     V: A telepítő az e-mailek attribútum szükség a felhasználók tudják jelentkezik be. Ez az attribútum nem állítható be kézzel.
 
-    Az e-mailek attribútum töltve egy érvényes Exchange-licenccel rendelkező bármelyik felhasználó számára. Levelezési a felhasználó nem áll, ha ez a hiba fog kapni, mint az alkalmazás meg kell kapnia a hozzáférést, hogy ez az attribútum.
+    Az e-mailek attribútum töltve egy érvényes Exchange-licenccel rendelkező bármelyik felhasználó számára. Ha a felhasználó nem áll, levelezési címmel rendelkező, ez a hiba fogadja, az alkalmazás meg kell kapnia a hozzáférést, hogy ez az attribútum.
 
-    Nyissa meg egy rendszergazdai fiókkal portal.office.com, majd kattintson a felügyeleti központban, számlázási, előfizetési lehetőségekről, válassza ki az Office 365-előfizetéssel, és kattintson a hozzárendelheti a felhasználók számára, jelölje be az előfizetésüket, ellenőrizze, és a jobb oldali ablaktáblában kattintson a kívánt felhasználókat Szerkesztés a licenc.
+    Annak érdekében, hogy az Exchange-licencek hozzárendelése, nyissa meg egy rendszergazdai fiókkal portal.office.com, majd kattintson a felügyeleti központban, számlázási, előfizetési, válassza ki az Office 365-előfizetéssel, és kattintson a hozzárendelése a felhasználókhoz, válassza ki az ellenőrizni kívánt felhasználók azok előfizetés és a jobb oldali ablaktáblában kattintson a Szerkesztés a licenc.
 
-    Miután az Office 365-licenc van hozzárendelve, a alkalmazni kell néhány percet igénybe vehet. Ezt követően a user.mail attribútum lesz töltve, és fel kell oldani a problémát.
+    Miután az Exchange-licenc van hozzárendelve, a alkalmazni kell néhány percet igénybe vehet. Ezt követően a user.mail attribútum lesz töltve, és fel kell oldani a problémát.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 

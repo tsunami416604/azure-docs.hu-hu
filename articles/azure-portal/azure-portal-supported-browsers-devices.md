@@ -13,14 +13,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2018
-ms.author: cwatson
+ms.author: kfollis
 ms.custom: accessibility
-ms.openlocfilehash: c1816c59cc3dd4fff4a97a8d0c90cfee3a471d6e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c9425875685236db99d78506e23f879d39d94ce5
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47390051"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888753"
 ---
 # <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Támogatott böngészők és eszközök számára az Azure Portalon
 Futtathatja a [az Azure portal](https://portal.azure.com) minden modern asztali számítógépükön, tábla-eszközök és böngészők.
@@ -31,7 +31,7 @@ Az Azure Portalon kiválóan működjön az modern számítógépek, Mac számí
 ### <a name="supported-browsers"></a>Támogatott böngészők
 Azt javasoljuk, hogy a legfrissebb böngészőben, amely kompatibilis az operációs rendszert használ. A következő böngészők támogatottak:
 
-* A Microsoft Edge (legújabb verzió)
+* Microsoft Edge (legújabb verzió)
 * Internet Explorer 11
 * Safari (csak Mac, legújabb verzió)
 * Chrome (legújabb verzió)

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d355e14d15dc6a393a6fabb90418cb3949fe0cf5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 76db86f8ddaee43654689e78437d3cdbd1c211f6
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601967"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883024"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>A LUIS-alkalmazás tesztelése a LUIS-portálon
 <a name="train-your-app"></a>
@@ -26,6 +26,7 @@ ms.locfileid: "53601967"
 <a name="test-your-app"></a>
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
+
 ## <a name="test-an-utterance"></a>Tesztelje az utterance (kifejezés)
 
 1. Az alkalmazás eléréséhez annak nevét választva a **saját alkalmazások** lapot. 
@@ -40,13 +41,8 @@ ms.locfileid: "53601967"
 
     ![Interaktív vizsgálati azonosítja a nem megfelelő leképezés](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="clear-test-panel"></a>Egyértelmű teszt panel
-Törölje a megadott teszt kimondott szöveg és a test-konzolról eredményeit, válassza ki a **újrakezdés** bal felső sarkában a **teszt panel**. 
-
-## <a name="close-test-panel"></a>Zárja be a teszt panel
-Gombra kattintva zárja be a **teszt** panelen kattintson a **teszt** újra gombra.
-
 ## <a name="inspect-score"></a>Vizsgálja meg a pontszám
+
 A teszteredmények részletek nézze meg a **vizsgálat** panel. 
  
 1. Az a **teszt** dia kibővített panel meg van nyitva, válassza ki **vizsgálat** az utterance (kifejezés) kívánja. 
@@ -72,9 +68,11 @@ Ha **hangulatelemzés** konfigurálva van a **[közzététel](luis-how-to-publis
 ![Hangulatelemzés a teszt panel képe](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>Javítsa ki az egyeztetett minta célja
+
 Ha használ [minták](luis-concept-patterns.md) és az utterance (kifejezés) egyező mintát, de a nem megfelelő leképezés volt előre jelzett, jelölje be a **szerkesztése** a minta szerint, majd válassza ki a megfelelő leképezést.
 
 ## <a name="compare-with-published-version"></a>Hasonlítsa össze a közzétett verzióra
+
 Tesztelheti az alkalmazást a közzétett aktív verziója [végpont](luis-glossary.md#endpoint) verzió. Az a **vizsgálat** panelen kattintson **hasonlítsa össze a közzétett**. Bármely a közzétett modell tesztelése az Azure-előfizetés kvótája egyenleg vonni. 
 
 ![Hasonlítsa össze a közzétett](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
@@ -88,12 +86,14 @@ A végpont JSON adja vissza az összehasonlításhoz kiválasztásával megtekin
 ## <a name="additional-settings-in-test-panel"></a>Teszt panel további beállítások
 
 ### <a name="luis-endpoint"></a>A LUIS-végpont
+
 Ha több LUIS-végpontokat, használja a **további beállításokat** a teszt hivatkozása közzétételének panelen módosíthatja a teszteléshez használt végpont. Ha nem biztos abban, hogy melyik végponthoz használatára, válassza ki az alapértelmezett **Starter_Key**. 
 
 ![Teszt panel a további beállításokat hivatkozás kiemelésével](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
 
 
 ### <a name="view-bing-spell-check-corrections-in-test-panel"></a>A Bing Spell Check javításokat megtekintése a teszt panel
+
 Megtekintheti a helyesírási javításokkal vonatkozó követelmények: 
 
 * Közzétett alkalmazás
@@ -124,6 +124,7 @@ Tartalmazza az alábbi eljárással a [Bing helyesírás-ellenőrzés 7-es](http
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="batch-testing"></a>Kötegelt tesztelés
 Tekintse meg a batch-tesztelés [fogalmak](luis-concept-batch-test.md) , és ismerje meg [hogyan](luis-how-to-batch-test.md) utterances kötegelt teszteléséhez.
 

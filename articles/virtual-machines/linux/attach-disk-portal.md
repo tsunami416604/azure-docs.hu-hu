@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.component: disks
-ms.openlocfilehash: 668f14d491fe3e47a445e6d80efda69c017024e2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f6d875ee9bbc9d7a61ebca9dfa0726f50e2044d7
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470919"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904046"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Adatlemez csatlakoztatása Linux rendszerű virtuális gép a portál használatával 
 Ez a cikk bemutatja, hogyan új és meglévő lemez csatlakoztatása Linux rendszerű virtuális gép az Azure Portalon keresztül. Emellett [adatlemez csatolása az Azure Portalon Windows virtuális gép](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -99,7 +99,7 @@ A kimenet a következő példához hasonló:
 
 Itt *sdc* a lemezt, amelyet meg szeretnénk. 
 
-### <a name="partion-a-new-disk"></a>Új lemez partion
+### <a name="partition-a-new-disk"></a>Új lemez particionálása
 Ha egy meglévő adatokat tartalmazó lemezt használ, akkor ugorjon csatlakoztatni a lemezt. Ha egy új lemezt való csatlakoztatás, akkor particionálja a lemezt.
 
 Használat `fdisk` particionálja a lemezt, hogy legyen egy elsődleges lemez a partíció 1, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatát */dev/sdc*:

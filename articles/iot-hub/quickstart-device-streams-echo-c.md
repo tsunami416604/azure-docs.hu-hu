@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 149d3e3515c8bbc10798ad26e58dcefbe830f9bc
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 24b00a589454bfa8413cd98407c2022671cb92ce
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830221"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887954"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: Egy eszköz alkalmazás a C IoT Hub eszköz adatfolyamok (előzetes verzió) használatával való kommunikáció során
 
@@ -82,7 +82,7 @@ A rövid útmutató céljaira a [C nyelvhez készült Azure IoT eszközoldali SD
 
 ```
     # In Linux
-    cmake -Denable_streaming=ON ..
+    cmake ..
     make -j
 ```
 
@@ -91,10 +91,10 @@ A Windows a következő parancsokat a Developer-parancssorból a Visual Studio 2
 ```
     # In Windows
     # For VS2015
-    cmake -Denable_streaming=ON .. -G "Visual Studio 15 2015"
+    cmake .. -G "Visual Studio 15 2015"
     
     # Or for VS2017
-    cmake -Denable_streaming=ON .. -G "Visual Studio 15 2017
+    cmake .. -G "Visual Studio 15 2017
 
     # Then build the project
     cmake --build . -- /m /p:Configuration=Release
@@ -177,7 +177,7 @@ Az eszközoldali alkalmazás futtatásához, meg kell hajtsa végre az alábbi l
 
 ### <a name="run-the-service-side-application"></a>A Szolgáltatásoldali alkalmazás futtatása
 
-Ahogy korábban említettük, IoT Hub C SDK-t csak támogatja az eszköz Streamek eszköz oldalán. A Szolgáltatásoldali alkalmazás használja a accompaying szolgáltatás-programokat elérhető [ C# rövid](./quickstart-device-streams-echo-csharp.md) vagy [Node.js rövid](./quickstart-device-streams-echo-nodejs.md) útmutatók.
+Ahogy korábban említettük, IoT Hub C SDK-t csak támogatja az eszköz Streamek eszköz oldalán. A Szolgáltatásoldali alkalmazás használja a kísérő szolgáltatás elérhető programok [ C# rövid](./quickstart-device-streams-echo-csharp.md) vagy [Node.js rövid](./quickstart-device-streams-echo-nodejs.md) útmutatók.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: 2f7f317f11bba96e17791ed751c60099457a299a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.date: 01/24/2019
+ms.openlocfilehash: 4ba34c35d2dd2d986b4a8c78f42fd4e97158391b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002586"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885067"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Az Azure SQL Database és az SQL Server összehasonlítása
 
@@ -34,8 +34,8 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 
 | **Az SQL szolgáltatás** | **Támogatott az Azure SQL Database logikai kiszolgáló** | **Támogatott az Azure SQL Database/Managed Instance** |
 | --- | --- | --- |
-| [Aktív georeplikáció](sql-database-active-geo-replication.md) | Igen – általános célú és a kritikus fontosságú üzleti szolgáltatásszintek csak| Nem |
-| [Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) | Igen – általános célú és a kritikus fontosságú üzleti szolgáltatásszintek csak| Igen (előzetes verzió)|
+| [Aktív georeplikáció](sql-database-active-geo-replication.md) | Igen – általános célú és a kritikus fontosságú üzleti szolgáltatásszintek csak| Nem, lásd: [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) |
+| [Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) | Igen – általános célú és a kritikus fontosságú üzleti szolgáltatásszintek csak| [Igen – előzetes verzió](sql-database-auto-failover-group.md)|
 | [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Igen – lásd: [tanúsítványtár](sql-database-always-encrypted.md) és [Key vault](sql-database-always-encrypted-azure-key-vault.md) | Igen – lásd: [tanúsítványtár](sql-database-always-encrypted.md) és [Key vault](sql-database-always-encrypted-azure-key-vault.md) |
 | [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) | [Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) |
 | [Adatbázis csatolása](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nem | Nem |
@@ -98,7 +98,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [Minimális naplózás tömeges importálás során](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Nem | Nem |
 | [Rendszeradatok módosítása](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | Nem | Igen |
 | [Online Indexműveletek](https://docs.microsoft.com/sql/relational-databases/indexes/perform-index-operations-online) | Igen | Igen |
-| [INDEX](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql)|Nem|Igen – lásd: [a T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md)|
+| [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql)|Nem|Igen – lásd: [a T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md)|
 | [OPENJSON](https://docs.microsoft.com/sql/t-sql/functions/openjson-transact-sql)|Igen|Igen|
 | [OPENQUERY](https://docs.microsoft.com/sql/t-sql/functions/openquery-transact-sql)|Nem|Igen – lásd: [a T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md)|
 | [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)|Nem|Igen – lásd: [a T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md)|
@@ -125,13 +125,13 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Igen | Nem |
 | [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Nem – lásd: [rugalmas feladatok](sql-database-elastic-jobs-getting-started.md) | Igen – lásd: [különbségek az SQL Server Agent](sql-database-managed-instance-transact-sql-information.md#sql-server-agent) |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nem – lásd: [az Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | Nem – lásd: [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
-| [SQL Server-naplózás](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Nem – lásd: [SQL Database naplózási szolgáltatásával](sql-database-auditing.md) | Igen – lásd: [különbségek naplózása](sql-database-managed-instance-transact-sql-information.md#auditing) |
+| [SQL Server Auditing](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Nem – lásd: [SQL Database naplózási szolgáltatásával](sql-database-auditing.md) | Igen – lásd: [különbségek naplózása](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Igen | Igen |
-| [Az SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Igen, az Azure Data Factory (ADF) környezetben, ahol csomagok találhatók az SSISDB üzemelteti az Azure SQL Database és az Azure SSIS integrációs modul (IR) végrehajtott, egy felügyelt SSIS lásd [Azure-SSIS integrációs modul létrehozása az ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Hasonlítsa össze az SSIS-funkciók az SQL Database logikai kiszolgáló és a felügyelt példány, lásd: [hasonlítsa össze az SQL Database logikai kiszolgáló és a felügyelt példány](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). | Igen, az Azure Data Factory (ADF) környezetben, ahol csomagok találhatók az SSISDB felügyelt példány által üzemeltetett és az Azure SSIS integrációs modul (IR) végrehajtott, egy felügyelt SSIS lásd [Azure-SSIS integrációs modul létrehozása az ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Hasonlítsa össze az SSIS-funkciók az SQL Database felügyelt példány, lásd: [hasonlítsa össze az SQL Database logikai kiszolgáló és a felügyelt példány](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Igen, az Azure Data Factory (ADF) környezetben, ahol csomagok találhatók az SSISDB üzemelteti az Azure SQL Database és az Azure SSIS integrációs modul (IR) végrehajtott, egy felügyelt SSIS lásd [Azure-SSIS integrációs modul létrehozása az ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Hasonlítsa össze az SSIS-funkciók az SQL Database logikai kiszolgáló és a felügyelt példány, lásd: [hasonlítsa össze az SQL Database logikai kiszolgáló és a felügyelt példány](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). | Igen, az Azure Data Factory (ADF) környezetben, ahol csomagok találhatók az SSISDB felügyelt példány által üzemeltetett és az Azure SSIS integrációs modul (IR) végrehajtott, egy felügyelt SSIS lásd [Azure-SSIS integrációs modul létrehozása az ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Hasonlítsa össze az SSIS-funkciók az SQL Database felügyelt példány, lásd: [hasonlítsa össze az SQL Database logikai kiszolgáló és a felügyelt példány](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Igen | Igen |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Igen | Igen |
-| [Az SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nem – lásd: [bővített események](sql-database-xevent-db-diff-from-svr.md) | Igen |
-| [SQL Server-replikáció](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate.md) | Igen (nyilvános előzetes verzió) – [replikáció az SQL Database felügyelt példánya](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
+| [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nem – lásd: [bővített események](sql-database-xevent-db-diff-from-svr.md) | Igen |
+| [SQL Server Replication](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate.md) | Igen (nyilvános előzetes verzió) – [replikáció az SQL Database felügyelt példánya](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nem - [tekintse meg a Power BI](https://docs.microsoft.com/power-bi/) | Nem - [tekintse meg a Power BI](https://docs.microsoft.com/power-bi/) |
 | [Tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | Igen | Igen |
 | [A rendszer tárolt függvényei](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |

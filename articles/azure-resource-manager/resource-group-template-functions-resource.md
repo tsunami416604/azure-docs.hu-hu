@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2018
+ms.date: 01/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 32a0263c4c8c1e85145f5d11fd44823216efdcbc
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f5824dd575514329f2363535d35f5197f81ec2a0
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107055"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901054"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
 
 Resource Manager az alábbi funkciókat biztosít erőforrás-értékeinek beolvasása:
 
-* [listAccountSas](#list)
-* [listkeys műveletének](#listkeys)
-* [listSecrets](#list)
 * [lista *](#list)
 * [Szolgáltatók](#providers)
 * [reference](#reference)
@@ -40,16 +37,11 @@ Paraméterek, változókat, vagy a jelenlegi üzemelő példány lekérjük az �
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="listaccountsas-listkeys-listsecrets-and-list"></a>listAccountSas, listkeys műveletének, listSecrets és lista *
-`listAccountSas(resourceName or resourceIdentifier, apiVersion, functionValues)`
+## <a name="list"></a>list*
 
-`listKeys(resourceName or resourceIdentifier, apiVersion)`
+`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-`listSecrets(resourceName or resourceIdentifier, apiVersion)`
-
-`list{Value}(resourceName or resourceIdentifier, apiVersion)`
-
-Minden erőforrás típusa, amely támogatja a list művelet értékeit adja vissza. A leggyakoribb használatokban vannak `listKeys` és `listSecrets`. 
+Ez a függvény szintaxisát a listázási műveletek neve eltérő. Minden egyes végrehajtása az erőforrás típusa, amely támogatja a list művelet értékeit adja vissza. A művelet nevét kell kezdődnie `list`. Néhány gyakori használatra vannak `listKeys` és `listSecrets`. 
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -59,9 +51,139 @@ Minden erőforrás típusa, amely támogatja a list művelet értékeit adja vis
 | apiVersion |Igen |sztring |API-verzió erőforrás futásidejű állapot. Általában a következő formátumban **éééé-hh-nn**. |
 | functionValues |Nem |objektum | A függvény értékekkel rendelkező objektum. Csak adja meg ezt az objektumot az funkciók, amelyek támogatják a paraméterértékeket, rendelkező objektum például fogadása **listAccountSas** a storage-fiók. | 
 
+### <a name="implementations"></a>Megvalósítások
+
+A lehetséges felhasználási lista *, az alábbi táblázatban láthatók.
+
+| Erőforrás típusa | Függvény neve |
+| ------------- | ------------- |
+| Microsoft.Addons/supportProviders | listsupportplaninfo |
+| Microsoft.AnalysisServices/servers | listGatewayStatus |
+| Microsoft.Automation/automationAccounts | listkeys műveletének |
+| Microsoft.AzureStack/registrations/products | listDetails |
+| Microsoft.Batch/batchAccounts | listkeys műveletének |
+| Microsoft.BatchAI/workspaces/experiments/jobs | listoutputfiles |
+| Microsoft.BingMaps/mapApis | listSecrets |
+| Microsoft.BingMaps/mapApis | listSingleSignOnToken |
+| Microsoft.Cache/redis | listkeys műveletének |
+| Microsoft.Cache/redis | listUpgradeNotifications |
+| Microsoft.CognitiveServices/accounts | listkeys műveletének |
+| Microsoft.ContainerRegistry/registries/buildTasks | listSourceRepositoryProperties |
+| Microsoft.ContainerRegistry/registries/buildTasks/steps | listBuildArguments |
+| Microsoft.ContainerRegistry/registries | listBuildSourceUploadUrl |
+| Microsoft.ContainerRegistry/registries | listCredentials |
+| Microsoft.ContainerRegistry/registries | ListPolicies végrehajtása |
+| Microsoft.ContainerRegistry/registries | listUsages |
+| Microsoft.ContainerRegistry/registries/runs | listLogSasUrl |
+| Microsoft.ContainerRegistry/registries/tasks | listDetails |
+| Microsoft.ContainerRegistry/registries/webhooks | listEvents |
+| Microsoft.ContainerService/managedClusters/accessProfiles | listCredential |
+| Microsoft.ContainerService/managedClusters | listClusterAdminCredential |
+| Microsoft.ContainerService/managedClusters | listClusterUserCredential |
+| Microsoft.ContentModerator/applications | listSecrets |
+| Microsoft.ContentModerator/applications | listSingleSignOnToken |
+| Microsoft.ContentModerator | listCommunicationPreference |
+| Microsoft.DataBox/jobs | listCredentials |
+| Microsoft.DataFactory/datafactories/gateways | listauthkeys |
+| Microsoft.DataFactory/factories/integrationruntimes | listauthkeys |
+| Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | listSasTokens |
+| Microsoft.Devices/elasticPools/iotHubTenants/iotHubKeys | listkeys műveletének |
+| Microsoft.Devices/elasticPools/iotHubTenants | listkeys műveletének |
+| Microsoft.Devices/iotHubs/iotHubKeys | listkeys műveletének |
+| Microsoft.Devices/iotHubs | listkeys műveletének |
+| Microsoft.Devices/provisioningServices/keys | listkeys műveletének |
+| Microsoft.Devices/provisioningServices | listkeys műveletének |
+| Microsoft.DevSpaces/controllers | listConnectionDetails |
+| Microsoft.DevTestLab/labs | ListVhds |
+| Microsoft.DevTestLab/labs/schedules | ListApplicable |
+| Microsoft.DevTestLab/labs/users/serviceFabrics | ListApplicableSchedules |
+| Microsoft.DevTestLab/labs/virtualMachines | ListApplicableSchedules |
+| Microsoft.DocumentDB/databaseAccounts | listConnectionStrings |
+| Microsoft.DocumentDB/databaseAccounts | listkeys műveletének |
+| Microsoft.DomainRegistration | listDomainRecommendations |
+| Microsoft.DomainRegistration/topLevelDomains | listAgreements |
+| Microsoft.EventGrid/topics | listkeys műveletének |
+| Microsoft.EventHub/namespaces/authorizationRules | listkeys műveletének |
+| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys műveletének |
+| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | listkeys műveletének |
+| Microsoft.ImportExport/jobs | listBitLockerKeys |
+| Microsoft.Insights | ListMigrationDate |
+| Microsoft.LabServices/users | ListEnvironments |
+| Microsoft.LabServices/users | ListLabs |
+| Microsoft.LocationBasedServices/accounts | listkeys műveletének |
+| Microsoft.LocationServices/accounts | listkeys műveletének |
+| Microsoft.Logic/integrationAccounts/agreements | listContentCallbackUrl |
+| Microsoft.Logic/integrationAccounts/assemblies | listContentCallbackUrl |
+| Microsoft.Logic/integrationAccounts | listCallbackUrl |
+| Microsoft.Logic/integrationAccounts | listKeyVaultKeys |
+| Microsoft.Logic/integrationAccounts/maps | listContentCallbackUrl |
+| Microsoft.Logic/integrationAccounts/partners | listContentCallbackUrl |
+| Microsoft.Logic/integrationAccounts/schemas | listContentCallbackUrl |
+| Microsoft.Logic/workflows/accessKeys | lista |
+| Microsoft.Logic/workflows | listCallbackUrl |
+| Microsoft.Logic/workflows | listSwagger |
+| Microsoft.Logic/workflows/runs/actions | listExpressionTraces |
+| Microsoft.Logic/workflows/runs/actions/repetitions | listExpressionTraces |
+| Microsoft.Logic/workflows/triggers | listCallbackUrl |
+| Microsoft.Logic/workflows/versions/triggers | listCallbackUrl |
+| Microsoft.MachineLearning/webServices | listkeys műveletének |
+| Microsoft.MachineLearning/Workspaces | listworkspacekeys |
+| Microsoft.MachineLearningCompute/operationalizationClusters | listkeys műveletének |
+| Microsoft.MachineLearningServices/workspaces/computes | listkeys műveletének |
+| Microsoft.MachineLearningServices/workspaces | listkeys műveletének |
+| Microsoft.Maps/accounts | listkeys műveletének |
+| Microsoft.MarketplaceApps/ClassicDevServices | listSecrets |
+| Microsoft.MarketplaceApps/ClassicDevServices | listSingleSignOnToken |
+| Microsoft.Media/mediaservices/assets | listContainerSas |
+| Microsoft.Media/mediaservices/assets | listStreamingLocators |
+| Microsoft.Media/mediaservices/streamingLocators | listContentKeys |
+| Microsoft.Media/mediaservices/streamingLocators | listPaths |
+| Microsoft.Network/applicationSecurityGroups | listIpConfigurations |
+| microsoft.network/vpngateways | listvpnconnectionshealth |
+| Microsoft.NotificationHubs/Namespaces/authorizationRules | listkeys műveletének |
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | listkeys műveletének |
+| Microsoft.OperationalInsights/workspaces | listkeys műveletének |
+| Microsoft.OperationalInsights/workspaces | listkeys műveletének |
+| Microsoft.PolicyInsights/remediations | listDeployments |
+| Microsoft.Relay/namespaces/authorizationRules | listkeys műveletének |
+| Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys műveletének |
+| Microsoft.Relay/namespaces/HybridConnections/authorizationRules | listkeys műveletének |
+| Microsoft.Relay/namespaces/WcfRelays/authorizationRules | listkeys műveletének |
+| Microsoft.SaaS/saasresources | listaccesstoken |
+| Microsoft.Search/searchServices | listAdminKeys |
+| Microsoft.Search/searchServices | listQueryKeys |
+| Microsoft.ServiceBus/namespaces/authorizationRules | listkeys műveletének |
+| Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys műveletének |
+| Microsoft.ServiceBus/namespaces/queues/authorizationRules | listkeys műveletének |
+| Microsoft.ServiceBus/namespaces/topics/authorizationRules | listkeys műveletének |
+| Microsoft.SignalRService/SignalR | listFeatures |
+| Microsoft.SignalRService/SignalR | listkeys műveletének |
+| Microsoft.Storage/storageAccounts | listAccountSas |
+| Microsoft.Storage/storageAccounts | listkeys műveletének |
+| Microsoft.Storage/storageAccounts | listServiceSas |
+| Microsoft.StorSimple/managers/devices | listFailoverSets |
+| Microsoft.StorSimple/managers/devices | listFailoverTargets |
+| Microsoft.StorSimple/managers | listActivationKey |
+| Microsoft.StorSimple/managers | listPublicEncryptionKey |
+| microsoft.web/apimanagementaccounts/apis/connections | listconnectionkeys |
+| microsoft.web/apimanagementaccounts/apis/connections | listsecrets |
+| Microsoft.Web/connectionGateways | ListStatus |
+| microsoft.web/connections | listconsentlinks |
+| Microsoft.Web/customApis | listWsdlInterfaces |
+| microsoft.web/locations | listwsdlinterfaces |
+| microsoft.web/sites/backups | lista |
+| Microsoft.Web/sites/config | lista |
+| microsoft.web/sites/functions | listsecrets |
+| microsoft.web/sites/hybridconnectionnamespaces/relays | listkeys műveletének |
+| microsoft.web/sites | listsyncfunctiontriggerstatus |
+| microsoft.web/sites/slots/backups | lista |
+| Microsoft.Web/sites/slots/config | lista |
+| microsoft.web/sites/slots/functions | listsecrets |
+
+
 ### <a name="return-value"></a>Vrácená hodnota
 
-A visszaadott objektum listkeys műveletének formátuma a következő:
+A visszaadott objektum eltérő a lista függvényt használja. A storage-fiókok listkeys műveletének például a következő formátumban adja vissza:
 
 ```json
 {
@@ -84,7 +206,7 @@ Más lista függvények, különböző visszaadott formátumokat. Szeretné megt
 
 ### <a name="remarks"></a>Megjegyzések
 
-Minden művelet, amely kezdődik **lista** a sablonban függvény is használható. Az elérhető műveletek közé tartozik, nem csak listkeys műveletének, de az is, például az operations `list`, `listAdminKeys`, és `listStatus`. A [lista fiók SAS](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) művelethez szükséges a kérelem törzsében paraméterek, például *signedExpiry*. A funkció használatához a sablonban, adja meg a objektum a szervezet a paraméterértékeket.
+A [lista fiók SAS](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) művelethez szükséges a kérelem törzsében paraméterek, például *signedExpiry*. A funkció használatához a sablonban, adja meg a objektum a szervezet a paraméterértékeket.
 
 Annak megállapításához, hogy mely erőforrástípusokat list művelettel rendelkezik, a következő lehetőségek állnak rendelkezésére:
 

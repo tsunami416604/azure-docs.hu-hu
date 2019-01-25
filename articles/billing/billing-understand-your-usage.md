@@ -3,7 +3,7 @@ title: Az Azure részletes használatának megértéséhez |} A Microsoft Docs
 description: Ismerje meg, hogyan olvashatók és érthetők azon részei, az Azure-előfizetéshez kapcsolódó részletes használati CSV
 services: ''
 documentationcenter: ''
-author: tonguyen10
+author: bandersmsft
 manager: alherz
 editor: ''
 tags: billing
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: cwatson
-ms.openlocfilehash: c5b41d86133bbcafcc61423b4d60e59846edc2f2
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 88518bee879d01966813fc89e8095d2237476a15
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580915"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901309"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>A Microsoft Azure a részletes használati költségek feltételeinek értelmezése 
 

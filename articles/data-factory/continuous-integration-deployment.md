@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: douglasl
-ms.openlocfilehash: 80b594eb8d926465f37771e2e6911f9ab3e63f1f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0d7c8640cb2a3f6d4d1a32a555c03dc2eca48b9a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423816"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901224"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
@@ -853,7 +853,7 @@ A Resource Manager-sablon egyéni paraméterek határozhatja meg. Rendelkezik eg
 
 Az alábbiakban néhány irányelv használatához az egyéni paraméterfájl runboookok létrehozásakor. A a szintaxisra vonatkozó példákat lásd a következő szakaszban [egyéni paraméterek mintafájl](#sample).
 
-1. Tömb a szolgáltatásdefiníciós fájlban adja meg, ha azt jelzi, hogy az egyező tulajdonság a sablonban egy tömb. A Data Factory végighalad a tömb fIntegration Runtimest objektumban megadott definíció használatával a tömbben található összes objektumot. A második objektum egy karakterláncot, a tulajdonság, amely minden egyes ismétléskor szolgál a neveként a paraméter neve lesz.
+1. Tömb a szolgáltatásdefiníciós fájlban adja meg, ha azt jelzi, hogy az egyező tulajdonság a sablonban egy tömb. A Data Factory végighalad az Integration Runtime-objektum a tömb a megadott definíció használatával a tömbben található összes objektumot. A második objektum egy karakterláncot, a tulajdonság, amely minden egyes ismétléskor szolgál a neveként a paraméter neve lesz.
 
     ```json
     ...

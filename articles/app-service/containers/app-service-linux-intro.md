@@ -16,16 +16,16 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
-ms.openlocfilehash: 898d663f3ef9a71944d96b0978947d10a3e26b06
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 2e75ff08acdda03c0080f49c6616274a4b031075
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232787"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903723"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>A Linuxon futó Azure App Service bemutatása
 
-A [Web App](../overview.md) egy teljes körűen felügyelt számítógépes platform, amely webhelyek és webalkalmazások üzemeltetéséhez van optimalizálva. A Linuxon futó App Service használatával az ügyfelek natív módon üzemeltethetnek webalkalmazásokat a támogatott alkalmazáscsoportok számára a Linuxon. Az alábbi részek sorolják fel a jelenleg támogatott alkalmazáscsoportokat.
+[Az Azure App Service](../overview.md) egy teljes körűen felügyelt számítógépes platform, amely webhelyek és webalkalmazások üzemeltetéséhez van optimalizálva. A Linuxon futó App Service használatával az ügyfelek natív módon üzemeltethetnek webalkalmazásokat a támogatott alkalmazáscsoportok számára a Linuxon. A [nyelvek](#languages) szakasz sorolja fel a jelenleg támogatott alkalmazáscsoportokat.
 
 ## <a name="languages"></a>Nyelvek
 
@@ -33,14 +33,12 @@ Az Linuxon futó App Service számos beépített rendszerképet támogat a fejle
 
 | Nyelv | Támogatott verziók |
 |---|---|
-| Node.js | 4.4-es, 4.5-ös, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0-s, 8.1, 8,2, 8.8, 8,9, 8.11, 9.4, 10.1,10.10 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1,10.10 |
 | Java* | A tomcat 8.5, 9.0 Java SE, WildFly 14 (összes futó JRE 8) |
 | PHP | 5.6, 7.0, 7.2 |
-| Python (előzetes verzió) | 2.7-es, 3.6, 3.7. |
-| .NET Core | 1.0-s, 1.1, 2.0-s, 2.1-es verziója |
+| Python (előzetes verzió) | 2.7, 3.6, 3.7 |
+| .NET Core | 1.0, 1.1, 2.0, 2.1 |
 | Ruby | 2.3 |
-
-További információt a [Java-webalkalmazás létrehozása a Linuxon futó App Service-ben](https://docs.microsoft.com/azure/app-service/containers/quickstart-java) című cikkben tekinthet meg.
 
 ## <a name="deployments"></a>Központi telepítés
 
@@ -75,7 +73,9 @@ Az Azure Portal megjeleníti a Web App for Containers szolgáltatással jelenleg
 
 A virtuálishálózat-integrációhoz, Azure Active Directory/külső fél közötti hitelesítéshez vagy Kudu webhelybővítményekhez hasonló funkciók még nem elérhetőek. Frissíteni fogjuk a dokumentációt és blogunkat, amikor ezek a funkciók elérhetővé válnak.
 
-A Linuxon futó App Service szolgáltatást csak az [Alapszintű, a Standard és a Prémium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service-csomagok támogatják, és nem rendelkezik [Ingyenes vagy Közös](https://azure.microsoft.com/pricing/details/app-service/plans/) szinttel. Nem hozhat létre Web App for Containers szolgáltatást olyan App Service-csomagban, amely már üzemeltet nem Linuxos webalkalmazásokat. A rendszer emellett jelenleg azt sem engedélyezi, hogy ugyanazon erőforráscsoporton belül Windows- és Linux-alkalmazások is legyenek.
+A Linuxon futó App Service szolgáltatást csak az [Alapszintű, a Standard és a Prémium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service-csomagok támogatják, és nem rendelkezik [Ingyenes vagy Közös](https://azure.microsoft.com/pricing/details/app-service/plans/) szinttel. Nem hozhat létre Web App for Containers szolgáltatást olyan App Service-csomagban, amely már üzemeltet nem Linuxos webalkalmazásokat. 
+
+Ezenkívül alapján a jelenlegi korlátozás miatt, ne keverje ugyanabban az erőforráscsoportban lévő Windows és Linux rendszerű alkalmazásokat.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -84,9 +84,11 @@ Az `stdout` és az `stderr` naplózásához a tárolóból engedélyeznie kell a
 
 ![Naplózás engedélyezése][2]
 
-![A Kudu használata a Docker naplók megtekintésére][1]
+A beállítás azonnal érvénybe lép. App Service-ben a beállítások módosítása észleli, és automatikusan újraindítja a tárolót az Ön számára.
 
 Az SCM-webhelyet a **Fejlesztési eszközök** menüben található **Haladó eszközök** oldalon érheti el.
+
+![A Kudu használata a Docker naplók megtekintésére][1]
 
 ## <a name="next-steps"></a>További lépések
 
@@ -101,7 +103,7 @@ A következő cikkek a Linuxon futó App Service különböző nyelveken írt we
 * [Go](quickstart-docker-go.md)
 * [Többtárolós alkalmazások](quickstart-multi-container.md)
 
-A Linuxon futó App Service további részleteihez lásd a következő cikkeket is:
+A Linuxon futó App Service további információkért lásd:
 
 * [App Service Linuxhoz, GYIK](app-service-linux-faq.md)
 * [SSH-támogatás a Linuxon futó App Service számára](app-service-linux-ssh-support.md)

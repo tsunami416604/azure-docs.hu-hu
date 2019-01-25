@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/10/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a71635abd036bb89546dd3421af97cd9b88f4327
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9d271642a432d8a149fbe468087a0598c91e7c36
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440199"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902379"
 ---
 # <a name="tutorial-use-data-copy-service-to-directly-ingest-data-into-azure-data-box-preview"></a>Oktatóanyag: Adatok másolása szolgáltatás segítségével közvetlenül betölteni az adatokat az Azure Data Box (előzetes verzió)
 
@@ -27,8 +27,9 @@ Adatok másolása használatára:
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
+> * Előfeltételek
 > * Adatok másolása a Data Boxra
-> * Data Box szállításának előkészítése
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,13 +61,13 @@ Adatok másolása szolgáltatás használata az adatok másolásához kell hozzo
     |-------------------------------|---------|
     |Feladat neve                       |Egy egyedi nevet a kevesebb mint 230 karaktereket a feladathoz. Ezeket a karaktereket a feladat neve – nem engedélyezett \<, \>, \|, \?, \*, \\, \:, \/, és \\\.         |
     |Forráshely                |Adja meg az SMB elérési utat az adatforráshoz, a következő formátumban: `\\<ServerIPAddress>\<ShareName>` vagy `\\<ServerName>\<ShareName>`.        |
-    |Felhasználónév                       |A felhasználónév az adatforrás eléréséhez.        |
+    |Felhasználónév                       |A felhasználónév `\\<DomainName><UserName>` formátum az adatforrás eléréséhez.        |
     |Jelszó                       |A jelszó az adatforrás eléréséhez.           |
     |Céloldali tárfiók    |Válassza ki a céloldali tárfiók feltölteni az adatokat, a legördülő listából.         |
     |Cél tárolási típus       |Válassza ki a cél tárolási típust blokkblob, lapblob vagy az Azure Files.        |
     |Céltároló vagy -megosztás    |Adja meg a tároló nevét, vagy ossza feltölteni az adatokat a rendeltetési tárfiókja. A név lehet a megosztási nevet vagy a tároló nevét. Ha például `myshare` vagy `mycontainer`. A következő formátumban is megadhat `sharename\directory_name` vagy `containername\virtual_directory_name` a felhőben.        |
     |A mintával egyező fájlok másolása    | Adja meg a fájl nevét a tartományegyeztetési minta. a következő két módon.<ul><li>**Helyettesítő kifejezések használata** csak `*` és `?` helyettesítő karakteres kifejezés támogatottak. Ha például a kifejezés `*.vhd` megegyezik a .vhd kiterjesztésű fájlokat. Ehhez hasonlóan `*.dl?` megfelel az összes fájl, amelynek futtatására szolgáló bővítmény pedig akár `.dl` vagy `.dll`. Ezenkívül `*foo` egyezését az összes fájl nevében végződhet `foo`.<br>Közvetlenül a mezőben adhat meg helyettesítő karakteres kifejezést. Alapértelmezés szerint a mezőbe beírt értéket számít helyettesítő karakteres kifejezést.</li><li>**Reguláris kifejezések használata** -POSIX-alapú reguláris kifejezések használata támogatott. Ha például egy reguláris kifejezést `.*\.vhd` egyezni fog a fájlokat, amelyek `.vhd` bővítmény. Reguláris kifejezés, adja meg a `<pattern>` közvetlenül `regex(<pattern>)`. <li>További információk a reguláris kifejezések, [reguláris kifejezés language – rövid](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
-    |Fájlok optimalizálása              |Ha engedélyezve van, a fájlokat, a betöltés vannak csomagolt. Ez felgyorsítja a kisméretű fájlok esetében az adatok másolását.        |
+    |Fájlok optimalizálása              |Ha engedélyezve van, a fájlok 1 MB-nál kevesebb van csomagolt, a betöltés. Ez felgyorsítja a kisméretű fájlok esetében az adatok másolását. Jelentős időmegtakarítást láthatók, ha a fájlok száma messze meghaladja a könyvtárak száma.        |
  
 4. Kattintson az **Indítás**gombra. A rendszer érvényesíti a bemeneti adatok, és ha az érvényesítés sikeres, majd elindul egy feladat. Igénybe vehet néhány percet, amíg a feladat elindításához.
 
@@ -106,9 +107,7 @@ Adatok másolása szolgáltatás használata az adatok másolásához kell hozzo
     - Ebben a kiadásban a feladat nem törölhető.
     
     - Korlátlan számú feladatok létrehozására, de legfeljebb 10 feladatok párhuzamosan is futtatni egy adott időpontban.
-    - Ha a fájlok optimalizálása, a kisméretű fájlok vannak csomagolni a betöltési másolási teljesítményének javítása érdekében. Ezekben az esetekben az alábbi képernyőképen látható módon jelenik meg egy csomagolt fájlt (neveként GUID azonosítója).
-
-        ![A példában egy tömörített fájl](media/data-box-deploy-copy-data-via-copy-service/packed-file-on-ingest.png)
+    - Ha a fájlok optimalizálása, a kisméretű fájlok vannak csomagolni a betöltési másolási teljesítményének javítása érdekében. Ezek a példányok megtekintheti egy csomagolt fájlt (neveként GUID azonosítója). Ne törölje ezt a fájlt, ez a fájl bontható feltöltésekor.
 
 6. Amíg a feladat a folyamatban van. a **adatmásolás** oldalon:
 
@@ -139,18 +138,14 @@ A másolási feladat befejeződése után nyissa meg **szállításra való**.
 >[!NOTE]
 > Szállításra való nem futhat, amíg a másolási feladat folyamatban van.
 
-## <a name="prepare-to-ship"></a>A szállítás előkészítése
-
-[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
-
-
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 
 > [!div class="checklist"]
+> * Előfeltételek
 > * Adatok másolása a Data Boxra
-> * Data Box szállításának előkészítése
+
 
 Folytassa a következő oktatóanyaggal, megtudhatja, hogyan tehetnek a Data Box elküldje a Microsoftnak.
 

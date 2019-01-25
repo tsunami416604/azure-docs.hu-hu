@@ -13,26 +13,26 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
-ms.openlocfilehash: 4363d7a319eb31dbf020121bf2fa5c5630296c5a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 66bac977d05276833a357521a3a040c59b2f28fa
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191708"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900289"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>A Log Analytics megoldások monitorozása az Azure-hálózatok
 
 A log Analytics a hálózatok figyelése a következő megoldásokat kínál:
 * A Network Performance Monitor (NPM)
- * A hálózat állapotának figyelése
+    * A hálózat állapotának figyelése
 * Az Azure Application Gateway analytics áttekintése
- * Az Azure Application Gateway-naplók
- * Az Azure Application Gateway-metrikák
+    * Az Azure Application Gateway-naplók
+    * Az Azure Application Gateway-metrikák
 * Megoldások monitorozása és naplózása a felhő-hálózatban hálózati
-* [A TRAFFIC Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
-* Azure Network Security Group Analytics
+    * [A TRAFFIC Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * Azure Network Security Group Analytics
 
-## <a name="network-performance-monitor-npm"></a>A Network Performance Monitor (NPM)
+## <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM)
 
 A [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) felügyeleti megoldás, egy Hálózatfigyelő megoldás, amely figyeli az állapot, a rendelkezésre állás és a hálózatok lemezekről.  Közötti kapcsolat figyelésére szolgál:
 
@@ -219,8 +219,8 @@ A frissített megoldások használata:
 
     | ahelyett, hogy: | Használat: |
     | --- | --- |
-    | NetworkApplicationgateways &#124; ahol OperationName == "ApplicationGatewayAccess" | AzureDiagnostics &#124; ahol ResourceType = "APPLICATIONGATEWAYS" és az OperationName == "ApplicationGatewayAccess" |
-    | NetworkApplicationgateways &#124; ahol OperationName == "ApplicationGatewayPerformance" | AzureDiagnostics &#124; ahol ResourceType == "APPLICATIONGATEWAYS" és az OperationName = ApplicationGatewayPerformance |
+    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; where ResourceType="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayAccess" |
+    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=ApplicationGatewayPerformance |
     | NetworkSecuritygroups | AzureDiagnostics &#124; ahol ResourceType == "NETWORKSECURITYGROUPS" |
 
    + Bármely mező, amely rendelkezik, amik utótagja \_s, \_d, vagy \_a nevét, a g módosítása az első karakter kisbetűsre

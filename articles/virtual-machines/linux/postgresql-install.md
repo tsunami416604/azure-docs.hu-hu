@@ -3,7 +3,7 @@ title: Állítsa be a Linux rendszerű virtuális gép PostgreSQL |} A Microsoft
 description: Ismerje meg, hogyan PostgreSQL telepítése és konfigurálása az Azure-ban Linux rendszerű virtuális gépen
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
-ms.author: zarhoads
-ms.openlocfilehash: e794c191737f14fb06351e345f70edb9f7cddb7c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.author: cynthn
+ms.openlocfilehash: e851f6f5433a832aa30a0d87a917b64d1bc721f2
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322056"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888277"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása Azure-ban
 PostgreSQL az Oracle- és DB2 hasonlít egy speciális nyílt forráskódú adatbázis. Teljes ACID megfelelőségi, megbízható tranzakciós feldolgozást, és többverziós egyidejűségi vezérlésre nagyvállalati szintű funkciókat tartalmaz. Támogatja a szabványok – például az ANSI SQL és az SQL/MED (beleértve a külső adatok burkolókat az Oracle, MySQL, mongodb-hez és sok más) is. Fontos a nagy mértékben bővíthetők, a JSON és a kulcs-érték-alapú alkalmazások több mint 12 eljárási nyelvet, a GIN és GiST indexek, a térbeli adatok támogatása és a több NoSQL-hez hasonló funkciók támogatása.
@@ -29,7 +29,7 @@ Ebből a cikkből megismerheti, hogyan a PostgreSQL telepítése és konfigurál
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="install-postgresql"></a>A PostgreSQL telepítése
+## <a name="install-postgresql"></a>Install PostgreSQL
 > [!NOTE]
 > Ez az oktatóanyag elvégzéséhez a Linux operációs rendszert futtató Azure virtuális gép már rendelkeznie kell. Hozhat létre, és állítsa be a Linux rendszerű virtuális gép a folytatás előtt, tekintse meg a [Azure Linux VM-oktatóanyag](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
@@ -44,7 +44,7 @@ Csatlakozzon a PuTTY használatával létrehozott virtuális gép Linux. Ha els�
         # sudo su -
 2. Néhány disztribúciók függőségeit, amelyek a PostgreSQL telepítése előtt telepítenie kell rendelkeznie. Ellenőrizze a disztribúció ebben a listában, és futtassa a megfelelő parancsot:
    
-   * Red Hat alapszintű Linux:
+   * Red Hat base Linux:
      
            # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
    * Debian alapszintű Linux:
@@ -73,7 +73,7 @@ Csatlakozzon a PuTTY használatával létrehozott virtuális gép Linux. Ha els�
    
         PostgreSQL, contrib, and documentation successfully made. Ready to install.
 
-## <a name="configure-postgresql"></a>PostgreSQL konfigurálása
+## <a name="configure-postgresql"></a>Configure PostgreSQL
 1. (Nem kötelező) Hozzon létre egy szimbolikus hivatkozást, így rövidítve a PostgreSQL hivatkozást tartalmaz a verziószám:
    
         # ln -s /opt/postgresql-9.3.5 /opt/pgsql
@@ -128,7 +128,7 @@ Csatlakozzon a PuTTY használatával létrehozott virtuális gép Linux. Ha els�
 
 ![image](./media/postgresql-install/no1.png)
 
-## <a name="set-up-postgresql"></a>Állítsa be a PostgreSQL
+## <a name="set-up-postgresql"></a>Set up PostgreSQL
 <!--    [postgres@ test ~]$ exit -->
 
 Futtassa az alábbi parancsot:
@@ -149,7 +149,7 @@ Győződjön meg a végrehajtható fájl módosítása:
 
     # chmod +x /etc/init.d/postgresql
 
-Indítsa el a PostgreSQL:
+Start PostgreSQL:
 
     # /etc/init.d/postgresql start
 

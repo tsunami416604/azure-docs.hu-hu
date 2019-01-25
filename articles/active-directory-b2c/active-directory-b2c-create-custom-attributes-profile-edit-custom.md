@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7ebce84e6d8d3e7b1b8d3852951127ce954f9019
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 22abc89660c66e503f0dc0bb6d381d1e5ccd76a3
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854054"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900629"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Egyéni attribútumok használata egyéni profil szabályzat szerkesztése
 
@@ -46,7 +46,6 @@ Bővítménytulajdonságok létezik csak a bérlő regisztrált alkalmazás kör
 >Az Azure AD B2C-címtár közé tartozik jellemzően nevű webalkalmazás `b2c-extensions-app`. Ez az alkalmazás elsősorban az egyéni jogcímek, az Azure Portalon létrehozott beépített B2C-szabályzatok használják. Azt javasoljuk, hogy csak a haladó felhasználók bővítmények a B2C-vel egyéni szabályzatok regisztrálja az alkalmazás használatával.  
 Utasítások szerepelnek a **további lépések** szakasz ebben a cikkben.
 
-
 ## <a name="create-a-new-application-to-store-the-extension-properties"></a>Hozzon létre egy új alkalmazást tárolja a bővítmény tulajdonságai
 
 1. Nyisson meg egy böngészési munkamenetet, és keresse meg a [az Azure portal](https://portal.azure.com). Jelentkezzen be rendszergazdai hitelesítő adataival a B2C-címtárat szeretne konfigurálni.
@@ -66,8 +65,6 @@ Utasítások szerepelnek a **további lépések** szakasz ebben a cikkben.
     * **Alkalmazásazonosító**. Példa: `103ee0e6-f92d-4183-b576-8c3739027780`.
     * **Objektumazonosító:**. Példa: `80d8296a-da0a-49ee-b6ab-fd232aa45201`.
 
-
-
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>Az egyéni házirend hozzáadása módosítása a **ApplicationObjectId**
 
 Ha követte a lépéseket a [Azure Active Directory B2C: Egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md), letöltött és módosított [fájlok minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) nevű **TrustFrameworkBase.xml**, **TrustFrameworkExtensions.xml**, **SignUpOrSignin.xml**, **ProfileEdit.xml**, és **PasswordReset.xml**. Ebben a lépésben hajtsa végre ezeket a fájlokat további módosításokat.
@@ -76,31 +73,31 @@ Ha követte a lépéseket a [Azure Active Directory B2C: Egyéni szabályzatok �
 
     ```xml
     <ClaimsProviders>
-        <ClaimsProvider>
-          <DisplayName>Azure Active Directory</DisplayName>
-            <TechnicalProfile Id="AAD-Common">
+      <ClaimsProvider>
+        <DisplayName>Azure Active Directory</DisplayName>
+        <TechnicalProfile Id="AAD-Common">
           <DisplayName>Azure Active Directory</DisplayName>
           <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-              
+
           <!-- Provide objectId and appId before using extension properties. -->
           <Metadata>
             <Item Key="ApplicationObjectId">insert objectId here</Item>
             <Item Key="ClientId">insert appId here</Item>
           </Metadata>
           <!-- End of changes -->
-              
+
           <CryptographicKeys>
             <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
           </CryptographicKeys>
           <IncludeInSso>false</IncludeInSso>
           <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
         </TechnicalProfile>
-        </ClaimsProvider>
+      </ClaimsProvider>
     </ClaimsProviders>
     ```
 
 > [!NOTE]
-> Ha a **TechnicalProfile** ír először az újonnan létrehozott bővítménytulajdonság egyszeri hibát tapasztalhat. A bővítmény tulajdonságának jön létre az első alkalommal használják.  
+> Ha a **TechnicalProfile** ír először az újonnan létrehozott bővítménytulajdonság egyszeri hibát tapasztalhat. A bővítmény tulajdonságának jön létre az első alkalommal használják.
 
 ## <a name="use-the-new-extension-property-or-custom-attribute-in-a-user-journey"></a>Az új bővítménytulajdonság vagy az egyéni attribútum használata a felhasználói út
 
@@ -130,13 +127,13 @@ Ha követte a lépéseket a [Azure Active Directory B2C: Egyéni szabályzatok �
 
     ```xml
     <BuildingBlocks>
-      <ClaimsSchema> 
-        <ClaimType Id="extension_loyaltyId"> 
-          <DisplayName>Loyalty Identification Tag</DisplayName> 
-          <DataType>string</DataType> 
-          <UserHelpText>Your loyalty number from your membership card</UserHelpText> 
-          <UserInputType>TextBox</UserInputType> 
-        </ClaimType> 
+      <ClaimsSchema>
+        <ClaimType Id="extension_loyaltyId">
+          <DisplayName>Loyalty Identification Tag</DisplayName>
+          <DataType>string</DataType>
+          <UserHelpText>Your loyalty number from your membership card</UserHelpText>
+          <UserInputType>TextBox</UserInputType>
+        </ClaimType>
       </ClaimsSchema>
     </BuildingBlocks>
     ```
@@ -157,7 +154,7 @@ Ha követte a lépéseket a [Azure Active Directory B2C: Egyéni szabályzatok �
         <InputClaim ClaimTypeReferenceId="alternativeSecurityId" />
         <InputClaim ClaimTypeReferenceId="userPrincipalName" />
         <InputClaim ClaimTypeReferenceId="givenName" />
-            <InputClaim ClaimTypeReferenceId="surname" />
+        <InputClaim ClaimTypeReferenceId="surname" />
 
         <!-- Add the loyalty identifier -->
         <InputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
@@ -167,7 +164,7 @@ Ha követte a lépéseket a [Azure Active Directory B2C: Egyéni szabályzatok �
         <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
         <OutputClaim ClaimTypeReferenceId="givenName" />
         <OutputClaim ClaimTypeReferenceId="surname" />
-        
+
         <!-- Add the loyalty identifier -->
         <OutputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
         <!-- End of changes -->
@@ -279,15 +276,15 @@ Az azonosító jogkivonat küldi vissza az alkalmazásnak magában foglalja az �
   ```xml
       <ClaimsProviders>
         <ClaimsProvider>
-              <DisplayName>Azure Active Directory</DisplayName>
-            <TechnicalProfile Id="AAD-Common">
-                <DisplayName>Azure Active Directory</DisplayName>
-                <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-                <!-- Provide objectId and appId before using extension properties. -->
-                <Metadata>
-                  <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
-                  <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
-                </Metadata>
+          <DisplayName>Azure Active Directory</DisplayName>
+          <TechnicalProfile Id="AAD-Common">
+            <DisplayName>Azure Active Directory</DisplayName>
+            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+            <!-- Provide objectId and appId before using extension properties. -->
+            <Metadata>
+              <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
+              <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
+            </Metadata>
   ```
 
 3. A portál felülete konzisztens marad. Ezek az attribútumok létrehozása a portál felhasználói felületének használatával, a egyéni szabályzatait a használatba vétel előtt. Amikor létrehoz egy attribútum **ActivationStatus** a portálon, akkor kell hivatkoznia, a következő:
@@ -296,7 +293,6 @@ Az azonosító jogkivonat küldi vissza az alkalmazásnak magában foglalja az �
   extension_ActivationStatus in the custom policy.
   extension_<app-guid>_ActivationStatus via Graph API.
   ```
-
 
 ## <a name="reference"></a>Leírások
 

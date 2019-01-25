@@ -7,14 +7,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: cwatson
+ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: de7b0a2746c79242cb6538595ca3205455a2cc5c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f83499e52b6405ec5475795a80c5a4325043a441
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582744"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904488"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt az Azure Cosmos DB
 
@@ -54,13 +54,13 @@ Azure Cosmos DB átviteli költségek óra órán keresztül alkalmazza a foglal
 |Az Azure Cosmos DB - RU/s/óra 100 - Dél-amerikai nyugati régiója |    Dél-amerikai nyugati régiója      |    1     |
 |Az Azure Cosmos DB használatával – 100 RU/s/óra – Dél-India|    Dél-India     |    1.0375    |
 |Az Azure Cosmos DB - RU/s/óra 100 - hitelesítésszolgáltató keleti régiója|   Kelet-Kanada      |    1.1      |
-|Az Azure Cosmos DB - RU/s/óra 100 – kelet-japán|   Kelet-Japán      |    1,125     |
-|Az Azure Cosmos DB - RU/s/óra 100 – Nyugat-japán|     Nyugat-Japán    |   1,125       |
+|Az Azure Cosmos DB - RU/s/óra 100 – kelet-japán|   Kelet-Japán      |    1.125     |
+|Az Azure Cosmos DB - RU/s/óra 100 – Nyugat-japán|     Nyugat-Japán    |   1.125       |
 |Az Azure Cosmos DB használatával – 100 RU/s/óra – Nyugat-India|     Nyugat-India    |    1.1375     |
 |Az Azure Cosmos DB használatával – 100 RU/s/óra – közép-India|    Közép-India     |  1.1375       |
-|Az Azure Cosmos DB - RU/s/óra 100 – Ausztrália keleti régiója|     Ausztrália keleti régiója    |   1,15       |
+|Az Azure Cosmos DB - RU/s/óra 100 – Ausztrália keleti régiója|     Ausztrália keleti régiója    |   1.15       |
 |Az Azure Cosmos DB - RU/s/óra 100 - hitelesítésszolgáltató közép-India|  Közép-Kanada       |   1.2       |
-|Az Azure Cosmos DB - RU/s/óra 100 – közép-Franciaország|   Közép-Franciaország      |    1,25      |
+|Az Azure Cosmos DB - RU/s/óra 100 – közép-Franciaország|   Közép-Franciaország      |    1.25      |
 |Az Azure Cosmos DB - RU/s/óra 100 – Dél-Brazília|  Dél-Brazília       |   1.5      |
 |Az Azure Cosmos DB - RU/s/óra 100 – Ausztrália középső régiója|   Ausztrália középső régiója      |   1.5      |
 |Az Azure Cosmos DB - RU/s/óra 100 – Ausztrália 2. középső régiója| Ausztrália 2. középső régiója        |    1.5     |
@@ -71,7 +71,7 @@ Azure Cosmos DB átviteli költségek óra órán keresztül alkalmazza a foglal
 Vegye figyelembe a foglalást az alábbi követelményeket:
 
 * Átviteli sebességgel: 50 000 RU/s  
-* Régiók: 2 
+* A régióban használják: 2 
 
 Ebben az esetben az összes igény szerinti szolgáltatások díjait számlán 500 mennyiség 100 RU/s mérő e két régióban vannak. A teljes RU/s használat 100 000 óránként. 
 

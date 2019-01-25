@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 81ee681fac4496ad2d5360f01926634373c23075
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: d3da7e73569d7860c7e4328b11ecc3f20cf648fc
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584485"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903621"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>A használatalapú fizetéses előfizetést Azure foglalás használati adatai
 
@@ -70,7 +70,7 @@ Tegyük fel, hogy futtatja a keleti régiójában és a foglalási adatokat úgy
 
 | Mező | Érték |
 |---| --- |
-|ReservationId |446ec809-423D-467c-8c5c-bbd5d22906b1|
+|ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Mennyiség |2|
 |Product| Az SQL Database Gen 4 (2 mag)|
 |Régió | eastus |

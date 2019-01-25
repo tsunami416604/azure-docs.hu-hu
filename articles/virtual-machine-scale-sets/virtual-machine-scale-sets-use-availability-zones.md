@@ -3,7 +3,7 @@ title: Hozzon létre egy Azure méretezési csoportot, amely a rendelkezésre á
 description: Ismerje meg, hogyan hozhat létre Azure-beli virtuálisgép-méretezési csoportok, amelyek a rendelkezésre állási zónák a nagyobb redundancia leállások ellen
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
-ms.author: zarhoads
-ms.openlocfilehash: 062725ab5e486ff795ffa0f4a72dd3fdb0e6b948
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 771aba1d18dc0cf691c338e06278a356caebda96
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468874"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886237"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>A rendelkezésre állási zónák használó virtuális gép méretezési csoport létrehozása
 
@@ -215,7 +215,7 @@ Zónaredundáns méretezési csoport létrehozása, adja meg a több érték a `
 }
 ```
 
-Ha a nyilvános IP-cím vagy egy terheléselosztót hoz létre, adja meg a *"sku": {"name": "Standard"} "* tulajdonság zónaredundáns hálózati erőforrások létrehozása. Is szeretne létrehozni egy hálózati biztonsági csoport és a szabályok minden forgalom engedélyezéséhez. További információkért lásd: [áttekintése az Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) és [Standard Load Balancer és rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md).
+Ha a nyilvános IP-cím vagy egy terheléselosztót hoz létre, adja meg a *"sku": {"name": "Standard"} "* tulajdonság zónaredundáns hálózati erőforrások létrehozásához. Is szeretne létrehozni egy hálózati biztonsági csoport és a szabályok minden forgalom engedélyezéséhez. További információkért lásd: [áttekintése az Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) és [Standard Load Balancer és rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Egy teljes példát egy zónaredundáns méretezési csoport és a hálózati erőforrásokhoz, olvassa el [a mintául szolgáló Resource Manager-sablon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

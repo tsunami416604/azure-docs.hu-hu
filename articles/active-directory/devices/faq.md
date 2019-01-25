@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2010
+ms.date: 01/24/2010
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 916de2de6cdc19bfa1e3967661d40693d4be1e99
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: edb4e2b25e5fd7d6c59f07a02cc5d2f0630eac8e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852388"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904403"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
@@ -180,6 +180,19 @@ Ez a viselkedés nem vonatkozik semmilyen más felhasználó, aki az adott eszk�
 
 ---
 
+**Válaszok: Mik azok az MS-szervezet-P2P-hozzáférési tanúsítvány található, a Windows 10 rendszerű eszközökön?**
+
+**VÁLASZ:** Az MS-szervezet-P2P-hozzáférési engedélyeket adtak ki az Azure AD egyaránt, az Azure AD-hez, és a hibrid Azure AD-hez csatlakoztatott eszközök. Ezek a tanúsítványok segítségével engedélyezze a távoli asztali esetekre ugyanabban a bérlőben eszközök közötti megbízhatósági kapcsolat. Egy tanúsítványt az eszközre, és a egy másik kiadni a felhasználó. Az eszköz tanúsítványa megtalálható `Local Computer\Personal\Certificates` és a egy napig érvényes. Ez a tanúsítvány megújításának (egy új tanúsítvány kiállításával) Ha az eszköz még aktív, az Azure ad-ben. A felhasználói tanúsítvány jelen `Current User\Personal\Certificates` , és ezt a tanúsítványt is érvényes egy nap, de azt ki igény szerinti, ha egy felhasználó megpróbál egy távoli asztali munkamenetet egy másik Azure ad-ben csatlakoztatott eszközre. Ez nem újítja meg lejártakor. Mindkét ezeket a tanúsítványokat kibocsátott használatával a MS-szervezet-P2P-hozzáférési tanúsítvány megtalálható az `Local Computer\AAD Token Issuer\Certificates`. A tanúsítványt az Azure AD-eszközök regisztrációja során. 
+
+---
+
+**Q:Why lásd a Windows 10 rendszerű eszközökön az MS-szervezet-P2P-hozzáférés által kiadott több lejárt tanúsítványok? Hogyan törölhetek őket?**
+
+**VÁLASZ:** Hiba történt a Windows 10 1709-es és alacsonyabb, ahol az MS-szervezet-P2P-hozzáférés lejárt tanúsítványokat továbbra is létezik a számítógép tárolja a titkosítási problémák miatt azonosított. A felhasználók sikerült által tapasztalt problémák a hálózati kapcsolatot, ha bármely VPN-ügyfelek (pl. Cisco AnyConnect), amely nem tudja kezelni a nagy számú lejárt tanúsítványokat használ. A probléma javítását a Windows 10 1803 kiadás automatikusan törli az összes ilyen lejárt MS-szervezet-P2P-hozzáférés tanúsítványokat. A probléma megoldható az eszközök frissítése a Windows 10 1803. Ha Ön nem lehet frissíteni, törölheti ezek a tanúsítványok semmilyen negatív hatással.  
+
+---
+
+
 ## <a name="hybrid-azure-ad-join-faq"></a>Hibrid Azure AD joinnal kapcsolatos gyakori kérdések
 
 **K: Hol találom meg hibaelhárítási információ a hibrid Azure AD join hibák diagnosztizálását?**
@@ -217,15 +230,3 @@ Hibrid Azure AD-csatlakozás az Azure ad-ben regisztrált átadta a feladatait �
 
 - Az első hozzáférési próbálkozzon során a rendszer kéri a felhasználók regisztrálja az eszközt a vállalati portál használatával.
 
----
-
-
-**Válaszok: Mik azok az MS-szervezet-P2P-hozzáférési tanúsítvány található, a Windows 10 rendszerű eszközökön?**
-
-**VÁLASZ:** Az MS-szervezet-P2P-hozzáférési engedélyeket adtak ki az Azure AD egyaránt, az Azure AD-hez, és a hibrid Azure AD-hez csatlakoztatott eszközök. Ezek a tanúsítványok segítségével engedélyezze a távoli asztali esetekre ugyanabban a bérlőben eszközök közötti megbízhatósági kapcsolat. Egy tanúsítványt az eszközre, és a egy másik kiadni a felhasználó. Az eszköz tanúsítványa megtalálható `Local Computer\Personal\Certificates` és a egy napig érvényes. Ez a tanúsítvány megújításának (egy új tanúsítvány kiállításával) Ha az eszköz még aktív, az Azure ad-ben. A felhasználói tanúsítvány jelen `Current User\Personal\Certificates` , és ezt a tanúsítványt is érvényes egy nap, de azt ki igény szerinti, ha egy felhasználó megpróbál egy távoli asztali munkamenetet egy másik Azure ad-ben csatlakoztatott eszközre. Ez nem újítja meg lejártakor. Mindkét ezeket a tanúsítványokat kibocsátott használatával a MS-szervezet-P2P-hozzáférési tanúsítvány megtalálható az `Local Computer\AAD Token Issuer\Certificates`. A tanúsítványt az Azure AD-eszközök regisztrációja során. 
-
----
-
-**Q:Why lásd a Windows 10 rendszerű eszközökön az MS-szervezet-P2P-hozzáférés által kiadott több lejárt tanúsítványok? Hogyan törölhetek őket?**
-
-**VÁLASZ:** Hiba történt a Windows 10 1709-es és alacsonyabb, ahol az MS-szervezet-P2P-hozzáférés lejárt tanúsítványokat továbbra is létezik a számítógép tárolja a titkosítási problémák miatt azonosított. A felhasználók sikerült által tapasztalt problémák a hálózati kapcsolatot, ha bármely VPN-ügyfelek (pl. Cisco AnyConnect), amely nem tudja kezelni a nagy számú lejárt tanúsítványokat használ. A probléma javítását a Windows 10 1803 kiadás automatikusan törli az összes ilyen lejárt MS-szervezet-P2P-hozzáférés tanúsítványokat. A probléma megoldható az eszközök frissítése a Windows 10 1803. Ha Ön nem lehet frissíteni, törölheti ezek a tanúsítványok semmilyen negatív hatással.  

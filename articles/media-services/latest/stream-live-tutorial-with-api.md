@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: c51a36f4380199de1ac62ef3f0c32bd0a8f06c01
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c59ebc0672970c6ee8d00daae373036e2768e318
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811213"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888192"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Oktatóanyag: A Media Services v3 élő Stream API-k használatával
 
-Az Azure Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) felelősek az élő adatfolyam-tartalmak feldolgozása. A LiveEvent egy bemeneti végpontot (betöltési URL-címet) biztosít, amelyet aztán megadhat egy élő kódolónak. A LiveEvent élő bemeneti streameket fogad az élő kódolótól, és elérhetővé teszi azt a streameléshez egy vagy több [streamvégponton](https://docs.microsoft.com/rest/api/media/streamingendpoints) keresztül. Emellett a csatorna egy előnézeti végpontot (előnézeti URL-címet) is biztosít, amelynek használatával megtekintheti a stream előnézetét, és ellenőrizheti azt, mielőtt feldolgozná és továbbítaná. Ez az oktatóprogram bemutatja, hogyan hozhat létre **átmenő** típusú élő eseményt a .NET Core használatával. 
+Az Azure Media Services [élő események](https://docs.microsoft.com/rest/api/media/liveevents) felelősek az élő adatfolyam-tartalmak feldolgozása. Egy élő eseményt bemeneti végpontot biztosít (betöltési URL-címe), hogy, majd adja meg az élő kódoló. Az élő esemény az élő kódoló a bemeneti élő Streamek fogad, és lehetővé teszi egy vagy több keresztül [adatfolyam-továbbítási végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints). Emellett a csatorna egy előnézeti végpontot (előnézeti URL-címet) is biztosít, amelynek használatával megtekintheti a stream előnézetét, és ellenőrizheti azt, mielőtt feldolgozná és továbbítaná. Ez az oktatóprogram bemutatja, hogyan hozhat létre **átmenő** típusú élő eseményt a .NET Core használatával. 
 
 > [!NOTE]
 > Mielőtt folytatná, mindenképp tekintse át [a Media Services 3-as verziójával megvalósított élő streamelést](live-streaming-overview.md) bemutató cikket. 
@@ -67,7 +67,7 @@ Az elő streamelési minta az [Élő](https://github.com/Azure-Samples/media-ser
 
 > [!IMPORTANT]
 > A minta egyedi utótagot használ mindegyik erőforráshoz. Ha megszakítja a hibakeresést, vagy leállítja az alkalmazást anélkül, hogy az végigfutna, végül több LiveEvent eseménye is lesz a fiókban. <br/>
-> Ezeket a futó LiveEvent eseményeket mindenképp állítsa le. Ezek ugyanis **díjkötelesek**!
+> Ellenőrizze, hogy állítsa le a futó élő eseményeket. Ezek ugyanis **díjkötelesek**!
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -78,8 +78,8 @@ Ez a szakasz a *MediaV3LiveApp* projekt [Program.cs](https://github.com/Azure-Sa
 A minta egy egyedi utótagot oszt ki az egyes erőforrások számára, így elkerülhető a névütközés, ha többször is futtatná a mintát az adatok törlése nélkül.
 
 > [!IMPORTANT]
-> A minta egyedi utótagot használ mindegyik erőforráshoz. Ha megszakítja a hibakeresést, vagy leállítja az alkalmazást anélkül, hogy az végigfutna, végül több LiveEvent eseménye is lesz a fiókban. <br/>
-> Ezeket a futó LiveEvent eseményeket mindenképp állítsa le. Ezek ugyanis **díjkötelesek**!
+> A minta egyedi utótagot használ mindegyik erőforráshoz. Ha a hibakeresés, vagy az alkalmazás leállítása nélkül futó keresztül, akkor lesz megtörténhet több élő esemény-fiókjában található. <br/>
+> Ellenőrizze, hogy állítsa le a futó élő eseményeket. Ezek ugyanis **díjkötelesek**!
  
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>A Media Services API-k használatának megkezdése a .NET SDK-val
 
@@ -89,29 +89,20 @@ Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre 
 
 ### <a name="create-a-live-event"></a>Élő esemény létrehozása
 
-Ez a szakasz azt mutatja be, hogyan lehet **átmenő** típusú LiveEvent eseményt létrehozni (ahol a LiveEventEncodingType értéke Nincs). Ha szeretne létrehozni egy videókhoz, amelyek engedélyezve van a valós idejű kódolás beállítása LiveEventEncodingType **Standard**. 
+Ez a szakasz bemutatja, hogyan hozhat létre egy **átmenő** írja be az élő esemény (LiveEventEncodingType beállítása None). Ha azt szeretné, hogy engedélyezve van a valós idejű kódolás beállítása LiveEventEncodingType élő esemény létrehozása **Standard**. 
 
 Néhány egyéb beállítás, amelyet érdemes lehet megadnia az élő események létrehozásakor:
 
 * A Media Services hely 
-* Az élő esemény streamprotokollja (jelenleg az RTMP és a Smooth Streaming protokoll támogatott)
-       
-    Ha a LiveEvent esemény vagy a hozzá tartozó LiveOutput kimenetek futnak, a protokollbeállítás nem módosítható. Ha eltérő protokollok használatára van szükség, hozzon létre külön-külön LiveEvent eseményeket az egyes streamprotokollokhoz.  
-* IP-korlátozások a betöltési és az előnézeti címen. Megadhatja azokat az IP-címeket, amelyek jogosultak videókat betölteni erre a LiveEvent eseményre. Az engedélyezett IP-címek köre tartalmazhat egyetlen IP-címet (például „10.0.0.1”), vagy egy IP-tartományt, amelyet egy IP-cím és egy CIDR alhálózati maszk (például„10.0.0.1/22”) vagy egy IP-cím és egy pontozott decimális alhálózati maszk (például „10.0.0.1(255.255.252.0)”) segítségével lehet megadni.
-    
-    Ha nem ad meg IP-címeket, és nem határoz meg szabálydefiníciót, a rendszer egyetlen IP-címet sem engedélyez. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.
-    
-    Az IP-címeket kell lennie a következő formátumok egyikében: IpV4-cím 4 számjegyből, CIDR-címtartományt.
-
-* Az esemény létrehozásakor megadhatja, hogy az automatikusan induljon el. 
-
-    Ha autostart értéke igaz, az élő esemény létrehozása után fog elindulni. Ez azt jelenti, a számlázási elindul, amint az élő esemény fut-e. Leállítás explicit módon kell meghívnia, a videókhoz további számlázási leállására erőforráson. További információkért lásd: [videókhoz állapotok és számlázási](live-event-states-billing.md).
+* Az élő esemény az adatfolyam-továbbítási protokoll (jelenleg az RTMP és Smooth Streaming protokollokat támogatottak).<br/>Az élő esemény vagy kapcsolódó Live Kimenetétől futása közben, a protokollbeállítás nem módosítható. Ha eltérő protokollok használatára van szüksége, létre kell hoznia az egyes streamprotokollokhoz külön élő esemény.  
+* IP-korlátozások a betöltési és az előnézeti címen. Megadhatja, hogy az IP-címek, amelyek jogosultak videókat az élő esemény betölteni. Az engedélyezett IP-címek köre tartalmazhat egyetlen IP-címet (például „10.0.0.1”), vagy egy IP-tartományt, amelyet egy IP-cím és egy CIDR alhálózati maszk (például„10.0.0.1/22”) vagy egy IP-cím és egy pontozott decimális alhálózati maszk (például „10.0.0.1(255.255.252.0)”) segítségével lehet megadni.<br/>Ha nem ad meg IP-címeket, és nem határoz meg szabálydefiníciót, a rendszer egyetlen IP-címet sem engedélyez. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.<br/>Az IP-címeket kell lennie a következő formátumok egyikében: IpV4-cím 4 számjegyből, CIDR-címtartományt.
+* Az esemény létrehozásakor megadhatja, hogy az automatikusan induljon el. <br/>Ha autostart értéke igaz, az élő esemény létrehozása után fog elindulni. Ez azt jelenti, a számlázási elindul, amint az élő esemény startsrunning. Leállítás explicit módon kell meghívnia, további számlázási megállítani az élő esemény erőforráson. További információkért lásd: [élő esemény állapotok és számlázási](live-event-states-billing.md).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 
 ### <a name="get-ingest-urls"></a>A betöltési URL-címek beolvasása
 
-Ha a videókhoz létrejött, megjelenik a betöltési URL-címek, amelyek ezeket a élőadás-kódoló kell megadnia. A kódoló ezekre az URL-címekre küldi a bemeneti élő streamet.
+Az élő esemény létrehozása után megjelenik a betöltési URL-címek, amelyek ezeket a élőadás-kódoló kell megadnia. A kódoló ezekre az URL-címekre küldi a bemeneti élő streamet.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#GetIngestURL)]
 
@@ -124,21 +115,21 @@ A previewEndpoint segítségével tekintse meg az előnézetet, és győződjön
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#GetPreviewURLs)]
 
-### <a name="create-and-manage-liveevents-and-liveoutputs"></a>LiveEvent események és LiveOutput kimenetek létrehozása és kezelése
+### <a name="create-and-manage-live-events-and-live-outputs"></a>Élő események és élő kimenetek létrehozása és kezelése
 
-Ha elvégezte a stream és a LiveEvent összekapcsolását, elindíthatja a streamelési eseményt. Ehhez létre kell hoznia egy adategységet, egy LiveOutputot és egy StreamingLocatort. Ezzel archiválja a streamet, és a streamvégponton keresztül elérhetővé teszi a nézők számára. 
+Miután a stream az élő esemény beérkeznek, megkezdheti a streamelési eseményt hoz létre egy eszköz, a kimeneti Live és a Streamelési lokátor. Ezzel archiválja a streamet, és a streamvégponton keresztül elérhetővé teszi a nézők számára. 
 
 #### <a name="create-an-asset"></a>Adategység létrehozása
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateAsset)]
 
-Hozzon létre egy adategységet, amelyet a LiveOutput használhat.
+A használata élő kimeneti adategység létrehozása.
 
-#### <a name="create-a-liveoutput"></a>LiveOutput létrehozása
+#### <a name="create-a-live-output"></a>Hozzon létre egy élő kimenet
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveOutput)]
 
-#### <a name="create-a-streaminglocator"></a>StreamingLocator létrehozása
+#### <a name="create-a-streaming-locator"></a>A Streamelési Lokátorok létrehozásához
 
 > [!NOTE]
 > A Media Services-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
@@ -166,8 +157,8 @@ foreach (StreamingPath path in paths.StreamingPaths)
 Ha befejezte az esemény streamelését, és törölni szeretné a korábban kiosztott erőforrásokat, kövesse az alábbi eljárást.
 
 * Állítsa le a stream továbbítását a kódolóban.
-* Állítsa le a LiveEvent eseményt. A LiveEvent a leállítását követően nem von maga után díjakat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.
-* A streamvégpontot is leállíthatja, kivéve, ha az élő esemény archívumát szeretné igényalapú streamelésre elérhetővé tenni. A leállított állapotú LiveEvent események nem vonnak maguk után díjakat.
+* Leállítja az élő eseményt. Az élő esemény leállítását követően nem számítunk fel díjakat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.
+* A streamvégpontot is leállíthatja, kivéve, ha szeretné elérhetővé tenni az élő esemény archívumát igényalapú streamingre. Ha az élő esemény leállított állapotban van, nem számítunk fel díjakat.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupLiveEventAndOutput)]
 
@@ -177,7 +168,7 @@ Ha befejezte az esemény streamelését, és törölni szeretné a korábban kio
 
 ## <a name="watch-the-event"></a>Esemény megtekintése
 
-Ha meg szeretne tekinteni egy eseményt, másolja ki a [StreamingLocator létrehozása](#create-a-streaminglocator) szakaszban ismertetett kód futtatásakor kapott streamelési URL-címet, és használjon egy tetszés szerinti lejátszót. A stream kipróbálásához használhatja az [Azure Media Playert](http://amp.azure.net/libs/amp/latest/docs/index.html) a http://ampdemo.azureedge.net címen. 
+Tekintse meg az eseményt, másolja a streamelési URL-cím, az ismertetett programkódot futtatásakor kapott [Streamelési Lokátorok létrehozásához](#create-a-streaminglocator) és a egy tetszőleges lejátszó használata. A stream kipróbálásához használhatja az [Azure Media Playert](http://amp.azure.net/libs/amp/latest/docs/index.html) a http://ampdemo.azureedge.net címen. 
 
 A leállítása után az élő esemény automatikusan átalakítja az eseményeket igény szerinti tartalommá. Ha már leállította és törölte is az eseményt, a felhasználók igény szerinti videóként le tudják játszani az archivált tartalmat mindaddig, amíg az objektumot nem törli. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni. 
 
@@ -192,9 +183,9 @@ az group delete --name amsResourceGroup
 ```
 
 > [!IMPORTANT]
-> A le nem állított LiveEventek díjkötelesek. Felhívjuk a figyelmét, hogy ha a projekt/program összeomlik, vagy bármilyen okból bezáródik, a LiveEvent esetleg tovább futhat, ami költségekkel jár.
+> Az élő esemény futó elhagyása tekintetében a számlázási költségeket. Vegye figyelembe, ha a projekt/program biztosan összeomlik, vagy valamilyen okból lezárták, maradna számlázási állapotban fut az élő esemény.
 
 ## <a name="next-steps"></a>További lépések
 
 [Videofájlok streamelése](stream-files-tutorial-with-api.md)
-
+ 

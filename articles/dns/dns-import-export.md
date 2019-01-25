@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 5afb607f0410b428d8e67fdff043a4e376dd60a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 37dd51a60d9ec6e018f58e2cfd593490d126670b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956353"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888651"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importálása és exportálása a DNS-zónafájl az Azure CLI használatával 
 
@@ -68,10 +68,10 @@ Az alábbi megjegyzések adja meg a zóna további technikai részleteiért impo
 * A `$TTL` irányelv nem kötelező, és a támogatott. Ha nem `$TTL` irányelv van megadva, a rekordok egy explicit TTL nélkül importált állítva egy alapértelmezett élettartam 3600 másodperc. Ha a beállított ugyanazon rekord két rekordot adja meg a különböző TTLs, az alacsonyabb értéket használja.
 * A `$ORIGIN` irányelv nem kötelező, és a támogatott. Ha nem `$ORIGIN` beállítva, a használt alapértelmezett érték a zóna nevét a parancssorban megadott (és a záró ".").
 * A `$INCLUDE` és `$GENERATE` nem támogatott.
-* Ezek a rekordok típusok támogatottak: A, AAAA, CNAME, MX, NS, SOA, SRV és TXT.
+* Ezek erőforrásrekord-típusok támogatottak: A, AAAA, CAA, CNAME, MX, NS, SOA, SRV, and TXT.
 * A SOA típusú rekord automatikusan létrejön az Azure DNS által a zóna létrehozásakor. Egy zóna fájl importálásakor összes SOA típusú paramétereket a zóna fájlból megnyílik *kivételével* a `host` paraméter. Ez a paraméter az Azure DNS által nyújtott értéket használja. Ennek oka az, ezt a paramétert az Azure DNS által nyújtott elsődleges névkiszolgálóra kell hivatkoznia.
 * A névkiszolgáló-rekord zóna felső pontjánál beállítása szintén automatikusan létrejön az Azure DNS által a zóna létrehozásakor. Csak a beállított rekord az élettartam a rendszer importálja. Ezeket a rekordokat az Azure DNS által nyújtott névkiszolgálói neveket tartalmaz. Az importált zóna fájlban szereplő értékek nem felülírja a rekord adatait.
-* A nyilvános előzetes verzióban az Azure DNS támogatja a txt típusú rekordok csak egyetlen-karakterlánc. Karakterláncsoros txt típusú rekordok összefűzött és 255 karakter hosszúságúra csonkolja.
+* A nyilvános előzetes verzióban az Azure DNS támogatja a txt típusú rekordok csak egyetlen-karakterlánc. Multistring TXT records are be concatenated and truncated to 255 characters.
 
 ### <a name="cli-format-and-values"></a>Parancssori felület formátuma és értékei
 

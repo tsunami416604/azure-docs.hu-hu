@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 977123459bcf9bb10c6b7ecf5d7a364f60564c48
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7e4b52f0a3ca5e924d9d41e38e51f0cba8b75690
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437078"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885813"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) a külső események kezelése
 
@@ -191,10 +191,10 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Belsőleg `RaiseEventAsync` (.NET) vagy `raiseEvent` (JavaScript) enqueues egy üzenet, amely a Várakozás az orchestrator-funkció beolvasása észlelnie.
+Belsőleg `RaiseEventAsync` (.NET) vagy `raiseEvent` (JavaScript) enqueues egy üzenet, amely a Várakozás az orchestrator-funkció beolvasása észlelnie. Ha a példány nem vár a megadott *eseménynév,* az eseménynapló-üzenet bekerül egy memórián belüli üzenetsorba. Ha a vezénylési példányhoz később kezd figyeli, amelyek a *eseménynév,* ellenőrzi, hogy e eseményt üzenetek várakozási sorban.
 
-> [!WARNING]
-> Ha nincs vezénylési példánya és a megadott *példány azonosítója* , vagy ha a példány nem vár a megadott *eseménynév*, a rendszer törli az eseményüzenet. Ezzel a viselkedéssel kapcsolatos további információkért lásd: a [GitHub-problémát](https://github.com/Azure/azure-functions-durable-extension/issues/29).
+> [!NOTE]
+> Ha nincs vezénylési példánya és a megadott *példány azonosítója*, a rendszer törli az eseményüzenet. Ezzel a viselkedéssel kapcsolatos további információkért lásd: a [GitHub-problémát](https://github.com/Azure/azure-functions-durable-extension/issues/29). 
 
 > [!WARNING]
 > A JavaScript fejlesztésének helyileg, kell beállítania a környezeti változót `WEBSITE_HOSTNAME` való `localhost:<port>`, például. `localhost:7071` a módszer használatához `DurableOrchestrationClient`. Ezzel a követelménnyel kapcsolatban további információkért lásd: a [GitHub-problémát](https://github.com/Azure/azure-functions-durable-js/issues/28).

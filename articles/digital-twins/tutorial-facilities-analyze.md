@@ -6,20 +6,20 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: f233efc93fa07cc7fc7c904336f01348f4da3f82
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 488b97074d74650ecf5602d25e2a90a1998e5585
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554520"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883874"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Oktatóanyag: Megjelenítését és elemzését az Azure digitális Twins tárolóhelyek események a Time Series Insights használatával
 
-Miután az Azure digitális Twins-példány üzembe helyezése, a tárolóhelyek üzembe helyezése, és figyelheti az egyes esetekben egy egyéni függvény végrehajtása, az események és a tárolóhelyek a trendek és rendellenességek kereséséhez származó adatokat jelenítheti meg. 
+Miután az Azure digitális Twins-példány üzembe helyezése, a tárolóhelyek üzembe helyezése, és figyelheti az egyes esetekben egy egyéni függvény végrehajtása, az események és a tárolóhelyek a trendek és rendellenességek kereséséhez származó adatokat jelenítheti meg.
 
-A [első oktatóanyaga](tutorial-facilities-setup.md), konfigurálta a térbeli grafikonon egy képzeletbeli épület, az a hely, amely tartalmazza a mozgásban lévő adatoknak egyaránt, szén-dioxid- és hőmérséklet érzékelők. A [második oktatóanyagban](tutorial-facilities-udf.md) üzembe helyezte a diagramot és egy felhasználó által meghatározott függvényt. A függvény ezen érzékelő értékek figyeli, és elindítja a megfelelő feltételek értesítések. A helyiségben, üres, és a hőmérséklet és szén-dioxid-szinten nem rendellenes. 
+A [első oktatóanyaga](tutorial-facilities-setup.md), konfigurálta a térbeli grafikonon egy képzeletbeli épület, az a hely, amely tartalmazza a mozgásban lévő adatoknak egyaránt, szén-dioxid- és hőmérséklet érzékelők. A [második oktatóanyagban](tutorial-facilities-udf.md) üzembe helyezte a diagramot és egy felhasználó által meghatározott függvényt. A függvény ezen érzékelő értékek figyeli, és elindítja a megfelelő feltételek értesítések. A helyiségben, üres, és a hőmérséklet és szén-dioxid-szinten nem rendellenes.
 
 Ez az oktatóanyag bemutatja, hogyan integrálhatja az értesítések és az Azure digitális Twins beállítása az Azure Time Series Insights származó adatokat. Idővel majd jelenítheti meg az érzékelő értékeket. Trendek kereshet például melyik szoba kezd a legtöbb használatát, és amelyek a nap legforgalmasabb időpontok. Is észlelheti a rendellenességeket, mely termek stuffier és hotter miatt, vagy egy adott területre az épület küld e folyamatosan magas hőmérsékleti értékek forrása, például hibás légkondicionálást jelzi.
 
@@ -32,43 +32,44 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez az oktatóanyag feltételezi, hogy már [konfigurálta](tutorial-facilities-setup.md) és [üzembe helyezte](tutorial-facilities-udf.md) az Azure Digital Twins-környezetet. Mielőtt továbblépne, győződjön meg arról, hogy rendelkezik a következőkkel:
+
 - Egy [Azure-fiók](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Egy futó Digital Twins-példány.
 - A munkavégzéshez használt gépre letöltött és kicsomagolt [Digital Twins C#-minták](https://github.com/Azure-Samples/digital-twins-samples-csharp).
-- [.NET core SDK 2.1.403 verzió vagy újabb](https://www.microsoft.com/net/download) a fejlesztői gépen, a minta futtatásához. Futtatás `dotnet --version` , győződjön meg arról, hogy telepítve van-e a megfelelő verziót. 
-
+- [.NET core SDK 2.1.403 verzió vagy újabb](https://www.microsoft.com/net/download) a fejlesztői gépen, a minta futtatásához. Futtatás `dotnet --version` , győződjön meg arról, hogy telepítve van-e a megfelelő verziót.
 
 ## <a name="stream-data-by-using-event-hubs"></a>Stream-adatokat az Event Hubs használatával
+
 Használhatja a [az Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatás létrehoz egy folyamatot az adatok továbbításához. Ez a szakasz bemutatja, hogyan hozhat létre az event hub, az összekötő az Azure digitális Ikrekhez és a Time Series Insights-példányok között.
 
 ### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali panelen válassza ki a **erőforrás létrehozása**. 
+1. A bal oldali panelen válassza ki a **erőforrás létrehozása**.
 
 1. Keressen rá és válassza ki az **Event Hubs** elemet. Kattintson a **Létrehozás** gombra.
 
-1. Adjon meg egy **neve** az Event Hubs-névtér esetében. Válasszon **Standard** a **tarifacsomag**, a **előfizetés**, a **erőforráscsoport** a digitális Twins példány használt és a **hely**. Kattintson a **Létrehozás** gombra. 
+1. Adjon meg egy **neve** az Event Hubs-névtér esetében. Válasszon **Standard** a **tarifacsomag**, a **előfizetés**, a **erőforráscsoport** a digitális Twins példány használt és a **hely**. Kattintson a **Létrehozás** gombra.
 
 1. Az Event Hubs névtér központi telepítés esetén válassza ki a névtér **erőforrás**.
 
     ![Event Hubs-névtér üzembe helyezés után](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
 
-
-1. Az Event Hubs-névtér **áttekintése** panelen válassza a **Eseményközpont** gombra az oldal tetején. 
+1. Az Event Hubs-névtér **áttekintése** panelen válassza a **Eseményközpont** gombra az oldal tetején.
     ![Event Hub gomb](./media/tutorial-facilities-analyze/create-event-hub.png)
 
-1. Adjon meg egy **neve** az eseményközpont, és válassza ki a **létrehozás**. 
+1. Adjon meg egy **neve** az eseményközpont, és válassza ki a **létrehozás**.
 
    Az event hubs üzembe helyezését követően megjelenik a **az Event Hubs** az Event Hubs-névtér ablakában egy **aktív** állapotát. Az eseményközpont megnyitásához válassza a **áttekintése** ablaktáblán.
 
 1. Válassza ki a **fogyasztói csoportot** gombra az oldal tetején, és írjon be egy nevet, például **tsievents** a felhasználói csoport. Kattintson a **Létrehozás** gombra.
-    ![Eseményközpont fogyasztói csoportja](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
 
-   A fogyasztói csoport létrehozása után megjelenik a lista alján, az event hubs **áttekintése** ablaktáblán. 
+    ![Eseményközpontbeli fogyasztói csoport](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
 
-1. Nyissa meg a **megosztott elérési házirendek** panelje az eseményközpont, és válassza ki a **Hozzáadás** gombra. Adja meg **ManageSend** a szabályzat neveként, ellenőrizze, hogy az összes jelölőnégyzet legyen bejelölve, majd válassza ki **létrehozás**. 
+   A fogyasztói csoport létrehozása után megjelenik a lista alján, az event hubs **áttekintése** ablaktáblán.
+
+1. Nyissa meg a **megosztott elérési házirendek** panelje az eseményközpont, és válassza ki a **Hozzáadás** gombra. Adja meg **ManageSend** a szabályzat neveként, ellenőrizze, hogy az összes jelölőnégyzet legyen bejelölve, majd válassza ki **létrehozás**.
 
     ![Eseményközpont kapcsolati sztringjei](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)
 
@@ -100,13 +101,13 @@ Használhatja a [az Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatá
 
 1. Cserélje le a zárójelben `Primary_connection_string_for_your_event_hub` értékét **kapcsolati karakterlánc – elsődleges kulcs** az event hubs számára. Győződjön meg arról, hogy ez a kapcsolati karakterlánc formátuma a következő:
 
-   ```
+   ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
 1. Cserélje le a zárójelben `Secondary_connection_string_for_your_event_hub` értékét **kapcsolati karakterlánc – másodlagos kulcs** az event hubs számára. Győződjön meg arról, hogy ez a kapcsolati karakterlánc formátuma a következő: 
 
-   ```
+   ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
@@ -115,13 +116,12 @@ Használhatja a [az Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatá
     > [!IMPORTANT]
     > Az értékeket idézőjelek nélkül adja meg. Ellenőrizze, hogy van legalább egy szóköz karakter után a kettőspont a YAML-fájlt. Minden online YAML-érvényesítő használatával is ellenőrizheti a YAML-fájl tartalmának [ezzel az eszközzel](https://onlineyamltools.com/validate-yaml).
 
-
 1. Mentse és zárja be a fájlt. Futtassa a következő parancsot a parancssori ablakban, és amikor a rendszer kéri, jelentkezzen be Azure-fiókjával.
 
     ```cmd/sh
     dotnet run CreateEndpoints
     ```
-   
+
    Az eseményközpont két végpontot hoz létre.
 
    ![Az Event Hubs végpontjai](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)
@@ -165,12 +165,11 @@ Ha az Azure digitális Twins felfedezése a túlra le szeretné, nyugodtan tör�
     > [!TIP]
     > Ha törli a digitális Twins-példány problémajegyek tapasztal, szolgáltatás frissítése lett állítva a javítás. Ismételje meg a példány törlése.
 
-2. Ha szükséges, törölje a munkahelyi számítógépen mintaalkalmazásból. 
-
+2. Ha szükséges, törölje a munkahelyi számítógépen mintaalkalmazásból.
 
 ## <a name="next-steps"></a>További lépések
 
-Nyissa meg a következő cikkben tájékozódhat a térbeli intelligencia grafikonokkal és az Azure digitális Twins objektummodellt. 
+Nyissa meg a következő cikkben tájékozódhat a térbeli intelligencia grafikonokkal és az Azure digitális Twins objektummodellt.
+
 > [!div class="nextstepaction"]
 > [A Digital Twins-objektummodellek és a térbeliintelligencia-diagram ismertetése](concepts-objectmodel-spatialgraph.md)
-

@@ -3,7 +3,7 @@ title: Az automatikus méretezés Azure-beli virtuálisgép-méretezési csoport
 description: Ismerje meg, hogy egy Azure-beli virtuálisgép-méretezési alapján meghatározott ütemezés szerint vagy a teljesítményre automatikusan skálázhatja a különböző módokon
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a5386e56bffd9a9789fe431aae8ed13df8ffae13
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117435"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883296"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Beállítja az Azure virtuálisgép-méretezési csoport automatikus méretezés áttekintése
 Egy Azure-beli virtuálisgép-méretezési csoportot automatikusan növelheti vagy csökkentheti az alkalmazást futtató Virtuálisgép-példányok számát. Az automatikus és rugalmas viselkedést csökkenti a kezelési megfigyelése és optimalizálása az alkalmazás teljesítményét. Létrehozhat szabályokat, amelyek meghatározzák az elfogadható teljesítményt egy pozitív felhasználói élmény. Teljesülnek a meghatározott küszöbértékeket, az automatikus skálázási szabályok beletelhet művelet a méretezési csoport kapacitásának módosításához. Események automatikusan növelhető vagy csökkenését, a méretezési készlet kapacitásának rögzített többször is ütemezheti. Ez a cikk áttekintést, amelyek metrikák érhetők el, és milyen műveletek automatikus méretezési funkciójával hajthat végre.

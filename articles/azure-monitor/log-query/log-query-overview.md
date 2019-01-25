@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 47abb191383bd1ec1000c9fd1e0803a7d900c9bf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d3fc44456ac4f0df2bee35300c0f40728a40cb92
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117639"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882235"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Az Azure monitorban Log Analytics-adatok elemzése
 
@@ -30,7 +30,7 @@ Log Analytics-munkaterületet, amely alapján a tárolt naplóadatokat az Azure 
 
 ## <a name="log-queries"></a>Napló lekérdezések
 
-Adatok lekérése a Log Analytics naplózási lekérdezés van szüksége.  Van-e [adatelemzés a portálon](../../azure-monitor/log-query/portals.md), [egy riasztási szabály konfigurálása](../../azure-monitor/platform/alerts-metric.md) egy adott feltétel, vagy lekérése során adatokat az értesítést a [Log Analytics API](https://dev.loganalytics.io/), akkor egy lekérdezést fogja használni, adja meg a kívánt adatokat.  Ez a cikk ismerteti a Log Analytics naplóbeli lekérdezések használata, és megadja a fogalmakat, amelyek egy létrehozása előtt ismerje meg.
+Adatok lekérése a Log Analytics naplózási lekérdezés van szüksége.  Van-e [adatelemzés a portálon](../log-query/portals.md), [egy riasztási szabály konfigurálása](../platform/alerts-metric.md) egy adott feltétel, vagy lekérése során adatokat az értesítést a [Log Analytics API](https://dev.loganalytics.io/), akkor egy lekérdezést fogja használni, adja meg a kívánt adatokat.  Ez a cikk ismerteti a Log Analytics naplóbeli lekérdezések használata, és megadja a fogalmakat, amelyek egy létrehozása előtt ismerje meg.
 
 
 
@@ -38,18 +38,18 @@ Adatok lekérése a Log Analytics naplózási lekérdezés van szüksége.  Van-
 
 A különböző módon, hogy a Log Analytics lekérdezések használja a következők:
 
-- **Portálok.** Interaktív elemzés céljából, a naplóadatok hajthat végre a [az Azure portal](../../azure-monitor/log-query/portals.md).  Ez lehetővé teszi, hogy módosítsa a lekérdezést, és elemezze az eredményeket a különböző formátumok és a Vizualizációk.  
-- **Riasztási szabályok.** [Riasztási szabályok](../../azure-monitor/platform/alerts-overview.md) proaktív módon azonosíthatja a problémákat a munkaterületen lévő adatai.  Minden riasztási szabály naplókeresést, amely rendszeres időközönként automatikusan fut alapul.  Határozza meg, ha egy riasztást kell létrehozni a ellenőrzik az eredményeket.
-- **Az irányítópultok.** Kitűzheti, minden lekérdezés eredményeit egy [Azure irányítópultján](../../azure-monitor/platform/dashboards.md) Ez lehetővé teszi annak együtt megjelenítheti a napló-és metrikaadatokat, és szükség esetén megoszthatja más Azure-felhasználóval. 
-- **Nézetek.**  Adatok foglalandó felhasználói irányítópultokat és vizualizációkat hozhat létre [adatforrásnézet-tervezőből](../../azure-monitor/platform/view-designer.md).  Naplólekérdezések adja meg az adatok által használt [csempék](../../azure-monitor/platform/view-designer-tiles.md) és [Vizualizáció részek](../../azure-monitor/platform/view-designer-parts.md) az egyes nézetek.  
-- **Exportálás.**  Ha importál adatokat a Log Analytics-munkaterületet az Excel vagy [Power BI](../../azure-monitor/platform/powerbi.md), az adatok exportálása meghatározásához log lekérdezés létrehozása.
+- **Portals.** Interaktív elemzés céljából, a naplóadatok hajthat végre a [az Azure portal](../log-query/portals.md).  Ez lehetővé teszi, hogy módosítsa a lekérdezést, és elemezze az eredményeket a különböző formátumok és a Vizualizációk.  
+- **Riasztási szabályok.** [Riasztási szabályok](../platform/alerts-overview.md) proaktív módon azonosíthatja a problémákat a munkaterületen lévő adatai.  Minden riasztási szabály naplókeresést, amely rendszeres időközönként automatikusan fut alapul.  Határozza meg, ha egy riasztást kell létrehozni a ellenőrzik az eredményeket.
+- **Az irányítópultok.** Kitűzheti, minden lekérdezés eredményeit egy [Azure irányítópultján](../learn/tutorial-logs-dashboards.md) Ez lehetővé teszi annak együtt megjelenítheti a napló-és metrikaadatokat, és szükség esetén megoszthatja más Azure-felhasználóval. 
+- **Nézetek.**  Adatok foglalandó felhasználói irányítópultokat és vizualizációkat hozhat létre [adatforrásnézet-tervezőből](../platform/view-designer.md).  Naplólekérdezések adja meg az adatok által használt [csempék](../platform/view-designer-tiles.md) és [Vizualizáció részek](../platform/view-designer-parts.md) az egyes nézetek.  
+- **Exportálás.**  Ha importál adatokat a Log Analytics-munkaterületet az Excel vagy [Power BI](../platform/powerbi.md), az adatok exportálása meghatározásához log lekérdezés létrehozása.
 - **PowerShell.** PowerShell-szkriptet a parancssorban vagy egy Azure Automation-runbook által használt futtatható [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) adatokat lekérni a Log Analytics.  Ez a parancsmag egy lekérdezést a lekérni kívánt meghatározásához szükséges.
-- **Log Analytics API-t.**  A [Log Analytics naplóbeli keresési API](../../azure-monitor/platform/alerts-overview.md) lehetővé teszi, hogy bármilyen REST API-ügyfél naplóadatok lekérése a munkaterületen.  Az API-kérelem tartalmaz egy lekérdezést, amely a lekérni kívánt meghatározni a Log Analytics vonatkozóan fut le.
+- **Log Analytics API-t.**  A [Log Analytics naplóbeli keresési API](../platform/alerts-overview.md) lehetővé teszi, hogy bármilyen REST API-ügyfél naplóadatok lekérése a munkaterületen.  Az API-kérelem tartalmaz egy lekérdezést, amely a lekérni kívánt meghatározni a Log Analytics vonatkozóan fut le.
 
 ![Naplókeresések](media/log-query-overview/queries-overview.png)
 
 ## <a name="write-a-query"></a>A lekérdezés írása
-Log Analytics használati [az adatkezelő lekérdezési nyelv egy verziója](../../azure-monitor/log-query/get-started-queries.md) lekérésére és elemezheti a naplófájlok adatait egy számos különböző módon.  Általában megkezdi az alapvető lekérdezések, és majd a Speciális függvények igényeinek egyre összetettebb halad.
+Log Analytics használati [az adatkezelő lekérdezési nyelv egy verziója](../log-query/get-started-queries.md) lekérésére és elemezheti a naplófájlok adatait egy számos különböző módon.  Általában megkezdi az alapvető lekérdezések, és majd a Speciális függvények igényeinek egyre összetettebb halad.
 
 Az alapszintű struktúrát egy lekérdezés az operátorok függőleges vonás karakterrel elválasztott sorozatát követ forrástábla `|`.  Láncolhatja össze több operátor pontosítsa az adatokat, és végezze el a speciális funkciók.
 
@@ -93,9 +93,9 @@ union Update, workspace("contoso-workspace").Update
 ```
 
 ## <a name="how-log-analytics-data-is-organized"></a>Hogyan vannak rendszerezve a Log Analytics-adatok
-Ha egy lekérdezést hoz létre, akkor meghozatalához melyik táblákhoz, amely a keresett adatokat tartalmaznak. Különböző típusú adatok meg vannak osztva az egyes dedikált táblák [Log Analytics-munkaterület](../../azure-monitor/learn/quick-create-workspace.md).  Különböző adatforrásokhoz tartozó dokumentációk az adattípus, amely létrehozza a nevére, és az egyes a tulajdonságok leírását tartalmazza.  Több lekérdezés csak egyetlen tábla adatait, de mások használatával számos lehetőség több tábla adatait tartalmazza.
+Ha egy lekérdezést hoz létre, akkor meghozatalához melyik táblákhoz, amely a keresett adatokat tartalmaznak. Különböző típusú adatok meg vannak osztva az egyes dedikált táblák [Log Analytics-munkaterület](../learn/quick-create-workspace.md).  Különböző adatforrásokhoz tartozó dokumentációk az adattípus, amely létrehozza a nevére, és az egyes a tulajdonságok leírását tartalmazza.  Több lekérdezés csak egyetlen tábla adatait, de mások használatával számos lehetőség több tábla adatait tartalmazza.
 
-Miközben [Application Insights](../../azure-monitor/app/app-insights-overview.md) tárolók adatokat, mint a kérelmeket, kivételeket, nyomkövetéseket és a Log Analytics, az adatok használati tárolva van, mint a naplózási adatokat egy másik partíció. Ugyanazt a lekérdezési nyelvet használja az adatok elérésére, de kell használnia a [Application Insights-konzol](../../azure-monitor/app/analytics.md) vagy [Application Insights REST API](https://dev.applicationinsights.io/) az eléréséhez. Használhat [cross-erőforrások lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md) úgy, hogy más adatokat a Log Analytics az Application Insights-adatok.
+Miközben [Application Insights](../app/app-insights-overview.md) tárolók adatokat, mint a kérelmeket, kivételeket, nyomkövetéseket és a Log Analytics, az adatok használati tárolva van, mint a naplózási adatokat egy másik partíció. Ugyanazt a lekérdezési nyelvet használja az adatok elérésére, de kell használnia a [Application Insights-konzol](../app/analytics.md) vagy [Application Insights REST API](https://dev.applicationinsights.io/) az eléréséhez. Használhat [cross-erőforrások lekérdezések](../log-query/cross-workspace-query.md) úgy, hogy más adatokat a Log Analytics az Application Insights-adatok.
 
 
 ![Táblák](media/log-query-overview/queries-tables.png)
@@ -108,5 +108,5 @@ Miközben [Application Insights](../../azure-monitor/app/app-insights-overview.m
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [naplókeresések létrehozására és szerkesztésére használt portálok](../../azure-monitor/log-query/portals.md).
-- Tekintse meg a [oktatóanyag lekérdezések írásáról](../../azure-monitor/log-query/get-started-queries.md) az új lekérdezési nyelv segítségével.
+- További információ a [naplókeresések létrehozására és szerkesztésére használt portálok](../log-query/portals.md).
+- Tekintse meg a [oktatóanyag lekérdezések írásáról](../log-query/get-started-queries.md) az új lekérdezési nyelv segítségével.

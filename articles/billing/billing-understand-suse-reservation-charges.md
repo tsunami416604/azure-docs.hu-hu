@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 1317435a3a8fef5c9e3efa8c9cfb19fb85254a22
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 1b6e85344508d7b29e99c1ba3e6e1d0ac0aba2e3
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582666"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904063"
 ---
 # <a name="understand-how-the-suse-linux-enterprise-software-plan-discount-is-applied"></a>Megismerheti, hogyan kell alkalmazni a SUSE Linux Enterprise szoftverfrissítési csomag kedvezmény
 
@@ -53,7 +53,7 @@ Az Azure portal marketplace neve:
 |SUSE VIRTUÁLIS GÉPEK | Fogyasztásmérő azonosítója| Arány| A példában a virtuális gép mérete|
 | -------| ------------------------| --- |--- |
 |Az SLES for HPC 1-2 vcpu-k|e275a668-ce79-44e2-a659-f43443265e98|1|D2s_v3|
-|Az SLES for HPC 3-4 vcpu-k|e531e1c0-09c9-4d83-B7D0-a2c6741faa22|2|D4s_v3|
+|Az SLES for HPC 3-4 vcpu-k|e531e1c0-09c9-4d83-b7d0-a2c6741faa22|2|D4s_v3|
 |Az SLES for HPC 5 + vcpu-k|4edcd5a5-8510-49a8-a9fc-c9721f501913|2.6|D8s_v3|
 
 ### <a name="suse-linux-enterprise-server-for-hpc-standard"></a>SUSE Linux Enterprise Server HPC standard
@@ -99,8 +99,8 @@ Az Azure portal marketplace nevei:
 |SLES 8 vcpu-k |e11331a8-fd32-4e71-b60e-4de2a818c67a|3.2|D8s_v3|
 |SLES 12 core vcpu-k |a5afd00d-d3ef-4bcd-8b42-f158b2799782|3.2||
 |SLES 16 vcpu-k |bb21066f-fe46-46d3-8006-b326b1663e52|3.2| D16s_v3|
-|SLES 20 vcpu-k |c5228804-1de6-4BD4-a61c-501d9003acc8|3.2| |
-|SLES 24 mag vcpu-k |-005 d-4075-ac11-822ccde9e8f6|3.2| ND24s|
+|SLES 20 vcpu-k |c5228804-1de6-4bd4-a61c-501d9003acc8|3.2| |
+|SLES 24 mag vcpu-k |-005d-4075-ac11-822ccde9e8f6|3.2| ND24s|
 |SLES 32 vcpu-k |180c1a0a-b0a5-4de3-a032-f92925a4bf90|3.2| D32s_v3|
 |SLES 40 mag vcpu-k |a161d3d3-0592-4956-9b64-6829678b6506|3.2||
 |SLES 64 vcpu-k |7f5a36ed-d5b5-4732-b6bb-837dbf0fb9d8|3.2| D64s_v3|
@@ -113,12 +113,12 @@ Az Azure portal marketplace nevei:
 Az Azure portal marketplace nevei:
 
 - SLES 15
-- SLES 15 (szokásos)
+- SLES 15 (Standard)
 - SLES 12 SP3 (Standard)
 
 |SUSE VIRTUÁLIS GÉPEK | Fogyasztásmérő azonosítója | Arány|A példában a virtuális gép mérete|
 | ------- |------------------------| --- |--- |
-|SLES 1-2 mag vcpu-k |4b2fecfc-B110-4312-8f9d-807db1cb79ae|1|D2s_v3|
+|SLES 1-2 mag vcpu-k |4b2fecfc-b110-4312-8f9d-807db1cb79ae|1|D2s_v3|
 |SLES 3-4 mag vcpu-k |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
 |SLES 5 + vcpu-k |7b349b65-d906-42e5-833f-b2af38513468|2.30769| D8s_v3|
 

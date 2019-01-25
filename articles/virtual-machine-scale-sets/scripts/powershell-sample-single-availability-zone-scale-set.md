@@ -3,7 +3,7 @@ title: Azure PowerShell-minták – Egyzónás méretezési csoport | Microsoft 
 description: Azure PowerShell-minták
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c46f295873751b2bee870da280fb432eda892460
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: fa6f8b32d1e55b17f202b28b14ff8059f755d6bd
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467158"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888311"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>Egyzónás virtuálisgép-méretezési csoport létrehozása PowerShell segítségével
 Ez a szkript egy Windows Server 2016 rendszert futtató virtuálisgép-méretezési csoportot hoz létre egyetlen rendelkezésre állási zónában. A szkript futtatása után a virtuális gépet RDP-kapcsolaton keresztül érheti el.

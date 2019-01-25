@@ -3,20 +3,20 @@ title: Beágyazott virtualizálás az Azure Virtual machines gépeken engedélye
 description: Az Azure Virtual machines gépeken beágyazott virtualizálás engedélyezése
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
-ms.author: zarhoads
+ms.author: cynthn
 ms.date: 10/09/2017
 ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 1caf8455816bd86411a75821ee33516e8aad5de3
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 6a116c2f3d92b19f266be4d3b467a93fdeaced2c
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002263"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888974"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Egy Azure virtuális Gépen a beágyazott virtualizálás engedélyezése
 
@@ -51,10 +51,10 @@ Hozzon létre egy távoli asztali kapcsolatot a virtuális géppel.
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>Engedélyezze a Hyper-V szolgáltatást az Azure virtuális gépen
 Konfigurálhatja ezeket a beállításokat manuálisan vagy adtunk meg egy PowerShell-parancsprogram segítségével automatizálhatja a konfigurálását.
 
-### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>1. lehetőség: Beágyazott virtualizálás konfigurálása egy PowerShell-parancsprogram használatával
+### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Option 1: Beágyazott virtualizálás konfigurálása egy PowerShell-parancsprogram használatával
 Egy PowerShell-parancsfájlt egy Windows Server 2016 gazdagépen beágyazott virtualizálás engedélyezése érhető el az [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). A parancsfájl ellenőrzi az előfeltételeket, és ezután beállítja a beágyazott virtualizálás az Azure virtuális gépen. Az Azure virtuális gép újraindítására szükség a konfiguráció befejezéséhez. Ez a szkript más környezetekben is működhet, azonban nem garantált. Tekintse meg az Azure blog bejegyzésében az élő videó bemutatója a beágyazott virtualizálás az Azure-ban! https://aka.ms/AzureNVblog.
 
-### <a name="option-2-configure-nested-virtualization-manually"></a>2. lehetőség: Beágyazott virtualizálás kézi konfigurálása
+### <a name="option-2-configure-nested-virtualization-manually"></a>Option 2: Beágyazott virtualizálás kézi konfigurálása
 
 1. Az Azure virtuális gépen nyissa meg a Powershellt rendszergazdaként. 
 
@@ -134,7 +134,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 A Vendég virtuális gép kézzel statikus IP-cím beállítása a Vendég virtuális gépen, vagy a DHCP konfigurálása az Azure virtuális gépen az IP-cím hozzárendelése dinamikusan IP-címet rendelhet hozzá.
 
-###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>1. lehetőség: A DHCP dinamikusan IP-cím hozzárendelése a Vendég virtuális gép konfigurálása
+###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>Option 1: A DHCP dinamikusan IP-cím hozzárendelése a Vendég virtuális gép konfigurálása
 DHCP konfigurálása a gazdagép virtuális gép dinamikus címet osszon meg az alábbi lépésekkel.
 
 #### <a name="install-dchp-server-on-the-azure-vm"></a>Az Azure virtuális Gépen futó DHCP-kiszolgáló telepítése
@@ -161,7 +161,7 @@ DHCP konfigurálása a gazdagép virtuális gép dinamikus címet osszon meg az 
   
 6. Kattintson a **tovább** mindaddig, amíg a varázsló befejeződött, és az összes alapértelmezett értéket, majd kattintson az **Befejezés**.
     
-### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>2. lehetőség: Manuálisan állítsa be a statikus IP-címet a Vendég virtuális gépen
+### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>Option 2: Manuálisan állítsa be a statikus IP-címet a Vendég virtuális gépen
 Ha nem konfigurálta a DHCP dinamikusan IP-cím hozzárendelése a Vendég virtuális gépen, kövesse az alábbi lépéseket egy statikus IP-cím beállítása.
 
 1. Az Azure virtuális gépen nyissa meg a Powershellt rendszergazdaként.

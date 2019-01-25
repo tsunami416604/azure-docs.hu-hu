@@ -11,21 +11,21 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 1e55ad5c056bf76f8332ea84fa960b4482825bfe
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 21464cb045208d9e2e16a793b50e190b076fbe66
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826156"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903740"
 ---
 # <a name="security-info-preview-overview"></a>Biztonsági adatok (előzetes verzió) áttekintése
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
+A kétlépéses ellenőrzésre és az új jelszavak kérésére vonatkozó adatokat a **Biztonsági adatok** felületen állíthatja be. A kezdeti beállítás után nem kell újra megadnia a biztonsági adatokat. Azonban bármikor módosíthatja az adatokat és az alapértelmezett módszert.
+
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
-
-A kétlépéses ellenőrzésre és az új jelszavak kérésére vonatkozó adatokat a **Biztonsági adatok** felületen állíthatja be. A kezdeti beállítás után nem kell újra megadnia a biztonsági adatokat. Azonban bármikor módosíthatja az adatokat és az alapértelmezett módszert.
 
 Az alábbi módszerek bármelyikét hozzáadhatja:
 

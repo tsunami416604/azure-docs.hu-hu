@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 01/24/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 30ed7ff2026c64c7e40d43597a2747f1144ae125
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 13ff2c817e13337da51bb9ad40ce16838af601d9
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468609"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901377"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Az Azure AD Connect szinkronizálása: Az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör az Azure AD Connect sync szinkronizált attribútumok listája.  
@@ -45,6 +45,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | displayName |X | |
 | objectSID |X |gépi tulajdonság. AD-felhasználói azonosító az Azure közötti szinkronizálás fenntartásához használt AD és az AD. |
 | pwdLastSet |X |gépi tulajdonság. Ismerje meg, mikor már kiadott jogkivonatokat érvénytelenítéséhez használja. Jelszókivonat szinkronizálása, átmenő hitelesítésének és összevonási is használják. |
+|samAccountName|X| |
 | sourceAnchor |X |gépi tulajdonság. Nem módosítható azonosító karbantartása ADDS és az Azure AD közötti kapcsolat. |
 | usageLocation |X |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
 | userPrincipalName |X |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |

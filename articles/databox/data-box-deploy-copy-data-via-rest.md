@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fa0883c18e0d586e6e9b35fb19dbe304388045b5
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 85c9eeb60027ba44fd5e65d056864aa76a6e720a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215286"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900884"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: Adatok másolása az Azure Data Box Blob storage REST API-kon keresztül  
 
@@ -22,9 +22,9 @@ Ez az oktatóanyag leírja keresztül csatlakozni az Azure Data Box Blob storage
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
+> * Előfeltételek
 > * Data Box Blob storage-n keresztül kapcsolódni *http* vagy *https*
 > * Adatok másolása a Data Boxra
-> * A szállítás előkészítése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -201,18 +201,17 @@ Ha csak azokat az erőforrásokat szeretné átmásolni a forrásból, amelyek n
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 
 
-## <a name="prepare-to-ship"></a>A szállítás előkészítése
-
-[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
+Következő lépés, hogy az eszköz szállításra való előkészítése.
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 
 > [!div class="checklist"]
+> * Előfeltételek
 > * Data Box Blob storage-n keresztül kapcsolódni *http* vagy *https*
 > * Adatok másolása a Data Boxra
-> * A szállítás előkészítése
+
 
 Folytassa a következő oktatóanyaggal, megtudhatja, hogyan tehetnek a Data Box elküldje a Microsoftnak.
 

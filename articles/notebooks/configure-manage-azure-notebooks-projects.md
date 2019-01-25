@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847543"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904369"
 ---
 # <a name="manage-and-configure-projects"></a>Projektek kezelése és konfigurálása
 
@@ -41,9 +41,9 @@ A **futtatása** legördülő listából válassza ki a projekt irányítópultj
 
 ![COMPUTE csomag legördülő listából válassza ki a projekt irányítópultján](media/project-compute-tier-list.png)
 
-Elkerülheti, hogy ezek a korlátozások használatával már kiépített egy Azure-előfizetésében lévő másik virtuális gépet. A virtuális gépen Jupyter is telepíteni kell. Az adatelemző virtuális gép rendszerképekkel jó döntések mert alapértelmezés szerint a Jupyter tartalmazzák.
+Elkerülheti, hogy ezek a korlátozások használatával már kiépített egy Azure-előfizetésében lévő másik virtuális gépet. Telepítse, és JupyterHub futtatása a virtuális gépen. Az adatelemző virtuális gép (operációs rendszer) rendszerképekkel jó döntések alapértelmezés szerint JupyterHub, tartalmazza.
 
-Bármely megfelelően konfigurált Azure virtuális gép használatával csatlakozhat a **közvetlen számítási** lehetőséget a legördülő listában. Ez a beállítás megadását kéri megjelenjen a listában) (név, IP-címet a virtuális gép és portot (általában 8000, mely JupyterHub figyeli az alapértelmezett portot) és a virtuális gép hitelesítő adatainak:
+Ha már rendelkezik egy megfelelően konfigurált Azure virtuális gép, jelölje be a **közvetlen számítási** lehetőséget a legördülő listából válassza ki, amely kéri a nevet (való megjelenítéséhez a listában), a virtuális gép IP-cím és (általában 8000-es portot, amelyhez az alapértelmezett port a JupyterHub figyeli), és a virtuális gép hitelesítő adatokat:
 
 ![Rákérdezés a közvetlen Compute option server adatainak összegyűjtése](media/project-compute-tier-direct.png)
 
@@ -51,13 +51,13 @@ Az alábbi feltételek teljesülése esetén a legördülő listában megtalálh
 
 - Egy olyan fiókkal, amely használja az Azure Active Directory (AAD), például egy vállalati fiók jelentkezett be az Azure-jegyzetfüzeteket.
 - A fiók Azure-előfizetés csatlakoztatva van.
-- Egy vagy több virtuális gépekkel rendelkezik, az adott előfizetésben való legalább olvasó access, az adatelemző virtuális gép Linux (Ubuntu) lemezképet használó.
+- Egy vagy több virtuális gépekkel rendelkezik, az adott előfizetésben való legalább olvasó access, az adatelemző virtuális gép Linux (Ubuntu) lemezképet használó.)
 
 ![A legördülő listából válassza ki a projekt irányítópultján található adatok adatelemzési virtuálisgép-példányok](media/project-compute-tier-dsvm.png)
 
 Amikor kiválaszt egy DSVM-példányt, Azure notebookok kérheti az adott gép hitelesítő adatainak a virtuális gép létrehozásakor használt.
 
-Új DSVM-példány létrehozásához kövesse az utasításokat [hozzon létre egy Ubuntu adatelemző virtuális gép](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Ön *kell* használja a **adatelemző virtuális gép Linux (Ubuntu)** képfájl, mert az Azure notebookok nem jeleníti meg, amely a Windows- vagy CentOS lemezképeket Dsvm.
+Új DSVM-példány létrehozásához kövesse az utasításokat [hozzon létre egy Ubuntu adatelemző virtuális gép](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Használja a **adatelemző virtuális gép Linux (Ubuntu)** képfájl, ha azt szeretné, hogy a dsvm-hez, megjelenik a legördülő listából válassza ki az Azure-jegyzetfüzeteket.  Ha szeretné használni a Windows- vagy CentOS kép más okokból is használhatja a **közvetlen számítási** a dsvm-hez való kapcsolódáshoz a manuális beállítást.
 
 ## <a name="edit-project-metadata"></a>Projekt metaadatainak szerkesztése
 

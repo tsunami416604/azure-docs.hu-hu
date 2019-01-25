@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 70280676453bd146102ca331daae038b947aab58
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: ade066c08829181bc7d1ad5623934b98909e0310
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632857"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888991"
 ---
-# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-bővítmény linuxhoz (Microsoft.OSTCExtensions.DSCForLinux)
+# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC Extension for Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -54,7 +54,7 @@ A DSC Linux-bővítményt az összes támogatja a [bővítmény támogatott oper
  
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A DSCForLinux bővítmény szükséges, hogy a céloldali virtuális gép csatlakozik az internethez. Ha például Register bővítmény kapcsolódnia kell az Automation szolgáltatás. Más műveletek, például lekéréses, lekéréses, a telepítés kapcsolódnia kell az azure ki-és github. Azt az ügyfél által megadott beállításoktól függ.
+A DSCForLinux bővítmény szükséges, hogy a céloldali virtuális gép csatlakozik az internethez. Ha például Register bővítmény kapcsolódnia kell az Automation szolgáltatás. Más műveletek, például lekéréses, lekéréses, a telepítés kapcsolódnia kell az azure storage-és github. Azt az ügyfél által megadott beállításoktól függ.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -64,7 +64,7 @@ A támogatott nyilvános konfiguráció-paraméterek a következők:
 
 * `FileUri`: (nem kötelező, string) uri-ját a MOF fájl/Meta MOF fájl/egyéni erőforrás ZIP-fájlt.
 * `ResourceName`: (nem kötelező, string) az egyéni erőforrás-modul neve
-* `ExtensionAction`: (nem kötelező, string) megadja a bővítmény leírása. érvényes értékek: regisztrálja, leküldéses, kérje le, telepítse, eltávolítás. Ha nincs megadva, akkor számít leküldéses műveletként alapértelmezés szerint.
+* `ExtensionAction`: (nem kötelező, string) megadja a bővítmény leírása. Érvényes értékek: Register, Push, Pull, Install, Remove. Ha nincs megadva, akkor számít leküldéses műveletként alapértelmezés szerint.
 * `NodeConfigurationName`: (nem kötelező, string) a alkalmazni a csomópont-konfiguráció nevét.
 * `RefreshFrequencyMins`: (nem kötelező, csak int) megadja, hogy milyen gyakran (percben) DSC a lekéréses kiszolgálóról szerzik be a konfiguráció. 
        Ha a lekérési kiszolgálón konfigurációja eltér a jelenlegivel célcsomóponton, a függőben lévő tárolóba másolja, és alkalmazza.
@@ -88,14 +88,14 @@ Az alábbiakban az összes védett konfigurációs paraméterek:
 ## <a name="scenarios"></a>Forgatókönyvek
 
 ### <a name="register-to-azure-automation-account"></a>Az Azure Automation-fiók regisztrálása
-Protected.JSON
+protected.json
 ```json
 {
   "RegistrationUrl": "<azure-automation-account-url>",
   "RegistrationKey": "<azure-automation-account-key>"
 }
 ```
-public.JSON
+public.json
 ```json
 {
   "ExtensionAction" : "Register",
@@ -124,7 +124,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>MOF-konfigurációs fájl (az Azure Storage-fiók) alkalmazása a virtuális géphez
 
-Protected.JSON
+protected.json
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -132,7 +132,7 @@ Protected.JSON
 }
 ```
 
-public.JSON
+public.json
 ```json
 {
   "FileUri": "<mof-file-uri>",
@@ -156,7 +156,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-mof-configuration-file-in-public-storage-to-the-vm"></a>MOF-konfigurációs fájl (a nyilvános tárolási) alkalmazása a virtuális géphez
 
-public.JSON
+public.json
 ```json
 {
   "FileUri": "<mof-file-uri>"
@@ -172,7 +172,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-meta-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>Meta MOF-konfigurációs fájl (az Azure Storage-fiók) alkalmazása a virtuális géphez
 
-Protected.JSON
+protected.json
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -180,7 +180,7 @@ Protected.JSON
 }
 ```
 
-public.JSON
+public.json
 ```json
 {
   "ExtensionAction": "Pull",
@@ -202,7 +202,7 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Meta MOF-konfigurációs fájl (a nyilvános tárolási) alkalmazása a virtuális géphez
-public.JSON
+public.json
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
@@ -218,14 +218,14 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-zip-file-in-azure-storage-account-to-the-vm"></a>Egy egyéni erőforrás modul (ZIP-fájlt az Azure Storage-fiók) telepítése a virtuális géphez
-Protected.JSON
+protected.json
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
-public.JSON
+public.json
 ```json
 {
   "ExtensionAction": "Install",
@@ -247,7 +247,7 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-zip-file-in-public-storage-to-the-vm"></a>Egy egyéni erőforrás modul (ZIP-fájlt a nyilvános tárolási) telepítése a virtuális géphez
-public.JSON
+public.json
 ```json
 {
   "ExtensionAction": "Install",
@@ -263,7 +263,7 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>Távolítsa el a virtuális gép egy egyéni erőforrás-modul
-public.JSON
+public.json
 ```json
 {
   "ResourceName": "<resource-name>",
@@ -289,7 +289,7 @@ Az Azure Resource Manager-sablonnal kapcsolatos további részletekért látogas
 
 ## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
-### <a name="21-using-azure-cliazure-cli"></a>2.1. Használatával [**Azure CLI-vel**] [azure-cli]
+### <a name="21-using-azure-cliazure-cli"></a>2.1. Using [**Azure CLI**][azure-cli]
 DSCForLinux bővítmény üzembe helyezése előtt konfigurálnia kell a `public.json` és `protected.json`, megfelelően azokat az eseteket, a 3.
 
 #### <a name="211-classic"></a>2.1.1. Klasszikus
@@ -424,8 +424,8 @@ Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájl
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-Kód chyby: 51 jelöli, vagy a disztribúció nem támogatott, vagy a művelet nem támogatott bővítményt.
-Bizonyos esetekben DSC Linux-bővítmény nem sikerül telepítenie az OMI, ha OMI újabb verziója már megtalálható a gép. [hiba válasz: nem engedélyezett (000003) alacsonyabb szintű]
+Hibakód: 51 jelöli, vagy a disztribúció nem támogatott, vagy a művelet nem támogatott bővítményt.
+Bizonyos esetekben DSC Linux-bővítmény nem sikerül telepítenie az OMI, ha OMI újabb verziója már megtalálható a gép. [hiba válasz: (000003) Visszalépés nem engedélyezett.]
 
 
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a23561e082736b7dfae6205e75fd1e9ccfab5f6c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: bae80a63db480d6399c7d192561435494e183844
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463388"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900646"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Az AD DS-összekötő fiók engedélyeinek konfigurálása 
 
@@ -205,21 +205,21 @@ Ez a parancsmag állítja a következő engedélyekkel:
 Csoportvisszaírás használata esetén az AD DS-összekötő fiókhoz tartozó engedélyek beállításához futtassa: 
 
 ``` powershell
-Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 Vagy; 
 
 ``` powershell
-Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
 ```
  
 Ez a parancsmag állítja a következő engedélyekkel: 
 
 |Típus |Name (Név) |Hozzáférés |Erre vonatkozik|
 |-----|-----|-----|-----| 
-|Engedélyezés |AD DS-összekötő fiók |Általános olvasási/írási |Leszármazott csoportobjektumokhoz| 
-|Engedélyezés |AD DS-összekötő fiók |Gyermek-objektum létrehozása/törlése |Ez az objektum és az összes leszármazott objektum| 
-|Engedélyezés |AD DS-összekötő fiók |Létrehozása/törlése objektumhoz és az összes hozzá tartozó gyermekek |Ez az objektum és az összes leszármazott objektum|
+|Engedélyezés |AD DS-összekötő fiók |Általános olvasási/írási |Az összes objektum attribútumainak írja be a csoport és alobjektumaihoz| 
+|Engedélyezés |AD DS-összekötő fiók |Gyermek-objektum létrehozása/törlése |Az összes objektum attribútumainak írja be a csoport és alobjektumaihoz| 
+|Engedélyezés |AD DS-összekötő fiók |Fa objektumok törlése vagy törlése|Az összes objektum attribútumainak írja be a csoport és alobjektumaihoz|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Hibrid Exchange-telepítés vonatkozó engedélyek 
 Az Exchange hibrid telepítés használata esetén az AD DS-összekötő fiókhoz tartozó engedélyek beállításához futtassa: 

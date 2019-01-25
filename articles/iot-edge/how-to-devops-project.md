@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 114b6b0cc0fd4e8e51a9dbf2cdc8d9e2a2261754
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 57279a4e92b1f42505003f12d41c8203aa5603d4
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823487"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54881869"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Az IoT Edge-hez az Azure DevOps Projects (előzetes verzió) segítségével a CI/CD-folyamat létrehozása
 
@@ -38,7 +38,7 @@ DevOps-projektek az Azure DevOps hoz létre a CI/CD-folyamat. Hozzon létre egy 
 
    ![Válassza ki a nyelvet és a egy új alkalmazás létrehozása](./media/how-to-devops-project/select-language.png)
 
-2. Válassza ki **egyszerű IoT (előzetes verzió)** az alkalmazás-keretrendszer, és válassza ki, **tovább**.
+2. Válassza ki **egyszerű IoT (előzetes verzió)** az alkalmazási keretrendszer, és válassza ki, **tovább**.
 
    ![Egyszerű IoT keretrendszer kiválasztása](media/how-to-devops-project/select-iot.png)
 
@@ -73,7 +73,7 @@ DevOps-projektek a projekt Git-tárházat az Azure-Adattárakkal hoz létre. Ebb
 
 1. Nyissa meg a projekt létrehozása az adattárhoz, válassza ki a **Tárházak** a projekt-irányítópult menüjében.  
 
-   ![Az Azure-kódtárak a generált nézet tárház](./media/how-to-devops-project/view-repositories.png)
+   ![Nézet tárház jön létre az Azure-Adattárakkal](./media/how-to-devops-project/view-repositories.png)
 
 2. Az alábbi lépések bemutatják, hogy a kódon módosítani kellene a webböngésző használatával. Ha a tárház helyi inkább klónozásához, jelölje be **Klónozás** a felső, az ablak jobb. A megadott URL-cím használata a Visual Studio Code vagy az előnyben részesített fejlesztési eszköz a Git-tárház klónozásához. 
 
@@ -93,7 +93,7 @@ DevOps-projektek a projekt Git-tárházat az Azure-Adattárakkal hoz létre. Ebb
 
 ## <a name="examine-the-cicd-pipeline"></a>Vizsgálja meg a CI/CD-folyamat
 
-Az előző szakaszokban Azure DevOps Projects egy teljes CI/CD-folyamat az IoT Edge-alkalmazás automatikusan konfigurálva. Ön tesztelik, amely a buildelési folyamat által a fájlok véglegesítése módosításait. Most ismerje meg, és testre szabhatja a folyamat igény szerint. A következő lépésekkel Ismerkedjen meg az Azure DevOps-buildelési és kiadási folyamatok.
+Az előző szakaszokban Azure DevOps Projects egy teljes CI/CD-folyamat az IoT Edge-alkalmazás automatikusan konfigurálva. Majd, hogy a buildelési folyamat tesztelte véglegesíti a módosításokat, egy fájlt. Most ismerje meg, és testre szabhatja a folyamat igény szerint. A következő lépésekkel Ismerkedjen meg az Azure DevOps-buildelési és kiadási folyamatok.
 
 1. A DevOps-projekt a build folyamatok megtekintéséhez jelölje ki **hozhat létre folyamatokat** a projekt-irányítópult menüjében. Ez a hivatkozás megnyílik egy böngészőlap, és az Azure DevOps folyamat az új projekt létrehozása.
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 1e27fb26b00502b63d6023b41b6a26b179b453be
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
-ms.translationtype: HT
+ms.openlocfilehash: a1d4af695807a6e2c5ef4ee74527083002bc6015
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094042"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900766"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Függvényalkalmazás létrehozása az Azure Portal használatával
 
@@ -35,7 +35,7 @@ A függvényalkalmazás létrehozása után létrehozhatja a különálló függ
 
 ## <a name="service-plans"></a>Szolgáltatáscsomagok
 
-Az Azure Functions két különböző szolgáltatáscsomaggal rendelkezik: használatalapú és App Service-csomag. A használatalapú csomag automatikusan foglalja le a számítási teljesítményt a kód futtatásakor: szükség szerint horizontális felskálázást végez a terhelésnek megfelelően, majd horizontális leskálázást hajt végre, ha a kód nem fut. Az App Service-csomag az App Service minden szolgáltatásához hozzáférést nyújt a függvényalkalmazásnak. A szolgáltatáscsomagot a függvényalkalmazás létrehozásakor kell kiválasztania, és a módosítása jelenleg nem lehetséges. További információ: [Azure Functions szolgáltatási csomag kiválasztása](functions-scale.md).
+Az Azure Functions két különböző szolgáltatáscsomaggal rendelkezik: Használatalapú és App Service-csomag. A használatalapú csomag automatikusan foglalja le a számítási teljesítményt a kód futtatásakor: szükség szerint horizontális felskálázást végez a terhelésnek megfelelően, majd horizontális leskálázást hajt végre, ha a kód nem fut. Az App Service-csomag az App Service minden szolgáltatásához hozzáférést nyújt a függvényalkalmazásnak. A szolgáltatáscsomagot a függvényalkalmazás létrehozásakor kell kiválasztania, és a módosítása jelenleg nem lehetséges. További információ: [Azure Functions szolgáltatási csomag kiválasztása](functions-scale.md).
 
 Ha JavaScript-függvények futtatását tervezi egy App Service-csomagon, kevesebb maggal rendelkező csomagot érdemes választania. További információ: [JavaScript-referencia a Functionshöz](functions-reference-node.md#choose-single-vcpu-app-service-plans).
 
@@ -53,6 +53,3 @@ További információ a tárfiókok típusairól: [Az Azure Storage szolgáltat�
 ## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
-
-
-

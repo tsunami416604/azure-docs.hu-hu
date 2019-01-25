@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 0cd3d3044623e2265a4ef5f817ed41258e63ae1c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 15ef1905562d04c2732016dfd1340910b3a8f699
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995515"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900357"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 
@@ -67,7 +67,7 @@ Miután meghatározta a kimeneti kötést, módosítania kell a kódot, hogy az 
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
 
-Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorba ír üzeneteket. Ez az üzenet tartalmazza az értéket, amelyet a HTTP-eseményindító a lekérdezési sztringben kap meg. Ha például a lekérdezési sztring a `name=Azure` értéket tartalmazza, az üzenetsorban található üzenet a következő lesz: *A függvénynek átadott név: Azure*.
+Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorba ír üzeneteket. Ez az üzenet tartalmazza az értéket, amelyet a HTTP-eseményindító a lekérdezési sztringben kap meg. Például, ha a lekérdezési karakterláncot tartalmaz `name=Azure`, az üzenetsorban található üzenet lesz *a függvénynek átadott név: Azure*.
 
 1. A függvényre kattintva jelenítse meg a szerkesztőben a függvénykódot.
 
@@ -150,7 +150,7 @@ Hagyja ki ezt a szakaszt, ha már telepítette és csatlakoztatta a Storage Expl
 
 1. Bontsa ki az **Üzenetsorok** csomópontot, majd válassza ki az **outqueue** nevű üzenetsort. 
 
-   Az üzenetsor tartalmazza az üzenetet, amelyet az üzenetsor kimeneti kötése létrehozott a HTTP által aktivált függvény futtatásakor. Ha az alapértelmezett *Azure* `name` értékkel hívta meg a függvényt, az üzenetsorban található üzenet a következő lesz: *A függvénynek átadott név: Azure*.
+   Az üzenetsor tartalmazza az üzenetet, amelyet az üzenetsor kimeneti kötése létrehozott a HTTP által aktivált függvény futtatásakor. Ha a függvény az alapértelmezett hívta `name` értékét *Azure*, az üzenetsorban található üzenet van *a függvénynek átadott név: Azure*.
 
     ![A Storage Explorerben megjelenő üzenetsori üzenet](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
@@ -162,6 +162,6 @@ Hagyja ki ezt a szakaszt, ha már telepítette és csatlakoztatta a Storage Expl
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban hozzáadott egy kimeneti kötést egy meglévő függvényhez. További információ a tárolási üzenetsor kötéséről: [Azure Functions – a tárolási üzenetsor kötései](functions-bindings-storage-queue.md). 
+Ebben a rövid útmutatóban hozzáadott egy kimeneti kötést egy meglévő függvényhez. További információ a tárolási üzenetsor kötéséről: [Azure Functions – a tárolási üzenetsor kötései](functions-bindings-storage-queue.md).
 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
+[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps-2.md)]

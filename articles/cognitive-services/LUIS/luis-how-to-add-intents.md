@@ -8,15 +8,15 @@ manager: cgronlun
 ms.custom: seodec18
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: c8bcbe011dc4ff9841a06b914a90ae7f9a14ee74
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d353f37b89f9932827a07fc8079aa606d425ed38
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598502"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882871"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések meghatározni a felhasználó szándékának beszédmódok hozzáadása
 
@@ -24,19 +24,7 @@ Adjon hozzá [leképezések](luis-concept-intent.md) az olyan kérdések és azo
 
 Leképezések a felső navigációs sávban felügyelt **hozhat létre** című szakaszában, majd a bal oldali panelen **leképezések**. 
 
-## <a name="create-an-app"></a>Alkalmazás létrehozása
-
-1. Jelentkezzen be a [LUIS](https://www.luis.ai) portálon.
-
-1. Válassza a **Create new app** (Új alkalmazás létrehozása) lehetőséget. 
-
-1. Nevezze el az új alkalmazás `MyHumanResourcesApp`. Válassza ki a **angol** kulturális környezet. A leírás megadása nem kötelező. 
-
-1. Válassza a **Done** (Kész) lehetőséget. 
-
 ## <a name="add-intent"></a>Szándék hozzáadása
-
-1. Az alkalmazás megnyílik a **leképezések** listája.
 
 1. Az **Intents** (Szándékok) lapon válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
 

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 39d49a223fb02d00af2309922ccd98a764264b4d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 57290384b31b868deb9e285fb05fec8ebe10a53f
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452513"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902737"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?
 
@@ -71,9 +71,15 @@ Multi-factor authentication szolgáltatás használatával segít az erőforrás
 
 ### <a name="compliant-device"></a>Megfelelő eszköz
 
-Konfigurálhatja, amelyek a eszközalapú feltételes hozzáférési szabályzatokat. Az eszközalapú feltételes hozzáférési szabályzat célja, hogy hozzáférést csak a konfigurált erőforrások [felügyelt eszközök](require-managed-devices.md). A megfelelő eszköz megkövetelése meg kell adnia az egyik lehetőség van egy felügyelt eszközt. Ezt a beállítást, ha a feltételes hozzáférési szabályzat engedélyezi a hozzáférést a hozzáférési kísérletek eszközökkel, amelyek [regisztrált](../devices/overview.md) az Azure Active Directory és a rendszer megfelelőként megjelölt vagy (az összes eszköz operációs rendszere) az Intune által a külső MDM-rendszer Windows 10 rendszerű eszközökhöz. Eszköz operációs rendszer típusa Windows 10-es nem harmadik fél mobileszköz-kezelési rendszerek nem támogatottak.
+Konfigurálhatja, amelyek a eszközalapú feltételes hozzáférési szabályzatokat. Az eszközalapú feltételes hozzáférési szabályzat célja, hogy csak a kiválasztott felhőalapú alkalmazások a hozzáférési jogot [felügyelt eszközök](require-managed-devices.md). Egy megfelelőként megjelölt eszköz megkövetelése az egyik lehetőség van a felügyelt eszközökről való hozzáférés korlátozásához. Eszköz megfelelőként jelölhetők Intune (a bármely eszköz operációs rendszere), vagy a külső MDM-rendszer Windows 10 rendszerű eszközökhöz. Eszköz operációs rendszer típusa Windows 10-es nem harmadik fél mobileszköz-kezelési rendszerek nem támogatottak. 
 
-További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok beállítása](require-managed-devices.md).
+Az eszköz regisztrálva kell lennie az Azure AD, mielőtt azt is megfelelőként megjelölt. Három lehetősége van az eszköz regisztrálása: 
+
+- [Az Azure ad-ben regisztrált eszközök](../devices/overview.md#azure-ad-registered-devices)
+- [Az Azure AD-csatlakoztatott eszközök](../devices/overview.md#azure-ad-joined-devices)  
+- [Hibrid Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#hybrid-azure-ad-joined-devices)
+
+További információkért lásd: [a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés igénylése a felügyelt eszközök](require-managed-devices.md).
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Hibrid Azure AD-csatlakoztatott eszköz
 

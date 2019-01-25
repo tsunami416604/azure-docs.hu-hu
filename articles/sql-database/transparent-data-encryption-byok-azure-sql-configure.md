@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell és CLI: SQL TDE - kulcs – Azure SQL Database engedélyezése |} A Microsoft Docs'
+title: 'PowerShell és CLI: Engedélyezze az SQL TDE - kulcs – Azure SQL Database |} A Microsoft Docs'
 description: Egy Azure SQL Database és az adatraktár használatához a transzparens adattitkosítás (TDE) az inaktív titkosítási konfigurálása a PowerShell vagy parancssori felület használatával.
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 0fad0cd32e8df38c5a9c06ecf01a14340f1bc9ef
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 87ffc4619f2ad864113db3b3aed42aa23535cb83
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165075"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900324"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell és a parancssori felület: Azure Key vaultból saját kulcs használata transzparens adattitkosítás engedélyezése
+# <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell és CLI: A saját kulcs Azure Key vault használatával transzparens adattitkosítás engedélyezése
 
 Ez a cikk végigvezeti a transzparens adattitkosítás (TDE) egy SQL-adatbázis vagy adatraktár Azure Key Vaultban lévő kulcsot használ. A TDE Bring Your Own Key (BYOK) támogatásával kapcsolatos további információkért látogasson el [TDE Bring Your Own Key az Azure SQL](transparent-data-encryption-byok-azure-sql.md). 
 
@@ -32,7 +32,7 @@ Ez a cikk végigvezeti a transzparens adattitkosítás (TDE) egy SQL-adatbázis 
    - [Key vault PowerShell-utasítások](../key-vault/key-vault-get-started.md)
    - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-get-started.md#HSM)
  - A key vaultban kell rendelkeznie a TDE használható a következő tulajdonság:
-   - [helyreállítható törlés](../key-vault/key-vault-ovw-soft-delete.md)
+   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
    - [A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel](../key-vault/key-vault-soft-delete-powershell.md) 
 - A kulcs TDE használható a következő attribútumokkal kell rendelkeznie:
    - Lejárati dátum nélküli
@@ -186,8 +186,8 @@ Ellenőrizze a következőket a probléma akkor fordul elő, ha:
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, a TDE-Védőhöz, egy kiszolgáló biztonsági követelmények ahhoz, hogy rotálása: [elforgatása a transzparens adattitkosítási védelmi modulra vonatkozó PowerShell használatával](transparent-data-encryption-byok-azure-sql-key-rotation.md).
-- Esetén a biztonsági kockázatot jelent, megtudhatja, hogyan távolítsa el a potenciálisan veszélyeztetett TDE-Védőhöz: [egy esetleg feltört kulcs eltávolítására](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
+- Ismerje meg, hogy a TDE-Védőhöz, egy kiszolgáló biztonsági követelmények ahhoz, hogy rotálása: [A transzparens adattitkosítási védelmi modulra vonatkozó PowerShell használatával elforgatása](transparent-data-encryption-byok-azure-sql-key-rotation.md).
+- Esetén a biztonsági kockázatot jelent megtudhatja, hogyan távolítsa el a potenciálisan veszélyeztetett TDE-Védőhöz: [Egy esetleg feltört kulcs eltávolítására](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
 
 ## <a name="prerequisites-for-cli"></a>Parancssori felület előfeltételei
 
@@ -198,7 +198,7 @@ Ellenőrizze a következőket a probléma akkor fordul elő, ha:
    - [CLI 2.0 használatával a Key Vault felügyelete](../key-vault/key-vault-manage-with-cli2.md)
    - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-get-started.md#HSM)
  - A key vaultban kell rendelkeznie a TDE használható a következő tulajdonság:
-   - [helyreállítható törlés](../key-vault/key-vault-ovw-soft-delete.md)
+   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
    - [A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel](../key-vault/key-vault-soft-delete-cli.md) 
 - A kulcs TDE használható a következő attribútumokkal kell rendelkeznie:
    - Lejárati dátum nélküli
@@ -208,7 +208,7 @@ Ellenőrizze a következőket a probléma akkor fordul elő, ha:
 ## <a name="step-1-create-a-server-and-assign-an-azure-ad-identity-to-your-server"></a>1. lépés Hozzon létre egy kiszolgálót és a egy Azure AD identity rendelhet hozzá a kiszolgálóhoz
       cli
       # create server (with identity) and database
-      az sql server create -n "ServerName" -g "ResourceGroupName" -l "westus" -u "cloudsa" -p "YourFavoritePassWord99@34" -I 
+      az sql server create -n "ServerName" -g "ResourceGroupName" -l "westus" -u "cloudsa" -p "YourFavoritePassWord99@34" -i 
       az sql db create -n "DatabaseName" -g "ResourceGroupName" -s "ServerName" 
       
 

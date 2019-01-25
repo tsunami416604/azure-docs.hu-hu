@@ -1,5 +1,5 @@
 ---
-title: Az Azure HDInsight-fürtök automatikus méretezése
+title: Automatikus skálázása az Azure HDInsight-fürtök (előnézet)
 description: A HDInsight automatikus méretezési funkciója segítségével fürtök automatikus méretezése
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 043c83e2039d87b1650ba17f770ce16a2ad2c13d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 977466d77bee2d6fe49c0438aa1d9d4489f8eb5f
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811162"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888226"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtök automatikus méretezése
+# <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatikus skálázása az Azure HDInsight-fürtök (előnézet)
 
 Az Azure HDInsight-fürt automatikus skálázási funkció automatikusan méretezi magát a munkavégző csomópontok számát felfelé és lefelé a fürt egy előre definiált tartományon belüli terhelés alapján. Egy új HDInsight-fürt létrehozásakor a feldolgozó csomópontok minimális és maximális száma megadható. Az automatikus méretezés, majd a figyelők az analytics erőforrásigényeinek betölteni és méretezi a munkavégző csomópontok számát vagy leskálázásakor, ennek megfelelően. Nem jár további költségekkel ennek a funkciónak.
 
@@ -27,15 +27,17 @@ Az Azure HDInsight-fürt automatikus skálázási funkció automatikusan mérete
 > [!Note]
 > Az automatikus skálázás jelenleg csak a támogatott Azure HDInsight Hive, a MapReduce és a Spark fürt 3.6-os verzióját.
 
-Kövesse a [létrehozása Linux-alapú fürtök a HDInsight az Azure portal használatával](hdinsight-hadoop-create-linux-clusters-portal.md) , és ha egyenlege eléri az 5. lépése **fürtméret**, jelölje be **munkavégző csomópont (előzetes verzió) automatikus skálázási** ahogy az alábbi. 
+Teljes HDInsight fürt létrehozásának lépései az Azure Portal használatával található [a HDInsight az Azure portal használatával Linux-alapú fürtök](hdinsight-hadoop-create-linux-clusters-portal.md).  A létrehozási folyamat során az automatikus méretezés engedélyezése szükséges néhány gyakorlattól eltérő a szokásos telepítési lépéseket.  
 
-![Munkavégző csomópont automatikus skálázási beállítás engedélyezése](./media/hdinsight-autoscale-clusters/worker-node-autoscale-option.png)
+1. Válassza ki **egyéni (méret, beállítások, alkalmazások)** helyett **Gyorslétrehozás**.
+2. 5. lépés az egyéni **fürtméret**, ellenőrizze a **munkavégző csomópont automatikus skálázási** jelölőnégyzetet.
+3. Adja meg a kívánt:  
+  &#8226;Kezdeti **száma a munkavégző csomópontok**.  
+  &#8226;**Minimális** munkavégző csomópontok száma.  
+  &#8226;**Maximális** munkavégző csomópontok száma.  
 
-Ez a beállítás bejelölésével megadhatja:
+![Munkavégző csomópont automatikus skálázási beállítás engedélyezése](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
 
-* A feldolgozó csomópontok kezdeti száma
-* A feldolgozó csomópontok minimális száma
-* A feldolgozó csomópontok maximális száma
 
 A munkavégző csomópontok kezdeti száma között minimális és maximális tartományba kell esnie. Ez az érték határozza meg a fürt kezdeti mérete, a létrehozásakor. A feldolgozó csomópontok minimális száma csak nullánál nagyobbnak kell lennie.
 
@@ -43,12 +45,12 @@ Miután kiválasztotta az egyes csomóponttípusok VM-típus, lesz megtekintheti
 
 Az előfizetés minden olyan régió esetében kapacitás kvótával rendelkezik. Kombinálva a feldolgozó csomópontok maximális száma a fő csomópontok magok teljes száma nem haladhatja meg a kapacitás kvótát. Azonban ez a kvóta-e egy enyhe korlát; bármikor létrehozhat egy támogatási jegyet, hogy könnyen növelni álljon.
 
-> [!Note]
+> [!Note]  
 > Ha túllépi a teljes magkvótájának határértékét, kapni fog egy hibaüzenet közli, hogy "a csomópontok maximális túllépte a rendelkezésre álló magok ebben a régióban, válasszon egy másik régióban, vagy forduljon az támogatási a kvóta növeléséhez."
 
 ### <a name="create-cluster-with-an-resource-manager-template"></a>Fürt létrehozása a Resource Manager-sablon
 
-Resource Manager-sablonnal egy HDInsight-fürt létrehozásakor meg kell tennie az "computeProfile" "munkavégző csomópont" szakaszban adja hozzá a következő beállításokat:
+Teljes HDInsight fürt létrehozása Resource Manager-sablonok használatával lépéseket található [Apache Hadoop-fürtök létrehozása a HDInsight használatával a Resource Manager-sablonok](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  Egy HDInsight-fürtön az Azure Resource Manager-sablon létrehozásakor kell a "computeProfile" a "workernode" szakaszban adja hozzá a következő beállításokat, és ennek megfelelően szerkesztésére:
 
 ```json
 {                            

@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/22/2019
-ms.openlocfilehash: 6ebbaece66d9055fd2bff68eee873b012b4a6d50
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 1/23/2019
+ms.openlocfilehash: eca67cb70756dd1184bd3a66c2582743c8baa8fd
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462420"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903757"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvassa el a replikákat az Azure Database for MySQL-hez
 
-A olvasható replika funkció (nyilvános előzetes verzió) lehetővé teszi, hogy replikálja az adatokat egy Azure Database for MySQL-kiszolgáló (master) legfeljebb öt csak olvasható kiszolgálók (replikák) azonos Azure-régióban. Csak olvasható replika aszinkron módon frissíti a MySQL-motor natív bináris napló (binlog) fájl elhelyezése-alapú replikációs technológiával. Binlog replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL binlog replikálációs szolgáltatása-áttekintés](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
+> [!IMPORTANT]
+> Az olvasási replika funkció nyilvános előzetes verzióban érhető el.
+
+Az olvasási replika funkció lehetővé teszi, hogy replikálja az adatokat egy Azure Database for MySQL-kiszolgáló (master) legfeljebb öt csak olvasható kiszolgálók (replikák) azonos Azure-régióban. Csak olvasható replika aszinkron módon frissíti a MySQL-motor natív bináris napló (binlog) fájl elhelyezése-alapú replikációs technológiával. Binlog replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL binlog replikálációs szolgáltatása-áttekintés](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
 Az Azure Database for MySQL szolgáltatáshoz készült replika új kiszolgálókat, amelyek normál vagy önálló MySQL-kiszolgálók azonos módon kezelhetők. Minden egyes olvasható replika számlázzuk ki a virtuális magok kiépített számítási és a felhasznált tárterület GB/hó. 
 

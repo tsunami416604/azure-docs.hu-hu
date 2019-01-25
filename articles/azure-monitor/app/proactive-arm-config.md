@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: edfd908166e4334bdfda0f043cba727cb0370405
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7e4756fb241500a2f153b452c6dc5a4e332bdd6b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853595"
+ms.locfileid: "54881596"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával az Application Insights intelligens detektálási szabályok kezelése
 
@@ -157,7 +157,7 @@ Alább az intelligens detektálási szabályok nevének táblázatát, mivel azo
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Ki kapja a (klasszikus) riasztási értesítések?
 
-Ez a szakasz csak az intelligens detektálás klasszikus riasztások vonatkozik, és segít optimalizálni a riasztási értesítések biztosítják, hogy csak a kívánt címzettek megkapják az értesítéseket. Bővebb információt a különbség a [klasszikus riasztások] (.. /Platform/Alerts-Classic.overview.md és a riasztások új kezelőfelülete a [riasztások áttekintő cikkben](../platform/alerts-overview.md). Intelligens detektálás jelenleg csak a klasszikus riasztások élmény támogatási riasztást küld. Ez az egyetlen kivétel a [intelligens detektálás riasztások az Azure-felhőszolgáltatás](./proactive-cloud-services.md). Riasztás szabályozhatja az Azure-felhő az intelligens detektálás riasztásokhoz kapcsolódó értesítések használata services [Műveletcsoportok](../platform/action-groups.md).
+Ez a szakasz csak az intelligens detektálás klasszikus riasztások vonatkozik, és segít optimalizálni a riasztási értesítések biztosítják, hogy csak a kívánt címzettek megkapják az értesítéseket. Ismerje meg jobban a különbség a [klasszikus riasztások](../platform/alerts-classic.overview.md) , majd tekintse át a riasztások új kezelőfelülete a [riasztások áttekintő cikkben](../platform/alerts-overview.md). Intelligens detektálás jelenleg csak a klasszikus riasztások élmény támogatási riasztást küld. Ez az egyetlen kivétel a [intelligens detektálás riasztások az Azure-felhőszolgáltatás](./proactive-cloud-services.md). Riasztás szabályozhatja az Azure-felhő az intelligens detektálás riasztásokhoz kapcsolódó értesítések használata services [Műveletcsoportok](../platform/action-groups.md).
 
 * Az intelligens észlelés és klasszikus riasztási értesítéseket meghatározott címzettek használatát javasoljuk.
 

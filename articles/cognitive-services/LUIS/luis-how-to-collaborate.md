@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d1db8974ce134b50340db500c9ea1b00126fe10a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6b9dd4beccbe8bc872c46976f490400daa200c3a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086419"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888838"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Szerzők és a közreműködők kezelése 
 
@@ -67,7 +67,12 @@ Ha a bérlői rendszergazda nem fog bejelentkezni a LUIS, a rendszergazda hozzá
 
 ![Alkalmazás webhelye által az Azure active directory-engedély](./media/luis-how-to-collaborate/tenant-permissions.png)
 
-Ha a bérlői rendszergazda csak meghatározott felhasználóknak, hogy a LUIS használatát szeretné, tekintse meg a [identity blog](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/).
+Ha a bérlői rendszergazda csak meghatározott felhasználóknak, hogy a LUIS használatát fájlvédelemre, van néhány lehetséges megoldások:
+* Engedélyezi az "admin" (beleegyezik abba, hogy minden felhasználó, az Azure AD), azonban az "Igen" a "felhasználó-hozzárendelés szükséges" Vállalati alkalmazás Tulajdonságok területen, majd állítsa be, és végül hozzárendelése/csak a kívánt felhasználók hozzáadása az alkalmazáshoz. Ezzel a módszerrel a rendszergazda "rendszergazdai jóváhagyás" továbbra is biztosít az alkalmazásnak, azonban lehetséges szabályozhatja a felhasználókat, hogy hozzá tud férni.
+* A második megoldás használatával van [Azure AD Graph API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) történő minden egyes adott felhasználónak. 
+
+További információ az Azure active directory – felhasználók és engedélyt: 
+* [Az alkalmazás korlátozása](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) , a felhasználók egy csoportja
 
 ### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>A közreműködők több e-mailt a felhasználói fiókok
 

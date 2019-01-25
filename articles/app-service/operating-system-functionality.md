@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ad27a7eaf88ae57f730609e2b0f43a2f5ea182a1
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653509"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901785"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Az Azure App Service-ben az operációs rendszer funkcionalitása
 Ez a cikk ismerteti a gyakori alapkonfiguráció operációs rendszer funkcionalitása futó összes Windows-alkalmazások számára elérhető [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és az adatbázis eléréséhez, és a diagnosztikai naplók és események. 
@@ -128,6 +128,10 @@ Diagnosztikai naplózás és nyomkövetés, amelyek nem érhetők el az alkalmaz
 Alkalmazások rendelkeznek csak olvasható hozzáférést (bár nem: mind) a beállításjegyzék, a virtuális gép, amelyen futnak. A gyakorlatban ez azt jelenti, amelyek lehetővé teszik a helyi felhasználók csoport a csak olvasható hozzáférést beállításkulcsok alkalmazások által elérhető. Része a beállításjegyzékben, amely jelenleg nem támogatott olvasási vagy írási hozzáférése a HKEY\_aktuális\_felhasználói hive.
 
 A beállításjegyzék írási hozzáféréssel le van tiltva, beleértve a felhasználónkénti beállításkulcsok való hozzáférést. Az alkalmazás szempontjából, a beállításjegyzéket írási hozzáféréssel kell soha nem lehet hivatkozni az Azure-környezetben, mivel az alkalmazások (és is) települnek át a különböző virtuális gépek között. A csak írható adattárolásra, amely képes lehet alárendelve, az alkalmazás által az alkalmazásonkénti tartalom könyvtárstruktúrát a az App Service UNC-megosztásokon tárolt. 
+
+## <a name="remote-desktop-access"></a>Távoli asztali hozzáférés
+
+App Service-ben a távoli asztali hozzáférés a Virtuálisgép-példányok nem biztosít.
 
 ## <a name="more-information"></a>További információ
 

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 466e12877a63a32f461267a489573183b9da9734
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ac5dbb0aed9ff8aec632ffa285ad0f26a859b9f4
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451306"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901649"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: Örökölt hitelesítés letiltása az Azure AD feltételes hozzáférés   
 
@@ -120,6 +120,15 @@ A házirend érvénybe lép, akár 24 órát is igénybe vehet.
 Kiválaszthatja a feltételhez más ügyfelek; az összes rendelkezésre álló engedély azonban a végfelhasználói mindig azonos, - hozzáférés blokkolva.
 
 Beállíthatja, hogy az ügyfelek feltétel mellett egyéb feltételeket.
+Például ha csak szeretné mobileszközökhöz az örökölt hitelesítés letiltása, állítsa be a **eszközplatformok** kiválasztásával feltétel:
+
+- Android
+
+- iOS
+
+- Windows Phone
+
+![A szabályzatkonfiguráció nem támogatott](./media/block-legacy-authentication/06.png)
 
 
 

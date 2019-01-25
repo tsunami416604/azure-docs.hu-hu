@@ -3,7 +3,7 @@ title: Az Azure Docker VM bővítmény használata |} A Microsoft Docs
 description: A Docker VM bővítmény használata gyors és biztonságos üzembe helyezéséhez egy Docker-környezetben az Azure Resource Manager-sablonokkal és az Azure CLI használatával
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
-ms.author: zarhoads
-ms.openlocfilehash: 75959225d6fcc5487466ed26a21ba2d26c55cde9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 59dbbb8374455088d759a5e837b8d3bc22145d3e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465933"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882763"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Hozzon létre egy Docker-környezetben az Azure-ban a Docker VM-bővítmény
 
@@ -39,7 +39,7 @@ További információ a különböző központi telepítési módszer, például
 
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Az Azure Docker Virtuálisgép-bővítménnyel-sablon üzembe helyezése
-Egy meglévő gyorsindítási sablon használatával hozzon létre egy Ubuntu virtuális gép, amely használja az Azure Docker VM-bővítmény telepítése és konfigurálása a Docker-gazdagép. A sablon itt is megtekintheti: [egy Ubuntu virtuális gép docker üzembe](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). A legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+Egy meglévő gyorsindítási sablon használatával hozzon létre egy Ubuntu virtuális gép, amely használja az Azure Docker VM-bővítmény telepítése és konfigurálása a Docker-gazdagép. A sablon Itt tekintheti meg: [A docker használatával egy Ubuntu virtuális gép üzembe](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). A legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 

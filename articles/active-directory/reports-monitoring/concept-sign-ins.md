@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 73f90d1df2c1a6a0655a61026112cc2a7a73cb1e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1e20fead4e9eb78946ddbe1ce223915ed0101ccf
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808629"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904199"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -161,8 +161,8 @@ Ha nagyobb rugalmasságra van szüksége, használhat szkriptet. Kattintson a **
 
 Ha azt szeretné, futtassa a parancsfájlt egy **Windows 10-es** gépen kell néhány további lépést végeznie. 
 
-1. Telepítse a [AzureRM-modul](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.4.0l).
-2. A modul importálásához nyissa meg egy PowerShell-parancssort, és a következő parancs futtatásával **Import-Module AzureRM**.
+1. Telepítse a [Az modul](/powershell/azure/install-az-ps).
+2. A modul importálásához nyissa meg egy PowerShell-parancssort, és a következő parancs futtatásával **Az Import-Module**.
 3. Futtatás **Set-ExecutionPolicy unrestricted** válassza **Igen, az összeset**. 
 4. Most futtathatja a letöltött PowerShell-parancsfájl rendszergazdai módban, a CSV-fájl létrehozásához.
 

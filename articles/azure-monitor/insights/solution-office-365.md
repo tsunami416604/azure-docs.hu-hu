@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 3eb1228ed9d15fb976f94df114f8725a8c41599d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: ba79365ec310c7d62d0a4de07991d516430b9d41
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230458"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886144"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -29,7 +29,7 @@ Az Office 365 felügyeleti megoldás a Log Analytics az Office 365-környezete f
 - Konfigurációs módosítások vagy magas jogosultságú műveleteket nyomon követéséhez rendszergazdai tevékenységek figyelése.
 - Észlelése és vizsgálata a nem kívánt felhasználói viselkedés, amely a szervezet igényeinek megfelelően testre szabható.
 - Naplózási és megfelelőségi bemutatása. Figyelheti például fájl bizalmas fájlokat, amelyek segítségére lehet a naplózást és megfelelőségi folyamat a hozzáférési műveleteket.
-- Az operatív hibaelhárítás elvégzése érdekében [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) a szervezet az Office 365 adatok felett.
+- Az operatív hibaelhárítás elvégzése érdekében [naplókereséseket](../log-query/log-query-overview.md) a szervezet az Office 365 adatok felett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A következő kötelező végezniük a megoldás telepítve és konfigurálva.
@@ -40,7 +40,7 @@ A következő kötelező végezniük a megoldás telepítve és konfigurálva.
  
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
-Ez a megoldás nem telepíti a minden felügyeleti csomagot [csatlakoztatott felügyeleti csoportok](../../azure-monitor/platform/om-agents.md).
+Ez a megoldás nem telepíti a minden felügyeleti csomagot [csatlakoztatott felügyeleti csoportok](../platform/om-agents.md).
   
 ## <a name="install-and-configure"></a>Telepítés és konfigurálás
 Először adja hozzá a [az előfizetés az Office 365-megoldás](solutions.md#install-a-management-solution). Miután hozzáadta, ebben a szakaszban neki hozzáférést az Office 365-előfizetéssel, hajtsa végre a konfigurációs lépéseket.
@@ -476,7 +476,7 @@ Az Office 365 felügyeleti megoldás részben ismertetett eljárással eltávol�
 
 ## <a name="data-collection"></a>Adatgyűjtés
 ### <a name="supported-agents"></a>Támogatott ügynökök
-Az Office 365-megoldás nem adatlekéréshez bármelyikét a [Log Analytics-ügynökök](../../azure-monitor/platform/agent-data-sources.md).  Lekéri az adatokat közvetlenül az Office 365-höz.
+Az Office 365-megoldás nem adatlekéréshez bármelyikét a [Log Analytics-ügynökök](../platform/agent-data-sources.md).  Lekéri az adatokat közvetlenül az Office 365-höz.
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 Kezdetben gyűjtendő adatokat, több óráig is eltarthat. Miután gyűjtése kezdődik, az Office 365 küld egy [webhook értesítési](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) részletes adatokat a Log Analyticshez való minden alkalommal, amikor létrejön egy rekord. Ez a rekord fogadását követően néhány percen belül a Log Analytics érhető el.
@@ -656,7 +656,7 @@ Ezek a Tulajdonságok megegyeznek az összes SharePoint-rekordok.
 | EventSource | Meghatározza, hogy az esemény történt-e a Sharepointban. Lehetséges értékek a következők: a SharePoint vagy ObjectModel. |
 | ItemType | A típusú objektum, amely lett vagy nem módosítottak. Részletekért tekintse meg a ItemType táblázatot az azon objektumok típusait. |
 | MachineDomainInfo | Eszköz szinkronizálási műveletek vonatkozó adatokat. Ez az információ csak akkor, ha a kérelemben szereplő jelentett. |
-| Gépazonosító |   Eszköz szinkronizálási műveletek vonatkozó adatokat. Ez az információ csak akkor, ha a kérelemben szereplő jelentett. |
+| MachineId |   Eszköz szinkronizálási műveletek vonatkozó adatokat. Ez az információ csak akkor, ha a kérelemben szereplő jelentett. |
 | Site_ | A hely, ahol a fájl vagy mappa a felhasználó által hozzáfért megtalálható GUID Azonosítóját. |
 | Source_Name | Az entitás, amely kiváltotta a naplózott műveletet. Lehetséges értékek a következők: a SharePoint vagy ObjectModel. |
 | UserAgent | A felhasználó ügyfél vagy a böngésző vonatkozó adatokat. Ez az információ az ügyfél vagy a böngésző által biztosított. |
@@ -700,14 +700,14 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 | Lekérdezés | Leírás |
 | --- | --- |
 |Az Office 365-előfizetéshez a műveletek száma |OfficeActivity &#124; művelet count() összegzése |
-|SharePoint-webhelyek használatát|OfficeActivity &#124; ahol OfficeWorkload = ~ "sharepoint" &#124; count() by SiteUrl összefoglalója | Rendezés növekvő száma|
+|SharePoint-webhelyek használatát|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl | Rendezés növekvő száma|
 |Felhasználó típusa fájl hozzáférés-műveletek|Keresés a (OfficeActivity) OfficeWorkload = ~ "azureactivedirectory" és "MyTest"|
 |Egy adott kulcsszót tartalmazó keresése|Típus OfficeActivity OfficeWorkload = "MyTest" azureactivedirectory =|
-|Az Exchange külső műveletek figyelése|OfficeActivity &#124; ahol OfficeWorkload = ~ "Exchange-hez" és a ExternalAccess igaz ==|
+|Az Exchange külső műveletek figyelése|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|
 
 
 
 ## <a name="next-steps"></a>További lépések
-* A részletes frissítési adatokat a [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) Naplókeresés funkciójával is megtekintheti.
-* [Saját irányítópult létrehozásával](../../azure-monitor/platform/dashboards.md) kedvenc Office 365 keresési lekérdezések megjelenítéséhez.
-* [Riasztások létrehozása](../../azure-monitor/platform/alerts-overview.md) proaktívan értesíti a fontos Office 365-tevékenységek.  
+* A részletes frissítési adatokat a [Log Analytics](../log-query/log-query-overview.md) Naplókeresés funkciójával is megtekintheti.
+* [Saját irányítópult létrehozásával](../learn/tutorial-logs-dashboards.md) kedvenc Office 365 keresési lekérdezések megjelenítéséhez.
+* [Riasztások létrehozása](../platform/alerts-overview.md) proaktívan értesíti a fontos Office 365-tevékenységek.  

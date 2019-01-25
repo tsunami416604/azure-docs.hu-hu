@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 4c8fcc403b274d161893194109dee4bc8d0cb369
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 433718c19e0df5fac87273f2b46f8ae090ed7510
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974363"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888566"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és az Azure Data Factoryban tömörítési kodek
 
@@ -93,7 +93,7 @@ Ha meg szeretné elemezni a JSON-fájlok vagy JSON formátumban szeretne adatoka
 | filePattern |Az egyes JSON-fájlokban tárolt adatok mintáját jelzi. Az engedélyezett értékek a következők: **setOfObjects** és **arrayOfObjects**. Az **alapértelmezett** érték a **setOfObjects**. A mintákkal kapcsolatban lásd a [JSON-fájlminták](#json-file-patterns) című szakaszt. |Nem |
 | jsonNodeReference | Ha egy azonos mintával rendelkező tömbmezőben található objektumokat szeretne iterálni, vagy azokból adatokat kinyerni, adja meg a tömb JSON-útvonalát. Ez a tulajdonság csak akkor, ha másol adatokat támogatott **a** JSON-fájlokat. | Nem |
 | jsonPathDefinition | Megadja az egyes oszlopmegfeleltetések JSON-útvonalának kifejezését testre szabott oszlopnevekkel (kezdje kisbetűvel). Ez a tulajdonság csak akkor, ha másol adatokat támogatott **a** JSON-fájlokat, és tud nyerni adatokat objektumokból vagy tömbökből. <br/><br/> A gyökérobjektum alatti mezők esetében kezdjen a gyökér $ értékkel. A `jsonNodeReference` tulajdonság által kiválasztott tömbben lévő mezők esetében kezdjen a tömbelemmel. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt. | Nem |
-| encodingName |A kódolási név megadására szolgál. Érvényes kódolási nevekkel listájáért lásd: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) tulajdonság. Például: windows-1250 vagy shift_jis. A **alapértelmezett** érték: **AZ UTF-8**. |Nem |
+| encodingName |A kódolási név megadására szolgál. Érvényes kódolási nevekkel listájáért lásd: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) tulajdonság. Például: windows-1250 vagy shift_jis. A **alapértelmezett** érték: **UTF-8**. |Nem |
 | nestingSeparator |A beágyazási szinteket elválasztó karakter. Az alapértelmezett érték a „.” (pont). |Nem |
 
 ### <a name="json-file-patterns"></a>JSON-fájlminták
@@ -414,15 +414,19 @@ Ha elemezni szeretné a Parquet-fájlokat, vagy Parquet formátumban szeretne ad
 }
 ```
 
-> [!IMPORTANT]
-> A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol Parquet-fájlokat **,-van**, az integrációs modul gépen a JRE (Java-futtatókörnyezet) 8 telepítenie kell. Egy 64 bites integrációs modul 64 bites JRE szükséges. Mindkét verziót megtalálja [itt](https://go.microsoft.com/fwlink/?LinkId=808605).
->
-
 Vegye figyelembe a következő szempontokat:
 
 * Összetett adattípusok nem támogatottak (MAP, LIST).
 * Az oszlop neve szóközt nem támogatott.
 * Parquet-fájlok a következő tömörítéshez kapcsolódó beállítással rendelkezik: NONE, SNAPPY, GZIP és LZO. Data Factory támogatja az ezek egyikét sem a Parquet-fájlok adatait kivéve LZO formátumok tömörített - tömörítési kodeket használ az adatok olvasásához a metaadatok olvasása. A Parquet-fájlokba való írás esetén azonban a Data Factory a SNAPPY tömörítést választja, amely az alapértelmezett a Parquet-fájlok esetében. Jelenleg nincs lehetőség ennek a viselkedésnek a felülírására.
+
+> [!IMPORTANT]
+> A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol Parquet-fájlokat **,-van**, telepítenie kell a **64 bites JRE 8 (Java-futtatókörnyezet) vagy Openjdk csomagját** az integrációs modul gépen. Olvassa el az alábbi részletekkel kapcsolatban.
+
+Futó helyi IR a parquet eszközökben fájl szerializálás/deszerializálás másolásához, ADF a Java-futtatókörnyezet megkeresi a beállításjegyzék először is ellenőrzésével *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* a JRE, ha nem talál, másodszor ellenőrzése rendszerváltozó *`JAVA_HOME`* az openjdk csomagját. 
+
+- **JRE használandó**: A 64 bites integrációs modul 64 bites JRE szükséges. Annak a [Itt](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Openjdk csomagját használandó**: IR 3.13 verziója óta támogatott. A jvm.dll, az összes többi csomagot annak megfelelően szükséges szerelvények openjdk csomagját, helyi integrációs modul gép és a rendszer környezeti változó beállítása JAVA_HOME.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Adattípus-leképezés Parquet-fájlokat
 
@@ -460,15 +464,19 @@ Ha elemezni szeretné a ORC-fájlokat, vagy ORC formátumban szeretne adatokat �
 }
 ```
 
-> [!IMPORTANT]
-> A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol ORC-fájlokat **,-van**, az integrációs modul gépen a JRE (Java-futtatókörnyezet) 8 telepítenie kell. Egy 64 bites integrációs modul 64 bites JRE szükséges. Mindkét verziót megtalálja [itt](https://go.microsoft.com/fwlink/?LinkId=808605).
->
-
 Vegye figyelembe a következő szempontokat:
 
 * Összetett adattípusok nem támogatottak (STRUCT, MAP, LIST, UNION).
 * Az oszlop neve szóközt nem támogatott.
 * ORC fájl rendelkezik három [tömörítéshez kapcsolódó beállítással](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB, SNAPPY. A Data Factory a három tömörített formátum bármelyikében lévő ORC-fájlokból támogatja az adatok olvasását. Az adatok olvasásához a metaadatokban szereplő tömörítési kodeket használja. Az ORC-fájlokba való írás esetén azonban a Data Factory a ZLIB tömörítést választja, amely az alapértelmezett az ORC-fájlok esetében. Jelenleg nincs lehetőség ennek a viselkedésnek a felülírására.
+
+> [!IMPORTANT]
+> A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol ORC-fájlokat **,-van**, telepítenie kell a **64 bites JRE 8 (Java-futtatókörnyezet) vagy openjdk csomagját**  az integrációs modul gépen. Olvassa el az alábbi részletekkel kapcsolatban.
+
+Fut a helyi integrációs modul az ORC fájl szerializálás/deszerializálás másolásához, ADF a Java-futtatókörnyezet megkeresi a beállításjegyzék először is ellenőrzésével *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* a JRE, ha nem talál, másodszor ellenőrzése rendszerváltozó *`JAVA_HOME`* az openjdk csomagját. 
+
+- **JRE használandó**: A 64 bites integrációs modul 64 bites JRE szükséges. Annak a [Itt](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Openjdk csomagját használandó**: IR 3.13 verziója óta támogatott. A jvm.dll, az összes többi csomagot annak megfelelően szükséges szerelvények openjdk csomagját, helyi integrációs modul gép és a rendszer környezeti változó beállítása JAVA_HOME.
 
 ### <a name="data-type-mapping-for-orc-files"></a>Adattípus-leképezés ORC-fájlokat
 

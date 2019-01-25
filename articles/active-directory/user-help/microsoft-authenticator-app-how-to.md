@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Authenticator alkalmazás – az Azure Active Directory használatának első lépései |} A Microsoft Docs
-description: A Microsoft Authenticator legújabb verziójára történő frissítésének ismertetése.
+title: Töltse le és telepítse a Microsoft Authenticator alkalmazás – az Azure Active Directory |} A Microsoft Docs
+description: Hogyan letöltése, telepítése és a Microsoft Authenticator alkalmazás használata a kétfaktoros ellenőrzéshez.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,108 +9,40 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 01/24/2019
 ms.author: lizross
-ms.reviewer: librown
-ms.openlocfilehash: 43c09bc01e0ed5bd9093242db9183883e402a6f1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.reviewer: olhaun
+ms.openlocfilehash: 6a55be6a7443017250a00a473fd57cd7d49226aa
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825578"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902720"
 ---
-# <a name="get-started-with-the-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás használatának első lépései
+# <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazás
+A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok kétfaktoros ellenőrzési használatakor. A kétfaktoros hitelesítési segítségével a fiókok biztonságosabb, hozzáférhet a különösen bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejtett is, amelyeket elloptak vagy feltört, kéttényezős hitelesítés végrehajtása egy további biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében.
 
-A Microsoft Authenticator alkalmazás segít az illetéktelen hozzáférés megakadályozása a csalárd tranzakciókat leállítás, így Ön egy további biztonsági szint a munkájához és fiókok vagy az iskolai fiókjával (például alain@contoso.com) vagy (a személyes Microsoft-fiókja a példában alain@outlook.com).
+Többféle módon, beleértve a Microsoft Authenticator alkalmazást is használhatja:
 
-Az alkalmazás a kétlépéses ellenőrzéshez használatakor együtt tudjon működni a két módszer egyikével:
+- **A kétfaktoros ellenőrzése.** A standard hitelesítési módszer, ahol a tényezők egyik, a jelszót. Miután bejelentkezik a felhasználónévvel és jelszóval, hagyja jóvá az értesítést, vagy megadott ellenőrző kód megadása.
 
-- **Értesítés.** Az alkalmazás értesítést küld az eszközre. Ellenőrizze, hogy az értesítés megfelelő, és adja meg **ellenőrizze**. Ha nem ismeri fel az értesítést, válassza ki a **Megtagadás**. Miután rákattintott **Megtagadás**, megjelölheti a csalárd jellegű kérésre.
+- **Telefonos bejelentkezés.** A verzió, amely lehetővé teszi a kétfaktoros hitelesítés bejelentkezési jelszó, a felhasználónév és a mobil eszköz használata az ujjlenyomatot, arc vagy PIN-kód kérése nélkül.
 
-- **Ellenőrző kódot.** Miután beírta a felhasználónevét és jelszavát, nyissa meg az alkalmazást, és másolja a megadott ellenőrző kód a **fiókok** képernyő be a bejelentkezési képernyő. Az ellenőrző kód egy második hitelesítési mód funkcionál.
+>[!NOTE]
+>Ha bejelentkezik a fiókjába problémákat tapasztal, tekintse meg [mikor nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429) segítséget.  További információ arról, mi a teendő, ha kap a ["a megadott Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) jelenik meg, jelentkezzen be Microsoft-fiókjával.
 
-## <a name="opt-in-for-two-step-verification"></a>Részvétel a kétlépéses ellenőrzéshez
+## <a name="download-and-install-the-app"></a>Töltse le és telepítse az alkalmazást
+Telepítse a legújabb verzióját a Microsoft Authenticator alkalmazást, az operációs rendszer alapján:
 
-A szervezet úgy dönt, hogy kétlépéses ellenőrzést használatát a munkahelyi vagy iskolai fiókjával. A rendszergazda lehetővé teszi, hogy melyik ellenőrzési módszerek sorát kell beállítani és használni. További információkért lásd: [Mi az Azure multi-factor Authentication jelent számomra](multi-factor-authentication-end-user.md).
+- **Google Android.** Android-eszközön nyissa meg a Google Play [töltse le és telepítse a Microsoft Authenticator alkalmazás](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator).
 
-Személyes Microsoft-fiókja akkor maga a kétlépéses ellenőrzés állíthatja. További részletes információk és útmutatás: [tudnivalók a kétlépéses ellenőrzés](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
+- **Apple iOS.** Az Apple iOS-eszközön nyissa meg az App Store a [töltse le és telepítse a Microsoft Authenticator alkalmazás](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
-Nem Microsoft-fiókok a Microsoft Authenticator alkalmazást is használhatja. Ezeket a fiókokat előfordulhat, hogy hívja a szolgáltatás nem a kétlépéses ellenőrzést, de Ön is megkeresheti a biztonsági vagy bejelentkezési beállítások képesnek kell lennie. Ezek a nem Microsoft-fiókok beállításával kapcsolatos további információkért tekintse meg a [videók a Microsoft ügyfélszolgálata](https://www.youtube.com/playlist?list=PLyhj1WZ29G65QdD9NxTOAm8HwOS-OBUrX).
-
-## <a name="install-the-app"></a>Az alkalmazás telepítése
-
-A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el. A legoptimálisabb lekéréséhez, hagyja, az alkalmazás értesítéseket kaphat, amikor a rendszer arra kéri. 
-
-## <a name="add-accounts-to-the-app"></a>Fiókok hozzáadása az alkalmazáshoz
-
-A Microsoft Authenticator alkalmazás munkahelyi vagy iskolai fiókokhoz vagy személyes fiókokat adhat hozzá. 
-
-### <a name="add-a-personal-microsoft-account"></a>Személyes Microsoft-fiók hozzáadása
-
-Személyes Microsoft-fiók (egy, amellyel jelentkezzen be Outlook.com, Xbox, Skype, stb.) be kell csak jelentkezzen be a Microsoft Authenticator alkalmazást a fiókjába.
-
-### <a name="add-a-work-or-school-account"></a>Munkahelyi vagy iskolai fiók beállítása
-
-1. Ha lehetséges, nyissa meg a [további biztonsági ellenőrzés](https://aka.ms/mfasetup) képernyőn egy másik számítógépen vagy eszközön. Erre a képernyőre beolvasásával kapcsolatos információkért lásd: [biztonsági beállítások módosítása](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page) , vagy forduljon a rendszergazdához.
+- **Windows Phone.** A Microsoft Store, lépjen a Windows Phone [töltse le és telepítse a Microsoft Authenticator alkalmazás](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fwww.microsoft.com%2Fen-us%2Fp%2Fmicrosoft-authenticator%2F9nblgggzmcj6).
 
     >[!Note]
-    >Ha a rendszergazda a biztonsági adatok előzetes felület van kapcsolva, az utasítások a [beállítása a biztonsági adatok használata egy hitelesítő alkalmazást](security-info-setup-auth-app.md) szakaszban.
-
-2. Jelölje be a jelölőnégyzetet a **hitelesítő alkalmazás**, majd válassza ki **konfigurálása**.
-
-    ![A Konfigurálás gombra a biztonsági ellenőrzési beállítások képernyőn](./media/microsoft-authenticator-app-how-to/auth-app-configure.png)
-
-    A **mobilalkalmazás konfigurálása** képernyő jelenik meg, hogy a hitelesítő alkalmazás a QR-kódot.
-
-    ![Képernyő, amely a QR-kódot tartalmaz](./media/microsoft-authenticator-app-how-to/auth-app-barcode.png)
-
-3. Nyissa meg a Microsoft Authenticator alkalmazást. Az a **fiókok** képernyőn válassza ki **fiók hozzáadása**, majd válassza ki **munkahelyi vagy iskolai fiók**.
-
-4. A QR-kód, és válassza ki az eszköz kamerájának használata **kész** gombra kattintva zárja be a QR-kód képernyőn.
-
-    >[!Note]
-    >Ha a kamera nem működik megfelelően, akkor [írja be a QR-kódot és URL-cím manuálisan](#add-an-account-to-the-app-manually).
-
-    A **fiókok** a képernyőn az alkalmazás megtekintheti a fiók nevét és a egy 6 jegyű ellenőrző kódot. A fokozott biztonság érdekében az ellenőrző kód módosítása meggátolja, hogy ugyanazt a kódot kétszer használatával 30 másodpercenként.  
-
-    ![fiókok képernyő](./media/microsoft-authenticator-app-how-to/auth-app-accounts.png)
-
-### <a name="add-an-account-to-the-app-manually"></a>Fiók manuális hozzáadása az alkalmazáshoz
-
-1. Nyissa meg a **további biztonsági ellenőrzés** képernyő. Hogyan érhetik el ezt a képernyőt a további információkért lásd: [biztonsági beállítások módosítása](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page).
-
-2. Jelölje be a jelölőnégyzetet a **hitelesítő alkalmazás**, majd válassza ki **konfigurálása**.
-
-    A **mobilalkalmazás konfigurálása** képernyő jelenik meg.
-
-3. Másolja át a kódot és URL-cím adatait a **mobilalkalmazás konfigurálása** képernyőn, így manuálisan megadhatja azokat a QR-olvasót be.
-
-4. Nyissa meg a Microsoft Authenticator alkalmazást. Az a **fiókok** képernyőn válassza ki **fiók hozzáadása**, majd válassza ki **munkahelyi vagy iskolai fiók**.
-
-5. Válassza ki a QR-olvasót képernyő **írja be a kódot manuálisan**.
-
-    ![A QR-kód képernyőn](./media/microsoft-authenticator-app-how-to/auth-app-manual-code.png)
-   
-6. Írja be a kódot és URL-be a QR-kódot a képernyőn a **vegyen fel egy fiókot** képernyőn, és válassza ki **Befejezés**.
-
-    ![Kódot és URL-cím megadására szolgáló képernyő](./media/microsoft-authenticator-app-how-to/auth-app-code-url.png)
-
-    A **fiókok** a képernyőn az alkalmazás megtekintheti a fiók nevét és a egy 6 jegyű ellenőrző kódot. A fokozott biztonság érdekében az ellenőrző kód módosítása meggátolja, hogy ugyanazt a kódot kétszer használatával 30 másodpercenként.
-
-### <a name="using-your-devices-fingerprint-or-facial-recognition-capabilities"></a>Az eszköz ujjlenyomattal vagy arcfelismerési képességekkel használatával
-
-A szervezet szükség lehet PIN-kód identitása igazolásához. Az eszköz ujjlenyomattal vagy arcfelismerési funkciókat használni a PIN-kód helyett állíthatja be a Microsoft Authenticator alkalmazást. Beállíthat Ez az első alkalommal használja az authenticator alkalmazás ellenőrizni a fiókját, az eszköz biometrikus képességeinek használatához PIN-kód helyett azonosítására beállítás kiválasztásával.
-
-## <a name="use-the-app-when-you-sign-in"></a>Amikor bejelentkezik az alkalmazás használata
-
-Miután hozzáadta a fiókok az alkalmazáshoz, jelentkezzen be a fiókok az alkalmazás használatával.
-
-Ha úgy döntött, hogy ellenőrző kódok használata az alkalmazásban, kezdetén megjelennek a **fiókok** lapot. A kód 30 másodpercenként módosítani, hogy amikor szüksége van egy mindig van egy új kódot. Azonban nem kell semmit velük mindaddig, amíg jelentkezzen be, és a rendszer kéri, adja meg egy ellenőrző kódot.
+    >A telefonos bejelentkezési folyamat a Windows Phone-telefonok nem használható. Leírtak szerint kell használnia a standard hitelesítési eljárás a [kétlépéses ellenőrzés beállítása](multi-factor-authentication-end-user-first-time.md) cikk.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha az alkalmazással kapcsolatos további általános kérdése van, tekintse meg [a Microsoft Authenticator – gyakori kérdések](microsoft-authenticator-app-faq.md)
-
-- Ha azt szeretné, hogy további információ a kétlépéses ellenőrzést, [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md)
-
-- Ha azt szeretné, hogy további információ a biztonsági adatait, tekintse meg [a biztonsági adatok kezelése](security-info-manage-settings.md)
+- Miután töltse le és telepítse az alkalmazást, hozzá kell adnia a különböző fiókokról. További információkért lásd: [adja hozzá a fiókokat](microsoft-authenticator-app-add-accounts-overview.md).

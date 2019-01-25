@@ -11,12 +11,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: f12aed12138b1b16fcce90401ea0d65bd083675f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 02832ee84e02251239ab4364aac9ad0894c681b9
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546716"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884781"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -37,10 +37,10 @@ Az Azure SQL Analytics csak egy felhőalapú megoldást támogató adatfolyamké
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Azure Diagnostics](../../azure-monitor/platform/collect-azure-metrics-logs.md) | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure Log Analytics érkeznek. |
-| [Azure Storage-fiók](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | A log Analytics egy storage-fiókból az adatok nem olvashatók. |
-| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Nem | A megoldás a közvetlen Windows-ügynökök nem használja. |
-| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem | A megoldás a közvetlen Linux-ügynökök nem használja. |
+| [Azure Diagnostics](../platform/collect-azure-metrics-logs.md) | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure Log Analytics érkeznek. |
+| [Azure Storage-fiók](../platform/collect-azure-metrics-logs.md) | Nem | A log Analytics egy storage-fiókból az adatok nem olvashatók. |
+| [Windows-ügynökök](../platform/agent-windows.md) | Nem | A megoldás a közvetlen Windows-ügynökök nem használja. |
+| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | A megoldás a közvetlen Linux-ügynökök nem használja. |
 | [System Center Operations Manager felügyeleti csoport](../platform/om-agents.md) | Nem | Közvetlen kapcsolat legyen az Operations Manager-ügynök a Log Analytics szolgáltatáshoz a megoldás nem használja. |
 
 ## <a name="configuration"></a>Konfiguráció
@@ -185,7 +185,7 @@ A megoldás automatikus riasztások teljesül egy feltétel alapján riasztást 
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Riasztások létrehozása az Azure SQL Database
 
-Könnyen [riasztásokat hozhat létre](../../azure-monitor/platform/alerts-metric.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [lekérdezések naplózását](../../azure-monitor/log-query/log-query-overview.md) naplóriasztás használható:
+Könnyen [riasztásokat hozhat létre](../platform/alerts-metric.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [lekérdezések naplózását](../log-query/log-query-overview.md) naplóriasztás használható:
 
 #### <a name="high-cpu-on-azure-sql-database"></a>Az Azure SQL Database magas CPU
 
@@ -297,6 +297,6 @@ Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai a
 
 ## <a name="next-steps"></a>További lépések
 
-- Használat [Naplókeresések](../../azure-monitor/log-query/log-query-overview.md) a Log Analytics az Azure SQL részletes adatainak megtekintéséhez.
-- [Saját irányítópult létrehozásával](../../azure-monitor/platform/dashboards.md) Azure SQL-adatainak megjelenítése.
-- [Riasztások létrehozása](../../azure-monitor/platform/alerts-overview.md) amikor adott Azure SQL-események történnek.
+- Használat [Naplókeresések](../log-query/log-query-overview.md) a Log Analytics az Azure SQL részletes adatainak megtekintéséhez.
+- [Saját irányítópult létrehozásával](../learn/tutorial-logs-dashboards.md) Azure SQL-adatainak megjelenítése.
+- [Riasztások létrehozása](../platform/alerts-overview.md) amikor adott Azure SQL-események történnek.

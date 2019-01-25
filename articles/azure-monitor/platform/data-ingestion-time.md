@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/08/2019
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 329472f3edee66db6b12e369ee8f944546ad4734
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213127"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900442"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>A Log Analytics Data betöltési idő
 Az Azure Log Analytics egy nagy méretű szolgáltatás az Azure monitorban ellátó – több ezer ügyfelünk egyre bővülő ütemben havonta terabájtnyi adatot küld a. Gyakran előfordulnak az adatokat a begyűjtésük után válnak elérhetővé a Log Analytics szükséges idő kapcsolatos kérdésekre. Ez a cikk ismerteti a különböző tényező befolyásolja, a késés.
@@ -45,8 +45,15 @@ Az ügynökök és felügyeleti megoldásokat különböző stratégiák segíts
 ### <a name="agent-upload-frequency"></a>Az ügynök feltöltési gyakoriságának
 Annak érdekében, hogy a Log Analytics-ügynök egy egyszerűsített, az ügynök puffereli a naplókat, és rendszeres időközönként feltölt azokat a Log Analytics szolgáltatásba. Töltse fel gyakorisága 30 másodperc és az adatok típusától függően 2 perc közé esik. A legtöbb adatfeltöltés 1 perc alatt. Hálózati körülmények hátrányosan befolyásolhatják a késést az adatok Log Analytics Adatbetöltési pont eléréséhez.
 
-### <a name="azure-logs-and-metrics"></a>Az Azure-naplók és mérőszámok 
-Tevékenységnapló adatainak elérhetővé a Log Analytics körülbelül 5 percet igénybe vehet. Diagnosztikai naplók és mérőszámok adatait percet is igénybe vehet 1 – 15 válnak elérhetővé a feldolgozás, attól függően, az Azure-szolgáltatás. Ha elérhető, majd egy további 30 – 60 másodpercre naplók és mérőszámok az adatok 3 percenként, a Log Analytics Adatbetöltési pont küldendő vesz igénybe.
+### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure-Tevékenységnaplók, diagnosztikai naplók és mérőszámok
+Az Azure data ad hozzá a Log Analytics Adatbetöltési pont feldolgozási címen elérhető legyen, további időt:
+
+- Diagnosztikai naplók adatait az Azure-szolgáltatás függően a 2-15 percet igénybe vehet. Tekintse meg a [az alábbi lekérdezés](#checking-ingestion-time) megvizsgálhatja a késés, a környezetben
+- Az Azure platform metrikák kell küldeni a Log Analytics Adatbetöltési pont 3 percet igénybe vehet.
+- Tevékenységnapló adatainak kell küldeni a Log Analytics Adatbetöltési pont körülbelül 10 – 15 percig fog tartani.
+
+Adatbetöltési pont érhető el, miután adatok lekérdezése elérhető további 2 – 5 percet vesz igénybe.
+
 
 ### <a name="management-solutions-collection"></a>Felügyeleti megoldások gyűjtemény
 Egyes megoldások ne gyűjtsön adataikat az ügynök, és előfordulhat, hogy a módszert egy gyűjtemény, amely további késleltetést. Egyes megoldások adatgyűjtést rendszeres időközönként közel valós idejű gyűjtemény kísérlet nélkül. Példák a következők:

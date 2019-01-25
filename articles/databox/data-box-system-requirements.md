@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 01/23/2019
 ms.author: alkohli
-ms.openlocfilehash: af7bcf2a83259b9d883a824b05312316f9f1f4f8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 469d553d60eb7c5cdfac3bc16f1fb479bd84cb70
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794005"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886206"
 ---
 # <a name="azure-data-box-system-requirements"></a>Az Azure Data Box rendszerre vonatkozó követelmények
 
@@ -35,7 +35,7 @@ Itt van az adatmásolási műveletet keresztül az ügyfelek a Data Box-eszköz 
 
 | **Operációs rendszer** | **Verziók** | 
 | --- | --- | 
-| Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2-BEN <br> 2016 | 
+| Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 | 
 | Windows |7, 8, 10 | 
 |Linux    |         |
 
@@ -48,13 +48,18 @@ Itt van az adatmásolási műveletet keresztül az ügyfelek a Data Box-eszköz 
 
 ### <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
-Íme a támogatott tárolási típusokat a Data Box-eszköz listáját.
+Íme a támogatott tárfiókok és a tárolási típusokat a Data Box-eszköz listáját. Összes különböző típusú tárfiókok és a teljes képességek teljes listáját lásd: [a tárfiókok típusai](/azure/storage/common/storage-account-overview.md#types-of-storage-accounts).
 
-| **Storage-fiók** | **Megjegyzések** |
-| --- | --- |
-| Klasszikus | Standard |
-| Általános célú  |Standard; a V1 és V2 is támogatja. |
-| Blob |Gyakori és ritka elérésű egyaránt támogatottak. |
+| **Storage-fiók / támogatott tárolási típusok** | **Blokkblob** |**Lapblob*** |**Az Azure Files** |**Megjegyzések**|
+| --- | --- | -- | -- | -- |
+| Klasszikus Standard | I | I | I |
+| Általános célú v1 Standard  | I | I | I | Gyakori és ritka elérésű egyaránt támogatottak.|
+| Általános célú v1-támogatás  |  | I| | |
+| Általános célú v2 Standard  | I | I | I | Gyakori és ritka elérésű egyaránt támogatottak.|
+| General-purpose v2 Premium  |  |I | | |
+| A BLOB storage Standard |I | | |Gyakori és ritka elérésű egyaránt támogatottak. |
+
+\* *– Lapblobok feltöltött adatok igazítva, például VHD-k, 512 bájt kell lennie.*
 
 >[!NOTE]
 > Az Azure Data Lake Storage 2. generációs gyűjtések fiókok nem támogatottak.
@@ -79,13 +84,13 @@ Itt van az adatmásolási műveletet keresztül az ügyfelek a Data Box-eszköz 
 | --- | --- | --- |
 | Google Chrome |Legújabb verziója |A Chrome tesztelése|
 | Microsoft Edge |Legújabb verziója | |
-| A FireFox | Legújabb verziója | A FireFox tesztelése|
+| FireFox | Legújabb verziója | A FireFox tesztelése|
 | Internet Explorer |Legújabb verziója |Ha nem tud bejelentkezni, ellenőrizze a cookie-k és a Javascript engedélyezve vannak-e. A Kezelőfelület elérésének engedélyezéséhez vegye fel az eszköz IP-cím **adatvédelmi műveletek** úgy, hogy az eszköz létesíthet-e a cookie-k. |
 
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
 
-Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. 10 GbE kapcsolatot nem érhető el, ha 1 GbE adatkapcsolat használható adatmásolásra, de az is hatással van a Másolás sebesség.
+Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. 10-GbE kapcsolatot nem érhető el, ha egy 1-GbE adatkapcsolat másolja az adatokat, de a sebesség érintett példány használható.
 
 ## <a name="next-step"></a>Következő lépés
 

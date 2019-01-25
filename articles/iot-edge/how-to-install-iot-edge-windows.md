@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 01/25/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: c280410816bfb48f21c68fe5d57b6ae18af0e855
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 27478de68cde9a097dcc160a4553839aef9a018c
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970661"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902805"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Az Azure IoT Edge-futtatókörnyezet telepíthető Windows
 
@@ -26,7 +26,7 @@ Az IoT Edge-futtatókörnyezet kapcsolatos további információkért lásd: [me
 Ez a cikk felsorolja a lépéseket az Azure IoT Edge-futtatókörnyezet telepítéséhez a Windows x64 (Intel vagy AMD) a rendszer. Windows támogatási jelenleg előzetes verzióban érhető el.
 
 >[!NOTE]
-Linux-tárolók használata a Windows rendszerekben a javasolt vagy támogatott éles konfiguráció nem az Azure IoT Edge-hez. Azonban ez használható fejlesztési és tesztelési célra.
+Linux-tárolók használata a Windows rendszereken a javasolt vagy támogatott éles konfiguráció nem az Azure IoT Edge-hez. Azonban ez használható fejlesztési és tesztelési célra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -77,7 +77,7 @@ Ha egy eszköz először telepíti az IoT Edge-futtatókörnyezet, kell biztosí
 
 A következő szakaszok ismertetik a gyakori alkalmazási helyzetek és az IoT Edge telepítési parancsfájl paraméterek egy új eszközön. 
 
-### <a name="option-1-install-and-manually-provision"></a>1. lehetőség: Telepítés és manuális üzembe helyezése
+### <a name="option-1-install-and-manually-provision"></a>Option 1: Telepítés és manuális üzembe helyezése
 
 Az első lehetőségnél adja meg az eszköz kiépítése az IoT Hub által előállított eszközök kapcsolati karakterláncot. 
 
@@ -98,7 +98,7 @@ Telepítésekor, és manuálisan-eszköz kiépítése, további paraméterek seg
 
 Ezen telepítési lehetőségekről további információkért folytassa a cikk elolvasása, vagy hagyja ki kapcsolatos [összes telepítési paramétereket](#all-installation-parameters).
 
-### <a name="option-2-install-and-automatically-provision"></a>2. lehetőség: Telepítés, és automatikusan üzembe helyezése
+### <a name="option-2-install-and-automatically-provision"></a>Option 2: Telepítés, és automatikusan üzembe helyezése
 
 A második lehetőség, a üzembe helyezi az eszközt az IoT Hub Device Provisioning Service használatával. Adja meg a **hatókör azonosítója** a Device Provisioning Service-példányból, és a **regisztrációs azonosító** az eszközről.
 
@@ -175,7 +175,7 @@ IoT Edge telepítése egy meglévő konfiguráció esetén a telepítési paranc
 | **A DPS** | None | **Váltson a paraméter**. Minden telepítés vagy kézi, a DPS, JE nutné deklarovat vagy existingconfig.<br><br>Deklarálja, hogy Ön egy Device Provisioning szolgáltatás (DPS) hatókör-Azonosítót és az eszköz regisztrációs Azonosítót a DPS keresztül a rendelkezésre biztosítja.  |
 | **ExistingConfig** | None | **Váltson a paraméter**. Minden telepítés vagy kézi, a DPS, JE nutné deklarovat vagy existingconfig.<br><br>Deklarálja, hogy egy config.yaml fájl már létezik az eszközön, és annak kiépítési adatait. |
 | **DeviceConnectionString** | Az IoT Edge-eszköz regisztrálva az IoT Hub, szimpla idézőjelek között a kapcsolati karakterlánc | **Szükséges** manuális telepítésre. Ha nem ad meg egy kapcsolati karakterláncot a parancsprogram paramétereinek, a rendszer kéri, egy, a telepítés során. |
-| **Hatókör-azonosító** | Hatókör azonosítója, a társított az IoT Hub Device Provisioning Service egy példányát. | **Szükséges** DPS-telepítéshez. Ha nem ad meg egy hatókör azonosítója a parancsfájl paramétereit, a rendszer kéri, egy, a telepítés során. |
+| **ScopeId** | Hatókör azonosítója, a társított az IoT Hub Device Provisioning Service egy példányát. | **Szükséges** DPS-telepítéshez. Ha nem ad meg egy hatókör azonosítója a parancsfájl paramétereit, a rendszer kéri, egy, a telepítés során. |
 | **RegistrationId** | A regisztrációs azonosító, az eszköz által generált | **Szükséges** DPS-telepítéshez. Ha nem ad meg egy regisztrációs Azonosítót a parancsfájl paramétereit, a rendszer kéri, egy, a telepítés során. |
 | **ContainerOs** | **Windows** vagy **Linux** | Nincs operációs rendszer van megadva tárolót, Linux-e az alapértelmezett érték. Windows-tárolókhoz egy tároló-motor fog szerepelni a telepítést. Linux-tárolók esetén a telepítés megkezdése előtt egy tároló-motor telepítenie kell. Linux-tárolók futó Windows-hasznos alkalmazásfejlesztési forgatókönyvet, de éles környezetben nem támogatott. |
 | **Proxy** | Proxy URL-címe | Ez a paraméter tartalmazza, ha az eszköz csatlakozik az internethez proxykiszolgálón keresztül kell. További információkért lásd: [proxykiszolgálón keresztül kommunikáljon az IoT Edge-eszköz konfigurálása](how-to-configure-proxy-support.md). |

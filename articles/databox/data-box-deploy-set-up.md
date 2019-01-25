@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 460a05ac25ca4af56b81fb2025e0886c7bda3070
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 79e2d33d1452eda35141b6ae80b46ab4eecd0909
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391159"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902161"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Oktatóanyag: Kábelek, és csatlakozzon az Azure Data Box
 
@@ -50,7 +50,7 @@ Kövesse az alábbi lépéseket az eszköz bekábelezéséhez.
 
 1. Vizsgálja meg, hogy az eszközön nincsenek-e illetéktelen felnyitás nyomai vagy látható sérülések. Amennyiben az eszközön jelentős sérülés vagy illetéktelen felnyitás nyomai észlelhetők, ne folytassa. Azonnal vegye fel a kapcsolatot a Microsoft támogatási szolgálatával, ahol szakembereink segíthetnek felmérni, hogy az eszköz működőképes állapotban van-e, vagy esetleg küldenünk kell egy csereeszközt.
 2. Helyezze az eszközt arra a helyre, ahol be kívánja kapcsolni. Helyezze az eszközt egy vízszintes felületre. Az eszközt egy standard kiszolgálószekrény-polcra is helyezheti.
-3. Csatlakoztassa a tápkábelt és a hálózati kábelt. Alább látható egy gyakori konfigurációban csatlakoztatott eszköz hátlapja. 
+3. Csatlakoztassa a tápkábelt és a hálózati kábelt. Alább látható egy gyakori konfigurációban csatlakoztatott eszköz hátlapja. A környezettől függően kiválaszthatják a többi [beállítások kábelezést](data-box-cable-options.md).
     
     ![Data Box-eszköz bekábelezett hátlapja](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)
 

@@ -10,12 +10,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d29a2020d7e7a16e0bac0802a887a28e12630f03
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a3c2ea1e28ebbc6859db135b743d579d3c632133
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433016"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901139"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -155,7 +155,6 @@ Egyéb korlátozások is érvényesek:
 A Change Tracking megoldás jelenleg a következő hibásan:
 
 * A gyorsjavítás-frissítések a Windows 10 alkotói frissítés és a Windows Server 2016 Core RS3 gépek kivételével.
-* Windows-fájlok, a változások követése nem jelenleg észleli, ha egy új fájlt hozzáadni egy követett mappa elérési útja
 
 ## <a name="change-tracking-data-collection-details"></a>Követési adatok gyűjtemény adatainak módosítása
 

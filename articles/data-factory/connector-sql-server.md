@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 54db7cc65e05b383b251c21aa95569c6c2d58194
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 6da3a9bceaee67d0101abb0837580f4e35e160b3
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306165"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885132"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Adatok másolása, és az SQL Serverről az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-sqlserver-connector.md)
 > * [Aktuális verzió](connector-sql-server.md)
 
@@ -36,6 +36,8 @@ Pontosabban az SQL Server-összekötő támogatja:
 - Másolja az adatokat az **SQL** vagy **Windows** hitelesítést.
 - Forrásként SQL-lekérdezést vagy tárolt eljárás használatával adatok beolvasása.
 - Fogadóként adatok hozzáfűzése a célként megadott táblája vagy egyéni logikával tárolt eljárás meghívása másolása során.
+
+Az SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) jelenleg nem támogatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -506,7 +508,7 @@ Példatípust az adatok, vagy az SQL Server, a következő hozzárendeléseket h
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | pénz |tizedes tört |
-| sql_variant |Objektum * |
+| sql_variant |Objektum |
 | szöveg |Karakterlánc, Char] |
 | time |Időtartam |
 | időbélyeg |Byte] |
@@ -515,6 +517,9 @@ Példatípust az adatok, vagy az SQL Server, a következő hozzárendeléseket h
 | varbinary |Byte] |
 | varchar |Karakterlánc, Char] |
 | xml |Xml |
+
+>[!NOTE]
+> A típusok képezi le közbenső tizedes tört szám típus jelenleg ADF támogatja a pontosság 28 legfeljebb. Ha adatok 28-nál nagyobb pontossággal rendelkezik, érdemes lehet alakítandó karakterláncot az SQL-lekérdezésben.
 
 ## <a name="troubleshooting-connection-issues"></a>Kapcsolati problémák hibaelhárítása
 

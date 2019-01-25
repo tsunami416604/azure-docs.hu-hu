@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: cwatson
-ms.openlocfilehash: 27b31b6dec480fee417bf9ccb241199204f28f96
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 4133d78ccff1fa4eb712d8928cefa604ca2f52ca
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582649"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902057"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -36,9 +36,9 @@ Ha virtuális gépek, az Azure Cosmos DB vagy az SQL-adatbázisok, amelyek hossz
 
 ## <a name="what-charges-does-a-reservation-cover"></a>Milyen díjak nem egy foglalás cover?
 
-- Fenntartott VM-példány: Egy foglalást csak terjed ki a virtuális gép számítási költségeket. További szoftverek, hálózati vagy tárolási díjakat nem fed le.
-- Az SQL Database szolgáltatás számára fenntartott virtuális mag: csak a számítási költségek megtalálhatók a foglalást. A licenc külön kell fizetni.
-- Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás: egy foglalást terjed ki az átviteli sebesség kiosztott részéért, az erőforrások, nem terjed ki a tárolási és hálózatkezelési díjakat. 
+- Fenntartott virtuálisgép-példány: Egy foglalást csak a virtuális gép számítási költségeit tartalmazza. További szoftverek, hálózati vagy tárolási díjakat nem fed le.
+- Az SQL Database szolgáltatás számára fenntartott virtuális mag: Csak a számítási költségek is tartalmaz egy foglalást. A licenc külön kell fizetni.
+- Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás: A Foglalás magában foglalja az átviteli sebesség kiosztott részéért, az erőforrások, nem terjed ki a tárolási és hálózatkezelési díjakat. 
 
 Windows virtuális gépek és az SQL Database, a licencelési költségek is foglalkozik [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -77,10 +77,10 @@ A Foglalás az előfizetési időszak végén lejár a számlázási kedvezmény
 
 Ha vásárol egy foglalást, a kedvezmény alkalmazhat más példányaira, amelyek az ugyanazon méretcsoport attribútumokkal. A kedvezmény lefedettség rugalmasságát foglalás és az attribútumokat, válassza ki, amikor azt megvásárolni a foglalást függ.
 
-- Fenntartott VM-példányok: Ha azt megvásárolni a foglalást, ha **optimalizált**: **példány mérete rugalmasan**, a kedvezmény lefedettség választja virtuális gép méretétől függ. A Foglalás az azonos méretű adatsorozat-csoport a virtuális gépek (VM)-méretek is alkalmazhat. További információkért lásd: [virtuális gép mérete rugalmasan Reserved VM Instances](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
-- SUSE Linux Enterprise szoftvercsomag: A kedvezményes lefedettség függ a vcpu-k, a virtuális gépek, a SUSE szoftver futtatásához. További információkért lásd: [megismerheti, hogyan kell alkalmazni a SUSE Linux Enterprise szoftverfrissítési csomag kedvezményt](billing-understand-suse-reservation-charges.md).
-- Az SQL Database szolgáltatás számára fenntartott kapacitás: A kedvezményes lefedettség attól függ, a teljesítményszint, válasszon ki. További információkért lásd: [megismerheti, hogyan kell alkalmazni az Azure a foglalási kedvezményt](billing-understand-reservation-charges.md).
-- Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás: A kedvezményes lefedettség attól függ, a kiosztott átviteli sebesség. További információkért lásd: [megismerheti, hogyan kell alkalmazni az Azure Cosmos DB-foglalási kedvezményt](billing-understand-cosmosdb-reservation-charges.md).
+- Fenntartott VM-példányok: Ha amikor megvásárolni a foglalást **optimalizált**: **példány mérete rugalmasan**, kedvezmény lefedettséget választja virtuális gép méretétől függ. A Foglalás az azonos méretű adatsorozat-csoport a virtuális gépek (VM)-méretek is alkalmazhat. További információkért lásd: [virtuális gép mérete rugalmasan Reserved VM Instances](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- SUSE Linux Enterprise szoftvercsomag: A kedvezmény lefedettség a vcpu-k, a virtuális gépek futtatásához a SUSE szoftver függ. További információkért lásd: [megismerheti, hogyan kell alkalmazni a SUSE Linux Enterprise szoftverfrissítési csomag kedvezményt](billing-understand-suse-reservation-charges.md).
+- Az SQL Database szolgáltatás számára fenntartott kapacitás: A kedvezmény lefedettség attól függ, hogy a kiválasztott teljesítményszint. További információkért lásd: [megismerheti, hogyan kell alkalmazni az Azure a foglalási kedvezményt](billing-understand-reservation-charges.md).
+- Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás: A kedvezmény lefedettség attól függ, hogy a kiosztott átviteli sebesség. További információkért lásd: [megismerheti, hogyan kell alkalmazni az Azure Cosmos DB-foglalási kedvezményt](billing-understand-cosmosdb-reservation-charges.md).
 
 ## <a name="next-steps"></a>További lépések
 

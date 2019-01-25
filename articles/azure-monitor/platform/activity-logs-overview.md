@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: f5d09600829a3efa2682721bf4aedbed7e5cf969
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a1ffb3b7a0f154b1d74ca7a8789e5fdadadec31
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439068"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883772"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
@@ -45,7 +45,7 @@ A tevékenységnapló megjelenítése és adatokat. További részletek a sémá
 * **Automatikus skálázási** – Ez a kategória tartalmazza a rekord a meghatározott az előfizetés automatikus skálázási beállítások alapján automatikus skálázási motor a művelethez kapcsolódó események. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "Automatikus vertikális felskálázási művelet sikertelen volt." Használja az automatikus méretezés, akkor lehet automatikusan horizontálisan felskálázhatja vagy leskálázhatja a támogatott erőforrástípus a példányok számának napi és/vagy terhelési () metrikaadatok egy automatikus skálázási beállítás használatával ideje alapján. Ha a feltételek teljesülnek felfelé vagy lefelé méretezés, a kezdő és a sikeres és sikertelen események ebbe a kategóriába vannak rögzítve.
 * **Az ajánlás** – Ez a kategória javaslattételi események az Azure Advisor tartalmaz.
 * **Biztonsági** – Ez a kategória tartalmazza a rekord minden olyan Azure Security Center által generált riasztások. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "a program kettős kiterjesztésű gyanús fájlt futtatott."
-* **A házirend** – Ez a kategória nem tartalmaz eseményeket; későbbi használatra van fenntartva. 
+* **A házirend** – Ez a kategória az Azure Policy által végrehajtott összes érvénybe művelet művelet rekordokat tartalmaz. Milyen típusú itt jelennének meg ebbe a kategóriába tartozó eseményeket közé a naplózási és a Megtagadás. Minden szabályzat által elvégzett művelet egy erőforrás-művelet van modellezve.
 
 ## <a name="event-schema-per-category"></a>Kategória szerinti eseménysémája
 [Ebből a cikkből megismerheti a tevékenységnapló eseménysémája kategória szerinti megtekintéséhez.](../../azure-monitor/platform/activity-log-schema.md)

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 87f6437f836d46fc24ae016823a1b091bcd81943
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 0f29544890fe10f4914de393a4b153cfe393a2ec
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582049"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904301"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>A nagyvállalati beléptetés Azure foglalás használati adatai
 
@@ -76,7 +76,7 @@ Szűrjön az **további információ** , és írja be a **Foglalásazonosító**
 
 ## <a name="usage-summary-page-in-enterprise-portal"></a>Használati Összegzés lapon a vállalati portál
 
-A foglalást az Azure-használat is megjelenik-e, a vállalati portál használati összesítő szakaszában: ![nagyvállalati szerződés (EA) használatának összegzése](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
+A foglalást az Azure-használat is megjelenik-e, a vállalati portál használati összesítő szakaszában: ![Nagyvállalati Szerződés (EA) használatának összegzése](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
 
 1. Ön nem számítunk fel díjat a virtuális gép a hardverösszetevő, Foglalás körébe. Egy SQL Database foglalás lát egy sort a **szolgáltatásnév** mint az Azure SQL Database szolgáltatás számára fenntartott kapacitás kihasználtsága.
 2. Ebben a példában nem rendelkezik a az Azure Hybrid Benefit, így a Windows szoftverek, a virtuális gép együttes díjkötelesek.

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2018
-ms.author: cwatson
-ms.openlocfilehash: b724fc7a887550b4115a988149b4b7a6c95de830
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 36ce4d96e02bac1eae1791acf811da468726b4a6
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584468"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902703"
 ---
 # <a name="understand-your-bill-for-azure-customers-with-an-enterprise-agreement"></a>Számlázással kapcsolatos Azure-nagyvállalati szerződéssel rendelkező ügyfelek számára
 
@@ -31,7 +31,7 @@ A munkahelyi kredit a pénzügyi kötelezettségvállalását is tartalmaz. A p�
 
 Kap egy vagy több számlákat, ha az alábbiak történnek:
 
-- **Szolgáltatási kerettúllépés**: A szervezet használati díjak haladhatja meg a kreditegyenlegét.
+- **Szolgáltatási kerettúllépés**: A szervezet használati díjak a kreditegyenlegét lehet.
 - **Külön számlázott díjak**: A szolgáltatások, a szervezet használja a kredit nem vonatkozik. Függetlenül az kreditegyenlegét számlázott van a következő szolgáltatásokat:
     - Canonical
     - Citrix XenApp Essentials
@@ -41,10 +41,10 @@ Kap egy vagy több számlákat, ha az alábbiak történnek:
     - Távoli hozzáférési jogok a XenApp Essentials regisztrált felhasználó
     - Ubuntu Advantage
     - A Visual Studio Enterprise (havi)
-    - A Visual Studio Enterprise (éves előfizetés)
+    - Visual Studio Enterprise (Annual)
     - A Visual Studio Professional (havonta)
-    - A Visual Studio Professional (éves előfizetés)
-- **Piactér-díjak**: Azure piactéren történt vásárlást és használatát a munkahelyi kredit nem vonatkozik, és külön számlázzuk. A vállalati rendszergazda engedélyezheti vagy letilthatja a cégük számára a vállalati portálon a piactéren történő vásárlások képes. 
+    - Visual Studio Professional (Annual)
+- **Piactér-díjak**: Az Azure piactéren történt vásárlást és használatát a munkahelyi kredit nem vonatkozik, és külön számlázzuk. A vállalati rendszergazda engedélyezheti vagy letilthatja a cégük számára a vállalati portálon a piactéren történő vásárlások képes. 
 
 Ha rendelkezik esedékes díjak szolgáltatási kerettúllépés és a számlázási időszak alatt külön-külön számlázott díjak, egy mindkét típusú díjakat tartalmazó számlát kap. Piactér-díjak mindig számlázása külön történik.
 

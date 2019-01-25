@@ -5,15 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 6c1a0a4a13a70daec157ede98f850f87150f8d93
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/23/2019
+ms.openlocfilehash: bf6e9947c21e5b07b2adc99de585c77444447c04
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383527"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902655"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>Hogyan hozhat létre és kezelhet, olvassa el a replikákat az Azure Portalon
+
+> [!IMPORTANT]
+> Az olvasási replika funkció nyilvános előzetes verzióban érhető el.
+
+
 Ebben a cikkben, megtudhatja, hogyan hozhat létre és kezelhet az Azure Database for PostgreSQL szolgáltatás az Azure portal használatával olvasható replika. További információ olvasható replikák [a fogalmak dokumentáció](concepts-read-replicas.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -41,6 +46,7 @@ A **azure.replication_support** REPLIKA értékre kell állítani a paraméter a
    ![Azure Database for PostgreSQL – értesítés mentése](./media/howto-read-replicas-portal/parameter-save-notification.png)
 
 6. Indítsa újra a kiszolgálót, a módosítás alkalmazása után a rendszer menti. Lásd: [az újraindítás dokumentáció](howto-restart-server-portal.md) megtudhatja, hogyan indítsa újra a kiszolgálót.
+
 
 ## <a name="create-a-read-replica"></a>Hozzon létre egy olvasható replika
 Olvassa el a replikákat az alábbi lépésekkel hozhatók létre:

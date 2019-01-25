@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4ecc87a0a7a0c74b02b72164fe129daa6530ea2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 09f7d4c5e76d4f74d447f8e8760e1f348462c769
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877581"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887019"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-adatmodell az Azure biztonsági mentési adatok
 A Log Analytics data model használatával jelentéseket készíthet. Az adatmodellel egyéni lekérdezéseket és irányítópultokat hozhat létre, vagy testre szabhatja az Azure biztonsági mentési adatok, tetszés.
@@ -32,13 +32,13 @@ Ez a táblázat részletesen riasztási kapcsolódó mezőket.
 | AlertStatus_s |Szöveg |A riasztás állapotának, például aktív |
 | AlertOccurrenceDateTime_s |Dátum/idő |Dátum és idő, a riasztás létrehozásakor |
 | AlertSeverity_s |Szöveg |A riasztás súlyosságát, például kritikus |
-| EventName_s |Szöveg |Az esemény neve. Mindig AzureBackupCentralReport |
+| EventName_s |Szöveg |Az esemény neve. Always AzureBackupCentralReport |
 | BackupItemUniqueId_s |Szöveg |A riasztáshoz tartozó biztonsági mentési elem egyedi azonosítója |
 | SchemaVersion_s |Szöveg |A séma, például jelenlegi verziója **V1** |
 | State_s |Szöveg |A riasztási, például az aktív, a törölt objektum jelenlegi állapota |
 | BackupManagementType_s |Szöveg |Szolgáltató típusa végrehajtásához, amelyhez ez a riasztás tartozik, a biztonsági mentés, például IaaSVM fájlmappa |
 | OperationName |Szöveg |Az aktuális művelet, például a riasztás neve |
-| Kategória |Szöveg |Diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategóriáját. Mindig AzureBackupReport |
+| Kategória |Szöveg |Diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategóriáját. Always AzureBackupReport |
 | Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | ProtectedServerUniqueId_s |Szöveg |A védett kiszolgálón, a riasztáshoz tartozó egyedi azonosítója |
 | VaultUniqueId_s |Szöveg |A védett tárolóhoz a riasztáshoz tartozó egyedi azonosítója |
@@ -54,7 +54,7 @@ Ez a táblázat részletesen a biztonsági mentési elem kapcsolatos mezőket.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| EventName_s |Szöveg |Az esemény neve. Mindig AzureBackupCentralReport |  
+| EventName_s |Szöveg |Az esemény neve. Always AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Szöveg |A biztonsági mentési elem egyedi azonosítója |
 | BackupItemId_s |Szöveg |Biztonsági mentési elem azonosítója |
 | BackupItemName_s |Szöveg |Biztonsági másolati elem nevét |
@@ -66,7 +66,7 @@ Ez a táblázat részletesen a biztonsági mentési elem kapcsolatos mezőket.
 | State_s |Szöveg |A biztonsági másolati elem objektum, például az aktív, a törölt állapota |
 | BackupManagementType_s |Szöveg |Szolgáltató típusát, amelyre a biztonsági mentési cikkhez tartozó biztonsági mentési, például IaaSVM fájlmappa végrehajtásához |
 | OperationName |Szöveg |A művelet, például BackupItem neve |
-| Kategória |Szöveg |Diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategóriáját. Mindig AzureBackupReport |
+| Kategória |Szöveg |Diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategóriáját. Always AzureBackupReport |
 | Erőforrás |Szöveg |Összegyűjtött adatok erőforrás, például a helyreállítási tár neve |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
 | ResourceId |Szöveg |Erőforrás-azonosító a begyűjtött adatok, például Recovery Services-tároló az erőforrás-azonosító |
@@ -103,7 +103,7 @@ Ez a táblázat részletesen a feladathoz kapcsolódó mezőket.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| EventName_s |Szöveg |Az esemény neve. Mindig AzureBackupCentralReport |
+| EventName_s |Szöveg |Az esemény neve. Always AzureBackupCentralReport |
 | BackupItemUniqueId_s |Szöveg |A biztonsági mentési elem egyedi azonosítója |
 | SchemaVersion_s |Szöveg |Ha például a séma verziója **V1** |
 | State_s |Szöveg |A feladatobjektumot, például az aktív, a törölt aktuális állapotát |
@@ -281,4 +281,4 @@ Ez a táblázat részletesen tároló kapcsolatos mezőket.
 | ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ## <a name="next-steps"></a>További lépések
-Megkezdése után tekintse át az adatmodell az Azure Backup-jelentések létrehozása, [irányítópult létrehozása](../azure-monitor/platform/dashboards.md) a Log Analyticsben.
+Megkezdése után tekintse át az adatmodell az Azure Backup-jelentések létrehozása, [irányítópult létrehozása](../azure-monitor/learn/tutorial-logs-dashboards.md) a Log Analyticsben.

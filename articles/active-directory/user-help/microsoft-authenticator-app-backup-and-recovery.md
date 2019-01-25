@@ -8,15 +8,15 @@ ms.component: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 49cc5114106336f41d119b00db1bfa472f09d2d5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: bd15189a9aa70ab99971be9da1bcd1ff243c60d0
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821702"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904352"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Biztonsági mentés és helyreállítás fiók hitelesítő adatait a Microsoft Authenticator alkalmazással
 
@@ -39,11 +39,11 @@ Készíthet biztonsági másolatot a hitelesítő adatokat, mielőtt is kell ren
 A biztonsági mentési adatok erősebb biztonságot igénylő, hogy jelentkezzen be a fiókot is együtt biztosít.
 
 **Felhőalapú biztonsági mentési bekapcsolása**
--   Válassza ki az iOS-eszközön, **beállítások**válassza **biztonsági mentési**, majd kapcsolja be **automatikus biztonsági mentés**.
+-   Válassza ki az iOS-eszközön, **beállítások**válassza **biztonsági mentési**, majd kapcsolja be **iCloud biztonsági másolat**.
 
     A fiók hitelesítő adatainak biztonsági mentése az iCloud-fiókban.
 
-    ![iOS-es beállítások képernyő helyét, az automatikus biztonsági mentés beállításait](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-turn-on.png)
+    ![iOS-es beállítások képernyő helyét az icloud szolgáltatásba, a biztonsági mentés beállításai](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-turn-on.png)
 
 ## <a name="recover-your-account-credentials-on-your-new-device"></a>A fiók hitelesítő adatait az új eszköz helyreállítása
 A fiók hitelesítő adatait az iCloud-fiók segítségével helyreállítható Microsoft recovery-fiók beállítása során, amelyről biztonsági másolatot az adatait.
@@ -101,7 +101,6 @@ Most, hogy készíteni és helyreállítani a fiók hitelesítő adatait az új 
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 - [Bevezetés a Microsoft Authenticator alkalmazás használatába](microsoft-authenticator-app-how-to.md)  
-
 - [A Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdések](microsoft-authenticator-app-faq.md)
 
 - [Többtényezős hitelesítés](https://docs.microsoft.com/azure/multi-factor-authentication/)

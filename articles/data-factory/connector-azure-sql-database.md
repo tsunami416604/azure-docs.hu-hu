@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: fcf5b5d0064292c11abeb361b0c046b5a3388457
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 24fdfcb53e8f3cbf0e1bf4f7e567d9f768383ac1
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025691"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884231"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Database-ből az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
 > * [1-es verzió](v1/data-factory-azure-sql-connector.md)
 > * [Aktuális verzió](connector-azure-sql-database.md)
 
@@ -35,6 +35,8 @@ Pontosabban az Azure SQL Database-összekötő támogatja ezeket a funkciókat:
 - Adatok másolása az Azure-erőforrások egy egyszerű vagy felügyelt szolgáltatásidentitások SQL-hitelesítés és Azure Active Directory (Azure AD) alkalmazástoken-hitelesítésének használata által.
 - Forrásként adatok lekérdezése egy SQL-lekérdezést vagy tárolt eljárás használatával.
 - Fogadóként adatok hozzáfűzése a táblát, vagy a másolás során az egyéni logikát tárolt eljárás meghívása.
+
+Az Azure SQL Database [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) jelenleg nem támogatja. 
 
 > [!IMPORTANT]
 > Az Azure Data Factory integrációs modul adatokat másol, konfiguráljon egy [Azure SQL server tűzfal](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) úgy, hogy az Azure-szolgáltatásokhoz férhet hozzá a kiszolgálón.
@@ -599,7 +601,7 @@ Másolt adatok vagy az Azure SQL Database, a következő hozzárendeléseket has
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | pénz |tizedes tört |
-| sql_variant |Objektum * |
+| sql_variant |Objektum |
 | szöveg |Karakterlánc, Char] |
 | time |Időtartam |
 | időbélyeg |Byte] |
@@ -608,6 +610,9 @@ Másolt adatok vagy az Azure SQL Database, a következő hozzárendeléseket has
 | varbinary |Byte] |
 | varchar |Karakterlánc, Char] |
 | xml |Xml |
+
+>[!NOTE]
+> A típusok képezi le közbenső tizedes tört szám típus jelenleg ADF támogatja a pontosság 28 legfeljebb. Ha adatok 28-nál nagyobb pontossággal rendelkezik, érdemes lehet alakítandó karakterláncot az SQL-lekérdezésben.
 
 ## <a name="next-steps"></a>További lépések
 Az Azure Data Factory másolási tevékenység által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak és formátumok](copy-activity-overview.md##supported-data-stores-and-formats).

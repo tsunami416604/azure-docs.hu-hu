@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 3313d7490ed9a2f51831c76148a54b7ecf19d3b3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c14267f6fc7f8c6be9199b9f25b6430b5f1aa5dd
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338804"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887410"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware Monitoring (előzetes verzió) megoldás a Log Analyticsben
 
@@ -34,13 +34,13 @@ A megoldás az adatok leküldése egy cél virtuális Gépen, amely rendelkezik 
 ## <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
-* A VMware Monitoring megoldás hozzáadása az előfizetésben az ismertetett folyamatot [management megoldás telepítése](../../azure-monitor/insights/solutions.md#install-a-management-solution).
+* A VMware Monitoring megoldás hozzáadása az előfizetésben az ismertetett folyamatot [management megoldás telepítése](../insights/solutions.md#install-a-management-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Támogatott VMware ESXi-gazdagépek
 a vSphere ESXi-gazdagép egy 5.5-ös, 6.0-s és 6.5-ös
 
 #### <a name="prepare-a-linux-server"></a>Egy Linux-kiszolgáló előkészítése
-Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslog-adatokat fogad az ESXi-gazdagépek. A [Log Analytics Linux-ügynök](../../azure-monitor/learn/quick-collect-linux-computer.md) minden ESXi-gazdagép rendszernaplóadatokat gyűjtemény pontja. Több ESXi-gazdagépek segítségével továbbítják a naplókat a egyetlen Linux rendszerű kiszolgálón, az alábbi példában látható módon.
+Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslog-adatokat fogad az ESXi-gazdagépek. A [Log Analytics Linux-ügynök](../learn/quick-collect-linux-computer.md) minden ESXi-gazdagép rendszernaplóadatokat gyűjtemény pontja. Több ESXi-gazdagépek segítségével továbbítják a naplókat a egyetlen Linux rendszerű kiszolgálón, az alábbi példában látható módon.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -129,7 +129,7 @@ Az a **VMware** irányítópult-nézet, a többi panelen szerint vannak rendszer
 
 Kattintson a panelre, hogy a panel az adott részletes információkat jelenít meg a Log Analytics keresése panel megnyitásához.
 
-Itt szerkesztheti a keresési lekérdezés esetében valamilyen konkrét módosíthat. Naplókeresések létrehozásával kapcsolatos részletekért lásd: [adatokat naplókeresések a Log Analyticsben található](../../azure-monitor/log-query/log-query-overview.md).
+Itt szerkesztheti a keresési lekérdezés esetében valamilyen konkrét módosíthat. Naplókeresések létrehozásával kapcsolatos részletekért lásd: [adatokat naplókeresések a Log Analyticsben található](../log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>ESXi-gazdagép események
 Egyetlen ESXi-gazdagép több naplókat, a folyamatok alapján hoz létre. A VMware Monitoring megoldás központosítja azokat, és az események számát foglalja össze. Ez a nézet központi segítségével megismerheti, milyen ESXi-gazdagép rendelkezik nagy mennyiségű esemény, és milyen eseményeket fordulnak elő a leggyakrabban a környezetben.
@@ -158,12 +158,12 @@ Az egyéb hasznos lekérdezések, amelyek segítségével kezelheti az ESXi-gazd
 
 
 #### <a name="save-queries"></a>Lekérdezések mentése
-Keresési lekérdezések mentése a Log Analytics alapvető szolgáltatás, és segít megőrizni, amely hasznos talált lekérdezéseket. Miután létrehozott egy lekérdezést, amely akkor hasznosak, mentse kattintva a **Kedvencek**. Egy korábban mentett lekérdezés teszi lehetővé egyszerűen újból felhasználhatja később a [saját irányítópult](../../azure-monitor/platform/dashboards.md) oldal, ahol a saját egyéni irányítópultokat hozhat létre.
+Keresési lekérdezések mentése a Log Analytics alapvető szolgáltatás, és segít megőrizni, amely hasznos talált lekérdezéseket. Miután létrehozott egy lekérdezést, amely akkor hasznosak, mentse kattintva a **Kedvencek**. Egy korábban mentett lekérdezés teszi lehetővé egyszerűen újból felhasználhatja később a [saját irányítópult](../learn/tutorial-logs-dashboards.md) oldal, ahol a saját egyéni irányítópultokat hozhat létre.
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Riasztások létrehozása a lekérdezések
-Miután létrehozta a lekérdezéseket, érdemes a lekérdezések használata az adott események bekövetkezése esetén riasztást küld. Lásd: [riasztások a Log Analyticsben](../../azure-monitor/platform/alerts-overview.md) riasztások létrehozásával kapcsolatos információkat. Riasztási lekérdezések és egyéb példák a lekérdezésekre vonatkozó példákért lásd a [Log Analytics szolgáltatást figyelő VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogbejegyzést.
+Miután létrehozta a lekérdezéseket, érdemes a lekérdezések használata az adott események bekövetkezése esetén riasztást küld. Lásd: [riasztások a Log Analyticsben](../platform/alerts-overview.md) riasztások létrehozásával kapcsolatos információkat. Riasztási lekérdezések és egyéb példák a lekérdezésekre vonatkozó példákért lásd a [Log Analytics szolgáltatást figyelő VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogbejegyzést.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Mit kell az ESXi a gazdagép beállítást? Milyen hatással legyen benne a jelenlegi környezetemet?
@@ -204,6 +204,6 @@ Több oka lehet:
     d. Ha a fájl nem létezik vagy nem megfelelő, a felhasználó és csoport beállításának intézkedéseket által [egy Linux-kiszolgáló előkészítése](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Naplókeresések](../../azure-monitor/log-query/log-query-overview.md) adatokat tárolni a Log Analytics részletes VMware megtekintéséhez.
-* [Saját irányítópult létrehozásával](../../azure-monitor/platform/dashboards.md) VMware gazdagép adatainak megjelenítése.
-* [Riasztások létrehozása](../../azure-monitor/platform/alerts-overview.md) amikor adott VMware gazdagép események történnek.
+* Használat [lekérdezések naplózását](../log-query/log-query-overview.md) adatokat tárolni a Log Analytics részletes VMware megtekintéséhez.
+* [Saját irányítópult létrehozásával](../learn/tutorial-logs-dashboards.md) VMware gazdagép adatainak megjelenítése.
+* [Riasztások létrehozása](../platform/alerts-overview.md) amikor adott VMware gazdagép események történnek.

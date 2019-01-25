@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: cwatson
-ms.openlocfilehash: 89abf64e6b47700bb16aaf6d4d4c0efbbbd9f520
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 8a6993f19f32e1bdb0bd10013f8f7e3dde844edd
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581585"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903927"
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>A mérőszám leképezés ingyenes szolgáltatás ismertetése
 
@@ -38,15 +38,15 @@ Minden Azure-szolgáltatások használati adatainak összevetésére a mérősz�
 | File Storage | Standard I/O – Fájlolvasási műveleti egység (10e) | Standard I/O – Fájlolvasási műveleti egység (in 10,000s) – ingyenes | 6207404d-3389-4d20-9087-cc078ddc3fd9
 | File Storage | Standard I/O – Fájlírási műveleti egység (10e) | Standard I/O – fájlírási műveleti egység (in 10,000s) – ingyenes | 223d8004-d29a-46cf-b4f4-d2d34b12548b
 | File Storage | Standard I/O – Fájlprotokoll-műveleti egység (10e) | Standard I/O – Fájlprotokoll-műveleti egység (in 10,000s) – ingyenes | a347d8cc-51d1-4a0e-b9eb-76f67566c3f5
-| File Storage | Standard I/O – Fájllistázási műveleti egység (10e) | Standard I/O – Fájllistázási műveleti egység (in 10,000s) – ingyenes | e8ae79ad-c2ab-4D82-b226-dd3c33dfd40c
-| Gyakori elérésű Blokkblob-tárolás | Standard I/O – gyors elérésű Blokkblob olvasási műveletek (in 10,000s) | Standard I/O – gyors elérésű Blokkblob olvasási műveletei (in 10,000s) – ingyenes |fd7cfa1e-026e-4BE1-871b-1c2386e8902e
+| File Storage | Standard I/O – Fájllistázási műveleti egység (10e) | Standard I/O – Fájllistázási műveleti egység (in 10,000s) – ingyenes | e8ae79ad-c2ab-4d82-b226-dd3c33dfd40c
+| Gyakori elérésű Blokkblob-tárolás | Standard I/O – gyors elérésű Blokkblob olvasási műveletek (in 10,000s) | Standard I/O – gyors elérésű Blokkblob olvasási műveletei (in 10,000s) – ingyenes |fd7cfa1e-026e-4be1-871b-1c2386e8902e
 | Gyakori elérésű Blokkblob-tárolás | Helyileg redundáns standard I/O – gyors elérésű Blokkblob (GB) – | Standard I/O – gyors elérésű Blokkblob (GB) – ingyenes | 67a3a3fd-826f-42c1-8843-bffa14f0da13
 | Gyakori elérésű Blokkblob-tárolás | Standard I/O – gyors elérésű Blokkblob írási műveletei (in 10,000s) | Standard I/O – gyors elérésű Blokkblob írási műveletei (in 10,000s) – ingyenes | b34bbb76-edce-4c2d-a288-81a2db1fea53
 | Gyakori elérésű Blokkblob-tárolás  | Standard I/O – gyors elérésű Blokkblob írási/listázási műveletei (in 10,000s) | Standard I/O – gyors elérésű Blokkblob írási/listázási műveletei (in 10,000s) – ingyenes | 7e68cf36-1198-4d3b-baa7-86a74c5b3079
-| Felügyelt lemez *  | Standard szintű felügyelt lemez – pillanatfelvételek (GB) – helyileg redundáns | Standard szintű felügyelt lemez – pillanatfelvételek (GB) – ingyenes | ad94c237-52a5-4804-ae65-38c5bf85ef42
-| Felügyelt lemez *  | Standard szintű felügyelt lemezes műveletek (10 000 db) | Standard szintű felügyelt lemezes műveletek (10 000 db) – ingyenes | 82cc6ea4-0abd-43ac-acc0-ec34edf0f14c
-| Felügyelt lemez *  | A Premium Storage – Lapblob/P6 (egység) – helyileg redundáns | A Premium Storage – Lapblob/P6 (egység) – ingyenes | 2b98c168-27CA-4cc1-B509-e887dec87657
-| SQL Database | Standard S0 szintű Adatbázisőrzés (nap -) SQL-adatbázis | Standard S0 szintű Adatbázisőrzés (nap) – ingyenes | dd6b69d3-9be0-4a91-abff-2c58bbcafd1d
+| Managed Disk *  | Standard szintű felügyelt lemez – pillanatfelvételek (GB) – helyileg redundáns | Standard szintű felügyelt lemez – pillanatfelvételek (GB) – ingyenes | ad94c237-52a5-4804-ae65-38c5bf85ef42
+| Managed Disk *  | Standard szintű felügyelt lemezes műveletek (10 000 db) | Standard szintű felügyelt lemezes műveletek (10 000 db) – ingyenes | 82cc6ea4-0abd-43ac-acc0-ec34edf0f14c
+| Managed Disk *  | A Premium Storage – Lapblob/P6 (egység) – helyileg redundáns | A Premium Storage – Lapblob/P6 (egység) – ingyenes | 2b98c168-27ca-4cc1-b509-e887dec87657
+| SQL Database | Standard S0 Database Days - SQL Database | Standard S0 szintű Adatbázisőrzés (nap) – ingyenes | dd6b69d3-9be0-4a91-abff-2c58bbcafd1d
 | Közös – sávszélesség ** | Adatkivitel (GB) | Kimenő adatforgalom (GB) – ingyenes | 0fc067a1-65d2-46da-b24b-7a9cbe2c69bd
 
 \* Ha Windows virtuális gép létrehozása, és válassza ki a felügyelt lemez, felügyelt lemezes mérőszám a virtuális gép részeként fog felhasználni.

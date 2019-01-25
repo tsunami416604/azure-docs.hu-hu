@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 6b76249c85f9b8c64435043a75e39601d445ab0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c4fab22513e42013a9dacf0b24b2d4b322ae09b6
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384717"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883398"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -111,7 +111,7 @@ Az OMS-portálon az eszközfelügyeleti megoldások telepítéséhez kövesse a 
 Riasztási szabályok alapján a Log Analytics-lekérdezések már kezelhetők a [egységes felhasználói élményt riasztási](../../azure-monitor/platform/alerts-metric.md). Lásd: [bővítése a riasztások a Log Analytics az Azure Alerts](../../azure-monitor/platform/alerts-extend-tool.md) konfigurálása és riasztások használatával az Azure Portalon.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Hogyan érhetem el az irányítópultokat?
-A [saját irányítópult](dashboards.md) a Log Analytics funkció elavult. Ez a funkció engedélyezett, hogy privát adatforrásnézet-tervezőből részek-gyűjteménnyel rendelkezik, és a beépített Azure-irányítópulton funkcióval helyettesít. Folytathatja az adatok megjelenítése a Log Analytics használatával [adatforrásnézet-tervezőből](view-designer.md) megosztott nézetekhez. Az ezeket a nézeteket, vagy vizualizációkat is rögzíthet [az egyes lekérdezések](../learn/tutorial-logs-dashboards.md) az Azure-irányítópultok.
+A **saját irányítópult** a Log Analytics funkció elavult. Ez a funkció engedélyezett, hogy privát adatforrásnézet-tervezőből részek-gyűjteménnyel rendelkezik, és a beépített Azure-irányítópulton funkcióval helyettesít. Folytathatja az adatok megjelenítése a Log Analytics használatával [adatforrásnézet-tervezőből](view-designer.md) megosztott nézetekhez. Az ezeket a nézeteket, vagy vizualizációkat is rögzíthet [az egyes lekérdezések](../learn/tutorial-logs-dashboards.md) az Azure-irányítópultok.
 
 ## <a name="how-do-i-check-my-usage"></a>Hogyan tudom ellenőrizni, a használat?
 Is most már egyszerűen megtekinthető és kezelhető a használat és a Log Analytics költsége kiválasztásával **felhasználás és becsült költségek** a munkaterületén.

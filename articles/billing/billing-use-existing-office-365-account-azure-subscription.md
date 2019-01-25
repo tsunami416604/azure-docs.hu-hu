@@ -14,13 +14,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cwatson
-ms.openlocfilehash: f34bed915350b43f7964b4341d1375fb67a6f134
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 202739e9898b871af8ae478192d015671b807b7b
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584434"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904471"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Egy Azure-előfizetést, az Office 365-fiókjával regisztráljon
 Ha rendelkezik Office 365-előfizetéssel, az Office 365-fiók használatával Azure-előfizetés létrehozása. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) használatával, az Office 365-felhasználónevét és jelszavát. Ha azt szeretné, állítsa be a virtuális gépek vagy más Azure-szolgáltatások használatára, jelentkezzen Azure-előfizetésre. Az Azure-előfizetés másokkal is megoszthat és [az Azure-előfizetés és erőforrásokhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)

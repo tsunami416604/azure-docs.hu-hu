@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 01/23/2019
 ms.author: juliako
-ms.openlocfilehash: a8d2cf577a6b637e910c283ba8c70d9ea4eedfbb
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 051de9b68b6cf830592a7cf8bdad7808e044fbcc
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334125"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888712"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Oktatóanyag: Videók feltöltése, kódolása és streamelése API-k használatával
+# <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Oktatóanyag: Feltöltése, kódolása és streamelése videók, API-k használatával
 
 Az Azure Media Services lehetővé teszi a médiafájlok kódolandó, hogy a böngészők és eszközök széles lejátszhatók. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. Kódolással kapcsolatos útmutatásért tekintse meg [a kódolás fogalmát](encoding-concept.md) ismertető cikket. Ez az oktatóanyag feltölt egy helyi videofájlt, és kódolja a feltöltött fájlt. A HTTPS URL-cím segítségével elérhetővé tett tartalmakat is kódolhatja. További információ: [Feladatbemenet létrehozása HTTP(s) URL-címből](job-input-from-http-how-to.md).
 
@@ -66,12 +66,12 @@ Ez a szakasz az *UploadEncodeAndStreamFiles* projekt [Program.cs](https://github
 
 A minta a következő műveleteket hajtja végre:
 
-1. Létrehoz egy új átalakítást (először ellenőrzi, hogy létezik-e a megadott átalakítás). 
-2. Létrehoz egy kimeneti objektumot, ami a kódolási feladat bemenete lesz.
-3. Létrehoz egy bemeneti objektumot, és feltölti az objektumba a megadott helyi videofájlt. Az objektum lesz a feladat bemenete. 
-4. Elküldi a kódolási feladatot a létrehozott bemenet és kimenet használatával.
+1. Létrehoz egy új **átalakítása** (először ellenőrzi, hogy létezik-e a megadott átalakító). 
+2. Létrehoz egy kimeneti **eszköz** használt, a kódolási **feladat**kimenetének.
+3. Hozzon létre egy bemeneti **eszköz** , és feltölti a megadott helyi videofájl bele. Az objektum lesz a feladat bemenete. 
+4. A kódolási feladat a bemeneti és kimeneti létrehozott használatával küldi el.
 5. Ellenőrzi a feladat állapotát.
-6. Létrehoz egy StreamingLocatort.
+6. Létrehoz egy **lokátor**.
 7. Streamelési URL-címeket épít fel.
 
 ### <a name="a-idstartusingdotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />A Media Services API-k használatához a .NET SDK-val
@@ -82,14 +82,14 @@ Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre 
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Bemeneti objektum létrehozása és helyi fájl feltöltés az objektumba 
 
-A **CreateInputAsset** függvény létrehoz egy új bemeneti [objektumot](https://docs.microsoft.com/rest/api/media/assets), és feltölti az objektumba a megadott helyi videofájlt. Az objektum lesz a kódolási feladat bemenete. A Media Services 3-as verziójában a feladat bemenete lehet egy objektum vagy egy olyan tartalom, amelyet egy HTTPS URL-cím használatával tesz elérhetővé a Media Services-fiók számára. Ha többet szeretne tudni a HTTPS URL-címről történő kódolásról, tekintse meg [ezt](job-input-from-http-how-to.md) a cikket.  
+A **CreateInputAsset** függvény létrehoz egy új bemeneti [objektumot](https://docs.microsoft.com/rest/api/media/assets), és feltölti az objektumba a megadott helyi videofájlt. Ez **eszköz** a kódolási feladat bemeneteként használja. A Media Services v3-as, a bemenet egy **feladat** lehetnek, vagy egy **eszköz**, vagy lehet, hogy a Media Services-fiók használatával HTTPS URL-címek számára elérhetővé tenni kívánt tartalmat. Ha többet szeretne tudni a HTTPS URL-címről történő kódolásról, tekintse meg [ezt](job-input-from-http-how-to.md) a cikket.  
 
 A Media Services 3-as verziójában Azure Storage API-k használatával tölthet fel fájlokat. Ennek módját a következő .NET-kódrészlet mutatja be.
 
 A következő függvény ezeket a műveleteket hajtja végre:
 
-* Létrehoz egy adategységet. 
-* Lekér egy írható [SAS URL-címet](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) az objektum [tárolójába](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container).
+* Létrehoz egy **eszköz** 
+* Lekérdezi egy írható [SAS URL-címet](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) az eszközre [-tároló](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container)
 * Feltölti a fájlt a tárolóba a SAS URL-cím használatával.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -101,7 +101,8 @@ A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Átalakítás és a feltöltött fájlt kódoló feladat létrehozása
-A tartalmak Media Servicesben történő kódolása és feldolgozása során gyakran előfordul, hogy a kódolási beállításokat receptként adják meg. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Ha minden egyes új videó esetében elküld egy új feladatot, ezt a receptet fogja alkalmazni a könyvtár összes videójára. A Media Services esetében ezt a receptet **átalakításnak** nevezzük. További információkat az [átalakításokkal és feladatokkal](transform-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre. 
+
+A tartalmak Media Servicesben történő kódolása és feldolgozása során gyakran előfordul, hogy a kódolási beállításokat receptként adják meg. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Minden egyes új videó új feladatok elküldésével akkor lépnek életbe a recept videókat a tárban. A Media Services esetében ezt a receptet **átalakításnak** nevezzük. További információkért lásd: [átalakítások és feladatok](transform-concept.md). Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre. 
 
 #### <a name="transform"></a>Átalakítás
 
@@ -127,33 +128,33 @@ A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesülj�
 
 Az Event Grid egy magas rendelkezésre állású, egyenletes teljesítményű, dinamikusan skálázható szolgáltatás. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. Az egyszerű, HTTP-alapú reaktív eseménykezelés segít hatékony megoldásokat kialakítani az események intelligens szűrése és átirányítása révén.  További információkért tekintse meg az [események egyéni webes végponthoz való átirányítását](job-state-events-cli-how-to.md) ismertető cikket.
 
-A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Várólistán**, **Feldolgozás alatt**, **Befejeződött** (a végső állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
+A **feladat** általában halad végig a következő állapotok: **Ütemezett**, **várólistán**, **feldolgozása**, **befejezett** (a végleges állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#WaitForJobToFinish)]
 
-### <a name="get-a-streaminglocator"></a>StreamingLocator beszerzése
+### <a name="get-a-streaming-locator"></a>A Streamelési Lokátorok beolvasása
 
-A kódolás befejezése után a következő lépés a kimeneti objektumban található videó elérhetővé tétele az ügyfelek számára lejátszásra. Ezt két lépésben teheti meg: először hozzon létre egy [StreamingLocatort](https://docs.microsoft.com/rest/api/media/streaminglocators), majd a streamelési URL-címeket, amelyeket az ügyfelek használhatnak. 
+A kódolás befejezése után a következő lépés a kimeneti objektumban található videó elérhetővé tétele az ügyfelek számára lejátszásra. Ezt két lépésben lehet megvalósítani: először is hozzon létre egy [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators), és a második, hozhat létre, amellyel az ügyfelek streamelési URL-címeket. 
 
-A **StreamingLocator** létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint a **StreamingLocator** azonnal érvényessé válik az API-hívás után, és a törléséig aktív marad. Ehelyett be lehet állítani indítási és befejeződési időpontokat is. 
+A folyamat létrehozásának egy **Streamelési lokátor** közzététel nevezzük. Alapértelmezés szerint a **Streamelési lokátor** érvényes az API-hívások végrehajtása után azonnal, és tart, amíg nem törli, ha nem konfigurál a választható kezdő és befejező időpontok. 
 
 A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) létrehozása során meg kell adnia a kívánt **StreamingPolicyName** elemet. Ebben a példában szabadon terjeszthető (vagy nem titkosított) tartalmat fog streamelni, így az előre beállított streamelési szabályzatot (**PredefinedStreamingPolicy.ClearStreamingOnly**) fogja használni.
 
 > [!IMPORTANT]
-> Egyéni [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) használata esetén érdemes korlátozott számú szabályzatot létrehoznia a Media Service-fiókhoz, és újra felhasználni őket a StreamingLocator használatakor, amikor ugyanolyan titkosítási beállításokra és protokollokra van szükség. A Media Service-fiókban korlátozva van a StreamingPolicy-bejegyzések száma. Nem érdemes új streamelési szabályzatot létrehozni minden egyes StreamingLocatorhöz.
+> Egyéni használatakor [Streamelési házirend](https://docs.microsoft.com/rest/api/media/streamingpolicies), korlátozott számú házirendeket tervezzen a Media Services-fiókhoz, és újra alkalmazza őket a StreamingLocators, amikor ugyanazt a titkosítási beállítások és protokollok van szükség. A Media szolgáltatás fiókja rendelkezik Streamelési Hozzáférésiszabályzat-bejegyzések száma tartozó kvótát. Meg kell nem lehet új szabályzatot hoz létre Streamelési az egyes Streamelési lokátor.
 
 Az alábbi kód azt feltételezi, hogy a függvényt egy egyedi locatorName objektummal hívja meg.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateStreamingLocator)]
 
-Az ebben a témakörben bemutatott példa streamelésre vonatkozik, ám ugyanezzel a hívással egy StreamingLocatort is létrehozhat, hogy progresszív letöltéssel tegye elérhetővé a videót.
+Bár ebben a témakörben a minta azt ismerteti, streaming, használhatja ugyanazt a hívás funkciója a videók progresszív letöltésen keresztül történő továbbítása a Streamelési Lokátorok létrehozásához.
 
 ### <a name="get-streaming-urls"></a>Streamelési URL-címek lekérdezése
 
-A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) létrehozása után a **GetStreamingURLs** parancsban látható módon lekérheti a streamelési URL-címeket. URL-cím létrehozásához össze kell fűznie a [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) gazdanevét és a **StreamingLocator** elérési útját. Ebben a mintában az *alapértelmezett* **StreamingEndpoint** elemet használjuk. A Media Service-fiók létrehozásakor ez az *alapértelmezett* **StreamingEndpoint** leállított állapotú lesz, ezért meg kell hívnia a **Start** parancsot.
+Most, hogy a [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) lett hozta létre, megjelenik a streamelési URL-címeket, ahogyan az **GetStreamingURLs**. Egy URL-cím összeállítását, fűzze össze kell a [folyamatos átviteli végponton](https://docs.microsoft.com/rest/api/media/streamingendpoints) állomás neve és a **Streamelési lokátor** elérési útja. Ebben a példában a *alapértelmezett* **folyamatos átviteli végponton** szolgál. Amikor először hozzon létre egy Media Services-fiókját, ezt *alapértelmezett* **folyamatos átviteli végponton** egy leállított állapotba kerül, meg kell hívnia **Start**.
 
 > [!NOTE]
-> A metódus alkalmazásához szüksége lesz a locatorName objektumra, amely a **StreamingLocator** a kimeneti objektum számára történő létrehozásakor lett használva.
+> Ezzel a módszerrel a locatorName létrehozásakor használt kell a **Streamelési lokátor** a kimeneti adategység.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#GetStreamingURLs)]
 

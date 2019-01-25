@@ -3,7 +3,7 @@ title: Azure PowerShell-példaszkript – IIS és DSC | Microsoft Docs
 description: Azure PowerShell-példaszkript – IIS és DSC
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: zarhoads
-ms.openlocfilehash: 0916ebee4295acf0b8cb4b04767fde958479ba83
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.author: cynthn
+ms.openlocfilehash: e23a1d7d1a90065aa2f6fe954bb2b7406e2db498
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468789"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883959"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>IIS-es virtuális gép létrehozása a PowerShell-lel
 

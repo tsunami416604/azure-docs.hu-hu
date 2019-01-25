@@ -3,7 +3,7 @@ title: Az Azure-erőforrások egy Azure virtuális gép esetében jelentkezzen b
 description: Részletes utasítások és példák egy Azure virtuális gép felügyelt identitások az Azure-erőforrások egyszerű szolgáltatás ügyfél bejelentkezési parancsfájl és erőforrás-hozzáférés.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,24 +13,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: ce25c05d2b3de3fcf6b7318b90590b84f3ee9c52
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: fd62bd74f0200ffca2926879e76744be0dfe68d0
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423187"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900221"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Az Azure-erőforrások egy Azure virtuális gép esetében jelentkezzen be a felügyelt identitások használatával 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 A cikk ismerteti a PowerShell és CLI-példaszkriptek a bejelentkezéshez az Azure-erőforrások egyszerű szolgáltatást, és útmutatást, többek között a hibakezelés fontos felügyelt identitások használatával.
 
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Ha azt tervezi, ez a cikk az Azure PowerShell vagy az Azure CLI-példák használata, ügyeljen arra, hogy telepítse a legújabb verzióját, [Azure PowerShell-lel](https://www.powershellgallery.com/packages/AzureRM) vagy [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Ha azt tervezi, ez a cikk az Azure PowerShell vagy az Azure CLI-példák használata, ügyeljen arra, hogy telepítse a legújabb verzióját, [Azure PowerShell-lel](/powershell/azure/install-az-ps) vagy [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 > [!IMPORTANT]
 > - Ez a cikk az összes minta parancsfájl feltételezi, hogy a parancssori ügyfelét futtató felügyelt identitások az Azure-erőforrások engedélyezve van a virtuális gépen. Az Azure Portalon a virtuális gép "Csatlakozás" funkció használatával távolról csatlakozzon a virtuális Géphez. Felügyelt identitások a virtuális gép Azure-erőforrások engedélyezésével kapcsolatos részletekért lásd: [konfigurálása felügyelt identitások az Azure-erőforrások a virtuális gép az Azure portal használatával](qs-configure-portal-windows-vm.md), vagy az variant cikkekben (PowerShell, CLI, egy sablon vagy az Azure használatával SDK-T). 
@@ -67,10 +69,10 @@ Az alábbi parancsfájl bemutatja, hogyan lehet:
 2. Hívja meg a virtuális gép adatainak lekérése egy Azure Resource Manager-parancsmagot. Token használatát, automatikusan kezelése PowerShell gondoskodik.  
 
    ```azurepowershell
-   Add-AzureRmAccount -identity
+   Add-AzAccount -identity
 
    # Call Azure Resource Manager to get the service principal ID for the VM's managed identity for Azure resources. 
-   $vmInfoPs = Get-AzureRMVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
+   $vmInfoPs = Get-AzVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
    $spID = $vmInfoPs.Identity.PrincipalId
    echo "The managed identity for Azure resources service principal ID is $spID"
    ```

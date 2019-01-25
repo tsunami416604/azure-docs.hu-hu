@@ -3,7 +3,7 @@ title: A MySQL telepítése OpenSUSE rendszerű virtuális gépen az Azure-ban |
 description: Ismerje meg a MySQL telepítése OpenSUSE Linux VMirtual gépen az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: za-rhoads
-ms.openlocfilehash: 114b929899e00df9efe64aa387e0e27bd592b57e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 1823e6eab6bc7efc6a59da525472463cb06ea087
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469435"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887542"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>A MySQL telepítése Azure-ban működő, OpenSUSE Linux rendszerű virtuális gépen
 

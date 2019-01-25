@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2019
+ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e78599a350aff4d0aba5603e8ad7959c945f1aca
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 67083a8214724659765922047c1f0ccd6da87b9d
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439153"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884928"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Az SAP számítási feladatok az Azure tervezési és telepítési ellenőrzőlista 
 
@@ -47,7 +47,7 @@ Ebben a fázisban tervezett áttelepítés SAP számítási feladatok Azure nyil
     3.  Üzletmenet-folytonossági és vészhelyreállítási architektúra
     4.  Részletes operációs rendszer, DB, Kernel és az SAP támogatási szervizcsomag-verziót. Nincs olyan, hogy minden olyan SAP NetWeaver és az S/4HANA által támogatott operációsrendszer-kiadás támogatott Azure-beli virtuális gépeken. Ugyanez érvényes adatbázis-kezelő kiadások. Fontos, hogy a következő adatforrások beolvasása igazítás, és szükség esetén frissítse SAP kiadások, az adatbázis-kezelő kiadások vagy kiadásainak listáját ahhoz, hogy az SAP-ben be van jelölve, és az Azure támogatott időszak megadása kötelező. Fontos, hogy SAP között van, és az Azure támogatott kiadás kombinációt az SAP és a Microsoft teljes körű támogatás kötelező. Szükség esetén meg kell terveznie frissítése néhány szoftverösszetevőket. További részleteket a támogatott SAP, az operációs rendszer és az adatbázis-kezelő szoftver leírása itt található helyek:
         1.  SAP támogatási Megjegyzés [#1928533](https://launchpad.support.sap.com/#/notes/1928533). Ez a Megjegyzés határozza meg a minimális operációsrendszer-kiadások támogatott Azure-beli virtuális gépeken. A legtöbb nem HANA-adatbázis szükséges minimális adatbázis verziókban is meghatározza. A Megjegyzés a különböző típusú támogatott SAP az Azure virtuális gép SAP méretezését is jár.
-        2.  SAP támogatási Megjegyzés [#2039619](https://launchpad.support.sap.com/#/notes/2039619). A Megjegyzés: az Azure-ban határozza meg az Oracle-támogatási mátrixa. Vegye figyelembe, hogy Oracle csak objektumokként Windows- és Oracle Linux vendég operációs rendszer az Azure-beli SAP számítási feladatokhoz. Támogatási nyilatkozattal az SAP alkalmazásrétegre futó SAP-példányok is vonatkozik. Azonban Oracle nem támogatja magas rendelkezésre állás az SAP Central Services Oracle Linux rendszeren. A Windows az SAP az SAP Central Services támogatott Oracle adatbázis-kezelő összetevővel együtt támogatott Windows feladatátvevő fürt Feladatátvevőfürt-megoldást. 
+        2.  SAP támogatási Megjegyzés [#2039619](https://launchpad.support.sap.com/#/notes/2039619). A Megjegyzés: az Azure-ban határozza meg az Oracle-támogatási mátrixa. Vegye figyelembe, hogy Oracle csak objektumokként Windows- és Oracle Linux vendég operációs rendszer az Azure-beli SAP számítási feladatokhoz. Támogatási nyilatkozattal az SAP alkalmazásrétegre futó SAP-példányok is vonatkozik. Azonban Oracle nem támogatja magas rendelkezésre állás az SAP Central Services Oracle Linux rendszeren keresztül támasztja. Oracle Linux rendszeren futó ASCS magas rendelkezésre állású van szükség, ha szüksége SIOS védelmi csomagot kihasználhatja a Linuxhoz készült. Részletes SAP hitelesítő adatokat, ellenőrizze az SAP támogatási Megjegyzés [#1662610 - SIOS védelmi Suite Linux részletei](https://launchpad.support.sap.com/#/notes/1662610). A Windows az SAP az SAP Central Services támogatott Oracle adatbázis-kezelő összetevővel együtt támogatott Windows feladatátvevő fürt Feladatátvevőfürt-megoldást. 
         3.  SAP támogatási Megjegyzés [#2235581](https://launchpad.support.sap.com/#/notes/2235581) támogatási mátrixa beolvasni a különböző operációs rendszereken az SAP HANA-kiadások
         4.  SAP HANA támogatott Azure-beli virtuális gépek és [HANA nagyméretű példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) felsorolt [Itt](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
         5.  [Az SAP-termék rendelkezésre állási mátrix](https://support.sap.com/en/)
@@ -196,7 +196,7 @@ Ebben a fázisban szeretne gyűjteni a élmény és a nem éles környezetekben 
     2.  Használja a biztonsági mentési és visszaállítási kisebb adatbázisok
     3.  Használja az SAP áttelepítési figyelője megvalósított SAP SWPM eszközt heterogén áttelepítések végrehajtásához
     4.  Használja a [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) kombinálja az SAP kiadásban frissítést kell feldolgozni. Ne feledje, hogy a forrás- és adatbázis-kezelő nem minden kombinációját támogatottak. További információ található a meghatározott SAP támogatási kiegészítő DMO különböző kiadásait. Ha például [adatbázis áttelepítési beállítás (DMO) a SUM 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872)
-    5.  Tesztelje, hogy az adatforgalom az interneten keresztül vagy expressroute-on keresztül nagyobb átviteli sebesség, abban az esetben át kell helyeznie a biztonsági mentések vagy SAP fájlok exportálása. Vegye figyelembe, hogy az esetet az interneten keresztül helyez át adatokat, előfordulhat, hogy módosítania egyes működik a jövőbeli éles rendszerek esetén a szükséges NSG-t vagy Alkalmazásbiztonsági biztonsági szabályok
+    5.  Tesztelje, hogy az adatforgalom az interneten keresztül vagy expressroute-on keresztül nagyobb átviteli sebesség, abban az esetben át kell helyeznie a biztonsági mentések vagy SAP fájlok exportálása. Az interneten keresztül helyez át adatokat a esetben előfordulhat, hogy módosítania néhány NSG-t vagy Alkalmazásbiztonsági biztonsági szabályt, amely a jövőbeni éles rendszerek helyen van szüksége
 3.  Mielőtt az Azure-bA a régi platformról rendszerek consumption-erőforrásadatok gyűjtésére, például a CPU-használat, a tárterületek átviteli sebességének és IOPS-adatok. Főleg a DBMS réteg egységeket, application layer egység alapján is. Hálózati és tárolási késés is mérjük.
 4.  Az SAP támogatási megjegyzések, az SAP HANA hardver directory és a SAP PAM újra, győződjön meg arról, hogy nem történt változás a támogatott virtuális gépek az Azure-hoz, a kiadások támogatott operációs rendszer ezen virtuális gépek és a támogatott SAP és az adatbázis-kezelő kiadások, az erőforrások ellenőrzése 
 4.  A legutóbbi változtatásokat, úgy döntött, ha a Virtuálisgép-típusok és az Azure funkcióinak az üzembe helyezési parancsfájlok
@@ -224,7 +224,7 @@ Ebben a fázisban szeretne gyűjteni a élmény és a nem éles környezetekben 
     
 
 ## <a name="go-live-phase"></a>Nyissa meg az élő fázis
-Az éles fázisokban kövesse a forgatókönyvek a korábbi fázisokban adatösszekötőt kell. Hajtsa végre a lépéseket, amelyeket tesztelt és betanított. Nem fogadja el a konfigurációkat és a folyamat utolsó pillanatban változásai. Amellett, hogy alkalmazza a következő:
+Az éles fázisokban kövesse a forgatókönyvek a korábbi fázisokban adatösszekötőt kell. Hajtsa végre a lépéseket, amelyeket tesztelt és betanított. Nem fogadja el a konfigurációkat és a folyamat utolsó pillanatban változásai. Amellett, hogy alkalmazza az alábbi mértékeket:
 
 1. Győződjön meg arról, hogy az Azure portal figyelés és más monitorozási eszközök működik.  Ajánlott eszközök állnak a Teljesítményfigyelőt (Windows) vagy KKT (Linux): 
     1.  CPU-számlálók 

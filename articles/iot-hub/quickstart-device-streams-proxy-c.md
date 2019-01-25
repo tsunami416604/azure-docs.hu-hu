@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: f1c2cd037539b3cf33f6c58c4ac8a3a1e8c304ce
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d0fc8d68b3412c2c43a88e3a9484dab3a150b811
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830157"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886271"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-application-preview"></a>Gyors útmutató: Az IoT Hub eszköz Streamek C-proxyalkalmazást (előzetes verzió) használatával feletti SSH/RDP
 
@@ -37,7 +37,7 @@ Az alábbi ábra bemutatja, hogyan az eszköz és szolgáltatás helyi proxy pro
 
 3. Eszköz helyi proxy csatlakozik-e az SSH démon (SSHD) az eszközön a 22-es porton (leírt módon konfigurálható, azt [alábbi](#run-the device-local-proxy-application)).
 
-4. Szolgáltatás helyi proxy várja az új SSH-kapcsolatok a felhasználó által a kijelölt porton, amely ebben az esetben 2222-es port (ez történik akkor is konfigurálható, amint [alábbi](#run-the-device-local-proxy-application)). SSH-ügyfél-n keresztül csatlakozó felhasználó, az alagút SSH alkalmazás forgalmat, hogy az SSH-ügyfél és kiszolgáló programok között trasferred lehetővé teszi.
+4. Szolgáltatás helyi proxy várja az új SSH-kapcsolatok a felhasználó által a kijelölt porton, amely ebben az esetben 2222-es port (ez történik akkor is konfigurálható, amint [alábbi](#run-the-device-local-proxy-application)). SSH-ügyfél-n keresztül csatlakozó felhasználó, az alagút lehetővé teszi, hogy SSH-alkalmazás forgalmat át kell helyezni az SSH-ügyfél és kiszolgáló programok között.
 
 > [!NOTE]
 > SSH-forgalmat küld egy eszköz stream keresztül fog bújtatni küld a rendszer közvetlenül a szolgáltatás és eszköz közötti helyett az IoT Hub streamvégponton keresztül. Ez [értékelemeket](./iot-hub-device-streams-overview.md#benefits). Ezenkívül az ábra az SSH démon az ugyanazon az eszközön (vagy a gépen), az eszköz helyi proxy. Ebben a rövid útmutatóban az IP-címét az SSH démon lehetővé teszi, hogy eszköz helyi proxy és a démont, valamint a különböző gépeken futhatnak.
@@ -95,7 +95,7 @@ A rövid útmutató céljaira a [C nyelvhez készült Azure IoT eszközoldali SD
 
 ```
     # In Linux
-    cmake -Denable_streaming=ON ..
+    cmake ..
     make -j
 ```
 
@@ -104,10 +104,10 @@ A Windows a következő parancsokat a Developer-parancssorból a Visual Studio 2
 ```
     # In Windows
     # For VS2015
-    $ cmake -Denable_streaming=ON .. -G "Visual Studio 15 2015"
+    $ cmake .. -G "Visual Studio 15 2015"
     
     # Or for VS2017
-    $ cmake -Denable_streaming=ON .. -G "Visual Studio 15 2017
+    $ cmake .. -G "Visual Studio 15 2017
 
     # Then build the project
     cmake --build . -- /m /p:Configuration=Release
@@ -179,7 +179,6 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
     # Go to sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
     $ ./iothub_client_c2d_streaming_proxy_sample
 
-
     # In Windows
     # Go to sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_proxy_sample\Release
     iothub_client_c2d_streaming_proxy_sample.exe
@@ -194,14 +193,14 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 Feltételezve, hogy az eszköz és szolgáltatás helyi proxykat is futtat, most már használja az SSH-ügyfélprogram, és csatlakozzon a 2222-es port (és nem az SSH démon közvetlenül) proxyt helyi szolgáltatás. 
 
-```azurecli-interactive
+```
 ssh <username>@localhost -p 2222
 ```
 
 Ezen a ponton, megjelenik a hitelesítő adatait az SSH-bejelentkezési felület.
 
 
-Az eszköz helyi proxy, amelyhez csatlakozik, az SSH démon a konzolkimenetet <code>IP_address:22</code>: ![Helyettesítő szöveg](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "eszköz helyi proxy kimenet")
+Az eszköz helyi proxy, amelyhez csatlakozik, az SSH démon a konzolkimenetet `IP_address:22`: ![Helyettesítő szöveg](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "eszköz helyi proxy kimenet")
 
 Az SSH-ügyfél program konzolkimenetet (SSH-ügyfél kommunikál az SSH démon ahol szolgáltatás helyi proxy figyeli a 22-es porton csatlakozik): ![Helyettesítő szöveg](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "SSH-ügyfél kimenete")
 

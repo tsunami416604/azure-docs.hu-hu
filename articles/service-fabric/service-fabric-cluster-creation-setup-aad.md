@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/15/2018
 ms.author: aljo
-ms.openlocfilehash: 75ba2ee378e9eddfeaeb2346b4d5bb584844afe2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 691995d0aa426766caed2f5e2458399b32332c9d
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636674"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903502"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Az Azure Active Directory beállítása az ügyfél-hitelesítéshez
 
@@ -33,7 +33,7 @@ Egyes lépéseit az Azure AD konfigurálása a Service Fabric-fürt leegyszerűs
 > [!NOTE]
 > A következő lépéseket kell elvégeznie, a fürt létrehozása előtt. A parancsfájlok várhatóan a fürt nevét és a végpontok, mert az értékeket meg kell tervezni, és nem az, hogy már létrehozott értékeket.
 
-1. [Töltse le a parancsfájlok] [ sf-aad-ps-script-download] a számítógépre.
+1. [Töltse le a parancsfájlok](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) a számítógépre.
 2. Kattintson a jobb gombbal a zip-fájlt, jelölje be **tulajdonságok**, jelölje be a **feloldása** jelölőnégyzetet, majd kattintson a **alkalmaz**.
 3. Csomagolja ki a tömörített fájlt.
 4. Futtatás `SetupApplications.ps1`, és adja meg a TenantId ClusterName és WebApplicationReplyUrl paraméterekként. Példa:
@@ -108,16 +108,16 @@ A felhasználó nincs hozzárendelve egy szerepkörhöz az az Azure AD-fürt alk
 #### <a name="solution"></a>Megoldás
 Kövesse az utasításokat az Azure AD beállításához, és rendelje hozzá a felhasználói szerepköröket. Ezenkívül azt javasoljuk, hogy kapcsolja be "Az alkalmazás eléréséhez szükséges felhasználói kiosztása" `SetupApplications.ps1` does.
 
-### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>A PowerShell-lel létesített kapcsolat megszakad egy hiba miatt: "a megadott hitelesítő adatok érvénytelenek"
+### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>A PowerShell-lel létesített kapcsolat megszakad, egy hiba miatt: "A megadott hitelesítő adatok érvénytelenek"
 #### <a name="problem"></a>Probléma
-Bejelentkezés után sikeresen az Azure AD "AzureActiveDirectory" biztonsági üzemmódban használatával csatlakozhat a fürthöz PowerShell használatával történik, ha a kapcsolat egy hibaüzenettel meghiúsul: "a megadott hitelesítő adatok érvénytelenek."
+Ha a PowerShell használatával "AzureActiveDirectory" biztonsági üzemmód, bejelentkezés után sikeresen az Azure AD használatával csatlakozhat a fürthöz, a kapcsolat egy hibaüzenettel meghiúsul: "A megadott hitelesítő adatok érvénytelenek."
 
 #### <a name="solution"></a>Megoldás
 Ez a megoldás megegyezik az előző egy.
 
-### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>A Service Fabric Explorer hibát ad vissza, ha bejelentkezik: "AADSTS50011"
+### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>A Service Fabric Explorer hibát ad vissza, amikor bejelentkezik: "AADSTS50011"
 #### <a name="problem"></a>Probléma
-Próbáljon meg bejelentkezni az Azure AD a Service Fabric Explorerben, ha az oldal adja vissza a hiba: "AADSTS50011: A válaszcímet &lt;URL-cím&gt; nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel: &lt;guid&gt;."
+Próbáljon meg bejelentkezni az Azure AD a Service Fabric Explorerben, ha az oldal hiba adja vissza: "AADSTS50011: A válaszcím &lt;URL-cím&gt; nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel: &lt;guid&gt;. "
 
 ![SFX a válaszcím nem egyezik.][sfx-reply-address-not-match]
 

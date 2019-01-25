@@ -4,14 +4,14 @@ description: Látható, hogy melyik Azure-erőforrástípus támogatja a címké
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 1/11/2019
+ms.date: 1/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4899409b225298c521935f2eeaf5e8e59a6833b3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fc085a94e2412ff21b09755102f79636a0b0d3b5
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267453"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884945"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkék támogatása
 Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource-group-using-tags.md).
@@ -584,7 +584,7 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | Fürtök | Igen | 
-| Névterek | Igen | 
+| névterek | Igen | 
 | névtér/szabályok | Nem | 
 | namespaces/disasterrecoveryconfigs | Nem | 
 | névtér/eventhubs | Nem | 
@@ -898,7 +898,7 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| Névterek | Igen | 
+| névterek | Igen | 
 | névtér/notificationHubs | Igen | 
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
@@ -959,7 +959,7 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| Névterek | Igen | 
+| névterek | Igen | 
 | névtér/szabályok | Nem | 
 | névtér/hybridconnections | Nem | 
 | névtér/hybridconnections/szabályok | Nem | 
@@ -1063,7 +1063,7 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| Névterek | Igen | 
+| névterek | Igen | 
 | névtér/szabályok | Nem | 
 | namespaces/disasterrecoveryconfigs | Nem | 
 | névtér/eventgridfilters | Nem | 
@@ -1107,6 +1107,16 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource
 ## <a name="microsoftsql"></a>Microsoft.SQL
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
+| managedInstances | Igen |
+| managedInstances/databases | Igen |
+| managedInstances/databases/backupShortTermRetentionPolicies | Nem |
+| managedInstances/databases/schemas/tables/columns/sensitivityLabels | Nem |
+| managedInstances/databases/vulnerabilityAssessments | Nem |
+| managedInstances/databases/vulnerabilityAssessments/rules/baselines | Nem |
+| managedInstances/encryptionProtector | Nem |
+| managedInstances/keys | Nem |
+| managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nem |
+| managedInstances/vulnerabilityAssessments | Nem |
 | kiszolgáló | Igen | 
 | kiszolgálók és a rendszergazdák | Nem | 
 | servers/communicationLinks | Nem | 

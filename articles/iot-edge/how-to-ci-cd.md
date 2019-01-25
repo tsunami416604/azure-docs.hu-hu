@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: ca638f1374c2e15c3978cfe711295f0ebe249d68
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 196d08f47ddfdbb86b8e96ae0e5ca3d3e3e5917e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818166"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886764"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés az Azure IoT Edge-ben
 
@@ -67,7 +67,7 @@ Ebben a szakaszban létrehoz egy új build folyamatot. Állítsa be a folyamat s
 
       ![Kezdje egy üres folyamatot](./media/how-to-ci-cd/start-with-empty.png)
 
-4. A folyamat létrehozása után megnyílik a a folyamatszerkesztőt. A folyamat leírását válassza a megfelelő ügynökkészlet a célplatformnak megfelelően: 
+4. Ha a folyamat létrejött, ekkor megnyílik a folyamatszerkesztőt. A folyamat leírását válassza a megfelelő ügynökkészlet a célplatformnak megfelelően: 
     
     * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform amd64 hozhat létre, válassza a **üzemeltetett Ubuntu 1604**
 

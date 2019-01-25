@@ -8,17 +8,17 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 7ffe4a087ae94d6c96019cc045d3d7ff071780d4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 426c8995e5c3d98e42d0ad334b8ae52171556dce
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830353"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884962"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub eszköz adatfolyamok (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés
-Az Azure IoT Hub *eszköz Streamek* biztonságos kétirányú TCP alagutakat a felhőből az eszközre irányuló kommunikáció forgatókönyvek széles létrehozását segíti elő. Egy eszköz stream által az IoT Hub által van közvetített *streamvégpont* az eszköz és szolgáltatás-végpontok közötti proxyként működik. A telepítő az alábbi ábra, amely espcially hasznos, ha az eszközök vannak a hálózati tűzfal mögött található fejezet vagy magánhálózaton belüli – terheléselosztás. Mint ilyen az IoT Hub eszköz adatfolyamok segítségével cím ügyfelek kell elérni az IoT-eszközök, tűzfalbarát módon és széles körben bejövő vagy kimenő hálózati tűzfal portjainak megnyitása nélkül.
+Az Azure IoT Hub *eszköz Streamek* biztonságos kétirányú TCP alagutakat a felhőből az eszközre irányuló kommunikáció forgatókönyvek széles létrehozását segíti elő. Egy eszköz stream által az IoT Hub által van közvetített *streamvégpont* az eszköz és szolgáltatás-végpontok közötti proxyként működik. Ezt a beállítást, az alábbi ábrán kitaláltak különösen hasznos, ha az eszközök a hálózati tűzfal mögött található, vagy magánhálózaton belüli – terheléselosztás. Mint ilyen az IoT Hub eszköz adatfolyamok segítségével cím ügyfelek kell elérni az IoT-eszközök, tűzfalbarát módon és széles körben bejövő vagy kimenő hálózati tűzfal portjainak megnyitása nélkül.
 
 ![Helyettesítő szöveg](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png "IoT Hub device streameli áttekintése")
 
@@ -33,14 +33,14 @@ Az IoT Hub eszköz Streamek előnyei a következők:
 
 - **Titkosítás:** Alapértelmezés szerint az IoT Hub eszköz Streamek használja a TLS-kompatibilis kapcsolatok. Ez biztosítja, hogy a forgalmat a rendszer mindig titkosítja függetlenül attól, hogy az alkalmazás titkosítást használ vagy sem.
 
-- **Egyszerűség érdekében a hálózati kapcsolat:** Eszköz-Streamek használatát nem kell összetett telepítési virtuális magánhálózatok az IoT-eszköz csatlakozásának engedélyezéséhez.
+- **Egyszerűség érdekében a hálózati kapcsolat:** Sok esetben eszköz Streamek használatát kiküszöböli a virtuális magánhálózatok összetett telepítési IoT-eszköz csatlakozásának engedélyezéséhez.
 
 - **Kompatibilitás a TCP/IP-verem:** Az IoT Hub eszköz Streamek képes kezelni a TCP/IP-alkalmazásforgalomba. Ez azt jelenti, hogy a saját fejlesztésű, valamint szabványalapú protokollok széles kihasználhatják ezt a szolgáltatást.
 
-- **Egyszerű használat a magánhálózaton beállításokat:** Szolgáltatás elérheti egy eszközt az eszköz Azonosítóját hivatkozó IP-cím helyett. Ez az eszköz egy magánhálózaton belül található, és privát IP-címmel rendelkezik, vagy IP-címének dinamikusan van hozzárendelve, és nem ismeri fel a szolgáltatás oldalán hasznos.
+- **Egyszerű használat a magánhálózaton beállításokat:** Szolgáltatás hivatkozik, az eszköz Azonosítóját, nem pedig eszköz IP-címének kommunikálhat egy eszközt. Ez az eszköz egy magánhálózaton belül található, és privát IP-címmel rendelkezik, vagy IP-címének dinamikusan van hozzárendelve, és nem ismeri fel a szolgáltatás oldalán hasznos.
 
 ## <a name="device-stream-workflows"></a>Eszköz Stream munkafolyamatok
-Egy eszköz stream indul, amikor a szolgáltatás csatlakozni, hogy egy eszköz azáltal, hogy az eszköz azonosítójával. Ez a munkafolyamat különösen ügyfél/kiszolgáló kommunikációs mintát, beleértve az SSH és az RDP, ahol a felhasználó nem kíván távoli kiszolgálóhoz való csatlakozáshoz az SSH vagy RDP SSH vagy RDP ügyfélprogrammal, az eszközön futó illeszkedik.
+Egy eszköz stream indul, amikor a szolgáltatás csatlakozni, hogy egy eszköz azáltal, hogy az eszköz azonosítójával. Ez a munkafolyamat egy ügyfél-kiszolgáló modellt, beleértve az SSH és RDP-t, ha egy felhasználó távolról csatlakozni a SSH vagy RDP-kiszolgáló SSH vagy RDP ügyfélprogrammal, az eszközön futó kíván különösen illeszkedik.
 
 Az eszköz stream létrehozási folyamata magában foglalja a egy egyeztetést, az eszköz, a szolgáltatás, az IoT hub fő és a streamvégpontok között. Fő végponthoz az IoT hub létrehozása egy eszköz stream koordinálja, míg a tartalomstreameléshez használt streamvégpont kezeli a forgalmat a szolgáltatás és az eszköz között.
 
@@ -58,14 +58,14 @@ Egy eszköz streamet, az SDK-val programozott létrehozása magában foglalja az
 
 4. Az eszköz a tartalomstreameléshez használt streamvégpont biztonságos kimenő TCP-kapcsolatot hoz létre a 443-as porton keresztül, és a kapcsolat a WebSocket rendszerre frissül. URL-címét a tartalomstreameléshez használt streamvégpont, valamint a hitelesítő adatokat használják a hitelesítéshez is számára az eszköz által biztosított IoT Hub a 3. lépésben küldött kérelem részeként.
 
-5. A szolgáltatás fogadja a stream eszköz eredményéről értesítést kap, és a saját WebSocket, hogy a tartalomstreameléshez használt streamvégpont létrehozása abból. Ehhez hasonlóan kapja, a streamelési végpont URL-címet és hitelesítési adatait az IoT hubról.
+5. A szolgáltatás fogadja a stream eszköz eredményéről értesítést kap, és a saját WebSocket-ügyfél a streamvégpont létrehozása abból. Ehhez hasonlóan kapja, a streamelési végpont URL-címet és hitelesítési adatait az IoT hubról.
 
 A fenti kézfogás folyamata:
 - A kézfogás folyamata végrehajtandó 60 másodperc (2 – 5. lépés), ellenkező esetben a kézfogás sikertelen, és az időtúllépés, és a szolgáltatás ennek megfelelő értesítést fog kapni.
 
 - A fenti stream létrehozási folyamat befejezése után a tartalomstreameléshez használt streamvégpont proxyként lesz, és fog forgalmat a szolgáltatás és az eszköz közötti hálózaton keresztül helyezze át a megfelelő websockets protokollt.
 
-- Eszköz és a szolgáltatás két fő végponthoz az IoT Hub, valamint a tartalomstreameléshez használt streamvégpont kimenő kapcsolódnia kell a 443-as porton keresztül. A végpontok URL-címe a portálon az IoT Hub áttekintése lapon érhető el.
+- Eszköz és a szolgáltatás két fő végponthoz az IoT Hub, valamint a tartalomstreameléshez használt streamvégpont kimenő kapcsolódnia kell a 443-as porton keresztül. Az URL-címét a végpontokkal érhető el az *áttekintése* fülre az IoT Hub portálon.
 
 - A megbízhatóság és a egy meglévő adatfolyam garanciák rendezése hatékonysága eléri a TCP van.
 
@@ -85,9 +85,20 @@ Másik lehetőségként a végpontok információk használata lehet beolvasni a
 az iot hub show --name <YourIoTHubName>
 ```
 
+## <a name="whitelist-device-streaming-endpoints"></a>Engedélyezési lista eszköz adatfolyam-továbbítási végpontok
+
+Ahogy említettük [korábbi](#Overview), az eszköz létrehoz egy kimenő kapcsolatot az IoT Hub streamvégpont során eszköz Streamek kezdeményezés folyamatot. A tűzfalnak az eszközön vagy a hálózati engedélyeznie kell a kimenő kapcsolatot a 443-as porton keresztül az adatfolyam-továbbítási átjáró (vegye figyelembe, hogy a kommunikáció történik a TLS használatával titkosított WebSocket kapcsolaton keresztül).
+
+Az Azure IoT Hub Portal Áttekintés lapján található eszköz streamvégpont állomásnevét. ![Helyettesítő szöveg](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "eszköz stream végpontok")
+
+Másik lehetőségként találja meg ezeket az információkat az Azure CLI használatával:
+```cmd/sh
+az iot hub show --name <YourIoTHubName>
+```
+
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Hibaelhárítás eszköz Streamek tevékenységeket tartalmazó naplók
 
-Az Azure Log Analytics az IoT hub eszköz Streamek tevékenységnaplójának gyűjtéséhez beállíthatja. Ez a hibaelhárítási feladatokhoz nagyon hasznos lehet.
+Állíthat be az Azure Log Analytics az IoT hub eszköz Streamek tevékenységnaplójának gyűjtéséhez. Ez a hibaelhárítási feladatokhoz nagyon hasznos lehet.
 
 Kövesse az Azure Log Analytics konfigurálása az IoT Hub eszköz stream tevékenységek az alábbi lépéseket:
 
@@ -105,64 +116,65 @@ Kövesse az Azure Log Analytics konfigurálása az IoT Hub eszköz stream tevék
     <p>
 Alább látható módon a céleszközön, és a művelet eredményét identitását is rendelkezésre áll a naplók.
     ![Helyettesítő szöveg](./media/iot-hub-device-streams-overview/device-streams-log-analytics.PNG "eszköz stream naplók elérése")
-    
 
-## <a name="whitelist-device-streaming-endpoints"></a>Engedélyezési lista eszköz adatfolyam-továbbítási végpontok
 
-Ahogy említettük [korábbi](#Overview), az eszköz létrehoz egy kimenő kapcsolatot az IoT Hub streamvégpont során eszköz Streamek kezdeményezés folyamatot. A tűzfalakat az eszközökön és a hálózati engedélyeznie kell a streamelési átjáró kimenő kapcsolatot a 443-as porton (Ez a TLS használatával titkosított WebSocket kapcsolat) keresztül.
+## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Az Azure IoT Hub Portal Áttekintés lapján található eszköz streamvégpont állomásnevét. ![Helyettesítő szöveg](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "eszköz stream végpontok")
+A nyilvános előzetes verzióban az IoT Hub eszköz Streamek régiókban érhető el az USA középső Régiójában és a központi USA régiója – EUAP. Ellenőrizze, hogy ezek a régiók egyikében a hub hoz létre. 
 
-Másik lehetőségként találja meg ezeket az információkat az Azure CLI használatával:
-```cmd/sh
-az iot hub show --name tcpstreaming-preview
-```
 
 ## <a name="sdk-availability"></a>SDK-t rendelkezésre állása
+
 Minden stream (az eszköz és szolgáltatás oldalon) két oldalán az IoT Hub SDK segítségével létrehozza az alagutat. A nyilvános előzetes verzióban a vevők a következő SDK nyelvek közül választhat:
 - A C és C# SDK-k eszköz Streamek támogatja az eszközoldalon.
 
 - A NodeJS és C# SDK támogatja az eszköz Streamek Szolgáltatásoldali.
 
+
 ## <a name="iot-hub-device-stream-samples"></a>IoT Hub Device Stream Samples
-Eszköz Streamek használatának bemutatása az alkalmazások két mintát tartalmazza. A *echo* minta azt ismerteti, eszköz-adatfolyamok adatok programozott felhasználása (az SDK API-k meghívásával). A *helyi proxy* mintát, eszköz Streamek keresztül bemutatják, alagút megoldásszolgáltatóknál alkalmazás forgalmat (például SSH, RDP vagy web) az SDK funkcióinak használatát.
+
+Microsoft közzétette két [rövid minták](/azure/iot-hub) eszköz Streamek használatának bemutatása az alkalmazások.
+* A *echo* minta azt ismerteti, eszköz-adatfolyamok adatok programozott felhasználása (a közvetlen hívása az SDK API-k).
+* A *helyi proxy* minta azt mutatja be az alkalmazásforgalomba megoldásszolgáltatóknál ügyfél-kiszolgáló (például SSH, RDP vagy web) bújtatás eszköz Streamek keresztül.
+
+Ezek a minták terjed ki az alábbi részletesebben.
 
 ### <a name="echo-sample"></a>A minta echo
-Az echo programozott küldése és fogadása service és az eszköz alkalmazás közötti eszköz-Streamek használatát mutatja be. Az alábbi hivatkozásokat elérni a gyors útmutatók (különböző nyelveken is használhatja a szolgáltatást és az eszköz programok, például C eszközprogram együttműködve C# szolgáltatási program):
+Az echo programozott küldése és fogadása service és az eszköz alkalmazások közötti eszköz-Streamek használatát mutatja be. A gyors útmutatók eléréséhez használja az alábbi hivatkozásokat. Vegye figyelembe, hogy a különböző nyelveken is használhatja a szolgáltatást és az eszköz programok, például C eszközprogram együttműködve C# szolgáltatási program.
 
 | SDK    | Szolgáltatási Program                                          | Eszközprogram                                           |
 |--------|----------------------------------------------------------|----------------------------------------------------------|
 | C#     | [Hivatkozás](quickstart-device-streams-echo-csharp.md) | [Hivatkozás](quickstart-device-streams-echo-csharp.md) |
-| NodeJS | [Hivatkozás](quickstart-device-streams-echo-nodejs.md) | -                                                        |
+| Node.js | [Hivatkozás](quickstart-device-streams-echo-nodejs.md) | -                                                        |
 | C      | -                                                        | [Hivatkozás](quickstart-device-streams-echo-c.md)      |
 
 ### <a name="local-proxy-sample-for-ssh-or-rdp"></a>Helyi Proxy minta (az SSH vagy RDP)
 A helyi proxy engedélyezhető, amely magában foglalja az ügyfél és a egy kiszolgálói program közötti kommunikációs forgalom egy meglévő alkalmazás tunneling mutatja be. Ügyfél/kiszolgáló irányú protokollok működik a beállítása, mint az SSH és az RDP, ahol a Szolgáltatásoldali (futó SSH vagy RDP ügyfélprogramok) ügyfél funkcionál, és az eszközoldali úgy működik, mint a kiszolgáló (RDP-kiszolgáló programok telepítése és az SSH démon fut). 
 
-Ez a szakasz eszköz-adatfolyam egy eszközt a SSH forgatókönyvek engedélyezése (a kis RDP vagy más ügyfél/kiszolgáló irányú protokollok hasonlóak a protokoll megfelelő port használatával) eszköz Streamek használatát ismerteti.
+Ez a szakasz eszköz Streamek eszköz adatfolyamok (RDP vagy más ügyfél-kiszolgáló alkalmazás esetében is hasonlóak a protokoll megfelelő port használatával) a felhasználó számára az SSH egy eszközre való használatát ismerteti.
 
-A telepítő kihasználja két *helyi proxy* programok, nevezetesen az alábbi ábrán látható *eszköz helyi proxy* és *szolgáltatás helyi proxy*. A helyi proxyk olyan hajtják végre a [eszköz stream kezdeményezés kézfogás](#Device-stream-creation-flow) az IoT hubbal, és az SSH-ügyfél és az SSH démon használatával a szokásos ügyfél-kiszolgáló szoftvercsatorna programozási implementálására.
+A telepítő kihasználja két *helyi proxy* programok, nevezetesen az alábbi ábrán látható *eszköz helyi proxy* és *szolgáltatás helyi proxy*. A helyi proxy programok hajtják végre a [eszköz stream kezdeményezés kézfogás](#device-stream-creation-flow) az IoT hubbal, és az SSH-ügyfél és az SSH démon használatával a szokásos ügyfél-kiszolgáló sockets implementálására.
 
 ![Helyettesítő szöveg](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png "eszköz stream proxy beállítása SSH vagy RDP-hez")
 
 1. A felhasználó kezdeményezni az eszközön egy eszköz stream szolgáltatást helyi proxyt futtat a.
 
-2. Az eszköz elfogadja a stream kezdeményezés, és az alagút létrehozása az IoT Hub streamvégpont (fentiekben leírtak szerint).
+2. Az eszköz helyi proxykiszolgáló fogadja a stream kezdeményezés kéréseket, és az alagút létrehozása az IoT Hub streamvégpont (fentiekben leírtak szerint).
 
 3. Az eszköz helyi proxy csatlakozik az SSH démon végpont a 22-es port az eszközön.
 
-4. Várakozás új SSH-kapcsolatok a felhasználó a kijelölt porton figyeli a szolgáltatás helyi proxy (a mintában használt 2222-es port egy tetszőleges portját). A felhasználó az SSH-ügyfél a szolgáltatás helyi proxyport localhoston mutat.
+4. Várakozás új SSH-kapcsolatok a felhasználó a kijelölt porton figyeli a szolgáltatás helyi proxy (2222-es port használatban a mintát, de ez konfigurálható az összes rendelkezésre álló portot). A felhasználó az SSH-ügyfél a szolgáltatás helyi proxyport localhoston mutat.
 
 ### <a name="notes"></a>Megjegyzések
-- A fenti lépések elvégzéséhez egy teljes körű alagutat az SSH-ügyfél (a jobb oldalon), az SSH démon (a bal oldalon) között. 
+- A fenti lépések elvégzéséhez egy teljes körű alagutat az SSH-ügyfél (a jobb oldalon), az SSH démon (a bal oldalon) között. A végpontok közötti kapcsolat része magában foglalja a forgalmat küld az IoT Hub eszköz adatfolyam felett.
 
 - Az ábrán a nyilak, amelyben létesít kapcsolatokat, végpontok közötti irányát jelzik. Kifejezetten vegye figyelembe, hogy nincs-e az eszköz (Ez gyakran blokkolja a tűzfal) fog egy kimenő kapcsolatot sem.
 
-- A kiválasztott portot használó `2222` a helyi szolgáltatási proxy nem egy tetszőleges lehetőség. A proxy beállítható úgy, hogy az összes rendelkezésre álló portot használja.
+- A szolgáltatás helyi proxyn 2222-es port használatával, amely egy tetszőleges lehetőség. A proxy beállítható úgy, hogy az összes rendelkezésre álló portot használja.
 
-- A kiválasztott port `22` procotocol-függő és adott ssh ebben az esetben. A kis-és RDP, a port `3389` kell használni. Ez a megadott minta programok telepítése és törlése is konfigurálható.
+- A 22-es portot, amely procotocol-függő és adott ssh ebben az esetben. Az RDP a helyzet a 3389-es portot kell használni. Ez a megadott minta programok telepítése és törlése is konfigurálható.
 
-Útmutatást nyújt a helyi proxy programok futtatását tetszőleges nyelven használja az alábbi hivatkozásokat. Az echo mintához hasonló, futtathatja eszköz és szolgáltatás helyi proxyk különböző nyelveken, mivel ezek teljes mértékben kompatibilissé.
+Útmutatást nyújt a helyi proxy programok futtatását tetszőleges nyelven használja az alábbi hivatkozásokat. Hasonló a [echo minta](#echo-sample), eszköz - és szolgáltatás helyi proxy programok futtathatók különböző nyelveken azok teljes mértékben kompatibilissé.
 
 | SDK    | Service-Local Proxy                                       | Eszköz helyi Proxy                                |
 |--------|-----------------------------------------------------------|---------------------------------------------------|

@@ -3,7 +3,7 @@ title: Példa Azure-infrastruktúra bemutató |} A Microsoft Docs
 description: Ismerje meg a főbb tervezési és megvalósítási irányelvek egy példa infrastruktúra az Azure-beli üzembe helyezéséhez.
 documentationcenter: ''
 services: virtual-machines-linux
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 794182e3988a353b1e305a36da0475bacdea69b8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: d4b8cd07e50697139f68084f47c847ef8728c429
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469850"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888958"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Linux rendszerű virtuális gépek Azure-infrastruktúra bemutató példa
 Ez a cikk bemutatja a például alkalmazás-infrastruktúrák létrehozását. A Microsoft részletes információkat talál, egy egyszerű online áruházban, amely egyesíti az irányelvek és elnevezési konvenciók, a rendelkezésre állási csoportok, virtuális hálózatok és terheléselosztók döntések-infrastruktúra megtervezése, és ténylegesen üzembe helyezése a virtuális gépek (VM).
@@ -72,15 +72,15 @@ Mivel a virtuális hálózat nem kell a folyamatban lévő kapcsolódástól az 
 
 Általuk létrehozott egy kizárólag felhőalapú virtuális hálózatot az Azure portal használatával a következő beállításokkal:
 
-* Name: AZOS-USE-VN01
-* Hely: East US 2
-* Virtuális hálózat címtere: 10.0.0.0/8
+* Név: AZOS-USE-VN01
+* Hely: USA 2. keleti régiója
+* virtuális hálózat címtere: 10.0.0.0/8
 * Első alhálózat:
-  * Neve: FrontEnd
+  * Név: Előtér
   * Címtér: 10.0.1.0/24
 * Második alhálózatot:
-  * Neve: BackEnd
-  * Címtere: 10.0.2.0/24
+  * Név: Háttér
+  * Címtér: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
 Az Adventure Works Cycles magas rendelkezésre állásának összes négy szinten az online áruház fenntartására, úgy döntött, négy rendelkezésre állási csoportok:

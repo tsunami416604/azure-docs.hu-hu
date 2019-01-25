@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/24/2017
-ms.author: cwatson
+ms.author: kfollis
 ms.custom: accessibility
-ms.openlocfilehash: de79e1ea91b7d30eb550cb078bbb257e2f924dfb
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d9c9c18fb2c20f1b0740a490316826e488049faf
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393825"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54881171"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Az Azure Portalon használható billentyűparancsok
 Ez a cikk bemutatja a billentyűparancsok, amelyek során az Azure Portalon. Előfordulhat, hogy az egyes szolgáltatások saját billentyűparanccsal.
@@ -35,7 +35,7 @@ Ez a cikk bemutatja a billentyűparancsok, amelyek során az Azure Portalon. El�
 |A bal oldali ablaktáblán kijelölt elem mozgatása felfelé |ALT + Shift + fel nyíl|
 |A bal oldali ablaktáblán kijelölt elem mozgatása lefelé |ALT + Shift + le nyíl|
 
-## <a name="navigation"></a>Navigálás
+## <a name="navigation"></a>Navigáció
 |Ehhez |Nyomja meg |
 | --- | --- |
 |Fókusz áthelyezése a parancssávra |G+, |
@@ -46,5 +46,5 @@ Ez a cikk bemutatja a billentyűparancsok, amelyek során az Azure Portalon. El�
 | --- | --- |
 |Az irányítópult megnyitása |G+D |
 |Minden erőforrás megnyitása|G+A |
-|Erőforráscsoportok megnyitása|A G + R |
+|Erőforráscsoportok megnyitása|G+R |
 |Nyissa meg a bal oldali panelen elem ezen a helyen |G+szám|

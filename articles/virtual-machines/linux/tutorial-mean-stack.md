@@ -3,7 +3,7 @@ title: Oktatóanyag – MEAN-verem létrehozása Linux rendszerű virtuális gé
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre MongoDB-, Express-, AngularJS- és Node.js- (MEAN-) vermet Linux rendszerű virtuális gépen az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a223cb9be7c381c2f64648b32ef9bca69ebeddb5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 223b32d3947ca0f663565a90b15e9c24e5ddeb96
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465681"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883211"
 ---
-# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: MongoDB-, Express-, AngularJS- és Node.js- (MEAN-) verem létrehozása Linux rendszerű virtuális gépen az Azure-ban
+# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Az Azure-ban Linux rendszerű virtuális gépen a MongoDB, Express, AngularJS és Node.js (mean) készlet-verem létrehozása
 
 Ez az oktatóanyag bemutatja, hogyan valósítható meg MongoDB-, Express-, AngularJS- és Node.js- (MEAN-) verem Linux rendszerű virtuális gépen az Azure-ban. A létrehozott MEAN-készlet lehetővé teszi a könyvek hozzáadását, törlését és felsorolását egy adatbázison belül. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -328,7 +328,7 @@ Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinam
 
     ![Könyvrekord](media/tutorial-mean/meanstack-init.png)
 
-3. Adjon meg adatokat a szöveges mezőkben, és kattintson az **Add** (Hozzáadás) elemre. Például:
+3. Adjon meg adatokat a szöveges mezőkben, és kattintson az **Add** (Hozzáadás) elemre. Példa:
 
     ![Könyvrekord hozzáadása](media/tutorial-mean/meanstack-add.png)
 

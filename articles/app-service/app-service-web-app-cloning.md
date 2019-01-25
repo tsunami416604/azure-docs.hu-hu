@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 9d4b664c9b1fc0deb10794a5f0b29c2b600d19e2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 17ea8545855cd926a393e9e40d3eccaabd6dba53
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53712663"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886526"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Az Azure App Service-alkalmazás klónozása a PowerShell használatával
 A Microsoft Azure PowerShell 1.1.0-s verzió kiadása, egy új beállítás lett elérhető a `New-AzureRMWebApp` , amellyel az App Service-ben újonnan létrehozott alkalmazást egy másik régióban, vagy ugyanabban a régióban a meglévő alkalmazás klónozása. Ez a beállítás lehetővé teszi, hogy üzembe alkalmazások számos különböző régiók között, gyorsan és egyszerűen.
@@ -116,7 +116,7 @@ $destapp = New-AzureRmWebApp -ResourceGroupName <Resource group name> -Name dest
 ```
 
 ## <a name="current-restrictions"></a>Aktuális korlátozások
-Ez a funkció jelenleg előzetes verzióban érhető el, és új képességeket idővel kerülnek. Az alábbiakban a jelenlegi verziója alkalmazásklónozás ismert korlátozásai:
+Alkalmazásklónozás ismert korlátozások a következők:
 
 * Automatikus méretezési beállítások nem lesznek klónozva
 * Ütemezett biztonsági mentési beállítások nem lesznek klónozva
