@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: ff40ac0e5ab6176bcf192289c0506f57ebf04a11
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 81f9db7e90e2cef85d41561cc677db3d6422ef45
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755087"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079868"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents-séma használata az Event GRID használatával
 
@@ -65,13 +65,13 @@ CloudEvents v0.1 érhető el a következő tulajdonságokkal rendelkezik:
 | eventType          | Karakterlánc   | "com.example.someevent"          | Előfordulás történt típusa                                   | eventType
 | eventTypeVersion   | Karakterlánc   | "1.0"                            | Az esemény típusa (nem kötelező) verziója                            | dataVersion
 | cloudEventsVersion | Karakterlánc   | "0.1"                            | Az esemény használ CloudEvents-specifikáció verziója        | *átadni*
-| source             | URI      | "/ mycontext"                     | Az esemény-előállítót ismerteti                                       | a témakör #subject
-| Eseményazonosító            | Karakterlánc   | "1234-1234-1234"                 | Esemény azonosítója                                                    | id
+| source             | URI      | "/ mycontext"                     | Az esemény-előállítót ismerteti                                       | topic#subject
+| eventID            | Karakterlánc   | "1234-1234-1234"                 | Esemény azonosítója                                                    | id
 | eventTime          | Időbélyeg| "2018-04-05T17:31:00Z"           | Időbélyeg, ha az esemény történt-e (nem kötelező)                    | eventTime
 | schemaURL          | URI      | „https://myschema.com”           | A séma, az adatok attribútum betartó (nem kötelező) mutató hivatkozás | *nincs használatban*
-| contentType        | Karakterlánc   | az "application/json"               | Ismerteti az adatok kódolási formátum (nem kötelező)                       | *nincs használatban*
-| Bővítmények         | Térkép      | {"extra": "sebezhetőség-felmérési", "extB", "vB"}  | Minden további metaadatok (nem kötelező)                                 | *nincs használatban*
-| adat               | Objektum   | {"objA": "sebezhetőség-felmérési", "objB", "vB"}  | Az eseménytartalom (nem kötelező)                                       | adat
+| contentType        | Karakterlánc   | "application/json"               | Ismerteti az adatok kódolási formátum (nem kötelező)                       | *nincs használatban*
+| Bővítmények         | Térkép      | { "extA": "vA", "extB", "vB" }  | Minden további metaadatok (nem kötelező)                                 | *nincs használatban*
+| adat               | Objektum   | { "objA": "vA", "objB", "vB" }  | Az eseménytartalom (nem kötelező)                                       | adat
 
 További információkért lásd: a [CloudEvents specifikációja](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 

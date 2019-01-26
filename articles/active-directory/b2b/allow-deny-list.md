@@ -3,19 +3,19 @@ title: Az adott szervezetek – Azure Active Directory B2B-felhasználók meghí
 description: Bemutatja, hogyan rendszergazda használatával az Azure portal vagy a PowerShell-hozzáférés beállítása, vagy engedélyezheti vagy tilthatja le a B2B-felhasználók az egyes tartományok listában elutasítása.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: d0458fa9c40c5a6681a3f691cbb3d6a02f01ce66
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 60fbde1ea269dc43d35007287c38e852a5feedff
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429067"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075329"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Az adott szervezetek a B2B-felhasználók meghívások engedélyezése vagy letiltása
 

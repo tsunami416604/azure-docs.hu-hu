@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: db8318e94b646d57c00bc2e6958ba9e7f46ec7af
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 464d16d4bbcbdbefd36ce1132630ad702d7a0c90
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344030"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076969"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Azure Machine Learning, az IoT Edge-modul (előzetes verzió) üzembe helyezése
 
-Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure Machine Learning-modul üzembe helyezésén, amely előrejelzi az eszközök meghibásodását szimulált géphőmérsékleti adatok alapján. Az IoT Edge-en futó Azure ML-el kapcsolatos további információkat [az Azure Machine Learning dokumentációjában](../machine-learning/service/how-to-deploy-to-iot.md) talál.
+Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure Machine Learning-modul üzembe helyezésén, amely előrejelzi az eszközök meghibásodását szimulált géphőmérsékleti adatok alapján. Az IoT Edge-ben az Azure Machine Learning szolgáltatással kapcsolatos további információkért lásd: [Azure Machine Learning dokumentációs](../machine-learning/service/how-to-deploy-to-iot.md).
 
 Az ebben az oktatóanyagban létrehozott Azure Machine Learning-modul kiolvassa az eszköz által előállított környezeti adatokat, illetve rendellenesként vagy nem rendellenesként jelöli meg az üzeneteket.
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A létrejött adatok megtekintése
 
 >[!NOTE]
->Az Azure Machine Learning moduljai nyilvános előzetes verzióban érhetők el az Azure IoT Edge szolgáltatásban. 
+>Az Azure Machine Learning moduljai nyilvános előzetes verzióban érhetők el az Azure IoT Edge szolgáltatásban.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ Egy Azure IoT Edge-eszköz:
 
 Felhőerőforrások:
 
-* Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban. 
+* Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * Egy Azure Machine Learning-munkaterület. A létrehozáshoz kövesse [a modellek IoT Edge-ben történő üzembe helyezésének előkészítését](../machine-learning/service/how-to-deploy-to-iot.md) ismertető témakörben található utasításokat.
 
 
@@ -53,7 +53,7 @@ Felhőerőforrások:
 
 >[!NOTE]
 >
-> Az Azure Machine Learning előzetes verziója nem támogatja folyamatazonosítás biztonsági funkcióját, amely az IoT Edge szolgáltatásban alapértelmezés szerint engedélyezve van. 
+> Az Azure Machine Learning előzetes verziója nem támogatja folyamatazonosítás biztonsági funkcióját, amely az IoT Edge szolgáltatásban alapértelmezés szerint engedélyezve van.
 > Az alábbi lépések végrehajtásával tilthatja le. Ez azonban nem használható éles környezetben. Ezeket a lépéseket csak Linuxon kell végrehajtani, mivel a Windows Edge-futtatókörnyezet telepítésének is ugyanezek a lépései.
 
 IoT Edge-eszközén a folyamatazonosítás letiltásához meg kell adnia a **workload_uri** és a **management_uri** értékhez az IP-címet és portot az IoT Edge-démon konfigurációjának **connect** (csatlakozás) szakaszában.
@@ -88,8 +88,8 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 ```
 
 
-## <a name="create-the-azure-ml-container"></a>Azure ML-tároló létrehozása
-Ebben a szakaszban letölti a betanított modell fájljait, és Azure ML-tárolóvá konvertálja azokat.
+## <a name="create-the-azure-machine-learning-service-container"></a>Az Azure Machine Learning tároló létrehozása
+Ebben a szakaszban a betanított modell fájlok letöltéséhez, és átalakíthatja az Azure Machine Learning szolgáltatás tárolóba.
 
 Ha szeretne létrehozni egy Docker-tárolót, amely a gépi tanulási modellt tartalmazza, kövesse [a modellek IoT Edge-ben történő üzembe helyezésének előkészítését](../machine-learning/service/how-to-deploy-to-iot.md) ismertető témakörben található utasításokat.  A Docker-rendszerképhez szükséges összetevők megtalálhatók az [Azure IoT Edge GitHub-adattár AI-eszközkészletében](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
 
@@ -113,7 +113,7 @@ Ellenőrizze, hogy a tárolórendszerkép sikeresen létrejött-e és a Machine 
 
 1. Válassza a **Set modules** (Modulok beállítása) lehetőséget.
 
-1. A **Registry Settings** (Regisztrációs adatbázis beállításai) szakaszban adja meg az Azure tárolóregisztrációs adatbázisból másolt hitelesítő adatokat. 
+1. A **Registry Settings** (Regisztrációs adatbázis beállításai) szakaszban adja meg az Azure tárolóregisztrációs adatbázisból másolt hitelesítő adatokat.
 
    ![A jegyzékfájl a tárolójegyzék hitelesítő adatainak hozzáadása](./media/tutorial-deploy-machine-learning/registry-settings.png)
 
@@ -156,7 +156,7 @@ Megtekintheti az egyes IoT Edge-modulok által létrehozott üzeneteket, és meg
 
 ### <a name="view-data-on-your-iot-edge-device"></a>Adatok megtekintése az IoT Edge-eszközön
 
-IoT Edge-eszközén megtekintheti az egyes modulok által küldött üzeneteket. 
+IoT Edge-eszközén megtekintheti az egyes modulok által küldött üzeneteket.
 
 Ha ezeket a parancsokat Linux-eszközön hajtja végre, lehetséges, hogy használnia kell a `sudo` parancsot az emelt szintű engedélyekhez.
 
@@ -176,7 +176,7 @@ Ha ezeket a parancsokat Linux-eszközön hajtja végre, lehetséges, hogy haszn�
 
 Az eszköz a felhőbe irányuló üzeneteket az IoT hub által fogadott használatával megtekintheti a [Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet bővítmény).
 
-A következő lépések azt mutatják be, hogyan állítható be a Visual Studio Code az IoT-központba érkező, eszközről a felhőbe küldött üzenetek monitorozására. 
+A következő lépések azt mutatják be, hogyan állítható be a Visual Studio Code az IoT-központba érkező, eszközről a felhőbe küldött üzenetek monitorozására.
 
 1. A Visual Studio Code-ban válassza az **IoT Hub-eszközök** elemet.
 
@@ -190,13 +190,13 @@ A következő lépések azt mutatják be, hogyan állítható be a Visual Studio
 
 5. Figyelje meg a tempSensor felől öt másodpercenként érkező üzeneteket. Az üzenettörzs tartalmaz egy **anomaly** nevű tulajdonságot, amelyhez a machinelearningmodule igaz vagy hamis értéket rendel. Az **AzureMLResponse** tulajdonság „OK” értéket tartalmaz, ha a modell sikeresen lefutott.
 
-   ![Azure ML-válasz az üzenettörzsben](./media/tutorial-deploy-machine-learning/ml-output.png)
+   ![Az Azure Machine Learning szolgáltatás válasza az üzenet törzse](./media/tutorial-deploy-machine-learning/ml-output.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként. 
+Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként.
 
-Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben létrehozott helyi konfigurációkat és Azure-erőforrásokat. 
+Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben létrehozott helyi konfigurációkat és Azure-erőforrásokat.
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 

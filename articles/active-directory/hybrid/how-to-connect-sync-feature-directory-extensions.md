@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e96a7d88a2e30bbedd6c57f9a72dd92f63586dd1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0d058dc1875c69fe3c582c4d68da81c09ab92fcb
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476903"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079701"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Az Azure AD Connect szinkronizálása: Címtárbővítmények
 Címtárbővítmények segítségével az Azure Active Directoryban (Azure AD) a séma kiterjesztése a saját helyszíni Active Directoryból származó attribútumok. Ez a funkció lehetővé teszi felhasználása az attribútumokat, amelyek továbbra is kezelheti a helyszíni LOB-alkalmazások készítését. Ezek az attribútumok felhasználhatók keresztül [Azure AD Graph API címtárbővítmények](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) vagy [Microsoft Graph](https://developer.microsoft.com/graph/). Megjelenik a rendelkezésre álló attribútumok használatával [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) és [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer), illetve.
@@ -42,7 +42,7 @@ A telepítés a következő attribútumokat, amelyek érvényes jelöltek látha
 
 
 >[!NOTE]
-> Az Azure AD Connect szinkronizálási többértékű Active Directory-attribútumok az Azure AD szolgáltatásba többértékű címtárbővítmények támogatja. Azonban nem, jelenleg az Azure AD-ben szolgáltatások többértékű címtárbővítmények használatát támogatja.
+> Bár a többértékű az Active Directory szinkronizálása az Azure AD Connect támogatja az Azure AD szolgáltatásba címtárbővítmények többértékű attribútumok, jelenleg nincs mód a többértékű directory bővítményattribútumok feltöltött adatok olvashatók be és felhasználásához.
 
 A séma gyorsítótárból, az Azure AD Connect telepítése során létrehozott attribútumok listája olvasható. Ha további attribútumok az Active Directory-séma ki van bővítve, meg kell [a sémát](how-to-connect-installation-wizard.md#refresh-directory-schema) előtt ezeket az új attribútumokat láthatók.
 

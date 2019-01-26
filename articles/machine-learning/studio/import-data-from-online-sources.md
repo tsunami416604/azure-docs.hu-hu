@@ -4,13 +4,13 @@ szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: stud
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/29/2017
 ---
-# <a name="import-data-into-azure-machine-learning-studio-from-online-data-sources"></a>Az Azure Machine Learning studióba online adatforrásokból származó adatok importálása 
+# <a name="import-data-into-azure-machine-learning-studio-from-online-data-sources"></a>Az Azure Machine Learning studióba online adatforrásokból származó adatok importálása
 Ez a cikk bemutatja a támogatási online adatok importálása különböző forrásokból, és kísérletezzen az Azure Machine Learning studióba ezen forrásokból származó adatok áthelyezéséhez szükséges információkat.
 
 > [!NOTE]
 > Ez a cikk általános információkat tartalmaz a [adatok importálása] [ import-data] modul. Részletesebb információ adattípusokat és érheti el, formátumban, a paraméterek és a gyakori kérdéseket lásd a modul a referencia-témakör a [adatok importálása] [ import-data] modul.
-> 
-> 
+>
+>
 
 ## <a name="introduction"></a>Bevezetés
 Használatával a [adatok importálása] [ import-data] modul férhet hozzá adataihoz számos online adatforrás közül a kísérlet futásakor [Azure Machine Learning Studio](https://studio.azureml.net/Home):
@@ -29,14 +29,14 @@ Studio kísérletét az online adatforrás eléréséhez, adja hozzá a [adatok 
 Fontos megjegyezni, hogy a betanítási adatok érhető el a kísérletben futása közben, mert csak érhető el, hogy a kísérletben. Ezzel egy adatkészlet modulban tárolt adatok érhetők el minden olyan kísérletvászonra a munkaterületén.
 
 > [!IMPORTANT]
-> Jelenleg a [adatok importálása] [ import-data] és [adatok exportálása] [ export-data] modulok olvashat és írhat az adatok csak a klasszikus létrehozott Azure storage-ból üzembe helyezési modell. Más szóval az új Azure Blob Storage fióktípus egy gyakran használt adatok tároláselérési rétegében vagy a ritkán használt adatok hozzáférési rétege által még nem támogatott. 
-> 
-> Bármely általánosan, Azure storage-fiókok előfordulhat, hogy létrehozott előtt elérhetővé váltak a szolgáltatás a beállítás nem befolyásolja. 
-> Ha szeretne egy új fiók létrehozásához, válassza ki a **klasszikus** a központi telepítés modell, vagy használhatja a Resource Managert, és válassza a **általános célú** helyett **a Blob storage-** a **Fiók típusa**. 
-> 
+> Jelenleg a [adatok importálása] [ import-data] és [adatok exportálása] [ export-data] modulok olvashat és írhat az adatok csak a klasszikus létrehozott Azure storage-ból üzembe helyezési modell. Más szóval az új Azure Blob Storage fióktípus egy gyakran használt adatok tároláselérési rétegében vagy a ritkán használt adatok hozzáférési rétege által még nem támogatott.
+>
+> Bármely általánosan, Azure storage-fiókok előfordulhat, hogy létrehozott előtt elérhetővé váltak a szolgáltatás a beállítás nem befolyásolja.
+> Ha szeretne egy új fiók létrehozásához, válassza ki a **klasszikus** a központi telepítés modell, vagy használhatja a Resource Managert, és válassza a **általános célú** helyett **a Blob storage-** a **Fiók típusa**.
+>
 > További információkért lásd: [Azure Blob Storage: Gyakori és ritka elérésű tárolási szintet](../../storage/blobs/storage-blob-storage-tiers.md).
-> 
-> 
+>
+>
 
 ## <a name="supported-online-data-sources"></a>Online adatforrás támogatott
 Az Azure Machine Learning **adatok importálása** modul támogatja a következő adatforrásokat:
@@ -53,7 +53,7 @@ Az Azure Machine Learning **adatok importálása** modul támogatja a következ�
 
 ## <a name="next-steps"></a>További lépések
 
-[Adatok importálása és az adatok exportálása modult használó Azure ML-webszolgáltatások üzembe helyezéséhez](web-services-that-use-import-export-modules.md)
+[Az Azure Machine Learning studio-webszolgáltatások adatok importálása és az adatok exportálása modult használó központi telepítése](web-services-that-use-import-export-modules.md)
 
 
 <!-- Module References -->

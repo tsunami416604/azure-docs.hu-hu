@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c6e88eb2e3f3e1b6e6ce2b7f8984799397af582
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: e99ffb7f89aab0e9b00495c9ffa8a47c84ec1cc5
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451613"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080973"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Méretezhető adatelemzés az Azure Data Lake: Egy végpontok közötti forgatókönyv
 Ez az útmutató bemutatja, hogyan használható az Azure Data Lake adatáttekintés és a bináris osztályozási feladatok NYC taxi út mintán és adatkészlet előrejelzési e tipp egy diszkont fizeti díjszabás. Emellett végigvezeti a lépéseken, a [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), a végpontok közötti, az adatgyűjtés a tanítási modell, majd a központi telepítését egy webszolgáltatás, amelyet a modell tesz közzé.
@@ -26,13 +26,13 @@ A [a Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/
 
 A Data Lake Analytics kulcseleme a Cortana Analytics Suite csomagnak is, emellett az Azure SQL Data Warehouse, a Power BI és a Data Factory szolgáltatásokkal is együttműködik. Ez lehetővé teszi egy átfogó felhőalapú big data és a speciális analitikai platformot.
 
-Ez a bemutató első lépése arról, hogyan telepítse az előfeltételeket és az adatelemzési folyamat feladatok végrehajtásához szükséges erőforrásokat. Azt ismerteti, adatfeldolgozási U-SQL használatával, és azt állapítja meg, hogyan használható a Python és a Hive megjelenítésével, majd az Azure Machine Learning Studio használatával hozhat létre, és a prediktív modellek üzembe helyezése. 
+Ez a bemutató első lépése arról, hogyan telepítse az előfeltételeket és az adatelemzési folyamat feladatok végrehajtásához szükséges erőforrásokat. Azt ismerteti, adatfeldolgozási U-SQL használatával, és azt állapítja meg, hogyan használható a Python és a Hive megjelenítésével, majd az Azure Machine Learning Studio használatával hozhat létre, és a prediktív modellek üzembe helyezése.
 
 ### <a name="u-sql-and-visual-studio"></a>U-SQL és a Visual Studióban
-Ez a forgatókönyv azt javasolja, hogy az adatkészlet feldolgozása U-SQL-parancsfájlok szerkesztése a Visual Studio használatával. A U-SQL-szkriptek az itt leírtak szerint, és a egy különálló fájlban megadott. A folyamat fürtjét, felfedezése és az adatok mintavételezésének tartalmaz. Azt is bemutatja, hogyan futtathat U-SQL-parancsprogram-feladatokat az Azure Portalról. Hive táblák létrehozása és központi telepítését az Azure Machine Learning Studio egy bináris osztályozási modell megkönnyítése kapcsolódó HDInsight-fürtben az adatok jön létre.  
+Ez a forgatókönyv azt javasolja, hogy az adatkészlet feldolgozása U-SQL-parancsfájlok szerkesztése a Visual Studio használatával. A U-SQL-szkriptek az itt leírtak szerint, és a egy különálló fájlban megadott. A folyamat fürtjét, felfedezése és az adatok mintavételezésének tartalmaz. Azt is bemutatja, hogyan futtathat U-SQL-parancsprogram-feladatokat az Azure Portalról. Hive táblák létrehozása és központi telepítését az Azure Machine Learning Studio egy bináris osztályozási modell megkönnyítése kapcsolódó HDInsight-fürtben az adatok jön létre.
 
 ### <a name="python"></a>Python
-Ez a forgatókönyv egy szakasz bemutatja, hogyan készíthet és helyezhet üzembe egy prediktív modellt, a Python használata Azure Machine Learning Studio is tartalmaz. A folyamat lépései biztosítja egy Jupyter notebookot a Python-szkriptet. A notebook néhány további funkciót mérnöki lépéseket és a modellek konstrukció például többosztályos osztályozási és modellezés mellett a bináris osztályozási modell leírása itt található regressziós kódját tartalmazza. A regresszió feladata előre jelezni a funkciókat a tip alapján tipp mennyisége. 
+Ez a forgatókönyv egy szakasz bemutatja, hogyan készíthet és helyezhet üzembe egy prediktív modellt, a Python használata Azure Machine Learning Studio is tartalmaz. A folyamat lépései biztosítja egy Jupyter notebookot a Python-szkriptet. A notebook néhány további funkciót mérnöki lépéseket és a modellek konstrukció például többosztályos osztályozási és modellezés mellett a bináris osztályozási modell leírása itt található regressziós kódját tartalmazza. A regresszió feladata előre jelezni a funkciókat a tip alapján tipp mennyisége.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Az Azure Machine Learning Studio segítségével hozhat létre, és a prediktív modellek üzembe helyezése. Ebben az esetben két módszer használata: első Python-szkriptekkel és a egy HDInsight (Hadoop) fürtön található Hive-táblákat.
@@ -47,15 +47,15 @@ Ezek a témakörök elkezdéséhez az alábbiakkal kell rendelkeznie:
 * [Ajánlott] A Visual Studio 2013-as vagy újabb. Ha Ön még nem rendelkezik ilyen verziójú telepítve, akkor egy ingyenes közösségi verziója letölthető a [Visual Studio Community](https://www.visualstudio.com/vs/community/).
 
 > [!NOTE]
-> A Visual Studio helyett használhatja az Azure Portalon az Azure Data Lake-lekérdezések elküldéséhez. Ezért mindkét a Visual Studióval való és a portál című részben található utasításokat **U-SQL-adatok feldolgozása**. 
-> 
-> 
+> A Visual Studio helyett használhatja az Azure Portalon az Azure Data Lake-lekérdezések elküldéséhez. Ezért mindkét a Visual Studióval való és a portál című részben található utasításokat **U-SQL-adatok feldolgozása**.
+>
+>
 
 
 ## <a name="prepare-data-science-environment-for-azure-data-lake"></a>Olyan adatelemezési környezetet az Azure Data Lake előkészítése
 Ebben a bemutatóban az adatelemzési környezetet előkészítése, hozzon létre az alábbi forrásanyagokat:
 
-* Az Azure Data Lake Store (ADLS) 
+* Az Azure Data Lake Store (ADLS)
 * Az Azure Data Lake Analytics (ADLA)
 * Az Azure Blob storage-fiók
 * Azure Machine Learning Studio-fiók
@@ -67,17 +67,17 @@ Ez a szakasz útmutatást ezen erőforrások mindegyike létrehozásával. Ha ú
 > [!NOTE]
 > A **Azure Data Lake Store** lehet létrehozni külön-külön, vagy ha hoz létre a **Azure Data Lake Analytics** az alapértelmezett tárolóként. Ezen erőforrások mindegyike külön létrehozására vonatkozó utasításokat hivatkozott, de a Data Lake storage-fiók nem kell külön kell létrehozni.
 >
-> 
+>
 
 ### <a name="create-an-azure-data-lake-store"></a>Hozzon létre egy Azure Data Lake Store
 
 
-Hozzon létre egy ADLS a [az Azure portal](http://portal.azure.com). További információkért lásd: [egy HDInsight-fürt létrehozása a Data Lake Store az Azure portal használatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Ügyeljen arra, hogy állítsa be a fürt az AAD-identitását a **DataSource** paneljén a **opcionális konfigurációs** panelen leírt hiba. 
+Hozzon létre egy ADLS a [az Azure portal](http://portal.azure.com). További információkért lásd: [egy HDInsight-fürt létrehozása a Data Lake Store az Azure portal használatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Ügyeljen arra, hogy állítsa be a fürt az AAD-identitását a **DataSource** paneljén a **opcionális konfigurációs** panelen leírt hiba.
 
  ![3](./media/data-lake-walkthrough/3-create-ADLS.PNG)
 
 ### <a name="create-an-azure-data-lake-analytics-account"></a>Az Azure Data Lake Analytics-fiók létrehozása
-Az ADLA fiók létrehozása a [az Azure portal](http://portal.azure.com). További információkért lásd: [oktatóprogram: Ismerkedés az Azure Data Lake Analytics az Azure portal használatával](../../data-lake-analytics/data-lake-analytics-get-started-portal.md). 
+Az ADLA fiók létrehozása a [az Azure portal](http://portal.azure.com). További információkért lásd: [oktatóprogram: Ismerkedés az Azure Data Lake Analytics az Azure portal használatával](../../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
  ![4](./media/data-lake-walkthrough/4-create-ADLA-new.PNG)
 
@@ -87,7 +87,7 @@ Hozzon létre egy Azure Blob storage-fiókjában az [az Azure portal](http://por
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
 ### <a name="set-up-an-azure-machine-learning-studio-account"></a>Az Azure Machine Learning Studio-fiók létrehozása
-Regisztrál / az Azure Machine Learning studióba, a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) lapot. Kattintson a **első lépések** gombra, majd válassza a "Ingyenes munkaterület" vagy "Standard munkaterület". A rendszer most már készen áll, kísérletek létrehozására az Azure Machine Learning Studióban.  
+Regisztrál / az Azure Machine Learning studióba, a [Azure Machine Learning studio](https://azure.microsoft.com/services/machine-learning/) lapot. Kattintson a **első lépések** gombra, majd válassza a "Ingyenes munkaterület" vagy "Standard munkaterület". A rendszer most már készen áll, kísérletek létrehozására az Azure Machine Learning studióban.
 
 ### <a name="install-azure-data-lake-tools-recommended"></a>[Ajánlott] az Azure Data Lake Tools telepítése
 Az Azure Data Lake Tools telepítése a Visual Studio-verzióra vonatkozó [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
@@ -141,17 +141,17 @@ Hajtsa végre a U-SQL használatával, nyissa meg a Visual Studióban kattintson
 
 > [!NOTE]
 > Az Azure Portal használatával hajtható végre a U-SQL Visual Studio helyett lehetőség. Keresse meg az Azure Data Lake Analytics-erőforrás a portálon, és közvetlenül, az alábbi ábrán szemléltetett-lekérdezések elküldéséhez:
-> 
-> 
+>
+>
 
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>Adatok betöltése céljából: A nyilvános blob adatainak olvasása
-Az Azure blobban lévő adatok helyét hivatkozott **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** használatával képes kinyerni és **Extractors.Csv()**. Helyettesítse be a saját tároló neve és a tárfiók nevét az alábbi parancsfájlok a container_name@blob_storage_account_name wasb-címét. Mivel ugyanazt a formátumot a fájlneveket, lehetőség használni **út\_data_ {\*\}.csv** , olvassa el az összes 12 útadatokat tartalmazó fájlt. 
+Az Azure blobban lévő adatok helyét hivatkozott **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** használatával képes kinyerni és **Extractors.Csv()**. Helyettesítse be a saját tároló neve és a tárfiók nevét az alábbi parancsfájlok a container_name@blob_storage_account_name wasb-címét. Mivel ugyanazt a formátumot a fájlneveket, lehetőség használni **út\_data_ {\*\}.csv** , olvassa el az összes 12 útadatokat tartalmazó fájlt.
 
     ///Read in Trip data
     @trip0 =
-        EXTRACT 
+        EXTRACT
         medallion string,
         hack_license string,
         vendor_id string,
@@ -170,11 +170,11 @@ Az Azure blobban lévő adatok helyét hivatkozott **wasb://container_name@blob_
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Mivel az első sorban a fejlécek, távolítsa el a fejlécek, és megfelelő azokat az oszlop típusának módosítása szüksége. Mentés a feldolgozott adatokat az Azure Data Lake Storage használatával elvégezhető **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ vagy az Azure Blob storage-fiók használatával  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**. 
+Mivel az első sorban a fejlécek, távolítsa el a fejlécek, és megfelelő azokat az oszlop típusának módosítása szüksége. Mentés a feldolgozott adatokat az Azure Data Lake Storage használatával elvégezhető **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ vagy az Azure Blob storage-fiók használatával  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**.
 
     // change data types
     @trip =
-        SELECT 
+        SELECT
         medallion,
         hack_license,
         vendor_id,
@@ -193,23 +193,23 @@ Mivel az első sorban a fejlécek, távolítsa el a fejlécek, és megfelelő az
     WHERE medallion != "medallion";
 
     ////output data to ADL
-    OUTPUT @trip   
+    OUTPUT @trip
     TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_trip.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
 
     ////Output data to blob
-    OUTPUT @trip   
+    OUTPUT @trip
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_trip.csv"
-    USING Outputters.Csv();  
+    USING Outputters.Csv();
 
-Hasonlóképpen olvashat diszkont adatkészletek. Kattintson a jobb gombbal az Azure Data Lake Store, ha szeretné, tekintse meg az adatok **az Azure portal adatkezelő-->** vagy **fájlkezelő** Visual Studión belül. 
+Hasonlóképpen olvashat diszkont adatkészletek. Kattintson a jobb gombbal az Azure Data Lake Store, ha szeretné, tekintse meg az adatok **az Azure portal adatkezelő-->** vagy **fájlkezelő** Visual Studión belül.
 
  ![10](./media/data-lake-walkthrough/10-data-in-ADL-VS.PNG)
 
  ![11](./media/data-lake-walkthrough/11-data-in-ADL.PNG)
 
 ### <a name="quality"></a>Adatok minőségi ellenőrzése
-Utazás és diszkont táblák a olvasása, miután adatminőségi ellenőrzése a következő módon teheti meg. Az eredményül kapott CSV-fájlok a kimenet az Azure Blob storage vagy az Azure Data Lake Store lehet. 
+Utazás és diszkont táblák a olvasása, miután adatminőségi ellenőrzése a következő módon teheti meg. Az eredményül kapott CSV-fájlok a kimenet az Azure Blob storage vagy az Azure Data Lake Store lehet.
 
 Keresse meg és medallions egyedi száma medallions száma:
 
@@ -223,14 +223,14 @@ Keresse meg és medallions egyedi száma medallions száma:
 
     @ex_1 =
         SELECT
-        pickup_month, 
+        pickup_month,
         COUNT(medallion) AS cnt_medallion,
         COUNT(DISTINCT(medallion)) AS unique_medallion
         FROM @trip2
         GROUP BY pickup_month;
-        OUTPUT @ex_1   
+        OUTPUT @ex_1
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_1.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
 
 Keresse meg azokat, amelyek több mint 100 lelassítja kellett medallions:
 
@@ -242,9 +242,9 @@ Keresse meg azokat, amelyek több mint 100 lelassítja kellett medallions:
         //where pickup_datetime >= "2013-01-01t00:00:00.0000000" and pickup_datetime <= "2013-04-01t00:00:00.0000000"
         GROUP BY medallion
         HAVING COUNT(medallion) > 100;
-        OUTPUT @ex_2   
+        OUTPUT @ex_2
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_2.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
 
 Keresse meg azokat a tekintetében pickup_longitude érvénytelen rekordokat:
 
@@ -254,9 +254,9 @@ Keresse meg azokat a tekintetében pickup_longitude érvénytelen rekordokat:
         FROM @trip
         WHERE
         pickup_longitude <- 90 OR pickup_longitude > 90;
-        OUTPUT @ex_3   
+        OUTPUT @ex_3
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_3.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
 
 Keresse meg a hiányzó értékek az egyes változók:
 
@@ -267,11 +267,11 @@ Keresse meg a hiányzó értékek az egyes változók:
         FROM @trip;
 
     @trip_summary6 =
-        SELECT 
+        SELECT
             vendor_id,
-        SUM(missing_medallion) AS medallion_empty, 
+        SUM(missing_medallion) AS medallion_empty,
         COUNT(medallion) AS medallion_total,
-        COUNT(DISTINCT(medallion)) AS medallion_total_unique  
+        COUNT(DISTINCT(medallion)) AS medallion_total_unique
         FROM @res
         GROUP BY vendor_id;
     OUTPUT @trip_summary6
@@ -296,9 +296,9 @@ Keresse meg a Formabontó, és nem Formabontó lelassítja eloszlása:
                COUNT(*) AS tip_freq
         FROM @tip_or_not
         GROUP BY tipped;
-        OUTPUT @ex_4   
+        OUTPUT @ex_4
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_4.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
 
 Keresse meg a terjesztési tipp összeg levágva jelenhetnek értékekkel: 0, 5, 10 és 20 dollár.
 
@@ -312,20 +312,20 @@ Keresse meg a terjesztési tipp összeg levágva jelenhetnek értékekkel: 0, 5,
                COUNT(*) AS tip_freq
         FROM @tip_class
         GROUP BY tip_class;
-        OUTPUT @ex_5   
+        OUTPUT @ex_5
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_5.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
 
 Keresse meg az utazás távolság alapszintű statisztikákat:
 
     // find basic statistics for trip_distance
     @trip_summary4 =
-        SELECT 
+        SELECT
             vendor_id,
             COUNT(*) AS cnt_row,
             MIN(trip_distance) AS min_trip_distance,
             MAX(trip_distance) AS max_trip_distance,
-            AVG(trip_distance) AS avg_trip_distance 
+            AVG(trip_distance) AS avg_trip_distance
         FROM @trip
         GROUP BY vendor_id;
     OUTPUT @trip_summary4
@@ -344,7 +344,7 @@ Keresse meg az utazás távolság percentilisei:
        // group by vendor_id;
     OUTPUT @trip_summary3
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_13.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
 
 
 ### <a name="join"></a>Utazás és diszkont táblák
@@ -353,7 +353,7 @@ Utazás és diszkont táblák medallion, hack_license és pickup_time összekapc
     //join trip and fare table
 
     @model_data_full =
-    SELECT t.*, 
+    SELECT t.*,
     f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,  f.total_amount, f.tip_amount,
     (f.tip_amount > 0 ? 1: 0) AS tipped,
     (f.tip_amount >20? 4: (f.tip_amount >10? 3:(f.tip_amount >5 ? 2:(f.tip_amount > 0 ? 1: 0)))) AS tip_class
@@ -362,14 +362,14 @@ Utazás és diszkont táblák medallion, hack_license és pickup_time összekapc
     WHERE   (pickup_longitude != 0 AND dropoff_longitude != 0 );
 
     //// output to blob
-    OUTPUT @model_data_full   
+    OUTPUT @model_data_full
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_full_data.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
 
     ////output data to ADL
-    OUTPUT @model_data_full   
+    OUTPUT @model_data_full
     TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_7_full_data.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
 
 
 Utas száma az egyes fenyegetési, a rekordokat, átlagos tipp összeg, tipp összeg varianciáját, Formabontó lelassítja százaléka számának kiszámítása.
@@ -403,9 +403,9 @@ Első lépésként véletlenszerűen kiválasztása 0,1 %-át az adatokat a táb
     FROM @addrownumberres_randomsample
     WHERE rownum % 1000 == 0;
 
-    OUTPUT @model_data_random_sample_1_1000   
+    OUTPUT @model_data_random_sample_1_1000
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_random_1_1000.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
 
 Ezután tegye a rétegzett mintavételi bináris változó tip_class szerint:
 
@@ -420,17 +420,17 @@ Ezután tegye a rétegzett mintavételi bináris változó tip_class szerint:
     FROM @addrownumberres_stratifiedsample
     WHERE rownum % 1000 == 0;
     //// output to blob
-    OUTPUT @model_data_stratified_sample_1_1000   
+    OUTPUT @model_data_stratified_sample_1_1000
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_9_stratified_1_1000.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
     ////output data to ADL
-    OUTPUT @model_data_stratified_sample_1_1000   
+    OUTPUT @model_data_stratified_sample_1_1000
     TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_9_stratified_1_1000.csv"
-    USING Outputters.Csv(); 
+    USING Outputters.Csv();
 
 
 ### <a name="run"></a>U-SQL-feladatok futtatása
-Amikor befejezte a szerkesztést a U-SQL-parancsfájlok, elküldheti őket a kiszolgálóhoz az Azure Data Lake Analytics-fiók használatával. Kattintson a **Data Lake**, **feladat elküldése**, jelölje be a **Analytics-fiók**, válassza a **párhuzamosság**, kattintson **küldés**  gombra.  
+Amikor befejezte a szerkesztést a U-SQL-parancsfájlok, elküldheti őket a kiszolgálóhoz az Azure Data Lake Analytics-fiók használatával. Kattintson a **Data Lake**, **feladat elküldése**, jelölje be a **Analytics-fiók**, válassza a **párhuzamosság**, kattintson **küldés**  gombra.
 
  ![12](./media/data-lake-walkthrough/12-submit-USQL.PNG)
 
@@ -447,16 +447,16 @@ Most ellenőrizheti a kimeneti fájlokat az Azure Blob storage vagy az Azure Por
  ![16](./media/data-lake-walkthrough/16-U-SQL-output-csv-portal.PNG)
 
 ## <a name="build-and-deploy-models-in-azure-machine-learning"></a>Hozhat létre, és az Azure Machine Learning modellek üzembe helyezése
-Két lehetőség áll rendelkezésre, hogy az adatok lekérése az Azure Machine Learningbe hozhat létre és 
+Két lehetőség áll rendelkezésre, hogy az adatok lekérése az Azure Machine Learningbe hozhat létre és
 
-* Az első lehetőség, használhatja az Azure Blob lett írva a mintavételezett adatok (az a **adat-mintavételezés** . a fenti lépés) és a Python használatával hozhat létre, és az Azure Machine Learning modellek üzembe helyezése. 
-* A második lehetőség, a lekérdezheti, ha az Azure Data Lake az adatokat egy Hive-lekérdezést közvetlenül használatával. Ez a beállítás megköveteli, hogy hozzon létre egy új HDInsight-fürtöt, vagy használjon egy meglévő HDInsight-fürtöt, mutasson a Hive-táblákat az Azure Data Lake Storage NY i taxik adatait.  Mindkét ezek a beállítások az alábbi szakaszok ismertetik. 
+* Az első lehetőség, használhatja az Azure Blob lett írva a mintavételezett adatok (az a **adat-mintavételezés** . a fenti lépés) és a Python használatával hozhat létre, és az Azure Machine Learning modellek üzembe helyezése.
+* A második lehetőség, a lekérdezheti, ha az Azure Data Lake az adatokat egy Hive-lekérdezést közvetlenül használatával. Ez a beállítás megköveteli, hogy hozzon létre egy új HDInsight-fürtöt, vagy használjon egy meglévő HDInsight-fürtöt, mutasson a Hive-táblákat az Azure Data Lake Storage NY i taxik adatait.  Mindkét ezek a beállítások az alábbi szakaszok ismertetik.
 
 ## <a name="option-1-use-python-to-build-and-deploy-machine-learning-models"></a>Option 1: Készíthet és helyezhet üzembe a machine learning-modellek a Python használata
-Hozhat létre, és a Python használata a machine learning-modellek üzembe helyezése, a Jupyter Notebook létrehozása a helyi gépen, vagy az Azure Machine Learning Studióban. A Jupyter Notebook megadott [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) ismerje meg, megjelenítheti az adatokat, funkciófejlesztési, modellezés és üzembe helyezés a teljes kódját tartalmazza. Ez a cikk csak a modellezésre és a központi telepítési terjed ki. 
+Hozhat létre, és a Python használata a machine learning-modellek üzembe helyezése, a Jupyter Notebook létrehozása a helyi gépen, vagy az Azure Machine Learning Studióban. A Jupyter Notebook megadott [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) ismerje meg, megjelenítheti az adatokat, funkciófejlesztési, modellezés és üzembe helyezés a teljes kódját tartalmazza. Ez a cikk csak a modellezésre és a központi telepítési terjed ki.
 
 ### <a name="import-python-libraries"></a>Python-kódtárakat importálása
-Annak érdekében, hogy a minta futtatása Jupyter Notebook vagy a Python-szkriptfájlt, a következő Python-csomagok szükségesek. Az AzureML Notebook szolgáltatás használja, ha ezek a csomagok előre telepítve lett.
+Annak érdekében, hogy a minta futtatása Jupyter Notebook vagy a Python-szkriptfájlt, a következő Python-csomagok szükségesek. Az Azure Machine Learning Notebook szolgáltatás használja, ha ezek a csomagok előre telepítve lett.
 
     import pandas as pd
     from pandas import Series, DataFrame
@@ -480,29 +480,29 @@ Annak érdekében, hogy a minta futtatása Jupyter Notebook vagy a Python-szkrip
 
 
 ### <a name="read-in-the-data-from-blob"></a>Olvassa el az adatok a blobból
-* Kapcsolati sztring   
-  
+* Kapcsolati sztring
+
         CONTAINERNAME = 'test1'
         STORAGEACCOUNTNAME = 'XXXXXXXXX'
         STORAGEACCOUNTKEY = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYY'
         BLOBNAME = 'demo_ex_9_stratified_1_1000_copy.csv'
         blob_service = BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
 * Szöveg olvasás
-  
+
         t1 = time.time()
         data = blob_service.get_blob_to_text(CONTAINERNAME,BLOBNAME).split("\n")
         t2 = time.time()
         print(("It takes %s seconds to read in "+BLOBNAME) % (t2 - t1))
-  
-  ![17](./media/data-lake-walkthrough/17-python_readin_csv.PNG)    
+
+  ![17](./media/data-lake-walkthrough/17-python_readin_csv.PNG)
 * Adja hozzá az oszlopok neveit és különálló oszlopok
-  
+
         colnames = ['medallion','hack_license','vendor_id','rate_code','store_and_fwd_flag','pickup_datetime','dropoff_datetime',
         'passenger_count','trip_time_in_secs','trip_distance','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
         'payment_type', 'fare_amount', 'surcharge', 'mta_tax', 'tolls_amount',  'total_amount', 'tip_amount', 'tipped', 'tip_class', 'rownum']
         df1 = pd.DataFrame([sub.split(",") for sub in data], columns = colnames)
 * Módosíthatja az egyes oszlopok numerikus típusúvá
-  
+
         cols_2_float = ['trip_time_in_secs','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
         'fare_amount', 'surcharge','mta_tax','tolls_amount','total_amount','tip_amount', 'passenger_count','trip_distance'
         ,'tipped','tip_class','rownum']
@@ -513,87 +513,87 @@ Annak érdekében, hogy a minta futtatása Jupyter Notebook vagy a Python-szkrip
 Itt hozhat létre egy bináris osztályozási modell előre jelezni, hogy belépőt Formabontó-e, vagy sem. A Jupyter Notebookot található egyéb két modell: többosztályos osztályozási vagy regressziós modelleket.
 
 * Meg kell hoznia a helyőrző változókat, amelyek segítségével a scikit-modellek további
-  
+
         df1_payment_type_dummy = pd.get_dummies(df1['payment_type'], prefix='payment_type_dummy')
         df1_vendor_id_dummy = pd.get_dummies(df1['vendor_id'], prefix='vendor_id_dummy')
 * A modellezés adatkeretbe létrehozása
-  
+
         cols_to_keep = ['tipped', 'trip_distance', 'passenger_count']
         data = df1[cols_to_keep].join([df1_payment_type_dummy,df1_vendor_id_dummy])
-  
+
         X = data.iloc[:,1:]
         Y = data.tipped
 * Betanítására és tesztelésére 60 – 40 felosztása
-  
+
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.4, random_state=0)
 * A gyakorlókészlethez logisztikai regresszió
-  
+
         model = LogisticRegression()
         logit_fit = model.fit(X_train, Y_train)
         print ('Coefficients: \n', logit_fit.coef_)
         Y_train_pred = logit_fit.predict(X_train)
-  
+
        ![c1](./media/data-lake-walkthrough/c1-py-logit-coefficient.PNG)
 * Tesztelési adatkészlet pontszám
-  
+
         Y_test_pred = logit_fit.predict(X_test)
 * Értékelési mérőszámok kiszámítása
-  
+
         fpr_train, tpr_train, thresholds_train = metrics.roc_curve(Y_train, Y_train_pred)
         print fpr_train, tpr_train, thresholds_train
-  
-        fpr_test, tpr_test, thresholds_test = metrics.roc_curve(Y_test, Y_test_pred) 
+
+        fpr_test, tpr_test, thresholds_test = metrics.roc_curve(Y_test, Y_test_pred)
         print fpr_test, tpr_test, thresholds_test
-  
+
         #AUC
         print metrics.auc(fpr_train,tpr_train)
         print metrics.auc(fpr_test,tpr_test)
-  
+
         #Confusion Matrix
         print metrics.confusion_matrix(Y_train,Y_train_pred)
         print metrics.confusion_matrix(Y_test,Y_test_pred)
-  
+
        ![c2](./media/data-lake-walkthrough/c2-py-logit-evaluation.PNG)
 
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Webszolgáltatási API készítése és használata, a Pythonban
-Szeretné üzembe helyezése a gépi tanulási modell, miután állították össze. A bináris logisztikai modell használható példa. Győződjön meg arról, hogy a scikit-további 0.15.1 verziószáma a helyi gépen. Nem kell foglalkoznia ezzel vagy az Azure Machine Learning studio szolgáltatás használatakor.
+Szeretné üzembe helyezése a gépi tanulási modell, miután állították össze. A bináris logisztikai modell használható példa. Győződjön meg arról, hogy a scikit-további 0.15.1 verziószáma a helyi gépen. Nem kell foglalkoznia ezzel vagy az Azure Machine Learning studio használatakor.
 
-* Keresse meg a munkaterület hitelesítő adatait az Azure ML studio beállítások. Az Azure Machine Learning Studióban, kattintson **beállítások** --> **neve** --> **hitelesítési jogkivonatok**. 
-  
+* Keresse meg a munkaterület hitelesítő adatait az Azure Machine Learning studio beállítások. Az Azure Machine Learning Studióban, kattintson **beállítások** --> **neve** --> **hitelesítési jogkivonatok**.
+
     ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
         workspaceid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
         auth_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 * Webszolgáltatás létrehozása
-  
-        @services.publish(workspaceid, auth_token) 
+
+        @services.publish(workspaceid, auth_token)
         @services.types(trip_distance = float, passenger_count = float, payment_type_dummy_CRD = float, payment_type_dummy_CSH=float, payment_type_dummy_DIS = float, payment_type_dummy_NOC = float, payment_type_dummy_UNK = float, vendor_id_dummy_CMT = float, vendor_id_dummy_VTS = float)
         @services.returns(int) #0, or 1
         def predictNYCTAXI(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
             inputArray = [trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH, payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS]
             return logit_fit.predict(inputArray)
 * Webes szolgáltatás hitelesítő adatainak lekérése
-  
+
         url = predictNYCTAXI.service.url
         api_key =  predictNYCTAXI.service.api_key
-  
+
         print url
         print api_key
-  
+
         @services.service(url, api_key)
         @services.types(trip_distance = float, passenger_count = float, payment_type_dummy_CRD = float, payment_type_dummy_CSH=float,payment_type_dummy_DIS = float, payment_type_dummy_NOC = float, payment_type_dummy_UNK = float, vendor_id_dummy_CMT = float, vendor_id_dummy_VTS = float)
         @services.returns(float)
         def NYCTAXIPredictor(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
             pass
 * Webszolgáltatási API hívása. 5 – 10 másodperc az előző lépés után várnia kell.
-  
+
         NYCTAXIPredictor(1,2,1,0,0,0,0,0,1)
-  
+
        ![c4](./media/data-lake-walkthrough/c4-call-API.PNG)
 
 ## <a name="option-2-create-and-deploy-models-directly-in-azure-machine-learning"></a>Option 2: Hozzon létre, és közvetlenül az Azure Machine Learning modellek üzembe helyezése
-Az Azure Machine Learning Studio tudja olvasni az adatokat közvetlenül az Azure Data Lake Store, és hozzon létre és helyezhet üzembe modelleket majd használni. Ez a megközelítés használja a Hive-tábla, amely az Azure Data Lake Store mutat. Ehhez az szükséges, hogy egy külön Azure HDInsight-fürt építhető ki, amelyen létrehozták a Hive-táblában. A következő szakaszok bemutatják, hogyan teheti ezt. 
+Az Azure Machine Learning Studio tudja olvasni az adatokat közvetlenül az Azure Data Lake Store, és hozzon létre és helyezhet üzembe modelleket majd használni. Ez a megközelítés használja a Hive-tábla, amely az Azure Data Lake Store mutat. Ehhez az szükséges, hogy egy külön Azure HDInsight-fürt építhető ki, amelyen létrehozták a Hive-táblában. A következő szakaszok bemutatják, hogyan teheti ezt.
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>HDInsight Linux-fürt létrehozása
 Hozzon létre egy HDInsight-fürt (Linux) a [az Azure portal](http://portal.azure.com). További információkért lásd: a **egy HDInsight-fürt létrehozása az Azure Data Lake Store-hozzáféréssel rendelkező** szakasz [egy HDInsight-fürt létrehozása a Data Lake Store az Azure portal használatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
@@ -601,7 +601,7 @@ Hozzon létre egy HDInsight-fürt (Linux) a [az Azure portal](http://portal.azur
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>A HDInsight Hive-tábla létrehozásához
-Most hozzon létre a HDInsight-fürt használata az Azure Data Lake Store az előző lépésben tárolt adatokat az Azure Machine Learning Studióban használandó Hive-táblákat. Nyissa meg a létrehozott HDInsight-fürt. Kattintson a **beállítások** --> **tulajdonságok** --> **AAD-identitását a fürt** --> **ADLS hozzáférés**, Győződjön meg arról, hogy az Azure Data Lake Store-fiók kerül a listában az olvasási, írási és végrehajtási jogokat. 
+Most hozzon létre a HDInsight-fürt használata az Azure Data Lake Store az előző lépésben tárolt adatokat az Azure Machine Learning Studióban használandó Hive-táblákat. Nyissa meg a létrehozott HDInsight-fürt. Kattintson a **beállítások** --> **tulajdonságok** --> **AAD-identitását a fürt** --> **ADLS hozzáférés**, Győződjön meg arról, hogy az Azure Data Lake Store-fiók kerül a listában az olvasási, írási és végrehajtási jogokat.
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
@@ -651,14 +651,14 @@ A lekérdezés befejeztével az eredmények ehhez hasonló kell megjelennie:
 ### <a name="build-and-deploy-models-in-azure-machine-learning-studio"></a>Hozhat létre és helyezhet üzembe modelleket az Azure Machine Learning Studióban
 Most már készen áll készíthet és helyezhet üzembe egy modellt az e tipp: az Azure Machine Learning fizetős. A rétegzett mintaadatok használhatók a bináris osztályozási készen áll (tipp vagy sem) a probléma. A prediktív modellek többosztályos osztályozási (tip_class) és regressziós (tip_amount) használatával is létrehozott és telepített Azure Machine Learning Studióban, de itt, csak akkor jelenik meg az esetet a bináris osztályozási modell kezelése.
 
-1. Az adatok lekérése az Azure ML használatával a **adatok importálása** modul elérhető a **adatok bemeneti és kimeneti** szakaszban. További információkért lásd: a [adatok importálása modullal](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) referenciájának oldalát.
+1. Az adatok lekérése az Azure Machine Learning studio használatával a **adatok importálása** modul elérhető a **adatok bemeneti és kimeneti** szakaszban. További információkért lásd: a [adatok importálása modullal](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) referenciájának oldalát.
 2. Válassza ki **Hive-lekérdezés** , a **adatforrás** a a **tulajdonságok** panel.
 3. Illessze be a következő Hive-szkriptet a **adatbázis-lekérdezés Hive** szerkesztő
-   
+
         select * from nyc_stratified_sample;
 4. Adja meg az URI-t a HDInsight-fürt (Ez található Azure Portalon), a Hadoop hitelesítő adatokat, a kimeneti adatok és az Azure storage-fióknév neve/kulcs/tároló helyét.
-   
-   ![23](./media/data-lake-walkthrough/23-reader-module-v3.PNG)  
+
+   ![23](./media/data-lake-walkthrough/23-reader-module-v3.PNG)
 
 Egy bináris osztályozási kísérlet olvasási adatok Hive-táblából az alábbi ábrán látható példát:
 

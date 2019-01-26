@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f8a4e7dcaa1bc2df71246f67d06fc63ae4fcd06
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: af2a9cd7f834f5c6f70a78d94e8826de2584127d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883500"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076375"
 ---
 # <a name="monitor-an-azure-search-service-in-azure-portal"></a>Az Azure portal Azure Search szolgáltatás figyelése
 
 Az Azure Search szolgáltatás áttekintő lapján megtekintheti az erőforrás-használatot, valamint lekérdezési mérőszámokat, például a lekérdezések egy második lekérdezési (QPS), a Lekérdezések késése és a kérelmek szabályozva lettek aránya rendszer adatait. A portál segítségével ezenkívül figyelési képességek az Azure platformon, mélyebb adatgyűjtés széles használhatja. 
 
-Ez a cikk azonosítja, és az Azure Search-műveletek naplózása elérhető lehetőségeit hasonlítja össze. Engedélyezi a naplózást és a naplók tárolásához, és hogyan bontsa ki a begyűjtött információkat a vonatkozó utasításokat tartalmazza.
+Ez a cikk azonosítja, és az Azure Search-műveletek naplózása elérhető lehetőségeit hasonlítja össze. Naplózás és a naplók tárolásához, és hogyan érheti el az adatokat a szolgáltatás és a felhasználói tevékenység engedélyezése vonatkozó utasításokat tartalmazza.
 
-Ha egy támogatási jegyet, nincsenek adott feladatokat vagy adatokat kell megadnia. A támogatási szakértők rendelkezik a szükséges információkat a konkrét problémák kivizsgálása.  
+Naplók beállítása hasznos önkiszolgáló-diagnosztikai és a szolgáltatási műveletek előzményeinek megőrzése. Belsőleg naplók létezik egy rövid idő alatt, elegendő a vizsgálati és elemzési Ha, küldjön egy támogatási jegyet. Ha szeretné szabályozni a szolgáltatás naplófájl-információk tárolása, állítson be a jelen cikkben ismertetett megoldások.
 
 ## <a name="metrics-at-a-glance"></a>Mérőszámot egyetlen pillantással
 
@@ -39,6 +39,8 @@ A **használati** lapon látható erőforrás rendelkezésre állási viszonyít
 
 A **figyelés** lapon látható átlagok, például a keresési metrikákat a áthelyezése *lekérdezések másodpercenként* lekérdezési (QPS), percenként összesítve. 
 *Keresési késés* van a keresési szolgáltatás keresési lekérdezéseket, percenként összesítve feldolgozásához szükséges idő. *Szabályozott lekérdezések százalékos* (nem látható) van, amely is szabályozott, még / perc összesített keresési lekérdezések aránya.
+
+Ezek a számok hozzávetőlegesek, és célja, hogy általános képet arról, hogy a rendszer szervizeli a kérelmeket. Tényleges QPS magasabb vagy alacsonyabb, mint a portál által jelentett szám lehet.
 
 ![Lekérdezések száma második tevékenység](./media/search-monitor-usage/monitoring-tab.png "lekérdezések száma második tevékenység")
 
@@ -58,19 +60,20 @@ Az alábbi táblázat a naplók tárolásához és hozzáadása a szolgáltatás
 
 | Erőforrás | Használt |
 |----------|----------|
-| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | [Forgalmi elemzések keresése](search-traffic-analytics.md). Ez az az egyetlen megoldás, amely rögzíti a kérelmek, az értékeket az alábbi naplózás és mérőszámok sémák azonosított túllépnek további információt. Ezzel a módszerrel, másolás és beillesztés kialakítási kódja be a forrásfájlokat alkalmazáskérelem adatai átirányítása az Application Insights lekérdezési kifejezés bemenetek, nulla egyezést, a lekérdezések elemzés céljából, és így tovább. Javasoljuk, hogy a Power BI az analytics előtér, az Application insights szolgáltatásban tárolt adatokra.  |
-| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Kérelmek és a metrikák, alapú egyet az alábbi sémák. Eseményeket naplózza a Blob-tárolóba. Javasoljuk, hogy az Excel vagy a Power BI az analytics előtér, az Azure Blob storage-ban tárolt adatokhoz.|
-| [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Kérelmek és a metrikák, a jelen cikkben leírt sémák alapján. Válassza ezt a hatalmas naplók az alternatív gyűjtemény szolgáltatásként. |
+| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Naplózott eseményeket és mérőszámokat lekérdezés, alapú egyet az alábbi, a sémák felhasználói események az alkalmazásban is vonatkozhatnak, és. Ez az az egyetlen megoldás, amely a felhasználói műveletek vagy jelek figyelembe veszi, leképezés események a felhasználó által kezdeményezett search-ben alkalmazáskód által küldött kérelmek szűrése szemben. Ezt a módszert használja, a másolás és beillesztés kialakítási kódja be a forrásfájlokat útvonal adatok kérése az Application Insightsba. További információkért lásd: [forgalmi elemzések keresése](search-traffic-analytics.md). |
+| [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | A naplózott eseményeket és mérőszámokat lekérdezés,-alapú egyet az alábbi sémák. Eseményeket naplózza a Log Analytics-munkaterülethez. Lekérdezések egy munkaterületet a részletes információkat adnak a naplóból vonatkozóan futtathat le. További információkért lásd: [Log Analytics használatának első lépései](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
+| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | A naplózott eseményeket és mérőszámokat lekérdezés,-alapú egyet az alábbi sémák. Eseményeket naplózza a Blob-tárolóba, és JSON-fájlban tárolt. Egy JSON-szerkesztő segítségével megtekintheti a fájl tartalmát.|
+| [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Naplózott események és lekérdezés-metrikák, a jelen cikkben leírt sémák alapján. Válassza ezt a hatalmas naplók az alternatív gyűjtemény szolgáltatásként. |
 
-Egy figyelését teszi lehetővé az Azure search [Power BI-tartalomcsomag](https://app.powerbi.com/getdata/services/azure-search) így is elemezheti a naplófájlok adatait. A tartalomcsomag automatikusan csatlakozhat az adataihoz, és a keresési szolgáltatás kapcsolatos vizuális elemzést biztosítanak konfigurált jelentések áll. További információkért lásd: a [tartalomcsomag súgóoldalán](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/).
 
-A Blob storage lehetőséget ingyenes, megosztott szolgáltatásként érhető el, így kipróbálhatja, ingyenesen elkölthetők az Azure-előfizetés teljes élettartama. Ez a szakasz végigvezeti a lépéseken, engedélyezése és az Azure Blob storage összegyűjtésére és Azure Search-műveletek által létrehozott naplóadatok eléréséhez.
+
+A Log Analytics és a Blob storage érhetők el ingyenes, megosztott szolgáltatásként, hogy Ön is próbálja ki ingyenesen elkölthetők az Azure-előfizetés teljes élettartama. Ez a szakasz végigvezeti a lépéseken, engedélyezése és az Azure Blob storage összegyűjtésére és Azure Search-műveletek által létrehozott naplóadatok eléréséhez.
 
 ## <a name="enable-logging"></a>Naplózás engedélyezése
 
-Indexelés és a lekérdezési számítási feladatok naplózása alapértelmezés szerint ki van kapcsolva, és a naplózás az infrastruktúra és a külső tárhelyen bővítmény megoldások függ. Önmagában csak megőrzött Azure Search adatai indexeket, így naplók máshol kell tárolni.
+Indexelés és a lekérdezési számítási feladatok naplózása alapértelmezés szerint ki van kapcsolva, és naplózás az infrastruktúra és a hosszú távú, külső tárterület-bővítmény megoldások függ. Önmagában csak megőrzött Azure Search adatai indexeket, így naplók máshol kell tárolni.
 
-Ebben a szakaszban megismerheti a Blob storage használata a naplózott eseményeket és mérőszámokat adatokat tartalmazhat lesz.
+Ebben a szakaszban megismerheti, hogyan naplózott eseményeket és mérőszámokat adatokat tárolni a Blob storage használata lesz.
 
 1. [Hozzon létre egy tárfiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) Ha még nem rendelkezik. Elhelyezhet az Azure Search egyszerűbb karbantartása később Ha ehhez a gyakorlathoz használt összes erőforrást törli, ugyanabban az erőforráscsoportban.
 
@@ -86,18 +89,20 @@ Ebben a szakaszban megismerheti a Blob storage használata a naplózott esemény
 
 4. A profil mentéséhez.
 
-5. Teszt naplózása létrehozásával vagy objektumok törlése (a egy működési naplót hoz létre) és a lekérdezések elküldése (a metrikákat hoz létre). 
+5. Teszt naplózása létrehozásával vagy objektumok törlése (hoz létre az alkalmazásnapló-események) és a lekérdezések elküldése (a metrikákat hoz létre). 
 
-Naplózás engedélyezve van, ha a profil mentéséhez, a tárolók csak akkor hoz létre egy esemény napló vagy az mértékcsoport esetén. A tárolók jelennek meg több percet is igénybe vehet. Is [megjelenítheti az adatokat a Power bi-ban](#analyze-with-power-bi) amint elérhetővé válik.
-
-Amikor a rendszer az adatokat másolja egy tárfiókba, az adatok JSON-ként formázott és két tárolókban elhelyezett:
+Naplózás engedélyezve van, ha a profil mentéséhez, a tárolók csak akkor hoz létre egy esemény napló vagy az mértékcsoport esetén. A tárolók jelennek meg több percet is igénybe vehet. Amikor a rendszer az adatokat másolja egy tárfiókba, az adatok JSON-ként formázott és két tárolókban elhelyezett:
 
 * insights-logs-operationlogs: a keresési forgalmi naplók
 * insights-mérőszámok – pt1m: metrikák
 
-Nincs óránként, a tároló és a egy blob.
+Használhat [Visual Studio Code](#Download-and-open-in-Visual-Studio-Code) vagy egy másik JSON-szerkesztő a fájlok megtekintéséhez. Nincs óránként, a tároló és a egy blob.
 
-Példa az elérési útra: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json`
+### <a name="example-path"></a>Példa az elérési útra
+
+```
+resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json
+```
 
 ## <a name="log-schema"></a>Séma
 A search service forgalmi naplók tartalmazó blobok struktúrája ebben a szakaszban leírtak szerint. Minden egyes blob van egy gyökérobjektum nevű **rekordok** tartalmazó napló objektumokból álló tömb. Minden egyes blob minden művelet, amely során az adott órán következett rekordjait is tartalmazza.
@@ -146,25 +151,17 @@ Ebben a forgatókönyvben egy perc alatt gondoljunk: egy második magas betölt�
 
 ThrottledSearchQueriesPercentage, a minimális, maximális, átlagos és teljes, az összes ugyanazzal az értékkel rendelkeznek: voltak szabályozva, egy perc alatt keresési lekérdezések teljes száma a keresési lekérdezések aránya.
 
-## <a name="analyze-with-power-bi"></a>Elemzés a Power bi-ban
+## <a name="download-and-open-in-visual-studio-code"></a>Töltse le és nyissa meg a Visual Studio Code-ban
 
-Azt javasoljuk, [Power BI](https://powerbi.microsoft.com) feltárhatja és megjelenítheti az adatokat, különösen akkor, ha engedélyezte a [forgalmi elemzések keresése](search-traffic-analytics.md). További információkért lásd: a [tartalomcsomag súgóoldalán](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/).
+Bármely JSON-szerkesztő segítségével a naplófájlban. Ha még nincs fiókja, javasoljuk, hogy [Visual Studio Code](https://code.visualstudio.com/download).
 
-Kapcsolatokhoz a tárfiók nevet és hozzáférési kulcsát, amely az Azure portál oldalainak szerezhet a **hozzáférési kulcsok** a storage-fiók irányítópult lapja.
+1. Az Azure Portalon nyissa meg a Storage-fiókjában. 
 
-1. Telepítse a [Power BI-tartalomcsomag](https://app.powerbi.com/getdata/services/azure-search). A tartalomcsomag hozzáadja az előre meghatározott diagramok és táblázatok forgalmi elemzések kereséséhez rögzített további adatelemzés számára hasznos. 
+2. Kattintson a bal oldali navigációs ablaktáblában **Blobok**. Megtekintheti az **insights-logs-operationlogs** és **insights-mérőszámok – pt1m**. A naplóadatok exportálásakor a Blob storage tárolók az Azure Search jönnek létre.
 
-   Ha a Blob storage vagy egy másik tárolási mechanizmus használata, és nem adott hozzá a kódot, rendszerállapot, a tartalomcsomag kihagyhatja, és a beépített Power BI-Vizualizációk.
+3. Kattintson a mappahierarchiában le, amíg el nem éri a .JSON kiterjesztésű fájlt.  A helyi menü használatával töltse le a fájlt.
 
-2. Nyissa meg **Power BI**, kattintson a **adatok lekérése** > **szolgáltatások** > **Azure Search**.
-
-3. Adja meg a storage-fiók, jelölje be a nevét **kulcs** a hitelesítéshez, és illessze a hozzáférési kulcs.
-
-4. Importálja az adatokat, és kattintson a **adatainak megtekintéséhez**.
-
-A következő képernyőképen látható a beépített jelentéseket, és elemzésére diagramok keresse meg a traffic analytics.
-
-![A Power BI-irányítópultot az Azure Search](./media/search-monitor-usage/AzureSearch-PowerBI-Dashboard.png "Power BI-irányítópultot az Azure Search")
+A fájl letöltése után, nyissa meg a JSON-szerkesztőt, a tartalom megtekintéséhez.
 
 ## <a name="get-sys-info-apis"></a>Sys-adatok API-k lekérése
 Az Azure Search REST API és a .NET SDK-val programozott hozzáférést biztosítanak a szolgáltatási metrikák, index és indexelő adatai, és a dokumentumok számát.
@@ -179,6 +176,3 @@ A PowerShell vagy az Azure CLI használatával engedélyezéséhez tekintse a do
 ## <a name="next-steps"></a>További lépések
 
 [A Microsoft Azure Search szolgáltatás kezelése](search-manage.md) további információt a szolgáltatások felügyeletével és [teljesítmény és optimalizálás](search-performance-optimization.md) finomhangolási útmutató a.
-
-További információ a lenyűgöző jelentések létrehozásához. Lásd: [Ismerkedés a Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) részleteiről.
-

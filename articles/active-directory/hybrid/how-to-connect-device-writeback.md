@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 82ccbe8e57ff35904b7e763e838a81660ab13f88
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8be4274f2f971202172b09bbab2e6529fd5a8070
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412818"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075686"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Eszközvisszaírás engedélyezése
 > [!NOTE]
@@ -89,7 +89,7 @@ Eszközvisszaírás tartozó jelölőnégyzet nem érhető el, annak ellenére, 
 
 Először a lényeg első:
 
-* Ellenőrizze, hogy legalább egy erdő Windows Server 2012 R2. Az eszköz objektumtípus elérhetőnek kell lennie.
+* Az erdő, ahol az eszköz tartozik az erdő sémája, hogy a hálózatieszköz-objektum és a kapcsolódó attribútumok jelen a Windows 2012 R2 szintre frissíteni kell rendelkeznie.
 * Ha a telepítővarázsló már fut, majd módosítások észlelése nem történik meg. Ebben az esetben befejezheti a telepítővarázsló, és futtassa újból.
 * Ellenőrizze, hogy az inicializálás parancsfájl a megadott fióknak valójában az Active Directory-összekötő által használt megfelelő felhasználó. Ennek az ellenőrzéséhez kövesse az alábbi lépéseket:
   * Nyissa meg a start menüből **szinkronizálási szolgáltatás**.

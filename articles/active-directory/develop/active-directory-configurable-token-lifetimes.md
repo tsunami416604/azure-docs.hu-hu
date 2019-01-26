@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 1fa5a2f9d63dfd9af006285beec256395d7ac668
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 5dd5920eae97399bae03c6917bb610103bd556c2
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069505"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912714"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Az Azure Active Directoryban (előzetes verzió) konfigurálható jogkivonatok élettartama
 
@@ -85,8 +85,6 @@ A jogkivonat élettartama házirend egy csoportházirend-objektum, amely tartalm
 | Multi-factor Authentication munkamenet-jogkivonat maximális életkora |MaxAgeSessionMultiFactor<sup>3</sup> |Munkamenet-jogkivonatok (állandó és nem állandó) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>365 nap során az a maximális explicit módon, hogy ezek az attribútumok is beállítható.
-* <sup>2</sup>Ha **MaxAgeSessionSingleFactor** nem állítsa be ezt az értéket vesz igénybe a **MaxAgeSingleFactor** értéket. Ha sem a paraméter értéke, a tulajdonság az alapértelmezett érték (csak visszavont) vesz igénybe.
-* <sup>3</sup>Ha **MaxAgeSessionMultiFactor** nem állítsa be ezt az értéket vesz igénybe a **MaxAgeMultiFactor** értéket. Ha sem a paraméter értéke, a tulajdonság az alapértelmezett érték (csak visszavont) vesz igénybe.
 
 ### <a name="exceptions"></a>Kivételek
 | Tulajdonság | Hatással van | Alapértelmezett |
@@ -114,7 +112,7 @@ A C# megfelelően formázott itt használt összes mérföldkövei [TimeSpan](ht
 > [!NOTE]
 > Íme egy példa.
 >
-> A felhasználó kér hozzáférést két webes alkalmazások: A webalkalmazás és a webes alkalmazás B.
+> A felhasználó használni szeretne hozzáférni a két webes alkalmazásokhoz: Webalkalmazás és a webes alkalmazás B.
 > 
 > Tényezők:
 > * Mindkét webalkalmazások szülő szervezeten belül találhatók.
@@ -136,14 +134,14 @@ A C# megfelelően formázott itt használt összes mérföldkövei [TimeSpan](ht
 ### <a name="access-token-lifetime"></a>Hozzáférési jogkivonat élettartama
 **Karakterlánc:** AccessTokenLifetime
 
-**Hatással van:** hozzáférési jogkivonatok, azonosító-jogkivonatokat
+**Van hatással:** Hozzáférési jogkivonatok, azonosító-jogkivonatokat
 
 **Összefoglalás:** Ez az irányelv szabályozza, hogy mennyi ideig hozzáférési és azonosító-jogkivonatokat ehhez az erőforráshoz tekintendők érvényes. A hozzáférési jogkivonat élettartama tulajdonság csökkentése csökkenti egy hozzáférési jogkivonatot, vagy hosszabb ideig rosszindulatú aktor által használt azonosító jogkivonat kockázatát. (Ezek a jogkivonatok nem vonható vissza.) Kompromisszumot kötni a, hogy a teljesítményt hátrányosan érinti, mivel a jogkivonatok gyakrabban kell cserélni.
 
 ### <a name="refresh-token-max-inactive-time"></a>Frissítési jogkivonat maximális inaktív időpont
 **Karakterlánc:** MaxInactiveTime
 
-**Hatással van:** frissítési jogkivonatok
+**Van hatással:** Frissítési jogkivonatok
 
 **Összefoglalás:** Ez az irányelv szabályozza, hogy hogyan régi a frissítési jogkivonatok lehet, mielőtt egy ügyfél már nem használható, hozzáférési és frissítési jogkivonat párokat beolvasni az erőforrás elérésére tett kísérlet közben. Egy új frissítési jogkivonatot általában adja vissza a frissítési jogkivonatok használata, mert ez a szabályzat megakadályozza, hogy a hozzáférést, ha az ügyfél megpróbál a megadott időtartam során a jelenlegi frissítési jogkivonat használatával bármely erőforrás eléréséhez szükséges.
 
@@ -154,36 +152,36 @@ A frissítési jogkivonat maximális inaktív idő tulajdonság, mint az egyetle
 ### <a name="single-factor-refresh-token-max-age"></a>Egyetlen tényezős frissítési jogkivonat maximális életkora
 **Karakterlánc:** MaxAgeSingleFactor
 
-**Hatással van:** frissítési jogkivonatok
+**Van hatással:** Frissítési jogkivonatok
 
-**Összefoglalás:** a házirend vezérlőelemek mennyi a felhasználók is használhatják a frissítési jogkivonatok hozzáférés/frissítési jogkivonat párokat azok utolsó hitelesítése után sikeresen csak egyetlen tényező használatával. Miután a felhasználó végzi a hitelesítést, és a egy új frissítési jogkivonatot kap, a felhasználó használhatja a frissítési jogkivonat folyamat a megadott időtartam elteltéig. (Ez igaz, amíg a jelenlegi frissítési jogkivonat nem vonták vissza és nem hagyják a tétlenség ideje hosszabb fel nem használt.) Ezen a ponton a felhasználónak kötelező hitelesítse magát újra, megjelenik egy új frissítési jogkivonatot.
+**Összefoglalás:** A szabályzat vezérlőelemek mennyi a felhasználók is használhatják a frissítési jogkivonatok hozzáférés/frissítési jogkivonat párokat azok utolsó hitelesítése után sikeresen csak egyetlen tényező használatával. Miután a felhasználó végzi a hitelesítést, és a egy új frissítési jogkivonatot kap, a felhasználó használhatja a frissítési jogkivonat folyamat a megadott időtartam elteltéig. (Ez igaz, amíg a jelenlegi frissítési jogkivonat nem vonták vissza és nem hagyják a tétlenség ideje hosszabb fel nem használt.) Ezen a ponton a felhasználónak kötelező hitelesítse magát újra, megjelenik egy új frissítési jogkivonatot.
 
 A felhasználók is végezhetnek gyakrabban csökkenti a maximálisidőtartam kényszeríti. Mivel számít, hogy kevésbé biztonságos, mint a multi-factor authentication hitelesítést, azt javasoljuk, hogy ezzel a tulajdonsággal, amely kisebb vagy egyenlő, mint a multi-factor Authentication Token maximális frissítése életkora tulajdonság értékre.
 
 ### <a name="multi-factor-refresh-token-max-age"></a>Multi-factor Authentication frissítési jogkivonat maximális életkora
 **Karakterlánc:** MaxAgeMultiFactor
 
-**Hatással van:** frissítési jogkivonatok
+**Van hatással:** Frissítési jogkivonatok
 
-**Összefoglalás:** a szabályzatok vezérlőit mennyi a felhasználók is használhatják a frissítési jogkivonatok hozzáférés/frissítési jogkivonat párokat azok utolsó hitelesítése után sikeresen számos tényező használatával. Miután a felhasználó végzi a hitelesítést, és a egy új frissítési jogkivonatot kap, a felhasználó használhatja a frissítési jogkivonat folyamat a megadott időtartam elteltéig. (Ez igaz, amíg a jelenlegi frissítési jogkivonat nincs-e visszavonva, és nem a tétlenség ideje hosszabb fel nem használt.) Ezen a ponton felhasználók kényszerítve hitelesítse magát újra, megjelenik egy új frissítési jogkivonatot.
+**Összefoglalás:** A házirend vezérlőelemek mennyi a felhasználók is használhatják a frissítési jogkivonatok hozzáférés/frissítési jogkivonat párokat azok utolsó hitelesítése után sikeresen számos tényező használatával. Miután a felhasználó végzi a hitelesítést, és a egy új frissítési jogkivonatot kap, a felhasználó használhatja a frissítési jogkivonat folyamat a megadott időtartam elteltéig. (Ez igaz, amíg a jelenlegi frissítési jogkivonat nincs-e visszavonva, és nem a tétlenség ideje hosszabb fel nem használt.) Ezen a ponton felhasználók kényszerítve hitelesítse magát újra, megjelenik egy új frissítési jogkivonatot.
 
 A felhasználók is végezhetnek gyakrabban csökkenti a maximálisidőtartam kényszeríti. Mivel számít, hogy kevésbé biztonságos, mint a multi-factor authentication hitelesítést, azt javasoljuk, hogy ezzel a tulajdonsággal, amely egyenlő vagy nagyobb, mint az egyetlen tényezős Token maximális frissítése életkora tulajdonság értékre.
 
 ### <a name="single-factor-session-token-max-age"></a>Egyetlen tényezős munkamenet-jogkivonat maximális életkora
 **Karakterlánc:** MaxAgeSessionSingleFactor
 
-**Hatással van:** munkamenet jogkivonatok (állandó és nem állandó)
+**Van hatással:** Munkamenet-jogkivonatok (állandó és nem állandó)
 
-**Összefoglalás:** a szabályzatok vezérlőit mennyi a felhasználó használhatja egy munkamenet-jogkivonat beszerzése az új azonosító és tokenu relace, utolsó hitelesítése után sikeresen csak egyetlen tényező használatával. Miután egy felhasználó hitelesíti magát, és egy új munkamenet-jogkivonat kap, a felhasználó használhatja a munkamenet-jogkivonat folyamat a megadott időszakra vonatkozóan. (Ez igaz, ha a jelenlegi munkamenet-jogkivonat nem vonták vissza és nem járt le.) A megadott időszak után a felhasználónak kötelező hitelesítse magát újra egy új munkamenet-jogkivonat fogadásához.
+**Összefoglalás:** A házirend vezérlőelemek mennyi a felhasználó használhatja egy munkamenet-jogkivonat beszerzése az új azonosító és tokenu relace, utolsó hitelesítése után sikeresen csak egyetlen tényező használatával. Miután egy felhasználó hitelesíti magát, és egy új munkamenet-jogkivonat kap, a felhasználó használhatja a munkamenet-jogkivonat folyamat a megadott időszakra vonatkozóan. (Ez igaz, ha a jelenlegi munkamenet-jogkivonat nem vonták vissza és nem járt le.) A megadott időszak után a felhasználónak kötelező hitelesítse magát újra egy új munkamenet-jogkivonat fogadásához.
 
 A felhasználók is végezhetnek gyakrabban csökkenti a maximálisidőtartam kényszeríti. Mert számít, hogy kevésbé biztonságos, mint a multi-factor authentication hitelesítést, azt javasoljuk, hogy ezzel a tulajdonsággal, amely egyenlő vagy annál kisebb, mint a multi-factor Authentication munkamenet Token maximális életkora tulajdonság értékre.
 
 ### <a name="multi-factor-session-token-max-age"></a>Multi-factor Authentication munkamenet-jogkivonat maximális életkora
 **Karakterlánc:** MaxAgeSessionMultiFactor
 
-**Hatással van:** munkamenet jogkivonatok (állandó és nem állandó)
+**Van hatással:** Munkamenet-jogkivonatok (állandó és nem állandó)
 
-**Összefoglalás:** a házirend vezérlőelemek mennyi ideig egy felhasználó egy munkamenet-jogkivonat használatával egy új azonosító és a munkamenet token beszerzése után az utolsó időpont, csak a hitelesítést sikeresen számos tényező használatával. Miután egy felhasználó hitelesíti magát, és egy új munkamenet-jogkivonat kap, a felhasználó használhatja a munkamenet-jogkivonat folyamat a megadott időszakra vonatkozóan. (Ez igaz, ha a jelenlegi munkamenet-jogkivonat nem vonták vissza és nem járt le.) A megadott időszak után a felhasználónak kötelező hitelesítse magát újra egy új munkamenet-jogkivonat fogadásához.
+**Összefoglalás:** A szabályzatok vezérlőit mennyi egy felhasználó egy munkamenet-jogkivonat használatával egy új azonosító és a munkamenet jogkivonat beszerzése az utolsó időpont után csak a hitelesítést sikeresen számos tényező használatával. Miután egy felhasználó hitelesíti magát, és egy új munkamenet-jogkivonat kap, a felhasználó használhatja a munkamenet-jogkivonat folyamat a megadott időszakra vonatkozóan. (Ez igaz, ha a jelenlegi munkamenet-jogkivonat nem vonták vissza és nem járt le.) A megadott időszak után a felhasználónak kötelező hitelesítse magát újra egy új munkamenet-jogkivonat fogadásához.
 
 A felhasználók is végezhetnek gyakrabban csökkenti a maximálisidőtartam kényszeríti. Mivel számít, hogy kevésbé biztonságos, mint a multi-factor authentication hitelesítést, azt javasoljuk, hogy ezzel a tulajdonsággal, amely egyenlő vagy nagyobb, mint az egyetlen tényezős munkamenet Token maximális életkora tulajdonság értékre.
 
@@ -256,7 +254,7 @@ Ebben a példában létrehozott egy szabályzatot, amely lehetővé teszi, hogy 
     Set-AzureADPolicy -Id <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
 
-### <a name="example-create-a-policy-for-web-sign-in"></a>Példa: A webes bejelentkezési szabályzat létrehozása
+### <a name="example-create-a-policy-for-web-sign-in"></a>Példa: Webes bejelentkezés szabályzat létrehozása
 
 Ebben a példában létrehozott egy szabályzatot, amely megköveteli a felhasználóktól a webalkalmazásokban gyakran hitelesítéséhez. Ez a szabályzat a hozzáférés és az azonosító jogkivonatok élettartama és a egy multi-factor Authentication munkamenet-jogkivonat maximálisidőtartam állítja be az egyszerű szolgáltatás a webalkalmazás.
 

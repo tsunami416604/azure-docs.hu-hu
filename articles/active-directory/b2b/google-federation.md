@@ -3,19 +3,19 @@ title: Adja hozzá a Google identitásszolgáltatójaként az Azure Active Direc
 description: A Google-lel, jelentkezzen be a saját Gmail-fiókba az Azure AD-alkalmazások vendég felhasználók összevonása
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: 329c12f76862addb6d14271f219b48089c615395
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 05216f62c45940c475f245c1b69c25219c438906
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428732"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076264"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Adja hozzá a Google B2B vendégfelhasználó Identitásszolgáltatóként
 

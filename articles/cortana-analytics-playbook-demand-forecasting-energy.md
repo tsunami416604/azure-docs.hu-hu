@@ -10,29 +10,29 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: d327c649fcf0f42fd8618161c184fa4f572e2b90
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 40bff35c1136d55e968a287d259f2304252f5248
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306488"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078780"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence megoldás sablon forgatókönyve a kereslet-előrejelzés, energia
 ## <a name="executive-summary"></a>Vezetői összefoglaló
-Az elmúlt néhány évben eszközök internetes hálózata (IoT), alternatív energiaforrások és big Data típusú adatok óriási lehetőségeket létrehozásához a segédprogram és energia tartományban lehet egyesített. Egy időben a segédprogram és a teljes energia ágazat látott az erőforrás-igényes hatékonyabb módon lehet szabályozni az energia használati fogyasztóval rendelkező egybesimítás használatalapú. Ezért az segédprogram és intelligens vállalatok is nagy szükség van a innovációját, és újítsa meg magukat. Ezenkívül számos teljesítmény- és segédprogram rácsok egyre elavult, és nagyon költséges, karbantartása és kezelése. Az elmúlt év során a csapat dolgozott az energia tartományon belüli marketingmódszerek számos. Ezek marketingmódszerek során történt, amelyben a segédprogramok vagy ISV (független szoftvergyártók) keresi az előrejelzés a jövőbeli energiaszükségletét sok esetben. Ezek az előrejelzések fontos szerepet játszanak az jelenlegi és jövőbeli üzleti és a különböző használati esetek alapját váltak. Ezek közé tartozik a rövid és hosszú távú power terhelés előrejelzést, kereskedelmi, terheléselosztást, rács optimalizálás stb. Big data és fejlett analitikai AA módszerek például a Machine Learning (gépi tanulás) vonatkoznak a legfontosabb előfeltétele pontos és megbízható előrejelzések előállító.  
+Az elmúlt néhány évben eszközök internetes hálózata (IoT), alternatív energiaforrások és big Data típusú adatok óriási lehetőségeket létrehozásához a segédprogram és energia tartományban lehet egyesített. Egy időben a segédprogram és a teljes energia ágazat látott az erőforrás-igényes hatékonyabb módon lehet szabályozni az energia használati fogyasztóval rendelkező egybesimítás használatalapú. Ezért az segédprogram és intelligens vállalatok is nagy szükség van a innovációját, és újítsa meg magukat. Ezenkívül számos teljesítmény- és segédprogram rácsok egyre elavult, és nagyon költséges, karbantartása és kezelése. Az elmúlt év során a csapat dolgozott az energia tartományon belüli marketingmódszerek számos. Ezek marketingmódszerek során történt, amelyben a segédprogramok vagy ISV (független szoftvergyártók) keresi az előrejelzés a jövőbeli energiaszükségletét sok esetben. Ezek az előrejelzések fontos szerepet játszanak az jelenlegi és jövőbeli üzleti és a különböző használati esetek alapját váltak. Ezek közé tartozik a rövid és hosszú távú power terhelés előrejelzést, kereskedelmi, terheléselosztást, rács optimalizálás stb. Big data és fejlett analitikai AA módszerek például a Machine Learning (gépi tanulás) vonatkoznak a legfontosabb előfeltétele pontos és megbízható előrejelzések előállító.
 
 A forgatókönyv együtt elhelyezni az üzleti és a sikeres fejlesztéshez szükséges analitikai irányelvek és központi telepítését energiaszükségletét előrejelzési megoldás. Javasolt iránymutatás segítséget segédprogramok, az adatelemzők és adatmérnökök teljesen szolgáltatáscsomagot, felhőalapú, alkalmazható igény-előrejelzési megoldások kialakítása során. Olyan vállalatok, akik most használja először a big data és fejlett analitikai utazás ilyen megoldás megfelelhet a hosszú távú intelligens stratégiájuk kezdeti mag.
 
 > [!TIP]
-> Egy diagram, amely biztosítja az architektúra áttekintése a sablon letöltése: [kereslet-előrejelzés, energia-architektúrát Cortana Intelligence-Megoldássablon](cortana-analytics-architecture-demand-forecasting-energy.md).  
-> 
-> 
+> Egy diagram, amely biztosítja az architektúra áttekintése a sablon letöltése: [kereslet-előrejelzés, energia-architektúrát Cortana Intelligence-Megoldássablon](cortana-analytics-architecture-demand-forecasting-energy.md).
+>
+>
 
 ## <a name="overview"></a>Áttekintés
-Ez a dokumentum ismerteti a business, az adatok és műszaki szempontjait a Cortana Intelligence használatával és az adott Azure Machine Learning (AML) a megvalósítás és a energia-előrejelzés megoldások üzembe helyezéséhez. A dokumentum három fő részből áll:  
+Ez a dokumentum ismerteti a business, az adatok és műszaki szempontjait a Cortana Intelligence használatával és az adott Azure Machine Learning (AML) a megvalósítás és a energia-előrejelzés megoldások üzembe helyezéséhez. A dokumentum három fő részből áll:
 
-1. Üzleti ismertetés  
-2. Adatok megismerése  
+1. Üzleti ismertetés
+2. Adatok megismerése
 3. Technikai megvalósítás
 
 A **az üzleti igények felmérése** rész ismerteti az üzleti aspektus egy megjelölése szükséges és megfontolnia előtt befektetési döntés meghozatalakor. Ismerteti, hogyan ahhoz, hogy az üzleti probléma megoldására összpontosíthasson annak érdekében, hogy prediktív elemzési és gépi tanulási valóban hatékony és a alkalmazni. A dokumentum további machine learning és felhasználásukról energia-előrejelzés problémákra történő alapjait ismerteti. Az előfeltételekről és a egy alkalmazási helyzet a feltételnek megfelelő ismerteti. Mintául szolgáló használatieset-forgatókönyveit és vállalkozását forgatókönyveket is rendelkezésre állnak.
@@ -43,7 +43,7 @@ A harmadik rész a dokumentum ismerteti a **műszaki megvalósítási** egy mego
 
 Emellett a dokumentum tartalmaz, amelyek segítségével tovább a tartomány és a technológiai ismereteket szerezhet – referenciaanyag.
 
-Fontos megjegyezni, hogy nem tervezünk, hogy biztosítsák a jelen dokumentum a mélyebb adatelemzési folyamat, a matematikai és technikai aspektusait. Ezek a részletek megtalálhatók [Azure Machine Learning dokumentációs](https://azure.microsoft.com/services/machine-learning/) és [blogok](https://blogs.microsoft.com/blog/tag/azure-machine-learning/).
+Fontos megjegyezni, hogy nem tervezünk, hogy biztosítsák a jelen dokumentum a mélyebb adatelemzési folyamat, a matematikai és technikai aspektusait. Ezek a részletek megtalálhatók [Azure Machine Learning szolgáltatás dokumentációja](https://azure.microsoft.com/services/machine-learning/) és [blogok](https://blogs.microsoft.com/blog/tag/azure-machine-learning/).
 
 ### <a name="target-audience"></a>Célközönség
 Ez a dokumentum célközönsége az üzleti és műszaki személyzet kívánó ismeretek is, és ismeri a Machine Learning-alapú megoldásokat, és hogyan ezeket használják-e az energia-előrejelzés tartományon belül kifejezetten.
@@ -87,7 +87,7 @@ Rövid távú betöltése előrejelzés (STLF) energiaszükségletét kontextus�
 * Terheléselosztás és a megelőzési túlterhelni
 * Hosszú távú terhelés előrejelzése
 * Tartalék és rendellenességészlelés
-* Csúcsidőszak megszorítás/simítás 
+* Csúcsidőszak megszorítás/simítás
 
 STLF modell főként közel korábban (utolsó nap vagy hét) használati adatokat és -felhasználási előrejelzett hőmérséklet, egy fontos előjelző. Következő órában előrejelzési pontos hőmérséklet beszerzése és mentése 24 órára egyre kisebb kihívást most nap. Ezek a modellek kevésbé érzékenyek a szezonális mintázatokat vagy hosszú távú használati trendeket.
 
@@ -189,9 +189,9 @@ A következő bekezdést a 4. lépés folyamatát ismerteti:
 
 1. **Adatgyűjtés** – semmilyen speciális alapú analytics megoldás adatokon alapul. (lásd: **Data Understanding**). Pontosabban a esetén, a prediktív elemzés és előrejelzését, telefonszámokkal kapcsolatos adatok folyamatban lévő, dinamikus folyamat. Energia kereslet-előrejelzés, esetén ezeket az adatokat közvetlenül az intelligens mérőktől származó beolvasva is, vagy már összesíteni kell egy helyi adatbázist. Azt is támaszkodik más külső forrásokból, például az időjárás és hőmérséklettel kapcsolatos adatok. Az adatok folyamatban lévő folyamat kell vezényelt, ütemezett és tárolva. [Az Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) a fő workhorse szól ez a feladat teljesítéséért.
 2. **Modellezés** – pontos és megbízható energia-előrejelzés, (train) fejlesztéséhez és karbantartásához, hogy révén az előzményadatok használja, és kinyeri az adatokat a beállítás után sokatmondóbbak és prediktív mintákat egy nagyszerű modellt kell egyet. A terület a Machine Learning (gépi tanulás) rendelkezik lett gyorsan növekszik az speciális algoritmusokkal rendszeresen fejlesztés alatt áll. Az Azure gépi tanulás Stúdióban, amely segít a legtöbb fejlett gépi Tanulási algoritmusokat, egy teljes munkahelyi flow-ban használják nagyszerű felhasználói élményt nyújt. A munkafolyamat egy intuitív folyamatábrája mutatja be, és az adat-előkészítés, a szolgáltatás kivonása, modellezés és modell kiértékelése tartalmazza. Több száz különböző modelleket, amelyek szerepelnek ebben a környezetben, a felhasználó lehet kötni. Ebben a fázisban a végén működő modell, amely teljes mértékben kiértékelt és készen áll a központi telepítési kell értenie az adatokhoz.
-   
+
    Az alábbi ábrán egy tipikus munkafolyamat ábrája:
-   
+
    ![Modellezési munkafolyamat](media/cortana-analytics-playbook-demand-forecasting-energy/modeling-workflow.png)
 3. **Üzembe helyezés** – egy működő modellel, a következő lépés a központi telepítés. A modell itt egy webszolgáltatás, amelyet tesz elérhetővé, amelyek különféle felhasználási ügyfelek az interneten keresztül egyidejűleg hívható RESTful API lesz konvertálva. Az Azure Machine Learning egy modellt közvetlenül az Azure ML Studio-egyetlen gombnyomással üzembe helyezésének egyszerű módszert kínál. A teljes üzembe helyezési folyamat technikai részletek történik. Ez a megoldás megfelel a szükséges használatalapú automatikusan méretezheti.
 4. **Felhasználás** – ebben a fázisban, hogy ténylegesen győződjön meg arról, használja az előrejelzési modell előrejelzéses előállításához. A használatalapú is meghatározni a felhasználó-alkalmazás (*például*, irányítópult), vagy közvetlenül a egy működési rendszer például igény szerinti/rendszer és a egy rács optimization megoldása. Több használati esetek is meghatározni egy egyetlen modellből.
@@ -321,8 +321,8 @@ Az elmúlt években a speciális algoritmusok fejlesztettek befogadásához idő
 
 > [!NOTE]
 > Ez a szakasz nem célja, hogy egy machine learning és az előrejelzés – áttekintés, hanem inkább egy rövid kérdőív modellezési technikák, általában használt kereslet-előrejelzés használható. További információk és az oktatási anyagok kapcsolatos idősorozat-előrejelzés, erősen ajánlott az online könyv [előrejelzés: elvek és eljárás](https://www.otexts.org/).
-> 
-> 
+>
+>
 
 #### <a name="ma-moving-average"></a>**MA (mozgóátlag)**
 Mozgóátlag egyike az első elemzési módszereket, az idősorozat-előrejelzés használt, és továbbra is a legtöbb egyik leggyakrabban használt mai technikákat. Emellett akkor is alapját speciális technikák előrejelzéseket. A mozgó átlag azt is előrejelzési a következő adatpont által átlagosan kevesebb mint a K legutóbbi pontokat, ahol K azt jelzi, hogy a mozgó átlag sorrendje felett.

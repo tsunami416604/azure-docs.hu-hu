@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3363b0bbd98b125f0108ca842d5c0b6b9941bf9e
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 300ed77322f66150111ecda70dbf95ac373aad2c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330386"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079171"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli hibák az Azure Resource Manager hibaelhárítása
 
@@ -39,7 +39,7 @@ Ez a cikk ismerteti az Azure-beli leggyakoribb hibák, és információkat a hib
 | Ütközés | Ön a kért művelet nem megengedett az erőforrás jelenlegi állapotában. Ha például a lemezek átméretezése engedélyezett csak a virtuális gép létrehozásakor, vagy ha a virtuális gép fel van szabadítva. | |
 | DeploymentActive | Várjon, amíg befejeződik ez az erőforráscsoport párhuzamos üzembe helyezés. | |
 | Sikertelen | A "deploymentfailed" hiba, amely nem biztosítja a részletek a hiba megoldásához szükséges általános hiba. Tekintse meg a hibaüzenet részleteiben talál egy hibakód, amely további információkat biztosít. | [Hibakód keresése](#find-error-code) |
-| DeploymentQuotaExceeded | Ha eléri a korlátot, az adott erőforráscsoport esetében 800 központi telepítések, törölje a központi telepítések az előzményekben tekintheti át, hogy már nincs rá szükség. Bejegyzések törölheti az előzményekből [az csoport központi telepítésének törlése](/cli/azure/group/deployment#az-group-deployment-delete) Azure CLI-hez, vagy [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) a PowerShellben. Az üzembe helyezési előzmények bejegyzés törlése nem befolyásolja az üzembe helyezés erőforrásokat. | |
+| DeploymentQuotaExceeded | Ha eléri a korlátot, az adott erőforráscsoport esetében 800 központi telepítések, törölje a központi telepítések az előzményekben tekintheti át, hogy már nincs rá szükség. Bejegyzések törölheti az előzményekből [az csoport központi telepítésének törlése](/cli/azure/group/deployment#az-group-deployment-delete) Azure CLI-hez, vagy [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) a PowerShellben. Az üzembe helyezési előzmények bejegyzés törlése nem befolyásolja az üzembe helyezés erőforrásokat. | |
 | DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg egy másik nevet, vagy módosítsa a meglévő rekord. | |
 | ImageNotFound | Ellenőrizze a virtuális gép beállításai. |  |
 | InUseSubnetCannotBeDeleted | Előfordulhat, hogy megjelenik a hibaüzenet, erőforrás frissítése közben, de a kérelem feldolgozása törlésével és az erőforrás létrehozásához. Ellenőrizze, hogy az összes változatlan érték megadásához. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -71,7 +71,7 @@ Ez a cikk ismerteti az Azure-beli leggyakoribb hibák, és információkat a hib
 | RequestDisallowedByPolicy | Az előfizetése tartalmaz egy erőforrás-szabályzatot, amely megakadályozza az üzembe helyezés során végrehajtani kívánt művelet. Keresse meg a szabályzatot, amely blokkolja a műveletet. Ha lehetséges módosítsa a központi telepítést az felel meg a korlátozásokat a szabályzat alól. | [Oldja meg a házirendek](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | Adja meg az erőforrás nevét, amely nem tartalmazza a foglalt név. | [Fenntartott erőforrásnevek](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Várjon, amíg a törlés befejeződik. | |
-| ResourceGroupNotFound | Ellenőrizze a központi telepítés a célként megadott erőforráscsoport nevét. Azt már léteznie kell az előfizetésben. Ellenőrizze az előfizetési környezet. | [Az Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
+| ResourceGroupNotFound | Ellenőrizze a központi telepítés a célként megadott erőforráscsoport nevét. Azt már léteznie kell az előfizetésben. Ellenőrizze az előfizetési környezet. | [Az Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/az.profile/set-azcontext) |
 | NemTalálhatóErőforrás | Az üzembe helyezés hivatkozik egy erőforrás, amely nem oldható fel. Ellenőrizze, hogy használatára a **referencia** függvényt tartalmazza a paramétereket a forgatókönyvhöz szükséges. | [Hivatkozások feloldása](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | Az üzembe helyezés próbál létre erőforrásokat, amelyek a kvóta az előfizetés, erőforráscsoport vagy régió. Ha lehetséges javítsa ki infrastruktúráját arra, hogy a kvóták belül. Ellenkező esetben fontolja meg a kvóták módosítás kér. | [Oldja meg a kvóták](resource-manager-quota-errors.md) |
 | SkuNotAvailable | Válassza ki a kiválasztott hely számára rendelkezésre álló SKU (például a virtuális gép mérete). | [Oldja meg a Termékváltozat](resource-manager-sku-not-available-errors.md) |
@@ -110,7 +110,7 @@ A művelet átmennek az ellenőrzésen, de a telepítés során nem sikerül, ka
 Alkalmazástelepítési hibakódok és üzenetek a PowerShell-lel megjelenítéséhez használja:
 
 ```azurepowershell-interactive
-(Get-AzureRmResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
+(Get-AzResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
 ```
 
 Alkalmazástelepítési hibakódok és üzenetek az Azure CLI-vel megjelenítéséhez használja:
@@ -140,7 +140,7 @@ Néha szüksége további információt a kérések és válaszok megtudhatja, m
 A PowerShell-lel, állítsa be a **DeploymentDebugLogLevel** az összes paramétert, ResponseContent vagy RequestContent.
 
 ```powershell
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName examplegroup `
   -TemplateFile c:\Azure\Templates\storage.json `
@@ -150,7 +150,7 @@ New-AzureRmResourceGroupDeployment `
 Vizsgálja meg a tartalmat a következő parancsmagot a kérelmet:
 
 ```powershell
-(Get-AzureRmResourceGroupDeploymentOperation `
+(Get-AzResourceGroupDeploymentOperation `
 -DeploymentName exampledeployment `
 -ResourceGroupName examplegroup).Properties.request `
 | ConvertTo-Json
@@ -159,7 +159,7 @@ Vizsgálja meg a tartalmat a következő parancsmagot a kérelmet:
 Vagy a tartalmat a választ:
 
 ```powershell
-(Get-AzureRmResourceGroupDeploymentOperation `
+(Get-AzResourceGroupDeploymentOperation `
 -DeploymentName exampledeployment `
 -ResourceGroupName examplegroup).Properties.response `
 | ConvertTo-Json

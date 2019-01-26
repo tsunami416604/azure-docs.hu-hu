@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 07/24/2018
 ms.author: celested
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7d3796d8d4a5a2e292afaf9cd013ff04ffc082c5
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d9e877fd648c28564f5eccc46f9c20741fe446f8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578670"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076315"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Alkalmazás-hitelesítési tanúsítvány hitelesítő adatai
 
@@ -45,12 +45,12 @@ A helyességi feltétel számítási, használhatja egy a többhöz [JSON Web To
 
 | Paraméter |  Megjegyzések |
 | --- | --- |
-| `aud` | : Közönség  **https://login.microsoftonline.com/ *tenant_Id*  /oauth2/jogkivonat** |
+| `aud` | Célközönség: Meg kell  **https://login.microsoftonline.com/ *tenant_Id*  /oauth2/jogkivonat** |
 | `exp` | Lejárati dátum: a dátum, amikor a jogkivonat érvényessége lejár. Az idő 1970. január 1. a jelenik meg a másodpercek számát (1970-01-01T0:0:0Z) (UTC), amíg a token érvényessége lejár.|
 | `iss` | Kiállító: a client_id (az ügyfél szolgáltatás alkalmazás azonosítója) kell lennie. |
 | `jti` | GUID-ja: a JWT azonosító |
 | `nbf` | Nem előtt: az a dátum előtt, amely a token nem használható. Az idő 1970. január 1. a jelenik meg a másodpercek számát (1970-01-01T0:0:0Z) (UTC), amíg a token lett kiállítva. |
-| `sub` | Tulajdonos: a `iss`, kell lennie a client_id (az ügyfél szolgáltatás alkalmazás azonosítója) |
+| `sub` | Tárgy: Megegyezik a `iss`, kell lennie a client_id (az ügyfél szolgáltatás alkalmazás azonosítója) |
 
 ### <a name="signature"></a>Aláírás
 

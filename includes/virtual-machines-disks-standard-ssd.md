@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 75b3934a7329b4e83a0f36f79bbc8365eaf8a086
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: da46687517dbfe189571286087d4ef29d50d1246
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572233"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906316"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Standard SSD Managed Disks-Azure-beli virtuális gépek számítási feladataihoz
 
@@ -21,14 +21,14 @@ Standard folyamatos állapot-meghajtók (SSD) az Azure Managed Disks egy költs�
 
 ## <a name="standard-ssd-features"></a>Standard SSD-funkciók
 
-**A Managed Disks**: Standard SSD-k csak felügyelt lemezként érhető el. Standard SSD-a nem támogatottak a nem felügyelt lemezek és Lapblobok. A felügyelt lemez létrehozásakor adja meg a lemez típusát a Standard SSD-t, és azt jelzik, a méretet lemez van szüksége, és az Azure létrehozza és felügyeli a lemezt Ön helyett.
+**A Managed Disks**: Standard SSD-k csak állnak rendelkezésre, a Managed Disks. Standard SSD-a nem támogatottak a nem felügyelt lemezek és Lapblobok. A felügyelt lemez létrehozásakor adja meg a lemez típusát a Standard SSD-t, és azt jelzik, a méretet lemez van szüksége, és az Azure létrehozza és felügyeli a lemezt Ön helyett.
 Standard SSD-k támogatják a Managed Disks által kínált összes klasszikus üzemi modell művelet. Például létrehozhat, és másolja vagy pillanatkép standard szintű SSD Managed Disks megegyező módon elvégezheti a Managed Disks szolgáltatással.
 
 **Virtuális gépek**: Standard SSD-k az Azure virtuális gépeket tartalmazó, beleértve a virtuális gép típusát, amely nem támogatja a prémium szintű lemezeket is használható. Például, ha egy A-sorozatú virtuális Gépet, vagy az N-sorozatú virtuális gépek, vagy a DS sorozatú használ, vagy bármely más Azure Virtuálisgép-sorozatok, Standard SSD-k használata a virtuális Gépeket. Standard SSD bevezetésével korábban használt lemezek SSD-alapú áttérés és az állandó teljesítmény érdekében, a magasabb rendelkezésre állás, a nagyobb késést és a egy általános jobb élményt lemezek HDD-alapú munkaterhelések széles körének azt engedélyezése az SSD-n keresztül elérhető tapasztalható.
 
-**Tartós és magas rendelkezésre állású**: Standard SSD-kkel rendelkezik konzisztens módon kézbesíti, magas rendelkezésre állást és tartósságot lemezek ugyanabban az Azure Disks platform épül. Az Azure Disks 99,999 %-os rendelkezésre állást lettek kialakítva. Az összes felügyelt lemez, például a Standard SSD-k is kínálunk helyi redundáns tárolást (LRS). Az LRS, a platform tart fenn minden lemez adatok több replika és következetesen rendelkezik kézbesíti a nagyvállalati szintű tartósságot iaas lemezeken, az iparágvezető nulla százalékos érvényes évesített hibaaránya.
+**Tartós és magas rendelkezésre állású**: Standard SSD-kkel rendelkezik konzisztens módon kézbesíti, magas rendelkezésre állást és tartósságot lemezek ugyanabban az Azure Disks platform épülnek. Az Azure Disks 99,999 %-os rendelkezésre állást lettek kialakítva. Az összes felügyelt lemez, például a Standard SSD-k is kínálunk helyi redundáns tárolást (LRS). Az LRS, a platform tart fenn minden lemez adatok több replika és következetesen rendelkezik kézbesíti a nagyvállalati szintű tartósságot iaas lemezeken, az iparágvezető nulla százalékos érvényes évesített hibaaránya.
 
-**A pillanatképek**: például az összes felügyelt lemezek, a Standard SSD-k is támogatja a pillanatképek létrehozását. Pillanatkép típusa vagy a standard szintű (HDD), vagy a prémium (SSD) lehet. A cost saving, javasoljuk, hogy az összes Azure-lemez esetében a standard szintű (HDD-) pillanatkép típusa. Ennek oka az, ha egy felügyelt lemez létrehozása pillanatképből, folyamatos megválaszthatja, például Standard SSD vagy prémium szintű SSD magasabb szintre.
+**A pillanatképek**: Az összes felügyelt lemez, például Standard SSD-k is támogatja a pillanatképek létrehozását. Pillanatkép típusa vagy a standard szintű (HDD), vagy a prémium (SSD) lehet. A cost saving, javasoljuk, hogy az összes Azure-lemez esetében a standard szintű (HDD-) pillanatkép típusa. Ennek oka az, ha egy felügyelt lemez létrehozása pillanatképből, folyamatos megválaszthatja, például Standard SSD vagy prémium szintű SSD magasabb szintre.
 
 ## <a name="scalability-and-performance-targets"></a>Méretezhetőségi és teljesítménycélok
 
@@ -36,6 +36,8 @@ Az alábbi táblázat tartalmazza a jelenleg rendelkezésre állnak az Standard 
 
 |Standard SSD-lemez típusa  |Lemezméret  |Iops-érték lemezenként  |Adattovábbítás lemezenként  |
 |---------|---------|---------|---------|
+|E4     |32 GiB         |Legfeljebb 120         |Másodpercenként legfeljebb 25 MiB         |
+|E6     |64 GiB         |Legfeljebb 240         |Másodpercenként legfeljebb 50 MiB         |
 |E10     |128 GiB         |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
 |E15     |256 GiB         |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
 |E20     |512 GiB         |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
@@ -56,16 +58,16 @@ A prémium szintű SSD-k, például a Standard SSD-k i/o-egységek mérete 256 K
 
 Standard SSD-k használatakor az alábbi számlázási szempontok érvényesek:
 
-- Felügyelt lemez mérete
+- Managed Disk Size
 - Pillanatképek
 - Kimenő adatforgalom
 - Tranzakciók
 
-**Felügyelt lemez mérete**: felügyelt lemezek a kiépítési méret számítjuk fel. Az Azure a kiépített méretet a legközelebbi lemezméret-ajánlathoz (kerekítve) rendeli hozzá. A lemezméretek érhető el a részletekért lásd: a tábla, méretezhetőségi és Teljesítménycéljai a fenti szakaszban. Minden lemez képez le egy támogatott kiosztott lemez méretét, és ennek megfelelően számlázzuk. Például, ha az Ön által üzembe helyezett egy 200 GB Standard SSD, azt lesz leképezve a lemez mérete vonatkozó ajánlatot E15 (256 GB). Minden üzembe helyezett lemez használata óradíjas a Premium Storage-ajánlat a havi díjak használatával. Például ha üzembe helyezett egy E10 lemezt, és 20 óra múlva törli azt, a számlázás a 20 óra arányosan E10 előfizetésért. Ez a, függetlenül a lemezre írt adatok tényleges mennyiségét.
+**Felügyelt lemez mérete**: A felügyelt lemezek a kiépítési méret számítjuk fel. Az Azure a kiépített méretet a legközelebbi lemezméret-ajánlathoz (kerekítve) rendeli hozzá. A lemezméretek érhető el a részletekért lásd: a tábla, méretezhetőségi és Teljesítménycéljai a fenti szakaszban. Minden lemez képez le egy támogatott kiosztott lemez méretét, és ennek megfelelően számlázzuk. Például, ha az Ön által üzembe helyezett egy 200 GB Standard SSD, azt lesz leképezve a lemez mérete vonatkozó ajánlatot E15 (256 GB). Minden üzembe helyezett lemez használata óradíjas a Premium Storage-ajánlat a havi díjak használatával. Például ha üzembe helyezett egy E10 lemezt, és 20 óra múlva törli azt, a számlázás a 20 óra arányosan E10 előfizetésért. Ez a, függetlenül a lemezre írt adatok tényleges mennyiségét.
 
-**A pillanatképek**: a Managed Disks pillanatképek számlázása a kapacitás felhasználása a pillanatképek a cél és a forrásban, ha van ilyen. A pillanatképek további információkért lásd: [felügyelt lemez-pillanatképek](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#managed-disk-snapshots).
+**A pillanatképek**: Felügyelt lemezek pillanatképei számlázása a kapacitás felhasználása a pillanatképek a cél és a forrásban, ha van ilyen. A pillanatképek további információkért lásd: [felügyelt lemez-pillanatképek](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#managed-disk-snapshots).
 
-**Kimenő adatforgalom**: [kimenő adatforgalom](https://azure.microsoft.com/pricing/details/bandwidth/) (adatok csak az Azure adatközpontok kimenő adatforgaloma) díjak lépnek fel a sávszélesség-használat.
+**Kimenő adatforgalom**: [Kimenő adatforgalom](https://azure.microsoft.com/pricing/details/bandwidth/) (adatok csak az Azure adatközpontok kimenő adatforgaloma) díjak lépnek fel a sávszélesség-használat.
 
 **Tranzakciók**: Standard HDD hasonló, szabványos SSD meghajtókon tranzakciók díjak lépnek fel. Tranzakciók olvasása is tartalmazza, és írási műveleteket a lemezen. I/o egység a tranzakciók számlázás Standard SSD használt mérete 256 KiB. Nagyobb méretű i/o-méretek számítanak több i/o-mérete 256 KiB.
 

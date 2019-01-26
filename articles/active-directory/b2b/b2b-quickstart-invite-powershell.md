@@ -3,20 +3,20 @@ title: Rövid útmutató vendégfelhasználó felvételéhez PowerShell használ
 description: Ebben a rövid útmutatóban megismerheti, hogyan küldhet az Azure AD B2B együttműködés külső felhasználó számára meghívót a PowerShell használatával.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
-ms.openlocfilehash: f0dc63d84ec7583e721b116b450c890d46524622
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.openlocfilehash: 9b615498f2e3d6df3b285d2e50215f15372dcad6
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986562"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076051"
 ---
-# <a name="quickstart-add-a-guest-user-with-powershell"></a>Rövid útmutató: Vendégfelhasználó hozzáadása PowerShell-lel
+# <a name="quickstart-add-a-guest-user-with-powershell"></a>Gyors útmutató: Vendégfelhasználó hozzáadása PowerShell-lel
 
 Az Azure Active Directory B2B együttműködés sokféle lehetőséget nyújt a külső partnerek alkalmazásokba és szolgáltatásokba történő meghívására. Az előző rövid útmutatóban láthattuk, hogyan lehet vendégfelhasználókat közvetlenül az Azure Active Directory admin portálon felvenni. Felhasználók felvételéhez a PowerShell is használható, akár egyenként, akár kötegben. Ebben a rövid útmutatóban a New-AzureADMSInvitation paranccsal adunk új vendég felhasználót az Azure bérlőhöz.
 
@@ -25,7 +25,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="install-the-latest-azureadpreview-module"></a>A legújabb AzureADPreview modul telepítése
-Győződjön meg róla, hogy az Azure AD PowerShell Graph modulhoz (AzureADPreview) legújabb verzióját telepíti. 
+Győződjön meg róla, hogy az Azure AD PowerShell for Graph module (AzureADPreview) legújabb verzióját telepíti. 
 
 Először ellenőrizze, melyik modulokat telepítette. Nyissa meg a Windows PowerShellt rendszergazdaként (Futtatás rendszergazdaként), majd futtassa a következő parancsot:
  
@@ -61,7 +61,7 @@ Szüksége lesz egy próba e-mail fiókra, ahova a meghívót küldheti. A fiók
 
 ## <a name="sign-in-to-your-tenant"></a>Bejelentkezés bérlőhöz
 
-Futtassa a következő parancsot a bérlő tartományhoz való csatlakozáshoz:
+Futtassa a következő parancsot a bérlőtartományhoz való csatlakozáshoz:
 
 ```powershell
 Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
@@ -106,4 +106,4 @@ Például:`Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onmicro
 Ebben a rövid útmutatóban egyetlen vendégfelhasználót hívtunk meg és adtunk hozzá a címtárhoz a PowerShell használatával. Ezután megnézzük, hogyan lehet a PowerShell segítségével vendégfelhasználókat tömegesen meghívni.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Azure AD B2B együttműködő felhasználók tömeges meghívása](tutorial-bulk-invite.md)
+> [Oktatóanyag: Tömeges meghívása az Azure AD B2B együttműködés felhasználók](tutorial-bulk-invite.md)

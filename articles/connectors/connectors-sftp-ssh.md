@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: e0f0230241bdffa97b94c88eb4b2d76fd44bcdea
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 807a99a8cac7326648ff4aa91b9fcdeb35de196a
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320786"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910183"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Figyelheti, létrehozása és kezelése az SFTP-fájlok az SSH és az Azure Logic Apps használatával
 
@@ -27,7 +27,7 @@ Automatizálhatja a feladatokat, amelyek figyelése, létrehozása, küldése é
 * Fájl tartalom és metaadatok beolvasása.
 * Mappák archívumok kibontása.
 
-Képest a [SFTP-összekötővel](../connectors/connectors-create-api-sftp.md), az SFTP-SSH-összekötő olvashatja vagy írhatja a fájlok akár *1 GB-os* mérete. További különbségekről, tekintse át a [hasonlítsa össze az SFTP-SSH és az SFTP](#comparison) a cikk későbbi részében.
+Képest a [SFTP-összekötővel](../connectors/connectors-create-api-sftp.md), az SFTP-SSH-összekötő olvashatja vagy írhatja a fájlok akár *1 GB-os* építőkockákat, mivel kezeli az 50 MB-ot az adatok mérete. 1 GB-nál nagyobb méretű fájlokhoz, műveleteket használhatja [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). További különbségekről, tekintse át a [hasonlítsa össze az SFTP-SSH és az SFTP](#comparison) a cikk későbbi részében.
 
 Eseményindítókat, amelyek az SFTP-kiszolgálón lévő események figyelésére és egyéb műveletek számára elérhetővé tenni a kimeneti is használhatja. Műveleteket, amelyeket az SFTP-kiszolgáló a különböző feladatok elvégzésére is használhatja. Egyéb műveletek a logikai alkalmazás kimenetét a SFTP-műveletek használata is rendelkezhet. Például ha rendszeresen kérnek le fájlok az SFTP-kiszolgálóról, elküldheti e-mailes riasztásokhoz ezeket a fájlokat és a tartalom az Office 365 Outlook-összekötőt vagy Outlook.com-összekötő használatával.
 Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
@@ -48,7 +48,7 @@ Az alábbiakban az egyéb az SFTP-SSH-összekötő és az SFTP-összekötővel, 
   > * **Titkosítási algoritmusok**: DES-EDE3-CBC, DES-EDE3-CFB, DES-CBC, AES-128-CBC, AES-192-CBC, and AES-256-CBC
   > * **Ujjlenyomattal történő**: MD5
 
-* Olvas vagy ír a fájlok akár *1 GB-os* méretű képest az SFTP-összekötővel, de kezeli a darabokban 50 MB-ot, nem az 1 GB-os darab adatokat.
+* Olvas vagy ír a fájlok akár *1 GB-os* méretű képest az SFTP-összekötővel, de kezeli a darabokban 50 MB-ot, nem az 1 GB-os darab adatokat. 1 GB-nál nagyobb méretű fájlokhoz, műveletek is használhatja [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). Eseményindítók jelenleg nem támogatja a darabolás.
 
 * Itt a **mappa létrehozása** művelet, amely egy mappát hoz létre az SFTP-kiszolgáló a megadott elérési úton.
 
@@ -130,12 +130,15 @@ Az SFTP-SSH eseményindítók működnek az SFTP-fájlrendszer lekérdezésével
 
 Ha az eseményindító egy új fájlt talál, a trigger ellenőrzi, hogy az új fájl teljes és részlegesen írásos. Például egy fájl előfordulhat módosítások folyamatban, amikor a trigger ellenőriz a fájlkiszolgálón. Részlegesen írásos fájl visszaadó elkerüléséhez az eseményindító feljegyzi az időbélyeg, amely rendelkezik a legutóbbi módosítások, de nem ad vissza a fájlt közvetlenül a fájl. A trigger a fájl adja vissza, csak akkor, ha a kiszolgáló ismét lekérdezés. Egyes esetekben ez a viselkedés, amely legfeljebb kétszer az eseményindító a lekérdezési időköz késleltetés okozhatja. 
 
-Fájl tartalmának kérésekor az eseményindító nem tölti le 50 MB-nál nagyobb méretű fájlokat. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát:
+Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
 
-* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**. 
-* Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**.
+* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
+
+* Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
 
 ## <a name="examples"></a>Példák
+
+<a name="file-added-modified"></a>
 
 ### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH aktiválása: Fájl hozzáadásakor és módosításakor
 
@@ -143,9 +146,23 @@ Ez az eseményindító indul el a logikai alkalmazás munkafolyamata egy fájl h
 
 **Példa vállalati**: Ez az eseményindító használatával figyelheti az SFTP-mappába, új fájlok, amelyek a vevői rendelések jelölésére. Ezután használhatja az SFTP-művelet például **fájl tartalmának beolvasása** úgy, hogy a rendelés tartalmának beolvasása a további feldolgozás céljából, és a egy rendelési adatbázisba sorrendben tárolja.
 
-### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH művelet: Tartalom lekérése
+Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
+
+* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
+
+* Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
+
+<a name="get-content"></a>
+
+### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH művelet: Tartalom beolvasása elérési út alapján
 
 Ez a művelet a tartalom olvas be egy fájl az SFTP-kiszolgálóra. Így például az előző példában és a egy feltételt, amely a fájl tartalmának meg kell felelnie az eseményindító is hozzáadhat. Ha a feltétel teljesül, a műveletet, amely lekérdezi a tartalmat futtathatja. 
+
+Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
+
+* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
+
+* Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 

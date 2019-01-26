@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 777d976133f5b9bb1c97ea678e058f2dc398922d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2c2c06a222f3ac949f8e8e6b4aed1b00c0593b6d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135814"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080225"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – használatával egy Azure HDInsight Hadoop-fürt az 1 TB-os adatkészlet
 
@@ -33,39 +33,39 @@ Ez az adatkészlet minden rekord 40 oszlopokat tartalmazza:
 * Ezután 13 oszlopok a következők numerikus, és
 * utolsó 26 kategorikus oszlopok
 
-Az oszlopok vannak anonimek, és használja a felsorolt nevek sorozata:, (a felirat az oszlopban) "Col1" "Col40" (a kategorikus utolsó oszlop).            
+Az oszlopok vannak anonimek, és használja a felsorolt nevek sorozata: A (a felirat az oszlopban) "Col1" "Col40" (a kategorikus utolsó oszlop).
 
 A következő cikkből szerint az első 20 oszlopok az adatkészletből származó két megfigyelések (sor):
 
     Col1    Col2    Col3    Col4    Col5    Col6    Col7    Col8    Col9    Col10    Col11    Col12    Col13    Col14    Col15            Col16            Col17            Col18            Col19        Col20
 
-    0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb           
-    0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb                      
+    0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb
+    0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb
 
 Nincsenek hiányzó értékek a numerikus és a kategorikus oszlopok ehhez az adatkészlethez. A hiányzó értékek kezelése egyszerű módszer leírása. További részletek az adatok teljesítménykezelési Hive táblákba tárolja őket.
 
-**Definíciója:** *Átkattintós sebessége (Parancsra):* Ez az, hogy az adatok kattintással aránya. Ez Criteo az adatkészlet a Parancsra a körülbelül 3.3-as % vagy 0.033.
+**Definíciója:** *Átkattintós sebessége (Parancsra):* Ez a százalékos arányát az adatok kattintással. Ez Criteo az adatkészlet a Parancsra a körülbelül 3.3-as % vagy 0.033.
 
 ## <a name="mltasks"></a>Példák az előrejelzés
 Ez a forgatókönyv két minta előrejelzési problémák foglalkozik:
 
-1. **Bináris osztályozás**: előrejelzi, hogy a felhasználó rákattint egy hozzáadása:
-   
-   * Osztály 0: Nincs kattintson
-   * 1 osztály: kattintson a
-2. **Regresszió**: előre megbecsüli egy ad kattintson a felhasználói funkciók valószínűségét.
+1. **Bináris osztályozás**: Előrejelzi, hogy a felhasználó rákattint egy hozzáadása:
+
+   * 0. osztály: Egyetlen kattintással
+   * 1. osztály: Kattintson a következőre:
+2. **Regresszió**: Előre megbecsüli egy ad kattintson a felhasználói funkciók valószínűségét.
 
 ## <a name="setup"></a>Adatelemzés mentése beállítása egy HDInsight szabható Hadoop bemutatása-fürt
-**Megjegyzés:** Ez általában a egy **rendszergazdai** feladat.
+**Megjegyzés:** Ez a művelet rendszerint egy **rendszergazdai** feladat.
 
 A prediktív elemzési megoldások fejlesztése a HDInsight-fürtök három lépésben az Azure Data Science környezet beállítása:
 
-1. [Hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md): ezt a tárfiókot az Azure Blob Storage-adatok tárolására szolgál. Itt a HDInsight-fürtök használt adatokat tárolja.
-2. [Az Azure HDInsight Hadoop-fürtök testreszabása adatelemzéshez](customize-hadoop-cluster.md): Ebben a lépésben létrehoz egy Azure HDInsight Hadoop-fürt összes csomópontjára telepítse a 64 bites Anaconda Python 2.7. Nincsenek (ebben a témakörben ismertetett) két fontos lépést a HDInsight-fürt testreszabása hajthatja végre.
-   
+1. [Hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md): Ezt a tárfiókot az Azure Blob Storage-adatok tárolására szolgál. Itt a HDInsight-fürtök használt adatokat tárolja.
+2. [Az Azure HDInsight Hadoop-fürtök testreszabása adatelemzéshez](customize-hadoop-cluster.md): Ez a lépés létrehoz egy Azure HDInsight Hadoop, 64 bites Anaconda Python 2.7-t a fürt összes csomópontjára telepítse. Nincsenek (ebben a témakörben ismertetett) két fontos lépést a HDInsight-fürt testreszabása hajthatja végre.
+
    * A storage-fiók létrehozásakor a HDInsight-fürt az 1. lépésben létrehozott kell kapcsolni. Ehhez a tárfiókhoz való hozzáféréshez szükséges adatokat a fürtön belül feldolgozható szolgál.
    * A fürt fő csomópontjának létrehozása után engedélyezze távelérési. Az itt megadott (eltérő a fürthöz a létrehozáskor megadott) távelérési hitelesítő adatok megjegyzése: szüksége lesz rájuk a következő műveletek végrehajtásához.
-3. [Az Azure ML-munkaterület létrehozásához](../studio/create-workspace.md): Ez az Azure Machine Learning munkaterület szolgál a machine learning-modellek létrehozása után egy kezdeti adatfeltárás és a HDInsight-fürtön mintavételi le.
+3. [Hozzon létre egy Azure Machine Learning studio-munkaterület](../studio/create-workspace.md): Az Azure Machine Learning-munkaterület szolgál a machine learning-modellek létrehozása után egy kezdeti adatfeltárás és a HDInsight-fürtön mintavételi le.
 
 ## <a name="getdata"></a>Első és a egy nyilvános forráskódú felhasználását
 A [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) adatkészlet sorrendvezérlése előtt a hivatkozásra kattint, elfogadja a használati feltételeket és a egy nevet. Erre pillanatkép itt jelenik meg:
@@ -74,10 +74,10 @@ A [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) adatk
 
 Kattintson a **tovább a letöltési** további információ az adatkészlet és a rendelkezésre állási.
 
-Az adatok találhatók nyilvános [az Azure blob storage-bA](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) helye: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. A "wasb" Azure Blob Storage-helyre hivatkozik. 
+Az adatok találhatók nyilvános [az Azure blob storage-bA](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) helye: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. A "wasb" Azure Blob Storage-helyre hivatkozik.
 
 1. A nyilvános blobtárolóban lévő adatokat a kicsomagolt adatokat három almappák áll.
-   
+
    1. A kívánt almappába *nyers és száma/* tartalmazza az első 21 napnyi adatot – nap\_00 Day\_20
    2. A kívánt almappába *nyers train / /* az adatokat, egy nap áll nap\_21
    3. A kívánt almappába *nyers és tesztelés/* két napnyi adat, áll nap\_22-es és a nap\_23
@@ -103,11 +103,11 @@ Hive táblák létrehozása a Criteo importáltuk, nyissa meg a ***Hadoop paranc
 
 > [!NOTE]
 > Ez a forgatókönyv minden Hive parancsait futtatja a Hive bin / directory parancssort. Ez gondoskodik a elérési utat problémákat automatikusan. Használhatja a feltételeket "Hive directory prompt", "Hive bin / directory prompt", és a "Hadoop parancssor" felcserélhető.
-> 
+>
 > [!NOTE]
 > Bármely Hive-lekérdezés végrehajtásához egy mindig használhatja a következő parancsokat:
-> 
-> 
+>
+>
 
         cd %hive_home%\bin
         hive
@@ -157,14 +157,14 @@ Ezek a táblák olyan külső, így egyszerűen mutasson az Azure Blob Storage (
 
 **BÁRMELY Hive-lekérdezés végrehajtásához két módja van:**
 
-1. **A Hive REPL parancssori használatával**: az első, hogy egy "hive" parancsot, és másolja ki és illessze be a lekérdezést, a Hive REPL parancssori. Ehhez tegye:
-   
+1. **A Hive-REPL parancssori használatával**: Az első, hogy egy "hive" parancsot, és másolja ki és illessze be a lekérdezést, a Hive REPL parancssori. Ehhez tegye:
+
         cd %hive_home%\bin
         hive
-   
+
      Most, a parancssori REPL, Kivágás és beillesztés a lekérdezés végrehajtja.
 2. **Lekérdezés mentése fájlba, és a parancs végrehajtása**: A második, hogy a lekérdezések .hql fájlba mentése ([minta&#95;hive&#95;létrehozása&#95;criteo&#95;adatbázis&#95;és&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) és hogyan adhat ki a lekérdezés végrehajtásához a következő parancsot:
-   
+
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
 ### <a name="confirm-database-and-table-creation"></a>Erősítse meg az adatbázis és tábla létrehozása
@@ -294,7 +294,7 @@ Ez eredményez:
         1.0     2.1418600917169246      2.1418600917169246    6.21887086390288 27.53454893115633       65535.0
         Time taken: 564.953 seconds, Fetched: 1 row(s)
 
-A terjesztési. percentilisei az szorosan kapcsolódik a hisztogram terjesztési bármely numerikus változó általában.         
+A terjesztési. percentilisei az szorosan kapcsolódik a hisztogram terjesztési bármely numerikus változó általában.
 
 ### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>Keresse meg az egyedi értékek számának néhány kategorikus oszlopok train adatkészlet
 Folytatás az adatfeltárás, keresése, néhány kategorikus oszlopok, egy egyedi értékek száma. Ehhez tartalmának megjelenítése [minta&#95;hive&#95;criteo&#95;egyedi&#95;értékek&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
@@ -435,13 +435,13 @@ Az a **adatok importálása** modul, a paraméterek, amelyek szerepelnek a képe
 
 1. Válassza a "Hive-lekérdezés" **adatforrás**
 2. Az a **adatbázis-lekérdezés Hive** mezőbe egy egyszerű SELECT * FROM < a\_adatbázis\_name.your\_tábla\_neve >-elegendő.
-3. **Hcatalog kiszolgáló URI**: Ha a fürt "abc", akkor ez egyszerűen a: https://abc.azurehdinsight.net
-4. **Hadoop-felhasználói fiók nevét**: A felhasználó nevét, az üzembe helyezés a fürt időpontjában választott. (Nem a távelérési felhasználónév!)
-5. **Hadoop-felhasználói fiók jelszava**: a felhasználó nevét, az üzembe helyezés a fürt időpontjában kiválasztott jelszavát. (Nem a távelérési jelszót!)
-6. **Kimeneti adatok helyének**: válassza az "Azure"
-7. **Az Azure storage-fiók neve**: a fürthöz társított storage-fiók
-8. **Az Azure storage-fiókkulcs**: a fürthöz társított storage-fiók a kulcsot.
-9. **Az Azure container name**: Ha a fürt neve "abc", akkor ez az egyszerű "abc", általában a.
+3. **Hcatalog kiszolgáló URI**: Ha a fürt "abc", akkor egyszerűen: https://abc.azurehdinsight.net
+4. **Hadoop-felhasználói fiók nevét**: A felhasználónév kiválasztása az üzembe helyezés a fürt időpontjában. (Nem a távelérési felhasználónév!)
+5. **Hadoop-felhasználói fiók jelszava**: A felhasználónév az üzembe helyezés a fürt időpontjában választott jelszó. (Nem a távelérési jelszót!)
+6. **Kimeneti adatok helyének**: Válassza az "Azure"
+7. **Az Azure storage-fiók neve**: A fürthöz társított storage-fiók
+8. **Az Azure storage-fiókkulcs**: A kulcs a fürthöz társított storage-fiók.
+9. **Az Azure container name**: Ha a fürt neve "abc", akkor egyszerűen csak "abc", általában.
 
 Miután a **adatok importálása** befejeződik (, lásd a modul a zöld osztásjelek) adatok, mentse ezeket az adatokat (a választott nevű) adatkészletként. Ez néz ki:
 
@@ -455,11 +455,11 @@ Ki a mentett adatkészlet használható a machine learning-kísérlet, keresse m
 
 > [!NOTE]
 > Ehhez a tanítási és a teszt adatkészletek. Azt se feledje, az adatbázis neve és a táblaneveket, hogy a megadott erre a célra. Az ábrán használt értékek kizárólag az ábra purposes.* *
-> 
-> 
+>
+>
 
 ### <a name="step2"></a> 2. lépés: Egyszerű kísérlet létrehozása az Azure Machine Learningben való kattintással előrejelzése és egyetlen kattintással
-Az Azure Machine Learning-kísérlet így néz ki:
+Az Azure Machine Learning studióban végrehajtott kísérletekhez a következőhöz hasonló:
 
 ![Machine Learning-kísérlet](./media/hive-criteo-walkthrough/xRpVfrY.png)
 
@@ -481,9 +481,9 @@ Száma funkciókat hozhat létre, használja a **hozhat létre számbavételi á
 ![Leltár átalakítása modul tulajdonságok létrehozása](./media/hive-criteo-walkthrough/e0eqKtZ.png)
 ![modul készítése számbavételi átalakítása](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Az a **oszlopok száma** adja meg az érintett végre kívánt oszlopokat. Ezek rendszerint (említett) nagy dimenziós kategorikus oszlopok. Ne feledje, hogy a Criteo adatkészlet rendelkezik 26 kategorikus oszlopok: az Col40 Col15 a. Itt, ezek mindegyike tanúsítással, és adja meg az indexek (a 15 vesszővel elválasztott, ahogy 40-re).
-> 
+>
 
 A modul használatához a MapReduce módban (nagy méretű adatkészletek esetében megfelelő), hozzá kell férnie egy HDInsight Hadoop-fürtöt (a szolgáltatás feltárási használt korábbit újból használhatna erre a célra) és a hitelesítő adatok. Az előző ábra bemutatják, milyen kitöltött értékek néz ki (cserélje le az értékeket illusztrációs célokat azokkal, a saját használati esetekhez kapcsolódó).
 
@@ -535,7 +535,7 @@ A cikkből szerint jeleníti meg, hogy az oszlopok számít, a számok lekérés
 
 Most már készen áll-e átalakított adatkészleteket használó Azure Machine Learning-modellek létrehozását. A következő szakasz bemutatja, hogyan ezt megteheti.
 
-### <a name="step3"></a> 3. lépés: Build, betanítását és pontozását a modell
+### <a name="step3"></a> 3. lépés: Hozhat létre, betanítását és pontozását a modellt.
 
 #### <a name="choice-of-learner"></a>Learner kiválasztása
 Először meg kell választania egy learner. Kétosztályos gyorsított döntési fa használja a tanuló. Az alábbiakban a learner alapértelmezett beállításainak:
@@ -588,8 +588,8 @@ Zeroth lépésben a count táblánk túl nagy, mivel igénybe vehet néhány sor
 
 > [!NOTE]
 > A bemeneti adatok formátumát, használja a KIMENETÉT a **száma Featurizer** modul. Után ez a kísérlet futtatása befejeződik, mentse a kimenete a **száma Featurizer** adatkészletként modul. Ez az adatkészlet a bemeneti adatokat a webszolgáltatás az szolgál.
-> 
-> 
+>
+>
 
 #### <a name="scoring-experiment-for-publishing-webservice"></a>Kísérlet pontozási webszolgáltatás közzététele
 Először is látható, erre. Az alapvető struktúra egy **Score Model** modul, amely elfogadja a betanított modell objektum és a bemeneti adatok az előző lépésben létrehozott néhány sornyi a **száma Featurizer** modul. Projekt Scored címkéket és a pontszám valószínűségek "Kiválasztása oszlopok az adatkészlet" használatával.

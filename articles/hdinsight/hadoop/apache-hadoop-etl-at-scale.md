@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 205ba822b1221de34f3ee1ae25974a406f2013cb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7897c677df38bb9b71222730a8b6a9ea11fb40bc
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438098"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912663"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerési, átalakítási és betöltési (ETL) ipari méretekben
 
@@ -78,7 +78,7 @@ ADLS is az Azure Event Hub vagy az Apache Storm használatával eseményfogadás
 
 Fel a tartományba terabájtos adatkészleteket, hálózati késés nagyobb problémát jelenthetnek, különösen akkor, ha a helyszíni helyről az adatok várható.  Ezekben az esetekben használhatja az alábbi beállításokat:
 
-* Az Azure ExpressRoute:  Az Azure ExpressRoute használatával privát kapcsolatok létesíthetők az Azure-adatközpontok és a helyszíni infrastruktúra között. Ezek a kapcsolatok lehetőséget nyújtanak olyan megbízható nagy mennyiségű adat átvitele. További információkért lásd: [Azure ExpressRoute dokumentációja](../../expressroute/expressroute-introduction.md).
+* Azure ExpressRoute:  Az Azure ExpressRoute használatával privát kapcsolatok létesíthetők az Azure-adatközpontok és a helyszíni infrastruktúra között. Ezek a kapcsolatok lehetőséget nyújtanak olyan megbízható nagy mennyiségű adat átvitele. További információkért lásd: [Azure ExpressRoute dokumentációja](../../expressroute/expressroute-introduction.md).
 
 * "Offline állapotba helyezi" az adatok feltöltése. Használhat [Azure Import/Export szolgáltatás](../../storage/common/storage-import-export-service.md) tehetnek a merevlemez-meghajtók egy Azure-adatközpontban található adatait. Az adatfeltöltés először az Azure Storage-blobokat. Ezután [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) vagy a [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) eszközt az adatok másolása az Azure Storage-blobokból a Data Lake Storage.
 
@@ -118,13 +118,13 @@ Elemzési kockák szinten minden egyes adatkockához módosításával skálázh
 
 Miután az adatok állnak rendelkezésre az Azure-ban, számos szolgáltatás segítségével csomagolja ki, és betöltheti, egyéb termékek.  HDInsight a Sqoop és Flume támogatja. 
 
-### <a name="apache-sqoop"></a>Az Apache sqoop használatával
+### <a name="apache-sqoop"></a>Apache Sqoop
 
 Az Apache sqoop használatával egy olyan eszköz, hatékonyan közötti adatátvitel strukturált, félig strukturált és strukturálatlan adatforrások tervezve. 
 
 Sqoop MapReduce importálása és exportálása az adatok párhuzamos művelet és a hibatűrés biztosításához használja.
 
-### <a name="apache-flume"></a>Az Apache Flume
+### <a name="apache-flume"></a>Apache Flume
 
 Az Apache Flume egy elosztott, megbízható és elérhető szolgáltatás hatékonyan összegyűjtése, összevonása, és nagy mennyiségű Teljesítménynapló-adatok áthelyezését. Flume egy egyszerű és rugalmas architektúra alapján a streamelési adatok folyamatokat tartalmaz. Flume, hatékony és hibatűrő hangolható megbízhatóság mechanizmusok és számos feladatátvételi és helyreállítási mechanizmusokat. Flume, amely lehetővé teszi, hogy az online analitikus alkalmazás egyszerű bővíthető adatok modellt használ.
 
@@ -138,3 +138,4 @@ Miután adatokat már létezik a megadott helyre, kell megtisztítsa tőle, öss
 
 * [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 * [Az Apache Hive használatával egy ETL-eszközként](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

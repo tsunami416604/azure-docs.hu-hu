@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 32b670a4b51c2dc60fe89bc2b9ad0ef18b0ac263
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: c41af11ad4afe705ca2eb284619c917a6e87b562
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856638"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911965"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Egy Windows Servert futtató virtuális gép csatlakoztatása felügyelt tartományokhoz Resource Manager-sablon használatával
 Ez a cikk bemutatja, hogyan egy Windows Servert futtató virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz Resource Manager-sablonok használatával.
@@ -100,7 +100,7 @@ A telepítés sikeres befejezése után a megadott Windows virtuális gépek csa
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Az Azure PowerShell áttekintése](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.0)
+* [Az Azure PowerShell áttekintése](/powershell/azure/overview)
 * [Azure gyors üzembe helyezési sablon - tartományhoz való csatlakozás egy új virtuális gép](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 * [Azure gyors üzembe helyezési sablon - tartományhoz való csatlakozás meglévő virtuális gépek](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md)

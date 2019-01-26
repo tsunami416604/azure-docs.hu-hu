@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9f01e94eb23083ab25dd2cbd41e8bad1297abb54
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1f7921093bc97aa6dc776213be4dbdf9537b7fe2
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255261"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075703"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Eszközcsoport-leképezés függőségi csoport pontosítása
 
@@ -52,14 +52,19 @@ Egy csoport függőségek megjelenítéséhez szüksége, töltse le és telepí
 
 ### <a name="install-the-mma"></a>Az MMA telepítése
 
+#### <a name="install-the-agent-on-a-windows-machine"></a>Az ügynök telepítése Windows gépen
+
 Az ügynök telepítése a Windows-gépen:
 
 1. Kattintson duplán a letöltött ügynökre.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. A **Licencfeltételek** oldalon kattintson az **Elfogadom** gombra a feltételek elfogadásához.
 3. A **célmappa**, megtartani, vagy módosítsa az alapértelmezett telepítési mappa > **tovább**.
 4. A **ügynök telepítésének beállításai**válassza **Azure Log Analytics** > **tovább**.
-5. Kattintson a **Hozzáadás** hozzáadása egy új Log Analytics-munkaterületet. Illessze be a munkaterület Azonosítóját és kulcsát, a portálról kimásolt. Kattintson a **Tovább**gombra.
+5. Kattintson a **Hozzáadás** hozzáadása egy új Log Analytics-munkaterületet. Illessze be a munkaterület Azonosítóját és kulcsát, a portálról kimásolt. Kattintson a **tovább**.
 
+A parancssorból vagy egy automatizált módszer, például az Azure Automation DSC, a System Center Configuration Manager, vagy egy Azure Resource Manager-sablon használatával, ha a helyi adatközpontban telepített Microsoft Azure Stack segítségével telepítse az ügynököt. [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) ezen módszerek használatáról az MMA-ügynök telepítése.
+
+#### <a name="install-the-agent-on-a-linux-machine"></a>Az ügynök telepítése Linux rendszerű gépen
 
 Az ügynök telepítése Linux rendszerű gépen:
 
@@ -76,6 +81,8 @@ Az ügynök telepítése Linux rendszerű gépen:
 
 További információ a függőségi ügynök támogatása a [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) és [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) operációs rendszereket.
 
+[További](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) hogyan használja a szkriptek a függőségi ügynököt.
+
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>Pontosíthatja a csoportot, a függőségek képi megjelenítésének alapján
 Miután a csoport összes gépen telepített ügynökök, a függőségeket, a csoport megjelenítheti és pontosítsa a következő az alábbi lépéseket.
 
@@ -91,6 +98,10 @@ Miután a csoport összes gépen telepített ügynökök, a függőségeket, a c
      ![Csoportos függőségek megtekintése](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. A függőségek részletesebb megtekintéséhez kattintson az időtartományt, módosíthatja azt. Alapértelmezés szerint a tartománya egy órán keresztül. Módosíthatja az időtartományt, vagy adja meg a kezdő és záró dátumát, és időtartama.
+
+    > [!NOTE]
+      A függőségek képi megjelenítéséről felhasználói felület jelenleg nem támogatja egy óránál hosszabb időtartomány kiválasztását. A Log Analytics használatához [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-a-group#query-dependency-data-from-log-analytics) hosszabb ideig keresztül.
+
 4. Ellenőrizze a függő gépek, a folyamat minden gépen futó, és azonosítja azokat a gépeket kell hozzáadott vagy eltávolított a csoportból.
 5. Ctrl + kattintás segítségével válassza ki a gépet a térképen hozzáadása vagy eltávolítása a csoportból.
     - Csak a felderített gépek adhat hozzá.
@@ -101,6 +112,20 @@ Miután a csoport összes gépen telepített ügynökök, a függőségeket, a c
     ![Adja hozzá, vagy a gépek eltávolítása](./media/how-to-create-group-dependencies/add-remove.png)
 
 Ha le szeretne ellenőrizni egy adott géphez, amely a csoport függőségi térképe jelenik meg a függőségek [gépfüggőségi leképezések beállítása](how-to-create-group-machine-dependencies.md).
+
+## <a name="query-dependency-data-from-log-analytics"></a>A Log Analytics függőségi adatok lekérdezése
+
+Rögzíti a Service Map a függőségi adatokat a Log Analytics lekérdezéséhez érhető el. [További](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) kapcsolatban a Service Map adattáblák a Log Analytics-lekérdezést. 
+
+A Log Analytics-lekérdezések futtatása:
+
+1. Miután telepítette az ügynököket, nyissa meg a portálon, majd kattintson **áttekintése**.
+2. A **áttekintése**, lépjen a **Essentials** szakaszában a projektet, majd kattintson a munkaterület neve melletti megadva **OMS-munkaterület**.
+3. A Log Analytics munkaterület oldalán kattintson a **általános** > **naplók**.
+4. A Log Analytics használatával információkat gyűjthet dependency lekérdezés írása. Mintalekérdezések információkat gyűjthet dependency érhetők el [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+5. A lekérdezés futtatásához kattintson a Futtatás. 
+
+[További](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) Log Analytics-lekérdezések írásával kapcsolatban. 
 
 
 ## <a name="next-steps"></a>További lépések

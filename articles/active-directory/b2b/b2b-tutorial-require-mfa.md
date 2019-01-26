@@ -3,19 +3,19 @@ title: 'Oktatóanyag: Többtényezős hitelesítés az Azure AD B2B vendégfelha
 description: Megismerheti, hogyan tehető kötelezővé a többtényezős hitelesítés (MFA), ha Azure AD B2B használatával dolgozik együtt külső felhasználókkal és partnercégekkel.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 88225ee7aeefd9030e754f2b1abc66e4c05e5c6b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3e16b9d77a881c98ff0a5ee26f405a64561f5c75
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431176"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080162"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Oktatóanyag: Többtényezős hitelesítés B2B vendégfelhasználó
 

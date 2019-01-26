@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/24/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a851d9cd4322f2460bfa7f74854c44e77a52e0a6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6b5679a8d3f8cf449b9539e8595e14a87e882ac7
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818183"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912884"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
 
@@ -43,34 +43,36 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 
 |Naplózási kategória|Tevékenység|
 |---|---|
-|Címtárkezelés|Adminisztratív egység hozzáadása|
-|Címtárkezelés|Tag hozzáadása adminisztratív egységhez|
-|Címtárkezelés|Adminisztratív egység törlése|
-|Címtárkezelés|Tag eltávolítása az adminisztratív egységből|
-|Címtárkezelés|Adminisztratív egység frissítése|
-|Címtárkezelés|Adminisztráció|
-|Felhasználókezelés|Címtárművelet|
-|Felhasználókezelés|Exportálás|
-|Felhasználókezelés|Importálás|
-|Felhasználókezelés|Egyéb|
-|Felhasználókezelés|Folyamatletét|
-|Felhasználókezelés|Szinkronizálási szabályművelet|
-|Felhasználókezelés|Alkalmazás hozzáadása|
-|Felhasználókezelés|Alkalmazás törlése|
-|Felhasználókezelés|Az alkalmazás frissítése|
-|Felhasználókezelés|Alkalmazás frissítése: egyszeri bejelentkezés üzemmód|
-|Felhasználókezelés|Automatizált jelszóváltás|
-|Felhasználókezelés|V2 alkalmazásengedélyek hozzáadása|
-|Felhasználókezelés|V1 alkalmazás létrehozása|
-|Felhasználókezelés|V2 alkalmazás létrehozása|
-|Felhasználókezelés|V1 alkalmazás törlése|
-|Felhasználókezelés|V2 alkalmazás törlése|
-|Felhasználókezelés|V2 alkalmazás engedélymegadásának törlése|
-|Felhasználókezelés|V1 és V2 alkalmazások lekérése|
-|Felhasználókezelés|V1 alkalmazás lekérése|
-|Felhasználókezelés|V1 alkalmazások lekérése|
-|Felhasználókezelés|V2 alkalmazás lekérése|
-|Felhasználókezelés|V2 alkalmazások lekérése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat befejezve|
+|Hozzáférési felülvizsgálatok|Jóváhagyó hozzáadása a kérelem-jóváhagyáshoz|
+|Hozzáférési felülvizsgálatok|Felülvizsgáló hozzáadása a hozzáférési felülvizsgálathoz|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat alkalmazása|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat létrehozása|
+|Hozzáférési felülvizsgálatok|Program létrehozása|
+|Hozzáférési felülvizsgálatok|Kérelem-jóváhagyás létrehozása|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat törlése|
+|Hozzáférési felülvizsgálatok|Program törlése|
+|Hozzáférési felülvizsgálatok|Programvezérlő csatolása|
+|Hozzáférési felülvizsgálatok|Azure AD hozzáférési felülvizsgálatok előkészítése|
+|Hozzáférési felülvizsgálatok|Felülvizsgáló eltávolítása a hozzáférési felülvizsgálatból|
+|Hozzáférési felülvizsgálatok|Felülvizsgálat leállításának kérése|
+|Hozzáférési felülvizsgálatok|Felülvizsgálat-alkalmazás eredményének kérése|
+|Hozzáférési felülvizsgálatok|RBAC-szerepkörtagság felülvizsgálata|
+|Hozzáférési felülvizsgálatok|Alkalmazás-hozzárendelés felülvizsgálata|
+|Hozzáférési felülvizsgálatok|Csoporttagság felülvizsgálata|
+|Hozzáférési felülvizsgálatok|Kérelem-jóváhagyási kérelem felülvizsgálata|
+|Hozzáférési felülvizsgálatok|Programvezérlő leválasztása|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat frissítése|
+|Hozzáférési felülvizsgálatok|Azure AD hozzáférési felülvizsgálatok előkészítése állapotának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati e-mail-értesítési beállításainak frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat ismétlődésszám-beállításának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat napokban megadott ismétlődési időtartamának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat ismétlődési befejezéstípusának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat ismétlődéstípus-beállításának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati emlékeztető beállításainak frissítése|
+|Hozzáférési felülvizsgálatok|Program frissítése|
+|Hozzáférési felülvizsgálatok|Kérelem-jóváhagyás frissítése|
+|Hozzáférési felülvizsgálatok|Felhasználó letiltva|
 
 ## <a name="account-provisioning"></a>Fiók kiépítése
 
@@ -526,23 +528,27 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 
 |Naplózási kategória|Tevékenység|
 |---|---|
-|Szerepkörkezelés|Hozzáférési felülvizsgálati emlékeztető beállításainak frissítése|
-|Szerepkörkezelés|Kérelem-jóváhagyás frissítése|
-|Szerepkörkezelés|Alkalmazásszerepkör-hozzárendelés megadása a felhasználónak|
-|Szerepkörkezelés|Felhasználó hozzáadása|
-|Szerepkörkezelés|Felhasználók erős hitelesítési telefonos alkalmazásra vonatkozó információinak hozzáadása|
-|Szerepkörkezelés|Felhasználói licenc módosítása|
-|Szerepkörkezelés|Felhasználói jelszó módosítása|
-|Szerepkörkezelés|Összevont felhasználó konvertálása felügyeltre|
-|Szerepkörkezelés|Alkalmazásjelszó létrehozása a felhasználó számára|
-|Szerepkörkezelés|Felhasználó alkalmazásjelszavának törlése|
-|Szerepkörkezelés|Felhasználó törlése|
-|Szerepkörkezelés|Fiók letiltása|
-|Szerepkörkezelés|Erős hitelesítés engedélyezése|
-|Szerepkörkezelés|Felhasználó végleges törlése|
-|Szerepkörkezelés|Alkalmazásszerepkör-hozzárendelés eltávolítása a felhasználóból|
-|Szerepkörkezelés|Felhasználók erős hitelesítési telefonos alkalmazásra vonatkozó információinak eltávolítása|
-
+|PIM|ActivationAborted|
+|PIM|ActivationApproved|
+|PIM|ActivationCanceled|
+|PIM|ActivationDenied|
+|PIM|ActivationRequested|
+|PIM|Hozzáadva|
+|PIM|AddedOutsidePIM|
+|PIM|Hozzárendelés|
+|PIM|DismissAlert|
+|PIM|Jogosultságszint emelése|
+|PIM|ReactivateAlert|
+|PIM|Eltávolítva|
+|PIM|RemovedOutsidePIM|
+|PIM|Felülvizsgálat leállításának kérése|
+|PIM|Szerepkör-beállítások módosításai|
+|PIM|ScanAlertsNow|
+|PIM|Regisztráció|
+|PIM|Hozzárendelésének megszüntetése|
+|PIM|Jogosultságszint csökkentése|
+|PIM|UpdateAlertSettings|
+|PIM|UpdateCurrentState|
 
 
 ## <a name="self-service-group-management"></a>Önkiszolgáló csoportkezelés
@@ -580,13 +586,16 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 
 |Naplózási kategória|Tevékenység|
 |---|---|
-|Szabályzatkezelés|Jelszó módosítása (önkiszolgáló)|
-|Szabályzatkezelés|Jelszó átállítása (a rendszergazda által)|
-|Szabályzatkezelés|Új jelszó kérése (önkiszolgáló)|
-|Szabályzatkezelés|Új jelszó önkiszolgáló kérésének tevékenységállapota|
-|Szabályzatkezelés|Új jelszó önkiszolgáló kérésének tevékenységállapota|
-|Szabályzatkezelés|Felhasználói fiók zárolásának feloldása (önkiszolgáló)|
-|Szabályzatkezelés|A felhasználó új jelszó önkiszolgáló kérésére regisztrált|
+|Használati feltételek|Használati feltételek elfogadása|
+|Használati feltételek|Használati feltételek létrehozása|
+|Használati feltételek|Használati feltételek elutasítása|
+|Használati feltételek|Jóváhagyás törlése|
+|Használati feltételek|Használati feltételek törlése|
+|Használati feltételek|Használati feltételek szerkesztése|
+|Használati feltételek|Használati feltételek lejár|
+|Használati feltételek|Használati feltételek rögzített Delete|
+|Használati feltételek|Használati feltételek közzététele|
+|Használati feltételek|Használati feltételek közzétételének visszavonása|
 
 
 ## <a name="next-steps"></a>További lépések

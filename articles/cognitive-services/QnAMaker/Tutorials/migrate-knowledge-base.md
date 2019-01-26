@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/24/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 261d42a6c21681ee8015edfe73ad78b4458eb0ee
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a156466e0da6d53af130f331a82adaae146afbfc
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078810"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913342"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Exportálás-importálás segítségével Tudásbázis áttelepítése
 A QnA Maker általános rendelkezésre állás bejelentett 2018. május 7., a \\\build\ konferencián. A QnA Maker általánosan elérhető az Azure-ban létrehozott új architektúrákra rendelkezik. QnA Maker ingyenes előzetes verzióban létrehozott tudásbázisok kell át kell helyezni a QnA Maker általánosan elérhető A QnA Maker előzetes a január 2019 elavulttá válik. A QnA Maker GA a változásokkal kapcsolatos további információkért lásd: a QnA Maker GA közlemény [blogbejegyzés](https://aka.ms/qnamakerga-blog).

@@ -9,24 +9,27 @@ ms.topic: quickstart
 ms.reviewer: sgilley
 author: hning86
 ms.author: haining
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8d45ca0f55b373970bfc0b1d146d5b3e2d6d66fa
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 18cac5ecb2164444490f661255d7190c065be59f
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823402"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912461"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Az Azure Machine Learning használatának első lépései a Python SDK használatával
 
-Ez a cikk létrehozása, majd az Azure Machine Learning szolgáltatás használhatja az Azure Machine Learning SDK Pythonhoz készült [munkaterület](concept-azure-machine-learning-architecture.md). A munkaterület az eligazodást blokk, amellyel kísérletezhet, betanítását és a Machine Learning gépi tanulási modellek üzembe helyezése a felhőben. 
+Ez a cikk létrehozása, majd az Azure Machine Learning szolgáltatás használhatja az Azure Machine Learning SDK for Python 3 [munkaterület](concept-azure-machine-learning-architecture.md). A munkaterület az eligazodást blokk, amellyel kísérletezhet, betanítását és a Machine Learning gépi tanulási modellek üzembe helyezése a felhőben.
 
-Saját Python-környezetet és a Jupyter Notebook Server konfigurálásával megkezdése. Futtassa a telepítés nélkül, tekintse meg [a rövid útmutató: Az Azure Machine Learning használatának első lépései az Azure portal használatával](quickstart-get-started.md).
+Saját Python-környezetet és a Jupyter Notebook Server konfigurálásával megkezdése. Futtassa a telepítés nélkül, tekintse meg [a rövid útmutató: Az Azure Machine Learning használatának első lépései az Azure portal használatával](quickstart-get-started.md). 
+
+Ebben a rövid videó verziójának megtekintése:
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
-Ebben a cikkben:
+Ebben a rövid útmutatóban a következőket hajtja végre:
+
 * Telepítse a Python SDK-t.
 * Munkaterület létrehozása az Azure-előfizetésben.
 * Konfigurációs fájlt hoz létre az adott munkaterülethez a más notebookokban és szkriptekben történő későbbi használathoz.
@@ -42,25 +45,28 @@ A következő Azure-erőforrásokat a rendszer automatikusan hozzáadja a munkat
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
+>[!NOTE]
+> Ebben a cikkben kód szükséges Azure Machine Learning SDK verziója 1.0.2-es vagy újabb verzió 1.0.8 teszteltük és.
+
+
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
 
 ## <a name="install-the-sdk"></a>Az SDK telepítése
 
 > [!IMPORTANT]
-> Ha 2018. szeptember 27. után létrehozott data science virtuális gép használja, kihagyhatja ezt a szakaszt.
-> Adatelemző virtuális gépek után ez a dátum biztosítja az előre telepített Python SDK-val létrehozott.
-
-Ebben a cikkben a kódot igényel az Azure Machine Learning SDK verziója 1.0.2-es vagy újabb.
+> Ha egy Azure adatelemzési virtuális gép vagy az Azure Databricks, kihagyhatja ezt a szakaszt.
+> * Az Azure Data Science Virtual Machines 2018. szeptember 27. után létrehozott származnak az előre telepített Python SDK-val.
+> * Az Azure Databricks a környezetben, használja a [Databricks telepítési lépéseket](how-to-configure-environment.md#azure-databricks) helyette.
 
 Azt javasoljuk, hogy az SDK telepítése előtt először hozzon létre egy elkülönített Python-környezetet. Bár ez a cikk [Miniconda](https://docs.conda.io/en/latest/miniconda.html), is használhatja teljes [Anaconda](https://www.anaconda.com/) telepítve vagy [Python virtualenv](https://virtualenv.pypa.io/en/stable/).
 
 ### <a name="install-miniconda"></a>A Miniconda telepítése
 
-[Töltse le és telepítse a Miniconda](https://conda.io/miniconda.html). Válassza ki a Python 3.7-es vagy újabb. Ne válassza ki a Python 2.x.
+[Töltse le és telepítse a Miniconda](https://docs.conda.io/en/latest/miniconda.html). Válassza ki a Python 3.7 vagy újabb verzió telepítéséhez. Ne válassza ki a Python 2.x verzióját.  
 
-### <a name="create-an-isolated-python-environment"></a>Elkülönített Python-környezet létrehozása 
+### <a name="create-an-isolated-python-environment"></a>Elkülönített Python-környezet létrehozása
 
-1. Nyisson meg egy parancssori ablakot, és hozzon létre egy új nevű conda-környezet *myenv* a Python 3.6-ot.
+1. Nyisson meg egy parancssori ablakot, majd hozzon létre egy új conda-környezetet nevű *myenv* , és telepítse a Python 3.6-ot. Az Azure Machine Learning-SDK-t fog dolgozhat a Python 3.5.2-es verzióját vagy újabb, de az automatizált machine learning-összetevők nem, teljes körűen működőképes a Python 3.7-es verzióját.
 
     ```shell
     conda create -n myenv -y Python=3.6
@@ -74,34 +80,35 @@ Azt javasoljuk, hogy az SDK telepítése előtt először hozzon létre egy elk�
 
 ### <a name="install-the-sdk"></a>Az SDK telepítése
 
-Az aktivált conda-környezetben telepítse az SDK-t. Ez a kód telepíti a Machine Learning SDK alapvető összetevőit. A Jupyter Notebook server a conda-környezetben is telepíti. A telepítés befejezéséhez a számítógép konfigurációja alapján néhány percet vesz igénybe.
+1. Aktivált conda a környezetben telepítse a Machine Learning SDK alapvető összetevői a Jupyter notebook képességeket.  A telepítés befejezéséhez a számítógép konfigurációja alapján néhány percet vesz igénybe.
 
-```shell
-# Install Jupyter
-conda install nb_conda
+  ```shell
+    pip install --upgrade azureml-sdk[notebooks]
+    ```
 
-# Install the base SDK and Jupyter Notebook
-pip install azureml-sdk[notebooks]
-```
+1. Jupyter Notebook-kiszolgáló telepítése a conda-környezetet.
 
-További kulcsszavak segítségével más összetevők az SDK telepítése:
+  ```shell
+    conda install nb_conda
+    ```
 
-```shell
-# Install the base SDK and auto ml components
-pip install azureml-sdk[automl]
+1. Az Azure Machine Learning-oktatóanyagok használandó ebben a környezetben, az ilyen csomagok telepítéséhez.
 
-# Install the base SDK and the model explainability component
-pip install azureml-sdk[explain]
+    ```shell
+    conda install -y cython matplotlib pandas
+    ```
 
-# Install the base SDK and experimental components
-pip install azureml-sdk[contrib]
-```
+1. Ebben a környezetben használja az Azure Machine Learning-oktatóanyagok, telepítse az automatizált machine learning-összetevőket.
 
-Az Azure Databricks a környezetben, használja a [Databricks telepítési lépéseket](how-to-configure-environment.md#azure-databricks
-) helyette.
-
+    ```shell
+    pip install --upgrade azureml-sdk[automl]
+    ```
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
+
+Hozza létre a munkaterületet egy Jupyter Notebookot, a Python SDK használatával.
+
+1. Hozzon létre, és/vagy a rövid útmutató és oktatóanyagok használni kívánt CD-t a címtárhoz.
 
 1. Jupyter Notebook indításához írja be ezt a parancsot:
 
@@ -123,7 +130,7 @@ Az Azure Databricks a környezetben, használja a [Databricks telepítési lép�
                          subscription_id='<azure-subscription-id>', 
                          resource_group='myresourcegroup',
                          create_resource_group=True,
-                         location='eastus2' # Or other supported Azure region   
+                         location='eastus2' 
                         )
    ```
 
@@ -138,7 +145,11 @@ Az Azure Databricks a környezetben, használja a [Databricks telepítési lép�
 
 Mentse a munkaterület adatait egy konfigurációs fájlt az aktuális könyvtár. A fájl neve *aml_config\config.json*.  
 
-A `write_config()` API-hívás létrehozza a konfigurációs fájlt az aktuális könyvtárban. A *config.json* fájl tartalmazza a következőket:
+A munkaterület konfigurációs fájl egyszerűen később betöltése ugyanazon a munkaterületen. A munkaterületet az ugyanabban a könyvtárban vagy alkönyvtárban lévő egyéb notebookokkal és szkriptekkel együtt is betöltheti.  
+
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
+
+Ez `write_config()` API-hívás létrehoz a konfigurációs fájlt az aktuális könyvtárban található. A *config.json* fájl tartalmazza a következőket:
 
 ```json
 {
@@ -148,15 +159,13 @@ A `write_config()` API-hívás létrehozza a konfigurációs fájlt az aktuális
 }
 ```
 
-A munkaterület konfigurációs fájl egyszerűen később betöltése ugyanazon a munkaterületen. A munkaterületet az ugyanabban a könyvtárban vagy alkönyvtárban lévő egyéb notebookokkal és szkriptekkel együtt is betöltheti. 
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
-
-
-
 ## <a name="use-the-workspace"></a>A munkaterület használata
 
-Írjon olyan kódot, amely az alapszintű SDK API-kat használja a kísérleti futtatások nyomon követéséhez.
+Futtassa egy kódrészletet, amely az alapszintű SDK API-k segítségével nyomon követheti a Kísérletezési futtatások:
+
+1. Egy kísérlet létrehozása a munkaterületen.
+1. Egyetlen érték jelentkezzen be a kísérletet.
+1. Értékek listáját jelentkezzen be a kísérletet.
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=useWs)]
 
@@ -182,19 +191,6 @@ Ha nem szeretné használni az ebben a cikkben létrehozott erőforrásokat, tö
 ## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben létrehozott kísérletezhet, és a modellek üzembe helyezése a szükséges erőforrásokat. Jegyzetfüzet egy kódot futtatta, és a kód futtatási előzményeinek megismerte a munkaterületen, a felhőben.
-
-A kód használata a Machine Learning szolgáltatássaé kapcsolatos oktatóanyagok, néhány további csomagokat a környezetben kell.
-
-1. Zárja be a jegyzetfüzetet a böngészőben.
-1. A parancssori ablakban válassza ki a Ctrl + C billentyűkombinációval, a Jupyter Notebook server leállítása.
-1. A további csomagokat telepíteni.  Ha nem telepít `azureml-sdk[automl]` fent, győződjön meg arról, hogy tegye meg most.
-
-    ```shell
-    conda install -y cython matplotlib scikit-learn pandas numpy
-    pip install azureml-sdk[automl]
-    ```
-
-Miután telepítette ezeket a csomagokat, folytassa az oktatóanyagok, betanítását és a modell üzembe helyezése. 
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Egy rendszerkép osztályozási modell betanítása](tutorial-train-models-with-aml.md)

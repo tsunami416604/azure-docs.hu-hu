@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 9bdd3060219907f95454bfc9248572f796afd72e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 78f00b00465b6d834f30411485a874d6d2116ea4
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437606"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081245"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe az AKS és Azure AD előfeltétele
 
 Az alábbi korlátozások érvényesek:
 
-- Meglévő nem RBAC engedélyezve van az AKS-fürtök jelenleg nem lehet frissíteni, az RBAC használja.
+- Az Azure AD csak egy új, az RBAC-t a fürt létrehozásakor engedélyezhető. Az Azure AD egy meglévő AKS-fürt nem engedélyezhető.
 - *Vendég* felhasználók az Azure AD-ben például, ha egy másik címtárban való összevont bejelentkezést használ nem támogatottak.
 
 ## <a name="authentication-details"></a>Hitelesítés részletei

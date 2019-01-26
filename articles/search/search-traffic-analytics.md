@@ -1,29 +1,29 @@
 ---
-title: Forgalmi elemzések keresése – Azure Search szolgáltatásban
-description: Forgalmi elemzések keresése engedélyezése az Azure Search, egy üzemeltetett felhőalapú keresési szolgáltatás a Microsoft Azure, a felhasználók és az adatok zárolásának feloldásához.
+title: forgalmi elemzések keresése – Azure Search megvalósítása
+description: Forgalmi elemzések keresése az Azure Search hozzáadása a telemetriai adatokhoz és a felhasználó által kezdeményezett események a naplófájlokba engedélyezése.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/05/2017
+ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4cc7434508e49715e95c87421db2bbed7e20de05
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c30c8bae3e76778a31cdd0695acde52b5b1c6b02
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310279"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079664"
 ---
-# <a name="what-is-search-traffic-analytics"></a>Mi az forgalmi elemzések keresése
+# <a name="implement-search-traffic-analytics-in-azure-search"></a>Forgalmi elemzések keresése megvalósítása az Azure Search szolgáltatásban
 Forgalmi elemzések keresése egy minta megvalósításához egy visszacsatolási hurokba kerülnek a keresési szolgáltatáshoz. Ez a minta azt ismerteti, a szükséges adatokat, és hogyan gyűjtheti az Application Insights, az iparág vezető szolgáltatójától figyeléshez, több platformon szolgáltatások használatával.
 
 Forgalmi elemzések keresése lehetővé teszi a keresési szolgáltatás értékes információkhoz juthat, és elemezheti a felhasználók és a felhasználók viselkedését. Fel adatokat a felhasználók kiválasztása, lehetséges döntéseket, amelyek a keresési élmény javítása, és ha az eredmény nem, nem várt leállás esetén.
 
 Az Azure Search, amely integrálható az Azure Application Insights és a Power BI biztosít részletes figyelését és követését telemetriai megoldást kínál. Mivel az Azure Search-szal csak az API-kon keresztül, a telemetriai adatokat a fejlesztők keresési, ezen a lapon lévő utasítások követése hajtja végre.
 
-## <a name="identify-the-relevant-search-data"></a>A releváns keresési adatok azonosítása
+## <a name="identify-relevant-search-data"></a>Releváns keresési adatok azonosítása
 
 Ahhoz, hogy a keresési metrikákat, fontos a keresési alkalmazást az egyes jelek bejelentkezni. Ezek a jelek jelölésére, hogy a felhasználók érdekli a tartalom és, hogy azok fontolja meg az igényeiknek megfelelő.
 
@@ -35,7 +35,7 @@ Nincsenek két jelekkel kell forgalmi elemzések keresése:
 
 Keresés, és kattintson a korrelációs azonosítót események összekapcsolásával az alkalmazás felhasználók és a viselkedés elemzéséhez. A keresési insights nem lehetséges, az csak a keresési forgalmi naplók beszerzése.
 
-## <a name="how-to-implement-search-traffic-analytics"></a>Forgalmi elemzések keresése megvalósítása
+## <a name="add-search-traffic-analytics"></a>Adja hozzá a forgalmi elemzések keresése
 
 Az az előző szakaszban említett jelek kell gyűjthetők össze a search-alkalmazás, ahogy a felhasználó használja azt. Az Application Insights egy bővíthető figyelési megoldás is, több platformon, rugalmas kialakítási lehetőségek az elérhető. Az Application Insights használatát teszi lehetővé a Power BI-keresési könnyebbé tenni az adatok elemzése az Azure Search által létrehozott jelentések előnyeit.
 
@@ -43,7 +43,7 @@ Az a [portál](https://portal.azure.com) oldala az Azure Search szolgáltatást,
 
 ![Keresés a Traffic Analytics utasítások][1]
 
-### <a name="1-select-an-application-insights-resource"></a>1. Válassza ki az Application Insights-erőforrás
+## <a name="1---select-a-resource"></a>1 – Válasszon ki egy erőforrást
 
 Válassza ki az Application Insights-erőforrás, vagy hozzon létre egyet, ha már nincs szüksége. Egy erőforrás, amely már használja a szükséges egyéni eseményeket is használhatja.
 
@@ -51,11 +51,11 @@ Amikor egy új Application Insights-erőforrást hoz létre, minden alkalmazást
 
 A kialakítási kulcsot az alkalmazáshoz a telemetriai ügyfél létrehozásához szükség van. Az Application Insights portál irányítópultján megtekintheti, vagy beszerezheti azt a forgalmi elemzések keresése lapon válassza a használni kívánt példány.
 
-### <a name="2-instrument-your-application"></a>2. Az alkalmazás tagolása
+## <a name="2---add-instrumentation"></a>2 – üzemállapot
 
 Ebben a fázisban, ahol, ezenkívül a saját keresési alkalmazás a fenti lépésben a létrehozott Application Insights-erőforrás használatával. Ez a folyamat négy lépésben történik:
 
-**E. Hozzon létre egy telemetriai ügyfél** Ez az az objektum, amely elküldi az eseményeket az Application Insights-erőforrás.
+**1. lépés: Hozzon létre egy telemetriai ügyfél** Ez az az objektum, amely elküldi az eseményeket az Application Insights-erőforrás.
 
 *C#*
 
@@ -73,7 +73,7 @@ Ebben a fázisban, ahol, ezenkívül a saját keresési alkalmazás a fenti lép
 
 Egyéb nyelvekhez és platformokhoz, tekintse meg a teljes [lista](https://docs.microsoft.com/azure/application-insights/app-insights-platforms).
 
-**II. Kérelem egy korrelációs Azonosítót keresési** keresési kérések korrelációját, kattintással, ezek két eseményhez kapcsolódó korrelációs azonosítóra van szükség. Az Azure Search nyújt a Search-Id fejléccel kérése:
+**2. lépés: Kérelem egy korrelációs Azonosítót keresési** keresési kérések korrelációját, kattintással, ezek két eseményhez kapcsolódó korrelációs azonosítóra van szükség. Az Azure Search nyújt a Search-Id fejléccel kérése:
 
 *C#*
 
@@ -94,7 +94,7 @@ Egyéb nyelvekhez és platformokhoz, tekintse meg a teljes [lista](https://docs.
     request.setRequestHeader("Access-Control-Expose-Headers", "x-ms-azs-searchid");
     var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
-**III. Keresési események naplózása**
+**3. lépés: Keresési események naplózása**
 
 Minden alkalommal egy keresési kérelmet a felhasználó által kiadott naplózni kell, hogy az Application Insights egyéni esemény a következő sémával keresési eseményként:
 
@@ -131,7 +131,7 @@ Minden alkalommal egy keresési kérelmet a felhasználó által kiadott naplóz
     ScoringProfile: <scoring profile used>
     });
 
-**IV. Kattintson a bejelentkezés események**
+**4. lépés: Kattintson a bejelentkezés események**
 
 Minden alkalommal, amikor egy felhasználó rákattint egy dokumentumot, amely egy olyan jelet, amelyek keresési elemzési célokra kell bejelentkeznie. Egyéni eseményeket az Application Insights segítségével jelentkezzen ezeket az eseményeket a következő mintát követik:
 
@@ -160,32 +160,46 @@ Minden alkalommal, amikor egy felhasználó rákattint egy dokumentumot, amely e
         Rank: <clicked document position>
     });
 
-### <a name="3-analyze-with-power-bi-desktop"></a>3. Elemzés a Power BI Desktopban
+## <a name="3---analyze-in-power-bi"></a>3 - elemzése a Power bi-ban
 
-Miután az alkalmazás kialakítva és ellenőrizte az alkalmazás megfelelően csatlakozik-e az Application Insights, használhatja az Azure Search a Power BI desktopban létrehozott előre definiált sablon.
-Ez a sablon tartalmazza a diagramok és táblázatok, amelyek segítségével jobb a keresési teljesítmény és a relevancia alapján végzett több megalapozottabb döntéseket hozhat.
+Miután az alkalmazás kialakítva és ellenőrizte az alkalmazás megfelelően csatlakozik-e az Application Insights, használhatja az Azure Search a Power BI desktopban létrehozott előre definiált sablon. 
 
-Hozza létre a Power BI Virtuálisasztal-sablont, az Application Insights három adatokra van szükség. Ezek az adatok megtalálhatók a forgalmi elemzések keresése lap használandó erőforrás kiválasztásakor
+Egy figyelését teszi lehetővé az Azure search [Power BI-tartalomcsomag](https://app.powerbi.com/getdata/services/azure-search) így is elemezheti a naplófájlok adatait. A tartalomcsomag T hozzáadja az előre meghatározott diagramok és táblázatok forgalmi elemzések kereséséhez rögzített további adatelemzés számára hasznos. További információkért lásd: a [tartalomcsomag súgóoldalán](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/). 
 
-![Application Insights-adatok a forgalmi elemzések keresése panel][2]
+1. Az Azure-ban keresési irányítópult bal oldali navigációs ablaktáblán a **beállítások**, kattintson a **forgalmi elemzések keresése**.
 
-A metrikák szerepelnek a Power BI Virtuálisasztal-sablont:
+2. Az a **forgalmi elemzések keresése** lapon, a 3. lépésében, kattintson a **lekérése a Power BI Desktop** telepíteni a Power bi-ban.
 
-*   Kattintson keresztül sebessége (Parancsra): kattintson a teljes keresések száma egy adott dokumentum felhasználók aránya.
-*   Keresés a kattintás nélkül: készült leggyakoribb lekérdezések, amelyek egyetlen kattintással regisztrálása
-*   Legtöbb kattintott a dokumentumok: legfontosabb elemeire való kattintások dokumentumok azonosítója alapján az elmúlt 24 óra, 7 napban és 30 nap.
-*   Népszerű kifejezés-dokumentum párok: feltételek, amelyek ugyanazt a dokumentumot kattint, kattintással szerint rendezve.
-*   Kattintson az időt: kattintással bucketed által a keresési lekérdezés óta eltelt idő
+   ![A Power BI-jelentések lekérése](./media/search-traffic-analytics/get-use-power-bi.png "lekérése a Power BI-jelentések")
 
-![Power BI-sablon az Application Insights olvasásakor][3]
+2. Ugyanazon az oldalon, kattintson a **töltse le a Power bi-jelentés**.
 
+3. Ekkor megnyílik a jelentés a Power BI Desktopban, és csatlakozás az Application Insightshoz kéri. Ezt az információt az Azure portál lapjain, Application Insights-erőforrás található.
+
+   ![Csatlakozás az Application Insightshoz](./media/search-traffic-analytics/connect-to-app-insights.png "csatlakozás az Application Insightshoz")
+
+4. Kattintson a **terhelés**.
+
+A jelentés diagramokat tartalmaz és táblákat, amelyek segítségével több megalapozottabb döntéseket hozhat, javíthatja a keresési teljesítmény és a relevancia alapján végzett.
+
+Metrikák a következő elemeket tartalmazza:
+
+* Kattintson keresztül sebessége (Parancsra): kattintson a teljes keresések száma egy adott dokumentum felhasználók aránya.
+* Keresés a kattintás nélkül: készült leggyakoribb lekérdezések, amelyek egyetlen kattintással regisztrálása
+* Legtöbb kattintott a dokumentumok: legfontosabb elemeire való kattintások dokumentumok azonosítója alapján az elmúlt 24 óra, 7 napban és 30 nap.
+* Népszerű kifejezés-dokumentum párok: feltételek, amelyek ugyanazt a dokumentumot kattint, kattintással szerint rendezve.
+* Kattintson az időt: kattintással bucketed által a keresési lekérdezés óta eltelt idő
+
+A következő képernyőképen látható a beépített jelentéseket, és elemzésére diagramok keresse meg a traffic analytics.
+
+![A Power BI-irányítópultot az Azure Search](./media/search-traffic-analytics/AzureSearch-PowerBI-Dashboard.png "Power BI-irányítópultot az Azure Search")
 
 ## <a name="next-steps"></a>További lépések
 Alakítsa ki úgy a keresési alkalmazások a search szolgáltatás hatékony és legsokatmondóbb adatokat.
 
-További információ az Application Insights annak [Itt](https://go.microsoft.com/fwlink/?linkid=842905). Látogasson el az Application Insights [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/application-insights/) további információ a különböző szolgáltatásszintek.
+További információt talál a [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) , és látogasson el a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/application-insights/) további információ a különböző szolgáltatásszintek.
 
-További információ a lenyűgöző jelentések létrehozásához. Lásd: [Ismerkedés a Power BI Desktop](https://powerbi.microsoft.com/en-us/documentation/powerbi-desktop-getting-started/) részletekért
+További információ a lenyűgöző jelentések létrehozásához. Lásd: [Ismerkedés a Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) részletekért
 
 <!--Image references-->
 [1]: ./media/search-traffic-analytics/AzureSearch-TrafficAnalytics.png

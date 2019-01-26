@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c6c13d0e27edd5563f10df59ce7af585a345bfab
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fe28eda7571bf95d1e86419f5caf3cf65e4020b3
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463337"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078644"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>A Jelszókivonat-szinkronizálás az Azure Active Directory összevonási áttelepítésére
 
@@ -30,7 +30,8 @@ A következő előfeltételek szükségesek áttelepítéséhez a Jelszókivonat
 
 ### <a name="update-azure-ad-connect"></a>Frissítés Azure AD Connect
 
-Jelszókivonat-szinkronizálás használatával való áttelepítéséhez szükséges lépések sikeres végrehajtásához rendelkeznie kell [Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) (Azure AD Connect) 1.1.819.0 vagy újabb verziója. Az Azure AD Connectben 1.1.819.0 bejelentkezési átalakítás módon végrehajtott módosítások jelentősen. Áttelepítés az AD FS a felhőalapú hitelesítés ebben a verzióban a teljes időt potenciálisan óra perc csökken.
+Sikeres áttelepítéséhez a Jelszókivonat-szinkronizálás lépések végrehajtásához minimális, rendelkeznie kell [az Azure AD connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.1.819.0. Ez a verzió bejelentkezési átalakítás történik, és csökkenti a felhőalapú hitelesítés potenciálisan óra és perc összevonási áttelepíthetők teljes időtartama érintő jelentős változásokat tartalmaz.
+
 
 > [!IMPORTANT]
 > Előfordulhat, hogy olvassa el az elavult dokumentáció, eszközök és blogok, hogy felhasználók átalakítását kötelező konvertálásakor tartományok az összevont identitás felügyelt identitás. *Felhasználók átalakítása* már nem szükséges. A Microsoft dolgozik azon, hogy frissítse a dokumentáció és eszközök a változás tükrözése érdekében.

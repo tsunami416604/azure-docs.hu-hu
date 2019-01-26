@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ad34a5c3d72ec1f7fce0b56a85fd7c9cba007366
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3be44af41de5c5115b1ddeaef79b64f26f8c8463
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824575"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911855"
 ---
 # <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>Oktatóanyag: Töltse le és parancsfájl használatával jelentkezzen be a naplók elérése
 
@@ -35,7 +35,7 @@ szükséged van
 
 * Az Azure Active Directory-bérlő prémium verzió (P1 vagy P2) licenccel. Vegye figyelembe, hogy a frissítés előtt tevékenységek adatokat nem rendelkezett, ha igénybe vesz néhány nap alatt az adatok megjelennek a jelentések prémium licencre történő frissítés után. 
 * A felhasználó, aki az a **globális rendszergazdai**, **biztonsági rendszergazda**, **biztonsági olvasó** vagy **jelentést olvasó** szerepkör a bérlő számára. Emellett bármely felhasználó hozzáférhet a saját bejelentkezések. 
-* Ha azt szeretné, a Windows 10-es gépen a letöltött szkript futtatásához [beállítva a végrehajtási házirendet és az AzureRM-modul](concept-sign-ins.md#running-the-script-on-a-windows-10-machine).
+* Ha azt szeretné, a Windows 10-es gépen a letöltött szkript futtatásához [állítsa be az Azure PowerShell-modult, és állítsa be a végrehajtási házirend](concept-sign-ins.md#running-the-script-on-a-windows-10-machine).
 
 ## <a name="tutorial"></a>Oktatóanyag
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 101eeb89a44fbc28c831fefcdc6490495e0be7e8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 67523641ff9650a5b35a142147a2f69adcfb3b1c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470324"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077301"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk az Azure Active Directory (Azure AD) Connect Health szolgáltatással kapcsolatos gyakori kérdések (GYIK) rájuk adott válaszokat tartalmazza. Ezek a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatáról terjed ki.
@@ -62,7 +62,7 @@ Példa:
 
 **K: Támogatja az Azure Germany felhőalapú Azure AD Connect Health?**
 
-Az Azure AD Connect Health nem támogatott a Németországi Felhőhöz kivételével a [szinkronizálási hibák jelentés funkció](how-to-connect-health-sync.md#object-level-synchronization-error-report). 
+Az Azure AD Connect Health nem támogatott a Németországi Felhőhöz kivételével a [szinkronizálási hibák jelentés funkció](how-to-connect-health-sync.md#object-level-synchronization-error-report).
 
 | Szerepkörök | Szolgáltatások | Támogatja a német felhőben |
 | ------ | --------------- | --- |
@@ -71,7 +71,7 @@ Az Azure AD Connect Health nem támogatott a Németországi Felhőhöz kivétel�
 | Connect Health for AD FS | Figyelési / Insight / riasztásokat / elemzése | Nem |
 | ADDS készült Connect Health | Figyelési / Insight / riasztásokat / elemzése | Nem |
 
-Ahhoz, hogy az ügynök csatlakozását az Connect Health szinkronizálási szolgáltatás, állítsa be a [telepítési követelmény](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) ennek megfelelően.   
+Ahhoz, hogy az ügynök csatlakozását az Connect Health szinkronizálási szolgáltatás, állítsa be a [telepítési követelmény](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) ennek megfelelően.
 
 ## <a name="installation-questions"></a>Telepítési kérdések
 
@@ -163,7 +163,7 @@ Az Azure AD Connect Health service vizsgálja a gépek figyeli annak biztosítá
 
 A következő PowerShell-parancsfájl segítségével manuálisan az ellenőrzés elvégzéséhez. A fenti logikai valósítja meg.
 
-```
+```powershell
 Function CheckForMS17-010 ()
 {
     $hotfixes = "KB3205409", "KB3210720", "KB3210721", "KB3212646", "KB3213986", "KB4012212", "KB4012213", "KB4012214", "KB4012215", "KB4012216", "KB4012217", "KB4012218", "KB4012220", "KB4012598", "KB4012606", "KB4013198", "KB4013389", "KB4013429", "KB4015217", "KB4015438", "KB4015546", "KB4015547", "KB4015548", "KB4015549", "KB4015550", "KB4015551", "KB4015552", "KB4015553", "KB4015554", "KB4016635", "KB4019213", "KB4019214", "KB4019215", "KB4019216", "KB4019263", "KB4019264", "KB4019472", "KB4015221", "KB4019474", "KB4015219", "KB4019473"
@@ -190,7 +190,7 @@ CheckForMS17-010
 
 **K: Miért van az AD FS naplózása nem hoz létre?**
 
-PowerShell-parancsmagot <i>Get-AdfsProperties - AuditLevel</i> annak biztosítása érdekében a vizsgálati naplók nem a Letiltva állapot. Tudjon meg többet [AD FS-naplók](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Figyelje meg a rendszer speciális leküldött az ADFS-kiszolgáló naplózási beállításait, ha az auditpol.exe módosításokat lesz-e felülírt (esemény Ha alkalmazás létrehozott nincs konfigurálva). Ebben az esetben állítsa be a helyi biztonsági házirend alkalmazás létrehozott hibák, illetve sikeres-e bejelentkezni. 
+PowerShell-parancsmagot <i>Get-AdfsProperties - AuditLevel</i> annak biztosítása érdekében a vizsgálati naplók nem a Letiltva állapot. Tudjon meg többet [AD FS-naplók](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Figyelje meg a rendszer speciális leküldött az ADFS-kiszolgáló naplózási beállításait, ha az auditpol.exe módosításokat lesz-e felülírt (esemény Ha alkalmazás létrehozott nincs konfigurálva). Ebben az esetben állítsa be a helyi biztonsági házirend alkalmazás létrehozott hibák, illetve sikeres-e bejelentkezni.
 
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások

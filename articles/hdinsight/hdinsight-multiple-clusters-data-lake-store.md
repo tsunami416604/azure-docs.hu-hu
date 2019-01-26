@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 982e92d02e17aaefe0b197562013704636e3065f
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0760d850bdc6dab84722f00f1061d53f9b95cfcf
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743702"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912418"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Több HDInsight-fürt használata az Azure Data Lake Storage-fiók
 
@@ -37,9 +37,9 @@ Ahhoz, hogy a HDInsight-fürtök által ténylegesen használt mappaszerkezet, a
 
 |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Nevesített felhasználó | Névvel ellátott felhasználói engedélyek | Nevesített csoportra | Elnevezett biztonságicsoport-engedélyeit |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |rendszergazda |rendszergazda  |Szolgáltatásnév |--x  |FINGRP   |r-x         |
-|/Clusters | rwxr-x--x |rendszergazda |rendszergazda |Szolgáltatásnév |--x  |FINGRP |r-x         |
-|/ fürtök/Pénzügy | rwxr-x--t |rendszergazda |FINGRP  |Szolgáltatásnév |rwx  |-  |-     |
+|/ | rwxr-x--x  |admin |admin  |Szolgáltatásnév |--x  |FINGRP   |r-x         |
+|/Clusters | rwxr-x--x |admin |admin |Szolgáltatásnév |--x  |FINGRP |r-x         |
+|/ fürtök/Pénzügy | rwxr-x--t |admin |FINGRP  |Szolgáltatásnév |rwx  |-  |-     |
 
 A tábla
 
@@ -93,5 +93,5 @@ Set olvasási-végrehajtási engedélyeket **mások** a hierarchián keresztül,
 
 ## <a name="see-also"></a>Lásd még
 
-* [Gyors útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-
+* [Rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök](hdinsight-hadoop-use-data-lake-storage-gen2.md)

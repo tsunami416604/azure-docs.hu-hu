@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 62bb9b6b4b0edd9e45b317c3c4e18872bae2eec4
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: MT
+ms.openlocfilehash: 3ed4d3874056eca93e5c94e225ba25d94e7826e3
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452836"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911931"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Az Azure Active Directory-beli feltételes hozzáférésre vonatkozó ajánlott eljárások
 
@@ -55,6 +55,24 @@ Ahhoz, hogy a szabályzat működik, konfigurálnia kell:
 
 
 ## <a name="what-you-should-know"></a>Alapismeretek
+
+
+
+### <a name="how-are-conditional-access-policies-applied"></a>Hogyan alkalmazza a feltételes hozzáférési szabályzatokat?
+
+Egynél több feltételes hozzáférési szabályzat akkor fordulhatnak elő, ha egy felhasználó hozzáfér az alkalmazáshoz. Ebben az esetben meg kell felelniük az összes házirend alkalmazása. Például ha egy szabályzatok megköveteli, hogy a felhasználó MFA és a második igényel a megfelelő eszköz a felhasználó MFA kell, és a megfelelő eszköz. 
+
+Az összes házirendek érvényben vannak, két fázisban történik:
+
+- Az a **első** fázisban összes házirendek kiértékelése és a gyűjtött összes hozzáférés-vezérlést, hogy nem teljesülnek. 
+
+- Az a **második** fázis, kéri a még nem teljesített követelmények teljesítéséhez. Egyik szabályzat letiltja a hozzáférést, ha vannak, letiltva, és más szabályzati vezérlőket kielégítéséhez nem kéri. Ha a házirendek egyike blokkolja, kéri kielégítéséhez más házirend szabályozza, a következő sorrendben:
+
+    ![Rendelés](./media/best-practices/06.png)
+    
+    Külső MFA-szolgáltatók és a használati feltételek származnak tovább.
+
+
 
 ### <a name="how-are-assignments-evaluated"></a>Hogyan értékeli a hozzárendeléseket?
 
@@ -154,4 +172,7 @@ További információkért lásd: [az Azure Portalon klasszikus szabályzatok Mi
 
 ## <a name="next-steps"></a>További lépések
 
-Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
+Ha meg szeretné ismerni:
+
+- Egy feltételes hozzáférési szabályzat konfigurálása, olvassa el [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
+- Hogyan tervezi a feltételes hozzáférési szabályzatokat, [a feltételes hozzáférés üzembe helyezés az Azure Active Directory tervezése](plan-conditional-access.md).

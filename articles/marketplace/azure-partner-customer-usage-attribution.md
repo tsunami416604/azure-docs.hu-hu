@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 66f850225faba8d45eaa07493a0817c9ed0ed52b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077742"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075584"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
@@ -32,11 +32,17 @@ A Microsoft-partnerként bármely Azure-erőforrások, amelyek az ügyfél nevé
 - Az Azure Resource Manager-sablonok: Resource Manager-sablonok vagy megoldássablonok a partner szoftverek futtatását az Azure-szolgáltatások üzembe helyezéséhez. Partnerek hozhat létre egy Resource Manager-sablon infrastruktúráját és konfigurációját az Azure-megoldás meghatározásához. A Resource Manager-sablon lehetővé teszi, hogy Ön és ügyfelei teljes életciklusa során a megoldás üzembe helyezéséhez. Biztos lehet benne, hogy az erőforrások telepítése konzisztens lesz. 
 - Az Azure Resource Manager API-kat: Partnerek segítségével meghívhatja a Resource Manager API-k, közvetlenül a Resource Manager-sablon üzembe helyezése vagy létrehozni az API-hívások közvetlenül az Azure-szolgáltatások kiépítése. 
 
-Az összes szükséges ügyfél-használati tesznek elérhetővé; ilyenek [megoldássablonok](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) közzé az Azure piactéren. 
+Az ügyfél használati tesznek elérhetővé; ilyenek szükséges [Azure alkalmazásra vonatkozó ajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer) Azure Marketplace-en közzétett.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata
 
-Számos partneri megoldás telepítve vannak, egy ügyfél előfizetését Resource Manager-sablonok használatával. Ha rendelkezik egy Resource Manager-sablon, amely elérhető a Githubon, vagy a rövid útmutatóban az Azure piactéren, nagyon egyszerű a folyamat módosításához a sablonhoz, amelyekkel engedélyezheti az új követési módszert kell lennie. További információkért lásd: [hozzon létre és helyezhet üzembe az első Resource Manager-sablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
+Számos partneri megoldás telepítve vannak, egy ügyfél előfizetését Resource Manager-sablonok használatával. Ha rendelkezik egy Resource Manager-sablon, amely elérhető a Githubon, vagy a rövid útmutatóban az Azure piactéren, nagyon egyszerű a folyamat módosításához a sablonhoz, amelyekkel engedélyezheti az új követési módszert kell lennie.
+
+A létrehozása és közzététele Megoldássablonok további információkért lásd:
+
+* [Létre és helyezhet üzembe az első Resource Manager-sablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+* [Az Azure Application ajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer).
+* Videó: [Létrehozásához Megoldássablonokkal, és a felügyelt alkalmazások az Azure Marketplace-en](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 
 ## <a name="add-a-guid-to-your-template"></a>Adjon hozzá egy GUID Azonosítót a sablonhoz
@@ -94,7 +100,7 @@ Amikor az API-hívások, a nyomon követési módszer a felhasználói ügynök 
 > [!Note]
 > A karakterlánc formátuma fontos. Ha a **pid -** előtag nem tartalmaz, ezért nem lehetséges az adatok lekérdezéséhez. Különböző SDK-k eltérően nyomon követése. Ez a metódus megvalósításához, tekintse át a támogatási, és nyomon követi a megközelítést az előnyben részesített Azure SDK-hoz készült. 
 
-#### <a name="example-the-python-sdk"></a>Példa: A Python SDK-t
+#### <a name="example-the-python-sdk"></a>Példa: The Python SDK
 
 A Python, használja a **config** attribútum. Az attribútum csak egy UserAgent adhat hozzá. Például:
 

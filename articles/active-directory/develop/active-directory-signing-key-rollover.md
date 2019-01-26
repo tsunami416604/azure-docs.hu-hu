@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,18 +16,18 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e00591338fd09cbba6d97e6affebc9dce2399f7c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6174dd210cf85bfa6a3daf38965d1da65801321c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423762"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076332"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directory aláírókulcs
 Ez a cikk ismerteti, mit kell tudni az Azure Active Directory (Azure AD) biztonsági jogkivonatok aláírásához használt nyilvános kulcsok. Fontos megjegyezni, hogy a kulcsok váltása rendszeres időközönként, és a egy robotkart sikerült kell leváltani azonnal. Minden alkalmazás, amely az Azure AD használata programozott módon kezelni a kulcshoz kapcsolódó kulcsváltás folyamat vagy rendszeres manuális váltása folyamatot képesnek kell lennie. Tudni, hogyan működnek a kulcsokat, olvassa tovább az alkalmazás a Váltás hatásainak kiértékelését és frissítheti az alkalmazást, vagy időszakos manuális váltása folyamatot kulcsváltás kezelésére, ha szükséges.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Az Azure Active Directory aláírókulcs áttekintése
-Az Azure AD és az azt használó alkalmazások között megbízhatósági kapcsolat létrehozása iparági szabványokon nyilvános kulcsú titkosítás használ. Gyakorlatilag, ez a következő módon működik: Azure ad-ben, amely egy nyilvános és titkos kulcsból álló párként áll aláíró kulcsot használ. Ha egy felhasználó bejelentkezik az Azure AD hitelesítésre használó alkalmazások, az Azure AD egy biztonsági jogkivonatot, amely tartalmazza a felhasználó adatai hoz létre. A jogkivonat aláírásával rendelkezik Azure AD-bA annak titkos kulcsát, az alkalmazásnak továbbítás előtt. Annak ellenőrzéséhez, hogy a jogkivonat érvényes, és az Azure ad-ből származó, az alkalmazásnak érvényesítenie kell a nyilvános kulccsal, amely tartalmazza a bérlő Azure AD által elérhetővé tett a jogkivonat aláírása [OpenID Connect-felderítési dokumentum](https://openid.net/specs/openid-connect-discovery-1_0.html) vagy SAML / WS-Fed [összevonási metaadatok dokumentuma](azure-ad-federation-metadata.md).
+Az Azure AD és az azt használó alkalmazások között megbízhatósági kapcsolat létrehozása iparági szabványokon nyilvános kulcsú titkosítás használ. Gyakorlatilag ez használható a következő módon: Azure ad-ben, amely egy nyilvános és titkos kulcsból álló párként áll aláíró kulcsot használ. Ha egy felhasználó bejelentkezik az Azure AD hitelesítésre használó alkalmazások, az Azure AD egy biztonsági jogkivonatot, amely tartalmazza a felhasználó adatai hoz létre. A jogkivonat aláírásával rendelkezik Azure AD-bA annak titkos kulcsát, az alkalmazásnak továbbítás előtt. Annak ellenőrzéséhez, hogy a jogkivonat érvényes, és az Azure ad-ből származó, az alkalmazásnak érvényesítenie kell a nyilvános kulccsal, amely tartalmazza a bérlő Azure AD által elérhetővé tett a jogkivonat aláírása [OpenID Connect-felderítési dokumentum](https://openid.net/specs/openid-connect-discovery-1_0.html) vagy SAML / WS-Fed [összevonási metaadatok dokumentuma](azure-ad-federation-metadata.md).
 
 Biztonsági okokból az Azure AD aláíró kulcs tekercsben rendszeres időközönként, és vészhelyzet esetén sikerült kell leváltani azonnal. Minden olyan alkalmazás, amely integrálható az Azure ad-ben kezelni egy kulcsváltás eseményt, függetlenül attól, hogy milyen gyakran ez akkor fordulhat elő kell készíteni. Ha nem támogatja, és az alkalmazás megpróbálja használni egy lejárt kulcs ellenőrzése a jogkivonat aláírása, a bejelentkezési kérelem sikertelen lesz.
 
@@ -286,7 +286,7 @@ Kövesse az alábbi lépéseket, győződjön meg arról, hogy működik-e a kul
           </keys>
    ```
 2. Az a **<add thumbprint="">** beállításban módosítsa az ujjlenyomat értékét egy másik bármely karakter lecserélésével. Mentse a **Web.config** fájlt.
-3. Hozza létre az alkalmazást, és futtassa azt. A bejelentkezési folyamat elvégzése is, ha az alkalmazás sikeresen frissítése folyamatban van a kulcsot úgy, hogy letölti a szükséges adatokat a címtár összevonási metaadatok dokumentuma az. Ha előfizetéssel kapcsolatos problémák merülnek fel, győződjön meg arról, a módosítások az alkalmazás helyesek olvassa el a [hozzáadása bejelentkezés a webes alkalmazás Using Azure ad-ben](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) cikket, vagy töltsön le és az alábbi kódmintában vizsgálatával: [ Több-Bérlős felhőalapú alkalmazások az Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+3. Hozza létre az alkalmazást, és futtassa azt. A bejelentkezési folyamat elvégzése is, ha az alkalmazás sikeresen frissítése folyamatban van a kulcsot úgy, hogy letölti a szükséges adatokat a címtár összevonási metaadatok dokumentuma az. Ha előfizetéssel kapcsolatos problémák merülnek fel, győződjön meg arról, a módosítások az alkalmazás helyesek olvassa el a [hozzáadása bejelentkezés a webes alkalmazás Using Azure ad-ben](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) cikket, vagy töltsön le és az alábbi kódmintában vizsgálatával: [Több-Bérlős felhőalapú alkalmazások az Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Erőforrások védelme és a Visual Studio 2008 vagy 2010 hoztak létre webes alkalmazásokat és a .NET 3.5 a Windows Identity Foundation (WIF) v1.0
 Ha létrehozott egy alkalmazást, WIF 1.0-s verziójú, nincs megadott mód automatikusan frissítse az alkalmazás konfigurációját, és egy új kulcsot használja.

@@ -7,15 +7,16 @@ manager: carmonm
 ms.date: 06/12/2018
 ms.topic: include
 ms.custom: include file
-ms.openlocfilehash: 3839ee598afd2028f5bef11ed7e59a1f330b5009
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9f44bb5353a522e187adf8da0d1a573e3a4489aa
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47017565"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913699"
 ---
 > [!IMPORTANT]
-> Ez a cikk tartalmazza a tartalmat, amelyhez szükség van az Azure klasszikus parancssori felület. Az Azure CLI jelenlegi kiadása nem rendelkezik az ebben a cikkben ismertetett, így a klasszikus parancssori felület megadása kötelező funkciók támogatása. 
+> Ez a cikk a klasszikus Azure CLI szükséges tartalom található. Az Azure CLI jelenlegi kiadása nem rendelkezik az ebben a cikkben ismertetett, így a klasszikus parancssori felület megadása kötelező funkciók támogatása. 
 > 
-> A klasszikus parancssori felület telepített egymás mellett a modern Azure CLI-vel, de javasoljuk, hogy az Azure CLI használatával az összes új parancsfájlok és központi telepítések, ahol a szolgáltatás támogatás érhető el. A klasszikus parancssori felület telepítése: [a klasszikus Azure CLI telepítése](/cli/azure/install-classic-cli) és az aktuális CLI telepítése, lásd: [Azure CLI telepítése](/cli/azure/install-azure-cli).
+> A klasszikus parancssori felület párhuzamosan lesz a modern Azure CLI telepítése, de azt javasoljuk, hogy az Azure CLI, az összes új parancsfájlok és központi telepítések hol érhető el funkciók támogatása. A klasszikus parancssori felület telepítése: [a klasszikus Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-classic-cli?view=azure-cli-latest). 
+> Az aktuális CLI telepítése: [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 

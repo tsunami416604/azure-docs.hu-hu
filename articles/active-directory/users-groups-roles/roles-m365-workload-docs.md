@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: f44f7167cff316b15124448678c4cae90b384ed9
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8408d620ba78fed07c44feae74c607a555d5563b
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54890083"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910585"
 ---
 # <a name="administrator-roles-for-microsoft-365-workloads"></a>A Microsoft 365 számítási feladatokhoz a rendszergazdai szerepkörökről
 
-Ez a cikk a Microsoft 365 számítási feladattal szerepkör tartalmat és a szolgáltatás terület API tartalmat hivatkozások kíséri listáját tartalmazza. A delegálási problémák általános viták található [tervezése az Azure Active Directoryban a szerepkör-delegálás](roles-concept-delegation.md).
+Minden termék a Microsoft 365-ben az Azure AD felügyeleti szerepkörök is felügyelhetők. Egyes termékek termékekre vonatkozó további szerepköröket is biztosítanak. Az egyes termékek által támogatott szerepkörökkel kapcsolatos információkért lásd az alábbi táblázat. A delegálási problémák általános viták található [tervezése az Azure Active Directoryban a szerepkör-delegálás](roles-concept-delegation.md).
 
 ## <a name="where-to-find-content"></a>Hol található tartalom
 

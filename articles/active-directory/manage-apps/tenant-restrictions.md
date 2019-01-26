@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: 97cabf7821f223b900f86115c3bd85b12de450d4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 90cfb766e98bfa9706cd88342f8374269bc69d76
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478144"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911625"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A felhőalapú alkalmazások használati Bérlőkorlátozások SaaS való hozzáférés kezelése
 
@@ -89,7 +89,7 @@ Ez a szakasz bemutatja a élmény a végfelhasználók és rendszergazdák is.
 
 ### <a name="end-user-experience"></a>Végfelhasználói élmény
 
-Példa felhasználóként a Contoso hálózatán lévő, de próbál meg hozzáférni egy megosztott SaaS-alkalmazás például az Outlookból online Fabrikam példányát. Ha a Contoso az adott példány számára nem engedélyezett bérlők, a felhasználónál a következő oldalt:
+Példa felhasználóként a Contoso hálózatán lévő, de próbál meg hozzáférni egy megosztott SaaS-alkalmazás például az Outlookból online Fabrikam példányát. Ha Fabricam Contoso-példány nem engedélyezett bérlők, a felhasználónál a következő oldalt:
 
 ![Hozzáférés megtagadva lapot a bérlők számára nem engedélyezett a felhasználók számára](./media/tenant-restrictions/end-user-denied.png)
 

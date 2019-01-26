@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 08/30/2018
+ms.date: 01/23/2019
 ms.author: rolyon
-ms.openlocfilehash: d9a6ab49d619e487eee6fb13abe128cfc167b560
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e81aab8268266c99c9f08e165a98df31f2106123
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306689"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912271"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>Fedezze fel a PIM kezelése Azure-erőforrások
 
@@ -52,12 +52,16 @@ Először állítsa be a PIM az Azure-erőforrásokhoz, amikor kell felderíteni
 
 1. Adja hozzá a kezelni kívánt bármilyen nem felügyelt erőforrások melletti jelölőnégyzet bejelölésekor.
 
+1. Kattintson a **Erőforráskezelés** a kijelölt erőforrások kezelésének megkezdéséhez.
+
     > [!NOTE]
     > Miután a felügyeleti csoportba vagy előfizetésbe kezelt van beállítva, nem lehet a nem felügyelt. Ez megakadályozza, hogy egy másik erőforrás-rendszergazda a PIM beállításainak eltávolítása.
 
     ![Felderítés – Erőforráskezelés](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. Kattintson a **Erőforráskezelés** a kijelölt erőforrások kezelésének megkezdéséhez.
+1. Ha a kiválasztott erőforrás-kezelés bevezetésének megerősítéséhez üzenet jelenik meg, kattintson a **Igen**.
+
+    ![Észlelés – erőforrás-üzenetek kezelése](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 11508c1f65ddfc7e43ef2301f32d67da3f0a4584
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 2eb59d9b07587fe2cfddb088e0cf82bb6762caa4
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904267"
+ms.locfileid: "54912680"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Az alkalmazásproxy-problémák és hibaüzenetek hibaelhárítása
 Ha hiba lép fel, a közzétett alkalmazás eléréséhez, vagy az alkalmazások közzétételéhez, ellenőrizze a megtekintéséhez, hogy a Microsoft Azure AD-alkalmazásproxy megfelelően működik-e a következő beállításokat:
@@ -54,7 +54,7 @@ Amikor a Összekötőjével kapcsolatos hiba az esemény eseménynaplóból val�
 | Összekötő regisztrálása sikertelen volt: Ellenőrizze, hogy engedélyezte az alkalmazásproxy az Azure felügyeleti portálon és a megadott megfelelően az Active Directory felhasználónevet és jelszót. Hiba: 'AADSTS50059: Információ a bérlő-azonosító nem található vagy a kérelem vagy hallgatólagos bármelyik megadott hitelesítő adatok és a search szolgáltatás által egyszerű URI nem sikerült. | Jelentkezzen be Microsoft-Account és a nem tartományhoz, amely része annak a címtárnak, próbál hozzáférni a szervezet azonosítója kívánt. Győződjön meg arról, hogy a rendszergazda a tartomány neve megegyezik a bérlő tartománya része, például az Azure AD-tartománya a contoso.com, a rendszergazdának kell lennie, admin@contoso.com. |
 | Nem sikerült beolvasni az aktuális végrehajtási szabályzata a PowerShell-parancsfájlok futtatásakor. | Ha az összekötő telepítése nem sikerül, ellenőrizze, győződjön meg arról, hogy a PowerShell végrehajtási házirend nincs letiltva. <br><br>1. Nyissa meg a Helyicsoportházirend-szerkesztő.<br>2. Lépjen a **számítógép konfigurációja** > **felügyeleti sablonok** > **Windows-összetevők**  >   **Windows PowerShell** , és kattintson duplán a **kapcsolja be a parancsfájl végrehajtása**.<br>3. A végrehajtási házirendet is megadni **nincs konfigurálva** vagy **engedélyezve**. Ha beállítása **engedélyezve**, győződjön meg arról, hogy a beállítások, a végrehajtási házirend értéke termékeken **lehetővé helyi és távoli aláírt parancsfájlok** vagy **engedélyezése az összes parancsfájl**. |
 | Összekötő nem tudta letölteni a konfigurációt. | Az összekötő ügyféltanúsítványt, a hitelesítéshez használt, lejárt. Ez akkor is előfordulhat, ha az összekötő telepítve van, a rendszer proxy mögött van. Ebben az esetben az összekötő nem férnek hozzá az internethez, és nem lesz képes biztosítani a távoli felhasználók számára az alkalmazásoknak. Manuálisan megújítani a `Register-AppProxyConnector` parancsmagot a Windows PowerShellben. Ha az összekötő egy proxykiszolgáló mögött található, akkor meg kell adni a "hálózati szolgáltatás" összekötő fiókok Internet-hozzáférés és a "helyi rendszer." Ez is elvégezhető, ehhez biztosítson hozzáférést a Proxy vagy állítsa őket a proxyt. |
-| Összekötő regisztrálása sikertelen volt: Győződjön meg arról, hogy egy alkalmazás az összekötő regisztrálására az Active Directory-rendszergazda. Hiba: "A szolgáltatásregisztrálási kérelem megtagadva." | Bejelentkezés a következővel kívánt alias nem rendszergazdája az ebben a tartományban. Az összekötő mindig telepítve van a címtárból, amelyhez a felhasználó tartománnyal rendelkezik. Győződjön meg arról, hogy a kívánt jelentkezzen be rendszergazdai fiókkal legalább alkalmazás rendszergazdai engedélyekkel, az Azure AD-bérlővel rendelkezik-e. |
+| Összekötő regisztrálása sikertelen volt: Győződjön meg arról, hogy az összekötő regisztrálására az Active Directory-alkalmazás-rendszergazda. Hiba: "A szolgáltatásregisztrálási kérelem megtagadva." | Bejelentkezés a következővel kívánt alias nem rendszergazdája az ebben a tartományban. Az összekötő mindig telepítve van a címtárból, amelyhez a felhasználó tartománnyal rendelkezik. Győződjön meg arról, hogy a kívánt jelentkezzen be rendszergazdai fiókkal legalább alkalmazás rendszergazdai engedélyekkel, az Azure AD-bérlővel rendelkezik-e. |
 
 ## <a name="kerberos-errors"></a>Kerberos-hibák
 

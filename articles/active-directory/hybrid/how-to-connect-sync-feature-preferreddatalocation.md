@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fde653c6520b743990ae837f1553004793fefa2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7b54d1b746467695b2c5e6a4ba634c74a3801d4f
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470698"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078729"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Az Azure Active Directory Connect szinkronizálási szolgáltatás: Konfigurálja az Office 365-erőforrások adatainak előnyben részesített helye
 Ez a témakör az a célja, hogy végigvezetik az attribútum a adatainak előnyben részesített helye konfigurálása az Azure Active Directory (Azure AD) Connect-szinkronizálás. Amikor valaki használ Multi-földrajzi funkciókat az Office 365-ben, ez az attribútum használatával a földrajzi helymeghatározás, a felhasználó Office 365-adatokat jelöl ki. (A használati *régió* és *földrajzi* azonos értelemben használják.)
@@ -31,7 +31,7 @@ Alapértelmezés szerint az Office 365-erőforrások a felhasználók számára,
 Az attribútum beállításával **preferredDataLocation**, meghatározhatja, hogy a felhasználó földrajzi. A felhasználó Office 365 erőforrások, például a postaláda és a onedrive vállalati verzió, a felhasználó ugyanabban a földrajzi rendelkezik, és továbbra is fennáll a teljes szervezet számára több bérlőhöz.
 
 > [!IMPORTANT]
-> Multi-földrajzi jelenleg érhető el az 5000-es Office 365-szolgáltatások előfizetések legalább rendelkező ügyfelek számára. Forduljon a Microsoft helyi képviselőjéhez részleteiről.
+> Multi-földrajzi érhető el jelenleg az Office 365-szolgáltatásokhoz az előfizetések 2500 legalább rendelkező ügyfelek számára. Forduljon a Microsoft helyi képviselőjéhez részleteiről.
 >
 >
 
@@ -53,7 +53,7 @@ Az Office 365-ben elérhető Multi-földrajzi helyeken a következők:
 | Egyesült Államok | NAM |
 
 * Ha egy-egy térségen nem szerepel ebben a táblában (például a Dél-Amerika), majd azt nem használható a több-a földrajzi.
-* Az indiai földrajzi csak számlázási cím és a georedundáns a megvásárolt licencek rendelkező ügyfelek számára érhető el.
+
 * Nem minden Office 365 számítási feladattal a felhasználó földrajzi beállítás használatát támogatja.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Szinkronizálás az Azure AD Connect támogatása

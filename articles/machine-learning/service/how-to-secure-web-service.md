@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 14350a04326ba22dcc5c8608b6ac6b9180666832
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: adac36bd0d1798bf0bc9c2e2671c2482c6fcb84c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101196"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076485"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>SSL használatával biztonságossá tétele az Azure Machine Learning szolgáltatás a webszolgáltatások
 
@@ -37,7 +37,7 @@ Az SSL engedélyezett webszolgáltatás üzembe, vagy a meglévő üzembe helyez
 
 4. Frissítse a DNS, a web Service mutasson.
 
-Kisebb különbségek vannak webszolgáltatások között biztosításakor a [telepítési céljainak](how-to-deploy-and-where.md). 
+Kisebb különbségek vannak webszolgáltatások között biztosításakor a [telepítési céljainak](how-to-deploy-and-where.md).
 
 ## <a name="get-a-domain-name"></a>A tartománynév beolvasása
 
@@ -50,7 +50,7 @@ Számos módon SSL-tanúsítvány beszerzése. A leggyakoribb eset az, hogy vás
 * A __tanúsítvány__. A tanúsítvány kell tartalmaznia a teljes tanúsítványlánccal, és a PEM-kódolású kell lennie.
 * A __kulcs__. A kulcsnak kell lennie a PEM-kódolású.
 
-A tanúsítvány igénylésekor meg kell adni a teljesen minősített tartománynevét (FQDN) a címet, a webszolgáltatások használatát tervezi. Például www.contoso.com. A cím a tanúsítványba megjelölve, és az ügyfelek által használt cím képest, a web service identitásának érvényesítése során. A címek nem egyeznek, ha az ügyfelek egy hibaüzenetet fog kapni. 
+A tanúsítvány igénylésekor meg kell adni a teljesen minősített tartománynevét (FQDN) a címet, a webszolgáltatások használatát tervezi. Például www.contoso.com. A cím a tanúsítványba megjelölve, és az ügyfelek által használt cím képest, a web service identitásának érvényesítése során. A címek nem egyeznek, ha az ügyfelek egy hibaüzenetet fog kapni.
 
 > [!TIP]
 > Ha a hitelesítésszolgáltató nem adja meg a tanúsítvány és kulcs-fájlok PEM-kódolású formájában, a segédprogram használható például [OpenSSL](https://www.openssl.org/) használatával módosíthatja.
@@ -60,25 +60,25 @@ A tanúsítvány igénylésekor meg kell adni a teljesen minősített tartomány
 
 ## <a name="enable-ssl-and-deploy"></a>SSL engedélyezése és üzembe helyezése
 
-Üzembe helyezése (vagy újratelepítés) SSL engedélyezve van a szolgáltatást, állítsa be a `ssl_enabled` paramétert `True`, bárhol is alkalmazható. Állítsa be a `ssl_certificate` paraméter értékét a __tanúsítvány__ fájl és a `ssl_key` értékéhez a __kulcs__ fájlt. 
+Üzembe helyezése (vagy újratelepítés) SSL engedélyezve van a szolgáltatást, állítsa be a `ssl_enabled` paramétert `True`, bárhol is alkalmazható. Állítsa be a `ssl_certificate` paraméter értékét a __tanúsítvány__ fájl és a `ssl_key` értékéhez a __kulcs__ fájlt.
 
 + **Az Azure Kubernetes Service (AKS) üzembe helyezése**
-  
+
   Az AKS-fürt kiépítésekor adja meg az SSL-kapcsolódó paraméterek értékeit a kódrészletben látható módon:
 
     ```python
     from azureml.core.compute import AksCompute
-    
+
     provisioning_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
 + **Az Azure Container Instances (ACI) üzembe helyezése**
- 
+
   Üzembe helyezése az aci Szolgáltatásban, során adja meg az SSL-kapcsolódó paraméterek értékeit a kódrészletben látható módon:
 
     ```python
     from azureml.core.webservice import AciWebservice
-    
+
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
@@ -88,17 +88,17 @@ A tanúsítvány igénylésekor meg kell adni a teljesen minősített tartomány
 
     ```python
     from amlrealtimeai import DeploymentClient
-    
+
     subscription_id = "<Your Azure Subscription ID>"
     resource_group = "<Your Azure Resource Group Name>"
-    model_management_account = "<Your AzureML Model Management Account Name>"
+    model_management_account = "<Your Azure Machine Learning service Model Management Account Name>"
     location = "eastus2"
-    
+
     model_name = "resnet50-model"
     service_name = "quickstart-service"
-    
+
     deployment_client = DeploymentClient(subscription_id, resource_group, model_management_account, location)
-    
+
     with open('cert.pem','r') as cert_file:
         with open('key.pem','r') as key_file:
             cert = cert_file.read()
@@ -110,17 +110,17 @@ A tanúsítvány igénylésekor meg kell adni a teljesen minősített tartomány
 
 Ezt követően frissítenie kell a DNS, a web Service mutasson.
 
-+ **Az ACI és az FPGA**:  
++ **Az ACI és az FPGA**:
 
-  Az a tartománynév regisztrálójánál az által biztosított eszközök segítségével frissítse a DNS-rekordot a tartománynév. A rekord a szolgáltatás IP-címre kell mutatnia.  
+  Az a tartománynév regisztrálójánál az által biztosított eszközök segítségével frissítse a DNS-rekordot a tartománynév. A rekord a szolgáltatás IP-címre kell mutatnia.
 
   A regisztráló és az idő függvényében élettartam (TTL) van konfigurálva a tartománynév, akár néhány órát, mielőtt az ügyfelek fel tudják oldani a tartománynév több percet is igénybe vehet.
 
-+ **Az aks-ben**: 
++ **Az aks-ben**:
 
   Frissítse a DNS, a "Beállítások" lapon a "nyilvános IP-címe" az AKS-fürtöt a képen látható módon. A nyilvános IP-címet az erőforráscsoportban, amely tartalmazza az AKS-ügynök csomópontok és más hálózati erőforrások létrehozása az erőforrástípusok egyikét találja.
 
-  ![Az Azure Machine Learning szolgáltatás: webszolgáltatások SSL használatával biztonságossá tétele](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  ![Azure Machine Learning service: Webszolgáltatások SSL használatával biztonságossá tétele](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
 ## <a name="next-steps"></a>További lépések
 

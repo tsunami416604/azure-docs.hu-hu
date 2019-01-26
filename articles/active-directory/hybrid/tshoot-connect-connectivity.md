@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 85c60cf25cd00826df6b48ed6714a646fa44a962
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c1a575c3a30dfe5923fc0026c6d41d1b20276e49
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474880"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076468"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect kapcsolati problémáinak hibaelhárítása
 Ez a cikk azt ismerteti, hogyan működik az Azure AD Connect és az Azure AD közötti kapcsolat és a kapcsolódási problémák elhárítása. Ezek olyan problémák, nagy valószínűséggel olyan környezetben, egy proxykiszolgáló láthatók legyenek.
@@ -167,17 +167,52 @@ Nem sikerült engedélyezni a felhasználót, hogy az Azure ad-ben a műveletre.
 ### <a name="authentication-cancelled"></a>Hitelesítési megszakítva
 A többtényezős hitelesítés (MFA) kihívás meg lett szakítva.
 
+<div id="connect-msolservice-failed">
+<!--
+  Empty div just to act as an alias for the "Connect To MS Online Failed" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
 ### <a name="connect-to-ms-online-failed"></a>Az MS Online nem sikerült csatlakozni
 A hitelesítés sikerült, de az Azure AD PowerShell rendelkezik egy hitelesítési probléma.
+
+<div id="get-msoluserrole-failed">
+<!--
+  Empty div just to act as an alias for the "Azure AD Global Admin Role Needed" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Az Azure AD globális rendszergazdai szerepkör szükséges
 Felhasználó hitelesítése sikeresen megtörtént. Felhasználói azonban nincs hozzárendelt globális rendszergazdai szerepkört. Ez a [globális rendszergazdai szerepkör hozzárendelése](../users-groups-roles/directory-assign-admin-roles.md) a felhasználó számára. 
 
+<div id="privileged-identity-management">
+<!--
+  Empty div just to act as an alias for the "Privileged Identity Management Enabled" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
 ### <a name="privileged-identity-management-enabled"></a>Privileged Identity Management engedélyezve
 A hitelesítés sikerült. Privileged identity management engedélyezve van, és jelenleg nem globális rendszergazda. További információkért lásd: [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
 
+<div id="get-msolcompanyinformation-failed">
+<!--
+  Empty div just to act as an alias for the "Company Information Unavailable" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
 ### <a name="company-information-unavailable"></a>Vállalati adatok nem érhető el
 A hitelesítés sikerült. Nem sikerült beolvasni a vállalati adatokat az Azure ad-ből.
+
+<div id="get-msoldomain-failed">
+<!--
+  Empty div just to act as an alias for the "Domain Information Unavailable" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
 
 ### <a name="domain-information-unavailable"></a>Tartományadatokat nem érhető el
 A hitelesítés sikerült. Nem sikerült beolvasni a tartományadatokat az Azure ad-ből.

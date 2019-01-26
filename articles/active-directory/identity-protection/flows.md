@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: a0c351df535a1f2463c14a4719eac0e4c4896c2b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5b330a8e0eebc2a6f3701534fbc25848296694b1
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464204"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912629"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Az Azure AD Identity Protection a bejelentkezési élmény
 Az Azure Active Directory Identity Protection a következőket teheti:
@@ -57,18 +57,13 @@ A rendszergazdák olyan szabályzatot, amely megköveteli a felhasználóktól a
 
 1. Az első lépésben a felhasználó élvezheti a fiók regisztrálásához a multi-factor authentication szolgáltatás beállítása a követelménnyel kapcsolatban értesítést. 
    
-    ![Szervizelési](./media/flows/301.png "szervizelés")
-
+    ![Szervizelési](./media/flows/140.png "szervizelés")
 2. Többtényezős hitelesítés beállításához, meg kell, hogy a rendszer tudja, hogyan szeretné elvégezni.
    
-    ![Szervizelési](./media/flows/302.png "szervizelés")
-
-3. Adja meg a rendszer a megadott számú telefonszámot, és hogyan szeretné elvégezni.
-
-    ![Szervizelési](./media/flows/303.png "szervizelés")
-
-A regisztráció befejezéséhez, vagy szeretne válaszolni a telefonhívás, vagy adjon meg egy kódot. 
-
+    ![Szervizelési](./media/flows/141.png "szervizelés")
+3. A rendszer elküldi a vonatkozó kérdést állít be, és meg kell válaszolni.
+   
+    ![Szervizelési](./media/flows/142.png "szervizelés")
 
 ## <a name="risky-sign-in-recovery"></a>Kockázatos bejelentkezési helyreállítási
 Amikor egy rendszergazda úgy konfigurálta egy házirendet a bejelentkezési kockázat, az érintett felhasználók megpróbálnak bejelentkezni, amikor értesítést kap. 

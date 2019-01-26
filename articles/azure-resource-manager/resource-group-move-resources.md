@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9465be92d2289bb174834cc856d6f20b6b64c81b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8a5fd44f1122b682ee4e3b4c6fcf56408098cae1
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888124"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080707"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -176,7 +176,7 @@ Az Azure Backup szolgáltatással konfigurált virtuális gépek áthelyezéséh
 * Keresse meg a virtuális gép helyét.
 * Keresse meg a következő elnevezési mintának egy erőforráscsoportot: `AzureBackupRG_<location of your VM>_1` például AzureBackupRG_westus2_1
 * Ha az Azure Portalon, majd ellenőrizze "rejtett típusok megjelenítése"
-* Ha a PowerShellben használja a `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` parancsmag
+* Ha a PowerShellben használja a `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` parancsmag
 * Ha a CLI-t, használja a `az resource list -g AzureBackupRG_<location of your VM>_1`
 * Keresse meg az erőforrást típusú `Microsoft.Compute/restorePointCollections` , amely rendelkezik az elnevezési minta `AzureBackup_<name of your VM that you're trying to move>_###########`
 * Törli ezt az erőforrást. Ez a művelet csak az azonnali helyreállítási pontjait, nem a tárolóban lévő biztonsági mentési adatok törlése.
@@ -343,8 +343,8 @@ Nincsenek erőforrások áthelyezése előtt néhány fontos lépést. Ezen felt
   Azure PowerShell esetén használja:
 
   ```azurepowershell-interactive
-  (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
-  (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
 
   Azure CLI esetén használja az alábbi parancsot:
@@ -364,14 +364,14 @@ Nincsenek erőforrások áthelyezése előtt néhány fontos lépést. Ezen felt
   A PowerShell a következő parancsok használatával a regisztrációs állapot lekérdezése:
 
   ```azurepowershell-interactive
-  Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
-  Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+  Set-AzContext -Subscription <destination-subscription-name-or-id>
+  Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   Erőforrás-szolgáltató regisztrálásához használja:
 
   ```azurepowershell-interactive
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
+  Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
   Azure CLI-hez a következő parancsok használatával a regisztrációs állapot lekérdezése:
@@ -475,12 +475,12 @@ Ha befejeződött, értesítést kap arról, az eredmény.
 
 ### <a name="by-using-azure-powershell"></a>Azure PowerShell-lel
 
-Meglévő erőforrások áthelyezése egy másik erőforráscsoportba vagy előfizetésbe, használja a [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) parancsot. Az alábbi példa bemutatja, hogyan több erőforrás áthelyezése egy új erőforráscsoportot.
+Meglévő erőforrások áthelyezése egy másik erőforráscsoportba vagy előfizetésbe, használja a [Move-AzResource](/powershell/module/az.resources/move-azresource) parancsot. Az alábbi példa bemutatja, hogyan több erőforrás áthelyezése egy új erőforráscsoportot.
 
 ```azurepowershell-interactive
-$webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
-$plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
-Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
+$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
+$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
+Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
 Át egy új előfizetést, adjon meg egy értéket a `DestinationSubscriptionId` paraméter.

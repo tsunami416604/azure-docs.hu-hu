@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 0f438f59da079633fea54758261ce1bd93a8477b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d17e4970636818eca14d2e750ec24135e64ddbb6
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251385"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078668"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Adatok importálása és az adatok exportálása modult használó Azure Machine Learning Studio-webszolgáltatások üzembe helyezése
 
@@ -44,9 +44,9 @@ Az adatokat olvasni az Azure SQL-táblát:
 5. A tulajdonságait tartalmazó ablaktáblán jelölje ki **Azure SQL Database** a a **adatforrás** legördülő listából.
 6. Az a **adatbázis-kiszolgáló neve**, **adatbázisnév**, **felhasználónév**, és **jelszó** mezőknél adja meg a megfelelő adatokat a az adatbázis.
 7. A Database lekérdezési mezőjében adja meg a következő lekérdezést.
-   
+
      Válassza ki a [Kor],
-   
+
         [workclass],
         [fnlwgt],
         [education],
@@ -68,17 +68,17 @@ Az adatokat olvasni az Azure SQL-táblát:
 A következő, állítsa be a prediktív kísérletet, amelyről a web Service szolgáltatásának telepítése.
 
 1. A kísérlet vászon alján kattintson **webszolgáltatás beállítása** válassza **prediktív webszolgáltatás [ajánlott]**.
-2. Távolítsa el a *webes bemenet* és *webes szolgáltatás kimeneti modulok* a prediktív kísérletből. 
+2. Távolítsa el a *webes bemenet* és *webes szolgáltatás kimeneti modulok* a prediktív kísérletből.
 3. Az összetevők a keresőmezőbe írja be a exportálási.
 4. Az eredmények listájában, adjon hozzá egy *adatok exportálása* modult a kísérletvászonra.
-5. Csatlakozzon a kimenetét a *Score Model* modul bemeneti, a *adatok exportálása* modul. 
+5. Csatlakozzon a kimenetét a *Score Model* modul bemeneti, a *adatok exportálása* modul.
 6. A tulajdonságait tartalmazó ablaktáblán jelölje ki **Azure SQL Database** adatokat a rendeltetési legördülő.
 7. Az a **adatbázis-kiszolgáló neve**, **adatbázisnév**, **kiszolgáló felhasználói fiók nevét**, és **kiszolgáló felhasználói fiók jelszava** mezőknél adja meg a az adatbázis megfelelő adatait.
 8. Az a **vesszővel tagolt oszlopok menteni** mezőbe írja be a pontozott címkék.
 9. Az a **táblázat neve adatmező**, írja be a dbo. ScoredLabels. Ha a tábla nem létezik, létrejön a kísérlet futtatásakor vagy a web service nevezzük.
 10. Az a **vesszővel tagolt listája datatable oszlopok** mezőbe írja be a ScoredLabels.
 
-Ha egy alkalmazás, amely meghívja a végső webszolgáltatás ír, érdemes adjon meg egy másik bemeneti lekérdezés vagy a céltábla futási időben. A bemenetek és kimenetek konfigurálása, a webszolgáltatás-paraméterek szolgáltatás segítségével állítsa be a *adatok importálása* modul *adatforrás* tulajdonság és a *adatok exportálása* mód adatait cél tulajdonság.  A webszolgáltatás-paraméterek további információkért lásd: a [AzureML webszolgáltatás-paraméterek bejegyzés](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) meg a Cortana Intelligence and Machine Learning blogon.
+Ha egy alkalmazás, amely meghívja a végső webszolgáltatás ír, érdemes adjon meg egy másik bemeneti lekérdezés vagy a céltábla futási időben. A bemenetek és kimenetek konfigurálása, a webszolgáltatás-paraméterek szolgáltatás segítségével állítsa be a *adatok importálása* modul *adatforrás* tulajdonság és a *adatok exportálása* mód adatait cél tulajdonság.  A webszolgáltatás-paraméterek további információkért lásd: a [Azure Machine Learning studio webszolgáltatás-paraméterek bejegyzés](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) meg a Cortana Intelligence and Machine Learning blogon.
 
 A webszolgáltatás-paraméterek a lekérdezés importálása és a céltábla konfigurálása:
 
@@ -108,22 +108,22 @@ Klasszikus webszolgáltatásként üzembe helyezéséhez, és létrehozhat egy a
 7. Másolja és illessze be a C# mintakód a Program.cs fájlba, és távolítson el minden hivatkozást a blob Storage.
 8. Frissítse az értéket, a *apikey tulajdonsággal végzett tesztelése* változó a korábban mentett API-kulccsal.
 9. Keresse meg a kérelem nyilatkozat, és frissítse a webszolgáltatás-paraméterek, amelyeket a rendszer átad a *adatok importálása* és *adatok exportálása* modulok. Ebben az esetben, az eredeti lekérdezéssel, de egy új tábla nevét adja meg.
-   
-        var request = new BatchExecutionRequest() 
-        {           
+
+        var request = new BatchExecutionRequest()
+        {
             GlobalParameters = new Dictionary<string, string>() {
                 { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
                 { "Table", "dbo.ScoredTable2" },
             }
         };
-10. Futtassa az alkalmazást. 
+10. Futtassa az alkalmazást.
 
 A Futtatás végeztével egy új tábla hozzáadódik a pontozási eredményeinek tartalmazó adatbázis.
 
 ### <a name="deploy-a-new-web-service"></a>Egy új webszolgáltatás üzembe helyezése
 
-> [!NOTE] 
-> Egy új webszolgáltatás üzembe helyezéséhez rendelkeznie megfelelő engedélyekkel, amelyhez az előfizetésben, a web Service szolgáltatásának telepítése. További információkért lásd: [egy webszolgáltatás, az Azure Machine Learning Web Services portál használata kezelheti](manage-new-webservice.md). 
+> [!NOTE]
+> Egy új webszolgáltatás üzembe helyezéséhez rendelkeznie megfelelő engedélyekkel, amelyhez az előfizetésben, a web Service szolgáltatásának telepítése. További információkért lásd: [egy webszolgáltatás, az Azure Machine Learning Web Services portál használata kezelheti](manage-new-webservice.md).
 
 Új webszolgáltatásként üzembe helyezéséhez, és létrehozhat egy alkalmazást, ezért használja fel:
 
@@ -136,9 +136,9 @@ A Futtatás végeztével egy új tábla hozzáadódik a pontozási eredményeine
 7. Másolja és illessze be a C# mintakód a Program.cs fájlba.
 8. Frissítse az értéket, a *apikey tulajdonsággal végzett tesztelése* változót a **elsődleges kulcs** található a **alapvető fogyasztási adatai** szakaszban.
 9. Keresse meg a *scoreRequest* nyilatkozat, és frissítse a webszolgáltatás-paraméterek, amelyeket a rendszer átad a *adatok importálása* és *adatok exportálása* modulok. Ebben az esetben, az eredeti lekérdezéssel, de egy új tábla nevét adja meg.
-   
+
         var scoreRequest = new
-        {       
+        {
             Inputs = new Dictionary<string, StringTable>()
             {
             },
@@ -147,5 +147,5 @@ A Futtatás végeztével egy új tábla hozzáadódik a pontozási eredményeine
                 { "Table", "dbo.ScoredTable3" },
             }
         };
-10. Futtassa az alkalmazást. 
+10. Futtassa az alkalmazást.
 

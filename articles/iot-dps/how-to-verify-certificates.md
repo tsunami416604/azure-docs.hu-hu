@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 6a6782c5e1cd7b5f42b619cd52470b640813a905
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: afa4b3861e9fb7f91fd9f5d540353c5fad23efe0
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42060171"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913614"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Hogyan teheti a koncepció-az-birtokában x.509-es Hitelesítésszolgáltatói tanúsítványok a Device Provisioning Service szolgáltatással
 
@@ -54,7 +54,7 @@ Most meg kell bejelentkeznie a *ellenőrzőkódot* az x.509-es Hitelesítésszol
 Microsoft eszközöket biztosít, és a mintákat, amelyek segítségével hozzon létre egy aláírt ellenőrző tanúsítvány: 
 
 - A **Azure IoT Hub C SDK** PowerShell (Windows) és (Linux) Bash-szkriptek segítségével hozhat létre a hitelesítésszolgáltató és a levél tanúsítványok fejlesztési és végrehajtásához igazolás-az-birtokában használatával egy ellenőrző kódot. Letöltheti a [fájlok](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) a rendszerben mappába működő, és kövesse a a [kezelése Hitelesítésszolgáltatói tanúsítványok információs](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) végrehajtásához igazolás a birtokában, Hitelesítésszolgáltatói tanúsítvány. 
-- A **Azure IoT Hub C# SDK** tartalmazza a [minta](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample), amelyet ehhez a koncepció-az-birtokában használhat.
+- A **Azure IoT Hub C# SDK** tartalmazza a [minta](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), amelyet ehhez a koncepció-az-birtokában használhat.
  
 > [!IMPORTANT]
 > A koncepció-az-birtokában mellett, a PowerShell és a Bash parancsfájlok csatornamegerősítése korábban is lehetővé teszik eszközök kiépítése és hitelesítéséhez használható tanúsítványok levél, legfelső szintű tanúsítványok és köztes tanúsítványok létrehozásához. Ezeket a tanúsítványokat csak fejlesztési használandó. Azok soha nem használható éles környezetben. 

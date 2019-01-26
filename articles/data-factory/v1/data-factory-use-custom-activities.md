@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 4ed919b76ddebde8337337c18c04093bc6072e82
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 25592f80abc8aea338679f199f03114c2d0785f6
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121260"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077488"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -93,7 +93,7 @@ A metódus négy paramétereket fogadja:
 - **linkedServices**. Ez a tulajdonság egy Data Store társított szolgáltatások, a tevékenység bemeneti és kimeneti adatkészleteket által hivatkozott enumerálható listáját.
 - **az adatkészletek**. Ez a tulajdonság egy enumerálható listáját a tevékenység bemeneti és kimeneti adatkészleteket. Ez a paraméter használatával a helyek és a bemeneti és kimeneti adatkészleteket által definiált sémák.
 - **tevékenység**. Ez a tulajdonság a jelenlegi tevékenység jelöli. Az egyéni tevékenység társított kiterjesztett tulajdonságok eléréséhez használható. Lásd: [kiterjesztett tulajdonságok hozzáférés](#access-extended-properties) részleteiről.
-- **naplózó**. Ez az objektum lehetővé teszi, hogy a surface hibakeresési megjegyzések írását a a folyamat a felhasználó bejelentkezése.
+- **logger**. Ez az objektum lehetővé teszi, hogy a surface hibakeresési megjegyzések írását a a folyamat a felhasználó bejelentkezése.
 
 A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenységek együtt a jövőben is használható. Ez a funkció még nincs megvalósítva, ezért vissza a metódus egy üres szótárban.
 
@@ -168,7 +168,7 @@ A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenys
     /// Execute method is the only method of IDotNetActivity interface you must implement.
     /// In this sample, the method invokes the Calculate method to perform the core logic.
     /// </summary>
-    
+
     public IDictionary<string, string> Execute(
         IEnumerable<LinkedService> linkedServices,
         IEnumerable<Dataset> datasets,
@@ -201,7 +201,7 @@ A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenys
 
         // get type properties from the dataset object
         inputTypeProperties = inputDataset.Properties.TypeProperties as AzureBlobDataset;
-    
+
         // log linked services passed in linkedServices parameter
         // you will see two linked services of type: AzureStorage
         // one for input dataset and the other for output dataset
@@ -239,7 +239,7 @@ A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenys
                                      continuationToken,
                                      null,
                                      null);
-    
+
             // Calculate method returns the number of occurrences of
             // the search term (“Microsoft”) in each blob associated
             // with the data slice. definition of the method is shown in the next step.
@@ -257,7 +257,7 @@ A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenys
         // get the folder path from the output dataset definition
         folderPath = GetFolderPath(outputDataset);
 
-        // log the output folder path   
+        // log the output folder path
         logger.Write("Writing blob to the folder: {0}", folderPath);
 
         // create a storage object for the output blob.
@@ -293,7 +293,7 @@ A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenys
             return null;
         }
 
-        // get type properties of the dataset   
+        // get type properties of the dataset
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
@@ -307,30 +307,30 @@ A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenys
     /// <summary>
     /// Gets the fileName value from the input/output dataset.
     /// </summary>
-    
+
     private static string GetFileName(Dataset dataArtifact)
     {
         if (dataArtifact == null || dataArtifact.Properties == null)
         {
             return null;
         }
-    
+
         // get type properties of the dataset
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
             return null;
         }
-    
+
         // return the blob/file name in the type properties
         return blobDataset.FileName;
     }
-    
+
     /// <summary>
     /// Iterates through each blob (file) in the folder, counts the number of instances of search term in the file,
     /// and prepares the output text that is written to the output blob.
     /// </summary>
-    
+
     public static string Calculate(BlobResultSegment Bresult, IActivityLogger logger, string folderPath, ref BlobContinuationToken token, string searchTerm)
     {
         string output = string.Empty;
@@ -379,7 +379,7 @@ A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenys
     > Az egyéni tevékenység zip-fájljában lévő összes fájlnak a **legfelső szinten** kell lennie, almappák nélkül.
 
     ![Bináris kimeneti fájlok](./media/data-factory-use-custom-activities/Binaries.png)
-14. Hozzon létre egy blobtárolót **customactivitycontainer** Ha azt nem létezik. 
+14. Hozzon létre egy blobtárolót **customactivitycontainer** Ha azt nem létezik.
 15. Az a customactivitycontainer blobként MyDotNetActivity.zip feltöltése egy **általános célú** , amely a következő hivatkozás alapján AzureStorageLinkedService az Azure blob storage (nem gyakori és ritka elérésű Blob storage).
 
 > [!IMPORTANT]
@@ -420,7 +420,7 @@ Az alábbiakban a jelen szakaszban végrehajtandó lépések:
    1. Kattintson a **erőforrás létrehozása** a bal oldali menüben.
    2. Kattintson a **adatok + analitika** a a **új** panelen.
    3. Kattintson a **Data Factory** elemre a **Data analytics** (Adatelemzés) panelen.
-   
+
     ![Új Azure Data Factory menü](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
 2. Az a **új adat-előállító** panelen adja meg **CustomActivityFactory** neve. Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "CustomActivityFactory"**, módosítsa az adat-előállító nevét (például **yournameCustomActivityFactory**), és próbálkozzon újra a létrehozással.
 
@@ -430,7 +430,7 @@ Az alábbiakban a jelen szakaszban végrehajtandó lépések:
 5. Kattintson a **Create** (Létrehozás) elemre a **New data factory** (Új data factory) panelen.
 6. A létrehozás alatt álló data factory láthatja a **irányítópult** az Azure Portal.
 7. Miután az adat-előállító sikeresen létrejött, megjelenik a Data Factory panelre, amely megjeleníti az adat-előállító tartalmát.
-    
+
     ![A Data Factory panel](media/data-factory-use-custom-activities/data-factory-blade.png)
 
 ### <a name="step-2-create-linked-services"></a>2. lépés: Társított szolgáltatások létrehozása
@@ -439,7 +439,7 @@ A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat
 #### <a name="create-azure-storage-linked-service"></a>Azure Storage társított szolgáltatás létrehozása
 1. Kattintson a **Szerző és üzembe helyezése** csempét a **adat-előállító** paneljén **CustomActivityFactory**. Ekkor megjelenik a Data Factory Editor.
 2. Kattintson a **új adattároló** a parancs sávot, és válassza **az Azure storage**. A szerkesztőben megjelenik az Azure Storage társított szolgáltatás létrehozására szolgáló JSON-parancsfájl.
-    
+
     ![Új adattár – Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
 3. Cserélje le `<accountname>` Azure storage-fiók nevére és `<accountkey>` az Azure storage-fiók hozzáférési kulccsal. A tárelérési kulcs lekérésével kapcsolatos információk: [Tárelérési kulcsok megtekintése, másolása és újragenerálása](../../storage/common/storage-account-manage.md#access-keys).
 
@@ -722,7 +722,7 @@ Néhány alapvető technikából áll:
 Ha frissíti a kódot az egyéni tevékenység, építse fel, és a blob Storage új bináris fájlokat tartalmazó zip-fájl feltöltése.
 
 ## <a name="appdomain-isolation"></a>Appdomain isolation
-Lásd: [Adatbázisközi AppDomain minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , amely ismerteti, amelyek nem csak a szerelvény verziója a Data Factory indítója által használt egyéni tevékenységek létrehozásához (Példa: WindowsAzure.Storage verze 4.3.0 Newtonsoft.Json v6.0.x, stb.).
+Lásd: [Adatbázisközi AppDomain minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , amely ismerteti, amelyek nem csak a szerelvény verziója a Data Factory indítója által használt egyéni tevékenységek létrehozásához (Példa: WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x, etc.).
 
 ## <a name="access-extended-properties"></a>A hozzáférés további tulajdonságok
 A tevékenység JSON az alábbi mintában látható módon kiterjesztett tulajdonságok deklarálhatnak:
@@ -1025,7 +1025,7 @@ A [Azure Data Factory – helyi környezetben](https://github.com/gbrueckl/Azure
 | Sample | Milyen egyéni tevékenység does |
 | --- | --- |
 | [HTTP-adatok letöltési segédprogramja](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Adatokat tölt le egy HTTP-végpontot az Azure Blob Storage-egyéni C# tevékenységgel a Data Factoryban. |
-| [Twitter-Hangulatelemzés minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Meghív egy Azure Machine Learning-modell, és tegye hangulatelemzés, pontozási, előrejelzési stb. |
+| [Twitter-Hangulatelemzés minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Meghív egy Azure Machine Learning studio-modell, és tegye hangulatelemzés, pontozási, előrejelzési stb. |
 | [R-szkript futtatásához](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). |Hívja meg az R-szkriptet a HDInsight-fürtön, amely már rendelkezik az R telepítve van rajta az RScript.exe futtatásával. |
 | [Adatbázisközi AppDomain .NET-tevékenység](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Megjelennek a Data Factory indítója által használt másik szerelvény verziót használja |
 | [Az Azure Analysis Services-modell újrafeldolgozása](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Újból feldolgozza a modellben az Azure Analysis Servicesben. |

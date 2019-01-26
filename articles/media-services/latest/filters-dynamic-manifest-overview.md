@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 7dc2136fe6ee28da0583ebdb2b2749ddf1c37049
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728040"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912033"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékek
 
@@ -113,7 +113,7 @@ A következő tulajdonságok használatával írja le a szűrőket.
 |Name (Név)|Leírás|
 |---|---|
 |firstQuality|Az első minőségi sávszélességű a szűrő.|
-|PresentationTimeRange|A bemutató időtartományban. Ez a tulajdonság jegyzékfájl kezdő és záró pontot bemutató időszak hossza és az élő kezdőpozíciója szűréshez használható. <br/>További információkért lásd: [PresentationTimeRange](#PresentationTimeRange).|
+|presentationTimeRange|A bemutató időtartományban. Ez a tulajdonság jegyzékfájl kezdő és záró pontot bemutató időszak hossza és az élő kezdőpozíciója szűréshez használható. <br/>További információkért lásd: [PresentationTimeRange](#PresentationTimeRange).|
 |nyomon követi|A számok kiválasztási feltételeket. További információkért lásd: [nyomon követi](#tracks)|
 
 ### <a name="presentationtimerange"></a>PresentationTimeRange
@@ -124,8 +124,8 @@ Ezzel a tulajdonsággal rendelkező **eszköz szűrők**. Nem javasoljuk, hogy a
 |---|---|
 |**endTimestamp**|Az abszolút befejezési időkorlátját. A videó igény szerinti (VoD) vonatkozik. Az élő bemutató azt csendes figyelmen kívül hagyja, és alkalmazza a bemutató véget ér, a stream válik VoD.<br/><br/>Az érték egy abszolút végpont az adatfolyam jelöli. Azt lekérdezi kerekítve a legközelebbi tovább Képcsoporttal Start.<br/><br/>Használja a StartTimestamp és EndTimestamp szűkítheti a listát (manifest). Ha például StartTimestamp = 40000000 és EndTimestamp = 100000000 létrehoz egy listát, amely tartalmazza az adathordozó StartTimestamp és EndTimestamp között. Ha egy töredék feladata a határt, a teljes töredék fog szerepelni a jegyzékfájlban.<br/><br/>További információ a **forceEndTimestamp** definíciót, amely követi.|
 |**forceEndTimestamp**|Az élő szűrők vonatkozik.<br/><br/>**forceEndTimestamp** logikai érték beolvasása, amely azt jelzi, hogy van-e **endTimestamp** érvényes értékre lett beállítva. <br/><br/>Ha az érték **igaz**, a **endTimestamp** értéket kell megadni. Ha nincs megadva, majd egy hibás kérés adja vissza.<br/><br/>Ha például szeretne meghatározni egy szűrőt, amely 5 perccel indul el, a bemeneti videóhoz, és a stream végéig aktiválást, így állíthatja be **forceEndTimestamp** hamis értékre, és hagyja ki a beállítás **endTimestamp**.|
-|**liveBackoffDuration**|Csak az élő vonatkozik. A tulajdonság élő lejátszási pozíció meghatározására szolgál. Ezzel a szabállyal késleltetés élő lejátszási pozícióját, és hozzon létre egy kiszolgálóoldali puffer lejátszók. LiveBackoffDuration van élő helyétől függően. Az élő leállítási maximális időtartam érték 60 másodperc.|
-|**presentationWindowDuration**|Az élő vonatkozik. Használat **presentationWindowDuration** csúszóablakszerűen történik alkalmazni a listára. Például állítsa be a presentationWindowDuration = a alkalmazni egy kétperces csúszóablakban 1200000000. Média élő széle 2 percen belül fog szerepelni a listában. Ha egy töredék feladata a határt, a teljes töredék a lista fog szerepelni. A minimális bemutató ablakidőtartam: 120 másodperc.|
+|**liveBackoffDuration**|Csak az élő vonatkozik. A tulajdonság élő lejátszási pozíció meghatározására szolgál. Ezzel a szabállyal késleltetés élő lejátszási pozícióját, és hozzon létre egy kiszolgálóoldali puffer lejátszók. LiveBackoffDuration van élő helyétől függően. Az élő leállítási maximális időtartam érték 300 másodperc.|
+|**presentationWindowDuration**|Az élő vonatkozik. Használat **presentationWindowDuration** csúszóablakszerűen történik alkalmazni a listára. Például állítsa be a presentationWindowDuration = a alkalmazni egy kétperces csúszóablakban 1200000000. Média élő széle 2 percen belül fog szerepelni a listában. Ha egy töredék feladata a határt, a teljes töredék a lista fog szerepelni. A minimális bemutató ablak időtartamának érték 60 másodperc.|
 |**startTimestamp**|VoD- vagy élő streamet vonatkozik. Az érték egy abszolút kezdőpontja az adatfolyam jelöli. Az érték beolvasása kerekítve a legközelebbi tovább Képcsoporttal Start.<br/><br/>Használat **startTimestamp** és **endTimestamp** szűkítheti a listát (manifest). Ha például startTimestamp = 40000000 és endTimestamp = 100000000 létrehoz egy listát, amely tartalmazza az adathordozó StartTimestamp és EndTimestamp között. Ha egy töredék feladata a határt, a teljes töredék fog szerepelni a jegyzékfájlban.|
 |**időskálára**|VoD- vagy élő streamet vonatkozik. A időskálára időbélyegei által használt és a fent megadott időtartam. Az alapértelmezett időskálán 10000000. Egy alternatív időskálán is használható. Alapértelmezés szerint száma 10 000 000 HNS (száz nanoszekundumos).|
 

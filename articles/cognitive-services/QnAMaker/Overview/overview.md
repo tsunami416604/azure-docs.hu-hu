@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: bd859183a13e0f8a21cdd2eabb464b718e949464
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 255aac8ed5c4268a049393cdc27b06f7a987e891
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212216"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911439"
 ---
 # <a name="what-is-qna-maker"></a>Mi a QnA Maker?
 
@@ -31,9 +31,9 @@ A könnyen kezelhető [webes portálon](https://qnamaker.ai) létrehozhat, felü
 
 A QnA Maker két fő szolgáltatást biztosít az adatokhoz:
 
-* **Kinyerés**: strukturált kérdés-válasz adatokat nyerhet ki olyan strukturált és félig strukturált [adatforrásokból](../Concepts/data-sources-supported.md), mint egy GYIK-dokumentum vagy egy termékútmutató. Ez a kinyerés végrehajtható a tudásbázis [létrehozásának](https://aka.ms/qnamaker-docs-createkb) részeként vagy azt követően, a szerkesztési folyamat részeként.
+* **Kibontási**: Strukturált kérdés-válasz adatok ki kell olvasni a strukturált és részben strukturált [adatforrások](../Concepts/data-sources-supported.md) , például – gyakori kérdések és kézikönyvek. Ez a kinyerés végrehajtható a tudásbázis [létrehozásának](https://aka.ms/qnamaker-docs-createkb) részeként vagy azt követően, a szerkesztési folyamat részeként.
 
-* **Megfeleltetés**: Ha kész a tudásbázisa, és [elvégezte a betanítást és a tesztelést is](https://aka.ms/qnamaker-docs-trainkb), [közzéteheti](https://aka.ms/qnamaker-docs-publishkb) a tudásbázist. Ez engedélyez egy végpontot a QnA Maker-tudásbázishoz, amely azután használható lesz a robotban vagy az ügyfélalkalmazásban. Ez a végpont fogadja a felhasználói kérdéseket, és válaszol a tudásbázisban található legjobb válasszal, mellékelve a találat megbízhatósági pontszámát is.
+* **Egyező**: Miután a Tudásbázis lett [betanított és tesztelt](https://aka.ms/qnamaker-docs-trainkb), [közzététele](https://aka.ms/qnamaker-docs-publishkb) azt. Ez engedélyez egy végpontot a QnA Maker-tudásbázishoz, amely azután használható lesz a robotban vagy az ügyfélalkalmazásban. Ez a végpont fogadja a felhasználói kérdéseket, és válaszol a tudásbázisban található legjobb válasszal, mellékelve a találat megbízhatósági pontszámát is.
 
 ```JSON
 {
@@ -57,9 +57,9 @@ A QnA Maker két fő szolgáltatást biztosít az adatokhoz:
 
 A QnA Maker-architektúra a következő két összetevőből áll:
 
-1. **QnA Maker felügyeleti szolgáltatások**: A QnA Maker-tudásbázis kezelhetősége, amely tartalmazza a kezdeti létrehozást, a frissítést, a betanítást és a közzétételt. Ezek a tevékenységek a [portálon](https://qnamaker.ai) vagy a [kezelési API-kon](https://aka.ms/qnamaker-v4-apis) keresztül végezhetők el. 
+1. **A QnA Maker szolgáltatások**: A felügyeleti élmény a QnA Maker Tudásbázis, amely tartalmazza a kezdeti létrehozása, frissítése, képzés és közzétételi. Ezek a tevékenységek a [portálon](https://qnamaker.ai) vagy a [kezelési API-kon](https://aka.ms/qnamaker-v4-apis) keresztül végezhetők el. 
 
-2. **QnA Maker-adatok és -futtatókörnyezet**: Ez a megadott régióban lévő Azure-előfizetésében lesz üzembe helyezve. Tudásbázisainak tartalmát a rendszer az [Azure Search](https://azure.microsoft.com/services/search/) szolgáltatásban tárolja, és a végpontot [App Services-szolgáltatásként](https://azure.microsoft.com/services/app-service/) helyezi üzembe. Választhatja azt a lehetőséget is, hogy üzembe helyez egy [Application Insights](https://azure.microsoft.com/services/application-insights/)-erőforrást elemzési célból.
+2. **A QnA Maker adatok és a futtatókörnyezet**: Ez a megadott régióban található Azure-előfizetésében üzembe helyezve. Tudásbázisainak tartalmát a rendszer az [Azure Search](https://azure.microsoft.com/services/search/) szolgáltatásban tárolja, és a végpontot [App Services-szolgáltatásként](https://azure.microsoft.com/services/app-service/) helyezi üzembe. Választhatja azt a lehetőséget is, hogy üzembe helyez egy [Application Insights](https://azure.microsoft.com/services/application-insights/)-erőforrást elemzési célból.
 
 ![Architektúra](../media/qnamaker-overview-learnabout/architecture.png)
 

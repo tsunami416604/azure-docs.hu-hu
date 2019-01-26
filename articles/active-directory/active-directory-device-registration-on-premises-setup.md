@@ -6,7 +6,7 @@ documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 editor: ''
-ms.component: devices
+ms.subservice: devices
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
 ms.workload: identity
@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: b1711b86042c74eba47fe1cfa41bbbd36ceaf127
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: abdeeacc22d2709a3107c9e9e05bd982705d7dea
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248758"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079069"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>A helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációjával
 
@@ -50,7 +50,7 @@ Ezek a képességek érhetők el, akiknek az Azure Active Directory Premium-lice
 * A Windows Server 2012 R2 frissített séma
 * Az Azure Active Directory Premium licenc
 * A Windows Server 2012 R2 összevonási szolgáltatások, az Azure AD egyszeri bejelentkezés konfigurálva
-* A Windows Server 2012 R2 a webalkalmazás-Proxy 
+* Windows Server 2012 R2 Web Application Proxy 
 * A Microsoft Azure Active Directory Connect (Azure AD Connect) [(Azure AD Connect letöltése)](https://www.microsoft.com/download/details.aspx?id=47594)
 * Ellenőrzött tartomány
 
@@ -64,7 +64,7 @@ Ezek a képességek érhetők el, akiknek az Azure Active Directory Premium-lice
 
 Ez a forgatókönyv azt feltételezi, hogy az Azure AD-bérlő és a egy helyszíni Active Directory hibrid környezetben. Ezek a bérlők kell csatlakoztatni egy ellenőrzött tartomány, az Azure AD Connect és az AD FS-sel egyszeri bejelentkezéshez. A következő ellenőrzőlista segítségével konfigurálja a környezetet a követelményeinek megfelelően.
 
-## <a name="checklist-prerequisites-for-conditional-access-scenario"></a>Ellenőrzőlista: A feltételes hozzáférési forgatókönyv előfeltételei
+## <a name="checklist-prerequisites-for-conditional-access-scenario"></a>Ellenőrzőlista: Feltételes hozzáférési forgatókönyv előfeltételei
 
 Az Azure AD-bérlő összekapcsolása a helyszíni Active Directory-példányból.
 
@@ -76,7 +76,7 @@ Ez az útmutató feltételezi, hogy konfigurálta a Windows Server Active Direct
 
 Az Azure Active Directory eszközregisztrációs szolgáltatás az Azure Active Directory-bérlőben üzembe helyezéséhez az alábbi ellenőrzőlista sorrendben feladatok végrehajtása. Ha egy hivatkozás egy elméleti témához, térjen vissza ehhez a listához ezt követően, így folytathatja a hátralévő műveletekkel. Bizonyos feladatokat, amelyek segítségével győződjön meg arról, hogy a lépés sikeresen befejeződött-e forgatókönyv ellenőrzési lépés tartalmazza.
 
-## <a name="part-1-enable-azure-active-directory-device-registration"></a>1. lépés: Engedélyezze az Azure Active Directory eszközregisztrációjával
+## <a name="part-1-enable-azure-active-directory-device-registration"></a>1. rész: Az Azure Active Directory eszközregisztráció engedélyezése
 
 Kövesse az ellenőrzőlista engedélyezése és konfigurálása az Azure Active Directory eszközregisztrációs szolgáltatás.
 
@@ -86,24 +86,24 @@ Kövesse az ellenőrzőlista engedélyezése és konfigurálása az Azure Active
 |Eszközök az Azure Active Directory eszközregisztrációs szolgáltatás felderítéséhez a jól ismert DNS-rekordok megkeresésével. A vállalati DNS konfigurálása, úgy, hogy az eszközök az Azure Active Directory eszközregisztrációs szolgáltatás képes felderíteni. |[Azure Active Directory eszközregisztráció felderítésének konfigurálása](active-directory-device-registration-get-started.md)| 
 
 
-## <a name="part-2-deploy-and-configure-windows-server-2012-r2-active-directory-federation-services-and-set-up-a-federation-relationship-with-azure-ad"></a>2. lépés: Központi telepítése és konfigurálása a Windows Server 2012 R2 Active Directory összevonási szolgáltatások és az Azure AD összevonási kapcsolat
+## <a name="part-2-deploy-and-configure-windows-server-2012-r2-active-directory-federation-services-and-set-up-a-federation-relationship-with-azure-ad"></a>2. rész: Központi telepítése és konfigurálása a Windows Server 2012 R2 Active Directory összevonási szolgáltatások és az Azure AD összevonási kapcsolat
 
 | Tevékenység | Leírások |
 | --- | --- |
 | Üzembe helyezés az Active Directory tartományi szolgáltatások a Windows Server 2012 R2 sémakiterjesztések. Nem kell minden tartományvezérlő Windows Server 2012 R2 frissítése. A séma frissítése egyetlen követelménye. |[Az Active Directory tartományi szolgáltatások sémájának frissítése](#upgrade-your-active-directory-domain-services-schema) |
 | Eszközök az Azure Active Directory eszközregisztrációs szolgáltatás felderítéséhez a jól ismert DNS-rekordok megkeresésével. A vállalati DNS konfigurálása, úgy, hogy az eszközök az Azure Active Directory eszközregisztrációs szolgáltatás képes felderíteni. |[Az Active Directory támogatási eszközök előkészítése](#prepare-your-active-directory-to-support-devices) |
 
-## <a name="part-3-enable-device-writeback-in-azure-ad"></a>3. rész: Enable eszközvisszaírás az Azure ad-ben
+## <a name="part-3-enable-device-writeback-in-azure-ad"></a>3. rész: Eszközvisszaírás engedélyezése az Azure ad-ben
 
 | Tevékenység | Leírások |
 | --- | --- |
 | Végezze el a második részében "Eszközvisszaírás engedélyezése az Azure AD Connectben." Miután végzett, térjen vissza az útmutatóban. |[Eszközvisszaírás engedélyezése az Azure AD Connectben](hybrid/how-to-connect-device-writeback.md) |
 
-## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Opcionális] 4. lépés: Többtényezős hitelesítés engedélyezése
+## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Opcionális] 4. lépés: Enable Multi-Factor Authentication
 
 Erősen ajánlott úgy beállítani, hogy a multi-factor Authentication a különböző lehetőségek közül. Ha azt szeretné, a többtényezős hitelesítés megkövetelése, [válassza ki a multi-factor Authentication szolgáltatás biztonsági megoldást,](authentication/concept-mfa-whichversion.md). Az egyes megoldások és a hivatkozások segítségével konfigurálja a megoldást a választott leírását tartalmazza.
 
-## <a name="part-5-verification"></a>5. lépés: ellenőrzés
+## <a name="part-5-verification"></a>5. lépés: Ellenőrzés
 
 Az üzembe helyezés befejeződött, és néhány esetben kipróbálhatja. Az alábbi hivatkozások segítségével kísérletezhet a szolgáltatás és a hozzá tartozó szolgáltatások megismerése.
 
@@ -158,7 +158,7 @@ Az összevonási kiszolgálón, nyisson meg egy Windows PowerShell-parancsablako
 
 ### <a name="prepare-azure-ad-connect-for-device-writeback"></a>Az Azure AD Connect eszközvisszaírás előkészítése
 
-Végezze el az 1. rész: az Azure AD Connect előkészítése.
+Végezze el az 1. rész: Készítse elő az Azure AD Connect.
 
 ## <a name="join-devices-to-your-workplace-by-using-azure-active-directory-device-registration-service"></a>Eszközök csatlakoztatása a munkahelyi Azure Active Directory eszközregisztrációs szolgáltatás használatával
 
@@ -197,7 +197,7 @@ Alapértelmezés szerint, hogy a rendszer visszaírja az Azure Active Directoryb
 
 ## <a name="create-an-application-access-policy-and-custom-access-denied-message"></a>Alkalmazás-hozzáférési házirend és egyéni hozzáférés-megtagadási üzenet létrehozása
 
-A következő esetet: hozzon létre egy alkalmazást Függőentitás-megbízhatóság szerint az AD FS-ben, és a egy kiadási engedélyezési szabályt, amely lehetővé teszi, hogy csak a regisztrált készülékek konfigurálása. Most már csak a regisztrált eszközök engedélyezett az alkalmazás eléréséhez. 
+Vegye figyelembe az alábbi forgatókönyvet: Hozzon létre egy alkalmazást Függőentitás-megbízhatóság szerint az AD FS-ben, és a egy kiadási engedélyezési szabályt, amely lehetővé teszi, hogy csak a regisztrált készülékek konfigurálása. Most már csak a regisztrált eszközök engedélyezett az alkalmazás eléréséhez. 
 
 Megkönnyítik a felhasználók az alkalmazás eléréséhez, hozzáférés-Megtagadás egy egyéni üzenet csatlakoztassák az eszközüket vonatkozó utasításokat tartalmazó konfigurálnia. A felhasználók már zavartalanul regisztrálják az eszközeiket, így az alkalmazás eléréséhez.
 

@@ -3,19 +3,19 @@ title: Azure AD SSPR a Windows 10 bejelentkezési képernyőjéről
 description: Az oktatóanyagban engedélyezzük az új jelszó kérését a Windows 10 bejelentkezési képernyőjéről a telefonos ügyfélszolgálatra beérkező hívások számának csökkentése érdekében.
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 640f03cd35ac74df9c7b25352ab294c35c4ec0ea
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 601246ab537c72e787c25d43a190111983c2b350
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430671"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075601"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: a06eb35850c12c2813a395ee8c64e16c2a8a5bce
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f472503d43d82209c765a331ba3922a2f25ca327
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156714"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077063"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: Migrálás az Azure Access Control Service-ből
 
@@ -135,7 +135,7 @@ Minden Microsoft-felhőszolgáltatás, amely hozzáférés-vezérlés által mos
 | Azure Managed Cache | [Az Azure Cache redis áttelepítése](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
 | Azure DataMarket | [A Cognitive Services API-k áttelepítése](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | BizTalk Services | [Az Azure App Service Logic Apps funkcióját áttelepítése](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| Az Azure Media Services | [Az Azure AD-hitelesítés áttelepítése](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
+| Azure Media Services | [Az Azure AD-hitelesítés áttelepítése](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
 | Azure Backup | [Az Azure Backup-ügynök frissítése](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
@@ -324,7 +324,7 @@ Az OAuth ügyfélhitelesítő adatok megvalósítása az Azure AD használatáva
 | Egy ügyfél regisztrálása | Szolgáltatásidentitás létrehozása a hozzáférés-vezérlési felügyeleti portálon | Egy másik Azure AD-webalkalmazás létrehozása az Azure Portalon |
 | Használt protokoll |-OAuth ÚJRAINDULÁS protokoll<br />– OAuth 2.0-s Draft 13 ügyfél hitelesítő adatainak megadása | OAuth 2.0-ügyfél hitelesítő adatainak megadása |
 | Ügyfél-hitelesítési módszer |– Egyszerű jelszó<br />-Aláírt SWT<br />-Egy összevont identitásszolgáltatótól az SAML jogkivonat |– Egyszerű jelszó<br />-A JWT aláírt |
-| Token formátumok |-JWT<br />-SAML 1.1-ES<br />-SAML 2.0-S<br />-SWT<br /> | Csak a JWT |
+| Token formátumok |-JWT<br />-SAML 1.1-ES<br />- SAML 2.0<br />- SWT<br /> | Csak a JWT |
 | Jogkivonatok átalakítását |– Az egyéni jogcímek hozzáadása<br />– Egyszerű if-majd jogcím-kiállítási logika | Adja hozzá az egyéni jogcímek | 
 | Konfigurációs és felügyeleti feladatok automatizálása | Access Control Management szolgáltatáson keresztül támogatott | A Microsoft Graph és az Azure AD Graph API-n keresztül támogatott |
 

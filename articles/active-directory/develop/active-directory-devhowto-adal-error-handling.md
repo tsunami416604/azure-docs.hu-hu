@@ -7,19 +7,19 @@ author: danieldobalian
 manager: mtillman
 ms.author: celested
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: ''
-ms.openlocfilehash: d6e70048f5c86ad18962237d7ffcc442c82bf035
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: e39c2716cd31e97ad71764f25befc1fc6e47e2a0
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107650"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079035"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Ajánlott hibakezelési eljárások az Azure Active Directory Authentication Library (ADAL) ügyfelek
 
@@ -211,7 +211,7 @@ Hiba történt a natív alkalmazások kezelése két esetben definiálni:
 Az alábbi útmutatót példákat ad az összes nem csendes AcquireToken(...) együtt hibakezelés ADAL módszerek *kivételével*: 
 
 - AcquireTokenAsync (..., IClientAssertionCertification,...)
-- AcquireTokenAsync (..., ClientCredential,...)
+- AcquireTokenAsync(…,ClientCredential, …)
 - AcquireTokenAsync (..., ClientAssertion,...)
 - AcquireTokenAsync(…,UserAssertion,…)   
 
@@ -416,7 +416,7 @@ A *összes* service-to-service alkalmazás-forgatókönyvek, beleértve a alapú
 Az alábbi útmutatót példákat ad az hibakezelési ADAL módszerekkel együtt: 
 
 - AcquireTokenAsync (..., IClientAssertionCertification,...)
-- AcquireTokenAsync (..., ClientCredential,...)
+- AcquireTokenAsync(…,ClientCredential, …)
 - AcquireTokenAsync (..., ClientAssertion,...)
 - AcquireTokenAsync (..., UserAssertion,...)
 

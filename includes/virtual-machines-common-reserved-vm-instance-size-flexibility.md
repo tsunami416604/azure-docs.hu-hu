@@ -1,15 +1,15 @@
 ---
 author: manish-shukla01
-ms.author: cwatson
+ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: 044f735560eb7d57a90a16c1e3ce1255a9fe0d54
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 83b29aa1f0c12661eb1724eb505ad46987ed1019
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52742511"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906318"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Virtuális gép mérete rugalmasan fenntartott VM-példányok
 
@@ -20,7 +20,7 @@ A fenntartott virtuálisgép-példányt, amely optimalizált rendelkezik példá
 - Standard_DS3_v2
 - Standard_DS4_v2
 
-A foglalási kedvezményt a különböző táblák, például, hogy mi az a DSv2-sorozat magas memóriahasználat táblázatban felsorolt virtuálisgép-méretek nem vonatkozik, de: Standard_DS11_v2, Standard_DS12_v2, és így tovább.
+De a foglalási kedvezményt a különböző táblák, például, hogy mi az a DSv2-sorozat magas memóriahasználat táblázatban felsorolt virtuálisgép-méretek nem vonatkozik: Standard_DS11_v2 Standard_DS12_v2 és így tovább.
 
 A méretcsoport sorozat virtuális gépek, alkalmazza a foglalási kedvezményt a virtuális gép méretét, válasszon ki, amikor vásárol egy foglalást függ. Attól is függ, a méret a virtuális gépek, amely rendelkezik futó. Az arány oszlop az alábbi táblázatban szereplő minden egyes Virtuálisgép-méret, hogy a csoportban a relatív erőforrás-igényű hasonlítja össze. Használat alapján számítja ki, hogyan a foglalási kedvezményt vonatkozik a virtuális gépek, az arány értéknek futtatása.
 
@@ -30,9 +30,9 @@ Az alábbi példák a méretek és arányok használata a DSv2-sorozat tábla.
 
  A fenntartott VM-példány méretének hol az arány vagy az a sorozat további méretek képest relatív erőforrás-igényű 8 Standard_DS4_v2 vásárolhat.
 
-- Standard_ds1_v2 méret 1. forgatókönyv: Nyolc futtatása az 1-es méretű virtuális gépeken. A foglalási kedvezményt a virtuális gépek összes nyolc vonatkozik.
-- Standard_DS2_v2 2. példa: Két futtatása az egyes 2-es méretű virtuális gépeken. Egy Standard_DS3_v2 is futtathatja a 4-es méretű virtuális Gépet. A rendszer a teljes erőforrás-igényű 2 + 2 + 4 = 8. Ezért a foglalási kedvezményt mind a három virtuális gépek vonatkozik.
-- 3. forgatókönyv: Egy Standard_DS5_v2 16 arányú futtassa. A foglalási kedvezményt a virtuális gép fele a számítási költségek vonatkozik.
+- 1. forgatókönyv: Standard_DS1_v2 nyolc futtatása az 1-es méretű virtuális gépeken. A foglalási kedvezményt a virtuális gépek összes nyolc vonatkozik.
+- 2. forgatókönyv: Standard_DS2_v2 két futtatása az egyes 2-es méretű virtuális gépeken. Egy Standard_DS3_v2 is futtathatja a 4-es méretű virtuális Gépet. A rendszer a teljes erőforrás-igényű 2 + 2 + 4 = 8. Ezért a foglalási kedvezményt mind a három virtuális gépek vonatkozik.
+- 3. forgatókönyv: Futtassa egy Standard_DS5_v2 16-es. A foglalási kedvezményt a virtuális gép fele a számítási költségek vonatkozik.
 
 A következő szakaszok show, milyen méretek a következők az azonos méretű adatsorozat-csoport a fenntartott VM-példány vásárlásakor optimalizált példány mérete rugalmasságot.
 
@@ -177,7 +177,7 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 |Standard_D8_v3|4|
 |Standard_D16_v3|8|
 |Standard d32 v3|16|
-|Standard D64 v3|32|
+|Standard_D64_v3|32|
 
 További információkért lásd: [általános célú virtuális gépek méretei](../articles/virtual-machines/windows/sizes-general.md#dv3-series-sup1sup).
 
@@ -288,7 +288,7 @@ További információkért lásd: [tárolásra optimalizált virtuális gépek m
 | Méret | Arány|
 |---|---|
 | Standard m64s|1|
-|Standard m 128 s|2|
+|Standard_M128s|2|
 
 További információkért lásd: [memóriahasználatra optimalizált virtuális gépek méretei](../articles/virtual-machines/windows/sizes-memory.md#m-series).
 
@@ -296,7 +296,7 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 
 | Méret | Arány|
 |---|---|
-| Standard m16s|1|
+| Standard_M16s|1|
 |Standard m32s|2|
 
 További információkért lásd: [memóriahasználatra optimalizált virtuális gépek méretei](../articles/virtual-machines/windows/sizes-memory.md#m-series).
@@ -308,7 +308,7 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 |Standard m8ms|1|
 |Standard_M8-2ms|1|
 |Standard_M8-4ms|1|
-|Standard m16ms|2|
+|Standard_M16ms|2|
 |Standard_M16-4ms|2|
 |Standard_M16-8ms|2|
 |Standard m32ms|4|

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd54ae2c82d3baf716784c39951c5cad7ec364b3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0736ed32fa6f17cc840d6b144503409365c33d84
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731406"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077939"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Ajánlott eljárások az Azure Resource Manager sablon
 
@@ -82,7 +82,7 @@ Ebben a szakaszban található információk hasznos lehet, ha [paraméterek](re
 
 * Használat `allowedValues` megtörhetik a cikk folytonosságát. Csak akkor használja, ha meg kell győződnie arról, hogy egyes értékek nem szerepelnek a az engedélyezett beállítások. Ha `allowedValues` túl széles körben blokkolhatja érvényes központi telepítések nem tartja a listája naprakész.
 
-* A sablonban a paraméter neve megegyezik a PowerShell telepítési parancs egy paramétert, Resource Manager az utótag hozzáadásával az elnevezési ütközés feloldása **FromTemplate** sablon paraméteréhez. Például, ha nevű paraméter adja meg az **ResourceGroupName** a sablonban ütközik a **ResourceGroupName** paramétert a [New-AzureRmResourceGroupDeployment ](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) parancsmagot. Üzembe helyezés során az kéri, hogy adjon meg egy értéket a **ResourceGroupNameFromTemplate**.
+* A sablonban a paraméter neve megegyezik a PowerShell telepítési parancs egy paramétert, Resource Manager az utótag hozzáadásával az elnevezési ütközés feloldása **FromTemplate** sablon paraméteréhez. Például, ha nevű paraméter adja meg az **ResourceGroupName** a sablonban ütközik a **ResourceGroupName** paramétert a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsmagot. Üzembe helyezés során az kéri, hogy adjon meg egy értéket a **ResourceGroupNameFromTemplate**.
 
 ### <a name="security-recommendations-for-parameters"></a>Biztonsági javaslatok paraméterek
 

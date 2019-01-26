@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7e5f56251e00b59a6e6d3be40612f4c8e381dff1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 84ce13f78a9c597c780cb0dfa0fa5d16e6175b1c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743000"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077726"
 ---
 # <a name="machine-learning-on-hdinsight"></a>A Machine learning, a HDInsight
 
@@ -42,13 +42,13 @@ Az Azure Machine Learning prediktív elemzési modellt, valamint egy teljes kör
 
 ![Így advanced analytics elérhető-e a Hadooppal a Microsoft Azure Machine Learning segítségével](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
 
-Funkciók létrehozása az adatokat egy HDInsight Hadoop-fürt használatával [Hive-lekérdezések](../machine-learning/team-data-science-process/create-features-hive.md). *Jellemzőkiemelés* megkísérli tanulási algoritmus a nyers adatokat, amelyek elősegítik a tanulási folyamat szolgáltatásokat hoz létre prediktív hatékonyságának növelése érdekében. HiveQL lekérdezéseket futtathat az Azure ML és feldolgozása a Hive és a blob storage-ban tárolt adatok eléréséhez a [adatok importálása modullal](../machine-learning/studio/import-data.md).
+Funkciók létrehozása az adatokat egy HDInsight Hadoop-fürt használatával [Hive-lekérdezések](../machine-learning/team-data-science-process/create-features-hive.md). *Jellemzőkiemelés* megkísérli tanulási algoritmus a nyers adatokat, amelyek elősegítik a tanulási folyamat szolgáltatásokat hoz létre prediktív hatékonyságának növelése érdekében. HiveQL lekérdezéseket futtathat az Azure Machine Learning studióból és feldolgozása a Hive és a blob storage-ban tárolt adatok eléréséhez a [adatok importálása modullal](../machine-learning/studio/import-data.md).
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
 [Deep learning](https://www.microsoft.com/en-us/research/group/dltc/) gépi Neurális hálózatokat, az emberi agy biológiai folyamatok adatközpontoknak használó ága. Számos kutatói deep learning látja, mint a mesterséges intelligencia lehetőségeinek ígéret megközelítést. Deep learning példák használja a beszélt nyelv fordítók, a lemezkép elismerési rendszer és a gép indoklása.
 
-Annak érdekében, hogy azt mutatja be a saját munkahelyi a deep learning, a Microsoft kifejlesztett az ingyenes, könnyen használható, nyílt forráskódú [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/). Ez az eszközkészlet használja számos Microsoft-termékek, vállalatok globális méretekben deep learning üzembe helyezése kell, és a tanulók a legújabb algoritmusok és technikák iránt. 
+Annak érdekében, hogy azt mutatja be a saját munkahelyi a deep learning, a Microsoft kifejlesztett az ingyenes, könnyen használható, nyílt forráskódú [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/). Ez az eszközkészlet használja számos Microsoft-termékek, vállalatok globális méretekben deep learning üzembe helyezése kell, és a tanulók a legújabb algoritmusok és technikák iránt.
 
 ## <a name="see-also"></a>Lásd még
 

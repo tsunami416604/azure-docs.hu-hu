@@ -3,19 +3,19 @@ title: Az Azure multi-factor Authentication – hogyan működik
 description: Az Azure Multi-Factor Authentication szolgáltatás révén biztonságosabb a hozzáférés az adatokhoz és az alkalmazásokhoz, és a felhasználók is egyszerűbben jelentkezhetnek be.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: cbe1dc351139645f5516bce79b1792103e90cf08
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c15f40cc98cad497b6c53a3a900f30c191b67694
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430296"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080011"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>A működési elv: Azure Multi-Factor Authentication
 

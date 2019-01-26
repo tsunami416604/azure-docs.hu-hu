@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f5d51a0e806f132cea94e00e04255bb325cc560
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 6c7dd6ebaf7eebefcdcfa50bbd77ad80f4cda907
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904522"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077454"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
@@ -58,6 +58,9 @@ A. A Data Box támogatott az USA minden régiójában, Nyugat-Európában, Észa
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>K. Kihez fordulhatok, ha probléma merülne fel a Data Box kapcsán?
 A. Ha bármilyen probléma merülne fel a Data Box kapcsán, kérjük, [forduljon a Microsoft támogatási szolgálatához](data-box-disk-contact-microsoft-support.md).
 
+### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>K. A Data Box I megszakadt. Van valamilyen díja elveszett eszköz?
+A. Igen. Elveszett vagy sérült Data boxért díj van. Ez a díj tárgyalja a [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/storage/databox/) is, a a [a termék használati feltételeit](https://www.microsoft.com/licensing/product-licensing/products).
+
 
 ## <a name="order-device"></a>Eszköz rendelése
 
@@ -97,8 +100,8 @@ A.  A rendelést csak annak feladását követően, de még a feldolgozását me
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>K. Csatlakoztathatok egy Data Boxot egyszerre több gazdaszámítógéphez adatátvitel céljából?
 A. Igen. Egy Data Boxhoz egyszerre több gazdaszámítógép is csatlakoztatható, és párhuzamosan több másolási feladat is futtatható. További információért ugorjon [oktatóanyag: Adatok másolása az Azure Data Box](data-box-deploy-copy-data.md).
 
-### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>K. Csatlakozhatok 10 GbE interfészek, mind az adatok átviteléhez a Data Box?
-A. Igen. Mind a 10 GbE adapter csatlakozhat a Data Box másolhat adatokat egy időben. További információk az adatok másolása, [oktatóanyag: Adatok másolása az Azure Data Box](data-box-deploy-copy-data.md).
+### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>K. Csatlakozhatok mind a 10-GbE adaptert adatátvitelhez a Data Box?
+A. Igen. 10-GbE interfészek, mind a Data Box másolhat adatokat egy időben a csatlakoztathatók. További információk az adatok másolása, [oktatóanyag: Adatok másolása az Azure Data Box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 

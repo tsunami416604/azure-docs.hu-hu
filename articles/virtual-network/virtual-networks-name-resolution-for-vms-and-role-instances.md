@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 4a4a4c6a37e3c52054d7bc773ef04bf057709fdd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 487bf54d80c9249e5ce69c4b5aeff942a21d5b48
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025096"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913150"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Erőforrások az Azure virtual networkök névfeloldása
 
@@ -195,6 +195,11 @@ Amikor a saját DNS-kiszolgálókat használ, az Azure biztosít több DNS-kiszo
 > 
 
 Ha az Azure Resource Manager üzembe helyezési modellt használ, a virtuális hálózat és a egy hálózati adapter DNS-kiszolgálók is megadhat. További információkért lásd: [virtuális hálózat kezelése](manage-virtual-network.md) és [egy hálózati adapter kezelése](virtual-network-network-interface.md).
+
+> [!NOTE]
+> Amennyiben egyéni DNS-kiszolgáló a virtuális hálózathoz, meg kell adnia legalább egy DNS kiszolgálón IP-cím; Ellenkező esetben virtuális hálózat figyelmen kívül hagyja a konfigurációt, és használja helyette az Azure által biztosított DNS.
+> 
+> 
 
 Ha a klasszikus üzemi modellt használja, megadhatja az Azure Portalon a virtuális hálózathoz tartozó DNS-kiszolgálók vagy a [hálózati konfigurációs fájlt](https://msdn.microsoft.com/library/azure/jj157100). A cloud services esetében megadhatja a DNS-kiszolgálókon keresztül a [szolgáltatás konfigurációs fájlja](https://msdn.microsoft.com/library/azure/ee758710) vagy PowerShell-lel, az [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 

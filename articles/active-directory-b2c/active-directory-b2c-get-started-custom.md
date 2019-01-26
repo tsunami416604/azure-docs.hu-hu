@@ -7,21 +7,21 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 01/25/2019
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 235b72393801717bb5d7258d6492dc4c943fe232
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 66ce0438e0cca62cbebb993be4940a93973c78d3
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852303"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078984"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-vel egyéni szabályzatok – első lépések
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[Egyéni szabályzatok](active-directory-b2c-overview-custom.md) konfigurációs fájlok, amelyek az Azure Active Directory (Azure AD) B2C-bérlő viselkedésének megadása. Ebben a cikkben létrehozhat egy egyéni szabályzatot, amely támogatja a helyi fiók regisztrálási vagy bejelentkezési e-mail cím és jelszó használatával. Emellett készítse elő a környezetet az identitásszolgáltató – például a Facebook- vagy Azure Active Directory hozzáadása.
+[Egyéni szabályzatok](active-directory-b2c-overview-custom.md) konfigurációs fájlok, amelyek az Azure Active Directory (Azure AD) B2C-bérlő viselkedésének megadása. Ebben a cikkben létrehozhat egy egyéni szabályzatot, amely támogatja a helyi fiók regisztrálási vagy bejelentkezési e-mail cím és jelszó használatával. Emellett készítse elő a környezetet az identitás-szolgáltatóktól, többek között a Facebookhoz hozzáadása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,9 +31,6 @@ Ha Ön nem rendelkezik ilyennel, akkor [létrehozása az Azure AD B2C-bérlő](t
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása. 
-
-    ![Átváltás az Azure AD B2C-bérlőre](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
-
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer – előzetes verzió**.
 
@@ -66,32 +63,17 @@ Ha már rendelkezik egy [Facebook-alkalmazás titkos](active-directory-b2c-setup
 5. A **kulcshasználat**válassza **aláírás**.
 6. Kattintson a **Create** (Létrehozás) gombra.
 
-## <a name="register-applications"></a>Alkalmazások regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
-Az Azure AD B2C szükséges, hogy regisztráljon, és a felhasználók használt két alkalmazás regisztrálása: IdentityExperienceFramework (webalkalmazás), és a delegált engedély a IdentityExperienceFramework alkalmazásból (egy natív alkalmazást) ProxyIdentityExperienceFramework. Helyi fiókok csak a bérlő szerepel. A felhasználói Regisztrálás az egyedi e-mail cím és jelszó kombinációja a bérlő regisztrált alkalmazások eléréséhez.
+Egy alkalmazás regisztrálva van az Azure Active Directory (Azure AD) B2C-vel egy felhasználó regisztrálhat, és jelentkezzen be egy helyi fiók, amely létezik a bérlőben. A felhasználói regisztrálás egyedi e-mail címmel és jelszóval a regisztrált alkalmazás eléréséhez.
 
-### <a name="register-the-identityexperienceframework-application"></a>Register the IdentityExperienceFramework application
-
-1. Válasszon **minden szolgáltatás** az Azure portal bal felső sarkában lévő keresése és kiválasztása **Azure Active Directory**, majd válassza ki **alkalmazásregisztrációk**.
+1. Válasszon **minden szolgáltatás** az Azure portal bal felső sarkában lévő keresése és kiválasztása **alkalmazásregisztrációk**.
 2. Válassza az **Új alkalmazás regisztrálása** elemet.
-3. A **neve**, adja meg `IdentityExperienceFramework`.
-4. A **alkalmazástípus**, válassza a **Web app és az API**.
-5. A **bejelentkezési URL-**, adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, ahol `your-tenant-name` van az Azure AD B2C-bérlői tartomány neve.
-6. Kattintson a **Create** (Létrehozás) gombra. 
-7. Miután elkészült, az alkalmazás azonosítóját, és mentse későbbi használatra.
-
-### <a name="register-the-proxyidentityexperienceframework-application"></a>Register the ProxyIdentityExperienceFramework application
-
-1. Válassza ki **alkalmazásregisztrációk**, majd válassza ki **új alkalmazásregisztráció**.
-2. A **neve**, adja meg `ProxyIdentityExperienceFramework`.
-3. A **alkalmazástípus**, válassza a **natív**.
-4. A **átirányítási URI-t**, adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, ahol `yourtenant` van az Azure AD B2C-bérlőben.
-5. Kattintson a **Create** (Létrehozás) gombra. Miután elkészült, az alkalmazás azonosítóját, és mentse későbbi használatra.
-6. A beállítások oldalon válassza ki a **szükséges engedélyek**, majd válassza ki **Hozzáadás**.
-7. Kattintson az **API kiválasztása** gombra.
-8. Keresse meg és válassza **IdentityExperienceFramework**, és kattintson a **kiválasztása**.
-9. Jelölje be a **hozzáférés IdentityExperienceFramework**, kattintson a **kiválasztása**, és kattintson a **kész**.
-10. Válassza ki **engedélyek megadása**, majd erősítse meg a kiválasztásával **Igen**.
+3. A **neve**, adja meg `ProxyIdentityExperienceFramework`.
+4. A **alkalmazástípus**, válassza a **natív**.
+5. A **átirányítási URI-t**, adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, ahol `your-tenant-name` az Azure AD B2C-bérlő neve.
+6. Kattintson a **Create** (Létrehozás) gombra. Miután elkészült, az alkalmazás azonosítóját, és mentse későbbi használatra.
+7. Válassza ki **engedélyek megadása**, majd erősítse meg a kiválasztásával **Igen**.
 
 ## <a name="download-starter-pack-and-modify-policies"></a>Kezdőcsomag letöltése és szabályzatok módosítása
 
@@ -117,17 +99,14 @@ Minden egyes alapszintű csomag tartalmazza:
     git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
     ```
 
-2. A SocialAndLocalAccounts mappába, a fájlokat, és cserélje le az összes szerkesztése `yourtenant.onmicrosoft.com` a bérlő nevét. Például: `contosoTenant.onmicrosoft.com`. Ha egy XML-szerkesztőt kell [próbálja meg a Visual Studio Code](https://code.visualstudio.com/download), egy könnyen használható, többplatformos szerkesztő.
+2. A SocialAndLocalAccounts mappába, a fájlokat, és cserélje le az összes szerkesztése `yourtenant` a bérlő nevét. Például: `contosoTenant.onmicrosoft.com`. Ha egy XML-szerkesztőt kell [próbálja meg a Visual Studio Code](https://code.visualstudio.com/download), egy könnyen használható, többplatformos szerkesztő.
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>Alkalmazás-azonosítók hozzáadása az egyéni házirend
 
-Vegye fel az alkalmazásazonosítót a bővítmények fájlba *TrustFrameworkExtensions.xml*.
+Adja hozzá az alkalmazás azonosítója a bővítmények fájlhoz *TrustFrameworkExtensions.xml*.
 
 1. Nyissa meg a *TrustFrameworkExtensions.xml* fájlt és keresse meg az elem `<TechnicalProfile Id="login-NonInteractive">`.
-2. Cserélje le mindkét példányát `IdentityExperienceFrameworkAppId` az identitás-kezelőfelületi keretrendszer alkalmazás, amelyet korábban hozott létre az alkalmazás azonosítójával. Cserélje le mindkét példányát `ProxyIdentityExperienceFrameworkAppId` az identitás-kezelőfelületi keretrendszer Proxy alkalmazás, amelyet korábban hozott létre az alkalmazás azonosítójával. A következő példa bemutatja a **bejelentkezési nem interaktív** után a módosítások technikai profil:
-
-    ![Alkalmazásazonosítók](./media/active-directory-b2c-get-started-custom/login-NonInteractive.png)
-
+2. Mindkét értékét cserélje `client_id` és `resource_id` ProxyIdentityExperienceFramework alkalmazás, amelyet korábban hozott létre az alkalmazás azonosítójával.
 3. Mentse a bővítmények fájlt.
 
 ## <a name="upload-the-policies"></a>Töltse fel a házirendeket

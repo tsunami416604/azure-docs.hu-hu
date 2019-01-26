@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0119e05ce5cb8d1c2e27936dc44896b7acef9312
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a2731397ece833adcedc4ebab640fa1b3ab2fc05
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725966"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076826"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -143,7 +143,7 @@ A virtuális hálózat és a csatlakoztatott hálózatokon lévő erőforrások 
 
 3. Keresse meg az Azure a virtuális hálózat DNS-utótag rendelve. Ez az érték hasonlít a `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. A keresés, a DNS-utótag információkért lásd: a [példa: Egyéni DNS](#example-dns) szakaszban.
 
-4. Konfigurálja a DNS-kiszolgálók közötti továbbítás. A konfiguráció attól függ, hogy a távoli hálózat típusát.
+4. Configure forwarding between the DNS servers. A konfiguráció attól függ, hogy a távoli hálózat típusát.
 
     * Ha a távoli hálózat egy helyszíni hálózattal, konfigurálja a DNS módon:
         
@@ -308,7 +308,7 @@ További információkért lásd: a [hálózati forgalom szabályozása](#networ
 
 ## <a id="hdinsight-ports"></a> Szükséges portok
 
-Ha a hálózat használatát tervezi **virtuális készülék tűzfal** a virtuális hálózat biztonságossá tételéhez, engedélyeznie kell a következő portokat a kimenő forgalom:
+Ha a kíván használni egy **tűzfal** a virtuális hálózat védelme érdekében, és hozzáférhet a fürthöz a bizonyos portokat, engedélyeznie kell a forgalmat a forgatókönyvhöz szükséges portokon. Alapértelmezés szerint nem kell az engedélyezési listára ezeket a portokat:
 
 * 53
 * 443

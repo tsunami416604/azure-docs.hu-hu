@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 3a49b30caa087295bbdcffe8762796fdc92f154b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: a5d4d13d8e60cd7f273363a9bc385098e15cbb71
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247257"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913159"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése az Azure App Service-ben
 [Az Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) beépített monitorozási funkciókat biztosít a webes, mobil háttérrendszerek, és az API-alkalmazások a [az Azure portal](https://portal.azure.com).
@@ -73,19 +73,37 @@ Az alkalmazás a rendelkezésre álló metrikák a következők:
 | --- | --- |
 | **Átlagos válaszidő** | Az átlagos idő ezredmásodpercben kiszolgálni a kérelmeket, az alkalmazás. |
 | **Átlagos memória-munkakészlet** | Az átlagos felhasznált memóriamennyiség (MB) (MiB), az alkalmazás által. |
+| **Kapcsolatok** | A meglévő az tesztkörnyezetben (w3wp.exe és gyermekfolyamata) kötött szoftvercsatornák számát.  A kötött szoftvercsatorna bind()/connect() API-k meghívásával létrejön, és marad, amíg nem említett szoftvercsatorna-CloseHandle()/closesocket() le van zárva. |
 | **CPU-idő** | Másodpercek alatt az alkalmazás által felhasznált CPU mennyisége. Ez a metrika kapcsolatos további információkért lásd: [idő vs CPU processzorhasználat](#cpu-time-vs-cpu-percentage). |
+| **Szerelvények pillanatnyi száma** | A szerelvények száma betölteni az alkalmazás összes Appdomaint között. |
 | **Az adatok** | Az alkalmazást, a MiB által felhasznált bejövő sávszélesség mennyiségét. |
 | **Kimenő adatforgalom** | Az alkalmazást, a MiB használja fel a kimenő sávszélesség mennyiségét. |
-| **HTTP 2xx** | Egy HTTP-állapotkód: legalább 200-as, de < 300 eredményező kérések száma. |
-| **HTTP 3xx** | Eredményez olyan HTTP-állapotkód: legalább 300, de < 400 kérelmek száma. |
-| **HTTP 401-es** | HTTP 401-es állapotkódot eredményez kérelmek száma. |
-| **A HTTP 403-as** | A HTTP 403-as állapotkódot eredményez kérelmek száma. |
-| **A HTTP 404-es** | A HTTP 404 állapotkódot eredményez kérelmek száma. |
-| **HTTP 406** | HTTP 406 állapotkódot eredményez kérelmek száma. |
-| **HTTP 4xx** | Egy HTTP-állapotkód: legalább 400-as, de < 500 eredményező kérések száma. |
+| **0. generációs szemétgyűjtések száma** | A 0. generációs objektumok szemétgyűjtési hányszor gyűjteni az alkalmazás-folyamat elindítása óta. Magasabb generációs globális katalógusok közé tartozik az összes alacsonyabb generációs globális katalógusok.|
+| **1. generációs szemétgyűjtések száma** | Az 1. generációs objektumok szemétgyűjtési hányszor gyűjteni az alkalmazás-folyamat elindítása óta. Magasabb generációs globális katalógusok közé tartozik az összes alacsonyabb generációs globális katalógusok.|
+| **2. generációs szemétgyűjtések száma** | A 2. generációs objektumok szemétgyűjtési hányszor gyűjteni az alkalmazás-folyamat elindítása óta.|
+| **Az ablakleírók száma** | Az alkalmazás folyamat éppen megnyitott leírók száma.|
+| **Http 2xx** | Egy HTTP-állapotkód: legalább 200-as, de < 300 eredményező kérések száma. |
+| **Http 3xx** | Eredményez olyan HTTP-állapotkód: legalább 300, de < 400 kérelmek száma. |
+| **Http 401** | HTTP 401-es állapotkódot eredményez kérelmek száma. |
+| **Http 403** | A HTTP 403-as állapotkódot eredményez kérelmek száma. |
+| **Http 404** | A HTTP 404 állapotkódot eredményez kérelmek száma. |
+| **Http 406** | HTTP 406 állapotkódot eredményez kérelmek száma. |
+| **Http 4xx** | Egy HTTP-állapotkód: legalább 400-as, de < 500 eredményező kérések száma. |
 | **HTTP Kiszolgálóhibák** | Egy HTTP-állapotkód: legalább 500-as, de < 600 eredményező kérések száma. |
+| **I/o más bájtok másodpercenként** | A sebesség, amellyel az alkalmazás folyamata ad ki bájt i/o-műveletek, amelyek nem tartalmaznak adatokat, például vezérlő műveletek.|
+| **I/o egyéb műveletek száma másodpercenként** | Az a sebesség, amellyel az alkalmazás folyamata, sem vannak-e olvasási és írási műveletek i/o-műveleteket ad ki.|
+| **I/o-olvasási bájt / másodperc** | Az a sebesség, amellyel az alkalmazás folyamat által olvasott bájtok i/o-műveletek.|
+| **I/o-olvasási műveletek száma másodpercenként** | A sebesség, amellyel az alkalmazás folyamata ad ki olvasási i/o-műveletek.|
+| **I/o-írási bájt / másodperc** | Az a sebesség, amellyel az alkalmazás folyamata által írt bájtok i/o-műveletekre.|
+| **I/o-írási műveletek száma másodpercenként** | Az a sebesség, amellyel az alkalmazás folyamata írási i/o-műveleteket ad ki.|
 | **Memória-Munkakészlet** | Az aktuális MIB, az alkalmazás által használt memória mennyisége. |
+| **A saját memória** | A saját memória a jelenlegi mérete (bájt), a memória az alkalmazás folyamat által lefoglalt nem osztható meg más folyamatokkal.|
 | **Kérelmek** | Függetlenül az eredményül kapott HTTP-állapotkód: kérelmek teljes száma. |
+| **Alkalmazás-várólistán lévő kérelmek** | A kérelem-várólistában lévő kérések száma.|
+| **Szálak száma** | Az alkalmazás folyamata a jelenleg aktív szálak száma.|
+| **Alkalmazástartományok összesen** | Ebben az alkalmazásban betöltött Appdomaint aktuális száma.|
+| **Memóriából eltávolított alkalmazástartományok összesen** | Appdomaint teljes száma a memóriából az alkalmazás elindítása óta.|
+
 
 App Service-csomag a rendelkezésre álló metrikák a következők:
 

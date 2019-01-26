@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 04c9803909fb5dfd1072840a0c1d7e33814ad1a3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 606234096314eb73cb32f8fbcc2d5e6e79c25573
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264360"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077097"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 A Microsoft Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. A Machine Learning Studio a modelleket webszolgáltatásként teszi közzé, amelyeket az egyéni alkalmazások vagy az Excel és más üzletiintelligencia-eszközök egyszerűen felhasználhatnak.
@@ -39,10 +39,10 @@ A prediktív elemzési modell összeállításához nincs szükség programozás
 
 > [!TIP]
 > Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](studio-overview-diagram.md) című cikket.
-> 
-> 
+>
+>
 
-![Azure ML Studio diagram: Kísérletek létrehozása, olvasása, adatok számos forrásból, pontozott adatok, modellek írása.][ml-studio-overview]
+![Az Azure Machine Learning studio diagramja: Kísérletek létrehozása, olvasása, adatok számos forrásból, pontozott adatok, modellek írása.][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>A Machine Learning Studio használatának első lépései
 Amikor először belép a [Machine Learning Studio](https://studio.azureml.net) felületére, a **Kezdőlap** oldal jelenik meg. Innen kiindulva megtekintheti a dokumentációt, valamint videókat, webes előadások és más hasznos forrásokat érhet el.
@@ -104,7 +104,7 @@ A modulok az adatokon végezhető algoritmusok. A Machine Learning Studio számo
 * [Linear Regression][linear-regression] (Lineáris regresszió) – Online, grádiens módszeren alapuló lineáris regressziós modell létrehozása.
 * [Score Model][score-model] (Pontszámmodell) – Betanított osztályozási vagy regressziós modell pontozása.
 
-A kísérlet létrehozása során a vászon bal oldalán megjelenő modullistából választhat.  
+A kísérlet létrehozása során a vászon bal oldalán megjelenő modullistából választhat.
 
 A modul rendelkezhet a belső algoritmusok konfigurálásához használható paraméterek készletével. Amikor kiválaszt egy modult a vásznon, a modul paraméterei megjelennek a **Tulajdonságok** panelen a vászontól jobbra. A modell hangolásához módosíthatja a paramétereket a panelen.
 
@@ -162,7 +162,7 @@ Ha elvégezte a modell betanítását, a fennmaradó tesztadatok segítségével
 * **minta**: Egy adatkészlet is reprezentatívnak tekinthető, az egész részét. A mintát kiválaszthatja véletlenszerűen vagy az adathalmaz konkrét jellemzői alapján.
 
 ## <a name="next-steps"></a>További lépések
-A prediktív elemzés és a gépi tanulás alapjainak megismeréséhez használja [részletes oktatóanyagainkat](create-experiment.md) vagy [bővíthető mintáinkat](sample-experiments.md).  
+A prediktív elemzés és a gépi tanulás alapjainak megismeréséhez használja [részletes oktatóanyagainkat](create-experiment.md) vagy [bővíthető mintáinkat](sample-experiments.md).
 
 
 <!-- Module References -->

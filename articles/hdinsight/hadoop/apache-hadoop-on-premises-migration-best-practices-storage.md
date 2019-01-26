@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: ec67cb6b4bc1dd29dbbac4056d3365a74b31a24c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8f22885d67537194342115f07e4d04bc4b5c66da
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013703"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911744"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - storage ajánlott eljárásai
 
@@ -99,24 +99,25 @@ A Data Lake Storage Gen2 alapvető jellemzője, igény szerinti hozzáadásával
 
 Múltbeli időpont felhőalapú elemzési kellett veszélyeztetheti a teljesítmény, a felügyelet és biztonság területéhez. Az Azure Data Lake Storage (ADLS) Gen2 kulcs funkciói a következők:
 
-- **Hadoop-kompatibilis hozzáférés**: Azure Data Lake Storage Gen2 lehetővé teszi, hogy a kezelése és az adatok eléréséhez, ugyanúgy, mint az egy [Hadoop elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS illesztőprogram](../../storage/data-lake-storage/abfs-driver.md) érhető el, amelyek szerepelnek az összes Apache Hadoop-környezetekben [Azure HDInsight](../index.yml). Az illesztőprogram lehetővé teszi a Data Lake Storage Gen2 tárolt adatok elérését.
+- **Hadoop-kompatibilis hozzáférés**: Az Azure Data Lake Storage Gen2 lehetővé teszi, hogy a kezelése és az adatok eléréséhez, ugyanúgy, mint az egy [Hadoop elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS illesztőprogram](../../storage/data-lake-storage/abfs-driver.md) érhető el, amelyek szerepelnek az összes Apache Hadoop-környezetekben [Azure HDInsight](../index.yml). Az illesztőprogram lehetővé teszi a Data Lake Storage Gen2 tárolt adatok elérését.
 
-- **Felülbírálja a POSIX-engedélyek**: A biztonsági modell a Data Lake Gen2 teljes körűen támogatja az ACL-JEI és POSIX engedélyekkel együtt néhány további pontossággal megadott Data Lake Storage Gen2-re. Beállítások felügyeleti eszközökkel vagy keretrendszereket, mint például a Hive és a Spark segítségével konfigurálhatók.
+- **Felülbírálja a POSIX-engedélyek**: A Data Lake Gen2 biztonsági modell teljes körűen támogatja az ACL-JEI és POSIX engedélyekkel együtt néhány további pontossággal megadott Data Lake Storage Gen2-re. Beállítások felügyeleti eszközökkel vagy keretrendszereket, mint például a Hive és a Spark segítségével konfigurálhatók.
 
-- **Költséghatékony**: Data Lake Storage Gen2 funkciói költséghatékony tárolási kapacitás és a tranzakciók. A teljes életciklusán keresztül adatok transitions lehetőségnél szerint díjszabása nem módosul, mint például a beépített funkciók használatával költségek minimalizálása érdekében módosítsa [Azure Blob storage életciklus](../../storage/common/storage-lifecycle-management-concepts.md).
+- **Költséghatékony**: Data Lake Storage Gen2 költséghatékony tárolási kapacitás és a tranzakciók funkciókat. A teljes életciklusán keresztül adatok transitions lehetőségnél szerint díjszabása nem módosul, mint például a beépített funkciók használatával költségek minimalizálása érdekében módosítsa [Azure Blob storage életciklus](../../storage/common/storage-lifecycle-management-concepts.md).
 
 - **A Blob storage-eszközökkel, keretrendszerek és alkalmazások működik**: Data Lake Storage Gen2 továbbra is az eszközöket, keretrendszerek és alkalmazások a Blob Storage jelenleg létező széles választékának működik.
 
-- **Optimalizált illesztőprogram**: az Azure Blob fájlrendszer illesztőprogramja (ABFS) [kifejezetten optimalizált](../../storage/data-lake-storage/abfs-driver.md) big data-elemzőeszközöket. A megfelelő REST API-k az elosztott fájlrendszerbeli végpont végzetesnek dfs.core.windows.net.
+- **Optimalizált illesztőprogram**: Az Azure Blob fájlrendszer-illesztőprogram (ABFS) [kifejezetten optimalizált](../../storage/data-lake-storage/abfs-driver.md) big data-elemzőeszközöket. A megfelelő REST API-k az elosztott fájlrendszerbeli végpont végzetesnek dfs.core.windows.net.
 
 A következő formátumok egyikét az ADLS Gen2 tárolt adatok elérésére használható:
-- `abfs:///`: Az alapértelmezett Data Lake Storage a hozzáférés a fürthöz.
+- `abfs:///`: A fürt alapértelmezett Data Lake Storage eléréséhez.
 - `abfs[s]://file_system@account_name.dfs.core.windows.net`: Egy nem alapértelmezett Data Lake Storage való kommunikáció során használt.
 
 További információkért tekintse át a következő cikkeket:
 
 - [Bevezetés az Azure Data Lake Storage Gen2 előzetes verzió](../../storage/data-lake-storage/introduction.md)
 - [Az Azure Blob fájlrendszer illesztőprogram (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
+- [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 ## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>Biztonságos Azure-tárkulcsok belül a helyszíni Hadoop-fürt konfigurálása
 
@@ -157,9 +158,9 @@ Alapértelmezés szerint a HDInsight a fürthöz társított Azure Storage-fiók
 
     |Token tulajdonság|Leírás|
     |---|---|
-    |házirendnév|A nevét, a tárolt házirend létrehozásához.|
-    |storage_account_name mezőbe|A tárfiók neve.|
-    |storage_account_key mezőbe|A tárfiók kulcsa.|
+    |policy_name|A nevét, a tárolt házirend létrehozásához.|
+    |storage_account_name|A tárfiók neve.|
+    |storage_account_key|A tárfiók kulcsa.|
     |storage_container_name|A tároló, amely korlátozza a hozzáférést a kívánt storage-fiókban.|
     |example_file_path|A tárolóba feltöltött fájl elérési útja.|
 
@@ -173,7 +174,7 @@ Alapértelmezés szerint a HDInsight a fürthöz társított Azure Storage-fiók
 
 6. A következő értékeket használja a **kulcs** és **érték** mezők:
 
-    **Kulcs**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **érték**: az SAS-kulcsot a Python alkalmazást FROM fenti 4. lépéssel által visszaadott.
+    **kulcs**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **Érték**: A SAS-KULCSÁT adja vissza a Python alkalmazást FROM fenti 4. lépéssel.
 
 7. Kattintson a **Hozzáadás** gombra kattintva mentse a kulcs-érték, majd kattintson a **mentése** gombot a konfigurációs módosítások mentéséhez. Amikor a rendszer kéri, adjon meg egy leírást a változás ("Hozzáadás SAS-tároló hozzáférés" például), és kattintson a **mentése**.
 

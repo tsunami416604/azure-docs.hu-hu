@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: b11e1f35578eef07acb823081f0bbfdbaf467f9c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 91e6c2d400fa7add33a6c8e8856a3b9f8cfef4a3
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632467"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912833"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>A HDInsight Apache Storm írhat az Apache Hadoop HDFS-be
 
@@ -221,3 +221,5 @@ Storm-topológiák futtassa addig, amíg leállt, vagy a fürt törlődik. A top
 
 Most, hogy megtanulhatta, hogyan írhat az Azure Storage és az Azure Data Lake Storage Apache Storm használatával, Fedezze fel, más [a HDInsight Apache Storm-példák](apache-storm-example-topology.md).
 
+## <a name="see-also"></a>Lásd még
+* [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

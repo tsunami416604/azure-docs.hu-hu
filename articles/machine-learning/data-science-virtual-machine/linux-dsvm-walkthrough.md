@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7d567d01cef59a2402fa8cb9aecd35c68ae6c2bd
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157173"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077199"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adatelemzés a egy Linux rendszerű adatelemző virtuális gép az Azure-ban
 Ez az útmutató bemutatja, hogyan hajthat végre számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép. A Linux rendszerű adatelemzési virtuális gép (DSVM), amely előre telepített gyakran használt adatok elemzési és gépi tanulási eszközök gyűjteményét az Azure-ban elérhető virtuálisgép-lemezkép. A kulcs szoftverösszetevőket esethez vannak a [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések adatelemzésre percben, anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Egyszerűen vertikális felskálázás a virtuális Gépet, ha szükséges, és állítsa le, amikor nincs használatban. Ehhez az erőforráshoz így rugalmas és költséghatékony is.
@@ -180,10 +180,10 @@ Próbáljuk meg még egy véletlenszerű erdőmodell. Véletlenszerű erdők sz�
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-ml"></a>Modell üzembe helyezése az Azure gépi tanulás
-[Az Azure Machine Learning Studio](https://studio.azureml.net/) (AzureML) egy felhőalapú szolgáltatás, amellyel egyszerűen készíthet és helyezhet üzembe prediktív elemzési modellek. Az AzureML nagyszerű funkcióit egyik, hogy webszolgáltatásként, amely minden olyan R-függvény közzététele. Az AzureML R csomag közvetlenül az R-munkamenetet a dsvm-hez a könnyű teszi az üzembe helyezést.
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Modell üzembe helyezése az Azure Machine Learning studióban
+[Az Azure Machine Learning Studio](https://studio.azureml.net/) egy felhőalapú szolgáltatás, amellyel egyszerűen készíthet és helyezhet üzembe prediktív elemzési modellek. Az Azure Machine Learning studio nagyszerű funkcióit egyik, hogy webszolgáltatásként, amely minden olyan R-függvény közzététele. Az Azure Machine Learning studio R csomag közvetlenül az R-munkamenetet a dsvm-hez a könnyű teszi az üzembe helyezést.
 
-A döntési fa kód az előző szakaszban üzembe helyezéséhez szeretne bejelentkezni az Azure Machine Learning Studióban. A munkaterület-Azonosítót és a egy engedélyezési jogkivonatot jelentkezzen be van szüksége. Keresse meg ezeket az értékeket, és a velük AzureML változók inicializálása:
+A döntési fa kód az előző szakaszban üzembe helyezéséhez szeretne bejelentkezni az Azure Machine Learning Studióban. A munkaterület-Azonosítót és a egy engedélyezési jogkivonatot jelentkezzen be van szüksége. Keresse meg ezeket az értékeket, és a velük az Azure Machine Learning-változók inicializálása:
 
 Válassza ki **beállítások** a bal oldali menüben. Megjegyzés: a **MUNKATERÜLET-Azonosítót**. ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
@@ -270,7 +270,7 @@ Python fejlesztést az Anaconda Python disztribúciók 2.7-es és 3.5-ös telep�
 Most néhány spambase adatkészlet olvasása és az e-mailek besorolására támogatási vektor gépekkel a scikit-ismerje meg:
 
     import pandas
-    from sklearn import svm    
+    from sklearn import svm
     data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
     X = data.ix[:, 0:57]
     y = data.ix[:, 57]

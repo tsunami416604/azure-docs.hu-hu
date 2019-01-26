@@ -6,18 +6,18 @@ author: MarkusVi
 manager: daveba
 tags: azuread
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/13/2018
+ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: martincoetzer
-ms.openlocfilehash: 1911dd189e21a6d29b2bf1ba3d179b41e948f469
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ca0dfcd9b776b6aea052e2569f9a5aec3ae50eca
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450507"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081024"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>kézikönyv: Az Azure Active Directoryban a feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -32,7 +32,7 @@ További funkciók szükségesek, ha is szüksége lehet beolvasni a kapcsolód�
 
 Feltételes hozzáférési házirendek két típusa van: baseline és standard. A [alapvető házirendet](baseline-protection.md) egy előre meghatározott feltételes hozzáférési szabályzat. Ezek a házirendek az a célja, hogy győződjön meg arról, hogy rendelkezik-e legalább engedélyezve van a biztonsági alapkonfiguráció szintjét. Alapkonfiguráció házirendek. Alapkonfiguráció házirendek az Azure AD összes kiadásokban érhető el, és csak korlátozott testreszabási lehetőségeket biztosítanak. Ha ez a forgatókönyv igényel nagyobb rugalmasságot, tiltsa le az alapvető házirendet, és a követelmények megvalósítása az egyéni standard házirendet.
 
-Standard feltételes hozzáférési szabályzatot a szabályzat a vállalati igényeknek megfelelően módosíthatja az összes beállításokat használhatja. Standard szintű szabályzatok egy Azure AD Premium P1-licenc szükséges.
+A standard szintű feltételes hozzáférési szabályzatot testre szabható összes beállítást módosíthatja a szabályzatot, az üzleti igényeinek megfelelően. Standard szintű szabályzatok egy Azure AD Premium P1-licenc szükséges.
 
 
 
@@ -54,9 +54,9 @@ A következő példa sablon használatával a szervezet számára feltételes ho
 
 |Amikor *ez* történik:|Tegye *ez*:|
 |-|-|
-|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás*<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például bejelentkezési kockázat)|Az alkalmazás elérésének letiltása|
-|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás*<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például bejelentkezési kockázat)|Hozzáférést biztosít a (és):<br>-1. követelmény (például a többtényezős hitelesítés)<br>– 2. követelmény (például az eszközök megfelelőségének)|
-|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás*<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például bejelentkezési kockázat)|Hozzáférést biztosít a (vagy):<br>-1. követelmény (például a többtényezős hitelesítés)<br>– 2. követelmény (például az eszközök megfelelőségének)|
+|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás*<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például eszközplatformok)|Az alkalmazás elérésének letiltása|
+|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás*<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például eszközplatformok)|Hozzáférést biztosít a (és):<br>-1. követelmény (például a többtényezős hitelesítés)<br>– 2. követelmény (például az eszközök megfelelőségének)|
+|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás*<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például eszközplatformok)|Hozzáférést biztosít a (vagy):<br>-1. követelmény (például a többtényezős hitelesítés)<br>– 2. követelmény (például az eszközök megfelelőségének)|
 
 Minimális **ebben az esetben** határozza meg a rendszerbiztonsági tag (**akik**), amely megpróbál hozzáférni egy felhőalkalmazás (**mi**). Ha szükséges, is belefoglalhatja **hogyan** hozzáférési kísérlet történik. A feltételes hozzáférés, az elemek, amelyek meg ki, mi történik, és hogyan feltételek nevezzük. További információkért lásd: [feltételek Mik az Azure Active Directory feltételes hozzáférés?](conditions.md) 
 
@@ -70,28 +70,42 @@ A hozzáférés-vezérlés feltételekhez való kötésével hozhat létre felt�
 
 További információkért lásd: [mi szükséges munka házirendet egy](best-practices.md#whats-required-to-make-a-policy-work).
 
-Ezen a ponton rendelkezik ideje vonatkozó olyan elnevezési konvenciót-szabályzatokat. Az elnevezési szabványnak segítségével keresse meg a szabályzatokat, és céljuk megismerheti azokat az Azure felügyeleti portál megnyitása nélkül. A szabályzat megjeleníthető kell neve:
+Ezen a ponton, egy jó ideje vonatkozó olyan elnevezési konvenciót-szabályzatokat. Az elnevezési szabványnak segítségével keresse meg a szabályzatokat, és céljuk megismerheti azokat az Azure felügyeleti portál megnyitása nélkül. A szabályzat megjeleníthető kell neve:
 
 - Sorozatszám
 - A cloud app vonatkozik
 - A válasz
 - Akik vonatkozik
-- Ha vonatkozik 
+- Ha vonatkozik (ha van)
  
 ![Standard elnevezése](./media/plan-conditional-access/11.png)
 
-
+Egy leíró nevet segít a feltételes hozzáférés megvalósításának áttekintést tartani, amíg a sorszám akkor hasznos, ha egy házirendet a beszélgetés hivatkoznia kell. Például ha megosztana rendszergazda beszélgetés a telefonon, megkérheti számára, hogy nyissa meg a probléma megoldásához EM063 szabályzatot.
 
 
 
 Például a következő név meggyőződik, hogy a házirend többtényezős Hitelesítést követel meg a marketing-felhasználók külső hálózatokon, a Dynamics CRP alkalmazással:
 
-`CA01-Dynamics CRP: Require MFA For marketing When on external networks`
+`CA01 - Dynamics CRP: Require MFA For marketing When on external networks`
 
 
-Az aktív szabályzat mellett akkor is megvalósításához le van tiltva házirendeket, mint a másodlagos kiszolgálóként működő [rugalmas hozzáférés-vezérlők kimaradás vagy vészhelyzet forgatókönyvekben](../authentication/concept-resilient-controls.md). Az elnevezési szabványnak is tartalmaznia kell erre a célra, hogy egyszerűbb legyen az engedélyezésükhöz szolgáltatáskiesés esetén. Példa:
+Az aktív szabályzat mellett célszerű is működjön, mint a másodlagos le van tiltva megvalósítása házirendek [rugalmas hozzáférés-vezérlők kimaradás vagy vészhelyzet forgatókönyvekben](../authentication/concept-resilient-controls.md). A feltételes szabályzatokat az elnevezési szabványnak néhány további elemet kell tartalmaznia: 
 
-`EM01-Finance app: Require MFA For Sales When on untrusted network`
+- `ENABLE IN EMERGENCY` a többi olyan szabályzat kiemelkedhetnek versenytársaik nevet elején.
+
+- Megszakítás alkalmaznia kell a neve.
+
+- Egy rendelési sorszáma tudni, hogy milyen sorrendben házirendek engedélyezni kell a rendszergazda segítségével. 
+
+
+Például a következő név azt jelzi, hogy ez a szabályzat az első házirend kívül négy, engedélyeznie kell a többtényezős hitelesítés bekövetkező szolgáltatáskimaradás esetén:
+
+`EM01 - ENABLE IN EMERGENCY, MFA Disruption[1/4] - Exchange SharePoint: Require hybrid Azure AD join For VIP users`
+
+
+
+
+
 
 
 ## <a name="plan-policies"></a>Házirendek megtervezése
@@ -118,12 +132,12 @@ MFA igénylése gyakori alkalmazási helyzetek hozzáférés:
 
 - [Rendszergazdák](baseline-protection.md#require-mfa-for-admins)
 - [Adott alkalmazásokra](app-based-mfa.md) 
-- [A hálózati helyről nem bízik](untrusted-networks.md).
+- [A hálózati helyről, nem megbízható](untrusted-networks.md).
 
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>Vélhetően feltört fiókoktól válaszolni
 
-A feltételes hozzáférési házirendeket, a vélhetően feltört identitásokat bejelentkezések automatikus válaszokat valósíthat meg. Annak a valószínűsége, hogy a fiók biztonsága sérült kockázati szintek formájában van kifejezve. Identity protection által számított két kockázati szint: bejelentkezési kockázat és felhasználói kockázat. A válasz a bejelentkezési kockázat megvalósításához, két lehetősége van:
+Feltételes hozzáférési szabályzatok a vélhetően feltört identitásokat bejelentkezések automatikus válaszokat valósíthat meg. Annak a valószínűsége, hogy a fiók biztonsága sérült kockázati szintek formájában van kifejezve. Identity protection által számított két kockázati szint: bejelentkezési kockázat és felhasználói kockázat. A válasz a bejelentkezési kockázat megvalósításához, két lehetősége van:
 
 - [A bejelentkezési kockázati feltétellel](conditions.md#sign-in-risk) a feltételes hozzáférési szabályzat
 - [A bejelentkezési kockázati házirend](../identity-protection/howto-sign-in-risk-policy.md) az identity protection 
@@ -214,7 +228,7 @@ Most, hogy konfigurálta a feltételes hozzáférési szabályzatot, érdemes el
 
 A tesztelési terv alapján vizsgálati eset futtatása. Ebben a lépésben futtatja az egyes szabályzatok a vizsgált felhasználók győződjön meg arról, hogy az egyes házirendek megfelelően viselkedjen, egy teljes körű tesztelés keresztül. Használja a fent létrehozott minden teszt végrehajtásához forgatókönyveket.
 
-Fontos, hogy a házirend a kizárási feltétel tesztelése. Például előfordulhat, hogy kizárni egy felhasználót vagy csoportot egy szabályzatot, amely a többtényezős hitelesítés. Ezért tesztelje, ha a kizárt a rendszer kéri a többtényezős hitelesítés, mert egyéb házirendek kombinációja lehet, hogy többtényezős hitelesítés azoknak a felhasználóknak.
+Fontos, hogy a házirend a kizárási feltétel tesztelése. Például előfordulhat, hogy kizárni egy felhasználót vagy csoportot egy szabályzatot, amely többtényezős Hitelesítést követel meg. Ezért tesztelje, ha a kizárt a rendszer kéri a többtényezős hitelesítés, mert egyéb házirendek kombinációja lehet, hogy többtényezős hitelesítés azoknak a felhasználóknak.
 
 
 ### <a name="cleanup"></a>Felesleges tartalmak törlése
@@ -232,7 +246,7 @@ A takarítási eljárás a következő lépésekből áll:
 
 ## <a name="move-to-production"></a>Helyezze át az éles környezetbe
 
-Ha helyezheti üzembe egy új házirendet a környezet készen áll, akkor tegye ezt fázisban történik:
+Amikor új házirendeket a környezet készen áll, telepíteni kell őket fázisok::
 
 - Belső módosítás kommunikációt tesznek a végfelhasználók számára.
 

@@ -7,7 +7,7 @@ services: active-directory
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0983c2235fba0cacbda53208e5dcad5b2878619c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 7efac4138f21a3f8e9dae087991f97dabad61822
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345487"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077243"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Hogyan: Adja meg a választható jogcímeket, az Azure AD-alkalmazás (nyilvános előzetes verzió)
+# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás (nyilvános előzetes verzió)
 
 Ez a szolgáltatás-k segítségével az alkalmazásfejlesztők adja meg, milyen jogcímeket szeretnének biztosítani az alkalmazásokban a jogkivonatokban. Nem kötelező jogcímeket is használhatja:
 - Válassza ki az alkalmazáshoz tartozó jogkivonatok foglalandó további jogcímek.
@@ -37,7 +37,7 @@ Standard jogcímek és azok hogyan használhatók a tokenek listáját lásd: a 
 
 Az egyik a [az Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md) az ügyfelek által az optimális teljesítmény biztosítása érdekében kisebb token méretű. Ennek eredményeképpen korábban szerepelni fog a hozzáférési és azonosító-jogkivonatokat több jogcím már nem találhatók a 2.0-s verziójú jogkivonatokban, és kifejezetten a alkalmazásonkénti alapján kell kérni.
 
-**1. táblázat: alkalmazhatósági**
+**1. táblázat: Alkalmazhatósági**
 
 | Fiók típusa | 1.0-s verziójú végpont | 2.0 verziójú végpont  |
 |--------------|---------------|----------------|
@@ -82,7 +82,7 @@ Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem k
 
 Ezeket a jogcímeket 1.0-s verziójú jogkivonatok mindig szerepel, de nem tartalmazza a 2.0-s verziójú jogkivonatokban, kivéve, ha a kért. Ezeket a jogcímeket (azonosító-jogkivonatokat és hozzáférési jogkivonatok) JWTs csak vonatkoznak. 
 
-**3. táblázat: Csak V2.0 választható jogcímek**
+**3. táblázat: Nem kötelező jogcímek csak 2.0-s verzió**
 
 | JWT-jogcím     | Name (Név)                            | Leírás                                | Megjegyzések |
 |---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
@@ -99,7 +99,7 @@ Ezeket a jogcímeket 1.0-s verziójú jogkivonatok mindig szerepel, de nem tarta
 
 Egyes nem kötelező jogcímek konfigurálható megváltoztatni a jogcímet ad vissza. Ezek a további tulajdonságok vannak többnyire kódtáblázatokhoz használják a különböző adatokat elvárásainak a helyszíni alkalmazások migrálása érdekében (például `include_externally_authenticated_upn_without_hash` segít az ügyfeleknek, amely nem tudja kezelni a hashmarks a (`#`) UPN-jét)
 
-**4. táblázat: Értékeit standard választható jogcím konfigurálása**
+**4. táblázat: Értékek standard választható jogcím konfigurálása**
 
 | Tulajdonság neve                                     | További tulajdonság neve                                                                                                             | Leírás |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
@@ -209,7 +209,7 @@ Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése 
 -   Az alkalmazásjegyzékben módosíthatja. Az alábbi példában ez a módszer használatával végezheti el a konfigurálást. Olvassa el a [ismertetése az Azure AD application manifest dokumentum](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) első bevezetést a jegyzékfájlban.
 -   Akkor is használó alkalmazások írása a [Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) frissíteni az alkalmazást. A [entitások és összetett típusok segédletben](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) az a Graph API-referencia útmutató segítségére lehet a nem kötelező jogcímek konfigurálása.
 
-**Példa:** az alábbi példában egy alkalmazásjegyzékben jogcímalapú hozzáférés, az ID és a SAML hozzáadandó módosítják a tokenek számára az alkalmazás.
+**Példa** Az alábbi példában egy alkalmazásjegyzékben jogcímalapú hozzáférés, az ID és a SAML hozzáadandó módosítják a tokenek számára az alkalmazás.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A hitelesítése után után válassza ki azt az oldal jobb felső sarokban válassza ki az Azure AD-bérlő.

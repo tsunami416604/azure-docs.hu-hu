@@ -11,18 +11,18 @@ author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6a08a5a79a8a072bd4621a7e200e84c2c71c9cd4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2f7eeab8f9d2265cf0f6cfa28499a078ba9cb108
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475067"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077361"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Kezelését és kérését kvóták az Azure-erőforrásokhoz
 
 Mint Azure-szolgáltatásokat, korlátozva van bizonyos az Azure Machine Learning szolgáltatáshoz kapcsolódó erőforrások. Ezek a korlátok a korlát a tényleges számítási, amely lekérdezi a korlátok hozhat létre a munkaterületek számának terjedhet használt betanítási vagy következtetési modelljeit. Ez a cikk áttekintést nyújt a további részleteket az előfizetéshez tartozó különböző Azure-erőforrások előre konfigurált korlátait, valamint kérelem kvóta fejlesztései erőforrás minden típusú hasznos hivatkozásokat is tartalmaz. Ezek a korlátok a költségvetés túlzott futtatások miatt csalás megelőzése érdekében, és tartsa tiszteletben az Azure kapacitásbeli megszorításokon kerüljenek.
 
-Kvóta ne feledje, tervezési és vertikális felskálázási az Azure Machine Learning-erőforrások a termelési számítási feladatokhoz. Például ha a fürt nem éri el a csomópontok megadott célszámát, majd előfordulhat, hogy elérte az Azure Machine Learning COMPUTE számítási magok korlát az előfizetéshez tartozó. Ha szeretné a határértéket vagy meghaladja az alapértelmezett kvóta emelése, nyissa meg egy online támogatási kérést díjmentesen. A korlátok nem léptethető feletti Azure-kapacitásokhoz megkötések miatt az alábbi táblázatban látható a maximális határértéket. Ha egyetlen oszlop sincs maximális korlátot, az erőforrás állítható korlátok nem rendelkezik. 
+Kvóta ne feledje, tervezési és vertikális felskálázási az Azure Machine Learning-szolgáltatások erőforrásai a termelési számítási feladatokhoz. Például ha a fürt nem éri el a csomópontok megadott célszámát, majd előfordulhat, hogy elérte az Azure Machine Learning COMPUTE számítási magok korlát az előfizetéshez tartozó. Ha szeretné a határértéket vagy meghaladja az alapértelmezett kvóta emelése, nyissa meg egy online támogatási kérést díjmentesen. A korlátok nem léptethető feletti Azure-kapacitásokhoz megkötések miatt az alábbi táblázatban látható a maximális határértéket. Ha egyetlen oszlop sincs maximális korlátot, az erőforrás állítható korlátok nem rendelkezik.
 
 ## <a name="special-considerations"></a>Különleges szempontok
 
@@ -34,12 +34,12 @@ Kvóta ne feledje, tervezési és vertikális felskálázási az Azure Machine L
 
 ## <a name="default-resource-quotas"></a>Alapértelmezett erőforráskvóták
 
-Íme egy bontása a kvótát, az Azure-előfizetésen belül a különböző erőforrástípusok szerint. 
+Íme egy bontása a kvótát, az Azure-előfizetésen belül a különböző erőforrástípusok szerint.
 
 > [!Important]
 > Korlátok változhatnak. A legújabb mindig találhatók a szolgáltatásiszint-kvóta [dokumentum](https://docs.microsoft.com/azure/azure-subscription-service-limits/) az összes Azure.
 
-### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek) 
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 A szolgáltatások között, vagy olyan egyedülálló módon üzembe helyezése az Azure-előfizetéssel, a virtuális gépek száma korlátozva van. A régió szinten, mind a magok száma összesen és is alapon kiszolgálónként család el ezt a korlátot.
 
 Fontos kiemelni, hogy virtuálisgép-magokra egy régió szerinti teljes korlát és a egy régió szerinti külön-külön kényszerített sorozat (Dv2, F stb.) maximális mérete. Például tegyük fel, hogy egy előfizetés az USA keleti régiójára vonatkozó teljes magkorlátja 30, az A sorozatú magkorlátja 30, és a D sorozatú magkorlátja is 30. Ez az előfizetés üzembe helyezhet 30 A1 virtuális gépet, 30 D1 virtuális gépet, vagy a kettő valamilyen kombinációját, amely nem haladja meg az összesen 30 magot (pl. 10 A1 virtuális gép és 20 D1 virtuális gép).
@@ -91,8 +91,8 @@ A különböző erőforrások, például a virtuális gépek, tárolási, háló
 
 1. Előfizetések listájából válassza ki az előfizetést, amelynek Ön által keresett kvótát.
 
-   **Van egy kikötést**, kifejezetten a megtekintése az Azure Machine Learning Compute kvótát. Ahogy említettük, a kvóta elkülönül az előfizetéshez, a számítási kvótával. 
-   
+   **Van egy kikötést**, kifejezetten a megtekintése az Azure Machine Learning Compute kvótát. Ahogy említettük, a kvóta elkülönül az előfizetéshez, a számítási kvótával.
+
 1. A bal oldali panelen válassza ki a **Machine Learning szolgáltatás** , majd a megjelenő listában minden munkaterület
 
 1. A következő panelen alatt a **támogatás és hibaelhárítás szakaszhoz** kiválasztása **használat + kvóták** a jelenlegi kvóta korlátozásának emelése és használati megtekintéséhez.

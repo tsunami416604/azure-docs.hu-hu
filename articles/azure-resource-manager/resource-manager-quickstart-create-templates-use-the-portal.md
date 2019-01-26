@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: f989a006251313a8439432861477dc133374af35
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: c7759b9f0787b7926b3642b8b912ec5391347adf
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304670"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911489"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Gyors útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával
 
@@ -55,7 +55,7 @@ Számos sablon tapasztalt fejlesztők működő sablonjainak előállítása, am
 
     ![Sablon generálása a Portal használatával](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    A sablon a főoldalon látható. Egy JSON-fájl négy legfelső szintű elemekkel - `schema`, `contentVersion`, `parameters`, `variables`, `resources`, és `output`. További információt az [Azure Resource Manager-sablonok struktúrája és szintaxisa](./resource-group-authoring-templates.md) című témakörben talál.
+    A sablon a főoldalon látható. Egy JSON-fájl hat legfelső szintű elemekkel - `schema`, `contentVersion`, `parameters`, `variables`, `resources`, és `output`. További információt az [Azure Resource Manager-sablonok struktúrája és szintaxisa](./resource-group-authoring-templates.md) című témakörben talál.
 
     Hat paraméter van definiálva. Az egyikük neve **storageAccountName**. Az előző képernyőképen a második kijelölt rész bemutatja, hogyan ebben a sablonban paraméterre hivatkozhatnak. A következő szakaszban úgy szerkeszti a sablont, hogy létrehozott nevet használjon a tárfiók neveként.
 

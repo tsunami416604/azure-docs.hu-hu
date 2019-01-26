@@ -97,7 +97,7 @@ Után az osztályozó által igénybe vett van tanítva, az előrejelzési és e
 
 ## <a name="create-reviews-for-review-tool"></a>Felülvizsgálati eszköz felülvizsgálatának létrehozása
 
-Az előző szakaszokban áttekinthette a metódusokat, amelyekkel a bejövő képek közül kiszűrhetők a felnőtt és a szexuális tartalmak (Content Moderator), illetve megkereshetők a hírességek (Computer Vision) és különböző egyéb témák (Custom Vision). Ezután tekintse meg a **CreateReview** metódust, amely feltölti a képeket az összes alkalmazott (_Metadata_ formátumban továbbított) címkével együtt a Content Moderator áttekintő eszközébe, hogy a képek elérhetők legyenek emberi áttekintésre.
+Az előző szakaszokban áttekinthette a metódusokat, amelyekkel a bejövő képek közül kiszűrhetők a felnőtt és a szexuális tartalmak (Content Moderator), illetve megkereshetők a hírességek (Computer Vision) és különböző egyéb témák (Custom Vision). Ezután tekintse meg a **CreateReview** metódust, amely feltölti a képeket az összes alkalmazott (_Metadata_ formátumban továbbított) címkével együtt a Content Moderator áttekintő eszközébe, hogy a képek elérhetők legyenek emberi áttekintésre. 
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 

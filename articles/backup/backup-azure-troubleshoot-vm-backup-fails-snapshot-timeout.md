@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 1ee45699040f58a1317009ab44bb5ac863323869
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7446c680ffdba28fef7eb68441d04a4c18398847
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816755"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912550"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -59,7 +59,7 @@ A probléma megoldásához távolítsa el a zárolást a az erőforráscsoport, 
 **1. lépés: [Távolítsa el a zárolást a visszaállítási pont erőforráscsoportból](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **2. lépés: [Visszaállításipont-gyűjtemény törlése](#clean_up_restore_point_collection)**<br>
 
-## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured – a biztonsági mentés nem rendelkezik megfelelő engedélyekkel a titkosított virtuális gépek biztonsági mentése a key vault.
+## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured – a biztonsági mentés nem rendelkezik megfelelő engedélyekkel a titkosított virtuális gépek biztonsági mentése a key vault
 
 **Hibakód:**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Chybová zpráva**: Biztonsági mentés nem rendelkezik megfelelő engedélyekkel a key vault a biztonsági mentéshez, a titkosított virtuális gépekhez. <br>
@@ -105,7 +105,7 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 **Hibakód:**: UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: Az Azure Backup jelenleg nem támogatja az 1023 GB-nál nagyobb adatlemezeket <br>
 
-A biztonsági mentési művelet sikertelen lehet, mivel a tároló nem frissül az azonnali visszaállítása az 1023GB-nál nagyobb méretű virtuális Gépet is biztonsági. Azonnali visszaállítása frissítése biztosít akár 4 TB-os támogatja, ez [cikk](backup-instant-restore-capability.md).  
+A biztonsági mentési művelet sikertelen lehet, mivel a tároló nem frissül az azonnali visszaállítása az 1023GB-nál nagyobb méretű virtuális Gépet is biztonsági. Azonnali visszaállítása frissítése biztosít akár 4 TB-os támogatja, ez [cikk](backup-instant-restore-capability.md#upgrading-to-instant-restore).  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – a jelenleg az Azure Backup nem támogatja a Standard SSD-lemez
 
@@ -114,7 +114,7 @@ A biztonsági mentési művelet sikertelen lehet, mivel a tároló nem frissül 
 
 Jelenleg az Azure Backup támogatja Standard SSD-lemezeket csak a frissített tárak [azonnali visszaállítása](backup-instant-restore-capability.md).
 
-## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nem lehet inicializálni a biztonsági mentés, mivel egy másik biztonsági mentési művelet folyamatban van.
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nem lehet inicializálni a biztonsági mentés, mivel egy másik biztonsági mentési művelet folyamatban van
 
 **Hibakód:**: UserErrorBackupOperationInProgress <br>
 **Chybová zpráva**: Nem lehet inicializálni a biztonsági mentés, mivel egy másik biztonsági mentési művelet folyamatban van<br>
@@ -132,7 +132,6 @@ A legutóbbi biztonsági mentési feladat sikertelen volt, mert folyamatban van 
 4. Ismételje meg a biztonsági mentési műveletet.
 
 Ha az ütemezett biztonsági mentési művelet a következő biztonsági mentési konfigurációval ütköző hosszabb ideig tart majd, tekintse át a [ajánlott eljárások](backup-azure-vms-introduction.md#best-practices), [biztonsági mentésének teljesítményét](backup-azure-vms-introduction.md#backup-performance) és [szempont visszaállítása ](backup-azure-vms-introduction.md#restore-considerations).
-
 
 
 ## <a name="causes-and-solutions"></a>Okait és megoldásait

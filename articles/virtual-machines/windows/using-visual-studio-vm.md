@@ -17,12 +17,12 @@ ms.prod: vs-devops-alm
 ms.date: 09/12/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 49ed750a25c732b7f11ef5de2e545be2a5412fa8
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1582cc7e48adcf895dc7c07e7ab485790650ac14
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437571"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911911"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure Visual Studio-rendszerképek
 A Visual Studio használatával egy előre konfigurált Azure virtuális gépen (VM) módja a gyors és egyszerű nyissa meg a művelet egy felfelé és a futó fejlesztési környezetben. Visual Studio különböző konfigurációival rendszerképek érhetők el a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
@@ -34,11 +34,11 @@ A legutóbbi főbb verziók, Visual Studio 2017-et és a Visual Studio 2015-öt,
 
 | Verzió                                              | Kiadás                     |     Termék verziószáma      |
 |:------------------------------------------------------------:|:----------------------------:|:------------------------:|
-|    A Visual Studio 2019: Előzetes (Preview 1)                   |           Enterprise         | 1. verzió 16.0.0 előzetes |
-| A Visual Studio 2017-ben: Legújabb (15.9 verzió)                    |    Vállalati, Közösség     |      Verzió 15.9.4      |
-|         A Visual Studio 2017-ben: RTW                              |    Vállalati, Közösség     |      Verzió 15.0.20     |
-|   A Visual Studio 2015-ben: Legújabb (3. frissítés)                      |    Vállalati, Közösség     |  Verzió 14.0.25431.01   |
-|         A Visual Studio 2015-ben: RTW                              |             None             | (Karbantartási lejárt)  |
+|    Visual Studio 2019: Előzetes (Preview 2)                   |           Enterprise         | 2. verzió 16.0.0 előzetes |
+| Visual Studio 2017: Legújabb (15.9 verzió)                    |    Enterprise, Community     |      Verzió 15.9.4      |
+|         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Verzió 15.0.20     |
+|   Visual Studio 2015: Legújabb (3. frissítés)                      |    Enterprise, Community     |  Verzió 14.0.25431.01   |
+|         Visual Studio 2015: RTW                              |             None             | (Karbantartási lejárt)  |
 
 > [!NOTE]
 > Fogja a providerhez kiadott Microsoft karbantartási szabályzat a Visual Studio 2015 (RTW) eredetileg kiadott verzióját karbantartási érvényessége lejárt. A Visual Studio 2015 Update 3 az egyetlen fennmaradó verzió érhető el a Visual Studio 2015-öt termék sor.
@@ -50,7 +50,7 @@ Az egyes rendszerképek tartalmának a Visual Studio-kiadás ajánlott funkciók
 
 * Az összes rendelkezésre álló számítási feladatokat, beleértve az egyes számítási feladatok ajánlott választható összetevők
 * .NET 4.6.2-es verziójára és a .NET 4.7 SDK-k, a célcsoport-kezelési csomagokat és a fejlesztői eszközök
-* VizuálisF#
+* Visual F#
 * GitHub-bővítmény a Visual Studio
 * LINQ to SQL-eszközök
 

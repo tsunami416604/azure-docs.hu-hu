@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 71928be07080ed14fdcb93f33ea64d2572955b53
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3948bf08f0309072de57f70d0c7c2e539b4fc28b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38466024"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075728"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Az Azure Resource Manager tartozó személyes adatok kezelése
 
@@ -33,13 +33,13 @@ Telepítések esetén a Resource Manager megőrzi a paraméterértékeket, és a
 A lista **központi telepítések** az előzményekben található használja:
 
 * [Lista erőforráscsoport alapján](/rest/api/resources/deployments/listbyresourcegroup)
-* [Get-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/Get-AzureRmResourceGroupDeployment)
+* [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
 * [az üzembe helyezés listájából](/cli/azure/group/deployment#az-group-deployment-list)
 
 Törlendő **központi telepítések** használja az előzményekben tekintheti át:
 
 * [Törlés](/rest/api/resources/deployments/delete)
-* [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroupDeployment)
+* [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
 * [az csoport központi telepítésének törlése](/cli/azure/group/deployment#az-group-deployment-delete)
 
 ## <a name="delete-personal-data-in-resource-group-names"></a>Az erőforráscsoportok nevei a személyes adatok törlése
@@ -49,13 +49,13 @@ Az erőforráscsoport nevét továbbra is fennáll, amíg nem törli az erőforr
 A lista **erőforráscsoportok**, használja:
 
 * [List](/rest/api/resources/resourcegroups/list)
-* [Get-AzureRmResourceGroup](/powershell/module/azurerm.resources/Get-AzureRmResourceGroup)
+* [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
 * [az csoport listája](/cli/azure/group#az-group-list)
 
 A törlendő **erőforráscsoportok**, használja:
 
 * [Törlés](/rest/api/resources/resourcegroups/delete)
-* [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup)
+* [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
 * [az group delete](/cli/azure/group#az-group-delete)
 
 ## <a name="delete-personal-data-in-tags"></a>A címkék a személyes adatok törlése
@@ -65,13 +65,13 @@ A címkék nevei és értékei megmarad, amíg nem törli vagy módosíthatja a 
 A lista **címkék**, használja:
 
 * [List](/rest/api/resources/tags/list)
-* [Get-AzureRmTag](/powershell/module/azurerm.tags/get-azurermtag)
+* [Get-AzTag](/powershell/module/az.tags/get-aztag)
 * [az a listán](/cli/azure/tag#az-tag-list)
 
 A törlendő **címkék**, használja:
 
 * [Törlés](/rest/api/resources/tags/delete)
-* [Remove-AzureRmTag](/powershell/module/azurerm.tags/remove-azurermtag)
+* [Remove-AzTag](/powershell/module/az.tags/remove-aztag)
 * [az címke törlése](/cli/azure/tag#az-tag-delete)
 
 ## <a name="next-steps"></a>További lépések

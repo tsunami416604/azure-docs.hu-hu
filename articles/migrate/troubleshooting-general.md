@@ -4,14 +4,14 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: 0c7d0980c928ecefebeabff555378230453c742f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 5a5fbcb4cd2e073192ec7032bdbed15ab49798ad
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827941"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075419"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -153,8 +153,12 @@ Az Azure Migrate collector PowerCLI letölti és telepíti azt a készüléket. 
 A probléma akkor fordulhat elő a VMware PowerCLI telepítése való probléma miatt. Kövesse az alábbi lépéseket a probléma megoldásához:
 
 1. Ha nem a legújabb verziót a gyűjtő berendezés [a gyűjtő frissítése a legújabb verzióra a](https://aka.ms/migrate/col/checkforupdates) , és ellenőrizze, hogy megoldódott-e a problémát.
-2. Ha már rendelkezik a gyűjtő legújabb, manuálisan telepítse [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) , és ellenőrizze, hogy megoldódott-e a problémát.
-3. Ha a fenti nem oldja meg a problémát, keresse meg a C:\Program Files\ProfilerService mappát és eltávolítása a VMware.dll és VimService65.dll fájlokat a mappában találhatók, és indítsa újra az "Az Azure Migrate Collector" a Windows-szolgáltatások kezelése (Nyissa meg a(z) Futtatás "és a"services.msc"típusú Windows-kezelő megnyitásához).
+2. Ha már rendelkezik a gyűjtő legújabb, kövesse az az alábbi lépéseket a powercli tiszta telepítésének: egy. Zárja be a készülék webböngészőben.
+   b. Állítsa le a "Az Azure Migrate Collector" szolgáltatást a Windows Service Manager (Open "Futtatási", és írja be services.msc Windows-kezelő megnyitásához). Az Azure Migrate Collector szolgáltatás kattintson jobb gombbal, majd kattintson a Leállítás, c. A következő helyekről: VMware"kezdve az összes mappa törlése: C:\Program Files\WindowsPowerShell\Modules  
+        C:\Program Files (x86)\WindowsPowerShell\Modules d. Indítsa újra a "Az Azure Migrate Collector" szolgáltatást a Windows Service Manager (Open "Futtatási", és írja be services.msc Windows-kezelő megnyitásához). Az Azure Migrate Collector szolgáltatás kattintson a jobb gombbal, és kattintson a Start gombra.
+   e. Kattintson duplán a "Futtatás gyűjtő" asztali parancsikonját a gyűjtő alkalmazás elindításához. A gyűjtő alkalmazás automatikusan töltse le és telepítse a szükséges verziót fo PowerCLI.
+
+3. Ha a fenti nem oldja meg a problémát, telepítse manuálisan [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) , és ellenőrizze, hogy megoldódott-e a problémát.
 
 ### <a name="error-unabletoconnecttoserver"></a>Error UnableToConnectToServer
 
@@ -210,7 +214,7 @@ Függőségi ügynök által támogatott Windows operációs rendszerek listája
 Függőségi ügynök által támogatott Linux operációs rendszerek listája [Itt](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Nem sikerül az Azure Migrate függőségeinek megjelenítése több mint egy óra időtartama?
-Az Azure Migrate függőségeinek megjelenítése akár egy órás időtartamának teszi lehetővé. Bár az Azure Migrate lehetővé teszi, hogy térjen vissza az az előzmények között az utolsó egy hónap legfeljebb egy adott dátumot, a maximális időtartamot, amelynek jelenítheti meg a függőségeket a legfeljebb 1 óra. Például hogy használhatja tegnap függőségek megtekintése a függőségi térkép az idő időtartamát funkciót, de csak megtekintheti azt számára egy egy órás időszak.
+Az Azure Migrate függőségeinek megjelenítése akár egy órás időtartamának teszi lehetővé. Bár az Azure Migrate lehetővé teszi, hogy térjen vissza az az előzmények között az utolsó egy hónap legfeljebb egy adott dátumot, a maximális időtartamot, amelynek jelenítheti meg a függőségeket a legfeljebb 1 óra. Például hogy használhatja tegnap függőségek megtekintése a függőségi térkép az idő időtartamát funkciót, de csak megtekintheti azt számára egy egy órás időszak. Azonban, használhatja a Log Analyticsben, hogy [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) hosszabb ideig keresztül. 
 
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nem lehet több mint 10 virtuális géppel csoportok függőségek vizualizálása vagyok?
 Is [csoportokra vonatkozó függőségek vizualizálása](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , hogy rendelkezik mentése 10 virtuális gépekhez, ha egy csoport több mint 10 virtuális géppel, azt javasoljuk, hogy felosztása kisebb csoportok a csoport, és a Függőségek megjelenítése.

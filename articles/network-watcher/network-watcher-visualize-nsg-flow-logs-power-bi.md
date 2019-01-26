@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 1f8807094c6e93cf55467e76e0fa2b617ec3d5fb
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 6b3f3217f90c2c5a72ba9576b5e0cc89e6133cd8
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822874"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913302"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>A Power bi-JAL visualizing hálózati biztonsági csoport folyamatnaplóit
 
@@ -46,7 +46,7 @@ A megadott sablon az szerkeszthető, így módosíthatja, hogy az új adatok, a 
 
 ## <a name="setup"></a>Beállítás
 
-Mielőtt hozzákezd, rendelkeznie kell hálózati biztonsági csoport Flow naplózás engedélyezve van egy vagy több hálózati biztonsági csoportok a fiókjában található. Hálózati biztonság engedélyezésével kapcsolatos flow naplókat, a következő cikkben: [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md).
+Mielőtt hozzákezd, rendelkeznie kell hálózati biztonsági csoport Flow naplózás engedélyezve van egy vagy több hálózati biztonsági csoportok a fiókjában található. A hálózati biztonságot forgalom naplóinak engedélyezéséről útmutatásért tekintse meg a következő cikket: [Bevezetés a hálózati biztonsági csoportok csoportforgalom naplózása](network-watcher-nsg-flow-logging-overview.md).
 
 A Power BI Desktop-ügyfél telepítve a gépre, és töltse le és betölteni a naplóadatokat, hogy a tárfiók létezik a számítógép elegendő szabad lemezterülettel kell rendelkeznie.
 
@@ -59,7 +59,7 @@ A Power BI Desktop-ügyfél telepítve a gépre, és töltse le és betölteni a
     1. **StorageAccountName** – tartalmazó az NSG-Folyamatnaplók, amelyeket szeretne betölteni, és jelenítheti meg a tárfiók nevét határozza meg.
     1. **NumberOfLogFiles** – számát határozza meg, töltse le és a Power bi-ban jelenítheti meg szeretné naplófájlok. Ha például 50 meg van adva a 50 legfrissebb naplófájlokat. Ha 2 NSG-k engedélyezve és konfigurálva van az NSG-Folyamatnaplók küldeni ennek a fióknak, majd a naplók az elmúlt 25 óra is megtekinthetők.
 
-    ![a Power BI-fő][2]
+    ![power BI main][2]
 
 1. Adja meg a tárfiók hozzáférési kulcsára. Annak érvényes hozzáférési kulcsok az Azure portal és a kiválasztja a tárfiókba lépve **Tárelérési kulcsok** beállítások menüjében. Kattintson a **Connect** majd alkalmazza a módosításokat.
 
@@ -73,7 +73,7 @@ A Power BI Desktop-ügyfél telepítve a gépre, és töltse le és betölteni a
 
 A sablonban megadott olyan, vizualizációkat, amelyek segítenek az NSG-folyamat naplóadatok jelentéssel bírnak. A következő képen az irányítópult néz ki adatokkal feltöltve amikor mintát. Az alábbiakban vizsgáljuk meg részletesebben egyes Vizualizációk 
 
-![a Power BI][5]
+![powerbi][5]
  
 A felső Talkers visual azt mutatja be az IP-címek, amelyek a legtöbb kapcsolat időszak alatt kezdeményezett megadott. A mezők mérete felel meg a relatív kapcsolatok száma. 
 
@@ -123,7 +123,7 @@ Nyugodtan szabja testre a sablon az igényeinek. Számos módon számos, a Power
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan jelenítheti meg az NSG-Folyamatnaplók a Elastick hibával funkcionáló [megjelenítése Azure Network Watcher NSG folyamatnaplóit, nyílt forráskódú eszközök használatával](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Ismerje meg, hogyan jelenítheti meg az NSG-Folyamatnaplók az Elastic Stackkel végzett funkcionáló [megjelenítése Azure Network Watcher NSG folyamatnaplóit, nyílt forráskódú eszközök használatával](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 
 [1]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure1.png
 [2]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure2.png

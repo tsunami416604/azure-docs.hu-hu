@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b120d50b6b0f72b5977d238866cfdf26fd9be5ff
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d1d515786fde06f4622402f2c1d0c3add7cd8843
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436891"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913144"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Bevezetés az Apache Hadoop-biztonság, a vállalati biztonsági csomag
 
@@ -56,7 +56,7 @@ ESP HDInsight fürtök a jól ismert Apache Ranger felhasználói Felületet has
 ## <a name="encryption"></a>Titkosítás
 Az adatok védelmének fontos értekezlet szervezeti biztonsági és megfelelőségi követelményeknek. Adatok elérésének korlátozásával illetéktelen alkalmazottak, együtt kell titkosítás. 
 
-A HDInsight-fürtök az Azure Blob storage és az Azure Data Lake Storage Gen1 – támogatási transzparens kiszolgálóoldali mindkét adattárak [az adatok titkosítása az](../../storage/common/storage-service-encryption.md) inaktív. Biztonságos HDInsight-fürtök zökkenőmentesen működnek a kiszolgálóoldali titkosítást az adatok képesség inaktív.
+A HDInsight-fürtök az Azure Blob storage és az Azure Data Lake Storage Gen1 és Gen2 – támogatási transzparens kiszolgálóoldali mindkét adattárak [az adatok titkosítása az](../../storage/common/storage-service-encryption.md) inaktív. Biztonságos HDInsight-fürtök zökkenőmentesen működnek a kiszolgálóoldali titkosítást az adatok képesség inaktív.
 
 ## <a name="next-steps"></a>További lépések
 

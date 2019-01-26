@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 69b085faf10b9e22618fa248460d269bd2efdb73
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d8ca316b9d2f87e2d5540c81b0865381109f889d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264308"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080072"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Gépi tanulási algoritmus-Adatlap az Azure Machine Learning Studióban
 
@@ -48,7 +48,7 @@ Töltse le, és a Machine Learning Studio algoritmus Adatlap lap nyomtatása tab
 
   * A **tanítást**, adatpontok nem tartalmaz feliratokat társítva. Ehelyett egy felügyeletlen tanulási algoritmus célja valamilyen módon adatok rendezése, vagy a szerkezetét írja le. Ez azt csoportosítás, csoportosít, a K-közép hasonlóan, vagy különböző módszert is megnézzük az összetett, így egyszerűbb jelenik kereséséhez.
 
-  * A **megerősítő tanulást**, az algoritmus beolvasása művelet kiválasztása az egyes adott válaszként. Általánosan használt megközelítés a robotika, ahol egy adatpont érzékelőinek adott ponton időben lesz, és az algoritmus ki kell választania a robot a következő művelet. Még egy természetes választás olyan IOT-alkalmazásokat. A tanulási algoritmus is fogad ellenszolgáltatás jel egy rövid ideig később, hogyan jó döntés lett megjelölve. Ennek alapján, az algoritmus módosítása igazítani a stratégiáját a legmagasabb ellenszolgáltatás növelhető. Jelenleg nincsenek nincs megerősítő tanulási algoritmus modulok az Azure gépi tanulás.
+  * A **megerősítő tanulást**, az algoritmus beolvasása művelet kiválasztása az egyes adott válaszként. Általánosan használt megközelítés a robotika, ahol egy adatpont érzékelőinek adott ponton időben lesz, és az algoritmus ki kell választania a robot a következő művelet. Még egy természetes választás olyan IOT-alkalmazásokat. A tanulási algoritmus is fogad ellenszolgáltatás jel egy rövid ideig később, hogyan jó döntés lett megjelölve. Ennek alapján, az algoritmus módosítása igazítani a stratégiáját a legmagasabb ellenszolgáltatás növelhető. Jelenleg nincsenek nincs megerősítő tanulási algoritmus modulok az Azure Machine Learning studióban.
 
 * **Bayes módszerek** statisztikailag független adatpontok feltételezik. Ez azt jelenti, hogy az egyik adatpont unmodeled hozzon predikátumban másokkal, vagyis nem becsülhető. Például ha az adatok rögzíti a hány perc múlva a következő subway vonat érkezik, két mérések napi egymástól függetlenek statisztikailag. Azonban két mérések egy perc közötti nem függetlenek statisztikailag – a egy értéke magas prediktív, a másik értékét.
 

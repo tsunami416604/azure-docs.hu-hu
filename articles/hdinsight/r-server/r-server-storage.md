@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 4aae44745981951fa61836fe52d8d6b799c6cadf
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7b937158be39f9a1f7f9374611a150fd11837f02
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001515"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910266"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások Machine Learning-szolgáltatások az Azure HDInsight
 
 Machine Learning szolgáltatások a HDInsight a tárolási megoldások széles megőrizni az adatokat, kódok vagy objektumokat, amelyek az elemzési eredményeket. Ezek közé tartozik a következő beállításokat:
 
 - [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
-- [Az Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
+- [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
 - [Az Azure File storage](https://azure.microsoft.com/services/storage/files/)
 
 Lehetősége is van, több Azure storage-fiókok és -tárolót a HDInsight-fürt eléréséhez. Az Azure File storage az kényelmes adatok tárolási lehetőség használatra az élcsomóponton, amely lehetővé teszi, hogy egy, az Azure Storage-fájlmegosztás csatlakoztatása például a Linux-fájlrendszer. De Azure-fájlmegosztások csatlakoztatva van, és bármilyen, amely rendelkezik egy támogatott operációs rendszert, például a Windows vagy Linux rendszert használják. 
@@ -172,4 +172,4 @@ Az Azure Files egyik fő előnye az, hogy a fájlmegosztások csatlakoztatva van
 * [Machine Learning-szolgáltatások HDInsight-fürt áttekintése](r-server-overview.md)
 * [Ismerkedés a Machine Learning-szolgáltatások az Apache Hadoop-fürt](r-server-get-started.md)
 * [Számítási környezeti beállítások az ML-szolgáltatások HDInsighton belüli fürtjében](r-server-compute-contexts.md)
-
+* [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

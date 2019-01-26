@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ed3731db88d7f829634a03c55e5ec033c03e4b0f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 00ad0bcb6c3c2542e5f23e915879c9cd951d552b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139130"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081126"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse használatával
 Ez az oktatóanyag azt mutatja be létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Data Warehouse (az SQL DW) egy nyilvánosan elérhető adatkészlethez – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított előrejelzi e tipp fizetős útnak és többosztályos osztályozási és regressziós modellek is taglalja, hogy a terjesztési előre fizetett összegek tipp.
@@ -27,7 +27,7 @@ Az eljárást követi a [csoportos adatelemzési folyamat (TDSP)](https://docs.m
 A NYC Taxi útadatok körülbelül 20GB tömörített CSV-fájlok (~ 48GB tömörítetlen) áll, minden egyes út 173 milliónál egyes utak és a díjakat fizetni. Minden egyes út rekord tartalmazza a begyűjtés és dropoff helyek és időpontok, anonimizált feltörés (illesztőprogramok) jogosítvány száma, és a medallion (taxi az egyedi azonosító) számát. Az adatok minden lelassítja ismerteti az év 2013-hoz, és minden hónapban megtalálható a következő két adatkészletet:
 
 1. A **trip_data.csv** fájl trip részleteit, például utasok, begyűjtést és dropoff pontok, út időtartama és út hossza számát tartalmazza. Az alábbiakban néhány példa rekordokat:
-   
+
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
@@ -35,7 +35,7 @@ A NYC Taxi útadatok körülbelül 20GB tömörített CSV-fájlok (~ 48GB tömö
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
 2. A **trip_fare.csv** fájl tartalmazza az egyes út, például a fizetési típus, diszkont összeg, pótdíj és adók, tippek és útdíjak, fizetett diszkont és a teljes összeg fizetős részleteit. Az alábbiakban néhány példa rekordokat:
-   
+
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
@@ -52,15 +52,15 @@ A **egyedi kulcs** trip léptetni\_adatokat és trip\_diszkont épül fel a köv
 ## <a name="mltasks"></a>Előrejelzési feladatok három típusú cím
 Azt a három előrejelzési problémák alapján állítson össze a *tipp\_összeg* három típusú feladatok modellezési mutatja be:
 
-1. **Bináris osztályozás**: előre e tipp fizették útnak, azaz egy *tipp\_összeg* nagyobb több, mint 0 USD pozitív példa, miközben egy *tipp\_Összeg* negatív példa az 0 USD.
-2. **Többosztályos osztályozási**: előre fizetett az utazás a tip tartományán. Hogy osztani a *tipp\_összeg* öt bins vagy osztályok:
-   
+1. **Bináris osztályozás**: Előrejelzési e tipp fizették útnak, azaz egy *tipp\_összeg* nagyobb több, mint 0 USD pozitív példa, miközben egy *tipp\_összeg* negatív példa az 0 USD.
+2. **Többosztályos osztályozási**: Tipp számos előre fizetett az utazás. Hogy osztani a *tipp\_összeg* öt bins vagy osztályok:
+
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. **Regresszió feladat**: előre fizetett belépőt a tip mennyisége.  
+3. **Regresszió feladat**: Előre fizetett belépőt a tip mennyisége.
 
 ## <a name="setup"></a>Állítsa be az Azure adatelemzési környezetet a speciális elemzésekhez
 Az Azure Data Science környezet beállításához, kövesse az alábbi lépéseket.
@@ -69,7 +69,7 @@ Az Azure Data Science környezet beállításához, kövesse az alábbi lépése
 
 * Amikor üzembe helyezi az Azure blob-tárolóban, válassza ki az Azure blob storage in vagy a lehető legközelebb a földrajzi helymeghatározás **USA déli középső Régiójában**, azaz, hogy a NYC Taxi adatok tárolására. Az adatok tárolóba a nyilvános blobtárolóban AzCopy használatával a saját tárfiókja másolódnak. Minél közelebb az Azure blob storage-USA déli középső Régiójában, annál gyorsabban (4. lépés) Ez a feladat befejeződik.
 * A saját Azure storage-fiók létrehozásához kövesse a lépéseket követve [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md). Mindenképpen adja meg a jegyzetek a következő tárfiók hitelesítő adatainak értékeit, hogy ez az útmutató későbbi részében lesz szükség.
-  
+
   * **Tárfiók neve**
   * **Tárfiók kulcsa**
   * **Tárolónév** (amely azt szeretné, hogy az adatok tárolhatók az Azure blob storage)
@@ -88,8 +88,8 @@ Kövesse a dokumentációban a [hozzon létre egy SQL Data Warehouse](../../sql-
 
 > [!NOTE]
 > Futtassa a következő SQL lekérdezést az adatbázison, az SQL Data Warehouse (helyett a connect témakör 3. lépésében megadott lekérdezést) létrehozott a **hozzon létre egy főkulcsot**.
-> 
-> 
+>
+>
 
     BEGIN TRY
            --Try to create the master key
@@ -106,8 +106,8 @@ Nyissa meg a Windows PowerShell-parancs konzolt. Töltse le a példában az SQL-
 
 > [!NOTE]
 > Szüksége lehet **Futtatás rendszergazdaként** a következő PowerShell-parancsprogram végrehajtásakor, ha a *DestDir* könyvtár létrehozása vagy írható-e rendszergazdai jogosultsággal kell.
-> 
-> 
+>
+>
 
     $source = "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/Download_Scripts_SQLDW_Walkthrough.ps1"
     $ps1_dest = "$pwd\Download_Scripts_SQLDW_Walkthrough.ps1"
@@ -127,13 +127,13 @@ Amikor a PowerShell-parancsprogram az első alkalommal fut, a rendszer kéri, az
 
 > [!NOTE]
 > Annak érdekében, hogy a séma neve ütközik, amelyek már létezik az Azure SQL dw-vel a paramétereket közvetlenül SQLDW.conf fájlból történő olvasásakor elkerülése érdekében 3 számjegyből véletlenszerűen hozzáadódik a séma neve a SQLDW.conf fájlból az egyes futtatások alapértelmezett séma neveként. A PowerShell-parancsfájl kérheti a séma neve: a név felhasználói belátása szerint lehet megadni.
-> 
-> 
+>
+>
 
 Ez **PowerShell-parancsprogram** fájlt a következő feladatokat hajtja végre:
 
 * **Letölti és telepíti az AzCopy**, ha az AzCopy még nem telepítette
-  
+
         $AzCopy_path = SearchAzCopy
         if ($AzCopy_path -eq $null){
                Write-Host "AzCopy.exe is not found in C:\Program Files*. Now, start installing AzCopy..." -ForegroundColor "Yellow"
@@ -154,7 +154,7 @@ Ez **PowerShell-parancsprogram** fájlt a következő feladatokat hajtja végre:
                     $env_path = $env:Path
                 }
 * **Másolja az adatokat a személyes blob storage-fiók** a nyilvános blobból az Azcopyval
-  
+
         Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"
         $start_time = Get-Date
         AzCopy.exe /Source:$Source /Dest:$DestURL /DestKey:$StorageAccountKey /S
@@ -164,17 +164,17 @@ Ez **PowerShell-parancsprogram** fájlt a következő feladatokat hajtja végre:
         Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
         Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
 * **A Polybase (LoadDataToSQLDW.sql végrehajtásával) az Azure SQL dw-be adatokat tölt** a privát blob storage-fiókjában az alábbi parancsokkal.
-  
+
   * Hozzon létre egy sémát
-    
+
           EXEC (''CREATE SCHEMA {schemaname};'');
   * Adatbázishoz kötődő hitelesítő adatok létrehozása
-    
+
           CREATE DATABASE SCOPED CREDENTIAL {KeyAlias}
           WITH IDENTITY = ''asbkey'' ,
           Secret = ''{StorageAccountKey}''
   * Az Azure storage blob a külső adatforrás létrehozása
-    
+
           CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage}
           WITH
           (
@@ -183,7 +183,7 @@ Ez **PowerShell-parancsprogram** fájlt a következő feladatokat hajtja végre:
               CREDENTIAL = {KeyAlias}
           )
           ;
-    
+
           CREATE EXTERNAL DATA SOURCE {nyctaxi_fare_storage}
           WITH
           (
@@ -193,12 +193,12 @@ Ez **PowerShell-parancsprogram** fájlt a következő feladatokat hajtja végre:
           )
           ;
   * A csv-fájlok a külső fájlformátum létrehozása. Tömörítetlen adatok és a függőleges vonás karakterrel elválasztva egymástól mezők.
-    
+
           CREATE EXTERNAL FILE FORMAT {csv_file_format}
           WITH
-          (   
+          (
               FORMAT_TYPE = DELIMITEDTEXT,
-              FORMAT_OPTIONS  
+              FORMAT_OPTIONS
               (
                   FIELD_TERMINATOR ='','',
                   USE_TYPE_DEFAULT = TRUE
@@ -206,7 +206,7 @@ Ez **PowerShell-parancsprogram** fájlt a következő feladatokat hajtja végre:
           )
           ;
   * Külső diszkont és NYC taxi adatkészlet trip táblák létrehozása az Azure blob storage-ban.
-    
+
           CREATE EXTERNAL TABLE {external_nyctaxi_fare}
           (
               medallion varchar(50) not null,
@@ -226,8 +226,8 @@ Ez **PowerShell-parancsprogram** fájlt a következő feladatokat hajtja végre:
               DATA_SOURCE = {nyctaxi_fare_storage},
               FILE_FORMAT = {csv_file_format},
               REJECT_TYPE = VALUE,
-              REJECT_VALUE = 12     
-          )  
+              REJECT_VALUE = 12
+          )
 
             CREATE EXTERNAL TABLE {external_nyctaxi_trip}
             (
@@ -251,14 +251,14 @@ Ez **PowerShell-parancsprogram** fájlt a következő feladatokat hajtja végre:
                 DATA_SOURCE = {nyctaxi_trip_storage},
                 FILE_FORMAT = {csv_file_format},
                 REJECT_TYPE = VALUE,
-                REJECT_VALUE = 12         
+                REJECT_VALUE = 12
             )
 
     - A külső táblákból az Azure blob storage-adatok betöltése az SQL Data Warehouse
 
             CREATE TABLE {schemaname}.{nyctaxi_fare}
             WITH
-            (   
+            (
                 CLUSTERED COLUMNSTORE INDEX,
                 DISTRIBUTION = HASH(medallion)
             )
@@ -269,7 +269,7 @@ Ez **PowerShell-parancsprogram** fájlt a következő feladatokat hajtja végre:
 
             CREATE TABLE {schemaname}.{nyctaxi_trip}
             WITH
-            (   
+            (
                 CLUSTERED COLUMNSTORE INDEX,
                 DISTRIBUTION = HASH(medallion)
             )
@@ -282,7 +282,7 @@ Ez **PowerShell-parancsprogram** fájlt a következő feladatokat hajtja végre:
 
             CREATE TABLE {schemaname}.{nyctaxi_sample}
             WITH
-            (   
+            (
                 CLUSTERED COLUMNSTORE INDEX,
                 DISTRIBUTION = HASH(medallion)
             )
@@ -310,16 +310,16 @@ Ez **PowerShell-parancsprogram** fájlt a következő feladatokat hajtja végre:
 A tárfiók földrajzi helye hatással van a betöltési időt.
 
 > [!NOTE]
-> Saját blob storage-fiókjában, földrajzi helyétől függően folyamata adatokat másol egy nyilvános blob saját tárfiókja nagyjából 15 percig is eltarthat, vagy akár hosszabb ideig, és a folyamat a tárfiókban lévő adatok betöltése az Azure-bA Az SQL DW 20 percet is igénybe vehet, vagy hosszabb.  
-> 
-> 
+> Saját blob storage-fiókjában, földrajzi helyétől függően folyamata adatokat másol egy nyilvános blob saját tárfiókja nagyjából 15 percig is eltarthat, vagy akár hosszabb ideig, és a folyamat a tárfiókban lévő adatok betöltése az Azure-bA Az SQL DW 20 percet is igénybe vehet, vagy hosszabb.
+>
+>
 
 Dönthet arról, hogy milyen tegye Ha ismétlődő a forrás és cél fájlokat kell.
 
 > [!NOTE]
 > Ha a .csv-fájlokat másolja a nyilvános blob storage a saját blob storage-fiók már szerepel a privát blob storage-fiók, az AzCopy ekkor megkérdezi, hogy szeretné-e felülírja őket. Ha nem szeretné felülírni őket, bemeneti **n** amikor a rendszer kéri. Ha szeretné felülírni **összes** őket, bemeneti **egy** amikor a rendszer kéri. Emellett megadhatja **y** külön-külön felülírja a .csv fájlt.
-> 
-> 
+>
+>
 
 ![Az AzCopy kimenete][21]
 
@@ -327,8 +327,8 @@ Használhatja a saját adatait. Ha az adatok a helyszíni gépen, a valós élet
 
 > [!TIP]
 > Ha az adatok a valós életben alkalmazás már a saját Azure blob storage-ban, a PowerShell-parancsfájlt az AzCopy lépés kihagyhatja, és közvetlenül töltse fel az adatokat az Azure SQL dw-be. Ezt a beállítást, a szkriptet a formátum az adatok manipulálását további módosításokat.
-> 
-> 
+>
+>
 
 Ez a Powershell-szkript is rendkívüli az Azure SQL DW-információkat az adatok feltárása példa fájlok SQLDW_Explorations.sql SQLDW_Explorations.ipynb és SQLDW_Explorations_Scripts.py, hogy ezek a fájlok, melynek azonnal után készen áll a PowerShell parancsfájl futása befejeződött.
 
@@ -343,8 +343,8 @@ Az Azure SQL dw-vel az SQL DW bejelentkezési nevet és jelszót a Visual Studio
 
 > [!NOTE]
 > A Parallel Data warehouse-ba (PDW) query-szerkesztő megnyitásához használja a **új lekérdezés** közben a PDW van kijelölve, a parancs a **SQL Object Explorer**. A standard SQL-Lekérdezésszerkesztő PDW által nem támogatott.
-> 
-> 
+>
+>
 
 Íme az adatok feltárására és a szolgáltatás generálása feladatok végrehajtása ebben a szakaszban:
 
@@ -363,7 +363,7 @@ Ezeket a lekérdezéseket, adja meg a sorok számát egy gyors ellenőrzés és 
     -- Report number of columns in table <nyctaxi_trip>
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '<nyctaxi_trip>' AND table_schema = '<schemaname>'
 
-**Kimenet:** 173,179,759 sorok és oszlopok 14 kapja meg.
+**A kimenetre:** 173,179,759 sorok és oszlopok 14 szerezheti be.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Feltárás: Utazás eloszlás medallion szerint
 Ez a példa lekérdezés azonosítja a medallions (-i taxik számokat), amely egy adott időtartamon belül több mint 100 lelassítja befejeződött. A lekérdezés kiaknázhatják a particionált tábla hozzáférés, mivel megfelel a partíciós sémája **begyűjtés\_datetime**. A teljes adatkészlet lekérdezése is teszi a particionált tábla használja, és/vagy a vizsgálat index.
@@ -374,7 +374,7 @@ Ez a példa lekérdezés azonosítja a medallions (-i taxik számokat), amely eg
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-**Kimenet:** a lekérdezés egy táblában adja vissza sorok megadása a 13,369 medallions (taxikra) és a trip tölti ki őket a 2013-ban. Az utolsó oszlopban befejeződött lelassítja darabszámát tartalmazza.
+**A kimenetre:** A lekérdezés egy tábla sorok megadása a 13,369 medallions (taxikra) és a trip tölti ki őket a 2013-ban számát adja vissza. Az utolsó oszlopban befejeződött lelassítja darabszámát tartalmazza.
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>Feltárás: Utazás terjesztési medallion és hack_license
 Ebben a példában a medallions (-i taxik számokat) azonosítja, és hack_license számok (illesztőprogramok), amely befejezése több mint 100 lelassítja a megadott időn belül.
@@ -385,9 +385,9 @@ Ebben a példában a medallions (-i taxik számokat) azonosítja, és hack_licen
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-**Kimenet:** a lekérdezés egy táblában adja vissza 13,369 sorok megadása a 13,369 autó/illesztőprogram azonosítók, amelyek több befejeződött, hogy 100 léptető a 2013-ban. Az utolsó oszlopban befejeződött lelassítja darabszámát tartalmazza.
+**A kimenetre:** A lekérdezés 13,369 sorok megadása a 13,369 autó/illesztőprogram azonosítóját, amely 2013-ban, hogy 100 lelassítja további végrehajtotta egy táblában adja vissza. Az utolsó oszlopban befejeződött lelassítja darabszámát tartalmazza.
 
-### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Adatok vizsgálatának: helytelen hosszúsági és/vagy szélességi ellenőrzése
+### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Minőségi értékelési adatokat: Ellenőrizze a rekordokat és/vagy a helytelen hosszúság szélesség
 Ebben a példában folytat, ha a hosszúsági és/vagy szélességi mezők vagy érvénytelen értéket tartalmazza (radián fok – 90 és 90 között kell lennie), vagy rendelkezik (0, 0) koordinátáit.
 
     SELECT COUNT(*) FROM <schemaname>.<nyctaxi_trip>
@@ -399,9 +399,9 @@ Ebben a példában folytat, ha a hosszúsági és/vagy szélességi mezők vagy 
     OR    (pickup_longitude = '0' AND pickup_latitude = '0')
     OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
-**Kimenet:** a lekérdezés érvénytelen hosszúsági és/vagy szélességi mezőkkel rendelkező 837,467 utakat adja vissza.
+**A kimenetre:** A lekérdezés érvénytelen hosszúsági és/vagy szélességi mezőkkel rendelkező 837,467 utakat adja vissza.
 
-### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Feltárás: Formabontó nem Formabontó lelassítja terjesztési és összehasonlítása
+### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Feltárás: Nem Formabontó lelassítja terjesztési és Formabontó
 Ebben a példában megkeresi a utazásokat, és hány volt Formabontó, amelyek nem voltak Formabontó, a megadott időtartam során (vagy a teljes adatkészlethez, ha a teljes évre vonatkozó, ahogy azt az itt beállított) száma. Ehhez a terjesztéshez tükrözi a bináris címke terjesztése bináris osztályozási modellezési később használható.
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
@@ -410,9 +410,9 @@ Ebben a példában megkeresi a utazásokat, és hány volt Formabontó, amelyek 
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-**Kimenet:** a lekérdezésnek kell visszaadnia a következő tipp gyakoriságok az év 2013: 90,447,622 Formabontó és 82,264,709 nem Formabontó.
+**A kimenetre:** A lekérdezés a következő tipp gyakoriságok adja vissza az év 2013-hoz: 90,447,622 Formabontó és 82,264,709 nem-Formabontó.
 
-### <a name="exploration-tip-classrange-distribution"></a>Feltárás: Tipp osztály és címtartomány terjesztési
+### <a name="exploration-tip-classrange-distribution"></a>Feltárás: Az osztály és címtartomány terjesztési tipp
 Ebben a példában kiszámítja a terjesztési tipp címtartományok egy adott időtartamon (vagy a teljes adatkészlethez, ha a teljes évre vonatkozó). Ez a később fogja használni a modellezési többosztályos osztályozási címke osztályok eloszlása.
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
@@ -437,7 +437,7 @@ Ebben a példában kiszámítja a terjesztési tipp címtartományok egy adott i
 | 0 |82264625 |
 | 4 |85765 |
 
-### <a name="exploration-compute-and-compare-trip-distance"></a>Feltárás: Számítás, és hasonlítsa össze a trip távolság
+### <a name="exploration-compute-and-compare-trip-distance"></a>Feltárás: Számítás és trip távolság összehasonlítása
 Ebben a példában a begyűjtés és dropoff hosszúsági alakítja át, és SQL földrajzi szélesség mutat, kiszámítja az SQL a földrajzi pontokat különbség használatával trip távolság és egy véletlenszerűen vett minta az eredmények az összehasonlításhoz adja vissza. A példában az eredményeket, és csak a a minőségi értékelés lekérdezési korábban tartozó érvényes koordináták korlátozza.
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
@@ -531,7 +531,7 @@ Itt van az SQL-szkriptet, amely meghatározza a távolságskála függvény.
     AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
     AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
-**Kimenet:** Ez a lekérdezés a begyűjtés és dropoff földrajzi szélesség (2,803,538 sorok) tábla állít elő, és a hosszúságot, és a megfelelő közvetlen a mérföld távolságra. Az alábbiakban az eredmények első 3 sorra vonatkozóan:
+**A kimenetre:** Ez a lekérdezés (2,803,538 sorok) táblázatot a begyűjtés és dropoff földrajzi szélesség és hosszúság és a megfelelő közvetlen távokat mérföldre lévő állít elő. Az alábbiakban az eredmények első 3 sorra vonatkozóan:
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
@@ -557,7 +557,7 @@ Az alábbi lekérdezés csatlakozik a **nyctaxi\_út** és **nyctaxi\_diszkont**
     AND   t.pickup_datetime = f.pickup_datetime
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
-Amikor elkészült, lépjen az Azure Machine Learning, a következő lehetőségekkel vagy:  
+Amikor elkészült, lépjen az Azure Machine Learning, a következő lehetőségekkel vagy:
 
 1. A végső SQL-lekérdezés kibontása és a mintaadatok és másolás és beillesztés közvetlenül a lekérdezés mentéséhez egy [adatok importálása] [ import-data] modul az Azure Machine Learning, vagy
 2. Azt tervezi, hogy egy új SQL DW-tábla létrehozásához használja a mintavételezett és visszafejtett adatok megőrzése és az új táblázat a [adatok importálása] [ import-data] az Azure Machine Learning modul. A PowerShell-parancsfájlt a korábbi lépésben ezt nem teszi meg. Ezt a táblázatot az adatok importálása modullal közvetlenül a olvashat.
@@ -570,16 +570,16 @@ A szükséges Azure SQL DW adatokat. a minta a helyi számítógépre letöltöt
 Ha már beállított egy AzureML-munkaterületet, közvetlenül a minta IPython Notebook feltöltéséhez az AzureML IPython Notebook szolgáltatás és indítsa el azt. Az AzureML IPython Notebook szolgáltatás feltölteni lépései a következők:
 
 1. Jelentkezzen be az AzureML-munkaterülethez, "Studio" kattintson a felül, és kattintson a lap bal oldalán "NOTEBOOKOK".
-   
+
     ![Kattintson a Studio ezután NOTEBOOKOK][22]
 2. "Új" kattintson a lap bal alsó sarkában, majd válassza "a Python 2". Ezután adjon meg egy nevet a jegyzetfüzetet, és kattintson a pipa jelre az új üres IPython Notebook létrehozása.
-   
+
     ![Az új gombra, majd válassza ki a Python 2][23]
 3. Kattintson a "Jupyter" szimbólumra az új IPython Notebook bal felső sarkában.
-   
+
     ![Kattintson a Jupyter szimbólum][24]
 4. A minta IPython Notebook áthúzása a a **fa** az AzureML IPython Notebook szolgáltatás, majd kattintson a lap **feltöltése**. Ezt követően a minta IPython Notebook lesz feltöltve az AzureML IPython Notebook szolgáltatásba.
-   
+
     ![Kattintson a feltöltés][25]
 
 A minta futtatásához IPython Notebook vagy a Python-szkriptfájlt, a következő Python-csomagok szükségesek. Az AzureML IPython Notebook szolgáltatás használja, ha ezek a csomagok előre telepítve lett.
@@ -630,7 +630,7 @@ Az adatbázis-kapcsolati beállítások a következő változók inicializálás
 
     print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-* Sorainak = 173179759  
+* Sorainak = 173179759
 * Oszlopok teljes száma = 14
 
 ### <a name="report-number-of-rows-and-columns-in-table-nyctaxifare"></a>Sorok és oszlopok a tábla < nyctaxi_fare > jelentés száma
@@ -648,7 +648,7 @@ Az adatbázis-kapcsolati beállítások a következő változók inicializálás
 
     print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-* Sorainak = 173179759  
+* Sorainak = 173179759
 * Oszlopok teljes száma = 11
 
 ### <a name="read-in-a-small-data-sample-from-the-sql-data-warehouse-database"></a>Olvassa el a kis méretű adatok minta az SQL Data Warehouse adatbázisból
@@ -671,7 +671,7 @@ Az adatbázis-kapcsolati beállítások a következő változók inicializálás
 
     print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
 
-Olvassa el a minta tábla 14.096495 másodperc idő.  
+Olvassa el a minta tábla 14.096495 másodperc idő.
 A beolvasott sorok és oszlopok száma = (1000, 21).
 
 ### <a name="descriptive-statistics"></a>Leíró statisztika
@@ -733,14 +733,14 @@ Hasonló módon is közötti kapcsolat ellenőrzése **arány\_kód** és **út\
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>A mintavételezett adatok IPython notebook az SQL-lekérdezések használata az adatok feltárása
 Ebben a szakaszban a mintavételezett adatok, amelyeket a rendszer megőrzi a fentiekben létrehozott új tábla használó adatok disztribúciók tárgyaljuk. Vegye figyelembe, hogy hasonló explorations használatával végezheti el az eredeti táblát.
 
-#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>Feltárás: Jelentés sorok és oszlopok száma a mintában szereplő táblázatban
+#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>Feltárás: Sorok és oszlopok a mintában szereplő táblázatban jelentéshez számát
     nrows = pd.read_sql('''SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_sample>')''', conn)
     print 'Number of rows in sample = %d' % nrows.iloc[0,0]
 
     ncols = pd.read_sql('''SELECT count(*) FROM information_schema.columns WHERE table_name = ('<nyctaxi_sample>') AND table_schema = '<schemaname>'''', conn)
     print 'Number of columns in sample = %d' % ncols.iloc[0,0]
 
-#### <a name="exploration-tippednot-tripped-distribution"></a>Feltárás: Formabontó/nem azokat kioldják terjesztési
+#### <a name="exploration-tippednot-tripped-distribution"></a>Feltárás: A hibaválasz Formabontó/nem terjesztési
     query = '''
         SELECT tipped, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -749,7 +749,7 @@ Ebben a szakaszban a mintavételezett adatok, amelyeket a rendszer megőrzi a fe
 
     pd.read_sql(query, conn)
 
-#### <a name="exploration-tip-class-distribution"></a>Feltárás: Tipp osztály terjesztési
+#### <a name="exploration-tip-class-distribution"></a>Feltárás: Osztály terjesztési tipp
     query = '''
         SELECT tip_class, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -758,12 +758,12 @@ Ebben a szakaszban a mintavételezett adatok, amelyeket a rendszer megőrzi a fe
 
     tip_class_dist = pd.read_sql(query, conn)
 
-#### <a name="exploration-plot-the-tip-distribution-by-class"></a>Feltárás: Jeleníti meg a tip terjesztési-osztály
+#### <a name="exploration-plot-the-tip-distribution-by-class"></a>Feltárás: A tip terjesztési nyomtatandó osztály
     tip_class_dist['tip_freq'].plot(kind='bar')
 
 ![#26 ábrázolása][26]
 
-#### <a name="exploration-daily-distribution-of-trips"></a>Feltárás: Napi terjesztési utak
+#### <a name="exploration-daily-distribution-of-trips"></a>Feltárás: Az utak napi terjesztési
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -772,7 +772,7 @@ Ebben a szakaszban a mintavételezett adatok, amelyeket a rendszer megőrzi a fe
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>Feltárás: Kivételre medallion megoszlása
+#### <a name="exploration-trip-distribution-per-medallion"></a>Feltárás: Medallion trip megoszlása
     query = '''
         SELECT medallion,count(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -805,11 +805,11 @@ Ebben a szakaszban a mintavételezett adatok, amelyeket a rendszer megőrzi a fe
 ## <a name="mlmodel"></a>Az Azure Machine Learning modellek készítése
 Mi most már készen áll a folytatásra modell létrehozásának és a modell üzembe helyezése [Azure Machine Learning](https://studio.azureml.net). Az adatokat, nevezetesen korábban azonosított problémák előrejelzési bármelyike használható:
 
-1. **Bináris osztályozás**: előre e tipp fizették útnak.
-2. **Többosztályos osztályozási**: előre fizetett, a korábban definiált osztályok megfelelően tipp tartományán.
-3. **Regresszió feladat**: előre fizetett belépőt a tip mennyisége.  
+1. **Bináris osztályozás**: Előrejelzési e tipp fizették útnak.
+2. **Többosztályos osztályozási**: Tipp számos előre fizetett, a korábban meghatározott osztály alapján.
+3. **Regresszió feladat**: Előre fizetett belépőt a tip mennyisége.
 
-A modellezés gyakorlat megkezdéséhez jelentkezzen be a **Azure Machine Learning** munkaterületen. Ha még nem hozott machine learning-munkaterület, [hozzon létre egy Azure Machine Learning-munkaterület](../studio/create-workspace.md).
+A modellezés gyakorlat megkezdéséhez jelentkezzen be a **Azure Machine Learning** munkaterületen. Ha még nem hozott machine learning-munkaterület, [hozzon létre egy Azure Machine Learning studio-munkaterület](../studio/create-workspace.md).
 
 1. Ismerkedés az Azure Machine Learninget, tekintse meg [Mi az Azure Machine Learning Studio?](../studio/what-is-ml-studio.md)
 2. Jelentkezzen be [az Azure Machine Learning Studio](https://studio.azureml.net).
@@ -818,7 +818,7 @@ A modellezés gyakorlat megkezdéséhez jelentkezzen be a **Azure Machine Learni
 Egy tipikus betanítási kísérlet a következő lépésekből áll:
 
 1. Hozzon létre egy **+ új** kísérletezhet.
-2. Az adatok lekérése az Azure gépi tanulás.
+2. Az adatok lekérése az Azure Machine Learning studióba.
 3. Előzetes feldolgozása, átalakíthatja, és szükség szerint kezeli.
 4. Funkciók létrehozása, igény szerint.
 5. Az adatok felosztása képzési érvényesítési/tesztelési adatkészletek (vagy különálló adatkészletek minden).
@@ -828,10 +828,10 @@ Egy tipikus betanítási kísérlet a következő lépésekből áll:
 9. Értékelje ki a tanulási probléma a lényeges metrikák számítási a modellek.
 10. Részletes adhatja meg a modellek, és válassza ki a legjobb modellt üzembe helyezéséhez.
 
-Ebben a gyakorlatban tudjuk már megvizsgálta és fejthetők vissza az adatokat az SQL Data Warehouse, és kiválasztotta a mintanagyság az, hogy az Azure Machine Learning. Itt látható az eljárást követve hozhat létre, a prediktív modellek közül legalább egyet:
+Ebben a gyakorlatban azt már megvizsgálta és fejthetők vissza az adatokat az SQL Data Warehouse, és kiválasztotta a mintanagyság az, hogy az Azure Machine Learning studióban. Itt látható az eljárást követve hozhat létre, a prediktív modellek közül legalább egyet:
 
-1. Az adatok lekérése az Azure ML használatával a [adatok importálása] [ import-data] modul elérhető a **adatok bemeneti és kimeneti** szakaszban. További információkért lásd: a [adatok importálása] [ import-data] modul referenciájának oldalát.
-   
+1. Az adatok lekérése az Azure Machine Learning studio használatával a [adatok importálása] [ import-data] modul elérhető a **adatok bemeneti és kimeneti** szakaszban. További információkért lásd: a [adatok importálása] [ import-data] modul referenciájának oldalát.
+
     ![Az Azure Machine Learning-importálási adatok][17]
 2. Válassza ki **Azure SQL Database** , a **adatforrás** a a **tulajdonságok** panel.
 3. Az adatbázis DNS-nevét adja meg a **adatbázis-kiszolgáló neve** mező. Formátum: `tcp:<your_virtual_machine_DNS_name>,1433`
@@ -845,10 +845,10 @@ Egy bináris osztályozási kísérletet, közvetlenül az SQL Data Warehouse-ad
 
 > [!IMPORTANT]
 > A modellezési adatok kinyerése és a lekérdezés példák mintavételi biztosított az előző szakaszokban **három modellezési gyakorlatok összes címkék szerepelnek a lekérdezés**. Az egyes modellezési gyakorlatok (kötelező) fontos lépés, hogy **kizárása** a szükségtelen címkéket, a másik két problémákat, és bármely más **adatszivárgás cél**. Például bináris osztályozási használjon a címke **Formabontó** és kizárja a mezőket **tipp\_osztály**, **tipp\_összeg**, és **teljes\_összeg**. Az utóbbi cél adatszivárgás mivel, azok magukban foglalják az ötlet fizetős.
-> 
+>
 > Kizárása szükségtelen oszlopokat, vagy adatszivárgás célként, előfordulhat, hogy használja a [Select Columns in Dataset] [ select-columns] modul vagy a [metaadatainak szerkesztése][edit-metadata]. További információkért lásd: [Select Columns in Dataset] [ select-columns] és [metaadatainak szerkesztése] [ edit-metadata] oldalak hivatkozhat.
-> 
-> 
+>
+>
 
 ## <a name="mldeploy"></a>Az Azure Machine Learning modellek üzembe helyezése
 Amikor készen áll a modellt, könnyedén telepítheti közvetlenül a kísérletből webszolgáltatásként. További információ az Azure ML-webszolgáltatások üzembe helyezéséhez: [egy Azure Machine Learning webszolgáltatás üzembe helyezése](../studio/publish-a-machine-learning-web-service.md).
@@ -881,9 +881,7 @@ Recap, amit eddig még ebben az oktatóanyagban a forgatókönyv, hogy létrehoz
 Ez a minta forgatókönyv és a kísérő parancsfájlok és IPython notebook(s) osztanak meg a Microsoft mellett az MIT-licenccel. Ellenőrizze a LICENSE.txt fájlt a könyvtárban mintakódot a Githubon további részletekért.
 
 ## <a name="references"></a>Referencia
-• [Andrés Monroy NYC Taxi lelassítja letöltési oldala](http://www.andresmh.com/nyctaxitrips/)  
-• [FOILing NYC Útadatok taxiköltség Chris Whong szerint](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-• [NYC Taxi és Limousine Bizottság kutatási és a statisztika](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
+• [Andrés Monroy NYC Taxi lelassítja letöltési oldalát](http://www.andresmh.com/nyctaxitrips/) • [FOILing NYC Útadatok taxiköltség által Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/) • [NYC Taxi és Limousine Bizottság kutatási és a statisztika](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png

@@ -1,6 +1,6 @@
 ---
-title: A PIM az Azure-erőforrásszerepkörök rendelkező megtekintése |} A Microsoft Docs
-description: Nézet, aki rendelkezik az Azure erőforrás-szerepkörökkel az Azure AD Privileged Identity Management (PIM).
+title: A PIM az Azure-erőforrások szerepköreihez tartozó tevékenység és a naplózási előzmények megtekintése |} A Microsoft Docs
+description: Megtekintheti a tevékenységeket, és a naplózási előzmények az Azure AD Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez tartozó.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,54 +13,103 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 03/30/2018
+ms.date: 01/24/2019
 ms.author: rolyon
-ms.openlocfilehash: ce7c96d92938c4e3b4cc0b53271df48350083754
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 21decb8260abfe98df913763a2338b34aacb1f91
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465231"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911456"
 ---
-# <a name="view-who-has-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrásszerepkörök rendelkező megtekintése
+# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrások szerepköreihez tartozó tevékenység és a naplózási előzmények megtekintése
 
-Az Azure Active Directory Privileged Identity Management (PIM), Ön is felügyelheti, ellenőrizheti és monitorozása az Azure-erőforrásokhoz való hozzáférést a szervezeten belül. Ez magában foglalja az előfizetések, erőforráscsoportok és még akkor is, virtuális gépeket. Az Azure Portalon, amely kihasználja az Azure szerepköralapú hozzáférés-vezérlés (RBAC) bármely erőforrás kihasználhatja a biztonsági és életciklus felügyeleti képességek az Azure AD PIM-ben. 
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM), megtekintheti tevékenység, aktiválás és az Azure-erőforrások szerepkörök naplózási előzményei a szervezeten belül. Ez magában foglalja az előfizetések, erőforráscsoportok és még akkor is, virtuális gépeket. Az Azure Portalon, amely kihasználja az Azure szerepköralapú hozzáférés-vezérlés (RBAC) bármely erőforrás kihasználhatja a biztonsági és életciklus felügyeleti képességek az PIM-ben.
 
-## <a name="pim-for-azure-resources-helps-resource-administrators"></a>Az Azure-erőforrásokhoz a PIM erőforrás rendszergazdáit segíti a
+## <a name="view-activity-and-activations"></a>Tevékenységek megtekintése és az aktiválások
 
-- Tekintse meg, milyen felhasználókkal és csoportokkal hozzárendelt szerepkörök felügyelt Azure-erőforrások
-- Igény szerinti, például az előfizetések, erőforráscsoportok és egyéb erőforrások kezelése "csak az időben" hozzáférés engedélyezése
-- Hozzárendelt felhasználók/csoportok erőforrás-hozzáférés automatikusan az új időhöz kötött hozzárendelési beállítások elévülése
-- Gyors feladatok vagy a készenléti ütemezések ideiglenes erőforrás-hozzáférés hozzárendelése
-- Az erőforrások eléréséhez a beépített vagy egyéni szerepkörhöz a többtényezős hitelesítés kényszerítése 
-- Aktív felhasználói munkamenet során resource access korrelált erőforrás tevékenységre vonatkozó jelentések lekérése
-- Értesítéseket kaphat az új felhasználók vagy csoportok hozzárendelése esetén erőforrásokhoz való hozzáférést, és ha azok a jogosult hozzárendelések aktiválása
+Milyen műveletek egy adott felhasználó tartott a különböző erőforrások megtekintéséhez, megtekintheti az Azure-erőforrás tevékenység, amely egy adott aktiválási időszak van társítva.
 
-## <a name="view-activation-and-azure-resource-activity"></a>Aktiválás és az Azure-erőforrás tevékenység megtekintése
+1. Nyissa meg **az Azure AD Privileged Identity Management**.
 
-Abban az esetben, ha meg, milyen műveletet egy adott felhasználó hajtott végre a különböző erőforrások van szüksége, áttekintheti az Azure-erőforrás tevékenység egy adott aktiválási időszak (a jogosult felhasználók) társított. Első lépésként válassza ki a felhasználó, a tagok megtekintése vagy egy adott szerepkör tagjainak listája. Az eredmény dátum szerint az Azure-erőforrás a felhasználói műveleteket, és ugyanazt az időszakra, hogy a legutóbbi szerepkör-aktiválások grafikus nézetet jelenít meg.
+1. Kattintson a **Azure-erőforrások**.
 
-![](media/azure-pim-resource-rbac/user-details.png)
+1. Kattintson a tevékenység és az aktiválások megtekinteni kívánt erőforrásra.
 
-Egy adott szerepkör-aktiválás kiválasztása jelennek meg a szerepkör aktiválásának részletei, és a megfelelő Azure-erőforrás tevékenység, amely történt, miközben a felhasználó volt aktív.
+1. Kattintson a **szerepkörök** vagy **tagok**.
 
-![](media/azure-pim-resource-rbac/audits.png)
+1. Kattintson a felhasználó.
 
-## <a name="review-who-has-access-in-a-subscription"></a>Tekintse át, aki hozzáféréssel rendelkezik az előfizetéshez
+    A felhasználói műveletek az Azure-erőforrások grafikus nézetének dátum szerint láthatja. Azt is bemutatja a legutóbbi szerepkör-aktiválások, hogy ugyanazon időszakra.
 
-Tekintse át a szerepkör-hozzárendeléseket az előfizetésében, a tagok lapon válassza a bal oldali navigációs vagy szerepkörök kiválasztása, és válasszon egy adott szerepkör tagjai áttekintéséhez. 
+    ![Felhasználói adatok](media/azure-pim-resource-rbac/rbac-user-details.png)
 
-Válassza ki a tekintse át a meglévő hozzáférési felülvizsgálatok megtekintéséhez, és válassza a Hozzáadás létrehoz egy új, a művelet sávon.
+1. Kattintson egy adott szerepkör aktiválásának megjelenítéséhez a részletek és a megfelelő Azure-erőforrás tevékenység, amely történt, miközben a felhasználó volt aktív.
 
-![](media/azure-pim-resource-rbac/owner.png)
+    ![Válassza ki a szerepkör aktiválása](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
-[További információ a hozzáférési felülvizsgálatok](pim-how-to-perform-security-review.md)
+## <a name="export-role-assignments-with-children"></a>Szerepkör-hozzárendeléseit a gyermekkel rendelkező kifejezések
 
->[!NOTE]
-Értékelések jelenleg csak támogatottak előfizetés erőforrástípusok.
+Megfelelőségi követelményt rendelkezhet, ahol meg kell adnia szerepkör-hozzárendelések teljes listáját az auditorok. A PIM lehetővé teszi egy adott erőforráshoz, amely tartalmazza az összes gyermek-erőforrás szerepkör-hozzárendelések lekérdezés szerepkör-hozzárendelést. Korábban a rendszergazdák teljes listáját az előfizetéshez tartozó szerepkör-hozzárendelések nehéz volt, és kellett arra, hogy minden erőforrás szerepkör-hozzárendeléseit. A PIM használata, lekérdezheti, ha az összes aktív és a jogosult szerepkör-hozzárendelések egy előfizetésben, beleértve az összes erőforráscsoportra és erőforrások szerepkör-hozzárendeléseit.
+
+1. Nyissa meg **az Azure AD Privileged Identity Management**.
+
+1. Kattintson a **Azure-erőforrások**.
+
+1. Kattintson a kívánt szerepkör-hozzárendeléseit, például az előfizetés erőforrás.
+
+1. Kattintson a **tagok**.
+
+1. Kattintson a **exportálása** az exportálási tagsági panel megnyitásához.
+
+    ![Tagság ablaktábla exportálása](media/azure-pim-resource-rbac/export-membership.png)
+
+1. Kattintson a **exportálja az összes tag** exportálhatja egy CSV-fájlban szereplő összes szerepkör-hozzárendelések.
+
+    ![CSV-fájl exportálása](media/azure-pim-resource-rbac/export-csv.png)
+
+## <a name="view-resource-audit-history"></a>Erőforrás-naplózási előzmények megtekintése
+
+Erőforrás naplózása megtekintheti az összes szerepkör tevékenység egy erőforrás.
+
+1. Nyissa meg **az Azure AD Privileged Identity Management**.
+
+1. Kattintson a **Azure-erőforrások**.
+
+1. Kattintson a naplózási előzmények a megtekinteni kívánt erőforrásra.
+
+1. Kattintson a **erőforrás naplózása**.
+
+1. Szűrés egy előre definiált dátum- vagy egyéni tartomány használatával előzményeit.
+
+    ![Erőforrás naplózása szűrése](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+
+1. A **naplózás típusa**válassza **Activate (hozzárendelt + aktiválva)**.
+
+    ![Tevékenység részletei](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+
+1. A **művelet**, kattintson a **(tevékenységet)** a felhasználó számára a felhasználói tevékenység részletei az Azure-erőforrások számára.
+
+    ![Felhasználói tevékenység részletei](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
+
+## <a name="view-my-audit"></a>Saját naplózás megtekintése
+
+Saját naplózás lehetővé teszi a személyes szerepkör tevékenység megtekintéséhez.
+
+1. Nyissa meg **az Azure AD Privileged Identity Management**.
+
+1. Kattintson a **Azure-erőforrások**.
+
+1. Kattintson a naplózási előzmények a megtekinteni kívánt erőforrásra.
+
+1. Kattintson a **saját naplózás**.
+
+1. Szűrés egy előre definiált dátum- vagy egyéni tartomány használatával előzményeit.
+
+    ![Személyes szerepkör tevékenység](media/azure-pim-resource-rbac/my-audit-time.png)
 
 ## <a name="next-steps"></a>További lépések
 
 - [Rendelje hozzá a PIM az Azure-erőforrásszerepkörök](pim-resource-roles-assign-roles.md)
 - [Hagyja jóvá vagy utasítsa a PIM az Azure-erőforrások szerepköreihez tartozó kérelmek](pim-resource-roles-approval-workflow.md)
-- [Beépített szerepkörök az Azure-ban](../../role-based-access-control/built-in-roles.md)
+- [A PIM az Azure AD-címtárbeli szerepkörök naplózási előzmények megtekintése](pim-how-to-use-audit-log.md)

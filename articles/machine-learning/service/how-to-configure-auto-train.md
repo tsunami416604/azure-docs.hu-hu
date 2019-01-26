@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 865d00d4a6608e422fdfca1297962913ee205827
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 5bb9bfdc90c18ff044e73a61aaff9e95bdf28d25
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823436"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081619"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Automatizált machine learning-példakísérleteket konfigurálása
 
@@ -35,7 +35,7 @@ Az automatikus machine learningben elérhető konfigurációs lehetőségek:
 * Regisztráljon és a modell üzembe helyezése
 
 ## <a name="select-your-experiment-type"></a>A kísérlet típusának kiválasztása
-Mielőtt elkezdené a kísérlethez, meg kell határoznia a megoldandó, machine learning probléma típusú. Automatizált machine learning támogatja a besorolást, regressziós és előrejelzés tevékenységtípust. 
+Mielőtt elkezdené a kísérlethez, meg kell határoznia a megoldandó, machine learning probléma típusú. Automatizált machine learning támogatja a besorolást, regressziós és előrejelzés tevékenységtípust.
 
 Automatizált gépi tanulási funkciók általánosan elérhetők, amíg **előrejelzés jelenleg még nyilvános előzetes verzióban.**
 
@@ -59,7 +59,7 @@ Besorolás | Regresszió | Előrejelzések
 ## <a name="data-source-and-format"></a>Adatforrás és a formátum
 Automatizált machine learning található adatok támogatja, a helyi számítógépére vagy a felhőben, például az Azure Blob Storage. Az adatok olvashatók be a scikit-ismerje meg a támogatott formátumok. Áttekintheti az adatokat:
 * Numpy tömbök X (szolgáltatások) és az y (célváltozó vagy más néven címke)
-* Pandas dataframe 
+* Pandas dataframe
 
 Példák:
 
@@ -67,7 +67,7 @@ Példák:
 
     ```python
     digits = datasets.load_digits()
-    X_digits = digits.data 
+    X_digits = digits.data
     y_digits = digits.target
     ```
 
@@ -75,9 +75,9 @@ Példák:
 
     ```python
     import pandas as pd
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    df = df.drop(["Label"], axis=1) 
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    df = df.drop(["Label"], axis=1)
     df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     ```
 
@@ -88,18 +88,18 @@ Ha egy távoli számítási használatával futtathatja a kísérletet, az adato
 Íme egy példa `get_data`:
 
 ```python
-%%writefile $project_folder/get_data.py 
-import pandas as pd 
-from sklearn.model_selection import train_test_split 
-from sklearn.preprocessing import LabelEncoder 
-def get_data(): # Burning man 2016 data 
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    le = LabelEncoder() 
-    le.fit(df["Label"].values) 
-    y = le.transform(df["Label"].values) 
-    df = df.drop(["Label"], axis=1) 
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42) 
+%%writefile $project_folder/get_data.py
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+def get_data(): # Burning man 2016 data
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    le = LabelEncoder()
+    le.fit(df["Label"].values)
+    y = le.transform(df["Label"].values)
+    df = df.drop(["Label"], axis=1)
+    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     return { "X" : df, "y" : y }
 ```
 
@@ -117,7 +117,7 @@ X | Pandas Dataframe vagy Numpy tömbje | data_train, a címkét, az oszlopok | 
 Y | Pandas Dataframe vagy Numpy tömbje |   label   | Megkezdheti az adatok. A besorolás kell lennie az egész számok tömbje.
 X_valid | Pandas Dataframe vagy Numpy tömbje   | data_train, felirat | _Nem kötelező_ érvényesítése az összes szolgáltatás. Ha nincs megadva, az X train között van felosztva, és ellenőrzése
 y_valid |   Pandas Dataframe vagy Numpy tömbje | data_train, felirat | _Nem kötelező_ a felirat adatainak ellenőrzése a. Ha nincs megadva, az y train között van felosztva, és ellenőrzése
-sample_weight | Pandas Dataframe vagy Numpy tömbje |   data_train, a címkét, az oszlopok| _Nem kötelező_ súlyértéket minden mintához. Akkor használja, ha szeretné rendelni az adatpontokhoz különböző súlya 
+sample_weight | Pandas Dataframe vagy Numpy tömbje |   data_train, a címkét, az oszlopok| _Nem kötelező_ súlyértéket minden mintához. Akkor használja, ha szeretné rendelni az adatpontokhoz különböző súlya
 sample_weight_valid | Pandas Dataframe vagy Numpy tömbje | data_train, a címkét, az oszlopok |    _Nem kötelező_ súlyértéket minden érvényesítési mintához. Ha nincs megadva, a sample_weight train között van felosztva, és ellenőrzés
 data_train |    Pandas Dataframe |  X, y, X_valid, y_valid |    Minden adat (funkciók és címke) rendelkező betanítása
 label | sztring  | X, y, X_valid, y_valid |  A data_train melyik oszlop felel meg a címke
@@ -136,7 +136,8 @@ Automatizált machine learning-példakísérleteket támogatja az adatok betölt
 >* Szűrés
 >* Egyéni Python-átalakítások
 
-További információ az adatok előkészítési sdk tekintse meg a [hogyan készíti elő az adatok modellezését, ahol a cikk](how-to-load-data.md). Alább látható egy példa, adat-előkészítési sdk használata az adatok betöltése. 
+További információ az adatok előkészítési sdk tekintse meg a [hogyan készíti elő az adatok modellezését, ahol a cikk](how-to-load-data.md).
+Alább látható egy példa, adat-előkészítési sdk használata az adatok betöltése.
 ```python
 # The data referenced here was pulled from `sklearn.datasets.load_digits()`.
 simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
@@ -189,7 +190,7 @@ Néhány példa:
         primary_metric='AUC_weighted',
         max_time_sec=12000,
         iterations=50,
-        X=X, 
+        X=X,
         y=y,
         n_cross_validations=2)
     ```
@@ -201,7 +202,7 @@ Néhány példa:
         max_time_sec=600,
         iterations=100,
         primary_metric='r2_score',
-        X=X, 
+        X=X,
         y=y,
         n_cross_validations=5)
     ````
@@ -223,7 +224,7 @@ Tulajdonság |  Leírás | Alapértelmezett érték
 `enable_cache`  | Igaz/hamis <br/>Tételhez és újbóli összes ismétlésének előre feldolgozott ugyanazok az adatok előfeldolgozása ezt igaz lehetővé teszi, hogy a beállítás kész egyszer. | True (Igaz) |
 `blacklist_models`  | Automatizált machine learning-kísérlet megkísérli számos különböző algoritmus rendelkezik. Konfigurálja az egyes algoritmusok kizárása a kísérlet. Akkor hasznos, ha vegye figyelembe, hogy aránytól nem működnek jól az adatkészlet. Kivéve a algoritmusok is takaríthat meg számítási erőforrásokat és képzési időt.<br/>Besorolási megengedett értékek<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Engedélyezett értékek regresszió<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Megengedett értékek az előrejelzés<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   None
 `whitelist_models`  | Automatizált machine learning-kísérlet megkísérli számos különböző algoritmus rendelkezik. Konfigurálja úgy, hogy bizonyos algoritmust a kísérlethez tartalmazza. Akkor hasznos, ha vegye figyelembe, hogy aránytól esetén működik megfelelően az adatkészlet. <br/>Besorolási megengedett értékek<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Engedélyezett értékek regresszió<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Megengedett értékek az előrejelzés<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  None
-`verbosity` |Folyamatban van a részletes és a kritikus folyamatban információval azt szabályozza, a naplózási szint a legkevésbé. Részletességi szint ugyanazokat az értékeket vesz igénybe, a python-naplózás csomagban meghatározott módon. Engedélyezett értékek a következők:<br/><li>logging.INFO</li><li>a naplózás. FIGYELMEZTETÉS</li><li>a naplózás. HIBA TÖRTÉNT</li><li>a naplózás. KRITIKUS</li>  | logging.INFO</li> 
+`verbosity` |Folyamatban van a részletes és a kritikus folyamatban információval azt szabályozza, a naplózási szint a legkevésbé. Részletességi szint ugyanazokat az értékeket vesz igénybe, a python-naplózás csomagban meghatározott módon. Engedélyezett értékek a következők:<br/><li>logging.INFO</li><li>a naplózás. FIGYELMEZTETÉS</li><li>a naplózás. HIBA TÖRTÉNT</li><li>a naplózás. KRITIKUS</li>  | logging.INFO</li>
 `X` | Megkezdheti az összes funkció |  None
 `y` |   Megkezdheti az adatok. A besorolás kell lennie az egész számok tömbje.|  None
 `X_valid`|_Nem kötelező_ érvényesítése az összes szolgáltatás. Ha nincs megadva, az X train között van felosztva, és ellenőrzése |   None
@@ -233,7 +234,7 @@ Tulajdonság |  Leírás | Alapértelmezett érték
 `run_configuration` |   RunConfiguration objektum.  Távoli Futtatás használja. |None
 `data_script`  |    A get_data metódus tartalmazó fájl elérési útja.  Távoli Futtatás szükséges.   |None
 `model_explainability` | _Nem kötelező_ igaz/hamis <br/>  Igaz lehetővé teszi, hogy minden egyes ismétléskor végrehajtani a funkció fontos kísérletezhet. Használhatja explain_model() módszert is egy adott iteráció engedélyezése funkció fontosságát, igény szerinti, az iteráció kísérlet befejezése után. | False (Hamis)
-`enable_ensembling`|Ez a jelző azt ensembling iteráció engedélyezése az összes többi ismétlésének befejezését követően.| True (Igaz) 
+`enable_ensembling`|Ez a jelző azt ensembling iteráció engedélyezése az összes többi ismétlésének befejezését követően.| True (Igaz)
 `ensemble_iterations`|Során, ami lehetőséget választjuk, a végső ensemble részét illesztett folyamat ismétlések száma.| 15
 `experiment_timeout_minutes`| Korlátozza a (perc), hogy mennyi ideig tarthat a teljes kísérlet futtatása | None
 
@@ -324,20 +325,20 @@ Kétféleképpen funkció fontos létrehozni.
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         explain_model(fitted_model, X_train, X_test)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-*   Funkció fontos összes ismétlésének megtekintéséhez állítsa `model_explainability` jelzőt `True` AutoMLConfig a.  
+*   Funkció fontos összes ismétlésének megtekintéséhez állítsa `model_explainability` jelzőt `True` AutoMLConfig a.
 
     ```python
     automl_config = AutoMLConfig(task = 'classification',
@@ -346,7 +347,7 @@ Kétféleképpen funkció fontos létrehozni.
                                  max_time_sec = 12000,
                                  iterations = 10,
                                  verbosity = logging.INFO,
-                                 X = X_train, 
+                                 X = X_train,
                                  y = y_train,
                                  X_valid = X_test,
                                  y_valid = y_test,
@@ -358,20 +359,20 @@ Kétféleképpen funkció fontos létrehozni.
 
     ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         retrieve_model_explanation(best_run)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-A funkció fontos diagram a munkaterületen, az Azure Portalon jelenítheti meg. A diagram is látható, a Jupyter widget a notebook használatakor. A diagramok bővebben lásd: a [minta Azure ML notebookok cikk.](samples-notebooks.md)
+A funkció fontos diagram a munkaterületen, az Azure Portalon jelenítheti meg. A diagram is látható, a Jupyter widget a notebook használatakor. A diagramok bővebben lásd: a [minta Azure Machine Learning szolgáltatás notebookok cikk.](samples-notebooks.md)
 
 ```python
 from azureml.widgets import RunDetails
@@ -383,4 +384,4 @@ RunDetails(local_run).show()
 
 Tudjon meg többet [hogyan és hol érdemes a modell üzembe helyezése](how-to-deploy-and-where.md).
 
-Tudjon meg többet [hogyan az alkalmazások automatikus machine learning egy besorolási modell betanításához](tutorial-auto-train-models.md) vagy [betanításához használatával hogyan machine learning egy távoli erőforrás az automatizált](how-to-auto-train-remote.md). 
+Tudjon meg többet [hogyan az alkalmazások automatikus machine learning egy besorolási modell betanításához](tutorial-auto-train-models.md) vagy [betanításához használatával hogyan machine learning egy távoli erőforrás az automatizált](how-to-auto-train-remote.md).

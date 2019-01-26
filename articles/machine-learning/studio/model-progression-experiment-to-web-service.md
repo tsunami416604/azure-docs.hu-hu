@@ -1,8 +1,21 @@
 ---
-Cím: Hogyan egy Machine Learning Studio-modell válik a web service titleSuffix: Azure Machine Learning Studio description: Beállítás esetén hogyan az Azure Machine Learning modell különböző fázisokon halad a fejlesztési experiment-szolgáltatáscsomagot Web Service áttekintése.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 03/20/2017
+title: Hogyan válik, egy gépi tanulási modell egy webszolgáltatás
+titleSuffix: Azure Machine Learning Studio
+description: Beállítás esetén hogyan az Azure Machine Learning modell különböző fázisokon halad a fejlesztési experiment-szolgáltatáscsomagot Web Service áttekintése.
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 03/20/2017
+ms.openlocfilehash: d084917f247aa20f59aea5179efa045838d7a2af
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076893"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Hogyan egy Machine Learning Studio modellek útja a kísérlettől kísérlet egy szolgáltatáscsomagot webszolgáltatáshoz
 Az Azure Machine Learning Studio biztosítja egy interaktív vászonra, amely lehetővé teszi a fejlesztést, futtassa, tesztelése és ismételt futtatásával egy ***kísérletezhet*** jelölő prediktív elemzési modellek. Nincsenek modulok érhető el, amelyek segítségével számos:
@@ -19,9 +32,9 @@ Ha már elégedett is futtathatja a kísérletet, telepítheti azt egy ***klassz
 Ez a cikk a idejéről hogyan-szolgáltatáscsomagot webszolgáltatás a gépi tanulási modell különböző fázisokon halad a fejlesztési kísérletezést áttekintést ad a.
 
 > [!NOTE]
-> Egyéb módon fejleszthet és helyezhet üzembe a machine learning-modellek, de ez a cikk a Machine Learning Studio használatának összpontosít. Például egy klasszikus prediktív webszolgáltatás létrehozása az r nyelv leírása olvasható, tekintse meg a következő blogbejegyzésben: [Build & üzembe prediktív Web Apps használatával RStudio és az Azure Machine Learning](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
-> 
-> 
+> Egyéb módon fejleszthet és helyezhet üzembe a machine learning-modellek, de ez a cikk a Machine Learning Studio használatának összpontosít. Például egy klasszikus prediktív webszolgáltatás létrehozása az r nyelv leírása olvasható, tekintse meg a következő blogbejegyzésben: [Build & üzembe prediktív Web Apps használatával RStudio és az Azure Machine Learning studio](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
+>
+>
 
 Bár az Azure Machine Learning Studióban az célja, hogy a fejlesztés és üzembe helyezéséhez egy *prediktív elemzési modellek*, lehetséges, egy kísérlet, amely nem tartalmazza a prediktív elemzési modellek fejlesztése a Studio használatával. Például egy kísérlet előfordulhat, hogy csak a bemeneti adatokat, kezelheti és majd az eredményeket. Csakúgy, mint egy prediktív elemzési kísérletet telepítheti a nem prediktív kísérletté webszolgáltatásként, de azért egyszerűbb, mert a kísérlet nem képzés, vagy egy machine learning-modell pontozása. Nem érhető el a Studióval ily módon a tipikus, amíg azt fogjuk foglalja bele a hozzászólás, hogy hogyan működik a Studio teljes leírását biztosítani tudjuk.
 
@@ -50,8 +63,8 @@ A konvertálási folyamat során nem a rendszer elveti a tanítási kísérlet. 
 
 > [!NOTE]
 > Amikor rákattint **prediktív webszolgáltatás** a betanítási kísérlet átalakítása prediktív kísérletté automatikus folyamat indítja el, és ez a legtöbb esetben működik jól. Ha a betanítási kísérlet túl összetett (például, hogy több elérési út, amely csatlakozik a együtt képzéshez), előfordulhat, hogy inkább manuálisan ehhez az átalakításhoz. További információkért lásd: [hogyan készülhet fel a modell üzembe helyezése az Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md).
-> 
-> 
+>
+>
 
 ### <a name="the-web-service"></a>A webszolgáltatás
 Ha már elégedett, hogy a prediktív kísérletté készen áll, a szolgáltatás vagy klasszikus webszolgáltatásként üzembe helyezhet, vagy egy új webszolgáltatás-alapú Azure Resource Manager. Való telepítésével, mint a modell üzembe helyezése egy *klasszikus Machine Learning Web service*, kattintson a **webszolgáltatás üzembe helyezése** válassza **Web Service telepítése [klasszikus]**. Szeretné üzembe helyezni, *új Machine Learning webszolgáltatás*, kattintson a **webszolgáltatás üzembe helyezése** válassza **[Új] Web Service telepítése**. Felhasználók mostantól adatokat küldeni a modellt, a Web service REST API használatával, és vissza az eredményeket kapni. További információ: [Az Azure Machine Learning webszolgáltatásainak használata](consume-web-services.md).
@@ -84,7 +97,7 @@ Ha meg szeretné tartani a teljes gépi tanulási modellt, de szeretné azt az �
 
 1. **A modell újratanítása, miközben a webszolgáltatás fut.** -újratanítása a modellt, a prediktív webszolgáltatás futtatása közben szeretne, ha ezt megteheti is által végzett módosítások néhány, hogy a tanítási kísérlet egy ***átképezési Kísérletezzen***, majd üzembe helyezheti, egy  ***megőrzési webes* szolgáltatás**. Ehhez az utasításokért lásd: [Retrain Machine Learning-modellek](retrain-models-programmatically.md).
 2. **Lépjen vissza az eredeti tanítási kísérletet, és különböző betanítási adatok használata a modell fejlesztéséhez** – a Web Service a prediktív kísérletté kapcsolódik, de a tanítási kísérlet nem közvetlenül kapcsolódó ily módon. Ha módosítja az eredeti tanítási kísérletet, és kattintson a **webszolgáltatás beállítása**, hoz létre egy *új* prediktív, amellyel kísérletezhet telepítésekor létrehoz egy *új* webes a szolgáltatás. Csak akkor nem frissíti az eredeti webszolgáltatás.
-   
+
    Ha módosítania kell a tanítási kísérlet, nyissa meg, és kattintson a **Mentés másként** másolását. Ezzel érintetlenül hagyja az eredeti betanítási kísérlet, prediktív kísérletet, és webes szolgáltatás. Mostantól létrehozhat egy új webszolgáltatás a módosításokat. Miután üzembe helyezte az új webes szolgáltatás, majd eldöntheti, hogy állítsa le az előző webes szolgáltatás, vagy a zavartalan működés mellett az újat.
 
 **Szeretne egy másik modell betanítása**

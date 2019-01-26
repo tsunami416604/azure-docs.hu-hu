@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/24/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 743ac433418386281acc58ad1deef06ee75e38d9
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d7684aa79ac9f58c2a047b01a6d9f5263795221d
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316870"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912050"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Az Azure Search .NET SDK 5-ös verzió frissítése
 Ha a 4.0-preview jelű verziót vagy a régebbi verziót használja a [Azure Search .NET SDK](https://aka.ms/search-sdk), ez a cikk segít az alkalmazás használhatja a 5-ös verzió frissítése.
@@ -44,17 +44,26 @@ Az Azure Search .NET SDK 5-ös verzióját a legújabb célozza meg benne az Azu
 ## <a name="steps-to-upgrade"></a>Frissítési lépései
 Először frissítse a NuGet referenciája `Microsoft.Azure.Search` vagy a NuGet Package Manager konzol segítségével vagy a jobb gombbal a projekt hivatkozásait a és a Visual Studióban válassza a "Kezelése NuGet Packages …".
 
-Miután NuGet töltött le az új csomagok és azok függőségeit, a projekt újraépítéséhez. Előzetes verziójú funkció, amely nem szerepel az új általánosan elérhető SDK-t használja, hacsak sikeresen kell újraépíteni (Ha nem, akkor mondja el nekünk a [GitHub](https://github.com/azure/azure-sdk-for-net/issues)). Ha igen, akkor készen!
+Miután NuGet töltött le az új csomagok és azok függőségeit, a projekt újraépítéséhez. Attól függően, hogyan épül fel a kódot akkor előfordulhat, hogy építse újra sikeresen megtörtént. Ha igen, akkor készen!
+
+A build sikertelen lesz, ha egy build hiba történt a következőhöz hasonlóan kell megjelennie:
+
+    The name 'SuggesterSearchMode' does not exist in the current context
+
+A következő lépés, hogy javítsa a build-hibát. Lásd: [parancsban történt használhatatlanná tévő az 5-ös verzió](#ListOfChanges) mi okozza a hibát, és annak megoldásáról.
 
 Vegye figyelembe, hogy az Azure Search .NET SDK csomagolásának változtatások miatt, 5-ös verzió használatához az alkalmazás újból létre kell hoznia. Ezek a változások részleteit [parancsban történt használhatatlanná tévő az 5-ös verzió](#ListOfChanges).
 
 Elavult módszerek és a Tulajdonságok kapcsolatban további build figyelmeztetések jelenhetnek meg. A figyelmeztetésekkel kapcsolatos helyett az elavult funkció tartalmazza. Például, ha az alkalmazás használja a `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` módszerrel kell egy figyelmeztetés fog megjelenni arról, hogy a "Ez a viselkedés mostantól alapértelmezés szerint engedélyezve van, így a metódus meghívásának hatására már nem szükséges."
 
-Miután build figyelmeztetéseket rögzíteni az alkalmazást, hogy új funkciók előnyeinek kihasználása, ha módosításokat végezheti el. Az SDK-t az új funkciók részletes leírásuk [5-ös verzió újdonságai](#WhatsNew).
+Miután már kijavított bármely fordítási hibákat vagy figyelmeztetéseket, alkalmazását az új funkciók előnyeinek kihasználása, ha módosításokat végezheti el. Az SDK-t az új funkciók részletes leírásuk [5-ös verzió újdonságai](#WhatsNew).
 
 <a name="ListOfChanges"></a>
 
 ## <a name="breaking-changes-in-version-5"></a>Az 5-ös verzió használhatatlanná tévő változásai
+
+### <a name="new-package-structure"></a>Új csomag szerkezete
+
 A legtöbb jelentős használhatatlanná tévő változást az 5-ös verzió, hogy a `Microsoft.Azure.Search` szerelvény és annak tartalma rendelkezik mint négy külön NuGet-csomagok most elosztott négy külön szerelvények felosztva:
 
  - `Microsoft.Azure.Search`: A csomag egy metaadat-, amely tartalmazza az összes többi Azure Search csomagot függőségekként. Az SDK újabb verzióra történő frissítés, csak ez a csomag frissítése, és újra létrehozni kell elegendő az új verzió használatának megkezdéséhez.
@@ -65,6 +74,10 @@ A legtöbb jelentős használhatatlanná tévő változást az 5-ös verzió, ho
 Ez a változás technikailag megsérti számos különböző szerelvények között lett áthelyezve, mert. Ezért az alkalmazás újraépítését szükség ahhoz, hogy frissítsen az SDK 5-ös verzióját.
 
 Nincs más kompatibilitástörő változásokat az 5-ös verzió, amely lehet szükség a kód kis számú mellett az alkalmazás újraépítését változik.
+
+### <a name="change-to-suggesters"></a>Váltson a Javaslattevők 
+
+A `Suggester` konstruktor már nem rendelkezik egy `enum` paramétere `SuggesterSearchMode`. Ez az enumerálás csak egyetlen értékkel rendelkezik, és ezért redundáns volt. Ha ez miatt kialakult hibákat, a egyszerűen a mutató hivatkozások eltávolítása a `SuggesterSearchMode` paraméter.
 
 ### <a name="removed-obsolete-members"></a>Elavult a tagok eltávolítása
 

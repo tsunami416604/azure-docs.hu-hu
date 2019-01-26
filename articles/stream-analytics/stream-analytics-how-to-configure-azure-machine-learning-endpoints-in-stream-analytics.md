@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: 6f8565fcecab2c17794f94f5a051cc2f269a9d1c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8d5e3060d31a260ddba2e7b23d468568ea9569c0
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451036"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078032"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>A Machine Learning-integráció a Stream Analytics
 Stream Analytics támogatja a felhasználó által definiált függvények, melyek az Azure Machine Learning-végpontokra irányuló. Ez a szolgáltatás REST API-támogatása részleteit a a [Stream Analytics REST API-könyvtár](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ez a cikk nyújt kiegészítő információkat, amelyeket ez a funkció a Stream Analytics sikeres megvalósítását. Oktatóanyag is közzé lett téve, és elérhető [Itt](stream-analytics-machine-learning-integration-tutorial.md).
@@ -26,7 +26,7 @@ A Microsoft Azure Machine Learning segítségével hozhat létre, tesztelheti é
 * **Végpont**: *Végpontok* az Azure Machine Learning objektum szolgáltatások igénybe bemenetként, a alkalmazni egy megadott gépi tanulási modellt, és a pontozott a hibaüzenettel reagál.
 * **Pontozási webszolgáltatás**: A *pontozási webszolgáltatás* végpontok gyűjteménye van a fent említett módon.
 
-Minden végpont kötegelt végrehajtás és szinkron végrehajtás API-kkal rendelkezik. Stream Analytics szinkron végrehajtási használja. Az adott szolgáltatás nevű egy [kérés/válasz szolgáltatás](../machine-learning/studio/consume-web-services.md) AzureML studióban.
+Minden végpont kötegelt végrehajtás és szinkron végrehajtás API-kkal rendelkezik. Stream Analytics szinkron végrehajtási használja. Az adott szolgáltatás nevű egy [kérés/válasz szolgáltatás](../machine-learning/studio/consume-web-services.md) az Azure Machine Learning studióban.
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>A Machine Learning a Stream Analytics-feladatokhoz szükséges erőforrások
 Stream Analytics az alkalmazásában feladat feldolgozása, egy kérés/válasz végpontot egy [apikey tulajdonsággal végzett tesztelése](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md), és a egy swagger-definíció a sikeres végrehajtás minden szükséges. Stream Analytics egy további végpontot, amely a swagger-végpont URL-címet hoz létre, a felület és visszaadása egy alapértelmezett UDF-definíció a felhasználó rendelkezik.
@@ -45,10 +45,10 @@ REST API-k használatával konfigurálhatja a feladatot az Azure gépi nyelvére
 Tegyük fel, az alábbi példakód létrehoz egy skaláris elnevezésű UDF *newudf* , amely összekapcsolja az Azure Machine Learning-végpont. Vegye figyelembe, hogy a *végpont* (szolgáltatás-URI) a kiválasztott szolgáltatás az API help oldalon található, és a *apikey tulajdonsággal végzett tesztelése* szolgáltatások fő lapján találhatók.
 
 ````
-    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>  
+    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
 ````
 
-A példában a kérés törzse:  
+A példában a kérés törzse:
 
 ```json
     {
@@ -75,7 +75,7 @@ A vázban UDF létrehozása után az UDF teljes definíciója van szükség. A R
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
 ````
 
-A példában a kérés törzse:  
+A példában a kérés törzse:
 
 ```json
     {
@@ -87,7 +87,7 @@ A példában a kérés törzse:
     }
 ```
 
-A minta kimeneti e keresse meg valami szeretné alatt.  
+A minta kimeneti e keresse meg valami szeretné alatt.
 
 ```json
     {
@@ -175,7 +175,7 @@ A kérelem törzsében (RetrieveDefaultDefinition kimenete):
 ```
 
 ## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>Stream Analytics átalakítási hívja az UDF megvalósítása
-Most már lekérdezéséhez az UDF-ben (Itt nevű scoreTweet) minden bemeneti eseményhez, és választ az esemény-kimenetre.  
+Most már lekérdezéséhez az UDF-ben (Itt nevű scoreTweet) minden bemeneti eseményhez, és választ az esemény-kimenetre.
 
 ```json
     {

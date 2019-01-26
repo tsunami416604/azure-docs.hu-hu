@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2018
+ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 6ab2d92e2a3c62719af1c8ab6d6eda935fc49505
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: d6d1373a97b62d54d5bfc2595ee773a242af877a
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386774"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913447"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Storage explorer csatlakoztatása Azure Stack-előfizetéshez vagy a storage-fiók
 
@@ -37,7 +37,10 @@ Miután csatlakozott az Azure Stack-előfizetéshez vagy a storage-fiók, haszn�
 
 Közvetlen hozzáférés az Azure Stack vagy az Azure Stack-előfizetés a tártallózónak VPN-kapcsolatra van szüksége. A VPN-kapcsolat Azure Stackhez való beállításáról a [Csatlakozás az Azure Stackhez VPN segítségével](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) témakörben talál további információt.
 
-Az Azure Stack Development Kit kell exportálni az Azure Stack szolgáltató főtanúsítványát.
+Az az Azure Stack Development Kit (ASDK), kell exportálni az Azure Stack szolgáltató főtanúsítványát.
+
+> [!Note]  
+> A ASDK a Ha a VPN-en keresztül ASDK csatlakozik, ne használja a VPN-telepítési folyamat során létrehozott főtanúsítványt (CA.cer).  Ez egy DER kódolású tanúsítványt, és nem teszi lehetővé a Storage Explorer beolvasni az Azure Stack-előfizetést. A Storage Explorer használata Base-64 kódolású tanúsítvány exportálása az alábbi lépésekkel.
 
 ### <a name="export-and-then-import-the-azure-stack-certificate"></a>Exportálja és importálja az Azure Stack-tanúsítvány
 

@@ -3,19 +3,19 @@ title: Mikor és hogyan használhatja az Azure multi-factor Auth szolgáltatót?
 description: Mikor használjam a hitelesítésszolgáltatót az Azure MFA használatba Vételekor?
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 681a25877bb185e058774d609a1896d18b059ae3
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2d7156a1387184cff2eb4252648f0e844e8b1f50
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431758"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079707"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Mikor érdemes használni az Azure multi-factor Authentication-szolgáltatót
 

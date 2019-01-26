@@ -5,13 +5,13 @@ author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/20/2018
-ms.openlocfilehash: 12497f6a5173e2e4ea9c919fb6500c34f85749fa
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/24/2019
+ms.openlocfilehash: 76f6c15fc1e186e254c4edbb53a2a0ccf7050b3e
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534748"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912748"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Komplex veszélyforrások elleni védelem az Azure Database for MySQL-hez
 
@@ -22,6 +22,9 @@ Komplex veszélyforrások elleni védelem a speciális adatbiztonság ajánlat, 
 > [!NOTE]
 > A komplex veszélyforrások elleni védelem funkció **nem** a következő az Azure government és szuverén felhő-régiók: US Gov Texas, USA beli államigazgatás – Arizona, USA beli államigazgatás – Iowa, USA, beli államigazgatás – Virginia, USA védelmi Minisztériuma – keleti régiója, USA védelmi Minisztériuma – középső régiója, Németország közép-India, Németország Észak, kelet-Kína, kelet-Kína 2. Látogasson el [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) általános rendelkezésre állás érdekében.
 >
+
+> [!NOTE]
+> Ez a funkció érhető el minden régióban az Azure, Azure Database for MySQL általános célú és memóriahasználatra optimalizált kiszolgálók telepítési helyét.
 
 ## <a name="set-up-threat-detection"></a>Állítsa be a fenyegetések észlelése
 1. Indítsa el az Azure Portalra a [ https://portal.azure.com ](https://portal.azure.com).

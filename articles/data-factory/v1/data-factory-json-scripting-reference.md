@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 32e0be682d5d216df6741fa38bb0a16e4b323ef6
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 9f8ffe71743f4832d8ce633f050206d21f411276
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354195"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55082197"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Az Azure Data Factory - JSON-Parancsprogramokról
 > [!NOTE]
@@ -5387,7 +5387,7 @@ Vegye figyelembe a következő szempontokat:
 - A **típus** tulajdonsága **HDInsightSpark**.
 - A **rootPath** értékre van állítva **adfspark\\pyFiles** ahol adfspark az Azure Blob-tárolóba, pyFiles pedig finom mappát a tárolóban. Ebben a példában az Azure Blob Storage lesz, amely a Spark-fürt társítva van. Egy másik Azure-Storage feltöltheti a fájlt. Ha így tesz, a storage-fiók összekapcsolása a data factory az Azure Storage társított szolgáltatás létrehozása. Ezután adja meg a társított szolgáltatás neve értékeként a **sparkJobLinkedService** tulajdonság. Lásd: [Spark-tevékenység tulajdonságai](#spark-activity-properties) ezt a tulajdonságot, és egyéb tulajdonságok a Spark-tevékenység által támogatott.
 - A **entryFilePath** értékre van állítva a **test.py**, azaz a python-fájlt.
-- A **getDebugInfo** tulajdonsága **mindig**, ami azt jelenti, a naplófájlok mindig létrehozott (sikeres vagy sikertelen).  
+- A **getDebugInfo** tulajdonsága **mindig**, ami azt jelenti, a naplófájlok mindig létrehozott (sikeres vagy sikertelen).
 
     > [!IMPORTANT]
     > Azt javasoljuk, hogy nem ezzel a tulajdonsággal mindig éles környezetben, ha a probléma hibaelhárítást.
@@ -5396,13 +5396,13 @@ Vegye figyelembe a következő szempontokat:
 A tevékenységgel kapcsolatos további információkért lásd: [Spark-tevékenység](data-factory-spark.md) cikk.
 
 ## <a name="machine-learning-batch-execution-activity"></a>Machine Learning kötegelt végrehajtási tevékenység
-A következő tulajdonságokat is megadhat az Azure ML kötegelt végrehajtási tevékenység JSON-definícióban. A type tulajdonság a tevékenységhez kell lennie: **AzureMLBatchExecution**. Kell az Azure Machine Learning először a társított szolgáltatás létrehozása és értékeként adja meg a nevét, a **linkedServiceName** tulajdonság. A következő tulajdonságok támogatottak a **typeProperties** tevékenység típusa AzureMLBatchExecution beállításakor. szakasz:
+Az Azure Machine Learning studióban kötegelt végrehajtási tevékenység JSON-definíciót az alábbi tulajdonságokat is megadhat. A type tulajdonság a tevékenységhez kell lennie: **AzureMLBatchExecution**. Kell az Azure Machine Learning először a társított szolgáltatás létrehozása és értékeként adja meg a nevét, a **linkedServiceName** tulajdonság. A következő tulajdonságok támogatottak a **typeProperties** tevékenység típusa AzureMLBatchExecution beállításakor. szakasz:
 
 Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
-webServiceInput | Az adatkészlet, az Azure ML web service a bemenetnek átadni. Ez az adatkészlet is szerepelnie kell a tevékenység bemenetei között. |Használja a webServiceInput és a webServiceInputs. |
-webServiceInputs | Adja meg az adatkészleteket az Azure Machine Learning webszolgáltatás bemenetként átadni. Ha a webszolgáltatás több bemenet tart, használja a webServiceInputs tulajdonságot a webServiceInput tulajdonság használata helyett. Az adatkészletek által hivatkozott a **webServiceInputs** is szerepelnie kell a tevékenység **bemenetek**. | Használja a webServiceInput és a webServiceInputs. |
-webServiceOutputs | Az adatkészletek az Azure Machine Learning webszolgáltatás kimenetként rendelt. A web service Ez az adatkészlet kimeneti adatokat adja vissza. | Igen |
+webServiceInput | Az adatkészlet az Azure Machine Learning studio webszolgáltatás-bemenetként átadni. Ez az adatkészlet is szerepelnie kell a tevékenység bemenetei között. |Használja a webServiceInput és a webServiceInputs. |
+webServiceInputs | Adja meg az adatkészleteket, az Azure Machine Learning studio-webszolgáltatás tartozó bemeneti adatként. Ha a webszolgáltatás több bemenet tart, használja a webServiceInputs tulajdonságot a webServiceInput tulajdonság használata helyett. Az adatkészletek által hivatkozott a **webServiceInputs** is szerepelnie kell a tevékenység **bemenetek**. | Használja a webServiceInput és a webServiceInputs. |
+webServiceOutputs | Az adatkészletek esetében az Azure Machine Learning studio-webszolgáltatás kimenetként rendelt. A web service Ez az adatkészlet kimeneti adatokat adja vissza. | Igen |
 globalParameters | Ebben a szakaszban adja meg a webszolgáltatás-paraméterek értékeit. | Nem |
 
 ### <a name="json-example"></a>Példa JSON
@@ -5452,7 +5452,7 @@ A JSON a példában a telepített Azure Machine Learning Web service olvasási/�
 > Csak bemenetek és kimenetek AzureMLBatchExecution tevékenység argumentumként átadhatók paraméterek a webszolgáltatást. Ha például a fenti JSON-kódrészletben MLSqlInput a AzureMLBatchExecution tevékenység, amelyet a webszolgáltatás bemeneteként webServiceInput paraméteren keresztül egy bemeneti.
 
 ## <a name="machine-learning-update-resource-activity"></a>Machine Learning Update-erőforrástevékenység
-Az Azure Machine Learning Update Resource tevékenység JSON-definíció az alábbi tulajdonságokat is megadhat. A type tulajdonság a tevékenységhez kell lennie: **AzureMLUpdateResource**. Kell az Azure Machine Learning először a társított szolgáltatás létrehozása és értékeként adja meg a nevét, a **linkedServiceName** tulajdonság. A következő tulajdonságok támogatottak a **typeProperties** AzureMLUpdateResource tevékenység típusa beállításakor. szakasz:
+Az Azure Machine Learning studióban frissítés erőforrás tevékenység JSON-definíciót az alábbi tulajdonságokat is megadhat. A type tulajdonság a tevékenységhez kell lennie: **AzureMLUpdateResource**. Kell az Azure Machine Learning először a társított szolgáltatás létrehozása és értékeként adja meg a nevét, a **linkedServiceName** tulajdonság. A következő tulajdonságok támogatottak a **typeProperties** AzureMLUpdateResource tevékenység típusa beállításakor. szakasz:
 
 Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
@@ -5460,7 +5460,7 @@ trainedModelName | A retrained modell neve. | Igen |
 trainedModelDatasetName | A megőrzési művelet által visszaadott iLearner-fájlt mutató adatkészletet. | Igen |
 
 ### <a name="json-example"></a>Példa JSON
-A folyamat két tevékenységet tartalmaz: **AzureMLBatchExecution** és **AzureMLUpdateResource**. Az Azure ML kötegelt végrehajtási tevékenység bemeneteként a betanítási adatok vesz igénybe, és állít elő kimenetként egy iLearner-fájlt. A tevékenység hívja meg a képzés webszolgáltatás (betanítási kísérlet webszolgáltatásként közzétéve) és a bemeneti betanítási adatok, és fogadja a webszolgáltatás a ilearner-fájlt. A placeholderBlob csak egy helyőrző kimeneti adatkészletet, amely az Azure Data Factory szolgáltatás által a folyamat futtatásához szükséges.
+A folyamat két tevékenységet tartalmaz: **AzureMLBatchExecution** és **AzureMLUpdateResource**. Az Azure Machine Learning studio kötegelt végrehajtási tevékenység fogadja bemenetként a betanítási adatok, és létrehoz egy iLearner-fájlt, kimenetként. A tevékenység hívja meg a képzés webszolgáltatás (betanítási kísérlet webszolgáltatásként közzétéve) és a bemeneti betanítási adatok, és fogadja a webszolgáltatás a ilearner-fájlt. A placeholderBlob csak egy helyőrző kimeneti adatkészletet, amely az Azure Data Factory szolgáltatás által a folyamat futtatásához szükséges.
 
 
 ```json

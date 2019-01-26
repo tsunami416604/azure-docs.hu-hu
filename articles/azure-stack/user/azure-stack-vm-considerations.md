@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/19/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 8a9fc299f620c7df87544b467cf52535addfe313
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: bfe53ac99ae1719deeacc156b250fe5a7f87a99a
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651503"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913456"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Szempontok a virtuális gépek az Azure Stackben
 
@@ -104,8 +104,8 @@ A támogatott erőforrástípusok és API-verziók listáját eltérőek lehetne
 
 Windows termékek termékhasználati jogosultságoknak és a Microsoft licencfeltételeit összhangban kell felhasználni. Használja az Azure Stack [automatikus Virtuálisgép-aktiválás](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) Windows Server virtuális gépeken (VM) aktiválása (AVMA).
 
-- Az Azure Stack gazdagépen az AVMA kulcsokat Windows aktiválja a Windows Server 2016-hoz. Az összes virtuális gépek, amelyek a Windows Server 2012 vagy újabb a rendszer automatikusan aktiválja.
-- Futtassa a Windows Server 2008 R2 automatikusan nem aktív, és aktiválni kell a virtuális gépek [MAK-aktiválást](https://technet.microsoft.com/library/ff793438.aspx). A MAK-aktiválást használjon, meg kell adnia a saját termékkulcsot.
+- Az Azure Stack gazdagépen az AVMA kulcsokat Windows aktiválja a Windows Server 2016-hoz. Az összes virtuális gépek, amelyek a Windows Server 2012 R2 vagy újabb a rendszer automatikusan aktiválja.
+- A Windows Server 2012 rendszerű vagy korábban nem automatikusan aktiválva és aktiválni kell a virtuális gépek [MAK-aktiválást](https://technet.microsoft.com/library/ff793438.aspx). A MAK-aktiválást használjon, meg kell adnia a saját termékkulcsot.
 
 A Microsoft Azure Windows virtuális gépek aktiválása KMS-aktiválást használ. Ha áthelyezi egy virtuális Gépet az Azure Stack az Azure és az esetlegesen fellépő problémák aktiválása, lásd: [hibaelhárítása az Azure Windows virtuális gép aktiválási problémák](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). További információt talál a [hibaelhárítása Windows-aktiválási hibák az Azure virtuális gépekhez](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) Azure támogatási csapatának blogbejegyzést.
 

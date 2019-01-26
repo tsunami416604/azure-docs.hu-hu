@@ -3,19 +3,19 @@ title: Üzembe helyezési útmutató új jelszó kérésére vonatkozó önkiszo
 description: Tippek az Azure AD önkiszolgáló jelszóátállítás sikeres bevezetéséhez
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 9c728ba4c77cd22782adc9916da62cc309a8150b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0111cb077afe0412d0ab807955c666b42dd1ff31
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431656"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079613"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének sikeres bevezetése
 

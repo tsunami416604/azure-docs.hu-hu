@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 28542bb66fe1e523201967a9dd67fd7e41fed7a0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ab19baa1c10f329b5bbe3c14261434d7f8e2538f
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135627"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076524"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Fejlesztés a felhőben konzisztencia az Azure Resource Manager-sablonokkal
 
@@ -59,14 +59,14 @@ Azure Resource Manager-képességek mindig vezetjük be globális Azure-ban elő
 
 1. Ha az adattár helyi klónjával, csatlakozzon a cél Azure Resource Manager PowerShell használatával.
 
-1. Importálja a modult a psm1 kiterjesztésű, és hajtsa végre a Test-AzureRmTemplateFunctions parancsmagot:
+1. Importálja a modult a psm1 kiterjesztésű, és hajtsa végre a Test-AzTemplateFunctions parancsmagot:
 
   ```powershell
   # Import the module
-  Import-module <path to local clone>\AzureRmTemplateFunctions.psm1
+  Import-module <path to local clone>\AzTemplateFunctions.psm1
 
-  # Execute the Test-AzureRmTemplateFunctions cmdlet
-  Test-AzureRmTemplateFunctions -path <path to local clone>
+  # Execute the Test-AzTemplateFunctions cmdlet
+  Test-AzTemplateFunctions -path <path to local clone>
   ```
 
 A szkript üzembe helyezi a több, sablonok, csak az egyedi sablonfüggvények tartalmazó kis méretben. A szkript a kimenetét a támogatott és nem érhető el a sablonokban használható függvények jelentések.
@@ -230,7 +230,7 @@ az provider list --query "[].{Provider:namespace, Status:registrationState}" --o
 A következő PowerShell-parancsmag segítségével is elérhető erőforrás-szolgáltatók lásd:
 
 ```azurepowershell-interactive
-Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
 ```
 
 ### <a name="verify-the-version-of-all-resource-types"></a>Az összes erőforrástípus verziójának ellenőrzése
@@ -248,7 +248,7 @@ az provider list --query "[].{namespace:namespace, resourceType:resourceType[]}"
 A következő PowerShell-parancsmagot is használhatja:
 
 ```azurepowershell-interactive
-Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty ResourceTypes | ft ProviderNamespace, ResourceTypeName, ApiVersions
+Get-AzResourceProvider | select-object ProviderNamespace -ExpandProperty ResourceTypes | ft ProviderNamespace, ResourceTypeName, ApiVersions
 ```
 
 ### <a name="refer-to-resource-locations-with-a-parameter"></a>Tekintse meg az erőforrások helyeként paraméterrel
@@ -491,10 +491,10 @@ A helyen elérhető Virtuálisgép-rendszerképek listájának lekéréséhez fu
 az vm image list -all
 ```
 
-Ugyanazt a listát az Azure PowerShell-parancsmaggal kérheti [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) , és adja meg a kívánt helyet a `-Location` paraméter. Példa:
+Ugyanazt a listát az Azure PowerShell-parancsmaggal kérheti [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) , és adja meg a kívánt helyet a `-Location` paraméter. Példa:
 
 ```azurepowershell-interactive
-Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRMVMImage
+Get-AzVMImagePublisher -Location "West Europe" | Get-AzVMImageOffer | Get-AzVMImageSku | Get-AzureRMVMImage
 ```
 
 Ez a parancs néhány perc alatt az összes elérhető rendszerkép vissza a globális Azure-felhő Nyugat-európai régióban vesz igénybe.
@@ -527,7 +527,7 @@ az vm list-sizes --location "West Europe"
 Azure PowerShell esetén használja:
 
 ```azurepowershell-interactive
-Get-AzureRmVMSize -Location "West Europe"
+Get-AzVMSize -Location "West Europe"
 ```
 
 Elérhető szolgáltatások teljes listáját lásd: [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?cdn=disable).
@@ -594,10 +594,10 @@ Kérdezheti le egy adott régióban elérhető Virtuálisgép-bővítmények (eb
 az vm extension image list --location myLocation
 ```
 
-Is futtathat az Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) parancsmagot, és `-Location` , adja meg a virtuálisgép-lemezkép helyét. Példa:
+Is futtathat az Azure PowerShell [Get-AzVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) parancsmagot, és `-Location` , adja meg a virtuálisgép-lemezkép helyét. Példa:
 
 ```azurepowershell-interactive
-Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
+Get-AzVmImagePublisher -Location myLocation | Get-AzVMExtensionImageType | Get-AzVMExtensionImage | Select Type, Version
 ```
 
 #### <a name="ensure-that-versions-are-available"></a>Győződjön meg arról, hogy elérhetők-e a verziók
@@ -615,16 +615,16 @@ Mivel a Virtuálisgép-bővítmények Resource Manager-erőforrások belső, saj
 
 A VM-bővítmény erőforrás API-verziója, amelyekre a sablonnal együtt tervezi az összes helyen jelen kell lennie. A hely függőség az erőforrás-szolgáltató API-verzió, az "Az összes erőforrástípus verzióját hitelesítés" szakaszban korábban tárgyalt rendelkezésre állási hasonlóan működik.
 
-Az elérhető API-verzióit a VM-bővítmény erőforrás listájának lekéréséhez használja a [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider) parancsmagot a **Microsoft.Compute** erőforrás-szolgáltató látható módon:
+Az elérhető API-verzióit a VM-bővítmény erőforrás listájának lekéréséhez használja a [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) parancsmagot a **Microsoft.Compute** erőforrás-szolgáltató látható módon:
 
 ```azurepowershell-interactive
-Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}
+Get-AzResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}
 ```
 
 A virtual machine scale sets is használhatja a Virtuálisgép-bővítmények. Az ugyanazon a helyszínre vonatkozó feltételek vonatkoznak. A sablon a felhő konzisztencia fejlesztése, győződjön meg arról, az API-verziók érhetők el az összes hely való telepítését tervezi. Beolvasni a VM-bővítmény erőforrás-méretezési csoportokhoz az API-verziók, ugyanezt a parancsmagot, mielőtt, de adja meg a virtuálisgép-méretezési csoport erőforrástípus beállítja a látható módon:
 
 ```azurepowershell-interactive
-Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachineScaleSets/extensions"}
+Get-AzResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachineScaleSets/extensions"}
 ```
 
 Minden egyes adott bővítmény egyben verziószámmal. Ez a verzió jelenik meg a `typeHandlerVersion` a Virtuálisgép-bővítmény tulajdonságát. Győződjön meg arról, hogy a verzió megadott, a `typeHandlerVersion` elem a sablon Virtuálisgép-bővítmények érhetők el a helyeken, ha azt tervezi, hogy a sablon üzembe helyezéséhez. A következő kód például adja meg az 1.7-es verzióra:
@@ -645,13 +645,13 @@ Minden egyes adott bővítmény egyben verziószámmal. Ez a verzió jelenik meg
         ...   
 ```
 
-Az elérhető verziók egy adott Virtuálisgép-bővítmény listájának lekéréséhez használja a [Get-AzureRmVMExtensionImage](/powershell/module/azurerm.compute/get-azurermvmextensionimage) parancsmagot. Az alábbi példa lekéri az elérhető a PowerShell DSC (a Desired State Configuration) VM-bővítmény-verziók **myLocation**:
+Az elérhető verziók egy adott Virtuálisgép-bővítmény listájának lekéréséhez használja a [Get-AzVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) parancsmagot. Az alábbi példa lekéri az elérhető a PowerShell DSC (a Desired State Configuration) VM-bővítmény-verziók **myLocation**:
 
 ```azurepowershell-interactive
-Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT
+Get-AzVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT
 ```
 
-Közzétevők listájának lekéréséhez használja a [Get-AzureRmVmImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) parancsot. Kérelem típusa, használja a [Get-AzureRmVMExtensionImageType](/powershell/module/azurerm.compute/get-azurermvmextensionimagetype) commend.
+Közzétevők listájának lekéréséhez használja a [Get-AzVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) parancsot. Kérelem típusa, használja a [Get-AzVMExtensionImageType](/powershell/module/az.compute/get-azvmextensionimagetype) commend.
 
 ## <a name="tips-for-testing-and-automation"></a>Tippek a teszteléshez és automatizálás
 

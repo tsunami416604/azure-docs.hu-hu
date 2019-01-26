@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2010
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: edb4e2b25e5fd7d6c59f07a02cc5d2f0630eac8e
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 26133dbfe6b8e11128393957c377c1827e0d2a6e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904403"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076502"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
@@ -128,6 +128,12 @@ Egy eszköz nem jelentkezzen be a korábban törölt vagy letiltott felhasznál�
 
 ---
 
+**K: Miért érdemes a felhasználók rendelkeznek problémák az Azure AD-csatlakoztatott eszközök Felhasználónevük módosítása után?**
+
+**VÁLASZ:** Jelenleg UPN módosítások nem teljesen támogatottak az Azure AD-csatlakoztatott eszközökön. Így az Azure AD-hitelesítés sikertelen lesz, az egyszerű felhasználónév módosítása után. Ennek eredményeképpen felhasználóinak egyszeri Bejelentkezést és feltételes hozzáférési problémák az eszközeiken. Jelenleg a felhasználóknak kell bejelentkezni a Windows a probléma megoldásához új Felhasználónevük használatával "Más felhasználó" csempe keresztül. Jelenleg dolgozunk a probléma megoldásához. Bejelentkezés Windows Hello for Business felhasználók azonban nem ütköznek a probléma. 
+
+---
+
 **K: A felhasználók nem tud keresni, nyomtatók, az Azure AD-hez csatlakoztatott eszközökről. Hogyan lehet engedélyezni, hogy azokat az eszközöket a nyomtatás?**
 
 **VÁLASZ:** Nyomtatók telepítése az Azure ad-hez csatlakoztatott eszközök, lásd: [üzembe helyezése a Windows Server hibrid Felhőbeli nyomtatás előtti hitelesítés](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Egy helyszíni Windows Server üzembe helyezéséhez a hibrid felhőbeli nyomtatás van szüksége. Felhőalapú nyomtatási szolgáltatás jelenleg nem érhető el. 
@@ -209,7 +215,15 @@ Ez a viselkedés nem vonatkozik semmilyen más felhasználó, aki az adott eszk�
 
 Hibrid Azure AD-csatlakozás az Azure ad-ben regisztrált átadta a feladatait élvez elsőbbséget. Így az eszköz számít a hibrid Azure AD-hez bármely hitelesítési és feltételes hozzáférési kiértékelésnek. Az Azure ad-ben regisztrált eszközrekordot nyugodtan törölheti az Azure AD portálon. Ismerje meg, hogyan [elkerüléséhez vagy a Windows 10-es gépen a kettős állapot tisztítása](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know). 
 
+
 ---
+
+**K: Miért érdemes a felhasználók rendelkeznek problémák a Windows 10-es hibrid Azure AD-csatlakoztatott eszközök Felhasználónevük módosítása után?**
+
+**VÁLASZ:** Jelenleg UPN módosítások nem teljesen támogatottak a hibrid Azure AD-csatlakoztatott eszközök. Felhasználók jelentkezzen be az eszköz és a helyszíni alkalmazások elérését, amíg az Azure AD-hitelesítés nem sikerül, egy UPN módosítását követően. Ennek eredményeképpen felhasználóinak egyszeri Bejelentkezést és feltételes hozzáférési problémák az eszközeiken. Jelenleg az eszköz az Azure ad-ből ("dsregcmd /leave" futtassa megemelt jogosultságokkal) elhagyása kell újra belépni az (automatikusan megtörténik), és a probléma megoldásához. Jelenleg dolgozunk a probléma megoldásához. Bejelentkezés Windows Hello for Business felhasználók azonban nem ütköznek a probléma. 
+
+---
+
 
 ## <a name="azure-ad-register-faq"></a>Az Azure AD regisztrálása – gyakori kérdések
 
