@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 579410d04c7f3fc5548e0014a4f6a028c3db74f1
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 5b8d5e639711b91d380b5f14de48be6a80fb0263
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651537"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820767"
 documentType: LandingData
 title: Az Azure Monitor dokumentációja
 metadata:
@@ -16,11 +16,21 @@ metadata:
   ms.service: azure-monitor
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 09/04/2018
+  ms.date: 01/22/2019
   ms.author: bwren
 abstract:
   description: Az Azure Monitor, amely már a Log Analytics és az Application Insights szolgáltatást is tartalmazza, kifinomult eszközöket kínál a telemetriai adatok begyűjtésére és elemzésére, és lehetővé teszi a felhőben futó és helyszíni erőforrások és alkalmazások maximális teljesítményének és rendelkezésre állásának biztosítását. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek.
 sections:
+- title: Javasolt tartalom
+  items:
+  - type: paragraph
+    text: Kövesse az alábbi hivatkozásokat a Log Analyticsre és az Application Insightsra vonatkozó javasolt tartalmak listájának megtekintéséhez.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/azure-monitor/azure-monitor-log-hub">Log Analytics</a>
+    - html: <a href="/azure/azure-monitor/azure-monitor-app-hub">Application Insights</a>
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
