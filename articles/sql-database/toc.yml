@@ -307,6 +307,12 @@ items:
         href: sql-database-performance.md
       - name: A Database Advisor teljesítménnyel kapcsolatos javaslatai
         href: sql-database-advisor.md
+  - name: Adatok betöltése és áthelyezése
+    items:
+    - name: SQL-adatszinkronizálás
+      href: sql-database-sync-data.md
+    - name: Tranzakciós replikáció
+      href: sql-database-managed-instance-transactional-replication.md
   - name: Adatbázisfunkciók
     items:
     - name: Adatbázisfunkciók
@@ -329,7 +335,7 @@ items:
       href: sql-database-cloud-migrate.md
     - name: SQL-adatbázis kezelése migrálás után
       href: sql-database-manage-after-migration.md
-    - name: Tranzakciós replikáció konfigurálása
+    - name: Replikáció konfigurálása
       href: replication-to-sql-database.md
     - name: Fenyegetésészlelés konfigurálása
       href: sql-database-threat-detection.md
@@ -439,8 +445,6 @@ items:
       href: sql-database-export.md
     - name: Adatszinkronizálás
       items:
-      - name: SQL-adatszinkronizálás
-        href: sql-database-sync-data.md
       - name: Adatszinkronizálási ügynök
         href: sql-database-data-sync-agent.md
       - name: Sémaváltozások replikálása
@@ -682,9 +686,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Rugalmas feladat eltávolítása (elavult)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 500fd22c19e0aab2cbecf0267329d5a86a5ccda2
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 634018a1807e23700141ac11a961bd1b1411b8a8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230902"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331401"
