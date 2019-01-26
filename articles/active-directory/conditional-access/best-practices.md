@@ -9,20 +9,20 @@ manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3ed4d3874056eca93e5c94e225ba25d94e7826e3
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.openlocfilehash: 8324b7bf97325c295fdf95819cc2b22fb0f3c14e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911931"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078950"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Az Azure Active Directory-beli feltételes hozzáférésre vonatkozó ajánlott eljárások
 
@@ -47,9 +47,9 @@ Ahhoz, hogy a szabályzat működik, konfigurálnia kell:
 
 |Mi           | Hogyan                                  | miért|
 |:--            | :--                                  | :-- |
-|**Felhőalkalmazások** |Válassza ki egy vagy több alkalmazást kell.  | A feltételes hozzáférési szabályzat célja, hogy szabályozhatja, hogy jogosult felhasználók érhetik el az alkalmazásokat a felhőben.|
-| **Felhasználók és csoportok** | Válasszon ki legalább egy felhasználót vagy csoportot, amely a kiválasztott felhőalapú alkalmazások elérésére jogosult kell. | Feltételes hozzáférési szabályzatot, amely nem rendelkezik felhasználók és csoportok hozzárendelve, soha nem aktiválódott. |
-| **Hozzáférés-vezérlés** | Meg kell választania legalább egy hozzáférés-vezérlés. | Ha a feltételek teljesülnek, a házirend processzor tudnia kell, mi a teendő.|
+|**Felhőalkalmazások** |Válassza ki egy vagy több alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy szabályozhatja, hogy jogosult felhasználók érhetik el az alkalmazásokat a felhőben.|
+| **Felhasználók és csoportok** | Válasszon legalább egy felhasználót vagy csoportot, amely a kiválasztott felhőalapú alkalmazások elérésére jogosult. | Feltételes hozzáférési szabályzatot, amely nem rendelkezik felhasználók és csoportok hozzárendelve, soha nem aktiválódott. |
+| **Hozzáférés-vezérlés** | Válasszon legalább egy hozzáférés-vezérlés. | Ha a feltételek teljesülnek, a házirend processzor tudnia kell, mi a teendő.|
 
 
 
@@ -60,11 +60,11 @@ Ahhoz, hogy a szabályzat működik, konfigurálnia kell:
 
 ### <a name="how-are-conditional-access-policies-applied"></a>Hogyan alkalmazza a feltételes hozzáférési szabályzatokat?
 
-Egynél több feltételes hozzáférési szabályzat akkor fordulhatnak elő, ha egy felhasználó hozzáfér az alkalmazáshoz. Ebben az esetben meg kell felelniük az összes házirend alkalmazása. Például ha egy szabályzatok megköveteli, hogy a felhasználó MFA és a második igényel a megfelelő eszköz a felhasználó MFA kell, és a megfelelő eszköz. 
+Egynél több feltételes hozzáférési szabályzat akkor fordulhatnak elő, ha egy felhőalkalmazás fér hozzá. Ebben az esetben meg kell felelniük az összes házirend alkalmazása. Például ha egy házirend többtényezős Hitelesítést igényel, és a második igényel a megfelelő eszköz, kell áthaladnia az MFA, és használja a megfelelő eszköz. 
 
 Az összes házirendek érvényben vannak, két fázisban történik:
 
-- Az a **első** fázisban összes házirendek kiértékelése és a gyűjtött összes hozzáférés-vezérlést, hogy nem teljesülnek. 
+- Az a **első** fázisban összes házirendek kiértékelése és a gyűjtött összes hozzáférés-vezérlést, amely nem teljesül. 
 
 - Az a **második** fázis, kéri a még nem teljesített követelmények teljesítéséhez. Egyik szabályzat letiltja a hozzáférést, ha vannak, letiltva, és más szabályzati vezérlőket kielégítéséhez nem kéri. Ha a házirendek egyike blokkolja, kéri kielégítéséhez más házirend szabályozza, a következő sorrendben:
 
@@ -88,7 +88,7 @@ Ha szeretne egy helyfeltétel, amelyekre vonatkozik a vállalati hálózaton kí
 
 Ha egy feltételes hozzáférési házirendben egy helytelen beállítás miatt az Azure AD portálon kizárása:
 
-- Győződjön meg arról, hogy vannak-e más rendszergazdák a szervezet, amely még nincs letiltva. Az Azure portal-hozzáféréssel rendelkező rendszergazda letilthatja a szabályzatot, amely negatív hatással van a bejelentkezés. 
+- Ellenőrizze a nincsenek más rendszergazdák a szervezetben, amelyek még nincsenek letiltva. Az Azure portal-hozzáféréssel rendelkező rendszergazda letilthatja a szabályzatot, amely negatív hatással van a bejelentkezés. 
 
 - A rendszergazdák a szervezet egyik sem frissítheti a házirendet, ha támogatási kérelmet szeretne. A Microsoft támogatási ellenőrizheti és frissítheti a feltételes hozzáférési szabályzatokat, amely megakadályozza, hogy hozzáférést.
 
@@ -140,13 +140,13 @@ A környezetben kerülje a következő beállításokat:
 
 Első lépésként ki kell értékelni a csoportházirend használatával a [mi történik, ha eszköze](what-if-tool.md).
 
-Ha helyezheti üzembe egy új házirendet a környezet készen áll, akkor tegye ezt fázisban történik:
+Amikor új házirendeket a környezet készen áll, telepíthet fázisban történik:
 
 1. A házirend alkalmazása a felhasználók egy kis készletét, és ellenőrizze a várt módon. 
 
-2.  Amikor kibővít egy szabályzatot, amely további felhasználókat tartalmazzák, továbbra is minden rendszergazda zárni a szabályzatból. Ez biztosítja, hogy a rendszergazdák továbbra is rendelkezik hozzáféréssel és frissítheti egy szabályzatot, ha szükség egy az megváltoztatására.
+2.  Ha kibontja a házirend több felhasználónak bele. Továbbra is minden rendszergazda kizárása a házirendet, győződjön meg arról, hogy azok továbbra is rendelkezik hozzáféréssel, és frissítheti egy szabályzatot, ha szükség egy az megváltoztatására.
 
-3. A szabályzat minden felhasználóra vonatkozni csak akkor, ha ez valóban szükség. 
+3. A szabályzat minden felhasználóra vonatkozni csak szükség esetén. 
 
 Ajánlott eljárásként hozzon létre egy felhasználói fiókkal, amely:
 
