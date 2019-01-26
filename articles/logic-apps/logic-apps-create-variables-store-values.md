@@ -75,8 +75,8 @@ Hozzon létre egy változót, és az adattípus és a kezdeti érték – egy m�
    | Tulajdonság | Szükséges | Érték |  Leírás |
    |----------|----------|-------|--------------|
    | Name (Név) | Igen | <*a változó neve*> | Növelje a változó neve | 
-   | Típus | Igen | <*változó-típus*> | A változó adattípusa | 
-   | Érték | Nem | <*Start-érték*> | A változó kezdeti értéke <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, a kezdő érték a változó. | 
+   | Typo | Igen | <*változó-típus*> | A változó adattípusa | 
+   | Value | Nem | <*Start-érték*> | A változó kezdeti értéke <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, a kezdő érték a változó. | 
    ||||| 
 
    ![Változó inicializálása](./media/logic-apps-create-variables-store-values/initialize-variable.png)
@@ -211,7 +211,7 @@ Növelheti vagy *növekmény* egy változót egy állandó értékkel adja hozz�
    | Tulajdonság | Szükséges | Érték |  Leírás |
    |----------|----------|-------|--------------|
    | Name (Név) | Igen | <*a változó neve*> | Növelje a változó neve | 
-   | Érték | Nem | <*növekmény-érték*> | Növekszik a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, adott növekszik a változó értékét. | 
+   | Value | Nem | <*növekmény-érték*> | Növekszik a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, adott növekszik a változó értékét. | 
    |||| 
 
    Példa: 
@@ -331,7 +331,7 @@ Az alábbiakban a tulajdonságokat a **változó értékének csökkentése** m�
 | Tulajdonság | Szükséges | Érték |  Leírás |
 |----------|----------|-------|--------------|
 | Name (Név) | Igen | <*a változó neve*> | Csökkentenie kell a változó neve | 
-| Érték | Nem | <*növekmény-érték*> | Csökkenő a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, csökkenő egyedi értékét a változót. | 
+| Value | Nem | <*növekmény-érték*> | Csökkenő a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, csökkenő egyedi értékét a változót. | 
 ||||| 
 
 Ha átvált a tervezőben a nézet Kódszerkesztő, Íme módja a **változó értékének csökkentése** művelet belül a logikai alkalmazás definíciójának, amely JSON formátumban jelenik meg.
@@ -366,7 +366,7 @@ Az alábbiakban a tulajdonságokat a **változó beállítása** művelet:
 | Tulajdonság | Szükséges | Érték |  Leírás | 
 |----------|----------|-------|--------------| 
 | Name (Név) | Igen | <*a változó neve*> | Módosíthatja a változó neve | 
-| Érték | Igen | <*új érték*> | A változó hozzárendelni kívánt érték. Írja be a ugyanazokat az adatokat is kell rendelkeznie. | 
+| Value | Igen | <*új érték*> | A változó hozzárendelni kívánt érték. Írja be a ugyanazokat az adatokat is kell rendelkeznie. | 
 ||||| 
 
 > [!NOTE]
@@ -424,7 +424,7 @@ Az alábbiakban a tulajdonságokat a **hozzáfűzése...**  műveletek:
 | Tulajdonság | Szükséges | Érték |  Leírás | 
 |----------|----------|-------|--------------| 
 | Name (Név) | Igen | <*a változó neve*> | Módosíthatja a változó neve | 
-| Érték | Igen | <*Hozzáfűzés-érték*> | A Hozzáfűzés, kívánt érték, amely bármilyen típusú | 
+| Value | Igen | <*Hozzáfűzés-érték*> | A Hozzáfűzés, kívánt érték, amely bármilyen típusú | 
 |||||  
 
 Ha átvált a tervezőben a nézet Kódszerkesztő, Íme módja a **Hozzáfűzés tömbváltozóhoz** művelet belül a logikai alkalmazás definíciójának, amely JSON formátumban jelenik meg.
