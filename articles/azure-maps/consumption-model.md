@@ -30,7 +30,7 @@ Mindkét fogyasztás modellek explicit megadása az egyes paraméterek meg kell 
 * Ha **accelerationEfficiency** és **decelerationEfficiency** van adva, az értékek szorzatát nem lehet nagyobb, mint 1 (az perpetual mozgásérzékelési elkerülése érdekében).
 * **uphillEfficiency** és **downhillEfficiency** (azaz mind "vagy" none) párban mindig meg kell adni.
 * Ha **uphillEfficiency** és **downhillEfficiency** van adva, az értékek szorzatát nem lehet nagyobb, mint 1 (az perpetual mozgásérzékelési elkerülése érdekében).
-* Ha \* **hatékonyságát** paraméterek vannak megadva a felhasználó, majd **vehicleWeight** is meg kell adni. Ha **vehicleEngineType** van _égésű_, **fuelEnergyDensityInMJoulesPerLiter** is meg kell adni.
+* Ha a **felhasználó** megadja a hatékonysági paramétereket, akkor a \***vehicleWeight** értékét is meg kell adnia. a a **vehicleEngineType értéke** _combustion_, akkor a **fuelEnergyDensityInMJoulesPerLiter** értékét is meg kell adnia.
 * **maxChargeInkWh** és **currentChargeInkWh** (azaz mind "vagy" none) párban mindig meg kell adni.
 
 > [!NOTE]
