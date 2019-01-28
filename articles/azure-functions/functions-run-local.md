@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: c99d5e9d64e9e9715589ecf2c0de57ce660917aa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 854485863786a4892ea04d4d5400732742436210
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103689"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913070"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -40,13 +40,13 @@ Ha másként nincs jelezve, az ebben a cikkben szereplő példák verziójára v
 
 ### <a name="v2"></a>Verzió 2.x
 
-Verzió 2.x-es eszközök használja az Azure Functions runtime 2.x verziója a .NET Core-alapú. Ez a verzió a platformfüggetlen .NET Core 2.x támogatja, beleértve a támogatott [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux).
+Verzió 2.x-es eszközök használja az Azure Functions runtime 2.x verziója a .NET Core-alapú. Ez a verzió a platformfüggetlen .NET Core 2.x támogatja, beleértve a támogatott [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux). Először telepítenie kell a .NET Core 2.x SDK.
 
 #### <a name="windows-npm"></a>Windows
 
 Az alábbi lépéseket a Core Tools telepítése Windows npm-et használja. Is [helyezés a Chocolatey](https://chocolatey.org/). További információkért lásd: a [Core Tools információs](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Telepítés [2.1-es verziója a .NET Core for Windows](https://www.microsoft.com/net/download/windows).
+1. Telepítés [.NET Core SDK-t 2.x verziója a Windows](https://www.microsoft.com/net/download/windows).
 
 2. Telepítés [Node.js], amely tartalmazza az npm-et. Verzió 2.x verzióját az eszközök csak Node.js 8.5 és újabb verziói támogatottak.
 
@@ -60,7 +60,7 @@ Az alábbi lépéseket a Core Tools telepítése Windows npm-et használja. Is [
 
 Az alábbi lépéseket a Homebrew használatával a Core Tools telepítése macOS rendszeren.
 
-1. Telepítés [macOS-hez készült .NET Core 2.1](https://www.microsoft.com/net/download/macos).
+1. Telepítés [.NET Core SDK 2.x macOS-hez készült](https://www.microsoft.com/net/download/macos).
 
 2. Telepítés [Homebrew](https://brew.sh/), ha az még nem telepítette.
 
@@ -75,7 +75,7 @@ Az alábbi lépéseket a Homebrew használatával a Core Tools telepítése macO
 
 Az alábbi lépések az [APT](https://wiki.debian.org/Apt) Core Tools telepítése az Ubuntu vagy a Debian Linux-disztribúció. Más Linux-disztribúciók, lásd: a [Core Tools információs](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Telepítés [.NET Core 2.1-es Linux](https://www.microsoft.com/net/download/linux).
+1. Telepítés [.NET Core SDK-t 2.x linuxos](https://www.microsoft.com/net/download/linux).
 
 2. Megbízható Microsoft-termékkulcs regisztrálásához:
 

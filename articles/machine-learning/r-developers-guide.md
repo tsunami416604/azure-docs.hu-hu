@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: 102191b885d2a4a9234b7783b0a51b09903d3abd
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c5120cdb743e031c081f727c947752419db3a9d7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807456"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081109"
 ---
 # <a name="r-developers-guide-to-azure"></a>R – fejlesztői útmutató az Azure-bA
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -83,23 +83,23 @@ A cikk ["Mi az az Azure Databricks?"](https://docs.microsoft.com/azure/azure-dat
 a platform és elsajátíthatja további részleteket is nyújtanak.
 
 ## <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
-[Az Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) egy együttműködést támogató, fogd és vidd eszköz használatával hozhat létre, tesztelheti és üzembe helyezése a felhőbeli prediktív elemzési megoldások.  Lehetővé teszi az újonnan felbukkanó adatszakértők létrehozni és üzembe helyezni a gépi tanulási modellek sok kód írása nélkül.
+[Az Azure Machine Learning studio](https://azure.microsoft.com/services/machine-learning-studio/) egy együttműködést támogató, fogd és vidd eszköz használatával hozhat létre, tesztelheti és üzembe helyezése a felhőbeli prediktív elemzési megoldások.  Lehetővé teszi az újonnan felbukkanó adatszakértők létrehozni és üzembe helyezni a gépi tanulási modellek sok kód írása nélkül.
 
-Machine Learning Studio támogatja az R- és Python.  R két módon használhatja a Machine Learning Studio használatával.
+Az Azure Machine Learning studio R és Python támogatja.  Az Azure Machine Learning studio kétféleképpen R is használhatja.
 
 ### <a name="custom-r-scripts-in-your-experiments"></a>A kísérletek az egyéni R-szkriptek
 Először is kiterjesztheti az adatkezelés és a machine learning, Machine Learning Studio képességeiről egyéni R-parancsfájlok írásával.
 Bár az ML Studio számos különböző modulok az előkészítés és adatelemzés tartalmaz, nem lehet azonos az érett Nyelv például r képességeit  Ezért a szolgáltatás tervezték, hogy vezessen be a saját egyéni R-szkriptek azokban az esetekben, ahol a megadott modul nem felel meg az igényeinek.
 
-Ezzel a funkcióval a áthúzása egy "Hajtsa végre az R-parancsfájl" modul a kísérletbe.  Majd használja a Kódszerkesztő a "Tulajdonságok" panelen egy új R-szkriptet írni vagy illessze be egy meglévő parancsfájl.  A szkriptben hivatkozhat külső R-csomagokat.  A parancsfájlt is használhatja, manipulálják az adatokat, vagy összetett gépi Tanulási modellek, amelyek nem részei a standard szintű Machine Learning Studio modell könyvtár.
+Ezzel a funkcióval a áthúzása egy "Hajtsa végre az R-parancsfájl" modul a kísérletbe.  Majd használja a Kódszerkesztő a "Tulajdonságok" panelen egy új R-szkriptet írni vagy illessze be egy meglévő parancsfájl.  A szkriptben hivatkozhat külső R-csomagokat.  Adatok módosítására vagy összetett, amelyek nem részei a standard szintű Azure Machine Learning studio modell library gépi Tanulási modelleket taníthat be a parancsfájlt használhatja.
 
-Az R használata a Machine Learning Studio-kísérletek belül alaposan megismerni, tekintse meg a ["Gyors üzembe helyezési oktatóanyag az R programozási nyelv, az Azure Machine Learning."](https://docs.microsoft.com/azure/machine-learning/studio/r-quickstart)
+Az R használata a Machine Learning Studio-kísérletek belül alaposan megismerni, tekintse meg a ["Gyors üzembe helyezési oktatóanyag az R programozási nyelv, az Azure Machine Learning Studio."](https://docs.microsoft.com/azure/machine-learning/studio/r-quickstart)
 
 ### <a name="create-manage-and-deploy-experiments-from-your-local-r-environment"></a>Létrehozása, kezelése és üzembe helyezése a helyi R-környezetben a kísérletek
-A másik lehetőség, hogy használhatja a Machine Learning Studio R az, hogy használja a
-<code>[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)</code> a csomag monitorozását és ellenőrzését a Kísérletezési folyamat az R programozási környezetet.  Ez a csomag, amely a Microsoft által karbantartott, fel-és letölteni az adatkészleteket az Azure gépi Tanulási kísérletek közzététele az Azure ML-webszolgáltatások, mint az R-funkciók és a R data futtassa a meglévő webszolgáltatásokon keresztül, és lekérése a kimeneti logikát teszi lehetővé.
+A másik módja, R használható az Azure Machine Learning studio a
+<code>[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)</code> a csomag monitorozását és ellenőrzését a Kísérletezési folyamat az R programozási környezetet.  Ezt a csomagot, amely a Microsoft által karbantartott, lehetővé teszi az adatkészletek le- és feltöltése és az Azure Machine Learning studio logikát kísérletek R közzététele webszolgáltatásként működik, és futtatni az R át meglévő adatok webszolgáltatások lekérni a kimenet.
 
-Ez a csomag egyszerűen alkalmazhatók az Azure ML skálázható platformként az R-kód számára.  Kattintással, és a felhasználói felületen húzással, helyett a teljes telepítési folyamatot a már jól ismert eszközök használatával automatizálható.
+Ez a csomag teszi sokkal könnyebben skálázható platformként az Azure Machine Learning studio használata az R-kód.  Kattintással, és a felhasználói felületen húzással, helyett a teljes telepítési folyamatot a már jól ismert eszközök használatával automatizálható.
 
 ## <a name="azure-batch"></a>Azure Batch
 A nagy méretű az R-munkák használhatja [Azure Batch](https://azure.microsoft.com/services/batch/).  Ezt a szolgáltatást felhőléptékű feladatütemezés és számításkezelés felhőméretben-kezelést biztosít, így az R számítási feladatok több tíz, száz vagy ezer virtuális gép között is méretezheti.  Mivel ez egy általánosított számítástechnikai platformja, van néhány lehetőség az R-munkák futtatása Azure Batch.
