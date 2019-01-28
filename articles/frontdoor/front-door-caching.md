@@ -26,7 +26,7 @@ Azure bejárati ajtajának szolgáltatás egy korlát nélküli fájl mérete na
 
 </br>Után az adattömbök megérkezik a bejárati ajtajának környezet, a gyorsítótárba, és azonnal szolgálja ki a felhasználó számára. Bejárati ajtajának majd előre lekéri a következő adattömbök párhuzamosan. Az előzetes betöltési biztosítja, hogy a tartalom marad egy adattömb előre a felhasználót, ami csökkenti a késést. Ez a folyamat folytatódik, amíg a teljes fájl letöltése (ha szükséges), az összes bájttartományok érhetők el (ha szükséges), vagy az ügyfél megszakítja a kapcsolatot.
 
-</br>Bájttartomány-kéréssel kapcsolatos további információkért olvassa el [RFC 7233](https://web.archive.org/web/20171009165003/ http://www.rfc-base.org/rfc-7233.html).
+</br>Bájttartomány-kéréssel kapcsolatos további információkért olvassa el [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
 Bejárati ajtajának gyorsítótárazza a minden olyan adattömböket, fogadásuk, és így nem kell a teljes fájlt a bejárati ajtajának gyorsítótár a gyorsítótárban. A fájl vagy bájt címtartományok esetében későbbi kérelmeket a szolgáltatás a gyorsítótárból szolgálja ki. Ha nem összes adatrészletének lettek gyorsítótárazva, adattömbök kérhet a háttérrendszer lehívását használja. Az optimalizálás támaszkodik a háttérrendszer képességét bájttartomány-kérelmek; támogatásához Ha a háttérrendszer nem támogatja a bájttartomány-kérelmek, az optimalizálás nem elég hatékony.
 
 ## <a name="file-compression"></a>Fájltömörítés

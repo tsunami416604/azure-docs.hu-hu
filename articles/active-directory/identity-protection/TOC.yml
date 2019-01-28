@@ -20,27 +20,45 @@ items:
   expanded: false
 - name: Útmutatók
   items:
-  - name: Az Azure AD Identity Protection engedélyezése
-    href: enable.md
-  - name: Az MFA regisztrációs szabályzat konfigurálása
-    href: howto-mfa-policy.md
-  - name: A bejelentkezési kockázati szabályzat konfigurálása
-    href: howto-sign-in-risk-policy.md
-  - name: A felhasználói kockázati szabályzat konfigurálása
-    href: howto-user-risk-policy.md
-  - name: Az aktív kockázati események bezárása
-    href: howto-close-active-risk-events.md
-  - name: Felhasználók tiltásának feloldása
-    href: howto-unblock-user.md
-  - name: Kockázati események szimulálása
-    href: playbook.md
-  - name: A Microsoft Graph API használata
-    href: graph-get-started.md
-  - name: Gyakori kérdések
-    href: faqs.md
+  - name: Identity Protection
+    items:
+    - name: Az Azure AD Identity Protection engedélyezése
+      href: enable.md
+    - name: Az MFA regisztrációs szabályzat konfigurálása
+      href: howto-mfa-policy.md
+    - name: A bejelentkezési kockázati szabályzat konfigurálása
+      href: howto-sign-in-risk-policy.md
+    - name: A felhasználói kockázati szabályzat konfigurálása
+      href: howto-user-risk-policy.md
+    - name: Az aktív kockázati események bezárása
+      href: howto-close-active-risk-events.md
+    - name: Felhasználók tiltásának feloldása
+      href: howto-unblock-user.md
+    - name: Kockázati események szimulálása
+      href: playbook.md
+    - name: Gyakori kérdések
+      href: faqs.md
+  - name: Identity Protection (frissítve)
+    items:
+    - name: Áttekintés
+      href: overview-v2.md
+    - name: Biztonsági áttekintés
+      href: security-overview.md
+    - name: Kockázatos felhasználók és bejelentkezések vizsgálata
+      href: howto-investigate-risky-users-signins.md
+    - name: Kockázati szabályzatok beállítása
+      href: howto-configure-risk-policies.md
+    - name: Észlelés pontosságának javítása
+      href: howto-improve-detection-accuracy.md
+    - name: Gyakori kérdések és ismert problémák
+      href: known-issues.md
   expanded: true
 - name: Referencia
   items:
+  - name: A Microsoft Graph API használata
+    href: graph-get-started.md
+  - name: Kockázati események
+    href: risk-events-reference.md
   - name: Szószedet
     href: glossary.md
 - name: További források
@@ -57,9 +75,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 8e684f77d25e4ee685b715e8394faf00e3998be9
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8c48b383ccd2ac30dc9598cd2da0f043afae43dc
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423296"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910946"

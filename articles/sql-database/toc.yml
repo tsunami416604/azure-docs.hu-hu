@@ -9,6 +9,8 @@ items:
     href: sql-database-paas-vs-sql-server-iaas.md
 - name: Gyors útmutatók
   items:
+  - name: Felügyelt példány – rövid útmutató
+    href: sql-database-managed-instance-quickstart-guide.md
   - name: Létrehozás
     items:
     - name: Önálló adatbázis
@@ -279,8 +281,6 @@ items:
       href: sql-database-elastic-query-overview.md
     - name: Rugalmas tranzakciók
       href: sql-database-elastic-transactions-overview.md
-    - name: Rugalmas adatbázis-feladatok
-      href: elastic-jobs-overview.md
   - name: SQL-funkciók összehasonlítása
     href: sql-database-features.md
   - name: Monitorozás és finomhangolás
@@ -323,6 +323,8 @@ items:
       href: sql-database-in-memory.md
     - name: Historikus táblák
       href: sql-database-temporal-tables.md
+    - name: Feladat automatizálása
+      href: sql-database-job-automation-overview.md
 - name: Útmutatók
   items:
   - name: Áttekintés
@@ -341,6 +343,8 @@ items:
       href: sql-database-threat-detection.md
     - name: Biztonsági másolatok megőrzésének konfigurálása az Azure Blob Storage használatával
       href: sql-database-long-term-backup-retention-configure.md
+    - name: Rugalmas adatbázis-feladatok konfigurálása
+      href: elastic-jobs-overview.md
     - name: Dinamikus adatmaszkolás konfigurálása
       href: sql-database-dynamic-data-masking-get-started-portal.md
     - name: Georeplikáció konfigurálása – Portál
@@ -686,9 +690,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Rugalmas feladat eltávolítása (elavult)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 634018a1807e23700141ac11a961bd1b1411b8a8
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a991b2f6a7ac90d38c653b4daf12948b1b800638
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331401"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078202"

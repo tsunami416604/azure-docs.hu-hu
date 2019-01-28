@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0b934e7ac5b297b5c7349a9a9985f6c50d62d19f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 17fac6455ca225363726b347c428d176e78a1ff9
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791948"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912799"
 documentType: LandingData
 title: A Bing News Search API dokumentációja
 titleSuffix: Azure Cognitive Services
 metadata:
   title: A Bing News Search API dokumentációja – oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs
-  description: Útmutató a Bing News Search API használatához, amellyel a felhasználói lekérdezésekhez kapcsolódó híreket kereshet a weben. Az oktatóanyagok bemutatják, hogyan hozhat létre a szolgáltatást használó alkalmazásokat.
+  description: Ismerje meg, hogyan kereshet híreket az interneten a Bing News Search API-val.
   services: cognitive-services
   author: mikedodaro
   manager: rosh
@@ -19,29 +19,50 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/02/2017
+  ms.date: 01/16/2019
   ms.author: v-gedod
 abstract:
-  description: A Bing News Search API a Bing Hírekhez hasonló élményt nyújt, mivel olyan sajtóhírek listáját adja vissza, amelyek a Bing szerint kapcsolódnak a felhasználó lekérdezéséhez.
+  description: A Bing News Search API segítségével integrálhatja a Bing hírkeresési képességeit az alkalmazásokba. A lekérdezések API-n keresztüli elküldésével releváns híreket kérhet le több kategóriában és több forrásból, a bing.com/news oldalhoz hasonlóan.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-news-search/search-the-web
+      html: <p>A Bing News Search API bemutatása</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Mi az a Bing News Search API?
+    - href: /azure/cognitive-services/bing-news-search/concepts/send-search-queries
+      html: <p>Megismerheti, hogyan küldhet keresési kéréseket a Bing News Search API-nak.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Keresési lekérdezések küldése
+    - href: /azure/cognitive-services/bing-news-search/concepts/search-for-news
+      html: <p>Megtudhatja, hogyan kereshet többféle hírtípust és hírkategóriát.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Hírek keresése
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: 'Bevezetés a Bing News Search API használatába egy lekérdezés végrehajtásával és a JSON-válasz megtekintésével:'
+    text: 'Hírek keresése az interneten a következőkkel:'
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: csharp
+      href: news-search-sdk-quickstart
       text: C&#35;
     - image:
         src: media/index/logo_java.svg
-      href: java
+      href: news-sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: nodejs
+      href: news-search-sdk-node-quickstart
       text: Node.js
     - image:
         src: media/index/logo_php.svg
@@ -49,7 +70,7 @@ sections:
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: python
+      href: news-sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg
@@ -60,7 +81,7 @@ sections:
   - type: paragraph
     text: 'A Bing News Search API-t használó alkalmazások fejlesztése:'
   - type: paragraph
-    text: <a href="tutorial-bing-news-search-single-page-app">Egyoldalas webalkalmazás</a> | <a href="tutorial-bing-news-search-single-page-app-source">Forráskód</a>
+    text: <a href="tutorial-bing-news-search-single-page-app">Egyoldalas webalkalmazás</a>
 - title: Példák
   items:
   - type: paragraph

@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6187ee202fc51abaeac81b84c7d665cee9efcf59
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 343bfd063363b26f3c56d666354e15049e9c4511
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793887"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911982"
 documentType: LandingData
 title: A Bing Custom Search dokumentációja
 metadata:
-  title: A Bing Custom Search dokumentációja – oktatóanyagok és API-referencia – Microsoft Cognitive Services | Microsoft Docs
-  description: Útmutató a Bing Custom Search portál egyéni keresések létrehozásához való használatához
+  title: A Bing Custom Search API dokumentációja – oktatóanyagok, rövid útmutatók és API-referencia – Microsoft Cognitive Services | Microsoft Docs
+  description: Megtudhatja, hogyan hozhat létre egyéni keresést a Bing Custom Search portál és API használatával
   services: cognitive-services
   author: v-deken
   manager: cgronlun
@@ -18,11 +18,32 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/07/2018
+  ms.date: 01/16/2019
   ms.author: v-deken
 abstract:
-  description: Megtudhatja, hogyan hozhat létre a Bing Custom Search szolgáltatással személyre szabott keresési funkciókat olyan témakörökhöz kapcsolódóan, amelyek fontosak az Ön számára. Ha például egy keresési funkciót is biztosító kerékpáros webhellyel rendelkezik, megadhatja azokat a tartományokat, alwebhelyeket és weblapokat, amelyeken a Bingnek keresnie kell. A rövid útmutatók, az oktatóanyagok és az API-referencia ennek módját ismerteti.
+  description: A Bing Custom Search API-val kereséspéldányokat hozhat létre olyan témakörökhöz, amelyek érdeklik Önt. Adja meg a tartományokat és webhelyeket, ahol keresni szeretne, majd rangsorolja a kereséseket a keresési élmény teljes testreszabásához.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-custom-search/overview
+      html: <p>A Bing Custom Search API bemutatása</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Mi az a Bing Custom Search API?
+    - href: /azure/cognitive-services/bing-custom-search/quick-start
+      html: <p>Megtudhatja, hogyan szabhatja testre a keresési élményt, hogy egyéni képet kaphasson az internetről.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Egyéni Bing keresési példány létrehozása
+    - href: /azure/cognitive-services/bing-custom-search/hosted-ui
+      html: <p>Útmutató üzemeltetett felhasználói felület webhelyekbe és webalkalmazásokba integrálásához.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Üzemeltetett felhasználói felület konfigurálása
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -32,7 +53,7 @@ sections:
     items:
     - image:
         src: media/logo_Csharp.svg
-      href: call-endpoint-csharp
+      href: sdk-csharp-quick-start
       text: C&#35;
     - image:
         src: media/logo_java.svg
@@ -59,7 +80,7 @@ sections:
     className: cardsD
     items:
     - title: API-k
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference">Bing Custom Search API 7-es verzió</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference">Bing Custom Autosuggest API 7-es verzió</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference">Bing Custom Image Search API 7-es verzió</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference">Bing Custom Video Search API 7-es verzió</a></p>
+      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference">Custom Search API 7-es verzió</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference">Custom Autosuggest API 7-es verzió</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference">Custom Image Search API 7-es verzió</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference">Custom Video Search API 7-es verzió</a></p>
     - title: SDK-k
       html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable">Java – Egyéni keresés</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable">Java – Egyéni képkeresés</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customsearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch">Go – Egyéni keresés</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch">Go – Egyéni képkeresés</a></p>
     - title: PowerShell

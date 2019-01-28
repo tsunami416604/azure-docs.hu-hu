@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 62bb4c70c2a5068c90196acc2a1898ceeaa6945c
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 337c48d96a2ee679eda24500d9cb1a8d2581b2c7
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787678"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912901"
 documentType: LandingData
-title: A Bing Visual Search dokumentációja
+title: A Bing Visual Search API dokumentációja
 metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
-  title: A Bing Visual Search dokumentációja – oktatóanyagok és API-referencia
-  description: Útmutató a Bing Visual Search API használatához, amellyel egy képpel kapcsolatos információkat jeleníthet meg. Az oktatóanyagok bemutatják, hogyan hozhat létre a szolgáltatást használó alkalmazásokat.
+  title: A Bing Visual Search API dokumentációja – oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs
+  description: Útmutató a Bing Visual Search API használatához, amellyel egy képpel kapcsolatos információkat jeleníthet meg.
   services: cognitive-services
   author: swhite-msft
   manager: rosh
@@ -19,15 +19,36 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/24/2018
+  ms.date: 01/16/2019
   ms.author: scottwhi
 abstract:
-  description: A Bing Visual Search API a Bing.com képeket kereső szolgáltatásához hasonló élményt nyújt, mivel olyan információkat ad vissza egy képpel kapcsolatban, mint a vizuálisan hasonló képek, a képen látható termékekkel kapcsolatos vásárlási lehetőségek, valamint a kapcsolódó keresések.
+  description: A Bing Visual Search API hasonló képadatokat biztosít, mint a Bing.com/images. A kép feltöltése vagy a kép URL-címének megadása után az API számos részletet azonosít a képpel kapcsolatban, és vizuálisan hasonló képeket, vásárlási lehetőségeket, a képet tartalmazó weboldalakat és más tartalmakat ad vissza találatként.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-visual-search/overview
+      html: <p>A Bing Visual Search API bemutatása</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Mi az a Bing Visual Search API?
+    - href: /azure/cognitive-services/bing-visual-search/concepts/sending-queries
+      html: <p>Megtudhatja, hogyan küldhet keresési kéréseket a Bing Visual Search API-nak.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Keresési lekérdezések küldése
+    - href: /azure/cognitive-services/bing-visual-search/tutorial-visual-search-insights-token
+      html: <p>Kép feltöltése a Bing Visual Search API-ba a Bing Image Search API-jának megállapítási jogkivonata használatával</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Hírek keresése
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: 'Bevezetés a Bing Visual Search API használatába egy kép a Bingnek történő elküldésével és a képpel kapcsolatos információk fogadásával:'
+    text: 'Képpel kapcsolatos információk megjelenítése a Bing Visual Search API segítségével:'
   - type: table
     style: dataMatrix
     columns:
@@ -40,12 +61,12 @@ sections:
     - image:
         src: media/index/logo_python.svg
     rows:
-    - title: Az első lekérdezés
+    - title: ''
       values:
-      - href: quickstarts/csharp
-      - href: quickstarts/java
-      - href: quickstarts/nodejs
-      - href: quickstarts/python
+      - href: visual-search-sdk-c-sharp
+      - href: java
+      - href: visual-search-sdk-node
+      - href: visual-search-sdk-python
 - title: Részletes útmutatók
   items:
   - type: paragraph
@@ -53,7 +74,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-bing-visual-search-single-page-app">Egyoldalas webalkalmazás</a> | <a href="tutorial-bing-visual-search-single-page-app-source">Forráskód</a>
+    - html: <a href="tutorial-bing-visual-search-single-page-app">Egyoldalas webalkalmazás</a>
 - title: Referencia
   items:
   - type: list
