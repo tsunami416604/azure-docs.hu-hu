@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/24/2019
+ms.date: 1/25/2019
 ms.author: raiye
-ms.openlocfilehash: 59afdd3bbb00dce6085ea76685768db3e8eec5cc
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 9d2fa8497ac773ba086f3a4550e20ac5f5f0d882
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900850"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075465"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrixot
 Itt, a legújabb Azure vendég operációs rendszer naprakész információkat és a Cloud Services-kiadások. Ez az információ segít a frissítési útvonal megtervezéséhez, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissítése leírtak szerint [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], már nem létfontosságú, hogy elolvasta-e ezen a lapon.
@@ -75,7 +75,7 @@ A június vendég operációs rendszer jelent meg.
 .NET-keretrendszer: 3.5, 4.7.2
 
 > [!NOTE]
-> A Windows Azure SDK for .NET 3.0 letölthető [Itt][Windows Azure SDK].
+> A Windows Azure SDK for .NET - 3.0 letölthető [Itt][Windows Azure SDK].
 >
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
@@ -155,6 +155,7 @@ Annak ellenére, hogy a [kivezetési szabályzata, az Azure SDK] [ retire policy
 
 | Vendég operációsrendszer-család | Kompatibilis SDK-verziókra |
 | --- | --- |
+| 6 |Verzió 2.9.6+ |
 | 5 |Verzió 2.9.5.1+ |
 | 4 |2.1-es vagy újabb |
 | 3 |1.8-as vagy újabb |
