@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 91ee57ccd676d1d5e806e3f22eed3389d0fe5e73
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 16c7ad523bcd4a1f7b7b1f80d99e4d36dade72df
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334193"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102430"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Testre szabhatja az operációs rendszer biztonsági konfigurációival az Azure Security Centerben (előzetes verzió)
 
@@ -90,7 +90,7 @@ A Testreszabás fájlban mindegyik operációs rendszer támogatott verziója sz
 >
 >
 
-A Testreszabás fájl szerkesztése, amikor egy szabály vagy ezek mindegyike módosíthatja. Minden egyes szabálykészletben tartalmaz egy *szabályok* szakaszt, amely három kategóriába elkülönített: beállításjegyzék, a naplózási házirend és a biztonsági házirend, az itt látható módon:
+A Testreszabás fájl szerkesztése, amikor egy szabály vagy ezek mindegyike módosíthatja. Minden egyes szabálykészletben tartalmaz egy *szabályok* három kategóriába elkülönített szakaszt: Beállításjegyzék, a naplózási házirend és a biztonsági házirend, az itt látható módon:
 
 ![Három szabálykészletben kategória](media/security-center-customize-os-security-config/rules-section.png)
 
@@ -98,19 +98,19 @@ Az egyes kategóriákhoz saját attribútumok készletét. Módosíthatja a köv
 
 - **expectedValue**: Ez az attribútum mező adattípusának egyeznie kell a támogatott értékek száma *szabály típusa*, például:
 
-  - **baselineRegistryRules**: az értéknek meg kell egyeznie a [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) által a szabályban definiált.
+  - **baselineRegistryRules**: Az értéknek meg kell egyeznie a [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) által a szabályban definiált.
 
-  - **baselineAuditPolicyRules**: használja a következő karakterlánc-értékek egyikét:
+  - **baselineAuditPolicyRules**: Használja a következő karakterlánc-értékek egyikét:
 
     - *A sikeres és sikertelen*
 
     - *Sikeres*
 
-  - **baselineSecurityPolicyRules**: használja a következő karakterlánc-értékek egyikét:
+  - **baselineSecurityPolicyRules**: Használja a következő karakterlánc-értékek egyikét:
 
     - *Senki*
 
-    - Listája engedélyezett felhasználói csoportok, például: *rendszergazdák*, *biztonságimásolat-felelősök*
+    - Listája a felhasználói csoportok, például engedélyezett: *A rendszergazdák*, *biztonságimásolat-felelősök*
 
 -   **állapot**: A karakterlánc a beállításokat is tartalmazhat *letiltott* vagy *engedélyezve*. A privát előzetes kiadás az karakterlánca kis-és nagybetűket.
 
@@ -121,7 +121,7 @@ Más lehetséges hibák listáját lásd: [hibakódok](#error-codes).
 Az alábbi három szakaszok példákat a fenti szabályok. A *expectedValue* és *állapot* attribútumokat is módosítható.
 
 **baselineRegistryRules**
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -144,7 +144,7 @@ Az alábbi három szakaszok példákat a fenti szabályok. A *expectedValue* és
 ```
 
 **baselineAuditPolicyRules**
-```
+```json
     {
     "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
     "ruleId": "37745508-95fb-44ec-ab0f-644ec0b16995",
@@ -161,7 +161,7 @@ Az alábbi három szakaszok példákat a fenti szabályok. A *expectedValue* és
 ```
 
 **baselineSecurityPolicyRules**
-```
+```json
     {
     "sectionName": "Privilege Rights",
     "settingName": "SeIncreaseWorkingSetPrivilege",
@@ -194,17 +194,17 @@ Néhány szabály számára a különböző operációs rendszer ismétlődik. I
 
 Új egyéni szabályok egy új egyéni forrás lesznek megjelölve (! = "Microsoft"). A *ruleId* mező lehet null értékű vagy üres. Ha üres, a Microsoft hoz létre egyet. Ha nem üres, érvényes GUID, amely egyedi összes szabályt (alapértelmezett és egyéni) között kell legyen. Tekintse át az alapvető mezők a következő korlátozásokkal:
 
--   **originalId**: NULL értékű vagy üres is lehet. Ha *originalId* van nem üres, kell lennie egy érvényes GUID.
+-   **originalId**: Lehet null értékű vagy üres. Ha *originalId* van nem üres, kell lennie egy érvényes GUID.
 
--   **cceId**: NULL értékű vagy üres is lehet. Ha *cceId* van nem üres, ennek egyedinek kell lennie.
+-   **cceId**: Lehet null értékű vagy üres. Ha *cceId* van nem üres, ennek egyedinek kell lennie.
 
 -   **Szabálytípus**: (egyet válasszon) beállításjegyzék, AuditPolicy vagy SecurityPolicy.
 
 -   **Súlyosság**: (egyet válasszon) ismeretlen, kritikus, figyelmeztető vagy tájékoztató.
 
--   **analyzeOperation**: kell *egyenlő*.
+-   **analyzeOperation**: Meg kell *egyenlő*.
 
--   **auditPolicyId**: érvényes GUID azonosítónak kell lennie.
+-   **auditPolicyId**: Érvényes GUID azonosítónak kell lennie.
 
 -   **regValueType**: (egyet válasszon) Int, Long, String vagy MultipleString.
 
@@ -216,7 +216,7 @@ Néhány szabály számára a különböző operációs rendszer ismétlődik. I
 Példa: egy új egyéni szabályt:
 
 **Beállításjegyzék**:
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -225,7 +225,7 @@ Példa: egy új egyéni szabályt:
     "valueName": "MyValueName",
     "originalId": "",
     "cceId": "",
-    "ruleName": "My new registry rule”, "baselineRuleType": "Registry",
+    "ruleName": "My new registry rule", "baselineRuleType": "Registry",
     "expectedValue": "123", "severity": "Critical",
     "analyzeOperation": "Equals",
     "source": "MyCustomSource",
@@ -233,7 +233,7 @@ Példa: egy új egyéni szabályt:
     }
 ```
 **Biztonsági házirend**:
-```
+```json
    {
    "sectionName": "Privilege Rights",
    "settingName": "SeDenyBatchLogonRight",
@@ -248,7 +248,7 @@ Példa: egy új egyéni szabályt:
    }
 ```
 **Naplózási házirend**:
-```
+```json
    {
    "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
    "originalId": "",
@@ -275,7 +275,7 @@ Az összes lehetséges hibákat az alábbi táblázatban láthatók:
 
 | **Hiba történt**                                | **Leírás**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfiguratiohSchemaVersionError  | A tulajdonság *sémaverzióval* található érvénytelen vagy üres. Az értéket kell beállítani *{0}*.                                                         |
+| BaselineConfigurationSchemaVersionError  | A tulajdonság *sémaverzióval* található érvénytelen vagy üres. Az értéket kell beállítani *{0}*.                                                         |
 | BaselineInvalidStringError               | A tulajdonság *{0}* nem tartalmazhat  *\\n*.                                                                                                         |
 | BaselineNullRuleError                    | A referenciakonfiguráció konfigurációs szabályok listája tartalmaz egy szabályt az érték *null*.                                                                         |
 | BaselineRuleCceIdNotUniqueError          | A CCE-azonosító *{0}* , nem egyedi.                                                                                                                  |
@@ -298,7 +298,7 @@ Az összes lehetséges hibákat az alábbi táblázatban láthatók:
 | BaselineRuleTypeDoesntMatchError         | A szabály a tényleges típus *{0}*, de a *ruleType* tulajdonság *{1}*.                                                                          |
 | BaselineRuleUnpermittedChangesError      | Csak *expectedValue* és *állapot* tulajdonságok megengedettek módosítani.                                                                       |
 | BaselineTooManyRules                     | A legfeljebb engedélyezett testre szabott szabályokkal {0} szabályokat. A megadott konfiguráció tartalmazza {1} szabályok {2} alapértelmezett szabályokkal, és {3} testre szabott szabályokkal. |
-| ErrorNoConfigurationStatus               | Nincsenek konfigurációs állapot található. Adja meg a szükséges konfiguráció állapota: *alapértelmezett* vagy *egyéni*.                                    |
+| ErrorNoConfigurationStatus               | Nincsenek konfigurációs állapot található. A szükségeskonfiguráció-állapot. állapot: *Alapértelmezett* vagy *egyéni*.                                    |
 | ErrorNonEmptyRulesetOnDefault            | A konfigurációs állapot alapértelmezett értéke. A *BaselineRulesets* lista kell lennie, NULL értékű vagy üres.                                                          |
 | ErrorNullRulesetsPropertyOnCustom        | A megadott konfigurációs állapot *egyéni* , de a *baselineRulesets* tulajdonság null értékű vagy üres.                                             |
 | ErrorParsingBaselineConfig               | A megadott konfiguráció érvénytelen. Egy vagy több a meghatározott értékeknek kell null értékű vagy érvénytelen típusú.                                  |

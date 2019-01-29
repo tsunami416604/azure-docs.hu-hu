@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: fb0eca8a6871fbcc3a9da99334ede6c758350dba
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 0672e913bcf4b983a3603a5dc7f66f539f7dfad2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449242"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098013"
 ---
 # <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging"></a>Oktatóanyag: Bizonyos Android-alapú eszközök Azure Notification Hubs és a Google Cloud Messaging leküldéses értesítések küldése
 
@@ -36,7 +36,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
 > * Kategóriaválasztást ad a mobilalkalmazáshoz.
-> * Értesítésekre regisztrál címkékkel.
+> * Az értesítések címkékkel regisztrálva.
 > * Címkés értesítéseket küld.
 > * Az alkalmazás tesztelése
 

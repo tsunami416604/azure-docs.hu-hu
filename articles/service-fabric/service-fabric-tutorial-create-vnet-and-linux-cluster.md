@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 33b95c1b0e3d654ce8bb6eda3e96b7b3e9c9bc13
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
-ms.translationtype: HT
+ms.openlocfilehash: b494da1c87feafd1b9db8485d16a9dcf5b999e3d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831483"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101805"
 ---
-# <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Linux-alapú Service Fabric-fürt üzembe helyezése Azure Virtual Networkön
+# <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Azure-beli virtuális hálózathoz Linux Service Fabric-fürt üzembe helyezése
 
 Ez az oktatóanyag egy sorozat első része. Megismerheti, hogyan helyezhet üzembe egy Linux rendszert futtató Service Fabric-fürtöt egy [Azure-beli virtuális hálózaton (VNET)](../virtual-network/virtual-networks-overview.md) az Azure CLI és egy sablon használatával. Amikor végzett, a felhőben futó fürttel fog rendelkezni, amelyre alkalmazásokat telepíthet. Ha a PowerShell használatával szeretne Windows-fürtöt létrehozni, lásd: [Biztonságos Windows-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
@@ -89,29 +89,29 @@ A **Microsoft.ServiceFabric/clusters** erőforrásban a rendszer üzembe helyez 
 
 * egyetlen csomóponttípus;
 * öt csomópont az elsődleges csomóponttípusban (a sablon paramétereiben konfigurálható);
-* Ubuntu 16.04 LTS operációs rendszer (a sablon paramétereiben konfigurálható);
+* Operációs rendszer: Ubuntu 16.04 LTS (a sablon paramétereiben konfigurálható)
 * tanúsítványon alapuló védelem (a sablon paramétereiben konfigurálható);
 * engedélyezve van a [DNS szolgáltatás](service-fabric-dnsservice.md);
 * bronz szintű [tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
 * ezüst szintű [megbízhatósági szint](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
-* ügyfélkapcsolati végpont: 19000 (a sablon paramétereiben konfigurálható);
-* HTTP-átjáró végpontja: 19080 (a sablon paramétereiben konfigurálható).
+* ügyfélkapcsolati végpont: 19000 (a sablon paramétereiben konfigurálható)
+* HTTP-átjáró végpontja: 19080-as (a sablon paramétereiben konfigurálható)
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
 A **Microsoft.Network/loadBalancers** erőforrásban a rendszer egy terheléselosztót konfigurál, a mintavételeket és szabályokat pedig az alábbi portokra állítja be:
 
-* ügyfélkapcsolati végpont: 19000;
-* HTTP-átjáró végpontja: 19080;
-* alkalmazásport: 80;
-* alkalmazásport: 443;
+* ügyfélkapcsolati végpont: 19000
+* HTTP-átjáró végpontja: 19080
+* alkalmazásport: 80
+* alkalmazásport: 443
 
 ### <a name="virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat
 
-A virtuális hálózat és az alhálózat neve a sablon paramétereiben határozható meg.  A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg, és a **Microsoft.Network/virtualNetworks** erőforrásban van konfigurálva:
+A virtuális hálózat és az alhálózat neve a sablon paramétereiben határozható meg.  A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg és a **Microsoft.Network/virtualNetworks** erőforrásban van konfigurálva:
 
 * virtuális hálózat címtere: 10.0.0.0/16
-* Service Fabric-alhálózat címtere: 10.0.2.0/24
+* A Service Fabric-alhálózat címtere: 10.0.2.0/24
 
 Ha további alkalmazásportokra van szükség, akkor módosítania kell a Microsoft.Network/loadBalancers erőforrást a forgalom beengedésére.
 
@@ -163,7 +163,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>Fürt létrehozása új, önaláírt tanúsítvány használatával
 
-Az alábbi szkript az [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) parancs és egy sablon használatával helyez üzembe egy új fürtöt az Azure-ban. A parancs emellett egy új kulcstárolót is létrehoz az Azure-ban, hozzáad egy új önaláírt tanúsítványt a kulcstárolóhoz, és letölti helyben a tanúsítványfájlt.
+Az alábbi szkript az [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) parancs és egy sablon használatával helyez üzembe egy új fürtöt az Azure-ban. A parancs is létrehoz egy új kulcstárolót az Azure-ban, hozzáad egy új önaláírt tanúsítványt a key vaultban, és letölti helyben a tanúsítványfájlt.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"

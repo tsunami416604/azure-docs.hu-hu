@@ -1,6 +1,6 @@
 ---
-title: Parancsfájl futtatása az Azure Service Fabric-szolgáltatás elindulásakor |} Microsoft Docs
-description: Megtudhatja, hogyan konfigurálja a Service Fabric szolgáltatás telepítője a belépési pont egy házirendet, és futtatni egy parancsfájlt szolgáltatás indítási ideje.
+title: Parancsfájl futtatása az Azure Service Fabric-szolgáltatás indításakor |} A Microsoft Docs
+description: Ismerje meg, hogyan konfigurálja a házirendet egy Service Fabric szolgáltatásbeállítás belépési pontjának, és futtasson egy szkriptet a szolgáltatás indítása óta eltelt idő.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: 3fe22d8bb52fa5f45ce5f1cdc7b860d1ce295a71
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: caca931806aed7e1868c126d4629073bcea4b900
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210494"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098612"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Szolgáltatásindítási szkript futtatása helyi felhasználóként vagy rendszerfiókként
-A Service Fabric-szolgáltatás végrehajtható indítása előtt lehet néhány konfigurációs vagy a telepítő feladat futtatásához szükséges.  Például konfigurálása környezeti változókat. Megadhatja, hogy a parancsfájl futtatása előtt a szolgáltatás jegyzékben a szolgáltatás indítása a szolgáltatás végrehajtható. A szolgáltatás beállítása belépési pont módosíthatja, hogy melyik fiók RunAs házirend konfigurálásával futtatható a telepítés alatt fut.  Egy külön telepítő belépési pont lehetővé teszi egy rövid ideig magas-privilged konfigurációs futtatását, így a végrehajtható szolgáltatásgazda huzamosabb ideig magas jogosultsággal rendelkező futtatásához nem kell.
+Végrehajtható egy Service Fabric-szolgáltatás indítása előtt lehet néhány konfigurációs vagy a telepítő munkahelyi futtatásához szükséges.  Például a környezeti változók konfigurálása. Megadhatja, hogy a parancsfájl futtatása előtt a szolgáltatásjegyzékben a szolgáltatás indítása végrehajtható a szolgáltatást. Az a szolgáltatásbeállítás belépési pontjának módosíthatja, hogy melyik fiók RunAs szabályzat konfigurálásával a végrehajtható telepítő alatt fut.  Egy külön szolgáltatásbeállítás belépési pontjának lehetővé teszi magas szintű jogosultságokat igénylő konfigurációs egy rövid ideig futnak, így a végrehajtható szolgáltatásgazda hosszabb ideig magas szintű jogosultságokkal rendelkező futtatásához nem szükséges.
 
-A telepítő belépési pont (**SetupEntryPoint** a a [szolgáltatás jegyzékfájl](service-fabric-application-and-service-manifests.md)) egy jogosultsági szintű belépési pontja, amely alapértelmezés szerint fut, ugyanazokat a hitelesítő adatokat, mint a Service Fabric (általában a  *NetworkService* fiók) más belépési pont előtt. A megadott végrehajtható fájl **EntryPoint** általában a hosszan futó szolgáltatás gazdagép legyen. A **EntryPoint** végrehajtható fájl futtatása a **SetupEntryPoint** végrehajtható fájl sikeresen kilép. Az eredményül kapott folyamat figyeli, és újra kell indítani, és újra kezdődik **SetupEntryPoint** Ha valaha is leáll, vagy összeomlik. 
+A beállítási belépési pontra (**SetupEntryPoint** a a [Szolgáltatásjegyzék](service-fabric-application-and-service-manifests.md)) egy emelt szintű belépési pontja, amely alapértelmezés szerint ugyanazokat a hitelesítő adatokat, mint a Service Fabric-fut (általában a  *NetworkService* fiók) bármilyen egyéb belépési pont előtt. A megadott végrehajtható fájl **EntryPoint** általában a hosszan futó szolgáltatásgazda van. A **EntryPoint** végrehajtható fájl futtatása a **SetupEntryPoint** végrehajtható fájl sikeresen kilép. Az eredményül kapott folyamat figyeli, és újra kell indítani, és újra kezdődik **SetupEntryPoint** Ha valaha leáll vagy összeomlik. 
 
 ## <a name="configure-the-service-setup-entry-point"></a>Szolgáltatásbeállítás belépési pontjának konfigurálása
-Az alábbiakban egy egyszerű szolgáltatás, amely meghatározza a telepítési parancsfájl állapot nélküli szolgáltatás jegyzék példa egy *MySetup.bat* szolgáltatási **SetupEntryPoint**.  **Argumentumok** argumentumok átadása a parancsfájl futása során használatos.
+Az alábbiakban egy egyszerű szolgáltatás jegyzékfájl például állapotmentes szolgáltatás, amely meghatározza a telepítési parancsfájl a *MySetup.bat* a szolgáltatásban **SetupEntryPoint**.  **Argumentumok** argumentumok átadása a szkript futása során használatos.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -66,11 +66,11 @@ Az alábbiakban egy egyszerű szolgáltatás, amely meghatározza a telepítési
   </Resources>
 </ServiceManifest>
 ```
-## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>A telepítő belépési pont vonatkozó házirend konfigurálása
-Alapértelmezés szerint a szolgáltatás beállítása belépési pont végrehajtható fájl fut. ugyanazokat a hitelesítő adatokat, mint a Service Fabric (általában a *NetworkService* fiók).  Az alkalmazásjegyzékben, a biztonsági engedélyek módosíthatja a helyi rendszerfiók vagy a rendszergazdai fiók alatt indítási parancsfájl futtatásához.
+## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>A házirend-szolgáltatásbeállítás belépési pontjának konfigurálása
+Alapértelmezés szerint a szolgáltatás a telepítő belépési pontjának végrehajtható fájlja fut, a ugyanazokat a hitelesítő adatokat, mint a Service Fabric (általában a *NetworkService* fiók).  Az alkalmazásjegyzékben módosíthatja a biztonsági engedélyek a helyi rendszerfiókot vagy egy rendszergazdai fiókot az indítási szkript futtatásához.
 
-### <a name="configure-the-policy-by-using-a-local-system-account"></a>Konfigurálja a házirendet a helyi rendszer fiók használatával
-A következő alkalmazás jegyzékének példa bemutatja, hogyan konfigurálhatja a telepítő-belépési pont futtatásához rendszergazdai fiókkal (SetupAdminUser).
+### <a name="configure-the-policy-by-using-a-local-system-account"></a>A szabályzat konfigurálása a helyi rendszer fiók használatával
+A következő application manifest példa bemutatja, hogyan konfigurálhatja a szolgáltatásbeállítás belépési pontjának futtatásához rendszergazdai fiókkal (SetupAdminUser).
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -104,12 +104,12 @@ A következő alkalmazás jegyzékének példa bemutatja, hogyan konfigurálhatj
 </ApplicationManifest>
 ```
 
-Először hozzon létre egy **rendszerbiztonsági tagok** egy felhasználónevet, pl. SetupAdminUser szakasz ismerteti. A SetupAdminUser felhasználói fiók tagja a rendszergazdák rendszer csoport.
+Először hozzon létre egy **rendszerbiztonsági tagok** egy felhasználónevet, pl. SetupAdminUser szakaszt. A SetupAdminUser felhasználói fiók tagja a rendszergazdák rendszercsoportjához.
 
-Ezután bontsa a **ServiceManifestImport** területen házirend alkalmazása a rendszerbiztonsági konfigurálása **SetupEntryPoint**. Ez a házirend közli a Service Fabric, hogy ha a **MySetup.bat** fájl is fut (rendszergazdai jogosultságokkal) SetupAdminUser futnia kell. Mivel rendelkezik *nem* házirend alkalmazása a fő belépési ponthoz, a kód **MyServiceHost.exe** fut a rendszer a **NetworkService** fiók. Ez az az alapértelmezett fiókot, amelyet a szolgáltatás összes belépési pont alatt futnak.
+A következő a **ServiceManifestImport** szakaszban, a alkalmazni az egyszerű házirend konfigurálása **SetupEntryPoint**. Ez a szabályzat tájékoztatja a Service Fabricet, hogy amikor a **MySetup.bat** fájl fut (rendszergazdai jogosultságokkal) SetupAdminUser-ként kell futnia. Mivel rendelkezik *nem* egy szabályzatot alkalmazza az hlavní vstupní BOD, a kód a **MyServiceHost.exe** fut a rendszer a **NetworkService** fiókot. Ez az az alapértelmezett fiókot, amely az összes szolgáltatás belépési pont alatt futnak.
 
-### <a name="configure-the-policy-by-using-local-system-accounts"></a>A házirend konfigurálása a helyi rendszer fiók használatával
-Gyakran célszerű a rendszergazdai fiók helyett a helyi rendszerfiók indítási parancsfájl futtatásához. A RunAs házirend általában a Rendszergazdák csoport tagjaként fut nem működik jól, mert a felhasználói hozzáférés felügyelete (UAC) engedélyezve van, alapértelmezetten a számítógépek rendelkeznek. Ilyen esetekben a javaslat a SetupEntryPoint LocalSystem fiókként való futtatásra, ahelyett, hogy a rendszergazdák csoportba felvett helyi felhasználóként. A következő példa bemutatja a LocalSystem fiókként való futtatásra SetupEntryPoint beállítása:
+### <a name="configure-the-policy-by-using-local-system-accounts"></a>A szabályzat konfigurálása a helyi rendszer fiók használatával
+Gyakran előfordul célszerű a rendszergazdai fiók helyett a helyi rendszer fiók használatával indítási parancsfájl futtatásához. A RunAs szabályzat általában a Rendszergazdák csoport tagjaként futtató nem működik jól, mivel a számítógépeken a felhasználói hozzáférés felügyelete (UAC) alapértelmezés szerint engedélyezve van. Ezekben az esetekben a javaslat a SetupEntryPoint LocalSystem fiókként való futtatásra, helyett a rendszergazdák csoporthoz hozzáadott helyi felhasználóként. Az alábbi példa bemutatja, hogy a LocalSystem fiókként való futtatásra SetupEntryPoint beállítása:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -140,18 +140,18 @@ Gyakran célszerű a rendszergazdai fiók helyett a helyi rendszerfiók indítá
 ```
 
 > [!NOTE]
-> Linux-fürtök esetén a szolgáltatás vagy a telepítő futtatásához belépési pont mint **legfelső szintű**, megadhatja a **AccountType** , **LocalSystem**.
+> A Linux-fürtökre, egy szolgáltatás vagy a telepítő futtatásához belépési pontja **legfelső szintű**, megadhatja a **AccountType** , **LocalSystem**.
 
-## <a name="run-a-script-from-the-setup-entry-point"></a>Futtassa a parancsfájlt a telepítő belépési pont
-A parancsfájl indítása most hozzáadása a projekthez futtatásához rendszergazdai jogosultságokkal. 
+## <a name="run-a-script-from-the-setup-entry-point"></a>Futtassa a parancsfájlt a beállítási belépési pontra
+Adjon hozzá egy indítási szkriptet a projekt futtatásához rendszergazdai jogosultságokkal. 
 
-A Visual Studióban, kattintson a jobb gombbal a projekt, és adjon hozzá egy új fájlt nevű *MySetup.bat*.
+A Visual Studióban kattintson a jobb gombbal a projekt, és adjon hozzá egy új fájlt *MySetup.bat*.
 
-Ezt követően győződjön meg arról, hogy a *MySetup.bat* fájl tartalmazza a szervizcsomagban. Alapértelmezés szerint nincs. Válassza ki a fájlt, kattintson a jobb gombbal a helyi menü segítségével, és válassza a **tulajdonságok**. A Tulajdonságok párbeszédpanelen győződjön meg arról, hogy **másolása a kimeneti könyvtárba** értéke **másolhatja, ha újabb**. Tekintse meg a következő képernyőképet.
+Ezután ellenőrizze, hogy a *MySetup.bat* fájl megtalálható a csomagban. Alapértelmezés szerint nincs. Válassza ki a fájlt, kattintson a jobb gombbal a helyi menü lekérni, és válassza **tulajdonságok**. A Tulajdonságok párbeszédpanelen ellenőrizze, hogy **Copy to Output Directory** értékre van állítva **másolás, ha újabb**. Tekintse meg a következő képernyőképet.
 
-![A Visual Studio CopyToOutput SetupEntryPoint kötegelt fájl][image1]
+![A Visual Studio CopyToOutput SetupEntryPoint batch-fájl][image1]
 
-Most szerkesztése a *MySetup.bat* fájlt, és adja hozzá a következő parancsokat a rendszer környezeti változót, és a kimeneti szövegfájl:
+Most már szerkesztheti a *MySetup.bat* fájlt, és adja hozzá a következő parancsokat egy rendszer környezeti változót, és a kimenetet egy szövegfájlba:
 
 ```
 REM Set a system environment variable. This requires administrator privilege
@@ -163,23 +163,23 @@ REM To delete this system variable us
 REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
 ```
 
-Ezt követően hozza létre, és a megoldás telepítése egy helyi fejlesztési fürtöt. Miután a szolgáltatás elindult, ahogy az [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), láthatja, hogy a két módon sikeres volt-e a MySetup.bat fájlt. Nyisson meg egy PowerShell-parancssort, és írja be:
+Ezután hozhat létre, és a megoldás üzembe helyezése egy helyi fejlesztési fürtön. Miután a szolgáltatás elindult, ahogyan az [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), láthatja, hogy a két módon sikeres volt-e a MySetup.bat fájlt. Nyisson meg egy PowerShell-parancssort, írja be:
 
 ```
 PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ```
 
-Jegyezze fel a csomópont, ahol a szolgáltatás telepítése és elindítása neve [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Például a csomópont 2. Ezután keresse meg az alkalmazás példány munkahelyi mappát értékét bemutató out.txt fájlt **TestVariable**. Például, ha a szolgáltatás telepítve van a csomópont 2, majd lépjen az elérési útját a **MyApplicationType**:
+Jegyezze fel a csomópont, ahol a szolgáltatás üzembe helyezett és lépések nevét [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Ha például a csomópont 2. Ezután keresse meg az alkalmazás példány munkahelyi mappát, amely az értékei out.txt fájl kereséséhez **TestVariable**. Például, ha ez a szolgáltatás telepítve van a csomópont 2, majd megnyithatja ezt az elérési út a **MyApplicationType**:
 
 ```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
-## <a name="run-powershell-commands-from-a-setup-entry-point"></a>A telepítő belépési pontról PowerShell-parancsok futtatása
-A PowerShell futtatásához a **SetupEntryPoint** pont, futtathatja **PowerShell.exe** parancsfájlban, amely egy PowerShell-fájlra mutat. Először adjon hozzá egy PowerShell fájlt például a projekt-- **MySetup.ps1**. Ne felejtse el, állítsa be a *másolhatja, ha újabb* tulajdonságot, hogy a fájl a szolgáltatáscsomagot is megtalálhatók. A következő példa bemutatja egy minta-kötegfájl MySetup.ps1, amelyek a nevezett rendszer környezeti változó beállítása nevű PowerShell fájl elinduló **TestVariable**.
+## <a name="run-powershell-commands-from-a-setup-entry-point"></a>A szolgáltatásbeállítás belépési pontjának a PowerShell-parancsok futtatása
+A PowerShell futtatásához a **SetupEntryPoint** futtathatja, pont **PowerShell.exe** fájlt egy kötegfájlban, amely egy PowerShell-fájlra mutat. Első lépésként adjon hozzá egy PowerShell-fájlt például a projekt-- **MySetup.ps1**. Állítsa be a vágólapra a *másolás, ha újabb* tulajdonságot, hogy a fájl is megtalálható a csomagban. Az alábbi példa bemutatja egy kötegelt mintafájlt, amely elindítja a nevű MySetup.ps1, amely nevű rendszer környezeti változó beállítása PowerShell fájlba **TestVariable**.
 
-A PowerShell fájl indítása MySetup.bat:
+MySetup.bat elindítani egy PowerShell-fájlra:
 
 ```
 powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
@@ -193,7 +193,7 @@ A PowerShell fájlban adja hozzá a következő, a rendszer környezeti változ�
 ```
 
 > [!NOTE]
-> Alapértelmezés szerint a parancsfájl futtatása azt ellenőrzi, hogy az alkalmazás mappájában nevű **működik** fájlok. Ebben az esetben, amikor MySetup.bat fut, történjen a MySetup.ps1 fájl található abban a mappában, amely az alkalmazás **kódcsomag** mappa. Ez a mappa módosításához állítsa a munkamappa:
+> Alapértelmezés szerint a parancsfájl futtatásakor úgy tűnik, az alkalmazás mappájában nevű **működik** fájlok. Ebben az esetben, amikor MySetup.bat fut, szeretnénk juthat a MySetup.ps1 fájl ugyanabban a mappában, amely az alkalmazás **kódcsomag** mappát. Ez a mappa módosításához állítsa a munkamappában:
 > 
 > 
 
@@ -206,15 +206,15 @@ A PowerShell fájlban adja hozzá a következő, a rendszer környezeti változ�
 </SetupEntryPoint>
 ```
 
-## <a name="debug-a-startup-script-locally-using-console-redirection"></a>A konzol helyileg átirányítással indítási parancsfájlok hibakeresése
-Alkalmanként célszerű a hibakereséshez a konzol kimeneti telepítési parancsfájl futásának megtekintéséhez. A telepítő belépési pont a jegyzékben szolgáltatás, amely a kimeneti fájlba írja a konzol átirányítási házirendet állíthat be. A kimeneti fájl beíródik nevű alkalmazás mappát **napló** a fürtcsomóponton, ha az alkalmazás üzemel, és futtassa. 
+## <a name="debug-a-startup-script-locally-using-console-redirection"></a>Egy indítási parancsfájl használatával helyben konzolátirányítás hibakeresése
+Bizonyos esetekben hasznos, hibakeresési célra, tekintse meg a konzol kimenete a telepítési parancsfájl futtatását. A beállítási belépési pontra a szolgáltatásjegyzékben, amely a kimenetet egy fájlba írja be a konzol átirányítás házirendjében is megadhatja. Az alkalmazás nevű mappát a kimeneti fájl írt **log** a fürtcsomópontra, ahol az alkalmazás üzembe helyezését és futtatását. 
 
 > [!WARNING]
-> Soha ne használja a konzol átirányítási házirend a kérelmet, mert ez hatással lehet az alkalmazás feladatátvételi éles környezetben telepített. *Csak* használja ezt a helyi fejlesztési és hibakeresési célra.  
+> Soha ne használja a konzolon átirányítási házirendet egy alkalmazásban, amely az éles környezetben telepített, mert ez befolyásolhatja az alkalmazás feladatátvételt. *Csak* helyi fejlesztés és hibakeresés céljából használja.  
 > 
 > 
 
-A következő service manifest példa bemutatja, a konzol átirányítása FileRetentionCount érték beállítása:
+A következő service manifest példa bemutatja, a konzol-átirányítás FileRetentionCount értékű beállítást:
 
 ```xml
 <SetupEntryPoint>
@@ -226,22 +226,22 @@ A következő service manifest példa bemutatja, a konzol átirányítása FileR
 </SetupEntryPoint>
 ```
 
-Ha most módosítja a MySetup.ps1 fájl, amelybe írni egy **Echo** parancsban, ez fogja írni a kimeneti fájl hibakeresési célra:
+Ha most módosítja MySetup.ps1 soubor Pro zápis egy **Echo** parancsot, és ez fogja írni a kimeneti fájl hibakeresési célra:
 
 ```
 Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"
 ```
 
 > [!WARNING]
-> A parancsfájl hibakeresése azonnal távolítsa el a konzol átirányítási házirend.
+> Miután a szkript hibakeresést, azonnal távolítsa el a konzol-átirányítás házirend.
 
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
-* [Tudnivalók az alkalmazás és szolgáltatás biztonsága](service-fabric-application-and-service-security.md)
-* [Az alkalmazásmodell ismertetése](service-fabric-application-model.md)
-* [Adja meg a szolgáltatás jegyzék erőforrások](service-fabric-service-manifest-resources.md)
+* [További információ az alkalmazás és szolgáltatás biztonsága](service-fabric-application-and-service-security.md)
+* [Az alkalmazásmodell megismerése](service-fabric-application-model.md)
+* [Erőforrások meghatározása szolgáltatásjegyzékben](service-fabric-service-manifest-resources.md)
 * [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

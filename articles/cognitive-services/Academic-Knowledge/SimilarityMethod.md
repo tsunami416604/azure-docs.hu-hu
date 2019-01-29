@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 76e86eb78a06d98e3d5c6c54b244add3c0c245d2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 7484b570784f5f058ebd23b1e3c225c5d858a274
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900461"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183339"
 ---
 # <a name="similarity-method"></a>Hasonlósági metódus
 
@@ -30,8 +30,8 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ## <a name="request-parameters"></a>A kérés paraméterei
 Paraméter        |Adattípus      |Szükséges | Leírás
 ----------|----------|----------|------------
-**S1**        |Sztring   |Igen  |Összehasonlítandó karakterlánc *
-**S2**        |Sztring   |Igen  |Összehasonlítandó karakterlánc *
+**s1**        |Karakterlánc   |Igen  |Összehasonlítandó karakterlánc *
+**s2**        |Karakterlánc   |Igen  |Összehasonlítandó karakterlánc *
 <sub> * Karakterláncok összehasonlítására van egy 1MB maximális hosszát. </sub>
 <br>
 ## <a name="response"></a>Válasz
@@ -48,7 +48,7 @@ HTTP-állapot | Ok | Válasz
 **500**         |Belső kiszolgálóhiba | Hibaüzenet
 **Túllépte az időkorlátot**     | A kérelem túllépte az időkorlátot.  | Hibaüzenet
 <br>
-## <a name="example-calculate-similarity-of-two-partial-abstracts"></a>Példa: Két részleges kivonatok hasonlóságot kiszámítása
+## <a name="example-calculate-similarity-of-two-partial-abstracts"></a>Példa: Hasonlósági, két részben kivonatok számítása
 #### <a name="request"></a>Kérés:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?s1=Using complementary priors, we derive a fast greedy algorithm that can learn deep directed belief networks one layer at a time, provided the top two layers form an undirected associative memory

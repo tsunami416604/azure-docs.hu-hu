@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 1ff63dddfa21ba92bb3da44c6711b64e8ad3f1b6
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: a5e6d63627764ff64ac5e0621e271140ab3ed828
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913936"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099815"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>kézikönyv: Kockázati szabályzatainak konfigurálása az Azure Active Directory identity protection (frissítve)
 
@@ -83,7 +83,7 @@ Ha azt szeretné, a többtényezős hitelesítés megkövetelése a kockázatos 
 
 1. Engedélyezze a [többtényezős hitelesítési regisztrációs házirend](#multi-factor-authentication-registration-policy) az érintett felhasználók számára.
 
-2. Az érintett felhasználókat, hogy jelentkezzen be egy kockázatos munkamenetben az MFA-regisztráció végrehajtásához szükséges.
+2. Az érintett felhasználók a bejelentkezéshez szükséges az MFA-regisztráció végrehajtásához nem kockázatos munkamenetben.
 
 Ezen lépések elvégzése biztosítja, hogy a többtényezős hitelesítés szükséges a kockázatos bejelentkezés.
 

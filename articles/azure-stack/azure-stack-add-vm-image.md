@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 1/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: bac0b2933d4b6d4a88ebbb0402bba0ffd508b395
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 54f7b596eebf2cc5ad7a9bf1b795fab087b6fac0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474370"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102481"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Egy virtuális gép rendszerképének elérhetővé az Azure Stackben
 
@@ -82,14 +82,14 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
 3. Nyissa meg a PowerShell egy rendszergazda jogú parancssort, és futtassa:
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" `
       -offer "<offer>" `
       -sku "<sku>" `
       -version "<#.#.#>” `
       -OSType "<ostype>" `
       -OSUri "<osuri>"
-  ````
+  ```
 
   A **Add-AzsPlatformimage** parancsmag a Virtuálisgép-lemezkép hivatkozik az Azure Resource Manager-sablonok segítségével értékeket adja meg. Az értékek a következők:
   - **publisher**  
@@ -157,24 +157,24 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
 5. Készítse elő a VHD formátum (nem VHDX) a Windows vagy Linux operációs rendszer lemezképét, a Rendszerkép feltöltése a storage-fiók és az URI-t, amelyben a Virtuálisgép-lemezkép lekérhetők a PowerShell első.  
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzureRmAccount `
       -EnvironmentName "AzureStackAdmin" `
       -TenantId $TenantID
-  ````
+  ```
 
 6. (Opcionális) Az adatlemezeket a Virtuálisgép-lemezkép részeként tömbje tölthet fel. Az adatlemezeket, a New-DataDiskObject parancsmaggal hozzon létre. Nyissa meg a Powershellt egy rendszergazda jogú parancssorba, majd futtassa:
 
-  ````PowerShell  
+  ```PowerShell  
     New-DataDiskObject -Lun 2 `
     -Uri "https://storageaccount.blob.core.windows.net/vhds/Datadisk.vhd"
-  ````
+  ```
 
 7. Nyissa meg a PowerShell egy rendszergazda jogú parancssort, és futtassa:
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>” -OSType "<ostype>" -OSUri "<osuri>"
-  ````
+  ```
 
     Az Add-AzsPlatformimage parancsmag és a New-DataDiskObject parancsmaggal kapcsolatos további információkért lásd: a Microsoft PowerShell [Azure Stack-operátorokról modul dokumentációjában](https://docs.microsoft.com/powershell/module/).
 
@@ -188,13 +188,13 @@ Ha már nincs szüksége a virtuálisgép-lemezkép feltöltött, törölheti a 
 
 3. Nyissa meg a PowerShell egy rendszergazda jogú parancssort, és futtassa:
 
-  ````PowerShell  
+  ```PowerShell  
   Remove-AzsPlatformImage `
     -publisher "<publisher>" `
     -offer "<offer>" `
     -sku "<sku>" `
     -version "<version>" `
-  ````
+  ```
   A **Remove-AzsPlatformImage** parancsmag a Virtuálisgép-lemezkép hivatkozik az Azure Resource Manager-sablonok segítségével értékeket adja meg. Az értékek a következők:
   - **publisher**  
     Például:`Canonical`  

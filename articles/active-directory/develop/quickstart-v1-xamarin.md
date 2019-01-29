@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8af6846da78d12460b7866297c9802c5dab20a69
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5b721dfd7a229220836f273be58c5ca74c4284d1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967523"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097929"
 ---
-# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Rövid útmutató: Egy Xamarin-alkalmazás, amely integrálható a Microsoft-bejelentkezés létrehozása
+# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Gyors útmutató: Integrálható a Microsoft bejelentkezési Xamarin-alkalmazás készítése
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -39,7 +39,7 @@ Xamarin-alkalmazásokba, védett erőforrások elérését igénylő az Azure AD
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Töltse le a [projekt vázát](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip), vagy töltse le a [elkészült mintát](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip). Minden letöltés a Visual Studio 2013 megoldás.
-* Azure AD-bérlő, amelyben a felhasználók létrehozásához, és regisztrálja az alkalmazást is szükséges. Ha még nem rendelkezik egy bérlő [megtudhatja, hogyan tehet szert egy](quickstart-create-new-tenant.md).
+* Azure AD-bérlő, amelyben a felhasználók létrehozásához, és regisztrálja az alkalmazást is szükséges. Ha még nem rendelkezik bérlővel, [itt megtudhatja, hogyan tehet szert egyre](quickstart-create-new-tenant.md).
 
 Amikor készen áll, hajtsa végre a következő négy szakasz.
 
@@ -49,17 +49,17 @@ Mivel ebben az oktatóanyagban a projektek iOS, Android és Windows tartalmazza,
 
 A telepítés befejezése után nyissa meg a megoldást a Visual Studióban. Itt megtalálja a hat projektek: öt platformspecifikus projektek és a egy plc, DirectorySearcher.cs, amely minden platformon között meg lesz osztva.
 
-## <a name="step-2-register-the-directorysearcher-app"></a>2. lépés: A DirectorySearcher alkalmazás regisztrálása
+## <a name="step-2-register-the-directorysearcher-app"></a>2. lépés: A DirectorySearcher alkalmazás regisztrálása
 
 Ahhoz, hogy az alkalmazásnak, hogy a jogkivonatok lekérésére, akkor először regisztrálja az Azure AD-bérlőhöz, és engedélyezi azt az Azure AD Graph API eléréséhez. Ezt a következőképpen teheti meg:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A felső eszköztáron kattintson a fiók. Ezt követően a **Directory** listájához, válassza ki az Active Directory-bérlő kívánja az alkalmazás regisztrálásához.
-3. Kattintson a **minden szolgáltatás** a bal oldali panelen, és válassza ki a **Azure Active Directory**.
-4. Kattintson a **alkalmazásregisztrációk**, majd válassza ki **Hozzáadás**.
+3. Kattintson a **Minden szolgáltatás** lehetőségre a bal oldali panelen, majd válassza az **Azure Active Directory** elemet.
+4. Kattintson az **Alkalmazásregisztrációk** elemre, majd válassza a **Hozzáadás** parancsot.
 5. Hozzon létre egy új **natív ügyfélalkalmazás**, kövesse az utasításokat.
   * **Név** ismerteti az alkalmazást a felhasználók számára.
-  * **Átirányítási URI** sémát és karakterlánc kombinációja, amely az Azure AD a jogkivonatválaszok visszaadására használ. Adjon meg egy értéket (például http://DirectorySearcher).
+  * Az **Átirányítási URI** egy sémából és sztringből álló kombináció, amelyet az Azure AD jogkivonatválaszok visszaadására használ. Adjon meg egy értéket (például http://DirectorySearcher).
 6. Regisztráció befejezése után az Azure AD rendeli az alkalmazást egy alkalmazás egyedi azonosítója. Másolja az értéket a **alkalmazás** lapon, mert később szüksége.
 7. Az a **beállítások** lapon jelölje be **szükséges engedélyek**, majd válassza ki **Hozzáadás**.
 8. Válassza ki **Microsoft Graph** az API-ként. A **delegált engedélyek**, adja hozzá a **címtáradatok olvasása** engedéllyel. Ez a művelet lehetővé teszi az alkalmazásnak, hogy a felhasználók számára a Graph API lekérdezéséhez.
@@ -98,7 +98,7 @@ Most, hogy egy alkalmazást az Azure ad-ben, telepítheti az adal-t és az ident
   * A *clientId* az alkalmazás, amely a portálról kimásolt ügyfél-azonosítója.
   * A *returnUri* az átirányítási URI-t, amely a portálon megadott (például http://DirectorySearcher).
 
-## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>4. lépés: Használja az ADAL-ra tokenekhez Azure AD-ből
+## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>4. lépés: Adal-t használó tokenekhez Azure AD-ből való
 
 Szinte teljes egészében az alkalmazás hitelesítési logikát létrejönnie `DirectorySearcher.SearchByAlias(...)`. Minden szükséges a platformspecifikus projektek átadni egy környezetfüggő paramétert a `DirectorySearcher` Plc.
 
@@ -187,12 +187,12 @@ List<User> results = await DirectorySearcherLib.DirectorySearcher.SearchByAlias(
 
 Most már rendelkezik egy működő Xamarin-alkalmazás, amely képes hitelesíteni a felhasználókat, és biztonságos hívása a webes API-k öt különböző platformok közötti OAuth 2.0 használatával.
 
-## <a name="step-5-populate-your-tenant"></a>5. lépés: Töltse fel a bérlőhöz 
+## <a name="step-5-populate-your-tenant"></a>5. lépés: A bérlő feltöltése 
 
 Ha Ön még nem már fel van töltve a bérlő felhasználóival, most már az az idő, ehhez.
 
 1. A DirectorySearcher alkalmazás futtatásához, és jelentkezzen be a felhasználók közül.
-2. Keresse meg a más felhasználók, az egyszerű felhasználónév alapján.
+2. Keressen más felhasználókat az egyszerű felhasználónevük alapján.
 
 ## <a name="next-steps"></a>További lépések
 

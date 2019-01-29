@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 10023d34a245f9493cfe244882dbdc1351a78513
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 59562d0571486a4bcbc96be4cb7dcddb4dfb0a44
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447214"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095719"
 ---
 # <a name="api-management-access-restriction-policies"></a>Az API Management hozzáférés-korlátozási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -66,9 +66,9 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |failed-check-error-message|Hibaüzenet jelenik meg, a HTTP-válasz törzsében ad vissza, ha a fejléc nem létezik vagy érvénytelen értékkel rendelkezik. Ez az üzenet blobnév különleges karaktereket kell rendelkeznie.|Igen|–|  
-|nem sikerült – jelölőnégyzet-HTTP-kód|HTTP-állapot kódot ad vissza, ha a fejléc nem létezik, vagy má neplatnou hodnotu.|Igen|–|  
-|fejléc neve|Ellenőrizze, hogy a HTTP-fejléc neve.|Igen|–|  
-|hagyja figyelmen kívül eset|Akkor állítható a True vagy FALSE (hamis). Ha esetben igaz értékre kell állítani a rendszer figyelmen kívül hagyja, a fejléc értéke ellenében elfogadható értékek képest.|Igen|–|  
+|failed-check-httpcode|HTTP-állapot kódot ad vissza, ha a fejléc nem létezik, vagy má neplatnou hodnotu.|Igen|–|  
+|header-name|Ellenőrizze, hogy a HTTP-fejléc neve.|Igen|–|  
+|ignore-case|Akkor állítható a True vagy FALSE (hamis). Ha esetben igaz értékre kell állítani a rendszer figyelmen kívül hagyja, a fejléc értéke ellenében elfogadható értékek képest.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -218,13 +218,13 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |----------|-----------------|--------------|  
 |ip-filter|A gyökérelem.|Igen|  
 |Cím|Itt adhatja meg a szűrni kívánt egyetlen IP-címet.|Legalább egy `address` vagy `address-range` elem megadása kötelező.|  
-|címtartományból = "cím", "cím" =|Szűrni kívánt az IP-címet ad meg.|Legalább egy `address` vagy `address-range` elem megadása kötelező.|  
+|address-range from="address" to="address"|Szűrni kívánt az IP-címet ad meg.|Legalább egy `address` vagy `address-range` elem megadása kötelező.|  
   
 ### <a name="attributes"></a>Attribútumok  
   
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|címtartományból = "cím", "cím" =|Engedélyezi vagy megtagadja a hozzáférést egy IP-címeket.|Szükséges, ha a `address-range` elem szolgál.|–|  
+|address-range from="address" to="address"|Engedélyezi vagy megtagadja a hozzáférést egy IP-címeket.|Szükséges, ha a `address-range` elem szolgál.|–|  
 |IP-szűrési művelet = "engedélyezése &#124; megtiltsa"|Megadja a hívások engedélyezni kell-e, vagy a megadott IP-címek és tartományok esetében nem.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
@@ -350,11 +350,12 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 -   **A házirend-hatókörök:** globális, termék, API-művelet  
   
 ##  <a name="ValidateJWT"></a> JWT ellenőrzése  
- A `validate-jwt` a szabályzat kötelezővé teszi létezik-e, és a jwt-t érvényességét kinyert vagy egy meghatározott HTTP-fejléc vagy a megadott lekérdezési paraméter.  
+ A `validate-jwt` a szabályzat kötelezővé teszi létezik-e, és a jwt-t érvényességét kinyert vagy egy meghatározott HTTP-fejléc vagy a megadott lekérdezési paraméter.
   
 > [!IMPORTANT]
 >  A `validate-jwt` szabályzat megköveteli, hogy a `exp` regisztrált jogcím szerepel a JWT jogkivonat, kivéve, ha `require-expiration-time` attribútum van megadva, és állítsa `false`.  
-> A `validate-jwt` szabályzat HS256 és RS256 aláírási algoritmusokat támogatja. HS256 a kulcsot meg kell adni a házirend a base64-kódolású képernyőn belül beágyazott. A kulcs RS256 kell adnia egy Open ID konfigurációs végponton keresztül rendelkezik.  
+> A `validate-jwt` szabályzat HS256 és RS256 aláírási algoritmusokat támogatja. HS256 a kulcsot meg kell adni a házirend a base64-kódolású képernyőn belül beágyazott. A kulcs RS256 kell adnia egy Open ID konfigurációs végponton keresztül rendelkezik.
+> A `validate-jwt` szabályzat titkosítja a szimmetrikus kulcsok használata a következő titkosítási algoritmusok A128CBC-HS256, A192CBC-HS384, A256CBC-HS512 jogkivonatokat támogatja.
   
 ### <a name="policy-statement"></a>Házirendutasítás  
   
@@ -370,7 +371,11 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   <issuer-signing-keys>  
     <key>base64 encoded signing key</key>  
     <!-- if there are multiple keys, then add additional key elements -->  
-  </issuer-signing-keys>  
+  </issuer-signing-keys>
+  <decryption-keys>
+    <key>base64 encoded signing key</key>  
+    <!-- if there are multiple keys, then add additional key elements -->  
+  </decryption-keys>
   <audiences>  
     <audience>audience string</audience>  
     <!-- if there are multiple possible audiences, then add additional audience elements -->  
@@ -444,7 +449,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 ```  
   
 #### <a name="authorize-access-to-operations-based-on-token-claims"></a>A jogkivonat alapján műveleteket hozzáférés engedélyezése  
- Ez a példa bemutatja, hogyan használhatja a [ellenőrzése JWT](api-management-access-restriction-policies.md#ValidateJWT) az előzetes engedélyezéshez műveletek a hozzáférést a házirend jogkivonat alapján. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: több API-t a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és előretekerés 13:50-re. Gyors továbbítja azokat a szabályzatokat, a Helyicsoportházirend-szerkesztő konfigurált 15:00, majd a művelet meghívása a fejlesztői portálról, és a szükséges engedélyezési jogkivonat anélkül bemutatója 18:50.  
+ Ez a példa bemutatja, hogyan használhatja a [ellenőrzése JWT](api-management-access-restriction-policies.md#ValidateJWT) az előzetes engedélyezéshez műveletek a hozzáférést a házirend jogkivonat alapján. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: További API Management funkcióit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és előretekerés 13:50-re. Gyors továbbítja azokat a szabályzatokat, a Helyicsoportházirend-szerkesztő konfigurált 15:00, majd a művelet meghívása a fejlesztői portálról, és a szükséges engedélyezési jogkivonat anélkül bemutatója 18:50.  
   
 ```xml  
 <!-- Copy the following snippet into the inbound section at the api (or higher) level to pre-authorize access to operations based on token claims -->  
@@ -488,13 +493,14 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 |Elem|Leírás|Szükséges|  
 |-------------|-----------------|--------------|  
-|jwt-ellenőrzése|A gyökérelem.|Igen|  
+|validate-jwt|A gyökérelem.|Igen|  
 |Célközönség|Elfogadható célközönség lehet, hogy a jogkivonatban található jogcímeket listáját tartalmazza. Ha több célközönségértékek találhatók, akkor minden értéket a rendszer megpróbálkozik amíg újra nem indítják az összes kimerültek (ebben az esetben az érvényesítés sikertelen), vagy amíg sikerrel. Legalább egy célközönség meg kell adni.|Nem|  
-|Kiállítói aláírási kulcsok|Aláírt jogkivonatokat érvényesítéséhez használt Base64-kódolású biztonsági kulcsok listája. Ha több biztonsági kulcsok jelen, akkor minden kulcs a rendszer megpróbálkozik amíg újra nem indítják az összes kimerültek (ebben az esetben az érvényesítés sikertelen), vagy amíg sikerrel (token helyettesítő hasznos). Fő elemei rendelkezik egy nem kötelező `id` szűréséhez használt attribútum `kid` jogcím.|Nem|  
+|issuer-signing-keys|Aláírt jogkivonatokat érvényesítéséhez használt Base64-kódolású biztonsági kulcsok listája. Ha több biztonsági kulcsok jelen, akkor minden kulcs a rendszer megpróbálkozik amíg újra nem indítják az összes kimerültek (ebben az esetben az érvényesítés sikertelen), vagy amíg sikerrel (token helyettesítő hasznos). Fő elemei rendelkezik egy nem kötelező `id` szűréséhez használt attribútum `kid` jogcím.|Nem|  
+|visszafejtési kulcsok|A jogkivonatok visszafejtését teszi Base64-kódolású kulcsok listája. Ha több biztonsági kulcs megadva, majd minden egyes kulcs próbálkozik erejéig vagy az összes kulcs (ebben az esetben az érvényesítés sikertelen), vagy amíg be nem fejeződik a kulcsot. Fő elemei rendelkezik egy nem kötelező `id` szűréséhez használt attribútum `kid` jogcím.|Nem|  
 |tanúsítványkibocsátók|Amely kiállította a jogkivonatot elfogadható rendszerbiztonsági tagok listáját. Ha több kiállítók a következők találhatók, akkor a rendszer megpróbálkozik az egyes értékek amíg újra nem indítják az összes kimerültek (ebben az esetben az érvényesítés sikertelen), vagy amíg sikerrel.|Nem|  
 |openid-config|Az elem, amely aláírási kulcsokat és a kiállító szerezhető be megfelelő Open ID konfigurációs végpont megadására használt.|Nem|  
 |szükséges jogcímek|A jogcímeket kell lennie ahhoz, hogy nem érvényes a jogkivonat található listáját tartalmazza. Ha a `match` attribútum `all` a szabályzat minden jogcím értéke sikeres ellenőrzés céljából a jogkivonatban jelen kell lennie. Ha a `match` attribútum `any` legalább egy jogcím sikeres ellenőrzés céljából a jogkivonatban jelen kell lennie.|Nem|  
-|zumo főkulcs|Az Azure Mobile Services által kiállított jogkivonatokban főkulcs|Nem|  
+|zumo-master-key|Az Azure Mobile Services által kiállított jogkivonatokban főkulcs|Nem|  
   
 ### <a name="attributes"></a>Attribútumok  
   
@@ -502,12 +508,12 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |----------|-----------------|--------------|-------------|  
 |időbeállításainak|Időtartam. Adja meg a maximális várt időeltérése a jogkivonat kibocsátója rendszerideje és az API Management-példány használatával.|Nem|0 másodperc|  
 |failed-validation-error-message|A HTTP-válasz törzsében adja vissza, ha a JWT nem felel meg az érvényesítési hibaüzenet. Ez az üzenet blobnév különleges karaktereket kell rendelkeznie.|Nem|Alapértelmezett hibaüzenet függ érvényesítési probléma, például "JWT nem található."|  
-|nem sikerült – érvényesítési – HTTP-kód|HTTP-állapot kódot ad vissza, ha a JWT fennakadt érvényesítése.|Nem|401|  
-|fejléc neve|A HTTP-fejlécet a tokent tároló neve.|Akár `header-name` vagy `query-parameter-name` megadott; de nem is kell lennie.|–|  
+|failed-validation-httpcode|HTTP-állapot kódot ad vissza, ha a JWT fennakadt érvényesítése.|Nem|401|  
+|header-name|A HTTP-fejlécet a tokent tároló neve.|Akár `header-name` vagy `query-parameter-name` megadott; de nem is kell lennie.|–|  
 |id|A `id` az attribútum a `key` elem lehetővé teszi, hogy adja meg a sztringet, amelyet a rendszer összeveti `kid` jogcímet a token (ha van ilyen) ismerje meg, hogy a megfelelő kulcsot az aláírás-ellenőrzés céljából.|Nem|–|  
 |egyezés|A `match` az attribútum a `claim` elem azt határozza meg, hogy a szabályzat minden jogcím értéke a jogkivonat az érvényesítés sikeres jelen kell lennie. Lehetséges értékek:<br /><br /> -                          `all` – a szabályzat minden jogcím értéke sikeres ellenőrzés céljából a jogkivonatban jelen kell lennie.<br /><br /> -                          `any` -legalább egy jogcím értéke sikeres ellenőrzés céljából a jogkivonatban jelen kell lennie.|Nem|összes|  
-|lekérdezés-paremeter-neve|A lekérdezési paraméter, a tokent tároló neve.|Akár `header-name` vagy `query-paremeter-name` megadott; de nem is kell lennie.|–|  
-|igényelnek-lejárati-idő|Logikai érték. Megadja, hogy szükséges-e a jogkivonat lejárati jogcím.|Nem|true|
+|query-paremeter-name|A lekérdezési paraméter, a tokent tároló neve.|Akár `header-name` vagy `query-paremeter-name` megadott; de nem is kell lennie.|–|  
+|require-expiration-time|Logikai érték. Megadja, hogy szükséges-e a jogkivonat lejárati jogcím.|Nem|true|
 |szükséges rendszer|A token neve séma, például: "Tulajdonos". Ez az attribútum beállításra kerül, ha a házirend biztosítja, hogy a megadott séma szerepel az engedélyezési fejléc értéke.|Nem|–|
 |igényelnek-aláírt-jogkivonatok|Logikai érték. Megadja, hogy a jogkivonat szükséges alá legyen írva.|Nem|true|  
 |elválasztó|karakterlánc. Adja meg az elválasztó (pl. ",") értékek kinyerését többértékű jogcím használható.|Nem|–| 

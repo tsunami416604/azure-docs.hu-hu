@@ -10,12 +10,12 @@ ms.component: url-preview
 ms.topic: overview
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: e3791c897722c9bbf50f58c126d7e4e573b2096f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: eeb68ef869e3249ec86ecc8763aa1f136617e6d4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465814"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101702"
 ---
 # <a name="what-is-project-url-preview"></a>Mi az URL-cím előnézete projekt?
 Az URL-cím előnézete végpont egy URL-címlekérdezési paramétert fogad, és egy JSON-választ ad vissza, amely tartalmazza a célerőforrás nevét, egy rövid leírást és egy, az előnézetben megjeleníteni kívánt képre mutató hivatkozást. A válasz tartalmazza az [isFamilyFriendly](url-preview-reference.md#query-parameters) jelzőt is, amely azt jelzi, hogy az URL-cím tartalmaz-e felnőtt-, hamisított vagy más illegális tartalmat. 
@@ -26,7 +26,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 
 ```
 A válasz: 
-````
+```
 HTTP Headers:
 BingAPIs-TraceId: 3CC74C94769440C0851D9DF0869FCE7F
 BingAPIs-SessionId: 52219085A6364692958C9C83983A0DBA
@@ -44,7 +44,7 @@ X-MSEdge-Ref: Ref A: 3CC74C94769440C0851D9DF0869FCE7F Ref B: CO1EDGE0315 Ref C: 
   }
 }
 
-````
+```
 ## <a name="scenarios"></a>Forgatókönyvek 
 
 Az URL Preview API támogatja a webes erőforrások rövid leírásait. A fejlesztők információban gazdag előnézeti élmények megalkotásához használják.  A felhasználók megoszthatnak vagy könyvjelzővel jelölhetnek meg webhelyeket, híreket, blogokat, fórumokat stb. Ez az API használható tartalommoderáláshoz is.    

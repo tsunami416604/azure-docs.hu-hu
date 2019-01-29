@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: zawad
-ms.openlocfilehash: 3193e9ac6ac5e90584bbf548142b7573d61c310a
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: f5ec31cf0f88b9bfdff2e4fa877d56a2689054ae
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413073"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097945"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Az Azure AD alkalmazás jóváhagyásának ismertetése során lép fel.
 
@@ -46,7 +46,7 @@ A következő ábra és táblázat a beleegyezést kérő építőelemeket infor
 | # | Összetevő | Cél |
 | ----- | ----- | ----- |
 | 1 | Felhasználóazonosító | Ez az azonosító képviseli a felhasználót, hogy az ügyfél alkalmazás nevében védett erőforrások eléréséhez. |
-| 2 | Beosztás | A cím módosításainak alapján, hogy a felhasználók a felhasználó vagy rendszergazda hozzájárulását flow szolgáltatáson keresztül fog. A felhasználói jóváhagyási folyamatot a cím lesz "Engedélyeket kért" pedig a rendszergazdai jóváhagyás folyamatban a cím lesz rendelkeznek egy további sort "A szervezet elfogadás". |
+| 2 | Cím | A cím módosításainak alapján, hogy a felhasználók a felhasználó vagy rendszergazda hozzájárulását flow szolgáltatáson keresztül fog. A felhasználói jóváhagyási folyamatot a cím lesz "Engedélyeket kért" pedig a rendszergazdai jóváhagyás folyamatban a cím lesz rendelkeznek egy további sort "A szervezet elfogadás". |
 | 3 | Alkalmazásembléma | Ez a rendszerkép segíthet a felhasználóknak egy vizuális köteg, hogy az alkalmazás az alkalmazás azokat kívánják elérni. Ez a rendszerkép az alkalmazásfejlesztők által biztosított, és a tulajdonjogát, a lemezkép nincs érvényesítve. |
 | 4 | App neve | Ezt az értéket kell tájékoztatják a felhasználókat, hogy mely alkalmazás férhetnek hozzá az adataikhoz. Megjegyzés: ezt a nevet a fejlesztők által biztosított és az alkalmazás neve a tulajdonjogát nem ellenőrzi. |
 | 5 | Publisher domain | Ezt az értéket kell biztosítania a felhasználók értékelhetik a megbízhatósága lehet egy tartomány. Ezt a tartományt a fejlesztők által biztosított, és a rendszer érvényesíti a közzétevő tartomány tulajdonjogát. |

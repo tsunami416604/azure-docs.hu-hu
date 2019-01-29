@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Elium |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Elium |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Elium között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: fae344b3-5bd9-40e2-9a1d-448dcd58155f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: dfa90474632b2cf18055e0ba95994f120cb293ef
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ac88d3accad8aa9ec523ecce5eb11b6c10eb913c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447784"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181486"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-elium"></a>Oktatóanyag: Azure Active Directory-integráció az Elium
+# <a name="tutorial-azure-active-directory-integration-with-elium"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Elium
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Elium integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Elium az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Elium egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a Elium konfigurálásához hozzá kell Elium a katal�
 
 **Elium hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -129,11 +129,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
            
     | Attribútum neve | Attribútum értéke |   
     | ---------------| ----------------|
-    | e-mailben   |user.mail |
-    | first_name| User.givenName |
-    | last_name| User.surname|
+    | e-mail   |user.mail |
+    | first_name| user.givenname |
+    | last_name| user.surname|
     | job_title| user.jobtitle|
-    | Vállalati| User.CompanyName|
+    | Vállalati| user.companyname|
     
     > [!NOTE]
     > Ezek a alapértelmezett jogcímeket. **Csak e-mail követelés szükség**. Igény szerinti kiépítés is csak az e-mailt a jogcím megadása kötelező. Egyéb egyéni jogcímek egy ügyfél platformról egy másik ügyfél platformra eltérőek lehetnek.
@@ -233,7 +233,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ez a szakasz célja Elium Britta Simon nevű felhasználó létrehozásához. Elium támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Elium elérésére, ha még nem létezik tett kísérlet során.
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Elium támogatási csapatának](mailto:support@elium.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Elium támogatási csapatának](mailto:support@elium.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -265,7 +265,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

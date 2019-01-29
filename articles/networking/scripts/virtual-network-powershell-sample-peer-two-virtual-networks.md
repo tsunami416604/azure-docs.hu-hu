@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-parancsfájl minta - társ két virtuális hálózatok |} Microsoft Docs
-description: Az Azure PowerShell-parancsfájl minta - társ két virtuális hálózatok
+title: Az Azure PowerShell-Példaszkript – társviszony létesítése két virtuális hálózat |} A Microsoft Docs
+description: Az Azure PowerShell-Példaszkript – társviszony létesítése két virtuális hálózat
 services: virtual-network
 documentationcenter: virtual-network
 author: georgewallace
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
-ms.openlocfilehash: 6c475311f8b0299908dfc26aa590c1990e00bc4a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8a892f109b368d7ff0d4ec2ad9174bb99114fd7c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598506"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100155"
 ---
-# <a name="peer-two-virtual-networks"></a>A két partner virtuális hálózatok
+# <a name="peer-two-virtual-networks"></a>Társviszony létesítése két virtuális hálózat
 
-Ezt a parancsfájlt hoz létre, és összeköti a két virtuális hálózatokat az ugyanabban a régióban trhough az Azure-hálózatot. A szkript futtatása után társviszonyt fog létesíteni a két virtuális hálózat között.
+Ez a szkript hoz létre, és két virtuális hálózat ugyanabban a régióban az Azure hálózatán keresztül csatlakozik. A szkript futtatása után társviszonyt fog létesíteni a két virtuális hálózat között.
 
 Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) utasításait követve, majd a `Connect-AzureRmAccount` futtatásával hozza létre a kapcsolatot az Azure-ral.
 
@@ -57,4 +57,4 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/azure/overview).
 
-További hálózati PowerShell parancsfájl-példák találhatók a [Azure hálózati áttekintés dokumentáció](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).
+További hálózatkezelési PowerShell-példaszkripteket az [Azure-hálózatkezelés áttekintő dokumentációjában](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json) találhat.

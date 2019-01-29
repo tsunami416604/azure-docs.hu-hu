@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 49c411487a29a7faa5a6cec5087a85d472309a4b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e44ac8dca3b27a21e1a7564bbee31c156f80e929
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044569"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102189"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -68,7 +68,7 @@ A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be az 
 | [Minden metrika](sql-database-metrics-diag-logging.md#all-metrics): Dtu-k/Processzorhasználat (%), a dtu-k/CPU-korlát, a fizikai tartalmaz napló írási adatok olvasása a százalékos aránya, százalékos aránya, sikeres/sikertelen/letiltott által tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, storage, és XTP tároló (%). | Igen | Nem |
 | [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): A lekérdezések futásidejének statisztikai adatait, például a CPU-használat és a lekérdezés időtartama statisztikai információkat tartalmaz. | Igen | Igen |
 | [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): A lekérdezés várakozási statisztika (Mi a lekérdezések megvárta) kapcsolatos információt tartalmazza, például a Processzor, a napló és a ZÁROLÁS. | Igen | Igen |
-| [Hibák](sql-database-metrics-diag-logging.md#errors-dataset): Az adatbázis SQL-hibákkal kapcsolatos információkat tartalmaz. | Igen | Nem |
+| [Hibák](sql-database-metrics-diag-logging.md#errors-dataset): Az adatbázis SQL-hibákkal kapcsolatos információkat tartalmaz. | Igen | Igen |
 | [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Az adatbázis töltött a különböző várakozási típusok vár mennyi ideig kapcsolatos információt tartalmazza. | Igen | Nem |
 | [Időtúllépések](sql-database-metrics-diag-logging.md#time-outs-dataset): Az adatbázis időtúllépések információkat tartalmazza. | Igen | Nem |
 | [Blokkok](sql-database-metrics-diag-logging.md#blockings-dataset): Blokkoló események az adatbázison kapcsolatos információt tartalmazza. | Igen | Nem |
@@ -414,8 +414,8 @@ Tekintse meg a naplók részleteit az alábbi táblázat a felügyelt példány.
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure|
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: A MICROSOFT. AZ SQL |
+|Typo|Mindig: AzureDiagnostics |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
 |Kategória|A kategória nevét. Mindig: ResourceUsageStats |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: MANAGEDINSTANCES |
@@ -443,8 +443,8 @@ Tekintse meg az alábbi táblázatok az Azure SQL és a felügyelt példány ada
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: A MICROSOFT. AZ SQL |
+|Typo|Mindig: AzureDiagnostics |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
 |Kategória|A kategória nevét. Mindig: QueryStoreRuntimeStatistics |
 |OperationName|A művelet neve. Mindig: QueryStoreRuntimeStatisticsEvent |
 |Erőforrás|Az erőforrás neve |
@@ -494,8 +494,8 @@ Tudjon meg többet [Query Store futásidejű statisztikai adatok](https://docs.m
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: A MICROSOFT. AZ SQL |
+|Typo|Mindig: AzureDiagnostics |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
 |Kategória|A kategória nevét. Mindig: QueryStoreWaitStatistics |
 |OperationName|A művelet neve. Mindig: QueryStoreWaitStatisticsEvent |
 |Erőforrás|Az erőforrás neve |
@@ -532,7 +532,7 @@ Tudjon meg többet [Query Store várjon statisztikai adatok](https://docs.micros
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Típus|Mindig: AzureDiagnostics |
+|Typo|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQ |
 |Kategória|A kategória nevét. Mindig: Hibák |
 |OperationName|A művelet neve. Mindig: ErrorEvent |
@@ -561,8 +561,8 @@ Tudjon meg többet [SQL Server-hibaüzenetek](https://msdn.microsoft.com/library
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: A MICROSOFT. AZ SQL |
+|Typo|Mindig: AzureDiagnostics |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
 |Kategória|A kategória nevét. Mindig: DatabaseWaitStatistics |
 |OperationName|A művelet neve. Mindig: DatabaseWaitStatisticsEvent |
 |Erőforrás|Az erőforrás neve |
@@ -590,8 +590,8 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: A MICROSOFT. AZ SQL |
+|Typo|Mindig: AzureDiagnostics |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
 |Kategória|A kategória nevét. Mindig: Időtúllépések |
 |OperationName|A művelet neve. Mindig: TimeoutEvent |
 |Erőforrás|Az erőforrás neve |
@@ -613,8 +613,8 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: A MICROSOFT. AZ SQL |
+|Typo|Mindig: AzureDiagnostics |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
 |Kategória|A kategória nevét. Mindig: blokkok |
 |OperationName|A művelet neve. Mindig: BlockEvent |
 |Erőforrás|Az erőforrás neve |
@@ -637,8 +637,8 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC] |Mikor lett rögzítve a napló időbélyeg |
-|Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: A MICROSOFT. AZ SQL |
+|Typo|Mindig: AzureDiagnostics |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
 |Kategória|A kategória nevét. Mindig: Holtpontok |
 |OperationName|A művelet neve. Mindig: DeadlockEvent |
 |Erőforrás|Az erőforrás neve |
@@ -658,8 +658,8 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: A MICROSOFT. AZ SQL |
+|Typo|Mindig: AzureDiagnostics |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
 |Kategória|A kategória nevét. Mindig: AutomaticTuning |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |

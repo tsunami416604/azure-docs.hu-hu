@@ -1,33 +1,33 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Signagelive |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Signagelive között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az Oracle Fusion ERP |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az Oracle Fusion ERP között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: d923f0e7-ad31-4d59-a6fd-f0e895e1a32d
+ms.assetid: c7586369-c1d6-4e83-a33e-5e87a68a7722
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/11/2019
+ms.date: 1/23/2019
 ms.author: jeedes
-ms.openlocfilehash: c2e67adb93c34cc4421145964ee809e4423b4843
+ms.openlocfilehash: b548c1abb9601a418e2e79fbc25afa8c6f9de0d6
 ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101722"
+ms.locfileid: "55105926"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Signagelive
+# <a name="tutorial-azure-active-directory-integration-with-oracle-fusion-erp"></a>Oktatóanyag: Az Azure Active Directory integrációja az Oracle Fusion ERP
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Signagelive integrálása az Azure Active Directory (Azure AD).
-Signagelive integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja, hogyan Oracle Fusion ERP integrálása az Azure Active Directory (Azure AD).
+Oracle Fusion ERP integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-* Szabályozhatja, ki férhet hozzá Signagelive Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Signagelive (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Szabályozhatja, ki férhet hozzá Oracle Fusion ERP Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezett Oracle Fusion ERP (egyszeri bejelentkezés) az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
 Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,22 +35,22 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Signagelive az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció konfigurálása az Oracle Fusion ERP, a következőkre van szükség:
 
 * Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Signagelive egyszeri bejelentkezés engedélyezve van az előfizetés
+* Oracle Fusion ERP egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-* Támogatja a Signagelive **SP** által kezdeményezett egyszeri bejelentkezés
+* Támogatja az Oracle Fusion ERP **SP** által kezdeményezett egyszeri bejelentkezés
 
-## <a name="adding-signagelive-from-the-gallery"></a>Signagelive hozzáadása a katalógusból
+## <a name="adding-oracle-fusion-erp-from-the-gallery"></a>Oracle Fusion ERP hozzáadása a katalógusból
 
-Az Azure AD integrálása a Signagelive konfigurálásához hozzá kell Signagelive a katalógusból a felügyelt SaaS-alkalmazások listájára.
+Oracle Fusion ERP integrálása az Azure AD beállítása, hozzá kell Oracle Fusion ERP a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Signagelive hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Oracle Fusion ERP hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
@@ -64,31 +64,31 @@ Az Azure AD integrálása a Signagelive konfigurálásához hozzá kell Signagel
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Signagelive**válassza **Signagelive** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Oracle Fusion ERP**válassza **Oracle Fusion ERP** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Az eredmények listájában Signagelive](common/search-new-app.png)
+     ![Oracle Fusion ERP a találatok listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Signagelive nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Signagelive hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Oracle Fusion ERP nevű tesztfelhasználó alapján **Britta Simon**.
+Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó, az Oracle Fusion ERP hivatkozás kapcsolata kell hozható létre.
 
-Az Azure AD egyszeri bejelentkezés az Signagelive tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés az Oracle Fusion ERP tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Signagelive egyszeri bejelentkezés konfigurálása](#configure-signagelive-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **[Oracle Fusion ERP egyszeri bejelentkezés konfigurálása](#configure-oracle-fusion-erp-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Signagelive tesztfelhasználót](#create-signagelive-test-user)**  – egy megfelelője a Britta Simon Signagelive, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Hozzon létre Oracle Fusion ERP tesztfelhasználót](#create-oracle-fusion-erp-test-user)**  – egy megfelelője a Britta Simon Oracle Fusion ERP, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Signagelive, hajtsa végre az alábbi lépéseket:
+Konfigurálja az Azure AD egyszeri bejelentkezés az Oracle Fusion ERP, hajtsa végre az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Signagelive** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **Oracle Fusion ERP** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -102,18 +102,20 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Signagelive, hajtsa 
 
 4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Signagelive tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)
+    ![Oracle Fusion ERP-tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.fa.em2.oraclecloud.com/fscmUI/faces/AtkHomePageWelcome`
+
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.login.em2.oraclecloud.com:443/oam/fed`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Signagelive ügyfél-támogatási csapatának](mailto:support@signagelive.com) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Oracle Fusion ERP-ügyfél-támogatási csapatának](mailto:jinshu.peethambaran@oracle.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **(Raw)tanúsítvány** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificateraw.png)
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-6. Az a **Signagelive beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. Az a **Oracle Fusion ERP beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
@@ -123,9 +125,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Signagelive, hajtsa 
 
     c. Kijelentkezési URL
 
-### <a name="configure-signagelive-single-sign-on"></a>Signagelive egyszeri bejelentkezés konfigurálása
+### <a name="configure-oracle-fusion-erp-single-sign-on"></a>Oracle Fusion ERP egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Signagelive** oldalon kell küldenie a letöltött **tanúsítvány (Raw)** és az Azure Portalról másolt URL-címek megfelelő [Signagelive támogatási csapatának](mailto:support@signagelive.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Oracle Fusion ERP** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Oracle Fusion ERP támogatási csoport](mailto:jinshu.peethambaran@oracle.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -143,7 +145,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** írja be a következőt **BrittaSimon**.
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
     b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
@@ -154,15 +156,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Signagelive Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Oracle Fusion ERP Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Signagelive**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Oracle Fusion ERP**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Signagelive**.
+2. Az alkalmazások listájában jelölje ki a **Oracle Fusion ERP**.
 
-    ![Az alkalmazások listáját a Signagelive hivatkozásra](common/all-applications.png)
+    ![Az alkalmazások listáját az Oracle Fusion ERP hivatkozásra](common/all-applications.png)
 
 3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
@@ -178,15 +180,15 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-### <a name="create-signagelive-test-user"></a>Signagelive tesztfelhasználó létrehozása
+### <a name="create-oracle-fusion-erp-test-user"></a>Oracle Fusion ERP tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Signagelive hoz létre. Együttműködve [Signagelive támogatási csapatának](mailto:support@signagelive.com) a felhasználók hozzáadása az Signagelive platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Oracle Fusion ERP hoz létre. Együttműködve [Oracle Fusion ERP-ügyfélszolgálathoz](mailto:jinshu.peethambaran@oracle.com) a felhasználók hozzáadása az Oracle Fusion ERP-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Signagelive csempére kattint, meg kell lehet automatikusan bejelentkezett a Signagelive, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Oracle Fusion ERP csempére kattint, akkor kell automatikusan megtörténik a az Oracle Fusion ERP, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

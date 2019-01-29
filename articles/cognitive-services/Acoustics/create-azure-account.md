@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashtat
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 05f7c435ca61930da6270c54e71c784f1b7aebcc
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 638ea3e707352a95cb1fb407add365a83d11faa7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900624"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55148642"
 ---
 # <a name="create-an-azure-batch-account"></a>Az Azure Batch-fiók létrehozása
 Ezt az útmutatót Akusztika használata az Azure Batch- és Storage-fiókok beállításához. A Unity beépülő modul projekt Akusztika részeként kifejlesztett kapcsolatos információkért lásd: [Akusztika mi](what-is-acoustics.md). Akusztika beépítheti a Unity-projektjét kapcsolatos információkért lásd: [bevezetés](getting-started.md).  

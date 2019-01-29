@@ -1,6 +1,6 @@
 ---
-title: Minta - engedélyezett helyek
-description: Ez a mintaszabályzat megköveteli, hogy az összes erőforrás a jóváhagyott helyekre legyen telepítve.
+title: Minta – nincs virtuális hálózat végpontok tárolók Key Vault naplózása
+description: Ez a minta szabályzat naplózza a Key Vault-tárolók nem virtuális hálózati szolgáltatásvégpontokkal rendelkező példányok észleléséhez.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,16 +8,16 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: b129715a33c6dd777d4327c5dbf8be863d7ea2a3
+ms.openlocfilehash: 28b547f61d29f1dbe51a352e0d677eb900a363b5
 ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095511"
+ms.locfileid: "55105923"
 ---
-# <a name="allowed-locations"></a>Engedélyezett helyek
+# <a name="key-vault-vaults-with-no-virtual-network-endpoints"></a>A Key Vault-tárolók nem virtuális hálózat végpontokkal rendelkező
 
-Ez a szabályzat lehetővé teszi, hogy korlátozni azon helyeket, a szervezet megadhat az erőforrások üzembe helyezésekor. Használja a földrajzi megfelelőségi követelmények kényszerítésére. Nem tartalmazza az erőforráscsoportok Microsoft.AzureActiveDirectory/b2cDirectories és erőforrásokat, a "global" régiót használni. Megadhatja az engedélyezett helyek tömbjét.
+Ez a szabályzat naplózza a Key Vault tároló, amely nem virtuális hálózati végpontokat. Használatával érvényesíti a biztonsági követelményeknek. További információkért lásd: [virtuális hálózati Szolgáltatásvégpontok a Key vaultban](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)
 
 Ennek a minta szabályzatnak az üzembe helyezéséhez a következőre lesz szükség:
 
@@ -34,7 +34,7 @@ Ennek a minta szabályzatnak az üzembe helyezéséhez a következőre lesz szü
 
 A REST API által, az „Üzembe helyezés az Azure-ban” gombok által, valamint a portálon manuálisan használt teljes összeállított JSON szabályzatdefiníció.
 
-[!code-json[full](../../../../policy-templates/samples/built-in-policy/allowed-locations/azurepolicy.json "Allowed locations")]
+[!code-json[full](../../../../policy-templates/samples/KeyVault/audit-keyvault-vnet-rules/azurepolicy.json "KeyVault vnet rules")]
 
 > [!NOTE]
 > Ha manuálisan hoz létre a portálon szabályzatot, használja a fenti **properties.parameters** és **properties.policyRule** részeket. A két szakaszt kapcsos zárójelekkel `{}` összekapcsolva érvényes JSON-t hozhat létre.
@@ -43,40 +43,16 @@ A REST API által, az „Üzembe helyezés az Azure-ban” gombok által, valami
 
 A szabályzat szabályait Azure CLI és Azure PowerShell segítségével meghatározó JSON.
 
-[!code-json[rule](../../../../policy-templates/samples/built-in-policy/allowed-locations/azurepolicy.rules.json "Policy rules (JSON)")]
+[!code-json[rule](../../../../policy-templates/samples/KeyVault/audit-keyvault-vnet-rules/azurepolicy.rules.json "Policy rules (JSON)")]
 
 ### <a name="policy-parameters"></a>Szabályzatparaméterek
 
-A szabályzat paramétereit Azure CLI és Azure PowerShell segítségével meghatározó JSON.
-
-[!code-json[parameters](../../../../policy-templates/samples/built-in-policy/allowed-locations/azurepolicy.parameters.json "Policy parameters (JSON)")]
-
-## <a name="parameters"></a>Paraméterek
-
-|Name (Név) |Typo |Mező |Leírás |
-|---|---|---|---|
-|listOfAllowedLocations |Tömb |helyek |Engedélyezett helyek listája|
-
-Ha PowerShell vagy Azure CLI segítségével hoz létre egy hozzárendelést, a paraméterértékek átadhatók JSON-ként akár sztring formában, akár egy `-PolicyParameter` (PowerShell) vagy `--params` (Azure CLI) elemet használó fájlban.
-A PowerShell a `-PolicyParameterObject` elemet is támogatja, ehhez a parancsmagnak át kell adni egy Name/Value kivonattáblát, ahol **Name** a paraméter neve, **Value** pedig a hozzárendelés során átadott érték vagy értéktömb.
-
-Az ebben a példában paraméter csak a _eastus2_ vagy _westus_ helyeken engedélyezett lesz.
-
-```json
-{
-    "listOfAllowedLocations": {
-        "value": [
-            "eastus2",
-            "westus"
-        ]
-    }
-}
-```
+A szabályzatdefiníció-minta nem tartozik paraméter definiálva.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![Üzembe helyezés az Azure-ban](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
-[![Üzembe helyezés az Azure Governmentben](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
+[![Üzembe helyezés az Azure-ban](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
+[![Üzembe helyezés az Azure Governmentben](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -86,16 +62,13 @@ Az ebben a példában paraméter csak a _eastus2_ vagy _westus_ helyeken engedé
 
 ```azurepowershell-interactive
 # Create the Policy Definition (Subscription scope)
-$definition = New-AzPolicyDefinition -Name "allowed-locations" -DisplayName "Allowed locations" -description "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region." -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/allowed-locations/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/allowed-locations/azurepolicy.parameters.json' -Mode Indexed
+$definition = New-AzPolicyDefinition -Name "audit-keyvault-vnet-rules" -DisplayName "Audit if Key Vault has no virtual network rules" -description "Audits Key Vault vaults if they do not have virtual network service endpoints set up. More information on virtual network service endpoints in Key Vault is available here: https://docs.microsoft.com/en-us/azure/key-vault/key-vault-overview-vnet-service-endpoints" -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/KeyVault/audit-keyvault-vnet-rules/azurepolicy.rules.json' -Mode Indexed
 
-# Set the scope to a resource group; may also be a resource, subscription, or management group
+# Set the scope to a resource group; may also be a subscription or management group
 $scope = Get-AzResourceGroup -Name 'YourResourceGroup'
 
-# Set the Policy Parameter (JSON format)
-$policyparam = '{ "listOfAllowedLocations": { "value": [ "eastus2", "westus" ] } }'
-
 # Create the Policy Assignment
-$assignment = New-AzPolicyAssignment -Name 'allowed-locations-assignment' -DisplayName 'Allowed locations Assignment' -Scope $scope.ResourceId -PolicyDefinition $definition -PolicyParameter $policyparam
+$assignment = New-AzPolicyAssignment -Name 'audit-keyvault-vnet-rules-assignment' -DisplayName 'Audit Key Vault Assignment' -Scope $scope.ResourceId -PolicyDefinition $definition
 ```
 
 ### <a name="remove-with-azure-powershell"></a>Eltávolítás az Azure PowerShell-lel
@@ -130,16 +103,13 @@ Az üzembe helyezési és eltávolítási szkriptek a következő parancsokat ha
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)
-definition=$(az policy definition create --name 'allowed-locations' --display-name 'Allowed locations' --description 'This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region.' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/allowed-locations/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/allowed-locations/azurepolicy.parameters.json' --mode Indexed)
+definition=$(az policy definition create --name 'audit-keyvault-vnet-rules' --display-name 'Audit if Key Vault has no virtual network rules' --description 'Audits Key Vault vaults if they do not have virtual network service endpoints set up. More information on virtual network service endpoints in Key Vault is available here: https://docs.microsoft.com/en-us/azure/key-vault/key-vault-overview-vnet-service-endpoints' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/KeyVault/audit-keyvault-vnet-rules/azurepolicy.rules.json' --mode Indexed)
 
-# Set the scope to a resource group; may also be a resource, subscription, or management group
+# Set the scope to a resource group; may also be a subscription or management group
 scope=$(az group show --name 'YourResourceGroup')
 
-# Set the Policy Parameter (JSON format)
-policyparam='{ "listOfAllowedLocations": { "value": [ "eastus2", "westus" ] } }'
-
 # Create the Policy Assignment
-assignment=$(az policy assignment create --name 'allowed-locations-assignment' --display-name 'Allowed locations Assignment' --scope `echo $scope | jq '.id' -r` --policy `echo $definition | jq '.name' -r` --params "$policyparam")
+assignment=$(az policy assignment create --name 'audit-keyvault-vnet-rules-assignment' --display-name 'Audit Key Vault Assignment' --scope `echo $scope | jq '.id' -r` --policy `echo $definition | jq '.name' -r`)
 ```
 
 ### <a name="remove-with-azure-cli"></a>Eltávolítás az Azure CLI segítségével
@@ -173,13 +143,13 @@ Számos eszköz alkalmas a Resource Manager REST API-val való kommunikációra,
 - Hozza létre a szabályzat definícióját (Előfizetési hatókör). A kérelem törzséhez használja a [szabályzatdefiníció](#policy-definition) JSON-t.
 
   ```http
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/allowed-locations?api-version=2018-05-01
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/audit-keyvault-vnet-rules?api-version=2018-05-01
   ```
 
 - Hozza létre a szabályzat hozzárendelését (Erőforráscsoporti hatókör)
 
   ```http
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/YourResourceGroup/providers/Microsoft.Authorization/policyAssignments/allowed-locations-assignment?api-version=2018-05-01
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/YourResourceGroup/providers/Microsoft.Authorization/policyAssignments/audit-keyvault-vnet-rules-assignment?api-version=2018-05-01
   ```
 
   A kérelem törzséhez használja az alábbi JSON-mintát:
@@ -187,16 +157,8 @@ Számos eszköz alkalmas a Resource Manager REST API-val való kommunikációra,
   ```json
   {
       "properties": {
-          "displayName": "Allowed locations Assignment",
-          "policyDefinitionId": "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/allowed-locations",
-          "parameters": {
-              "listOfAllowedLocations": {
-                  "value": [
-                      "eastus2",
-                      "westus"
-                  ]
-              }
-          }
+          "displayName": "Audit Key Vault Assignment",
+          "policyDefinitionId": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/audit-keyvault-vnet-rules"
       }
   }
   ```
@@ -206,13 +168,13 @@ Számos eszköz alkalmas a Resource Manager REST API-val való kommunikációra,
 - A szabályzat-hozzárendelés eltávolítása
 
   ```http
-  DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/allowed-locations-assignment?api-version=2018-05-01
+  DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/audit-keyvault-vnet-rules-assignment?api-version=2018-05-01
   ```
 
 - A szabályzatdefiníció eltávolítása
 
   ```http
-  DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/allowed-locations?api-version=2018-05-01
+  DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/audit-keyvault-vnet-rules?api-version=2018-05-01
   ```
 
 ### <a name="rest-api-explanation"></a>REST API magyarázat

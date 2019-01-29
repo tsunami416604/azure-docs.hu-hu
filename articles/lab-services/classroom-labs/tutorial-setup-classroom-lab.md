@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/16/2019
 ms.author: spelluru
-ms.openlocfilehash: d0d02f491f14cc6e0664d79bcfd2cda44d433b5b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 3b425af972b0983db076ab103a33c57f7a127210
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389949"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095753"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -32,7 +32,9 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 > * Regisztrációs hivatkozás küldése a diákoknak
 
 ## <a name="prerequisites"></a>Előfeltételek
-A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnyezetfiókban ahhoz, hogy létrehozhasson egy osztályterem-tesztkörnyezetet. A tesztkörnyezetfiók létrehozásához használt fiók automatikusan hozzáadódik ehhez a szerepkörhöz. A lab tulajdonosa az a következő cikkben szereplő lépések segítségével a tesztkörnyezet létrehozója szerepkör adhat hozzá más felhasználók: [Felhasználó hozzáadása a tesztkörnyezet létrehozója szerepkör](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+Osztályterem-tesztkörnyezet tesztkörnyezetfiók beállítása, hogy tagja egy ilyen szerepkörbe, a labor-fiókban, tegye a következőket: Tulajdonos, tesztkörnyezet létrehozója vagy közreműködő. A lab-fiók létrehozásához használt fiók automatikusan hozzáadódik a tulajdonosi szerepkör.
+
+A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet létrehozója** szerepkör. Például egy tesztkörnyezet tulajdonos abból hozzáadja a tesztkörnyezet létrehozója szerepkör. Ezt követően az abból labort létrehozni a virtuális gépek azok osztályok. Diákok használja abból a laborhoz regisztrálni által kapott regisztrációs hivatkozást. Regisztrálva vannak, ha azok használatával virtuális gépek a Labs-környezetben hajtsa végre az osztály és a kezdőlap munkát. A felhasználók hozzáadása a tesztkörnyezet létrehozója szerepkör részletes lépéseiért lásd: [felhasználó hozzáadása a tesztkörnyezet létrehozója szerepkör](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 
 ## <a name="create-a-classroom-lab"></a>Osztályterem-tesztkörnyezet létrehozása

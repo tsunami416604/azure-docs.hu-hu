@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 11/19/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: ecaceea42d64ab15676a9cb5a42ee8659e40d517
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f204d9e21f523b8bab12248dfaf5845902297fe
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847286"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151787"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik az Azure AD hozzáférési felülvizsgálatok?
 
@@ -41,13 +41,13 @@ Az Azure AD lehetővé teszi a szervezeten belül, és a külső szervezetek, p�
 
 ## <a name="when-to-use-access-reviews"></a>Mikor érdemes használni a hozzáférési felülvizsgálatok?
 
-- **Kiemelt szerepkörű felhasználók túl sok:** azt, hogy hány felhasználó rendszergazdai hozzáféréssel rendelkezik-e célszerű, hány közülük globális rendszergazdájaként, ha vannak ilyenek, és meghívhatják a Vendégek vagy partnerek után érvényessége ehhez a felhasználóhoz nem lettek eltávolítva az rendszergazdai tevékenység. Újrahitelesítheti a szerepkör-hozzárendelés felhasználókat a [az Azure AD-címtárbeli szerepkörök](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) például a globális rendszergazdák vagy [Azure-erőforrások szerepkörök](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) például a felhasználói hozzáférés rendszergazdája a a [Azure ad-ben Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) tapasztalható.
-- **Amikor az automation is létre lehessen hozni:** dinamikus tagsági szabályok a biztonsági vagy Office 365-csoportokat hozhat létre, de mi történik, ha a HR-adatok nem az Azure ad-ben, vagy ha a felhasználók továbbra is hozzá kell férniük a csere taníthat be a csoport elhagyása után? Ezután létrehozhat azoknak, akik továbbra is hozzá kell férniük kaphatnak folyamatos hozzáférést biztosítani, hogy a csoport értékelést.
-- **Egy csoport egy új célra használatakor:** Ha egy csoportot, amelyet szeretne szinkronizálja az Azure ad-hez, vagy az alkalmazás a Salesforce, az értékesítési csapat csoport minden tagja számára engedélyezni szeretné, ha akkor lehet hasznos, kérje meg a csoport tulajdonosa tekintse át a csoport membershi a csoport használatban van egy másik kockázatokat tartalom előtt p.
+- **Kiemelt szerepkörű felhasználók túl sok:** Azt, hogy hány felhasználó rendszergazdai hozzáféréssel rendelkezik-e célszerű, hány közülük globális rendszergazdájaként, ha vannak ilyenek, és meghívhatják a Vendégek vagy partnerek után érvényessége a felhasználóhoz egy felügyeleti feladat nem lettek eltávolítva. Újrahitelesítheti a szerepkör-hozzárendelés felhasználókat a [az Azure AD-címtárbeli szerepkörök](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) például a globális rendszergazdák vagy [Azure-erőforrások szerepkörök](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) például a felhasználói hozzáférés rendszergazdája a a [Azure ad-ben Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) tapasztalható.
+- **Amikor az automation is létre lehessen hozni:** Létrehozhatók olyan szabályok, biztonsági vagy Office 365-csoportok, a dinamikus tagságot, de mi történik a HR-adatokat, ha nem az Azure ad-ben, vagy ha felhasználók továbbra is hozzá kell férniük a csere taníthat be a csoport elhagyása után? Ezután létrehozhat azoknak, akik továbbra is hozzá kell férniük kaphatnak folyamatos hozzáférést biztosítani, hogy a csoport értékelést.
+- **Ha egy csoport egy új célra szolgál:** Ha egy csoportot, amelyet szeretne szinkronizálja az Azure ad-hez, vagy ha azt tervezi, hogy az értékesítési csapat csoport minden tagja számára a Salesforce alkalmazás, hasznos lenne, kérje meg a csoport tagságát, a csoport használatban van egy másik kockázati co előtt tekintse át a csoport tulajdonosa tartalomegyezés.
 - **Üzleti kritikus fontosságú adatok elérése:** bizonyos erőforrásokhoz, szükséges lehet kívüli személyek kérni, hogy rendszeresen jelentkezzen ki, és adjon egy indoklás miért szükséges hozzáférés naplózási célokra.
-- **Egy kivétel házirendlista karbantartásához:** egy ideális világában a minden felhasználó követnie a hozzáférési szabályzatok a munkahelyi erőforrásokhoz való hozzáférés biztonságossá tétele érdekében. Azonban néha előfordulhatnak olyan üzleti esetek, amelyek kivételek kérik. A rendszergazdáknak kezelheti a feladat, felügyeletét, házirend kivételek elkerülése és auditorok biztosítanak arról, hogy az ilyen kivételek rendszeresen ellenőrizni.
-- **Kérje meg a csoporttulajdonosok annak ellenőrzéséhez, hogy továbbra is szükségük van a csoporthoz tartozó vendégek:** alkalmazottak hozzáférését az egyes helyszíni IAM, de nem a meghívott vendégek előfordulhat, hogy automatizálható. Ha egy csoport hozzáférést biztosít a vendégek üzleti bizalmas tartalmat, akkor azt meg a csoporttulajdonos feladata, hogy erősítse meg a vendégek még hozzáférés valós üzleti szüksége.
-- **Rendelkezik az ellenőrzések rendszeres időközönként Ismétlődés:** beállíthatja a felhasználók például hetente, havonta, negyedévente vagy évente set frekvencia ismétlődő a hozzáférési felülvizsgálatok, és a többi felhasználó értesítést fog kapni kritika elején. Felülvizsgálók jóváhagyják vagy megtagadja a hozzáférést egy rövid felülettel és intelligens javaslatokat segítségével.
+- **Egy kivétel házirendlista karbantartásához:** Az ideális világában a minden felhasználó követnie a hozzáférési szabályzatok a munkahelyi erőforrásokhoz való hozzáférés biztonságossá tétele érdekében. Azonban néha előfordulhatnak olyan üzleti esetek, amelyek kivételek kérik. A rendszergazdáknak kezelheti a feladat, felügyeletét, házirend kivételek elkerülése és auditorok biztosítanak arról, hogy az ilyen kivételek rendszeresen ellenőrizni.
+- **Kérje meg a csoporttulajdonosok továbbra is szükségük van a csoporthoz tartozó vendégek megerősítéséhez:** Alkalmazottak hozzáférését az egyes helyszíni IAM, de nem a meghívott vendégek előfordulhat, hogy automatizálható. Ha egy csoport hozzáférést biztosít a vendégek üzleti bizalmas tartalmat, akkor azt meg a csoporttulajdonos feladata, hogy erősítse meg a vendégek még hozzáférés valós üzleti szüksége.
+- **Rendelkezik az ellenőrzések rendszeres időközönként Ismétlődés:** Hetente, havonta, negyedévente vagy évente, ha például beállíthatja a felhasználók set frekvencia ismétlődő a hozzáférési felülvizsgálatok, és a többi felhasználó értesítést kap kritika elején. Felülvizsgálók jóváhagyják vagy megtagadja a hozzáférést egy rövid felülettel és intelligens javaslatokat segítségével.
 
 ## <a name="where-do-you-create-reviews"></a>Ahol felülvizsgálatok létrehozni?
 
@@ -67,7 +67,7 @@ A hozzáférési felülvizsgálatok használandó kell rendelkeznie a következ�
 - Prémium szintű Azure AD P2
 - Enterprise Mobility + Security (EMS) E5 licenc
 
-További információkért lásd: [hogyan: regisztráljon az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) vagy [Enterprise Mobility + Security E5 próba](https://aka.ms/emse5trial).
+További információkért lásd: [hogyan: Regisztráljon az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) vagy [Enterprise Mobility + Security E5 próba](https://aka.ms/emse5trial).
 
 ## <a name="get-started-with-access-reviews"></a>Ismerkedés a hozzáférési felülvizsgálatok
 

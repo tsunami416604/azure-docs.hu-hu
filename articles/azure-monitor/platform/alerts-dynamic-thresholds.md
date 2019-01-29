@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4024ecddde4b0d020e2c657214a4a258ea0b2ea5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 92a6d0f0cd9ef9a7d246624f89315a87a7fb26f9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449010"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097809"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikákhoz kapcsolódó riasztások dinamikus küszöbértékekkel az Azure monitorban (nyilvános előzetes verzió)
 
@@ -21,7 +21,7 @@ Metrikariasztás dinamikus küszöbértékek észlelése a fejlett gépi tanulá
 
 Riasztási szabály létrehozása után fog aktiválódni csak amikor a figyelt metrika nem viselkednek, várt, a testre szabott küszöbértékek alapján.
 
-Örömmel vennénk visszajelzéseit, legyen hamarosan azurealertsfeedback@microsoft.com.
+Örömmel vennénk visszajelzéseit, legyen hamarosan <azurealertsfeedback@microsoft.com>.
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Miért és mikor ajánlott a dinamikus feltétel típusa használ?
 
@@ -37,7 +37,7 @@ Riasztások dinamikus küszöbértékekkel metrika riasztások az Azure Monitor 
 
 ## <a name="how-are-the-thresholds-calculated"></a>Hogyan számítják ki a küszöbértékek?
 
-A dinamikus küszöbértéket folyamatosan megtanulja az adatokat a metrika sorozat próbál algoritmusok és metódusok. a modell és algoritmusok és módszerek használatával modellezheti próbál. Minták észleli az adatok, például a szezonalitás (óránként / naponta / hetente), és képesek zajos metrikákat (például a gép CPU és memória) kezelésére és metrikák alacsony diszperziós (például a rendelkezésre állás és a hiba mellett).
+Dinamikus küszöbérték folyamatosan tanul az adatokat a metrika sorozat harmadik része, és algoritmusok és módszerek használatával modellezheti megpróbálja. Minták észleli az adatok, például a szezonalitás (óránként / naponta / hetente), és képesek zajos metrikákat (például a gép CPU és memória) kezelésére és metrikák alacsony diszperziós (például a rendelkezésre állás és a hiba mellett).
 
 A küszöbértékek oly módon, hogy ezeket a küszöbértékeket eltérést jelöli a metrikákkal kapcsolatos viselkedést anomáliát ki van jelölve.
 
@@ -80,3 +80,80 @@ Valószínűleg nem. Dinamikus küszöbérték jók jelentős eltérések észle
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Mennyi adatot szolgál, és ezután kiszámíthatja a küszöbértékeket?
 
 A diagramon jelennek meg a mérőszám a riasztási szabály létrehozása előtt a küszöbértékek alapján számítjuk az előzményadatok utolsó 10 nap, a riasztási szabály létrehozása után a dinamikus küszöbértékek fogja beszerezni elérhető további előzményadatokat és lesz Ismerje meg, hogy a küszöbértékek pontosabb új adatok alapján folyamatosan.
+
+## <a name="dynamic-thresholds-best-practices"></a>Dinamikus küszöbérték ajánlott eljárások
+
+Dinamikus küszöbérték alkalmazhatók bármely platformra és az Azure monitorban egyéni metrika, és azt is hangolt volt a közös alkalmazás- és infrastruktúra metrikákat.
+A következő elemeket a gyakorlati tanácsok a riasztások konfigurálása az egyes ezeket a metrikákat használó dinamikus küszöbérték.
+
+### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>A virtuális gép Processzor-százalékos metrikák dinamikus küszöbérték
+
+1. A [az Azure portal](https://portal.azure.com), kattintson a **figyelő**. A figyelő nézet az összes figyelési beállítást és adatokat egyetlen nézetben egyesíti.
+
+2. Kattintson a **riasztások** kattintson **+ Új riasztási szabály**.
+
+    > [!TIP]
+    > A legtöbb erőforráspanelek is, hogy **riasztások** azok erőforrás menüben alatt **figyelés**, létrehozhat riasztásokat onnan.
+
+3. Kattintson a **cél kiválasztása**, környezet, amely betölti panelén válassza a célként megadott erőforrás-riasztás kívánt. Használja **előfizetés** és **"Virtual Machines" erőforrástípus** legördülő listákból a figyelni kívánt erőforrás található. A Keresősáv használatával keresse meg az erőforrást.
+
+4. Miután kiválasztotta a célként megadott erőforrás, kattintson a **feltétel hozzáadása**.
+
+5. Válassza ki a **"CPU Percentage"**.
+
+6. Szükség esetén pontosíthatja a metrika módosításával **időszak** és **összesítési**. Metrikus típus használata "Maximum" összesítés típusa, kevésbé tükrözik a működését, mert nem ajánlott. Az "Maximális" összesítési típus statikus küszöbérték esetleg több megfelelő.
+
+7. Az elmúlt 6 óra látni fogja a metrika egy diagram. Adja meg a riasztási paraméterekkel:
+    1. **A feltétel típusát** – válassza ki a "Dinamikus" beállítást.
+    1. **Érzékenységi** – válassza a közepes vagy alacsony érzékenységi riasztási zaj csökkentéséhez.
+    1. **Operátor** – kivéve, ha viselkedés jelöli az Alkalmazáshasználat "Nagyobb mint" válassza.
+    1. **Gyakoriság** -fontolja meg a riasztás üzletmenetre gyakorolt hatás csökkentése alapján.
+    1. **Sikertelen időszakok** (speciális lehetőség) – a hely vissza ablak legalább 15 percet kell lennie. Például ha öt perc alatt az időszak van beállítva, majd az időszakok sikertelen kell lennie legalább három vagy több.
+
+8. A metrikadiagram jelenik meg a legújabb adatok alapján számított küszöbértékeket.
+
+9. Kattintson a **Done** (Kész) gombra.
+
+10. Töltse ki **riasztás részletei** például **riasztási szabály neve**, **leírás**, és **súlyossági**.
+
+11. Műveletcsoport hozzáadása a riasztást, vagy egy új műveletcsoport létrehozása vagy meglévő műveletcsoport kiválasztása.
+
+12. Kattintson a **kész** a metrikaalapú riasztási szabály mentéséhez.
+
+> [!NOTE]
+> Metrikariasztás portálon keresztül létrehozott szabályok jönnek létre a célként megadott erőforrás azonos erőforráscsoportban.
+
+### <a name="dynamic-thresholds-on-application-insights-http-request-execution-time"></a>Dinamikus küszöbérték Application Insights HTTP-kérelem végrehajtási ideje
+
+1. A [az Azure portal](https://portal.azure.com), kattintson a **figyelő**. A figyelő nézet az összes figyelési beállítást és adatokat egyetlen nézetben egyesíti.
+
+2. Kattintson a **riasztások** kattintson **+ Új riasztási szabály**.
+
+    > [!TIP]
+    > A legtöbb erőforráspanelek is, hogy **riasztások** azok erőforrás menüben alatt **figyelés**, létrehozhat riasztásokat onnan.
+
+3. Kattintson a **cél kiválasztása**, környezet, amely betölti panelén válassza a célként megadott erőforrás-riasztás kívánt. Használja **előfizetés** és **"Application Insights" erőforrástípus** legördülő listákból a figyelni kívánt erőforrás található. A Keresősáv használatával keresse meg az erőforrást.
+
+4. Miután kiválasztotta a célként megadott erőforrás, kattintson a **feltétel hozzáadása**.
+
+5. Válassza ki a **"HTTP kérelem végrehajtási idő"**.
+
+6. Szükség esetén pontosíthatja a metrika módosításával **időszak** és **összesítési**. Metrikus típus használata "Maximum" összesítés típusa, kevésbé tükrözik a működését, mert nem ajánlott. Az "Maximális" összesítési típus statikus küszöbérték esetleg több megfelelő.
+
+7. Az elmúlt 6 óra látni fogja a metrika egy diagram. Adja meg a riasztási paraméterekkel:
+    1. **A feltétel típusát** – válassza ki a "Dinamikus" beállítást.
+    1. **Operátor** – válassza a "Nagyobb, mint" az az időtartam fokozása aktivált riasztások csökkentése érdekében.
+    1. **Gyakoriság** -fontolja meg a riasztás üzletmenetre gyakorolt hatás csökkentése alapján.
+
+8. A metrikadiagram jelenik meg a legújabb adatok alapján számított küszöbértékeket.
+
+9. Kattintson a **Done** (Kész) gombra.
+
+10. Töltse ki **riasztás részletei** például **riasztási szabály neve**, **leírás**, és **súlyossági**.
+
+11. Műveletcsoport hozzáadása a riasztást, vagy egy új műveletcsoport létrehozása vagy meglévő műveletcsoport kiválasztása.
+
+12. Kattintson a **kész** a metrikaalapú riasztási szabály mentéséhez.
+
+> [!NOTE]
+> Metrikariasztás portálon keresztül létrehozott szabályok jönnek létre a célként megadott erőforrás azonos erőforráscsoportban.

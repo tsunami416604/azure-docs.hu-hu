@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: 8f460b41cd2ce62b7a3e0138caa25f68e2fd22ad
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 57eac1dcc170e2ac7e35cab64b6980bbe053db39
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156493"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092738"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Egy virtuálisgép-méretezési csoportban hozzáadásával ki a Service Fabric-fürt méretezése
 Ez a cikk ismerteti az Azure Service Fabric-fürt méretezése egy új virtuálisgép-méretezési csoportot egy meglévő fürthöz hozzáadásával. Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része csomópontoknak nevezzük. Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üzembe helyezése és kezelése a virtuális gépek gyűjteményét készletként használt. Minden csomópont-típus egy Azure-fürtön definiált [külön méretezési csoportként](service-fabric-cluster-nodetypes.md). Mindegyik csomóponttípus kezelhetők külön-külön. Egy Service Fabric-fürt létrehozását követően méretezhetők egy fürtcsomóponttípus függőlegesen (módosíthatja a csomópontok az erőforrások), frissítse az operációs rendszer a csomópont típusú virtuális gépeket, vagy adjon hozzá egy új virtuálisgép-méretezési csoportot egy meglévő fürthöz.  Méretezheti a fürt bármikor, még akkor is, ha a számítási feladatok a fürtön futnak.  A fürt skálázható, mivel az alkalmazások automatikus méretezése is.
@@ -34,7 +34,7 @@ Ez a cikk ismerteti az Azure Service Fabric-fürt méretezése egy új virtuáli
 A virtuális gép méretét és az elsődleges csomóponttípushoz virtuális gépek operációs rendszerének frissítése során a rendszer.  A frissítés után az elsődleges csomóponttípushoz virtuális gépek, szabványos D4_V2 méretét és a futó Windows Server 2016 Datacenter tárolókkal.
 
 > [!WARNING]
-> Ez az eljárás egy üzemben lévő fürt előtt javasoljuk, hogy tanulmányozza a mintasablonokat, és ellenőrizze a folyamat tesztelési fürtön történő. A fürt ideje még nem érhető el. NEM módosíthatja parrallel; az azonos NodeType deklarálni több vmss-hez szüksége lesz, minden egyes NodeType VMSS módosítások alkalmazásához külön-külön elválasztott üzembe helyezési műveletek végrehajtásához.
+> Ez az eljárás egy üzemben lévő fürt előtt javasoljuk, hogy tanulmányozza a mintasablonokat, és ellenőrizze a folyamat tesztelési fürtön történő. A fürt ideje még nem érhető el. NEM módosíthatja a több VMSS deklarálva az azonos NodeType csomóponttípus; párhuzamosan szüksége lesz, minden egyes NodeType VMSS módosítások alkalmazásához külön-külön elválasztott üzembe helyezési műveletek végrehajtásához.
 
 1. A kezdeti kétféle csomópontot és két méretezési csoportok (egy méretezési csoportot egy csomópont típusa) fürt üzembe helyezése a minta használatával [sablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) és [paraméterek](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) fájlokat.  Mindkét méretezési csoportok a következők: Standard D2_V2 mérete és a futó Windows Server 2012 R2 Datacenter.  Várjon, amíg a referenciakonfiguráció frissítés végrehajtásához a fürt.   
 2. Nem kötelező – a fürt üzembe helyezése egy állapotalapú mintát.

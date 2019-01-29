@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: e30320631a7fd9b4ee27096556af01f2ad77a746
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: de7cc0e67960edf95ace67808ffc677b57a46dab
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306832"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096993"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Oszlopcentrikus minőségű sorcsoportokba maximalizálása
 
@@ -68,8 +68,8 @@ from cte;
 
 A trim_reason_desc arról tájékoztatja, hogy vágott lett-e a sorcsoport (trim_reason_desc = NO_TRIM nincs tisztítás történt, és sorcsoport optimális minőségű jelenti). A következő vágás okokból azt jelzik, hogy a sorcsoport idő előtti előtti:
 - BULKLOAD: A vágás OK akkor használható, ha a terhelés bejövő sorköteg kevesebb mint 1 millió sorral rendelkezett. A motor tömörített sorcsoport hoz létre, ha vannak a nagyobb, mint 100 000 sort (ellentétben a különbözeti tároló beszúrása) beszúrt, de a vágás OK BULKLOAD állítja be. Ebben az esetben érdemes megfontolni az kötegelt betöltés ablakot gyűlik össze több sort alkalmazását. Emellett kiértékeli a particionálási sémát, ez a lehetőség nem túl részletes sorcsoportok nem terjedhetnek ki partícióhatárok biztosításához.
-- MEMORY_LIMITATION: 1 millió sor sorcsoportok létrehozásához, egy bizonyos mennyiségű memóriát működő szükséges a motor. Ha a betöltési munkamenet rendelkezésre álló memória kevesebb, mint a szükséges munkát memória, a lekérése túl korán vágott sorcsoportok. Az alábbi szakaszok azt ismertetik, hogyan becslése memóriára van szükség, és több memóriát lefoglalni.
-- DICTIONARY_SIZE: Vágás ezért azt jelzi, hogy sorcsoport tisztítás történt, mert hiba történt a széles körű és/vagy nagy számosságú karakterláncokkal legalább egy karakterláncoszlop. A szótárkészítéses méret legfeljebb 16 MB-ra a memóriában, és ez a korlát elérésekor a sorcsoport tömörítve van. Ha ez a helyzet, fontolja meg a problémás oszlop elkülönítése egy önálló táblába.
+- MEMORY_LIMITATION: 1 millió sor sorcsoportok létrehozásához, egy bizonyos mennyiségű memóriát működő a motor által van szükség. Ha a betöltési munkamenet rendelkezésre álló memória kevesebb, mint a szükséges munkát memória, a lekérése túl korán vágott sorcsoportok. Az alábbi szakaszok azt ismertetik, hogyan becslése memóriára van szükség, és több memóriát lefoglalni.
+- DICTIONARY_SIZE: Trim ezért azt jelzi, hogy sorcsoport tisztítás történt, mert hiba történt legalább egy karakterláncoszlop széles és/vagy nagy számosságú karakterláncokkal. A szótárkészítéses méret legfeljebb 16 MB-ra a memóriában, és ez a korlát elérésekor a sorcsoport tömörítve van. Ha ez a helyzet, fontolja meg a problémás oszlop elkülönítése egy önálló táblába.
 
 ## <a name="how-to-estimate-memory-requirements"></a>Hogyan memória követelményeinek becslése
 
@@ -88,7 +88,7 @@ ahol a rövid – karakterlánc-oszlopok használata adattípusokkal, < = 32 bá
 
 Hosszú karakterláncok tömörített készült szöveges tömöríti a tömörítési módszer. A tömörítéses módszer használ egy *szótár* szövegminták tárolásához. Egy szótárban maximális mérete 16 MB. Nincs a sorcsoport hosszú karakterlánc-oszlopok csak egy szótárban.
 
-Egy oszlopcentrikus memóriakövetelményei részletes tárgyalását lásd: a videó [Azure SQL Data Warehouse méretezése: konfigurációs és útmutatás](https://myignite.microsoft.com/videos/14822).
+Egy oszlopcentrikus memóriakövetelményei részletes tárgyalását lásd: a videó [Azure SQL Data Warehouse méretezése: konfigurációs és útmutatás](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Memóriakövetelményei csökkentésére
 
@@ -118,7 +118,7 @@ Az adatbázis között a lekérdezésben minden operátor egy lekérdezés memó
 
 Hogy arra koncentrálhasson, csak a lekérdezés betöltése a terhelés lekérdezés tervezéséhez. Ha átalakításokat futtat az adatok van szüksége, futtassa őket külön betöltése a lekérdezésből. Például a halomtábla az adatok előkészítéséhez, az átalakítások futtatása és az átmeneti tárolási tábla majd betöltheti az oszlopcentrikus indexet. Először is az adatok betöltéséhez, és az MPP rendszer segítségével az adatok átalakításához.
 
-### <a name="adjust-maxdop"></a>Állítsa be a MAXDOP
+### <a name="adjust-maxdop"></a>Adjust MAXDOP
 
 Minden egyes terjesztési tömöríti naplóbájtot párhuzamosan az oszloptárba, ha egynél több processzormaggal érhető el terjesztési száma. A párhuzamosság szükséges további memória-erőforrásokat, amelyek a rendelkezésre álló memória mennyisége és sorcsoport levágási vezethet.
 

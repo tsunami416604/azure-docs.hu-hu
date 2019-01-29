@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/06/2018
+ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c271efceacab7f310b8e08a28d101f653c73a186
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7916995d2630e9b33e3695c5c505925851ba4934
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868548"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092770"
 ---
-# <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Oktatóanyag – Linux rendszerű virtuális gépek monitorozása és frissítése az Azure-ban
+# <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Figyelheti és frissítheti a Linux rendszerű virtuális gép az Azure-ban
 
 Annak érdekében, hogy az Azure-beli virtuális gépek megfelelően működjenek, áttekintheti a rendszerindítási diagnosztikát és a teljesítménymetrikákat, és felügyelheti a csomagfrissítéseket. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -153,7 +153,7 @@ A következő példában az átlagos processzorhasználat alapján hozunk létre
 5. E-mail-értesítés küldéséhez jelölje be az *E-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak* jelölőnégyzetet. Az alapértelmezett művelet az értesítés megjelenítése a portálon.
 6. Kattintson az **OK** gombra.
 
-## <a name="manage-package-updates"></a>Csomagfrissítések felügyelete
+## <a name="manage-software-updates"></a>Szoftverfrissítések kezelése
 
 A frissítéskezelés segítségével kezelheti az Azure-beli linuxos virtuális gépek frissítéseit és javításait.
 A virtuális gépről gyorsan felmérheti az elérhető frissítések állapotát, ütemezheti a szükséges frissítések telepítését, és áttekintheti a telepítési eredményeket, hogy ellenőrizze, sikeres volt-e a frissítések telepítése a virtuális gépen.
@@ -175,15 +175,14 @@ A [Log Analytics](../../log-analytics/log-analytics-overview.md)-munkaterület a
 A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
 A frissítést igénylő virtuális gépeken további műveletek elvégzése érdekében az Azure Automation runbookok futtatását is lehetővé teszi a virtuális gépeken (pl. letöltés és frissítések alkalmazása).
 
-Az ellenőrzési folyamat arra is kiterjed, hogy a virtuális gépen működik-e a Microsoft Monitoring Agent (MMA) és az Automation hibrid runbook-feldolgozó.
-Ez az ügynök kommunikál a virtuális géppel, továbbá begyűjti a frissítési állapottal kapcsolatos információkat.
+Az érvényesítési folyamat is ellenőrzi, hogy ha a virtuális gép a Log Analytics-ügynököket és az Automation hibrid runbook-feldolgozó üzembe. Ez az ügynök kommunikál a virtuális géppel, továbbá begyűjti a frissítési állapottal kapcsolatos információkat.
 
 A megoldás engedélyezéséhez válassza ki a Log Analytics-munkaterületet és az Automation-fiókot, majd válassza az **Engedélyezés** lehetőséget. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
 Ha az előkészítés közben az alábbi előfeltételek bármelyike hiányzik, a rendszer automatikusan hozzáadja azt:
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md)-munkaterület
-* [Automatizálás](../../automation/automation-offering-get-started.md)
+* [Automation-fiók](../../automation/automation-offering-get-started.md)
 * Engedélyezett [hibrid runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md) a virtuális gépen
 
 Megnyílik az **Update Management** képernyő. Konfigurálja a használni kívánt helyet, Log Analytics-munkaterületet és Automation-fiókot, majd válassza az **Engedélyezés** lehetőséget. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
@@ -249,7 +248,7 @@ A telepítés közben felmerülő hibák részletes információinak megtekinté
 
 ## <a name="monitor-changes-and-inventory"></a>A módosítások és a leltár monitorozása
 
-Összegyűjtheti a számítógépeken található szoftverek, fájlok, Linux-démonok, Windows-szolgáltatások és Windows-beállításkulcsok listáját, és leltárt készíthet belőlük. A gépek konfigurációjának nyomon követésével megtalálhatja a környezetben felmerülő működési problémákat, és alaposabban megismerheti a gépek állapotát.
+Gyűjthet, és a szoftverek, fájlok, Linux-démonok, Windows-szolgáltatások és Windows-beállításkulcsok készült leltár megtekintése a számítógépeken. A gépek konfigurációjának nyomon követésével megtalálhatja a környezetben felmerülő működési problémákat, és alaposabban megismerheti a gépek állapotát.
 
 ### <a name="enable-change-and-inventory-management"></a>A változás- és leltárkezelés engedélyezése
 
@@ -291,22 +290,9 @@ A diagram az eltelt idő alatt bekövetkezett változásokat mutatja. A Tevéken
 
 ## <a name="advanced-monitoring"></a>Speciális figyelés
 
-Az [Azure Automation](../../automation/automation-intro.md) által kínált Update Management és Change and Inventory használatával fejlettebb virtuálisgép-monitorozási megoldásokat is alkalmazhat.
+Speciális egy megoldást, például a Virtuálisgép-monitorozási teheti [-beli virtuális gépek az Azure Monitor](../../azure-monitor/insights/vminsights-overview.md), amely figyeli az Azure-beli virtuális gépek (VM) ipari méretekben a teljesítmény és a Windows és Linux rendszerű virtuális gépekhez, beleértve a állapotát elemzésével a különböző folyamatok és az egyéb erőforrások és a külső folyamatok összekapcsolt függőségek. Az Azure-beli virtuális konfigurációkezelés van előtelepítve a [Azure Automation](../../automation/automation-intro.md) Change Tracking and Inventory megoldás könnyedén azonosíthatja a változtatásokat a környezetben. A frissítések megfelelőségének kezelése az Azure Automation Update Management megoldással biztosítunk.   
 
-Ha rendelkezik hozzáféréssel a Log Analytics-munkaterülethez, a munkaterület kulcsát és azonosítóját a **BEÁLLÍTÁSOK** terület **Speciális beállítások** elemére kattintva találja meg. Cserélje le a \<workspace-key\> és a \<workspace-id\> helyőrzőt a Log Analytics-munkaterületről származó adatokra, majd az **az vm extension set** paranccsal adja hozzá a bővítményt a virtuális géphez:
-
-```azurecli-interactive
-az vm extension set \
-  --resource-group myResourceGroupMonitor \
-  --vm-name myVM \
-  --name OmsAgentForLinux \
-  --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.3 \
-  --protected-settings '{"workspaceKey": "<workspace-key>"}' \
-  --settings '{"workspaceId": "<workspace-id>"}'
-```
-
-Pár perccel később meg kell jelennie az új virtuális gépnek a Log Analytics-munkaterületen.
+A virtuális gép csatlakozik-e a Log Analytics-munkaterület is lekéréséhez, összesítése, és elemezheti az összegyűjtött adatokat a [teljes funkcionalitású lekérdezésnyelvet](../../azure-monitor/log-query/log-query-overview.md). 
 
 ![Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 

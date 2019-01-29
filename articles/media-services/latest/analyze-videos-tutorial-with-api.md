@@ -1,5 +1,5 @@
 ---
-title: Elemezhet videókat a Media Services – Azure |} A Microsoft Docs
+title: Videók elemzése a Media Services használata a .NET-keretrendszerhez – Azure |} A Microsoft Docs
 description: Az oktatóanyag lépéseit követve megtudhatja, hogyan elemezhet videókat az Azure Media Serviceszel.
 services: media-services
 documentationcenter: ''
@@ -9,26 +9,24 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 01/23/2019
+ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c3205163cf8796441e676e1775e4300d44a4012e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 191a6c9dc1cc5a24c1a46af21c5b63e3ff27a290
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884911"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150393"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>Oktatóanyag: Elemezhet videókat a Media Services v3 API-k használatával
+# <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>Oktatóanyag: Elemezhet videókat a Media Services v3 .NET használatával
 
 Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Serviceszel. Bizonyos esetekben szüksége lehet a rögzített video- és audiotartalmak részletesebb elemzésére. Egy vállalatnál például a vásárlói elégedettség növelése érdekében szükség lehet a beszéd szöveggé alakítására, hogy az ügyfélszolgálati beszélgetéseket kereshető katalógussá alakítsák, amelyhez indexek és irányítópultok érhetőek el. Ezt követően lekérhetik az üzleti például közös panaszok listáját, források ilyen panaszok és egyéb hasznos információkat.
 
 Ez az oktatóanyag a következőket mutatja be:    
 
 > [!div class="checklist"]
-> * Media Services-fiók létrehozása
-> * Hozzáférés a Media Services API-hoz
-> * A mintaalkalmazás konfigurálása
+> * A témakörben ismertetett mintaalkalmazás letöltése
 > * A megadott videót elemző kód vizsgálata
 > * Az alkalmazás futtatása
 > * A kimenet vizsgálata
@@ -39,15 +37,10 @@ Ez az oktatóanyag a következőket mutatja be:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-et.
-- Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).<br/>Ellenőrizze, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscsoport-nevet és a Media Services-fiók neve.
+- Kövesse a [hozzáférés az Azure Media Services API az Azure CLI-vel](access-api-cli-how-to.md) és menteni a hitelesítő adatokat. Az API eléréséhez használandó kell.
 
-    Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
-
-- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
-
-    Ellenőrizze, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscsoport-nevet és a Media Services-fiók neve.
-
-## <a name="download-the-sample"></a>A minta letöltése
+## <a name="download-and-configure-the-sample"></a>Töltse le és a minta konfigurálásához
 
 Klónozza a gépre a .NET-mintát tartalmazó GitHub-adattárat a következő paranccsal:  
 
@@ -57,7 +50,7 @@ Klónozza a gépre a .NET-mintát tartalmazó GitHub-adattárat a következő pa
 
 A minta az [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos) mappában található.
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+Nyissa meg [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) a letöltött projektet. Cserélje le az értékeket a portáltól kapott hitelesítő adatokkal [API-k elérése](access-api-cli-how-to.md).
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>A megadott videót elemző kód vizsgálata
 

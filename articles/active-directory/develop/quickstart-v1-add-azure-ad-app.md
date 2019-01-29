@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 4608e9ec0cd67b6c0f7ac23e27761b0355a5d738
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: 1411d9b4a199685315587cb642842286da575c63
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50911864"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098527"
 ---
-# <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Rövid útmutató: Alkalmazás regisztrálása az Azure Active Directory 1.0-s verziójú végpontján
+# <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Gyors útmutató: Alkalmazás regisztrálása az Azure Active Directory 1.0-s verziójú végpontján
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
@@ -51,12 +51,12 @@ Először győződjön meg arról, hogy már rendelkezik egy Azure AD-bérlővel
 
 1. Amikor megjelenik a **Létrehozás** lap, adja meg az alkalmazás regisztrációs adatait: 
 
-    - **Név:** Adjon meg egy kifejező alkalmazásnevet
+    - **név:** Adjon meg egy kifejező alkalmazásnevet
     - **Alkalmazás típusa:**
       - Válassza a **Natív** lehetőséget a helyileg vagy eszközre telepített [ügyfélalkalmazások](developer-glossary.md#client-application) esetében. Ez a beállítás használatos a nyilvános OAuth [natív ügyfelekhez](developer-glossary.md#native-client).
       - Válassza a **Webalkalmazás/API** lehetőséget a biztonságos kiszolgálóra telepített [ügyfélalkalmazások](developer-glossary.md#client-application) és [erőforrás-/API-alkalmazások](developer-glossary.md#resource-server) esetében. Ez a beállítás használatos a bizalmas OAuth [webes ügyfelekhez](developer-glossary.md#web-client) és a nyilvános [felhasználóiügynök-alapú ügyfelekhez](developer-glossary.md#user-agent-based-client). Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
-    - **Bejelentkezési URL-cím:** „Webalkalmazás/API” típusú alkalmazás esetén adja meg annak alap URL-címét. A `http://localhost:31544` például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba. 
-    - **Átirányítási URL-cím:** „Natív” típusú alkalmazások esetében adja meg az URI-t, amelyet az Azure AD a jogkivonatválaszok visszaadására használ. Adjon meg egy, az alkalmazáshoz tartozó értéket, például: `http://MyFirstAADApp`
+    - **Bejelentkezési URL-címe:** A "webalkalmazás / API" alkalmazások esetén adja meg az alkalmazás alap URL-CÍMÉT. A `http://localhost:31544` például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba. 
+    - **Redirect URI:** Adja meg az URI-t használják az Azure AD a jogkivonatválaszok visszaadására "Natív" alkalmazások esetében. Adjon meg egy, az alkalmazáshoz tartozó értéket, például: `http://MyFirstAADApp`
 
       ![Új alkalmazás regisztrálása – Létrehozás](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
 

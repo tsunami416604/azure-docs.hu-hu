@@ -11,16 +11,19 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: e286617897ecc9201c3880affd0a974f7330305a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 18c5e48b5f7dbf664b607b8b83473a914256590b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359635"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104555"
 ---
 # <a name="streaming-endpoints"></a>Streamvégpontok
 
-A Microsoft Azure Media Services (AMS), a [adatfolyam-továbbítási végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints) entitás streamelési szolgáltatás, amely tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, vagy további, a Content Delivery Network (CDN) a jelöli terjesztési. A folyamatos átviteli végponton szolgáltatásból származó kimenő adatfolyamot élő stream, vagy igény szerinti Videoobjektum a Media Services-fiók lehet. Egy Media Services-fiók létrehozásakor egy **alapértelmezett** folyamatos átviteli végponton, létrehozott egy leállított állapotban. Nem lehet törölni a **alapértelmezett** folyamatos átviteli végponton. További Streamelési végpontokkal is létrehozhatók a fiókban. Videók streamelése indításához kell elindítani a folyamatos átviteli végponton, ahonnan a videó továbbításához. 
+A Microsoft Azure Media Services (AMS), a [adatfolyam-továbbítási végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints) entitás streamelési szolgáltatás, amely tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, vagy további, a Content Delivery Network (CDN) a jelöli terjesztési. A kimeneti streamjét egy **folyamatos átviteli végponton** élő stream, vagy igény szerinti Videoobjektum a Media Services-fiók lehet. Egy Media Services-fiók létrehozásakor egy **alapértelmezett** folyamatos átviteli végponton, létrehozott egy leállított állapotban. Nem lehet törölni a **alapértelmezett** folyamatos átviteli végponton. További Streamelési végpontokkal is létrehozhatók a fiókban. 
+
+> [!NOTE]
+> Videók streamelése el kell indítania a **folyamatos átviteli végponton** , amelyre vonatkozóan szeretné a videó. 
 
 ## <a name="naming-convention"></a>Az elnevezési konvenciót
 
@@ -34,7 +37,7 @@ Kettő **Streamvégpontok** típusok: **Standard szintű** és **prémium**. A s
 
 A táblázat ismerteti:  
 
-|Típus|Skálázási egységek|Leírás|
+|Typo|Skálázási egységek|Leírás|
 |--------|--------|--------|  
 |**Standard szintű Streamvégpont** (ajánlott)|0|A **Standard** írja be a lehetőség ajánlott gyakorlatilag az összes streamelési forgatókönyvekhez és bármilyen méretű közönségre. A **Standard** típus automatikusan méretezi a kimenő sávszélesség. <br/>Rendkívül nagy követelmények rendelkező ügyfelek számára a Media Services által **prémium** streamvégpontot választanak, amely használható a horizontális felskálázási kapacitása a legnagyobb internet célközönségek számára. Ha várhatóan széles és egyidejű megtekintők, írjon nekünk az amsstreaming@microsoft.com útmutatást, hogy át kell helyeznie a **prémium** típusa. |
 |**Prémium szintű Streamvégpont**|>0|A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. Helyez át egy **prémium** típusának a módosításával `scaleUnits`. `scaleUnits` Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. Használatakor a **prémium** típusa, a minden engedélyezett egység további sávszélesség-kapacitást az alkalmazás biztosít. |

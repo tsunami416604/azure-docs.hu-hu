@@ -1,6 +1,6 @@
 ---
-title: Bevezetés az Azure hálózati figyelőt a hibakeresési erőforrás |} Microsoft Docs
-description: Ezen a lapon a hálózati figyelőt erőforrás hibaelhárítási képességei áttekintése
+title: Hibaelhárítás az Azure Network Watcher erőforrás bemutatása |} A Microsoft Docs
+description: Ez az oldal áttekintést a Network Watcher erőforrás hibaelhárítási képességeket kínál
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,85 +14,85 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 2f8a41834c1451d80c53cfed4bae3b7e36281702
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 8048dde6158d9eaa9bf38a8c3020420b81bdd55b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779260"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099778"
 ---
-# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Bevezetés az Azure hálózati figyelőt a hibakeresési erőforrás
+# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Hibaelhárítás az Azure Network Watcher erőforrás bemutatása
 
-Virtuális hálózati átjárók biztosít a helyi erőforrások és más Azure-ban virtuális hálózatok közötti kapcsolatot. Átjárók figyelési és a kapcsolatok kulcsfontosságúként kommunikáció biztosításához megszakad nem. Hálózati figyelő lehetővé teszi az átjárók és kapcsolatok hibáinak elhárítása. A funkció a portálra, a PowerShell, az Azure parancssori felület vagy a REST API hívása. Meghívásakor, a hálózati figyelőt diagnosztizálja az átjárót, vagy a kapcsolat állapotát, és a megfelelő eredményeket ad vissza. A kérelem teljesítése hosszú ideig futó tranzakció. A diagnosztikai végrehajtása után a rendszer visszairányítja az eredményeket.
+Virtuális hálózati átjárók adja meg a helyszíni erőforrásokhoz és más Azure-on belüli virtuális hálózatok közötti kapcsolatot. Az átjárók és azok kapcsolatainak monitorozása kritikus fontosságú a kommunikáció megfelelő működésének biztosításában. A Network Watcher lehetővé teszi az átjárók és kapcsolatok hibaelhárítása. A funkció a portal, PowerShell, az Azure CLI vagy REST API használatával nem hívható meg. Meghívni, Network Watcher diagnosztizálja az átjárót, vagy a kapcsolat állapotát, és a megfelelő eredményeket adja vissza. A kérelem egy hosszú ideig futó tranzakció. Az eredményeket a diagnosztizálás befejeződése után vissza.
 
 ![portal][2]
 
 ## <a name="results"></a>Results (Eredmények)
 
-Adott előzetes eredmények osszon ki az erőforrás állapotának átfogó képet. Mélyebb információk biztosítható, hogy az erőforrások a következő szakaszban látható módon:
+Az előzetes eredményeket ad vissza az erőforrás állapotáról átfogó képet biztosítanak. Részletesebb információhoz juthat az erőforrások adható meg a következő szakaszban látható módon:
 
-Az alábbi lista a értékeket ad vissza, amelyben a hibaelhárítás API:
+Az alábbi lista a hibaelhárítás API a visszaadott értékek:
 
-* **startTime** -Ez az érték az az idő a hibaelhárítás API-hívás elindítva.
-* **endTime** -Ez az érték az az idő, amikor a hibaelhárítás befejeződött.
-* **kód** -ezt az értéket nem kifogástalan állapotú, akkor, ha sikertelen egy egyetlen elemzés céljából.
-* **eredmények** -eredményt adja vissza a rendszer a kapcsolatot, vagy a virtuális hálózati átjáró eredmények gyűjteménye.
-    * **azonosító** -ezt az értéket a hiba típusa.
-    * **összegző** -értéke a tartalék összegzését.
-    * **részletes** -ezt az értéket a hiba részletes leírását tartalmazza.
-    * **recommendedActions** – Ez a tulajdonság gyűjteményei, javasolt műveleteket kell elvégezni.
-      * **actionText** -ezt az értéket tartalmaz a végrehajtandó műveletet leíró szöveg.
-      * **actionUri** -Ez az érték szolgál az URI-dokumentáció való működésre.
-      * **actionUriText** -Ez az érték a művelet szöveg rövid leírását.
+* **startTime** – Ez az érték az az idő, a hibaelhárítás API-hívás elindítva.
+* **endTime** – Ez az érték az az idő, amikor a hibaelhárítás befejeződött.
+* **kód** – Ez az érték nem megfelelő, akkor, ha a egyetlen diagnosztikai hiba történik.
+* **eredmények** -eredmények gyűjteménye, a kapcsolat vagy a virtuális hálózati átjáró a visszaadott eredményeket.
+    * **ID** – Ez az érték egy tartalék típus.
+    * **összefoglaló** – Ez az érték található egy összefoglaló az a hiba.
+    * **részletes** – ezt az értéket nyújt a hiba részletes leírását.
+    * **recommendedActions** – Ez a tulajdonság nem javasolt műveleteket gyűjteménye.
+      * **actionText** – Ez az érték tartalmazza a végrehajtandó műveletet leíró szöveget.
+      * **actionUri** – ezt az értéket az URI-t dokumentációja nyújt az való működésre.
+      * **actionUriText** -értéke a művelet szöveg rövid leírását.
 
-Az alábbi táblázatok bemutatják a különböző tartalék típusok (azonosító: a fenti listából eredmények alapján), és ha a tartalék hoz létre a naplókat.
+Az alábbi táblázatokban a rendelkezésre álló különböző tartalék-típusokat (azonosító alapján az előző listában eredményeket), és a tartalék naplókat hoz létre.
 
 ### <a name="gateway"></a>Átjáró
 
-| Hibatípus | Ok | Napló|
+| Hiba típusa | Ok | Napló|
 |---|---|---|
 | NoFault | Ha nincs hiba észlelhető |Igen|
-| GatewayNotFound | Nem található átjáró vagy az átjáró nincs telepítve |Nem|
-| PlannedMaintenance |  Átjárópéldány karbantartás alatt áll.  |Nem|
-| UserDrivenUpdate | Ez a hiba akkor fordul elő, amikor a felhasználó frissítése folyamatban van. A frissítés egy átméretezés lehet. | Nem |
-| VipUnResponsive | Ez a hiba akkor fordul elő, ha az elsődleges példány az átjáró egy állapot-mintavételi hiba miatt nem érhető el. | Nem |
-| PlatformInActive | A platformon probléma van. | Nem|
-| ServiceNotRunning | Az alapul szolgáló szolgáltatás nem fut. | Nem|
-| NoConnectionsFoundForGateway | Kapcsolat nem létezik az átjáróhoz. Ez a hiba csak egy figyelmeztetés.| Nem|
-| ConnectionsNotConnected | Kapcsolatok nem kapcsolódnak. Ez a hiba csak egy figyelmeztetés.| Igen|
-| GatewayCPUUsageExceeded | Az aktuális átjáró CPU-használat > 95 %. | Igen |
+| GatewayNotFound | Nem található átjáró vagy az átjáró nincs kiépítve |Nem|
+| PlannedMaintenance |  Átjárópéldány karbantartás alatt áll  |Nem|
+| UserDrivenUpdate | Ez a hiba akkor fordul elő, amikor egy felhasználó frissítése folyamatban van. A frissítés egy átméretezési művelet lehet. | Nem |
+| VipUnResponsive | Ez a hiba akkor fordul elő, ha az elsődleges példány az átjáró nem érhető el a health mintavételi hiba miatt. | Nem |
+| PlatformInActive | Nincs a platform problémáját. | Nem|
+| ServiceNotRunning | A mögöttes szolgáltatás nem fut. | Nem|
+| NoConnectionsFoundForGateway | Kapcsolat nem létezik az átjárón. Ez a hiba csak figyelmeztetés.| Nem|
+| ConnectionsNotConnected | Kapcsolatok nem csatlakoznak. Ez a hiba csak figyelmeztetés.| Igen|
+| GatewayCPUUsageExceeded | A CPU-használat gateway > 95 %-os. | Igen |
 
 ### <a name="connection"></a>Kapcsolat
 
-| Hibatípus | Ok | Napló|
+| Hiba típusa | Ok | Napló|
 |---|---|---|
 | NoFault | Ha nincs hiba észlelhető |Igen|
-| GatewayNotFound | Nem található átjáró vagy az átjáró nincs telepítve |Nem|
-| PlannedMaintenance | Átjárópéldány karbantartás alatt áll.  |Nem|
-| UserDrivenUpdate | Ez a hiba akkor fordul elő, amikor a felhasználó frissítése folyamatban van. A frissítés egy átméretezés lehet.  | Nem |
-| VipUnResponsive | Ez a hiba akkor fordul elő, ha az elsődleges példány az átjáró egy állapot-mintavételi hiba miatt nem érhető el. | Nem |
+| GatewayNotFound | Nem található átjáró vagy az átjáró nincs kiépítve |Nem|
+| PlannedMaintenance | Átjárópéldány karbantartás alatt áll  |Nem|
+| UserDrivenUpdate | Ez a hiba akkor fordul elő, amikor egy felhasználó frissítése folyamatban van. A frissítés egy átméretezési művelet lehet.  | Nem |
+| VipUnResponsive | Ez a hiba akkor fordul elő, ha az elsődleges példány az átjáró nem érhető el a health mintavételi hiba miatt. | Nem |
 | ConnectionEntityNotFound | Kapcsolat konfigurációja hiányzik. | Nem |
 | ConnectionIsMarkedDisconnected | A kapcsolat "leválasztott" van megjelölve. |Nem|
-| ConnectionNotConfiguredOnGateway | Az alapul szolgáló szolgáltatás nincs konfigurálva a kapcsolat. | Igen |
-| ConnectionMarkedStandy | Az alapul szolgáló szolgáltatás készenléti jelölésű.| Igen|
+| ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatás nem rendelkezik konfigurált kapcsolat. | Igen |
+| ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti van megjelölve.| Igen|
 | Hitelesítés | Előmegosztott kulcsa eltérő | Igen|
 | PeerReachability | A társ-átjáró nem érhető el. | Igen|
-| IkePolicyMismatch | A társ átjáró rendelkezik IKE szabályzatok Azure által nem támogatott. | Igen|
-| WfpParse hiba | Hiba történt a Windows Fájlvédelem napló elemzésekor. |Igen|
+| IkePolicyMismatch | A társ-átjáró IKE-szabályzatok, amelyek nem támogatottak az Azure rendelkezik. | Igen|
+| WfpParse hiba | Hiba történt a Windows Fájlvédelem napló elemzése. |Igen|
 
-## <a name="supported-gateway-types"></a>Támogatott átjáró típusok
+## <a name="supported-gateway-types"></a>Támogatott átjárótípusok
 
-A következő táblázat sorolja fel, melyik átjárót és a kapcsolatok támogatottak a hibaelhárításban hálózati figyelőt:
+A következő táblázat felsorolja, hogy mely átjárók és kapcsolatok támogatottak a Network Watcher troubleshooting:
 
 |  |  |
 |---------|---------|
-|**Átjáró típusa**   |         |
+|**Átjárótípusok**   |         |
 |VPN      | Támogatott        |
 |ExpressRoute | Nem támogatott |
-|**VPN-típusai** | |
-|Útvonal alapján | Támogatott|
+|**VPN-típusok** | |
+|Útvonalalapú | Támogatott|
 |Csoportházirend-alapú | Nem támogatott|
-|**Kapcsolat típusai**||
+|**Kapcsolattípusok**||
 |IPSec| Támogatott|
 |VNet2Vnet| Támogatott|
 |ExpressRoute| Nem támogatott|
@@ -100,23 +100,23 @@ A következő táblázat sorolja fel, melyik átjárót és a kapcsolatok támog
 
 ## <a name="log-files"></a>Naplófájlok
 
-Az erőforrás hibaelhárítás naplófájljai vannak tárolva egy tárfiókot, erőforrás hibakeresési befejeződése után. A következő kép bemutatja, hibát eredményezett hívás példa tartalmát.
+Az erőforrás hibaelhárítás naplófájljai vannak tárolva egy tárfiókot, erőforrás hibaelhárítás befejezése után. Az alábbi képen látható példában tartalmát a hívás, amely hibát eredményezett.
 
 ![zip-fájl][1]
 
 > [!NOTE]
-> Bizonyos esetekben csak egy részét a naplófájlokat tároló íródik.
+> Bizonyos esetekben csak egy részét a naplófájlok tárolási íródik.
 
-A fájlok letöltését az azure storage-fiókok útmutatásért tekintse meg [az Azure Blob storage .NET használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Egy másik eszköz, amely használható a Tártallózó. Tártallózó további információt itt található: a következő hivatkozásra: [Tártallózó](http://storageexplorer.com/)
+Fájlok letöltése az azure storage-fiókokra vonatkozó utasításokért tekintse meg [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Egy másik eszköz használható a Storage Explorer. További információ a Storage Explorer itt található, a következő hivatkozásra: [Storage Explorer](http://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
-A **ConnectionStats.txt** fájl tartalmazza az összesített statisztikák a kapcsolat, beleértve a bemenő és kimenő bájtokat, kapcsolat állapota és az idő, a kapcsolat jött létre.
+A **ConnectionStats.txt** fájl tartalmazza a kapcsolat, beleértve a bemenő és kimenő bájtokat, kapcsolat állapota és az időt, a kapcsolat létrehozásának módja összesített statisztikák.
 
 > [!NOTE]
-> A hibaelhárítási API-hívás kifogástalan adja vissza, ha van-e a zip-fájlban szereplő visszaadott egyedül a **ConnectionStats.txt** fájlt.
+> Ha a hibaelhárítási API-hívás megfelelő értéket ad vissza, a zip-fájl által visszaadott egyedül van egy **ConnectionStats.txt** fájlt.
 
-Ez a fájl tartalma az alábbihoz hasonló:
+Ez a fájl tartalma a következő példához hasonló:
 
 ```
 Connectivity State : Connected
@@ -128,7 +128,7 @@ Connected Since : 2/1/2017 8:22:06 PM
 
 ### <a name="cpustatstxt"></a>CPUStats.txt
 
-A **CPUStats.txt** CPU-használat és a tesztelés során rendelkezésre álló memória-fájl tartalmazza.  Ez a fájl tartalmát a következőhöz hasonló:
+A **CPUStats.txt** CPU-használat és a vizsgálat időpontjában elérhető memória-fájl tartalmazza.  Ez a fájl tartalmát a következő az alábbi példához hasonló:
 
 ```
 Current CPU Usage : 0 % Current Memory Available : 641 MBs
@@ -136,9 +136,9 @@ Current CPU Usage : 0 % Current Memory Available : 641 MBs
 
 ### <a name="ikeerrorstxt"></a>IKEErrors.txt
 
-A **IKEErrors.txt** fájl bármely ellenőrzése során talált IKE hibákat tartalmazza.
+A **IKEErrors.txt** fájl ellenőrzése során talált IKE hibákat tartalmaz.
 
-A következő példa bemutatja egy IKEErrors.txt fájl tartalmát. A hibák eltérhetnek attól függően, hogy a problémát.
+Az alábbi példa bemutatja egy IKEErrors.txt fájl tartalmát. A hibát a probléma függően eltérő lehet.
 
 ```
 Error: Authentication failed. Check shared key. Check crypto. Check lifetimes. 
@@ -149,9 +149,9 @@ Error: On-prem device sent invalid payload.
 
 ### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag.txt
 
-A **Scrubbed-wfpdiag.txt** naplófájl tartalmazza a Windows fájlvédelem naplót. Ez a napló tartalmaz csomagjai és IKE/AuthIP hibák naplózása.
+A **Scrubbed-wfpdiag.txt** naplófájl tartalmazza a Windows fájlvédelem naplót. Ez a napló tartalmaz csomagvesztéseinek és internetes KULCSCSERE/AuthIP hibák naplózása.
 
-A következő példa bemutatja a Scrubbed-wfpdiag.txt fájl tartalmát. Ebben a példában a kapcsolat megosztott kulcsa nem volt pontosak, mivel a harmadik sorban a lista aljáról is látható. Az alábbi példa esetén csak a teljes napló, a részlet, mert a napló megnőhet, attól függően, hogy a problémát.
+Az alábbi példa bemutatja a Scrubbed-wfpdiag.txt fájl tartalmát. Ebben a példában a megosztott kulcsot a kapcsolat nem volt megfelelő, mivel a lista aljáról a harmadik sor is látható. Az alábbi példa a teljes naplót, csupán egy részlet megegyezik a napló lehet hosszabb, függően a problémát.
 
 ```
 ...
@@ -182,9 +182,9 @@ A következő példa bemutatja a Scrubbed-wfpdiag.txt fájl tartalmát. Ebben a 
 
 ### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.sum
 
-A **wfpdiag.txt.sum** fájl egy napló, a buffers és a feldolgozott események megjelenítése.
+A **wfpdiag.txt.sum** fájl egy naplót, a buffers és a feldolgozott események megjelenítése.
 
-A következő példa egy wfpdiag.txt.sum fájl tartalmának.
+Az alábbi példában egy wfpdiag.txt.sum fájl tartalmát.
 ```
 Files Processed:
     C:\Resources\directory\924336c47dd045d5a246c349b8ae57f2.GatewayTenantWorker.DiagnosticsStorage\2017-02-02T17-34-23\wfpdiag.etl
@@ -212,7 +212,7 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>További lépések
 
-Átjáró vagy gateway-kapcsolatot a probléma diagnosztizálása érdekében, lásd: [hálózatok közötti kommunikációs problémák diagnosztizálásához](diagnose-communication-problem-between-networks.md).
+Ismerje meg, hogyan-átjáróval vagy átjárókapcsolat problémáinak diagnosztizálása, lásd: [hálózatok közötti kommunikációs probléma diagnosztizálása](diagnose-communication-problem-between-networks.md).
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png

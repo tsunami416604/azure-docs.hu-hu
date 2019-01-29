@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 977466d77bee2d6fe49c0438aa1d9d4489f8eb5f
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: fd2d9bd325d79a1fd8aa0da74da64f6ba98decda
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888226"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101056"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatikus skálázása az Azure HDInsight-fürtök (előnézet)
 
@@ -22,7 +22,7 @@ Az Azure HDInsight-fürt automatikus skálázási funkció automatikusan mérete
 
 ## <a name="getting-started"></a>Első lépések
 
-### <a name="create-cluster-with-azure-portal"></a>Fürt létrehozása az Azure Portalon
+### <a name="create-a-cluster-with-the-azure-portal"></a>Fürt létrehozása az Azure portal használatával
 
 > [!Note]
 > Az automatikus skálázás jelenleg csak a támogatott Azure HDInsight Hive, a MapReduce és a Spark fürt 3.6-os verzióját.
@@ -48,7 +48,7 @@ Az előfizetés minden olyan régió esetében kapacitás kvótával rendelkezik
 > [!Note]  
 > Ha túllépi a teljes magkvótájának határértékét, kapni fog egy hibaüzenet közli, hogy "a csomópontok maximális túllépte a rendelkezésre álló magok ebben a régióban, válasszon egy másik régióban, vagy forduljon az támogatási a kvóta növeléséhez."
 
-### <a name="create-cluster-with-an-resource-manager-template"></a>Fürt létrehozása a Resource Manager-sablon
+### <a name="create-a-cluster-with-a-resource-manager-template"></a>Fürt létrehozása a Resource Manager-sablonnal
 
 Teljes HDInsight fürt létrehozása Resource Manager-sablonok használatával lépéseket található [Apache Hadoop-fürtök létrehozása a HDInsight használatával a Resource Manager-sablonok](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  Egy HDInsight-fürtön az Azure Resource Manager-sablon létrehozásakor kell a "computeProfile" a "workernode" szakaszban adja hozzá a következő beállításokat, és ennek megfelelően szerkesztésére:
 
@@ -74,7 +74,7 @@ Teljes HDInsight fürt létrehozása Resource Manager-sablonok használatával l
 }
 ```
 
-### <a name="enable-and-disabling-autoscale-for-a-running-cluster"></a>Engedélyezése és letiltása az automatikus skálázási futó fürt
+### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Engedélyezheti vagy letilthatja az automatikus skálázási futó fürt
 
 Az automatikus méretezés engedélyezése egy futó fürt privát előzetes verzió ideje alatt nem támogatott. Engedélyezni kell a fürt létrehozásakor.
 
@@ -82,7 +82,7 @@ Automatikus skálázás letiltása, vagy egy futó fürt automatikus méretezés
 
 ## <a name="monitoring"></a>Figyelés
 
-A fürt vertikális felfelé és a fürt metrikák részeként előzmények tekintheti meg. Az elmúlt listázhatja az összes skálázási műveletek napi, heti vagy hosszabb ideig.
+Megtekintheti a fürt vertikális felskálázási és vertikális leskálázás előzményei a fürtmetrikák részeként. Az elmúlt is listázhatja az összes skálázási műveletek napi, heti vagy hosszabb ideig.
 
 ## <a name="how-it-works"></a>Működés
 

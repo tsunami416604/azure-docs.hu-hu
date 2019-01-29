@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,19 +16,19 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: e4ed0db3a08937c3c8b51e2c8af5e566b59df4c4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b507e6630e5b0b0e73edad1815825e70ed90ec4d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970957"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097299"
 ---
 # <a name="web-api"></a>Webes API
 
 Webes API-alkalmazások olyan webes alkalmazások, a webes API-k erőforrások le kell töltenie. Ebben a forgatókönyvben két identitás típusa van, a webes alkalmazás hitelesítéséhez és a webes API hívása segítségével:
 
 - **Identita aplikace** – ebben a példában az OAuth 2.0 ügyfélhitelesítő adatok hitelesítse magát az alkalmazást, és a webes API-k eléréséhez. A webes API-t csak azt észleli, hogy a webalkalmazás, hívja az Alkalmazásidentitás használatakor, a webes API-t nem kapja meg a felhasználó semmilyen információt. Az alkalmazás fogad a felhasználó adatait, ha az alkalmazás protokollon keresztül küld, és nem írta alá a Azure ad-ben. A webes API megbízik, hogy a webalkalmazás hitelesítette a felhasználót. Ezért ez a minta egy megbízható alrendszer neve.
-- **Felhasználói identitás delegált** – ebben a forgatókönyvben két módon is elvégezhető: OpenID Connectet és az OAuth 2.0 hitelesítési kódmegadás a bizalmas ügyfél. A webalkalmazás lekéri a hozzáférési jogkivonatot a felhasználóhoz, amely igazolja, a webes API-t, hogy a webalkalmazás sikeresen hitelesíteni a felhasználót és a webes alkalmazás volt a webes API meghívásához egy meghatalmazott felhasználói identitás szerezhetik be. A hozzáférési jogkivonatot a webes API-t, amely engedélyezi a felhasználó, és adja vissza a kívánt erőforrást. a kérelem küldése.
+- **Felhasználói identitás delegált** – ebben a forgatókönyvben két módon is elvégezhető: OpenID Connect, és az OAuth 2.0 hitelesítési kódmegadás bizalmas-ügyféllel. A webalkalmazás lekéri a hozzáférési jogkivonatot a felhasználóhoz, amely igazolja, a webes API-t, hogy a webalkalmazás sikeresen hitelesíteni a felhasználót és a webes alkalmazás volt a webes API meghívásához egy meghatalmazott felhasználói identitás szerezhetik be. A hozzáférési jogkivonatot a webes API-t, amely engedélyezi a felhasználó, és adja vissza a kívánt erőforrást. a kérelem küldése.
 
 Az alkalmazás azonosítóját és a delegált felhasználói identitás típusai a folyamat az alábbi tárgyalja. A fő különbség az, hogy a delegált felhasználó identitását először kell szerezni az engedélyezési kódot, mielőtt a felhasználó bejelentkezhet és a webes API-k eléréséhez.
 

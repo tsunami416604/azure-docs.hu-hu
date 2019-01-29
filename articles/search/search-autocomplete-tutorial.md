@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 10f86a482fbb35e7276f8f689a7eba184a7b624b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a0b4301177fa1307244a784031ec890b9a20f01a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316182"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099108"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Oktatóanyag: Automatikus kiegészítés, a keresési mezőbe, használja az Azure Search hozzáadása
 
@@ -60,7 +60,7 @@ Kövesse a jelen szakasz lépéseit, ha a saját indexébe szeretné importálni
 
 ### <a name="running-the-sample"></a>A minta futtatása
 
-Most már készen áll az oktatóanyag mintaalkalmazásának futtatására.  Nyissa meg az AutocompleteTutorial.sln megoldásfájlt a Visual Studióban az oktatóanyag futtatásához.  A megoldás egy ASP.NET MVC-projektet tartalmaz.  A projekt futtatásához és az oldal kiválasztott böngészőbe való betöltéséhez nyomja le az F5 billentyűt.  A képernyő felső részén látni fogja a C# vagy JavaScript kiválasztásának lehetőségét.  A C# lehetőség meghívja a HomeController elemet a böngészőből, és az Azure Search .Net SDK-val lekéri az eredményeket.  A JavaScript lehetőség közvetlenül a böngészőből hívja be az Azure Search REST API-t.  Ezen lehetőség teljesítménye általában észrevehetően jobb, mert kiveszi a vezérlőt a folyamatból.  Kiválaszthatja az igényeinek és a nyelvi beállításainak megfelelő lehetőséget.  Az oldalon szerepel néhány automatikus kitöltési példa, mindegyikhez némi útmutatással.  Mindegyik példa javasolt mintaszöveggel rendelkezik, amelyet kipróbálhat.  Próbáljon meg beírni néhány betűt a keresőmezőkbe, és figyelje meg, mi történik.
+Most már készen áll az oktatóanyag mintaalkalmazásának futtatására.  Nyissa meg az AutocompleteTutorial.sln megoldásfájlt a Visual Studióban az oktatóanyag futtatásához.  A megoldás egy ASP.NET MVC-projektet tartalmaz.  A projekt futtatásához és az oldal kiválasztott böngészőbe való betöltéséhez nyomja le az F5 billentyűt.  A képernyő felső részén látni fogja a C# vagy JavaScript kiválasztásának lehetőségét.  A C# lehetőség meghívja a HomeController elemet a böngészőből, és az Azure Search .Net SDK-val lekéri az eredményeket.  A JavaScript lehetőség közvetlenül a böngészőből hívja be az Azure Search REST API-t.  Ezt a beállítást általában észrevehetően jobb teljesítmény érdekében fog rendelkezni, mivel a tartományvezérlő a folyamat nem vesz igénybe.  Kiválaszthatja az igényeinek és a nyelvi beállításainak megfelelő lehetőséget.  Az oldalon szerepel néhány automatikus kitöltési példa, mindegyikhez némi útmutatással.  Mindegyik példa javasolt mintaszöveggel rendelkezik, amelyet kipróbálhat.  Próbáljon meg beírni néhány betűt a keresőmezőkbe, és figyelje meg, mi történik.
 
 ## <a name="how-this-works-in-code"></a>Ennek működése kódban
 
