@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: bdf5b5188dd584c5eb20f72ff4a98ba6904bc53e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 6663e3fc48408de83e92f39e8c8070005818852d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702374"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097971"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Az Azure Stream Analytics JavaScript nyelvű felhasználó által definiált összesítések (előzetes verzió)
  
@@ -28,7 +28,7 @@ Egy felhasználó által meghatározott összesítés felett egy ablakot a megad
 
 AccumulateOnly összesítések csak felhalmozhat annyi új események az állapotba, az algoritmus nem engedélyezi a deaccumulation értékek. Válassza ki az összesített mikor deaccumulate egy eseményt az állapotérték adatait nem lehet megvalósítani. Következő az AccumulatOnly összesítések a JavaScript-sablon:
 
-````JavaScript
+```JavaScript
 // Sample UDA which state can only be accumulated.
 function main() {
     this.init = function () {
@@ -43,13 +43,13 @@ function main() {
         return this.state;
     }
 }
-````
+```
 
 ### <a name="accumulatedeaccumulate-aggregates"></a>AccumulateDeaccumulate összesítések
 
 AccumulateDeaccumulate összesítések például lehetővé teszi egy előző összesített érték a állapotból deaccumulation, távolítsa el a kulcs-érték pár esemény értékekből álló listát, vagy kivonása egy értéket egy sum összesített állapotát. Következő az AccumulateDeaccumulate összesítések a JavaScript-sablon:
 
-````JavaScript
+```JavaScript
 // Sample UDA which state can be accumulated and deaccumulated.
 function main() {
     this.init = function () {
@@ -72,7 +72,7 @@ function main() {
         return this.state;
     }
 }
-````
+```
 
 ## <a name="uda---javascript-function-declaration"></a>UDA - JavaScript-függvény deklarációjában
 
@@ -80,7 +80,7 @@ Minden egyes JavaScript UDA-objektum deklarace Funkce határozza meg. Az alábbi
 
 ### <a name="function-alias"></a>Függvényalias
 
-Függvény aliasa a UDA azonosítója. Neve a Stream Analytics-lekérdezés, mindig használjon UDA alias együtt egy "uda." előtag.
+Függvény aliasa a UDA azonosítója. Neve a Stream Analytics-lekérdezés, mindig használjon UDA alias együtt egy "uda." prefix.
 
 ### <a name="function-type"></a>Függvény típusa
 
@@ -129,7 +129,7 @@ Most hozzunk létre egy meglévő ASA-feladat a JavaScript UDA hajtsa végre.
 1. Válassza ki az új függvény nézeten **JavaScript UDA** függvény típusaként, majd megjelenik egy alapértelmezett UDA sablon jelenik meg a szerkesztőben.
 1. Az UDA-alias "TWA" adja meg, és módosítsa a függvény implementálását az alábbiak szerint:
 
-    ````JavaScript
+    ```JavaScript
     // Sample UDA which calculate Time-Weighted Average of incoming values.
     function main() {
         this.init = function () {
@@ -167,7 +167,7 @@ Most hozzunk létre egy meglévő ASA-feladat a JavaScript UDA hajtsa végre.
             return result;
         }
     }
-    ````
+    ```
 
 1. Ha a "Mentés" gombra kattint, az UDA jelenik meg a függvény listán.
 
@@ -177,7 +177,7 @@ Most hozzunk létre egy meglévő ASA-feladat a JavaScript UDA hajtsa végre.
 
 Az Azure Portalon, és nyissa meg a feladatot, szerkessze a lekérdezést és TWA() függvény a megbízás "uda." előtaggal. Példa:
 
-````SQL
+```SQL
 WITH value AS
 (
     SELECT
@@ -191,13 +191,13 @@ SELECT
     uda.TWA(value) as NoseDoseTWA
 FROM value
 GROUP BY TumblingWindow(minute, 5)
-````
+```
 
 ## <a name="testing-query-with-uda"></a>Tesztelési UDA-lekérdezés
 
 Hozzon létre egy helyi JSON-fájlt az alábbi tartalmat, és feltöltheti a fájlt a Stream Analytics-feladat lekérdezést újabb teszteléséhez.
 
-````JSON
+```JSON
 [
   {"EntryTime": "2017-06-10T05:01:00-07:00", "NoiseLevelDB": 80, "DurationSecond": 22.0},
   {"EntryTime": "2017-06-10T05:02:00-07:00", "NoiseLevelDB": 81, "DurationSecond": 37.8},
@@ -223,7 +223,7 @@ Hozzon létre egy helyi JSON-fájlt az alábbi tartalmat, és feltöltheti a fá
   {"EntryTime": "2017-06-10T05:20:00-07:00", "NoiseLevelDB": 113, "DurationSecond": 25.1},
   {"EntryTime": "2017-06-10T05:22:00-07:00", "NoiseLevelDB": 110, "DurationSecond": 5.3}
 ]
-````
+```
 
 ## <a name="get-help"></a>Segítségkérés
 

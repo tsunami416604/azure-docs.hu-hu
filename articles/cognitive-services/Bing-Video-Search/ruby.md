@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Bing Video Search – Ruby'
+title: 'Gyors útmutató: Bing – Videókeresés, a Ruby'
 titlesuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg a Bing Video Search API használatának első lépéseivel.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: f1d96ca4d3f9bf7a64ff04255948709d623354c9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a085d97dca7175eb76dfda562d92218baebbb2c0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309528"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185039"
 ---
-# <a name="quickstart-bing-video-search-api-with-ruby"></a>Rövid útmutató: Bing Video Search API Ruby használatával
+# <a name="quickstart-bing-video-search-api-with-ruby"></a>Gyors útmutató: A Bing Videókeresési API Ruby használatával
 
 Ez a cikk bemutatja, hogyan használható a Microsoft Cognitive Services részét képező Bing Video Search API az Azure-on. Bár ez a cikk Rubyt használ, az API egy RESTful-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre. 
 

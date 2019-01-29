@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: a7647e4a54cdfa4eff284c4b1d8bd579e51fdbe3
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 7dffa1480be73f1dbf5e99d11fd8d33eb2ab9038
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847526"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196412"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata az Azure Active Directory B2C egy egyéni házirend használatával konfigurálja
 
@@ -267,7 +267,7 @@ A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan AP
 - Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével.
 - Cserélje le `B2C_1A_ROPC_Auth` az erőforrás tulajdonosa hitelesítő adatok jelszóházirend teljes nevét.
 
-| Kulcs | Érték |
+| Kulcs | Value |
 | --- | ----- |
 | felhasználónév | `user-account` |
 | jelszó | `password1` |
@@ -313,7 +313,7 @@ Itt látható egy hasonló a POST híváson hozhatnak létre. Az adatokat haszn�
 - Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével.
 - Cserélje le `B2C_1A_ROPC_Auth` az erőforrás tulajdonosa hitelesítő adatok jelszóházirend teljes nevét.
 
-| Kulcs | Érték |
+| Kulcs | Value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Bing Video Search API'
+title: 'Gyors útmutató: Bing Video Search API'
 titlesuffix: Azure Cognitive Services
 description: Bemutatja a Bing Video Search API használatának első lépéseit.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 5b1ac98ee9ad5625d8db9790a3be10d42236874b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 4962415578dd07465a0c60554c7a94598d7e8f43
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307457"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179123"
 ---
-# <a name="quickstart-your-first-video-search-query"></a>Rövid útmutató: Az első videókeresési lekérdezés létrehozása
+# <a name="quickstart-your-first-video-search-query"></a>Gyors útmutató: Az első videó keresési lekérdezés
 
 A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 

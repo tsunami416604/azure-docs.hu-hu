@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: f4ded67ef964482a2acea0d731b1b154a95168d2
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: db6646c2066be940b2c058653fe8f2ceb9bff3a2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741351"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169705"
 ---
-# <a name="liveevent-latency-in-media-services"></a>A Media Services videókhoz késés
+# <a name="live-event-latency-in-media-services"></a>A Media Services élő esemény késés
 
-Ez a cikk bemutatja, hogyan lehet beállítani a közel valós idejű a egy [videókhoz](https://docs.microsoft.com/rest/api/media/liveevents). Emellett ismerteti a tipikus eredményeket közel valós idejű beállításainak használatával által is látható. Az eredmények függ a CDN és a hálózati késést.
+Ez a cikk bemutatja, hogyan lehet beállítani a közel valós idejű a egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents). Emellett ismerteti a tipikus eredményeket közel valós idejű beállításainak használatával által is látható. Az eredmények függ a CDN és a hálózati késést.
 
 Az új használandó **LowLatency** szolgáltatást, állítsa be a **StreamOptionsFlag** való **LowLatency** a a **videókhoz**. Létrehozásakor [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) HLS lejátszása, állítsa [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 1-re. A stream működik-e, ha a [Azure Media Player](http://ampdemo.azureedge.net/) (AMP bemutató oldalon), és állítsa be a lejátszási beállítások használatához a "alacsony késés a heurisztika profil".
 
@@ -54,7 +54,7 @@ LiveEvent liveEvent = new LiveEvent(
 
 Tekintse meg a teljes példát: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-## <a name="liveevents-latency"></a>LiveEvents késés
+## <a name="live-events-latency"></a>Élő események késés
 
 Az alábbi táblázatok a Media Services szolgáltatásban a hozzájárulás hírcsatorna eléri a szolgáltatást, hogy amikor egy megjelenítőt látja a lejátszó a lejátszás ameddig késés (Ha engedélyezve van a LowLatency jelző) jellemző eredmény megjelenítése. Közel valós idejű optimális használatához meg kell finomhangolása lefelé 1 másodperc "Csoportot a képek" (Képcsoporttal) hossza a kódoló beállításai. Magasabb Képcsoporttal hossza használatakor, sávszélesség-használat minimalizálása érdekében, és csökkentheti a sávszélességű azonos sebessége alapján. Különösen hasznos a videókat, amelyekhez kevesebb mozgásban lévő adatoknak egyaránt.
 
@@ -62,7 +62,7 @@ Az alábbi táblázatok a Media Services szolgáltatásban a hozzájárulás hí
 
 ||2S Képcsoporttal kis késés, engedélyezve van|1s Képcsoporttal kis késés, engedélyezve van|
 |---|---|---|
-|VONAL-és a|10 egység|8S|
+|VONAL-és a|10 egység|8s|
 |A natív iOS-lejátszó HLS|14s|10 egység|
 
 ### <a name="live-encoding"></a>Live Encoding

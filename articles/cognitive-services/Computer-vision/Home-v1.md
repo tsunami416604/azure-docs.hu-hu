@@ -6,17 +6,17 @@ services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: acd6d41e8b6d1fb834697ec3d026419ee6b69ec9
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 57388b4e2f74a1e9e8d9c322020077dfd67e89c1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582354"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198146"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Mi a Computer Vision API 1.0-s verziója?
 
@@ -113,7 +113,7 @@ A képek több módon kategorizálhatók. A Computer Vision API egy logikai jelz
 ### <a name="clip-art-type"></a>ClipArt típus
 Észleli, hogy a kép ClipArt, vagy nem.  
 
-Érték | Jelentés
+Value | Jelentés
 ----- | --------------
 0     | Nem ClipArt
 1     | nem egyértelmű
@@ -138,9 +138,9 @@ Kép|Válasz
 
 Kép|Válasz
 ----|----
-![Tetőn álló nő arcának vizuális elemzése](./Images/woman_roof_face.png) | [{"age": 23., "gender": "Női", "faceRectangle": {"left": "felső" 1379: 320, "width": 310, "magasság": 310}}]
-![Anyát és lányát ábrázoló kép vizuális elemzése](./Images/mom_daughter_face.png) | [{"age": 28., "gender": "Női", "faceRectangle": {"left": "felső" 447: 195, "width": 162-es, "magasság": 162-es}}, {"age": 10., "gender": "Férfi", "faceRectangle": {"left": "felső" 355: 87, "width": 143, "magasság": 143}}]
-![Családi fotó vizuális elemzése](./Images/family_photo_face.png) | [{"age": 11., "gender": "Férfi", "faceRectangle": {"left": "felső" 113: 314, "width": 222, "magasság": 222}}, {"age": 11., "gender": "Női", "faceRectangle": {"left": 1200-as, "felső": 632, "width": 215, "magasság": 215}}, {"age": 41-es, "gender": "Férfi", "faceRectangle": {"left": 514-es, "felső": 223, "width": 205, "magasság": 205}}, {"age": 37, a "gender": "Női", "faceRectangle": {"left": 1008: "felső": 277, "width": 201-es, "magasság": 201-es}}]
+![Tetőn álló nő arcának vizuális elemzése](./Images/woman_roof_face.png) | [{"age": 23., "gender": "Female", "faceRectangle": { "left": "felső" 1379: 320, "width": 310, "height": 310 } } ]
+![Anyát és lányát ábrázoló kép vizuális elemzése](./Images/mom_daughter_face.png) | [{"age": 28., "gender": "Female", "faceRectangle": { "left": "felső" 447: 195, "width": 162-es, "magasság": 162-es}}, {"age": 10., "gender": "Male", "faceRectangle": { "left": "felső" 355: 87, "width": 143, "magasság": 143 } } ]
+![Családi fotó vizuális elemzése](./Images/family_photo_face.png) | [{"age": 11., "gender": "Male", "faceRectangle": { "left": "felső" 113: 314, "width": 222, "magasság": 222}}, {"age": 11., "gender": "Female", "faceRectangle": { "left": 1200-as, "felső": 632, "width": 215, "magasság": 215}}, {"age": 41-es, "gender": "Male", "faceRectangle": { "left": 514-es, "felső": 223, "width": 205, "magasság": 205}}, {"age": 37, a "gender": "Female", "faceRectangle": { "left": 1008: "felső": 277, "width": 201-es, "magasság": 201 } } ]
 
 
 ## <a name="domain-specific-content"></a>Fogalomkör-specifikus tartalom

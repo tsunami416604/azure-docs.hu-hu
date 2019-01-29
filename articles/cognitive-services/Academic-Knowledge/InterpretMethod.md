@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: e16a772caa5fba632f8544094e2d8b57ed4ca765
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d79e14fa48631ec6ce3cde42a7dbe300034782cb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902569"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171653"
 ---
 # <a name="interpret-method"></a>Módszer értelmezése
 
@@ -29,12 +29,12 @@ Ahhoz, hogy az interaktív élményt, meghívhatja ezt a módszert ismételten u
 
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-Name (Név)     | Érték | Kötelező?  | Leírás
+Name (Név)     | Value | Kötelező?  | Leírás
 ---------|---------|---------|---------
 **Lekérdezés**    | Szöveges karakterlánc | Igen | Felhasználó által megadott lekérdezés.  Ha teljes értéke 1, lekérdezés létrehozni lekérdezési automatikus kiegészítését javaslatok előtagjaként is értelmezhető.        
-**Modell**    | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték *legújabb*.        
+**model**    | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték *legújabb*.        
 **Hajtsa végre** | 0 vagy 1 | Nem<br>Alapértelmezés: 0  | 1 azt jelenti, hogy automatikus kiegészítését javaslatok jönnek létre a szintaxis és a grafikon adatai alapján.         
-**Száma**    | Szám | Nem<br>Alapértelmezés: 10 | Maximális száma értelmezéseket ad vissza.         
+**count**    | Szám | Nem<br>Alapértelmezés: 10 | Maximális száma értelmezéseket ad vissza.         
 **eltolás**   | Szám | Nem<br>Alapértelmezés: 0  | Az első értelmezése index való visszatéréshez. Ha például *száma = 2 & eltolás = 0* 0 és 1 értelmezéseket ad vissza. *Count = 2 & eltolás = 2* 2. és 3 értelmezéseket ad vissza.       
 **Időtúllépés**  | Szám | Nem<br>alapértelmezett: 1000 | Időkorlát ezredmásodpercben. Csak a az időtúllépési letelte előtt található értelmezés adja vissza.
 <br>
@@ -44,14 +44,14 @@ Name (Név)     | Leírás
 ---------|---------
 **Lekérdezés** |A *lekérdezés* paraméter a kérelemből.
 **értelmezése** |Az egyező felhasználói bevitel ellen a nyelvtani 0 vagy több különböző módon tömbje.
-**[x] értelmezések .logprob**  |A relatív természetes logaritmusát valószínűsége értelmezése. Nagyobb értékek nagy valószínűséggel.
-**[x] értelmezések .parse**  |XML-karakterlánc, amely megjeleníti a lekérdezés minden egyes részét értelmezését.
-**[x] értelmezések .rules**  |1 vagy több meghatározott szabályok a gramatice értelmezése során definiálásra tömbje. Az Academic Knowledge API esetében mindig lesz 1 szabályt.
-**[x] [y] .rules .név értelmezések**  |a szabály nevét.
-**[x] [y] .rules .output értelmezések**  |A szabály kimenetét.
-**[x] [y] .rules.output.type értelmezések** |A szabály a kimeneti adattípus.  Az Academic Knowledge API Ez minden esetben az "query".
-**[x] [y] .rules.output.value értelmezések**  |A szabály kimenete. Az Academic Knowledge API esetén ez a kifejezés karakterlánc, amely a kiértékelés és calchistogram módszerek adható át.
-**megszakítva** | IGAZ, ha a kérelem túllépte az időkorlátot.
+**interpretations[x].logprob**  |A relatív természetes logaritmusát valószínűsége értelmezése. Nagyobb értékek nagy valószínűséggel.
+**interpretations[x].parse**  |XML-karakterlánc, amely megjeleníti a lekérdezés minden egyes részét értelmezését.
+**interpretations[x].rules**  |1 vagy több meghatározott szabályok a gramatice értelmezése során definiálásra tömbje. Az Academic Knowledge API esetében mindig lesz 1 szabályt.
+**interpretations[x].rules[y].name**  |a szabály nevét.
+**interpretations[x].rules[y].output**  |A szabály kimenetét.
+**interpretations[x].rules[y].output.type** |A szabály a kimeneti adattípus.  Az Academic Knowledge API Ez minden esetben az "query".
+**interpretations[x].rules[y].output.value**  |A szabály kimenete. Az Academic Knowledge API esetén ez a kifejezés karakterlánc, amely a kiértékelés és calchistogram módszerek adható át.
+**aborted** | IGAZ, ha a kérelem túllépte az időkorlátot.
 
 <br>
 #### <a name="example"></a>Példa:

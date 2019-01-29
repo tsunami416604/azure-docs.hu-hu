@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: aa5be1df1737c56689786f5255203b771b15d179
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: a9e58139d248daed19f4fe35c7d33ede9dfe64b0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54843685"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195970"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurálja a jelszó módosítása az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
@@ -173,7 +173,7 @@ Ha teszteli az alkalmazások Azure AD B2C-ben, hasznos lehet az Azure AD B2C jog
 7. Kattintson a **Feltöltés** gombra.
 8. Ismételje meg az 5 – 7 a függő entitás fájlt például *ProfileEditPasswordChange.xml*.
 
-### <a name="run-the-policy"></a>Szabályzat futtatása
+### <a name="run-the-policy"></a>Futtassa a szabályzat
 
 1. Nyissa meg a módosított szabályzatot. Ha például *B2C_1A_profile_edit_password_change*.
 2. A **alkalmazás**, válassza ki az alkalmazását, amely korábban regisztrálva. A jogkivonatot, hogy a **válasz URL-cím** megjelennie `https://jwt.ms`.

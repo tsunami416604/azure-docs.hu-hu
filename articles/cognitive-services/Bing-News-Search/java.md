@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f8a98133d68cb73958664dd04bb2d959c97195cf
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 71f0ece2ff06ef000092485b8e7e11c5eedb38dd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263849"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174499"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hajtsa végre a hírkeresési, Java és a Bing News Search REST API használatával
 
@@ -64,7 +64,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     }
     ```
 
-## <a name="construct-the-search-request-and-recieve-a-json-response"></a>Hozza létre a keresési kérelmet, és a egy JSON-választ kap
+## <a name="construct-the-search-request-and-receive-a-json-response"></a>Hozza létre a keresési kérelmet, és a egy JSON-választ kap
 
 1. Az előző lépés változóit használva formázza a keresési URL-címet az API-kérelemhez. Ne feledje, hogy a keresési kifejezésnek URL-kódolásúnak kell lennie, mielőtt a kérelemhez hozzáfűzné azt.
 

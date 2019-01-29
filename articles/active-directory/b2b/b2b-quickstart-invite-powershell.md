@@ -9,12 +9,12 @@ ms.date: 08/28/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
-ms.openlocfilehash: 9b615498f2e3d6df3b285d2e50215f15372dcad6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 28a2177089fb3c93670d61da62815ff67bfd544d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076051"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094801"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Gyors útmutató: Vendégfelhasználó hozzáadása PowerShell-lel
 
@@ -29,29 +29,29 @@ Győződjön meg róla, hogy az Azure AD PowerShell for Graph module (AzureADPre
 
 Először ellenőrizze, melyik modulokat telepítette. Nyissa meg a Windows PowerShellt rendszergazdaként (Futtatás rendszergazdaként), majd futtassa a következő parancsot:
  
-````powershell  
+```powershell  
 Get-Module -ListAvailable AzureAD*
-````
+```
 
 Ha az AzureADPreview modul anélkül megjelenik anélkül, hogy újabb verzióra figyelmeztető üzenet jelenne meg, készen van. Ellenkező esetben a kimenet alapján, tegye a következők egyikét:
 
 - Ha nem kapott eredményt, a következő parancs futtatásával telepítse az AzureADPreview modult:
   
-   ````powershell  
+   ```powershell  
    Install-Module AzureADPreview
-   ````
+   ```
 - Ha az eredmények között csak az Azure AD-modul jelenik meg, a következő parancsok futtatásával telepítse az AzureADPreview-modult: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
-   ````
+   ```
 - Ha az eredmények között csak az AzureADPreview-modul jelenik meg, de kap egy üzenetet, amely jelzi, hogy van újabb verziója, futtassa a következő parancsokat a modul frissítésére: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-  ````
+  ```
 
 Előfordulhat, hogy kap egy kérdést, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg **Y**-t a modul telepítéséhez.
 

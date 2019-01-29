@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5ad3b56bb2e24bc31d3a0801a91670c0e6157d5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 9abf1d1105c112051041688f1d4305c543b148ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888413"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179480"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Létrehozása és kezelése az Azure CLI-vel rendelkező virtuálisgép-méretezési csoportot
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -51,7 +51,7 @@ Az erőforráscsoport nevének meghatározására a méretezési csoport létreh
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-Hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss#az_vmss_create) parancs használatával. A következő példa egy *myScaleSet* nevű méretezési csoportot, valamint SSH-kulcsokat hoz létre, amennyiben azok még nem léteznének:
+Hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss) parancs használatával. A következő példa egy *myScaleSet* nevű méretezési csoportot, valamint SSH-kulcsokat hoz létre, amennyiben azok még nem léteznének:
 
 ```azurecli-interactive
 az vmss create \
@@ -98,7 +98,7 @@ az vmss get-instance-view \
 ## <a name="list-connection-information"></a>Kapcsolatadatok listázása
 A rendszer egy nyilvános IP-címet rendel hozzá a terheléselosztóhoz, amely a forgalmat az egyéni virtuálisgép-példányokhoz irányítja. Alapértelmezés szerint a rendszer a hálózati címfordítási (NAT) szabályokat adja hozzá az Azure-terheléselosztóhoz, amely továbbítja a távoli kapcsolati forgalmat az egyes virtuális gépekre egy adott porton keresztül. A méretezési csoportban lévő virtuálisgép-példányok csatlakoztatásához létesítsen távoli kapcsolatot a hozzárendelt nyilvános IP-címhez és portszámhoz.
 
-A méretezési csoportban lévő virtuálisgép-példányokhoz való csatlakozáshoz használható cím és portok listázásához használja az [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) parancsot:
+A méretezési csoportban lévő virtuálisgép-példányokhoz való csatlakozáshoz használható cím és portok listázásához használja az [az vmss list-instance-connection-info](/cli/azure/vmss) parancsot:
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -192,7 +192,7 @@ A virtuálisgép-példány mérete, más néven *SKU*, a virtuálisgép-példán
 ### <a name="vm-instance-sizes"></a>A virtuálisgép-példányok mérete
 Az alábbi táblázat a virtuális gépek gyakori méreteit használati esetek alapján kategorizálja.
 
-| Típus                     | Gyakori méretek           |    Leírás       |
+| Typo                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](../virtual-machines/linux/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
@@ -202,7 +202,7 @@ Az alábbi táblázat a virtuális gépek gyakori méreteit használati esetek a
 | [Nagy teljesítmény](../virtual-machines/linux/sizes-hpc.md) | H, A8-11          | Leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű hálózati adapterekkel (RDMA). 
 
 ### <a name="find-available-vm-instance-sizes"></a>Elérhető virtuálisgép-példányméretek keresése
-Az adott régióban elérhető virtuálisgép-példány méretek megtekintéséhez használja az [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) parancsot.
+Az adott régióban elérhető virtuálisgép-példány méretek megtekintéséhez használja az [az vm list-sizes](/cli/azure/vm) parancsot.
 
 ```azurecli-interactive
 az vm list-sizes --location eastus --output table
@@ -227,7 +227,7 @@ A kimenet a következő sűrített példához hasonló, amelyben az egyes virtu�
 ```
 
 ### <a name="create-a-scale-set-with-a-specific-vm-instance-size"></a>Méretezési csoport létrehozása egy megadott méretű virtuálisgép-példánnyal
-Az oktatóanyag elején a méretezési csoport létrehozásakor a *Standard_D1_v2* alapértelmezett virtuálisgép-termékváltozat (SKU) lett megadva a virtuálisgép-példányokhoz. Megadhat egy másik virtuálisgép-példányméretet az [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) parancs kimenete alapján. Az alábbi példa a `--vm-sku` paraméterrel a méretezési csoportot a *Standard_F1* virtuálisgép-példányméret megadásával hozza létre. Mivel a méretezési csoport erőforrásainak és virtuálisgép-példányainak létrehozása és konfigurálása néhány percet vesz igénybe, nem kell üzembe helyeznie az alábbi méretezési csoportot:
+Az oktatóanyag elején a méretezési csoport létrehozásakor a *Standard_D1_v2* alapértelmezett virtuálisgép-termékváltozat (SKU) lett megadva a virtuálisgép-példányokhoz. Megadhat egy másik virtuálisgép-példányméretet az [az vm list-sizes](/cli/azure/vm) parancs kimenete alapján. Az alábbi példa a `--vm-sku` paraméterrel a méretezési csoportot a *Standard_F1* virtuálisgép-példányméret megadásával hozza létre. Mivel a méretezési csoport erőforrásainak és virtuálisgép-példányainak létrehozása és konfigurálása néhány percet vesz igénybe, nem kell üzembe helyeznie az alábbi méretezési csoportot:
 
 ```azurecli-interactive
 az vmss create \
@@ -241,7 +241,7 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Méretezési csoport kapacitásának módosítása
-Az oktatóanyag kezdetén létrehozott méretezési csoporthoz alapértelmezés szerint két virtuálisgép-példányt telepített. Az `--instance-count` paraméter [az vmss create](/cli/azure/vmss#az_vmss_create) parancshoz történő hozzáadásával módosíthatja a méretezési csoporttal létrehozott példányok számát. A meglévő méretezési csoportban lévő virtuálisgép-példányok számának növeléséhez vagy csökkentéséhez manuálisan módosíthatja a kapacitást. A méretezési csoport létrehozza vagy eltávolítja a szükséges számú virtuálisgép-példányt, majd konfigurálja a terheléselosztót a forgalom elosztásához.
+Az oktatóanyag kezdetén létrehozott méretezési csoporthoz alapértelmezés szerint két virtuálisgép-példányt telepített. Az `--instance-count` paraméter [az vmss create](/cli/azure/vmss) parancshoz történő hozzáadásával módosíthatja a méretezési csoporttal létrehozott példányok számát. A meglévő méretezési csoportban lévő virtuálisgép-példányok számának növeléséhez vagy csökkentéséhez manuálisan módosíthatja a kapacitást. A méretezési csoport létrehozza vagy eltávolítja a szükséges számú virtuálisgép-példányt, majd konfigurálja a terheléselosztót a forgalom elosztásához.
 
 A méretezési csoportban lévő virtuálisgép-példányok számának manuális növeléséhez vagy csökkentéséhez használja az [az vmss scale](/cli/azure/vmss#az_vmss_scale) parancsot. Az alábbi példa a méretezési csoportban lévő virtuálisgép-példányok számát *3*-ra állítja:
 

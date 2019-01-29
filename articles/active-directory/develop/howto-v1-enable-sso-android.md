@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 2c7ccd8d2022631e32c240007a782d2382aac518
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9f0cc19ae220d27de620e5bd347fe78d9bfab2d5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422847"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093291"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Útmutató: az ADAL használatával Android alkalmazások közötti SSO engedélyezése
+# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Útmutató: Az ADAL használatával Android alkalmazások közötti SSO engedélyezése
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -108,7 +108,7 @@ A követendő lépések a következők:
 2. Hozzon létre új átirányítási URI-t, és adja meg, hogy az alkalmazás és az alkalmazás regisztrációját
 3. Az Android-jegyzékfájlban a megfelelő engedélyek beállítása
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>1. lépés: Az alkalmazás átvitelszervező-mód engedélyezése
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>1. lépés: Az alkalmazás a közvetítő mód engedélyezése
 
 Lehetővé teszi, hogy az alkalmazás a közvetítő használata be van kapcsolva a "beállítások" vagy a kezdeti beállítás a hitelesítési példány létrehozásakor. Ehhez az alkalmazásban:
 
@@ -116,7 +116,7 @@ Lehetővé teszi, hogy az alkalmazás a közvetítő használata be van kapcsolv
 AuthenticationSettings.Instance.setUseBroker(true);
 ```
 
-#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>2. lépés: Új átirányítási URI az az URL-séma létrehozása
+#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>2. lépés: Új átirányítási URI az az URL-séma létrehozása
 
 Annak érdekében, hogy a megfelelő alkalmazás recevies által visszaadott a hitelesítő adatok tokeneket és ott van szükség győződjön meg arról, az alkalmazásnak a hívás úgy, hogy az Android operációs rendszer ellenőrizheti. Az Android operációs rendszer a tanúsítvány kivonata használ, a Google Play áruházban. Ez a tanúsítvány kivonata nem lehet megtévesztésre egy engedélyezetlen alkalmazás. Az URI-ját a közvetítő alkalmazás, valamint a Microsoft biztosítja, hogy a megfelelő alkalmazáshoz a jogkivonatok lesznek visszaadva. Egy egyedi átirányítási URI-ja regisztrálni kell az alkalmazás.
 
@@ -124,7 +124,7 @@ Az átirányítási URI-t, a megfelelő formátumban kell lennie:
 
 `msauth://packagename/Base64UrlencodedSignature`
 
-például: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
+ex: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
 A regisztráció segítségével regisztrálhatja az átirányítási URI-t a [az Azure portal](https://portal.azure.com/). További információ az Azure AD-alkalmazás regisztrációjának: [integrálása az Azure Active Directoryval](active-directory-how-to-integrate.md).
 

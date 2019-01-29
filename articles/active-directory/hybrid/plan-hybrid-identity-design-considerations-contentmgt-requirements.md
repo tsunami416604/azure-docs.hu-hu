@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 74efc23cd5f0f840e5b2c1e597059295765f45ea
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6154262d7b412a0a4049c2d9456d7ae53ef01ca8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468658"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183322"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás a kezelési követelmények meghatározása
 A vállalkozása számára a kezelési követelmények ismertetése közvetlen hatással lehet a döntést a melyik hibrid identitáskezelési megoldás használata. Több eszköz és a saját eszközeiket használják a felhasználók képességét elterjedése ([BYOD](https://aka.ms/byodcg)), a vállalat a saját adatok kell védelme, de azt is kell érintetlenül felhasználók adatait. Általában akkor, amikor egy felhasználó a saját eszköz rendelkezik, azok is szükség lehet, hogy a rendszer a szerint az alkalmazás által használt váltakozó több hitelesítő adatok. Fontos különbséget tenni a tartalmat a saját hitelesítő adataival, és a vállalati hitelesítő adatok használatával létrehozottakra használatával hoztak. Az identitáskezelési megoldás tudnia kell interakcióba felhőalapú szolgáltatások zökkenőmentes élményt biztosít a végfelhasználók számára, miközben adataikhoz biztosítására, és növelje az adatszivárgás elleni védelem. 

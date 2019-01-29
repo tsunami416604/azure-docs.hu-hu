@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 3096fa77913ef1dd4eb491b3c0e5d7fa236f6c65
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0a8a229beab03dd8cb26d9cfb9c3b945059d6f70
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020886"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164945"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolási tevékenységek teljesítményéhez és finomhangolási útmutató
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-copy-activity-performance.md)
 > * [Aktuális verzió](copy-activity-performance.md)
 
@@ -241,7 +241,13 @@ Javasoljuk, hogy ezen lépések a Data Factory szolgáltatás másolási tevéke
 
 1. **Megállapítja az alapértékeket**. A fejlesztési fázis során a folyamat tesztelése a másolási tevékenység használatával egy reprezentatív mintát ellen. Végrehajtási részleteit és a következő teljesítményjellemzők gyűjtése [másolása figyelését](copy-activity-overview.md#monitoring).
 
-2. **Diagnosztika és a teljesítmény optimalizálása**. Ha a teljesítmény megfigyelte nem felel meg az elvárásainak, azonosíthatja a szűk keresztmetszeteket szeretné. Távolítsa el, vagy a szűk keresztmetszetek elkerülése érdekében a teljesítmény optimalizálásával majd. Teljesítmény diagnosztikai teljes leírását ez a cikk nem foglalkozik, de Íme néhány gyakori szempontok:
+2. **Diagnosztika és a teljesítmény optimalizálása**. Ha a teljesítmény megfigyelte nem felel meg az elvárásainak, azonosíthatja a szűk keresztmetszeteket szeretné. Távolítsa el, vagy a szűk keresztmetszetek elkerülése érdekében a teljesítmény optimalizálásával majd. 
+
+    Bizonyos esetekben is megjelenik egy "**teljesítmény-finomhangolási tippek**" a szakasz a [másolási tevékenység lap figyelés](copy-activity-overview.md#monitor-visually), amely közli, hogy a szűk keresztmetszetet azonosított, és végigvezeti Önt a másolási növelése érdekében hogyan Másolás esetben átviteli sebességet.
+
+    **Példa: másolja az Azure SQL DB-be a teljesítmény-finomhangolási tippek** ![másolja a figyelés a teljesítmény-finomhangolási tippek](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+    Teljesítmény diagnosztikai teljes leírását ez a cikk nem foglalkozik, de Íme néhány gyakori szempontok:
 
    * Teljesítménnyel kapcsolatos szolgáltatások:
      * [Párhuzamos másolása](#parallel-copy)
@@ -392,8 +398,8 @@ Ebben az esetben az adattömörítés bzip2 előfordulhat, hogy lehet lelassítj
 Teljesítmény figyelése és hangolása hivatkozásokat a támogatott adattárak némelyikét a következő:
 
 * Az Azure Storage (beleértve a Blob storage és Table storage): [Az Azure Storage skálázhatósági célértékét](../storage/common/storage-scalability-targets.md) és [Azure Storage teljesítmény és méretezhetőség – ellenőrzőlista](../storage/common/storage-performance-checklist.md)
-* Az Azure SQL Database: Is [figyelemmel kísérni a teljesítményét](../sql-database/sql-database-single-database-monitor.md) , és ellenőrizze az adatbázis tranzakciós egységek (DTU) százalékos aránya
-* Az Azure SQL Data warehouse-bA: A funkció mérik az adattárházegységek (Dwu); Lásd: [kezelés számítási teljesítményt az Azure SQL Data Warehouse (áttekintés)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure SQL Database: Is [figyelemmel kísérni a teljesítményét](../sql-database/sql-database-single-database-monitor.md) , és ellenőrizze az adatbázis tranzakciós egységek (DTU) százalékos aránya
+* Azure SQL Data Warehouse: A funkció mérik az adattárházegységek (Dwu); Lásd: [kezelés számítási teljesítményt az Azure SQL Data Warehouse (áttekintés)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Az Azure Cosmos DB: [Az Azure Cosmos DB teljesítményszintek](../cosmos-db/performance-levels.md)
 * A helyszíni SQL Server: [Figyelése és a teljesítmény hangolása](https://msdn.microsoft.com/library/ms189081.aspx)
 * A helyi fájlkiszolgáló: [Teljesítmény-finomhangolási fájlkiszolgálók](https://msdn.microsoft.com/library/dn567661.aspx)

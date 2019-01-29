@@ -12,12 +12,12 @@ ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 12/07/2018
-ms.openlocfilehash: 6f86312ee1d11e5ac4c7626f5fd4c8223dac8b52
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e6b24e89297b875d0c4547ffe3200b1d5e2e58c2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744700"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161529"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Gyors útmutató: Golang használata Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -29,11 +29,9 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- A [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md) a számítógép nyilvános IP-cím beállítva.
-
 - Golang és az operációs rendszer telepítve van a kapcsolódó szoftvereket:
 
-    - **macOS**: Telepítse a homebrew-val és a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+    - **MacOS**: Telepítse a homebrew-val és a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
     - **Ubuntu**:  Telepítse a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
     - **Windows**: Telepítse a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).    
 

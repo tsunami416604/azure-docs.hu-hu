@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 5a8e43934393c2e6a97b81809284781a5c207e41
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b4b49cd679ee5d770696b4fa5cc29ebdd908cecf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816344"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093121"
 ---
 # <a name="application-types-in-v10"></a>Alkalmazástípusok az 1.0-s verzió
 
@@ -33,11 +33,11 @@ A következő ábra szemlélteti a forgatókönyvek és az alkalmazástípusok, 
 
 Az Azure AD által támogatott öt elsődleges alkalmazás-forgatókönyvek a következők:
 
-- **[Egyoldalas alkalmazás (SPA)](single-page-application.md)**: egy felhasználónak szüksége van a bejelentkezni egy egyoldalas alkalmazás Azure AD által védett.
-- **[Webes alkalmazás webböngészőben](web-app.md)**: egy felhasználónak jelentkezzen be az Azure AD által védett webalkalmazás van szüksége.
-- **[Webes API a natív alkalmazás](native-app.md)**: egy natív alkalmazás egy telefonon, táblagépen vagy számítógépen futó kell hitelesíteni a felhasználót, hogy a webes API-k az Azure AD által védett erőforrások beolvasása.
-- **[Webes API-webalkalmazás](web-api.md)**: webalkalmazás kell-erőforrásokat az Azure AD által biztonságossá tett webes API.
-- **[Webes API-hoz démon vagy a server application](service-to-service.md)**: egy démon, alkalmazás vagy a webes felhasználói felület nélkül kiszolgálói alkalmazás kell-erőforrásokat az Azure AD által biztonságossá tett webes API.
+- **[Egyoldalas alkalmazás (SPA)](single-page-application.md)**: A felhasználónak kell jelentkezzen be egy egyoldalas alkalmazás Azure AD által védett.
+- **[Webes alkalmazás webböngészőben](web-app.md)**: A felhasználónak kell egy Azure AD által védett webes alkalmazásba való bejelentkezés.
+- **[Webes API a natív alkalmazás](native-app.md)**: Egy natív alkalmazás egy telefonon, táblagépen vagy számítógépen futó kell hitelesíteni a felhasználót, hogy a webes API-k az Azure AD által védett erőforrások beolvasása.
+- **[Webes API-webalkalmazás](web-api.md)**: Egy webalkalmazás kell kapnia az erőforrások az Azure AD által biztonságossá tett webes API.
+- **[Webes API-hoz démon vagy a server application](service-to-service.md)**: A démon alkalmazások vagy kiszolgálói alkalmazás webes felhasználói felület nélkül kell erőforrások lekérése az Azure AD által védett webes API-hoz.
 
 Kövesse a hivatkozásokat tudjon meg többet a különböző típusú alkalmazás, és ismerje meg a magas szintű forgatókönyveket, a kód használatának megkezdése előtt. Emellett tudhat meg kell tudni az egy adott alkalmazást, amely az 1.0-s verziójú végpont vagy a v2.0-végpont írásakor különbségekről.
 

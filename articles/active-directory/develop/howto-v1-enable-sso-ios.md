@@ -6,7 +6,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
@@ -15,14 +15,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: de0d8d5fb538619e94595ef322eeb80c4de743be
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6c68070a9b94cf867f8c1c930874a5f02a685294
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426288"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096738"
 ---
-# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: az IOS-es adal-t használó alkalmazások közötti SSO engedélyezése
+# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: IOS-es adal-t használó alkalmazások közötti SSO engedélyezése
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -36,7 +36,7 @@ Ebben az útmutatóban a következőkre vonatkozik:
 
 * Az Azure Active Directory (Azure Active Directory)
 * Azure Active Directory B2C
-* Az Azure Active Directory B2B
+* Azure Active Directory B2B
 * Azure Active Directory feltételes hozzáférés
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -252,7 +252,7 @@ A követendő lépések a következők:
 3. Regisztrálás egy URL-sémát.
 4. Az info.plist fájlban adja hozzá egy engedélyt.
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>1. lépés: Az alkalmazás átvitelszervező-mód engedélyezése
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>1. lépés: Az alkalmazás a közvetítő mód engedélyezése
 
 Lehetővé teszi, hogy az alkalmazás a közvetítő használata be van kapcsolva a "környezet" vagy a kezdeti beállítás és a hitelesítési objektum létrehozásakor. Ehhez beállítás a hitelesítő adatok típusa a kódban:
 
@@ -262,7 +262,7 @@ Lehetővé teszi, hogy az alkalmazás a közvetítő használata be van kapcsolv
 ```
 A `AD_CREDENTIALS_AUTO` beállítás lehetővé teszi az SDK-t hívja a közvetítőn próbál `AD_CREDENTIALS_EMBEDDED` megakadályozza, hogy az SDK hívása a közvetítőn.
 
-#### <a name="step-2-registering-a-url-scheme"></a>2. lépés: Egy URL-sémát regisztrálása
+#### <a name="step-2-registering-a-url-scheme"></a>2. lépés: Regisztrálás egy URL-séma
 
 Az identity platform indítja el a közvetítő, és visszatér a vezérlő az alkalmazásnak URL-címeket használ. Befejezés adott adatváltási egy URL-sémát, az identity platform ismert lesz az alkalmazás regisztrálva van szükség. Ez lehet kívül más alkalmazás rendszerek lehet, hogy korábban már regisztrált az alkalmazását.
 
@@ -305,7 +305,7 @@ Támogatás Tanúsítványalapú hitelesítés egy második "msauth" regisztrál
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
-például: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
+ex: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
 #### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>4. lépés: Egy konfigurációs paraméter hozzáadása az alkalmazáshoz
 

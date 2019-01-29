@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: eab9f13ad41d4109bb44ae196a7f8e2177886532
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 772070b73f1d2dcf83d15283f6be70ab4fef148b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994198"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155665"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
@@ -37,10 +37,10 @@ A szolgáltatás általánosan elérhető Azure-régióban érhető el. Lehet, h
 
 Régiók                                        | Rendelkezésre állási?                                 | Támogatott verziók
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Az összes általánosan elérhető globális Azure-régiók](https://azure.microsoft.com/regions/)     | Mindenki számára elérhető   | 2018-04-02 2018-02-01, 2017-12-01, 2017-08-01, 2017-04-02,
+[Az összes általánosan elérhető globális Azure-régiók](https://azure.microsoft.com/regions/)     | Mindenki számára elérhető   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
-[Az Azure China](https://www.azure.cn/)                                                           | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
-[Az Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
+[Azure China](https://www.azure.cn/)                                                           | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
 
 Ez a táblázat frissül, ha nincsenek a szolgáltatásfrissítések, és vagy új támogatott verziók érhetők el
 
@@ -468,7 +468,7 @@ PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
 Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
-A Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
+Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
     
 
@@ -491,7 +491,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * Segítségre van szüksége a szolgáltatáshoz, hozzon létre egy támogatási probléma az Azure Portalon a virtuális gép, ahol Ön nem sikerült beolvasni a metaadatok válasz hosszú újrapróbálkozás után 
 9. Kérelem túllépte az időkorlátot a szolgáltatás a hívások kapok?
    * Metaadatok hívások kell tenni a hálózati kártyát a virtuális gép hozzárendelt elsődleges IP-címről, emellett abban az esetben, ha módosította az ott kell lenniük egy útvonalat a hálózati kártya ki 169.254.0.0/16 cím.
-10. A virtuális gép méretezési csoportban lévő címkék frissítése, de azok nem jelennek meg a virtuális gépek ellentétben a példányok?
+10. Saját virtuálisgép-méretezési csoportban lévő címkék frissítése, de azok nem jelennek meg a virtuális gépek ellentétben a példányok?
    * Jelenleg a ScaleSets címkék csak akkor látható, a virtuális Gépet egy újraindítás vagy rendszerképét alaphelyzetbe állítani/egy lemezt, vagy módosítsa a példány a. 
 
    ![Példány metaadatok támogatása](./media/instance-metadata-service/InstanceMetadata-support.png)

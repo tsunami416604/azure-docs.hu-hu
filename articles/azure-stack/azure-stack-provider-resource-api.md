@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: c6f17fd4cc225b7d4ce60d38bf2abcabf12a40c5
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1963708fb05feb7797bc8b4df024d16175687b17
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945586"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177900"
 ---
 # <a name="provider-resource-usage-api"></a>Szolgáltatói erőforrás-használati API
 Az előfizetési időszak *szolgáltató* a szolgáltatás-rendszergazda, és minden olyan delegált szolgáltatók vonatkozik. Az Azure Stack-operátorok és a delegált szolgáltatók használhatják a szolgáltatói használati API közvetlen bérlők, a használati adatok megtekintéséhez. Például az ábrán látható módon csatlakoztatta, P0 teljesítményszintű meghívhatja a szolgáltató API-t a P1 a használati adatok lekérése, és P2 a közvetlen használatának és P1 meghívhatja P3 és P4 szintű használati információt.
@@ -86,9 +86,9 @@ meterID1",
 | *subscriptionId* |Az Azure Stack felhasználói előfizetés azonosítója. |
 | *usageStartTime* |(UTC) kezdési időpontja a használati gyűjtőhöz, amelyhez a használat összesítés tartozik.|
 | *usageEndTime* |A használati gyűjtőhöz, amelyhez a használat összesítés tartozik befejezési időpontja (UTC). |
-| *instanceData* |Példány adatai (a új formátum) kulcs-érték párt:<br> *resourceUri*: teljesen minősített erőforrás-azonosító, amely tartalmazza az erőforráscsoportok és a példány nevét. <br> *hely*: a régió, amelyben ez a szolgáltatás futtatták. <br> *a címkék*: a felhasználó által megadott erőforrás-címkék. <br> *További információ*: további részleteit az erőforrást, a felhasznált, például az operációs rendszer verziója vagy a kép típusát. |
+| *instanceData* |Példány adatai (a új formátum) kulcs-érték párt:<br> *resourceUri*: Teljesen minősített erőforrás-azonosító, amely tartalmazza az erőforráscsoportok és a példány nevét. <br> *Hely*: A régió, amelyben ez a szolgáltatás futtatták. <br> *A címkék*: A felhasználó által megadott erőforrás-címkék. <br> *additionalInfo*: Adja meg az erőforrás a felhasznált, például az operációs rendszer verziója vagy a kép kapcsolatos további részletekért. |
 | *Mennyiség* |Ezen az időn a következő erőforrás-használat mennyisége. |
-| *MeterId* |A felhasznált erőforrás egyedi azonosítója (más néven *ResourceID*). |
+| *meterId* |A felhasznált erőforrás egyedi azonosítója (más néven *ResourceID*). |
 
 
 ## <a name="retrieve-usage-information"></a>Használati adatok lekérése

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f25483d5ad4a42e7c4ff77bb2124c20d1fda2113
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 66c6a565fff81e1c0e39075502a6a7d3d8ffa7a6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885294"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162293"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Oktatóanyag: Terheléselosztó Linux rendszerű virtuális gépek az Azure-ban magas rendelkezésre állású alkalmazás létrehozása az Azure CLI-vel
 
@@ -148,7 +148,7 @@ az network nsg rule create \
     --destination-port-range 80
 ```
 
-Virtuális hálózati adapterek (NIC-k) az [az network nic create](/cli/azure/network/nic#az_network_nic_create) paranccsal hozhatók létre. Az alábbi példa három virtuális NIC-t hoz létre. (Egy virtuális NIC-t minden virtuális géphez, amelyet létre fog hozni az alkalmazáshoz a következő lépések során). Bármikor létrehozhat további virtuális NIC-ket és virtuális gépeket, és hozzáadhatja őket a terheléselosztóhoz:
+Virtuális hálózati adapterek (NIC-k) az [az network nic create](/cli/azure/network/nic) paranccsal hozhatók létre. Az alábbi példa három virtuális NIC-t hoz létre. (Egy virtuális NIC-t minden virtuális géphez, amelyet létre fog hozni az alkalmazáshoz a következő lépések során). Bármikor létrehozhat további virtuális NIC-ket és virtuális gépeket, és hozzáadhatja őket a terheléselosztóhoz:
 
 ```bash
 for i in `seq 1 3`; do

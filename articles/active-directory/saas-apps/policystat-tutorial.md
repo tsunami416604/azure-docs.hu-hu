@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: af5eb0f1-1c8e-4809-b0c4-8ccfb915ca42
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: f8dad5e3b5bfd908e8a3b3c1f1bcc78dd689757a
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 456d66b87f626391f6e81ffd7be244381f0978b3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823878"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PolicyStat
 
@@ -133,7 +133,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Adja hozzá a szükséges attribútumleképezések, hajtsa végre az alábbi lépéseket:
 
-    | Attribútum neve    |   Attribútum értéke |
+    | Attribútum neve    |   Hodnota atributu |
     |------------------- | -------------------- |
     | egyedi azonosítója | ExtractMailPrefix([mail]) |
     

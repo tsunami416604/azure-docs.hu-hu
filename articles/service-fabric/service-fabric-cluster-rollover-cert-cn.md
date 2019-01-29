@@ -1,6 +1,6 @@
 ---
-title: Egy Azure Service Fabric-fürt tanúsítvány helyettesítő |} Microsoft Docs
-description: Ismerje meg, hogyan helyettesítő a Service Fabric-fürt tanúsítvány által azonosított a tanúsítvány egyszerű neve.
+title: Váltás az Azure Service Fabric-fürt tanúsítványt |} A Microsoft Docs
+description: Ismerje meg, hogyan váltani egy Service Fabric-fürt tanúsítvány által azonosított a tanúsítvány köznapi nevét.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: df919e23fd608cdf41e93844f13342ca00657adb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 72640a4d917ddb2485199f0df1fead8b0bdcd1c9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205144"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192966"
 ---
-# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>A Service Fabric-fürt tanúsítvány manuális váltása
-Amikor a Service Fabric-fürt tanúsítvány hamarosan lejár, meg kell a tanúsítványt.  Tanúsítványok leváltása használata egyszerű, ha a fürt [állítsa be a tanúsítvány köznapi név alapján akár](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (helyett ujjlenyomat).  Egy új tanúsítvány kérése a hitelesítésszolgáltatótól, új lejárati dátummal.  Önaláírt tanúsítványokat, beleértve a jönnek létre, ha az Azure portálon, a Service Fabric-fürt üzembe helyezése nem támogatottak.  Az új tanúsítvány köznapi neve megegyezik a régebbi tanúsítvánnyal kell rendelkeznie. 
+# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Manuálisan vihetők át a Service Fabric-fürt tanúsítvány
+Ha egy Service Fabric-fürt tanúsítvány hamarosan lejár, akkor frissítenie kell a tanúsítványt.  Tanúsítványváltás az egyszerű, ha a fürt [beállított tanúsítvány köznapi név alapján](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (helyett ujjlenyomat).  Egy új tanúsítvány beszerzése egy hitelesítésszolgáltatótól, új lejárati dátummal.  Önaláírt tanúsítványok nem termelési Service Fabric-fürtök az Azure portal fürt létrehozásának munkafolyamata során létrehozott tanúsítványokat támogatása el. Az új tanúsítvány köznapi neve megegyezik a régebbi tanúsítványt kell rendelkeznie. 
 
-A következő parancsfájl feltölt egy új tanúsítvány kulcstároló, és ezután telepíti a tanúsítványt a virtuálisgép-méretezési csoport.  A Service Fabric-fürt automatikusan a legújabb lejárati dátummal a tanúsítványt használja.
+Service Fabric-fürt automatikusan a deklarált tanúsítványt használja, és a egy további, a jövőbeli lejárati dátumot; Ha egynél több ellenőrzése a tanúsítvány telepítve van a gazdagépen. Ajánlott eljárás, hogy az Azure-erőforrások kiépítése egy Resource Manager-sablon. Nem éles környezetben a következő parancsfájl töltse fel egy új tanúsítványt a key vault segítségével, és ezután telepíti a tanúsítványt a virtuálisgép-méretezési csoportot: 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -79,7 +79,10 @@ $vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $Sour
 Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose
 ```
 
-További tudnivalókért olvassa el a következő:
-* További tudnivalók [fürt biztonsági](service-fabric-cluster-security.md).
-* [Fürt tanúsítványok frissítése és kezelése](service-fabric-cluster-security-update-certs-azure.md)
+>[!NOTE]
+> Kiszámítja a virtuális gép méretezési beállítása titkos kulcsok nem támogatják az erőforrás-azonosító a két külön titkos adatait, mivel minden titkos kulcsot egy verzióval ellátott egyedi erőforrást. 
+
+További tudnivalókért olvassa el a következőket:
+* Ismerje meg [biztonsági fürt](service-fabric-cluster-security.md).
+* [Frissítse és fürttanúsítványok kezelése](service-fabric-cluster-security-update-certs-azure.md)
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 175fa625a94626cde4d782abd1e9629530cab8b4
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: aeffe172fd422f18e2828c5274e9a2ed13cc546a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408522"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103360"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>A kimenő forgalmat az Azure Kubernetes Service (AKS) egy statikus nyilvános IP-cím használata
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és használhat egy statikus nyilváno
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
-Emellett az Azure CLI 2.0.46 verziójára van szükség, vagy később telepített és konfigurált. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+Emellett az Azure CLI 2.0.46-os vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
 ## <a name="egress-traffic-overview"></a>Kimenő adatforgalom áttekintése
 
@@ -63,7 +63,7 @@ Az IP-cím jelenik meg, ahogyan az a következő sűrített példához kimenet:
     "ipAddress": "40.121.183.52",
     [..]
   }
-````
+```
 
 Később a nyilvános IP cím használatával lekérheti a [az network public-ip list] [ az-network-public-ip-list] parancsot. Adja meg a csomópont erőforráscsoport nevét, és ezután lekérdezi a *IP-cím* az alábbi példában látható módon:
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52af6051b4534ba65b4822205cb5395a59ef9d6a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c706dbd4536b9c75281500ace6f02db00ff2f95d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259964"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095519"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -36,7 +36,7 @@ A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó k�
 
 A biztonsági szabályzatokat a biztonsági javaslatokkal kap az Azure Security Centerben. Segít azonosítani a potenciális biztonsági réseket és elhárítani a fenyegetéseket az azoknak való megfelelés figyelése Juthat az Önnek legmegfelelőbb lehetőség meghatározásával kapcsolatos további információkért lásd a [beépített biztonsági házirendek](security-center-policy-definitions.md).
 
-Ha engedélyezi a Security Center, a Security Center beépített biztonsági házirend, egy beépített kezdeményezés a kategóriában a Security Center Azure Policy is megjelenik. A beépített intitiative automatikusan regisztrálva a Security Center előfizetéseken (ingyenes vagy Standard szinten). A beépített kezdeményezésére csak naplózási házirendeket tartalmaz. 
+Ha engedélyezi a Security Center, a Security Center beépített biztonsági házirend, egy beépített kezdeményezés a kategóriában a Security Center Azure Policy is megjelenik. A beépített kezdeményezés automatikusan regisztrálva a Security Center előfizetéseken (ingyenes vagy Standard szinten). A beépített kezdeményezésére csak naplózási házirendeket tartalmaz. 
 
 
 ### <a name="management-groups"></a>Felügyeleti csoportok
@@ -121,7 +121,7 @@ A beépített kezdeményezés rendelkezik minden alapértelmezés szerint enged�
 A következő példákban cserélje le ezeket a változókat:
 
 - **{hatókör}**  adja meg a felügyeleti csoport nevét, vagy az előfizetés lépnek életbe a szabályzatot.
-- **{poicyAssignmentName}**  adja meg a [a megfelelő szabályzat-hozzárendelés neve](#policy-names).
+- **{policyAssignmentName}**  adja meg a [a megfelelő szabályzat-hozzárendelés neve](#policy-names).
 - **a(z) {name}**  adja meg a nevét, vagy a rendszergazda a házirend-módosítások jóváhagyó neve.
 
 Ez a példa bemutatja, hogyan rendelje hozzá a beépített a Security Center-kezdeményezéshez egy előfizetést vagy a felügyeleti csoport
@@ -212,7 +212,7 @@ Ez a példa bemutatja, hogyan-hozzárendelés eltávolítása:
 |Biztonsági konfigurációk |Az Azure Security Center az operációs rendszer biztonsági réseinek figyelése |systemConfigurationsMonitoringEffect| 
 |Endpoint protection (Végpontok védelme) |Az Azure Security Centerben a végpontok hiányzó védelmének monitorozása |endpointProtectionMonitoringEffect |
 |Disk encryption (Lemeztitkosítás) |Az Azure Security Center titkosítatlan Virtuálisgép-lemezek monitorozása |diskEncryptionMonitoringEffect|
-|Sebezhetőségi felmérés |Virtuális gépek biztonsági réseinek figyelése az Azure Security Centerben |vulnerabilityAssesmentMonitoringEffect|
+|Sebezhetőségi felmérés |Virtuális gépek biztonsági réseinek figyelése az Azure Security Centerben |vulnerabilityAssessmentMonitoringEffect|
 |Web application firewall (Webalkalmazási tűzfal) |Az Azure Security Center nem védett webalkalmazás figyelése |webApplicationFirewallMonitoringEffect |
 |Next generation firewall (Új generációs tűzfal) |Az Azure Security Center nem védett hálózati végpontok figyelése| |
 

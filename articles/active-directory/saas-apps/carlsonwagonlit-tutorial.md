@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Carlson Wagonlit utazási |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az Carlson Wagonlit utazási |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Carlson Wagonlit között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 2745e165-94ab-43b1-970a-4547b4e5b501
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: jeedes
-ms.openlocfilehash: b1854b8e2c05fb2bcc5bd864c9ed8049250743b8
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 564f78b28be96209012542fd0d2e4de94872e583
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054114"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188076"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>Oktatóanyag: Azure Active Directory-integráció az Carlson Wagonlit utazás
+# <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>Oktatóanyag: Az Azure Active Directory integrációja az Carlson Wagonlit utazás
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Carlson Wagonlit utazási integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása Carlson Wagonlit utazási, a következő elemek szükségesek:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Carlson Wagonlit utazási egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD-be Carlson Wagonlit utazási integráció konfigurálásához, hozz�
 
 **Carlson Wagonlit utazási hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -123,7 +123,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 6. Az egyszeri bejelentkezés konfigurálása **Carlson Wagonlit utazási** oldalon kell küldenie a letöltött **metaadatainak XML** való [Carlson Wagonlit utazási támogatási csapatának](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
@@ -160,7 +160,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-carlson-wagonlit-travel-test-user"></a>Carlson Wagonlit utazási tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű Carlson Wagonlit utazás a felhasználó hoz létre. Együttműködve [Carlson Wagonlit utazási támogatási csapatának](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html) a felhasználók hozzáadása az Carlson Wagonlit utazási platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy Britta Simon nevű Carlson Wagonlit utazás a felhasználó hoz létre. Együttműködve [Carlson Wagonlit utazási támogatási csapatának](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html) a felhasználók hozzáadása az Carlson Wagonlit utazási platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -192,7 +192,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -202,7 +202,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

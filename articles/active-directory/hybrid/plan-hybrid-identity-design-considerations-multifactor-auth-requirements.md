@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a5fa005741d0ac320badc12c908fde3991291857
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 46101ccf5eaf47a29bf01c7adcac989cfe2cc638
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311401"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167393"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás a multi-factor authentication követelményeinek meghatározása
 A világon a mobilitás, a felhasználói adatokat és alkalmazásokat a felhőben, és bármilyen eszközről Ez az információ biztonságossá tétele vált a kiemelkedő.  Minden nap van egy új főcíme kapcsolatos biztonsági incidensek.  Bár a nincs garancia arra, ilyen adatszivárgás elleni, a többtényezős hitelesítés, ezeket az adatszivárgás megakadályozása érdekében biztonsági réteget biztosít.

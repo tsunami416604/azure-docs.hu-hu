@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 42303177-9566-48ed-8abb-279fcf1e6ddb
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: brandwe
-ms.openlocfilehash: 89f2a4058006687fbe64ec64d98659e38f93f618
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 801da78de493b55655819ac16a9184d04a356786
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980576"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095974"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása iOS-alkalmazásból
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API meghívása iOS-alkalmazások
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -51,7 +51,7 @@ Első lépésként végre kell hajtania az alábbi lépéseket:
 > [!TIP]
 > Próbálja ki a [fejlesztői portált](https://identity.microsoft.com/Docs/iOS), amellyel pár perc alatt üzembe helyezheti az Azure AD-t. A fejlesztői portál végigvezeti az alkalmazás regisztrációjának és az Azure AD a kódba való integrálásának folyamatán. Amikor elkészült, rendelkezni fog egy egyszerű alkalmazással, amely el tudja végezni a felhasználók hitelesítését a bérlőn, valamint egy olyan háttérrendszerrel, amely képes a hozzáférési jogkivonatok fogadására és érvényesítésére.
 
-## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>1. lépés: Az iOS-hez használt átirányítási URI meghatározása
+## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>1. lépés: Határozza meg, mely az átirányítási URI-ja iOS-hez
 
 Ahhoz, hogy alkalmazása bizonyos egyszeri bejelentkezéses forgatókönyvek esetében biztonságosan induljon, létre kell hoznia egy megadott formátumú *átirányítási URI-t*. Az átirányítási URI használatával biztosítható, hogy a jogkivonatokat pontosan az az alkalmazás kapja meg, amely kérte őket.
 
@@ -68,7 +68,7 @@ A rövid útmutatóban szereplő kódhoz kapcsolódó példa:
 
 ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
-## <a name="step-2-register-the-directorysearcher-application"></a>2. lépés: A DirectorySearcher alkalmazás regisztrálása
+## <a name="step-2-register-the-directorysearcher-application"></a>2. lépés: A DirectorySearcher alkalmazás regisztrálása
 
 Ahhoz, hogy az alkalmazás jogkivonatokat kérhessen le, regisztrálnia kell az Azure AD-bérlőjében, valamint engedélyt kell biztosítani neki az Azure AD Graph API eléréséhez.
 
@@ -82,7 +82,7 @@ Ahhoz, hogy az alkalmazás jogkivonatokat kérhessen le, regisztrálnia kell az 
 6. A regisztráció befejeztével az Azure AD egy egyedi alkalmazásazonosítót rendel hozzá az alkalmazáshoz. Erre az értékre szüksége lesz a következő szakaszokban, ezért másolja ki az alkalmazás lapjáról.
 7. A**Beállítások** lapon válassza a **Szükséges engedélyek > Hozzáadás > Microsoft Graph** lehetőséget, majd a **Delegált engedélyek** területen adja hozzá a **Címtáradatok olvasása** engedélyt. Ez az engedély lehetővé teszi az alkalmazás számára a felhasználók lekérdezését az Azure AD Graph API-n keresztül.
 
-## <a name="step-3-install-and-configure-adal"></a>3. lépés: Az ADAL telepítése és konfigurálása
+## <a name="step-3-install-and-configure-adal"></a>3. lépés: Telepítse és konfigurálja az adal-t
 
 Most, hogy már van egy alkalmazása az Azure AD-ben, telepítheti az ADAL-t, és megírhatja az identitással kapcsolatos kódját. Ahhoz, hogy az ADAL kommunikálhasson az Azure AD-vel, meg kell adnia bizonyos információkat az alkalmazásregisztrációról.
 
@@ -115,7 +115,7 @@ Most, hogy már van egy alkalmazása az Azure AD-ben, telepítheti az ADAL-t, é
     * A `clientId` az alkalmazás portálról kimásolt ügyfél-azonosítója.
     * A `redirectUri` a portálon regisztrált átirányítási URI.
 
-## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>4. lépés: Jogkivonatok lekérése az Azure AD-ből az ADAL használatával
+## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>4. lépés: Adal-t használó tokenekhez Azure AD-ből való
 
 Az ADAL mögött álló alapelv az, hogy valahányszor az alkalmazásnak szüksége van egy hozzáférési jogkivonatra, egyszerűen meghívja a `+(void) getToken : ` completionBlockot, a többit pedig az ADAL végzi el.
 

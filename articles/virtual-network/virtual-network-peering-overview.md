@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 348a37c4b2d23d7c58e0599b4717b97e83b683ea
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 6bb075857d67885d968b495cc8d545af9994eaf0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081534"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169314"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -73,7 +73,7 @@ A meg kíván győződni a virtuális hálózatok közötti társviszony-létes�
 
 A virtuális társhálózatokban lévő virtuális gépek kapcsolatának hibaelhárításához használhatja a Network Watcher [kapcsolat-ellenőrzési funkcióját](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A kapcsolat ellenőrzése során megtekintheti az adatforgalmat a forrás és a cél virtuális gépek hálózati adapterei között.
 
-[A virtuális hálózatok közötti Társviszony problémák troucleshooter is megpróbálhatja](https://support.microsoft.com/help/4486956/troubleshooter-for-virtual-network-peering-issues)
+Megpróbálhatja a [virtuális hálózati társviszony-létesítési hibák elhárítója](https://support.microsoft.com/help/4486956/troubleshooter-for-virtual-network-peering-issues).
 
 ## <a name="requirements-and-constraints"></a>Követelmények és korlátozások
 

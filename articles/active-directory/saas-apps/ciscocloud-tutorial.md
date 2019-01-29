@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Cisco felhővel |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció Cisco felhővel |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Cisco felhő között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: db1cea1d-ff0a-4f0d-b5fd-50ca32702d56
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: e5d7e195a3f61d32387d1101fbb24bfa1ac8bccb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c5809426da95e2295c5bf318b6f17345002f536d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431232"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197942"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Oktatóanyag: Azure Active Directory-integráció Cisco felhővel
+# <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Oktatóanyag: Cisco Cloud az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Cisco Felhőbeli integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a Cisco felhő, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A Cisco felhőalapú egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Cisco Felhőbeli integrálása az Azure AD beállítása, hozzá kell Cisco felh
 
 **Cisco felhő hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -131,7 +131,7 @@ Ebben a szakaszban engedélyezése az Azure AD egyszeri bejelentkezés az Azure 
     | Attribútum neve | Attribútum értéke |
     | ---------------| ----------------|
     | Ország      |felhasználó.ország |
-    | Vállalati      |User.CompanyName |
+    | Vállalati      |user.companyname |
 
     a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -147,7 +147,7 @@ Ebben a szakaszban engedélyezése az Azure AD egyszeri bejelentkezés az Azure 
 
     e. Kattintson az **OK** gombra.
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
 
     ![A tanúsítvány letöltési hivatkozás](./media/ciscocloud-tutorial/tutorial_ciscocloud_certificate.png)
 
@@ -191,7 +191,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-cisco-cloud-test-user"></a>Cisco felhőalapú tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Cisco felhőben Britta Simon nevű felhasználó létrehozásához. Együttműködve [Cisco felhőalapú támogatási csapatával](mailto:cpr-ops@cisco.com) a felhasználók hozzáadása a Cisco felhőalapú platformban. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva
+Ebben a szakaszban egy Cisco felhőben Britta Simon nevű felhasználó létrehozásához. Együttműködve [Cisco felhőalapú támogatási csapatával](mailto:cpr-ops@cisco.com) a felhasználók hozzáadása a Cisco felhőalapú platformban. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -223,7 +223,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

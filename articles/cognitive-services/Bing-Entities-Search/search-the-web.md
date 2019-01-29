@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 07/06/2016
 ms.author: scottwhi
-ms.openlocfilehash: 2b3adf07a8522322434a6596475fa06c0df978e8
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: 98d624b51835f88d34ec7ffd9658e40985482498
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48813600"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181826"
 ---
 # <a name="what-is-bing-entity-search"></a>Mi a Bing Entity Search?
 
@@ -48,7 +48,7 @@ A válasz tartalmaz egy [SearchResponse](https://docs.microsoft.com/rest/api/cog
 > [!NOTE]
 > Az entitásválaszok több piacot is támogatnak, de a „helyek” típusú válaszok csak az Egyesült Államokban található vállalkozásokat támogatják. 
 
-Az `entities` mező egy [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entityanswer) objektum, amely az [Entitás](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity) objektumok listáját tartalmazza (lásd: `value` mező). A lista tartalmazhat egyetlen domináns entitást, több egyértelműsítő entitást, vagy mindkettőt. 
+Az `entities` mező egy [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) objektum, amely az [Entitás](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity) objektumok listáját tartalmazza (lásd: `value` mező). A lista tartalmazhat egyetlen domináns entitást, több egyértelműsítő entitást, vagy mindkettőt. 
 
 A domináns entitás egy olyan entitás, amelyen kívül más entitások a Bing szerint nem felelnek meg a kérelemnek (teljesen egyértelmű, hogy melyik entitás a válasz a feltett kérdésre). Ha több entitás is megfelelhet a kérelemnek, a lista több egyértelműsítő entitást tartalmaz. Ha például a kérelem egy filmes franchise általános címét tartalmazza, a lista nagy valószínűséggel egyértelműsítő entitásokat fog tartalmazni. De ha a kérelem a franchise egyik filmjének a pontos címét adja meg, a lista valószínűleg egyetlen domináns entitásból fog állni.
 

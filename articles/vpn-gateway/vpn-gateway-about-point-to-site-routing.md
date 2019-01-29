@@ -2,25 +2,17 @@
 title: Kapcsolatos Azure pont – hely Útválasztás |} A Microsoft Docs
 description: Ez a cikk segít megérteni a pont – hely VPN-útválasztás működését.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/16/2018
+ms.date: 01/28/2019
 ms.author: anzaman
-ms.openlocfilehash: 620a2bf9221bdb7c46dc36a2b3ed23d853faff35
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 486a910226db5dc7b36aaf873e7bb8115eb78805
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031715"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189646"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Tudnivalók a pont–hely VPN-útválasztásról
 
@@ -50,7 +42,7 @@ A pont – hely VPN gateway-kapcsolat ebben a példában egy virtuális hálóza
 
 * Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 192.168.0.0/24
 
-* Nem Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 192.168.0.0/24
+* Az útvonalak nem Windows-ügyfelek hozzáadva: 10.1.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Hozzáférés
 
@@ -74,13 +66,13 @@ Windows-ügyfelek hozzáférhetnek közvetlenül társviszonyban lévő virtuál
 
 * VNet3: 10.3.0.0/16
 
-* Vnet4 felé: 10.4.0.0/16
+* VNet4: 10.4.0.0/16
 
 ### <a name="routes-added"></a>Útvonalak hozzáadása
 
 * Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
-* Nem Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
+* Az útvonalak nem Windows-ügyfelek hozzáadva: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Hozzáférés
 
@@ -108,7 +100,7 @@ A Windows vagy egy másik támogatott operációs rendszer, az ügyfelek csak tu
 
 * Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 192.168.0.0/24
 
-* Nem-Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
+* Az útvonalak nem-Windows-ügyfelek hozzáadva: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Hozzáférés
 
@@ -136,7 +128,7 @@ A Windows vagy egy másik támogatott operációs rendszer ügyfelek hozzáférh
 
 * Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16
 
-* Nem-Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
+* Az útvonalak nem-Windows-ügyfelek hozzáadva: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Hozzáférés
 
@@ -162,7 +154,7 @@ Windows- és nem Windows-ügyfelek csak tudja elérni a VNet1.
 
 * Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 192.168.0.0/24
 
-* Nem-Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 192.168.0.0/24
+* Az útvonalak nem-Windows-ügyfelek hozzáadva: 10.1.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Hozzáférés
 
@@ -188,7 +180,7 @@ Windows-ügyfelek hozzáférhetnek a virtuális hálózat és a fiókiroda (Site
 
 * Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 192.168.0.0/24
 
-* Nem-Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
+* Az útvonalak nem-Windows-ügyfelek hozzáadva: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Hozzáférés
 
@@ -217,9 +209,9 @@ Ebben a példában a pont – hely VPN-átjáró kapcsolatot a VNet1 van. Vnet1 
 
 ### <a name="routes-added"></a>Útvonalak hozzáadása
 
-* Útvonalakat, adja hozzá az ügyfelek: 10.1.0.0/16, 192.168.0.0/24
+* Útvonalakat adja hozzá az ügyfelek számára: 10.1.0.0/16, 192.168.0.0/24
 
-* Nem-Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
+* Az útvonalak nem-Windows-ügyfelek hozzáadva: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Hozzáférés
 
@@ -247,9 +239,9 @@ Windows-ügyfelek hozzáférhetnek a virtuális hálózatok és helyek közötti
 
 ### <a name="routes-added"></a>Útvonalak hozzáadása
 
-* Útvonalakat, adja hozzá az ügyfelek: 10.1.0.0/16, 192.168.0.0/24
+* Útvonalakat adja hozzá az ügyfelek számára: 10.1.0.0/16, 192.168.0.0/24
 
-* Nem-Windows-ügyfelek hozzáadott útvonalak: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
+* Az útvonalak nem-Windows-ügyfelek hozzáadva: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Hozzáférés
 

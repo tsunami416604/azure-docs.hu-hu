@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Mercell |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Mercell |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Mercell között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bb94c288-2ed4-4683-acde-62474292df29
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e2ca2d4f4a93f6c4bbfdacb6f25185cd59586964
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 1763a022487f0a6b01a59156960e59a0bb8663f3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041135"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183594"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mercell"></a>Oktatóanyag: Azure Active Directory-integráció az Mercell
+# <a name="tutorial-azure-active-directory-integration-with-mercell"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Mercell
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Mercell integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Mercell az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Mercell egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a Mercell konfigurálásához hozzá kell Mercell a ka
 
 **Mercell hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -110,7 +110,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     Az a **azonosító** szövegmezőbe írja be az URL-cím: `https://my.mercell.com/`
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/mercell-tutorial/tutorial_metadataurl.png)
      
@@ -156,7 +156,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ez a szakasz célja Mercell Britta Simon nevű felhasználó létrehozásához. Mercell támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Mercell elérésére, ha még nem létezik tett kísérlet során.
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Mercell támogatási csapatának](mailto:webmaster@mercell.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Mercell támogatási csapatának](mailto:webmaster@mercell.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -188,7 +188,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -198,7 +198,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

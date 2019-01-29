@@ -7,22 +7,22 @@ author: swhite-msft
 manager: cgronlun
 ms.assetid: E8827BEB-4379-47CE-B67B-6C81AD7DAEB1
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: reference
 ms.date: 01/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: eb84c961d13c5abac7a0c9f426f099d21f034f20
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 7c3e19fd809e442d58f7cb0e6922d4e565673fe2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129743"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188932"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Frissítés a Bing webes keresési API v5 a 7-es verziója
 
 A frissítési útmutató 5-ös verzió és a Bing Web Search API 7-es verziója közötti különbségek azonosítja. Ez az útmutató segítségével azonosíthatja, hogy 7-es verzió használatához frissítenie kell az alkalmazás részei.
 
-## <a name="breaking-changes"></a>Meghibásodást okozó változások
+## <a name="breaking-changes"></a>Kompatibilitástörő változások
 
 ### <a name="endpoints"></a>Végpontok
 
@@ -39,7 +39,7 @@ A frissítési útmutató 5-ös verzió és a Bing Web Search API 7-es verziója
 
 - Az 5-ös verziójának hibakódok cseréli a következő lehetséges `code` és `subCode` értékeket.
 
-|Kód|Alkód|Leírás
+|Kód|SubCode|Leírás
 |-|-|-
 |Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|A Bing Kiszolgálóhibái adja vissza, minden alkalommal, amikor az alárendelt kód feltételek bármelyike teljesül. A válasz tartalmazza ezeket a hibákat, ha a HTTP-állapotkód: 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Letiltva|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés érvénytelen, nem. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a hiba HttpNotAllowed, 410-es HTTP-állapotkódot.
@@ -75,7 +75,7 @@ Letiltva|InvalidRequest.Blocked
 
 ### <a name="headers"></a>Fejlécek
 
-- A választható hozzáadott [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#pragma) kérés fejlécéhez. Alapértelmezés szerint a Bing gyorsítótárazott tartalmat vissza, ha elérhető. Gyorsítótárazott tartalom visszaadó megakadályozni a Bing, állítsa be a Pragma fejléc no-cache (például Pragma: no-cache).
+- A választható hozzáadott [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#pragma) kérés fejlécéhez. Alapértelmezés szerint a Bing gyorsítótárazott tartalmat ad vissza, ha van ilyen. Ha nem szeretné, hogy a Bing gyorsítótárazott tartalmat adjon vissza, állítsa a Pragma fejlécet no-cache értékre (például Pragma: no-cache).
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 

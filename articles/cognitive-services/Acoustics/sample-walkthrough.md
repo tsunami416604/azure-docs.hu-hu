@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: f5ea565e68579dfad601d1037daeb4113e3daa43
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
-ms.translationtype: HT
+ms.openlocfilehash: 7d8ba2f25bd53b407ab6860bc57163a79b7d228a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901158"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174261"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity mintaútmutató
 Ez egy Project Acoustics-mintaútmutató. A Project Acousticsról további információkat a [Project Acoustics bevezető részében](what-is-acoustics.md) talál. Ha segítségre van szüksége a Project Acoustics-csomag már meglévő Unity-projekthez való hozzáadásában, tekintse meg az [első lépéseket ismertető útmutatót](getting-started.md).
@@ -36,7 +36,7 @@ A minta egy bemutatójelenetet (**Assets/AcousticsDemo/ProjectAcousticsDemo.unit
 
 A jelenet beépítése már megtörtént, és a **Hierarchy** (Hierarchia) nézetben egy ACE-fájl van társítva az előgyártott **MicrosoftAcoustics** elemhez. 
 
-A Unity szerkesztőjének Play (Lejátszás) gombjára kattintva ellenőrizheti a jelenet hangját. Asztali számítógépen a W, A, S, D billentyűkkel és az egérrel navigálhat. Ha meg szeretné hallgatni, hogy milyen lenne a jelenet hangja az Acoustics használata nélkül, tartsa lenyomva az **R** billentyűt, amíg vörös színnel meg nem jelenik az Acoustics: Disabled (Acoustics: Letiltva) átfedő szöveg. További billentyűparancsok megtekintéséhez nyomja le az **F1** billentyűt. Mindegyik vezérlő esetében lehetőség van a jobb gombbal kattintva kijelölni, majd a bal egérgombbal kattintva végrehajtani a műveletet.
+A Unity szerkesztőjének Play (Lejátszás) gombjára kattintva ellenőrizheti a jelenet hangját. Asztali számítógépen a W, A, S, D billentyűkkel és az egérrel navigálhat. Hasonlítsa össze, hogy a jelenet úgy érzi, és anélkül Akusztika, nyomja le az **R** gombra mindaddig, amíg az átfedő szöveg változik, és a "Akusztika: Letiltva." További billentyűparancsok megtekintéséhez nyomja le az **F1** billentyűt. Mindegyik vezérlő esetében lehetőség van a jobb gombbal kattintva kijelölni, majd a bal egérgombbal kattintva végrehajtani a műveletet.
 
 ## <a name="targeting-other-platforms"></a>További célplatformok
 A minta a következő platformokhoz tartalmaz futtatási beállításokat: Windows asztali rendszer, UWP, Windows Mixed Reality, Android és Oculus Go. Alapértelmezés szerint a projekt Windows asztali rendszerre van konfigurálva. VR-célplatform esetén nyissa meg a lejátszó beállításait (**Edit (Szerkesztés) > Project Settings (Projekt beállításai) > Player (Lejátszó)**), keresse meg az **XR Settings** (XR-beállítások) elemet, majd jelölje be a **Virtual Reality Supported** (Virtuális valóság támogatása) jelölőnégyzetet.

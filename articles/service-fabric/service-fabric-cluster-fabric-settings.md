@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: fb3e61b2b43194cb550a7c87c6841e91b4025560
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a919d10bbb7def8f81e68d95c03d95309483df59
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002756"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167274"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti a Service Fabric-fürtöt, amely testre szabható a különböző fabric beállításait. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. További információkért lásd: [egy Azure-fürtön konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén, testre szabható beállítások frissítése a *ClusterConfig.json* fájl- és a egy konfigurálási frissítse a fürtön. További információkért lásd: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -49,9 +49,9 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |IgnoreCrlOfflineError|bool, alapértelmezett értéke igaz|Dinamikus|CRL offline alkalmazások vagy szolgáltatások tanúsítvány-ellenőrzés hibát figyelmen kívül kell-e. |
 |IsEnabled |Bool, alapértelmezett érték a False (hamis) |Statikus| Engedélyezi vagy letiltja a HttpApplicationGateway. HttpApplicationGateway alapértelmezés szerint le van tiltva, és ez a konfiguráció kell állítani az engedélyezéshez. |
 |NumberOfParallelOperations | Uint, alapértelmezett érték az 5000-es |Statikus|Olvasási és az http-kiszolgáló üzenetsorban közzéteendő száma. Ez vezérli, amelyeket teljesíteni tudja az HttpGateway egyidejű kérelmek száma. |
-|RemoveServiceResponseHeaders|sztring, alapértelmezett "dátum; Kiszolgáló"|Statikus|Pontosvessző / vesszővel elválasztott listája a válaszfejlécek, melyeket a rendszer eltávolítja a szolgáltatás válasza; való továbbítása előtt az ügyfél. Ha üres karakterláncot; értékre van állítva Adja át a szolgáltatás által visszaadott összes fejléc-van. azaz ne írja felül a dátum és a kiszolgáló |
+|RemoveServiceResponseHeaders|sztring, alapértelmezett "dátum; Kiszolgáló"|Statikus|Pontosvessző / vesszővel elválasztott listája a válaszfejlécek, melyeket a rendszer eltávolítja a szolgáltatás válasza; való továbbítása előtt az ügyfél. Ha üres karakterláncot; értékre van állítva Adja át a szolgáltatás által visszaadott összes fejléc-van. i.e ne írja felül a dátum és a kiszolgáló |
 |ResolveServiceBackoffInterval |Idő (másodpercben), alapértelmezett érték az 5 |Dinamikus|Adja meg az időtartam másodpercben.  Lehetővé teszi az alapértelmezett visszatartási időköz egy sikertelen újrapróbálkozás előtt oldja meg a szolgáltatási művelet. |
-|SecureOnlyMode|bool, alapértelmezett érték a hamis|Dinamikus| SecureOnlyMode: igaz: Fordított Proxy szolgáltatásokhoz, amelyek biztonságos végpontok közzététele csak továbbítja. hamis: Fordított Proxy secure/nem biztonságos végpontok kérelmeket továbbíthatja. További tudnivalókért lásd: [fordított proxy végpont lemezválasztási logika](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
+|SecureOnlyMode|bool, alapértelmezett érték a hamis|Dinamikus| SecureOnlyMode: true: Fordított Proxy szolgáltatásokhoz, amelyek biztonságos végpontok közzététele csak továbbítja. hamis: Fordított Proxy secure/nem biztonságos végpontok kérelmeket továbbíthatja. További tudnivalókért lásd: [fordított proxy végpont lemezválasztási logika](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
 |ServiceCertificateThumbprints|sztring, alapértelmezett érték a ""|Dinamikus|A vesszővel tagolt listája, amelyek a fordított proxy megbízható távoli tanúsítványok ujjlenyomatai. További tudnivalókért lásd: [fordított proxy biztonságos kapcsolatot](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>ApplicationGateway/Http/ServiceCommonNameAndIssuer
@@ -136,10 +136,10 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |EnablePartitionedQuery|bool, alapértelmezett érték a hamis|Statikus|Annak a jelzője, particionált szolgáltatások DNS-lekérdezései támogatásának engedélyezéséhez. A funkció alapértelmezés szerint ki van kapcsolva. További információkért lásd: [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md)|
 |InstanceCount|int, alapértelmezett – 1|Statikus|alapértelmezett értéke -1, ami azt jelenti, hogy nincs minden csomóponton fut-e. Beépített kell ez 1 értékűre kell beállítani, mivel nincs 53-as, jól ismert portot használ, így több példány nem lehetnek ugyanazon a gépen.|
 |IsEnabled|bool, alapértelmezett érték a hamis|Statikus|Engedélyezi vagy letiltja a nincs. Nincs alapértelmezés szerint le van tiltva, és ez a konfiguráció kell állítani az engedélyezéshez. |
-|PartitionPrefix|sztring, alapértelmezett érték a "--"|Statikus|Azt szabályozza, hogy a partíció előtag karakterlánc értékét a particionált szolgáltatások DNS-lekérdezésekre. Az érték: <ul><li>Kell RFC-kompatibilis DNS-lekérdezés részeként lesz.</li><li>Nem tartalmazhat egy pont követ, '.', mert pont zavarja a DNS-utótag viselkedés.</li><li>Nem lehet 5 karakternél hosszabb.</li><li>Nem lehet üres karakterlánc.</li><li>Ha felülbírálja a PartitionPrefix beállítást, majd PartitionSuffix felül kell bírálni, és fordítva.</li></ul>További információkért lásd: [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md).|
-|PartitionSuffix|sztring, alapértelmezett érték a ""|Statikus|Azt szabályozza, hogy a partíció utótag karakterlánc értékét a particionált szolgáltatások DNS-lekérdezésekre. Az érték: <ul><li>Kell RFC-kompatibilis DNS-lekérdezés részeként lesz.</li><li>Nem tartalmazhat egy pont követ, '.', mert pont zavarja a DNS-utótag viselkedés.</li><li>Nem lehet 5 karakternél hosszabb.</li><li>Ha felülbírálja a PartitionPrefix beállítást, majd PartitionSuffix felül kell bírálni, és fordítva.</li></ul>További információkért lásd: [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md). |
+|PartitionPrefix|sztring, alapértelmezett érték a "--"|Statikus|Azt szabályozza, hogy a partíció előtag karakterlánc értékét a particionált szolgáltatások DNS-lekérdezésekre. Az érték: <ul><li>Kell RFC-kompatibilis DNS-lekérdezés részeként lesz.</li><li>Should not contain a dot, '.', as dot interferes with DNS suffix behavior.</li><li>Nem lehet 5 karakternél hosszabb.</li><li>Nem lehet üres karakterlánc.</li><li>Ha felülbírálja a PartitionPrefix beállítást, majd PartitionSuffix felül kell bírálni, és fordítva.</li></ul>További információkért lásd: [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md).|
+|PartitionSuffix|sztring, alapértelmezett érték a ""|Statikus|Azt szabályozza, hogy a partíció utótag karakterlánc értékét a particionált szolgáltatások DNS-lekérdezésekre. Az érték: <ul><li>Kell RFC-kompatibilis DNS-lekérdezés részeként lesz.</li><li>Should not contain a dot, '.', as dot interferes with DNS suffix behavior.</li><li>Nem lehet 5 karakternél hosszabb.</li><li>Ha felülbírálja a PartitionPrefix beállítást, majd PartitionSuffix felül kell bírálni, és fordítva.</li></ul>További információkért lásd: [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md). |
 
-## <a name="eventstore"></a>Az EventStore
+## <a name="eventstore"></a>EventStore
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int, alapértelmezett érték 0|Statikus|Az EventStore szolgáltatás MinReplicaSetSize |
@@ -160,7 +160,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |RetryBackoffInterval |Idő (másodpercben), az alapértelmezett érték 3 |Dinamikus|Adja meg az időtartam másodpercben. A visszatartási időköz mielőtt újra próbálkozna a művelettel. |
 |ServiceChangePollInterval |Idő (másodpercben), alapértelmezett érték a 120 |Dinamikus|Adja meg az időtartam másodpercben. A szolgáltatás az egymást követő lekérdezések közötti időtartam az ügyfél az átjáró számára regisztrált szolgáltatás módosítási értesítések visszahívások változik. |
 
-## <a name="fabrichost"></a>Hálóbeli
+## <a name="fabrichost"></a>FabricHost
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |ActivationMaxFailureCount |Int, alapértelmezett érték 10 |Dinamikus|Ez az a maximális szám, amelynek a rendszer újra megpróbálja sikertelen aktiválása előtt központosítását. |
@@ -222,7 +222,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |CompletedActionKeepDurationInSeconds | Int, az alapértelmezett érték 604800 |Statikus| Ez a körülbelül mennyi műveleteket, amelyeket a Terminálszolgáltatások állapotban tartani. Ez is attól függ, StoredActionCleanupIntervalInSeconds; mivel a tisztítással csak munkát adott időközönként. 604800 befejezéséig 7 nap. |
-|DataLossCheckPollIntervalInSeconds|int, alapértelmezett érték 5|Statikus|Ez az, hogy a rendszer hajt végre, miközben az adatvesztés fordulhat elő, hogy az ellenőrzések között eltelt idő. Az adatok elvesztése száma kiszolgálónként belső iteráció ellenőrzött hányszor DataLossCheckWaitDurationInSeconds ez van. |
+|DataLossCheckPollIntervalInSeconds|int, alapértelmezett érték 5|Statikus|Ez az, hogy a rendszer hajt végre, miközben az adatvesztés fordulhat elő, hogy az ellenőrzések között eltelt idő. The number of times the data loss number will be checked per internal iteration is DataLossCheckWaitDurationInSeconds/this. |
 |DataLossCheckWaitDurationInSeconds|int, alapértelmezett értéke 25|Statikus|Az Összesen ennyi ideig; másodperc; hogy adatvesztés fordulhat elő, hogy a rendszer várakozik. Ez belső használatra szolgál, a StartPartitionDataLossAsync() api meghívásakor. |
 |MinReplicaSetSize |int, alapértelmezett érték 0 |Statikus|A MinReplicaSetSize FaultAnalysisService számára. |
 |PlacementConstraints | sztring, alapértelmezett érték a ""|Statikus| A PlacementConstraints FaultAnalysisService számára. |
@@ -304,7 +304,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |ActivationTimeout| Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(180)|Dinamikus| Adja meg az időtartam másodpercben. Az alkalmazás-aktiválásra időkorlátja Inaktiválás és frissítését. |
 |ApplicationHostCloseTimeout| Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus| Adja meg az időtartam másodpercben. Amikor egy önkiszolgáló Fabric kilépési észlelt riasztásértesítési folyamatokat aktiválva FabricRuntime bezár minden, a felhasználói gazdagépfolyamathoz (alkalmazásgazda) a replikán. Ez az a a bezárási művelet időkorlátja. |
 |ApplicationUpgradeTimeout| Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(360)|Dinamikus| Adja meg az időtartam másodpercben. Az alkalmazásfrissítés időkorlátja. Ha az időkorlát kisebb, mint a "ActivationTimeout" deployerhez sikertelen lesz. |
-|Üzemeltetés|sztring, alapértelmezett érték a "-H localhost:2375 -H npipe: / /"|Statikus|Service Fabric (SF) kezeli a docker-démon (kivéve a windows-ügyfélgépekről Win10 hasonlóan). Ez a konfiguráció lehetővé teszi a felhasználóknak meg kell adni a docker-démon indítása, ha egyéni argumentumok. Ha egyéni argumentumok vannak megadva, a Service Fabric nem továbbítja a Docker-motornak, kivéve a "--pidfile" argumentum. Ezért felhasználók nem szabad megadni a(z)--pidfile "argumentum az ügyfél argumentumok részeként. Emellett az egyéni argumentumok biztosítania kell, hogy a docker démon figyeli az alapértelmezett nevesített csövön a Windows (vagy Linux rendszerű Unix-tartománycsatorna) a Service Fabric kommunikálni tudnak.|
+|ContainerServiceArguments|sztring, alapértelmezett érték a "-H localhost:2375 -H npipe: / /"|Statikus|Service Fabric (SF) kezeli a docker-démon (kivéve a windows-ügyfélgépekről Win10 hasonlóan). Ez a konfiguráció lehetővé teszi a felhasználóknak meg kell adni a docker-démon indítása, ha egyéni argumentumok. Ha egyéni argumentumok vannak megadva, a Service Fabric nem továbbítja a Docker-motornak, kivéve a "--pidfile" argumentum. Ezért felhasználók nem szabad megadni a(z)--pidfile "argumentum az ügyfél argumentumok részeként. Emellett az egyéni argumentumok biztosítania kell, hogy a docker démon figyeli az alapértelmezett nevesített csövön a Windows (vagy Linux rendszerű Unix-tartománycsatorna) a Service Fabric kommunikálni tudnak.|
 |ContainerServiceLogFileMaxSizeInKb|int, alapértelmezett 32768|Statikus|A docker-tárolók által létrehozott naplófájl fájl maximális méretét.  Csak Windows.|
 |ContainerImageDownloadTimeout|int, másodpercben, alapértelmezett érték az 1200-as (20 perc)|Dinamikus|Kép letöltése előtt eltelt másodpercek száma túllépi az időkorlátot.|
 |ContainerImagesToSkip|karakterlánc, a rendszerképnevek elválasztva a függőleges vonal karaktert, alapértelmezett érték a ""|Statikus|Nem szabad törölni egy vagy több tárolórendszerképek neve.  A PruneContainerImages paraméterrel együtt használható.|
@@ -317,8 +317,8 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |DeploymentMaxFailureCount|Int, az alapértelmezett érték 20| Dinamikus|Alkalmazás központi telepítésének DeploymentMaxFailureCount alkalommal sikertelen volt, hogy a csomópont-alkalmazás központi telepítésének előtt a rendszer megpróbálja újból.| 
 |DeploymentMaxRetryInterval| Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(3600)|Dinamikus| Adja meg az időtartam másodpercben. Maximális újrapróbálkozási időköz az üzembe helyezéshez. Minden folyamatos hiba esetén az újrapróbálkozási időköznek számítjuk ki, hogy Min (DeploymentMaxRetryInterval; Folyamatos hibaszám * DeploymentRetryBackoffInterval) |
 |DeploymentRetryBackoffInterval| Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(10)|Dinamikus|Adja meg az időtartam másodpercben. Visszatartási időköz az üzembe helyezés sikertelen. Minden folyamatos üzembe helyezés hiba esetén a rendszer újra megpróbálja a MaxDeploymentFailureCount legfeljebb üzembe. Az újrapróbálkozási időköznek egy folyamatos üzembe helyezés sikertelen szorzatát és üzembe helyezési leállítási időközét. |
-|DisableContainers|bool, alapértelmezett érték a hamis|Statikus|Tárolók – DisableContainerServiceStartOnContainerActivatorOpen, amely elavult konfiguráció helyett letiltja config |
-|DisableDockerRequestRetry|bool, alapértelmezett érték a hamis |Dinamikus| Alapértelmezés szerint SF kommunikál a DD (docker dameon) "DockerRequestTimeout" az egyes neki küldött http-kérelem időtúllépés. Ha nn nem válaszol ezen idő alatt Ha a legfelső szintű művelet még remining idő SF létrehozása után újraküldi a kérelmet.  A Hyper-v-tároló; DD néha viszi, megjelenik a tároló vagy inaktiválásához sokkal több időt vesz igénybe. Ilyen esetekben nn kérelem időtúllépés történik az SF szempontjából, illetve SF újrapróbálkozik a műveletet. Egyes esetekben ez a megszokottnál több nyomás hozzáadja a nn. Ez a konfiguráció lehetővé teszi, hogy tiltsa le az újra gombra, és várjon, amíg nn válaszolni. |
+|DisableContainers|bool, alapértelmezett érték a hamis|Statikus|Tárolók – helyett DisableContainerServiceStartOnContainerActivatorOpen, amely letiltja a Config elavult konfiguráció |
+|DisableDockerRequestRetry|bool, alapértelmezett érték a hamis |Dinamikus| Alapértelmezés szerint SF kommunikál a DD (docker dameon) "DockerRequestTimeout" az egyes neki küldött http-kérelem időtúllépés. Ha nn nem válaszol ezen idő alatt SF újraküldi a kérelmet, ha a legfelső szintű művelet még hátralévő idő.  A Hyper-v-tároló; DD néha viszi, megjelenik a tároló vagy inaktiválásához sokkal több időt vesz igénybe. Ilyen esetekben nn kérelem időtúllépés történik az SF szempontjából, illetve SF újrapróbálkozik a műveletet. Egyes esetekben ez a megszokottnál több nyomás hozzáadja a nn. Ez a konfiguráció lehetővé teszi, hogy tiltsa le az újra gombra, és várjon, amíg nn válaszolni. |
 |EnableActivateNoWindow| bool, alapértelmezett érték a hamis|Dinamikus| Az aktivált folyamat a háttérben bármely konzol jön létre. |
 |EnableContainerServiceDebugMode|bool, alapértelmezett értéke igaz|Statikus|A docker-tárolók naplózás engedélyezését vagy letiltását.  Csak Windows.|
 |EnableDockerHealthCheckIntegration|bool, alapértelmezett értéke igaz|Statikus|Lehetővé teszi az integrációt a docker HEALTHCHECK események a Service Fabric rendszerállapot-jelentésbe |
@@ -499,7 +499,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |PlacementConstraintValidationCacheSize | Int, alapértelmezett érték a 10000 |Dinamikus| A tábla elhelyezési korlátozás kifejezésében gyorsítótárazását és gyors ellenőrzés használt mérete korlátozza. |
 |PlacementSearchTimeout | Idő (másodpercben), alapértelmezett érték a 0.5-ös |Dinamikus| Adja meg az időtartam másodpercben. Ha például a szolgáltatások; Keresse meg a hosszú, legfeljebb, mielőtt az eredményt visszaküldi. |
 |PLBRefreshGap | Idő (másodpercben), az alapértelmezett érték 1 |Dinamikus| Adja meg az időtartam másodpercben. Határozza meg a minimális, hogy mennyi ideig kell telnie PLB újra frissíti az állapotát. |
-|PreferredLocationConstraintPriority | Int, alapértelmezett érték 2| Dinamikus|Meghatározza a prioritását az előnyben részesített földrajzi megszorítás: 0: Rögzített; 1: Helyreállítható; 2: Optimalizálás; negatív: Kihagyás |
+|PreferredLocationConstraintPriority | Int, alapértelmezett érték 2| Dinamikus|Meghatározza a prioritását az előnyben részesített földrajzi megszorítás: 0: Rögzített; 1: Soft; 2: Optimalizálás; negatív: Kihagyás |
 |PreferUpgradedUDs|bool, alapértelmezett értéke igaz|Dinamikus|Ennek a be- és kikapcsolása logika, amely részesíti előnyben, már áthelyezése frissítése frissítési tartománnyal.|
 |PreventTransientOvercommit | Bool, alapértelmezett érték a False (hamis) | Dinamikus|Meghatározza, hogy kell PLB azonnal száma szabadul fel által kezdeményezett a kurzor erőforrásokon. Alapértelmezett; PLB kezdeményezheti kilép a, és ugyanazon a csomóponton átmeneti hozhat létre, amely az áthelyezés szükségesnél. A paraméter TRUE értékre megakadályozza, hogy ezeket milyen, overcommits és igény szerinti töredezettségmentesítés (más néven placementWithMove) tiltható le. |
 |ScaleoutCountConstraintPriority | int, alapértelmezett érték 0 |Dinamikus| Meghatározza, hogy a horizontális felskálázás száma korlátozás prioritását: 0: Rögzített; 1: Helyreállítható; negatív: Hagyja figyelmen kívül. |
@@ -548,33 +548,33 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 | --- | --- | --- | --- |
 |IsEnabled|bool, alapértelmezett érték a hamis |Statikus|Ha a szolgáltatás engedélyezve van a fürtben, vagy nem szabályozza. |
 
-## <a name="runas"></a>Futtatás mint
+## <a name="runas"></a>RunAs
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|Ezért |sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók nevét. Ez csak akkor szükséges, "Tartomanyifelhasznalo" vagy "ManagedServiceAccount" fiók típusa. Érvényes értékek: "tartomány\felhasználó" vagy "user@domain". |
+|RunAsAccountName |sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók nevét. Ez csak akkor szükséges, "Tartomanyifelhasznalo" vagy "ManagedServiceAccount" fiók típusa. Érvényes értékek: "tartomány\felhasználó" vagy "user@domain". |
 |RunAsAccountType|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók típusa. Erre azért van szükség, minden futtató szakasz érvényes értékek: "Tartomanyifelhasznalo/NetworkService/ManagedServiceAccount vagy LocalSystem".|
-|Futtatási_jelszó|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszavát. Ez csak akkor van szükség "Tartomanyifelhasznalo" típusához. |
+|RunAsPassword|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszavát. Ez csak akkor van szükség "Tartomanyifelhasznalo" típusához. |
 
 ## <a name="runasdca"></a>RunAs_DCA
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|Ezért |sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók nevét. Ez csak akkor szükséges, "Tartomanyifelhasznalo" vagy "ManagedServiceAccount" fiók típusa. Érvényes értékek: "tartomány\felhasználó" vagy "user@domain". |
+|RunAsAccountName |sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók nevét. Ez csak akkor szükséges, "Tartomanyifelhasznalo" vagy "ManagedServiceAccount" fiók típusa. Érvényes értékek: "tartomány\felhasználó" vagy "user@domain". |
 |RunAsAccountType|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók típusa. Erre azért van szükség, minden futtató szakasz érvényes értékek: "LocalUser/Tartomanyifelhasznalo/NetworkService/ManagedServiceAccount vagy LocalSystem". |
-|Futtatási_jelszó|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszavát. Ez csak akkor van szükség "Tartomanyifelhasznalo" típusához. |
+|RunAsPassword|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszavát. Ez csak akkor van szükség "Tartomanyifelhasznalo" típusához. |
 
 ## <a name="runasfabric"></a>RunAs_Fabric
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|Ezért |sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók nevét. Ez csak akkor szükséges, "Tartomanyifelhasznalo" vagy "ManagedServiceAccount" fiók típusa. Érvényes értékek: "tartomány\felhasználó" vagy "user@domain". |
+|RunAsAccountName |sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók nevét. Ez csak akkor szükséges, "Tartomanyifelhasznalo" vagy "ManagedServiceAccount" fiók típusa. Érvényes értékek: "tartomány\felhasználó" vagy "user@domain". |
 |RunAsAccountType|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók típusa. Erre azért van szükség, minden futtató szakasz érvényes értékek: "LocalUser/Tartomanyifelhasznalo/NetworkService/ManagedServiceAccount vagy LocalSystem". |
-|Futtatási_jelszó|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszavát. Ez csak akkor van szükség "Tartomanyifelhasznalo" típusához. |
+|RunAsPassword|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszavát. Ez csak akkor van szükség "Tartomanyifelhasznalo" típusához. |
 
 ## <a name="runashttpgateway"></a>RunAs_HttpGateway
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|Ezért |sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók nevét. Ez csak akkor szükséges, "Tartomanyifelhasznalo" vagy "ManagedServiceAccount" fiók típusa. Érvényes értékek: "tartomány\felhasználó" vagy "user@domain". |
+|RunAsAccountName |sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók nevét. Ez csak akkor szükséges, "Tartomanyifelhasznalo" vagy "ManagedServiceAccount" fiók típusa. Érvényes értékek: "tartomány\felhasználó" vagy "user@domain". |
 |RunAsAccountType|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók típusa. Erre azért van szükség, minden futtató szakasz érvényes értékek: "LocalUser/Tartomanyifelhasznalo/NetworkService/ManagedServiceAccount vagy LocalSystem". |
-|Futtatási_jelszó|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszavát. Ez csak akkor van szükség "Tartomanyifelhasznalo" típusához. |
+|RunAsPassword|sztring, alapértelmezett érték a "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszavát. Ez csak akkor van szükség "Tartomanyifelhasznalo" típusához. |
 
 ## <a name="security"></a>Biztonság
 | **A paraméter** | **Megengedett értékek** |**Szabályzat frissítése**| **Útmutató vagy rövid leírása** |
@@ -615,12 +615,12 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |UseClusterCertForIpcServerTlsSecurity|bool, alapértelmezett érték a hamis|Statikus|Hogy fürttanúsítvány segítségével IPC kiszolgáló TLS biztonságos átviteli egység |
 |X509Folder|sztring, alapértelmezett /var/lib/waagent|Statikus|Mappa ahol X509 találhatók tanúsítványok és titkos kulcsok |
 
-## <a name="securityadminclientx509names"></a>Biztonsági/AdminClientX509Names
+## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus|Ez a "Name" és "Értéket" pár listáját. Minden egyes "név" DnsName X509, vagy a tulajdonos köznapi nevének van rendszergazdai műveletek engedélyezett tanúsítványok. Az egy adott "Name" "értéke" tanúsítvány-ujjlenyomatok rögzítés kibocsátó külön vesszővel tagolt listája, ha nem üres, a közvetlen rendszergazdai ügyféltanúsítványok-kibocsátó kell lennie a listában. |
 
-## <a name="securityclientaccess"></a>Biztonsági/ClientAccess
+## <a name="securityclientaccess"></a>Security/ClientAccess
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |ActivateNode |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági konfiguráció az aktiváláshoz egy csomópontot. |
@@ -637,7 +637,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |DeactivateNode |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági konfiguráció esetében egy csomópont inaktiválása. |
 |DeactivateNodesBatch |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági konfiguráció esetében több csomópont inaktiválása. |
 |Törlés |sztring, alapértelmezett az "Admin" |Dinamikus| Rendszerkép biztonsági beállításokkal tárolja az ügyfél-törlési művelet. |
-|Deleteapplication függvényhez |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági konfiguráció alkalmazása a törlésre. |
+|DeleteApplication |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági konfiguráció alkalmazása a törlésre. |
 |DeleteComposeDeployment|sztring, alapértelmezett az "Admin"| Dinamikus|Az összeállítás üzemelő példány törlése |
 |DeleteGatewayResource|sztring, alapértelmezett az "Admin"| Dinamikus|Egy átjáró-erőforrás törlése |
 |DeleteName |sztring, alapértelmezett az "Admin" |Dinamikus|Biztonsági konfiguráció elnevezési URI törlésre. |
@@ -649,7 +649,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |FileContent |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági konfiguráció lemezképhez ügyfél fájlátvitel (külső fürthöz) tárolja. |
 |FileDownload |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági beállítások a lemezképet tároló ügyfél fájl letöltése kezdeményezés (külső fürthöz). |
 |FinishInfrastructureTask |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági konfiguráció befejezési infrastruktúra feladatokhoz. |
-|Getchaosreport hívásban | sztring, alapértelmezett érték a "rendszergazda\|\|felhasználói" |Dinamikus| Lekéri a Chaos állapotát belül egy adott időtartományt. |
+|GetChaosReport | sztring, alapértelmezett érték a "rendszergazda\|\|felhasználói" |Dinamikus| Lekéri a Chaos állapotát belül egy adott időtartományt. |
 |GetClusterConfiguration | sztring, alapértelmezett érték a "rendszergazda\|\|felhasználói" | Dinamikus|Kapott GetClusterConfiguration partíción. |
 |GetClusterConfigurationUpgradeStatus | sztring, alapértelmezett érték a "rendszergazda\|\|felhasználói" |Dinamikus| Kapott GetClusterConfigurationUpgradeStatus partíción. |
 |GetFabricUpgradeStatus |sztring, alapértelmezett érték a "rendszergazda\|\|felhasználói" |Dinamikus| Biztonsági beállítások a fürt frissítési állapotának lekérdezése. |
@@ -721,32 +721,32 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |UpgradeFabric |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági beállítások a fürtfrissítések indítása. |
 |Feltöltés |sztring, alapértelmezett az "Admin" | Dinamikus|Biztonsági konfiguráció lemezképhez ügyfél feltöltési művelet tárolja. |
 
-## <a name="securityclientcertificateissuerstores"></a>Biztonsági/ClientCertificateIssuerStores
+## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, alapértelmezett értéke None |Dinamikus|X509 kibocsátói tanúsítvány tárolja az ügyféltanúsítványok; Name = clientIssuerCN; Érték = tárolók vesszővel elválasztott listája |
 
-## <a name="securityclientx509names"></a>Biztonsági/ClientX509Names
+## <a name="securityclientx509names"></a>Security/ClientX509Names
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus|Ez a "Name" és "Értéket" pár listáját. Minden egyes "név" van a tulajdonos köznapi nevének vagy DnsName X509 az Ügyfélműveletek engedélyezett tanúsítványok. Az egy adott "Name" "értéke" tanúsítvány-ujjlenyomatok rögzítés kibocsátó külön vesszővel tagolt listája, ha nem üres, a közvetlen kibocsátó ügyféltanúsítványok kell lennie a listában.|
 
-## <a name="securityclustercertificateissuerstores"></a>Biztonsági/ClusterCertificateIssuerStores
+## <a name="securityclustercertificateissuerstores"></a>Security/ClusterCertificateIssuerStores
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, alapértelmezett értéke None |Dinamikus|X509 kibocsátói tanúsítvány tanúsítványtárolói fürttanúsítványok; Name = clusterIssuerCN; Érték = tárolók vesszővel elválasztott listája |
 
-## <a name="securityclusterx509names"></a>Biztonsági/ClusterX509Names
+## <a name="securityclusterx509names"></a>Security/ClusterX509Names
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus|Ez a "Name" és "Értéket" pár listáját. Egyes "név" a tulajdonos köznapi nevének vagy DnsName X509, fürt-műveletek engedélyezett tanúsítványok. Az egy adott "Name" "értéke" tanúsítvány-ujjlenyomatok rögzítés kibocsátó külön vesszővel tagolt listája, ha nem üres, a fürt tanúsítványok közvetlen kibocsátó kell lennie a listában.|
 
-## <a name="securityservercertificateissuerstores"></a>Biztonsági/ServerCertificateIssuerStores
+## <a name="securityservercertificateissuerstores"></a>Security/ServerCertificateIssuerStores
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, alapértelmezett értéke None |Dinamikus|X509 kibocsátói tanúsítvány tanúsítványtárolói kiszolgálói tanúsítványok; Name = serverIssuerCN; Érték = tárolók vesszővel elválasztott listája |
 
-## <a name="securityserverx509names"></a>Biztonsági/ServerX509Names
+## <a name="securityserverx509names"></a>Security/ServerX509Names
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, alapértelmezett értéke None|Dinamikus|Ez a "Name" és "Értéket" pár listáját. Minden egyes "név" van a tulajdonos köznapi nevének vagy a X509 DnsName műveletekhez történő engedélyezett tanúsítványok. Az egy adott "Name" "értéke" tanúsítvány-ujjlenyomatok rögzítés kibocsátó külön vesszővel tagolt listája, ha nem üres, a közvetlen kiszolgálói tanúsítványok-kibocsátó kell lennie a listában.|
@@ -773,7 +773,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 | --- | --- | --- | --- |
 |Szint |Int, alapértelmezett érték 4 | Dinamikus |Nyomkövetés etw szint is igénybe vehet az érték 1, 2, 3, 4. Támogatott a nyomkövetési szintet kell hagynia a 4 |
 
-## <a name="transactionalreplicator"></a>Tranzakciós replikátor
+## <a name="transactionalreplicator"></a>TransactionalReplicator
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval | Idő (másodpercben), alapértelmezett érték a 0.015 | Statikus | Adja meg az időtartam másodpercben. Meghatározza, hogy az, hogy mennyi ideig vár a replikátor, miután kapott egy művelet nyugtázása vissza küldése előtt. Ez az időtartam alatt fogadott műveletnél a nyugtázás a küldött vissza egy adott üzenet -> csökkentése hálózati forgalmat, de potenciálisan csökkenti az átviteli sebességének a replikátor fog rendelkezni. |
@@ -819,9 +819,9 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |PlacementConstraints |sztring, alapértelmezett érték a "" |Nem engedélyezett|A frissítési szolgáltatás PlacementConstraints. |
 |PollIntervalInSeconds|Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(60) |Dinamikus|Adja meg az időtartam másodpercben. ARM-felügyeleti műveletek UpgradeService lekérdezési időközét. |
 |TargetReplicaSetSize | Int, alapértelmezett érték 3 |Nem engedélyezett| A TargetReplicaSetSize az UpgradeService. |
-|TestCabFolder | sztring, alapértelmezett érték a "" |Statikus| Az UpgradeService TestCabFolder. |
+|TestCabFolder | sztring, alapértelmezett érték a "" |Statikus| TestCabFolder for UpgradeService. |
 |X509FindType | sztring, alapértelmezett érték a ""|Dinamikus| Az UpgradeService X509FindType. |
-|X509FindValue | sztring, alapértelmezett érték a "" |Dinamikus| Az UpgradeService X509FindValue. |
+|X509FindValue | sztring, alapértelmezett érték a "" |Dinamikus| X509FindValue for UpgradeService. |
 |X509SecondaryFindValue | sztring, alapértelmezett érték a "" |Dinamikus| X509SecondaryFindValue for UpgradeService. |
 |X509StoreLocation | sztring, alapértelmezett érték a "" |Dinamikus| Az UpgradeService X509StoreLocation. |
 |X509StoreName | sztring, alapértelmezett érték a "Saját"|Dinamikus|Az UpgradeService X509StoreName. |

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 23216df139ba3bc4023d3a01c8e7b9914cccfba5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a31a9db62c220e0c1bd3709a37ee662693b07511
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261525"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096925"
 ---
 # <a name="troubleshooting-tips-to-support-the-qna-maker-service-and-runtime"></a>Hibaelhárítási tippek a QnA Maker szolgáltatást és a futásidejű támogatása
 QnAMaker, a felhasználó az Azure-fiókban lévő üzemeltetett összetevőket foglalja magában. Hibakeresés megkövetelheti, hogy a felhasználók számára a QnAMaker Azure erőforrások kezeléséhez, vagy adja meg a QnAMaker támogatási csapatával a telepítés után további információt.
@@ -54,4 +54,4 @@ QnAMaker szolgáltatás gazdagépneve hasznos hibakeresés céljából forduljon
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [QnAMaker API használata](./upgrade-qnamaker-service.md)
+> [Aktív tanulás a Tudásbázis kérdéseket javítása](./improve-knowledge-base.md)

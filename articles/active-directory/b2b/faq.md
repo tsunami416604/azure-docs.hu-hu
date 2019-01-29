@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: b9f2c29806c29de18c8346e77ddbfcf2bdb411f1
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 36efb943855d36d1f830ba08554eabd0a8a88f50
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075992"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169331"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B-együttműködés – gyakori kérdések
 
@@ -73,7 +73,7 @@ Ha egy felhasználó a kezdőkönyvtárba, az Azure AD-bérlővel is [a felhaszn
  
 * Vendég felhasználók, akik a Microsoft-fiókkal (például guestuser@live.com) is alaphelyzetbe állíthatja saját jelszavait, önkiszolgáló jelszó-visszaállítási (SSPR) Microsoft-fiókjával. Lásd: [Microsoft-fiók jelszavának alaphelyzetbe állítása](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
 * Jelentkezzen be Google-fiók vagy egy másik külső identitásszolgáltató vendég felhasználók is alaphelyzetbe állíthatja saját jelszavait, azok identitásszolgáltató SSPR metódus használatával. Ha például egy Google-fiókkal vendégfelhasználó guestuser@gmail.com is alaphelyzetbe állíthatja a jelszavát a következő témakör utasításait követve [módosítása vagy a jelszó alaphelyzetbe](https://support.google.com/accounts/answer/41078).
-* Ha a szolgáltatásidentitás bérlője egy – igény (szerinti JIT) vagy "vírusos" bérlői (azaz egy különálló, nem felügyelt Azure-bérlőhöz), csak a meghívott felhasználónak alaphelyzetbe állíthatja a jelszavát.
+* Ha a szolgáltatásidentitás bérlője egy – igény (szerinti JIT) vagy "vírusos" bérlői (azaz egy különálló, nem felügyelt Azure-bérlőhöz), csak a meghívott felhasználónak alaphelyzetbe állíthatja a jelszavát. Egyes esetekben egy szervezet fog [átveszi a vírusos bérlő](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/domains-admin-takeover) , amely jönnek létre, ha az alkalmazottak saját munkahelyi e-mail-címek használatával szolgáltatások regisztrálhat. A szervezetnek szüksége van a vírusos bérlő felett, miután csak egy adott szervezet rendszergazdája alaphelyzetbe a jelszót, vagy SSPR engedélyezése. Ha szükséges, mint a meghívó szervezetet, a Vendég felhasználói fiókhoz eltávolítása a címtárból, és egy meghívó újraküldése.
 * Ha a vendégfelhasználó saját címtárral az Azure AD-bérlővel, alaphelyzetbe állíthatja a jelszót. Például, előfordulhat, hogy létrehozott egy felhasználó vagy a felhasználó a helyszíni Active Directoryból szinkronizált és állítsa be a UserType Vendég. Mivel ezt a felhasználót a címtárban az előbbi, alaphelyzetbe állíthatja a jelszavát, az Azure Portalról.
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Nem a Microsoft Dynamics 365 online-támogatást nyújt az Azure AD B2B együttműködés?

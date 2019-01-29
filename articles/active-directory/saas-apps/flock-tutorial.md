@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az állomány |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az állomány |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és állomány között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7b2c3ac5-17f1-49a0-8961-c541b258d4b1
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 6589bbe581ec5e4ca3a18363ede427bf08f8b7cc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d12180ef14c8a91893a4a158ff1b1c5cac06f0e1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428124"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176029"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-flock"></a>Oktatóanyag: Azure Active Directory-integráció az állomány
+# <a name="tutorial-azure-active-directory-integration-with-flock"></a>Oktatóanyag: Az Azure Active Directory integrációja az állomány
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan állomány integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása állományt, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy állományt egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD-be állomány integráció konfigurálásához, hozzá kell állomá
 
 **Állomány hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -227,7 +227,7 @@ Ebben a szakaszban engedélyezze Britta Simon állományt, a hozzáférés bizto
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

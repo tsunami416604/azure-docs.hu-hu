@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: e48a0a056628e0c863330de792f8edfaa48aae34
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f7f97f68db317bb526b9a8542b76633ef16fb766
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261859"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194661"
 ---
 # <a name="what-is-bing-video-search"></a>Mi a Bing Video Search?
 
@@ -150,7 +150,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>A lekérdezés bővítése
 
-Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, a [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) objektumban szerepelni fog a `queryExpansions` mező. Ha például az eredeti lekérdezés a *Cleaning Gutters* volt, a bővített lekérdezések a következők lehetnek: Gutter Cleaning **Tools**, Cleaning Gutters **From the Ground**, Gutter Cleaning **Machine** és **Easy** Gutter Cleaning.
+Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, a [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) objektumban szerepelni fog a `queryExpansions` mező. Például, ha a lekérdezés a(z) *tisztítás ekkor*, lehet, hogy a kibontott lekérdezéseket: Kötésmargó tisztítás **eszközök**, ekkor tisztítás **egészen az alapoktól**, kötésmargó tisztítás **gép**, és **könnyen** kötésmargó tisztítás.
 
 Az alábbi példában a *Cleaning Gutters* bővített lekérdezései láthatók.
 

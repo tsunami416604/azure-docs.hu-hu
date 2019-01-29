@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az TextMagic |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TextMagic |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és TextMagic között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3e5b49d2-7096-46bc-a9ce-90e09177ba28
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ab193d908063230946ebb2bb6320ab50bf14971
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: ed5107d581c880d130901bfb31d34afb9e986635
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014888"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190088"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Oktatóanyag: Azure Active Directory-integráció az TextMagic
+# <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TextMagic
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan TextMagic integrálása az Azure Active Directory (Azure AD).
 
@@ -124,10 +124,10 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     | Name (Név)  | Adatforrás-attribútum  | Névtér |
     | --------------- | --------------- | --------------- |
-    | Vállalati | User.CompanyName | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Keresztnév               | User.givenName |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Vezetéknév            | User.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | telefon               | User.telephoneNumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Vállalati | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Keresztnév               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Vezetéknév            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | telefon               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     
     a. Kattintson a **Szerkesztés ikon** szerkesztése a **azonosító érték neve** a **user.userprinicipalname** való **user.mail**.
 

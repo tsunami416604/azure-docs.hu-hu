@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Válaszkeresés projekt, entitások lekérdezése'
+title: 'Gyors útmutató: Projekt válasz keresési Entity query'
 titlesuffix: Azure Cognitive Services
 description: Entitások lekérdezése a Válaszkeresés projekt használatával
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 09af064a1c072996171e6afa4f043e84f18612b4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 2a386e0455d511ba25208904c30429dd050eb94f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467412"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094546"
 ---
-# <a name="quickstart-query-for-entities"></a>Rövid útmutató: Entitások lekérdezése
+# <a name="quickstart-query-for-entities"></a>Gyors útmutató: Entitások lekérdezése
 
 Ha a lekérdezés egy személlyel, hellyel vagy dologgal kapcsolatos adatokra irányul, a válasz tartalmazhat egy `entities` választ.  A lekérdezések minden esetben weblapokat adnak vissza, a [tények](fact-queries.md) és/vagy az [entitások](entity-queries.md) pedig lekérdezésfüggők.
 
@@ -33,7 +33,7 @@ A lekérdezési forgatókönyv meghatározásához használja az `entities` obje
 -   Látványosság 
  
 A válasz által tartalmazott entitás típusának meghatározásához használja az `entityTypeHints` mezőt, ahogy azt a „Bill Gates” lekérdezésnél bemutatjuk.
-````
+```
         },
         "description": "Bill Gates is an American business man and philanthropist, co-founder of Microsoft",
         "entityPresentationInfo": {
@@ -44,13 +44,13 @@ A válasz által tartalmazott entitás típusának meghatározásához használj
         },
         "bingId": "6d7d66a7-2cb8-0ae9-637c-f81fd749dc9a"
       }
-````
+```
 Az alábbi a „Space Needle” lekérdezés:
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle&mkt=en-us
-````
+```
 A válasz tartalmazza az `entities` választ. Figyelje meg az `entityScenario` és `entityTypeHints` mezőket. 
-````
+```
   "entities": {
     "value": [
       {
@@ -108,19 +108,19 @@ A válasz tartalmazza az `entities` választ. Figyelje meg az `entityScenario` �
       }
     ]
   },
-````
+```
 
 A lekérdezés adott esetben egy listát is visszaadhat.
 
-**Lekérdezés:** Az alábbi lekérdezés a veszélyeztetett fajok listáját kéri le:
+**Lekérdezés:** A következő lekérdezés talál veszélyeztetett listáját:
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
 
-````
+```
 
-**Válasz:** A válasz az értékek táblázatos megjelenítéshez formázott listáját tartalmazza:
-````
+**Válasz:** A válasz formázott megjelenítéshez táblázatos értékek listáját tartalmazza:
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -217,7 +217,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
     ]
   },
 
-````
+```
 
 
 ## <a name="next-steps"></a>További lépések

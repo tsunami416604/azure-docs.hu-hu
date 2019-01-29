@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: d5f926ac41bb90ba716e0c52b790a60fd74e0631
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 85c990d6bfd90c93dea764383453d7f3cc53efde
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854915"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152331"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Az Azure Active Directoryban egyéni tartománynevek kezelése
 
@@ -64,7 +64,7 @@ Egyéni tartománynév törlése, akkor előbb ellenőrizze, hogy nincsenek erő
 
 Módosítani kell, vagy bármely ilyen erőforrás törlése az Azure AD-címtárban, az egyéni tartománynév törlése előtt.
 
-### <a name="forcedelete-option"></a>ForceDelete lehetőség
+### <a name="forcedelete-option"></a>ForceDelete option
 
 Is **ForceDelete** egy tartománynevet a [Azure AD felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete). Ezek a beállítások egy aszinkron művelet, és frissítse az összes hivatkozást az egyéni tartománynév például a "user@contoso.com", a kezdeti alapértelmezett tartománynévnek például"user@contoso.onmicrosoft.com." 
 
@@ -86,14 +86,14 @@ Hibát ad vissza mikor:
 
 ### <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**K: Miért sikertelen egy hiba, amely arról tájékoztatja, hogy a tartománynév van kezelt Exchange-csoportok a tartomány törlése?** <br>
-**V:** még ma, bizonyos csoportok, például a postafiókhoz biztonsági csoportok és elosztott listák az Exchange által kiépített, és a manuálisan törölni kell [az Exchange felügyeleti központban (EAC)](https://outlook.office365.com/ecp/). Nem lehet, hogy lehet fennmaradó ProxyAddresses, amely az egyéni tartománynév támaszkodjon, és a egy másik tartománynevet manuálisan frissíteni kell. 
+**K: Miért sikertelen egy hiba, amely arról tájékoztatja, hogy a tartománynév van kezelt Exchange-csoportok a tartomány törlés?** <br>
+**VÁLASZ:** Még ma, bizonyos csoportok, például a postafiókhoz biztonsági csoportok és elosztott listák az Exchange által kiépített, és a manuálisan törölni kell [az Exchange felügyeleti központban (EAC)](https://outlook.office365.com/ecp/). Nem lehet, hogy lehet fennmaradó ProxyAddresses, amely az egyéni tartománynév támaszkodjon, és a egy másik tartománynevet manuálisan frissíteni kell. 
 
-**Kérdés vagyok jelentkezve admin@contoso.com , de nem lehet törölni a tartomány neve "contoso.com"?**<br>
-**V:** nem hivatkozhat az egyéni tartománynevet szeretne törölni a felhasználói fiók nevében. Győződjön meg arról, hogy a globális rendszergazdai fiókot használ a kezdeti alapértelmezett tartománynévnek (. onmicrosoft.com) például admin@contoso.onmicrosoft.com. Jelentkezzen be egy másik globális rendszergazdai fiók, amely például admin@contoso.onmicrosoft.com vagy egy másik egyéni tartománynevet, például a "fabrikam.com" az fióknak admin@fabrikam.com.
+**K: E vagyok jelentkezve admin@contoso.com , de nem lehet törölni a tartomány neve "contoso.com"?**<br>
+**VÁLASZ:** Az egyéni tartománynevet szeretne törölni a felhasználói fiók nevében nem lehet hivatkozni. Győződjön meg arról, hogy a globális rendszergazdai fiókot használ a kezdeti alapértelmezett tartománynévnek (. onmicrosoft.com) például admin@contoso.onmicrosoft.com. Jelentkezzen be egy másik globális rendszergazdai fiók, amely például admin@contoso.onmicrosoft.com vagy egy másik egyéni tartománynevet, például a "fabrikam.com" az fióknak admin@fabrikam.com.
 
-**Kérdés gombra kattintott, a Delete tartomány gombra, és tekintse meg `In Progress` a törlési művelet állapotát. Mennyi időt vesz igénybe? Mi történik, ha a sikertelen?**<br>
-**V:** a törlési tartomány művelet egy aszinkron háttérfeladat átnevezi is tartománynév mutató összes hivatkozást. Egy percen belül teljesítéséhez. Ha a tartomány törlése sikertelen, győződjön meg arról, hogy nem rendelkezik:
+**K: A Delete tartomány gombra, és tekintse meg gombra kattintás után `In Progress` a törlési művelet állapotát. Mennyi időt vesz igénybe? Mi történik, ha a sikertelen?**<br>
+**VÁLASZ:** A törlés tartomány művelet egy aszinkron háttérfeladat átnevezi is tartománynév mutató összes hivatkozást. Egy percen belül teljesítéséhez. Ha a tartomány törlése sikertelen, győződjön meg arról, hogy nem rendelkezik:
 
 * A tartománynevet a appIdentifierURI konfigurált alkalmazások
 * Az egyéni tartománynév hivatkozó levelezési csoport

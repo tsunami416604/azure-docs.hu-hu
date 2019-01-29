@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 97b1efbcb02277028782764ca1018b195ab21277
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 906efa00243cc622c374d442a7982d87d106079b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246364"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158842"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Oktatóanyag: Alkalmazás üzembe helyezése a Service Fabric Meshben sablon használatával
 
@@ -109,7 +109,7 @@ A regisztrációs adatbázis létrehozásakor a kimenet a következő példához
 
 ## <a name="push-the-images-to-azure-container-registry"></a>Rendszerképek leküldése az Azure Container Registrybe
 
-Ez az oktatóanyag egy teendőlistás mintaalkalmazást használ példaként.  A [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) és a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) szolgáltatások tárolólemezképei a Docker Hubban találhatók. További információt az alkalmazás a Visual Studióban való létrehozásáról a [Service Fabric Mesh-webalkalmazás létrehozása](service-fabric-mesh-tutorial-create-dotnetcore.md) című cikkben találhat. A Service Fabric Mesh Windows és Linux rendszerű tárolókon futhat.  Ha Linux-tárolókkal dolgozik, válassza a Docker **Váltás Linux-tárolókra** lehetőségét.  Ha Windows-tárolókkal dolgozik, válassza a Docker **Váltás Windows-tárolókra** lehetőségét.
+Ez az oktatóanyag egy teendőlistás mintaalkalmazást használ példaként.  A [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) és a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) szolgáltatások tárolólemezképei a Docker Hubban találhatók. Lásd: [Service Fabric-háló webes alkalmazás készítése](service-fabric-mesh-tutorial-create-dotnetcore.md) információkat az alkalmazás a Visual Studióban történő létrehozásának módját. A Service Fabric Mesh Windows és Linux rendszerű tárolókon futhat.  Ha Linux-tárolókkal dolgozik, válassza a Docker **Váltás Linux-tárolókra** lehetőségét.  Ha Windows-tárolókkal dolgozik, válassza a Docker **Váltás Windows-tárolókra** lehetőségét.
 
 Ahhoz, hogy képet tudjon küldeni egy ACR-példányba, először szüksége van egy tárolólemezképre. Ha még nincs egy helyi tárolólemezképe sem, a [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal kérje le a [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) és a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) képeit a Docker Hubból.
 
@@ -344,7 +344,7 @@ A teendőlistás alkalmazás konkrét leírását a [mesh_rp.windows.json](https
 Az alábbi paranccsal hozza létre az alkalmazást és a kapcsolódó erőforrásokat, majd adja meg az előző lépésben ([Regisztrációs adatbázis hitelesítő adatainak lekérése](#retrieve-credentials-for-the-registry)) található hitelesítő adatokat.
 
 A paraméterfájlban frissítse a következő paraméterértékeket:
-|Paraméter|Érték|
+|Paraméter|Value|
 |---|---|
 |location|Az alkalmazás üzembe helyezési régiója.  Például: „eastus”.|
 |registryPassword|A [Regisztrációs adatbázis hitelesítő adatainak lekérése](#retrieve-credentials-for-the-registry) szakaszban lekért jelszó. A sablon ezen paramétere egy biztonságos sztring, amely nem jelenik meg az üzembe helyezési állapot képernyőjén és az `az mesh service show` típusú parancsokban.|

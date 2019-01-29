@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: 48df598ab12c509952b7712bb8cc9fe21355325f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 39034d069c0c0feb2ac81437e34c7206d7fe6c4c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613681"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102816"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Miért érdemes a mikroszolgáltatás-alapú megközelítést választani alkalmazások?
 
@@ -33,11 +33,11 @@ A változó üzleti igények szerint a következők:
 
 Ezek az üzleti igények, lényegében *hogyan* alkalmazások készítünk.
 
-Azure-mikroszolgáltatás-alapú megközelítést kapcsolatos további információkért olvassa el a [Mikroszolgáltatások: egy felhőbeli alkalmazásforradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
+Azure-mikroszolgáltatás-alapú megközelítést kapcsolatos további információkért olvassa el a [mikroszolgáltatás-alapú: Egy felhőbeli alkalmazásforradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
 
 ## <a name="monolithic-vs-microservice-design-approach"></a>Monolitikus, és a mikroszolgáltatások tervezési megközelítés
 
-Alkalmazások időbeli alakulásával. Sikeres alkalmazás fel hasznos személyek fejlesztheti tovább. Sikertelen kérelmek nem fejlődnek, és idővel elavulttá váltak. A kérdést: mennyi ismeri a követelményekkel kapcsolatos még ma, és mi azok lesz a jövőben? Például tegyük fel, hogy a jelentéskészítő alkalmazás Intézet hoz létre. Biztos benne, hogy az alkalmazás csak a vállalat hatókörén belül vonatkozik, és hogy a jelentések rövid ideig tartó. A választott módszer eltér, tegyük fel, hogy, videótartalmak létrehozásához egy szolgáltatás, amely továbbítja az ügyfelek tízmillió.
+Alkalmazások időbeli alakulásával. Sikeres alkalmazás fel hasznos személyek fejlesztheti tovább. Sikertelen kérelmek nem fejlődnek, és idővel elavulttá váltak. A kérdés van: IP-címek fenntartási ismeri a követelményekkel kapcsolatos még ma, és mi azok lesz a jövőben? Például tegyük fel, hogy a jelentéskészítő alkalmazás Intézet hoz létre. Biztos benne, hogy az alkalmazás csak a vállalat hatókörén belül vonatkozik, és hogy a jelentések rövid ideig tartó. A választott módszer eltér, tegyük fel, hogy, videótartalmak létrehozásához egy szolgáltatás, amely továbbítja az ügyfelek tízmillió.
 
 Egyes esetekben első valamit az ajtó ki, a koncepció igazolása, a vezetői tényező, viszont ismeri az alkalmazás újabb újratervezve. Soha nem használt lekéri a fölösleges mérnöki valami kis pont van. A szokásos mérnöki kompromisszum. Másrészről vállalatok beszélni a felhő létrehozása, amikor az elvárás növekedését és a használat. A probléma oka, hogy a növekedési és a méretezési csoport előre nem látható. Szeretnénk felkereső prototípusként gyorsan közben is ismerete, hogy azt egy jövőbeli sikeres kezelésére elérési úton vannak. Ez az a lean indítási megközelítés: hozhat létre, illetve mérheti, ismerje meg, és ismételt futtatásával.
 
@@ -149,7 +149,7 @@ A Service Fabric nyújt azáltal, hogy a mikroszolgáltatási megközelítést h
 
 * Egy üzembe helyezéséhez, a rendszer szolgáltatásokat biztosító platform frissítése, észleli, és indítsa újra a sikertelen szolgáltatások, szolgáltatások felderítése, üzenetek, állapot kezelése és állapotának figyelése.
 * Alkalmazások üzembe helyezése vagy futó tárolók vagy folyamatok lehetőség. Service Fabric-tároló és a folyamat az orchestrator a.
-* Hatékony programozási API-k, alkalmazások, mikroszolgáltatások segíteni: [ASP.NET Core Reliable Actors és a Reliable Services](service-fabric-choose-framework.md). Például állapot és diagnosztika információt, vagy a beépített magas rendelkezésre állás előnyeit is.
+* Hatékony programozási API-k, alkalmazások, mikroszolgáltatások segíteni: [Az ASP.NET Core Reliable actors – és a Reliable Services](service-fabric-choose-framework.md). Például állapot és diagnosztika információt, vagy a beépített magas rendelkezésre állás előnyeit is.
 
 ***A Service Fabric hogyan hozhat létre a szolgáltatás a független, és minden olyan technológiát is használhatja. Azonban olyan beépített programozási API-k, amelyek megkönnyítik a mikroszolgáltatásokat.***
 
@@ -177,11 +177,11 @@ A költségcsökkenést érthető, és a Microsofton belül nagyszámú meglév�
 
 Számos szervezet megállhat itt. Már van a tárolók előnyeit, és a Service Fabric biztosítja a teljes körű felügyeleti szolgáltatásokat, az üzembe helyezési, frissítések, versioning, visszagörgetése, egészségügyi figyelés stb.
 
-**Modernizálása**  
+**Modernization**  
 Hozzáadása az új szolgáltatások mellett a meglévő kód tárolóba. Ha új kódot írni, célszerű úgy dönt, hogy haladjon kis lépésekben le a mikroszolgáltatás-alapú elérési útját. Lehet, hozzáadása egy új REST API-végpont, és új üzleti logikát. Ezzel a módszerrel, indítsa el a a szállítás új mikroszolgáltatások létrehozása és a gyakorlati fejleszteni és üzembe helyezni őket.
 
 **Az innováció**  
-A mikroszolgáltatási megközelítést éppen elfér változó üzleti igényeinek megfelelő. Ezen a ponton a döntés, hogy kell-e start felosztása a monolitikus app services vagy az innováció. Íme egy példa akkor, ha a munkafolyamat üzenetsorokkal használt adatbázis feldolgozás szűk keresztmetszetté válik. Munkafolyamat száma növekszik kér, mivel a munkahelyi kell elérhetőnek lennie a méretezési csoport. Az alkalmazás, amely nem méretezése folyamatban van, vagy, amelyek gyakran frissíteni kell, hogy részletezhető mikroszolgáltatások ossza ki ez, és az innováció.
+A mikroszolgáltatási megközelítést alkalmazkodik a változó üzleti igények szerint. Ezen a ponton a döntés, hogy kell-e start felosztása a monolitikus app services vagy az innováció. Íme egy példa akkor, ha a munkafolyamat üzenetsorokkal használt adatbázis feldolgozás szűk keresztmetszetté válik. Munkafolyamat száma növekszik kér, mivel a munkahelyi kell elérhetőnek lennie a méretezési csoport. Az alkalmazás, amely nem méretezése folyamatban van, vagy, amelyek gyakran frissíteni kell, hogy részletezhető mikroszolgáltatások ossza ki ez, és az innováció.
 
 **Mikroszolgáltatások alakítva**  
 Ez az, ahol az alkalmazás az teljes mértékben a (vagy szét) mikroszolgáltatás-alapú. Szeretné elérni az itt, a mikroszolgáltatások utazás hajtott végre. Itt is elindítható, de ehhez nélkül a mikroszolgáltatás-alapú platform, amely segít jelentős befektetéseket. 
@@ -197,7 +197,7 @@ A Service Fabric célja kiküszöböli a mikroszolgáltatás-alkalmazások létr
 ## <a name="next-steps"></a>További lépések
 
 * [A Service Fabric a terminológia áttekintése](service-fabric-technical-overview.md)
-* [Mikroszolgáltatások: Egy alkalmazásforradalom a felhőben](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [Mikroszolgáltatás-alapú: Egy felhőbeli alkalmazásforradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

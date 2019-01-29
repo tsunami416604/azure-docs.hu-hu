@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 07/27/201
 ms.author: v-jamebr
-ms.openlocfilehash: 2f84550c83c646b44f4a59c3ae506df7c18d1555
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 522e9209da5d2df796700dea764270382b1170f5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852979"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102765"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Állítsa be, és az Azure Service Fabric fordított proxy konfigurálása
 Fordított proxy egy nem kötelező az Azure Service Fabric-szolgáltatás, amely segít a Service Fabric-fürtön futó mikroszolgáltatásokat felderítése és kommunikálni más szolgáltatásokkal, amelyek http-végpontokat. További tudnivalókért lásd: [fordított proxy az Azure Service Fabric](service-fabric-reverseproxy.md). Ez a cikk bemutatja, hogyan állíthatja be, és a fürtben a fordított proxy konfigurálása. 
@@ -30,10 +30,10 @@ Az Azure portal az új Service Fabric-fürt létrehozásakor a fordított proxy 
 
 Fordított proxy konfigurálása során meg [hozzon létre egy fürtöt az Azure portal használatával](./service-fabric-cluster-creation-via-portal.md), győződjön meg arról, tegye a következőket:
 
-1. A **2. lépés: fürtkonfiguráció**alatt **csomóponttípus konfigurációja**válassza **fordított proxy engedélyezése**.
+1. A **2. lépés: A fürt konfiguráció**alatt **csomóponttípus konfigurációja**válassza **fordított proxy engedélyezése**.
 
    ![A portálon a fordított proxy engedélyezése](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (Nem kötelező) Biztonságos fordított proxy konfigurálása, SSL-tanúsítvány konfigurálása kell. A **3. lépés: biztonsági**, a **fürtbiztonsági beállítások konfigurálása**alatt **konfigurációtípus**válassza **egyéni**. Ezután a **fordított Proxy SSL-tanúsítvány**válassza **fordított proxyhoz tartozó SSL-tanúsítvány** , és adja meg a tanúsítvány adatait.
+2. (Nem kötelező) Biztonságos fordított proxy konfigurálása, SSL-tanúsítvány konfigurálása kell. A **3. lépés: Biztonsági**, a **fürtbiztonsági beállítások konfigurálása**alatt **konfigurációtípus**válassza **egyéni**. Ezután a **fordított Proxy SSL-tanúsítvány**válassza **fordított proxyhoz tartozó SSL-tanúsítvány** , és adja meg a tanúsítvány adatait.
 
    ![Biztonságos fordított proxy konfigurálása a portálon](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -239,7 +239,7 @@ Miután módosította a fordított proxy engedélyezése ClusterConfig.json fáj
 Oldja meg a fordított proxy egy Azure-fürtön kívül, állítsa be az Azure Load Balancer-szabályok és a egy Azure-Állapotminta esetében a fordított proxy portjával. Ezeket a lépéseket az Azure portal vagy a Resource Manager-sablon használatával a fürt létrehozása után bármikor elvégezhető. 
 
 > [!WARNING]
-> A fordított proxy portjával Load balancerben konfigurálásakor, amely közzétenni egy HTTP-végpontot a fürt összes mikroszolgáltatások a fürtön kívülről címezhető. Ez azt jelenti, hogy rosszindulatú felhasználók által felderíthető lehet-e a mikroszolgáltatás-alapú szinkronban kell lennie a belső. Ez potenially súlyos biztonsági réseket, hogy azokat kihasználnák; mutat be. Példa:
+> A fordított proxy portjával Load balancerben konfigurálásakor, amely közzétenni egy HTTP-végpontot a fürt összes mikroszolgáltatások a fürtön kívülről címezhető. Ez azt jelenti, hogy rosszindulatú felhasználók által felderíthető lehet-e a mikroszolgáltatás-alapú szinkronban kell lennie a belső. Ez potenciálisan megadja súlyos biztonsági réseket, hogy azokat kihasználnák; Példa:
 >
 > * Egy rosszindulatú felhasználó egy szolgáltatásmegtagadási támadást indíthatnak ismételten meghívásával egy belső szolgáltatás, amely nem rendelkezik egy eléggé támadási felületét.
 > * Egy rosszindulatú felhasználó előfordulhat, hogy helytelenül formázott csomagok továbbítására az egy belső szolgáltatás nem kívánt viselkedést eredményez.

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b5c1df8776b63fc8ceecfa0377e74c757ba503c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 6424bb986f02a75324ea590a6b501119ddf23480
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950148"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165438"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
@@ -39,7 +39,7 @@ A legújabb Azure CLI-t az [Azure Cloud Shellben](../cloud-shell/overview.md) fu
 
 ## <a name="command-help"></a>Segítség a parancsokhoz
 
-Az Azure CLI-ben minden parancshoz megjeleníthet súgószöveget, ha a parancshoz hozzáfűzi a `-h` utótagot. Az egyéb beállításokat hagyja változatlanul. Például:
+Az Azure CLI-ben minden parancshoz megjeleníthet súgószöveget, ha a parancshoz hozzáfűzi a `-h` utótagot. Az egyéb beállításokat hagyja változatlanul. Példa:
 
 * Ha segítséget szeretne kérni az `az` parancshoz, írja be a következőt: `az -h`
 * Ha le szeretné kérni az összes Batch parancs listáját a parancssori felületen, használja a következőt: `az batch -h`
@@ -62,7 +62,7 @@ Az Azure CLI Batch-csel történő használatához be kell jelentkeznie és hite
 
 Az Azure-szolgáltatásba több módon is bejelentkezhet, ezeket részletesen a [Bejelentkezés az Azure használatával](/cli/azure/authenticate-azure-cli) című cikk ismerteti:
 
-1. [Interaktív bejelentkezés](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-interactive-log-in). Az Interaktív bejelentkezést akkor használja, ha személyesen szeretne Azure CLI-parancsokat futtatni a parancssor használatával.
+1. [Interaktív bejelentkezés](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Az Interaktív bejelentkezést akkor használja, ha személyesen szeretne Azure CLI-parancsokat futtatni a parancssor használatával.
 2. [Bejelentkezés szolgáltatásnévvel](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-logging-in-with-a-service-principal). Jelentkezzen be szolgáltatásnévvel, ha szkript vagy alkalmazás használatával kíván Azure CLI-parancsokat futtatni.
 
 Ebben a cikkben az Interaktív bejelentkezést fogjuk használni az Azure-ba történő belépéshez. Írja be az [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) utasítást a parancssorba:
@@ -122,7 +122,7 @@ A gyakori feladatok végrehajtásával kapcsolatban tekintse meg a Batch [paranc
 
 ## <a name="json-files-for-resource-creation"></a>Erőforrás létrehozása JSON-fájlok használatával
 
-Amikor olyan Batch-erőforrásokat hoz létre, mint a készletek és a feladatok, megadhat egy JSON-fájlt, amely az új erőforrás konfigurációját tartalmazza, ahelyett, hogy parancssori kapcsolókként adná át a paramétereket. Például:
+Amikor olyan Batch-erőforrásokat hoz létre, mint a készletek és a feladatok, megadhat egy JSON-fájlt, amely az új erőforrás konfigurációját tartalmazza, ahelyett, hogy parancssori kapcsolókként adná át a paramétereket. Példa:
 
 ```azurecli
 az batch pool create my_batch_pool.json

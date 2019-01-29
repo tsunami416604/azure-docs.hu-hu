@@ -7,18 +7,18 @@ author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: pim
+ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7d97f68c04656c1f8e227069bb3d33aba13d4b53
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a670b6f1e8c2298214e28de6183064d6db424b33
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435073"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191601"
 ---
 # <a name="start-using-pim"></a>Ismerkedés a PIM-mel
 
@@ -59,7 +59,7 @@ A címtár PIM használatának megkezdéséhez először engedélyeznie kell a P
 
 1. Kattintson a **saját identitás ellenőrzése** igazolhatja személyazonosságát, az Azure MFA Megismeréséhez. Válasszon egy fiókot, a rendszer.
 
-    ![Fiók kiválasztása](./media/pim-getting-started/pick-account.png)
+    ![Válasszon egy fiókot](./media/pim-getting-started/pick-account.png)
 
 1. Ha további információt az ellenőrzéshez szükséges, hogy rendszer végigvezeti a folyamat. További információkért lásd: [segítség a kétlépcsős ellenőrzéshez](https://go.microsoft.com/fwlink/p/?LinkId=708614).
 

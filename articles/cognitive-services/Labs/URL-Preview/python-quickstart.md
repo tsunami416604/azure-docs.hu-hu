@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Az URL-cím előnézete projekt, Python'
+title: 'Gyors útmutató: Projekt URL-cím előnézete, Python'
 titlesuffix: Azure Cognitive Services
 description: Az URL-cím előnézete projekt Python nyelvvel való azonnali használatába bevezető szkriptminta.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: url-preview
 ms.topic: quickstart
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: ecf98803e5313812a074442b70bb376ab67e7366
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 650e11317dfa2eb3cc2fa6fd6146e55f8f8e87ef
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469996"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092794"
 ---
-# <a name="quickstart-url-preview-with-python"></a>Rövid útmutató: Az URL-cím előnézete Python nyelven
+# <a name="quickstart-url-preview-with-python"></a>Gyors útmutató: A Python URL-cím előnézete
 
 Az alábbi Python-példa létrehoz egy URL-előnézetet a SwiftKey webhelyhez: https://swiftkey.com/en.
 
@@ -41,7 +41,7 @@ Implementálására a következő lépésekben kerül sor:
 
 Az útmutatóban használt teljes kód a következő:
 
-````
+```
 import http.client, urllib.parse
 import json
 
@@ -64,7 +64,7 @@ def get_preview ():
 
 result = get_preview ()
 print (json.dumps(json.loads(result), indent=4))
-````
+```
 ## <a name="next-steps"></a>További lépések
 - [C# – rövid útmutató](csharp.md)
 - [Java – rövid útmutató](java-quickstart.md)

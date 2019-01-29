@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9e73a979950e856a7fc2bfa2193ea4ca0d59bac2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 070e86f2d5d37823f1596cf04735b199289f3d75
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242228"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166169"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok-elévülési szabályzatának konfigurálása
 
@@ -91,45 +91,45 @@ A megőrzési házirend úgy van konfigurálva, a biztonsági és megfelelőség
 Az alábbiakban példát, hogyan használhatja PowerShell-parancsmagok az Office 365-csoportok lejáratának beállításainak konfigurálása a bérlőben:
 
 1. Telepítse a PowerShell 2.0 előzetes verzió modult (2.0.0.137), és jelentkezzen be a PowerShell-parancssorba:
-  ````
+  ```
   Install-Module -Name AzureADPreview
   connect-azuread 
-  ````
-2. A lejárati beállítások New-AzureADMSGroupLifecyclePolicy konfigurálása: Ez a parancsmag beállítja a élettartamának – 365 nap a bérlőben lévő összes Office 365-csoportok. A megújítására vonatkozó értesítéseket az Office 365 csoportok nélkül tulajdonosok küld "emailaddress@contoso.com"
+  ```
+2. Configure the expiration settings New-AzureADMSGroupLifecyclePolicy:  Ez a parancsmag az élettartam a bérlőben, 365 nappal minden Office 365-csoportok állítja be. A megújítására vonatkozó értesítéseket az Office 365 csoportok nélkül tulajdonosok küld "emailaddress@contoso.com"
   
-  ````
+  ```
   New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
-  ````
-3. A Get-AzureADMSGroupLifecyclePolicy meglévő házirend beolvasása: Ez a parancsmag lekéri az aktuális Office 365 csoport lejárati beállítások konfigurált. Ebben a példában látható:
+  ```
+3. Retrieve the existing policy Get-AzureADMSGroupLifecyclePolicy: Ez a parancsmag lekéri az aktuális Office 365 csoport lejárati beállítások konfigurált. Ebben a példában látható:
   * A házirend-azonosító 
   * A élettartama a bérlőben lévő összes Office 365-csoportok – 365 nap van beállítva.
   * A megújítására vonatkozó értesítéseket az Office 365 csoportok nélkül tulajdonosok küld "emailaddress@contoso.com."
   
-  ````
+  ```
   Get-AzureADMSGroupLifecyclePolicy
   
   ID                                    GroupLifetimeInDays ManagedGroupTypes AlternateNotificationEmails
   --                                    ------------------- ----------------- ---------------------------
   26fcc232-d1c3-4375-b68d-15c296f1f077  365                 All               emailaddress@contoso.com
-  ```` 
+  ``` 
    
-4. A Set-AzureADMSGroupLifecyclePolicy meglévő szabályzat frissítése: ezt a parancsmagot használja egy meglévő szabályzatot frissítésére. Az alábbi példában a meglévő házirendben lévő csoport élettartama 180 nap módosul 365 nap. 
+4. Update the existing policy Set-AzureADMSGroupLifecyclePolicy: Ez a parancsmag meglévő szabályzat szolgál. Az alábbi példában a meglévő házirendben lévő csoport élettartama 180 nap módosul 365 nap. 
   
-  ````
+  ```
   Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
-  ````
+  ```
   
-5. Adott csoportok felvétele a szabályzatba Add-AzureADMSLifecyclePolicyGroup: Ez a parancsmag hozzáadja egy csoporthoz az életciklus-szabályzat. Példa: 
+5. Adott csoportok felvétele a szabályzatba Add-AzureADMSLifecyclePolicyGroup: Ez a parancsmag hozzáadja egy csoportot az életciklus-szabályzat. Példa: 
   
-  ````
+  ```
   Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
-  ````
+  ```
   
 6. Távolítsa el a meglévő házirend Remove-AzureADMSGroupLifecyclePolicy: Ez a parancsmag törli az Office 365-csoport lejárati beállítások, de elengedhetetlen hozzá, a házirend-azonosítóhoz. Ezzel a lépéssel letiltja az Office 365-csoportok lejárati idejét. 
   
-  ````
+  ```
   Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
-  ````
+  ```
   
 Az alábbi parancsmagok segítségével részletesebben a szabályzat konfigurálása. Tekintse meg a vonatkozó tudnivalókat, [PowerShell-dokumentáció](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
 

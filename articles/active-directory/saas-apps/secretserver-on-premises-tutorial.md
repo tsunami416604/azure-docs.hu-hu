@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció a titkos kulcs Server (helyszíni) |} A Microsoft Docs'
+title: 'Oktatóanyag: Titkos kulcs kiszolgálóval (helyszíni) az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a titkos kulcs kiszolgáló (helyszíni) között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: be4ba84a-275d-4f71-afce-cb064edc713f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 30a1498ab41f263c77656400c4200313048cc331
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 447307c0c27fda9e7719e74e529f21d767c9f58d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436165"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152365"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Oktatóanyag: Az Azure Active Directory-integráció a titkos kulcs Server (helyszíni)
+# <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Oktatóanyag: Titkos kulcs kiszolgálóval (helyszíni) az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja a titkos kulcs kiszolgáló (helyszíni) integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a titkos kulcs kiszolgálóval (helyszíni), a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A titkos kulcs kiszolgáló (helyszíni) egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurálja a titkos kulcs kiszolgáló (helyszíni) integrációja az Azure A
 
 **Titkos kulcs kiszolgáló (helyszíni) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -176,7 +176,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-secret-server-on-premises-test-user"></a>Titkos kulcs kiszolgáló (helyszíni) tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű titkos kiszolgáló (helyszíni) felhasználói hoz létre. Együttműködve [titkos kiszolgáló (helyszíni) támogatási csoport](https://thycotic.force.com/support/s/) a felhasználók hozzáadása a titkos kulcs kiszolgáló (helyszíni) platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű titkos kiszolgáló (helyszíni) felhasználói hoz létre. Együttműködve [titkos kiszolgáló (helyszíni) támogatási csoport](https://thycotic.force.com/support/s/) a felhasználók hozzáadása a titkos kulcs kiszolgáló (helyszíni) platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -208,7 +208,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés hozz
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3148d4d63ad1464dbd45c361237ac9cd4ffd485a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7ebd25fe7b60cb3f8701793f222bbbc8bd4990e5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268240"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196769"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Modell üzembe helyezése az Azure Machine Learning szolgáltatás egy FPGA a webszolgáltatásként
 
@@ -165,7 +165,7 @@ registered_model.delete()
 
 ## <a name="secure-fpga-web-services"></a>Biztonságos FPGA-webszolgáltatások
 
-FPGA-kban futtat az Azure Machine Learning-modellek adja meg az SSL-támogatás és a kulcs alapú hitelesítés. Ez lehetővé teszi, hogy a szolgáltatás és az ügyfelek által küldött biztonságos adatokat való hozzáférés korlátozása. [Ismerje meg, hogyan védheti meg a webszolgáltatás](how-to-secure-web-service.md).
+Az Azure Machine Learning szolgáltatás modellek FPGA-kban futó adja meg, SSL-támogatás és a kulcs alapú hitelesítés. Ez lehetővé teszi, hogy a szolgáltatás és az ügyfelek által küldött biztonságos adatokat való hozzáférés korlátozása. [Ismerje meg, hogyan védheti meg a webszolgáltatás](how-to-secure-web-service.md#fpga).
 
 
 ## <a name="next-steps"></a>További lépések

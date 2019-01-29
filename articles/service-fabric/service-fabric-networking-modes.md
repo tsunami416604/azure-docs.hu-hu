@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: a42236af7e301a21a91a3c1294b20167824dfc84
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 62812dd8f92bcace8f764a21aba608157815cec3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024790"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093154"
 ---
 # <a name="service-fabric-container-networking-modes"></a>A Service Fabric tárolóalapú hálózatkezelés módjai
 
@@ -78,7 +78,7 @@ Ha egy tárolószolgáltatás újraindítja vagy áthelyezi egy másik csomópon
             ],
     ```
     
-2. Állítsa be a hálózati profil szakaszt a Virtual Machine Scale Set erőforrás. Ez lehetővé teszi a több IP-címmel kell konfigurálni a fürt mindegyik csomópontján. Az alábbi példában öt IP-cím / Windows/Linux Service Fabric-fürt csomópontja beállítja. Minden egyes csomóponton porton öt szolgáltatáspéldányok rendelkezhet. Ahhoz, hogy érhető el az Azure Load Balancerhez öt IP-cím, regisztrálni az Azure Load Balancer Háttércímkészlethez öt IP-cím alább látható módon.  A program programra kíván, a sablon a változók szakaszban elejéhez adja hozzá a változókat.
+2. Állítsa be a hálózati profil szakaszt a Virtual Machine Scale Set erőforrás. Ez lehetővé teszi a több IP-címmel kell konfigurálni a fürt mindegyik csomópontján. Az alábbi példában öt IP-cím / Windows/Linux Service Fabric-fürt csomópontja beállítja. Minden egyes csomóponton porton öt szolgáltatáspéldányok rendelkezhet. Ahhoz, hogy érhető el az Azure Load Balancerhez öt IP-cím, regisztrálni az Azure Load Balancer Háttércímkészlethez öt IP-cím alább látható módon.  Emellett a sablon a változók szakaszban elejéhez adja hozzá a változókat kell.
 
     Ez a szakasz hozzá változókat:
 
@@ -209,7 +209,7 @@ Ha egy tárolószolgáltatás újraindítja vagy áthelyezi egy másik csomópon
  
 3. Csak Windows-fürtök esetén a következő értékeket a virtuális hálózat UDP/53-as port a megnyíló Azure hálózati biztonsági csoport (NSG) szabály beállítása:
 
-   |Beállítás |Érték | |
+   |Beállítás |Value | |
    | --- | --- | --- |
    |Prioritás |2000 | |
    |Name (Név) |Custom_Dns  | |
@@ -264,7 +264,7 @@ Ha egy tárolószolgáltatás újraindítja vagy áthelyezi egy másik csomópon
    </Resources>
    ```
    
-6. A Windows a virtuális gép újraindítását miatt nyissa meg a hálózat, újra létre kell hozni. Ez az a hálózati verem az alapul szolgáló elhárításukra. Az alapértelmezett viselkedését, hogy hozza létre újra a hálózaton. Ha ez a viselkedés ki van kapcsolva, a következő konfiguráció használható a konfiguráció frissítése követi.
+6. A Windows a virtuális gép újraindítását miatt nyissa meg a hálózat, újra létre kell hozni. Ez az a hálózati verem az alapul szolgáló elhárításukra. Az alapértelmezett viselkedést, hogy hozza létre újra a hálózaton. Ha ezt a viselkedést ki van kapcsolva, a következő konfiguráció használható a konfiguráció frissítése követi.
 
 ```json
 "fabricSettings": [

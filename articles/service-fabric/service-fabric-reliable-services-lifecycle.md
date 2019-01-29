@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f301c0156265f055f0ebf7cdad8dba7f39f5ba2b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 391fc493d642c260a10b74aa42b805ad055dd8b1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044577"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164554"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>A Reliable Services-életciklus áttekintése
 > [!div class="op_single_selector"]
@@ -99,7 +99,7 @@ Az állapotmentes szolgáltatás leáll, ugyanezt a mintát követik, csak a for
 3. Miután `StatefulServiceBase.OnCloseAsync()` futtatása befejeződik, a service objektum destructed van.
 
 ## <a name="stateful-service-primary-swaps"></a>Állapotalapú szolgáltatás elsődleges cseréje
-Állapotalapú szolgáltatás futása közben, állapotalapú szolgáltatások csak az elsődleges replika rendelkezik-e a kommunikációs figyelőket megnyitott és azok **RunAsync** nevű metódust. Másodlagos replikák tevődnek, de nincs további hívások megtekintése. Egy állapotalapú szolgáltatás fut, amíg a replika, amely jelenleg az elsődleges módosíthatja. Ez mit jelent a feltételek az életciklus-események replika számára látható? Az állapot-nyilvántartó replika látja viselkedése attól függ, hogy-e a replika lefokozása, vagy több előléptetése során a lapozófájl-kapacitás.
+Állapotalapú szolgáltatás futása közben, állapotalapú szolgáltatások csak az elsődleges replika rendelkezik-e a kommunikációs figyelőket megnyitott és azok **RunAsync** nevű metódust. Másodlagos replikák tevődnek, de nincs további hívások megtekintése. Egy állapotalapú szolgáltatás fut, amíg a replika, amely jelenleg az elsődleges tartalék vagy fürtterhelés optimalizálás miatt lehet módosítani. Ez mit jelent a feltételek az életciklus-események replika számára látható? Az állapot-nyilvántartó replika látja viselkedése attól függ, hogy-e a replika lefokozása, vagy több előléptetése során a lapozófájl-kapacitás.
 
 ### <a name="for-the-primary-thats-demoted"></a>Az elsődleges, amely lefokozása
 A Service Fabric az elsődleges másodpéldány, hogy visszalép, a replika üzenetek feldolgozásának leállítása, és lépjen ki a háttérben történő munka történik mindez kell rendelkeznie. Ezt a lépést, ezért úgy tűnik, mint amikor a szolgáltatás leállt. Egy különbség az, hogy a szolgáltatás nem destructed vagy zárult be, mert egy másodlagos marad. A következő API-k nevezzük:

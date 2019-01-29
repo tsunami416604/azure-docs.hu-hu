@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: fe0b5224bc266b7990e2f7b6a4b3fa6a1b19190d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5569344a2df560036b99dea40c466302f5e6fe4c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854819"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159274"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Kerberos által korlátozott delegálás (KCD) konfigurálása felügyelt tartományhoz
 Számos alkalmazás erőforrásokhoz kell hozzáférniük a felhasználó kontextusában. Az Active Directory támogatja a Kerberos-delegálás, amely lehetővé teszi a használatieset-nevű mechanizmus. Delegálás további, korlátozhatja, hogy csak meghatározott erőforrások elérhetők legyenek a felhasználó kontextusában. Az Azure AD Domain Services felügyelt tartomány eltérnek a hagyományos Active Directory-tartományokban, mivel biztonságosabban zárolt üzemmódban.

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 20b1c8673bfdb3b2207ed63749f79539c396642c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 887c0bd4246c7c4215cb4d97dfd96db5d2aba6cb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167960"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170018"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure ad-ben identitáskezelést?
 
@@ -73,14 +73,14 @@ Nem áll fenn tökéletes megoldás vagy javaslat, minden ügyfél számára, mi
 
 ### <a name="access-reviews"></a>Hozzáférési felülvizsgálatok
 
-- [Mit jelent a hozzáférési felülvizsgálatok?](access-reviews-overview.md)
-- [A hozzáférési felülvizsgálatok felhasználói hozzáférés felügyelete](manage-user-access-with-access-reviews.md)
-- [Vendéghozzáférés hozzáférési felülvizsgálatokkal kezelése](manage-guest-access-with-access-reviews.md)
+- [Mi az a hozzáférési felülvizsgálat?](access-reviews-overview.md)
+- [Felhasználói hozzáférés kezelése hozzáférési felülvizsgálatokkal](manage-user-access-with-access-reviews.md)
+- [Vendéghozzáférés kezelése hozzáférési felülvizsgálatokkal](manage-guest-access-with-access-reviews.md)
 - [A directory-szerepkörök hozzáférési felülvizsgálat indítása](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>Használati feltételek
 
-- [Mire használhatom a használati feltételeket?](active-directory-tou.md)
+- [Mire használhatom a Használati feltételek funkciót?](active-directory-tou.md)
 
 ### <a name="privileged-identity-management"></a>Privileged identity management
 

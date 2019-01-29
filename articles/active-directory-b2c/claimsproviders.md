@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 543b6818709e88ef575516de663d97af9e2a724a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 5a0774c69c074698383e9c6f7f7cf9331e8939f2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855873"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164435"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders 
 
@@ -42,7 +42,7 @@ Jogcím-szolgáltatóktól tartalmaz [technikai profilok](technicalprofiles.md).
 
 A **ClaimsProviders** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulások | Leírás |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1:n | Egy akkreditált jogcímszolgáltatótól, amely a különböző felhasználói utak is javítható. |
 
@@ -50,7 +50,7 @@ A **ClaimsProviders** elem tartalmazza a következő elemet:
 
 A **ClaimsProvider** elem tartalmazza gyermekeleme a következők közül:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulások | Leírás |
 | ------- | ---------- | ----------- |
 | Domain | 0:1 | A jogcím-szolgáltató a tartomány nevét tartalmazó karakterlánc. Például ha a jogcím-szolgáltatói is tartalmaz, a Facebook technikai profilban, a tartománynév Facebook.com weboldalt. Ez a tartománynév a jogcímszolgáltató bírálni a technikai profil által meghatározott összes technikai profil szolgál. A tartomány nevét is lehet hivatkozni egy **domain_hint**. További információkért lásd: a **bejelentkezési átirányítása egy közösségi szolgáltató** szakaszában [állítsa be a közvetlen bejelentkezés az Azure Active Directory B2C használatával](direct-signin.md). |
 | Megjelenítendő név | 0:1 | A jogcímszolgáltatótól, a felhasználók számára megjelenített nevét tartalmazó karakterlánc. |

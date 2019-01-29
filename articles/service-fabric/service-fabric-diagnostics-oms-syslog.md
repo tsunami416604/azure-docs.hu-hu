@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: ec2b623650818877930ac6b95a17ee264f07efdf
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 32e67343c5d799157d67408b34753da5a38b6f8e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959534"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197245"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>A Syslog Linux-alapú Service Fabric-fürt események
 
@@ -35,7 +35,7 @@ Minden Syslog esemény 4 részből áll
 * Üzenet
 * Severity
 
-A SyslogConsumer szolgáltatást használó összes platform eseményt ír `Local0`. Bármely érvényes létesítmény is lehet frissíteni a konfigurációs config módosításával. Az identitás használt `ServicFabric`. Az üzenet mezőbe a JSON-szerializált, így, lekérdezhetők és eszközök széles által felhasznált teljes eseményt tartalmaz. 
+A SyslogConsumer szolgáltatást használó összes platform eseményt ír `Local0`. Bármely érvényes létesítmény is lehet frissíteni a konfigurációs config módosításával. Az identitás használt `ServiceFabric`. Az üzenet mezőbe a JSON-szerializált, így, lekérdezhetők és eszközök széles által felhasznált teljes eseményt tartalmaz. 
 
 ## <a name="enable-syslogconsumer"></a>SyslogConsumer engedélyezése
 
@@ -83,7 +83,7 @@ Ahhoz, hogy a SyslogConsumer, végezze el a fürt frissítését kell. A `fabric
 
 Itt láthatók az hívásához
 1. A közös szakaszban van egy új paraméter `LinuxStructuredTracesEnabled`. **Ez azért szükséges, a Linux-események strukturált és szerializálni a Syslog történő küldésekor.**
-2. A diagnosztika szakaszban egy új ConsumerInstance: SyslogConsumer hozzá lett adva. Ez jelzi a platform az eseményeket az egy másik felhasználója van. 
+2. A diagnosztika szakaszban egy új ConsumerInstance: SyslogConsumer hozzá van adva. Ez jelzi a platform az eseményeket az egy másik felhasználója van. 
 3. Az új szakasz SyslogConsumer rendelkeznie kell `IsEnabled` , `true`. A Local0 létesítmény automatikusan használandó profilhoz. Ez felülírható egy másik paraméter hozzáadásával.
 
 ```json

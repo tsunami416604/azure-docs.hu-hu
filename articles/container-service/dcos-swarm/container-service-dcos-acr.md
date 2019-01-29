@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: a27f6c017d9d648414637f900e0cf7c4be147bfe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996332"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100121"
 ---
 # <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(ELAVULT) ACR használata DC/OS-fürttel az alkalmazás központi telepítése
 
@@ -131,7 +131,7 @@ Most rögzítése a tárolót egy új rendszerképbe. A rendszerkép nevének ta
 
 ```azurecli-interactive
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
-````
+```
 
 Jelentkezzen be az Azure Container Registrybe. A név helyére írja a loginServer-nevet, a --username helyére a tárolóregisztrációs adatbázis nevét, a --password helyére pedig a megadott jelszavak egyikét.
 

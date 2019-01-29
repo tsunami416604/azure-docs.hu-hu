@@ -1,21 +1,21 @@
 ---
-title: 'Példa: Bing Spell Check SDK'
+title: 'Példa: A Bing Spell Check SDK'
 titleSuffix: Azure Cognitive Services
 description: Bing Spell Check SDK-minták olyan alkalmazásokhoz, amelyekkel kontextusalapú nyelvtani és helyesírás-ellenőrzést végezhet egy szövegen.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: sample
 ms.date: 1/24/2018
 ms.author: v-gedod
-ms.openlocfilehash: 23edee53eb0f247c36f61878148877b40748a8b1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: c6afe8de6ef8c20527e4557fcd9458f0eb699b59
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802576"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180058"
 ---
 # <a name="bing-spell-check-sdk-samples"></a>Bing Spell Check SDK-minták
 A Bing Spell Check-mintákban a következő forgatókönyvekkel találkozhat:

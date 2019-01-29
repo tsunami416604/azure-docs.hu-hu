@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: ad9e9e893dc831530b69a30cc3dd930e879e9d7b
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 05abc61da7af02c56dacd632175d6fbfa64cb9e1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185118"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098561"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>A DevTest Labs szolgáltatásban virtuális gép egyéni összetevők létrehozása
 
 Ebben a cikkben leírt lépések áttekintését a következő videó megtekintése:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/how-to-author-custom-artifacts/player]
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>Áttekintés
 Használhat *összetevők* üzembe helyezéséhez és a egy virtuális gép létrehozása után az alkalmazás beállítása. Egy összetevő egy összetevő-definíciós fájlt, és más parancsfájl a Git-tárház mappájában tárolt fájlok áll. Összetevő-definíciós fájlokat, a JSON és kifejezések, amelyek segítségével adja meg a kívánt virtuális Gépre telepíthető áll. Definiálhat például egy összetevő, a futtatni kívánt parancs és a parancs futtatásakor elérhető paramétereket nevét. Az összetevő-definíciós fájl belül más parancsfájlok név alapján hivatkozhat.
@@ -61,20 +61,20 @@ Az alábbi példa bemutatja az alapvető szerkezete egy csomagdefiníciós fájl
 | iconUri |Nem |URI-ját az ikon jelenik meg a tesztkörnyezetben. |
 | targetOsType |Igen |Az operációs rendszer a virtuális gép, amelyen telepítve van-e az összetevő. Támogatott kapcsolók a következők: Windows és Linux rendszereken. |
 | paraméterek |Nem |Az összetevő telepítési parancs egy gépen való futtatásakor biztosított értékeket. Ennek segítségével testre szabhatja az összetevő. |
-| ParancsFuttatása |Igen |Összetevő telepítése a virtuális gépen végrehajtott parancs. |
+| runCommand |Igen |Összetevő telepítése a virtuális gépen végrehajtott parancs. |
 
-### <a name="artifact-parameters"></a>Összetevő-paraméterek
+### <a name="artifact-parameters"></a>Összetevő paraméterei
 A csomagdefiníciós fájl paraméterei területen adja meg, mely értékeket a felhasználó megadhatja egy összetevő telepítésekor. Ezeket az értékeket a összetevő telepítési parancshoz hivatkozhatunk.
 
 Paraméterek megadásához használja az alábbi struktúrával:
 
     "parameters": {
-        "<parameterName>": {
-          "type": "<type-of-parameter-value>",
-          "displayName": "<display-name-of-parameter>",
-          "description": "<description-of-parameter>"
-        }
+      "<parameterName>": {
+        "type": "<type-of-parameter-value>",
+        "displayName": "<display-name-of-parameter>",
+        "description": "<description-of-parameter>"
       }
+    }
 
 | Elem neve | Kötelező? | Leírás |
 | --- | --- | --- |
@@ -96,13 +96,13 @@ Kifejezések parancsfájlblokkjában találhatók a zárójelek közé ([és]), 
 
 Az alábbi lista tartalmazza a közös funkciók:
 
-* **parameters(parameterName)**: az összetevő parancs futtatásakor megadott paraméter értéket ad vissza.
+* **parameters(parameterName)**: Az összetevő parancs futtatásakor megadott paraméter értéket ad vissza.
 * **Concat (arg1, arg2, arg3,...)** : Több karakterlánc-értékek egyesíti. Ez a függvény argumentumainak különböző is igénybe vehet.
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy érték kifejezések és függvények használatával:
 
     runCommand": {
-         "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
     , ' -RawPackagesList ', parameters('packages')
     , ' -Username ', parameters('installUsername')
     , ' -Password ', parameters('installPassword'))]"
@@ -113,7 +113,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy érték kifejezések és f
 1. Telepítse a JSON-szerkesztővel. Szüksége lesz egy JSON-szerkesztő használata összetevő definíciós fájlokat. Azt javasoljuk, [Visual Studio Code](https://code.visualstudio.com/), amely Windows, Linux- és OS X érhető el.
 2. Egy mintául szolgáló artifactfile.json csomagdefiníciós fájl beolvasása. Tekintse meg a DevTest Labs csapat által létrehozott összetevők a [GitHub-adattár](https://github.com/Azure/azure-devtestlab). Az összetevők, amelyek segítségével egyéni összetevők létrehozása könyvtár gazdag hoztunk létre. Töltse le egy összetevő-definíciós fájlt, és hajtsa végre a módosításokat a saját összetevőket hozhat létre ahhoz.
 3. Ellenőrizze, hogy az IntelliSense használatát. Az IntelliSense segítségével megtekintheti az érvényes elemeket, amelyek segítségével hozhat létre egy összetevő-definíciós fájlt. A különböző lehetőségek értékek elem is látható. Például, ha szerkeszti a **targetOsType** elem, az IntelliSense bemutatja, két választási lehetőség, Windows vagy Linux.
-4. Az összetevő Store a [DevTest Labs nyilvános Git-tárház](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) vagy [saját Git-tárház](devtest-lab-add-artifact-repo.md). A nyilvános tárházban megtekintheti, hogy közvetlenül használni, vagy testre is szabhatja őket, hogy illeszkedjen az igényeihez mások által megosztott összetevők. 
+4. Az összetevő Store a [DevTest Labs nyilvános Git-tárház](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) vagy [saját Git-tárház](devtest-lab-add-artifact-repo.md). A nyilvános tárházban megtekintheti, hogy közvetlenül használni, vagy testre is szabhatja őket, hogy illeszkedjen az igényeihez mások által megosztott összetevők.
    
    1. Hozzon létre minden egyes összetevő külön könyvtárat. A könyvtár neve ugyanaz, mint a szerelvényösszetevő nevének kell lennie.
    2. Az összetevő-definíciós fájl (artifactfile.json) Store hozott létre a címtárban.
@@ -122,8 +122,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy érték kifejezések és f
       Íme egy példa, hogyan kell egy összetevő mappa kinéznie:
       
       ![Összetevő mappa példa](./media/devtest-lab-artifact-author/git-repo.png)
-5. Ha a saját tárház összetevők tárolására használ, adja hozzá a tárház a labor létrehozása a cikkben található utasításokat követve: [összetevők és sablonok Git-adattár hozzáadása](devtest-lab-add-artifact-repo.md).
-
+5. Ha a saját tárház összetevők tárolására használ, hozzáadása a tárház a labor létrehozása a cikkben található utasításokat követve: [Adjon hozzá egy Git-tárház összetevők és sablonok](devtest-lab-add-artifact-repo.md).
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [A DevTest Labs szolgáltatásban az összetevők hibáinak diagnosztizálása](devtest-lab-troubleshoot-artifact-failure.md)
@@ -131,4 +130,3 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy érték kifejezések és f
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [egy Git-tárház összetevő hozzáadása egy laborhoz](devtest-lab-add-artifact-repo.md).
-

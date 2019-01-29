@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: ae1d7d86-7098-468c-aa32-20df0a10ee3d
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3a6e0284c9ef0e986ade3689452ecd0fac2797c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 25b2e90c6293b93a15aeae2fbf08b70cb191cef0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549574"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098714"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési kódfolyamat
 
@@ -61,7 +61,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > A kérelem végrehajtása a hivatkozásra kattintva! Miután bejelentkezett, a böngésző át kell irányítani `https://localhost/myapp/` együtt egy `code` címet a címsorba.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Paraméter    | Kötelező/választható | Leírás |
+| Paraméter    | Required/optional | Leírás |
 |--------------|-------------|--------------|
 | `tenant`    | szükséges    | A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További részletekért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | szükséges    | Az alkalmazás (ügyfél) AZONOSÍTÓJÁT, amely a regisztrációs portál ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) vagy **alkalmazásregisztrációk (előzetes verzió)** élmény társított az alkalmazást az Azure Portalon.  |
@@ -148,7 +148,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Próbálja ki a Postmanben a kérelem végrehajtása! (Ne felejtse el lecserélni a `code`) [ ![Postman futtatása](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
 
-| Paraméter  | Kötelező/választható | Leírás     |
+| Paraméter  | Required/optional | Leírás     |
 |------------|-------------------|----------------|
 | `tenant`   | szükséges   | A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További részletekért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | szükséges  | Az alkalmazás AZONOSÍTÓJÁT, amely a regisztrációs portál ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) az alkalmazás hozzárendelve. |
@@ -316,6 +316,6 @@ Token sikeres válasz fog kinézni:
 | `error_codes` |A diagnosztikát segítő STS-specifikus hibakódok listáját. |
 | `timestamp` | Az idő, a hiba történt. |
 | `trace_id` | A kérelem, amelyek segítik a diagnosztikai egyedi azonosítója. |
-| C`orrelation_id` | A különböző összetevők a diagnosztikát segítő kérelem egyedi azonosítója. |
+| c`orrelation_id` | A különböző összetevők a diagnosztikát segítő kérelem egyedi azonosítója. |
 
 A hibakódok és a javasolt művelet leírását, [hibakódok a jogkivonat-végpont hibákat](#error-codes-for-token-endpoint-errors).

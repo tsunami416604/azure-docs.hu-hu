@@ -11,14 +11,14 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/26/2018
-ms.openlocfilehash: 22c783574897076b697b4b2bb3e8fc1da284dcae
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c6e518f644e8fc43db58ef481312f44b2071a0dc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724672"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194304"
 ---
-# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Rövid útmutató: Node.js használata Azure SQL Database-adatbázis lekérdezéséhez
+# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Gyors útmutató: Node.js használata Azure SQL Database-adatbázis lekérdezéséhez
 
 Ez a cikk bemutatja, hogyan használható [Node.js](https://nodejs.org) csatlakozni egy Azure SQL Database-adatbázishoz. Ezután használhatja a T-SQL-utasítások használatával adatokat lekérdezni.
 
@@ -27,8 +27,6 @@ Ez a cikk bemutatja, hogyan használható [Node.js](https://nodejs.org) csatlako
 Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltételek vonatkoznak:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- A [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md) használ a számítógép nyilvános IP-cím
 
 - NODE.js-kapcsolódó szoftverek az operációs rendszer:
 

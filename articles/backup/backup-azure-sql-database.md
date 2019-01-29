@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 50085336c59f2284f357e32b875eae08ff90d30f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 959e58a58099b71a595f995e03cc70255fd6d059
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790174"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198027"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Biztonsági másolatot az SQL Server-adatbázisok
 
@@ -88,10 +88,10 @@ Linux jelenleg nem támogatott.
 
 ### <a name="supported-sql-server-versions-and-editions"></a>Támogatott SQL Server-verziók és kiadások
 
-- Az SQL Server 2012 Enterprise, Standard, Web, Developer, Express
-- Az SQL Server 2014 Enterprise, Standard, Web, Developer, Express
+- SQL Server 2012 Enterprise, Standard, Web, Developer, Express
+- SQL Server 2014 Enterprise, Standard, Web, Developer, Express
 - SQL Server 2016 Enterprise, Standard, Web, Developer, Express
-- Az SQL Server 2017 Enterprise, Standard, Web, Developer, Express
+- SQL Server 2017 Enterprise, Standard, Web, Developer, Express
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -129,7 +129,7 @@ A kompromisszumot kínál a beállítások között a következők: kezelhetős�
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>A nem Marketplace-en az SQL virtuális gépek engedélyeinek beállítása
 
-A biztonsági mentéshez egy virtuális gép Azure Backup igényel a **AzureBackupWindowsWorkload** kiterjesztéssel kell telepíteni. Ha Azure Marketplace virtuális gépekhez használja, továbbra is [Fedezze fel az SQL Server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases). Ha a virtuális gép, amelyen az SQL-adatbázisok nem hozott létre az Azure Marketplace-ről, a következő eljárással telepítse a bővítményt, és a megfelelő engedélyek beállítása. Mellett a **AzureBackupWindowsWorkload** bővítmény, az Azure Backup SQL-rendszergazdai jogosultságokkal az SQL-adatbázisok védelméhez szükséges. Csak a virtuális gépen adatbázisok felderítéséhez, az Azure Backup hoz létre a fiók **NT SERVICE\AzureWLBackupPluginSvc**. Ez a fiók használatos biztonsági mentési és visszaállítási, és SQL-rendszergazdai jogosultsággal kell rendelkeznie kell. Ezen túlmenően az Azure Backup használja **NT AUTHORITY\SYSTEM** DB felderítési/lekérdezési, így ennek a fióknak kell lennie egy nyilvános bejelentkezés az SQL-fiók.
+A biztonsági mentéshez egy virtuális gép Azure Backup igényel a **AzureBackupWindowsWorkload** kiterjesztéssel kell telepíteni. Ha Azure Marketplace virtuális gépekhez használja, továbbra is [Fedezze fel az SQL Server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases). Ha a virtuális gép, amelyen az SQL-adatbázisok nem hozott létre az Azure Marketplace-ről, a következő eljárással telepítse a bővítményt, és a megfelelő engedélyek beállítása. Mellett a **AzureBackupWindowsWorkload** bővítmény, az Azure Backup SQL-rendszergazdai jogosultságokkal az SQL-adatbázisok védelméhez szükséges. A virtuális gépen adatbázisok felderítéséhez, az Azure Backup hoz létre a fiók **NT SERVICE\AzureWLBackupPluginSvc**. Ez a fiók használatos biztonsági mentési és visszaállítási, és SQL-rendszergazdai jogosultsággal kell rendelkeznie kell. Ezen túlmenően az Azure Backup használja **NT AUTHORITY\SYSTEM** DB felderítési/lekérdezési, így ennek a fióknak kell lennie egy nyilvános bejelentkezés az SQL-fiók.
 
 Engedélyek beállítása:
 

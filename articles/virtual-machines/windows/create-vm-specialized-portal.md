@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: 905f00842c5ce74f681a6c5c09ff8bf6c7a9e162
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b24435501ed1312e91ebec9b9c434971dbc94b55
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091249"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163449"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Virtuális gép létrehozása VHD-fájlból az Azure portal használatával
 
@@ -28,6 +28,8 @@ Többféleképpen is lehet létrehozni egy virtuális gépet (VM) az Azure-ban:
 - Ha már rendelkezik egy virtuális merevlemez (VHD), vagy másolja a VHD-t használja a meglévő virtuális gépről szeretne, létrehozhat egy új virtuális gép által *csatolása* a VHD-az új virtuális gép operációsrendszer-lemezként. 
 
 - A törölt virtuális gépek VHD-fájlból egy új virtuális Gépet is létrehozhat. Például ha egy Azure virtuális Gépen, amely nem megfelelően működik, törölje a virtuális Gépet szabadon a virtuális merevlemez használatával hozzon létre egy új virtuális Gépet. Újból felhasználhatja a virtuális Merevlemezzel, vagy a virtuális merevlemez másolatának létrehozása egy pillanatkép létrehozásához, és majd hozzon létre az új felügyelt lemez a pillanatképből. Pillanatkép létrehozása eltarthat néhány további lépést, de megőrzi az eredeti virtuális merevlemez, és egy tartalék biztosít.
+
+- Vegyünk egy klasszikus virtuális gép, és a virtuális merevlemez használatával hozzon létre egy új virtuális Gépet, amely a Resource Manager üzemi modell és a felügyelt lemezeket használ. A legjobb eredmények **leállítása** a pillanatkép létrehozása előtt az Azure Portalon a klasszikus virtuális gép.
  
 - A helyi VHD feltöltése és csatolása a új virtuális gép által a helyszíni virtuális merevlemezről hozhat létre egy Azure virtuális Gépen. Használhatja az PowerShell vagy egy másik eszköz a virtuális merevlemez feltöltéséhez egy tárfiókba, és ezután egy felügyelt lemezt hoz létre a VHD-ből. További információkért lásd: [egyéni VHD feltöltése](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
 

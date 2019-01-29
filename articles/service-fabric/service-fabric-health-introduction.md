@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 6cba4e1fd9c9fe5fdaa7ff4513218a606a4eace9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215230"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194287"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy állapotmodell által biztosított a gazdag, rugalmas és bővíthető állapotának kiértékelését és a jelentéskészítés mutatja be. A modell lehetővé teszi, közel valós idejű figyelését a fürt és a benne lévő futó szolgáltatások állapotát. Egyszerűen egészségügyi információk beszerzéséhez, és kijavíthatja az esetleges problémák előtt alkalmazza, és a nagy leállások miatt. A tipikus modellben szolgáltatások küldeni a jelentéseket a saját helyi található nézetek alapján, és, hogy információt összesített értéket jelenít meg, adja meg a teljes fürt szintű megtekintése.
@@ -68,10 +68,10 @@ A health hierarchia szülő-gyermek típusú kapcsolatokat áll. A fürt csomóp
 A rendszerállapot-hierarchiában a rendszer a legújabb rendszerállapot-jelentések alapján, vagyis majdnem valós idejű információkat legfrissebb állapotát jeleníti meg.
 Belső és külső watchdogs jelentései ugyanazokat az entitásokat a logikai alkalmazás-specifikus vagy egyéni figyelt feltételek alapján. Felhasználói jelentések megtalálhatók a jelentések segítségével.
 
-Tervezze meg, hogy hogyan nagy méretű felhőalapú szolgáltatások tervezése során egészségügyi válaszolni, és jelentse be. A kezdeti befektetési, hibakeresés, monitorozása és működtetése megkönnyíti a szolgáltatás.
+Tervezze meg, hogy hogyan nagy méretű felhőalapú szolgáltatások tervezése során egészségügyi válaszolni, és jelentse be. A kezdeti beruházást, hibakeresés, monitorozása és működtetése megkönnyíti a szolgáltatás.
 
 ## <a name="health-states"></a>Állapotokat
-A Service Fabric állapota háromféle használ, írja le, hogy egy entitás kifogástalan-e vagy sem: OK, figyelmeztetés és hiba. A health Store adatbázisban küldött összes jelentés kell adnia ezeket az állapotokat az egyik. Az egészségügyi kiértékelésének eredménye az ezeket az állapotokat az egyik.
+A Service Fabric állapota háromféle írja le, hogy egy entitás kifogástalan állapotban-e vagy nem használ: OK, figyelmeztetés és hiba. A health Store adatbázisban küldött összes jelentés kell adnia ezeket az állapotokat az egyik. Az egészségügyi kiértékelésének eredménye az ezeket az állapotokat az egyik.
 
 A lehetséges [állapotokat](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate) vannak:
 
@@ -233,7 +233,7 @@ Az állapot átmeneti mezők a megalapozottabb riasztásokat vagy a "korábbi" �
 * Csak a feltételeket, amelyek megváltoztak az utolsó riasztás X perc. Ha egy jelentés már volt, hiba történt a megadott időpont előtt, figyelmen kívül hagyható, mivel már volt korábban jelzést.
 * Ha egy tulajdonságot a figyelmeztetési és váltása, határozza meg, mennyi ideig már nem megfelelő állapotú (azaz nem OK). Ha például egy riasztást, ha a tulajdonság még nem kifogástalan állapotú öt percnél hosszabb ideig lefordítható (HealthState! = OK gombra, és most - LastOkTransitionTime > 5 perc).
 
-## <a name="example-report-and-evaluate-application-health"></a>Példa: Jelentés és alkalmazásállapot kiértékelése
+## <a name="example-report-and-evaluate-application-health"></a>Példa: Alkalmazás állapotának kiértékelése és jelentse be
 Az alábbi példa egy állapotjelentése az alkalmazást a Powershellen keresztül küld **fabric: / WordCount** a forrásból **MyWatchdog**. Az állapotjelentés az egészségügyi létre hibaállapot, végtelen TimeToLive az "availability" tulajdonság információkat tartalmaz. Ezután lekérdezi az alkalmazás állapotáról, amely összesítve egészségügyi állapot hibák és a jelentett hálózatállapot-események hálózatállapot-események listájában.
 
 ```powershell

@@ -7,19 +7,19 @@ author: barbkess
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: cb477ccba648a15c88f2e216b39d4ba1676d43c7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fd677a34caa5a1871808b31477e91746ec9fdccb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464612"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170402"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Felhasználók hozzárendelése alkalmazások
 
@@ -55,9 +55,9 @@ Egy felhasználó egy alkalmazáshoz akkor először kell rendelni, valamilyen m
 
 8.  A rendszergazda rendel egy licencet egy csoportot, hogy a felhasználó tagja első gyártótól származó alkalmazás, például [a Microsoft Office 365-höz](https://products.office.com/)
 
-9.  Egy [rendszergazda jóváhagy egy alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) minden felhasználó és a felhasználó által használandó jelentkezik be az alkalmazáshoz
+9.  Egy [rendszergazda jóváhagy egy alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) minden felhasználó és a felhasználó által használandó jelentkezik be az alkalmazáshoz
 
-10. A felhasználó [jóváhagy egy alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) magukat, jelentkezzen be az alkalmazás
+10. A felhasználó [jóváhagy egy alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) magukat, jelentkezzen be az alkalmazás
 
 ## <a name="next-steps"></a>További lépések
 [Alkalmazások kezelése az Azure Active Directoryval](what-is-application-management.md)

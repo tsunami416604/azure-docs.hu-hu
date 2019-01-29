@@ -11,14 +11,14 @@ ms.author: andrela
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/20/2018
-ms.openlocfilehash: 5c12bd54c0ea96ac915fedab94f03cf044330dcf
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6b748ebdbdc443c5fa44c82323774cd12c82ba38
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723295"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197500"
 ---
-# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Rövid útmutató: Java használata Azure SQL Database-adatbázis lekérdezéséhez
+# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Gyors útmutató: Java használata Azure SQL Database-adatbázis lekérdezéséhez
 
 Ez a cikk bemutatja, hogyan használható [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) csatlakozni egy Azure SQL Database-adatbázishoz. Ezután használhatja a T-SQL-utasítások használatával adatokat lekérdezni.
 
@@ -27,8 +27,6 @@ Ez a cikk bemutatja, hogyan használható [Java](/sql/connect/jdbc/microsoft-jdb
 Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltételek vonatkoznak:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- A [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md) használ a számítógép nyilvános IP-cím
 
 - Java-kapcsolódó szoftverek az operációs rendszer telepítve:
 
@@ -75,7 +73,7 @@ Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltéte
 
 1. Már rendelkezik egy nevű fájlt *App.java* a Maven-projektben található:
 
-   *.. \sqltest\src\main\java\com\sqldbsamples\App.Java*
+   *..\sqltest\src\main\java\com\sqldbsamples\App.java*
 
 1. Nyissa meg a fájlt, és cserélje le a tartalmát a következő kódra. Majd adja hozzá a megfelelő értékeket a kiszolgáló, adatbázis, a felhasználó és a jelszavát.
 

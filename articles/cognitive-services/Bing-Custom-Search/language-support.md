@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: v-gedod
-ms.openlocfilehash: 8fa70705d1dff5c3150fa5868938a3c50ef863fe
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 24b14c4f0ca185a7916aeb19671a22ff46a23ee2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815563"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194848"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>A Bing Custom Search API nyelvéhez és régiójához támogatása
 
@@ -32,36 +32,36 @@ A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást
 |Ország/régió|Kód|
 |-------|----|
 |Argentína|AR|
-|Ausztrália|AUSZTRÁLIA|
+|Ausztrália|AU|
 |Ausztria|AT|
-|Belgium|LEHET|
+|Belgium|BE|
 |Brazília|BR|
 |Kanada|CA|
 |Chile|CL|
 |Dánia|DK|
 |Finnország|FI|
 |Franciaország|JK|
-|Németország|NÉMETORSZÁG|
+|Németország|DE|
 |Hongkong KKT|HK|
-|India|INDIA|
+|India|IN|
 |Indonézia|ID (Azonosító)|
 |Olaszország|IT|
 |Japán|JP|
-|Korea|KOREA|
-|Malajzia|SAJÁT|
+|Korea|KR|
+|Malajzia|MY|
 |Mexikó|MX|
 |Hollandia|NL|
 |Új-Zéland|NZ|
-|Norvégia|NEM|
+|Norvégia|NO|
 |Kína|CN|
 |Lengyelország|PL|
-|Portugália|CSENDES-ÓCEÁNI IDŐ|
+|Portugália|PT|
 |Fülöp-szigetek|PH|
-|Oroszország|KÉRELEMEGYSÉG|
+|Oroszország|RU|
 |Szaúd-Arábia|SA|
 |Dél-Afrika|ZA|
 |Spanyolország|ES|
-|Svédország|HASZNÁLATA|
+|Svédország|SE|
 |Svájc|CH|
 |Tajvan|TW|
 |Törökország|TR|
@@ -92,7 +92,7 @@ A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást
 |Olaszország|olasz|it-IT|
 |Japán|japán|ja-JP|
 |Korea|koreai|ko-KR|
-|Malajzia|Angol|a saját en|
+|Malajzia|Angol|en-MY|
 |Mexikó|spanyol|es-MX|
 |Hollandia|holland|NL-NL|
 |Új-Zéland|Angol|en-NZ|
@@ -111,5 +111,5 @@ A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást
 |Tajvan|Kínai (hagyományos)|zh-TW|
 |Törökország|török|tr-TR|
 |Egyesült Királyság|Angol|en-GB|
-|Egyesült Államok|Angol|hu-HU|
-|Egyesült Államok|spanyol|es-USA|
+|Egyesült Államok|Angol|en-US|
+|Egyesült Államok|spanyol|es-US|

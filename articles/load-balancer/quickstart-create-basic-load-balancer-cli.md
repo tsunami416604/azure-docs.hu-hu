@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: kumud
-ms.openlocfilehash: 18c5b8f31b2a912eade360ebc2c5845782667250
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: efdc883f2d9d3cacb1f3ce1c17dc5c633f2c8ddc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230220"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162786"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Gyors útmutató: Azure CLI használatával virtuális gépek terhelésének elosztásához load balancer létrehozása
 
@@ -33,7 +33,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 A következő példában létrehozunk egy *myResourceGroupLB* nevű erőforráscsoportot az *eastus* helyen:
 
@@ -45,7 +45,7 @@ A következő példában létrehozunk egy *myResourceGroupLB* nevű erőforrásc
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 
-A webalkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Az [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) paranccsal hozzon létre egy nyilvános IP-címet *myPublicIP* néven a *myResourceGroupLB* erőforráscsoportban.
+A webalkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Az [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) paranccsal hozzon létre egy nyilvános IP-címet *myPublicIP* néven a *myResourceGroupLB* erőforráscsoportban.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupLB --name myPublicIP
@@ -61,7 +61,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
 
-Hozzon létre egy **myLoadBalancer** nevű nyilvános Azure Load Balancert az [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) paranccsal, amely tartalmaz egy **myFrontEndPool** nevű előtérbeli készletet, és egy **myBackEndPool** háttérkészletet, amely az előző lépésben létrehozott **myPublicIP** nyilvános IP-címhez van társítva.
+Hozzon létre egy **myLoadBalancer** nevű nyilvános Azure Load Balancert az [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) paranccsal, amely tartalmaz egy **myFrontEndPool** nevű előtérbeli készletet, és egy **myBackEndPool** háttérkészletet, amely az előző lépésben létrehozott **myPublicIP** nyilvános IP-címhez van társítva.
 
 ```azurecli-interactive
   az network lb create \
@@ -74,7 +74,7 @@ Hozzon létre egy **myLoadBalancer** nevű nyilvános Azure Load Balancert az [a
 
 ### <a name="create-the-health-probe"></a>Az állapotminta létrehozása
 
-Az állapotfigyelő mintavételező az összes virtuálisgép-példányt ellenőrzi, hogy biztosan képesek legyenek hálózati forgalom küldésére. A mintavételező tesztjén elbukó virtuálisgép-példányokat a rendszer eltávolítja a terheléselosztóból, és így is maradnak, amíg ismét online állapotúak nem lesznek, és a mintavételező tesztje azt nem jelzi, hogy megfelelő az állapotuk. Hozzon létre egy állapotmintát az [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) paranccsal a virtuális gépek állapotának monitorozásához. 
+Az állapotfigyelő mintavételező az összes virtuálisgép-példányt ellenőrzi, hogy biztosan képesek legyenek hálózati forgalom küldésére. A mintavételező tesztjén elbukó virtuálisgép-példányokat a rendszer eltávolítja a terheléselosztóból, és így is maradnak, amíg ismét online állapotúak nem lesznek, és a mintavételező tesztje azt nem jelzi, hogy megfelelő az állapotuk. Hozzon létre egy állapotmintát az [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) paranccsal a virtuális gépek állapotának monitorozásához. 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -87,7 +87,7 @@ Az állapotfigyelő mintavételező az összes virtuálisgép-példányt ellenő
 
 ### <a name="create-the-load-balancer-rule"></a>A terheléselosztási szabály létrehozása
 
-A terheléselosztási szabályok meghatározzák az előtérbeli IP-konfigurációt a bejövő forgalomhoz, a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Hozzon létre egy *myLoadBalancerRuleWeb* nevű terheléselosztási szabályt az [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) paranccsal a *myFrontEndPool* nevű előtérbeli címkészlet 80-as portjának figyeléséhez és az elosztott terhelésű hálózati forgalomnak a *myBackEndPool* nevű háttércímkészletre való küldéséhez, amely a 80-as portot használja. 
+A terheléselosztási szabályok meghatározzák az előtérbeli IP-konfigurációt a bejövő forgalomhoz, a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Hozzon létre egy *myLoadBalancerRuleWeb* nevű terheléselosztási szabályt az [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) paranccsal a *myFrontEndPool* nevű előtérbeli címkészlet 80-as portjának figyeléséhez és az elosztott terhelésű hálózati forgalomnak a *myBackEndPool* nevű háttércímkészletre való küldéséhez, amely a 80-as portot használja. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -108,7 +108,7 @@ Mielőtt üzembe helyezné a virtuális gépeket, és tesztelné a terheléselos
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) paranccsal hozzon létre a *myResourceGroup* erőforráscsoportban egy *myVnet* nevű virtuális hálózatot egy *mySubnet* nevű alhálózattal.
+Az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) paranccsal hozzon létre a *myResourceGroup* erőforráscsoportban egy *myVnet* nevű virtuális hálózatot egy *mySubnet* nevű alhálózattal.
 
 ```azurecli-interactive
   az network vnet create \

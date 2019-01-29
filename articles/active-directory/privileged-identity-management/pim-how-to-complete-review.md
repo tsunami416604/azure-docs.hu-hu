@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3955f4bf9b579ae40424c2650f9d3b4c2ac4f030
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: fc4dcc22cf22f70fcf441c3c8a54aeda2ffd7588
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188586"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189668"
 ---
 # <a name="complete-an-access-review-for-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó hozzáférési felülvizsgálat befejezése
 A kiemelt szerepkörű rendszergazdák után tekintse át a privileged access- [el lett indítva a hozzáférési felülvizsgálat](pim-how-to-start-security-review.md). Az Azure AD Privileged Identity Management (PIM) automatikusan arra kéri a felhasználót, tekintse át a hozzáférése az e-mailt küld. Ha a felhasználó nem kapott e-mailt, küldhet nekik az utasításokat [hozzáférési felülvizsgálat végrehajtása](pim-how-to-perform-security-review.md).
@@ -55,4 +55,4 @@ Ha nem érdekli a felülvizsgálat minden további, törölje azt. A **törlése
 ## <a name="next-steps"></a>További lépések
 
 - [A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó hozzáférési felülvizsgálat indítása](pim-how-to-start-security-review.md)
-- [A PIM saját Azure AD-címtárbeli szerepkörök, hozzáférési felülvizsgálat végrehajtása](pim-how-to-perform-security-review.md)
+- [A saját Azure AD-címtárbeli szerepkörök hozzáférési felülvizsgálatának végrehajtása a PIM szolgáltatásban](pim-how-to-perform-security-review.md)

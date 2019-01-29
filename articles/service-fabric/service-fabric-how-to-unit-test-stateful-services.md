@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: 4941d893c6c871541772569e42bf5169270def88
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: a030860bcef41d7276e1356553b984f55e27ae1e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413557"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164157"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>A Stateful Services egységtesztek létrehozása
 A Service Fabric állapotalapú szolgáltatások egységtesztelés tárja, akkor nem feltétlenül kell érint a hagyományos alkalmazás vagy a tartomány-specifikus egységtesztelés gyakori hibákat. Az állapotalapú szolgáltatások esetében egységteszteket fejlesztésekor nincsenek néhány szempontot, amelyeket figyelembe kell tárolni.
@@ -91,7 +91,7 @@ replicaSet.PromoteNewReplicaToPrimaryAsync(4);
 
 //promote the first idle secondary to an active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync();
-//promote idle secodary with replica id 4 to active secondary
+//promote idle secondary with replica id 4 to active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync(4);
 
 //add a new replica with randomly assigned replica id and promote it to primary

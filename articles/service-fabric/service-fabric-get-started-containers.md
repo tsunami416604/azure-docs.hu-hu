@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: twhitney
-ms.openlocfilehash: 13637e4de0d555bdd0e70c69097b204c286eb24c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 38979d80e25e0430082b7819d506b653c35697e6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063828"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172953"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 > [!div class="op_single_selector"]
@@ -350,9 +350,9 @@ Engedélyezheti vagy letilthatja a szolgáltatást a `UseDefaultRepositoryCreden
 
 A Service Fabric majd használja az alapértelmezett adattár hitelesítő adatait, amelyeket a clustermanifest jegyzékben alatt megadhatja az `Hosting` szakaszban.  Ha `UseDefaultRepositoryCredentials` van `true`, Service Fabric a clustermanifest jegyzékben olvassa be a következő értékeket:
 
-* DefaultContainerRepositoryAccountName (karakterlánc)
-* DefaultContainerRepositoryPassword (karakterlánc)
-* IsDefaultContainerRepositoryPasswordEncrypted (logikai)
+* DefaultContainerRepositoryAccountName (string)
+* DefaultContainerRepositoryPassword (string)
+* IsDefaultContainerRepositoryPasswordEncrypted (bool)
 * (Karakterlánc)---DefaultContainerRepositoryPasswordType támogatott 6.4-es futásidejű kezdve
 
 Íme egy példa belül is hozzáadhat a `Hosting` szakaszt az ClusterManifestTemplate.json fájlban. További információkért lásd: [módosítása az Azure Service Fabric-fürt beállítások](service-fabric-cluster-fabric-settings.md) és [titkos alkalmazáskulcsok kezelése az Azure Service Fabric](service-fabric-application-secret-management.md)
@@ -414,7 +414,7 @@ A 6.1-es verzióval kezdődően a Service Fabric automatikusan integrálja a [do
 
 ![HealthCheckHealthy][3]
 
-![HealthCheckUnealthyApp][4]
+![HealthCheckUnhealthyApp][4]
 
 ![HealthCheckUnhealthyDsp][5]
 
@@ -548,7 +548,7 @@ Itt találja a jelen cikkben használt teljes szolgáltatás- és alkalmazásjeg
 
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 

@@ -9,18 +9,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: d6fb5a97ef573a35f335875beddc7752f580bec1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9cb496ad1ad679fd3a4e6f55f15f658f084e308a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296641"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176335"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Az Azure Active Directory 2. verzió parancsmagjainak csoportfelügyelet
 > [!div class="op_single_selector"]
@@ -218,15 +218,15 @@ A nem rendszergazdai felhasználók számára csoportok létrehozását letiltá
 
 1. Győződjön meg arról, hogy a nem rendszergazda felhasználók hozhatnak létre csoportokat:
    
-  ````
+  ```
   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-  ````
+  ```
   
 2. Ha a visszaadott érték `UsersPermissionToCreateGroupsEnabled : True`, akkor a nem rendszergazda jogosultságú felhasználók létrehozhatnak csoportokat. Ez a funkció letiltása:
   
-  ```` 
+  ``` 
   Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
-  ````
+  ```
   
 ## <a name="manage-owners-of-groups"></a>A csoportok tulajdonosainak kezelése
 Tulajdonosok hozzáadása egy csoporthoz, az Add-AzureADGroupOwner parancsmaggal:
@@ -250,10 +250,10 @@ Ha azt szeretné, tulajdonos eltávolítása a csoportból, használja a Remove-
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
 
 ## <a name="reserved-aliases"></a>Fenntartott aliasok 
-Egy csoport létrehozásakor bizonyos végpontok lehetővé teszik a végfelhasználó számára adjon meg egy mailNickname vagy a csoport e-mail-címe részeként használt alias. Az alábbi magas szintű jogosultsággal rendelkező e-mail-aliasokat a csoportok csak egy Azure AD globális rendszergazda is létrehozható. 
-  
+Egy csoport létrehozásakor bizonyos végpontok lehetővé teszik a végfelhasználó számára adjon meg egy mailNickname vagy a csoport e-mail-címe részeként használt alias. Az alábbi magas szintű jogosultsággal rendelkező e-mail-aliasokat a csoportok csak egy Azure AD globális rendszergazda is létrehozható. 
+  
 * visszaélés 
-* rendszergazda 
+* admin 
 * Rendszergazda 
 * hostmaster 
 * majordomo 
@@ -261,7 +261,7 @@ Egy csoport létrehozásakor bizonyos végpontok lehetővé teszik a végfelhasz
 * legfelső szintű 
 * biztonságos 
 * biztonság 
-* SSL-rendszergazda 
+* ssl-admin 
 * gazdáját 
 
 ## <a name="next-steps"></a>További lépések

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 74587d05ec27e87d87aa3647c22f5c90a9cdcf58
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 1a3cfb51cc75c89c5a4580b1b7721eb763078980
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436398"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096704"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Gépek előkészítése kezelésre, az Azure Automation állapot konfigurációja
 
@@ -168,7 +168,7 @@ Helyszíni Linuxos gépek, Linux rendszerű gépek az Azure-ban, és nem Azure-f
 1. Ellenőrizze, hogy a legújabb [PowerShell a Linuxhoz készült meg Desired State Configuration a](https://github.com/Microsoft/PowerShell-DSC-for-Linux) telepítve van az Azure Automation Állapotkonfiguráció a bevezetni kívánt számítógépeken.
 1. Ha a [PowerShell DSC helyi Configuration Manager alapértelmezett](/powershell/dsc/metaconfig4) felel meg a használati eset, és készítse elő az ilyen gépek szeretné, hogy azok **mindkét** lekéréshez és Azure Automation Állapotkonfiguráció jelentést:
 
-   - Az összes Linux az Azure Automation állapot konfiguráció előkészítése, használjon `Register.py` bevezetni a PowerShell DSC helyi Configuration Manager alapértelmezett beállítások használatával:
+   - Az összes Linux üzembe helyezni az Azure Automation Állapotkonfiguráció, használjon `Register.py` bevezetni a PowerShell DSC helyi Configuration Manager alapértelmezett beállítások használatával:
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: 43f30989fa09e711fc71941e7722dcd195212472
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fbc6e7586e116df1fa19c6c9e0c5a5b17f00d646
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416231"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096764"
 ---
 # <a name="validate-graph-integration-for-azure-stack"></a>Ellenőrizze a graph-integráció az Azure Stackhez
 
@@ -94,7 +94,7 @@ A következő előfeltételek vonatkoznak a helyen kell lennie.
     Invoke-AzsGraphValidation Completed
     ```
 
-Éles környezetben az operátor munkaállomás a hálózati kapcsolat tesztelése nem teljes mértékben az Azure Stack számára elérhető kapcsolatok jelezhetnek. Az Azure Stack-blokk nyilvános VIP-hálózat lesz szüksége a kapcsolatot az LDAP-forgalom identitásintegráció végrehajtásához.
+Éles környezetben az operátor munkaállomás a hálózati kapcsolat tesztelése nem teljes mértékben az Azure Stack számára elérhető kapcsolatok jelezhetnek. Az Azure Stack-blokk nyilvános VIP-hálózat kapcsolódnia kell az LDAP-forgalom identitásintegráció végrehajtásához.
 
 ## <a name="report-and-log-file"></a>A jelentés és-naplófájl
 

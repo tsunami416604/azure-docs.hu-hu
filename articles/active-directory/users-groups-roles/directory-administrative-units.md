@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.topic: article
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 08/17/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 0884726e59d9ab3f5a5cfe7bb0608f6b5a5da250
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fe3f41e95cc3aa4f22ff2cdea24388f7e9974755
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449908"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181197"
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Adminisztrációs egységek felügyelete az Azure AD – nyilvános előzetes verzió
 Ez a cikk azt ismerteti, felügyeleti egységek formájában – erőforrásokat, amelyeket a rendszergazdai engedélyek delegálása felhasználók és a szabályzatok alkalmazása felhasználóinak egy alhalmazára részhalmazainak keresztül használhatja egy új Azure Active Directory-tárolót. Az Azure Active Directory felügyeleti egységek engedélyezése központi rendszergazdák regionális rendszergazdák engedélyeket delegálhatnak vagy részletes szabályzat beállítása.

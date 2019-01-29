@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8bfd4ca6a9bdac999653fa9448bf7e754e9e6180
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254468"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168243"
 ---
 <a name="create-a-microsoft-developer-account"></a>A Microsoft Developer-fiók létrehozása
 ====================================
@@ -106,7 +106,7 @@ A Microsoft Developer Center egyszer a vállalati adatok regisztrálásához has
    ![Válassza ki az országot/régiót](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"Értékesítő" országokat: ahhoz, hogy a szolgáltatások az Azure piactéren értékesítheti, a regisztrált entitást kell lennie az egyik a jóváhagyott "értékesítő" országokat jelennek meg a legördülő listában. Ez a korlátozás küldenie jóváhagyásra cége kifizetési és adózási okból is. További információkért tekintse meg a piactér részvételi szabályzatának megfelelően.
+    >"Sell-from" Countries: Annak érdekében, hogy a szolgáltatások az Azure piactéren értékesítheti, a regisztrált entitást kell lennie az egyik a jóváhagyott "értékesítő" országokat jelennek meg a legördülő listában. Ez a korlátozás küldenie jóváhagyásra cége kifizetési és adózási okból is. További információkért tekintse meg a piactér részvételi szabályzatának megfelelően.
 
 5. Válassza ki **vállalati** , a "Fiók típusa", majd **tovább**.
 
@@ -181,7 +181,8 @@ Beszerzési kereskedelmi ajánlatokat a közzétételhez meg kell hozzáadása k
     - Kattintson a **Tovább** gombra.
 4.  Adja meg a adózási adatait, és válassza ki **tovább**.
 
->[FIGYELMEZTETÉS]! A kereskedelmi ajánlatokat az éles környezetben anélkül, hogy a fiók létrehozása és adózási adatait a Microsoft Developer Center fiókjában lemezképekét fogunk.
+>[!WARNING]
+>A kereskedelmi ajánlatokat az éles környezetben anélkül, hogy a fiók létrehozása és adózási adatait a Microsoft Developer Center fiókjában lemezképekét fogunk.
 
 ### <a name="developer-center-registration-issues"></a>Fejlesztői központ regisztrációjával kapcsolatos problémák
 

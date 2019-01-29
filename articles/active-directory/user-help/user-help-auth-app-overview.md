@@ -6,17 +6,17 @@ author: eross-msft
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
-ms.openlocfilehash: 0b3b79b3791e7cbba11dc9282fc60fb4f13b3c47
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 2379f1ff4fb4385015cc6077cb923cab998d1d11
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903944"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175213"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Mi a Microsoft Authenticator alkalmazást?
 A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok kétfaktoros ellenőrzési használatakor. A kétfaktoros hitelesítési segítségével a fiókok biztonságosabb, hozzáférhet a különösen bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejtett is, amelyeket elloptak vagy feltört, kéttényezős hitelesítés végrehajtása egy további biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében.
@@ -63,7 +63,7 @@ A fiók típusától függően a szervezet dönthet, hogy kétfaktoros ellenőrz
 
 |Cikk |Leírás |
 |------|------------|
-|[Töltse le és telepítse az alkalmazást](microsoft-authenticator-app-how-to.md)|Tudhatja meg, hol és hogyan lekérése és telepítése a Microsoft Authenticator alkalmazást az Android, iOS és Windows Phone rendszerű eszközökre vonatkozó.|
+|[Az alkalmazás letöltése és telepítése](microsoft-authenticator-app-how-to.md)|Tudhatja meg, hol és hogyan lekérése és telepítése a Microsoft Authenticator alkalmazást az Android, iOS és Windows Phone rendszerű eszközökre vonatkozó.|
 |[A munkahelyi vagy iskolai fiókok hozzáadása](microsoft-authenticator-app-add-work-account.md)|Ismerteti, hogyan lehet a különböző munkahelyi vagy iskolai és személyes fiókok hozzáadása a Microsoft Authenticator alkalmazást.|
 |[A személyes fiókok hozzáadása](microsoft-authenticator-app-add-personal-account.md)|Ismerteti, hogyan lehet a személyes Microsoft- és nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazást.|
 |[A fiókok manuális hozzáadása](microsoft-authenticator-app-add-account-manual.md)|Ha nem sikerül, a megadott QR-kód bemutatja, hogyan a fiókok manuális hozzáadása a Microsoft Authenticator alkalmazást.|

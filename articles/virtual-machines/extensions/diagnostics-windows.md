@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 2a4f55ea15c933094befb8855185c4b7e353dee3
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 26e902cb31a77ffb1516f084bb71b5a99a89fba9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054068"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188643"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Az Azure Diagnostics használatának engedélyezése a PowerShell-lel virtual windowsos virtuális gépen
 
@@ -84,13 +84,13 @@ A konfigurációs van szüksége, frissíteni kell a következők:
   * Az erőforrás-azonosítója a következő minta használatával lehet létrehozni: "/ subscriptions / {*a virtuális géppel az előfizetéshez tartozó előfizetés-azonosító*} /resourceGroups/ {*az erőforráscsoport nevét a virtuális gép*} / providers/Microsoft.Compute/virtualMachines/ {*a virtuális gép neve*} ".
   * Ha például az előfizetés AZONOSÍTÓJÁT az előfizetést, ahol a virtuális gép fut-e **11111111-1111-1111-1111-111111111111**, az erőforráscsoport az erőforráscsoport neve **MyResourceGroup**, és a Virtuális gép neve **MyWindowsVM**, majd az értékét *resourceID* lenne:
     
-      ```
+      ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
       ```
   * További információt a metrikák jönnek létre teljesítmény számlálókat és metrikák konfigurációja alapján, lásd: [Azure Diagnostics metrikák table storage-ban](diagnostics-template.md#wadmetrics-tables-in-storage).
 * A **StorageAccount** elemet hozzá kell frissíteni a diagnosztikai tárfiók nevére.
   
-    ```
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
         <WadCfg>

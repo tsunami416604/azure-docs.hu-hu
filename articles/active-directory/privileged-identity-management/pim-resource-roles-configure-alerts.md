@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 5d990d86124a7360dbc0398cf4250f9b088c183b
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 564517052796ee5dbc022ff92afcaa0216bdf8ea
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465571"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196838"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az PIM-ben
 Privileged Identity Management (PIM) az Azure-erőforrások riasztásokat állít elő, ha bármi gyanúsat vagy nem biztonságos tevékenységre van a környezetben. Riasztást vált ki, amikor megjelenik a riasztások lapon. 
@@ -40,9 +40,9 @@ Válasszon ki egy riasztást, a felhasználók vagy szerepkör, amely kiváltott
 
 
 ### <a name="severity"></a>Severity
-* **Magas**: azonnali beavatkozást igényel egy szabályzat megsértése miatt. 
-* **Közepes**: nem igényelnek azonnali intézkedést, de lehetséges szabályzat megsértését jelzi.
-* **Alacsony**: nem igényelnek azonnali intézkedést, de javasol a kívánt házirend módosítását.
+* **Magas**: Egy szabályzat megsértése miatt azonnali beavatkozást igényel. 
+* **Közepes**: Nem igényel azonnali intézkedést, de lehetséges szabályzat megsértését jelzi.
+* **Alacsony**: Nem igényel azonnali intézkedést, de javasol a kívánt házirend módosítását.
 
 ## <a name="configure-security-alert-settings"></a>Biztonsági riasztási beállításainak konfigurálása
 Lépjen a riasztások oldaláról **beállítások**.

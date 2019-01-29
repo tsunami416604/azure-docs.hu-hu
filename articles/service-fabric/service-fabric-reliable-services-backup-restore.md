@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 42aaafd346c6db9d4a8780628319720aa3f28134
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 986a7be49f8ae0f683b89596204845bb08eeaf2d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727715"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095770"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Biztonsági mentését és visszaállítását a Reliable Services és Reliable Actors
 Az Azure Service Fabric egy magas rendelkezésre állású platform, amely az állapot replikál a magas rendelkezésre állás fenntartása érdekében több csomópontra.  Ily módon még akkor is, ha a fürtben egy csomópont meghibásodik, a szolgáltatások továbbra is elérhető. Bár ez a platform által biztosított beépített redundancia néhány elegendő, bizonyos esetekben célszerű a szolgáltatás számára az adatok biztonsági másolatát (egy külső tároló).
@@ -44,7 +44,7 @@ Például egy szolgáltatást érdemes adatok biztonsági mentéséhez a követk
 A biztonsági mentési és visszaállítási funkció lehetővé teszi, hogy a szolgáltatások hozhat létre és biztonsági másolatokat állíthatja vissza a Reliable Services API épül. A platform által biztosított biztonsági mentési API-k lehetővé teszik a biztonsági másolat szolgáltatás partíció állapot nélküli blokkoló olvasási vagy írási műveleteket. A visszaállítási API-k engedélyezése a szolgáltatás partíció állapot vissza kell állítani a kiválasztott biztonsági másolatból.
 
 ## <a name="types-of-backup"></a>Biztonsági mentés típusai
-Kétféle biztonsági mentés: teljes és növekményes.
+Kétféle biztonsági mentés: Teljes és növekményes.
 Egy teljes biztonsági mentés egy biztonsági mentés állapota a replika újbóli létrehozásához szükséges összes adatot tartalmazó: ellenőrzőpontokat, és minden napló rögzíti.
 Mivel az ellenőrzőpontokat, és a napló rendelkezik, egy teljes biztonsági mentés önmagában állíthatók vissza.
 
@@ -227,7 +227,7 @@ A növekményes biztonsági mentés engedélyezése után a növekményes bizton
   - A replika elsődleges vált, mert soha nem tartott egy teljes biztonsági mentés.
   - A naplórekordok némelyike csonkolt óta a legutóbbi biztonsági mentés készült.
 
-Ha engedélyezve van a növekményes biztonsági mentést, `KvsActorStateProvider` a napló-rekordok kezelése nem használ. kör alakú puffer, és rendszeres időközönként csonkolja azt. Ha nincs biztonsági mentés készül a felhasználó egy időszak 45 perc, a rendszer automatikusan levágja a rekordok naplózása. Ez az időtartam alatt megadásával konfigurálható `logTrunctationIntervalInMinutes` a `KvsActorStateProvider` konstruktor (hasonlóan a növekményes biztonsági mentés engedélyezése). Ha az elsődleges replikának továbbítania kell egy másik replikára készítését minden adat küldése a rekordok naplózása is első csonkolva.
+Ha engedélyezve van a növekményes biztonsági mentést, `KvsActorStateProvider` a napló-rekordok kezelése nem használ. kör alakú puffer, és rendszeres időközönként csonkolja azt. Ha nincs biztonsági mentés készül a felhasználó egy időszak 45 perc, a rendszer automatikusan levágja a rekordok naplózása. Ez az időtartam alatt megadásával konfigurálható `logTruncationIntervalInMinutes` a `KvsActorStateProvider` konstruktor (hasonlóan a növekményes biztonsági mentés engedélyezése). Ha az elsődleges replikának továbbítania kell egy másik replikára készítését minden adat küldése a rekordok naplózása is első csonkolva.
 
 Egy biztonsági mentési láncolatát való visszaállítása során, a Reliable Services hasonló a BackupFolderPath tartalmaznia kell a teljes biztonsági mentés és mások tartalmazó alkönyvtárakat, amely tartalmazza a növekményes biztonsági másolat egy alkönyvtár alkönyvtárak. A visszaállítási API FabricException váltja a megfelelő hibaüzenet jelenik meg, ha a biztonsági mentési láncolatát érvényesítése sikertelen. 
 

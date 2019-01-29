@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 21c0fd9b258100e769172332713769024fb12969
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 48c78f4c3332f28cc37aea0c663976ce7c2d489b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520571"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170946"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Meghajtóhasználat előnézete exportálási feladatokhoz
 Exportálási feladat létrehozása, előtt kell válasszon olyan exportálandó blobok. A Microsoft Azure Import/Export szolgáltatás lehetővé teszi, hogy használja a blob elérési utak listája vagy a blob-címelőtagokat, amelyek a kiválasztott blobokat.  
@@ -27,11 +27,11 @@ A következő paraméterek használata esetén használhatja a `PreviewExport` p
 |Parancssori paraméter|Leírás|  
 |--------------------------|-----------------|  
 |**/ logdir:**< LogDirectory\>|Választható. A naplózási könyvtár. Ez a könyvtár részletes naplófájlok lesz írva. Ha nincs naplókönyvtár van megadva, a naplózási könyvtár az aktuális könyvtárban lesz.|  
-|**/sn:**< StorageAccountName\>|Kötelező. A storage-fiók neve az exportálási feladatot.|  
-|**/SK:**< StorageAccountKey\>|Kötelező, csak ha nincs megadva egy SAS-tárolót. A fiókkulcs a storage-fiókját az exportálási feladatot.|  
-|**/csas:**< ContainerSas\>|Szükséges, csak ha nincs megadva a tárfiók kulcsára. A tároló SAS az exportálási feladatot exportálandó blobok listázásához.|  
-|**/ ExportBlobListFile:**< ExportBlobListFile\>|Kötelező. Az XML-fájl elérési útja blob elérési útjának listáját tartalmazó fájl, vagy a blob elérési útja előtagok exportálható a blobok számára. A használt fájlformátum a `BlobListBlobPath` eleme a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) az Import/Export szolgáltatás REST API-művelet.|  
-|**/ DriveSize:**< DriveSize\>|Kötelező. Exportálási feladatokhoz használható meghajtók méretének *például*, 500 GB, 1,5 TB.|  
+|**/sn:**<StorageAccountName\>|Kötelező. A storage-fiók neve az exportálási feladatot.|  
+|**/sk:**<StorageAccountKey\>|Kötelező, csak ha nincs megadva egy SAS-tárolót. A fiókkulcs a storage-fiókját az exportálási feladatot.|  
+|**/csas:**<ContainerSas\>|Szükséges, csak ha nincs megadva a tárfiók kulcsára. A tároló SAS az exportálási feladatot exportálandó blobok listázásához.|  
+|**/ExportBlobListFile:**<ExportBlobListFile\>|Kötelező. Az XML-fájl elérési útja blob elérési útjának listáját tartalmazó fájl, vagy a blob elérési útja előtagok exportálható a blobok számára. A használt fájlformátum a `BlobListBlobPath` eleme a [Put feladat](/rest/api/storageimportexport/jobs) az Import/Export szolgáltatás REST API-művelet.|  
+|**/DriveSize:**<DriveSize\>|Kötelező. Exportálási feladatokhoz használható meghajtók méretének *például*, 500 GB, 1,5 TB.|  
 
 ## <a name="command-line-example"></a>Parancssori példa
 

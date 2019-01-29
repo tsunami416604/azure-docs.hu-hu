@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3e390763255878384e7a767158210d0515b09958
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fa3c94854f8f67da9caa2955f5c62581843e39c8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653548"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156105"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-alkalmazás- és szolgáltatásjegyzékek
 Ez a cikk bemutatja, hogyan történik a Service Fabric-alkalmazásokat és szolgáltatásokat, hogy meghatározott és verziószámmal ApplicationManifest.xml és ServiceManifest.xml fájlokat használja.  További részletes példák: [alkalmazás és a service manifest példák](service-fabric-manifest-examples.md).  Ezek a jegyzékfájlok XML-séma leírása itt található [ServiceFabricServiceModel.xsd séma dokumentáció](service-fabric-service-model-schema.md).
@@ -53,7 +53,7 @@ A szolgáltatásjegyzék deklaratív szolgáltatás típusa és verziója határ
     </EntryPoint>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 

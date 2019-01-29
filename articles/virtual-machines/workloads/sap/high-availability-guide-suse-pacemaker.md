@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 2cec9e9b9724ca401778d4493d03def2aefc4ee9
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: f3d6205635284c2ff2b0d4ab9cdab1e8a5844a94
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304482"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099798"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -525,7 +525,7 @@ A bemeneti fájl használja az alábbi tartalommal. Szeretne az előfizetések a
 
 Rendelje hozzá az egyéni szerepkör "Linux időkorlát ügynök szerepkör", amely az előző fejezetben a szolgáltatásnév sikeresen létrehozva. A tulajdonosi szerepkör ne használjon többé!
 
-1. Lépjen a https\://portal.azure.com
+1. odamegy [https://portal.azure.com](https://portal.azure.com)
 1. Nyissa meg az összes erőforrás panelen
 1. Válassza ki a virtuális gépet, az első fürtcsomópontra
 1. Kattintson a hozzáférés-vezérlés (IAM)

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 9ad0579ff9c25753b1e4816b80948b4d8d1232f7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 06feece050835b2b9188eb702210770b44a6b49c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083066"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185811"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights az Azure Functions támogatott szolgáltatások
 
@@ -27,7 +27,7 @@ Azure Functions-ajánlatok [beépített integráció](https://docs.microsoft.com
 
 | Azure Functions                       | 1. verzió                | V2 (az Ignite 2018.)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Az Application Insights .NET SDK-val**   | **2.5.0**       | **2.7.2**         |
+| **Application Insights .NET SDK**   | **2.5.0**       | **2.7.2**         |
 | | | | 
 | **Automatikus gyűjteménye**        |                 |                   |               
 | &bull; Kérelmek                     | Igen             | Igen               | 
@@ -36,10 +36,11 @@ Azure Functions-ajánlatok [beépített integráció](https://docs.microsoft.com
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Igen               | 
 | &nbsp;&nbsp;&nbsp;&mdash; Szolgáltatásbusz|                 | Igen               | 
 | &nbsp;&nbsp;&nbsp;&mdash; az eventHub  |                 | Igen               | 
-| &nbsp;&nbsp;&nbsp;&mdash; AZ SQL       |                 | Igen               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Igen               | 
 | | | | 
 | **Támogatott szolgáltatások**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Igen             | Igen               | 
+| &nbsp;&nbsp;&nbsp;&mdash; Biztonságos vezérlőcsatorna|                 | Igen               | 
 | &bull; Mintavétel                     | Igen             | Igen               | 
 | &bull; A szívverések                   |                 | Igen               | 
 | | | | 
@@ -50,6 +51,10 @@ Azure Functions-ajánlatok [beépített integráció](https://docs.microsoft.com
 | **Konfigurálható**                      |                   |                   |           
 | &bull;Teljes mértékben konfigurálhatók.<br/>Lásd: [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) útmutatást.<br/>Lásd: [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) összes beállításának.               |                   | Igen                   | 
 
+
+## <a name="live-metrics--secure-control-channel"></a>Élő metrikák és biztonságos vezérlőcsatorna
+
+A megadott egyéni szűrők feltételek lesznek visszaküldve az élő mérőszámok az Application Insights SDK összetevőt. A szűrők potenciálisan bizalmas adatokat például customerIDs tartalmazhatnak. Hogy a csatorna biztonságos titkos API-kulccsal. Lásd: [a vezérlőcsatorna biztonságos](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) útmutatást.
 
 ## <a name="sampling"></a>Mintavételezés
 

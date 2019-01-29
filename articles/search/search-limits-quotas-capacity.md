@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 98902c7a27d769b59b20d4560b2cda21bfcff6c6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5187052316e229273aa49eb784bf200c0f16a0f7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310241"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165387"
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatási korlátai
 Maximális korlátozza a storage, a számítási feladatok és az indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [üzembe helyezése az Azure Search](search-create-service-portal.md) , **ingyenes**, **alapszintű**, vagy **Standard** díjcsomagok árából.
@@ -124,6 +124,10 @@ Erőforrás-igényes művelet, például képelemzés, az Azure blob-indexelés 
 QPS becslések egymástól függetlenül minden ügyfélnek kellett kifejleszteni. Index mérete és összetettsége, lekérdezések mérete és összetettsége és forgalom mennyisége olyan elsődleges befolyásoló QPS. Nincs lehetőség a jelentéssel bíró becslések kínáló venni olyan tényezőket, ha ismeretlen.
 
 A becslések olyan kiszámíthatóbb, ha dedikált erőforrások (alap és Standard szinten) futó szolgáltatások alapján számítjuk ki. További QPS megbecsülheti szorosan, mert rendelkezik több paraméter felett. Megközelítés-becslésére módjáról útmutatóért lásd: [Azure Search-teljesítmény és optimalizálás](search-performance-optimization.md).
+
+## <a name="data-limits-cognitive-search"></a>A Data korlátai (cognitive search)
+
+A [cognitive search folyamat](cognitive-search-concept-intro.md) , amely a Text Analytics erőforrás-hívást hajt végre [entitások felismerése](cognitive-search-skill-entity-recognition.md), [kulcsfontosságú kifejezések kinyerése](cognitive-search-skill-keyphrases.md), [hangulatelemzés ](cognitive-search-skill-sentiment.md), és [nyelvfelismerés](cognitive-search-skill-language-detection.md) data korlátai hatálya alá tartozik. Egy rekord maximális mérete 50 000 karakter által mért kell lennie `String.Length`. Ha szeretné feloszthatja az adatokat, mielőtt elküldené a róluk szóló véleményeket elemző, használja a [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md).
 
 ## <a name="api-request-limits"></a>API-kérelmekre vonatkozó korlátok
 * Legfeljebb 16 MB-os kérelmenként <sup>1</sup>

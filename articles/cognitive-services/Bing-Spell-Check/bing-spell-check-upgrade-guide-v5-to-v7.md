@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 3bcbba21d367b3d40eca72d84a7e2447f78fa57f
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5e9ae0f7affe563d69fd2a55daeaf03a230c03c7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801578"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55202943"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>Spell Check API frissítési útmutató
 
@@ -38,7 +38,7 @@ A frissítési útmutató 5-ös verzió és a Bing Spell Check API 7-es verziój
 
 - Az 5-ös verziójának hibakódok cseréli a következő lehetséges `code` és `subCode` értékeket.  
   
-|Kód|Alkód|Leírás
+|Kód|SubCode|Leírás
 |-|-|-
 |Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|A Bing Kiszolgálóhibái adja vissza, minden alkalommal, amikor a alkód feltételek bármelyike teljesül. A válasz tartalmazza ezeket a hibákat, ha a HTTP-állapotkód: 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Letiltva|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés nem érvényes. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a hiba HttpNotAllowed, 410-es HTTP-állapotkódot.
@@ -72,4 +72,4 @@ Letiltva|InvalidRequest.Blocked
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Használati és megjelenítési követelményeinek](./UseAndDisplayRequirements.md)
+> [Használati és megjelenítési követelmények](./UseAndDisplayRequirements.md)

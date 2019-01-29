@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 01/29/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: d006deb83ca16860eb669548ae8563304f7937fa
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 06252d2fc33fafc27371c45f41f792e8e5abd542
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306607"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196208"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -46,7 +46,7 @@ Minden alkalommal, amikor frissítések érhetők el a virtuális gép (VM) bőv
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky Hybrid Cloud Security-ügynök Windows](https://azuremarketplace.microsoft.com/marketplace/apps/KasperskyLab.ksws-windows-arm?tab=Overview) | Felhőbeli számítási feladatok Azure-bővítmények segítségével végignézheti és a Kaspersky Hybrid Cloud Security, telepíthet kiberbiztonsági képességeket. | Kaspersky tesztkörnyezet | Windows |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky hibrid Felhőbeli biztonsági Linux-ügynök](https://azuremarketplace.microsoft.com/marketplace/apps/KasperskyLab.kesl-linux-arm?tab=Overview) | Felhőbeli számítási feladatok Azure-bővítmények segítségével végignézheti és a Kaspersky Hybrid Cloud Security, telepíthet kiberbiztonsági képességeket. | Kaspersky tesztkörnyezet | Linux |
 
-## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>A Microsoft virtuálisgép-lemezképek és Megoldássablonok
+## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>A Microsoft virtuálisgép-lemezképek és megoldássablonok
 
 A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a megoldássablonok támogatja. Töltse le a függőségek külön-külön jelezve. Alkalmazások, például az SQL Server és a Machine Learning-kiszolgáló szükséges, megfelelő licencre, kivéve, ha a ingyenes vagy próbaverziója megjelölve.
 
@@ -80,7 +80,7 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![Microsoft Machine Learning-kiszolgáló 9.3.0 ubuntu 16.04](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft Machine Learning-kiszolgáló 9.3.0 ubuntu 16.04](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onUbuntu1604) | Microsoft Machine Learning-kiszolgáló 9.3.0 ubuntu 16.04. | A Microsoft + Canonical |
 | ![Microsoft Machine Learning-kiszolgáló 9.3.0 CentOS Linux 7.2 rendszeren](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft Machine Learning-kiszolgáló 9.3.0 CentOS Linux 7.2 rendszeren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onCentOSLinux72) | Microsoft Machine Learning-kiszolgáló 9.3.0 CentOS Linux 7.2 rendszeren. | A Microsoft + Rogue Wave |
 
-## <a name="linux-distributions"></a>Linux-Disztribúciók
+## <a name="linux-distributions"></a>Linux-disztribúciók
 
 |  | Konfigurációelem neve | Leírás | Közzétevő |
 | --- | --- | --- | --- |
@@ -97,10 +97,11 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![SLES 12 SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 12 SP3. | SUSE |
 | ![SLES 15 (SAJÁT)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 15 SP3 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 15. | SUSE |
 
-## <a name="third-party-byol-free-and-trial-images-and-solution-templates"></a>Külső BYOL, ingyenes és a próbaverzió képek és Megoldássablonok
+## <a name="third-party-byol-free-trial-images-and-solution-templates"></a>Külső BYOL, ingyenes, próba képek és megoldássablonok
 
 |  | Konfigurációelem neve | Leírás | Közzétevő |
 | --- | --- | --- | --- |
+| ![A10-es vThunder ADC](media/azure-stack-marketplace-azure-items/a10.png) | [A10-es vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1) | Az a10-es hálózatok vThunder Alkalmazáskézbesítési vezérlőt a Microsoft Azure kifejezetten robotfejlesztési célra készült nagy teljesítményű, a rugalmasságot, és egyszerűen telepíthető alkalmazáselérés és -kiszolgáló terheléselosztás optimalizáltuk, hogy fut natív módon az Azure-felhőben. | A10 Networks |
 | ![Útválasztó arista vEOS](media/azure-stack-marketplace-azure-items/arista.png) | [Útválasztó arista vEOS](https://azuremarketplace.microsoft.com/marketplace/apps/arista-networks.veos-router) | Az Arista vEOS útválasztó a funkciókban gazdag, többfelhős, és több hipervizorral rendelkező virtuális útválasztó, amellyel a nagyvállalatok és felhőszolgáltatók hozhat létre egységes, rendkívül biztonságos és skálázható hibrid hálózatok. | Arista hálózatok |
 | ![Barracuda Application Security Control Center](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda Application Security Control Center](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-app-sec-control-center) | Központilag kezelhető több Barracuda webalkalmazási tűzfal (WAF). | Barracuda Networks, Inc. |
 | ![Barracuda E-mail biztonsági átjáró](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda E-mail biztonsági átjáró](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-email-security-gateway) | E-mailek biztonsági átjáró bejövő e-mailek viselt fenyegetésekkel szemben. | Barracuda Networks, Inc. |

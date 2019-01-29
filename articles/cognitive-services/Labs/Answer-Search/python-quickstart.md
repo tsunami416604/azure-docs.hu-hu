@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Válaszkereséses projekt, Python'
+title: 'Gyors útmutató: Projekt válaszkeresés, Python'
 titlesuffix: Azure Cognitive Services
 description: Egy Python-alapú példa a Válaszkereséses projekt használatának első lépéseihez.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 69c5edfef65af2ed1b27f9a512ad13c21468df7a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 2c42935e100a55f767c3b1cbac6590850734b57e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465508"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093325"
 ---
 # <a name="quickstart-project-answer-search-with-python"></a>Rövid útmutató a Válaszkereséses projekt a Pythonnal való használatához
 
@@ -41,7 +41,7 @@ Implementálására a következő lépésekben kerül sor:
 
 Az útmutatóban használt teljes kód a következő:
 
-````
+```
 import http.client, urllib.parse
 import json
 
@@ -65,7 +65,7 @@ def get_local():
 result = get_local()
 print (json.dumps(json.loads(result), indent=4))
 
-````
+```
 ## <a name="next-steps"></a>További lépések
 - [C# – rövid útmutató](c-sharp-quickstart.md)
 - [Java – rövid útmutató](java-quickstart.md)

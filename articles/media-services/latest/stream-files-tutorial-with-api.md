@@ -1,6 +1,6 @@
 ---
-title: Feltöltés, kódolás és streamelés az Azure Media Serviceszel | Microsoft Docs
-description: Az oktatóanyag lépéseit követve megtudhatja, hogyan tölthet fel egy fájlt, végezheti el egy videó kódolását, és streamelheti tartalmait az Azure Media Serviceszel.
+title: Feltöltése, kódolása és streamelése az Azure Media Services v3 .NET használatával |} A Microsoft Docs
+description: Kövesse a jelen oktatóanyag töltsön fel egy fájlt, és a videó kódolása és streamelése a tartalom a Media Services v3 használatával a .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/23/2019
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 051de9b68b6cf830592a7cf8bdad7808e044fbcc
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: c3671df61eea5c826227706106cbb48dc70ad55f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888712"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157755"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Oktatóanyag: Feltöltése, kódolása és streamelése videók, API-k használatával
+# <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>Oktatóanyag: Feltöltése, kódolása és streamelése a .NET használatával kíván videókat
 
 Az Azure Media Services lehetővé teszi a médiafájlok kódolandó, hogy a böngészők és eszközök széles lejátszhatók. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. Kódolással kapcsolatos útmutatásért tekintse meg [a kódolás fogalmát](encoding-concept.md) ismertető cikket. Ez az oktatóanyag feltölt egy helyi videofájlt, és kódolja a feltöltött fájlt. A HTTPS URL-cím segítségével elérhetővé tett tartalmakat is kódolhatja. További információ: [Feladatbemenet létrehozása HTTP(s) URL-címből](job-input-from-http-how-to.md).
 
@@ -28,8 +28,7 @@ Az Azure Media Services lehetővé teszi a médiafájlok kódolandó, hogy a bö
 Ez az oktatóanyag a következőket mutatja be:    
 
 > [!div class="checklist"]
-> * Hozzáférés a Media Services API-hoz
-> * A mintaalkalmazás konfigurálása
+> * A témakörben ismertetett mintaalkalmazás letöltése
 > * A feltöltést, kódolást és streamelést végrehajtó kód vizsgálata
 > * Az alkalmazás futtatása
 > * A streamelési URL-cím tesztelése
@@ -40,15 +39,10 @@ Ez az oktatóanyag a következőket mutatja be:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-et.
-- Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).<br/>Ellenőrizze, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscsoport-nevet és a Media Services-fiók neve.
+- Kövesse a [hozzáférés az Azure Media Services API az Azure CLI-vel](access-api-cli-how-to.md) és menteni a hitelesítő adatokat. Az API eléréséhez használandó kell.
 
-    Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
-
-- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
-
-    Ügyeljen arra, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscsoport-nevet és a Media Services-fiók neve
-
-## <a name="download-the-sample"></a>A minta letöltése
+## <a name="download-and-configure-the-sample"></a>Töltse le és a minta konfigurálásához
 
 Klónozza a gépre a streamelési .NET-mintát tartalmazó GitHub-adattárat a következő paranccsal:  
 
@@ -58,7 +52,7 @@ Klónozza a gépre a streamelési .NET-mintát tartalmazó GitHub-adattárat a k
 
 A minta az [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles) mappában található.
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+Nyissa meg [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json) a letöltött projektet. Cserélje le az értékeket a portáltól kapott hitelesítő adatokkal [API-k elérése](access-api-cli-how-to.md).
 
 ## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>A feltöltést, kódolást és streamelést végrehajtó kód vizsgálata
 

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c4613654e5f1da6ef55c1f648fff1687b21fe87d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: fd9c4513c2cda3fb6283e748f2458043b02ab482
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901938"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203572"
 documentType: LandingData
 title: Azure-erőforrások Azure AD-alapú felügyelt identitásai – dokumentáció
 metadata:
@@ -12,7 +12,7 @@ metadata:
   title: Azure-erőforrások Azure AD-alapú felügyelt identitásai – dokumentáció
   description: Ebből a cikkből megtudhatja, hogyan használhat felügyelt identitásokat az Azure-erőforrásokkal, hogy a forráskódban tárolt hitelesítő adatok nélkül végezhessen biztonságos hitelesítést az Azure-felhőszolgáltatásokban.
   services: active-directory
-  ms.component: msi
+  ms.subservice: msi
   author: priyamohanram
   manager: daveba
   ms.service: active-directory

@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: 1ab99a8a024103f4a15154ee5b76e7dc21da4ae6
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: a535a31678dcdb611acb1606e6091a1a40a6d42e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162109"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184070"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Kiemelheti a szöveg decoration jelölők használatával
 
@@ -33,26 +33,26 @@ Ha `textDecorations` van **igaz**, a Bing tartalmazhatnak a következő jelölő
 
 |Unicode|HTML|Leírás
 |-|-|-
-|U + E000|\<b >|A lekérdezési kifejezés (találatok kiemelése) kezdetét jelöli
-|U + E001|\</b >|A lekérdezési időszak végét jelöli
-|U + E002|\<e >|Dőlt betűvel tartalom kezdetét jelöli 
-|U + E003|\</i >|Dőlt betűvel tartalom végét jelöli
-|U + E004|\<br / >|Sortörés jelöli meg
-|U + E005||Telefonszám kezdetét jelöli
+|U+E000|\<b>|A lekérdezési kifejezés (találatok kiemelése) kezdetét jelöli
+|U+E001|\</b>|A lekérdezési időszak végét jelöli
+|U+E002|\<i>|Dőlt betűvel tartalom kezdetét jelöli 
+|U + E003|\</i>|Dőlt betűvel tartalom végét jelöli
+|U+E004|\<br/>|Sortörés jelöli meg
+|U+E005||Telefonszám kezdetét jelöli
 |U + E006||Telefonszám végét jelöli
-|U + E007||Egy cím kezdetét jelöli
-|U + E008||Egy cím végét jelöli
-|U + E009|\&nbsp;|Jelöli meg a nem törhető szóköz
-|U + E00C|\<strong >|Félkövér tartalom kezdetét jelöli
+|U+E007||Egy cím kezdetét jelöli
+|U+E008||Egy cím végét jelöli
+|U+E009|\&nbsp;|Jelöli meg a nem törhető szóköz
+|U+E00C|\<strong>|Félkövér tartalom kezdetét jelöli
 |U + E00D|\</ strong >|Félkövér tartalom végét jelöli
-|U + E00E||A tartalom, amelynek háttér kell lennie, mint a környező háttér világosabb kezdetét jelöli
-|U + E00F||Amelynek háttér kell lennie, mint a környező háttér világosabb tartalom végét jelöli
-|U + E010||A tartalom, amelynek háttér kell lennie a környező háttér sötétebb kezdetét jelöli
+|U+E00E||A tartalom, amelynek háttér kell lennie, mint a környező háttér világosabb kezdetét jelöli
+|U+E00F||Amelynek háttér kell lennie, mint a környező háttér világosabb tartalom végét jelöli
+|U+E010||A tartalom, amelynek háttér kell lennie a környező háttér sötétebb kezdetét jelöli
 |U + E011||Amelyek hátterét kell lennie a környező háttér sötétebb tartalom végét jelöli
-|U + E012|\<del >|Át kell húzni tartalom kezdetét jelöli
-|U + E013|\</ del >|Át kell húzni tartalom végét jelöli
-|U + E016|\<Sub >|Index tartalom kezdetét jelöli
-|U + E017|\</ sub >|Index tartalom végét jelöli
+|U + E012|\<del>|Át kell húzni tartalom kezdetét jelöli
+|U + E013|\</del>|Át kell húzni tartalom végét jelöli
+|U + E016|\<sub>|Index tartalom kezdetét jelöli
+|U + E017|\</sub>|Index tartalom végét jelöli
 |U + E018|\<sup >|Felső tartalom kezdetét jelöli
 |U + E019|\</ sup >|Felső tartalom végét jelöli
 

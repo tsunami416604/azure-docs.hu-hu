@@ -10,17 +10,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: pim
+ms.subservice: pim
 ms.date: 01/05/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 4bc963d09b9d01efdfad65b78ce9ce336798d375
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b6ef0f46bae454a4656694496d411a5a4cff0da5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065341"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178392"
 ---
 # <a name="email-notifications-in-pim"></a>A PIM e-mail-értesítések
 
@@ -35,7 +35,7 @@ Mind az Azure ad PIM által küldött e-mailek és az Azure erőforrás-szerepk�
 
 E-mailek tartalmaznak egy **PIM** a tárgysorban előtag. Például:
 
-- A PIM: Alain Charon tartósan hozzá volt rendelve a biztonsági olvasói szerepköre
+- PIM: Alain Charon tartósan hozzá volt rendelve a biztonsági olvasói szerepköre
 
 ## <a name="pim-emails-for-azure-ad-roles"></a>A PIM e-mailek, az Azure AD-szerepkörök
 
@@ -49,9 +49,9 @@ Ki kapja, e-mailek, az Azure AD-szerepkörökhöz tartozó függ a szerepkört, 
 
 | Felhasználó | Szerepkör-aktiválás jóváhagyása függőben van | Szerepkör-aktiválási kérelem befejeződött | A PIM engedélyezve van |
 | --- | --- | --- | --- |
-| Kiemelt szerepkörű rendszergazda</br>(Aktív/rendelkezésre álló) | Igen</br>(csak akkor, ha nincs explicit jóváhagyók vannak megadva) | Igen* | Igen |
-| Biztonsági rendszergazda</br>(Aktív/rendelkezésre álló) | Nem | Igen* | Igen |
-| Globális rendszergazda</br>(Aktív/rendelkezésre álló) | Nem | Igen* | Igen |
+| Kiemelt szerepkörű rendszergazda</br>(Activated/Eligible) | Igen</br>(csak akkor, ha nincs explicit jóváhagyók vannak megadva) | Igen* | Igen |
+| Biztonsági rendszergazda</br>(Activated/Eligible) | Nem | Igen* | Igen |
+| Globális rendszergazda</br>(Activated/Eligible) | Nem | Igen* | Igen |
 
 \* Ha a [ **értesítések** beállítás](pim-how-to-change-default-settings.md#notifications) értékre van állítva **engedélyezése**.
 

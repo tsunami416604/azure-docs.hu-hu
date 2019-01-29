@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Clever |} A Microsoft Docs'
+title: 'Oktatóanyag: Clever az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Clever között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 069ff13a-310e-4366-a147-d6ec5cca12a5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 483d03fcc72e0a93111d10b0221164459de27d12
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e65f0cb3ef30fb5b001acdb72481c1c3b55ca058
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431861"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197313"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clever"></a>Oktatóanyag: Azure Active Directory-integráció az Clever
+# <a name="tutorial-azure-active-directory-integration-with-clever"></a>Oktatóanyag: Clever az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Clever integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Clever az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy ötletes egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Clever integrálása az Azure AD beállítása, hozzá kell Clever a galériáb�
 
 **Clever hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -117,7 +117,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE]
     > Bejelentkezési URL-cím értéke nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [ötletes ügyfél-támogatási csapatának](https://clever.com/about/contact/) lekérni ezt az értéket.
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/clever-tutorial/tutorial_metadataurl.png)
 
@@ -131,10 +131,10 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     | Attribútum neve  | Attribútum értéke |
     | --------------- | -------------------- |
-    | clever.Teacher.credentials.district_username|User.userPrincipalName|
-    | clever.Student.credentials.district_username| User.userPrincipalName |
-    | Keresztnév  | User.givenName |
-    | Vezetéknév  | User.surname |
+    | clever.teacher.credentials.district_username|user.userprincipalname|
+    | clever.student.credentials.district_username| user.userprincipalname |
+    | Keresztnév  | user.givenname |
+    | Vezetéknév  | user.surname |
 
     a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -214,7 +214,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ahhoz, hogy az Azure AD-felhasználók Clever jelentkezzen be, akkor ki kell építeni Clever be.
 
-Clever, esetén együttműködve [ötletes ügyfél-támogatási csapatának](https://clever.com/about/contact/) a felhasználók hozzáadása az ötletes platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Clever, esetén együttműködve [ötletes ügyfél-támogatási csapatának](https://clever.com/about/contact/) a felhasználók hozzáadása az ötletes platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 >[!NOTE]
 >Eszközt is használhat bármilyen más ötletes felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése Clever által biztosított API-k.
@@ -249,7 +249,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

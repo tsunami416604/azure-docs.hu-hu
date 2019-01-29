@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: ryanwi
-ms.openlocfilehash: 010fd442419f57f8b53705be8d3f49fdb84e28fd
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: bdff930e00bfebe1d702e397a9dfc7de15aa3225
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262452"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156224"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Példák többtárolós alkalmazások és szolgáltatások jegyzékeire
 A következő példák az alkalmazás és szolgáltatás jegyzékfájljainak többtárolós Service Fabric-alkalmazás. Ezekben a példákban az a célja, hogy milyen beállítások érhetők el, és azok használatát. Ezen alkalmazás és jegyzékek alapulnak a [Windows Server 2016 tároló minta](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) jegyzékfájlok.
@@ -195,7 +195,7 @@ Lásd: [Application manifest elemek](#application-manifest-elements), [FrontEndS
     </EnvironmentVariables>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
   
@@ -246,7 +246,7 @@ Lásd: [Application manifest elemek](#application-manifest-elements), [FrontEndS
     </EnvironmentVariables>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -291,7 +291,7 @@ Egy kódcsomaghoz erőforráskorlátok adja meg. További információkért lás
 ### <a name="containerhostpolicies-element"></a>ContainerHostPolicies Element
 Adja meg a házirendek tárológazdagép aktiválásához. További információkért lásd: [ContainerHostPolicies elem](service-fabric-service-model-schema-elements.md#ContainerHostPoliciesElementContainerHostPoliciesTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelement)
 
-### <a name="repositorycredentials-element"></a>RepositoryCredentials elem
+### <a name="repositorycredentials-element"></a>RepositoryCredentials Element
 Tároló lemezképtárban lekéréses képek a hitelesítő adatait. További információkért lásd: [RepositoryCredentials elem](service-fabric-service-model-schema-elements.md#RepositoryCredentialsElementRepositoryCredentialsTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
 ### <a name="portbinding-element"></a>PortBinding elem
@@ -326,7 +326,7 @@ Deklarálja a szolgáltatáspéldány, amely automatikusan létrejön, amikor eg
 ### <a name="service-element"></a>Szolgáltatás-elem
 Deklarálja a szolgáltatás automatikusan létrejön, amikor létrejön az alkalmazás. További információkért lásd: [szolgáltatás elem](service-fabric-service-model-schema-elements.md#ServiceElementanonymouscomplexTypeComplexTypeDefinedInDefaultServicesTypecomplexType)
 
-### <a name="statelessservice-element"></a>StatelessService elem
+### <a name="statelessservice-element"></a>StatelessService Element
 Állapotmentes szolgáltatás határozza meg. További információkért lásd: [StatelessService elem](service-fabric-service-model-schema-elements.md#StatelessServiceElementStatelessServiceTypeComplexTypeDefinedInServiceTemplatesTypecomplexTypeDefinedInServiceelement)
 
 
@@ -343,13 +343,13 @@ Egy állapotmentes szolgáltatás típusának leírása. További információk�
 ### <a name="codepackage-element"></a>CodePackage elem
 Ismerteti egy kódcsomaghoz, amely támogatja a megadott szolgáltatási típusa. Amikor egy szolgáltatás létrejön az említett szolgáltatás ellen, a jegyzékfájlban deklarált összes kódcsomagok a rendszer a belépési pontok futtatásával aktiválja. Az amiatt végbemenő folyamatok várhatóan a támogatott szolgáltatástípusok regisztrálja a futási időben. Ha több kódcsomagok, az összes aktiválás, amikor a rendszer figyeli a nem a deklarált szolgáltatás típusok közül. További információkért lásd: [CodePackage elem](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
 
-### <a name="entrypoint-element"></a>EntryPoint elem
+### <a name="entrypoint-element"></a>EntryPoint Element
 A belépési pont által megadott végrehajtható fájlt az általában a hosszú ideig futó szolgáltatás gazdagép. Egy külön szolgáltatásbeállítás belépési pontjának jelenléte elkerülhető, hogy nem kell futtatni a szolgáltatásgazda magas szintű jogosultságokkal rendelkező huzamosabb ideig. A belépési pont által megadott végrehajtható fájl SetupEntryPoint sikeres kilépés után futtatott. Az eredményül kapott folyamat figyel, és (kezdődő újra SetupEntryPoint) újraindul, ha valaha leáll vagy összeomlik. További információkért lásd: [BelépésiPont-elem](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="containerhost-element"></a>ContainerHost elem
  További információkért lásd: [ContainerHost elem](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
-### <a name="imagename-element"></a>ImageName elem
+### <a name="imagename-element"></a>ImageName Element
 Az adattár és a lemezkép https://hub.docker.com vagy az Azure Container Registry. További információkért lásd: [ImageName elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables elem
@@ -358,7 +358,7 @@ Adja meg a tároló vagy exe környezeti változókat.  További információké
 ### <a name="environmentvariable-element"></a>Environmentvariable változó elem
 Környezeti változó. További információkért lásd: [environmentvariable változó elem](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
-### <a name="configpackage-element"></a>ConfigPackage elem
+### <a name="configpackage-element"></a>ConfigPackage Element
 Egy mappa deklarálja nevű attribútum nevét, egy Settings.xml fájlt tartalmazó. Ezt a fájlt a felhasználó által definiált, a kulcs-érték párt a beállításokat, amelyeket a folyamat futási időben vissza tudja olvasni szakaszokat tartalmazza. Frissítés alatt Ha csak a ConfigPackage verziója megváltozott, majd a futó folyamat nem indítja újra. Ehelyett egy visszahívást, amely a konfigurációs beállításai megváltoztak, így azok dinamikusan kell tölteni a folyamat értesítést küld. További információkért lásd: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="datapackage-element"></a>DataPackage elem
@@ -387,13 +387,13 @@ Egy állapotmentes szolgáltatás típusának leírása. További információk�
 ### <a name="codepackage-element"></a>CodePackage elem
 Ismerteti egy kódcsomaghoz, amely támogatja a megadott szolgáltatási típusa. Amikor egy szolgáltatás létrejön az említett szolgáltatás ellen, a jegyzékfájlban deklarált összes kódcsomagok a rendszer a belépési pontok futtatásával aktiválja. Az amiatt végbemenő folyamatok várhatóan a támogatott szolgáltatástípusok regisztrálja a futási időben. Ha több kódcsomagok, az összes aktiválás, amikor a rendszer figyeli a nem a deklarált szolgáltatás típusok közül. További információkért lásd: [CodePackage elem](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
 
-### <a name="entrypoint-element"></a>EntryPoint elem
+### <a name="entrypoint-element"></a>EntryPoint Element
 A belépési pont által megadott végrehajtható fájlt az általában a hosszú ideig futó szolgáltatás gazdagép. Egy külön szolgáltatásbeállítás belépési pontjának jelenléte elkerülhető, hogy nem kell futtatni a szolgáltatásgazda magas szintű jogosultságokkal rendelkező huzamosabb ideig. A belépési pont által megadott végrehajtható fájl SetupEntryPoint sikeres kilépés után futtatott. Az eredményül kapott folyamat figyel, és (kezdődő újra SetupEntryPoint) újraindul, ha valaha leáll vagy összeomlik. További információkért lásd: [BelépésiPont-elem](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="containerhost-element"></a>ContainerHost elem
 További információkért lásd: [ContainerHost elem](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
-### <a name="imagename-element"></a>ImageName elem
+### <a name="imagename-element"></a>ImageName Element
 Az adattár és a lemezkép https://hub.docker.com vagy az Azure Container Registry. További információkért lásd: [ImageName elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Parancsok elem
@@ -405,7 +405,7 @@ Adja meg a tároló vagy exe környezeti változókat.  További információké
 ### <a name="environmentvariable-element"></a>Environmentvariable változó elem
 Környezeti változó. További információkért lásd: [environmentvariable változó elem](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
-### <a name="configpackage-element"></a>ConfigPackage elem
+### <a name="configpackage-element"></a>ConfigPackage Element
 Egy mappa deklarálja nevű attribútum nevét, egy Settings.xml fájlt tartalmazó. Ezt a fájlt a felhasználó által definiált, a kulcs-érték párt a beállításokat, amelyeket a folyamat futási időben vissza tudja olvasni szakaszokat tartalmazza. Frissítés alatt Ha csak a ConfigPackage verziója megváltozott, majd a futó folyamat nem indítja újra. Ehelyett egy visszahívást, amely a konfigurációs beállításai megváltoztak, így azok dinamikusan kell tölteni a folyamat értesítést küld. További információkért lásd: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="resources-element"></a>Erőforrások elem

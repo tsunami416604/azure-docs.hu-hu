@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 630413d15df04d27599389f647c57876fff9d295
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246684"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094427"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Ismerkedés a Power BI-Munkaterületcsoportok minta
 
@@ -24,7 +24,7 @@ A **a Microsoft Power BI-Munkaterületcsoportok**, integrálható a Power BI-jel
 > [!IMPORTANT]
 > A Power BI munkaterületi gyűjtemények szolgáltatás elavult, és 2018 júniusáig vagy a szerződésében jelzett időpontig érhető el. Javasoljuk, hogy az alkalmazása zavartalan működése érdekében tervezze meg a migrációt a Power BI Embedded szolgáltatásba. Az adatok a Power BI Embedded szolgáltatásba való migrálásának részleteiért lásd a [Power BI munkaterületi gyűjtemények tartalmának Power BI Embedded szolgáltatásba történő migrálásával](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/) foglalkozó cikket.
 
-Mielőtt továbbmennénk, ahova menteni szeretné az alábbi forrásanyagokat: biztosítják, amikor a Power BI-jelentések integrálása a mintaalkalmazást, és a saját alkalmazások túl.
+Mielőtt továbbmennénk, ahova menteni szeretné az alábbi forrásanyagokat: Ezek segítenek, amikor a Power BI-jelentések integrálása a mintaalkalmazást, és a saját alkalmazások túl.
 
 * [Munkaterület webes mintaalkalmazás](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [A Power BI munkaterületi gyűjtemények API-referencia](https://msdn.microsoft.com/library/azure/mt711507.aspx)
@@ -71,7 +71,7 @@ Importálja a Power BI PBIX jelentés van ezen a ponton a **munkaterület**. Mos
 A web app minta egy mintaalkalmazás jeleníti meg az importált jelentések a **munkaterület**. Íme a webes alkalmazás minta konfigurálása.
 
 1. Az a **Power bi embedded** Visual Studio-megoldás, kattintson a jobb gombbal a **EmbedSample** webalkalmazást, és válassza a **beállítás kezdőprojektként**.
-2. A **web.config**, a a **EmbedSample** webalkalmazást, módosítsa a **appSettings**: **AccessKey**,  **WorkspaceCollection** nevét, és **munkaterület azonosítója**.
+2. A **web.config**, a a **EmbedSample** webalkalmazást, módosítsa a **appSettings**: **AccessKey**, **WorkspaceCollection** nevét, és **munkaterület azonosítója**.
 
     ```
     <appSettings>
@@ -93,7 +93,7 @@ Miután rákattintott egy jelentés, a **EmbedSample** webalkalmazás kell kiné
 
 ## <a name="explore-the-sample-code"></a>Áttekintjük a mintakódot
 
-A **a Microsoft Power BI-Munkaterületcsoportok** minta egy példa-webalkalmazást, amely bemutatja, hogyan integrálható a **Power BI** jelentéseket az alkalmazásba. A Model-View-Controller (MVC) tervezési minta használatával ajánlott eljárásokat mutatnak be. Ez a szakasz kiemeli a mintakód belül tárgyaljuk is részei a **Power bi embedded** webes alkalmazás megoldás. A Model-View-Controller (MVC) minta elkülöníti a tartományhoz, a bemutató és a felhasználói bevitel három különálló osztályokba alapján műveleteket modellezés: modell, a nézet és a vezérlő. MVC kapcsolatos további információkért lásd: [megismerheti az ASP.NET kapcsolatos](http://www.asp.net/mvc).
+A **a Microsoft Power BI-Munkaterületcsoportok** minta egy példa-webalkalmazást, amely bemutatja, hogyan integrálható a **Power BI** jelentéseket az alkalmazásba. A Model-View-Controller (MVC) tervezési minta használatával ajánlott eljárásokat mutatnak be. Ez a szakasz kiemeli a mintakód belül tárgyaljuk is részei a **Power bi embedded** webes alkalmazás megoldás. A Model-View-Controller (MVC) minta elkülöníti a modellezést, a tartományhoz, a bemutató és a felhasználói bevitel három különálló osztályokba alapján műveleteket: Modell, megtekintése és vezérlés. MVC kapcsolatos további információkért lásd: [megismerheti az ASP.NET kapcsolatos](http://www.asp.net/mvc).
 
 A **a Microsoft Power BI-Munkaterületcsoportok** mintakód a következő választja el. Minden szakasz a fájl nevét, hogy könnyen találhatja meg a kód a minta a Power bi-embedded.sln megoldás tartalmazza.
 
@@ -128,7 +128,7 @@ A kapcsolati karakterláncot a következő formátumban kell lennie:
 Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 ```
 
-Kiszolgáló és az adatbázis közös használatával attribútumok sikertelen. Például: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
+Kiszolgáló és az adatbázis közös használatával attribútumok sikertelen. Példa: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
 
 ### <a name="view"></a>Nézet
 
@@ -138,7 +138,7 @@ A **nézet** kezeli a Power BI megjelenítésének **jelentések** és a egy Pow
 
 | Rész | Leírás |
 | --- | --- |
-| Beosztás |A jelentés neve. |
+| Cím |A jelentés neve. |
 | A lekérdezési karakterlánc |A jelentés azonosítója mutató hivatkozás |
 
     <div id="reports-nav" class="panel-collapse collapse">
@@ -168,7 +168,7 @@ Report.cshtml: Állítsa be a **Model.AccessToken**, és a Lambda kifejezésnek 
 
 ### <a name="controller"></a>Vezérlő
 
-**DashboardController.cs**: egy PowerBIClient megadásának létrehoz egy **alkalmazás-jogkivonatára**. Egy JSON webes jogkivonat (JWT) hoz létre a **aláíró kulcs** beolvasni a **hitelesítő adatok**. A **hitelesítő adatok** segítségével hozzon létre egy példányt **PowerBIClient**. Ha már van egy példányát **PowerBIClient**, GetReports() és GetReportsAsync() hívása.
+**DashboardController.cs**: Létrehoz egy PowerBIClient megadásának egy **alkalmazás-jogkivonatára**. Egy JSON webes jogkivonat (JWT) hoz létre a **aláíró kulcs** beolvasni a **hitelesítő adatok**. A **hitelesítő adatok** segítségével hozzon létre egy példányt **PowerBIClient**. Ha már van egy példányát **PowerBIClient**, GetReports() és GetReportsAsync() hívása.
 
 CreatePowerBIClient()
 
@@ -228,7 +228,7 @@ Miután egy **jelentés**, használhatja egy **IFrame** beágyazni a Power BI **
 ```
 init: function() {
     var embedUrl = this.getEmbedUrl();
-    var iframeHtml = '<igrame style="width:100%;height:100%;" src="' + embedUrl + 
+    var iframeHtml = '<iframe style="width:100%;height:100%;" src="' + embedUrl + 
         '" scrolling="no" allowfullscreen="true"></iframe>';
     this.element.innerHTML = iframeHtml;
     this.iframe = this.element.childNodes[0];

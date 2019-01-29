@@ -1,25 +1,25 @@
 ---
-title: 'Rövid útmutató: Bing Autosuggest API'
+title: 'Gyors útmutató: Bing Autosuggest API'
 titlesuffix: Azure Cognitive Services
 description: Bemutatja a Bing Autosuggest API használatának első lépéseit.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 446d271854a4e45bcea8c261a0dc078e549f8229
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
-ms.translationtype: HT
+ms.openlocfilehash: c748f58028d747b2d963d6ac28ea2661e41ec68c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830753"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184512"
 ---
-# <a name="quickstart-making-your-first-autosuggest-query"></a>Rövid útmutató: Az első Autosuggest-lekérdezés elvégzése
+# <a name="quickstart-making-your-first-autosuggest-query"></a>Gyors útmutató: Így az első automatikus kiegészítési lekérdezés
 
-Ahhoz, hogy elvégezhesse az első hívást, be kell szereznie egy Cognitive Services-előfizetői azonosítót. Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api) témakört.
+Ahhoz, hogy elvégezhesse az első hívást, be kell szereznie egy előfizetési azonosítót a Cognitive Serviceshez. Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api) témakört.
 
 A webes keresés eredményeinek lekéréséhez egy GET kérelmet kell küldeni a következő végpontra:
 

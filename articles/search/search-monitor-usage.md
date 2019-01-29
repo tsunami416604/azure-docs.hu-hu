@@ -1,6 +1,6 @@
 ---
-title: Search-szolgáltatás – Azure Search az erőforrás használat és a lekérdezési statisztikák figyelése
-description: Lekérdezés tevékenységi metrikák, erőforrás-használat és egyéb rendszeradatokat kaphat az Azure Search szolgáltatást.
+title: Használat és a lekérdezés erőforrásmetrikákat egy keresési szolgáltatás – Azure Search figyelése
+description: Naplózás engedélyezése, a lekérdezés tevékenységi metrikák, erőforrás-használatot és egyéb rendszeradatokat kérhet az Azure Search szolgáltatást.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: af2a9cd7f834f5c6f70a78d94e8826de2584127d
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: ed084520e092802ffa2a42e8a0c664ec09c4cbb7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076375"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093240"
 ---
-# <a name="monitor-an-azure-search-service-in-azure-portal"></a>Az Azure portal Azure Search szolgáltatás figyelése
+# <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search erőforrás-használat és a lekérdezés tevékenység figyelése
 
-Az Azure Search szolgáltatás áttekintő lapján megtekintheti az erőforrás-használatot, valamint lekérdezési mérőszámokat, például a lekérdezések egy második lekérdezési (QPS), a Lekérdezések késése és a kérelmek szabályozva lettek aránya rendszer adatait. A portál segítségével ezenkívül figyelési képességek az Azure platformon, mélyebb adatgyűjtés széles használhatja. 
+Az Azure Search szolgáltatás áttekintő lapján megtekintheti az erőforrás-használat, a lekérdezés metrikák és a mennyi kvóta érhető el, további indexek, indexelők és adatforrások létrehozása rendszer adatait. A portál segítségével is konfigurálhatja a log analytics vagy az állandó adatgyűjtés használt egy másik erőforrás. 
 
-Ez a cikk azonosítja, és az Azure Search-műveletek naplózása elérhető lehetőségeit hasonlítja össze. Naplózás és a naplók tárolásához, és hogyan érheti el az adatokat a szolgáltatás és a felhasználói tevékenység engedélyezése vonatkozó utasításokat tartalmazza.
+Naplók beállítása hasznos önkiszolgáló-diagnosztikai és megőrző működési előzményei. Belsőleg naplók léteznek háttérbeli rövid idő alatt, elegendő a vizsgálati és elemzési Ha, küldjön egy támogatási jegyet. Ha felett, és naplózza az információkat a hozzáférést, ha a cikkben bemutatott megoldások beállított.
 
-Naplók beállítása hasznos önkiszolgáló-diagnosztikai és a szolgáltatási műveletek előzményeinek megőrzése. Belsőleg naplók létezik egy rövid idő alatt, elegendő a vizsgálati és elemzési Ha, küldjön egy támogatási jegyet. Ha szeretné szabályozni a szolgáltatás naplófájl-információk tárolása, állítson be a jelen cikkben ismertetett megoldások.
+Ez a cikk ismerteti a figyelés lehetőségeket, a naplózás engedélyezése és a naplófájl tárolási és a napló tartalmának megtekintése.
 
 ## <a name="metrics-at-a-glance"></a>Mérőszámot egyetlen pillantással
 
-**Használati** és **figyelés** áttekintése épített szakaszok tárhelyhasználat megjelenítését, és végrehajtási metrikák lekérdezése. Ezt az információt elérhetővé válik, amint megkezdi a szolgáltatás használatát a szükséges konfiguráció nélkül. Ez az oldal néhány percenként frissülnek. Ha meg vannak kapcsolatos döntések véglegesítése [melyik szint a termelési számítási feladatokhoz használandó](search-sku-tier.md), vagy e [állítsa be az aktív replikák és partíciók számát](search-capacity-planning.md), ezek a metrikák segítségére lehet a ezeket a döntéseket szerint jeleníti meg, milyen gyorsan erőforrásokat vesznek igénybe, és arról, hogy a jelenlegi konfiguráció kezeli-e a meglévő terhelés.
+**Használati** és **figyelés** szakaszok az Áttekintés épített ki az erőforrás-használat a jelentés oldalon, és végrehajtási metrikák lekérdezése. Ezt az információt elérhetővé válik, amint megkezdi a szolgáltatás használatát a szükséges konfiguráció nélkül. Ez az oldal néhány percenként frissülnek. Ha meg vannak kapcsolatos döntések véglegesítése [melyik szint a termelési számítási feladatokhoz használandó](search-sku-tier.md), vagy e [állítsa be az aktív replikák és partíciók számát](search-capacity-planning.md), ezek a metrikák segítségére lehet a ezeket a döntéseket szerint jeleníti meg, milyen gyorsan erőforrásokat vesznek igénybe, és arról, hogy a jelenlegi konfiguráció kezeli-e a meglévő terhelés.
 
 A **használati** lapon látható erőforrás rendelkezésre állási viszonyított jelenlegi [korlátok](search-limits-quotas-capacity.md). Az alábbi ábrán az ingyenes szolgáltatás, és minden típusú 3 objektumokat és 50 MB tárhelyet maximumon szól. Egy alapszintű vagy standard szintű service magasabb korlátokkal rendelkeznek, és növeli a partíció számát, ha maximális tárolási megnő arányosan.
 
@@ -65,13 +65,13 @@ Az alábbi táblázat a naplók tárolásához és hozzáadása a szolgáltatás
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | A naplózott eseményeket és mérőszámokat lekérdezés,-alapú egyet az alábbi sémák. Eseményeket naplózza a Blob-tárolóba, és JSON-fájlban tárolt. Egy JSON-szerkesztő segítségével megtekintheti a fájl tartalmát.|
 | [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Naplózott események és lekérdezés-metrikák, a jelen cikkben leírt sémák alapján. Válassza ezt a hatalmas naplók az alternatív gyűjtemény szolgáltatásként. |
 
+A Log Analytics és a Blob storage érhetők el ingyenes megosztott szolgáltatásként, hogy Ön is próbálja ki ingyenesen elkölthetők az Azure-előfizetés teljes élettartama. Az Application Insights regisztráljon, és mindaddig, amíg az adatok mérete alkalmazás bizonyos korlátozások mellett használata díjmentes (lásd a [díjszabását ismertető lapon](https://azure.microsoft.com/ricing/details/monitor/) részletekért).
 
-
-A Log Analytics és a Blob storage érhetők el ingyenes, megosztott szolgáltatásként, hogy Ön is próbálja ki ingyenesen elkölthetők az Azure-előfizetés teljes élettartama. Ez a szakasz végigvezeti a lépéseken, engedélyezése és az Azure Blob storage összegyűjtésére és Azure Search-műveletek által létrehozott naplóadatok eléréséhez.
+Ez a szakasz végigvezeti a lépéseken, engedélyezése és az Azure Blob storage összegyűjtésére és Azure Search-műveletek által létrehozott naplóadatok eléréséhez.
 
 ## <a name="enable-logging"></a>Naplózás engedélyezése
 
-Indexelés és a lekérdezési számítási feladatok naplózása alapértelmezés szerint ki van kapcsolva, és naplózás az infrastruktúra és a hosszú távú, külső tárterület-bővítmény megoldások függ. Önmagában csak megőrzött Azure Search adatai indexeket, így naplók máshol kell tárolni.
+Indexelés és a lekérdezési számítási feladatok naplózása alapértelmezés szerint ki van kapcsolva, és naplózás az infrastruktúra és a hosszú távú, külső tárterület-bővítmény megoldások függ. Önmagában az csak megőrzött adatok az Azure Search szolgáltatásban az objektumokat hoz létre, és kezeli,, így a naplók máshol kell tárolni.
 
 Ebben a szakaszban megismerheti, hogyan naplózott eseményeket és mérőszámokat adatokat tárolni a Blob storage használata lesz.
 
@@ -91,12 +91,14 @@ Ebben a szakaszban megismerheti, hogyan naplózott eseményeket és mérőszámo
 
 5. Teszt naplózása létrehozásával vagy objektumok törlése (hoz létre az alkalmazásnapló-események) és a lekérdezések elküldése (a metrikákat hoz létre). 
 
-Naplózás engedélyezve van, ha a profil mentéséhez, a tárolók csak akkor hoz létre egy esemény napló vagy az mértékcsoport esetén. A tárolók jelennek meg több percet is igénybe vehet. Amikor a rendszer az adatokat másolja egy tárfiókba, az adatok JSON-ként formázott és két tárolókban elhelyezett:
+Naplózás engedélyezve van, a profil mentésekor. Tárolók csak akkor jönnek létre, amikor egy tevékenység napló vagy mérték. Amikor a rendszer az adatokat másolja egy tárfiókba, az adatok JSON-ként formázott és két tárolókban elhelyezett:
 
 * insights-logs-operationlogs: a keresési forgalmi naplók
 * insights-mérőszámok – pt1m: metrikák
 
-Használhat [Visual Studio Code](#Download-and-open-in-Visual-Studio-Code) vagy egy másik JSON-szerkesztő a fájlok megtekintéséhez. Nincs óránként, a tároló és a egy blob.
+Egy óra elteltével fog megjelenni a tárolók a Blob storage vesz igénybe. Nincs óránként, a tároló és a egy blob. 
+
+Használhat [Visual Studio Code](#Download-and-open-in-Visual-Studio-Code) vagy egy másik JSON-szerkesztő a fájlok megtekintéséhez. 
 
 ### <a name="example-path"></a>Példa az elérési útra
 
@@ -163,7 +165,7 @@ Bármely JSON-szerkesztő segítségével a naplófájlban. Ha még nincs fiókj
 
 A fájl letöltése után, nyissa meg a JSON-szerkesztőt, a tartalom megtekintéséhez.
 
-## <a name="get-sys-info-apis"></a>Sys-adatok API-k lekérése
+## <a name="use-system-apis"></a>A rendszer API-k használata
 Az Azure Search REST API és a .NET SDK-val programozott hozzáférést biztosítanak a szolgáltatási metrikák, index és indexelő adatai, és a dokumentumok számát.
 
 * [Szolgáltatások statisztikájának beolvasása](/rest/api/searchservice/get-service-statistics)

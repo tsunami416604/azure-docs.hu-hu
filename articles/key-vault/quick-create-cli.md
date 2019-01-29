@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/08/2019
 ms.author: barclayn
-ms.openlocfilehash: 9b57dfcd6ecd00f9f1bb8ec752e0996ee52305db
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: a78cc79031a8dc9b0c98beddf759fbc8674c6dd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159043"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168260"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault Azure parancssori felületével
 
@@ -88,7 +88,7 @@ Most létrehozott egy Key Vaultot, tárolt egy titkos kulcsot, és lekérte azt.
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
-Ha már nincs rá szükség, az [az group delete](/cli/azure/group#delete) paranccsal eltávolíthatja az erőforráscsoportot és az összes kapcsolódó erőforrást. Az erőforrásokat a következőképpen törölheti:
+Ha már nincs rá szükség, az [az group delete](/cli/azure/group) paranccsal eltávolíthatja az erőforráscsoportot és az összes kapcsolódó erőforrást. Az erőforrásokat a következőképpen törölheti:
 
 ```azurecli
 az group delete --name ContosoResourceGroup

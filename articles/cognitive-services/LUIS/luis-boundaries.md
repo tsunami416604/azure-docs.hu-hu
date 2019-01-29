@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/28/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7f8f4848b7181ad3df7ad4fa009ff284de381b75
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 592b8500f9b032a20bb991326201d45db586980d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820410"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177517"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és a kulcsok határok
 A LUIS több határ területeken rendelkezik. Az első a [modell határ](#model-boundaries), amely szabályozza a szándék fog vonatkozni, az entitások és az intelligens HANGFELISMERÉSI szolgáltatások. A második terület [kvótakorlát](#key-limits) kulcs típusa alapján. A határokat egy harmadik területe a [kombináció billentyűzet](#keyboard-controls) szabályozni a LUIS-webhelyet. A negyedik terület a [világ régió hozzárendelése](luis-reference-regions.md) webhely készítése a LUIS és a LUIS között [végpont](luis-glossary.md#endpoint) API-k. 
@@ -24,15 +24,14 @@ A LUIS több határ területeken rendelkezik. Az első a [modell határ](#model-
 
 ## <a name="model-boundaries"></a>Modell határok
 
-
 |Terület|Korlát|
 |--|:--|--|
 | [Alkalmazás neve][luis-get-started-create-app] | * Maximális alapértelmezett karakter |
 | [Batch-tesztelés][batch-testing]| 10-adatkészletek, 1000 utterances Adatkészletenként|
 | Explicit listája | 50 alkalmazásonként|
-| [Leképezések][intents]|500-as alkalmazásonként<br>[Feladó-alapú](https://aka.ms/dispatch-tool) alkalmazás rendelkezik a megfelelő 500 dispatch-források|
+| [Leképezések][intents]|500-as alkalmazásonként: 499 egyéni leképezések és a szükséges _nincs_ szándékot.<br>[Feladó-alapú](https://aka.ms/dispatch-tool) alkalmazás rendelkezik a megfelelő 500 dispatch-források.|
 | [Entitások listája](./luis-concept-entity-types.md) | Szülő: 50, a gyermek: 20 000 elem. Kanonikus név * alapértelmezett karakterek maximális száma. Szinonima hossza korlátozás rendelkeznie. |
-| [Gép megismert entitások](./luis-concept-entity-types.md):<br> Összetett,<br>  Hierarchikus<br> Egyszerű|100 <br>Gép megismert entitások (egyszerű, hierarchikus és összetett entitások) teljes száma legfeljebb 100 lehet. Összetett és a hierarchikus entitások nem rendelkezhet több mint 10 gyermekek.  |
+| [Gép megismert entitások](./luis-concept-entity-types.md):<br> Összetett,<br>  Hierarchikus<br> Egyszerű|A korlát 100 szülő entitások (nem hierarchikus gyermekek is beleértve) vagy az entitásokat (beleértve a hierarchikus gyermekek), amelyik korlátozza a felhasználó a találatok először 330.<br><br>Egy példa a hierarchia 30 hierarchiák minden 10 gyermekkel rendelkező kifejezések lenne.  A gyermekek fog felhasználni összesen 300, és a hierarchia elemek fog felhasználni a maradék 30. |
 | [Minták](luis-concept-patterns.md)|500 minták alkalmazásonként.<br>Minta legfeljebb 400 karakter.<br>3 Pattern.any entitások mintában<br>A beágyazott 2 opcionális szövegek mintában maximális|
 | [Pattern.any](./luis-concept-entity-types.md)|100, alkalmazásonként mintában 3 pattern.any entitások |
 | [Kifejezéslista][phrase-list]|10 kifejezés listák, 5000 tétel / listája|

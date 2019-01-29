@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: 064d73aa3d1a9183eddd53b1a1b8ddbf02afb04d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 426f89437b91bf32efc7d4887c92ebe9cd729b5b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792849"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166288"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -91,8 +91,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ## <a name="next-steps"></a>További lépések
 Most, hogy végzett a fejlesztőkörnyezet beállításával, belefoghat az alkalmazások létrehozásába és futtatásába.
 
-* [Az első Service Fabric-alkalmazás létrehozása a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md)
-* [Ismerje meg az alkalmazások helyi fürtön történő üzembe helyezését és kezelését](service-fabric-get-started-with-a-local-cluster.md)
+* [Ismerje meg, hogyan hozzon létre, telepíthetnek és alkalmazások kezelése](service-fabric-tutorial-create-dotnet-app.md)
 * [További tudnivalók a programozási modellekről: A Reliable Services és Reliable Actors](service-fabric-choose-framework.md)
 * [A Service Fabric mintakódjainak megtekintése a GitHubon](https://aka.ms/servicefabricsamples)
 * [A fürt megjelenítése a Service Fabric Explorer segítségével](service-fabric-visualizing-your-cluster.md)

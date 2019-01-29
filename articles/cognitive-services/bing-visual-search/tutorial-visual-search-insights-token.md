@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: 609e164209bb2c920a36f293cee146cfece15fb5
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 540c4132789d0d1ab666d452b5d6fb220025d5dc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742609"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157380"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>Keresse meg a korábbi kereséseket ImageInsightsToken használatával hasonló képek
 
@@ -126,19 +126,19 @@ A tényleges kép URL-címek lekérése művelettípusok igényel, amely beolvas
 További információk ezekről az adattípusokról: [Képek – Visual Search](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch).
 
 
-## <a name="returned-urls"></a>Visszaadott URL-címek
+## <a name="returned-urls"></a>Returned URLs
 
 A teljes alkalmazás a következő URL-címeket adja vissza:
 
 |ActionType  |URL-cím  | |
 |---------|---------|---------|
-|MoreSizes WebSearchUrl ->     |         |         
+|MoreSizes -> WebSearchUrl     |         |         
 |VisualSearch WebSearchUrl ->     |         |         
-|ImageById WebSearchUrl ->    |         |         
+|ImageById -> WebSearchUrl    |         |         
 |RelatedSearches WebSearchUrl ->:    |         |         
-|DocumentLevelSuggestions WebSearchUrl ->:     |         |         
-|TopicResults WebSearchUrl ->    | https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx, 5823.1       |         
-|ImageResults WebSearchUrl ->    |  https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx, 5831.1       |         
+|DocumentLevelSuggestions -> WebSearchUrl:     |         |         
+|TopicResults -> WebSearchUrl    | https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |         
+|ImageResults -> WebSearchUrl    |  https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |         
 
 A fent látható módon a `TopicResults` és `ImageResults` típusok kapcsolódó képek lekérdezéseket tartalmaz. Az URL-címek hivatkozás a Bing keresési eredményeket.
 

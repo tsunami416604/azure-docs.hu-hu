@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 70305468ca20c48bdc26e7e000a0e5edb63508cd
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0012304412b343918ab69abf6eababc033cddc6f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261570"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198214"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>A Service Fabric reliable services particionálása
 Ez a cikk mutatja be az Azure Service Fabric reliable services particionálása alapvető fogalmait. A cikkben használt forráskódja is elérhető a [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -129,11 +129,7 @@ Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk
 1. Nyissa meg **a Visual Studio** > **fájl** > **új** > **projekt**.
 2. Az a **új projekt** párbeszédpanelen válassza ki a Service Fabric-alkalmazás.
 3. Hívja meg a projekt "AlphabetPartitions".
-4. Az a **szolgáltatás létrehozása** párbeszédpanelen válassza ki **állapotalapú** szolgáltatást, és azt "Alphabet.Processing" hívja az alábbi képen látható módon.
-       ![A Visual Studio új szolgáltatás párbeszédpanelen][1]
-
-  <!--  ![Stateful service screenshot](./media/service-fabric-concepts-partitioning/createstateful.png)-->
-
+4. Az a **szolgáltatás létrehozása** párbeszédpanelen válassza ki **állapotalapú** szolgáltatást, és a "Alphabet.Processing" meghívására.
 5. A partíciók számának megadása. Nyissa meg a projekt AlphabetPartitions ApplicationPackageRoot mappában található Applicationmanifest.xml fájlt, és frissítse a paraméter Processing_PartitionCount 26 alább látható módon.
    
     ```xml
@@ -167,7 +163,7 @@ Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk
    
     Több replika, a szolgáltatás üzemeltethető ugyanazon a számítógépen, ezért ez a cím egyedinek kell lennie a replikára. Ezért az URL-cím van Partícióazonosító + másodpéldány-azonosító. Mindaddig, amíg az URL-cím előtag az egyedi HttpListener több cím ugyanazt a portot is figyelni.
    
-    A felesleges GUID van-e egy speciális esetekhez, amelyen másodlagos replika is figyeljen a csak olvasási kérelmek. Ha ebben az esetben győződjön meg arról, hogy egy új egyedi címet használja, amikor a Váltás az elsődleges, másodlagos kényszerítése az ügyfelek számára, hogy újra feloldani a címet szeretné. "+" Itt címet használja, hogy a replika figyel az összes rendelkezésre álló gazdagép (IP, FQDM, localhost stb.) Az alábbi kódot egy példa látható.
+    A felesleges GUID van-e egy speciális esetekhez, amelyen másodlagos replika is figyeljen a csak olvasási kérelmek. Ha ebben az esetben győződjön meg arról, hogy egy új egyedi címet használja, amikor a Váltás az elsődleges, másodlagos kényszerítése az ügyfelek számára, hogy újra feloldani a címet szeretné. "+" Itt címet használja, hogy a replika figyel az összes rendelkezésre álló gazdagép (IP, teljes Tartományneve, a localhost stb.) Az alábbi kódot egy példa látható.
    
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -365,7 +361,7 @@ Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk
 A teljes minta forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services és a Aktor elágaztatási magában
-A Service Fabric reliable services és ezt követően a reliable actors elágaztatási magában nem támogatja. Miért nem támogatott például [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) regisztrálni egy nem támogatott részfolyamathoz nem használható, és a megszakítási tokeneket csak küldi el a regisztrált folyamatok; sokféle problémák, például eredményez frissítési hibák, amikor magában nem zárható be, a szülő folyamat megszakítási jogkivonatot kapott. 
+A Service Fabric reliable services és ezt követően a reliable actors elágaztatási magában nem támogatja. Miért nem támogatott például [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nem használható egy nem támogatott részfolyamathoz regisztrálásához és a megszakítási tokeneket csak érkeznek regisztrált feldolgozza; sokféle problémák, például eredményez frissítési hibák, amikor magában nem zárható be, a szülő folyamat megszakítási jogkivonatot kapott. 
 
 ## <a name="next-steps"></a>További lépések
 A Service Fabric fogalmakról további információkért tekintse meg a következőket:

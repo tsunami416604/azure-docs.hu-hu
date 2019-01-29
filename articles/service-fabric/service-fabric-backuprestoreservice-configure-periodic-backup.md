@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 91813e31c6237cf47a744a4290e3e2d7736195f0
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 14d7ae7cc347b771dfdb1209bc8d55c484d00db0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54322095"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193726"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfiguráció ismertetése
 
@@ -219,9 +219,9 @@ Ha a felfüggesztés szükségességét, majd a rendszeres biztonsági mentésé
 * Felfüggesztés lett alkalmazva Ha egy _partíció_, akkor érdemes lehet folytatni, használatával [partíció biztonsági mentés folytatása](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API-t.
 
 ### <a name="difference-between-suspend-and-disable-backups"></a>Felfüggesztés és a tiltsa le a biztonsági mentések közötti különbség
-Tiltsa le biztonsági mentést kell használni, amikor a biztonsági másolatok nem lesznek egy adott alkalmazás, szolgáltatás vagy partíció szükséges. Egy is infact meghívása letiltása biztonsági mentési kérelmet tiszta biztonsági mentések paraméterrel együtt lehet igaz, ami azt jelenti, az összes meglévő biztonsági másolatok is törlődnek. Azonban felfüggeszteni kívánja használni a forgatókönyvekben, ahol egy szeretné kapcsolja ki a biztonsági mentések átmenetileg, például ha a helyi lemez megtelik, vagy a biztonsági mentés feltöltése stb. ismert hálózati probléma miatt nem működik. 
+Tiltsa le biztonsági mentést kell használni, amikor a biztonsági másolatok nem lesznek egy adott alkalmazás, szolgáltatás vagy partíció szükséges. Az egyik hívhat meg letiltása biztonsági mentési kérelmet tiszta biztonsági mentések paraméterrel együtt lehet igaz, ami azt jelenti, az összes meglévő biztonsági másolatok is törlődnek. Azonban felfüggeszteni kívánja használni a forgatókönyvekben, ahol egy szeretné kapcsolja ki a biztonsági mentések átmenetileg, például ha a helyi lemez megtelik, vagy a biztonsági mentés feltöltése stb. ismert hálózati probléma miatt nem működik. 
 
-Csak egy szinten hívható letiltása közben amely korábbi engedélyezték a biztonsági mentési explicilty azonban felfüggesztése minden szintjén, amely jelenleg engedélyezve van a biztonsági mentéshez vagy közvetlenül vagy alkalmazhatók öröklődés útján / hierarchia. Például, ha az alkalmazás szintjén engedélyezve van a biztonsági mentés, egy hívhat meg letiltása csak az alkalmazás szintjén azonban felfüggesztése elindítható, alkalmazások, bármilyen szolgáltatás vagy a partíció alatt az alkalmazást. 
+Csak egy szinten hívható letiltása közben amely korábbi engedélyezték a biztonsági mentés explicit módon azonban alkalmazható felfüggesztése, minden szintjén, amely jelenleg engedélyezve van a biztonsági mentéshez vagy közvetlenül vagy öröklés útján / hierarchia. Például, ha az alkalmazás szintjén engedélyezve van a biztonsági mentés, egy hívhat meg letiltása csak az alkalmazás szintjén azonban felfüggesztése elindítható, alkalmazások, bármilyen szolgáltatás vagy a partíció alatt az alkalmazást. 
 
 ## <a name="auto-restore-on-data-loss"></a>Adatvesztés automatikus visszaállítását
 A szolgáltatás partíció adatvesztést okozhat váratlan hibák miatt. Például a lemez ki, a három replikák egy partícióhoz (többek között az elsődleges replika) lekérdezi sérült, vagy tartalmának végleges törléséig.

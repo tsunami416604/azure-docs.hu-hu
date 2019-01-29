@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 6cc42477e167b7c1a72c1ef74af477073b9af16e
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 732ac5e1e82c67d2f4a0a3443b85c67712f4f651
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901904"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101651"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése
 
@@ -75,7 +75,7 @@ Ez a példa a **tényleges időalapú költségeket tartalmazó** jelentés ért
 5. Válassza ki a **küszöbérték** lapot, majd **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget. 
    1. Az a **vörös színű riasztásra** küszöbérték mezőbe írja be a 10000. 
    2. Az a **sárga riasztást** küszöbérték mezőbe írja be a 9000. 
-   3. Az a **egymást követő riasztások számát** fogadásához egymást követő riasztások számát adja meg. Amikor megjelenik a riasztásokat, amelyek a megadott teljes száma, nem küld további riasztásokat is. 
+   3. Az a **egymást követő riasztások számát** fogadásához egymást követő riasztások számát adja meg. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat. 
 6. Kattintson a **Mentés** gombra.
 
     ![A példában a költségkeret-beállítási küszöbértékek alapján piros, sárga és riasztások megjelenítése](./media/billing-getting-started/schedule-alert01.png)

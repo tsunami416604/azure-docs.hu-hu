@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 05/4/2018
-ms.openlocfilehash: 214c6c4dc3b2dd83e6bf3dfa3355ad6f6aa2eb18
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d450b8d154e920bfc9a82314d34f20a52af71dab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539143"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181996"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for PostgreSQL-tűzfalszabályok Azure CLI használatával
 Kiszolgálószintű tűzfalszabályok engedélyezése a rendszergazdák számára, hogy hozzáférésének kezelése az Azure Database for PostgreSQL-kiszolgáló egy adott IP-cím vagy IP-címtartományt. Kényelmes megoldás az Azure parancssori felület parancsait használva, létrehozhat, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Azure Database for PostgreSQL-tűzfalszabályok áttekintése, lásd: [, Azure Database for PostgreSQL-kiszolgáló tűzfalszabályait](concepts-firewall-rules.md)
@@ -70,7 +70,7 @@ az postgres server firewall-rule show --resource-group myresourcegroup --server-
 Követően sikeres a parancs kimenete listázza a megadott, alapértelmezés szerint JSON formátumban tűzfalszabály részletei. Ha hiba történik, a kimenet egy hibaüzenetet jelenít meg helyette.
 
 ## <a name="delete-firewall-rule"></a>Tűzfalszabály törlése
-Visszavonni a hozzáférést egy IP-címtartományt a kiszolgálóhoz, meglévő tűzfalszabály törlése úgy, hogy végrehajtja a [az postgres server firewall-rule törlése](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_delete) parancsot. Adja meg a meglévő tűzfalszabály nevét.
+Visszavonni a hozzáférést egy IP-címtartományt a kiszolgálóhoz, meglévő tűzfalszabály törlése úgy, hogy végrehajtja a [az postgres server firewall-rule törlése](/cli/azure/postgres/server/firewall-rule) parancsot. Adja meg a meglévő tűzfalszabály nevét.
 ```azurecli-interactive
 az postgres server firewall-rule delete --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange
 ```

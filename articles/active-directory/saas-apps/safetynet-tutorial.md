@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az SafetyNet |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SafetyNet |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést SafetyNet és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: caa96ea2-da21-4529-8fab-0e06367beb40
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 7756e943d25a02b3ec3e5a9150bb5eec8485eda7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4fb21f96c682775b4f7360abcdac7b64c78f76d9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421532"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158281"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>Oktatóanyag: SafetyNet-Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>Oktatóanyag: SafetyNet az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan SafetyNet integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a SafetyNet, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A SafetyNet egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a SafetyNet konfigurálásához hozzá kell SafetyNet 
 
 **SafetyNet hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -121,7 +121,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [SafetyNet ügyfél-támogatási csapatának](mailto:dev@predictivesolutions.com) beolvasni ezeket az értékeket.
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
 
     ![A tanúsítvány letöltési hivatkozás](./media/safetynet-tutorial/tutorial_safetynet_certificate.png)
 
@@ -165,7 +165,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-safetynet-test-user"></a>SafetyNet tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű SafetyNet hoz létre. Együttműködve [SafetyNet támogatási csapatának](mailto:dev@predictivesolutions.com) a felhasználók hozzáadása a SafetyNet-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva
+Ebben a szakaszban egy felhasználói Britta Simon nevű SafetyNet hoz létre. Együttműködve [SafetyNet támogatási csapatának](mailto:dev@predictivesolutions.com) a felhasználók hozzáadása a SafetyNet-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -197,7 +197,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezést Saf
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

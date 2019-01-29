@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f3b9815b8e2836b3ee87f969efdc52aca5f5db6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 5076c662390c9a28682930e8c5f06cfc79f7134b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077242"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169688"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Az Azure CLI-vel az Azure Marketplace-rendszerképek keresése a Linux rendszerű virtuális gép
 
@@ -286,7 +286,7 @@ Ha telepít egy virtuális Gépet a Resource Manager-sablonnal, egyenként a ál
 
 ### <a name="view-plan-properties"></a>Csomag tulajdonságainak megtekintése
 
-Egy rendszerkép beszerzési terv adatainak megtekintéséhez futtassa a [az virtuálisgép-rendszerkép megjelenítése](/cli/azure/image#az_image_show) parancsot. Ha a `plan` a kimenetben tulajdonság nem `null`, a rendszerképre feltételeket el kell fogadnia a programozott telepítés előtt.
+Egy rendszerkép beszerzési terv adatainak megtekintéséhez futtassa a [az virtuálisgép-rendszerkép megjelenítése](/cli/azure/image) parancsot. Ha a `plan` a kimenetben tulajdonság nem `null`, a rendszerképre feltételeket el kell fogadnia a programozott telepítés előtt.
 
 Ha például a Canonical Ubuntu Server 18.04 LTS rendszerképet nem rendelkezik további feltételeket, mert a `plan` információk `null`:
 

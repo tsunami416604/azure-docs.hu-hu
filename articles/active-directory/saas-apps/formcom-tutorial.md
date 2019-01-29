@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Form.com |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Form.com |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Form.com között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: f1bc0112-315c-4e6f-8c69-7c6873007bcf
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: faa89ffd572733c580235b1c6dec58893de20503
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d5748cad11e8e0e4bdfd1000b312ab44fc304059
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449621"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161057"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Oktatóanyag: Azure Active Directory-integráció az Form.com
+# <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Form.com
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Form.com integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Form.com az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Form.com egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a Form.com konfigurálásához hozzá kell Form.com a 
 
 **Form.com hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -123,11 +123,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-válasz URL-cím és azonosító. Kapcsolattartó [Form.com ügyfél-támogatási csapatának](https://form.com/about/company/contact-us/) beolvasni ezeket az értékeket.
 
-1. Az a **SAML-aláíró tanúsítvány** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **SAML-aláíró tanúsítvány** szakaszban, hajtsa végre az alábbi lépéseket:
     
     ![Egyszeri bejelentkezés konfigurálása](./media/formcom-tutorial/tutorial_metadataurl.png)
 
-    a. Kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+    a. Kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
 
     b. Kattintson a **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
      
@@ -207,7 +207,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

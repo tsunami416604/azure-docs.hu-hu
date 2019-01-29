@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az ív közzétételi – egyszeri bejelentkezés |} A Microsoft Docs'
+title: 'Oktatóanyag: Ív közzétételi – egyszeri bejelentkezés az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Arc - SSO között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: ae609583-f875-4cb8-b68e-1b0b7938e9a7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: eafd7998e5bc21a539b6709794fe3cd70d9e3179
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8c4922c817d9667b1a25846df53f9366e2018342
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054318"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187113"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Oktatóanyag: Azure Active Directory-integráció az ív közzétételi – egyszeri bejelentkezés
+# <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Oktatóanyag: Ív közzétételi – egyszeri bejelentkezés az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja ív közzétételi – egyszeri bejelentkezés az Azure Active Directoryval (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Ív közzétételi - SSO, Azure AD-integráció konfigurálása a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Az Arc-közzététel – egyszeri bejelentkezés az egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy teszt
 
 **Ív közzétételi - katalógusból, egyszeri bejelentkezés hozzáadása hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -129,10 +129,10 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     | Attribútum neve | Attribútum értéke |
     | ---------------| --------------- |    
-    | Keresztnév | User.givenName |
-    | Vezetéknév | User.surname |
-    | e-mailben | user.mail |
-    | csoportok | User.assignedroles |
+    | Keresztnév | user.givenname |
+    | Vezetéknév | user.surname |
+    | e-mail | user.mail |
+    | csoportok | user.assignedroles |
 
     1. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -202,7 +202,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja Britta Simon ív közzétételi - SSO nevű felhasználó létrehozásához. Közzétételi arc - egyszeri Bejelentkezést támogatja a létesítést just-in-time, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az ív közzétételi – egyszeri bejelentkezés, ha még nem létezik elérésére tett kísérlet során.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [ív közzétételi - SSO támogatási csapatának](mailto:inf@washpost.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [ív közzétételi - SSO támogatási csapatának](mailto:inf@washpost.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -234,7 +234,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -244,7 +244,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

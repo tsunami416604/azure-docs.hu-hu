@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: aljo-microsoft
-ms.openlocfilehash: 4e6d5cb3191be7188c1a7c4753200cf049800f04
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ac263ef842c780e09576303f2f49e782612294c2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436007"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159114"
 ---
 # <a name="production-readiness-checklist"></a>Termelési készenlét ellenőrzőlistája
 
@@ -27,15 +27,15 @@ Az alkalmazás és a fürt készen áll az éles forgalmat is? Futtathatja és t
 
 
 ## <a name="pre-requisites-for-production"></a>Éles előfeltételei
-1. [Azure Service Fabric – ajánlott eljárások](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) vannak: 
+1. [Az Azure Service Fabric ajánlott biztonsági eljárások](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) vannak: 
 * X.509-tanúsítványok használata
 * Biztonsági szabályzatok beállítása
 * Az SSL konfigurálása az Azure Service Fabric
 * Az Azure Service Fabric hálózati elkülönítési és biztonsági használata
 * A biztonság az Azure Key Vault beállítása
-* Felhasználók szerepkörökhöz rendelése
+* A felhasználók szerepkörökhöz Microsoft.Network/loadBalancersAssign
 * A Reliable Actors biztonsági konfiguráció megvalósításához, ha az Actors programozási modell használatával
-2. 20-nál több maggal vagy a 10 csomópont-fürtöket hozzon létre egy dedikált elsődleges csomóponttípus-szolgáltatások. Adjon hozzá [elhelyezési korlátozások](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) lefoglalni az elsődleges csomóponttípushoz,-szolgáltatások. 
+2. 20-nál több maggal vagy a 10 csomópont-fürtöket hozzon létre egy dedikált elsődleges csomóponttípus-szolgáltatások. Adjon hozzá [elhelyezési korlátozások](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) lefoglalni az elsődleges csomóponttípushoz,-szolgáltatások.
 3. Egy D2v2 vagy magasabb szintű Termékváltozatot használja az elsődleges csomóponttípushoz. Javasoljuk, hogy válasszon ki egy Termékváltozat legalább 50 GB merevlemez-kapacitással rendelkező.
 4. Éles fürtök kell [biztonságos](service-fabric-cluster-security.md). Például egy biztonságos fürt beállításának, ez látható [fürtöket](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Tanúsítványok köznapi nevek használata, és elkerülheti a saját önaláírt tanúsítványokkal.
 5. Adjon hozzá [a tárolók és szolgáltatások erőforrás-korlátozások](service-fabric-resource-governance.md), így több mint 75 %-a-csomópont erőforrások nem használnak. 
@@ -61,8 +61,8 @@ Ha a Service Fabric Reliable Services és Reliable Actors programozási modellt 
 22. Ellenőrizze, hogy a szolgáltatás kód van érvényesítenie a megszakítás lexikális elem szerepel a helyi fejlesztés során az alkalmazások frissítése a `RunAsync` metódust, és bezárja az egyéni kommunikációs figyelőket.
 23. Kerülje [közös alkalmazásmegoldásokra](service-fabric-work-with-reliable-collections.md) a Reliable Collections használata esetén.
 24. Számlálók futtatásakor terheléses teszteket, és ellenőrizze a szemétgyűjtés vagy sorozatos halommemória növekedési nagy mértékű .NET CLR memória teljesítményének figyeléséhez.
-25. Offline biztonsági másolat karbantartása [Reliable Services és Reliable Actors](service-fabric-reliable-services-backup-restore.md) és a visszaállítási folyamat tesztelése. 
-
+25. Offline biztonsági másolat karbantartása [Reliable Services és Reliable Actors](service-fabric-reliable-services-backup-restore.md) és a visszaállítási folyamat tesztelése.
+26. Az elsődleges NodeType csomóponttípus virtuálisgép-példányok száma ideális esetben meg kell egyeznie a fürt megbízhatósági szint; a minimális tartalmazza a feltételeknek megfelelő meghaladja a réteg minimális: ideiglenesen mikor függőleges skálázás, az elsődleges NodeType virtuális gép méretezési csoport Termékváltozatának van.
 
 ## <a name="optional-best-practices"></a>Választható eljárások
 

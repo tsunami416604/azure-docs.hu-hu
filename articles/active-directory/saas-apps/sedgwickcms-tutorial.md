@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Sedgwick CMS |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az Sedgwick CMS |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Sedgwick tartalomkezelő rendszer és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 957931e0-e426-47e7-9904-3ed98d3f504c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 796ed1cb0fde6b29a931099336fd91e2e931fc29
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 611a877b44093efe7384400ffcc8dec76338c9f9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820495"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194865"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Oktatóanyag: Azure Active Directory-integráció az Sedgwick tartalomkezelő rendszer
+# <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Oktatóanyag: Az Azure Active Directory integrációja az Sedgwick tartalomkezelő rendszer
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Sedgwick tartalomkezelő rendszer integrálása az Azure Active Directory (Azure AD).
 
@@ -137,7 +137,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 1. Az egyszeri bejelentkezés konfigurálása **Sedgwick CMS** oldalon kell küldenie a letöltött **metaadatainak XML** való [Sedgwick CMS támogatási csapatának](https://www.sedgwick.com/help). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 688194c8d5ec0c2594d8c7178d8cae3925b8e482
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 93f086ed6ff7b8cc9ccc03290d3e901427783887
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413374"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103946"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Nyelvéhez és régiójához támogatása Beszédszolgáltatási API Használatába
 
@@ -79,6 +79,10 @@ Neurális beszédhangot és a régiónkénti rendelkezésre állás teljes list�
 |--------|----------|---------|--------------------|
 | en-US | Angol (Egyesült Államok) | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-US, GuyNeural)" |
 | en-US | Angol (Egyesült Államok) | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, JessaNeural)" |
+| zh-CN | kínai | Nő | "A Microsoft Server beszéd szöveg Speech Voice (zh-CN, XiaoxiaoNeural)" |
+
+> [!IMPORTANT]
+> A Microsoft Server hang-szöveg Speech szövegfelolvasás (zh-CN, XiaoxiaoNeural) csak a Délkelet-Ázsia végponton keresztül érhető el: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1.
 
 ### <a name="standard-voices"></a>Standard beszédhangot
 

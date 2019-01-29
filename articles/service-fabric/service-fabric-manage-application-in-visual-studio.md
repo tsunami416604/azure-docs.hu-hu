@@ -1,5 +1,5 @@
 ---
-title: A Visual Studióban a szolgáltatás az Azure Fabric-alkalmazások kezeléséhez |} A Microsoft Docs
+title: A Visual Studióban az Azure Service Fabric-alkalmazások kezelése |} A Microsoft Docs
 description: A Visual Studio használatával hozzon létre, fejleszthet, csomagolását, üzembe helyezése és hibakeresése az Azure Service Fabric-alkalmazások és szolgáltatások.
 services: service-fabric
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 01a9852157cbaefd966be974a3175c25e7ff69f8
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: b90c39416a522b42932dd82214316e586ba4293a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001702"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192553"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Írása, és a Service Fabric-alkalmazások kezelése a Visual Studio használatával
 Az Azure Service Fabric-alkalmazások és szolgáltatások Visual Studión keresztül kezelheti. Miután [a fejlesztési környezet beállítása](service-fabric-get-started.md), a Visual Studio segítségével Service Fabric-alkalmazások létrehozása, adja hozzá a szolgáltatások vagy a csomag regisztrálása és alkalmazások üzembe helyezése a helyi fejlesztési fürtön.
@@ -47,7 +47,7 @@ A Visual Studio meg tulajdonsággal **alkalmazás hibakeresési módban**, amely
 
 #### <a name="application-debug-modes"></a>Alkalmazás hibakeresési üzemmód
 
-1. **Aktualizovat Aplikaci** ebben a módban lehetővé teszi, hogy gyorsan módosítása és hibakeresése a kód és a statikus fájlok szerkesztése a hibakeresés során támogatja. Ebben az üzemmódban csak akkor működik, ha a helyi fejlesztési fürt [1 csomópontos üzemmódúra](./service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode). Ez az alkalmazás hibakeresési mód alapértelmezés szerint.
+1. **Aktualizovat Aplikaci** ebben a módban lehetővé teszi, hogy gyorsan módosítása és hibakeresése a kód és a statikus fájlok szerkesztése a hibakeresés során támogatja. Ebben az üzemmódban csak akkor működik, ha a helyi fejlesztési fürtöt 1 csomópontos üzemmódban van. Ez az alkalmazás hibakeresési mód alapértelmezés szerint.
 2. **Alkalmazás eltávolítása** távolítható el, ha a hibakeresési munkamenet véget ér az alkalmazást.
 3. **Automatikus frissítés** az alkalmazás továbbra is fut, amikor a hibakeresési munkamenet befejeződik. A következő hibakeresési munkamenet kezeli az üzembe helyezés frissítéseként. A frissítési folyamat megőrzi a korábbi hibakeresési munkamenetben megadott adatokat.
 4. **Zachovat Aplikaci** az alkalmazás a fürt továbbra is működik, ha a hibakeresési munkamenet azért ér véget. A következő hibakeresési munkamenet elején, az alkalmazás törlődni fog.

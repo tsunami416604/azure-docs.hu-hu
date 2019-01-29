@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3a2ccd04cd7ec36cafdf56830b9ad8249f89eb7e
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 2c8f91c6915b23193129ed9e82688ad5967eb6ea
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321590"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181469"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
@@ -46,7 +46,7 @@ A **számítás és alkalmazások**, a következő lap található:
 - **Tárolók (előzetes verzió)**: az IaaS Linuxos gépeken és a biztonsági konfigurációk értékelése a saját Docker üzemeltetett tárolók listájában.
 - **Számítási erőforrások (előzetes verzió)**: a számítási erőforrások, például a Service Fabric-fürtök és az Event hubs a javaslatok listája.
 
-A folytatáshoz válasszon ki **számítás és alkalmazások** alatt **erőforrás biztonsági hygeine**.
+A folytatáshoz válasszon ki **számítás és alkalmazások** alatt **erőforrás biztonsági higiéniai**.
 
 ![Compute](./media/security-center-virtual-machine-recommendations/compute.png)
 
@@ -196,8 +196,8 @@ A listában szereplő ikon három típusa van:
 |Számítási erőforrások (eseményközpontból)|5|Event Hub-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
 |Számítási erőforrások (a logic apps)|5|A Logic Apps-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
 |Számítási erőforrások (a service fabric)|15|A Service Fabric EncryptAndSign a ClusterProtectionLevel tulajdonsága|Service Fabric egy elsődleges fürttanúsítvány csomópontok közötti kommunikációt három szintje (nincs, bejelentkezési és EncryptAndSign) védelmet biztosít.  Biztosíthatja, hogy a csomópontok közötti üzenetek titkosítva és digitálisan aláírt védelmi szintjének beállítása. |
-|Számítási erőforrások (a service bus)|1|A Service Bus-névtér RootManageSharedAccessKey kivételével minden engedélyezési szabályok törlése |Service Bus-ügyfél ne használjon egy névtér szintű hozzáférési szabályzatot, amely valamennyi üzenetsorok és témakörök a névtérben hozzáférést biztosít. A legalacsonyabb jogosultsági biztonsági igazodva modellt, akkor értékének hossza hozzáférési szabályzatokat hozhat létre az entitások szintjén, az üzenetsorok és témakörök biztosíthat hozzáférést az adott entitáshoz.|
-|Számítási erőforrások (eseményközpontból)|1|Eseményközpont-névtérrel távolítsa el RootManageSharedAccessKey kivételével minden engedélyezési szabályok |Event Hub-ügyfelek ne használjon egy névtér szintű hozzáférési szabályzatot, amely valamennyi üzenetsorok és témakörök a névtérben hozzáférést biztosít. A legalacsonyabb jogosultsági biztonsági igazodva modellt, akkor értékének hossza hozzáférési szabályzatokat hozhat létre az entitások szintjén, az üzenetsorok és témakörök biztosíthat hozzáférést az adott entitáshoz.|
+|Számítási erőforrások (a service bus)|1|A Service Bus-névtér RootManageSharedAccessKey kivételével minden engedélyezési szabályok törlése |Service Bus-ügyfél ne használjon egy névtér szintű hozzáférési szabályzatot, amely valamennyi üzenetsorok és témakörök a névtérben hozzáférést biztosít. A minimális jogosultságokkal rendelkező igazítása biztonság a modellben kell hozzáférési szabályzatokat hoz létre az entitások szintjén, az üzenetsorok és témakörök biztosíthat hozzáférést az adott entitáshoz.|
+|Számítási erőforrások (eseményközpontból)|1|Eseményközpont-névtérrel távolítsa el RootManageSharedAccessKey kivételével minden engedélyezési szabályok |Event Hub-ügyfelek ne használjon egy névtér szintű hozzáférési szabályzatot, amely valamennyi üzenetsorok és témakörök a névtérben hozzáférést biztosít. A minimális jogosultságokkal rendelkező igazítása biztonság a modellben kell hozzáférési szabályzatokat hoz létre az entitások szintjén, az üzenetsorok és témakörök biztosíthat hozzáférést az adott entitáshoz.|
 |Számítási erőforrások (eseményközpontból)|5|Az Event Hubs entitásra az engedélyezési szabályok definiálása|Azoknak az engedélyezési szabályok alacsonyabb szintű hozzáférést biztosítani az Event Hubs entitáson naplózása.|
 |Gép|50|Figyelési ügynök telepítése a gépeken|A Monitoring agent engedélyezni az adatgyűjtést, a frissítések vizsgálata, alapkonfiguráció-keresés és az endpoint protection az összes olyan számítógépen telepíti.|
 |Gép|50|Az Automatikus kiépítés és az előfizetésekre vonatkozó adatok gyűjtésének engedélyezése |Automatikus üzembe helyezés és a gépek előfizetéseiben engedélyezni az adatgyűjtést, a frissítések vizsgálata, alapkonfiguráció-keresés és az endpoint protection az összes olyan számítógépen, hozzáadva az előfizetésekhez az adatgyűjtés engedélyezése.|

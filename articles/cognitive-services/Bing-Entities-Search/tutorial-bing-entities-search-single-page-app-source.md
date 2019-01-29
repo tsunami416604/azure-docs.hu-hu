@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Egyoldalas Bing Entity Search webalkalmazás (forráskód)'
+title: 'Oktatóanyag: A Bing Entity Search egyoldalas webalkalmazást (forrás kód)'
 titlesuffix: Azure Cognitive Services
 description: Forráskód a Bing Entity Search API egyoldalas webalkalmazásban való használatát bemutató oktatóanyaghoz.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 10/04/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 09cb10002be43d65ff10e3c238a880cf138aa064
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 6165bca1eff248f15cfce4638a6f9817db550c04
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815052"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156258"
 ---
-# <a name="tutorial-single-page-web-app-source"></a>Oktatóanyag: Egyoldalas webalkalmazás forrása
+# <a name="tutorial-single-page-web-app-source"></a>Oktatóanyag: Egyoldalas webes alkalmazás forrás
 
 Ez az [egyoldalas Bing Entity Search-alkalmazást bemutató oktatóanyagban](tutorial-bing-entities-search-single-page-app.md) ismertetett teljes forráskód. Az alkalmazás futtatásához másolja a forráskódot a Jegyzettömbbe vagy más szövegszerkesztőbe, és mentse `bing.html` néven. Ezután nyissa meg a mentett fájlt a Microsoft Edge-ben vagy más népszerű böngészőben.
 

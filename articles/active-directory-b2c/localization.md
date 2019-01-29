@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: a0abf2fd3502238af0e0f02cb8f9917cfb90b586
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 8f252b536c80ad997f3c0eb10b10d5cb8c330fc6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854973"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187555"
 ---
 # <a name="localization"></a>Honosítás
 
@@ -111,7 +111,7 @@ A **elem** elem tartalmazza a következő attribútumokat:
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Szöveg | Igen | A megjelenített felhasználóbarát mezőnevét karakterlánc, hogy megjelenjen-e a felhasználó a felhasználói felületen ezt a lehetőséget választja. |
-| Érték | Igen | A karakterlánc jogcím társított Ez a beállítás értéke. |
+| Value | Igen | A karakterlánc jogcím társított Ez a beállítás értéke. |
 
 Az alábbi példa bemutatja a használatát a **LocalizedCollections** elemet. Tartalmaz két **LocalizedCollection** elemeit, így az angol és spanyol egy másik. Mindkettő a **korlátozás** gyűjtemény a jogcím `Gender` az angol és spanyol elemek listáját.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az EFI digitális kirakat |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az EFI digitális kirakat |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a digitális kirakat EFI között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 33c148fc-d490-4bb9-90c1-d5933679ce4e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 7df615caf3ca1b8ca7dd7d4da876c840e20defd8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b93e63acbad5a43b898e80dc706dfe17837f0183
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833125"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155357"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>Oktatóanyag: Azure Active Directory-integráció az EFI digitális áruház oldala
+# <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>Oktatóanyag: Az EFI digitális áruház oldala az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan EFI digitális kirakat integrálása az Azure Active Directory (Azure AD).
 
@@ -125,7 +125,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 1. Az egyszeri bejelentkezés konfigurálása **EFI digitális kirakat** oldalon kell küldenie a letöltött **metaadatainak XML** való [EFI digitális kirakat támogatási csapatának](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára

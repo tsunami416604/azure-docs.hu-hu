@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Active Directory Domain Services: Biztonságos LDAP-konfiguráció hibaelhárítása |} A Microsoft Docs'
+title: 'Az Azure Active Directory tartományi szolgáltatások: Hibaelhárítási Secure LDAP-konfiguráció |} A Microsoft Docs'
 description: Az Azure AD Domain Services hibaelhárítási biztonságos LDAP
 services: active-directory-ds
 documentationcenter: ''
@@ -8,25 +8,25 @@ manager: ''
 editor: ''
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: e3a31749407f9ec0494e8452b602ed9966c5ab83
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: be07579d8273ab19101aa6c475ae5d23375517ca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504209"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177185"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Az Azure AD tartományi szolgáltatások – hibaelhárítási Secure LDAP-konfiguráció
 
 Ez a cikk gyakori elhárítási problémákkal [a secure LDAP konfigurálása](active-directory-ds-admin-guide-configure-secure-ldap.md) az Azure AD tartományi szolgáltatásokhoz.
 
-## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Biztonságos LDAP hálózati biztonsági csoport konfigurálása
+## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Secure LDAP hálózati biztonsági csoport konfigurálása
 
 **Riasztás jelenik meg:**
 
@@ -54,7 +54,7 @@ Ha a secure LDAP engedélyezve van, azt javasoljuk, hogy csak bizonyos IP-címek
 > Az Azure AD tartományi szolgáltatásokkal való zökkenőmentes szükséges egyetlen szabály 636-os portot nem áll. További tudnivalókért látogasson el a [hálózati útmutató](active-directory-ds-networking.md) vagy [hibaelhárítása NSG konfigurációs](active-directory-ds-troubleshoot-nsg.md) cikkeket.
 >
 
-## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Biztonságos LDAP-tanúsítvány hamarosan lejár
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Secure LDAP-tanúsítvány hamarosan lejár
 
 **Riasztás jelenik meg:**
 

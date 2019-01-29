@@ -4,17 +4,17 @@ description: Ez a cikk végigvezeti programozott módon szabályzatok létrehoz�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: adeb963333ffc2b587d7468eb357fab8dc4d6bbe
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 575e2974131a09bdbdbc96d3ad252365ac9da86e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847050"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101787"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
 
@@ -201,17 +201,34 @@ Szabályzatdefiníció létrehozásához használja az alábbi eljárást:
   }
   ```
 
+   Szabályzat-definíció szerzői kapcsolatos további információkért lásd: [Azure Szabályzatdefiníciók struktúrája](../concepts/definition-structure.md).
+
 1. Futtassa a következő parancsot egy szabályzat-definíció létrehozása:
 
    ```azurecli-interactive
    az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
    ```
 
+   A parancs létrehoz egy szabályzatdefiníciót nevű _naplózási Storage fiókok nyissa meg a nyilvános hálózatok_.
+   Más paramétereket, amelyeket használhat kapcsolatos további információkért lásd: [az szabályzatdefiníció létrehozása](/cli/azure/policy/definition#az-policy-definition-create).
+
+   Hely paraméterek nélkül meghívni `az policy definition creation` , az alapértelmezett érték a szabályzat-definíció mentése az munkamenet-környezet a kijelölt előfizetésben. A definíció mentése más helyre, használja a következő paraméterekkel:
+
+   - **– előfizetés** -másik előfizetésbe való mentéséhez. Szükséges egy _GUID_ az előfizetés-azonosító értéke, vagy egy _karakterlánc_ az előfizetés nevét.
+   - **--felügyeleticsoport** -mentse egy felügyeleti csoporthoz. Szükséges egy _karakterlánc_ értéket.
+
 1. A következő paranccsal hozzon létre egy szabályzat-hozzárendelést. Cserélje le a példaadatok &lt; &gt; szimbólumok a saját értékeire.
 
    ```azurecli-interactive
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
+
+   A **--hatókör** paraméterrel `az policy assignment create` együttműködik a felügyeleti csoportban, előfizetés, erőforráscsoport vagy egyetlen erőforrás. A paraméter teljes erőforrás elérési utat használ. Minta **--hatókör** az egyes tárolók a következőképpen történik. Cserélje le `{rName}`, `{rgName}`, `{subId}`, és `{mgName}` az erőforrás nevét, az erőforráscsoport nevét, az előfizetés-azonosító és a felügyeleti csoport neve, illetve. `{rType}` szeretné cserélni a **erőforrástípus** az erőforrás például `Microsoft.Compute/virtualMachines` egy virtuális géphez.
+
+   - Erőforrás- `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Erőforráscsoport- `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Előfizetés – `/subscriptions/{subID}`
+   - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 A Szabályzatdefiníció azonosítója a következő parancsot a PowerShell használatával kaphat:
 

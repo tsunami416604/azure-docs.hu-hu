@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált moconavi |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és moconavi között.
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező moconavi |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és moconavi között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,143 +8,143 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e1916224-e1c2-426f-b233-0a2518fa41db
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 3467b823e6c91d34ebd48c7f8bc29558a79c59e5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3009cb42ac477b18d45ab5968d6f5793ce1cd36c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229546"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165897"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Oktatóanyag: Azure Active Directoryval integrált moconavi
+# <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező moconavi
 
-Ebben az oktatóanyagban elsajátíthatja moconavi integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan moconavi integrálása az Azure Active Directory (Azure AD).
 
-Moconavi integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Moconavi integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér moconavi szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett moconavi (egyszeri bejelentkezés) a saját Azure AD-fiókok számára.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá moconavi Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett az Azure AD-fiókjukkal (egyszeri bejelentkezés) moconavi.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs moconavi, a következőkre van szükség:
+Moconavi az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Azure AD-előfizetés
 - Egy moconavi egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben.
-Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből moconavi hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Moconavi hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-moconavi-from-the-gallery"></a>A gyűjteményből moconavi hozzáadása
-Az Azure AD integrálása a moconavi konfigurálásához kell hozzáadnia moconavi a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-moconavi-from-the-gallery"></a>Moconavi hozzáadása a katalógusból
+Az Azure AD integrálása a moconavi konfigurálásához hozzá kell moconavi a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből moconavi hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Moconavi hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **moconavi**, jelölje be **moconavi** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **moconavi**válassza **moconavi** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![az eredménylistában moconavi](./media/moconavi-tutorial/tutorial_moconavi_addfromgallery.png)
+    ![az eredmények listájában moconavi](./media/moconavi-tutorial/tutorial_moconavi_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján moconavi.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés moconavi a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó moconavi a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a moconavi közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó moconavi mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó moconavi hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést a moconavi tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az moconavi tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Moconavi tesztfelhasználó létrehozása](#create-a-moconavi-test-user)**  - Britta Simon egy partner, a felhasználó az Azure AD ábrázolását kapcsolódó moconavi rendelkezik.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy moconavi tesztfelhasználót](#create-a-moconavi-test-user)**  – egy megfelelője a Britta Simon a felhasználó Azure ad-ben reprezentációja kapcsolódó moconavi rendelkeznie.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az moconavi alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és moconavi alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés moconavi, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés moconavi, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **moconavi** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **moconavi** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/moconavi-tutorial/tutorial_moconavi_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/moconavi-tutorial/tutorial_moconavi_samlbase.png)
 
-3. Az a **moconavi tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **moconavi tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Tartomány- és URL-címek egyetlen bejelentkezési adatokat moconavi](./media/moconavi-tutorial/tutorial_moconavi_url.png)
+    ![moconavi tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/moconavi-tutorial/tutorial_moconavi_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<yourserverurl>/moconavi-saml2/saml/login`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<yourserverurl>/moconavi-saml2/saml/login`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<yourserverurl>/moconavi-saml2`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<yourserverurl>/moconavi-saml2`
 
-    C. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<yourserverurl>/moconavi-saml2/saml/SSO`
+    C. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<yourserverurl>/moconavi-saml2/saml/SSO`
 
     > [!NOTE]
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím, azonosítóját és válasz URL-CÍMEN. Ügyfél [moconavi ügyfél-támogatási csoport](mailto:support@recomot.co.jp) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-, azonosítóját és válasz URL-cím. Kapcsolattartó [moconavi ügyfél-támogatási csapatának](mailto:support@recomot.co.jp) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/moconavi-tutorial/tutorial_moconavi_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](./media/moconavi-tutorial/tutorial_moconavi_certificate.png)
 
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/moconavi-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/moconavi-tutorial/tutorial_general_400.png)
 
-6. Egyszeri bejelentkezés konfigurálása **moconavi** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [moconavi támogatási csoport](mailto:support@recomot.co.jp). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+6. Az egyszeri bejelentkezés konfigurálása **moconavi** oldalon kell küldenie a letöltött **metaadatainak XML** való [moconavi támogatási csapatának](mailto:support@recomot.co.jp). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/moconavi-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/moconavi-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/moconavi-tutorial/create_aaduser_03.png)
 
@@ -154,49 +154,49 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="create-a-moconavi-test-user"></a>Moconavi tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy moconavi Britta Simon nevű felhasználót hoz létre. Együttműködve [moconavi támogatási csoport](mailto:support@recomot.co.jp) a felhasználók hozzáadása a moconavi platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt.
+Ebben a szakaszban egy felhasználói Britta Simon nevű moconavi hoz létre. Együttműködve [moconavi támogatási csapatának](mailto:support@recomot.co.jp) a felhasználók hozzáadása az moconavi platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéshez használandó moconavi való hozzáférés biztosítása.
+Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejelentkezés moconavi való hozzáférést.
 
 ![A felhasználói szerepkör hozzárendelése][200]
 
-**Britta Simon hozzárendelése moconavi, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel moconavi, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listában válassza ki a **moconavi**.
+2. Az alkalmazások listájában jelölje ki a **moconavi**.
 
-    ![Az alkalmazások listáját a moconavi hivatkozás](./media/moconavi-tutorial/tutorial_moconavi_app.png)
+    ![Az alkalmazások listáját a moconavi hivatkozásra](./media/moconavi-tutorial/tutorial_moconavi_app.png)
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-1. Moconavi Microsoft store áruházból telepítik.
+1. Moconavi telepítse a Microsoft store-ból.
 
 2. Indítsa el a moconavi.
 
@@ -204,32 +204,32 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéshez h
 
     ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing1.png)
 
-4. Adja meg `https://mcs-admin.moconavi.biz/gateway` be **URL-cím kapcsolódás** szövegmező, majd **végzett** gombra.
+4. Adja meg `https://mcs-admin.moconavi.biz/gateway` be **csatlakozhat az URL-cím** szövegmezőbe, és kattintson a **kész** gombra.
 
     ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing2.png)
 
-5. Az alábbi képernyőfelvételen hajtsa végre a következő lépéseket:
+5. Az alábbi képernyőfelvételen látható hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing3.png)
 
-    a. Adja meg **bemeneti hitelesítési kulcs**:`azureAD` történő **bemeneti hitelesítési kulcs** szövegmező.
+    a. Adja meg **bemeneti hitelesítési kulcs**:`azureAD` be **bemeneti hitelesítési kulcs** szövegmezőbe.
 
-    b. Adja meg **bemeneti Felhasználóazonosító**: `your ad account` történő **bemeneti Felhasználóazonosító** szövegmező.
+    b. Adja meg **Input Felhasználóazonosító**: `your ad account` be **Input Felhasználóazonosító** szövegmezőbe.
 
     c. Kattintson a **bejelentkezési**.
 
-6. Az Azure AD-jelszó a bemeneti **jelszó** szövegmező majd **bejelentkezési** gombra.
+6. Az Azure AD-jelszó a bemeneti **jelszó** szövegmezőbe, és kattintson a **bejelentkezési** gombra.
 
     ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing4.png)
 
-7. Az Azure AD authentication akkor sikeres, ha a menüt.
+7. Az Azure AD-hitelesítés akkor sikeres, ha a menüben jelenik meg.
 
     ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing5.png)
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

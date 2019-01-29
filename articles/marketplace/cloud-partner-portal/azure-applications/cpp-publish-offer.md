@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 2adf07cf2337611b9136af47ce6a35b617e2e9ff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828094"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177032"
 ---
 # <a name="publish-azure-application-offer"></a>Az Azure application ajánlat közzététele
 
@@ -28,6 +28,7 @@ Az adatokat azáltal, hogy az ajánlat létrehozása után a **új ajánlat** la
 Az alábbi ábrán látható a fő lépések egy "az élő esemény indításra" ajánlat a közzétételi folyamat.
 
 ![Az ajánlat közzétételi lépéseket](./media/offer-publishing-steps.png)
+
 
 ## <a name="detailed-description-of-publishing-steps"></a>Közzétételi lépések részletes leírása
 
@@ -44,12 +45,14 @@ A következő táblázat sorolja fel és közzétételi lépésre ismerteti, és
 | A Microsoft áttekintése                | 7 – 14 nap | A Microsoft azok alkalmazásfüggőségeit áttekinti az Azure-alkalmazásokat, és e-mailt küld, ha problémák.  Ebben a lépésben hossza attól függ, hogy az alkalmazást, a felderített hibák, és hogyan azonnal reagálhat rájuk bonyolultságát.  |
 | Élő                           | < 1 nap | Az ajánlat nyilvánosan, a megadott régióban replikálja, és nyilvánosan elérhetővé. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
+
  
 Figyelheti a közzétételi folyamat a **állapot** az ajánlatra, a Cloud Partner portálra a lap.
 
 ![Az Azure-alkalmazás ajánlat állapota lap](./media/offer-status-tab.png)
 
 Miután elvégezte a közzétételi folyamat, az ajánlat jelenik meg a [Microsoft Azure Marketplace-alkalmazás kategóriához](https://azuremarketplace.microsoft.com/marketplace/apps/).
+
 
 
 ## <a name="errors-and-review-feedback"></a>Hibák és a felülvizsgálati visszajelzés

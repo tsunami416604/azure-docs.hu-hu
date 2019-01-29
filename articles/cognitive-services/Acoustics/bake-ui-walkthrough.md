@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: c37e050cd762cb173d64f78b5267e4ad252d17a9
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f376b6bcb0238f96b4f5bb35d898cc600e108c65
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902246"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169756"
 ---
 # <a name="bake-acoustics"></a>Bake Akusztika
 
@@ -185,9 +185,9 @@ Bár ez egyszerűnek tűnhet, az az akusztikai szimuláció rendelkezik követke
 * Nem megbízható forrásból csoportdobozban voxels "kitöltött", amely, amely tartalmazza a geometriai voxels – ennek eredményeként nincs hang. Keresse meg a megbízható forrásból, így nem belül elnagyolt, a nagyobb voxels finom beállítást használja, mint nagyobb nehézséget jelent.
 * A nagyobb voxels fog végberendezésébe több portálok, az alább látható módon. Az első rendszerkép használatával elnagyolt, míg a második azonos kezdőpanelje finom megoldás használatával lett létrehozva. A piros jelöléseket aszinkronitást nincs sokkal kevesebb behatolás kezdőpanelje finom beállítások használatával. A kék vonal kezdőpanelje alapján a geometriai, míg a piros vonalat a hatékony akusztikai portál voxel méretét határozzák meg. Hogyan a behatolás játszik az adott helyzetben függ teljesen hogyan a voxels illeszkedik a geometriai, a portál, amelynek a méretét és az objektumok a jelenetben helyét határozza meg.
 
-![Durva Kezdőpanelje](media/CoarseVoxelDoorway.png)
+![Coarse Doorway](media/CoarseVoxelDoorway.png)
 
-![Finom Kezdőpanelje](media/FineVoxelDoorway.png)
+![Fine Doorway](media/FineVoxelDoorway.png)
 
 ## <a name="bake-tab"></a>Bake lap
 
@@ -255,10 +255,10 @@ Telepítse és konfigurálja a Docker a számítógépen, amely feldolgozza a sz
 
 Nincsenek különböző időpontokban a beépülő modul által létrehozott négy adatfájlokat. Csak az egyik van szükség, futtatás közben, ezért a többi három találhatók mappák "Szerkesztő" nevű, így azok nem fordítható le, a projektbe.
 
-* **Eszközök/szerkesztő / [SceneName]\_AcousticsParameters.asset**: A fájl tárolja az adatokat a mezőkben a Akusztika felhasználói felületén. A hely és a fájl neve nem lehet módosítani. Ebben a fájlban tárolt más értékek, amelyek a bake hatással, de tapasztalt felhasználók számára, és nem szabad módosítani.
+* **Assets/Editor/[SceneName]\_AcousticsParameters.asset**: A fájl tárolja az adatokat a mezőkben a Akusztika felhasználói felületén. A hely és a fájl neve nem lehet módosítani. Ebben a fájlban tárolt más értékek, amelyek a bake hatással, de tapasztalt felhasználók számára, és nem szabad módosítani.
 * **Eszközök/AcousticsData/Akusztika\_[SceneName].ace.bytes**: Ez a fájl, mi a bake szimuláció során létrejön, és a helyszín a Akusztika megjelenítése a modul által használt keresési adatait tartalmazza. A helyét, és ez a fájl nevét is módosítható a mezői a **mintavételek** fülre.
 * **Assets/AcousticsData/Editor/Acoustics_[SceneName].vox**: Ez a fájl tartalmazza a voxelized Akusztika geometry és a lényeges tulajdonságait. Kiszámítása a **Calculate...**  gombra a mintavételek lapon. A helyét, és ez a fájl nevét is módosítható a mezői a **mintavételek** fülre.
-* **Eszközök/AcousticsData/szerkesztő/Akusztika\_[SceneName]\_soubor Config.XML v**: Ez a fájl tartalmazza a paraméterek kiszámítása a **Calculate...**  gombot a **mintavételek** fülre. A helyét, és ez a fájl nevét is módosítható a mezői a **mintavételek** fülre.
+* **Assets/AcousticsData/Editor/Acoustics\_[SceneName]\_config.xml**: Ez a fájl tartalmazza a paraméterek kiszámítása a **Calculate...**  gombot a **mintavételek** fülre. A helyét, és ez a fájl nevét is módosítható a mezői a **mintavételek** fülre.
 
 Nem, hogy törli a *. ace.bytes fájlt letölteni a bake. Ez a fájl nem helyreállítható, kivéve a jelenet rebaking által.
 

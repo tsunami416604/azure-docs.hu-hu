@@ -6,16 +6,16 @@ services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: nolachar
-ms.openlocfilehash: f4ead76f78b1457e48c03e2fd0b0f871f90b0cf5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8eccfda4481fea4c305aeb59282fb5d24b845f9e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804004"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181401"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>A Bing Spell Check API nyelvéhez és régiójához támogatása
 
@@ -61,7 +61,7 @@ Vegye figyelembe, hogy, mint bármely más nyelvvel való `en-US`, a `mkt` kell 
 | spanyol (Argentína)    | `es-AR`          |
 | spanyol (Chile)     | `es-CL`          |
 | spanyol (Mexikó)    | `es-MX`          |
-| Spanyol (Spanyolország)    | `es-ES`          |
+| spanyol (spanyolországi)    | `es-ES`          |
 | spanyol (Egyesült Államok)    | `es-US`          |
 | svéd     | `sv`          |
 | török     | `tr`          |

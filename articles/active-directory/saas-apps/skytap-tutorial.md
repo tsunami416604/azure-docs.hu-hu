@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Skytap |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Skytap |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Skytap között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d6cb7ab2-da1a-4015-8e6f-c0c47bb6210f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 754697682470ac3c1f982e6cb1fc5f6043f3b92c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6466e40fca954d41a32424c55b8ee465fb7ad7ec
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438130"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195704"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skytap"></a>Oktatóanyag: Azure Active Directory-integráció az Skytap
+# <a name="tutorial-azure-active-directory-integration-with-skytap"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Skytap
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Skytap integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Skytap az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Skytap egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a Skytap konfigurálásához hozzá kell Skytap a kata
 
 **Skytap hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -167,7 +167,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-skytap-test-user"></a>Skytap tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Skytap hoz létre. Együttműködve [Skytap támogatási csapatának](mailto:support@skytap.com) a felhasználók hozzáadása az Skytap platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva
+Ebben a szakaszban egy felhasználói Britta Simon nevű Skytap hoz létre. Együttműködve [Skytap támogatási csapatának](mailto:support@skytap.com) a felhasználók hozzáadása az Skytap platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -199,7 +199,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: da4fda3d0cfa6cb33d2dd8bb3bb844f18654c30a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: b2a9c6c31771be1316038d794d1c15ff9fa45916
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851895"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166730"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(ELAVULT) Az Azure AD-szolgáltatásnevet a Container Service-ben a Kubernetes-fürt beállítása
 
@@ -26,7 +26,7 @@ ms.locfileid: "54851895"
 Az Azure Container Service-ben a Kubernetes számára szükséges egy [Azure Active Directory egyszerű szolgáltatás](../../active-directory/develop/app-objects-and-service-principals.md) az Azure API-kkal való kommunikációhoz. Az egyszerű szolgáltatással dinamikusan kezelhet olyan erőforrásokat, mint a [felhasználó által meghatározott útvonalak](../../virtual-network/virtual-networks-udr-overview.md) és a [4. rétegű Azure Load Balancer](../../load-balancer/load-balancer-overview.md).
 
 
-Ebben a cikkben különböző lehetőségeket talál arra, hogyan állíthat be egy egyszerű szolgáltatást a Kubernetes-fürthöz. Ha például telepítette és beállította az [Azure CLI-t](/cli/azure/install-az-cli2)-t, akkor futtathatja a [`az acs create`](/cli/azure/acs#az_acs_create) parancsot a Kubernetes-fürt és az egyszerű szolgáltatás egyidejű létrehozásához.
+Ebben a cikkben különböző lehetőségeket talál arra, hogyan állíthat be egy egyszerű szolgáltatást a Kubernetes-fürthöz. Ha például telepítette és beállította az [Azure CLI-t](/cli/azure/install-az-cli2)-t, akkor futtathatja a [`az acs create`](/cli/azure/acs) parancsot a Kubernetes-fürt és az egyszerű szolgáltatás egyidejű létrehozásához.
 
 
 ## <a name="requirements-for-the-service-principal"></a>Az egyszerű szolgáltatás követelményei

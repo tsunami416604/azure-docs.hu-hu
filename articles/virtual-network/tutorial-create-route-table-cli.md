@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 89ac87436fb6807177acf3882dd6e923b1722bd5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8bfa4178baae0d92f7efb5ea156cfd35a8b32b1b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849209"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157465"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Hálózati forgalom továbbítása az Azure CLI használatával útválasztási táblázat
 
@@ -121,7 +121,7 @@ az network vnet subnet update \
 
 Az NVA egy olyan virtuális gép, amely hálózati funkciót tölt be, például útválasztóként, tűzfalként vagy WAN-optimalizálóként működik.
 
-Az NVA létrehozása a *DMZ* alhálózat [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Amikor létrehoz egy virtuális Gépet, az Azure létrehozza, és alapértelmezés szerint a virtuális gép nyilvános IP-címet rendel. A `--public-ip-address ""` paraméter nem lehet létrehozni, és a egy nyilvános IP-cím hozzárendelése a virtuális Gépet, mivel a virtuális Gépet nem kell az internetről csatlakozik Azure utasítja. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
+Az NVA létrehozása a *DMZ* alhálózat [az virtuális gép létrehozása](/cli/azure/vm). Amikor létrehoz egy virtuális Gépet, az Azure létrehozza, és alapértelmezés szerint a virtuális gép nyilvános IP-címet rendel. A `--public-ip-address ""` paraméter nem lehet létrehozni, és a egy nyilvános IP-cím hozzárendelése a virtuális Gépet, mivel a virtuális Gépet nem kell az internetről csatlakozik Azure utasítja. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
 
 ```azure-cli-interactive
 az vm create \
@@ -161,7 +161,7 @@ A parancs is igénybe vehet egy percig végrehajtásához.
 
 Két virtuális gép létrehozása a virtuális hálózatban, így ellenőrizheti, hogy a forgalom a *nyilvános* alhálózatra irányítja a rendszer a *privát* alhálózat egy későbbi lépésben az nva-n keresztül. 
 
-A virtuális gép létrehozása a *nyilvános* alhálózat [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). A `--no-wait` paraméter lehetővé teszi, hogy a parancs végrehajtása a háttérben, így folytathatja a következő parancsot az Azure. Ez a cikk egyszerűsítésére, jelszó használatos. Kulcsok jellemzően használják az éles környezetekben. Ha használja kulcsokkal, SSH-ügynöktovábbítást is konfigurálnia kell. További információkért tekintse meg az SSH-ügyfél dokumentációját. Cserélje le `<replace-with-your-password>` az a következő parancsot egy tetszőleges jelszót.
+A virtuális gép létrehozása a *nyilvános* alhálózat [az virtuális gép létrehozása](/cli/azure/vm). A `--no-wait` paraméter lehetővé teszi, hogy a parancs végrehajtása a háttérben, így folytathatja a következő parancsot az Azure. Ez a cikk egyszerűsítésére, jelszó használatos. Kulcsok jellemzően használják az éles környezetekben. Ha használja kulcsokkal, SSH-ügynöktovábbítást is konfigurálnia kell. További információkért tekintse meg az SSH-ügyfél dokumentációját. Cserélje le `<replace-with-your-password>` az a következő parancsot egy tetszőleges jelszót.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"

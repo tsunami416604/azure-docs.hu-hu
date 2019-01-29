@@ -10,16 +10,16 @@ editor: piotrci
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b94bf4c499a5d6323e774df90304f0134bc5894
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b2e52b1e9aad05af173bf86e769e0c6ff7d28d9d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215412"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195156"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátait és ismert problémák csoportok használata kezelheti az Azure Active Directory licencelése
 
@@ -69,7 +69,7 @@ Ebben a példában egy felhasználók módosításához, és állítsa be a saj�
 
 Egy felhasználói licenccel rendelkező több csoport tagja lehet. Az alábbiakban szempontokat kell figyelembe venni:
 
-- A termék több licencet is átfedésben, és azok alkalmazása folyamatban a felhasználó az összes engedélyezett szolgáltatások eredményez. A következő példában két licencelési csoportok: *E3 alapvető szolgáltatások* tartalmazza a foundation szolgáltatások üzembe helyezéséhez először minden felhasználó számára. És *E3 csomag, kibővített szolgáltatások* (Sway és Planner) üzembe helyezése csak egyes felhasználók számára további szolgáltatásokat tartalmazza. Ebben a példában a felhasználó mindkét csoportban lett felvéve:
+- A termék több licencet is átfedésben, és azok alkalmazása folyamatban a felhasználó az összes engedélyezett szolgáltatások eredményez. A következő példában két licencelési csoportok: *Alapvető szolgáltatások E3* tartalmazza a foundation szolgáltatások üzembe helyezéséhez először minden felhasználó számára. És *E3 csomag, kibővített szolgáltatások* (Sway és Planner) üzembe helyezése csak egyes felhasználók számára további szolgáltatásokat tartalmazza. Ebben a példában a felhasználó mindkét csoportban lett felvéve:
 
   ![Képernyőkép az engedélyezett szolgáltatások](./media/licensing-group-advanced/view-enabled-services.png)
 
@@ -187,7 +187,7 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 > ```
 
 3. A teljes naplójában hogyan csoport dolgozta, beleértve az összes felhasználó módosításait, állítsa be a következő szűrőket:
-  - **Kezdeményező (szereplő)**: "Microsoft Azure AD biztonságicsoport-alapú licencelése"
+  - **Kezdeményező (szereplő)**: "A Microsoft Azure AD biztonságicsoport-alapú licencelése"
   - **Dátumtartomány** (nem kötelező): Ha egy adott csoport ismeri az egyéni tartomány elindult és befejeződött a feldolgozás
 
 A kimeneti példa azt mutatja, hogy feldolgozás, az ebből származó felhasználói változások és a Befejezés gombra a feldolgozás megkezdése.
@@ -201,7 +201,7 @@ A kimeneti példa azt mutatja, hogy feldolgozás, az ebből származó felhaszn�
 
 Nincs hozzárendelve aktív licenccel rendelkező csoportok törlése lehetséges. A rendszergazda sikerült törölni a csoport nem működnek együtt az, hogy okoz, eltávolítandó felhasználók – ezért el kell távolítani a csoportból, először azt törlése előtt licencekre szükséges licencek.
 
-Az Azure Portal csoport törlése közben látni egy ehhez hasonló hibaértesítésre: ![képernyőkép csoport törlése nem sikerült](./media/licensing-group-advanced/groupdeletionfailed.png)
+Ha egy csoportot az Azure Portalon törlésének megkísérlésekor egy ehhez hasonló hibaértesítésre jelenhetnek meg: ![Képernyőfelvétel a csoport törlése sikertelen](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Nyissa meg a **licencek** a csoport lapján, és vannak-e bármilyen licenccel. Ha igen, távolítsa el ezeket a licenceket, és próbálja meg újra törölni a csoportot.
 

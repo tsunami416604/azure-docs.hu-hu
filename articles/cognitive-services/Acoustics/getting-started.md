@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 62b6b40e6289ccca92c0a92d8bb7d0489dd44246
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 0aad231b4a57c2d9927a553a43394681282b5494
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902943"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155952"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Projekt Akusztika – első lépések
 A rövid útmutató bemutatja, hogyan integrálhatja a beépülő modul a Unity-projektjét, a jelenethez os és Akusztika a alkalmazni a megbízható forrásból. Ebben a rövid útmutatóban a következőket kell tennie először hozzon létre egy [Azure batch-fiók](create-azure-account.md). Ez az útmutató a Unity bizonyos fokú ismeretét feltételezi.
@@ -43,7 +43,7 @@ A Akusztika eszközkészlet bake részének .NET 4.x scripting futásidejű verz
 
 ![Lejátszó beállításai](media/PlayerSettings.png)
 
-![.NET 4.5-ÖS VERZIÓJA](media/Net45.png)
+![.NET 4.5](media/Net45.png)
 
 ## <a name="create-a-navigation-mesh"></a>A navigációs háló létrehozása
 Használja a standard [Unity munkafolyamat](https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html) navigációs rácsvonal a projekt létrehozásához. A saját navigációs rácsvonalak használatáról további információért lásd: a [végig a felhasználói felület bake](bake-ui-walkthrough.md).
@@ -82,7 +82,7 @@ Nyissa meg a hang Mixer (**ablak > hang Mixer**). Ellenőrizze, hogy szükség v
 ## <a name="set-up-the-acoustics-lookup-table"></a>Állítsa be a Akusztika keresési tábla
 Húzza át a **Microsoft Acoustics** prefab a projekt panelről a jelenethez be:
 
-![Akusztika Prefab](media/AcousticsPrefab.png)
+![Acoustics Prefab](media/AcousticsPrefab.png)
 
 Kattintson a **ProjectAcoustics** játék objektum, és ugorjon a Megtekintő panelen. Adja meg a helyet a bake eredmény (a. A fájl, ACE **eszközök/AcousticsData**) által húzza és törlése a Akusztika Manager parancsfájlba, illetve a szövegbeviteli mező mellett a kör gombra kattintva.
 

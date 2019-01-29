@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory-naplók integrálása az Azure Monitor (előzetes verzió) használatával SumoLogic |} A Microsoft Docs
+title: Azure Active Directory-naplók az Azure Monitor (előzetes verzió) használatával SumoLogic Stream |} A Microsoft Docs
 description: 'Útmutató: Azure Active Directory-naplók integrálása az Azure Monitor (előzetes verzió) használatával SumoLogic'
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 164026cc1abea43760d06024ded5c083a92160f4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 256b5d925bd924cbfdd08e9fb6600ea848fd2eb3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810601"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195626"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor-preview"></a>Azure Active Directory-naplók integrálása az Azure Monitor (előzetes verzió) használatával SumoLogic
 

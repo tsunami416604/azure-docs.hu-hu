@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 68c453f7-aff1-4614-92d3-9b86f3ad99dc
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeedes
-ms.openlocfilehash: af7489147c85eadd17a2f0849e630d89ec52151b
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4051d870cdecb4a7359458e009c49e416cd22974
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790741"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler"></a>Oktatóanyag: Zscaler szolgáltatással az Azure Active Directory-integráció
 
@@ -127,7 +127,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     | Name (Név)  | Adatforrás-attribútum  |
     | ---------| ------------ |
-    | Tagja(Pénzügy)     | User.assignedroles |
+    | Tagja(Pénzügy)     | user.assignedroles |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 

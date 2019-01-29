@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: a75f5ec11644bbd64a6bafeb8585371437eedc3b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9e1d4ae38b18feb01d32ff62d4923b14d33494fa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476920"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197670"
 ---
 # <a name="configure-containers"></a>Tárolók konfigurálása
 
@@ -185,7 +185,7 @@ A `Logging` konfigurációs beállításokat az ASP.NET Core naplózás támogat
   | `Format` | Karakterlánc | A kimeneti formátum a rendszernapló fájljaiban.<br/> **Megjegyzés:** Ezt az értéket kell beállítani `json` a naplózás szolgáltatónak. Ezt az értéket egy kimeneti csatlakoztatási közben hárítható el egy tároló megadása nélkül, ha hiba történik. |
   | `MaxFileSize` | Egész szám | A maximális méretét megabájtban (MB), a naplófájlok. Ha az aktuális naplófájl méretét megfelel-e vagy meghaladja ezt az értéket, egy új naplófájl indítja el a naplózás szolgáltató. Ha meg van adva a -1, a naplófájl méretét csak korlátozza a maximális méretet, ha bármely, a kimeneti csatlakoztatási. Az alapértelmezett érték az 1. |
 
-ASP.NET Core-naplózás támogatást konfigurálásával kapcsolatos további információkért lásd: [fájl konfigurációs beállítások](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).
+ASP.NET Core-naplózás támogatást konfigurálásával kapcsolatos további információkért lásd: [fájl konfigurációs beállítások](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1).
 
 ## <a name="mounts-configuration-settings"></a>Csatlakoztatja a konfigurációs beállítások
 

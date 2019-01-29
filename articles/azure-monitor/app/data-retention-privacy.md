@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 812478c13ef39b369471a731c52dc38ba6a4368c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 511937fde859f47af2b7bc273daaab88bb8809c3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119747"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094529"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -148,7 +148,7 @@ Alapértelmezés szerint `ServerTelemetryChannel` használja az aktuális felhas
 
 
 Konfigurációs fájlra:
-```
+```xml
 <TelemetryChannel Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel,   Microsoft.AI.ServerTelemetryChannel">
     <StorageFolder>D:\NewTestFolder</StorageFolder>
 </TelemetryChannel>
@@ -158,7 +158,7 @@ Kód:
 
 - A konfigurációs fájlból ServerTelemetryChannel eltávolítása
 - Ez a kódrészlet hozzá a konfigurációhoz:
-```
+```csharp
 ServerTelemetryChannel channel = new ServerTelemetryChannel();
 channel.StorageFolder = @"D:\NewTestFolder";
 channel.Initialize(TelemetryConfiguration.Active);
@@ -171,7 +171,7 @@ Alapértelmezés szerint `ServerTelemetryChannel` használja az aktuális felhas
 
 A következő kódrészlet azt mutatja be, hogyan állíthatja be `ServerTelemetryChannel.StorageFolder` a a `ConfigureServices()`  módszere a `Startup.cs` osztály:
 
-```
+```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
 ```
 
@@ -198,7 +198,7 @@ Nem javasoljuk, hogy explicit módon beállítása az alkalmazás csak a TLS 1.2
 |Platformon és nyelven | Támogatás | További információ |
 | --- | --- | --- |
 | Azure App Services  | Támogatott konfigurációra lehet szükség. | Támogatás a 2018 április mutattuk be. A bejelentés a [konfigurációs részletek](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
-| Azure Function Appsszel | Támogatott konfigurációra lehet szükség. | Támogatás a 2018 április mutattuk be. A bejelentés a [konfigurációs részletek](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
+| Azure Function Apps | Támogatott konfigurációra lehet szükség. | Támogatás a 2018 április mutattuk be. A bejelentés a [konfigurációs részletek](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
 |.NET | Konfiguráció verziója által támogatott, változik. | Részletes információ a .NET 4.7 és korábbi verziók hivatkoznak [ezek az utasítások](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
 |Állapotmonitor | Támogatott, konfiguráció szükséges | Az állapotfigyelő támaszkodik [operációs rendszer konfigurációja](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET-konfiguráció](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) a TLS 1.2 támogatása.
 |Node.js |  V10.5.0, támogatott konfigurációra lehet szükség. | Használja a [hivatalos Node.js TLS/SSL-dokumentáció](https://nodejs.org/api/tls.html) bármely alkalmazás adott konfigurációhoz. |
@@ -244,7 +244,7 @@ Az SDK-k platformok közötti eltérőek lehetnek, és több összetevőt, amely
 | [Application Insights SDK hozzáadása egy .NET webes projekthez][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálók<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>felhasználók |
 | [Telepítse az Állapotfigyelőt az IIS-kiszolgálón][redfield] |Függőségek<br/>ServerContext<br/>Következtetni<br/>Teljesítményszámlálók |
 | [Application Insights SDK hozzáadása a Java-webalkalmazás][java] |ServerContext<br/>Következtetni<br/>Kérés<br/>Munkamenet<br/>felhasználók |
-| [A JavaScript SDK-t adhat a weblap][client] |ClientContext <br/>Következtetni<br/>Oldal<br/>ClientPerf<br/>AJAX |
+| [A JavaScript SDK-t adhat a weblap][client] |ClientContext <br/>Következtetni<br/>Oldal<br/>ClientPerf<br/>Ajax |
 | [Alapértelmezett tulajdonságainak meghatározása][apiproperties] |**Tulajdonságok** összes szabványos és egyéni esemény |
 | [Hívás TrackMetric][api] |Numerikus értékek<br/>**Tulajdonságok** |
 | [Hívás nyomon követése *][api] |Esemény neve<br/>**Tulajdonságok** |
@@ -264,9 +264,9 @@ A [platformokhoz készült SDK-k][platforms], tekintse meg a dokumentumokat.
 | Következtetni |földrajzi hely, IP-címről, timestamp, az operációs rendszer, böngészőben |
 | Mérőszámok |Metrika neve és értéke |
 | Események |Esemény neve és értéke |
-| Oldalmegtekintések |URL-CÍMÉT és a lap neve vagy a képernyő nevét |
+| PageViews |URL-CÍMÉT és a lap neve vagy a képernyő nevét |
 | Ügyfél teljesítményoptimalizált |URL-cím/lap neve, a böngésző lapbetöltési ideje |
-| AJAX |A kiszolgáló webes HTTP-hívások |
+| Ajax |A kiszolgáló webes HTTP-hívások |
 | Kérelmek |URL-CÍMÉT, időtartamának, válaszkód |
 | Függőségek |Típus (SQL, a HTTP,...), a kapcsolati karakterlánc vagy URI-t, szinkronizálási vagy aszinkron, időtartama, sikeres, SQL-utasítás (az Állapotfigyelőt) |
 | **Kivételek** |Típus, **üzenet**, zásobníky volání, a forrás-fájl és a sor száma, hozzászóláslánc azonosítója |

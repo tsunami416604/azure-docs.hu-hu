@@ -7,20 +7,20 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: quickstart
 ms.date: 08/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 7008943e9077cbad3c58de43f64b105f35931bf3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 6d2b5201c41ba9d5c849976f0227e9abadea7658
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40208900"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165234"
 ---
-# <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Rövid útmutató: Az Office 365-csoportok elévülési idejének beállítása az Azure Active Directoryban
+# <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Gyors útmutató: Állítsa be az Office 365-csoportok az Azure Active Directoryban lejár
 
 Ennek a rövid útmutatónak a segítségével beállíthatja az Office 365-csoportjainak elévülési szabályzatát. Ha a felhasználók beállíthatják a saját csoportjaikat, megsokszorozódhatnak a nem használt csoportok. A nem használt csoportok kezelésének egy módja, ha elévülési időt állít be hozzájuk, ezzel csökkentve a csoportok manuális törléséhez szükséges karbantartási időt.
 
@@ -54,7 +54,7 @@ A csoportok elévülési idejének beállításához globális rendszergazdának
   
   ![Elévülési beállítások](./media/groups-quickstart-expiration/expiration-settings.png)
 
-2. Állítsa be az elévülési intervallumot. Válasszon ki egy előre beállított értéket, vagy adjon meg egy 31 napon túli egyéni értéket. 
+2. Állítsa be az elévülési intervallumot. Válasszon ki egy előre beállított értéket, vagy adjon meg egy 31 napon túli egyéni értéket. 
 
 3. Adjon meg egy e-mail-címet, ahova a rendszer az elévülési értesítéseket küldheti, ha egy csoportnak nincs tulajdonosa.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció IQNavigator-alapú virtuális gépekhez |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció IQNavigator-alapú virtuális gépekhez |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és IQNavigator virtuális gépek között.
 services: active-directory
 documentationCenter: na
@@ -7,21 +7,21 @@ author: jeevansd
 manager: femila
 ms.assetid: a8a09b25-dfa5-4c31-aea2-53bf1853b365
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: f568f33de348289334c4b4c346e9525e28cce51c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 062c83c7e1d621a80a5e81cdaf6b070eb446453c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445122"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180534"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Oktatóanyag: Azure Active Directory-integráció IQNavigator virtuális gépekkel
+# <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Oktatóanyag: Az Azure Active Directory-integráció IQNavigator virtuális gépekkel
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan IQNavigator virtuális gépek integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 IQNavigator-alapú virtuális gépekhez az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy IQNavigator virtuális gépek egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a IQNavigator virtuális gépek konfigurálásához ke
 
 **IQNavigator virtuális gépek hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -125,7 +125,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím és a továbbítási állapot ezeket az értékeket. Kapcsolattartó [IQNavigator virtuális gépek ügyfél-támogatási csapatának](https://www.beeline.com/iqn-product-support/) beolvasni ezeket az értékeket.
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/iqnavigatorvms-tutorial/tutorial_metadataurl.png)
 

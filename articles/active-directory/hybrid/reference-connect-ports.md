@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 38a344fb6e67beae6310480646d84a1fe7730f84
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: b5c7a1c56d9df28b8132f240dc3872314f029f78
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461037"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155323"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Hibrid identitás – szükséges portok és protokollok
 A következő dokumentum a technikai útmutató a szükséges portok és protokollok a hibrid identitáskezelési megoldás megvalósítása. Használja a következő ábra és a kapcsolódó táblázat.
@@ -36,7 +36,7 @@ Ez a táblázat ismerteti a portok és protokollok, amelyek szükségesek az Azu
 | Kerberos |88 (TCP/UDP) |Kerberos-hitelesítés az AD-erdőhöz. |
 | MS-RPC |135 (TCP/UDP) |Ha az AD-erdőhöz van kötve az Azure AD Connect varázsló a kezdeti konfiguráció során és a jelszó-szinkronizálás során használt. |
 | LDAP |389-ES (TCP/UDP) |Adatok importálása az AD-ből használja. A Kerberos-bejelentkezési & lezárása titkosítja az adatokat. |
-| RPC | 445-ÖS (TCP/UDP) |Közvetlen egyszeri bejelentkezés az AD-erdő egy számítógép-fiók létrehozásához használt. |
+| SMB | 445-ÖS (TCP/UDP) |Közvetlen egyszeri bejelentkezés az AD-erdő egy számítógép-fiók létrehozásához használt. |
 | LDAP/SSL |636 (TCP/UDP) |Adatok importálása az AD-ből használja. Az adatátvitel aláírt és titkosított. Csak akkor használja az SSL használata. |
 | RPC |49152 – 65535 (véletlenszerű magas RPC Port)(TCP/UDP) |Az Azure AD Connect, ha az AD-erdőhöz van kötve a kezdeti konfiguráció során, és a jelszó-szinkronizálás során használt. Lásd: [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017), és [KB224196](https://support.microsoft.com/kb/224196) további információt. |
 

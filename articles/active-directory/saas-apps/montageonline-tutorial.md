@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Montázs Online-nal |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció Montázs Online-nal |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Montázs Online között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5c5e8c6f-e4fb-43fe-8841-e371f568ebed
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e11c97ecb33c1b1a37891a521c0375b39ad8a956
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 52b89fd830d18c595e29549432514fd60bbc6df9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439918"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158706"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Oktatóanyag: Azure Active Directory-integráció Montázs Online-nal
+# <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Oktatóanyag: Az Azure Active Directory-integráció Montázs Online-nal
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja Montázs Online az Azure Active Directoryval (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása Montázs Online-nal, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Online Montázs egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD-be az Online Montázs integráció konfigurálásához, hozzá kell 
 
 **Adja hozzá a Montázs Online a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -171,7 +171,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-montage-online-test-user"></a>Online Montázs tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Montázs online Britta Simon nevű felhasználó hoz létre. Együttműködve [Montázs Online támogatási csoport](https://www.montage.co.nz/contact-us/) a felhasználók hozzáadása az Online Montázs platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva
+Ebben a szakaszban egy Montázs online Britta Simon nevű felhasználó hoz létre. Együttműködve [Montázs Online támogatási csoport](https://www.montage.co.nz/contact-us/) a felhasználók hozzáadása az Online Montázs platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -203,7 +203,7 @@ Ebben a szakaszban engedélyezze Britta Simon Montázs online-hoz való hozzáf�
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

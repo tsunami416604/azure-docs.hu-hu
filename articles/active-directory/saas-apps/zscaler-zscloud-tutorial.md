@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 411d5684-a780-410a-9383-59f92cf569b5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 311cf4ad22f8e7fdcee976e0cb4b26b9dd2a13a5
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c3eb96c15991c3b470164bf504c68fbc266e69a8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794270"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193412"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Oktatóanyag: Zscaler ZSCloud az Azure Active Directory-integráció
 
@@ -112,7 +112,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Zscaler ZSCloud tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
+    ![Zscaler ZSCloud Domain and URLs single sign-on information](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
 
     Az a **bejelentkezési URL-** beviteli mező, írja be az URL-cím való bejelentkezés ZScaler ZSCloud alkalmazását a felhasználók által használt-e.
 
@@ -127,7 +127,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     | Name (Név)  | Adatforrás-attribútum  |
     | ---------| ------------ |
-    | Tagja(Pénzügy)     | User.assignedroles |
+    | Tagja(Pénzügy)     | user.assignedroles |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -156,7 +156,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     c. Kijelentkezési URL
 
-    ![Zscaler ZSCloud konfiguráció](common/configuresection.png)
+    ![Zscaler ZSCloud Configuration](common/configuresection.png)
 
 9. Egy másik böngészőablakban jelentkezzen be a Zscaler ZSCloud vállalati hely rendszergazdaként.
 

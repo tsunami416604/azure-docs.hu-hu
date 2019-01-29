@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 27cef0287156d4cf76914704b849cb646c21dd7d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ec520e7d06f6c5a560af56e6616eeed8481520fe
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467485"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180364"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes Linux rendszerű virtuális gép létrehozása az Azure CLI-vel
 Gyorsan létrehozhat egy virtuális gépet (VM) az Azure-ban, használhatja egy egyetlen Azure CLI-paranccsal, amely minden szükséges támogató erőforrások létrehozása az alapértelmezett értékeket használja. Erőforrások, például egy virtuális hálózat, nyilvános IP-cím és hálózati biztonsági csoport szabályait a rendszer automatikusan létrehozza. Az éles környezet még nagyobb mértékben használja, előfordulhat, hogy a kívánt időben az erőforrások létrehozásához, és hozzáadhatja őket a virtuális gépek. Ez a cikk végigvezeti egy virtuális Gépet, és a támogató erőforrások egyenként mindegyike létrehozása.
@@ -30,13 +30,13 @@ Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI-vel](/cli/az
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők *myResourceGroup*, *myVnet*, és *myVM*.
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
-Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A virtuális gépek és a támogató virtuális hálózati erőforrások előtt egy erőforráscsoportot kell létrehozni. Hozzon létre az erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A virtuális gépek és a támogató virtuális hálózati erőforrások előtt egy erőforráscsoportot kell létrehozni. Hozzon létre az erőforráscsoportot a [az csoport létrehozása](/cli/azure/group). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Alapértelmezés szerint az Azure CLI-parancsok kimenete JSON (JavaScript Object Notation) formátumban. Ha módosítani szeretné az alapértelmezett kimeneti listában vagy táblázat, például használata [konfigurálása az--output](/cli/azure/reference-index#az_configure). Azt is megteheti `--output` egy ideje semmilyen parancs kimeneti formátum változtatható meg. Az alábbi példa bemutatja a JSON-kimenet a `az group create` parancsot:
+Alapértelmezés szerint az Azure CLI-parancsok kimenete JSON (JavaScript Object Notation) formátumban. Ha módosítani szeretné az alapértelmezett kimeneti listában vagy táblázat, például használata [konfigurálása az--output](/cli/azure/reference-index). Azt is megteheti `--output` egy ideje semmilyen parancs kimeneti formátum változtatható meg. Az alábbi példa bemutatja a JSON-kimenet a `az group create` parancsot:
 
 ```json                       
 {
@@ -559,7 +559,7 @@ Ha szeretné látni működés közben az alapértelmezett NGINX-webhely, nyissa
 ![Alapértelmezett NGINX helyet a virtuális Gépen](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>Exportálás sablonként
-Mi történik, ha most szeretné hozzon létre egy további fejlesztési környezetben ugyanazokat a paramétereket, vagy éles környezetben, amely megfelel azt? Resource Manager használ a környezet összes paramétereit meghatározó JSON-sablonok. A JSON-sablon hivatkozik felépítése teljes környezetek. Is [JSON-sablonok készítése manuálisan](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy egy meglévő környezetet hozza létre a JSON-sablon exportálása. Használat [az exportálása](/cli/azure/group#az_group_export) módon exportálhatja az erőforráscsoport:
+Mi történik, ha most szeretné hozzon létre egy további fejlesztési környezetben ugyanazokat a paramétereket, vagy éles környezetben, amely megfelel azt? Resource Manager használ a környezet összes paramétereit meghatározó JSON-sablonok. A JSON-sablon hivatkozik felépítése teljes környezetek. Is [JSON-sablonok készítése manuálisan](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy egy meglévő környezetet hozza létre a JSON-sablon exportálása. Használat [az exportálása](/cli/azure/group) módon exportálhatja az erőforráscsoport:
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json

@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 9e5f8171dde2f6da153441dafd9a87fc5c946e71
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 5ade3ac7587d4ac5c5a6d8e174e76e76088e4e57
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853051"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157941"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>A felhasználói adatbevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása
 
@@ -215,7 +215,7 @@ A webes API-hoz egy _vezérlő_ olyan objektum, amely HTTP-kéréseket. A vezér
     A **létrehozása App Service** ablak nyílik meg. Az összes szükséges Azure-erőforrást az ASP.NET-webalkalmazás futtatása az Azure-ban létrehoz.
 
     > [!NOTE]
-    >Hogyan tehet közzé kapcsolatos további információkért lásd: [ASP.NET-webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
+    >Hogyan tehet közzé kapcsolatos további információkért lásd: [ASP.NET-webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
 
 3. Az a **webalkalmazás neve** mezőbe írja be egy egyedi névre (érvényes karakterek: a – z, 0 – 9 és kötőjelet (-). A webalkalmazás URL-je http://<app_name>.azurewebsites.NET, ahol *app_name* a webalkalmazás neve. Elfogadhatja az automatikusan létrehozott nevet is, amely már egyedi.
 

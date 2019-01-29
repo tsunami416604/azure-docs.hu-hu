@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Amazon Web Services (AWS) való kapcsolódáshoz, több fiók |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció az Amazon Web Services (AWS) való kapcsolódáshoz, több fiók |} A Microsoft Docs'
 description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure AD között, és több fiókot, az Amazon Web Services (AWS).
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: a9acb9539497c85f408ce7417fa5983072ea80b9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 48d8516a1923aaacc26db2eb9a9acfd0ddff737e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365662"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197517"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Oktatóanyag: Azure Active Directory-integráció az Amazon Web Services (AWS) több fiók
+# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Oktatóanyag: Az Azure Active Directory-integráció több Amazon Web Services (AWS) fiókokkal
 
 Ebben az oktatóanyagban elsajátíthatja az Azure Active Directory (Azure AD) integrálása több fiókot, az Amazon Web Services (AWS).
 
@@ -138,8 +138,8 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     | Name (Név)  | Adatforrás-attribútum  | Névtér |
     | --------------- | --------------- | --------------- |
-    | RoleSessionName | User.userPrincipalName | https://aws.amazon.com/SAML/Attributes |
-    | Szerepkör            | User.assignedroles |  https://aws.amazon.com/SAML/Attributes |
+    | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
+    | Szerepkör            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     | SessionDuration             | "Adjon meg egy értéket 900 másodperc (15 perc) között 43200 másodperc (12 óra)" |  https://aws.amazon.com/SAML/Attributes |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -182,7 +182,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Mint **szolgáltatótípus**válassza **SAML**.
 
-    b. Az a **szolgáltatónevet** szövegmezőbe írja be a szolgáltató nevét (például: *fahulladékok*).
+    b. Az a **szolgáltatónevet** szövegmezőbe írja be a szolgáltató nevét (például: *WAAD*).
 
     c. A letöltött feltöltéséhez **metaadatait tartalmazó fájl** kattintson az Azure Portalról, **fájl kiválasztása**.
 
@@ -202,13 +202,13 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Válassza ki **SAML 2.0 összevonási** alatt **válassza ki a megbízható entitás típusa**.
 
-    b. A **SAML 2.0-s szolgáltató szakasz választása**, jelölje be a **SAML-szolgáltató** korábban létrehozott (például: *fahulladékok*)
+    b. A **SAML 2.0-s szolgáltató szakasz választása**, jelölje be a **SAML-szolgáltató** korábban létrehozott (például: *WAAD*)
 
     c. Válassza ki **programozott engedélyezése és az AWS-felügyeleti konzol hozzáférés**.
   
-    d. Kattintson a **tovább: engedélyek**.
+    d. Kattintson a **tovább: Engedélyek**.
 
-16. Az a **engedélyházirend csatolása** párbeszédpanelen nem kell minden olyan szabályzat csatolása. Kattintson a **tovább: tekintse át**.  
+16. Az a **engedélyházirend csatolása** párbeszédpanelen nem kell minden olyan szabályzat csatolása. Kattintson a **tovább: Felülvizsgálat**.  
 
     ![Egyszeri bejelentkezési szabályzat konfigurálása][33]
 

@@ -1,5 +1,5 @@
 ---
-title: Set átirányítási URL-címek a b2clogin.com-on Azure Active Directory B2C |} A Microsoft Docs
+title: Set átirányítási URL-ek a b2clogin.com-on – Azure Active Directory B2C |} A Microsoft Docs
 description: További információ a b2clogin.com használata az átirányítási URL-címek az Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 01/28/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 147d8e80c66bd47ed56400deca024532fc7e39c7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 61c4212233dd7ed9c34de779176c3402890e673f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844926"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160904"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Set átirányítási URL-címek a b2clogin.com-on Azure Active Directory B2C-vel
 
@@ -23,8 +23,8 @@ Az identitásszolgáltató-előfizetés, és jelentkezzen be az Azure Active Dir
 
 A b2clogin.com használata lehetővé teszi további előnyökkel, például:
 
-- A cookie-k már nem a más Microsoft-szolgáltatásokba vannak megosztva.
-- Az URL-címek már nem a Microsoft hivatkozást tartalmaz. Például: `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`.
+- A cookie-k fejlécében a Microsoft-szolgáltatások által felhasznált terület csökken.
+- Az URL-címek már nem a Microsoft hivatkozást tartalmaz. Például: `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
 
 Vegye figyelembe ezeket a beállításokat, előfordulhat, hogy módosítania kell a b2clogin.com használata esetén:
 
@@ -60,7 +60,9 @@ Az Azure AD B2C-alkalmazást valószínűleg hivatkozik `login.microsoftonline.c
 
 ## <a name="set-the-validateauthority-property"></a>A ValidateAuthority tulajdonsága
 
-Ha MSAL használ, állítsa be a **ValidateAuthority** való `false`. Az alábbi példa bemutatja, hogyan lehet, hogy a tulajdonság értéke:
+Ha MSAL használ, állítsa be a **ValidateAuthority** tulajdonságot `false`. Amikor **ValidateAuthority** értékre van állítva `false`, átirányítja a b2clogin.com számára engedélyezett. 
+
+Az alábbi példa bemutatja, hogyan lehet, hogy a tulajdonság értéke:
 
 A [a .NET-hez az MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet):
 

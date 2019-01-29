@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: yushwang
-ms.openlocfilehash: 0110b6daa34d0bb24ad0abb7128ee6409bc4ff25
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 308cc163a305359a60ad1774d814416ed8a51edf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215456"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175349"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
 
@@ -48,22 +48,22 @@ A VPN-eszköz konfigurálásához tekintse meg a megfelelő eszközcsaládhoz ta
 | Barracuda Networks, Inc. |Barracuda NextGen tűzfal, X sorozat |Barracuda tűzfal, 6.5-ös verzió |[Konfigurációs útmutató](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Nem kompatibilis |
 | Brocade            |Vyatta 5400 vRouter   |Virtual Router 6.6R3 GA|[Konfigurációs útmutató](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |Nem kompatibilis |
 | Ellenőrzőpont |Biztonsági átjáró |R77.30 |[Konfigurációs útmutató](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Konfigurációs útmutató](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[Konfigurációs útmutató*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
-| Cisco |ASR |Házirendalapú: IOS 15.1<br>Útvonalalapú: IOS 15.2 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco |ISR |Házirendalapú: IOS 15.0<br>Útvonalalapú *: IOS 15.1 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Konfigurációs minták\*\*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |Támogatott |[Konfigurációs útmutató*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
+| Cisco |ASR |Házirendalapú: IOS 15.1<br>Útvonalalapú: IOS 15.2 |Támogatott |Támogatott |
+| Cisco |ISR |Házirendalapú: IOS 15.0<br>Útvonalalapú *: IOS 15.1 |Támogatott |Támogatott |
 | Cisco |Meraki |– |Nem kompatibilis |Nem kompatibilis |
 | Citrix |NetScaler MPX, SDX, VPX |10.1-es vagy újabb verzió |[Konfigurációs útmutató](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Nem kompatibilis |
 | F5 |BIG-IP sorozat |12.0 |[Konfigurációs útmutató](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Konfigurációs útmutató](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 |  |[Konfigurációs útmutató](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
 | Internet Initiative Japan (IIJ) |SEIL sorozat |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[Konfigurációs útmutató](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |Nem kompatibilis |
-| Juniper |SRX |Házirendalapú: JunOS 10.2<br>Útvonalalapú: JunOS 11.4 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
-| Juniper |J sorozat |Házirendalapú: JunOS 10.4r9<br>Útvonalalapú: JunOS 11.4 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
-| Juniper |ISG |ScreenOS 6.3 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
-| Juniper |SSG |ScreenOS 6.2 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
-| Juniper |MX |JunOS 12.x|[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
-| Microsoft |Útválasztás és távelérés szolgáltatás |Windows Server 2012 |Nem kompatibilis |[Konfigurációs minták](https://go.microsoft.com/fwlink/p/?LinkId=717761) |
+| Juniper |SRX |Házirendalapú: JunOS 10.2<br>Útvonalalapú: JunOS 11.4 |Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |J sorozat |Házirendalapú: JunOS 10.4r9<br>Útvonalalapú: JunOS 11.4 |Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |ISG |ScreenOS 6.3 |Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |SSG |ScreenOS 6.2 |Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |MX |JunOS 12.x|Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
+| Microsoft |Útválasztás és távelérés szolgáltatás |Windows Server 2012 |Nem kompatibilis |Támogatott |
 | Open Systems AG |Mission Control biztonsági átjáró |– |[Konfigurációs útmutató](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Nem kompatibilis |
-| Palo Alto Networks |Az összes PAN-OS rendszert futtató eszköz |PAN-OS<br>Házirendalapú: 6.1.5 vagy újabb<br>Útvonalalapú: 7.1.4-es verzióra |[Konfigurációs útmutató](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurációs útmutató](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
+| Palo Alto Networks |Az összes PAN-OS rendszert futtató eszköz |PAN-OS<br>Házirendalapú: 6.1.5 vagy újabb<br>Útvonalalapú: 7.1.4 |[Konfigurációs útmutató](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurációs útmutató](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | ShareTech | Következő generációs UTM (NU sorozat) | 9.0.1.3 | Nem kompatibilis | [Konfigurációs útmutató](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ sorozat, NSA sorozat<br>SuperMassive sorozat<br>E-Class NSA sorozat |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Nem kompatibilis |[Konfigurációs útmutató](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen tűzfal | XG v17 | | [Konfigurációs útmutató](https://community.sophos.com/kb/127546) |

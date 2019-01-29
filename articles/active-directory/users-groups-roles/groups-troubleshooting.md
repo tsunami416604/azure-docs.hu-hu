@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e189fb8b2bc5079d1560d3b7a54fea2db7366fe7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ab5a3b00d063dfdd42e67247bb2cdc37866d0164
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46293971"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164129"
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>Dinamikus csoporttagságok hibaelhárítása
 
@@ -33,15 +33,15 @@ ms.locfileid: "46293971"
 
 | Hiba történt a szabály elemző | Hiba használat | Javított használat |
 | --- | --- | --- |
-| Chyba: Attribútum nem támogatott. |(user.invalidProperty - eq "Value") |(user.department - eq "value")<br/><br/>Ellenőrizze, hogy a rendszer az attribútum a [támogatott tulajdonságok listája](groups-dynamic-membership.md#supported-properties). |
-| Chyba: Operátor nem támogatott az attribútum. |(user.accountEnabled – igaz tartalmaz) |(user.accountEnabled - eq true)<br/><br/>Az operátor nem támogatott a tulajdonság típusa (ebben a példában-tartalmaz nem használható írja be a logikai érték). Használja a megfelelő operátorok a tulajdonság típusát. |
-| Chyba: Lekérdezésfordítási hiba. | 1. (user.department - eq "Értékesítés") (user.department - eq "Marketing")<br>2. (user.userPrincipalName-egyezik "*@domain.ext") | 1. Hiányzó operátor. Használja a - és vagy - vagy két predikátumok csatlakoztatása<br>(user.department - eq "Értékesítés") – vagy (user.department - eq "Marketing")<br>2. Hiba – a használt reguláris kifejezést az felel meg<br>(user.userPrincipalName-egyezik ". *@domain.ext")<br>vagy másik lehetőségként: (user.userPrincipalName-egyezik "@domain.ext$") |
+| Hiba: Az attribútum nem támogatott. |(user.invalidProperty -eq "Value") |(user.department - eq "value")<br/><br/>Ellenőrizze, hogy a rendszer az attribútum a [támogatott tulajdonságok listája](groups-dynamic-membership.md#supported-properties). |
+| Hiba: Operátor nem támogatott az attribútum. |(user.accountEnabled – igaz tartalmaz) |(user.accountEnabled -eq true)<br/><br/>Az operátor nem támogatott a tulajdonság típusa (ebben a példában-tartalmaz nem használható írja be a logikai érték). Használja a megfelelő operátorok a tulajdonság típusát. |
+| Hiba: Sémafordítási hiba történt a lekérdezés. | 1. (user.department - eq "Értékesítés") (user.department - eq "Marketing")<br>2.  (user.userPrincipalName -match "*@domain.ext") | 1. Hiányzó operátor. Használja a - és vagy - vagy két predikátumok csatlakoztatása<br>(user.department - eq "Értékesítés") – vagy (user.department - eq "Marketing")<br>2. Hiba – a használt reguláris kifejezést az felel meg<br>(user.userPrincipalName -match ".*@domain.ext")<br>vagy másik lehetőségként: (user.userPrincipalName-egyezik "@domain.ext$") |
 
 ## <a name="next-steps"></a>További lépések
 
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
 
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](../fundamentals/active-directory-manage-groups.md)
-* [Alkalmazások kezelése az Azure Active Directoryban](../manage-apps/what-is-application-management.md)
+* [Alkalmazáskezelés az Azure Active Directory használatával](../manage-apps/what-is-application-management.md)
 * [Mi az az Azure Active Directory?](../fundamentals/active-directory-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md)

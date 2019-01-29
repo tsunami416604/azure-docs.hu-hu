@@ -9,14 +9,14 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 115604d9b2aa21018742bbedbc737405b52599e4
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7ad494a3a1ce657951a0afab4d5ca838821927ad
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188946"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158817"
 ---
-# <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>A HDInsight-fürt konfigurálása a vállalati biztonsági csomaggal az Azure Active Directory Domain Services használatával
+# <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>HDInsight-fürt konfigurálása Enterprise Security Package-dzsel az Azure Active Directory Domain Services használatával
 
 Vállalati biztonsági csomag (ESP) fürtök többfelhasználós hozzáférést biztosítanak az Azure HDInsight-fürtökön. ESP HDInsight-fürtöket, hogy a tartományi felhasználók tartományi hitelesítő adataik használatával a fürtökkel hitelesítéséhez és a big data-feladatokat futtatni egy tartományhoz csatlakozik. 
 
@@ -28,7 +28,11 @@ Ebből a cikkből elsajátíthatja egy HDInsight-fürt konfigurálása ESP az Az
 ## <a name="enable-azure-ad-ds"></a>Engedélyezze az Azure AD-DS-ben
 
 > [!NOTE]  
-> Csak a bérlői rendszergazdák a jogosultság az Azure AD-tartományi szolgáltatások engedélyezése. Ha a fürttárolóhoz-e az Azure Data Lake Storage (ADLS) Gen1 és Gen2, tiltsa le a multi-factor Authentication (MFA) csak a felhasználók számára, aki a fürtöt kell. Ha a fürt tároló Azure Blob Storage (WASB), ne tiltsa le az MFA.
+> Csak a bérlői rendszergazdák a jogosultság az Azure AD-tartományi szolgáltatások engedélyezése. Ha a fürttárolóhoz-e az Azure Data Lake Storage (ADLS) Gen1 és Gen2, le kell tiltania a multi-factor Authentication (MFA) csak a felhasználók számára, aki a fürtöt Kerberose alapszintű hitelesítés használatával kell. Használhat [megbízható IP-címek](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) vagy [feltételes hozzáférési](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview) többtényezős hitelesítés letiltása adott felhasználókra vonatkozóan csak amikor érnek el a HDInsight-fürt virtuális hálózat IP-címtartományt. Ha használja a feltételes hozzáférés győződjön meg arról, hogy az AD a szolgáltatási végpont engedélyezve van a HDInsight virtuális hálózaton.
+>
+>Ha a fürt tároló Azure Blob Storage (WASB), ne tiltsa le az MFA.
+
+
 
 Azure ad-Tartományi engedélyezése előfeltétele az ESP használata egy HDInsight-fürt létrehozása előtt. További információkért lásd: [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 

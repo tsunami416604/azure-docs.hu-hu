@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/08/2018
+ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36ecfe8942d263ed84e430b01727743ed2cad00c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0b486831118ace7d2112acf1562f5df4a64d1e1b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103165"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092098"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 
@@ -33,7 +33,23 @@ Ez a hiba akkor fordulhat elő, során, és az operációs rendszer lemeztitkos�
 - Adatmeghajtók rekurzív módon a /mnt/ könyvtár vagy egymással (például /mnt/data1, /mnt/data2, /data3 + /data3/data4) csatlakoztatva.
 - Más az Azure Disk Encryption [Előfeltételek](azure-security-disk-encryption-prerequisites.md) Linux rendszeren nem teljesülnek.
 
-## <a name="unable-to-encrypt"></a>Nem sikerült titkosítani
+## <a name="bkmk_Ubuntu14"></a> Frissítés az alapértelmezett kernel Ubuntu 14.04 LTS
+
+Az Ubuntu 14.04 LTS rendszerképet tartalmaz egy alapértelmezett kernel 4.4-es verzióját. A kernel verziója rendelkezik egy ismert probléma, amelyben / memória ablak lelövés megfelelően megszakítja a dd parancs az operációs rendszer titkosítási folyamat során. Ezt a hibát kijavították a a legújabb Azure Linux-kernel lehetőségeire. Ez a hiba, a képet, a titkosítás engedélyezése előtt elkerülése érdekében frissítse a [Azure lehetőségeire kernel 4.15](https://packages.ubuntu.com/trusty/linux-azure) vagy később a következő parancsokkal:
+
+```
+sudo apt-get update
+sudo apt-get install linux-azure
+sudo reboot
+```
+
+Miután a virtuális gép újraindult be az új kernelbe, az új kernelverzióját erősíthető használatával:
+
+```
+uname -a
+```
+
+## <a name="unable-to-encrypt-linux-disks"></a>Nem sikerült titkosítani a Linux-lemezek
 
 Bizonyos esetekben a lemeztitkosítás úgy tűnik, hogy "Az operációs rendszer lemezén titkosítás lépései" megakad Linux- és SSH le van tiltva. A titkosítási folyamat között a tőzsdei katalóguslemezt és 16 közötti 3 órát vehet igénybe. Ha több terabájt méretű adatlemezek hozzá vannak adva, a folyamat eltarthat nap.
 

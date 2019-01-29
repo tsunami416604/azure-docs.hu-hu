@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/30/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 71eec62f4468b6b74a15a30be3e472b41c4d45b0
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
-ms.translationtype: HT
+ms.openlocfilehash: ce44d4c066183ff796c8efa1dceb20dff73868ee
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397773"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192392"
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Biztonságos hozzáférés egy alkalmazás adataihoz a felhőben
 
@@ -30,7 +30,7 @@ Az [Azure Blob Storage](../common/storage-introduction.md#blob-storage) stabil s
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktatóanyagot: [Feltöltött képek átméretezésének automatizálása az Event Grid használatával][previous-tutorial]. 
+Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktatóanyagot: [Event Grid használatával feltöltött képek átméretezésének automatizálása][previous-tutorial]. 
 
 ## <a name="set-container-public-access"></a>A tároló nyilvános hozzáférésének beállítása
 
@@ -50,7 +50,7 @@ az storage container set-permission \ --account-name $blobStorageAccount \ --acc
 
 Az oktatóanyag-sorozat első részében a webalkalmazás egy nyilvános tárolóból származó képeket jelenített meg. A sorozat ezen részében a [közös hozzáférésű jogosultságkód (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature) jogkivonatai segítségével kérjük le a miniatűr képeket. A SAS-jogkivonatok segítségével korlátozott hozzáférést biztosíthat egy tárolóhoz vagy blobhoz IP-cím, protokoll, időintervallum vagy engedélyezett jogosultságok alapján.
 
-A példában a forráskód adattára a `sasTokens` ágat használja, amely egy frissített kódmintát tartalmaz. Törölje a meglévő GitHub-telepítést az [az webapp deployment source delete](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_delete) parancs segítségével. Azután konfigurálja a GitHub-telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) parancs segítségével.  
+A példában a forráskód adattára a `sasTokens` ágat használja, amely egy frissített kódmintát tartalmaz. Törölje a meglévő GitHub-telepítést az [az webapp deployment source delete](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_delete) parancs segítségével. Azután konfigurálja a GitHub-telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.  
 
 Az alábbi parancsban a `<web-app>` a webalkalmazás neve.  
 

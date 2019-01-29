@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 5c7216a419ba01c1b2df744e305bf059cf68104e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1cf3d29bd3d7af56f3e20c1d2344ed90095229bf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224389"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196667"
 ---
 # <a name="start-an-access-review-for-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó hozzáférési felülvizsgálat indítása
 Szerepkör-hozzárendelések "elavult" válnak, amikor a felhasználók a privilegizált hozzáférés, amelyekre már nincs szükségük. A régi szerepkör-hozzárendelések, a kiemelt szerepkörű a kockázatának csökkentése érdekében vagy globális rendszergazdái rendszeresen készítsen tehet fel és rendszergazdák számára, tekintse át a szerepkörök rendelkező felhasználók a hozzáférési felülvizsgálatok. Ez a dokumentum ismerteti a lépéseket a hozzáférési felülvizsgálat indítása az Azure AD Privileged Identity Management (PIM).
@@ -62,9 +62,9 @@ Felülvizsgálat végrehajtásához három lehetőség áll rendelkezésre. Vala
     ![Válassza ki a felülvizsgálók – képernyőkép](./media/pim-how-to-start-security-review/PIM_review_reviewers.png)
 2. A lehetőségek közül választhat:
    
-   * **Válassza ki a felülvizsgáló**: használja ezt a beállítást, ha nem ismeri ki hozzá kell férnie. Ezzel a beállítással a felülvizsgálat hozzárendelheti egy erőforrás tulajdonosa vagy a csoport kezelőjének végrehajtásához.
-   * **Me**: hasznos, ha meg kívánja tekinteni, hogyan a hozzáférési felülvizsgálatok munka, vagy meg szeretné tekinteni azokat, akik nem nevében.
-   * **A tagok tekintse át, egymás**: használja ezt a beállítást szeretné, hogy a felhasználók, ellenőrizze a saját szerepkör-hozzárendeléseket.
+   * **Válassza ki a felülvizsgáló**: Használja ezt a beállítást, ha nem ismeri ki hozzá kell férnie. Ezzel a beállítással a felülvizsgálat hozzárendelheti egy erőforrás tulajdonosa vagy a csoport kezelőjének végrehajtásához.
+   * **Me**: Akkor hasznos, ha meg kívánja tekinteni, hogyan a hozzáférési felülvizsgálatok munka, vagy meg szeretné tekinteni azokat, akik nem nevében.
+   * **A tagok tekintse át, egymás**: Ez a beállítás segítségével a felhasználók, tekintse át a saját szerepkör-hozzárendelések.
 
 ### <a name="start-the-review"></a>A felülvizsgálat indítása
 Végül lehetősége van, hogy felhasználók adhatja meg, ha azok a hozzáférés jóváhagyása szükséges. Igény szerint adjon meg egy leírást, a felülvizsgálat, és válassza ki **Start**.
@@ -80,5 +80,5 @@ Amíg viszonyt keresztül, emlékeztesse a felhasználókat, végezze el a felü
 ## <a name="next-steps"></a>További lépések
 
 - [A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó hozzáférési felülvizsgálat befejezése](pim-how-to-complete-review.md)
-- [A PIM saját Azure AD-címtárbeli szerepkörök, hozzáférési felülvizsgálat végrehajtása](pim-how-to-perform-security-review.md)
+- [A saját Azure AD-címtárbeli szerepkörök hozzáférési felülvizsgálatának végrehajtása a PIM szolgáltatásban](pim-how-to-perform-security-review.md)
 - [A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat indítása](pim-resource-roles-start-access-review.md)

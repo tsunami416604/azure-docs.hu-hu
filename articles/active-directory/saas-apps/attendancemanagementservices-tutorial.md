@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció jelenlét felügyeleti szolgáltatásaival |} A Microsoft Docs'
+title: 'Oktatóanyag: A részvételt szolgáltatások az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a nyilvántartás szolgáltatások között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 1f56e612-728b-4203-a545-a81dc5efda00
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: f46cb8f0d0b04b0cff5d3118906f11a060a55f80
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 331a8d07004a8915d27b28ca0fba940b1aa3ab72
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833737"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164809"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Oktatóanyag: Azure Active Directory-integráció jelenlét felügyeleti szolgáltatásaival
+# <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Oktatóanyag: Az Azure Active Directory-integráció jelenlét felügyeleti szolgáltatásaival
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan jelenlét felügyeleti szolgáltatások integrálása az Azure Active Directory (Azure AD).
 
@@ -150,7 +150,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     f. Kattintson a **regisztráció**
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás! Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás! Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára

@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: bc479a28-8fcd-493f-ac53-681975a5149c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 80ae8d6a1e27d13bc6750779f2e38649c49e2498
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ae6cc738baac5a9f828b8a0d4d3e0a6509b4f1b4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54814749"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onit"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Onit
 
@@ -128,7 +128,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre az alábbi lépéseket:
     
-    | Attribútum neve | Attribútum értéke |
+    | Attribútum neve | Hodnota atributu |
     | ------------------- | -------------------- |
     | e-mail | user.mail |
     
