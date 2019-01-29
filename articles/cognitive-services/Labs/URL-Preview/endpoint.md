@@ -10,12 +10,12 @@ ms.component: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: f75fc73bc1268db7b6f9f8a1f4fd602ee57281e8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 8ed28ef356a4e884fca61b950c59506762fb8bdc
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464948"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099662"
 ---
 # <a name="project-url-preview-endpoint"></a>Projekt URL-cím előzetes verziójú végpont
 
@@ -25,22 +25,22 @@ Az URL-cím előzetes API tartalmaz egy végpontot.
 A következő végpont kérelmet küld egy URL-cím előnézete lekéréséhez. A fejlécek és URL-paraméterek használata egyéb beállításokat.
 
 GET:
-````
+```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftkey.com
 
-````
+```
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
-|Name (Név)|Érték|Típus|Szükséges|  
+|Name (Név)|Value|Typo|Szükséges|  
 |----------|-----------|----------|--------------|  
-|válaszok|Az előzetes verzióra URL-címe|Sztring |Igen|
-|biztonságos keresés|Érvénytelen felnőtt tartalom, vagy a hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód: 200, adja vissza, és a *isFamilyFriendly* jelző false értékre van állítva.<ul><li>biztonságos keresés = szigorú: cím, leírás, URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = közepes; Cím, URL-cím és leírás, de nem a leíró képet kaphat.</li><li>biztonságos keresés kikapcsolása:; = Minden válasz objektumok/elemet – title, URL-címet, leírást és képet kaphat.</li></ul> |Sztring|Nem kötelező. </br> Biztonságos keresés alapértelmezés szerint szigorú =.| 
+|válaszok|Az előzetes verzióra URL-címe|Karakterlánc |Igen|
+|biztonságos keresés|Érvénytelen felnőtt tartalom, vagy a hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód: 200, adja vissza, és a *isFamilyFriendly* jelző false értékre van állítva.<ul><li>safeSearch=strict: Cím, leírás, URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = közepes; Cím, URL-cím és leírás, de nem a leíró képet kaphat.</li><li>biztonságos keresés kikapcsolása:; = Minden válasz objektumok/elemet – title, URL-címet, leírást és képet kaphat.</li></ul> |Karakterlánc|Nem kötelező. </br> Biztonságos keresés alapértelmezés szerint szigorú =.| 
 
 ## <a name="response-object"></a>Válaszobjektum
 
 A válasz HTTP-fejlécek és attribútumok weblap objektum tartalmazza a következő példában látható módon: `name`, `url`, `description`, `isFamilyFriendly`, és `primaryImageOfPage`.
 
-````
+```
 BingAPIs-TraceId: 15AFE52A97AA422F960433A94803F6CE
 BingAPIs-SessionId: 40587764F42142D3A8BA99F66B2B3BB6
 X-MSEdge-ClientID: 0389E3EDED106B5E1424E82FEC436A56
@@ -57,7 +57,7 @@ X-MSEdge-Ref: Ref A: 15AFE52A97AA422F960433A94803F6CE Ref B: PAOEDGE0418 Ref C: 
   }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>További lépések
 - [C# – rövid útmutató](csharp.md)

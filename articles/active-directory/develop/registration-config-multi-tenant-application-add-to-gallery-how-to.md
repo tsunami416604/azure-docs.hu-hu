@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: 92c1651a-675d-42c8-b337-f78e7dbcc40d
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: jeedes
-ms.openlocfilehash: b89be37d9c77fb83e607a1af0bc2f6ba716ab2c1
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 073f6d925a6868937410972a9400daefa802876d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724056"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152042"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Vegye fel egy több-bérlős alkalmazást az Azure AD alkalmazáskatalógusában
 
@@ -31,9 +31,9 @@ Az Azure Active Directory (Azure AD) egy olyan felhőalapú identitásszolgálta
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Ha az alkalmazás támogatja az SAML- vagy OpenIDConnect
 Ha egy több-bérlős alkalmazásban, az Azure AD alkalmazáskatalógusában szereplő kívánt rendelkezik, először győződjön meg arról, hogy az alkalmazás támogatja a következő egyszeri bejelentkezés technológiák valamelyikével:
 
-- **OpenID Connect**: ahhoz, hogy a felsorolt alkalmazások, a több-bérlős alkalmazás létrehozása az Azure ad-ben, és végrehajtja a [Azure ad-ben hozzájárulási keretrendszer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework) az alkalmazáshoz. A bejelentkezési kérés küldése egy közös végpontot, hogy minden ügyfél biztosíthat hozzájárulás az alkalmazáshoz. Szabályozhatja, hogy a felhasználók hozzáférése a bérlő Azonosítóját és a felhasználó egyszerű Felhasználónevét a jogkivonat érkezett alapján. Az alkalmazás beküldése leírt folyamatot követve [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában ajánlati](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **OpenID Connect**: Ahhoz, hogy a felsorolt alkalmazások, a több-bérlős alkalmazás létrehozása az Azure ad-ben, és végrehajtja a [Azure ad-ben hozzájárulási keretrendszer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) az alkalmazáshoz. A bejelentkezési kérés küldése egy közös végpontot, hogy minden ügyfél biztosíthat hozzájárulás az alkalmazáshoz. Szabályozhatja, hogy a felhasználók hozzáférése a bérlő Azonosítóját és a felhasználó egyszerű Felhasználónevét a jogkivonat érkezett alapján. Az alkalmazás beküldése leírt folyamatot követve [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában ajánlati](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-- **SAML**: Ha az alkalmazás támogatja az SAML 2.0, az alkalmazás is listázva lehet a katalógusban. Kövesse a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában ajánlati](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **SAML**: Ha az alkalmazás támogatja az SAML 2.0, az alkalmazás is szerepel a katalógusban. Kövesse a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában ajánlati](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Ha az alkalmazás nem támogatja az SAML- vagy OpenIDConnect
 Az alkalmazásokat, amelyek nem támogatják a SAML vagy OpenIDConnect továbbra is integrálhatók az alkalmazásgyűjtemény jelszó egyszeri bejelentkezéses technológiával.

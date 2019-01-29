@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 152149f94bba9077909d5b5c6bf92f3706b31b8c
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 403e126795a877be018cf4f4eb42581dee080e9c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848444"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163160"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -96,7 +96,7 @@ A **InputParameters** elem tartalmazza a következő elemet:
 | --------- | ----------- |----------- |
 | Azonosító | Igen | A jogcím átalakítási metódus paramétereként hivatkozás azonosítója. Minden egyes jogcím átalakítási metódus saját értékekkel rendelkezik. Tekintse meg a jogcímek átalakítása tábla teljes listáját az elérhető értékek. |
 | Adattípus | Igen | A data paraméter, például a karakterláncot, logikai érték beolvasása, Int vagy dátum és idő alapján a DataType enumerálása az egyéni házirend XML-séma típusa. Ez a típus aritmetikai műveletek megfelelő végrehajtásához használatos. Minden egyes jogcím-átalakítást saját értékekkel rendelkezik. Tekintse meg a [jogcím-átalakítási referencia](#Claims-transformations-reference) teljes listáját az elérhető értékek. |
-| Érték | Igen | Egy érték, amely az átalakítás átadott szó. Egyes értékek tetszőleges, néhányat, válassza a jogcímek átalakítása metódus. |
+| Value | Igen | Egy érték, amely az átalakítás átadott szó. Egyes értékek tetszőleges, néhányat, válassza a jogcímek átalakítása metódus. |
 
 ### <a name="outputclaims"></a>OutputClaims
 

@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Backup: A REST API használatával, az Azure virtuális gépek visszaállítása'
+title: 'Azure Backup: A REST API használatával az Azure virtuális gépek visszaállítása'
 description: az Azure VM Backup – REST API-val visszaállítási műveletek kezelése
 services: backup
 author: pvrk
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: pullabhk
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 68c611b08524b5fc037598bafe46d75b3293886d
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289728"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100199"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>A REST API használatával Azure-beli virtuális gépek visszaállítása
 
@@ -127,9 +127,9 @@ Szabhatja testre a biztonsági mentési adatokat a virtuális gép létrehozása
 
 A lemezek visszaállításának elindítása egy *POST* kérelmet. Többet is megtudni a Lemezvisszaállítási műveletet, olvassa az ["a visszaállítás elindítása" a REST API-val](https://docs.microsoft.com/rest/api/backup/restores/trigger).
 
-````http
+```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
-````
+```
 
 A `{containerName}` és `{protectedItemName}` áll össze [Itt](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` az "Azure" és a `{recoveryPointId}` van a `{name}` mezőjét a helyreállítási pont már említettük, [fent](#example-response).
 
@@ -147,7 +147,7 @@ A kérelem törzsében és egyéb részletek definíciója teljes listájáért 
 
 A következő kérés törzse egy lemezt a visszaállítás elindítása szükséges tulajdonságokat határozza meg.
 
-````json
+```json
 {
   "properties": {
     "objectType": "IaasVMRestoreRequest",
@@ -163,13 +163,13 @@ A következő kérés törzse egy lemezt a visszaállítás elindítása szüks�
     }
   }
 }
-````
+```
 
 ### <a name="response"></a>Válasz
 
 Van egy visszaállítási lemez aktiválása egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
 
-Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd a 200 (OK), hogy a művelet befejeződésekor.
+Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), hogy a művelet befejeződésekor.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
@@ -243,7 +243,7 @@ A hosszú ideig futó feladat befejeződése után a lemezek és a konfiguráci�
 
 A következő kérés törzse egy virtuális gépet a visszaállítás elindítása szükséges tulajdonságokat határozza meg.
 
-````json
+```json
 {
   "parameters": {
         "subscriptionId": "00000000-0000-0000-0000-000000000000",
@@ -275,7 +275,7 @@ A következő kérés törzse egy virtuális gépet a visszaállítás elindít�
       }
     }
 }
-````
+```
 
 A válasz azonos módon kell kezelni [a lemezek visszaállítását a fent ismertetett](#response).
 

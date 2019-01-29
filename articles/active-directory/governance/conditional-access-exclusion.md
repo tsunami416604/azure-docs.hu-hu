@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0ae6c27091dd2938ec7410e78ae12dbe20509029
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 12a9602ecd61da5dc497790ecca6d8d6f874252e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167952"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184291"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>A feltételes hozzáférési szabályzatok kizárt felhasználók kezelése az Azure AD hozzáférési felülvizsgálatok
 
@@ -117,7 +117,7 @@ Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy blokkolja a h
 
     ![Hozzáférési felülvizsgálat létrehozása](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>2. példa: Hozzáférési felülvizsgálat az örökölt hitelesítési elérő felhasználók számára
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>2. példa Az örökölt hitelesítési elérő felhasználók számára a hozzáférési felülvizsgálat
 
 Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy blokkolja az örökölt hitelesítéssel és a régebbi ügyfél felhasználók számára hozzáférést. Ez magában foglalja egy csoportot, amely ki van zárva a szabályzat alól. Íme egy ajánlott hozzáférési felülvizsgálat, ahol a csoport tagjai nyilvánosan lektorálhatók.
 
@@ -135,7 +135,7 @@ Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy blokkolja az 
 
     ![Hozzáférési felülvizsgálat létrehozása](./media/conditional-access-exclusion/create-access-review-2.png)
 
-**A Pro-tipp**: Ha sok Kizárási csoportokat, és ezért létre kell hoznia a több hozzáférési felülvizsgálatok, hogy most már megvannak a egy API-t, amely lehetővé teszi, hogy hozzon létre, és programozott módon kezelheti azokat a Microsoft Graph béta végpontját. Első lépésként tekintse meg a [az Azure AD hozzáférési felülvizsgálatok API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) és [példa beolvasása az Azure AD hozzáférési felülvizsgálatok keresztül a Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
+**A Pro-tipp**: Ha sok Kizárási csoportokat, és ezért létre kell hoznia a több hozzáférési felülvizsgálatok, most már van API, amely lehetővé teszi, hogy hozzon létre, és programozott módon kezelheti azokat a Microsoft Graph béta végpontját. Első lépésként tekintse meg a [az Azure AD hozzáférési felülvizsgálatok API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) és [példa beolvasása az Azure AD hozzáférési felülvizsgálatok keresztül a Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
 ## <a name="access-review-results-and-audit-logs"></a>Hozzáférési felülvizsgálat eredményei és a vizsgálati naplók
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c1a575c3a30dfe5923fc0026c6d41d1b20276e49
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 5b17cf1bfae884e1fbdf47dabd78a1c6c3e1c7a0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076468"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151600"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect kapcsolati problémáinak hibaelhárítása
 Ez a cikk azt ismerteti, hogyan működik az Azure AD Connect és az Azure AD közötti kapcsolat és a kapcsolódási problémák elhárítása. Ezek olyan problémák, nagy valószínűséggel olyan környezetben, egy proxykiszolgáló láthatók legyenek.

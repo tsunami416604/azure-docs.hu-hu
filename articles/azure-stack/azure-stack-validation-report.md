@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 0eed7943d782bda134c2df2de6cf9eeeb58bfa3b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 44530a1c4eec0f2efca7357438366dd7b6abe42a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243865"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093342"
 ---
 # <a name="azure-stack-validation-report"></a>Az Azure Stack érvényesítési jelentés
 Az Azure Stack készültségi ellenőrző eszközt használja, amelyek támogatják az üzembe helyezés és a egy Azure Stack-környezet karbantartás ellenőrzések futtatásához. Az eszköz eredmények jelentés .JSON kiterjesztésű fájlba írja. A jelentés üzembe helyezhető Azure Stacket előfeltételei állapotával kapcsolatos részletes és összesített adatokat jeleníti meg. A jelentés is a meglévő Azure Stack üzembe helyezéséhez titkos kódok rotációja kapcsolatos információkat jeleníti meg.  
@@ -28,7 +28,7 @@ Az Azure Stack készültségi ellenőrző eszközt használja, amelyek támogatj
  ## <a name="where-to-find-the-report"></a>Hol található a jelentés
 Az eszköz futtatásakor naplózza az eredményeket **AzsReadinessCheckerReport.json**. Az eszközt is létrehoz egy naplófájlt nevű **AzsReadinessChecker.log**. Ezek a fájlok helyét jeleníti meg az ellenőrzés eredményét a PowerShellben.
 
-![Futtatás-ellenőrzés](./media/azure-stack-validation-report/validation.png)
+![run-validation](./media/azure-stack-validation-report/validation.png)
 
 Mindkét fájl továbbra is fennáll, további érvényességi ellenőrzések üzemidejének a ugyanazon a számítógépen.  Ha például az eszköz futtatható tanúsítványok érvényesítésére, és futtassa újra az Azure-identitás ellenőrzése, majd harmadszor a regisztráció érvényesítése. Az összes három ellenőrzések eredményeit az eredményül kapott .json jelentés érhető el.  
 
@@ -44,7 +44,7 @@ Például a jelentés egy PowerShell-parancssort, amely meg van nyitva a helyet,
 
 A kimenet az alábbihoz hasonló:
 
-````PowerShell
+```PowerShell
 Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
 
 ############### Certificate Validation Summary ###############
@@ -84,7 +84,7 @@ StartTime         : 2018/10/22 14:24:16
 EndTime           : 2018/10/22 14:24:19
 Duration          : 3
 PSBoundParameters : 
-````
+```
 
 ## <a name="view-the-report-summary"></a>Összesítő jelentés megtekintése
 A jelentés megtekintésére, hozzáadhatja a **-összefoglaló** váltson át PowerShell-parancssorból végén. Példa: 
@@ -92,7 +92,7 @@ A jelentés megtekintésére, hozzáadhatja a **-összefoglaló** váltson át P
 
 Az összefoglalás ellenőrzések, amelyek nem rendelkeznek a következő eredményeket jeleníti meg, és azt jelzi, hogy továbbítja vagy, amelyek a teljes ellenőrzések sikertelenek. A kimenet az alábbihoz hasonló:
 
-````PowerShell
+```PowerShell
 Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
 
 ############### Certificate Validation Summary ###############
@@ -114,7 +114,7 @@ Azure Stack Graph Validation results not available.
 ############### Azure Stack ADFS Validation Summary ###############
 
 Azure Stack ADFS Validation results not available.
-````
+```
 
 
 ## <a name="view-a-filtered-report"></a>Szűrt jelentés megtekintése

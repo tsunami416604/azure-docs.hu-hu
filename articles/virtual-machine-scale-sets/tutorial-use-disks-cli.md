@@ -48,7 +48,7 @@ Egy méretezési csoport létrehozásakor vagy skálázásakor a rendszer két l
 **Ideiglenes lemez** – Az ideiglenes lemezek olyan tartós állapotú meghajtót (SSD-t) használnak, amely ugyanazon az Azure-gazdagépen található, mint a virtuálisgép-példány. Ezek nagy teljesítményű lemezek, és olyan műveletekhez használhatók, mint például az ideiglenes adatfeldolgozás. Ha azonban a virtuálisgép-példányt egy új gazdagépre költöztetik, az ideiglenes lemezen tárolt adatokat a rendszer eltávolítja. Az ideiglenes lemez méretét a virtuálisgép-példány mérete határozza meg. Az ideiglenes lemezek a */dev/sdb* címkét kapják, a csatlakoztatási pontjuk pedig */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Ideiglenes lemezek méretei
-| Típus | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
+| Typo | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
 |----|----|----|
 | [Általános célú](../virtual-machines/linux/sizes-general.md) | A, B és D sorozat | 1600 |
 | [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md) | F sorozat | 576 |
@@ -62,7 +62,7 @@ Egy méretezési csoport létrehozásakor vagy skálázásakor a rendszer két l
 További adatlemezek adhatók hozzá, amelyekre alkalmazásokat telepíthet és amelyeken adatokat tárolhat. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. Az egyes adatlemezek kapacitása maximum 4 TB lehet. A virtuálisgép-példány mérete határozza meg, hány adatlemez csatolható. A virtuális gépek minden vCPU-jához két adatlemez csatolható.
 
 ### <a name="max-data-disks-per-vm"></a>Adatlemezek max. száma virtuális gépenként
-| Típus | Gyakori méretek | Adatlemezek max. száma virtuális gépenként |
+| Typo | Gyakori méretek | Adatlemezek max. száma virtuális gépenként |
 |----|----|----|
 | [Általános célú](../virtual-machines/linux/sizes-general.md) | A, B és D sorozat | 64 |
 | [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md) | F sorozat | 64 |

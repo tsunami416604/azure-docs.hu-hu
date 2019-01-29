@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b8b5ea39c1cfb3a37a8e3009f59312728bcb0331
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 07e65e6ff544d6372197010a2b9d7f3f647eeb0f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900393"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166560"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -69,7 +69,7 @@ Projekt Akusztika biztosít pontos és megbízható akusztikai paraméterek még
 
 ## <a name="what-exactly-happens-during-baking"></a>Mi pontosan "sütés" során történik?
 
-A rendszer figyelembe veszi a potenciális player helyek egységesen távolságban elhelyezett "mintavételi" minta pozíciók álló készletet hoz létre. Minden egyes mintavétel független feladatokra áll egy bake-szintek: A rendszer figyelembe veszi a cuboid "Szimuláció régió" a mintavétel: ingyenes, és nem egy adott régióban legfeljebb 25 cm felbontású részletes wave szimuláció.
+A rendszer figyelembe veszi a potenciális player helyek egységesen távolságban elhelyezett "mintavételi" minta pozíciók álló készletet hoz létre. Egy szint egy bake egyes mintavétel független feladatokra áll: A rendszer figyelembe veszi a cuboid "Szimuláció régió" a mintavétel: ingyenes, és egy adott régióban legfeljebb 25 cm felbontású részletes wave szimuláció does.
 
 ## <a name="next-steps"></a>További lépések
 * Fedezze fel a [minta jelenet renderelése;](sample-walkthrough.md)

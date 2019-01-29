@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 1dd434bbf71e482f5d0a52b3c84e46382079b43a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 0f7d3f8a7a9c7bdd67dc80a98744e1cd6a2433a1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886399"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180823"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>A Bing Visual Search API nyelvéhez és régiójához támogatása
 
@@ -39,36 +39,36 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Ország/régió|Kód|
 |-------|----|
 |Argentína|AR|
-|Ausztrália|AUSZTRÁLIA|
+|Ausztrália|AU|
 |Ausztria|AT|
-|Belgium|LEHET|
+|Belgium|BE|
 |Brazília|BR|
 |Kanada|CA|
 |Chile|CL|
 |Dánia|DK|
 |Finnország|FI|
 |Franciaország|JK|
-|Németország|NÉMETORSZÁG|
+|Németország|DE|
 |Hongkong KKT|HK|
-|India|INDIA|
+|India|IN|
 |Indonézia|ID (Azonosító)|
 |Olaszország|IT|
 |Japán|JP|
-|Korea|KOREA|
-|Malajzia|SAJÁT|
+|Korea|KR|
+|Malajzia|MY|
 |Mexikó|MX|
 |Hollandia|NL|
 |Új-Zéland|NZ|
-|Norvégia|NEM|
+|Norvégia|NO|
 |Kína|CN|
 |Lengyelország|PL|
-|Portugália|CSENDES-ÓCEÁNI IDŐ|
+|Portugália|PT|
 |Fülöp-szigetek|PH|
-|Oroszország|KÉRELEMEGYSÉG|
+|Oroszország|RU|
 |Szaúd-Arábia|SA|
 |Dél-Afrika|ZA|
 |Spanyolország|ES|
-|Svédország|HASZNÁLATA|
+|Svédország|SE|
 |Svájc|CH|
 |Tajvan|TW|
 |Törökország|TR|
@@ -99,7 +99,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Olaszország|olasz|it-IT|
 |Japán|japán|ja-JP|
 |Korea|koreai|ko-KR|
-|Malajzia|Angol|a saját en|
+|Malajzia|Angol|en-MY|
 |Mexikó|spanyol|es-MX|
 |Hollandia|holland|NL-NL|
 |Új-Zéland|Angol|en-NZ|
@@ -117,5 +117,5 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Tajvan|Kínai (hagyományos)|zh-TW|
 |Törökország|török|tr-TR|
 |Egyesült Királyság|Angol|en-GB|
-|Egyesült Államok|Angol|hu-HU|
-|Egyesült Államok|spanyol|es-USA|
+|Egyesült Államok|Angol|en-US|
+|Egyesült Államok|spanyol|es-US|

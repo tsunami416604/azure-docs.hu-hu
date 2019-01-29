@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 6aace9301050877d452b69bd7d1c741f50dae558
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fd7f6897b20f64a195f7e1f1155ba61eaf5941f2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264093"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154337"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Gyors útmutató: A nem kívánt tartalom a Pythonban szöveges tartalom elemzése
 
@@ -61,7 +61,7 @@ Az egyszerűség kedvéért a szöveg közvetlenül a parancsfájlból elemzi. A
 
 ## <a name="query-the-moderator-service"></a>Lekérdezés a Moderator szolgáltatás
 
-Hozzon létre egy **ContentModeratorClient** példány, az előfizetési kulcs és a végpont URL-cím használatával. Ezután használja az annak egy tagját **TextModerationOperations** példány a moderálási API meghívásához. Tekintse meg a **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python#screen-text)** referenciadokumentációt hogyan hívhat meg, további tájékoztatást.
+Hozzon létre egy **ContentModeratorClient** példány, az előfizetési kulcs és a végpont URL-cím használatával. Ezután használja az annak egy tagját **TextModerationOperations** példány a moderálási API meghívásához. Tekintse meg a **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** referenciadokumentációt hogyan hívhat meg, további tájékoztatást.
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
 

@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 01/22/2018
+ms.date: 01/25/2019
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: daf524e6802fbb0548ff2d30d32dc6fbd4bc68cb
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c8e78ead58c34a62851fddc5a12504bc5747a27b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476393"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092322"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure stack-bővítmény gazdagép előkészítése
 
@@ -127,7 +127,7 @@ Használjon egy számítógépet, amely képes kapcsolódni a következő lépé
 > Ebben a lépésben nincs szükség, ha a DNS-zónadelegálás használja a DNS-integráció.
 Ha az egyéni gazdagépeken A rekordok közzététele az Azure Stack-végpontok konfigurálása megtörtént, két további gazdagépcsoport A rekordok létrehozásához szüksége:
 
-| IP | Gazdanév | Típus |
+| IP | Gazdanév | Typo |
 |----|------------------------------|------|
 | \<IP> | *. Adminhosting. \<Régió >. \<Teljesen minősített Tartományneve > | A |
 | \<IP> | *. Üzemeltetési. \<Régió >. \<Teljesen minősített Tartományneve > | A |

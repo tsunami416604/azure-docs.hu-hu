@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/17/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: da22c09a227069af0eeb42ab67a59189ae494185
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 81df0a776cd22490342230567deacb23097cd12e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256672"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094189"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Az Azure Data Box Gateway rendszerkövetelményei (előzetes verzió)
 
@@ -46,7 +46,7 @@ Itt az ügyfelek vagy a Data Box gatewayhez csatlakozó gazdagépeknek a támoga
 
 | **Operációs rendszer és platformok** | **Verziók** |
 | --- | --- |
-| Windows Server |2012 R2-BEN <br> 2016 |
+| Windows Server |2012 R2 <br> 2016 <br> 2019 |
 | Windows |8, 10 |
 | SUSE Linux |Vállalati kiszolgáló (x86_64) 12|
 | Ubuntu |16.04.3 LTS|
@@ -56,15 +56,15 @@ Itt az ügyfelek vagy a Data Box gatewayhez csatlakozó gazdagépeknek a támoga
 
 |**Protocol (Protokoll)** |**Verziók**   |**Megjegyzések**  |
 |---------|---------|---------|
-|SMB    | 2.X 3.X      | Az SMB-1 nem támogatott.|
+|SMB    | 2.X, 3.X      | Az SMB-1 nem támogatott.|
 |NFS     | V3-as és a V4        |         |
 
 ## <a name="supported-virtualization-platforms-for-device"></a>Eszköz támogatott virtualizációs platform
 
 | **Operációs rendszer és platformok**  |**Verziók**   |**Megjegyzések**  |
 |---------|---------|---------|
-|Hyper-V  |  2012 R2-BEN <br> 2016  |         |
-|VMware ESXi     | 6.0 <br> 6.5        |A VMware-eszközök nem támogatottak.         |
+|Hyper-V  |  2012 R2 <br> 2016  |         |
+|VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |A VMware-eszközök nem támogatottak.         |
 
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
@@ -96,7 +96,7 @@ Itt látható a virtuális eszköz helyi webes felhasználói Felületét a tám
 |Google Chrome   |Legújabb verziója         |         |
 |Microsoft Edge    | Legújabb verziója        |         |
 |Internet Explorer     | Legújabb verziója        |         |
-|A FireFox    |Legújabb verziója         |         |
+|FireFox    |Legújabb verziója         |         |
 
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
@@ -106,12 +106,12 @@ Az alábbi táblázat felsorolja a portot, amelyet meg kell nyitni a tűzfalon a
 | Port nem.| És leskálázása | Port hatókör| Szükséges|   Megjegyzések                                                             |                                                                                     |
 |--------|---------|----------|--------------|----------------------|---------------|
 | TCP 80-AS (HTTP)|Ki|WAN |Nem|Kimenő port szolgál az Internet-hozzáférés frissítések lekéréséhez. <br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |                          
-| A TCP 443 (HTTPS)|Ki|WAN|Igen|Kimenő port szolgál a felhőbeli adatok eléréséhez.<br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.|   
+| TCP 443 (HTTPS)|Ki|WAN|Igen|Kimenő port szolgál a felhőbeli adatok eléréséhez.<br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.|   
 | UDP 53 (DNS)|Ki|WAN|Bizonyos esetekben<br>Lásd: a megjegyzések|Csak akkor, ha egy internetes DNS-kiszolgálót használ, a port szükség.<br>Azt javasoljuk, hogy helyi DNS-kiszolgáló használatával. |
 | UDP 123 (NTP)|Ki|WAN|Bizonyos esetekben<br>Lásd: a megjegyzések|Csak akkor, ha egy internetes NTP-kiszolgálót használ, a port szükség.  |
-| UDP 67-ES (DHCP)|Ki|WAN|Bizonyos esetekben<br>Lásd: a megjegyzések|A port szükség, csak akkor, ha egy DHCP-kiszolgáló használ.  |
+| UDP 67 (DHCP)|Ki|WAN|Bizonyos esetekben<br>Lásd: a megjegyzések|A port szükség, csak akkor, ha egy DHCP-kiszolgáló használ.  |
 | TCP 80-AS (HTTP)|Eleme ennek|LAN|Igen|Ez a helyi felhasználói felület az eszközön a helyi felügyeleti a bejövő portot. <br>A helyi felhasználói felület elérése HTTP protokollon keresztül automatikusan átirányítja a HTTPS.  | 
-| A TCP 443 (HTTPS)|Eleme ennek|LAN|Igen|Ez a helyi felhasználói felület az eszközön a helyi felügyeleti a bejövő portot. | 
+| TCP 443 (HTTPS)|Eleme ennek|LAN|Igen|Ez a helyi felhasználói felület az eszközön a helyi felügyeleti a bejövő portot. | 
 
 ## <a name="url-patterns-for-firewall-rules"></a>URL-mintákra vonatkozó tűzfalszabályok
 
@@ -123,16 +123,16 @@ Azt javasoljuk, hogy beállította-e a tűzfalszabályok alapján a Data Box Gat
 > - Az eszköz (forrás) IP-címek mindig a felhő-kompatibilis hálózati adaptereken értékre kell állítani.
 > - IP-címeket kell megadni a cél [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/confirmation.aspx?id=41653).
 
-|     Az URL-minta                                                                                                                                                                                                                                                                                                                                                                                                                                       |     Összetevő/funkció                                                                             |
+|     Az URL-minta                                                                                                                                                                                                                                                                                                                                                                                                                                       |     Component/Functionality                                                                             |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 |    https://*.databoxedge.azure.com/*<br>https://*.servicebus.windows.net/*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                        |    Az Azure Data Box-átjáró szolgáltatás<br>Azure Service Bus<br>Hitelesítési szolgáltatás    |
 |    http://*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                   |    Eszköz aktiválása                                                                                    |
 |    http://crl.microsoft.com/pki/*   http://www.microsoft.com/pki/*                                                                                                                                                                                                                                                                                                                                                                                    |    Tanúsítvány-visszavonás                                                                               |
 |    https://*.core.windows.net/* https://*. data.microsoft.com http://*. msftncsi.com                                                                                                                                                                                                                                                                                                                                                                |    Az Azure storage-fiókok és figyelés                                                                |
-|    http://windowsupdate.microsoft.com<br>http://*. windowsupdate.microsoft.com<br>https://*. windowsupdate.microsoft.com<br>http://*. update.microsoft.com<br>https://*. update.microsoft.com<br>http://*. windowsupdate.com<br>http://download.microsoft.com<br>http://*. download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://*. ws.microsoft.com<br>https://*. ws.microsoft.com<br>http://*.mp.microsoft.com        |    A Microsoft Update-kiszolgálók                                                                             |
-|    http://*.Deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                             |    Akamai CDN                                                                                           |
+|    http://windowsupdate.microsoft.com<br>http://*.windowsupdate.microsoft.com<br>https://*.windowsupdate.microsoft.com<br>http://*.update.microsoft.com<br>https://*.update.microsoft.com<br>http://*.windowsupdate.com<br>http://download.microsoft.com<br>http://*.download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://*.ws.microsoft.com<br>https://*.ws.microsoft.com<br>http://*.mp.microsoft.com        |    A Microsoft Update-kiszolgálók                                                                             |
+|    http://*.deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                             |    Akamai CDN                                                                                           |
 |    https://*.partners.extranet.microsoft.com/*                                                                                                                                                                                                                                                                                                                                                                                                        |    Támogatási csomag                                                                                      |
-|    http://*.Data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                        |    A Windows, a telemetriai szolgáltatás, tekintse meg a frissítést a felhasználói élmény és a telemetria diagnosztikája      |
+|    http://*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                        |    A Windows, a telemetriai szolgáltatás, tekintse meg a frissítést a felhasználói élmény és a telemetria diagnosztikája      |
 |                                                                                                                                                                                                                                                                                                                                                                                                                                                       |                                                                                                         |
 
 

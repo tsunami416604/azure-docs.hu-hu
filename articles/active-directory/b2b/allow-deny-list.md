@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 60fbde1ea269dc43d35007287c38e852a5feedff
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d5a39efd932225eb2f71acdba742c88095df8ec9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075329"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098782"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Az adott szervezetek a B2B-felhasználók meghívások engedélyezése vagy letiltása
 
@@ -86,71 +86,71 @@ Ellenőrizheti, hogy a modul verzióját (ha telepítve van):
 1. Nyisson meg egy emelt szintű felhasználói (Futtatás rendszergazdaként) Windows PowerShell. 
 2. Tekintse meg az Azure Active Directory modul a Windows PowerShell a számítógépre telepített bármely verziója van, ha az alábbi parancsot futtassa:
 
-   ````powershell  
+   ```powershell  
    Get-Module -ListAvailable AzureAD*
-   ````
+   ```
 
 Ha a modul nincs telepítve, vagy nem rendelkezik a szükséges verziót, tegye a következők egyikét:
 
 - Ha nem jár eredménnyel, futtassa a következő parancsot a AzureADPreview modulban legújabb verziójának telepítéséhez:
   
-   ````powershell  
+   ```powershell  
    Install-Module AzureADPreview
-   ````
+   ```
 - Ha csak az Azure ad-modul telepítéséhez az AzureADPreview modulban a következő parancsokat az eredmények látható: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
-   ````
+   ```
 - Ha csak az eredmények megjelennek az AzureADPreview modulban, de a verziószáma kisebb, mint 2.0.0.98, frissíteni, a következő parancsokat: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-   ````
+   ```
 
 - Ha az eredmények jelennek meg az Azure ad és a AzureADPreview modulban, de az AzureADPreview modulban verziószáma kisebb, mint 2.0.0.98, futtassa a frissítéshez a következő parancsokat: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-    ````
+    ```
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>A AzureADPolicy parancsmagokat használja a házirend konfigurálása
 
 Hozzon létre egy engedélyezési vagy letiltási lista használja a [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Az alábbi példa bemutatja, hogyan állítsa be a letiltási lista, amely blokkolja a "live.com" tartományt.
 
-````powershell 
+```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
 
 New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
-````
+```
 
 A következő ugyanebben a példában látható, de a szabályzat-definíció beágyazott.
 
-````powershell  
+```powershell  
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
-````
+```
 
 Állítsa be az engedélyezési vagy megtagadási lista házirendet használja a [Set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
 
-````powershell   
+```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
-````
+```
 
 A szabályzat beszerzéséhez használja a [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
 
-````powershell
+```powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
-````
+```
 
 A szabályzat eltávolításához használja a [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
 
-````powershell
+```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 
-````
+```
 
 ## <a name="next-steps"></a>További lépések
 

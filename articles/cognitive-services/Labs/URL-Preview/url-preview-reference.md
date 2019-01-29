@@ -10,12 +10,12 @@ ms.component: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 12e91a07d09929ba59873d0d56f4e19b20077f53
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 297547d52333bf84af69a780c98ce9d84938cf94
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999749"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097747"
 ---
 # <a name="project-url-preview-v7-reference"></a>Projekt URL-cím előnézete v7-referencia
 
@@ -31,10 +31,10 @@ Megjeleníti a előzetes kódrészletek és a miniatűr képekhez hiperhivatkoz�
 A kérelem URL-cím előnézete eredmények, a következő végpont egy kérés küldése. A fejlécek és URL-paraméterek használatával további specifikációk meghatározása.
 
 GET-végpont:
-````
+```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
-````
+```
 
 A kérelem kell a HTTPS protokollt használja, és tartalmazza a lekérdezési paraméter a következő:
 
@@ -73,44 +73,44 @@ Az alábbiakban a fejlécek, köztük a kérést és választ.
 ## <a name="query-parameters"></a>Lekérdezési paraméterek
 A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges oszlop, paraméter szükséges. URL-címet kell kódolása a lekérdezési paramétereket. A lekérdezés egy http vagy https sémával; abszolút URL-CÍMNEK kell lennie. nem támogatjuk a relatív URL-címeket vagy más rendszerek például az ftp: / /
 
-|Name (Név)|Érték|Típus|Szükséges|
+|Name (Név)|Value|Typo|Szükséges|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />Piaci a lehetséges értékek listáját lásd: [piaci kódok](#market-codes).<br /><br /> **MEGJEGYZÉS:** Az URL-cím előzetes API jelenleg csak támogatja a földrajzi RÉGIÓJA és az angol nyelvű.<br /><br />|Karakterlánc|Igen|
-|<a name="query" />válaszok|Az előzetes verzióra az URL-cím|Karakterlánc|Igen|
+|<a name="query" />q|Az előzetes verzióra az URL-cím|Karakterlánc|Igen|
 |<a name="responseformat" />responseFormat|Az adathordozó-típus használata a válaszhoz. A kis-és értékek a következők.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Az alapértelmezett érték a JSON. A JSON-fájllal kapcsolatos információk objektumok, hogy a válasz tartalmazza, lásd: [Válaszobjektumok](#response-objects).<br /><br />Ha JsonLd adja meg, a válasz törzse tartalmazza a keresési eredményeket tartalmazó JSON-LD objektumok. A JSON-LD kapcsolatos információkért lásd: [JSON-LD](http://json-ld.org/).|Karakterlánc|Nem|
-|<a name="safesearch"/>safeSearch|Érvénytelen felnőtt tartalom, vagy a hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód: 200, adja vissza, és a *isFamilyFriendly* jelző false értékre van állítva.<ul><li>biztonságos keresés = szigorú: Cím, leírás, URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = közepes; Cím, URL-cím és leírás, de nem a leíró képet kaphat.</li><li>biztonságos keresés kikapcsolása:; = Minden válasz objektumok/elemet – title, URL-címet, leírást és képet kaphat.</li></ul> |Karakterlánc|Nem kötelező. </br> Biztonságos keresés alapértelmezés szerint szigorú =.|
+|<a name="safesearch"/>safeSearch|Érvénytelen felnőtt tartalom, vagy a hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód: 200, adja vissza, és a *isFamilyFriendly* jelző false értékre van állítva.<ul><li>safeSearch=strict: Cím, leírás, URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = közepes; Cím, URL-cím és leírás, de nem a leíró képet kaphat.</li><li>biztonságos keresés kikapcsolása:; = Minden válasz objektumok/elemet – title, URL-címet, leírást és képet kaphat.</li></ul> |Karakterlánc|Nem kötelező. </br> Biztonságos keresés alapértelmezés szerint szigorú =.|
 
 ## <a name="response-objects"></a>Válasz objektumok
 A válasz sémája vagy egy [weblap] vagy byl vrácen Prvek, ahogy a webes keresési API-t. Ha a kérelem meghiúsul, a legfelső szintű objektum a [byl vrácen Prvek](#errorresponse) objektum.
 
 |Objektum|Leírás|
 |------------|-----------------|
-|[Weblap](#webpage)|Legfelső szintű JSON-objektum, amely tartalmazza az előzetes verzió attribútumai.|
+|[WebPage](#webpage)|Legfelső szintű JSON-objektum, amely tartalmazza az előzetes verzió attribútumai.|
 
 ### <a name="error"></a>Hiba
 Határozza meg a következő hiba történt.
 
-|Elem|Leírás|Típus|
+|Elem|Leírás|Typo|
 |-------------|-----------------|----------|
 |<a name="error-code" />Kód|A hiba kódja, amely azonosítja a hiba kategóriáját. Lehetséges kódok listáját lásd: [hibakódok](#error-codes).|Karakterlánc|
 |<a name="error-message" />üzenet|A hiba leírása.|Karakterlánc|
 |<a name="error-moredetails" />moreDetails|Egy leírást, amely a hibával kapcsolatos további információkat biztosít.|Karakterlánc|
 |<a name="error-parameter" />A paraméter|A lekérdezési paraméter, amely a hibát okozó a kérésben.|Karakterlánc|
-|<a name="error-subcode" />Alkód|A hiba kódja, amely azonosítja a hibát. Például ha `code` InvalidRequest, akkor `subCode` ParameterInvalid vagy ParameterInvalidValue is lehet. |Karakterlánc|
-|<a name="error-value" />Érték|A lekérdezési paraméter értéke, amely nem érvényes.|Karakterlánc|
+|<a name="error-subcode" />subCode|A hiba kódja, amely azonosítja a hibát. Például ha `code` InvalidRequest, akkor `subCode` ParameterInvalid vagy ParameterInvalidValue is lehet. |Karakterlánc|
+|<a name="error-value" />value|A lekérdezési paraméter értéke, amely nem érvényes.|Karakterlánc|
 
 ### <a name="errorresponse"></a>Byl vrácen Prvek
 A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem teljesíthető.
 
-|Name (Név)|Érték|Típus|
+|Name (Név)|Value|Typo|
 |----------|-----------|----------|
-|í_rja be|Mutató típusa.|Karakterlánc|
-|<a name="errors" />Hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Hiba](#error)]|
+|_type|Mutató típusa.|Karakterlánc|
+|<a name="errors" />Hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Error](#error)[]|
 
-### <a name="webpage"></a>Weblap
+### <a name="webpage"></a>WebPage
 Meghatározza, milyen kapcsolatos információkat egy előzetes verzióban érhető el a weblapot.
 
-|Name (Név)|Érték|Típus|
+|Name (Név)|Value|Typo|
 |----------|-----------|----------|
 |név|Az oldal címe, nem feltétlenül a HTML-cím|Karakterlánc|
 |url|Az URL-cím, amely ténylegesen volt bejárt (kérelem előfordulhat, hogy felvette a átirányítások)|Karakterlánc|
@@ -119,7 +119,7 @@ Meghatározza, milyen kapcsolatos információkat egy előzetes verzióban érhe
 |primaryImageOfPage/contentUrl|Tartalmazza az előzetes verzióban érhető el egy reprezentatív kép URL-címe|Karakterlánc|
 
 ### <a name="identifiable"></a>Azonosításra alkalmas
-|Name (Név)|Érték|Típus|
+|Name (Név)|Value|Typo|
 |-------------|-----------------|----------|
 |id|Egy erőforrás-azonosítója|Karakterlánc|
 
@@ -131,8 +131,8 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
 |-----------------|-----------------|
 |200|Siker.|
 |400|A lekérdezési paraméterek egyike hiányzik vagy érvénytelen.|
-|400|Kiszolgálóhibái, ResourceError Alkód: A kért URL nem érhető el|
-|400|Kiszolgálóhibái, ResourceError Alkód: A kért URL-cím nem adta vissza sikerkódot (beleértve a Ha a visszaadott HTTP 404)|
+|400|ServerError, subCode ResourceError: A kért URL nem érhető el|
+|400|ServerError, subCode ResourceError: A kért URL-cím nem adta vissza sikerkódot (beleértve a Ha a visszaadott HTTP 404)|
 |400|InvalidRequest, letiltott Alkód: A kért URL-cím tartalmazhat felnőtt tartalom, és le lett tiltva|
 |401|Az előfizetési kulcs hiányzik vagy nem érvényes.|
 |403|A felhasználó hitelesítése (például használni őket egy érvényes előfizetési kulcsot), de azok nem rendelkezik engedéllyel a kért erőforrás.<br /><br /> Bing is előfordulhat, hogy ez az állapot vissza. Ha a hívó lekérdezéseit kiszolgálónként havi kvóta túllépve.|
@@ -170,7 +170,7 @@ Ha a kérelem meghiúsul, a válasz tartalmaz egy [byl vrácen Prvek](#errorresp
 
 A következő értékeket a lehetséges hiba kód és a részleges hiba kódja.
 
-|Kód|Alkód|Leírás
+|Kód|SubCode|Leírás
 |-|-|-
 |Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|HTTP-állapotkód: 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Letiltva|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés érvénytelen, nem. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a HTTPS helyett a HTTP protokollt használja, a Bing HttpNotAllowed adja vissza, és a HTTP-állapotkód: 410.

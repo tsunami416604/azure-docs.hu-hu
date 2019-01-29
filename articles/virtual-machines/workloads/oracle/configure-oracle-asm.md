@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 236809336975eec94d7decd9822fc9143ae19bfb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 692f6b1f02c6c1e86170971886e83722d0160838
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981025"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203589"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Oracle ASM beállítása Azure Linux virtuális gépen  
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Az Oracle Database lemezképen alapuló virtuális gép létrehozása és konfigurálása, hogy Oracle ASM használja a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. 
+Az Oracle Database lemezképen alapuló virtuális gép létrehozása és konfigurálása, hogy Oracle ASM használja a [az virtuális gép létrehozása](/cli/azure/vm) parancsot. 
 
 A következő példában létrehozunk egy, amely egy Standard_DS2_v2 mérete 50 GB négy csatlakoztatott adatlemezekkel rendelkező myVM nevű virtuális Gépet. Ha azok még nem léteznek a kulcsok alapértelmezett helyén, SSH-kulcsokat is létrehoz.  Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
 
@@ -152,7 +152,7 @@ Oracle ASM telepítésével kapcsolatos további információkért lásd: [Oracl
    chown grid:oinstall /u01/app/grid
    ```
 
-## <a name="set-up-oracle-asm"></a>Oracle ASM beállítása
+## <a name="set-up-oracle-asm"></a>Set up Oracle ASM
 
 Ebben az oktatóanyagban az alapértelmezett felhasználó van *rács* és az alapértelmezett csoport *asmadmin*. Ügyeljen arra, hogy a *oracle* felhasználó, a asmadmin csoport tagja. Az Oracle ASM telepítése beállításához, kövesse az alábbi lépéseket:
 
@@ -513,7 +513,7 @@ Az Oracle ASM telepítése beállításához, kövesse az alábbi lépéseket:
 
    Oracle ASM konfigurálása Segéd nyílik meg.
 
-2. Az a **ASM konfigurálása: lemez csoportok** párbeszédpanelen kattintson a `Create` gombra, majd `Show Advanced Options`.
+2. Az a **ASM konfigurálása: Csoportok lemez** párbeszédpanelen kattintson a `Create` gombra, majd `Show Advanced Options`.
 
 3. Az a **lemez-csoport létrehozása** párbeszédpanel:
 
@@ -525,7 +525,7 @@ Az Oracle ASM telepítése beállításához, kövesse az alábbi lépéseket:
 
    ![A lemez-csoport létrehozása párbeszédpanel képernyőképe](./media/oracle-asm/asm02.png)
 
-4. Az a **ASM konfigurálása: lemez csoportok** párbeszédpanelen kattintson a `Create` gombra, majd `Show Advanced Options`.
+4. Az a **ASM konfigurálása: Csoportok lemez** párbeszédpanelen kattintson a `Create` gombra, majd `Show Advanced Options`.
 
 5. Az a **lemez-csoport létrehozása** párbeszédpanel:
 
@@ -540,7 +540,7 @@ Az Oracle ASM telepítése beállításához, kövesse az alábbi lépéseket:
 
 6. Válassza ki **kilépési** ASM konfigurációs Segéd bezárásához.
 
-   ![Képernyőkép a konfigurálása ASM: lemez csoportok párbeszédpanelt a Kilépés gombra](./media/oracle-asm/asm05.png)
+   ![Képernyőkép az ASM konfigurálása: Lemez csoportok párbeszédpanelt a Kilépés gombra](./media/oracle-asm/asm05.png)
 
 ## <a name="create-the-database"></a>Az adatbázis létrehozása
 
@@ -585,6 +585,6 @@ az group delete --name myResourceGroup
 
 [Oktatóanyag: Oracle DataGuard konfigurálása](configure-oracle-dataguard.md)
 
-[Oktatóanyag: Oracle GoldenGate konfigurálása](Configure-oracle-golden-gate.md)
+[Oktatóanyag: Configure Oracle GoldenGate](Configure-oracle-golden-gate.md)
 
 Felülvizsgálat [Oracle-adatbázis tervezése](oracle-design.md)

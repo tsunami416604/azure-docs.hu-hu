@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 9ca777275aa4aa09a16c0248f6e3b1ecc76ac5b2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0287ca78c8d2df4af1aab043b0575bd52f9d5eb1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267334"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094254"
 ---
 # <a name="validate-azure-identity"></a>Azure-identitás ellenőrzése 
 Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) használatával ellenőrizze, hogy az Azure Stack használatra készen áll-e az Azure Active Directory (Azure AD). Ellenőrizze az Azure identitáskezelési megoldás, az Azure Stack központi telepítésének megkezdése előtt.  
@@ -65,7 +65,7 @@ A következő előfeltételek vonatkoznak a helyen kell lennie.
    > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com`
 4. Az eszköz futtatása után tekintse át a kimenetet. Az állapot megerősítéséhez **OK** a telepítési követelményeknek. Sikeres ellenőrzés a következő képhez hasonlóan jelenik meg: 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -76,7 +76,7 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 
 
 ## <a name="report-and-log-file"></a>A jelentés és-naplófájl
@@ -97,7 +97,7 @@ Az alábbi példák gyakori ellenőrzési hibákat ad útmutatást.
 
 ### <a name="expired-or-temporary-password"></a>Lejárt vagy ideiglenes jelszó 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -111,7 +111,7 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 **OK** – a fiók nem jelentkezhet be, mert a jelszó vagy lejárt, vagy ideiglenes.     
 
 **Feloldási** – a PowerShellben futtassa a következő, és a jelszó alaphelyzetbe állítása az utasításokat.  
@@ -120,7 +120,7 @@ Invoke-AzsAzureIdentityValidation Completed
 Azt is megteheti, jelentkezzen be https://portal.azure.com , a fiók és a felhasználó kényszeríti a jelszó módosítására.
 ### <a name="unknown-user-type"></a>Ismeretlen felhasználó típusa 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -134,13 +134,13 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 **OK** – a fiók nem tud bejelentkezni a megadott Azure Active Directory (AADDirectoryTenantName). Ebben a példában *AzureChinaCloud* a következőként van megadva a *AzureEnvironment*.
 
 **Feloldási** -erősítse meg, hogy a fiók a megadott Azure-környezet esetében érvényes. A PowerShellben futtassa a következő ellenőrizni a fiók érvényességét, egy adott környezetben:   Login-AzureRmAccount – EnvironmentName AzureChinaCloud 
 ### <a name="account-is-not-an-administrator"></a>Fiók nem áll a rendszergazda 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -154,7 +154,7 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 
 **OK** – Bár a fiók sikeresen jelentkezhetnek be, a fiók nem áll-e az Azure Active Directory (AADDirectoryTenantName) rendszergazdája.  
 

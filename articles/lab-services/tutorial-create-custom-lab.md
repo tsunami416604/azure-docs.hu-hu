@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 84a6cdb5e91128bbade43ee9212cfa9658228964
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0530dbac88fcfbfb05ab29d1c5934a468f263034
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423292"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096636"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Oktatóanyag: Az Azure DevTest Labs-tesztkörnyezet beállítása
 Ebben az oktatóanyagban létrehoz egy tesztkörnyezetet az Azure Portalon. A tesztkörnyezet rendszergazdája létrehozza a tesztkörnyezetet a vállalaton belül és a virtuális gépeket a tesztkörnyezetben, továbbá konfigurálja a szabályzatokat. A tesztkörnyezet felhasználói (például a fejlesztők és a tesztelők) lefoglalják a tesztkörnyezet virtuális gépeit, csatlakoznak azokhoz, és használják azokat. 
@@ -49,7 +49,7 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
     6. Válassza a **Rögzítés az irányítópulton** lehetőséget. A létrehozott tesztkörnyezet megjelenik az irányítópulton. 
 
         ![A DevTest Labs labor szakaszának létrehozása](./media/tutorial-create-custom-lab/create-custom-lab-blade.png)
-2. Győződjön meg arról, hogy a labor létrehozása sikerült a notificaitons megtekintésével. Válassza ki **erőforrás megnyitása**.  
+2. Győződjön meg arról, hogy a labor létrehozása sikerült megnézzük az értesítéseket. Válassza ki **erőforrás megnyitása**.  
 
     ![Értesítés](./media/tutorial-create-custom-lab/creation-notification.png)
 3. Győződjön meg arról, hogy a **fejlesztési és tesztelési labor** lap a tesztkörnyezethez. 

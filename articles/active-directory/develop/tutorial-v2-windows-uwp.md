@@ -7,7 +7,7 @@ author: andretms
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4ba4e844ed6bb01204b7a0adf5020aec255147dd
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a0c2d13b2ac6715db047d56e998294688d9b65cf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986542"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097061"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>A Microsoft Graph API meghívása (XAML) az univerzális Windows Platform-alkalmazásból
 
@@ -44,7 +44,7 @@ Ez az útmutató létrehoz egy minta UWP-alkalmazás, amely a Microsoft Graph AP
 
 Ez az útmutató a következő NuGet-csomagok használja:
 
-|Erőforrástár|Leírás|
+|Kódtár|Leírás|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
 
@@ -82,7 +82,7 @@ Ez az útmutató létrehoz egy alkalmazás, amely egy gomb megjeleníti a lekér
 > [!NOTE]
 > Ebben az oktatóanyagban viszont nem használható, de az MSAL.NET, legújabb verzióját, de azt frissítése folyamatban van.
 
-## <a name="initialize-msal"></a>Az MSAL inicializálása
+## <a name="initialize-msal"></a>Initialize MSAL
 Ebben a lépésben segítségével hozhat létre egy osztályt, amely kezeli a interakció MSAL, például a jogkivonatok kezelése.
 
 1. Nyissa meg a **App.xaml.cs** fájlt, és adja hozzá a hivatkozást az MSAL az osztályhoz:
@@ -382,15 +382,15 @@ Jelenhet meg a következő hibaüzeneteket egyikét az alkalmazás Azure Active 
  - Nem a felhasználó tanúsítványtárolójában található érvényes tanúsítvány.
  - Válasszon egy másik hitelesítési módszert.
 
-**OK:** nincsenek engedélyezve a vállalati és a tanúsítvány képességeket.
+**OK:** Nincsenek engedélyezve a vállalati és a tanúsítvány képességeket.
 
-**Megoldás:** kövesse a [integrált hitelesítést az összevont tartományok](#enable-integrated-authentication-on-federated-domains-optional).
+**Megoldás:** Kövesse a [integrált hitelesítést az összevont tartományok](#enable-integrated-authentication-on-federated-domains-optional).
 
 ### <a name="issue-2"></a>2 probléma
 Engedélyezi a [integrált hitelesítést az összevont tartományok](#enable-integrated-authentication-on-federated-domains-optional) , és próbálja meg a Windows Hello egy Windows 10 rendszerű számítógépre való bejelentkezéshez használt az adott környezetben, a konfigurált többtényezős hitelesítést. Tanúsítványok listája jelenik meg. Azonban ha a PIN-kód használatát választja, a PIN-kód ablak soha nem jelenik meg.
 
-**OK:** probléma a webeshitelesítés-szervező UWP-alkalmazásokban, a Windows 10 asztali verzióját futtató egy ismert korlátozás. Windows 10 Mobile jól működik.
+**OK:** A probléma a webeshitelesítés-szervező UWP-alkalmazásokban, a Windows 10 asztali verzióját futtató egy ismert korlátozás. Windows 10 Mobile jól működik.
 
-**Megkerülő megoldás:** kiválasztása **jelentkezzen be az egyéb lehetőségek**. Válassza ki **jelentkezzen be egy felhasználónevet és jelszót**. Válassza ki **adja meg a jelszót**. Folytassa a telefonos hitelesítési folyamat.
+**Megkerülő megoldás:** Válassza ki **jelentkezzen be az egyéb lehetőségek**. Válassza ki **jelentkezzen be egy felhasználónevet és jelszót**. Válassza ki **adja meg a jelszót**. Folytassa a telefonos hitelesítési folyamat.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

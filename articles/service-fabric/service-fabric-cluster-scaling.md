@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: ryanwi
-ms.openlocfilehash: 1410d61fed2dc98f5fa657541c3863e09b803166
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d93ebb01c905be6bf799ed6e4a037e3ddfdc2430
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321783"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094172"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Méretezés az Azure Service Fabric-fürtök
 Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része csomópontoknak nevezzük. Fürtök potenciálisan több ezer csomóponton is tartalmazhat. Egy Service Fabric-fürt létrehozását követően, horizontálisan a fürt (módosíthatja a csomópontok számát), vagy függőlegesen (módosíthatja a csomópontok az erőforrások).  Méretezheti a fürt bármikor, még akkor is, ha a számítási feladatok a fürtön futnak.  A fürt skálázható, mivel az alkalmazások automatikus méretezése is.
@@ -92,5 +92,5 @@ Ha, hogy nem lehetséges, létrehozhat egy új fürtöt, és [alkalmazásállapo
 * Ismerje meg [alkalmazás méretezhetőségi](service-fabric-concepts-scalability.md).
 * [Egy Azure-fürtön lévő vagy horizontális skálázása](service-fabric-tutorial-scale-cluster.md).
 * [Egy Azure-fürtön programozott skálázása](service-fabric-cluster-programmatic-scaling.md) az fluent Azure compute SDK-t.
-* [Vagy önálló fürtök skálázásának](service-fabric-cluster-windows-server-add-remove-nodes.md).
+* [Vagy önálló fürt méretezése](service-fabric-cluster-windows-server-add-remove-nodes.md).
 

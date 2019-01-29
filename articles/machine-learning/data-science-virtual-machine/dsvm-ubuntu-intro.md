@@ -16,28 +16,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: e3f17dd3717a57d184be7c9b8c73855c3fd2a768
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 33326aa0f033800268d0eb439f9c8c81b4d2e675
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106770"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094393"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatelemző virtuális gép kiépítése Linux (Ubuntu)
 
 Az adatelemző virtuális gép Linux Ubuntu-alapú virtuálisgép-lemezkép, amely megkönnyíti a machine learninggel, többek között a deep learning, az Azure-ban – első lépések. Deep learning eszközök a következők:
 
-  * [Caffe](http://caffe.berkeleyvision.org/): gyorsabb, expressivity és modularitás készült deep learning keretrendszer
-  * [Caffe2](https://github.com/caffe2/caffe2): egy Caffe többplatformos verziója
-  * [A Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): a Microsoft Research szoftver eszközkészlet mélytanulási
-  * [H2O](https://www.h2o.ai/): egy nyílt forráskódú big data platform és a grafikus felhasználói felületen
-  * [Keras](https://keras.io/): egy magas szintű Neurális hálózat API a Pythonban Theano és tensorflow-hoz
-  * [MXNet](http://mxnet.io/): egy rugalmas, hatékony deep learning-kódtár számos nyelvi kötéseket az
-  * [NVIDIA számjegyek](https://developer.nvidia.com/digits): egy grafikus rendszer, amely leegyszerűsíti az általános mélytanulási feladatok
-  * [PyTorch](http://pytorch.org/): egy magas szintű Python-kódtár dinamikus hálózatok támogatása
-  * [TensorFlow](https://www.tensorflow.org/): egy nyílt forráskódú kódtár, a Google rendszeréből gépi intelligenciával
-  * [Theano](http://deeplearning.net/software/theano/): egy Python-kódtár a meghatározása, optimalizálás, és hatékonyan a többdimenziós tömbök tartalmazó matematikai kifejezések kiértékelése
-  * [Torch](http://torch.ch/): gépi tanulási algoritmusok széles körű támogatásával tudományos számítási keretrendszer
+  * [Caffe](http://caffe.berkeleyvision.org/): Gyorsabb, expressivity és modularitás készült deep learning keretrendszer
+  * [Caffe2](https://github.com/caffe2/caffe2): A Caffe többplatformos verziója
+  * [A Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): A Microsoft Research szoftver eszközkészlet mélytanulási
+  * [H2O](https://www.h2o.ai/): Egy nyílt forráskódú big data platform és a grafikus felhasználói felületen
+  * [Keras](https://keras.io/): Egy magas szintű Neurális hálózat API a Pythonban Theano és tensorflow-hoz
+  * [MXNet](http://mxnet.io/): Egy rugalmas, hatékony deep learning-kódtár számos nyelvi kötéseket az
+  * [NVIDIA SZÁMJEGYEK](https://developer.nvidia.com/digits): Egy grafikus rendszer, amely leegyszerűsíti az általános mélytanulási feladatok
+  * [PyTorch](http://pytorch.org/): Egy magas szintű Python-kódtár dinamikus hálózatok támogatása
+  * [TensorFlow](https://www.tensorflow.org/): Egy nyílt forráskódú kódtár, a Google rendszeréből gépi intelligenciával
+  * [Theano](http://deeplearning.net/software/theano/): Egy Python-kódtár a meghatározása, optimalizálás, és hatékonyan a többdimenziós tömbök tartalmazó matematikai kifejezések kiértékelése
+  * [Torch](http://torch.ch/): Széles körű támogatásával, gépi tanulási algoritmusok tudományos számítási keretrendszer
   * CUDA, cuDNN, és az NVIDIA illesztőprogram
   * Számos minta Jupyter notebookok
 
@@ -53,10 +53,10 @@ Az adatelemző virtuális gép Linux rendszeren is adatelemzési és fejlesztés
 * Azure Storage Explorer
 * Az Azure parancssori felület (CLI) Azure-erőforrások kezeléséhez
 * Machine learning eszközök
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): gyors machine learning-rendszer támogató technikák, például online, kivonatoló, allreduce, csökkentésének, learning2search, aktív, és az interaktív tanulás
-  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): egy gyorsított fa gyors és pontos végrehajtását biztosító eszköz
-  * [Rattle](https://togaware.com/rattle/): egy grafikus eszközt, amely lehetővé teszi az adatok elemzési és gépi tanulási R könnyen az első lépései
-  * [LightGBM](https://github.com/Microsoft/LightGBM): kiemelési keretrendszer gyors, elosztott, nagy teljesítményű színskála
+  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): A gyors gépi tanulási rendszer támogató technikák, például az online, kivonatoláshoz allreduce, csökkentésének, learning2search, aktív, és interaktív tanulás
+  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): Gyors és pontos gyorsított fa megvalósítási biztosító eszköz
+  * [Rattle](https://togaware.com/rattle/): Egy grafikus eszközt, amely lehetővé teszi az adatok elemzési és gépi tanulási R könnyen az első lépései
+  * [LightGBM](https://github.com/Microsoft/LightGBM): Kiemelési keretrendszer gyors, elosztott, nagy teljesítményű színskála
 * Az Azure SDK-t a Java, Python, node.js, a Ruby, PHP
 * Az R és Python for kódtárak használata az Azure Machine Learning és más Azure-szolgáltatások
 * Fejlesztői eszközök és a szerkesztők (RStudio, PyCharm, intellij-vel, Emacs, vim)
@@ -89,13 +89,13 @@ Az alábbiakban a Linux-példány, az adatelemző virtuális gép létrehozásá
    
    a. **Alapvető beállítások**:
    
-   * **Név**: a data science kiszolgáló hoz létre nevet.
-   * **Virtuális merevlemez típusa**: válasszon **prémium szintű SSD** Ha inkább olyan tartós állapotú meghajtót (SSD). Ellenkező esetben válasszon **Standard HDD**. 
-   * **Felhasználónév**: első fiók bejelentkezési azonosítója.
-   * **Jelszó**: első fiók jelszavát (használhat nyilvános SSH-kulcs jelszava helyett).
-   * **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
-   * **Erőforráscsoport**: létrehozhat egy új vagy egy meglévő csoportot.
-   * **Hely**: válassza a leginkább megfelelő adatközpontot. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi.
+   * **Név**: Neve az adatelemzési kiszolgálót hoz létre.
+   * **Virtuális merevlemez típusa**: Válasszon **prémium szintű SSD** Ha inkább olyan tartós állapotú meghajtót (SSD). Ellenkező esetben válasszon **Standard HDD**. 
+   * **Felhasználónév**: Első fiók bejelentkezési azonosítója.
+   * **Jelszó**: Első fiók jelszava (használhat nyilvános SSH-kulcs jelszava helyett).
+   * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
+   * **Erőforráscsoport**: Létrehozhat egy új vagy egy meglévő csoportot.
+   * **Hely**: Válassza ki az Adatközpont leginkább megfelelő. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi.
    
    b. **Méret**:
    
@@ -134,10 +134,10 @@ A Linux rendszerű virtuális gép már kiépített X2Go kiszolgálóval, és k�
 1. Futtassa a X2Go ügyfél, és válassza a **új munkamenet**. Több lap egy konfigurációs ablaka nyílik. Adja meg az alábbi konfigurációs paramétereket:
    * **Munkamenet lapon**:
      * **Gazdagép**: A gazdagép neve vagy a Linux rendszerű adatelemző virtuális gép IP-címét.
-     * **Bejelentkezési**: felhasználónév, a Linux rendszerű virtuális gépen.
-     * **SSH-Port**: meghagyhatja az alapértelmezett érték 22.
-     * **Munkamenet típusa**: XFCE módosítsa az értéket. A Linux rendszerű virtuális gép jelenleg csak XFCE desktop támogatja.
-   * **Az adathordozó lapon**: kikapcsolhatja a hang támogatása és az ügyfél nyomtatási, ha nem szeretné használni őket.
+     * **Bejelentkezési**: A felhasználónév, a Linux rendszerű virtuális gépen.
+     * **SSH Port**: Meghagyhatja az alapértelmezett érték 22.
+     * **Munkamenet típusa**: Módosítsa az értékét XFCE. A Linux rendszerű virtuális gép jelenleg csak XFCE desktop támogatja.
+   * **Az adathordozó lapon**: Kikapcsolhatja eredményes támogatása és az ügyfél nyomtatási, ha nem szeretné használni őket.
    * **A megosztott mappák**: Ha az ügyfél gépek csatlakoztatása Linux rendszerű virtuális gépen szeretné címtárak, adja hozzá az ügyfél gép könyvtárakat, hogy meg szeretné osztani az ezen a lapon a virtuális géppel.
 
 Bejelentkezés után a virtuális géphez SSH-ügyfél vagy a grafikus asztali XFCE X2Go ügyfélszámítógépen keresztül, készen áll az eszközöket, amelyek telepítése és konfigurálása történik meg a virtuális gép használatának megkezdéséhez. A XFCE látható alkalmazások parancsikonjai és asztali ikonok a számos olyan eszközzel.
@@ -220,7 +220,7 @@ A py35 környezet újra aktiválása:
 
 A Python interaktív munkamenet elindításához, csak gépelje **python** a rendszerhéj. 
 
-Telepítse a használatával további Python-kódtárakat ```conda``` vagy ````pip```` . A pip aktiválja a megfelelő környezetben először Ha nem szeretné, hogy az alapértelmezett:
+Telepítse a használatával további Python-kódtárakat ```conda``` vagy ```pip``` . A pip aktiválja a megfelelő környezetben először Ha nem szeretné, hogy az alapértelmezett:
 
     source activate root
     pip install <package>
@@ -271,7 +271,7 @@ Mielőtt futtatná a Microsoft R Server Spark-környezetben, kell tennie a telep
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Állítsa le a Hadoop kapcsolatos szolgáltatásokat, ha nincs szükség rájuk futtatásával ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` egy minta bemutatja, hogyan lehet fejlesztési és tesztelési Asszony (amely a különálló a dsvm-hez a Spark-példányt) távoli Spark környezetben megadott és elérhető a `/dsvm/samples/MRS` a könyvtár. 
+Állítsa le a Hadoop kapcsolatos szolgáltatásokat, ha nincs szükség rájuk futtatásával ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` egy minta bemutatja, hogyan lehet fejlesztési és tesztelési Asszony (amely a különálló a dsvm-hez a Spark-példányt) távoli Spark környezetben megadott és elérhető a `/dsvm/samples/MRS` a könyvtár. 
 
 ### <a name="ides-and-editors"></a>Ide-ket és a szerkesztőknek
 Van néhány kódot szerkesztők közül választhat. Ez magában foglalja a vi vagy VIM Emacs, Notebookshoz, az RStudio és IntelliJ. Intellij-vel, az RStudio és a PyCharm grafikus szerkesztők, és meg kell adnia használhatja őket a grafikus asztali bejelentkezett. Ezek a szerkesztők rendelkezik, asztali és az alkalmazás menüből parancsikonokat indíthassák el azokat.
@@ -296,11 +296,11 @@ További információkért lásd: [SQuirrel SQL](http://squirrel-sql.sourceforge
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>A Microsoft SQL Server elérése szolgáló parancssori eszközök
 Az ODBC illesztőprogram-csomagot az SQL Server is két parancssori eszközöket is tartalmaz:
 
-**BCP**: A bcp segédprogram tömeges a Microsoft SQL Server-példány és a egy adatfájlt közötti adatokat másolja egy felhasználó által megadott formátumban. A bcp segédprogram használható, nagy mennyiségű új sort importálni az SQL Server-táblákra vagy exportálni adatokat táblák tábláiból adatfájlokba. Adatok importálása egy táblába, kell használni, hogy a táblázat számára létrehozott formátumfájlt, vagy megismerheti a struktúrát a tábla-és adattípusokat és az oszlopok esetében érvényes.
+**bcp**: A bcp segédprogram tömeges a Microsoft SQL Server-példány és a egy adatfájlt adatokat másol egy felhasználó által megadott formátumban. A bcp segédprogram használható, nagy mennyiségű új sort importálni az SQL Server-táblákra vagy exportálni adatokat táblák tábláiból adatfájlokba. Adatok importálása egy táblába, kell használni, hogy a táblázat számára létrehozott formátumfájlt, vagy megismerheti a struktúrát a tábla-és adattípusokat és az oszlopok esetében érvényes.
 
 További információkért lásd: [bcp-vel csatlakozás](https://msdn.microsoft.com/library/hh568446.aspx).
 
-**Sqlcmd**: Adja meg a Transact-SQL-utasítások és az sqlcmd segédprogram, valamint a rendszer eljárások és parancsfájlok parancsot a parancssorba. Ez a segédprogram ODBC segítségével hajtsa végre a Transact-SQL-kötegek.
+**sqlcmd**: Transact-SQL-utasítások az sqlcmd segédprogram, valamint a rendszer eljárások és parancsfájlok a parancssorban is megadhatja. Ez a segédprogram ODBC segítségével hajtsa végre a Transact-SQL-kötegek.
 
 További információkért lásd: [az Sqlcmd-t kapcsolódás](https://msdn.microsoft.com/library/hh568447.aspx).
 
@@ -318,12 +318,12 @@ Nincsenek elérhető, az R és Python az access-adatbázisok könyvtárak.
 ### <a name="azure-tools"></a>Azure-eszközök
 A következő Azure-eszközök telepítve vannak a virtuális gépen:
 
-* **Az Azure parancssori felület**: az Azure parancssori felület lehetővé teszi, hogy a rendszerhéj-parancsok segítségével az Azure erőforrások létrehozásához és kezeléséhez. Az Azure-eszközök meghívni, csak gépelje **azure súgó**. További információkért lásd: a [Azure CLI dokumentációjában](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **A Microsoft Azure Storage Explorer**: Microsoft Azure Storage Explorer egy grafikus eszköz, amellyel az objektumokat az Azure storage-fiókban tárolt böngészni lehet és feltöltése és letölteni az adatokat az Azure-blobokból. Storage Explorer asztali parancsikonjára ikonra kattintva érheti el. Hívhatja meg azt a rendszerhéj parancssorából beírásával **StorageExplorer**. Egy X2Go ügyfélről bejelentkezve, vagy hogy a set-továbbítás be X11 kell.
-* **Azure-kódtárak**: az alábbiakban néhány előre telepített könyvtárak.
+* **Az Azure parancssori felület**: Az Azure CLI létrehozása és kezelése az Azure-erőforrások rendszerhéj-parancsok segítségével teszi lehetővé. Az Azure-eszközök meghívni, csak gépelje **azure súgó**. További információkért lásd: a [Azure CLI dokumentációjában](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+* **A Microsoft Azure Storage Explorer**: A Microsoft Azure Storage Explorer egy grafikus eszköz, amellyel az objektumokat az Azure storage-fiókban tárolt böngészni lehet és feltöltése és letölteni az adatokat az Azure-blobokból. Storage Explorer asztali parancsikonjára ikonra kattintva érheti el. Hívhatja meg azt a rendszerhéj parancssorából beírásával **StorageExplorer**. Egy X2Go ügyfélről bejelentkezve, vagy hogy a set-továbbítás be X11 kell.
+* **Azure-kódtárak**: A következő néhány előre telepített könyvtárak.
   
-  * **Python**: az Azure-hoz kapcsolódó függvénytárak telepített Python nyelven is **azure**, **azureml**, **pydocumentdb**, és **pyodbc**. Az első három kódtárakat elérheti az Azure storage services, Azure Machine Learning és az Azure Cosmos DB (NoSQL-adatbázis az Azure-ban). A negyedik kódtára, pyodbc (valamint a Microsoft ODBC-illesztőprogram SQL Serverhez), lehetővé teszi a hozzáférést az SQL Server, az Azure SQL Database és az Azure SQL Data Warehouse a Python egy ODBC-felület használatával. Adja meg **pip lista** megjelenítéséhez a listában szereplő könyvtárak. Győződjön meg arról, a parancs futtatása a Python 2.7-es és 3.5-ös környezetben.
-  * **R**: az Azure-hoz kapcsolódó függvénytárak az R telepített **AzureML** és **RODBC**.
+  * **Python**: Az Azure-hoz kapcsolódó függvénytárak telepített Python **azure**, **azureml**, **pydocumentdb**, és **pyodbc**. Az első három kódtárakat elérheti az Azure storage services, Azure Machine Learning és az Azure Cosmos DB (NoSQL-adatbázis az Azure-ban). A negyedik kódtára, pyodbc (valamint a Microsoft ODBC-illesztőprogram SQL Serverhez), lehetővé teszi a hozzáférést az SQL Server, az Azure SQL Database és az Azure SQL Data Warehouse a Python egy ODBC-felület használatával. Adja meg **pip lista** megjelenítéséhez a listában szereplő könyvtárak. Győződjön meg arról, a parancs futtatása a Python 2.7-es és 3.5-ös környezetben.
+  * **R**: Az Azure-hoz kapcsolódó függvénytárak az R telepített **AzureML** és **RODBC**.
   * **Java**: Azure Java-kódtárak listája a címtárban található **/dsvm/sdk/AzureSDKJava** a virtuális gépen. A kulcs függvénytárak is az Azure storage és a felügyeleti API-k, az Azure Cosmos DB és a JDBC illesztőprogramok az SQL Server.  
 
 Elérheti a [az Azure portal](https://portal.azure.com) az előre telepített Firefox böngészőben. Az Azure Portalon létrehozása, kezelése és monitorozása az Azure-erőforrások.
@@ -345,12 +345,12 @@ Hogyan helyezheti üzembe az Azure Machine Learning modellek R és Python inform
 ### <a name="machine-learning-tools"></a>Machine learning eszközök
 A virtuális gép néhány machine learning-eszközökkel és előre lefordított, és előre telepített helyi algoritmusokat tartalmaz. Ezek a következők:
 
-* **Vowpal Wabbit**: gyors online tanulási algoritmus.
-* **xgboost**: egy eszköz, optimalizált, gyorsított fa típusú algoritmusokkal.
-* **Rattle**: az R-alapú grafikus eszköz egyszerű adatfeltárás és modellezés céljára.
+* **Vowpal Wabbit**: Gyors online tanulási algoritmus.
+* **xgboost**: Egy eszköz, optimalizált, gyorsított fa típusú algoritmusokkal.
+* **Rattle**: Egy R-alapú grafikus eszköz egyszerű adatfeltárás és modellezés céljára.
 * **Python**: Anaconda Python gépi tanulási algoritmusok kódtárakkal Scikit-ismerje meg, például az származnak. Könyvtárak használatával telepítheti a `pip install` parancsot.
-* **LightGBM**: kiemelési keretrendszer gyors, elosztott, nagy teljesítményű átmenetes alapján döntési fa típusú algoritmusokkal.
-* **R**: könyvtár gazdag, machine learning-függvényekkel érhető el az r segítségével A szalagtár szerepel, amely előre telepítve lm, glm, randomForest, rpart. Könyvtárak futtatásával telepíthető:
+* **LightGBM**: Gyorsított döntési fa típusú algoritmusok alapján keretrendszer gyors, elosztott, nagy teljesítményű átmenetekhez.
+* **R**: A machine learning-függvényekkel könyvtár gazdag érhető el az R. A szalagtár szerepel, amely előre telepítve lm, glm, randomForest, rpart. Könyvtárak futtatásával telepíthető:
   
         install.packages(<lib name>)
 

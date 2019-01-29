@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 284f1d90f043e2634e143508e2ab0e98cd309f46
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a76be5203c7d62ba973993bf6338b7496e2fce80
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902688"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203929"
 ---
 # <a name="lambda-search-syntax"></a>Lambda keresési szintaxis
 
@@ -33,7 +33,7 @@ FollowEdge(params string[] edgeTypes)
 > [!NOTE]
 > Ha azt nem érdeklik a követendő edge(s) típusainak, egyszerűen hagyja el *FollowEdge()* két csomópont között: a lekérdezés az összes lehetséges élek végigvezetik a két csomópont között.
 
-A bejárási műveletek egy csomóponton keresztül végrehajtandó adható meg *VisitNode()*, azt jelenti, hogy ezen a csomóponton leállítása és az aktuális elérés úton vissza eredményként, vagy böngészhet a gráf továbbra is.  A számbavételi típussal *művelet* két típusú műveleteket definiálja: *Action.Return* és *Action.Continue*. Az ilyen enum érték közvetlenül átadható *VisitNode()*, vagy kombinálhatja őket a bitenkénti- és az operátorral 'és'. Amikor a rendszer kombinálja a két művelet, az azt jelenti, hogy mindkét műveleteket hajtja végre. Megjegyzés: ne használjon bitenként- vagy operátor "|}" műveletek. Ezt a lekérdezést, hogy bármit visszaszolgáltatása nélkül felmondhatja miatt. A rendszer kihagyja *VisitNode()* két közötti *FollowEdge()* hívások feltétel nélkül megismerése után egy csomópont továbbítótól a gráf lekérdezése okoz.
+A bejárási műveletek egy csomóponton keresztül végrehajtandó adható meg *VisitNode()*, azt jelenti, hogy ezen a csomóponton leállítása és az aktuális elérés úton vissza eredményként, vagy böngészhet a gráf továbbra is.  A számbavételi típussal *művelet* kétféle típusú műveletek meghatározása: *Action.Return* és *Action.Continue*. Az ilyen enum érték közvetlenül átadható *VisitNode()*, vagy kombinálhatja őket a bitenkénti- és az operátorral 'és'. Amikor a rendszer kombinálja a két művelet, az azt jelenti, hogy mindkét műveleteket hajtja végre. Megjegyzés: ne használjon bitenként- vagy operátor "|}" műveletek. Ezt a lekérdezést, hogy bármit visszaszolgáltatása nélkül felmondhatja miatt. A rendszer kihagyja *VisitNode()* két közötti *FollowEdge()* hívások feltétel nélkül megismerése után egy csomópont továbbítótól a gráf lekérdezése okoz.
 
 ```
 VisitNode(Action action, IEnumerable<string> select = null)
@@ -51,7 +51,7 @@ VisitNode(Expression<Func<INode, Action>> action, IEnumerable<string> select = n
 
 ### <a name="basic-data-access-interfaces"></a>Alapszintű hozzáférés Adatfelületek
 
-##### <a name="long-cellid"></a>hosszú CellID
+##### <a name="long-cellid"></a>long CellID
 
 A csomópont 64 bites azonosítója. 
 
@@ -93,7 +93,7 @@ Lekérni az adott tulajdonság értékét. Ha a tulajdonság nem létezik, a 0 �
 
 Létrehoz egy véletlenszerű számot, amely nagyobb vagy egyenlő a 0,0 és 1,0-nél kevesebb. Ez a függvény visszaad *igaz* csak akkor, ha a szám kisebb vagy egyenlő *p*.
 
-Képest *json* keresési, *lambda* kifejezőbb a search szolgáltatás: C# lambda-kifejezésekkel közvetlenül segítségével adja meg a lekérdezési mintáinak. Az alábbiakban két példa.
+Képest *json* search *lambda* keresési kifejezőbb: C#lambda-kifejezésekkel közvetlenül segítségével adja meg a lekérdezési mintáinak. Az alábbiakban két példa.
 
 ```
 MAG.StartFrom(@"{

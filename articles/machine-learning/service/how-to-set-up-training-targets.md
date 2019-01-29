@@ -11,33 +11,34 @@ ms.component: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75a1a8763125e1e93691e2a28bc90a6d02ed7c40
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1187460deff0ac1ec71ddc70e503169a728c8b5c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246330"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099951"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
 
-Az Azure Machine Learning szolgáltatás a modell a különböző erőforrások vagy környezetek, együttesen a betaníthatja [ __számítási céljainak__](concept-azure-machine-learning-architecture.md#compute-target). Egy számítási célnak lehet egy helyi számítógépre vagy egy felhőalapú erőforrás, például az Azure Machine Learning COMPUTE számítási, az Azure HDInsight vagy egy távoli virtuális gépen.  
+Az Azure Machine Learning szolgáltatás a modell a különböző erőforrások vagy környezetek, együttesen a betaníthatja [ __számítási céljainak__](concept-azure-machine-learning-architecture.md#compute-target). Egy számítási célnak lehet egy helyi számítógépre vagy egy felhőalapú erőforrás, például az Azure Machine Learning COMPUTE számítási, az Azure HDInsight vagy egy távoli virtuális gépen.  Is létrehozhat a modell üzembe helyezése számítási célnak leírtak szerint [", és a modellek üzembe helyezése"](how-to-deploy-and-where.md).
 
 Hozzon létre, és a egy számítási célnak, az Azure Machine Learning SDK, az Azure Portalon vagy az Azure CLI használata kezelheti. Ha egy másik szolgáltatás (például egy HDInsight-fürtöt) használatával létrehozott számítási célnak, használhatja őket az Azure Machine Learning szolgáltatás munkaterületén csatolásával.
  
-Ebben a cikkben megismerheti, hogyan használható a különböző számítási célokhoz.  Minden számítási célnak vonatkozó lépéseket kövesse az ugyanabban a munkafolyamatban:
+Ebben a cikkben megismerheti, hogyan használható a különböző számítási célnak modell betanítása.  Minden számítási célnak vonatkozó lépéseket kövesse az ugyanabban a munkafolyamatban:
 1. __Hozzon létre__ egy számítási célnak, ha még nem rendelkezik.
 2. __Csatolása__ a számítási célnak a munkaterülethez.
 3. __Konfigurálása__ számítási cél, hogy a parancsfájl által igényelt Python környezet és a csomag függőségeit tartalmazza.
 
+
 >[!NOTE]
 > Ebben a cikkben kód az Azure Machine Learning SDK-val 1.0.6-os lett tesztelve.
 
-## <a name="supported-compute-targets"></a>Támogatott számítási célnak
+## <a name="compute-targets-for-training"></a>Számítási céljainak képzéshez
 
 Az Azure Machine Learning szolgáltatás különböző támogatással rendelkezik a különböző számítási célnak között. Egy tipikus modell fejlesztési életciklus kisebb mennyiségű adatot a dev/Kísérletezési kezdődik. Ezen a ponton használatát javasoljuk a helyi környezetben. Például a helyi számítógépen vagy egy felhőalapú virtuális Gépen. Vertikális felskálázás a tanítási a nagyobb adatkészletek, vagy hajtsa végre az elosztott betanítás, egy vagy több node fürtöt létrehozni, hogy az automatikus skálázást alkalmat futtató minden elküldésekor a az Azure Machine Learning Compute használatát javasoljuk. Bár a különböző forgatókönyvekben eltérőek lehetnek az alábbiakban ismertetett támogatási is hozzáadhat a saját számítási erőforrás:
 
 
-|Számítási célt| GPU-gyorsítás | Automatikus<br/> hiperparaméter finomhangolása | Automatikus</br> gépi tanulás | Folyamatok elvégzésére barátságos|
+|Számítási célt képzéshez| GPU-gyorsítás | Automatikus<br/> hiperparaméter finomhangolása | Automatikus</br> gépi tanulás | Folyamatok elvégzésére barátságos|
 |----|:----:|:----:|:----:|:----:|
 |[Helyi számítógép](#local)| Talán | &nbsp; | ✓ | &nbsp; |
 |[Az Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
@@ -352,7 +353,7 @@ Először hozzon létre egy kísérletet a munkaterületén.
 
 A kísérlet elküldése egy `ScriptRunConfig` objektum.  Ez az objektum tartalmazza a:
 
-* **forráskönyvtár**: A forráskönyvtár a tanítási szkriptet tartalmazó
+* **source_directory**: A forráskönyvtár a tanítási szkriptet tartalmazó
 * **parancsfájl**: A tanítási szkriptet azonosító
 * **run_config**: A futtatási konfigurációtól, amely viszont meghatározza, hol történik a képzés.
 

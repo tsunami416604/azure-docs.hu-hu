@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/27/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 9be8ddb6869a4872ff3eae9b589584f850c7dc96
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 57ba89de9eeb69ee9c78ba2d3adef758134283b7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463607"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203606"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás az identitáskezelési követelmények meghatározása
 A hibrid identitáskezelési megoldás kialakításának első lépéseként feladata annak megállapítása, hogy ez a megoldás kihasználva lesz az üzleti szervezet követelményeinek.  Hibrid identitás (támogatott összes egyéb felhőalapú megoldások azáltal, hogy hitelesítés) támogató szerepkörként elindul, és mutat be olyan új és érdekes képességeket biztosítanak, zárolásának feloldása új számítási feladatok, a felhasználók számára.  Ezek a számítási feladatok vagy szolgáltatások, a felhasználók elfogadják kívánt fogja diktálni a hibrid identitás követelményeinek.  Ezek a szolgáltatások és számítási feladatok kell kihasználva hibrid identitás a helyszínen és a felhőben.  

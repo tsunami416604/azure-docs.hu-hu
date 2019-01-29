@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 09/23/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 49ced3277a659ddacef239c7a1394cbe5ce06ac9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 2f91cfc6c391bb22ca5f75a7a72123b695380aff
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973609"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094308"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása natív iOS-alkalmazásból
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Gyors útmutató: A felhasználók és a natív iOS-alkalmazások a Microsoft Graph API meghívása
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -37,9 +37,9 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 > Az alkalmazása regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való hozzáadásához tegye a következőket:
 > 1. Az alkalmazás regisztrálásához lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app).
-> 1. Az **Application Name** (Alkalmazás neve) mezőben nevezze el az alkalmazását.
-> 1. Ügyeljen arra, hogy a **Guided Setup** (Irányított beállítás) jelölőnégyzet ne legyen bejelölve, majd válassza a **Create** (Létrehozás) lehetőséget.
-> 1. Válassza az **Add Platform** (Platform hozzáadása), a **Native Application** (Natív alkalmazás), majd a **Save** (Mentés) elemet.
+> 1. Az **Alkalmazás neve** mezőben nevezze el az alkalmazását.
+> 1. Ügyeljen arra, hogy az **Irányított beállítás** jelölőnégyzet ne legyen bejelölve, majd válassza a **Létrehozás** lehetőséget.
+> 1. Válassza a **Platform hozzáadása**, a **Natív alkalmazás**, majd a **Mentés** lehetőséget.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
@@ -50,7 +50,7 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-ios/green-check.png) Az alkalmazása már konfigurálva van ezzel az attribútummal
 
-#### <a name="step-2-download-your-web-server-or-project"></a>2. lépés: A webkiszolgáló vagy projekt letöltése
+#### <a name="step-2-download-your-web-server-or-project"></a>2. lépés: Töltse le a webes vagy projekt
 
 - [Az XCode-projekt letöltése](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 

@@ -7,17 +7,17 @@ manager: daveba
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 6a55be6a7443017250a00a473fd57cd7d49226aa
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 0616118274c3698c8f49e02f80dbfb5e2e818074
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902720"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168165"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazás
 A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok kétfaktoros ellenőrzési használatakor. A kétfaktoros hitelesítési segítségével a fiókok biztonságosabb, hozzáférhet a különösen bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejtett is, amelyeket elloptak vagy feltört, kéttényezős hitelesítés végrehajtása egy további biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében.
@@ -31,7 +31,7 @@ Többféle módon, beleértve a Microsoft Authenticator alkalmazást is használ
 >[!NOTE]
 >Ha bejelentkezik a fiókjába problémákat tapasztal, tekintse meg [mikor nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429) segítséget.  További információ arról, mi a teendő, ha kap a ["a megadott Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) jelenik meg, jelentkezzen be Microsoft-fiókjával.
 
-## <a name="download-and-install-the-app"></a>Töltse le és telepítse az alkalmazást
+## <a name="download-and-install-the-app"></a>Az alkalmazás letöltése és telepítése
 Telepítse a legújabb verzióját a Microsoft Authenticator alkalmazást, az operációs rendszer alapján:
 
 - **Google Android.** Android-eszközön nyissa meg a Google Play [töltse le és telepítse a Microsoft Authenticator alkalmazás](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator).

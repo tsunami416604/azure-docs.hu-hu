@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az E Sales Manager Remix |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező E Sales Manager Remix |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az E Sales Manager Remix között.
 services: active-directory
 documentationCenter: na
@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: d96fd1eacc98e88dc8578b259781cc661cf85933
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2e2bc0c7e590796a533d9f593eb61e57def91fc8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442829"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187998"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Az Azure Active Directory integrálása az értékesítési vezető Remix E
 
@@ -38,7 +38,7 @@ SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információk
 
 Az Azure AD-integráció konfigurálása az E Sales Manager Remix, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Az E Sales Manager Remix SSO-kompatibilis előfizetéssel
 
 > [!NOTE]
@@ -261,7 +261,7 @@ Ebben a szakaszban engedélyezze felhasználói Britta Simon által biztosított
 
 1. Az a **hozzárendelés hozzáadása** ablakban válassza **hozzárendelése**.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 

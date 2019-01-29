@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az SignalFx |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SignalFx |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és SignalFx között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6d5ab4b0-29bc-4b20-8536-d64db7530f32
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0d21a409669cc7d7fceeec9787efbe31d880597c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6f2d869f345aeb8f50d42de6b1533b849ffb2182
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437848"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197568"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Oktatóanyag: Azure Active Directory-integráció az SignalFx
+# <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SignalFx
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan SignalFx integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 SignalFx az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy SignalFx egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a SignalFx konfigurálásához hozzá kell SignalFx a 
 
 **SignalFx hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -123,10 +123,10 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     | Attribútum neve | Attribútum értéke |
     | ------------------- | -------------------- |    
-    | User.FirstName          | User.givenName |
+    | User.FirstName          | user.givenname |
     | User.email          | user.mail |
-    | PersonImmutableID       | User.userPrincipalName    |
-    | User.LastName       | User.surname    |
+    | PersonImmutableID       | user.userprincipalname    |
+    | User.LastName       | user.surname    |
 
     a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -223,7 +223,7 @@ Ez a szakasz célja SignalFx Britta Simon nevű felhasználó létrehozásához.
 Amikor egy felhasználó bejelentkezik SignalFx a SAML SSO az első alkalommal [SignalFx támogatási csapatának](mailto:kmazzola@signalfx.com) őket, hogy azok kattintással kell hitelesíteni hivatkozást tartalmazó e-mailt küld. Ez csak akkor történik, a felhasználó bejelentkezésekor; az első alkalommal további bejelentkezési kísérletek nem követeli meg az e-mail-ellenőrzést.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [SignalFx támogatási csoport](mailto:kmazzola@signalfx.com)
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [SignalFx támogatási csoport](mailto:kmazzola@signalfx.com)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -255,7 +255,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

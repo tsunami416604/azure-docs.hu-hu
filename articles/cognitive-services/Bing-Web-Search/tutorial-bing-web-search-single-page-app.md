@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Egyoldalas webalkalmazás létrehozása – Bing Web Search API'
+title: 'Oktatóanyag: Hozzon létre egy egyoldalas webalkalmazást – a Bing Web Search API'
 titleSuffix: Azure Cognitive Services
 description: Ez az egyoldalas alkalmazás bemutatja, hogyan használható a Bing Web Search API a releváns keresési eredmények lekérésére, feldolgozására és megjelenítésére egy egyoldalas alkalmazásban.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: aahi
-ms.openlocfilehash: b94e6f70d4a28dc59ddaa62cfad55c6c8383b761
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 13040cf7f75b8bf2c0bf898dc4f3b16c99a80560
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161922"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172476"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Web Search API használatával
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Hozzon létre egy egyoldalas alkalmazást, a Bing Web Search API használatával
 
 Ez az egyoldalas alkalmazás bemutatja, hogyan kérhetők le, dolgozhatók fel és jeleníthetők meg a Bing Web Search API-ból származó keresési eredmények. Az oktatóanyag HTML- és CSS-sablonokra épül, fő témája pedig a JavaScript-kód. A [Githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) az indulásban segítő útmutatókkal együtt érhetők el HTML-, CSS- és JS-fájlok.
 

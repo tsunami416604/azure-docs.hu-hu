@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/3/2018
+ms.date: 1/25/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ec1c24e4a9714506a4107fd5bfd53d1a562c8781
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 66f41ffef5d72f5d574bb78d3b810f4a4dc2c4c1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022359"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098731"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>A telepítő az Azure-SSIS integrációs modul testreszabása
 
@@ -27,6 +27,8 @@ Az egyéni telepítés előkészítése egy parancsfájlt, és az ahhoz tartozó
 
 Ingyenes vagy a nem licencelt összetevőinek és fizetős vagy licenccel rendelkező összetevők telepítése. Ha Ön független Szoftverszállító, lásd: [, hogyan hozhat létre a fizetős verzióra, vagy rendelkezik licenccel az Azure-SSIS integrációs összetevők](how-to-develop-azure-ssis-ir-licensed-components.md).
 
+> [!IMPORTANT]
+> Azure-SSIS integrációs modul v2 sorozat csomópontjai nem alkalmasak egyéni telepítés, ezért használja inkább a v3-as sorozat csomópontjai.  Ha már használja a v2-sorozatú csomópontokat, váltson a v3-as sorozat csomópontjai minél hamarabb használja.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
@@ -78,7 +80,7 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
        ![Blobtároló létrehozása](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-    1.  Jelölje ki az új tárolót, és töltse fel az egyéni telepítési parancsfájl és az ahhoz tartozó fájlokat. Győződjön meg arról, hogy feltöltött `main.cmd` a legfelső szinten, a tároló nem bármelyik mappájában. 
+    1.  Jelölje ki az új tárolót, és töltse fel az egyéni telepítési parancsfájl és az ahhoz tartozó fájlokat. Győződjön meg arról, hogy feltöltött `main.cmd` a tároló nem bármelyik mappájában, a legfelső szinten. Emellett győződjön meg, hogy a tároló csak a szükséges egyéni telepítés fájlokat tartalmazza, így letöltése őket az Azure-SSIS integrációs modul az alakzatot később fogja nem hosszú ideig tarthat.
 
        ![Fájlok feltöltése a blob-tárolóba](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
@@ -140,15 +142,15 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
        1. A `.NET FRAMEWORK 3.5` mappába, amely tartalmazza a .NET-keretrendszer, amely az Azure-SSIS integrációs modult. minden egyes csomópontjára egyéni összetevők szükség lehet egy korábbi telepítése egy egyéni telepítés
 
-       1. Egy `AAS` mappába, amely tartalmaz egy egyéni telepítés klienskódtárak telepítése az Azure-SSIS integrációs modul helyének, amelyek lehetővé teszik a szolgáltatás egyszerű hitelesítés használata az Azure Analysis Serviceshez (AAS) példányhoz való csatlakozáshoz az Analysis Services feladatok minden egyes csomóponton. Először töltse le a legújabb **MSOLAP (amd64)** és **AMO** ügyfél könyvtárak/Windows telepítők – például `x64_15.0.900.108_SQL_AS_OLEDB.msi` és `x64_15.0.900.108_SQL_AS_AMO.msi` – ki [Itt](https://docs.microsoft.com/azure/analysis-services/analysis-services-data-providers), majd Töltse fel őket az összes együtt `main.cmd` alkalmazásfájlokat a tárolóba.  
-
        1. A `BCP` mappába, amely egy egyéni telepítő telepítse az SQL Server parancssori segédeszközöket tartalmaz (`MsSqlCmdLnUtils.msi`), beleértve a tömeges másolási funkciójával (`bcp`), az Azure-SSIS integrációs modult. minden egyes csomópontjára
 
        1. Egy `EXCEL` mappába, amely egy egyéni telepítőt, és telepítse a nyílt forráskódú szerelvényeket tartalmazza (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, és `ExcelDataReader.dll`) minden egyes csomópontján az Azure-SSIS integrációs modult.
 
        1. Egy `ORACLE ENTERPRISE` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) és a Csendes telepítési konfigurációs fájl (`client.rsp`) az Oracle-összekötők és OCI illesztőprogram telepítése az Azure-SSIS integrációs modul Enterprise Edition minden egyes csomópontjára. Ez a beállítás lehetővé teszi az Oracle-Csatlakozáskezelő, forrás és cél használatát. Először töltse le a Microsoft Connectors 5.0-s verzió Oracle (`AttunitySSISOraAdaptersSetup.msi` és `AttunitySSISOraAdaptersSetup64.msi`) származó [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) és a legújabb Oracle-ügyfél – például `winx64_12102_client.zip` – ki [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), majd feltölti őket az összes együtt `main.cmd` és `client.rsp` alkalmazásfájlokat a tárolóba. Ha TNS használatával csatlakozhat az Oracle, is szeretné letölteni `tnsnames.ora`, szerkeszthetik és feltöltése a tárolóba, akkor lehet másolni az Oracle telepítési mappába telepítés során.
 
-       1. Egy `ORACLE STANDARD` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) telepítése az Oracle ODP.NET-illesztőt használja az Azure-SSIS integrációs modult. minden egyes csomópontjára Ez a beállítás lehetővé teszi az ADO.NET kapcsolati Manager forrás és cél használatát. Először töltse le a legújabb Oracle ODP.NET-illesztőt – például `ODP.NET_Managed_ODAC122cR1.zip` – ki [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), majd töltse fel a `main.cmd` alkalmazásfájlokat a tárolóba.
+       1. Egy `ORACLE STANDARD ADO.NET` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) telepítése az Oracle ODP.NET-illesztőt használja az Azure-SSIS integrációs modult. minden egyes csomópontjára Ez a beállítás lehetővé teszi az ADO.NET kapcsolati Manager forrás és cél használatát. Először töltse le a legújabb Oracle ODP.NET-illesztőt – például `ODP.NET_Managed_ODAC122cR1.zip` – ki [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), majd töltse fel a `main.cmd` alkalmazásfájlokat a tárolóba.
+       
+       1. Egy `ORACLE STANDARD ODBC` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) az Oracle ODBC-illesztőprogram telepítése és konfigurálása a DSN mindegyik csomópontján az Azure-SSIS integrációs modult. Ez a beállítás lehetővé teszi az ODBC-kapcsolat kezelő, a forrás és a cél vagy a Power Query kapcsolat Manager/forrása ODBC adatforrás típusa az Oracle-kiszolgálóhoz való csatlakozáshoz. Először töltse le a legújabb Oracle azonnali ügyfelet (alapszintű csomag vagy alapszintű Lite csomag) és az ODBC-csomag – például a 64 bites csomagok [Itt](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (alapszintű csomag: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`, Lite alapszintű csomag: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`, ODBC-csomag : `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`) vagy a 32 bites csomagok [Itt](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (alapszintű csomag: `instantclient-basic-nt-18.3.0.0.0dbru.zip`, Lite alapszintű csomag: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`, ODBC-csomag: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`), majd töltse fel őket a `main.cmd` be a tároló.
 
        1. Egy `SAP BW` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) telepítése a SAP .NET összekötő szerelvény (`librfc32.dll`) az Azure-SSIS integrációs modul Enterprise Edition minden egyes csomópontjára. Ez a beállítás lehetővé teszi az SAP BW Csatlakozáskezelő, forrás és cél használatát. Első lépésként töltse fel a 64 bites vagy 32 bites verzióját `librfc32.dll` a SAP telepítési mappájából a tárolóba, együtt `main.cmd`. Ezután másolja a SAP szerelvényből a `%windir%\SysWow64` vagy `%windir%\System32` mappát a telepítés során.
 

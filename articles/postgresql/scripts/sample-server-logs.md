@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: cd4346c738e1c1c52ee181f764f827b1b1060650
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: eb6f1624a3fefbad829600d2280d4eaeedd188bc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547201"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179974"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Azure Database for PostgreSQL-kiszolgáló lassú lekérdezési naplóinak engedélyezése és letöltése az Azure CLI használatával
 Ez az Azure CLI-példaszkript engedélyezi és letölti egy Azure Database for PostgreSQL-kiszolgáló lassú lekérdezési naplóit.
@@ -37,7 +37,7 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 |---|---|
 | [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az postgres server create](/cli/azure/postgres/server#az_msql_server_create) | Létrehoz egy PostgreSQL-kiszolgálót, amelyen az adatbázisok futnak. |
-| [az postgres server configuration list](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_list) | Felsorolja egy kiszolgáló konfigurációs értékeit. |
+| [az postgres server configuration list](/cli/azure/postgres/server/configuration) | Felsorolja egy kiszolgáló konfigurációs értékeit. |
 | [az postgres server configuration set](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_set) | Frissíti egy kiszolgáló konfigurációját. |
 | [az postgres server-logs list](/cli/azure/postgres/server-logs#az_postgres_server_logs_list) | Felsorolja egy kiszolgáló naplófájljait. |
 | [az postgres server-logs download](/cli/azure/postgres/server-logs#az_postgres_server_logs_download) | Letölti a naplófájlokat. |

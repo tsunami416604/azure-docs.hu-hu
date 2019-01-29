@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 9f0c4789e73659e5965440989c23a8cf673f7cd2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 33ada343738e113e8f14e1e5ac4a0e8aee481670
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309161"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185465"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>A helyi gép fejlesztési telepítőjének szolgáltatások monitorozása és diagnosztizálása
 
@@ -51,7 +51,7 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-Által mutatott a mappát a `app.properties` fájlnak léteznie kell. Után az `app.properties` jön létre, a belépési pont szkriptje is módosítani kell `entrypoint.sh` a a `<applicationfolder>/<servicePkg>/Code/` mappát a tulajdonság beállítása `java.util.logging.config.file` való `app.propertes` fájlt. A bejegyzés a következő kódrészlethez hasonlóan kell kinéznie:
+Által mutatott a mappát a `app.properties` fájlnak léteznie kell. Után az `app.properties` jön létre, a belépési pont szkriptje is módosítani kell `entrypoint.sh` a a `<applicationfolder>/<servicePkg>/Code/` mappát a tulajdonság beállítása `java.util.logging.config.file` való `app.properties` fájlt. A bejegyzés a következő kódrészlethez hasonlóan kell kinéznie:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
@@ -74,7 +74,7 @@ A Linux-alapú alkalmazásokat coreclr-nek nyomkövetés több keretrendszerek �
 
 Az első lépés az, hogy a naplók írni memória, a kimeneti Stream vagy konzol fájlok közé tartozik a System.Diagnostics.Tracing.  A naplózás használatával EventSource, adja hozzá a következő projektet a project.json:
 
-```
+```json
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az hűség NetBenefits |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az hűség NetBenefits |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés hűség NetBenefits és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 77dc8a98-c0e7-4129-ab88-28e7643e432a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: a1308035a8b758a9e2f824de3a78c03103c19931
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 00b90dae4acfae3f8250b94be1f8752aa72bcfe1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42054679"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174890"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Oktatóanyag: Azure Active Directory-integráció az hűség NetBenefits
+# <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Oktatóanyag: Az Azure Active Directory integrációja az hűség NetBenefits
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan hűség NetBenefits integrálása az Azure Active Directory (Azure AD).
 

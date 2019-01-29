@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: c626601d9eae7732779020b153c624f80605b56a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: fcf18731bd5b9bbe91541931ac68effd9de6debf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051875"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104694"
 ---
 # <a name="connect-to-a-data-source"></a>Kapcsolódás adatforráshoz
 
@@ -37,8 +37,8 @@ A Power BI-Munkaterületcsoportok akkor a DirectQuery is használható a felhőb
 
 ## <a name="supported-data-sources"></a>Támogatott adatforrások
 
-**A DirectQuery**
-* Azure SQL Database
+**DirectQuery**
+* Azure SQL-adatbázis
 * Azure SQL Data Warehouse
 
 **Importálás**

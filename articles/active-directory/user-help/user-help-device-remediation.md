@@ -6,18 +6,18 @@ author: eross-msft
 manager: daveba
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: eb924a612188d905eb6c7127067fed2fd4b0f218
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 97d35eb3442b63736b40d51dda57b872813293ad
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825527"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164061"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>A "Meg nem innen érheti el" hibaüzenetet a lehetséges okok
 Arról, hogy a, hibaüzenetet kaphat közben: a szervezet belső webalkalmazásokat vagy szolgáltatásokat, **nem érheti el itt**. Ez az üzenet azt jelenti, a szervezet rendelkezik egy szabályzatot, amely megakadályozza, hogy az eszköz a szervezet erőforrásaihoz. Bár előfordulhat, hogy végül forduljon az ügyfélszolgálathoz a probléma megoldásához rendelkezik, az alábbiakban néhány dolgot, először próbálja meg.

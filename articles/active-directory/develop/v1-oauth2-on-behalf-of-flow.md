@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 06/06/2017
 ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 72b1ba51f306203092b420e6f2d6186b3307d35d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 3c2953d44587d72517c6f619ee9c9f05aabff186
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422745"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094376"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások használat meghatalmazott felhasználói identitás az On-meghatalmazásos folyamat
 
@@ -37,7 +37,7 @@ Az OAuth 2.0-alapú meghatalmazásos (OBO) a folyamat lehetővé teszi, hogy egy
 
 OBO folyamat elindul, a felhasználó hitelesítését az alkalmazást a [OAuth 2.0 hitelesítési kód adja meg a folyamat](v1-protocols-oauth-code.md). Ezen a ponton az alkalmazás által a középső rétegbeli webes API-hoz (API-t A) a felhasználói jogcímek és jóváhagyás API A. eléréséhez tartalmazó hozzáférési token (jogkivonat A) Ezután API egy kérést egy hitelesített az alsóbb rétegbeli webes API-hoz (API-t, B).
 
-Ezeket a lépéseket az On-meghatalmazásos folyamat alkotják: ![OAuth2.0-alapú meghatalmazásos folyamat](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+Ezeket a lépéseket az On-meghatalmazásos folyamat alkotják: ![OAuth2.0--meghatalmazásos folyamat](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. Az ügyfélalkalmazás kérést küld egy API-t a jogkivonattal A.
 1. API-t A hitelesíti magát az Azure AD-kiállítási végpont, és b API eléréséhez tokent kér
@@ -103,7 +103,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 Az ügyfélalkalmazás egy közös titkos kulcsot vagy a tanúsítvány biztonságát.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>Először. eset: egy közös titkos kulcsot a hozzáférési jogkivonat kérése
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Első eset: A közös titkos kulcsot a hozzáférési jogkivonat kérése
 
 A közös titkos kulcsot használja, amikor egy szolgáltatások közötti hozzáférési jogkivonat kérése a következő paramétereket tartalmaz:
 
@@ -137,7 +137,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=openid
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>A második eset: a tanúsítványhoz a hozzáférési jogkivonat kérése
+### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: Hozzáférési jogkivonat kérése tanúsítvánnyal
 
 A service to service hozzáférési jogkivonat kérése tanúsítvánnyal az alábbi paramétereket tartalmazza:
 
@@ -181,7 +181,7 @@ Sikerességi válasz az JSON OAuth 2.0 választ az alábbi paraméterekkel:
 
 | Paraméter | Leírás |
 | --- | --- |
-| token_type |Typ tokenu értékét jelöli. Az egyetlen típus, amely az Azure AD által támogatott **tulajdonosi**. További információ a tulajdonosi jogkivonatokat: a [OAuth 2.0 engedélyezési keretrendszer: tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Typ tokenu értékét jelöli. Az egyetlen típus, amely az Azure AD által támogatott **tulajdonosi**. További információ a tulajdonosi jogkivonatokat: a [OAuth 2.0 engedélyezési keretrendszer: Tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |Megadja a hozzáférést a jogkivonat hatókörét. |
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. Ez az érték a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
@@ -263,16 +263,16 @@ SAML-előfeltétel-szolgáltatások kérelmet a következő paramétereket tarta
 
 A válasz egy SAML-jogkivonatban kódolt UTF8 és Base64url tartalmaz.
 
-- **Az SAML-előfeltétel SubjectConfirmationData származási hely egy OBO hívás**: a célalkalmazás a címzett értéket kell megadni. Ha **SubjectConfirmationData**, majd értéke nem lehet egy nem helyettesítő válasz URL-cím, az a erőforrás-alkalmazás konfigurációja.
+- **Az SAML-előfeltétel SubjectConfirmationData származási hely egy OBO hívás**: Ha a célalkalmazásnak egy címzett értéket igényel **SubjectConfirmationData**, majd az érték lehet egy nem helyettesítő válasz URL-cím, az erőforrás-alkalmazás konfigurációjában.
 - **A SubjectConfirmationData csomópont**: A csomópont nem tartalmazhat egy **InResponseTo** attribútumot, mert nem része egy SAML-válasz. Az alkalmazás fogad a SAML-jogkivonat fogadja el a SAML helyességi feltétel alkalmazása nélkül képesnek kell lennie egy **InResponseTo** attribútum.
 
-- **Hozzájárulás**: jóváhagyás előre meg kell adni egy OAuth folyamata a felhasználói adatokat tartalmazó SAML-jogkivonat fogadásához. Beszerzését rendszergazdai jóváhagyást az engedélyekkel kapcsolatos információkért lásd: [engedélyek és jóváhagyás az Azure Active Directory 1.0-s verziójú végpontján az](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent).
+- **Hozzájárulás**: Jóváhagyás előre meg kell adni egy OAuth folyamata a felhasználói adatokat tartalmazó SAML-jogkivonat fogadásához. Beszerzését rendszergazdai jóváhagyást az engedélyekkel kapcsolatos információkért lásd: [engedélyek és jóváhagyás az Azure Active Directory 1.0-s verziójú végpontján az](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent).
 
 ### <a name="response-with-saml-assertion"></a>Az SAML-előfeltétel válasz
 
 | Paraméter | Leírás |
 | --- | --- |
-| token_type |Typ tokenu értékét jelöli. Az egyetlen típus, amely az Azure AD által támogatott **tulajdonosi**. További információ a tulajdonosi jogkivonatokat: [OAuth 2.0 engedélyezési keretrendszer: tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Typ tokenu értékét jelöli. Az egyetlen típus, amely az Azure AD által támogatott **tulajdonosi**. További információ a tulajdonosi jogkivonatokat: [OAuth 2.0 engedélyezési keretrendszer: Tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |Megadja a hozzáférést a jogkivonat hatókörét. |
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. Ez az érték a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
@@ -280,14 +280,14 @@ A válasz egy SAML-jogkivonatban kódolt UTF8 és Base64url tartalmaz.
 | access_token |A paraméter, amely visszaadja az SAML-előfeltétel. |
 | refresh_token |A frissítési jogkivonatot. A hívó szolgáltatás a jogkivonat használatával új hozzáférési jogkivonat kérése az aktuális SAML helyességi feltétel lejárta után is. |
 
-- token_type: tulajdonosi
+- token_type: Tulajdonosi
 - expires_in: 3296
 - ext_expires_in: 0
 - expires_on: 1529627844
 - erőforrás: `https://api.contoso.com`
-- access_token: \<SAML helyességi feltétel\>
-- issued_token_type: urn: ietf:params:oauth:token-típus: egy saml2
-- refresh_token: \<frissítési jogkivonat\>
+- access_token: \<SAML-előfeltétel\>
+- issued_token_type: urn:ietf:params:oauth:token-type:saml2
+- refresh_token: \<Jogkivonat frissítése\>
 
 ## <a name="client-limitations"></a>Ügyfél-korlátozások
 

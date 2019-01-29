@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: e96119abd4fc77c576fb65281c3f48b8263e020d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: e240cbadbee87938107c4a9bf034c47db42acf92
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849974"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098646"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -104,7 +104,7 @@ Ez a példa a **tényleges időalapú költségeket tartalmazó** jelentés ért
 5. Válassza ki a **küszöbérték** lapot, majd **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget. 
    1. Az a **vörös színű riasztásra** küszöbérték mezőbe írja be a 10000. 
    2. Az a **sárga riasztást** küszöbérték mezőbe írja be a 9000. 
-   3. Az a **egymást követő riasztások számát** fogadásához egymást követő riasztások számát adja meg. Amikor megjelenik a riasztásokat, amelyek a megadott teljes száma, nem küld további riasztásokat is. 
+   3. Az a **egymást követő riasztások számát** fogadásához egymást követő riasztások számát adja meg. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat. 
 6. Kattintson a **Mentés** gombra.
 
 ![A példában a költségkeret-beállítási küszöbértékek alapján piros, sárga és riasztások megjelenítése](./media/tutorial-review-usage/schedule-alert01.png)

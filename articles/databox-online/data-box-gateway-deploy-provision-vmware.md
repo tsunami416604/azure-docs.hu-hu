@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/01/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: ea4203c45f482b990122a966fc2ec13b3fb41c84
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: 00415cab4d5c36c74cf78a10cb71682d97236517
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167154"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099158"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Oktatóanyag: Az Azure Data Box Gateway üzembe helyezése a VMware-ben (előzetes verzió)
+# <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Oktatóanyag: VMware (előzetes verzió) üzembe helyezése az Azure Data Box-átjáró
 
 ## <a name="overview"></a>Áttekintés
 
-Az oktatóanyag a Data Box Gateway egy, a VMware ESXi 6.0-s vagy 6.5-ös verzióját futtató gazdarendszeren való üzembe helyezését mutatja be. 
+Ez az oktatóanyag azt ismerteti, hogyan építheti ki a gazdagép operációs rendszert futtató VMware ESXi 6.0, 6.5-ös vagy 6.7 Data Box Gateway. 
 
 A virtuális eszközök üzembe helyezéséhez és a hozzájuk való csatlakozáshoz rendszergazdai jogosultság szükséges. Az üzembe helyezés és a kezdeti beállítás körülbelül 10 percet vesz igénybe.
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A virtuális eszközök a VMware ESXi 6.0-s vagy 6.5-ös verzióját futtató gazdarendszeren való üzembe helyezésének előfeltételei a következők.
+Gazdagép operációs rendszert futtató VMware ESXi 6.0, 6.5-ös vagy 6.7, a virtuális eszköz előfeltételei a következők.
 
 ### <a name="for-the-data-box-gateway-resource"></a>Data Box Gateway-erőforrás esetén
 
@@ -53,7 +53,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 A virtuális eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
 
-* Rendelkezik hozzáféréssel a VMware-t (ESXi 6.0 vagy 6.5) futtató olyan gazdarendszerhez, amely használható eszközök üzembe helyezésére.
+* Gazdagép operációs rendszert futtató VMware (ESXi 6.0, 6.5-ös vagy 6.7), amely hozzáféréssel rendelkezik egy kiépítéséhez használt eszköz.
 * A gazdarendszer képes elkülöníteni az alábbi erőforrásokat a virtuális eszköz üzembe helyezése érdekében:
 
   * Legalább 4 mag.
@@ -73,7 +73,7 @@ Előkészületek:
 
 Virtuális eszköz létrehozásához a következőkre lesz szüksége:
 
-* Hozzáférés egy VMware ESXi Server 6.0-s vagy 6.5-ös verziót futtató gazdarendszerhez, amely használható eszközök üzembe helyezésére. A gazdarendszer képes az alábbi erőforrásokat a virtuális eszköz számára elkülöníteni:
+* Gazdagép operációs rendszert futtató VMware ESXi-kiszolgáló 6.0-s, 6.5-ös vagy 6.7 való hozzáférést. A gazdarendszer képes az alábbi erőforrásokat a virtuális eszköz számára elkülöníteni:
  
   * Legalább 4 mag.
   * Legalább 8 GB RAM. 
@@ -89,7 +89,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 
 1. Másolja a virtuáliseszköz-rendszerképet a rendszerre. Ezt a rendszerképet (két fájlt) az Azure Portalról töltötte le. Jegyezze fel a helyet, ahová a rendszerképet másolta, mivel az eljárás későbbi szakaszában szükség lesz rá.
 
-2. Jelentkezzen be az ESXi-kiszolgálóra a vSphere webes ügyféllel. A virtuális gép létrehozásához rendszergazdai jogosultsággal kell rendelkeznie.
+2. Jelentkezzen be az ESXi-kiszolgáló a vSphere webes ügyfél használatával. A virtuális gép létrehozásához rendszergazdai jogosultsággal kell rendelkeznie.
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -134,11 +134,11 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 13. Megjelenik egy **új virtuális gép**. A Létrehozási típus kiválasztásánál válassza a **Create a new virtual machine** (Új virtuális gép létrehozása) lehetőséget, és kattintson a **Next** (Tovább) gombra.
     ![](./media/data-box-gateway-deploy-provision-vmware/image10.png)
 
-14. A **Select a Name and OS Name and Location** (Név és operációsrendszer-név és hely kiválasztása) lapon adja meg a virtuális gép **nevét**. Ez legyen ugyanaz, mint a korábban, a 7. lépésben megadott mappanév (ajánlott eljárás). Válassza a **Guest OS family** (Vendég operációsrendszer-család) beállításnál a Windowst, majd a **Guest OS version** (Vendég operációsrendszer-verzió) beállításánál a Microsoft Windows Server 2016 (64 bites) lehetőséget. Kattintson a **Tovább** gombra.
+14. A **Select a Name and OS Name and Location** (Név és operációsrendszer-név és hely kiválasztása) lapon adja meg a virtuális gép **nevét**. Ez legyen ugyanaz, mint a korábban, a 7. lépésben megadott mappanév (ajánlott eljárás). Válassza a **Guest OS family** (Vendég operációsrendszer-család) beállításnál a Windowst, majd a **Guest OS version** (Vendég operációsrendszer-verzió) beállításánál a Microsoft Windows Server 2016 (64 bites) lehetőséget. Kattintson a **tovább**.
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image11.png)
 
-15. A **Select storage** (Tár kiválasztása) oldalon válassza ki azt az adattárat, amelyen üzembe kívánja helyezni a virtuális gépet. Kattintson a **Tovább** gombra.
+15. A **Select storage** (Tár kiválasztása) oldalon válassza ki azt az adattárat, amelyen üzembe kívánja helyezni a virtuális gépet. Kattintson a **tovább**.
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image12.png)
 16. A **Customize settings** (Beállítások testreszabása) lapon állítsa a **CPU**-k számát 4-re, a **Memóriát** 8192 MB-ra (vagy többre), az **1. merevlemez** kapacitását pedig 2 TB-ra (vagy többre). Válassza ki a hozzáadni kívánt **SCSI-merevlemezt**. Ebben az esetben ez az LSI Logic SAS. **A statikus IDE-lemezek használata nem támogatott.** Az **1. merevlemez** a virtuális adatlemez. Vegye figyelembe, hogy a lemez mérete az üzembe helyezést követően nem csökkenthető.
@@ -149,7 +149,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
-    Görgessen lefelé, amíg meg nem látja a **New hard disk** (Új merevlemez) elemet, és bontsa azt ki a beállítások megtekintéséhez. Állítsa be a **Virtual Device Node** (Virtuális eszköz csomópontja) beállításnál az **IDE controller 0** értéket. Kattintson a **Tovább** gombra.
+    Görgessen lefelé, amíg meg nem látja a **New hard disk** (Új merevlemez) elemet, és bontsa azt ki a beállítások megtekintéséhez. Állítsa be a **Virtual Device Node** (Virtuális eszköz csomópontja) beállításnál az **IDE controller 0** értéket. Kattintson a **tovább**.
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
@@ -192,7 +192,7 @@ Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és c
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. Az 5–7. lépést csak akkor kell végrehajtani, ha nem DHCP-környezetben végzi a rendszerindítást. Ha DHCP-környezetben van, hagyja ki ezeket a lépéseket, és folytassa a 8. lépéssel. Ha nem DHCP-környezetben indította az eszközt, megjelenik egy, a következőhöz hasonló üzenet: **A Set-HcsIPAddress parancsmaggal konfigurálhatja a hálózatot**. 
+6. Az 5–7. lépést csak akkor kell végrehajtani, ha nem DHCP-környezetben végzi a rendszerindítást. Ha DHCP-környezetben van, hagyja ki ezeket a lépéseket, és folytassa a 8. lépéssel. Ha az eszköz nem DHCP-környezetben konzoljához, a hatás, egy üzenet jelenik meg: **A Set-HcsIPAddress parancsmag használatával konfigurálja a hálózatot**. 
    
 7. A hálózat konfigurálásához a parancssorban a `Get-HcsIpAddress` parancs használatával listázza ki a virtuális eszközön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
 

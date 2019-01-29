@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/11/2019
+ms.date: 1/25/2019
 ms.author: jeedes
-ms.openlocfilehash: baf78fc0bc0941c9466f77a77ef922f3fe3d62b3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a12a0b383db63cc80aea045ca5afe6c75b0b83a9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823029"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>Oktatóanyag: IDiD Manager az Azure Active Directory-integráció
 
@@ -70,10 +70,10 @@ IDiD Manager integrálása az Azure AD beállítása, hozzá kell iDiD Manager a
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az [alkalmazásnév] nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó [alkalmazásnév] a hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az iDiD Manager nevű tesztfelhasználó alapján **Britta Simon**.
+Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó iDiD Manager közötti kapcsolat kapcsolatot kell hozható létre.
 
-Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés az iDiD Manager tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[IDiD Manager egyszeri bejelentkezés konfigurálása](#configure-idid-manager-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
@@ -86,7 +86,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] tesztelése és konfigu
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához hajtsa végre az alábbi lépéseket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés iDiD Manager, hajtsa végre az alábbi lépéseket:
 
 1. Az a [az Azure portal](https://portal.azure.com/), a a **iDiD Manager** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
@@ -100,18 +100,20 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, a felhasználónak nincs bármely lépése végrehajtani, mert az alkalmazás már előre integrálva van az Azure-ral.
 
-    ![információk iDiD Manager tartomány és URL-címek egyszeri bejelentkezés](common/both-preintegrated-signon.png)
+    ![információk iDiD Manager tartomány és URL-címek egyszeri bejelentkezés](common/preintegrated.png)
 
-    a. Kattintson a **további URL-címet beállítani**.
+5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    b. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://idid2.fi/saml/login/<domain>`
+    ![információk iDiD Manager tartomány és URL-címek egyszeri bejelentkezés](common/metadata-upload-additional-signon.png)
+
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://idid2.fi/saml/login/<domain>`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [iDiD Manager-ügyfél-támogatási csoportjának](mailto:support@idid.fi) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
 
     ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
 
@@ -187,3 +189,4 @@ Ha a hozzáférési panelen, a iDiD Manager csempére kattint, akkor kell automa
 - [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

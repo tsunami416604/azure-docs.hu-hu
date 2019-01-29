@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 9ec8ecf7b875b32d0ea5715e407b444fa1b25c50
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: b099848f2d0392a25a0906a96dba53885962c79b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354467"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102345"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
@@ -2169,7 +2169,10 @@ REPLICATE(<str_expr>, <num_expr>)
   
 -   `num_expr`  
   
-     Ez bármilyen érvényes numerikus kifejezés.  
+     Ez bármilyen érvényes numerikus kifejezés. Ha num_expr negatív, vagy nem véges, az eredmény nincs meghatározva.
+
+  > [!NOTE]
+  > Az eredmény hossza legfeljebb 10 000 karakternél azaz (length(str_expr) * num_expr) < 10 000.
   
  **Návratové Typy**  
   

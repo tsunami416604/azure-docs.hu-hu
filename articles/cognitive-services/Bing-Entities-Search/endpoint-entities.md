@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: v-gedod
-ms.openlocfilehash: d781a4b3cd0119f5624b4dd20b514894ea339414
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 4013b1791e4c725469d3f180ae0fdecc9ae2ebba
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816582"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167053"
 ---
 # <a name="entity-search-endpoint"></a>Entity Search-végpont
 A **Entity Search API** tartalmaz egy végpontot, amely entitásokat ad vissza, a webről lekérdezés alapján.
@@ -23,7 +23,7 @@ A **Entity Search API** tartalmaz egy végpontot, amely entitásokat ad vissza, 
 ## <a name="endpoint"></a>Végpont
 Használatával eredmények lekérése entitás a **Bing-API**, küldjön egy `GET` kérelem a következő végpont. A fejlécek és URL-paraméterek használatával további specifikációk meghatározása.
 
-**Végpont:** adja vissza, amely a felhasználó keresési lekérdezés által meghatározott a entitások `?q=""`.
+**Végpont:** Adja vissza, amely a felhasználó keresési lekérdezés által meghatározott a entitások `?q=""`.
 ```
  GET https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
@@ -34,7 +34,7 @@ További információk a fejlécek, paraméterek, piaci kódok, válaszobjektumo
 Az entity search kérelemre válaszként eredményeket JSON-objektumként tartalmazza. Az eredmények példák: [Ismerkedés](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/quick-start).
 
 ## <a name="next-steps"></a>További lépések
-A **Bing** API-kat támogatja a keresési műveleteket, amelyek a típusuk eredményeket adja vissza. Végpontok keresése az összes eredmény JSON-válasz objektumként adja vissza.  Minden végpontok lekérdezések támogatására, amelyeket egy adott nyelvhez és/vagy a helyet a földrajzi hosszúság, szélesség és keresési radius vissza.
+A **Bing** API-kat támogatja a keresési műveleteket, amelyek a típusuk eredményeket adja vissza. Végpontok keresése az összes eredmény JSON-válasz objektumként adja vissza.  Minden végpontok lekérdezések támogatására, amelyeket egy adott nyelvhez és/vagy a helyet a földrajzi hosszúság, szélesség és keresési radius vissza.
 
 Minden végpont által támogatott paraméterekkel kapcsolatos részletes információkért tekintse meg az egyes referenciaoldalait.
 Az Entity search API-t használó példákért lásd [Ismerkedés](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/quick-start) és [átméretezés és a miniatűr képekhez vágása](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/resize-and-crop-thumbnails).

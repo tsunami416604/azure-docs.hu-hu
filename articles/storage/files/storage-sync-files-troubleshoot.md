@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/25/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 852ffdafefeef7f4b8fd6bf3a9c5d175d872e077
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: cf86d2a644c2732f27442a807dec1ad960b94af5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157632"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095157"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -283,7 +283,7 @@ Szinkronizálási munkamenetek sikertelen lehet a különböző okok miatt, bele
 <a id="-2147012889"></a>**Nem sikerült létrehozni a kapcsolatot a szolgáltatással.**    
 | | |
 |-|-|
-| **HRESULT** | 0x80072EE7 |
+| **HRESULT** | 0x80072ee7 |
 | **HRESULT (decimális)** | -2147012889 | 
 | **Hibakarakterlánc** | WININET_E_NAME_NOT_RESOLVED |
 | **Szervizelés szükséges** | Igen |
@@ -458,7 +458,7 @@ Ha beállítja ezt a beállításazonosítót, az Azure File Sync-ügynök minde
 <a id="-2147012894"></a>**Nem sikerült létrehozni a kapcsolatot a szolgáltatással.**  
 | | |
 |-|-|
-| **HRESULT** | : 0x80072EE2 |
+| **HRESULT** | 0x80072ee2 |
 | **HRESULT (decimális)** | -2147012894 |
 | **Hibakarakterlánc** | WININET_E_TIMEOUT |
 | **Szervizelés szükséges** | Igen |
@@ -804,24 +804,19 @@ Nincsenek hibák, amely akkor fordulhat elő, vagy hiba elérési útján két f
 Az alábbi szakaszok azt jelzik, hogy felhőalapú rétegezési hibáinak elhárítása és, hogy a problémát egy felhőalapú tárolási probléma vagy egy kiszolgálóhiba.
 
 <a id="monitor-tiering-activity"></a>**Egy kiszolgálói rétegezési tevékenység figyelése**  
-Egy kiszolgálói rétegezési tevékenység monitorozásához használja Event ID 9002, 9003, 9016 és 9029 a telemetriai adatok eseménynaplóban (alkalmazások és az eseménynaplóban Services\Microsoft\FileSync\Agent alatt található).
-
-- Eseményazonosító 9002 másolatkészítési statisztika biztosít a kiszolgálói végpont. Például TotalGhostedFileCount, SpaceReclaimedMB, stb.
+Egy kiszolgálói rétegezési tevékenység monitorozásához használja Event ID 9003, 9016 és 9029 a telemetriai adatok eseménynaplóban (alkalmazások és az eseménynaplóban Services\Microsoft\FileSync\Agent alatt található).
 
 - 9003-es Azonosítójú esemény a kiszolgálói végpont hibaeloszlás biztosít. Ha például összesített hibaszám, ErrorCode, stb. Vegye figyelembe, hogy egy eseményt a rendszer naplózza hibakód.
-
 - Eseményazonosító 9016 másolatkészítési eredményeket biztosít egy köteten. Például a szabad terület százalékos értéke, a fájlok száma mögé munkamenetben, több fájlt nem sikerült ghost stb.
-
-- Eseményazonosító 9029 másolatkészítési munkamenet információkat tartalmaz. Például a munkamenet, a fájlok száma a megkísérelt fájlok száma rétegzett a munkamenetben, a fájlok száma már rétegzett, stb.
+- Eseményazonosító 9029 kiszolgálói végpont másolatkészítési munkamenet információkat nyújt. Például a munkamenet, a fájlok száma a megkísérelt fájlok száma rétegzett a munkamenetben, a fájlok száma már rétegzett, stb.
 
 <a id="monitor-recall-activity"></a>**Egy kiszolgálói visszaírási tevékenység figyelése**  
-A kiszolgálói tevékenység visszaírási monitorozásához használja Event ID 9005, 9006, 9007 a telemetriai adatok eseménynaplóban (alkalmazások és az eseménynaplóban Services\Microsoft\FileSync\Agent alatt található). Vegye figyelembe, hogy ezeket az eseményeket a rendszer óránként naplózza.
+A kiszolgálói tevékenység visszaírási monitorozásához használja Event ID 9005, 9006, 9009 és 9059 a telemetriai adatok eseménynaplóban (alkalmazások és az eseménynaplóban Services\Microsoft\FileSync\Agent alatt található).
 
 - 9005-es Azonosítójú esemény a kiszolgálói végpont visszaírási megbízhatóságot biztosít. Például teljes egyedi fájlok elérni, egyedi fájlok száma és a sikertelen hozzáférés, stb.
-
 - Eseményazonosító 9006 visszaírási hibaeloszlás a kiszolgálói végpont biztosít. Például összes sikertelen kérelem ErrorCode, stb. Vegye figyelembe, hogy egy eseményt a rendszer naplózza hibakód.
-
-- Eseményazonosító 9007 kiszolgálói végpont visszaírási teljesítményt biztosít. Például TotalRecallIOSize, TotalRecallTimeTaken, stb.
+- Eseményazonosító 9009 kiszolgálói végpont visszaírási munkamenet információkat nyújt. Például DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed, stb.
+- Eseményazonosító 9059 alkalmazás visszaírási terjesztési a kiszolgálói végpont biztosít. Ha például ShareId, alkalmazás neve és TotalEgressNetworkBytes.
 
 <a id="files-fail-tiering"></a>**A nem induló réteg-fájlok hibaelhárítása**  
 Ha az Azure Files Tier fájloknál:

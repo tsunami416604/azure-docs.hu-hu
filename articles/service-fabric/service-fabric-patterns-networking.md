@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 2fce90f971d13b94c73012d4089cca05739c5440
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 7f6e95b28482ed6d75bb76773da05aebd1855a66
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853710"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093385"
 ---
 # <a name="service-fabric-networking-patterns"></a>Hálózati Service Fabric-minták
 Más Azure hálózati szolgáltatásokkal integrálható az Azure Service Fabric-fürt. Ebben a cikkben bemutatjuk, hogyan hozhat létre a következő szolgáltatásokat használó fürtök:
@@ -81,7 +81,7 @@ A cikkben szereplő példák a Service Fabric template.json használjuk. A stand
 
 1. Módosítsa a alhálózati paramétert a meglévő alhálózat neve, és adja hozzá a két új paramétert a meglévő virtuális hálózat hivatkozni:
 
-    ```
+    ```json
         "subnet0Name": {
                 "type": "string",
                 "defaultValue": "default"
@@ -108,26 +108,26 @@ A cikkben szereplő példák a Service Fabric template.json használjuk. A stand
 
 2. Tegye megjegyzésbe `nicPrefixOverride` attribútuma `Microsoft.Compute/virtualMachineScaleSets`, mert a meglévő alhálózatot használja, és le van tiltva ez a változó az 1. lépésben.
 
-    ```
+    ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
     ```
 
 3. Módosítsa a `vnetID` változót a meglévő virtuális hálózathoz pont:
 
-    ```
+    ```json
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
 4. Távolítsa el `Microsoft.Network/virtualNetworks` az erőforrások közül tehát az Azure nem hoz létre egy új virtuális hálózatot:
 
-    ```
+    ```json
     /*{
     "apiVersion": "[variables('vNetApiVersion')]",
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[parameters('virtualNetworkName')]",
     "location": "[parameters('computeLocation')]",
-    "properities": {
+    "properties": {
         "addressSpace": {
             "addressPrefixes": [
                 "[parameters('addressPrefix')]"
@@ -151,7 +151,7 @@ A cikkben szereplő példák a Service Fabric template.json használjuk. A stand
 
 5. Tegye megjegyzésbe a virtuális hálózattal a `dependsOn` attribútuma `Microsoft.Compute/virtualMachineScaleSets`, ezért nem függnek egy új virtuális hálózatot hoz létre:
 
-    ```
+    ```json
     "apiVersion": "[variables('vmssApiVersion')]",
     "type": "Microsoft.Computer/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType0Name')]",
@@ -185,7 +185,7 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
 
 1. Adja hozzá a statikus IP létező erőforráscsoport neve, nevét és teljesen minősített tartománynevét (FQDN):
 
-    ```
+    ```json
     "existingStaticIPResourceGroup": {
                 "type": "string"
             },
@@ -199,7 +199,7 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
 
 2. Távolítsa el a `dnsName` paraméter. (A statikus IP-cím már szerepel egy ilyen.)
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -209,13 +209,13 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
 
 3. Egy változó való hivatkozáshoz a meglévő statikus IP-cím hozzáadása:
 
-    ```
+    ```json
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
     ```
 
 4. Távolítsa el `Microsoft.Network/publicIPAddresses` az erőforrásokat, így az Azure nem hozzon létre új IP-cím:
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -237,7 +237,7 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
 
 5. Tegye megjegyzésbe az IP-címét a `dependsOn` attribútuma `Microsoft.Network/loadBalancers`, ezért nem függnek egy új IP-cím létrehozása:
 
-    ```
+    ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
     "type": "Microsoft.Network/loadBalancers",
     "name": "[concat('LB', '-', parameters('clusterName'), '-', parameters('vmNodeType0Name'))]",
@@ -251,7 +251,7 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
 
 6. Az a `Microsoft.Network/loadBalancers` erőforrás, módosítsa a `publicIPAddress` eleme `frontendIPConfigurations` való hivatkozáshoz helyett egy újonnan létrehozott egy meglévő statikus IP-címe:
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -267,7 +267,7 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
 
 7. Az a `Microsoft.ServiceFabric/clusters` erőforrás, a módosítás `managementEndpoint` a statikus IP-cím DNS teljes Tartománynevét. Ha egy biztonságos fürtöt használ, ellenőrizze, hogy módosítja *http://* való *https://*. (Vegye figyelembe, hogy érvényes-e ez a lépés csak a Service Fabric-fürtöket. Ha egy virtuálisgép-méretezési csoportot használja, kihagyhatja ezt a lépést.)
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',parameters('existingStaticIPDnsFQDN'),':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -294,7 +294,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
 
 1. Távolítsa el a `dnsName` paraméter. (Nincs rá szükség.)
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -304,7 +304,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
 
 2. Igény szerint ha a statikus foglalási módszert használja, hozzáadhat egy statikus IP-cím paraméter. Ha a dinamikus kiosztási módszer használható, nem kell erre a lépésre szükség.
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -313,7 +313,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
 
 3. Távolítsa el `Microsoft.Network/publicIPAddresses` az erőforrásokat, így az Azure nem hozzon létre új IP-cím:
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -335,7 +335,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
 
 4. Távolítsa el az IP-cím `dependsOn` attribútuma `Microsoft.Network/loadBalancers`, ezért nem függnek egy új IP-cím létrehozása. A virtuális hálózat hozzáadása `dependsOn` attribútumon, mert a terheléselosztó már a virtuális hálózati alhálózat függ:
 
-    ```
+    ```json
                 "apiVersion": "[variables('lbApiVersion')]",
                 "type": "Microsoft.Network/loadBalancers",
                 "name": "[concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'))]",
@@ -348,7 +348,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
 
 5. Módosítsa a terheléselosztó `frontendIPConfigurations` beállítást használják egy `publicIPAddress`, egy alhálózatot az és `privateIPAddress`. `privateIPAddress` előre meghatározott statikus belső IP-címet használ. Dinamikus IP-címet használjon, távolítsa el a `privateIPAddress` elemet, és módosítsa `privateIPAllocationMethod` való **dinamikus**.
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -369,7 +369,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
 
 6. Az a `Microsoft.ServiceFabric/clusters` erőforrás, a módosítás `managementEndpoint` átirányítása a belső terheléselosztó címmel. Ha egy biztonságos fürtöt használ, ellenőrizze, hogy módosítja *http://* való *https://*. (Vegye figyelembe, hogy érvényes-e ez a lépés csak a Service Fabric-fürtöket. Ha egy virtuálisgép-méretezési csoportot használja, kihagyhatja ezt a lépést.)
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',reference(variables('lbID0')).frontEndIPConfigurations[0].properties.privateIPAddress,':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -394,7 +394,7 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
 
 1. Adja hozzá a statikus belső load balancer IP-cím paraméter. (A dinamikus IP-címet használó kapcsolódó megjegyzések, lásd a cikk korábbi szakaszaiban.)
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -405,7 +405,7 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
 
 3. Adja hozzá a meglévő belső verziói hálózatkezelés változók, másolja és illessze be őket, és adja hozzá a "– Int" nevet:
 
-    ```
+    ```json
     /* Add internal load balancer networking variables */
             "lbID0-Int": "[resourceId('Microsoft.Network/loadBalancers', concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'), '-Internal'))]",
             "lbIPConfig0-Int": "[concat(variables('lbID0-Int'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -418,7 +418,7 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
 
 4. Ha először a portál által létrehozott sablont, amely az alkalmazás 80-as portot használja, a portál alapértelmezett sablon hozzáadása AppPort1 (80-as port) a külső terheléselosztó. Ebben az esetben távolítsa el a külső terheléselosztó AppPort1 `loadBalancingRules` és mintavételek menüpontban, így adhat hozzá a belső terheléselosztó:
 
-    ```
+    ```json
     "loadBalancingRules": [
         {
             "name": "LBHttpRule",
@@ -495,7 +495,7 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
 
 5. Vegyen fel egy második `Microsoft.Network/loadBalancers` erőforrás. A belső terheléselosztó létrehozása a hasonlóan néz ki a [csak belső terheléselosztó](#internallb) szakaszt, de használja a "– Int" load balancer változók, és csak az alkalmazás 80-as porton implementálja. Ez eltávolítja `inboundNatPools`, hogy megtartsa az RDP-végpontokra nyilvános terheléselosztón. Ha azt szeretné, az RDP a belső terheléselosztón, helyezze át `inboundNatPools` a külső terheléselosztó a belső terheléselosztóhoz:
 
-    ```
+    ```json
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
             {
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -580,7 +580,7 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
 
 6. A `networkProfile` számára a `Microsoft.Compute/virtualMachineScaleSets` erőforrás, a belső háttér-címkészlet hozzáadása:
 
-    ```
+    ```json
     "loadBalancerBackendAddressPools": [
                                                         {
                                                             "id": "[variables('lbPoolID0')]"

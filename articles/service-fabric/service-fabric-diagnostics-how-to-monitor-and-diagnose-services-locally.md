@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: b4c3bc21591e8472dc8d51309f7431cb5d4421fd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 740864276b8d4d7a40a263a0d6d2e09c3534dbd6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054171"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190904"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>A helyi gép fejlesztési telepítőjének szolgáltatások monitorozása és diagnosztizálása
 > [!div class="op_single_selector"]
@@ -39,12 +39,12 @@ Figyelés, észlelni, diagnosztizálása és hibaelhárítása lehetővé teszi 
 * **Nincs beépített támogatás a Service Fabric a Visual Studio tools ETW-események megtekintése.** Miután a Visual Studio megfelelően van konfigurálva a Service Fabric segítségével a diagnosztikai események megtekintése a Visual Studio ETW-események jelennek meg. 
 
 ## <a name="view-service-fabric-system-events-in-visual-studio"></a>A Service Fabric rendszer események megtekintése a Visual Studióban
-A Service Fabric bocsát ki, mi történik a platform alkalmazásfejlesztők ETW-események. Ha ezt még nem tette meg, lépjen tovább, és kövesse a [az első alkalmazás létrehozása a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md). Ezt az információt a megkezdheti az alkalmazás a diagnosztikai eseménynaplóhoz, a nyomkövetési üzenetek megjelenítése a segítséget.
+A Service Fabric bocsát ki, mi történik a platform alkalmazásfejlesztők ETW-események. Ha ezt még nem tette meg, lépjen tovább, és kövesse a [az első alkalmazás létrehozása a Visual Studióban](service-fabric-tutorial-create-dotnet-app.md). Ezt az információt a megkezdheti az alkalmazás a diagnosztikai eseménynaplóhoz, a nyomkövetési üzenetek megjelenítése a segítséget.
 
 1. Nyissa meg a diagnosztikai események ablakában nem jelenik meg automatikusan, ha a **nézet** lapra a Visual Studióban, majd **Other Windows** , majd **diagnosztikai eseménynaplóban**.
 2. Minden esemény jelzi, hogy a csomópont, az alkalmazás és szolgáltatás, az esemény érkezik standard szintű metaadat-információkat tartalmaz. Az események használatával is végezhet a **események szűrése** az események ablak tetején. Szűrheti, például a **csomópontnév** vagy **szolgáltatás neve.** Esemény részletei dolgozik, ha fel is függesztheti használatával, és a **szüneteltetése** gombra az események ablak tetején, és később események adatveszteség nélküli folytatásához.
    
-   ![A Visual Studio diagnosztikai eseménynapló](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
+   ![Visual Studio Diagnostics Events Viewer](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
 
 ## <a name="add-your-own-custom-traces-to-the-application-code"></a>A saját egyéni nyomkövetési az alkalmazáskód hozzáadása
 A Service Fabric a Visual Studio projektsablonokat tartalmaz mintakódot. A kód bemutatja, hogyan adhat hozzá egyéni kódot ETW-nyomkövetések, amely a Service Fabric a nyomkövetéseket a rendszer mellett a Visual Studio ETW megjelenítő megjelennek. Ez a módszer az előnye, hogy a metaadatok automatikusan hozzáadott nyomkövetéseket, és a Visual Studio diagnosztikai eseménynaplóban már konfigurálva van a megjelenítésükhöz.

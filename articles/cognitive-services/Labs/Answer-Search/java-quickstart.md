@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Válaszkeresés projekt, Java'
+title: 'Gyors útmutató: Project Answer Search, Java'
 titlesuffix: Azure Cognitive Services
 description: A Válaszkeresés projekt Javában történő használatának első lépései.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 66d5488fa0e8f542327b4150d50e4351af6ade55
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 00d302fdddf82eaec98b6d3d63153a260fe7fbc5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469095"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099362"
 ---
-# <a name="quickstart-project-answer-search-query-in-java"></a>Rövid útmutató: Válaszkeresés projekt lekérdezése a Javában
+# <a name="quickstart-project-answer-search-query-in-java"></a>Gyors útmutató: Projekt válasz keresési lekérdezés Java nyelven
 Ez a cikk Javát használ annak bemutatására, hogyan használható a Microsoft Cognitive Services részét képező Bing Answer Search API az Azure-on. Az API egy REST-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre.
  
 A példakód olyan Javát használ, amely csak minimális mértékű külső függőségekkel rendelkezik.  A Mono használatával Linux vagy Mac OS X rendszeren is futtatható.
@@ -30,7 +30,7 @@ Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answe
 
 A következő kód például létrehoz egy `WebRequest` kérést, beállítja a hozzáférési kulcs fejlécét, és hozzáad egy lekérdezési sztringet a „Gibraltár” szóhoz.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
-````
+```
     static String host = "https://api.labs.cognitive.microsoft.com";
     static String path = "/answerSearch/v7.0/search";
 
@@ -46,7 +46,7 @@ A következő kód például létrehoz egy `WebRequest` kérést, beállítja a 
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="complete-code"></a>Teljes kód
 
@@ -57,7 +57,7 @@ A Bing Answer Search API a Bing keresőmotor találatait adja vissza.
 4. A subscriptionKey értékét cserélje le az előfizetéshez használható hozzáférési kulcsra.
 5. Futtassa a programot.
 
-````
+```
 package knowledgeAPI;
 import java.io.InputStream;
 import java.net.*;
@@ -148,7 +148,7 @@ public class KnowledgeSrch {
         }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>További lépések
 - [C# – rövid útmutató](c-sharp-quickstart.md)

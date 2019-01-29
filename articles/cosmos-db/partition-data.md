@@ -6,12 +6,12 @@ author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: dd62e0f4ff110ec8454031f1b66b56025328c33c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 55e9ef0f8bd268f36378c7d34cea95384c6f725e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101479"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099345"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Particionálási és horizontális skálázás az Azure Cosmos DB-ben
 
@@ -27,7 +27,7 @@ A logikai partíció adatbázis-tranzakciók hatóköre határozza meg. A logika
 
 ## <a name="physical-partitions"></a>Fizikai partíciók
 
-Az Azure Cosmos-tároló azáltal, hogy az adatok és az átviteli logikai partíció nagy számú van méretezve. Belső használatra vannak rendelve egy vagy több logikai partíciót egy **fizikai partíciók** , más néven a replikakészlethez replikák készlete áll. Minden replika beállítása az Azure Cosmos database engine példányát futtatja. A replikakészlet lehetővé teszi a fizikai partíciók tartós, magas rendelkezésre állású és egységes tárolja az adatokat. Egy fizikai partíciónak támogatja egy rögzített, maximális összege a tárolás és a fenntartott egységek. Minden egyes replikának, amely magában foglalja a fizikai partíciók örökli a tárhelykvótát. És a egy fizikai partíciónak az összes replika együttesen támogatja a fizikai partíciónként kiosztott átviteli. Az alábbi képen látható, hogyan logikai partíciók globálisan elosztott fizikai partíciókra van leképezve:
+Az Azure Cosmos-tároló azáltal, hogy az adatok és az átviteli logikai partíció nagy számú van méretezve. Belső használatra vannak rendelve egy vagy több logikai partíciót egy **fizikai partíciók** , más néven a replikakészlethez replikák készlete áll. Minden replika beállítása az Azure Cosmos database engine példányát futtatja. A replikakészlet lehetővé teszi a fizikai partíciók tartós, magas rendelkezésre állású és egységes tárolja az adatokat. Egy fizikai partíciónak támogatja a storage és a fenntartott egységek maximális mennyiségét. Minden egyes replikának, amely magában foglalja a fizikai partíciók örökli a tárhelykvótát. És a egy fizikai partíciónak az összes replika együttesen támogatja a fizikai partíciónként kiosztott átviteli. Az alábbi képen látható, hogyan logikai partíciók globálisan elosztott fizikai partíciókra van leképezve:
 
 ![Az Azure Cosmos DB particionálási](./media/partition-data/logical-partitions.png)
 

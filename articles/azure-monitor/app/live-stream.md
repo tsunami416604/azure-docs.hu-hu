@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/28/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 403906a60d16a478dffd313b45aa1ce24e42196a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: f369eb6241a8eb3d44a0a38e243c533da47103e1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119233"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104613"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő Stream metrikák: Figyelő & 1 másodperc késéssel diagnosztizálása
 
@@ -36,19 +36,19 @@ Az élő Stream metrikák a következőket teheti:
 
 [![Élő metrikák Stream-videó](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
+Élő metrikák jelenleg támogatja az ASP.NET, ASP.NET Core, az Azure Functions és a Java-alkalmazások.
+
 ## <a name="get-started"></a>Bevezetés
 
-1. Ha még nem [telepítve van az Application Insights](../../azure-monitor/app/asp-net.md) az ASP.NET-webalkalmazásban vagy [Windows server alkalmazás](../../azure-monitor/app/windows-services.md), most tegye meg. 
-2. **A legújabb verzióra való frissítés** az Application Insights-csomag. A Visual Studióban kattintson jobb gombbal a projektre, és válassza a **Nuget-csomagok kezelése**. Nyissa meg a **frissítések** lapon jelölje **előzetes verzió**, és válassza ki a Microsoft.ApplicationInsights.*-csomagokat.
+1. Ha még nem [telepítse az Application Insights](../../azure-monitor/azure-monitor-app-hub.md) a webalkalmazásban, most tegye meg.
+2. A standard Application Insights-csomag mellett [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) élő metrikastream engedélyezéséhez szükséges.
+3. **A legújabb verzióra való frissítés** az Application Insights-csomag. A Visual Studióban kattintson jobb gombbal a projektre, és válassza a **Nuget-csomagok kezelése**. Nyissa meg a **frissítések** lapra, és válassza ki a Microsoft.ApplicationInsights.*-csomagokat.
 
     Helyezze ismét üzembe alkalmazását.
 
 3. Az a [az Azure portal](https://portal.azure.com), nyissa meg az Application Insights-erőforrást az alkalmazáshoz, és nyissa meg az élő Stream.
 
 4. [A vezérlő csatornát](#secure-the-control-channel) használatakor előfordulhat, hogy bizalmas adatok, például az ügyfél-nevek a szűrőket.
-
-
-![Az Áttekintés panelen kattintson az élő Stream](./media/live-stream/live-stream-2.png)
 
 ### <a name="no-data-check-your-server-firewall"></a>Nincs adat? Ellenőrizze a kiszolgáló tűzfalán
 
@@ -69,7 +69,7 @@ Ellenőrizze a [kimenő portok az élő metrikák Stream](../../azure-monitor/ap
 
 ## <a name="select-and-filter-your-metrics"></a>Válassza ki, és a mérőszámok szűrése
 
-(A klasszikus ASP.NET-alkalmazások a legfrissebb SDK-val használható.)
+(Az ASP.NET, ASP.NET Core és az Azure Functions (v2) használható.)
 
 Egyéni KPI élő tetszőleges szűrők alkalmazásával bármely Application Insights telemetria a portálról figyelheti. Kattintson a szűrő vezérlőelem megjelenít, amikor Ön rámutatáskor bármelyik a diagramok. Az alábbi ábra egy egyéni kérések száma KPI szűrőket URL-CÍMÉT és időtartama attribútummal van küldik az ábrázolást. Ellenőrizze a Stream előzetes szakasszal, amely egy élő adás a tetszőleges időpontban megadott feltételeknek megfelelő telemetria megjeleníti a szűrőket. 
 
@@ -111,11 +111,11 @@ Egyéni élő metrikák Stream 2.4.0-beta2 verzió érhető el, vagy az újabb [
 A megadott egyéni szűrők feltételek lesznek visszaküldve az élő mérőszámok az Application Insights SDK összetevőt. A szűrők potenciálisan bizalmas adatokat például customerIDs tartalmazhatnak. Hogy a csatorna biztonságos mellett a kialakítási kulcsot API titkos kulccsal.
 ### <a name="create-an-api-key"></a>API-kulcs létrehozása
 
-![Api-kulcs létrehozása](./media/live-stream/live-metrics-apikeycreate.png)
+![API-kulcs létrehozása](./media/live-stream/live-metrics-apikeycreate.png)
 
 ### <a name="add-api-key-to-configuration"></a>Konfigurációs API-kulcs hozzáadása
 
-### <a name="classic-aspnet"></a>Klasszikus ASP.NET
+### <a name="classic-aspnet"></a>Classic ASP.NET
 
 Az applicationinsights.config fájlban a QuickPulseTelemetryModule a AuthenticationApiKey hozzá:
 ``` XML
@@ -161,6 +161,12 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ```
 
+### <a name="azure-function-apps"></a>Azure Function Apps
+
+A csatorna, amely az API biztonságossá tétele Azure-függvény alkalmazások (v2) kulcs egy környezeti változó lehet elérni. 
+
+Az Application Insights-erőforrás belül egy API-kulcs létrehozása, majd **Alkalmazásbeállítások** a Függvényalkalmazás számára. Válassza ki **új beállítás hozzáadása** , és adjon meg egy `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` és a egy értéket, amely megfelel az API-kulcsot.
+
 ### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (kell Application Insights az ASP.NET Core SDK 2.3.0-beta vagy újabb)
 
 A startup.cs fájlban módosítsa a következőképpen:
@@ -176,7 +182,6 @@ Ezután belül a ConfigureServices metódus hozzáadása:
 ``` C#
 services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
-
 
 Ha ismeri fel, és a csatlakoztatott kiszolgálókra megbízható, megpróbálhatja az egyéni szűrők nélkül a hitelesített csatornát. Ez a beállítás hat hónapig érhető el. Ez a felülbírálás kötelező egyszer minden új munkamenetet, vagy ha új kiszolgálót online állapotba kerül.
 

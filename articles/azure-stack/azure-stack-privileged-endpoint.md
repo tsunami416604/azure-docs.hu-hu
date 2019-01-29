@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: df1f8d805c950bdfbe2c18f365a450a6d630891b
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: a9ca61d7845c427429282885c658f4a4cb9b7b7a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300438"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097663"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>A kiemelt jogosultságú végpont használata az Azure Stackben
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stack operátorait szerint a felügyeleti portálon, a PowerShell vagy az Azure Resource Manager API-k legtöbb napi szintű felügyeleti feladatokhoz használjon. Azonban az egyes kevésbé gyakori műveleteket kell használnia a *kiemelt végponthoz* (EGP). Az EGP egy előre konfigurált távoli PowerShell-konzolt, és éppen elegendő lehetőségekkel segíti elő a szükséges feladat elvégzését. A végpontok [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview) elérhetővé a parancsmag csak korlátozott készletével. Az EGP eléréséhez, és meghívja a parancsmagok korlátozott készletét, egy alacsony jogosultsági szintű fiókot használja. Nem rendszergazdai fiókok szükség. A fokozott biztonság érdekében parancsfájlok nem engedélyezett.
 
@@ -52,32 +52,32 @@ Mielőtt elkezdené integrált rendszer ezt az eljárást, győződjön meg arr�
 
     - Az integrált rendszereken, futtassa a következő parancsot egy rendszergazda jogú Windows PowerShell-munkamenetben az EGP a megerősített virtuális gépen, a hardver életciklus gazdagép-vagy a Privileged Access Workstation megbízható gazdagépként hozzáadni.
 
-      ````PowerShell
+      ```PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
-      ````
+      ```
     - Ha a ASDK futtatja, jelentkezzen be a development kit gazdagépre.
 
 2. A megerősített futó virtuális géphez a hardver életciklus-gazdagép vagy a Privileged Access Workstation nyisson meg egy Windows PowerShell-munkamenetet. Futtassa a következő parancsok futtatásával hozzon létre egy távoli munkamenetet a virtuális gépen, amelyen az EGP:
  
     - Az integrált rendszereken:
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         Enter-PSSession -ComputerName <IP_address_of_ERCS> `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ````
+      ```
       A `ComputerName` paraméter lehet, az IP-cím vagy egy virtuális gépet, amelyen az EGP DNS-nevét. 
     - Ha a ASDK futtatja:
      
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         Enter-PSSession -ComputerName azs-ercs01 `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```` 
+      ``` 
    Amikor a rendszer kéri, használja a következő hitelesítő adatok:
 
-      - **Felhasználónév**: formátumban adja meg a CloudAdmin fiók  **&lt; *Azure Stack-tartományhoz*&gt;\cloudadmin**. (ASDK, az a felhasználónév az **azurestack\cloudadmin**.)
+      - **Felhasználónév**: Adja meg a CloudAdmin fiók formátumban  **&lt; *Azure Stack-tartományhoz*&gt;\cloudadmin**. (ASDK, az a felhasználónév az **azurestack\cloudadmin**.)
       - **Jelszó**: Adja meg ugyanazt a jelszót a Azurestack tartományi rendszergazdai fiók a telepítés során megadott.
 
     > [!NOTE]
@@ -98,7 +98,7 @@ Mielőtt elkezdené integrált rendszer ezt az eljárást, győződjön meg arr�
     - Get-ThirdPartyNotices
     - Mérték-Object
     - New-CloudAdminUser
-    - Kimenő irányú alapértelmezett
+    - Out-Default
     - Remove-CloudAdminUser
     - Select-Object
     - Set-CloudAdminUserPassword
@@ -124,38 +124,38 @@ Importálja a EGP-munkamenetet a helyi gépén, tegye a következőket:
 
     -A egy integrált rendszer, a következő parancsot egy rendszergazda jogú Windows PowerShell-munkamenetben az EGP a megerősített virtuális gépen, a hardver életciklus gazdagép-vagy a Privileged Access Workstation megbízható gazdagépként hozzáadni a.
 
-      ````PowerShell
+      ```PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
-      ````
+      ```
     - Ha a ASDK futtatja, jelentkezzen be a development kit gazdagépre.
 
 2. A megerősített futó virtuális géphez a hardver életciklus-gazdagép vagy a Privileged Access Workstation nyisson meg egy Windows PowerShell-munkamenetet. Futtassa a következő parancsok futtatásával hozzon létre egy távoli munkamenetet a virtuális gépen, amelyen az EGP:
  
     - Az integrált rendszereken:
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ````
+      ```
       A `ComputerName` paraméter lehet, az IP-cím vagy egy virtuális gépet, amelyen az EGP DNS-nevét. 
     - Ha a ASDK futtatja:
      
-      ````PowerShell
+      ```PowerShell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName azs-ercs01 `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```` 
+      ``` 
    Amikor a rendszer kéri, használja a következő hitelesítő adatok:
 
-      - **Felhasználónév**: formátumban adja meg a CloudAdmin fiók  **&lt; *Azure Stack-tartományhoz*&gt;\cloudadmin**. (ASDK, az a felhasználónév az **azurestack\cloudadmin**.)
+      - **Felhasználónév**: Adja meg a CloudAdmin fiók formátumban  **&lt; *Azure Stack-tartományhoz*&gt;\cloudadmin**. (ASDK, az a felhasználónév az **azurestack\cloudadmin**.)
       - **Jelszó**: Adja meg ugyanazt a jelszót a Azurestack tartományi rendszergazdai fiók a telepítés során megadott.
 
 3. A EGP munkamenet importálja a helyi gépen
-    ````PowerShell 
+    ```PowerShell 
         Import-PSSession $session
-    ````
+    ```
 4. Most-kiegészítés használata, és hajtsa végre a parancsfájl-kezelési a szokásos módon a helyi PowerShell-munkamenetet a functions és az EGP-parancsmagok a nélkül csökkentése az Azure Stack biztonsági állapotát. Jó munkát!
 
 
@@ -178,4 +178,5 @@ A fájlmegosztás sikeresen átkerülnek a szöveges naplófájlok, miután azok
 
 
 ## <a name="next-steps"></a>További lépések
+
 [Az Azure Stack-diagnosztikai eszközök](azure-stack-diagnostics.md)

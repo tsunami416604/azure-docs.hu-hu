@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 60fe7296d95a7746fd703c3a45349faf294e5bbd
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: ce88c8c4850e5226ddda12ce5ee0e1d18b51ea5c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320599"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104082"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Gyakori kérdések a Service Fabric
 
@@ -73,7 +73,7 @@ Szükség van egy éles fürtöt legalább 5 csomóponttal rendelkeznek, a köve
 
 Szeretnénk, hogy a fürt két csomópont egyidejű meghibásodása esetén érhető el. A Service Fabric-fürtön elérhető legyen a rendszer szolgáltatások elérhetőnek kell lennie. Állapotalapú szolgáltatások, például elnevezési szolgáltatás és feladatátvételi kezelő szolgáltatás, nyomon követheti, mely szolgáltatások a fürtben lett telepítve, és ha azok még jelenleg üzemel, erős konzisztencia függenek. A konzisztenciát, függ beszerezni lehetővé teszi egy *kvórum* bármely azok állapotát az adott frissítés szolgáltatási, ahol a kvórum jelenti a szigorú többsége a replikák (N/2 + 1) egy adott szolgáltatáshoz. Így két csomópontot (így a rendszer szolgáltatás két replika egyidejű elvesztésével) egyidejű adatvesztés elleni rugalmas szeretnénk, ha azt kell rendelkeznie a fürt méretének nullánál - QuorumSize > = 2, amely arra kényszeríti a minimális méretét öt. Megtekintheti, fontolja meg a fürt rendelkezik N csomópontokat, és N replika, a rendszer szolgáltatás – egy minden egyes csomóponton. A kvórum rendszerszolgáltatás mérete (N/2 + 1). A fenti egyenlótlenség néz N - (N/2 + 1) > = 2. Két esetekben érdemes figyelembe venni: Ha N még akkor is, és ha N páratlan. Ha N még akkor is, például: N = 2\*m ahol m > = 1, 2 egyenlótlenség tűnik\*m - (2\*m/2 + 1) > 2-es vagy m = > = 3. Az n-re legalább 6, és ez mikor elért m = 3. Másrészről, ha N páratlan, mondjuk N = 2\*m + 1 where m > = 1, 2 egyenlótlenség tűnik\*m + 1 – ((2\*m + 1) / 2 + 1) > = 2-es vagy 2\*m + 1 – (m + 1) > 2-es vagy m = > = 2. Az n-re legalább 5, és ez mikor elért m = 2. Ezért között szereplő összes N, amelyek megfelelnek a fürt méretének nullánál - QuorumSize egyenlótlenség > = 2, a minimális érték 5.
 
-Vegye figyelembe, a fenti argumentum azt rendelkezik feltételezi, hogy minden csomópont egy replikát a rendszer szolgáltatás, így a kvórum mérete számított a fürtben található csomópontok száma alapján. Azonban módosításával *TargetReplicaSetSize* azt teheti, hogy a kvórum mérete kisebb, mint (N / 2 + 1) amely előfordulhat, hogy adjon a benyomást, hogy mi sikerült fürt kisebb, mint 5 csomópontot, és továbbra is rendelkeznek 2 extra csomópont feletti a kvórum mérete. Például egy 4 csomópont fürtben elkészülünk a TargetReplicaSetSize 3, ha a kvórum TargetReplicaSetSize alapján mérete (3/2 + 1) vagy 2, így van CluserSize - QuorumSize = 4-2 > = 2. Azonban nem tudjuk garantálni, hogy a rendszer szolgáltatás lesz vagy újabb kvórum azt elvesztése minden virtuálisgép-pár csomópontok egyidejűleg, annak oka az lehet, hogy a két csomópont elveszítjük két replika is üzemeltető, így a rendszer szolgáltatás (csak egyetlen replika kellene balra) kvórum elvesztése lépnek egy ND nem lesz elérhető.
+Vegye figyelembe, a fenti argumentum azt rendelkezik feltételezi, hogy minden csomópont egy replikát a rendszer szolgáltatás, így a kvórum mérete számított a fürtben található csomópontok száma alapján. Azonban módosításával *TargetReplicaSetSize* azt teheti, hogy a kvórum mérete kisebb, mint (N / 2 + 1) amely előfordulhat, hogy adjon a benyomást, hogy mi sikerült fürt kisebb, mint 5 csomópontot, és továbbra is rendelkeznek 2 extra csomópont feletti a kvórum mérete. Például egy 4 csomópont fürtben elkészülünk a TargetReplicaSetSize 3, ha a kvórum TargetReplicaSetSize alapján mérete (3/2 + 1) vagy 2, így van a fürt méretének nullánál - QuorumSize = 4-2 > = 2. Azonban nem tudjuk garantálni, hogy a rendszer szolgáltatás lesz vagy újabb kvórum azt elvesztése minden virtuálisgép-pár csomópontok egyidejűleg, annak oka az lehet, hogy a két csomópont elveszítjük két replika is üzemeltető, így a rendszer szolgáltatás (csak egyetlen replika kellene balra) kvórum elvesztése lépnek egy ND nem lesz elérhető.
 
 Végzett most vizsgálja meg néhány lehetséges fürtkonfigurációk:
 

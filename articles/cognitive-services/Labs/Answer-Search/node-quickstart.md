@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Válaszkeresés projekt, Node'
+title: 'Gyors útmutató: Projekt válaszkeresés, csomópont'
 description: A Válaszkeresés projekt használatának első lépései a Node-dal.
 services: cognitive-services
 author: mikedodaro
@@ -9,14 +9,14 @@ ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 1afd029803fc7d2709a9a9abe840db6d7f52498d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 3fd10bd08aa86458173dd1d88e2767f6f9ca4191
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465746"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104356"
 ---
-# <a name="quickstart-project-answer-search-with-node"></a>Rövid útmutató: A Válaszkeresés projekt használata a Node-dal
+# <a name="quickstart-project-answer-search-with-node"></a>Gyors útmutató: Válaszkeresés projekt csomópont
 
 Az alábbi Node-példa létrehoz egy lekérdezést a Yosemite Nemzeti Parkkal kapcsolatos információk vonatkozásában.
 
@@ -38,7 +38,7 @@ Implementálására a következő lépésekben kerül sor:
 
 Az útmutatóban használt teljes kód a következő:
 
-````
+```
 'use strict';
 
 let https = require('https');
@@ -85,7 +85,7 @@ let Search = function () {
 
 Search();
 
-````
+```
 
 ## <a name="next-steps"></a>További lépések
 - [C#-mintakód](c-sharp-quickstart.md)

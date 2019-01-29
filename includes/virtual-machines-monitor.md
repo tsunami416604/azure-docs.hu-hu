@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: b9fa5fff46fa330a55125053b831c780f21f6e8f
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: a13ce8d3dc71be83e05fae5bd07f30f413ce59f2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54404686"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55148028"
 ---
 A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése a diagnosztikai számos lehetőségek előnyeit, és az adatok. Ehhez egyszerűen [figyelési](../articles/azure-monitor/overview.md) a virtuális gép is használhatja az Áttekintés képernyő a virtuális gép az Azure Portalon. Használhat [bővítmények](../articles/virtual-machines/windows/extensions-features.md) diagnosztika konfigurálása további metrikai adatok gyűjtésére a virtuális gépeken. Is használhatja fejlett figyelési lehetőségek, például [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) és [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -41,7 +41,7 @@ Létrehozhat [riasztások](../articles/azure-monitor/platform/alerts-overview.md
 
 [Az Azure Resource health](../articles/service-health/resource-health-overview.md) segít diagnosztizálni és a támogatás igénylésében, ha egy Azure-beli probléma kihat az erőforrásaira. Tájékoztatja az erőforrásai aktuális és korábbi állapotáról, és segít a problémák kezelésében. A Resource Health műszaki támogatást nyújt, ha segítségre van szüksége az Azure szolgáltatásait érintő problémákkal kapcsolatban.
 
-## <a name="logs"></a>Logs
+## <a name="azure-activity-log"></a>Azure-tevékenységnapló
 
 A [Azure-tevékenységnapló](../articles/azure-monitor/platform/activity-logs-overview.md) van egy előfizetési napló, amely az Azure-ban bekövetkezett események előfizetés-szintű betekintést nyújt. A napló az adatok az Azure Resource Manager frissítéseket a Service Health-események operatív adatok foglal magában. Tevékenységnapló az Azure Portalon a virtuális gép a napló megtekintése gombra.
 
@@ -64,11 +64,13 @@ A diagnosztikai naplók a lehetőségek a következők:
 
 ## <a name="advanced-monitoring"></a>Speciális figyelés
 
-- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) egy szolgáltatás, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson. Bővítmény telepítheti egy [Linux rendszerű virtuális gép](../articles/virtual-machines/linux/extensions-oms.md) vagy egy [Windows virtuális gép](../articles/virtual-machines/windows/extensions-oms.md) , amely a Log Analytics-ügynököt telepít, és regisztrálja a virtuális gép be egy meglévő Log Analytics-munkaterületet.
+- [Az Azure Monitor](../articles/azure-monitor/overview.md) egy szolgáltatás, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény fenntartása érdekében. Ez gyűjtéséhez, elemzéséhez és a telemetriai adatokat a felhőben működő átfogó megoldást kínál, és a helyszíni környezetekben. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek. Egy bővítmény telepítheti egy [Linux rendszerű virtuális gép](../articles/virtual-machines/linux/extensions-oms.md) vagy egy [Windows virtuális gép](../articles/virtual-machines/windows/extensions-oms.md) , amely a naplóadatokat gyűjthet, és a Log Analytics-munkaterületen tárolja a Log Analytics-ügynököket telepíti.
 
-    A Windows és Linux rendszerű virtuális gépek esetében az ajánlott módszer a naplókat és mérőszámokat gyűjtése a Log Analytics-ügynök telepítésével van. A Log Analytics-ügynök telepítése a virtuális gép legegyszerűbben az [Virtuálisgép-bővítménnyel](../articles/log-analytics/log-analytics-azure-vm-extension.md). A bővítmény használata leegyszerűsíti a telepítés folyamatát és automatikusan konfigurálja az ügynököt, hogy elküldje az adatokat a megadott Log Analytics-munkaterületre. Az ügynök automatikusan frissül, hogy mindig a legújabb funkciókkal és javításokkal bővüljön.
+    A Windows és Linux rendszerű virtuális gépek esetében az ajánlott módszer a naplók gyűjtésére szolgáló van, a Log Analytics-ügynök telepítésével. A Log Analytics-ügynök telepítése a virtuális gép legegyszerűbben az [Virtuálisgép-bővítménnyel](../articles/log-analytics/log-analytics-azure-vm-extension.md). A bővítmény használata leegyszerűsíti a telepítés folyamatát és automatikusan konfigurálja az ügynököt, hogy elküldje az adatokat a megadott Log Analytics-munkaterületre. Az ügynök automatikusan frissül, hogy mindig a legújabb funkciókkal és javításokkal bővüljön.
 
 - [Network Watcher](../articles/network-watcher/network-watcher-monitoring-overview.md) segítségével nyomon követheti a virtuális gép és az összes kapcsolódó erőforrás valamelyikéhez kapcsolódnak a hálózathoz, azok tartoznak. A Network Watcher-ügynök bővítmény telepíthető egy [Linux rendszerű virtuális gép](../articles/virtual-machines/linux/extensions-nwa.md) vagy egy [Windows virtuális gép](../articles/virtual-machines/windows/extensions-nwa.md).
+
+- [A virtuális gépek az Azure Monitor](../articles/azure-monitor/insights/vminsights-overview.md) ipari méretekben, elemzésével, a teljesítmény és a Windows és Linux rendszerű virtuális gépekhez, beleértve azok eltérő folyamatokat és egyéb erőforrások és a külső összekapcsolt függőségek állapotát figyeli az Azure-beli virtuális gépek (VM) dolgozza fel. 
 
 ## <a name="next-steps"></a>További lépések
 - Lépésről lépésre bemutatjuk a [monitorozása az Azure PowerShell használatával Windows virtuális gép](../articles/virtual-machines/windows/tutorial-monitoring.md) vagy [monitorozása az Azure CLI-vel Linux virtuális gépek](../articles/virtual-machines/linux/tutorial-monitoring.md).

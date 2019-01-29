@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 36496dd80111689b510bbbd27edc35a454d230a3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f865d08f742ebd1072b80a95960609e6ae5f4a82
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448292"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098408"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>API-verzióprofilok használata nyissa meg az Azure Stackben
 
@@ -33,9 +33,9 @@ A profil a különböző szolgáltatásokhoz különböző verziójú különbö
 
 A Go SDK profilok érhetők el a profilok elérési úton, a verziójuk a **éééé-hh-nn** formátumban. Most, a legújabb Azure Stack API profil verzió **2017-03-09**. Az adott szolgáltatás importálására egy profilt, a megfelelő modul importálása a profil. Például az importálandó **számítási** a szolgáltatás **2017-03-09** profil, a következő kóddal:
 
-````go
+```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute"
-````
+```
 
 ## <a name="install-azure-sdk-for-go"></a>A Góhoz készült Azure SDK telepítése
 

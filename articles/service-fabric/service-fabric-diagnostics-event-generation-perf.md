@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 843feb83b8202d3ef8e2c6c8c60cb9b509048530
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 114d71227e3cf3d0f235fc63135534b1030d4adc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290773"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188339"
 ---
 # <a name="performance-metrics"></a>Teljesítmény-mérőszámok
 
@@ -80,7 +80,7 @@ Az alábbi számlálókat gyűjtése, ha a fürtön helyezi üzembe a .NET-szolg
 
 A Service Fabric hoz létre egyéni teljesítményszámlálók jelentős mennyiségű. Ha az SDK-t, látható az átfogó listának a Windows-gépen az alkalmazás teljesítményének figyelése (Start > Teljesítményfigyelő). 
 
-Az alkalmazások telepíti, akkor a fürthöz, ha használja a Reliable Actors, adja hozzá a countes `Service Fabric Actor` és `Service Fabric Actor Method` kategóriák (lásd: [Service Fabric Reliable Actors diagnosztikai](service-fabric-reliable-actors-diagnostics.md)).
+Az alkalmazások a telepíti, akkor a fürthöz, ha használja a Reliable Actors, adjon hozzá számlálókat `Service Fabric Actor` és `Service Fabric Actor Method` kategóriák (lásd: [Service Fabric Reliable Actors diagnosztikai](service-fabric-reliable-actors-diagnostics.md)).
 
 A Reliable Services vagy a szolgáltatás távelérésének lehetővé tétele, hogy hasonló módon van-e `Service Fabric Service` és `Service Fabric Service Method` kategóriák, hogy meg kell gyűjteni számlálókat, lásd: számláló [figyelés szolgáltatás távelérésének lehetővé tétele a](service-fabric-reliable-serviceremoting-diagnostics.md) és [megbízható teljesítményszámlálók Services](service-fabric-reliable-services-diagnostics.md#performance-counters). 
 

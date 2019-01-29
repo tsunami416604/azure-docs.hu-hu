@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric szereplője törlése |} Microsoft Docs
-description: 'Útmutató: manuálisan törölje a Service Fabric Reliable Actors és azok állapota.'
+title: Az Azure Service Fabric actors törlése |} A Microsoft Docs
+description: Ismerje meg, hogy manuálisan a Service Fabric Reliable Actors és állapotuk törlése.
 services: service-fabric
 documentationcenter: .net
 author: amanbha
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: fa4fe018a9e6b32158f5bbd13c44ff57069cb1cf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d6ac5ea79ed1eb47bc71a520761050889fe6edd8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208335"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178171"
 ---
-# <a name="delete-reliable-actors-and-their-state"></a>Törli a Reliable Actors és azok állapota
-A deaktivált szereplője szemétgyűjtés csak a szükségtelenné vált az aktor objektum, de nem távolítja el egy szereplő állapotkezelője tárolt adatokat. Egy szereplő újraaktiválásakor adataik újra szeretné elérhetővé tenni azt az állapotkezelő segítségével. Olyan esetekben, ahol szereplője adat tárolása állapotkezelője és inaktiválása, de soha nem újra aktiválni lehet szükség az adatok törlése.
+# <a name="delete-reliable-actors-and-their-state"></a>Reliable Actors és állapotuk törlése
+Inaktív szereplők szemétgyűjtés csak megtisztítja a szereplő objektum, de nem távolítja el az aktor State Manager tárolt adatokat. Egy aktor újraaktiválásakor az adatok újra szeretné elérhetővé tenni azt a State Manager keresztül. Azokban az esetekben, ahol actors tárolja az adatokat az State Manager és az inaktiválása, de soha nem kapcsolta be újra azt lehet szükség az adatok törlése.
 
-A [szereplő szolgáltatás](service-fabric-reliable-actors-platform.md) függvény biztosít távoli hívó szereplője törlése:
+A [Aktorszolgáltatás](service-fabric-reliable-actors-platform.md) actors töröl egy távoli hívó függvényt biztosít:
 
 ```csharp
 ActorId actorToDelete = new ActorId(id);
@@ -43,24 +43,24 @@ ActorService myActorServiceProxy = ActorServiceProxy.create(
 myActorServiceProxy.deleteActorAsync(actorToDelete);
 ```
 
-A következő hatásai vannak, attól függően, hogy-e a szereplő jelenleg aktív törlése egy szereplő rendelkezik:
+A következő hatásai vannak-e az aktor a jelenleg aktív függően egy szereplő törlése rendelkezik:
 
-* **Aktív szereplő**
-  * Aktor aktív szereplője lista törlődik, és inaktív.
-  * Állapotában véglegesen törlődik.
-* **Inaktív szereplő**
-  * Állapotában véglegesen törlődik.
+* **Aktív Aktor**
+  * Aktor eltávolítják az active actors listát, és az inaktiválása.
+  * Állapotában a véglegesen törlődik.
+* **Inaktív Aktor**
+  * Állapotában a véglegesen törlődik.
 
-Nem hívható meg egy szereplő magát az aktor módszerek egyikét a törölni, mert a szereplő nem lehet törölni, amelyben a futtatókörnyezet kapott a zárolási körül szereplő hívása egyszálas hozzáférés kényszerítésére az aktor hívás környezeten belül végrehajtása közben.
+Egy aktor nelze volat törölni magát az aktor módszerek közül a, mert az aktor nem lehet törölni, amelyben a futtatókörnyezet kapott körül actor-hívás egyszálas hozzáférés zárolása egy aktor hívás környezeten belül végrehajtása közben.
 
-További információ a Reliable Actors, olvassa el az alábbiakat:
-* [Aktor időzítők és az emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
-* [Szereplő események](service-fabric-reliable-actors-events.md)
-* [Aktor rögzítve](service-fabric-reliable-actors-reentrancy.md)
-* [Aktor diagnosztika és teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)
-* [Aktor API referenciadokumentációt](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+Reliable actors – további információért olvassa el a következőket:
+* [Actors – időzítők és emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
+* [Actors-események](service-fabric-reliable-actors-events.md)
+* [Actors – újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
+* [Actors diagnosztizálása és teljesítményfigyelése](service-fabric-reliable-actors-diagnostics.md)
+* [Aktor API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [C#-minta kódja](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Java-mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

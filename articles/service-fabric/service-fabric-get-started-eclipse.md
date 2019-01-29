@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: a9888a23088949b5373aa0eef7d4df3b3064466f
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 250931c9b53692dff4006a0114b6da20948b3f59
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358585"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096670"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Az Eclipse Service Fabric beépülő moduljának Java alkalmazásfejlesztése
 Az Eclipse a Java-fejlesztők által leggyakrabban használt integrált fejlesztőkörnyezetek (IDE-k) közé tartozik. Ebben a cikkben azt ismertetjük, hogyan állíthatja be az Eclipse fejlesztői környezetet az Azure Service Fabrickel való használathoz. Megtudhatja, hogyan telepítheti a Service Fabric beépülő modult, hogyan hozhat létre Service Fabric-alkalmazást, és hogyan helyezhet üzembe Service Fabric-alkalmazásokat helyi vagy távoli Service Fabric-fürtön az Eclipse-ben. 
@@ -37,7 +37,7 @@ Telepíthet egy Service Fabric beépülő modult az Eclipse-en. A beépülő mod
 
 Telepítse az Eclipse Neon vagy újabb verzióját az [Eclipse webhelyéről](https://www.eclipse.org).  A Buildship 2.2.1-es vagy újabb verzióját is telepítheti (a Service Fabric beépülő modul nem kompatibilis a Buildship régebbi verzióival):
 -   A telepített összetevők verziójának ellenőrzéséhez az Eclipse-ben lépjen a **Help** > **About Eclipse** > **Installation Details** (Súgó > Az Eclipse névjegye > Telepítés részletei) területre.
--   A Buildship frissítéséért lásd: [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez).
+-   A buildship frissítéséért lásd [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update].
 -   Az Eclipse frissítéseinek kereséséhez és telepítéséhez lépjen a **Help** > **Check for Updates** (Súgó > Frissítések keresése) területre.
 
 A Service Fabric beépülő modul telepítéséhez az Eclipse-ben lépjen a **Help** > **Install New Software** (Súgó > Új szoftver telepítése) területre.
@@ -112,7 +112,7 @@ A Service Fabric-alkalmazás létrehozása után a következő lépésekkel tele
 
 Az eclipse-ben a helyi fürt használata az alkalmazás hibakeresése kapcsolatban lásd: [Java szolgáltatás hibakeresése az Eclipse](./service-fabric-debugging-your-application-java.md).
 
-Az alkalmazás a helyi fürt wuth is telepítheti a **alkalmazás közzététele** parancsot:
+Az alkalmazás a helyi fürtre is telepíthet a **alkalmazás közzététele** parancsot:
 
 1. Kattintson a jobb gombbal a Service Fabric-alkalmazásokat, és válassza **Service Fabric**.
 2. Kattintson a helyi menüből **alkalmazás közzététele...** .
@@ -165,7 +165,7 @@ Az alkalmazás a felhőbe való közzétételéhez, kövesse az alábbi lépése
 
 Biztonságos Linux-fürtökön Ha az alkalmazás tartalmaz a Reliable Services-szolgáltatások, is szüksége lesz egy tanúsítványt, amely a szolgáltatások a Service Fabric-futtatókörnyezet API-k hívásához konfigurálása. További tudnivalókért lásd: [egy Reliable Services-alkalmazás Linux-fürtök konfigurálása](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
 
-A gyors útmutató bemutatja, hogyan Java nyelven írt biztonságos Linux-fürt Service Fabric Reliable Services-alkalmazás üzembe helyezése, lásd: [Quckstart: Java Reliable Services-alkalmazás üzembe helyezése](./service-fabric-quickstart-java-reliable-services.md).
+A gyors útmutató bemutatja, hogyan Java nyelven írt biztonságos Linux-fürt Service Fabric Reliable Services-alkalmazás üzembe helyezése, lásd: [a rövid útmutató: Java Reliable Services-alkalmazás üzembe helyezése](./service-fabric-quickstart-java-reliable-services.md).
 
 ## <a name="deploy-a-service-fabric-application-by-using-eclipse-run-configurations"></a>Alkalmazás üzembe helyezése Service Fabric Eclipse futtatási konfigurációkat használatával
 
@@ -211,7 +211,7 @@ Ha bejelöli az **Automatically update application and service versions** (Alkal
 
 ## <a name="upgrade-your-service-fabric-java-application"></a>A Service Fabric Java-alkalmazásának frissítése
 
-Frissítési forgatókönyv esetén tegyük fel, hogy az **App1** projektet hozta létre a Service Fabric beépülő modullal az Eclipse-ben. A projektet a beépülő modullal helyezte üzembe a **fabric:/App1Application** nevű alkalmazás létrehozásához. Az alkalmazás típusa **App1AppicationType**, a verziója pedig 1.0. A rendelkezésre állás megszakítása nélkül szeretné frissíteni az alkalmazást.
+Frissítési forgatókönyv esetén tegyük fel, hogy az **App1** projektet hozta létre a Service Fabric beépülő modullal az Eclipse-ben. A projektet a beépülő modullal helyezte üzembe a **fabric:/App1Application** nevű alkalmazás létrehozásához. Az alkalmazástípus **App1ApplicationType**, a verziója pedig 1.0. A rendelkezésre állás megszakítása nélkül szeretné frissíteni az alkalmazást.
 
 Először végezzen módosítást az alkalmazáson, majd építse újra a módosított szolgáltatást. Frissítse a módosított szolgáltatás jegyzékfájlját (ServiceManifest.xml) a szolgáltatás frissített verzióival (és a megfelelő Code, Config vagy Data értékkel). Módosítsa az alkalmazás jegyzékfájlját is (ApplicationManifest.xml) az alkalmazás frissített verziószámával és a módosított szolgáltatással.  
 
@@ -230,7 +230,7 @@ Nemrégiben áthelyeztük a Service Fabric Java-kódtárakat a Service Fabric Ja
 
 ## <a name="next-steps"></a>További lépések
 
-- Gyors lépések az alkalmazásfejlesztés Java Reliable szolgáltatásalkalmazás és üzembe helyezése, helyileg és az Azure-ba, lásd: [Quckstart: Java Reliable Services-alkalmazás üzembe helyezése](./service-fabric-quickstart-java-reliable-services.md).
+- Gyors lépések az alkalmazásfejlesztés Java Reliable szolgáltatásalkalmazás és üzembe helyezése, helyileg és az Azure-ba, lásd: [a rövid útmutató: Java Reliable Services-alkalmazás üzembe helyezése](./service-fabric-quickstart-java-reliable-services.md).
 - A helyi fürtön lévő Java-alkalmazás hibakeresése kapcsolatban lásd: [Java szolgáltatás hibakeresése az Eclipse](./service-fabric-debugging-your-application-java.md).
 - Megtudhatja, hogyan figyelheti és diagnosztizálhatja a Service Fabric-alkalmazásokat, lásd: [figyelése és diagnosztizálása a szolgáltatások a helyi gép fejlesztési beállítása](./service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
 

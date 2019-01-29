@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 87003a053823cfc257a3b6f41699feefadbbcc66
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 28958627ee66d0586fabff30aa3e5d041fb7dd80
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835165"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196752"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>A PIM az Azure AD directory szerepkör-beállítások konfigurálása
 
@@ -77,7 +77,7 @@ Használja a **multi-factor Authentication** kapcsolót, hogy adja meg a felhasz
   * Feltételes hozzáférésű rendszergazda
   * CRM-szolgáltatásadminisztrátor
   * Ügyfélszéf hozzáférés-jóváhagyója
-  * Directory-írók
+  * Címtárírók
   * Exchange-rendszergazda
   * Globális rendszergazda
   * Information Protection-rendszergazda

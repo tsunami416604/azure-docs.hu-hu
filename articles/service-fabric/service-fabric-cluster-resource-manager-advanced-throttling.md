@@ -1,6 +1,6 @@
 ---
-title: A Service Fabric-fürt erőforráskezelő-szabályozás |} Microsoft Docs
-description: Ismerje meg, a szabályozások a Service Fabric fürt-kezelő által biztosított konfigurálásához.
+title: A Service Fabric fürterőforrás-kezelő a szabályozás |} A Microsoft Docs
+description: Megtanulhatja, hogyan konfigurálhatja a szabályozások a Service Fabric fürt Resource Manager által biztosított.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e9db1070066a2a02b72b5cc051e59d8b04dc9928
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4c86655b650464f1debadab35fdd82611d17ad81
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205127"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092339"
 ---
-# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>A Service Fabric fürt erőforrás-kezelő szabályozása
-Akkor is, ha megfelelően konfigurálta a erőforrás-kezelőt, a fürt képes lekérni megszakad. Például lehet egyidejű csomópont és a tartalék tartomány hibák - mi történne, a frissítés során történt? A fürt erőforrás-kezelő mindig megpróbálja mindent, javítsa ki próbálta átrendezéséhez, és hárítsa el a fürt a fürt erőforrásait fel. Szabályozások biztosítható a backstop, hogy a fürt használhassa erőforrások stabilizálásához – térjen vissza a csomópontokat, a hálózati partíciók javítandó, javított bits telepítve.
+# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>A Service Fabric-fürt Resource Manager-szabályozás
+Akkor is, ha megfelelően konfigurálta a fürterőforrás-kezelő, a fürt is első szakadhat meg. Lehetnek például egyidejű csomópont és a tartalék tartomány meghibásodása – mi történne, amely történt a frissítés során? A fürterőforrás-kezelő mindig próbálja meg mindent, javítsa ki a fürt erőforrásokat próbál átrendezése, és javítsa ki a fürt. Szabályozások érdekében, hogy a fürt használhatja a kerülési - erőforrások, adjon meg egy backstop térjen vissza a csomópontok, a hálózati partíciókat javítása, a javított bits telepítve.
 
-E helyzetek rendezése érdekében a Service Fabric fürt erőforrás-kezelő számos szabályozások tartalmazza. Ezek a szabályozások összes viszonylag nagy kalapácsok. Általában akkor nem szabad módosítani nélkül körültekintően megtervezve és tesztelését.
+Az alábbi számos különféle helyzetekben érdekében a Service Fabric fürterőforrás-kezelő számos szabályozások tartalmaz. Ezek a szabályozások összes viszonylag nagy kalapácsok. Általában ezek nem módosítása nem gondos tervezéssel és tesztelése.
 
-A fürt Resource Manager szabályozások módosításához kell hangolja a várt tényleges betölteni. Telepíteni kell néhány szabályozások helyen, akkor is, ha az azt jelenti, hogy a fürt hosszabb időt vesz igénybe stabilizálásához bizonyos esetekben előfordulhat, hogy határozza meg. Tesztelési szükség a szabályozások a megfelelő értékek meghatározásáról. Szabályozások kell lennie, amennyi elegendő a fürt igazodjanak elfogadható időn belül, és amely ténylegesen megakadályozza a túl sok erőforrás-felhasználás. 
+Ha módosítja a fürt Resource Manager szabályozások, azokat a várt tényleges terhelését kell hangolása. Szüksége lesz néhány szabályozások helyen, akkor is, ha azt jelenti, hogy a fürt több időt vesz igénybe kerülési bizonyos esetekben előfordulhat, hogy határozza meg. Tesztelésre szükség a szabályozások a megfelelő értékek meghatározásáról. Szabályozások kell lennie, elég nagy a fürt reagálni az igények változásaira ésszerű időn belül, és elég alacsony ténylegesen a túl sok erőforrás-használat megelőzése érdekében. 
 
-Az ügyfelek is láttuk az esetek többségében szabályozások, mert már erőforrás korlátozott környezetben lett használja. Néhány példa lenne, az egyes csomópontok vagy lemezek, amelyek képesnek sok állapot-nyilvántartó replikák párhuzamos átviteli korlátozásai miatt nem korlátozott a sávszélesség. Nélkül szabályozások műveletek sikerült ne terhelje tovább ezeket az erőforrásokat, sikertelen vagy lassú művelet okozza. Ilyen helyzetekben az ügyfelek szabályozások használt, és azok mennyi ideig volt kiterjesztése tudtak időt vesz igénybe a fürt egy stabil állapotot elérni. Az ügyfelek is tisztában készíthet a futó alacsonyabb teljes megbízhatóságot, amíg azok volt halmozódni végződhetnek sikerült.
+Megtudtuk, hogy ügyfeleink az esetek többségében szabályozások, mert már egy erőforrás korlátozott környezet már használja. Néhány példa a csomópontokra, vagy a lemezen való létrehozásához több állapot-nyilvántartó replikák párhuzamosan a teljesítmény-korlátozások miatt nem korlátozott a sávszélesség lenne. Nélkül szabályozások a műveletek sikerült túlterhelhetik futó ezeket az erőforrásokat, sikertelen vagy lassú műveletek miatt. Ezekben a helyzetekben ügyfelek szabályozások használt, és tudtuk, hogy azok mennyi ideig voltak kiterjesztése vesz igénybe a fürt egy stabil állapotot elérni. Ügyfelek is ismert, végül sikerült alacsonyabb általános megbízhatóságot nyújt, fut, amíg azok szabályozva lett.
 
 
 ## <a name="configuring-the-throttles"></a>A szabályozások konfigurálása
 
-Service Fabric replika típusú áthelyezések számának szabályozás kétféle módszer van. Az alapértelmezett mechanizmus, amely létezett a Service Fabric 5.7 jelöli, sávszélesség-szabályozás a kurzor engedélyezett abszolút értékként. Ez nem működik a fürtök különböző méretű. Különösen nagy fürtök esetén az alapértelmezett érték lehet túl kicsi, és jelentősen lelassult terheléselosztás akkor is, ha szükség közben nem hatású kisebb fürt. Ez a korábbi mechanizmus felül lett írva százalék alapú szabályozásával, amely dinamikus fürtökkel, amely a szolgáltatások és a csomópontok száma módosítsa rendszeresen hatékonyabb méretezést.
+A Service Fabric replika típusú áthelyezések száma szabályozási kétféle módszer van. Az alapértelmezett mechanizmus, amely létezett a Service Fabric 5.7 jelöli engedélyezett egy abszolút számát, szabályozás. Ez nem működik a fürtök, bármilyen méretűek. Különösen nagyobb fürtök esetében az alapértelmezett érték lehet túl kicsi, jelentősen terheléselosztás akkor is, ha szükség a kisebb fürtök hatálytalannak közben lelassítanunk. Ez a korábbi mechanizmus felül lett írva a százalékskálájú szabályozás, ami hatékonyabb méretezést biztosít, a dinamikus fürtökkel, amelyben a szolgáltatások és a csomópontok számát sűrűn változnak.
 
-A szabályozások a replikákat a fürtök számának százalékos alapulnak. Alapú Percetage szabályozások engedélyezése a szabály kifejezése: "nem helyezhető át több mint 10 %-replikák 10 percenként", például.
+A szabályozások a replikákat a fürtök számának százalékos alapulnak. Százalékos alapú szabályozások engedélyezése a szabály kifejezése: "ne helyezze át a replikák több mint 10 % 10 percenként", például.
 
-Százalék alapú sávszélesség-szabályozás konfigurációs beállításai a következők:
+A százalékskálájú szabályozás konfigurációs beállításait a következők:
 
-  - GlobalMovementThrottleThresholdPercentage - áthelyezések bármikor, fürt engedélyezett maximális száma a fürtben lévő replikák száma százalékában kifejezve. 0 a korlátozás nélküli állapotot jelzi. Az alapértelmezett értéke 0. Ha ez a beállítás és a GlobalMovementThrottleThreshold meg van adva, a korlátozóbb korlátot szerepel.
-  - GlobalMovementThrottleThresholdPercentageForPlacement - áthelyezések száma a fürtben lévő replikák százalékában kifejezve engedélyezett elhelyezési fázis során maximális száma. 0 a korlátozás nélküli állapotot jelzi. Az alapértelmezett értéke 0. Ha ez a beállítás és a GlobalMovementThrottleThresholdForPlacement meg van adva, a korlátozóbb korlátot szerepel.
-  - GlobalMovementThrottleThresholdPercentageForBalancing - áthelyezések száma a fürtben lévő replikák százalékában kifejezve engedélyezett a terheléselosztási fázis során maximális száma. 0 a korlátozás nélküli állapotot jelzi. Az alapértelmezett értéke 0. Ha ez a beállítás és a GlobalMovementThrottleThresholdForBalancing meg van adva, a korlátozóbb korlátot szerepel.
+  - GlobalMovementThrottleThresholdPercentage - áthelyezések száma – fürt bármikor engedélyezett maximális száma a fürtben található replikák száma százalékában kifejezve. 0 azt jelzi, hogy nincs korlát. Az alapértelmezett érték a 0. Ha ez a beállítás és a GlobalMovementThrottleThreshold is meg van adva, a korlátozóbb korlát használatos.
+  - GlobalMovementThrottleThresholdPercentageForPlacement - áthelyezések száma – a fürtben található replikák száma százalékában kifejezve az elhelyezési fázisban az engedélyezett maximális száma. 0 azt jelzi, hogy nincs korlát. Az alapértelmezett érték a 0. Ha ez a beállítás és a GlobalMovementThrottleThresholdForPlacement is meg van adva, a korlátozóbb korlát használatos.
+  - GlobalMovementThrottleThresholdPercentageForBalancing - áthelyezések száma – a fürtben található replikák száma százalékában kifejezve a terheléselosztási fázis során engedélyezett maximális száma. 0 azt jelzi, hogy nincs korlát. Az alapértelmezett érték a 0. Ha ez a beállítás és a GlobalMovementThrottleThresholdForBalancing is meg van adva, a korlátozóbb korlát használatos.
 
-A késleltetési százalékos megadásakor 0,05, akkor adja meg a 5 %. Az időköz, amelyen ezek a szabályozások szabályozza a GlobalMovementThrottleCountingInterval, a másodpercben megadott értéke.
+A szabályozás százalékos megadásakor kell megadni 5 %-os 0,05 szerint. Ezek a szabályozások rendelkezik, amelyen időköz a GlobalMovementThrottleCountingInterval, másodpercben megadott.
 
 
 ``` xml
@@ -55,7 +55,7 @@ A késleltetési százalékos megadásakor 0,05, akkor adja meg a 5 %. Az idők�
 </Section>
 ```
 
-az önálló verziója telepítéseinek művelet vagy az Azure-Template.json üzemeltetett fürtök:
+az önálló verziója telepítéseinek ClusterConfig.json vagy Template.json az Azure-ban futó fürtök:
 
 ```json
 "fabricSettings": [
@@ -83,14 +83,14 @@ az önálló verziója telepítéseinek művelet vagy az Azure-Template.json üz
 ]
 ```
 
-### <a name="default-count-based-throttles"></a>Alapértelmezett alapján szabályozások
-Ezen információ abban az esetben régebbi fürttel rendelkezik, vagy még mindig tartsa meg ezeket a konfigurációkat, azóta frissített fürtökben. Általánosságban ajánlott, hogy ezek a fenti százalék alapú szabályozások helyett. Százalék alapú sávszélesség-szabályozás alapértelmezés szerint le van tiltva, mivel ezek a szabályozások marad az alapértelmezett szabályozások fürt le van tiltva, és a százalék alapú szabályozások helyére. 
+### <a name="default-count-based-throttles"></a>Alapértelmezett száma alapján szabályozások
+Ezt az információt arra az esetre, régebbi fürttel rendelkezik, vagy továbbra is megőrzi ezeket a konfigurációkat a fürtök azóta frissített biztosítunk. Általában javasoljuk, hogy ezek a fenti százalékskálájú szabályozások cserélése. A százalékskálájú szabályozás alapértelmezés szerint le van tiltva, mivel az ezek a szabályozások marad, amíg le van tiltva, és a százalékskálájú szabályozások cserélni a fürt alapértelmezett szabályozások. 
 
-  - GlobalMovementThrottleThreshold – Ez a beállítás a fürtben lévő áthelyezések száma szabályozza a néhány idővel. Idő másodpercben, mint a GlobalMovementThrottleCountingInterval van megadva. Az alapértelmezett értéke a GlobalMovementThrottleThreshold 1000, és a GlobalMovementThrottleCountingInterval alapértelmezett értéke 600.
-  - MovementPerPartitionThrottleThreshold – Ez a beállítás bármely szolgáltatás partíció áthelyezések száma szabályozza a néhány idővel. Idő másodpercben, mint a MovementPerPartitionThrottleCountingInterval van megadva. Az alapértelmezett értéke a MovementPerPartitionThrottleThreshold 50, és a MovementPerPartitionThrottleCountingInterval alapértelmezett értéke 600.
+  - GlobalMovementThrottleThreshold – ezzel a beállítással teljes száma a fürtben lévő áthelyezések száma – szabályozza a bizonyos idővel. Mennyi ideig van megadva, a GlobalMovementThrottleCountingInterval másodpercek alatt. A GlobalMovementThrottleThreshold alapértelmezett értéke 1000, és az alapértelmezett értéke a GlobalMovementThrottleCountingInterval 600.
+  - MovementPerPartitionThrottleThreshold – ezzel a beállítással bármely szolgáltatás partíció áthelyezések száma szabályozza a bizonyos idővel. Mennyi ideig van megadva, a MovementPerPartitionThrottleCountingInterval másodpercek alatt. A MovementPerPartitionThrottleThreshold alapértelmezett értéke 50, és az alapértelmezett értéke a MovementPerPartitionThrottleCountingInterval 600.
 
-Ezek a szabályozások a konfigurációját, a százalék alapú sávszélesség-szabályozás azonos mintát követi.
+Ezek a szabályozások konfigurációját, a szabályozás százalékskálájú azonos mintát követi.
 
 ## <a name="next-steps"></a>További lépések
-- Hogyan kezeli a fürt erőforrás-kezelő, és elosztja a terhelést a fürt kapcsolatos további tudnivalókért tekintse meg a cikk a [terheléselosztás](service-fabric-cluster-resource-manager-balancing.md)
-- A fürt erőforrás-kezelő rendelkezik a fürt leíró számos lehetőséget. További információkért róluk, tekintse meg a cikk a [leíró a Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md)
+- Ismerje meg hogyan a fürterőforrás-kezelő felügyeli, és elosztja a terhelést a fürtben, tekintse meg a cikk a [terheléselosztás](service-fabric-cluster-resource-manager-balancing.md)
+- A fürterőforrás-kezelő leíró a fürt számos lehetőség áll. A velük kapcsolatos további információért tekintse meg a cikk a [leíró, Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md)

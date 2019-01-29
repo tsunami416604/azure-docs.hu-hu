@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3bb8d4796d23b84f815d28efa45af619efe19af3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c44e000a60e4391faf38cb275f35ec512e19aea3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338233"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101685"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Az Azure Security Center hálózati erőforrások védelme
 Az Azure Security Center folyamatosan elemzi a hálózati biztonsági eljárások az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a erősíti, és az erőforrások védelme a szükséges vezérlők konfigurálásának folyamatán hoz létre.
@@ -133,7 +133,7 @@ A harmadik szinten megjeleníti a virtuális gépek, a korábban leírtakhoz has
 |Gép|40|Hálózati biztonsági csoportok engedélyezése a virtuális gépeken|Hálózati biztonsági csoportok a a virtuális gépek hálózati hozzáférésének engedélyezése.|
 |Alhálózat|35|A hálózati biztonsági csoportok alhálózatokhoz engedélyezése |Hálózati biztonsági csoportok a az alhálózatokra üzembe helyezett erőforrások hálózati hozzáférésének engedélyezése.|
 |Gép|30|Igény szerinti hálózati hozzáférés-vezérlés alkalmazása|Csak idő VM hozzáférés-vezérlés véglegesen zárolni a kiválasztott portot a hozzáférést a alkalmazni, és engedélyezze a jogosult felhasználók számára, hogy ugyanazt a mechanizmust keresztül és a egy korlátozott ideig a megnyitásukhoz.|
-|Gép|20|Internetről elérhető végponton keresztüli hozzáférés korlátozása|Az internetkapcsolattal rendelkező virtuális gépek a meglévő hozzáférés korlátozásával, a hálózati biztonsági goups Felvértezni lehetővé teszik a szabályok.|
+|Gép|20|Internetről elérhető végponton keresztüli hozzáférés korlátozása|Az internetkapcsolattal rendelkező virtuális gépek a meglévő hozzáférés korlátozásával, a hálózati biztonsági csoportok engedélyezése Felvértezni szabályok.|
 |Gép|10|Új generációs tűzfal hozzáadása|Next Generation Firewall (NGFW) megoldás, amelyekkel jobban megvédheti az internetkapcsolattal rendelkező virtuális gépek hozzáadásához.|
 |Gép|5|Hálózati átjáró csak tűzfalon keresztül haladjon a forgalom|A következő generációs tűzfal megoldás a telepítés befejezéséhez a védett internetkapcsolattal rendelkező virtuális gépek forgalmat kell átirányítani csak a következő generációs tűzfal megoldás használatával.|
 |VNet|5|DDoS protection-szabvány engedélyezése|Ezeket a virtuális hálózatokat a nyilvános IP-címek az alkalmazások nem védi a standard szintű DDOS protection szolgáltatás. Lehetővé teszi, hogy csökkenti a hálózat-es és a protokoll támadások engedélyezése javasolt.|

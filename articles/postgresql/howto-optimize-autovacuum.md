@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 0f8db7dd3a90e06587a7e0e05f33cb6fba5c72e1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 21ac48ff473dcf494f96f87210bdfe09e4d82646
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539789"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103394"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>Optimalizálás autovacuum, Azure database for PostgreSQL-kiszolgáló 
 Ez a cikk ismerteti, hogyan lehet hatékonyan optimalizálása autovacuum, Azure database for postgresql-hez.
@@ -33,7 +33,7 @@ Ha vákuum időről időre nem futtatja, a kézbesíthetetlen rekordok felsorol�
 - Nagyobb i/o.
 
 ## <a name="monitoring-bloat-with-autovacuum-queries"></a>Figyelési növekedést autovacuum lekérdezésekkel
-Az alábbi mintalekérdezés úgy terveztek, hogy a "XYZ" nevű tábla élő és nem elő rekordok számát: ' VÁLASSZA relname, n_dead_tup, n_live_tup, (n_dead_tup / n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = "XYZ" sorrend szerint n_dead_tup DESC;'
+Az alábbi mintalekérdezés úgy terveztek, hogy a "XYZ" nevű tábla élő és nem elő rekordok számát: 'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
 
 ## <a name="autovacuum-configurations"></a>Autovacuum konfigurációk
 A konfigurációs paramétereket autovacuum szabályozó két fő kérdést köré szerveződik:
@@ -97,6 +97,6 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 Autovacuum van egy táblázat a szinkron folyamatonként. A nagyobb százalékos aránya kézbesíthetetlen rekordokat tartalmazó tábla van, a magasabb autovacuum "költség".  Táblákat, amelyeken a frissítés/törlés több táblára felosztva nagy mértékű felosztás segít autovacuum párhuzamosíthatja, és a egy táblán autovacuum végrehajtásához "cost" csökkentése érdekében. Annak érdekében, hogy a munkavállalók liberally ütemezett párhuzamos autovacuum feldolgozók száma is növelhető.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át a következő PostgreSQL documenatation autovacuum egyszerűsíthetik és használatával kapcsolatos további:
+Tekintse át a következő PostgreSQL-dokumentáció autovacuum egyszerűsíthetik és használatával kapcsolatos további:
  - PostgreSQL dokumentációja – [fejezet 18-ra, a kiszolgáló konfigurációja](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
  - PostgreSQL-dokumentáció – [fejezet 24, rutin adatbázis-karbantartási feladatok](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)

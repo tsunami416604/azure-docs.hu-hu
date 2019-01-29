@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Proxyclick |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Proxyclick |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Proxyclick között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5c58a859-71c2-4542-ae92-e5f16a8e7f18
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: jeedes
-ms.openlocfilehash: d93c5486d9c23558995742fc27e1222834cf4452
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b1ef02112261c612fec3297815ab8683f3236d3f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446313"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170759"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Oktatóanyag: Azure Active Directory-integráció az Proxyclick
+# <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Proxyclick
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Proxyclick integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Proxyclick az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Proxyclick egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a Proxyclick konfigurálásához hozzá kell Proxyclic
 
 **Proxyclick hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -131,21 +131,21 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Az a **Proxyclick konfigurációs** területén kattintson **konfigurálása Proxyclick** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![Proxyclick konfiguráció](./media/proxyclick-tutorial/tutorial_proxyclick_configure.png)
+    ![Proxyclick Configuration](./media/proxyclick-tutorial/tutorial_proxyclick_configure.png)
 
 1. Egy másik böngészőablakban jelentkezzen be a Proxyclick vállalati hely rendszergazdaként.
 
 1. Válassza ki **fiók & beállítások**.
 
-    ![Proxyclick konfiguráció](./media/proxyclick-tutorial/configure1.png)
+    ![Proxyclick Configuration](./media/proxyclick-tutorial/configure1.png)
 
 1. Görgessen le a **INTEGRÁCIÓK** válassza **SAML**.
 
-    ![Proxyclick konfiguráció](./media/proxyclick-tutorial/configure2.png)
+    ![Proxyclick Configuration](./media/proxyclick-tutorial/configure2.png)
 
 1. Az a **SAML** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Proxyclick konfiguráció](./media/proxyclick-tutorial/configure3.png)
+    ![Proxyclick Configuration](./media/proxyclick-tutorial/configure3.png)
 
     a. Másolás **SAML ügyfél URL-címe** értékét, és illessze be azt **válasz URL-cím** szövegmezőjébe **Proxyclick tartomány és URL-címek** szakaszban az Azure Portalon.
 
@@ -251,7 +251,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

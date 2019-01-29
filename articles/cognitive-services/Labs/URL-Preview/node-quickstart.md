@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Az URL-cím előnézete projekt, Node.js'
+title: 'Gyors útmutató: Projekt URL-címet a minta Node.js'
 titlesuffix: Azure Cognitive Services
 description: Az URL-előnézet használatának első lépései a Microsoft Cognitive Servicesben az Azure-ban.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 3367b39333c9d7334bc56b3acdf00453cc9705c0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 38cfb0957acf5fb986e16a64d2c9730dc10fcf7c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465049"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104311"
 ---
-# <a name="quickstart-url-preview-with-nodejs"></a>Rövid útmutató: Az URL-cím előnézete Node.js nyelven 
+# <a name="quickstart-url-preview-with-nodejs"></a>Gyors útmutató: A node.js használatával URL-cím előnézete 
 
 Az alábbi Node-példa létrehozza a SwiftKey webhely URL-előnézetét: https://swiftkey.com/en.
 
@@ -37,7 +37,7 @@ Implementálására a következő lépésekben kerül sor:
 
 Az útmutatóban használt teljes kód a következő:
 
-````
+```
 'use strict';
 
 let https = require('https');
@@ -83,7 +83,7 @@ let Search = function () {
 
 Search();
 
-````
+```
 
 ## <a name="next-steps"></a>További lépések
 - [C#-mintakód](csharp.md)

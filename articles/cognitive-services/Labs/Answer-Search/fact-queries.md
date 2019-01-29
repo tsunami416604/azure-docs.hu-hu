@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Válaszkereséses projekt, tények lekérdezése'
+title: 'Gyors útmutató: Projekt válaszkeresés (tény) lekérdezés'
 titlesuffix: Azure Cognitive Services
 description: Tények lekérdezése a Válaszkeresés projekt használatával
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 7e8a793362e51a05a73c0b42346e2e8fafb3f44d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: e3cc795644af07550db253cf6fca3fc1c9997519
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469401"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094581"
 ---
-# <a name="quickstart-query-for-facts"></a>Rövid útmutató: Tények lekérdezése
+# <a name="quickstart-query-for-facts"></a>Gyors útmutató: A tények lekérdezés
 
 Ha a lekérdezés tényekre, például dátumokra vagy azonosítható ismeretanyagokra vonatkozik, a válasz `facts` (tény) válaszokat tartalmazhat. A tény válaszok webes dokumentumokból kivonatolt releváns eredményeket tartalmaznak.  Ezek a lekérdezések weblapokat minden esetben adnak vissza, [tényeket](fact-queries.md) és/vagy [entitásokat](entity-queries.md) pedig a lekérdezéstől függően.
 
@@ -26,14 +26,14 @@ Az olyan lekérdezések, mint a valentin+2016, vagy a mikor+van+ramadán dátumr
 A következő példa egy dátummal kapcsolatos `facts` válasz: 
 
 **Lekérdezés:**
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
-````
+```
 
-**Válasz:** A `subjectName` (tárgynév) mező a felhasználói lekérdezés egy megjelenített verzióját tartalmazza, amelyet a tény megjelenítésekor címkeként használhat. Ha a lekérdezési sztring valentin+2016 volt, a Bing módosíthatja a Valentin-nap 2016 kifejezésre. A Leírás mező tartalmazza a tényt.
+**Válasz:** A `subjectName` mező tartalmaz egy verzió megjelenítése a felhasználói lekérdezés, amely lehetővé teszi, az egy címkét a tény megjelenítésekor. Ha a lekérdezési sztring valentin+2016 volt, a Bing módosíthatja a Valentin-nap 2016 kifejezésre. A Leírás mező tartalmazza a tényt.
 
-````
+```
 {   
     "_type" : "SearchResponse",   
     "queryContext" : {   
@@ -57,20 +57,20 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
     }   
 }   
 
-````
+```
 
 A „Miért kék az ég?” lekérdezésre adott válasz egy példája az ismeretekkel kapcsolatos válaszoknak.
 
 **Lekérdezés:**
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+sky+blue
 
-````
+```
 
-**Válasz:** A `value/description` (érték/leírás) mező tartalmazza a lekérdezés által kért ismeretet vagy információt.
+**Válasz:** A `value/description` mező tartalmazza az ismeretcikk vagy a lekérdezés által kért információkat.
 
-````
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -112,17 +112,17 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
     ]
   },
 
-````
+```
 
 ## <a name="tabular-data"></a>Táblázatos adatok
 Egyes esetekben a rendszer a tényeket `_type: StructuredValue/TabularData` formájában, azaz strukturált táblázatos adatokként adja vissza. Az alábbi lekérdezésre a rendszer a kávéval és a teával kapcsolatos összehasonlító táblázatos adatokat ad vissza.
 
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
 
-````
+```
 A `facts` találatok táblázata a következő sorokat és cellákat tartalmazza:
-````
+```
     "value": [
       {
         "subjectName": "Coffee vs. Tea",
@@ -196,7 +196,7 @@ A `facts` találatok táblázata a következő sorokat és cellákat tartalmazza
     ]
   },
 
-````
+```
 
 ## <a name="next-steps"></a>További lépések
 - [C# – rövid útmutató](c-sharp-quickstart.md)

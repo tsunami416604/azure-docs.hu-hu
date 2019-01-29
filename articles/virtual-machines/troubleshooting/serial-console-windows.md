@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 61b64b63a53318e0a703678d5525399fe13efa83
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b280c86b15f7af01b04d41b4c2d625ea4ec4a398
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432762"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104368"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>A Windows virtuális gépek soros konzolja
 
@@ -136,6 +136,13 @@ Funkcióbillentyűk engedélyezve vannak a soros konzol a Windows virtuális gé
 
 ### <a name="use-wsl-in-serial-console"></a>A soros konzol WSL használata
 A Windows alrendszer Linux (WSL) engedélyezve van a Windows Server 2019 vagy újabb verzió, így is lehet engedélyezni WSL soros konzolon belüli használatra, ha futtatja a Windows Server 2019 vagy újabb verziója. Egy Linux-parancsok ismeretét rendelkező felhasználók számára előnyös lehet. A Windows Server WSL engedélyezéséhez utasításokért lásd: a [telepítési útmutató](https://docs.microsoft.com/windows/wsl/install-on-server).
+
+### <a name="restart-your-windows-vm-within-serial-console"></a>Indítsa újra a Windows virtuális gép soros konzolról
+A virtuális gép soros konzolon belül a főkapcsoló és "Indítsa újra a virtuális gép" gombra kattintva újraindíthatja. A szolgáltatás kezdeményez a virtuális gép újraindítása, és megjelenik egy értesítés az Azure Portalon az újraindítás kapcsolatban.
+
+Ez hasznos olyan helyzetben, amikor lehetséges, hogy a virtuális gép a rendszerindító menü eléréséhez a soros konzol élmény elhagyása nélkül.
+
+![Windows soros konzol újraindítása](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-windows.gif)
 
 ## <a name="disable-serial-console"></a>Tiltsa le a soros konzol
 Alapértelmezés szerint minden előfizetés rendelkezik a soros konzol hozzáférés engedélyezve van az összes virtuális gép. A soros konzol vagy az előfizetés vagy a virtuális gép szintjén is letilthatja.

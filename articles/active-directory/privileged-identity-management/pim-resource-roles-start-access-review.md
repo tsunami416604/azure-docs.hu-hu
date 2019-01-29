@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: pim
+ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9a35d32d89931a03b33f232ba4f79226fc3f57e5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 607104c5a8021107be9e343d71ade049712454f6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189174"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160049"
 ---
 # <a name="start-an-access-review-for-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat indítása
 Szerepkör-hozzárendelések "elavult" válnak, amikor a felhasználók a privilegizált hozzáférés, amelyekre már nincs szükségük. A régi szerepkör-hozzárendelések társított kockázatának csökkentése érdekében, a kiemelt szerepkörű rendszergazdák szerepkörök rendszeresen tekintse át. Ez a dokumentum ismerteti a lépéseket az Azure-erőforrások a Privileged Identity Management (PIM) hozzáférési felülvizsgálat indítása.
@@ -54,8 +54,8 @@ Felülvizsgálat végrehajtásához három lehetőség áll rendelkezésre. Vala
 
 1. A lehetőségek közül választhat:
    
-   * **A kijelölt felhasználók**: használja ezt a beállítást, ha nem ismeri ki hozzá kell férnie. Ezzel a beállítással a felülvizsgálat hozzárendelheti egy erőforrás tulajdonosa vagy a csoport kezelőjének végrehajtásához.
-   * **Hozzárendelt (self)**: használja ezt a beállítást szeretné, hogy a felhasználók, ellenőrizze a saját szerepkör-hozzárendeléseket.
+   * **A kijelölt felhasználók**: Használja ezt a beállítást, ha nem ismeri ki hozzá kell férnie. Ezzel a beállítással a felülvizsgálat hozzárendelheti egy erőforrás tulajdonosa vagy a csoport kezelőjének végrehajtásához.
+   * **Hozzárendelt (self)**: Ez a beállítás segítségével a felhasználók, tekintse át a saját szerepkör-hozzárendelések.
    
 2. Lépjen a **felülvizsgálók kiválasztása**.
    
@@ -74,5 +74,5 @@ Amíg viszonyt keresztül, emlékeztesse a felhasználókat, végezze el a felü
 ## <a name="next-steps"></a>További lépések
 
 - [A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat befejezése](pim-resource-roles-complete-access-review.md)
-- [A PIM a saját Azure-erőforrás-szerepkörök hozzáférési felülvizsgálat végrehajtása](pim-resource-roles-perform-access-review.md)
+- [A saját Azure-erőforrásszerepkörök hozzáférési felülvizsgálatának végrehajtása a PIM szolgáltatásban](pim-resource-roles-perform-access-review.md)
 - [A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó hozzáférési felülvizsgálat indítása](pim-how-to-start-security-review.md)

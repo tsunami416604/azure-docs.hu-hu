@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 29b44e4b281ded635359148e251527c44efaa6d4
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 49c1c95cfd91c23547c07b6e9388ef366bde4ad3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214045"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174686"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Az Azure AD identity használata a parancssori felület vagy a PowerShell (előzetes verzió) az Azure Storage eléréséhez
 
@@ -25,7 +25,7 @@ Amikor bejelentkezik az Azure CLI vagy a PowerShell egy Azure AD-identitással, 
 
 ## <a name="supported-operations"></a>Támogatott műveletek
 
-Az előzetes verzió bővítmények tárolókat, valamint a kis-és üzenetsorok esetén támogatottak. Hívja előfordulhat, hogy mely műveletek az Azure AD Identity, amellyel kell bejelentkezni az Azure parancssori felület vagy PowerShell jogosultságaitól függ. Az Azure Storage-tárolók, vagy várólisták engedélyeket szerepköralapú hozzáférés-vezérlés (RBAC) keresztül. Például ha egy Adatolvasó szerepkör van rendelve az identitást, majd futtathatja parancsokat, amelyek az adatok olvasása a tárolóból vagy üzenetsor. Ha egy adatok közreműködői szerepkör van rendelve az identitást, majd futtathatja parancsokat, amelyek olvasási, írási, vagy egy tároló vagy üzenetsor vagy a rajtuk tárolt adatok törlése. 
+Az előzetes verzió bővítmények tárolókat, valamint a kis-és üzenetsorok esetén támogatottak. Hívja előfordulhat, hogy mely műveletek az Azure AD Identity, amellyel kell bejelentkezni az Azure parancssori felület vagy PowerShell jogosultságaitól függ. Az Azure Storage-tárolók, vagy várólisták engedélyeket szerepköralapú hozzáférés-vezérlés (RBAC) keresztül. Például ha egy Adatolvasó szerepkör van rendelve az identitást, majd futtathatja parancsokat, amelyek az adatok olvasása a tárolóból vagy üzenetsor. Ha a Data-közreműködői szerepkör van rendelve az identitás, majd futtathatja parancsokat, amelyek olvasási, írási, vagy egy tároló vagy üzenetsor vagy a rajtuk tárolt adatok törlése. 
 
 Minden Azure Storage-művelet egy tároló vagy a várólista szükséges jogosultságokat kapcsolatos részletekért lásd: [REST-műveleteinek meghívására szolgáló engedélyek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).  
 

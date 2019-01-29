@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: b22ecb9d8948a77df43f47cd9fd218be4319d06e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6b617ff99b9183c6b5008292dd3e5d11f2e69da9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583731"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092215"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tevékenységnapló-riasztások létrehozása szolgáltatási értesítésekhez
 ## <a name="overview"></a>Áttekintés
@@ -37,7 +37,7 @@ A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok 
 
 Health értesítési szolgáltatásriasztások konfigurálása Azure Resource Manager-sablonok használatával kapcsolatos információkért lásd: [Resource Manager-sablonok](alerts-activity-log.md).
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>Az Azure portal segítségével hozzon létre egy riasztást a szolgáltatás állapotával kapcsolatos értesítés az új műveletcsoport
+## <a name="alert-and-new-action-group-using-azure-portal"></a>Az Azure portal segítségével riasztás és az új műveletcsoport
 1. Az a [portál](https://portal.azure.com)válassza **Service Health**.
 
     ![A "Service" szolgáltatása](media/alerts-activity-log-service-notifications/home-servicehealth.png)
@@ -86,7 +86,7 @@ Ismerje meg, hogyan [konfigurálása webhook-értesítésekkel meglévő problé
 >
 >
 
-## <a name="create-an-alert-on-a-service-health-notification-for-an-existing-action-group-by-using-the-azure-portal"></a>Riasztás létrehozása a meglévő műveletcsoport számára a szolgáltatás állapotával kapcsolatos értesítés az Azure portal használatával
+## <a name="alert-with-existing-action-group-using-azure-portal"></a>Az Azure portal használatával meglévő műveletcsoport riasztás
 
 1. Végezze el az 1 – 7 hozhat létre a szolgáltatás állapotával kapcsolatos értesítés az előző szakaszban. 
 
@@ -96,7 +96,7 @@ Ismerje meg, hogyan [konfigurálása webhook-értesítésekkel meglévő problé
 
 Néhány percen belül a riasztás aktív, és megkezdi aktiválása a létrehozása során megadott feltételek alapján.
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok segítségével hozzon létre egy riasztást a szolgáltatás állapotával kapcsolatos értesítés az új műveletcsoport
+## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok segítségével riasztás és az új műveletcsoport
 
 Az alábbiakban látható egy példa, amely a műveletcsoport hoz létre egy e-mail-tárolóhoz, és lehetővé teszi, hogy az összes szolgáltatás állapotára vonatkozó értesítések a célként megadott előfizetés esetében.
 

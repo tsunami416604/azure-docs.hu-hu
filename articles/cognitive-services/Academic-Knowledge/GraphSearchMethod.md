@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 83f29106d72f564f894c968102b703ab6bb5d8c2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e8472323d99de9d0d81130eac5fbe3ec9e11c590
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902383"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197636"
 ---
 # <a name="graph-search-method"></a>Graph keresési módszer
 
@@ -29,7 +29,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 <br>
 
 ## <a name="request-parameters"></a>A kérés paraméterei  
-Name (Név)     | Érték | Kötelező?  | Leírás
+Name (Név)     | Value | Kötelező?  | Leírás
 -----------|-----------|---------|--------
 **mód**       | Szöveges karakterlánc | Igen | A használni kívánt módot neve. Az érték kisebb, mint *json* vagy *lambda*.
 
@@ -182,4 +182,4 @@ Kimenete egy *lambda* keresési lekérdezés egyben graph elérési utak tömbje
 
 Graph keresési lekérdezések írása teszik a gráfobjektumok hasznos. Ez az alábbi ábrán látható.
 
-![A Microsoft Academic Graph-séma](./Images/AcademicGraphSchema.png)
+![Microsoft Academic Graph Schema](./Images/AcademicGraphSchema.png)

@@ -14,12 +14,12 @@ ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0ffb4a4c4ea12292639b5a94b7f2990db6e45bd
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 53309eceaab566836cef5f73dff2b69db5d9c135
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247809"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102413"
 ---
 # <a name="deploy-the-local-agent"></a>A helyi ügynök telepítése
 
@@ -114,9 +114,9 @@ A tesztek futtatása távoli műveletek. A gép, amely futtatja a teszteket az A
 
 2. Futtassa az alábbi parancsot:
 
-    ````PowerShell
+    ```PowerShell
     .\Microsoft.VaaSOnPrem.TaskEngineHost.exe -u <VaaSUserId> -t <VaaSTenantId>
-    ````
+    ```
 
       **Paraméterek**  
     | Paraméter | Leírás |

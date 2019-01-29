@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 3513ada8a911c36a31c5796214cfe35d088320b7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 37cb122503dba31ba57dd6445317f3c54db08084
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316038"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181452"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Gyors útmutató: A helyi vállalati keresési Bing-API a lekérdezés küldéseC#
 
@@ -34,7 +34,7 @@ Egy Bing Search API-kat tartalmazó [Cognitive Services API-fiókkal](https://do
 
 Az alábbi kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs fejléc, és hozzáad egy lekérdezési karakterláncot az "a Bellevue éttermi".  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
-````
+```
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
@@ -50,7 +50,7 @@ Az alábbi kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs f
 
     HttpWebResponse response = (HttpWebResponse)request.GetResponseAsync().Result;
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
-````
+```
 
 ## <a name="run-the-complete-application"></a>A teljes alkalmazás futtatása
 
@@ -60,7 +60,7 @@ A helyi vállalati keresési Bing-API a Bing kereső honosított keresési eredm
 3. AccessKey értékét cserélje le az előfizetéshez tartozó érvényes hozzáférési kulcs.
 4. Futtassa a programot.
 
-````
+```
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -206,7 +206,7 @@ namespace localSearch
     }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>További lépések
 - [Helyi üzleti keresési Java a rövid útmutató](local-search-java-quickstart.md)

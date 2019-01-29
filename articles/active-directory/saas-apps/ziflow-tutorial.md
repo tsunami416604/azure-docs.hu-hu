@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Ziflow |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Ziflow |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Ziflow között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 84e60fa4-36fb-49c4-a642-95538c78f926
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 460a52f240f6b3723f93e81a11a8cd1ccc6c30c9
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: ca687f15187d4dd485d2c59e3c46fa3158802ff4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626693"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180002"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Oktatóanyag: Azure Active Directory-integráció az Ziflow
+# <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Ziflow
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Ziflow integrálása az Azure Active Directory (Azure AD).
 
@@ -60,7 +60,7 @@ Az Azure AD integrálása a Ziflow konfigurálásához hozzá kell Ziflow a kata
 
 **Ziflow hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -131,7 +131,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 8. Kattintson az Avatar a jobb felső sarokban, és kattintson **fiók kezelése**.
 
-    ![Ziflow konfiguráció kezelése](./media/ziflow-tutorial/tutorial_ziflow_manage.png)
+    ![Ziflow Configuration Manage](./media/ziflow-tutorial/tutorial_ziflow_manage.png)
 
 9. A bal felső sarokban, kattintson **egyszeri bejelentkezés**.
 
@@ -246,7 +246,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

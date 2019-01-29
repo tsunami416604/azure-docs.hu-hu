@@ -3,19 +3,19 @@ title: Nyelvi támogatás – a Bing Image Search API
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogy mely országok/régiók és nyelvek a Bing Image Search API által támogatott.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: db9e1acec881a182b111cb1c913da607e4f8311a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: aahi
+ms.openlocfilehash: d214c227171066e0a401e22d20538014790a58d3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435476"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157329"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>A Bing Image Search API nyelvéhez és régiójához támogatása
 
@@ -28,7 +28,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 > [!NOTE]
 > A népszerű képek API jelenleg csak a következő piacok támogatja:
 > - en-US (angol nyelven, Egyesült Államok)
-> - en-hitelesítésszolgáltató (angol nyelven, Kanada)
+> - en-CA (English, Canada)
 > - en-Ausztrália (angol nyelven, Ausztrália)
 > - zh-CN (kínai, Kína)
 
@@ -37,36 +37,36 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Ország/régió|Kód|
 |-------|----|
 |Argentína|AR|
-|Ausztrália|AUSZTRÁLIA|
+|Ausztrália|AU|
 |Ausztria|AT|
-|Belgium|LEHET|
+|Belgium|BE|
 |Brazília|BR|
 |Kanada|CA|
 |Chile|CL|
 |Dánia|DK|
 |Finnország|FI|
 |Franciaország|JK|
-|Németország|NÉMETORSZÁG|
+|Németország|DE|
 |Hongkong KKT|HK|
-|India|INDIA|
+|India|IN|
 |Indonézia|ID (Azonosító)|
 |Olaszország|IT|
 |Japán|JP|
-|Korea|KOREA|
-|Malajzia|SAJÁT|
+|Korea|KR|
+|Malajzia|MY|
 |Mexikó|MX|
 |Hollandia|NL|
 |Új-Zéland|NZ|
-|Norvégia|NEM|
+|Norvégia|NO|
 |Kína|CN|
 |Lengyelország|PL|
-|Portugália|CSENDES-ÓCEÁNI IDŐ|
+|Portugália|PT|
 |Fülöp-szigetek|PH|
-|Oroszország|KÉRELEMEGYSÉG|
+|Oroszország|RU|
 |Szaúd-Arábia|SA|
 |Dél-Afrika|ZA|
 |Spanyolország|ES|
-|Svédország|HASZNÁLATA|
+|Svédország|SE|
 |Svájc|CH|
 |Tajvan|TW|
 |Törökország|TR|
@@ -97,7 +97,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Olaszország|olasz|it-IT|
 |Japán|japán|ja-JP|
 |Korea|koreai|ko-KR|
-|Malajzia|Angol|a saját en|
+|Malajzia|Angol|en-MY|
 |Mexikó|spanyol|es-MX|
 |Hollandia|holland|NL-NL|
 |Új-Zéland|Angol|en-NZ|
@@ -115,8 +115,8 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Tajvan|Kínai (hagyományos)|zh-TW|
 |Törökország|török|tr-TR|
 |Egyesült Királyság|Angol|en-GB|
-|Egyesült Államok|Angol|hu-HU|
-|Egyesült Államok|spanyol|es-USA|
+|Egyesült Államok|Angol|en-US|
+|Egyesült Államok|spanyol|es-US|
 
 ## <a name="next-steps"></a>További lépések
 A Bing News Search végpontok kapcsolatos további információkért lásd: [hírek Image Search API 7-es referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).

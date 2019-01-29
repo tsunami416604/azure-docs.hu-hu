@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: f73f90b76900a3a5213297f8a28ff13204852039
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: adaed5f15facb00b6ed624234ebad31f60782de1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105547"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094325"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen támogatott adatplatform
 
@@ -95,7 +95,7 @@ A Spark környezet a Microsoft R Server Ubuntu Linux-DSVM Edition rendszeren fut
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Állítsa le a Hadoop kapcsolódó szolgáltatások, amikor nem kell őket futtatásával ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` egy minta bemutatja, hogyan lehet fejlesztési és tesztelési Asszony (amely a különálló a dsvm-hez a Spark-példányt) távoli Spark környezetben megadott és elérhető a `/dsvm/samples/MRS` a könyvtár. 
+Állítsa le a Hadoop kapcsolódó szolgáltatások, amikor nem kell őket futtatásával ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` egy minta bemutatja, hogyan lehet fejlesztési és tesztelési Asszony (amely a különálló a dsvm-hez a Spark-példányt) távoli Spark környezetben megadott és elérhető a `/dsvm/samples/MRS` a könyvtár. 
 
 
 ### <a name="how-is-it-configured--installed-on-the-dsvm"></a>Hogyan van azt konfigurálni / telepíteni a dsvm-hez? 

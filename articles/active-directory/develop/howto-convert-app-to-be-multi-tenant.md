@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: 5c904feacef4f5c15784c5f30c5f8bedf3940329
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: ae9412ed7c02d88e7d0c35c6ea0f95da755b84d4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425343"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097044"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
@@ -59,7 +59,7 @@ Bejelentkezési kérelmek egy egybérlős alkalmazást, a bérlő bejelentkezés
 
 Egy több-bérlős alkalmazással az alkalmazás nem ismert meghozni milyen bérlő, a felhasználó nem származik, így Ön nem végpontra kérést küldhet egy bérlőt. Ehelyett küld egy végpontot, amely minden Azure AD-bérlőre kiterjedő eszközalkalmazásnál: `https://login.microsoftonline.com/common`
 
-Ha az Azure AD meg az/Common kérést kap végpont, azt a felhasználó bejelentkezik, és, következésképpen felderíti a felhasználó melyik bérlőhöz. A/közös végpont működik, az összes az Azure AD által támogatott hitelesítési protokollok: OpenID Connect, az OAuth 2.0, az SAML 2.0 és WS-Federation.
+Ha az Azure AD meg az/Common kérést kap végpont, azt a felhasználó bejelentkezik, és, következésképpen felderíti a felhasználó melyik bérlőhöz. A/közös végpont működik, az összes Azure AD által támogatott hitelesítési protokoll:  OpenID Connect, OAuth 2.0, SAML 2.0, and WS-Federation.
 
 Az alkalmazás ezután a bejelentkezési választ a felhasználó jelképező jogkivonatot tartalmazza. A jogkivonat a kibocsátó értékét arra utasítja a alkalmazás milyen a felhasználó nem a bérlő. Ha választ adja vissza a/Common végpont, a kibocsátó értékét a jogkivonat felel meg a felhasználó bérlőjéhez. 
 

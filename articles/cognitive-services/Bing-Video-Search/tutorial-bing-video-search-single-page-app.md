@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Egyoldalas Bing Video Search-alkalmazás létrehozása'
+title: 'Oktatóanyag: A Bing Video Search egyoldalas alkalmazás készítése'
 titlesuffix: Azure Cognitive Services
 description: Azt ismerteti, hogyan használható a Bing Video Search API egy egyoldalas webalkalmazásban.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: rosh
-ms.openlocfilehash: a7c6646a69aec11797d354da28baca669b802ab0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: 5661cab24d3c5ada401f416a3d39b1a787094b5c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226602"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175111"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas Video Search-alkalmazás
+# <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Videókeresési egyoldalas alkalmazás
 A Bing Video Search API kikeresi az interneten a keresési lekérdezésnek megfelelő videótalálatokat. Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing Search API-t használja a keresési eredmények megjelenítéséhez az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll.
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -370,7 +370,7 @@ A leképező függvény:
 > * Létrehoz egy bekezdéscímkét, hozzárendeli az `images` osztályhoz, és leküldéssel továbbítja a HTML-tömbnek.
 > * Kiszámítja a képminiatűr méretét (a szélesség 60 képpontban rögzített, a magasságot ezzel arányosan számítja ki).
 > * Létrehozza az `<img>` HTML-címkét a képminiatűr megjelenítéséhez. 
-> * Létrehozza az `<a>` HTML -címkéket, amelyek a képre és a képet tartalmazó oldalra hivatkoznak.
+> * Létrehozza az `<a>` HTML-címkéket, amelyek a képre és a képet tartalmazó oldalra hivatkoznak.
 > * Létrehozza a leírást, amely információkat jelenít meg a képről és a képet tartalmazó oldalról.
 
 A miniatűr méretét az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A [Bing miniatűr-szolgáltatása](resize-and-crop-thumbnails.md) ezután egy pontosan ekkora méretű miniatűrt állít elő.
@@ -389,7 +389,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Egy ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 

@@ -6,20 +6,20 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: aab17f8a0213c213920ebdfc2b2fe31248657a91
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 61a851b0efbcc4fdb55308e47447d218014ef9e0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742847"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154354"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Mi az a Bing Visual Search API?
 
-A Bing Visual Search API részletesen hasonló képet azoknak Bing.com/images jelenik meg. Kép feltöltése, vagy egy URL-címet biztosít, az API-t azonosíthatja részleteit, köztük a vizuálisan hasonló képek különböző működtet, amelyek közé tartozik a lemezkép és egyéb forrásokból. Ha használja a [a Bing Image Search API](../bing-image-search/overview.md), csatolt kép feltöltése helyett az API-k keresési eredmények insight-jogkivonatokkal.
+A Bing Visual Search API hasonló képadatokat biztosít, mint a Bing.com/images. Kép feltöltése, vagy egy URL-címet biztosít, az API-t azonosíthatja részleteit, köztük a vizuálisan hasonló képek különböző működtet, amelyek közé tartozik a lemezkép és egyéb forrásokból. Ha használja a [a Bing Image Search API](../bing-image-search/overview.md), csatolt kép feltöltése helyett az API-k keresési eredmények insight-jogkivonatokkal.
 
 ## <a name="insights"></a>Insights
 

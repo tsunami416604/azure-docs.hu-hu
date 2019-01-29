@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 471277433f0fc9a54a28baa158f1e20f1efb613f
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 2ba3de32f4ec3b9f6faf1d5a51da9c1c91e4a2e4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000518"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099306"
 ---
 # <a name="creating-filters-with-cli"></a>Szűrők létrehozása a CLI-vel 
 
@@ -29,11 +29,10 @@ Ez a témakör bemutatja, hogyan beállít egy szűrőt az igény szerinti vide�
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
-
-    Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
 - [A Media Services-fiók létrehozása](create-account-cli-how-to.md). Ellenőrizze, hogy ne felejtse el az erőforráscsoport nevét és a Media Services-fiók nevét. 
 - Felülvizsgálat [szűrők és dinamikus jegyzékek](filters-dynamic-manifest-overview.md).
+
+[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="define-a-filter"></a>Szűrő megadásához. 
 
@@ -80,13 +79,6 @@ A következő [az ams-fiók-szűrő](https://docs.microsoft.com/cli/azure/ams/ac
 
 A parancs lehetővé teszi, hogy egy nem kötelező adnia `--tracks` JSON a track beállításokat jelölő paraméterben.  Használat @{file} betölteni a JSON-fájlból. Ha az Azure CLI helyileg használ, adja meg a fájl teljes elérési útja:
 
-
-```azurecli
-az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @c:\tracks.json
-```
-
-Ha az Azure Cloud Shellt használja, töltse fel a fájlt a Cloud Shellben (Keresés a rendszerhéj-ablak tetején, a feltöltési/letöltési fájlok gombra). Ezután hivatkozhat a fájlt ehhez hasonló:
-
 ```azurecli
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
@@ -96,9 +88,6 @@ Lásd még [JSON példák a szűrők](https://docs.microsoft.com/rest/api/media/
 ## <a name="create-asset-filters"></a>Az eszközintelligencia-szűrők létrehozásához
 
 A következő [az ams az eszközintelligencia-szűrő](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) parancs létrehoz egy adategység-szűrő szűrő nyomon követése beállításokat, amelyek korábban [korábban meghatározott](#define-a-filter). 
-
-> [!TIP]
-> Információ megadása a fájl nevét, helyét az előző szakaszban.
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json

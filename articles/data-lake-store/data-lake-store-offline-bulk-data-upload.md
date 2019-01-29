@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: fc70089517bbc1aa90f95f1e0231f2c67f930090
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43b482324f0244baf52edbb8989a56dd12833331
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242194"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104404"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 adatok offline másolásához az Azure Import/Export szolgáltatás használata
 Ebből a cikkből elsajátíthatja a hatalmas adatkészletek másolása (> 200 GB-os) az Azure Data Lake Storage Gen1 módszerrel offline másolásához, például a [Azure Import/Export szolgáltatás](../storage/common/storage-import-export-service.md). Pontosabban a fájl, használjuk példaként ebben a cikkben nem 339,420,860,416 bájt vagy a lemezen körülbelül 319 GB. Adjuk a fájl 319GB.tsv.
@@ -54,9 +54,9 @@ Kövesse a [az Azure Import/Export szolgáltatás használatával](../storage/co
 2. Azonosítsa az Azure storage-fiók, amelyben az adatok másolandó után el az Azure-adatközpontba.
 3. Használja a [Azure Import/Export eszköz](https://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), parancssori segédprogramot. Íme egy példa kódrészletet, amely bemutatja, hogyan használhatja az eszközt.
 
-    ````
+    ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
-    ````
+    ```
     Lásd: [az Azure Import/Export szolgáltatás használatával](../storage/common/storage-import-export-service.md) további példa kódtöredékek esetében.
 4. Az előző parancs létrehoz egy journal-fájlt a megadott helyen. Ez a naplófájl használatával az importálási feladat létrehozása a [az Azure portal](https://portal.azure.com).
 
@@ -72,7 +72,7 @@ Után az importálási feladat állapotát jeleníti meg, hogy elkészült, elle
 Ebben a szakaszban olyan biztosítunk, amelyek segítségével hozzon létre egy Azure Data Factory-folyamatot az adatok másolása JSON-definíciói. Ezek a JSON-definíciók is használhatja a [az Azure portal](../data-factory/tutorial-copy-data-portal.md) vagy [Visual Studio](../data-factory/tutorial-copy-data-dot-net.md).
 
 ### <a name="source-linked-service-azure-storage-blob"></a>Társított adatforrás-szolgáltatása (Azure Storage blob)
-````
+```
 {
     "name": "AzureStorageLinkedService",
     "properties": {
@@ -83,10 +83,10 @@ Ebben a szakaszban olyan biztosítunk, amelyek segítségével hozzon létre egy
         }
     }
 }
-````
+```
 
 ### <a name="target-linked-service-azure-data-lake-storage-gen1"></a>Cél társított szolgáltatás (Azure Data Lake Storage Gen1)
-````
+```
 {
     "name": "AzureDataLakeStorageGen1LinkedService",
     "properties": {
@@ -99,9 +99,9 @@ Ebben a szakaszban olyan biztosítunk, amelyek segítségével hozzon létre egy
         }
     }
 }
-````
+```
 ### <a name="input-data-set"></a>A bemeneti adatkészlet
-````
+```
 {
     "name": "InputDataSet",
     "properties": {
@@ -119,9 +119,9 @@ Ebben a szakaszban olyan biztosítunk, amelyek segítségével hozzon létre egy
         "policy": {}
     }
 }
-````
+```
 ### <a name="output-data-set"></a>Kimeneti adatkészlet
-````
+```
 {
 "name": "OutputDataSet",
 "properties": {
@@ -137,9 +137,9 @@ Ebben a szakaszban olyan biztosítunk, amelyek segítségével hozzon létre egy
     }
   }
 }
-````
+```
 ### <a name="pipeline-copy-activity"></a>Folyamat (a másolási tevékenység)
-````
+```
 {
     "name": "CopyImportedData",
     "properties": {
@@ -186,7 +186,7 @@ Ebben a szakaszban olyan biztosítunk, amelyek segítségével hozzon létre egy
         "pipelineMode": "Scheduled"
     }
 }
-````
+```
 További információkért lásd: [adatok áthelyezése az Azure Storage-blobból az Azure Data Lake Storage Gen1 Azure Data Factory használatával](../data-factory/connector-azure-data-lake-store.md).
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>Hozza az adatfájlokat az Azure Data Lake Storage Gen1
@@ -205,7 +205,7 @@ Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
 Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
-````
+```
 
 ## <a name="next-steps"></a>További lépések
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

@@ -10,16 +10,16 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 0c6062fb9e9708b0fa6aef7a6d7390287cbf69d4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124035"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098663"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: Kivételkezelést, és a hibanaplózás logikai alkalmazásokhoz
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: Kivételkezelés és a hibanaplózás logikai alkalmazásokhoz
 
-Ez a forgatókönyv leírja, hogyan terjesztheti ki egy logikai alkalmazást, amelyek hatékonyabban támogatják a kivételek kezelése. Valós használati eset a választ a kérdésre használja: "Az Azure Logic Apps támogatja a kivételek és hibakezelés?"
+Ez a forgatókönyv leírja, hogyan terjesztheti ki egy logikai alkalmazást, amelyek hatékonyabban támogatják a kivételek kezelése. Valós használati eset a választ a kérdésre használtunk: "Az Azure Logic Apps támogatja a kivételek és hibakezelés?"
 
 > [!NOTE]
 > Az aktuális Azure Logic Apps-séma művelet válaszokat biztosít a szabványos sablon. Ez a sablon belső érvényesítése és a egy API-alkalmazás által visszaadott hiba válaszokat tartalmazza.
@@ -57,7 +57,7 @@ Bejelentkezés a Dynamics CRM Online típusúaké rekord fogjuk, mert kezdjük a
 
 Használjuk a **kérelem** aktiválása az alábbi példában látható módon:
 
-```` json
+``` json
 "triggers": {
         "request": {
           "type": "request",
@@ -90,7 +90,7 @@ Használjuk a **kérelem** aktiválása az alábbi példában látható módon:
         }
       },
 
-````
+```
 
 
 ## <a name="steps"></a>Lépések
@@ -402,7 +402,7 @@ A megoldás képességeit a hozzáadott [Azure Cosmos DB](https://azure.microsof
 A hibák megtekintéséhez, létrehozhat egy MVC-webalkalmazást, a Cosmos DB-ből a hiba a rekordok jelenjenek meg. A **lista**, **részletek**, **szerkesztése**, és **törlése** műveletek szerepelnek a jelenlegi verziót.
 
 > [!NOTE]
-> Művelet szerkesztése: Cosmos DB váltja fel a teljes dokumentumot. A rekordok látható a **lista** és **részletes** nézetek mintát csak olyan. Még nincsenek tényleges betegek találkozó rögzíti.
+> Művelet szerkesztése: A cosmos DB váltja fel a teljes dokumentumot. A rekordok látható a **lista** és **részletes** nézetek mintát csak olyan. Még nincsenek tényleges betegek találkozó rögzíti.
 
 Az alábbiakban példát az MVC-alkalmazás adatait, a korábban ismertetett megközelítés hoztak létre.
 

@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Automatikus kiegészítési találatok a Bing Autosuggest API használatával'
+title: 'Oktatóanyag: A Bing Autosuggest API használatával automatikus kiegészítés eredmények beolvasása'
 titlesuffix: Azure Cognitive Services
 description: Bemutatja a Bing Autosuggest használatát.
 services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 09/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: b93ab8ebb4bb50723ec6ebae617fe9d95c6c7a47
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
-ms.translationtype: HT
+ms.openlocfilehash: a9a0dab47a13c349f11181f25b086b70031e08af
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831438"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190139"
 ---
-# <a name="tutorial-build-a-web-page-autosuggest-client"></a>Oktatóanyag: Autosuggest-ügyfél weboldalának létrehozása
+# <a name="tutorial-build-a-web-page-autosuggest-client"></a>Oktatóanyag: A weblap automatikus kiegészítési ügyfél létrehozása
 
 Ebben az oktatóanyagban létrehozunk egy weboldalt, amely lehetővé teszi a felhasználók számára a Bing Autosuggest API lekérdezését.
 

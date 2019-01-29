@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: 154f5200872dbc06550f396717cb215f3db4f7dd
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 58c1af860c5ccc87f4396c698b432f47f0ea7c65
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199578"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096959"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Hogyan háríthatók el az Azure Cache redis
 Ez a cikk nyújt útmutatást a következő kategóriákba tartozó Azure Cache Redis-hibák elhárítása.
@@ -132,7 +132,7 @@ Ez a szakasz ismerteti a gyorsítótár-kiszolgálón feltétel miatt előfordul
 
 * [Rendelkezésre álló memória mennyisége a kiszolgálón](#memory-pressure-on-the-server)
 * [Magas CPU-használat / kiszolgáló terhelése](#high-cpu-usage-server-load)
-* [Túllépte a kiszolgáló oldalán sávszélesség](#server-side-bandwidth-exceeded)
+* [Server Side Bandwidth Exceeded](#server-side-bandwidth-exceeded)
 
 ### <a name="memory-pressure-on-the-server"></a>Rendelkezésre álló memória mennyisége a kiszolgálón
 #### <a name="problem"></a>Probléma
@@ -166,7 +166,7 @@ A rendszer széles processzorhasználat figyelése az Azure Portal vagy a kapcso
 * Tekintse át a [Azure Cache a Redis-teljesítmény](cache-faq.md#azure-cache-for-redis-performance) diagramok és láthatja, ha lehetséges, hogy a jelenlegi csomag a felső küszöbértékek közelében. Ha szükséges, [méretezési](cache-how-to-scale.md) további CPU-kapacitás nagyobb gyorsítótár szintre. A prémium szintű már használ, előfordulhat, hogy szeretné-e a [horizontális felskálázás a fürtszolgáltatás](cache-how-to-premium-clustering.md)
 
 
-### <a name="server-side-bandwidth-exceeded"></a>Túllépte a kiszolgáló oldalán sávszélesség
+### <a name="server-side-bandwidth-exceeded"></a>Server Side Bandwidth Exceeded
 #### <a name="problem"></a>Probléma
 A cache-példány méretétől függően lehet a korlátozások a mekkora hálózati sávszélességre van érhető el. Ha a kiszolgáló meghaladja a rendelkezésre álló sávszélességet, majd nem történik adatküldés gyorsan, az ügyfél számára. Ez a helyzet időtúllépéseket eredményezhet.
 
@@ -187,7 +187,7 @@ Ez a hibaüzenet, amely segíthet a pont, a probléma okát és lehetséges mego
 | Hiba történt a üzenet metrika | Részletek |
 | --- | --- |
 | h |Az utolsó időszeletben: 0 parancsokat kiadva. |
-| kezelője |A szoftvercsatorna-kezelő végez `socket.select`, ami azt jelenti, hogy az operációs rendszer jelzi, hogy; rendelkező szoftvercsatorna alapvetően: az olvasó nem aktív olvasó a hálózatról, mert ez nem úgy gondolja, hogy bármilyen formában van |
+| mgr |A szoftvercsatorna-kezelő végez `socket.select`, ami azt jelenti, hogy az operációs rendszer jelzi, hogy; rendelkező szoftvercsatorna alapvetően: az olvasó nem aktív olvasó a hálózatról, mert ez nem úgy gondolja, hogy bármilyen formában van |
 | üzenetsor |Nincsenek folyamatban lévő műveletek 73 összesen |
 | l |a folyamatban lévő műveletek 6 az el nem küldött üzenetsorban, és még nem szerepelnek a kimenő hálózati |
 | QS |67-es, a folyamatban lévő műveletek a kiszolgálóra küldött, de a választ még nem érhető el. A válasz lehet `Not yet sent by the server` vagy `sent by the server but not yet processed by the client.` |
@@ -212,7 +212,7 @@ Ez a hibaüzenet, amely segíthet a pont, a probléma okát és lehetséges mego
             return lazyConnection.Value;
         }
     }
-    ````
+    ```
 
     További információkért lásd: [csatlakozás a gyorsítótárhoz, használja a StackExchange.Redis](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
 

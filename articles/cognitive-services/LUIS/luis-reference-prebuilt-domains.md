@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 3cb85a48a881545e9b2a0df29c35218b999fdbf0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 94bae7ddfd0d7f885b8441ed3b9d5943d052dbaf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140965"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101920"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>A LUIS-alkalmazás az előre összeállított útmutatója
 Ez az útmutató információkkal szolgál a [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre összeállított szándékok és entitások, amelyek a LUIS kínál.
@@ -402,7 +402,7 @@ A helyek tartományban szándékok kezeléséhez, többek között a vállalkoz�
 |CheckAccident|Kérje meg, hogy van-e valamilyen egy megadott útközben.|Van valamilyen a 880?<br/>Objektuma információk megjelenítése|
 |CheckAreaTraffic|Ellenőrizze a forgalmat egy általános területen vagy highway, nem a megadott útvonalon.|Seattle forgalma<br/>Mi az a forgalmat, például a Seattle?|
 |CheckIntoPlace|Ellenőrizze, hogy a közösségi média használatával történik.|A Foursquare me beadás<br/>Ellenőrizze Itt|
-|CheckRouteTraffic| Ellenőrizze a forgalmat egy adott, a felhasználó által megadott útvonal.|Hogyan alakul a forgalom Mashiko?<br/>A traffice Kirkland való megjelenítése<br/>Hogyan alakul a forgalom Seattle?| 
+|CheckRouteTraffic| Ellenőrizze a forgalmat egy adott, a felhasználó által megadott útvonal.|Hogyan alakul a forgalom Mashiko?<br/>A forgalom Kirkland megjelenítése<br/>Hogyan alakul a forgalom Seattle?| 
 |Megerősítés|Erősítse meg a helyre vonatkozó műveletet.|Győződjön meg róla saját éttermi foglalás.|
 |Kilépés|Lépjen ki a feladat arra a helyre vonatkozó művelet.|Lépjen ki.<br/>Lépjen ki a jogosultságot utasításokat ad|
 |FindPlace|Keresse meg a hely (üzleti, intézmény, vendéglátás, nyilvános címtér, cím).|Hol található a legközelebbi tár?<br/>Megtaláljanak egy jó olasz éttermi hegyi nézetben|

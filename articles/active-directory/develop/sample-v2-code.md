@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 50d071c420eec106f5ab28530aa7b2ff9a55fe4a
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: a0eccd125674776d3932fb628b98d1a298818b9a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558754"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097724"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Az Azure Active Directory-Kódminták (v2.0-végpontra)
 
@@ -52,7 +52,7 @@ Ezek a minták ismertetik, hogyan írhat az Azure ad-vel védett egy egyoldalas 
 
  Platform |  A Microsoft Graph hívások
  -------- |  ---------------------
-![JavaScript](media/sample-v2-code/logo_js.png) JavaScript (msal.js)  | [JavaScript-graphapi-web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2)
+![JavaScript](media/sample-v2-code/logo_js.png) JavaScript (msal.js)  | [javascript-graphapi-web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2)
 ![Angular JS](media/sample-v2-code/logo_angular.png) JavaScript (MSAL AngularJS) | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angularjs/samples/MsalAngularjsDemoApp)
 ![Angular](media/sample-v2-code/logo_angular.png) JavaScript (MSAL Angular) | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular/samples/MSALAngularDemoApp)
 
@@ -62,10 +62,10 @@ A következő példák bemutatják, webalkalmazások, amelyek a felhasználók. 
 
  Platform | Csak a felhasználó bejelentkezik | Képes bejelentkeztetni a felhasználókat, és a Microsoft Graph-hívások
  -------- | ------------------- | ---------------------------------
-![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)</p>Az ASP.NET Core 2.1-es verziója | [aspnetcore-webapp-openidconnect-v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) | Ugyanazt a mintát a [aspnetcore2-2-signInAndCallGraph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/aspnetcore2-2-signInAndCallGraph) ág
-![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Az ASP.NET a rövid útmutató](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [DotNet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-rendszergazda – korlátozott-hatókörök-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p>[msgraph-képzés – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.1 | [aspnetcore-webapp-openidconnect-v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) | Ugyanazt a mintát a [aspnetcore2-2-signInAndCallGraph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/aspnetcore2-2-signInAndCallGraph) ág
+![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Az ASP.NET a rövid útmutató](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p>[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 ![Node.js](media/sample-v2-code/logo_nodejs.png)  |                   | [NODE.js – rövid útmutató](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs)
-![Ruby](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-képzés – rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp)
+![Ruby](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp)
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Nyilvános ügyfél asztali és mobil alkalmazások
 
@@ -73,13 +73,13 @@ A következő példák bemutatják nyilvános ügyfél (asztali és mobil alkalm
 
 Ügyfélalkalmazás | Platform | A folyamat/engedélyezés | A Microsoft Graph hívások | Az ASP.NET Core 2.0-s webes API-hívások
 ------------------ | -------- |  ----------| ---------- | -------------------------
-(WPF) asztali      | ![.NET ÉS A C#](media/sample-v2-code/logo_NET.png) | Interaktív | [DotNet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-natív-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
-Asztal (konzol)   | ![.NET és a C# (asztali verzió)](media/sample-v2-code/logo_NET.png) | Integrált Windows-hitelesítés |[DotNet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
-Asztal (konzol)   | ![.NET és a C# (asztali verzió)](media/sample-v2-code/logo_NETcore.png) | Felhasználónév/jelszó |[dotnetcore – akár – v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
-Mobilalkalmazás (UWP)   | ![.NET ÉS A C# (UWP)](media/sample-v2-code/logo_windows.png) | Interaktív |[DotNet-natív-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
-Mobilalkalmazás (Android, iOS, az UWP)   | ![.NET és a C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interaktív |[xamarin-natív-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |
-Mobile (iOS)       | ![iOS / Objective-C vagy SWIFT nyelven](media/sample-v2-code/logo_iOS.png) | Interaktív |[iOS-swift-natív-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [iOS-natív-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
-Mobilalkalmazás (Android)   | ![Android / Java](media/sample-v2-code/logo_Android.png) | Interaktív |  [Android-natív-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |
+(WPF) asztali      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Interaktív | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+Asztal (konzol)   | ![.NET/C# (Desktop)](media/sample-v2-code/logo_NET.png) | Integrált Windows-hitelesítés |[dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
+Asztal (konzol)   | ![.NET/C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | Felhasználónév/jelszó |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
+Mobile (UWP)   | ![.NET/C# (UWP)](media/sample-v2-code/logo_windows.png) | Interaktív |[dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
+Mobilalkalmazás (Android, iOS, az UWP)   | ![.NET/C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interaktív |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |
+Mobile (iOS)       | ![iOS / Objective-C vagy SWIFT nyelven](media/sample-v2-code/logo_iOS.png) | Interaktív |[ios-swift-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [ios-native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
+Mobile (Android)   | ![Android / Java](media/sample-v2-code/logo_Android.png) | Interaktív |  [android-native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |
 
 ## <a name="daemon-applications"></a>Démon alkalmazások
 
@@ -87,8 +87,8 @@ A következő példák bemutatják egy alkalmazás, amely a Microsoft Graph API 
 
 Ügyfélalkalmazás | Platform | A folyamat/engedélyezés | A Microsoft Graph hívások
 ------------------ | -------- | ---------- | --------------------
-Konzol | ![.NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | Ügyfél-hitelesítő adatok | [dotnetcore-démon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
-Webalkalmazás | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | Ügyfél-hitelesítő adatok | [DotNet-démon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2)
+Konzol | ![.NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | Ügyfél-hitelesítő adatok | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
+Webalkalmazás | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | Ügyfél-hitelesítő adatok | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2)
 
 ## <a name="headless-applications"></a>Távfelügyelt alkalmazások
 
@@ -96,7 +96,7 @@ A következő minta bemutatja egy webes böngésző nélkül futó nyilvános ü
 
 Ügyfélalkalmazás | Platform | A folyamat/engedélyezés | A Microsoft Graph hívások
 ------------------ | -------- |  ----------| ----------
-Asztal (konzol)   | ![.NET és a C# (asztali verzió)](media/sample-v2-code/logo_NETcore.png) | Eszköz kódfolyamat |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2)
+Asztal (konzol)   | ![.NET/C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | Eszköz kódfolyamat |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2)
 
 ## <a name="web-apis"></a>Webes API-k
 
@@ -104,7 +104,7 @@ A következő minta bemutatja, hogyan védheti meg az Azure AD v2.0-végpont a w
 
 Platform | Sample
  -------- | -------------------
-![.NET ÉS A C#](media/sample-v2-code/logo_NET.png) | A (szolgáltatás) WebAPI [dotnet-natív-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+![.NET/C#](media/sample-v2-code/logo_NET.png) | A (szolgáltatás) WebAPI [dotnet-natív-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
 
 ## <a name="other-microsoft-graph-samples"></a>Más Microsoft Graph-minták
 

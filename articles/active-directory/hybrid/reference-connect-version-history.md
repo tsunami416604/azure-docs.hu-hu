@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/18/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: e5d98b1d10051fee6ee5299fcdd8376434109603
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c42abf043c528f86db7af164c21c45b21e7bf1ac
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469763"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196276"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -333,7 +333,7 @@ Az AD DS-fiókot a következő engedélyeinek módosítása a helyszíni alkalma
 *   Távolítsa el az adott objektumra, kivéve az adott ÖNKISZOLGÁLÓ hozzáférés-vezérlési bejegyzés vonatkozó összes ACE. Szeretnénk az alapértelmezett engedélyek ép esetén, a saját MAGA.
 *   Ezek az engedélyek hozzárendelése:
 
-Típus     | Name (Név)                          | Hozzáférés               | Erre vonatkozik
+Typo     | Name (Név)                          | Hozzáférés               | Erre vonatkozik
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |

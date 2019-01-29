@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Active Directory Domain Services: Hibaelhárítási hálózati biztonsági csoport konfigurálása |} A Microsoft Docs'
+title: 'Az Azure Active Directory tartományi szolgáltatások: Hibaelhárítás a hálózati biztonsági csoport konfigurálása |} A Microsoft Docs'
 description: Az Azure AD tartományi szolgáltatásokhoz NSG konfigurációs hibáinak elhárítása
 services: active-directory-ds
 documentationcenter: ''
@@ -8,25 +8,25 @@ manager: ''
 editor: ''
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6e7d025e9e83f5511fce25d0c24e4da3b04d7e54
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2f66c6956c803979ee6717f7327379c7bc9e97bb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957538"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181894"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>A felügyelt tartomány konfigurációja érvénytelen hálózati hibaelhárítása
 Ez a cikk segítséget nyújt a hibaelhárításához és megoldásához hálózati konfigurációs hibák, amelyek a következő figyelmeztető üzenet:
 
-## <a name="alert-aadds104-network-error"></a>Riasztási AADDS104: Hálózati hiba
-**Figyelmeztető üzenet:** *a Microsoft nem tudja elérni a tartományvezérlőket, a felügyelt tartományhoz. Ez akkor fordulhat elő, ha a virtuális hálózati blokkolja a hozzáférést a felügyelt tartományhoz konfigurált hálózati biztonsági csoport (NSG). Egy másik oka az lehet, ha egy felhasználó által definiált útvonal van, amely blokkolja az internetről bejövő forgalmat.*
+## <a name="alert-aadds104-network-error"></a>Alert AADDS104: Hálózati hiba történt
+**Riasztás jelenik meg:** *A Microsoft nem tudja elérni a tartományvezérlőket, a felügyelt tartományhoz. Ez akkor fordulhat elő, ha a virtuális hálózati blokkolja a hozzáférést a felügyelt tartományhoz konfigurált hálózati biztonsági csoport (NSG). Egy másik oka az lehet, ha egy felhasználó által definiált útvonal van, amely blokkolja az internetről bejövő forgalmat.*
 
 Érvénytelen az NSG-konfiguráció olyan hálózati hibák leggyakoribb oka az Azure AD tartományi szolgáltatásokhoz. A hálózati biztonsági csoport (NSG) a virtuális hálózat engedélyeznie kell a hozzáférést konfigurált [bizonyos portokat](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services). Ezeket a portokat le vannak tiltva, ha a Microsoft nem figyelése és a felügyelt tartomány frissítése. Emellett az Azure AD-címtár és a felügyelt tartomány közötti szinkronizálásra van hatással. Az NSG létrehozásakor ne zárja be ezeket a portokat a szolgáltatás megszakadásának elkerülése érdekében.
 

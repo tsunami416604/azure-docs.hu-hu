@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 915e2e5a67d068c418ce50eee9d84dc66e61ee00
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: cb47b3933ecb6e38aa7945ac7f81f7602a0c8034
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321291"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192536"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram metódus
 
@@ -30,10 +30,10 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
   
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-Name (Név)  |Érték | Kötelező?  |Leírás
+Name (Név)  |Value | Kötelező?  |Leírás
 -----------|----------|--------|----------
 **kifejezés**    |Szöveges karakterlánc | Igen  |A lekérdezési kifejezés, amely meghatározza az entitásokat, amelyen hisztogramok kiszámításához.
-**Modell** |Szöveges karakterlánc | Nem |Válassza ki a modellt, amely a lekérdezni kívánt nevét.  Jelenleg az alapértelmezett érték *legújabb*.
+**model** |Szöveges karakterlánc | Nem |Válassza ki a modellt, amely a lekérdezni kívánt nevét.  Jelenleg az alapértelmezett érték *legújabb*.
 **Attribútumok** | Szöveges karakterlánc | Nem<br>alapértelmezett érték: | Egy vesszővel tagolt listája, amely meghatározza az attribútum értékei, amelyek szerepelnek a választ. Attribútumnevek-és nagybetűk.
 **count** |Szám | Nem<br>Alapértelmezett: 10 |Visszaadott eredmények száma.
 **eltolás**  |Szám | Nem<br>Alapértelmezett: 0 |Az első eredmény index való visszatéréshez.
@@ -46,14 +46,14 @@ Name (Név) | Leírás
 **kifejezés**  |A kifejezés paraméter a kérelemből.
 **num_entities** | Egyező entitások teljes száma.
 **hisztogramok** |  Hisztogramok, minden attribútum a kérelemben megadott egy tömbje.
-**[x] hisztogramok .attribute** | Az attribútum, amelyen számította ki a hisztogramhoz neve.
-**[x] hisztogramok .distinct_values** | Megfelelő az attribútum az entitások között különböző értékek száma.
-**[x] hisztogramok .total_count** | Teljes száma érték megfelelő az attribútum az entitások között.
-**[x] hisztogramok .histogram** | Ez az attribútum hisztogram adatait.
-**[x] .histogram [y] .value hisztogramok** |  Az attribútum értékét.
-**[x] [y] .histogram .logprob hisztogramok**  |Az attribútumérték rendelkező entitások megfelelő teljes természetes logaritmusát valószínűségét.
-**[x] [y] .histogram .count hisztogramok**  |Az attribútumérték egyező entitások száma.
-**megszakítva** | IGAZ, ha a kérelem túllépte az időkorlátot.
+**histograms[x].attribute** | Az attribútum, amelyen számította ki a hisztogramhoz neve.
+**histograms[x].distinct_values** | Megfelelő az attribútum az entitások között különböző értékek száma.
+**histograms[x].total_count** | Teljes száma érték megfelelő az attribútum az entitások között.
+**histograms[x].histogram** | Ez az attribútum hisztogram adatait.
+**histograms[x].histogram[y].value** |  Az attribútum értékét.
+**histograms[x].histogram[y].logprob**  |Az attribútumérték rendelkező entitások megfelelő teljes természetes logaritmusát valószínűségét.
+**histograms[x].histogram[y].count**  |Az attribútumérték egyező entitások száma.
+**aborted** | IGAZ, ha a kérelem túllépte az időkorlátot.
 
 
 #### <a name="example"></a>Példa:

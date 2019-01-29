@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Procore SSO-val |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció Procore SSO-val |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Procore egyszeri bejelentkezés és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 9818edd3-48c0-411d-b05a-3ec805eafb2e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 12e7a37c1d2811b44dbf943b460b7d620770d45e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1cd82188ef9f5a4e0078a8ea21882f99bb8b8f44
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017525"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171286"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Azure Active Directory-integráció Procore SSO-val
+# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció Procore SSO-val
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Procore SSO integrálása az Azure Active Directory (Azure AD).
 
@@ -144,7 +144,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     c. Ezután nyissa meg a **összevonási metaadatainak XML** az Azure Portalról a fent letöltött és másolja a tanúsítványt a kódban nevű **X509Certificate**. Illessze be a másolt érték a **az egyszeri bejelentkezést x509 tanúsítvány** mezőbe.
 
-10. Kattintson a **módosítások mentése**.
+10. Kattintson a **Save Changes** gombra.
 
 11. Ezek a beállítások után meg kell küldenie a a **tartománynév** (például: **contoso.com**) keresztül, amely jelentkezik be a Procore a [Procore támogatási csapatának](https://support.procore.com/) és csatlakoznak az aktiválja az összevont egyszeri bejelentkezés ahhoz a tartományhoz.
 

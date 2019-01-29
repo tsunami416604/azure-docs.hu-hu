@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az dmarcian |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező dmarcian |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és dmarcian között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 0f8878505280371bf6046c1d1f0d7fc1275dd496
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 197e0cceb7457ffdd96ada7d4561de56c7ed10fc
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039887"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095651"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Oktatóanyag: Azure Active Directory-integráció az dmarcian
+# <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező dmarcian
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan dmarcian integrálása az Azure Active Directory (Azure AD).
 
@@ -157,18 +157,18 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![A hitelesítés ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
-    * A **dmarcian ad hozzá az identitásszolgáltató** területén kattintson **MÁSOLÁSI** másolása a **helyességi feltétel fogyasztói URL-címe** a példány, és illessze be a  **Válasz URL-cím** szövegmezőjébe **dmarcian tartomány és URL-címek szakaszt** az Azure Portalon.
+    * A **dmarcian ad hozzá az identitásszolgáltató** területén kattintson **MÁSOLÁSI** másolása a **helyességi feltétel fogyasztói URL-címe** a példány, és illessze be a  **Válasz URL-cím** szövegmezőjébe **dmarcian tartomány és URL-címek szakaszt** az Azure Portalon.
 
-    * Alatt **dmarcian ad hozzá az identitásszolgáltató** területén kattintson **MÁSOLÁSI** másolása a **Entitásazonosító** a példány, és illessze be a **azonosító**szövegmezőjébe **dmarcian tartomány és URL-címek szakaszt** az Azure Portalon.
+    * A **dmarcian ad hozzá az identitásszolgáltató** területén kattintson **MÁSOLÁSI** másolása a **Entitásazonosító** a példány, és illessze be a ** Azonosító** szövegmezőjébe **dmarcian tartomány és URL-címek szakaszt** az Azure Portalon.
 
     * Alatt **hitelesítés beállítása** ebben a szakaszban a **Identity Provider metaadatok** szövegmező illessze be a **alkalmazás összevonási metaadatainak URL-címe**, az Azure Portalról másolt.
 
     * Alatt **hitelesítés beállítása** ebben a szakaszban a **attribútum utasítások** szövegmező illessze be az URL-cím `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    * A **állítsa be a bejelentkezési URL-cím** területén másolja a **bejelentkezési URL-cím** a példány, és illessze be a **bejelentkezési URL-** szövegmezőjébe **dmarcian tartomány és URL-címek szakaszt** az Azure Portalon.
+    * A **állítsa be a bejelentkezési URL-cím** területén másolja a **bejelentkezési URL-cím** a példány, és illessze be a **bejelentkezési URL-** szövegmezőjébe **dmarcian tartomány és URL-címek szakaszt** az Azure Portalon.
 
         > [!Note]
-        > Módosíthatja a **bejelentkezési URL-cím** a szervezetnek megfelelően.
+        > Módosíthatja a **bejelentkezési URL-cím** a szervezet szerint.
 
     * Kattintson a **Save** (Mentés) gombra.
 

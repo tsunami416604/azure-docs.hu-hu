@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: fab422612bc3f83c8dc75d0dd99f42369dfa1d26
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6c0207a68cea70951143c87f83f6b17bb0c7b1f3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438082"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098459"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Linuxos virtuális gépek soros konzolja
 
@@ -89,7 +89,7 @@ Helytelen tűzfal-szabályok | A soros konzol eléréséhez, és engedélyezze a
 Fájlrendszer sérülése és ellenőrzése | A soros konzol eléréséhez, és a fájlrendszer helyreállítani.
 Az RDP/SSH konfigurációs problémák | A soros konzol eléréséhez, és módosítsa a beállításokat.
 Rendszer hálózati zárolása| A soros konzol eléréséhez a rendszer kezelését az Azure Portalról.
-A rendszertöltő használata | Hozzáférés grub-HIBÁT a soros konzolból. További információkért lásd: [GRUB és egyfelhasználós üzemmódban használja a soros konzol](serial-console-grub-single-user-mode.md).
+A rendszertöltő használata | Indítsa újra a virtuális Gépet a soros konzol panelen a Linux rendszerű virtuális gépen lévő GRUB eléréséhez. További információkért lásd: [GRUB és egyfelhasználós üzemmódban használja a soros konzol](serial-console-grub-single-user-mode.md).
 
 ## <a name="disable-the-serial-console"></a>Tiltsa le a soros konzol
 Alapértelmezés szerint minden előfizetés rendelkezik a soros konzol hozzáférés engedélyezve van az összes virtuális gép. A soros konzol vagy az előfizetés szintjén, vagy a virtuális gép szintjén is letilthatja.

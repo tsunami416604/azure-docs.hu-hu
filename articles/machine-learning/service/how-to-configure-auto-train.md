@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5bb9bfdc90c18ff044e73a61aaff9e95bdf28d25
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 22217ce551b4af4b04a271af99dfdf601ea5efe2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081619"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095793"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Automatizált machine learning-példakísérleteket konfigurálása
 
@@ -196,7 +196,7 @@ Néhány példa:
     ```
 2.  Alább egy például 100 közelítő befejezéséhez regressziós kísérlet meg, a minden egyes ismétléskor tartó legfeljebb 600 másodperc az 5-érvényesítési adatbázisközi modellrész.
 
-    ````python
+    ```python
     automl_regressor = AutoMLConfig(
         task='regression',
         max_time_sec=600,
@@ -205,7 +205,7 @@ Néhány példa:
         X=X,
         y=y,
         n_cross_validations=5)
-    ````
+    ```
 
 Ez a táblázat felsorolja a paraméterek beállításai is futtathatja a kísérletet és alapértelmezett értékeik érhető el.
 

@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 8651313f2dde21a2f6141d3cc8ee43cf32b7634a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 764b5defd2fb647fd52e1e93441b68ffe492d0c9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081364"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181265"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Az Azure Active Directory B2B-együttműködés hibaelhárítása
 
@@ -76,6 +76,10 @@ Ahhoz, hogy megfeleljenek adatvédelmi törvények, az API-k nem tartalmaznak sz
 - Ha egy App Service egyszerű küldi el a meghívót
 
 Fontos, hogy ez a forgatókönyv esetén az API-t meghívó e-mail le, és küldje el a kiválasztott e-mail mechanizmus segítségével. Tekintse meg a szervezet védőt, hogy minden e-mailt küld, így is megfelel a szigorú adatvédelmi törvényeinek betartásáért.
+
+## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>A just-in-time vagy "vírusos" bérlőhöz vendégfelhasználó nem tudja alaphelyzetbe állítani a jelszavát
+
+Ha a szolgáltatásidentitás bérlője egy – igény (szerinti JIT) vagy a bérlő ugrásszerű (azaz egy különálló, nem felügyelt Azure-bérlőhöz), csak a meghívott felhasználónak alaphelyzetbe állíthatja a jelszavát. Egyes esetekben egy szervezet fog [átveszi a vírusos bérlő](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/domains-admin-takeover) , amely jönnek létre, ha az alkalmazottak saját munkahelyi e-mail-címek használatával szolgáltatások regisztrálhat. A szervezetnek szüksége van a vírusos bérlő felett, miután csak egy adott szervezet rendszergazdája alaphelyzetbe a jelszót, vagy SSPR engedélyezése. Ha szükséges, mint a meghívó szervezetet, a Vendég felhasználói fiókhoz eltávolítása a címtárból, és egy meghívó újraküldése.
 
 ## <a name="next-steps"></a>További lépések
 

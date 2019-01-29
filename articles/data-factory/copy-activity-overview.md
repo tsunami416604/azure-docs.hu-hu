@@ -10,20 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 36c94a035c7585d655f4482239de70cd2e1a5cc6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ac50078dcc60e925f1e2e27a1296b2644939baef
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014131"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153725"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory másolási tevékenysége
 
 ## <a name="overview"></a>Áttekintés
 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-data-movement-activities.md)
 > * [Aktuális verzió](copy-activity-overview.md)
 
@@ -155,7 +155,7 @@ Kattintson ide a folyamat futásának tevékenységek listájának megjeleníté
 
 ![Tevékenységfuttatások monitorozása](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-Kattintson a "**részletek**" hivatkozásra **műveletek** látható a másolási tevékenység végrehajtásának részletei és teljesítményt nyújt. Megjeleníti a adatait az adatok többek között kötet/sor/fájlokat másolni a forrás, fogadó-, az átviteli sebesség, halad végig a megfelelő időtartamot, és a használt konfigurációk a másolási forgatókönyv lépéseit.
+Kattintson a "**részletek**" hivatkozásra **műveletek** látható a másolási tevékenység végrehajtásának részletei és teljesítményt nyújt. Megjeleníti a adatait az adatok többek között kötet/sor/fájlokat másolni a forrás, fogadó-, az átviteli sebesség, halad végig a megfelelő időtartamot, és a használt konfigurációk a másolási forgatókönyv lépéseit. Bizonyos esetekben is megjelenik egy "**teljesítmény-finomhangolási tippek**" szakaszban látható, amely közli, hogy a szűk keresztmetszetet azonosított, és végigvezeti Önt a hogyan másolása másolási esetben átviteli sebesség növelése, például [Itt](#performance-and-tuning).
 
 **Példa: másolja az Amazon S3-ból az Azure Data Lake Store**
 ![figyelő tevékenységfuttatás részletei](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
@@ -232,6 +232,11 @@ Alapértelmezés szerint a másolási tevékenység leállítja az adatok másol
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
 
 Tekintse meg a [másolási tevékenységek teljesítményéről és finomhangolásáról szóló útmutató](copy-activity-performance.md), amely ismerteti az adatáthelyezés (másolási tevékenység) az Azure Data Factoryban teljesítményét befolyásoló tényezők. Felsorolja a megfigyelt teljesítmény belső tesztelése során és a különböző módjait a másolási tevékenység teljesítményének ismerteti.
+
+Bizonyos esetekben az ADF, hajtsa végre a másolási tevékenység is látni fogja a "**teljesítmény-finomhangolási tippek**" a szakasz a [másolási tevékenység lap figyelés](#monitor-visually), amely tájékoztatja, hogy azonosítani a szűk és végigvezeti Önt a hogyan másolása másolási esetben átviteli sebesség növelése érdekében.
+
+**Példa: másolja az Azure SQL DB-be a teljesítmény-finomhangolási tippek**
+![másolja a figyelés a teljesítmény-finomhangolási tippek](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>A növekményes másolási 
 A Data Factory eseteket támogatja a növekményes másolása különbözeti adatokat egy forrásadattárból egy céladattárba. Lásd: [oktatóanyag: adatok növekményes másolása az](tutorial-incremental-copy-overview.md). 

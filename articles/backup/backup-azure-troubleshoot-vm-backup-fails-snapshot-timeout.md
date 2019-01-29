@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 7446c680ffdba28fef7eb68441d04a4c18398847
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e96c637e3c01ccfc27afa967d830c7d0254d11e7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912550"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104235"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -105,7 +105,7 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 **Hibakód:**: UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: Az Azure Backup jelenleg nem támogatja az 1023 GB-nál nagyobb adatlemezeket <br>
 
-A biztonsági mentési művelet sikertelen lehet, mivel a tároló nem frissül az azonnali visszaállítása az 1023GB-nál nagyobb méretű virtuális Gépet is biztonsági. Azonnali visszaállítása frissítése biztosít akár 4 TB-os támogatja, ez [cikk](backup-instant-restore-capability.md#upgrading-to-instant-restore).  
+A biztonsági mentési művelet sikertelen lehet, mivel a tároló nem frissül az azonnali visszaállítása az 1023GB-nál nagyobb méretű virtuális Gépet is biztonsági. Azonnali visszaállítása frissítése biztosít akár 4 TB-os támogatja, ez [cikk](backup-instant-restore-capability.md#upgrading-to-instant-restore). A frissítés befejezése után az a funkció elérhetővé tételéhez előfizetés akár két órát vesz igénybe. Adjon meg elegendő puffer, mielőtt újra megpróbálja a műveletet.  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – a jelenleg az Azure Backup nem támogatja a Standard SSD-lemez
 

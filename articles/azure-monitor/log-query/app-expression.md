@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: e83ba321a98e40f07ff82e68c7961c2a6a49076d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2d6f3517e988d6bd66ee9007e072ee87c71d1340
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191835"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104660"
 ---
 # <a name="app-expression-in-log-analytics-query"></a>a Log Analytics-lekérdezés App() kifejezés
 
@@ -28,7 +28,7 @@ A `app` kifejezés szolgál a Log Analytics-lekérdezés adatokat lekérni egy a
 
 ## <a name="syntax"></a>Szintaxis
 
-`app(`*azonosító*`)`
+`app(`*Identifier*`)`
 
 
 ## <a name="arguments"></a>Argumentumok
@@ -37,9 +37,9 @@ A `app` kifejezés szolgál a Log Analytics-lekérdezés adatokat lekérni egy a
 
 | Azonosító | Leírás | Példa
 |:---|:---|:---|
-| Erőforrás neve | Az alkalmazás (AVAGY "összetevő neve") emberi olvasható neve | App("fabrikamapp") |
-| Minősített név | A képernyőn az alkalmazás teljes név: "subscriptionName/resourceGroup/componentName" | App('AI-Prototype/Fabrikam/fabrikamapp') |
-| ID (Azonosító) | Az alkalmazás GUID azonosítója | App("988ba129-363e-4415-8fe7-8cbab5447518") |
+| Erőforrás neve | Az alkalmazás (AVAGY "összetevő neve") emberi olvasható neve | app("fabrikamapp") |
+| Minősített név | A képernyőn az alkalmazás teljes név: "subscriptionName/resourceGroup/componentName" | app('AI-Prototype/Fabrikam/fabrikamapp') |
+| ID (Azonosító) | Az alkalmazás GUID azonosítója | app("988ba129-363e-4415-8fe7-8cbab5447518") |
 | Azure-erőforrás azonosítója | Az Azure-erőforrás azonosítója |App("/Subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/Providers/Microsoft.insights/Components/fabrikamapp") |
 
 
@@ -48,6 +48,7 @@ A `app` kifejezés szolgál a Log Analytics-lekérdezés adatokat lekérni egy a
 * Az alkalmazás olvasási hozzáféréssel kell rendelkeznie.
 * Alkalmazások azonosítása a neve alapján feltételezi, hogy azt egyedi az összes elérhető előfizetés. Ha több alkalmazás a megadott névvel, a lekérdezés sikertelen lesz a kétértelműség miatt. Ebben az esetben az egyéb azonosítókhoz kötött egyikét kell használnia.
 * A kapcsolódó kifejezés használata [munkaterület](workspace-expression.md) lekérdezni a Log Analytics-munkaterületek között.
+* App() kifejezés jelenleg nem támogatott a keresési lekérdezésben. Ha az Azure portal használatával hozhat létre egy [egyéni keresés riasztási szabály](../platform/alerts-log.md), kivéve, ha egy Application Insights-alkalmazás és az erőforrásnak a riasztási szabály szolgál.
 
 ## <a name="examples"></a>Példák
 

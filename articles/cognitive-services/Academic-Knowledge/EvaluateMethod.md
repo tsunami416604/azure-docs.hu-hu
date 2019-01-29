@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 262beeefbbafefc95da51e9f4afcbc1bc143f952
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c3449d3b61c9b8950c0530590e7f1950c06afbc3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902331"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187298"
 ---
 # <a name="evaluate-method"></a>Módszer kiértékelése
 
@@ -28,12 +28,12 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 ```   
 <br>
 ## <a name="request-parameters"></a>A kérés paraméterei  
-Name (Név)     | Érték | Kötelező?  | Leírás
+Name (Név)     | Value | Kötelező?  | Leírás
 -----------|-----------|---------|--------
 **kifejezés**       | Szöveges karakterlánc | Igen | A lekérdezési kifejezés, amely meghatározza, mely entitások vissza kell adni.
-**Modell**      | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték *legújabb*.        
-**Attribútumok** | Szöveges karakterlánc | Nem<br>alapértelmezett: azonosítója | Egy vesszővel tagolt listája, amely meghatározza az attribútum értékei, amelyek szerepelnek a választ. Attribútumnevek-és nagybetűk.
-**Száma**        | Szám | Nem<br>Alapértelmezett: 10 | Visszaadott eredmények száma.
+**model**      | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték *legújabb*.        
+**Attribútumok** | Szöveges karakterlánc | Nem<br>alapértelmezett érték: Azonosító | Egy vesszővel tagolt listája, amely meghatározza az attribútum értékei, amelyek szerepelnek a választ. Attribútumnevek-és nagybetűk.
+**count**        | Szám | Nem<br>Alapértelmezett: 10 | Visszaadott eredmények száma.
 **eltolás**     | Szám |   Nem<br>Alapértelmezett: 0    | Az első eredmény index való visszatéréshez.
 **OrderBy** |   Szöveges karakterlánc | Nem<br>Alapértelmezés: csökkenő valószínűség szerint | Az entitások rendezéshez használt attribútum neve. Igény szerint növekvő vagy csökkenő adható meg. A formátum: *name: asc* vagy *name: desc*.
   
@@ -43,7 +43,7 @@ Name (Név) | Leírás
 -------|-----   
 **kifejezés** |  A *expr* paraméter a kérelemből.
 **Entitások** |  0 vagy több entitás, amely megfelel a lekérdezési kifejezés tömbje. Minden entitás tartalmaz egy természetes logaritmusát valószínűségi érték és egyéb kért attribútumának értéke.
-**megszakítva** | IGAZ, ha a kérelem túllépte az időkorlátot.
+**aborted** | IGAZ, ha a kérelem túllépte az időkorlátot.
 
 <br>
 #### <a name="example"></a>Példa:

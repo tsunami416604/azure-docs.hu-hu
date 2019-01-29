@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 589ad189a3a157d0116e3991f8df3d6b43afc167
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 3f38162fd4d95127ddf7797638bc9af21e6aaf20
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988706"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095694"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Rövid útmutató: alkalmazás konfigurálása webes API-k közzétételére (előzetes verzió)
+# <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Gyors útmutató: Egy alkalmazást úgy teszi közzé a webes API-k (előzetes verzió)
 
 Fejleszthet saját webes API-kat,és [engedélyek/hatókörök](developer-glossary.md#scopes) és [szerepkörök](developer-glossary.md#roles) közzétételével elérhetővé teheti azokat az ügyfélalkalmazások számára. A megfelelően konfigurált webes API-k a Microsoft többi webes API-jához hasonlóan érhetők el, mint például a Graph API vagy az Office 365 API-k.
 

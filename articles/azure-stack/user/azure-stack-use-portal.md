@@ -10,19 +10,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 4ec9affa78d1f244208a24bcf8a6603e867d4c08
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0bf725a20a7c030b0a835439c0f97f23b3cbef71
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086505"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097878"
 ---
 # <a name="use-the-azure-stack-portal"></a>Az Azure Stack-portál használata
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stack-portál használatával előfizethetnek azokra nyilvános, és használhatja a szolgáltatásokat, amelyek ezeket az ajánlatokat nyújtanak. Ha korábban már használta a globális Azure-portálon, akkor már ismeri az a hely működését.
 
@@ -60,7 +60,7 @@ Ha az elérhető szolgáltatások használatára vonatkozó útmutatást, is el�
 
     Különösen javasoljuk, hogy tekintse át a kezdéshez a következő cikkeket:
 
-    - [Kulcs szempontok: services használatával, vagy alkalmazások készítéséhez az Azure Stackhez](azure-stack-considerations.md)
+    - [Fontos szempontok: Szolgáltatások használatával, vagy alkalmazások készítéséhez az Azure Stackhez](azure-stack-considerations.md)
     - Az a **szolgáltatások** szakasz dokumentáció, van egy szempontok a cikk az egyes szolgáltatások. A szempontok lapra a szolgáltatás az Azure-ban érhető el, és ugyanazt a szolgáltatást az Azure Stackben kínált közötti különbségeket ismerteti. Egy vonatkozó példáért lásd: [virtuális gépekkel kapcsolatos szempontok](azure-stack-vm-considerations.md). Előfordulhat, hogy az egyéb információkat a **szolgáltatások** szakaszt, amely egyedi az Azure Stackhez.
 
       A szolgáltatás általános referenciaként az Azure-dokumentáció is használhatja, de ezek a különbségek tisztában kell lennie. Megismerheti, hogy a dokumentáció a hivatkozásokat tartalmaz a **gyorsútmutatók** Azure-dokumentáció, mutasson a csempére.
@@ -73,4 +73,4 @@ Az Azure Stack fejlesztői készletének használata a [Azure Stack-fórum](http
 
 ## <a name="next-steps"></a>További lépések
 
-[Kulcs szempontok: services használatával, vagy alkalmazások készítéséhez az Azure Stackhez](azure-stack-considerations.md)
+[Fontos szempontok: Szolgáltatások használatával, vagy alkalmazások készítéséhez az Azure Stackhez](azure-stack-considerations.md)

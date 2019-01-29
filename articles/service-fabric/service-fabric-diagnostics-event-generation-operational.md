@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: dekapur
-ms.openlocfilehash: a568fc6316211755fabc15ab3cf0227e3a87cb01
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e4537c789bfae0fb485e818bf68e87de27b88720
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727340"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102052"
 ---
 # <a name="list-of-service-fabric-events"></a>A Service Fabric-események listája 
 
@@ -27,7 +27,7 @@ A Service Fabric megjelenít egy elsődleges Fürtesemények tájékoztatja, min
 
 Az alábbiakban néhány ezeket az eseményeket jellemzői
 * Minden egyes esemény egy adott entitás a fürt van kötve. példa: alkalmazás, szolgáltatás, csomópontot, replika.
-* Minden esemény tartalmaz egy közös mezők halmaza: EventInstanceId EventName és kategória.
+* Minden egyes esemény egy általános mezők készletét tartalmazza: EventInstanceId EventName és kategória.
 * Minden esemény lehessen vonni az eseményt az entitást, melyhez hozzá van rendelve mezőket tartalmaz. Például a ApplicationCreated esemény kellene mezőket, amelyek azonosítják a létrehozott alkalmazás nevét.
 * Események struktúrája úgy, hogy azok használhatók fel az eszközök ehhez számos további elemzés. Ezenkívül az esemény részleteinek vonatkozó hosszú karakterlánc helyett külön tulajdonságok vannak meghatározva. 
 * Események által írt különböző alrendszereket, a Service Fabricben az alábbi Source(Task) azonosítja. További információ érhető el a alrendszereket [Service Fabric-architektúra](service-fabric-architecture.md) és [a Service Fabric technikai áttekintése](service-fabric-technical-overview.md).
@@ -73,7 +73,7 @@ További információt a fürtfrissítések [Itt](service-fabric-cluster-upgrade
 | --- | --- | --- | --- | --- | --- | 
 | 29620 | ApplicationCreated | Életciklus | Új alkalmazás létrehozása | CM | Tájékoztató | 
 | 29625 | ApplicationDeleted | Életciklus | Egy meglévő alkalmazás törölve lett | CM | Tájékoztató | 
-| 23083 | ApplicationProcessExited | Életciklus | Az alkalmazáson belül a folyamat kilépett. | Hosting | Tájékoztató | 
+| 23083 | ApplicationProcessExited | Életciklus | Az alkalmazáson belül a folyamat kilépett. | Üzemeltetés | Tájékoztató | 
 
 **Frissítési alkalmazásesemények**
 
@@ -110,9 +110,9 @@ További részleteket az alkalmazásfrissítések található [Itt](service-fabr
 
 | EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 23074 | ContainerActivated | A tároló elindult | Hosting | Tájékoztató | 1 |
-| 23075 | ContainerDeactivated | Egy tároló leállt | Hosting | Tájékoztató | 1 |
-| 23082 | ContainerExited | Egy tároló kilépett – ellenőrizze a UnexpectedTermination jelző | Hosting | Tájékoztató | 1 |
+| 23074 | ContainerActivated | A tároló elindult | Üzemeltetés | Tájékoztató | 1 |
+| 23075 | ContainerDeactivated | Egy tároló leállt | Üzemeltetés | Tájékoztató | 1 |
+| 23082 | ContainerExited | Egy tároló kilépett – ellenőrizze a UnexpectedTermination jelző | Üzemeltetés | Tájékoztató | 1 |
 
 ## <a name="health-reports"></a>Rendszerállapot-jelentések
 
@@ -215,7 +215,7 @@ A [Service Fabric Állapotmodell](service-fabric-health-introduction.md) biztos�
 
 | EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 65011 | CorrelationOperational | Korreláció detacted lett | Testability | Tájékoztató | 1 |
+| 65011 | CorrelationOperational | Korreláció észlelt | Testability | Tájékoztató | 1 |
 
 ## <a name="events-prior-to-version-62"></a>6.2 verziónál régebbi események
 
@@ -235,8 +235,8 @@ A következő események 6.2 verzió előtt a Service Fabric által biztosított
 | 29629 | ClusterUpgradeRollback | CM | Tájékoztató |
 | 29630 | ClusterUpgradeRollbackComplete | CM | Tájékoztató |
 | 29631 | ClusterUpgradeDomainComplete | CM | Tájékoztató |
-| 23074 | ContainerActivated | Hosting | Tájékoztató |
-| 23075 | ContainerDeactivated | Hosting | Tájékoztató |
+| 23074 | ContainerActivated | Üzemeltetés | Tájékoztató |
+| 23075 | ContainerDeactivated | Üzemeltetés | Tájékoztató |
 | 29620 | ApplicationCreated | CM | Tájékoztató |
 | 29621 | ApplicationUpgradeStart | CM | Tájékoztató |
 | 29622 | ApplicationUpgradeComplete | CM | Tájékoztató |

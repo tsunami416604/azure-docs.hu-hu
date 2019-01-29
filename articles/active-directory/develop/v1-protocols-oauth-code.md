@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c4a18fa022304e7ccfb4503cf2e02650555d6d7b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 19199d25b960d768f844d725616220fb78e7d983
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425122"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094053"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Az OAuth 2.0 kód engedélyezési folyamatával használatával az Azure Active Directory webes alkalmazásokhoz való hozzáférés engedélyezése
 
@@ -63,7 +63,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | state |Ajánlott |A kérésben is a token válaszban visszaadott érték. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](https://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet is szolgál. |
 | erőforrás | Ajánlott |Az Alkalmazásazonosító URI-t a cél a webes API (védett erőforrás). Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazást az alkalmazásregisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson a  **Tulajdonságok**. Például egy külső erőforrás is lehet `https://graph.microsoft.com`. Ez azért szükséges, egy engedélyezési vagy jogkivonat-kérelmeket. Annak biztosítása érdekében kevesebb hitelesítési kérések helyezze el az engedélyezési kérésben, ha biztosítani szeretné, jóváhagyás a felhasználó. |
 | scope | **figyelmen kívül hagyva** | V1 az Azure AD-alkalmazásokhoz, hatókörök statikusan konfigurálni kell lennie az alkalmazások az Azure portál **beállítások**, **szükséges engedélyek**. |
-| parancssor |választható |A felhasználói beavatkozás szükséges típusát jelzi.<p> Érvényes értékek a következők: <p> *bejelentkezési*: A felhasználó a rendszer kéri, hogy hitelesítse magát újra. <p> *select_account*: kéri a felhasználót, válassza ki a fiókot, hogy az egyszeri bejelentkezés megszakítása. A felhasználó előfordulhat, hogy válasszon egy meglévő bejelentkezett fiókot, adja meg a hitelesítő adataikat a korábban megjegyzett fiók vagy teljesen használt egy másik fiókot. <p> *hozzájárulás*: felhasználói beleegyezés kapott, de frissíteni kell. A felhasználó jóváhagyást kell kérni. <p> *admin_consent*: A rendszergazda a rendszer kéri a szervezetben lévő összes felhasználó nevében jóváhagyást |
+| parancssor |választható |A felhasználói beavatkozás szükséges típusát jelzi.<p> Érvényes értékek a következők: <p> *Bejelentkezési*: A felhasználó a rendszer kéri, hogy hitelesítse magát újra. <p> *select_account*: A kéri felhasználót, hogy válassza ki a fiókot, az egyszeri bejelentkezés megszakítása. A felhasználó előfordulhat, hogy válasszon egy meglévő bejelentkezett fiókot, adja meg a hitelesítő adataikat a korábban megjegyzett fiók vagy teljesen használt egy másik fiókot. <p> *Hozzájárulás*: Felhasználói beleegyezés kapott, de frissíteni kell. A felhasználó jóváhagyást kell kérni. <p> *admin_consent*: A rendszergazda a rendszer kéri a szervezetben lévő összes felhasználó nevében jóváhagyást |
 | login_hint |választható |Segítségével előre töltse ki a felhasználónév, e-mail-cím mező a bejelentkezési oldal a felhasználó számára, ha ismeri a kívánt időben felhasználóneve. Gyakran alkalmazások újrahitelesítés, hogy már kinyert a felhasználónevet egy előző jelentkezzen be az során használja ezt a paramétert a `preferred_username` jogcím. |
 | domain_hint |választható |A bérlő és a tartományhoz, amely a felhasználónak kell használnia, hogy jelentkezzen be a mutatót. A domain_hint értéke a bérlő regisztrált tartományhoz. Ha a bérlő összevonást használ, egy helyszíni címtár, az adott bérlő összevonási kiszolgáló átirányítja a aad-ben. |
 | code_challenge_method | Ajánlott    | Kódolás használt módszer a `code_verifier` számára a `code_challenge` paraméter. Lehetnek `plain` vagy `S256`. Ha ki van zárva, `code_challenge` adatforrásmérete egyszerű szöveges Ha `code_challenge` részét képezi. Az Azure AAD 1.0-s verziója is támogatja `plain` és `S256`. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
@@ -113,7 +113,7 @@ A következő táblázat ismerteti a különböző visszaadható hibakódok a `e
 | --- | --- | --- |
 | invalid_request |Protokollhiba történt, például egy hiányzó kötelező paraméter. |Javítsa ki, és küldje el újra a kérelmet. Ez fejlesztési hiba, és a kezdeti tesztelés során általában történt. |
 | unauthorized_client |Az ügyfélalkalmazás számára nem engedélyezett az engedélyezési kódot kér. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure ad-ben, vagy a felhasználó Azure AD-bérlő nem kerül. Az alkalmazás megkérheti a felhasználót az utasítást az alkalmazás telepítése és az Azure ad-hez adásával. |
-| ACCESS_DENIED |Erőforrás tulajdonosának jóváhagyás elutasítva |Az ügyfélalkalmazás is értesíti a felhasználót, hogy azt nem lehet folytatni, kivéve, ha a felhasználó. |
+| access_denied |Erőforrás tulajdonosának jóváhagyás elutasítva |Az ügyfélalkalmazás is értesíti a felhasználót, hogy azt nem lehet folytatni, kivéve, ha a felhasználó. |
 | unsupported_response_type |Az engedélyezési kiszolgáló nem támogatja a kód választípusához a kérésben. |Javítsa ki, és küldje el újra a kérelmet. Ez fejlesztési hiba, és a kezdeti tesztelés során általában történt. |
 | server_error |A kiszolgáló váratlan hibát észlelt. |Ismételje meg a kérelmet. Ezeket a hibákat okozhat az ideiglenes feltételek. Az ügyfélalkalmazás megmagyarázhatják a felhasználót, hogy a válasz egy átmeneti hiba miatt késik. |
 | temporarily_unavailable |A kiszolgáló nem túlságosan elfoglalt a kérelem kezelése. |Ismételje meg a kérelmet. Az ügyfélalkalmazás megmagyarázhatják a felhasználót, hogy a válasz egy ideiglenes állapot miatt késik. |
@@ -175,7 +175,7 @@ A sikeres válasz nézhet ki:
 | Paraméter | Leírás |
 | --- | --- |
 | access_token |A kért [hozzáférési jogkivonat](access-tokens.md) , egy aláírt JSON webes jogkivonat (JWT). Az alkalmazás a jogkivonat használatával hitelesítik magukat a védett erőforráshoz, például a webes API-t. |
-| token_type |Typ tokenu értékét jelöli. Az egyetlen, amely támogatja az Azure ad-ben típus tulajdonosi. További információ a tulajdonosi jogkivonatokat: [OAuth2.0 engedélyezési keretrendszer: tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
+| token_type |Typ tokenu értékét jelöli. Az egyetlen, amely támogatja az Azure ad-ben típus tulajdonosi. További információ a tulajdonosi jogkivonatokat: [OAuth2.0 engedélyezési keretrendszer: Tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. Ez az érték a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
 | erőforrás |Az Alkalmazásazonosító URI a webes API (védett erőforrás). |

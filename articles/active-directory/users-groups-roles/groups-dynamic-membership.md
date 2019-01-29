@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 148a657b1a5db5b1b33c94e27d695e7c24dfb265
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 98638c2fbd3f60ec0db009b52507eadcadd87ab4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214641"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172323"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -40,7 +40,7 @@ A tagsági szabály, amely automatikusan feltölti a felhasználók vagy eszköz
 
 * Tulajdonság
 * Művelet
-* Érték
+* Value
 
 A kifejezés a kijelzők sorrendje fontosak szintaktikai hibák elkerülése érdekében.
 
@@ -70,8 +70,8 @@ Az alábbiakban a felhasználói tulajdonságok, amelyek segítségével hozzon 
 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| accountEnabled |IGAZ, hamis |user.accountEnabled - eq igaz |
-| dirSyncEnabled |IGAZ, hamis |user.dirSyncEnabled - eq igaz |
+| accountEnabled |IGAZ, hamis |user.accountEnabled -eq true |
+| dirSyncEnabled |IGAZ, hamis |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>Karakterlánc típusú tulajdonságok
 
@@ -79,12 +79,12 @@ Az alábbiakban a felhasználói tulajdonságok, amelyek segítségével hozzon 
 | --- | --- | --- |
 | city |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.city - eq "value") |
 | Ország |Bármilyen karakterlánc értékét, vagy *null értékű* |(felhasználó.ország - eq "value") |
-| Cégnév | Bármilyen karakterlánc értékét, vagy *null értékű* | (user.companyName - eq "value") |
+| Cégnév | Bármilyen karakterlánc értékét, vagy *null értékű* | (user.companyName -eq "value") |
 | Szervezeti egység |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.department - eq "value") |
 | displayName |bármilyen karakterlánc típusú értéket |(user.displayName - eq "value") |
 | employeeId |bármilyen karakterlánc típusú értéket |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.facsimileTelephoneNumber - eq "value") |
-| givenName |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.givenName - eq "value") |
+| givenName |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.givenName -eq "value") |
 | Beosztás |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.jobTitle - eq "value") |
 | levelezés |Bármilyen karakterlánc értékét, vagy *null* (SMTP-cím a felhasználó) |(user.mail - eq "value") |
 | mailNickName |Bármilyen karakterlánc típusú értéket (a felhasználó e-mail aliasa) |(user.mailNickName - eq "value") |
@@ -92,16 +92,16 @@ Az alábbiakban a felhasználói tulajdonságok, amelyek segítségével hozzon 
 | objectId |A user objektum GUID-ja |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | A helyszíni biztonsági azonosítója (SID) a helyszínről a felhőbe szinkronizált felhasználók. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.physicalDeliveryOfficeName - eq "value") |
+| physicalDeliveryOfficeName |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.physicalDeliveryOfficeName -eq "value") |
 | Irányítószám |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.postalCode - eq "value") |
-| preferredLanguage |ISO 639-1 kód |(user.preferredLanguage - eq "en-US") |
-| sipProxyAddress |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.sipProxyAddress - eq "value") |
+| preferredLanguage |ISO 639-1 kód |(user.preferredLanguage -eq "en-US") |
+| sipProxyAddress |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.sipProxyAddress -eq "value") |
 | state |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.state - eq "value") |
 | streetAddress |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.streetAddress - eq "value") |
 | Vezetéknév |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.surname - eq "value") |
 | telephoneNumber |Bármilyen karakterlánc értékét, vagy *null értékű* |(user.telephoneNumber - eq "value") |
-| a usagelocation érték |Két betűkkel országkód: |(user.usageLocation - eq "US") |
-| userPrincipalName |bármilyen karakterlánc típusú értéket |(user.userPrincipalName - eq "alias@domain") |
+| usageLocation |Két betűkkel országkód: |(user.usageLocation -eq "US") |
+| userPrincipalName |bármilyen karakterlánc típusú értéket |(user.userPrincipalName -eq "alias@domain") |
 | userType |tag vendég *null értékű* |(user.userType - eq "Tag") |
 
 ### <a name="properties-of-type-string-collection"></a>Típus string gyűjtemény tulajdonságai
@@ -348,13 +348,13 @@ A következő eszköz attribútumokat is használható.
  accountEnabled | IGAZ, hamis | (device.accountEnabled - eq true)
  displayName | bármilyen karakterlánc típusú értéket |(device.displayName - eq "Rob Iphone")
  deviceOSType | bármilyen karakterlánc típusú értéket | (vagy device.deviceOSType - eq "iPad") – vagy (vagy device.deviceOSType - eq "iPhone")
- deviceOSVersion | bármilyen karakterlánc típusú értéket | (device.deviceOSVersion - eq "9.1")
+ deviceOSVersion | bármilyen karakterlánc típusú értéket | (device.deviceOSVersion -eq "9.1")
  deviceCategory | egy érvényes eszközkategória-név | (device.deviceCategory - eq "BYOD")
  deviceManufacturer | bármilyen karakterlánc típusú értéket | (device.deviceManufacturer - eq "Samsung")
  deviceModel | bármilyen karakterlánc típusú értéket | (device.deviceModel - eq "iPad Air")
  deviceOwnership | Személyes, munkahelyi, ismeretlen | (device.deviceOwnership - eq "Vállalati")
- Tartománynév | bármilyen karakterlánc típusú értéket | (device.domainName - eq "contoso.com")
- enrollmentProfileName | Az Apple Eszközregisztrációs profilt, vagy a Windows Autopilot-profil neve | (device.enrollmentProfileName - eq "DEP iPhone-OK")
+ Tartománynév | bármilyen karakterlánc típusú értéket | (device.domainName -eq "contoso.com")
+ enrollmentProfileName | Az Apple Eszközregisztrációs profilt, vagy a Windows Autopilot-profil neve | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | IGAZ, hamis | (device.isRooted - eq true)
  managementType | Mobileszköz-kezelési (mobileszközök)<br>PC (az Intune PC-ügynökkel kezelt számítógépekhez) | (device.managementType - eq "MDM")
  deviceId | egy érvényes Azure AD-Eszközazonosító | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

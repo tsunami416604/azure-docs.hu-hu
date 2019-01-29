@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: ab2361eae7dac58adb2739437d0616bcd05f870f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 220a95f1bc95a8866a459eb878047e7f47920bd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850382"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175094"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy érvényesítési technikai profil meghatározása
 
@@ -65,14 +65,14 @@ A **előfeltétel** elem tartalmazza a következő attribútumot:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Típus | Igen | Ellenőrizze vagy végrehajtani az előfeltétel-lekérdezés típusa. Mindkét `ClaimsExist` van megadva, győződjön meg arról, hogy műveleteket kell elvégezni, ha a megadott jogcím szerepel a felhasználó aktuális jogcímek készletében, vagy `ClaimEquals` van megadva, hogy a műveleteket kell elvégezni, ha a megadott jogcím létezik, és a hozzá tartozó érték megegyezik a megadott értéket. |
+| Typo | Igen | Ellenőrizze vagy végrehajtani az előfeltétel-lekérdezés típusa. Mindkét `ClaimsExist` van megadva, győződjön meg arról, hogy műveleteket kell elvégezni, ha a megadott jogcím szerepel a felhasználó aktuális jogcímek készletében, vagy `ClaimEquals` van megadva, hogy a műveleteket kell elvégezni, ha a megadott jogcím létezik, és a hozzá tartozó érték megegyezik a megadott értéket. |
 | ExecuteActionsIf | Igen | Azt jelzi, hogy e előfeltétele a műveleteket kell elvégezni, ha a tesztelés true vagy FALSE (hamis). |
 
 A **előfeltétel** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Érték | 1:n | Az ellenőrzés által használt adatokat. Ha ez az ellenőrzés típusát `ClaimsExist`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Ha a jelölőnégyzet típusú `ClaimEquals`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Míg egy másik értéket elem tartalmazza az ellenőrizendő értékkel.|
+| Value | 1:n | Az ellenőrzés által használt adatokat. Ha ez az ellenőrzés típusát `ClaimsExist`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Ha a jelölőnégyzet típusú `ClaimEquals`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Míg egy másik értéket elem tartalmazza az ellenőrizendő értékkel.|
 | Műveletek | 1:1 | Az előfeltétel-ellenőrzés belül egy vezénylési lépés teljesülése esetén végrehajtandó művelet. Értékét a **művelet** értékre van állítva `SkipThisValidationTechnicalProfile`. Itt adhatja meg, hogy a társított ellenőrzési technikai profil nem lehet végrehajtani. |
 
 ### <a name="example"></a>Példa

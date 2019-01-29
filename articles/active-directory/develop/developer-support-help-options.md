@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 7374b3f71474cb4d4e59e9d81ab1de7bea265483
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f8c5e5f598ab8566eacb594ff66b63ce3793f57f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337138"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093191"
 ---
 # <a name="support-and-help-options-for-developers"></a>Fejlesztői támogatás és súgó lehetőségei
 
@@ -52,7 +52,7 @@ Ahol *{Your keresőkifejezéseket}* van a keresési kulcsszavakat.
 
 |Eszköz  |Leírás  |
 |---------|---------|
-|[jwt.MS](https://jwt.ms)| Illessze be a való dekódolandó jogcímek neveket és értékeket egy azonosító vagy a hozzáférési jogkivonatok |
+|[jwt.ms](https://jwt.ms)| Illessze be a való dekódolandó jogcímek neveket és értékeket egy azonosító vagy a hozzáférési jogkivonatok |
 |[Hiba történt a kód elemző](https://apps.dev.microsoft.com/portal/tools/errors)| Illessze be a bejelentkezés során kapott hibakódot vagy hozzájárulás megadása a lapok megjelenítéséhez a lehetséges okok és szervizelések |
 |[A Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Eszköz, amely lehetővé teszi a kérelmeket, és tekintse meg a válaszok a Microsoft Graph API ellen|
 
@@ -68,11 +68,11 @@ Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow 
 |Összetevő/terület  |Címkék  |
 |---------|---------|
 |ADAL-könyvtár |[[adal]](https://stackoverflow.com/questions/tagged/adal)|
-|Az MSAL könyvtár     |[[az msal]](https://stackoverflow.com/questions/tagged/msal)|
+|Az MSAL könyvtár     |[[msal]](https://stackoverflow.com/questions/tagged/msal)|
 |OWIN közbenső szoftvert  |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)|
-|[Az Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[Az Azure B2C-vel](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[Microsoft Graph API](https://developer.microsoft.com/graph/) |[[a microsoft graph]](https://stackoverflow.com/questions/tagged/microsoft-graph)
+|[Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Microsoft Graph API](https://developer.microsoft.com/graph/) |[[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph)
 |A hitelesítési vagy engedélyezési kapcsolatos más területeken kapcsolatos témakörök |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
