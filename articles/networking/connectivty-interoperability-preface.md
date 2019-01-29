@@ -10,18 +10,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: b090633ee33582a235a92ab7100741e0be48cb27
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: abcf22dfebee695de54c36952c8f93dfaae31d57
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200156"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178766"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Együttműködés az Azure háttér-kapcsolati funkciók: Teszt beállítása
 
 Ez a cikk ismerteti egy teszt beállítása segítségével elemezheti az Azure hálózati szolgáltatások együttműködik a vezérlési sík szint és az adatsík szintnek. Nézzük röviden, az Azure hálózati összetevők:
 
--   **Az Azure ExpressRoute**: Magánhálózati társviszony-létesítés az Azure ExpressRoute használatával privát IP-címterek a helyszíni hálózat közvetlenül csatlakozhat az Azure Virtual Network üzemelő példányok. Az ExpressRoute segítségével nagyobb sávszélességet és a egy privát kapcsolaton érhető el. Számos ExpressRoute leggazdaságosabb partnere biztosít SLA-k az ExpressRoute-kapcsolat. További információ az ExpressRoute és az ExpressRoute konfigurálása: [ExpressRoute bemutatása][ExpressRoute].
+-   **Azure ExpressRoute**: Magánhálózati társviszony-létesítés az Azure ExpressRoute használatával privát IP-címterek a helyszíni hálózat közvetlenül csatlakozhat az Azure Virtual Network üzemelő példányok. Az ExpressRoute segítségével nagyobb sávszélességet és a egy privát kapcsolaton érhető el. Számos ExpressRoute leggazdaságosabb partnere biztosít SLA-k az ExpressRoute-kapcsolat. További információ az ExpressRoute és az ExpressRoute konfigurálása: [ExpressRoute bemutatása][ExpressRoute].
 -   **Site-to-site VPN**: Azure VPN Gateway as a site-to-site VPN segítségével biztonságosan csatlakozzon egy helyszíni hálózat az Azure-ba, az interneten keresztül vagy az ExpressRoute használatával. Ismerje meg, hogyan csatlakozhat az Azure site-to-site VPN konfigurálása, lásd: [VPN-átjáró konfigurálása][VPN].
 -   **Virtuális hálózatok közötti társviszony**: Használja a virtuális hálózatok (VNet) közötti társviszony az Azure Virtual Network virtuális hálózatok közötti kapcsolatot. Virtuális hálózatok közötti társviszony-létesítés kapcsolatos további információkért tekintse meg a [virtuális hálózatok közötti társviszony arra vonatkozó útmutató,][VNet].
 
@@ -63,7 +63,7 @@ Virtuális hálózatok közötti társviszony-létesítés egy adott régión be
 
 ### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Virtuális hálózatok közötti kapcsolat ágban site-to-site VPN használatával
 
-Érdemes lehet virtuális hálózatokat, amelyek a különböző régiókban, és a egy VNet-központon keresztül kommunikálnak egymással a helyszíni hálózatok ág. A natív Azure-megoldás a cofiguration a site-to-site VPN-kapcsolat egy VPN-en keresztül. Alternatív, hogy egy hálózati virtuális készüléket (NVA) útválasztás az agyban.
+Érdemes lehet virtuális hálózatokat, amelyek a különböző régiókban, és a egy VNet-központon keresztül kommunikálnak egymással a helyszíni hálózatok ág. Ehhez a konfigurációhoz a natív Azure-megoldás közötti VPN használatával site-to-site VPN-kapcsolat. Alternatív, hogy egy hálózati virtuális készüléket (NVA) útválasztás az agyban.
 
 További információkért lásd: [Mi az a VPN-átjáró?] [ VPN] és [üzembe helyezése egy magas rendelkezésre állású nva-t][Deploy-NVA].
 

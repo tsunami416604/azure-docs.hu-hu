@@ -1,5 +1,5 @@
 ---
-title: Hogyan elemezheti a tevékenységeket, az Azure Active Directory naplózza a Log Analytics (előzetes verzió) használatával |} A Microsoft Docs
+title: Azure Active Directory-Tevékenységnaplók Log Analytics (előzetes verzió) használatával elemzése |} A Microsoft Docs
 description: Ismerje meg, hogyan elemezheti az Azure Active Directory-Tevékenységnaplók Log Analytics (előzetes verzió) használatával
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 759a0da93544e2a17b71d762924981f05c3ea322
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a508c8a2bb4a28372f5dd8f833f6e55adc3c39ed
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810775"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158740"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Elemezheti az Azure ad-ben tevékenységeket tartalmazó naplók a Log Analytics (előzetes verzió)
 

@@ -72,7 +72,7 @@ Hozzon létre egy változót, és az adattípus és a kezdeti érték – egy m�
 
 4. Adja meg ezt az információt a változó:
 
-   | Tulajdonság | Szükséges | Érték |  Leírás |
+   | Tulajdonság | Szükséges | Value |  Leírás |
    |----------|----------|-------|--------------|
    | Name (Név) | Igen | <*a változó neve*> | Növelje a változó neve | 
    | Typo | Igen | <*változó-típus*> | A változó adattípusa | 
@@ -208,7 +208,7 @@ Növelheti vagy *növekmény* egy változót egy állandó értékkel adja hozz�
 
 3. Az információkat növekszik a változót:
 
-   | Tulajdonság | Szükséges | Érték |  Leírás |
+   | Tulajdonság | Szükséges | Value |  Leírás |
    |----------|----------|-------|--------------|
    | Name (Név) | Igen | <*a változó neve*> | Növelje a változó neve | 
    | Value | Nem | <*növekmény-érték*> | Növekszik a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, adott növekszik a változó értékét. | 
@@ -328,7 +328,7 @@ A csökkentése vagy *csökkentenie* egy változót egy állandó értékkel, k�
 
 Az alábbiakban a tulajdonságokat a **változó értékének csökkentése** művelet:
 
-| Tulajdonság | Szükséges | Érték |  Leírás |
+| Tulajdonság | Szükséges | Value |  Leírás |
 |----------|----------|-------|--------------|
 | Name (Név) | Igen | <*a változó neve*> | Csökkentenie kell a változó neve | 
 | Value | Nem | <*növekmény-érték*> | Csökkenő a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, csökkenő egyedi értékét a változót. | 
@@ -363,7 +363,7 @@ A értékét kötelező megadni, mert ez a művelet nem rendelkezik alapértelme
 
 Az alábbiakban a tulajdonságokat a **változó beállítása** művelet:
 
-| Tulajdonság | Szükséges | Érték |  Leírás | 
+| Tulajdonság | Szükséges | Value |  Leírás | 
 |----------|----------|-------|--------------| 
 | Name (Név) | Igen | <*a változó neve*> | Módosíthatja a változó neve | 
 | Value | Igen | <*új érték*> | A változó hozzárendelni kívánt érték. Írja be a ugyanazokat az adatokat is kell rendelkeznie. | 
@@ -421,7 +421,7 @@ Változók karakterláncok vagy a tömb tároló beszúrhatja vagy *hozzáfűzé
 
 Az alábbiakban a tulajdonságokat a **hozzáfűzése...**  műveletek:
 
-| Tulajdonság | Szükséges | Érték |  Leírás | 
+| Tulajdonság | Szükséges | Value |  Leírás | 
 |----------|----------|-------|--------------| 
 | Name (Név) | Igen | <*a változó neve*> | Módosíthatja a változó neve | 
 | Value | Igen | <*Hozzáfűzés-érték*> | A Hozzáfűzés, kívánt érték, amely bármilyen típusú | 

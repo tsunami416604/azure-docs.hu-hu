@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Bing Video Search, Java'
+title: 'Gyors útmutató: A Bing Video Search API, a Java'
 titlesuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg a Bing Video Search API használatának első lépéseivel.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 4d2097672a781ef2efd5b7871c39b473bd42cece
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d377f03bf8ea4567e5e0e9eafdc9d1dd4c9082ea
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306505"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187011"
 ---
-# <a name="quickstart-bing-video-search-api-with-java"></a>Rövid útmutató: Bing Video Search API Java használatával
+# <a name="quickstart-bing-video-search-api-with-java"></a>Gyors útmutató: A Bing Videókeresési API a Javával
 
 Ez a cikk bemutatja, hogyan használható a Microsoft Cognitive Services részét képező Bing Search API az Azure-on. Bár ez a cikk Javát használ, az API egy RESTful-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre. 
 

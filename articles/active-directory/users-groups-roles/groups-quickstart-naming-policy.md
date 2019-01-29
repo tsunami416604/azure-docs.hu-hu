@@ -14,12 +14,12 @@ ms.date: 08/08/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 8c5d980f25e196add6885d250665eae7127456f1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4c607558c721b38bd63a8094f433bfe9499013af
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273119"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102209"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Gyors útmutató: Az Azure Active Directory elnevezési szabályzat
 
@@ -38,14 +38,14 @@ A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows 
 1. Nyissa meg a Windows PowerShell alkalmazást rendszergazdaként.
 2. Távolítsa el az AzureADPreview korábbi verzióit.
   
-  ````
+  ```
   Uninstall-Module AzureADPreview
-  ````
+  ```
 3. Telepítse az AzureADPreview legújabb verzióját.
   
-  ````
+  ```
   Install-Module AzureADPreview
-  ````
+  ```
 Ha a rendszer megerősítését kér a nem megbízható adattár eléréséhez, nyomja le az **Y** billentyűt. Az új modul telepítése igénybe vehet néhány percet.
 
 ## <a name="set-up-naming-policy"></a>Elnevezési szabályzat beállítása
@@ -56,47 +56,47 @@ Ha a rendszer megerősítését kér a nem megbízható adattár eléréséhez, 
 
 2. Futtassa a következő parancsokat a parancsmagok futtatásának előkészítéséhez.
   
-  ````
+  ```
   Import-Module AzureADPreview
   Connect-AzureAD
-  ````
+  ```
   A megjelenő **Bejelentkezés a fiókba** párbeszédpanelen adja meg a rendszergazdai fiókot és jelszót, hogy kapcsolatot létesítsen a szolgáltatással, majd válassza a **Bejelentkezés** lehetőséget.
 
 3. Kövesse az [Azure Active Directory-parancsmagok a csoportbeállítások konfigurálásához](groups-settings-cmdlets.md) című rész lépéseit a bérlő csoportbeállításainak létrehozásához.
 
-### <a name="step-2-view-the-current-settings"></a>2. lépés: Az aktuális beállítások megtekintése
+### <a name="step-2-view-the-current-settings"></a>2. lépés: Az aktuális beállítások megtekintése
 
 1. Tekintse meg az aktuális elnevezési szabályzat beállításait.
   
-  ````
+  ```
   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
-  ````
+  ```
   
 2. Jelenítse meg az aktuális csoportbeállításokat.
   
-  ````
+  ```
   $Setting.Values
-  ````
+  ```
   
 ### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>3. lépés: Állítsa be a csoportelnevezési házirend és egyéni letiltott szavakat
 
 1. Állítsa be a csoportnév előtagjait és utótagjait az Azure AD PowerShellben. A funkció megfelelő működéséhez [GroupName] szerepelnie kell a beállítást.
   
-  ````
+  ```
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
-  ````
+  ```
   
 2. Állítsa be az egyéni letiltott szavakat, amelyek használatát korlátozni szeretné. A következő példa szemlélteti, hogyan adhatja hozzá saját egyéni szavait.
   
-  ````
+  ```
   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
-  ````
+  ```
   
 3. Az új szabályzat alkalmazáshoz mentse a beállításait a következő példának megfelelően.
   
-  ````
+  ```
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-  ````
+  ```
   
 Ennyi az egész. Beállította az elnevezési szabályzatot és hozzáadta az egyéni letiltott szavak listáját.
 
@@ -104,21 +104,21 @@ Ennyi az egész. Beállította az elnevezési szabályzatot és hozzáadta az eg
 
 1. A csoport előtagok és az Azure AD PowerShell utótagok üres.
   
-  ````
+  ```
   $Setting["PrefixSuffixNamingRequirement"] =""
-  ````
+  ```
   
 2. Az egyéni letiltott szavakat üres.
   
-  ````
+  ```
   $Setting["CustomBlockedWordsList"]=""
-  ````
+  ```
   
 3. A beállítások mentéséhez.
   
-  ````
+  ```
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-  ````
+  ```
 
 ## <a name="next-steps"></a>További lépések
 

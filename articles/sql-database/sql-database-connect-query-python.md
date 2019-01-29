@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: b9c33da4f002504a55802e4253d648ff87847d92
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/28/2019
+ms.openlocfilehash: b611eb02203c872e3497b5b7c12acddd9eab14c0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271827"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188388"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Gyors útmutató: Python használata Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -29,11 +29,9 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
   
-- A rövid útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md).
-  
 - Python és az operációs rendszerhez kapcsolódó szoftvereket:
   
-  - **macOS**: Telepítse a homebrew-t és a Python, telepítse az ODBC-illesztőt és az Sqlcmd-t, és telepítse az SQL Server a Python-illesztőt. 1.2, 1.3 és 2.1-es, a lépések [létrehozása Python-alkalmazásokat macOS rendszeren az SQL Server használata](https://www.microsoft.com/sql-server/developer-get-started/python/mac/). További információkért lásd: [a Microsoft ODBC-illesztő telepítése Linux és macOS](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+  - **MacOS**: Telepítse a homebrew-t és a Python, telepítse az ODBC-illesztőt és az Sqlcmd-t, és telepítse az SQL Server a Python-illesztőt. 1.2, 1.3 és 2.1-es, a lépések [létrehozása Python-alkalmazásokat macOS rendszeren az SQL Server használata](https://www.microsoft.com/sql-server/developer-get-started/python/mac/). További információkért lásd: [a Microsoft ODBC-illesztő telepítése Linux és macOS](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
     
   - **Ubuntu**: Telepítse a Python és a többi szükséges csomagot `sudo apt-get install python python-pip gcc g++ build-essential`. Töltse le és telepítse az ODBC-illesztő Sqlcmd-t és a Python illesztőprogram SQL Serverhez készült. Útmutatásért lásd: [egy fejlesztési környezet konfigurálása a Python fejlesztési pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
     

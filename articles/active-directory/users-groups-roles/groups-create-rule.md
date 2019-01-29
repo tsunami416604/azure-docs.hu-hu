@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: be880b937f254cbf8115d1a5129069069a0c7eea
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: dabee3f4eb6fb2bf4f58ff8654068e138858dbbd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249667"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156921"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Dinamikus csoport létrehozása és állapotának ellenőrzése
 
@@ -54,17 +54,17 @@ Láthatja, hogy a feldolgozási állapotát és az utolsó frissítés dátuma a
 
 A következő állapotüzeneteket is látható, a **tagsági feldolgozási** állapota:
 
-* **Kiértékelése**: A csoport módosítása érkezett, és a frissítések kiértékelése megtörténik.
-* **Feldolgozási**: frissítések feldolgozása folyamatban van.
-* **Frissítés befejezve**: feldolgozása befejeződött, és minden szükséges frissítés történtek-e.
+* **Kiértékelése**:  A csoport módosítása érkezett, és a frissítések kiértékelése megtörténik.
+* **Feldolgozási**: Frissítés feldolgozása folyamatban van.
+* **Frissítés befejezve**: Feldolgozása befejeződött, és minden szükséges frissítés történtek-e.
 * **Feldolgozási hiba**: Hiba történt a tagsági szabály értékelése és feldolgozása nem fejeződött be.
-* **Frissítés szüneteltetve**: frissítések szünetelnek a rendszergazda által a dinamikus tagsági szabály. MembershipRuleProcessingState "Felfüggesztett" értékre van állítva.
+* **Frissítés szüneteltetve**: A dinamikus tagsági szabály frissítések szünetelnek a rendszergazda által. MembershipRuleProcessingState "Felfüggesztett" értékre van állítva.
 
 A következő állapotüzeneteket is látható, a **tagság utolsó frissítés** állapota:
 
-* &lt;**Dátum és idő**&gt;: a tagság utolsó frissítésekor.
-* **Folyamatban lévő**: frissítések jelenleg folyamatban vannak.
-* **Ismeretlen**: nem lehet beolvasni a utolsó frissítésének időpontját. Ennek oka az újonnan létrehozott csoport lehet.
+* &lt;**Dátum és idő**&gt;: A legutóbbi alkalommal a tagság frissítése megtörtént.
+* **Folyamatban lévő**: Frissítések folyamatban vannak.
+* **Ismeretlen**: Nem sikerült beolvasni az utolsó frissítésének időpontját. Ennek oka az újonnan létrehozott csoport lehet.
 
 Az egy adott csoport tagsági szabály feldolgozása során hiba történik, ha egy riasztás tetején látható a **áttekintőlapján** a csoporthoz. Ha nincs függőben van a dinamikus tagsági frissítések feldolgozási az a bérlőn belüli összes csoportra további majd 24 órán keresztül, egy riasztás jelenik meg tetején **összes csoport**.
 

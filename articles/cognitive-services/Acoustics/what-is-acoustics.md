@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: overview
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 6a3c97ead40cfb24604edac0624e38a9b0713fc0
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
-ms.translationtype: HT
+ms.openlocfilehash: 175203269f524f5c680345602e6382f5c26f1bd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901024"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178902"
 ---
 # <a name="what-is-project-acoustics"></a>Mi az a Project Acoustics?
 A Unity-hez készült Project Acoustics beépülő modul hangelnyelést, visszhangot és térbeli hanghatást biztosít a VR-t és hagyományos képernyőket megcélzó projektekhez. Lehetőséget biztosít egy olyan játékakusztika megtervezésére, amely a tervező elképzeléseit egy fizikán alapuló hullámszimulációra alapozza.

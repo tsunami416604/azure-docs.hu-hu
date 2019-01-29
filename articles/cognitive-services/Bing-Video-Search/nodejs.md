@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Bing Video Search, Node.js'
+title: 'Gyors útmutató: A Bing Video Search API-t, Node.js'
 titlesuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg a Bing Video Search API használatának első lépéseivel.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 7433ef82fbc7b7d0041195d329ec92260c50f1e2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e801d8a347d1ba946b8b75093dd149582cefcb7f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314834"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184019"
 ---
-# <a name="quickstart-bing-video-search-api-with-nodejs"></a>Rövid útmutató: Bing Video Search API Node.js használatával
+# <a name="quickstart-bing-video-search-api-with-nodejs"></a>Gyors útmutató: A Bing Videókeresési API a node.js használatával
 
 Ez a cikk bemutatja, hogyan használható a Microsoft Cognitive Services részét képező Bing Video Search API az Azure-on. Bár ez a cikk Node.js-t használ, az API egy RESTful-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre. 
 

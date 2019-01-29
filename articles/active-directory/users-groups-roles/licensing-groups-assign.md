@@ -10,16 +10,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e08ca3453cc43fa0f35102ca5563b4b07ce45dea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 423842d3e2485334a916423e997c12669a126adb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215004"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155068"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licencek hozzárendelése a felhasználók által az Azure Active Directory biztonságicsoport-tagság
 
@@ -59,9 +59,9 @@ Ebben a példában a bérlő tartalmazza-e nevű biztonsági csoport **HR részl
 Mi most megadott-licencsablon, a HR-osztály csoport. Az Azure ad-ben háttérfolyamatként feldolgozni az adott csoport összes meglévő tag el lett indítva. A kezdeti művelet a csoport aktuális méretétől függően némi időt is igénybe vehet. A következő lépés ismerteti győződjön meg arról, hogy a folyamat véget ért, és döntse el, ha további figyelmet a problémák megoldásához szükséges.
 
 > [!NOTE]
-> Az azonos hozzárendelés kezdhet egy másik helyre: **felhasználók és csoportok** az Azure ad-ben. Lépjen a **Azure Active Directory** > **felhasználók és csoportok** > **összes csoport**. Majd keresse meg a csoportot, válassza ki és nyissa meg a **licencek** fülre. A **hozzárendelése** gomb fölött a panel megnyitja a licenc-hozzárendelési ablaktáblán.
+> Az azonos hozzárendelés indíthatja egy másodlagos helyet: **Felhasználók és csoportok** az Azure ad-ben. Lépjen a **Azure Active Directory** > **felhasználók és csoportok** > **összes csoport**. Majd keresse meg a csoportot, válassza ki és nyissa meg a **licencek** fülre. A **hozzárendelése** gomb fölött a panel megnyitja a licenc-hozzárendelési ablaktáblán.
 
-## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>2. lépés: Győződjön meg arról, hogy a hozzárendelés kezdeti befejeződött
+## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>2. lépés: A hozzárendelés kezdeti befejeződésének ellenőrzése
 
 1. Lépjen a **Azure Active Directory** > **felhasználók és csoportok** > **összes csoport**. Majd keresse meg a **HR részleg** csoportot, amely a licencek lettek hozzárendelve.
 
@@ -77,9 +77,9 @@ Mi most megadott-licencsablon, a HR-osztály csoport. Az Azure ad-ben háttérfo
 
 3. Részletesebb információ a feldolgozás alatt licenc **Azure Active Directory** > **felhasználók és csoportok** > *csoportnév*  >  **Auditnaplók**. Vegye figyelembe a következő tevékenységeket:
 
-   - Tevékenység: **indítsa el a Csoportalapú licenc felhasználókra érvényes**. Ez a rendszer naplózza a rendszer észleli a licenc-hozzárendelés módosítást a csoportban található, és elindítja az összes felhasználói tagok telepítené azt. A változás, amely történt kapcsolatos információkat tartalmaz.
+   - Tevékenység: **Csoportalapú licenc felhasználókra érvényes Start**. Ez a rendszer naplózza a rendszer észleli a licenc-hozzárendelés módosítást a csoportban található, és elindítja az összes felhasználói tagok telepítené azt. A változás, amely történt kapcsolatos információkat tartalmaz.
 
-   - Tevékenység: **felhasználók csoport alapú licenc alkalmazásának befejezése**. Ez akkor kerül, amikor a rendszer befejezte a feldolgozása a csoportban lévő összes felhasználó számára. Hány felhasználó feldolgozása sikeresen megtörtént, és hány felhasználó nem sikerült hozzárendelni csoportok licenceire összegzését tartalmazza.
+   - Tevékenység: **A felhasználók csoport alapú licenc alkalmazásának befejezése**. Ez akkor kerül, amikor a rendszer befejezte a feldolgozása a csoportban lévő összes felhasználó számára. Hány felhasználó feldolgozása sikeresen megtörtént, és hány felhasználó nem sikerült hozzárendelni csoportok licenceire összegzését tartalmazza.
 
    [Ebben a szakaszban olvasható](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) tudhat meg többet hogyan auditnaplók segítségével elemezheti a Csoportalapú licencelés által végrehajtott módosításokat.
 

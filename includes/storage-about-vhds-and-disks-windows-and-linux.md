@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 76ccbb3eabbf7186498ad0d57753314bdeffc2ea
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: aa740cfb203f50dc97a06359774dae367a20252b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52585726"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55147988"
 ---
 ## <a name="about-vhds"></a>Tudnivalók a VHD-kről
 
@@ -66,11 +66,11 @@ Javasoljuk, hogy az új virtuális gépeihez használja az Azure Managed Disks s
 
 Az alábbi táblázat összehasonlítja a standard szintű HDD, Standard SSD és a nem felügyelt és felügyelt lemezek prémium szintű SSD segít eldönteni, hogy melyiket érdemes használni. Csillaggal szintben méretek jelenleg előzetes verzióban érhető el.
 
-|    | Prémium szintű Azure-lemez |Az Azure Standard SSD-lemez | Az Azure standard szintű HDD-lemez
+|    | Prémium szintű Azure-lemez |Azure Standard SSD Disk | Az Azure standard szintű HDD-lemez
 |--- | ------------------ | ------------------------------- | -----------------------
 | Lemez típusa | SSD-k | SSD-k | HDD-k  
 | Áttekintés  | SSD-alapú, nagy teljesítményű, kis késleltetésű lemeztámogatás a nagy adatátviteli teljesítményt igénylő számítási feladatokat vagy az üzletmenet szempontjából kritikus fontosságú éles környezeteket futtató virtuális gépek számára |Egységes teljesítményéről és megbízhatóságáról, mint a HDD. Alacsony iops-értékű munkaterhelésekhez optimalizálva| HDD-alapú költséghatékony lemezt gyakori eléréshez
 | Forgatókönyv  | Éles, teljesítményérzékeny számítási feladatok |A webkiszolgálók, kisebb terhelésű vállalati alkalmazások és a fejlesztés + tesztelés| Biztonsági mentés, a nem kritikus, ritka hozzáférésű eszközéhez
-| Lemezméret | P4: 32 GiB (csak felügyelt lemezek esetén)<br>P6: 64 GiB (csak felügyelt lemezek esetén)<br>Alatt P10: 128 GB<br>P15: 256 GiB (csak felügyelt lemezek esetén)<br>Között P20: 512 GB<br>Között P30: 1024 GB<br>Között P40: 2048 GB<br>P50: 4095 GiB<br>A P60: 8192 GiB * (8 TiB)<br>P70: 16 384 GB * (16 TiB)<br>P80: – 32 767 GiB * (32 TiB) |Csak felügyelt lemezek:<br>E10: 128 GIB-ra<br>E15: 256 GiB<br>E20: 512 GIB-ra<br>E30: 1024 GiB<br>E40: 2048 GiB<br>E50: 4095 GiB<br>E60: futtathat 8192 GiB * (8 TiB)<br>E70: 16 384 GB * (16 TiB)<br> E80: – 32 767 GiB * (32 TiB) | Nem felügyelt lemezek: 1 GB – 4 Tib-ra (4095 GiB) <br><br>Managed Disks:<br> S4: 32 GIB-ra <br>S6: 64 GiB <br>S10: 128 GIB-ra <br>S15: 256 GiB <br>S20: 512 GIB-ra <br>S30: 1024 GiB <br>S40: 2048 GiB<br>S50: 4095 GiB<br>S60: futtathat 8192 GiB * (8 TiB)<br>S70: 16 384 GB * (16 TiB)<br>S80: – 32 767 GiB * (32 TiB)
-| Lemezenkénti maximális átviteli sebesség | P4: 25 MiB/s<br> P6: 50 MiB/s<br> P10: 100 MiB/s<br> P15: 125 MiB/s<br> P20: 150 MiB/s<br> P30: 200 MiB/s<br> P40-P50: 250 MiB/s<br> A P60: 480 MiB/s *<br> P70-P80: 750 MiB/s * | E10-E50: akár 60 MiB/s<br> E60: akár 300 MiB/s *<br> E70-E80: 500 MiB/s *| S4 – S50: Upt o 60 MiB/s<br> S60: akár 300 MiB/s *<br> S70-S80: akár 500 MiB/s *
-| Lemezenkénti maximális IOPS-érték | P4: 120 IOPS<br> P6: 240 IOPS<br> P10: 500 IOPS<br> P15: 1100-AS IOPS-ÉRTÉK<br> P20: 2300 IOPS<br> P30: 5000 IOPS<br> P40-P50: 7500 IOPS<br> A P60: 12,500 IOPS *<br> P70: 15 000 IOPS *<br> P80: 20 000 IOPS * | E10-E50: legfeljebb 500 IOPS<br> E60: 1300 IOPS legfeljebb *<br> E70-E80: legfeljebb 2000 IOPS * | S4 – S50: legfeljebb 500 IOPS<br> S60: 1300 IOPS legfeljebb *<br> S70-S80: legfeljebb 2000 IOPS *
+| Lemezméret | P4: 32 giB (csak felügyelt lemezek esetén)<br>P6: 64 giB (csak felügyelt lemezek esetén)<br>P10: 128 GiB<br>P15: 256 giB (csak felügyelt lemezek esetén)<br>P20: 512 GiB<br>P30: 1024 GiB<br>P40: 2048 GiB<br>P50: 4095 giB<br>P60: Futtathat 8192 giB * (8 TiB)<br>P70: 16 384 GB * (16 TiB)<br>P80: – 32 767 giB * (32 TiB) |Csak felügyelt lemezek:<br>E4: 32 GiB<br>E6: 64 GiB<br>E10: 128 GiB<br>E15: 256 GiB<br>E20: 512 GiB<br>E30: 1024 GiB<br>E40: 2048 GiB<br>E50: 4095 GiB<br>E60: Futtathat 8192 giB * (8 TiB)<br>E70: 16 384 GB * (16 TiB)<br> E80: – 32 767 giB * (32 TiB) | Unmanaged Disks: 1 GiB – 4 TiB (4095 GiB) <br><br>Managed Disks:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GiB <br>S15: 256 GiB <br>S20: 512 GiB <br>S30: 1024 GiB <br>S40: 2048 GiB<br>S50: 4095 GiB<br>S60: Futtathat 8192 giB * (8 TiB)<br>S70: 16 384 GB * (16 TiB)<br>S80: – 32 767 giB * (32 TiB)
+| Lemezenkénti maximális átviteli sebesség | P4: 25 MiB/s<br> P6: 50 MiB/s<br> P10: 100 MiB/s<br> P15: 125 MiB/s<br> P20: 150 MiB/s<br> P30: 200 MiB/s<br> P40-P50: 250 MiB/s<br> P60: 480 MiB/s *<br> P70-P80: 750 MiB/s * | E10-E50: Akár 60 MiB/s<br> E60: Up to 300 MiB/s *<br> E70-E80: 500 MiB/s *| S4 - S50: Upt o 60 MiB/s<br> S60: Up to 300 MiB/s *<br> S70-S80: Up to 500 MiB/s *
+| Lemezenkénti maximális IOPS-érték | P4: 120 IOPS<br> P6: 240 IOPS<br> P10: 500 IOPS<br> P15: 1100 IOPS<br> P20: 2300 IOPS<br> P30: 5000 IOPS<br> P40-P50: 7500 IOPS<br> P60: 12,500 IOPS *<br> P70: 15,000 IOPS *<br> P80: 20 000 IOPS-T * | E10-E50: Legfeljebb 500 IOPS<br> E60: Akár 1300 IOPS *<br> E70-E80: Up to 2000 IOPS * | S4-S50: Legfeljebb 500 IOPS<br> S60: Akár 1300 IOPS *<br> S70-S80: Up to 2000 IOPS *

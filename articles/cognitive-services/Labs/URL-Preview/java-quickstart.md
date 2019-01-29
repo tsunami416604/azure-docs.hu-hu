@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Az URL-cím előnézete projekt, Java'
+title: 'Gyors útmutató: Projekt URL-cím előnézete, a Java'
 titlesuffix: Azure Cognitive Services
 description: Az URL-cím előnézete projekt Java nyelvvel való használatába bevezető szkriptminta.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: cdbed473af04b7a0ba0fd2bba56219d43bf72537
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 23f9f0cb8205a29733e90522f5eb524142677137
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465712"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094274"
 ---
-# <a name="quickstart-url-preview-with-java"></a>Rövid útmutató: Az URL-cím előnézete Java nyelven
+# <a name="quickstart-url-preview-with-java"></a>Gyors útmutató: Java-URL-cím előnézete
 
 Az alábbi Java-példa létrehoz egy URL-előnézetet a SwiftKey webhelyhez: https://swiftkey.com/en.
 
@@ -29,7 +29,7 @@ Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answe
 
 A következő kód például létrehoz egy `WebRequest`-kérést, beállítja a hozzáférési kulcs fejlécét, és hozzáad egy lekérdezési sztringet a „https://swiftkey.com/en” webhelyhez.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
-````
+```
     // construct URL of search request (endpoint + query string)
 
     static String host = "https://api.labs.cognitive.microsoft.com";
@@ -47,7 +47,7 @@ A következő kód például létrehoz egy `WebRequest`-kérést, beállítja a 
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="complete-code"></a>Teljes kód
 
@@ -58,7 +58,7 @@ A Bing Answer Search API a Bing keresőmotor találatait adja vissza.
 4. A subscriptionKey értékét cserélje le az előfizetéshez használható hozzáférési kulcsra.
 5. Futtassa a programot.
 
-````
+```
 package UrlPreviewpkg;
 
 import java.net.*;
@@ -165,7 +165,7 @@ class SearchResults{
  }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>További lépések
 - [C# – rövid útmutató](csharp.md)

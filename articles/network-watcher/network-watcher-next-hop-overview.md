@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 28eacdce922e26d391cf34f78cb03ead9c6887a1
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 40f1790806aac6756979f28ad29442b7abf96019
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391266"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096891"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Használja a következő ugrás virtuális gép útválasztási problémáinak diagnosztizálása
 
@@ -42,4 +42,4 @@ Következő ugrások típusaira kapcsolatos további információkért lásd: [�
 
 ## <a name="next-steps"></a>További lépések
 
-VM-hálózat útválasztási problémáinak diagnosztizálása a következő ugrás használatával kapcsolatban lásd: [diagnosztizálhatja a Virtuálisgép-hálózat útválasztási problémáinak](diagnose-vm-network-routing-problem.md).
+Megtudhatja, hogyan használható a következő ugrás VM-hálózat útválasztási problémáinak diagnosztizálása, tekintse meg a virtuális gépek hálózati használatával útválasztási problémák diagnosztizálása a [az Azure portal](diagnose-vm-network-routing-problem.md), [PowerShell](diagnose-vm-network-routing-problem-powershell.md), vagy a [Azure CLI-vel](diagnose-vm-network-routing-problem-cli.md).
