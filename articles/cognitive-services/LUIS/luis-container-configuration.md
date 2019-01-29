@@ -32,12 +32,13 @@ Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 |--|--|--|
 |Igen|[ApiKey](#apikey-setting)|Számlázási adatok nyomon követésére szolgál.|
 |Nem|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi, hogy [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetriai támogatása a tárolóba.|
-|Igen|[Számlázás](#billing-setting)|Adja meg a végpont a szolgáltatás-erőforrás URI-ját az Azure-ban.|
-|Igen|[Végfelhasználói licencszerződés](#eula-setting)| Azt jelzi, hogy Ön már elfogadta a licencet, a tároló.|
+|Igen|[Billing](#billing-setting)|Az Azure-ban található szolgáltatás-erőforrás végponti URI-ját adja meg.|
+|Igen|[Eula](#eula-setting)| Azt jelzi, hogy Ön már elfogadta a tároló licencét.|
 |Nem|[Fluentd](#fluentd-settings)|Napló írási és opcionálisan metrikaadatok Fluentd kiszolgálóhoz.|
 |Nem|[Http Proxy](#http-proxy-credentials-settings)|Egy HTTP-proxy konfigurálása, hogy a kimenő kérelmek.|
 |Nem|[Logging](#logging-settings)|Biztosítja a naplózás a tároló támogatása ASP.NET Core. |
-|Igen|[Csatlakoztatja](#mount-settings)|Olvasási és írási adatok tárolót a gazdaszámítógép és a tároló található vissza gazdaszámítógéphez.|
+|Igen|[Fluentd](#mount-settings)|Napló- és opcionálisan metrikaadatok írása egy Fluentd-kiszolgálóra.
+
 
 > [!IMPORTANT]
 > A [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), és [ `Eula` ](#eula-setting) beállítások együtt használja, és meg kell adnia az érvényes értékek mindhárom azokat; egyéb a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](luis-container-howto.md#billing).
