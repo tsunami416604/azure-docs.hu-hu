@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1bf0ae8b0e9e0665f9b51935763d9f724b4bca4f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 925bf325d128f1757d24d29013f4e27eb788d7e2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261893"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180670"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Az Azure Security Center által figyelt Azure biztonsági szabályzatok
 Ez a cikk az Azure szabályzat-definíciókat a Security Center által megfigyelt listáját. Biztonsági szabályzatok kapcsolatos további információkért lásd: [biztonsági házirendek használata](tutorial-security-policy.md).
@@ -34,7 +34,7 @@ Szeretné megtudni, a beépített szabályzatokat, a Security Center által figy
 |Event Hubs-névterek engedélyezési szabályainak naplózása|Event Hub-ügyfelek ne használjon egy névtér szintű hozzáférési szabályzatot, amely valamennyi üzenetsorok és témakörök a névtérben hozzáférést biztosít. A minimális jogosultságokkal rendelkező igazítása biztonság a modellben kell hozzáférési szabályzatokat hoz létre az entitások szintjén, az üzenetsorok és témakörök biztosíthat hozzáférést az adott entitáshoz.|
 |Event Hubs-entitásokra vonatkozó engedélyezési szabályok meglétének naplózása|Event Hub-entitások alacsonyabb szintű hozzáférést biztosítani az engedélyezési szabályok meglétének naplózása.|
 |Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása|A storage-fiók tűzfal beállításait a nem korlátozott hálózati hozzáférés naplózása. Konfigurálja a hálózati szabályok, az engedélyezett hálózatok csak alkalmazások férhetnek hozzá a tárfiók. Az adott internetről fogadjon kapcsolatokat, vagy egy helyszíni ügyfelek, a hozzáférés adható adott Azure virtuális hálózatok forgalmát, vagy nyilvános internetes IP-címtartományok.|
-|Egyéni RBAC-szabályok használatának naplózása|Naplózza a beépített szerepkörök, például "Tulajdonosi, közreműködői, olvasó" helyett egyéni RBAC-szerepkörök, amelyek hibalehetőségeket rejt magában. Egyéni szerepkörök használatával kivételként kezeli, és szigorú áttekintése és a fenyegetések modellezése szükséges.|
+|Egyéni RBAC-szabályok használatának naplózása|Naplózza a beépített szerepkörök, például a "Tulajdonos, közreműködő, olvasó" helyett egyéni RBAC-szerepkörök, amelyek hibalehetőségeket rejt magában. Egyéni szerepkörök használatával kivételként kezeli, és szigorú áttekintése és a fenyegetések modellezése szükséges.|
 |Az Azure Stream Analytics-beli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
 |Tárfiókokba történő biztonságos átvitel naplózása|Naplózási követelmény, biztonságos átvitel a storage-fiókban. Biztonságos átvitel, amely arra kényszeríti a storage-fiók csak a biztonságos kapcsolat (HTTPS) érkező kérések fogadására lehetőség. HTTPS használata biztosítja, hogy a kiszolgáló és a szolgáltatás közötti hitelesítéshez, és man-in-the-middle, lehallgatást, és a munkamenet-eltérítés – például a hálózati réteg támadások ellen védi a az átvitt adatokat.|
 |Azure Active Directory-rendszergazda-fiók kiépítésének naplózása az SQL-kiszolgálón|Naplózási üzembe helyezése egy Azure Active Directory-rendszergazda az SQL Server az Azure AD-hitelesítés engedélyezéséhez. Az Azure AD-hitelesítés lehetővé teszi, hogy egyszerűsített engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központi identitáskezeléssel.|

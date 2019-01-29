@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 854485863786a4892ea04d4d5400732742436210
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 214f32c4dc35661480b96477caf0cdf6243c75a8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913070"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094241"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -371,7 +371,7 @@ Tesztadatok egy függvény a felügyeleti végponthoz való megfelelés esetén 
 {
     "input": "<trigger_input>"
 }
-````
+```
 
 A `<trigger_input>` érték a függvény által várt formátumú adatokat tartalmaz. A következő cURL-példában a bejegyzés egy `QueueTriggerJS` függvény. Ebben az esetben a bemeneti egy karakterláncérték, amely megegyezik a várható, hogy az üzenetsorban található üzenet.
 

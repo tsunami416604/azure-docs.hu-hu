@@ -1,5 +1,5 @@
 ---
-title: (Másolás) Log Analytics-riasztások kiterjesztése az Azure-riasztások – áttekintés
+title: (Másolás) Log Analytics-riasztások kiterjesztése az Azure Government Cloud
 description: Másolnunk riasztások a Log Analytics az OMS-portálon az Azure-riasztások, a folyamat áttekintése olyan címzési gyakori ügyfél problémákat ismerteti.
 author: msvijayn
 services: azure-monitor
@@ -8,19 +8,21 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e2f2a739f78072a0479e77e68e84c8f4b395468f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: efd2fc9d164564126b7b641ef35bbb10c4834f49
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422226"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099328"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>A Log Analytics-riasztások kiterjesztése az Azure-riasztások
 
 > [!NOTE]
 > A Microsoft már az Azure nyilvános verzióihoz készült cikkben leírt folyamat befejeződött. Azonban továbbra is érvényes a US government verziók.  
 
-Nemrég, amíg az Azure Log Analytics a saját riasztási funkcióval rendelkezik, amely sikerült proaktívan kaphat értesítést a Log Analytics-adatok alapuló feltételek tartalmazza. A Microsoft Operations Management Suite portál riasztási szabályok felügyelt. A riasztások új kezelőfelülete mostantól integrálva van riasztási között különböző szolgáltatások, Microsoft Azure-ban. Érhető el **riasztások** alatt az Azure Monitor az Azure Portalon, és támogatja a vizsgálati naplók, metrikák, a riasztások és a Log Analytics és az Azure Application Insights-naplók. 
+Nemrég, amíg az Azure Log Analytics a saját riasztási funkcióval rendelkezik, amely sikerült proaktívan kaphat értesítést a Log Analytics-adatok alapuló feltételek tartalmazza. A Microsoft Operations Management Suite portál riasztási szabályok felügyelt. A riasztások új kezelőfelülete mostantól integrálva van riasztási között különböző szolgáltatások, Microsoft Azure-ban. Érhető el **riasztások** alatt az Azure Monitor az Azure Portalon, és támogatja a vizsgálati naplók, metrikák, a riasztások és a Log Analytics és az Azure Application Insights-naplók.
+
+Az Azure Government felhőalapú szolgáltatást használó ügyfeleink OMS-portálon is [önkéntesen terjeszthető ki a riasztási szabályok az Azure](alerts-extend-tool.md) a **2019. február 1.**. Kezdési **2019. március 1.** - Microsoft auto-kiterjeszti rendszeres módon minden meglévő riasztási szabályok az Azure Government - OMS-portálon az Azure-bA; a break a figyelésre és állásidő nélkül. Ekkor vagy később létrehozott minden új munkaterület **2019. március 1.** az Azure Government cloudban OMS portál lesz automatikus terjesztve az Azure-bA.
 
 ## <a name="benefits-of-extending-your-alerts"></a>A riasztások kiterjesztését az előnyei
 Nincsenek számos előnnyel jár. a létrehozása és kezelése például a riasztások az Azure Portalon:

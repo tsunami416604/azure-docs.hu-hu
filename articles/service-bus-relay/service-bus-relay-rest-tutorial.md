@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 40562c77cf38ad316d64f68b54dd4174dae6da1a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e0f85e11b2be8a615f949e0d37325dbd748f728a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614472"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103275"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Az Azure WCF Relay REST oktatóanyag
 Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy egyszerű Azure Relay gazdaalkalmazást REST-alapú felületet. A REST lehetővé teszi egy webes ügyfél, például egy webes böngésző számára, hogy hozzáférjen a HTTP-kérelmeken keresztül a Service Bus alkalmazásprogramozási felületekhez.
@@ -178,7 +178,7 @@ Csakúgy, mint az előző lépések során nagyon kicsi a különbség a REST-st
     Amint azt korábban említettük, ez a névtér nem egy hagyományos névtér. Ehelyett ez a szerződést azonosító WCF-architektúra része. További információkért lásd: a [az szerződés nevének](https://msdn.microsoft.com/library/ms731045.aspx) a cikk a WCF-dokumentáció.
 3. Adjon hozzá egy .jpg képet a projekthez.  
    
-    Ez egy kép, amelyet a szolgáltatás megjelenít a fogadó böngészőben. Kattintson a jobb gombbal a projektre, majd kattintson az **Add** (Hozzáadás) lehetőségre. Ezután kattintson az **Existing Item** (Meglévő elem) elemre. Az **Add Existing Item** (Meglévő elem hozzáadása) párbeszédablak segítségével keressen egy megfelelő .jpg fájlt, és kattintson az **Add** (Hozzáadás) lehetőségre.
+    Ez egy kép, amelyet a szolgáltatás megjelenít a fogadó böngészőben. Kattintson a jobb gombbal a projektre, majd kattintson az **Add** (Hozzáadás) lehetőségre.  Ezután kattintson az **Existing Item** (Meglévő elem) elemre. Az **Add Existing Item** (Meglévő elem hozzáadása) párbeszédablak segítségével keressen egy megfelelő .jpg fájlt, és kattintson az **Add** (Hozzáadás) lehetőségre.
    
     Egy fájl hozzáadásakor győződjön meg arról, hogy a legördülő menüben kiválasztotta az **All Files** (Minden fájl) lehetőséget a **File nane:** (Fájlnév:) mező mellett. Az oktatóanyag hátralevő része feltételezi, hogy a kép neve image.jpg. Ha egy másik fájlba, nevezze át a képet, vagy az módosítania kell a kódot a helyesbítéshez.
 4. Annak biztosításához, hogy a futó szolgáltatás megtalálja a képfájlt, a **Solution Explorerben** (Megoldáskezelőben) kattintson a jobb gombbal képfájlra, majd kattintson a **Properties** (Tulajdonságok) lehetőségre. A **Properties** (Tulajdonságok) panelen állítsa a **Copy to Output Directory** (Másolás a kimeneti könyvtárba) beállítást **Copy if newer** (Másolás, ha újabb) értékre.
@@ -439,9 +439,9 @@ A következő példa a szolgáltatáshoz társított App.config fájlt mutatja b
       </behaviors>
     </system.serviceModel>
     <appSettings>
-        <!-- Service Bus specific app setings for messaging connections -->
+        <!-- Service Bus specific app settings for messaging connections -->
         <add key="Microsoft.ServiceBus.ConnectionString"
-            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey="YOUR_SAS_KEY"/>
+            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SAS_KEY>"/>
     </appSettings>
 </configuration>
 ```
