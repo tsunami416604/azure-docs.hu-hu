@@ -1,5 +1,5 @@
 ---
-title: Video Indexer – regisztráljon, és az első videó feltöltése
+title: Video Indexer – regisztráljon, és töltse fel első videóját – Azure
 titlesuffix: Azure Media Services
 description: Ismerje meg, hogyan regisztrálhat és töltheti fel az első videóját a Video Indexer portállal.
 services: media-services
@@ -7,16 +7,16 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 11/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 72412956d231ea2696c05ba250302faf5f90c91d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1e3ba1e12a8b058429f75b1d2aab3942cd843778
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823283"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55090507"
 ---
-# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>Oktatóanyag: Regisztráljon, és az első videó feltöltése
+# <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Gyors útmutató: Regisztráljon, és az első videó feltöltése
 
 Ez az első lépéseket ismertető oktatóanyag bemutatja, hogyan jelentkezhet be a Video Indexer webhelyre, és hogyan töltheti fel az első videóját.
 

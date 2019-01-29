@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: bb82ef542db09b3b7f864c4901107e1c5c0827f6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: bb22a2545466c72f7dac68f80668b8b530832c21
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464771"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094718"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
 
@@ -370,6 +370,6 @@ Ez a funkció által az élő is tesztelheti [a curl használatával egyéni ese
 
 ## <a name="next-steps"></a>További lépések
 
-* Fedezze fel a [az Azure Event Grid Management és az SDK-k közzététele](./sdk-overview.md)
+* Fedezze fel a [az Azure Event Grid felügyeleti és SDK-k közzététele](./sdk-overview.md)
 * Ismerje meg, hogyan [közzététel egyéni témakörben](./post-to-custom-topic.md)
 * Próbálja ki az Event Grid és a funkciók részletes oktatóanyagok egyikét például [a blobtárolóba feltöltött képek átméretezésének](resize-images-on-storage-blob-upload-event.md)

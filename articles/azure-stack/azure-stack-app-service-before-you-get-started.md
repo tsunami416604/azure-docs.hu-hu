@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: 31fe0ede202b72a3e71c8028543ef0677a44a335
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: ec34b99f48fbe7b634d7d143e8e108e8f2868f67
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413022"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182727"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Mielőtt elkezdené, az Azure Stack App Service-szel
 
@@ -331,7 +331,7 @@ Kövesse az alábbi lépéseket:
 3. [Az Azure Stack PowerShell telepítése](azure-stack-powershell-install.md).
 4. Futtassa a **létrehozás-AADIdentityApp.ps1** parancsfájlt. Ha kéri, adja meg az Azure AD-bérlő azonosítója, amely az Azure Stack üzemelő példány használja. Adja meg például **myazurestack.onmicrosoft.com**.
 5. Az a **Credential** ablakban adja meg az Azure AD szolgáltatás-rendszergazdai fiókot és jelszót. Kattintson az **OK** gombra.
-6. Adja meg a tanúsítványfájl elérési útja és a tanúsítvány jelszavát a [korábban létrehozott tanúsítvány](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Alapértelmezés szerint ez a lépés a létrehozott tanúsítványt **sso.appservice.local.azurestack.external.pfx**.
+6. Adja meg a tanúsítványfájl elérési útja és a tanúsítvány jelszavát a [korábban létrehozott tanúsítvány](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started). Alapértelmezés szerint ez a lépés a létrehozott tanúsítványt **sso.appservice.local.azurestack.external.pfx**.
 7. A szkript létrehoz egy új alkalmazás a bérlő Azure AD-példányt. Jegyezze fel az Alkalmazásazonosítót, a PowerShell-kimeneti adja vissza. Ezt az információt a telepítés során kell.
 8. Nyisson meg egy új böngészőablakot, és jelentkezzen be a [az Azure portal](https://portal.azure.com) az Azure Active Directory szolgáltatás-rendszergazdaként
 9. Nyissa meg az erőforrás-szolgáltató Azure ad-ben.
@@ -375,7 +375,7 @@ Kövesse az alábbi lépéseket:
 3. [Az Azure Stack PowerShell telepítése](azure-stack-powershell-install.md).
 4. Futtassa a **létrehozás-ADFSIdentityApp.ps1** parancsfájlt.
 5. Az a **Credential** ablakban adja meg az AD FS felhőalapú rendszergazdai fiók és jelszó. Kattintson az **OK** gombra.
-6. Adja meg a tanúsítványfájl elérési útja és a tanúsítvány jelszavát a [korábban létrehozott tanúsítvány](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Alapértelmezés szerint ez a lépés a létrehozott tanúsítványt **sso.appservice.local.azurestack.external.pfx**.
+6. Adja meg a tanúsítványfájl elérési útja és a tanúsítvány jelszavát a [korábban létrehozott tanúsítvány](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started). Alapértelmezés szerint ez a lépés a létrehozott tanúsítványt **sso.appservice.local.azurestack.external.pfx**.
 
 ```PowerShell
     Create-ADFSIdentityApp.ps1

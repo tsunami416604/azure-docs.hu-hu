@@ -14,29 +14,34 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: f22e5159acc93d9632c8cd268e24e8f972cbd7dd
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 5029365e665ce3ee9ba65886a3d6d5bbced0ed9a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580144"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103309"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
-Grub-HIBÁT a végösszeget egyesített rendszertöltő. A grub-HIBÁT Ön tudja módosítani a rendszerindítási konfiguráció többek között a egyfelhasználós módban indul.
+Grub-HIBÁT a végösszeg egyesített Rendszerbetöltőt, ami valószínűleg a legfontosabb, láthatja, ha a gép. Megjeleníti az operációs rendszer megkezdése előtt, mert nem érhető el SSH-n keresztül. A grub-HIBÁT Ön tudja módosítani a rendszerindítási konfiguráció többek között a egyfelhasználós módban indul.
 
 Egyfelhasználós módban, minimális környezetet minimális funkciókkal. A rendszerindítási problémák, filesystem, vagy hálózati problémák kivizsgálása hasznos lehet. Kevesebb services futhat a háttérben, és a paraméterben megadott futtatási szint, attól függően egy fájlrendszer előfordulhat, hogy nem is automatikusan csatlakoztatni.
 
-Egyfelhasználós üzemmódban is akkor hasznosak, ahol a virtuális gép csak konfigurálhatók úgy, hogy fogadja el a bejelentkezéshez SSH-kulcsokat. Ebben az esetben előfordulhat, hogy lehet egyfelhasználós módban használhatják a fióknál engedélyezze a jelszavas hitelesítés.
+Egyfelhasználós üzemmódban is akkor hasznosak, ahol a virtuális gép csak konfigurálhatók úgy, hogy fogadja el a bejelentkezéshez SSH-kulcsokat. Ebben az esetben előfordulhat, hogy lehet egyfelhasználós módban használhatják a fióknál engedélyezze a jelszavas hitelesítés. Vegye figyelembe, hogy a soros konzol szolgáltatás csak akkor engedélyezi a felhasználók közreműködője szintű hozzáféréssel vagy annál újabb virtuális gépek a soros konzol eléréséhez.
 
-Adja meg az egyfelhasználós módot, szüksége lesz adja meg a grub-HIBÁT, amikor a virtuális gép másolatából van, és módosítsa a rendszerindítási konfiguráció a grub-HIBÁT. Előfordulhat, hogy erre a virtuális gép soros konzolon.
+Adja meg az egyfelhasználós módot, szüksége lesz adja meg a grub-HIBÁT, amikor a virtuális gép másolatából van, és módosítsa a rendszerindítási konfiguráció a grub-HIBÁT. Az alábbiakban részletes utasításokat a grub-HIBÁT megadása. Általában megjelenítése grub-HIBÁT, ha a virtuális gép konfigurációja megjelenítése a grub-HIBÁT, és indítsa újra a virtuális gép az Újraindítás gombra a virtuális gép soros konzolon belül is használhatja.
+
+![Linux soros konzolon indítsa újra a gomb](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-bar.png)
 
 ## <a name="general-grub-access"></a>Általános GRUB-hozzáférés
 Hozzáférhet a grub-HIBÁT, kell, miközben a soros konzol panelen nyissa meg a virtuális gép újraindítása. Néhány disztribúciókhoz bevitelt a billentyűzetről megjelenítéséhez a grub-HIBÁT, míg mások automatikusan GRUB megjelenítése néhány másodpercet, és lehetővé teszi a felhasználó által beírt megszakítja az időkorlát van szükség.
 
 Győződjön meg arról, hogy GRUB engedélyezve van a virtuális Gépen ahhoz, hogy hozzáférési egyfelhasználós mód célszerű. A disztribúció függően néhány beállítás munka győződjön meg arról, hogy engedélyezve van-e a grub-HIBÁT is lehet. Disztribúció jellemző érhető el az alábbi, illetve a [ezt a hivatkozást](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
 
-### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>A virtuális gépet grub-HIBÁT a soros konzol eléréséhez
-A virtuális gép újraindítása a soros konzol panel nyílik meg a végezheti a SysRq `'b'` parancsot, ha [SysRq](./serial-console-nmi-sysrq.md) engedélyezve van, vagy kattintson az Újraindítás gombot az áttekintési panelen (megnyitása a virtuális Gépet egy új böngészőlapon bezárása nélkül indítsa újra a a soros konzol panel). Kövesse a disztribúció-specifikus utasításokat megtudhatja, mi várható a grub-HIBÁT, indítsa újra.
+### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>Indítsa újra a virtuális gép grub-HIBÁT a soros konzol eléréséhez
+A virtuális gép soros konzolon belül a főkapcsoló és "Indítsa újra a virtuális gép" gombra kattintva újraindíthatja. A szolgáltatás kezdeményez a virtuális gép újraindítása, és megjelenik egy értesítés az Azure Portalon az újraindítás kapcsolatban.
+A virtuális gép újraindítását is elvégezhető a egy SysRq `'b'` parancsot, ha [SysRq](./serial-console-nmi-sysrq.md) engedélyezve van. Kövesse a disztribúció-specifikus utasításokat megtudhatja, mi várható a grub-HIBÁT, indítsa újra.
+
+![Linux soros konzol újraindítása](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-ubuntu.gif)
 
 ## <a name="general-single-user-mode-access"></a>Hozzáférés az egyfelhasználós módot
 Manuális hozzáférés egyfelhasználós üzemmódra helyzetekben, ahol nincs konfigurálva egy fiók jelszavas hitelesítéssel lehet szükség. Adja meg manuálisan az egyfelhasználós módot a grub-HIBÁT konfigurációját módosítani kell. Ha ezzel végzett, tekintse meg a [használja az egyfelhasználós módot visszaállítására vagy a jelszó hozzáadása](#-Use-Single-User-Mode-to-reset-or-add-a-password) további útmutatást.

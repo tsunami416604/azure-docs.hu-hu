@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: wolfma
-ms.openlocfilehash: e0a00ffac1921adab3ce120d65fcccaa8b2d231f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 933ee0ce6885960d5b35f67a0a4ee50602fe55c8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53381505"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55148014"
 ---
 ### <a name="neural-voices"></a>Neurális beszédhangot
 
@@ -20,6 +20,9 @@ Neurális beszédhangot ezekben a régiókban érhetők el:
 | USA keleti régiója | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
 | Délkelet-Ázsia | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
 | Nyugat-Európa | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
+
+> [!IMPORTANT]
+> A Microsoft Server hang-szöveg Speech szövegfelolvasás (zh-CN, XiaoxiaoNeural) csak a Délkelet-Ázsia végponton keresztül érhető el: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1. Neurális beszédhangot teljes listáját lásd: [nyelvi támogatás](../articles/cognitive-services/speech-service/language-support.md).
 
 ### <a name="standard-voices"></a>Standard beszédhangot
 

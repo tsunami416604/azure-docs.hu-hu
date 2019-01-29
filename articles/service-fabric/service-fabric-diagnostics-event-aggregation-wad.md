@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: baa86fe70c394aaea31a6fa775073bb26d062c49
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 89cd8e85c9902bb1caeedd80240811f59ebec409
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002399"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187436"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és -gyűjteményt Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -187,7 +187,7 @@ Miután a leírtak szerint módosítja a template.json fájlt, tegye közzé új
 
 ### <a name="update-storage-quota"></a>Tárolási kvóta frissítése
 
-A táblák a bővítmény által óta növekszik elérte a kvótát, amíg érdemes lehet megfontolni a kvóta méretét. Az alapértelmezett érték 50 GB és konfigurálható a sablon alapján a `overallQuotainMB` eleménél `DiagnosticMonitorConfiguration`
+A táblák a bővítmény által óta növekszik elérte a kvótát, amíg érdemes lehet megfontolni a kvóta méretét. Az alapértelmezett érték 50 GB és konfigurálható a sablon alapján a `overallQuotaInMB` eleménél `DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",

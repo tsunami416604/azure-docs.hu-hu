@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/25/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 8ec9e5a50f2350a17d5845f5c52954df10fa1d10
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 5d42568a738d946d7df65601044b9797a35f6b1f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856825"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176012"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -44,7 +44,7 @@ A következő példa bemutatja egy **RelyingParty** eleme a *B2C_1A_signup_signi
   <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
-      <SingleSignOn Scope="TrustFramework" />
+      <SingleSignOn Scope="TrustFramework" KeepAliveInDays="7"/>
       <SessionExpiryType>Rolling</SessionExpiryType>
       <SessionExpiryInSeconds>300</SessionExpiryInSeconds>
       <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="your-application-insights-key" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
@@ -125,6 +125,7 @@ A **SingleSignOn** elem tartalmazza a következő attribútum:
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Hatókör | Igen | Egyszeri bejelentkezés viselkedésének hatókörét. A lehetséges értékek: `Suppressed`, `Tenant`, `Application`, vagy `Policy`. A `Suppressed` érték azt jelzi, hogy a viselkedés nem jelenik meg. Például egy egyszeri bejelentkezés munkamenet, a felhasználó nem munkamenet változatlan marad, és a felhasználó mindig a rendszer egy identitás-szolgáltató kiválasztása. A `TrustFramework` érték azt jelzi, hogy a lesz alkalmazva a bizalmi keretrendszer minden szabályzat. Például egy felhasználó a bizalmi keretrendszer két szabályzat teljesített végiglépkedhet nem kell megadnia az identitás szolgáltató kiválasztása. A `Tenant` érték azt jelzi, hogy a viselkedés a bérlő összes szabályzat van hozzárendelve. Ha például két szabályzat Journey végiglépkedhet a bérlőhöz tartozó felhasználó nem kell megadnia egy identitás-szolgáltató kiválasztása. A `Application` érték azt jelzi, hogy a lesz alkalmazva a kérést az alkalmazás minden házirendben. Például egy felhasználó az alkalmazás két szabályzat Journey végiglépkedhet nem kell megadnia az identitás szolgáltató kiválasztása. A `Policy` érték azt jelzi, hogy a csak történnek egy házirend. Például egy felhasználó a bizalmi keretrendszer két szabályzat teljesített végiglépkedhet a rendszer egy identitás-szolgáltató kiválasztása házirendek közötti váltáskor. |
+| KeepAliveInDays | Igen | azt szabályozza, hogy mennyi ideig a felhasználó bejelentkezve marad. Az érték 0 kikapcsolja az KMSI funkciót. További információkért lásd: [bejelentkezve szeretnék maradni](active-directory-b2c-reference-kmsi-custom.md). |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 

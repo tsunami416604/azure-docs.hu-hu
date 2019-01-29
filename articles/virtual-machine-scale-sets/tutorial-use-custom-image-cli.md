@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5eee55846bd6f5821be1e40b969a35f5e50bd205
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 119a53949b6184389c0e36e56732f0486c24ca5c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967370"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193488"
 ---
-# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure CLI-vel
+# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Oktatóanyag: Rendszerkép létrehozása és használata egy egyéni virtuálisgép-méretezési csoportokhoz az Azure CLI-vel
 Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a virtuálisgép-példányok üzembe helyezésekor. Egyéni virtuálisgép-rendszerkép használatával csökkentheti a feladatok számát a virtuálisgép-példányok üzembe helyezése után. Ez az egyéni virtuálisgép-rendszerkép tartalmaz minden szükséges alkalmazástelepítést és -konfigurációt. A méretezési csoportban létrehozott összes virtuálisgép-példány az egyéni virtuálisgép-rendszerképet használja, és készen állnak az alkalmazás forgalmának kiszolgálására. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
@@ -44,7 +44,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 >[!NOTE]
 > Ez az oktatóanyag bemutatja az általánosított virtuálisgép-rendszerképek létrehozásának és használatának folyamatát. A méretezési csoportok speciális virtuálisgép-rendszerképekből való létrehozása nem támogatott.
 
-Először is hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create), majd egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Ez a virtuális gép szolgál majd az egyéni virtuálisgép-rendszerkép forrásaként. A következő példában létrehozunk egy *myVM* nevű virtuális gépet a *myResourceGroup* nevű erőforráscsoportban:
+Először is hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create), majd egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Ez a virtuális gép szolgál majd az egyéni virtuálisgép-rendszerkép forrásaként. A következő példában létrehozunk egy *myVM* nevű virtuális gépet a *myResourceGroup* nevű erőforráscsoportban:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -57,7 +57,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép nyilvános IP-címe az [az vm create](/cli/azure/vm#az_vm_create) parancs kimenetében található. Hozzon létre egy SSH-kapcsolatot a virtuális gép nyilvános IP-címével az alább látható módon:
+A virtuális gép nyilvános IP-címe az [az vm create](/cli/azure/vm) parancs kimenetében található. Hozzon létre egy SSH-kapcsolatot a virtuális gép nyilvános IP-címével az alább látható módon:
 
 ```azurecli-interactive
 ssh azureuser@<publicIpAddress>
@@ -96,7 +96,7 @@ az vm generalize --resource-group myResourceGroup --name myVM
 
 A virtuális gép felszabadítása és általánosítása eltarthat néhány percig.
 
-Most hozzon létre egy rendszerképet a virtuális gépről az [az image create](/cli//azure/image#az_image_create) paranccsal. Az alábbi példa létrehoz egy *myImage* nevű rendszerképet a virtuális gépéből:
+Most hozzon létre egy rendszerképet a virtuális gépről az [az image create](/cli//azure/image) paranccsal. Az alábbi példa létrehoz egy *myImage* nevű rendszerképet a virtuális gépéből:
 
 ```azurecli-interactive
 az image create \

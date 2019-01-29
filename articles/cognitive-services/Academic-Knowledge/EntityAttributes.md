@@ -6,23 +6,23 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a203fdf6562dabb1b9d6e8ab5bb8f46ff6d5dc27
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f227cc03578adcfbf73fec3ae8941045e8352513
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902790"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182999"
 ---
 # <a name="entity-attributes"></a>Entitásattribútumok
 
 A academic graph 7 típusú entitás tevődik össze. Minden entitás egy entitás azonosítója és a egy entitás típusa lesz.
 
 ## <a name="common-entity-attributes"></a>Közös tevékenységentitás-attribútumok
-Name (Név)    |Leírás                |Típus       | Műveletek
+Name (Név)    |Leírás                |Typo       | Műveletek
 ------- | ------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                  |Int64      |Egyenlő
 Folyó évi      |Entitástípus                |Enum   |Egyenlő

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell
-ms.openlocfilehash: 0f4bb3f32b264bd894341a8776d48eb9f8b061a2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d8b78e42dc5909e6c80f100c9337880b1ad2d9e6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258731"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168413"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Csomagolása és üzembe helyezése egy meglévő végrehajtható fájlt a Service Fabric
 Amikor csomagolására, meglévő végrehajtható egy [futtatható vendégalkalmazás](service-fabric-guest-executables-introduction.md), választhat egy Visual Studio-projektsablont használja, vagy [hozza létre manuálisan az alkalmazáscsomag](#manually). A Visual Studiót használja, az alkalmazás-csomag szerkezete és a jegyzékfájlok hozza létre az új webesprojekt-sablon az Ön számára.
@@ -134,7 +134,7 @@ A következő szakaszok haladnak át a fájlt, akkor frissítenie kell a külön
 * Kiválaszthatja, hogy bármely név, amelyeket szeretne `ServiceTypeName`. Az érték szerepel a `ApplicationManifest.xml` fájlt a szolgáltatás azonosítására.
 * Adja meg `UseImplicitHost="true"`. Ez az attribútum tájékoztatja a Service Fabricet, hogy a szolgáltatás alapul egy önálló alkalmazás, így az összes Service Fabric kell tennie, hogy indítsa el az eszközt egy folyamatot, és figyelheti az állapotát.
 
-#### <a name="update-codepackage"></a>Frissítés CodePackage
+#### <a name="update-codepackage"></a>Update CodePackage
 A CodePackage elem azt határozza meg, a webszolgáltatás kódjához hely (és verzió).
 
 ```xml
@@ -143,7 +143,7 @@ A CodePackage elem azt határozza meg, a webszolgáltatás kódjához hely (és 
 
 A `Name` elem szolgál annak a könyvtárnak a nevét adja meg az alkalmazáscsomag, amely a szolgáltatás-kódot tartalmaz. `CodePackage` is rendelkezik a `version` attribútum. Adja meg a kódot verzióját használható, és potenciálisan is használható a szolgáltatást kód frissítése a Service fabric az alkalmazás életciklus-kezelési infrastruktúra használatával.
 
-#### <a name="optional-update-setupentrypoint"></a>Választható: Frissítési SetupEntrypoint
+#### <a name="optional-update-setupentrypoint"></a>Nem kötelező: Update SetupEntrypoint
 ```xml
 <SetupEntryPoint>
    <ExeHost>
@@ -302,4 +302,4 @@ Ebben a cikkben megtanulta, hogyan vendégalkalmazás csomagolása és üzembe h
 * [Minta csomagolás és a egy futtatható vendégalkalmazás üzembe helyezése a](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), és a telepítőre mutató előzetes verzióját a csomagolás eszköz
 * [Minta két Vendég végrehajtható fájlok (C# és nodejs) keresztül kommunikáljon az elnevezési szolgáltatásban REST használatával](https://github.com/Azure-Samples/service-fabric-containers)
 * [Több futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-multiple-apps.md)
-* [Hozzon létre az első Service Fabric-alkalmazás a Visual Studio használatával](service-fabric-create-your-first-application-in-visual-studio.md)
+* [Hozzon létre az első Service Fabric-alkalmazás a Visual Studio használatával](service-fabric-tutorial-create-dotnet-app.md)

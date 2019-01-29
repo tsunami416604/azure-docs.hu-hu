@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 6db713984b62ce3db48b2e72a4b117696bdd6add
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6f47606e91ec55bae624527bace81d947c5ea4f9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452972"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55091546"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>Oktatóanyag: Felkészülés az Azure Data Box átjáró (előzetes verzió) üzembe helyezése
 
@@ -42,7 +42,7 @@ A Data Box Gateway üzembe helyezéséhez tekintse meg az alábbi oktatóanyagok
 | **#** | **Ebben a lépésben** | **Ezeket a dokumentumokat használja** |
 | --- | --- | --- | 
 | 1. |**[Az Azure Portal előkészítése a Data Box Gatewayhez](data-box-gateway-deploy-prep.md)** |Virtuális Data Box Gateway-eszköz üzembe helyezése előtt létre kell hoznia és konfigurálnia kell a Data Box Gateway-erőforrást. |
-| 2. |**[A Data Box Gateway üzembe helyezése a Hyper-V-ben](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[A Data Box Gateway üzembe helyezése a VMware-ben](data-box-gateway-deploy-provision-vmware.md)**|Hyper-V esetén a virtuális Data Box Gateway-eszköz üzembe helyezéséhez, majd az eszközhöz való csatlakozáshoz a Hyper-V-t Windows Server 2016 vagy Windows Server 2012 R2 rendszeren futtató gazdarendszert használjon. <br><br><br> Hyper-V esetén a virtuális Data Box Gateway-eszköz üzembe helyezéséhez, majd az eszközhöz való csatlakozáshoz a VMware ESXi 6.0-t vagy 6.5-öt futtató gazdarendszert használjon.<br></br> |
+| 2. |**[A Data Box Gateway üzembe helyezése a Hyper-V-ben](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[A Data Box Gateway üzembe helyezése a VMware-ben](data-box-gateway-deploy-provision-vmware.md)**|Hyper-V esetén a virtuális Data Box Gateway-eszköz üzembe helyezéséhez, majd az eszközhöz való csatlakozáshoz a Hyper-V-t Windows Server 2016 vagy Windows Server 2012 R2 rendszeren futtató gazdarendszert használjon. <br><br><br> VMware-ről üzembe helyezése, és a gazdagép operációs rendszert futtató VMware ESXi 6.0, 6.5-ös vagy 6.7 Data Box-átjáró virtuális eszköz csatlakozni.<br></br> |
 | 3. |**[A Data Box Gateway csatlakoztatása, konfigurálása és aktiválása](data-box-gateway-deploy-connect-setup-activate.md)** |Csatlakozzon a helyi webes felhasználói felülethez, végezze el az eszköz konfigurálását, majd aktiválja az eszközt. Ezután üzembe helyezheti az SMB-megosztásokat.  |
 | 4. |**[Adatok átvitele a Data Box Gatewayjel](data-box-gateway-deploy-add-shares.md)** |Vegyen fel megosztásokat, és csatlakozzon a megosztásokhoz SMB vagy NFS használatával. |
 
@@ -63,7 +63,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 A virtuális eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
 
-* Rendelkezik hozzáféréssel a Hyper-V-t Windows Server 2012 R2 vagy újabb rendszeren futtató gazdarendszerhez, vagy pedig a VMware-t (ESXi 6.0 vagy 6.5) futtató olyan gazdarendszerhez, amely használható eszközök üzembe helyezésére.
+* A Hyper-V a Windows Server 2012 R2 vagy újabb rendszerű gazdagép rendszere vagy VMware-alapú (ESXi 6.0, 6.5-ös vagy 6.7), amely hozzáféréssel rendelkezik egy kiépítéséhez használt eszköz.
 * A gazdarendszernek képesnek kell lennie az alábbi erőforrásokat a virtuális Data Box-eszköz üzembe helyezésére elkülöníteni:
   
   * Legalább 4 mag.
@@ -95,7 +95,7 @@ Data Box-erőforrás létrehozásához hajtsa végre az alábbi lépéseket az A
 
 3. Adja meg vagy válassza ki az alábbi adatokat az új erőforrás számára.
     
-    |Beállítás  |Érték  |
+    |Beállítás  |Value  |
     |---------|---------|
     |Erőforrás neve   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
     |Előfizetés    |A számlázási fiókhoz társított előfizetés. |
@@ -126,7 +126,7 @@ Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure
 4. A jobb oldali panelen található gyorsindítási részben kattintson a letölteni kívánt rendszerképnek megfelelő hivatkozásra. A rendszerképfájlok mérete körülbelül 4,8 GB.
    
    * [Windows Server 2012 R2 vagy újabb rendszer futó Hyper-V VHDX-fájlja](https://aka.ms/dbe-vhdx-2012).
-   * [VMware ESXi 6.0 vagy 6.5 VMDK-fájlja](https://aka.ms/dbe-vmdk).
+   * [VMDK a VMWare ESXi 6.0, 6.5-ös vagy 6.7](https://aka.ms/dbe-vmdk).
 
 5. Töltse le a fájlt egy helyi meghajtóra, csomagolja ki, és jegyezze fel, hol található a kicsomagolt fájl.
 

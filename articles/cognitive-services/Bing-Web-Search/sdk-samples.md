@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: sample
 ms.date: 08/16/2018
-ms.author: erhopf
-ms.openlocfilehash: 375a2f14bdc6fc13d23b59ec71870cfe9c15517b
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.author: aahi
+ms.openlocfilehash: 2325ccee501d625063a5054a77f3eb163185437d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514060"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183713"
 ---
 # <a name="bing-web-search-sdk-samples"></a>Bing Web Search SDK-minták
 

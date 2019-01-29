@@ -10,12 +10,12 @@ ms.component: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: b211ede7ef90fb1aef3a6d6e9a82e0d52397afd3
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 54438a99a710a24daac9e7482cb92a9781d06746
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465916"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099090"
 ---
 # <a name="what-is-project-answer-search"></a>Mi a Válaszkeresés projekt?
 A Project Answer Search API a Bing v7 végpontot használja a válaszokat váró lekérdezések megválaszolására. Például a „Mekkora a Föld kerülete?” kérdésre a rendszer tényekkel válaszol.  A személyekkel, helyekkel vagy dolgokkal kapcsolatos lekérdezések a lekérdezésben azonosított entitásokkal kapcsolatos információkat adnak vissza. Ezek a forgatókönyvek olyan alkalmazások esetén lehetnek hasznosnak, amilyenek a csevegőrobotok, az üzenőalkalmazások, az olvasók stb.  
@@ -25,13 +25,13 @@ A lekérdezések a lekérdezési forgatókönyvtől függő válaszokat adnak vi
 ## <a name="endpoint"></a>Végpont
 A személyekkel, helyekkel vagy dolgokkal kapcsolatos információk lekéréséhez küldjön egy kérést az Answer Search API-végpontra. A különféle specifikációkat a fejlécekkel és az URL-paraméterekkel adhatja meg.  Szerepeltesse az *Ocp-Apim-Subscription-Key* fejlécet egy érvényes jogkivonattal.  A piac paraméter megadása kötelező. Jelenleg csak az `en-us` piac támogatott.
 
-Az alábbi lekérdezés a „Mekkora a Föld kerülete?” kérdésre ad válaszokat.
+Az alábbi lekérdezés lekérdezi a kérdésekre adott válaszok: "Mi az a föld kerület?"
 
 GET:
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=what+is+circumference+of+the=earth?&mkt=en-us
 
-````
+```
 
 A keresés tárgyának meghatározásához a `q=` URL-paramétert meg kell adni.
 
@@ -39,7 +39,7 @@ A keresés tárgyának meghatározásához a `q=` URL-paramétert meg kell adni.
 
 A válasz HTTP-fejléceket, weblapokat, illetve tényeket és/vagy entitásokat tartalmaz.
 
-````
+```
 BingAPIs-TraceId: AB2E75C998614ADB8EBF5110DF648298
 X-MSEdge-ClientID: 1E48FC4F7B8768C80B14F7997A106906
 BingAPIs-SessionId: 0504DDD6DAE84861A4842306F8DA7A58
@@ -236,7 +236,7 @@ JSON Response:
   }
 }
 
-````
+```
 
 ## <a name="terms-of-use"></a>Használati feltételek
 A Válaszkeresés és a Videótrendek projekt használatára [a Bing Search használati és megjelenítési követelményei vonatkoznak](use-display-requirements.md).

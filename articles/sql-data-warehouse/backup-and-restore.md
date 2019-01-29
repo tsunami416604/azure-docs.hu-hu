@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ca18aa5af89ec0a80d1aa8139671bf017a86e36c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 12764574c92c494e27290f98f274d2b76c7a4dc6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465173"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183228"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az Azure SQL Data Warehouse
 Ismerje meg a biztonsági mentés és visszaállítás működését az Azure SQL Data Warehouse. Használati adatok adatraktár-helyreállítás pillanatképek, vagy másolja az adattárház egy korábbi visszaállítási pontot az elsődleges régióban. Használja az adatraktár-georedundáns biztonsági másolatokat állíthatja vissza egy másik földrajzi régióban. 
@@ -73,7 +73,7 @@ GEO-biztonsági mentések alapállapotban be van kapcsolva. Ha az adattárház G
 
 
 ## <a name="backup-and-restore-costs"></a>Biztonsági mentés és visszaállítás költségek
-Megfigyelheti az Azure-számlán egy egysoros tételt tárolás és a egy egysoros tételt vész-helyreállítási Storage. A tárolás díja a teljes költség az adatok tárolására és a növekményes változásokat rögzíti a pillanatképeket az elsődleges régióban. Hogyan jelenleg pillanatképet készíteni a részletes magyarázatát, tekintse meg a [dokumentáció](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). A georedundáns díja fedezi a geo-biztonsági mentések tárolására költségeit.  
+Megfigyelheti az Azure-számlán egy egysoros tételt tárolás és a egy egysoros tételt vész-helyreállítási Storage. A tárolás díja a teljes költség az adatok tárolására és a növekményes változásokat rögzíti a pillanatképeket az elsődleges régióban. Hogyan számlázzuk a pillanatképek részletesebb ismertetése, tekintse meg [ismertetése, hogyan lépheti túl a pillanatképek díjak](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). A georedundáns díja fedezi a geo-biztonsági mentések tárolására költségeit.  
 
 A teljes költségét az elsődleges adatraktár és a hét napig pillanatkép változások a legközelebbi egész TB lesz kerekítve. Például ha az adattárház 1,5 TB-os és a pillanatképek rögzíti a 100 GB-os, akkor számlázása 2 TB adat, az Azure Premium Storage szolgáltatás díjszabása. 
 

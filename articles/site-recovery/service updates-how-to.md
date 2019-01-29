@@ -1,6 +1,6 @@
 ---
 title: Az Azure Site Recovery-frissítések |} A Microsoft Docs
-description: Szolgáltatás eupdates & frissítése az Azure Site Recoveryben használt összetevők áttekintést nyújt.
+description: Szolgáltatási hírek és frissítése az Azure Site Recoveryben használt összetevők áttekintést nyújt.
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/8/2019
 ms.author: rajanaki
-ms.openlocfilehash: eecd409c0256c42646edfc99208e180a42f1cb5b
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 4af881a3c49505e07a7fb73bb8af5a62e5e5a06f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401486"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176930"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Az Azure Site Recovery szolgáltatási hírek
 Szervezetként kell döntse el, hogyan fog az adatok biztonságban és futására tervezett alkalmazások és számítási feladatok, és nem tervezett leállások esetén. Az Azure Site Recovery azzal segíti a BCDR-stratégia, hogy virtuális gépeken és fizikai kiszolgálókon érhető el, ha egy hely leállása futtatja az alkalmazásokat. A Site Recovery replikálja a virtuális gépeken és fizikai kiszolgálókon futó folyamatokat, hogy azok egy másodlagos helyen elérhetők maradjanak az elsődleges hely elérhetetlenné válása esetén. Amikor az elsődleges hely ismét üzembe áll, helyreállítja rajta a munkafolyamatokat.

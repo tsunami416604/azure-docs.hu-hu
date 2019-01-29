@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: aahi
-ms.openlocfilehash: ac5ba80740c47dd71a30bb20aab4a54829eac822
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 58830e3391cb6f794cfd8911e97b0c6dbb3cd2c1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53597800"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193641"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing egyéni keresés felhasználói beállítása
 
@@ -28,7 +28,7 @@ Ha a webes webterületek definiálása, használja a következő:
 | Szelet neve | Leírás                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Domain     | Tartomány szelet magában foglalja az internetes tartományban található összes tartalmat. Például: `www.microsoft.com`. Felsorolhatja `www.` hatására a Bing, a tartomány altartományokra is kereshet. Például, ha a megadott `microsoft.com`, a Bing is eredményét adja vissza `support.microsoft.com` vagy `technet.microsoft.com`. |
-| Melléklap    | Melléklap szelet magában foglalja a Melléklap és elérési utak alatta található összes tartalmat. Legfeljebb két mindegyik lapot tünteti előfordulhat, hogy adja meg az elérési utat. Például: `www.microsoft.com/en-us/windows/`                                                                                                                       |
+| Subpage    | Melléklap szelet magában foglalja a Melléklap és elérési utak alatta található összes tartalmat. Legfeljebb két mindegyik lapot tünteti előfordulhat, hogy adja meg az elérési utat. Például: `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Weblap    | A weblap szelet belefoglalhatja egyéni keresés csak weblapról. Azt igény szerint megadhatja, hogy mindegyik lapot tünteti tartalmazza.                                                                                                                                                                                  |
 
 > [!IMPORTANT]
@@ -129,7 +129,7 @@ Alapértelmezés szerint weblapok csak rögzítve tetején a keresési eredmény
 > [!NOTE]
 > Között a felhasználó keresési lekérdezést, és a PIN-kód keresési lekérdezés minden összehasonlítások megkülönböztetik a kis-és nagybetűket.
 
-| Érték | Leírás                                                                          |
+| Value | Leírás                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | Kezdete | A PIN-kód egyezés, ha a lekérdezési karakterlánc a felhasználó a PIN-kód lekérdezési karakterlánccal kezdődik |
 | Vége   | A PIN-kód egyezés esetén a felhasználói lekérdezési karakterláncot a PIN-kód lekérdezési karakterlánccal végződik.  |

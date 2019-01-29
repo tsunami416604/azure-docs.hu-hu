@@ -1,33 +1,33 @@
 ---
-title: 'Rövid útmutató: Bing Autosuggest API, Ruby'
+title: 'Gyors útmutató: A Bing Autosuggest API-t, a Ruby'
 titlesuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg a Bing Autosuggest API használatának első lépéseivel.
 services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 643b9173b57b9f8e8596fe6a8b49358d34297b97
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
-ms.translationtype: HT
+ms.openlocfilehash: 463ad901edeec3790586f9494a7411b678c4ecf8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831177"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183611"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-ruby"></a>A Bing Autosuggest API Ruby-val rövid útmutatója 
 
-Ez a cikk bemutatja, hogyan használható a [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) a Ruby használatával. A Bing Autosuggest API visszaadja a javasolt lekérdezések egy listáját a felhasználó által a keresőmezőben megadott részleges lekérdezési sztring alapján. Általában ezt az API-t akkor kell hívni, amikor a felhasználó beír egy új karaktert a keresőmezőbe, és ezután a javaslatok megjelennek a keresőmező legördülő listájában. Ez a cikk bemutatja, hogyan kell elküldeni egy olyan kérelmet, amely a *sail* sztringre adja vissza a javasolt lekérdezési sztringeket.
+Ez a cikk bemutatja, hogyan használható a [a Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) Ruby használatával. A Bing Autosuggest API visszaadja a javasolt lekérdezések egy listáját a felhasználó által a keresőmezőben megadott részleges lekérdezési sztring alapján. Általában ezt az API-t hívja meg minden alkalommal, amikor egy felhasználó beír egy új karaktert a keresőmezőbe, majd megjelenít javaslatokat a keresőmező legördülő listájában. Ez a cikk azt mutatja be, hogyan küldhet olyan kérést, amely a *sail* (vitorlázás) kifejezésre visszaadja a javasolt lekérdezési sztringeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód futtatásához [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) vagy újabb verzió szükséges.
+A kód futtatásához a [Ruby 2.4-es](https://www.ruby-lang.org/en/downloads/) vagy újabb verziója szükséges.
 
-Egy **7-es verziójú Bing Autosuggest API-t** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#search) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
+Rendelkeznie kell egy, a **Bing Autosuggest API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#search) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
 
-## <a name="get-autosuggest-results"></a>Autosuggest eredményeinek beolvasása
+## <a name="get-autosuggest-results"></a>Automatikus kiegészítési eredmények lekérése
 
 1. Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
@@ -136,9 +136,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing Autosuggest oktatóanyaga](../tutorials/autosuggest.md)
+> [Bing Autosuggest-oktatóanyag](../tutorials/autosuggest.md)
 
 ## <a name="see-also"></a>Lásd még
 
 - [Mi az a Bing Autosuggest?](../get-suggested-search-terms.md)
-- [A 7-es verziójú Bing Autosuggest API útmutatója](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)

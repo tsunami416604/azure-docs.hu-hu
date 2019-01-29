@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Spell Check-eredmények lekérése a Bing Spell Check API használatával'
+title: 'Oktatóanyag: A Bing Spell Check API használatával helyesírás ellenőrizze eredmények beolvasása'
 titlesuffix: Azure Cognitive Services
 description: Bemutatja a Bing Spell Check használatát.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 09/28/2017
-ms.author: v-jaswel
-ms.openlocfilehash: d7afcd18e00e820ad63b8b12bbc352faaca24c84
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 4bb558c05a2bade3a9e3dd01976d4cd9bf24cb98
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803596"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160763"
 ---
-# <a name="tutorial-build-a-web-page-spell-check-client"></a>Oktatóanyag: Spell Check-ügyfél weboldalának létrehozása
+# <a name="tutorial-build-a-web-page-spell-check-client"></a>Oktatóanyag: A weblap helyesírás-ellenőrzés ügyfél létrehozása
 
 Ebben az oktatóanyagban létrehozunk egy weboldalt, amely lehetővé teszi a felhasználók számára a Bing Spell Check API lekérdezését.
 

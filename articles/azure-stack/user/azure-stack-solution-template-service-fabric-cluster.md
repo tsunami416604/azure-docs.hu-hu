@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: 151f6fa7880db03909c522147d9c1f74508f51a1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 6f67945bcd84eef5c332b92440afa3199429d365
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351849"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092086"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Az Azure Stack a Service Fabric-fürt üzembe helyezése
 
@@ -27,7 +27,7 @@ Használja a **Service Fabric-fürt** elem a biztonságos Service Fabric-fürtö
 
 A Service Fabric használatával kapcsolatos további információkért lásd: [áttekintése az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) és [Service Fabric-fürtök biztonsági forgatókönyveit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), az Azure dokumentációjában olvashatók.
 
-A Service Fabric-fürtön az Azure Stackben Microsoft.ServiceFabric erőforrás-szolgáltató nem használja. Az Azure Stackben, a Service Fabric-fürt egy virtuális gép méretezési Desired State Configuration (DSC) használatával előre telepített szoftvereket.
+A Service Fabric-fürtön az Azure Stackben Microsoft.ServiceFabric erőforrás-szolgáltató nem használja. Az Azure Stackben, a Service Fabric-fürt egy előre telepített szoftverfrissítési csoport Desired State Configuration (DSC) használatával virtuális gépek méretezési.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -210,7 +210,7 @@ Elérheti a Service Fabric-fürthöz a Service Fabric Explorerben vagy a Service
 
 1. Miután megváltoztatta a környezeti változók sorrendjét, indítsa újra a PowerShell, és futtassa a következő PowerShell-parancsfájl hozzáfér a Service Fabric-fürthöz:
 
-   ````PowerShell  
+   ```PowerShell  
     Connect-ServiceFabricCluster -ConnectionEndpoint "\[Service Fabric
     CLUSTER FQDN\]:19000" \`
 
@@ -221,8 +221,11 @@ Elérheti a Service Fabric-fürthöz a Service Fabric Explorerben vagy a Service
     0272251171BA32CEC7938A65B8A6A553AA2D3283 \`
 
     -StoreLocation CurrentUser -StoreName My -Verbose
-   ````
+   ```
    
    > [!NOTE]  
    > Nincs nem *https://* előtt a szkriptben a fürt nevére. 19000 portot kötelező megadni.
- 
+
+## <a name="next-steps"></a>További lépések
+
+[Az Azure Stack üzembe helyezése Kubernetes](azure-stack-solution-template-kubernetes-deploy.md)

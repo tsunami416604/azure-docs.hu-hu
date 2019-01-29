@@ -5,15 +5,15 @@ author: rboucher
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 18a63497cb0df2ade495dfb721aaa881aa4e6ff7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 156c977e197084d18d8fd32f55e58c512a66ef9d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464111"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156411"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure-ban riasztások áttekintése 
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, milyen riasztásokat, azok előnyeit, és hogyan lehet 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Mik a figyelmeztetések a Microsoft Azure-ban?
 Proaktív módon kap értesítést, ha fontos feltételek a figyelési adatok találhatók. Lehetővé teszik, hogy azonosítsa és problémákat, mielőtt azokat a felhasználókat a rendszer figyelje meg. 
 
-Ez a cikk ismerteti az egyesített riasztási élmény az Azure monitorban, amely már tartalmazza a Log Analytics és az Application Insights. A [korábbi riasztási élmény](alerts-overview.md) és riasztási típusok korábbi megnevezése **klasszikus riasztások**. Kattintva megtekintheti a régi felületet és a régebbi riasztástípus **klasszikus riasztások megtekintése** a riasztás oldalának tetején. 
+Ez a cikk ismerteti az egyesített riasztási élmény az Azure monitorban, amely már tartalmazza a Log Analytics és az Application Insights. A [korábbi riasztási élmény](alerts-classic.overview.md) és riasztási típusok korábbi megnevezése **klasszikus riasztások**. Kattintva megtekintheti a régi felületet és a régebbi riasztástípus **klasszikus riasztások megtekintése** a riasztás oldalának tetején. 
 
 ## <a name="overview"></a>Áttekintés
 
@@ -62,6 +62,13 @@ Metrikákat és naplókat is riasztás leírtak szerint [adatforrások figyelés
 - Tevékenységnapló-események
 - A mögöttes Azure platform állapotát
 - A webhely rendelkezésre állási tesztek
+
+Korábban az Azure Monitor metrikák, az Application Insights, a Log Analytics és a Service Health korábban külön riasztási képességek. Az idő múlásával Azure továbbfejlesztett, és a felhasználói felület és a különböző módszerek riasztások kombinált. Ez az összevonás még folyamatban van. Ennek eredményeképpen továbbra is vannak bizonyos riasztási funkciók nem, de az új riasztások rendszerben.  
+
+| **Forrás figyelése** | **Jel típusa**  | **Leírás** | 
+|-------------|----------------|-------------|
+| Szolgáltatások állapota | Tevékenységnapló  | Nem támogatott. Lásd: [tevékenységnapló-riasztások létrehozása a szolgáltatási értesítések](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Application Insights | Webalkalmazás rendelkezésre állási tesztek | Nem támogatott. Lásd: [webtesztriasztást](../../azure-monitor/app/monitor-web-app-availability.md). Rendelkezésre álló webhelyre, hogy az Application insights szolgáltatásnak van kialakítva. Értesítés küldése, amikor a rendelkezésre állás vagy a webhely válaszképesség nem éri el elvárásainak. |
 
 ## <a name="manage-alerts"></a>Riasztások kezelése
 Beállíthatja, hogy riasztást adjon meg, hol helyezkedik el a feloldási folyamat állapotát. A riasztási szabályban megadott megadott feltétele teljesül, ha riasztás jön létre, vagy aktivált, állapotba került, *új*. Miután nyugtázta a riasztást, és ha bezárja az állapot módosíthatja. Az összes állapotváltozások előzményeit, a riasztás vannak tárolva.
@@ -124,14 +131,7 @@ Ez a szerzői műveletekhez részben egyszerűsített folyamat többé nem kell,
 
 A riasztási szabályok létrehozásával kapcsolatos többet is megtudhat [, létrehozás, riasztások megtekintése és kezelése az Azure Monitor használatával](../../azure-monitor/platform/alerts-metric.md).
 
-Riasztások számos Azure-szolgáltatások figyelésének érhetők el. Információ és mikor érdemes használni, az ilyen szolgáltatásokkal: [figyelése az Azure-alkalmazások és erőforrások](../../azure-monitor/overview.md). A következő táblázat a riasztási szabályok Azure-ban rendelkezésre álló típusok listája. Azt is megjeleníti, mi jelenleg támogatott a riasztási tapasztalatok alapján.
-
-Korábban az Azure Monitor, az Application Insights, a Log Analytics és a Service Health korábban külön riasztási képességek. Az Azure túlóra, továbbfejlesztett, és a felhasználói felület és a különböző módszerek riasztások kombinált. Ez az összevonás még folyamatban van. Ennek eredményeképpen továbbra is vannak bizonyos riasztási funkciók nem, de az új riasztások rendszerben.  
-
-| **Forrás figyelése** | **Jel típusa**  | **Leírás** | 
-|-------------|----------------|-------------|
-| Szolgáltatások állapota | Tevékenységnapló  | Nem támogatott. Lásd: [tevékenységnapló-riasztások létrehozása a szolgáltatási értesítések](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Webalkalmazás rendelkezésre állási tesztek | Nem támogatott. Lásd: [webtesztriasztást](../../azure-monitor/app/monitor-web-app-availability.md). Rendelkezésre álló webhelyre, hogy az Application insights szolgáltatásnak van kialakítva. Értesítés küldése, amikor a rendelkezésre állás vagy a webhely válaszképesség nem éri el elvárásainak. |
+Riasztások számos Azure-szolgáltatások figyelésének érhetők el. Információ és mikor érdemes használni, az ilyen szolgáltatásokkal: [figyelése az Azure-alkalmazások és erőforrások](../../azure-monitor/overview.md). 
 
 
 ## <a name="all-alerts-page"></a>Az összes riasztások oldal 

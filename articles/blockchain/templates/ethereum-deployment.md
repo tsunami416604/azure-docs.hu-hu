@@ -5,23 +5,23 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/29/2018
+ms.date: 01/28/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 16bf68a5fdb1df2a4f60de9167893a42295cbc52
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 266e2be2775a6f9b74c714bd9112e38837bb6a6c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260533"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098338"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Ethereum proof of work consortium megoldássablon
 
 Az Ethereum Proof-az-munkahelyi Consortium megoldássablon célja, hogy egyszerűbb és gyorsabb üzembe helyezése és a egy többtagú consortium Ethereum hálózati beállításával minimális Azure és az Ethereum kapcsolatos.
 
-Felhasználói adatok és a egy kattintással üzembe helyezés az Azure Portalon néhány minden tagjának helyezhet üzembe a hálózati jelenlét, a Microsoft Azure Compute-tal, hálózati és tárolási szolgáltatások szerte a világon. Minden tag hálózati erőforrás-igényű áll kiegyenlített terhelésű tranzakció csomópontok egy készletét az, amely egy alkalmazás vagy a felhasználó használhatja a tranzakciók, a tranzakciókat. adatbányászati csomópontok egy készletét és a egy VPN-átjárót nyújt. A későbbi csatlakozási lépés az átjárók teljes konfigurációjú többtagú blockchain-hálózat létrehozása kapcsolódik.
+Az Azure Resource Manager-sablon, minden tagja is üzembe helyezhető a hálózati jelenlét, a Microsoft Azure Compute-tal, hálózati és tárolási szolgáltatások. Minden tag hálózati erőforrás-igényű áll a terhelés szempontjából elosztott tranzakció-csomópontok készletét a, amely egy alkalmazás vagy a felhasználó kommunikál a tranzakciók, a tranzakciókat. adatbányászati csomópontok egy készletét és a egy VPN-átjárót nyújt. Az üzembe helyezést követően csatlakoztatja az átjárók teljes konfigurációjú többtagú blockchain-hálózat létrehozása.
 
 ## <a name="about-blockchain"></a>Információ a blockchainről
 
@@ -35,7 +35,7 @@ Consortium tag tartalmazó egy vagy több adatbányászati csomópont, egy felü
 
 A csomópontokat a Go Ethereum (Geth) ügyfél stabil verziójával rendelkezik, és adatbányászati csomóponttal vannak konfigurálva. Ha nem ad meg egy egyéni képződés letiltása, a összes csomópontja használja ugyanazt az Ethereum-címet és kulcspár, amelyet az Ethereum-fiókot jelszó védi. A megadott Ethereum jelszót minden adatbányászati csomópont esetében az alapértelmezett fiók (coinbase) létrehozására szolgál. Adatbányászati csomópontként adatbányászatot, ehhez a fiókhoz hozzáadott díjak gyűjtenek.
 
-Egy tagnak consortium adatbányászati csomópontok számát a kívánt hálózathoz és a kivonatoló power minden tagja számára kijelölt teljes méretének függ. Minél nagyobb ez a hálózat, a tisztességtelen előnyhöz próbál a jeggyel sérülhet igénylő több csomópont. A sablon a virtual machine scale sets használatával kiépül régiónként legfeljebb 15 adatbányászati csomópontok támogatja.
+Egy tagnak consortium adatbányászati csomópontok számát a kívánt hálózathoz és a kivonatoló, amely minden tagjának power teljes méretének függ. Nagyobb hálózatok próbál a jeggyel tisztességtelen előnyhöz legyen feltörni több csomópont szükséges. A sablon a virtual machine scale sets használatával kiépül régiónként legfeljebb 15 adatbányászati csomópontok támogatja.
 
 ### <a name="transaction-node-details"></a>Tranzakció csomópont részletei
 
@@ -45,7 +45,7 @@ Tranzakció-csomópontok használata kiegyenlített terhelésű belül egy rende
 
 ### <a name="log-analytics-details"></a>Log analytics részletei
 
-Minden üzembe helyezés is létrehoz egy új Log Analytics-példányt, vagy csatlakozhat meglévő példányt. Ez lehetővé teszi, hogy az egyes virtuális gépek az üzembe helyezett hálózati alkotó különböző teljesítmény-mérőszámait figyelését.
+Minden egyes üzembe helyezési is létrehoz egy új Log analytics-példányt, vagy csatlakozhat meglévő példányt. A log analytics lehetővé teszi, hogy az egyes virtuális gépek az üzembe helyezett hálózati alkotó különböző teljesítmény-mérőszámait figyelését.
 
 ## <a name="deployment-architecture"></a>Üzembe helyezési architektúrája
 
@@ -88,11 +88,9 @@ Előfizetés| Az előfizetés, melyben szeretné üzembe helyezni a consortium n
 Erőforráscsoport| Az erőforráscsoport, melyben szeretné üzembe helyezni a consortium network.||NA
 Hely| Az Azure-régió erőforráscsoport. ||NA
 
-
-
 ### <a name="operations-management-suite"></a>Operations Management Suite
 
-Az Operations Management Suite (OMS) panelen egy OMS-erőforrást, a hálózat konfigurálását teszi lehetővé. OMS gyűjt, és a surface hasznos metrikákat és naplókat a hálózatról, így gyorsan ellenőrizheti, hogy a hálózati állapotfigyelő vagy hibakeresési lehetővé teszi problémák. Az ingyenesen elérhető OMS szabályosan meghiúsul, kapacitás elérésekor.
+Az Operations Management Suite (OMS) lehetővé teszi egy OMS-erőforrást, a hálózat konfigurálását. OMS gyűjt, és a surface hasznos metrikákat és naplókat a hálózatról, így gyorsan ellenőrizheti, hogy a hálózati állapotfigyelő vagy hibakeresési lehetővé teszi problémák. Az ingyenesen elérhető OMS szabályosan meghiúsul, kapacitás elérésekor.
 
 ![Új OMS létrehozása](./media/ethereum-deployment/new-oms.png)
 
@@ -143,8 +141,8 @@ Paraméter neve |Leírás |Megengedett értékek|Alapértelmezett értékek
 ConsortiumMember azonosítója|Minden tagja részt vesz a consortium network konfigurálhatók az IP-címterek ütközések elkerülése érdekében társított azonosítója. <br /><br />Tagazonosító egyedinek kell lennie a különböző szervezetek ugyanazon a hálózaton belül. Egy egyedi Tagazonosító van szükség, akkor is, ha több régióban telepít ugyanazon a szervezeten belül.<br /><br />Jegyezze meg a paraméter értékét óta kell megoszthatja más csatlakozó tagokat.|0 - 255
 Ethereum hálózati azonosító|A hálózati Azonosítót a consortium Ethereum hálózati üzembe helyezve. Minden egyes Ethereum hálózati rendelkezik a saját hálózati azonosító, az 1 folyamatban van a nyilvános hálózat azonosítója. Az adatbányászati csomópont korlátozott hálózati hozzáférést pedig továbbra is javasoljuk sok ütközések elkerülése érdekében.|5 - 999,999,999| 10101010
 Egyéni képződés letiltása|Lehetőség van automatikusan létrehozni egy képződés letiltása vagy adjon meg egy egyéni besorolás.|Igen/nem| Nem
-Ethereum-fiók jelszavát (egyéni képződés letiltása = nem)|A rendszergazda jelszavát, az egyes importált Ethereum-fiókhoz használt. A jelszónak tartalmaznia kell a következőket: 1 nagybetűt, 1 kisbetűt és 1 számot.|12 vagy több karaktert|NA
-Titkos kulcs jelszava Ethereum (egyéni képződés letiltása = nem)|Az ECC létrehozott alapértelmezett Ethereum-fiókhoz tartozó titkos kulcs létrehozásához használt jelszót. Egy előre létrehozott titkos kulcs nem kell explicit módon átadni.<br /><br />Fontolja meg egy jelszót az erős titkos kulcs és a másik consortium tagjaival nincs átfedés elegendő véletlenszerűségre azért. A hozzáférési kódot tartalmaznia kell legalább a következőket: 1 nagybetűt, 1 kisbetűt és 1 számot.<br /><br />Megjegyzés: Ha a két tagjára használja ugyanazt a jelszót a fiókokhoz létrehozott azonos lesz. Ugyanazt a jelszót akkor hasznos, ha egyetlen szervezet próbál régióban üzembe helyezheti, és szeretné osztani egy olyan fiók (alap érme) az összes csomópont.|12 vagy több karaktert|NA
+Ethereum-fiók jelszavát (egyéni képződés letiltása = nem)|A rendszergazda jelszavát, az egyes importált Ethereum-fiókhoz használt. A jelszónak tartalmaznia kell: 1 nagybetűt, 1 kisbetűt és 1 számot.|12 vagy több karaktert|NA
+Titkos kulcs jelszava Ethereum (egyéni képződés letiltása = nem)|Az ECC létrehozott alapértelmezett Ethereum-fiókhoz tartozó titkos kulcs létrehozásához használt jelszót. Egy előre létrehozott titkos kulcs nem kell explicit módon átadni.<br /><br />Fontolja meg egy jelszót az erős titkos kulcs és a másik consortium tagjaival nincs átfedés elegendő véletlenszerűségre azért. A jelszó minimális kell tartalmaznia: 1 nagybetűt, 1 kisbetűt és 1 számot.<br /><br />Megjegyzés: Ha a két tagjára használja ugyanazt a jelszót a fiókokhoz létrehozott azonos lesz. Ugyanazt a jelszót akkor hasznos, ha egyetlen szervezet próbál régióban üzembe helyezheti, és szeretné osztani egy olyan fiók (alap érme) az összes csomópont.|12 vagy több karaktert|NA
 Képződés letiltása (egyéni képződés letiltása = Yes)|Egyéni képződés blokk jelölő JSON-karakterlánc. Egyéni hálózatok találhat további információt itt a képződés blokk formátumát.<br /><br />Ethereum fiók továbbra is jön létre egy egyéni képződés blokk megadásakor. Vegye figyelembe, hogy a képződés blokk, nem várja meg, adatbányászati egy prefunded Ethereum-fiók megadása.|Érvényes JSON |NA
 Megosztott kapcsolat kulcsa|Egy kapcsolat a virtuális hálózati átjáró között megosztott kulcs.| 12 vagy több karaktert|NA
 Consortium Data URL|A tag egy másik telepítés által biztosított megfelelő consortium adatok mutató URL-címe. <br /><br />Ezeket az adatokat egy már csatlakoztatott tag, aki rendelkezik a központi telepítés által biztosított. Ha a hálózat többi részétől helyezte üzembe, az URL-cím a sablon üzembe helyezési kimeneti nevű CONSORTIUM-adatokat.||NA
@@ -154,7 +152,7 @@ Kulcs a társ információk regisztráló|Társ adatok elsődleges kulcs egy má
 
 ### <a name="summary"></a>Összegzés
 
-Kattintson az összefoglalás panel a megadott bemeneti adatok és a központi telepítés előtti Alapszintű ellenőrzés futtatásához.
+Kattintson az összegzés a megadott bemeneti adatok és a központi telepítés előtti Alapszintű ellenőrzés futtatásához.
 
 ![Összegzés](./media/ethereum-deployment/summary.png)
 

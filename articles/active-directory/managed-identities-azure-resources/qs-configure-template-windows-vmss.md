@@ -7,19 +7,19 @@ author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: priyamo
-ms.openlocfilehash: 9c31ea2046064f7f776e582f82bd6ebd90dd16b2
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 6fff8890a32cd6c3f0aeb506425964edcc841c5e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883228"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193471"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a sablon használatával az Azure virtuálisgép-méretezési csoportot
 
@@ -173,7 +173,7 @@ Ebben a szakaszban egy virtuálisgép-méretezési csoport Azure Resource Manage
 > [!Note]
 > Egy Azure Resource Manager-sablon használatával felügyelt felhasználó által hozzárendelt identitások létrehozásával kapcsolatban lásd: [felügyelt felhasználó által hozzárendelt identitás létrehozása](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
 
-### <a name="assign-a-user-assigned-managed-identity-to-a-virutal-machine-scale-set"></a>Egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy virtuális gép méretezési csoportot
+### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy virtuálisgép-méretezési csoportot
 
 1. Alatt a `resources` elemben adja hozzá a következő bejegyzés egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése a virtuális gép méretezési csoportját.  Ne felejtse el `<USERASSIGNEDIDENTITY>` a felhasználó által hozzárendelt nevű felügyelt identitás hozott létre.
    

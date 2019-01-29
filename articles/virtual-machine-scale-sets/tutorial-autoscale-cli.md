@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3160624f6daa28c30c0888229ba53b0e80b2bc7a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: fdc1cb7c4b95a72aa55ccce57b2fa331f7c9615d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887988"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170708"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése az Azure CLI használatával
 
@@ -41,13 +41,13 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal az alábbiak szerint:
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal az alábbiak szerint:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss#create) paranccsal. A következő példa *2-es* példányszámmal egy méretezési csoportot hoz létre, valamint SSH-kulcsokat is, ha azok még nem léteznének:
+Most hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss) paranccsal. A következő példa *2-es* példányszámmal egy méretezési csoportot hoz létre, valamint SSH-kulcsokat is, ha azok még nem léteznének:
 
 ```azurecli-interactive
 az vmss create \

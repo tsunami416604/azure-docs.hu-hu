@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 844fe2f65b59caba41697db00e809e34e1fe1017
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: bca5ff84dee08d7681939b55ccb344f9507ccb38
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258661"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178018"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API használatával, ésC#
 
@@ -30,7 +30,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * Windows: [Visual Studio 2017](https://www.visualstudio.com/downloads/)
-* Linux/MacOS rendszeren: [Mono](http://www.mono-project.com/)  
+* Linux/macOS: [Mono](http://www.mono-project.com/)  
 * Egy előfizetői azonosító
 
 A példaprogram csak a .NET Core osztályait használja.

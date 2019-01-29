@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 07/19/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 1d52e3b8871a5af219d1c9eafd559f06bb19f560
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: dd9bdc4638d1c055706026798acba08d6add08c7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424883"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098748"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML-protokoll
 
@@ -81,10 +81,10 @@ A `NameIdPolicy` elemhez az alábbi mintához hasonlóan néz ki:
 
 Ha `NameIDPolicy` nincs megadva, megadhatja, hogy a nem kötelező `Format` attribútum. A `Format` attribútum csak a következők egyike lehet értékek; hiba más értéket eredményez.
 
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`: Az azure Active Directory páros azonosítóként a NameID jogcím problémák.
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Az azure Active Directory bocsát ki a NameID jogcím e-mail cím formátumú.
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Ez az érték engedélyezi az Azure Active Directoryval, válassza ki a jogcím-formátumot. Az Azure Active Directory páros azonosítóként a NameID problémák.
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Az azure Active Directory a NameID jogcím bocsát ki, amely egyedi az aktuális egyszeri bejelentkezési művelet véletlenszerűen létrehozott értéket. Ez azt jelenti, hogy az érték ideiglenes, és azonosíthatja a hitelesítendő felhasználó nem használható.
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`: Az Azure Active Directory páros azonosítóként a NameID jogcím problémák.
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Az Azure Active Directory bocsát ki a NameID jogcím e-mail cím formátumú.
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Ez az érték lehetővé teszi az Azure Active Directoryval, válassza ki a jogcím-formátumot. Az Azure Active Directory páros azonosítóként a NameID problémák.
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Az Azure Active Directory a NameID jogcím bocsát ki, amely egyedi az aktuális egyszeri bejelentkezési művelet véletlenszerűen létrehozott értéket. Ez azt jelenti, hogy az érték ideiglenes, és azonosíthatja a hitelesítendő felhasználó nem használható.
 
 Az Azure AD figyelmen kívül hagyja a `AllowCreate` attribútum.
 
@@ -153,7 +153,7 @@ A kért bejelentkezés sikeresen befejeződik, ha az Azure AD választ a felhős
 A `Response` elem tartalmazza a hitelesítési kérelem eredményét. Az Azure AD-csoportok a `ID`, `Version` és `IssueInstant` lévő értékeknek a `Response` elemet. Állítja be a következő attribútumokat:
 
 * `Destination`: Ha a bejelentkezés sikeresen befejeződik, a beállított érték a `RedirectUri` a szolgáltató (felhőszolgáltatás).
-* `InResponseTo`: Ez a `ID` attribútuma a `AuthnRequest` elem által kezdeményezett a választ.
+* `InResponseTo`: A beállított érték a `ID` attribútuma a `AuthnRequest` elem által kezdeményezett a választ.
 
 ### <a name="issuer"></a>Kiállító
 

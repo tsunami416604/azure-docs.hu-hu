@@ -10,28 +10,25 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a4a9fefa98d30d0f9815a935f000c8a663dffd21
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 6716f9b959169d6aa9bc5546f6f69c26bdd23320
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514196"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099849"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Az Azure Stack-tanúsítványok aláíró kérés létrehozása
 
-A jelen cikkben ismertetett Azure Stack készültségi ellenőrző eszköz [a PowerShell-galériából](https://aka.ms/AzsReadinessChecker). Az eszköz létrehoz egy Azure Stack üzembe helyezéshez megfelelő tanúsítvány aláírási kérelem (tanúsítvány-aláírási kérelmeinek). Tanúsítványokat kell kért, jönnek létre és ellenőrzi a telepítés előtt tesztelje ideje.
+Az Azure Stack készültségi ellenőrző eszköz segítségével létre tanúsítvány aláírási kérelem (tanúsítvány-aláírási kérelmeinek), az Azure Stack üzemelő példányához. Tanúsítványokat kell kért, jönnek létre és ellenőrzi a telepítés előtt tesztelje ideje. Az eszköz kap [a PowerShell-galériából](https://aka.ms/AzsReadinessChecker).
 
-Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) hajtja végre a következő eszköztanúsítvány-igénylések:
+Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) segítségével a következő tanúsítványt igényelni:
 
- - **Standard szintű Eszköztanúsítvány-igénylések**  
-    A következők szerint kérelem [PKI-tanúsítványok létrehozása az Azure Stack üzembe helyezéséhez](azure-stack-get-pki-certs.md).
- - **Platform-– szolgáltatásként**  
+ - **Standard szintű Eszköztanúsítvány-igénylések** szerint [PKI-tanúsítványok létrehozása az Azure Stack üzembe helyezéséhez](azure-stack-get-pki-certs.md).
+ - **Platform-as-a-Service**  
     Platform--szolgáltatásként (PaaS) nevek a megadott tanúsítványok is kérhető [Azure Stack a nyilvános kulcsú infrastruktúra tanúsítványkövetelmények – nem kötelező PaaS-tanúsítványok](azure-stack-pki-certs.md#optional-paas-certificates).
-
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,43 +50,43 @@ Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok elle
 
 1.  Telepítse a AzsReadinessChecker PowerShell parancssorból (5.1-es vagy újabb), a következő parancsmagot:
 
-    ````PowerShell  
+    ```PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
-    ````
+    ```
 
 2.  Deklarálja a **tulajdonos** , egy rendezett szótárban. Példa: 
 
-    ````PowerShell  
+    ```PowerShell  
     $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"} 
-    ````
+    ```
     > [!note]  
     > Ha egy köznapi név (CN) meg van adva ez felülírja az első DNS-nevét a tanúsítványkérelemben.
 
 3.  Deklaráljon egy már létező kimeneti könyvtárat. Példa:
 
-    ````PowerShell  
+    ```PowerShell  
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
-    ````
+    ```
 4.  Deklarálja a identitásrendszer
 
     Azure Active Directory
 
     ```PowerShell
     $IdentitySystem = "AAD"
-    ````
+    ```
 
     Active Directory összevonási szolgáltatások
 
     ```PowerShell
     $IdentitySystem = "ADFS"
-    ````
+    ```
 
 5. Deklarálja **régió neve** és a egy **külső FQDN** szánt az Azure Stack üzemelő példányához.
 
     ```PowerShell
     $regionName = 'east'
     $externalFQDN = 'azurestack.contoso.com'
-    ````
+    ```
 
     > [!note]  
     > `<regionName>.<externalFQDN>` alapjául szolgál, amelyen az összes külső DNS-neveket az Azure Stackben jönnek létre, ebben a példában, a portál `portal.east.azurestack.contoso.com`.  
@@ -98,7 +95,7 @@ Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok elle
 
     ```PowerShell  
     New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-    ````
+    ```
 
     Tartalmazza a PaaS-szolgáltatások, adja meg a kapcsoló ```-IncludePaaS```
 
@@ -106,13 +103,13 @@ Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok elle
 
     ```PowerShell  
     New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-    ````
+    ```
 
     Tartalmazza a PaaS-szolgáltatások, adja meg a kapcsoló ```-IncludePaaS```
     
 8. Tekintse át a kimenetet:
 
-    ````PowerShell  
+    ```PowerShell  
     New-AzsCertificateSigningRequest v1.1809.1005.1 started.
     
     CSR generating for following SAN(s): dns=*.east.azurestack.contoso.com&dns=*.blob.east.azurestack.contoso.com&dns=*.queue.east.azurestack.contoso.com&dns=*.table.east.azurestack.cont
@@ -123,7 +120,7 @@ Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok elle
 
     Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
     New-AzsCertificateSigningRequest Completed
-    ````
+    ```
 
 9.  Küldje el a **. KÉRÉS** fájlt hoz létre, a hitelesítésszolgáltató (belső vagy nyilvános).  A kimeneti könyvtárba, **New-AzsCertificateSigningRequest** egy hitelesítésszolgáltatónak elküldéséhez szükséges CSR(s) tartalmazza.  A könyvtár tartalmaz, referenciaként egy gyermek könyvtárra, amelyben a tanúsítvány-kérelem létrehozása során használt INF fájlt vagy fájlokat. Győződjön meg, hogy a a hitelesítésszolgáltató tanúsítványokat a generált kérést a megfelelő állít elő a [Azure Stack nyilvános kulcsokra épülő infrastruktúra követelményei](azure-stack-pki-certs.md).
 

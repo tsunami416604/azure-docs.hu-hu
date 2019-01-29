@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 23912f9d004d051c422f93e8b10f1aa6cb8b2626
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: a39fc2d0e1a57322f3cce63fa298657c1f938e55
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959495"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100733"
 ---
-# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rövid útmutató: Egyoldalas AngularJS-alkalmazás létrehozása az Azure Active Directoryval történő bejelentkezéshez és kijelentkezéshez
+# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Gyors útmutató: Jelentkezzen be, és jelentkezzen ki az Azure Active Directoryval AngularJS egyoldalas alkalmazás készítése
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -75,7 +75,7 @@ Ha lehetővé szeretné tenni az alkalmazás számára a felhasználók hiteles�
 1. Biztosítson engedélyeket a bérlőben az alkalmazás számára. Lépjen a **Beállítások > Szükséges engedélyek** részre, és kattintson a felső sáv **Engedélyek megadása** gombjára.
 1. Válassza az **Igen** lehetőséget a megerősítéshez.
 
-## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>2. lépés: Az ADAL telepítése, és az egyoldalas alkalmazás konfigurálása
+## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>2. lépés: Adal-t telepítse és konfigurálja az egyoldalas alkalmazás
 
 Mivel már rendelkezik egy alkalmazással az Azure AD-ben, telepítheti az adal.js-t, és megírhatja az identitáshoz kapcsolódó kódot.
 
@@ -101,7 +101,7 @@ Ahhoz, hogy az egyoldalas alkalmazás teendőlistás háttér-API-ja elfogadhass
    * `ida:Tenant` – az Azure AD-bérlő tartománya, például: contoso.onmicrosoft.com.
    * A `ida:Audience` az alkalmazás portálról kimásolt ügyfél-azonosítója.
 
-## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>3. lépés: Az ADAL használata az egyoldalas alkalmazás oldalainak védelemmel való ellátásához
+## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>3. lépés: Adal-t használó egyoldalas alkalmazás biztonságos lapok segítségével
 
 Az adal.js AngularJS-útvonallal és HTTP-szolgáltatókkal integrálható, így könnyebben láthatja el védelemmel az egyoldalas alkalmazás egyes nézeteit.
 

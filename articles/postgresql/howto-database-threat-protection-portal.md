@@ -6,12 +6,12 @@ ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: bbc0eadebec849dde47cecaf6e3718eb6673a22f
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: bbb48708d0e5a7cd07a3971a6966f40696107562
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912816"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095095"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql"></a>Komplex veszélyforrások elleni védelem az Azure Database for postgresql-hez
 
@@ -58,7 +58,7 @@ Komplex veszélyforrások elleni védelem integrálható a riasztásokat az [az 
 
 Kattintson a **biztonsági riasztások** alatt **veszélyforrások elleni védelem** indítsa el az Azure Security Center a riasztások lapon, és áttekintheti a aktív SQL észlelt veszélyforrások alapján az adatbázis.
 
-  ![Veszélyforrások elleni protectoin asc](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  ![Veszélyforrások elleni védelem asc](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 68517c83-1279-4cc7-a7c1-c7ccc3dbe146
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8e00674f331a56be9abe6f2356aa88d7dcf1d0b0
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 3da99506d50ec12140c188cd86cde2556be4a308
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282384"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099141"
 ---
 # <a name="whats-new-for-authentication"></a>Újdonságok a hitelesítéshez? 
 
@@ -46,11 +46,11 @@ Nincs, jelenleg ütemezve.
 
 ### <a name="authorization-codes-can-no-longer-be-reused"></a>Engedélyezési kód már nem használható fel újra
 
-**Hatályba lépés dátuma**: 2018. November 15.
+**Hatályba lépés dátuma**: 2018. november 15.
 
-**Érintett végpontok**: egyaránt 1.0-s és 2.0-s verzió
+**Érintett végpontok**: 1.0-s verziója és a 2.0-s verzió
 
-**Érintett protokoll**: [Code folyamat](v2-oauth2-auth-code-flow.md)
+**Érintett protokoll**: [Hitelesítésikód-folyamata](v2-oauth2-auth-code-flow.md)
 
 2018. November 15., kezdve az Azure AD leáll, az alkalmazások korábban használt hitelesítési kódok elfogadásával. Ez a változás segítséget nyújt ahhoz, hogy az Azure AD az OAuth-specifikációnak megfelelően, és alkalmazza a v1 és v2 végpontokon.
 
@@ -64,7 +64,7 @@ További információ a frissítési biztonsági jogkivonat: [frissítése a hoz
 
 **Dátum**: 2018. május 1.
 
-**Érintett végpontok**: egyaránt 1.0-s és 2.0-s verzió
+**Érintett végpontok**: 1.0-s verziója és a 2.0-s verzió
 
 **Érintett protokollok**: Implicit folyamat és [OBO folyamat](v1-oauth2-on-behalf-of-flow.md)
 

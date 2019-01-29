@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a sor WORKS |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció a sor WORKS |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés sor működését és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 725f32fd-d0ad-49c7-b137-1cc246bf85d7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 34059652a33ddb539bf10a6d7931502c5a8694e3
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 3ebb8917ffadf11ecf8e2e89a67508be3dee7ef5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423660"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150343"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-line-works"></a>Oktatóanyag: Azure Active Directory-integráció az sor működése
+# <a name="tutorial-azure-active-directory-integration-with-line-works"></a>Oktatóanyag: SOR működik az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan sor WORKS integrálása az Azure Active Directory (Azure AD).
 

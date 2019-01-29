@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 3422219e33c04d7cb130e064790896f5da28649a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 855adccf036f731de12810fe0f5287186048ddb0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025045"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095957"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom továbbítása egy útválasztási táblázathoz, az Azure portal használatával
 
@@ -157,7 +157,7 @@ Az nva-k, virtuális gépek, amelyek segítenek az útválasztó és tűzfal opt
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza ki **myResourceGroup**. |
     | **PÉLDÁNY ADATAI** |  |
-    | Virtuális gép neve | Adja meg *myVmNva*. |
+    | Virtuális gép neve | Enter *myVmNva*. |
     | Régió | Válassza az **USA keleti régiója** lehetőséget. |
     | Rendelkezésre állási beállításai | Hagyja meg az alapértelmezett **szükséges infrastruktúra redundancia**. |
     | Kép | Hagyja meg az alapértelmezett **Windows Server 2016 Datacenter**. |
@@ -233,9 +233,9 @@ Hozzon létre egy nyilvános virtuális gép és a egy privát virtuális Gépet
 | Beállítás | Érték |
 | ------- | ----- |
 | **NYILVÁNOS VIRTUÁLIS GÉP** | |
-| ALAPVETŐ TUDNIVALÓK |  |
+| BASICS |  |
 | Virtuális gép neve | Adja meg *myVmPublic*. |
-| HÁLÓZATKEZELÉS | |
+| NETWORKING | |
 | Alhálózat | Válassza ki **nyilvános (10.0.0.0/24)**. |
 | Nyilvános IP-cím | Az alapértelmezett érték elfogadásához. |
 | Nyilvános bejövő portok | Válassza ki **lehetővé teszi a kiválasztott portok**. |
@@ -243,9 +243,9 @@ Hozzon létre egy nyilvános virtuális gép és a egy privát virtuális Gépet
 | FELÜGYELETI | |
 | Storage-fiók diagnosztikája | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
 | **PRIVÁT VIRTUÁLIS GÉP** | |
-| ALAPVETŐ TUDNIVALÓK |  |
+| BASICS |  |
 | Virtuális gép neve | Adja meg *myVmPrivate*. |
-| HÁLÓZATKEZELÉS | |
+| NETWORKING | |
 | Alhálózat | Válassza ki **privát (10.0.1.0/24)**. |
 | Nyilvános IP-cím | Az alapértelmezett érték elfogadásához. |
 | Nyilvános bejövő portok | Válassza ki **lehetővé teszi a kiválasztott portok**. |
@@ -281,7 +281,7 @@ Létrehozhatja a *myVmPrivate* virtuális gépet, miközben az Azure létrehozza
 
 1. Válassza ki **Igen** a virtuális Géphez való csatlakozáshoz.
 
-### <a name="enable-icpm-through-the-windows-firewall"></a>A Windows tűzfalon keresztül ICPM engedélyezése
+### <a name="enable-icmp-through-the-windows-firewall"></a>Az ICMP engedélyezése a Windows tűzfalon keresztül
 
 Egy későbbi lépésben az útvonalkövető eszközzel használni útválasztásának teszteléséhez. Használja az Internet Control üzenet Protocol (ICMP), amely a Windows tűzfal alapértelmezés szerint letiltja. Az ICMP engedélyezése a Windows tűzfalon keresztül.
 
@@ -350,7 +350,7 @@ Először is hozzunk származó hálózati forgalom útválasztásának tesztel�
     Trace complete.
     ```
 
-    Láthatja, hogy az első Ugrás a 10.0.2.4 cím. NVA magánhálózati IP-cím. A második Ugrás a magánhálózati IP-címet, a *myVmPrivate* virtuális Géphez: 10.0.1.4 cím – ez. Korábban, az útvonal hozzáadta a *myRouteTablePublic* útválasztási táblázathoz és a kapcsolódó, hogy a *nyilvános* alhálózat. Ennek eredményeképpen az Azure küldött-e a forgalmat az nva-n keresztül, és nem közvetlenül a a *privát* alhálózat.
+    Láthatja, hogy az első Ugrás a 10.0.2.4 cím. NVA magánhálózati IP-cím. A második Ugrás a magánhálózati IP-címet, a *myVmPrivate* virtuális Géphez: 10.0.1.4. Korábban, az útvonal hozzáadta a *myRouteTablePublic* útválasztási táblázathoz és a kapcsolódó, hogy a *nyilvános* alhálózat. Ennek eredményeképpen az Azure küldött-e a forgalmat az nva-n keresztül, és nem közvetlenül a a *privát* alhálózat.
 
 1. Zárja be a *myVmPublic* virtuális gépre irányuló távoli asztali munkamenetet. Ez nem bontja a *myVmPrivate* virtuális géppel való kapcsolatot.
 

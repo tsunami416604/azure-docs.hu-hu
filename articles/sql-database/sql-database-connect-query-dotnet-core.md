@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 5f2c8c2a9a2b21a15aa997ff0cc98860ceec76cc
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 4d2acf64f7798f845c2993b108b7074283c40be6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744836"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160015"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Gyors útmutató: A .NET Core (C#) használata Azure SQL Database-adatbázisok lekérdezéséhez
 
@@ -28,8 +28,6 @@ Ez a rövid útmutatóban használni kívánt [.NET Core](https://www.microsoft.
 Ebben az oktatóanyagban szüksége lesz:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- A [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md) a számítógép nyilvános IP-cím.
 
 - [.NET core, az operációs rendszerének](https://www.microsoft.com/net/core) telepítve. 
 

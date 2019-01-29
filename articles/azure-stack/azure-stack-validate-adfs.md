@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: 87e3f03ce5d4c65d5c4b1754300f5d57feca2a49
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7e6c54add856a69e1750b0b6ca0a058c2d80bfd8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416511"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101728"
 ---
 # <a name="validate-ad-fs-integration-for-azure-stack"></a>Az AD FS-integráció az Azure Stack ellenőrzése
 
@@ -29,7 +29,7 @@ Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) használ
 A készenléti ellenőrző ellenőrzi:
 
 * A *összevonási metaadatok* összevonáshoz érvényes XML-elemeket tartalmazza.
-* A *AD FS SSL-tanúsítvány* is kérhető le, és megbízhatósági is láncolatától felépítve. Stamp az AD FS meg kell bíznia az SSL-tanúsítvány lánc. A tanúsítvánnyal kell aláírni azonos *hitelesítésszolgáltató* az Azure Stack-központitelepítési tanúsítványok vagy egy megbízható legfelső szintű szolgáltató partner által. A megbízható legfelső szintű szolgáltató partnereink teljes listájáért lásd: [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+* A *AD FS SSL-tanúsítvány* is kérhető le, és megbízhatósági is láncolatától felépítve. Stamp az AD FS meg kell bíznia az SSL-tanúsítvány lánc. A tanúsítvánnyal kell aláírni azonos *hitelesítésszolgáltató* az Azure Stack-központitelepítési tanúsítványok vagy egy megbízható legfelső szintű szolgáltató partner által használt. A megbízható legfelső szintű szolgáltató partnereink teljes listájáért lásd: [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 * A *AD FS-aláíró tanúsítványa* megbízható és nem hamarosan lejárati van.
 
 Azure Stack adatközpont-integrációval kapcsolatos további információkért lásd: [Azure Stack adatközpont integrációja - identitás](azure-stack-integrate-identity.md).
@@ -102,7 +102,7 @@ Alapértelmezés szerint mindkét fájlt írt `C:\Users\<username>\AppData\Local
 Használat:
 
 * **-OutputPath**: A *elérési út* paraméter adja meg egy másik jelentés helyét a futtatási parancs végén.
-* **-CleanReport**: A paraméter parancs futtatásával törölje az előző jelentési adatok AzsReadinessCheckerReport.json végén. További információkért lásd: [Azure Stack érvényesítési jelentés](azure-stack-validation-report.md).
+* **-CleanReport**: A parancs futtatásával törölje az előző jelentési adatok AzsReadinessCheckerReport.json végén paramétert. További információkért lásd: [Azure Stack érvényesítési jelentés](azure-stack-validation-report.md).
 
 ## <a name="validation-failures"></a>Érvényesítési hibák
 
@@ -114,9 +114,9 @@ Az alábbi példák gyakori ellenőrzési hibákat ad útmutatást.
 
 `Invoke-AzsADFSValidation : The term 'Invoke-AzsADFSValidation' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.`
 
-**OK**: PowerShell Autoload nem sikerült megfelelően betölteni a készültségi ellenőrző modul.
+**Ok**: PowerShell Autoload nem sikerült megfelelően betölteni a készültségi ellenőrző modul.
 
-**Feloldási**: explicit módon a készültségi ellenőrző modul importálásához. Másolja és illessze be a következő kódot a Powershellt, és a frissítés \<verzió\> a jelenleg telepített verzió számát.
+**Megoldás**: A készenléti ellenőrző modul importálása explicit módon. Másolja és illessze be a következő kódot a Powershellt, és a frissítés \<verzió\> a jelenleg telepített verzió számát.
 
 `Import-Module "c:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\<version>\Microsoft.AzureStack.ReadinessChecker.psd1" -Force`
 

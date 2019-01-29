@@ -12,26 +12,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/11/2018
+ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5120d938d137efef77eeb0b69a5bf571bd4c509b
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 9acb2d7db1d8cb30fb853b79e9627a1b50da2aaa
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614497"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092230"
 ---
-# <a name="cli-example-upload-a-local-file-to-a-container"></a>CLI-példa: Helyi fájl feltöltése egy tárolóba 
+# <a name="cli-example-upload-a-local-file-to-a-container"></a>CLI-példa: Helyi fájl feltöltése tárolóba 
 
 A cikkben bemutatott Azure CLI-szkripttel feltölthet egy helyi fájlt egy tárfiókbeli tárolóba.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+[A Media Services-fiók létrehozása](../create-account-cli-how-to.md).
 
-    Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
-
-- [A Media Services-fiók létrehozása](../create-account-cli-how-to.md).
+[!INCLUDE [media-services-cli-instructions.md](../../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>Példaszkript
 

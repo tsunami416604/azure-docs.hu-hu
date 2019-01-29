@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6c101878c474e605106bb2fbb6ea6568f433e756
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b7e2a075df7d0d7f6bb68163414fab525aad25a8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338532"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093444"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritási monitorozás az Azure Security Centerben
 Ismerje meg a fájl fájlintegritási Monitorozás (FIM) konfigurálása az Azure Security Centerben, használja ezt a forgatókönyvet.
@@ -31,7 +31,7 @@ A Security Center a fájlintegritási Monitorozás ellenőrzi a Windows-fájlok,
 
 - Fájl- és beállításjegyzék létrehozása és eltávolítása
 - Fájlmódosítás (módosítja a fájlméret, hozzáférés-vezérlési listák és a tartalom kivonatát)
-- Beállításjegyzék-módosításokat (módosítja a mérete, hozzáférés távvezérlő listák, típusa és a tartalom)
+- Beállításjegyzék-módosításokat (módosítja a mérete, hozzáférés-vezérlési listák, típusa és a tartalom)
 
 Könnyen engedélyezheti a FIM az entitás figyelése, a Security Center javasolja. Megadhatja a saját FIM házirendek vagy entitások figyelése is. Ez az útmutató bemutatja, hogyan.
 
@@ -152,7 +152,7 @@ A **szerkesztése a Change Tracking megoldásba** is:
 - Törölni az entitást, elveti a módosítást, vagy a módosítás mentéséhez
 
 ## <a name="add-a-new-entity-to-monitor"></a>Adjon hozzá egy új entitás figyelése
-1. Lépjen vissza a **irányítópultot fájl raktárak[Raktárazonosító])** válassza **beállítások** tetején. **Munkaterület-konfiguráció** nyílik meg.
+1. Lépjen vissza a **fájlintegritási monitorozás irányítópult** válassza **beállítások** tetején. **Munkaterület-konfiguráció** nyílik meg.
 2. A **munkaterület-konfiguráció**, válassza ki a lapon, hogy a hozzáadni kívánt entitás típusa: Windows beállításjegyzék, a Windows-fájlokat vagy a Linux-fájlok. Ebben a példában a kiválasztott **Linux-fájlok**.
 
   ![Adjon hozzá egy új elem figyelése][14]

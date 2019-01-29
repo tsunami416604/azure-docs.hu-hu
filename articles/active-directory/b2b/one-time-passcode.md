@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 5259176328803d3b6c0715c741d7f43b6ecc2d8a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: bc88b46182eadf431efcb5be89f05256a9e0eb1b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082552"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095566"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mailben kapott egyszeri jelszót hitelesítés (előzetes verzió)
 
@@ -81,29 +81,29 @@ Először is szüksége az Azure AD PowerShell (AzureADPreview) Graph-modul leg�
 #### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Előfeltétel: A legújabb AzureADPreview modul telepítése
 Először ellenőrizze, melyik modulokat telepítette. Nyissa meg a Windows PowerShellt rendszergazdaként (Futtatás rendszergazdaként), majd futtassa a következő parancsot:
  
-````powershell  
+```powershell  
 Get-Module -ListAvailable AzureAD*
-````
+```
 
 Ha az AzureADPreview modul anélkül megjelenik anélkül, hogy újabb verzióra figyelmeztető üzenet jelenne meg, készen van. Ellenkező esetben a kimenet alapján, tegye a következők egyikét:
 
 - Ha nem kapott eredményt, a következő parancs futtatásával telepítse az AzureADPreview modult:
   
-   ````powershell  
+   ```powershell  
    Install-Module AzureADPreview
-   ````
+   ```
 - Ha az eredmények között csak az Azure AD-modul jelenik meg, a következő parancsok futtatásával telepítse az AzureADPreview-modult: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
-   ````
+   ```
 - Ha az eredmények között csak az AzureADPreview-modul jelenik meg, de kap egy üzenetet, amely jelzi, hogy van újabb verziója, futtassa a következő parancsokat a modul frissítésére: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-  ````
+  ```
 
 Előfordulhat, hogy kap egy kérdést, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg az **Y-t** a modul telepítéséhez.
 
@@ -111,25 +111,25 @@ Előfordulhat, hogy kap egy kérdést, hogy a modult nem megbízható tárházb�
 
 Ezután ellenőrizze, hogy egy B2BManagementPolicy jelenleg létezik-e a következő futtatásával:
 
-````powershell 
+```powershell 
 $currentpolicy =  Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 $currentpolicy -ne $null
-````
+```
 - A kimenet értéke HAMIS, ha a szabályzat jelenleg nem létezik. Hozzon létre egy új B2BManagementPolicy, és engedélyezve van a hibajelentések az előzetes verzió a következő futtatásával:
 
-   ````powershell 
+   ```powershell 
    $policyValue=@("{`"B2BManagementPolicy`":{`"PreviewPolicy`":{`"Features`":[`"OneTimePasscode`"]}}}")
    New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true
-   ````
+   ```
 
 - A kimenet értéke igaz, ha a B2BManagementPolicy házirend jelenleg létezik. A házirend módosítása és a Preview-ra, futtassa a következő részt:
   
-   ````powershell 
+   ```powershell 
    $policy = $currentpolicy.Definition | ConvertFrom-Json
    $features=[PSCustomObject]@{'Features'=@('OneTimePasscode')}; $policy.B2BManagementPolicy | Add-Member 'PreviewPolicy' $features -Force; $policy.B2BManagementPolicy
    $updatedPolicy = $policy | ConvertTo-Json -Depth 3
    Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
-   ````
+   ```
 
 ## <a name="opting-out-of-the-preview-after-opting-in"></a>Megtagadja az engedélyezés után az előzetes verzió
 Eltarthat néhány percig, a letiltási művelet érvénybe léptetéséhez. Ha kikapcsolja az előzetes verzióra, egyszer használatos jelszót beváltott bármely vendég felhasználók nem jelentkezhetnek be. A vendégfelhasználó törölheti és újra meg kell hívnia a felhasználó számára, jelentkezzen be újra egy másik hitelesítési módszert.
@@ -144,17 +144,17 @@ Eltarthat néhány percig, a letiltási művelet érvénybe léptetéséhez. Ha 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Tiltsa le a minta PowerShell-lel
 Telepítse a legújabb AzureADPreview modulban, ha még nem rendelkezik (lásd: [Előfeltételek: Telepítse a legújabb AzureADPreview modulban](#prerequisite-install-the-latest-azureadpreview-module) fent). Ezután gondoskodjon arról, hogy a kapott egyszer használatos jelszót előzetes házirend jelenleg a következő futtatásával:
 
-````powershell 
+```powershell 
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 ($currentPolicy -ne $null) -and ($currentPolicy.Definition -like "*OneTimePasscode*")
-````
+```
 
 A kimenet értéke igaz, ha kikapcsolja az előzetes verzió a következő futtatásával:
 
-````powershell 
+```powershell 
 $policy = $currentpolicy.Definition | ConvertFrom-Json
 $policy.B2BManagementPolicy.PreviewPolicy.Features = $policy.B2BManagementPolicy.PreviewPolicy.Features.Where({$_ -ne "OneTimePasscode"})
 $updatedPolicy = $policy | ConvertTo-Json -Depth 3
 Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
-````
+```
 

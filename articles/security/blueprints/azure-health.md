@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b7232a72a2090465dfd75ef6a4277930e45bf9ed
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315774"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103072"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
@@ -48,7 +48,7 @@ Ez a megoldás alkalmas szolgál az ügyfelek számára állítsa be az adott k�
 
 -   **Architekturális diagramja.** Az ábrán látható a referenciaarchitektúrát a tervezet használt, és a példát használja használatieset-forgatókönyvek.
 
--   [IaaS-bővítményt](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) ebben a megoldásban bemutatjuk, hogyan egy helyszíni SQL-alapú megoldás áttelepítése az Azure-ba, és a egy Privieged hozzáférési szintű munkaállomásokat biztonságosan kezelheti a felhő-bsed szolgáltatások és megoldások megvalósításához. 
+-   [IaaS-bővítményt](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) ebben a megoldásban bemutatjuk, hogyan egy helyszíni SQL-alapú megoldás áttelepítése az Azure-ba, és a egy emelt szintű hozzáférési szintű munkaállomásokat biztonságosan kezelheti a felhő-bsed szolgáltatások és megoldások megvalósításához. 
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 
@@ -156,7 +156,7 @@ Alex a feladat, amely egy helyszíni hálózat kezelésének terhe csökkentése
 
 **Statisztikusnak Perényi**
 
-*E-mail cím: Perényi\_DataScientist*
+*E-mail cím: Debra\_DataScientist*
 
 Perényi használatával, és elemzéséhez, orvosi betegellátásban betekintést biztosít a modellek létrehozására van. Perényi SQL és statisztikai R programozási nyelv használatával saját modelleket hozhat létre.
 
@@ -244,7 +244,7 @@ Ez a szakasz részletesen a meghatározott alapértelmezett konfigurációk és 
 -   Diagnosztikai naplók a Key vault legalább 365 napos megőrzési idővel rendelkező engedélyezve vannak.
 -   Engedélyezett titkosítási műveletek kulcsok korlátozva a szükséges kapcsolatok
 
-## <a name="ingest"></a>BETÖLTÉSI 
+## <a name="ingest"></a>INGEST 
 
 ### <a name="azure-functions"></a>Azure Functions
 A megoldás úgy lett kialakítva, használandó [Azure Functions](/azure/azure-functions/) tartózkodási data analytics bemutató használt minta hossza feldolgozásához. Három képességek az a funkciók lettek létrehozva.
@@ -340,7 +340,7 @@ A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az össz
 
 -   A Blob storage szolgáltatásban tárolt adatok titkosítása.
 
-## <a name="analyze"></a>ELEMZÉSE
+## <a name="analyze"></a>ANALYZE
 
 ### <a name="machine-learning"></a>Machine Learning
 

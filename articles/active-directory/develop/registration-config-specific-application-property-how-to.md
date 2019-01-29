@@ -7,25 +7,25 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 83694f121fb17f90aa89fb9ba99e8514cadd5b09
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 90b7638acf6df721a16bdcca6ceebb6f9d65ca2c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724028"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096823"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Hogyan kell kitölteni egy egyénileg fejlesztett alkalmazásba az adott mezők
 
 Ez a cikk röviden a az alkalmazás regisztrációs űrlapot az összes elérhető mező lehetővé teszi a [az Azure portal](https://portal.azure.com).
 
-## <a name="register-a-new-application"></a>Egy új alkalmazás regisztrálása
+## <a name="register-a-new-application"></a>Új alkalmazás regisztrálása
 
 -   Új alkalmazás regisztrálásához lépjen a [az Azure portal](https://portal.azure.com).
 
@@ -41,8 +41,8 @@ Ez a cikk röviden a az alkalmazás regisztrációs űrlapot az összes elérhet
 | Mező            | Leírás                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
 | Name (Név)             | Az alkalmazás neve. Ennek tartalmaznia kell legalább 4 karakterből kell állnia.                |
-| Alkalmazás típusa | **Webalkalmazást vagy webes API**: egy webalkalmazás, webes API vagy mindkettő minősülő alkalmazás 
-| |**Natív**: egy alkalmazás, amely a felhasználó eszközére vagy számítógépére telepíthető           |
+| Alkalmazás típusa | **Webalkalmazást vagy webes API**: Egy webalkalmazás, webes API vagy mindkettő minősülő alkalmazás 
+| |**Natív**: Olyan alkalmazás, amely a felhasználó eszközére vagy számítógépére telepíthető           |
 | Bejelentkezési URL-cím      | Az URL-címet, ahol felhasználók bejelentkezhetnek az alkalmazás használata                                  |
 
 Miután megadta a fenti mezőket, az alkalmazás regisztrálva van az Azure Portalon, és a rendszer átirányítja az alkalmazás lapot. A **beállítások** gombra az alkalmazás panelen megnyílik a beállítások lapot, amely rendelkezik, további testre szabhatja az alkalmazást. Az alábbi táblázat ismerteti a beállítások lapon az összes mezőt. Vegye figyelembe, hogy csak itt jelennének meg ezeket a mezőket, attól függően, hogy létrehozott egy webalkalmazást vagy natív alkalmazások egy része.

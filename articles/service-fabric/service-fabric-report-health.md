@@ -1,6 +1,6 @@
 ---
-title: Adja hozzá az egyéni Service Fabric állapotjelentések |} Microsoft Docs
-description: Egyéni rendszerállapot-jelentések küldése az Azure Service Fabric állapotfigyelő entitások ismerteti. Ad javaslatokat megtervezése és minőségi állapotjelentések végrehajtása.
+title: Egyéni Service Fabric-állapotjelentések hozzáadása |} A Microsoft Docs
+description: Ismerteti, hogyan lehet egyéni rendszerállapot-jelentések küldése Azure Service Fabric health entitásokhoz. Javaslatok, amelyek segítenek a rendszerállapot-jelentések minőségi megtalálható.
 services: service-fabric
 documentationcenter: .net
 author: oanapl
@@ -14,62 +14,62 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 3eccb6ba18e6689c3726c8d930279b8a85ab1c92
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 775c9b155f080c8996a7680514cb2fb004a4e3fb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212527"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152252"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Egyéni Service Fabric-állapotjelentések hozzáadása
-Az Azure Service Fabric vezet be a [állapotmodell](service-fabric-health-introduction.md) úgy tervezték, hogy sérült fürt és az alkalmazás feltételeket az adott entitások jelzőt. A health modellje **állapotfigyelő jelentéskészítők** (rendszer összetevőit és watchdogs). Könnyű és gyors diagnosztikai és javítási célja. Szolgáltatás írók szükség az társaságuk vonatkozó állapotát. Minden olyan esetben, kedvezőtlen hatással lehet az egészségügyi kell kiválasztását, különösen akkor, ha segíthet megközelíti a legfelső szintű jelző problémák. Az állapotadatok is mentheti időt és erőfeszítést Hibakeresés és a vizsgálat. Támogató különösen akkor törölje a jelet, ha a szolgáltatás megfelelően működik, és a felhőben léptékű (magán- vagy Azure).
+Az Azure Service Fabric mutatja be egy [állapotmodell](service-fabric-health-introduction.md) célzó jelző nem megfelelő állapotú fürt és az alkalmazás feltételeket az adott entitásokon. Használja az állapotközpontú modellről **egészségügyi jelentéskészítők** (rendszer összetevőit és watchdogs). A cél, egyszerű és gyors diagnosztizálása és javítás. Szolgáltatás írók kell health szolgáltatással kapcsolatos előzetes költségek. Tetszőleges feltételt, amely hatással lehet a health kell jelenteni, különösen akkor, ha a legfelső szintű közeli jelző problémák megkönnyíti. Az egészségügyi információk takaríthat meg időt és energiát a Hibakeresés és kivizsgálása érdekében. Az üzletmenetet különösen törlése után a szolgáltatás nem működik és ipari méretekben a felhőben (magán- vagy Azure).
 
-A Service Fabric-jelentéskészítők nevű figyelő meghatározott feltételek egyik fontos. Azok a helyi nézet alapján feltételek jelentést. A [a health Store adatbázisban](service-fabric-health-introduction.md#health-store) összefoglalja az entitások globálisan kifogástalan megállapításához összes jelentéskészítők által küldött egészségügyi adatokat. A modell olyan gazdag, rugalmas és könnyen használható. A rendszerállapot-jelentések minőségének meghatározza, hogy a fürt az állapotmegtekintő nézet pontosságát. Téves tévesen jeleníti meg a nem megfelelő negatívan befolyásolhatja a frissítések vagy az egészségügyi adatokat használó más szolgáltatásokba. Ezek a szolgáltatások többek között a javítása és a riasztási mechanizmusokat. Adja meg a jelentéseket, amelyek a lehető legjobb módon érdeklő feltételek rögzítése ezért néhány gondolat van szükség.
+A Service Fabric-jelentéskészítők nevű figyelő azonosítja a lényeges feltételek. Ezek a helyi nézetén alapuló feltételek jelentést. A [health Store adatbázisban](service-fabric-health-introduction.md#health-store) összesíti az összes jelentéskészítők által küldött határozza meg, hogy globálisan kifogástalan állapotban-e entitásokat egészségügyi adatokat. A minta célja gazdag, rugalmas és könnyen használható. A rendszerállapot-jelentések minőségét meghatározza, hogy a fürt állapotának nézete pontosságát. Vakriasztások tévesen megjelenítése a nem megfelelő állapotú problémák is negatív hatással a frissítések vagy egészségügyi adatokat használó egyéb szolgáltatásokba. Ilyen szolgáltatás például a következők: javítása és a riasztási mechanizmusokat. Jelentések készítése, fontos a lehető legjobb módon feltételek rögzítő ezért néhány gondolat van szükség.
 
-Watchdogs tervezése és megvalósítása reporting állapotát, és rendszerösszetevők kell:
+Watchdogs együttműködve tervezhetik és valósíthatják állapotfigyelő jelentési, és a rendszer összetevőit kell:
 
-* Határozza meg a feltételt, akkor is, a számítógép megfigyelés alatt áll módon és a hatás a fürt vagy az alkalmazás funkcióit. Ezen információ alapján döntse el, az egészségügyi jelentés tulajdonság és állapotát.
+* Adja meg az őket érdeklő feltétel, a módszer figyelhető és hatását a fürt vagy az alkalmazás funkcióit. Ezen információ alapján döntse el, az egészségügyi jelentés tulajdonság és állapotát.
 * Határozza meg a [entitás](service-fabric-health-introduction.md#health-entities-and-hierarchy) , amely a jelentés vonatkozik.
-* Annak megállapítása, ahol a jelentéskészítési kész, a a szolgáltatáson belül vagy egy belső vagy külső figyelő.
-* Definiáljon alapján határozza meg a jelentéskészítő.
-* Válassza ki a jelentéskészítési stratégiát, vagy rendszeres időközönként, vagy a átmenetek. Az ajánlott módszer a rendszeres időközönként esetén, mert az egyszerűbb kód szükséges, és kevesebb a hibalehetőség.
-* Határozza meg, hogy mennyi ideig a jelentés a nem megfelelő feltételeket kell marad a health Store adatbázisban, és hogyan jelölését. Ezen információk alapján döntse el, a jelentéskészítéskor élettartama, és távolítsa el a lejárati viselkedését.
+* Határozza meg, ahol a jelentéskészítési van kész, az a szolgáltatásban vagy egy belső vagy külső figyelő.
+* Adja meg a jelentéskészítő azonosítására szolgáló forrás.
+* Válassza ki a jelentéskészítési stratégia, rendszeres időközönként vagy az átmenetek. Ajánlott módja rendszeres időközönként, hogy egyszerűbb kódot igényel, és kevesebb a hibalehetőség.
+* Határozza meg, mennyi ideig a jelentés a nem megfelelő állapotú feltételek kell marad a a health Store adatbázisban, és hogyan jelölését. Ezen információk alapján döntse el, a jelentés idő live és a remove-a-lejárati viselkedését.
 
-Ahogy azt korábban említettük, reporting teheti meg:
+Ahogy említettük, reporting teheti meg:
 
-* A figyelt Service Fabric-szolgáltatás replika.
-* Belső watchdogs telepített Service Fabric szolgáltatás (például a Service Fabric állapotmentes szolgáltatások, amely figyeli a feltételek és a jelentések problémák). A watchdogs lehet telepíteni az összes csomópont, vagy is rendelhetők affinitás alapján a figyelt szolgáltatás.
-* Futtassa a Service Fabric-csomóponton, de belső watchdogs *nem* valósul meg a Service Fabric-szolgáltatás.
-* Külső watchdogs, hogy az erőforrást mintavételi *kívül* a Service Fabric-fürt (például figyelőszolgáltatás Gomez hasonlóan).
-
-> [!NOTE]
-> A fürt első használatkor a rendszer-összetevők által küldött állapotjelentések telepítéskor. További információ: [hibaelhárítási rendszerállapot használatával jelentéseket](service-fabric-understand-and-troubleshoot-with-system-health-reports.md). A felhasználói jelentések kell küldeni [állapotfigyelő entitások](service-fabric-health-introduction.md#health-entities-and-hierarchy) , amely létre lett hozva a rendszer.
-> 
-> 
-
-Egyszer a állapotfigyelő Tervező egyértelmű jelentéskészítési, állapotjelentések küldhető könnyen. Használhat [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) jelentés állapotába. Ha a fürt nem [biztonságos](service-fabric-cluster-security.md) , vagy ha a fabric-ügyfélnek rendszergazdai jogosultságokkal rendelkezik. Jelentéskészítési végezhető el az API által használatával [FabricClient.HealthManager.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), PowerShell vagy a többi útján. Konfigurációs forgatógombját kötegelt javítja a teljesítményt a jelentésekre.
+* A figyelt Service Fabric-szolgáltatás replikája.
+* Belső watchdogs telepített Service Fabric-szolgáltatás (például egy Service Fabric állapotmentes szolgáltatás, amely figyeli a feltételek és jelentések problémák). A watchdogs lehet az összes csomóponton telepítve, vagy a figyelt szolgáltatás affinitized is lehet.
+* A Service Fabric-csomópontokon futtatni, de belső watchdogs *nem* megvalósítva, Service Fabric-szolgáltatások.
+* Külső watchdogs, amely az erőforrás a mintavételi *kívül* a Service Fabric-fürt (például például Gomez figyelési szolgáltatás).
 
 > [!NOTE]
-> A jelentés állapotának szinkron, és azt jelenti, hogy csak az ügyfél oldali érvényesítési munka. Azt a tényt, hogy a jelentés a rendszerállapot-ügyfél által elfogadható vagy a `Partition` vagy `CodePackageActivationContext` objektumok nem jelenti azt, hogy van-e alkalmazva a tárolóban. Küldött aszinkron módon történik, és esetleg kötegelni más jelentésekre. A kiszolgáló terhelése is meghiúsulhat: a sorszám elavult lehet, amelyen a jelentés alkalmazni kell az entitás már törölt, stb.
+> Beépített megjelenik a fürt rendszerállapot-jelentések, a rendszer összetevők által küldött. További információk: [használatával rendszerállapot-jelentések hibaelhárítási](service-fabric-understand-and-troubleshoot-with-system-health-reports.md). A felhasználó jelentéseket kell küldeni [egészségügyi entitások](service-fabric-health-introduction.md#health-entities-and-hierarchy) , amely már a rendszerben hozták létre.
 > 
 > 
 
-## <a name="health-client"></a>Rendszerállapot-ügyfél
-A rendszerállapot-jelentések küldése a állapotfigyelő ügyfél, amelyen belül a fabric-ügyfélnek él keresztül a health Store adatbázisban. A rendszerállapot-ügyfél az alábbi beállításokkal konfigurálható:
-
-* **HealthReportSendInterval**: a jelentés hozzáadódik az ügyfél és az idő a health Store adatbázisban való továbbítás közötti késleltetés. Használt kötegelt jelentések egyetlen üzenetet, nem pedig egy üzenet küldése az egyes jelentések. A kötegelés javítja a teljesítményt. Alapértelmezett: 30 másodperc.
-* **HealthReportRetrySendInterval**: az időköz, ahol a health újraküldi halmozott állapotfigyelő jelent a health Store adatbázisban. Alapértelmezett: 30 másodperc.
-* **HealthOperationTimeout**: a health Store adatbázisban küldött jelentést tartalmazó üzenet megadott időkorlát. Üzenet időkorlátja lejár, ha az állapotfigyelő ügyfél azt újrapróbálkozik, amíg a health Store adatbázisban megerősíti, hogy a jelentés feldolgozása. Alapértelmezett: két perc.
+Egyszer az egészségügyi jelentéskészítő Tervező nincs bejelölve, rendszerállapot-jelentések küldhetők egyszerűen. Használhat [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) jelentés állapotába. Ha a fürt nem [biztonságos](service-fabric-cluster-security.md) , vagy ha a fabric-ügyfél rendszergazdai jogosultságokkal rendelkezik. Jelentéskészítés végezhető el az API által használatával [FabricClient.HealthManager.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), a PowerShell vagy REST-en keresztül. Konfigurációs belül kötegelt jobb teljesítmény érdekében a jelentésekre.
 
 > [!NOTE]
-> A jelentések vannak kötegelni, amikor a fabric-ügyfélnek kell életben tartania számára legalább a HealthReportSendInterval annak érdekében, hogy elküldi őket. Ha az üzenet elveszik, vagy átmeneti hibák okozták a health Store adatbázisban nem alkalmazza, a fabric-ügyfélnek kell életben tartania már egészítse ki arra, hogy próbálja meg újra.
+> A jelentés állapotának szinkron, és azt jelenti, hogy csak az ügyféloldalon érvényesítési működik. Az a tény, hogy a jelentés az egészségügyi ügyfél elfogadja vagy a `Partition` vagy `CodePackageActivationContext` objektumok nem jelenti azt, hogy alkalmazásának az áruházban. Valószínűleg más jelentésekre kötegelt és aszinkron módon elküldött. A feldolgozás a kiszolgáló továbbra is sikertelenek lehetnek: lehet, hogy a sorozatszám elavult, az entitást, amelyen a jelentés a alkalmazni kell lett törölve, stb.
 > 
 > 
 
-A jelentések egyediségét számításba venni az ügyfélen pufferelés vesz igénybe. Például ha egy adott rossz jelentéskészítői az jelentéskészítési ugyanahhoz a tulajdonsághoz, az ugyanaz az entitás 100 jelentések / másodperc, a jelentések váltják fel a legfrissebb verziója. Legfeljebb egy ilyen jelentés létezik-e az ügyfél várólistában. Ha kötegelés van konfigurálva, a health Store adatbázisban küldött jelentések száma csak egy küldési időszakonként. Ez a jelentés az utolsó hozzáadott jelentést, amely tükrözi a legfrissebb állapotba az entitás.
-Adja meg a konfigurációs paraméterek amikor `FabricClient` jön létre úgy, hogy [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) a rendszerállapot-kapcsolatos bejegyzéseket a kívánt értékekkel.
+## <a name="health-client"></a>Állapot ügyfél
+A rendszerállapot-jelentések küldése a a health Store adatbázisban, egy állapot-ügyfelet, amely lakik belsejében a fabric-ügyfél használatával. Az állapot-ügyfél a következő beállításokkal konfigurálhatók:
 
-Az alábbi példa létrehoz egy fabric-ügyfélnek, és meghatározza, hogy a jelentéseket küldhetnek-e, amikor hozzáadja őket. Időtúllépések és követően újra megkísérelhető a hibákról újrapróbálkozások 40 másodpercenként kerül sor.
+* **HealthReportSendInterval**: A health Store adatbázisban továbbítja a jelentést kerül az ügyfél és az idő közötti késleltetés. A batch-jelentésekhez használt, egy üzenet, nem pedig egy üzenet küldése az egyes jelentések. A kötegelés javítja a teljesítményt. Alapértelmezett: 30 másodperc.
+* **HealthReportRetrySendInterval**: Az időköz, amelyen az állapotfigyelő létrehozása után újraküldi összesített állapotát jelenti a health Store adatbázisban. Alapértelmezett: 30 másodperc.
+* **HealthOperationTimeout**: Az időkorlát a health Store adatbázisban egy jelentés üzenetet. Egy üzenet túllépi az időkorlátot, ha az állapotfigyelő ügyfél azt újrapróbálkozik, mindaddig, amíg a health Store adatbázisban megerősíti, hogy a jelentés feldolgozása megtörtént. Alapértelmezett: két perc.
+
+> [!NOTE]
+> Ha a jelentések kötegelni vannak, a fabric ügyfél kell tartani fenn legalább a HealthReportSendInterval annak érdekében, hogy azok elküldéséhez. Ha az üzenet elveszik, vagy az átmeneti hibák miatt a health Store adatbázisban nem alkalmazza, a fabric ügyfél kell tartandó már neki, és próbálkozzon újra.
+> 
+> 
+
+Az egyedi-e a jelentések figyelembe veszi az ügyfélen pufferelés vesz igénybe. Például ha egy adott hibás riporter jelent meg ugyanaz az entitás ugyanazon tulajdonságát másodpercenként 100 jelentést, a jelentések helyettesíti a legutóbbi verzióra. Legfeljebb egy ilyen jelentés létezik, az ügyfél-üzenetsorban. Ha kötegelés van konfigurálva, a health Store adatbázisban küldött jelentések száma / küldési időköz csak az egyik. Ez a jelentés az utolsó új jelentést, amely tükrözi a legfrissebb állapotba az entitás nem.
+Adja meg a konfigurációs paramétereket amikor `FabricClient` jön létre átadásával [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) a health kapcsolatos bejegyzéseket a kívánt értékekkel.
+
+Az alábbi példa létrehoz egy fabric ügyfél, és itt adhatja meg, hogy a jelentéseket küld-e, amikor hozzáadja őket. Az időtúllépések és az újrapróbálható hibák az újrapróbálkozások 40 másodpercenként fordulhat elő.
 
 ```csharp
 var clientSettings = new FabricClientSettings()
@@ -81,9 +81,9 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-Azt javasoljuk, hogy az alapértelmezett fabric-ügyfél beállításainak, amely `HealthReportSendInterval` 30 másodperc. Ez a beállítás biztosítja a kötegelés miatt optimális teljesítményt. A kritikus jelentések, amelyek a lehető leghamarabb el kell küldeni, használjon `HealthReportSendOptions` az Immediate `true` a [FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API. Azonnali jelentések kihagyása esetén a kötegelési időköz. Ez a jelző körültekintően; használja azt szeretnénk, az egészségügyi ügyfél kötegelés, amikor csak lehetséges előnyeit. Azonnali küldés akkor hasznos, ha bezárja a fabric-ügyfélnek (például a folyamat állapota érvénytelen megállapítása és hatásai megelőzése érdekében leáll). Biztosítja a legjobb küldési halmozott jelentések. Amikor egy jelentés azonnali jelzővel ad hozzá, az egészségügyi ügyfél kötegek a halmozott jelentések utolsó küldési óta.
+Javasoljuk, hogy az alapértelmezett fabric ügyfél tartja a beállításokat, amelyek beállítása `HealthReportSendInterval` 30 másodperc. Ez a beállítás biztosítja a kötegelés miatt optimális teljesítményét. Kritikus fontosságú jelentések, hogy minél hamarabb el kell küldeni, használja a `HealthReportSendOptions` az Immediate `true` a [FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API-t. Azonnali jelentések kihagyása a kötegelés időköz. Ez a jelző; körültekintően szabad használni szeretnénk kihasználhatja az egészségügyi ügyfél kötegelés, amikor csak lehetséges. Azonnali küldés akkor is hasznos, amikor bezárja a fabric-ügyfél (például a folyamat állapota érvénytelen megállapítása és hatásai elkerülése érdekében állítsa le kell). Összesített jelentések legjobb küldés biztosítja. Azonnali jelölővel hozzáadásakor egy jelentés, az egészségügyi ügyfél kötegeli az összesített jelentések az utolsó küldés óta.
 
-Paramétereket a PowerShell segítségével kapcsolódni a fürt létrehozásakor adható meg. A következő példa egy a helyi fürthöz való kapcsolódási kezdődik:
+Ugyanazokat a paramétereket egy kapcsolatot a fürt PowerShell-lel létrehozásakor adható meg. A következő példa elindítja a helyi fürtöt, kapcsolatot:
 
 ```powershell
 PS C:\> Connect-ServiceFabricCluster -HealthOperationTimeoutInSec 120 -HealthReportSendIntervalInSec 0 -HealthReportRetrySendIntervalInSec 40
@@ -111,80 +111,80 @@ GatewayInformation   : {
                        }
 ```
 
-Hasonlóképpen API-t, hogy jelentéseket is küld a `-Immediate` kapcsoló azonnal elküldött, függetlenül attól, hogy a `HealthReportSendInterval` érték.
+Hasonlóképpen API-t, a jelentések elküldött használatával `-Immediate` kapcsoló azonnal elküldött, függetlenül attól, hogy a `HealthReportSendInterval` értéket.
 
-A többi a jelentések küldése a a Service Fabric-átjárón, amely rendelkezik egy belső fabric-ügyfélnek. Alapértelmezés szerint ez az ügyfél beállításai küldjön jelentést kötegelni 30 másodpercenként. A fürt konfigurációs beállítással módosíthatja a kötegelt időköz `HttpGatewayHealthReportSendInterval` a `HttpGateway`. Ahogy azt korábban említettük, a jobb megoldás-e jelentéseket küldeni `Immediate` igaz. 
-
-> [!NOTE]
-> Győződjön meg arról, hogy a nem hitelesített szolgáltatások nem tud jelenteni szembeni az entitásokat, a fürt, konfigurálja a kiszolgáló csak biztonságos ügyfelektől érkező kérelmek fogadására. A `FabricClient` jelentéskészítési rendelkezik biztonsági engedélyezve kell lennie képes kommunikálni a fürt (például a Kerberos- vagy Tanúsítványalapú hitelesítés). Tudjon meg többet az [fürt biztonsági](service-fabric-cluster-security.md).
-> 
-> 
-
-## <a name="report-from-within-low-privilege-services"></a>Jelentés az alacsony jogosultságú szolgáltatások belül
-Service Fabric-szolgáltatások nem rendelkeznek rendszergazdai hozzáférés a fürthöz, ha az aktuális környezetben keresztül entitásokat a állapotfigyelő jelentést `Partition` vagy `CodePackageActivationContext`.
-
-* Az állapotmentes szolgáltatásokhoz használja [IStatelessServicePartition.ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) az aktuális szolgáltatáspéldányt jelentést.
-* Állapotalapú szolgáltatások esetén használjon [IStatefulServicePartition.ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) a jelentés az aktuális replika.
-* Használjon [IServicePartition.ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) számára, az aktuális partíciót entitás.
-* Használjon [CodePackageActivationContext.ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) aktuális alkalmazás jelentést.
-* Használjon [CodePackageActivationContext.ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) számára, az adott alkalmazás telepítése az aktuális csomóponton.
-* Használjon [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) számára, az az aktuális csomópont telepített alkalmazás egy service-csomag.
+A jelentések többi, a Service Fabric-átjáró, amely egy belső fabric ügyfél érkeznek. Alapértelmezés szerint az ügyfél konfigurálva a jelentések küldéséhez kötegelni Ez lehet 30 másodperc. A fürt konfigurációs beállítással módosíthatja a kötegelési időkö `HttpGatewayHealthReportSendInterval` a `HttpGateway`. Ahogy említettük, jobb megoldás-e küldeni a jelentéseket a `Immediate` igaz. 
 
 > [!NOTE]
-> Belsőleg az `Partition` és a `CodePackageActivationContext` állapotát az ügyfél alapértelmezett beállításokkal rendelkezik. Ahogy az a [állapotfigyelő ügyfél](service-fabric-report-health.md#health-client), jelentések vannak és időzítő küldi. Az objektumok életben is elküldheti a jelentést rendelkeznie kell tartani.
+> Győződjön meg arról, hogy nem engedélyezett szolgáltatások nem készíthető jelentés az egészségügyi szemben az entitásokat a fürtben, hogy a kiszolgáló csak a biztonságos ügyfelektől érkező kérelmek fogadására konfigurálja. A `FabricClient` jelentés biztonsági engedélyeznie kell a fürt (például a Kerberos vagy Tanúsítványalapú hitelesítés) kommunikálni lehessen használni. Tudjon meg többet [biztonsági fürt](service-fabric-cluster-security.md).
 > 
 > 
 
-Megadhat `HealthReportSendOptions` keresztül jelentések küldéséhez `Partition` és `CodePackageActivationContext` rendszerállapot API-k. Ha kritikus jelentések, amelyek a lehető leghamarabb el kell küldeni, használja `HealthReportSendOptions` az Immediate `true`. Azonnali jelentések kihagyása esetén a belső állapot ügyfél kötegelési időköz. Ahogy korábban említettük, körültekintően; használja ezt a jelzőt azt szeretnénk, az egészségügyi ügyfél kötegelés, amikor csak lehetséges előnyeit.
+## <a name="report-from-within-low-privilege-services"></a>Jelentés az alacsony jogosultságú-szolgáltatásokban
+Ha a Service Fabric-szolgáltatások nem rendelkezik rendszergazdai hozzáféréssel a fürthöz, egészségügyi jelentheti az aktuális környezetben keresztül származó entitásokra `Partition` vagy `CodePackageActivationContext`.
 
-## <a name="design-health-reporting"></a>Állapotfigyelő jelentéskészítés tervezése
-Az első lépés a kiváló minőségű jelentések létrehozásához azonosítja a feltételeket, amelyek hatással lehet a szolgáltatás állapotát. Minden feltétel, amely segíthet a szolgáltatás vagy a fürt jelző problémák--és még jobban előtt történik, a probléma – is potenciálisan dolláros egy mentés. A következő előnyöket nyújtja kisebb állásidő, kevesebb éjszakai töltött vizsgálja, és problémákat, és magasabb szintű ügyfelek elégedettségének javítása.
-
-Amennyiben a feltételeket a azonosítja, figyelő írók ki kell deríteni a legjobb módszer a terhelés és hasznosságát közötti egyensúly megfigyelheti őket. Tegyük fel, amelyet összetett számítások bizonyos megosztott fájlokat használó szolgáltatás. Egy figyelő figyelni a megosztás győződjön meg arról, hogy elegendő lemezterület áll rendelkezésre. Azt tudta figyelni az értesítéseket a fájl vagy könyvtár változások. Az sikerült jelentést egy figyelmeztetés, ha egy társaságuk küszöbérték elérésekor, és hibaüzenetet jelenít meg, ha a megosztás teljes. A figyelmeztetést, a javítási rendszer elindítása volt, törölje a régebbi, a megosztáson tárolt fájlok. A hiba a javítási rendszer a szolgáltatás replika sikerült áthelyezése másik csomópontra. Vegye figyelembe a módját ismerteti a a feltétel állapotok állapotfigyelő tekintetében: a feltétel tekinthető Kifogástalan (ok) vagy a nem megfelelő (figyelmeztetés vagy hiba) állapotát.
-
-A figyelési részletek van beállítva, ha egy figyelő írójának, hogyan lehet a figyelő végrehajtásához. A feltételek a szolgáltatáson belül lehet határozni, ha a figyelő a figyelt szolgáltatás része lehet. Például a szolgáltatás kódot ellenőrizze a megosztás használatát, és jelentést készít a minden alkalommal, amikor megpróbálja fájl írása. Ez a megközelítés előnye, hogy a reporting felettébb egyszerű. Gondot kell fordítani a szolgáltatást érintő figyelő hibák megakadályozása.
-
-A jelentéskészítési a figyelt szolgáltatás nincs mindig lehetőség. Előfordulhat, hogy a figyelő a szolgáltatáson belül nem észleli a. Nem lehet a programot vagy az adatokba, így a meghatározása. Növeli a feltételek ellenőrzésének magas lehet. A feltételek is nem lehet egy adott szolgáltatáshoz, de ehelyett érinti a szolgáltatások közötti kapcsolat. Egy másik lehetőség, hogy watchdogs a fürt különálló folyamatként. A watchdogs figyelheti a feltételek és a jelentést, az nem befolyásolja a fő szolgáltatások bármely olyan módon. Például a watchdogs sikerült implementálható ugyanabban az alkalmazásban, az összes olyan csomóponton, vagy a szolgáltatást ugyanazon csomópontjára telepített állapotmentes szolgáltatásokhoz.
-
-Egyes esetekben a figyelő a fürtben futó lehetőség nem érhető el vagy. A figyelt feltétele a rendelkezésre állás vagy a szolgáltatás működésére, a felhasználók látni, akkor legjobb, ha a watchdogs ugyanazon a helyen, a felhasználó-ügyfélként. Hiba azok tesztelheti a műveletek ugyanúgy felhasználók keresheti őket. Lehet például egy figyelő, amely a fürtön kívüli él, kérelmeket állít ki a szolgáltatás és a késleltetés és helyességét az eredményt ellenőrzi. (A Számológép szolgáltatáshoz, például nem 2 + 2 vissza 4 elfogadható időn belül?)
-
-Miután a figyelő részletek véglegesítése megtörtént, meg kell határoznia egy adatforrás azonosítója, amely egyedileg azonosítja a. Ha több, azonos típusú watchdogs élő a fürt a különféle entitásokat jelenteniük kell, vagy ha azok ugyanaz az entitás jelentést, használja a különböző adatforrás azonosítója vagy tulajdonság. Ezzel a módszerrel a jelentések egyszerre is használható. Az állapotjelentés tulajdonságának irányítsa a figyelt feltétel. (A fenti példában a tulajdonság lehet **ShareSize**.) Ha több jelentések Ugyanez vonatkozik, a tulajdonság néhány dinamikus információkkal rendelkezhetnek, amely lehetővé teszi a jelentések azonos kell tartalmaznia. Például, ha több megosztást kell figyelni, a tulajdonság neve lehet **ShareSize-megosztásnév**.
+* Az állapotmentes szolgáltatások esetében használjon [IStatelessServicePartition.ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) jelenti az aktuális szolgáltatáspéldányt.
+* Az állapotalapú szolgáltatások esetében használjon [IStatefulServicePartition.ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) aktuális replika jelenti.
+* Használat [IServicePartition.ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) az aktuális partíciót entitás jelenti.
+* Használat [CodePackageActivationContext.ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) aktuální aplikaci jelenti.
+* Használat [CodePackageActivationContext.ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) az aktuális csomóponton üzembe helyezve a jelenlegi alkalmazás jelenti.
+* Használat [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) az aktuális csomóponton üzembe helyezett alkalmazás szolgáltatási csomag jelenti.
 
 > [!NOTE]
-> Tegye *nem* a health Store adatbázisban segítségével állapotadatait. Csak a rendszerállapot-kapcsolatos információkkal kell jelenteni állapotát, mivel ezek az információk hatással van az állapot kiértékelésekor az entitás. A health Store adatbázisban nem egy általános célú tárolóként úgy lett kialakítva. Állapotfigyelő értékelési logika állapotát az összes adat összesítésére használ. Elküldött adatok (például a jelentéskészítési OK állapotot az állapot) állapotfigyelő egymástól független nem befolyásolja a összesített állapotát, de ez negatívan befolyásolhatja a health Store adatbázisban teljesítményét.
+> Belsőleg az `Partition` és a `CodePackageActivationContext` tartsa egy állapotfigyelő az ügyfél alapértelmezett beállításait. A mértékét a [egészségügyi ügyfél](service-fabric-report-health.md#health-client), jelentések kötegelni és időzítő küldött. Az objektumok életben kipróbálja a jelentés küldése kell tárolni.
 > 
 > 
 
-A következő döntési tényező a jelentés az entitáshoz. Az idő, a következő feltételt: a legtöbb egyértelműen idetifies az entitás. Válassza ki az entitást a lehető legjobb lépésköz. Ha egy feltétel hatással van egy partíció összes replika, a partíció nem a szolgáltatás a jelentést. Ha további gondolat van szükség, azonban esetekben van. Ha a feltétel egy entitás, például egy replikát, hatással van, de a desire, hogy a feltétel meg van jelölve, a több, mint a replika élettartama időtartama, majd a partíción kell megadni. Ellenkező esetben a replika törlésekor a health Store adatbázisban a szükségtelenné vált a jelentéseket. Figyelő írók az entitáshoz és a jelentés a élettartamának kell gondolni. Törölje a jelet kell, amikor egy jelentés tisztítani kell a tárolóból (például ha már nem érvényes egy entitás jelentett hiba).
+Megadhat `HealthReportSendOptions` jelentéseit küldésekor `Partition` és `CodePackageActivationContext` health API-k. Ha kritikus fontosságú jelentések, hogy minél hamarabb el kell küldeni, használja a `HealthReportSendOptions` az Immediate `true`. Azonnali jelentések a kötegelés időköz a belső állapot ügyfél kihagyása. Ahogy korábban említettük, körültekintően szabad használni ezt a jelzőt; szeretnénk kihasználhatja az egészségügyi ügyfél kötegelés, amikor csak lehetséges.
 
-Egy példa, amely az együtt a pontok I leírt vizsgáljuk meg. Vegye figyelembe, hogy a Service Fabric-alkalmazás fő állapot-nyilvántartó állandó szolgáltatás és a másodlagos állapotmentes szolgáltatásokhoz (egy másodlagos szolgáltatás típusa az egyes feladatok) összes csomópontjára telepíti állnak. A fő van hajthatják végre a másodlagos adatbázist, parancsokat tartalmazó feldolgozási várólista. A másodlagos adatbázisok a bejövő kérelmeket, és hátsó nyugtázási jelek küldésére. Egy olyan feltételt, amely ellenőrizhető a feldolgozási sor hossza. Ha a fő várólista hossza eléri a, figyelmeztetés az elvártnak. A figyelmeztetés azt jelzi, hogy a másodlagos adatbázist nem tudja kezelni a terhelés. Ha a várólista eléri a maximális méretet, és dobja parancsok, egy hibát jelzett, mert a szolgáltatás nem állítható helyre. A jelentések lehet tulajdonság **QueueStatus**. A figyelő él belül a szolgáltatást, majd a fő elsődleges replikán rendszeresen továbbítja. Az élettartamnak két percet, és rendszeres időközönként 30 másodpercenként továbbítja azokat. Ha az elsődleges leáll, a jelentés automatikusan törlődnek áruházból. A szolgáltatás replika esetén azonban azt van e holtpontba, vagy egyéb problémákat tapasztal, a jelentés lejár a health Store adatbázisban. Ebben az esetben az entitás: hiba ki lesz értékelve.
+## <a name="design-health-reporting"></a>Állapotfigyelő jelentési tervezése
+Kiváló minőségű jelentéseket hozhat létre az első lépés a feltételeket, amelyek befolyásolhatják a szolgáltatás állapotának azonosítja. Tetszőleges feltételt, amely segíthet a szolgáltatásban vagy a fürt jelző problémák – és még jobb, mielőtt hiba történik – is potenciálisan több milliárd dollár mentéséhez. Az értékelemek közé tartozik a kisebb állásidő, kevesebb éjszakai töltött vizsgálatához és javítása, problémák és az újabb ügyfél-elégedettséget.
 
-Egy másik figyelhető feltétele feladat végrehajtási ideje. A fő osztja el a feladatokat a másodlagos adatbázist, a tevékenység típusa alapján. Attól függően, hogy a tervező a fő sikerült kérdezze le a másodlagos adatbázist, a feladatok állapotát. Másodlagos partíciója hátsó nyugtázási jelek küld, ha azok végzett sikerült is megvárhatja. A második esetben gondot kell fordítani észlelni az olyan helyzetekben, ahol a másodlagos adatbázisok die vagy üzenetek elvesznek. Egy elem a főkiszolgáló ping kérelem küldése, ha ugyanaz a másodlagos, amely küld vissza az állapotát. Nincs állapot érkezik, ha a fő tartja hibát, és a feladat reschedules. Ez a viselkedés feltételezi, hogy a feladatok az idempotent.
+Miután a feltételeket a azonosítja, figyelő írók kell döntse el, a legjobb módszer a terhelés és használhatóságának közötti egyensúly megfigyelheti őket. Vegyük példaként egy olyan szolgáltatás, amely bizonyos ideiglenes fájlok a használó összetett számításokat végez. Egy figyelő figyelni a megosztáshoz, győződjön meg arról, hogy elegendő lemezterület áll rendelkezésre. Azt tudta figyelni az értesítéseket, fájl vagy könyvtár módosításait. Ha egy előzetes küszöbérték elérése után, és jelentse a hiba, ha a megosztás teljes, sikerült jelentést egy figyelmeztetés. Egy figyelmeztetés, a javítási rendszer indítható régebbi a-megosztáson található fájlok törlésével. A hiba a javítási rendszer a szolgáltatás replikája sikerült áthelyezése másik csomópontra. Vegye figyelembe, hogyan a feltétel állapotok tekintetében állapot leírása: a feltétellel, hogy lehessen venni Kifogástalan (ok), vagy nem megfelelő állapotú (figyelmeztetés vagy hiba) állapotát.
 
-A figyelt feltétel fordítható figyelmeztetés, ha a feladatot nem végezheti el a bizonyos ideig (**t1**, például 10 perc). Ha a feladat nem fejeződött be időben (**t2**, például 20 perc), a figyelt feltétel fordítható – hiba. Ehhez a jelentéshez végezhető többféle módon:
+Miután beállította a figyelési részleteit, a figyelő írójának döntse el, hogyan valósíthat meg a figyelő. A feltételek a szolgáltatásban a lehet meghatározni, ha a figyelő a figyelt szolgáltatás részeként is lehet. Például a kódját is ellenőrizze a megosztás használatát, és jelentést készít minden alkalommal, amikor megpróbálja fájl írása. Ez a megközelítés előnye, hogy a jelentések is egyszerű. Ügyelni kell megakadályozza, hogy a figyelő hibák, mely negatív hatással a szolgáltatás funkcióit.
 
-* Az eredeti elsődleges replika jelentések maga rendszeres időközönként. A várólista akkor is az összes függő tevékenység egy tulajdonságot. Ha legalább egy feladat eljárás tovább tart, a jelentés állapotának tulajdonság **PendingTasks** figyelmeztető vagy hibaüzenet, szükség szerint van. Ha nincs folyamatban lévő tevékenységek, vagy minden feladat végrehajtási, a jelentés állapota OK gombra. A feladatok olyan állandó. Ha az elsődleges leáll, az újonnan előléptetett elsődleges továbbra is megfelelően jelentést.
-* Egy másik figyelő folyamat (a felhőben, vagy külső) ellenőrzi a feladatok (a kívül, eredményei alapján a kívánt feladat) Ha teljesítése megjelenítéséhez. Ha nem veszik figyelembe a küszöbértékeket, hogy jelentést küld el a fő szolgáltatásban. Egy jelentés is lett van küldve, amely magában foglalja a feladatazonosítót a feladat, például minden tevékenység **PendingTask + taskId**. Jelentések csak nem kifogástalan állapotok kellene elküldeni. Élő néhány percet, és jelölje be a karbantartási biztosításához lejárat után el kell távolítani a jelentések idő beállítása.
-* A másodlagos feladat éppen futó futtassa a vártnál hosszabb ideig tart, amikor jelentéseket. Azt a szolgáltatáspéldány tulajdonság jelentések **PendingTasks**. A jelentés pinpoints a szolgáltatáspéldány, amely problémák léptek fel, de ez a helyzet, ahol a példány elhalálozik nem rögzíti. A jelentések majd megtisztítva. Ez a másodlagos service sikerült jelentést. Ha a másodlagos befejezi a feladatot, a másodlagos példány törlése a jelentés az áruházból. A jelentés nem rögzíti a helyzet, ahol a nyugtázási üzenetet elvész, és a feladat nem fejeződött be a fő szempontjából.
+A jelentéskészítés a figyelt szolgáltatás lehetőség nem mindig. A figyelő a szolgáltatásban nem lehet képes észlelni a feltételeket. Még nem rendelkezik a logikai vagy a Hardvertulajdonságok az adatokat. Előfordulhat, hogy magas feltételek ellenőrzésének járó többletterhelést. A feltételek is előfordulhat, hogy nem kell egy adott szolgáltatáshoz, azonban inkább befolyásolhatja a szolgáltatások közötti interakciókat. Egy másik lehetőség, hogy watchdogs a fürt külön folyamatként. A watchdogs figyelheti a feltételeket és a jelentést, anélkül, hogy befolyásolná a fő szolgáltatások bármely módon. Például ezek watchdogs lehetett végrehajtani ugyanabban az alkalmazásban, az összes csomóponton, vagy a szolgáltatás ugyanazon csomóponton üzembe helyezett állapot nélküli szolgáltatásként.
 
-A jelentéskészítési végezheti el a fent leírt eseteket, azonban a jelentések a lesznek rögzítve az alkalmazás állapotának, állapotának kiértékelésekor.
+Egyes esetekben a figyelő a fürtben futó lehetőség nem vagy. A figyelt feltétel látnak, a rendelkezésre állás vagy a szolgáltatás működésének lehetőség, ha a legjobb, ha a watchdogs ugyanazon a helyen, a felhasználó-ügyfélként. Itt, tesztelheti a műveletek ugyanúgy felhasználók hívja meg őket. Rendelkezhet például egy figyelő, amely a fürtön kívül él, a problémák az kérelmeket a szolgáltatás és a késleltetés és az eredmény helyességét ellenőrzi. (Egy Számológép szolgáltatáshoz, például nem 2 + 2 adja vissza: 4 ésszerű időn belül?)
 
-## <a name="report-periodically-vs-on-transition"></a>Jelentés rendszeres időközönként és átmenet
-Az állapotfigyelő jelentéskészítő modell segítségével watchdogs küldhet jelentések rendszeres időközönként vagy átmenetek. Az ajánlott módszer a figyelő reporting oka rendszeres időközönként, a kód sokkal egyszerűbb, és kevesebb a hibalehetőség. A watchdogs lehető legegyszerűbb helytelen jelentések kiváltó hibák elkerülése érdekében kell szükség. Helytelen *sérült* jelentések hatással lehet a rendszerállapot-értékelések és forgatókönyvek alapján állapota, beleértve a frissítéseket. Helytelen *kifogástalan* jelentések elrejtése problémák a fürt, amely nem kívánatos.
+Miután a figyelő részletei véglegesítése megtörtént, akkor meg kell határoznia egy adatforrás azonosítója, amely egyedileg azonosítja a. Ha több, azonos típusú watchdogs élő a fürt jelentenie kell a különböző entitások, vagy ha a jelentést, ugyanahhoz az entitáshoz, használja a különböző adatforrás azonosítója vagy tulajdonság. Ebben az esetben a saját jelentésükben egyszerre is használható. Az állapotjelentés tulajdonságát rögzíteni kell a figyelt feltétel. (A fenti példában a tulajdonság lehet **ShareSize**.) Ha ugyanez a feltétel több jelentést is vonatkozik, a tulajdonság lehetővé teszi, hogy a jelentések létezhet dinamikus információkkal kell tartalmaznia. Például, ha több megosztást kell figyelni, a tulajdonság neve lehet **ShareSize – sharename**.
 
-Az időszakos, a figyelő egy időzítővel valósítható meg. Egy időzítő visszahíváskor a figyelő állapota, és küldjön jelentést a jelenlegi állapota alapján. Nincs szükség az tekintse meg, melyik jelentés korábban küldött vagy bármely optimalizálásokat üzenetküldési tekintetében. Az állapotfigyelő ügyfél rendelkezik, kötegelés logika teljesítmény érdekében. A rendszerállapot-ügyfél aktív marad, amíg újbóli belső addig, amíg a jelentés elfogadja a health Store adatbázisban vagy a figyelő ilyen entitás, tulajdonságot, és forrás újabb jelentést hoz létre.
+> [!NOTE]
+> Tegye *nem* használja a health Store adatbázisban tartani az állapotadatokat. Csak az állapotfigyelő szolgáltatással kapcsolatos információkat kell jelenteni állapotát, mivel ezek az információk hatással van a állapotának kiértékelését az entitások. A health Store adatbázisban nem úgy lett kialakítva, általános célú tárolóként. Az állapot az összes adatokat tudnak összesíteni állapotának kiértékelési logika használ. Összesített állapota egymástól független (például kimutatási OK rendszerállapot-állapot) egészségügyi adatok küldése nem érinti, de ez negatívan befolyásolhatja a health Store adatbázisban teljesítményét.
+> 
+> 
 
-A átmenetek jelentéskészítéshez gondos kezelésére vonatkozó állapotát. A figyelő bizonyos feltételek figyeli, és csak a feltételek megváltozása jelenti. A feje a hátránya az, hogy kevesebb jelentések van szükség. A hátránya az, hogy a figyelő logikájának összetett. A figyelő kezelnie kell a feltételek vagy a jelentéseket, hogy azok állapotváltozások meghatározásához lehet megvizsgálni. Feladatátvétel, a gondot kell fordítani szerepel, de a health Store adatbázisban még nem küldött jelentésekkel. A sorszám egyre növekvő kell lennie. Ha nem, a jelentések szerint elavult utasítja el. Bizonyos ritkán előforduló esetekben, ahol adatvesztés van szükség a jelentési állapota és a health Store adatbázisban állapotának közötti szinkronizálás lehet szükség.
+A következő, hogy melyik entitás jelentésre a. A legtöbb esetben a feltétel egyértelműen azonosítja az entitást. Válassza ki az entitás lehetséges granularitással ajánlott. Ha egy feltétel egy partíció összes replika hatással van, a partíció nem a szolgáltatás a jelentést. Nincsenek ahol további gondolkodási van szükség, azonban esetekben. Ha a feltétel egy entitás, például egy replikát, hatással van, de a törekszik, hogy a feltétel több, mint a replika élettartama kockázatosként megjelölt felhasználókról, majd a partíción kell megadni. Ellenkező esetben a replika törlése esetén a health Store adatbázisban törli azokat az összes jelentés. Figyelő írók kell gondolni az entitás- és a jelentés a élettartamának. Egyértelmű kell lennie, ha egy jelentés tisztítani kell (például ha egy entitás jelentett hiba már nem érvényes.) egy tárolóból.
 
-Jelentés készítését átmenetek szabálykészletében keresztül, a reporting Services `Partition` vagy `CodePackageActivationContext`. Ha a helyi objektum (replika vagy a telepített szervizcsomag / alkalmazást telepített) van eltávolítva, a jelentések is törlődnek. Az automatikus tisztítás visszaállítja jelentéskészítői és a health Store adatbázisban közötti szinkronizálás szükséges. Ha a jelentés szülő alkalmazás vagy a szülőpartíció számára, kell ügyelni feladatátvevő a health Store adatbázisban elavult jelentések elkerülése érdekében. A helyes állapotban, és törölje a jelentés többé nincs szükség, ha a programot kell felvenni.
+Nézzük meg, amellyel együtt a pontok I ismertetett példa. Fontolja meg a Service Fabric-alkalmazás fő az állapotalapú állandó szolgáltatások és az összes csomóponton (egy másodlagos szolgáltatás típusa az egyes feladat) telepített másodlagos állapotmentes szolgáltatások állnak. A fő van, amely tartalmazza a másodlagos adatbázisok által végrehajtandó parancsokat feldolgozási várólista. A másodlagos példány hozható létre hajtsa végre a bejövő kéréseket, és küldhet vissza nyugtázással leállt. Egy feltételt, amely ellenőrizhető a feldolgozási várólista hossza. Ha a fő üzenetsor hossza eléri a küszöbértéket, a rendszer figyelmeztetést jelenti. A figyelmeztetés azt jelzi, hogy a másodlagos példány hozható létre nem tudja kezelni a terhelést. Ha a várólista eléri a maximális méretet, és parancsokat a rendszer elveti, hibát jelentett, mivel a szolgáltatás nem állítható helyre. A jelentések lehet tulajdonság **QueueStatus**. A figyelő a szolgáltatáson belül találhatók, és a fölérendelt elsődleges replikán időszakosan továbbítja. Time to live két percet, és rendszeres időközönként 30 másodpercenként továbbítja. Ha az elsődleges leáll, a jelentés automatikusan törlődnek store-ból. Szolgáltatás replika esetén azonban azt holtponti van, vagy más problémákba ütköznek, a jelentés lejár a health Store adatbázisban. Hiba történt, ebben az esetben az entitás lesz kiértékelve.
 
-## <a name="implement-health-reporting"></a>Állapotfigyelő reporting megvalósítása
-Miután az entitás és a jelentés adatainak törlése, rendszerállapot-jelentések küldése végezhető el az API-t, a PowerShell vagy a REST.
+Egy másik feltétel, amely lehet megfigyelni a feladat végrehajtási ideje. A fő kiosztja a tevékenységeket a másodlagos példány hozható létre a tevékenység típusa alapján. Attól függően, a tervezési a fő sikerült elindítja a lekérdezést a másodlagos példány hozható létre, a feladat állapota. Azt is megvárhatja küldhet vissza nyugtázási történik, ha a másodlagos példány hozható létre. A második esetben ügyelni kell észlelni az olyan helyzetekben, ahol a másodlagos példány hozható létre die vagy üzenetek elvesznek. Az egyik lehetőség van a főkiszolgáló kérelmet kell küldenie egy pingelés azonos másodlagos, amely küldi vissza annak állapotát. Nincs állapot nem érkezett, ha a fő hiba tekinti, és a feladat átütemez. Ez a viselkedés azt feltételezi, hogy a feladatok idempotensek.
+
+A figyelt feltétel is lefordított figyelmeztet, ha a feladat egy bizonyos idő alatt nem történik (**t1**, például 10 perc). Ha a feladat nem fejeződött be időben (**t2**, például 20 perc), a figyelt feltétel fordíthatók – hiba. Ehhez a jelentéshez többféle módon elvégezhető:
+
+* Az eredeti elsődleges replika jelentések maga rendszeres időközönként. A várólista akkor is az összes függő tevékenység egy tulajdonságot. Ha legalább egy feladat eljárás tovább tart, a jelentés állapotának tulajdonság **PendingTasks** figyelmeztető vagy hibaüzenet, szükség szerint van. Ha nincsenek függőben lévő feladatok, vagy minden feladat végrehajtási elindult, a jelentés állapota OK. A feladatok olyan állandó. Ha az elsődleges leáll, az újonnan előléptetett elsődleges továbbra is megfelelően jelentést.
+* Egy másik figyelő folyamat (a felhőben, vagy külső) ellenőrzi a feladatok (a kívül, kívánt feladat eredményei alapján), tekintse meg, ha azok végezhető el. Ha azok nem veszik figyelembe a küszöbértékeket, jelentést küld a szolgáltatás főkulcsának. Egy jelentés is elküldi a rendszer minden egyes tevékenységhez, amely magában foglalja a feladat azonosítóját, például **PendingTask + taskId**. Jelentések csak a nem kifogástalan állapotok küldendő adattípusokat. Élő néhány percre, és jelölje be a lejárat után karbantartása biztosítása érdekében el kell távolítani a jelentések idő beállítása.
+* Feladat végrehajtása másodlagos jelentések amikor futtatni a vártnál tovább tart. Jelentést készít a tulajdonság a szolgáltatáspéldány **PendingTasks**. A jelentés pinpoints problémák adódtak a szolgáltatáspéldány, de nem rögzíti a helyzetet, ahol a példány elhalálozik. A jelentések ezután törlődnek. Ez a másodlagos service sikerült jelentést. A másodlagos befejezi a feladatot, ha a másodlagos példány törlése a jelentés az áruházból. A jelentés nem rögzíti a helyzetet, ahol a nyugtázás üzenet elveszik, és a feladat nem fejeződött be a fő szempontjából.
+
+A fenti esetekben a jelentéskészítési megtörtént, azonban a jelentések rögzíti a rendszer alkalmazásállapot állapotának kiértékelésekor.
+
+## <a name="report-periodically-vs-on-transition"></a>Jelentés rendszeres időközönként és a Váltás
+Az állapotfigyelő jelentési modell használatával watchdogs jelentéseket küldhet a rendszeres időközönként vagy átmeneteket. Az ajánlott módszer a figyelő jelentéskészítési azért rendszeres időközönként, a kód, sokkal egyszerűbb, és kevesebb a hibalehetőség. A watchdogs kell arra törekszik, hogy helytelen jelentések kiváltó hibák elkerülése érdekében a lehető legegyszerűbb legyen. Helytelen *nem megfelelő állapotú* jelentések hatással, egészségügyi értékelések és forgatókönyvek alapján állapota, beleértve a frissítéseket. Helytelen *kifogástalan* jelentések elrejtése problémák a fürtben, amely nem megfelelő.
+
+Az időszakos jelentéshez, a figyelő valósítható egy időzítővel. A egy időzítő visszahívás a figyelő ellenőrizze az állapotát, és küldjön jelentést a jelenlegi állapota alapján. Hiba esetén nem kell, melyik jelentés korábban lett elküldve, vagy bármely optimalizálások üzenetkezelési tekintetében. Az egészségügyi ügyfél rendelkezik kötegelés logikai és a teljesítmény érdekében. Az egészségügyi ügyfél tartási marad, amíg újra megpróbálja belsőleg mindaddig, amíg a jelentés elfogadja a health Store adatbázisban vagy a figyelő az ilyen entitás, tulajdonságot, és forrás újabb jelentést hoz létre.
+
+Az átmenetek jelentéskészítéshez állapot gondos kezelése. A figyelő egyes feltételek figyeli, és jelentéseket, csak ha változnak az feltételek. A feje erre a megközelítésre, hogy kevesebb jelentések van szükség. A hátránya, hogy a figyelő logikájának összetett. A figyelő kell tartania a feltételek vagy a jelentésekben, úgy, hogy a módosítások meghatározásához vizsgálható. Feladatátvétel esetén ügyelni kell a jelentések szerepel, de még nem küldte el a health Store adatbázisban való. A szám folyamatosan növekvő konkurenciával kell kell lennie. Ha nem, a jelentések elavult, a rendszer elutasítja. Bizonyos ritkán előforduló esetekben, ahol keletkezett az adatvesztést a riporter állapotát és a health Store adatbázisban állapotát közötti szinkronizálás lehet szükség.
+
+Keresztül, a reporting Services-jelentések átmenetek logikus `Partition` vagy `CodePackageActivationContext`. Ha a helyi objektum (replika vagy a telepített service-csomag / alkalmazás üzembe helyezése) van eltávolítva, az összes kapcsolódó jelentések is törlődnek. Ez az automatikus tisztítás visszaállítja riporter és a health Store adatbázisban közötti szinkronizálás szükséges. Ha a jelentés szülőpartíción vagy a szülő alkalmazás, ügyelni kell a feladatátvételi a health Store adatbázisban elavult jelentések elkerülése érdekében. Logika megfelelő állapotának fenntartásához, és törölje a jelentést a tároló már szükség van hozzá kell adni.
+
+## <a name="implement-health-reporting"></a>Állapotfigyelő jelentési megvalósítása
+Miután az entitás- és a jelentés részletes egyértelmű, rendszerállapot-jelentések küldése végezhető el az API, PowerShell vagy REST.
 
 ### <a name="api"></a>API
-Hogy jelentse az API-n keresztül, létrehozásához szükséges egy jelentés jellemző szeretne jelentést készíteni, entity Type típusként. A jelentésnek a rendszerállapot-ügyfeleknek. Azt is megteheti, hozzon létre egy állapottal kapcsolatos adatok, és adja át a jelentéskészítési módszert megoldására `Partition` vagy `CodePackageActivationContext` aktuális entitások jelentést.
+Jelentés az API-n keresztül, szüksége, hogy szeretne jelentést készíteni az entitástípus adott egészségügyi jelentés létrehozása. A jelentés egy állapotfigyelő ügyfél biztosít. Azt is megteheti, hozzon létre egy egészségügyi információk, és adja át azt a jelentéskészítési módszert megoldására `Partition` vagy `CodePackageActivationContext` a jelentés az aktuális entitást.
 
-A következő példa bemutatja a figyelő a fürtön belül jelentések rendszeres. A figyelő ellenőrzi, hogy egy külső forrásból elérhető csomóponton belül. Az erőforrás által a szolgáltatás jegyzék az alkalmazáson belül van szükség. Ha az erőforrás nem érhető el, egyéb szolgáltatásokat az alkalmazásban továbbra is megfelelően működjön. Ezért a jelentés a telepített service-csomag entitás zajlik 30 másodpercenként.
+Az alábbi példa bemutatja a fürtön belül a figyelő a jelentési rendszeres. A figyelő ellenőrzi, hogy egy külső erőforrás elérhető egy csomóponton belül. Az erőforrás a szolgáltatásjegyzék az alkalmazáson belül van szükség. Az erőforrás nem érhető el, ha az alkalmazás egyéb szolgáltatásai is továbbra is megfelelően fog működni. Ezért a jelentés a telepített szolgáltatások csomag entitáson zajlik Ez lehet 30 másodperc.
 
 ```csharp
 private static Uri ApplicationName = new Uri("fabric:/WordCount");
@@ -217,7 +217,7 @@ public static void SendReport(object obj)
 ### <a name="powershell"></a>PowerShell
 A rendszerállapot-jelentések küldése **küldési-ServiceFabric*EntityType*HealthReport**.
 
-A következő példa bemutatja rendszeres jelentés készítését a csomópont CPU-értékek. A jelentések küldjön 30 másodpercenként, és egyszerre élettartama pedig két perc rendelkeznek. Járnak, ha a jelentéskészítő problematikus, hiba: a csomópont kiértékelése történik. Ha a CPU küszöbértéket, a jelentésben van figyelmeztetési állapotot. Ha a CPU-t továbbra is a küszöbérték fölött hibát jelentett több, mint a beállított időn. Ellenkező esetben a jelentéskészítő elküldi a állapota az OK gombra.
+Az alábbi példában látható rendszeres jelentés készítését a CPU-értékeket egy csomóponton. A jelentéseket kell küldeni 30 másodpercenként, és két perc élettartamot rendelkeznek. Jár le, ha a jelentéskészítő veti fel, így hiba: a csomópontot abban az esetben. A Processzor-küszöbérték felett van, ha a jelentésnek figyelmeztetés állapotba. A Processzor a küszöbérték felett marad, több, mint a beállított időn, amikor azt hibát jelentett. Ellenkező esetben a riporter küld egy állapota OK.
 
 ```powershell
 PS C:\> Send-ServiceFabricNodeHealthReport -NodeName Node.1 -HealthState Warning -SourceId PowershellWatcher -HealthProperty CPU -Description "CPU is above 80% threshold" -TimeToLiveSec 120
@@ -254,7 +254,7 @@ HealthEvents          :
                         Transitions           : ->Warning = 4/21/2015 9:01:21 PM
 ```
 
-Az alábbi példa hiányára átmeneti replikán. Az első lekérdezi a Partícióazonosító és másodpéldány-azonosító iránt érdeklődik, a szolgáltatás. Ezután elküldi a jelentést a **PowershellWatcher** tulajdonság **ResourceDependency**. A jelentés egyik fontos csak két percig, és a rendszer eltávolítja az áruház automatikusan.
+Az alábbi példa egy replikát egy átmeneti figyelmeztetési jelentések. Először lekéri a Partícióazonosító és a másodpéldány-azonosító van érdekelné a szolgáltatáshoz. Ezután elküldi a jelentéseket a **PowershellWatcher** tulajdonság **ResourceDependency**. A jelentés a lényeges csak két percig, és a rendszer eltávolítja a tároló automatikusan.
 
 ```powershell
 PS C:\> $partitionId = (Get-ServiceFabricPartition -ServiceName fabric:/WordCount/WordCount.Service).PartitionId
@@ -299,20 +299,20 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-Nyissa meg a kívánt entitáshoz és a rendszerállapot-jelentés leírása a szervezet rendelkezik POST kérelmek használatával REST állapotjelentések küldése. Például tekintse meg a többi küldése [állapotjelentések fürt](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) vagy [állapotjelentések szolgáltatás](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Minden entitások támogatottak.
+A POST kérelmeket, nyissa meg a kívánt entitásra, és a szervezet rendelkezik az egészségügyi jelentés leírása REST használatával rendszerállapot-jelentések küldése. Például megtudhatja, hogyan küldhet REST [rendszerállapot-jelentések fürt](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) vagy [rendszerállapot-jelentések szolgáltatás](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Minden entitás támogatottak.
 
 ## <a name="next-steps"></a>További lépések
-A rendszerállapot-adatok alapján, szolgáltatás írók és a fürt/rendszergazdái is gondolja, hogy többféleképpen felhasználhatják az információkat. Például azok állíthat be riasztásokat állapot alapján komoly problémát catch ahhoz, azok kiváltó kimaradások esetén. Rendszergazdák is beállíthatnak javítási rendszerek automatikusan problémáinak megoldásával kapcsolatban.
+Az egészségügyi adatok alapján, szolgáltatás írók és a fürt/alkalmazás-rendszergazdák is felfoghatók módon fogyasztanak az információkat. Például azok állíthat be riasztásokat állapota alapján olvasásra súlyos problémákat, mielőtt azok valamilyen okból kimaradás lép kiváltó. A rendszergazdák is állíthat be javítási rendszerek automatikusan megoldhatja a problémákat.
 
 [Bevezetés a Service Fabric állapotának figyelése](service-fabric-health-introduction.md)
 
-[A Service Fabric rendszerállapot-jelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
+[A Service Fabric-állapotjelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
-[Jelentés és a szolgáltatás állapotának ellenőrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+[Hogyan lehet szolgáltatási állapot jelentése és ellenőrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
-[Rendszerállapot-jelentések használata a hibaelhárításhoz](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+[Hibaelhárítás rendszerállapot-jelentések használata](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
-[Figyelése és diagnosztizálása helyileg szolgáltatások](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+[A szolgáltatások helyi monitorozása és diagnosztizálása](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-[A Service Fabric-alkalmazás frissítése](service-fabric-application-upgrade.md)
+[Service Fabric-alkalmazás frissítése](service-fabric-application-upgrade.md)
 

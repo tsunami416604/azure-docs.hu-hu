@@ -8,7 +8,7 @@ manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 368fbf52642b1353b221ce6ebe6f6c40a517c3e6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 245e3d32bc546ae6f725ac6f7eb549d77119c956
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473418"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191516"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Speciális tanúsítvány-aláírási beállítások katalógusbeli alkalmazásokat az Azure Active Directory a SAML-jogkivonat
 Még ma az Azure Active Directory (Azure AD) több ezer előre integrált alkalmazás támogatja az Azure Active Directory-alkalmazás gyűjtemény. Ez a szám, amely támogatja az egyszeri bejelentkezéshez a SAML 2.0 protokoll használatával több mint 500 alkalmazásokat tartalmaz. Amikor egy felhasználó egy alkalmazást az Azure AD-n keresztül SAML használatával hitelesíti magát, az Azure AD egy tokent az alkalmazást (egy HTTP POST) küld. Ezt követően az alkalmazás ellenőrzi, és jelentkezzen be a felhasználó nem egy felhasználónevet és jelszót kér a jogkivonat alapján. Ezek a SAML-jogkivonatok van bejelentkezve az Azure AD-ben és a standard algoritmusok által létrehozott egyedi tanúsítvánnyal.

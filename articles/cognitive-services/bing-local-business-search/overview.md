@@ -1,21 +1,21 @@
 ---
-title: Mi az a helyi vállalati keresési Bing-API? | Microsoft Docs
+title: Mi az a Bing Local Business Search API? | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: A helyi vállalati keresési Bing-API egy RESTful szolgáltatás, amely lehetővé teszi az alkalmazások helyi helyek és a keresési lekérdezések alapján vállalkozások információ.
+description: A Bing Local Business Search API egy RESTful szolgáltatás, amellyel az alkalmazások a közeli helyekkel és vállalkozásokkal kapcsolatos információkat találhatnak keresési lekérdezések alapján.
 services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: f6299a8241b4ce43dc9276070f06ae4cc6566d43
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: fd57c344c640974e9c73156902848fb1685861f2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748674"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163143"
 ---
 # <a name="what-is-bing-local-business-search"></a>Mi az helyi vállalati keresési Bing?
 A helyi vállalati keresési Bing-API egy RESTful szolgáltatás, amely lehetővé teszi az alkalmazások helyi üzletek keresési lekérdezések alapján információ. Ha például `q=<business-name> in Redmond, Washington`, vagy `q=Italian restaurants near me`. 

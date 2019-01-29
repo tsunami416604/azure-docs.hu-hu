@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Ivanti Service Manager (ISM) |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció Ivanti Service Manager (ISM) |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Ivanti Service Manager (ISM) között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 14297c74-0d57-4146-97fa-7a055fb73057
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 3b394ff8e3638a9663e756fd6db866b0c3e5d2ef
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 7a125ea70a891d8db0ec652844a99153f19253bd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52449939"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150291"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Oktatóanyag: Azure Active Directory-integráció Ivanti Service Manager (ISM)
+# <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Oktatóanyag: Az Azure Active Directory-integráció Ivanti Service Manager (ISM)
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Ivanti Service Manager (ISM) integrálása az Azure Active Directory (Azure AD).
 
@@ -112,7 +112,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 4. Az a **alapszintű SAML-konfigurációja** szakaszban, a következő lépésekkel, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
-    ![Ivanti Service Manager (ISM) tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-url.png)
+    ![Ivanti Service Manager (ISM) Domain and URLs single sign-on information](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-url.png)
 
     a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
     | |
@@ -125,7 +125,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Ivanti Service Manager (ISM) tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-url1.png)
+    ![Ivanti Service Manager (ISM) Domain and URLs single sign-on information](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-url1.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<customer>.saasit.com/`
 
@@ -144,7 +144,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     c. Kijelentkezési URL
 
-    ![Ivanti Service Manager (ISM) konfigurálása](common/configuresection.png)
+    ![Ivanti Service Manager (ISM) Configuration](common/configuresection.png)
 
 8. Az egyszeri bejelentkezés konfigurálása **Ivanti Service Manager (ISM)** oldalon kell küldenie a letöltött **tanúsítvány (Raw)**, és a másolt **bejelentkezési URL-cím**,  **Az Azure AD-azonosító**, **kijelentkezési URL-címe** való [Ivanti Service Manager (ISM) támogatási csapatának](https://www.ivanti.com/support/contact). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 

@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: e69f6869911555730fe723b340e224c0d5a1e4bb
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2077978ac9353531d10359edf396e4426e9d6988
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536049"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104430"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra
 
@@ -68,7 +68,7 @@ Vegyük részletesebben megismerni a felügyelt példány kapcsolati architektú
 
 ![kapcsolati architektúra diagramja virtuális fürt](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Felügyelt példányhoz az állomásnevet, amely rendelkezik egy űrlapot az ügyfelek csatlakoznak `<mi_name>.<dns_zone>.database.windows.net`. Az állomásnév feloldása egy olyan magánhálózati IP-cím, bár regisztrálva van a nyilvános DNS-zóna és nyilvánosan feloldható. A `zone-id` automatikusan létrejön, amikor létrehozza a fürtöt. Egy újonnan létrehozott fürt másodlagos felügyelt példány üzemelteti, ha a zóna azonosítójával megosztja az elsődleges fürt. További információkért lásd: [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)
+Felügyelt példányhoz az állomásnevet, amely rendelkezik egy űrlapot az ügyfelek csatlakoznak `<mi_name>.<dns_zone>.database.windows.net`. Az állomásnév feloldása egy olyan magánhálózati IP-cím, bár regisztrálva van a nyilvános DNS-zóna és nyilvánosan feloldható. A `zone-id` automatikusan létrejön, amikor létrehozza a fürtöt. Egy újonnan létrehozott fürt másodlagos felügyelt példány üzemelteti, ha a zóna Azonosítójával megosztja az elsődleges fürt. További információkért lásd: [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)
 
 A magánhálózati IP-cím tartozik, hogy a felügyelt példány belső Load Balancer (ILB), amely irányítja a forgalmat, a felügyelt példány átjáró (GW). Több felügyelt példány sikerült potenciálisan futtatásakor ugyanazon a fürtön belül GW irányítsa át a forgalmat a megfelelő SQL-kezelő szolgáltatás felügyelt példány állomásnevet használja.
 
@@ -78,7 +78,7 @@ Felügyelet és a központi telepítési szolgáltatások csatlakozhat a felügy
 
 Az Azure SQL Database felügyelt példánya virtuális fürt, amely a felügyelt példány kezeléséhez használja a Microsoft felügyeleti végpontot tartalmaz. A hálózati szintű és kölcsönös tanúsítvány-ellenőrzés az alkalmazás szintjén beépített tűzfal védi a felügyeleti végponthoz. Is [felügyeleti végpont IP-címének](sql-database-managed-instance-find-management-endpoint-ip-address.md).
 
-Kapcsolat kezdeményezése a felügyelt példány (a biztonsági mentés, a napló) belül jelenik meg, hogy a forgalom származik az felügyeleti végpont nyilvános IP-címét. A felügyelt példány nyilvános szolgáltatásokhoz való hozzáférés sikerült korlátozza tűzfalszabályokat, hogy csak a felügyelt példány IP-cím engedélyezése beállítást. Található információ segítségével módszert mor einformation [ellenőrizze a felügyelt példány beépített tűzfal](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+Kapcsolat kezdeményezése a felügyelt példány (a biztonsági mentés, a napló) belül jelenik meg, hogy a forgalom származik az felügyeleti végpont nyilvános IP-címét. A felügyelt példány nyilvános szolgáltatásokhoz való hozzáférés sikerült korlátozza tűzfalszabályokat, hogy csak a felügyelt példány IP-cím engedélyezése beállítást. További információ segítségével módszert [ellenőrizze a felügyelt példány beépített tűzfal](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
 > [!NOTE]
 > Ez nem vonatkozik a tűzfalszabályok az Azure-szolgáltatásokhoz, amelyek a felügyelt példány ugyanabban a régióban, mivel az Azure-platform-optimalizálást a szolgáltatásokat, amelyek közös elhelyezésű közötti forgalmat a beállítást.
@@ -108,7 +108,7 @@ Felügyelt példány (a felügyelt példány alhálózatára) dedikált alháló
 
 | Name (Név)       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
-|felügyelet  |80-as, 443-as, 12000|TCP     |Bármelyik              |Bármelyik        |Engedélyezés |
+|felügyelet  |80, 443, 12000|TCP     |Bármelyik              |Internet   |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
 
   > [!Note]

@@ -6,7 +6,7 @@ documentationcenter: na
 author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -14,14 +14,14 @@ ms.workload: na
 ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
-ms.openlocfilehash: 87e197821be7c7c72ca1704d6b0123d76d41b30f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 708ec047a1c9883e34f2e255cd7a0f1237ded2bf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721085"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096874"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: a portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez
+# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az Azure AD-alkalmazás és -erőforrások elérésére képes egyszerű szolgáltatás létrehozása a portál használatával
 
 Ha rendelkezik, amelyet eléréséhez, vagy módosítsa erőforrások, az alkalmazáshoz tartozó identitást hozhat létre. Ezt az identitást szolgáltatásnévnek nevezzük. A szolgáltatásnévnek majd hozzárendelheti a szükséges engedélyekkel. Ez a cikk bemutatja, hogyan az egyszerű szolgáltatás létrehozása a portál használatával. Egy egybérlős alkalmazást, ahol az alkalmazás futtatásához csak egy szervezeten belül célja összpontosít. Általában használnak a egybérlős alkalmazások az üzleti alkalmazások futtatására a szervezeten belül.
 
@@ -50,7 +50,7 @@ Az Azure AD-alkalmazás és egyszerű szolgáltatás létrehozott.
 
 ## <a name="assign-the-application-to-a-role"></a>Alkalmazások szerepkörhöz rendeléséhez
 
-Az előfizetésben lévő erőforrások eléréséhez, hozzá kell rendelnie az alkalmazás egy szerepkörhöz. Döntse el, milyen szerepkört kínál az alkalmazás a megfelelő engedélyekkel. Az elérhető szerepkörök kapcsolatos további információkért lásd: [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md).
+Az előfizetésben lévő erőforrások eléréséhez, hozzá kell rendelnie az alkalmazás egy szerepkörhöz. Döntse el, milyen szerepkört kínál az alkalmazás a megfelelő engedélyekkel. Az elérhető szerepkörök kapcsolatos további információkért lásd: [RBAC: Beépített szerepkörök](../../role-based-access-control/built-in-roles.md).
 
 Beállíthatja a hatókör szintjén is az előfizetés, erőforráscsoport vagy erőforrás. Alacsonyabb szintű hatókör, az engedélyek öröklődnek. Például egy alkalmazás az Olvasó szerepkörhöz, egy erőforráscsoport hozzáadása azt jelenti, hogy azt az erőforráscsoportot és az összes benne található erőforrást olvashatja.
 

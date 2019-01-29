@@ -1,5 +1,5 @@
 ---
-title: Regisztrálja a fejlesztői központ |} Az Azure
+title: Register in Dev Center | Azure
 description: Hogyan kell regisztrálni (Dev Center)-fejlesztői központban.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 393426678d9331837bdc3b73c4e491dbe7eae6fa
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dacc2ca995bebd0ae65d9c8221fc1954687949ee
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834825"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179837"
 ---
 # <a name="register-in-dev-center"></a>A fejlesztői központban regisztrálása  
 Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző személyes fiók, nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenetében.  
@@ -68,7 +68,7 @@ Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző
 
 9.  Az a `Registration - Review` részen tekintse át a fiók adatait, és győződjön meg arról, hogy minden rendben.  
 
-    Olvassa el a feltételeket és kikötéseket, a Microsoft Azure Marketplace kiadókra vonatkozó szerződése.  
+    Olvassa el a használati feltételek a Microsoft Azure Marketplace [kiadókra vonatkozó szerződése](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf).  
 
     Kattintson a jelölőnégyzetre annak jelzésére, hogy elolvasta és elfogadta a.  
     
@@ -103,7 +103,7 @@ Ha problémába ütközik a fejlesztői központ-regisztráció, majd kövesse a
 3.  Elküldi a jegyet, kattintson a Küldés gombra. 
 
 
-## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Probléma: A közzétevő kifizetések banki és adózási adatait hozzáadása  
+## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Probléma: Adja hozzá a közzétevő kifizetések banki és adózási adatait  
 A banki és adózási adatait az ajánlati típus transact használatával minden kereskedelmi ajánlat megadása kötelező.  
 *   A vásárlás kereskedelmi ajánlatokat tesz közzé, ha majd hozzá kell adnia küldenie jóváhagyásra cége kifizetési és adózási adatait, és ellenőrizni a kéréseket a fejlesztői központban.  
     >[!IMPORTANT]
@@ -143,7 +143,7 @@ A banki és adózási adatait az ajánlati típus transact használatával minde
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések: 
 
 *   **Amelyen a kiadók a fejlesztői központ-fiókot regisztrálni kell?** 
-> Közzétevő, aki közzéteszi az ajánlati típus Transact: virtuális gép, az Azure apps: megoldássablonokat, és a felügyelt alkalmazások.  
+> Közzétevő, aki közzéteszi az ajánlati típus Transact: Virtuális gép, az Azure apps: megoldássablonokat, és a felügyelt alkalmazások.  
 
 *   **Miért van szükség fejlesztői központban lévő fiókjához?**
 > Fejlesztői központban lévő fiókjához szükség ahhoz, hogy a Microsoft az ügyfél nevében a közzétevő számlázási ajánlati típus Transact. Fejlesztői központban lévő fiókjához regisztráció lehetővé teszi, hogy a Microsoft ellenőrzése a jogi, adózási és banki információt, a vállalat. További információkért kattintson [itt.](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)
@@ -165,7 +165,7 @@ A banki és adózási adatait az ajánlati típus transact használatával minde
 > Végezze el a [Marketplace regisztrációs](https://azuremarketplace.microsoft.com/en-us/sell/signup) kérésűrlapot Dev Center promóciós kódot.
  
 *   **Mire számíthatok a regisztráció elvégzése után?**
-> Keresse meg az e-mailt verify@microsoft.com tárgysorban a "szükséges művelet: Ellenőrizze az e-mail-fiókjába, a Microsoft". Kattintson a regisztráció befejezéséhez idő-és nagybetűket visszaigazoló hivatkozásra. *Ha még nem kapott belül 24 órában e-mailt, ellenőrizze a Levélszemét mappát.*
+> Keresse meg az e-mailt verify@microsoft.com tárgysorban a "beavatkozás szükséges: Ellenőrizze az e-mail-fiókjába, a Microsoft". Kattintson a regisztráció befejezéséhez idő-és nagybetűket visszaigazoló hivatkozásra. *Ha még nem kapott belül 24 órában e-mailt, ellenőrizze a Levélszemét mappát.*
 
 *   **Mik a következő lépések Dev Center ellenőrzés után?**
 > Lépjen a "Program" (https://developer.microsoft.com/dashboard/Account/Programs) , és jelentkezzen be a fejlesztői központban lévő fiókjához. Ha nem lát Azure regisztrált programként, keresse meg a "Ajánlott programok Ön", és keresse meg az Azure-hoz, jelölje be az "Első lépések."

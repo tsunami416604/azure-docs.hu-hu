@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c51206a7aac2cc6baaf4072c2dbd4ae7c97724e5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 694448f6e3c788c0c9d336e75d5df579b90137df
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884027"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189867"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Egy Linux rendszerű virtuális gépen az Azure-ban a Jenkins, GitHub és Docker-fejlesztési infrastruktúra létrehozása
 
@@ -75,7 +75,7 @@ Mielőtt létrehozhatna egy virtuális gépet, létre kell hoznia egy erőforrá
 az group create --name myResourceGroupJenkins --location eastus
 ```
 
-Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init-jenkins.txt* teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette.
+Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init-jenkins.txt* teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette.
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupJenkins \

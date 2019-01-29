@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Bing Video Search SDK, C#'
+title: 'Gyors útmutató: A Bing Video Aearch SDK-banC#'
 titleSuffix: Azure Cognitive Services
 description: Bing Video Search SDK-konzolalkalmazás beállítása.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/29/2018
 ms.author: rosh
-ms.openlocfilehash: bf8eece4b5afe34635d80a57cc12c26a8ed157d6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 1b73df059f994031536ee8e7c4e42f2126364f3a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314132"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152486"
 ---
-# <a name="quickstart-bing-video-search-sdk-with-c"></a>Rövid útmutató: Bing Video Search SDK C# használatával 
+# <a name="quickstart-bing-video-search-sdk-with-c"></a>Gyors útmutató: Bing – videók keresése SDK-valC# 
 
 A Bing Video Search SDK a REST API funkcióit tartalmazza a webes kérelmekhez és az eredmények elemzéséhez.
 

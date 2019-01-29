@@ -1,25 +1,25 @@
 ---
-title: 'Rövid útmutató: Bing Autosuggest API, PHP'
+title: 'Gyors útmutató: A Bing Autosuggest API-t, PHP'
 titlesuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg a Bing Autosuggest API használatának első lépéseivel.
 services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 837fdfef0df0c8589a7395c49c3b25753039acd8
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
-ms.translationtype: HT
+ms.openlocfilehash: 31a4c2cb0548af0c8ab3c3f6284ef1d61922b97c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831517"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187760"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-php"></a>Rövid útmutató a Bing Autosuggest API és a PHP használatához
 
-Ez a cikk bemutatja, hogyan használhatja a [Bing Autosuggest API-t](https://azure.microsoft.com/services/cognitive-services/autosuggest/) a PHP-val. A Bing Autosuggest API visszaadja a javasolt lekérdezések egy listáját a felhasználó által a keresőmezőben megadott részleges lekérdezési sztring alapján. Általában ezt az API-t hívja meg minden alkalommal, amikor egy felhasználó beír egy új karaktert a keresőmezőbe, majd megjelenít javaslatokat a keresőmező legördülő listájában. Ez a cikk azt mutatja be, hogyan küldhet olyan kérést, amely a *sail* (vitorlázás) kifejezésre visszaadja a javasolt lekérdezési sztringeket.
+Ez a cikk bemutatja, hogyan használható a [a Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) a PHP. A Bing Autosuggest API visszaadja a javasolt lekérdezések egy listáját a felhasználó által a keresőmezőben megadott részleges lekérdezési sztring alapján. Általában ezt az API-t hívja meg minden alkalommal, amikor egy felhasználó beír egy új karaktert a keresőmezőbe, majd megjelenít javaslatokat a keresőmező legördülő listájában. Ez a cikk azt mutatja be, hogyan küldhet olyan kérést, amely a *sail* (vitorlázás) kifejezésre visszaadja a javasolt lekérdezési sztringeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

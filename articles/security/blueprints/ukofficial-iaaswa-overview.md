@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d5b759fcde66a2a9be86cc15cba1ead1765ba248
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 04de32b2df630eea918c786a7f065f404f4d8dca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413396"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164520"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure biztonsági és megfelelőségi terv – a háromrétegű IaaS-webalkalmazás a UK-OFFICIAL
 
@@ -25,7 +25,7 @@ ms.locfileid: "54413396"
 
  A NCSC használatát javasolja azok Felhőbiztonsági irányelveinek ügyfelek általi értékelheti ki a szolgáltatás a biztonsági tulajdonságait, és annak megértésében, az osztálynak a felelős az ügyfél és a szolgáltató között. Megadtuk az egyes ezeket az alapelveket segítenek megérteni a feladatkörök a felosztás az adatokat.
 
- Ez az architektúra és a megfelelő Azure Resource Manager-sablonok a Microsoft tanulmány által támogatott [UK 14 Felhőbeli biztonsági vezérlők használatával a Microsoft Azure felhőalapú](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1). Ez a tanulmány az Azure-szolgáltatások katalógusok összhangba kerüljenek az Egyesült Királyság NCSC 14 Felhőbiztonsági irányelveinek, ezáltal a szervezetek számára a gyorsított képesek kötelezettségeiket megfelelőségi használatával a Microsoft Azure felhőalapú szolgáltatások globális és az Egyesült Királyság felhő.
+ Ez az architektúra és a megfelelő Azure Resource Manager-sablonok a Microsoft tanulmány által támogatott [UK 14 Felhőbeli biztonsági vezérlők használatával a Microsoft Azure felhőalapú](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1). Ez a tanulmány az Azure-szolgáltatások katalógusok összhangba kerüljenek az Egyesült Királyság NCSC 14 Felhőbiztonsági irányelveinek, ezáltal lehetővé teszi a cégeknek a gyorsított képesek kötelezettségeiket megfelelőségi használatával a Microsoft Azure felhőalapú szolgáltatások globális és az Egyesült Királyság felhő.
 
  Ez a sablon üzembe helyezi az a számítási infrastruktúra. Alkalmazáskód és a támogató üzleti szint és az adatok szint szoftvert kell telepíteni és konfigurálni. Részletes üzembe helyezési utasítások [Itt](https://aka.ms/ukwebappblueprintrepo).
 
@@ -129,7 +129,7 @@ Storage
 
 ### <a name="deployment-architecture"></a>Üzembe helyezési architektúra:
 
-**A helyszíni hálózat**: Egy helyi magánhálózat a szervezet implementálva.
+**A helyszíni hálózat**: Egy helyi magánhálózat a vállalatban implementált.
 
 **Éles VNet**: Az üzemi [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview) (virtuális hálózat) futtatja az alkalmazást és egyéb Azure-ban futó operatív erőforrásokat. Minden egyes virtuális hálózatok közötti tartalmazhat több elkülönítése, és a hálózati forgalom kezelésére használt alhálózat.
 
@@ -204,11 +204,11 @@ Ezek a virtuális hálózatok továbbra is külön erőforrásként történik, 
 
 **Kockázatok elkülönítése**: Ez a referenciaarchitektúra elkülöníti a felügyeleti műveleteket és üzleti műveletekhez a virtuális hálózat között. Különálló virtuális hálózatok és alhálózatok lehetővé teszik a forgalom kezeléséhez, többek között a forgalmat bejövő és kimenő korlátozások, a következő hálózati szegmensek közötti NSG-k használatával [Microsoft cloud services és a hálózati biztonsági](https://docs.microsoft.com/azure/best-practices-network-security) ajánlott eljárások.
 
-**Az erőforrás-kezelés**: Azure-erőforrások, például virtuális gépek, virtuális hálózatok és terheléselosztók által erőforráscsoportokba helyezi őket felügyelt [Azure-erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource). Erőforrásszerepkörök szerepköralapú hozzáférés-vezérlés aztán rendelhet az egyes erőforráscsoportokhoz a hozzáférés korlátozása csak a jogosult felhasználók.
+**Az erőforrás-kezelés**: Azure-erőforrások, például virtuális gépek, virtuális hálózatok és terheléselosztók által erőforráscsoportokba helyezi őket felügyelt [Azure-erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Erőforrásszerepkörök szerepköralapú hozzáférés-vezérlés aztán rendelhet az egyes erőforráscsoportokhoz a hozzáférés korlátozása csak a jogosult felhasználók.
 
 **Hozzáférés-vezérlési korlátozásoknak**: Használat [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) felügyelheti az erőforrásokat az alkalmazást a [egyéni szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC fejlesztési és üzemeltetési az egyes rétegekben végrehajtható műveletek korlátozására használható. Engedélyek megadása esetén használja a [elvét](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Naplózzon minden felügyeleti műveletet, és rendszeresen végezzen ellenőrzést. Így meggyőződhet arról, hogy minden konfigurációmódosítás tervezett volt.
 
-**Internet-hozzáférés**: Ez a referenciaarchitektúra használja fel a [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) , az internetkapcsolattal rendelkező átjáró és a load balancer. Egyes ügyfeleink is érdemes megfontolni, harmadik féltől származó hálózati virtuális berendezések használata a hálózati biztonsági alternatívájaként további rétegekre a [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).
+**Internet-hozzáférés**: Ez a referenciaarchitektúra használja [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) , az internetkapcsolattal rendelkező átjáró és a load balancer. Egyes ügyfeleink is érdemes megfontolni, harmadik féltől származó hálózati virtuális berendezések használata a hálózati biztonsági alternatívájaként további rétegekre a [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).
 
 **Azure Security Center**: A [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) biztosít egy helyen jeleníti meg az előfizetés erőforrásainak biztonsági állapotát, és ajánlásokkal segíti a feltört erőforrásokat a megelőzése érdekében. Is használható részletesebb szabályzatok engedélyezéséhez. Ha például a szabályzatok alkalmazhatók adott erőforráscsoportokhoz, amely lehetővé teszi a vállalatok számára, hogy testre szabni a kockázat állapotáról. Javasoljuk, hogy az ügyfelek engedélyezik az Azure Security Center az Azure-előfizetés.
 
@@ -226,7 +226,7 @@ Továbbá a Cloud Security Alliance (CSA) közzététele a felhőalapú vezérl�
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
-Két módszerrel, amely a központi telepítés felhasználók használhatják a tervezet automatizálás telepítése. Az első módszer egy PowerShell-parancsfájlt használja, míg a második módszer használja fel a referenciaarchitektúra üzembe helyezéséhez az Azure Portalon. Részletes üzembe helyezési utasítások [Itt](https://aka.ms/ukofficial-iaaswa-repo).
+Két módszerrel, amely a központi telepítés felhasználók használhatják a tervezet automatizálás telepítése. Az első módszer egy PowerShell-parancsfájlt használja, míg a második módszer használja a referenciaarchitektúra üzembe helyezéséhez az Azure Portalon. Részletes üzembe helyezési utasítások [Itt](https://aka.ms/ukofficial-iaaswa-repo).
 
 ## <a name="disclaimer"></a>Jogi nyilatkozat
 

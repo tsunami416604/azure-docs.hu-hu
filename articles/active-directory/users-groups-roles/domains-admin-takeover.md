@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/14/2019
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.custom: it-pro
-ms.openlocfilehash: 44fe3b54e2dfedb71b50a75befce96121ecebe05
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.custom: it-pro;seo-update-jan
+ms.openlocfilehash: ec1f36bee1a764f98473d7a6d1a6d7359dde9ea7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320242"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156156"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele
 Ez a cikk ismerteti egy DNS-tartománynevet az Azure Active Directoryban (Azure AD) egy nem felügyelt könyvtár átvétele kétféle módon. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló vagy "vírusos" a szolgáltatás regisztrációs kapcsolatos további információkért lásd: [Mi az Azure Active Directory önkiszolgáló regisztráció?](directory-self-service-signup.md)
@@ -131,42 +131,42 @@ A parancsmag | Használat
 ### <a name="powershell-example"></a>PowerShell-példa
 
 1. Csatlakozás az Azure AD önkiszolgáló előfizetésért válaszolni használt hitelesítő adatok használatával:
-  ````
+  ```
     Install-Module -Name MSOnline
     $msolcred = get-credential
     
     connect-msolservice -credential $msolcred
-  ````
+  ```
 2. Tartományok listájának lekérése:
   
-  ````
+  ```
     Get-MsolDomain
-  ````
+  ```
 3. Futtassa a Get-MsolDomainVerificationDns parancsmagot kihívást létrehozásához:
-  ````
+  ```
     Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
   
     For example:
   
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
-  ````
+  ```
 
 4. Ez a parancs által visszaadott értéket (a kihívás) másolja. Példa:
-  ````
+  ```
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
-  ````
+  ```
 5. Hozzon létre egy, az előző lépésben kimásolt értéket tartalmazó DNS txt típusú rekordot a nyilvános DNS-névtérben. Ez a bejegyzés a név a szülőtartomány neve, így a rekord a DNS-szerepkört a Windows Server használatával hoz létre, ha hagyja meg a rekord neve üres, és csak illessze be az értéket a szövegmezőbe.
 6. Futtassa a a kérdés ellenőrzése Confirm-MsolDomain-parancsmagot:
   
-  ````
+  ```
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
-  ````
+  ```
   
   Példa:
   
-  ````
+  ```
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
-  ````
+  ```
 
 Sikeres kihívást visszatér a parancssorba hiba nélkül.
 

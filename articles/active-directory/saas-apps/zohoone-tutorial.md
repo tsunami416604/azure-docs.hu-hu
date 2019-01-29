@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az egyik Zoho |} A Microsoft Docs'
+title: 'Oktatóanyag: Zoho egy az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a egy Zoho között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bbc3038c-0d8b-45dd-9645-368bd3d01a0f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 81e86df270a7286426363c26a0e8a87b99082428
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 22563ec52459d4cd332a6e97df95348a74c3ae16
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438273"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152348"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Oktatóanyag: Azure Active Directory-integráció az Zoho egy
+# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Oktatóanyag: Zoho egy az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja Zoho egy Azure Active Directoryval (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Zoho egy az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Zoho egy egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a Zoho egy konfigurálásához hozzá kell Zoho egy a 
 
 **Adja hozzá a Zoho egy a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -133,7 +133,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
 1. Az a **Zoho egy konfigurációs** területén kattintson **Zoho egy konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![Zoho egy konfiguráció](./media/zohoone-tutorial/tutorial_zohoone_configure.png) 
+    ![Zoho One Configuration](./media/zohoone-tutorial/tutorial_zohoone_configure.png) 
 
 1. Egy másik böngészőablakban jelentkezzen be a Zoho egy vállalati hely rendszergazdaként.
 
@@ -143,7 +143,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Az előugró oldalon hajtsa végre az alábbi lépéseket:
 
-    ![Zoho egy sig](./media/zohoone-tutorial/tutorial_zohoone_save.png)
+    ![Zoho One sig](./media/zohoone-tutorial/tutorial_zohoone_save.png)
 
     a. A a **bejelentkezési URL** szövegmezőjébe illessze be az értéket, **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
 
@@ -159,11 +159,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Nyissa meg a **tartományok** fülre, majd **hozzáadni Domain**.
 
-    ![Zoho egy tartományt](./media/zohoone-tutorial/tutorial_zohoone_domain.png)
+    ![Zoho One domain](./media/zohoone-tutorial/tutorial_zohoone_domain.png)
 
 1. Az a **hozzáadni Domain** lapon, a következő lépésekkel:
 
-    ![Zoho egy tartomány hozzáadása](./media/zohoone-tutorial/tutorial_zohoone_adddomain.png)
+    ![Zoho One add domain](./media/zohoone-tutorial/tutorial_zohoone_adddomain.png)
 
     a. Az a **tartománynév** szövegmező, például típus tartomány **contoso.com**.
 
@@ -214,7 +214,7 @@ Ahhoz, hogy jelentkezzen be a Zoho egy Azure AD-felhasználók, akkor ki kell é
 
 1. Az a **felhasználók** lapra, kattintson a **felhasználói embléma**.
 
-    ![Zoho egy felhasználó](./media/zohoone-tutorial/tutorial_zohoone_users.png)
+    ![Zoho One user](./media/zohoone-tutorial/tutorial_zohoone_users.png)
 
 1. Az a **felhasználó hozzáadása** lapon, a következő lépésekkel:
 
@@ -259,7 +259,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

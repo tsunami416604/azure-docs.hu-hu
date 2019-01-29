@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Bing Entity Search SDK, csomópont'
+title: 'Gyors útmutató: A Bing Entity search SDK-csomópont'
 titleSuffix: Azure Cognitive Services
 description: Az Entity Search SDK konzolalkalmazás csomóponttal beállítása.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: f94e3b5a6070da5ef9510216abd3f52a958030c5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0a61a6b1ada68307af7e7e574cba9910841f5939
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311381"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153011"
 ---
-# <a name="quickstart-bing-entity-search-sdk-with-node"></a>Rövid útmutató: Bing Entity Search SDK csomóponttal
+# <a name="quickstart-bing-entity-search-sdk-with-node"></a>Gyors útmutató: A Bing Entity Search SDK-val csomópont
 
 A Bing Entity Search SDK a REST API funkcióit biztosítja az entitáslekérdezésekhez és az eredmények elemzéséhez. 
 
@@ -50,9 +50,9 @@ entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {
 });
 
 ```
-A kód `result.value` elemeket ír ki a konzolra a szöveg elemzése nélkül.  Az eredmények, ha vannak, kategóriánként a következőket tartalmazzák:
-- _type: 'Thing'
-- _type: 'ImageObject'
+A kód `result.value` elemeket ír ki a konzolra a szöveg elemzése nélkül.  Az eredmények – ha egyáltalán van találat egy kategóriában – a következőket fogják tartalmazni:
+- _type: "Is"
+- _type: "ImageObject"
 
 <!-- Removing until we can replace with a sanitized version.
 ![Entity results](media/entity-search-sdk-node-quickstart-results.png)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: eb020dfd52140375778cf22c6b70e715a7422761
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 71d5b0e8156710e2f82ac76d3187ba1ddba46936
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310249"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151090"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core a Service Fabric Reliable Services
 
@@ -50,7 +50,7 @@ Annak érdekében, hogy a Service Fabric-szolgáltatás és az ASP.NET, a Vendé
 ## <a name="hosting-aspnet-core-in-a-reliable-service"></a>Az ASP.NET Core Reliable Service-ben üzemeltető
 Általában helyi ASP.NET Core-alkalmazások létrehozása a WebHost a belépési pont egy alkalmazás, például a `static void Main()` metódus az `Program.cs`. Ebben az esetben a folyamat élettartama a WebHost életciklusának van kötve.
 
-![Üzemeltetési ASP.NET Core egy folyamatban][0]
+![Hosting ASP.NET Core in a process][0]
 
 A belépési pontja viszont nem a megfelelő hely az hozzon létre egy Webhostot az egy Reliable Service-ben, mert az alkalmazás belépési pont csak szolgál egy bizonyos szolgáltatástípusként a Service Fabric-futtatókörnyezet, regisztrálja, hogy az adott szolgáltatás típusú példányok létrehozhat. A WebHost létre kell hozni egy Reliable Services magát. A szolgáltatás gazdagép folyamaton belül szolgáltatáspéldányok és/vagy a replikák végigveheti több életciklusának. 
 
@@ -63,14 +63,14 @@ A `ICommunicationListener` Kestrel és a HttpSys megvalósítások az `Microsoft
 
 Mindkét kommunikációs figyelőket adjon meg egy konstruktort, amely a következő argumentumot:
  - **`ServiceContext serviceContext`**: A `ServiceContext` objektum, amely a futó szolgáltatással kapcsolatos információkat tartalmazza.
- - **`string endpointName`**: a nevét egy `Endpoint` ServiceManifest.xml a konfigurációt. Ez az elsősorban ahol a két kommunikációs figyelőket eltérőek: HttpSys **igényel** egy `Endpoint` konfigurációs, míg a Kestrel nem.
+ - **`string endpointName`**: a nevét egy `Endpoint` ServiceManifest.xml a konfigurációt. Ez az elsősorban, ahol a két kommunikációs figyelőket eltérőek: HttpSys **igényel** egy `Endpoint` konfigurációs, míg a Kestrel nem.
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: a lambda, amely hoz létre, és visszatérési megvalósító egy `IWebHost`. Ez lehetővé teszi, hogy konfigurálása `IWebHost` azt szokásosan tenné az ASP.NET Core alkalmazás módja. A lambda biztosít egy URL-címnek, ami akkor jön létre, a lehetőségek, attól függően, a Service Fabric-integráció és a `Endpoint` konfigurációs adnia. URL-cím majd lehet módosítani vagy használt –, hogy a webkiszolgáló elindításához.
 
 ## <a name="service-fabric-integration-middleware"></a>A Service Fabric-integráció közbenső
 A `Microsoft.ServiceFabric.AspNetCore` NuGet-csomag tartalmazza a `UseServiceFabricIntegration` metódust a `IWebHostBuilder` , amely hozzáadja a Service Fabric-kompatibilis közbenső szoftverek. A közbenső szoftver konfigurálja a Kestrel vagy HttpSys `ICommunicationListener` egy egyedi URL-címe Regisztrálás a Service Fabric elnevezési szolgáltatásban, majd összeveti az ügyfélkérelmek annak biztosítása érdekében az ügyfelek csatlakoznak a megfelelő szolgáltatást. Erre azért szükség, például a Service Fabric, ahol több webalkalmazás az azonos fizikai vagy virtuális gépen futtatható, de ne használjon egyedi állomásnevek, hogy megakadályozza a véletlenül a nem megfelelő szolgáltatáshoz való csatlakozás megosztott gazdagép környezetben. Ebben a forgatókönyvben a következő szakaszban részletesen ismertetjük.
 
 ### <a name="a-case-of-mistaken-identity"></a>Egy esetet, tehát a helytelen identitás
-Szolgáltatás replikákat, függetlenül attól, protokoll, egyedi IP:port együttes figyelése. Replika szolgáltatás megkezdte a figyelést IP:port a végpont, miután a végpont címe és jelentéseket küldeni a Service Fabric elnevezési szolgáltatásban, azt könnyen megtalálhatók legyenek az ügyfelek vagy más szolgáltatások. Szolgáltatások dinamikusan hozzárendelt alkalmazás portok használatára, ha a szolgáltatás replika webkiszolgálóikat felhasználhatja az egyazon IP:port végpont egy másik szolgáltatás, amely korábban az azonos fizikai vagy virtuális gépen. Ez okozhat mistakely ügyfél csatlakozik a megfelelő szolgáltatást. Ez akkor fordulhat elő, ha a következő eseményekre kerül sor:
+Szolgáltatás replikákat, függetlenül attól, protokoll, egyedi IP:port együttes figyelése. Replika szolgáltatás megkezdte a figyelést IP:port a végpont, miután a végpont címe és jelentéseket küldeni a Service Fabric elnevezési szolgáltatásban, azt könnyen megtalálhatók legyenek az ügyfelek vagy más szolgáltatások. Szolgáltatások dinamikusan hozzárendelt alkalmazás portok használatára, ha a szolgáltatás replika webkiszolgálóikat felhasználhatja az egyazon IP:port végpont egy másik szolgáltatás, amely korábban az azonos fizikai vagy virtuális gépen. Emiatt egy ügyfél véletlenül szolgáltatáshoz való csatlakozáshoz a nem megfelelő. Ez akkor fordulhat elő, ha a következő eseményekre kerül sor:
 
  1. A szolgáltatás a 10.0.0.1:30000 figyeli, HTTP protokollon keresztül. 
  2. Oldja fel a szolgáltatás egy ügyfél és a cím 10.0.0.1:30000 beolvasása

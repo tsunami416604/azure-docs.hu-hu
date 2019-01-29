@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: 8d5e3060d31a260ddba2e7b23d468568ea9569c0
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: c3b30085e1036e49706d73fd68b80221e5177d03
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078032"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095736"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>A Machine Learning-integráció a Stream Analytics
 Stream Analytics támogatja a felhasználó által definiált függvények, melyek az Azure Machine Learning-végpontokra irányuló. Ez a szolgáltatás REST API-támogatása részleteit a a [Stream Analytics REST API-könyvtár](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ez a cikk nyújt kiegészítő információkat, amelyeket ez a funkció a Stream Analytics sikeres megvalósítását. Oktatóanyag is közzé lett téve, és elérhető [Itt](stream-analytics-machine-learning-integration-tutorial.md).
@@ -44,9 +44,9 @@ REST API-k használatával konfigurálhatja a feladatot az Azure gépi nyelvére
 ## <a name="creating-a-udf-with-basic-properties"></a>Egy UDF alapvető tulajdonságok létrehozása
 Tegyük fel, az alábbi példakód létrehoz egy skaláris elnevezésű UDF *newudf* , amely összekapcsolja az Azure Machine Learning-végpont. Vegye figyelembe, hogy a *végpont* (szolgáltatás-URI) a kiválasztott szolgáltatás az API help oldalon található, és a *apikey tulajdonsággal végzett tesztelése* szolgáltatások fő lapján találhatók.
 
-````
+```
     PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
-````
+```
 
 A példában a kérés törzse:
 
@@ -71,9 +71,9 @@ A példában a kérés törzse:
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Alapértelmezett UDF RetrieveDefaultDefinition végpont meghívása
 A vázban UDF létrehozása után az UDF teljes definíciója van szükség. A RetrieveDefaultDefinition végpont segít a skaláris függvény, amely egy Azure Machine Learning-végpont van kötve az alapértelmezett definíció lekérése. Az alábbi hasznos megköveteli, hogy az alapértelmezett skaláris függvény, amely egy Azure Machine Learning-végpont van kötve az UDF-definíció lekérése. Ez nem adja meg a tényleges végpontnak ahogy azt már megadott PUT kérelem során. Stream Analytics meghívja a végpont, ha explicit módon van megadva a kérelemben megadott. Ellenkező esetben az eredetileg hivatkozott egy használ. Itt a UDF beolvassa egy karakterlánc-paramétert (egy mondatnál), és adja vissza, egyetlen kimeneti típusú karakterlánc, ami azt jelenti, hogy a "vélemények" címkét a mondat helyett szerepel.
 
-````
+```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
-````
+```
 
 A példában a kérés törzse:
 
@@ -130,9 +130,9 @@ A minta kimeneti e keresse meg valami szeretné alatt.
 ## <a name="patch-udf-with-the-response"></a>A válasz javítás UDF-ben
 Most már az UDF kell javítható az előző válaszban kapott, az alább látható módon.
 
-````
+```
 PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
-````
+```
 
 A kérelem törzsében (RetrieveDefaultDefinition kimenete):
 

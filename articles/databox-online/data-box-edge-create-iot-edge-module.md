@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 8d4a99ab9d8107f1b3fbe70f59299f427bc88bd5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 86eec87d0c466b9172834fa9dbe7dfcb3702ea55
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465889"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094104"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>A Data Box Edge (előzetes verzió) fájlok áthelyezése egy C# IoT Edge-modul fejlesztése
 
@@ -48,7 +48,7 @@ Ha a fájlt a cloud-megosztásban, azt automatikusan lekérdezi feltöltve az Az
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik:
+Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 - Data Box peremhálózati eszköz, hogy fut-e.
 
@@ -97,8 +97,8 @@ Az alábbi lépéseket hozzon létre egy IoT Edge modul a projektet, a .NET Core
 Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
 1. Válassza ki a Visual Studio Code- **Nézet > Parancskatalógus** a VS Code parancskatalógus megnyitásához.
-2. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot, és az utasításokat követve jelentkezzen be az Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
-3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához:
+2. A parancskatalógus, adja meg, és futtassa a parancsot **Azure: Jelentkezzen be a** , és kövesse az utasításokat követve jelentkezzen be az Azure-fiókjával. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
+3. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: Új IoT Edge-megoldás**. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához:
 
     1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni.
     2. Adja meg a megoldás nevét, vagy fogadja el az alapértelmezett **EdgeSolution** nevet.
@@ -143,7 +143,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
             static int counter;
             private const string InputFolderPath = "/home/LocalShare";
             private const string OutputFolderPath = "/home/CloudShare";
-    ````
+    ```
 
     > [!IMPORTANT]
     > Jegyezze fel a `InputFolderPath` és a `OutputFolderPath`. Adja meg az elérési utak, ez a modul telepítésekor kell.
@@ -269,7 +269,7 @@ Az előző szakaszban létrehozott egy IoT Edge-megoldás, és a fájlok másol�
 
     A következő figyelmeztetés, amely figyelmen kívül hagyhatja jelenhetnek meg:
 
-    *Program.cs(77,44): CS1998 figyelmeztetés: az async módszert hiányzik "await" operátorok és szinkron módon fog futni. Fontolja meg az "await" operátor nem blokkoló API-hívások await, vagy 'await Task.Run(...)' ezt a háttérbeli szálon processzorigénye munkát.*
+    *Program.cs(77,44): figyelmeztetés CS1998: Ez a metódus aszinkron await"operátorok nem rendelkezik, és szinkron módon fog működni. Fontolja meg az "await" operátor nem blokkoló API-hívások await, vagy 'await Task.Run(...)' ezt a háttérbeli szálon processzorigénye munkát.*
 
 4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A rendszerkép címét, amely formátumban a module.json fájlban található információk alapján készült `<repository>:<version>-<platform>`. Ebben a cikkben hasonlóan kell kinéznie `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
 

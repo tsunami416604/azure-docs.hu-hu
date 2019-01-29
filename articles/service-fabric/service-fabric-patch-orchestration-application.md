@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 7b19aa42c669fec5872e210351ecec22360ef24e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 43133a1666dc3551e0f935ceb2af4cf1297d44a7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427933"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155306"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
 
@@ -143,9 +143,6 @@ Telepítési parancsfájlok mellett alkalmazást is letölthető [archív hivatk
 
 Alkalmazás sfpkg formátumban letölthető [sfpkg hivatkozás](https://aka.ms/POA/POA.sfpkg). Ez hasznos tartalmaz [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
 
-> [!IMPORTANT]
-> A Patch Orchestration Application (legújabb) v1.3.0 egy ismert probléma, a Windows Server 2012 rendszert futtató rendelkezik. Ha futtatja a Windows Server 2012, töltse le az alkalmazás v1.2.2 [Itt](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.zip). SFPkg hivatkozás [Itt](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.sfpkg).
-
 ## <a name="configure-the-app"></a>Az alkalmazás konfigurálása
 
 A patch orchestration app viselkedését konfigurálhatja az igényeinek. Alkalmazás létrehozása vagy módosítása során az alkalmazás paraméter megadásával bírálja felül az alapértelmezett értékeket. Alkalmazás paraméterek megadásával adható meg `ApplicationParameter` , a `Start-ServiceFabricApplicationUpgrade` vagy `New-ServiceFabricApplication` parancsmagok.
@@ -156,7 +153,7 @@ A patch orchestration app viselkedését konfigurálhatja az igényeinek. Alkalm
 |TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a szabályzatot, amely a Windows-frissítések telepítése a Service Fabric-fürt csomópontjain a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. Windows Update telepítve egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update egyszerre több frissítési tartományt telepítve. (A maximumot, a frissítési tartományokhoz tartozó összes csomópontját meg a Windows Update.)<br> Tekintse meg [– gyakori kérdések](#frequently-asked-questions) szakasz útmutatást a fürt számára leginkább alkalmas házirend kiválasztásában.
 |LogsDiskQuotaInMB   |Hosszú  <br> (Alapértelmezett: 1024)               |Patch orchestration alkalmazás maximális mérete (MB), amely megőrizhetők a csomópontok helyi naplózza.
 | WUQuery               | sztring<br>(Alapértelmezett: "IsInstalled = 0")                | Windows-frissítések lekérdezése. További információkért lásd: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Logikai <br> (alapértelmezett: igaz)                 | Használja ezt a jelzőt, hogy mely frissítések letölti és telepíti. Következő értékek használata engedélyezett <br>Igaz - telepítése csak a Windows operációs rendszer frissítéseit.<br>hamis – a gép a rendelkezésre álló frissítéseket telepíti.          |
+| InstallWindowsOSOnlyUpdates | Logikai <br> (alapértelmezés: hamis)                 | Használja ezt a jelzőt, hogy mely frissítések letölti és telepíti. Következő értékek használata engedélyezett <br>Igaz - telepítése csak a Windows operációs rendszer frissítéseit.<br>hamis – a gép a rendelkezésre álló frissítéseket telepíti.          |
 | WUOperationTimeOutInMinutes | Int <br>(Alapértelmezett: 90)                   | Megadja azt az időtartamot, bármely Windows-frissítési művelet (keresési vagy letöltése vagy telepítése). A művelet a megadott időkorláton belül nem végzi el, ha megszakadt.       |
 | WURescheduleCount     | Int <br> (Alapértelmezett: 5)                  | Maximális száma a szolgáltatás átütemez a Windows update abban az esetben, ha egy művelet meghiúsul, osztályozását.          |
 | WURescheduleTimeInMinutes | Int <br>(Alapértelmezett: 30) | Az időköz, amelyen a a szolgáltatás a Windows update átütemez, abban az esetben, ha hiba továbbra is fennáll. |
@@ -295,7 +292,7 @@ Az alkalmazás a házirend alapján, vagy egy csomópont is leáll a javítási 
 
 A végén a Windows telepítését, a csomópontok ismét vannak engedélyezve. Indítsa újra közzé.
 
-A következő példában a fürt hiba történt a hibás állapotú ideiglenesen két csomópont volt, mert a megsértette a MaxPercentageUnhealthNodes szabályzatot. A hiba nem átmeneti, amíg folyamatban a javítási művelet.
+A következő példában a fürt hiba történt a hibás állapotú ideiglenesen két csomópont volt, mert a megsértette a MaxPercentageUnhealthyNodes szabályzatot. A hiba nem átmeneti, amíg folyamatban a javítási művelet.
 
 ![Nem megfelelő állapotú-fürt képe](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
@@ -330,7 +327,7 @@ K. **Mennyi ideig tart egy teljes fürtre javítására?**
 A. A teljes fürtöt javítása szükséges idő a következő tényezőktől függ:
 
 - Egy csomópont javítása szükséges idő.
-- A szabályzat a koordinátor szolgáltatást. – Az alapértelmezett házirend `NodeWise`, egyszerre, amelyek alacsonyabb, mint egyetlen csomópont javítás eredményeként `UpgradeDomainWise`. Példa: Ha egy csomópont a javítandó ~ 1 órát vesz igénybe, fenntartani egy 20 csomópontot (a csomópontok ugyanazon típus) javítása a fürt 5 frissítési tartománnyal 4 csomópontot tartalmazó.
+- A szabályzat a koordinátor szolgáltatást. – Az alapértelmezett házirend `NodeWise`, egyszerre, amelyek alacsonyabb, mint egyetlen csomópont javítás eredményeként `UpgradeDomainWise`. Példa: Ha egy csomópont a javítandó ~ 1 órát vesz igénybe, annak érdekében, hogy egy 20 javítására csomópontban (csomópont ugyanolyan típusú) a fürt 5 frissítési tartománnyal 4 csomópontot tartalmazó.
     - Az egész fürt javítására irányuló körülbelül 20 óra múlva szabályzat a `NodeWise`
     - Ha a házirend ~ 5 óra múlva `UpgradeDomainWise`
 - Fürt betöltés – minden javítási műveletet igényel, az ügyfél számítási feladata áthelyezése más elérhető csomópontokhoz a fürtben. Javítás alatt áll csomópont kell, hogy [letiltása](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) állapot ebben az időszakban. Ha a fürt csúcsterhelés között közel fut, a letiltását folyamat hosszabb ideig igénybe. Ezért átfogó a javítási folyamat lassú ilyen teherhordó feltételek jelenhet meg.
@@ -411,3 +408,8 @@ A rendszergazdák beavatkozhat kell, és határozza meg, miért érdemes az alka
 - Az összes elérhető frissítés InstallWindowsOSOnlyUpdates beállítás FALSE mostantól telepíti.
 - Módosult az automatikus frissítések letiltása logikáját. Ez kijavítja a hibát, az automatikus frissítések nem első letiltottuk a Server 2016 vagy újabb.
 - A speciális usecases POA, mind a mikroszolgáltatások paraméteres elhelyezési korlátozás.
+
+### <a name="version-131"></a>1.3.1 verzió
+- Ahol POA 1.3.0 nem fog működni a Windows Server 2012 R2 vagy alacsonyabb, mert hiba történt az automatikus frissítések letiltása a rögzítési regressziós. 
+- Hiba kijavítása, ahol InstallWindowsOSOnlyUpdates konfigurációs mindig ki van TRUE.
+- Változó alapértelmezett értéke InstallWindowsOSOnlyUpdates FALSE.

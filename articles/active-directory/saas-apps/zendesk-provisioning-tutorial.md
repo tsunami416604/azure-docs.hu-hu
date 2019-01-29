@@ -8,19 +8,19 @@ writer: zhchia
 manager: beatrizd-msft
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 7df4cb5e988b4037675d5bf1c45ee103d5939568
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 919c4d3dc08d81fa5fe95a7e63df8d02258aab80
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999322"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194321"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Zendesk konfigurálása
 
@@ -59,13 +59,13 @@ Konfigurálja az Azure AD-felhasználók automatikus Zendesk, mielőtt szükség
 
 4. A Keresés mezőbe írja be a **Zendesk**.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk6.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk6.png)
 
 5. Az eredmények panelen válassza ki a **Zendesk**, majd kattintson a **Hozzáadás** gombra kattintva adhat hozzá a Zendeskhez a SaaS-alkalmazások listájára.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk7.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk7.png)
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk20.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk20.png)
 
 ## <a name="assigning-users-to-zendesk"></a>Felhasználók hozzárendelése Zendesk
 
@@ -98,15 +98,15 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 2. Válassza ki a Zendesk a SaaS-alkalmazások listájában.
  
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk3.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk3.png)
 
 3. Válassza ki a **kiépítési** fülre.
     
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk16.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk16.png)
 
 4. Állítsa be a **Kiépítési mód** való **automatikus**.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk1.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk1.png)
 
 5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **rendszergazdai felhasználónév**, **titkos jogkivonat**, és **tartomány** , a Zendesk-fiókjába. Példák a következő értékek a következők:
 
@@ -123,43 +123,43 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 7. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD képes csatlakozás a Zendeskhez. Ha a kapcsolódás sikertelen, ellenőrizze a Zendesk-fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk19.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk19.png)
     
 8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
 
 10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a Zendeskhez**.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk10.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk10.png)
 
 11. Tekintse át a a Zendeskhez, az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a Zendesk a frissítési műveleteket. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk11.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk11.png)
 
 12. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-csoportok a Zendeskhez**.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk12.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk12.png)
 
 13. Tekintse át a csoportattribútumok szinkronizált Azure AD-ből, a Zendesk a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságait frissítési műveleteket a Zendeskben csoportjai megfelelően szolgálnak. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
 
 14. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 15. Az Azure AD létesítési szolgáltatás a Zendesk engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk14.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk14.png)
 
 16. Határozza meg a felhasználók és/vagy a csoportok, adja meg a Zendeskhez kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk15.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk15.png)
 
 17. Ha készen áll rendelkezésre, kattintson a **mentése**.
 
-    ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk18.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk18.png)
 
 
 Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely a Zendesk-kiszolgáló üzembe helyezése az Azure AD által végrehajtott összes műveletet ismerteti.

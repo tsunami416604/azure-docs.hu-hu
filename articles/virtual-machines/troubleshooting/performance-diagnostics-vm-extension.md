@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7037c0b4c1021ac7b91134fa429a774f600a774f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3430ff2b292a3e5fe675c3a5f332a12a88d4bfbf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194164"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096789"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>A teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény Windows
 
@@ -81,7 +81,7 @@ A következő JSON-ra a séma Azure teljesítménydiagnosztikai Virtuálisgép-b
 |storPortTrace|s|StorPort-nyomkövetés engedélyezése lehetőséget. Érvényes értékek a következők **s** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az üres érték.
 |srNumber|123452016365929|A támogatási jegy száma, ha elérhető. Hagyja meg az értéket, ha üres, ha nem rendelkezik.
 |requestTimeUtc|2017-09-28T22:08:53.736Z|Aktuális dátum és időpont (UTC). Ha a portálon a bővítmény telepítéséhez használ, nem kell ezt az értéket adja meg.
-|resourceId|/Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} /szolgáltatók/ {resourceProviderNamespace} / {resourceType} / {resourceName}|A virtuális gép egyedi azonosítója.
+|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|A virtuális gép egyedi azonosítója.
 |storageAccountName|mystorageaccount|A diagnosztikai naplók és az eredmények tárolásához a tárfiók neve.
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|A tárfiók kulcsa.
 
@@ -123,7 +123,7 @@ Távolítsa el a bővítményt a virtuális gépről, kövesse az alábbi lépé
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 Az Azure virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A JSON-sémájában az előző szakaszban ismertetett Azure Resource Manager-sablon használható. Ez futtatja az Azure teljesítményét diagnosztikai Virtuálisgép-bővítmény egy Azure Resource Manager-sablon telepítése során. Itt látható egy minta sablont:
 
-````
+```
 {
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -207,14 +207,14 @@ Az Azure virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource
     }
   ]
 }
-````
+```
 
 ## <a name="powershell-deployment"></a>PowerShell környezetben végzett telepítés
 A `Set-AzureRmVMExtension` parancs használható egy már meglévő virtuális gépek üzembe helyezéséhez Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény.
 
 PowerShell
 
-````
+```
 $PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z";"resourceId"="VMResourceId" }
 $ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
@@ -227,7 +227,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
     -Location WestUS
-````
+```
 
 ## <a name="information-on-the-data-captured"></a>Információ a rögzített adatokat
 A PerfInsights eszköz különböző naplókat, konfiguráció és diagnosztikai adatokat, attól függően, a választott forgatókönyv gyűjti. További információkért lásd: a [PerfInsights dokumentáció](https://aka.ms/perfinsights).

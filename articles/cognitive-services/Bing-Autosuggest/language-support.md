@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 112c22815903841f3ffb8c78db4f8bffc60cb6b1
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 7caf6a9f6bce90c6ffbaa7fa4040484938d6eafd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829716"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177764"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>A Bing Autosuggest API nyelvéhez és régiójához támogatása
 
@@ -59,7 +59,7 @@ Az alábbi Bing Autosuggest API által támogatott nyelvek listája.
 | spanyol (Argentína)    | `es-AR`          |
 | spanyol (Chile)     | `es-CL`          |
 | spanyol (Mexikó)    | `es-MX`          |
-| Spanyol (Spanyolország)    | `es-ES`          |
+| spanyol (spanyolországi)    | `es-ES`          |
 | spanyol (Egyesült Államok)    | `es-US`          |
 | svéd     | `sv`          |
 | török     | `tr`          |

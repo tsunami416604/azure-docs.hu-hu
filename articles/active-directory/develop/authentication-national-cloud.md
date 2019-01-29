@@ -7,7 +7,7 @@ author: negoe
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 12/20/2018
 ms.author: negoe
 ms.reviewer: negoe,andret,saeeda,CelesteDG
 ms.custom: aaddev
-ms.openlocfilehash: dfca40c14ad0da3a3e3a8a32757ec40ace9acf6a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2130cc4d51965a087ccdbaeb922eda5059ee1c82
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200564"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55091580"
 ---
 # <a name="national-clouds"></a>Országos felhőkörnyezetek
 
@@ -71,7 +71,7 @@ A következő táblázat felsorolja az alap URL-címek nemzeti felhőnként jogk
 >[!NOTE]
 > A [az Azure AD v2.0-engedélyezési]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview) és jogkivonat-végpont csak a globális szolgáltatás érhetők el. Még nem támogatott az országos felhőben üzemelő példányok esetében ez.
 
-## <a name="microsoft-graph-api"></a>A Microsoft Graph API
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 Megtudhatja, hogyan hívhat meg a Microsoft Graph API-k az országos felhőkörnyezet Ugrás [országos felhőben a Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/deployments).
 

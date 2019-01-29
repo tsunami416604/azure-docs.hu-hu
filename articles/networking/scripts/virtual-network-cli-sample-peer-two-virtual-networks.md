@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI parancsfájl minta - társ két virtuális hálózatok |} Microsoft Docs
-description: Az Azure CLI parancsfájl minta - társ két virtuális hálózatok
+title: Az Azure CLI-Példaszkript – társviszony létesítése két virtuális hálózat |} A Microsoft Docs
+description: Az Azure CLI-Példaszkript – társviszony létesítése két virtuális hálózat
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 8ad1e7de85f851b5db6764175bc1136dd19d418d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8d11ad9d2722bb8fc23154509feeca2a293bfa41
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852370"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097996"
 ---
-# <a name="peer-two-virtual-networks"></a>A két partner virtuális hálózatok
+# <a name="peer-two-virtual-networks"></a>Társviszony létesítése két virtuális hálózat
 
-Ezt a parancsfájlt hoz létre, és összeköti a két virtuális hálózatokat az ugyanabban a régióban trhough az Azure-hálózatot. A parancsfájl futtatása után létrehozhat egy társviszony-létesítés virtuális hálózatok között.
+Ez a szkript hoz létre, és két virtuális hálózat ugyanabban a régióban az Azure hálózatán keresztül csatlakozik. A szkript futtatása után társviszonyt fog létesíteni a két virtuális hálózat között.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -45,17 +45,17 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat egy erőforráscsoport, virtuális gép és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az hálózati virtuális hálózat létrehozása](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_create) | Létrehoz egy Azure-beli virtuális hálózat és az alhálózatot. |
-| [az hálózati vnetben társviszony-létesítés létrehozása](https://docs.microsoft.com/cli/azure/network/vnet/peering#az_network_vnet_peering_create) | Létrehozza a társviszony-létesítés virtuális hálózatok között.  |
+| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_create) | Létrehoz egy Azure-beli virtuális hálózatot és alhálózatot. |
+| [az network vnet peering create](https://docs.microsoft.com/cli/azure/network/vnet/peering#az_network_vnet_peering_create) | Társviszonyt létesít két virtuális hálózat között.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További hálózati CLI parancsfájl minták megtalálhatók a [Azure hálózati áttekintés dokumentáció](../cli-samples.md).
+További hálózatkezelési CLI-példaszkripteket az [Azure-hálózatkezelés áttekintő dokumentációjában](../cli-samples.md) találhat.

@@ -6,25 +6,25 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 45b2860b56e79c197d96998350131a142326157a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 397293c17320ef75daa5c31af76d49183b6c435c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902807"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193828"
 ---
 # <a name="journal-entity"></a>Napló entitás
 
 <sub> * A következő attribútumok napló entitás jellemzőek. (Folyó évi = "2") </sub>
 
-Name (Név)    |Leírás                            |Típus       | Műveletek
+Name (Név)    |Leírás                            |Typo       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
-DJN     |Napló normalizált neve                |Sztring     |nincs
-JN      |Napló megjelenített neve                   |Sztring     |Egyenlő
+DJN     |Napló normalizált neve                |Karakterlánc     |nincs
+JN      |Napló megjelenített neve                   |Karakterlánc     |Egyenlő
 Másolat      |Napló idézetet teljes száma           |Int32      |nincs  
 ECC     |Napló becsült idézetet teljes száma |Int32      |nincs

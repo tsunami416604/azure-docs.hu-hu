@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/11/2018
-ms.openlocfilehash: 04a0abd0fba7ec53aebeb481ac80d36653d118b6
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 93249b7d274ce9d7928dfa46eb339da68c92b785
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384938"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163296"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Gyors útmutató: A .NET használata és C# csatlakozhat, és a egy Azure SQL database lekérdezése a Visual studióban
 
@@ -28,8 +28,6 @@ Ez a rövid útmutató bemutatja, hogyan használhatja a [.NET-keretrendszer](ht
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-  
-- A [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md) , hogy a használt számítógép nyilvános IP-címét.
   
 - [A Visual Studio 2017](https://www.visualstudio.com/downloads/) közösségi, Professional vagy Enterprise edition.
 

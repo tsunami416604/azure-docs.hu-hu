@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: c1917375-08aa-445c-a444-e22e23fa19e0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: c727cddf41c269c214b541134cd9f688017ee687
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a68ffb867a738e11c9895416bbdf2009b268c0c6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789721"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155811"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Oktatóanyag: A Tableau Server az Azure Active Directory-integráció
 
@@ -115,7 +115,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     | Attribútum neve | Attribútum értéke | Névtér |
     | ---------------| --------------- | ----------- |   
-    | felhasználónév | User.userPrincipalName | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | felhasználónév | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 

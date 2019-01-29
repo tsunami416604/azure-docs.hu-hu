@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198525"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103428"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>HTTP-fejlécek átfogalmazás az Application Gateway (nyilvános előzetes verzió)
 
@@ -94,8 +94,6 @@ Ez a funkció a következő kiszolgálói változó átírása fejlécek támoga
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | az ügyfél által támogatott rejtjel listáját adja vissza          |
 | ciphers_used               | a létrehozott SSL-kapcsolathoz használt Rejtjelek-karakterláncot ad vissza |
-| client_latitude            | az ország, régió és az városa függően az ügyfél IP-cím meghatározásához |
-| client_longitude           | az ország, régió és az városa függően az ügyfél IP-cím meghatározásához |
 | client_port                | ügyfél-port                                                  |
 | client_tcp_rtt             | információ az ügyfél; TCP-kapcsolat a rendszer támogatja a TCP_INFO szoftvercsatorna-lehetőség érhető el |
 | client_user                | HTTP-hitelesítés használata esetén a felhasználónév a hitelesítéshez megadott |
@@ -109,7 +107,7 @@ Ez a funkció a következő kiszolgálói változó átírása fejlécek támoga
 | request_scheme             | kérelem séma, "http" vagy "https"                            |
 | request_uri                | teljes eredeti kérelem URI-t (argumentumok)                   |
 | sent_bytes                 | egy az ügyfélnek küldött bájtok száma                             |
-| SERVER_PORT                | annak a kiszolgálónak, amely egy kérés elfogadva                 |
+| server_port                | annak a kiszolgálónak, amely egy kérés elfogadva                 |
 | ssl_connection_protocol    | adja vissza egy létrehozott SSL-kapcsolat által használt protokoll        |
 | ssl_enabled                | "a" Ha a kapcsolat működik SSL módban, vagy egyéb üres karakterlánc |
 

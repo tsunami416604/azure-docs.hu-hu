@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az AwardSpring |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AwardSpring |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és AwardSpring között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 2f115be6-4fbe-42aa-9319-7462e7a75736
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
-ms.openlocfilehash: f75c14989b46721e7043c06086cac02222f452a5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d633a9a4d162b921c360572ea8c6a942e4788d54
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431317"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168362"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-awardspring"></a>Oktatóanyag: Azure Active Directory-integráció az AwardSpring
+# <a name="tutorial-azure-active-directory-integration-with-awardspring"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AwardSpring
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan AwardSpring integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 AwardSpring az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy AwardSpring egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a AwardSpring konfigurálásához hozzá kell AwardSpr
 
 **AwardSpring hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -129,10 +129,10 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     | Attribútum neve | Attribútum értéke |
     | ---------------| --------------- |    
-    | Utónév | User.givenName |
-    | Vezetéknév | User.surname |
+    | Utónév | user.givenname |
+    | Vezetéknév | user.surname |
     | E-mail | user.mail |
-    | Felhasználónév | User.userprinicipalname |
+    | Felhasználónév | user.userprinicipalname |
     | StudentID | < Tanulói azonosítója > |
 
     > [!NOTE]
@@ -199,7 +199,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja AwardSpring Britta Simon nevű felhasználó létrehozásához. AwardSpring támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az AwardSpring elérésére, ha még nem létezik tett kísérlet során.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [AwardSpring támogatási csapatának](maito:support@awardspring.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [AwardSpring támogatási csapatának](maito:support@awardspring.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -231,7 +231,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -7,7 +7,7 @@ author: kkrishna
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,14 +16,14 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 6321823eed00cffc6565471ec1ba3b4d846cd027
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b44aa35765cba33a85519fcd53f0df365c26be6b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948706"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093416"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Hogyan: alkalmazás-szerepkörök hozzáadása az alkalmazásban, és fogadhatók a jogkivonat
+# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: Alkalmazás-szerepkörök hozzáadása az alkalmazásban, és fogadhatók a jogkivonat
 
 Szerepköralapú hozzáférés-vezérlés (RBAC) az olyan népszerű mechanizmusa kikényszeríteni az alkalmazásokban. RBAC használata esetén a rendszergazda engedélyt ad-szerepkörökhöz, és nem egyéni felhasználókhoz vagy csoportokhoz. A rendszergazda ezután szerepköröket rendelhetnek más felhasználók és csoportok szabályozza, ki férhet hozzá, milyen tartalmakat és funkciókat.
 
@@ -126,4 +126,4 @@ Miután az alkalmazás hozzáadott alkalmazás-szerepkörök, ezek a szerepkör�
 - [Az Azure Active Directory-csoport jogcímek és az alkalmazás-szerepkörök](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
 - [Az Azure Active Directory-manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [AAD-hozzáférési jogkivonatok](access-tokens.md)
-- [AAD-BEN `id_tokens`](id-tokens.md)
+- [AAD `id_tokens`](id-tokens.md)

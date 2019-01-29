@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a0eb3ed26b0e8641cf4e1004c2c162c799dd8999
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8548fe53288b2f9c486c9ccdc42afa08f40b4ae1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463762"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181594"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Hozzon létre, és a Linux rendszerű virtuális gépek az Azure CLI-vel az Azure virtuális hálózatok kezelése
 
@@ -169,7 +169,7 @@ A virtuális gép létrehozásával egy időben létrehozható egy hálózati bi
 
 Bizonyos esetekben érdemes lehet előre létrehozni egy NSG-t, például amikor nem akarjuk, hogy létrejöjjenek alapértelmezett SSH-szabályok, vagy amikor az NSG-t egy alhálózathoz akarjuk csatolni. 
 
-Hozzon létre egy hálózati biztonsági csoportot az [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) paranccsal.
+Hozzon létre egy hálózati biztonsági csoportot az [az network nsg create](/cli/azure/network/nsg) paranccsal.
 
 ```azurecli-interactive 
 az network nsg create --resource-group myRGNetwork --name myBackendNSG

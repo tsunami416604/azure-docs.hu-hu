@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 5f7770d9331df46c16ed7f5e565c781a864bc5e1
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 86fccf71463a2f00b31f5f1e6082db4c404bbf9b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077936"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152197"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Adatok másolása vagy az Azure File Storage az Azure Data Factory használatával
 
@@ -42,8 +42,8 @@ Az Azure File Storage társított szolgáltatás a következő tulajdonságok t�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **FileServer**. | Igen |
-| gazdagép | Itt adhatja meg, az Azure File Storage-végpont `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Igen |
-| felhasználói azonosító | Adja meg a felhasználó elérheti az Azure File Storage mint `"userid": "AZURE\\<storage name>"`. | Igen |
+| gazdagép | Itt adhatja meg, az Azure File Storage-végpont: <br/>– Felhasználói felületén: Adjon meg `\\<storage name>.file.core.windows.net\<file service name>`<br/>-A JSON használatával: `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Igen |
+| felhasználói azonosító | Adja meg a felhasználó elérheti az Azure File Storage mint: <br/>– Felhasználói felületén: Adjon meg `AZURE\<storage name>`<br/>-A JSON használatával: `"userid": "AZURE\\<storage name>"`. | Igen |
 | jelszó | Adja meg a tárelérési kulcs. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nincs forrás, a fogadó Igen |
 

@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Egyoldalas webalkalmazás készítése – Bing Video Search'
+title: 'Oktatóanyag: Egyoldalas webes alkalmazás összeállítása – Bing Videókeresés'
 titlesuffix: Azure Cognitive Services
 description: Forráskód a Bing Video Search API egyoldalas webalkalmazásban való használatát bemutató oktatóanyaghoz.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: rosh
-ms.openlocfilehash: b0856be88382e1bb7a4cc65f5fd05910b814e152
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: b76065d205c4a26d4a129c6c07b009eba61036bd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223287"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185430"
 ---
-# <a name="tutorial-single-page-bing-video-search-app"></a>Oktatóanyag: Egyoldalas Bing Video Search-alkalmazás
+# <a name="tutorial-single-page-bing-video-search-app"></a>Oktatóanyag: Egyoldalas a Bing videók keresése alkalmazás
 
 Ez az [egyoldalas Bing Video Search-alkalmazást bemutató oktatóanyagban](tutorial-bing-video-search-single-page-app.md) ismertetett teljes forráskód. Az alkalmazás futtatásához másolja a forráskódot a Jegyzettömbbe vagy más szövegszerkesztőbe, és mentse `bing.html` néven. Ezután nyissa meg a mentett fájlt a Microsoft Edge-ben vagy más népszerű böngészőben.
 

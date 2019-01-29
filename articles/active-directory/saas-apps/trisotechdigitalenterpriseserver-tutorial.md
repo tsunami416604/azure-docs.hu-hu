@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Trisotech digitális Enterprise Server |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció Trisotech digitális Enterprise-kiszolgálóval |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Trisotech digitális Enterprise Server és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6d54d20c-eca1-4fa6-b56a-4c3ed0593db0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: e36a4be3a95b67c040855171d4b167e495a22496
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e3f90da177f46246d1a7453796b7b9a9c93f4a21
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439626"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193165"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Oktatóanyag: Azure Active Directory-integráció az Trisotech digitális vállalati kiszolgáló
+# <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Oktatóanyag: Az Azure Active Directory integrációja az Trisotech digitális vállalati kiszolgáló
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Trisotech digitális Enterprise Server integrálható az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása Trisotech digitális vállalati kiszolgáló, a következő elemek szükségesek:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Trisotech digitális Enterprise Server egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Trisotech digitális Enterprise Server integrálása az Azure AD beállításáh
 
 **Trisotech digitális vállalati kiszolgáló hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -185,7 +185,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ez a szakasz célja Trisotech digitális Enterprise Server Britta Simon nevű felhasználó létrehozásához. Trisotech digitális Enterprise Server támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó Trisotech digitális vállalati kiszolgáló eléréséhez, ha még nem létezik tett kísérlet során jön létre.
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Trisotech digitális Enterprise Server támogatási csoport](mailto:support@trisotech.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Trisotech digitális Enterprise Server támogatási csoport](mailto:support@trisotech.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -217,7 +217,7 @@ Ebben a szakaszban engedélyezze Britta Simon Trisotech digitális vállalati ki
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

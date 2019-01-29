@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Bing Spell Check API'
+title: 'Gyors útmutató: Bing Spell Check API'
 titlesuffix: Azure Cognitive Services
 description: Bemutatja a Bing Spell Check API használatának első lépéseit.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 4af90c0e1ffd6dbadcb31eb6141bc24f746d01f9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e5fa4db8754924b8c2bacfc8bf624380aae063c2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316412"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55148948"
 ---
-# <a name="quickstart-your-first-spell-check-request"></a>Rövid útmutató: Az első helyesírás-ellenőrzési kérés
+# <a name="quickstart-your-first-spell-check-request"></a>Gyors útmutató: Az első helyesírás-ellenőrzési kérés
 
 A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 

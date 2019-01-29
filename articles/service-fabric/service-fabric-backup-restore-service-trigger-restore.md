@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ad89acb63057ff260332384372bcb7719cc8e4f3
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 1482497f3767e7533d1d56e6eb63e55cdb5c9ebb
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064831"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104643"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Az Azure Service Fabric biztonsági másolat visszaállítása
 
@@ -229,7 +229,7 @@ A visszaállítási kérelem különböző fázisokon halad a következő sorren
     ```
     
 3. **Sikeres**, **hiba**, vagy **időtúllépési**: A kért visszaállítása a következő állapotok valamelyikében lévő elvégezhető. Van az egyes a következő jelentősége, és a válasz részletei:
-    - **Sikeres**: A _sikeres_ állapot visszaállítása egy partíció helyreállt állapotát jelzi. A partíció jelentések _RestoreEpoch_ és _RestordLSN_ állapotok a időpontja (UTC) együtt.
+    - **Sikeres**: A _sikeres_ állapot visszaállítása egy partíció helyreállt állapotát jelzi. A partíció jelentések _RestoredEpoch_ és _RestoredLSN_ állapotok a időpontja (UTC) együtt.
 
         ```
         RestoreState  : Success

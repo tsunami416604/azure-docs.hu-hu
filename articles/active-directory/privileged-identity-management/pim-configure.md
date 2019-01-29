@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.topic: overview
 ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b5848b16624f3b8c307a022b9f79c61910736b83
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b5f1e5838fcf6eeac3b58fb0eef8fe08eb9202d4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433730"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167138"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
@@ -56,8 +56,8 @@ A PIM és a hozzá tartozó dokumentáció jobb megértéséhez, tekintse át az
 
 | Kifejezés vagy fogalom | Szerepkör-hozzárendelés kategória | Leírás |
 | --- | --- | --- |
-| Jogosult | Típus | Szerepkör-hozzárendelés, amelyhez a felhasználót a szerepkör használatához egy vagy több művelet végrehajtásához szükséges. Ha egy felhasználó jogosult szerepkör lett végrehajtva, ez azt jelenti, ha kiemelt feladatait van szükségük a szerepkör aktiválásához. Nincs megadott valaki egy állandó jogosult szerepkör-hozzárendelés és hozzáférési nincs különbség. Az egyetlen különbség, hogy néhány felhasználó nem kell olyan folyamatosan. |
-| aktív | Típus | Szerepkör-hozzárendelés, amelyek nem igényelnek a felhasználót, hogy a szerepkör használatához bármely művelet elvégzésére. A felhasználók hozzárendelve aktívként a szerepkörhöz rendelt jogosultság. |
+| Jogosult | Typo | Szerepkör-hozzárendelés, amelyhez a felhasználót a szerepkör használatához egy vagy több művelet végrehajtásához szükséges. Ha egy felhasználó jogosult szerepkör lett végrehajtva, ez azt jelenti, ha kiemelt feladatait van szükségük a szerepkör aktiválásához. Nincs megadott valaki egy állandó jogosult szerepkör-hozzárendelés és hozzáférési nincs különbség. Az egyetlen különbség, hogy néhány felhasználó nem kell olyan folyamatosan. |
+| aktív | Typo | Szerepkör-hozzárendelés, amelyek nem igényelnek a felhasználót, hogy a szerepkör használatához bármely művelet elvégzésére. A felhasználók hozzárendelve aktívként a szerepkörhöz rendelt jogosultság. |
 | aktiválás |  | Folyamat végrehajtása egy vagy több műveletet, amely a felhasználó nem jogosult a szerepkör használatához. Műveletek tartalmazhat, egy üzleti indoklásának megadása, vagy jóváhagyási kérése a kijelölt jóváhagyókat többtényezős hitelesítés (MFA)-ellenőrzés elvégzése. |
 | Hozzárendelve | Állapot | Aktív szerepkör-hozzárendeléssel rendelkező felhasználóként. |
 | Aktiválva | Állapot | Egy jogosult szerepkör-hozzárendelés rendelkező felhasználóként végrehajtani a műveleteket a szerepkör aktiválását, és most már aktív. |

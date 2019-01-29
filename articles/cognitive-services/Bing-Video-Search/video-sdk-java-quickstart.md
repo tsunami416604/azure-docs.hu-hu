@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Bing Video Search SDK – Java'
+title: 'Gyors útmutató: A Bing Video Search SDK-t, a Java'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan helyezheti üzembe a Bing Video SDK-konzolalkalmazást.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 02/18/2018
 ms.author: rosh
-ms.openlocfilehash: a50771fddc15ab0ec284fa7f42539f1f8dcce40d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 7a388f977092d157867955ff05292888e05053e4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308647"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168700"
 ---
-# <a name="quickstart-bing-video-search-sdk-java"></a>Rövid útmutató: Bing Video Search SDK – Java
+# <a name="quickstart-bing-video-search-sdk-java"></a>Gyors útmutató: A Bing Video Search SDK-Java
 
 A Bing Video Search SDK a REST API funkciót biztosítja a videolekérdezésekhez és az eredmények elemzéséhez.
 

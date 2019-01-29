@@ -1,5 +1,5 @@
 ---
-title: Riasztások kiterjesztése a Log Analyticsből az Azure-ba
+title: Riasztások kiterjesztése a Log Analytics az Azure Government Cloud
 description: Ez a cikk ismerteti az eszközök és az API, amellyel bővítheti riasztások a Log Analytics az Azure Alerts szolgáltatáshoz.
 author: msvijayn
 services: azure-monitor
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: dc8c1733f506870765523b17c1fc3e283ff9cbdb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9d734f74c4e12b369e46c15dcb9d01a8185dddd6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423275"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103377"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Riasztások kiterjesztése a Log Analytics az Azure-riasztások
-A riasztások szolgáltatása az Azure Log Analyticsben váltja fel az Azure-riasztások. Az átállás részeként a riasztásokat, amelyek eredetileg konfigurálták a Log Analytics kiterjesztik az Azure-bA. Ha nem szeretné automatikusan Azure-ba való áthelyezésének várja, is kezdeményezhet a folyamat:
+A riasztások szolgáltatása az OMS-portálon váltja fel az Azure-riasztások Azure Government felhőben. Az átállás részeként a riasztásokat, amelyek eredetileg konfigurálták a Log Analytics kiterjesztik az Azure-bA. Ha nem szeretné automatikusan Azure-ba való áthelyezésének várja, is kezdeményezhet a folyamat:
 
 - Az Operations Management Suite Portalról manuálisan. 
 - Programozott módon az API-val AlertsVersion.  
 
 > [!NOTE]
-> A Microsoft automatikusan kiterjeszti a nyilvános felhő példányát az Azure Alerts szolgáltatáshoz, a Log Analytics létrehozott riasztásokat egy ismétlődő sorozat, amíg befejeződik a 2018. május 14., kezdve. Ha problémába ütközik létrehozása [Műveletcsoportok](../../azure-monitor/platform/action-groups.md), használjon [javítási lépések](alerts-extend-tool.md#troubleshooting) beolvasni a Műveletcsoportok jönnek létre automatikusan. 2018. július 5-ig is használhatja ezeket a lépéseket. *Nem alkalmazható az Azure Government és a Log Analytics szuverén felhő felhasználóinak*. 
+> Microsoft automatikusan kiterjeszti az Azure Government OMS portál példányok az Azure Alerts szolgáltatáshoz, a Log Analytics létrehozott riasztások 2019. március 1., a rendszeres módon indítása. Ha problémába ütközik létrehozása [Műveletcsoportok](../../azure-monitor/platform/action-groups.md), használjon [javítási lépések](alerts-extend-tool.md#troubleshooting) beolvasni a Műveletcsoportok jönnek létre automatikusan. 2019. március 15-ig ezeket a lépéseket használhatja az Azure Government OMS-portálon.
 
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Option 1: Az Operations Management Suite portálján kezdeményez
-Az alábbi lépéseket a munkaterületre vonatkozó riasztások kiterjesztése az Operations Management Suite portálján a ismertetik.  
+Az alábbi lépéseket a munkaterületre vonatkozó riasztások kiterjesztése az Operations Management Suite portálján az Azure Government-felhőbeli a ismertetik.  
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. A Log Analytics-előfizetések ablaktábláján válasszon ki egy munkaterületet, és válassza a **OMS-portálon** csempére.
@@ -213,251 +213,11 @@ Ez a válasz azt jelzi, hogy a riasztásokat az Azure Alerts sikeresen bővülte
 
 ```
 
-
-## <a name="option-3-use-a-custom-powershell-script"></a>3. lehetőség: Egy egyéni PowerShell-szkripttel
- Ha a Microsoft nem sikerült kibővítve a riasztásokat az Operations Management Suite-portálról az Azure-ba, akkor manuálisan tehetik 2018. július 5-ig. A két lehetőség manuális bővítmény terjed ki az előző két szakaszokban.
-
-2018. július 5., után minden riasztás az Operations Management Suite portálon kiterjeszthetők az Azure. Felhasználók, akik nem igénybe a [javasolt szükséges javítási lépések](#troubleshooting) a riasztások kiváltó műveletek vagy hiánya miatt az értesítéseket, anélkül fog kapcsolódó [Műveletcsoportok](../../azure-monitor/platform/action-groups.md). 
-
-Hozhat létre [Műveletcsoportok](../../azure-monitor/platform/action-groups.md) riasztások manuálisan a Log Analyticsben, használja a következő minta parancsfájlt:
-```PowerShell
-########## Input Parameters Begin ###########
-
-
-$subscriptionId = ""
-$resourceGroup = ""
-$workspaceName = "" 
-
-
-########## Input Parameters End ###########
-
-armclient login
-
-try
-{
-    $workspace = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/"$workspaceName"?api-version=2015-03-20 | ConvertFrom-Json
-    $workspaceId = $workspace.properties.customerId
-    $resourceLocation = $workspace.location
-}
-catch
-{
-    "Please enter valid input parameters i.e. Subscription Id, Resource Group and Workspace Name !!"
-    exit
-}
-
-# Get Extend Summary of the Alerts
-"`nGetting Extend Summary of Alerts for the workspace...`n"
-try
-{
-
-    $value = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview
-
-    "Extend preview summary"
-    "=========================`n"
-
-    $value
-
-    $result = $value | ConvertFrom-Json
-}
-catch
-{
-
-    $ErrorMessage = $_.Exception.Message
-    "Error occurred while fetching/parsing Extend summary: $ErrorMessage"
-    exit 
-}
-
-if ($result.version -eq 2)
-{
-    "`nThe alerts in this workspace have already been extended to Azure."
-    exit
-}
-
-$in = Read-Host -Prompt "`nDo you want to continue extending the alerts to Azure? (Y/N)"
-
-if ($in.ToLower() -ne "y")
-{
-    exit
-} 
-
-
-# Check for resource provider registration
-try
-{
-    $val = armclient get subscriptions/$subscriptionId/providers/microsoft.insights/?api-version=2017-05-10 | ConvertFrom-Json
-    if ($val.registrationState -eq "NotRegistered")
-    {
-        $val = armclient post subscriptions/$subscriptionId/providers/microsoft.insights/register/?api-version=2017-05-10
-    }
-}
-catch
-{
-    "`nThe user does not have required access to register the resource provider. Please try with user having Contributor/Owner role in the subscription"
-    exit
-}
-
-$actionGroupsMap = @{}
-try
-{
-    "`nCreating new action groups for alerts extension...`n"
-    foreach ($actionGroup in $result.migrationSummary.actionGroups)
-    {
-        $actionGroupName = $actionGroup.actionGroupName
-        $actions = $actionGroup.actions
-        if ($actionGroupsMap.ContainsKey($actionGroupName))
-        {
-            continue
-        } 
-        
-        # Create action group payload
-        $shortName = $actionGroupName.Substring($actionGroupName.LastIndexOf("AG_"))
-        $properties = @{"groupShortName"= $shortName; "enabled" = $true}
-        $emailReceivers = New-Object Object[] $actions.emailIds.Count
-        $webhookReceivers = New-Object Object[] $actions.webhookActions.Count
-        
-        $count = 0
-        foreach ($email in $actions.emailIds)
-        {
-            $emailReceivers[$count] = @{"name" = "Email$($count+1)"; "emailAddress" = "$email"}
-            $count++
-        }
-
-        $count = 0
-        foreach ($webhook in $actions.webhookActions)
-        {
-            $webhookReceivers[$count] = @{"name" = "$($webhook.name)"; "serviceUri" = "$($webhook.serviceUri)"}
-            $count++
-        }
-
-        $itsmAction = $actions.itsmAction
-        if ($itsmAction.connectionId -ne $null)
-        {
-            $val = @{
-            "name" = "ITSM"
-            "workspaceId" = "$subscriptionId|$workspaceId"
-            "connectionId" = "$($itsmAction.connectionId)"
-            "ticketConfiguration" = $itsmAction.templateInfo
-            "region" = "$resourceLocation"
-            }
-            $properties["itsmReceivers"] = @($val)  
-        }
-
-        $properties["emailReceivers"] = @($emailReceivers)
-        $properties["webhookReceivers"] = @($webhookReceivers)
-        $armPayload = @{"properties" = $properties; "location" = "Global"} | ConvertTo-Json -Compress -Depth 4
-
-    
-        # Azure Resource Manager call to create action group
-        $response = $armPayload | armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroupName/?api-version=2017-04-01
-
-        "Created Action Group with name $actionGroupName" 
-        $actionGroupsMap[$actionGroupName] = $actionGroup.actionGroupResourceId.ToLower()
-        $index++
-    }
-
-    "`nSuccessfully created all action groups!!"
-}
-catch
-{
-    $ErrorMessage = $_.Exception.Message
-
-    #Delete all action groups in case of failure
-    "`nDeleting newly created action groups if any as some error happened..."
-    
-    foreach ($actionGroup in $actionGroupsMap.Keys)
-    {
-        $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
-    }
-
-    "`nError: $ErrorMessage"
-    "`nExiting..."
-    exit
-}
-
-# Update all alerts configuration to the new version
-"`nExtending OMS alerts to Azure...`n"
-
-try
-{
-    $index = 1
-    foreach ($alert in $result.migrationSummary.alerts)
-    {
-        $uri = $alert.alertId + "?api-version=2015-03-20"
-        $config = armclient get $uri | ConvertFrom-Json
-        $aznsNotification = @{
-            "GroupIds" = @($actionGroupsMap[$alert.actionGroupName])
-        }
-        if ($alert.customWebhookPayload)
-        {
-            $aznsNotification.Add("CustomWebhookPayload", $alert.customWebhookPayload)
-        }
-        if ($alert.customEmailSubject)
-        {
-            $aznsNotification.Add("CustomEmailSubject", $alert.customEmailSubject)
-        }      
-
-        # Update alert version
-        $config.properties.Version = 2
-
-        $config.properties | Add-Member -MemberType NoteProperty -Name "AzNsNotification" -Value $aznsNotification
-        $payload = $config | ConvertTo-Json -Depth 4
-        $response = $payload | armclient put $uri
-    
-        "Extended alert with name $($alert.alertName)"
-        $index++
-    }
-}
-catch
-{
-    $ErrorMessage = $_.Exception.Message   
-    if ($index -eq 1)
-    {
-        "`nDeleting all newly created action groups as no alerts got extended..."
-        foreach ($actionGroup in $actionGroupsMap.Keys)
-        {
-            $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
-        }
-        "`nDeleted all action groups."  
-    }
-    
-    "`nError: $ErrorMessage"
-    "`nPlease resolve the issue and try extending again!!"
-    "`nExiting..."
-    exit
-}
-
-"`nSuccessfully extended all OMS alerts to Azure!!" 
-
-# Update version of workspace to indicate extension
-"`nUpdating alert version information in OMS workspace..." 
-
-$response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview&iversion=2"
-
-"`nExtension complete!!"
-```
-
-
-### <a name="about-the-custom-powershell-script"></a>Tudnivalók az egyéni PowerShell-parancsfájl 
-Az alábbiakban látható a szkripttel kapcsolatos fontos információkat:
-- Előfeltétel telepítése [ARMclient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása.
-- A szkript futtatásához egy közreműködői vagy tulajdonosi szerepkörrel kell rendelkeznie az Azure-előfizetésében.
-- Az alábbi paramétereket kell megadnia:
-    - $subscriptionId: Az Azure-előfizetés Azonosítóját az Operations Management Suite Log Analytics-munkaterülethez társítva.
-    - $resourceGroup: Az Azure Operations Management Suite Log Analytics-munkaterülethez tartozó erőforráscsoport.
-    - $workspaceName: Az Operations Management Suite Log Analytics-munkaterület neve.
-
-### <a name="output-of-the-custom-powershell-script"></a>Egyéni PowerShell-parancsprogram kimenetéből
-A parancsfájl részletes, és kiírja a lépéseket, annak futtatása során: 
-- Megjeleníti az összefoglaló, amely a munkaterületen a meglévő Operations Management Suite Log Analytics-riasztások információkat tartalmaz. Az összegzés a hozzájuk rendelt műveleteket kell létrehozni az Azure Műveletcsoportok vonatkozó információkat is tartalmaz. 
-- Lépjen tovább a kiterjesztésű, vagy lépjen ki az összegzés megtekintése után kéri.
-- Lépjen tovább az bővítménnyel, ha új Azure Műveletcsoportok jönnek létre, és minden meglévő riasztás rendelt őket. 
-- A parancsfájl kilép a "Teljes bővítmény!" üzenet megjelenítésével Minden olyan köztes hibák esetén a szkript további hibákat jeleníti meg.
-
 ## <a name="troubleshooting"></a>Hibaelhárítás 
 Riasztások kiterjesztése az a folyamat során problémák megakadályozhatja a rendszer az ehhez szükséges [Műveletcsoportok](../../azure-monitor/platform/action-groups.md). Ezekben az esetekben a fejléc a hibaüzenetet látja a **riasztási** szakasz az Operations Management Suite portálján, vagy a GET hívja az API-nak kész.
 
 > [!IMPORTANT]
-> Ha Azure nyilvános felhő alapú Log Analytics-felhasználók 2018. július 5. előtt nem kell a következő javítási lépéseket, a riasztások az Azure-ban futnak, de nem indulnak el, bármilyen művelet vagy az értesítés. Értesítés küldése riasztások, kell manuálisan szerkessze, és adja hozzá [Műveletcsoportok](../../azure-monitor/platform/action-groups.md), vagy használja az előző [egyéni PowerShell-parancsprogram](#option-3---using-custom-powershell-script).
+> Ha az Azure Government felhőalapú OMS portálon a felhasználóknak nem kell a következő javítási lépéseket 2019. március 15. előtt, a riasztások az Azure-ban futnak, de nem indulnak el, bármilyen művelet vagy az értesítés. Értesítés küldése riasztások, kell manuálisan szerkessze a figyelmeztetési szabályok az Azure-ban, és adja hozzá [Műveletcsoportok](../../azure-monitor/platform/action-groups.md)
 
 Minden egyes hibához szervizelés lépései a következők:
 - **Hiba: Hatókör zár megtalálható előfizetés/erőforráscsoport szintjén az írási műveletek**:   ![Az Operations Management Suite portál riasztási beállítások oldalán kiemelt hatókör zárolási hibaüzenettel képernyőképe](media/alerts-extend-tool/ErrorScopeLock.png)

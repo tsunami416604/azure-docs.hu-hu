@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: f610a221dca296561fefab65a6c40b52a5dd292a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 43992d25590a58b24c48aad8bfbf6f91b17699ee
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275836"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098081"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -78,9 +78,9 @@ Hozzon létre és helyezhet üzembe functions, akkor is szüksége lesz:
 
 A projekt sablont hoz létre egy C#-projektben, telepíti a `Microsoft.NET.Sdk.Functions` NuGet-csomagot, és beállítja a cílové rozhraní. Függvények 1.x célok a .NET-keretrendszer, és a 2.x célok .NET Standard működik. Az új projekt tartalmaz a következő fájlokat:
 
-* **Host.JSON**: a funkciók gazdagép konfigurálását teszi lehetővé. Ezek a beállítások is alkalmazható, ha helyileg és az Azure-ban futó is. További információkért lásd: [host.json referencia](functions-host-json.md).
+* **host.json**: A Functions gazdagép konfigurálását teszi lehetővé. Ezek a beállítások is alkalmazható, ha helyileg és az Azure-ban futó is. További információkért lásd: [host.json referencia](functions-host-json.md).
 
-* **Local.Settings.JSON**: megőrzi a függvények helyi futtatás során használt beállításokat. Az Azure nem használja ezeket a beállításokat, azokat a [Azure Functions Core Tools](functions-run-local.md). Ez a fájl használatával adja meg a funkciók számára szükséges változókat alkalmazás beállításait. Egy új elem hozzáadása a **értékek** tömb minden egyes kapcsolathoz, a functions-kötéseket a projekt által igényelt. További információkért lásd: [helyi beállításfájl](functions-run-local.md#local-settings-file) az Azure Functions Core Tools cikkben.
+* **local.settings.json**: Kezeli a függvények helyi futtatás során használt beállításokat. Az Azure nem használja ezeket a beállításokat, azokat a [Azure Functions Core Tools](functions-run-local.md). Ez a fájl használatával adja meg a funkciók számára szükséges változókat alkalmazás beállításait. Egy új elem hozzáadása a **értékek** tömb minden egyes kapcsolathoz, a functions-kötéseket a projekt által igényelt. További információkért lásd: [helyi beállításfájl](functions-run-local.md#local-settings-file) az Azure Functions Core Tools cikkben.
 
     >[!IMPORTANT]
     >Mivel a local.settings.json fájlban a titkos kulcsokat is tartalmazhatnak, a projekt forrásvezérlőből kell zárni. A **Copy to Output Directory** ezt a fájlt mindig kell beállítása **másolás, ha újabb**. 
@@ -115,7 +115,7 @@ Az előre lefordított függvények a függvény által használt kötéseket ha
 
     Az alábbi C# osztály például alapvető üzenetsor által aktivált függvény jelöli:
 
-    ````csharp
+    ```csharp
     using System;
     using Microsoft.Azure.WebJobs;
     using Microsoft.Azure.WebJobs.Host;
@@ -132,7 +132,7 @@ Az előre lefordított függvények a függvény által használt kötéseket ha
             }
         }
     }
-    ````
+    ```
     A kötés-specifikus attribútum alkalmazza a rendszer minden egyes belépési pont metódushoz megadott kötési paraméter. Az attribútum a kötési információ paraméterekként vesz igénybe. Az előző példában az első paramétere rendelkezik egy **QueueTrigger** attribútum a alkalmazni, üzenetsor által aktivált függvény jelzi. A várólista nevét és kapcsolati karakterlánc beállítás neve adhatók be a paramétereket a **QueueTrigger** attribútum. További információkért lásd: [Azure Queue storage – Azure Functions kötések](functions-bindings-storage-queue.md#trigger---c-example).
     
 A fenti eljárással további funkciók hozzáadása a függvényalkalmazás projektjét. A projektben egyes funkciót egy másik eseményindító rendelkezhet, de a következő függvénynek rendelkeznie kell a pontosan egy eseményindító. További információkért lásd: [Azure Functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md).

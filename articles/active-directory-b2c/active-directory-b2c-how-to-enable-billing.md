@@ -1,5 +1,5 @@
 ---
-title: Azure-előfizetés összekapcsolása az Azure Active Directory B2C |} A Microsoft Docs
+title: Azure-előfizetés - összekapcsolása az Azure Active Directory B2C |} A Microsoft Docs
 description: Lépésenkénti útmutató, amellyel egy Azure-előfizetésben helyezi az Azure AD B2C-bérlőt számlázás.
 services: active-directory-b2c
 author: davidmu1
@@ -7,27 +7,29 @@ manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/07/2018
+ms.date: 01/24/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: e39b7472904e7635340327d311eb7d4b9123f51e
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: c914b3a3ab40971cf9318cafc787d358dab2faff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853187"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196174"
 ---
-# <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Egy Azure-előfizetés Azure AD B2C-bérlő csatolása
+# <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Azure-előfizetés összekapcsolása az Azure Active Directory B2C-bérlő
 
 > [!IMPORTANT]
-> Legújabb használati számlázással és az Azure AD B2C díjszabási információit a következő, a következő: [Az Azure AD B2C díjszabása](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+> Számlázással és az Azure Active Directory (Azure AD) B2C árképzési használatával kapcsolatos legújabb információkért lásd: [Azure AD B2C díjszabási](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
 Azure-előfizetéshez az Azure AD B2C használati díjakat számítjuk fel. Azure AD B2C-bérlő jön létre, ha a bérlői rendszergazda explicit módon az Azure AD B2C-bérlő összekapcsolása egy Azure-előfizetést kell. Ez a cikk bemutatja, hogyan.
 
 > [!NOTE]
 > Egy előfizetéshez társított Azure AD B2C-bérlő a számlázás az Azure AD B2C használatát vagy más Azure-erőforrások további Azure AD B2C-erőforrással együtt is használható.  Más Azure-licenc-alapú szolgáltatások vagy az Office 365-licencek az Azure AD B2C-bérlő belül hozzáadandó nem használható.
 
- Hozzon létre egy Azure AD B2C-vel "erőforrás" belül a cél Azure-előfizetés az előfizetési hivatkozást érhető el. Számos Azure AD B2C-vel "resources" is létrehozható egy Azure-előfizetéssel, valamint más Azure-erőforrások (például virtuális gépeket, adattárolás, LogicApps) belül. Az erőforrások az előfizetésen belüli összes láthatja a az Azure AD-bérlővel, amely az előfizetés van társítva.
+Hozzon létre egy Azure AD B2C-vel "erőforrás" belül a cél Azure-előfizetés az előfizetési hivatkozást érhető el. Számos Azure AD B2C-vel "resources" is létrehozható egy Azure-előfizetéssel, valamint más Azure-erőforrások (például virtuális gépeket, adattárolás, LogicApps) belül. Az erőforrások az előfizetésen belüli összes láthatja a az Azure AD-bérlővel, amely az előfizetés van társítva.
+
+Cloud Solution Providers (CSP) Azure-előfizetések az Azure AD B2C-ben támogatottak. Azure AD B2C-vel és az összes Azure-erőforrások használatával az API-k vagy az Azure Portalon elérhető funkciója. CSP-előfizetés rendszergazdái hivatkozásra, helyezze át, és az Azure AD B2C-vel kapcsolatok törlése a ugyanúgy, ahogy azt az összes Azure-erőforrások végzett. Szerepköralapú hozzáférés-vezérlés használatával az Azure AD B2C-vel kezelését az Azure AD B2C-bérlő és a egy Azure CSP-előfizetésének közötti társítás nem érinti. Szerepköralapú hozzáférés-vezérlés használatával a bérlő-base szerepkörök, szerepkör nem előfizetés-alapú érhető el.
 
 A folytatáshoz érvényes Azure-előfizetéssel van szükség.
 
@@ -81,10 +83,6 @@ Ehhez az erőforráshoz is használhatja:
 ![B2C-erőforrás beállítások](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
 
 ## <a name="known-issues"></a>Ismert problémák
-
-### <a name="csp-subscriptions"></a>CSP-előfizetésekben
-
-Jelenleg az Azure AD B2C-bérlő **nem** CSP-előfizetésekben mutató hivatkozást.
 
 ### <a name="self-imposed-restrictions"></a>Önálló kivetett korlátozásokat
 

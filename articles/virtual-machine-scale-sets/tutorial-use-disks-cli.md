@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7aebfbf3222715b1e15269aa777b2a6091aee90d
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: da7848fe561d061470e8921f1f76ac30bed4c809
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881825"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163058"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Hozzon létre és használhat lemezeket a virtuálisgép-méretezési csoportba az Azure CLI-vel
 A virtuálisgép-méretezési csoportok lemezeket használnak a virtuálisgép-példányok operációs rendszereinek, alkalmazásainak és adatainak tárolására. Méretezési csoportok létrehozásakor és kezelésekor fontos szempont, hogy a számítási feladatok jelentette várható terhelésnek megfelelő lemezméretet és konfigurációt válasszon ki. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet virtuálisgép-lemezeket. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -132,7 +132,7 @@ A méretezési csoport virtuálisgép-példányaihoz létrehozott és hozzácsat
 
 A folyamat a méretezési csoport több virtuálisgép-példányán való automatizálásához használja az Azure egyéni szkriptek futtatására szolgáló bővítményét. A bővítmény képes a szkriptek helyi végrehajtására az egyes virtuálisgép-példányokon, például előkészíti a csatlakoztatott adatlemezeket. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/linux/extensions-customscript.md).
 
-Az alábbi példa végrehajtja a GitHub mintatárból származó szkriptet az egyes virtuálisgép-példányokon az [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) paranccsal, és előkészíti az összes csatlakoztatott nyers adatlemezt:
+Az alábbi példa végrehajtja a GitHub mintatárból származó szkriptet az egyes virtuálisgép-példányokon az [az vmss extension set](/cli/azure/vmss/extension) paranccsal, és előkészíti az összes csatlakoztatott nyers adatlemezt:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -279,7 +279,7 @@ A lemez méretével, a tárolási szinttel és a logikai egység számával (LUN
 
 
 ## <a name="detach-a-disk"></a>Lemez leválasztása
-Ha már nincs szüksége egy adott lemezre, válassza azt le a méretezési csoportról. A rendszer eltávolítja a lemezt a méretezési csoport minden virtuálisgép-példányáról. A lemez a méretezési csoportról történő leválasztásához használja az [az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach) parancsot, és adja meg a lemez logikai egységének számát. A logikai egységek számai az előző szakaszban használt [az vmss show](/cli/azure/vmss#az_vmss_show) parancs kimenetében láthatók. Az alábbi példa leválasztja a *2* LUN-számú lemezt a méretezési csoportról:
+Ha már nincs szüksége egy adott lemezre, válassza azt le a méretezési csoportról. A rendszer eltávolítja a lemezt a méretezési csoport minden virtuálisgép-példányáról. A lemez a méretezési csoportról történő leválasztásához használja az [az vmss disk detach](/cli/azure/vmss/disk) parancsot, és adja meg a lemez logikai egységének számát. A logikai egységek számai az előző szakaszban használt [az vmss show](/cli/azure/vmss#az_vmss_show) parancs kimenetében láthatók. Az alábbi példa leválasztja a *2* LUN-számú lemezt a méretezési csoportról:
 
 ```azurecli-interactive
 az vmss disk detach \

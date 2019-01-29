@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: c90715608b5d35520605c504b5cebb5e7a3ec021
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9cb41bfde38d9b47f5db994c0ca39c64b453ef1d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096633"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171456"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Példák Reliable Services-alkalmazások és szolgáltatások jegyzékeire
 A következő példák egy ASP.NET Core webes előtérrendszert és egy állapotalapú háttérszolgáltatás a Service Fabric-alkalmazás az alkalmazás és szolgáltatás jegyzékfájljainak. Ezekben a példákban az a célja, hogy milyen beállítások érhetők el, és azok használatát. Ezen alkalmazás és jegyzékek alapulnak a [Service Fabric .NET – rövid útmutató](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) jegyzékfájlok.
@@ -198,7 +198,7 @@ Lásd: [Application manifest elemek](#application-manifest-elements), [VotingWeb
         the root of the code package regardless of where the EXE is defined in the code package directory. This is where the processes can write the data. Writing data 
         in the code package or code base is not recommended as those folders could be shared between different application instances and may get deleted.-->
         <WorkingFolder>CodePackage</WorkingFolder>
-        <!-- Warning! Do not use console rediriction in a production application, only use it for local development and debugging. Redirects console output from the startup
+        <!-- Warning! Do not use console redirection in a production application, only use it for local development and debugging. Redirects console output from the startup
         script to an output file in the application folder called "log" on the cluster node where the application is deployed and run. Also set the number of output files
         to retain and the maximum file size (in KB). -->
         <ConsoleRedirection FileRetentionCount="10" FileMaxSizeInKb="20480"/>
@@ -215,7 +215,7 @@ Lásd: [Application manifest elemek](#application-manifest-elements), [VotingWeb
     </EntryPoint>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -316,7 +316,7 @@ Itt adható meg erőforráskorlátok a codepackage a. További információkért
 ### <a name="packagesharingpolicy-element"></a>PackageSharingPolicy Element
 Azt jelzi, ha a code, config vagy data csomag azonos típusú szolgáltatás szolgáltatási példányai között lehetnek megosztva. További információkért lásd: [PackageSharingPolicy elem](service-fabric-service-model-schema-elements.md#PackageSharingPolicyElementPackageSharingPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexType)
 
-### <a name="securityaccesspolicy-element"></a>SecurityAccessPolicy elem
+### <a name="securityaccesspolicy-element"></a>SecurityAccessPolicy Element
 A hozzáférési a szolgáltatásjegyzékben definiált engedélyek egy egyszerű erőforrás (például egy végpont). Általában nagyon hasznos ellenőrzése és-szolgáltatások elérésének korlátozása különböző erőforrások minimalizálása érdekében a biztonsági kockázatokat. Ez akkor különösen fontos, ha az alkalmazást a létrehozása a gyűjteményből, a marketplace-ről szolgáltatásokat, amelyek különböző fejlesztők által fejlesztett. További információkért lásd: [SecurityAccessPolicy elem](service-fabric-service-model-schema-elements.md#SecurityAccessPolicyElementSecurityAccessPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInSecurityAccessPolicieselementDefinedInDigestedEndpointelement)
 
 ### <a name="runaspolicy-element"></a>RunAsPolicy elem
@@ -331,7 +331,7 @@ Deklarálja a szolgáltatás automatikusan létrejön, amikor létrejön az alka
 ### <a name="statefulservice-element"></a>Elem statefulservice-ből
 Az állapotalapú szolgáltatások határozza meg. További információkért lásd: [statefulservice-ből elem](service-fabric-service-model-schema-elements.md#StatefulServiceElementStatefulServiceTypeComplexTypeDefinedInServiceTemplatesTypecomplexTypeDefinedInServiceelement)
 
-### <a name="statelessservice-element"></a>StatelessService elem
+### <a name="statelessservice-element"></a>StatelessService Element
 Állapotmentes szolgáltatás határozza meg. További információkért lásd: [StatelessService elem](service-fabric-service-model-schema-elements.md#StatelessServiceElementStatelessServiceTypeComplexTypeDefinedInServiceTemplatesTypecomplexTypeDefinedInServiceelement)
 
 ### <a name="principals-element"></a>Rendszerbiztonsági tagok elem
@@ -346,7 +346,7 @@ Deklarálja a rendszerbiztonsági tag, mint egy csoportot, amely a házirendeket
 ### <a name="membership-element"></a>Tagság elem
  További információkért lásd: [tagsági elem](service-fabric-service-model-schema-elements.md#MembershipElementanonymouscomplexTypeComplexTypeDefinedInGroupelement)
 
-### <a name="systemgroup-element"></a>SystemGroup elem
+### <a name="systemgroup-element"></a>SystemGroup Element
  További információkért lásd: [SystemGroup elem](service-fabric-service-model-schema-elements.md#SystemGroupElementanonymouscomplexTypeComplexTypeDefinedInMembershipelement)
 
 ### <a name="users-element"></a>Felhasználók elem
@@ -358,7 +358,7 @@ A felhasználó egyszerű, biztonsági házirendeket lehet hivatkozni, amely dek
 ### <a name="memberof-element"></a>Tagja(Pénzügy) elem
 Felhasználók bármely meglévő tagságcsoportot hozzáadhatók, így is a tulajdonságok és biztonsági beállításait a csoportházirend is örököl. A csoportházirend segítségével különböző szolgáltatásokat, vagy ugyanazt a szolgáltatást (egy másik gépen) elérésének igénylő külső erőforrások védelmét. További információkért lásd: [tagja(Pénzügy) elem](service-fabric-service-model-schema-elements.md#MemberOfElementanonymouscomplexTypeComplexTypeDefinedInUserelement)
 
-### <a name="systemgroup-element"></a>SystemGroup elem
+### <a name="systemgroup-element"></a>SystemGroup Element
 Adja hozzá a felhasználót a rendszer csoport.  A rendszer csoport a csoportok szakaszban kell definiálni. További információkért lásd: [SystemGroup elem](service-fabric-service-model-schema-elements.md#SystemGroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement)
 
 ### <a name="group-element"></a>Csoportelemhez
@@ -367,7 +367,7 @@ Adja hozzá a felhasználót, hogy a csoport.  A csoport a csoportok szakaszban 
 ### <a name="policies-element"></a>Házirendek elem
 Popisuje zásady (naplógyűjtés, alapértelmezett futtató, egészségügyi és biztonsági access) az alkalmazás szintjén alkalmazható. További információkért lásd: [házirendek elem](service-fabric-service-model-schema-elements.md#PoliciesElementApplicationPoliciesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInEnvironmentTypecomplexType)
 
-### <a name="defaultrunaspolicy-element"></a>DefaultRunAsPolicy elem
+### <a name="defaultrunaspolicy-element"></a>DefaultRunAsPolicy Element
 Adja meg az összes szolgáltatás kód csomagokat, amelyek nem rendelkeznek egy adott RunAsPolicy az ServiceManifestImport szakaszban meghatározott alapértelmezett felhasználói fiók. További információkért lásd: [DefaultRunAsPolicy elem](service-fabric-service-model-schema-elements.md#DefaultRunAsPolicyElementanonymouscomplexTypeComplexTypeDefinedInApplicationPoliciesTypecomplexType)
 
 
@@ -386,7 +386,7 @@ Egy állapotmentes szolgáltatás típusának leírása. További információk�
 ### <a name="codepackage-element"></a>CodePackage elem
 Ismerteti egy kódcsomaghoz, amely támogatja a megadott szolgáltatási típusa. Amikor egy szolgáltatás létrejön az említett szolgáltatás ellen, a jegyzékfájlban deklarált összes kódcsomagok a rendszer a belépési pontok futtatásával aktiválja. Az amiatt végbemenő folyamatok várhatóan a támogatott szolgáltatástípusok regisztrálja a futási időben. Ha több kódcsomagok, az összes aktiválás, amikor a rendszer figyeli a nem a deklarált szolgáltatás típusok közül. További információkért lásd: [CodePackage elem](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
 
-### <a name="setupentrypoint-element"></a>SetupEntryPoint elem
+### <a name="setupentrypoint-element"></a>SetupEntryPoint Element
 Egy emelt szintű belépési pont, amely alapértelmezés szerint a Service Fabric (általában a NETWORKSERVICE fiókot) bármely más belépési pont előtt azonos hitelesítő adatokkal futtatja. A belépési pont által megadott végrehajtható fájlt az általában a hosszú ideig futó szolgáltatás gazdagép. Egy külön szolgáltatásbeállítás belépési pontjának jelenléte elkerülhető, hogy nem kell futtatni a szolgáltatásgazda magas szintű jogosultságokkal rendelkező huzamosabb ideig. További információkért lásd: [SetupEntryPoint elem](service-fabric-service-model-schema-elements.md#SetupEntryPointElementanonymouscomplexTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="exehost-element"></a>ExeHost elem
@@ -398,19 +398,21 @@ A végrehajtható fájl nevét.  Ha például a "MySetup.bat" vagy "MyServiceHos
 ### <a name="arguments-element"></a>Argumentumok elem
  További információkért lásd: [argumentumok elem](service-fabric-service-model-schema-elements.md#ArgumentsElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
-### <a name="workingfolder-element"></a>WorkingFolder elem
-A folyamat a kódcsomag a fürtcsomópontra, ahol az alkalmazás központi telepítése a munkakönyvtár. Három értéket is megadhat: munkahelyi (alapértelmezett), a CodePackage vagy a kódbázis. Kódbázis Megadja, hogy a munkakönyvtárban arra a könyvtárra, amelyben az EXE a kódcsomag van definiálva van-e beállítva. CodePackage beállítja a munkakönyvtárból abba a kódcsomag, függetlenül attól, hol van definiálva az EXE a kód adatcsomag-könyvtár gyökerében lehet. Munka a munkahelyi könyvtár a csomóponton létrehozott egyedi mappát állítja be.  Ez a mappa megegyezik a teljes alkalmazás-példány. Alapértelmezés szerint az összes folyamat, az alkalmazás a munkakönyvtárban értéke az alkalmazás munkahelyi mappa. Ez az, ahol a folyamatok adatokat írni. Adatok írása a kódcsomag vagy kódbázis nem ajánlott, mivel sikerült a különböző alkalmazáspéldányok között megosztott mappákat, és előfordulhat, hogy törli. További információkért lásd: [WorkingFolder elem](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+### <a name="workingfolder-element"></a>WorkingFolder Element
+A folyamat a kódcsomag a fürtcsomópontra, ahol az alkalmazás központi telepítése a munkakönyvtár. Három értékeket adhat meg: Munkahelyi (alapértelmezett), a CodePackage vagy a kódbázis. Kódbázis Megadja, hogy a munkakönyvtárban arra a könyvtárra, amelyben az EXE a kódcsomag van definiálva van-e beállítva. CodePackage beállítja a munkakönyvtárból abba a kódcsomag, függetlenül attól, hol van definiálva az EXE a kód adatcsomag-könyvtár gyökerében lehet. Munka a munkahelyi könyvtár a csomóponton létrehozott egyedi mappát állítja be.  Ez a mappa megegyezik a teljes alkalmazás-példány. Alapértelmezés szerint az összes folyamat, az alkalmazás a munkakönyvtárban értéke az alkalmazás munkahelyi mappa. Ez az, ahol a folyamatok adatokat írni. Adatok írása a kódcsomag vagy kódbázis nem ajánlott, mivel sikerült a különböző alkalmazáspéldányok között megosztott mappákat, és előfordulhat, hogy törli. További információkért lásd: [WorkingFolder elem](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
-### <a name="consoleredirection-element"></a>ConsoleRedirection elem
-Figyelmeztetés! Nem éles alkalmazásokban használja a konzol rediriction, csak a helyi fejlesztés és hibakeresés használja. Átirányítja a konzol kimenete az indítási szkript a kimeneti fájl látható az alkalmazás mappájában "log" nevű a fürtcsomópontra, ahol az alkalmazás üzembe helyezését és futtatását. További információkért lásd: [ConsoleRedirection elem](service-fabric-service-model-schema-elements.md#ConsoleRedirectionElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+### <a name="consoleredirection-element"></a>ConsoleRedirection Element
 
-### <a name="entrypoint-element"></a>EntryPoint elem
+> [!WARNING]
+> Konzol-átirányítás használata az éles alkalmazásokban, ne csak a helyi fejlesztés és hibakeresés használja. Átirányítja a konzol kimenete az indítási szkript a kimeneti fájl látható az alkalmazás mappájában "log" nevű a fürtcsomópontra, ahol az alkalmazás üzembe helyezését és futtatását. További információkért lásd: [ConsoleRedirection elem](service-fabric-service-model-schema-elements.md#ConsoleRedirectionElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+
+### <a name="entrypoint-element"></a>EntryPoint Element
 A belépési pont által megadott végrehajtható fájlt az általában a hosszú ideig futó szolgáltatás gazdagép. Egy külön szolgáltatásbeállítás belépési pontjának jelenléte elkerülhető, hogy nem kell futtatni a szolgáltatásgazda magas szintű jogosultságokkal rendelkező huzamosabb ideig. A belépési pont által megadott végrehajtható fájl SetupEntryPoint sikeres kilépés után futtatott. Az eredményül kapott folyamat figyel, és (kezdődő újra SetupEntryPoint) újraindul, ha valaha leáll vagy összeomlik. További információkért lásd: [BelépésiPont-elem](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="exehost-element"></a>ExeHost elem
  További információkért lásd: [ExeHost elem](service-fabric-service-model-schema-elements.md#ExeHostElementanonymouscomplexTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
-### <a name="configpackage-element"></a>ConfigPackage elem
+### <a name="configpackage-element"></a>ConfigPackage Element
 Deklarálja a mappát, a Name attribútum alatt PackageRoot Settings.xml fájlt tartalmaz. Ezt a fájlt a felhasználó által definiált, a kulcs-érték párt a beállításokat, amelyeket a folyamat futási időben vissza tudja olvasni szakaszokat tartalmazza. Frissítés alatt Ha csak a ConfigPackage verziója megváltozott, majd a futó folyamat nem indítja újra. Ehelyett egy visszahívást, amely a konfigurációs beállításai megváltoztak, így azok dinamikusan kell tölteni a folyamat értesítést küld. További információkért lásd: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="resources-element"></a>Erőforrások elem
@@ -437,7 +439,7 @@ Egy állapotalapú szolgáltatás típusának leírása. További információk�
 ### <a name="codepackage-element"></a>CodePackage elem
 Ismerteti egy kódcsomaghoz, amely támogatja a megadott szolgáltatási típusa. Amikor egy szolgáltatás létrejön az említett szolgáltatás ellen, a jegyzékfájlban deklarált összes kódcsomagok a rendszer a belépési pontok futtatásával aktiválja. Az amiatt végbemenő folyamatok várhatóan a támogatott szolgáltatástípusok regisztrálja a futási időben. Ha több kódcsomagok, az összes aktiválás, amikor a rendszer figyeli a nem a deklarált szolgáltatás típusok közül. További információkért lásd: [CodePackage elem](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
 
-### <a name="entrypoint-element"></a>EntryPoint elem
+### <a name="entrypoint-element"></a>EntryPoint Element
 A belépési pont által megadott végrehajtható fájlt az általában a hosszú ideig futó szolgáltatás gazdagép. Egy külön szolgáltatásbeállítás belépési pontjának jelenléte elkerülhető, hogy nem kell futtatni a szolgáltatásgazda magas szintű jogosultságokkal rendelkező huzamosabb ideig. A belépési pont által megadott végrehajtható fájl SetupEntryPoint sikeres kilépés után futtatott. Az eredményül kapott folyamat figyel, és (kezdődő újra SetupEntryPoint) újraindul, ha valaha leáll vagy összeomlik. További információkért lásd: [BelépésiPont-elem](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="exehost-element"></a>ExeHost elem
@@ -446,10 +448,10 @@ A belépési pont által megadott végrehajtható fájlt az általában a hossz�
 ### <a name="program-element"></a>Program elem
 A végrehajtható fájl nevét.  Ha például a "MySetup.bat" vagy "MyServiceHost.exe" lehetőséget. További információkért lásd: [Program elem](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
-### <a name="workingfolder-element"></a>WorkingFolder elem
-A folyamat a kódcsomag a fürtcsomópontra, ahol az alkalmazás központi telepítése a munkakönyvtár. Három értéket is megadhat: munkahelyi (alapértelmezett), a CodePackage vagy a kódbázis. Kódbázis Megadja, hogy a munkakönyvtárban arra a könyvtárra, amelyben az EXE a kódcsomag van definiálva van-e beállítva. CodePackage beállítja a munkakönyvtárból abba a kódcsomag, függetlenül attól, hol van definiálva az EXE a kód adatcsomag-könyvtár gyökerében lehet. Munka a munkahelyi könyvtár a csomóponton létrehozott egyedi mappát állítja be.  Ez a mappa megegyezik a teljes alkalmazás-példány. Alapértelmezés szerint az összes folyamat, az alkalmazás a munkakönyvtárban értéke az alkalmazás munkahelyi mappa. Ez az, ahol a folyamatok adatokat írni. Adatok írása a kódcsomag vagy kódbázis nem ajánlott, mivel sikerült a különböző alkalmazáspéldányok között megosztott mappákat, és előfordulhat, hogy törli. További információkért lásd: [WorkingFolder elem](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+### <a name="workingfolder-element"></a>WorkingFolder Element
+A folyamat a kódcsomag a fürtcsomópontra, ahol az alkalmazás központi telepítése a munkakönyvtár. Három értékeket adhat meg: Munkahelyi (alapértelmezett), a CodePackage vagy a kódbázis. Kódbázis Megadja, hogy a munkakönyvtárban arra a könyvtárra, amelyben az EXE a kódcsomag van definiálva van-e beállítva. CodePackage beállítja a munkakönyvtárból abba a kódcsomag, függetlenül attól, hol van definiálva az EXE a kód adatcsomag-könyvtár gyökerében lehet. Munka a munkahelyi könyvtár a csomóponton létrehozott egyedi mappát állítja be.  Ez a mappa megegyezik a teljes alkalmazás-példány. Alapértelmezés szerint az összes folyamat, az alkalmazás a munkakönyvtárban értéke az alkalmazás munkahelyi mappa. Ez az, ahol a folyamatok adatokat írni. Adatok írása a kódcsomag vagy kódbázis nem ajánlott, mivel sikerült a különböző alkalmazáspéldányok között megosztott mappákat, és előfordulhat, hogy törli. További információkért lásd: [WorkingFolder elem](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
-### <a name="configpackage-element"></a>ConfigPackage elem
+### <a name="configpackage-element"></a>ConfigPackage Element
 Deklarálja a mappát, a Name attribútum alatt PackageRoot Settings.xml fájlt tartalmaz. Ezt a fájlt a felhasználó által definiált, a kulcs-érték párt a beállításokat, amelyeket a folyamat futási időben vissza tudja olvasni szakaszokat tartalmazza. Frissítés alatt Ha csak a ConfigPackage verziója megváltozott, majd a futó folyamat nem indítja újra. Ehelyett egy visszahívást, amely a konfigurációs beállításai megváltoztak, így azok dinamikusan kell tölteni a folyamat értesítést küld. További információkért lásd: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="datapackage-element"></a>DataPackage elem

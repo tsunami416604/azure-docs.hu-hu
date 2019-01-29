@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 4ff896902c1a92c244c3bcd147c3daeeb9e49c77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f92fe2432051b148bf0b35fccc3fa33db9b66a14
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054756"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093150"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors – első lépések
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ A megoldás három projektet tartalmaz:
 
 * **A felület project (HelloWorld.Interfaces)**. Ez a projekt az aktor illesztőjének definícióját tartalmazza. Aktorok bármely bármely nevű projekt lehet definiálni.  Az illesztő határozza meg, hogy az aktor szerződést az aktor implementálása és az aktort meghívó ügyfelek osztoznak által közösen használt.  Ügyfél-projektek is függnek tőle, mert általában logikus definiálja azt a szerelvény, amely elkülönül az aktor implementálása.
 
-* **Az aktorszolgáltatás-projektet (HelloWorld)**. Ez a projekt határozza meg, amelyet szeretne üzemeltetni az aktor Service Fabric-szolgáltatást. Az aktor megvalósítása tartalmaz *HellowWorld.cs*. Az aktor implementálását OD základního typu osztálynak `Actor` valósítja meg a meghatározott felületek és a *MyActor.Interfaces* projekt. Az aktor osztálya is meg kell valósítania egy konstruktort, amely fogad egy `ActorService` példány és a egy `ActorId` , majd azokat továbbítja az alapszintű `Actor` osztály.
+* **Az aktorszolgáltatás-projektet (HelloWorld)**. Ez a projekt határozza meg, amelyet szeretne üzemeltetni az aktor Service Fabric-szolgáltatást. Az aktor megvalósítása tartalmaz *HelloWorld.cs*. Az aktor implementálását OD základního typu osztálynak `Actor` valósítja meg a meghatározott felületek és a *MyActor.Interfaces* projekt. Az aktor osztálya is meg kell valósítania egy konstruktort, amely fogad egy `ActorService` példány és a egy `ActorId` , majd azokat továbbítja az alapszintű `Actor` osztály.
     
     A projekt is tartalmaz *Program.cs*, amely használatával a Service Fabric-futtatókörnyezet regisztrálja aktor osztályok `ActorRuntime.RegisterActorAsync<T>()`. A `HelloWorld` osztály már regisztrálva van. Minden olyan további aktorok megvalósításokhoz, hozzáadja a projekthez is szerepelnie kell a `Main()` metódust.
 

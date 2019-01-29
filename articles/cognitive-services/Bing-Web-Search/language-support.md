@@ -3,19 +3,19 @@ title: Nyelvi támogatás – a Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: Természetes nyelvek, ország és a Bing News Search API által támogatott régiók listáját.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: erhopf
-ms.openlocfilehash: c15e1ddd35e625a713ff569f26e9312d9dcd0bc8
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: aahi
+ms.openlocfilehash: dbe9fe5b8e9cd31ca20d88b7db89a9d35e1fe8de
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435556"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161138"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>A Bing Web Search API nyelvéhez és régiójához támogatása
 
@@ -30,36 +30,36 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Ország/régió|Kód|
 |-------|----|
 |Argentína|AR|
-|Ausztrália|AUSZTRÁLIA|
+|Ausztrália|AU|
 |Ausztria|AT|
-|Belgium|LEHET|
+|Belgium|BE|
 |Brazília|BR|
 |Kanada|CA|
 |Chile|CL|
 |Dánia|DK|
 |Finnország|FI|
 |Franciaország|JK|
-|Németország|NÉMETORSZÁG|
+|Németország|DE|
 |Hongkong KKT|HK|
-|India|INDIA|
+|India|IN|
 |Indonézia|ID (Azonosító)|
 |Olaszország|IT|
 |Japán|JP|
-|Korea|KOREA|
-|Malajzia|SAJÁT|
+|Korea|KR|
+|Malajzia|MY|
 |Mexikó|MX|
 |Hollandia|NL|
 |Új-Zéland|NZ|
-|Norvégia|NEM|
+|Norvégia|NO|
 |Kína|CN|
 |Lengyelország|PL|
-|Portugália|CSENDES-ÓCEÁNI IDŐ|
+|Portugália|PT|
 |Fülöp-szigetek|PH|
-|Oroszország|KÉRELEMEGYSÉG|
+|Oroszország|RU|
 |Szaúd-Arábia|SA|
 |Dél-Afrika|ZA|
 |Spanyolország|ES|
-|Svédország|HASZNÁLATA|
+|Svédország|SE|
 |Svájc|CH|
 |Tajvan|TW|
 |Törökország|TR|
@@ -89,7 +89,7 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Olaszország|olasz|it-IT|
 |Japán|japán|ja-JP|
 |Korea|koreai|ko-KR|
-|Malajzia|Angol|a saját en|
+|Malajzia|Angol|en-MY|
 |Mexikó|spanyol|es-MX|
 |Hollandia|holland|NL-NL|
 |Új-Zéland|Angol|en-NZ|
@@ -108,5 +108,5 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Tajvan|Kínai (hagyományos)|zh-TW|
 |Törökország|török|tr-TR|
 |Egyesült Királyság|Angol|en-GB|
-|Egyesült Államok|Angol|hu-HU|
-|Egyesült Államok|spanyol|es-USA|
+|Egyesült Államok|Angol|en-US|
+|Egyesült Államok|spanyol|es-US|

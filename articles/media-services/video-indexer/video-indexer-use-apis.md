@@ -1,5 +1,5 @@
 ---
-title: A Video Indexer API használata
+title: Használja a Video Indexer API – Azure
 titlesuffix: Azure Media Services
 description: Ez a cikk bemutatja a Video Indexer API használatának első lépéseit.
 services: media-services
@@ -7,16 +7,16 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: d7af0d8961d5fa4d3f76b76a48ec613d954298ad
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: d162f8caef0a14d86547539681f1da9b1b07ea1d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292389"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190496"
 ---
-# <a name="use-the-video-indexer-api"></a>A Video Indexer API használata
+# <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
 > [!Note]
 > A Video Indexer API 1-es verziója 2018. augusztus 1-jével elavult. Használja a Video Indexer API 2-es verzióját. <br/>A Video Indexer API-k 2-es verziójával való fejlesztéshez tekintse át az [itt](https://api-portal.videoindexer.ai/) található útmutatót. 

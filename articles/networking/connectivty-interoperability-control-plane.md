@@ -1,5 +1,5 @@
 ---
-title: 'Együttműködés az Azure háttér-kapcsolati funkciók: szabályozhatja az adatsík-elemzés |} A Microsoft Docs'
+title: 'Együttműködés az Azure háttér-kapcsolati funkciók: Szabályozhatja az adatsík-elemzés |} A Microsoft Docs'
 description: A cikk ismerteti a vezérlési sík analysis a teszt beállítása segítségével elemezheti az együttműködés között ExpressRoute, a site-to-site VPN és a virtuális hálózati társviszony az Azure-ban.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 37f5399426bebd375200bbc18dae7ed83f4fde3f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 77a405e2f020ff764348370fc001388610ad75b6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614678"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155527"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Együttműködés az Azure háttér-kapcsolati funkciók: szabályozhatja az adatsík-elemzés
+# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Együttműködés az Azure háttér-kapcsolati funkciók: Vezérlési sík elemzése
 
 Ez a cikk ismerteti a vezérlési sík elemzése a [beállítások ellenőrzése][Setup]. Is a [telepítő tesztkonfiguráció] [ Configuration] és a [data analysis adatsík] [ Data-Analysis] a vizsgálat beállítása.
 
@@ -79,7 +79,7 @@ Virtuális hálózatok közötti társviszony-létesítés egy adott régión be
 
 ### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Virtuális hálózatok közötti kapcsolat ágban site-to-site VPN használatával
 
-Érdemes lehet virtuális hálózatokat, amelyek a különböző régiókban, és a egy VNet-központon keresztül kommunikálnak egymással a helyszíni hálózatok ág. A natív Azure-megoldás a cofiguration a site-to-site VPN-kapcsolat egy VPN-en keresztül. Alternatív, hogy egy hálózati virtuális készüléket (NVA) útválasztás az agyban.
+Érdemes lehet virtuális hálózatokat, amelyek a különböző régiókban, és a egy VNet-központon keresztül kommunikálnak egymással a helyszíni hálózatok ág. Ehhez a konfigurációhoz a natív Azure-megoldás közötti VPN használatával site-to-site VPN-kapcsolat. Alternatív, hogy egy hálózati virtuális készüléket (NVA) útválasztás az agyban.
 
 További információkért lásd: [Mi az a VPN-átjáró?] [ VPN] és [üzembe helyezése egy magas rendelkezésre állású nva-t][Deploy-NVA].
 

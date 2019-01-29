@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
-ms.openlocfilehash: e0d319526bf9e604a98a1c926f7b6fc4f2834466
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: dc177ba7b20af61a4b6a875404a73fda5d08f7dc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851147"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177321"
 ---
 # <a name="service-bus-messaging-exceptions"></a>A Service Bus-alapú üzenetkezelés kivételei
 Ez a cikk néhány a Microsoft Azure Service Bus-üzenetkezelés API-k által előállított kivételeket sorolja fel. Ez a hivatkozás változhatnak, ezért vissza frissítések keresése.
@@ -37,7 +37,7 @@ A következő táblázat felsorolja az üzenetkezelési kivételtípusok, és az
 
 | **Kivétel típusa** | **Leírás/OK és példák** | **Javasolt művelet** | **Vegye figyelembe az automatikus azonnali újrapróbálkozás** |
 | --- | --- | --- | --- |
-| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |A kért művelet, amely szabályozza a meghatározott időn belül nem válaszol a kiszolgáló [így időtúllépés történt](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout). Előfordulhat, hogy a kiszolgáló befejezte a kért művelet. Ez akkor fordulhat elő, hálózati vagy más infrastruktúra késedelem miatt. |Ellenőrizze a rendszer állapotát, a konzisztencia, és szükség esetén próbálja megismételni. Lásd: [időtúllépési kivételeket](#timeoutexception). |Bizonyos esetekben; segíthet újrapróbálkozási újrapróbálkozási logika hozzáadása a kódot. |
+| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |A kért művelet, amely szabályozza a meghatározott időn belül nem válaszol a kiszolgáló [így időtúllépés történt](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings). Előfordulhat, hogy a kiszolgáló befejezte a kért művelet. Ez akkor fordulhat elő, hálózati vagy más infrastruktúra késedelem miatt. |Ellenőrizze a rendszer állapotát, a konzisztencia, és szükség esetén próbálja megismételni. Lásd: [időtúllépési kivételeket](#timeoutexception). |Bizonyos esetekben; segíthet újrapróbálkozási újrapróbálkozási logika hozzáadása a kódot. |
 | [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |A kért felhasználói művelet nem engedélyezett a kiszolgáló vagy a szolgáltatás belül. Tekintse meg a részleteket a kivétel üzenetét. Ha például [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) ehhez a kivételhez állít elő, ha az üzenet fogadása megtörtént a [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) mód. |Ellenőrizze a kód és a dokumentációt. Győződjön meg arról, hogy a kért művelet érvénytelen. |Újrapróbálkozás nem működik. |
 | [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |Kísérlet történik egy olyan objektum, amely már zárt, megszakadt, vagy eldobva művelet meghívásához. Bizonyos ritkán előforduló esetekben a környezeti tranzakció már eldobva. |Ellenőrizze a kódot, és ellenőrizze, hogy nem lép működésbe műveletek nA smazaném objektu. |Újrapróbálkozás nem működik. |
 | [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |A [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) objektumot nem sikerült megszerezni a jogkivonatot, a jogkivonat érvénytelen vagy a jogkivonat nem tartalmazza a jogcímeket, a művelet végrehajtásához szükséges. |Győződjön meg arról, hogy a jogkivonat-szolgáltató jön létre a megfelelő értékekkel. Ellenőrizze a konfigurációt, az Access Control Service szolgáltatást. |Bizonyos esetekben; segíthet újrapróbálkozási újrapróbálkozási logika hozzáadása a kódot. |
@@ -101,7 +101,7 @@ A [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.
 Nézze meg az értékét a [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) tulajdonság, ezt a korlátot lenyomásával is okozhatja egy [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx).
 
 ### <a name="queues-and-topics"></a>Üzenetsorok és témakörök
-Az üzenetsoroktól és témaköröktől az időkorlát van megadva vagy a [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout) tulajdonság részeként a kapcsolati karakterláncot, vagy keresztül [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder). A hibaüzenet maga változhat, de az aktuális művelet számára megadott időtúllépési érték mindig tartalmaz. 
+Az üzenetsoroktól és témaköröktől az időkorlát van megadva vagy a [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) tulajdonság részeként a kapcsolati karakterláncot, vagy keresztül [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder). A hibaüzenet maga változhat, de az aktuális művelet számára megadott időtúllépési érték mindig tartalmaz. 
 
 
 

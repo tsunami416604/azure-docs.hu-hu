@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ff006e7962f2aa79e7c71ab12be918770c6e6d39
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b8eb6d483b9e7a92b50a269e5efbc8ca55946931
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082490"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104218"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Ismerkedés az Azure SQL Database felügyelt példánya
 
@@ -25,7 +25,7 @@ ms.locfileid: "55082490"
 
 ## <a name="quickstart-overview"></a>A rövid útmutató – áttekintés
 
-Ebben a szakaszban láthatja a rendelkezésre álló cikkeket, amelyek segítségével a felügyelt példány használatának gyors megkezdéséhez áttekintése. A az első felügyelt példány létrehozásának legegyszerűbb módja az, hogy használja [az Azure Portalon](sql-database-managed-instance-get-started.md) , amelyen konfigurálhatja a szükséges paramétereket és automatikus létrehozása az Azure hálózati környezetben anélkül, hogy a hálózat részletei ismernie és infrastruktúrával kapcsolatos követelményei. Ügyeljen rá, hogy rendelkezik-e egy [előfizetés-típus](sql-database-managed-instance-resource-limits.md#supported-subscription-types) , amely jogosult a példány létrehozása.
+Ebben a szakaszban láthatja a cikkek, amelyek segítségével a felügyelt példány használatának gyors megkezdéséhez áttekintése. A az első felügyelt példány létrehozásának legegyszerűbb módja az, hogy használja [az Azure Portalon](sql-database-managed-instance-get-started.md) , amelyen konfigurálhatja a szükséges paramétereket (felhasználónév/jelszó, magok, a maximális tárolókapacitás), és automatikusan létrehozza az Azure hálózati környezet nélkül kell tudni hálózati részletei és infrastrukturális követelményei. Ügyeljen rá, hogy rendelkezik-e egy [előfizetés-típus](sql-database-managed-instance-resource-limits.md#supported-subscription-types) , amely jogosult a példány létrehozása.
 
 Ha a saját hálózatot, amelyet használni szeretne, vagy testre szabhatja a hálózat esetén lásd: hogyan [konfigurálja a hálózati környezet](#configure-network-environment) felügyelt példány számára.
 
@@ -35,7 +35,7 @@ A felügyelt példány létrehozásakor meg kell kapcsolódjon a példányhoz a 
 
 Alternatív megoldásként a helyi hálózatról használhat express route vagy helyek közötti kapcsolat, de ezek a módszerek az alábbi rövid útmutatókkal a hatókörén kívül.
 
-Amikor létrehoz egy felügyelt példányt, és a hozzáférés konfigurálásához, indítsa el az adatbázis migrálása. Telepítenie kell a [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) , amely elemzi az adatbázisok SQL Server-kiszolgálón, és keresse meg, hogy nem blokkolja-e migrálás felügyelt példányra például FileStream létezik-e bármilyen probléma vagy több naplófájlt. A problémák megoldásához, ha az adatbázisok fel egy felügyelt példányra. [Adatbázis-Kísérletezési Segéd](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) egy másik hasznos eszköz, amely képes a számítási feladatok SQL Server és a visszajátszás, így megadhatja, hogy felügyelt példányon van gazdakiszolgálói lesznek okoznak teljesítményproblémákat, ha áttelepíti a felügyelt példány.
+Felügyelt példány létrehozása és hozzáférés konfigurálásakor, indítsa el az adatbázisok helyezni helyszíni SQL Server- vagy Azure virtuális gépek migrálását. Vegye figyelembe, hogy az áttelepítés sikertelen lesz, ha a forrás-adatbázis, amely az áttelepíteni kívánt egyes nem támogatott funkciók. Sikertelen végrehajtásának elkerülése és kompatibilitás-ellenőrzés, telepíthet [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) , amely elemzi az adatbázisok SQL Server-kiszolgálón, és keresse meg, hogy nem blokkolja-e migrálás felügyelt példányra például létezik-e bármilyen probléma A FileStream vagy több naplófájlt. A problémák megoldásához, ha az adatbázisok fel egy felügyelt példányra. [Adatbázis-Kísérletezési Segéd](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) egy másik hasznos eszköz, amely képes a számítási feladatok SQL Server és a visszajátszás, így megadhatja, hogy felügyelt példányon van gazdakiszolgálói lesznek okoznak teljesítményproblémákat, ha áttelepíti a felügyelt példány.
 
 Ha biztos abban, hogy az adatbázis áttelepítheti egy felügyelt példányra, [natív VISSZAÁLLÍTÁSA](sql-database-managed-instance-get-started-restore.md) funkció, amely lehetővé teszi, hogy készítsen biztonsági másolatot az adatbázis a Transact-SQL paranccsal töltse fel az Azure blob storage és a Állítsa vissza az adatbázist a Transact-SQL-parancs használata blob storage-ból.
 

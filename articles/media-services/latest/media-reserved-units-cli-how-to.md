@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9f95be8a9d75065deedd3bd7c92907145e966494
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: b40ab6bcc2f718eda85ff64d69a6689e12d60ab8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913053"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094835"
 ---
 # <a name="scaling-media-processing"></a>Skálázás médiafeldolgozás
 
@@ -32,27 +32,19 @@ Ez a cikk bemutatja, hogyan [Media Services v3 CLI](https://aka.ms/ams-v3-cli-re
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-+ Telepítse az [Azure CLI-t]( /cli/azure/install-azure-cli). Ehhez a cikkhez az Azure CLI 2.0-ás vagy újabb verziója szükséges. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. 
+[A Media Services-fiók létrehozása](create-account-cli-how-to.md).
 
-    Használhatja az [Azure Cloud Shellt](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) is.
-+ [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
+[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="scale-media-reserved-units-with-cli"></a>Méretezési csoport fenntartott Médiaegységek CLI-vel
 
-1. Futtassa a következő parancsot: `login`. Futtassa ezt a parancsot, hogy az Azure cloud shell vagy a helyi CLI-rendszerhéj használata.
+Futtassa a következő parancsot: `mru`.
 
-    ```azurecli
-    az login
-    ```
-    
-    Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben kell egy böngésző lap megnyitásához, és kövesse az utasításokat a parancssorban adja meg a hozzáférési kód után ellenőrizheti, hogy a [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin) a böngészőben.
-2. Futtassa a következő parancsot: `mru`.
+A következő [az ams-fiók legutóbbi](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) parancsot a Media szolgáltatás számára fenntartott egységek a "amsaccount" fiók használatával beállítja a **száma** és **típus** paraméterek.
 
-    A következő [az ams-fiók legutóbbi](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) parancsot a Media szolgáltatás számára fenntartott egységek a "amsaccount" fiók használatával beállítja a **száma** és **típus** paraméterek.
-
-    ```azurecli
-    az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
-    ```
+```azurecli
+az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
+```
 
 ## <a name="billing"></a>Számlázás
 

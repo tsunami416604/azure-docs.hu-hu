@@ -1,25 +1,25 @@
 ---
 title: Automatikus skálázás és zónaredundáns Application Gateway az Azure-ban (nyilvános előzetes verzió)
-description: Ez a cikk információkat tartalmaz, a webes alkalmazás tűzfal kérelem méretbeli korlátokat és kizárási listák az Application Gateway az Azure portal használatával.
+description: Ez a cikk bemutatja az Azure-alkalmazás v2 szintű Termékváltozatot, automatikus skálázást és zónaredundáns szolgáltatást tartalmaz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 1/29/2019
 ms.author: victorh
-ms.openlocfilehash: f5885fd2ac76550990c9a56a1d200bbe11555918
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 7301460014e4d547d1950c8edfbd7534d8a4c103
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213756"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101668"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatikus skálázás és zónaredundáns az Application Gateway (nyilvános előzetes verzió)
 
 Az Application Gateway és a webalkalmazási tűzfal (WAF) egy új v2 szintű Termékváltozatot kínál a nagyobb teljesítmény és a kritikus fontosságú új funkciók, például a statikus virtuális IP-címek támogatása, az automatikus skálázás és a zone redudancy támogatásának hozzáadása a nyilvános előzetes verziója mostantól elérhetők. Az általánosan elérhető Termékváltozat a meglévő szolgáltatás néhány kivételtől eltekintve ismert korlátozások szakaszban felsorolt támogatott az új v2 szintű Termékváltozatot, az továbbra is. Új v2 SKU-ja a következő fejlesztéseket tartalmazza:
 
 - **Az automatikus skálázás**: Az automatikus skálázás Termékváltozat az Application Gateway vagy WAF üzembe helyezésekre alapuló forgalmi terhelés minták módosítása vagy is méretezhetők. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Ezért a Termékváltozatot kínál valódi rugalmassága. Az új termékváltozatban az Application Gateway rögzített kapacitás (az automatikus skálázás le van tiltva) és az automatikus skálázás engedélyezése mellett módban is működhet. Rögzített kapacitás mód hasznos forgatókönyvek egységes és kiszámítható számítási feladatokkal. Az automatikus skálázási mód akkor előnyös, amelyeket a nagy mennyiségű eltérések az alkalmazás forgalmának az alkalmazásokban.
-   
+
    > [!NOTE]
    > Az automatikus skálázás jelenleg nem áll rendelkezésre a WAF Termékváltozat. WAF konfigurálása rögzített kapacitás üzemmódot, az automatikus skálázási mód helyett.
 - **A redundancia zóna**: Egy Application Gateway vagy WAF üzembe helyezés több rendelkezésre állási zónában, minden zónában egy Traffic Manager üzembe helyezése és léptetéses külön Application Gateway-példány eltávolítása is kiterjedhetnek. Egy zóna vagy több zónában, az Application Gateway-példány telepítve vannak, így biztosítása hiba zónarugalmasságot választhat. A háttérkészlet alkalmazások hasonló módon – szét lehetnek osztva a rendelkezésre állási zónák.
@@ -33,10 +33,12 @@ Az Application Gateway és a webalkalmazási tűzfal (WAF) egy új v2 szintű Te
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Támogatott régiók
-Az automatikus skálázás Termékváltozat az USA keleti RÉGIÓJA 2, USA középső régiója, USA 2. nyugati régiója, USA északi középső Régiója, USA nyugati RÉGIÓJA, USA déli középső Régiója, közép-Franciaország, Nyugat-Európa, Észak-Európa, Egyesült Királyság nyugati régiója, Délkelet-Ázsia és kelet-Japánban érhető el.
+
+Az alábbi régiókban érhető el az automatikus skálázás Termékváltozat: eastus2, westus2, westeurope, southeastasia, centralus, francecentral, USA keleti régiója, japaneast, northeurope, southcentralus, ukwest, northcentralus, westus, USA keleti régiója (BL), centralus (DM), japanwest (operációs rendszer ).
 
 ## <a name="pricing"></a>Díjszabás
-Az előzetes időszakban nem jár költségekkel. Alkalmazásátjáró, például a Key Vault, a virtuális gépeket, és így tovább naplóátvitelen kívüli egyéb erőforrásokra számlázzuk ki. 
+
+Az előzetes időszakban nem jár költségekkel. Alkalmazásátjáró, például a Key Vault, a virtuális gépeket, és így tovább naplóátvitelen kívüli egyéb erőforrásokra számlázzuk ki.
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 

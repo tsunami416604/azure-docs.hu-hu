@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 43e842d6325897f484d9dff342505cace6640e78
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 64fb629e29de9771ca5f76d1c454ec5d14337a57
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472282"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104437"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások  
 
@@ -72,6 +72,7 @@ Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felület
     ![a beállítás az összesítés](media/alerts-log/aggregate-on.png)
 
 1.  *Naplóriasztások*: A helyen, a Vizualizáció **riasztási logika** kiválaszthatók a megjelenített beállítások a feltétel, az összesítés, végül a küszöbértéket. Végül adja meg a logikai időt a megadott feltétel értékelése használatával **időszak** lehetőséget. Milyen gyakran fusson a riasztás a kiválasztásával együtt **gyakorisága**.
+
 A **Naplóriasztások** riasztások alapjául is:
    - *Rekordok száma*: Riasztás akkor jön létre, ha a lekérdezés által visszaadott rekordok számát vagy nagyobb vagy kisebb, mint a megadott érték.
    - *Metrikus egység*: Riasztás jön létre, ha egyes *összesített érték* az eredmények között meghaladja a megadott küszöbérték és *szerint csoportosítva* választott érték. Az aktivista álláspontokkal riasztás a küszöbérték elérése esetén a választott időszakban hányszor. Összes incidens bármely kombinációjával adatszivárgás is megadhat az eredménykészletet vagy egymás utáni incidensek megkövetelése, hogy az illetéktelen behatolásokat fel kell a rendszer egymást követő minták között. Tudjon meg többet [riasztások és azok típusát](../../azure-monitor/platform/alerts-unified-log.md).
@@ -108,7 +109,7 @@ A **Naplóriasztások** riasztások alapjául is:
     Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
 
 Felhasználók is fejeződik be, a saját elemzési lekérdezés [naplók elemzési lap az Azure Portalon](../../azure-monitor/log-query/portals.md#log-analytics-page
-) és majd leküldeni a keresztül beállítva riasztás gomb - riasztás létrehozása, majd a következő utasításokat a 6. lépés és újabb verziók esetében a fenti oktatóanyagban.
+) keresztül riasztás létrehozása, majd továbbítsa "+ Új riasztási szabály" gombra –, majd a következő utasításokat a 6. lépés és újabb verziók esetében a fenti oktatóanyagban.
 
  ![Log Analytics - riasztás beállítása](media/alerts-log/AlertsAnalyticsCreate.png)
 
@@ -125,35 +126,31 @@ Felhasználók is fejeződik be, a saját elemzési lekérdezés [naplók elemz�
     ![ Riasztási szabályok kezelése](media/alerts-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Azure Resource-sablonnal riasztások kezelése
-Riasztás hozható létre log jelenleg két különböző erőforrás sablonok használatával alapján, az analytics platform a riasztás van (vagyis) Log Analytics vagy az Application Insights alapjául.
 
-Ezért az alábbi szakasz részletekkel szolgálnak Naplóriasztásokra vonatkozó erőforrás-sablon használatával minden egyes elemzési platform.
+Az Azure Monitor riasztások rendelt erőforrástípus `Microsoft.Insights/scheduledQueryRules/`. Az erőforrástípus további információkért lásd: [Azure Monitor - ütemezett lekérdezési szabály API-referencia](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Naplóriasztások az Application Insights vagy a Log Analytics, hozható létre [ütemezett lekérdezési szabály API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
-### <a name="azure-resource-template-for-log-analytics"></a>A Log Analytics az Azure Resource-sablon
-Riasztások a Log Analytics, amely a rendszeres időközönkénti mentett keresést futtat riasztási szabályok hozzák létre. Ha a lekérdezés egyeztetés eredményei adott feltételeknek, létrejön egy riasztásbejegyzés, és a egy vagy több műveletek futnak. 
-
-Mentett keresés és a Log analytics-riasztásokkal Log Analytics Resource-sablon dokumentációja a Log Analytics szakaszában érhetők el. További tudnivalókért tekintse meg, [hozzáadása a Log Analytics mentett keresések és a riasztások](../../azure-monitor/insights/solutions-resources-searches-alerts.md); mely szemléltető példák, valamint a séma részleteit tartalmazza.
-
-### <a name="azure-resource-template-for-application-insights"></a>Az Application Insights az Azure Resource-sablon
-Az Application Insights-erőforrások riasztás van valamilyen `Microsoft.Insights/scheduledQueryRules/`. Az erőforrástípus további információkért lásd: [Azure Monitor - ütemezett lekérdezési szabály API-referencia](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+> [!NOTE]
+> Riasztások a Log Analytics használatával az örökölt is kezelhetők [Log Analytics Alert API](../../azure-monitor/platform/api-alerts.md) és az örökölt sablonok [Log Analytics mentett keresések és a riasztások](../../azure-monitor/insights/solutions-resources-searches-alerts.md) is. Az új alapértelmezés szerint itt részletes ScheduledQueryRules API segítségével további információkért lásd: [átkapcsolni új API-t a Log Analytics-riasztásokkal](alerts-log-api-switch.md).
 
 Az alábbiakban található az struktúráját [ütemezett lekérdezési szabály létrehozása](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) erőforrás-sablont változókként minta adatkészlet alapján.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0", 
     "parameters": {      
     },   
     "variables": {
-    "alertLocation": "southcentralus",
-    "alertName": "samplelogalert",
-    "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
-    "alertDescription": "Sample log search alert",
+    "alertLocation": "Region Name for your Application Insights App or Log Analytics Workspace",
+    "alertName": "sample log alert",
+    "alertDescr": "Sample log search alert",
     "alertStatus": "true",
+    "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
     "alertSource":{
-        "Query":"requests",
-        "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
+        "Query":"union workspace("servicews").Update, app('serviceapp').requests | summarize AggregatedValue = count() by bin(TimeGenerated,1h), Classification",
+        "Resource1": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews", 
+        "Resource2": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/components/serviceapp",
+        "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
         "Type":"ResultCount"
          },
      "alertSchedule":{
@@ -161,17 +158,24 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
          "Time": 60
          },
      "alertActions":{
-         "SeverityLevel": "4"
+         "SeverityLevel": "4",
+         "SuppressTimeinMin": 20
          },
       "alertTrigger":{
         "Operator":"GreaterThan",
         "Threshold":"1"
          },
+      "metricMeasurement": {
+          "thresholdOperator": "Equal",
+          "threshold": "1",
+          "metricTriggerType": "Consecutive",
+          "metricColumn": "Classification"
+      },
        "actionGrp":{
-        "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/actiongroups/sampleAG",
+        "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG",
         "Subject": "Customized Email Header",
-        "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"           
-         }
+        "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"
+        }
   },
   "resources":[ {
     "name":"[variables('alertName')]",
@@ -180,28 +184,36 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
     "location": "[variables('alertLocation')]",
     "tags":{"[variables('alertTag')]": "Resource"},
     "properties":{
-       "description": "[variables('alertDescription')]",
+       "description": "[variables('alertDescr')]",
        "enabled": "[variables('alertStatus')]",
        "source": {
            "query": "[variables('alertSource').Query]",
+           "authorizedResources": "[concat(array(variables('alertSource').Resource1), array(variables('alertSource').Resource2))]",
            "dataSourceId": "[variables('alertSource').SourceId]",
            "queryType":"[variables('alertSource').Type]"
        },
       "schedule":{
            "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
-           "timeWindowInMinutes": "[variables('alertSchedule').Time]"    
+           "timeWindowInMinutes": "[variables('alertSchedule').Time]"
        },
       "action":{
            "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
            "severity":"[variables('alertActions').SeverityLevel]",
+           "throttlingInMin": "[variables('alertActions').SuppressTimeinMin]",
            "aznsAction":{
-               "actionGroup":"[array(variables('actionGrp').ActionGroup)]",
+               "actionGroup": "[array(variables('actionGrp').ActionGroup)]",
                "emailSubject":"[variables('actionGrp').Subject]",
                "customWebhookPayload":"[variables('actionGrp').Webhook]"
            },
        "trigger":{
                "thresholdOperator":"[variables('alertTrigger').Operator]",
-               "threshold":"[variables('alertTrigger').Threshold]"
+               "threshold":"[variables('alertTrigger').Threshold]",
+               "metricTrigger":{
+                   "thresholdOperator": "[variables('metricMeasurement').thresholdOperator]",
+                   "threshold": "[variables('metricMeasurement').threshold]",
+                   "metricColumn": "[variables('metricMeasurement').metricColumn]",
+                   "metricTriggerType": "[variables('metricMeasurement').metricTriggerType]"
+               }
            }
        }
      }
@@ -212,34 +224,28 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
 > [!IMPORTANT]
 > És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon. 
 
-A fenti json-mintaadatok menthető, ez a bemutató céljából (például:) sampleScheduledQueryRule.json és telepíthetők [Azure Resource Manager az Azure Portalon](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
-
+A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sampleScheduledQueryRule.json és telepíthetők [Azure Resource Manager az Azure Portalon](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
 ## <a name="managing-log-alerts-using-powershell-cli-or-api"></a>A PowerShell, a parancssori felület vagy az API riasztások kezelése
-Jelenleg riasztás hozható létre napló alapú két különböző erőforrás-kezelő megfelelő API-k használatával, az analytics platform a riasztás van (vagyis) Log Analytics vagy az Application Insights alapjául.
 
-Ezért a lenti Powershell vagy parancssori felület API segítségével riasztások a Log analytics platformonként meg adatokat.
+Az Azure Monitor - ütemezett lekérdezési szabály API] (https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.
 
-### <a name="powershell-cli-or-api-for-log-analytics"></a>PowerShell, a parancssori felület vagy a Log Analytics API
-A Log Analytics Alert REST API RESTful és az Azure Resource Manager REST API-n keresztül érhető el. Az API-t az így elérhető lesz egy PowerShell-parancssorból, és kimenete JSON formátumban, hogy a keresési eredmények az eredmények használatával számos különböző módon programozott módon.
+> [!NOTE]
+> Riasztások a Log Analytics használatával az örökölt is kezelhetők [Log Analytics Alert API](../../azure-monitor/platform/api-alerts.md) és az örökölt sablonok [Log Analytics mentett keresések és a riasztások](../../azure-monitor/insights/solutions-resources-searches-alerts.md) is. Az új alapértelmezés szerint itt részletes ScheduledQueryRules API segítségével további információkért lásd: [átkapcsolni új API-t a Log Analytics-riasztásokkal](alerts-log-api-switch.md).
 
-Tudjon meg többet [létrehozása és kezelése a REST API-val a Log Analytics riasztási szabályai](../../azure-monitor/platform/api-alerts.md)köztük az API-t a Powershell elérése példái.
 
-### <a name="powershell-cli-or-api-for-application-insights"></a>PowerShell, CLI vagy az Application Insights API
-[Az Azure Monitor - ütemezett lekérdezési szabály API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.
-
-A használati minta erőforrás sablon korábban bemutatott (sampleScheduledQueryRule.json) Azure Resource Manager PowerShell-parancsmaggal keresztül alább látható a [erőforrás sablonszakasznak](#azure-resource-template-for-application-insights) :
+Naplóriasztások jelenleg; nem rendelkezik dedikált PowerShell vagy parancssori felület parancsai azonban az alábbi képen szemléltetett módon használható az Azure Resource Manager PowerShell-parancsmag használatával a korábban bemutatott erőforrás sablon (sampleScheduledQueryRule.json) minta a [erőforrás sablonszakasznak](#azure-resource-template-for-application-insights) :
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
+New-AzureRmResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
+
 A használati minta erőforrás sablon korábban bemutatott (sampleScheduledQueryRule.json) az Azure CLI Azure Resource Manager parancs-n keresztül alább látható a [erőforrás sablonszakasznak](#azure-resource-template-for-application-insights) :
 
 ```azurecli
-az group deployment create --resource-group myRG --template-file sampleScheduledQueryRule.json
+az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json
 ```
+
 Sikeres művelet esetén 201-es állapot új riasztási szabály létrehozása ad vissza, vagy a 200-as vissza kell adni, ha egy meglévő riasztási szabályt módosítva lett.
-
-
   
 ## <a name="next-steps"></a>További lépések
 
