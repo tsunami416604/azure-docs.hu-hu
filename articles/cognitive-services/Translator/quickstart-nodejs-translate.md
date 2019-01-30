@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveg lefordítása, Node.js – Translator Text API'
+title: 'Gyors útmutató: Translate text, Node.js - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API és Node.js segítségével.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 68c38d289e4095bd602e681171d8409b21920142
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: 40b38fdf2773bd58cf1635d089aec7340b04ce07
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246541"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214017"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Rövid útmutató: Sztring lefordítása a Translator Text API és a Node.js használatával
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Gyors útmutató: A Translator Text API segítségével lefordítani egy karakterlánc, a node.js használatával
 
 Ebben a rövid útmutatóban megtudhatja, hogyan fordíthat le egy szöveges sztringet angolról olasz és német nyelvre a Node.js és a Translator Text REST API használatával.
 
@@ -69,7 +69,7 @@ if (!subscriptionKey) {
 A kérelemmodulon keresztül elérhető `request()` metódus lehetővé teszi a HTTP-metódus, az URL-cím, a kérelemparaméterek, a fejlécek és a JSON-törzs `options` objektumként való átadását. Az alábbi kódrészletben a kérelmet fogjuk konfigurálni:
 
 >[!NOTE]
-> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információért lásd: [Translator Text API 3.0: Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
+> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: Fordítása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
 
 ```javascript
 let options = {

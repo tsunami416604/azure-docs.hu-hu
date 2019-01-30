@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/27/2018
-ms.author: raynew
-ms.openlocfilehash: 3d07b7156800b50daa75978add3ad3922108f142
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 1/18/2019
+ms.author: mayg
+ms.openlocfilehash: 05a60ff2b2995642f797897d0e1f4db46c5b6741
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974012"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215843"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Virtuális gépek és fizikai kiszolgálók feladatátvételét 
 
@@ -27,7 +27,7 @@ Az alábbi táblázat segítségével az Azure Site Recovery által biztosított
 
 | Forgatókönyv | Alkalmazás recovery követelményeinek | A Hyper-V munkafolyamata | Munkafolyamat: VMware-ről
 |---|--|--|--|
-|Tervezett feladatátvétel miatt egy közelgő adatközpont állásidő| Az alkalmazás, amikor egy tervezett tevékenység történik adatvesztés| A Hyper-V az ASR replikálja az adatokat a felhasználó által megadott másolási gyakorisággal. Tervezett feladatátvétel a gyakoriság felülbírálása, és replikálja a végleges módosítások előtt a feladatátvétel indításáig szolgál. <br/> <br/> 1.    Tervezze meg a karbantartási időszak alapján az üzleti változáskezelési folyamatot. <br/><br/> 2. értesítse a felhasználókat a közelgő állásidőt. <br/><br/> 3. A felhasználó által használt alkalmazás a hálózatról.<br/><br/>4 az ASR portálról tervezett feladatátvételt kezdeményezzen. A helyszíni virtuális gép automatikus leállítási.<br/><br/>A hatékony adatvesztés = 0 <br/><br/>A napló a helyreállítási pontokat is tartalmaz a megőrzési időtartamon egy felhasználóhoz, aki szeretné használni egy régebbi helyreállítási pontra. (24 órás megőrzést Hyper-V).| VMware-ről az ASR replikálja az adatokat folyamatosan a CDP használatával. Feladatátvételi teszi a felhasználói feladatátvételi a legfrissebb adatok (beleértve a post kérelem leállított)<br/><br/> 1. A változáskezelési folyamatot megfelelően karbantartási időszak tervezése <br/><br/>2. értesítse a felhasználókat várható állásidő <br/><br/>3.    A felhasználó által használt alkalmazás a hálózatról. <br/><br/>4.  Kezdeményezzen egy tervezett feladatátvétel, a legutóbbi időpontra történő ASR-portál használatával, miután az alkalmazás offline állapotban. Használja az "A nem tervezett feladatátvétel" lehetőséget a portálon, és válassza ki a legutóbbi időpontra történő feladatátvételt. A helyszíni virtuális gép automatikus leállítási.<br/><br/>A hatékony adatvesztés = 0 <br/><br/>A helyreállítási pontok megőrzési időtartamon a napló egy régebbi helyreállítási pontra használni kívánó ügyfél biztosítunk. (72 órás megőrzést VMware-ről).
+|Tervezett feladatátvétel miatt egy közelgő adatközpont állásidő| Az alkalmazás, amikor egy tervezett tevékenység történik adatvesztés| A Hyper-V az ASR replikálja az adatokat a felhasználó által megadott másolási gyakorisággal. Tervezett feladatátvétel a gyakoriság felülbírálása, és replikálja a végleges módosítások előtt a feladatátvétel indításáig szolgál. <br/> <br/> 1.    Tervezze meg a karbantartási időszak alapján az üzleti változáskezelési folyamatot. <br/><br/> 2. értesítse a felhasználókat a közelgő állásidőt. <br/><br/> 3. A felhasználó által használt alkalmazás a hálózatról.<br/><br/>4 az ASR portálról tervezett feladatátvételt kezdeményezzen. A helyszíni virtuális gép automatikus leállítási.<br/><br/>A hatékony adatvesztés = 0 <br/><br/>A napló a helyreállítási pontokat is tartalmaz a megőrzési időtartamon egy felhasználóhoz, aki szeretné használni egy régebbi helyreállítási pontra. (24 órás megőrzést Hyper-V). Replikáció, a megőrzési időtartamon belül túl le lett állítva, ha ügyfeleink továbbra is lehetnek a legújabb elérhető helyreállítási pontok használatával átvehet. | VMware-ről az ASR replikálja az adatokat folyamatosan a CDP használatával. Feladatátvételi teszi a felhasználói feladatátvételi a legfrissebb adatok (beleértve a post kérelem leállított)<br/><br/> 1. A változáskezelési folyamatot megfelelően karbantartási időszak tervezése <br/><br/>2. értesítse a felhasználókat várható állásidő <br/><br/>3.    A felhasználó által használt alkalmazás a hálózatról. <br/><br/>4.  Kezdeményezzen egy tervezett feladatátvétel, a legutóbbi időpontra történő ASR-portál használatával, miután az alkalmazás offline állapotban. Használja az "A nem tervezett feladatátvétel" lehetőséget a portálon, és válassza ki a legutóbbi időpontra történő feladatátvételt. A helyszíni virtuális gép automatikus leállítási.<br/><br/>A hatékony adatvesztés = 0 <br/><br/>A helyreállítási pontok megőrzési időtartamon a napló egy régebbi helyreállítási pontra használni kívánó ügyfél biztosítunk. (72 órás megőrzést VMware-ről). Replikáció, a megőrzési időtartamon belül túl le lett állítva, ha ügyfeleink továbbra is lehetnek a legújabb elérhető helyreállítási pontok használatával átvehet.
 |Feladatátvétel miatt egy nem tervezett adatközpont állásidő (természetes vagy informatikai katasztrófa) | Az alkalmazás minimális adatvesztéssel | 1. a szervezet BCP terv kezdeményezése <br/><br/>2. A megőrzési időtartamon (napló) a legújabb vagy egy pontot az ASR-portál használatával nem tervezett feladatátvételt kezdeményezzen.| 1. Indítsa el a szervezet BCP tervet. <br/><br/>2.  A megőrzési időtartamon (napló) a legújabb vagy egy pontot az ASR-portál használatával nem tervezett feladatátvételt kezdeményezzen.
 
 
@@ -99,7 +99,7 @@ Bizonyos esetekben a virtuális gépek feladatátvétele egy extra közbenső l�
     * storvsc
     * VMBus
     * storflt
-    * Intelide
+    * intelide
     * ATAPI
 * VMware virtuális gépek, amelyek nem rendelkeznek a DHCP-szolgáltatás engedélyezve van, függetlenül attól, hogy használják a DHCP vagy statikus IP-címek
 

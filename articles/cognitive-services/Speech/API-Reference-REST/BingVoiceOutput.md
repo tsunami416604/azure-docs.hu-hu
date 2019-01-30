@@ -6,16 +6,16 @@ services: cognitive-services
 author: priyaravi20
 manager: yanbo
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: db69a9e3beb819600109603a8c0129547db57fa5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 61bd1879a4b1bf8281ac03c8254fb3d48c07a139
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343027"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215860"
 ---
 # <a name="bing-text-to-speech-api"></a>A Bing szöveg-beszéd átalakítás API
 
@@ -59,13 +59,13 @@ Az ügyfelek a szöveg-hang transzformációs szolgáltatás eléréséhez a kö
 
 Az alábbi táblázat az összefoglaló hangutasítások használt HTTP-fejléceket.
 
-Fejléc |Érték |Megjegyzések
+Fejléc |Value |Megjegyzések
 ----|----|----
-Content-Type | alkalmazás/ssml + xml | A bemeneti tartalom típusa.
+Content-Type | application/ssml+xml | A bemeneti tartalom típusa.
 X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bites-mono-Szövegfelolvasás <br> **2.** nyers – 16 khz – 16 bites-mono-pcm <br>**3.** hang-16 khz – 16 KB/s-mono-siren <br> **4.** riff – 16 khz – 16 KB/s-mono-siren <br> **5.** riff – 16 khz – 16 bites-mono-pcm <br> **6.** hang-16 khz-128kbitrate-mono-mp3 <br> **7.** hang-16 khz-64kbitrate-mono-mp3 <br> **8.** hang-16 khz-32kbitrate-mono-mp3 | A kimeneti audio formátum.
-X-Search-alkalmazásazonosító alapján | Egy GUID Azonosítót (csak hexadecimális, nincs szaggatott vonal) | Egy azonosító, amely egyedileg azonosítja az ügyfélalkalmazás. Ez lehet az alkalmazások a tároló azonosítója. Egy nem áll rendelkezésre, ha az azonosító lehet felhasználó által az alkalmazáshoz.
+X-Search-AppId | Egy GUID Azonosítót (csak hexadecimális, nincs szaggatott vonal) | Egy azonosító, amely egyedileg azonosítja az ügyfélalkalmazás. Ez lehet az alkalmazások a tároló azonosítója. Egy nem áll rendelkezésre, ha az azonosító lehet felhasználó által az alkalmazáshoz.
 X-Search-ClientID | Egy GUID Azonosítót (csak hexadecimális, nincs szaggatott vonal) | Egy azonosító, amely egyedileg azonosítja az alkalmazáspéldány minden telepítésnél.
-Felhasználói ügynök | Alkalmazásnév | Az alkalmazásnév megadása kötelező, és legfeljebb 255 karakterből állhat.
+User-Agent | Alkalmazásnév | Az alkalmazásnév megadása kötelező, és legfeljebb 255 karakterből állhat.
 Engedélyezés | Engedélyezési jogkivonat |  Tekintse meg a <a href="#Subscription">engedélyezési jogkivonat</a> szakaszban.
 
 ### <a name="InputParam"></a>Bemeneti paraméterek
@@ -179,7 +179,7 @@ A Microsoft szöveg-hang transzformációs API támogatja SSML 1.0 a W3C [Speech
   ```
 
 > [!NOTE]
-> Megjegyzés: a hívásaiból azt kell 8k vagy 16 k wav mezőjében a következő formátumban: **CRC-kód** (CRC-32): 4 bájt (DWORD) az érvényes tartomány 0x00000000 ~ 0xFFFFFFFF; **Hang formátumot jelző**: 4 bájt (DWORD) az érvényes tartomány 0x00000000 ~ 0xFFFFFFFF; **Minták száma**: 4 bájt (DWORD) az érvényes tartomány 0x00000000 ~ 0x7FFFFFFF; **Bináris terjesztett méretének**: 4 bájt (DWORD) az érvényes tartomány 0x00000000 ~ 0x7FFFFFFF; **Bináris törzs**: n bájt.
+> Megjegyzés: a hívásaiból azt kell 8k vagy 16 k wav mezőjében a következő formátumban: **CRC-kód** (CRC-32): 4 bájtos (DWORD) az érvényes tartomány 0x00000000 ~ 0xFFFFFFFF; **Hang formátumot jelző**: 4 bájtos (DWORD) az érvényes tartomány 0x00000000 ~ 0xFFFFFFFF; **Minták száma**: 4 bájtos (DWORD) az érvényes tartomány 0x00000000 ~ 0x7FFFFFFF; **Bináris terjesztett méretének**: 4 bájtos (DWORD) az érvényes tartomány 0x00000000 ~ 0x7FFFFFFF; **Bináris törzs**: n bájt.
 
 ## <a name="SampleApp"></a>Mintaalkalmazás
 
@@ -191,7 +191,7 @@ A következő táblázat ismerteti az egyes támogatott nyelv és kapcsolódó h
 
 Területi beállítás | Nem | A felhasználónév-leképezés
 ---------|--------|------------
-ar Például * | Nő | "A Microsoft Server hang-szöveg, beszédfelismerés, beszédfelismerési (ar-működtek az Adatbázisok, Hoda)"
+ar-EG* | Nő | "A Microsoft Server hang-szöveg, beszédfelismerés, beszédfelismerési (ar-működtek az Adatbázisok, Hoda)"
 ar-SA | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (ar-SA, Naayf)"
 bg-BG | Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (bg-BG, Ivan)"
 CA-ES | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ca-ES, HerenaRUS)"
@@ -214,9 +214,9 @@ en-IE | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-IE, Sean)"
 en-IN | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-IN, Heera, Apollo)"
 en-IN | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-IN, PriyaRUS)"
 en-IN | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-IN, Ravi, Apollo)"
-hu-HU | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, ZiraRUS)"
-hu-HU | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, JessaRUS)"
-hu-HU | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-US, BenjaminRUS)"
+en-US | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, ZiraRUS)"
+en-US | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, JessaRUS)"
+en-US | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-US, BenjaminRUS)"
 es-ES | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es-ES, Laura, Apollo)"
 es-ES | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es-ES, HelenaRUS)"
 es-ES | Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es-ES, Pablo, Apollo)"

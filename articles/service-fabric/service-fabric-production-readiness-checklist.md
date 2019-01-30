@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: aljo-microsoft
-ms.openlocfilehash: ac263ef842c780e09576303f2f49e782612294c2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 02ad880f3c4a4f5812b60887090c29a0a39f6742
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159114"
+ms.locfileid: "55206969"
 ---
 # <a name="production-readiness-checklist"></a>Termelési készenlét ellenőrzőlistája
 
@@ -62,7 +62,7 @@ Ha a Service Fabric Reliable Services és Reliable Actors programozási modellt 
 23. Kerülje [közös alkalmazásmegoldásokra](service-fabric-work-with-reliable-collections.md) a Reliable Collections használata esetén.
 24. Számlálók futtatásakor terheléses teszteket, és ellenőrizze a szemétgyűjtés vagy sorozatos halommemória növekedési nagy mértékű .NET CLR memória teljesítményének figyeléséhez.
 25. Offline biztonsági másolat karbantartása [Reliable Services és Reliable Actors](service-fabric-reliable-services-backup-restore.md) és a visszaállítási folyamat tesztelése.
-26. Az elsődleges NodeType csomóponttípus virtuálisgép-példányok száma ideális esetben meg kell egyeznie a fürt megbízhatósági szint; a minimális tartalmazza a feltételeknek megfelelő meghaladja a réteg minimális: ideiglenesen mikor függőleges skálázás, az elsődleges NodeType virtuális gép méretezési csoport Termékváltozatának van.
+26. Az elsődleges NodeType csomóponttípus virtuálisgép-példányok száma ideális esetben meg kell egyeznie a fürt megbízhatósági szint; a minimális tartalmazza a feltételeknek megfelelő meghaladja a réteg minimális: ideiglenesen mikor függőleges skálázás az elsődleges NodeType virtuális gép méretezési csoport Termékváltozatának.
 
 ## <a name="optional-best-practices"></a>Választható eljárások
 

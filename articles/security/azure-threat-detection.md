@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 8a546845adb32823e89b814377bcf3e469562445
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: b2b247b50eff446776edfbf3a552e92af3c7dfff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413668"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228797"
 ---
 # <a name="azure-advanced-threat-detection"></a>Az Azure fejlett fenyegetésészlelés
 
@@ -115,7 +115,7 @@ Adatforrások és megoldások minden egyes külön erőforrásrekord-típusok l�
 
 A legtöbb Log Analytics-szal, amely bármilyen böngészőben fut, és biztosít hozzáférést a konfigurációs beállításokhoz és több eszközhöz, elemezheti és kezelhetők az összegyűjtött adatokat az Azure Portalon keresztül történik. A portálról használhat:
 * [Naplókeresések](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches) ahol elemezheti az összegyűjtött adatokat lekérdezéseket hozhat létre.
-* [Az irányítópultok](https://docs.microsoft.com/azure/log-analytics/log-analytics-dashboards), amelyeket a legértékesebb kereséseinek grafikus nézeteivel testre is szabhatja.
+* [Az irányítópultok](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards), amelyeket a legértékesebb kereséseinek grafikus nézeteivel testre is szabhatja.
 * [Megoldások](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), további funkciókat és elemzőeszközöket biztosító.
 
 ![Elemzési eszközök](./media/azure-threat-detection/azure-threat-detection-fig6.png)

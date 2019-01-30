@@ -1,17 +1,17 @@
 ---
 title: VMware-vészhelyreállításhoz az Azure-bA az Azure Site Recovery VMware virtuális gépek replikálásának engedélyezése |} A Microsoft Docs
 description: Ez a cikk ismerteti az Azure-ba, az Azure Site Recovery használata vész-helyreállítási VMware virtuális gépek replikációjának engedélyezéséhez.
-author: asgang
+author: mayurigupta13
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: f160fc5f15ad9ca8994995c34d9eba7ee375c015
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: mayg
+ms.openlocfilehash: 51086b894de7a02ec78302323512c7766dc9f4fb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424154"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226333"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-bA VMware virtuális gépek replikálásának engedélyezése
 
@@ -86,18 +86,20 @@ Ezután ellenőrizheti a forrásgép tulajdonságait. Ne feledje, hogy az Azure 
 
 1. Kattintson a **beállítások** > **replikált elemek** >, majd válassza ki a gépet. A **Essentials** lap gép beállításaira és állapotára vonatkozó információkat jeleníti meg.
 2. A **Tulajdonságok** résznél tekintheti meg a virtuális gép replikációs és feladatátvételi adatait.
-3. A **Számítás és hálózat** > **Számítási tulajdonságok** résznél adhatja meg az Azure virtuális gép nevét és a cél méretét. Módosítsa a nevét, hogy megfeleljenek az Azure követelményeinek, szükség esetén.
+3. A **számítás és hálózat** > **számítási tulajdonságok**, több virtuális gép propoerties módosíthatja:
+* Az Azure virtuális gép neve – a nevét, hogy megfeleljenek az Azure követelményeinek, szükség esetén módosítása
+* Cél virtuális gép méretét vagy típusa – az alapértelmezett Virtuálisgép-méret van kiválasztva alapján a forrás virtuális gép méretét. Kiválaszthat egy másik Virtuálisgép-méretet, a feladatátvétel előtt bármikor igényei alapján. Vegye figyelembe, hogy a Virtuálisgép-lemez mérete a forráslemez mérete is alapul, és csak azok a feladatátvétel után módosult. További információ a [Standard](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets) és [prémium szintű](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) méretek és iops-t.
 
     ![Számítás és hálózat tulajdonságai](./media/vmware-azure-enable-replication/vmproperties.png)
 
-4.  Kiválaszthat egy [erőforráscsoport](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) , amely egy gép részévé válik a feladatátvétel után. Ezt a beállítást, a feladatátvétel előtt bármikor módosíthatja. Közzététele a feladatátvétel, ha a gép telepít át egy másik erőforráscsoportban található, a gép break védelmi beállításait.
-5. Kiválaszthat egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Ha a gép van szüksége lehet egy feladatátvétel után része. Bár a rendelkezésre állási választjuk, vegye figyelembe, hogy:
+*  Erőforráscsoport – választhat egy [erőforráscsoport](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) , amely egy gép részévé válik a feladatátvétel után. Ezt a beállítást, a feladatátvétel előtt bármikor módosíthatja. Közzététele a feladatátvétel, ha a gép telepít át egy másik erőforráscsoportban található, a gép break védelmi beállításait.
+* Rendelkezésre állási csoport – választhat egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Ha a gép van szüksége lehet egy feladatátvétel után része. Bár a rendelkezésre állási választjuk, vegye figyelembe, hogy:
 
     * Csak a megadott erőforrás-csoportba tartozó rendelkezésre állási csoportok jelennek meg.  
     * Gépek más virtuális hálózatokkal nem lehet az azonos rendelkezésre állási csoport része.
     * Csak az azonos méretű virtuális gépeket egy rendelkezésre állási csoport részeként is szerepelhetnek.
-5. Megtekintheti, és adja hozzá a célként megadott hálózat, alhálózat és az Azure virtuális Géphez rendelt IP-cím kapcsolatos információkat.
-6. A **lemezek**, az operációs rendszer és az adatlemezek láthatja a replikálandó virtuális Gépen.
+4. Megtekintheti, és adja hozzá a célként megadott hálózat, alhálózat és az Azure virtuális Géphez rendelt IP-cím kapcsolatos információkat.
+5. A **lemezek**, az operációs rendszer és az adatlemezek láthatja a replikálandó virtuális Gépen.
 
 ### <a name="configure-networks-and-ip-addresses"></a>Hálózatok és IP-címek konfigurálása
 
@@ -120,7 +122,7 @@ Tudjon meg többet [Azure Hybrid Benefit](https://aka.ms/azure-hybrid-benefit-pr
 
 ## <a name="common-issues"></a>Gyakori problémák
 
-* Minden lemez kevesebb, mint 1 TB méretű lehet.
+* Mindegyik lemez mérete kisebb, mint 4 TB-ig kell lennie.
 * Az operációsrendszer-lemez lehet egy egyszerű, és nem a dinamikus lemezeket.
 * Generation 2/UEFI-kompatibilis virtuális gépek operációsrendszer-családnak Windows kell lennie, és a rendszerindító lemez 300 GB-nál kisebbnek kell lennie.
 
@@ -128,4 +130,5 @@ Tudjon meg többet [Azure Hybrid Benefit](https://aka.ms/azure-hybrid-benefit-pr
 
 Miután védelmi befejeződik, és a gép elérte a védett állapotba, próbálkozzon egy [feladatátvételi](site-recovery-failover.md) ellenőrizze, hogy az alkalmazás betölt az Azure-ban, vagy nem.
 
-Ha azt szeretné, hogy tiltsa le a védelmet, megtudhatja, hogyan [regisztráció és a védelem beállításainak tiszta](site-recovery-manage-registration-and-protection.md).
+* Ismerje meg, hogyan [regisztráció és a védelem beállításainak tiszta](site-recovery-manage-registration-and-protection.md) , tiltsa le a replikációt.
+* Ismerje meg, hogyan [automatizálása a Powershell használata a virtuális gépek replikálása](vmware-azure-disaster-recovery-powershell.md)

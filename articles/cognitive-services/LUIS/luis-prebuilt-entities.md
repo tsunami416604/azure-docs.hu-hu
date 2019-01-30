@@ -7,16 +7,16 @@ author: diberry
 ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: 9e0d1ae39431ca75b43680981802b82f16703d4d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 160721560b6cf311f146cd0f48ae719d95b30a0f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103931"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206281"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Előre összeállított entitások felismerésére általános adattípusok
 
@@ -60,7 +60,7 @@ Teszt új célja a végponton által hozzáadott értéket a **q** paraméter. H
 
  Jelölje meg a jogkivonatot, ahol egy része már meg van jelölve az előre összeállított entitások, az ilyen típusú távolítsa el az előre összeállított entitások a LUIS-alkalmazásból. Nem kell az alkalmazás betanításához. Ezután jelölje meg a jogkivonatot a saját egyéni entitást. Ezután adja hozzá az előre összeállított entitások vissza a LUIS-alkalmazás.
 
- Egy másik példa, fontolja meg az utterance (kifejezés) osztály beállítások listájának: `I want first year spanish, second year calculus, and fourth year english lit.` a LUIS alkalmazás rendelkezik a Prebuild sorszámot ad hozzá, ha `first`, `second`, és `fourth` a sorszámok már lesz megjelölve. Ha szeretné rögzíteni azt a sorszámot, és az osztályt, összetett entitás létrehozása, és tegye azokat az előre összeállított sorszámnál és az egyéni entitás osztály neveként.
+ Egy másik példa vegye figyelembe az utterance (kifejezés), osztály beállítások listája: `I want first year spanish, second year calculus, and fourth year english lit.` Ha a Prebuild sorszámot ad hozzá, a LUIS alkalmazás `first`, `second`, és `fourth` a sorszámok már lesz megjelölve. Ha szeretné rögzíteni azt a sorszámot, és az osztályt, összetett entitás létrehozása, és tegye azokat az előre összeállított sorszámnál és az egyéni entitás osztály neveként.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]

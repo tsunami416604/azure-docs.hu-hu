@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 469d553d60eb7c5cdfac3bc16f1fb479bd84cb70
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 7d52af9e3948f40936795efab5b6671c3f71007a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886206"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206747"
 ---
 # <a name="azure-data-box-system-requirements"></a>Az Azure Data Box rendszerre vonatkozó követelmények
 
@@ -48,7 +48,7 @@ Itt van az adatmásolási műveletet keresztül az ügyfelek a Data Box-eszköz 
 
 ### <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
-Íme a támogatott tárfiókok és a tárolási típusokat a Data Box-eszköz listáját. Összes különböző típusú tárfiókok és a teljes képességek teljes listáját lásd: [a tárfiókok típusai](/azure/storage/common/storage-account-overview.md#types-of-storage-accounts).
+Íme a támogatott tárfiókok és a tárolási típusokat a Data Box-eszköz listáját. Összes különböző típusú tárfiókok és a teljes képességek teljes listáját lásd: [a tárfiókok típusai](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 
 | **Storage-fiók / támogatott tárolási típusok** | **Blokkblob** |**Lapblob*** |**Az Azure Files** |**Megjegyzések**|
 | --- | --- | -- | -- | -- |

@@ -5,16 +5,16 @@ description: Projekt létrehozása az egyéni a fordítót hogyan?
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 4e5ac4386af55855c5240f89557feafd4a93adfb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 9886ba39846d9489a66c57bcc614f90e2bf70d4e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627427"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218104"
 ---
 # <a name="create-a-project"></a>Projekt létrehozása
 
@@ -30,17 +30,17 @@ Projekt létrehozása akkor jön létre a modell első lépését.
 
 2.  A párbeszédpanelen adja meg a projektet a következő információkat:
 
-    a.  Projekt neve (kötelező): a projekt adjon egy egyedi, jelentéssel bíró nevet. Nem kell említik a nyelveket a cím belül.
+    a.  Project name (required): Olyan egyedi, jelentéssel bíró nevet adjon a projekthez. Nem kell említik a nyelveket a cím belül.
 
-    b.  Leírás: Egy a projekt rövid ismertetése. Ez a leírás nincs befolyása az egyéni a fordítót vagy az eredményül kapott egyéni rendszer viselkedésének, de segíthet megkülönböztetni a különböző projektek.
+    b.  Leírás: A projekt rövid összefoglalása. Ez a leírás nincs befolyása az egyéni a fordítót vagy az eredményül kapott egyéni rendszer viselkedésének, de segíthet megkülönböztetni a különböző projektek.
 
-    c.  Nyelvi pár (kötelező): azt a nyelvet, Ön fordítása, és közül.
+    c.  Nyelvi pár (kötelező): Válassza ki a, hogy Ön fordítása és közül.
 
-    d.  Kategória (kötelező): válassza ki a projektnek leginkább megfelelő kategóriát. A kategória terminológia és a dokumentumokat szeretne lefordítani stílusát ismerteti.
+    d.  Kategória (kötelező): Válassza ki a projektnek leginkább megfelelő kategóriát. A kategória terminológia és a dokumentumokat szeretne lefordítani stílusát ismerteti.
 
-    e.  Kategória leírása: használja ezt a mezőt, mezőt vagy iparági dolgozik, amelyben jobban leírása. Például, ha a kategória orvoslás, akkor előfordulhat, hogy egy adott dokumentum, ilyen műtét vagy hozzáadása pediatrics. A leírás nem befolyásolják a korábbinál egyéni a fordítót vagy az eredményül kapott egyéni rendszer rendelkezik.
+    e.  Kategória leírása: Ez a mező segítségével jobban ismertetik az adott mező vagy iparági dolgozik, amelyben. Például, ha a kategória orvoslás, akkor előfordulhat, hogy egy adott dokumentum, ilyen műtét vagy hozzáadása pediatrics. A leírás nem befolyásolják a korábbinál egyéni a fordítót vagy az eredményül kapott egyéni rendszer rendelkezik.
 
-    f.  Projekt felirat: A [projekt címke](workspace-and-project.md#project-labels) különbséget tesz a ugyanarra a nyelv két és kategória a projektek között. Ajánlott eljárásként használja a címke *csak* Ha tervezi az azonos nyelv párokból és azonos kategória több projektet és szeretnének hozzáférni e egy másik CategoryID a projektek. Ne használja ezt a mezőt, csak egy kategória rendszerek létrehozásakor. Egy projekt címke nincs kötelező és nem hasznos nyelvi párok között. A címkét több projektet is használhat.
+    f.  Projekt címkét: A [projekt címke](workspace-and-project.md#project-labels) különbséget tesz a ugyanarra a nyelv két és kategória a projektek között. Ajánlott eljárásként használja a címke *csak* Ha tervezi az azonos nyelv párokból és azonos kategória több projektet és szeretnének hozzáférni e egy másik CategoryID a projektek. Ne használja ezt a mezőt, csak egy kategória rendszerek létrehozásakor. Egy projekt címke nincs kötelező és nem hasznos nyelvi párok között. A címkét több projektet is használhat.
 
     ![Projekt párbeszédpanel létrehozása](media/how-to/how-to-create-project-dialog.png)
 
@@ -52,13 +52,13 @@ Az egyéni a fordítót kezdőlapja a munkaterületen jeleníti meg az első 10 
 
 Miután egy projektet, az alábbiakat fogja látni a lapot:
 
-- CategoryID: Egy CategoryID elkülönített változó összefűzésével előállítjuk a munkaterület azonosítója, a projekt címke és a kód létrejön. A Translator Text API a CategoryID használata egyéni fordítások beolvasásához.
+- CategoryID: Egy CategoryID elkülönített változó összefűzésével előállítjuk a munkaterület azonosítója, a projekt címke és a kód jön létre. A Translator Text API a CategoryID használata egyéni fordítások beolvasásához.
 
-- Train gomb: Ez a gomb segítségével indítsa el a [a modell tanítása](how-to-train-model.md).
+- Train gombra: Ez a gomb segítségével indítsa el a [a modell tanítása](how-to-train-model.md).
 
-- Hozzáadás gomb dokumentumok: használni erre a gombra kattintva [dokumentumok feltöltése](how-to-upload-document.md).
+- Adja hozzá a dokumentumok gombra: Ezzel a gombbal való [dokumentumok feltöltése](how-to-upload-document.md).
 
-- Dokumentumok szűrőgombra: Ezzel a gombbal szűrőt, és keresse meg az adott dokumentum.
+- Szűrő dokumentumok gombra: A szűrő és keressen az adott dokumentum gomb használatával.
 
     ![Projekt részleteinek megtekintése](media/how-to/how-to-view-project.png)
 

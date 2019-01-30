@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 961bc2f5d8d619c5a1815b0f4be3b837f72513f4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 1f184d54c0d9edc8e203b697c06c2178436172ff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340035"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206936"
 ---
 # <a name="supported-languages"></a>Támogatott nyelvek
 
@@ -36,8 +36,8 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja `intera
 | en-GB | angol (Egyesült Királyság) |pl-PL | lengyel (Lengyelország) |
 | en-IN | Angol (India) | pt-BR | portugál (brazíliai)  |
 | en-NZ | angol (Új-Zéland) |PT-PT | portugál (általános)  |
-| hu-HU | angol (Egyesült Államok) | ru-RU | orosz (Oroszország) |
-| es-ES | Spanyol (Spanyolország) | SV-SE | svéd (Svédország) |
+| en-US | angol (Egyesült Államok) | ru-RU | orosz (Oroszország) |
+| es-ES | spanyol (spanyolországi) | SV-SE | svéd (Svédország) |
 | es-MX | spanyol (Mexikó) |zh-CN | Kínai (Mandarin, egyszerűsített)  |
 | fi-FI | finn (Finnország) |zh-HK | Kínai (Hongkong (KKT)) |
 | FR-hitelesítésszolgáltató | francia (Kanada) | zh-TW | Kínai (Mandarin, tajvani)|
@@ -51,6 +51,6 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja `conver
 |-----|-----|-----|-----|
 | ar – példa | Arab (Egyiptom), a modern standard | It-IT | olasz (Olaszország) |
 | de-DE | német (Németország) | ja-JP | japán (Japán) |
-| hu-HU | angol (Egyesült Államok) | pt-BR | portugál (brazíliai) |
-| es-ES | Spanyol (Spanyolország) | ru-RU | orosz (Oroszország) |
+| en-US | angol (Egyesült Államok) | pt-BR | portugál (brazíliai) |
+| es-ES | spanyol (spanyolországi) | ru-RU | orosz (Oroszország) |
 | FR-FR | francia (Franciaország) | zh-CN | Kínai (Mandarin, egyszerűsített) |

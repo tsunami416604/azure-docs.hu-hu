@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: fa25c144737c4d070b2dbd08700c68e617950e0d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 148efb47d123938c3914f36e1432d447e277b051
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452258"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210557"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -59,9 +59,9 @@ Kína | Kelet-Kína, Észak-Kína, Kína North2, Kína East2
 >
 > - A **Dél-Brazília** régió, hogy replikálhat és átadja a feladatokat a következők egyikét: USA déli középső Régiója, USA nyugati középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA és USA északi középső Régiója régióban. Megjegyzendő, hogy a Site Recovery csak engedélyezve Dél-brazíliai régióban, ahol a virtuális gépek védhetők a forrásrégióban, használható. Azt **nem használható egy cél DR régióban** bármely, az USA déli középső Régióját például az Azure-régióban. Folyamatban van a késés okát megfigyelt földrajzi távolságtól miatt javasoljuk, hogy válassza ki a Dél-Brazília kivételével bármely más amerikai régióban.
 > 
-> - Ha Ön **nem lehet megtekinteni az egy régióban** , ahová **hozzon létre egy tárolót a** majd ellenőrizze, hogy az előfizetés-erőforrások létrehozása az adott régióban hozzáféréssel rendelkezik. Példa: Ha nem képes tároló létrehozása a Dél-Franciaország, akkor az előfizetés nem rendelkezik hozzáféréssel Franciaország, Dél-régió. Adja meg az fájl támogatási jegyet a probléma típusa "előfizetés-kezelési" és a probléma "további általános kérdések a" tulajdonos "a XXX whitlelist-előfizetés az Azure-régió"
+> - Ha Ön **nem lehet megtekinteni az egy régióban** , ahová **hozzon létre egy tárolót a** majd ellenőrizze, hogy az előfizetés-erőforrások létrehozása az adott régióban hozzáféréssel rendelkezik. Példa: Ha nem képes tároló létrehozása a Dél-Franciaország, akkor az előfizetés nem rendelkezik hozzáféréssel Franciaország, Dél-régió. Adja meg az fájl támogatási jegyet a probléma típusa "előfizetés-kezelési" és a probléma "további általános kérdések a" tulajdonos "engedélyezett a XXX-előfizetés az Azure-régió"
 > 
-> - Ha Ön **nem lehet megtekinteni az egy régióban** földrajzi fürtön belüli **replikáció engedélyezése során** majd ellenőrizze, hogy az előfizetés virtuális gép létrehozása az adott régióban hozzáféréssel rendelkezik. Példa: Ha szeretné védeni a virtuális gépek közép-Franciaország, Franciaország, Dél- és nem jelenik meg Dél-Franciaország a régió alatt legördülő akkor az előfizetéssel nem fér hozzá az adott régióban virtuális gép üzembe helyezéséhez. Adja meg az fájl támogatási jegyet a probléma típusa "előfizetés-kezelési" és a probléma "további általános kérdések a" tulajdonos "a XXX whitlelist-előfizetés az Azure-régió"
+> - Ha Ön **nem lehet megtekinteni az egy régióban** földrajzi fürtön belüli **replikáció engedélyezése során** majd ellenőrizze, hogy az előfizetés virtuális gép létrehozása az adott régióban hozzáféréssel rendelkezik. Példa: Ha szeretné védeni a virtuális gépek közép-Franciaország, Franciaország, Dél- és nem jelenik meg Dél-Franciaország a régió alatt legördülő akkor az előfizetéssel nem fér hozzá az adott régióban virtuális gép üzembe helyezéséhez. Adja meg az fájl támogatási jegyet a probléma típusa "előfizetés-kezelési" és a probléma "további általános kérdések a" tulajdonos "engedélyezett a XXX-előfizetés az Azure-régió"
 > - Régiók nem választhatja ki a fent említett földrajzi fürtök között.
 
 

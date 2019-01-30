@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 4b4010152622cd9a1d8111ac92dd1960e78d4601
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f3cb307a52cfddebfa97c1b8608549acdd89169d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125153"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215068"
 ---
 # <a name="grammar-format"></a>Szintaxisformátum
 
@@ -128,8 +128,8 @@ A következő táblázat felsorolja a támogatott `op` értékek az egyes attrib
 
 | Attribútum típusa | Op érték | Leírás | Index művelet
 |----|----|----|----|
-| Sztring | EQ | Karakterlánc pontos egyezés | egyenlő |
-| Sztring | starts_with | Előtag-egyeztetést karakterlánc | starts_with |
+| Karakterlánc | EQ | Karakterlánc pontos egyezés | egyenlő |
+| Karakterlánc | starts_with | Előtag-egyeztetést karakterlánc | starts_with |
 | Int32, Int64, dupla | EQ |  Numerikus pontos egyezés | egyenlő |
 | Int32, Int64, dupla | lt, a le, a BT, a ge | Numerikus egyenlótlenség match (<, < =, >, > =) | is_between |
 | Int32, Int64, dupla | starts_with | Előtag-egyeztetést a decimális jelölés érték | starts_with |

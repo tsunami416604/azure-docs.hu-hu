@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Arcok felismerése és bekeretezése egy képen az Android SDK használatával'
+title: 'Oktatóanyag: Észlelheti és keret arcok a képen az Android SDK-val'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban létrehozhat egy egyszerű Android-alkalmazást, amely a Face API-t használja és keret arcok a képen.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 11/12/2018
 ms.author: pafarley
-ms.openlocfilehash: 92344943d2ec19f6730387221974a001e6a2045a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 2c28aa58e64253d5a25dbdfc8f1473e0e462af57
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852894"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220008"
 ---
-# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: Android-alkalmazás készítése képeken lévő arcok észleléséhez és bekeretezéséhez
+# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: Keret arcok a képet, és Android-alkalmazás létrehozása
 
 Ebben az oktatóanyagban létrehozhat egy egyszerű Android-alkalmazás, amely az Azure Face API, a Java SDK-n keresztül az emberi arcok észlelése a képet. Az alkalmazás megjeleníti a kiválasztott kép, és megrajzolja az egyes észlelt face köré keretet.
 

@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: b03ee4ebf1113fd422d34ebf219461e75c4a5a45
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6ebf1abe6f3b115a254201184f47e6aad2febb2a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970763"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208176"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre támogatási mátrix
 
@@ -49,7 +49,7 @@ A következő tároló csak Linux rendszerű gépek replikálhatók:
 
 - Fájlrendszer (EXT3, ETX4, ReiserFS, XFS).
 - A többutas szoftver-eszköz Eseményleképező.
-- Kötetek kezelése (LVM2).
+- Volume manager (LVM2).
 - A HP CCISS vezérlő storage fizikai kiszolgálók nem támogatottak.
 - SUSE Linux Enterprise Server 11 SP3 csak támogatott a ReiserFS fájlrendszer.
 
@@ -64,7 +64,7 @@ Gazdagép - IPv6 | Nem
 Virtuálisgép - Vendég hálózati adapterek összevonása | Nem
 Vendég virtuális Gépen – IPv4 | Igen
 Vendég virtuális Gépen – IPv6 | Nem
-Gues virtuális gép – Windows/Linux - statikus IP-cím | Igen
+Vendég virtuális gép – Windows/Linux - statikus IP-cím | Igen
 Vendég virtuális gép – több hálózati Adapterrel | Igen
 
 

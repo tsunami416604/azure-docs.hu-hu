@@ -4,16 +4,16 @@ description: Anomáliaészlelő speciális algoritmusok használatával az idős
 services: cognitive-services
 author: tonyxing
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: c0c15f077a0a7dd302a377aa6f82ba2f8533d862
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: ad0af6137e2a127e2f9981c2707906514bf8c591
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456252"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215197"
 ---
 # <a name="what-is-anomaly-finder"></a>Mi az Anomáliaészlelő?
 
@@ -30,15 +30,15 @@ Tekintse meg, mit hozhat létre az API-val:
 
 ![Anomaly_Finder](./media/anomaly_detection1.png) 
 
-1. ábra: Értékesítési bevétel rendellenességek észlelése
+1. ábra: Rendellenességek észlelése értékesítési bevétel
 
 ![Anomaly_Finder](./media/anomaly_detection2.png)
 
-2. ábra: Megoszlásától észlelheti a szolgáltatáskérések
+2. ábra: A szolgáltatáskérések megoszlásától észlelése
 
 ## <a name="requirements"></a>Követelmények
 
-- Minimális adatok bemeneti time series: 13 adatok legalább pontjai nem egyértelmű periodicitás a time series legalább 4 ciklusokat, adatokat a time Series ismert periodicitás pontjait. 
+- A bemeneti time series minimális adatait: Legalább 13 adatok pontjai nem egyértelmű periodicitás a time series legalább 4 ciklusokat, adatokat a time Series ismert periodicitás pontjait. 
 - Adatok sértetlensége: elkülöníti a adatpontok azonos időközének és a nem hiányzó pontok sorozat idő. 
 
 ## <a name="identify-anomalies"></a>Utaló rendellenességek észlelésére

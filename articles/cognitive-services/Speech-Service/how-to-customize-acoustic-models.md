@@ -1,21 +1,21 @@
 ---
-title: 'Oktatóanyag: Akusztikai modell létrehozása a Speech Service segítségével'
+title: 'Oktatóanyag: Az akusztikai modell létrehozásához a Speech szolgáltatással'
 titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan hozhat létre akusztikai modellt az Azure Cognitive Services Speech Service szolgáltatásával.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 8bee93c4bb932730000a06cc2bc3fe5a3e330a1f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215242"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217628"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Oktatóanyag: Egyéni akusztikai modell létrehozása
 
@@ -41,12 +41,12 @@ A Speech Service-előfizetések az Azure Portalon való létrehozásával kapcso
 
 Egy adott tartományhoz tartozó akusztikai modell testreszabásához beszédadatok gyűjteményére van szükség. A gyűjtemény néhány kimondott szövegtől több száz órányi beszédig terjedhet. A gyűjtemény beszédadatokat tartalmazó hangfájlokból, valamint az ezek mindegyikének szöveges átiratát tartalmazó szövegfájlból áll. A hangadatoknak reprezentatívnak kell lenniük arra a beszédhelyzetre nézve, amelyhez a beszédfelismerőt használni kívánja.
 
-Például:
+Példa:
 
 * Ha jobb beszédfelismerést szeretne elérni egy zajos gyári környezetben, a hangfájloknak zajos gyárban felvett beszédmintákat kell tartalmazniuk.
 * Ha egy adott beszélőre szeretné optimalizálni a felismerés hatékonyságát – például ha Franklin D. Roosevelt elnök kandalló előtti beszélgetéseinek átiratát szeretné elkészíteni –, az audiofájloknak minél több, csak az adott beszélőtől származó példát kell tartalmazniuk.
 
-Az akusztikai modell testreszabásához készült akusztikai adatkészlet két részből áll: (1) a beszédadatokat tartalmazó hangfájlok készletéből, valamint (2) a hangfájlok mindegyikének szöveges átiratát tartalmazó fájlból.
+Az akusztikai modell testreszabása egy akusztikai adatkészletet a két részből áll: (1) hang, a beszéd-adatokat tartalmazó fájlok és (2) egy fájlt, amely tartalmazza az összes hangfájlok beszédátírás egy készlete.
 
 ### <a name="audio-data-recommendations"></a>Hangadatokkal kapcsolatos javaslatok
 
@@ -85,7 +85,7 @@ Az egyéni **diktálási** nyelvi modellekben támogatott összes nyelv listáj�
 
 Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorának egy hangfájl nevét és az annak megfelelő átiratot kell tartalmaznia. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
 
-  Például:
+  Példa:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -112,7 +112,7 @@ A **Name** (Név) és a **Description** (Leírás) mezőben adja meg a megfelel�
 
 A **Transcriptions file (.txt)** (Átiratfájl, .txt) és az **Audio files (.zip)** (Hangfájlok, .zip) mezőben a **Browse** (Böngészés) gombra kattintva válassza ki az egyszerű szöveges átiratfájlt, valamint a WAV-fájlokat tartalmazó tömörített archívumot. Ha elvégezte az előkészítést, válassza az **Import** (Importálás) lehetőséget az adatok feltöltéséhez. A rendszer feltölti az adatokat. Nagyobb adatkészlet esetén az importálási folyamat több percig is eltarthat.
 
-Ha a feltöltés befejeződött, a rendszer visszalép az **Acoustic Datasets** (Akusztikai adatkészletek) adattáblára. Megjelenik egy, az akusztikai adatkészletre vonatkozó bejegyzés. Figyelje meg, hogy a rendszer egy egyedi azonosítót (GUID) rendelt az adatkészlethez. Az adatkészlet mellett megjelenik annak aktuális állapota: feldolgozásra várva *NotStarted* (Nincs elkezdve), az érvényesítés során *Running* (Fut), majd *Complete* (Kész), ha az adatok használatra készek.
+Ha a feltöltés befejeződött, a rendszer visszalép az **Acoustic Datasets** (Akusztikai adatkészletek) adattáblára. Megjelenik egy, az akusztikai adatkészletre vonatkozó bejegyzés. Figyelje meg, hogy a rendszer egy egyedi azonosítót (GUID) rendelt az adatkészlethez. Az adatok aktuális állapotát jeleníti meg: *NotStarted* , várólistára kerülnek feldolgozásra, miközben *futtató* alatt áll az érvényesítési, miközben és *Complete* amikor az adatok készen áll a használatra.
 
 Az adatok érvényesítéséhez a rendszer egy sor ellenőrzést végez – ellenőrzi a hangfájlok fájlformátumát, hosszát és mintavételezési frekvenciáját, valamint az átiratfájlok fájlformátumát, illetve némi szövegnormalizálást hajt végre.
 
@@ -141,13 +141,13 @@ Az **Acoustic Data** (Akusztikai adatok) legördülő listából válassza ki a 
 
 ![A Create Acoustic Model (Akusztikai modell létrehozása) lap](media/stt/speech-acoustic-models-create2.png)
 
-A feldolgozás befejezése után lehetősége van tesztelni az új modell pontosságát. Ez egy megadott akusztikai adatkészletnek az egyéni akusztikai modell használatával történő diktálásos értékelését, majd az arról való jelentéskészítést jelenti. A teszt elvégzéséhez jelölje be az **Accuracy Testing** (Pontossági tesztelés) jelölőnégyzetet. Ezután válassza ki a nyelvi modellt a legördülő menüből. Ha még nem hozott létre egyéni nyelvi modellt, a legördülő listában csak az alap nyelvi modellek jelennek meg. A megfelelő nyelvi modell kiválasztásával kapcsolatban lásd [az egyéni nyelvi modell létrehozását ismertető oktatóanyagot](how-to-customize-language-model.md).
+A feldolgozás befejezése után lehetősége van tesztelni az új modell pontosságát. Ez egy megadott akusztikai adatkészletnek az egyéni akusztikai modell használatával történő diktálásos értékelését, majd az arról való jelentéskészítést jelenti. A teszt elvégzéséhez jelölje be az **Accuracy Testing** (Pontossági tesztelés) jelölőnégyzetet. Ezután válassza ki a nyelvi modellt a legördülő menüből. Ha még nem hozott létre egyéni nyelvi modellt, a legördülő listában csak az alap nyelvi modellek jelennek meg. Válassza ki a legmegfelelőbb nyelvi modell, lásd: [oktatóanyag: Hozzon létre egy egyéni nyelvi modell](how-to-customize-language-model.md).
 
 Végül válassza ki az egyéni modell értékeléshez használni kívánt akusztikai adatkészletet. Ha pontossági tesztelést végez, annak érdekében, hogy valósághű képet kapjon a modell teljesítményéről, fontos olyan akusztikai adatkészletet kiválasztani, amelyik különbözik a modell elkészítéséhez felhasznált adatkészlettől. A betanítási adatokon végzett pontossági tesztelés nem teszi lehetővé az alkalmazott modell valós körülmények közötti működésének értékelését. Az eredmény túlságosan optimista lesz. Azt is vegye figyelembe, hogy a pontossági tesztelés 1000 kimondott szövegre van korlátozva. Ha a teszteléshez használt akusztikai adatkészlet ennél nagyobb, csak az első 1000 kimondott szöveg lesz értékelve.
 
 Amikor készen áll a testreszabási folyamat indítására, válassza a **Create** (Létrehozás) lehetőséget.
 
-Az akusztikai modellek táblázatában egy, az új modellhez tartozó bejegyzés jelenik meg. A táblázatban megjelenik a folyamat állapota is: *Waiting* (Várakozás), *Processing* (Feldolgozás) vagy *Complete* (Befejezve).
+Az akusztikai modellek táblázatában egy, az új modellhez tartozó bejegyzés jelenik meg. A tábla is a folyamat állapotát jeleníti meg: *Várakozás*, *feldolgozása*, vagy *teljes*.
 
 ![Az Acoustic Models (Akusztikai modellek) lap](media/stt/speech-acoustic-models-creating.png)
 

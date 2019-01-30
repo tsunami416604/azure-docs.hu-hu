@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 69e2c094e1fca57d0dddc662cc1dae6453897c38
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2317341d508f6e4f681c396f649179691f5485f3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079109"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208891"
 ---
 # <a name="try-the-speech-service-for-free"></a>Próbálja ki ingyenesen a Beszédszolgáltatást
 
@@ -123,5 +123,5 @@ Régió létrehozott kulcsok csak az adott régióban érvényesek. Próbál has
 Hajtsa végre a 10 perces gyors útmutatók, vagy tekintse meg az SDK-minták:
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: A C# beszédfelismerést](quickstart-csharp-dotnet-windows.md)
-> [beszéd SDK-minták](speech-sdk.md#get-the-samples)
+> [Rövid útmutató: A beszédfelismerést C# ](quickstart-csharp-dotnet-windows.md) 
+>  [beszéd SDK-minták](speech-sdk.md#get-the-samples)

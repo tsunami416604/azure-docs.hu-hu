@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Mondathosszok lekérése, Node.js – Translator Text API'
+title: 'Gyors útmutató: Első mondat visszaadni, a node.js-szel – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan állapíthatja meg a mondatok hosszúságát (karakterben) a Node.js és a Translator Text REST API használatával.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 09d0c855aada753b0a3e594055ec188c2698e677
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b27bad7b3e34353ec7e2d33cab3614affc31322b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999014"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215554"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-with-nodejs"></a>Rövid útmutató: A Translator Text API használata mondatok hosszúságának meghatározásához a Node.js-sel
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-with-nodejs"></a>Gyors útmutató: A Translator Text API segítségével meghatározhatja, mondat hossza, a node.js használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan állapíthatja meg a mondatok hosszúságát (karakterben) a Node.js és a Translator Text REST API használatával.
 
@@ -68,7 +68,7 @@ if (!subscriptionKey) {
 A kérelemmodulon keresztül elérhető `request()` metódus lehetővé teszi a HTTP-metódus, az URL-cím, a kérelemparaméterek, a fejlécek és a JSON-törzs `options` objektumként való átadását. Az alábbi kódrészletben a kérelmet fogjuk konfigurálni:
 
 >[!NOTE]
-> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: felosztása mondat](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: Töréspont mondat](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
 ```javascript
 let options = {

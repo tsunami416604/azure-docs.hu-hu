@@ -6,22 +6,22 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87df00ae5ca12b168f2e1c03850da2e94cec350b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a14a685ba80dbd5e7e3d44e9032e5baaad5ef3fe
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239302"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208635"
 ---
 # <a name="analyze-method"></a>Elemzési módszer
 
 > [!IMPORTANT]
-> A nyelvi elemzés előzetes verziója 2018. augusztus 9 volt leszerelése. Azt javasoljuk, [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) szöveg feldolgozásra és elemzésre.
+> A Linguistic Analysis előzetes verzióját 2018. augusztus 9-én visszavontuk. A szövegek feldolgozásához és elemzéséhet az [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) javasoljuk használni.
 
 A **elemzése** REST API egy adott természetes nyelvű bemeneti elemzésére szolgál.
 Amely is járhat, csak keresése a [mondatokra és lexikális](Sentences-and-Tokens.md) belül, amelyek bemeneti, keresés, a [része a beszéd, a címkék](POS-tagging.md), vagy kereséséhez a [constitutency fa](Constituency-Parsing.md).
@@ -38,11 +38,11 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-Name (Név) | Típus | Szükséges | Leírás
+Name (Név) | Typo | Kötelező | Leírás
 -----|-------|----------|------------
-**Nyelv**    | sztring | Igen | A kétbetűs ISO nyelv kódja elemzéshez használható. Például angol nyelven az "en".
+**language**    | sztring | Igen | A kétbetűs ISO nyelv kódja elemzéshez használható. Például angol nyelven az "en".
 **analyzerIds** | karakterláncok | Igen | Az elemzők a alkalmazni GUID azonosítók listája. További információ az elemzők dokumentációjában talál.
-**Szöveg**        | sztring | Igen | Nyers bemeneti elemezni. Ez lehet például egy szót vagy kifejezést, egy teljes mondatot, vagy egy teljes bekezdés vagy discourse rövid karakterlánc.
+**text**        | sztring | Igen | Nyers bemeneti elemezni. Ez lehet például egy szót vagy kifejezést, egy teljes mondatot, vagy egy teljes bekezdés vagy discourse rövid karakterlánc.
 
 ## <a name="response-json"></a>Válasz (JSON)
 
@@ -70,7 +70,7 @@ Eredmény | mondat objektumok listája | a szövegben azonosított mondat határ
 [x] eredményt. Token [y]. RawToken | sztring | Ezt a jogkivonatot, mielőtt normalizálási belül a karakterek |
 [x] eredményt. Token [y]. NormalizedToken | sztring | a karakter, biztonságosan használható legyen a normalizált űrlap egy [elemzési fa](Constituency-Parsing.md); például egy nyitó zárójel karakter "(" - LRB - válik |
 
-Példabemenet: "Ez egy tesztművelet. A vállalati hello. "
+Példabemenet: "Ez egy tesztművelet. Hello.'
 Példa JSON-választ:
 ```json
 [

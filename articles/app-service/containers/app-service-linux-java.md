@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 653d88aafc683b8a67e93945c62a99bbcf8c92fc
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 61bbc65c543801b0f783d01dfb803f47dbcf8a07
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900674"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215299"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -28,7 +28,7 @@ Ez az útmutató a főbb fogalmakat és a Linux App Service-ben használata Java
 
 ## <a name="logging-and-debugging-apps"></a>Bejelentkezés és hibakeresés alkalmazások
 
-Teljesítményjelentések készítésére, forgalom Vizualizációk és egészségügyi checkups eeach alkalmazás az Azure Portalon keresztül érhetők el. Tekintse meg a [diagnosztikai áttekintése az Azure App Service](/azure/app-service/overview-diagnostics) eléréséhez, és ezek a diagnosztikai eszközök használatával kapcsolatban.
+Teljesítményjelentések készítésére, forgalom Vizualizációk és egészségügyi checkups az egyes alkalmazások az Azure Portalon keresztül érhetők el. Tekintse meg a [diagnosztikai áttekintése az Azure App Service](/azure/app-service/overview-diagnostics) eléréséhez, és ezek a diagnosztikai eszközök használatával kapcsolatban.
 
 ## <a name="application-performance-monitoring"></a>Alkalmazásteljesítmény-figyelés
 

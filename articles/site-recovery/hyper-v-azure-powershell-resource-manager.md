@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: c20f61788086806d3eebb62d35b7ac9fbcbd6fb9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f4e1b25133914a65f34e281c145d7db5969b0581
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846929"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208023"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Az Azure-bA vészhelyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és Azure Resource Manager használatával
 
@@ -43,11 +43,11 @@ Emellett az adott példa az ebben a cikkben leírt előfeltételei a következő
 * A Windows Server 2012 R2 vagy Microsoft Hyper-V Server 2012 R2 tartalmazó egy vagy több virtuális gépet futtató Hyper-V-gazdagép. A Hyper-V-kiszolgálók közvetlenül vagy proxyn keresztül csatlakozniuk az internethez.
 * A replikálni kívánt virtuális gépek meg kell felelnie az [ezekről az előfeltételekről](hyper-v-azure-support-matrix.md#replicated-vms).
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>1. lépés: Jelentkezzen be az Azure-fiókkal
+## <a name="step-1-sign-in-to-your-azure-account"></a>1. lépés: Jelentkezzen be az Azure-fiókjába
 
 1. Nyisson meg egy PowerShell-konzolt, és jelentkezzen be az Azure-fiókkal, az alábbi paranccsal. A parancsmag kimenetei weblap kéri a hitelesítő adatait: **Connect-AzureRmAccount**.
     - Azt is megteheti, megadhatja a fiók hitelesítő adatait a paramétert a **Connect-AzureRmAccount** parancsmag használatával a **-hitelesítő adat** paraméter.
-    - Ha Ön CSP-partner nevében egy bérlő dolgozik, adja meg az ügyfél egy bérlőt az elsődleges tartomány Bérlőazonosítója vagy a bérlő neve. Például: **Connect-AzureRmAccount-bérlő "fabrikam.com"**
+    - Ha Ön CSP-partner nevében egy bérlő dolgozik, adja meg az ügyfél egy bérlőt az elsődleges tartomány Bérlőazonosítója vagy a bérlő neve. Példa: **Connect-AzureRmAccount -Tenant "fabrikam.com"**
 2. Társítsa az előfizetést szeretné használni a fiókot, mert egy fiók több előfizetéssel is rendelkezik:
 
     `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`
@@ -64,7 +64,7 @@ Emellett az adott példa az ebben a cikkben leírt előfeltételei a következő
 
     `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices` `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.SiteRecovery`.
 
-## <a name="step-2-set-up-the-vault"></a>2. lépés: A tároló beállítása
+## <a name="step-2-set-up-the-vault"></a>2. lépés: A tároló beállítása
 
 1. Hozzon létre egy Azure Resource Manager-erőforráscsoportot, amelyben létrehozza a tárolót, vagy használjon egy meglévő erőforráscsoportot. Hozzon létre egy új erőforráscsoportot a következő. $ResourceGroupName változó tartalmazza a létrehozandó erőforráscsoport nevét, és a $Geo változó tartalmazza az Azure-régió, amelyben létrehozza az erőforráscsoportot (például "Dél-Brazília").
 
@@ -84,7 +84,7 @@ A tárolási környezetet állítsa be a következőképpen:
 
 `Set-AsrVaultSettings -Vault $vault`
 
-## <a name="step-4-create-a-hyper-v-site"></a>4. lépés: Hozzon létre egy Hyper-V-hely
+## <a name="step-4-create-a-hyper-v-site"></a>4. lépés: A Hyper-V-hely létrehozása
 
 1. Következőképpen hozhat létre egy új Hyper-V-hely:
 
@@ -132,11 +132,11 @@ A Kezdés előtt vegye figyelembe, hogy a megadott tárfiók ugyanabban a régi�
         $protectionContainer = Get-AsrProtectionContainer
 3. A védelmi tároló módon a replikációs házirendhez hozzárendelni:
 
-     $Policy = get-AsrPolicy - FriendlyName $PolicyName $associationJob = New-AsrProtectionContainerMapping-nevet $mappingName-házirend $Policy - PrimaryProtectionContainer $protectionContainer [0]
+     $Policy = Get-AsrPolicy -FriendlyName $PolicyName   $associationJob  = New-AsrProtectionContainerMapping -Name $mappingName -Policy $Policy -PrimaryProtectionContainer $protectionContainer[0]
 
 4. Várjon, amíg a társítás feladat sikeresen befejeződik.
 
-## <a name="step-7-enable-vm-protection"></a>7. lépés: A virtuális gép védelmének engedélyezése
+## <a name="step-7-enable-vm-protection"></a>7. lépés: Virtuális gép védelmének engedélyezése
 
 1. Kérje le a megfelelő módon védeni kívánt virtuális gép védhető:
 

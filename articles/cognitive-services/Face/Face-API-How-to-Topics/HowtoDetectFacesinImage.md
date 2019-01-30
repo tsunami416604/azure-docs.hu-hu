@@ -1,23 +1,23 @@
 ---
-title: 'Példa: Arcfelismerés a képeken – Face API'
+title: 'Példa: Arcfelismerés képeken – Face API'
 titleSuffix: Azure Cognitive Services
 description: A Face API használatával felismerheti az arcokat a képeken.
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: a4c74ff70a4426abf97562bf997479a91afbf17a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: 8c89a43910a5e98286a82de8626870d3aec55b94
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124048"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214211"
 ---
-# <a name="example-how-to-detect-faces-in-image"></a>Példa: Hogyan lehet arcokat felismerni a képen
+# <a name="example-how-to-detect-faces-in-image"></a>Példa: Hogyan Arcfelismerés képen
 
 Ez az útmutató bemutatja, hogyan lehet képeken arcokat felismerni és kiemelni hozzá az olyan tulajdonságokat, mint a nem, életkor, testtartás. A példák a Face API ügyfélkódtár használatával C# nyelven íródtak. 
 
@@ -40,7 +40,7 @@ Ebben a példában a következő funkciókat mutatjuk be:
 
 A funkciók végrehajtásához szüksége lesz legalább egy jól kivehető arcot tartalmazó képre. 
 
-## <a name="step-1-authorize-the-api-call"></a>1. lépés: API-hívás engedélyezése
+## <a name="step-1-authorize-the-api-call"></a>1. lépés: Engedélyezze az API-hívás
 
 A Face API minden meghívásához előfizetési kulcs szükséges. Ezt a kulcsot vagy egy lekérdezési karakterlánc paramétereként kell átadni vagy a kérelem fejlécében lehet megadni. Az előfizetési kulcs lekérdezési karakterláncon keresztüli átadásához, példaként tekintse meg a [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) URL-kérését példaként:
 
@@ -49,12 +49,12 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription Key>
 ```
 
-Alternatív megoldásként az előfizetési kulcs a HTTP-kérés fejlécében is megadható: **ocp-apim-subscription-key: &lt;előfizetési kulcs&gt;** Ügyféloldali kódtár használata esetén az előfizetési kulcs átadása a FaceServiceClient osztály konstruktorán keresztül történik. Például:
+Alternatív megoldásként az előfizetési kulcs is megadható az a HTTP-kérelem fejléce: **ocp-apim-subscription-key: &lt;Az előfizetői&gt;**  egy ügyféloldali kódtár használatával, ha az előfizetési kulcs átadott keresztül FaceServiceClient osztály a konstruktor. Példa:
 ```CSharp
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>2. lépés: Kép feltöltése a szolgáltatásnak és arcfelismerés végrehajtása
+## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>2. lépés: A szolgáltatásba töltsön fel egy képet, és hajtsa végre az arcfelismerés
 
 Az arcfelismerés végeztetésének legalapvetőbb módja a kép közvetlen feltöltése. Ez „POST” kérés küldését jelenti application/octet-stream tartalomtípussal, az adatok olvasása JPEG képről történik. A kép maximális mérete 4 MB.
 
@@ -90,7 +90,7 @@ foreach (var face in faces)
 
 Az észlelt arcokkal visszaadott FaceRectangle tulajdonság lényegében pontokat jelent az arcon pixelben. Általában ez a téglalap tartalmazza a szemet, szemöldök, az orrot, a szájat – a homlok, a fül és az áll nincs benne. Teljes fejkép vagy mellkaskép körbevágásakor (fényképes igazolvány típusú kép) a téglalap alakú arckeret nagyítására lehet szükség, mert az arc területe egyes alkalmazásokhoz túl kicsi lehet. Hasznosnak bizonyul majd az arc pontosabb azonosításához az arcrészek használata (arcrészek megkeresése és az arc irányát azonosító mechanizmus), amit a következő rész ír majd le.
 
-## <a name="step-3-understanding-and-using-face-landmarks"></a>3. lépés: Arcrészek megismerés és használata
+## <a name="step-3-understanding-and-using-face-landmarks"></a>3. lépés: Megismeréséhez és használatához arcrészek
 
 Az arcrész egy sor jellegzetes pont az arcon; jellemzően olyan arcrészek pontjai, mint a pupilla, a szemzug vagy az orr. Az arcrészek olyan nem kötelező attribútumok, amelyek elemezhetők az arcfelismerés során. Vagy „true” logikai értéket ad a returnFaceLandmarks lekérdezési paraméternek a [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) hívásakor, vagy a FaceServiceClient osztály DetectAsync metódusában a nem kötelező returnFaceLandmarks paramétert használja ahhoz, hogy az arcrészek is szerepeljenek az észlelési eredményben.
 
@@ -145,7 +145,7 @@ Vector faceDirection = new Vector(
 
 Miután megismertük az arc irányát, a téglalap alakú keretet elforgathatjuk úgy, hogy az arccal egy síkba kerüljön. Egyértelmű, hogy arcrészek használata nagyobb részletességet és hasznot hoz.
 
-## <a name="step-4-using-other-face-attributes"></a>4. lépés: Egyéb arctulajdonságok használata
+## <a name="step-4-using-other-face-attributes"></a>4. lépés: Más arctulajdonságok segítségével
 
 Az arcrészek mellett a Face – API sok más jellemzőt is képes elemezni az arcon. Ezek az attribútumok a következők:
 

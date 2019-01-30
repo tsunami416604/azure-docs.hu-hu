@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panosper
-ms.openlocfilehash: a9bdb257137db0063d39f028a69e2164eccbdc31
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 71aa20c779ae0c73db3d7ce6f267524c5bf71ea5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340460"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214565"
 ---
 # <a name="migrate-deployments-to-the-new-pricing-model"></a>Az új díjszabási modellre központi telepítései áttelepítésének
 
@@ -42,7 +42,7 @@ Nyissa meg a [Custom Speech Service portal](http://cris.ai), és a meglévő tel
 
 ![A központi telepítések lap](../../../media/cognitive-services/custom-speech-service/custom-speech-deployments.png)
 
-## <a name="step-2-select-your-new-pricing-tier-in-the-azure-portal"></a>2. lépés: Új tarifacsomag kiválasztása az Azure Portalon
+## <a name="step-2-select-your-new-pricing-tier-in-the-azure-portal"></a>2. lépés: Új tarifacsomag kiválasztása az Azure Portalon
 1. Nyisson meg egy új böngészőlapot, és jelentkezzen be a [az Azure portal](http://ms.portal.azure.com/). 
 
 2. Az a **Cognitive Services** ablaktáblán, a a **előfizetések** listájához, válassza ki az egyéni beszédfelismerési előfizetés. 
@@ -57,7 +57,7 @@ Nyissa meg a [Custom Speech Service portal](http://cris.ai), és a meglévő tel
 
     ![A "Tarifacsomag kiválasztása" lap](../../../media/cognitive-services/custom-speech-service/custom-speech-update-pricing.png)
 
-## <a name="step-3-check-the-migration-status-in-the-custom-speech-service-portal"></a>3. lépés: Ellenőrizze a Custom Speech Service portálon a migrálás állapota
+## <a name="step-3-check-the-migration-status-in-the-custom-speech-service-portal"></a>3. lépés: A Custom Speech Service portálon az áttelepítési állapotának ellenőrzése
 A Custom Speech Service portálhoz adja vissza, és ellenőrizze az üzemelő példányok. (Ha a böngészőablak folyamatban, frissítse azt.) 
 
 A kapcsolódó központi telepítés állapotát kell vált *feldolgozása*. Az áttelepítés úgy is ellenőrizheti a **központi telepítési beállítások** oszlop. Most már megtalálhatja van skálázási egységek és a naplózási információkat. A skálázási egység tükröznie kell azt az előző tarifacsomagot. A naplózás is be kell kapcsolni, a táblázatban látható módon:
@@ -72,5 +72,5 @@ A kapcsolódó központi telepítés állapotát kell vált *feldolgozása*. Az 
 ## <a name="next-steps"></a>További lépések
 További oktatóanyagokban talál:
 * [Egyéni akusztikai modell létrehozása](cognitive-services-custom-speech-create-acoustic-model.md)
-* [Testreszabott nyelvi modell létrehozása](cognitive-services-custom-speech-create-language-model.md)
+* [Egyéni nyelvi modell létrehozása](cognitive-services-custom-speech-create-language-model.md)
 * [Hozzon létre egy egyéni hang-szöveg transzformációs végpontot](cognitive-services-custom-speech-create-endpoint.md)

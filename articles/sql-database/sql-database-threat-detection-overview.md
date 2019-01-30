@@ -11,24 +11,23 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 587c0718e333f121d0ff8b32d8c2a7dad6b8f774
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/29/2019
+ms.openlocfilehash: 2f52cbaf5d50eca13a87ff8e745b0f8baefbe23e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037140"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210369"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Az Azure SQL Database Threat Detection
 
 Az Azure SQL Fenyegetésészlelési [Azure SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek.
 
-A Fenyegetésészlelés része a [SQL komplex veszélyforrások elleni védelem](sql-advanced-threat-protection.md) (ATP) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. A Fenyegetésészlelés érheti el és a központi SQL ATP portálján felügyelt.
+Része a Fenyegetésészlelés az [SQL speciális adatbiztonság](sql-advanced-threat-protection.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. A Fenyegetésészlelés érheti el és a központi SQL ADS portálon keresztül kezelhetők.
 
 > [!NOTE]
 > Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
 
-Fenyegetés-észlelési szolgáltatás díjának 15 USD/hónap adatbázisok logikai kiszolgáló vagy a felügyelt példány esetében 30 napig ingyenesen.
 
 ## <a name="what-is-threat-detection"></a>Mi az a Fenyegetésészlelés
 
@@ -69,7 +68,7 @@ Rendellenes adatbázis-tevékenységek észlelésekor e-mail-értesítést kap. 
 
 ## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Ismerkedés a fenyegetésészlelési riasztásokat az adatbázis az Azure Portalon
 
-Az SQL Database Threat Detection a riasztásokat az integrálható [az Azure Security Center](https://azure.microsoft.com/services/security-center/). Egy élő SQL fenyegetés észlelése csempék belül az adatbázis és az Azure Portal SQL ATP paneleket az aktív fenyegetéseket állapotának nyomon követése.
+Az SQL Database Threat Detection a riasztásokat az integrálható [az Azure Security Center](https://azure.microsoft.com/services/security-center/). Az élő SQL threat detection csempék belül az adatbázis és az SQL-HIRDETÉSEK paneleket az Azure Portalon aktív fenyegetéseket állapotának nyomon követése.
 
 Kattintson a **fenyegetés-észlelési riasztás** , indítsa el az Azure Security Center riasztások lapon, és áttekintheti a aktív SQL észlelt veszélyforrások alapján az adatbázist, sem az adattárházra.
 
@@ -81,7 +80,7 @@ Kattintson a **fenyegetés-észlelési riasztás** , indítsa el az Azure Securi
 
 - Tudjon meg többet [egy adatbázis Fenyegetésészlelési](sql-database-threat-detection.md).
 - Tudjon meg többet [a felügyelt példány Fenyegetésészlelési](sql-database-managed-instance-threat-detection.md).
-- Tudjon meg többet [SQL komplex veszélyforrások elleni védelem](sql-advanced-threat-protection.md).
+- Tudjon meg többet [SQL biztonságú adatok](sql-advanced-threat-protection.md).
 - Tudjon meg többet [Azure SQL Database naplózási szolgáltatásával](sql-database-auditing.md)
 - Tudjon meg többet [Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-intro)
 - Díjszabási információkért tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/)  

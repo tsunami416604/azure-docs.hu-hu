@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Mondathosszok lekérése, Java – Translator Text API'
+title: 'Gyors útmutató: Mondat visszaadni, a Java - Get a Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban fog megtudhatja, miként állapítható meg, a Java és a Translator Text API használatával mondat hossza.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 941467e7756faa4fd06220bafbf733f42b43e8d9
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 26c1d8c703f8bb03d06e742d52d639cf3dd24634
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888579"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208397"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-java"></a>Gyors útmutató: A Translator Text API segítségével meghatározhatja a mondat hossza Java használatával
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-java"></a>Gyors útmutató: A Translator Text API segítségével meghatározhatja, mondat hossza Java használatával
 
 Ebben a rövid útmutatóban fog elsajátíthatja meghatározása a mondat hosszúságok a Java és a Translator Text API használatával.
 
@@ -26,7 +26,7 @@ Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [JDK 7 vagy újabb verzió](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle-t](https://gradle.org/install/)
+* [Gradle](https://gradle.org/install/)
 * Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
 
 ## <a name="initialize-a-project-with-gradle"></a>Gradle-projekt inicializálása

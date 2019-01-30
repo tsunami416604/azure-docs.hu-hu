@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szövegátalakítási szkript, PHP – Translator Text API'
+title: 'Gyors útmutató: Konvertálja a szöveget parancsfájl, a PHP - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API és PHP segítségével.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: e858e33864ddec211f2424c7380b5b421a3db0f5
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: becc73438762efb4b8cdda2be32e59feebc7dd20
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649474"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208194"
 ---
-# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-php"></a>Rövid útmutató: Szöveg átírása a Translator Text REST API (PHP) használatával
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-php"></a>Gyors útmutató: A Translator Text REST API (PHP) szöveg átírás
 
 Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API segítségével.
 

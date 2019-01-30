@@ -7,16 +7,16 @@ ms.custom: seodec18
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 58a62a5a882c6883c6fed31a7b95d949247e1bf1
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: d26a8ba40d145515d35de929682125ba9d3e397f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752605"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205779"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Oktatóanyag: Az entitás Pattern.any szabad formátumú adatokat nyerhet ki
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban a pattern.any entitást használja az adatok kimondott 
 
 > [!div class="checklist"]
 > * Példa-alkalmazás importálása
-> * Példa kimondott szöveg hozzáadása meglévő entitáshoz
+> * Kimondott példaszöveg hozzáadása meglévő entitáshoz
 > * Pattern.any entitás létrehozása
 > * Minta létrehozása
 > * Betanítás
@@ -38,7 +38,7 @@ Ebben az oktatóanyagban a pattern.any entitást használja az adatok kimondott 
 
 A pattern.any entitás lehetővé teszi szabad formátumú adatok keresését olyankor, amikor az entitás szövegezése nehézzé teszi az entitás végének a kimondott szöveg fennmaradó részétől való elkülönítését. 
 
-Ez az Emberierőforrások-alkalmazás segítséget nyújt az alkalmazottaknak a vállalati űrlapok keresésében. 
+Ez az Emberi Erőforrások alkalmazás segítséget nyújt az alkalmazottaknak a céges űrlapok keresésében. 
 
 |Kimondott szöveg|
 |--|
@@ -58,7 +58,7 @@ A könnyebb űrlapnévvel rendelkező kimondott szöveg a következőképpen né
 
 A változó hosszúságú szöveg olyan szavakat tartalmaz, amelyek megnehezítik a LUIS szolgáltatás számára az entitás végének meghatározását. A Pattern.any entitás mintában való használata lehetővé teszi az űrlapnév elejének és végének megadását, így a LUIS helyesen nyeri ki az űrlapnevet.
 
-|Példa kimondott szöveg sablonja|
+|Példa kimondott sablonszövegre|
 |--|
 |Hol található a {FormName}[?]|
 |Ki a szerzője ennek: {FormName}[?]|
@@ -102,7 +102,7 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 
     A leképezésben nem tudja címkézni az entitást, mivel a Pattern.any csak mintában érvényes. 
 
-    Ha a kivont adatokat olyan más entitásokba szeretné belefoglalni, mint a szám vagy a datetimeV2, létre kell hoznia egy összetett entitást, amely a Pattern.any entitást, valamint a számot és a datetimeV2-t is tartalmazza.
+    Ha a kivont adatokat olyan más entitásokba szeretné belefoglalni, mint a number vagy a datetimeV2, létre kell hoznia egy összetett entitást, amely a Pattern.any entitást, valamint a number és a datetimeV2 entitást is tartalmazza.
 
 ## <a name="add-a-pattern-that-uses-the-patternany"></a>A Pattern.any entitást használó minta hozzáadása
 
@@ -127,7 +127,7 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Tesztelje az új mintát a szabad formátumú adatok kinyerésére
+## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Az új minta tesztelése a szabad formátumú adatok kinyeréséhez
 1. A tesztelési panel megnyitásához válassza a felső sávon a **Test** lehetőséget. 
 
 2. Adja meg a következő kimondott szöveget: 

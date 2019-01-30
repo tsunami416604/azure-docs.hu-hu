@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 7c5a5cddca2aa8e459bde711465425bdd32c669e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 06e3139ffa958637721aae7e912b34070d307757
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964016"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207394"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Tudnivalók az Azure Site Recovery Deployment Planner a Hyper-V vész-helyreállítási az Azure-bA
 
@@ -84,7 +84,7 @@ Az eszköz Hyper-V esetén három fő fázisból áll: virtuálisgép-lista lek�
 
 | Kiszolgálókövetelmények | Leírás |
 |---|---|
-|Virtuálisgép-lista lekérésre, profilkészítés és az átviteli sebesség mérése |<ul><li>Operációs rendszer: Microsoft Windows Server 2016 vagy Microsoft Windows Server 2012 R2 </li><li>Gépkonfiguráció: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A virtuális gépet, ahol az Azure Site Recovery Deployment Planner fut, hozzá kell adni az összes Hyper-V-kiszolgáló TrustedHosts listájához.</li><li>A Hyper-V-kiszolgáló összes olyan virtuális gépét, amelyhez profilt kíván készíteni, hozzá kell adnia azon ügyfél virtuális gép TrustedHosts listájához, ahonnan az eszközt futtatja. [További információ kiszolgálók a TrustedHosts listához való hozzáadásáról](#steps-to-add-servers-into-trustedhosts-list). </li><li> Az eszközt rendszergazdai jogosultságokkal kell futtatni a PowerShellből vagy az ügyfél parancssori konzoljáról.</ul></ul>|
+|Virtuálisgép-lista lekérésre, profilkészítés és az átviteli sebesség mérése |<ul><li>Operációs rendszer: A Microsoft Windows Server 2016-ban vagy a Microsoft Windows Server 2012 R2 rendszerben </li><li>Gépkonfiguráció: 8 Vcpu, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A virtuális gépet, ahol az Azure Site Recovery Deployment Planner fut, hozzá kell adni az összes Hyper-V-kiszolgáló TrustedHosts listájához.</li><li>Ellátni kívánt összes Hyper-V kiszolgálók kell adni az ügyfél virtuális gép TrustedHosts listájához, ahol az eszközt futtatja. [További információ kiszolgálók a TrustedHosts listához való hozzáadásáról](#steps-to-add-servers-into-trustedhosts-list). </li><li> Az eszközt rendszergazdai jogosultságokkal kell futtatni a PowerShellből vagy az ügyfél parancssori konzoljáról.</ul></ul>|
 | Jelentéskészítés | 2013-as vagy újabb Microsoft Excellel rendelkező Windows PC vagy Windows Server |
 | Felhasználói engedélyek | Rendszergazdai fiók, amely hozzáférhet a Hyper-V-fürthöz/Hyper-V-gazdagéphez a virtuálisgép-lista lekérése és a profilkészítési műveletek során.<br>Az összes profillal ellátni kívánt gazdagépnek rendelkeznie kell egy tartományi rendszergazdai fiókkal, amelynek hitelesítő adatai, vagyis felhasználóneve és jelszava megegyezik
  |
@@ -110,14 +110,14 @@ Az eszköz Hyper-V esetén három fő fázisból áll: virtuálisgép-lista lek�
 Az eszköz .zip-mappába van csomagolva. Ugyanaz az eszköz támogatja a VMware – Azure és a Hyper-V – Azure vészhelyreállítási forgatókönyveket. Az eszközt Hyper-V – másodlagos hely vészhelyreállítási forgatókönyvekhez is használhatja, de hagyja figyelmen kívül a jelentés Azure-infrastruktúrára vonatkozó javaslatait.
 
 1.  Másolja a zip-fájlt azon Windows Serverre, ahol futtatni kívánja az eszközt. Az eszközt Windows Server 2012 R2 vagy Windows Server 2016 rendszeren futtathatja. A kiszolgáló számára hálózati hozzáférés szükséges a profillal ellátni kívánt virtuális gépeket tároló Hyper-V-fürthöz vagy Hyper-V-gazdagéphez való csatlakozáshoz. Javasoljuk, hogy a virtuális gép, ahol az eszközt futtatni kívánja és a Hyper-V-kiszolgáló, amely számára védelmet kíván biztosítani azonos hardverkonfigurációval rendelkezzen. Ez biztosítja, hogy az eszköz által jelentett elért átviteli sebesség megegyezik az Azure Site Recovery által replikáció közben elért tényleges átviteli sebességgel. Az átviteli sebesség kiszámítása a kiszolgálón elérhető hálózati sávszélességtől és a kiszolgáló hardverkonfigurációjától (processzor, tárterület stb.) függ. Az átviteli sebesség arról a kiszolgálóról lesz kiszámítva, ahol az eszköz fut az Azure-ra. Ha a kiszolgáló és a Hyper-V-kiszolgáló hardverkonfigurációja nem egyezik, az eszköz által jelentett elért átviteli sebesség nem lesz pontos.
-A virtuális gép ajánlott konfigurációja: 8 vCPU, 16 GB RAM, 300 GB HDD.
+A virtuális gép ajánlott konfigurációja: 8 Vcpu, 16 GB RAM, 300 GB HDD.
 
 1.  Csomagolja ki a .zip mappát.
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
-Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki. Üzembe helyezés Planner_v2.3.zip E:\ASR
+Példa: Másolja a .zip fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR Deployment Planner_v2.3.zip
 
-Üzembe helyezés Planner_v2.3\ASRDeploymentPlanner.exe E:\ASR
+E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Frissítés az üzembehelyezés-tervező a legújabb verzióra
 Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az alábbiak egyikét:

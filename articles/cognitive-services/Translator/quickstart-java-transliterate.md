@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szövegszkript átalakítása, Java – Translator Text API'
+title: 'Gyors útmutató: Konvertálja a szöveget parancsfájl, a Java - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban fog elsajátíthatja átírás (átalakítás) szöveg egy parancsfájlból származó Java és a Translator Text REST API egy másik használatával. Ebben a példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 1679445f73cd6b90423e05f985b83b818e32997e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: e42aa7ec796b3be912614ced5f3a4db47f67c124
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888868"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210055"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-java"></a>Rövid útmutató: Java használatával szöveg átbetűzés a Translator Text API használatával
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-java"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveg Java használatával
 
 Ebben a rövid útmutatóban fog elsajátíthatja átírás (átalakítás) szöveg egy parancsfájlból származó Java és a Translator Text REST API egy másik használatával. A megadott példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 
@@ -26,7 +26,7 @@ Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [JDK 7 vagy újabb verzió](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle-t](https://gradle.org/install/)
+* [Gradle](https://gradle.org/install/)
 * Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
 
 ## <a name="initialize-a-project-with-gradle"></a>Gradle-projekt inicializálása

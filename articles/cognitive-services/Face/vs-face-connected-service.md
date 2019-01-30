@@ -1,41 +1,41 @@
 ---
-title: 'Oktatóanyag: Face API C#'
+title: 'Oktatóanyag: A Face APIC#'
 titleSuffix: Azure Cognitive Services
 description: Hozzon létre egy egyszerű Windows-alkalmazást, amely a Cognitive Services Face API segítségével arcok jellemzőket észlel egy képen.
 services: cognitive-services
 author: ghogen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: ghogen
-ms.openlocfilehash: 70414674e563cf3703d2cf3ebc57f09afcdf2691
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: 00b1d3ed636bb1690e9d5026c558ca989de95375
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129522"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209434"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Csatlakozás a Cognitive Services arcfelismerési API-hoz a Visual Studio csatlakoztatott szolgáltatásai használatával
 
 A Cognitive Services arcfelismerési API segítségével észlelhetővé, elemezhetővé, rendszerezhetővé és címkézhetővé válnak az arcok a fényképeken.
 
-Ez a cikk és kísérő cikkek részletesen ismertetik, hogyan lehet a Visual Studio csatlakoztatott szolgáltatásait a Cognitive Services arcfelismerési API-ra használni. A funkció a Visual Studio 2017 15.7 és későbbi változatokban is elérhető, ha a Cognitive Services bővítmény telepítve van.
+Ez a cikk és kísérő cikkek részletesen ismertetik, hogyan lehet a Visual Studio csatlakoztatott szolgáltatásait a Cognitive Services arcfelismerési API-ra használni. Ez a funkció a Visual Studio 2017 15.7-es vagy újabb verzióiban érhető el, ha a Cognitive Services bővítmény telepítve van.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- **Visual Studio 2017 15.7 verzió** telepítése **webfejlesztési** tevékenységprofillal. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- A **Visual Studio 2017 15.7-es verziója**, telepített **webfejlesztési** számítási feladattal. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
 ## <a name="create-a-project-and-add-support-for-cognitive-services-face-api"></a>Projekt létrehozása és Cognitive Services Face API támogatás hozzáadása
 
-1. Hozzon létre egy új ASP.NET Core web projektet. Használja az üres projekt sablont. 
+1. Hozzon létre egy új ASP.NET Core web projektet. Használja az Üres projekt sablont. 
 
-1. A **Megoldáskezelőben**, válassza a **Csatlakoztatott szolgáltatás** > **hozzáadása** lehetőséget.
-   Megjelenik a projekthez adható szolgáltatásokat mutató Csatlakoztatott szolgáltatás oldal.
+1. A **Megoldáskezelőben** válassza az **Add** > **Connected Service** (Hozzáadás, Csatlakoztatott szolgáltatás) lehetőséget.
+   Megjelenik a Connected Service (Csatlakoztatott szolgáltatás) lap a projekthez adható szolgáltatásokkal.
 
    ![Csatlakoztatott szolgáltatás menüpont hozzáadása](./media/vs-face-connected-service/Connected-Service-Menu.PNG)
 
@@ -43,7 +43,7 @@ Ez a cikk és kísérő cikkek részletesen ismertetik, hogyan lehet a Visual St
 
    ![A csatlakoztatni kívánt szolgáltatás kiválasztása](./media/vs-face-connected-service/Cog-Face-Connected-Service-0.PNG)
 
-   Ha már bejelentkezett a Visual Studióba, és rendelkezik a fiókhoz társított Azure-előfizetéssel, akkor megjelenik egy oldal az előfizetéseit tartalmazó legördülő listával.
+   Ha bejelentkezett a Visual Studióba, és rendelkezik a fiókjához társított Azure-előfizetéssel, egy lap jelenik meg, amely az előfizetéseit tartalmazza egy legördülő listában.
 
    ![Válassza ki előfizetését.](media/vs-face-connected-service/Cog-Face-Connected-Service-1.PNG)
 
@@ -51,7 +51,7 @@ Ez a cikk és kísérő cikkek részletesen ismertetik, hogyan lehet a Visual St
 
    ![A csatlakoztatott szolgáltatás részleteinek szerkesztése](media/vs-face-connected-service/Cog-Face-Connected-Service-2.PNG)
 
-   A tarifacsomagokkal kapcsolatban kövesse a hivatkozást.
+   A tarifacsomagok részleteiért kövesse a hivatkozást.
 
 1. Válassza a Hozzáadás gombot a csatlakoztatott szolgáltatás támogatás hozzáadásához.
    A Visual Studio módosítja a projektet a NuGet-csomagok, a konfigurációs fájl bejegyzések és egyéb a Face API projekthez adásához szükséges módosítások hozzáadásával.
@@ -81,9 +81,9 @@ Ez a cikk és kísérő cikkek részletesen ismertetik, hogyan lehet a Visual St
 
 1. A projekt wwwroot mappában készítsen egy képek mappát, és adjon egy képfájlt a wwwroot mappába. Példaként használhatja a képeket erről a [Face API oldalról](https://azure.microsoft.com/services/cognitive-services/face/). A jobb gombbal kattintson a képekre, mentse el a helyi merevlemezre, majd a jobb gombbal kattintson a képek mappán és a **Meglevő elem** > **hozzáadása** kiválasztásával adja hozzá a projekthez. A projektnek ehhez hasonlóan kell kinéznie a Megoldáskezelőben:
  
-   ![képek mappa a képfájllal](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
+   ![Képek mappa a képfájllal](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
-1. Kattintson jobb gombbal a képfájlra, válassza a Tulajdonságok elemet, majd a **Másolás, ha újabb** lehetőséget.
+1. Kattintson jobb gombbal a képfájlra, válassza a Properties (Tulajdonságok) elemet, majd a **Copy if newer** (Másolás, ha újabb) lehetőséget.
 
    ![Másolás, ha újabb](media/vs-face-connected-service/Cog-Face-Connected-Service-5.PNG)
  
@@ -237,7 +237,7 @@ Ez a cikk és kísérő cikkek részletesen ismertetik, hogyan lehet a Visual St
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a Cognitive szolgáltatást és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése a Portalon keresztül:
+Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a Cognitive Services-szolgáltatást és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése a Portalon keresztül:
 
 1. Írja be az erőforráscsoport nevét a Portal tetején található keresőmezőbe. Amikor az eredmények listájában megjelenik az ebben a rövid útmutatóban használt erőforráscsoport, jelölje ki.
 1. Válassza az **Erőforráscsoport törlése** elemet.

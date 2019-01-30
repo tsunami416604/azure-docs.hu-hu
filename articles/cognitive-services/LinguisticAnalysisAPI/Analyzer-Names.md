@@ -6,22 +6,22 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/23/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: f8c7aba2b853f3916c2d01d94d49090a4b3e36a0
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 997dcdd6ce99815a79006b40b87568e573c63ff3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237231"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221677"
 ---
 # <a name="analyzer-names"></a>Elemző nevek
 
 > [!IMPORTANT]
-> A nyelvi elemzés előzetes verziója 2018. augusztus 9 volt leszerelése. Azt javasoljuk, [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) szöveg feldolgozásra és elemzésre.
+> A Linguistic Analysis előzetes verzióját 2018. augusztus 9-én visszavontuk. A szövegek feldolgozásához és elemzéséhet az [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) javasoljuk használni.
 
 Egy némileg összetettebb elnevezési struktúráját elemzők, hogy mindkét elemzők és a pontosság ismertetése, mi a név azt jelenti, hogy a nagyobb rugalmasság érdekében használjuk.
 Elemző nevek négy részből áll: egy Azonosítót, egy objektumtípust, specifikáció és implementációja.
@@ -31,7 +31,7 @@ A szerepkör minden egyes összetevő van megadva.
 Először egy analyzer rendelkezik-e; egyedi azonosító egy GUID Azonosítót.
 Ezek GUID viszonylag ritkán kell módosítani, de az egyetlen módszer egy adott elemző eszköz egyedi ismertetik.
 
-## <a name="kind"></a>Altípus
+## <a name="kind"></a>Jelleg
 Ezután minden egyes analyzer van egy **kind**.
 Ez rendkívül széleskörű használati elemzés típusát adja vissza, és egyedileg kell definiálhat, az adatok struktúrája képviseli az elemzés az határozza meg.
 Jelenleg három különböző típusú:

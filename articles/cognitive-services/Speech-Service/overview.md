@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: overview
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: e86adfd4e832e6b9514e4813ddd4a942b07ca624
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: beb1382d2e076052583dd5bbc546259c8aae2f96
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336594"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217968"
 ---
 # <a name="what-is-speech-services"></a>Mi az beszédszolgáltatások?
 
@@ -30,7 +30,7 @@ A beszédszolgáltatások elsődleges funkciói a következők: hang-szöveg tra
 |Függvény|Szolgáltatások|
 |-|-|
 |[Beszédfelismerés](speech-to-text.md)| <li>Folyamatos, valós idejű beszédet szöveggé alakít.<li>A hangfelvételekről képes egyszerre több beszédforrást is szöveggé alakítani. <li>Támogatja a köztes eredményeket, a beszéd végének észlelését, az automatikus szövegformázást és a profanitás kitakarását. <li>A [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) szolgáltatásra támaszkodva a szöveggé alakított beszédből képes kikövetkeztetni a felhasználói szándékot.\*|
-|[Szöveg-hang transzformációs](text-to-speech.md)| <li>**ÚJ**: Itt Neurális szöveg-hang transzformációs beszédhangot szinte megkülönböztetni emberi speech (angol nyelven). <li>Az írott szöveget természetesnek hangzó beszéddé alakítja. <li>Számos támogatott nyelvhez elérhető több különféle nem és/vagy nyelvjárás. <li>Támogatja az egyszerű szöveges bevitelt és az SSML-t (Speech Synthesis Markup Language). |
+|[Text-to-Speech](text-to-speech.md)| <li>**ÚJ**: Itt Neurális szöveg-hang transzformációs beszédhangot szinte megkülönböztetni emberi speech (angol nyelven). <li>Az írott szöveget természetesnek hangzó beszéddé alakítja. <li>Számos támogatott nyelvhez elérhető több különféle nem és/vagy nyelvjárás. <li>Támogatja az egyszerű szöveges bevitelt és az SSML-t (Speech Synthesis Markup Language). |
 |[Tolmácsolás](speech-translation.md)| <li>Streamelt hangtartalmakat fordít közel valós időben.<li> Felvett beszédet is képes feldolgozni.<li>Az eredményeket szövegként vagy szintetizált beszédként biztosítja. |
 
 

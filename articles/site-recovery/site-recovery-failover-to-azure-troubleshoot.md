@@ -1,26 +1,22 @@
 ---
 title: Hibák az Azure-ba irányuló feladatátvétel hibaelhárítása |} A Microsoft Docs
 description: Ez a cikk ismerteti azokat a módszereket, az Azure-ba irányuló feladatátvétel előforduló gyakori hibák elhárítása
-services: site-recovery
-documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
+services: site-recovery
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/11/2018
+ms.date: 1/29/2019
 ms.author: mayg
-ms.openlocfilehash: 742e7891ec9c7151f23f1ad6eb57e728dd2a1ddd
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 62b69364f0b3d3e14d0b2d877604cecfcc346dce
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255091"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207496"
 ---
-# <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Az Azure virtuális gép feladatátvétele során előforduló hibák elhárítása
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware virtuális gép vagy fizikai gép – Azure feladatátvétele során előforduló hibák elhárítása
 
 Az Azure-bA egy virtuális gép feladatátvétele közben hibák a következők egyike jelenhet meg. A hiba elhárításához használja az itt ismertetett lépéseket az egyes hibaállapotokhoz.
 
@@ -48,7 +44,9 @@ A Site Recovery nem tudta egy nem sikerült létrehozni a klasszikus virtuális 
 
 A Site Recovery nem tudta egy nem sikerült létrehozni a feladatátviteli virtuális géphez az Azure-ban. Ez akkor fordulhat elő, mivel hidratálási belső tevékenységeinek indítása sikertelen volt, a helyszíni virtuális gép.
 
-Csatlakozva az Azure-ban minden olyan gép, az Azure-környezethez szükséges néhány illesztőprogramot kell a rendszerindító start állapota és a szolgáltatások, például DHCP autostart állapotban kell lennie. Ebből kifolyólag hidratálási tevékenység, a feladatátvétel időpontjában konvertálja indítási típusát **atapi, intelide, storflt, vmbus és storvsc illesztőprogramok** rendszerindító elindítani. Is átalakítja néhány szolgáltatásokhoz, például DHCP indítási típusa automatikus indítása. Ez a tevékenység sikertelen lehet a környezet konkrét problémák miatt. Manuálisan módosítsa az indítási típust, illesztőprogramok, kövesse az alábbi lépéseket:
+Csatlakozva az Azure-ban minden olyan gép, az Azure-környezethez szükséges néhány illesztőprogramot kell a rendszerindító start állapota és a szolgáltatások, például DHCP autostart állapotban kell lennie. Ebből kifolyólag hidratálási tevékenység, a feladatátvétel időpontjában konvertálja indítási típusát **atapi, intelide, storflt, vmbus és storvsc illesztőprogramok** rendszerindító elindítani. Is átalakítja néhány szolgáltatásokhoz, például DHCP indítási típusa automatikus indítása. Ez a tevékenység sikertelen lehet a környezet konkrét problémák miatt. 
+
+Manuális módosítása az indítási típusaként válassza az illesztőprogramok **Windows vendég operációs rendszer**, kövesse az az alábbi lépéseket:
 
 1. [Töltse le](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) a no-hidratálási parancsfájlt, és futtassa azt követi. Ez a szkript ellenőrzi, hogy ha a virtuális gép igényel-e a hidratálási.
 
@@ -78,8 +76,8 @@ Csatlakozva az Azure-ban minden olyan gép, az Azure-környezethez szükséges n
 
 Ha a **Connect** a feladatait átadó virtuális gép az Azure-beli gomb szürkén jelenik meg, és az Express Route vagy helyek közötti VPN-kapcsolaton keresztül, ezt követően nem csatlakozik Azure
 
-1. Lépjen a **virtuális gép** > **hálózatkezelés**, kattintson a szükséges hálózati kapcsolat neve.  ![hálózati-adapter](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Navigáljon a **Ip-konfigurációk**, majd kattintson a szükséges IP-konfiguráció a név mező. ![IP-konfigurációk](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+1. Lépjen a **virtuális gép** > **hálózatkezelés**, kattintson a szükséges hálózati kapcsolat neve.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. Navigáljon a **Ip-konfigurációk**, majd kattintson a szükséges IP-konfiguráció a név mező. ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Ahhoz, hogy a nyilvános IP-címet, kattintson a **engedélyezése**. ![IP engedélyezése](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. Kattintson a **kötelező beállítások konfigurálása** > **új létrehozása**. ![Új létrehozása](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. Adja meg a nyilvános cím nevére, és válassza ki az alapértelmezett beállításainak **Termékváltozat** és **hozzárendelés**, majd kattintson a **OK**.

@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Arcfelismerés egy képen a REST API és a Go használatával'
+title: 'Gyors útmutató: Arcfelismerés a képet a REST API-t és a Go használatával'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a Face API segítségével és a Go használatával.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 06/25/2018
 ms.author: pafarley
-ms.openlocfilehash: a66d50ac6984ea50eef1e34cc53db4d7e5bbdcad
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 7b01acecb8ccf48ae9ba196671c156edfa688b3d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956204"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215095"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Go használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Gyors útmutató: Arcfelismerés a képet a REST API-t és a Go használatával
 
 Ebben a rövid útmutatóban emberi arcokat fog felismerni egy képen a Face API segítségével.
 
@@ -29,9 +29,9 @@ A minta futtatásához előfizetési kulcs szükséges. Ingyenes próba előfize
 
 A [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) metódussal arcokat ismerhet fel a képeken, és többek között a következő arcattribútumokat adhatja vissza:
 
-* Arcazonosító: Számos Face API-forgatókönyvben használt egyedi azonosító.
-* Arcot jelölő téglalap: A képen az arc helyét jelző „bal oldalon, felül, szélesség és hosszúság” érték.
-* Jellegzetes pontok: 27 pontból álló jellegzetes pontok egy tömbje, amely az arcösszetevők fontos részeire mutat.
+* Face ID: A Face API számos forgatókönyv használt egyedi azonosítója.
+* Négyszög meghatározása: A bal felső, szélessége és magassága jelzi az arcok a képen helyét.
+* Arcrész: A fontos pozíciók face összetevők mutató 27-es arcrészek tömbje.
 * Az arcattribútumok közé tartozik az életkor, a nem, a mosoly intenzitása, a fejtartás és az arcszőrzet.
 
 A minta futtatásához az alábbi lépéseket kell végrehajtania:

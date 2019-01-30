@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: ffa1c45b2d9449310a2b0dcc66a513b4d8efbc5d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 8dfcee6e7f0e2fd21c35ed2507b572c6e8cffc42
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232987"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217237"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
 
@@ -28,7 +28,7 @@ Felderítése és besorolása a leginkább bizalmas adatok (üzleti, pénzügyi,
 - Különféle biztonsági forgatókönyvek, például a (naplózás) figyelési és riasztási a bizalmas adatokhoz való rendellenes hozzáférést.
 - Való hozzáférés szabályozása és a bizalmas adatokat tartalmazó adatbázisok biztonságának megerősítése.
 
-Adatfelderítés és besorolás részét képezi a [SQL komplex veszélyforrások elleni védelem](sql-advanced-threat-protection.md) (ATP) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. Adatfelderítés és besorolás érheti el és a központi SQL ATP portálján felügyelt.
+Adatfelderítés és besorolás részét képezi a [SQL speciális adatbiztonság](sql-advanced-threat-protection.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. Adatfelderítés és besorolás érheti el és a központi SQL ADS portálon keresztül kezelhetők.
 
 > [!NOTE]
 > Ez a dokumentum csak az Azure SQL Database vonatkozik. Az SQL Server (helyszíni), lásd: [SQL Adatfelderítés és besorolás](https://go.microsoft.com/fwlink/?linkid=866999).
@@ -77,7 +77,7 @@ Miután az összes bérlőre vonatkozó házirend lett meghatározva, továbbra 
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
-2. Navigáljon a **komplex veszélyforrások elleni védelem** az Azure SQL Database panelen biztonsági fejléc alatt. Komplex veszélyforrások elleni védelem engedélyezéséhez kattintson, és kattintson a a **adatfelderítés és besorolás (előzetes verzió)** kártya.
+2. Navigáljon a **adatok biztonságú** az Azure SQL Database panelen biztonsági fejléc alatt. Ide kattintva engedélyezheti az adatok fokozott biztonságú, és kattintson a a **adatfelderítés és besorolás (előzetes verzió)** kártya.
 
    ![Egy adatbázis beolvasása](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -134,8 +134,8 @@ T-SQL használatával oszloposztályozás hozzáadása/eltávolítása, valamint
 > [!NOTE]
 > Amikor T-SQL használatával felügyeli a címkéket, nem történik ellenőrzés a szervezeti information protection-szabályzat (a portál javaslatokat megjelenő címkék készletét) létező címkék egy oszlophoz érték hozzáadva. Éppen ezért Ön ennek ellenőrzése.
 
-- Egy vagy több oszlop osztályozása hozzáadása/frissítése: [tartalmi OSZTÁLYOZÁSHOZ hozzáadása](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Távolítsa el a besoroláshoz egy vagy több oszlop: [dobja el a tartalmi osztályozás](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Egy vagy több oszlop osztályozása hozzáadása/frissítése: [ADJA HOZZÁ A TARTALMI OSZTÁLYOZÁS](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Távolítsa el a besoroláshoz egy vagy több oszlop: [DOBJA EL A TARTALMI OSZTÁLYOZÁS](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Minden besorolás megtekintése az adatbázison: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 REST API-k használatával programozott módon kezelheti a besorolásokat. A közzétett REST API-k támogatják a következő műveleteket:
@@ -147,7 +147,7 @@ REST API-k használatával programozott módon kezelheti a besorolásokat. A kö
 
 ## <a id="subheading-5"></a>Következő lépések
 
-- Tudjon meg többet [SQL komplex veszélyforrások elleni védelem](sql-advanced-threat-protection.md).
+- Tudjon meg többet [SQL biztonságú adatok](sql-advanced-threat-protection.md).
 - Érdemes úgy konfigurálni [Azure SQL Database naplózási szolgáltatásával](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) a figyelés és naplózás, a minősített bizalmas adatokhoz való hozzáférést.
 
 <!--Anchors-->

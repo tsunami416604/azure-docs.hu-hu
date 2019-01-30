@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: bc88b46182eadf431efcb5be89f05256a9e0eb1b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 14b00dd354618edb3a1f41c292d62b5a13a1f10d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095566"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216047"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mailben kapott egyszeri jelszót hitelesítés (előzetes verzió)
 
@@ -29,7 +29,7 @@ Az e-mailben kapott egyszeri jelszót funkció nem hitelesíthetők, más módon
 Ez a funkció jelenleg elérhető előzetes verzióban (lásd: [az előzetes verzióra való engedélyezés](#opting-in-to-the-preview) alább). A minta után ez a funkció, lesz kapcsolva alapértelmezés szerint az összes bérlőre vonatkozóan.
 
 > [!NOTE]
-> Egyszeri jelszó felhasználók be kell jelentkeznie, egy hivatkozással, amely tartalmazza a bérlő összefüggésben, például a `https://myapps.microsoft.com/?tenantid=<tenant id>`. Alkalmazások és erőforrások mutató közvetlen hivatkozásokat is működik, amíg a bérlő környezet tartalmazzák. Vendégfelhasználók nem jelentkezzen be a végpontok, amelyeken nincs bérlői környezet. Például `https://myapps.microsoft.com`, `https://portal.azure.com`, vagy a csapatok közös végponti egy hibát eredményez. 
+> Egyszer használatos jelszót kell bejelentkeznek egy hivatkozással, amely tartalmazza a bérlő környezetben (például `https://myapps.microsoft.com/?tenantid=<tenant id>` vagy `https://portal.azure.com/<tenant id>`, vagy egy alapértelmezett ellenőrzött tartomány esetén `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Alkalmazások és erőforrások mutató közvetlen hivatkozásokat is működik, amíg a bérlő környezet tartalmazzák. Vendégfelhasználók nem jelentkezzen be a végpontok, amelyeken nincs bérlői környezet. Például `https://myapps.microsoft.com`, `https://portal.azure.com`, vagy a csapatok közös végponti egy hibát eredményez. 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Felhasználói élmény a kapott egyszer használatos jelszót vendégfelhasználók számára
 Egyszeri jelszó hitelesítéssel a vendégfelhasználó beválthatja a meghívást közvetlen hivatkozására kattintva, vagy a meghívó e-mail használatával. Mindkét esetben a böngészőben egy üzenet azt jelzi, hogy egy kódot küldeni a Vendég felhasználó e-mail címét. A Vendég felhasználó **kód küldése**:

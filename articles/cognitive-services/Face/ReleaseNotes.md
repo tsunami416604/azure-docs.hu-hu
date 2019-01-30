@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 6fd3d33d40b0ed142127e46dd7c9173de39947c7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 545f3669f04c3cd30f4766357c5d582dfe515c80
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121991"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215588"
 ---
 # <a name="face-api-release-notes"></a>Face API kibocsátási megjegyzései
 
@@ -51,7 +51,7 @@ Ez a cikk a Face API szolgáltatás 1.0-s verziója vonatkozik.
 * Kijavítva a észlelhető oldallal méretét róla, hogy szigorúan 36 x 36, 4096 x 4096 képpont között.
 
 ### <a name="release-changes-in-november-2016"></a>2016. November kiadás változásai
-* Face Storage Standard előfizetésre megőrzött képeket tárolhat további használatakor hozzáadott [is lehet PersonGroup személy – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) vagy [FaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) objectet vagy hasonlóság megfelelő. A tárolt képek díja 0,5 $ 1000 arconként, és ez a díjszabás napi lebontású. Ingyenes szint előfizetések legfeljebb 1000 teljes személyek továbbra is.
+* Face Storage Standard előfizetésre megőrzött képeket tárolhat további használatakor hozzáadott [is lehet PersonGroup személy – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) vagy [FaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) objectet vagy hasonlóság megfelelő. A tárolt képek díja 1000 arconként 0,5 dollár és a díjszabás napi lebontású. Ingyenes szint előfizetések legfeljebb 1000 teljes személyek továbbra is.
 
 ### <a name="release-changes-in-october-2016"></a>2016. október kiadás változásai
 * A hibaüzenet több felületen a "Tartoznak-e egynél több arcok a képen" "Van egynél több arcok a képen" a targetFace a módosított [FaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) és [is lehet PersonGroup személy -Facehozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
@@ -66,7 +66,7 @@ Ez a cikk a Face API szolgáltatás 1.0-s verziója vonatkozik.
 * Hozzáadott választható `start` és `top` paramétereket lévő [is lehet PersonGroup - lista](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395248) engedélyezéséhez adja meg a kezdő pont és az összes Persongroup listájához.
 
 ### <a name="v10-changes-from-v0"></a>A V0 változik 1.0-s verzió
-* Frissítve a legfelső szintű szolgáltatásvégpont ```https://westus.api.cognitive.microsoft.com/face/v0/``` való ```https://westus.api.cognitive.microsoft.com/face/v1.0/```. Alkalmazott módosítások: [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [arc - azonosítása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), [arc - hasonló](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) és [arc - csoport](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
+* Frissítve a legfelső szintű szolgáltatásvégpont ```https://westus.api.cognitive.microsoft.com/face/v0/``` való ```https://westus.api.cognitive.microsoft.com/face/v1.0/```. Változások a alkalmazni: [Face – észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [arc - azonosítása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), [arc – keresés hasonló](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) és [arc - csoport](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
 
 * A minimális észlelhető oldallal mérete frissítve 36 x 36 képpont. 36 x 36 képpontnál kisebb arcok észlelése nem történik meg.
 

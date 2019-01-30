@@ -6,17 +6,17 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8d6e768e5cf846cb2c34ceb61d269854418e1dc5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 778005ee321c981fec1d1271cee54229bb3a522f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976596"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214176"
 ---
 # <a name="constituency-parsing"></a>Vevőkör-elemzés
 
@@ -67,7 +67,7 @@ Van néhány ilyen kifejezések: *E*, *egy új hibrid automobile*, *Bluetooth*, 
 
 | Címke | Leírás | Példa |
 |-------|-------------|---------|
-|ADJP   | Adjective kifejezés | "ezért goromba" |
+|ADJP   | Adjective Phrase | "ezért goromba" |
 |ADVP   | Módosítószót kifejezés | "Törlés keresztül" |
 |CONJP  | Együtt kifejezés | ", valamint" |
 |ILLETHETI   | Fragment, hiányos vagy fragmentary bemenet használt | "Erősen ajánlott..." |
@@ -76,20 +76,20 @@ Van néhány ilyen kifejezések: *E*, *egy új hibrid automobile*, *Bluetooth*, 
 |NAC    | Nem A megvalósítani a bennük foglalt, azt jelzi, hogy nem alkotóelem kifejezés hatókörkezelése |  "és a egy jó üzlet" a "olvashatók be dolgokat és a egy jó kezelése" |
 |NP | Főnév kifejezés | "tasty potato pancake" |
 |NX | A fő meg bizonyos összetett hálózati házirend-kiszolgáló belül használt| |
-|PORTJÁNAK PROFILTULAJDONSÁGAI | Prepositional kifejezés| "az a készlet" |
+|PP | Prepositional kifejezés| "az a készlet" |
 |PRN    | Zárójeles| "(úgynevezett)" |
 |PRT    | particle| "lejárt" a "bemásolt ki" |
 |QP | Quantity kifejezés (azaz a összetett mérték vagy összeg) belül főnév kifejezés| "körül 75 $" |
-|REGISZTRÁCIÓS KÓDJA    | Csökkentett relatív záradék.| "még feloldatlan" a "számos probléma még feloldatlan." |
+|RRC    | Csökkentett relatív záradék.| "még feloldatlan" a "számos probléma még feloldatlan." |
 |S  | Mondat vagy záradékban. | "Ez a mondatok."
 |SBAR   | Alárendelt záradék, gyakran bevezetett egy subordinating együttes használata | "az I balra" az "I kikeresi, e left."|
 |SBARQ  | Mit jelent-szó vagy - kifejezés által bevezetett közvetlen kérdés | "Mi volt a pont?" |
-|SZOFTVERLELTÁR   | Fordított deklaratív mondat | "Nem akcióról azokat." (vegye figyelembe, hogyan normál tárgyát "," került után a művelet "is") |
+|SINV   | Fordított deklaratív mondat | "Nem akcióról azokat." (vegye figyelembe, hogyan normál tárgyát "," került után a művelet "is") |
 |SQ | Igen/nem fordított kérdést, vagy a main záradékában kérdőszavak-kérdés | "Fejeződött kapnak az autó?" |
 |UCP    | Ellentétben koordinált kifejezés| "rövid és a hibák" (vegye figyelembe, hogyan vannak a egy melléknév és a egy preposition kifejezés conjoined együtt "és")|
 |ALELNÖK | Művelet kifejezés | "hibába ütközött az erdők" |
-|WHADJP | Mit jelent-melléknév kifejezés | "hogyan kényelmetlen" |
-|WHADVP | Mit jelent-módosítószót kifejezés| "when" |
+|WHADJP | Wh-adjective Phrase | "hogyan kényelmetlen" |
+|WHADVP | Wh-adverb Phrase| "when" |
 |WHNP   | Mit jelent-főnév kifejezés| "melyik burgonya", "mennyi leves"|
 |WHPP   | Mit jelent prepositional kifejezés| "a melyik ország"|
 |X  | Ismeretlen, bizonytalan vagy unbracketable.| első "a" a "a... a leves" |

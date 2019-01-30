@@ -5,16 +5,16 @@ description: Egy szótárban az igazított dokumentum, amely felsorolja a kifeje
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 3a92e41ad9611981777012cd231845587a6f947b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: bc297fd4cdda8cdb3dc618b73e91d2f4e31e8b6a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627435"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212409"
 ---
 # <a name="what-is-a-dictionary"></a>Mi az, hogy egy szótárban?
 
@@ -32,7 +32,7 @@ A mondat szótár egy pontos cél forrás mondatok fordítása megadását teszi
 Csak a szótár-adatokat használó modell betaníthatja. Ehhez válassza ki a csak a szótár dokumentumok (vagy több szótár dokumentum), amelyeket meg szeretne közé tartozik, és koppintson a modell létrehozása. Mivel ez egy csak szótár képzés, nincs nincs képzési mondatokat szükséges minimális számát. A modell általában befejezi a betanítási sokkal gyorsabb, mint egy normál képzési.  Az eredményül kapott modellek fogja használni a Microsoft baseline modellek fordítási hozzáadta a szótárak igény szerinti hozzáadásával.  Nem kap egy Tesztjelentés.
 
 >[!Note]
->Egyéni a fordítót nem nem mondat igazítása szótár fájlokat, ezért fontos, hogy nincsenek-e forrás- és kifejezések/mondatok szótár dokumentumait azonos számú, és pontosan vannak igazítva.
+>Egyéni a fordítót nem Mondatkezdő igazítása szótár fájlokat, ezért fontos, hogy nincsenek-e forrás- és kifejezések azonos számú / a szótár sentences dokumentumokat, és hogy azok pontosan elhelyezve.
 
 ## <a name="recommendations"></a>Javaslatok
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6cee339793269af0e8060cce56f94fa81db6a6c5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: 14dc1ca90ecd342330425db840776fa67caa80b0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124015"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208142"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Első lépések a Knowledge Exploration Service szolgáltatással
 
@@ -41,7 +41,7 @@ A séma a tartományban lévő objektumok attribútum felépítését ismerteti.
 }
 ```
 
-Itt a *Cím*, *Év* és *Kulcsszó* attribútumokat rendre string, integer és string típusnak definiáljuk. Mivel a szerzőket az azonosító, név és kapcsolat hármasával adjuk meg, az *Author* tulajdonságot három résztulajdonsággal rendelkező összetett attribútumként definiáljuk: *Author.Id*, *Author.Name*, és *Author.Affiliation*.
+Itt a *Cím*, *Év* és *Kulcsszó* attribútumokat rendre string, integer és string típusnak definiáljuk. Szerzők Azonosítóját, nevét és kapcsolatot képviseli, mert meghatározhatja *Szerző* összetett attribútumaként három alárendelt attribútumokkal: *Author.Id*, *Author.Name*, és *Author.Affiliation*.
 
 Alapértelmezés szerint az attribútumok valamennyi az adattípusra létező műveletet támogatják, beleértve az *equals*, *starts_with* és *is_between* műveleteket is. Mivel a szerző azonosító csak belső használatra szolgál, változtassa meg az alapértelmezést és az egyedüli indexelt műveletnek az *equals*-t adja meg.
 
@@ -110,7 +110,7 @@ A nyelvtan megadja a természetes nyelvű lekérdezések halmazát, amelyeket a 
 <grammar root="GetPapers">
 
   <!-- Import academic data schema-->
-  <import schema="Academic.schema" name="academic"/>
+  <import schema="Academic.schema" name="academic"/>
 
   <!-- Define root rule-->
   <rule id="GetPapers">

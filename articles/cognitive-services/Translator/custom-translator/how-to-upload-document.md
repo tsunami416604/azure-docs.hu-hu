@@ -5,16 +5,16 @@ description: A dokumentum a feltöltési funkcióval a betanítások a párhuzam
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 3a0adb4b761121334e93f2b8d2d764ff3ab495e2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e08813c71a0b95b6b130ab71313bda6d044d730a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633248"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217220"
 ---
 # <a name="upload-a-document"></a>Dokumentum feltöltése
 
@@ -37,25 +37,25 @@ A [egyéni a fordítót](https://portal.customtranslator.azure.ai) portálon kat
 
     a.  A dokumentum típusa:
 
-    -  Képzés: Ezek dokumentum(ok) gyakorlókészlethez használandó.
-    -  Hangolási: Ezek dokumentum(ok) használható set finomhangoláshoz.
-    -  Az ellenőrzési: Ezek dokumentum(ok) tesztelési set lesz.
-    -  A kifejezés szótár: Ezek dokumentum(ok) kifejezés szótár lesz.
-    -  Mondat szótár: Ezek dokumentum(ok) jelzi a mondat szótár
+    -  Képzés: E dokumentum használandó betanítási készlete.
+    -  Hangolási: E dokumentum set finomhangoláshoz használható.
+    -  Tesztelés: Ezek dokumentum(ok) set teszteléséhez használható.
+    -  A kifejezés szótár: Ezek dokumentum(ok) használandó kifejezést szótárban.
+    -  Mondat szótár: E dokumentum jelzi a mondat szótár
 
     b.  Nyelvi pár
 
-    c.  Dokumentum felülírása, ha létezik: válassza ezt a jelölőnégyzetet, ha felülírja a meglévő dokumentumok ugyanazzal a névvel.
+    c.  Dokumentum felülírása, ha létezik: Akkor válassza ezt a jelölőnégyzetet, ha felülírja a meglévő dokumentumok ugyanazzal a névvel.
 
     d.  Töltse ki a megfelelő szakaszban párhuzamos vagy kombinált adatok.
 
     -  Párhuzamos adatok:
-        -  Forrásfájl: Select Forrásnyelv fájlt a helyi számítógépről.
-        -  Célfájl: válassza ki a célnyelvet fájlt a helyi számítógépről.
-        -  Dokumentum neve: csak akkor, ha a feltöltendő párhuzamos fájlokat használja.
+        -  Forrásfájl: Válassza ki az adatforrás nyelvi fájlt a helyi számítógépről.
+        -  Célfájl: Válassza ki a célnyelvet fájlt a helyi számítógépről.
+        -  Dokumentum neve: Csak akkor, ha a feltöltendő párhuzamos fájlokat használja.
 
     - Kombinált adatok:
-        -  Kombinált fájl: Jelölje ki a kombinált fájlt a helyi számítógépen. A kombinált fájlban vannak, mind a forrás és cél nyelvi mondatokat. [Elnevezési szabályainak](document-formats-naming-convention.md) kombinált fájlok számára fontos.
+        -  Kombinált fájlt: Válassza ki a kombinált fájlt a helyi számítógépről. A kombinált fájlban vannak, mind a forrás és cél nyelvi mondatokat. [Elnevezési szabályainak](document-formats-naming-convention.md) kombinált fájlok számára fontos.
 
     e.  Kattintson a feltöltés
 

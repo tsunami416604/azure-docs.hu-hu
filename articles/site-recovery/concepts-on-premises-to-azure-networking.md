@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7e682850d331770766a9b97c2b4b9102af143f2e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a78e5c411c03aaff07818c4e45183f8eff40492d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836270"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211355"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Az IP-címkezelés Azure virtuális géphez való kapcsolódásra a feladatátvételt követően
 
@@ -30,8 +30,8 @@ Ez a cikk azt ismerteti:
 
 A replikációs és feladatátvételi stratégiát tervezésekor a legfontosabb kérdések egyik, hogyan csatlakozhat az Azure virtuális gép a feladatátvételt követően. A replika Azure virtuális gépek hálózati stratégia tervezésekor, van több lehetősége:
 
-- **Használjon eltérő IP-címet**: választhat egy másik IP-címtartományt használjon replikált Azure Virtuálisgép-hálózathoz. Ebben a forgatókönyvben a virtuális gép új IP-címet lekéri a feladatátvételt követően, és a egy DNS-frissítés szükség.
-- **Azonos IP-cím megőrzése**: Előfordulhat, hogy használni kívánt IP-címtartományból, mint az elsődleges helyszíni hely, a feladatátvétel után az Azure-hálózatot. A azonos IP-cím megőrzése címek egyszerűbbé teszi a helyreállítás csökkentésével hálózattal kapcsolatos problémákat a feladatátvételt követően. Azonban ha az Azure-bA replikál, szüksége lesz az útvonalak frissítése az IP-címet az új helyre a feladatátvételt követően.
+- **Használjon eltérő IP-címet**: Választhat egy másik IP-címtartományt használjon replikált Azure Virtuálisgép-hálózathoz. Ebben a forgatókönyvben a virtuális gép új IP-címet lekéri a feladatátvételt követően, és a egy DNS-frissítés szükség.
+- **Azonos IP-cím megőrzése**: Érdemes az azonos IP-címtartományt használjon, mint az elsődleges helyszíni hely, a feladatátvétel után az Azure-hálózatot. A azonos IP-cím megőrzése címek egyszerűbbé teszi a helyreállítás csökkentésével hálózattal kapcsolatos problémákat a feladatátvételt követően. Azonban ha az Azure-bA replikál, szüksége lesz az útvonalak frissítése az IP-címet az új helyre a feladatátvételt követően.
 
 ## <a name="retaining-ip-addresses"></a>IP-cím megőrzése
 
@@ -73,7 +73,7 @@ A Woodgrove lehessen a virtuális gépek replikálásához az Azure-ban milyen I
 #### <a name="site-to-site-connection"></a>Helyek közötti kapcsolat
 
 Site-to-site VPN-kapcsolat mellett a vnet – vnet kapcsolat, a feladatátvételt követően a Woodgrove adható meg:
-- Egy helyek közötti kapcsolat beállításakor az Azure-hálózatot csak irányíthatja a forgalmat a helyszíni helyre (helyi-hálózatot) Ha az IP-címtartomány eltér a helyi IP-címtartományt. Ennek az oka az Azure nem támogatja a többhelyes alhálózatokat. Így ha alhálózati 192.168.1.0/24 helyi, nem egy helyi hálózati 192.168.1.0/24 adhat hozzá a az Azure-hálózatot. Ez elvárható, hiszen az Azure nem ismert, hogy nincsenek-e nincs aktív virtuális gépeket az alhálózaton, és csak a vész-helyreállítási létre az alhálózatot.
+- Egy helyek közötti kapcsolat beállításakor az Azure-hálózatot csak irányíthatja a forgalmat a helyszíni helyre (helyi hálózati) Ha az IP-címtartomány eltér a helyi IP-címtartományt. Ennek az oka az Azure nem támogatja a többhelyes alhálózatokat. Így ha alhálózati 192.168.1.0/24 helyi, nem egy helyi hálózati 192.168.1.0/24 adhat hozzá a az Azure-hálózatot. Ez elvárható, hiszen az Azure nem ismert, hogy nincsenek-e nincs aktív virtuális gépeket az alhálózaton, és csak a vész-helyreállítási létre az alhálózatot.
 - Az, hogy megfelelően irányítani az Azure-hálózat hálózati forgalom, a hálózat és a helyi hálózat alhálózatai nem ütköznek.
 
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: wsturman
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: fdd22e14e0b7636dbc337a20dd69bf93696bb924
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: b862975cda4a73d087d9aa0d5816fdcb9e0149dc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416280"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218008"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech áttelepít a beszédszolgáltatás
 
@@ -90,7 +90,7 @@ Beszédszolgáltatás, SDK és API-támogatást, látogasson el a Speech Service
 ## <a name="next-steps"></a>További lépések
 
 * [Speech Service ingyenes kipróbálása](get-started.md)
-* [Gyors útmutató: Recognize speech, a beszéd SDK használatával egy UWP-alkalmazás](quickstart-csharp-uwp.md)
+* [Rövid útmutató: A beszédfelismerés SDK használatával egy UWP-alkalmazás a beszédfelismerést](quickstart-csharp-uwp.md)
 
 ## <a name="see-also"></a>Lásd még
 * [Beszédfelismerési szolgáltatás kibocsátási megjegyzései](releasenotes.md)

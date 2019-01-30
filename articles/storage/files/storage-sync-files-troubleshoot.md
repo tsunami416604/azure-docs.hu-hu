@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: cf86d2a644c2732f27442a807dec1ad960b94af5
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: fe712648cf3e76f4161f9f3a7b97b7990bc692a1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095157"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214466"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -879,6 +879,7 @@ Ha a probléma továbbra is fennáll, futtassa a AFSDiag eszköz:
 6. Egy .zip fájlt, amely tartalmazza a naplók és a nyomkövetési fájlok a megadott kimeneti könyvtárba menti.
 
 ## <a name="see-also"></a>Lásd még
+- [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)
 - [Az Azure Files – gyakori kérdések](storage-files-faq.md)
 - [Azure Files-problémák hibaelhárítása Windowson](storage-troubleshoot-windows-file-connection-problems.md)
 - [A Linux Azure Files-problémák hibaelhárítása](storage-troubleshoot-linux-file-connection-problems.md)

@@ -5,16 +5,16 @@ description: Hogyan beállítások kezelése, hozzon létre munkaterületet, mun
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 7b6dd0ec271d335d1055381a8cb7256600be283f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6fabbb57538f5e10e6cd91ebc109707045e54033
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627434"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227080"
 ---
 # <a name="how-to-manage-settings"></a>Beállítások kezelése
 
@@ -85,11 +85,11 @@ Az egyéni a fordítót megoszthatja a munkaterület másokkal, ha másik része
 
 ## <a name="sharing-permissions"></a>Megosztási engedélyek
 
-1.  **Olvasó:** egy olvasót a munkaterület összes információt megtekinthetik a munkaterületen lesz. 
+1.  **Olvasó:** A munkaterület egy olvasó lesz a munkaterület összes adatot megtekintheti. 
 
-2.  **Editor:** a munkaterület-szerkesztő fogja tudni dokumentumok hozzáadása, modelleket taníthat be és törölje a dokumentumok és projektek. Adjon hozzá egy előfizetési kulcsot, de nem módosíthatja a munkaterület megosztó, a munkaterület törlése, vagy módosítsa a munkaterület nevét.
+2.  **Editor:** A munkaterület-szerkesztő tudják dokumentumok hozzáadása, modelleket taníthat be és törölje a dokumentumok és projektek. Adjon hozzá egy előfizetési kulcsot, de nem módosíthatja a munkaterület megosztó, a munkaterület törlése, vagy módosítsa a munkaterület nevét.
 
-3.  **Tulajdonos:** tulajdonosai teljes körű engedélyekkel rendelkezik a munkaterületre.
+3.  **Tulajdonos:** Egy olyan tulajdonost teljes körű engedélyekkel rendelkezik a munkaterületre.
 
 ## <a name="change-sharing-permission"></a>Megosztási engedélyek módosítása
 

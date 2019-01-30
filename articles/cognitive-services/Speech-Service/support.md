@@ -6,16 +6,16 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 58fb5d4be2137eed7d62e702f08bdd66c80be347
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 9ed4f14ee5c3f6023e5529aca7fbd824f5ca460a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468058"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207037"
 ---
 # <a name="support-and-help-options"></a>Támogatás és Súgó
 
@@ -61,11 +61,11 @@ Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow 
 
 |Összetevő/terület  |Címkék  |
 |---------|---------|
-|Beszédfelismerés |[[a microsoft-cognitive + hang-szöveg transzformációs]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
+|Beszédfelismerés |[[microsoft-cognitive+speech-to-text]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
 |Beszédszintézishez |[[a microsoft-cognitive + szöveg-,-beszéd átalakítás]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|Beszédfordítás |[[a microsoft-fordítási cognitive +]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
+|Beszédfordítás |[[microsoft-cognitive+translation]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
 |Beszéd leképezés |[[a microsoft-cognitive + luis]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|Általános beszéd SDK |[[a microsoft-cognitive + microsoft-speech-api]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+|Általános beszéd SDK |[[microsoft-cognitive+microsoft-speech-api]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
 
 > [!TIP]
 > A Stack overflow-n a következő bejegyzések tippekkel szolgál az űrlapon kérdések tartalmazhat, és hozzáadása a forráskódja. Ezen irányelvek betartása érdekében előfordulhat, hogy növelheti annak esélyét, hogy a Közösség tagjai mérje fel, és gyorsan válaszolni:  
@@ -77,7 +77,7 @@ Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow 
 A minták gyakran feladja a nyílt forráskódú. Kérdések és problémák, hozzon létre egy *probléma* a megfelelő GitHub-adattárában. A lekéréses kérelem túl is nyújt. Az alábbi lista tartalmazza a minta tárház mutató hivatkozásokat:
 
 * [Beszéd SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Eszköz SDK-t](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
 Hozzon létre egy hibajelentéseit funkcióra vonatkozó kérést, vagy kérje meg egy általános kérdés és megoszthatók az ajánlott eljárások. Hibajelentéseire kövesse a megadott sablon:
 
@@ -112,7 +112,7 @@ Az SDK melyik verzióját használja.
  - További adatok
 
 
-## <a name="uservoice-forum"></a>UserVoice fórumot
+## <a name="uservoice-forum"></a>UserVoice forum
 
 Ossza meg ötleteit, hogy a Cognitive Services és a hozzájuk tartozó API-k egyre jobban működnek az alkalmazások fejlesztése. Gyakori kérdésekre adott válaszok a növekvő Tudásbázisunkhoz használatával:
 

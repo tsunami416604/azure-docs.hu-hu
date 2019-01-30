@@ -6,18 +6,18 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: f79b148558e7881f852ccd57916b0b0f31a98219
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4d03ccfddab9a4aab4a1eacde02d68652bf5103a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342330"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219073"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Gyors útmutató: A Bing beszédfelismerés API c. használata&#35; .NET Windows-es
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Gyors útmutató: A Bing beszédfelismerő API a C&#35; .NET Windows-es
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -54,7 +54,7 @@ A beszédfelismerő API a Cognitive Services-(korábban Project Oxford) részét
 
 3. Kattintson duplán a SpeechToText-WPF-Samples.sln nevű Visual Studio 2015-megoldás (.sln) fájl megnyitásához. A megoldás megnyílik a Visual Studióban.
 
-## <a name="step-2-build-the-sample-application"></a>2. lépés: A minta-alkalmazás létrehozása
+## <a name="step-2-build-the-sample-application"></a>2. lépés: A mintaalkalmazás létrehozása
 
 1. Ha a használni kívánt *szándékával felismerése*, először létre kell regisztrálni a [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). A végpont URL-címét a LUIS-alkalmazás használatával a kulcs értékét állítsa `LuisEndpointUrl` az app.config fájlban a samples/SpeechRecognitionServiceExample mappában. A LUIS alkalmazás a végpont URL-címének további információkért lásd: [tegye közzé alkalmazását](../../luis/luis-get-started-create-app.md#publish-your-app).
 
@@ -78,8 +78,8 @@ A beszédfelismerő API a Cognitive Services-(korábban Project Oxford) részét
 
    Az egyes kategóriákhoz felismerés három mód:
 
-    * **ShortPhrase mód**: az utterance (kifejezés), legfeljebb 15 másodperc, mennyi ideig. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és több végső eredményt, több legjobb n választási lehetőség a kap.
-    * **LongDictation mód**: az utterance (kifejezés), akár két perc hosszú. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és több végső eredményt is, ahol azt jelzi, a kiszolgáló mondaton belüli szünetet alapján kap.
+    * **ShortPhrase mód**: Az utterance (kifejezés), legfeljebb 15 másodperc hosszúságú. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és több végső eredményt, több legjobb n választási lehetőség a kap.
+    * **LongDictation mód**: Az utterance (kifejezés), akár két perc hosszú. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és több végső eredményt is, ahol azt jelzi, a kiszolgáló mondaton belüli szünetet alapján kap.
     * **Leképezési észlelési**: A kiszolgáló a beszéd, adjon meg további strukturált információt ad vissza. Leképezési észlelési használatához először betanítja a modellt használatával kell [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
 Ez a mintaalkalmazás minta hangfájlok használata. Ebben a példában a samples/SpeechRecognitionServiceExample mappában letöltött adattár találja a fájlokat. Ezen minta hangfájlok automatikus futtatásra, ha nincsenek más fájlok közül választ kiválasztásakor **Shortphrase mód használata wav-fájl** vagy **wav-fájl használata Longdictation mód** , a beszéd, adjon meg. Jelenleg csak WAV hangformátum használata támogatott.
@@ -91,8 +91,8 @@ Ez a mintaalkalmazás minta hangfájlok használata. Ebben a példában a sample
 ### <a name="recognition-events"></a>Elismerés események
 
 * **Részleges eredményeket események**: Ez az esemény meghívása megtörténik, minden alkalommal, amikor beszédszolgáltatás előrejelzi, előfordulhat, hogy el véleményét, beszéd befejezése előtt is (Ha `MicrophoneRecognitionClient`), vagy fejezze be az adatok küldésének (használatakor `DataRecognitionClient`).
-* **Hibaesemények**: meghívva, ha a szolgáltatás hibát észlel.
-* **Leképezési események**: nevű ügyfeleken "WithIntent" (csak a ShortPhrase üzemmódban) után a végső felismerés eredménye egy strukturált JSON-leképezés szűrőtulajdonság.
+* **Hibaesemények**: Meghívva, ha a szolgáltatás hibát észlel.
+* **Leképezési események**: Neve az "WithIntent" ügyfeleken (csak a ShortPhrase üzemmódban) után a végső felismerése eredménye egy strukturált JSON-leképezés szűrőtulajdonság.
 * **Események eredményeként**:
   * A `ShortPhrase` mód, ez az esemény nevezik, és a legjobb n eredményeket ad vissza, és beszéljen befejezése után.
   * A `LongDictation` üzemmód, az eseménykezelő neve többször, ahol a szolgáltatás azonosítja a mondaton belüli szünetet alapján.

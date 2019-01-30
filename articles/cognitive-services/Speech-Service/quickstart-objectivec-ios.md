@@ -6,16 +6,16 @@ services: cognitive-services
 author: chlandsi
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: chlandsi
-ms.openlocfilehash: 75411ebd50448c5f490a1f03fbbf25a61dbffaf8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 044d703af50a951e1c406014f3e00eb49c1632a2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718112"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209621"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Gyors útmutató: Beszédfelismerést Objective-C nyelven a Speech Service SDK használatával iOS rendszeren
 
@@ -102,4 +102,4 @@ A Speech SDK jelenleg csak a 64 bites iOS-platformokat támogatja.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Objective-C-minták megtekintése a Githubon](https://aka.ms/csspeech/samples)
+> [Explore Objective-C samples on GitHub](https://aka.ms/csspeech/samples)

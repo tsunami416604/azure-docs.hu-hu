@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Észlelése és a face adatok megjelenítése a képet a .NET SDK használatával'
+title: 'Oktatóanyag: Észlelheti és face adatok megjelenítése a képet a .NET SDK használatával'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban létrehozhat egy Windows-alkalmazást, amely a Face API-t használja és keret arcok a képen.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 11/05/2018
 ms.author: pafarley
-ms.openlocfilehash: 8db2437b7f78271aee131cf5b4dfd9f06f744c66
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 79b467e55ec381d851d064d5f78cbdb91c9cf837
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852673"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221181"
 ---
-# <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Az arcfelismerés adatok megjelenítéséhez a képet a WPF-alkalmazás létrehozása
+# <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Face adatok megjelenítéséhez a képet a WPF-alkalmazás létrehozása
 
 Ebben az oktatóanyagban, megtudhatja, hogyan arcok észlelése a képet, és majd az adatok szerepelnek a felhasználói felületen keresztül a .NET ügyféloldali SDK-t, az Azure Face API használatával. Egy egyszerű, arcokat észleli, minden kerettel megrajzolja, és megjeleníti a face leírását az állapotsorban Windows Presentation Framework (WPF) alkalmazást fog létrehozni. 
 

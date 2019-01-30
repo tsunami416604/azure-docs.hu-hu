@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: raynew
-ms.openlocfilehash: fef6dc7937b2c83e67a281c69267bdf29216793d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 61e66a19b625141c69a9473373d3d5d808e18fde
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55199049"
+ms.locfileid: "55211117"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -59,7 +59,7 @@ Azure bevezetett [Standard tartós állapot-meghajtók (SSD)](https://docs.micro
 
 ### <a name="support-for-azure-storage-firewall"></a>Az Azure storage-tűzfal támogatása
 
-Hálózatok meghatározott Azure storage-fiókok bekapcsolásával tűzfalszabályok a fiók biztonságát. A forgalom megtagadásához belső hálózatok és az internetről alapértelmezés szerint a tárfiókok konfigurálása, majd számára a hozzáférést biztosítani a forgalom a meghatározott virtuális hálózatok. A Site Recovery replikációs támogatja a virtuális gépek nem felügyelt lemezek a tárfiókokhoz firewa engedélyezve van egy másodlagos régióba. A célrégióban, nem felügyelt lemezek storage-fiókok kiválaszthatja a tűzfal engedélyezve van. Hozzáférés programot is korlátozhatja a gyorsítótárfiókba hálózati hozzáférés korlátozása csak a hálózatot, amelyben a forrás virtuális gépek találhatók. Vegye figyelembe, hogy csak [hozzáférést](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) megbízható Microsoft-szolgáltatásokhoz.
+Hálózatok meghatározott Azure storage-fiókok bekapcsolásával tűzfalszabályok a fiók biztonságát. A forgalom megtagadásához belső hálózatok és az internetről alapértelmezés szerint a tárfiókok konfigurálása, majd hozzáférést biztosítani a forgalom az adott virtuális hálózatok. A Site Recovery replikációs támogatja a virtuális gépek nem felügyelt lemezek, a tűzfal tárfiókokhoz egy másodlagos régióba. A célrégióban, nem felügyelt lemezek storage-fiókok kiválaszthatja a tűzfal engedélyezve van. Hozzáférés programot is korlátozhatja a gyorsítótárfiókba hálózati hozzáférés korlátozása csak a hálózatot, amelyben a forrás virtuális gépek találhatók. Vegye figyelembe, hogy csak [hozzáférést](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) megbízható Microsoft-szolgáltatásokhoz.
 
 ## <a name="q3-2018"></a>Q3 2018 
 

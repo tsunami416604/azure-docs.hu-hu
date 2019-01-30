@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 01/28/2019
 ms.author: bwren
-ms.openlocfilehash: 674a26b9c8eb5fe8f44b416b5296b61c6678d2cd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9fe25821d5a234326570b1681807c6f9dfd6ffc8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186174"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211100"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analytics és a HTTP-adatgyűjtő API (nyilvános előzetes verzió)
 Ez a cikk bemutatja, hogyan adatokat küldeni a Log Analytics REST API-ügyfél-nak a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és rendelkezik a Log Analytics által engedélyezett kérelmet.  A példák a PowerShell, a C# és Python.
@@ -57,8 +57,8 @@ A HTTP-adatgyűjtő API használatához hozzon létre egy POST-kérelmet, amely 
 | Fejléc | Leírás |
 |:--- |:--- |
 | Engedélyezés |Az engedélyezési aláírást. A cikk későbbi részében olvashat egy HMAC-SHA256-fejlécben létrehozása. |
-| Napló-típusa |Adja meg a rekord típusa adatok küldése folyamatban van. A napló típusa jelenleg csak alfanumerikus karaktereket tartalmazhat. Nem támogatja a numerics vagy speciális karaktert. A méretkorlát a paraméter nem 100 karakternél. |
-| x-ms-dátuma |A dátum, a kérelem feldolgozott RFC 1123 formátumban. |
+| Log-Type |Adja meg a rekord típusa adatok küldése folyamatban van. A méretkorlát a paraméter nem 100 karakternél. |
+| x-ms-date |A dátum, a kérelem feldolgozott RFC 1123 formátumban. |
 | time-generated-field |Az adatok, amely tartalmazza az időbélyeget, az elem egy mező nevét. Ha megad egy mezőt, akkor a tartalmát használt **TimeGenerated**. Ha ez a mező nincs megadva, alapértelmezett **TimeGenerated** az az idő, az üzenet betöltött. A mező tartalma követnie kell az ISO 8601 formátum éééé-hh-DDThh:mm:ssZ. |
 
 ## <a name="authorization"></a>Engedélyezés
@@ -138,7 +138,7 @@ A tulajdonság adattípusát azonosításához, a Log Analytics hozzáadja egy u
 
 | Tulajdonságadat típusa | Utótag |
 |:--- |:--- |
-| Karakterlánc |z |
+| Karakterlánc |_s |
 | Logikai |_b |
 | Dupla |_d |
 | Dátum és idő |_t |

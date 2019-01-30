@@ -1,17 +1,17 @@
 ---
 title: Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure Site Recovery-hozzáférés kezelése |} A Microsoft Docs
-description: Ez a cikk ismerteti a szerepköralapú hozzáférés-bontrol (RBAC) az Azure Site Recovery-hozzáférés kezelése a alkalmazni.
+description: Ez a cikk ismerteti a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure Site Recovery-hozzáférés kezelése a alkalmazni.
 ms.service: site-recovery
 ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 815eb1f94d80c36824dc34f3f9410458b9837003
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5a6ef10f03bb5e108c226fe3d68f1dec67e6164a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849530"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218070"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>A szerepköralapú hozzáférés-vezérléssel (RBAC) a Site Recovery-hozzáférés kezelése
 
@@ -74,4 +74,4 @@ Fontolja meg a "Virtuális gépek Közreműködője" és "Klasszikus virtuális 
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Szerepköralapú hozzáférés-vezérlés hibáinak elhárítása](../role-based-access-control/troubleshooting.md): gyakori hibák rögzítésére vonatkozó javaslatokat kérhet.
+* [Szerepköralapú hozzáférés-vezérlés hibáinak elhárítása](../role-based-access-control/troubleshooting.md): Gyakori hibák rögzítésére vonatkozó javaslatokat kérhet.
