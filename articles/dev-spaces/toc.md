@@ -28,6 +28,7 @@
 ### [Egyéni NuGet hírcsatorna használata](how-to/use-custom-nuget-feed.md)
 ### [Kubectl használata az Azure Dev Spaces segítségével](how-to/use-kubectl-with-azure-dev-spaces.md)
 ### [Azure Dev Spaces-eszközök frissítése](how-to/upgrade-tools.md)
+### [Üzletmenet-folytonosság és vészhelyreállítás az Azure Dev Spaceshez](how-to/dev-spaces-business-continuity.md)
 
 ## [hibaelhárítással](troubleshooting.md)
 
