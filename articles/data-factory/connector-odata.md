@@ -273,20 +273,20 @@ OData-adatok másolása esetén a következő hozzárendeléseket használják O
 
 | OData-adattípus | Data Factory közbenső adattípus |
 |:--- |:--- |
-| Edm.Binary | Byte] |
-| Edm.Boolean | Logikai |
-| Edm.Byte | Byte] |
+| Edm.Binary | Byte[] |
+| Edm.Boolean | Bool |
+| Edm.Byte | Byte[] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Tizedes tört |
-| Edm.Double | Dupla |
-| Edm.Single | Önálló |
-| Edm.Guid | GUID |
+| Edm.Decimal | Decimal |
+| Edm.Double | Double |
+| Edm.Single | Single |
+| Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | Karakterlánc |
-| Edm.Time | Időtartam |
+| Edm.String | String |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]
