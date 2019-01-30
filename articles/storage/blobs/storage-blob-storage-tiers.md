@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: kuhussai
-ms.component: blobs
-ms.openlocfilehash: 19a9ef3e3f6a33e1f8e4d1e47ddc7562c0b90e37
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.subservice: blobs
+ms.openlocfilehash: 3e89f5de247cf18abdb710577ce55c6e2cb5765e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197674"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251894"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Az Azure Blob storage: Prémium (előzetes verzió), a gyors Elérésűre, ritka elérésű és archív tárolási szintek
 
@@ -123,7 +123,7 @@ Amikor egy blob egy írásként kerül (gyakori elérésű -> ritka elérésű, 
 
 | | **Írás (művelet + hozzáférés) díjak** | **Olvasás (művelet + hozzáférés) díjak** 
 | ---- | ----- | ----- |
-| **SetBlobTier iránya** | Gyakori elérésű -> ritka elérésű, gyakori elérésű, archív -> ritka elérésű -> archív | Archív -> ritka elérésű, archív -> gyakori elérésű, ritka elérésű -> gyakori elérésű
+| **SetBlobTier Direction** | Gyakori elérésű -> ritka elérésű, gyakori elérésű, archív -> ritka elérésű -> archív | Archív -> ritka elérésű, archív -> gyakori elérésű, ritka elérésű -> gyakori elérésű
 
 Ha Ön átváltja a gyors elérésűről lassú elérésűre módosítja, akkor az írási műveletek (10.000 műveletenként), beállított szinttel a csak a GPv2-fiókok összes blobja számítunk. Nem jár költséggel a módosítás a Blob storage-fiókok. Meg kell fizetni az olvasási műveletek (10.000 műveletenként) és az adatlekérés (GB-onként) ha átváltja a Blob storage vagy GPv2-fiókra lassú elérésűről gyors elérésű szintre. A ritka elérésű vagy archív tárolási szintről áthelyezett blobok esetében korai törlésre vonatkozó díjak lehetnek érvényesek.
 

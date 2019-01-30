@@ -4,36 +4,36 @@ description: fájl belefoglalása
 author: ghogen
 services: cognitive-services
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: include
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: include file
 manager: douge
-ms.openlocfilehash: d4be9cf6b72fb828a55a0304013c0077e1ba8089
-ms.sourcegitcommit: 170d2a3b8b6ee9376c0716783ce9768e1b33ddbb
+ms.openlocfilehash: 892db95a3d8ebaf4d9d3339d4965ce96b1084537
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2018
-ms.locfileid: "35550391"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252353"
 ---
-## <a name="install-the-cognitive-services-vsix-extension"></a>A kognitív VSIX bővítményének telepítése
+## <a name="install-the-cognitive-services-vsix-extension"></a>A Cognitive Services VSIX bővítmény telepítése
 
-1. Webes nyissa meg a projektet a Visual Studio alkalmazásban, válassza ki a **kapcsolódó szolgáltatások** fülre. A lap nem érhető el a kezdőlapon, amely akkor jelenik meg, amikor megnyit egy új projektet. Ha nem látja a lapra, válassza ki a **kapcsolódó szolgáltatások** a projektre a Solution Explorer.
+1. A webes projektre a Visual Studióban nyissa meg, majd kattintson a **csatlakoztatott szolgáltatás** fülre. A lap jelenik meg, amikor megnyit egy új projektet kezdőlapján érhető el. Ha nem lát a lapon, válassza ki a **csatlakoztatott szolgáltatás** a projektre a Megoldáskezelőben.
 
-   ![Szolgáltatások csatlakoztatott képernyőkép lap](./media/vs-install-cognitive-services-vsix/Connected-Services-Tab.PNG)
+   ![A csatlakoztatott szolgáltatások képernyőfelvételen lap](./media/vs-install-cognitive-services-vsix/Connected-Services-Tab.PNG)
 
-1. Görgessen le a alsó részén található szolgáltatások listáját, és válassza ki **további szolgáltatások**.
+1. Görgessen le a szolgáltatások teljes listájának az aljára, és válassza ki **további szolgáltatások keresése**.
 
-    ![Képernyőfelvétel a keresési több szolgáltatási hivatkozás](./media/vs-install-cognitive-services-vsix/Find-More-Services.PNG)
+    ![Képernyőkép a keresési több services hivatkozás](./media/vs-install-cognitive-services-vsix/Find-More-Services.PNG)
  
     A **bővítmények és frissítések** párbeszédpanel jelenik meg.
 
-1. Az a **bővítmények és frissítések** párbeszédpanelen keresse meg **kognitív szolgáltatások**, és töltse le, és a szolgáltatások kognitív VSIX telepítéséhez.
+1. Az a **bővítmények és frissítések** párbeszédpanel, és keressen **Cognitive Services**, és töltse le és telepítse a Cognitive Services VSIX csomagot.
 
-   ![Képernyőfelvétel a bővítmények és frissítések párbeszédpanel](./media/vs-install-cognitive-services-vsix/install-cognitive-services-vsix.PNG)
+   ![Képernyőkép a bővítmények és frissítések párbeszédpanel](./media/vs-install-cognitive-services-vsix/install-cognitive-services-vsix.PNG)
 
-   Egy bővítmény telepítéséhez újra kell indítania az integrált fejlesztési környezeti (IDE).
+   Egy bővítmény telepítése újra kell indítani az integrált fejlesztői környezet (IDE).
 
-2. Indítsa újra a Visual Studio. A bővítmény telepíti a Visual Studio bezárása, és elérhető az IDE következő indításakor.
+2. Indítsa újra a Visual Studióban. A bővítmény telepíti a Visual Studio bezárása, és a következő indításakor az IDE érhető el.
 

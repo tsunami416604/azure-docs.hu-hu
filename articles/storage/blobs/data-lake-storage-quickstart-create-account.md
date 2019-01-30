@@ -3,17 +3,17 @@ title: Az Azure Data Lake Storage Gen2-storage-fiók létrehozása |} A Microsof
 description: Gyorsan megismerheti a Data Lake Storage Gen2-re az Azure Portalon, az Azure PowerShell vagy az Azure CLI használatával hozzáféréssel rendelkező új tárfiók létrehozása
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 7cd1f0fdf8b391ac1d683c6d67c2739b747815a2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 906f1a85000a2be175a204e9e6e561a75cecfde3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193658"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248435"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Gyors útmutató: Az Azure Data Lake Storage Gen2-storage-fiók létrehozása
 

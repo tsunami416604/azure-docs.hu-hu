@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3759a9845d4ad1514fc5f0183c78b5eca2e31464
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: eff526118f6fd127ba720d28296baf86abd01393
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960651"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246434"
 ---
 # <a name="azure-stack-firewall-integration"></a>Az Azure Stack tűzfal integrációja
 Javasoljuk, hogy egy tűzfal eszköz segítségével biztonságos Azure Stack segítségével. Bár tűzfalak többek között elosztott-szolgáltatásmegtagadásos (DDOS) támadások, a behatolásérzékelési és a tartalomvizsgálat segíthet, azokat is az Azure storage-szolgáltatásokhoz hasonlóan a blobok, táblák és üzenetsorok átviteli szűk keresztmetszetté válhat.
@@ -34,7 +35,7 @@ A vállalati szervezetek számára a külső hálózat lehet a meglévő vállal
 ### <a name="network-address-translation"></a>Hálózati címfordítás
 Hálózati címfordítás (NAT), hogy a központi telepítés a virtuális gép (DVM) a külső erőforrásokat és üzembe helyezése során az internet eléréséhez, valamint a válságkezelési helyreállítási konzol (ERCS) virtuális gépek vagy a kiemelt jogosultságú a végpontot (EGP) a során a javasolt módszer a regisztráció és a hibaelhárítás.
 
-NAT is lehet a külső hálózaton vagy a nyilvános virtuális IP-cím nyilvános IP-címek helyett. Azonban nem ajánlott, mert azt korlátozza a bérlő felhasználói élményt, és növeli az összetettséget. A két lehetőség lenne, itt is szükség van egy nyilvános IP-cím / felhasználói IP-cím a készleten, vagy számos NAT 1:1:1 NAT igénylő egy NAT-szabályhoz / virtuális IP-cím, amely tartalmazza az összes port felhasználó a felhasználó használhatja.
+NAT is lehet a külső hálózaton vagy a nyilvános virtuális IP-cím nyilvános IP-címek helyett. Azonban nem ajánlott, mert azt korlátozza a bérlő felhasználói élményt, és növeli az összetettséget. A két lehetőség közül választhat, hogy itt is szükség van egy nyilvános IP-cím / felhasználói IP-cím a készleten, vagy több 1:1 NAT a következő lesz: Egy NAT-szabályt, amely tartalmazza az összes port VIP felhasználónként igénylő 1 NAT a felhasználók használhatnak.
 
 A nyilvános virtuális IP-CÍMEK a NAT használatával több szempontból sem ajánlott a következők:
 - NAT többletterheléssel tűzfalszabályok kezelésekor, mert a felhasználók saját végpontokat és a saját közzététel szabályai a szoftveralapú hálózatkezelési (SDN) verem szabályozhatja. Felhasználók kapcsolatba kell lépnie a VIP-k közzététele, és a port listájának frissítése az Azure Stack-operátorokról.
@@ -54,7 +55,7 @@ Az edge üzemelő példány, az Azure Stack közvetlenül a peremhálózati útv
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>Vállalati intranet vagy peremhálózati tűzfal forgatókönyve
 Vállalati intranetes vagy szegélyhálózat-alapú üzembe helyezés Azure Stack üzembe lesz helyezve a többszörös zónázva tűzfalon, vagy a peremhálózati tűzfalon, és a belső, vállalati hálózati tűzfal között. Ezután ossza a biztonságos, szegélyhálózaton (vagy a DMZ) között a forgalmat, és nem biztonságos zónák, az alábbiakban:
 
-- **Biztonságos zóna**: Ez az, hogy a belső hálózat, amely a belső vagy vállalati irányítható IP-címet használ. A biztonságos hálózati oszthatók, a tűzfalon keresztül, NAT kimenő internet-hozzáféréssel rendelkezik, és általában érhető el, bárhol az adatközpontban, a belső hálózaton belül. Az összes Azure Stack-hálózatok a külső hálózati nyilvános VIP-címkészlet kivételével a biztonságos zóna kell lennie.
+- **Biztonságos zóna**: Ez az a belső hálózat, amely a belső vagy vállalati irányítható IP-címet használ. A biztonságos hálózati oszthatók, a tűzfalon keresztül, NAT kimenő internet-hozzáféréssel rendelkezik, és általában érhető el, bárhol az adatközpontban, a belső hálózaton belül. Az összes Azure Stack-hálózatok a külső hálózati nyilvános VIP-címkészlet kivételével a biztonságos zóna kell lennie.
 - **Szegélyhálózat-alapú zóna**. A szegélyhálózaton van, ha külső vagy internetkapcsolattal rendelkező alkalmazás, például webkiszolgálók általában vannak telepítve. Egy tűzfal, például DDoS és a behatolás (feltörés) miközben továbbra is lehetővé teszi a megadott bejövő forgalom az internetről érkező támadások elkerülése érdekében általában figyelhető. Csak a külső hálózati nyilvános VIP-készletet az Azure Stack kell lennie a DMZ zónában.
 - **Nem biztonságos zóna**. Ez az a külső hálózat, az interneten. Ez **nem** javasoljuk, hogy a nem biztonságos zónában az Azure Stack üzembe helyezése.
 

@@ -6,16 +6,16 @@ author: sachinpMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: aa1d98f5ea2db0cc549b60e33769c8628181721b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 131a2102ec3ede930de3cad7516e486d793fec3d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686602"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250557"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Az SQL Data Warehouse kapacitáskorlátait
 Azure SQL Data Warehouse különböző összetevői számára engedélyezett maximális értékeket.
@@ -28,12 +28,12 @@ Azure SQL Data Warehouse különböző összetevői számára engedélyezett max
 | Adatbázis-kapcsolat |Nyissa meg egyidejű munkamenetek |1024<br/><br/>Minden egyes az 1024 aktív munkamenetek küldhet, hogy az SQL Data Warehouse-adatbázis kérelmeket egy időben. Vegye figyelembe, hogy a lekérdezések, amelyekkel végrehajtható egy időben száma korlátozva van. Az egyidejűségi korlát túllépésekor a kérelem hiányzóra egy belső várólista ahol vár feldolgozásra. |
 | Adatbázis-kapcsolat |Maximális memória előkészített utasításokat |20 MB |
 | [Számítási feladatok kezelése](resource-classes-for-workload-management.md) |Maximális párhuzamos lekérdezések |128<br/><br/> Az SQL Data Warehouse legfeljebb 128 lekérdezést és üzenetsorok fennmaradó lekérdezéseket hajthat végre.<br/><br/>A párhuzamos lekérdezések számát csökkentheti, amikor a felhasználók vannak hozzárendelve, magasabb erőforrásosztályokat, vagy ha az SQL Data Warehouse rendelkezik egy alacsonyabb [adattárházegység](memory-and-concurrency-limits.md) beállítás. Néhány lekérdezésnél, például a DMV-lekérdezés, mindig engedélyezett futtassa, és nincs hatással a párhuzamos lekérdezés-korlátot. A párhuzamos lekérdezés-végrehajtás további részletekért tekintse meg a [párhuzamosság maximális értékeket](memory-and-concurrency-limits.md#concurrency-maximums) cikk. |
-| [a TempDB](sql-data-warehouse-tables-temporary.md) |Maximális GB |DW100, 399 Gigabájtonként. Ezért DWU1000, a tempdb van méretezve, hogy 3.99 TB. |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |Maximális GB |DW100, 399 Gigabájtonként. Ezért DWU1000, a tempdb van méretezve, hogy 3.99 TB. |
 
 ## <a name="database-objects"></a>Adatbázis-objektumok
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
-| Adatbázis |Maximális méret | Gen1: 240 TB tömöríti a lemezen. Ez a terület független terület a tempdb vagy a naplóhoz, és ezért ez a terület dedikált állandó táblák.  Fürtözött oszlopcentrikus tömörítés becsült 5 X.  Ez a fajta tömörítés lehetővé teszi, hogy az adatbázisnak, hogy megközelítőleg 1 PB, ha minden tábla fürtözött oszlopcentrikus (az alapértelmezett táblatípus). <br/><br/> Gen2: 240TB sortárindex és korlátlan tárolási oszlopcentrikus táblák |
+| Adatbázis |Maximális méret | Gen1: A lemezen tömörített 240 TB. Ez a terület független terület a tempdb vagy a naplóhoz, és ezért ez a terület dedikált állandó táblák.  Fürtözött oszlopcentrikus tömörítés becsült 5 X.  Ez a fajta tömörítés lehetővé teszi, hogy az adatbázisnak, hogy megközelítőleg 1 PB, ha minden tábla fürtözött oszlopcentrikus (az alapértelmezett táblatípus). <br/><br/> Gen2: 240TB sortárindex és korlátlan tárolási oszlopcentrikus táblák |
 | Tábla |Maximális méret |A lemezen tömörített 60 TB |
 | Tábla |Táblák adatbázisonként | 100 000 |
 | Tábla |Táblánként oszlopok |1024 oszlopot |
@@ -69,7 +69,7 @@ Azure SQL Data Warehouse különböző összetevői számára engedélyezett max
 | SELECT |Csatlakozás soronként |1024 oszlopot<br/><br/>A JOIN soha nem rendelkezhet több mint 1024 oszlopot. Nincs garancia arra, hogy 1024 mindig rendelkezhet. Ha az ILLESZTÉSI csomag több oszlop, mint az ILLESZTÉS eredmény tartalmazó ideiglenes táblát igényel, az ideiglenes tábla az 1024 korlát vonatkozik. |
 | SELECT |Bájtok CSOPORTOSÍTÁSI oszlopok száma. |8060<br/><br/>A GROUP BY záradékban szereplő oszlopok legfeljebb egy 8060 bájt. |
 | SELECT |Oszlopok az ORDER BY / bájt |8060 bájt<br/><br/>Az oszlopok az ORDER BY záradékában legfeljebb 8060 bájtok |
-| Azonosítók utasítás kiszolgálónként |Hivatkozott azonosítók száma |65,535<br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés forráselérésiútja azonosítók számának korlátozása. Meghaladja a SQL Server-hiba 8632 számot eredményez. További információkért lásd: [belső hiba: elérte a korlátozását](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
+| Azonosítók utasítás kiszolgálónként |Hivatkozott azonosítók száma |65,535<br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés forráselérésiútja azonosítók számának korlátozása. Meghaladja a SQL Server-hiba 8632 számot eredményez. További információkért lásd: [belső hiba: Elérte a korlátozását](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Karakterlánc-literálnak | Karakterlánc-literálnak utasításban száma | 20,000 <br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés karakterlánc-állandókat számát korlátozza. Meghaladja a SQL Server-hiba 8632 számot eredményez.|
 
 ## <a name="metadata"></a>Metaadatok

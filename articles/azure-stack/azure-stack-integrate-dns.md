@@ -9,27 +9,28 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
+ms.lastreviewed: 10/15/2018
 keywords: ''
-ms.openlocfilehash: bf412809f9d10296ad600e64abb6d870dbb88d3e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: dce59cf012a8c3bc5b6b3baf705b5619bdf43104
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339678"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252311"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Az Azure Stack adatközpont integrációja - DNS
 A érhetik el az Azure Stack-végpontok (**portál**, **adminportal**, **felügyeleti**, **adminmanagement**stb.)  a külső Azure Stack az Azure Stack DNS szolgáltatások integrálását a DNS-kiszolgálók, amelyek a DNS-zónák az Azure Stackben használni kívánt kell.
 
-## <a name="azure-stack-dns-namespace"></a>Az Azure Stack DNS-névtérben
+## <a name="azure-stack-dns-namespace"></a>Azure Stack DNS namespace
 Ön szükséges néhány, az Azure Stack üzembe helyezése során a DNS kapcsolatos fontos információkat tartalmaznak.
 
 
 |Mező  |Leírás  |Példa|
 |---------|---------|---------|
 |Régió|Az Azure Stack üzemelő példányához földrajzi helye.|`east`|
-|Külső tartomány neve|Az Azure Stack üzembe helyezéshez használni kívánt a zóna nevét.|`cloud.fabrikam.com`|
+|External Domain Name|Az Azure Stack üzembe helyezéshez használni kívánt a zóna nevét.|`cloud.fabrikam.com`|
 |Belső tartomány neve|Az infrastruktúra-szolgáltatások az Azure Stackben használt belső zóna nevét.  Címtárszolgáltatás integrált és személyes (nem érhető el a kívül az Azure Stack üzembe helyezés).|`azurestack.local`|
-|DNS-továbbító|Segítségével az DNS-lekérdezések, DNS-zónák és -rekordok Azure Stack, a vállalati intranet vagy a nyilvános interneten kívül üzemeltetett DNS-kiszolgálók.|`10.57.175.34`<br>`8.8.8.8`|
+|DNS Forwarder|Segítségével az DNS-lekérdezések, DNS-zónák és -rekordok Azure Stack, a vállalati intranet vagy a nyilvános interneten kívül üzemeltetett DNS-kiszolgálók.|`10.57.175.34`<br>`8.8.8.8`|
 |Elnevezési előtag (opcionális)|Azt szeretné, hogy az Azure Stack infrastruktúra példány gép szerepkörneveket kell elnevezési előtag.  Ha nincs megadva, az alapértelmezett érték `azs`.|`azs`|
 
 A teljesen minősített tartományneve (FQDN) az Azure Stack üzembe helyezés és a végpontok a régiót és a külső tartománynév paraméter együttes használata. A teljes tartománynév, az üzembe helyezés az Azure Stack használatával a példákban szereplő értékek alapján az előző táblázatban, a következő név a következő lesz:
@@ -121,7 +122,7 @@ Ha az üzembe helyezés virtuális gép már nem érhető el, vagy nem érhető 
 
 A legegyszerűbb és legbiztonságosabb módját, az Azure Stack integrálható a DNS-infrastruktúra ehhez a zóna feltételes továbbítás a szülőzónát futtató kiszolgálón. Ez a megközelítés akkor ajánlott, ha rendelkezik a DNS-kiszolgálók közvetlenül lehet szabályozni, amelyeken a szülőzónában az Azure Stack külső DNS-névtérben.
 
-Ha még nem ismeri a DNS-sel való feltételes továbbítás módjáról, tekintse meg a következő TechNet-cikk: [rendelje hozzá a feltételes továbbítók tartománynév](https://technet.microsoft.com/library/cc794735), vagy a DNS-megoldás adott dokumentációjában.
+Ha még nem ismeri a szeretne feltételes DNS-továbbítást, tekintse meg a következő TechNet-cikk: [Rendelje hozzá a feltételes továbbítók tartománynév](https://technet.microsoft.com/library/cc794735), vagy a DNS-megoldás adott dokumentációjában.
 
 Olyan esetekben, ahol a külső Azure Stack DNS-zónához a következő módon a vállalati tartománynév gyermektartomány megadott feltételes továbbítás nem használható. DNS-delegálást konfigurálni kell.
 
