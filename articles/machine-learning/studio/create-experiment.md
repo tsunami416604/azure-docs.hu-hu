@@ -1,6 +1,6 @@
 ---
 Cím: Egyszerű kísérlet titleSuffix: Azure Machine Learning Studio description: Ez a Machine Learning-oktatóanyag egy egyszerű adatelemezési kísérletet mutat be. Egy regressziós algoritmus használatával fogjuk előre megbecsülni egy autó árát.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: az oktatóanyag
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: az oktatóanyag
 
 Szerző: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/20/2017
 ---

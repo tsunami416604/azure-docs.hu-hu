@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 47ce2b39f1733c99ef8c15926d42aa62e1fcd44c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: blobs
+ms.openlocfilehash: bbbb7f96ebf14781e2f461f5ffbb3e1172595928
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634558"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241287"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Az Azure storage-fiók egy egyéni tartománynév konfigurálása
 
@@ -44,9 +44,9 @@ Az egyéni tartomány két módon a tárfiók blobvégpontjához is mutat:
 * Használjon közvetlen CNAME-leképezés.
 * Használja a *asverify* köztes altartományt.
 
-### <a name="direct-cname-mapping"></a>Közvetlen CNAME-leképezés
+### <a name="direct-cname-mapping"></a>Direct CNAME mapping
 
-Az első és a legegyszerűbb, módja, ha egy kanonikus nevének (CNAME) rekordot, amely leképezi az egyéni tartományt és altartományt közvetlenül a blob végpontja. Egy CNAME-rekordot funkciója tartomány neve tartománynévrendszer (DNS), amely egy forrástartomány leképezhető egy céltartományra. Ebben a példában a forrástartomány a saját egyéni tartományt és altartományt (*www.contoso.com*, például). A cél-tartomány a blob service-végpont (*mystorageaccount.blob.core.windows.net*, például).
+Az első és a legegyszerűbb, módja, ha egy kanonikus nevének (CNAME) rekordot, amely leképezi az egyéni tartományt és altartományt közvetlenül a blob végpontja. A CNAME record is a domain name system (DNS) feature that maps a source domain to a destination domain. Ebben a példában a forrástartomány a saját egyéni tartományt és altartományt (*www.contoso.com*, például). A cél-tartomány a blob service-végpont (*mystorageaccount.blob.core.windows.net*, például).
 
 A közvetlen metódus az "Egyéni tartomány regisztrálása" szakasz tárgyalja.
 
@@ -67,7 +67,7 @@ Azure DNS segítségével a konfigurálása az Azure Blob-tároló egyedi DNS-ne
 
 Ha az egyéni tartomány jelenleg támogatja az olyan alkalmazás, amely nem rendelkezik az állásidő, eljárással [az egyéni tartomány regisztrálása a *asverify* altartomány](#register-a-custom-domain-using-the-asverify-subdomain).
 
-Egyéni tartománynév beállítása, hozzon létre egy új CNAME-rekordot a DNS-ben. A CNAME-rekord egy tartománynevet alias határozza meg. Ebben a példában a tárfiók Blob storage-végpont vannak leképezve az egyéni tartomány a címet.
+Egyéni tartománynév beállítása, hozzon létre egy új CNAME-rekordot a DNS-ben. The CNAME record specifies an alias for a domain name. Ebben a példában a tárfiók Blob storage-végpont vannak leképezve az egyéni tartomány a címet.
 
 Általában kezelheti a tartomány DNS-beállítások a tartományregisztrálója webhelyén. Minden tartományregisztráló egy hasonló, de eltérő módot a CNAME rekordot, de a koncepció azonos. DNS-konfiguráció nem érhető el néhány alapszintű regisztrációs csomag, mert előfordulhat, hogy frissíteni szeretne a tartomány regisztrációs csomagot a CNAME-rekord létrehozása előtt.
 

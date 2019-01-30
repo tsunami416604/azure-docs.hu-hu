@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: a108d89ab3eb3cf9c7a729f14e3c88bf2b67b20b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5a646f83d3bd6a2c2824aef679f8a46e352f2263
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154099"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246932"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>A Microsoft Authenticator alkalmazás – gyakori kérdések
 
@@ -47,6 +47,8 @@ A Microsoft Authenticator alkalmazás helyett az Azure Authenticator alkalmazás
 |Kapok az Apple Watch és telefonom közötti kommunikációs hiba történt. Mire használhatom hibaelhárítása?|Ez a hiba történik, ha a figyelési képernyőn mielőtt telefonra való kommunikáció során végzett alvó állapotba.<br><br><b>Ha ez történik a telepítés során:</b><br>Próbálja meg ismét, futtassa a telepítőt gondoskodik róla, hogy a figyelési ébren tartani, amíg a folyamat befejeződik. Egy időben nyissa meg az alkalmazást a telefonra, és válaszol a megjelenő utasításokat.<br><br>Ha a telefonján és figyelési még mindig nem kommunikál, próbálkozzon a következő:<ol><li>Hatályba lépjen ki a Microsoft Authenticator telefonos alkalmazást, és nyissa meg újra az iPhone-on.</li><li>Hatályba lépjen ki a kiegészítő az Apple Watch alkalmazást.<ol><li> Nyissa meg a figyelés a Microsoft Authenticator kiegészítő alkalmazást</li><li>Tartsa lenyomva a kiszolgálóoldali gombra, amíg a **leállítási** képernyő jelenik meg.</li><li>Tartsa lenyomva a digitális korona kényszerítése lépjen ki az alkalmazás aktív, és engedje el az ügyféloldali gombját.</li></ol></li><li>Kapcsolja ki a Bluetooth és a Wi-Fi telefonján és a figyelés, majd indítsa őket újra.</li><li>Indítsa újra az iPhone-ján és a figyelés.</li></ol><b>Ha ez történik, ha szeretne értesítéseinek jóváhagyása:</b><br>A következő alkalommal, amikor megpróbál az Apple Watch értesítéseinek jóváhagyása tartsa a képernyő ébren, amíg a kérelem befejeződött, és Ön hallani a hangot, amely azt jelzi, hogy az sikeres volt.|
 |Miért nem a Microsoft Authenticator companion alkalmazás az Apple Watch szinkronizálása vagy saját watchra készült jelenik meg?|Ha az alkalmazás nem jelennek meg megtekinthesse, megpróbálkozhat a következőkkel: <ol><li>Ellenőrizze, hogy a figyelési futtató watchOS 4.0-s vagy újabb verziója.</li><li>A Watch újból szinkronizálódnak.</li></ol>|
 |Apple Watch kiegészítő alkalmazásom összeomlott. Küldhetek be saját összeomlási naplókat segítségével megvizsgálhatja, hogy? |Először azt kell, hogy kiválasztotta az elemzéseket megoszthatja velünk a kapcsolatot. Ha Ön a testflighthoz való felhasználó, még jelentkezett. Ellenkező esetben léphet **beállítások > adatvédelmi > Analytics** , és válassza ki mindkét a **megosztása iPhone & Watch analytics** és a **alkalmazásfejlesztők rendelkező megosztási** beállítások.<br><br>Miután regisztrált, próbálja meg reprodukálni az összeomlás, az összeomlási naplókat a rendszer automatikusan elküldje velünk a kapcsolatot a vizsgálat. Azonban ha az összeomlás nem lehet reprodukálni, manuálisan is a naplófájlok másolása, majd küldje el azokat velünk a kapcsolatot.<ol><li>Nyissa meg az órára készült alkalmazás a telefonján nyissa meg **beállítások > Általános**, és kattintson a **másolási Watch Analytics**.</li><li>Keresse meg a megfelelő összeomlási alatt **beállítások > Adatvédelem > Analytics > elemzési adatok**, majd manuálisan másolja a teljes szöveg.</li><li>Nyissa meg a Microsoft Authenticator alkalmazást a telefonján és a beillesztési, a vágólapra másolt szöveget a **alkalmazásfejlesztők rendelkező megosztási** szövegmezőbe írja be a **naplók küldése** lapot.</li></ol>|
+|Mi az az alkalmazás-zárolási szolgáltatás, és hogyan nyújt segítséget a biztonságosabb maradni?|Az egyszeri PIN-kódok, alkalmazás- és Alkalmazásbeállítások nagyobb biztonságban, bekapcsolhatja a Microsoft Authenticator alkalmazást az App Lock funkciót. Az alkalmazás-zárolási bekapcsolása a **beállítások** a Microsoft Authenticator alkalmazás képernyőjén jelenti, hogy a rendszer minden alkalommal, amikor a Microsoft Authenticator alkalmazás használatával a a PIN-kód vagy a biometrikus hitelesítést. Ez a szolgáltatás további védelmet nyújt, az értesítések a Microsoft Authenticator alkalmazásban jóvá kell hagynia módja nem változik.<br><br>**Megjegyzés**<br>Ha visszatér a Microsoft Authenticator alkalmazást, kevesebb mint 30 másodperc múlva Android-eszközön fut, nem kap felszólítást újbóli.| 
+
 
 ## <a name="next-steps"></a>További lépések
 

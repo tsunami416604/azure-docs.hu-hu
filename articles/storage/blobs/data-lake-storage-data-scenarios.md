@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 érintő forgatókönyvek |} A Microsoft Doc
 description: Megismerheti a különböző forgatókönyveket és eszközök használatával, mely adatokat is betöltött, a feldolgozás, a letöltött és a webalkalmazásban jelennek meg a Data Lake Storage Gen2 (korábbi nevén Azure Data Lake Store)
 services: storage
 author: normesta
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
-ms.openlocfilehash: 978f86141d72cc7be43f24909f9780ab9570605d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dfc47c40ce82eb8e9d414cb49c22bee033d000a6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974891"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239028"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Az Azure Data Lake Storage Gen2 használata big data-követelményekhez
 
@@ -61,7 +61,7 @@ A web server naplózási adatok feltöltését, valamint is fel más típusú ad
 ### <a name="data-associated-with-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtök kapcsolódó adatok
 A legtöbb HDInsight-fürttípusok (Hadoop, HBase, Storm-) tároló adattár Data Lake Storage Gen2 támogatja. HDInsight-fürtök az Azure Storage Blobs (WASB) adatok eléréséhez. A jobb teljesítmény érdekében a Data Lake Storage Gen2-fiókra a fürthöz társított másolhatja az adatokat a WASB. A következő eszközök használatával másolja az adatokat.
 
-* [Az Apache DistCp](data-lake-storage-use-distcp.md)
+* [Apache DistCp](data-lake-storage-use-distcp.md)
 * [Az AzCopy-eszköz](../common/storage-use-azcopy-v10.md)
 * [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)
 
@@ -95,7 +95,7 @@ Amint az adatok Data Lake Storage Gen2 elérhető analysis futtathatja az adatok
 Ilyen esetben a következő lehetőségek bármelyikét használhatja:
 
 * [Azure Data Factory](../../data-factory/copy-activity-overview.md)
-* [Az Apache DistCp](data-lake-storage-use-distcp.md)
+* [Apache DistCp](data-lake-storage-use-distcp.md)
 
 ## <a name="visualize-data-in-data-lake-storage-gen2"></a>Adatok megjelenítése a Data Lake Storage Gen2
 Szolgáltatások kombinációját használhatja létrehozása a Data Lake Storage Gen2-ban tárolt adatok vizuális ábrázolásai.

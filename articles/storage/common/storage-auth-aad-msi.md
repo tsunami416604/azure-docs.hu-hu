@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: d8382cac86abb112018195695340ed12663a2333
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.subservice: common
+ms.openlocfilehash: 15c37be3f3b1b3f72c32865e095091fa10ee9750
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427416"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251690"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources-preview"></a>Hitelesíti a blobok és üzenetsorok, a felügyelt identitásokból hozzáférést az Azure-erőforrások (előzetes verzió)
 
@@ -43,7 +43,7 @@ Az Azure Storage-alkalmazás egy felügyelt identitás hitelesítésére, elősz
 
 Egy felügyelt identitás-hitelesítésre, az alkalmazást vagy parancsfájlt kell beszerezni egy felügyelt identitás-hozzáférési jogkivonatot. Hozzáférési jogkivonat beszerzése kapcsolatos tudnivalókért lásd: [felügyelt identitások használata az Azure-erőforrások egy Azure-beli virtuális gépen a hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET mintakód: block blob létrehozása
+## <a name="net-code-example-create-a-block-blob"></a>.NET-kód példa: Egy blokkblob létrehozása
 
 A mintakód feltételezi, hogy egy felügyelt identitás-hozzáférési jogkivonatot. A hozzáférési jogkivonat blokkblob létrehozása felügyelt identitás hitelesítésére szolgál.
 

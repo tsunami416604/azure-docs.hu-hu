@@ -1,6 +1,6 @@
 ---
 Cím: Hozzon létre egyéni Neurális hálózatokra Net # titleSuffix: Azure Machine Learning Studio description: A Net # Neurális hálózati specifikációs nyelv szintaxisát útmutatója. Ismerje meg, hogyan hozhat létre egyéni Neurális hálózat modellek Azure Machine Learning studióban.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: referencia
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: referencia
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/01/2018
 ---

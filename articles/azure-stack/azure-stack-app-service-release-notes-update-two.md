@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: f40d88df7a46c73981b6f20bee0b119743c08257
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 05/18/2018
+ms.openlocfilehash: ec0c80925770c75ee1f23df29f1724444c1e7337
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714491"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249663"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service-ben az Azure Stack 2-es frissítés – kibocsátási megjegyzések
 
@@ -64,7 +65,7 @@ Az Azure App Service az Azure Stack Update 2 tartalmazza a következő fejleszt�
   - Hozzáadott **NPM** verziók:
     - 5.6.0
   - Frissítve a .net alapvető összetevők konzisztens az Azure App Service nyilvános felhőben.
-  - Frissített Kudu
+  - Updated Kudu
 
 - Automatikus felcserélés az üzembe helyezési tárhelyek szolgáltatás engedélyezve van - [automatikus felcserélés konfigurálása](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap)
 

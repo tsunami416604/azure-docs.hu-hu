@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Ebben a cikkben megismerkedhet a machine learning-folyamatokat hozhat létre Azure Machine Learning-SDK-val a Python és a folyamatok használatának előnye. A gépi tanulási (ML-) folyamatokat az adatelemzők gépi tanulási munkafolyamatok létrehozásához, optimalizálásához és felügyeletéhez használják.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e8532e9821501c7b10fbb47c531228e439a8b289
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: a8ead1fedc8c21152b1ef095dbaebe605776b6e3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556883"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243868"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Hozhat létre a machine learning-folyamatokat az Azure Machine Learning szolgáltatással
 

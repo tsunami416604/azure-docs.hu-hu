@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 01/22/2019
-ms.openlocfilehash: 420d3c256f9bf2d0884e98312a5a66aea08b13bc
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6bb90480667a899d9d7bc7a5d8269b0cdf1da223
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450881"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219719"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
@@ -39,6 +39,7 @@ Az Azure SQL Database felügyelt példánya is telepíthető a két hardver gene
 | Hardver | Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokkal, SSD virtuális mag csatolt = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorokkal, SSD, virtuális mag eNVM gyors = 1. LP (a hyper-szál) |
 | Compute | 8, 16, 24 virtuális mag | 8, 16, 24, 32, 40, 64, 80 virtuális magok |
 | Memory (Memória) | 7 GB / virtuális mag | 5.1 GB / virtuális mag |
+| Memóriabeli OLTP memória | 3 GB / virtuális mag | 2.6-os GB / virtuális mag |
 | Maximális tárterület (általános célú) |  8 TB | 1 TB |
 | Maximális tárterület (üzletileg kritikus) | 8 TB | 1 TB-os, 2 TB vagy 4 TB-os attól függően, a magok számát |
 

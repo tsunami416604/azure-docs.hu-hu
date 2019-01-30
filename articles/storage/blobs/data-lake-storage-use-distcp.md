@@ -3,17 +3,17 @@ title: Adatok másolása az Azure Data Lake Storage Gen2 előzetes verziója a D
 description: A DistCp eszközzel másolhat adatokat, és a Data Lake Storage Gen2 előzetes verzió
 services: storage
 author: seguler
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 6c231de0a37eda4f5593c9fbbfa5e611a97996a0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9c12f96399de218241c8aa7ed686113c17a7410c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975563"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244147"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2-preview"></a>Azure Storage-blobokat és az Azure Data Lake Storage Gen2 előzetes verzió közötti adatokat másolja a DistCp használatával
 
@@ -81,11 +81,11 @@ Az alábbiakban olvashat némi útmutatást ezzel kapcsolatban.
 
 Tegyük fel, hogy rendelkezésére áll majd egy 4 x D14v2s fürt pedig 10 TB-nyi adat átvitele 10 különböző mappákat szeretne. A mappák mindegyike a különböző mennyiségű adatot tartalmaz, és a fájlméret belül különböznek.
 
-* **Teljes memória YARN**: meghatározni, hogy a YARN memória 96 GB egy D14 csomópont az Ambari-portálon. Így a YARN memória összesen négy csomópontot tartalmazó fürtben van: 
+* **Teljes memória YARN**: Az Ambari Portalról meghatározni, hogy a YARN memória 96 GB egy D14 csomópont. Így a YARN memória összesen négy csomópontot tartalmazó fürtben van: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* **Leképező száma**: meghatározni, hogy a YARN tárolóméret 3072 MB D14 fürtcsomópont esetén az Ambari-portálon. Tehát van leképező száma:
+* **Leképező száma**: Az Ambari Portalról meghatározni, hogy a YARN tárolóméret 3072 MB D14 fürtcsomópont esetén. Tehát van leképező száma:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

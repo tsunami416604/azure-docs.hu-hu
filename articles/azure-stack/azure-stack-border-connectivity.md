@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 51f9d2dbc8a0aef6dc84e76755a71eeb73149192
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.lastreviewed: 08/30/2018
+ms.openlocfilehash: 3681d583760be2ca537559e334c2facdeeb373db
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262744"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240386"
 ---
 # <a name="border-connectivity"></a>Szegély kapcsolat 
 Hálózati integráció megtervezése egy fontos előfeltétel sikeres Azure Stackkel integrált rendszerek üzembe helyezés, a művelet és felügyeletéhez. Szegély kapcsolat tervezési kezdődik-e a border gateway protocol (BGP) dinamikus útválasztást használnak a kiválasztásával. A 16 bites BGP autonóm rendszer száma, (nyilvános vagy magán) hozzárendelése ehhez, vagy használja a statikus útválasztást, ahol az alapértelmezett statikus útvonal hozzá van rendelve a border eszközökhöz.

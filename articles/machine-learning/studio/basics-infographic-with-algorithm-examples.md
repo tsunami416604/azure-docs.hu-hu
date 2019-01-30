@@ -1,6 +1,6 @@
 ---
 Cím: Példák titleSuffix algoritmus: Azure Machine Learning Studio description: Könnyen érthető áttekintése machine learning alapjai algoritmus példákkal tartalmazza. A letölthető infografika kiterjed a legtöbb machine learning-kérdések.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 Szerző: garyericson ms.author: garye ms.custom: seodc18 ms.date: 12/18/2017
 ---

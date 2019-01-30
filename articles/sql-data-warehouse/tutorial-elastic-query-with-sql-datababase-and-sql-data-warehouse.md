@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Rugalmas lekérdezés az Azure SQL Data Warehouse |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure SQL Data Warehouse rugalmas lekérdezés |} A Microsoft Docs'
 description: Ebben az oktatóanyagban egy Azure SQL Database Elastic Query szolgáltatását használja Azure SQL Data Warehouse lekérdezéséhez.
 services: sql-data-warehouse
 author: hirokib
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/14/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: 355ae1c27d0af8f77c2c9bda61c3581562050fc4
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b1ac2edd39ac2e5a765eaf6223ba01c9f9e5df91
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307092"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238337"
 ---
-# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Oktatóanyag: A rugalmas lekérdezés adatok elérését az Azure SQL Data Warehouse az Azure SQL Database-ből
+# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Oktatóanyag: Hozzáférés az adatokhoz az Azure SQL Data Warehouse egy Azure SQL Database rugalmas lekérdezés használatával
 
 Ebben az oktatóanyagban egy Azure SQL Database Elastic Query szolgáltatását használja Azure SQL Data Warehouse lekérdezéséhez. 
 
@@ -25,7 +25,7 @@ Ebben az oktatóanyagban egy Azure SQL Database Elastic Query szolgáltatását 
 
 Az oktatóanyag elkezdéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
-1. Telepített SQL Server Management Studio (SSMS).
+1. Installed SQL Server Management Studio (SSMS).
 2. Létrehozott egy Azure SQL server egy belül a kiszolgáló adatbázisába és adatraktárába.
 3. Az Azure SQL-kiszolgáló eléréséhez szükséges tűzfalszabályok beállítása.
 

@@ -4,29 +4,29 @@ titleSuffix: Azure Machine Learning service
 description: Ismerje meg a legújabb frissítéseket az Azure Machine Learning szolgáltatás és a machine learning és az adat-előkészítési Python SDK-k.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9556a87b8de08dadb211d73e93f3daa9033c2cc1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: a615b6c59d178fcc1d47d11bf89691c7e83249f3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221317"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250648"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
-Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások. 
+Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.  Az SDK teljes leírását látogasson el a referenciadokumentumai:
++ Az Azure Machine Learning [ **fő SDK a Pythonhoz**](https://aka.ms/aml-sdk)
++ Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/aml-sdk)
 
 ## <a name="2019-01-28"></a>2019-01-28
 
 ### <a name="azure-machine-learning-sdk-for-python-v1010"></a>Az Azure Machine Learning SDK for Python v1.0.10
-
-+ **SDK-referenciadokumentumok**: https://aka.ms/aml-sdk
 
 + **Módosítások**: 
   + Az Azure Machine Learning SDK már nem rendelkezik azure-cli csomag függőségként. Pontosabban az azure-cli-core és az azure-cli-profil függőségek azureml-core lettek távolítva. A felhasználót érintő változások a következők:
@@ -37,8 +37,6 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 + **Hibajavítások**: Ez a kiadás többnyire tartalmaz kisebb hibajavítások
 
 ### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.8
-
-+ **SDK-referenciadokumentumok**: https://aka.ms/data-prep-sdk
 
 + **Hibajavítások**
   + Jelentősen javult az első adatok profilok teljesítményét.
@@ -59,13 +57,9 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 
 ### <a name="azure-machine-learning-sdk-for-python-v108"></a>Az Azure Machine Learning SDK for Python v1.0.8
 
-+ **SDK-referenciadokumentumok**: https://aka.ms/aml-sdk
-
 + **Hibajavítások**: Ez a kiadás többnyire tartalmaz kisebb hibajavítások
 
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.7
-
-+ **SDK-referenciadokumentumok**: https://aka.ms/data-prep-sdk
 
 + **Új funkciók**
   + Adattároló fejlesztései (dokumentált [adattárolója útmutatóval-to-útmutató](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb))
@@ -77,22 +71,15 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.6
 
-+ **SDK-referenciadokumentumok**: https://aka.ms/data-prep-sdk
-
 + **Hibajavítások**
   + Nyilvános olvasható Azure Blob-tárolók Spark olvasásakor hiba javítva
 
 ## <a name="2018-12-20"></a>2018-12-20 
 
 ### <a name="azure-machine-learning-sdk-for-python-v106"></a>Az Azure Machine Learning SDK for Python v1.0.6
-
-+ **SDK-referenciadokumentumok**: https://aka.ms/aml-sdk
-
 + **Hibajavítások**: Ez a kiadás többnyire tartalmaz kisebb hibajavítások
 
 ### <a name="azure-machine-learning-data-prep-sdk-v104"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.4
-
-+ **SDK-referenciadokumentumok**: https://aka.ms/data-prep-sdk
 
 + **Új funkciók**
   + `to_bool` függvény mostantól lehetővé teszi, hogy a nem egyező értékek hibaértékek kell konvertálni. Ez lesz az új alapértelmezett eltérés viselkedés `to_bool` és `set_column_types`, mivel eltérő értékek konvertálása hamis volt az előző alapértelmezett viselkedést.

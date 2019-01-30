@@ -3,18 +3,18 @@ title: Az Azure Service Fabric háló titkos Alkalmazáskulcsok kezelése |} A M
 description: Titkos Alkalmazáskulcsok kezelése, így biztonságosan létrehozása és üzembe helyezése Service Fabric-háló.
 services: service-fabric-mesh
 keywords: titkos kódok
-author: aljo
+author: aljo-microsoft
 ms.author: aljo
 ms.date: 11/28/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: d92726ebc2cd4c6c44afdb2d2a9f53ab5441ac32
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 06d8519836129a557ec69d59d15eb12129e8099b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52893509"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236751"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric háló titkos Alkalmazáskulcsok kezelése
 Titkos kódok Service Fabric-háló támogatja az Azure-erőforrások. Service Fabric-háló titkos lehet például a storage kapcsolati karakterláncok, jelszavak és egyéb értékek, amelyek tárolása és biztonságosan továbbítani kell bizalmas információkat. Ez a cikk bemutatja, hogyan használhatja a Service Fabric biztonságos Store szolgáltatás üzembe helyezése és karbantartása a titkos kulcsok.
@@ -183,7 +183,7 @@ A következő egy példa bemutatja, hogyan egy YAML-fájlt a háló titkos kulcs
 
 ## <a name="modify-mesh-application-to-reference-mesh-secret-values"></a>Háló alkalmazás hivatkozni a háló titkos kulcs-érték módosítása
 Service Fabric-háló alkalmazásokat kell vegye figyelembe a következő két karakterláncot felhasználhatja a biztonságos Store szolgáltatás titkos kulcs-értékeket:
-1. Micrsoft.ServiceFabricMesh/Secrets.name tartalmazza a fájl nevét, és egyszerű szövegként a titkos értéket tartalmazza.
+1. Microsoft.ServiceFabricMesh/Secrets.name tartalmazza a fájl nevét, és egyszerű szövegként a titkos értéket tartalmazza.
 2. A Windows vagy Linux-alapú környezeti változó "Fabric_SettingPath" tartalmazza a könyvtár elérési útja, ahol Store szolgáltatás titkok biztonságos értékeket tartalmazó fájlok lesznek elérhetők. Ez a "C:\Settings" Windows-ban üzemeltetett és a "/ var /" a háló Linux-ban üzemeltetett alkalmazások beállításait jelölik.
 
 ## <a name="deploy-or-use-a-rolling-upgrade-for-mesh-application-to-consume-secret-values"></a>Telepítse, vagy használja a működés közbeni frissítés háló alkalmazás titkos értékkel felhasználásához
@@ -202,7 +202,7 @@ az mesh deployment create –-<template-file> or --<template-uri>
 Adja át vagy **-sablonfájl** vagy **sablon-uri** (de nem mindkettőt).
 
 Példa:
-- az háló üzembe helyezési--c:\MyMeshTemplates\SecretTemplate1.txt létrehozása
+- az mesh deployment create --c:\MyMeshTemplates\SecretTemplate1.txt
 - Hozzon létre az háló üzembe helyezés – https://www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>Titkos kód megjelenítése

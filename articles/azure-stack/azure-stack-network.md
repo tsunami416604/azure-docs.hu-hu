@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 9b1eb6878dcafba68c230255f3b3f43e005421ab
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.lastreviewed: 08/30/2018
+ms.openlocfilehash: a4e04bc9071f4f677230d112a7baa708e9e8dc34
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340188"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243232"
 ---
 # <a name="network-connectivity"></a>Hálózati kapcsolat
 Ez a cikk segít eldönteni, hogy a legjobb integrálása az Azure Stack a meglévő hálózati környezetbe az Azure Stack hálózati infrastruktúra információkat nyújt. 
@@ -29,7 +30,7 @@ Ez a cikk segít eldönteni, hogy a legjobb integrálása az Azure Stack a megl�
 > Az Azure Stack (például www.bing.com) külső DNS-nevek feloldására, meg kell adnia a DNS-kiszolgálók DNS-kérelmeket továbbítsa. Az Azure Stack DNS követelményeivel kapcsolatos további információkért lásd: [adatközpontban Azure Stack - integrációs DNS](azure-stack-integrate-dns.md).
 
 ## <a name="physical-network-design"></a>Fizikai hálózati terv
-Az Azure Stack megoldás támogatja a szolgáltatások és a működés rugalmas és magas rendelkezésre állású fizikai infrastruktúrát igényel. ToR böngészőből szegély kapcsolókhoz kimenő portok korlátozva, SFP + vagy SFP28 adathordozó és 1 GB-os, 10 GB-os vagy 25 GB megbízhatóbbak. Ellenőrizze a számítógépgyártó (OEM) hardver szállítójával a rendelkezésre állás érdekében. Az alábbi diagram bemutatja a javasolt tervezési:
+Az Azure Stack megoldásnak egy rugalmas és magas rendelkezésre állású fizikai infrastruktúrára van szüksége működése és szolgáltatásai támogatásához. ToR böngészőből szegély kapcsolókhoz kimenő portok korlátozva, SFP + vagy SFP28 adathordozó és 1 GB-os, 10 GB-os vagy 25 GB megbízhatóbbak. Ellenőrizze a számítógépgyártó (OEM) hardver szállítójával a rendelkezésre állás érdekében. Az alábbi diagram bemutatja a javasolt tervezési:
 
 ![Ajánlott az Azure Stack hálózati terv](media/azure-stack-network/recommended-design.png)
 

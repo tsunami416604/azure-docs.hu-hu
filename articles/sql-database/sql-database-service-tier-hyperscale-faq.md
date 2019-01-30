@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c5f5b43a96d5fad5d5f7737ef82585593cd05a7b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242160"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240658"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -54,7 +54,7 @@ Rétegek elsősorban különbözteti meg a Virtuálismag-alapú szolgáltatás a
 | **Tároló mérete** | Önálló adatbázis / rugalmas készlet | 5 GB – 4 TB-IG | 100 TB-ig | 5 GB – 4 TB-IG |
 | | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB-IG |
 | **I/o-teljesítmény** | Egyetlen adatbázisonként ** | A 7000-es maximális IOPS / virtuális mag 500 IOPS | Ismeretlen még | 5000 iops-érték 200 000 maximális iops|
-| | Felügyelt példány | Fájl méretétől függ. | – | A felügyelt példány: Fájl méretétől függ|
+| | Felügyelt példány | Fájl méretétől függ. | – | Felügyelt példány: Fájl méretétől függ.|
 |**Rendelkezésre állás**|Összes|1 replika, olvasási méretű, nem a helyi gyorsítótár | Több replika, legfeljebb 15 olvasási szintű, a részleges helyi gyorsítótár | 3 replika, 1 olvasási szintű, a zónaredundáns magas rendelkezésre ÁLLÁSÚ, teljes helyi gyorsítótár |
 |**Biztonsági másolatok**|Összes|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap), állandó idő pont – in0time recovery (PITR) | RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap) |
 
@@ -73,7 +73,7 @@ A nagy kapacitású szolgáltatásszint elsősorban ügyfelek esetében, akik na
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Mely régiók jelenleg támogatja a nagy kapacitású
 
-Nagy kapacitású jelenleg érhető el az önálló adatbázisok a következő régiókban: USA nyugati US1, USA 2. nyugati régiója, USA keleti US1, USA középső RÉGIÓJA, Nyugat-Európa, Észak-Európa, Egyesült Királyság nyugati régiója, Délkelet-Ázsiában, kelet-japán, Korea középső régiója, Délkelet-Ausztrália és Kelet-Ausztrália.
+Nagy kapacitású és önálló adatbázisokat az alábbi régiókban érhető el:  USA nyugati US1, USA 2. nyugati régiója, USA keleti US1, USA középső RÉGIÓJA, Nyugat-Európa, Észak-Európa, Egyesült Királyság nyugati régiója, Délkelet-Ázsiában, kelet-japán, Korea középső régiója, Délkelet-Ausztrália és Kelet-Ausztrália.
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Logikai kiszolgálónként több nagy kapacitású adatbázist hozhat létre
 
@@ -98,7 +98,7 @@ Az SQL Database rendkívüli biztosít a számítási feladatok igény szerint a
 
 ## <a name="deep-dive-questions"></a>A kérdések részletes bemutatása
 
-### <a name="can-i-mix-hyperscale-and-single-databases-a-my-logical-server"></a>Kombinálhatom a nagy kapacitású és az önálló adatbázisok egy saját logikai kiszolgáló
+### <a name="can-i-mix-hyperscale-and-single-databases-on-my-logical-server"></a>Kombinálhatom a nagy kapacitású és az önálló adatbázisok saját logikai kiszolgálón
 
 Igen.
 

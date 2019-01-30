@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
-ms.component: blobs
-ms.openlocfilehash: e6b64c7545e7a36b9178af84f88ee89b498077b0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.subservice: blobs
+ms.openlocfilehash: 81cd6b073fb46b01b3b98543d8f92e2ef7b1ec1b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019096"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245380"
 ---
 # <a name="tutorial-make-your-application-data-highly-available-with-azure-storage"></a>Oktatóanyag: Az alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure Storage használatával
 
@@ -49,12 +49,12 @@ Az oktatóanyag elvégzéséhez:
 * Telepítse a [Pythont](https://www.python.org/downloads/).
 * A [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python) letöltése és telepítése
 
-# <a name="java-v7-sdk--tabjava-v7"></a>[A Java 7-es SDK] (# lap/java-7-es verziója)
+# <a name="java-v7-sdk--tabjava-v7"></a>[Java V7 SDK ] (#tab/java-v7)
 
 * A [Maven](http://maven.apache.org/download.cgi) telepítése, és konfigurálása a parancssorból való működésre
 * [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) telepítése és konfigurálása
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (lap/java-v10 #)
+# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
 
 * A [Maven](http://maven.apache.org/download.cgi) telepítése, és konfigurálása a parancssorból való működésre
 * [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) telepítése és konfigurálása
@@ -107,7 +107,7 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="java-v7-sdk--tabjava-v7"></a>[A Java 7-es SDK] (# lap/java-7-es verziója)
+# <a name="java-v7-sdk--tabjava-v7"></a>[Java V7 SDK ] (#tab/java-v7)
 
 [Töltse le a mintaprojektet](https://github.com/Azure-Samples/storage-java-ha-ra-grs), és bontsa ki a storage-java-ragrs.zip fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A mintaprojekt tartalmaz egy egyszerű Java-alkalmazást.
 
@@ -115,7 +115,7 @@ git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-java-ha-ra-grs.git
 ```
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (lap/java-v10 #)
+# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
 
 [Töltse le a mintaprojektet](https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs), és bontsa ki a storage-java-ragrs.zip fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A mintaprojekt tartalmaz egy egyszerű Java-alkalmazást.
 
@@ -159,7 +159,7 @@ export storageconnectionstring=\<yourconnectionstring\>
 setx storageconnectionstring "\<yourconnectionstring\>"
 ```
 
-# <a name="java-v7-sdk--tabjava-v7"></a>[A Java 7-es SDK] (# lap/java-7-es verziója)
+# <a name="java-v7-sdk--tabjava-v7"></a>[Java V7 SDK ] (#tab/java-v7)
 
 Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. Javasoljuk, hogy ezt a kapcsolati karakterláncot egy környezeti változóban tárolja az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
 
@@ -176,7 +176,7 @@ export storageconnectionstring=\<yourconnectionstring\>
 setx storageconnectionstring "\<yourconnectionstring\>"
 ```
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (lap/java-v10 #)
+# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
 
 Ez a minta szükséges, hogy biztonságosan tárolja a nevét és a tárfiók kulcsára. A környezeti változókat a géphez, amely a minta futtatása lesz helyi Store őket. A környezeti változók létrehozásához használja a Linux- vagy a Windows például az operációs rendszerének megfelelően. A Windows, a környezeti változó nem érhető el addig, amíg újból betölti a **parancssor** vagy rendszerhéj használ.
 
@@ -220,13 +220,13 @@ A Storage-objektum újrapróbálkozási függvénye lineáris újrapróbálkozá
 
 A letöltés előtt meg kell határozni a Service objektum [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) és [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) függvényét. Ezek a függvények határozzák meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.  
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[A Java 7-es SDK] (# lap/java-7-es verziója)
+# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK] (#tab/java-v7)
 
 Az alkalmazás futtatásához nyisson meg egy terminált vagy parancssort, amelynek hatóköre a letöltött alkalmazásmappára terjed ki. Az alkalmazás futtatásához adja ki a következő parancsot: `mvn compile exec:java`. Az alkalmazás ezután feltölti a **HelloWorld.png** képet a könyvtárból a tárfiókjába, és ellenőrzi, hogy a kép replikálása a másodlagos RA-GRS-végpontra megtörtént-e. Ha az ellenőrzés befejeződött, az alkalmazás folyamatos ismétléssel elkezdi letölteni a képet, miközben jelent annak a végpontnak, ahonnan a képet letölti.
 
 A Storage-objektum újrapróbálkozási függvénye lineáris újrapróbálkozási szabályzat használatára van beállítva. Az újrapróbálkozási függvény határozza meg, hogy egy kérést újra kell-e próbálni, valamint megadja, hogy hány másodpercnyi várakozás után történjen az újrapróbálkozás. A **BlobRequestOptions** **LocationMode** tulajdonságát először **PRIMARY\_, majd \_SECONDARY** értékűre kell beállítani. Ez lehetővé teszi, hogy az alkalmazás automatikusan a másodlagos helyszínre váltson, ha nem éri el az elsődleges helyszínt a **HelloWorld.png** letöltésére tett kísérletkor.
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (lap/java-v10 #)
+# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
 
 A minta futtatásához a Maven használata a parancssorban.
 
@@ -367,7 +367,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="java-v7-sdk--tabjava-v7"></a>[A Java 7-es SDK] (# lap/java-7-es verziója)
+# <a name="java-v7-sdk--tabjava-v7"></a>[Java V7 SDK ] (#tab/java-v7)
 
 Java esetén nem kell visszahívás-kezelőket meghatározni, ha a **BlobRequestOptions** **LocationMode** tulajdonsága először **PRIMARY\_, majd\_SECONDARY** értékűre lett beállítva. Ez lehetővé teszi, hogy az alkalmazás automatikusan a másodlagos helyszínre váltson, ha nem éri el az elsődleges helyszínt a **HelloWorld.png** letöltésére tett kísérletkor.
 
@@ -380,7 +380,7 @@ Java esetén nem kell visszahívás-kezelőket meghatározni, ha a **BlobRequest
     blob.downloadToFile(downloadedFile.getAbsolutePath(),null,blobClient.getDefaultRequestOptions(),opContext);
 ```
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (lap/java-v10 #)
+# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
 
 A Java SDK V10-kell visszahívás-kezelőket nem továbbra is szükséges, és az SDK-val most már rendelkezik néhány alapvető különbség a 7-es verziója SDK-ból. Helyett LocationMode, van egy másodlagos **folyamat**. Egy másodlagos folyamatot adhat meg a **RequestRetryOptions** és, ha definiálva van, lehetővé teszi az alkalmazás automatikusan átvált a másodlagos folyamat nem az adatok elsődleges keresztül éri el.
 

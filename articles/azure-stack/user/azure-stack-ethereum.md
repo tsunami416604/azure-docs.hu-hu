@@ -11,12 +11,13 @@ ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.openlocfilehash: 1d0e04e4fbc964400e8b5c1544344864f7e757a7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.lastreviewed: 11/02/2018
+ms.openlocfilehash: 844c81d71734ab17c93f60cb802686c209e04014
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019460"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239230"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Az Azure Stack Ethereum blockchain hálózatok üzembe helyezése
 
@@ -70,9 +71,9 @@ A consortium vezető sablon az első tagtól erőforrás-igényű konfigurálja 
     Paraméter neve | Leírás | Megengedett értékek | Mintaérték
     ---------------|-------------|----------------|-------------
     NAMEPREFIX | A telepített erőforrások elnevezési alapként használt karakterlánc. | Alfanumerikus karakterek és a hossza 1 – 6 | ETH
-    HITELESÍTÉS TÍPUSA | A módszert a virtuális géphez. | Jelszó vagy SSH nyilvános kulcs | Jelszó
+    AUTHTYPE | A módszert a virtuális géphez. | Jelszó vagy SSH nyilvános kulcs | Jelszó
     ADMINUSERNAME | Minden üzembe helyezett virtuális gép rendszergazdai felhasználóneve | 1 – 64 karakter | gethadmin
-    ADMINPASSWORD (hitelesítési típus = jelszó)| Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell a 3, a következő követelményeknek: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter. <br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|12 – 72 karakter|
+    ADMINPASSWORD (hitelesítési típus = jelszó)| Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell a 3 az alábbi követelményeket: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter. <br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|12 – 72 karakter|
     ADMINSSHKEY (hitelesítési típus = sshPublicKey) | A secure shell-kulcsot a távoli bejelentkezéshez használt. | |
     GENESISBLOCK | Egyéni képződés blokk jelölő JSON-karakterlánc.  Ez a paraméter értékének megadása nem kötelező. | |
     ETHEREUMACCOUNTPSSWD | A rendszergazdai jelszót, Ethereum-fiókhoz használt. | |
@@ -120,9 +121,9 @@ Vezető üzembe helyezés ellenőrzéséhez keresse meg a vezető felügyeleti w
     Paraméter neve | Leírás | Megengedett értékek | Mintaérték
     ---------------|-------------|----------------|-------------
     NAMEPREFIX | A telepített erőforrások elnevezési alapként használt karakterlánc. | Alfanumerikus karakterek és a hossza 1 – 6 | ETH
-    HITELESÍTÉS TÍPUSA | A módszert a virtuális géphez. | Jelszó vagy SSH nyilvános kulcs | Jelszó
+    AUTHTYPE | A módszert a virtuális géphez. | Jelszó vagy SSH nyilvános kulcs | Jelszó
     ADMINUSERNAME | Minden üzembe helyezett virtuális gép rendszergazdai felhasználóneve | 1 – 64 karakter | gethadmin
-    ADMINPASSWORD (hitelesítési típus = jelszó)| Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell a 3, a következő követelményeknek: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter. <br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|12 – 72 karakter|
+    ADMINPASSWORD (hitelesítési típus = jelszó)| Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell a 3 az alábbi követelményeket: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter. <br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|12 – 72 karakter|
     ADMINSSHKEY (hitelesítési típus = sshPublicKey) | A secure shell-kulcsot a távoli bejelentkezéshez használt. | |
     CONSORTIUMMEMBERID | Minden egyes tagja a consortium network társított azonosítója.   | Ezt az Azonosítót a hálózatban egyedinek kell lennie. | 0
     NUMMININGNODES | Adatbányászati csomópontok száma. | 2. és 15 között. | 2

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/21/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: b817723120f07de9159e47c1259a68eb95b9c2e3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.subservice: common
+ms.openlocfilehash: 4c39f47169071ceb9430f419a144e11f425d65b0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140778"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240726"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>Hozzáférés egy alkalmazás hitelesítése az Azure Active Directoryval, blobok és üzenetsorok (előzetes verzió)
 
@@ -66,7 +66,7 @@ A **szükséges engedélyek** windows most látható, hogy az Azure AD-alkalmaz�
 
 ![Bejelentkezéshez Alkalmazásengedélyek regisztrálása](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET mintakód: block blob létrehozása
+## <a name="net-code-example-create-a-block-blob"></a>.NET-kód példa: Egy blokkblob létrehozása
 
 A kód példa bemutatja, hogyan kaphat hozzáférési tokent az Azure ad-ből. A hozzáférési jogkivonatot a megadott felhasználó hitelesítéséhez és majd a blokkblob létrehozására irányuló kérelem engedélyezéséhez használatos. A minta működéséhez hajtsa végre a fenti szakaszokban ismertetett lépéseket.
 

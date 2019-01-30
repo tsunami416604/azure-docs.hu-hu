@@ -15,14 +15,15 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: bee684409b2ef3fffeb9f175c2b469d3736b6484
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.lastreviewed: 10/23/2018
+ms.openlocfilehash: 8587b40bf6963d57fd510aefc17de4385b871590
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993840"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249037"
 ---
-# <a name="tutorial-offer-highly-available-mysql-databases"></a>Oktatóanyag: Nyújtanak a magas rendelkezésre állású MySQL-adatbázisok
+# <a name="tutorial-offer-highly-available-mysql-databases"></a>Oktatóanyag: Magas rendelkezésre állású MySQL-adatbázisok ajánlat
 
 Kezelőként Azure Stack server rendszerű virtuális gépekhez, amelyiken a MySQL-kiszolgáló is beállíthatja. A MySQL után fürt van közé tartoznak sikeresen létrehozott, és kezeli az Azure Stack, felhasználók, akik a MySQL-szolgáltatásai feliratkozott könnyedén hozhat létre magas rendelkezésre állású MySQL-adatbázisok.
 

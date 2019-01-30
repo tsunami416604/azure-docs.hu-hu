@@ -16,12 +16,13 @@ ms.custom: ''
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: c6b2387360973cd4e65b5a1e4ba483abf5ea9070
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.lastreviewed: 09/10/2018
+ms.openlocfilehash: 2513f397457c4866229605487149aa1fe03a2c68
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716026"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247731"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>A parancssorból a ASDK üzembe helyezése
 A ASDK olyan kiértékeléséhez, és mutassa be az Azure Stack-szolgáltatások és szolgáltatások telepítését, tesztelési és fejlesztési környezet. Letöltés működik, és szüksége a környezet hardver előkészítése, és néhány (Ez több óráig fog tartani) parancsfájlok futtatása. Ezt követően bejelentkezhet a rendszergazdai és felhasználói portált az Azure Stack használatának megkezdéséhez.
@@ -105,7 +106,7 @@ A csomag telepítéséhez **az AD FS használata Identitásszolgáltatóként**,
 
 Az AD FS-telepítések az alapértelmezett stamp címtárszolgáltatás használja Identitásszolgáltatóként. Jelentkezzen be az alapértelmezett fiók azurestackadmin@azurestack.local, és a jelszót a PowerShell telepítő-parancsok részeként megadott értékre lesz beállítva.
 
-Az üzembe helyezési folyamat néhány órát, amely idő alatt a rendszer automatikusan újraindítás után is igénybe vehet. Ha az üzembe helyezés sikeres, a PowerShell-konzol megjeleníti: **COMPLETE: "Telepítés" művelet**. Ha a központi telepítés sikertelen, próbálkozzon újra a szkript futtatása a - Újrafuttatás paramétert. Is [ismételt üzembe helyezése ASDK](asdk-redeploy.md) sablon nélkül.
+Az üzembe helyezési folyamat néhány órát, amely idő alatt a rendszer automatikusan újraindítás után is igénybe vehet. Az üzembe helyezés sikeres, a PowerShell-konzolon jeleníti meg: **HAJTSA VÉGRE: A művelet "Telepítés"**. Ha a központi telepítés sikertelen, próbálkozzon újra a szkript futtatása a - Újrafuttatás paramétert. Is [ismételt üzembe helyezése ASDK](asdk-redeploy.md) sablon nélkül.
 
 > [!IMPORTANT]
 > Ha azt szeretné, a telepítési folyamat állapotának monitorozásához a ASDK gazdagép újraindítása után, jelentkezzen be, AzureStack\AzureStackAdmin. Ha bejelentkezik egy helyi rendszergazdaként után a számítógép újraindítása (és a azurestack.local tartományhoz csatlakoztatott), meg nem jelenik meg az üzembehelyezési folyamatot. Futtassa újra a központi telepítés, ne inkább jelentkezhessen be azurestack ellenőrzése, hogy fut-e.
@@ -148,7 +149,7 @@ Ha a környezet nem rendelkezik DHCP-kompatibilis, majd meg kell adnia a követk
 |NatIPv4Address|A DHCP hálózati Címfordítás támogatása szükséges|Statikus IP-cím MAS-BGPNAT01 állítja be. Csak akkor használja ezt a paramétert, ha a DHCP nem tud érvényes IP-címet rendelni az internet eléréséhez.|
 |NatIPv4Subnet|A DHCP hálózati Címfordítás támogatása szükséges|IP-alhálózat előtag használt DHCP hálózati Címfordítás támogatása. Csak akkor használja ezt a paramétert, ha a DHCP nem tud érvényes IP-címet rendelni az internet eléréséhez.|
 |PublicVlanId|Optional|Beállítja a VLAN-azonosítót. Csak akkor használja ezt a paramétert, ha a gazdagép és a MAS-BGPNAT01 konfigurálnia kell a VLAN-Azonosítót a fizikai hálózat (és Internet) eléréséhez. Ha például.\InstallAzureStackPOC.ps1-Verbose - PublicVLan 305|
-|Újrafuttatás|Optional|Ez a jelző használatával futtassa újra a központi telepítés. Az összes korábbi bemenet használata esetén. Az adatok ismételt beírására korábban megadott nem támogatott, mert több egyedi értékeket jönnek létre és üzembe helyezéshez használt.|
+|Ismétlés|Optional|Ez a jelző használatával futtassa újra a központi telepítés. Az összes korábbi bemenet használata esetén. Az adatok ismételt beírására korábban megadott nem támogatott, mert több egyedi értékeket jönnek létre és üzembe helyezéshez használt.|
 
 
 ## <a name="perform-post-deployment-configurations"></a>Üzembe helyezés utáni konfigurációk végrehajtása

@@ -13,13 +13,14 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
+ms.lastreviewed: 01/05/2019
 <!-- dev: viananth -->
-ms.openlocfilehash: 8049db848e34b0aa9bc23f08169a8c63f765791a
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: c7c23352cea4f9e79b371f38112fb66ac31ac849
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389752"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242297"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Pythonnal
 
@@ -50,7 +51,7 @@ A Python SDK API-verzióprofilok célozhat meg például az Azure Stack és a gl
 
 Az Azure Stack az Azure Python SDK használatához adja meg a következő értékeket, és adja meg az értékeket a környezeti változókat. Az utasításokat lásd a táblázat az operációs rendszerének a a környezeti változók beállítása után.
 
-| Érték | Környezeti változók | Leírás |
+| Value | Környezeti változók | Leírás |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
 | Bérlőazonosító | AZURE_TENANT_ID | Az Azure Stack értékét [bérlőazonosító](../azure-stack-identity-overview.md). |
 | Ügyfél-azonosító | AZURE_CLIENT_ID | A szolgáltatás egyszerű Alkalmazásazonosító egyszerű szolgáltatás létrehozásakor ez a cikk az előző szakaszban mentett. |

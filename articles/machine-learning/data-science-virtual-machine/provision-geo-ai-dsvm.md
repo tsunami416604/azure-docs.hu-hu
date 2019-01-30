@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 395604da3465e66214f89b4f74ddf9d6bcdc48f8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 47d5616f86c8f4cb62773d0b92a24a5fb63b2ea7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103948"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240471"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Az Azure-ban földrajzi mesterséges intelligenciát használó virtuális gép kiépítése 
 
@@ -49,24 +49,24 @@ A következő egy példányát a földrajzi mesterséges Intelligencia adatelemz
 
    - **Alapvető beállítások**
 
-      1. **Név**: hoz létre az adatelemzési kiszolgáló nevére.
+      1. **Név**: Neve az adatelemzési kiszolgálót hoz létre.
 
-      2. **Felhasználónév**: rendszergazdai fiók bejelentkezési azonosítója.
+      2. **Felhasználónév**: Rendszergazdai fiók bejelentkezési azonosítója.
 
-      3. **Jelszó**: rendszergazdai fiók jelszava.
+      3. **Jelszó**: Rendszergazdai fiók jelszava.
 
-      4. **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás.
+      4. **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás.
 
-      5. **Erőforráscsoport**: létrehozhat egy újat, vagy használjon egy **üres** meglévő Azure-erőforráscsoport az előfizetésben.
+      5. **Erőforráscsoport**: Létrehozhat egy újat, vagy használjon egy **üres** meglévő Azure-erőforráscsoport az előfizetésben.
 
-      6. **Hely**: válassza a leginkább megfelelő adatközpontot. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi. Ha kell tennie a deep learning gpu-alapú, választania kell a helyen az Azure-ban, amely rendelkezik a NC sorozatú GPU VM-példányokon. A helyek, amelyeken a GPU-beli virtuális gépek jelenleg: **USA keleti RÉGIÓJA, USA északi középső Régiója, USA déli középső Régiója, USA nyugati RÉGIÓJA 2, Észak-Európa, Nyugat-Európa**. Ellenőrizze a teljes lista a [régió lap által az Azure-termékekkel](https://azure.microsoft.com/regions/services/) , és keressen **NC sorozat** alatt **számítási**. 
+      6. **Hely**: Válassza ki az Adatközpont leginkább megfelelő. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi. Ha kell tennie a deep learning gpu-alapú, választania kell a helyen az Azure-ban, amely rendelkezik a NC sorozatú GPU VM-példányokon. A helyek, amelyeken a GPU-beli virtuális gépek jelenleg a következők: **USA keleti RÉGIÓJA, USA északi középső RÉGIÓJA, USA déli középső RÉGIÓJA, USA nyugati RÉGIÓJA 2, Észak-Európa, Nyugat-Európa**. Ellenőrizze a teljes lista a [régió lap által az Azure-termékekkel](https://azure.microsoft.com/regions/services/) , és keressen **NC sorozat** alatt **számítási**. 
 
 
-   - **Beállítások**: válassza ki az egyik NC sorozatú GPU virtuálisgép-méret, ha azt tervezi, hogy futtassa a deep learning gpu-alapú, az a földrajzi dsvm-hez. Ellenkező esetben választhat egyet a CPU-alapú példány.  Hozzon létre egy tárfiókot a virtuális géphez. 
+   - **Beállítások**: Válasszon ki egy NC sorozatú GPU virtuálisgép-méret, ha azt tervezi, hogy futtassa a deep learning gpu-alapú, az a földrajzi dsvm-hez. Ellenkező esetben választhat egyet a CPU-alapú példány.  Hozzon létre egy tárfiókot a virtuális géphez. 
    
    - **Összefoglalás**: Győződjön meg arról, hogy minden, a megadott adatok helyesek.
 
-   - **Vásároljon**: kattintson a **vásárlása** a kiépítésének megkezdéséhez. Egy hivatkozást a szolgáltatás feltételeit. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. 
+   - **Vásároljon**: Kattintson a **vásárlása** a kiépítésének megkezdéséhez. Egy hivatkozást a szolgáltatás feltételeit. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. 
 
 >[!NOTE]
 > A kiépítés körülbelül 20-30 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.

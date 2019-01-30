@@ -1,5 +1,5 @@
 ---
-title: 'Helyezze üzembe az App Services: Az Azure Stack |} A Microsoft Docs'
+title: 'Helyezze üzembe az App Services: Azure Stack | Microsoft Docs'
 description: Részletes útmutatást az Azure Stack App Service üzembe helyezése
 services: azure-stack
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: bbb8e39e60500a2d8310159cfbac5659964fc387
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: c3d120b8d124ce8c5536365e25bf8ffa500d4cbb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230016"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251164"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez
 
@@ -203,7 +204,7 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 
 2. Az áttekintésben, az állapot, ellenőrizze, hogy, amely a **állapot** megjeleníti **minden szerepkör készen áll**.
 
-    ![App Service-kezelése](media/azure-stack-app-service-deploy/image12.png)
+    ![App Service Management](media/azure-stack-app-service-deploy/image12.png)
 
     Ha Ön üzembe helyezése meglévő virtuális hálózattal és belső IP-cím használatával szeretne csatlakozni a fájlkiszolgáló, hozzá kell adnia egy kimenő biztonsági szabályt. Ez a szabály lehetővé teszi a feldolgozó alhálózat és a fájlkiszolgáló között SMB-forgalom.  Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
 

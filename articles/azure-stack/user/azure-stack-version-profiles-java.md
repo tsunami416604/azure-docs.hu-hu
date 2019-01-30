@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 5a97a683e7f25029199ba68ce3d5cee410c3cf29
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.lastreviewed: 09/28/2018
+ms.openlocfilehash: cd02845f648275ee17f763bd5a94b386f7ed64fd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886824"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246364"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Javával
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A Java SDK az Azure Stack Resource Manager biztosít eszközöket és az infrastruktúra kezelését. Az SDK-t az erőforrás-szolgáltatók közé tartozik a számítási, hálózatkezelési, tárolási, alkalmazásszolgáltatások, és [KeyVault](../../key-vault/key-vault-whatis.md). A Java SDK API-profilok szerint, beleértve a függőségeket a Pom.xml fájlt, amely betölti a .java fájl a megfelelő modulokat magában foglalja. Azonban hozzáadhat több profilt függőségei, mint például a **2018-03-01-hibrid**, vagy **legújabb** , az Azure-profilra. A függőségek használatával tölti be a helyes modulját, hogy az erőforrás-típus létrehozásakor kijelölheti a API-verziót a használni kívánt egyes profilokhoz. Ez lehetővé teszi, hogy a legújabb verziókat használhatja az Azure-ban, a legújabb API-verzióit ellen az Azure Stack fejlesztése során. Egy igazi hibrid felhőalapú fejlesztői felületet biztosít a Java SDK használata lehetővé teszi. A Java SDK API-profilok engedélyezése a hibrid felhőalapú fejlesztés segít a globális Azure-erőforrások és az Azure Stackben erőforrások közötti váltáshoz.
 
@@ -77,9 +78,9 @@ Az alábbi lépések segítségével a Java SDK telepítése:
 
 4.  A csomagokat, amelyeket telepíteni kell a használni kívánt profilt verziójától függ. A csomag nevét, a profil-verziók a következők:
     
-   - **com.microsoft.Azure.profile\_2018\_03\_01\_hibrid**
-   - **következőt: com.microsoft.Azure**
-      - **legfrissebb**
+   - **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**
+   - **com.microsoft.azure**
+      - **latest**
 
 5.  Ha nem érhető el, hozzon létre egy előfizetést és az előfizetés-azonosító későbbi használatra. Előfizetés létrehozásával kapcsolatos útmutatásért lásd: [ajánlatok, előfizetések létrehozása az Azure Stackben](../azure-stack-subscribe-plan-provision-vm.md).
 
@@ -149,9 +150,9 @@ JSON-mintafájlt:
 
 ## <a name="existing-api-profiles"></a>Meglévő API-profilok
 
-1.  **com.microsoft.Azure.profile\_2018\_03\_01\_hibrid**: az Azure Stackhez készült legújabb profil. Ez a profil Services kompatibilis az Azure Stack mindaddig, amíg a 1808 blokk vagy a további használhatják.
+1.  **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Az Azure Stackhez készült legújabb profil. Ez a profil Services kompatibilis az Azure Stack mindaddig, amíg a 1808 blokk vagy a további használhatják.
 
-2.  **következőt: com.microsoft.Azure**: az összes szolgáltatást a legújabb verziókat álló profilt. Az összes szolgáltatást a legújabb verziókat használhatja.
+2.  **com.microsoft.azure**: Az összes szolgáltatást a legújabb verziókat álló profilt. Az összes szolgáltatást a legújabb verziókat használhatja.
 
 Az Azure Stacket és API-profilokkal kapcsolatos további információkért lásd: a [összegzése az API-profilok](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 

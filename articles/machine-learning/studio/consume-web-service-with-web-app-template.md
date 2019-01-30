@@ -1,6 +1,6 @@
 ---
 Cím: Consume Studio web service with web app template titleSuffix: Azure Machine Learning Studio description: Az Azure Marketplace-en webalkalmazás-sablonok segítségével az Azure Machine Learning prediktív webszolgáltatás felhasználása.
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
 ---

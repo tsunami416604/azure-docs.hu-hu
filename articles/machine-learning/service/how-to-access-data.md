@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Az Azure Machine Learning szolgáltatás betanítás során adatokat tároló elérése érdekében adattárainak használata
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 235ad729be434c8329a74e71abfe713480756316
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a4960f3e29011948ec30fbc24222d8a6dccf6b8a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187143"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252115"
 ---
 # <a name="access-data-during-training-from-your-datastores"></a>Az adattárolók a betanítás során érheti el adatait
 Egy adattár segítségével elérheti és kezelheti az Azure Machine Learning-munkafolyamatok adatait.

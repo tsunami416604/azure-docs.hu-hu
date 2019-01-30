@@ -8,19 +8,19 @@ author: gopitk
 manager: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 3b3b15db171dc00519c532a229205df96ef29e31
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 44427183b6cc785af33daf92bda050336eec5284
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316888"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245286"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>A Linux és Windows rendszerre készült Azure Data Science Virtual Machine (DSVM, adatelemző virtuális gép) bemutatása
 
@@ -97,7 +97,7 @@ Az adatelemző virtuális gépen sok közkedvelt adatelemzési és deep learning
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Blob FUSE illesztőprogram](https://github.com/Azure/azure-storage-fuse) | N | I |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Adlcopy (Azure Data Lake Storage)](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob) | I | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [DocDB adatáttelepítési eszköz](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | I | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Data Management Gateway](https://msdn.microsoft.com/library/dn879362.aspx): Adatok áthelyezése az OnPrem és a felhő között | I | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [A Microsoft adatkezelési átjáró](https://msdn.microsoft.com/library/dn879362.aspx): Adatok áthelyezése az OnPrem és a felhő között | I | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Unix/Linux parancssor eszközök | I | I |
 | [Apache Drill](http://drill.apache.org) adatok feltárásához | I | I |
 | **Machine Learning eszközök** |||

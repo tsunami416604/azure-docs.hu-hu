@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning service
 description: További információ az Azure Machine Learning Visual Studio Code és a képzés és üzembe helyezése gépi tanulási és deep learning-modellek a Visual Studio Code az Azure Machine Learning szolgáltatás elindítása.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7852ff20a7f6528546063365ede10ad5536319a2
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 409d1bb30dc956bb19e9a37212d93990d1401e7b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079137"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240114"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Betanítása és gépi tanulási modellek üzembe helyezése a Visual Studio Code használatával
 

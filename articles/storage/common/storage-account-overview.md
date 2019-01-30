@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: d2940e1d8328ffaea799ddff4afc9669aaa85a2f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.subservice: common
+ms.openlocfilehash: 880ae672409704ddcd5597ae758f8c786c3c0720
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065630"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244487"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
@@ -137,7 +137,7 @@ Felé irányuló a storage-fiók összes kérelmet kell engedélyezni. A szolgá
 
 A következő módszerek bármelyikével a tárfiókban lévő biztosíthat hozzáférést az adatokhoz:
 
-- **Az Azure Active Directory:** Az Azure Active Directory (Azure AD) hitelesítő adatait használja a felhasználó, csoport vagy más identitást a következő blob és üzenetsor adatokhoz (előzetes verzió) való hozzáférés hitelesítéséhez. Ha az identitás a hitelesítés sikeres, az Azure AD engedélyezése a kérést az Azure Blob storage és Queue storage használata egy tokent ad vissza. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).
+- **Azure Active Directory:** Az Azure Active Directory (Azure AD) hitelesítő adatait használja a felhasználó, csoport vagy más identitást a következő blob és üzenetsor adatokhoz (előzetes verzió) való hozzáférés hitelesítéséhez. Ha az identitás a hitelesítés sikeres, az Azure AD engedélyezése a kérést az Azure Blob storage és Queue storage használata egy tokent ad vissza. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).
 - **Megosztott kulcs engedélyezése:** A fiók tárelérési kulcs használatával hozhat létre egy kapcsolati karakterláncot, amely az alkalmazás használ futtatáskor az Azure Storage eléréséhez. Az értékeket a kapcsolati karakterlánc segítségével hozza létre a *engedélyezési* fejlécet, amely az Azure Storage átadott. További információkért lásd: [konfigurálása az Azure Storage kapcsolati karakterláncok](storage-configure-connection-string.md).
 - **Közös hozzáférésű jogosultságkód:** Ha nem használja az Azure AD-hitelesítés használata a közös hozzáférésű jogosultságkód a tárfiókban lévő erőforrásokhoz való hozzáférés delegálására. Közös hozzáférésű jogosultságkód egy jogkivonatot, amely magában foglalja az összes az Azure Storage, az URL-címet a kérelem engedélyezéséhez szükséges információkat. Megadhatja a tárolási erőforrások, jogosultságaitól és az időközt, amely fölött a engedélyek érvényesek a közös hozzáférésű jogosultságkód részeként. További információkért lásd: [a közös hozzáférésű jogosultságkód (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 

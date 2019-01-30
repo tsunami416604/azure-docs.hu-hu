@@ -6,16 +6,16 @@ author: kavithaj
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 7ff23235e9681301984e13e346b23f277662bb5c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 112d093946099e623d1edfa4555eda681069892e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300934"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243385"
 ---
 # <a name="threat-detection-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse fenyegetésészlelése
 Fenyegetésészlelés konfigurálása, és ismerje meg az Azure SQL Data Warehouse gyanús eseményeket.
@@ -54,7 +54,7 @@ A fenyegetésészlelés például egyes, az adatbázist érintő rendellenes tev
    
     ![Navigációs ablaktábla](media/sql-data-warehouse-security-threat-detection/6_td_audit_record_details.png)
 4. Az Auditing Records (Naplózási rekordok) panelen kattintson a **Megnyitás Excelben** lehetőségre egy előre konfigurált Excel-sablon megnyitásához a gyanús esemény bekövetkezésének időpontja környékén rögzített naplók importálásához és részletesebb elemzéséhez.<br/>
-   **Megjegyzés:** az Excel 2010 vagy újabb Power Query és a **gyors összevonás** beállítás megadása kötelező
+   **Megjegyzés:** Az Excel 2010 vagy újabb Power Query és a **gyors összevonás** beállítás megadása kötelező
    
     ![Navigációs ablaktábla](media/sql-data-warehouse-security-threat-detection/7_td_audit_records_open_excel.png)
 5. A **Gyors összevonás** beállítás konfigurálása – a **POWER QUERY** menüszalagján válassza a **Beállítások** elemet a Beállítások párbeszédpanel megjelenítéséhez. Válassza az Adatvédelem szakaszt, majd válassza a második lehetőséget – „A teljesítmény lehetséges javítása az adatvédelmi szintek figyelmen kívül hagyásával”:

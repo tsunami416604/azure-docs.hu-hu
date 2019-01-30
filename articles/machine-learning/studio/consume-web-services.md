@@ -1,6 +1,6 @@
 ---
 Cím: Consume web service titleSuffix: Azure Machine Learning Studio description: Machine learning-szolgáltatás üzembe helyezése az Azure Machine Learning Studióban, után a webes RESTFul szolgáltatás kötegelt végrehajtási szolgáltatásként vagy a valós idejű kérés-válasz szolgáltatás képes használni.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 06/02/2017
 ---

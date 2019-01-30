@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d709acfe378583a21b72971f465e4b5d73818bcd
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2d57097e4d3317bfba5055a6b75ae72dd60f046a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307728"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244691"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse az indexelő táblák
 Javaslatok és a példák az indexelés a táblák az Azure SQL Data Warehouse.
@@ -213,7 +213,7 @@ Alább egy példát egy felhasználóhoz több memóriát lefoglalni a erőforr�
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
-### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>2. lépés: Fürtözött oszlopcentrikus indexek újraépítése magasabb erőforrás osztály felhasználóval
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>2. lépés: Magasabb szintű erőforrás osztály felhasználóval fürtözött oszlopcentrikus indexek újraépítése
 Jelentkezzen be a felhasználó 1. lépésben (pl. LoadUser), amely mostantól egy nagyobb erőforrásosztály használata, és hajtsa végre az ALTER INDEX utasításokat. Győződjön meg arról, hogy a felhasználó rendelkezik-e az ALTER engedéllyel a táblákat, ahol az index újraépítése folyamatban van. Ezek a példák megjelenítése a teljes oszlopcentrikus index újraépítése, illetve egy adott partíció számára. A nagyméretű táblák további gyakorlati újraépítése indexeli ugyanazon a partíción egy időben.
 
 Azt is megteheti, ahelyett, hogy az index újraépítése, sikerült másolni a tábla egy új táblát [CTAS használata](sql-data-warehouse-develop-ctas.md). Melyik legjobb módja? Nagy mennyiségű adatot a CTAS általában gyorsabb, mint a [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Kisebb mennyiségű adatot ALTER INDEX használata egyszerűbb, és nem szükséges, hogy a táblázat meg felcserélni. Lásd: **a CTAS és a partíció közötti váltás indexek újraépítése** alább a CTAS indexek újraépítése további részleteiért.
@@ -240,7 +240,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 
 Az SQL Data Warehouse az index újraépítése az-offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az ALTER INDEX REBUILD szakasz [Oszlopcentrikus index töredezettségmentesítési](/sql/relational-databases/indexes/columnstore-indexes-defragmentation), és [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql).
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3. lépés: Ellenőrizze, hogy javult a fürtözött oszlopcentrikus szegmens minősége
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3. lépés: Ellenőrizze a fürtözött oszlopcentrikus szegmens minősége javult.
 Futtassa újból a lekérdezést a gyenge azonosított tábla szegmens minősége, és ellenőrizze a szegmens minősége javult.  Ha szegmens minősége nem javította, annak oka az lehet, hogy a sorokat a táblában nagyon nagy.  Fontolja meg egy nagyobb erőforrásosztályhoz és DWU az index újraépítésekor.
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>A CTAS és a partíció közötti váltás indexek újraépítése

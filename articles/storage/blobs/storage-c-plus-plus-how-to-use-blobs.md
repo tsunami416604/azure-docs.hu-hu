@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: michaelhauss
-ms.component: blobs
-ms.openlocfilehash: f928f27c8c1dbfe6c65cb25cb5c34680fc58bff3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: blobs
+ms.openlocfilehash: a9b7d15bebdef40c983eaf4d5eee6953b5a10994
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955870"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236938"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>A c++ segítségével Blob storage használata
 
@@ -33,7 +33,7 @@ Ehhez telepítenie kell az Azure Storage C++ programnyelvhez készült ügyfélo
 
 Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az alábbi módszerekkel telepítheti:
 
-* **Linux:** kövesse az utasításokat adott a [Azure Storage ügyféloldali kódtára a C++ információs](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) lapot.  
+* **Linux:** Kövesse az utasításokat adott a [Azure Storage ügyféloldali kódtára a C++ információs](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) lapot.  
 * **Windows:** A Visual Studióban válassza a **Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Package Manager Console (Csomagkezelő konzol)** elemet. Írja be a következő parancsot a [NuGet Package Manager console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) nyomja le az ENTER **ENTER**.  
   
      Install-Package wastorage
@@ -82,7 +82,7 @@ Ezután kérdezze le a hivatkozás egy **cloud_blob_client** teszi lehetővé, a
 azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();  
 ```
 
-## <a name="how-to-create-a-container"></a>Hogyan: tároló létrehozása
+## <a name="how-to-create-a-container"></a>Útmutató: Tároló létrehozása
 [!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
 
 A példa bemutatja, hogyan hozhat létre tárolót, ha még nem rendelkezik vele:  
@@ -119,7 +119,7 @@ container.upload_permissions(permissions);
 
 Bárki hozzáférhet az interneten egy nyilvános tárolóban lévő blobok látható, de módosíthatja vagy törölheti őket, csak akkor, ha rendelkezik a megfelelő hozzáférési kulccsal.  
 
-## <a name="how-to-upload-a-blob-into-a-container"></a>Hogyan: feltölt egy blobot egy tárolóba
+## <a name="how-to-upload-a-blob-into-a-container"></a>Útmutató: Blobok feltöltése a tárolóba
 Az Azure Blob storage támogatja a blobok és lapblobok letiltása. A legtöbb esetben a blokkblobok használata javasolt.  
 
 Fájlok blokkblobba való feltöltéséhez szerezze be a tároló hivatkozását, és annak segítségével kérje le a blokkblob hivatkozását. Ha megszerezte a blobhivatkozást, feltölthet bármilyen streamet, meghívásával a **upload_from_stream** metódust. Ez az eljárás létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen. Az alábbi példák azt mutatják be, hogyan tölthetők fel blobok egy tárolóba, és feltételezik, hogy a tároló már létre lett hozva.  
@@ -154,7 +154,7 @@ blob3.upload_text(U("other text"));
 
 Másik lehetőségként használhatja a **upload_from_file** metódus feltölthet egy fájlt egy blokkblobba.
 
-## <a name="how-to-list-the-blobs-in-a-container"></a>Útmutató: a tárolóban lévő blobok listázása
+## <a name="how-to-list-the-blobs-in-a-container"></a>Útmutató: A tárolóban lévő blobok listázása
 A tárolóban lévő blobok listázásához először kérje le a tároló hivatkozását. Ezután használhatja a tároló **list_blobs** metódusának segítéségével lekérheti a blobok és/vagy a benne található könyvtárak. Számos tulajdonság és metódus visszaadásakor eléréséhez **list_blob_item**, meg kell hívni a **list_blob_item.as_blob** metódus lekéréséhez egy **cloud_blob** objektumot, vagy a **list_blob.as_directory** metódus cloud_blob_directory-objektum. A következő kód bemutatja, hogyan kérhető le és küldhető az egyes elemek URI azonosítója a **my-sample-container** tároló:
 
 ```cpp
@@ -184,7 +184,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 A műveletek listázása. További részletekért lásd: [lista Azure Storage-erőforrások c++](../storage-c-plus-plus-enumeration.md).
 
-## <a name="how-to-download-blobs"></a>Útmutató: blobok letöltése
+## <a name="how-to-download-blobs"></a>Útmutató: Blobok letöltése
 Blobok letöltéséhez először kérjen le egy blobhivatkozást, és ezután hívja meg a **download_to_stream** metódust. Az alábbi példában a **download_to_stream** módszerrel kell továbbítania a blob tartalmát egy stream objektumra, majd megőrizheti a helyi fájlba.  
 
 ```cpp
@@ -232,7 +232,7 @@ azure::storage::cloud_block_blob text_blob = container.get_block_blob_reference(
 utility::string_t text = text_blob.download_text();
 ```
 
-## <a name="how-to-delete-blobs"></a>Útmutató: blobok törlése
+## <a name="how-to-delete-blobs"></a>Útmutató: Blobok törlése
 Blobok törléséhez először kérjen le egy blobhivatkozást, majd hívja a **delete_blob** metódust.  
 
 ```cpp

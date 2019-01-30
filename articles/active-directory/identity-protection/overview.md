@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 01/29/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 3017d92115a61dbf5ce647e75a01360224843f44
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1e08af577bec463263045a0f0355acffaad5e599
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165030"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244164"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Mi az Azure Active Directory Identity Protection?
 
@@ -48,7 +48,7 @@ Ennek következtében kell tennie:
 
 Feltört identitásokat felderítése nem könnyű feladat. Az Azure Active Directory adaptív gépi tanulási algoritmusokat használ, és heurisztikus észlelheti a rendellenességeket és gyanús incidensek felderíthetik a vélhetően feltört identitásokat. Ezen adatok alapján Identity Protection állít elő, jelentéseket és riasztásokat, amelyek lehetővé teszik, hogy kiértékelhetik az észlelt problémákat, és a megfelelő kockázatcsökkentési, illetve a szervizelési műveletek végrehajtása.
 
-Az Azure Active Directory Identity Protection több mint egy olyan figyelési és jelentéskészítési eszköz. Védelme érdekében a szervezet identitásait, konfigurálhatja a kockázatalapú szabályzatok, amelyek az automatikusan észlelt problémák reagálnak adott kockázati szint elérésekor. Ezek a szabályzatok mellett más feltételes hozzáférés-vezérlés az Azure Active Directory és az EMS által biztosított automatikusan letiltása, vagy kezdeményezzen adaptív szervizelési műveletek, például jelszó alaphelyzetbe állítása és a többtényezős hitelesítés kényszerítése.
+Az Azure Active Directory Identity Protection több mint egy olyan figyelési és jelentéskészítési eszköz. Védelme érdekében a szervezet identitásait, konfigurálhatja a kockázatalapú szabályzatok, amelyek az automatikusan észlelt problémák reagálnak adott kockázati szint elérésekor. Ezek a szabályzatok mellett más feltételes hozzáférés-vezérlés az Azure Active Directory által biztosított és [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS), automatikusan letiltja, vagy kezdeményezzen adaptív szervizelési műveletek, beleértve a Új jelszó kérésekor és a többtényezős hitelesítés kényszerítése.
 
 
 #### <a name="identity-protection-capabilities"></a>Identitásvédelmi képességeket

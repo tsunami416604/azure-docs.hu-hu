@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 44d4d3b7b82a2f23f973a9c94cb66c81c430efa8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 56dab93087249082330c0f685e5457bc2585664c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225312"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55237931"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Beszélgetéstanuló robotprogramok üzembe helyezése
 
@@ -118,6 +118,7 @@ Az alábbiakban lépésről lépésre ismerteti, hogyan telepíthető egy beszé
         CONVERSATION_LEARNER_SERVICE_URI | „https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/”
         CONVERSATION_LEARNER_MODEL_ID      | Alkalmazás-azonosító GUID, a beszélgetés Learner felhasználói felületen a "beállítások" modell szerzett >
         LUIS_AUTHORING_KEY               | Ehhez a modellhez kulcs létrehozási LUIS
+        LUIS_SUBSCRIPTION_KEY            | Nem kötelező, de a közzétett robotok kerülje a szerzői műveletek kvótájának ajánlott.
     
     4. Az oldal tetején a "Mentés" gombra
     5. Nyissa meg a "Build" nav elemet a bal oldalon

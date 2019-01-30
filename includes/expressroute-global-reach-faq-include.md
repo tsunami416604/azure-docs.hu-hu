@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 10/23/2018
+ms.date: 01/29/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4a3581b3d61c5ad17352c2865fc059704c1eece1
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 81b2db2da7c1efe0d09c065270c3493f297e49ad
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50035475"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55235980"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Mi az az ExpressRoute globális elérhetőségű?
 
@@ -33,16 +33,7 @@ Az ExpressRoute lehetővé teszi, hogy a kapcsolat a helyszíni hálózat és a 
 
 ### <a name="where-is-expressroute-global-reach-supported"></a>Ha az ExpressRoute globális elérhetőségű támogatott?
 
-Az alábbi országokban ExpressRoute globális elérhetőségű használata támogatott. Az ExpressRoute-Kapcsolatcsoportok a társviszony-létesítési helyszínek ezekben az országokban, létre kell hozni.
-
-* Ausztrália
-* Franciaország
-* Hongkong KKT
-* Írország
-* Japán
-* Hollandia
-* Egyesült Királyság
-* Egyesült Államok
+Az ExpressRoute globális elérhetőségű támogatott [országok vagy helyek kiválasztása](../articles/expressroute/expressroute-global-reach.md). Az ExpressRoute-Kapcsolatcsoportok, a társviszony-létesítési helyszínek ezen országok vagy helyen kell létrehozni.
 
 ### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>Több mint két helyszíni hálózat van, mindegyik ExpressRoute-kapcsolatcsoport csatlakozik. Lehet engedélyezni az ExpressRoute globális elérhetőségű összekapcsolását saját helyi hálózatok mindegyike?
 

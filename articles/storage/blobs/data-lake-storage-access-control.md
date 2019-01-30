@@ -3,17 +3,17 @@ title: Hozzáférés-vezérlés az Azure Data Lake Storage Gen2 áttekintése |}
 description: Hozzáférés-vezérlés működésének megismerése az Azure Data Lake Storage Gen2
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 52af1a45f920139ddda1d02734de91372fe4719d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3005f19ffbc4771da442e36290a5803dddebfdbb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974912"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240170"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen2
 
@@ -47,9 +47,9 @@ SAS-tokeneket használható engedélyek a token részeként tartalmazza. Az enge
 
 Két fajtája van hozzáférés-vezérlési listák (ACL): a hozzáférési ACL-EK és alapértelmezett ACL-ek.
 
-* **Hozzáférési ACL-ek**: hozzáférési ACL-objektum hozzáférés-vezérlése. Fájlok és mappák egyaránt rendelkeznek hozzáférési ACL-ek.
+* **Hozzáférési ACL-ek**: Hozzáférési ACL-objektumhoz való hozzáférés szabályozása. Fájlok és mappák egyaránt rendelkeznek hozzáférési ACL-ek.
 
-* **Alapértelmezett ACL-ek**: egy könyvtárat, amelyek meghatározzák a hozzáférési ACL-ek minden könyvtár alatt létrehozott gyermekelemek társított ACL-ek sablonját. Fájlok nem rendelkeznek alapértelmezett ACL-ek.
+* **Alapértelmezett ACL-ek**: Az ACL-ek sablon társított címtár, amelyek meghatározzák a hozzáférési ACL-ek minden könyvtár alatt létrehozott gyermekelemek. Fájlok nem rendelkeznek alapértelmezett ACL-ek.
 
 Mindkét hozzáférési ACL-EK és alapértelmezett ACL-ek ugyanazzal a struktúrával rendelkeznek.
 
@@ -131,7 +131,7 @@ A POSIX ACL-ekben minden felhasználó társítva van egy *elsődleges csoportos
 #### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>A tulajdonoscsoport egy új fájl vagy címtár hozzárendelése
 
 * **1. eset**: A gyökérkönyvtár "/". Ez a könyvtár jön létre egy Data Lake Storage Gen2 fájlrendszer létrehozásakor. Ebben az esetben a tulajdonoscsoport van beállítva, a felhasználó, aki létrehozta a fájlrendszer, ha történt az OAuth használatával. Ha a fájlrendszer jön létre a megosztott kulcs, a fiók SAS vagy a szolgáltatás SAS, akkor a tulajdonos és a tulajdonoscsoport beállítása **$superuser**.
-* **2. eset** (minden egyéb eset): egy új elem létrehozásakor a tulajdonoscsoport lesz átmásolva a szülőkönyvtárat.
+* **2. eset** (minden egyéb eset): Új elem létrehozásakor a tulajdonoscsoport átmásolva a szülőkönyvtárat.
 
 #### <a name="changing-the-owning-group"></a>A tulajdonoscsoport módosítása
 

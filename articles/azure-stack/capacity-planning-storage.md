@@ -15,21 +15,22 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: 9ea46860817d60c2ffbde68c0fc5ae6f6ca14877
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.lastreviewed: 09/18/2018
+ms.openlocfilehash: 5d9d01a482483d030569a4dcad03c9ecef7cffc0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368692"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245150"
 ---
 # <a name="azure-stack-storage-capacity-planning"></a>Az Azure Stack tárolási kapacitásának megtervezése
 Az alábbi szakaszok az Azure Stack tárolókapacitást biztosítanak tervezési információkat a megoldások tárolási szükségletek segítség.
 
 ## <a name="uses-and-organization-of-storage-capacity"></a>Használja, és a szervezet a tárolási kapacitás
-Az Azure Stack a hiperkonvergens konfigurációban a fizikai tárolóeszközök megosztása lehetővé teszi. A rendelkezésre álló tár három fő egységét vannak, az infrastruktúra, a bérlői virtuális gépek ideiglenes tároló és a tárolási, biztonsági a blobok, táblák és üzenetsorok az Azure-konzisztens tároló (ACS) szolgáltatások között.
+Az Azure Stack hiperkonvergens konfigurációja lehetővé teszi a fizikai tárolóeszközök megosztását. A rendelkezésre álló tár három fő egységét vannak, az infrastruktúra, a bérlői virtuális gépek ideiglenes tároló és a tárolási, biztonsági a blobok, táblák és üzenetsorok az Azure-konzisztens tároló (ACS) szolgáltatások között.
 
 ## <a name="spaces-direct-cache-and-capacity-tiers"></a>Közvetlen tárolóhelyek gyorsítótárának és kapacitásszintek
-Nincs a használt tárolási kapacitást az operációs rendszer, a helyi naplózás, a memóriaképek és a többi ideiglenes infrastruktúra tárolási igényeinek megfelelően. A helyi tárolási kapacitása (eszközökön és a kapacitás) a közvetlen tárolóhelyek szolgáltatás konfigurációjának kezelése alatt álló tárolóeszközök elkülönítése. A tárolóeszközök további része a tárolókapacitást a skálázási egységben kiszolgálók számától függetlenül egyetlen készlet kerül. Ezek az eszközök két típusa van: Cache és a kapacitás.  A gyorsítótár-eszközök csak az adott – gyorsítótár lesznek. Közvetlen tárolóhelyek ezeknek az eszközöknek a késleltetve visszaírt használják, és olvasási gyorsítótárazás. A kapacitások ilyen gyorsítótár eszközt használja, amíg nem kerülnek át a formázott virtuális lemezek formázott, "látható" kapacitását. A kapacitáseszközöknek erre a célra használják, és adja meg a tárolóhelyek szolgáltatás által kezelt adatok "otthoni régiója".
+Nincs a használt tárolási kapacitást az operációs rendszer, a helyi naplózás, a memóriaképek és a többi ideiglenes infrastruktúra tárolási igényeinek megfelelően. A helyi tárolási kapacitása (eszközökön és a kapacitás) a közvetlen tárolóhelyek szolgáltatás konfigurációjának kezelése alatt álló tárolóeszközök elkülönítése. A tárolóeszközök további része a tárolókapacitást a skálázási egységben kiszolgálók számától függetlenül egyetlen készlet kerül. Ezek az eszközök két típusa van: Gyorsítótár és a kapacitás.  A gyorsítótár-eszközök csak az adott – gyorsítótár lesznek. Közvetlen tárolóhelyek ezeknek az eszközöknek a késleltetve visszaírt használják, és olvasási gyorsítótárazás. A kapacitások ilyen gyorsítótár eszközt használja, amíg nem kerülnek át a formázott virtuális lemezek formázott, "látható" kapacitását. A kapacitáseszközöknek erre a célra használják, és adja meg a tárolóhelyek szolgáltatás által kezelt adatok "otthoni régiója".
 
 Az összes tárolási kapacitás lefoglalt, és közvetlenül az Azure Stack-infrastruktúra kezel. Az operátor kell kiosztása, a konfigurációval kapcsolatos döntéseket vagy választási lehetőségek kezelése esetén, egyszerű kapacitásbővítést téve lehetővé. Ezek a tervezési döntések vezettük be, hogy összhangba kerüljenek a megoldás követelményeinek, és automatizált vagy kezdeti telepítési/üzembe helyezés során, vagy során egyszerű kapacitásbővítést téve lehetővé. A rugalmasság, újraépíteni fenntartott kapacitás és egyéb részletek részleteit vették a terv részeként. 
 

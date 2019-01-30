@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 6cf32ba50e83b95d51493244ef8e8646433b0b02
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.lastreviewed: 01/02/2019
+ms.openlocfilehash: 93e6345ba50bab21e03fb7a30148ea51c52a10f2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024943"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244249"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure Stack nyilvános kulcsokra épülő infrastruktúra tanúsítványkövetelmények
 
@@ -67,23 +68,23 @@ Az üzembe helyezés a [régió] és [externalfqdn] értékeknek egyezniük kell
 > [!note]  
 > Az éles környezetek esetében javasoljuk az egyes tanúsítványok jönnek létre, végpontok és a megfelelő könyvtárba másolja. Fejlesztési környezetek esetén tanúsítványokat is meg kell adni a tulajdonos és a tulajdonos alternatív nevére (SAN) mezőket, átmásolja az összes könyvtár összes névtér kiterjedő egyetlen helyettesítő tanúsítványt. Végpontok és a szolgáltatások egy tanúsítvány egy nem biztonságos helyzetét, ezért csak fejlesztési. Ne feledje, hogy mindkét lehetőség használatát írják elő helyettesítő tanúsítványok végpontok például **acs** és a Key Vault, amennyiben azok szükségesek. 
 
-| Telepítési mappa | Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosneveket (SAN) | Hatókör (régiónként) | Altartomány névtér |
+| Telepítési mappa | Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosneveket (SAN) | Hatókör (régiónként) | SubDomain namespace |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
-| Nyilvános portálra | portál. &lt;régió >. &lt;teljesen minősített tartományneve > | Portálok | &lt;region>.&lt;fqdn> |
-| Felügyeleti portál | adminportal. &lt;régió >. &lt;teljesen minősített tartományneve > | Portálok | &lt;region>.&lt;fqdn> |
+| Nyilvános portálra | portal.&lt;region>.&lt;fqdn> | Portálok | &lt;region>.&lt;fqdn> |
+| Felügyeleti portál | adminportal.&lt;region>.&lt;fqdn> | Portálok | &lt;region>.&lt;fqdn> |
 | Azure Resource Manager-nyilvános | management.&lt;region>.&lt;fqdn> | Azure Resource Manager | &lt;region>.&lt;fqdn> |
-| Az Azure Resource Manager-rendszergazda | adminmanagement. &lt;régió >. &lt;teljesen minősített tartományneve > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
+| Az Azure Resource Manager-rendszergazda | adminmanagement.&lt;region>.&lt;fqdn> | Azure Resource Manager | &lt;region>.&lt;fqdn> |
 | ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Altartományokra is kibővített SSL-tanúsítvány) | Blob Storage | blob.&lt;region>.&lt;fqdn> |
 | ACSTable | *.table.&lt;region>.&lt;fqdn><br>(Altartományokra is kibővített SSL-tanúsítvány) | Table Storage | table.&lt;region>.&lt;fqdn> |
 | ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(Altartományokra is kibővített SSL-tanúsítvány) | Queue Storage | queue.&lt;region>.&lt;fqdn> |
 | KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(Altartományokra is kibővített SSL-tanúsítvány) | Key Vault | vault.&lt;region>.&lt;fqdn> |
-| KeyVaultInternal | *.adminvault. &lt;régió >. &lt;teljesen minősített tartományneve ><br>(Altartományokra is kibővített SSL-tanúsítvány) |  Belső Keyvault |  adminvault.&lt;region>.&lt;fqdn> |
-| Rendszergazdai kiterjesztés gazdagép | *.adminhosting. \<régió >. \<teljesen minősített tartományneve > (altartományokra is kibővített SSL-tanúsítványok) | Rendszergazdai kiterjesztés gazdagép | adminhosting. \<régió >. \<teljesen minősített tartományneve > |
-| A bővítmény nyilvános állomás | * .hosting. \<régió >. \<teljesen minősített tartományneve > (altartományokra is kibővített SSL-tanúsítványok) | A bővítmény nyilvános állomás | üzemeltetési. \<régió >. \<teljesen minősített tartományneve > |
+| KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>(Altartományokra is kibővített SSL-tanúsítvány) |  Belső Keyvault |  adminvault.&lt;region>.&lt;fqdn> |
+| Admin Extension Host | *.adminhosting. \<régió >. \<teljesen minősített tartományneve > (altartományokra is kibővített SSL-tanúsítványok) | Admin Extension Host | adminhosting.\<region>.\<fqdn> |
+| A bővítmény nyilvános állomás | *.hosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | A bővítmény nyilvános állomás | hosting.\<region>.\<fqdn> |
 
 Ha az Azure Stack az Azure ad-ben üzembe helyezési mód használatával telepíti, csak az előző táblázatban felsorolt tanúsítványokat kell. Azonban ha telepíti az AD FS üzembe helyezési mód használata az Azure Stack, is kérnie kell a tanúsítványokat, a következő táblázat ismerteti:
 
-|Telepítési mappa|Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosneveket (SAN)|Hatókör (régiónként)|Altartomány névtér|
+|Telepítési mappa|Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosneveket (SAN)|Hatókör (régiónként)|SubDomain namespace|
 |-----|-----|-----|-----|
 |ADFS|adfs.*&lt;region>.&lt;fqdn>*<br>(SSL-tanúsítvány)|ADFS|*&lt;region>.&lt;fqdn>*|
 |Graph|graph.*&lt;region>.&lt;fqdn>*<br>(SSL-tanúsítvány)|Graph|*&lt;region>.&lt;fqdn>*|
@@ -100,9 +101,9 @@ Ha azt tervezi, a további Azure Stack PaaS-szolgáltatások (SQL, a MySQL és a
 
 A következő táblázat ismerteti a végpontok és a szükséges az SQL- és MySQL-adapterek és az App Service-tanúsítványok. Nem kell ezeket a tanúsítványokat az Azure Stack üzembe helyezési mappába másolja. Ehelyett nyújtanak ezekről a tanúsítványokról további erőforrás-szolgáltató telepítésekor. 
 
-|Hatókör (régiónként)|Tanúsítvány|Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosnevek (SAN)|Altartomány névtér|
+|Hatókör (régiónként)|Tanúsítvány|Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosnevek (SAN)|SubDomain namespace|
 |-----|-----|-----|-----|
-|SQL-MySQL|SQL- és MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(Altartományokra is kibővített SSL-tanúsítvány)|dbadapter.*&lt;region>.&lt;fqdn>*|
+|SQL, MySQL|SQL- és MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(Altartományokra is kibővített SSL-tanúsítvány)|dbadapter.*&lt;region>.&lt;fqdn>*|
 |App Service|Webes forgalom alapértelmezett SSL-tanúsítvány|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Altartományokra is kibővített SSL-tanúsítvány több tartomány<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-tanúsítvány<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-tanúsítvány<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|

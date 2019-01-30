@@ -3,18 +3,18 @@ title: KONCEPCIÓ PÉLDÁUL Web Services in Azure Machine Learning szolgáltatá
 description: Ez a karakterlánc a 115-145 karaktereket a cikk ismerteti. Keresőmotor-Optimalizálást típusú igéi itt használhassa. például – ismerje meg, hogyan teheti ezt, és hogy ügyfél szavak használatával. Ezt az információt a cikk dátumbélyeg a keresési lap beágyazott jelenik meg. Ha a bevezetés para ismerteti a cikk célja, használhatja azt a hossz itt szerkesztett.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: your-msft-alias
 author: your-github-account-name
 ms.date: 04/10/2018
-ms.openlocfilehash: 759e76a75fffeb31d38439f59b219ad48ebf6277
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e38a7e2bc55b4cc4b60984d355efad097ac7b068
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009254"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249794"
 ---
 # <a name="this-is-the-h1-and-the-article-title-that-shows-on-the-web"></a>Ez a művelet a H1 és a cikk címe, amely megjeleníti a weben
 

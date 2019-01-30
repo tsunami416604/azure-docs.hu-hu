@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9c4b66501cfb51088609de81fe00b5b041e056d3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 28ff7c9f6ca5fc6365b3fe1b9a91d2159c8b3f48
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037528"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247612"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Az Azure Stackben API-verzióprofilok kezelése
 
@@ -40,7 +41,7 @@ Ez a témakör segítségével:
 - API-profilokat hozhat létre a sablonok között több Azure-felhők jöttek létre. Profilok egy stabil és kompatibilis felületet kínálnak.
 - Profilok évente négy alkalommal jelennek meg.
 - Három profilt elnevezési konvenciókat használja:
-    - **legfrissebb**  
+    - **latest**  
         Tartalmazza a legújabb API-verziók, amely a globális Azure-ban.
     - **yyyy-mm-dd-hybrid**  
     Kiadás dátuma: kétévente történik, ebben a kiadásban összpontosít és stabilabbá teheti több felhő között. Ez a profil optimális Azure Stack-kompatibilitási célozza.
@@ -53,7 +54,7 @@ A legújabb Azure API-profilok nem kompatibilisek az Azure Stack használatával
 **legfrissebb**  
 Ez a profil van a legfrissebb API-verziók található a globális Azure-ban, amely nem működnek az Azure Stackben. **Legújabb** kompatibilitástörő változásokat legnagyobb száma. A profil fenntartott helyezi, stabilitás és más felhőkben való kompatibilitás érdekében. Ha szeretne a legújabb API-verziókat használhat **legújabb** a profilt kell használnia.
 
-**éééé-hh-nn-hibrid**  
+**Yyyy-mm-dd-hybrid**  
 Ez a profil jelent márciusi és szeptemberi frissítések minden évben. Optimális stabilitását és különféle felhőkben való kompatibilitás rendelkezik. **Éééé-hh-nn-hibrid** célja, hogy a cél a globális Azure és az Azure Stackben. Az Azure API-verziói ehhez a profilhoz lesznek ugyanaz, mint az Azure Stacken felsorolt azokat. Ez a profil használatával kód a hibrid felhőalapú megoldások fejlesztése.
 
 **yyyy-mm-dd-profile**  

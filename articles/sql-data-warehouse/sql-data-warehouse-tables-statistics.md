@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a7ea00e8bdf4fa1a22dd765e5108dce72e2d380
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 699538666a3bdbea94d35844f9c5c4fb7b4fd0f2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307462"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241049"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Frissíti a statisztikákat a táblák az Azure SQL Data Warehouse létrehozása
 Javaslatok és példák a lekérdezés-optimalizálási statisztikák azokon a táblákon, az Azure SQL Data Warehouse létrehozása és frissítése.
@@ -38,7 +38,7 @@ Ha az adattárház nincs konfigurálva AUTO_CREATE_STATISTICS, javasoljuk, hogy 
 ALTER DATABASE <yourdatawarehousename> 
 SET AUTO_CREATE_STATISTICS ON
 ```
-A következő utasításokat aktiválják a statisztikák automatikus létrehozását: válassza ki, INSERT-válassza ki, a CTAS, frissítési, törlési és magyarázat amikor illesztést tartalmazó vagy egy predikátum jelenlétét észleli. 
+A következő utasításokat aktiválják a statisztikák automatikus létrehozását: Válassza ki, INSERT-válassza ki, a CTAS, frissítési, törlési és magyarázat amikor illesztést tartalmazó vagy egy predikátum jelenlétét észleli. 
 
 > [!NOTE]
 > Ideiglenes vagy külső táblákon nem jönnek létre a statisztikák automatikus létrehozását.
@@ -50,7 +50,7 @@ A statisztikák automatikus létrehozását akkor jön létre szinkron módon t�
 > A statisztikák létrehozása is naplózza a rendszer [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) egy másik felhasználói környezetben.
 > 
 
-Az automatikus statisztikákat hoz létre, amikor az űrlap tart: _WA_Sys_< oszlop azonosító 8 számjegyből álló hexadecimális érték > _ < 8 számjegy táblaazonosító hexadecimális >. Megtekintheti a már futó által létrehozott adatok a [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) parancsot:
+Az automatikus statisztikákat hoz létre, amikor azok az űrlap végzi el: _WA_Sys_< oszlop azonosító 8 számjegyből álló hexadecimális érték > _ < 8 számjegy táblaazonosító hexadecimális >. Megtekintheti a már futó által létrehozott adatok a [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) parancsot:
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
@@ -67,7 +67,7 @@ Frissítse a statisztikai adatokat ajánlások a következők:
 
 |||
 |-|-|
-| **Statisztikák frissítések gyakorisága**  | Konzervatív: naponta <br></br> Miután betöltése vagy az adatok átalakítása |
+| **Statisztikák frissítések gyakorisága**  | Konzervatív: Napi <br></br> Miután betöltése vagy az adatok átalakítása |
 | **Mintavételezés** |  Kevesebb mint 1 milliárd sorral, használja az alapértelmezett mintavételi (20 %-os) <br></br> A több mint 1 milliárd sorral 2: %-os különféle statisztikai jó |
 
 Az első kérdéseket tehet fel, ha a lekérdezés még hibaelhárítási egyik, **"Naprakészek a statisztikák?"**
@@ -125,7 +125,7 @@ A statisztikák frissítése a betöltési folyamat során a következő alapelv
 
 További információkért lásd: [Számosságbecslés](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
-## <a name="examples-create-statistics"></a>Példák: Statisztikák létrehozása
+## <a name="examples-create-statistics"></a>Példák: Statisztika létrehozása
 Ezek a példák bemutatják, hogyan statisztikák létrehozása a különböző beállítások használata. A beállítások, használja az egyes oszlopok adatait, és hogyan oszlop lesz használható a lekérdezésekben jellemzői függ.
 
 ### <a name="create-single-column-statistics-with-default-options"></a>Hozzon létre egyoszlopos statisztikát alapértelmezett beállításokkal

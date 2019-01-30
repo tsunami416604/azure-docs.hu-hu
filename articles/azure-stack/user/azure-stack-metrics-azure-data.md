@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.openlocfilehash: cfeb1ce7791db463dc0ac39376baa8228dd96daf
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 12/01/2018
+ms.openlocfilehash: c16f218903557a6d3a10f3ef201587d2885fffa9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106290"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239103"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Az Azure Monitor az Azure Stackben
 
@@ -122,7 +123,7 @@ Néhány vizualizációs módszer:
 
 Általában az adatokat azok követéséhez, átirányításához és lekéréséhez a következő módszerekkel kezelheti. Nem mindegyik módszer érhető el mindegyik művelet és adattípus esetében.
 
- - [Az Azure Stack portálon](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-use-portal)
+ - [Azure Stack Portal](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-use-portal)
  - [PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
  - [Platformfüggetlen parancssori Interface(CLI)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
  - [REST API](https://docs.microsoft.com/rest/api/monitor)

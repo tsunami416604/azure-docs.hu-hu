@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dc301f218855139cfb3a5faa30109dd5a301eb07
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.lastreviewed: 08/10/2018
+ms.openlocfilehash: 195f865a6977eaf78b09c611b7cd9e5119b2f62a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871200"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241253"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Töltse le és csomagolja ki az Azure Stack Development Kit (ASDK)
 Miután meggyőződött arról, hogy a fejlesztői csomag fogadó számítógép megfelel-e a ASDK telepítésére vonatkozó minimális követelményeinek, a következő lépés az töltse le és csomagolja ki a ASDK központi telepítési csomag beolvasni a Cloudbuilder.vhdx.

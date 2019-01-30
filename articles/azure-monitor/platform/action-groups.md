@@ -5,19 +5,19 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 38cccf17980f5a6a2cf162cdecdc6aad40d4f38e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5717074d53e267018b7697aeed21ea00d246592e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432557"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252217"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
-Műveletcsoport gyűjteménye, Azure-előfizetés tulajdonosa által megadott értesítési beállításokat. Azure Monitor és a Service Health-riasztások Műveletcsoportok használatával értesítheti a felhasználókat, hogy egy riasztás aktiválódott-e. Az azonos műveletcsoport vagy a felhasználó követelményeitől függően különböző Műveletcsoportok különböző riasztások használhatja.
+Műveletcsoport gyűjteménye, Azure-előfizetés tulajdonosa által megadott értesítési beállításokat. Azure Monitor és a Service Health-riasztások Műveletcsoportok használatával értesítheti a felhasználókat, hogy egy riasztás aktiválódott-e. Az azonos műveletcsoport vagy a felhasználó követelményeitől függően különböző Műveletcsoportok különböző riasztások használhatja. Az előfizetéshez legfeljebb 2000 Műveletcsoportok konfigurálásával.
 
 Amikor egy művelet a konfigurációja szerint egy személy értesítése e-mailben vagy SMS személy kap egy megerősítő, amely azt jelzi, hogy, és ő a műveletcsoport hozzá.
 
@@ -88,15 +88,18 @@ Műveletcsoport e-mailes műveletek akár 1000 is lehet. Tekintse meg a [sebess�
 **Beszédfelismerési** – előfordulhat, hogy legfeljebb 10 hangalapú műveleteket tartalmaz műveletcsoportot</dd>
 Tekintse meg a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) cikk</dd>
 
-**Webhook** -műveletcsoport Webhook-műveletek legfeljebb 10 lehet. Újrapróbálkozási logika – az időkorlát választ érték 10 másodperc. A webhook hívása lesz újból legfeljebb 2 idők esetén a következő HTTP-állapotkódok adja vissza: 408, 429-es, 503-as, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második és az utolsó újrapróbálkozási 100 másodperc múlva történik.
+**Webhook** -műveletcsoport Webhook-műveletek legfeljebb 10 lehet.
+Újrapróbálkozási logika – az időkorlát választ érték 10 másodperc. A webhook hívása lesz újból legfeljebb 2 idők esetén a következő HTTP-állapotkódok adja vissza: 408, 429-es, 503-as, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozási 100 másodperc múlva történik. Két hiba után a végpont nem lesz meghívva, 30 percig bármilyen művelet csoportból.
 
 Forrás IP-címtartományok
+    - 13.72.19.232
     - 13.106.57.181
     - 13.106.54.3
     - 13.106.54.19
     - 13.106.38.142
     - 13.106.38.148
     - 13.106.57.196
+    - 52.244.68.117
 
 A érintő változásokról ezen IP-címek, javasoljuk, hogy konfigurálja a frissítések fogadásához egy [szolgáltatásállapot-riasztás](./../../azure-monitor/platform/service-notifications.md) amely figyeli a Műveletcsoportok szolgáltatással kapcsolatos tájékoztató értesítések.
 

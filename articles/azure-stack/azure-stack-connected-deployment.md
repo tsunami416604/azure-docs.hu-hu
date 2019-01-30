@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e0f51306ab17e88db9d28da14faab9de0b445f74
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: 491bdf121729d690784324051ff701f3ed2d2b7a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037906"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243181"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure csatlakoztatott üzembe helyezési, tervezési megfontolások az Azure Stack integrált rendszerek
 Miután döntött [hogyan fogja integrálja az Azure Stack a hibridfelhő-környezet](azure-stack-connection-models.md), majd az Azure Stack telepítési döntések is véglegesítése.
@@ -30,7 +31,7 @@ Kapcsolódik az Azure üzembe helyezése az Azure Stack azt jelenti, hogy is vag
 ## <a name="choose-an-identity-store"></a>Válassza ki az ügyfélidentitás-tárolóval
 Egy csatlakoztatott üzembe helyezéssel az Azure AD vagy az AD FS-hez az ügyfélidentitás-tárolóval, választhat. Egy kapcsolat nélküli telepítés internetkapcsolat nélküli is csak az AD FS használata.
 
-Identitás-store tetszőleges nem befolyásolta bérlői virtuális gépeket (VM). Bérlői virtuális gépeket is dönthet, mely ügyfélidentitás-tárolóval, a csatlakozás attól függően, hogyan lehet konfigurálni szeretne: Azure AD-ben a Windows Server Active Directory-tartományhoz, munkacsoportban stb. Ez az Azure Stack identitás szolgáltató döntésével kapcsolódik. 
+Identitás-store tetszőleges nem befolyásolta bérlői virtuális gépeket (VM). Bérlő virtuális gépek kiválaszthatja, melyik ügyfélidentitás-tárolóval, a csatlakozás attól függően, hogyan lehet konfigurálni szeretne: Az Azure AD-ben a Windows Server Active Directory-tartományhoz, munkacsoportban stb. Ez az Azure Stack identitás szolgáltató döntésével kapcsolódik. 
 
 Például ha telepíti az IaaS bérlői virtuális gépeknek az Azure Stack felett, és szeretné, hogy csatlakozzon a vállalati Active Directory-tartomány, és onnan fiókok használata, továbbra is ehhez. Nem szükségesek, azok a fiókok az Azure ad-ben ügyfélidentitás-tárolóval, az itt használandó.
 
@@ -56,7 +57,7 @@ A Használatalapú mint-akkor-használható számlázási modell használatáér
 
 Ha egy CSP-előfizetéssel, mely CSP-előfizetés használatára az alábbi táblázatban áttekintheti, mint a megfelelő módszer a pontos CSP forgatókönyvtől függ:
 
-|Alkalmazási helyzet|Tartomány- és előfizetés-beállításai|
+|Forgatókönyv|Tartomány- és előfizetés-beállításai|
 |-----|-----|
 |Ön egy **közvetlen CSP-Partner** vagy egy **közvetett CSP-szolgáltató**, és akkor fog működni az Azure Stack|Használjon CSL (közös szolgáltatási réteg) előfizetést.<br>     vagy<br>Hozzon létre egy Azure AD-bérlőt egy leíró nevet a Partner Center. Például &lt;a szervezet > CSPAdmin Azure CSP-előfizetéssel társítva.|
 |Ön egy **közvetett CSP-viszonteladó**, és akkor fog működni az Azure Stack|Kérje meg a közvetett CSP-szolgáltatót, hogy a szervezet Azure AD-bérlő létrehozása az Azure CSP-előfizetéssel társítva használja Partnerközpontban.|
@@ -66,9 +67,9 @@ Ha úgy dönt, hogy a kapacitás számlázási modellt használja, meg kell vás
 
 A kapacitás számlázási szükséges egy nagyvállalati szerződés (EA) Azure-előfizetést a regisztrációhoz. A hiba oka, hogy regisztrációs beállítja elemek rendelkezésre állását a Marketplace-en, amely egy Azure-előfizetés szükséges. Az előfizetés nem használja az Azure Stack használatának.
 
-## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+## <a name="learn-more"></a>Részletek
 - További információ a használati esetek, vásárlás, partnerek és OEM hardverszállítók: a [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) termékoldalán.
-- Az ütemterv és a rendelkezésre állás földrajzi információ az Azure Stack integrált rendszerek, tekintse meg a: [Azure Stack: Azure bővítménye](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- Az ütemterv és a rendelkezésre állás földrajzi információ az Azure Stack integrált rendszerek, tekintse meg a: [Azure Stack: Azure-bővítmény](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 - A Microsoft Azure Stack csomagolás és a díjszabással kapcsolatos további [töltse le a .pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
 
 ## <a name="next-steps"></a>További lépések

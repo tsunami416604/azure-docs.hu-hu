@@ -13,16 +13,17 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: 4641dce6fe8518016ee85cd480de6d11354fe170
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: 09d3d996e4c939d6691162d66f303536a3f2038d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037215"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239264"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Frissítések az Azure Stack használatával a privilegizált végpont monitorozása
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
+*Vonatkozik: Az Azure Stack integrált rendszerek*
 
 Használhatja a [kiemelt végponthoz](azure-stack-privileged-endpoint.md) előrehaladtát, az Azure Stackkel való frissítés futtassa, és az utolsó sikeres lépésből futtassa sikertelen frissítés folytatásához kell az Azure Stack portálon elérhetetlenné válik.  Az Azure Stack portal használata az ajánlott módszer az Azure Stack frissítéseinek kezelésére.
 
@@ -35,7 +36,7 @@ A következő új PowerShell-parancsmagok az update management megtalálhatók a
 | | |
 
 ## <a name="verify-the-cmdlets-are-available"></a>Ellenőrizze, hogy a parancsmagok érhetők el
-A parancsmagok nem ismeri az Azure Stack az 1710-es frissítési csomag, mert az 1710-es frissítési folyamat van szüksége egy bizonyos ponton elérése előtt a figyelési funkció érhető el. A parancsmagok jellemzően érhető el, ha a felügyeleti portálon az állapot azt jelzi, hogy az 1710-es frissítés a **indítsa újra a Storage-gazdagépek** . lépés. Pontosabban, a parancsmag frissítése során történik **. lépés: 2.6 - PrivilegedEndpoint frissítése engedélyezett lépés futtatása**.
+A parancsmagok nem ismeri az Azure Stack az 1710-es frissítési csomag, mert az 1710-es frissítési folyamat van szüksége egy bizonyos ponton elérése előtt a figyelési funkció érhető el. A parancsmagok jellemzően érhető el, ha a felügyeleti portálon az állapot azt jelzi, hogy az 1710-es frissítés a **indítsa újra a Storage-gazdagépek** . lépés. Pontosabban, a parancsmag frissítése során történik **. lépés: 2.6 – a frissítés PrivilegedEndpoint engedélyezési lista lépés futtatása**.
 
 Azt is meghatározhatja, hogy a parancsmagok elérhetők-e programozott módon a parancslistából, a kiemelt jogosultságú végpontról lekérdezésével. Ehhez futtassa az alábbi parancsokat a hardver életciklus gazdagépen vagy egy emelt szintű hozzáférési szintű munkaállomásokat. Ügyeljen arra, hogy a kiemelt jogosultságú végpont nem megbízható gazdagép. További információkért lásd: 1. lépés a [az emelt szintű végpontot](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). 
 
@@ -107,10 +108,10 @@ $statusString.Value
 
 A lehetséges értékek:
 
-- Futtatás
-- Befejeződött
+- Fut
+- Befejezve
 - Meghiúsult 
-- Törölve
+- Megszakítva
 
 Ezeket a parancsokat ismételten a legfrissebb állapotának megtekintéséhez futtathatja. Ne kelljen újra kapcsolatot létesíteni.
 

@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
-ms.component: data-lake-storage-gen2
-ms.openlocfilehash: e596123cb218a542166d80b53916a73034f71760
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: data-lake-storage-gen2
+ms.openlocfilehash: 63dcea94fd880102a784e6f776855c44d4e97c87
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975255"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243317"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Használja az Azure Data Lake Storage Gen2 URI
 
@@ -31,19 +31,19 @@ Ha a Data Lake Storage Gen2 képes a fiókot szeretné cím **nem** állítja be
 
 2. **Fájlrendszer**: A szülő hely neve, amely tárolja a fájlokat és mappákat. Ez megegyezik a tárolók az Azure Storage Blobs szolgáltatásban.
 
-3. **Fiók neve**: név, a storage-fiók létrehozása során.
+3. **Fiók neve**: A storage-fiók létrehozása során adott név.
 
-4. **Elérési utak**: tagolt perjellel (`/`) a könyvtárstruktúra ábrázolása.
+4. **Elérési utak**: Tagolt perjellel (`/`) a könyvtárstruktúra ábrázolása.
 
-5. **Fájlnév**: az egyes fájl nevét. Ez a paraméter nem kötelező, ha éppen aktuális címtár.
+5. **Fájlnév**: Az egyes fájl neve. Ez a paraméter nem kötelező, ha éppen aktuális címtár.
 
 Azonban ha a cím kívánt fiók be van állítva az alapértelmezett fájlrendszerként fiók létrehozása során, majd a gyorsírás URI szintaxisának a következő:
 
 <pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
 
-1. **Elérési út**: tagolt perjellel (`/`) a könyvtárstruktúra ábrázolása.
+1. **Elérési út**: Tagolt perjellel (`/`) a könyvtárstruktúra ábrázolása.
 
-2. **Fájlnév**: az egyes fájl nevét.
+2. **Fájlnév**: Az egyes fájl neve.
 
 
 ## <a name="next-steps"></a>További lépések

@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 45e22f19c6e2da26105615da6a775eed4f8676f0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/10/2018
+ms.openlocfilehash: 759ea6b8e4981b3ea198077cabf9df7966d6e883
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243637"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242960"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Az Azure Stack üzembe helyezett virtuális gépek védelme
 
@@ -135,7 +136,7 @@ Ne feledje, hogy minden egyes Azure Stack-felhőben függetlenek egymástól,-e,
 
  - RTO: Állásidő nélkül
  - HELYREÁLLÍTÁSI IDŐKORLÁT: Nincs adatvesztés
- - Üzembe helyezési topológia: Aktív/aktív
+ - Üzembe helyezési topológia: Active/Active
 
 ### <a name="no-recovery"></a>Nincs recovery
 

@@ -1,5 +1,5 @@
 ---
-title: 'App Service-ben az Azure Stack: tartalék tartomány frissítése |} A Microsoft Docs'
+title: 'App Service-ben az Azure Stack: Tartalék tartomány frissítése |} A Microsoft Docs'
 description: Hogyan lehet Azure App Service az Azure Stacken újraterjeszteni a tartalék tartományok között
 services: azure-stack
 documentationcenter: ''
@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: d361b4165c1fbbf79321e3f6d2ade711f9173c56
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.lastreviewed: 09/05/2018
+ms.openlocfilehash: 249e4b466e9be567111aaa22b40ca3e5dadb6cac
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267215"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246381"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Hogyan lehet Azure App Service az Azure Stacken újraterjeszteni a tartalék tartományok között
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
+*Vonatkozik: Az Azure Stack integrált rendszerek*
 
 Az 1802-es frissítés az Azure Stack mostantól támogatja a számítási feladatok eloszlása hibatartományokban, egy szolgáltatás, amelyet a kritikus fontosságú a magas rendelkezésre állás érdekében.
 

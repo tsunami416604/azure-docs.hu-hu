@@ -9,17 +9,17 @@ ms.service: storage
 ms.author: tamram
 ms.date: 11/14/2018
 ms.topic: quickstart
-ms.component: blobs
-ms.openlocfilehash: c72cd83af2b06b19b285d3c939c0d45b995464d9
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.subservice: blobs
+ms.openlocfilehash: a5433284d9722ce907b962be7ba437ef32ad819c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711482"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245374"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Rövid útmutató: Blobok feltöltése, listázása és törlése a böngészőben JavaScript/HTML használatával
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Gyors útmutató: Feltöltése, listázása és törlése a blobok a böngészőben JavaScript/HTML használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogy hogyan kezelheti a blobokat böngészőben futó kóddal. Az itt bemutatott megközelítés szemlélteti a megfelelő biztonsági eszközök használatát is a Blob Storage-fiók biztonságos elérése érdekében. A rövid útmutató elvégzéséhez szüksége lesz egy [Azure-előfizetésre](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -80,7 +80,7 @@ A paraméterek után szereplő értékek nehezen érthetőek lehetnek. Ezek a pa
 
 | Paraméter        | Érték   | Leírás  |
 |------------------|---------|---------|
-| *permissions*    | racwdl  | Ez az SAS *olvasási*, *hozzáfűzési*, *létrehozási*, *írási*, *törlési* és *listázási* képességeket engedélyez. |
+| *engedélyek*    | racwdl  | Ez az SAS *olvasási*, *hozzáfűzési*, *létrehozási*, *írási*, *törlési* és *listázási* képességeket engedélyez. |
 | *resource-types* | sco     | Az SAS a *szolgáltatás*, a *tároló* és az *objektum* erőforrásokra van hatással. |
 | *services*       | b       | Az SAS a *Blob* szolgáltatásra van hatással. |
 
@@ -251,7 +251,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > Ahhoz, hogy a kódminta működjön, meg kell adnia egy sztringértéket a *blobName* számára.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A rövid útmutató során létrehozott erőforrások törléséhez térjen vissza az [Azure Portalra](https://portal.azure.com), és válassza ki a tárfiókját. Ha kiválasztotta, az **Áttekintés > Tárfiók törlése** paranccsal törölheti a tárfiókot.
+A rövid útmutató során létrehozott erőforrások törléséhez térjen vissza az [Azure Portalra](https://portal.azure.com), és válassza ki a tárfiókját. A kijelölt a törölheti a tárfiókot: **Áttekintés > tárfiók törlése**.
 
 ## <a name="next-steps"></a>További lépések
 A példákból megtudhatja, hogyan tölthet le blobokat és jelentheti az állapotot a fájlfeltöltések során.

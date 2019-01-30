@@ -1,9 +1,9 @@
 ---
-title: Az Azure PowerShell-parancsfájl minták – hozzon létre egy virtuális Gépet egy pillanatképből |} Microsoft Docs
-description: Az Azure PowerShell-parancsfájl minták – hozzon létre egy virtuális Gépet egy pillanatképből
+title: Azure PowerShell-Példaszkript – virtuális gép létrehozása pillanatképből |} A Microsoft Docs
+description: Azure PowerShell-Példaszkript – virtuális gép létrehozása pillanatképből
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: ramankum
+author: ramankumarlive
 manager: kavithag
 editor: ramankum
 tags: azure-service-management
@@ -16,51 +16,51 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 63d108bbfd0f58f8a40bf1c7c8649e3a1f7ed288
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: c1a3edf282c20d2aec49a0ffb324ee0f9c62421c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23879777"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244436"
 ---
-# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>Hozzon létre egy virtuális gépet egy pillanatképből, a PowerShell használatával
+# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>Virtuális gép létrehozása pillanatképből a PowerShell-lel
 
-Ez a parancsfájl létrehoz egy virtuális gépet egy operációsrendszer-lemez egy pillanatképből. 
+Ez a szkript létrehoz egy virtuális gépet egy operációsrendszer-lemez pillanatképéből. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.ps1 "Create VM from managed os disk")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat a pillanatkép tulajdonságainak beolvasása hozzon létre egy felügyelt lemezes pillanatképből, és hozzon létre egy virtuális Gépet. A parancs adott dokumentáció tábla mutató összes elemére.
+Ez a szkript a következő parancsokat használja a pillanatkép tulajdonságainak beolvasása, egy felügyelt lemez létrehozása pillanatképből, és hozzon létre egy virtuális Gépet. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzureRmSnapshot](/powershell/module/azurerm.compute/get-azurermsnapshot) | Lekérdezi a pillanatkép-név használatával pillanatképet. |
-| [Új AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) | Létrehozza a lemezkonfigurációt. Ez a konfiguráció a létrehozási folyamat használja. |
-| [Új AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk) | Egy felügyelt lemezt hoz létre. |
-| [Új AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Létrehoz egy Virtuálisgép-konfiguráció. Ez a konfiguráció tartoznak a virtuális gép nevét, az operációs rendszer és a rendszergazdai hitelesítő adatokkal. A konfiguráció a Virtuálisgép-létrehozása során használatos. |
-| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) | A felügyelt lemezes csatolja az operációsrendszer-lemez, a virtuális gép |
-| [Új AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | Létrehoz egy nyilvános IP-címet. |
-| [Új AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | Létrehoz egy adott hálózati csatoló. |
-| [Új AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Létrehoz egy virtuális gépet. |
-|[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Eltávolítja az erőforráscsoportot és belül található összes erőforrást. |
+| [Get-AzureRmSnapshot](/powershell/module/azurerm.compute/get-azurermsnapshot) | Lekérdezi egy pillanatkép pillanatkép-név használatával. |
+| [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) | Létrehoz egy lemezkonfigurációt. Ez a konfiguráció a lemez létrehozási folyamata használnak. |
+| [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk) | Egy felügyelt lemezt hoz létre. |
+| [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Egy virtuálisgép-konfigurációt hoz létre. Ebben a konfigurációban olyan információk szerepelnek, mint a virtuális gép neve, az operációs rendszer és a rendszergazdai hitelesítő adatok. A rendszer a virtuális gépek létrehozása során használja ezt a konfigurációt. |
+| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) | A felügyelt lemez csatolása a virtuális gép operációsrendszer-lemezként |
+| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | Egy nyilvános IP-címet hoz létre. |
+| [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | Hálózati adaptert hoz létre. |
+| [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Létrehoz egy virtuális gépet. |
+|[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShell modul további információkért lásd: [Azure PowerShell dokumentációs](/powershell/azure/overview).
+Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 
-További virtuális gép PowerShell-parancsfájl példák találhatók a [Azure Windows virtuális dokumentációját](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+A virtuális gépekhez kapcsolódó további PowerShell-példaszkripteket az [Azure Windows rendszerű virtuális gépekre vonatkozó dokumentációjában](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) találhat.

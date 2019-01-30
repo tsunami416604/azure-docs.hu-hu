@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: b2520864589558a530f4f9dbfed83a9f3b8c727a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 01/08/2019
+ms.openlocfilehash: 44cf5b2cc7547a4e85c65215fdc1e4fe2cb585a9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104097"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243640"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Piactéri termék létrehozása és közzététele
 
@@ -128,7 +129,7 @@ ms.locfileid: "54104097"
 
 ### <a name="identity-information"></a>Azonosító adatok
 
-| Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
+| Name (Név) | Szükséges | Typo | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
 | Name (Név) |X |Karakterlánc |[A-Za-z0-9]+ | |
 | Közzétevő |X |Karakterlánc |[A-Za-z0-9]+ | |
@@ -136,7 +137,7 @@ ms.locfileid: "54104097"
 
 ### <a name="metadata"></a>Metaadatok
 
-| Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
+| Name (Név) | Szükséges | Typo | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
 | Megjelenítendő név |X |Karakterlánc |Az ajánlás 80 karakter |A portál nem jelenítik meg a konfigurációelem nevét szabályosan Ha hosszabb 80 karakternél. |
 | PublisherDisplayName |X |Karakterlánc |Az ajánlás 30 karakter |A portál nem jelenítik meg a közzétevő neve szabályosan ha 30 karakternél hosszabb. |
@@ -153,9 +154,9 @@ A piactéren az alábbi ikonok használja:
 | --- | --- | --- | --- |
 | Széles körű |255 px |115 px |Mindig szükséges. |
 | Nagy |115 px |115 px |Mindig szükséges. |
-| Közepes |90 képpont |90 képpont |Mindig szükséges. |
+| Közepes |90 px |90 px |Mindig szükséges. |
 | Kicsi |40 px |40 px |Mindig szükséges. |
-| Képernyőfelvétel |533 képpont |32 px |Optional |
+| Képernyőfelvétel |533 px |32 px |Optional |
 
 ### <a name="categories"></a>Kategóriák
 
@@ -165,7 +166,7 @@ Minden Marketplace-elem egy kategóriát, amely azonosítja, ahol az elem megjel
 
 Minden Marketplace-elem lehetnek különböző további tartalmakra is hivatkozik. A hivatkozások megadott neve és URI-k listáját:
 
-| Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
+| Name (Név) | Szükséges | Typo | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
 | Megjelenítendő név |X |Karakterlánc |Legfeljebb 64 karakter hosszú lehet | |
 | URI |X |URI | | |
@@ -174,10 +175,10 @@ Minden Marketplace-elem lehetnek különböző további tartalmakra is hivatkozi
 
 Mellett az előző metaadatok Marketplace szerzők megadhat egyéni kulcs/érték pár adatokat a következő formátumban:
 
-| Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
+| Name (Név) | Szükséges | Typo | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
 | Megjelenítendő név |X |Karakterlánc |Legfeljebb 25 karakterből álló | |
-| Érték |X |Karakterlánc |Legfeljebb 30 karakter hosszú lehet | |
+| Value |X |Karakterlánc |Legfeljebb 30 karakter hosszú lehet | |
 
 ### <a name="html-sanitization"></a>HTML-tisztító
 

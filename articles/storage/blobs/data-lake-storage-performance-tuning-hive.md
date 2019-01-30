@@ -3,17 +3,17 @@ title: Az Azure Data Lake Storage Gen2 Hive teljesítmény-finomhangolási útmu
 description: Az Azure Data Lake Storage Gen2 Hive teljesítmény-finomhangolási útmutató
 services: storage
 author: swums
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 90982491ecd64ff707bc47d71f374668ed74eb38
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 07be781c917a466b67580a99490eca4f6ff29985
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975269"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239791"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Teljesítmény-finomhangolási útmutató a Hive a HDInsight és az Azure Data Lake Storage Gen2
 
@@ -22,7 +22,7 @@ Az alapértelmezett beállításokat, adja meg a megfelelő teljesítmény szám
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **A Data Lake Storage Gen2 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [a rövid útmutató: Azure Data Lake Storage Gen2-storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
+* **A Data Lake Storage Gen2 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [a rövid útmutató: Az Azure Data Lake Storage Gen2-storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
 * **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen2-fiókot.
 * **HDInsight Hive futó**.  A HDInsight Hive-feladatok futtatásával kapcsolatos tudnivalókért lásd: [a HDInsight Hive használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
 * **Teljesítmény-finomhangolási útmutató a Data Lake Storage Gen2**.  Az általános teljesítmény fogalmak, lásd: [Data Lake Storage Gen2 teljesítményének hangolása útmutatója](data-lake-storage-performance-tuning-guidance.md)

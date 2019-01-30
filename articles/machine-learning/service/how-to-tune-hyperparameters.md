@@ -7,16 +7,16 @@ author: swatig007
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: da809aaaa1dd46c1232d0b032136833caaf0d2d0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 48f714a505bc79f0556a829206821aef986ad5d0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100735"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240259"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>A modell Azure Machine Learning szolgáltatással hiperparaméterek hangolása
 
@@ -149,7 +149,7 @@ param_sampling = BayesianParameterSampling( {
 
 Adja meg a elsődleges mérőszám azt szeretné, hogy a hiperparaméter finomhangolása kísérlet optimalizálása érdekében. Egyes betanítási futtatások abban az esetben a elsődleges metrika. Rosszul működő futtatja (amelyen az elsődleges metrika nem felel meg a korai lemondási házirendek által beállított feltételek) befejeződik. Az elsődleges metrika neve mellett is megadhatja a cél az optimalizálási - e az elsődleges metrika vagy teljes méretűre.
 
-* `primary_metric_name`: Az elsődleges metrika optimalizálása a neve. A metrika a tanítási szkriptet által naplózott neve pontosan egyeznie kell az elsődleges metrika neve. Lásd: [metrikáinak hiperparaméter finomhangolása jelentkezzen](#log-metrics-for-hyperparameter-tuning).
+* `primary_metric_name`: Optimalizálhatja az elsődleges metrika neve. A metrika a tanítási szkriptet által naplózott neve pontosan egyeznie kell az elsődleges metrika neve. Lásd: [metrikáinak hiperparaméter finomhangolása jelentkezzen](#log-metrics-for-hyperparameter-tuning).
 * `primary_metric_goal`: Ez lehet `PrimaryMetricGoal.MAXIMIZE` vagy `PrimaryMetricGoal.MINIMIZE` és határozza meg, hogy az elsődleges metrika teljes méretű vagy kis méretben fut az fut kiértékelése során. 
 
 ```Python
@@ -255,8 +255,8 @@ Ha nincs szabályzat van megadva, a hiperparaméter finomhangolása a szolgálta
 
 Szabályozhatja a hiperparaméter finomhangolása kísérlet megadásával a betanítási futtatások maximális száma erőforrás költségkeretét.  Nem kötelezően megadhatja a hiperparaméter finomhangolása kísérlet az engedélyezett maximális időtartam.
 
-* `max_total_runs`: A betanítási Futtatás létrehozni maximális teljes száma. Felső határérték - lehet kevesebb fut le, például ha a hiperparaméter terület véges, és kevesebb mintákat. 1 és 1000 közötti számnak kell lennie.
-* `max_duration_minutes`: A maximális időtartam percben kifejezve a hiperparaméter finomhangolása kísérlet. A paraméter nem kötelező, és ha van ilyen, az ezen időtartam után szeretné futó futtatásokat automatikusan törlődnek.
+* `max_total_runs`: Maximális száma, amely létrehozza a betanítási Futtatás. Felső határérték - lehet kevesebb fut le, például ha a hiperparaméter terület véges, és kevesebb mintákat. 1 és 1000 közötti számnak kell lennie.
+* `max_duration_minutes`: Maximális időtartam percben kifejezve a hiperparaméter finomhangolása kísérlet. A paraméter nem kötelező, és ha van ilyen, az ezen időtartam után szeretné futó futtatásokat automatikusan törlődnek.
 
 >[!NOTE] 
 >Ha mindkét `max_total_runs` és `max_duration_minutes` meg van adva, a hiperparaméter finomhangolása kísérlet megszakítása, ha az első e két küszöbértékek elérésekor.

@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
-ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 71821b71e2e6ca524e38d0e1eb4fa11f557bd799
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: data-lake-storage-gen2
+ms.openlocfilehash: f50723fa494df0ff1490bf27451394a6e13da467
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974919"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240879"
 ---
-# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer illesztőprogram (ABFS): egy dedikált Azure Storage-illesztőprogram a Hadoophoz
+# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer illesztőprogram (ABFS): Egy dedikált Azure Storage-illesztőprogram a Hadoophoz
 
 Az egyik az elsődleges elérési módszerek az adatok Azure Data Lake Storage Gen2 előzetes verziója a [Hadoop-fájlrendszer](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Data Lake Storage Gen2 révén az Azure Blob Storage hozzáférési az új illesztőprogram, az Azure Blob fájlrendszerének illesztőprogram vagy `ABFS`. ABFS részét képezi az Apache Hadoop, és számos, a Hadoop kereskedelmi disztribúciók tartalmazza. Használja az illesztőprogramot, számos alkalmazásokat és keretrendszereket adatelérésre alkalmas az Azure Blob Storage explicit módon hivatkozik a Data Lake Storage Gen2 kód nélkül.
 
-## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Előzetes funkció: A Windows Azure Storage-Blobba illesztőprogram
+## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Előzetes funkció: A Windows Azure Storage-Blob-illesztőprogram
 
 A Windows Azure Storage-Blobba illesztőprogram vagy [WASB illesztőprogram](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) megadott eredeti támogatást biztosít az Azure Blob Storage. Az illesztőprogram végre (mint a Hadoop-fájlrendszer felület által előírt) szemantikáját, hogy az objektum, amely tárolja a stílus felület az Azure Blob Storage által elérhetővé tett leképezés fájlrendszer összetett feladat. Az illesztőprogram továbbra is támogatja a nagy teljesítményű, blobokban tárolt adatokat villámgyors ebben a modellben, de jelentős részét a leképezést, így nehéz végrehajtása kódot tartalmaz. Emellett bizonyos műveleteket, mint például [FileSystem.rename()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) és [FileSystem.delete()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) címtárakhoz alkalmazásakor hatalmas számos művelet (mert az objektum tárolók nem végrehajtásához az illesztőprogram megkövetelése könyvtárak támogatása), amely gyakran vezet a teljesítmény csökkenését. A ABFS illesztőprogram úgy lett kialakítva, hogy a WASB rejlő hiányosságait.
 
@@ -48,7 +48,7 @@ A ABFS illesztőprogram hitelesítési két formáját támogatja, így a Hadoop
 
 - **Megosztott kulcs:** Ez lehetővé teszi a felhasználók erőforrásokhoz való teljes hozzáférés a fiókban. A kulcs titkosítva, és a Hadoop konfigurációs tárolja.
 
-- **Az Azure Active Directory OAuth tulajdonosi jogkivonat:** az Azure AD-tulajdonosi jogkivonatokat szerezte be, és frissíteni az illesztőprogram, a felhasználó identitását, vagy egy konfigurált egyszerű szolgáltatás használatával. A hitelesítési modellt használ, minden hozzáférés engedélyezve van a megadott tokent kérelmező és ellen a hozzárendelt POSIX hozzáférés-vezérlési lista (ACL) értékeli ki az identitással hívás alapon.
+- **Az Azure Active Directory OAuth tulajdonosi jogkivonat:** Az Azure AD-tulajdonosi jogkivonatokat szerezte be, és frissíteni az illesztőprogram, a felhasználó identitását, vagy egy konfigurált egyszerű szolgáltatás használatával. A hitelesítési modellt használ, minden hozzáférés engedélyezve van a megadott tokent kérelmező és ellen a hozzárendelt POSIX hozzáférés-vezérlési lista (ACL) értékeli ki az identitással hívás alapon.
 
 ### <a name="configuration"></a>Konfiguráció
 

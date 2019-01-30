@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: e4131bc8f038957e52b914937b2d45e670be8f5f
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.lastreviewed: 12/18/2018
+ms.openlocfilehash: 09988009712f9312eb97d5c32dc8991ec5b2f1f9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157275"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251350"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack titkos kulcsainak rotálása
 
@@ -39,11 +40,11 @@ Infrastruktúra-szolgáltatás tanúsítványok kívülre irányuló szolgáltat
 - Nyilvános portálra
 - Rendszergazda az Azure Resource Manager
 - Globális Azure Resource Manager
-- Rendszergazdai KeyVault
+- Administrator KeyVault
 - KeyVault
-- Rendszergazdai kiterjesztés gazdagép
+- Admin Extension Host
 - Az ACS-(beleértve a blob, table és queue storage)
-- AD FS *
+- ADFS *
 - Graph *
 
 \* Csak alkalmazható, ha a környezet identitásszolgáltató Active Directory összevonási szolgáltatásokban (AD FS).
@@ -297,7 +298,7 @@ A **Start-SecretRotation** parancsmag a infrastruktúra titkos kulcsok az Azure 
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Típus | Szükséges | Pozíció | Alapértelmezett | Leírás |
+| Paraméter | Typo | Szükséges | Pozíció | Alapértelmezett | Leírás |
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | Karakterlánc  | False (Hamis)  | nevű  | None  | A fájlmegosztás elérési útját a **\Certificates** könyvtárra, amelyben minden külső hálózati végpont tanúsítványokat. Csak akkor szükséges, ha külső titkos kódok elforgatása. Záró könyvtárnak kell lennie **\Certificates**. |
 | CertificatePassword | SecureString | False (Hamis)  | nevű  | None  | A jelszó - PfXFilesPath megadott összes tanúsítvány esetében. Kötelező érték, ha PfxFilesPath biztosított külső titkos kódok vannak-e forgatni. |

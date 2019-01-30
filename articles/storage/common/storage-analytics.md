@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 0f237b4d742c0c7de1e836e2b9d83502cfe1a30d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 233a0685bffba1192193f97b8d98dabd7c65d3c9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231011"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239774"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -76,12 +76,12 @@ Az alábbi táblázat ismerteti az egyes tulajdonságokat a napló nevét.
 | Attribútum | Leírás |
 | --- | --- |
 | <service-name> |A storage szolgáltatás neve. Például: blob, tábla vagy üzenetsor. |
-| ÉÉÉÉ |A négy számjegyű év a naplót. Például: 2011. |
-| MM |Az a Eseménynapló kétjegyű hónappal. Például: 07. |
-| DD |Az a Eseménynapló kétjegyű hónappal. Például: 07. |
-| hh |A két számjegyű óra, amely azt jelzi, hogy a kezdő óra 24 órás UTC formátumban, a naplókhoz. Például: 18-ra. |
+| ÉÉÉÉ |A négy számjegyű év a naplót. Példa: 2011. |
+| MM |Az a Eseménynapló kétjegyű hónappal. Példa: 07. |
+| DD |Az a Eseménynapló kétjegyű hónappal. Példa: 07. |
+| hh |A két számjegyű óra, amely azt jelzi, hogy a kezdő óra 24 órás UTC formátumban, a naplókhoz. Példa: 18. |
 | mm |A kétjegyű számmal, amely azt jelzi, hogy a kiindulási perc, a naplókhoz. A Storage Analytics jelenlegi verziója nem támogatja ezt az értéket, és az érték mindig 00. |
-| <counter> |Egy nulla-alapú számláló 6 számjegyű, amely azt jelzi, hogy a storage szolgáltatás egy órás időszakban létrehozott naplóblobok száma. Ez a számláló a 000000 indul. Például: 000001. |
+| <counter> |Egy nulla-alapú számláló 6 számjegyű, amely azt jelzi, hogy a storage szolgáltatás egy órás időszakban létrehozott naplóblobok száma. Ez a számláló a 000000 indul. Példa: 000001. |
 
 Az alábbiakban látható egy teljes példa a neve, amely egyesíti az előző példák.
 
@@ -99,8 +99,8 @@ Egy tárolási kérés naplózásakor az óra, ha a kért művelet utal. az ered
 | Attribútum | Leírás |
 | --- | --- |
 | LogType |Ismerteti, hogy a napló tartalmazza-e olvasási, írási vagy törlési műveletek kapcsolatos információk. Ez az érték tartalmazhat egy vagy három, vesszővel elválasztva kombinációja. 1. példa: írási; 2. példa: Olvasás, írás; 3. példa: Olvasás, írás, törlés. |
-| Kezdés időpontja |A legkorábbi időpontot, amikor egy bejegyzést a naplóban formájában, éééé-hh-DDThh:mm:ssZ. Például: 2011-07-31T18:21:46Z. |
-| Befejezés időpontja: |Legújabb idején egy bejegyzést a naplóban formájában, éééé-hh-DDThh:mm:ssZ. Például: 2011-07-31T18:22:09Z. |
+| Kezdés időpontja |A legkorábbi időpontot, amikor egy bejegyzést a naplóban formájában, éééé-hh-DDThh:mm:ssZ. Példa: 2011-07-31T18:21:46Z. |
+| Befejezés időpontja: |Legújabb idején egy bejegyzést a naplóban formájában, éééé-hh-DDThh:mm:ssZ. Példa: 2011-07-31T18:22:09Z. |
 | LogVersion |A napló formátuma verziója. Jelenleg az egyetlen támogatott érték az 1.0-t. |
 
 A következő lista azoknak a teljes minta az előző példák metaadatait.
@@ -108,7 +108,7 @@ A következő lista azoknak a teljes minta az előző példák metaadatait.
 * LogType=write
 * StartTime=2011-07-31T18:21:46Z
 * EndTime=2011-07-31T18:22:09Z
-* LogVersion 1.0-s =
+* LogVersion=1.0
 
 ### <a name="accessing-logging-data"></a>Naplózási adatok elérése
 Az összes adatot a `$logs` tárolót a Blob szolgáltatás API-k használatával érhető el, beleértve a .NET API-k az Azure által kínált felügyelt kódtárára. A storage-fiók rendszergazdája is olvassa el, és törölje azokat a naplókat, de nem hozható létre vagy frissíteni őket. A napló metaadatai és a napló nevét naplók lekérdezése során használható. Lehetséges, hogy egy adott óra naplók megjelenjenek az üzemen kívüli, de a metaadatok mindig adja meg a naplózási bejegyzések timespan egy naplóban. Ezért naplófájl nevét és metaadatait kombinációját használhatja fel, egy adott napló keresése.
@@ -135,9 +135,9 @@ Tranzakció-mérőszámot rögzíti a felhasználói kérések és a kérést ho
 
 Kapacitás adatokat a rendszer naponta rögzíti a tárfiók Blob service, és két táblaentitások készültek. Egy entitás statisztika biztosít a felhasználói adatok és statisztikák kapcsolatban nyújt a másik a `$logs` Storage Analytics által használt blob-tárolóba. A `$MetricsCapacityBlob` táblázat foglalja össze a következő adatokat:
 
-* **Kapacitás**: a tárfiók Blob service, a memória által felhasznált tárterület mennyisége.
-* **ContainerCount**: a tárfiók Blob service-ben a blobtárolók száma.
-* **ObjectCount**: a tárfiók Blob service-ben vállalt és a nem véglegesített blokk vagy lap blobok száma.
+* **Kapacitás**: A tárfiók Blob service, a memória által felhasznált tárterület mennyisége.
+* **ContainerCount**: A tárfiók Blob service-ben a blobtárolók száma.
+* **ObjectCount**: A tárfiók Blob service-ben vállalt és a nem véglegesített blokk vagy lap blobok száma.
 
 A kapacitási mérőszámot kapcsolatos további információkért lásd: [Storage Analytics mérőszámainak Táblasémáját](https://msdn.microsoft.com/library/hh343264.aspx).
 

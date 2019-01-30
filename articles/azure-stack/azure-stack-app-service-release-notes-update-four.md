@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.openlocfilehash: b721545f27135e36b2999de5acc61e77539a94b2
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 11/13/2018
+ms.openlocfilehash: 2555ce4b9485ba6464bde3422df114343b579641
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247316"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243419"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>App Service-ben az Azure Stack update 4 kibocsátási megjegyzései
 
@@ -67,8 +68,8 @@ Az Azure App Service az Azure Stack 4-es frissítés tartalmazza a következő f
 - Fokozható a megbízhatóság és a hibaüzenetek gyakori problémák egyszerűbb diagnosztika engedélyezése a core-szolgáltatás frissítése.
 
 - **A következő alkalmazás-keretrendszerek és eszközök frissítések**:
-  - A hozzáadott NodeJS 10.6.0
-  - A hozzáadott NPM 6.1.0
+  - Added NodeJS 10.6.0
+  - Added NPM 6.1.0
   - Zulu openjdk csomagját 8.31.0.2 hozzáadva
   - A hozzáadott Tomcat 8.5.34 és 9.0.12
   - A hozzáadott PHP-verziók:
@@ -80,7 +81,7 @@ Az Azure App Service az Azure Stack 4-es frissítés tartalmazza a következő f
     - 2.7.15
     - 3.6.6
   - V 2.17.1.2 Windows a frissített Git esetében
-  - Frissített Kudu 78.11022.3613
+  - Updated Kudu to 78.11022.3613
   
 - **Frissítések az alapul szolgáló operációs rendszer összes szerepkör**:
   - [2018-10-es kumulatív a Windows Server 2016 x64 alapú rendszerekhez (KB4462928)](https://support.microsoft.com/help/4462928/windows-10-update-kb4462928)

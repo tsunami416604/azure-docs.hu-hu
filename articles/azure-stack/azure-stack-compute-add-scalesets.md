@@ -10,16 +10,17 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: 2c615dd781b40c3ebb78ae291453c5b4b2d2ef4d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/22/2018
+ms.openlocfilehash: 3f1c84961f2ad6bd15612917d33982ec96824257
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971827"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252268"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Virtual Machine Scale Sets elérhetővé az Azure Stackben
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
   
 A Virtual machine scale sets az Azure Stack számítási erőforrás. Üzembe helyezéséhez és az azonos virtuális gépek kezelésére használhatja őket. Minden virtuális géppel megegyező módon konfigurálva a méretezési csoportok nem szükséges a virtuális gépek előzetes kiépítését. Sokkal jobban is egyszerűsödik a nagy számítási igényű, big data és tárolóalapú számítási feladatokra nagyméretű szolgáltatások kiépítése.
 
@@ -33,8 +34,8 @@ Az Azure Stacken a virtuálisgép-méretezési csoportok nem támogatják az aut
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **A piactéren:** regisztrálása az Azure Stack a globális Azure-ral ahhoz, hogy a piactéren elemek rendelkezésre állását. Kövesse a [regisztrálása az Azure Stack az Azure-ral](azure-stack-registration.md).
-- **Operációs rendszer lemezképét:** egy virtuálisgép-méretezési csoportot (VMSS) létrehozása előtt le kell töltenie a Virtuálisgép-rendszerképek a VMSS a használatra a [Azure Stack piactéren](azure-stack-download-azure-marketplace-item.md). A lemezképek már jelen lehetett, mielőtt egy felhasználó hozhat létre egy új VMSS kell lennie. 
+- **A Marketplace-en:** Regisztrálja az Azure Stack a globális Azure-ral ahhoz, hogy a piactéren elemek rendelkezésre állását. Kövesse a [regisztrálása az Azure Stack az Azure-ral](azure-stack-registration.md).
+- **Operációs rendszer lemezképét:** Egy virtuálisgép-méretezési csoportot (VMSS) létrehozása előtt le kell töltenie a Virtuálisgép-rendszerképek a VMSS a használatra a [Azure Stack piactéren](azure-stack-download-azure-marketplace-item.md). A lemezképek már jelen lehetett, mielőtt egy felhasználó hozhat létre egy új VMSS kell lennie. 
 
 ## <a name="use-the-azure-stack-portal"></a>Az Azure Stack-portál használata 
 

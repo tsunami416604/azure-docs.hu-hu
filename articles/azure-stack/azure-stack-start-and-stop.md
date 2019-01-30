@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6da81ab90a87285f9e1874e3f10eff4570124192
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: b8d13377b2fb1545ecf88645a5e19bf5eab24c74
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344013"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238135"
 ---
 # <a name="start-and-stop-azure-stack"></a>Elindítása és leállítása az Azure Stackben
 Ez a cikk megfelelően állítsa le és indítsa újra az Azure Stack-szolgáltatásokat az eljárást kell követnie. Leállítás fizikailag a teljes Azure Stack-környezet lesz kikapcsolásához. Indítási összes infrastruktúra-szerepkörök bekapcsolását, és a leállítás előtt voltak energiaállapotát bérlői erőforrások visszaadja.

@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: a0a482e44617732c9dc6cd6609672e8204001dbc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.lastreviewed: 10/16/2018
+ms.openlocfilehash: f1b39601f0f6d254daadfafdd812549c6c95ed35
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362058"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239468"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az erőforrás-szolgáltató SQL üzemeltetési kiszolgáló hozzáadása
 
@@ -61,8 +62,8 @@ SQL virtuális gépek, beleértve a sablonok üzembe helyezésének egyéb lehet
 
 Egy SQL SysAdmin (rendszergazda), mint az alacsonyabb szintű jogosultságokkal rendelkező rendszergazda felhasználó is létrehozhat. A felhasználó csak engedélyre van szüksége a következő műveletek:
 
-* Adatbázis: Hozzon létre, Alter, amelyben a Containment (az Always On csak), dobja el, a biztonsági mentés
-* Rendelkezésre állási csoporthoz: Alter, csatlakozzon, adatbázis hozzáadása/eltávolítása
+* Adatbázis: Hozzon létre, Alter, amelyben a Containment (a Always On csak), dobja el, a biztonsági mentés
+* Rendelkezésre állási csoporthoz: Az ALTER, csatlakozzon, adatbázis hozzáadása/eltávolítása
 * Bejelentkezés: Hozzon létre, válassza ki, Alter, dobja el, visszavonása
 * SELECT műveletek: \[fő\].\[ sys\].\[ availability_group_listeners\] (AlwaysOn), a sys.availability_replicas (AlwaysOn), a sys.databases, \[fő\].\[ sys\].\[ dm_os_sys_memory\], SERVERPROPERTY, \[fő\].\[ sys\].\[ availability_groups\] (AlwaysOn), sys.master_files
 
@@ -86,7 +87,7 @@ Adjon hozzá egy önálló üzemeltető kiszolgálót, amely már be van állít
 
 2. Válassza ki **minden szolgáltatás** &gt; **felügyeleti erőforrások** &gt; **SQL üzemeltető kiszolgálók**.
 
-   ![Az SQL futtató kiszolgálók](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
+   ![SQL Hosting Servers](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
    A **SQL üzemeltető kiszolgálók**, az erőforrás-szolgáltató SQL csatlakozhat az erőforrás-szolgáltató háttérrendszer erre a célra az SQL Server-példányok.
 
@@ -94,7 +95,7 @@ Adjon hozzá egy önálló üzemeltető kiszolgálót, amely már be van állít
 
 3. Kattintson a **Hozzáadás** adja meg a kapcsolat részletek az SQL Server-példány az a **üzemeltető SQL-kiszolgáló hozzáadása** panelen.
 
-   ![Adjon hozzá egy SQL Server szoftvert futtatja](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
+   ![Add a SQL Hosting Server](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
     Szükség esetén adja meg a példány nevét, és adjon meg egy portszámot, ha a példány nincs hozzárendelve az alapértelmezett 1433-as portot.
 
@@ -153,7 +154,7 @@ Ezeket a parancsokat használja a tartalmazott adatbázis hitelesítési kiszolg
   GO
   ```
 
-### <a name="to-add-sql-always-on-hosting-servers"></a>SQL Always On üzemeltető kiszolgálók hozzáadása
+### <a name="to-add-sql-always-on-hosting-servers"></a>To add SQL Always On hosting servers
 
 1. A szolgáltatás-rendszergazdaként jelentkezzen be az Azure Stack felügyeleti portálján
 

@@ -6,17 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f4f588ad9123ec98cbae9f9bf03c08ec551a31a5
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b944325287593a028d28545731370dc9ea6a5ac2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232753"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224921"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>Oktatóanyag: Állítson össze egy rendszerképet, alkalmazás - C feldolgozása&#35;
 
@@ -66,7 +66,7 @@ A mintaalkalmazás kell létrehozni, először, úgy, hogy a Visual Studio fel t
 1. Győződjön meg arról, hogy a Visual Studio-megoldás két projektet tartalmaz:  
 
    * SampleUserControlLibrary
-   * VisionAPI-WPF-minták  
+   * VisionAPI-WPF-Samples  
 
    Ha a SampleUserControlLibrary projekt nem érhető el, győződjön meg róla, klónozott rekurzív módon, hogy a `Microsoft/Cognitive-Vision-Windows` tárház.
 1. A Visual Studióban nyomja le a Ctrl + Shift + B vagy válasszon **hozhat létre** a menüszalag menüben majd **megoldás fordítása** a megoldás létrehozásához.
@@ -113,7 +113,7 @@ A Visual Studio-megoldás esetében a Computer Vision mintaalkalmazás két proj
     Egy oldal, amely egy előfizetési kulcs és a végpont URL-címet adjon meg a mintaalkalmazást a szabványos elrendezés biztosít. A Computer Vision mintaalkalmazás ezen a lapon kezelheti az előfizetési kulcsot, és a forgatókönyv-lapok által használt végpont URL-címe.
   * VideoResultControl  
     Szabványos bemutató videó információkat biztosító UserControl. A Computer Vision mintaalkalmazás nem használja ezt a vezérlőt.
-* VisionAPI-WPF-minták  
+* VisionAPI-WPF-Samples  
   A fő projektet a Computer Vision mintaalkalmazást, ez a projekt tartalmazza az érdekes funkciók mindegyikét a Computer Vision. A projekt tartalmazza a következőket:
   * AnalyzeInDomainPage.xaml  
     A forgatókönyv lapon tartományi modell forgatókönyvvel elemzése lemezképhez.

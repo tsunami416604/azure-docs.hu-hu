@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: shnatara
-ms.openlocfilehash: 46dd9c786fddb2f6ce9fb8a761a1b9f135a82d74
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/19/2018
+ms.openlocfilehash: c9288d47dc9df8604c7eb676ba5d93f91a6b0063
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959196"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245684"
 ---
 # <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>Módosíthatja a tulajdonost az Azure Stack felhasználói előfizetés
 
@@ -28,7 +29,7 @@ Az Azure Stack-operátorok a PowerShell használatával módosíthatja a felhasz
 
 Két típusa van *tulajdonosok* előfizetéshez társított:
 
-- **Számlázási tulajdonosi**: alapértelmezés szerint a számlázási tulajdonosi a felhasználói fiók, amely beolvassa az előfizetés egy ajánlatra, és majd az adott előfizetéshez tartozó számlázási kapcsolat tulajdonosa. Ez a fiók akkor is az előfizetés rendszergazdája. Csak egy felhasználói fiók a megjelölés rendelkezhet egy adott előfizetés. A számlázási tulajdonosi gyakran egy szervezet vagy csapat vezető. 
+- **Számlázási tulajdonosi**: Alapértelmezés szerint a számlázási tulajdonosi a felhasználói fiók, amely beolvassa az előfizetés egy ajánlatra, és majd az adott előfizetéshez tartozó számlázási kapcsolat tulajdonosa. Ez a fiók akkor is az előfizetés rendszergazdája. Csak egy felhasználói fiók a megjelölés rendelkezhet egy adott előfizetés. A számlázási tulajdonosi gyakran egy szervezet vagy csapat vezető. 
 
   PowerShell-parancsmagot használhatja a [Set-AzsUserSubscription](/powershell/module/azs.subscriptions.admin/set-azsusersubscription) számlázási tulajdonosát a következőre módosítani.  
 

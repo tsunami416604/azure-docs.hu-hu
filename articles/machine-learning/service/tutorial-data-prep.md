@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Ez az oktatóanyag első részét elsajátíthatja a Pythonban adatok előkészítése az Azure Machine Learning SDK használatával a modellezési regressziós.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: tutorial
 author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fcb5905bba35ea9182842d050de71a6e25aab61e
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: c199a403e65bd084428fd45e8dc67cca214f5f9f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901921"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251282"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
 
@@ -281,7 +281,7 @@ combined_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Típus</th>
+      <th>Typo</th>
       <th>Min</th>
       <th>Max</th>
       <th>Darabszám</th>
@@ -433,7 +433,7 @@ latlong_filtered_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Típus</th>
+      <th>Typo</th>
       <th>Min</th>
       <th>Max</th>
       <th>Darabszám</th>
@@ -567,7 +567,7 @@ latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Típus</th>
+      <th>Typo</th>
       <th>Min</th>
       <th>Max</th>
       <th>Darabszám</th>

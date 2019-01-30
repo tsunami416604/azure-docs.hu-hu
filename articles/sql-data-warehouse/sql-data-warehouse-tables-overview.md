@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 365b15f11409f985b71c9bba4372552321f162f2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 290230237a68730a908c6fd0fb0df1d63035b93b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212549"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247340"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse táblák tervezése
 
@@ -111,7 +111,7 @@ A lekérdezésoptimalizáló oszlopszintű statisztikai használja, amikor létr
 ## <a name="commands-for-creating-tables"></a>Parancsok a táblázatok létrehozásával
 Létrehozhat egy táblát, egy új üres táblát. Hozhat létre, és töltse fel egy táblát egy kiválasztási utasítás eredményeivel. Az alábbiakban a tábla létrehozása a T-SQL parancsokkal.
 
-| T-SQL-utasítás | Leírás |
+| T-SQL Statement | Leírás |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | Egy üres táblát hoz létre a tábla oszlopait és a beállítások megadásával. |
 | [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql) | Egy külső táblát hoz létre. A tábla definícióját az SQL Data Warehouse tárolja. A tábla adatait az Azure Blob storage vagy az Azure Data Lake Store van tárolva. |

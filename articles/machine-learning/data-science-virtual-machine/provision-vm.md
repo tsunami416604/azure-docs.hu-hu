@@ -9,18 +9,18 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 5dacbbcba44879b28e311f08b089d10d0ad8d95b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 709161165dc69ee6d33987d2cc45666045f4dfd4
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079636"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240615"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data Science virtuális gép Azure-beli üzembe helyezése
 A Microsoft Data Science virtuális gépet (DSVM) egy Windows Azure virtuális gép (VM) rendszerkép. Előtelepített és konfigurált adatelemzési és machine learning használt számos eszközzel. A következő eszközök foglalja magában:
@@ -35,7 +35,7 @@ A Microsoft Data Science virtuális gépet (DSVM) egy Windows Azure virtuális g
 * Egy önálló Apache Spark-példányt helyi fejlesztési és tesztelési célra.
 * [JuliaPro](https://juliacomputing.com/products/juliapro.html).
 * Machine learning és az adatok elemzési eszközök:
-  * Deep learning-keretrendszerek. AI-keretrendszerek gazdag választékát részét képezik a virtuális gép: [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/), [TensorFlow](https://www.tensorflow.org/), [Chainer](https://chainer.org/), mxNet, és Keras.
+  * Deep learning-keretrendszerek. AI-keretrendszerek széles skáláját tartalmazza a virtuális gépen: [A Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/), [TensorFlow](https://www.tensorflow.org/), [Chainer](https://chainer.org/), mxNet, és Keras.
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit). Gyors machine learning-rendszer, amely támogatja az online kivonatoláshoz, allreduce, csökkentésének, learning2search és aktív és interaktív tanulási eljárások.
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/). Egy eszköz, gyorsított fa gyors és pontos végrehajtását.
   * [Rattle](https://togaware.com/rattle/), az R analitikai eszközt, hogy könnyedén megtudhatja. Olyan eszköz, amely megkönnyíti az adatok elemzési és gépi tanulási az r használatába Ez magában foglalja a GUI-alapú adatáttekintés és modellezés az R-kód automatikus generálása.
@@ -212,7 +212,7 @@ A [Microsoft Webplatform-telepítő](https://www.microsoft.com/web/downloads/pla
 | Jupyter Notebook server konfigurációk | C:\ProgramData\jupyter |
 | Jupyter Notebook minták kezdőkönyvtár | c:\dsvm\notebooks és c:\users\<username > \notebooks |
 | Más minták | c:\dsvm\samples |
-| Anaconda, alapértelmezett: Python 3.6-os | c:\Anaconda |
+| Anaconda, alapértelmezett: Python 3.6 | c:\Anaconda |
 | Anaconda Python 2.7-es környezetben | c:\Anaconda\envs\python2 |
 | Microsoft Machine Learning-kiszolgálója (önálló) Python | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
 | Az R alapértelmezett példány, Machine Learning-kiszolgáló (önálló) | C:\Program Files\Microsoft\ML Server\R_SERVER |

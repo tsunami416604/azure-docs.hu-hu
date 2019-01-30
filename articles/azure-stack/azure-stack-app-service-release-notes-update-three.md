@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: 3e88e0a3337eafdd25c9c0cc655912a4cdbd3b68
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.lastreviewed: 08/20/2018
+ms.openlocfilehash: a7e8b1471e056fd789cda5258dd088e623c3cebd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079531"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248503"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service-ben az Azure Stack 3-as frissítés – kibocsátási megjegyzések
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A kibocsátási megjegyzések láthatók a fejlesztései, valamint a javításokat az Azure App Service az Azure Stack Update 3 és olyan ismert problémákat. Ismert problémák az üzembe helyezési, frissítési folyamat és a build (telepítés utáni) problémái közvetlenül kapcsolódó problémák vannak felosztva.
 
@@ -58,8 +59,8 @@ Az Azure App Service-ben az Azure Stack Update 3 tartalmazza a következő fejle
 - Fokozható a megbízhatóság és a hibaüzenetek gyakori problémák egyszerűbb diagnosztika engedélyezése a core-szolgáltatás frissítése.
 
 - **A következő alkalmazás-keretrendszerek és eszközök frissítések**:
-  - Új ASP.Net Core 2.1.2
-  - A hozzáadott NodeJS 10.0.0
+  - Added ASP.Net Core 2.1.2
+  - Added NodeJS 10.0.0
   - Zulu openjdk csomagját 8.30.0.1 hozzáadva
   - A hozzáadott Tomcat 8.5.31 és 9.0.8
   - A hozzáadott PHP-verziók:
@@ -184,15 +185,15 @@ A tartalmazott adatbázis áttelepítése az Azure Stack üzemelő példányok a
 - Feldolgozók nem érhető el a fájlkiszolgálót, amikor az App Service-ben meglévő virtuális hálózaton van üzembe helyezve, és a fájlkiszolgáló csak érhető el a magánhálózaton.  Ez is feltüntettük az Azure App Service az Azure Stack központi telepítési dokumentációjában az.
 
 Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése. Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
- * Forrás: összes
+ * Forrás: Bármelyik
  * Forrás porttartomány: *
  * Cél: IP-címek
  * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz
- * Cél porttartomány: 445-ös
+ * Cél porttartomány: 445
  * Protokoll: TCP
- * Művelet: engedélyezése
+ * Művelet: Engedélyezés
  * Prioritás: 700
- * Name: Outbound_Allow_SMB445
+ * Név: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Ismert problémák működtetése az Azure App Service az Azure Stack felhő-rendszergazdák számára
 

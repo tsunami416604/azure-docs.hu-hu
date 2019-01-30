@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: f22754a16c4765989b5773d099fc3ecda73040db
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: a9bf2240e6e60a3d2d80bf4829d74f1043024d7e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972388"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239672"
 ---
 # <a name="azure-stack-administration-basics"></a>Az Azure Stack az Adminisztráció alapjai
 Több szempontot, ha most ismerkedik az Azure Stack felügyeleti ismernie kell. Ez az útmutató az Azure Stack operátorait szerint a szerepkör áttekintése és kell, hogy a felhasználók a számukra a gyors elindulásban biztosít.
@@ -63,7 +64,7 @@ Ezek a szolgáltatások akkor is használhatja őket a felhasználóknak tovább
 
 **Szolgáltatás-ütemterv**
 
-Az Azure Stack az Azure-szolgáltatások támogatása továbbra is. A tervezett fejlesztési ütemtervéhez, lásd: a [Azure Stack: Azure bővítménye](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) tanulmány. Is figyelemmel kísérheti a [blogbejegyzések az Azure Stack](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) új hirdetmények.
+Az Azure Stack az Azure-szolgáltatások támogatása továbbra is. A tervezett fejlesztési ütemtervéhez, lásd: a [Azure Stack: Azure-bővítmény](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) tanulmány. Is figyelemmel kísérheti a [blogbejegyzések az Azure Stack](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) új hirdetmények.
 
 ## <a name="what-account-should-i-use"></a>Milyen fiókot használjak?
 Van néhány fiókokkal kapcsolatos megfontolások érdemes figyelembe vennie, amikor kezelik az Azure Stack. Különösen a központi telepítések segítségével a Windows Server Active Directory összevonási szolgáltatások (AD FS) helyett az Azure Active Directory (Azure AD) identitás-szolgáltatóként. A következő fiókokkal kapcsolatos megfontolások az Azure Stack integrált rendszerek és ASDK üzemelő példányok is vonatkoznak:
@@ -108,7 +109,7 @@ Tudassa a felhasználókkal, a szolgáltatások az Azure Stack használatának m
 
 Nincs információ a felhasználók ismernie kell, mielőtt szolgáltatások és az Azure Stackben alkalmazásokat készíthet. Például nincsenek konkrét PowerShell és az API verziója. Nincsenek is, néhány funkció eltérések közötti egy az Azure-ban és az azzal egyenértékű szolgáltatást az Azure Stackben. Győződjön meg arról, hogy a felhasználók tekintse át a következő cikkeket:
 
-- [Kulcs szempontok: services használatával, vagy alkalmazások készítéséhez az Azure Stackhez](user/azure-stack-considerations.md)
+- [Fontos szempontok: Szolgáltatások használatával, vagy alkalmazások készítéséhez az Azure Stackhez](user/azure-stack-considerations.md)
 - [Szempontok a virtuális gépek az Azure Stackben](user/azure-stack-vm-considerations.md)
 - [Storage: különbségek és szempontok](user/azure-stack-acs-differences.md)
 

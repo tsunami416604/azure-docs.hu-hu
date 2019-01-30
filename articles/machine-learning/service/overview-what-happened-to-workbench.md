@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: 'További tudnivalók: Mi történt a Machine Learning Workbench alkalmazást, mi változott, az Azure Machine Learning szolgáltatás és a támogatási idősor van.'
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6fee4a3f360cd05a620975af4fc7ea450239bc43
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e4e4c9ae764e1278251c01d41a0617ed2e88e439
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155133"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242314"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 

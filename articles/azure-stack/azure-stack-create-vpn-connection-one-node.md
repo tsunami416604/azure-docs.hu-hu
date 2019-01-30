@@ -15,13 +15,14 @@ ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: sethm
 ms.reviewer: scottnap
+ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: b17b1b077a1acac5ddb0e9eea8c4a2cf44697979
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 65bf3d7eb84f4a4e6fe6d74bd08c41ba4d9dd637
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078902"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247221"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Site-to-site VPN-kapcsolat létrehozása két virtuális hálózat között eltérő Azure Stack Development Kit környezetek között
 ## <a name="overview"></a>Áttekintés
@@ -35,7 +36,7 @@ Az alábbi ábrán látható, hogy mi a kapcsolat konfigurációját hasonlóan 
 ### <a name="before-you-begin"></a>Előkészületek
 Fejezze be a kapcsolat konfigurációját, hogy gondoskodjon arról, hogy a következő elemek megkezdése előtt:
 
-* Két kiszolgálót és egyéb előfeltételeket, amelyek megfelelnek az Azure Stack Development Kit hardverkövetelmények leírtak szerint [a rövid útmutató: az Azure Stack Development Kit kiértékelése](azure-stack-deploy-overview.md). 
+* Két kiszolgálót és egyéb előfeltételeket, amelyek megfelelnek az Azure Stack Development Kit hardverkövetelmények leírtak szerint [a rövid útmutató: Az Azure Stack Development Kit kiértékelése](azure-stack-deploy-overview.md). 
 * A [Azure Stack Development Kit](https://azure.microsoft.com/overview/azure-stack/try/) központi telepítési csomagot.
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Az Azure Stack Development Kit környezetek üzembe helyezése
@@ -51,14 +52,14 @@ A poc1-ben és a poc2 környezetben készítse elő egy ajánlatra, hogy egy fel
 A következő táblázat összefoglalja a hálózati konfigurációt, mind az Azure Stack Development Kit környezetek esetében. Az eljárással, amely akkor jelenik meg a hálózat jellemző külső BGPNAT cím hozzáadásához a táblázat után.
 
 **Hálózati konfiguráció táblázat**
-|   |POC1-BEN|POC2|
+|   |POC1|POC2|
 |---------|---------|---------|
 |Virtuális hálózat neve     |VNET-01|VNET-02 |
 |Virtuális hálózat címtere |10.0.10.0/23|10.0.20.0/23|
-|Alhálózat neve     |Alhálózat-01|Alhálózat-02|
+|Alhálózat neve     |Subnet-01|Subnet-02|
 |Alhálózati címtartomány|10.0.10.0/24 |10.0.20.0/24 |
 |Átjáró alhálózata     |10.0.11.0/24|10.0.21.0/24|
-|Külső BGPNAT cím     |         |         |
+|External BGPNAT address     |         |         |
 
 > [!NOTE]
 > A példakörnyezetben a külső BGPNAT IP-címek: a poc1 10.16.167.195 és for POC2 10.16.169.131. Az alábbi eljárás segítségével határozza meg a külső BGPNAT IP-címek az Azure Stack Development Kit gazdagépeket, és adja hozzá az előző táblázatban a hálózati konfiguráció.
@@ -94,7 +95,7 @@ Szolgáltatás-rendszergazda bejelentkezhet bérlőként teszteléséhez a csoma
 1. Jelentkezzen be a felhasználói portálra egy bérlői fiókot használni.
 2. Válassza ki a felhasználói portálon **+ erőforrás létrehozása**.
 3. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
-4. Válassza ki **virtuális hálózati**.
+4. Válassza ki a **Virtuális hálózatot**.
 5. A **neve**, **címtér**, **alhálózatnév**, és **alhálózati címtartomány**, használja az értékeket, amelyeket korábban a hálózati jelennek meg konfigurációs tábla.
 6. A **előfizetés**, a korábban létrehozott előfizetés jelenik meg.
 7. A **erőforráscsoport**, hozzon létre egy erőforráscsoportot, vagy ha már rendelkezik ilyennel, válassza ki a **meglévő**.
@@ -164,7 +165,7 @@ Ellenőrizze az adatokat, a VPN-kapcsolaton keresztül haladó, a virtuális gé
 2. Lépjen a **Marketplace**, majd válassza ki **számítási**.
 3. A virtuálisgép-rendszerképek listájában válassza ki a **Windows Server 2016 Datacenter próbaverzió** kép.
 4. Az a **alapjai** panelen, a **neve**, adja meg **VM01**.
-5. Adjon meg egy érvényes felhasználónevet és jelszót. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
+5. Érvényes felhasználónevet és jelszót adjon meg. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
 6. Adjon meg egy **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
 7. Az a **mérete** panelen ebben az esetben a virtuálisgép-méretet, majd válassza ki és **kiválasztása**.
 8. Az a **beállítások** panelen elfogadhatja az alapértelmezett beállításokat. Ügyeljen arra, hogy a **VNET-01** virtuális hálózat van kiválasztva. Győződjön meg arról, hogy az alhálózat beállítása pedig **10.0.10.0/24**. Ezután kattintson az **OK** gombra.
@@ -184,7 +185,7 @@ Szolgáltatás-rendszergazda bejelentkezhet bérlőként teszteléséhez a csoma
 1. Jelentkezzen be a bérlői fiókkal.
 2. Válassza ki a felhasználói portálon **+ erőforrás létrehozása**.
 3. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
-4. Válassza ki **virtuális hálózati**.
+4. Válassza ki a **Virtuális hálózatot**.
 5. Korábban a hálózati konfiguráció táblázatban szereplő információk segítségével azonosítsa azokat az értékeket a poc2 **neve**, **címtér**, **alhálózatnév**, és **Alhálózati címtartomány**.
 6. A **előfizetés**, a korábban létrehozott előfizetés jelenik meg.
 7. A **erőforráscsoport**, hozzon létre egy új erőforráscsoportot, vagy ha már rendelkezik ilyennel, válassza ki a **meglévő**.
@@ -207,7 +208,7 @@ Szolgáltatás-rendszergazda bejelentkezhet bérlőként teszteléséhez a csoma
 3. Hálózati erőforrások listájából válassza ki a **virtuális hálózati átjáró**.
 4. A **neve**, adja meg **GW2**.
 5. Virtuális hálózat kiválasztásához jelölje ki a **virtuális hálózati**. Válassza ki **VNET-02** a listából.
-6. Válassza ki **nyilvános IP-cím**. Ha a **nyilvános IP-cím választása** panel megnyílik, válassza ki **új létrehozása**.
+6. Válassza a **Nyilvános IP-cím** elemet. Ha a **nyilvános IP-cím választása** panel megnyílik, válassza ki **új létrehozása**.
 7. A **neve**, adja meg **GW2-PiP**, majd válassza ki **OK**.
 8. Alapértelmezés szerint a **VPN-típust**, **útvonalalapú** van kiválasztva.
     Tartsa a **útvonalalapú** VPN-típust.
@@ -242,7 +243,7 @@ Most már POC2-ben hozzon létre egy virtuális gépet, és a virtuális hálóz
 2. Lépjen a **Marketplace**, majd válassza ki **számítási**.
 3. A virtuálisgép-rendszerképek listájában válassza ki a **Windows Server 2016 Datacenter próbaverzió** kép.
 4. Az a **alapjai** panelen a **neve**, adja meg **VM02**.
-5. Adjon meg egy érvényes felhasználónevet és jelszót. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
+5. Érvényes felhasználónevet és jelszót adjon meg. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
 6. Adjon meg egy **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
 7. Az a **mérete** panelen válassza ki a virtuális gépek mérete ehhez a példányhoz, és válassza **kiválasztása**.
 8. Az a **beállítások** panelen elfogadhatja az alapértelmezett értékeket. Ügyeljen arra, hogy a **VNET-02** virtuális hálózat van kiválasztva, és győződjön meg arról, hogy az alhálózat beállítása pedig **10.0.20.0/24**. Kattintson az **OK** gombra.
