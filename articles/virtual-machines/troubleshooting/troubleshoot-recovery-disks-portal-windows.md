@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/013/2018
 ms.author: genli
-ms.openlocfilehash: 0b6ade7a6031b957f2405e525d61c9ca1d2dac3d
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 2c5fac377dfab4b4c85991dcb8f4e15f4e3cb61a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809097"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225929"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Hibaelhárítás Windows virtuális gépek az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure portal használatával történő csatlakoztatásával
 Ha a Windows virtuális gép (VM) az Azure-ban egy indítási vagy hibát észlel, szükség lehet a hibaelhárítási lépések végrehajtásához a virtuális merevlemezen magát. Ilyenek például egy sikertelen alkalmazásfrissítés megakadályozza, hogy a virtuális gép képes arra, hogy sikeresen lenne. Ez a cikk részletesen bemutatja a virtuális merevlemez csatlakoztatása egy másik Windows virtuális géphez, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép az Azure portal használatával.
@@ -37,12 +37,11 @@ A virtuális gép számára, hogy használja a felügyelt lemez, azt most már h
 ## <a name="determine-boot-issues"></a>Rendszerindítási problémák meghatározása
 Annak megállapításához, hogy miért érdemes a virtuális gép nem áll lehetségesnek megfelelően, vizsgálja meg a rendszerindítási diagnosztika képernyőképe a virtuális gép. Ilyenek például lenne egy sikertelen alkalmazásfrissítés, vagy az alapjául szolgáló virtuális merevlemez folyamatban törölték vagy áthelyezték.
 
-Válassza ki a virtuális Gépet a portálon, és görgessen lefelé a **támogatás + hibaelhárítás** szakaszban. Kattintson a **rendszerindítási diagnosztika** képernyőképen megtekintéséhez. Megjegyzés: minden olyan konkrét hibaüzeneteket vagy hibakódok annak meghatározásához, hogy miért érdemes a virtuális gép van hajt végre, amikor egy probléma. Az alábbi példa bemutatja egy virtuális gép Várakozás a szolgáltatások leállítása:
+Válassza ki a virtuális Gépet a portálon, és görgessen lefelé a **támogatás + hibaelhárítás** szakaszban. Kattintson a **rendszerindítási diagnosztika** képernyőképen megtekintéséhez. Megjegyzés: minden olyan konkrét hibaüzeneteket vagy hibakódok annak meghatározásához, hogy miért érdemes a virtuális gép van hajt végre, amikor egy probléma. 
 
 ![Virtuális gépek megtekintése a rendszerindítási diagnosztika konzol naplójának](./media/troubleshoot-recovery-disks-portal-windows/screenshot-error.png)
 
-Is **képernyőkép** töltheti le a virtuális gép képernyőfelvételén a rögzítését.
-
+Is **letölteni a képernyőképet** töltheti le a virtuális gép képernyőfelvételén a rögzítését.
 
 ## <a name="view-existing-virtual-hard-disk-details"></a>Meglévő virtuális merevlemez részleteinek megtekintése
 A virtuális merevlemez csatlakoztathat egy másik virtuális Géphez, mielőtt a virtuális merevlemez (VHD) nevére azonosítania kell. 

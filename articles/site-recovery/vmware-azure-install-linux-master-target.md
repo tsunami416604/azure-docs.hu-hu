@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7ff73051abc5168b4dc3852a9008adc22d7d56c6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 68892faf707a767ba9c25ce7317f775708e61a90
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811859"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217985"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez
 Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -130,7 +130,7 @@ Egy Ubuntu 16.04.2 minimális 64-bit ISO tartsa a DVD-meghajtóba, és indítsa 
 
     ![Válassza ki a szoftver](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
-1. Válassza ki a grub-HIBÁT rendszertöltő telepítéséhez a selction **Igen**, majd válassza ki **Enter**.
+1. Válassza ki a grub-HIBÁT rendszertöltő telepítéséhez a kijelölt, **Igen**, majd válassza ki **Enter**.
      
     ![GRUB rendszerindító telepítő](./media/vmware-azure-install-linux-master-target/image20.png)
 

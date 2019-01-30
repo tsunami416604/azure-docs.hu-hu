@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: 33956e1986265b36f6df9a2d19909cb974bd3197
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: eb9f7fccfa5c759de154cb62ed866a02f619400a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222080"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208601"
 ---
 # <a name="video-moderation-with-human-review"></a>Az emberi ellenőrző videomoderálás
 
@@ -93,7 +93,7 @@ A keret-keret elemzéshez részletes videó felülvizsgálata tette lehetővé, 
 
 ![videó felülvizsgálati eszköz keretek megjelenítése](images/video-review-frames-view-apply-tags.PNG)
 
-## <a name="transcript-moderation"></a>Átirat moderálása
+## <a name="transcript-moderation"></a>Átiratmoderálás
 
 Videók általában rendelkeznek hangalapú keresztül, amely is szüksége van a moderálás sértő speech. Az Azure Media Indexer szolgáltatás segítségével alakíthatja az írott szöveget, és küldje el az átiratot tud szövegmoderálás belül a vizsgálóeszköz a Content Moderator felülvizsgálati API használatával.
 

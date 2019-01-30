@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveg nyelvének felismerése, Python – Translator Text API'
+title: 'Gyors útmutató: Észleli a szöveg nyelvét, a Python - a Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan állapíthatja meg egy adott szöveg nyelvét a Python és a Translator Text REST API használatával.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: erhopf
-ms.openlocfilehash: cfc2565c0ee2b51eaff40647cfcd7505e0479e64
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 23f1aa8e6356c9a0d3ce7e680ae1b0ca7d0b1bc3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993819"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213803"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>Rövid útmutató: A Translator Text API használata szöveg nyelvének felismerésére a Pythonnal
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>Gyors útmutató: A Translator Text API segítségével észlelheti a szöveg nyelvét Python használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan ismerheti fel egy adott szöveg nyelvét a Python és a Translator Text REST API használatával.
 
@@ -67,7 +67,7 @@ else:
 Jelenleg egy végpont érhető el a Translator Text szolgáltatáshoz, és ez van beállítva `base_url` tulajdonságként. A `path` tulajdonság a `detect` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
 
 >[!NOTE]
-> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információért lásd a [Translator Text API 3.0 felismerési funkcióját ismertető részt](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: Észlelése](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'

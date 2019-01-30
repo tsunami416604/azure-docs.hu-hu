@@ -6,29 +6,29 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 04a1f3222b17d91889eb580d9d4e8206d8156d37
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c906a45443bcba8c84a0624c74255f19a492a4e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095483"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217161"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>A beszédfelismerési szolgáltatás SDK hibaelhárítása
 
 Ez a cikk a Speech Service SDK használatakor esetleg felmerülő problémák megoldásához információkat nyújt.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Hiba: A WebSocket-frissítés (403) hitelesítési hiba miatt meghiúsult
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Hiba: WebSocket-frissítés (403) hitelesítési hiba miatt meghiúsult
 
 Előfordulhat, hogy a nem megfelelő végpont az régió vagy szolgáltatás. Ellenőrizze, hogy helyes-e az URI-t.
 
 Ezenkívül előfordulhat, a probléma az előfizetési kulcs vagy engedélyezési jogkivonat. További információkért tekintse meg a következő szakaszban.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Hiba: A HTTP 403 Tiltott vagy a HTTP 401-es nem engedélyezett
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Hiba: A HTTP 403 – Tiltott vagy a HTTP 401-es nem engedélyezett
 
 Ez a hiba gyakran okozza hitelesítéssel kapcsolatos problémáiról. Csatlakozási kérelmek nem egy érvényes `Ocp-Apim-Subscription-Key` vagy `Authorization` fejléc a 403-as vagy a 401-es állapotot a rendszer elutasítja.
 
@@ -104,7 +104,7 @@ Egy engedélyezési jogkivonatot használnak a hitelesítéshez, ha annak ellen�
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Hiba: A HTTP 400 – Hibás kérés
+## <a name="error-http-400-bad-request"></a>Hiba: HTTP 400 – Hibás kérés
 
 Ez a hiba általában akkor fordul elő, ha a kérés törzsében érvénytelen hang adatokat tartalmaz. Csak a WAV-formátum támogatott. Emellett ellenőrizze, hogy biztosan a megfelelő értékeket adja meg a kérelem fejlécek `Content-Type` és `Content-Length`.
 

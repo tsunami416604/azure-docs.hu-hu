@@ -1,24 +1,24 @@
 ---
-title: 'Rövid útmutató: Érzelemfelismerés képeken szereplő arcokon – Emotion API, C#'
+title: 'Gyors útmutató: Érzelemfelismerés az arcok a képen – Emotion API,C#'
 titlesuffix: Azure Cognitive Services
 description: Információk és egy kódminta segítségével ismerkedhet meg az Emotion API C#-pal való használatának első lépéseivel.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 11/02/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 530d05887e585884b184635e01031c1332fad3fb
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: HT
+ms.openlocfilehash: 45282c4ad534930fa72a8d8fb71105dca4af23de
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239370"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218240"
 ---
-# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rövid útmutató: Alkalmazás létrehozása a képeken szereplő arcokon tükröződő érzelmek felismeréséhez.
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Gyors útmutató: Érzelemfelismerés az arcok a képen az alkalmazás létrehozása.
 
 > [!IMPORTANT]
 > Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként általánosan elérhető.
@@ -125,8 +125,8 @@ namespace CSHttpClientSample
 ## <a name="recognize-emotions-sample-response"></a>Érzelemfelismerési válaszminta
 A sikeres hívás egy, az arcrekordokat és a hozzájuk tartozó érzelempontszámokat tartalmazó tömböt ad vissza. Az adatok az arcot jelölő téglalap mérete szerinti csökkenő sorrendben jelennek meg. Az üres válasz azt jelzi, hogy a rendszer nem észlelt arcot. Az érzelemrekord a következő mezőket foglalja magában:
 
-* faceRectangle: Az arcot jelölő téglalap helye a képen.
-* scores: A képen szereplő egyes arcokhoz tartozó érzelempontszámok.
+* faceRectangle: Téglalap archoz helye
+* pontszámok: Minden lap a képen érzelemfelismerési pontszámok
 
 ```json
 application/json
