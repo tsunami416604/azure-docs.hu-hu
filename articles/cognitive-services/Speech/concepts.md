@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 6089f053472faaa7fa8c957904f73c7061cb2d3f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4f96302f1035500a10cebaa24efd4b8db329fdff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344925"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219770"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak
 
@@ -75,8 +75,8 @@ A Microsoft Speech Service részt vesz az egyes állapotai, mivel a szolgáltat�
 
 Microsoft speech recognition szolgáltatás a fejlesztők a beszédfelismerési hozzá alkalmazásaikat kétféle módszert biztosít.
 
-- [REST API-k](GetStarted/GetStartedREST.md): a fejlesztők a beszédfelismerési a szolgáltatáshoz az alkalmazások HTTP-hívások.
-- [Ügyfélkódtárak](GetStarted/GetStartedClientLibraries.md): speciális funkciók fejlesztők is töltse le a Microsoft Speech-ügyfélkódtárak és alkalmazásokba hivatkozásra.  A klienskódtárak érhetők el a különböző platformokon (Windows, Android, iOS) különböző nyelvekhez (C#, Java, JavaScript, ObjectiveC) használatával.
+- [REST API-k](GetStarted/GetStartedREST.md): A fejlesztők a beszédfelismerési a szolgáltatáshoz az alkalmazások HTTP-hívások.
+- [Ügyfélkódtárak](GetStarted/GetStartedClientLibraries.md): Speciális funkciók fejlesztők Microsoft Speech klienskódtárak letöltheti, és hivatkozás alkalmazásokba.  A klienskódtárak érhetők el a különböző platformokon (Windows, Android, iOS) különböző nyelvekhez (C#, Java, JavaScript, ObjectiveC) használatával.
 
 | Használati esetek | [REST API-k](GetStarted/GetStartedREST.md) | [Ügyfélkódtárak](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|

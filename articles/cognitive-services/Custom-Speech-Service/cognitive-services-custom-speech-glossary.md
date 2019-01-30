@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 02f6c3f81cbaa26eed8de8b7785b519ecbc3bf26
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 889eabf38f25923d9bd84ea6ceaa5567c74216df
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344251"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223816"
 ---
 # <a name="glossary"></a>Szószedet
 
@@ -68,15 +68,15 @@ A nyelvi modell szósorozatok valószínűségi eloszlása. A nyelvi modell seg�
 
 ## <a name="n"></a>N
 
-### <a name="normalization"></a>Normalizálás
+### <a name="normalization"></a>Normalizálási
 
-Normalizálási (szöveg): Átalakítását az eredményül kapott szöveg (azaz beszédátírási) egy szabványos, egyértelmű űrlapra, a rendszer által is olvasható.
+Normalizálási (szöveg): Így a szöveg (azaz beszédátírási) átalakítása egy szabványos, egyértelmű űrlapra, a rendszer által is olvasható.
 
 ## <a name="o"></a>O
 
 ## <a name="p"></a>P
 
-## <a name="q"></a>VÁLASZOK
+## <a name="q"></a>Q
 
 ## <a name="r"></a>R
 

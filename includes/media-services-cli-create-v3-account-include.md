@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/11/2018
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 513d9a3a044daacd84b810e4795522c2bd6763f8
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4207031652db7ec4b2ae5468dc159320f6efdbc2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616571"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228814"
 ---
 ## <a name="create-a-media-services-account"></a>Media Services-fiók létrehozása
 
-Először létre kell hoznia egy Media Services-fiókot. Ebben a szakaszban a fiók Azure CLI-vel történő létrehozásának előfeltételeit ismertetjük.
+Először létre kell hoznia egy Media Services-fiókot. Ez a szakasz bemutatja, mi van szüksége a fiók létrehozása az Azure CLI használatával.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

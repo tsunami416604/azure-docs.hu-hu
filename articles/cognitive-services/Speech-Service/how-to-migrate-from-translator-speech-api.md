@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: aahi
-ms.openlocfilehash: dec903d8557145701e06ddd588a58eb11fef96f5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 42f1279e0459f113fbe9540a6a3a15b307c93763
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879306"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225584"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>A beszédfelismerési szolgáltatás át a Translator Speech API
 
@@ -62,7 +62,7 @@ Ha Ön vagy a szervezet rendelkezik a Translator Speech API-t használó alkalma
 ## <a name="next-steps"></a>További lépések
 
 * [Speech Service ingyenes kipróbálása](get-started.md)
-* [Gyors útmutató: Recognize speech, a beszéd SDK használatával egy UWP-alkalmazás](quickstart-csharp-uwp.md)
+* [Rövid útmutató: A beszédfelismerés SDK használatával egy UWP-alkalmazás a beszédfelismerést](quickstart-csharp-uwp.md)
 
 ## <a name="see-also"></a>Lásd még
 

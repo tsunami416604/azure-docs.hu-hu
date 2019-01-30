@@ -6,18 +6,18 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: b6c05382a3a40aa9157fd64a7f0192c58e79b0ee
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: bfa7574a7f85bdb5acaa052f22e5a26c07d90c07
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853778"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225652"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Gyors útmutató: Arcok észlelése, a képet, a Face REST API és a cURL használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Gyors útmutató: Arcfelismerés a képet, a Face REST API és a cURL használatával
 
 Ebben a rövid, használatával az Azure Face REST API a curl használatával emberi arcok észlelése a képet.
 

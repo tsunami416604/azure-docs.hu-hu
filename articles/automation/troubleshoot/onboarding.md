@@ -4,22 +4,40 @@ description: Ismerje meg, az Update Management, Change Tracking és Inventory me
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 52ff52ffb558278507bb24e1b1e2054c251b2512
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 78e78bc019ab5f8be1cfd3448220b97b89cde6a5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879638"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228780"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Hibák elhárítása során megoldások bevezetése
 
 Bevezetési megoldások, például az Update Management vagy a Change Tracking and Inventory során felmerülő hibákat. Ez a cikk ismerteti a különböző előforduló hibákat és azok megoldását.
 
 ## <a name="general-errors"></a>Általános hiba
+
+### <a name="missing-write-permissions"></a>Forgatókönyv: Bevezetési meghiúsul, és az üzenet – a megoldást nem lehet engedélyezni.
+
+#### <a name="issue"></a>Probléma
+
+Amikor megpróbálja felvétele egy megoldást a virtuális gép a következő üzenetet kapja:
+
+```
+The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba oka helytelenek vagy hiányoznak a virtuális gépen vagy a felhasználó engedélyeit.
+
+#### <a name="resolution"></a>Megoldás:
+
+Győződjön meg arról, hogy megfelelő engedélyekkel ahhoz, előkészítheti a virtuális gép. Tekintse át a [előkészítheti a gépeket szükséges engedélyeket](../automation-role-based-access-control.md#onboarding) , és ismételje üzembe helyezni a megoldást.
 
 ### <a name="computer-group-query-format-error"></a>Forgatókönyv: ComputerGroupQueryFormatError
 
@@ -55,7 +73,7 @@ A megoldás sikeresen üzembe kell figyelembe venni a jelzett szabályzat módos
   * Újra célzó a szabályzat egy adott erőforrás (például egy meghatározott Automation-fiók).
   * A készlet indítják az erőforrások az adott házirendnek megtagadásához lett konfigurálva.
 
-Ellenőrizze az értesítéseket az Azure Portal jobb felső sarokban lévő, vagy keresse meg az erőforráscsoportot, amely tartalmazza az automation-fiókot, és válassza **központi telepítések** alatt **beállítások** megtekintéséhez a sikertelen a központi telepítés. További információ az Azure Policy látogatás: [áttekintése az Azure Policy](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
+Ellenőrizze az értesítéseket az Azure Portal jobb felső sarokban lévő, vagy keresse meg az erőforráscsoportot, amely tartalmazza az automation-fiókot, és válassza **központi telepítések** alatt **beállítások** megtekintéséhez a sikertelen a központi telepítés. További információ az Azure Policy látogasson el: [Az Azure Policy áttekintése](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ## <a name="mma-extension-failures"></a>Az MMA-bővítményekkel kapcsolatos hibák
 
@@ -95,7 +113,7 @@ Ez a hiba, néhány lehetséges okok a következők:
 
 Győződjön meg arról, hogy rendelkezik a megfelelő portokat és a címek nyissa meg a kommunikációhoz. Portok és -címek listáját lásd: [hálózat megtervezése](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="transient-environment-issue"></a>. Forgatókönyv: Átmeneti környezet problémák miatt sikertelen telepítés
+### <a name="transient-environment-issue"></a>Forgatókönyv: Átmeneti környezet problémák miatt sikertelen telepítés
 
 A Microsoft Monitoring Agent bővítmény telepítése üzemelő példányt, mert egy másik telepítés vagy művelet blokkolja-e a telepítés során nem sikerült
 

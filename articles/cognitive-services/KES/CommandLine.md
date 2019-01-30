@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: 7ec2282317019275b15a8e506753408c75a68561
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 52d001e32e1bdb0d0046853f18649bafa49b1f14
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127149"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228525"
 ---
 # <a name="command-line-interface"></a>Parancssori felület
 
@@ -48,7 +48,7 @@ Ezek a fájlok helyi fájlok elérési útja vagy URL-elérési útvonal az Azur
 
 A leíró karakterlánc igény szerint megadható ezt követően a egy bináris index használatával azonosíthatja a **describe_index** parancsot.  
 
-Alapértelmezés szerint az index felépítését a helyi gépen.  Azure-környezeten kívül helyi buildek korlátozva, legfeljebb 10 000 objektumokat tartalmazó adatfájlokat.  Ha a--távoli jelző van megadva, az index a megadott méretű ideiglenesen létrehozott Azure virtuális gép a lesz felépítve.  Ez lehetővé teszi az Azure virtuális gépek hatékony használata több memóriát kell létrehozni nagy indexek.  Lapozófájl, ami lelassítja az összeállítási folyamat elkerülése érdekében javasoljuk, egy virtuális gép használata a 3-szor a RAM mennyisége, a bemeneti adatok mérete.  Elérhető Virtuálisgép-méretek listáját lásd: [virtuális gépek méretei](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
+Alapértelmezés szerint az index felépítését a helyi gépen.  Azure-környezeten kívül helyi buildek korlátozva, legfeljebb 10 000 objektumokat tartalmazó adatfájlokat.  Ha a--távoli jelző van megadva, az index a megadott méretű ideiglenesen létrehozott Azure virtuális gép a lesz felépítve.  Ez lehetővé teszi az Azure virtuális gépek hatékony használata több memóriát kell létrehozni nagy indexek.  Lapozófájl, ami lelassítja az összeállítási folyamat elkerülése érdekében javasoljuk, egy virtuális gép használata a 3-szor a RAM mennyisége, a bemeneti adatok mérete.  Elérhető virtuálisgép-méretek listája: [Virtuális gépek méretei](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
 
 > [!TIP] 
 > A gyorsabb buildek presort az adatfájl található objektumok valószínűség csökkentésével.
@@ -70,7 +70,7 @@ Ezek a fájlok helyi fájlok elérési útja vagy URL-elérési útvonal az Azur
 
 <a name="host_service-command"/>
 
-## <a name="hostservice-command"></a>a parancs host_service
+## <a name="hostservice-command"></a>host_service Command
 
 A **host_service** parancsot a helyi gépen a KES szolgáltatás példányát futtatja.
 
@@ -80,7 +80,7 @@ A **host_service** parancsot a helyi gépen a KES szolgáltatás példányát fu
 |-----------------|----------------------------|
 | `<grammarFile>` | A bemeneti binární gramatika je elérési útja         |
 | `<indexFile>`   | A bemeneti bináris index elérési útja           |
-| `--port <port>` | Helyi port száma.  Alapértelmezett: 8000-es |
+| `--port <port>` | Helyi port száma.  Alapértelmezett: 8000 |
 
 Ezek a fájlok helyi fájlok elérési útja vagy URL-elérési útvonal az Azure-blobok adható meg.  Egy webszolgáltatás üzemeltetett http://localhost:&ltportot;&gt;/.  Lásd: [webes API-k](WebAPI.md) támogatott műveletek listáját.
 

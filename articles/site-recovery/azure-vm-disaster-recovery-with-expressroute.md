@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 5a16b81abb9cc95f46bd61f6c0232a28f3cda0ff
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7e53b50df88c592386d3f2fb140373a0c5aaab13
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875399"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228287"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Vészhelyreállítás az Azure virtuális gépek Azure ExpressRoute integrálása
 
@@ -28,8 +28,8 @@ A Site Recovery lehetővé teszi, hogy Azure virtuális gépek vészhelyreállí
 
 Az ExpressRoute segítségével kiterjesztheti helyszíni hálózatait a Microsoft Azure-felhőben, amelyet egy kapcsolatszolgáltató biztosít, egy privát kapcsolaton keresztül. Ha az ExpressRoute konfigurálva van, együttműködik a Site Recovery a következő:
 
-- **Az Azure-régiók közötti replikáció során**: replikációs forgalmát az Azure-beli virtuális gépek vészhelyreállításához csak az Azure-ban, és az ExpressRoute nem szükséges, vagy a replikációhoz használt. Azonban, amelyhez csatlakozik egy helyszíni helyről az Azure virtuális gépek az Azure elsődleges helyen, van-e olyan problémák érdemes figyelembe vennie, amikor beállítása vész-helyreállítási ezeket az Azure-beli virtuális gépek száma.
-- **Az Azure-régiók közötti feladatátvétel**: Ha valamilyen okból kimaradás lép fel, a rendszer átadja a feladatokat az Azure virtuális gépek az elsődleges kiszolgálóról másodlagos Azure-régióba. Miután-ba irányuló feladatátvétel egy másodlagos régióba, a program több lépést ahhoz, hogy az ExpressRoute-tal tudjon másodlagos régióban az Azure virtuális gépek eléréséhez.
+- **Az Azure-régiók közötti replikáció során**: Replikációs forgalom az Azure-beli virtuális gépek vészhelyreállításához csak az Azure-ban, és az ExpressRoute nem szükséges, vagy a replikációhoz használt. Azonban, amelyhez csatlakozik egy helyszíni helyről az Azure virtuális gépek az Azure elsődleges helyen, van-e olyan problémák érdemes figyelembe vennie, amikor beállítása vész-helyreállítási ezeket az Azure-beli virtuális gépek száma.
+- **Az Azure-régiók közötti feladatátvétel**: Ha valamilyen okból kimaradás lép fel, a rendszer átadja a feladatokat Azure virtuális gépek az elsődleges kiszolgálóról másodlagos Azure-régióba. Miután-ba irányuló feladatátvétel egy másodlagos régióba, a program több lépést ahhoz, hogy az ExpressRoute-tal tudjon másodlagos régióban az Azure virtuális gépek eléréséhez.
 
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -93,7 +93,7 @@ Nagyvállalati környezetben általában a számítási feladatok elosztja a tö
 - **Agyi virtuális hálózat**. Van egy agyi virtuális hálózat **forrás agyi virtuális hálózat**: 10.10.10.0/24.
     - Az agyi virtuális hálózat a forgalomirányító szerepét.
     - Alhálózatok közötti minden kommunikáció próbálja ki a hub.
- - ** Hub Vnetet alhálózatokra**. Az agyi virtuális hálózat két alhálózattal rendelkezik:
+ - Hub Vnetet alhálózatokra **. Az agyi virtuális hálózat két alhálózattal rendelkezik:
      - **NVA-alhálózat**: 10.10.10.0/25. Ez az alhálózat egy nva-t (10.10.10.10) tartalmazza.
      - **Átjáró-alhálózat**: 10.10.10.128/25. Ezt az alhálózatot tartalmaz, amely a helyszíni hely egy privát társviszony-létesítési útválasztási tartomány segítségével irányítja egy ExpressRoute-kapcsolattal csatlakozik egy ExpressRoute-átjárót.
 - A helyszíni adatközponthoz egy ExpressRoute-kapcsolatcsoport kapcsolaton keresztül egy partner edge Hongkong (KKT) rendelkezik.
@@ -146,7 +146,7 @@ Miután a feladatátvételt az Azure virtuális gépek a cél a Site Recovery ha
 
 #### <a name="two-circuits-with-two-peering-locations"></a>A két társviszony-létesítési helyszínek két Kapcsolatcsoportok
 
-Ez a konfiguráció segít az ExpressRoute-Kapcsolatcsoportok regionális katasztrófa elleni védelmet biztosít. Ha az elsődleges társviszony-létesítési loation leáll, a kapcsolatok továbbra is a másik helyen.
+Ez a konfiguráció segít az ExpressRoute-Kapcsolatcsoportok regionális katasztrófa elleni védelmet biztosít. Ha az elsődleges társviszony-létesítési helyszínen leáll, a kapcsolatok továbbra is a másik helyen.
 
 - A kapcsolatcsoport csatlakozik az éles környezetben általában a az elsődleges. A másodlagos kapcsolatcsoportot általában rendelkezik alacsonyabb sávszélesség, ami növelhető, ha katasztrófa történik.
 - A feladatátvételt követően a másodlagos ExpressRoute-kapcsolatcsoport a cél virtuális hálózatok közötti kapcsolatot is létrehozhat. Azt is megteheti hogy kapcsolatok beállítás és felkészülés vészhelyzet esetén a teljes helyreállítási idő csökkentése érdekében.

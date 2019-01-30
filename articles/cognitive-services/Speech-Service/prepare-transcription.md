@@ -6,16 +6,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 07b90942c8d231418888491fd47a9be3caff77ea
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 44f2cb9e95a9a79c85c23b0eebd919851b94c1f8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467735"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228134"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>A beszédfelismerési szolgáltatás beszédátírási irányelvek
 
@@ -70,10 +70,10 @@ Néhány példa:
 
 | Eredeti szöveg | Normalizálási után |
 |----- | ----- |
-| 14 új 3. vészhelyreállítás. | tizennégy északkelet harmadik meghajtó |
+| 14 NE 3rd Dr. | tizennégy északkelet harmadik meghajtó |
 | Dr. Bruce szalagcím | Orvos Bruce szalagcím |
 | James Bond, 007 | James Bond, duplán hoppá hét |
-| Ke$ magas rendelkezésre állás | Kesha |
+| Ke$ha | Kesha |
 | Mennyi ideig tart a 2 x 4 | Mennyi ideig tart a két négy |
 | Az értekezlet kerül az 1-3 pm | Az értekezlet kerül egy és három pm |
 | saját vér típus O + | Saját vér típus pozitív O |
@@ -90,7 +90,7 @@ Kerülje a teljes szélességű írásjelek karakterek használatát. Ezek a kar
 | Karakterek elkerülése érdekében | Helyettesítés |
 |----- | ----- |
 | "你好" (megnyitása és bezárása a dupla idézőjelekkel együtt) | "你好" (dupla idézőjelekkel együtt) |
-| 需要什么帮助? (kérdőjel) | 需要什么帮助? |
+| 需要什么帮助? (kérdőjel) | 需要什么帮助？ |
 
 ### <a name="text-normalization-rules-for-chinese"></a>Kínai szöveg normalizálási szabályok
 
@@ -164,9 +164,9 @@ Néhány példa:
 
 | Eredeti szöveg | A felhasználó normalizálási után | Rendszer normalizálási után
 |--------  | ----- | -------- |
-| Es Izraeli normál idő szerint 12.23 Uhr | Es Izraeli normál idő szerint 12:23 Uhr | es Izraeli normál idő szerint zwölf uhr drei és zwanzig uhr |
+| Es Izraeli normál idő szerint 12.23 Uhr | Es Izraeli normál idő szerint 12:23 Uhr | es ist zwölf uhr drei und zwanzig uhr |
 | {12.45} | {12,45} | zwölf komma vier fünf ||
-| 2 és 3-4 | 2 és 3-4 mínusz | zwei plusz -mínusz vier drei|
+| 2 + 3 - 4 | 2 és 3-4 mínusz | zwei plusz -mínusz vier drei|
 
 ## <a name="next-steps"></a>További lépések
 

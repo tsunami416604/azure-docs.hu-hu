@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0bcb6262201b3399ca4d759bb306a570bea33b00
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 44d4d3b7b82a2f23f973a9c94cb66c81c430efa8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578769"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225312"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Beszélgetéstanuló robotprogramok üzembe helyezése
 
@@ -53,7 +53,7 @@ A beszélgetés Learner felhasználói felületén kívül robotprogramok futtat
 
 5. Az oldal tetején a "Model ID" GUID jelenik meg.
 
-## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>1. lehetőség: A helyi futtatásához egy Beszélgetéstanuló bot üzembe helyezése
+## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>Option 1: Helyi futtatásához egy Beszélgetéstanuló bot üzembe helyezése
 
 Üzembe helyez egy robot a helyi gépre, és bemutatja, hogyan férhet hozzá, a Bot Framework emulator használatával.
 
@@ -90,7 +90,7 @@ A robot mostantól helyileg fut.  Hozzá tud férni a Bot Framework emulátort.
 
 2. Most már szolgáltatásprogram a robottal.
 
-## <a name="option-2-deploy-to-azure"></a>2. lehetőség: Az Azure-ban üzembe helyezése
+## <a name="option-2-deploy-to-azure"></a>Option 2: Üzembe helyezés az Azure-ban
 
 Tegye közzé a ugyanúgy, mint bármilyen más robot közzé kívánja tenni a hasonló Beszélgetéstanuló robotjait. Magas szinten töltse fel a kódot egy üzemeltetett webhelyre, állítsa be a megfelelő konfigurációs értékeket, és regisztrálja a robot a különböző csatornákon. A videó közzététele a robot, az Azure Bot Service használatával történő bemutató részletes utasítások találhatók.
 

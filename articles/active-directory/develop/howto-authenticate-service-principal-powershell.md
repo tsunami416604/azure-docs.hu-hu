@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
-ms.openlocfilehash: c768d5a35016b0725d4dbca2a418c8e780812d62
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 35a69f12dc73ef0cbf9bc1541fa75037f6ef06f5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091646"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228236"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Útmutató: Tanúsítvánnyal rendelkező szolgáltatásnév létrehozása az Azure PowerShell használatával
 
@@ -46,7 +46,7 @@ A legegyszerűbben a portálon ellenőrizheti, hogy rendelkezik-e megfelelő jog
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Szolgáltatásnév létrehozása önaláírt tanúsítvánnyal
 
-Az alábbi példa egy egyszerű forgatókönyvet követ. Használ [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) hozzon létre egy egyszerű szolgáltatást egy önaláírt tanúsítványt, és használja a [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) hozzárendelése a [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) az egyszerű szolgáltatás szerepkör. A szerepkör-hozzárendelés hatóköre az aktuális Azure-előfizetés. Válasszon ki egy másik előfizetést, használja a [Set-AzContext](/powershell/module/az.profile/set-azcontext).
+Az alábbi példa egy egyszerű forgatókönyvet követ. Használ [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) hozzon létre egy egyszerű szolgáltatást egy önaláírt tanúsítványt, és használja a [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) hozzárendelése a [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) az egyszerű szolgáltatás szerepkör. A szerepkör-hozzárendelés hatóköre az aktuális Azure-előfizetés. Válasszon ki egy másik előfizetést, használja a [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `

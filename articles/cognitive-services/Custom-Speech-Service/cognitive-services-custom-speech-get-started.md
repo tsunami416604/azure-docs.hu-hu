@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 4bbd4c57556fd4bfd176c915e26be4a4d198418a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7392459f0b80558aac22bd585c0d30bf4105d76f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339933"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224445"
 ---
 # <a name="get-started-with-custom-speech-service"></a>Ismerkedés a Custom Speech Service
 
@@ -28,15 +28,15 @@ Egy jó mintáját találkozása, amelyek az általunk biztosított [Itt](https:
 ## <a name="prerequisites"></a>Előfeltételek  
 
 ### <a name="subscribe-to-custom-speech-service-and-get-a-subscription-key"></a>Előfizetés a Custom Speech Service és az előfizetési kulcs lekérése
-A fentiekben lejátszás előtt a példában a kell előfizetni a Custom Speech Service és lekérése egy előfizetést, tekintse meg [előfizetések](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) , vagy kövesse a magyarázatokat [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md). Ebben az oktatóanyagban az elsődleges és másodlagos kulcsot egyaránt használható. Győződjön meg arról, hogy az API-kulcs titkos ajánlott eljárások követése, és biztonságos.
+A fentiekben lejátszás előtt a példában a kell előfizetni a Custom Speech Service és lekérése egy előfizetést, tekintse meg [előfizetések](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) , vagy kövesse a magyarázatokat [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md). Ehhez az oktatóanyaghoz az elsődleges és a másodlagos kulcs is használható. Az API-kulcs biztonságban és titokban tartásához mindenképpen kövesse az ajánlott eljárásokat.
 
-### <a name="get-the-client-library-and-example"></a>Az ügyfél első példa és könyvtár
-Előfordulhat, hogy töltse le a egy ügyféloldali kódtár és egy példa keresztül [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). A letöltött zip-fájlt egy tetszőleges mappába kinyerni van szüksége, számos felhasználó, válassza ki a Visual Studio 2015 mappát.
+### <a name="get-the-client-library-and-example"></a>Az ügyfélkódtár és a példa lekérése
+Előfordulhat, hogy töltse le a egy ügyféloldali kódtár és egy példa keresztül [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). A letöltött zip-fájlt ki kell csomagolni egy tetszőleges mappába. Számos felhasználó a Visual Studio 2015 mappát választja.
 
 ## <a name="creating-a-custom-acoustic-model"></a>Egy egyéni akusztikai modell létrehozása
 Egy adott tartományhoz tartozó akusztikai modell testreszabásához beszédadatok gyűjteményére van szükség. A gyűjtemény beszédadatokat tartalmazó hangfájlokból, valamint az ezek mindegyikének szöveges átiratát tartalmazó szövegfájlból áll. A hívásaiból kell modelleznie, amelyben a felismerő használni kívánt forgatókönyv
 
-Példa: Ha szeretné jobban beszédfelismerést zajos gyári környezetben, a hangfájlokat beszél a zajos gyár személyek kell állnia.
+Példa: Ha jobb beszédfelismerést szeretne elérni egy zajos gyári környezetben, a hangfájloknak zajos gyárban felvett beszédmintákat kell tartalmazniuk.
 Önt érdeklő egyetlen beszélő teljesítményének optimalizálása, például szeretné lefényképezze összes FDR a Fireside csevegés, akkor a példákat, hogy a beszélő csak hangfájlt kell állnia.
 
 Egy egyéni akusztikai modell létrehozása a részletes leírást talál [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md).

@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Mondathosszok lekérése, Go – Translator Text API'
+title: 'Gyors útmutató: Első mondat visszaadni, nyissa meg – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban kideríti egy szövegben a mondatok hosszát a Translator Text API és a Go segítségével.
 services: cognitive-services
 author: erhopf
 manager: erhopf
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 71b88afeb941e6b635548468e634e07597318116
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5f4a4a4518eb973dc9d2c7cbcb34683fe0b3db08
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994108"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226842"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Gyors útmutató: A Translator Text API segítségével meghatározhatja a Go használatával mondat hossza
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Gyors útmutató: A Translator Text API segítségével határozza meg a Go használatával mondat hossza
 
 Ebben a rövid útmutatóban fog elsajátíthatja meghatározása a mondat karakterszámát () a Go és a Translator Text REST API használatával.
 

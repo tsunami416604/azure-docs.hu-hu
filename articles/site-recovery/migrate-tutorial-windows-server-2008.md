@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 11/27/2018
 ms.author: bsiva
 ms.custom: MVC
-ms.openlocfilehash: afcf64b79b08ae76f56f57569905945489c2933e
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 875548b8277e50ccb813cf6b36541a053abdbb70
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382879"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222065"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 rendszert futtató kiszolgálók migrálása az Azure-ba
 
@@ -125,7 +125,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval.
 
 > [!WARNING]
-> Győződjön meg arról, hogy a replikációs szabályzat Alkalmazáskonzisztens pillanatkép gyakorisága beállításánál a **KI** érték szerepel. A Windows Server 2008 rendszert futtató kiszolgálók replikálása esetében csak az összeomlás-konzisztens helyreállítási pontok támogatottak. Az alkalmazáskonzisztens pillanatkép gyakoriságánál megadott bármilyen egyéb érték téves riasztásokat eredményez, mert az alkalmazáskonzisztens helyreállítási pontok hiánya kritikus állapotba állíthatja a replikációt.
+> Győződjön meg arról, hogy a replikációs szabályzat Alkalmazáskonzisztens pillanatkép gyakorisága beállításánál a **KI** érték szerepel. A Windows Server 2008 rendszert futtató kiszolgálók replikálása esetében csak az összeomlás-konzisztens helyreállítási pontok támogatottak. Megadását bármely más értéket az alkalmazáskonzisztens pillanatkép készítésének gyakorisága eredményez téves riasztások kikapcsolásával a kiszolgáló replikációs állapota kritikus alkalmazáskonzisztens helyreállítási pontok hiánya miatt.
 
    ![Replikációs házirend létrehozása](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
