@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: aac8713f94482e0fc809f24786b96d29b23b076a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.lastreviewed: 08/30/2018
+ms.openlocfilehash: 3e53d79682772be7eacb649148ceeaec7d9f2865
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343388"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247578"
 ---
 # <a name="about-deployment-network-traffic"></a>Üzembe helyezés hálózati forgalomról
 Hálózati forgalom adatfolyamait során az Azure Stack ismertetése telepítési létfontosságú sikeres bevezetését. Ez a cikk végigvezeti várt hálózati forgalom megismerése milyen szolgáltatásokat biztosít a telepítési folyamat során.
@@ -39,7 +40,7 @@ Az Azure Stack egy Azure Stack-összetevők futtatásához használt kiszolgál�
 Üzembe helyezés megkezdése előtt vannak bizonyos minimális követelményeknek, amelyek érvényesítheti az OEM annak biztosítása érdekében az üzembe helyezés sikeresen befejeződött. Understanding, ezek a követelmények segítségével készítse elő a környezetet, és győződjön meg arról, hogy az érvényesítés sikeres, a következők:
 
 -   [Tanúsítványok](azure-stack-pki-certs.md)
--   [Azure-előfizetés](https://azure.microsoft.com/free/?b=17.06)
+-   [Azure előfizetés](https://azure.microsoft.com/free/?b=17.06)
 -   Internetelérés
 -   DNS
 -   NTP

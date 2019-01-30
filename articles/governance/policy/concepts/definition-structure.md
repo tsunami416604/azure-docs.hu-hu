@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0fe15cc87e0d30f58dc26ae925efa6d65b243f5b
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: deaad5e7a04362ab021bfb90ab08377cb99694e0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851657"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250384"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -79,7 +79,7 @@ A **mód** meghatározza, hogy mely erőforrástípusokat szabályzat lesz kiér
 
 Azt javasoljuk, hogy állítsa **mód** való `all` a legtöbb esetben. A portál használatával létrehozott összes szabályzat-definíciókat a `all` mód. Ha a PowerShell vagy az Azure CLI-vel, megadhatja a **mód** paraméter manuálisan. Ha a szabályzat-definíció nem tartalmaz egy **mód** érték, a rendszer alapértelmezés szerint `all` az Azure PowerShell, az `null` Azure CLI-ben. A `null` módja megegyezik `indexed` visszamenőleges kompatibilitás támogatására.
 
-`indexed` lehet, amelyeket a címkék vagy a szabályzatok létrehozásakor használt. Megjegyzés megadása kötelező, míg megakadályozza, hogy a címkék és a helyek való jelenik meg, nem kompatibilis a megfelelőségi eredmények nem támogató erőforrások. A kivétel **erőforráscsoportok**. Házirendeket kikényszerítő helyet vagy egy erőforráscsoportba tartozó címkéket kell beállítania **mód** való `all` és a kifejezetten a cél a `Microsoft.Resources/subscriptions/resourceGroup` típusa. Egy vonatkozó példáért lásd: [erőforráscímkék csoport kényszerítése](../samples/enforce-tag-rg.md).
+`indexed` lehet, amelyeket a címkék vagy a szabályzatok létrehozásakor használt. Bár nem kötelező, megakadályozza, hogy a címkék és a helyek való jelenik meg, nem kompatibilis a megfelelőségi eredmények nem támogató erőforrások. A kivétel **erőforráscsoportok**. Házirendeket kikényszerítő helyet vagy egy erőforráscsoportba tartozó címkéket kell beállítania **mód** való `all` és a kifejezetten a cél a `Microsoft.Resources/subscriptions/resourceGroup` típusa. Egy vonatkozó példáért lásd: [erőforráscímkék csoport kényszerítése](../samples/enforce-tag-rg.md).
 
 ## <a name="parameters"></a>Paraméterek
 

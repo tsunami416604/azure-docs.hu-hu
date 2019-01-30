@@ -8,16 +8,16 @@ displayName: active learning, suggestion, dialog prompt, train api, feedback loo
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: da32d1e7a3cc9fc0c37418e24c1f1f270a104b09
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: cf652c1b0edd469f29d14ed10d66ebe78b0fbb7c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55105663"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247833"
 ---
-# <a name="use-active-learning-to-improve-knowledge-base"></a>Aktív tanulás használatával javíthatja a Tudásbázis
+# <a name="use-active-learning-to-improve-knowledge-base"></a>Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
 
 Aktív tanulás lehetővé teszi a Tudásbázis minősége javítható feltünteti alternatív kérdése van, a felhasználó-beküldés, a a kérdés és válasz párt alapján. Ezeket a javaslatokat tekintse át, vagy a hozzá meglévő kérdések vagy visszautasítja őket. 
 
@@ -39,6 +39,10 @@ Hasonló lekérdezések fürtözöttek, a QnA Maker javasolja a Tudásbázis des
 Aktív tanulás akkor aktiválódik, a felső néhány válasz bármely adott lekérdezésre vonatkozó QnA Maker által visszaadott eredmények alapján. A pontszám különbségek egy kis tartományon belülre esik, akkor a lekérdezés számít egy lehetséges _javaslat_ minden lehetséges válaszokat. 
 
 Az összes javaslat listája együtt fürtözöttek és felső javaslatokat alternatív kérdések jelennek meg a végfelhasználók számára az adott lekérdezések gyakorisága alapján. Aktív tanulás azokban az esetekben, ahol a végpontok egy ésszerű, illetve a különböző használati lekérdezések kihozhatják a lehetséges legjobb javaslatokat nyújt.
+
+## <a name="upgrade-version-to-use-active-learning"></a>Aktív tanulás frissítési verziója
+
+Aktív tanulás a verze modulu runtime 4.4.0 vagy újabb támogatott. Ha a Tudásbázis egy korábbi verzióval készült [frissítse a szolgáltatást](upgrade-qnamaker-service.md) a funkció használatához. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
@@ -152,7 +156,9 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
+További információ az aktív tanulás használata egy [Azure Bot C# példa](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)
+
 ## <a name="next-steps"></a>További lépések
  
 > [!div class="nextstepaction"]
-> [QnAMaker API használata](./upgrade-qnamaker-service.md)
+> [A QnA Maker API használata](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

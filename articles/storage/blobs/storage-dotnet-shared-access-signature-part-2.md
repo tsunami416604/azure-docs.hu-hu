@@ -8,13 +8,13 @@ ms.topic: article
 ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 6e33f700e9f453f419bf431d772d3db27e806ac0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: blobs
+ms.openlocfilehash: 9c5f32bb1b4f335fab11f0fd865421f2eec5eee9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240698"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244912"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>A közös hozzáférésű Jogosultságkódot, 2. rész: Hozzon létre, és használhatja az SAS-Blob-tárolóval
 
@@ -30,9 +30,9 @@ Ebben az oktatóanyagban két konzolalkalmazást, amelyek bemutatják, létrehoz
 
 **1 alkalmazás**: A management alkalmazás. Létrehoz egy tárolót és a egy blob közös hozzáférésű jogosultságkód. Magában foglalja a tárfiók hozzáférési kulcsát a forráskódban.
 
-**2 alkalmazás**: az ügyfélalkalmazás. Hozzáfér tároló és blobnév erőforrásokat a létrehozott az első alkalmazás közös hozzáférési aláírások használatával. Csak a közös hozzáférésű jogosultságkódok hozzáférés tároló és a blob-erőforrások – használja ezt *nem* tartalmazzák a tárfiók hozzáférési kulcsát.
+**2 alkalmazás**: Az ügyfélalkalmazás. Hozzáfér tároló és blobnév erőforrásokat a létrehozott az első alkalmazás közös hozzáférési aláírások használatával. Csak a közös hozzáférésű jogosultságkódok hozzáférés tároló és a blob-erőforrások – használja ezt *nem* tartalmazzák a tárfiók hozzáférési kulcsát.
 
-## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>1. rész: Közös hozzáférésű jogosultságkódok létrehozása Konzolalkalmazás létrehozása
+## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>1. rész: Hozzon létre egy konzolalkalmazást, hogy közös hozzáférésű jogosultságkódok létrehozása
 Először is győződjön meg arról, hogy rendelkezik-e az Azure Storage ügyféloldali kódtára a .NET-hez telepítve. Telepítheti a [NuGet-csomag](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet-csomag") az ügyféloldali kódtár a legfrissebb szerelvényeket tartalmazó. Ez az az ajánlott módszer annak biztosítására, hogy rendelkezik-e a legújabb javításokat. Az ügyféloldali kódtár legújabb verziójának részeként is letöltheti a [Azure SDK for .NET](https://azure.microsoft.com/downloads/).
 
 A Visual Studióban hozzon létre egy új Windows-konzolalkalmazást, és adja neki **GenerateSharedAccessSignatures**. Adja hozzá hivatkozásokat [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) és [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) a következő megközelítések egyikének használatával:
@@ -337,7 +337,7 @@ Container SAS URI using stored access policy: https://storagesample.blob.core.wi
 Blob SAS URI using stored access policy: https://storagesample.blob.core.windows.net/sascontainer/sasblobpolicy.txt?sv=2016-05-31&sr=b&si=tutorialpolicy&sig=%2FkTWkT23SS45%2FoF4bK2mqXkN%2BPKs%2FyHuzkfQ4GFoZVU%3D
 ```
 
-## <a name="part-2-create-a-console-application-to-test-the-shared-access-signatures"></a>2. lépés: Hozzon létre egy konzolalkalmazást a közös hozzáférésű jogosultságkódok tesztelése
+## <a name="part-2-create-a-console-application-to-test-the-shared-access-signatures"></a>2. rész: Hozzon létre egy konzolalkalmazást a közös hozzáférésű jogosultságkódok tesztelése
 A közös hozzáférésű jogosultságkódok, az előzőekben létrehozott teszteléséhez mintázatai alapján műveletek végrehajtásához, a tároló és a egy blob egy második konzolalkalmazást hozunk létre.
 
 > [!NOTE]
@@ -589,7 +589,7 @@ Additional error information: The remote server returned an error: (403) Forbidd
 
 ## <a name="next-steps"></a>További lépések
 
-* [Közös hozzáférésű Jogosultságkódok, 1. rész: A SAS-modell ismertetése](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [A közös hozzáférésű Jogosultságkódot, 1. rész: A SAS-modell ismertetése](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Tárolók és blobok névtelen olvasási hozzáférésének kezelése](storage-manage-access-to-resources.md)
 * [Közös hozzáférésű jogosultságkód (REST API) hozzáférés delegálása](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Tábla és üzenetsor SAS bemutatása](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

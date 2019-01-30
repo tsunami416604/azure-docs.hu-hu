@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: bf70f9a74b58758e03800d7f6fb92a8f8754828a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.lastreviewed: 11/12/2018
+ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613095"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249680"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>A Windows Server az Azure Stack piactéren – gyakori kérdések
 
@@ -37,10 +38,10 @@ Ezután ha bármely Virtual Machine Scale Sets egy meghatározott verzióra vona
 
 A Microsoft kínál a Windows Server-rendszerképeket az Azure Stack piactéren két verziója:
 
-- **Használja, a felhasznált**: ezek a lemezképek futtassa a teljes díj Windows mérőszámok. 
-   Ki kell használnia: nagyvállalati szerződés (EA) használók a *Használatalapú számlázási modell*; CSP-k számára nem szeretne a SPLA-licenc.
-- **A saját licences (BYOL) használata**: ezek a lemezképek alapvető mérőszámok futtatni.
-   Ki kell használnia: nagyvállalati szerződéssel rendelkező ügyfelek a Windows Server-licenc; CSP-k számára a SPLA-licenc.
+- **Használja, a felhasznált**: Ezek a lemezképek futtassa a teljes díj Windows mérőszámok. 
+   Ki kell használnia: Nagyvállalati Szerződés (EA) használók a *Használatalapú számlázási modell*; CSP-k számára nem szeretne a SPLA-licenc.
+- **Hozott licences (BYOL)**: Ezek a lemezképek alapvető mérőszámok futtassa.
+   Ki kell használnia: Nagyvállalati szerződéssel rendelkező ügyfelek a Windows Server-licenc; CSP-k számára a SPLA-licenc.
 
 Az Azure hibrid használati Benefit (AHUB) nem támogatott az Azure Stacken. Ügyfelek, akik a "Kapacitás" modellel licenc a BYOL-lemezképet kell használnia. Ha teszteli az Azure Stack Development Kit (ASDK), ezek a beállítások bármelyikét használhatja.
 

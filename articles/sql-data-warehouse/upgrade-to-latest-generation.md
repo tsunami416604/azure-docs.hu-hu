@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 11/26/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1e2f1a3c46c9d343c305292a217fff5750f442fa
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 173846e4828228bdc51fc42858e0c6c9b00cafd6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682554"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242790"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Teljesítményoptimalizálás az SQL Data Warehouse frissítésével
 Azure SQL Data Warehouse frissítsen a legújabb generációja, az Azure hardver- és tárolási architektúrát.
@@ -78,7 +78,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="start-the-upgrade"></a>A frissítés megkezdése
 
-1. Nyissa meg a számítási optimalizált Gen1 szintű adatforgalom adatraktár-az Azure Portalon, és kattintson a **frissítés Gen2-re** kártya feladatok lapján: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. Nyissa meg a számítási optimalizált Gen1 szintű adatforgalom adatraktár-az Azure Portalon, és kattintson a **frissítés Gen2-re** kártya feladatok lapján:  ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
     
     > [!NOTE]
     > Ha nem látja a **frissítés Gen2-re** feladatok lapján, az előfizetés típusa kártya korlátozva van a jelenlegi régióban.
@@ -113,7 +113,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
    A frissítési folyamat második lépése adatok migrálása ("frissítés – Online"). Adatok migrálása egy online trickle háttérben futó folyamat, amely lassan áthelyezi Oszlopalapú a régi tároló-architektúra az új tároló-architektúra, kihasználva a helyi SSD-gyorsítótárat. Ebben az időszakban az adattárház lekérdezésére és betöltése elérhető lesz. Minden adatát lekérdezhetők, függetlenül attól, hogy azt migrálták, vagy nem lesz. Az adatáttelepítés függően az adatok mérete, a teljesítményszintet és az oszlopcentrikus szegmensek száma különböző ütemben történik. 
 
-5. **Nem kötelező javaslat:** gyorsíthatja fel az adatok áttelepítési háttérfolyamatként, azonnal kényszerítheti az adatmozgatás futtatásával [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) kellene lekérdezési nagyobb slo-t, az összes elsődleges oszlopcentrikus táblák és erőforrásosztályhoz. Ez a művelet **offline** képest a trickle rétegzést, amely függően számát és méretét a táblák órát is igénybe vehet; azonban adatáttelepítés fog sokkal gyorsabb, ahol, majd teljes mértékben kihasználhatják az új továbbfejlesztett tárolási architektúrát, a folyamat végén a magas színvonalú naplóbájtot. 
+5. **Nem kötelező javaslat:** Gyorsíthatja fel az adatok áttelepítési háttérfolyamatként, azonnal kényszerítheti az adatmozgatás futtatásával [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) az összes elsődleges oszlopcentrikus táblák, akkor lekérdezése nagyobb slo-t és az erőforrás osztályra. Ez a művelet **offline** képest a trickle rétegzést, amely függően számát és méretét a táblák órát is igénybe vehet; azonban adatáttelepítés fog sokkal gyorsabb, ahol, majd teljes mértékben kihasználhatják az új továbbfejlesztett tárolási architektúrát, a folyamat végén a magas színvonalú naplóbájtot. 
 
 A következő lekérdezést hoz létre a szükséges az Alter Index Rebuild parancsokat gyorsíthatja fel az áttelepítési folyamat:
 

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: asganesh
-ms.openlocfilehash: 554fd9c32c9831d45a40c62a871e3a8d5f8d7cb9
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.lastreviewed: 12/10/2018
+ms.openlocfilehash: f900fa5105f42dac57b392d41a8cd888850fc648
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191751"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249491"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Az Azure Stack adatközpont integrációja
 
@@ -30,7 +31,7 @@ Az Azure Stack ügyfélként kell várhatóan a következő adatközpont integr�
 
 |     |Tervezési fázis|Rendelés feldolgozása|Központi telepítés előtti|Feldolgozó folyamat|Hardver kézbesítés|Helyszíni üzembe helyezés|
 |-----|-----|-----|-----|-----|-----|-----|
-|**A Microsoft**|Partner bevonása a vásárlás előtti támogatás biztosításához.|Készítse elő a szoftverlicencelés és szerződések igény szerint.|Adja meg a szükséges eszközök, adatközpont integrációs követelményeinek és a dokumentáció gyűjtéséhez az ügyfél.|Adja meg a legújabb alapkonfiguráció buildek és eszközt lánc frissítések havi kiadása ütemben történik.|–|A Microsoft támogatási szakemberei segítséget nyújt az összes üzembe helyezési problémák.|
+|**Microsoft**|Partner bevonása a vásárlás előtti támogatás biztosításához.|Készítse elő a szoftverlicencelés és szerződések igény szerint.|Adja meg a szükséges eszközök, adatközpont integrációs követelményeinek és a dokumentáció gyűjtéséhez az ügyfél.|Adja meg a legújabb alapkonfiguráció buildek és eszközt lánc frissítések havi kiadása ütemben történik.|–|A Microsoft támogatási szakemberei segítséget nyújt az összes üzembe helyezési problémák.|
 |**Partner**|Javasolt megoldási lehetőségeket az ügyfelek igényei alapján.<br><br>A koncepció igazolása (POC) javaslatot, ha szükséges.<br><br>Üzleti kapcsolatot létesíteni.<br><br>Döntse el, a támogatási szint.|Készítse elő a szükséges szerződéseket az ügyfélnél.<br><br>Vevői beszerzési rendelés létrehozása.<br><br>Döntse el, szállítási eseményeket egy idővonalon megjelenítve.<br><br>Csatlakozás a Microsoft-ügyfél, szükség esetén.|Adja meg az ügyfél a szükséges képzés biztosítása az összes üzembe helyezési Előfeltételek és a datacenter ismeretekkel integrálási lehetőségek.<br><br>Segítséget nyújt az ügyfél-érvényesítéssel tapasztalható a begyűjtött adatok teljességét és pontosságának biztosítása érdekében.|A alkalmazni a legutóbbi ellenőrzött alapkonfiguráció build.<br><br>A alkalmazni a szükséges a Microsoft központi telepítési eszközkészlet.|Adjon ki kiváló hardvert, hogy az ügyfél telephelyén.|A központi telepítés helyszíni mérnökként kezeli.<br><br>Állvány és a stack.<br><br>Hardver életciklus-gazdagép (HLH) telepítése.<br><br>Az Azure Stack üzemelő példányához.<br><br>Aktuális ügyfélnek ki.|
 |**Ügyfél**|Importálni kívánt használati esetek ismertetik, és adja meg a követelményeknek.|A számlázási modellt használja, tekintse át és hagyja jóvá a szerződések meghatározására.|Végezze el az üzembe helyezés munkalap, és győződjön meg, hogy az összes üzembe helyezési Előfeltételek fennállnak és készen áll a központi telepítés.|–|Készítse elő a datacenter úgy, hogy minden szükséges power és hűtéssel szegély kapcsolat és egyéb szükséges adatközpont integrációja követelmény teljesülnek.|-Előfizetés hitelesítő adatait, és támogatja a megadott adatokkal kapcsolatos kérdések esetén üzembe helyezés során érhetők el.|
 | | | | | | | |
@@ -115,7 +116,7 @@ Számos lépést kell végrehajtani a partner által előtt a megoldás lesz tov
 
 Az OEM-Partner által végrehajtandó műveletek a következők:
 
--   [Futtassa a test-azurestack](azure-stack-diagnostic-test.md#run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix)
+-   [Run test-azurestack](azure-stack-diagnostic-test.md#run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix)
 
 -   [Regisztráció az Azure-ral](azure-stack-registration.md)
 
@@ -123,7 +124,7 @@ Az OEM-Partner által végrehajtandó műveletek a következők:
 
 -   Biztonsági mentési kapcsoló konfigurációs fájlok
 
--   Távolítsa el a DVM
+-   Remove DVM
 
 -   Összefoglaló ügyfél telepítésének előkészítése
 

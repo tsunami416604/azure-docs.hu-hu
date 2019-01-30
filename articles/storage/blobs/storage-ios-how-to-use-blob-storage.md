@@ -8,13 +8,13 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
-ms.component: blobs
-ms.openlocfilehash: be9254686eeb285fb4f0a5e29ba60023abee84ab
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: blobs
+ms.openlocfilehash: 9e4c717b3b205d6c8fdd309dada918eb6df35181
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961926"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244760"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Az IOS-es Blob storage használata
 
@@ -28,8 +28,8 @@ A Blob storage szolgáltatással kapcsolatos további tudnivalókért lásd: [Az
 Importálhatja az Azure Storage-IOS-es kódtárat az alkalmazás használatával az [Azure Storage CocoaPod](https://cocoapods.org/pods/AZSClient) vagy importálásával a **keretrendszer** fájlt. CocoaPod nem ajánlott, mert a integrálása az egyszerűbb, azonban a keretrendszer fájlt importálja a kevésbé zavaró a meglévő projekt library lehetővé teszi.
 
 A könyvtár használatához a következőkre lesz szüksége:
-- iOS 8 +
-- Xcode 7 +
+- iOS 8+
+- Xcode 7+
 
 ## <a name="cocoapod"></a>CocoaPod
 1. Ha Ön még nem tette, [CocoaPods telepítése](https://guides.cocoapods.org/using/getting-started.html#toc_3) nyissa meg a terminálablakot, és futtassa a következő parancsot a számítógépen
@@ -129,9 +129,9 @@ Ellenőrizheti, hogy ez működik megnézzük a [Microsoft Azure Storage Explore
 ## <a name="set-container-permissions"></a>Tároló engedélyeinek beállítása
 Egy tároló-engedélyek vannak beállítva **privát** hozzáférés alapértelmezés szerint. Azonban tárolók biztosítják a tároló hozzáférésének néhány másik lehetőség:
 
-* **Privát**: tároló és blobnév adatok csak a fióktulajdonos által olvasható.
-* **BLOB**: Ebben a tárolóban lévő Blobok adatai olvashatók névtelen kérelem használatával, de adatokat tároló nem érhető el. Ügyfelek névtelen kérelem használatával a tárolóban lévő blobok nem lehet számba venni.
-* **Tároló**: tároló és blobnév adatok névtelen kérelem használatával olvashatja el. Ügyfelek névtelen kérelem használatával a tárolóban található blobok enumerálása, de nem sikerült felsorolni a tárfiókban lévő tárolókat.
+* **Privát**: Tároló és blobnév adatok csak a fióktulajdonos által is olvasható.
+* **Blob**: Ebben a tárolóban lévő blobok adatai olvashatók névtelen kérelem használatával, de adatokat tároló nem érhető el. Ügyfelek névtelen kérelem használatával a tárolóban lévő blobok nem lehet számba venni.
+* **tároló**: Tároló és blobnév adat olvasható névtelen kérelem használatával. Ügyfelek névtelen kérelem használatával a tárolóban található blobok enumerálása, de nem sikerült felsorolni a tárfiókban lévő tárolókat.
 
 Az alábbi példa bemutatja, hogyan hozzon létre egy tárolót az **tároló** hozzáférési engedélyeket, amelyek lehetővé teszik az összes felhasználó számára az interneten nyilvános, írásvédett hozzáférést:
 
@@ -216,12 +216,12 @@ Az alábbi példa bemutatja, hogyan listázhatja a tárolóban lévő összes BL
 * **előtag** -a blob felsorolását használni kívánt előtagot is megadhat. Csak azok a blobok ezzel az előtaggal kezdődő jelennek meg.
 * **Listblobs** – említetteknek megfelelően az [elnevezésével és hivatkozásával tárolók és blobok](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) szakaszban, bár a blobszolgáltatás egy egybesimított storage séma is létrehozhat egy virtuális hierarchia elérési úttal rendelkező blobok elnevezési információk. Azonban nem sík listaelem jelenleg nem támogatott. Ez a funkció hamarosan elérhető lesz. Egyelőre ennek az értéknek kell lennie **Igen**.
 * **blobListingDetails** – megadhatja, hogy mely elemek közé tartozik a blobok listázásakor
-  * _AZSBlobListingDetailsNone_: csak a véglegesített blobok listázása és a blob metaadatait nem adják vissza.
-  * _AZSBlobListingDetailsSnapshots_: véglegesített blobok listázása és a blob-pillanatképekkel.
-  * _AZSBlobListingDetailsMetadata_: minden egyes blob lekérése blob metaadatait adja vissza a listáján.
-  * _AZSBlobListingDetailsUncommittedBlobs_: véglegesítése és a nem véglegesített blobok listázása.
-  * _AZSBlobListingDetailsCopy_: például a Másolás tulajdonságok listáján.
-  * _AZSBlobListingDetailsAll_: az összes elérhető véglegesített blobok, a nem véglegesített blobok és a pillanatfelvételeket listában, és visszaadja azokat a blobokat minden metaadatok és a példány állapotát.
+  * _AZSBlobListingDetailsNone_: Csak a véglegesített blobok listázása, és a blob metaadatait nem adják vissza.
+  * _AZSBlobListingDetailsSnapshots_: Véglegesített blobok listázása és a blob-pillanatképekkel.
+  * _AZSBlobListingDetailsMetadata_: A lista minden egyes blob lekérése blob metaadatait adja vissza.
+  * _AZSBlobListingDetailsUncommittedBlobs_: Véglegesített és a nem véglegesített blobok listázása.
+  * _AZSBlobListingDetailsCopy_: Tulajdonságok másolása felvétel a listában.
+  * _AZSBlobListingDetailsAll_: Az összes elérhető véglegesített blobok, a nem véglegesített blobok és a pillanatfelvételeket listában, és visszaadja azokat a blobokat minden metaadatok és a példány állapotát.
 * **maxResults** – Ez a művelet esetében visszaadandó eredmények maximális száma. Használja a -1 nem állítson be kényszerített korlátot.
 * **completionHandler** – a kódblokkot, hajtsa végre a listázási művelet eredményét.
 

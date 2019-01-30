@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.component: blobs
-ms.openlocfilehash: 2966683c086cfcd122c364dd6808f841a85bbee9
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.subservice: blobs
+ms.openlocfilehash: 180e38146911b15e95828bf033cbcaefae22d094
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704715"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241389"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Nagy mennyiségű véletlenszerű adat letöltése az Azure Storage-ból
 
@@ -30,7 +30,7 @@ A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez el kell végeznie az előző Storage-oktatóanyagot, amelynek címe: [Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba][previous-tutorial].
+Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktatóanyagot: [Töltse fel nagy mennyiségű véletlenszerű adat párhuzamos az Azure storage-][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>A virtuális gép távoli vezérlése
 

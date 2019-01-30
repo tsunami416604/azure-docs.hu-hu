@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: 32d0e0f48a99b5c06b1efa61e6e1a53cf5b0e61b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/19/2018
+ms.openlocfilehash: f17a76b62c511e1cdcd98e387fe0132e2bd15c16
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971793"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238067"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Használat és számlázás az Azure Stackben
 
@@ -59,7 +60,7 @@ Minden ügyfél-azonosítót fog kérni egy másik Azure Active Directory (Azure
 ## <a name="next-steps"></a>További lépések
 
 - [Regisztráljon az Azure Stack használatával](azure-stack-registration.md)
-- [Az Azure-bA az Azure Stack-használati adatok jelentése](azure-stack-usage-reporting.md)
+- [Az Azure Stack használati adatainak jelentése az Azure-nak](azure-stack-usage-reporting.md)
 - [Szolgáltatói erőforrás-használati API](azure-stack-provider-resource-api.md)
 - [Bérlői erőforrás-használati API](azure-stack-tenant-resource-usage-api.md)
 - [Használattal kapcsolatos gyakori kérdések](azure-stack-usage-related-faq.md)

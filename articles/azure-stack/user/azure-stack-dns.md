@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
-ms.openlocfilehash: ba1e310234485d972646320f082d8b882a3d43f1
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: 822fd40b2fc707efe34d4081c3c49e5f71621cdb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052342"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245541"
 ---
 # <a name="using-dns-in-azure-stack"></a>DNS-sel az Azure Stackben
 
@@ -31,7 +32,7 @@ Az Azure Stack a következő tartománynévrendszer (DNS) funkciókat támogatja
 
 ## <a name="support-for-dns-hostname-resolution"></a>DNS-állomásnév feloldása támogatása
 
-Megadhat egy DNS-tartománynév címkét a nyilvános IP-erőforrások. Használja az Azure Stack **domainnamelabel.location.cloudapp.azurestack.external** a címke nevét és a maps számára, hogy a nyilvános IP-cím az Azure Stack felügyelt DNS-kiszolgálók.
+You can specify a DNS domain name label for public IP resources. Használja az Azure Stack **domainnamelabel.location.cloudapp.azurestack.external** a címke nevét és a maps számára, hogy a nyilvános IP-cím az Azure Stack felügyelt DNS-kiszolgálók.
 
 Például, ha létrehoz egy nyilvános IP-erőforráshoz az **contoso** egy tartománynévcímkét a helyi Azure Stack-helyen, mint a [teljesen minősített tartománynevét (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)  **contoso.local.cloudapp.azurestack.external** feloldja az erőforrás nyilvános IP-címét. Ez a teljes tartománynév használatával hozzon létre egy CNAME rekordot a nyilvános IP-címre az Azure Stackben, egyéni tartományt.
 
@@ -42,7 +43,7 @@ A névfeloldással kapcsolatos további tudnivalókért tekintse meg a [DNS-felo
 
 Az alábbi képernyőfelvételen a **nyilvános IP-cím létrehozása** egy nyilvános IP-címet, a portál használatával létrehozására szolgáló párbeszédpanel:
 
-![Nyilvános IP-cím létrehozása](media/azure-stack-whats-new-dns/image01.png)
+![Create public IP address](media/azure-stack-whats-new-dns/image01.png)
 
 ### <a name="example-scenario"></a>Példaforgatókönyv
 
@@ -91,7 +92,7 @@ Az Azure Stack DNS REST API a szintjén ETag megadott HTTP-fejlécek használata
 | None   | PUT mindig sikeres (nincs Etag-ellenőrzések)|
 | IF-match| PUT csak akkor sikeres, ha az erőforrás létezik, és Etagje megegyezik|
 | IF-match *| PUT csak akkor sikeres, ha az erőforrás létezik|
-| IF-none-match *| PUT csak akkor sikeres, ha az erőforrás nem létezik.|
+| If-none-match *| PUT csak akkor sikeres, ha az erőforrás nem létezik.|
 
 ### <a name="limits"></a>Korlátok
 

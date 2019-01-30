@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2e5ecf32782c86b236c4947d5d2793be9c3883d8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 26954c8f839ff0bfb2da484e4fb535f33d4e07ed
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223680"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239179"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Előfizetési kulcsok használata a LUIS-appal
 
@@ -32,7 +32,7 @@ Teszteléshez és prototípus csak az ingyenes (F0) csomagot használja. Éles r
 
 Ez az eljárás létrehoz egy **Language Understanding** erőforrás. Ha azt szeretné, hogy egy erőforrás, amely a Cognitive Services is használható, teljes körű kulcs létre **[Cognitive Service](../cognitive-services-apis-create-account.md)** a Language Understanding resource helyett. 
 
-Ezt a kulcsot csak használandó végpont előrejelzési lekérdezések. Ezt a kulcsot a módosításokat a modell vagy az alkalmazás nem tudja ezt. 
+Ezt a kulcsot csak használandó végpont előrejelzési lekérdezések. Ne használja ezt a kulcsot a modell és az alkalmazás módosítása. 
 
 1. Jelentkezzen be a  **[az Azure portal](https://ms.portal.azure.com/)**. 
 1. Válassza ki a zöld **+** jelentkezzen be a felső bal oldali panelen, és keresse meg `Language Understanding` a Marketplace-en, majd válassza ki a **Language Understanding** , és kövesse a  **Hozzon létre felhasználói élményt** LUIS előfizetés fiók létrehozásához. 
@@ -43,7 +43,7 @@ Ezt a kulcsot csak használandó végpont előrejelzési lekérdezések. Ezt a k
 
     ![Az Azure API kiválasztása](./media/luis-azure-subscription/azure-api-choice.png) 
 
-1. Miután létrehozta a Language Understanding resource, megtekintheti a létrehozott hozzáférési kulcsok **erőforrás-kezelés -> kulcsok**. A kulcsok nem ne. Ez a szakasz bemutatja, hogyan az új erőforrás csatlakozni a LUIS-alkalmazások, a LUIS-portálon. 3. lépésében a LUIS-erőforrás neve van szüksége.
+1. Miután létrehozta a Language Understanding resource, megtekintheti a létrehozott hozzáférési kulcsok **erőforrás-kezelés -> kulcsok**. Ez a szakasz bemutatja, hogyan az új erőforrás csatlakozni a LUIS-alkalmazások, a LUIS-portálon. 3. lépésében a LUIS-erőforrás neve van szüksége.
 
     ![Az Azure-kulcsok](./media/luis-azure-subscription/azure-keys.png)
 
@@ -71,7 +71,7 @@ Ezt a kulcsot csak használandó végpont előrejelzési lekérdezések. Ezt a k
 
     ![Rendelje hozzá egy erőforrást az alkalmazáshoz](./media/luis-manage-keys/assign-key.png)
 
-1. Az e-mail-cím a bejelentkezés a LUIS webhelyre társított válassza a párbeszédpanel a bérlő.  
+1. Válassza ki az e-mailben társított párbeszédpanel a bérlő a cím a használt, jelentkezzen be a LUIS-webhelyre.  
 
 1. Válassza ki a **Előfizetésnevet** társított hozzáadni kívánt Azure-erőforrás.
 
@@ -122,7 +122,7 @@ A leképezések és azok pontszámok is vannak-e a végpont naplók tartalmazza.
 ### <a name="enable-bing-spell-checker"></a>A Bing helyesírás-ellenőrzés engedélyezése 
 Az a **végpont URL-beállítások**, a **Bing helyesírás-ellenőrzővel** váltógomb lehetővé teszi, hogy a LUIS, mielőtt előrejelzési kijavítsa a hibásan leírt szavakat. Hozzon létre egy  **[kulcs a Bing Spell Check](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. 
 
-Adja hozzá a **helyesírás-ellenőrzés = true** sztringet és a **bing – helyesírás-ellenőrzés-subscription-key = {YOUR_BING_KEY_HERE}** . Cserélje le a `{YOUR_BING_KEY_HERE}` és a Bing helyesírás-ellenőrző kulcs.
+Adja hozzá a **helyesírás-ellenőrzés = true** sztringet és a **bing – helyesírás-ellenőrzés-subscription-key = {YOUR_BING_KEY_HERE}**. Cserélje le a `{YOUR_BING_KEY_HERE}` és a Bing helyesírás-ellenőrző kulcs.
 
 ```JSON
 {
@@ -142,7 +142,7 @@ További tudnivalók a közzététel [régiók](luis-reference-regions.md) több
 
 ## <a name="assign-resource-without-luis-portal"></a>Rendelje hozzá a LUIS-portál nélküli erőforráshoz
 
-Például egy CI/CD-folyamat automation célból érdemes automatizálni a LUIS-alkalmazásokon LUIS erőforrás hozzárendelését. Adott sorrendben kell hajtsa végre az alábbi lépéseket:
+Például egy CI/CD-folyamat automation célból érdemes automatizálni a LUIS-alkalmazásokon LUIS erőforrás hozzárendelését. Ehhez hajtsa végre a következő lépéseket kell:
 
 1. Egy Azure Resource Manager a token beszerzése [webhely](https://resources.azure.com/api/token?plaintext=true). Ez a token hamarosan lejár, azonnal használható. A kérelem egy Azure Resource Manager-jogkivonatát adja vissza.
 

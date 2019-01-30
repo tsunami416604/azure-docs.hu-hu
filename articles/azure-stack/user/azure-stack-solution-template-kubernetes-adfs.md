@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 3ae0a67a8aa2d403a72b0e20471c2044dbf557bf
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: b032dea67bba6f78b8172e772ab2f8fe492f39f9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389063"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250435"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Az Active Directory összevont szolgáltatásokat az Azure Stack üzembe helyezése Kubernetes
 
@@ -65,7 +66,7 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
 
     - Az alábbi adatokra lesz szüksége:
 
-        | Érték | Leírás |
+        | Value | Leírás |
         | ---   | ---         |
         | Az Azure Resource Manager-végpont | A Microsoft Azure Resource Manager-keretrendszert, amely lehetővé teszi a rendszergazdák üzembe helyezése, kezelése és monitorozása az Azure-erőforrások számára. Az Azure Resource Manager képes kezelni ezeket a feladatokat, csoportként, nem pedig külön-külön, egyetlen művelettel.<br>A végpont az Azure Stack Development Kit (ASDK) a következő: `https://management.local.azurestack.external/`<br>A végpont az integrált rendszerekről van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | Az előfizetés-azonosító | A [előfizetés-azonosító](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) van, hogy miként férhetnek hozzá az ajánlatok az Azure Stackben. |
@@ -106,7 +107,7 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
 
     - Az alábbi adatokra lesz szüksége:
 
-        | Érték | Leírás |
+        | Value | Leírás |
         | ---   | ---         |
         | Tanúsítvány elérési útja | A teljes tartománynév vagy a fájl elérési útja a tanúsítványt. |
         | Tanúsítványjelszó | A tanúsítvány jelszavát. |

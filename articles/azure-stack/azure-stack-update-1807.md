@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 82343daa9fafe27ac814b6246a303e661a0a22d1
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.lastreviewed: 10/07/2018
+ms.openlocfilehash: 2b36c5d31e9377335a9cc8a37d4e4e0e890bfc3b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231036"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245083"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 frissítése
 
@@ -85,7 +86,7 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
   További információkért lásd: [syslog-továbbítás az Azure Stack](azure-stack-integrate-security.md).
 
 <!-- ####### | IS, ASDK | --> 
-- **Az Azure Resource Manager tartalmazza a régió nevét.** Ebben a kiadásban objektumokat beolvasni az Azure Resource Manager most már tartalmazza a régió neve attribútum. Ha egy meglévő PowerShell-szkriptet közvetlenül továbbítja az objektum más parancsmagok, a parancsfájl hibaüzenet és sikertelen lesz. Azure Resource Manager megfelelő működés, és megköveteli a hívó ügyfél régió attribútum kivonása céljából. További információ az Azure Resource Manager lásd [Azure Resource Manager dokumentációja](https://docs.microsoft.com/azure/azure-resource-manager/). 8 – 10 mdb--> ellenőrzése
+- **Az Azure Resource Manager tartalmazza a régió nevét.** Ebben a kiadásban objektumokat beolvasni az Azure Resource Manager most már tartalmazza a régió neve attribútum. Ha egy meglévő PowerShell-szkriptet közvetlenül továbbítja az objektum más parancsmagok, a parancsfájl hibaüzenet és sikertelen lesz. Azure Resource Manager megfelelő működés, és megköveteli a hívó ügyfél régió attribútum kivonása céljából. További információ az Azure Resource Manager lásd [Azure Resource Manager dokumentációja](https://docs.microsoft.com/azure/azure-resource-manager/). verify 8-10 mdb -->
 
 <!-- TBD | IS, ASDK -->  
 - **Delegált szolgáltatók funkció módosításait.** Az Azure-viszonteladó modell 1807 kezdve a delegált szolgáltatók modell jobban egyszerűsített annak érdekében, hogy igazodjanak, és delegált szolgáltatók nem fogja tudni a más delegált szolgáltatók, lényegében egybesimítania a modell, és így a delegált szolgáltató létrehozása a funkció elérhető a egyetlen szinten. Ahhoz, hogy a Váltás az új modell és az előfizetések kezelésével, a felhasználói előfizetéseket is most áthelyezhető új vagy meglévő Directory ugyanazt bérlőhöz tartozó delegált szolgáltatói előfizetések között. Az alapértelmezett szolgáltatója előfizetéshez tartozó felhasználói előfizetések is áthelyezhetők a Directory-bérlőben azonos delegált szolgáltatói előfizetések.  További információ: [ajánlat delegálása az Azure Stack](azure-stack-delegated-provider.md).
@@ -145,14 +146,14 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
 
 ### <a name="common-vulnerabilities-and-exposures"></a>Gyakori biztonsági rések és besorolási
 Az Azure Stack a gazda-infrastruktúrát a Windows Server 2016 Server Core-telepítéseket használ. Ebben a kiadásban a következő Windows Server 2016 frissítéseket telepíti az infrastruktúra-kiszolgálók az Azure Stack: 
-- [CVE – 2018-8206](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8206)
+- [CVE-2018-8206](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8206)
 - [CVE-2018-8222](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8222)
-- [CVE – 2018-8282](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8282)
-- [CVE – 2018-8304](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8304)
-- [CVE – 2018-8307](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8307)
-- [CVE – 2018-8308](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8308) 
-- [CVE – 2018-8309](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8309)
-- [CVE – 2018-8313](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8313)  
+- [CVE-2018-8282](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8282)
+- [CVE-2018-8304](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8304)
+- [CVE-2018-8307](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8307)
+- [CVE-2018-8308](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8308) 
+- [CVE-2018-8309](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8309)
+- [CVE-2018-8313](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8313)  
 
 További információ a biztonsági rések, kattintson a fenti hivatkozásokat a, vagy tekintse meg a Microsoft Tudásbázis cikkei [4338814](https://support.microsoft.com/help/4338814) és [4345418](https://support.microsoft.com/help/4345418).
 

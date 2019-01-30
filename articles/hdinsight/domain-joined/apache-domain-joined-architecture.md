@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 50c5838f576b6fd6775373f2dbe3c46d751545c1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3237932c66c77f979c4e95798163621e65735bed
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437588"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247153"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>A HDInsight vállalati biztonsági csomag használata
 
@@ -55,9 +55,41 @@ További információkért lásd: [konfigurálása HDInsight-fürtök az Azure A
 
 Ha egy helyszíni Active Directory-példányból vagy összetettebb Active Directory-beállításokat a tartomány, ezeket az Azure AD-identitások szinkronizálhatók az Azure AD Connect használatával. Engedélyezheti, hogy az Active Directory-bérlőre az Azure Active Directory tartományi Szolgáltatásokban. 
 
-Mivel Kerberos jelszókivonatokat alapul, kell [Jelszókivonat-szinkronizálás az Azure Active Directory tartományi szolgáltatások engedélyezése](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Ha összevonási az Active Directory összevonási szolgáltatások (AD FS) használ, igény szerint állíthat be Jelszókivonat-szinkronizálás biztonsági abban az esetben az AD FS-infrastruktúra sikertelen lesz. További információkért lásd: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás engedélyezése](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
+Mivel a Kerberos jelszókivonatokat alapul, meg kell [Jelszókivonat-szinkronizálás az Azure Active Directory tartományi szolgáltatások engedélyezése](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). 
+
+Ha összevonási használ az Active Directory összevonási szolgáltatások (ADFS), engedélyeznie kell a Jelszókivonat-szinkronizálás (egy ajánlott beállítani, lásd: [ez](https://youtu.be/qQruArbu2Ew)) ami is segít a vész-helyreállítási abban az esetben az AD FS-infrastruktúra sikertelen és a kiszivárgott hitelesítő adatok védelme. További információkért lásd: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás engedélyezése](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
 
 A helyszíni Active Directory vagy az Active Directory IaaS-beli virtuális gépeken önmagában, az Azure AD és az Azure Active Directory tartományi Szolgáltatásokban, anélkül használata nem támogatott konfiguráció a HDInsight-fürtök ESP.
+
+Ha az összevonási használatban van, és jelszókivonatokat szinkronizált correcty, de hitelesítési hibák azért kapta,. Ellenőrizze, hogy a jelszó-hitelesítést használ a powershell egyszerű szolgáltatásnév felhő engedélyezve van, ha nem, be kell állítani egy [kezdőlap Kezdőtartomány felderítése (HRD ) a házirend](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) az AAD-bérlő. Státusz és beállítása a HRD-szabályzattal:
+
+ 1. Azure ad powershell modul telepítése
+
+ ```
+  Install-Module AzureAD
+ ```
+
+ 2. ```Connect-AzureAD``` egy globális rendszergazdai (bérlői rendszergazdai) hitelesítő adatok használatával
+
+ 3. Ellenőrizze, hogy ha a "Az Azure powershell" szolgáltatásnév már létrejött
+
+```
+ Get-AzureADServicePrincipal -SearchString "1950a258-227b-4e31-a9cf-717495945fc2"
+```
+
+ 4. Ha még nem létezik a majd az egyszerű szolgáltatás létrehozása
+
+```
+ New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+```
+
+ 5. A szabályzat csatolása ezt a szolgáltatásnevet: 
+
+```
+ $policy = New-AzureADPolicy -Definition @("{"HomeRealmDiscoveryPolicy":{"AllowCloudPasswordValidation":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+
+ Add-AzureADServicePrincipalPolicy -Id <Service Principal ID> -refObjectID $policy.ID
+```
 
 ## <a name="next-steps"></a>További lépések
 

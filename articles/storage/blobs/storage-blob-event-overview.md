@@ -7,13 +7,13 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.component: blobs
-ms.openlocfilehash: 0f726769b9e4266e310f9f50b1a7ef768c0c1d55
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.subservice: blobs
+ms.openlocfilehash: 6c2a642c30be79c907286e4ffac6bcea40d86fcd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735884"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247748"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagálás Blob storage-események
 
@@ -28,12 +28,12 @@ Vessen egy pillantást [útvonal Blob storage-események az egyéni webes végpo
 ![Event Grid-modell](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
 ## <a name="blob-storage-accounts"></a>Blob Storage-fiókok
-BLOB storage-események az általános célú v2-tárfiókok és a Blob storage-fiókok érhetők el. **Általános célú v2** tárfiókok összes tárolási szolgáltatás, így a Blobok, fájlok, üzenetsorok és táblák összes funkcióját támogatják. A **Blob Storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. További információkért lásd: [az Azure storage-fiók áttekintése](../common/storage-account-overview.md).
+Blobtároló események általános célú v2 tárfiókokban vagy Blob tárfiókokban érhetők el. **Általános célú v2** tárfiókok összes tárolási szolgáltatás, így a Blobok, fájlok, üzenetsorok és táblák összes funkcióját támogatják. A **Blob Storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. További információkat az [Azure Storage-fiókok áttekintésében](../common/storage-account-overview.md) találhat.
 
 ## <a name="available-blob-storage-events"></a>Elérhető a Blob storage-események
 Event grid használ [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) eseményt üzenetek továbbítását-előfizetők számára.  A BLOB storage esemény-előfizetések is tartalmazzák kétféle esemény:  
 
-> |Eseménynév|Leírás|
+> |Esemény neve|Leírás|
 > |----------|-----------|
 > |`Microsoft.Storage.BlobCreated`|Akkor, ha egy blob jön létre vagy keresztül lecseréli a `PutBlob`, `PutBlockList`, vagy `CopyBlob` műveletek|
 > |`Microsoft.Storage.BlobDeleted`|Blob törlése keresztül aktivált egy `DeleteBlob` művelet|
@@ -44,13 +44,13 @@ BLOB storage-események összes kell reagálni az igények változásaira az ada
 > |Tulajdonság|Típus|Leírás|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |témakör|sztring|Teljes Azure Resource Manager azonosítója, amely az eseményt bocsát ki a tárfiókot.|
-> |Tulajdonos|sztring|Az objektum azonos kiterjesztett Azure Resource Manager formátumban, amelyek bemutatják a storage-fiókok, szolgáltatások és tárolók az Azure RBAC használatával az esemény tárgyát képező relatív erőforrás elérési útja.  Ez a formátum tartalmazza a blob nevét megőrzi.|
+> |tárgy|sztring|Az objektum azonos kiterjesztett Azure Resource Manager formátumban, amelyek bemutatják a storage-fiókok, szolgáltatások és tárolók az Azure RBAC használatával az esemény tárgyát képező relatív erőforrás elérési útja.  Ez a formátum tartalmazza a blob nevét megőrzi.|
 > |eventTime|sztring|Az esemény létrejött, az ISO 8601 formátumú dátum/idő|
-> |eventType|sztring|"Microsoft.Storage.BlobCreated" vagy "Microsoft.Storage.BlobDeleted"|
+> |eventType|sztring|"Microsoft.Storage.BlobCreated" or "Microsoft.Storage.BlobDeleted"|
 > |Azonosító|sztring|Egyedi azonosító, ha az esemény|
 > |dataVersion|sztring|Az adatobjektum sémaverziója.|
 > |metadataVersion|sztring|A legfelső szintű tulajdonságok sémaverziója.|
-> |adatok|objektum|A blob storage-specifikus eseményadatok gyűjtése|
+> |adat|objektum|A blob storage-specifikus eseményadatok gyűjtése|
 > |data.contentType|sztring|A BLOB, a Content-Type fejlécében a blobból kellene visszaadnia a tartalom típusa|
 > |data.contentLength|szám|Egész számot jelölő bájt, számos, a Content-Length fejlécet a blobból kellene visszaadnia hasonlóan a blob mérete.  BlobCreated esemény, de nem BlobDeleted küldi.|
 > |Data.URL|sztring|Az URL-cím az objektum, amely az esemény tárgya|

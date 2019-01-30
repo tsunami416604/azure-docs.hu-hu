@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 7439a2c5466784a881e71649fa86a8e51d757957
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: b413bd65582dceadd9aab912694c3b560070c4f3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226417"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251554"
 ---
 # <a name="about-the-text-to-speech-api"></a>A szöveg-hang transzformációs API-val kapcsolatos
 
@@ -37,6 +37,9 @@ Melyik beszéd összefoglaló kik forgatókönyvek a következők:
 ## <a name="voice-support"></a>Beszédfelismerési támogatása
 
 A Microsoft **szöveg-hang transzformációs** szolgáltatás kínál a több mint 75 beszédhangot legfeljebb 45 nyelvet és területi beállításokat. Ezek szabványos "hangtípust" használatához meg kell adja meg a hangalapú nevét néhány más paraméterekkel, amikor a szolgáltatás REST API-t hívja. További információ a támogatott nyelveket, területi beállítások és beszédhangot: [támogatott nyelvek](language-support.md#text-to-speech).
+
+> [!IMPORTANT]
+> Költségek szabványos, egyéni és Neurális beszédhangot eltérőek. További információkért lásd: [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="neural-voices"></a>Neurális beszédhangot
 

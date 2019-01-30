@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 44530a1c4eec0f2efca7357438366dd7b6abe42a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.lastreviewed: 10/23/2018
+ms.openlocfilehash: 1545fa3c1c94edc98e53b3579e5617a6bf16461c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093342"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238857"
 ---
 # <a name="azure-stack-validation-report"></a>Az Azure Stack érvényesítési jelentés
 Az Azure Stack készültségi ellenőrző eszközt használja, amelyek támogatják az üzembe helyezés és a egy Azure Stack-környezet karbantartás ellenőrzések futtatásához. Az eszköz eredmények jelentés .JSON kiterjesztésű fájlba írja. A jelentés üzembe helyezhető Azure Stacket előfeltételei állapotával kapcsolatos részletes és összesített adatokat jeleníti meg. A jelentés is a meglévő Azure Stack üzembe helyezéséhez titkos kódok rotációja kapcsolatos információkat jeleníti meg.  

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 2f9c4c0b973efe26e6ece2235f2d0c7a6878ebef
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 94b2ab0263ccb7b6835a7bbe76ed8776aadb1a65
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844991"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228202"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V hibaelhárítása az Azure-replikáció és feladatátvétel
 
@@ -110,9 +110,9 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
 5. Ellenőrizze, hogy a Backup szolgáltatás engedélyezve van. Ellenőrizze, hogy van-e engedélyezve a **Hyper-V beállítások** > **integrációs szolgáltatások**.
 6. Ellenőrizze, hogy nem lesznek ütközések VSS-pillanatképeket alkalmazásokkal. Ha több alkalmazás próbálja veszik a VSS-pillanatképet az azonos idő ütközés fordulhat elő. Például ha egy biztonsági mentési alkalmazás VSS-pillanatképet tart a Site Recovery által a replikációs szabályzat ütemezése pillanatképének elkészítéséhez.   
 7. Ellenőrizze, hogy ha a virtuális gép egy nagy forgalom sebessége tapasztalja:
-    - Napi adatváltozási sebesség mérhetik a Vendég virtuális gépek, Hyper-v rendszerű gazdagépen a teljesítményszámlálók segítségével. Az adatmódosítási arány mértékeket, engedélyezze a következő számlálót. Ezt az értéket 5-15 perc, a virtuális gép lemezeinek mintát Aggregrate beolvasni a virtuális gép forgalommal.
-        - Kategória: "a Hyper-V virtuális tárolóeszköz"
-        - A számláló: "írási bájt / mp"</br>
+    - Napi adatváltozási sebesség mérhetik a Vendég virtuális gépek, Hyper-v rendszerű gazdagépen a teljesítményszámlálók segítségével. Az adatmódosítási arány mértékeket, engedélyezze a következő számlálót. Összesíti egy minta ezt az értéket a virtuális gép lemezeinek 5 – 15 percig, beolvasni a virtuális gép forgalommal.
+        - Kategória: "A hyper-V virtuális tárolóeszköz"
+        - A számláló: "Írási bájt / mp"</br>
         - Ezen adatok lemorzsolódási rátához növeli vagy továbbra is magas szinten, attól függően, hogyan foglalt a virtuális gép vagy az alkalmazások vannak.
         - Az átlagos lemez adatváltozása 2 MB/s a Site Recovery standard szintű tárolóra vonatkozó. [További információ](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - Emellett akkor is [ellenőrzése a storage skálázhatósági célértékét](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account).
@@ -125,7 +125,7 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
 1. Ellenőrizze az Eseménynapló bejegyzéseit, a VSS-hibák és javaslatok:
     - A Hyper-V gazdakiszolgálón, nyissa meg a Hyper-V felügyeleti eseménynaplójában **Eseménynapló** > **alkalmazások és szolgáltatásnaplók** > **Microsoft**  >  **Windows** > **a Hyper-V** > **rendszergazdai**.
     - Győződjön meg arról, hogy vannak-e bármilyen alkalmazáskonzisztens pillanatkép hibákat jelző események.
-    - Egy tipikus hiba: "a Hyper-V VSS pillanatkép beállítása"XYZ"virtuális gép létrehozása nem sikerült: A-író nem átmeneti hibát észlelt. A VSS-szolgáltatás újraindítása megoldhatja problémákat, ha a szolgáltatás nem válaszol."
+    - Egy tipikus hiba van: "A Hyper-V VSS pillanatkép beállítása"XYZ"virtuális gép létrehozása nem sikerült: Az író nem átmeneti hibát észlelt. A VSS-szolgáltatás újraindítása megoldhatja problémákat, ha a szolgáltatás nem válaszol."
 
 2. A virtuális gép létrehozása a VSS-pillanatképet, ellenőrizze, hogy a Hyper-V integrációs szolgáltatások telepítve vannak-e a virtuális gépen, és, hogy engedélyezve van-e a biztonsági mentés (VSS) integrációs szolgáltatás.
     - Győződjön meg róla, hogy az Integration Services VSS-szolgáltatás/démonok a vendégen futnak, és a egy **OK** állapota.
@@ -136,7 +136,7 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
 
 **Hibakód:** | **üzenet** | **Részletek**
 --- | --- | ---
-**0x800700EA** | "A Hyper-V VSS pillanatkép beállítása a virtuális gép létrehozása nem sikerült: több adat áll rendelkezésre. (0x800700EA). VSS-pillanatkép beállított-létrehozás sikertelen lehet, ha biztonsági mentési művelet folyamatban van.<br/><br/> Nem sikerült a virtuális gép replikációs művelet: több adat érhető el. " | Ellenőrizze, hogy a virtuális gép rendelkezik-e engedélyezve van a dinamikus lemezek. Ez a funkció nem támogatott.
+**0x800700EA** | "A Hyper-V VSS pillanatkép beállítása a virtuális gép létrehozása nem sikerült: Több adat érhető el. (0x800700EA). VSS-pillanatkép beállított-létrehozás sikertelen lehet, ha biztonsági mentési művelet folyamatban van.<br/><br/> Virtuális gép replikációs művelet nem sikerült: Több adat érhető el." | Ellenőrizze, hogy a virtuális gép rendelkezik-e engedélyezve van a dinamikus lemezek. Ez a funkció nem támogatott.
 **0x80070032** | "A Hyper-V Kötet árnyékmásolata másolási kérelmező nem sikerült csatlakozni a virtuális gép <. / VMname > mert a verziója nem egyezik meg a Hyper-V által várt verzió | Ellenőrizze, hogy ha a legújabb Windows-frissítések telepítése.<br/><br/> [Frissítés](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) a legújabb integrációs szolgáltatásokat.
 
 

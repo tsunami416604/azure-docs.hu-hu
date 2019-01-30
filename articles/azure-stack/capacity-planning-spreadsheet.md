@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: 6f6e680f7ce613d7a6d9f227765ce599c537e2d3
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 12/11/2018
+ms.openlocfilehash: d140b80ecb5fe2a7211245044b08f43fde4233a8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106511"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240986"
 ---
 # <a name="azure-stack-capacity-planner"></a>Az Azure Stack Capacity Planner
 Az Azure Stack Capacity Planner egy táblázatot, használja az Azure Stack resource kapacitástervezés. A capacity planner lehetőséget nyújt a számítási erőforrások különböző hozzárendelések tervezéséhez, és tekintse meg, hogyan ezek lenne elférjenek hardver ajánlatok kijelölés. Az Azure Stack Számológép használatára vonatkozó részletes útmutatást az alábbiakban találhatók.
@@ -67,7 +68,7 @@ Létrehoz egy modellt használ a különböző méretű és virtuális gépek me
 5. Miután létrehozta a virtuális gépek csoportját, megtalálhatja a javasolt hardver SKU közvetlenül az "Aktuális Termékváltozat" címke alatt az oldal jobb felső sarokban található "Javasolt Termékváltozat" gombra kattintva. Ez a gomb használata esetén, módosíthatja a Virtuálisgép-konfigurációk és hardver támogatja-e az egyes konfigurációkhoz.
 
 
-## <a name="definebyworkloadfootprint-instructions"></a>DefineByWorkloadFootprint utasításokat
+## <a name="definebyworkloadfootprint-instructions"></a>DefineByWorkloadFootprint instructions
 Létrehoz egy modellt használ az Azure Stack-munkaterhelések gyűjteménye, válassza a "DefineByWorkloadFootprint" lapot, és hajtsa végre a feladatütemezési lépéseket. Az Azure Stack számítási feladatok rendelkezésre álló Virtuálisgép-erőforrások használatával jön létre.   
 
 > [!TIP]

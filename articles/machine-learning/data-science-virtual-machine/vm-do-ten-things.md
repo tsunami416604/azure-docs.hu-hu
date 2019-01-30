@@ -10,19 +10,19 @@ editor: cgronlun
 ms.custom: seodec18
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 1c56be7a7d9b03d115516b05c10c0b87c6956c47
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e08b38fcea152489455eb4b4f66e56bc609a09db
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727666"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251724"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
 
@@ -283,7 +283,7 @@ Az Azure blob egy megbízható, gazdaságos felhőalapú tárolás, a kis- és b
 
 ![Képernyőkép az Azure Storage Explorer egy Storage-fiók elérése során](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**Adatok áthelyezése az Azure-Blobba virtuális gépről: Az AzCopy**
+**Adatok áthelyezése az Azure-Blobba virtuális gépről: AzCopy**
 
 Adatok áthelyezése a helyi fájlok és a blob storage között, használhatja az AzCopy parancssori vagy a PowerShell használatával:
 
@@ -308,7 +308,7 @@ Az Azure-blobba másolja az AzCopy-parancs futtatása után láthatja a fájl me
 
 ![Képernyőkép a tárfiók, a feltöltött CSV-fájl megjelenítése](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**Adatok áthelyezése az Azure-Blobba virtuális gépről: Az Azure Storage Explorer**
+**Adatok áthelyezése az Azure-Blobba virtuális gépről: Azure Storage Explorer**
 
 A virtuális gépen az Azure Storage Explorer használatával is feltölthetők a helyi fájlokból való adatokat:
 
@@ -386,7 +386,7 @@ Az Azure Data Lake Storage egy nagy kapacitású adattár a big data-elemzési s
 
 ![Képernyőkép a Data Lake Tools a Visual Studióban](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**Adatok áthelyezése a Data Lake-virtuális gépről: Az Azure Data Lake Explorerrel**
+**Adatok áthelyezése a Data Lake-virtuális gépről: Azure Data Lake Explorer**
 
 Használhat **Azure Data Lake Explorerrel** feltölthet adatokat a helyi fájlokat a virtuális gépen a Data Lake storage.
 

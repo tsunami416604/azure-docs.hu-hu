@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: fce89cc754ac179054a60ce837949bb02b2102c6
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.subservice: common
+ms.openlocfilehash: 6cecb2d5fde4fc651cf0ba971189ef62fa330c13
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408697"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241709"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Hozzáférési jogosultsággal az Azure Blob- és üzenetsoradatot RBAC (előzetes verzió) használata kezelheti
 
@@ -43,7 +43,7 @@ A tárolók és a várólisták segítségével egyéni szerepköröket is megha
 
 Az RBAC szerepkör hozzárendelése egy Azure-identitás engedélyeket lehet biztosítani a tárolók vagy a tárfiókban lévő üzenetsorok. A szerepkör-hozzárendelést a storage-fiókot, vagy egy adott tároló vagy egy üzenetsor gazdagépcsoportjaira. A következő táblázat összefoglalja a hatókör függően a beépített szerepkörök, hozzáférési jogot:
 
-|Hatókör|BLOB adatok tulajdonosa|Blobadatok Közreműködője|Blobadatok olvasója|Üzenetsorbeli adatok Közreműködője|Üzenetsorbeli adatok olvasója|
+|Hatókör|BLOB adatok tulajdonosa|Blobadatok Közreműködője|Blob Data Reader|Üzenetsorbeli adatok Közreműködője|Queue Data Reader|
 |---|---|---|---|---|---|
 |Előfizetési szinten|Olvasási/írási hozzáférést és a POSIX hozzáférés-vezérlési felügyeleti a tárolók és blobok az előfizetésben|Tárolók és blobok az előfizetésben az olvasási/írási hozzáférést| Olvasási hozzáférés tárolók és blobok az előfizetésben|Olvasási/írási hozzáférést az előfizetés összes várólista|Olvasási hozzáférés az előfizetésben található összes várólista|
 |Erőforráscsoport szintjén|Olvasási/írási hozzáféréssel és a POSIX hozzáférés-vezérlési felügyeleti a tárolók és blobok az erőforráscsoportban|Olvasási/írási hozzáférést a tárolók és blobok az erőforráscsoportban|Olvasási hozzáférés tárolók és blobok az erőforráscsoportban|Olvasási/írási hozzáférés az erőforráscsoportban lévő összes várólista|Olvasási hozzáférés az erőforráscsoportban lévő összes üzenetsor|

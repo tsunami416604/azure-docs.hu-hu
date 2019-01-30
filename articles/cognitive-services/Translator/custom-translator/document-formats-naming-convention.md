@@ -5,16 +5,16 @@ description: Ez az útmutató, dokumentum-formátumok és egyéni a fordítót a
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 74b421691f5d3536c44af16e99dc54451dfde3f7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: afd3192117bd22c62fd8e36752515166e4c6e043
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872764"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225482"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Dokumentum-formátumok és -elnevezési konvenciót útmutató
 
@@ -24,16 +24,16 @@ Ez a táblázat összes támogatott fájlformátum segítségével hozhat létre
 
 | Formátum            | Bővítmények   | Leírás                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| XLIFF             | . XLF. XLIFF | Egy párhuzamos formát, exportálás fordítási memória rendszerek. A használt nyelvek a fájlban vannak definiálva.                                                                                                                                                              |
-| TMX               | . TMX         | Egy párhuzamos formát, exportálás fordítási memória rendszerek. A használt nyelvek a fájlban vannak definiálva.                                                                                                                                                              |
-| ZIP               | . ZIP         | ZIP-archívum fájlformátum.                                                                                                                                                                                                        |
-| Locstudio         | . LCL         | A Microsoft formátuma párhuzamos dokumentumok                                                                                                                                                                                                                                      |
-| Microsoft Word    | . DOCX        | A Microsoft Word-dokumentum                                                                                                                                                                                                                                                        |
-| Az Adobe Acrobat     | . PDF-FÁJL         | Az Adobe Acrobat portable dokumentum                                                                                                                                                                                                                                                |
-| HTML              | . HTML-. HTM  | HTML-dokumentum                                                                                                                                                                                                                                                                  |
-| Szövegfájl         | . TXT         | UTF-16 vagy UTF-8 kódolású szöveges fájlok                                                                                                                                                                                                                                             |
+| XLIFF             | .XLF, .XLIFF | Egy párhuzamos formát, exportálás fordítási memória rendszerek. A használt nyelvek a fájlban vannak definiálva.                                                                                                                                                              |
+| TMX               | .TMX         | Egy párhuzamos formát, exportálás fordítási memória rendszerek. A használt nyelvek a fájlban vannak definiálva.                                                                                                                                                              |
+| ZIP               | .ZIP         | ZIP-archívum fájlformátum.                                                                                                                                                                                                        |
+| Locstudio         | .LCL         | A Microsoft formátuma párhuzamos dokumentumok                                                                                                                                                                                                                                      |
+| Microsoft Word    | .DOCX        | A Microsoft Word-dokumentum                                                                                                                                                                                                                                                        |
+| Adobe Acrobat     | .PDF         | Az Adobe Acrobat portable dokumentum                                                                                                                                                                                                                                                |
+| HTML              | .HTML, .HTM  | HTML-dokumentum                                                                                                                                                                                                                                                                  |
+| Szövegfájl         | .TXT         | UTF-16 vagy UTF-8 kódolású szöveges fájlok                                                                                                                                                                                                                                             |
 | Igazított szövegfájl | . IGAZÍTÁS       | A bővítmény `.ALIGN` egy speciális bővítmény, amelyet használhat, ha tudja, hogy a dokumentum pár a mondatok tökéletesen igazított. Ha megad egy `.ALIGN` fájlban, egyéni a fordítót nem igazodnak a mondatok az Ön számára. |
-| Excel-fájl        | . XLSX        | Excel-fájlt (2013 vagy újabb). Az első sor / sorát a táblázatban nyelvkód kell lennie.                                                                                                                                                                                                                                                      |
+| Excel-fájl        | .XLSX        | Excel-fájlt (2013 vagy újabb). Az első sor / sorát a táblázatban nyelvkód kell lennie.                                                                                                                                                                                                                                                      |
 
 ## <a name="dictionary-formats"></a>Szótár formátumok
 

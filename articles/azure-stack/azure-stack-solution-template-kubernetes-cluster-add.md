@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 81a47a730978a9ecdda7a09bbad0707d436fb116
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: b7e293018f2dc248fae8de8bd9e82943606f4ead
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388470"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239502"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Adja hozzá a Kubernetes az Azure Stack piactéren
 
@@ -68,7 +69,7 @@ Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity man
 
     - Az alábbi adatokra lesz szüksége:
 
-       | Érték | Leírás |
+       | Value | Leírás |
        | ---   | ---         |
        | Jelszó | A tanúsítvány jelszavát. |
        | Helyi tanúsítvány elérési útja | A tanúsítvány elérési útja és neve. Például:`path\certfilename.pfx` |
@@ -108,7 +109,7 @@ Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity man
 
     - Az alábbi adatokra lesz szüksége:
 
-       | Érték | Leírás                     |
+       | Value | Leírás                     |
        | ---   | ---                             |
        | ERCS IP | A ASDK a kiemelt végponthoz van általában `AzS-ERCS01`. |
        | Alkalmazásnév | Az alkalmazás egyszerű szolgáltatás egyszerű neve. |

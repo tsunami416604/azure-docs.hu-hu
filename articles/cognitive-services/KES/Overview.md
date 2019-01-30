@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: overview
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6f744815b9b2670ddf9b2a873956715a3964bcd6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 976cf0b98f9808ec269043c1dff2883bd2c148dd
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242404"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224683"
 ---
 # <a name="knowledge-exploration-service"></a>Knowledge Exploration szolgáltatás
 
@@ -27,7 +27,7 @@ Az [Első lépések](GettingStarted.md) végigvezeti az akadémiai kiadványok t
 
 A KES a Cognitive Services előzetes verzióról átkerült a Cognitive Services Labshoz. A projekt új kezdőlapja: [http://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration](https://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration).
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Leírások
 
 * [Parancssori felület](CommandLine.md)
 * [Sémaformátum](SchemaFormat.md)

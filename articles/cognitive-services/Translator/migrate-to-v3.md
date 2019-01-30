@@ -41,13 +41,13 @@ Az alábbi listában szereplő V2 és V3 módszerek a v3-as módszerek és API-k
 
 | V2 API-metódus   | V3 API-kompatibilitás |
 |:----------- |:-------------|
-| Fordítás     | [Fordítása](reference/v3-0-translate.md)          |
+| Translate     | [Fordítása](reference/v3-0-translate.md)          |
 | TranslateArray      | [Fordítása](reference/v3-0-translate.md)        |
 | GetLanguageNames      | [Nyelvek](reference/v3-0-languages.md)         |
 | GetLanguagesForTranslate     | [Nyelvek](reference/v3-0-languages.md)       |
 | GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| Beszéd     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Észlelés     | [Észlelése](reference/v3-0-detect.md)         |
+| Speak     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| Detect     | [Észlelése](reference/v3-0-detect.md)         |
 | DetectArray     | [Észlelése](reference/v3-0-detect.md)         |
 | AddTranslation     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
 | AddTranslationArray    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
@@ -75,12 +75,12 @@ A Microsoft Translator V3 V2 díjszabása volt; ugyanúgy díjszabása karaktere
 
 | V3 metódus   | Karakterek számlázásban is megjelenik |
 |:----------- |:-------------|
-| Nyelvek     | Egyetlen elküldött karakter, nincs számításba, díjmentesen.          |
-| Fordítás     | Száma alapján hány karaktert elküldése fordítás, és hány nyelvek a karakterek fordítja. elküldött 50 karakter hosszú lehet, és 5 nyelvek kért 50 x 5.           |
-| Átírás     | Számoljuk el átbetűzésű-karakterek száma.         |
-| Szótár keresési és példa     | Számoljuk el szótár keresés és a példák-karakterek száma.         |
+| Languages     | Egyetlen elküldött karakter, nincs számításba, díjmentesen.          |
+| Translate     | Száma alapján hány karaktert elküldése fordítás, és hány nyelvek a karakterek fordítja. elküldött 50 karakter hosszú lehet, és 5 nyelvek kért 50 x 5.           |
+| Transliterate     | Számoljuk el átbetűzésű-karakterek száma.         |
+| Dictionary lookup &amp; example     | Számoljuk el szótár keresés és a példák-karakterek száma.         |
 | BreakSentence     | Díjmentes.       |
-| Észlelés     | Díjmentes.      |
+| Detect     | Díjmentes.      |
 
 ## <a name="v3-end-points"></a>V3 végpontok
 

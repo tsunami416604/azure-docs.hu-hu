@@ -3,17 +3,17 @@ title: 'Oktatóanyag: Kinyerési, átalakítási, betöltési (ETL) műveletek v
 description: Ebből az oktatóanyagból megtudhatja, hogyan adatokat nyerhet ki nyers CSV adatkészletből, átalakítja a használatával a az Azure HDInsight az Apache Hive, és majd betölti az átalakított adatokat az Azure SQL Database-be a Sqoop használatával.
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
 ms.date: 01/07/2019
 ms.author: jamesbak
-ms.openlocfilehash: 65d2d69c788a54371664d1a443a79bd121332470
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 70ad37aa0ccbab762aa6e5cfb05d385e8b2a86ee
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105151"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244011"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Oktatóanyag: A kinyerési, átalakítási és az Azure HDInsight segítségével a Apache Hive-adatok betöltése
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 * **A HDInsight Linux-alapú Hadoop-fürt**: Linux-alapú HDInsight-fürtöt létrehozni, tekintse meg [fürtök beállítása a HDInsight a Hadoop, Spark, Kafka és további](./data-lake-storage-quickstart-create-connect-hdi-cluster.md).
 
-* **Az Azure SQL Database**: Egy Azure SQL Database-t használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL Database az Azure Portalon történő létrehozását](../../sql-database/sql-database-get-started.md) ismertető cikket.
+* **Azure SQL Database**: Egy Azure SQL Database-t használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL Database az Azure Portalon történő létrehozását](../../sql-database/sql-database-get-started.md) ismertető cikket.
 
 * **Az Azure CLI**: Ha még nem telepítette az Azure CLI-vel, tekintse meg [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -49,7 +49,7 @@ Ebben az oktatóanyagban a bemutatják, hogyan végezhet ETL-műveletet, a szál
 
 1. Az oldalon válassza ki a következő értékeket:
 
-   | Name (Név) | Érték |
+   | Name (Név) | Value |
    | --- | --- |
    | **Szűrő év** |2013 |
    | **Időszak szűrése** |January |

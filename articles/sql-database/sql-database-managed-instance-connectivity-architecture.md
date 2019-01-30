@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 2077978ac9353531d10359edf396e4426e9d6988
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b709bbacce23a89b8c60b77a524018b50ca1ca5e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104430"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245667"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra
 
@@ -111,6 +111,9 @@ Felügyelt példány (a felügyelt példány alhálózatára) dedikált alháló
 |felügyelet  |80, 443, 12000|TCP     |Bármelyik              |Internet   |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
 
+  > [!Note]
+  > MI ALHÁLÓZAT az IP-címtartomány, az űrlap 10.x.x.x/y alhálózat hivatkozik. Ez az információ az Azure Portalon (keresztül alhálózat tulajdonságai) található.
+  
   > [!Note]
   > Bár a kötelező bejövő biztonsági szabályok érkező adatforgalom engedélyezéséhez _bármely_ portokon 9000, 9003, forrás 1438, 1440, 1452 beépített tűzfal védi ezeket a portokat. Ez [cikk](sql-database-managed-instance-find-management-endpoint-ip-address.md) bemutatja, hogyan felderítése felügyeleti végpont IP-címét, és a tűzfalszabályok ellenőrzése. 
   

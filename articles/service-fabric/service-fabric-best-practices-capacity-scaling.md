@@ -14,16 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: ff58cc713a6aba211f9eeb1dc42912d21c5b0bdb
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: d6f2ca53829642009adbc50061966c5a7e924f7e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913952"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240403"
 ---
 # <a name="capacity-planning-and-scaling"></a>Kapacitástervezés és skálázás
 
 Mielőtt bármely Azure Service Fabric-fürtöt hoz létre, vagy a fürtöt a számítási erőforrások méretezése, fontos a kapacitástervezés. A kapacitás tervezésével kapcsolatos további információkért lásd: [tervezése a Service Fabric-fürt kapacitása](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity). Mellett a mérlegeli Nodetype és a fürt jellemzőit, tervezze meg a méretezési műveletek, mint a végrehajtásához a hozzáadni kívánt virtuális gépek számától függetlenül éles környezet egy óránál több időt vesz igénybe.
+
+## <a name="auto-scaling"></a>Automatikus méretezés
+Méretezési műveleteket kell elvégezni keresztül az Azure-erőforrások sablon üzembe helyezésének, kezelje az ajánlott eljárás, mert [erőforrás-konfigurációk kódként]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code), és a virtuális gép méretezési automatikus skálázást eredményez a rendszerverzióval ellátott forrásprogramja meghatározása a virtuálisgép-méretezési csoport Resource Manager-sablon beállítása a példányok számát; Növelje a későbbiekben okozó nem kívánt méretezési műveletek, valamint az általános kockázati kell használnia az automatikus méretezést, ha:
+
+* A Resource Manager-sablonok üzembe helyezése a deklarált megfelelő kapacitással nem támogatja a használati eset.
+  * Manuális skálázás mellett beállíthatja egy [folyamatos integrációs és teljesítési folyamat az Azure DevOps szolgáltatás használatával Azure erőforráscsoport-telepítési projektek]( https://docs.microsoft.com/azure/vs-azure-tools-resource-groups-ci-in-vsts), amelyek gyakran váltja ki egy logikai alkalmazást, amely virtuális gép teljesítmény-mérőszámok onnan lekérdezett [Azure Monitor REST API](https://docs.microsoft.com/azure/azure-monitor/platform/rest-api-walkthrough); hatékonyan az automatikus skálázás bármilyen metrikák alapján szeretne, optimalizálhatja az Azure Resource Manager hozzáadott értéket.
+* Csak ki kell horizontális skálázása a virtuális gép méretezési készlet 1 csomópontos egyszerre.
+  * Horizontális felskálázása 3 vagy több csomópontja egyidejűleg, érdemes [Service Fabric-fürt kétirányú méretezése hozzáadásával egy virtuálisgép-méretezési csoportban](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), és méretezése a legbiztonságosabb és virtuálisgép-méretezési csoport ki állítja vízszintesen 1 csomópontos egyszerre.
+* Silver szintű megbízhatóság, vagy a Service Fabric-fürt és a Silver szintű tartósságot magasabb vagy újabb bármilyen méret esetén konfigurálja az automatikus skálázási szabályok beállítása rendelkezik.
+  * Az automatikus skálázási szabályok kapacitás [minimális] 5 virtuálisgép-példányok nagyobbnak vagy azzal egyenlőnek kell lennie, és a megbízhatósági szint legalább az elsődleges csomóponttípus nagyobbnak vagy azzal egyenlőnek kell lennie.
+
+> [!NOTE]
+> Az Azure Service Fabric állapotalapú service fabric: / rendszer/InfastructureService/< NODE_TYPE_NAME >, fut minden csomópont típusa, amely rendelkezik a Silver vagy nagyobb tartósságot, amely az egyetlen rendszer szolgáltatás futtatásához az Azure-ban a fürtök csomóponttípusok valamelyik támogatott . 
 
 ## <a name="vertical-scaling-considerations"></a>Függőleges méretezési szempontok
 
@@ -150,10 +163,10 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ## <a name="reliability-levels"></a>Megbízhatósági szintek
 
 A [megbízhatósági szint](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) a Service Fabric-fürt erőforrás tulajdonsága, és nem konfigurálható eltérő egyéni NodeType. Azt szabályozza, a replikációs tényező a rendszerszolgáltatások a fürt számára, és a egy beállítás a fürt resource szintjén. A megbízhatósági szint határozza meg, hogy az adott elsődleges csomóponttípus csomópontok minimális száma. A megbízhatósági szint hajthatja végre a következő értékeket:
-* Platinum - rendszer szolgáltatások futnak a cél replika set számot egy hétrészes sorozat
-* Gold - rendszer szolgáltatások futnak a cél replika set számot egy hétrészes sorozat
-* Silver szintű – a rendszer szolgáltatások futnak a cél replika set-számot tartalmazza az öt
-* Bronz – a rendszer szolgáltatások futnak a cél replika set számával együtt három
+* Platinum - rendszer szolgáltatások futnak a hét és kilenc magcsomópontok cél replika set számával együtt.
+* Gold - rendszer szolgáltatások futnak a hét és hét magcsomópontok cél replika set számával együtt.
+* Silver szintű - öt és az öt magcsomópontok cél replika set számát a rendszer szolgáltatások futnak.
+* Bronz - rendszer szolgáltatások futnak a három és három magcsomópontok cél replika set számával együtt.
 
 A minimális ajánlott megbízhatósági szint Silver.
 

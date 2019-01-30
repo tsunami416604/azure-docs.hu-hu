@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: af959507fc2e0d1b68f547d2856eb7020d3ed5c6
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/04/2018
+ms.openlocfilehash: 861784a2d22d15253c61884bfab62667c0560bcd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247576"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250640"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker parancsmag-referencia
 
@@ -306,7 +307,7 @@ Az Azure Stack üzembe helyezés régió nevét adja meg.
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)         |
 |Helyettesítő karakterek elfogadása: |False (Hamis)         |
 
-> TELJES-TARTOMÁNYNÉV
+> -FQDN
 
 Adja meg az Azure Stack üzembe helyezés külső teljes Tartományneve, is ExternalFQDN és ExternalDomainName aliasneve.
 |  |  |
@@ -325,7 +326,7 @@ Megadja az Azure Stack üzemelő példányához Identitásrendszer érvényes é
 |Típus:                       |Karakterlánc        |
 |Pozíció:                   |nevű         |
 |Alapértelmezett érték:              |None          |
-|Érvényes értékek:               |"AAD", "ADFS"  |
+|Érvényes értékek:               |'AAD','ADFS'  |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)         |
 |Helyettesítő karakterek elfogadása: |False (Hamis)         |
 
@@ -407,7 +408,7 @@ A SAN adja meg a tanúsítványkérelem. Érvényes értékek MultipleCSR, Singl
 |Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
-|Érvényes értékek:               |"MultipleCSR',"SingleCSR" |
+|Érvényes értékek:               |'MultipleCSR','SingleCSR' |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
 |Helyettesítő karakterek elfogadása: |False (Hamis)    |
 
@@ -452,7 +453,7 @@ Az Azure-szolgáltatások tartalmazó a fiókok, könyvtárak és az előfizeté
 |Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
-|Érvényes értékek:               |"AzureCloud', 'AzureChinaCloud',"AzureUSGovernment" |
+|Érvényes értékek:               |'AzureCloud','AzureChinaCloud','AzureUSGovernment' |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
 |Helyettesítő karakterek elfogadása: |False (Hamis)    |
 
@@ -497,11 +498,11 @@ Itt adhatja meg az elérési utat, amelyben csak a tanúsítványra szükség ma
 
 Azure Active Directory identitáskezelő rendszerbe Azure Stack üzembe helyezéshez szükséges mappák a következők:
 
-ACSBlob, ACSQueue, ACSTable, felügyeleti portálján, ARM-rendszergazda, ARM nyilvános, KeyVault, KeyVaultInternal, nyilvános portálra
+ACSBlob, ACSQueue, ACSTable, Admin Portal, ARM Admin, ARM Public, KeyVault, KeyVaultInternal, Public Portal
 
 Azure stack-telepítés Active Directory összevonási szolgáltatások identitáskezelő rendszerbe van szükséges a mappa:
 
-ACSBlob, ACSQueue, ACSTable, ADFS, felügyeleti portál, rendszergazdai ARM, ARM nyilvános, gráf, KeyVault, KeyVaultInternal, nyilvános portálra
+ACSBlob, ACSQueue, ACSTable, ADFS, Admin Portal, ARM Admin, ARM Public, Graph, KeyVault, KeyVaultInternal, Public Portal
 
 |  |  |
 |----------------------------|---------|
@@ -531,7 +532,7 @@ Itt adhatja meg, hogy csak az jeleníti meg a jelentés összefoglaló, az átte
 |Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |Összes      |
-|Érvényes értékek:               |"Tanúsítvány", 'AzureRegistration', "AzureIdentity", "Jobs", "All" |
+|Érvényes értékek:               |'Certificate','AzureRegistration','AzureIdentity','Jobs','All' |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
 |Helyettesítő karakterek elfogadása: |False (Hamis)    |
 
@@ -570,7 +571,7 @@ Itt adható meg egyéni elérési út készültségi JSON-jelentés és a részl
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)             |
 |Helyettesítő karakterek elfogadása: |False (Hamis)             |
 
-> -Megerősítése
+> -Confirm
 
 A parancsmag futtatása előtt megerősítést kér.
 |  |  |
@@ -588,7 +589,7 @@ Megmutatja, hogy mi történne a parancsmag futtatásakor. A parancsmag nem fut.
 |  |  |
 |----------------------------|------------------|
 |Típus:                       |SwitchParameter   |
-|Aliasnevek:                    |Wi                |
+|Aliasnevek:                    |wi                |
 |Pozíció:                   |nevű             |
 |Alapértelmezett érték:              |False (Hamis)             |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)             |

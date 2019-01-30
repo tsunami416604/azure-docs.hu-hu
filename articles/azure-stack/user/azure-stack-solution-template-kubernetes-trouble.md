@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 8a67ae74f753fdbe3c5301c543e5a57544695922
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: 9a65ef9acf7a1a133b3f479fe75921191949eeb8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904216"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55237851"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>A Kubernetes üzembe helyezés az Azure Stack hibaelhárítása
 
@@ -112,7 +113,7 @@ Ha a Kubernetes-fürtöt telepít, a telepítés állapota minden olyan problém
     | Tulajdonság | Leírás |
     | ----     | ----        |
     | Erőforrás | Az erőforrás neve. |
-    | Típus | Az erőforrás-szolgáltató és az erőforrás típusát. |
+    | Typo | Az erőforrás-szolgáltató és az erőforrás típusát. |
     | status | Az elem állapota. |
     | Időbélyeg | Az az idő, UTC-időbélyeg. |
     | Művelet részletei | A művelet részleteit, például az erőforrás-szolgáltató, amely során a műveletet az erőforrás-végpont és az erőforrás nevét. |

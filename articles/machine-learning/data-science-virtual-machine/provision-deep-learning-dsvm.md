@@ -9,18 +9,18 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 6963515958cd55314562e37ffc6ab1d8e0af5bee
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 53ddea5426d2adfa7b0ddfcbda3375efae8d0859
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078756"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250806"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Deep Learning-Azure-beli virtuális gép kiépítése 
 
@@ -38,21 +38,21 @@ Hozzon létre egy példányt, a Deep Learning virtuális gép a lépései a köv
    
    1. **Alapvető beállítások**
       
-      1. **Név**: a data science kiszolgáló hoz létre nevet.
-      2. **Válassza ki a Deep Learning virtuális gép operációs rendszerének típusa**: válassza a Windows vagy Linux (a Windows 2016 és Ubuntu Linux alap dsvm-hez)
-      2. **Felhasználónév**: rendszergazdai fiók bejelentkezési azonosítója.
-      3. **Jelszó**: rendszergazdai fiók jelszava.
-      4. **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás.
-      5. **Erőforráscsoport**: létrehozhat egy újat, vagy használjon egy **üres** meglévő Azure-erőforráscsoport az előfizetésben.
-      6. **Hely**: válassza a leginkább megfelelő adatközpontot. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi. 
+      1. **Név**: Neve az adatelemzési kiszolgálót hoz létre.
+      2. **Válassza ki a Deep Learning virtuális gép operációs rendszerének típusa**: Válassza ki a Windows vagy Linux (a Windows 2016 és Ubuntu Linux alap dsvm-hez)
+      2. **Felhasználónév**: Rendszergazdai fiók bejelentkezési azonosítója.
+      3. **Jelszó**: Rendszergazdai fiók jelszava.
+      4. **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás.
+      5. **Erőforráscsoport**: Létrehozhat egy újat, vagy használjon egy **üres** meglévő Azure-erőforráscsoport az előfizetésben.
+      6. **Hely**: Válassza ki az Adatközpont leginkább megfelelő. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi. 
       
 > [!NOTE]
 > A DLVM támogatja az összes hálózati vezérlő és ND sorozatú GPU VM-példányokon. A DLVM kiépítésekor választania kell a helyek gpu-kkal rendelkező Azure-ban. Ellenőrizze a [régió lap által az Azure-termékekkel](https://azure.microsoft.com/regions/services/) lapon az elérhető helyeket, és keressen **NC sorozat**, **NCv2 sorozat**, **az NCv3 sorozatú** , vagy **ND sorozat** alatt **számítási**. 
 
-   2. **Beállítások**: válassza ki az egyik az NC sorozat (NC, az NCv2, az NCv3) vagy az ND sorozat virtuálisgép-méretek GPU, amely megfelel a funkcionális és a költségek megkötések. Hozzon létre egy tárfiókot a virtuális géphez.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   2. **Beállítások**: Válasszon ki egy az NC sorozat (NC, NCv2, az NCv3) vagy az ND sorozat virtuálisgép-méretek GPU, amely megfelel a funkcionális és a költségek megkötések. Hozzon létre egy tárfiókot a virtuális géphez.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
    3. **Összefoglalás**: Győződjön meg arról, hogy minden, a megadott adatok helyesek.
-   5. **Vásároljon**: kattintson a **vásárlása** a kiépítésének megkezdéséhez. A tranzakció feltételeiben szerepel egy hivatkozás. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. 
+   5. **Vásároljon**: Kattintson a **vásárlása** a kiépítésének megkezdéséhez. A tranzakció feltételeiben szerepel egy hivatkozás. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. 
 
 > [!NOTE]
 > A kiépítés körülbelül 10 – 20 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
@@ -80,10 +80,10 @@ A Linux DLVM már kiépített X2Go kiszolgálóval, és készen áll kapcsolatok
 2. Futtassa a X2Go ügyfél, és válassza a **új munkamenet**. Több lap egy konfigurációs ablaka nyílik. Adja meg az alábbi konfigurációs paramétereket:
    * **Munkamenet lapon**:
      * **Gazdagép**: A gazdagép neve vagy a Linux rendszerű adatelemző virtuális gép IP-címét.
-     * **Bejelentkezési**: felhasználónév, a Linux rendszerű virtuális gépen.
-     * **SSH-Port**: meghagyhatja az alapértelmezett érték 22.
-     * **Munkamenet típusa**: módosítsa az értéket **XFCE**. A Linux-DSVM jelenleg csak XFCE desktop támogatja.
-   * **Az adathordozó lapon**: kikapcsolhatja a hang támogatása és az ügyfél nyomtatási, ha nem szeretné használni őket.
+     * **Bejelentkezési**: A felhasználónév, a Linux rendszerű virtuális gépen.
+     * **SSH Port**: Meghagyhatja az alapértelmezett érték 22.
+     * **Munkamenet típusa**: Módosítsa az értéket **XFCE**. A Linux-DSVM jelenleg csak XFCE desktop támogatja.
+   * **Az adathordozó lapon**: Kikapcsolhatja eredményes támogatása és az ügyfél nyomtatási, ha nem szeretné használni őket.
    * **A megosztott mappák**: Ha az ügyfél gépek csatlakoztatása Linux rendszerű virtuális gépen szeretné címtárak, adja hozzá az ügyfél gép könyvtárakat, hogy meg szeretné osztani az ezen a lapon a virtuális géppel.
 
 Bejelentkezés után a virtuális géphez SSH-ügyfél vagy a grafikus asztali XFCE X2Go ügyfélszámítógépen keresztül, készen áll az eszközöket, amelyek telepítése és konfigurálása történik meg a virtuális gép használatának megkezdéséhez. A XFCE látható alkalmazások parancsikonjai és asztali ikonok a számos olyan eszközzel.

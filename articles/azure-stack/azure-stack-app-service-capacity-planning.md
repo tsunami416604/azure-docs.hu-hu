@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: a769bb4cce84fe78f442cce8440e6e828ed7f76d
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 03d29b7f072aaab09b0677031ee34bd61d876ce6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354138"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242841"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Az Azure App Service-ben kiszolgálói szerepkörök az Azure Stackben kapacitástervezése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Állítsa be az Azure App Service az Azure Stacken kész éles környezet, meg kell terveznie a kapacitás, a rendszer támogatja a várt.  
 
@@ -80,9 +81,9 @@ Adja meg az Azure Functions a használatalapú csomag modell a felhasználók sz
 
 Amikor eldönti, megosztott webes feldolgozói szerepkörök száma használatához, tekintse át ezeket a szempontokat:
 
-- **Memória**: memória mérete a kritikus fontosságú erőforrás egy webes feldolgozói szerepkör esetében. Nincs elég memória a virtuális memória lemezről átváltásakor hatással van a webhely teljesítményét. Minden kiszolgálón az operációs rendszer 1,2 GB RAM szükséges. A küszöbérték fölött RAM segítségével webhelyeket.
-- **Aktív webhelyek százaléka**: általában az Azure Stack üzembe helyezés az Azure App Service-alkalmazások körülbelül 5 %-os aktívak. Azonban, amely egy adott időpontban aktív kérelmek aránya magasabb vagy alacsonyabb lehet. Egy aktív alkalmazás arány 5 %-os helyezze el az Azure Stack üzemelő példányon, egy Azure App Service-alkalmazások maximális számát (5 x 20 = 100) aktív webhelyek száma kevesebb mint 20 alkalommal kell lennie.
-- **Átlagos memória-erőforrás-igényű**: az alkalmazások éles környezetben megfigyelt átlagos memóriaigénye körülbelül 70 MB. Az erőforrás-igényű használja, minden webes feldolgozói szerepkörben működő számítógép vagy virtuális gépek számára fenntartott memória mérete számítható ki a következő:
+- **Memória**: Memória mérete a kritikus fontosságú erőforrás egy webes feldolgozói szerepkör esetében. Nincs elég memória a virtuális memória lemezről átváltásakor hatással van a webhely teljesítményét. Minden kiszolgálón az operációs rendszer 1,2 GB RAM szükséges. A küszöbérték fölött RAM segítségével webhelyeket.
+- **Aktív webhelyek százaléka**: Azure Stack üzembe helyezés az Azure App Service-alkalmazások körülbelül 5 %-os általában aktív. Azonban, amely egy adott időpontban aktív kérelmek aránya magasabb vagy alacsonyabb lehet. Egy aktív alkalmazás arány 5 %-os helyezze el az Azure Stack üzemelő példányon, egy Azure App Service-alkalmazások maximális számát (5 x 20 = 100) aktív webhelyek száma kevesebb mint 20 alkalommal kell lennie.
+- **Átlagos memória-erőforrás-igényű**: Az alkalmazások éles környezetben megfigyelt átlagos memóriaigénye körülbelül 70 MB. Az erőforrás-igényű használja, minden webes feldolgozói szerepkörben működő számítógép vagy virtuális gépek számára fenntartott memória mérete számítható ki a következő:
 
    `Number of provisioned applications * 70 MB * 5% - (number of web worker roles * 1044 MB)`
 

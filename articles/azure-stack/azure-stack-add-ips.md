@@ -15,15 +15,16 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: scottnap
-ms.openlocfilehash: b401139d417674cf58d2db264b442d7588cc34ba
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.lastreviewed: 09/17/2018
+ms.openlocfilehash: d81374b110523e48e06725d3d3153e61135471cc
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986230"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251622"
 ---
-# <a name="add-public-ip-addresses"></a>Nyilvános IP-címek hozzáadása
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*  
+# <a name="add-public-ip-addresses"></a>Add Public IP Addresses
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*  
 
 Ismerje meg, hogyan több nyilvános IP-címek hozzáadása az Azure Stackhez.  Ebben a cikkben a címeket, amelyek külső, nyilvános IP-címek nevezzük, de az Azure Stack az jelenti, tekintse meg az IP-címblokkok hozzáadása a külső hálózathoz.  E külső hálózathoz tartozó nyilvános internetre irányítható vagy az intraneten és használja privát címterét nem számít, hogy ez a cikk az alkalmazásában.  A lépések ugyanazok. 
 
@@ -49,7 +50,7 @@ Az első lépésben kell tennie, hogy a-Címblokk hozzáadása az Azure Stackhez
 5.  Kattintson a nyilvános IP-készletek használata csempe.
 6.  Kattintson a készlet IP hozzáadása gombra.
 7.  Adja meg az IP-készlet nevét.  A csak, lehetővé teszi, hogy könnyen azonosíthassa az IP-készlet, így meg lehet hívni bármire átnevezhető választott név.  Bevált gyakorlat, hogy a neve megegyezik a címtartományt, de nem szükséges.
-8.   Adja meg a-Címblokk szeretne hozzáadni a CIDR-jelölésrendszerben.  Például: 192.168.203.0/24
+8.   Adja meg a-Címblokk szeretne hozzáadni a CIDR-jelölésrendszerben.  Példa: 192.168.203.0/24
 9.  Ha megad egy érvényes CIDR-tartományt a cím címtartomány (CIDR-blokk) mezőbe a kezdő IP-cím, záró IP-cím és a rendelkezésre álló IP-címek mezők automatikusan kitöltődnek.  Ezek csak olvasható, és automatikusan jönnek létre, így ezek a cím tartományt mező értékének módosítása nélkül nem módosítható.
 10. Minden állapíthatja meg a panelen található információk áttekintése után kijavításához kattintson az Ok gombra a módosítás véglegesítéséhez és a címtartomány hozzáadása az Azure Stackhez.
 
