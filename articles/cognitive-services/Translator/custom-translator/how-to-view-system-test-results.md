@@ -5,16 +5,16 @@ description: Ha a tanítási sikeres, tekintse át a rendszer tesztek a betanít
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 701f97a006e7457fcbdcc835f87832b269f986a8
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 6cad142c050ca1de7e4c5f9b4415132a82f38c7b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630342"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215248"
 ---
 # <a name="view-system-test-results"></a>Rendszer teszteredményeinek megtekintése
 
@@ -42,7 +42,7 @@ A tesztelési lapot láthatja:
 
     **REF:** Ezt a mondatot a forrás mondat a tesztelési adathalmazon referencia fordítása.
 
-    **FŐ CÉLKISZOLGÁLÓ:** Ezt a mondatot a forrás mondat után a képzés hardverjavaslatok a modell által elvégzett automatikus fordítását.
+    **MT:** Ezt a mondatot a forrás mondat után a képzés hardverjavaslatok a modell által elvégzett automatikus fordítását.
 
     ![Rendszer vizsgálati eredmények összehasonlítása](media/how-to/how-to-system-test-results-2.png)
 
@@ -54,11 +54,11 @@ A fordítások letöltése hivatkozásra egy zip-fájl letöltéséhez. A zip-f�
 
 A letöltött zip-archívumot három fájlokat tartalmazza.
 
-1.  **Custom.MT.txt:** Ez a fájl tartalmazza a célként megadott nyelven, a felhasználó adatait a betanított modell által elvégzett Forrásnyelv a mondatok gép fordítások.
+1.  **custom.mt.txt:** Ez a fájl tartalmazza a célként megadott nyelven, a felhasználó adatait a betanított modell által elvégzett Forrásnyelv a mondatok gép fordítások.
 
-2.  **Ref.txt:** Ez a fájl tartalmazza a felhasználó által megadott cél nyelven Forrásnyelv a mondatok fordítása.
+2.  **ref.txt:** Ez a fájl tartalmazza a felhasználó által megadott cél nyelven Forrásnyelv a mondatok fordítása.
 
-3.  **Source.txt:** Ez a fájl tartalmazza a forrás nyelven mondatokat.
+3.  **source.txt:** Ez a fájl tartalmazza a forrás nyelven mondatokat.
 
     ![A letöltött rendszer terhelésiteszt-eredményei](media/how-to/how-to-download-system-test.png)
 

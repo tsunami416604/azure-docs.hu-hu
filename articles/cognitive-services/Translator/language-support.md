@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 3d25cfd39b4b4278fedf33e042d394208fd5eafc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 96f73d7d1324de9e5531aefcc4ee3b9a054cf941
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713179"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228049"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
@@ -118,7 +118,7 @@ A Transliterate módszer a következő nyelveket támogatja. A "/", a "<> –" a
 | héber | `he` | héber `Hebr` | <--> | Latin `Latn` |
 | hindi | `hi` | Devanagári `Deva` | <--> | Latin `Latn` |
 | japán | `ja` | japán `Jpan` | <--> | Latin `Latn` |
-| kannada | `kn` | kannada `Knda` | --> | Latin `Latn` |
+| kannada | `kn` | Kannada `Knda` | --> | Latin `Latn` |
 | malajálam | `ml` | malajálam `Mlym` | --> | Latin `Latn` |
 | maráthi | `mr` | Devanagári `Deva` | --> | Latin `Latn` |
 | orija | `or` | Orija `Orya` | <--> | Latin `Latn` |
@@ -126,7 +126,7 @@ A Transliterate módszer a következő nyelveket támogatja. A "/", a "<> –" a
 | szerb (cirill betűs) | `sr-Cyrl` | Cyrilice `Cyrl`  | --> | Latin `Latn` |
 | szerb (latin betűs) | `sr-Latn` | Latin `Latn` | --> | Cyrilice `Cyrl`|
 | tamil | `ta` | tamil `Taml` | --> | Latin `Latn` |
-| telugu | `te` | telugu `Telu` | --> | Latin `Latn` |
+| telugu | `te` | Telugu `Telu` | --> | Latin `Latn` |
 | thai | `th` | thai `Thai` | <--> | Latin `Latn` |
 
 ## <a name="dictionary"></a>Szótár

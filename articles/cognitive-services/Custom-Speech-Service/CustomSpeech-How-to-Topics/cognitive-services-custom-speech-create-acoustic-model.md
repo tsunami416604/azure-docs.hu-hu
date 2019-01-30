@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ms.openlocfilehash: 53e93a08782ba66e69b903c32c4c3c7417e5a801
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 0e4c21a064cdb0a60aef49482eee4b768112b899
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344574"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216421"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Oktatóanyag: Egyéni akusztikai modell létrehozása
 
@@ -48,7 +48,7 @@ Például:
 <a name="Preparing data to customize the acoustic model"></a>
 *   Ha egy adott beszélőre szeretné optimalizálni a felismerés hatékonyságát – például ha Franklin D. Roosevelt elnök kandalló előtti beszélgetéseinek átiratát szeretné elkészíteni –, akkor az audiofájloknak minél több, csak az adott beszélőtől származó példát kell tartalmazniuk.
 
-Az akusztikai modell testreszabásához készült akusztikai adatkészlet két részből áll: (1) a beszédadatokat tartalmazó hangfájlok készletéből, valamint (2) a hangfájlok mindegyikének szöveges átiratát tartalmazó fájlból.
+Az akusztikai modell testreszabása egy akusztikai adatkészlet két részből áll: (1) hang, a beszéd-adatokat tartalmazó fájlok és (2) egy fájlt, amely tartalmazza az összes hangfájlok beszédátírás egy készlete.
 
 ### <a name="audio-data-recommendations"></a>Hangadatokkal kapcsolatos javaslatok
 
@@ -80,7 +80,7 @@ Az akusztikai modell testreszabásához készült akusztikai adatkészlet két r
 
 Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorában egy hangfájl nevének és az annak megfelelő átiratnak kell szerepelnie. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
 
-  Például:
+  Példa:
 ```
   speech01.wav  speech recognition is awesome
 

@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f53b3cec843ca8016c61a360025b5e731b96f55
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: MT
+ms.openlocfilehash: b098ce78143cbcfd53d6ab1c7e4127df336f2bc4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815871"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212035"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -64,7 +64,7 @@ Ha már a Python 3-környezettel rendelkezik, vagy csak szeretné, az SDK telep�
 
 Bevezetés az Azure-jegyzetfüzetek történő fejlesztésbe, lásd: [Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md).
 
-Alapértelmezés szerint az Azure-jegyzetfüzetek használja, amely a 4GB memóriát és 1GB adat ingyenes szolgáltatási réteg. Azonban eltávolíthatja ezeket a korlátokat az Azure-jegyzetfüzetek projekt egy adatelemző virtuális gép példány csatolásával. További információkért lásd: [kezelése és konfigurálása az Azure-jegyzetfüzetek projektek - számítási kapacitás](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Alapértelmezés szerint az Azure-jegyzetfüzetek használja, amely a 4GB memóriát és 1GB adat ingyenes szolgáltatási réteg. Azonban eltávolíthatja ezeket a korlátokat az Azure-jegyzetfüzetek projekt egy adatelemző virtuális gép példány csatolásával. További információkért lásd: [kezelése és konfigurálása az Azure-jegyzetfüzetek projektek - számítási kapacitás](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="dsvm"></a>Adatelemző virtuális gép
 
@@ -248,7 +248,7 @@ A Databricks-fürt előkészítéséhez és mintafüzetek lekérése:
 
 1. Hozzon létre egy [Databricks-fürt](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) a következő beállításokkal:
 
-    | Beállítás | Érték |
+    | Beállítás | Value |
     |----|---|
     | Fürt neve | yourclustername |
     | A Databricks futtatókörnyezete | Any non ML runtime (non ML 4.x, 5.x) |
@@ -257,7 +257,7 @@ A Databricks-fürt előkészítéséhez és mintafüzetek lekérése:
 
     Csak akkor, ha a Databricks automatizált gépi tanulási használni, használja ezeket a beállításokat:
     
-    |   Beállítás | Érték |
+    |   Beállítás | Value |
     |----|---|
     | Munkavégző csomópont virtuális gépek típusai | Az optimalizált memóriájú virtuális gép előnyben részesített |
     | Automatikus skálázás engedélyezése | Törölje a jelet |
@@ -271,13 +271,13 @@ A Databricks-fürt előkészítéséhez és mintafüzetek lekérése:
     * [Hozzon létre egy könyvtárat](https://docs.databricks.com/user-guide/libraries.html#create-a-library) ezek a beállítások egyikével (_csak egyet az alábbi lehetőségek közül választhat_):
     
         * Az Azure Machine Learning-SDK telepítése _nélkül_ automatikus machine learning-funkció:
-            | Beállítás | Érték |
+            | Beállítás | Value |
             |----|---|
             |Forrás | Töltse fel a Python tojás vagy PyPI
             |PyPi neve | azureml-sdk[databricks]
     
         * Az Azure Machine Learning-SDK telepítése _a_ automatikus gépi tanulás:
-            | Beállítás | Érték |
+            | Beállítás | Value |
             |----|---|
             |Forrás | Töltse fel a Python tojás vagy PyPI
             |PyPi neve | azureml-sdk[automl_databricks]

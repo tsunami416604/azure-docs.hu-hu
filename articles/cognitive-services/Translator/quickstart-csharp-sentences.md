@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Mondathosszok lekérése, C# – Translator Text API'
+title: 'Gyors útmutató: Első mondat visszaadni, C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban fog elsajátíthatja meghatározása a mondat hossza .NET Core és a Translator Text API használatával.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: 868c19f8c9e42bcd4a03aa2c766dff185f6319a7
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: daa1afd2caf5d5bfa2452858501f550e4c7e387b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888341"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212018"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-c"></a>Gyors útmutató: A Translator Text API segítségével meghatározhatja a mondat hossza használatávalC#
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-c"></a>Gyors útmutató: A Translator Text API segítségével állapítsa meg, mondat hosszaC#
 
 Ebben a rövid útmutatóban fog elsajátíthatja meghatározása a mondat hosszúságok .NET Core és a Translator Text API használatával.
 

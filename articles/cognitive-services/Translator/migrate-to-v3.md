@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: ce6446caf74e16f69369d5ee8ee7b6342870e826
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6fa468308bb7187111a6f7f65366d83eaadd9494
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682595"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227777"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
@@ -41,16 +41,16 @@ Az alábbi listában szereplő V2 és V3 módszerek a v3-as módszerek és API-k
 
 | V2 API-metódus   | V3 API-kompatibilitás |
 |:----------- |:-------------|
-| Translate     | [Fordítása](reference/v3-0-translate.md)          |
+| Fordítás     | [Fordítása](reference/v3-0-translate.md)          |
 | TranslateArray      | [Fordítása](reference/v3-0-translate.md)        |
 | GetLanguageNames      | [Nyelvek](reference/v3-0-languages.md)         |
 | GetLanguagesForTranslate     | [Nyelvek](reference/v3-0-languages.md)       |
 | GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| Speak     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Detect     | [Észlelése](reference/v3-0-detect.md)         |
+| Beszéd     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| Észlelés     | [Észlelése](reference/v3-0-detect.md)         |
 | DetectArray     | [Észlelése](reference/v3-0-detect.md)         |
-| AddTranslation     | [A Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| AddTranslationArray    | [A Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| AddTranslation     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
+| AddTranslationArray    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
 | BreakSentences      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | GetTranslations      | A szolgáltatás már nem támogatott.         |
 | GetTranslationsArray      | A szolgáltatás már nem támogatott.         |
@@ -75,18 +75,18 @@ A Microsoft Translator V3 V2 díjszabása volt; ugyanúgy díjszabása karaktere
 
 | V3 metódus   | Karakterek számlázásban is megjelenik |
 |:----------- |:-------------|
-| Languages     | Egyetlen elküldött karakter, nincs számításba, díjmentesen.          |
-| Translate     | Száma alapján hány karaktert elküldése fordítás, és hány nyelvek a karakterek fordítja. elküldött 50 karakter hosszú lehet, és 5 nyelvek kért 50 x 5.           |
-| Transliterate     | Számoljuk el átbetűzésű-karakterek száma.         |
-| Dictionary lookup & example     | Számoljuk el szótár keresés és a példák-karakterek száma.         |
+| Nyelvek     | Egyetlen elküldött karakter, nincs számításba, díjmentesen.          |
+| Fordítás     | Száma alapján hány karaktert elküldése fordítás, és hány nyelvek a karakterek fordítja. elküldött 50 karakter hosszú lehet, és 5 nyelvek kért 50 x 5.           |
+| Átírás     | Számoljuk el átbetűzésű-karakterek száma.         |
+| Szótár keresési és példa     | Számoljuk el szótár keresés és a példák-karakterek száma.         |
 | BreakSentence     | Díjmentes.       |
-| Detect     | Díjmentes.      |
+| Észlelés     | Díjmentes.      |
 
 ## <a name="v3-end-points"></a>V3 végpontok
 
 Globális
 
-* API.cognitive.microsofttranslator.com
+* api.cognitive.microsofttranslator.com
 
 
 ## <a name="v3-api-text-translations-methods"></a>V3 API szöveg fordítások módszerek
@@ -111,10 +111,10 @@ A Microsoft Translator V3 Neurális gépi fordítás alapértelmezés szerint ha
 
 API v3-as szöveggel Neurális fordítással nem támogatja a standard szintű kategóriák (SMT, beszédfelismerés, szöveg, generalnn) használatát.
 
-| |Végpont|    GDPR-megfelelőség processzor|  Translator hubbal| Egyéni Translator (előzetes verzió) használata|
+| |Végpont|    GDPR-megfelelőség processzor|  Use Translator Hub| Egyéni Translator (előzetes verzió) használata|
 |:-----|:-----|:-----|:-----|:-----|
-|Translator Text API-Version 2| API.microsofttranslator.com|    Nem  |Igen    |Nem|
-|Translator Text API-verzió 3| API.cognitive.microsofttranslator.com|  Igen|    Nem| Igen|
+|Translator Text API-Version 2| api.microsofttranslator.com|    Nem  |Igen    |Nem|
+|Translator Text API-verzió 3| api.cognitive.microsofttranslator.com|  Igen|    Nem| Igen|
 
 **Translator Text API-verzió 3**
 * Az általánosan elérhető és teljes mértékben támogatott.
@@ -138,7 +138,7 @@ Nincs a fordító API-verzió létrehoz egy rekordot a fordítások. A fordítá
 
 * [A Microsoft adatvédelmi szabályzata](https://privacy.microsoft.com/privacystatement)
 * [A Microsoft Azure – jogi információk](https://azure.microsoft.com/support/legal)
-* [Online szolgáltatások használati feltételeit](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Online Services Terms](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>További lépések
 

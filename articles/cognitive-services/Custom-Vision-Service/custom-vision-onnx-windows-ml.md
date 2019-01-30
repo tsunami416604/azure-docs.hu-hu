@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Az ONNX-modell használata Windows ML-gel – Custom Vision Service'
+title: 'Oktatóanyag: Az ONNX-modell használata Windows gépi tanulás – Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Megismerheti, hogyan hozhat létre az Azure Cognitive Servicesből exportált ONNX modellt használó Windows UWP-alkalmazást.
 services: cognitive-services
 author: larryfr
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 10/16/2018
 ms.author: larryfr
-ms.openlocfilehash: f9ffbdd34c6fe7e8fc0f5e8ad8a49a3ad922f88a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: 55235c8c209a17a494c3879d61e22665ba7a893b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362970"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224904"
 ---
-# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Oktatóanyag: Custom Vision ONNX modell használata Windows ML-lel (előzetes verzió)
+# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Oktatóanyag: A Custom Vision az ONNX-modell használata Windows Machine Learning (előzetes verzió)
 
 Megismerheti, hogyan használhatja a Custom Vision Service-ből exportált ONNX modellt Windows ML-gel (előzetes verzió).
 

@@ -5,17 +5,17 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9af4f5223dfe269ace459c8a7de07fe6dd0c2427
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 41383b5bbad0eb5c32b98c57f3ea35e6018993e8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973961"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218121"
 ---
 # <a name="part-of-speech-tagging"></a>Rész-az-szövegrészeket
 
@@ -44,27 +44,27 @@ Ezek közé tartozik például a kategóriák *főnév* (általában jelölő sz
 | Másolat | együtt, a koordinációt | és, de vagy még|
 | CD | számok, kardinális | kilenc 20-at 1980 96 " |
 | DT | determiner |egy a-minden mindkét sem|
-| AZ EX | meglétet vizsgáló: Itt | Hiba |
-| KERETRENDSZER | külső word | enfant terrible hoi polloi je ne sais quoi |
+| EX | meglétet vizsgáló: Itt | Hiba |
+| FW | külső word | enfant terrible hoi polloi je ne sais quoi |
 | IN | preposition vagy megemlítése együttes használata| Ha, hogy a benne lévő |
 | JJ | melléknév vagy számok sorszámnál | kilencedik viszonylag execrable multimodális |
 | JJR | összehasonlító melléknév | gyorsabb, hatékonyabb olcsóbb |
 | JJS | melléknév superlative | ajánlott leggyorsabb legolcsóbb |
 | LS | lista-elem jelölőjének | (a) (b) 1 2 A B A. B. |
 | MD | modális – kiegészítő | is előfordulhat, hogy kell fog sikerült előfordulhat, hogy meg kell kerülnie |
-| NEURÁLIS HÁLÓZAT | főnév, közös, egyes számban vagy háttértár | Potato pénzt cipő |
+| NN | főnév, közös, egyes számban vagy háttértár | Potato pénzt cipő |
 | NNP | főnév, megfelelő, egyes számban | Kennedy Roosevelt Chicago Weehauken |
 | NNPS | főnév, megfelelő, plural | Springfields cserjék |
 | NNS | főnév, közös, plural | kódrészletek mice mezők |
 | PDT | üzem előtti determiner | az összes mindkét fél számos még ilyen meg arról, hogy ez |
 | POS | genitive jelölő | "a |
 | JELSZÓ-REPLIKÁCIÓS HÁZIREND | Személyes névmás | ő Phil azt tudom azt azokat, |
-| JELSZÓ-REPLIKÁCIÓS HÁZIREND$ | névmás birtokos | hers ő a saját meg azok a |
-| RB | módosítószót | klinikai csak |
+| PRP$ | névmás birtokos | hers ő a saját meg azok a |
+| RB | adverb | klinikai csak |
 | RBR | összehasonlító módosítószót | több további gloomier grander graver nagyobb grimmer nehezebb szankcióktól jobb nehezebb magasabb azonban nagyobb újabb Karcsúbb is meghatározhatnak kisebb, kevésbé tökéletesen lonelier hosszabb hangosabb alacsonyabb... |
 | RBS | módosítószót superlative | ajánlott legnagyobb bluntest legkorábbi legtávolabbi első legtávolabbi nagyon nehéz heartiest legmagasabb legnagyobb legalább második legfontosabb legrosszabb a legközelebbi legtöbb kevesebb |
 | FÜGGŐ ENTITÁS | particle | a kikapcsolva kapcsolatos ki beállítása |
-| SYM | Szimbólum | a(z) % & |
+| SYM | Szimbólum | % & |
 | ERRE: | "a" preposition vagy infinitive jelölő | erre: |
 | HŰHA | interjection | Hűha Hurrá howdy hello |
 | VB | igeként alap űrlapot | Adja meg működés közben hozzárendelése |
@@ -76,7 +76,7 @@ Ezek közé tartozik például a kategóriák *főnév* (általában jelölő sz
 | WDT | Mit jelent-determiner | hogy milyen amely |
 | WP | Mit jelent-névmás | akik akikkel |
 | WP$ | Mit jelent-névmás, birtokos | amelynek |
-| WRB | Mit jelent-módosítószót | Hogyan azonban, amikor ahol |
+| WRB | Wh-adverb | Hogyan azonban, amikor ahol |
 
 ## <a name="specification"></a>Specifikáció
 

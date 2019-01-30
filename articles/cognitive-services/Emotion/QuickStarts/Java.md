@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Érzelemfelismerés képeken szereplő arcokon – Emotion API, Java'
+title: 'Gyors útmutató: Érzelemfelismerés az arcok egy kép – Emotion API, a Java nyelven'
 description: Információk és egy kódminta segítségével ismerkedhet meg az Emotion API Androidhoz készült Javával való használatának első lépéseivel.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5c845c07eff2d4627dd756a49f4b3fee2fca6a7a
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: HT
+ms.openlocfilehash: a3250771c51495890c54060dc46b8bd88a8f54af
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237620"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228678"
 ---
-# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rövid útmutató: Alkalmazás létrehozása a képeken szereplő arcokon tükröződő érzelmek felismeréséhez.
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Gyors útmutató: Érzelemfelismerés az arcok a képen az alkalmazás létrehozása.
 
 > [!IMPORTANT]
 > Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól általánosan elérhető a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként. 
@@ -83,7 +83,7 @@ public class Main
 ```
 
 ## <a name="recognize-emotions-sample-response"></a>Érzelemfelismerési válaszminta
-A sikeres hívás egy, az arcrekordokat és a hozzájuk tartozó érzelempontszámokat tartalmazó tömböt ad vissza, amely az adatokat az arcot jelölő téglalap mérete szerint csökkenő sorrendben listázza. Az üres válasz azt jelzi, hogy a rendszer nem észlelt arcot. Az érzelemrekord a következő mezőket foglalja magában:
+A sikeres hívás egy, az arcrekordokat és a hozzájuk tartozó érzelempontszámokat tartalmazó tömböt ad vissza, amely az adatokat az arcot jelölő téglalap mérete szerinti csökkenő sorrendben listázza. Az üres válasz azt jelzi, hogy a rendszer nem észlelt arcot. Az érzelemrekord a következő mezőket foglalja magában:
 * faceRectangle – Az arcot jelölő téglalap helye a képen.
 * scores – A képen szereplő egyes arcokhoz tartozó érzelempontszámok.
 
