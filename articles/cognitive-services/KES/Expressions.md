@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: bdde2dfc9ab8e8ffdf7123c916538a8c98ecfce9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 335bcc025d2f3e972a02234da89e35c90c91afeb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129167"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222695"
 ---
 # <a name="structured-query-expression"></a>Strukturált lekérdezési kifejezés
 
@@ -29,17 +29,17 @@ Strukturált lekérdezési kifejezéssé szerezhetők be [ *értelmezése* ](int
 
 Attribútum lekérdezési kifejezés egy objektumokat a megfelelő szemben egy adott attribútum alapján azonosítja.  Különböző megfelelő műveletek támogatottak a attribútum típusától függően és indexelt művelet a megadott a [séma](SchemaFormat.md):
 
-| Típus | Művelet | Példák |
+| Typo | Művelet | Példák |
 |------|-------------|------------|
-| Sztring | egyenlő | Title = "segít a rejtett szemantikai" (kanonikus + szinonimák) |
-| Sztring | egyenlő | Author.Name=='susan t dumais (kanonikus csak)|
-| Sztring | starts_with | Title = "segít a rejtett s"... |
+| Karakterlánc | egyenlő | Title = "segít a rejtett szemantikai" (kanonikus + szinonimák) |
+| Karakterlánc | egyenlő | Author.Name=='susan t dumais (kanonikus csak)|
+| Karakterlánc | starts_with | Title = "segít a rejtett s"... |
 | Int32/Int64/dupla | egyenlő | Év = 2000 |
 | Int32/Int64/dupla | starts_with | Év = "20"... (minden olyan decimális értéket "20" kezdetű) |
-| Int32/Int64/dupla | is_between | Év&lt;2000 <br/> Év&lt;= 2000 <br/> Év&gt;2000 <br/> Év&gt;= 2000 <br/> Year=[2010,2012) *(tartalmazza a bal oldali csak határérték: 2010, 2011)* <br/> Év = [2000,2012] *(mindkét tartományhatár-értékek tartalmazza: 2010, 2011, 2012)* |
+| Int32/Int64/dupla | is_between | Év&lt;2000 <br/> Év&lt;= 2000 <br/> Év&gt;2000 <br/> Év&gt;= 2000 <br/> Year=[2010,2012) *(csak a bal oldali határ értékét tartalmazza: 2010, 2011)* <br/> Év = [2000,2012] *(mindkét tartományhatár-értékek tartalmazza: 2010, 2011, 2012)* |
 | Dátum | egyenlő | Születési dátum ='1984. 05. 14' |
-| Dátum | is_between | Születési dátum&lt;= "2008/03/14' <br/> PublishDate = ["2000-01-01", "2009-12-31'] |
-| GUID | egyenlő | ID = "602DD052-CC47-4B23-A16A-26B52D30C05B" |
+| Dátum | is_between | Születési dátum&lt;= "2008/03/14' <br/> PublishDate=['2000-01-01','2009-12-31'] |
+| GUID | egyenlő | Id='602DD052-CC47-4B23-A16A-26B52D30C05B' |
 
 
 Például a kifejezés "Title ="segít a rejtett s"..." megfelel az összes academic kiadványok esetében, amelynek címe "segít a rejtett s" karakterlánccal kezdődik.  Annak érdekében, hogy ez a kifejezés kiértékelése, az attribútum a cím meg kell adnia a "starts_with" műveletet a sémát, az index összeállításához.

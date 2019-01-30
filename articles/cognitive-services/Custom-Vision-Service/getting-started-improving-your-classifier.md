@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: pafarley
-ms.openlocfilehash: 2bee7f0af98bf03a13e376dea9dbf083b3f61815
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 72ba363201b27a8ca31c73af1d0cceb436de468d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340290"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209392"
 ---
 # <a name="how-to-improve-your-classifier"></a>Tartalombesoroló teljesítményének hogyan
 
@@ -41,23 +41,23 @@ Egy másik szempont, hogy győződjön meg arról, hogy az adatok kiegyensúlyoz
 
 Adja meg a rendszerkép található, mi a rendszer elküldi az osztályozó által igénybe vett a normál használat során jellemzőek. Például egy "apple" osztályozó tanítása, az osztályozó által igénybe vett nem lehet olyan pontos, ha csak betanításához alma lemezeket, de a márka alapján történő fényképek alma fák a fényképek. Többek között a lemezképek különböző fog ellenőrizze, hogy az osztályozó által igénybe vett nem torzítatlan, és jól generalize is. Az alábbiakban néhány módszert is választja ki a tanítási állítottak több különböző:
 
-__Háttér:__ adja meg az objektum elé különböző hátterek (vagyis a lemezre és a gyümölcs pékséglánc tasakban gyümölcs) lemezképek. Fényképek környezetben jobb, mint a fényképek semleges háttér előtt, az osztályozó által igénybe vett további információkat nyújtanak.
+__Háttér:__ Adja meg az objektum elé különböző hátterek (vagyis a lemezre és a gyümölcs pékséglánc tasakban gyümölcs) lemezképek. Fényképek környezetben jobb, mint a fényképek semleges háttér előtt, az osztályozó által igénybe vett további információkat nyújtanak.
 
 ![Háttér-minták képe](./media/getting-started-improving-your-classifier/background.png)
 
-__Megvilágítási:__ adja meg a képeket a változatos világítás (azt jelenti, hozott-nal, flash, magas, stb.), különösen akkor, ha az előrejelzéshez használt rendszerképek különböző megvilágítási rendelkezik. Emellett hasznos változatos színtelítettség, hue és fényerő képeket is tartalmaznak.
+__Megvilágítási:__ Adja meg a képeket a változatos világítás (azt jelenti, hozott-nal, flash, magas, stb.), különösen akkor, ha az előrejelzéshez használt rendszerképek különböző megvilágítási rendelkezik. Emellett hasznos változatos színtelítettség, hue és fényerő képeket is tartalmaznak.
 
 ![Világítás minták képe](./media/getting-started-improving-your-classifier/lighting.png)
 
-__Objektum mérete:__ adjon meg képeket, amelyben az objektumok a különböző méretezési rögzítése az objektumot különböző részeit. Például egy fényképet származó és az egyetlen banán közelképe fürtök. Különböző méretezési segít jobban generalize az osztályozó által igénybe vett.
+__Objektum mérete:__ Adja meg a képeket, amelyben az objektumok az objektum különböző részeinek rögzítése változatos méretezési tartoznak. Például egy fényképet származó és az egyetlen banán közelképe fürtök. Különböző méretezési segít jobban generalize az osztályozó által igénybe vett.
 
 ![A minták mérete képe](./media/getting-started-improving-your-classifier/size.png)
 
-__Kamera szöge:__ adjon meg másik kamera szögek képekből. Összes fényképeit veszik rögzített kamerák (például a térfigyelő kamerák) vannak beállítva, hogy rendel másik címkét minden kamera akkor is, ha a ugyanazon objektumok overfitting – a fontos szolgáltatása, a nem kapcsolódó objektumok (például lampposts) modellezési elkerülése érdekében rögzítése.
+__Kamera szöge:__ Adjon meg másik kamera szögek képekből. Összes fényképeit veszik rögzített kamerák (például a térfigyelő kamerák) vannak beállítva, hogy rendel másik címkét minden kamera akkor is, ha a ugyanazon objektumok overfitting – a fontos szolgáltatása, a nem kapcsolódó objektumok (például lampposts) modellezési elkerülése érdekében rögzítése.
 
 ![Szög minták képe](./media/getting-started-improving-your-classifier/angle.png)
 
-__Stílus:__ adja meg a képeket, különböző stílust ugyanahhoz az osztályhoz (azaz különféle citrusfélékről). Azonban ha az objektumok a jelentősen eltérő stílusok (azaz Mickey egér és a egy valós beszédhelyzetek rat) lemezképek, ajánlott címkézze külön osztályokat jobb jelölik, mint a különböző szolgáltatások.
+__Stílusa:__ Adja meg a képeket, különböző stílust ugyanahhoz az osztályhoz (azaz különféle citrusfélékről). Azonban ha az objektumok a jelentősen eltérő stílusok (azaz Mickey egér és a egy valós beszédhelyzetek rat) lemezképek, ajánlott címkézze külön osztályokat jobb jelölik, mint a különböző szolgáltatások.
 
 ![Style-minták képe](./media/getting-started-improving-your-classifier/style.png)
 

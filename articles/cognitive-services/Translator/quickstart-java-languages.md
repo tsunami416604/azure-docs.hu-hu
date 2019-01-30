@@ -1,21 +1,21 @@
 ---
-title: 'Gyors útmutató: Java - támogatott nyelvek listájának lekérése a Translator Text API'
+title: 'Gyors útmutató: Támogatott nyelvek, a Java - listájának lekérése a Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban a fordítás, átbetűzésű és a Translator Text API használatával szótár keresési támogatott nyelvek listájának lekérése.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 9a5985adb92799726951ad37c1dbd0b72c6c9709
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 937fd58b28a3e64f7f4f9fc4bf52e8280af81136
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889004"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226972"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-java"></a>Gyors útmutató: Java használatával támogatott nyelvek listáját a Translator Text API használatával
 
@@ -26,7 +26,7 @@ Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [JDK 7 vagy újabb verzió](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle-t](https://gradle.org/install/)
+* [Gradle](https://gradle.org/install/)
 * Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
 
 ## <a name="initialize-a-project-with-gradle"></a>Gradle-projekt inicializálása

@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Szándék felismerése beszédből a C#-hez készült Speech SDK használatával'
+title: 'Oktatóanyag: Ismeri fel a speech leképezések SDK-val a beszéd használata a C#'
 titleSuffix: Azure Cognitive Services
 description: Ezen oktatóanyag segítségével megtanulhatja, hogyan ismerheti fel a szándékot beszédből a C#-hez készült Speech SDK használatával.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 64fa194225c7e9fa4c272ca8a9e95b44282ec1df
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: e810450a8934a8df921c5d952a55ab0deaf853ec
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466477"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227971"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Oktatóanyag: Szándék felismerése beszédből a C#-hez készült Speech SDK használatával
+# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Oktatóanyag: Ismeri fel a beszéd, a beszéd SDK-t a szándékC#
 
 [!INCLUDE [Article selector](../../../includes/cognitive-services-speech-service-how-to-recognize-intents-from-speech-selector.md)]
 

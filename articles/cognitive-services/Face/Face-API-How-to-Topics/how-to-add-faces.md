@@ -1,29 +1,29 @@
 ---
-title: 'Példa: Arcok hozzáadása – Face API'
+title: 'Példa: Arcok – Face API hozzáadása'
 titleSuffix: Azure Cognitive Services
 description: A Face API használatával arcokat adhat a képekre.
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: fb5d03e2cb3c11daf7a94966fda46345ee910ded
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: f443eb13650483bc3ee63dad59cc40b8042bc35b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125102"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222814"
 ---
-# <a name="example-how-to-add-faces"></a>Példa: Hogyan lehet arcokat hozzáadni
+# <a name="example-how-to-add-faces"></a>Példa: Arcok hozzáadása
 
 Ez az útmutató ismerteti az ajánlott eljárást nagy mennyiségű emberek és arcok PersonGrouphoz adására.
 Ugyanez a stratégia vonatkozik a FaceList és a LargePersonGroup esetére is.
 A példák a Face API ügyfélkódtár használatával C# nyelven íródtak.
 
-## <a name="step-1-initialization"></a>1. lépés: Inicializálás
+## <a name="step-1-initialization"></a>1. lépés: Az inicializálás
 
 Több változó deklarálása és a kérések ütemezését végző segédfüggvény megvalósítása.
 
@@ -60,17 +60,17 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step-2-authorize-the-api-call"></a>2. lépés: API-hívás engedélyezése
+## <a name="step-2-authorize-the-api-call"></a>2. lépés: Engedélyezze az API-hívás
 
-Az ügyfélkódtár használatakor az előfizetési kulcs megadása a FaceServiceClient osztály konstruktorán keresztül történik. Például:
+Az ügyfélkódtár használatakor az előfizetési kulcs megadása a FaceServiceClient osztály konstruktorán keresztül történik. Példa:
 
 ```CSharp
 FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-Az előfizetési kulcs az Azure Portal Marketplace oldaláról szerezhető be. Lásd [Előfizetések](https://www.microsoft.com/cognitive-services/en-us/sign-up).
+Az előfizetési kulcs az Azure Portal Marketplace oldaláról szerezhető be. Lásd az [előfizetéseket](https://www.microsoft.com/cognitive-services/en-us/sign-up).
 
-## <a name="step-3-create-the-persongroup"></a>3. lépés: PersonGroup létrehozása
+## <a name="step-3-create-the-persongroup"></a>3. lépés: Az is lehet PersonGroup létrehozása
 
 A „MyPersonGroup” nevű PersonGroup létrejön a személyek mentésére.
 A kérelem időket a `_timeStampQueue` sorba állítja, az általános ellenőrzés biztosítása érdekében.
@@ -82,7 +82,7 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-to-the-persongroup"></a>4. lépés: A személyek létrehozása a PersonGroup csoportba
+## <a name="step-4-create-the-persons-to-the-persongroup"></a>4. lépés: Az is lehet PersonGroup személyeket létrehozása
 
 A személyek egyidejűleg jönnek létre és a hívási limit túllépésének megelőzésére `await WaitCallLimitPerSecondAsync()` is alkalmazásra kerül.
 
@@ -97,7 +97,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step-5-add-faces-to-the-persons"></a>5. lépés: Arcok adása a személyekhez
+## <a name="step-5-add-faces-to-the-persons"></a>5. lépés: Arcok személyek hozzáadása
 
 Arcok hozzáadása több személyhez párhuzamosan, egy konkrét személyhez pedig szekvenciálisan történik.
 Újra csak a `await WaitCallLimitPerSecondAsync()` meghívásával biztosítjuk, hogy a kérések gyakorisága a határértékeken belül maradjon.

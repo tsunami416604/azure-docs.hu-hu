@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: ac97cf3e269652dc33ce4211947b45631228a697
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e6f13994d404d58082b953fc98ac6028eea2e43e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463286"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216195"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -169,7 +169,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{APPLICATION_ID} | A közzétett a LUIS-alkalmazás azonosítója. |
 |{APPLICATION_ENVIRONMENT} | A környezet a közzétett LUIS-alkalmazás. Használja a következő értékek egyikét:<br/>```PRODUCTION```<br/>```STAGING``` |
@@ -197,7 +197,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{APPLICATION_ID} | A betanított LUIS-alkalmazás Alkalmazásazonosítója. |
 |{APPLICATION_VERSION} | Az alkalmazás verziója a betanított LUIS-alkalmazás. |
@@ -219,7 +219,7 @@ Sikeres művelet esetén a válasz a LUIS alkalmazáscsomag-fájl. Mentse a fáj
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancsot a tároló futtatásához. A parancs paraméterei a következők:
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{ENDPOINT_KEY} | Ez a kulcs segítségével a tárolót. Ne használja a kezdő szintű kulcs. |
 |{BILLING_ENDPOINT} | A számlázási végpont értékét az Azure Portalon Language Understanding áttekintése oldalon érhető el.|
@@ -268,7 +268,7 @@ Használja a gazdagép https://localhost:5000, API-k tároló.
 
 A lekérdezési paraméterek konfigurálása módját és a lekérdezésekre adott válaszok adja vissza:
 
-|Lekérdezési paraméter|Típus|Cél|
+|Lekérdezési paraméter|Typo|Cél|
 |--|--|--|
 |`q`|sztring|A felhasználó utterance (kifejezés).|
 |`timezoneOffset`|szám|A timezoneOffset lehetővé teszi, hogy [időzóna módosítása](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) az előre összeállított entitások datetimeV2 használják.|

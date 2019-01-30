@@ -6,18 +6,18 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e9b3d3207f5aca6cba3555ba2578b5c66b3bd193
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 79ed6f1d2dc5495994d2522abf5af391cc79b705
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343691"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226043"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Gyors útmutató: Használja a Bing Speech recognition-szolgáltatási kódtára c.&#35; a .NET Windows
+# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Gyors útmutató: A Bing Speech recognition szolgáltatás kódtára c.&#35; a .NET Windows
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -52,7 +52,7 @@ A beszédfelismerő API a Cognitive Services-(korábban Project Oxford) részét
 
 2. Kattintson duplán a SpeechClient.sln nevű Visual Studio 2015-megoldás (.sln) fájl megnyitásához. A megoldás megnyílik a Visual Studióban.
 
-## <a name="step-2-build-the-sample-application"></a>2. lépés: A minta-alkalmazás létrehozása
+## <a name="step-2-build-the-sample-application"></a>2. lépés: A mintaalkalmazás létrehozása
 
 Nyomja le a Ctrl + Shift + B, vagy válassza ki **összeállítása** a menüszalag menü. Válassza ki **megoldás fordítása**.
 
@@ -64,17 +64,17 @@ Nyomja le a Ctrl + Shift + B, vagy válassza ki **összeállítása** a menüsza
 
 3. Futtatás `SpeechClientSample.exe` a következő argumentumokkal:
 
-   * Arg [0]: A bemeneti WAV hangfájl adja meg.
-   * Arg [1]: Adja meg a hang területi beállítás.
-   * Arg: [2]: Adja meg a felismerés mód: *rövid* számára a `ShortPhrase` mód és *hosszú* a a `LongDictation` mód.
+   * [0] arg: Adjon meg egy bemeneti audio WAV-fájlt.
+   * [1]. arg: Adja meg a hang területi beállítás.
+   * Arg: [2]: Adja meg a felismerés mód: *Rövid* számára a `ShortPhrase` mód és *hosszú* számára a `LongDictation` mód.
    * [3]. arg: Adja meg az előfizetési kulcsot a speech recognition szolgáltatáshoz való hozzáféréshez.
 
 ## <a name="samples-explained"></a>A minták ismertetése
 
 ### <a name="recognition-modes"></a>Elismerés módok
 
-* `ShortPhrase` mód: az utterance (kifejezés), legfeljebb 15 másodperc, mennyi ideig. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és egy végső legjobb eredményt kap.
-* `LongDictation` mód: hosszú az utterance (kifejezés), akár 10 perc múlva. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és több végső eredményt is, ahol azt jelzi, a kiszolgáló mondaton belüli szünetet alapján kap.
+* `ShortPhrase` mód: Az utterance (kifejezés), legfeljebb 15 másodperc hosszúságú. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és egy végső legjobb eredményt kap.
+* `LongDictation` mód: Az utterance (kifejezés), akár 10 perc hosszú. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és több végső eredményt is, ahol azt jelzi, a kiszolgáló mondaton belüli szünetet alapján kap.
 
 ### <a name="supported-audio-formats"></a>Hangformátumok támogatott
 
@@ -88,20 +88,20 @@ A beszédfelismerő API a következő kodekek segítségével audio/WAV támogat
 
 Hozzon létre egy SpeechClient, először hozzon létre egy beállítások objektumot kell. A beállítások objektum paraméterek készletével, amely a speech service viselkedését konfigurálja. A következő mezőket áll:
 
-* `SpeechLanguage`: A hang, a beszéd szolgáltatásnak küldött a területi beállítás.
-* `ServiceUri`: Az a beszédfelismerési szolgáltatás hívásához használt végpont.
-* `AuthorizationProvider`: Egy jogkivonatok beolvasni a beszédfelismerési szolgáltatás eléréséhez használt IAuthorizationProvider megvalósítása. Bár a minta lehetővé teszi a Cognitive Services-engedélyezési szolgáltató, erősen ajánlott, hogy hoz létre a saját implementációjához token-gyorsítótárazási kezelésére.
+* `SpeechLanguage`: A hang, a beszéd szolgáltatásnak küldött területi beállítása szerint.
+* `ServiceUri`: A végpont hívja a speech service segítségével.
+* `AuthorizationProvider`: Jogkivonatok beolvasni a beszédfelismerési szolgáltatás eléréséhez használt IAuthorizationProvider megvalósítása. Bár a minta lehetővé teszi a Cognitive Services-engedélyezési szolgáltató, erősen ajánlott, hogy hoz létre a saját implementációjához token-gyorsítótárazási kezelésére.
 * `EnableAudioBuffering`: Egy speciális beállítás. Lásd: [kapcsolat kezelése](#connection-management).
 
 ### <a name="speech-input"></a>Bemeneti
 
 A SpeechInput objektumot két mezőt tartalmaz:
 
-* **Hang**: egy Ön által választott, amelyről az SDK lekéri a hang stream megvalósítását. Ez lehet bármely [stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) , amely támogatja az olvasó.
+* **Hang**: Egy Ön által választott, amelyről az SDK lekéri a hang stream megvalósítását. Ez lehet bármely [stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) , amely támogatja az olvasó.
    > [!NOTE]
    > Az SDK-t a konce datového proudu észlel, amikor visszatér a stream **0** olvasási.
 
-* **RequestMetadata**: metaadatait, a beszéd kérelmet. További információkért lásd: a [referencia](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
+* **RequestMetadata**: A beszédfelismerés kérelem metaadatait. További információkért lásd: a [referencia](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
 
 ### <a name="speech-request"></a>Beszéd kérelem
 

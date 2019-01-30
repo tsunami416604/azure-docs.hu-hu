@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a296576d3d7983b710727923043091f5660b693d
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 196e2fadea10c1527576961b0e4b31c058cf9ba6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002552"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223476"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Az Azure File Sync használatával regisztrált kiszolgálók kezelése
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt nem átalakításával keletkező a Windows-kiszolgálók az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -191,5 +191,6 @@ Az Azure File Sync egy Windows Server virtualization gazdagépen futó virtuáli
 
 ## <a name="see-also"></a>Lásd még
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
-- [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md) 
+- [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
+- [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)
 - [Az Azure File Sync hibaelhárítása](storage-sync-files-troubleshoot.md)

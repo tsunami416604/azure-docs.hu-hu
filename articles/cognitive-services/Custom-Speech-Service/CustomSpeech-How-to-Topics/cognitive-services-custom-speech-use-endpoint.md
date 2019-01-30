@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 9f1a21d6f099bc27c81e8c254f7df73d6c3e585d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3f99172f486c374cdbd0b6ebd50fdf7bfec98ec3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341803"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227148"
 ---
 # <a name="use-a-custom-speech-to-text-endpoint"></a>Egyéni beszédfelismerési végpont használata
 
@@ -36,10 +36,10 @@ A szolgáltatás azt feltételezi, hogy valós időben továbbított adatok. Gyo
 
 Az egyéni végpontra kérést küldhet a beszédfelismerő ügyfélkódtárának használatával, indítsa el a felismerés ügyfél. Az ügyfél SDK-t beszédet használhat a [NuGet](http://nuget.org/). Keresse meg *beszédfelismerés*, és válassza ki a speech recognition csomag a Microsoft a platformhoz. Néhány mintakódját találhatók [GitHub](https://github.com/Microsoft/Cognitive-Speech-STT-Windows). Az ügyfél beszéd SDK egy gyári osztályt biztosít a **SpeechRecognitionServiceFactory**, amely az alábbi módszereket kínál:
 
-  *   ```CreateDataClient(...)```: A felismerés ügyfél.
-  *   ```CreateDataClientWithIntent(...)```: Adatok felismerés rendelkező ügyfelet szándékot.
-  *   ```CreateMicrophoneClient(...)```: A mikrofon felismerés ügyfél.
-  *   ```CreateMicrophoneClientWithIntent(...)```: Egy mikrofon felismerése szándékot az ügyfél.
+  *   ```CreateDataClient(...)```: Adatok felismerés ügyfél.
+  *   ```CreateDataClientWithIntent(...)```: Leképezés rendelkező adatok felismerés ügyfelet.
+  *   ```CreateMicrophoneClient(...)```: Mikrofon felismerés ügyfél.
+  *   ```CreateMicrophoneClientWithIntent(...)```: Mikrofon felismerés ügyfél-leképezés.
 
 Részletes dokumentációjáért lásd: a [Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/speech/home). A Custom Speech Service végpontok szolgáltatásokhoz közös SDK támogatja.
 

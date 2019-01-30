@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 4ecac47de08b458eac375f8f5e774c396aeb2f5d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 23c532f6c344f8be37c3bf3d77f30effa4ec17e8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448108"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227709"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése megadott felhasználóknak Azure Notification Hubs használatával
 
@@ -86,7 +86,7 @@ Ha szeretné a háttér-szolgáltatásként használhatja a Mobile Apps, tekints
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. A `ViewController.h`, adja hozzá a következő `#define` után az importálási utasításokban. Helyettesítse be a `<Enter Your Backend Endpoint>` helyőrzőt az előző szakaszban az alkalmazás háttérrendszere központi telepítéséhez használt cél URL-címe. Például: *http://your_backend.azurewebsites.net*.
+4. A `ViewController.h`, adja hozzá a következő `#define` után az importálási utasításokban. Helyettesítse be a `<Enter Your Backend Endpoint>` helyőrzőt az előző szakaszban az alkalmazás háttérrendszere központi telepítéséhez használt cél URL-címe. Például: `http://your_backend.azurewebsites.net`.
 
     ```objc
     #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"

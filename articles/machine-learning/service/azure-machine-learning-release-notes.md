@@ -11,16 +11,49 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5341c4901ca2a7aa0b4935e13d06c8fb5a1f0d1b
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
-ms.translationtype: MT
+ms.openlocfilehash: 9556a87b8de08dadb211d73e93f3daa9033c2cc1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304097"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221317"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások. 
+
+## <a name="2019-01-28"></a>2019-01-28
+
+### <a name="azure-machine-learning-sdk-for-python-v1010"></a>Az Azure Machine Learning SDK for Python v1.0.10
+
++ **SDK-referenciadokumentumok**: https://aka.ms/aml-sdk
+
++ **Módosítások**: 
+  + Az Azure Machine Learning SDK már nem rendelkezik azure-cli csomag függőségként. Pontosabban az azure-cli-core és az azure-cli-profil függőségek azureml-core lettek távolítva. A felhasználót érintő változások a következők:
+    + Ha "az login" végrehajtása, és ezután azureml-sdk-val, az SDK elvégzi a böngészőben vagy a kód eszközbejelentkezés még egyszer. "Az login" által létrehozott hitelesítő adatok munkalehetőségek nem használ.
+    + Azure CLI-vel hitelesítést, például "az login"kifejezést, használja a _azureml.core.authentication.AzureCliAuthentication_ osztály. Az Azure CLI-hitelesítést, hajtsa végre _pip-telepítést az azure-cli_ az azureml-SDK-t telepítette a Python-környezetet.
+    + Ha "az login" egyszerű szolgáltatás használatával az automation, azt javasoljuk, _azureml.core.authentication.ServicePrincipalAuthentication_ osztályt, azureml-sdk nem fogja használni az azure CLI által létrehozott hitelesítő adatok állapota. 
+
++ **Hibajavítások**: Ez a kiadás többnyire tartalmaz kisebb hibajavítások
+
+### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.8
+
++ **SDK-referenciadokumentumok**: https://aka.ms/data-prep-sdk
+
++ **Hibajavítások**
+  + Jelentősen javult az első adatok profilok teljesítményét.
+  + Hiba történt a jelentéskészítéssel kapcsolatos rögzített kisebb hibák.
+  
+### <a name="azure-portal-new-features"></a>Az Azure portal: új funkciók
++ Új áthúzása diagramkészítési élmény a jelentések. Felhasználók is húzza az oszlop vagy attribútum a jól a diagramterület, ahol a rendszer automatikusan kiválasztja a felhasználó az adatok típusa alapján a megfelelő diagramtípus. A felhasználók módosítsa a típusát, a többi alkalmazható vagy adjon hozzá további attribútumokat.
+
+    Diagram típusokat támogatja:
+    - Vonaldiagram
+    - Hisztogram
+    - Halmozott sáv diagram
+    - Box-diagram
+    - Pontdiagram
+    - Buborék diagram
 
 ## <a name="2019-01-14"></a>2019-01-14
 

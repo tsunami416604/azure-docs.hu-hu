@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ms.openlocfilehash: 6af2da9ffc7678a58fcf1c647ba89c586066d2ad
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 0798fb16954d2d0b5e0d614d619cd772670d30c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339096"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218087"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Oktatóanyag: Egyéni nyelvi modell létrehozása
 
@@ -55,7 +55,7 @@ A nyelvi adatokra vonatkozó főbb követelményeket az alábbi táblázat fogla
 
 | Tulajdonság | Érték |
 |----------|-------|
-| Szövegkódolás | en-US: US-ACSII vagy UTF-8, illetve zh-CN: UTF-8|
+| Szövegkódolás | en-US: US-ACSII or UTF-8 or zh-CN: UTF-8|
 | Kimondott szövegek száma soronként | 1 |
 | Maximális fájlméret | 200 MB |
 | Megjegyzések | az egyes karaktereket 4-nél többször ne ismételje (például „aaaaa”)|

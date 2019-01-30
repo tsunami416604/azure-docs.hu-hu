@@ -6,21 +6,21 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 7485ca1e4b1143ed46c9b3bef9ca66af0638b4f8
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 80cf0d9970eb7052eeb19fb297176453864202cf
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599416"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205695"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
-## <a name="speech-sdk-120-2018-december-release"></a>Beszédfelismerés SDK 1.2.0-s vagy annál újabb: 2018. – December kiadás
+## <a name="speech-sdk-120-2018-december-release"></a>Speech SDK 1.2.0: 2018. – December kiadás
 
 **Új funkciók**
 
@@ -52,7 +52,7 @@ ms.locfileid: "53599416"
 * Kijavítva egy probléma, amely a végső eredményt sikertelen fordítások hiányzó vezethet.
 * C#: Ha egy aszinkron művelet nem volt várni a fő szálát az, volt lehetséges a felismerő sikerült eldobva, mielőtt az aszinkron feladat befejeződött.
 * Java: Kijavítva egy probléma, a Java virtuális gép összeomlás eredményez.
-* Objective-c Rögzített enumerálási leképezés; RecognizedIntent visszaadott RecognizingIntent helyett.
+* Objective-C: Rögzített enumerálási leképezés; RecognizedIntent visszaadott RecognizingIntent helyett.
 * JavaScript: Készlet alapértelmezett kimeneti formátum a "simple" SpeechConfig.
 * JavaScript: A JavaScript a konfigurációs objektum tulajdonságainak és egyéb nyelvekhez közötti inkonzisztencia eltávolítása.
 
@@ -61,7 +61,7 @@ ms.locfileid: "53599416"
 * Frissítve, és rögzített több mintát (például kimeneti beszédhangot fordítási stb).
 * A Node.js-minták hozzáadva a [mintaadattár](https://aka.ms/csspeech/samples).
 
-## <a name="speech-sdk-110"></a>Beszéd 1.1.0-s SDK
+## <a name="speech-sdk-110"></a>Speech SDK 1.1.0
 
 **Új funkciók**
 
@@ -92,21 +92,21 @@ ms.locfileid: "53599416"
 
 * Hozzáadja a C++ és C# a lehívásos és a leküldéses stream használati samplea a [mintaadattár](https://aka.ms/csspeech/samples).
 
-## <a name="speech-sdk-101"></a>Beszéd 1.0.1 SDK
+## <a name="speech-sdk-101"></a>Speech SDK 1.0.1
 
 Hibajavításokat tartalmaz, és megbízhatóság fejlesztései:
 
 * Felismerő értékesítésére versenyhelyzet miatt rögzített lehetséges végzetes hiba
 * Rögzített lehetséges végzetes hiba esetén az adott Orientation tulajdonságait.
 * A hozzáadott további hiba és a paraméter ellenőrzése.
-* Objective-c Rögzített lehetséges végzetes hiba okozza a NSString felülbírálása nevét.
-* Objective-c API beállított láthatóságát
+* Objective-C: Rögzített lehetséges végzetes hiba okozza a NSString felülbírálása nevét.
+* Objective-C: API beállított láthatóságát
 * JavaScript: Rögzített eseményeket és azok is észleltünk adattartalmakat.
 * Dokumentáció fejlesztései.
 
 Az a [mintaadattár](https://aka.ms/csspeech/samples), egy új mintát, JavaScript hozzá lett adva.
 
-## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services beszéd SDK 1.0.0-s: 2018. szeptember kiadás
+## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services Speech SDK 1.0.0: 2018. szeptember kiadás
 
 **Új funkciók**
 
@@ -118,7 +118,7 @@ Az a [mintaadattár](https://aka.ms/csspeech/samples), egy új mintát, JavaScri
 * Ebben a kiadásban bevezetett kompatibilitástörő változások számos.
   Ellenőrizze a [ezt oldal](https://aka.ms/csspeech/breakingchanges_1_0_0) részleteiről.
 
-## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services beszéd SDK 0.6.0: 2018 augusztus kiadás
+## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services Speech SDK 0.6.0: 2018 augusztus kiadás
 
 **Új funkciók**
 
@@ -144,7 +144,7 @@ Az a [mintaadattár](https://aka.ms/csspeech/samples), egy új mintát, JavaScri
 * Rögzített probléma, ahol egy hosszú ideig futó felismerése sikerült leállítani a közepén továbbítására.
 * Rögzített versenyhelyzet felismerő leállítása.
 
-## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services beszéd SDK 0.5.0-s: Július 2018-as kiadás
+## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services Speech SDK 0.5.0: Július 2018-as kiadás
 
 **Új funkciók**
 

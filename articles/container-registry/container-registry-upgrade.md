@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: danlep
-ms.openlocfilehash: 73e207dae61dfc8912fd79a151adf982753701f1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 077ca3c876a3078e7e627dbfefdff38e09ec57b9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969107"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228355"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Klasszikus tároló-beállításjegyzék frissítése
 
@@ -52,7 +52,7 @@ A konvertálás során minden `docker push` műveletek le vannak tiltva, amíg `
 
 Nem törölhető és nem módosíthatják a tárfiók a klasszikus beállításjegyzékben biztonsági a konvertálás során a tartalmát. Ezzel a tárolólemezképek sérülését eredményezheti.
 
-Az áttelepítés befejezése után a ACR már használja a tárfiókot az előfizetésében, amelyet eredetileg biztonsági a klasszikus beállításjegyzékben. Miután meggyőződött arról, hogy az áttelepítés sikeres volt-e, vegye figyelembe a költségek csökkentése érdekében a tárfiók törlése.
+Az áttelepítés befejeződése után a tárfiókot az előfizetésében, amelyet eredetileg biztonsági a klasszikus beállításjegyzékben már nem használják ACR. Miután meggyőződött arról, hogy az áttelepítés sikeres volt-e, vegye figyelembe a költségek csökkentése érdekében a tárfiók törlése.
 
 >[!IMPORTANT]
 > A felügyelt termékváltozatok egyik klasszikusból frissítése egy **egyirányú folyamat**. Klasszikus beállításjegyzék alapszintű, Standard vagy prémium konvertált, nem térhet vissza a klasszikus. Azonban szabadon áthelyezheti a beállításjegyzék elegendő kapacitással a felügyelt termékváltozatok között.

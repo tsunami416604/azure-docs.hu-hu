@@ -1,23 +1,23 @@
 ---
-title: 'Gyors útmutató: Észlelése és keret arcokat a képet, a Python SDK-val'
+title: 'Gyors útmutató: Észlelheti és keret arcokat a képet, a Python SDK-val'
 titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutatóban létrehozhat egy egyszerű Python-szkriptet, amely a Face API segítségével észlelheti és a egy távoli képen arcok keret.
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: 1e35d650f6fc99bff5bf49e517e2b38fcdc58dde
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cdf17c40cf932e11307eca28a8216c3080eb90e6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077001"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213294"
 ---
-# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Gyors útmutató: Hozzon létre egy Python-szkriptet észleléséhez és keret arcokat a kép
+# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Gyors útmutató: Hozzon létre egy Python-szkriptet, és alkalmas keretet biztosítanak az arcok a képen
 
 Ez a rövid útmutatóban létrehozhat egy egyszerű Python-szkriptet, amely használja az Azure Face API, a Python SDK-n keresztül egy távoli lemezképben lévő emberi arcok észlelése. Az alkalmazás megjeleníti a kiválasztott kép, és megrajzolja az egyes észlelt face köré keretet.
 

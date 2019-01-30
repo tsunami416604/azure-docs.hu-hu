@@ -1,27 +1,27 @@
 ---
-title: 'Oktatóanyag: Jellemzősítés és jellemzők specifikálása – Custom Decision Service'
+title: 'Oktatóanyag: Featurization és a szolgáltatás specifikáció – Custom Decision Service'
 titlesuffix: Azure Cognitive Services
 description: Oktatóanyag a gépi tanulásban használt jellemzősítéshez és a jellemzők specifikálásához a Custom Decision Service-ben.
 services: cognitive-services
 author: slivkins
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 1e5d012706d1de5a201eecb8ad805b4d6faaf411
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
-ms.translationtype: HT
+ms.openlocfilehash: 1c701cbe1a71ed48c71a9441c05a7fb4b63e3814
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869590"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226060"
 ---
-# <a name="tutorial-featurization-and-feature-specification"></a>Oktatóanyag: Jellemzősítés és jellemzők specifikálása
+# <a name="tutorial-featurization-and-feature-specification"></a>Oktatóanyag: Featurization és a szolgáltatás meghatározása
 
 Ez az oktatóanyag a Custom Decision Service fejlett gépi tanulási funkcióival foglalkozik. Az oktatóanyag két részből áll: [a jellemzők megállapításából](#featurization-concepts-and-implementation) és [a jellemzők specifikálásából](#feature-specification-format-and-apis). A jellemzősítés azt jelenti, hogy az adatokat „jellemzőkként” kezeljük a gépi tanuláshoz. A jellemzők specifikálása a JSON-formátumot és a jellemzők meghatározására szolgáló kiegészítő API-kat takarja.
 
-A Custom Decision Service gépi tanulási folyamatait alapértelmezés szerint a felhasználók is átláthatják. A rendszer automatikusan kivonja a jellemzőket a tartalmakból, és egy standard megerősítő tanulási algoritmust alkalmaz. A jellemzők kivonása során a rendszer számos egyéb Azure Cognitive Services-szolgáltatás előnyeit is kihasználja. Ilyen az [Entity Linking](../entitylinking/home.md), a [Text Analytics](../text-analytics/overview.md), az [Emotion](../emotion/home.md) és a [Computer Vision](../computer-vision/home.md). Amennyiben csak az alapszintű funkciókat szeretné használni, ez az oktatóanyag kihagyható.
+A Custom Decision Service gépi tanulási folyamatait alapértelmezés szerint a felhasználók is átláthatják. A rendszer automatikusan kivonja a jellemzőket a tartalmakból, és egy standard megerősítő tanulási algoritmust alkalmaz. A szolgáltatás kivonása használja számos egyéb Azure Cognitive Services: [Entitáskapcsolás](../entitylinking/home.md), [Szövegelemzés](../text-analytics/overview.md), [Emotion](../emotion/home.md), és [számítógépes Látástechnológiai](../computer-vision/home.md). Amennyiben csak az alapszintű funkciókat szeretné használni, ez az oktatóanyag kihagyható.
 
 ## <a name="featurization-concepts-and-implementation"></a>Jellemzősítés: fogalmak és megvalósítás
 

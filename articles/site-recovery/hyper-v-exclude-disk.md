@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
-ms.openlocfilehash: 9b26c80b59a57b4a9b2423e1a9028cf723f40fb1
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: a1b35d4c10246af7e4dab36585c2bb9b72fd0c01
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321228"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216965"
 ---
 # <a name="exclude-disks-from-replication"></a>Lemezek kizárása a replikációból
 Ez a cikk azt mutatja be, hogyan zárhatóak ki lemezek a replikációból. A kizárás segítségével optimalizálható a felhasznált replikációs sávszélesség, valamint optimalizálhatók a lemezek által felhasznált céloldali erőforrások.
@@ -59,7 +59,7 @@ Az alábbiakban két forgatókönyvet találhat a lemezek kizárása funkció me
 - SQL Server tempdb lemeze
 - Lapozófájl (pagefile.sys) lemeze
 
-## <a name="excample-1-exclude-the-sql-server-tempdb-disk"></a>Adatbázist tartalmazó lemezének 1: SQL Server tempdb-adatbázist tartalmazó lemezének kizárása
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>1. példa: SQL Server tempdb-adatbázist tartalmazó lemezének kizárása
 Vegyünk egy SQL Server virtuális gépet, amely tempdb-adatbázisa kizárható.
 
 A virtuális gép neve a SalesDB-ben.

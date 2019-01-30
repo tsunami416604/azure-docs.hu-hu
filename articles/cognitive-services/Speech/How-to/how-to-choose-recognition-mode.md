@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 21615b09a7b9599597706e38b55072cf80f1b69b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ed270ed19959240bc1b90ba6171792cf4369e273
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345033"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221594"
 ---
 # <a name="bing-speech-recognition-modes"></a>Bing Speech recognition módok
 
@@ -25,7 +25,7 @@ A Bing hang-szöveg API-k a beszédfelismerés több módot támogatja. Válassz
 
 | Mód | Leírás |
 |---|---|
-| *Interaktív* | Interaktív felhasználó alkalmazás-forgatókönyvek "Parancs és vezérlés" felismerése. Felhasználók beszélnek permanens alkalmazás parancsok rövid kifejezés. |
+| *interactive* | Interaktív felhasználó alkalmazás-forgatókönyvek "Parancs és vezérlés" felismerése. Felhasználók beszélnek permanens alkalmazás parancsok rövid kifejezés. |
 | *Diktálás* | Folyamatos felismerés Diktálás forgatókönyvek esetén. Felhasználók beszélnek hosszabb mondatokat, amelyek szövegként jelenik meg. Felhasználók elfogadják a formális beszédmódjához. |
 | *beszélgetés* | Folyamatos tudathatja átírás beszélgetések emberek között. A felhasználók egy kisebb formális beszédmódjához fogad el, és előfordulhat, hogy az eredetitől eltérő hosszabb mondatokat és rövidebb mondatok közötti.
 

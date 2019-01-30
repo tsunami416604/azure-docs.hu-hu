@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: aa59ce89bf8c2c4b31d85c572dcdfb3645f06884
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 273b54961adafb58fe9faa7993003ff74d50b6f9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646009"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218156"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
 
@@ -38,8 +38,8 @@ A CTF Reporting API-végpont http://api.microsofttranslator.com/v2/beta/ctfrepor
 ## <a name="methods"></a>Metódusok
 | Name (Név) |    Leírás|
 |:---|:---|
-| GetUserTranslationCounts metódus | A megjelenő fordításokat, a felhasználó által létrehozott számát beolvasása. |
-| GetUserTranslations metódus | A megjelenő fordításokat, a felhasználó által létrehozott kérdezi le. |
+| GetUserTranslationCounts Method | A megjelenő fordításokat, a felhasználó által létrehozott számát beolvasása. |
+| GetUserTranslations Method | A megjelenő fordításokat, a felhasználó által létrehozott kérdezi le. |
 
 Ezek a metódusok lehetővé teszi:
 * Felhasználói fordítások és javításokat a Letöltés most a Fiókazonosítójával teljes készletének beolvasása.
@@ -109,7 +109,7 @@ Az eredményhalmaz tömbjét tartalmazza a **UserTranslationCount**. Minden egye
 
 | Kivétel | Üzenet | Feltételek |
 |:---|:---|:---|
-| : ArgumentOutOfRangeException | A paraméter "**maxDateUtc**"kell lennie, nagyobb vagy egyenlő"**minDateUtc**".| A paraméter értékének **maxDateUtc** kisebb, mint a paraméter értékének **minDateUtc**.|
+| ArgumentOutOfRangeException | A paraméter "**maxDateUtc**"kell lennie, nagyobb vagy egyenlő"**minDateUtc**".| A paraméter értékének **maxDateUtc** kisebb, mint a paraméter értékének **minDateUtc**.|
 | TranslateApiException | IP-cím része fölé a kvótát.| <ul><li>Percenkénti kérések száma a határérték elérése.</li><li>A kérelem mérete legfeljebb 10000 karakter marad.</li><li>Óránként történik, és a egy napi kvóta korlátozza, amely elfogadja a Microsoft Translator API karakterek száma.</li></ul>|
 | TranslateApiException | Identifikátor AppId kvóta felett van.| Az Alkalmazásazonosítót meghaladta az óránkénti vagy napi kvótáját.|
 
@@ -182,7 +182,7 @@ Az eredményhalmaz tömbjét tartalmazza a **UserTranslation**. Minden egyes Use
 
 | Kivétel | Üzenet | Feltételek |
 |:---|:---|:---|
-| : ArgumentOutOfRangeException | A paraméter "**maxDateUtc**"kell lennie, nagyobb vagy egyenlő"**minDateUtc**".| A paraméter értékének **maxDateUtc** kisebb, mint a paraméter értékének **minDateUtc**.|
+| ArgumentOutOfRangeException | A paraméter "**maxDateUtc**"kell lennie, nagyobb vagy egyenlő"**minDateUtc**".| A paraméter értékének **maxDateUtc** kisebb, mint a paraméter értékének **minDateUtc**.|
 | TranslateApiException | IP-cím része fölé a kvótát.| <ul><li>Percenkénti kérések száma a határérték elérése.</li><li>A kérelem mérete legfeljebb 10000 karakter marad.</li><li>Óránként történik, és a egy napi kvóta korlátozza, amely elfogadja a Microsoft Translator API karakterek száma.</li></ul>|
 | TranslateApiException | Identifikátor AppId kvóta felett van.| Az Alkalmazásazonosítót meghaladta az óránkénti vagy napi kvótáját.|
 

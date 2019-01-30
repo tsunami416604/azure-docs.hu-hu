@@ -1,24 +1,24 @@
 ---
-title: 'Oktatóanyag: Érzelemfelismerés képeken szereplő arcokon – Emotion API, Python'
+title: 'Oktatóanyag: Érzelemfelismerés a egy oldallal a kép – Emotion API, Python'
 titlesuffix: Azure Cognitive Services
 description: Egy Jupyter-notebook segítségével megtudhatja, hogyan használhatja az Emotion API-t a Pythonnal. Az eredményeket népszerű kódtárak használatával jelenítheti meg.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: tutorial
 ms.date: 05/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 31e346cd9a3f43f8181ebee4474ae6c9ee2cc6fc
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: HT
+ms.openlocfilehash: ea96495fb9fa453f7c7f9d6a870291329d2793b2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237857"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220535"
 ---
-# <a name="tutorial-use-the-emotion-api-with-a-jupyter-notebook--python"></a>Oktatóanyag: Az Emotion API használata egy Jupyter-notebookkal és a Pythonnal.
+# <a name="tutorial-use-the-emotion-api-with-a-jupyter-notebook--python"></a>Oktatóanyag: Az Emotion API használata egy Jupyter notebookot, és a Python.
 
 > [!IMPORTANT]
 > Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként általánosan elérhető. 

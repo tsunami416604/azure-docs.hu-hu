@@ -6,16 +6,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: f8d80ab189d8ed1f4b153e81963ef31cc5f685b8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2252dc9d1cb4a8b5666e3f8078528206ac0fddf7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470047"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228253"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Szövegfelolvasás – gyakori kérdések
 
@@ -23,41 +23,41 @@ Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse me
 
 ## <a name="general"></a>Általános kérdések
 
-**K: Mi a különbség egy standard hangalapú modell és egyéni beszédfelismerési modellek között?**
+**K: Mi a különbség, standard beszédfelismerési modellek és a egy egyéni beszédfelismerési modell között?**
 
 **A**: A standard szintű hangalapú modell (más néven egy *hangtípusú*) rendelkezik betanítva Microsoft tulajdonú adatok használatával, és már üzembe helyezte a felhőben. Segítségével egyéni beszédfelismerési modellek vagy egy átlagos modell alkalmazkodnak és a timbre és a beszélő hangalapú stílus kifejezése vagy alapján a betanítási adatok, a felhasználó által készített teljes, az új modell betanításához. Napjainkban egyre több ügyfél használni kívánt egy egy-az-maga nemében egyedülálló, a vállalati arculattal hangalapú robotjaikat. Az egyéni beszédfelismerési-sestavuje se platforma a megfelelő választás az adott beállítási mód.
 
-**K: hol kezdhetem standard beszédfelismerési modellek használata esetén?**
+**K: Hogyan kezdjek hozzá standard beszédfelismerési modellek használata esetén?**
 
-**A**: több mint 80 standard beszédfelismerési modelleket több mint 45 nyelvet a HTTP-kéréseken keresztül érhetők el. Először kérje le egy [előfizetési kulcs](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Ahhoz, hogy a predeployed beszédfelismerési modellek REST-hívások, tekintse meg a [REST API-val](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+**A**: Több mint 80 standard beszédfelismerési modelleket a több mint 45 nyelvet a HTTP-kéréseken keresztül érhetők el. Először kérje le egy [előfizetési kulcs](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Ahhoz, hogy a predeployed beszédfelismerési modellek REST-hívások, tekintse meg a [REST API-val](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
-**K: Ha szeretne egy testre szabott Hangüzenetek modellt használja, az API ugyanaz, mint a standard szintű beszédhangot használt?**
+**K: Ha szeretne egy testre szabott Hangüzenetek modellt használja, akkor az API-t ugyanaz, mint a standard szintű beszédhangot használt?**
 
-**A**: egyéni beszédfelismerési modellek létrehozása és üzembe helyezett, kap egy egyedi végpont a modellt. A beszédfelismerési mérnökeinkkel, az alkalmazások használatához adjon meg a végpont a HTTP-kérelmekre. Ugyanazokat a funkciókat az a szöveg-beszéd átalakítás szolgáltatás REST API-ban elérhető egyéni végpontra érhető el. Ismerje meg, hogyan [hozhat létre és használhat egyéni végpontra](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
+**A**: Egyéni beszédfelismerési modellek létrehozása és üzembe helyezett, kap egy egyedi végpont a modellt. A beszédfelismerési mérnökeinkkel, az alkalmazások használatához adjon meg a végpont a HTTP-kérelmekre. Ugyanazokat a funkciókat az a szöveg-beszéd átalakítás szolgáltatás REST API-ban elérhető egyéni végpontra érhető el. Ismerje meg, hogyan [hozhat létre és használhat egyéni végpontra](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
 
-**K: van szükségem a betanítási adatok, a saját egyéni beszédfelismerési modelleket hozhat létre előkészítése?**
+**K: Kell előkészíteni a betanítási adatok, a saját egyéni beszédfelismerési modelleket hozhat létre?**
 
-**A**: Igen, elő kell készítenie a betanítási adatok saját egyéni beszédfelismerési modellek esetében.
+**A**: Igen, el kell készítenie a betanítási adatok saját egyéni beszédfelismerési modellek esetében.
 
 Beszéd adatok gyűjteménye, egy testre szabott Hangüzenetek modell létrehozásához szükséges. Ez a gyűjtemény hangfájlok speech felvételek, és a egy szövegfájlt, mindegyik hangfájlt vonatkozó áll. A digitális hangját eredményét az erősen támaszkodik a betanítási adatok minőségét. Egy jó szövegfelolvasás előállításához, fontos, hogy a felvételt a magas színvonalú, állandó mikrofon csendes szoba történik. Egy egységes kötet sebességét, és beszéljen és térközt, és még akkor is, konzisztencia, a beszéd kifejező mannerisms beszéd is, amellyel a nagyszerű digitális hangot alapvető. Erősen ajánlott az adott beszédhangot rögzítése egy felvételt studióban.
 
 Nem jelenleg a Microsoft online felvétel támogatást, vagy felvétel studio javaslatokkal szolgálni. Lásd: a formátum követelmény [és előkészítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts).
 
-**K: mely parancsfájlok használjam jegyezze fel az egyéni beszédfelismerési képzéshez Beszédadatok?**
+**K: Milyen parancsfájlok használjam jegyezze fel az egyéni beszédfelismerési képzéshez Beszédadatok?**
 
-**A**: hangrögzítés a parancsfájlok nem korlátozzuk. A saját parancsfájlokat jegyezze fel a beszédet használhat. Csak győződjön meg arról, hogy rendelkezik-e elegendő fonetikus lefedettség a speech adatait. Egy egyéni beszédfelismerési betanításához elkezdheti kis mennyiségű Beszédadatok, amely 50 különböző mondatokat (körülbelül 3 – 5 percet beszéd) lehet. Minél több adatot ad meg, annál több természetes lesz a hangját. Egy teljes hangtípusú betanításához, ha adja meg a felvételt a több mint 2000 mondatok (körülbelül 3-4 óra beszéd) megkezdése. Egy kiváló minőségű, teljes hang lekéréséhez kell (körülbelül 8 – 10 óra beszéd) a több mint 6000 mondatok felvétel előkészítése.
+**A**: A hangrögzítés parancsfájlok nem korlátozzuk. A saját parancsfájlokat jegyezze fel a beszédet használhat. Csak győződjön meg arról, hogy rendelkezik-e elegendő fonetikus lefedettség a speech adatait. Egy egyéni beszédfelismerési betanításához elkezdheti kis mennyiségű Beszédadatok, amely 50 különböző mondatokat (körülbelül 3 – 5 percet beszéd) lehet. Minél több adatot ad meg, annál több természetes lesz a hangját. Egy teljes hangtípusú betanításához, ha adja meg a felvételt a több mint 2000 mondatok (körülbelül 3-4 óra beszéd) megkezdése. Egy kiváló minőségű, teljes hang lekéréséhez kell (körülbelül 8 – 10 óra beszéd) a több mint 6000 mondatok felvétel előkészítése.
 
 További szolgáltatások segítő szkripteket a rögzítés lehetőséget biztosítunk. Kapcsolattartó [egyéni beszédfelismerési ügyfél-támogatási](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) lekérdezésekhez.
 
 **K: Mi történik, ha az alapértelmezett érték, vagy a portálon érhető el, mint a magasabb szintű egyidejűség érdekében van szükség?**
 
-**A**: a modell 20 egyidejű kérelmek egységnyi növekményekben vertikálisan felskálázhatja. Kapcsolattartó [egyéni beszédfelismerési ügyfél-támogatási](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) magasabb méretezésével kapcsolatos lekérdezések számára.
+**A**: A modell 20 egyidejű kérelmek egységnyi növekményekben vertikálisan felskálázhatja. Kapcsolattartó [egyéni beszédfelismerési ügyfél-támogatási](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) magasabb méretezésével kapcsolatos lekérdezések számára.
 
-**K: helyezhetem saját modell letöltése és helyileg futtatja az alkalmazást?**
+**K: A modell letöltheti és helyileg futtatja az alkalmazást?**
 
-**A**: modellek nem tölthető le és helyben végrehajtott.
+**A**: Modellek nem tölthető le és helyben végrehajtott.
 
-**K: a kérelmek szabályozva van?**
+**K: Saját kérések szabályozott?**
 
 **A**: A REST API-25, 5 másodpercenként kérelmek korlátozza. Részletek tekintheti meg az oldalak [szöveg-beszéd átalakítás](text-to-speech.md). 
 

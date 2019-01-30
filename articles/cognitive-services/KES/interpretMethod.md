@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 45badbdbe1a7e1f2028a00d54458db35a4f7d440
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4f950734081be6cf76770b1c6cb2feca7efdae70
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128007"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221403"
 ---
 # <a name="interpret-method"></a>Módszer értelmezése
 
@@ -25,7 +25,7 @@ A *értelmezése* metódushoz a természetes nyelvű lekérdezési karakterlánc
 
 `http://<host>/interpret?query=<query>[&<options>]`
 
-Name (Név)|Érték| Leírás
+Name (Név)|Value| Leírás
 ----|----|----
 lekérdezés    | Szöveges karakterlánc | Felhasználó által megadott lekérdezés.  Ha teljes értéke 1, lekérdezés létrehozni lekérdezési automatikus kiegészítését javaslatok előtagjaként is értelmezhető.        
 Hajtsa végre | 0 (alapértelmezés) vagy 1 | 1 azt jelenti, hogy automatikus kiegészítését javaslatok jönnek létre, nyelvtani és index adatok alapján.         
@@ -41,13 +41,13 @@ JSONPath     | Leírás
 ---------|---------
 $.query |*lekérdezés* paraméter a kérelemből.
 $.interpretations   |0 vagy további részleteket a egyezik a bemeneti lekérdezést a nyelvtani tömbje.
-$.interpretations [\*] .logprob   |Relatív log valószínűség értelmezése (< = 0).  A magasabb értékek valószínűbb.
-$.interpretations [\*] .parse |XML-karakterlánc, amely megjeleníti a lekérdezés minden egyes részét értelmezését.
+$.interpretations[\*].logprob   |Relatív log valószínűség értelmezése (< = 0).  A magasabb értékek valószínűbb.
+$.interpretations[\*].parse |XML-karakterlánc, amely megjeleníti a lekérdezés minden egyes részét értelmezését.
 $.interpretations [\*] .rules |1 vagy több szabályok értelmezése során hív nyelvtani meghatározott tömbje.
-$.interpretations [\*] .rules [\*] .név    |a szabály nevét.
-$.interpretations [\*] .rules [\*] .output  |A szabály szemantikai kimenetét.
-$.interpretations [\*] .rules [\*]. output.type |A szemantikai kimeneti adattípus.
-$.interpretations [\*] .rules [\*]. output.value|A szemantikai kimeneti értékét.  
+$.interpretations[\*].rules[\*].name    |a szabály nevét.
+$.interpretations[\*].rules[\*].output  |A szabály szemantikai kimenetét.
+$.interpretations[\*].rules[\*].output.type |A szemantikai kimeneti adattípus.
+$.interpretations[\*].rules[\*].output.value|A szemantikai kimeneti értékét.  
 $.aborted | IGAZ, ha a kérelem túllépte az időkorlátot.
 
 ### <a name="parse-xml"></a>XML feldolgozása

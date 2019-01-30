@@ -10,14 +10,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: ba79365ec310c7d62d0a4de07991d516430b9d41
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 370483b92dcd2c468cd676a32db0ded80e8814d0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886144"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216612"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -158,7 +158,7 @@ A rendszergazdai fiók engedélyezéséhez először, rendszergazdai jóváhagy�
     AdminConsent -ErrorAction Stop
     ```
 
-2. Futtassa a parancsfájlt a következő paranccsal.
+2. Futtassa a parancsfájlt a következő paranccsal. Kétszer a hitelesítő adatok megadására kéri. Először adja meg a hitelesítő adatokat a Log Analytics-munkaterületet, és majd a globális rendszergazdai hitelesítő adatait az Office 365-bérlőben.
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
@@ -351,7 +351,7 @@ Az utolsó lépés, hogy az alkalmazás a Log Analytics-munkaterület előfizet�
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha megpróbál létrehozni egy előfizetés után az előfizetés már létezik a következő hiba jelenhet meg.
+A következő hiba jelenhet meg, ha az alkalmazás már elő van fizetve a munkaterületre, vagy ha a bérlő egy másik munkaterület elő van fizetve.
 
 ```
 Invoke-WebRequest : {"Message":"An error has occurred."}
@@ -394,7 +394,7 @@ Az Office 365 felügyeleti megoldás részben ismertetett eljárással eltávol�
     $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Get-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     
@@ -510,7 +510,7 @@ A következő tulajdonságok megegyeznek az összes Office 365-rekord.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus | *OfficeActivity* |
+| Typo | *OfficeActivity* |
 | ClientIP | A tevékenység naplózásakor használt eszköz IP-címét. Az IP-cím IPv4 vagy IPv6 cím formátumban jelenik meg. |
 | OfficeWorkload | Az Office 365 szolgáltatás, amely a rekord hivatkozik.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Művelet | A felhasználói vagy rendszergazdai tevékenység neve.  |

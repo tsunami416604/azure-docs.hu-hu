@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 205eff6c79ba4699516a8898c5b1268eb3dfe644
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 163ec61dc534255470626468195dcab28b3e3250
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754016"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221827"
 ---
 # <a name="authenticate-to-the-speech-api"></a>A beszédfelismerő API-t hitelesítésre
 
@@ -88,7 +88,7 @@ $OAuthToken
 
 ```
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 A példában a curl Linux bash-környezet. Ha nem érhető el a platformon, szüksége lehet a curl telepítéséhez. A példában is működik a Cygwin a Windows, a Git Bash, a zsh és más ismertetése.
 
@@ -183,7 +183,7 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE

@@ -6,16 +6,16 @@ services: cognitive-services
 author: marco-rossi29
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: eec2c82b779fa5421bc9ac58107ef56f8c71bd1e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 90a99d4910b0afb885b415760f6a7ef1ca2aec33
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366555"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219821"
 ---
 # <a name="experimentation"></a>Kísérletezés
 
@@ -35,8 +35,8 @@ A naplófájl használatával Kísérletezési kívánja a házirendet a legmaga
 * Szabályzat-kiértékelés tesztek `--cb_type` (más néven inverz upsell pontszám (`ips`) vagy kétszer robusztus (`dr`). További információkért lásd: [környezetfüggő Bandit példa](https://github.com/JohnLangford/vowpal_wabbit/wiki/Contextual-Bandit-Example).
 * Tesztek melléklet.
 * Tesztek négyzetösszege az interaktív funkciókat:
-   * **találgatásos fázis**: teszteli, az összes kombinációk `--q_bruteforce_terms` párokból vagy kevesebb.
-   * **mohó fázis**: a legjobb pár ad hozzá, amíg be nem nincs javulás `--q_greedy_stop` kerekít.
+   * **találgatásos fázis**: Teszteli, az összes kombinációk `--q_bruteforce_terms` párokból vagy kevesebb.
+   * **mohó fázis**: A legjobb pár ad hozzá, amíg be nem nincs javulás `--q_greedy_stop` kerekít.
 * Végrehajtja a második ismétlés hiperparaméterekkel (`learning rate`, `L1 regularization`, és `power_t`).
 
 A következők néhány Vowpal Wabbit argumentum a paramétereket, amelyek vezérlik a következő lépéseket:
@@ -54,12 +54,12 @@ A fenti argumentum egy részletes ismertetése: [Vowpal Wabbit parancssori argum
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Vowpal Wabbit: Telepítve van, és az elérési útra.
-  - Windows: [használja a `.msi` telepítő](https://github.com/eisber/vowpal_wabbit/releases).
-  - Más platformok: [lekérése a forráskód](https://github.com/JohnLangford/vowpal_wabbit/releases).
+  - Windows: [Használja a `.msi` telepítő](https://github.com/eisber/vowpal_wabbit/releases).
+  - Más platformok: [A forrás kódot](https://github.com/JohnLangford/vowpal_wabbit/releases).
 - Python 3: Telepítve van, és az elérési útra.
-- NumPy: Használja a Csomagkezelőt a választott.
-- A *Microsoft/MOLWT-ds* tárházat: [klónozza az adattárat](https://github.com/Microsoft/mwt-ds).
-- Döntési szolgáltatás JSON-naplófájl: alapértelmezés szerint tartalmazza az alapszintű parancs `--dsjson`, amely lehetővé teszi a döntési szolgáltatás JSON-elemzés, a bemeneti adatfájlt. [Ebben a formátumban például Get](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
+- NumPy: A package manager tetszőleges használja.
+- A *Microsoft/MOLWT-ds* tárházat: [A tárház klónozása](https://github.com/Microsoft/mwt-ds).
+- Döntési szolgáltatás JSON naplófájlja: Alapértelmezés szerint tartalmazza az alapszintű parancs `--dsjson`, amely lehetővé teszi a döntési szolgáltatás JSON-elemzés, a bemeneti adatfájlt. [Ebben a formátumban például Get](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
 
 ## <a name="usage"></a>Használat
 Lépjen a `mwt-ds/DataScience` , és futtassa `Experimentation.py` megfelelő argumentumokkal, ahogy az az alábbi kódot:

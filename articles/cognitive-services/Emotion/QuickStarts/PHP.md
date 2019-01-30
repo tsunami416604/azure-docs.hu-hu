@@ -1,24 +1,24 @@
 ---
-title: 'Rövid útmutató: Érzelemfelismerés képeken szereplő arcokon – Emotion API, PHP'
+title: 'Gyors útmutató: Az arcok a képen – Emotion API, a PHP érzelmek felismerése'
 titlesuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg az Emotion API PHP-val való használatának első lépéseivel.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: c3dffa3c42df4a30b634417b551dd0e8af04145b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: HT
+ms.openlocfilehash: 3acf47ee26974ddff4f6063eef95bb29be61fce3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239506"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215487"
 ---
-# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rövid útmutató: Alkalmazás létrehozása a képeken szereplő arcokon tükröződő érzelmek felismeréséhez.
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Gyors útmutató: Érzelemfelismerés az arcok a képen az alkalmazás létrehozása.
 
 > [!IMPORTANT]
 > Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól általánosan elérhető a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként. 
@@ -26,7 +26,7 @@ ms.locfileid: "48239506"
 Ez a cikk információkkal és kódmintákkal szolgál, amelyeken keresztül gyorsan elsajátíthatja, hogyan ismerheti fel a képeken szereplő személy vagy személyek által kifejezett érzelmeket az [Emotion API Recognize metódusa](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) és a PHP használatával.
 
 ## <a name="prerequisite"></a>Előfeltétel
-* Szerezzen be egy ingyenes előfizetői azonosítót [itt](https://azure.microsoft.com/try/cognitive-services/)
+* Ingyenes előfizetői azonosítóját [itt](https://azure.microsoft.com/try/cognitive-services/) szerezheti be
 
 ## <a name="recognize-emotions-php-example-request"></a>Érzelemfelismerési PHP-kérésminta
 
@@ -78,7 +78,7 @@ catch (HttpException $ex)
 ```
 
 ## <a name="recognize-emotions-sample-response"></a>Érzelemfelismerési válaszminta
-A sikeres hívás egy, az arcrekordokat és a hozzájuk tartozó érzelempontszámokat tartalmazó tömböt ad vissza, amely az adatokat az arcot jelölő téglalap mérete szerint csökkenő sorrendben listázza. Az üres válasz azt jelzi, hogy a rendszer nem észlelt arcot. Az érzelemrekord a következő mezőket foglalja magában:
+A sikeres hívás egy, az arcrekordokat és a hozzájuk tartozó érzelempontszámokat tartalmazó tömböt ad vissza, amely az adatokat az arcot jelölő téglalap mérete szerinti csökkenő sorrendben listázza. Az üres válasz azt jelzi, hogy a rendszer nem észlelt arcot. Az érzelemrekord a következő mezőket foglalja magában:
 * faceRectangle – Az arcot jelölő téglalap helye a képen.
 * scores – A képen szereplő egyes arcokhoz tartozó érzelempontszámok.
 
