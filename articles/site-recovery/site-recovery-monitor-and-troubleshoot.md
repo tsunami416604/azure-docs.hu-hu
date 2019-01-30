@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: e34409490f9e120cb39daf99b280cc52c59f54e2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 48e53bcc542b9a0e00a544f80ec796082fa71f7b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845641"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210420"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorozás és hibaelhárítás a Site Recovery
 
@@ -52,7 +52,7 @@ Megtekintheti a gépeket a feladatátvételi teszt állapota a tárolóban.
 **állapot** | **Részletek**
 --- | ---
 A teszt elvégzése ajánlott | Feladatátvételi teszt nem volt, mert a védelem engedélyezése gépek.
-Sikeresen végbement | A gépek vagy több sikeres feladatátvételi teszteket.
+Sikeresen végrehajtva | A gépek vagy több sikeres feladatátvételi teszteket.
 Nem alkalmazható | A gépeket, amelyek jelenleg jogosultak a feladatátvételi teszt nem. Gépek, melyek feladatai át, például, kezdeti replikációs és tesztelési feladatátvétel/feladatátvételi vannak folyamatban.
 
 ## <a name="monitor-configuration-issues"></a>A figyelő konfigurációs problémák
@@ -149,17 +149,17 @@ Emellett az irányítópult a gépek a virtuális gépek lapján követheti nyom
     ![Site Recovery által replikált elemek listanézet](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
 
 2. Az a **replikált elemek** lapon megtekintheti és szűrheti az adatokat. A művelet menü tetején, az elvégezhető műveletek egy adott gép, beleértve a feladatátvételi teszt futtatása, vagy hibaüzenetek megtekintéséhez.
-3.  Kattintson a **oszlopok** további oszlopokkal, RPO megjeleníthető például megjeleníthető a cél konfigurációs problémákat, és a replikációs hibákat.
+3.  Kattintson a **oszlopok** megjelenítéséhez további oszlopok megjelenítéséhez a helyreállítási Időkorlát, például a cél konfigurációs problémákat, és a replikációs hibákat.
 4. Kattintson a **szűrő** meghatározott paraméterek, például a replikációs állapotot, vagy egy adott replikációs házirend alapján információk megtekintéséhez.
 5. Kattintson a jobb gombbal egy gép kezdeményezni, például a feladatátvételi teszt műveletek vagy társítva konkrét hiba részleteinek megtekintéséhez.
 6. Kattintson a további részletek feltárásához, egy gép. Részletei a következők:
-      - **Replikálási adatok**: aktuális állapotát és a gép állapotát.
-      - **Helyreállítási Időkorlát** (helyreállításipont-célkitűzés): a virtuális gép és az idő, amikor az rpo-t legutóbb kiszámított aktuális helyreállítási Időkorlát.
-      - **Helyreállítási pontok**: a gép a legutóbbi elérhető helyreállítási pontok.
-      - **Feladatátvételre való készültsége**: azt jelzi-e egy feladatátvételi tesztet futtatott a gép, az a gép (a mobilitási szolgáltatást futtató gépek) számára, és a konfigurációs problémákat futó ügynök verzióját.
-      - **Hibák**: replikációs hiba tünetek jelenleg figyelhető meg a gép, és a lehetséges okok/műveletek listája.
-      - **Események**: negatív hatással a gép a legutóbbi események időrendi listáját. Hiba részletei az jelenleg megfigyelhető hiba jelenségeket jeleníti meg, a gép érintő problémák Előzményrekord események pedig.
-      - **Infrastruktúranézet**: a forgatókönyv az infrastruktúra állapotát az látható, amikor az Azure-bA replikáló gépek.
+      - **Replikálási adatok**: Aktuális állapot és a gép állapotát.
+      - **Helyreállítási Időkorlát** (helyreállításipont-célkitűzés): A virtuális gép és az idő, amikor az rpo-t legutóbb kiszámított aktuális helyreállítási Időkorlát.
+      - **Helyreállítási pontok**: A gép legújabb elérhető helyreállítási pontok.
+      - **Feladatátvételre való készültsége**: Azt jelzi-e egy feladatátvételi tesztet futtatott a gép, az a gép (a mobilitási szolgáltatást futtató gépek) számára, és a konfigurációs problémákat futó ügynök verzióját.
+      - **Hibák**: Replikációs hiba tünetek jelenleg megfigyelhető a gépre, és a lehetséges okok és műveletek listája.
+      - **Események**: A gép érintő legutóbbi események időrendi listáját. Hiba részletei az jelenleg megfigyelhető hiba jelenségeket jeleníti meg, a gép érintő problémák Előzményrekord események pedig.
+      - **Infrastruktúranézet**: A forgatókönyv az infrastruktúra állapotát az látható, amikor az Azure-bA replikáló gépek.
 
     ![Site Recovery által replikált elem részleteinek/áttekintése](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 

@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: A Text Analytics API meghívása a Go használatával'
+title: 'Gyors útmutató: A szövegelemzési API meghívására a Go használatával'
 titleSuffix: Azure Cognitive Services
 description: Ezekkel a rövid útmutatókkal és kódmintákkal gyorsan kezdheti meg a Text Analytics API használatát a Microsoft Cognitive Services-ben az Azure-on.
 services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: 10b6015a5d0755c77c787003e429c79f0e2669e5
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c8e88066769b16cf50e3a8317d401a425bcc5d85
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283420"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228270"
 ---
-# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: A Text Analytics Cognitive Services meghívása a Go használatával 
+# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához a Go használatával 
 <a name="HOLTop"></a>
 
 Ez a cikk bemutatja, hogyan való [nyelvfelismerés](#Detect), [vélemények elemzése](#SentimentAnalysis), [kinyerheti a kulcskifejezéseket](#KeyPhraseExtraction), és [kapcsolt entitások azonosítása](#Entities) használatával a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a Go.

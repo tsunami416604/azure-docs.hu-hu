@@ -6,16 +6,16 @@ services: cognitive-services
 author: alekh
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: overview
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 273f2965a0fcaaa729175c5232da1aba69589eec
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 1792e279283608c81c0d4a08b77f9822816ed76d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364210"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221351"
 ---
 # <a name="what-is-custom-decision-service"></a>Mi a Custom Decision Service?
 
@@ -44,10 +44,10 @@ A Custom Decision Service weblapokon és mobilalkalmazásokban is használható.
 
 A dokumentációban van több gyakran előforduló kifejezés is:
 
-* **Művelet halmaz**: A tartalom elemek halmaza, amely a Custom Decision Service rangsorolására vár. A halmaz megadása történhet *RSS* vagy *Atom* végpont formában.
-* **Rangsorolás**: A Custom Decision szolgáltatásnak küldött minden kérés megad egy vagy több művelethalmazt. A rendszer veszi valamennyi tartalom elemet és válaszában rangsorolva küldi vissza őket.
-* **Visszahívási függvény**: Ez az ön által megadott függvény jeleníti meg a felhasználói felületen a tartalmat. A tartalom a Custom Decision Service által visszaadott rangsor alapján van rendezve.
-* **Jutalom**: Azt méri, hogyan reagált a felhasználó a megjelenített tartalomra. A Custom Decision a felhasználói válaszokat a kattintások felhasználásával méri. A kattintásokról a rendszer az alkalmazásba illesztett egyedi kód használatával kap értesítést.
+* **A művelet set**: A tartalom elemeinek halmazát a Custom Decision Service a rang. A halmaz megadása történhet *RSS* vagy *Atom* végpont formában.
+* **Prioritás**: A Custom Decision Service minden kérés egy vagy több művelet beállítása. A rendszer veszi valamennyi tartalom elemet és válaszában rangsorolva küldi vissza őket.
+* **Visszahívási függvény**: Ez a függvény, amely megadja, ez a beállítás a felhasználói felületen a tartalmat. A tartalom a Custom Decision Service által visszaadott rangsor alapján van rendezve.
+* **Ellenszolgáltatás**: A felhasználó hogyan válaszolt a megjelenített tartalom mértékegysége. A Custom Decision a felhasználói válaszokat a kattintások felhasználásával méri. A kattintásokról a rendszer az alkalmazásba illesztett egyedi kód használatával kap értesítést.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4c5243ec14a4494222168bb33b3e840b96f8465e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3d7bbdb25815027625b6f56b25e64c4a07b3728f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345254"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222490"
 ---
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -118,7 +118,7 @@ Az ügyféloldali kódtár biztosít előre megvalósított felismerés ügyfél
 
 * `DataRecognitionClient`: A beszédfelismerés PCM adatokkal (például a fájl- vagy audióanyagot forrás). Az adatok pufferek van osztva, és minden egyes puffer Speech szolgáltatásnak továbbítja. Bármilyen módosítás nélkül történik a pufferek, így a felhasználó a saját csend észlelési alkalmazhatja, ha szükséges. Az adatok WAV-fájlokból áll rendelkezésre, ha a Speech Service a fájlt közvetlenül küldhet adatokat. Ha olyan nyers adat, például hang, a Bluetooth keresztül érkező először küld formátum fejléc beszédszolgáltatás követi az adatokat.
 * `MicrophoneRecognitionClient`: A beszédfelismerés együtt származik a mikrofon hang. Ellenőrizze, hogy a mikrofon be van kapcsolva, és a mikrofon származó adatokat a speech recognition szolgáltatásnak továbbítja. A beépített "csend detector használatával" mikrofon adatokra alkalmazza, a felismerés szolgáltatás továbbítás előtt.
-* `DataRecognitionClientWithIntent` és `MicrophoneRecognitionClientWithIntent`: felismerés szöveg mellett strukturált vissza ezeket az ügyfeleket, a célt a beszélő, amely az alkalmazások által használható további műveletek alapjául információt. "Leképezés" használatához először betanítja a modellt használatával kell [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+* `DataRecognitionClientWithIntent` és `MicrophoneRecognitionClientWithIntent`: Ezek az ügyfelek adja vissza, a célt strukturált információt, amely az alkalmazások által használható további műveletek alapjául a beszélő felismerése szöveg mellett. "Leképezés" használatához először betanítja a modellt használatával kell [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
 ### <a name="recognition-language"></a>Nyelv felismerése
 
@@ -128,7 +128,7 @@ Ha használ `SpeechRecognitionServiceFactory` szeretne létrehozni az ügyfelet,
 
 Emellett meg kell adnia `SpeechRecognitionMode` létrehozásakor, az ügyfél és `SpeechRecognitionServiceFactory`:
 
-* `ShortPhrase`: Mennyi ideig az utterance (kifejezés), legfeljebb 15 másodperc alatt. Mivel a szolgáltatás adatokat küld, az ügyfél megkapta a több részleges és több végső eredményt, több legjobb n választási lehetőség a.
+* `ShortPhrase`: Az utterance (kifejezés), legfeljebb 15 másodperc hosszúságú. Mivel a szolgáltatás adatokat küld, az ügyfél megkapta a több részleges és több végső eredményt, több legjobb n választási lehetőség a.
 * `LongDictation`: Az utterance (kifejezés), akár két perc hosszú. Mivel a szolgáltatás adatokat küld, a az ügyfél több részleges és több végső eredményt is, ahol a szolgáltatás azonosítja a mondaton belüli szünetet alapján kap.
 
 ### <a name="attach-event-handlers"></a>Eseménykezelők csatolása
@@ -136,8 +136,8 @@ Emellett meg kell adnia `SpeechRecognitionMode` létrehozásakor, az ügyfél é
 Az ügyfél különböző eseménykezelők csatolhat létrehozott:
 
 * **Részleges eredményeket események**: Ez az esemény meghívása megtörténik, minden alkalommal, amikor beszédszolgáltatás előrejelzi, előfordulhat, hogy el véleményét, beszéd befejezése előtt is (Ha `MicrophoneRecognitionClient`), vagy fejezze be az adatok küldésének (használatakor `DataRecognitionClient`).
-* **Hibaesemények**: meghívva, ha a szolgáltatás hibát észlel.
-* **Leképezési események**: "WithIntent" ügyfeleken nevű (kizárólag a `ShortPhrase` mód) után a végső felismerés eredményét egy strukturált JSON-leképezés van értelmezni.
+* **Hibaesemények**: Meghívva, ha a szolgáltatás hibát észlel.
+* **Leképezési események**: Az ügyfeleken "WithIntent" nevű (kizárólag a `ShortPhrase` mód) után a végső felismerés eredményét egy strukturált JSON-leképezés van értelmezni.
 * **Események eredményeként**:
   * A `ShortPhrase` mód, ez az esemény nevezik, és n legjobb eredményeket ad vissza, és beszéljen befejezése után.
   * A `LongDictation` üzemmód, az eseménykezelő neve többször, ahol a szolgáltatás azonosítja a mondaton belüli szünetet alapján.

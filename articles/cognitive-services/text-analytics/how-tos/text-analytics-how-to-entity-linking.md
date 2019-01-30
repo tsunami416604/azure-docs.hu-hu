@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: e81428d5bdffb65b5e61a7aba7496da275f249a5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3f56bd4efafe506a95d46524713ebe49e3250f63
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230556"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220384"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Megnevezett entitások felismerése használata a Text Analytics (előzetes verzió)
 
@@ -41,7 +41,7 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 
 ## <a name="supported-types-for-named-entity-recognition"></a>Nevesített entitások felismerése támogatott típusai
 
-| Típus  | Altípus | Példa |
+| Typo  | SubType | Példa |
 |:-----------   |:------------- |:---------|
 | Személy        | N/A\*         | "Jeff", "Bill Gates"     |
 | Hely      | N/A\*         | "Redmond, Washington", "Párizs"  |
@@ -58,7 +58,7 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 | DateTime      | Dátum          | "2., 2017 május", "05/02/2017"   | 
 | Dátum és idő     | Time          | "8 am", "8:00"  | 
 | DateTime      | DateRange     | "Május 2. május 5-én a"    | 
-| DateTime      | timeRange     | "du. 6, 7 pm"     | 
+| DateTime      | Időtartomány     | "du. 6, 7 pm"     | 
 | DateTime      | Időtartam      | "1 perc 45 másodpercig"   | 
 | DateTime      | Beállítás           | "minden kedden"     | 
 | DateTime      | Időzóna      |    | 
@@ -89,11 +89,11 @@ A dokumentum méretének 5000 karakter alatt kell maradnia, és legfeljebb 1000 
 }
 ```    
     
-## <a name="step-1-structure-the-request"></a>1. lépés: A kérés felépítése
+## <a name="step-1-structure-the-request"></a>1. lépés: A kérelem struktúra
 
 A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérést. A kérelem API-dokumentációban: [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentáció: [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
 + Állítsa be a HTTP-végpontot entitások kinyeréséhez. Tartalmaznia kell a `/entities` erőforrást: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
@@ -104,7 +104,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: A kérés elküldése
+## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
 
 Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
 

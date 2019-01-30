@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 80e807a8fcbd6c087ad0995a4481180fa28ef42f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2d5fdde14c1a33ace81e8999dbb365dac9de3e6e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872884"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227896"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Akár 100 TB kapacitású szolgáltatási réteg (előzetes verzió)
 
@@ -40,7 +40,7 @@ A nagy kapacitású szolgáltatás az Azure SQL Database szintje a legújabb szo
 A nagy kapacitású szolgáltatási rétegben az Azure SQL Database az alábbi további képességeket biztosítja:
 
 - Akár 100 TB-os adatbázisméret támogatása
-- Így szinte azonnali biztonsági mentéseket (az Azure Blob storage szolgáltatásban tárolt pillanatképeket alapján) adatbázis-számítási i/o-hatása méretétől függetlenül
+- Így szinte azonnali biztonsági mentéseket (az Azure Blob storage szolgáltatásban tárolt pillanatképeket alapján) adatbázis-számítási i/o-hatása méretétől függetlenül   
 - A perc helyett órák vagy napok adatbázis visszaállítás (pillanatképeket alapján) gyors (nem a adatművelet mérete)
 - Magasabb szintű általános teljesítményt, nagyobb log átviteli sebességet és a tranzakció véglegesítése gyorsabb függetlenül az adatmennyiség miatt
 - Gyors horizontális felskálázás-– telepíthet egy vagy több csak olvasható csomópont a olvasási számítási feladatok kiszervezése és használatra, a ritkáról gyakori elérésű standbys
@@ -133,9 +133,6 @@ ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen
 GO
 ```
 
-> [!IMPORTANT]
-> [Átlátható adatbázis-titkosítást (TDE)](transparent-data-encryption-azure-sql.md) ki kell kapcsolni egy nagy kapacitású nem nagy kapacitású adatbázis módosítása előtt.
-
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Csatlakozás egy olvasási szintű replika nagy kapacitású adatbázis
 
 Nagy kapacitású adatbázisokban a `ApplicationIntent` az ügyfél által megadott kapcsolati karakterlánc argumentum szabja meg, hogy az írható replikával, vagy egy írásvédett másodlagos replikára irányítja-e a kapcsolat. Ha a `ApplicationIntent` beállítása `READONLY` és az adatbázis nem rendelkezik másodlagos replika, a kapcsolat továbbítja az elsődleges replika-és az alapértelmezett érték `ReadWrite` viselkedését.
@@ -147,7 +144,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 ## <a name="available-regions"></a>Elérhető régiók
 
-Nagy kapacitású szolgáltatási szint jelenleg nyilvános előzetes verzióban érhető el, a következő Azure-régióban érhető el: EastUS1, EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, Kelet-Ausztrália, Délkelet-Ausztrália, SouthEastAsia, JapanEast, KoreaCentral
+Nagy kapacitású szolgáltatás szintű szolgáltatás jelenleg nyilvános előzetes verzióban érhető el, és elérhető a következő Azure-régiókhoz: EastUS1, EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 
@@ -158,7 +155,8 @@ Nagy kapacitású szolgáltatási szint jelenleg nyilvános előzetes verzióban
 | Ha egy adatbázisfájl növekedésével az áttelepítést egy aktív számítási feladatok során, és átlép egy fájl határ az 1 TB-os, az áttelepítés sikertelen | Megoldások: <br> – Ha lehetséges, telepítse át az adatbázis nincs frissítés futó számítási feladat esetén.<br> – Próbálkozzon újra az áttelepítést, a sikeres lesz, amíg az 1 TB-os határ nem áthaladnak a migrálás során.|
 | Felügyelt példány jelenleg nem támogatott | Jelenleg nem támogatott |
 | Nagy kapacitású való migrálás jelenleg egy egyirányú művelet | Egy adatbázis van történő migrálást követően megismerkedhet nagy kapacitású, azt közvetlenül a nem nagy kapacitású szolgáltatásréteghez nem migrálható. Jelenleg az egyetlen módszer a nagy kapacitású adatbázis áttelepítése nem nagy kapacitású az Exportálás/importálás BACPAC-fájl használatával.|
-| Az adatbázisok, memórián belüli objektumok migrálása jelenleg nem támogatott | Memóriában lévő objektumok kell dobni, és nem-In-Memory objektumokként egy adatbázist a nagy kapacitású szolgáltatásszint-ra migrálás előtt újra létrehozza.
+| Az adatbázisok, memórián belüli objektumok migrálása jelenleg nem támogatott | Memóriában lévő objektumok kell dobni, és nem-In-Memory objektumokként egy adatbázist a nagy kapacitású szolgáltatásszint-ra migrálás előtt újra létrehozza.|
+| Változáskövetési adatok jelenleg nem támogatott. | Nem tudja használni a nagy kapacitású databasess a változáskövetési adatok.
 
 ## <a name="next-steps"></a>További lépések
 

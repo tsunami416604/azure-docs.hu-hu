@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: b521c66581b4b77e5c49c963530b0c81f842f6f0
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c451377d6274c50f22e3b1d4cd32fb0f3edd9d9e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573841"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220393"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Linux rendszerű virtuális gép áthelyezése egy másik előfizetést vagy az erőforrás-csoport
 Ez a cikk végigvezeti egy Linux rendszerű virtuális gép (VM) áthelyezése erőforráscsoportok vagy előfizetések között. Virtuális gép áthelyezése előfizetések között lehet hasznos, ha létrehozott egy virtuális Gépet egy személyes előfizetésben, és most át kívánja helyezni a vállalati előfizetéséhez.
@@ -58,7 +58,7 @@ nsg=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/p
 pip=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIPAddress
 vnet=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Network/virtualNetworks/myVNet
 diag=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Storage/storageAccounts/mydiagnosticstorageaccount
-storage=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageacountname    
+storage=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccountname    
 
 az resource move \
     --ids $vm,$nic,$nsg,$pip,$vnet,$storage,$diag \

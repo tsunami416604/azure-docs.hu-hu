@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 601246ab537c72e787c25d43a190111983c2b350
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 9375b042885459ab88b7c1f2a76a471da55ff5c8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075601"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209536"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 
@@ -28,11 +28,11 @@ Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérje
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Windows 10 2018. áprilisi verziója, vagy egy újabb ügyfél, amely:
-   * [Azure AD-hez gép](../device-management-azure-portal.md) vagy
-   * [Hibrid Azure AD-csatlakoztatott gép](../device-management-hybrid-azuread-joined-devices-setup.md), a hálózati kapcsolat egy tartományvezérlőhöz.
-* Engedélyezni kell az Azure AD önkiszolgáló jelszó-visszaállítását.
-* Ha a Windows 10-es gépek egy proxy vagy tűzfal mögött található, a HTTPS (443) forgalmat a `passwordreset.microsoftonline.com` és `ajax.aspnetcdn.com` forgalomként kell engedélyezni.
+* Meg kell fut legalább Windows 10, a rendszer 2018 április frissítés, és az eszközök vagy kell lennie:
+   * [Az Azure AD-hez csatlakoztatott](../device-management-azure-portal.md) vagy
+   * [Hibrid Azure AD-hez csatlakoztatott](../device-management-hybrid-azuread-joined-devices-setup.md), a hálózati kapcsolat egy tartományvezérlőhöz.
+* Engedélyeznie kell az Azure AD önkiszolgáló jelszó-visszaállítás.
+* Ha a Windows 10 rendszerű eszközök proxykiszolgálót vagy tűzfal mögé, hozzá kell adnia az URL-címeket, `passwordreset.microsoftonline.com` és `ajax.aspnet.cdn.com` a HTTPS-forgalom (a 443-as port) engedélyezett URL-címek listájához.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával
 

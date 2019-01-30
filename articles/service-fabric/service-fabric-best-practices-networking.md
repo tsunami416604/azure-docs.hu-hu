@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 4118e52e8fac34e860f05e17effb01e9375582ec
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 2571c4a1e5a3ff6228cd6647c4367555d0add866
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913919"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212575"
 ---
 # <a name="networking"></a>Hálózat
 
@@ -48,7 +48,7 @@ Gyorsított hálózatkezelésű virtuális gépén teljesítmény maximalizálá
 ```
 Service Fabric-fürt kiépítése a [Linuxos gyorsított hálózatkezelésű](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli), és [gyorsított hálózatkezelésű Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
 
-Gyorsított hálózatkezelés az Azure virtuálisgép-sorozat termékváltozatok támogatják: D/DSv2, a DSv3/D, E/ESv3, F/FS, FSv2 és Ms és Mms. Gyorsított hálózatkezelés tesztelés sikeresen használják az Standard_DS8_v3 Termékváltozat 1/23/verzióját 2019.
+Gyorsított hálózatkezelés az Azure virtuálisgép-sorozat termékváltozatok támogatják: D/DSv2, a DSv3/D, E/ESv3, F/FS, FSv2 és Ms és Mms. Gyorsított hálózatkezelés tesztelés sikeresen az Standard_DS8_v3 Termékváltozat az 1/23/2019-beli Service Fabric Windows-fürt, és a 2019/01/29 Standard_DS12_v2 használatával a Service Fabric Linux-fürt.
 
 Gyorsított hálózatkezelés engedélyezéséhez egy meglévő Service Fabric-fürtre, először szüksége [Service Fabric-fürt kétirányú méretezése hozzáadásával egy virtuálisgép-méretezési csoportban](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), a következőket hajthatja végre:
 1. A gyorsított hálózatkezelés engedélyezett egy NodeType kiépítése

@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: f5fc1385bff92851db81cd4ed397d66cb8a832f2
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 4668ff23710121e5495395d71902b9ffa4c01238
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54350931"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220348"
 ---
 # <a name="storage-accounts"></a>Tárfiókok
 
-A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás nevét. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. A Media Services-fiók és a hozzá társított tárfiókot kell tartoznia, ugyanabban az adatközpontban, és ugyanazt az erőforráscsoportot.
+A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás nevét. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. 
 
 Egy **elsődleges** és tetszőleges számú **másodlagos** Storage-fiókot társíthat a Media Services-fiókhoz. A Media Services támogatja az **Általános célú v2-** (GPv2-) és az **Általános célú v1-** (GPv1-) fiókokat is. 
 
@@ -28,6 +28,8 @@ Egy **elsődleges** és tetszőleges számú **másodlagos** Storage-fiókot tá
 > A blobfiókok nem megengedettek **elsődleges** tárfiókként. 
 
 Javasoljuk a GPv2, használja, így kihasználhatja, gyakori elérésű közötti választáshoz, és lassú elérésű szinteket annak. Storage-fiókokkal kapcsolatos további tudnivalókért lásd: [Azure Storage-fiók áttekintése](../../storage/common/storage-account-overview.md). 
+
+A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez kell lennie. Javasoljuk, hogy a Media Services-fiók ugyanazon a helyen a storage-fiókok használatához.
 
 ## <a name="assets-in-a-storage-account"></a>Storage-fiókban lévő eszközök
 

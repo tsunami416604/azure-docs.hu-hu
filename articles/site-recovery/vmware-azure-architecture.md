@@ -7,16 +7,16 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 1c47f9d511cd6461ef5a31f308669eba751d1de4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 3d91788544c49c260eff051185950bdfd164b802
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976001"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217951"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware – Azure vészhelyreállítási recovery architektúrájáról
 
-Ez a cikk ismerteti az architektúra és a vész-helyreállítási replikáció, feladatátvétel és helyreállítás VMware virtuális gépek (VM) telepítéséhez használt folyamatok között egy helyszíni VMware-hely és az Azure-ban a [Azure Site Recovery](site-recovery-overview.md) servuce.
+Ez a cikk ismerteti az architektúra és a vész-helyreállítási replikáció, feladatátvétel és helyreállítás VMware virtuális gépek (VM) telepítéséhez használt folyamatok között egy helyszíni VMware-hely és az Azure-ban a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
 
 
 ## <a name="architectural-components"></a>Az architektúra összetevői

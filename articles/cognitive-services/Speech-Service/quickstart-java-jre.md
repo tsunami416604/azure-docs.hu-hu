@@ -1,21 +1,21 @@
 ---
-title: 'Gyors útmutató: Ismeri fel a beszéd, a Java (Windows, Linux) – beszédszolgáltatások'
+title: 'Gyors útmutató: Recognize speech, Java (Windows, Linux) - Speech Services'
 titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató bemutatja egy egyszerű Java-alkalmazás, amely rögzíti, és felhasználói beszéd, a számítógép mikrofon transcribes létrehozása.
 services: cognitive-services
 author: fmegen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 0591ca0275c039ddb5828cb48bda2b0b305d7003
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 86a57704b20790628a89bce0f8cda4e0599fd103
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721386"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220569"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK for Java felismerése
 
@@ -80,6 +80,6 @@ További példákat, például a beszéd beolvasása egy hangfájlt a Githubon �
 
 ## <a name="see-also"></a>Lásd még
 
-- [Gyors útmutató: Lefordítja a beszéd, a Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Rövid útmutató: Translate speech, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modellek testreszabása](how-to-customize-language-model.md)

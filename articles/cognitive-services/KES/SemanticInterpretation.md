@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 5fcc7b760b5445e57b41787d8818ef11ed926e6c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2b0065dbdac8e3bdbc535f2d7d103b24110e1d02
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129352"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217271"
 ---
 # <a name="semantic-interpretation"></a>Szemantikai értelmezés
 
@@ -33,9 +33,9 @@ A változó meg van adva, amely betűvel kezdődik, és csak betűket (A – Z),
 
 Az alábbiakban felsoroljuk a jelenleg támogatott adattípusok:
 
-|Típus|Leírás|Példák|
+|Typo|Leírás|Példák|
 |----|----|----|
-|Sztring|0 vagy több karakter sorozata|"Hello World!"<br/>""|
+|Karakterlánc|0 vagy több karakter sorozata|"Hello World!"<br/>""|
 |Logikai|Logikai érték|true<br/>false|
 |Int32|32 bites előjeles egész számokat.  -2.1e9 való 2.1e9|123<br/>-321|
 |Int64|64 bites előjeles egész számokat. -9.2e18 és 9.2e18|9876543210|

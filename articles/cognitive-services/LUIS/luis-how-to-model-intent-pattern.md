@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: cff9a17b488363ce6acd80cd90f15c58c6fe6cb5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 46b7e7757c2bf1b01bebeff059f0028b9e9d189c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885761"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220756"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Az előrejelzési pontosság növeléséhez minták hozzáadása
 LUIS-alkalmazásokon végpont utterances kap, miután a [fogalom](luis-concept-patterns.md) minták növelve előrejelzés pontosságát, hogy egy mintát szórendjét és a word választási lehetőség felfedéséhez megcímkézzen számára. Használati mintáit [entitások](luis-concept-entity-types.md) és azok szerepköreivel adott minta szintaxis segítségével adatokat szeretne kinyerni. 

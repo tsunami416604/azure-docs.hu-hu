@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 959e58a58099b71a595f995e03cc70255fd6d059
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 334a476fee6e995c33a290d34df2f111baae34c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198027"
+ms.locfileid: "55224241"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Biztonsági másolatot az SQL Server-adatbázisok
 
@@ -483,7 +483,14 @@ Ez az eljárás lépésről lépésre adatok visszaállítása másik helyre. Az
 > Az adatbázist visszaállíthatja egy példányát olyan SQL Server ugyanazon Azure-régióban. A célkiszolgáló regisztrálva kell lennie a Recovery Services-tárolóba.
 >
 
-Az a **konfiguráció visszaállítása** menüben a **kiszolgáló** legördülő lista csak az SQL Server-példányokat a helyreállítási tárban regisztrált jeleníti meg. Ha azt szeretné, hogy a kiszolgáló nem szerepel a listán, [Fedezze fel az SQL Server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases) keresnie. A felderítési folyamat során az új kiszolgálókat a Recovery Services-tároló van regisztrálva.
+Az a **konfiguráció visszaállítása** menüben a **kiszolgáló** legördülő lista csak az SQL Server-példányokat a helyreállítási tárban regisztrált jeleníti meg. Ha azt szeretné, hogy a kiszolgáló nem szerepel a listán, [Fedezze fel az SQL Server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases) keresnie. A felderítési folyamat során az új kiszolgálókat a Recovery Services-tároló van regisztrálva.<br>
+A következő engedélyekkel kell ahhoz, hogy egy SQL-adatbázis visszaállításához:
+
+* **Biztonsági mentési operátor** engedélyeket a Recovery Services **tároló** , amelyben a visszaállítás során.
+* **Contributor(Write)** való hozzáférést a **forrás SQL virtuális gép** (a virtuális gép biztonsági mentésének, és próbálja visszaállítani a).
+* **Közreműködő (írás)** hozzáférés a cél SQL virtuális gép (a virtuális Gépet, hogy vissza; fog lehet ugyanazon a virtuális Gépen, mint a forrás virtuális gép eredeti hely Recovery(OLR)) esetén.
+
+Visszaállítása másik helyre:
 
 1. Az a **konfiguráció visszaállítása** menüben:
 

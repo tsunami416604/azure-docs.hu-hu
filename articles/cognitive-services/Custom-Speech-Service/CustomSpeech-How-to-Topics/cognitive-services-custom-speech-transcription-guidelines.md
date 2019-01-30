@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 6c64b89c2eb933e9bcc24bdc3097e7a0b2aab368
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7d9b8b5a2ad8ccb447462ef7d34a8c25e5af6ef4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342466"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225023"
 ---
 # <a name="transcription-guidelines"></a>Átírási irányelvek
 
@@ -76,10 +76,10 @@ Ahhoz, hogy az adatok használható a leghatékonyabban, az alábbi normalizál�
 
 | Eredeti szöveg | Normalizálási után |
 |----- | ----- |
-| 14 új 3. vészhelyreállítás. | tizennégy északkelet harmadik meghajtó |
+| 14 NE 3rd Dr. | tizennégy északkelet harmadik meghajtó |
 | Dr. Strangelove | Orvos Strangelove |
 | James Bond 007 | James táblarelációk double hoppá hét |
-| Ke$ magas rendelkezésre állás | Kesha |
+| Ke$ha | Kesha |
 | Mennyi ideig tart a 2 x 4 | Mennyi ideig tart a két négy |
 | Az értekezlet kerül az 1-3 pm | Az értekezlet kerül egy és három pm |
 | saját vér típus O + | Saját vér típus pozitív O |
@@ -95,7 +95,7 @@ Fontos fél szélességű írásjeleket használatának elkerülése érdekében
 | Unicode elkerülése érdekében | ASCII-helyettesítés |
 |----- | ----- |
 | "你好" (Megnyitás és Bezárás idézőjelekkel együtt) | "你好" (az idézőjelekkel együtt) |
-| 需要什么帮助? (kérdőjel) | 需要什么帮助? |
+| 需要什么帮助? (kérdőjel) | 需要什么帮助？ |
 
 ### <a name="text-normalization-performed-by-the-custom-speech-service"></a>A Custom Speech Service által végrehajtott szöveg normalizálási
 
@@ -114,7 +114,7 @@ Néhány példa:
 | ￥3.5 | 三 元 五 角 |
 | w f y z | W F Y Z |
 | 1992年8月8日 | 一 九 九 二 年 八 月 八 日 |
-| 你吃饭了吗? | 你 吃饭 了 吗 |
+| 你吃饭了吗 ? | 你 吃饭 了 吗 |
 | 下午5:00的航班 | 下午 五点 的 航班 |
 | 我今年21岁 | 我 今年 二十 一 岁 |
 
@@ -175,11 +175,11 @@ Ahhoz, hogy az adatok használható a leghatékonyabban, az alábbi normalizál�
 
 | Eredeti szöveg | A felhasználó normalizálási után | Rendszer normalizálási után
 |--------  | ----- | -------- |
-| Es Izraeli normál idő szerint 12.23Uhr | Es Izraeli normál idő szerint 12:23Uhr | es Izraeli normál idő szerint zwölf uhr drei és zwanzig uhr |
+| Es Izraeli normál idő szerint 12.23Uhr | Es Izraeli normál idő szerint 12:23Uhr | es ist zwölf uhr drei und zwanzig uhr |
 | {12.45} | {12,45} | zwölf komma vier fünf |
 | 3 < 5 | 3 kleiner als 5 | drei kleiner als vier |
-| 2 és 3-4 | 2 és 3-4 mínusz | zwei plusz -mínusz vier drei|
-| Das macht "12" | Das macht 12 számlázni | das macht zwölf számlázni |
+| 2 + 3 - 4 | 2 és 3-4 mínusz | zwei plusz -mínusz vier drei|
+| Das macht "12" | Das macht 12 számlázni | das macht zwölf euros |
 
 
 

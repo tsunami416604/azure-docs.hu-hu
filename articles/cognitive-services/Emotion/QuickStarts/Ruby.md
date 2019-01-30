@@ -1,24 +1,24 @@
 ---
-title: 'Rövid útmutató: Érzelemfelismerés képeken szereplő arcokon – Emotion API, Ruby'
+title: 'Gyors útmutató: Az arcok a képen – Emotion API, a Ruby érzelmek felismerése'
 titlesuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg az Emotion API Rubyval való használatának első lépéseivel.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: bcab24334c1ee4e47061ce6ea28bd60039e17b3f
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: HT
+ms.openlocfilehash: 9ab0f4128e163ca887cf8f03425e33f3fbb6f01a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239029"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221980"
 ---
-# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rövid útmutató: Alkalmazás létrehozása a képeken szereplő arcokon tükröződő érzelmek felismeréséhez.
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Gyors útmutató: Érzelemfelismerés az arcok a képen az alkalmazás létrehozása.
 
 > [!IMPORTANT]
 > Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként általánosan elérhető. 

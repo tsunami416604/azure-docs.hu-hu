@@ -1,23 +1,23 @@
 ---
-title: 'Gyors útmutató: Azure Face .NET SDK-val a kép arcok észlelése'
+title: 'Gyors útmutató: A Face Azure .NET SDK-val képet arcok észlelése'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban az Azure Face rendelkező SDK-t fogja használni C# arcokat észleli a képet.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: pafarley
-ms.openlocfilehash: 4fbbde167a8c895a71ab3614e8c3ecbce26604a9
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: caaef0f7fdbfc3ad639deddb328c98334ad3e99d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578154"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213313"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Gyors útmutató: Arcok észlelése, a képet, a Face .NET SDK használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Gyors útmutató: Arcfelismerés a képet, a Face .NET SDK használatával
 
 Az ebben a rövid útmutatóban a Face fogja használni az SDK szolgáltatás C# emberi arcok észlelése a képet. Ebben a rövid útmutatóban a kód egy működő példa: az Arcfelismerés projekt a a [Cognitive Services Látástechnológia csharp útmutatóink](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) adattárat a Githubon.
 
@@ -97,4 +97,4 @@ Male 37   Female 56
 Ebben a rövid útmutatóban létrehozott egy egyszerű .NET konzolalkalmazást, amely a Face API szolgáltatás segítségével a helyi és távoli képeken arcok észlelése. Ezután az oktatóanyag egy részletesebb megtekintéséhez, hogyan, képesek adatokat megjeleníteni az arcok a felhasználó egy intuitív módon.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Észlelése és elemezheti az arcokat a képet a WPF-alkalmazás létrehozása](../Tutorials/FaceAPIinCSharpTutorial.md)
+> [Oktatóanyag: Észlelheti és elemezheti az arcokat a képet a WPF-alkalmazás létrehozása](../Tutorials/FaceAPIinCSharpTutorial.md)

@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 0bbc6b638d11335e6d46501fa651996f05957dd5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 1d6c0a8ca04949216e6410ff81b15f79c7067522
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341820"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217288"
 ---
 # <a name="bing-speech-websocket-protocol"></a>A Bing Speech WebSocket protokoll
 
@@ -99,9 +99,9 @@ Az ügyfelek *kell* beszédszolgáltatás megfelelő végpont használata. A vé
 
 | Mód | Útvonal | Szolgáltatás URI-ja |
 | -----|-----|-----|
-| Interaktív | /Speech/Recognition/Interactive/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| Beszélgetés | /Speech/Recognition/Conversation/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
-| Diktálás | /Speech/Recognition/dictation/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
+| Interaktív | /speech/recognition/interactive/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| Beszélgetés | /speech/recognition/conversation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
+| Diktálás | /speech/recognition/dictation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
 További információkért lásd: a [szolgáltatás URI](../GetStarted/GetStartedREST.md#service-uri) lapot.
 
@@ -149,10 +149,10 @@ A fő, a szolgáltatásoknak az ügyfél által küldött üzenetek `speech.conf
 
 A következő fejlécek az összes ügyfél által kezdeményezett szükségesek.
 
-| Fejléc | Érték |
+| Fejléc | Value |
 |----|----|
 | Útvonal | Ebben a dokumentumban meghatározottak szerint az üzenet elérési út |
-| X-RequestId: | A "no-dash" formátumban UUID |
+| X-RequestId | A "no-dash" formátumban UUID |
 | X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
 
 #### <a name="x-requestid-header"></a>X-RequestId: fejléc
@@ -178,7 +178,7 @@ Az ügyfelek *kell* küldése egy `speech.config` azokat a csatlakozást beszéd
 
 #### <a name="required-message-headers"></a>Szükséges fejlécek
 
-| Fejléc neve | Érték |
+| Fejléc neve | Value |
 |----|----|
 | Útvonal | `speech.config` |
 | X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
@@ -219,7 +219,7 @@ A system.version eleme a `speech.config` üzenet a beszéd, az ügyfélalkalmaz�
 | Mező | Leírás | Használat |
 |-|-|-|
 | os.platform | Az operációs rendszer platform, amely az alkalmazást, például, a Windows, Android, iOS vagy Linux |Szükséges |
-| os.Name | Az operációs rendszer termék nevében, például a Debian vagy a Windows 10-es | Szükséges |
+| os.name | Az operációs rendszer termék nevében, például a Debian vagy a Windows 10-es | Szükséges |
 | os.Version | A képernyőn az operációs rendszer verziójának *major.minor.build.branch* | Szükséges |
 
 ##### <a name="device-element"></a>Eszköz elem
@@ -227,7 +227,7 @@ A system.version eleme a `speech.config` üzenet a beszéd, az ügyfélalkalmaz�
 | Mező | Leírás | Használat |
 |-|-|-|
 | Device.Manufacturer | Az eszköz hardver gyártója | Szükséges |
-| Device.Model | Az eszköz modellje | Szükséges |
+| device.model | Az eszköz modellje | Szükséges |
 | Device.Version | Az eszköz szoftverének verziója, eszköz gyártója által biztosított. Ezt az értéket megadja az eszközt, hogy a gyártó által nyomon követhetők egy verziója. | Szükséges |
 
 ### <a name="message-audio"></a>üzenet `audio`
@@ -249,10 +249,10 @@ Beszédszolgáltatás használja az első `audio` üzenet, amely tartalmaz egy e
 
 A következő fejléceket szükség az összes `audio` üzeneteket.
 
-| Fejléc         |  Érték     |
+| Fejléc         |  Value     |
 | ------------- | ---------------- |
 | Útvonal | `audio` |
-| X-RequestId: | A "no-dash" formátumban UUID |
+| X-RequestId | A "no-dash" formátumban UUID |
 | X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
 | Content-Type | A hang tartalomtípus. A típusnak kell lennie, vagy *audio/x-wav* (PCM) vagy *audio/szintetikus* (szintetikus). |
 
@@ -355,7 +355,7 @@ Beszédfelismerés, során beszédszolgáltatás rendszeres időközönként ál
 | ------------- | ---------------- |
 | WebSocket-üzenetek kódolása | Szöveg |
 | Útvonal | `speech.hypothesis` |
-| X-RequestId: | A "no-dash" formátumban UUID |
+| X-RequestId | A "no-dash" formátumban UUID |
 | Content-Type | application/json |
 | Törzs | A beszédfelismerés elmélet JSON struktúrában |
 
@@ -510,7 +510,7 @@ A `Connection` metrika megadja az ügyfél kapcsolódási kísérleteit részlet
 | Name (Név) | `Connection` | Szükséges |
 | Azonosító | A kapcsolat-értéket, amely használták a *X-ConnectionId* a kapcsolódási kérelem fejléce | Szükséges |
 | Indítás | Az idő, amikor az ügyfél küldött-e a kapcsolódási kérelem | Szükséges |
-| Befejezés | Az idő, amikor az ügyfelet, hogy a kapcsolat sikeresen létrejött-e értesítést kapott, vagy hiba esetekben, el lett utasítva, elutasítva, vagy nem sikerült | Szükséges |
+| Vége | Az idő, amikor az ügyfelet, hogy a kapcsolat sikeresen létrejött-e értesítést kapott, vagy hiba esetekben, el lett utasítva, elutasítva, vagy nem sikerült | Szükséges |
 | Hiba | A következő hiba történt, ha van ilyen leírása. A kapcsolat nem volt sikeres, ha az ügyfelek kell hagyja ki ezt a mezőt. Ez a mező hossza legfeljebb 50 karakter hosszú lehet. | Hiba történt az esetekben nincs egyéb megadva szükséges |
 
 A hiba leírása legfeljebb 50 karakter hosszú lehet kell lennie, és ideális egyikének kell lennie a következő táblázatban felsorolt értékeket. Ha a hibajelzést kiváltó körülmény nem egyezik az alábbi értékek egyikére, ügyfelek használhatják-e a hibajelzést kiváltó körülmény tömör leírása használatával [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) szóköz nélkül. A képes titkosítottan küldeni egy *telemetriai* üzenet a szolgáltatásban, így csak átmeneti kapcsolatot igényel, vagy ideiglenes hibaállapotok jelenteni lehet a a *telemetriai* üzenet. A hibák *véglegesen* ügyfelet kapcsolatot a szolgáltatás letiltása megakadályozza, hogy a az ügyfél bármilyen üzenetet küld a szolgáltatást, beleértve a *telemetriai* üzenetek.
@@ -549,7 +549,7 @@ A *záró* idő értékét a `Microphone` metrika rögzíti az idő, amikor az �
 | ----- | ----------- | ----- |
 | Name (Név) | Mikrofon | Szükséges |
 | Indítás | Az idő, amikor az ügyfél a mikrofon vagy más hang stream hangbemenet első lépéseiben vagy eseményindító kapott a kulcsszó spotter | Szükséges |
-| Befejezés | Az idő, amikor az ügyfél leállt, a mikrofon- vagy audióanyagot stream használatára | Szükséges |
+| Vége | Az idő, amikor az ügyfél leállt, a mikrofon- vagy audióanyagot stream használatára | Szükséges |
 | Hiba | A következő hiba történt, ha van ilyen leírása. A mikrofon műveletek sikeres volt, ha az ügyfelek kell hagyja ki ezt a mezőt. Ez a mező hossza legfeljebb 50 karakter hosszú lehet. | Hiba történt az esetekben nincs egyéb megadva szükséges |
 
 ### <a name="metric-listeningtrigger"></a>A metrika `ListeningTrigger`
@@ -569,7 +569,7 @@ Használja az alábbi példák útmutatóul a rögzítés *Start* és *záró* i
 | ----- | ----------- | ----- |
 | Name (Név) | ListeningTrigger | Optional |
 | Indítás | Az idő, amikor az ügyfél figyel-e eseményindító elindítása | Szükséges |
-| Befejezés | Az idő, amikor az ügyfél figyel-e eseményindító befejeződött | Szükséges |
+| Vége | Az idő, amikor az ügyfél figyel-e eseményindító befejeződött | Szükséges |
 | Hiba | A következő hiba történt, ha van ilyen leírása. Ha a trigger művelet sikeres volt, az ügyfelek kell hagyja ki ezt a mezőt. Ez a mező hossza legfeljebb 50 karakter hosszú lehet. | Hiba történt az esetekben nincs egyéb megadva szükséges |
 
 #### <a name="sample-message"></a>Mintaüzenet

@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szövegszkript átalakítása, C# – Translator Text'
+title: 'Gyors útmutató: Konvertálja a szöveget parancsfájl, C# -fordítói szöveg'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban fog elsajátíthatja átírás (átalakítás) szöveg egy parancsfájlból származó .NET Core és a Translator Text REST API egy másik használatával. Ebben a példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: d67fbdad32612f23b1de31f7d2a1d7b4dee3b68e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 7beddd7f7f21466ee404303b2727370d0cfc86f6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889140"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220153"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveg használatávalC#
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>Gyors útmutató: Szövegelemzés a következőkkel átbetűzés a Translator Text API használatávalC#
 
 Ebből a gyorsútmutatóból megtudhatja, hogyan átírás (átalakítás) szöveg egy parancsfájlból származó .NET Core használatával való (C#) és a Translator Text REST API. A megadott példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 

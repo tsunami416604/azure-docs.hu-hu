@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 4c9fe269ffa351c1efdb3f94a15a10bae65432d8
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 3013d8997660df95fb12c8b18c1120f726eead04
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199650"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216020"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
@@ -55,7 +55,7 @@ Ellentétben a legtöbb más Log Analytics-megoldások adatok nem lesznek gyűjt
 
 ## <a name="configuration"></a>Konfiguráció
 
-1. Engedélyezze az Azure Web Apps Analytics megoldás a a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../../azure-monitor/insights/solutions.md).
+1. Engedélyezze az Azure Web Apps Analytics megoldás a a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../../azure-monitor/insights/solutions.md).
 2. Keresse fel az [Azure Portalt](https://portal.azure.com). Válassza ki **minden szolgáltatás** Application Insights megnyitásához. Ezután keresse meg az Application Insights. 
 3. A **előfizetések**, válasszon ki egy előfizetést, amely rendelkezik az Application Insights-erőforrást, majd a **neve**, válassza ki egy vagy több alkalmazás.
 4. Kattintson a **Save** (Mentés) gombra.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 750ab99df1d241cf4252c49a5a9ced08a82b1c92
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 55d73d51cf7d1867b868b3a9b8385340e01cdd02
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809190"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223381"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -283,3 +283,4 @@ Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjá
 * [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
 * [Az Azure Files üzembe helyezése](storage-files-deployment-guide.md)
 * [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
+* [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

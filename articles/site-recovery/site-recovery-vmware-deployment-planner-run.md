@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: mayg
-ms.openlocfilehash: 210872a468f92f92edef9c8e29a26382c5646dae
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 8e46f47f1d3a95e4635609f24dc413141304d3c2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321551"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228168"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -42,7 +42,7 @@ Először létre kell hoznia a profillal ellátni kívánt virtuális gépek lis
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. Előfordulhat, hogy a következő parancsot kell futtatnia, ha a rendszer nem ismeri el a Connect-VIServer elemet a parancsmag neveként.
+4. Futtassa a következő parancsot, ha a Connect-VIServer parancsmagnak a neve, mint nem ismerhető fel is szükség lehet.
 
             Add-PSSnapin VMware.VimAutomation.Core
 

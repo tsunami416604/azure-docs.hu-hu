@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 42477a69616024ae9564d3665a47ff00161ea792
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 73505064bf5cde4e97cd210698e21883cc9f5e38
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451052"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227879"
 ---
 # <a name="what-is-text-analytics"></a>Mi a Text Analytics?
 
@@ -66,7 +66,7 @@ Ez a szakasz egy külön cikkbe lett áthelyezve a jobb átláthatóság érdek�
 
 A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. A jelenlegi korlát dokumentumonként 5000 karakter. Ha ennél hosszabb dokumentumok elemzésére van szüksége, felbonthatja őket kisebb darabokra. Ha mégis magasabb korlátra van szüksége, [lépjen velünk kapcsolatba](https://azure.microsoft.com/overview/sales-number/), hogy megbeszélhessük a követelményeit.
 
-| Korlát | Érték |
+| Korlát | Value |
 |------------------------|---------------|
 | Az egyes dokumentumok maximális mérete | 5000 karakternél által mért [ `StringInfo.LengthInTextElements` ](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Teljes kérés maximális mérete | 1 MB |

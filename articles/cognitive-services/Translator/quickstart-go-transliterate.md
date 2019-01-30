@@ -1,21 +1,21 @@
 ---
-title: 'Rövid útmutató: Szövegátalakítási szkript, Go – Translator Text API'
+title: 'Gyors útmutató: Szöveg átalakítása parancsfájl, a Go – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API és Go segítségével.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 6b86d94e53b1ecb7a0d0d7b1f325a425f05c9e4f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 976ca2623667abc4e49ceb91ec97706723bc32c2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993289"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211746"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-go"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveget a Go használatával
 
@@ -103,7 +103,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> A végpontokkal, az útvonalakkal és a kérelemparamétereivel kapcsolatos további információért lásd a [Translator Text API 3.0 átírási funkcióját ismertető részt](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
+> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: Átbetűzés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
 
 ## <a name="create-a-struct-for-your-request-body"></a>Egy struct a kérés törzsének létrehozása
 

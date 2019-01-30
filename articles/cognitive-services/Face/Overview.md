@@ -5,16 +5,16 @@ description: Ismerje meg, hogyan használható az arcfelismerési szolgáltatás
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: 1916aa94dcf7528ce898ef37eac29c1017f03f15
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 361d80bcca0b0a151e9fcdaab938de0c8ff5f8bc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231886"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220110"
 ---
 # <a name="what-is-the-azure-face-api"></a>Mi az Azure Face API?
 
@@ -72,7 +72,7 @@ További információ a személyazonosítással kapcsolatban: [Identify API](htt
 
 Az alábbi mintaalkalmazások a Face API használatának néhány módját mutatják be.
 
-- [A Microsoft Face API: Windows-Klienskódtár és a minta](https://github.com/Microsoft/Cognitive-Face-Windows) – a WPF-alkalmazás azt mutatja be, számos forgatókönyv Face észlelési, elemzési és azonosítása.
+- [Microsoft Face API: Windows-Klienskódtár és a minta](https://github.com/Microsoft/Cognitive-Face-Windows) – a WPF-alkalmazás azt mutatja be, számos forgatókönyv Face észlelési, elemzési és azonosítása.
 - [FamilyNotes UWP-alkalmazás](https://github.com/Microsoft/Windows-appsample-familynotes) – Univerzális Windows Platform-alkalmazás (UWP-alkalmazás), amely a beszédfelismerés, Cortana, a szabadkézi bevitel és a kamera használata mellett arcazonosítást alkalmaz egy családi üzenetmegosztási forgatókönyvben.
 
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság

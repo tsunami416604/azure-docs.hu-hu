@@ -5,18 +5,18 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: d38886d40a92d5e75f5d0b6b189dbf7c067e1635
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: bbca745da1fe657c1316d9e4e5fbeeeabfa5e1ef
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632390"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216744"
 ---
-# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Példa: Hogyan nyerhetők ki a kulcsszavak a Text Analytics használatával
+# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Példa: Hogyan kinyerheti a kulcsfontosságú kifejezéseket, a Szövegelemzés
 
 A [Key Phrase Extraction API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) strukturálatlan szöveget értékel ki és minden JSON-dokumentumra visszaadja a kulcsszavak listáját. 
 
@@ -67,11 +67,11 @@ A dokumentum méretének 5000 karakter alatt kell maradnia, és legfeljebb 1000 
     }
 ```    
     
-## <a name="step-1-structure-the-request"></a>1. lépés: A kérés felépítése
+## <a name="step-1-structure-the-request"></a>1. lépés: A kérelem struktúra
 
 A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérést. Nézze meg az API-dokumentációban ezt a kérést: [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
++ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentáció: [Kulcskifejezések API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
 
 + Állítsa be a HTTP-végpontot Text Analytics erőforrás használata az Azure- vagy egy példányosított kulcsszókeresés [Szövegelemzés tároló](text-analytics-how-to-install-containers.md). Tartalmaznia kell a `/keyPhrases` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
 
@@ -82,7 +82,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: A kérés elküldése
+## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
 
 Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
 

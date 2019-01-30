@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 5cbdad82e25baa95c0342eb514f39c7026f1618b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: fc40f20349e3424dbcf50f5ca0395b06a818566f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753078"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224054"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Gyors útmutató: A Bing beszédfelismerés REST API használata
 
@@ -124,7 +124,7 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 A példában a curl Linux bash-környezet. Ha nem érhető el a platformon, szüksége lehet a curl telepítéséhez. A példában is működik a Cygwin a Windows, a Git Bash, a zsh és más ismertetése.
 
@@ -191,7 +191,7 @@ A következő kódrészlet azt szemlélteti, hogyan olvashatja a válasz az adat
 ConvertTo-Json $RecoResponse
 ```
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 Ebben a példában a curl közvetlenül a karakterlánc a válaszüzenetben adja vissza. Ha azt szeretné, annak megjelenítéséhez JSON formátumban, használhatja a további eszközök, például a jq.
 

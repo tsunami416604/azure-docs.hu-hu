@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: fbd1c96cede42c0a5875f28b7b7793bcf20755bf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 590faaf727345dcfe8ab61a1860ca46d78256b22
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150310"
+ms.locfileid: "55219005"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Gyors útmutató: Egy eszköz alkalmazás Node.js-ben az IoT Hub eszköz adatfolyamok (előzetes verzió) használatával való kommunikáció során
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ebben a rövid útmutatóban a Szolgáltatásoldali alkalmazás futtatásához szüksége Node.js 4.x.x vagy újabb verzióját a fejlesztői gépére.
 
-Node.js letöltheti a több platformon [Node.js.org](https://Node.js.org).
+Node.js letöltheti a több platformon [Node.js.org](https://nodejs.org).
 
 A Node.js aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 

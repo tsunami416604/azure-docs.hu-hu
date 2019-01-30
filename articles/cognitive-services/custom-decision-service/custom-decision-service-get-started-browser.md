@@ -6,16 +6,16 @@ services: cognitive-services
 author: slivkins
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
-ms.openlocfilehash: 01f75d333e3eea5af35ca57bd44bc76148a481f2
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: db993693acc7e64a789564b92f4d0eacfa0e69f7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867615"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225261"
 ---
 # <a name="call-api-from-a-browser"></a>API hívása egy böngészőből
 
@@ -23,7 +23,7 @@ Ez a cikk segít az Azure egyéni döntési szolgáltatás API-hívások közvet
 
 Ügyeljen arra, hogy [regisztrálhatja alkalmazását](custom-decision-service-get-started-register.md), először.
 
-Első lépések. Az alkalmazás egy első oldal, amely több cikk oldalak hivatkozásokat tartalmaz tartalmazóként van modellezve. Az első lapon adja meg az eredménykészlet sorrendjét a cikkek oldalai a Custom Decision Service használja. Az alábbi kód beszúrása az első oldal HTML vezetője:
+Lássunk neki! Az alkalmazás egy első oldal, amely több cikk oldalak hivatkozásokat tartalmaz tartalmazóként van modellezve. Az első lapon adja meg az eredménykészlet sorrendjét a cikkek oldalai a Custom Decision Service használja. Az alábbi kód beszúrása az első oldal HTML vezetője:
 
 ```html
 // Define the "callback function" to render UI

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 6140687d583534d21ee50652811c2fd1624a5cf5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fccc7379794b4b75ff53e517eddd95ff0f7db0e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840452"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223782"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>A hálózatleképezés és virtuális hálózatok IP-címzés beállítása
 
@@ -62,8 +62,8 @@ A virtuális gép ki van jelölve a cél alhálózat a forrás virtuális gép a
 
 A cél virtuális gép minden hálózati adapter IP-cím konfigurációja a következő:
 
-- **DHCP**: Ha a forrás virtuális gép a hálózati Adaptert használ a DHCP, a hálózati Adaptert a cél virtuális gép is van-e állítva DHCP használatára.
-- **Statikus IP-cím**: Ha a forrás virtuális gép hálózati adapter statikus IP-címkezelés, a céloldali virtuális gép hálózati is statikus IP-címet fogja használni.
+- **DHCP**: A hálózati Adaptert a forrás virtuális gép DHCP használja, ha a cél virtuális gép hálózati adapter is van beállítva a DHCP használatára.
+- **Statikus IP-cím**: Ha a hálózati Adaptert a forrás virtuális gép használ a statikus IP-címkezelés, a céloldali virtuális gép hálózati is statikus IP-címet fogja használni.
 
 
 ## <a name="ip-address-assignment-during-failover"></a>Feladatátvétel során IP-cím hozzárendelése
@@ -79,8 +79,8 @@ Különböző címtér<br/><br/> A célként megadott alhálózat következő el
 
 **Célhálózat** | **Részletek**
 --- | ---
-Célhálózat a feladatátvételi virtuális hálózat | -Cél IP-címet a statikus, de nem megegyező IP-címre a feladatátvételhez fenntartott.<br/><br/>  -A hozzárendelt cím az alhálózati címtartomány vége a következő elérhető címe.<br/><br/> Példa: Ha a forrás IP-cím 10.0.0.19 és feladatátvételi hálózat a 10.0.0.0/24 címtartományt használja, akkor a következő IP-címe, a cél virtuális gép rendelt 10.0.0.254.
-Célhálózat nincs a virtuális hálózatok közötti feladatátvétel | -Cél IP-cím statikus foglalva feladatátvételhez azonos IP-címére lesz.<br/><br/>  – Ha az azonos IP-cím már hozzá van rendelve, az IP-cím a következő parancsot a eeach érhető el, az alhálózati címtartomány.<br/><br/> Példa: Ha a statikus IP-forráscím 10.0.0.19 és feladatátvétel nem hálózatban található, amely nem a feladatátvételi hálózat, a tartomány 10.0.0.0/24, majd a célként megadott statikus IP-cím lesz 10.0.0.0.19, ha elérhető, és egyéb 10.0.0.254 lesz.
+Célhálózat a feladatátvételi virtuális hálózat | -Cél IP-címet a statikus, de nem megegyező IP-címre a feladatátvételhez fenntartott.<br/><br/>  -A hozzárendelt cím az alhálózati címtartomány vége a következő elérhető címe.<br/><br/> Példa: Ha a forrás IP-cím 10.0.0.19 és feladatátvételi hálózat a 10.0.0.0/24 címtartományt használja, a következő IP-címe, a cél virtuális gép rendelt 10.0.0.254.
+Célhálózat nincs a virtuális hálózatok közötti feladatátvétel | -Cél IP-cím statikus foglalva feladatátvételhez azonos IP-címére lesz.<br/><br/>  – Ha az azonos IP-cím már hozzá van rendelve, az IP-cím elérhető minden, az alhálózati címtartományt a következő parancsot.<br/><br/> Példa: Ha a statikus IP-forráscím 10.0.0.19 és feladatátvétel nem hálózatban található, amely nem a feladatátvételi hálózat, a tartomány 10.0.0.0/24, akkor a célként megadott statikus IP-cím lesz 10.0.0.0.19, ha elérhető, és egyéb 10.0.0.254 lesz.
 
 - A feladatátvételi virtuális hálózaton a célhálózat vész-helyreállítási beállításakor kiválasztott.
 - Azt javasoljuk, hogy Ön mindig használja a nem éles hálózati környezetben a feladatátvételi teszthez.

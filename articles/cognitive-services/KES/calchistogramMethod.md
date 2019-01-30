@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 0ca43d6f6879198b8f80794c1948439e15f312ad
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f994a254e661cd245d2e953efd3bd595d50c6fc7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122756"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214313"
 ---
 # <a name="calchistogram-method"></a>calchistogram metódus
 A *calchistogram* módszer kiszámítja a strukturált a lekérdezés megfelelő objektumok és azok attribútumértékek eloszlását számítja ki.
@@ -23,7 +23,7 @@ A *calchistogram* módszer kiszámítja a strukturált a lekérdezés megfelelő
 ## <a name="request"></a>Kérés
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
-Name (Név)|Érték|Leírás
+Name (Név)|Value|Leírás
 ----|-----|-----------
 kifejezés | Szöveges karakterlánc | Strukturált lekérdezési kifejezés, amely meghatározza az index entitások keresztül hisztogramok értékének kiszámításához.
 Attribútumok | Szöveges karakterlánc (alapértelmezés = "") | A válaszba foglalandó attribútumot tartalmazó, vesszővel elválasztott listája.
@@ -37,10 +37,10 @@ $.expr | *kifejezés* paraméter a kérelemből.
 $.num_entities | Egyező entitások teljes száma.
 $.histograms |  Hisztogramok, minden kért attribútum egy tömbje.
 $.histograms [\*] .attribute | Az attribútum, amelyen számította ki a hisztogramhoz neve.
-$.histograms [\*] .distinct_values | Megfelelő az attribútum az entitások között különböző értékek száma.
+$.histograms[\*].distinct_values | Megfelelő az attribútum az entitások között különböző értékek száma.
 $.histograms [\*] .total_count | Teljes száma érték megfelelő az attribútum az entitások között.
 $.histograms [\*] .histogram | Ez az attribútum hisztogram adatait.
-$.histograms [\*] .histogram [\*] .value | Attribútumérték.
+$.histograms[\*].histogram[\*].value | Attribútumérték.
 $.histograms [\*] .histogram [\*] .logprob  | Az attribútumérték rendelkező entitások megfelelő teljes természetes logaritmusát valószínűségét.
 $.histograms [\*] .histogram [\*] .count    | Az attribútumérték egyező entitások száma.
 $.aborted | IGAZ, ha a kérelem túllépte az időkorlátot.

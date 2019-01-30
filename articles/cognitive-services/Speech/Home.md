@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 960d2d402f223b306aa6ff05b567d13525e3d525
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 9b462ba594122b86580b9d136a844db070eea92d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340358"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217645"
 ---
 # <a name="what-is-bing-speech"></a>Mit jelent a Bing Speech?
 
@@ -28,10 +28,10 @@ A felhőalapú és a Microsoft Bing Speech API biztosít a fejlesztők könnyed�
 
 ## <a name="speech-to-text-speech-recognition"></a>Diktálás (beszédfelismerés)
 
-A Microsoft beszédfelismerési API *transcribes* audiostreamek lejátszásával, szöveg, amely az alkalmazás a felhasználót, vagy mint való reagáláshoz bemeneti parancsot. A fejlesztők a beszédfelismerési hozzá alkalmazásaikat kétféle módon biztosítja: REST API-k **vagy** Websocket alapuló ügyféloldali kódtáraknál.
+A Microsoft beszédfelismerési API *transcribes* audiostreamek lejátszásával, szöveg, amely az alkalmazás a felhasználót, vagy mint való reagáláshoz bemeneti parancsot. A fejlesztők a beszédfelismerési hozzá alkalmazásaikat két módon biztosít: REST API-k **vagy** Websocket alapuló ügyféloldali kódtáraknál.
 
-- [REST API-k](GetStarted/GetStartedREST.md): a fejlesztők a beszédfelismerési a szolgáltatáshoz az alkalmazások HTTP-hívások.
-- [Ügyfélkódtárak](GetStarted/GetStartedClientLibraries.md): speciális funkciók fejlesztők is töltse le a Microsoft Speech-ügyfélkódtárak és alkalmazásokba hivatkozásra.  A klienskódtárak érhetők el a különböző platformokon (Windows, Android, iOS) különböző nyelvekhez (C#, Java, JavaScript, ObjectiveC) használatával. A REST API-k, ellentétben a klienskódtárak használatára Websocket-alapú protokoll.
+- [REST API-k](GetStarted/GetStartedREST.md): A fejlesztők a beszédfelismerési a szolgáltatáshoz az alkalmazások HTTP-hívások.
+- [Ügyfélkódtárak](GetStarted/GetStartedClientLibraries.md): Speciális funkciók fejlesztők Microsoft Speech klienskódtárak letöltheti, és hivatkozás alkalmazásokba.  A klienskódtárak érhetők el a különböző platformokon (Windows, Android, iOS) különböző nyelvekhez (C#, Java, JavaScript, ObjectiveC) használatával. A REST API-k, ellentétben a klienskódtárak használatára Websocket-alapú protokoll.
 
 | Használati esetek | [REST API-k](GetStarted/GetStartedREST.md) | [Ügyfélkódtárak](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
@@ -60,4 +60,4 @@ Bármelyik módszert a fejlesztők válasszon (REST API vagy klienskódtárak), 
 
 ### <a name="next-steps"></a>További lépések
 
-- Microsoft szöveg-beszéd átalakítás szolgáltatás használatának első lépései: [Speech API-referencia a szöveg](api-reference-rest/bingvoiceoutput.md). Nyelvek és beszédhangot szöveg-beszéd átalakítás által támogatott teljes listáját lásd: [támogatott nyelv és Hangtípust](api-reference-rest/bingvoiceoutput.md#SupLocales).
+- Első lépések a Microsoft szöveg-beszéd átalakítás szolgáltatással: [Szöveg-beszéd átalakítás API-referencia](api-reference-rest/bingvoiceoutput.md). Nyelvek és beszédhangot szöveg-beszéd átalakítás által támogatott teljes listáját lásd: [támogatott nyelv és Hangtípust](api-reference-rest/bingvoiceoutput.md#SupLocales).

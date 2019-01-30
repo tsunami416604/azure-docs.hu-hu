@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: c1714fd6ada45f2b4498a3f5972424200afa9aa3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c2151be1644cde0e737be7f026bdf63cef0b3686
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838140"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221963"
 ---
-# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Állítsa be a Dynamics AX Többrétegű alkalmazások vészhelyreállítása 
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Állítsa be a Dynamics AX Többrétegű alkalmazások vészhelyreállítása   
 
 
 
@@ -109,7 +109,7 @@ A helyreállítási terv a Site Recovery segítségével automatizálja a felada
 
 4. Válassza ki az alkalmazáskiszolgáló objektum és az ügyfél virtuális gépeket a helyreállítási terv, és válassza ki a ✓.
 
-    ![Elemek kiválasztása](./media/site-recovery-dynamics-ax/selectvms.png)
+    ![Elemek kijelölése](./media/site-recovery-dynamics-ax/selectvms.png)
 
     Helyreállítási terv. példa:
 
@@ -118,15 +118,15 @@ A helyreállítási terv a Site Recovery segítségével automatizálja a felada
 A következő lépések hozzáadásával testre szabhatja a helyreállítási terv a Dynamics AX-alkalmazáshoz. Az előző pillanatképet mutatja a teljes helyreállítási tervet, minden lépés hozzáadása után.
 
 
-* **Az SQL Server feladatátvevő lépéseket**: SQL Server adott helyreállítási feladatokra vonatkozó információkért lásd: [az SQL Server és az Azure Site Recovery replikációs alkalmazások](site-recovery-sql.md).
+* **Az SQL Server feladatátvevő lépéseket**: Az SQL server adott helyreállítási feladatokra vonatkozó információkért lásd: [az SQL Server és az Azure Site Recovery replikációs alkalmazások](site-recovery-sql.md).
 
-* **Feladatátvételi csoport 1**: az alkalmazás objektum Serveres virtuális gépek feladatátvételét.
+* **Feladatátvételi csoport 1**: Az alkalmazás objektum Serveres virtuális gépek feladatátvételét.
 Győződjön meg arról, hogy a kiválasztott helyreállítási pont, de nem zárja be az adatbázis PILLANATKÉPÉNEK, a lehető előre azt.
 
-* **Parancsfájl**: hozzáadása terheléselosztó (csak E-A).
+* **parancsfájl**: Terheléselosztó hozzáadása (csak E-A).
 Adjon hozzá egy terheléselosztó hozzáadása betölt egy parancsfájl (keresztül az Azure Automation) után az alkalmazás objektum Server VM-csoportazonosítóval. Egy parancsfájl segítségével a feladat végrehajtásához. További információkért lásd: [többrétegű alkalmazás vész-helyreállítási terheléselosztó hozzáadása](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/).
 
-* **Feladatátvételi csoport 2**: a Dynamics AX-ügyfél virtuális gépek feladatátvételét. A helyreállítási terv részeként a webes szintű virtuális gépek feladatátvételét.
+* **Feladatátvételi csoport 2**: A Dynamics AX-ügyfél virtuális gépek feladatátvételét. A helyreállítási terv részeként a webes szintű virtuális gépek feladatátvételét.
 
 
 ### <a name="perform-a-test-failover"></a>Feladatátvételi teszt végrehajtása
