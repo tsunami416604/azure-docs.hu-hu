@@ -167,27 +167,27 @@ Ha az adatok másolása az SAP BW, a következő hozzárendeléseket a rendszer 
 | SAP BW-adattípus | Data factory közbenső adattípus |
 |:--- |:--- |
 | ACCP | Int |
-| CHAR | Karakterlánc |
-| CLNT | Karakterlánc |
-| PÉNZNEM | Tizedes tört |
-| CUKY | Karakterlánc |
-| DEC | Tizedes tört |
-| FLTP | Dupla |
-| INT1 | Bájt |
+| CHAR | String |
+| CLNT | String |
+| CURR | Decimal |
+| CUKY | String |
+| DEC | Decimal |
+| FLTP | Double |
+| INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| NYELV | Karakterlánc |
-| LCHR | Karakterlánc |
-| LRAW | Byte] |
+| LANG | String |
+| LCHR | String |
+| LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | Tizedes tört |
-| RAW | Byte] |
-| RAWSTRING | Byte] |
-| STRING | Karakterlánc |
-| EGYSÉG | Karakterlánc |
-| DATS | Karakterlánc |
-| NUMC | Karakterlánc |
-| TIMS | Karakterlánc |
+| QUAN | Decimal |
+| RAW | Byte[] |
+| RAWSTRING | Byte[] |
+| STRING | String |
+| UNIT | String |
+| DATS | String |
+| NUMC | String |
+| TIMS | String |
 
 
 ## <a name="next-steps"></a>További lépések
