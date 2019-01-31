@@ -1,9 +1,9 @@
 ---
-title: Hozzon létre, illetve kezelheti az Azure SQL-kiszolgáló és az önálló adatbázisok |} A Microsoft Docs
-description: Ismerje meg a logikai kiszolgálók és az önálló adatbázisok létrehozására és kezelésére.
+title: Hozzon létre, illetve kezelheti az Azure SQL Database-kiszolgálók és az önálló adatbázisok |} A Microsoft Docs
+description: Ismerje meg az SQL Database-kiszolgálók és az önálló adatbázisok létrehozására és kezelésére.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,29 +11,29 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: f43c2cd5a3c155258cd698f6b55854bc0df9f861
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 32b532cab7e970d01c3963729658c32ac4a020b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388593"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465044"
 ---
-# <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Logikai kiszolgáló és az Azure SQL Database önálló adatbázisok létrehozása és kezelése
+# <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>SQL Database-kiszolgálók és az Azure SQL Database önálló adatbázisok létrehozása és kezelése
 
-Hozzon létre, és kezelheti az Azure SQL Database logikai kiszolgálóiról és az önálló adatbázisok az Azure portal, PowerShell, Azure CLI, REST API és a Transact-SQL használatával.
+Hozzon létre, és kezelheti az SQL Database-kiszolgálók és az önálló adatbázisok az Azure portal, PowerShell, Azure CLI, REST API és a Transact-SQL használatával.
 
-## <a name="azure-portal-manage-logical-servers-and-databases"></a>Az Azure Portalon: Logikai kiszolgálóiról és adatbázisairól kezelése
+## <a name="azure-portal-manage-sql-database-servers-and-single-databases"></a>Az Azure Portalon: SQL Database-kiszolgálók és az önálló adatbázisok kezelése
 
 Az Azure SQL database erőforráscsoport előre, vagy a kiszolgáló létrehozásakor is létrehozhat. Több módszerrel hozzon létre új SQL-kiszolgáló vagy egy új adatbázis létrehozása során egy új SQL server űrlapot bemutató.
 
-### <a name="create-a-blank-sql-server-logical-server"></a>Hozzon létre egy üres SQL server (logikai kiszolgáló)
+### <a name="create-a-blank-sql-database-server"></a>Hozzon létre egy üres SQL-adatbáziskiszolgáló
 
-Hozzon létre egy Azure SQL Database-kiszolgálón (nélkül egy adatbázis), a [az Azure portal](https://portal.azure.com), nyissa meg egy üres SQL server (logikai kiszolgáló) képernyő.  
+Hozzon létre egy SQL Database server, a [az Azure portal](https://portal.azure.com), nyissa meg egy üres SQL server (logikai kiszolgáló) képernyőn.  
 
-### <a name="create-a-blank-or-sample-sql-database"></a>Hozzon létre egy üres vagy minta SQL-adatbázis
+### <a name="create-a-blank-or-sample-sql-single-database"></a>Hozzon létre egy üres vagy mintát önálló SQL-adatbázist
 
-Hozzon létre egy Azure SQL database, a [az Azure portal](https://portal.azure.com), nyissa meg egy üres SQL Database űrlapját, és adja meg a kért adatokat. Az Azure SQL database erőforrás-csoport és a logikai kiszolgáló időben, vagy maga az adatbázis létrehozásakor is létrehozhat. Hozzon létre egy üres adatbázist, vagy hozzon létre egy mintaadatbázist az Adventure Works LT. alapján
+Hozzon létre egy Azure SQL database egyetlen, a [az Azure portal](https://portal.azure.com), nyissa meg egy üres SQL Database űrlapját, és adja meg a kért adatokat. Az Azure SQL database erőforrás-csoport és SQL Database-kiszolgáló előre létrehozhat vagy létrehozásakor az egyetlen adatbázis-magát. Hozzon létre egy üres adatbázist, vagy hozzon létre egy mintaadatbázist az Adventure Works LT. alapján
 
   ![adatbázis létrehozása-1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -42,9 +42,9 @@ Hozzon létre egy Azure SQL database, a [az Azure portal](https://portal.azure.c
 
 Felügyelt példány létrehozásához lásd: [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md)
 
-## <a name="manage-an-existing-sql-server"></a>Egy meglévő SQL-kiszolgáló kezelése
+## <a name="manage-an-existing-sql-database-server"></a>Az SQL Database-kiszolgálók kezelése
 
-Meglévő kiszolgáló kezeléséhez, a kiszolgáló több különféle módszerek – például adott SQL database oldalon keresse meg a **SQL Server-kiszolgálók** lapon vagy a **összes erőforrás** lap.
+Egy SQL Database-kiszolgálók kezelése, a kiszolgáló több különféle módszerek – például adott SQL database oldalon keresse meg a **SQL Server-kiszolgálók** lapon vagy a **összes erőforrás** lapot.
 
 Létező adatbázis kezeléséhez, lépjen a **SQL-adatbázisok** lapon, majd kattintson a kezelni kívánt adatbázisra. A következő képernyőképen látható, hogy hogyan kezdheti meg az adatbázis kiszolgálószintű tűzfal beállítása az **áttekintése** egy adatbázishoz tartozó lap.
 
@@ -55,12 +55,12 @@ Létező adatbázis kezeléséhez, lépjen a **SQL-adatbázisok** lapon, majd ka
 > [!TIP]
 > Az Azure portal rövid útmutatójában talál [egy Azure SQL database létrehozása az Azure Portalon](sql-database-get-started-portal.md).
 
-## <a name="powershell-manage-logical-servers-and-databases"></a>PowerShell: Logikai kiszolgálóiról és adatbázisairól kezelése
+## <a name="powershell-manage-sql-database-servers-and-single-databases"></a>PowerShell: SQL Database-kiszolgálók és az önálló adatbázisok kezelése
 
-Létrehozása és kezelése az Azure SQL logikai kiszolgálók, egyetlen vagy készletezett adatbázisok és logikai kiszolgálóhoz tűzfalak az Azure PowerShell-lel, használja a következő PowerShell-parancsmagokat. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps).
+Létrehozása és kezelése az Azure SQL Database-kiszolgálók, önálló és készletezett adatbázisok és SQL Database-kiszolgáló tűzfalak az Azure PowerShell-lel, használja a következő PowerShell-parancsmagokat. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps).
 
 > [!TIP]
-> PowerShell-példa szkriptek, lásd: [használja a Powershellt egy Azure SQL-adatbázis létrehozása és a egy logikai kiszolgáló tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelés és méret egy önálló SQL database PowerShell-lel](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> PowerShell-példa szkriptek, lásd: [használja a Powershellt egyetlen Azure SQL-adatbázis létrehozása és tűzfalszabály létrehozása az SQL Database konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelés és méret egy SQL database PowerShell-lel egyetlen](scripts/sql-database-monitor-and-scale-database-powershell.md) .
 
 | Parancsmag | Leírás |
 | --- | --- |
@@ -79,12 +79,12 @@ Létrehozása és kezelése az Azure SQL logikai kiszolgálók, egyetlen vagy k�
 |[Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule)|Egy tűzfalszabály töröl egy kiszolgálóról.|
 | New-AzureRmSqlServerVirtualNetworkRule | Létrehoz egy [ *virtuális hálózati szabályt*](sql-database-vnet-service-endpoint-rule-overview.md)egy alhálózatot, amely egy virtuális hálózati szolgáltatásvégpont alapján. |
 
-## <a name="azure-cli-manage-logical-servers-and-databases"></a>Azure CLI: Logikai kiszolgálóiról és adatbázisairól kezelése
+## <a name="azure-cli-manage-sql-database-servers-and-single-databases"></a>Azure CLI: SQL Database-kiszolgálók és az önálló adatbázisok kezelése
 
 Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az [Azure CLI-vel](/cli/azure), használja a következő [Azure CLI az SQL Database](/cli/azure/sql/db) parancsokat. A [Cloud Shell-lel](/azure/cloud-shell/overview) futtassa a parancssori felületet a böngészőben, vagy [telepítse](/cli/azure/install-azure-cli) macOS, Linux, illetve Windows rendszeren. Rugalmas készletek kezelése és létrehozása: [rugalmas készletek](sql-database-elastic-pool.md).
 
 > [!TIP]
-> Az Azure CLI-vel a rövid útmutatóban talál [egyetlen Azure SQL-adatbázis létrehozása az Azure CLI-vel](sql-database-cli-samples.md). Azure CLI-példa szkriptek, lásd: [parancssori felület használata egy Azure SQL-adatbázis létrehozása és tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-cli.md) és [használható parancssori felület egy egyetlen SQL-adatbázis monitorozása és skálázása](scripts/sql-database-monitor-and-scale-database-cli.md).
+> Az Azure CLI-vel a rövid útmutatóban talál [hozzon létre egy egyetlen Azure SQL database az Azure CLI-vel](sql-database-cli-samples.md). Azure CLI-példa szkriptek, lásd: [használható CLI egyetlen Azure SQL-adatbázis létrehozása és konfigurálása egy SQL Database-tűzfalszabályt](scripts/sql-database-create-and-configure-database-cli.md) és [használja egy egyetlen Azure SQL-adatbázis monitorozása és méretezése CLI](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 | Parancsmag | Leírás |
@@ -109,7 +109,7 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az [
 |[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|A tűzfalszabályok frissítése|
 |[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Tűzfalszabály törlése|
 
-## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL: Logikai kiszolgálóiról és adatbázisairól kezelése
+## <a name="transact-sql-manage-sql-database-servers-and-single-databases"></a>Transact-SQL: SQL Database-kiszolgálók és az önálló adatbázisok kezelése
 
 Hozzon létre és kezeli az Azure SQL server, adatbázisok és tűzfalak a Transact-SQL, használja a következő T-SQL-parancsokat. Ezek a parancsok az Azure portal használatával adhat ki [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), vagy bármely más programot, amely képes csatlakozni egy Azure SQL Database-kiszolgálóhoz, és adja át a Transact-SQL parancsok. Rugalmas készletek kezeléséhhez lásd: [rugalmas készletek](sql-database-elastic-pool.md).
 
@@ -135,7 +135,7 @@ Hozzon létre és kezeli az Azure SQL server, adatbázisok és tűzfalak a Trans
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Az adatbázisszintű tűzfal beállításai a Microsoft Azure SQL Database társított kapcsolatos információkat ad vissza. |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Adatbázisszintű tűzfal beállítása az Azure SQL Database vagy az SQL Data Warehouse eltávolítja. |
 
-## <a name="rest-api-manage-logical-servers-and-databases"></a>REST API: Logikai kiszolgálóiról és adatbázisairól kezelése
+## <a name="rest-api-manage-sql-database-servers-and-single-databases"></a>REST API: SQL Database-kiszolgálók és az önálló adatbázisok kezelése
 
 Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak, ezek a REST API-kérelmek használja.
 

@@ -1,6 +1,6 @@
 ---
-Cím: Studio-webszolgáltatás telepítsen több régióban titleSuffix: Azure Machine Learning Studio description: (Másolás) egy új webszolgáltatás más régiókban telepítésének lépéseit. Könnyedén webszolgáltatás üzembe helyezése több régióban több előfizetéseket vagy munkaterületeket nélkül.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Studio-webszolgáltatás telepítsen több régióban titleSuffix: Azure Machine Learning Studio description: (Másolás) egy új webszolgáltatás más régiókban telepítésének lépéseit. Könnyedén webszolgáltatás üzembe helyezése több régióban több előfizetéseket vagy munkaterületeket nélkül.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---

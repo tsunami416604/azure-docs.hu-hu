@@ -1,6 +1,6 @@
 ---
-title: PowerShell példaszkript rugalmas SQL-készlet Azure SQL Database-ben való monitorozásához és skálázásához | Microsoft Docs
-description: Azure PowerShell-példaszkript – Rugalmas SQL-készlet monitorozása és skálázása az Azure SQL Database-ben
+title: PowerShell példa-figyelő-méretezési csoport – rugalmas készlet – Azure SQL Database |} A Microsoft Docs
+description: Az Azure PowerShell példaszkript az monitorozása és skálázása az Azure SQL Database rugalmas készlet
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,15 +11,15 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 94e2f6aedc163d2b53b90908309e5c6167f8e6bb
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 4ea6841992d61bd12a1180608abf0fa0ec4421c2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388276"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471623"
 ---
-# <a name="use-powershell-to-monitor-and-scale-a-sql-elastic-pool-in-azure-sql-database"></a>Rugalmas SQL-készlet monitorozása és skálázása az Azure SQL Database-ben a PowerShell használatával
+# <a name="use-powershell-to-monitor-and-scale-an-elastic-pool-in-azure-sql-database"></a>Az Azure SQL Database egy rugalmas készlet monitorozása és skálázása a PowerShell használatával
 
 Ez a PowerShell-példaszkript egy rugalmas készlet teljesítmény-mérőszámait monitorozza, egy magasabb számítási mérethez skálázza a készletet, és létrehoz egy riasztási szabályt az egyik teljesítmény-mérőszámon.
 
@@ -30,7 +30,7 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/monitor-and-scale-pool/monitor-and-scale-pool.ps1?highlight=16-17 "Monitor and scale single SQL Database")]
+[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/monitor-and-scale-pool/monitor-and-scale-pool.ps1?highlight=16-17 "Monitor and scale a single SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
@@ -47,9 +47,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
  [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Olyan logikai kiszolgálót hoz létre, amely egy adatbázist vagy rugalmas készletet üzemeltet. |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Rugalmas készletet hoz létre egy logikai kiszolgálón. |
-| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Létrehoz egy adatbázist egy logikai kiszolgálón egyetlen vagy készletezett adatbázisként. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Egy SQL Database-kiszolgálót, amelyen egy önálló adatbázist vagy rugalmas készletet hoz létre. |
+| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Egy rugalmas készletet hoz létre. |
+| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Létrehoz egy önálló adatbázis vagy az adatbázis egy rugalmas készletben. |
 | [Get-AzureRmMetric](/powershell/module/azurerm.insights/get-azurermmetric) | Megjeleníti az adatbázis méretkihasználtsági adatait.|
 | [Add-AzureRMMetricAlertRule](/powershell/module/azurerm.insights/add-azurermmetricalertrule) | Mérőszámalapú riasztási szabályt ad hozzá vagy frissít. |
 | [Set-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/set-azurermsqlelasticpool) | Frissíti a rugalmas készlet tulajdonságait |

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 14cb821152e6a380de1be4fddef76aa2edec4a8f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 89cc7906c0503daa11f0a34520c17552a4e6b5af
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042257"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454215"
 ---
-# <a name="working-with-azure-cosmos-db-stored-procedures-triggers-and-user-defined-functions"></a>Azure Cosmos DB-vel működő tárolt eljárások, eseményindítók és felhasználó által definiált függvények
+# <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 
 Az Azure Cosmos DB a JavaScript nyelvintegrált, a tranzakciós végrehajtását biztosítja. Ha az SQL API használatával az Azure Cosmos DB, írhat **tárolt eljárások**, **eseményindítók**, és **felhasználó által definiált függvények (UDF)** JavaScript nyelven. A logikai írhat a JavaScript, amely az adatbázis motorjában. Hozhat létre, és hajtsa végre az UDF-EK, eseményindítók és tárolt eljárások használatával [az Azure portal](https://portal.azure.com/), a [JavaScript nyelvű lekérdezési API-t az Azure Cosmos DB integrált](javascript-query-api.md) vagy a [Cosmos DB SQL API-ügyfél SDK-k](how-to-use-stored-procedures-triggers-udfs.md).
 

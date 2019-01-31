@@ -6,16 +6,16 @@ author: jrowlandjones
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: fc7bf4eaeb073b0337be68632e5057bfce96e06a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: a09037f2e33d87446696dd11477c4e8b45af4187
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307774"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474173"
 ---
 # <a name="migrate-your-data"></a>Az adatok áttelepítése
 Adatok különböző forrásokból származó áthelyezhetők a különböző eszközök, az SQL Data Warehouse szolgáltatásba.  ADF-példány, az SSIS és a bcp az összes használható e cél eléréséhez. Azonban adatokat nő a mennyisége, gondolja bontásához, az áttelepítési folyamat lépésekre. Ez végrehajtható optimalizálható a teljesítmény és rugalmasság zökkenőmentes áttelepítés biztosítása érdekében az egyes lépések lehetőséget.
@@ -157,7 +157,7 @@ Lehet magas szintű folyamata összegzése:
 3. Az AZCopy az adatok az Azure Blob Storage-tárolóba
 4. Az adatok betöltése az SQL Data Warehouse a PolyBase használatával
 
-Teljes dokumentáció elérhető: [AZCopy][AZCopy].
+Teljes dokumentáció elérhető: [Az AZCopy][AZCopy].
 
 ## <a name="optimizing-data-export"></a>Adatok optimalizálása exportálása
 Arról, hogy az Exportálás megfelel a követelményeknek, a PolyBase által biztosítása mellett azt is kérhet az Exportálás további a folyamatot az adatok optimalizálása érdekében.

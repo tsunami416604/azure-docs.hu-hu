@@ -11,17 +11,18 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 2d5fdde14c1a33ace81e8999dbb365dac9de3e6e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 01/25/2019
+ms.openlocfilehash: 25936fa1156dea4beff6e593646d0468a4687f36
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227896"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476179"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Akár 100 TB kapacitású szolgáltatási réteg (előzetes verzió)
 
 Az Azure SQL Database az SQL Server adatbázismotor architektúra, amely 99,99 %-os rendelkezésre állását, még akkor is, az infrastruktúra-hibák esetekben biztosítása érdekében a felhőalapú környezet módosul alapul. Nincsenek az Azure SQL Database által használt három architekturális modellek:
+
 - Általános célú/Standard 
 - Üzleti kritikus/prémium
 - Rugalmas skálázás
@@ -150,7 +151,7 @@ Nagy kapacitású szolgáltatás szintű szolgáltatás jelenleg nyilvános elő
 
 | Probléma | Leírás |
 | :---- | :--------- |
-| A biztonsági másolatok kezelése ablak esetében a logikai kiszolgáló nem jelenik meg a rendkívül nagy adatbázisok az SQL Serverből lesznek szűrve ->  | Nagy kapacitású rendelkezik egy külön metódusba biztonsági mentések kezeléséhez, és mint ilyen a hosszú távú adatmegőrzési és az idő a biztonsági mentés megőrzési beállításait pont csak akkor érvényesíthetők / érvénytelenné válnak. Ennek megfelelően a nagy kapacitású adatbázisok nem jelennek meg a biztonsági mentés kezelése ablak. |
+| A biztonsági másolatok kezelése panelen a kiszolgáló nem jelenik meg a rendkívül nagy adatbázisok az SQL Serverből lesznek szűrve SQL Database ->  | Nagy kapacitású rendelkezik egy külön metódusba biztonsági mentések kezeléséhez, és mint ilyen a hosszú távú adatmegőrzési és az idő a biztonsági mentés megőrzési beállításait pont csak akkor érvényesíthetők / érvénytelenné válnak. Ennek megfelelően a nagy kapacitású adatbázisok nem jelennek meg a biztonsági mentés kezelése ablak. |
 | Adott időpontnak megfelelő helyreállítás | Adatbázis áttelepítése, a nagy kapacitású szolgáltatási rétegben, miután egy-időponthoz az áttelepítés előtt visszaállítás nem támogatott.|
 | Ha egy adatbázisfájl növekedésével az áttelepítést egy aktív számítási feladatok során, és átlép egy fájl határ az 1 TB-os, az áttelepítés sikertelen | Megoldások: <br> – Ha lehetséges, telepítse át az adatbázis nincs frissítés futó számítási feladat esetén.<br> – Próbálkozzon újra az áttelepítést, a sikeres lesz, amíg az 1 TB-os határ nem áthaladnak a migrálás során.|
 | Felügyelt példány jelenleg nem támogatott | Jelenleg nem támogatott |
@@ -162,6 +163,6 @@ Nagy kapacitású szolgáltatás szintű szolgáltatás jelenleg nyilvános elő
 
 - Egy nagy kapacitású kapcsolatos gyakori kérdések, lásd: [nagy kapacitású kapcsolatos gyakori kérdések](sql-database-service-tier-hyperscale-faq.md).
 - További információ a szolgáltatási szintekről: [szolgáltatásszintek](sql-database-service-tiers.md)
-- Lásd: [erőforrás áttekintése korlátozza egy logikai kiszolgálón](sql-database-resource-limits-logical-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.
+- Lásd: [erőforrás áttekintése korlátozza az SQL Database-kiszolgálón](sql-database-resource-limits-database-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.
 - Beszerzési modell korlátok egy önálló adatbázis, lásd: [Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis](sql-database-vcore-resource-limits-single-databases.md).
 - Az a funkciók és összehasonlító listában, lásd: [általános SQL-szolgáltatások](sql-database-features.md).

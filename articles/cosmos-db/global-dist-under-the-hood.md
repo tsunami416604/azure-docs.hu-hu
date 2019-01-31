@@ -1,5 +1,5 @@
 ---
-title: Az Azure Cosmos DB globális terjesztésének – technikai részletek
+title: Globális terjesztését az Azure Cosmos DB – technikai részletek
 description: Ez a cikk az Azure Cosmos DB globális terjesztési vonatkozó technikai részleteket ismertet
 author: dharmas-cosmos
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: e1c84bb28747cf1799b39c70b6df3dc0cb9f8d78
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 86e4441174fa89fc688fa4e411ead0a7b3ebc8ee
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038942"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475380"
 ---
-# <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Az Azure Cosmos DB globális terjesztésének – technikai részletek
+# <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globális adatok terjesztési az Azure Cosmos DB – technikai részletek
 
 Az Azure Cosmos DB szolgáltatás eligazodást az Azure-ban, így az összes Azure-régiókban világszerte többek között a nyilvános, a független, a védelmi Minisztérium (DoD) és a kormányzati felhők között központilag telepítették. Egy adatközponton belül azt üzembe helyezése és kezelése az Azure Cosmos DB nagy stampek gépek, az egyes dedikált helyi tárterülettel rendelkező. Egy adatközponton belül az Azure Cosmos DB van üzembe helyezve között számos fürthöz egyes potenciálisan futó hardver generációja több. Fürtön belüli gépek általában 10 – 20 tartalék tartományokban vannak elosztva. Az alábbi képen a Cosmos DB globális terjesztésének topológia látható:
 

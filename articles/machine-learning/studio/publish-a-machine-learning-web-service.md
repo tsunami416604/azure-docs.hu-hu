@@ -1,6 +1,6 @@
 ---
-Cím: Helyezze üzembe a Machine Learning Studio webes szolgáltatás titleSuffix: Azure Machine Learning Studio description: Betanítási kísérlet átalakítása prediktív kísérletté, telepítésének előkészítése, majd helyezze üzembe az Azure Machine Learning Studio-webszolgáltatás, hogyan lehet.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Helyezze üzembe a Machine Learning Studio webes szolgáltatás titleSuffix: Azure Machine Learning Studio description: Betanítási kísérlet átalakítása prediktív kísérletté, telepítésének előkészítése, majd helyezze üzembe az Azure Machine Learning Studio-webszolgáltatás, hogyan lehet.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 01/06/2017
 ---

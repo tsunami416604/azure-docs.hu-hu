@@ -3,7 +3,7 @@ title: A számítási csomópontokon – Azure Batch alkalmazáscsomagokat telep
 description: A számítási csomópontok az alkalmazáscsomagokat kezelő funkciója az Azure Batch segítségével könnyedén kezelheti a több alkalmazás és a kötegelt telepítési-verziók használata.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/15/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 333161042e968b4baf4b962869d688fd0b696b24
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6fd3eccf3de5d46520dc5a50cab66667c875799e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094135"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454607"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások-Batch-alkalmazáscsomagokkal számítási csomópontokra üzembe helyezése
 
@@ -114,8 +114,8 @@ A menüelem kiválasztásával megnyílik az **alkalmazások** ablakban:
 Ebben az ablakban minden alkalmazás azonosítója a fiók és a következő tulajdonságokat jeleníti meg:
 
 * **Csomagok**: A jelen alkalmazáshoz rendelt verziók számát.
-* **Alapértelmezett verzió**: az alkalmazás verziója telepítve van, ha nem azt jelzik a verzió, adja meg az alkalmazás-készlet. Ez a beállítás nem kötelező.
-* **Engedélyezi a frissítéseket**: az érték, amely meghatározza, hogy csomag frissítései, törléseket és kiegészítéseit engedélyezettek. Ha a beállított érték **nem**, csomag frissítések és törlések le vannak tiltva, az alkalmazás. Csak új alkalmazáscsomag-verziók is hozzáadhatók. Az alapértelmezett érték az **Igen**.
+* **Alapértelmezett verzió**: Az alkalmazás verziója telepítve van, ha nem azt jelzik a verzió, adja meg az alkalmazás-készlet. Ez a beállítás nem kötelező.
+* **Engedélyezi a frissítéseket**: Az érték, amely meghatározza, hogy csomag frissítései, törléseket és kiegészítéseit engedélyezettek. Ha a beállított érték **nem**, csomag frissítések és törlések le vannak tiltva, az alkalmazás. Csak új alkalmazáscsomag-verziók is hozzáadhatók. Az alapértelmezett érték az **Igen**.
 
 ### <a name="view-application-details"></a>Az alkalmazás részleteinek megtekintése
 Az alkalmazás részleteit, jelölje ki az alkalmazás a **alkalmazások** ablak.

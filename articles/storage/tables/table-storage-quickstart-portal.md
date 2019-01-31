@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 77aba022b3e4e8a41fa83e24b5694542fd2ae259
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
-ms.translationtype: HT
+ms.subservice: tables
+ms.openlocfilehash: 052a462da5349b0886d6d99cd59d1a4ce816220f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526529"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462715"
 ---
-# <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Rövid útmutató: Azure Storage-tábla létrehozása az Azure Portalon 
+# <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy Azure Storage-táblába az Azure Portalon 
 
 Ez a rövid útmutató ismerteti, hogyan hozhat létre táblákat és entitásokat a webes alapú Azure Portalon. Ez a rövid útmutató azt is bemutatja, hogyan hozhat létre Azure Storage-fiókot.
 

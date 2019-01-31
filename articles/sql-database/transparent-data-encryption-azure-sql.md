@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 01/22/2019
-ms.openlocfilehash: b0b4a89aaf9b00b30e6b4759c8aa168f06d0d008
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7b1d58b82f2ccc99ecacb6099f6063fba5899421
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462470"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478457"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás az SQL Database és a Data warehouse-bA
 
@@ -96,7 +96,7 @@ Használja a következő parancsmagokat az Azure SQL Database és a Data warehou
 | [Get-AzureRmSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption) |Lekéri egy adatbázis transzparens titkosítási állapotát |
 | [Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryptionactivity) |Egy adatbázis a titkosítási folyamat állapotát ellenőrzi |
 | [Add-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) |A Key Vault-kulcs ad hozzá egy SQL Server-példány |
-| [Get-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey) |A Key Vault-kulcsok lekérése az Azure SQL database-kiszolgáló  |
+| [Get-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey) |A Key Vault-kulcsok beolvasása egy Azure SQL Database-kiszolgáló  |
 | [Set-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) |A transzparens titkosítási védelmet egy SQL Server-példány beállítása |
 | [Get-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlservertransparentdataencryptionprotector) |Lekérdezi a transzparens titkosítási védelme |
 | [Remove-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlserverkeyvaultkey) |A Key Vault-kulcs távolít el egy SQL Server-példány |

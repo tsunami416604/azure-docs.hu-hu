@@ -10,19 +10,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 8cc5d1a2d78179624ee1ba17482e9d1892625d6f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bc7a183220219b14cb793f8115284d38d544b0e0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104288"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453178"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen támogatott nyelvek 
 
@@ -236,7 +236,7 @@ Julia hely alapértelmezés szerint egy globális környezetben olvasható össz
 
 **C#**: Elérhető a Windows és a Visual Studio Community edition keresztül vagy a elérhető egy `Developer Command Prompt for Visual Studio` ahol ugyanúgy futtathatja `csc` parancsot. 
 
-**Java**: openjdk csomagját érhető el a dsvm-hez és a készlet az elérési utat a Linux és a Windows kiadását. Beírhatja `javac` vagy `java` parancsot a Windows parancssorból vagy a Java használata Linux bash felületet. 
+**Java**: A dsvm-hez és a készlet az elérési utat a Linux és a Windows kiadását openjdk csomagját érhető el. Beírhatja `javac` vagy `java` parancsot a Windows parancssorból vagy a Java használata Linux bash felületet. 
 
 **NODE.js**: node.js érhető el a dsvm-hez és a készlet az elérési utat a Linux és a Windows kiadását. Beírhatja `node` vagy `npm` parancsot a parancssorban a Windows vagy Linux node.js eléréséhez a bash felületet. Windows a Node.js-eszközök Visual Studio-bővítmény biztosít egy grafikus IDE való fejlesztés a node.js-alkalmazás telepítve van. 
 

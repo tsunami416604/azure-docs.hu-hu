@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 53ad780ff0b199764c354327439fa69c360e7cb5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: db0b1cd9d61e498430bff417573b63f99c0ae7e4
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996808"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301730"
 ---
-# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Java-alkalmazás üzembe helyezése egy Service Fabric-fürtön az Azure-ban
+# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürtön az Azure-ban a Java-alkalmazás üzembe helyezése
 
 Ez az oktatóanyag egy sorozat harmadik része, és azt mutatja be, hogyan kell üzembe helyezni egy Service Fabric-alkalmazást egy Azure-fürtön.
 
@@ -247,7 +247,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Biztonságos Linux-fürt létrehozása az Azure-ban
 > * Az ELK-val végzett monitorozáshoz szükséges erőforrások létrehozása
-> * Opcionális: A Service Fabric kipróbálása nyilvános fürtökkel
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]

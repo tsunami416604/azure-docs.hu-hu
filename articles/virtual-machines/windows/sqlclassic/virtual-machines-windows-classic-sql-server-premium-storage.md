@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ac5b3bec9915574dd33d40ae2dcbc5aa3c91280a
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: df3f4dc163f94ddab08ecdad7f8d4cc625b8917d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332166"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300268"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 ## <a name="overview"></a>Áttekintés
@@ -545,7 +545,7 @@ Ez a dokumentum nem mutatja be egy teljes körű teljes példa, azonban a [függ
 * Frissítse a figyelő által:
   * Az Always On csoport offline állapotba helyezése és frissítése az mindig a figyelő az új ilb-vel / ELB IP-cím.
   * Vagy az IP-cím erőforrás az új Cloud Service ILB-/ ELB Powershellen keresztül történő Windows-fürtszolgáltatás hozzáadásakor. Ezután állítsa be az IP-cím erőforrás lehetséges tulajdonosainak az áttelepített csomópontra SQL2, és a vagy típusú függőség a hálózati név címként. A "Hozzáadás IP-cím erőforrás azonos alhálózatban lévő" című szakaszában talál a [függelék](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage).
-* Ellenőrizze a DNS-konfigurációs/propagálási az ügyfelek számára.
+* Ellenőrizze a DNS-konfiguráció/propagálás az ügyfelek számára.
 * Az sql1 számítógép virtuális gép áttelepítése, és haladjon végig a 2 – 4. lépéseket.
 * Ha lépéseket 5ii használja, majd adja hozzá az sql1 számítógép egy lehetséges tulajdonosként a hozzáadott IP-cím erőforráshoz
 * Tesztelheti a feladatátvételeket.

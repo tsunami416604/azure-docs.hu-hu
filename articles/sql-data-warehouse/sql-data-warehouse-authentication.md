@@ -2,20 +2,20 @@
 title: Hitelesítés az Azure SQL Data Warehouse |} A Microsoft Docs
 description: Ismerje meg, hogyan hitelesítheti az Azure SQL Data Warehouse, Azure Active Directory (AAD) vagy az SQL Server-hitelesítés használatával.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/12/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d082ba8bd2819450609a8a6e4ab41b4320158d4b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f26ded5fae1bde5b2e6485ae2a2f99eebb17563
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307856"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463328"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse hitelesítése
 Ismerje meg, hogyan hitelesítheti az Azure SQL Data Warehouse, Azure Active Directory (AAD) vagy az SQL Server-hitelesítés használatával.
@@ -67,7 +67,7 @@ Az Azure Active Directory előnyöket nyújtják:
 Kövesse az alábbi lépéseket az Azure Active Directory-hitelesítés konfigurálása.
 
 1. Létre és tölthet fel egy Azure Active Directory
-2. Választható lehetőség: Társítani, vagy módosítsa az active directory jelenleg társított Azure-előfizetésében
+2. Nem kötelező: Társítsa, vagy módosítsa az active directory jelenleg társított Azure-előfizetésében
 3. Hozzon létre egy Azure Active Directory-rendszergazda az Azure SQL Data warehouse-hoz.
 4. Az ügyfélszámítógépek konfigurálása
 5. Hozzon létre tartalmazottadatbázis-felhasználók az Azure AD-identitások leképezett adatbázis

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/24/2018
+ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 03862f88bb5debc66940ebae5308771525f51b0b
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0f6fff5047bc72fa1171e06bb2f160196ecef807
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351646"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300608"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET-módosítási hírcsatorna SDK processzor: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -40,6 +40,12 @@ ms.locfileid: "54351646"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="v2-builds"></a>v2 buildek
+
+### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
+* A megfigyelő kivételek jobb kezelése.
+* A megfigyelő hibáival kapcsolatos részletesebb információkat:
+ * Ezek a megfigyelő ProcessChangesAsync által kiváltott kivétel miatt le van zárva, amikor a CloseAsync most ChangeFeedObserverCloseReason.ObserverError a OK paraméter fog kapni.
+ * A hozzáadott nyomkövetési felhasználói kód ezek a hibák azonosításához.
 
 ### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
 * Támogatás hozzáadva a felosztása a gyűjtemények, amelyek használják a megosztott adatbázis átviteli sebesség kezelésére.
@@ -157,6 +163,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.2.6](#2.2.6) |2019. január 29. |--- |
 | [2.2.5](#2.2.5) |2018. december 13. |--- |
 | [2.2.4](#2.2.4) |November 29, 2018 |--- |
 | [2.2.3](#2.2.3) |2018. november 19. |--- |

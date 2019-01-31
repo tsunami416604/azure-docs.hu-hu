@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 055ddfa5c0fb399eea4bbe46126626b60bfe9cff
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/25/2019
+ms.openlocfilehash: 5e1319857e16032b6a4922594a33dbed9554d2f8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966925"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476723"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure PowerShell-minták az Azure SQL Database-hez
 
@@ -25,8 +25,8 @@ A következő táblázat az Azure SQL Database-hez elérhető Azure PowerShell-p
 
 | |  |
 |---|---|
-|**Hozzon létre, és a felügyelt példány, önálló adatbázishoz és rugalmas készlet konfigurálása**||
-| [Önálló adatbázis létrehozása és egy tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript egyetlen Azure SQL-adatbázist hoz létre, és konfigurál egy kiszolgálószintű tűzfalszabályt. |
+|**Létrehozása és konfigurálása a felügyelt példány, önálló adatbázisok és rugalmas készletek**||
+| [Önálló adatbázis létrehozása és a egy adatbázis-kiszolgáló tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript egyetlen Azure SQL-adatbázist hoz létre, és konfigurál egy kiszolgálószintű tűzfalszabályt. |
 | [Rugalmas készletek létrehozása és készletezett adatbázisok áthelyezése](scripts/sql-database-move-database-between-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript rugalmas Azure SQL Database-készleteket hoz létre, áthelyezi a készletezett adatbázisokat, és módosítja a számítási méreteket.|
 | [Felügyelt példány létrehozása és felügyelete](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) | Ez a PowerShell-szkript bemutatja, hogyan hozhat létre és kezelhet felügyelt példányokat az Azure PowerShell használatával. |
 | [Hozzon létre és kezelheti a felügyelt példányhoz az Azure Resource Manager-sablon](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A PowerShell-példaszkript bemutatja, hogyan hozhat létre és kezelhet a felügyelt példány az Azure PowerShell és az Azure Resource Manager-sablon használatával.|

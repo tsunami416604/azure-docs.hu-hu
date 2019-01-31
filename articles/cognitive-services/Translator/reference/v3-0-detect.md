@@ -6,22 +6,22 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 6698960cca39fb49fe8ba6e79b957be469ea7c50
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 892a029c3a51aa3574d92b838a51359438a6bdb6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126122"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464993"
 ---
-# <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: észlelése
+# <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
 
 Egy adott szöveg nyelvét adja meg.
 
-## <a name="request-url"></a>Lekérdezés URL-címe
+## <a name="request-url"></a>Kérés URL-címe
 
 Küldjön egy `POST` kérelmet:
 
@@ -48,7 +48,7 @@ Kérelemfejlécek a következők:
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>_Egy engedélyezési_<br/>_Fejléc_</td>
+    <td>_Egy engedélyezési_<br/>_header_</td>
     <td>*Szükséges kérelem fejléce*.<br/>Lásd: [elérhető lehetőségek a hitelesítéshez](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -65,7 +65,7 @@ Kérelemfejlécek a következők:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Kérelem törzse
+## <a name="request-body"></a>A kérés törzse
 
 A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken nevű karakterlánc tulajdonsággal rendelkező JSON-objektum `Text`. Nyelv észlelése alkalmazott értékét a `Text` tulajdonság. Minta kéréstörzs hasonlóan néz ki:
 
@@ -87,13 +87,13 @@ A sikeres válasz egy JSON-tömböt az egyes sztringek a bemeneti számtömbből
 
   * `language`: A felismert nyelv kódja.
 
-  * `score`: Egy jelző a bizalom, az eredmény a lebegőpontos értéket. A pontszám, nulla és a egy között, és a egy alacsony pontszámmal azt jelzi, hogy egy alacsony megbízhatósági.
+  * `score`: Az eredmény magabiztosan jelző float érték. A pontszám, nulla és a egy között, és a egy alacsony pontszámmal azt jelzi, hogy egy alacsony megbízhatósági.
 
-  * `isTranslationSupported`: Egy logikai érték, amely igaz, ha a felismert nyelv szövegfordítás támogatott nyelvek valamelyikével.
+  * `isTranslationSupported`: Logikai érték, amely igaz, ha a felismert nyelv szövegfordítás támogatott nyelvek valamelyikével.
 
-  * `isTransliterationSupported`: Egy logikai érték, amely igaz, ha a felismert nyelv támogatott átbetűzésű nyelvek valamelyikével.
+  * `isTransliterationSupported`: Logikai érték, amely igaz, ha a felismert nyelv támogatott átbetűzésű nyelvek valamelyikével.
   
-  * `alternatives`: Egyéb lehetséges nyelvek tömbjét. A tömb egyes elemei egy másik objektum azonos tulajdonságokkal felsorolt: `language`, `score`, `isTranslationSupported` és `isTransliterationSupported`.
+  * `alternatives`: Más lehetséges nyelvek tömbjét. A tömb egyes elemei egy másik objektum azonos tulajdonságokkal felsorolt: `language`, `score`, `isTranslationSupported` és `isTransliterationSupported`.
 
 A következő egy példa JSON-választ:
 
@@ -128,7 +128,7 @@ A következő egy példa JSON-választ:
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>X-RequestId:</td>
+    <td>X-RequestId</td>
     <td>A kérelem azonosíthatja a szolgáltatás által létrehozott értéket. Hibaelhárítási célokra szolgál.</td>
   </tr>
 </table> 
@@ -174,7 +174,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
 
 Az alábbi példa bemutatja, hogyan szövegfordítás támogatott nyelvek beolvasása.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"

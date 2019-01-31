@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: genli
-ms.openlocfilehash: e018cbf0c71a9acf76e60f38aff1aa1ba8a81516
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7f0539e7c2f7e5ae8847b35b47d3708c6c5d6a09
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229314"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296038"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Mi az, hogy a 168.63.129.16 IP-cím?
 
@@ -35,8 +35,7 @@ ms.locfileid: "55229314"
 
 Virtuális nyilvános IP-cím 168.63.129.16 minden régióban, és minden országos felhők használatban van. Ez speciális nyilvános IP-cím nem változik. Ez az alapértelmezett hálózati biztonsági csoportszabály által engedélyezett. Azt javasoljuk, hogy lehetővé tegye az IP-címet a bármilyen helyi tűzfal-házirendek. Ez speciális IP-cím és az erőforrások közötti kommunikáció biztonságos-e, mert csak a belső Azure platformon is forrás IP-cím üzenetét. Ha ez a cím le van tiltva, nem várt viselkedést számos forgatókönyv esetében fordul elő.
 
-Ezenkívül traffics nyilvános virtuális IP-cím a végponthoz konfigurált 168.63.129.16 egy [terheléselosztó állapotmintát](../load-balancer/load-balancer-custom-probe-overview.md) támadási forgalmat nem lehet tekinteni. A nem virtuális hálózat a forgatókönyvben az állapotminta forrása egy magánhálózati IP-címet.
-
+Ezenkívül várható, hogy a végponthoz konfigurált virtuális nyilvános IP-címről érkező 168.63.129.16 haladjon a forgalom egy [terheléselosztó állapotmintát](../load-balancer/load-balancer-custom-probe-overview.md). A nem virtuális hálózat a forgatókönyvben az állapotminta forrása egy magánhálózati IP-címet. 
 
 ## <a name="next-steps"></a>További lépések
 

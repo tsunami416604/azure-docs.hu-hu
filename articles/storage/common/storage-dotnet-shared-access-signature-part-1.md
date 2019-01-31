@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 1bc93b083b0f6f0d813f209c9371ce38e8a9daa6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 7b5f4db51fca97f79f2b43bfcd5ce8dead3ba50b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228810"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470348"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkódok (SAS) használata
 
@@ -40,7 +40,7 @@ Egy gyakori forgatókönyv, ahol egy SAS hasznos egy olyan szolgáltatás, ahol 
 
 1. Az ügyfelek töltse fel, és töltse le az adatokat egy előtér-proxy szolgáltatással, amely végrehajtja a hitelesítést. Az előtér-proxyszolgáltatás az előnnyel jár, hogy az üzleti szabályok érvényesítési, de a nagy mennyiségű adatok vagy nagy mennyiségű tranzakciók, amelyek egyeznek igény szerint méretezhető szolgáltatás létrehozása lehet költséges vagy nehézkes.
 
-  ![A forgatókönyv diagramja: előtér-proxyszolgáltatás](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png)   
+  ![A forgatókönyv diagramja: Előtér-proxyszolgáltatás](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png)   
 
 1. Egy egyszerű szolgáltatás hitelesíti az ügyfelet, igény szerint, és ezután létrehoz egy SAS-kódot. Miután az ügyfél megkapta a SAS kódot, hozzáférhet a tárfiók erőforrásainak közvetlenül a SAS által és a SAS által engedélyezett alatt meghatározott engedélyekkel. A SAS-útválasztási minden adatot az előtér-proxy szolgáltatáson keresztül kell csökkenti.
 
@@ -57,7 +57,7 @@ Emellett szüksége lesz az adatforrás-objektum bizonyos esetekben a másolási
 ## <a name="types-of-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok típusai
 Közös hozzáférési aláírások két típusú hozhat létre:
 
-* **SAS-szolgáltatás.** A szolgáltatásalapú SAS csak egy társzolgáltatás (a Blob, a Queue, a Table vagy a File szolgáltatás) egy erőforrásához biztosít hozzáférést. Lásd: [hozhat létre, amely a szolgáltatás SAS](https://msdn.microsoft.com/library/dn140255.aspx) és [SAS példák](https://msdn.microsoft.com/library/dn140256.aspx) a SAS-jogkivonat létrehozásával kapcsolatos részletes információk.
+* **Service SAS.** A szolgáltatásalapú SAS csak egy társzolgáltatás (a Blob, a Queue, a Table vagy a File szolgáltatás) egy erőforrásához biztosít hozzáférést. Lásd: [hozhat létre, amely a szolgáltatás SAS](https://msdn.microsoft.com/library/dn140255.aspx) és [SAS példák](https://msdn.microsoft.com/library/dn140256.aspx) a SAS-jogkivonat létrehozásával kapcsolatos részletes információk.
 * **SAS-fiók.** A fiók SAS delegáltak erőforrásokhoz való hozzáférés egy vagy több, a storage-szolgáltatás. A szolgáltatásalapú SAS-n keresztül elérhető műveleteket is rendelkezésre áll egy fiók SAS-n keresztül. Ezenkívül a fiók SAS kódjával is adhat hozzáférést, amely az egyes szolgáltatásokhoz, például a alkalmazni műveletekhez **Get/Set szolgáltatástulajdonságok** és **első szolgáltatási statisztikák**. A blobtárolók, táblák, üzenetsorok és fájlmegosztások olvasási, írási és törlési műveleteihez is hozzáférést biztosíthat, amelyeket a szolgáltatásalapú SAS nem engedélyez. Lásd: [hozhat létre, amely a fiók SAS](https://msdn.microsoft.com/library/mt584140.aspx) a fiók SAS-jogkivonat létrehozásával kapcsolatos részletes információk.
 
 ## <a name="how-a-shared-access-signature-works"></a>Hogyan működik a közös hozzáférésű jogosultságkód
@@ -110,9 +110,9 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 
 | Name (Név) | SAS része | Leírás |
 | --- | --- | --- |
-| BLOB URI-t |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |A blob-cím. Vegye figyelembe, hogy HTTPS használatát javasoljuk. |
+| Blob URI |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |A blob-cím. Vegye figyelembe, hogy HTTPS használatát javasoljuk. |
 | Storage services verziója |`sv=2015-04-05` |Tárolási szolgáltatások 2012-02-12-es verzió, és később, ez a paraméter azt jelzi, verziót kell használni. |
-| Kezdés időpontja |`st=2015-04-29T22%3A18%3A26Z` |A megadott UTC időben. Ha azt szeretné, hogy a SAS azonnal érvényes legyen, hagyja ki a kezdési időpontot. |
+| Kezdő időpont |`st=2015-04-29T22%3A18%3A26Z` |A megadott UTC időben. Ha azt szeretné, hogy a SAS azonnal érvényes legyen, hagyja ki a kezdési időpontot. |
 | Lejárat időpontja |`se=2015-04-30T02%3A23%3A26Z` |A megadott UTC időben. |
 | Erőforrás |`sr=b` |Egy blobot az erőforrás. |
 | Engedélyek |`sp=rw` |A SAS által adott engedélyek Read (r) tartalmazza, és írás (w). |
@@ -140,8 +140,8 @@ Tekintve, hogy az engedélyek korlátozva a szolgáltatási szint, a SAS haszná
 ## <a name="controlling-a-sas-with-a-stored-access-policy"></a>A tárolt hozzáférési szabályzattal együtt SAS szabályozása
 Közös hozzáférésű jogosultságkód két formáját valamelyikét hajthatja végre:
 
-* **Ad hoc biztonsági Társítások:** hoz létre egy ad-hoc SAS, a kezdési idő, lejárati időpontot, és engedélyeket a SAS az összes megadott SAS URI-(vagy vélelmezett, abban az esetben, ha nincs megadva a kezdési ideje). Az ilyen típusú SAS-fiók SAS-vagy szolgáltatásalapú SAS hozható létre.
-* **A tárolt hozzáférési szabályzattal együtt SAS:** egy tárolt hozzáférési szabályzat van definiálva egy erőforrás-tároló – egy blob-tárolóba, tábla, üzenetsor, vagy fájlmegosztás--és legalább egy közös hozzáférési aláírások megkötések kezelésére is használható. SAS társítása egy tárolt hozzáférési szabályzatot, az SAS örökli a korlátozásokkal – a kezdési idő, lejárati időpontot és – a tárolt hozzáférési szabályzat definiált engedélyek.
+* **Ad hoc biztonsági Társítások:** Amikor létrehoz egy ad-hoc SAS, a kezdési idő, lejárati időpontot és engedélyeket a SAS minden megadott SAS URI-(vagy hallgatólagos, abban az esetben, ha nincs megadva a kezdési ideje). Az ilyen típusú SAS-fiók SAS-vagy szolgáltatásalapú SAS hozható létre.
+* **SAS tárolt hozzáférési szabályzattal együtt:** Egy tárolt hozzáférési szabályzat van definiálva egy erőforrás-tároló – egy blob-tárolóba, table, queue, vagy fájlmegosztás – és egy megkötések kezeléséhez használható, vagy további közös hozzáférésű jogosultságkódot. SAS társítása egy tárolt hozzáférési szabályzatot, az SAS örökli a korlátozásokkal – a kezdési idő, lejárati időpontot és – a tárolt hozzáférési szabályzat definiált engedélyek.
 
 > [!NOTE]
 > Jelenleg a fiók SAS-ad-hoc SAS kell lennie. Tárolt hozzáférési szabályzatok még nem támogatottak a fiók SAS.
@@ -235,7 +235,7 @@ Ezekben a példákban a C# futtatásához kell hivatkoznia a projektben a követ
 
 További példák azt mutatják be, hogyan hozhat létre és tesztelhet egy SAS [Azure Storage-Kódminták](https://azure.microsoft.com/documentation/samples/?service=storage).
 
-### <a name="example-create-and-use-an-account-sas"></a>Példa: Létrehozása, és a fiók SAS használata
+### <a name="example-create-and-use-an-account-sas"></a>Példa: Létrehozhat és használhat egy fiók SAS
 Az alábbi példakód létrehoz egy fiókot, amely a Blobok és fájlok szolgáltatások esetében érvényes, és lehetővé teszi az ügyfél engedélyek olvasási, írási és list engedélyeket az eléréséhez a szolgáltatói API-k SAS. A fiók SAS korlátozza a protokoll HTTPS, ezért a kérelem kell tenni a HTTPS.
 
 ```csharp
@@ -302,7 +302,7 @@ static void UseAccountSAS(string sasToken)
 }
 ```
 
-### <a name="example-create-a-stored-access-policy"></a>Példa: Egy tárolt hozzáférési szabályzat létrehozása
+### <a name="example-create-a-stored-access-policy"></a>Példa: A tárolt hozzáférési szabályzat létrehozása
 A következő kódot egy tárolt hozzáférési szabályzatot egy tárolót hoz létre. A hozzáférési szabályzat segítségével a szolgáltatásalapú SAS korlátozások határozhatók meg a tárolóhoz és annak blobjaihoz.
 
 ```csharp
@@ -328,7 +328,7 @@ private static async Task CreateSharedAccessPolicyAsync(CloudBlobContainer conta
 }
 ```
 
-### <a name="example-create-a-service-sas-on-a-container"></a>Példa: A szolgáltatásalapú SAS létrehozása egy tárolón
+### <a name="example-create-a-service-sas-on-a-container"></a>Példa: Egy tároló szolgáltatásalapú SAS létrehozása
 Az alábbi kód létrehoz egy SAS egy tárolón. Ha egy meglévő tárolt hozzáférési szabályzat neve van megadva, az adott házirendnek SAS társítva. Ha nincs tárolt hozzáférési szabályzat van megadva, majd a kódot a tároló ad hoc SAS hoz létre.
 
 ```csharp
@@ -371,7 +371,7 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 }
 ```
 
-### <a name="example-create-a-service-sas-on-a-blob"></a>Példa: A szolgáltatásalapú SAS létrehozása egy BLOB
+### <a name="example-create-a-service-sas-on-a-blob"></a>Példa: A blob SAS szolgáltatás létrehozása
 Az alábbi kód létrehoz egy SAS-egy BLOB. Ha egy meglévő tárolt hozzáférési szabályzat neve van megadva, az adott házirendnek SAS társítva. Ha nincs tárolt hozzáférési szabályzat van megadva, majd a kódot a blob egy ad-hoc SAS hoz létre.
 
 ```csharp

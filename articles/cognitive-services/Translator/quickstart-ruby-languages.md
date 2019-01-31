@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Támogatott nyelvek lekérése, Ruby – Translator Text API'
+title: 'Gyors útmutató: Támogatott nyelvek beolvasása Ruby – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API és a Ruby segítségével.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 02ebeae83464aa9770854fd06468b3731d6b8549
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: 67f1a7b4a064aa46ef7d258dd72b1d686a797349
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645269"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458108"
 ---
-# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-ruby"></a>Rövid útmutató: Támogatott nyelvek lekérése a Translator Text REST API használatával (Ruby)
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-ruby"></a>Gyors útmutató: A Translator Text REST API (Ruby) támogatott nyelvek beolvasása
 
 Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API segítségével.
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 0db6cc02be385ab82d41ecef214c5b158892c415
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: 7fbbcefde583d7e464633d9011e591b4c9bf6f65
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628134"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460318"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)
 
@@ -28,7 +28,7 @@ A cikkben található útmutató a felügyeletisík-parancsmagok használatával
 > * Tárfiók tulajdonságainak beállítása
 > * Kérje le, és a hozzáférési kulcsok újragenerálása
 > * A tárfiókhoz való hozzáférés védelme 
-> * A Storage Analytics engedélyezése
+> * Enable Storage Analytics
 
 Ez a cikk számos más PowerShell cikkekre mutató hivatkozások a Storage szolgáltatás esetében például engedélyezésével és a Storage Analytics eléréséhez, az adatok felügyeletisík-parancsmagok használata és elérése az Azure-például a kínai felhőben, a német felhőben és a Government független felhők Felhő.
 
@@ -181,8 +181,8 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 Alapértelmezés szerint az összes storage-fiókok érhetők el szerint semmilyen hálózathoz, amely hozzáfér az internethez. Azonban konfigurálhatja úgy a hálózati szabályok a kizárólag a virtuális hálózatok adott alkalmazások a tárfiók eléréséhez. További információkért lásd: [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](storage-network-security.md). 
 
 A cikk bemutatja, hogyan kezelheti ezeket a beállításokat a következő PowerShell-parancsmagok használatával:
-* [Adjon hozzá AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
-* [Frissítés-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
+* [Add-AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
+* [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
 * [Remove-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
 ## <a name="use-storage-analytics"></a>A storage analytics használata  
@@ -222,7 +222,7 @@ Az Azure Cosmos DB Table API a table storage, például a kulcsrakész globális
 
 A legtöbb ember használata az Azure nyilvános felhő a globális Azure üzemelő példányhoz. Vannak bizonyos független üzembe helyezések, a Microsoft Azure az adatszuverenitási miatt és így tovább. Ezek független üzembe helyezések nevezik "környezetekben." A rendelkezésre álló környezetek az alábbiak:
 
-* [Az Azure Government Cloud](https://azure.microsoft.com/features/gov/)
+* [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
 * [Kínában a 21Vianet által üzemeltetett Azure China Cloud](http://www.windowsazure.cn/)
 * [Az Azure német felhőben](../../germany/germany-welcome.md)
 
@@ -246,7 +246,7 @@ A cikkben található útmutató a felügyeletisík-parancsmagok használatával
 > * Tárfiók tulajdonságainak beállítása
 > * Kérje le, és a hozzáférési kulcsok újragenerálása
 > * A tárfiókhoz való hozzáférés védelme 
-> * A Storage Analytics engedélyezése
+> * Enable Storage Analytics
 
 Ez a cikk számos más cikkeket, például a data-objektumok kezelése, a Storage Analytics engedélyezése és elérése az Azure független felhőkben, például a kínai felhőben, a német felhőben és a Government Cloud mutató hivatkozásokat is megadja. Íme, néhány további kapcsolódó cikkek és erőforrások referenciaként:
 

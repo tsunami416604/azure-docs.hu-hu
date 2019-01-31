@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5767399189e4ed5168fbcc083ef9b4830cac1421
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b7c10884682b6537bbfcbb1b1f8b89b38751d05b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138976"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478049"
 ---
 # <a name="feature-engineering-in-data-science"></a>Funkciók tervezése a adatelemzés
 Ez a cikk ismerteti az alkalmazásában funkciófejlesztési és példák a szerepét a machine learning adatokat a fejlesztés folyamatát. A folyamat szemléltetése használt példák az Azure Machine Learning Studio állítják. 
@@ -26,7 +26,7 @@ Ez a feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP)](https://do
 Ez a funkció mérnöki kísérletek tanulási algoritmus a nyers adatokat, amelyek a tanulási folyamat megkönnyítése érdekében szolgáltatásokat hoz létre prediktív hatékonyságának növelése érdekében. A termékgondozó csoportja és a funkciók köre a leírt TDSP egy részét képezi a [Mi az a csoportos adatelemzési folyamat életciklusa?](overview.md) A szolgáltatás jellemzőkiválasztás és -kiemelés, részből áll a **funkciók fejlesztése** a TDSP. lépését. 
 
 * **jellemzőkiemelés**: Ez a folyamat megpróbálja további kapcsolódó funkciók létrehozása az adatok meglévő nyers funkciókat, valamint a tanulási algoritmus prediktív hatékonyságának növelése érdekében.
-* **kijelölés funkció**: Ez a folyamat az eredeti funkciók kulcs részhalmazát kijelöli a kísérlet a betanítási probléma dimenzióinak csökkentése érdekében.
+* **kijelölés funkció**: Ez a folyamat az eredeti funkciók kulcs részhalmazát csökkentése érdekében a betanítási probléma dimenzióinak kísérlet kijelöli.
 
 Általában **jellemzőkiemelés** további funkciók létrehozásához először alkalmazza, majd a **kijelölés funkció** irreleváns, redundáns vagy magas kapcsolódó funkciók kiküszöbölése érdekében a lépést.
 
@@ -71,7 +71,7 @@ A négy modellek teljesítményének eredmények összehasonlítása az alábbi 
 
 A legjobb eredmények elérése érdekében funkcióihoz jelennek meg A + B + C billentyűkombinációt. Vegye figyelembe, hogy a Hibaarány csökken, ha további funkciókat a betanítási adatok szerepelnek. Ellenőrzi, hogy a B, C szolgáltatáskészletére biztosítani a regressziós feladat kapcsolatos további információt a feltételezés. A D-funkció hozzáadása nem verziónk, de a Hibaarány csökkenése további adja meg.
 
-## <a name="example2"></a> 2. példa: Szöveg adatbányászati funkciók létrehozása
+## <a name="example2"></a> 2. példa: A szöveg adatbányászati funkciók létrehozása
 Széles körben alkalmazása funkciófejlesztési szöveg adatbányászati, például a dokumentum besorolási és vélemények elemzése kapcsolatos feladatokat. Például, ha szeretné besorolni a dokumentumokat számos kategóriába sorolhatók, egy tipikus feltételezi, hogy a word/kifejezések egy doc kategóriába kevésbé valószínű, hogy egy másik doc kategória fordulnak elő. Más szóval a szavak és kifejezések terjesztési gyakoriságát is képes írhatók le a dokumentum különböző kategóriák. Szöveg adatbányászati alkalmazásokban szövegtartalmára – egyéni adatokat általában szolgálhat a bemeneti adatokat, mert a szolgáltatás műszaki folyamat létrehozásához szükséges a szolgáltatásokat érintő szó vagy kifejezés gyakoriságot.
 
 Ez a feladat eléréséhez technika nevű **szolgáltatáskivonatolás** hatékonyan kapcsolja be a tetszőleges szöveges funkciók az indexek vonatkozik. Helyett (szavak vagy kifejezések) szöveg alapdokumentációjában társítása adott index, a metódus függvények alkalmazásával a kivonatoló függvényt a szolgáltatásokhoz, és közvetlenül az indexek, a kivonati értékek használatával.

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 22c7adc5db044568b4aa49dbbb0e36d2c919f6a6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: b3b011d9789cbb3dcd8557eda1473b7fd2609075
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629628"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454283"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure storage emulator használata a fejlesztési és tesztelési célra
 
@@ -172,7 +172,7 @@ A beállítások listájának megtekintéséhez írja be a `/help` parancsot a p
 | **Kezdés** |A storage emulator indul. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Indítsa el az emulátort helyett egy új folyamat létrehozása a jelenlegi folyamatban. |
 | **állj** |A storage emulator leáll. |`AzureStorageEmulator.exe stop` | |
 | **Állapot** |A storage emulator állapotát megjeleníti. |`AzureStorageEmulator.exe status` | |
-| **Világos** |Törli a parancssorban megadott összes szolgáltatás adatait. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*BLOB*: Törli az adatokat a blob. <br/>*várólista*: Törli a sorban lévő adatok. <br/>*tábla*: Törli a tábla adatait. <br/>*Az összes*: Az összes szolgáltatás az összes adat törlése. |
+| **Világos** |Törli a parancssorban megadott összes szolgáltatás adatait. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*blob*: Törli az adatokat a blob. <br/>*várólista*: Törli a sorban lévő adatok. <br/>*tábla*: Törli a tábla adatait. <br/>*Az összes*: Az összes szolgáltatás az összes adat törlése. |
 | **Init** |Az emulátor beállításához, egyszeri inicializálási hajt végre. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-kiszolgáló Kiszolgáló_neve\példány_neve*: Itt adhatja meg az SQL-példányt futtató kiszolgálót. <br/>*instanceName – sqlinstance*: Itt adhatja meg az alapértelmezett kiszolgálópéldánynál használható SQL-példány nevét. <br/>*-forcecreate*: Az SQL-adatbázis létrehozása kényszeríti, még akkor is, ha már létezik. <br/>*-skipcreate*: Kihagyja az SQL-adatbázis létrehozása. Ez elsőbbséget élvez - forcecreate.<br/>*-reserveports*: A HTTP-portok megadott szolgáltatásokkal társított kísérletek.<br/>*-unreserveports*: Megpróbálja eltávolítani a HTTP-port megadott szolgáltatásokkal társított lefoglalását. Ez elsőbbséget élvez - reserveports.<br/>*-inprocess*: Hajt végre az inicializálási helyett egy új folyamat terjesztése a jelenlegi folyamatban. Az aktuális folyamat emelt jogosultsági szintű indítható el, ha port foglalások módosítása. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>A storage emulator és az Azure Storage közötti különbségek

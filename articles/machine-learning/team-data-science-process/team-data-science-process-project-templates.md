@@ -6,17 +6,17 @@ manager: cgronlun
 editor: cgronlun
 services: machine-learning
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3675d3cd8959d78270a491aeb443cb8e458d2472
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bbedaa554e9c97a24e26c7927c1bf9c94d5cd507
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137911"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474462"
 ---
 # <a name="team-data-science-process-project-planning"></a>Csoportos adatelemzési folyamat projekt megtervezése
 
@@ -35,7 +35,7 @@ Az egyes szakaszokat leírásáért lásd: [a csoportos adatelemzési folyamat �
  
 ## <a name="microsoft-project-template"></a>A Microsoft Project sablon
 
-Innen érhető el a Microsoft Project sablonját a csoportos adatelemzési folyamat: [a Microsoft Project sablon](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
+A Microsoft Project sablonját a csoportos adatelemzési folyamat itt érhető el: [A Microsoft Project sablon](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
 
 Amikor megnyitja a csomagot, kattintson a hivatkozásra kattintva a bal szélen a tdsp. Módosítsa a nevet és leírást, és adja hozzá a csapat erőforrásokat kell. Becsülje meg a dátumok, a felhasználói élmény a szükséges.
 
@@ -48,7 +48,7 @@ Minden tevékenység rendelkezik egy megjegyzés. Nyissa meg ezeket a feladatoka
 
 ## <a name="excel-template"></a>Excel-sablon
 
-Ha nem rendelkezik hozzáféréssel a Microsoft Project, az összes ugyanazokat az adatokat egy Excel-munkalapról is letölthető itt: [Excel-sablon](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) ezeket be lehet kötni, bármilyen eszközre szeretné használni.
+Ha nem rendelkezik hozzáféréssel a Microsoft Project, az összes ugyanazokat az adatokat egy Excel-munkalapról is letölthető itt érhető el: [Excel-sablon](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) ezeket be lehet kötni, bármilyen eszközre szeretné használni.
 
 A saját kockázatára használhatja ezeket a sablonokat. A [szokásos nyilatkozatok](https://www.gnu.org/licenses/gpl-3.0.en.html) vonatkoznak.
 

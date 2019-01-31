@@ -2,7 +2,7 @@
 title: Batch az Azure Application Insights figyelése |} A Microsoft Docs
 description: 'Útmutató: Azure Batch .NET-alkalmazás, az Azure Application Insights-könyvtár használatával alakítsa ki.'
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.devlang: .NET
 ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
-ms.author: danlep
-ms.openlocfilehash: 986a05dab29226ff492269587ab6c0f49585cef6
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.author: lahugh
+ms.openlocfilehash: 42ea8398fa1a8b1fbc42108d1165dc17da2c34d7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119907"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473462"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Figyelheti és hibakeresése az Azure Batch .NET-alkalmazás, az Application insights segítségével
 
@@ -56,7 +56,7 @@ A .NET-alkalmazás az Application Insights használatával hivatkozik a **Micros
 
 ## <a name="instrument-your-code"></a>A kód alkalmazásáról
 
-A kód alkalmazásáról a megoldáshoz szükséges, hozzon létre egy Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). A példában a TelemetryClient betölti a konfigurációját az a [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md) fájlt. Ügyeljen arra, hogy a következő projektek az ApplicationInsights.config frissítse az Application Insights-eszközkulcs: Microsoft.Azure.Batch.Samples.TelemetryStartTask és TopNWordsSample.
+A kód alkalmazásáról a megoldáshoz szükséges, hozzon létre egy Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). A példában a TelemetryClient betölti a konfigurációját az a [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md) fájlt. Ügyeljen arra, hogy a következő projektek az ApplicationInsights.config frissítse az Application Insights-eszközkulcs: Microsoft.Azure.Batch.Samples.TelemetryStartTask and TopNWordsSample.
 
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>

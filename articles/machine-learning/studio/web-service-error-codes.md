@@ -10,20 +10,20 @@ ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: b7f27e981ceb12191e58a3e0824c7e0709a49013
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: cb8d0120a4a686321c65016f6e5e41cbee963933
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251322"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478117"
 ---
-# <a name="azure-machine-learning-studio-rest-api-error-codes"></a>Az Azure Machine Learning Studio REST API-t hibakódjai
+# <a name="azure-machine-learning-studio-rest-api-error-codes"></a>Azure Machine Learning Studio REST API Error Codes
  
 Az alábbi hibakódok által az Azure Machine Learning Studio webszolgáltatás-művelet sikerült visszaadni.
  

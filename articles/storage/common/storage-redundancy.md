@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 7afbdaba46674b69aa601355e80160e7c72ff373
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 3fb3860cbda2e1d46505711d7a175e5d42ec7018
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240970"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455507"
 ---
 # <a name="azure-storage-replication"></a>Azure Storage replication (Azure Storage replikáció)
 
@@ -39,7 +39,7 @@ Az alábbi táblázat a tartóssággal és rendelkezésre állással, amely mind
 | Egy régióra kiterjedő szolgáltatáskimaradás                                                                                     | Nem                              | Nem                               | Igen                                  | Igen                                  |
 | Olvasási hozzáférés az adatokhoz (a távoli, a georeplikált régiónként) régióra kiterjedő elérhetetlensége esetén | Nem                              | Nem                               | Nem                                   | Igen                                  |
 | Nyújtson \_ \_ tárolt objektumok számára egy adott évben                                          | legalább 99,999999999 %-os (11 9-es) | legalább 99,9999999999 %-os (12 9-es) | 99,99999999999999 %-ában (16 9-es) | 99,99999999999999 %-ában (16 9-es) |
-| Támogatott tárfióktípusok                                                                   | A GPv2, GPv1-, Blob                | GPv2                             | A GPv2, GPv1-, Blob                     | A GPv2, GPv1-, Blob                     |
+| Támogatott tárfióktípusok                                                                   | GPv2, GPv1, Blob                | GPv2                             | GPv2, GPv1, Blob                     | GPv2, GPv1, Blob                     |
 | Rendelkezésre állási SLA olvasási kérelmek esetén | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,99 %-át (a lassú elérési szint esetében 99,9 %) |
 | Rendelkezésre állási SLA-kérésekre vonatkozó | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) |
 
@@ -48,7 +48,7 @@ Minden egyes adatredundáns tárolási mód díjszabásról lásd: [Azure Storag
 Információkat szeretne megtudni az Azure Storage tartóssági és rendelkezésre állási garanciák, lásd: a [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> A Premium Storage támogatja a csak a helyileg redundáns tárolás (LRS). Prémium szintű Storage szolgáltatással kapcsolatos további információkért lásd: [Premium Storage: nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md).
+> A Premium Storage támogatja a csak a helyileg redundáns tárolás (LRS). Prémium szintű Storage szolgáltatással kapcsolatos további információkért lásd: [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md).
 
 ## <a name="changing-replication-strategy"></a>Replikációs stratégia módosítása
 Módosíthatja a tárfiók replikációs stratégia használatával lehetővé tesszük a [az Azure portal](https://portal.azure.com/), [Azure Powershell](storage-powershell-guide-full.md), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), vagy egy a többhöz [ Azure-ügyfélkönyvtárak](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). A storage-fiók replikációs típusának módosítása eredményez leállás.
@@ -63,9 +63,9 @@ Ha módosítjuk GRS az LRS, nem kell további költenie, de a másodlagos helyr�
 
 ## <a name="see-also"></a>Lásd még
 
-- [Helyileg redundáns tárolás (LRS): az Azure Storage alacsony költségű adatredundancia](storage-redundancy-lrs.md)
-- [Zónaredundáns tárolás (ZRS): az Azure Storage magas rendelkezésre állású alkalmazások](storage-redundancy-zrs.md)
-- [Georedundáns tárolás (GRS): az Azure Storage-régiók közti replikáció](storage-redundancy-grs.md)
+- [Helyileg redundáns tárolás (LRS): Az Azure Storage alacsony költségű adatredundancia](storage-redundancy-lrs.md)
+- [Zónaredundáns tárolás (ZRS): Azure Storage magas rendelkezésre állású alkalmazások](storage-redundancy-zrs.md)
+- [Georedundáns tárolás (GRS): Az Azure Storage-régiók közti replikáció](storage-redundancy-grs.md)
 - [Az Azure Storage méretezhetőségi és teljesítménycéljai](storage-scalability-targets.md)
 - [RA-GRS tároló használatával magas rendelkezésre állású alkalmazások tervezése](../storage-designing-ha-apps-with-ragrs.md)
 - [A Microsoft Azure Storage redundancia lehetőségeket és olvasási hozzáférés georedundáns tárolás ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)

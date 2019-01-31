@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: ea81cb52b8492e429903de15a9ff0156c91abae2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: cdaa151f0603cddc9ca1bf17b0ff304f646cfdde
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309586"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462834"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure Blob Storage-adatok importálása az Azure Import/Export szolgáltatás használata
 
@@ -68,7 +68,7 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
     |---------|---------|
     |/j:     |A napló .jrn kiterjesztésű fájl neve. A naplófájl meghajtónkénti jön létre. Azt javasoljuk, hogy a lemez sorozatszáma használjon a napló-fájl neve.         |
     |/ ID:     |A munkamenet-azonosítót. A parancs minden példánya esetében egyedi munkamenet több használ.      |
-    |/SK:     |Az Azure Storage-fiókkulcs.         |
+    |/sk:     |Az Azure Storage-fiókkulcs.         |
     |/t:     |A meghajtóbetűjel, a lemez szállításra. Ha például meghajtó `D`.         |
     |/bk:     |A meghajtó BitLocker-kulcsa. A numerikus jelszó kimenetéből: ` manage-bde -protectors -get D: `      |
     |/srcdir:     |A lemez szállításra meghajtóbetűjelének követ `:\`. Például: `D:\`.         |
@@ -79,7 +79,7 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
     > [!IMPORTANT]
     > - A naplófájl együtt egy `<Journal file name>_DriveInfo_<Drive serial ID>.xml` fájl is létrejön ugyanabban a mappában, amelyben az eszköz található. Az XML-fájl használja journal-fájl helyett a feladat létrehozásakor, ha a napló-fájl túl nagy. 
 
-## <a name="step-2-create-an-import-job"></a>2. lépés: Importálási feladat létrehozása
+## <a name="step-2-create-an-import-job"></a>2. lépés: Importálási feladat létrehozása
 
 A következő lépésekkel importálási feladat létrehozása az Azure Portalon.
 

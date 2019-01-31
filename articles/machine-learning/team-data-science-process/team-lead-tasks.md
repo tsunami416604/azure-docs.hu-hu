@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: faf0e06a0649c31cec840a5043a11af601ba5c47
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 45be3d7f865c7b72ae62efbf99dbbb4594b1846f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139639"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465265"
 ---
 # <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>A csapat adatelemzési folyamat csapatával az vezethet a csapat feladatok
 
@@ -48,7 +48,7 @@ Ez a témakör az adattárak és a címtárak rövidített használja. Ezeket a 
 - **R1**: A **GroupProjectTemplate** , amely a csoport kezelőjének beállítása az Azure DevOps-csoport kiszolgálón Git a tárház.
 - **R3**: A csapat **ProjectTemplate** beállítása Git a tárház.
 - **R4**: A **TeamUtilities** beállítása Git a tárház.
-- **A D1**: A helyi könyvtárban klónozható R1 a, és másolja a D3.
+- **D1**: A helyi könyvtárban klónozható R1 a, és másolja a D3.
 - **D3**: A helyi könyvtárban klónozható a R3, testreszabása és visszamásolja R3.
 - **D4**: A helyi könyvtárban klónozható R4 a, testre szabhatja, és másolja vissza az R4.
 
@@ -140,9 +140,9 @@ A kiindulási eljárás a könyvtárak a helyi dsvm-hez a köztes átmeneti tár
 
 - Klónozott csoportba tárház helyi könyvtárba: R1 – helyi D1 -> klónozni csapata
 - Klónozza a csapat tárházak helyi címtárak: R3 & R4 – helyi D3 & D4 -> klónozni csapata
-- Csoport projekt sablon tartalmának másolása a helyi csoport mappa: a D1 - tartalmát másolta a D3 ->
+- Csoport projekt sablon tartalmának másolása a helyi csoport mappa:  A D1 - tartalmát másolta a D3 ->
 - Helyi D3 & D4 (nem kötelező) testreszabása
-- Küldje le a helyi könyvtár tartalma csapat tárházakba: D3 & D4 - tartalom -> hozzá R3 & R4 csapata
+- Csapat tárházakba küldje le a helyi könyvtár tartalma: D3 & D4 - tartalom -> hozzá R3 & R4 csapata
 
 
 ### <a name="initialize-the-team-repositories"></a>A csapat tárházak inicializálása
@@ -157,7 +157,7 @@ Ebben a lépésben a projektadattárat a sablon a csoport projekt sablontár ini
 Ez az eljárás a kezdéshez:
 
 - A helyi gépén hozzon létre a könyvtárak:
-    - A **Windows**: **C:\GitRepos\GroupCommon** és **C:\GitRepos\MyTeam**
+    - A **Windows**: **C:\GitRepos\GroupCommon** and **C:\GitRepos\MyTeam**
     - A **Linux**: **GitRepos\GroupCommon** és **GitRepos\MyTeam** meg a kezdőkönyvtár 
 - A címtár módosítása **GitRepos\GroupCommon**.
 - Futtassa a következő parancsot, szükség esetén a helyi számítógép operációs rendszeren.
@@ -355,7 +355,7 @@ Győződjön meg arról, hogy egy új F meghajtó sikeresen csatlakoztatva lett 
 
 ![34](./media/team-lead-tasks/team-leads-34-attach-s3.png)
 
-**Adja meg manuálisan az Azure file storage adatokat hogyan:** Ha nem rendelkezik az Azure file storage adatait egy szövegfájlt, akkor is kövesse az utasításokat a következő képernyőn írja be az előfizetés szükséges, a storage-fiók és az Azure File storage információkat:
+**Adja meg manuálisan az Azure file storage adatokat hogyan:** Ha nem rendelkezik az Azure file storage adatait egy szövegfájlt, akkor kövesse az a következő képernyőn írja be az előfizetés szükséges, a storage-fiók és a az Azure file storage információkat:
 
 ![35](./media/team-lead-tasks/team-leads-35-attach-s4.png)
 
@@ -384,7 +384,7 @@ Győződjön meg arról, hogy egy új F meghajtó sikeresen csatlakoztatva lett 
 
 ![40](./media/team-lead-tasks/team-leads-40-attach-s4-linux.png)
 
-**Adja meg manuálisan az Azure file storage adatokat hogyan:** Ha nem rendelkezik az Azure file storage adatait egy szövegfájlt, akkor is kövesse az utasításokat a következő képernyőn írja be az előfizetés szükséges, a storage-fiók és az Azure File storage információkat:
+**Adja meg manuálisan az Azure file storage adatokat hogyan:** Ha nem rendelkezik az Azure file storage adatait egy szövegfájlt, akkor kövesse az a következő képernyőn írja be az előfizetés szükséges, a storage-fiók és a az Azure file storage információkat:
 
 - Bemeneti **n**.
 - Válassza ki az előfizetés nevét, ahol az Azure file storage az előző lépésben jött létre index:

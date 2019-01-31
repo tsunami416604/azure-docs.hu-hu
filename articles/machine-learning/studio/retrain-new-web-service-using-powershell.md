@@ -1,6 +1,6 @@
 ---
-Cím: A PowerShell titleSuffix új Machine Learning Studio webszolgáltatás újratanítása: Azure Machine Learning Studio description: Ismerje meg, hogyan programozott módon modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning, a Machine Learning Management PowerShell-parancsmagok használatával.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: A PowerShell titleSuffix új Machine Learning Studio webszolgáltatás újratanítása: Azure Machine Learning Studio description: Ismerje meg, hogyan programozott módon modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning, a Machine Learning Management PowerShell-parancsmagok használatával.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/28/2017
 ---

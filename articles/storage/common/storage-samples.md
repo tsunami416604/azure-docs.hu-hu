@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/03/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 0ef00e69a280748900ac521acd32e4ccf5fefa23
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: d1eac8f79ea53643659f8780ee03f8ced13c7dcd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525188"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452226"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage-minták
 
@@ -47,7 +47,7 @@ Ismerkedés a Node.js-minták, töltse le a [Node.js a Storage ügyféloldali k�
 * [Folytatási kód](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js)
 * [Újrapróbálkozási szabályzat](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/retrypolicysample.js)
 * [Közös hozzáférésű jogosultságkód](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/sassample.js)
-* [pillanatkép](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
+* [Snapshot](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
 * [Tábla lekérdezése](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
 
 ## <a name="c-samples"></a>C++ minták

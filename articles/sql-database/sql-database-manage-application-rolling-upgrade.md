@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/29/2019
-ms.openlocfilehash: 1aa3960e3a974703cfecec2bd28fc41f74f7df96
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 50f6f114a4d90f48218f751e1649e8694e664491
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238407"
+ms.locfileid: "55295746"
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>SQL-adatbázis aktív georeplikációt használ, a felhőalapú alkalmazások működés közbeni frissítések kezelése
 
@@ -54,7 +54,7 @@ Miután elvégezte a adatelőkészítési lépéseket, a tényleges frissítés 
 Ha a frissítés sikeresen befejeződött, most már készen áll a végfelhasználók váltson át a frissített példányt az alkalmazás. Most már válik egy éles webalkalmazásra.  A Váltás magában foglalja az az alábbi ábrán szemléltetett módon néhány további lépést.
 
 1. Aktiválja a csereművelet éles és átmeneti tárhelyek a webalkalmazás (6) között. Az URL-címeket, a két tárolóhelyek színűre azt. Most már `contoso.azurewebsites.net` V2 verzióját a webhely és az adatbázis (éles környezet) mutasson.  
-2. Ha már nincs szüksége a V1 verziót, amely egy tesztelési másolatot vált a felcserélés után, leszerelheti az átmeneti envoronment (7).
+2. Ha már nincs szüksége a V1 verziót, amely egy tesztelési másolatot vált a felcserélés után, leszerelheti az átmeneti környezetben (7).
 
 ![SQL-adatbázis georeplikációs konfiguráció. Felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option1-3.png)
 
@@ -111,7 +111,7 @@ Miután végrehajtotta az előkészítő lépéseket, az átmeneti környezetben
 Ha a frissítés sikeresen befejeződött, most már készen áll a végfelhasználók váltson az alkalmazás V2 verziója. A következő ábra szemlélteti a folyamat lépéseit.
 
 1. Aktiválja a csereművelet éles és átmeneti pontok az elsődleges régióban (13), és a biztonsági mentési régióban (14) a webes alkalmazás között. Az alkalmazás most már v2 egy üzemelési redundáns másolatát, a biztonsági mentési régióban lesz.
-2. Leszerelheti a az átmeneti környezet, ha már nincs szüksége a V1-alkalmazás (15 és 16).  
+2. Ha már nincs szüksége a V1-alkalmazás (15 és 16), leszerelheti az átmeneti környezetben.  
 
 ![SQL-adatbázis georeplikációs konfiguráció. Felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option2-3.png)
 

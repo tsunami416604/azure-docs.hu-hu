@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5af305a2e0d4754cf4fad8557db9d367c828ecc5
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 044fe3de265d298ecd366a50b9db77eeea32bbb7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389105"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457938"
 ---
-# <a name="database-transactions-and-optimistic-concurrency-control"></a>Adatbázis-tranzakciók és az optimista egyidejűség-vezérlés
+# <a name="transactions-and-optimistic-concurrency-control"></a>Tranzakciók és az optimista egyidejűség-vezérlés
 
 Adatbázis-tranzakciók adjon meg egy biztonságos és kiszámítható programozási modell segítségével az adatok egyidejű módosításait foglalkozik. Hagyományos relációs adatbázisoktól, például az SQL Server lehetővé teszi, hogy a használatával, és/vagy a tárolt eljárások, eseményindítók üzleti logika írását küldje el a kiszolgálónak a végrehajtási közvetlenül az adatbázismotor belül. A hagyományos relációs adatbázisoktól szükségesek kezelésére két különböző programozási nyelvek - programozási nyelvet, például a JavaScript, Python, a (nem tranzakciós) alkalmazás C#, Java és az egyéb és a tranzakciós programozási nyelvek (T-SQL), amely a natív módon az adatbázis által végrehajtandó.
 

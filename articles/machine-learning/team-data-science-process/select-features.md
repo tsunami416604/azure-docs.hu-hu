@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: de8070906f7b2470378fb631f2e94a96b4a2960d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a74f2c21746deb16372174d4a769f9abb825a1cd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138653"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473308"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Funkcióválasztás a csoportos adatelemzési folyamatban (TDSP)
 Ez a cikk azt ismerteti, szolgáltatás kiválasztása az alkalmazásában, és példákat tartalmaz a szerepét a machine learning adatokat a fejlesztés folyamatát. Ezek a példák az Azure Machine Learning Studio állítják. 
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, szolgáltatás kiválasztása az alkalmazásában, és 
 A jellemzőkiválasztás és -kiemelés szolgáltatások része egy, a csoportos adatelemzési folyamat (TDSP) című cikkben ismertetett [Mi az a csoportos adatelemzési folyamat?](overview.md). A szolgáltatás jellemzőkiválasztás és -kiemelés, részből áll a **funkciók fejlesztése** a TDSP. lépését.
 
 * **jellemzőkiemelés**: Ez a folyamat megpróbálja további kapcsolódó funkciók létrehozása az adatok meglévő nyers funkciókat, és a tanulási algoritmus prediktív teljesítmény növelése érdekében.
-* **kijelölés funkció**: Ez a folyamat az eredeti funkciók kulcs részhalmazát kijelöli a kísérlet a betanítási probléma dimenzióinak csökkentése érdekében.
+* **kijelölés funkció**: Ez a folyamat az eredeti funkciók kulcs részhalmazát csökkentése érdekében a betanítási probléma dimenzióinak kísérlet kijelöli.
 
 Általában **jellemzőkiemelés** további funkciók létrehozásához először alkalmazza, majd a **kijelölés funkció** irreleváns, redundáns vagy magas kapcsolódó funkciók kiküszöbölése érdekében a lépést.
 

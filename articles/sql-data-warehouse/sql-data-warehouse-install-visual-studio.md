@@ -4,20 +4,20 @@ description: A Visual Studio és az SQL Server Development Tools (SSDT) telepít
 services: sql-data-warehouse
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ba84b64afb1d5ebcd5ec153787ddc7d0739bd8d8
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e27a3d4f2fe4b8421b637e485d77d6376d15bf9a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307385"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461491"
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>A Visual Studio és az SSDT telepítése SQL Data warehouse-hoz
 Alkalmazások fejlesztéséhez az SQL Data warehouse-ba, javasoljuk a Visual Studio legújabb verziójának használata az SQL Server Data Tools (SSDT) legújabb verzióját.  A Visual Studio 2013 Update 5 és az SSDT együttes használata is támogatott a visszamenőleges kompatibilitás érdekében.  
@@ -35,7 +35,7 @@ Az alábbi hivatkozásokból töltse le és telepítse a Visual Studióban. Ha m
 1. [A Visual Studio letöltése][].
 2. Kövesse a [Installing Visual Studio] [ Installing Visual Studio] útmutatót az MSDN Webhelyén, és válassza az alapértelmezett konfigurációkat.
 
-## <a name="step-2-install-ssdt"></a>2. lépés: Az SSDT telepítése
+## <a name="step-2-install-ssdt"></a>2. lépés: Az SSDT telepítése
 A Visual Studióban az SSDT telepítése, először ellenőrizze a Visual studióban az SSDT frissítés a következő lépésekkel.
 
 1. A Visual Studióban kattintson a **eszközök** / **bővítmények és frissítések...** / **Frissítések**

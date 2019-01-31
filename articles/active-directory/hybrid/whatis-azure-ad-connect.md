@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
-ms.date: 11/28/2018
+ms.component: hybrid
+ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0648a0208ac02e846b74ef33fdc162dd89ecb887
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cb1ba63a0f32d026d51507fe66432a520a6f6e71
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190683"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298968"
 ---
 # <a name="what-is-azure-ad-connect"></a>Mi az Azure AD Connect?
 
@@ -49,6 +50,20 @@ A helyszíni címtárak és az Azure AD integrálása révén a felhasználók m
 
 ## <a name="why-use-azure-ad-connect-health"></a>Miért érdemes az Azure AD Connect Health eszközt használni?
 Azure AD-val a, a felhasználók hatékonyabbak, mivel a felhő- és a helyszíni erőforrások eléréséhez közös identitás áll. Kihívást a környezet nem megbízható, így a felhasználók férhetnek hozzá ezekhez az erőforrásokhoz, biztosítva lesz.  Az Azure AD Connect Health segítségével figyelheti és elemezheti a helyszíni identitás-infrastruktúrát, így az ebben a környezetben a megbízhatóságának biztosítása. Használata éppolyan egyszerű, mintha egy-egy ügynököt telepítene a helyszíni identitás-kiszolgálókra.
+
+Az AD FS-hez készült Azure AD Connect Health a Windows Server 2008 R2, a Windows Server 2012, a Windows Server 2012 R2 és a Windows Server 2016 rendszeren támogatja az AD FS 2.0-s verzióját. Ezen kívül támogatja az AD FS proxy- vagy webalkalmazás-proxykiszolgálók figyelését is, amelyek az extranetes hozzáféréshez biztosítanak hitelesítési támogatást. Az állapotügynök egyszerűen és gyorsan végrehajtható telepítésével elérhetővé válnak az Azure AD Connect Health for AD FS legfontosabb képességei.
+
+Főbb előnyeit és ajánlott eljárásokat:
+
+|Főbb előnyök|Ajánlott eljárások|
+|-----|-----|
+|Fokozott biztonság|[Extranet zárolási tendenciák](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Jelentések a sikertelen bejelentkezésekről](how-to-connect-health-adfs.md#risky-ip-report-public-preview)</br>[A megfelelő adatvédelem](reference-connect-health-user-privacy.md)|
+|A riasztások [összes fontos AD FS rendszerrel kapcsolatos problémák](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)|Kiszolgálók konfigurálása és rendelkezésre állása</br>[Teljesítmény és csatlakozási lehetőségek](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Rendszeres karbantartás|
+|Egyszerű üzembe helyezése és kezelése|[Gyors ügynök telepítése](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Az ügynökök automatikus frissítése a legújabb verzióra</br>Az adatok perceken belül elérhetők a portálon|
+Gazdag [használati metrikák](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|A leggyakrabban használt alkalmazások</br>Hálózati helyek és TCP-kapcsolat</br>Jogkivonat-kérelmek kiszolgálónként|
+|Nagyszerű felhasználói élményét|Az Azure Portal irányítópult stílusa</br>[Riasztások e-mailben](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
+
+
 
 
 ## <a name="next-steps"></a>További lépések

@@ -3,19 +3,19 @@ title: Egyszeri jelszó hitelesítési Vendég B2B - felhasználók Azure Active
 description: Hogyan használható az e-mailben kapott egyszeri jelszót Microsoft-fiók nélkül B2B vendég felhasználók hitelesítésére.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 1/25/2019
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 14b00dd354618edb3a1f41c292d62b5a13a1f10d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 412e114fde8f9b9017d476083f1237c922c67bc8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216047"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463055"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mailben kapott egyszeri jelszót hitelesítés (előzetes verzió)
 

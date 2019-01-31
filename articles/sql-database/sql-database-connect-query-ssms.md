@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 23f2d32b2323821155467bd1ad12e9baf8c33074
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 01/25/2019
+ms.openlocfilehash: 2b510accb2a30250a2855cfa22dbf45546a77569
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150750"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461746"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: SQL Server Management Studio használatával csatlakozhat, és az Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -30,7 +30,9 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-#### <a name="install-the-latest-ssms"></a>Az SSMS legújabb verziójának telepítése
+* Egy konfigurált kiszolgálószintű tűzfalszabályt. További információkért lásd: [kiszolgálószintű tűzfalszabály létrehozása](sql-database-get-started-portal-firewall.md).
+
+## <a name="install-the-latest-ssms"></a>Az SSMS legújabb verziójának telepítése
 
 Mielőtt elkezdené, győződjön meg arról, hogy telepítette a legújabb [SSMS][ssms-install-latest-84g]. 
 
@@ -43,7 +45,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy telepítette a legújabb [SSM
 Az SMSS csatlakozzon az Azure SQL Database-kiszolgálóhoz. 
 
 > [!IMPORTANT]
-> Egy Azure SQL Database logikai kiszolgáló figyel az 1433-as porton. A céges tűzfal mögül logikai kiszolgálóhoz csatlakozik, a tűzfal nyissa meg ezt a portot kell rendelkeznie.
+> Egy Azure SQL Database server a 1433-as portot figyeli. A céges tűzfal mögül egy SQL Database-kiszolgálóhoz csatlakozni, a tűzfal nyissa meg ezt a portot kell rendelkeznie.
 >
 
 1. Nyissa meg az SSMS-t. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanel jelenik meg.

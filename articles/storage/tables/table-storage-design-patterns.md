@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: d055ea9b30732e1cc0fc4ae5471bae26adc08b35
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: tables
+ms.openlocfilehash: 3ba2009ef1ea8fdf5916baab296c7ff5eee953db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238896"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469192"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
 Ez a cikk néhány tábla szolgáltatási megoldások használható mintákat ismerteti. Ezenkívül láthatja, miként, gyakorlatilag kezelheti néhány problémákat és egyéb tárolási tervezési cikkek tárgyalt feláldozását. Az alábbi ábrán a különböző minták között létesített kapcsolatait összegzi:  
@@ -197,11 +197,11 @@ Vezetéknév keresési engedélyezése a fenti entitás struktúrával, meg kell
 * Hozzon létre index entitások az alkalmazottak entitásokként ugyanazon a partíción.  
 * Index entitások létrehozása egy külön partíciót vagy tábla.  
 
-<u>#1. lehetőség: A blob storage</u>  
+<u>#1. lehetőség: Blob storage használata</u>  
 
 Az első lehetőség, akkor hozzon létre minden egyedi Vezetéknév, és minden egyes blob-tárolóban lévő blobok listáját a **PartitionKey** (részleg) és **RowKey** (alkalmazott azonosítója) értékét az alkalmazottak a múlt nevet. Hozzáadásakor, vagy egy alkalmazott törlése biztosítania kell, hogy idővel konzisztenssé váljanak az alkalmazott entitások-e a megfelelő blob tartalmát.  
 
-<u>#2. lehetőség:</u> ugyanazon a partíción index entitások létrehozása  
+<u>#2. lehetőség:</u> Ugyanazon a partíción index entitások létrehozása  
 
 A második lehetőség használja a index entitások, amelyek tárolják a következő adatokat:  
 
@@ -223,7 +223,7 @@ Az alábbi lépéseket kell követnie, amikor szüksége van egy részleg utols�
 2. Elemezni az alkalmazotti azonosítókat a EmployeeIDs mezőben listája.  
 3. További információ az egyes ezeknek a dolgozóknak (például e-mail-címeket) van szüksége, ha minden ilyen használatával alkalmazott lekéréséhez **PartitionKey** "Értékesítés" érték és **RowKey** értékeket a 2. lépésben beolvasott alkalmazottak listája.  
 
-<u>#3. lehetőség:</u> index entitások egy külön partíciót, vagy a tábla létrehozása  
+<u>#3. lehetőség:</u> Index entitások egy külön partíciót, vagy a tábla létrehozása  
 
 A harmadik lehetőség, amely a következő adatokat tárolja index entitások használja:  
 
@@ -916,7 +916,7 @@ Ez a szakasz további része a Storage ügyféloldali kódtár, amely ugyanabban
 ### <a name="retrieving-heterogeneous-entity-types"></a>Heterogén entitástípusok beolvasása
 Ha használja a Storage ügyféloldali kódtár, akkor három lehetőség több entitás típusok kezelése.  
 
-Ha tudja, hogy az entitást, tárolja és a egy adott típusú **rowkey tulajdonságok esetén** és **PartitionKey** értékek, akkor az előző két példában látható módon az entitás kikeresésekor a entitástípus megadhatja, hogy kérje le az entitásokat típusú **EmployeeEntity**: [a Storage ügyféloldali kódtár használatával pont lekérdezést végrehajtó](#executing-a-point-query-using-the-storage-client-library) és [beolvasása a LINQ használatával több entitás](#retrieving-multiple-entities-using-linq).  
+Ha tudja, hogy az entitást, tárolja és a egy adott típusú **rowkey tulajdonságok esetén** és **PartitionKey** értékek, akkor az előző két példában látható módon az entitás kikeresésekor a entitástípus megadhatja, hogy kérje le az entitásokat típusú **EmployeeEntity**: [A Storage ügyféloldali kódtár használatával pont lekérdezést végrehajtó](#executing-a-point-query-using-the-storage-client-library) és [beolvasása a LINQ használatával több entitás](#retrieving-multiple-entities-using-linq).  
 
 A második lehetőség a **DynamicTableEntity** típusa (egy tulajdonságcsomagot) helyett egy konkrét POCO entitás típusa (ezt a lehetőséget is javíthatja a teljesítményt, mert nem kell szerializálható és deszerializálható az entitás a .NET-típusok). Az alábbi C#-kód potenciálisan több különböző típusú entitás beolvasása a táblából, de adja vissza minden entitás, **DynamicTableEntity** példányok. Ezután a **EntityType** tulajdonságot minden entitás típusának meghatározása:  
 

@@ -1,6 +1,6 @@
 ---
-Cím: Adatokat importálhat fájl titleSuffix: Azure Machine Learning Studio description: Útmutató a betanítási adatok fájlok feltöltéséhez a merevlemez-meghajtóról az Azure Machine Learning Studióban. Ez létrehoz egy adatkészlet-modul a munkaterületen.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Adatokat importálhat fájl titleSuffix: Azure Machine Learning Studio description: Útmutató a betanítási adatok fájlok feltöltéséhez a merevlemez-meghajtóról az Azure Machine Learning Studióban. Ez létrehoz egy adatkészlet-modul a munkaterületen.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
 ---

@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 663df77a7fb574f05cfaa9378dff53ca5db21c49
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: c4dcb3f42d97624e66258228ce27e130a05cac70
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526109"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456136"
 ---
 # <a name="azure-storage-samples-using-net"></a>.NET-tel az Azure Storage-minták
 
@@ -25,8 +25,8 @@ Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett for
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Végpont</th><th style="font-size:110%">Forgatókönyv</th><th style="font-size:110%">Mintakód</th></tr></thead><tbody> 
 <tr> 
 <td rowspan="16"><b>Blob</b></td>
-<td>Hozzáfűző Blob</td> 
-<td><a href="https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.getappendblobreference.aspx">Példa CloudBlobContainer.GetAppendBlobReference metódus</a></td> 
+<td>Blob hozzáfűzése</td> 
+<td><a href="https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.getappendblobreference.aspx">CloudBlobContainer.GetAppendBlobReference Method Example</a></td> 
 </tr> 
 <tr> 
 <td>Blokkblob</td>
@@ -57,7 +57,7 @@ Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett for
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Blobok – első lépések</a></td>
 </tr> 
 <tr> 
-<td>Tároló ACL/metaadatok/tulajdonságai</td>
+<td>Container ACL/Metadata/Properties</td>
 <td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Az Azure Blob Storage fotótár webalkalmazás</a></td>
 </tr> 
 <tr> 
@@ -91,7 +91,7 @@ Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett for
 <tr> 
 <td rowspan="9"><b>Fájl</b></td>
 <td>Megosztások/könyvtárak és fájlok létrehozása</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Az Azure Storage .NET File Storage – minta</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Azure Storage .NET File Storage Sample</a></td> 
 </tr>
 <tr> 
 <td>Megosztások/könyvtárak vagy fájlok törlése</td> 
@@ -99,34 +99,34 @@ Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett for
 </tr> 
 <tr> 
 <td>Tulajdonságok és metaadatok</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Az Azure Storage .NET File Storage – minta</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Azure Storage .NET File Storage Sample</a></td> 
 </tr> 
 <tr> 
 <td>Fájlok letöltése</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Az Azure Storage .NET File Storage – minta</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Azure Storage .NET File Storage Sample</a></td> 
 </tr> 
 <tr> 
 <td>A fájl tulajdonságok és metaadatok/metrikák</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Az Azure Storage .NET File Storage – minta</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Azure Storage .NET File Storage Sample</a></td> 
 </tr> 
 <tr> 
 <td>File Service Properties</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Az Azure Storage .NET File Storage – minta</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Azure Storage .NET File Storage Sample</a></td> 
 </tr> 
 <tr> 
 <td>Fájlok és könyvtárak listája</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Az Azure Storage .NET File Storage – minta</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Azure Storage .NET File Storage Sample</a></td> 
 </tr>
 <tr> 
 <td>Lista megosztások</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Az Azure Storage .NET File Storage – minta</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Azure Storage .NET File Storage Sample</a></td> 
 </tr>
 <tr> 
 <td>Tulajdonságok és metaadatok/Stats megosztása</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Az Azure Storage .NET File Storage – minta</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Azure Storage .NET File Storage Sample</a></td> 
 </tr>
 <tr> 
-<td rowspan="8"><b>várólista</b></td>
+<td rowspan="8"><b>Queue</b></td>
 <td>Üzenet hozzáadása</td> 
 <td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Ismerkedés a .NET-keretrendszerben Azure Queue szolgáltatás</a></td> 
 </tr> 
@@ -139,7 +139,7 @@ Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett for
 <td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Ismerkedés a .NET-keretrendszerben Azure Queue szolgáltatás</a></td> 
 </tr> 
 <tr> 
-<td>Üzenet-várólista törlése</td> 
+<td>Delete Message/Queue</td> 
 <td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Ismerkedés a .NET-keretrendszerben Azure Queue szolgáltatás</a></td> 
 </tr> 
 <tr> 
@@ -147,7 +147,7 @@ Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett for
 <td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Ismerkedés a .NET-keretrendszerben Azure Queue szolgáltatás</a></td> 
 </tr> 
 <tr> 
-<td>ACL/metaadatok/Stats várólista</td> 
+<td>Queue ACL/Metadata/Stats</td> 
 <td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs">Ismerkedés a .NET-keretrendszerben Azure Queue szolgáltatás</a></td> 
 </tr> 
 <tr> 
@@ -210,5 +210,5 @@ Tekintse meg a következő útmutatókat, ha arra kíváncsi, hogyan kell telep�
 
 Más nyelven minták tájékoztatást:
 
-* Java: [javát használó Azure Storage-minták](storage-samples-java.md)
-* Minden más nyelven: [Azure Storage-minták](../storage-samples.md)
+* Java: [Javát használó Azure Storage-minták](storage-samples-java.md)
+* Minden más nyelv: [Az Azure Storage-minták](../storage-samples.md)

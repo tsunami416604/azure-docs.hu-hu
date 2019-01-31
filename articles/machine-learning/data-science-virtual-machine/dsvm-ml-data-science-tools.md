@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d8c607b5f1d338ca3a2bd3844b26ef51d801c720
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f84341d6d8ac3b5c7febaa4f659da84efcebb780
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086070"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473346"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Machine learning és adatelemzési eszközök
 Az Azure Data Science Virtual Machines rendelkezik eszközök széles skáláját, és -kódtárak a machine learning (gépi tanulás) például Python, R és Julia népszerű nyelveken érhető el. 
@@ -32,7 +32,7 @@ Az Azure Data Science Virtual Machines rendelkezik eszközök széles skálájá
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   |   Az Azure Machine Learning egy felhőalapú szolgáltatás, amellyel fejleszthet és helyezhet üzembe gépi Tanulási modelleket. Nyomon követheti a modellek, fejleszthet, betanítását, méretezési és a Python SDK-val kezelheti azokat. Tárolókként modellek üzembe helyezése, és futtathatók a felhőben, a helyszínen, vagy az Azure IoT Edge-ben.   |
-| Támogatott kiadások     | Windows (conda-környezet: AzureML), Linux (conda-környezet: py36)    |
+| Támogatott kiadások     | Windows (conda-környezetben: Az AzureML), Linux (conda-környezet: py36)    |
 | Gyakori használati      | Általános gépi Tanulási platform      |
 | Hogyan azt konfigurálni vagy telepíteni?      |  GPU-támogatással rendelkező telepítve   |
 | Használatával, vagy futtassa      | A Python SDK-t és az Azure parancssori felület. Aktiválja a conda-környezet `AzureML` Windows Edition *vagy* való `py36` Linux rendszeren.      |

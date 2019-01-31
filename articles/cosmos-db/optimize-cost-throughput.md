@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 476e39d0ced465d75e44098b9508472b87b0e7b8
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 443bf5694515720b1b865c310e70ca9c45add262
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230169"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465588"
 ---
-# <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB átviteli költségek optimalizálása
+# <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB kiosztott átviteli sebesség költségek optimalizálása
 
 Által kiosztott átviteli sebesség modellt kínál, az Azure Cosmos DB bármilyen méretben kiszámítható teljesítményt kínál. Lefoglalását, vagy időben átviteli kiépítése szüntetheti meg "zajos szomszédok" a teljesítményét. Átviteli sebességért pontos mennyisége ad meg, és az Azure Cosmos DB garantálja a konfigurált átviteli sebességgel szavatolja.
 

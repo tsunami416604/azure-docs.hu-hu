@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/09/2019
-ms.openlocfilehash: 818dbf84f7b706d6f4a89354291775f091bb1afc
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.date: 01/30/2019
+ms.openlocfilehash: 48cdd064155bfbdfa2fef2ce5a8410e4c95e4c3b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215473"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461066"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell a rugalmas készletek korlátai
 
@@ -47,13 +47,13 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Maximális adatméret (GB)|512|756|756|1536|1536|1536|
 |Max. napló mérete|154|227|227|461|461|461|
 |A TempDB mérete (GB)|32|64|96|128|160|192|
-|Tárolási típus|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|
+|Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
 |Cél IOPS (64 KB)|500|1000|1500|2000|2500|3000|
 |Egyidejű feldolgozók maximális száma készletenként (kérelmek) * |210|420|630|840|1050|1260|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Adatbázisok maximális száma készletenként|100|200|300|500|500|500|
-|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0,25, 0.5-ös, 1|0, 0,25, 0.5-ös, 1, 2|0, 0,25, 0.5-ös, 1.. 3|0, 0,25, 0.5-ös, 1.. 4|0, 0,25, 0.5-ös, 1.. 5|0, 0,25, 0.5-ös, 1.. 6|
+|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
 |Replikák száma|1|1|1|1|1|1|
 |Több-AZ|–|N/A|N/A|N/A|N/A|–|
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|–|
@@ -73,13 +73,13 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Maximális adatméret (GB)|1536|2048|2048|2048|3584|4096|
 |Max. napló mérete (GB)|461|614|614|614|1075|1229|
 |A TempDB mérete (GB)|224|256|288|320|384|384|
-|Tárolási típus|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|
+|Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
 |Cél IOPS (64 KB)|3500|4000|4500|5000|7000|7000|
 |Egyidejű feldolgozók maximális száma készletenként (kérelmek) *|1470|1680|1890|2100|3360|5040|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Adatbázisok maximális száma készletenként|200|500|500|500|500|500|
-|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0,25, 0.5-ös, 1.. 7|0, 0,25, 0.5-ös, 1... 8|0, 0,25, 0.5-ös, 1... 9|0, 0,25, 0.5-ös, 1.. 10|0, 0,25, 0.5-ös, 1.. 10, 16|0, 0,25, 0.5-ös, 1.. 10, 16, 24|
+|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |Replikák száma|1|1|1|1|1|1|
 |Több-AZ|–|N/A|N/A|N/A|N/A|–|
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|–|
@@ -99,13 +99,13 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Maximális adatméret (GB)|512|756|756|1536|1536|1536|
 |Max. napló mérete (GB)|154|227|227|461|461|461|461|
 |A TempDB mérete (GB)|64|128|192|256|320|384|384|
-|Tárolási típus|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|
+|Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
 |Cél IOPS (64 KB)|500|1000|1500|2000|2500|3000|3500|
 |Egyidejű feldolgozók maximális száma készletenként (kérelmek) *|210|420|630|840|1050|1260|1470|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
 |Adatbázisok maximális száma készletenként|200|500|500|500|500|500|500|
-|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0,25, 0.5-ös, 1, 2|0, 0,25, 0.5-ös, 1.. 4|0, 0,25, 0.5-ös, 1.. 6|0, 0,25, 0.5-ös, 1... 8|0, 0,25, 0.5-ös, 1.. 10|0, 0,25, 0.5-ös, 1... 12|0, 0,25, 0.5-ös, 1... 14|
+|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |Replikák száma|1|1|1|1|1|1|1|
 |Több-AZ|–|N/A|N/A|N/A|N/A|N/A|–|
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|N/A|–|
@@ -125,12 +125,12 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Maximális adatméret (GB)|2048|2048|3072|3072|4096|4096|4096|
 |Max. napló mérete (GB)|614|614|922|922|1229|1229|1229|
 |A TempDB mérete (GB)|384|384|384|384|384|384|384|
-|Tárolási típus|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|
+|Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
 |Cél IOPS (64 KB)|4000|4500|5000|6000|7000|7000|7000|
 |Egyidejű feldolgozók maximális száma készletenként (kérelmek) *|1680|1890|2100|2520|33600|4200|8400|
 |Adatbázisok maximális száma készletenként|500|500|500|500|500|500|500|
-|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0,25, 0.5-ös, 1... 16|0, 0,25, 0.5-ös, 1... 18-ra|0, 0,25, 0.5-ös, 1... 20|0, 0,25, 0.5-ös, 1... 20, 24|0, 0,25, 0.5-ös, 1... 20, 24, 32|0, 0,25, 0.5-ös, 1... 16, 24, 32, 40|0, 0,25, 0.5-ös, 1... 16, 24, 32, 40, 80|
+|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...16, 24, 32, 40|0, 0.25, 0.5, 1...16, 24, 32, 40, 80|
 |Replikák száma|1|1|1|1|1|1|1|
 |Több-AZ|–|N/A|N/A|N/A|N/A|N/A|–|
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|N/A|–|
@@ -158,7 +158,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Egyidejű feldolgozók maximális száma készletenként (kérelmek) *|210|420|630|840|1050|1260|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Adatbázisok maximális száma készletenként|Csak egyetlen adatbázisok támogatottak a számítási méret|50|100|100|100|100|
-|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|–|0, 0,25, 0.5-ös, 1, 2|0, 0,25, 0.5-ös, 1.. 3|0, 0,25, 0.5-ös, 1.. 4|0, 0,25, 0.5-ös, 1.. 5|0, 0,25, 0.5-ös, 1.. 6|
+|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|–|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
 |Replikák száma|4|4|4|4|4|4|
 |Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|
@@ -174,7 +174,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Virtuális magok|7|8|9|10|16|24|
 |Memória (GB)|81.6|91.8|102|122.4|163.2|204|408|
 |Oszlopcentrikus támogatása|–|N/A|N/A|N/A|N/A|–|
-|Memóriabeli OLTP storage (GB)|7|8|9,5|11|20|36|
+|Memóriabeli OLTP storage (GB)|7|8|9.5|11|20|36|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |Maximális adatméret (GB)|1024|1024|1024|1024|1024|1024|
 |Max. napló mérete (GB)|307|307|307|307|307|307|
@@ -184,7 +184,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Egyidejű feldolgozók maximális száma készletenként (kérelmek) *|1470|1680|1890|2100|3360|5040|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Adatbázisok maximális száma készletenként|100|100|100|100|100|100|
-|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0,25, 0.5-ös, 1.. 7|0, 0,25, 0.5-ös, 1... 8|0, 0,25, 0.5-ös, 1... 9|0, 0,25, 0.5-ös, 1.. 10|0, 0,25, 0.5-ös, 1.. 10, 16|0, 0,25, 0.5-ös, 1.. 10, 16, 24|
+|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |Replikák száma|4|4|4|4|4|4|
 |Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|
@@ -200,7 +200,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Virtuális magok|2|4|6|8|10|12|14|
 |Memória (GB)|11|22|33|44|55|66|77|
 |Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriabeli OLTP storage (GB)|1.571|3,142|4.713|6.284|8.655|11.026|13.397|
+|Memóriabeli OLTP storage (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
 |Maximális adatméret (GB)|1024|1024|1024|1536|1536|1536|1536|
 |Max. napló mérete (GB)|307|307|307|461|461|461|461|
 |A TempDB mérete (GB)|64|128|192|256|320|384|384|
@@ -210,7 +210,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Egyidejű feldolgozók maximális száma készletenként (kérelmek) *|210|420|630|840|1050|1260|1470|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
 |Adatbázisok maximális száma készletenként|Csak egyetlen adatbázisok támogatottak a számítási méret|50|100|100|100|100|100|
-|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|–|0, 0,25, 0.5-ös, 1.. 4|0, 0,25, 0.5-ös, 1.. 6|0, 0,25, 0.5-ös, 1... 8|0, 0,25, 0.5-ös, 1.. 10|0, 0,25, 0.5-ös, 1... 12|0, 0,25, 0.5-ös, 1... 14|
+|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|–|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |Replikák száma|4|4|4|4|4|4|4|
 |Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
@@ -236,7 +236,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Egyidejű feldolgozók maximális száma készletenként (kérelmek) *|1680|1890|2100|2520|3360|4200|8400|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
 |Adatbázisok maximális száma készletenként|100|100|100|100|100|100|100|
-|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0,25, 0.5-ös, 1... 16|0, 0,25, 0.5-ös, 1... 18-ra|0, 0,25, 0.5-ös, 1... 20|0, 0,25, 0.5-ös, 1... 20, 24|0, 0,25, 0.5-ös, 1... 20, 24, 32|0, 0,25, 0.5-ös, 1... 20, 24, 32, 40|0, 0,25, 0.5-ös, 1... 20, 24, 32, 40, 80|
+|Az adatbázisonkénti minimális/maximális rugalmas készlet virtuális mag választási lehetőségek|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...20, 24, 32, 40|0, 0.25, 0.5, 1...20, 24, 32, 40, 80|
 |Replikák száma|4|4|4|4|4|4|4|
 |Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
@@ -260,5 +260,5 @@ A következő táblázat ismerteti a készletezett adatbázisok tulajdonságait.
 ## <a name="next-steps"></a>További lépések
 
 - Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyakori kérdésekre adott válaszokat.
-- Lásd: [erőforrás áttekintése korlátozza egy logikai kiszolgálón](sql-database-resource-limits-logical-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.
+- Lásd: [erőforrás áttekintése korlátozza az SQL Database-kiszolgálón](sql-database-resource-limits-database-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.
 - Azure – általános korlátozások kapcsolatos információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).

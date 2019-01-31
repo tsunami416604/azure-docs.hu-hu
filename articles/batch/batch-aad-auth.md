@@ -3,7 +3,7 @@ title: Azure Active Directory használatával hitelesíti az Azure Batch szolgá
 description: A Batch támogatja az Azure AD a Batch szolgáltatásban történő hitelesítéshez.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
-ms.author: danlep
-ms.openlocfilehash: 964ef3bd988d71bfb90dbaa473b4b259769064b3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: lahugh
+ms.openlocfilehash: 574a9ae1e283a3918e316d2daa84df727d729471
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722055"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477597"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>A Batch szolgáltatási megoldások és az Active Directory hitelesítést
 
@@ -171,7 +171,7 @@ Ebben a szakaszban szereplő példák bemutatják, hogyan integrált hitelesít�
 >
 >
 
-### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Példa: Azure AD-vel integrált hitelesítés Batch .NET-tel
+### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Példa: Az Azure AD-vel integrált hitelesítés Batch .NET-tel
 
 Hivatkozás integrált hitelesítés a Batch .NET-hitelesítésre, az [Azure Batch .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch/) csomag és a [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) csomagot.
 
@@ -244,7 +244,7 @@ public static async Task PerformBatchOperations()
 }
 ```
 
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>Példa: egy Azure AD egyszerű szolgáltatás használatával a Batch .NET-tel
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>Példa: Egy Azure AD egyszerű szolgáltatás használatával a Batch .NET-tel
 
 Egy egyszerű szolgáltatást a Batch .NET-hitelesítésre, hivatkozhat a [Azure Batch .NET](https://www.nuget.org/packages/Azure.Batch/) csomag és a [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) csomagot.
 
@@ -311,7 +311,7 @@ public static async Task PerformBatchOperations()
     }
 }
 ```
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Példa: egy Azure AD egyszerű szolgáltatás használata a Batch Python
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Példa: Az Azure AD egyszerű szolgáltatás használata a Batch Python
 
 Egy egyszerű szolgáltatást a Batch Python-hitelesítésre, telepítse, és hivatkozni a [azure batch](https://pypi.org/project/azure-batch/) és [azure-közös](https://pypi.org/project/azure-common/) modulok.
 

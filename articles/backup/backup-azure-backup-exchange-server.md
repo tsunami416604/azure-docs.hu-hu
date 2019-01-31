@@ -2,18 +2,18 @@
 title: Exchange-kiszolgáló biztonsági mentése az Azure Backupba a System Center 2012 R2 DPM-mel
 description: Ismerje meg az Azure Backup használata a System Center 2012 R2 DPM biztonsági mentése az Exchange server
 services: backup
-author: adigan
-manager: NKolli1
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/19/2018
-ms.author: adigan
-ms.openlocfilehash: 7e95fa0cc6b5f9476df68ab44e5dbc8bb5432d52
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/31/2019
+ms.author: kasinh
+ms.openlocfilehash: ef976667ec580ea75dd1b8566c7bdddf35eeb0fc
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234454"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298313"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Exchange-kiszolgáló biztonsági mentése az Azure Backupba a System Center 2012 R2 DPM-mel
 Ez a cikk ismerteti a System Center 2012 R2 Data Protection Manager (DPM) kiszolgáló a Microsoft Exchange-kiszolgáló biztonsági mentése az Azure Backup konfigurálása.  
@@ -61,7 +61,7 @@ Az Exchange-kiszolgálón a DPM védelmi ügynök telepítéséhez kövesse az a
 
    * Rövid távú lemezes védelmet szeretnék.
    * Online védelmet szeretnék.
-6. Kattintson a **Tovább** gombra.
+6. Kattintson a **tovább**.
 7. Válassza ki a **Eseutil futtatása az adatok sértetlenségének ellenőrzéséhez** lehetőséget, ha azt szeretné, hogy az Exchange Server-adatbázisok sértetlenségének ellenőrzéséhez.
 
     Miután kiválasztotta ezt a beállítást, biztonsági mentés konzisztencia-ellenőrzést futni fog a DPM-kiszolgálón az i/o-forgalmat futtatásával elkerülése érdekében a **eseutil** parancsot az Exchange-kiszolgálón.
@@ -71,7 +71,7 @@ Az Exchange-kiszolgálón a DPM védelmi ügynök telepítéséhez kövesse az a
    > ![az Eseutil hiba](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Kattintson a **Tovább** gombra.
+8. Kattintson a **tovább**.
 9. Válassza ki az adatbázist a **másolásos biztonsági mentésre**, és kattintson a **tovább**.
 
    > [!NOTE]
@@ -110,11 +110,11 @@ Az Exchange-kiszolgálón a DPM védelmi ügynök telepítéséhez kövesse az a
 
 Online helyreállítási pontok a öt helyreállítási típusa van:
 
-* **Helyreállítás az eredeti Exchange-kiszolgáló:** fogja visszaállítani az adatokat az eredeti Exchange-kiszolgálón.
-* **Helyreállítás az Exchange-kiszolgáló egy másik adatbázisba:** fogja visszaállítani az adatokat egy másik Exchange server egy másik adatbázisba.
-* **Helyreállítás helyreállítási adatbázisba:** lesz az adatok állíthatók az Exchange helyreállítási adatbázis (RDB).
-* **Másolás hálózati mappába:** az adatokat egy hálózati mappába lesznek helyreállítva.
-* **Másolás szalagra:** egy szalagtárat vagy egy önálló szalagos meghajtót csatlakoztatott és a DPM-kiszolgálón konfigurálva van, ha a helyreállítási pont egy szabad szalag lesznek másolva.
+* **Helyreállítás az eredeti Exchange-kiszolgáló:** Az adatok az eredeti Exchange-kiszolgáló fogja visszaállítani.
+* **Helyreállítás egy másik adatbázisba egy Exchange-kiszolgálón:** Az adatok egy másik Exchange server egy másik adatbázisba lesznek helyreállítva.
+* **Helyreállítás helyreállítási adatbázisba:** Az adatokat az Exchange helyreállítási adatbázis (RDB) megtérülnek.
+* **Másolás hálózati mappába:** Az adatok egy hálózati mappába lesznek helyreállítva.
+* **Másolás szalagra:** Ha a szalagtárat vagy egy önálló szalagos meghajtót csatlakoztatott és a DPM-kiszolgálón konfigurálva van, a helyreállítási pont egy szabad szalagra kerül másolhatók.
 
     ![Online replikáció kiválasztása](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 

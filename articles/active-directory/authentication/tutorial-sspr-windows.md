@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 9375b042885459ab88b7c1f2a76a471da55ff5c8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209536"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474870"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 
@@ -32,7 +32,7 @@ Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérje
    * [Az Azure AD-hez csatlakoztatott](../device-management-azure-portal.md) vagy
    * [Hibrid Azure AD-hez csatlakoztatott](../device-management-hybrid-azuread-joined-devices-setup.md), a hálózati kapcsolat egy tartományvezérlőhöz.
 * Engedélyeznie kell az Azure AD önkiszolgáló jelszó-visszaállítás.
-* Ha a Windows 10 rendszerű eszközök proxykiszolgálót vagy tűzfal mögé, hozzá kell adnia az URL-címeket, `passwordreset.microsoftonline.com` és `ajax.aspnet.cdn.com` a HTTPS-forgalom (a 443-as port) engedélyezett URL-címek listájához.
+* Ha a Windows 10 rendszerű eszközök proxykiszolgálót vagy tűzfal mögé, hozzá kell adnia az URL-címeket, `passwordreset.microsoftonline.com` és `ajax.aspnetcdn.com` a HTTPS-forgalom (a 443-as port) engedélyezett URL-címek listájához.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával
 

@@ -1,5 +1,5 @@
 ---
-Cím: Application lifecycle management titleSuffix: Azure Machine Learning Studio description: Application Lifecycle Management ajánlott eljárások az Azure Machine Learning Studio szolgáltatásban a alkalmazni: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Application lifecycle management titleSuffix: Azure Machine Learning Studio description: Application Lifecycle Management ajánlott eljárások az Azure Machine Learning Studio szolgáltatásban a alkalmazni: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date: 10/27/2016
 ---

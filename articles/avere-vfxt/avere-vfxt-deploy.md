@@ -4,162 +4,164 @@ description: Az Azure-ban a Avere vFXT fürt telepítése
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 8e265f2bed480f7b40476e09ab8f442aedcc9dd4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: da329b5c50fe7c39d9773743b40c2f990e298963
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999453"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296375"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
-A legegyszerűbben úgy vFXT fürt létrehozása az Azure-ban, hogy egy fürt tartományvezérlő használata. A fürt vezérlő egy virtuális Gépet, amely tartalmazza a szükséges szkriptek, a sablonok és a szoftverfrissítési infrastruktúrát hozhat létre és kezelhet a vFXT fürt.
+Ez az eljárás végigvezeti az Azure piactéren elérhető a telepítési varázsló használatával. A varázsló automatikusan üzembe helyezi a fürtöt az Azure Resource Manager-sablon használatával. Után adja meg a paramétereket a képernyőn, és kattintson a **létrehozás**, az Azure automatikusan elvégzi a következő lépéseket: 
 
-Ezeket a lépéseket egy új vFXT-fürt üzembe helyezésekor tartalmazza:
-
-1. [A fürt vezérlő létrehozása](#create-the-cluster-controller-vm).
-1. Ha az Azure Blob storage, [hozzon létre egy storage-végpont](#create-a-storage-endpoint-if-using-azure-blob) a virtuális hálózaton.
-1. [Csatlakozás a fürthöz vezérlő](#access-the-controller). A fürt vezérlő virtuális Gépet a többi ezeket a lépéseket kell elvégezni. 
-1. [A hozzáférés-szerepkör létrehozásához](#create-the-cluster-node-access-role) a fürtcsomópontok. A prototípust biztosítunk.
-1. [A fürt létrehozási parancsfájl testreszabása](#edit-the-deployment-script) típusának megfelelő vFXT fürtöt szeretne létrehozni.
-1. [Hajtsa végre a fürt létrehozási parancsprogrammal](#run-the-script).
-
-Fürt telepítés lépéseit, valamint a tervezési kapcsolatos további információkért olvassa el a [megtervezése a Avere vFXT rendszer](avere-vfxt-deploy-plan.md) és [üzembe helyezés – áttekintés](avere-vfxt-deploy-overview.md). 
+* Hozza létre a fürt vezérlőt, amely egy egyszerű virtuális gép, amely tartalmazza a szoftver telepítéséhez és a fürt kezeléséhez szükséges.
+* Állítsa be az erőforráscsoport és a virtuális hálózati infrastruktúrát, beleértve az új elemek létrehozása, ha szükséges.
+* Csomópont virtuális gépek a fürt létrehozásához, és konfigurálja őket az Avere fürtként.
+* Ha a rendszer kéri, hozzon létre egy új Azure Blob-tárolót, és azt konfigurálja a fürt alapvető filer.
 
 Ez a dokumentum utasításait követve, miután egy virtuális hálózat, alhálózat, egy tartományvezérlő és egy vFXT fürtöt az alábbi ábrán látható módon fog rendelkezni:
 
 ![virtuális hálózat nem kötelező a blob storage és a egy három tartalmazó alhálózat tartalmazó bemutató ábra. Ez vFXT csomópontok/vFXT fürt és a egy virtuális gép címkével rendelkező fürt vezérlő címkével ellátott virtuális gépek vannak csoportosítva.](media/avere-vfxt-deployment.png)
 
-Mielőtt elkezdené, győződjön meg arról, hogy foglalkoztak az Előfeltételek:  
+A fürt létrehozását követően kell [hozzon létre egy storage-végpont](#create-a-storage-endpoint-if-using-azure-blob) a virtuális hálózaton, ha a Blob storage használatával. 
+
+Mielőtt az létrehozása sablon használatával ellenőrizze, rendelkezik az Előfeltételek címezni:  
 
 1. [Új előfizetés](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [Előfizetés tulajdonosi engedélyekkel](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [A vFXT fürt kvóta](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
+1. [Egyéni hozzáférési szerepkörök](avere-vfxt-prereqs.md#create-access-roles) -létre kell hoznia egy szerepköralapú hozzáférés-vezérlési szerepkör hozzárendelése a fürtcsomópontok. Lehetősége van is létre kell hoznia egy egyéni hozzáférés szerepkört a fürt vezérlő, de a felhasználók többsége az alapértelmezett tulajdonosi szerepkört, amely megfelelő vezérlő jogosultságot ad az egy erőforráscsoport-tulajdonosnak vesz igénybe. Olvasási [beépített szerepkörök az Azure-erőforrások](../role-based-access-control/built-in-roles.md#owner) további részleteket talál.
 
-Igény szerint hozhat létre a fürtszerepkör csomópont [előtt](avere-vfxt-pre-role.md) megtehetjük ezt követően egyszerűbb létrehozása a fürt vezérlő, de.
+Fürt telepítés lépéseit, valamint a tervezési kapcsolatos további információkért olvassa el a [megtervezése a Avere vFXT rendszer](avere-vfxt-deploy-plan.md) és [üzembe helyezés – áttekintés](avere-vfxt-deploy-overview.md).
 
-## <a name="create-the-cluster-controller-vm"></a>A fürt vezérlő virtuális gép létrehozása
+## <a name="create-the-avere-vfxt-for-azure"></a>Az Azure a Avere vFXT létrehozása
 
-Az első lépés, ha a virtuális gép létrehozása és konfigurálása a vFXT fürtcsomópontok. 
+Hozzáférés a létrehozás sablon Avere keresése, és válassza a "Avere vFXT az Azure-beli" az Azure Portalon. <!-- xxx update if that name changes xxx --> 
 
-A fürt vezérlő Linux rendszerű virtuális gép a Avere vFXT fürtszoftver létrehozása és a parancsfájlok előre telepítve. Nem kell jelentős feldolgozási teljesítmény vagy a tárolási terület, így választhat, hogy olcsó beállítások. Ez a virtuális gép időnként a vFXT fürt teljes élettartama során fogja használni.
+<!-- **[XXX need production image of template deploy in search and/or entry page of template deploy XXX]** -->
 
-A fürt vezérlő virtuális gép létrehozása két módszer áll rendelkezésre. Egy [Azure Resource Manager-sablon](#create-controller---arm-template) biztosított [alábbi](#create-controller---arm-template) egyszerűsítése érdekében a folyamat, de Ön is létrehozhat a vezérlőt a [Azure Piactéri lemezképhez](#create-controller---azure-marketplace-image). 
+Kattintson a **létrehozás** megkezdéséhez. 
 
-Létrehozhat egy új erőforráscsoportot, a tartományvezérlő létrehozásának részeként.
+![A központi telepítési sablon bemutató első oldalán az Azure Marketplace-en](media/avere-vfxt-deploy-first.png)
+
+A sablon oszlik négy lépést – két információgyűjtés oldalát, és a érvényesítése és a megerősítés lépéseket. 
+
+* Az oldalon a fürt vezérlő virtuális gép beállításainak összpontosít. 
+* Két lap összegyűjti a paramétereket a fürt és a kapcsolódó erőforrásokhoz, mint az alhálózatok és a tároló létrehozásához. 
+* Oldal három összefoglalja azokat a beállításokat, és érvényesíti a konfigurációt. 
+* Lap négy szoftverfrissítési feltételek és kikötések ismerteti, és lehetővé teszi, hogy a Fürtlétrehozási folyamat elindításához. 
+
+## <a name="page-one-parameters---cluster-controller-information"></a>Egy paraméter - fürt adatokat lapon
+
+Az első oldalán a központi telepítési sablont a fürt vezérlő adatokat gyűjt. 
+
+![Első oldalán a központi telepítési sablon](media/avere-vfxt-deploy-1.png)
+
+Töltse ki a következő információkat:
+
+* **Fürt vezérlőnév** -állítsa a fürt vezérlő virtuális gép nevét.
+
+* **Vezérlő felhasználónév** – töltse ki a legfelső szintű felhasználónevet, a fürt vezérlő virtuális Gépet. 
+
+* **Hitelesítési típus** – válassza a jelszó vagy SSH nyilvános kulcsos hitelesítés, a vezérlő való kapcsolódáshoz. Az SSH nyilvános kulcs módszer javasolt; olvassa el [hogyan hozhat létre és használhat SSH-kulcsokat](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Ha segítségre van szüksége.
+
+* **Jelszó** vagy **nyilvános SSH-kulcs** – attól függően, a kiválasztott hitelesítési típus, meg kell adnia egy nyilvános RSA-kulcs vagy egy jelszót, a következő mezőket. Ezt a hitelesítő adatot használnak a korábban megadott felhasználónév.
+
+* **Avere fürt létrehozása a szerepkör-azonosító** -használja ezt a mezőt a hozzáférés-vezérlő szerepkör a fürt vezérlő megadásához. Az alapértelmezett érték: a beépített szerepkör [tulajdonosa](../role-based-access-control/built-in-roles.md#owner). A fürt erőforráscsoport tulajdonosi jogosultságokkal a fürt vezérlő korlátozódnak. 
+
+  A globálisan egyedi azonosító, a szerepkör kell használnia. Az alapértelmezett érték (tulajdonos) a GUID 8e3af657-a8ff – 443-as c-a75c-2fe8c4bcb635. A GUID egy egyéni szerepkör, használja ezt a parancsot: 
+
+  ```azurecli
+  az role definition list --query '[*].{roleName:roleName, name:name}' -o table --name 'YOUR ROLE NAME'
+  ```
+
+* **Előfizetés** – válassza ki az előfizetést a Avere vFXT. 
+
+* **Erőforráscsoport** – válassza ki az erőforráscsoportot a Avere vFXT fürthöz, vagy kattintson az "Új létrehozása", és adjon meg egy új erőforráscsoport-nevet. 
+
+* **Hely** – válassza ki a fürt és -erőforrások Azure helyét.
+
+Kattintson a **OK** befejezésekor. 
+
+> [!NOTE]
+> Ha azt szeretné, hogy a fürt tartományvezérlőt, a nyilvános IP-címet beállítani, hozzon létre egy új virtuális hálózatot a fürthöz a meglévő hálózat kiválasztása helyett. Ez a beállítás van két oldalon.
+
+## <a name="page-two-parameters---vfxt-cluster-information"></a>Oldal két paraméter – vFXT fürt adatai
+
+A második oldalán a központi telepítési sablont a fürt mérete, a csomópont típusa, a gyorsítótár mérete és a storage paraméterek, más beállítások megadását teszi lehetővé. 
+
+![A központi telepítési sablont második lapján](media/avere-vfxt-deploy-2.png)
+
+* **Avere vFXT fürtcsomópontok számának** – válassza ki a fürtben található csomópontok számát. Legalább három csomóponttal, a maximális tizenkét. 
+
+* **Fürt felügyeleti jelszó** -fürt felügyeleti a jelszavát. Ez a jelszó felhasználónév együtt használható ```admin``` való bejelentkezéshez a fürt Vezérlőpult-beállítások konfigurálása és a fürt monitorozására.
+
+* **Műveletek fürtszerepkör Avere** – adja meg a fürt csomópontjai a hozzáférés-vezérlő szerepkör nevét. Ez az előfeltétel-ellenőrzési lépésben létrehozott egyéni szerepkör. 
+
+  A példában leírt [hozza létre a fürt csomópont hozzáférés szerepkört](avere-vfxt-prereqs.md#create-the-cluster-node-access-role) menti a fájlt az ```avere-operator.json``` és a megfelelő szerepkör neve ```avere-operator```.
+
+* **Avere vFXT fürtnév** – adjon meg egy egyedi nevet a fürt. 
+
+* **Méret** – adja meg a fürt csomópontjainak létrehozásakor a virtuális gép típusát. 
+
+* **Gyorsítótár mérete csomópontonként** – a fürt gyorsítótár megoszlik a fürtcsomópontok között, így a gyorsítótár teljes mérete a Avere vFXT fürtön a gyorsítótár méretét a csomópontok számát megszorozva csomópontonként lesz. 
+
+  Az ajánlott konfiguráció, hogy 1 TB-os csomópontonként, ha használja Standard_D16s_v3 fürtcsomópontokat, valamint 4 TB-os használhat csomópontonként, ha Standard_E32s_v3 csomópontok használatával.
+
+* **Virtuális hálózat** – válassza ki a helyet adhat a fürtöt egy meglévő vnetet, vagy hozzon létre egy új virtuális hálózat határozza meg. 
+
+  > [!NOTE]
+  > Ha létrehoz egy új virtuális hálózat, a fürt vezérlő lesz nyilvános IP-cím, hogy az új magánhálózati elérheti. Ha úgy dönt, hogy egy meglévő vnetet, a fürt vezérlő nélkül nyilvános IP-címmel van konfigurálva. 
+  > 
+  > A fürt vezérlőn egy nyilvánosan látható IP-címet biztosít egyszerűbb hozzáférést a vFXT fürthöz, de kisebb biztonsági kockázatot. 
+  >  * A fürt vezérlőn nyilvános IP-cím lehetővé teszi a Avere vFXT fürtöt a saját alhálózatán kívülről kapcsolódni a jump-gazdagépként használja.
+  >  * Nincs beállítva egy nyilvános IP-címet a vezérlőn, ha egy másik jump host, egy VPN-kapcsolat vagy ExpressRoute kell használnia, aki a fürtöt. Hozzon létre például a vezérlő, amely már rendelkezik egy VPN-kapcsolat konfigurálása virtuális hálózat része.
+  >  * Ha egy vezérlő hoz létre egy nyilvános IP-címmel, a tartományvezérlő virtuális gép egy hálózati biztonsági csoporttal kell védeni. Alapértelmezés szerint a Avere vFXT az Azure-beli egy hálózati biztonsági csoportot hoz létre, és korlátozza a bejövő hozzáférést csak a 22-es nyilvános IP-címekkel rendelkező vezérlők portot. További védelmet biztosíthat a rendszer zárolja a forrás az IP-címek – való hozzáférés, kapcsolatok engedélyezése csak a fürt hozzáféréshez használni kívánt gépeket.
+
+* **Alhálózat** – válasszon egy alhálózatot a meglévő virtuális hálózatból, vagy hozzon létre egy újat. 
+
+* **Blob storage használata** -e hozzon létre egy új Azure-blobtárolót és azt konfigurálja az új Avere vFXT fürthöz háttér-tároló kiválasztása. Ha egy új tárolót, meg kell adnia a tárfiók a tároló. Ha nem kíván az hozzon létre egy új blobtárolót a fürt létrehozása után kell csatolnia storage (olvasása [tárolás konfigurálása](avere-vfxt-add-storage.md) útmutatást). Adja meg a mezőben **hamis** Ha nem szeretné, hogy hozzon létre egy új tárolót.
+
+* **Storage-fiók** – Ha egy új Azure Blob-tároló létrehozásához adja meg a tárfiók nevét. A storage-fiók általános jogú általános célú V2 fiók helyileg redundáns tárolás és a gyakori elérésű hozzáférési szint konfigurálva kell lennie. A [konfigurálta a tárterületet](avere-vfxt-add-storage.md#azure-storage-cloud-core-filer) a cikk részletesen ismerteti a storage-fiókra vonatkozó követelmények.
+
+## <a name="validation-and-purchase"></a>Érvényesítési és megvásárlása
+
+Három lap lehetővé teszi a konfiguráció összegzése, és érvényesíti a paramétereket. Miután az érvényesítés sikeres, kattintson a **OK** gombra a folytatáshoz. 
+
+![A központi telepítési sablon - ellenőrzési harmadik oldalán](media/avere-vfxt-deploy-3.png)
+
+Négy lapon kattintson a **létrehozás** gombra kattintva fogadja el a feltételeket, és hozzon létre a Avere vFXT az Azure-fürtben. 
+
+![A központi telepítési sablon – használati feltételeket, a negyedik oldal létrehozása gomb](media/avere-vfxt-deploy-4.png)
+
+Fürt üzembe helyezése a 15-20 percet vesz igénybe.
+
+## <a name="gather-template-output"></a>Gyűjtsön kimeneteket a sablon
+
+Befejeztével a Avere vFXT sablon létrehozása a fürt, az új fürt néhány fontos információt jelenít meg. 
 
 > [!TIP]
->
-> Döntse el, egy nyilvános IP-címet használja a fürt vezérlőn kell-e. Nyilvános IP-címet biztosít egyszerűbb hozzáférést a vFXT fürthöz, de kisebb biztonsági kockázatot.
->
->  * A fürt vezérlőn nyilvános IP-cím lehetővé teszi a Avere vFXT fürtöt a saját alhálózatán kívülről kapcsolódni a jump-gazdagépként használja.
->  * Nincs beállítva egy nyilvános IP-címet a vezérlőn, ha egy másik jump host, egy VPN-kapcsolat vagy ExpressRoute kell használnia, aki a fürtöt. Hozzon létre például a vezérlő, amely rendelkezik egy VPN-kapcsolat konfigurálása virtuális hálózat része.
->  * Ha egy vezérlő hoz létre egy nyilvános IP-címmel, a tartományvezérlő virtuális gép egy hálózati biztonsági csoporttal kell védeni. Hozzáférés engedélyezése csak az internet-hozzáférést biztosítania a 22-es porton keresztül.
+> Ellenőrizze, hogy a felügyeleti IP-cím másolása a sablon kimeneti. Ez a cím a fürt felügyeletéhez szükséges.
 
-### <a name="create-controller---resource-manager-template"></a>Vezérlő – Resource Manager-sablon létrehozása
+Ezek az információk megkereséséhez kövesse ezt az eljárást:
 
-Vezérlő csomópont létrehozása a Portalról, kattintson az alábbi "Üzembe helyezése az Azure-bA" gombra. Ez az üzembe helyezése sablon létrehozza a virtuális gép által pedig létrehozza és felügyeli a Avere vFXT fürt.
+1. Nyissa meg az erőforráscsoport, a fürt vezérlő.
 
-[![gomb vezérlő létrehozása](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fazuredeploy.json)
+1. A bal oldali menüjében kattintson **központi telepítések**, majd **microsoft-avere.vfxt-sablon**.
 
-Adja meg a következő információkat.
+   ![Erőforráscsoport portáloldalán a bal és a egy táblát a központi telepítés nevét megjelenítő microsoft-avere.vfxt-sablon a kiválasztott központi telepítések](media/avere-vfxt-outputs-deployments.png)
 
-Az a **ALAPSZINTŰ** szakaszban:  
+1. A bal oldali menüjében kattintson **kimenetek**. Az értékek másolásához a mezőkben. 
 
-* **Előfizetés** a fürt
-* **Erőforráscsoport** a fürt 
-* **Hely** 
+   ![lap ábrázoló SSHSTRING, RESOURCE_GROUP, hely, NETWORK_RESOURCE_GROUP, hálózat, ALHÁLÓZAT, SUBNET_ID, VSERVER_IPs és MGMT_IP jobb oldalán a címkék mezőkben szereplő értékek kimenete](media/avere-vfxt-outputs-values.png)
 
-Az a **beállítások** szakaszban:
-
-* E egy új virtuális hálózat létrehozása
-
-  * Ha létrehoz egy új virtuális hálózat, a fürt vezérlő rendeli egy nyilvános IP-címet, hogy elérhetővé válik. A hálózati biztonsági csoport is létrejön a virtuális hálózat, amely korlátozza a bejövő forgalmat csak a 22-es portot.
-  * Ha szeretne ExpressRoute vagy VPN használatával csatlakozhat a fürthöz vezérlő, ezt az értéket `false` , és adja meg egy meglévő vnetet a fennmaradó mezőket. A fürt vezérlő fogja használni a virtuális hálózatok közötti hálózati kommunikációhoz. 
-
-* Virtuális hálózati erőforrás-csoport neve és alhálózati név – írja be a meglévő erőforrások nevét (Ha egy meglévő virtuális hálózat használatával), vagy írja be az új neveket, ha egy új virtuális hálózat létrehozása
-* **Vezérlő neve** – a vezérlő virtuális gép nevének megadása
-* Vezérlő rendszergazdai jogosultságú felhasználónevet – az alapértelmezett érték `azureuser`
-* SSH-kulcsot – a nyilvános kulcs beillesztése társítása a rendszergazdai jogosultságú felhasználónevet. Olvasási [hogyan hozhat létre és használhat SSH-kulcsokat](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Ha segítségre van szüksége.
-
-A **feltételek és kikötések**: 
-
-* Olvassa el a szolgáltatási feltételeket, és jelölje be a jelölőnégyzetet, hogy fogadja el őket. 
-
-  > [!NOTE] 
-  > Ha nem egy előfizetés tulajdonosa, rendelkezik egy olyan tulajdonost, fogadja el a feltételeket, a-ben, az alábbi előfeltételként felsorolt lépéseket [elfogadására szoftver előre](avere-vfxt-prereqs.md#accept-software-terms-in-advance). 
-
-
-Kattintson a **beszerzési** befejezésekor. Az öt vagy hat perccel később a vezérlő csomópont lesz üzembe helyezéséig.
-
-A kimenetek oldalán kell gyűjtenie az adatokat a fürt létrehozásához szükséges. Olvasási [a fürt létrehozásához szükséges adatok](#information-needed-to-create-the-cluster) további.
-
-### <a name="create-controller---azure-marketplace-image"></a>Vezérlő – Azure Marketplace-rendszerkép létrehozása
-
-Keresse meg a vezérlő sablon nevét az Azure piactéren való kereséssel ``Avere``. Válassza ki a **Avere vFXT Azure vezérlő** sablont.
-
-Ha még nem tette meg, fogadja el a feltételeket, és a Piactéri lemezképhez programozott hozzáférés engedélyezése ehhez kattintson a "kíván üzembe helyezni a programozott módon?" alatti hivatkozásra a **létrehozás** gombra.
-
-![Képernyőkép a programozás alapú hozzáférést, amely nem éri a Létrehozás gombra mutató hivatkozás](media/avere-vfxt-deploy-programmatically.png)
-
-Kattintson a **engedélyezése** gombra, és a beállítás mentéséhez.
-
-![Képernyőkép – bemutató kattintásra programozott hozzáférés engedélyezése](media/avere-vfxt-enable-program.png)
-
-A fő lapján, térjen vissza a **Avere vFXT Azure vezérlő** sablonnal, majd kattintson **létrehozás**. 
-
-Az első panelen adja meg, illetve erősítse meg az alapvető beállításokkal:
-
-* **Előfizetés**
-* **Erőforráscsoport** (adjon meg egy új nevet, ha szeretne létrehozni egy új csoportot.)
-* **A virtuális gép neve** – a vezérlő neve
-* **Régió**
-* **Rendelkezésre állási beállítások** -redundancia, nem szükséges
-* **Kép** -Avere vFXT vezérlő csomópont lemezképével
-* **Méret** – hagyja meg az alapértelmezett, vagy válasszon másik költségkímélő típust
-* **Rendszergazdai fiók** – a fürt vezérlő való bejelentkezés beállítása: 
-  * Válassza a felhasználónév/jelszó vagy SSH nyilvános kulcs (ajánlott).
-  
-    > [!TIP] 
-    > SSH-kulcs használata biztonságosabb. Olvasási [hogyan hozhat létre és használhat SSH-kulcsokat](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Ha segítségre van szüksége. 
-  * Adja meg a felhasználónevet 
-  * Illessze be az SSH-kulcs, vagy adja meg, és erősítse meg a jelszót
-* **Bejövőport-szabályok** – Ha egy nyilvános IP-cím, port megnyitása a 22-es (SSH) használatával
-
-Kattintson a **tovább** lemez beállításainak megadása:
-
-* **Írja be az operációs rendszer lemezén** -HDD alapértelmezett értéke elegendő
-* **Nem felügyelt lemezek használata** – nem szükséges
-* **Adatlemezek** – ne használja
-
-Kattintson a **tovább** a hálózati beállításokat:
-
-* **Virtuális hálózat** – válassza ki a vezérlőhöz tartozó virtuális hálózat, vagy adjon meg egy nevet, egy új virtuális hálózat létrehozásához. Ha nem szeretné használni egy nyilvános IP-címet a vezérlő, fontolja meg, keresse meg az expressroute-on vagy a már beállított egy másik hozzáférési módszer rendelkező virtuális hálózaton belül.
-* **Alhálózat** -alhálózatát (nem kötelező) a virtuális hálózaton belül. Ha létrehoz egy új virtuális hálózat, létrehozhat egy új alhálózatot egy időben.
-* **Nyilvános IP-cím** – Ha azt szeretné, egy nyilvános IP-címet használja, megadhatja azt itt. 
-* **Hálózati biztonsági csoport** – ne módosítsa az alapértelmezett (**alapszintű**) 
-* **Nyilvános bejövő portok** – Ha egy nyilvános IP-címet használja az Ez a vezérlő használatával engedélyezze a hozzáférést az SSH-forgalmat. 
-* **A gyorsított hálózatkezelés** a virtuális gép nem érhető el.
-
-Kattintson a **tovább** felügyeleti beállítások megadása:
-
-* **Rendszerindítási diagnosztika** -váltson **kikapcsolása**
-* **Az operációs rendszer Vendég diagnosztikai** -hagyja le van tiltva
-* **Diagnosztikai tárfiók** – szükség esetén válasszon vagy adjon meg egy új fiókot diagnosztikai adatainak tárolására.
-* **Felügyeltszolgáltatás-identitás** – ezt a lehetőséget, módosítsa **a**, ami létrehoz egy Azure AD egyszerű szolgáltatásnév a fürt vezérlő.
-* **Automatikus leállítási** -hagyja 
-
-Ezen a ponton kattinthat **felülvizsgálat + létrehozása** Ha nem szeretné, hogy példány címkék használata. Ellenkező esetben kattintson a **tovább** kétszer, amellyel kihagyhatja a **Vendég config** lapon és a címkék a lap. Ha nincs elkészült, kattintson **felülvizsgálat + létrehozása**. 
-
-Után ellenőrzi a beállításokat, kattintson a **létrehozás** gombra.  
-
-Létrehozás az öt vagy hat percet vesz igénybe.
 
 ## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>Hozzon létre egy storage-végponthoz (Ha használja az Azure Blob)
 
-Ha a a háttér-adatokat tároló Azure Blob storage használ, létre kell hoznia egy tárolási végpontot a virtuális hálózaton. Ez [szolgáltatásvégpont](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) tartja azt az interneten keresztüli útválasztást helyett helyi Azure Blob-forgalmat.
+Ha a a háttér-adatokat tároló Azure Blob storage használ, létre kell hoznia egy tárolási végpontot a virtuális hálózaton. Ez [szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) tartja azt az interneten keresztüli útválasztást helyett helyi Azure Blob-forgalmat.
 
 1. A portálon kattintson **virtuális hálózatok** a bal oldalon.
 1. Válassza ki a vezérlőhöz tartozó virtuális hálózat. 
@@ -170,151 +172,6 @@ Ha a a háttér-adatokat tároló Azure Blob storage használ, létre kell hozni
 
   ![Jegyzetekkel lépéseit a szolgáltatásvégpont létrehozása az Azure portal képernyőképe](media/avere-vfxt-service-endpoint.png)
 
-## <a name="information-needed-to-create-the-cluster"></a>A fürt létrehozásához szükséges információk
-
-Miután létrehozta a fürt vezérlő, ellenőrizze, hogy a következő lépésekhez szükséges információkat. 
-
-A vezérlő való kapcsolódáshoz szükséges adatokat: 
-
-* Vezérlő felhasználónév és SSH-kulcs (vagy jelszó)
-* Vezérlő IP-címét vagy más módszerrel, a vezérlő virtuális Géphez való kapcsolódáshoz
-
-A fürt számára szükséges információkat: 
-
-* Erőforráscsoport neve
-* Azure-beli hely 
-* Virtuális hálózat neve
-* Alhálózat neve
-* Fürtcsomópont szerepkör neve – Ez a név van beállítva, a szerepkör leírt létrehozásakor [alatt](#create-the-cluster-node-access-role)
-* Storage-fiók neve, ha egy Blob-tároló létrehozása
-
-A vezérlő csomópont a Resource Manager-sablon használatával hozta létre, ha az információkat kaphat a [sablonjának kimenete](#find-template-output). 
-
-Ha a vezérlő létrehozásához használt az Azure Marketplace-beli rendszerképét, közvetlenül megadott ezeket az elemeket a legtöbb. 
-
-Keresse meg a hiányzó elemek a tartományvezérlő virtuális gép információkat tartalmazó oldal megnyitásával. Kattintson például **összes erőforrás** , és keresse meg a vezérlő nevét, majd kattintson a vezérlő nevét a részletek megtekintéséhez.
-
-### <a name="find-template-output"></a>Keresse meg a sablon kimeneti
-
-Ezt az információt a Resource Manager sablon kimeneti megkereséséhez kövesse ezt az eljárást:
-
-1. Nyissa meg az erőforráscsoport, a fürt vezérlő.
-
-1. A bal oldali menüjében kattintson **központi telepítések**, majd **Microsoft.Template**.
-
-   ![Erőforráscsoport portál oldalán a központi telepítések kiválasztva a bal oldalon Microsoft.Template bemutató. Ez egy táblázat a központi telepítés neve](media/avere-vfxt-deployment-template.png)
-
-1. A bal oldali menüjében kattintson **kimenetek**. Az értékek másolásához a mezőkben. 
-
-   ![SSHSTRING, RESOURCE_GROUP, hely, hálózat, ALHÁLÓZAT és SUBNET_ID mezők címkéinek jobbra látható a lap kimenete](media/avere-vfxt-template-outputs.png)
-
-## <a name="access-the-controller"></a>A tartományvezérlő hozzáférés
-
-Ehhez a központi telepítés a többi, szeretne csatlakozni a fürthöz vezérlő.
-
-1. A metódus a fürt vezérlő csatlakozni konfigurációtól függ.
-
-   * Kell-e a vezérlő egy nyilvános IP-cím SSH a rendszergazdai jogosultságú felhasználónevet, a tartományvezérlő IP-Címének beállítása (például ``ssh azureuser@40.117.136.91``).
-   * Ha a tartományvezérlő nincs nyilvános IP-cím, használja a VPN vagy [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) a virtuális hálózatok közötti kapcsolat.
-
-1. A bejelentkezés után a tartományvezérlőre, amely hitelesíteni futtatásával `az login`. A hitelesítési kód megadására a rendszerhéj megadott másolja, majd egy webes böngésző használatával tölthet [ https://microsoft.com/devicelogin ](https://microsoft.com/devicelogin) és a Microsoft-rendszer a hitelesítéshez. Térjen vissza a rendszerhéj megerősítést.
-
-   ![A megjelenítés, a böngésző hivatkozásra, és a hitelesítési kódot "AZ login" parancs parancssori kimenet](media/avere-vfxt-azlogin.png)
-
-1. Adja hozzá az előfizetés az előfizetési azonosító használatával Ez a parancs futtatásával:  ```az account set --subscription YOUR_SUBSCRIPTION_ID```
-
-## <a name="create-the-cluster-node-access-role"></a>A fürt csomópont hozzáférés szerepkör létrehozása
-
-> [!NOTE] 
-> * Ha Ön nem egy előfizetés tulajdonosa, és a szerepkör még nem hozott létre, kövesse az alábbi lépéseket, vagy az eljárással az előfizetés tulajdonosa van [Avere vFXT fürt modul hozzáférés szerepkör nélkül a tartományvezérlő létrehozása](avere-vfxt-pre-role.md).
-> 
-> * A Microsoft belső felhasználók "Avere fürt-futtatókörnyezet operátor" nevű kísérlet helyett a meglévő szerepkör segítségével hozzon létre egyet. 
-
-[Szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) révén a vFXT fürtcsomópontok engedély szükséges feladatok végrehajtásához.  
-
-Normál vFXT fürt művelet részeként egyéni vFXT elvégzésére van szükség, olvassa el az Azure erőforrás-tulajdonságok, tárhely kezelése és más csomópontok hálózatiadapter-beállítások felügyelete. 
-
-1. A tartományvezérlőn nyissa meg a ``/avere-cluster.json`` fájlt valamelyik szerkesztőben.
-
-   ![a list parancs, és a "vi /avere-cluster.json" megjelenítő konzol](media/avere-vfxt-open-role.png)
-
-1. Szerkessze a fájlt meg előfizetési azonosítóját, és törölje a sor fölé. Mentse a fájlt az ``avere-cluster.json``.
-
-   ![Szövegszerkesztőben az előfizetés-azonosító és a "távolítsa el ezt a sort" törlésre kiválasztott megjelenítő konzol](media/avere-vfxt-edit-role.png)
-
-1. Ez a parancs használatával hozza létre a szerepkört:  
-
-   ```bash
-   az role definition create --role-definition /avere-cluster.json
-   ```
-
-A szerepkör nevét, továbbítja a fürt létrehozási parancsprogrammal a következő lépésben. 
-
-## <a name="create-nodes-and-configure-the-cluster"></a>Csomópont létrehozása és a fürt konfigurálása
-
-A Avere vFXT fürt létrehozásához, szerkessze a minta parancsprogramok a vezérlő tartalmazza, és ott futtathatja. Mintaszkriptek gyökérkönyvtárában található (`/`) a fürt vezérlőn.
-
-* Ha azt szeretné, hogy hozzon létre egy blobtárolót a Avere vFXT háttér-tárolási rendszert használja, használja a ``create-cloudbacked-cluster`` parancsfájlt.
-
-* Később hozzáadhat tárolási, használja a ``create-minimal-cluster`` parancsfájlt.
-
-> [!TIP]
-> Csomópontok hozzáadása és megsemmisítése a vFXT fürt prototípus-parancsfájlok is szerepelnek a `/` könyvtárat a fürt vezérlő virtuális Gépet.
-
-### <a name="edit-the-deployment-script"></a>Az üzembe helyezési parancsfájl szerkesztése
-
-Egy szövegszerkesztővel nyissa meg a minta parancsfájl. A testre szabott parancsfájl mentése más néven az eredeti minta felülírásának elkerülése érdekében érdemes.
-
-Adja meg az értékeket a parancsfájl-változókat.
-
-* Erőforráscsoport neve
-
-  * Ha hálózati vagy tárolási összetevők, amelyek eltérő erőforráscsoportokban vannak, állítsa vissza a változót, és adja meg ezeket a neveket is. 
-
-```python
-# Resource groups
-# At a minimum specify the resource group.  If the network resources live in a
-# different group, specify the network resource group.  Likewise for the storage
-# account resource group.
-RESOURCE_GROUP=
-#NETWORK_RESOURCE_GROUP=
-#STORAGE_RESOURCE_GROUP=
-```
-
-* Hely neve
-* Virtuális hálózat neve
-* Alhálózat neve
-* Az Azure AD modul szerepkör neve – Ha követte a példában a [hozza létre a fürt csomópont hozzáférés szerepkört](#create-the-cluster-node-access-role), használjon ``avere-cluster``. 
-* Tárfiók neve (Ha egy új Blob-tároló létrehozása)
-* Fürt neve – a két vFXT fürt ugyanazzal a névvel nem lehet ugyanabban az erőforráscsoportban. Adjon meg egy egyedi nevet az ajánlott eljárás minden egyes fürt.
-* Rendszergazdai jelszó – válasszon egy biztonságos jelszót a monitorozási és a fürt felügyeletéhez. Ezt a jelszót a felhasználóhoz rendelt ``admin``. 
-* Csomóponttípus-példány – lásd: [vFXT csomópontméretűek](avere-vfxt-deploy-plan.md#vfxt-node-sizes) információ
-* Csomópont-gyorsítótár mérete – lásd: [vFXT csomópontméretűek](avere-vfxt-deploy-plan.md#vfxt-node-sizes) információ
-
-Mentse a fájlt, és a kilépési.
-
-### <a name="run-the-script"></a>A szkript futtatása
-
-A parancsfájl futtatásához írja be a filename hozott létre. (Példa: `./create-cloudbacked-cluster-west1`)  
-
-> [!TIP]
-> Fontolja meg ezt a parancsot belül futtatja egy [multiplexer terminálon](http://linuxcommand.org/lc3_adv_termmux.php) például `screen` vagy `tmux` abban az esetben a kapcsolat megszakadását.  
-
-A kimenet is a rendszer naplózza `~/vfxt.log`.
-
-Miután a parancsfájl futása befejeződött, a felügyeleti IP-cím másolásához, szükség van az fürt felügyeleti.
-
-![A szkript végén a felügyeleti IP-cím megjelenítése a parancssori kimenet](media/avere-vfxt-mgmt-ip.png)
-
-> [!IMPORTANT] 
-> Ha létrehozott egy új Blob-tárolóba, azt titkosítva, amelyek a rendszer nem menti a fürtön kívüli alapértelmezett kulccsal. A tároló adatait tárolja, mielőtt kell töltse le a kulcs-helyreállítási, vagy hozzon létre saját titkosítási kulcsot, és mentse a helyreállítási fájlt egy állandó helyre. 
-> 
-> Ha anélkül, hogy a helyreállítás-fájljának letöltése az alapértelmezett kulcsot használ, akkor lehet elveszíti hozzáférését a titkosított adatok a Blob core filer, ha a vFXT fürt megsemmisül vagy elveszett.
->
-> Ha a parancsfájl bemutatja `WARNING` üzeneteket az alábbi képernyőképen bekarikázott hasonló utasításokat követve [konfigurálta a tárterületet](avere-vfxt-add-storage.md) töltse le a kulcs fájlját, vagy hozzon létre egy új kulcsot a blobtároló. Használja a fürt konfigurációs eszközt, a Vezérlőpult Avere.
-
-![A parancsfájl megjelenítése figyelmeztető üzenetek egy új titkosító kulcs létrehozása a parancssori kimenet](media/avere-vfxt-key-warning.png)
-
 ## <a name="next-step"></a>Következő lépés
 
-Most, hogy a fürt fut, és tudja, a felügyeleti IP-címére, [kapcsolódni a fürt konfigurálása eszköz](avere-vfxt-cluster-gui.md) támogatás engedélyezéséhez adja hozzá az tárolási, ha szükséges, illetve az alapértelmezett titkosítási kulcsot az új Blob Storage-címmel.
+Most, hogy a fürt fut, és tudja, a felügyeleti IP-címére, [kapcsolódni a fürt konfigurálása eszköz](avere-vfxt-cluster-gui.md) támogatás engedélyezéséhez adja hozzá az tárolási, ha szükséges, és más fürtbeállítások testreszabása.

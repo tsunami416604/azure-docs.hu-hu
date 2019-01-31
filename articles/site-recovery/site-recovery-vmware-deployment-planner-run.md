@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: mayg
-ms.openlocfilehash: 8e46f47f1d3a95e4635609f24dc413141304d3c2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 55d6f1393f4f180776557ea9a2651064d61c3e06
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228168"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301501"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -168,8 +168,8 @@ A profilkészítés befejezése után futtathatja az eszközt jelentéskészít�
 |-OfferId|(Nem kötelező) Az adott előfizetéshez társított ajánlat. Az alapértelmezett az MS-AZR-0003P (használatalapú fizetés).|
 |-Currency|(Nem kötelező) A pénznem, amelyben a költségek megjelennek a létrehozott jelentésben. Az alapértelmezett az amerikai dollár ($), vagy a legutoljára használt pénznem.<br>Tekintse át a [támogatott pénznemek](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies) listáját.|
 
-Alapértelmezés szerint az eszköz a profilhoz, és legfeljebb 1000 virtuális gépet a jelentés létrehozásához. A korlát módosításához meg kell változtatni a MaxVMsSupported kulcs értékét az *ASRDeploymentPlanner.exe.config* fájlban.
-```
+Alapértelmezés szerint az eszköz, és legfeljebb 1000 virtuális gépet jelentés készítése van beállítva. A korlát módosításához meg kell változtatni a MaxVMsSupported kulcs értékét az *ASRDeploymentPlanner.exe.config* fájlban.
+```xml
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
@@ -192,7 +192,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Serve
 
 #### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>4. példa: Jelentés készítése 5%-os növekedési tényezővel az alapértelmezett 30% helyett
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualzation VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
 ```
 
 #### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>5. példa: Jelentés létrehozása a profilkészítés során használt adatok egy részéből
@@ -219,7 +219,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 Az eszköz alapértelmezett értéke az írási/olvasási IOPS, az írási IOPS és az adatváltozás esetén a 95. százalékérték az összes virtuális gép profiljának elkészítése során. Ez a metrika biztosítja, hogy a virtuális gépek által az ideiglenes események miatt esetlegesen észlelt 100. százalékértékes kiugrást a rendszer nem használja fel a cél tárfiók és a forrássávszélesség követelményeinek meghatározásakor. Az ideiglenes esemény lehet például egy naponta egyszer futtatott biztonsági mentési feladat, rendszeres időközönként végzett adatbázis-indexelés, elemzésijelentés-készítési tevékenység vagy bármely hasonló, rövid ideig tartó, időpontalapú esemény.
 
 A 95. százalékérték használata valós képet ad a számítási feladatok valódi jellemzőiről, és a lehető legjobb teljesítményt biztosítja, miközben a számítási feladatok futnak az Azure-on. Ezt az értéket valószínűleg nem kell módosítania. Ha úgy dönt, hogy módosítja (például a 90. százalékértékre), akkor az alapértelmezett mappában található *ASRDeploymentPlanner.exe.config* konfigurációs fájl frissítésével és mentésével létrehozhat egy új jelentést a meglévő, profilkészítés során létrehozott adatokról.
-```
+```xml
 <add key="WriteIOPSPercentile" value="95" />      
 <add key="ReadWriteIOPSPercentile" value="95" />      
 <add key="DataChurnPercentile" value="95" />

@@ -1,23 +1,23 @@
 ---
-title: 'Gyors útmutató: Számítási bővítés az Azure SQL Data Warehouse-ban – T-SQL | Microsoft Docs'
-description: Számítási bővítés az Azure SQL Data Warehouse-ban T-SQL és SQL Server Management Studio (SSMS) segítségével. Bővítéssel a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők.
+title: 'Gyors útmutató: Horizontális felskálázás az Azure SQL Data Warehouse - T-SQL számítási |} A Microsoft Docs'
+description: Számítási bővítés az Azure SQL Data Warehouse-ban T-SQL és SQL Server Management Studio (SSMS) segítségével. Felskálázással a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e499a2a2201e81d40354069c007790e4bcdff671
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.openlocfilehash: a734e0173a3432e03c5876d30cf54ea3fd23d4dc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245780"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460345"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Gyors útmutató: Azure SQL Data Warehouse-beli számítási bővítés T-SQL segítségével
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Gyors útmutató: Számítási bővítés az Azure SQL Data Warehouse a T-SQL használatával
 
 Számítási bővítés az Azure SQL Data Warehouse-ban T-SQL és SQL Server Management Studio (SSMS) segítségével. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők. 
 

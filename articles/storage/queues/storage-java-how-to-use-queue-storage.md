@@ -9,13 +9,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.component: queues
-ms.openlocfilehash: 594407ac5f5dc012ab542cedc6393b702fa31804
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: queues
+ms.openlocfilehash: bec1632199e59994831efe4af583617b01374c53
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525399"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473799"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>How to use Queue Storage from Java (A Queue Storage használata Javával)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "39525399"
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan hajthat végre az Azure Queue storage szolgáltatást használó általános forgatókönyvhöz. A kódminták Java nyelven íródtak, és a [Java-hoz készült Azure Storage SDK-t][Azure Storage SDK for Java] használják. Az ismertetett forgatókönyvek között megtalálható **beszúrása**, **Bepillantás**, **első**, és **törlése** várólista-üzenetek, valamint  **létrehozás** és **törlése** üzenetsorok. Üzenetsorok további információkért lásd: a [további lépések](#Next-Steps) szakaszban.
 
-Megjegyzés: Az SDK az Android-eszközökön az Azure Storage használó fejlesztők érhető el. További információk: [Androidhoz készült Azure Storage SDK][Azure Storage SDK for Android].
+Megjegyzés: Egy SDK elérhető az Azure Storage-et Android-eszközökön használó fejlesztők számára. További információk: [Androidhoz készült Azure Storage SDK][Azure Storage SDK for Android].
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -66,8 +66,8 @@ String storageConnectionString =
 
 Az alábbi minták azt feltételezik, hogy az ezen két módszer egyikével kérte le a Storage kapcsolati sztringjét.
 
-## <a name="how-to-create-a-queue"></a>Hogyan: üzenetsor létrehozása
-A **CloudQueueClient** objektum lehetővé teszi a várólisták hivatkozási objektumok beolvasása. Az alábbi kód létrehoz egy **CloudQueueClient** objektum. (Megjegyzés: hozzon létre további módon **CloudStorageAccount** objektumok; további információkért lásd: **CloudStorageAccount** a a [Azure Storage ügyféloldali SDK-referencia].)
+## <a name="how-to-create-a-queue"></a>Útmutató: Üzenetsor létrehozása
+A **CloudQueueClient** objektum lehetővé teszi a várólisták hivatkozási objektumok beolvasása. Az alábbi kód létrehoz egy **CloudQueueClient** objektum. (Megjegyzés: Hozzon létre további módon **CloudStorageAccount** objektumok; további információkért lásd: **CloudStorageAccount** a a [Azure Storage ügyféloldali SDK-referencia].)
 
 Használja a **CloudQueueClient** beolvasása egy hivatkozást a használni kívánt várólista-objektum. A várólista hozhat létre, ha még nem létezik.
 
@@ -94,7 +94,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-add-a-message-to-a-queue"></a>Hogyan: Adjon meg egy üzenetet egy üzenetsorba
+## <a name="how-to-add-a-message-to-a-queue"></a>Útmutató: Adjon meg egy üzenetet egy üzenetsorba
 Ha üzenetet szeretne beszúrni egy létező üzenetsorba, először hozzon létre egy **CloudQueueMessage** elemet. Ezután hívja a **addMessage** metódust. A **CloudQueueMessage** egy karakterláncból (UTF-8 formátumban) vagy Bájttömbbel hozható létre. A következő kódot, amely létrehoz egy üzenetsort (Ha még nem létezik), és szúrja be a "Hello, World" üzenetet.
 
 ```java
@@ -124,7 +124,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Útmutató: a következő üzenet betekintés
+## <a name="how-to-peek-at-the-next-message"></a>Útmutató: Betekintés a következő üzenetbe
 Anélkül, hogy eltávolítaná az üzenetsorból meghívásával is bepillanthat egy üzenetsorban található üzenet **peekMessage**.
 
 ```java
@@ -156,7 +156,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: egy üzenetsorban található üzenet tartalmának módosítása
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: Üzenetsorban található üzenet tartalmának módosítása
 Egy üzenetet tartalmát helyben, az üzenetsorban módosíthatja. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. Az alábbi kód frissíti az üzenetsorban található üzenetet az új tartalommal, és a láthatósági időkorlátot további 60 másodperccel bővíti. Elmenti az üzenethez társított feladat állapotát, és az ügyfél számára további egy percet biztosít az üzenet használatának folytatására. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. A rendszer általában nyilván tartja az újrapróbálkozások számát, és ha az üzenettel *n* alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
 
 A következő kód minta keresések végig az üzenetsoron, az üzenetek, megkeresi az első üzenet, amely a "Hello, World" megegyezik a tartalomhoz, majd módosítja a tartalom üzenetet, és kilép.
@@ -239,7 +239,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Útmutató: az üzenetsor hosszának lekérése
+## <a name="how-to-get-the-queue-length"></a>Útmutató: Az üzenetsor hosszának lekérése
 Megbecsülheti egy üzenetsorban található üzenetek számát. A **downloadAttributes** módszert kéri az üzenetsor-szolgáltatás több aktuális értékeit, többek között hány üzenetek vannak egy üzenetsorban lévő számát. A számláló értéke csak hozzávetőleges, mert üzeneteket is lehet hozzáadni vagy eltávolítani után a Queue szolgáltatás válaszol a kérésre. A **getApproximateMessageCount** metódus hívása által lekért legutóbbi értéket ad vissza **downloadAttributes**, a Queue szolgáltatás hívása nélkül.
 
 ```java
@@ -271,7 +271,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Útmutató: a következő üzenet eltávolítása a sorból
+## <a name="how-to-dequeue-the-next-message"></a>Útmutató: A következő üzenet eltávolítása a sorból
 A kód két lépésben egy üzenetsorból üzenetet dequeues. Meghívásakor **retrieveMessage**, a következő üzenetet kap egy üzenetsorban. Lekért üzenet **retrieveMessage** válik az adott üzenetsorban üzeneteket olvasó többi kód számára. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Befejeződik, az üzenet eltávolítása az üzenetsorból, meg kell is meghívhat **deleteMessage**. Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A kód meghívja **deleteMessage** jobb gombbal az üzenet feldolgozása után.
 
 ```java
@@ -335,7 +335,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-list-the-queues"></a>Útmutató: az üzenetsorok listázása
+## <a name="how-to-list-the-queues"></a>Útmutató: Az üzenetsorok listázása
 Az aktuális sor egy listája beszerzéséhez hívja meg a **CloudQueueClient.listQueues()** metódussal, amely egy gyűjteményét adja vissza **CloudQueue** objektumokat.
 
 ```java
@@ -363,7 +363,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-delete-a-queue"></a>Hogyan: üzenetsor törlése
+## <a name="how-to-delete-a-queue"></a>Útmutató: Üzenetsor törlése
 Egy üzenetsor és a benne tárolt összes üzenet törléséhez hívja a **deleteIfExists** metódust a **CloudQueue** objektum.
 
 ```java

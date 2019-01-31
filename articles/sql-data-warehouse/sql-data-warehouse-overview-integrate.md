@@ -2,20 +2,20 @@
 title: Az SQL Data Warehouse szolgáltatással integrált megoldásokat hozhat létre |} A Microsoft Docs
 description: 'Az eszközök és az SQL Data Warehouse szolgáltatással integrált megoldásokat kínáló partnerek. '
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d9d10214f8bc61a914de3f72ddae13679f2811e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 08e144022c79182a63fd99dbce48a5e505aba3f2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358507"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477998"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Más szolgáltatások integrálása az SQL Data warehouse-bA
 A fő funkciói mellett az SQL Data Warehouse lehetővé teszi a felhasználók számos, az Azure-ban a más szolgáltatások integrálása. Ezek a szolgáltatások a következők:
@@ -31,7 +31,7 @@ Az SQL Data Warehouse továbbra is fennáll, további szolgáltatások integrál
 Power BI-integráció lehetővé teszi az SQL Data Warehouse a számítási teljesítmény kombinálva dinamikus jelentéskészítő és vizualizációs a Power bi. A Power BI integrációja jelenleg tartalmazza:
 
 * **Közvetlen csatlakozás**: Az SQL Data Warehouse elleni logikai legördülő lista speciális kapcsolatot. Legördülő lista gyorsabb elemzés által nagyobb méretekben biztosít.
-* **Nyissa meg a Power bi-ban**: A "Megnyitás Power BI-ban" gomb példányadatai simplifed úgy csatlakozhat a Power bi-bA továbbítja.
+* **Nyissa meg a Power bi-ban**: A "Megnyitás Power BI-ban" gomb példányadatai csatlakoztathat így egyszerűbb a Power bi-bA továbbítja.
 
 További információkért lásd: [integráció a Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md), vagy a [Power BI dokumentációja](https://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx).
 

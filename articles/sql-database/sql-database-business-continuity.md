@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 3b3f1268866c936ae4674188f8e3297702167415
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: b3b48c923b10fc201c5ac06b2dd805ee8638a18c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599433"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473425"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -46,7 +46,7 @@ Ezt követően megismerheti a további mechanizmusok, amelyek segítségével he
 
 - [Historikus táblák](sql-database-temporal-tables.md) lehetővé teszi sor verziók visszaállítása bármely pontról időben.
 - [Beépített automatikus biztonsági mentések](sql-database-automated-backups.md) és [időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore) lehetővé teszi a teljes adatbázis visszaállítását néhány pontra az elmúlt 35 napon belül.
-- Is [törölt adatbázis visszaállítása](sql-database-recovery-using-backups.md#deleted-database-restore) a pont, ahol azt törölték, ha a **nem lett törölve a logikai kiszolgáló**.
+- Is [törölt adatbázis visszaállítása](sql-database-recovery-using-backups.md#deleted-database-restore) a pont, ahol azt törölték, ha a **SQL Database-kiszolgáló nem lett törölve**.
 - [Hosszú távú adatmegőrzés](sql-database-long-term-retention.md) lehetővé teszi, hogy a biztonsági mentések tartani 10 évre.
 - [Aktív georeplikáció](sql-database-active-geo-replication.md) hozhatók létre olvasható replikát, és manuális feladatátvétel esetén a data center kimaradás vagy alkalmazás frissítése bármely replika.
 - [Automatikus feladatátvételi csoport](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) lehetővé teszi, hogy az alkalmazás automatikusan Recovery esetén egy adatközpont-meghibásodás után.
@@ -59,11 +59,11 @@ A következő táblázat összehasonlítja a ERT és RPO esetében a három legg
 | --- | --- | --- | --- |--- |--- |
 | Időponthoz kötött visszaállítás biztonsági másolatból |Bármely visszaállítási pont 7 napon belül |Bármely visszaállítási pont 35 napon belül |Bármely visszaállítási pont 35 napon belül |Bármely visszaállítási pont (legfeljebb 35 napra) konfigurált időtartamon belül|Bármely visszaállítási pont (legfeljebb 35 napra) konfigurált időtartamon belül|
 | Georedundáns visszaállítás georeplikált biztonsági másolatokból |ERT < 12 óra<br> RPO < 1 óra |ERT < 12 óra<br>RPO < 1 óra |ERT < 12 óra<br>RPO < 1 óra |ERT < 12 óra<br>RPO < 1 óra|ERT < 12 óra<br>RPO < 1 óra|
-| Automatikus feladatátvételi csoportok |RTO = 1 óra<br>RPO < 5 mp |RTO = 1 óra<br>RPO < 5-s |RTO = 1 óra<br>RPO < 5-s |RTO = 1 óra<br>RPO < 5-s|RTO = 1 óra<br>RPO < 5-s|
+| Automatikus feladatátvételi csoportok |RTO = 1 h<br>RPO < 5 mp |RTO = 1 h<br>RPO < 5-s |RTO = 1 h<br>RPO < 5-s |RTO = 1 h<br>RPO < 5-s|RTO = 1 h<br>RPO < 5-s|
 
 ## <a name="recover-a-database-to-the-existing-server"></a>A meglévő kiszolgáló adatbázis helyreállítása
 
-Az SQL Database automatikusan végrehajtja az adatbázis teljes biztonsági mentését hetente, különbözeti adatbázis mentésekre általában 12 óránként, és a tranzakciós jelentkezzen biztonsági mentések 5-10 percenként üzleti adatai védelméről adatvesztéssel szemben. A biztonsági mentések 35 napig az összes szolgáltatási szint DTU alapszintű szolgáltatási szintek a biztonsági mentések tárolására 7 napig kivételével az RA-GRS tároló vannak tárolva. További információkért lásd: [adatbázis automatikus biztonsági mentések](sql-database-automated-backups.md). Visszaállíthatja egy létező adatbázis űrlapot az automatikus biztonsági másolatokat egy korábbi időpontra az Azure portal, PowerShell vagy a REST API használatával az egyazon logikai kiszolgálón található új adatbázisként időben. További információkért lásd: [-időponthoz visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore).
+Az SQL Database automatikusan végrehajtja az adatbázis teljes biztonsági mentését hetente, különbözeti adatbázis mentésekre általában 12 óránként, és a tranzakciós jelentkezzen biztonsági mentések 5-10 percenként üzleti adatai védelméről adatvesztéssel szemben. A biztonsági mentések 35 napig az összes szolgáltatási szint DTU alapszintű szolgáltatási szintek a biztonsági mentések tárolására 7 napig kivételével az RA-GRS tároló vannak tárolva. További információkért lásd: [adatbázis automatikus biztonsági mentések](sql-database-automated-backups.md). Visszaállíthatja egy létező adatbázis űrlapot az automatikus biztonsági másolatokat egy korábbi időpontra az időben, mint egy új adatbázist ugyanazon a kiszolgálón az SQL Database az Azure portal, PowerShell vagy a REST API használatával. További információkért lásd: [-időponthoz visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 Ha a maximális támogatott-időponthoz állítja vissza (PITR) megőrzési időszak nem elegendő az alkalmazáshoz, ezt végrehajthatja a az adatbázis(ok) hosszú távú adatmegőrzési (LTR) házirendjének konfigurálásával. További információkért lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md).
 

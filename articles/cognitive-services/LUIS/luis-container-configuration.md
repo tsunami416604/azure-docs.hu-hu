@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 40cfadd3880b1875e775aae21e667ba0e20086ef
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5437e81397182ede37ef98ad40b54c64f94e2092
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219753"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294723"
 ---
-# <a name="configure-language-understanding-docker-containers"></a>Language Understanding docker-tárolók konfigurálása 
+# <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker-tárolók konfigurálása 
 
-A Language Understanding (LUIS) tároló futtatási környezetet segítségével konfigurálható a `docker run` parancssori argumentumokat. A LUIS rendelkezik néhány választható beállítások mellett számos szükséges beállításokat. Több [példák](#example-docker-run-commands) a parancs érhetők el. A tároló-specifikus beállításokat is a bemeneti [csatlakoztatási beállítások](#mount-settings) és a számlázási beállításait. 
+A **Language Understanding** tároló-futtatókörnyezet (LUIS) szolgáltatással konfigurálható a `docker run` parancssori argumentumokat. A LUIS rendelkezik néhány választható beállítások mellett számos szükséges beállításokat. Több [példák](#example-docker-run-commands) a parancs érhetők el. A tároló-specifikus beállításokat is a bemeneti [csatlakoztatási beállítások](#mount-settings) és a számlázási beállításait. 
 
 Tároló beállításai [hierarchikus](#hierarchical-settings) és állítható be [környezeti változók](#environment-variable-settings) vagy a docker [parancssori argumentumok](#command-line-argument-settings).
 
@@ -37,7 +37,7 @@ Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 |Nem|[Fluentd](#fluentd-settings)|Napló írási és opcionálisan metrikaadatok Fluentd kiszolgálóhoz.|
 |Nem|[Http Proxy](#http-proxy-credentials-settings)|Egy HTTP-proxy konfigurálása, hogy a kimenő kérelmek.|
 |Nem|[Logging](#logging-settings)|Biztosítja a naplózás a tároló támogatása ASP.NET Core. |
-|Igen|[Csatlakoztatja](#mount-settings)|Olvasási és írási adatok tárolót a gazdaszámítógép és a tároló található vissza gazdaszámítógéphez.|
+|Ige|[Fluentd](#mount-settings)|Napló- és opcionálisan metrikaadatok írása egy Fluentd-kiszolgálóra.|
 
 > [!IMPORTANT]
 > A [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), és [ `Eula` ](#eula-setting) beállítások együtt használja, és meg kell adnia az érvényes értékek mindhárom azokat; egyéb a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](luis-container-howto.md#billing).

@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-ms.component: common
-ms.openlocfilehash: fd5df50128885f6a96e68c8ad46204bc21d80264
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: cf40fd45114659bf1a5da4dbaa6bfa928f34088c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531557"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473765"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatások
 2013-08-15 verzióval kezdve, az Azure storage szolgáltatások támogatja az eltérő eredetű erőforrások megosztása (CORS) a Blob, Table, Queue és fájl szolgáltatások. A CORS egy HTTP-funkció, amely lehetővé teszi egy adott tartományban futó webes alkalmazás egy másik tartományban lévő erőforrások eléréséhez. Webböngészők néven ismert biztonsági korlátozással akadályozzák meg [azonoseredet-](http://www.w3.org/Security/wiki/Same_Origin_Policy) , amely megakadályozza, hogy egy weblap, egy másik tartományban; API-k A CORS biztonságos megoldást nyújt, hogy egy tartomány (a forrástartomány) API-k meghívása egy másik tartományban található. Tekintse meg a [CORS-specifikáció](http://www.w3.org/TR/cors/) CORS részleteiért.
@@ -67,11 +67,11 @@ CORS-szabályok a szolgáltatási szinten van beállítva, hogy engedélyezi vag
 
 Minden elem szerepel a CORS-szabály az alábbiakban olvasható:
 
-* **AllowedOrigins**: A tartományt, amely egy kérelmet a storage szolgáltatás CORS használatával engedélyezett. A forrástartomány az a tartomány, ahonnan a kérés származik. Vegye figyelembe, hogy a forrás a forrás, amely a felhasználó betöltötte a szolgáltatás elküldi a pontos kis-és nagybetűket egyeznie kell. A helyettesítő karakter is használható ' *', hogy minden eredettartományból kéréseit a CORS használatával. A fenti példában, a tartományok [ http://www.contoso.com ](http://www.contoso.com) és [ http://www.fabrikam.com ](http://www.fabrikam.com) teheti a CORS használatával szolgáltatásra irányuló kérések.
-* **AllowedMethods**: metódusok (HTTP-kéréssel kapcsolatos műveletek), amely a forrástartomány használhat egy CORS-kéréshez. A fenti példában csak a PUT és a GET kérelmek engedélyezettek.
+* **AllowedOrigins**: A forrás-tartományok használatával indítson egy össze az storage CORS használatával engedélyezett. A forrástartomány az a tartomány, ahonnan a kérés származik. Vegye figyelembe, hogy a forrás a forrás, amely a felhasználó betöltötte a szolgáltatás elküldi a pontos kis-és nagybetűket egyeznie kell. A helyettesítő karakter is használható ' *', hogy minden eredettartományból kéréseit a CORS használatával. A fenti példában, a tartományok [ http://www.contoso.com ](http://www.contoso.com) és [ http://www.fabrikam.com ](http://www.fabrikam.com) teheti a CORS használatával szolgáltatásra irányuló kérések.
+* **AllowedMethods**: A metódusok (HTTP-kéréssel kapcsolatos műveletek), amely a forrástartomány használhat egy CORS-kéréshez. A fenti példában csak a PUT és a GET kérelmek engedélyezettek.
 * **AllowedHeaders**: A kérelem fejlécében, hogy a forrástartomány előfordulhat, hogy a CORS-kéréshez adjon meg. A fenti példában x-ms-metaadatok, x-ms-meta-célként, és az x-ms-meta-abc kezdve minden metaadat fejlécek használata engedélyezett. Vegye figyelembe, hogy a helyettesítő karaktert ' *' jelzi, hogy engedélyezve van-e bármilyen fejlécet elején a megadott előtaggal.
-* **ExposedHeaders**: válaszfejlécek, melyeket a CORS-kérelemre válaszul és amelyeket a böngésző megjeleníthet a kérelem kibocsátója. A fenti példában a böngésző mentenie bármely x-ms-metaadat-fejléc kezdődő elérhetővé.
-* **MaxAgeInSeconds**: kérése legfeljebb ennyi ideig, hogy a böngésző gyorsítótárazza az előzetes OPTIONS.
+* **ExposedHeaders**: A válaszfejlécek, előfordulhat, hogy a CORS-kérelemre válaszul, és amelyeket a böngésző megjeleníthet a kérelem kibocsátója. A fenti példában a böngésző mentenie bármely x-ms-metaadat-fejléc kezdődő elérhetővé.
+* **MaxAgeInSeconds**: Legfeljebb ennyi ideig, hogy a böngésző gyorsítótárazza az előzetes OPTIONS kérést.
 
 Az Azure storage szolgáltatások esetében is támogatja a késleltetve előtaggal ellátott fejléc adható a **AllowedHeaders** és **ExposedHeaders** elemeket. Ahhoz, hogy egy kategóriát a fejlécek, egy adott kategória közös előtagot is megadhat. Például megadása *x-ms-meta** szerint előtaggal ellátott fejléc hoz létre egy szabályt, amely az x-ms-meta kezdődő összes fejléc esetében egyezést fog.
 
@@ -163,7 +163,7 @@ Az alábbi táblázat azt jelzi, hogy az Azure storage GET/HEAD-kérések a kor�
 
 | Kérés | Fiók beállítását és a szabály kiértékelés eredménye |  |  | Válasz |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Jelen a kérelem származási fejléc** |**Ez a szolgáltatás számára megadott CORS-szabály** |**Egyeztetési szabályt, amely lehetővé teszi az összes origins(*) létezik** |**Egyező szabálya létezik forrás pontos egyezés** |**Válasz tartalmazza a változtatás fejléc forrás beállítása** |**Válasz tartalmazza a hozzáférés-vezérlés – engedélyezett-forrás: "*"** |**Válasz tartalmazza a hozzáférés-vezérlési-elérhetővé tett – fejlécek** |
+| **Jelen a kérelem származási fejléc** |**Ez a szolgáltatás számára megadott CORS-szabály** |**Egyeztetési szabályt, amely lehetővé teszi az összes origins(*) létezik** |**Egyező szabálya létezik forrás pontos egyezés** |**Válasz tartalmazza a változtatás fejléc forrás beállítása** |**Válasz tartalmazza a hozzáférés-vezérlés – engedélyezett-forrás: "*"** |**Response includes Access-Control-Exposed-Headers** |
 | Nem |Nem |Nem |Nem |Nem |Nem |Nem |
 | Nem |Igen |Nem |Nem |Igen |Nem |Nem |
 | Nem |Igen |Igen |Nem |Nem |Igen |Igen |

@@ -1,6 +1,6 @@
 ---
 title: PowerShell példaszkript – Aktív georeplikáció beállítása készletezett Azure SQL-adatbázishoz | Microsoft Docs
-description: Azure PowerShell példaszkript az aktív georeplikáció beállításához készletezett Azure SQL-adatbázishoz és a feladatai átvételéhez.
+description: Az Azure PowerShell példaszkript az aktív georeplikáció egy készletezett Azure SQL Database adatbázis beállítása és a feladatai átvételéhez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: c108cf57f5db87a7dc6144e5b202a5c6215164a6
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 15949ce7263ee3817c9ff0265b21c6b8d6578230
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388258"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478304"
 ---
-# <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>Aktív georeplikáció konfigurálása készletezett Azure SQL-adatbázishoz a PowerShell használatával
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Aktív georeplikáció egy készletezett adatbázis konfigurálása az Azure SQL Database-ben a PowerShell használatával
 
-Ez a PowerShell-példaszkript aktív georeplikációt állít be egy Azure SQL-adatbázishoz rugalmas készletben, és átadja a feladatait az Azure SQL-adatbázis másodlagos replikájának.
+A PowerShell-példaszkript aktív georeplikáció egy készletezett adatbázis konfigurálása az Azure SQL Database-ben, és átadja a feladatait az adatbázis másodlagos replikára.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
@@ -48,9 +48,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Olyan logikai kiszolgálót hoz létre, amely egy adatbázist vagy rugalmas készletet üzemeltet. |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Rugalmas készletet hoz létre egy logikai kiszolgálón. |
-| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Létrehoz egy adatbázist egy logikai kiszolgálón egyetlen vagy készletezett adatbázisként. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Létrehoz egy SQL Database-kiszolgálót, amelyen az önálló adatbázisok és rugalmas készleteket. |
+| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Egy rugalmas készletet hoz létre. |
+| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Létrehoz egy adatbázist vagy készletezett adatbázisként. |
 | [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) | Frissíti az adatbázis tulajdonságait vagy az adatbázist egy rugalmas készletbe, egy rugalmas készletből vagy rugalmas készletek között helyezi át. |
 | [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary)| Létrehoz egy másodlagos adatbázist egy meglévő adatbázishoz, és elkezdi az adatok replikálását. |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)| Egy vagy több adatbázist kér le. |

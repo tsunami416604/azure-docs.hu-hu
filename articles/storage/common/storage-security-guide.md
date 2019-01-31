@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 3d9da96e5bf6c88f76089dea930b02248cfa1d24
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 72d4a9cd9a8b9244c428d49b5270952deb6f5162
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243794"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454487"
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatóját
 
@@ -98,7 +98,7 @@ Az alábbiakban a fő pontokat kell tudni az RBAC használatával el az Azure St
 * [Szerepköralapú hozzáférés-vezérlés kezelése REST API-val](../../role-based-access-control/role-assignments-rest.md)
 
   Ez a cikk leírja, hogyan használható a REST API az RBAC kezeléséhez.
-* [Az Azure Storage Resource Provider REST API-referencia](https://msdn.microsoft.com/library/azure/mt163683.aspx)
+* [Az Azure Storage erőforrás-szolgáltató REST API-ja – referencia](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   Az API-referencia az API-k használatával programozott módon kezelheti a tárfiók ismerteti.
 * [Erőforrás-kezelő használata hitelesítési API az előfizetések hozzáféréséhez](../../azure-resource-manager/resource-manager-api-authentication.md)
@@ -148,7 +148,7 @@ Az Azure Key Vault használatának másik előnye is szabályozhatja a hozzáfé
 #### <a name="resources"></a>További források
 
 * [Az Azure Portal tárfiók-beállítások kezelése](storage-account-manage.md)
-* [Az Azure Storage Resource Provider REST API-referencia](https://msdn.microsoft.com/library/mt163683.aspx)
+* [Az Azure Storage erőforrás-szolgáltató REST API-ja – referencia](https://msdn.microsoft.com/library/mt163683.aspx)
 
 ## <a name="data-plane-security"></a>Adatsík Adatbiztonság
 Adatsík adatbiztonság hivatkozik az adatobjektumok tárolva az Azure Storage – a blobok, üzenetsorok, táblák és fájlok védelmére szolgáló módszerek. Úgy tapasztaltuk módszerek az adatok átvitel során az adatokat és biztonsági titkosításához, de hogyan továbblép hozzáféréssel az objektumokhoz szabályozásával kapcsolatban?
@@ -328,7 +328,7 @@ A megoldás nem támogatja a következő forgatókönyvek, szolgáltatások és 
 
 
 > [!NOTE]
-> A következő Linux-disztribúciókon jelenleg támogatott Linux operációs rendszer lemeztitkosítás: az RHEL 7.2 CentOS 7.2n és Ubuntu 16.04.
+> A következő Linux-disztribúciókon jelenleg támogatott Linux operációs rendszer lemeztitkosítás: RHEL 7.2 CentOS 7.2n és Ubuntu 16.04.
 >
 >
 
@@ -411,7 +411,7 @@ Rendelkezünk, amelyek foglalkozunk három esetben.
    1.0;2015-11-16T18:30:05.6556115Z;GetBlob;**SASSuccess**;200;416;64;**sas**;;mystorage…
 3. A blob nem nyilvános, és a tárfiók kulcsát használt-e férni. Ebben az esetben a kérelem-állapota "**sikeres**"és a hitelesítési típus"**hitelesített**".
 
-   1.0-S; 2015-11-16T18:32:24.3174537Z; GetBlob; **Sikeres**; 206; 59; 22; **hitelesített**; mystorage...
+   1.0;2015-11-16T18:32:24.3174537Z;GetBlob;**Success**;206;59;22;**authenticated**;mystorage…
 
 A Microsoft Message Analyzer segítségével megtekintheti és elemezheti ezeket a naplókat. Keresés és szűrés funkciót tartalmaz. Például előfordulhat, hogy szeretné keresni megtekintéséhez a várttól, azaz a használat esetén győződjön meg arról, hogy valaki nem fér hozzá a tárfiók nem megfelelően GetBlob példányait.
 
@@ -504,6 +504,6 @@ Cors-t és engedélyezését a kapcsolatos további információkért tekintse m
 * [A FIPS 140 érvényesítése](https://technet.microsoft.com/library/cc750357.aspx)
 
   Ez a cikk nyújt információkat a hogyan Microsoft-termékek és titkosítási moduljait megfelel a FIPS-szabvány esetében az USA Szövetségi kormányzati.
-* ["Rendszer-kriptográfia: használja a FIPS szabványnak megfelelő algoritmusokat a titkosításhoz, kivonatoláshoz és aláíráshoz" biztonsági beállítások hatások a Windows XP és a Windows újabb verziói](https://support.microsoft.com/kb/811833)
+* ["Rendszer-kriptográfia: FIPS szabványnak megfelelő algoritmus használata titkosításhoz, kivonatoláshoz és aláíráshoz"biztonsági beállítások hatások a Windows XP és a Windows újabb verziói](https://support.microsoft.com/kb/811833)
 
   Ez a cikk ismerteti a régebbi Windows-számítógépek FIPS-módban használatát.

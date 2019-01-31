@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 00f3cded865fe76a4220c4ab2fa5f747320308e1
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 322e3d08812a75f67995c1e29ae40f168d56869c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389764"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297123"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling eszköz kiadására
 
@@ -28,11 +28,18 @@ A Microsoft Threat Modeling Tool az általánosan elérhető egy szabad [kattint
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
 - Támogatott operációs rendszerek
-  - Microsoft Windows 10
+  - A Microsoft Windows 10 Évfordulós frissítés vagy újabb
+- .NET-verzió megadása kötelező
+  - .NET 4.7.1 vagy újabb
 - További követelmények
   - Internetkapcsolat szükséges az eszköz és a sablonok a frissítések fogadásához.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 - [Microsoft Threat Fenyegetésmodellezési eszköz általánosan elérhető verzió 7.1.50911.2](./azure-security-threat-modeling-tool-releases-71509112.md) – 2018. szeptember 12
-- [Microsoft Threat Fenyegetésmodellezési eszköz általánosan elérhető verzió 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) – November 2018 1.
+- [A Microsoft Fenyegetésmodellezési eszköz frissítése verzió 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) – November 2018 1.
+- [A Microsoft Fenyegetésmodellezési eszköz frissítése verzió 7.1.60126.1](./azure-security-threat-modeling-tool-releases-71601261.md) – január 29 2019
+
+## <a name="next-steps"></a>További lépések
+
+Töltse le a legújabb verzióját a [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool).

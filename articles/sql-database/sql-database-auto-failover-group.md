@@ -1,6 +1,6 @@
 ---
 title: Feladatátvételi csoportok – Azure SQL Database |} A Microsoft Docs
-description: Automatikus feladatátvételi csoportok az SQL Database szolgáltatás lehetővé teszi, hogy a replikáció és a egy csoport egy logikai kiszolgálón lévő adatbázisokhoz, vagy az összes adatbázis automatikus / koordinált feladatátvétele kezelése a felügyelt példány.
+description: Automatikus feladatátvételi csoportok az SQL Database szolgáltatás lehetővé teszi, hogy a replikáció és a egy csoport egy SQL Database-kiszolgálón lévő adatbázisokhoz, vagy az összes adatbázis automatikus / koordinált feladatátvétele kezelése a felügyelt példány.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,28 +11,28 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 958dcb8113f58409d413b5471c96d2e0ba83c361
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: d24f7ce20a9dfb8ede184e8f013c2d988a8a96c2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033808"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468699"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok segítségével átlátható és koordinált több adatbázis feladatátvételét engedélyezése
 
-Automatikus feladatátvételi csoportok az SQL Database szolgáltatás lehetővé teszi, hogy a replikációs és feladatátvételi csoport egy logikai kiszolgálón lévő adatbázisokhoz, vagy egy felügyelt példány (jelenleg nyilvános előzetes verzióban elérhető a felügyelt példány) egy másik régióban található összes adatbázis kezelése. Használja az azonos technológiára [aktív georeplikáció](sql-database-active-geo-replication.md). Manuálisan is kezdeményezhető feladatátvétel, vagy az SQL Database szolgáltatás egy felhasználó által definiált szabályzat alapján lehet delegálni. Az utóbbi lehetőséget lehetővé teszi, hogy automatikusan helyreállítani egy másodlagos régióban több kapcsolódó adatbázisok egy Katasztrofális hiba vagy egyéb nem tervezett esemény, amely az SQL Database szolgáltatás rendelkezésre állása az elsődleges régióban teljes vagy részleges elvesztését eredményezi. Emellett használhatja az olvasható másodlagos adatbázis csak olvasható lekérdezési számítási feladatok kiszervezéséhez. Automatikus feladatátvételi csoportok több adatbázis között, mivel ezeknek az adatbázisoknak az elsődleges kiszolgálón kell konfigurálni. Az adatbázisok a feladatátvételi csoport elsődleges és másodlagos kiszolgálók ugyanabban az előfizetésben kell lennie. Automatikus feladatátvételi csoportok támogatja az összes adatbázis replikálása a csoportban csak egy másodlagos kiszolgáló egy másik régióban.
+Automatikus feladatátvételi csoportok lehetővé teszi az SQL-adatbázis, amely lehetővé teszi, hogy a replikáció és a egy SQL Database-kiszolgálón lévő adatbázisokhoz, vagy egy felügyelt példány (jelenleg nyilvános előzetes verzióban elérhető a felügyelt példány) egy másik régióban található összes adatbázis egy csoport feladatátvétele kezelése. Használja az azonos technológiára [aktív georeplikáció](sql-database-active-geo-replication.md). Manuálisan is kezdeményezhető feladatátvétel, vagy az SQL Database szolgáltatás egy felhasználó által definiált szabályzat alapján lehet delegálni. Az utóbbi lehetőséget lehetővé teszi, hogy automatikusan helyreállítani egy másodlagos régióban több kapcsolódó adatbázisok egy Katasztrofális hiba vagy egyéb nem tervezett esemény, amely az SQL Database szolgáltatás rendelkezésre állása az elsődleges régióban teljes vagy részleges elvesztését eredményezi. Emellett használhatja az olvasható másodlagos adatbázis csak olvasható lekérdezési számítási feladatok kiszervezéséhez. Automatikus feladatátvételi csoportok több adatbázis között, mivel ezeknek az adatbázisoknak az elsődleges kiszolgálón kell konfigurálni. Az adatbázisok a feladatátvételi csoport elsődleges és másodlagos kiszolgálók ugyanabban az előfizetésben kell lennie. Automatikus feladatátvételi csoportok támogatja az összes adatbázis replikálása a csoportban csak egy másodlagos kiszolgáló egy másik régióban.
 
 > [!NOTE]
-> Az azonos vagy eltérő régiókban lévő több másodlagos példány hozható létre egy logikai kiszolgálót, és egyetlen vagy készletezett adatbázisok használatának ügyfélcsomagokat használata [aktív georeplikáció](sql-database-active-geo-replication.md).
+> Működő önálló vagy készletezett adatbázisok egy SQL Database-kiszolgálóhoz, és szeretné, az azonos vagy eltérő régiókban lévő több másodlagos példány hozható létre, amikor [aktív georeplikáció](sql-database-active-geo-replication.md).
 
 Ha automatikus feladatátvételi csoportok használ az automatikus feladatátvételi szabályzat, bármilyen kimaradásról, amely hatással van egy vagy több, az adatbázisok az automatikus feladatátvételi csoport eredményez. Ezenkívül automatikus feladatátvételi csoportok adja meg az olvasási és írási, és a továbbra is csak olvasási figyelői végpontok feladatátvételek során változatlan marad. Akár manuális vagy automatikus feladatátvételi aktiválási, feladatátvételi minden másodlagos adatbázisát a csoport vált, amennyiben az elsődleges. Az adatbázis-feladatátvétel befejezése után a DNS-rekord automatikusan frissül a végpontok átirányítása az új régióban. Az adott RPO és RTO adatokat, lásd: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
 
-Ha automatikus feladatátvételi csoportok automatikus feladatátvételi szabályzat, bármilyen kimaradásról, amely hatással van a logikai kiszolgálón adatbázisok vagy a felügyelt példányok adatai az automatikus feladatátvételt használ. Automatikus feladatátvételi csoport használata kezelheti:
+Ha automatikus feladatátvételi csoportok automatikus feladatátvételi szabályzat, bármilyen kimaradásról, amely hatással van az SQL Database server-adatbázisok vagy a felügyelt példányok adatai az automatikus feladatátvételt használ. Automatikus feladatátvételi csoport használata kezelheti:
 
 - Az [Azure Portal](sql-database-implement-geo-distributed-database.md)
 - [PowerShell: Feladatátvételi csoport](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
-- [REST API-VAL: Feladatátvételi csoport](https://docs.microsoft.com/rest/api/sql/failovergroups).
+- [REST API: Feladatátvételi csoport](https://docs.microsoft.com/rest/api/sql/failovergroups).
 
 A feladatátvételt követően ellenőrizze a hitelesítési követelmények, a kiszolgáló és az adatbázis az új elsődleges. További információkért lásd: [vész-helyreállítása után az SQL Database biztonsági](sql-database-geo-replication-security-config.md).
 
@@ -42,11 +42,11 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
 - **Feladatátvételi csoport**
 
-  Egy feladatátvételi csoportot a felügyelt belül egyetlen felügyelt példány átveheti egy másik régióba egységként abban az esetben az összes vagy néhány elsődleges adatbázist az elsődleges régióban leállás miatt elérhetetlenné válik, vagy egy logikai kiszolgáló adatbázisok egy csoportját.
+  Egy feladatátvételi csoportot belül egyetlen felügyelt példány átveheti egy másik régióba egységként abban az esetben az összes vagy néhány elsődleges adatbázist az elsődleges régióban leállás miatt elérhetetlenné válik, vagy egy SQL Database-kiszolgáló felügyelt adatbázisok egy csoportja.
 
-  - **Logikai kiszolgálók**
+  - **SQL Database-kiszolgálók**
 
-     Logikai kiszolgálókkal vagy azok egy részét a felhasználói adatbázis egyetlen kiszolgálón helyezhető egy feladatátvételi csoportot. Egy logikai kiszolgálót is, több, feladatátvételi csoportok támogatja egyetlen kiszolgálón.
+     Az SQL Database-kiszolgálók vagy azok egy részét a felhasználói adatbázisok SQL-adatbázis egyetlen kiszolgálón helyezhető egy feladatátvételi csoportot. Egy SQL Database-kiszolgálót is, egy SQL Database-kiszolgálón támogatja a több, feladatátvételi csoportok.
 
   - **Felügyelt példány**
   
@@ -54,15 +54,15 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
 - **Elsődleges**
 
-  A logikai kiszolgáló vagy a felügyelt példányhoz, amelyen az elsődleges adatbázisok a feladatátvételi csoportban.
+  Az SQL Database-kiszolgálóhoz vagy a felügyelt példányhoz, amelyen az elsődleges adatbázisok a feladatátvételi csoportban.
 
 - **Másodlagos**
 
-  A logikai kiszolgáló vagy a felügyelt példányhoz, amelyen a másodlagos adatbázisok a feladatátvételi csoportban. A másodlagos és az elsődleges ugyanabban a régióban nem lehet.
+  Az SQL Database-kiszolgálóhoz vagy a felügyelt példányhoz, amelyen a másodlagos adatbázisok a feladatátvételi csoportban. A másodlagos és az elsődleges ugyanabban a régióban nem lehet.
 
-- **Feladatátvételi csoport egy logikai kiszolgálón adatbázisok hozzáadása**
+- **Adatbázisok hozzáadása SQL Database-kiszolgálón a feladatátvételi csoporthoz**
 
-  Is elhelyezhető, számos önálló adatbázisok és az adatbázisok rugalmas készletben lévő ugyanazon a logikai kiszolgálón ugyanabban a feladatátvételi csoportban. Ha egy önálló adatbázis ad hozzá a feladatátvételi csoporthoz, automatikusan létrehoz egy másodlagos adatbázist ugyanakkorák edition és a számítási. Ha az elsődleges adatbázis egy rugalmas készletben, a másodlagos automatikusan létrejön a rugalmas készlet ugyanazzal a névvel. Hozzáad egy adatbázist, amely már rendelkezik egy másodlagos adatbázist a másodlagos kiszolgálóra, ha, georeplikáció örökli a csoport. Amikor hozzáad egy adatbázist, amely már rendelkezik egy másodlagos adatbázis egy kiszolgálót, amely nem a feladatátvételi csoport része, egy új másodlagos jön létre a másodlagos kiszolgálón.
+  Is elhelyezhető, számos önálló adatbázisok és az adatbázisok rugalmas készletben lévő SQL Database ugyanarra a kiszolgálóra ugyanabban a feladatátvételi csoportban. Ha egy önálló adatbázis ad hozzá a feladatátvételi csoporthoz, automatikusan létrehoz egy másodlagos adatbázist ugyanakkorák edition és a számítási. Ha az elsődleges adatbázis egy rugalmas készletben, a másodlagos automatikusan létrejön a rugalmas készlet ugyanazzal a névvel. Hozzáad egy adatbázist, amely már rendelkezik egy másodlagos adatbázist a másodlagos kiszolgálóra, ha, georeplikáció örökli a csoport. Amikor hozzáad egy adatbázist, amely már rendelkezik egy másodlagos adatbázis egy kiszolgálót, amely nem a feladatátvételi csoport része, egy új másodlagos jön létre a másodlagos kiszolgálón.
   
 > [!IMPORTANT]
   > Felügyelt példány, az összes felhasználói adatbázisban lesznek replikálva. A feladatátvételi csoport nem választhat replikációs felhasználói adatbázisokat egy részét.
@@ -71,9 +71,9 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
   Egy DNS CNAME-rekordot, amely az aktuális elsődleges URL-cím formátumú. Lehetővé teszi az olvasási és írási SQL alkalmazásokat az elsődleges változásakor a feladatátvételt követően az elsődleges adatbázis transzparens módon csatlakoznak.
 
-  - **A logikai kiszolgáló DNS CNAME-rekordot az olvasási és írási figyelő**
+  - **SQL Database-kiszolgáló DNS CNAME-rekordot az olvasási és írási figyelő**
 
-     Egy logikai kiszolgálón, a DNS CNAME-rekordot a feladatátvételi csoport, amely az aktuális elsődleges URL-címre mutat formázott `failover-group-name.database.windows.net`.
+     Egy SQL Database-kiszolgálón, a DNS CNAME-rekordot a feladatátvételi csoport, amely az aktuális elsődleges URL-címre mutat formázott `failover-group-name.database.windows.net`.
 
   - **Felügyelt példány DNS CNAME rekord olvasási és írási figyelőhöz**
 
@@ -83,9 +83,9 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
   Egy DNS CNAME-rekordot, amely a csak olvasható figyelő, amely a másodlagos URL-cím formátumú. Lehetővé teszi az átlátható módon csatlakozás a megadott terheléselosztási szabályok használata a másodlagos csak olvasható SQL alkalmazások.
 
-  - **A logikai kiszolgáló DNS CNAME-rekordot a csak olvasási figyelői**
+  - **SQL Database-kiszolgáló DNS CNAME-rekordot a csak olvasási figyelői**
 
-     Egy logikai kiszolgálón, a DNS CNAME-rekordot a csak olvasható figyelőhöz, amely a másodlagos URL-címre mutat formázott `failover-group-name.secondary.database.windows.net`.
+     Egy SQL Database-kiszolgálón, a DNS CNAME-rekordot a csak olvasható figyelőhöz, amely a másodlagos URL-címre mutat formázott `failover-group-name.secondary.database.windows.net`.
 
   - **Felügyelt példány DNS CNAME rekord a csak olvasási figyelői**
 
@@ -128,7 +128,7 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Ajánlott eljárások a feladatátvételi csoportok használata a különálló adatbázisok és rugalmas adatbáziskészletek
 
-Az automatikus feladatátvételi csoportot az elsődleges logikai kiszolgálón kell konfigurálni, és csatlakozzon, a másodlagos logikai kiszolgáló különböző Azure-régióban.  A csoportok összes vagy egyes adatbázisok belefoglalhatja ezeket a kiszolgálókat. Az alábbi ábra egy tipikus konfigurációja egy georedundáns felhőalapú alkalmazás több adatbázisok és automatikus feladatátvételi csoport használatával.
+Az automatikus feladatátvételi csoportot az elsődleges SQL Database-kiszolgálón kell konfigurálni, és csatlakozzon, a másodlagos SQL-adatbázis-kiszolgáló egy másik Azure-régióban.  A csoportok összes vagy egyes adatbázisok belefoglalhatja ezeket a kiszolgálókat. Az alábbi ábra egy tipikus konfigurációja egy georedundáns felhőalapú alkalmazás több adatbázisok és automatikus feladatátvételi csoport használatával.
 
 ![Automatikus feladatátvétel](./media/sql-database-auto-failover-group/auto-failover-group.png)
 
@@ -295,7 +295,7 @@ Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív
 | [Get-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | A feladatátvételi csoport konfigurációjának beolvasása |
 | [Set-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |A feladatátvételi csoport konfigurációjának módosítása |
 | [Switch-AzureRMSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | A másodlagos kiszolgáló feladatátvételi csoport feladatátvétele eseményindítók |
-| [Adjon hozzá AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|Egy Azure SQL Database feladatátvételi csoportot ad hozzá egy vagy több adatbázis|
+| [Add-AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|Egy Azure SQL Database feladatátvételi csoportot ad hozzá egy vagy több adatbázis|
 |  | |
 
 > [!IMPORTANT]
@@ -325,13 +325,13 @@ Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív
 
 | API | Leírás |
 | --- | --- |
-| Új AzureRmSqlDatabaseInstanceFailoverGroup |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt az elsődleges és másodlagos kiszolgálók|
+| New-AzureRmSqlDatabaseInstanceFailoverGroup |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt az elsődleges és másodlagos kiszolgálók|
 | Set-AzureRmSqlDatabaseInstanceFailoverGroup |A feladatátvételi csoport konfigurációjának módosítása|
 | Get-AzureRmSqlDatabaseInstanceFailoverGroup |A feladatátvételi csoport konfigurációjának beolvasása|
 | Switch-AzureRmSqlDatabaseInstanceFailoverGroup |A másodlagos kiszolgáló feladatátvételi csoport feladatátvétele eseményindítók|
 | Remove-AzureRmSqlDatabaseInstanceFailoverGroup | A feladatátvételi csoport eltávolítása|
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Az SQL database feladatátvételi csoportok egyetlen vagy készletezett adatbázisok kezelése
+### <a name="rest-api-manage-sql-database-failover-groups-with-standalone-and-pooled-databases"></a>REST API: Az SQL database feladatátvételi csoportok az önálló és a készletezett adatbázisok kezelése
 
 | API | Leírás |
 | --- | --- |

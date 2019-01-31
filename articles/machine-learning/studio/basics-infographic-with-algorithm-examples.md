@@ -1,8 +1,21 @@
 ---
-Cím: Példák titleSuffix algoritmus: Azure Machine Learning Studio description: Könnyen érthető áttekintése machine learning alapjai algoritmus példákkal tartalmazza. A letölthető infografika kiterjed a legtöbb machine learning-kérdések.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-Szerző: garyericson ms.author: garye ms.custom: seodc18 ms.date: 12/18/2017
+title: Algoritmus példákkal
+titleSuffix: Azure Machine Learning Studio
+description: Könnyen érthető áttekintése machine learning alapjai algoritmus példákkal tartalmazza. A letölthető infografika kiterjed a legtöbb machine learning-kérdések.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodc18
+ms.date: 12/18/2017
+ms.openlocfilehash: bffdbf58929a0cb7525726be53d83794adf315bf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295576"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető Infografika: A Machine learning alapjai algoritmuspéldákkal
 Töltse le a machine learning alapjait kapcsolatos gyakori machine learning kérdésre népszerű algoritmusok könnyen érthető infografika áttekintése. Algoritmus példákkal a machine learning kezdő algoritmusok közül melyiket szeretné használni, és mire használhatók a megismerése érdekében.

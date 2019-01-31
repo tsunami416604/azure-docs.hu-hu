@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: 6a6508393fe935b456cde815d35f2fd4447cd2d4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: dfff159d7e0204a752935458a2b4845499c0d652
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528122"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453399"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>A Microsoft Azure Storage-hoz a Python ügyféloldali titkosítás
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -125,12 +125,12 @@ A storage ügyféloldali kódtára a megadott KEK és a kulcs feloldó, a követ
 
 A KEK meg kell valósítani az alábbi módszerek sikeresen megtörtént az adatok titkosítása:
 
-* wrap_key(cek): a megadott CEK (bájt), a felhasználó által választott algoritmus segítségével burkolja. Burkolt kulcsát adja vissza.
-* get_key_wrap_algorithm(): ad vissza a kulcsokat burkolása használt algoritmust határozza meg.
-* get_kid(): a KEK adja vissza a karakterlánc-kulcs azonosítója.
+* wrap_key(cek): A megadott CEK (bájt), a felhasználó által választott algoritmus segítségével burkolja. Burkolt kulcsát adja vissza.
+* get_key_wrap_algorithm(): Adja vissza a kulcsokat burkolása használt algoritmust határozza meg.
+* get_kid(): A karakterlánc-kulcs azonosítója a KEK adja vissza.
   A KEK meg kell valósítani az alábbi módszerek sikerült visszafejteni az adatokat:
-* unwrap_key (cek, algoritmus): a megadott CEK a karakterlánc algoritmus használatával burkolatlan formájában adja vissza.
-* get_kid(): egy karakterlánc-kulcs azonosítója a KEK adja vissza.
+* unwrap_key (cek, algoritmus): A karakterlánc algoritmus használatával a megadott CEK burkolatlan formájában adja vissza.
+* get_kid(): Ez a KEK adja vissza egy karakterlánc-kulcs azonosítója.
 
 A kulcs feloldó legalább meg kell valósítania egy adott, a kulcs azonosítója adja vissza a fenti felületet megvalósító megfelelő KEK metódust. Ez a módszer csak hozzá kell rendelni a service objektum key_resolver_function tulajdonsága van.
 
@@ -170,7 +170,7 @@ my_block_blob_service.create_blob_from_stream(container_name, blob_name, stream)
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```
 
-### <a name="queue-service-encryption"></a>Queue szolgáltatás titkosítási
+### <a name="queue-service-encryption"></a>Queue service encryption
 A titkosítási szabályzat mezőket a queueservice objektu nastavit. Minden más kezelik az ügyféloldali kódtár által belsőleg.
 
 ```python

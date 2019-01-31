@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.component: common
-ms.openlocfilehash: c9e9dd0eab127fcb0deb3085915bd51eeb309089
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: d42183e1db49850afc115fcb5645baf7290cf3c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632840"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477598"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>(Nem felügyelt lemezek) az Azure Premium Storage-ba való migrálás
 
@@ -81,7 +81,7 @@ Válasszon ki egy helyet, ahol az Azure Premium Storage érhető el. Lásd: [Azu
 Egy Azure virtuális gép létrehozásakor meg kell adnia az egyes virtuális gép beállításainak konfigurálása. Ne feledje, hogy néhány beállítás rögzítettek a virtuális gép teljes élettartama során módosíthatja, vagy később hozzáadhat mások. Tekintse át ezeket az Azure virtuális gép konfigurációs beállításait, és győződjön meg arról, hogy ezek is megfelelően konfigurálta a munkaterhelés követelményeinek megfelelően.
 
 ### <a name="optimization"></a>Optimalizálás
-[Az Azure Premium Storage: Nagy teljesítményű rendszer tervezése](../../virtual-machines/windows/premium-storage-performance.md) hasznos útmutatást ad az Azure Premium Storage nagy teljesítményű alkalmazások készítéséhez. Az irányelveket, az alkalmazása által használt technológiák alkalmazandó ajánlott eljárások teljesítményének kombinálva is követheti.
+[Azure Premium Storage: Nagy teljesítményű rendszer tervezése](../../virtual-machines/windows/premium-storage-performance.md) hasznos útmutatást ad az Azure Premium Storage nagy teljesítményű alkalmazások készítéséhez. Az irányelveket, az alkalmazása által használt technológiák alkalmazandó ajánlott eljárások teljesítményének kombinálva is követheti.
 
 ## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Készítse elő, és másolja a virtuális merevlemezeket (VHD) prémium szintű Storage
 A következő szakaszban talál útmutatást előkészítése virtuális merevlemezek a virtuális gépről, és másolja a VHD-k az Azure Storage.
@@ -160,7 +160,7 @@ Adatlemezek esetén dönthet úgy, hogy ne néhány adatlemezt a standard szint�
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>3. lépés. Másolja a VHD-AzCopy vagy a PowerShell használatával
 Meg kell keresnie feldolgozni a két lehetőség közül választhat a tároló elérési útja és a tárfiók kulcsára. Tároló elérési útja és a tárfiók kulcsát található **az Azure Portal** > **tárolási**. A tároló URL-címe lesz, mint például "https://myaccount.blob.core.windows.net/mycontainer/".
 
-##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>1. lehetőség: Másolja a VHD-t az Azcopyval (aszinkron példány)
+##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Option 1: Másolja a VHD-t az Azcopyval (aszinkron példány)
 AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül. A VHD méretétől függően ez időt vehet igénybe. Fontos, hogy ellenőrizze a tárfiókok bejövő/kimenő forgalom korlátai, ez a beállítás használatakor. Lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md) részleteiről.
 
 1. Töltse le és telepítse az AzCopy innen: [Az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy)
@@ -187,7 +187,7 @@ AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül
 
 Eszköz AzCopy használatával kapcsolatos részletekért, lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md).
 
-##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>2. lehetőség: Másolja a VHD-t a PowerShell-lel (Synchronized példány)
+##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>Option 2: Másolja a VHD-t a PowerShell-lel (Synchronized példány)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -249,7 +249,7 @@ Erősen ajánlott, a prémium szintű storage használata éles számítási fel
 #### <a name="step-3-upload-the-vhd-to-azure-storage"></a>3. lépés A virtuális merevlemez feltöltése az Azure Storage
 Most, hogy a VHD-t a helyi könyvtárban, az AzCopy vagy AzurePowerShell használhatja a .vhd fájl feltöltése az Azure Storage. Két lehetőség áll rendelkezésre a itt:
 
-##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>1. lehetőség: Azure PowerShell Add-AzureVhd segítségével a .vhd-fájl feltöltése
+##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Option 1: Azure PowerShell Add-AzureVhd segítségével a .vhd-fájl feltöltése
 
 ```powershell
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
@@ -257,7 +257,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 
 Példa <Uri> lehet ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***. Példa <FileInfo> lehet ***"C:\path\to\upload.vhd"***.
 
-##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>2. lehetőség: A .vhd-fájl feltöltése AzCopy használatával
+##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Option 2: A .vhd-fájl feltöltése AzCopy használatával
 AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül. A VHD méretétől függően ez időt vehet igénybe. Fontos, hogy ellenőrizze a tárfiókok bejövő/kimenő forgalom korlátai, ez a beállítás használatakor. Lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md) részleteiről.
 
 1. Töltse le és telepítse az AzCopy innen: [Az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy)
@@ -765,7 +765,7 @@ Azt is ellenőrizze, tudjon meg többet az Azure Storage és az Azure Virtual Ma
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [A Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md)
+* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

@@ -1,6 +1,6 @@
 ---
-Cím: Scale a Machine Learning Studio web service titleSuffix: Azure Machine Learning Studio description: Útmutató az Azure Machine Learning Studio webszolgáltatás-egyidejűség mértékének növelése további végpontokat hozzáadásával.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Scale a Machine Learning Studio web service titleSuffix: Azure Machine Learning Studio description: Útmutató az Azure Machine Learning Studio webszolgáltatás-egyidejűség mértékének növelése további végpontokat hozzáadásával.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 01/23/2017
 ---

@@ -3,7 +3,7 @@ title: Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltat�
 description: Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltatásban
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
-ms.author: danlep
-ms.openlocfilehash: a407522e1c5e674dcaee2a4bf019bc858668969a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: lahugh
+ms.openlocfilehash: a2abcfeee6fe1a08e2b02ff87e75217daddcfad4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968730"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472269"
 ---
-# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Parancssori felületi példa: Alkalmazás hozzáadása egy Azure Batch-fiókhoz
+# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI-példa: Azure Batch-fiók alkalmazás hozzáadása
 
 Ez a szkript bemutatja, hogyan lehet hozzáadni egy alkalmazást az Azure Batch-készlettel vagy feladattal való használatra. Amikor előkészít egy alkalmazást a Batch-fiókjához való hozzáadáshoz, csomagolja be a végrehajtható fájlt – valamennyi függőségével együtt – egy zip-fájlba. 
 

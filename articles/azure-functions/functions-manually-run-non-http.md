@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 6c77e58e626ba370a6278a0f01b09578930cba09
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 61bece83697a4907a7bf3c881003f4da9b0e8a84
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247112"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466882"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Nem HTTP által aktivált függvény manuális futtatása
 
@@ -35,6 +35,9 @@ Nem HTTP-eseményindítóval aktivált függvény futtatására oly módon, egy 
 - **Függvény neve:** A futtatni kívánt függvény neve.
 
 A kérelem hely együtt főkulcs a függvény az Azure-bA a kérelem Postman használatával futtassa a funkciót.
+
+> [!NOTE]
+> Ha helyileg futtatja, a függvény főkulcs nem kötelező. Közvetlenül is [függvény](#call-the-function) felsorolhatja az `x-functions-key` fejléc.
 
 ## <a name="get-the-functions-master-key"></a>A funkció fő kulcs lekérése
 

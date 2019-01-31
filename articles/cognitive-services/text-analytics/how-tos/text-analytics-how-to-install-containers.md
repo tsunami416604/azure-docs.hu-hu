@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: c874bdd36813438edbb4546d3ee11705535d5d51
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 07fbf51f584d691b08d94f68fefa8c3f9348227f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207122"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294828"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Telepítse és futtassa a Text Analytics tárolók
 
@@ -40,12 +40,7 @@ Szövegelemzés tárolók használata előtt a következő előfeltételeknek ke
 
 ### <a name="the-host-computer"></a>A számítógép
 
-A **gazdagép** van a számítógépen, amelyen a docker-tárolót. A helyszíni vagy a docker-üzemeltetési szolgáltatás az Azure például egy számítógép lehet:
-
-* [Azure Kubernetes Service](../../../aks/index.yml)
-* [Azure Container Instances](../../../container-instances/index.yml)
-* [Kubernetes](https://kubernetes.io/) fürtben telepített [Azure Stack](../../../azure-stack/index.yml). További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](../../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
-
+[!INCLUDE [Request access to private preview](../../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
 
@@ -77,6 +72,8 @@ A Text Analytics tárolók rendelkezésre álló címkék teljes leírását lá
 * [Nyelvfelismerés](https://go.microsoft.com/fwlink/?linkid=2018759)
 * [Hangulatelemzés](https://go.microsoft.com/fwlink/?linkid=2018654)
 
+Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal letöltheti egy tárolórendszerképet.
+
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>A kulcs kifejezés kinyerése tároló docker pull
 
@@ -96,13 +93,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 ```
 
-### <a name="listing-the-containers"></a>A tárolók listája
-
-Használhatja a [docker-rendszerképek](https://docs.docker.com/engine/reference/commandline/images/) paranccsal listát készíthet a letöltött tárolólemezképek. Például a következő parancs megjeleníti az azonosítója, a tárházat, és a címke az egyes letöltött tárolórendszerképet, és táblázatként vannak formázva:
-
-```Docker
-docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
-```
+[!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
 
 ## <a name="how-to-use-the-container"></a>A tároló használata
@@ -116,7 +107,7 @@ Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljár�
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancs futtatása bármely három tárolóra. A parancs paraméterei a következők:
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
 |{BILLING_KEY} | Ezt a kulcsot szolgál a tárolót, és az Azure Portalon Text Analytics kulcsok lapján található.  |
 |{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját az Azure Portalon Text Analytics áttekintése lapon érhető el.|
@@ -159,14 +150,7 @@ A kimenet futtatásakor a tároló [csatlakoztatási](../text-analytics-resource
 
 ## <a name="containers-api-documentation"></a>Tároló API-dokumentáció
 
-A tároló a végpontok dokumentáció teljes készletét nyújtja, valamint egy `Try it now` funkció. Ez a funkció lehetővé teszi, hogy a beállítások megadása HTML webes űrlapon, és győződjön meg arról, a lekérdezés, kód írása nélkül. Ha a lekérdezés visszatér, például a CURL-parancs megadott bemutatják a HTTP-fejlécek és törzs szükséges formátumban. 
-
-> [!TIP]
-> Olvassa el a [OpenAPI-specifikáció](https://swagger.io/docs/specification/about/), a tároló által támogatott API-műveleteket leíró a `/swagger` relatív URI. Példa:
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Számlázás
 
@@ -180,7 +164,7 @@ A `docker run` parancsot használja a következő argumentumok számlázás szem
 |--------|-------------|
 | `ApiKey` | Az API-kulcsot a _Szövegelemzés_ erőforrás számlázási adatok nyomon követésére szolgál. |
 | `Billing` | Az a végpont a _Text Analytics_ erőforrás számlázási adatok nyomon követésére szolgál.|
-| `Eula` | Azt jelzi, hogy Ön már elfogadta a licencet, a tároló.<br/>Ez a beállítás értékét állítsa `accept`. |
+| `Eula` | Azt jelzi, hogy Ön már elfogadta a tároló licencét.<br/>Ez a beállítás értékét állítsa `accept`. |
 
 > [!IMPORTANT]
 > Mindhárom meg kell adni az érvényes értékek, vagy a tároló nem indul el.

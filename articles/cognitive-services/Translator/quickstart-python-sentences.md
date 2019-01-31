@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Mondathosszok lekérése, Python – Translator Text API'
+title: 'Gyors útmutató: Első mondat visszaadni, Python - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan állapíthatja meg a mondatok hosszúságát (karakterben) a Python és a Translator Text REST API használatával.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 1d7ba50bf57a5c7f88f4380c4874d6053f07082e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 22b12349ac93f0c9dd595e01ecb4661e019c346b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992593"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458227"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>Rövid útmutató: A Translator Text API használata mondatok hosszúságának meghatározásához a Pythonnal
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>Gyors útmutató: A Translator Text API segítségével meghatározhatja, mondat hossza Python használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan állapíthatja meg a mondatok hosszúságát (karakterben) a Python és a Translator Text REST API használatával.
 
@@ -69,7 +69,7 @@ Jelenleg egy végpont érhető el a Translator Text szolgáltatáshoz, és ez va
 Ebben a példában a `params` a megadott szöveg nyelvének beállítására szolgál. A `breaksentence` nem szükséges a `params` útvonalhoz. Ha kihagyja a kérésből, az API megpróbálja felismerni a megadott szöveg nyelvét, és ezt az információt a megbízhatósági pontszámmal együtt adja meg a válaszban.
 
 >[!NOTE]
-> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információért lásd a [Translator Text API 3.0 által támogatott nyelvek lekérését](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) ismertető témakört.
+> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: Nyelvek](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'

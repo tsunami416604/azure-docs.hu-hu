@@ -1,6 +1,6 @@
 ---
-Cím: Adatok kiértékelése titleSuffix: Azure Machine Learning Studio description: Négy feltétel az adatokat meg kell felelnie ahhoz, hogy készen áll az adatelemzéshez. Ez a videó rendelkezik konkrét példák nyújtanak segítséget az alapszintű adatok kiértékelése.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Adatok kiértékelése titleSuffix: Azure Machine Learning Studio description: Négy feltétel az adatokat meg kell felelnie ahhoz, hogy készen áll az adatelemzéshez. Ez a videó rendelkezik konkrét példák nyújtanak segítséget az alapszintű adatok kiértékelése.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 Szerző: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---

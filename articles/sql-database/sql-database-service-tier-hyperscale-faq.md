@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: c5f5b43a96d5fad5d5f7737ef82585593cd05a7b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.date: 01/25/2019
+ms.openlocfilehash: 470a00e62aba4baf5dd13a9c80a0c72df04a81c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240658"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478338"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -75,9 +75,9 @@ A nagy kapacitású szolgáltatásszint elsősorban ügyfelek esetében, akik na
 
 Nagy kapacitású és önálló adatbázisokat az alábbi régiókban érhető el:  USA nyugati US1, USA 2. nyugati régiója, USA keleti US1, USA középső RÉGIÓJA, Nyugat-Európa, Észak-Európa, Egyesült Királyság nyugati régiója, Délkelet-Ázsiában, kelet-japán, Korea középső régiója, Délkelet-Ausztrália és Kelet-Ausztrália.
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Logikai kiszolgálónként több nagy kapacitású adatbázist hozhat létre
+### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>SQL-adatbázis kiszolgálónként több nagy kapacitású adatbázist hozhat létre
 
-Igen. További információkért és a egy logikai kiszolgálón nagy kapacitású adatbázisok száma korlátlan, lásd: [egy logikai kiszolgálón egyetlen vagy készletezett adatbázisok SQL Database erőforrás-korlátozások](sql-database-resource-limits-logical-server.md).
+Igen. További információkért és a egy SQL Database-kiszolgálón a nagy kapacitású adatbázisok száma korlátlan, lásd: [egy SQL Database-kiszolgálón egyetlen vagy készletezett adatbázisok SQL Database erőforráskorlátok](sql-database-resource-limits-database-server.md).
 
 ### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Mik azok a nagy kapacitású adatbázis jellemző
 
@@ -98,7 +98,7 @@ Az SQL Database rendkívüli biztosít a számítási feladatok igény szerint a
 
 ## <a name="deep-dive-questions"></a>A kérdések részletes bemutatása
 
-### <a name="can-i-mix-hyperscale-and-single-databases-on-my-logical-server"></a>Kombinálhatom a nagy kapacitású és az önálló adatbázisok saját logikai kiszolgálón
+### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>Kombinálhatom a nagy kapacitású és az önálló adatbázisok egy saját SQL Database-kiszolgáló
 
 Igen.
 
@@ -235,7 +235,7 @@ Még nem ismert (továbbra is az előzetes verzió)
 
 Olvassa el az adatok Azure Storage-ból, és betöltése az adatok betöltése egy nagy kapacitású adatbázisba (ugyanúgy, mint a rendszeres önálló adatbázis megteheti). A Polybase a az Azure SQL Database jelenleg nem támogatott. A Polybase segítségével teheti [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) vagy Spark-feladatok futtatása [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) együtt a [Spark SQL-összekötő](sql-database-spark-connector.md). A Spark-összekötő az SQL tömeges beszúrási támogatja.
 
-Egyszerű helyreállítási vagy a tömeges naplózási modell nem támogatott a nagy kapacitású. A teljes helyreállítási modell szükséges magas rendelkezésre állást biztosít. Azonban a nagy kapacitású még jobban biztosít az adatok betöltését Hibaarány, szemben az új naplófájl architektúra miatt egyetlen Azure SQL-adatbázishoz.
+Egyszerű helyreállítási vagy a tömeges naplózási modell nem támogatott a nagy kapacitású. A teljes helyreállítási modell szükséges magas rendelkezésre állást biztosít. Azonban a nagy kapacitású még jobban biztosít az adatok betöltését Hibaarány, szemben az új naplófájl architektúra miatt egyetlen adatbázishoz.
 
 ### <a name="does-sql-database-hyperscale-allow-provisioning-multiple-nodes-for-ingesting-large-amounts-of-data"></a>Az SQL Database rendkívüli lehetővé teszi nagy mennyiségű adat feldolgozására több csomópont kiépítése
 

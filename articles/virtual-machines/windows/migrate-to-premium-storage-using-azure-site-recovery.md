@@ -9,13 +9,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.component: disks
-ms.openlocfilehash: 7378331e5f7540d807c76511226fcd2ed99883fa
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.subservice: disks
+ms.openlocfilehash: 6db263dcfc3195c9b2ab3afe7587845a4632fd1b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404137"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456527"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás prémium szintű tárolóba az Azure Site Recovery használatával
 
@@ -74,7 +74,7 @@ Az Azure-áttelepítési forgatókönyvhöz követelmények a következők:
 
 A Site Recovery segítségével Azure IaaS virtuális gépek migrálása,-régiók között, vagy ugyanazon régión belül. Ez a cikk az áttelepítési forgatókönyv az alábbi utasításokat is lefednek [replikálni a VMware virtuális gépek vagy fizikai kiszolgálók Azure-bA](../../site-recovery/vmware-walkthrough-overview.md). Kövesse a részletes lépésekről lásd a jelen cikkben lévő utasítások mellett a hivatkozásokat.
 
-### <a name="step-1-create-a-recovery-services-vault"></a>1. lépés: Hozzon létre egy Recovery Services-tároló
+### <a name="step-1-create-a-recovery-services-vault"></a>1. lépés: Recovery Services-tároló létrehozása
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Válassza ki **erőforrás létrehozása** > **felügyeleti** > **Backup és Site Recovery (OMS)**. Másik lehetőségként kiválaszthatja **Tallózás** > **Recovery Services-tároló** > **Hozzáadás**.
@@ -82,10 +82,10 @@ A Site Recovery segítségével Azure IaaS virtuális gépek migrálása,-régi�
    >Backup és Site Recovery lett korábban része a ![OMS csomagot](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand).
 1. Adjon meg egy régióban, amely a virtuális gépeket replikálja. Áttelepítéshez ugyanabban a régióban válassza ki a régiót, ahol a forrás virtuális gépek és a forrás-tárfiókok vannak. 
 
-### <a name="step-2-choose-your-protection-goals"></a>2. lépés: A védelmi célok megválasztása 
+### <a name="step-2-choose-your-protection-goals"></a>2. lépés: Védelmi célok megválasztása 
 
 1. A virtuális gép, ahol szeretné telepíteni a konfigurációs kiszolgálót, nyissa meg a [az Azure portal](https://portal.azure.com).
-2. Lépjen a **Recovery Services-tárolók** > **beállítások** > **Site Recovery** > **1. lépés: készítse elő Infrastruktúra** > **védelmi cél**.
+2. Lépjen a **Recovery Services-tárolók** > **beállítások** > **Site Recovery** > **1. lépés: Az infrastruktúra előkészítése** > **védelmi cél**.
 
    ![Keresse meg a védelmi cél ablaktábla][2]
 
@@ -141,7 +141,7 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
 
 Győződjön meg arról, hogy a konfigurációs kiszolgáló sikeresen társítva a replikációs házirendet, Ön által létrehozott, hajtsa végre a [replikációs beállítások megadása](../../site-recovery/vmware-walkthrough-overview.md).
 
-### <a name="step-6-plan-capacity"></a>6. lépés: Kapacitás megtervezése
+### <a name="step-6-plan-capacity"></a>6. lépés: Kapacitás tervezése
 
 1. Használja a [kapacitás planner](../../site-recovery/site-recovery-capacity-planner.md) sávszélességel a hálózati sávszélesség, tárolási és egyéb követelményeket, a replikációs kell rendelkeznie. 
 2. Ha elkészült, válassza ki a **Igen, elvégeztem** a **rendelkeznie végrehajtotta kapacitástervezés?**.
@@ -162,7 +162,7 @@ Győződjön meg arról, hogy a konfigurációs kiszolgáló sikeresen társítv
    3. A 2. lépésben adja meg a feladatátvételt követő üzembe helyezési modellt, migrálása a premium storage-fiók, egy standard szintű tárfiókot a naplók és sikertelen lesz, virtuális hálózat mentése.
    4. A 3. lépésben adja hozzá a védett virtuális gépek IP-cím alapján. (Belső IP-cím megtalálni, szüksége lehet.)
    5. A 4. lépésben a fiókok, akkor állítsa be a korábban, a folyamatkiszolgáló kiválasztásával tulajdonságainak konfigurálása.
-   6. 5. lépésben pedig válassza ki a replikációs házirendet, a korábban létrehozott "5. lépés: replikációs beállítások megadása."
+   6. 5. lépésben pedig válassza ki a replikációs házirendet, a korábban létrehozott "5. lépés: Replikációs beállítások megadása."
    7. Kattintson az **OK** gombra.
 
    > [!NOTE]
@@ -187,7 +187,7 @@ Kezdeti replikáció befejeződése után futtasson egy feladatátvételi teszte
 
 Láthatja, hogy a teszt feladatátvétel állapotának **beállítások** > **feladatok** > *YOUR_FAILOVER_PLAN_NAME*. A panelen megjelenik egy bontása a lépéseket és a sikeres/sikertelen eredményt. Ha a feladatátvételi tesztet bármely lépése meghiúsul, válassza ki a lépés a hibaüzenetben. 
 
-### <a name="step-9-run-a-failover"></a>9. lépés: A feladatátvétel futtatása
+### <a name="step-9-run-a-failover"></a>9. lépés: Feladatátvétel futtatása
 
 A teszt feladatátvételi futása befejeződött, feladatátvételt végez a lemezek áttelepítése a Premium Storage és a Virtuálisgép-példányok replikálni. Kövesse a részletes lépéseket [feladatátvételt](../../site-recovery/site-recovery-failover.md#run-a-failover). 
 
@@ -198,8 +198,8 @@ A Site Recovery létrehoz egy Virtuálisgép-példánnyal, amelynek típusa mege
 ## <a name="post-migration-steps"></a>Az áttelepítést követő lépések
 
 1. **Konfigurálja a replikált virtuális gépek a rendelkezésre állási csoportot, ha van ilyen**. A Site Recovery nem támogatja a rendelkezésre állási csoport együtt át virtuális gépek. Attól függően, a replikált virtuális gép telepítése esetén tegye a következők egyikét:
-   * A klasszikus üzemi modellel létrehozott virtuális gépek: a virtuális gép hozzáadása a rendelkezésre állási csoportot az Azure Portalon. Lépjen a részletes lépéseket [hozzáadása egy meglévő virtuális gépet egy rendelkezésre állási csoporthoz](../linux/classic/configure-availability-classic.md).
-   * A Resource Manager-alapú üzemi modellel létrehozott virtuális gépek: mentse a konfigurációt a virtuális gép, és ezután törölje és hozza létre újból a virtuális gépek rendelkezésre állási csoportban. Ehhez használja a parancsfájlt, [állítsa be az Azure Resource Manager virtuális gép rendelkezésre állási csoport](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Ez a szkript futtatása előtt ellenőrizze a korlátatait, és az állásidő megtervezése.
+   * A klasszikus üzemi modellel létrehozott virtuális gépek: Adja hozzá a virtuális Gépet a rendelkezésre állási csoportot az Azure Portalon. Lépjen a részletes lépéseket [hozzáadása egy meglévő virtuális gépet egy rendelkezésre állási csoporthoz](../linux/classic/configure-availability-classic.md).
+   * A Resource Manager-alapú üzemi modellel létrehozott virtuális gépek: Mentse a konfigurációt a virtuális gép, és ezután törölje és hozza létre újból a virtuális gépek rendelkezésre állási csoportban. Ehhez használja a parancsfájlt, [állítsa be az Azure Resource Manager virtuális gép rendelkezésre állási csoport](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Ez a szkript futtatása előtt ellenőrizze a korlátatait, és az állásidő megtervezése.
 
 2. **Törölje a régi virtuális gépeket és lemezeket**. Győződjön meg arról, hogy a forráslemez összhangban-e a prémium szintű lemezeket és, hogy az új virtuális gépek hajtsa végre ugyanezt a funkciót, mint a forrás virtuális gépeket. Törölje a virtuális Gépet, és törölje a lemezeket a forrás tárfiókok az Azure Portalon. Ha probléma, amely a lemez nincs törölve, annak ellenére, hogy törli a virtuális gép, lásd: [tárolási erőforrás törlésével kapcsolatos hibák elhárítása](storage-resource-deletion-errors.md).
 
@@ -222,7 +222,7 @@ Azt is ellenőrizze, tudjon meg többet az Azure Storage és az Azure Virtual Ma
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](premium-storage.md)
+* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](premium-storage.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

@@ -2,7 +2,7 @@
 title: Eredmények és az adattár – Azure Batch a befejezett feladatok és tevékenységek naplók megőrzése |} A Microsoft Docs
 description: A Batch-feladatok és a feladatok megőrzése kimeneti adatokat a különböző lehetőségek ismertetése. Megőrizheti az adatokat az Azure Storage vagy a másikba.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 463c3605f96774b6f05235f3c9d7fe0e5a7139f2
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: ff7224b342aa421c576c170f3c23ac64cad9f161
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705718"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474344"
 ---
 # <a name="persist-job-and-task-output"></a>Feladatok és tevékenységek kimenetének megőrzése
 
@@ -77,13 +77,13 @@ A saját teljes fájl adatátviteli megoldás is alkalmazhat. Ez a megközelít�
 
 A Batch-megoldás tervezésekor vegye figyelembe a következő tényezőket, feladatok és tevékenységek kimeneteinek kapcsolatos.
 
-- **Számítási csomópont élettartama**: számítási csomópontok gyakran átmeneti, különösen az automatikus méretezés felkészített készletekben. A csomóponton futó feladat kimenete csak, amíg a csomópont létezik, és csak a fájl megőrzési időn belül beállította a feladat érhető el. Ha a feladat kimeneti, szükséges lehet a feladat befejezése után, majd a feladat fel kell tölteni a kimeneti fájlok – például az Azure Storage olyan tartós tárban.
+- **Számítási csomópont élettartama**: Számítási csomópontok általában átmeneti, különösen az automatikus méretezés felkészített készletekben. A csomóponton futó feladat kimenete csak, amíg a csomópont létezik, és csak a fájl megőrzési időn belül beállította a feladat érhető el. Ha a feladat kimeneti, szükséges lehet a feladat befejezése után, majd a feladat fel kell tölteni a kimeneti fájlok – például az Azure Storage olyan tartós tárban.
 
-- **Tároló kimeneti**: Azure Storage ajánlott tevékenység kimenetének adattárként, de bármilyen tartós tárolási is használhatja. Az Azure Storage-feladat kimeneti írása integrálva van az a Batch szolgáltatás API-ja. Ha egy másik képernyő tartós tárhelyet használja, szüksége az alkalmazáslogikák teljes feladat kimeneti saját maga is tartalmaz.
+- **Tároló kimeneti**: Az Azure Storage ajánlott tevékenység kimenetének adattárként, de bármilyen tartós tárolási is használhatja. Az Azure Storage-feladat kimeneti írása integrálva van az a Batch szolgáltatás API-ja. Ha egy másik képernyő tartós tárhelyet használja, szüksége az alkalmazáslogikák teljes feladat kimeneti saját maga is tartalmaz.
 
-- **Lekérés kimeneti**: kérheti le a feladat kimeneti közvetlenül a készletben lévő számítási csomópontok, vagy az Azure Storage vagy egy másik adattárral, ha a feladat kimenetének megőrizte rendelkezik. Közvetlenül a számítási csomóponton a feladat kimenetének lekéréséhez szüksége van a fájl nevét és a kimeneti helyet a csomóponton. Ha az Azure Storage-feladat kimeneti szűnik meg, akkor szüksége az Azure Storage-töltse le a kimeneti fájlokat az Azure Storage SDK-val a fájl teljes elérési útja.
+- **Lekérés kimeneti**: Kérheti le a feladat kimeneti közvetlenül a készletben lévő számítási csomópontok, vagy az Azure Storage vagy egy másik adattárral, ha a feladat kimenetének megőrizte rendelkezik. Közvetlenül a számítási csomóponton a feladat kimenetének lekéréséhez szüksége van a fájl nevét és a kimeneti helyet a csomóponton. Ha az Azure Storage-feladat kimeneti szűnik meg, akkor szüksége az Azure Storage-töltse le a kimeneti fájlokat az Azure Storage SDK-val a fájl teljes elérési útja.
 
-- **Kimeneti megtekintése**: mikor keresse meg az Azure Portalon, és válassza a kötegelt tevékenységhez **csomóponton lévő fájlok**, lehetősége lesz a feladathoz hozzárendelt összes fájl, nem csak a kimeneti fájlokat is érdekli. Újra a számítási csomópontokon fájl áll rendelkezésre, csak, amíg a csomópont létezik, és csak a fájlmegőrzési időt belül beállította a feladat. Feladat kimenete, amely az Azure Storage már megőrizte megtekintéséhez használhatja az Azure portal vagy egy Azure Storage ügyféloldali alkalmazás például a [Azure Storage Explorer][storage_explorer]. Kimeneti adatok megtekintéséhez az Azure Storage-ban a portál vagy egy másik eszközzel kell ismeri a fájl helyét, és keresse meg a fájlt közvetlenül.
+- **Megtekintés a kimeneti**: Ha megnyitja egy Batch-feladat az Azure Portalon, és válassza **csomóponton lévő fájlok**, lehetősége lesz a feladathoz hozzárendelt összes fájl, nem csak a kimeneti fájlokat is érdekli. Újra a számítási csomópontokon fájl áll rendelkezésre, csak, amíg a csomópont létezik, és csak a fájlmegőrzési időt belül beállította a feladat. Feladat kimenete, amely az Azure Storage már megőrizte megtekintéséhez használhatja az Azure portal vagy egy Azure Storage ügyféloldali alkalmazás például a [Azure Storage Explorer][storage_explorer]. Kimeneti adatok megtekintéséhez az Azure Storage-ban a portál vagy egy másik eszközzel kell ismeri a fájl helyét, és keresse meg a fájlt közvetlenül.
 
 ## <a name="next-steps"></a>További lépések
 

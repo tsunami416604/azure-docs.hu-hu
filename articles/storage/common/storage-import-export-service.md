@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 480d67917abf3a8aaca64aa9aae30be5acf55e11
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: ccfc91e85196cbc8295bce71e512d9cf856a23c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528556"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453382"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
 
@@ -27,18 +27,18 @@ Ha azt szeretné, a Microsoft által biztosított meghajtók használata az adat
 
 Fontolja meg az Azure Import/Export szolgáltatás használatát, amikor feltöltése vagy a hálózaton keresztül adatokat tölti le túl lassúak, vagy további hálózati sávszélesség a kezdeti költségekkel járnának. A szolgáltatás használatához a következő esetekben:
 
-* **Adatok migrálása a felhőbe**: nagy mennyiségű adat áthelyezése az Azure-ban gyorsan és költséghatékonyan.
-* **A tartalom terjesztési**: pedig gyorsan elküldheti adatait az ügyfelek telephelyeire.
-* **Biztonsági mentés**: az Azure Storage szolgáltatásban tárolja a helyszíni adatok biztonsági másolatok készítése.
-* **Adat-helyreállítás**: nagy mennyiségű storage-ban tárolt adatok helyreállításához és szállítását a helyszíni helyre.
+* **Adatok migrálása a felhőbe**: Nagy mennyiségű adat áthelyezése az Azure-ban gyorsan és költséghatékonyan.
+* **A tartalom terjesztési**: Az ügyfelek telephelyeire pedig gyorsan elküldheti adatait.
+* **Biztonsági mentés**: Az Azure Storage szolgáltatásban tárolja a helyszíni adatok biztonsági másolatok készítése.
+* **Adat-helyreállítás**: Nagy mennyiségű storage-ban tárolt adatok helyreállításához és szállítását a helyszíni helyre.
 
 ## <a name="importexport-components"></a>Importálási/exportálási összetevők
 
 Import/Export szolgáltatás a következő összetevőket használja:
 
-- **Importálási/exportálási szolgáltatás**: az Azure Portalon elérhető szolgáltatás segítségével a felhasználók használhassanak, és nyomon követése adatok (feltöltés) importálása és exportálása a feladatok (Letöltés).  
+- **Importálási/exportálási szolgáltatás**: Az Azure Portalon elérhető szolgáltatás segítségével a felhasználó létrehozása és nyomon követheti az adatok importálása (feltöltés) és (Letöltés) feladatok exportálása.  
 
-- **WAImportExport eszköz**: Ez a parancssori eszköz, amely a következőket: 
+- **WAImportExport eszköz**: Ez a parancssori eszköz, amely a következőket hajtja végre: 
     - Előkészíti a lemezmeghajtók szállított importálása.
     - Lehetővé teszi az adatok másolása a meghajtóra.
     - Az adatok a meghajtón a BitLocker titkosítja.
@@ -52,7 +52,7 @@ Import/Export szolgáltatás a következő összetevőket használja:
 >
 > A WAImportExport eszköz csak nem kompatibilis a 64 bites Windows operációs rendszert. Lépjen az adott operációsrendszer-verziók támogatott, [Azure Import/Export követelmények](storage-import-export-requirements.md#supported-operating-systems).
 
-- **Lemezmeghajtók**: el olyan tartós állapotú meghajtókhoz (SSD-kkel) vagy a merevlemez-(HDD) meghajtók az Azure-adatközpontba. Importálási feladat létrehozásakor, az adatokat tartalmazó meghajtók szállításra. Exportálási feladat létrehozásakor, az Azure-adatközpontba üres meghajtókon szállításra. Adott lemez esetében, ugorjon [támogatja a lemeztípusok](storage-import-export-requirements.md#supported-hardware).
+- **Lemezmeghajtók**: Küldhet el olyan tartós állapotú meghajtókhoz (SSD-kkel) vagy a merevlemez-meghajtókon (HDD) az Azure-adatközpontba. Importálási feladat létrehozásakor, az adatokat tartalmazó meghajtók szállításra. Exportálási feladat létrehozásakor, az Azure-adatközpontba üres meghajtókon szállításra. Adott lemez esetében, ugorjon [támogatja a lemeztípusok](storage-import-export-requirements.md#supported-hardware).
 
 ## <a name="how-does-importexport-work"></a>Hogyan működik az importálási/exportálási?
 

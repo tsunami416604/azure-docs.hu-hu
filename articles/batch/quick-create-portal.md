@@ -2,22 +2,22 @@
 title: Azure rövid útmutató – Batch-feladat futtatása – portál
 description: Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladatokat az Azure Portalon.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 7daaf042d22ba4ac0369b732b586a3760d8cd51c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
-ms.translationtype: HT
+ms.openlocfilehash: 4356ea57e73e063d18155611b8c11090aa11edb3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859574"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471215"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure Portalon
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Gyors útmutató: Az első Batch-feladat futtatása az Azure Portalon
 
 Ez a rövid útmutató ismerteti, hogyan lehet létrehozni az Azure Portalon Batch-fiókot, számítási csomópontok (virtuális gépek) *készletét*, valamint egy olyan *feladatot*, amely alapszintű *tevékenységeket* futtat a készleten. A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
 

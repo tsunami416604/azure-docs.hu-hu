@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
-ms.component: files
-ms.openlocfilehash: b8f77f404a8e5d2d1625a327a1e50c0e169b6135
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.subservice: files
+ms.openlocfilehash: ca7e89f4b7f976633d5f097b7e335fe9b7631985
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744428"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477743"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files-problémák hibaelhárítása
 
@@ -183,11 +183,11 @@ Ez a probléma gyakori okai a következők:
 
     |   | SMB 2.1 <br>(Csatlakoztatása a virtuális gépek ugyanazon Azure-régióban) | SMB 3.0 <br>(Csatlakoztatása a helyszíni és a régiók közötti) |
     | --- | :---: | :---: |
-    | Ubuntu Server | 14.04-es + | 16.04 + |
-    | RHEL | 7 + | 7.5 + |
-    | CentOS | 7 + |  7.5 + |
-    | Debian | 8 + |   |
-    | openSUSE | 13.2 + | 42.3 + |
+    | Ubuntu Server | 14.04+ | 16.04+ |
+    | RHEL | 7+ | 7.5+ |
+    | CentOS | 7+ |  7.5+ |
+    | Debian | 8+ |   |
+    | openSUSE | 13.2+ | 42.3+ |
     | SUSE Linux Enterprise Server | 12 | 12 SP3 + |
 
 - CIFS segédprogramok (cfs-utils) nincsenek telepítve az ügyfélre.

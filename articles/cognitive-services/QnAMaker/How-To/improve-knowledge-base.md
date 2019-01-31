@@ -6,16 +6,16 @@ author: diberry
 manager: cgronlun
 displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: cf652c1b0edd469f29d14ed10d66ebe78b0fbb7c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7f519729f3ad94324b847ca6b15b254ea7c6abbb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247833"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463735"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
 
@@ -42,7 +42,7 @@ Az összes javaslat listája együtt fürtözöttek és felső javaslatokat alte
 
 ## <a name="upgrade-version-to-use-active-learning"></a>Aktív tanulás frissítési verziója
 
-Aktív tanulás a verze modulu runtime 4.4.0 vagy újabb támogatott. Ha a Tudásbázis egy korábbi verzióval készült [frissítse a szolgáltatást](upgrade-qnamaker-service.md) a funkció használatához. 
+Aktív tanulás a verze modulu runtime 4.4.0 vagy újabb támogatott. Ha a Tudásbázis egy korábbi verzióval készült [a futtatókörnyezet frissítése](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) a funkció használatához. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

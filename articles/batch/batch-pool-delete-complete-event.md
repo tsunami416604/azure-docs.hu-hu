@@ -1,8 +1,8 @@
 ---
-title: Azure Batch-készlet törlése befejeződésének eseményét. |} Microsoft Docs
-description: Útmutató a Batch-készlet törlése befejeződésének eseményét.
+title: Az Azure Batch-készlet törlése kész esemény |} A Microsoft Docs
+description: Referencia a Batch-készlet törlése kész esemény.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,18 +11,19 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: bfcbcf40efc64ab1c79ee1a86e02502c68ad6d47
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: e715ccd0f5e79f9c640a3c060b0252b798748b4d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474548"
 ---
 # <a name="pool-delete-complete-event"></a>Készlet törlése kész esemény
 
- Ez az esemény is ki lesz adva a készlet törlési művelet befejeződésekor.
+ Ez az esemény bocsásson ki egy alkalmazáskészlet-törlési művelet befejezése után.
 
- A következő példa bemutatja a készletben törlés befejeződésének eseményét törzsét.
+ Az alábbi példa bemutatja egy készlet törlése kész esemény törzsét.
 
 ```
 {
@@ -32,11 +33,11 @@ ms.lasthandoff: 04/03/2018
 }
 ```
 
-|Elem|Típus|Megjegyzések|
+|Elem|Typo|Megjegyzések|
 |-------------|----------|-----------|
-|id|Karakterlánc|A készlet azonosítóját.|
-|startTime|DateTime|A készlet törlése indulásakor.|
-|endTime|DateTime|Az az idő a készlet törlése befejeződött.|
+|id|String|A készlet azonosítója.|
+|startTime|DateTime|Az idő a készlet törlése megkezdődött.|
+|endTime|DateTime|Az idő a készlet törlése befejeződött.|
 
 ## <a name="remarks"></a>Megjegyzések
-Állapotok és hibakódok készlet átméretezés kapcsolatos további információkért lásd: [címkészlet törlése fiókból](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).
+További információ az állapotok és a készlet átméretezés hibakódok: [címkészlet törlése egy fiókból](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).

@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: abdeeacc22d2709a3107c9e9e05bd982705d7dea
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 00921fd82463a75e81e1279d436a576461e02f78
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079069"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301645"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>A helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációjával
 
@@ -109,9 +109,9 @@ Az üzembe helyezés befejeződött, és néhány esetben kipróbálhatja. Az al
 
 | Tevékenység | Leírások |
 | --- | --- |
-| Egyes eszközök a munkahelyi csatlakozás az Azure Active Directory eszközregisztrációs szolgáltatás használatával. Csatlakozhat az iOS, Windows és Android-eszközökön. |[Eszközök csatlakoztatása a munkahelyen, az Azure Active Directory eszközregisztrációs szolgáltatással](#join-devices-to-your-workplace-using-azure-active-directory-device-registration) |
+| Egyes eszközök a munkahelyi csatlakozás az Azure Active Directory eszközregisztrációs szolgáltatás használatával. Csatlakozhat az iOS, Windows és Android-eszközökön. |[Eszközök csatlakoztatása a munkahelyen, az Azure Active Directory eszközregisztrációs szolgáltatással](#join-devices-to-your-workplace-by-using-azure-active-directory-device-registration-service) |
 | Megtekintheti és engedélyezése vagy letiltása a regisztrált eszközök a felügyeleti portál használatával. Ebben a feladatban az egyes regisztrált eszközöket a felügyeleti portál használatával megtekintése. |[Az Azure Active Directory eszközregisztrációs szolgáltatás áttekintése](active-directory-device-registration-get-started.md) |
-| Győződjön meg arról, hogy eszköz objektumokat a rendszer visszaírja az Azure Active Directoryból a Windows Server Active Directory. |[Ellenőrizze a regisztrált eszközöket a rendszer visszaírja az Active Directoryhoz](#verify-registered-devices-are-written-back-to-active-directory) |
+| Győződjön meg arról, hogy eszköz objektumokat a rendszer visszaírja az Azure Active Directoryból a Windows Server Active Directory. |[Ellenőrizze a regisztrált eszközöket a rendszer visszaírja az Active Directoryhoz](#verify-that-registered-devices-are-written-back-to-active-directory) |
 | Most, hogy a felhasználók regisztrálhatják eszközeiket, alkalmazást hozhat létre hozzáférési szabályzatok az AD FS, amelyek csak regisztrált eszközök engedélyezésére. Ebben a feladatban egy alkalmazás-hozzáférési szabály és a egy egyéni hozzáférés-megtagadási üzenetet hoz létre. |[Alkalmazás-hozzáférési házirend és egyéni hozzáférés-megtagadási üzenet létrehozása](#create-an-application-access-policy-and-custom-access-denied-message) |
 
 ## <a name="integrate-azure-active-directory-with-on-premises-active-directory"></a>Azure Active Directory integrálása a helyszíni Active Directoryval

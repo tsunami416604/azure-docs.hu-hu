@@ -2,19 +2,18 @@
 title: A DPM-kiszolgáló számítási feladatainak biztonsági mentéséhez az Azure előkészítése
 description: Bevezetés az adatok biztonsági mentése a DPM az Azure Recovery Services-tárolóba.
 services: backup
-author: adigan
-manager: nkolli
-keywords: A System Center Data Protection Manager, a data protection manager, a dpm biztonsági mentése
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: ac89f0f2e2f86fa34fc754ee23e9b67329560fa4
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 1f2defd2adb580aee71482a699c7987ca3fa7807
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024477"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301067"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Az Azure-ba, a System Center DPM-mel biztonsági másolatot előkészítése
 
@@ -51,9 +50,9 @@ A DPM a Hyper-V virtuális gépen | A System Center 2012 SP1 vagy újabb, illetv
 DPM VMware virtuális gépen | System Center 2012 R2 5. kumulatív frissítés vagy újabb.
 Összetevők | A DPM-kiszolgálóval kell rendelkeznie a Windows PowerShell és a .net keretrendszer 4.5-ös verzióját.
 Támogatott alkalmazások | [Ismerje meg,](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) milyen biztonsági mentéseket.
-Támogatott fájltípusok | Az ilyen biztonsági másolat készíthető a Azure Backup szolgáltatással: titkosítása (csak teljes biztonsági mentések); Tömörített (növekményes biztonsági mentések támogatva); Ritka (növekményes biztonsági mentések támogatva); Tömörített és ritka (kezelt, ritka).
+Támogatott fájltípusok | Az ilyen biztonsági másolat készíthető a Azure Backup szolgáltatással: Titkosított (csak teljes biztonsági mentések); Tömörített (növekményes biztonsági mentések támogatva); Ritka (növekményes biztonsági mentések támogatva); Tömörített és ritka (kezelt, ritka).
 Nem támogatott fájltípusok | A kis-és nagybetűket fájlrendszerek; kiszolgálók a rögzített hivatkozások (kimaradnak); újraelemzési pontok (kimaradnak); titkosított és tömörített (kimaradnak); titkosított és ritka (kimaradnak); Tömörített stream; elemezni az adatfolyamot.
-Helyi tároló | Egyes gépek biztonsági helyi szabad tárhely, amely az adatokat, amelyek készül biztonsági másolat méretének legalább 5 %-át kell rendelkeznie.  Például 100 GB adat biztonsági mentésével legalább 5 GB szabad hely az ideiglenes hely szükséges.
+Helyi tárhely | Egyes gépek biztonsági helyi szabad tárhely, amely az adatokat, amelyek készül biztonsági másolat méretének legalább 5 %-át kell rendelkeznie.  Például 100 GB adat biztonsági mentésével legalább 5 GB szabad hely az ideiglenes hely szükséges.
 Tároló tárolási | Nem a biztonsági másolatot készíthet az Azure Backup-tároló adatok mennyisége korlátozott, de egy adatforráshoz (például egy virtuális gép vagy adatbázis) mérete nem haladhatja meg a 54400 GB.
 Az Azure Backup ügynöke | Ha a DPM a System Center 2012 SP1 rendszeren fut, telepítse a 2-es vagy újabb kumulatív DPM SP1. Ez az ügynök telepítéséhez szükséges.<br/><br/> Ez a cikk ismerteti, hogyan helyezhet üzembe az Azure Backup ügynököt, más néven a Microsoft Azure Recovery Service-(MARS-) ügynök legújabb verzióját. Ha egy korábbi verziója telepítve van, győződjön meg arról, hogy a biztonsági mentés a várt módon működik a legújabb verzióra frissíteni. 
 

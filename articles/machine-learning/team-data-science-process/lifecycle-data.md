@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 77c67c491b3157103b267864417678c83326814c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c4acb3b779821193949c69d440edaafec5e3d803
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141152"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474054"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Adatgyűjtés és a csoportos adatelemzési folyamat ismertetése szakasza
 
@@ -67,8 +67,8 @@ Ebben a szakaszban egy adatfolyamat megoldás architektúrája, fejlesztése. A 
 Az alábbiakban a termékek ebben a szakaszban:
 
    * [Adatok minőségi jelentés](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/DataSummaryReport.md): Ez a jelentés összefoglaló adatokat, mindegyik attribútum és a cél, a kapcsolatokat tartalmaz változó rangsorolás és egyebek. A [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) TDSP részét is gyorsan létrehozhatja a jelentés minden táblázatos adatkészlet, például a CSV-fájl vagy egy relációs tábla megadott eszköz. 
-   * **Megoldásarchitektúra**: A megoldásarchitektúra lehet egy diagram, vagy az adatok leírása folyamat, amikor pontozási futtatásával vagy az új adatok előrejelzések a modell létrehozása után. A folyamat újratanítása a modellt az új adatok alapján is tartalmaz. A dokumentum a Store a [projekt](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) könyvtár a TDSP directory struktúra sablon használatakor.
-   * **Ellenőrzőpont döntési**: a szolgáltatás teljes termékgondozó csoportja és a modell létrehozásának megkezdése előtt kiértékeli-e is annak megállapításához, hogy a várt érték elméletben a minden esetben hasznos, a folytatáshoz elegendő a projektet. Előfordulhat például lehet készen áll a folytatáshoz kell további adatok gyűjtése, illetve a projekt abandon, mert az adatok nem létezik a választ a kérdésre.
+   * **Megoldásarchitektúra**: A megoldásarchitektúra lehet egy diagram vagy a leírást a pontozási futtatásához használt adatfolyamat vagy előrejelzéseket új adatokat a modell létrehozása után. A folyamat újratanítása a modellt az új adatok alapján is tartalmaz. A dokumentum a Store a [projekt](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) könyvtár a TDSP directory struktúra sablon használatakor.
+   * **Ellenőrzőpont döntési**: A szolgáltatás teljes termékgondozó csoportja és a modell létrehozásának megkezdése előtt, a projekt annak megállapításához, hogy a várt érték elméletben a minden esetben hasznos, a folytatáshoz elegendő is kiértékeli. Előfordulhat például lehet készen áll a folytatáshoz kell további adatok gyűjtése, illetve a projekt abandon, mert az adatok nem létezik a választ a kérdésre.
 
 ## <a name="next-steps"></a>További lépések
 

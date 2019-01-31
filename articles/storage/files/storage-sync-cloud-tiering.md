@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
-ms.component: files
-ms.openlocfilehash: a0f427ef84a6540522f521cd365e2422a70eb0cd
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.subservice: files
+ms.openlocfilehash: e73a11d7849d6e304be0844a55ddad46e6966f6e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623651"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470450"
 ---
 # <a name="cloud-tiering-overview"></a>A cloud rétegezési áttekintése
 Felhőbeli rétegezés egy olyan opcionális szolgáltatás, az Azure File Sync, amelyben gyakran használt gyorsítótárba helyileg a kiszolgálón, míg minden más fájlnál számítógépen rétegzett az Azure Files házirend-beállításai alapján. A rétegzett egy fájlt, az Azure File Sync fájlrendszerszűrő (StorageSync.sys) helyettesíti a fájlt helyileg egy mutatót, vagy az újraelemzési pont. Az újraelemzési pontot az Azure Files-fájlra mutató URL-címet jelöli. Egy rétegzett fájlt a "offline" attribútum és a beállítása az NTFS, harmadik féltől származó alkalmazások biztonságosan azonosíthassa a rétegzett fájlok FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútum is rendelkezik.
@@ -21,7 +21,7 @@ Felhőbeli rétegezés egy olyan opcionális szolgáltatás, az Azure File Sync,
 Amikor egy felhasználó megnyit egy rétegzett fájlt, az Azure File Sync zökkenőmentesen visszaírja a fájl adatait a az Azure Files a felhasználót, hogy a fájl valójában az Azure-ban tárolt ismerete nélkül. 
  
  > [!Important]  
-    > Fontos: A Felhőbeli rétegezés esetén nem támogatott a Windows rendszer köteteken kiszolgálói végpontot, és csak 64 KiB-nál nagyobb fájlok helyezhető el az Azure Files.
+    > Fontos: Felhőbeli rétegezés esetén nem támogatott a Windows rendszer köteteken kiszolgálói végpontot, és csak 64 KiB-nál nagyobb fájlok helyezhető el az Azure Files.
     
 Az Azure File Sync nem támogatja a rétegzési fájlok kisebb, mint 64 KiB, a teljesítménybeli terhelést rétegezést és az ilyen kisméretű fájlok visszahívása felülmúlják a lemezterület-megtakarítás.
 
@@ -86,7 +86,7 @@ Ellenőrizze, hogy a fájl tartozik rétegzett az Azure-fájlmegosztás számos 
         fsutil reparsepoint query <your-file-name>
         ```
 
-        Ha a fájl egy újraelemzési ponttal rendelkezik, tekintse meg a várható **címkeértékkel újraelemzési: 0x8000001e**. A hexadecimális érték az újraelemzési pont érték, amely az Azure File Sync tulajdonában van. A kimenet a fájlt a az Azure-fájlmegosztást az elérési utat jelölő újraelemzési adatokat is tartalmazza.
+        Ha a fájl egy újraelemzési ponttal rendelkezik, tekintse meg a várható **újraelemzési címke értéke: 0x8000001e**. A hexadecimális érték az újraelemzési pont érték, amely az Azure File Sync tulajdonában van. A kimenet a fájlt a az Azure-fájlmegosztást az elérési utat jelölő újraelemzési adatokat is tartalmazza.
 
         > [!WARNING]  
         > A `fsutil reparsepoint` segédprogram parancsot is van lehetősége, újraelemzési pont törlése. Ez a parancs nem végrehajtani, kivéve, ha az Azure File Sync mérnöki csapata arra kéri, hogy. A parancs futtatása az adatvesztést eredményezhet. 
@@ -105,7 +105,7 @@ Is használhatja PowerShell kényszerítése egy fájlt. Ez a beállítás akkor
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Miért nem a *lemezterület* fájl egyezést tulajdonsága a *mérete* tulajdonság használata az Azure File Sync után? 
-Windows Fájlkezelőben tesz elérhetővé, amelyek egy fájl mérete két tulajdonság: **mérete** és **lemezterület**. Ezek a Tulajdonságok találhatókkal jelentése különböznek. **Méret** a fájl teljes méretét jelenti. **A lemez mérete** a fájlfolyamot, hogy a lemez méretét adja meg. Ezek a tulajdonságok értékeit számos okból, például a tömörítés esetében eltérőek, az Adatdeduplikáció használatát, vagy az Azure File Sync felhőrétegzési. Egy fájlt az Azure-fájlmegosztások többszintű, ha a lemez mérete nulla, mert a fájlfolyamot van tárolva, az Azure-fájlmegosztást, és nem a lemezen. Lehetőség arra is a fájlok részben rétegzett (vagy részlegesen visszahívott szoftvertermék) lehet. A részlegesen rétegezett fájl a fájl a lemezen van megvalósítva. Ez akkor fordulhat elő, amikor fájlt például a multimédia-lejátszó alkalmazások által részben olvasható vagy segédprogramok zip. 
+Windows Fájlkezelőben tünteti fel a két tulajdonság, amelyek egy fájl mérete: **Méret** és **lemezterület**. Ezek a Tulajdonságok találhatókkal jelentése különböznek. **Méret** a fájl teljes méretét jelenti. **A lemez mérete** a fájlfolyamot, hogy a lemez méretét adja meg. Ezek a tulajdonságok értékeit számos okból, például a tömörítés esetében eltérőek, az Adatdeduplikáció használatát, vagy az Azure File Sync felhőrétegzési. Egy fájlt az Azure-fájlmegosztások többszintű, ha a lemez mérete nulla, mert a fájlfolyamot van tárolva, az Azure-fájlmegosztást, és nem a lemezen. Lehetőség arra is a fájlok részben rétegzett (vagy részlegesen visszahívott szoftvertermék) lehet. A részlegesen rétegezett fájl a fájl a lemezen van megvalósítva. Ez akkor fordulhat elő, amikor fájlt például a multimédia-lejátszó alkalmazások által részben olvasható vagy segédprogramok zip. 
 
 <a id="afs-force-tiering"></a>
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Hogyan kényszeríthetem egy fájl vagy címtár helyezhető el?

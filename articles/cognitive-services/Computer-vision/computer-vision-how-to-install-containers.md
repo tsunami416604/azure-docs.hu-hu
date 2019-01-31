@@ -6,21 +6,19 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.subservice: text-analytics
+ms.subservice: computer-vision
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: eb586a71747bb1708b069f30a86421c691cb3d46
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1e7f62d35e9850202b7d55c3c3440ff88413931d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186399"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473493"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
-
-Bontás a szoftverek terjesztéséhez, amelyben egy alkalmazás vagy szolgáltatás van csomagolva, egy tárolórendszerképet egy megközelítést. A konfiguráció és az alkalmazás vagy szolgáltatás függőségeinek szerepelnek a tároló rendszerképét. A tároló rendszerképét ezután központilag telepítheti alig vagy egyáltalán nem módosítással üzemeltető tárolón futnak. Tárolók el különítve egymással és az alapjául szolgáló operációs rendszer, tárhely kisebb, mint egy virtuális gépet. A tárolók rövid távú feladatok tárolórendszerképeket a példányt, és távolítja el, amikor már nincs rá szükség.
 
 A Computer Vision ismeri fel a szöveg részét is egy Docker-tárolóként érhető el. Lehetővé teszi, és nyomtatott szöveg kinyerése a különféle objektumokat a különféle felületekkel és hátterek, például a visszaigazolások és poszterek vagy tájékoztató névjegykártyák képét.  
 > [!IMPORTANT]
@@ -28,108 +26,101 @@ A Computer Vision ismeri fel a szöveg részét is egy Docker-tárolóként érh
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="preparation"></a>Előkészítés
+## <a name="prerequisites"></a>Előfeltételek
 
-A szöveg felismerése tároló használata előtt a következő előfeltételeknek kell megfelelnie:
+Szöveg felismerése tárolók használata előtt a következő előfeltételeknek kell megfelelnie:
 
-**Docker-motor**: Helyileg telepített Docker-motor kell rendelkeznie. A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), és [Windows](https://docs.docker.com/docker-for-windows/). A Windows Linux-tárolók támogatják a Docker kell konfigurálni. Docker-tárolóit közvetlenül is telepíthető [Azure Kubernetes Service](../../aks/index.yml), [Azure Container Instances](../../container-instances/index.yml), vagy egy [Kubernetes](https://kubernetes.io/) üzembehelyezettfürt[Az azure Stack](../../azure-stack/index.yml). Kubernetes az Azure Stackhez való telepítéséről további információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+|Szükséges|Cél|
+|--|--|
+|Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
+|Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
+|Ismeri fel a szöveg erőforrás |A tároló használatához rendelkeznie kell:<br><br>A [ _szöveg felismerése_ ](vision-api-how-to-topics/howtosubscribe.md) Azure-erőforráshoz tartozó számlázási kulcs és számlázási végpont URI azonosítója. Mindkét értéket az Azure Portalon ismeri fel a szöveg áttekintése és a kulcsok oldalon érhető el, és a tároló indításához szükséges.<br><br>**{BILLING_KEY}** : erőforrás-kulcs<br><br>**{BILLING_ENDPOINT_URI}** : végpont URI-példa: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
 
-Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz.
-
-**A Microsoft Container Registry és a Docker ismerős**: Rendelkeznie kell Microsoft Container Registry és a Docker fő fogalmaira, például beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel `docker` parancsokat.  
-
-A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).
-
-### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
-
-A szöveg felismerése tárolóhoz legalább 1 processzormag, legalább 2.6-os gigahertz (GHz) igényel, és gyorsabban, és 8 gigabájt (GB), a lefoglalt memória, de ajánlott legalább 2 processzormag és 8 GB lefoglalt memória.
 
 ## <a name="request-access-to-the-private-container-registry"></a>A privát tárolóregisztrációs hozzáférés kérése
 
-Először végezze el, és küldje el a [Cognitive Services Látástechnológia tárolók kérelem űrlap](https://aka.ms/VisionContainersPreview) hozzáférés kéréséhez a szöveg felismerése tárolóba. Az űrlap kérelmek, a vállalat és a felhasználói forgatókönyvet, amelynek a tároló használni kívánt információkat. Miután elküldte, az Azure Cognitive Services-csapat áttekinti az űrlap győződjön meg arról, hogy megfelel a feltételeknek a privát tárolóregisztrációs adatbázis eléréséhez.
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
 
-> [!IMPORTANT]
-> Egy a képernyőn egy Microsoft-fiók (MSA) vagy az Azure Active Directory (Azure AD)-fiókjához társított e-mail-címet kell használnia.
+### <a name="the-host-computer"></a>A számítógép
 
-Ha jóváhagyja a kérést, majd egy e-mailt kap az utasítások a szerezze be a hitelesítő adatokat, és a privát tárolóregisztrációs adatbázis eléréséhez.
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
 
-## <a name="create-a-computer-vision-resource-on-azure"></a>Számítógépes Látástechnológia erőforrás létrehozása az Azure-ban
 
-Ha a szöveg felismerése tárolót használni kívánt létre kell hoznia az Azure-ban a Computer Vision erőforrás. Miután létrehozta az erőforrást, majd használja az előfizetési kulcs és a végpont URL-címet az erőforrás a tároló példányosítása. Egy tároló hárítható el kapcsolatos további információkért lásd: [hozható létre egy tárolót a letöltött tárolórendszerkép](#instantiate-a-container-from-a-downloaded-container-image).
+### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
 
-A következő lépésekkel hozhat létre, és a egy Azure-erőforrás lévő információk lekéréséhez:
+A következő táblázat ismerteti a minimális és ajánlott processzormagot és memóriát lefoglalni az egyes szöveg felismerése tárolók.
 
-1. Hozzon létre egy Azure-erőforrást az Azure Portalon.  
-   Ha azt szeretné, a szöveg felismerése tároló használatára, először létre kell hoznia egy megfelelő számítógépes Látástechnológiai erőforrást az Azure Portalon. További információkért lásd: [a rövid útmutató: Cognitive Services-fiók létrehozása az Azure Portalon](../cognitive-services-apis-create-account.md).
+| Tároló | Minimális | Ajánlott |
+|-----------|---------|-------------|
+|Szövegének felismerése|1 mag, 8 GB memória, 0,5 TPS|2 cores, 8 GB memory, 1 TPS|
 
-1. A végpont URL-cím és egy előfizetési kulcsra az Azure-beli erőforráshoz kaphat.  
-   Az Azure-erőforrás létrehozása után a megfelelő szöveg felismerése tároló példányosítása ennek az erőforrásnak a végpont URL-cím és egy előfizetési kulcsra kell használnia. A végpont URL-cím és egy előfizetési kulcsra másolhatja a, a gyors üzembe helyezés és a kulcsok lapok a Computer Vision erőforrás az Azure Portalon.
+Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
 
-## <a name="log-in-to-the-private-container-registry"></a>Jelentkezzen be a privát tárolóregisztrációs adatbázis
+Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek részeként használhatók a `docker run` parancsot.
 
-Többféleképpen is a Cognitive Services-tárolók a privát tárolóregisztrációs adatbázis hitelesítéséhez, de a parancssorból az ajánlott módszer használatával a [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/).
 
-Használja a [docker login](https://docs.docker.com/engine/reference/commandline/login/) parancsot, amellyel majd bejelentkezik a következő példában látható módon `containerpreview.azurecr.io`, a Cognitive Services-tárolók privát tárolójegyzékben. Cserélje le *\<felhasználónév\>* felhasználónévvel és *\<jelszó\>* az Azure-tól kapott a hitelesítő adatokban megadott jelszóval Cognitive Services team.
+## <a name="get-the-container-image-with-docker-pull"></a>A tárolórendszerkép beolvasása `docker pull`
 
-```docker
-docker login containerpreview.azurecr.io -u <username> -p <password>
-```
+Szöveg ismeri fel a tárolórendszerképeket érhetők el. 
 
-Biztonságossá tett egy szövegfájlt a hitelesítő adatait, ha a szöveges tartalmát összefűzheti fájlt, a `cat` parancsra a `docker login` parancsot az alábbi példában látható módon. Cserélje le *\<passwordFile\>* elérési útja és a jelszót tartalmazó szöveges fájl neve és *\<felhasználónév\>* felhasználónévvel a megadott a hitelesítő adatait.
+| Tároló | Adattár |
+|-----------|------------|
+|Szövegének felismerése | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-```docker
-cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
-```
+Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal letöltheti egy tárolórendszerképet.
 
-## <a name="download-container-images-from-the-private-container-registry"></a>Töltse le a tárolórendszerképek a privát tárolóregisztrációs adatbázisból
 
-A tároló rendszerképét a szöveg felismerése tároló érhető el a privát Docker-tárolójegyzék, nevű `containerpreview.azurecr.io`, az Azure Container Registryben. A tároló rendszerképét a szöveg felismerése tároló kell letölteni, futtassa helyileg a tárolót a tárházból.
-
-Használja a [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal letöltheti egy tárolórendszerképet a tárházból. Töltse le a legújabb szöveg felismerése tároló rendszerképét az adattárból, például használja a következő parancsot:
+### <a name="docker-pull-for-the-recognize-text-container"></a>A szöveg felismerése tároló docker pull
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-rocognize-text:latest
 ```
 
-A szöveg felismerése tároló rendelkezésre álló címkék teljes leírását lásd: [szöveg felismerése](https://go.microsoft.com/fwlink/?linkid=2018655) a Docker hubon.
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-> [!TIP]
-> Használhatja a [docker-rendszerképek](https://docs.docker.com/engine/reference/commandline/images/) paranccsal listát készíthet a letöltött tárolólemezképek. Például a következő parancs megjeleníti az azonosítója, a tárházat, és a címke az egyes letöltött tárolórendszerképet, és táblázatként vannak formázva:
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->  ```
->
+## <a name="how-to-use-the-container"></a>A tároló használata
 
-## <a name="instantiate-a-container-from-a-downloaded-container-image"></a>Hozza létre a tároló letöltött tároló rendszerképből
+Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljárás használható a tárolóval.
 
-Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) letöltött tárolórendszerképet a tároló példányosítása parancsot. Ha például a következő parancsot:
+1. [A tároló futtatásához](#run-the-container-with-docker-run), a szükséges a számlázás a beállításokat. További [példák](computer-vision-resource-container-config.md) , a `docker run` parancs érhetők el. 
+1. [A tároló előrejelzési végpontja lekérdezése](#query-the-containers-prediction-endpoint). 
 
-* A szöveg felismerése tárolórendszerképet egy tárolót példányosítja.
-* Foglalja le a két processzormagot és memóriát 8 gigabájt (GB)
+## <a name="run-the-container-with-docker-run"></a>A tároló futtatásához `docker run`
+
+Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancsot a tároló futtatásához. A parancs paraméterei a következők:
+
+| Helyőrző | Érték |
+|-------------|-------|
+|{BILLING_KEY} | Ezt a kulcsot szolgál a tárolót, és az Azure Portalon ismeri fel a szöveg kulcsok lapján található.  |
+|{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját.|
+
+Cserélje le ezeket a paramétereket a következő példában a saját értékeire `docker run` parancsot.
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+Eula=accept \
+Billing={BILLING_ENDPOINT_URI} \
+ApiKey={BILLING_KEY}
+```
+
+Ezzel a paranccsal:
+
+* A tároló rendszerképét felismerése tárolóban fut
+* Több processzormaggal és 4 gigabájt (GB) memóriát foglal le
 * Elérhetővé teszi az 5000-es TCP-porton és a egy pszeudo-TTY lefoglalja a tároló
-* A tároló automatikusan eltávolítja az után kilép
+* Után kilép, automatikusan eltávolítja a tárolót. A tároló rendszerképét az továbbra is elérhető az állomáson. 
 
-```docker
-docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westus.api.cognitive.microsoft.com/vision/v2.0 ApiKey=0123456789
-```
-
-Példányosítani, miután a tároló gazdagép URI használatával műveleteket meghívhatja a tárolóból. A következő gazdagép URI például szöveg felismerése tárolót, amelyet az előző példában volt példányosítása jelöli:
-
-```http
-http://localhost:5000/
-```
+További [példák](./computer-vision-resource-container-config.md#example-docker-run-commands) , a `docker run` parancs érhetők el. 
 
 > [!IMPORTANT]
-> Elérheti a [OpenAPI-specifikáció](https://swagger.io/docs/specification/about/) (korábbi nevén a Swagger-specifikációra), a példányosított tárolót, a támogatott műveleteket leíró a `/swagger` tárolóban tartozó relatív URI. Például a következő URI Azonosítót tartalmaz szöveg felismerése tárolót, amelyet az előző példában volt példányosítani az OpenAPI-specifikáció való hozzáférést:
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+> A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](#billing).
 
-Választhatja [hívás a REST API-műveleteket](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) érhető el a tárolóból az aszinkron vagy szinkron módon FELISMERVE szöveget, vagy használja a [Azure Cognitive Services számítógép Látástechnológiai SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) ügyfél a szalagtár műveletek meghívásához.  
-> [!IMPORTANT]
-> Rendelkeznie kell az Azure Cognitive Services számítógép Látástechnológiai SDK 3.2.0 verzió vagy újabb, ha azt szeretné, az ügyféloldali kódtár használata a tárolót.
+## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontja lekérdezése
+
+A tároló REST-alapú lekérdezési előrejelzési végpontot API-kat biztosít. 
+
+Használja a gazdagép https://localhost:5000, API-k tároló.
 
 ### <a name="asynchronous-text-recognition"></a>Aszinkron szövegek felismerése
 
@@ -139,29 +130,45 @@ Használhatja a `POST /vision/v2.0/recognizeText` és `GET /vision/v2.0/textOper
 
 Használhatja a `POST /vision/v2.0/recognizeTextDirect` művelet szinkron ismeri fel a képet nyomtatott szöveg. Mivel ez a művelet szinkron, ehhez a művelethez a kérelem törzsében megegyezik a számára, amely a `POST /vision/v2.0/recognizeText` műveletet, de a válasz törzs esetében ez a művelet nem ugyanaz, mint amellyel által visszaadott a `GET /vision/v2.0/textOperations/*{id}*` műveletet.
 
-### <a name="billing"></a>Számlázás
+## <a name="stop-the-container"></a>Állítsa le a tároló
 
-A szöveg felismerése tároló számlázási adatokat küld az Azure-bA használatával egy megfelelő számítógépes Látástechnológiai erőforrást az Azure-fiókjával. Az alábbi lehetőségek a számlázás tekintetében a szöveg felismerése tároló által használt:
+[!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+A kimenet futtatásakor a tároló [csatlakoztatási](./computer-vision-resource-container-config.md#mount-settings) és naplózás engedélyezve van, a tárolót hoz létre a naplófájlokat, amelyek hasznosak a hibaelhárítás indítása, vagy a tároló futtatása közben történik. 
+
+## <a name="containers-api-documentation"></a>Tároló API-dokumentáció
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
+## <a name="billing"></a>Számlázás
+
+Szöveg felismerése tárolók Küldés a számlázási adatokat az Azure-ba, a használatával egy _szöveg felismerése_ erőforrást az Azure-fiókjával. 
+
+Cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat. Cognitive Services-tárolók nem vásárlói adatokat küldeni a Microsoftnak. 
+
+A `docker run` parancsot használja a következő argumentumok számlázás szempontjából:
 
 | Beállítás | Leírás |
 |--------|-------------|
-| `ApiKey` | Az API-kulcsot a Computer Vision erőforrás számlázási adatok nyomon követésére szolgál.<br/>Ez a beállítás értékét állítsa a kiépített számítógép Vision Azure-erőforrás megadott API-kulcs `Billing`. |
-| `Billing` | A végpont a Computer Vision erőforrás számlázási adatok nyomon követésére szolgál.<br/>Ez a beállítás értékét állítsa a végpontot egy kiépített számítógép Vision Azure-erőforrás URI-ját.|
-| `Eula` | Azt jelzi, hogy Ön már elfogadta a licencet, a tároló.<br/>Ez a beállítás értékét állítsa `accept`. |
+| `ApiKey` | Az API-kulcsot a _szöveg felismerése_ erőforrás számlázási adatok nyomon követésére szolgál. |
+| `Billing` | Az a végpont a _szöveg felismerése_ erőforrás számlázási adatok nyomon követésére szolgál.|
+| `Eula` | Azt jelzi, hogy Ön már elfogadta a tároló licencét.<br/>Ez a beállítás értékét állítsa `accept`. |
 
 > [!IMPORTANT]
 > Mindhárom meg kell adni az érvényes értékek, vagy a tároló nem indul el.
 
-Ezek a beállítások kapcsolatos további információkért lásd: [tárolók konfigurálása](computer-vision-resource-container-config.md).
+Ezek a beállítások kapcsolatos további információkért lásd: [tárolók konfigurálása](./computer-vision-resource-container-config.md).
 
 ## <a name="summary"></a>Összegzés
 
-Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és futtatása a Computer Vision tárolók munkafolyamatokat. Összegezve:
+Ebben a cikkben megtanulta, fogalmak és a munkafolyamat letöltése, telepítése és a futó tárolók szöveg felismerése. Összegezve:
 
-* Számítógépes Látástechnológia biztosít egy Linux-tárolókat a Docker, és nyomtatott szöveg kinyerése.
-* Tárolórendszerképek letöltődnek a privát tárolóregisztrációs adatbázis az Azure-ban.
+* Ismeri fel a szöveget egy Linux-tárolót biztosít a Docker, ESP szövegének felismerése.
+* Tárolórendszerképek letöltődnek az a Microsoft Container Registry (MCR) az Azure-ban.
 * Tárolórendszerképek futtatása a Docker.
-* Használhatja a REST API vagy SDK-val a Computer Vision tárolókban műveletek hívására adja meg a gazdagép a tároló URI-t.
+* Használhatja a REST API vagy SDK-val szöveg felismerése tárolókban műveletek hívására adja meg a gazdagép a tároló URI-t.
 * Számlázási adatokat adjon meg egy tároló hárítható el.
 
 > [!IMPORTANT]

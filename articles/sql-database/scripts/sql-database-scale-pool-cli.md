@@ -1,6 +1,6 @@
 ---
 title: CLI-példaszkript – Rugalmas SQL-készlet méretezése az Azure SQL Database-ben | Microsoft Docs
-description: Egy Azure CLI-példaszkript egy rugalmas SQL-készlet méretezésére az Azure SQL Database-ben
+description: Az Azure CLI-példaszkript Azure SQL Database rugalmas készlet méretezése
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: af7af24497054f7868e373150eefae9141239ec6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 444c93ea8c25e9f1ca9d906fd6d8fc69169163ae
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605031"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452022"
 ---
-# <a name="use-cli-to-scale-a-sql-elastic-pool-in-azure-sql-database"></a>Rugalmas SQL-készlet méretezésére az Azure SQL Database-ben a CLI használatával
+# <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készlet méretezése CLI használatával
 
-Ez az Azure CLI-példaszkript rugalmas SQL-készleteket hoz létre, áthelyezi a készletezett adatbázisokat, és módosítja a rugalmas készletek számítási méretét. 
+Az Azure CLI-példaszkript rugalmas készleteket, hoz létre áthelyezi a készletezett adatbázisokat, és a módosítások a rugalmas készlet számítási méretek. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,15 +43,15 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A szkript a következő parancsokat használja egy erőforráscsoport, egy logikai kiszolgáló, egy SQL Database-adatbázis és tűzfalszabályok létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, SQL Database-kiszolgálóhoz, önálló adatbázishoz és az SQL Database-tűzfalszabályok létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy logikai kiszolgálót, amelyen az SQL Database szolgáltatás fut. |
-| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Létrehoz egy rugalmas adatbáziskészletet a logikai kiszolgálón. |
-| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Létrehozza az SQL Database-adatbázist a logikai kiszolgálón. |
-| [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update) | Frissít egy rugalmas adatbáziskészletet. Példánkban a hozzárendelt eDTU-t változtatja meg. |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy SQL Database-kiszolgálót, amelyen az önálló adatbázisok és rugalmas készleteket. |
+| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Egy rugalmas készletet hoz létre. |
+| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Létrehoz egy önálló vagy készletezett adatbázis. |
+| [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update) | Frissíti a rugalmas készlet, ebben a példában módosul a hozzárendelt edtu-t. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések

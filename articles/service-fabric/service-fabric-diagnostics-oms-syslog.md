@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 32e67343c5d799157d67408b34753da5a38b6f8e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 30b064e3c20b184023cb6ada25d673f5cab6597c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197245"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297667"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>A Syslog Linux-alapú Service Fabric-fürt események
 
@@ -84,7 +84,7 @@ Ahhoz, hogy a SyslogConsumer, végezze el a fürt frissítését kell. A `fabric
 Itt láthatók az hívásához
 1. A közös szakaszban van egy új paraméter `LinuxStructuredTracesEnabled`. **Ez azért szükséges, a Linux-események strukturált és szerializálni a Syslog történő küldésekor.**
 2. A diagnosztika szakaszban egy új ConsumerInstance: SyslogConsumer hozzá van adva. Ez jelzi a platform az eseményeket az egy másik felhasználója van. 
-3. Az új szakasz SyslogConsumer rendelkeznie kell `IsEnabled` , `true`. A Local0 létesítmény automatikusan használandó profilhoz. Ez felülírható egy másik paraméter hozzáadásával.
+3. Az új szakasz SyslogConsumer rendelkeznie kell `IsEnabled` , `true`. A Local0 létesítmény automatikusan használatára van konfigurálva. Ez felülírható egy másik paraméter hozzáadásával.
 
 ```json
     {

@@ -7,16 +7,16 @@ manager: craigg
 layout: LandingPage
 ms.service: sql-data-warehouse
 ms.topic: overview
-ms.component: design
+ms.subservice: design
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: 4e6f8cd6bd1a84e7c2a6024bf6bcdb1b6b61620c
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: f0885199717d388b68b0e835d54cc571592a5e06
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287267"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476706"
 ---
 # <a name="sql-data-warehouse-documentation"></a>SQL Data Warehouse-dokumentáció
 
@@ -86,29 +86,29 @@ Ismerje meg, hogyan használható az Azure SQL Data Warehouse, amely a reláció
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
                         <h3>Parancssor</h3>
-                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets">PowerShell-parancsmagok</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets">PowerShell-parancsmagok</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
         <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Nyelvek</h3>
-                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements">A T-SQL nyelvi elemei</a></p>
-                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements">T-SQL-utasítások</a></p>
-                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views">T-SQL-rendszernézetek</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Nyelvek</h3>
+                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements">A T-SQL nyelvi elemei</a></p>
+                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements">T-SQL-utasítások</a></p>
+                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views">T-SQL-rendszernézetek</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
 </ul>
 

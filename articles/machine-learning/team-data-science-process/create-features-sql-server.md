@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f427ce2df8a83a3fb43291fcb375a1e01b32060d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ce3fdef6429452eeee522896b47ed71de6a10201
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447020"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451733"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Funkciók létrehozása az adatokhoz az SQL Serveren SQL és Python használatával
 Ez a dokumentum bemutatja, hogyan hozhat létre az SQL Server virtuális gép az Azure-ban tárolt adatokat, amelyek segítségével hatékonyabban megismerheti az adatokból algoritmusok szolgáltatásai. Ennek a feladatnak használhatja az SQL és a egy programozási nyelvet, például a Python. Mindkét módszerénél itt találja meg.

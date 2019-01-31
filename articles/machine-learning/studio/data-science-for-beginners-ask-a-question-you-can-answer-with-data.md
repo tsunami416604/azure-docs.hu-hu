@@ -1,6 +1,6 @@
 ---
-Cím: Kérje meg a kérdés adatok segítségével választ kaphat a titleSuffix: Azure Machine Learning Studio description: Megtudhatja, hogyan határozhatja meg az adatelemzés kezdőknek videó 3 éles data science kérdés. Besorolási és regressziós kérdések összehasonlítását tartalmazza.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Kérje meg a kérdés adatok segítségével választ kaphat a titleSuffix: Azure Machine Learning Studio description: Megtudhatja, hogyan határozhatja meg az adatelemzés kezdőknek videó 3 éles data science kérdés. Besorolási és regressziós kérdések összehasonlítását tartalmazza.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/03/2018
 ---

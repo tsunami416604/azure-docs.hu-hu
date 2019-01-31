@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: c2b2ba0e238887531297f6ac2a486d42d885794d
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 41bdc2497ff19f0033a5253814771072b47eef62
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079086"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475177"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>A működési elv: Az Azure AD önkiszolgáló jelszó-visszaállítás
 
@@ -50,7 +50,7 @@ Olvassa el az alábbi lépések segítségével megismerheti a jelszó mögötti
        * Ha nincsenek konfigurálva a hitelesítési módszereket, majd a felhasználó javasolt a rendszergazdától új jelszót kérnek.
      * Ha a házirend a két módszer van szüksége, majd biztosítja azt, hogy a felhasználó rendelkezik-e a megfelelő adatokat a felügyeleti házirend által engedélyezett hitelesítési módszerek közül legalább két definiálva.
        * Ha nincsenek konfigurálva a hitelesítési módszereket, majd a felhasználó javasolt a rendszergazdától új jelszót kérnek.
-     * Ha egy Azure-rendszergazdai szerepkör van rendelve a felhasználó az erős két-kapu – jelszó házirend van érvényben. További információ a szabályzat a szakaszban található [rendszergazda alaphelyzetbe házirend különbségek](concept-sspr-policy.md#administrator-reset-policy-differences).
+     * Ha egy Azure-rendszergazdai szerepkör van rendelve a felhasználó, a két-kapu erős jelszót házirend van érvényben. További információ a szabályzat a szakaszban található [rendszergazda alaphelyzetbe házirend különbségek](concept-sspr-policy.md#administrator-reset-policy-differences).
    * Ellenőrzi, hogy a felhasználó jelszava felügyelt helyszíni (összevont, átmenő hitelesítést, vagy a jelszókivonatok szinkronizálása).
      * Ha a jelszóvisszaíró telepíti, és a felhasználó jelszava a helyszínen kezel, akkor a felhasználó számára engedélyezett a jelszavuk és hitelesítéséhez a folytatáshoz.
      * Ha a jelszóvisszaíró nincs telepítve, és a felhasználó jelszava a helyszínen kezel, akkor a felhasználónak meg kell adnia a rendszergazdától új jelszót kérnek.
@@ -84,7 +84,7 @@ Ha egy felhasználó nincs regisztrálva a minimálisan szükséges módszerek, 
 
 #### <a name="mobile-app-and-sspr-preview"></a>Mobilalkalmazás és az SSPR (előzetes verzió)
 
-Jelszó-visszaállítás módszerként mobilalkalmazás, például a Microsoft Authenticator alkalmazás használatakor vegye figyelembe a következőket:
+A jelszó-visszaállításhoz módszerként mobilalkalmazás, például a Microsoft Authenticator alkalmazás használatakor vegye figyelembe az alábbi korlátozásokkal:
 
 * Ha a rendszergazdák egy módszert igényel használt jelszó alaphelyzetbe állítása, ellenőrző kódot csak a lehetőség érhető el.
 * Ha a rendszergazdáknak a két módszer van szükségük lehet használt jelszó alaphelyzetbe állítása, felhasználók is használhatják **vagy** értesítési **vagy** ellenőrzőkódot kívül bármely más módszerek engedélyezve van.
@@ -119,7 +119,7 @@ Példa:
 
 ### <a name="require-users-to-register-when-they-sign-in"></a>Szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor
 
-Ez a beállítás engedélyezése csak a jelszó kérése – regisztráció végrehajtásához, ha bejelentkeznek az Azure AD-vel alkalmazások. Ez tartalmazza a következő alkalmazásokat:
+Ez a beállítás engedélyezése csak a jelszó kérése – regisztráció végrehajtásához, ha bejelentkeznek az Azure AD-vel alkalmazások. Ez a munkafolyamat tartalmazza a következő alkalmazásokat:
 
 * Office 365
 * Azure Portal
@@ -132,7 +132,7 @@ Regisztráció megkövetelése le van tiltva, a felhasználók manuálisan regis
 > [!NOTE]
 > Felhasználó elvetheti a jelszó-visszaállítási portál kiválasztásával **Mégse** vagy zárja be az ablakot. De figyelmeztetést kapnak minden egyes bejelentkezéskor mindaddig, amíg azok a regisztráció befejezéséhez regisztrálja.
 >
-> Ez nem a felhasználói kapcsolat megszüntetése, ha már bejelentkezett a.
+> Ez a megszakítás nem szünet a felhasználói kapcsolat, ha már bejelentkezett a.
 
 ### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Adja meg, hány nap elteltével a rendszer kéri a felhasználóktól a hitelesítési adataik ismételt megerősítését
 
@@ -169,7 +169,7 @@ Ez az oldal tartalmaz egy gyors a helyszíni visszaírási ügyfél állapotát,
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Visszaírja a jelszavakat a helyszíni címtár
 
-Ez a vezérlő határozza meg, hogy a jelszóvisszaíró engedélyezve van-e a könyvtárhoz. A jelszóvisszaíró egy, a helyszíni visszaírási szolgáltatás állapota azt jelzi. Ez akkor hasznos, ha azt szeretné, ideiglenesen letilthatja a jelszóvisszaírást az Azure AD Connect újrakonfigurálása nélkül.
+Ez a vezérlő határozza meg, hogy a jelszóvisszaíró engedélyezve van-e a könyvtárhoz. A jelszóvisszaíró egy, a helyszíni visszaírási szolgáltatás állapota azt jelzi. Ez a vezérlő akkor hasznos, ha azt szeretné, ideiglenesen letilthatja a jelszóvisszaírást az Azure AD Connect újrakonfigurálása nélkül.
 
 * Ha a kapcsoló beállítása **Igen**, majd a jelszóvisszaíró engedélyezve van, és összevont, átmenő hitelesítést, vagy a jelszó Jelszókivonat szinkronizálása felhasználók képesek-e a jelszavaikat.
 * Ha a kapcsoló beállítása **nem**, majd a jelszóvisszaíró le van tiltva, és összevont, átmenő hitelesítést, vagy a jelszó Jelszókivonat szinkronizálása felhasználók számára nem érhetők el a jelszavaikat.
@@ -180,6 +180,10 @@ Ez a vezérlő azt jelzi, hogy a felhasználók, akik látogasson el a jelszó-v
 
 * Ha beállítása **Igen**, majd a felhasználók a jelszavuk és a zárolás feloldásához, vagy a fiók feloldása új jelszó nélkül kapnak.
 * Ha beállítása **nem**, majd felhasználók vannak csak tudni elvégezni a kombinált jelszó alaphelyzetbe állítása és fiókok zárolásának feloldása műveletet.
+
+### <a name="on-premises-active-directory-password-filters"></a>A helyszíni Active Directory jelszószűrők
+
+Az Azure AD önkiszolgáló jelszó-visszaállítás felel meg egy rendszergazda által kezdeményezett jelszó-visszaállítás, az Active Directory hajt végre. Ha egy külső jelszószűrő használatával egyéni jelszó szabályok érvényesítése, és szüksége van, hogy a jelszószűrő jelölőnégyzet be van jelölve során az Azure AD önkiszolgáló jelszó-visszaállítási, győződjön meg arról, hogy a külső jelszó szűrő megoldás van-e konfigurálva a alkalmazni a rendszergazdai jelszó alaphelyzetbe állítása a forgatókönyvet. [A Windows Server Active Directory Azure AD jelszóvédelem](concept-password-ban-bad-on-premises.md) alapértelmezés szerint támogatott.
 
 ## <a name="password-reset-for-b2b-users"></a>Új jelszó kérését az B2B-felhasználók
 

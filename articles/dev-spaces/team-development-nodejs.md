@@ -3,19 +3,19 @@ title: Csoportos fejlesztés az Azure Dev Spaces és a VS Code használatával |
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 4b45cf6d986aa8bf404e77e7a6cf0005183f1133
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 8a7200723b39c40fe9596bbab0acaf752acbbaf8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706568"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451393"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Csoportos fejlesztés az Azure Dev Spaces használatával
 
@@ -34,7 +34,7 @@ Elvileg már rendelkeznie kell a `mywebapi` ezen útmutatóban használt mintak�
 1. Nyissa meg a `mywebapi` mappát egy *különálló VS Code-ablakban*.
 1. Nyissa meg a **parancskatalógust** (**Nézet | Parancskatalógus** menü), és az automatikus kitöltés használatával írja be és válassza ki a következő parancsot: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`. Ez a parancs nem keverendő össze az `azds prep` paranccsal, amely az üzembe helyezéshez konfigurálja a projektet.
 1. Nyomja le az F5 billentyűt, és várjon, amíg a rendszer felépíti és telepíti a szolgáltatást. A folyamat befejezését a VS Code hibakeresési ablakának megjelenése jelzi.
-1. Jegyezze fel a végpont URL-címét, amely valahogy így fog kinézni: http://localhost:\<portnumber\>. **Tipp: A VS Code-állapotsáv egy kattintható URL-címet jelenít meg.** Úgy tűnhet, hogy a tároló helyileg fut, de valójában az Azure-beli fejlesztői környezetében fut. A localhost cím oka az, hogy a `mywebapi` nem határozott meg egy nyilvános végpontot sem, és kizárólag a Kubernetes-példányon belülről lehet hozzáférni. Az Ön kényelme, valamint a helyi gép és a privát szolgáltatás közötti interakció elősegítése érdekében az Azure Dev Spaces egy ideiglenes SSH-csatornát hoz létre az Azure-ban futó tárolóhoz.
+1. Jegyezze fel a végpont URL-címét, amely valahogy így fog kinézni: http://localhost:\<portnumber\>. **Tipp: A VS Code állapotsor kattintható URL-cím jelenik meg.** Úgy tűnhet, hogy a tároló helyileg fut, de valójában az Azure-beli fejlesztői környezetében fut. A localhost cím oka az, hogy a `mywebapi` nem határozott meg egy nyilvános végpontot sem, és kizárólag a Kubernetes-példányon belülről lehet hozzáférni. Az Ön kényelme, valamint a helyi gép és a privát szolgáltatás közötti interakció elősegítése érdekében az Azure Dev Spaces egy ideiglenes SSH-csatornát hoz létre az Azure-ban futó tárolóhoz.
 1. Ha a `mywebapi` elkészült, nyissa meg a böngészőben a localhost címét. Választ kell kapnia a `mywebapi` szolgáltatástól („Üdvözöljük a mywebapiban”).
 
 
@@ -70,7 +70,7 @@ Az előző példakód továbbítja az `azds-route-as` fejlécet a bejövő kére
 1. Állítson be egy töréspontot az alapértelmezett GET `/` kezelőben.
 1. A `webfrontend` projektben állítson be egy töréspontot, mielőtt az GET kérést küld a `http://mywebapi` felé.
 1. Nyomja le az F5 billentyűt a `webfrontend` projektben.
-1. Nyissa meg a webalkalmazást, és tekintse át a kódot mindkét szolgáltatásban. A webalkalmazásban a két szolgáltatás által összefűzött üzenetnek kell megjelennie: „Üdvözöljük a webfrontendben és Üdvözöljük a mywebapiban.”
+1. Nyissa meg a webalkalmazást, és tekintse át a kódot mindkét szolgáltatásban. A webes alkalmazás megjelenít egy üzenetet, a két szolgáltatás által összefűzött: "Hello webfrontend és Hello a mywebapi."
 
 Remek! Most már rendelkezik egy többtárolós alkalmazással, ahol az egyes tárolók külön-külön fejleszthetők és helyezhetők üzembe.
 

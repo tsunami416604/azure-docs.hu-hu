@@ -6,22 +6,22 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1202d49688bfd6aee50d1fa21c10423c071c6d92
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2a97c55c7caa7b0b2c4aa10b01abd2714b8ace7a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124983"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458526"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
 Azonosítja a jelentésvásznon való elhelyezését egy adott szöveg határokon mondat helyett szerepel.
 
-## <a name="request-url"></a>Lekérdezés URL-címe
+## <a name="request-url"></a>Kérés URL-címe
 
 Küldjön egy `POST` kérelmet:
 
@@ -41,7 +41,7 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
     <td>*Kötelező lekérdezési paraméter*.<br/>Az ügyfél által kért API-verzió. Az érték lehet `3.0`.</td>
   </tr>
   <tr>
-    <td>Nyelv</td>
+    <td>language</td>
     <td>*Nem kötelező lekérdezési paraméter*.<br/>A bemeneti szöveg nyelvének azonosítása nyelvcímke. Ha nincs megadva egy kódot, az automatikus nyelvfelismerést lépnek érvénybe.</td>
   </tr>
   <tr>
@@ -56,7 +56,7 @@ Kérelemfejlécek a következők:
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>_Egy engedélyezési_<br/>_Fejléc_</td>
+    <td>_Egy engedélyezési_<br/>_header_</td>
     <td>*Szükséges kérelem fejléce*.<br/>Lásd: [elérhető lehetőségek a hitelesítéshez](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -73,7 +73,7 @@ Kérelemfejlécek a következők:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Kérelem törzse
+## <a name="request-body"></a>A kérés törzse
 
 A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken nevű karakterlánc tulajdonsággal rendelkező JSON-objektum `Text`. Mondat határok az értékét számítja ki a `Text` tulajdonság. A minta egy adott szöveg kérelem törzséhez hasonlóan néz ki:
 
@@ -100,7 +100,7 @@ A sikeres válasz egy JSON-tömböt az egyes sztringek a bemeneti számtömbből
 
      * `language`: A felismert nyelv kódja.
 
-     * `score`: Egy jelző a bizalom, az eredmény a lebegőpontos értéket. A pontszám, nulla és a egy között, és a egy alacsony pontszámmal azt jelzi, hogy egy alacsony megbízhatósági.
+     * `score`: Az eredmény magabiztosan jelző float érték. A pontszám, nulla és a egy között, és a egy alacsony pontszámmal azt jelzi, hogy egy alacsony megbízhatósági.
      
     Vegye figyelembe, hogy a `detectedLanguage` tulajdonság csak akkor szerepel az eredményobjektum, nyelvi automatikus észlelés igénylésekor.
 
@@ -124,7 +124,7 @@ A következő egy példa JSON-választ:
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>X-RequestId:</td>
+    <td>X-RequestId</td>
     <td>A kérelem azonosíthatja a szolgáltatás által létrehozott értéket. Hibaelhárítási célokra szolgál.</td>
   </tr>
 </table> 
@@ -170,7 +170,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
 
 Az alábbi példa bemutatja, hogyan szerezze be a mondat határokat egy egyetlen mondat helyett szerepel. A szolgáltatás automatikusan észlel a mondat nyelvét.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"

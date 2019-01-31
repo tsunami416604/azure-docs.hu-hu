@@ -1,8 +1,8 @@
 ---
-title: Az Azure Batch Analytics |} Microsoft Docs
-description: Az Azure Batch Analytics hivatkozását.
+title: Az Azure Batch-elemzés |} A Microsoft Docs
+description: Az Azure Batch-elemzés dokumentációja.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,29 +11,29 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: 4c81acb282b24bbd899227c4dcc449fed4ba6c7d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: 999c3037196044250b8a12d6b6b380553e58c6ba
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30312677"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460182"
 ---
 # <a name="batch-analytics"></a>Batch-elemzés
-Kötegelt elemzés témakörei az események és riasztások érhető el a Batch szolgáltatás erőforrásainak referencia jellegű információt tartalmaz.
+A Batch-elemzés témakörei az események és riasztások érhető el, a Batch szolgáltatás erőforrásainak referenciaadatai tartalmaznak.
 
-Lásd: [Azure Batch diagnosztikai naplózás](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) engedélyezése és kötegelt diagnosztikai naplók fel további információt.
+Lásd: [diagnosztikai naplózás az Azure Batch](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) engedélyezése és a diagnosztikai naplók a Batchben felhasználása további tájékoztatást.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Az Azure Batch szolgáltatás a következő diagnosztikai naplóeseményeket bizonyos kötegelt erőforrások élettartama során bocsát ki.
+Az Azure Batch szolgáltatás a következő diagnosztikai napló események egyes Batch-erőforrások teljes élettartama során bocsát ki.
 
 **Szolgáltatás bejelentkezési események**
-* [Alkalmazáskészlet létrehozása](batch-pool-create-event.md)
-* [Készlet törlése indítása](batch-pool-delete-start-event.md)
-* [Teljes készlet törlése](batch-pool-delete-complete-event.md)
-* [Készlet átméretezési indítása](batch-pool-resize-start-event.md)
-* [Teljes készlet átméretezése](batch-pool-resize-complete-event.md)
-* [A feladat indítása](batch-task-start-event.md)
+* [Készlet létrehozása](batch-pool-create-event.md)
+* [Készlet törlésének indítása](batch-pool-delete-start-event.md)
+* [Készlet törlése kész](batch-pool-delete-complete-event.md)
+* [Készlet átméretezésének indítása](batch-pool-resize-start-event.md)
+* [Készlet átméretezése kész](batch-pool-resize-complete-event.md)
+* [Zahájení úlohy](batch-task-start-event.md)
 * [A feladat befejezése](batch-task-complete-event.md)
 * [A feladat sikertelen](batch-task-fail-event.md)

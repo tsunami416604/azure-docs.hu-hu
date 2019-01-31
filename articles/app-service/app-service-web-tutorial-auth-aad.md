@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c2b8b205229ec1ef180e52372f75d06c83f1cc7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ff0cb82e3f1ddedf8dabebadf7a0309d08b2c4e3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716412"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297089"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Oktatóanyag: Hitelesítése és engedélyezése a felhasználók teljes körű Azure App Service-ben
 
@@ -293,7 +293,7 @@ A beállítások mentéséhez kattintson a **PUT** elemre.
 
 Az alkalmazások konfigurálása kész. Az előtér-alkalmazás most már hozzáfér a háttéralkalmazáshoz a megfelelő hozzáférési jogkivonattal.
 
-A más szolgáltatókra vonatkozó beállítással kapcsolatos információért tekintse meg a [hozzáférési jogkivonatok frissítéséről](app-service-authentication-how-to.md#refresh-access-tokens) szóló részt.
+Konfigurálhatja ezt a más szolgáltatókra vonatkozó információkért lásd: [identitásból szolgáltató frissítése](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
 ## <a name="call-api-securely-from-server-code"></a>API biztonságos hívása a kiszolgálói kódból
 
@@ -417,7 +417,7 @@ Gratulálunk! Az ügyfélkód most már hozzáfér a háttéradatokhoz a hiteles
 
 ## <a name="when-access-tokens-expire"></a>A hozzáférési jogkivonatok lejártakor
 
-A hozzáférési jogkivonatok bizonyos idő elteltével lejárnak. Ha a hozzáférési jogkivonatokat anélkül szeretné frissíteni, hogy a felhasználóknak újra kelljen hitelesíteniük magukat az alkalmazásban, tekintse meg a [hozzáférési jogkivonatok frissítéséről](app-service-authentication-how-to.md#refresh-access-tokens) szóló részt.
+A hozzáférési jogkivonatok bizonyos idő elteltével lejárnak. A hozzáférési jogkivonatok frissítése anélkül, hogy a felhasználók számára, hogy hitelesítse magát újra az alkalmazást a további információkért lásd: [identitásból szolgáltató frissítése](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

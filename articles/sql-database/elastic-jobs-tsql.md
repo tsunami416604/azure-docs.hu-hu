@@ -11,13 +11,13 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/25/2019
+ms.openlocfilehash: bb7908c5ed72bf58f1bd8920983d76cb674286a3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449401"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458091"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
 
@@ -75,9 +75,9 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ```
 
 
-## <a name="exclude-a-single-database"></a>Önálló adatbázis kizárása
+## <a name="exclude-an-individual-database"></a>Az egyes adatbázisok kizárása
 
-Az alábbi példa bemutatja, hogyan hajtsa végre a feladat összes adatbázisokhoz a kiszolgáló, kivéve az adatbázis nevesített *MappingDB*.  
+A következő példa bemutatja, hogyan hajtható végre egy feladatot, szemben az összes adatbázis az SQL Database-kiszolgálóhoz, kivéve az adatbázis nevesített *MappingDB*.  
 Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
@@ -103,7 +103,7 @@ EXEC [jobs].sp_add_target_group_member
 @server_name='server2.database.windows.net'
 GO
 
---Excude a database target member from the server target group
+--Exclude a database target member from the server target group
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @membership_type = N'Exclude',
@@ -1032,10 +1032,10 @@ Ha a célként megadott csoport tagja foglalt vagy kizárt adja meg. target_grou
 A céladatbázis vagy -beleértve az összes adatbázis-kiszolgálók, rugalmas készletben található összes adatbázis, horizontálispartíció-térkép található összes adatbázis vagy az egyes adatbázisok adatbázis-gyűjtemény típusa. target_type nvarchar(128), nem alapértelmezett. Target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool", "SqlDatabase" vagy "SqlShardMap". 
 
 [  **@refresh_credential_name =** ] "refresh_credential_name"  
-A logikai kiszolgáló neve. refresh_credential_name nvarchar(128), nem alapértelmezett.
+Az SQL Database-kiszolgáló neve. refresh_credential_name nvarchar(128), nem alapértelmezett.
 
 [  **@server_name =** ] ": kiszolgálónév"  
-A megadott célcsoportot, az új logikai kiszolgáló neve. kiszolgáló_neve target_type "SqlServer" esetén adható meg. kiszolgáló_neve nvarchar(128), nem alapértelmezett.
+A megadott célcsoportot, az új SQL Database-kiszolgáló neve. kiszolgáló_neve target_type "SqlServer" esetén adható meg. kiszolgáló_neve nvarchar(128), nem alapértelmezett.
 
 [  **@database_name =** ] "database_name"  
 A megadott célcsoportot, az új adatbázis neve. Ha target_type "SqlDatabase" database_name adható meg. adatbázisnév nvarchar(128), nem alapértelmezett.
@@ -1051,7 +1051,7 @@ A célcsoport hozzá rendelt a célként megadott csoport tagja, ha létrehozott
 Visszatérési kód értékek 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
-Egy feladatot hajt végre egy kiszolgálón található összes adatbázis, vagy a célcsoportban végrehajtása, ha egy logikai kiszolgálón vagy a rugalmas készlet időpontjában rugalmas készlet része.
+Egy feladat végrehajtása a minden önálló adatbázis egy SQL Database-kiszolgálóhoz vagy a rugalmas készlet jelenleg végrehajtás, amikor egy SQL Database-kiszolgáló vagy a rugalmas készlet része a célcsoportban.
 
 #### <a name="permissions"></a>Engedélyek
 Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
@@ -1229,7 +1229,7 @@ Látható feladat-végrehajtási előzményei.
 |**target_type**|   nvarchar(128)   |Céladatbázis vagy az adatbázis összes adatbázissal egy kiszolgálót, egy rugalmas készletben található összes adatbázis vagy egy adatbázis-gyűjtemény típusa. Target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool" vagy "SqlDatabase". NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**target_id**  |UniqueIdentifier|  A célként megadott csoport tagja egyedi azonosítója.  NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**target_group_name**  |nvarchar(128)  |A célcsoport neve. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
-|**target_server_name**|    nvarchar(256)|  A célként megadott csoportban lévő logikai kiszolgáló nevét. A megadott csak target_type "SqlServer"-e. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
+|**target_server_name**|    nvarchar(256)|  A célként megadott csoportban lévő SQL Database-kiszolgáló neve. A megadott csak target_type "SqlServer"-e. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**target_database_name**   |nvarchar(128)| A célként megadott csoportban szereplő adatbázis nevét. Megadott csak amikor target_type "SqlDatabase". NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 
 
@@ -1253,7 +1253,7 @@ Az összes feladat látható.
 
 ### <a name="jobversions-view"></a>job_versions megtekintése
 
-[feladatok]. [job_verions]
+[feladatok]. [job_versions]
 
 Az összes feladat verzió látható.
 
@@ -1332,7 +1332,7 @@ Minden célként megadott csoport minden tagját mutatja.
 |**refresh_credential_name**    |nvarchar(128)  |Az adatbázis nevét a célként megadott csoport tagja való kapcsolódáshoz használt hitelesítő adatok hatókörét.|
 |**subscription_id**    |UniqueIdentifier|  Az előfizetés egyedi azonosítója.|
 |**resource_group_name**    |nvarchar(128)| Neve az erőforráscsoport, amelyben megtalálható a célként megadott csoport tagja.|
-|**server_name**    |nvarchar(128)  |A célként megadott csoportban lévő logikai kiszolgáló nevét. A megadott csak target_type "SqlServer"-e. |
+|**server_name**    |nvarchar(128)  |A célként megadott csoportban lévő SQL Database-kiszolgáló neve. A megadott csak target_type "SqlServer"-e. |
 |**database_name**  |nvarchar(128)  |A célként megadott csoportban szereplő adatbázis nevét. Megadott csak amikor target_type "SqlDatabase".|
 |**elastic_pool_name**  |nvarchar(128)| A célként megadott csoportban lévő a rugalmas készlet neve. Megadott csak amikor target_type "SqlElasticPool".|
 |**shard_map_name** |nvarchar(128)| A célként megadott csoportban lévő horizontális skálázási térképet neve. Megadott csak amikor target_type "SqlShardMap".|

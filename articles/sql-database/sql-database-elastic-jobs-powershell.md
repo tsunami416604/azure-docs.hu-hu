@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: de395dc4f862e57030fba1d77de78eabe44a3da8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 6ec0742c205204ee74ac9f9474af0394f9d1ab31
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278457"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472644"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell (előzetes verzió) használatával az SQL Database rugalmas feladatok létrehozása és kezelése
 
@@ -69,7 +69,7 @@ A következő táblázat felsorolja az összes objektum típusú ki **rugalmas a
   </tr>
 
   <tr>
-    <td>ADATRÉTEGBELI ALKALMAZÁSCSOMAG</td>
+    <td>DACPAC</td>
     <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">Adatrétegbeli alkalmazás </a> csomag több adatbázisban alkalmazni.
     </td>
     <td>
@@ -189,7 +189,7 @@ A következő táblázat felsorolja az összes objektum típusú ki **rugalmas a
 </table>
 
 ## <a name="supported-elastic-database-jobs-group-types"></a>Támogatott rugalmas adatbázis-feladatok csoport típusa
-A feladat végrehajtja a Transact-SQL (T-SQL) szkriptek vagy DACPACs alkalmazásának adatbázisok egy csoportja között. Adatbázisok csoportjának futtatandó feladat elküldésekor a feladat "kibővíti" a gyermekfeladatok, ahol minden egyes hajtja végre a kért futtatást a egy önálló adatbázis a csoport be. 
+A feladat végrehajtja a Transact-SQL (T-SQL) szkriptek vagy DACPACs alkalmazásának adatbázisok egy csoportja között. Adatbázisok csoportjának futtatandó feladat elküldésekor a feladat "kibővíti" a gyermekfeladatok, ahol minden egyes hajtja végre a kért parancsok végrehajtására az egyes adatbázisok csoport be. 
 
 Csoportokat hozhat létre két típusa van: 
 
@@ -428,7 +428,7 @@ Az alapértelmezett végrehajtási házirendet a következő értékeket haszná
 * Kezdeti újrapróbálkozási időköz:  100 ideje ezredmásodpercben
 * Maximális újrapróbálkozási időköz: 30 perc
 * Újrapróbálkozási időköz együttható: 2
-* Kísérletek maximális száma: 2 147 483 647
+* Kísérletek maximális száma: 2,147,483,647
 
 A kívánt végrehajtási házirend létrehozása:
 

@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Translator Speech API – C#'
+title: 'Oktatóanyag: Translator Speech APIC#'
 titleSuffix: Azure Cognitive Services
 description: A Translator Speech API használatával valós időben fordíthat szövegeket.
 services: cognitive-services
 author: v-jerkin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6a53eaf2154162ab9ec85a5a75c2cd52962b53a9
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 01e56366fc8ae0e711664d35e95ac1aacc89730f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340426"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458499"
 ---
-# <a name="tutorial-translator-speech-application-in-c"></a>Oktatóanyag: C# nyelven írt Translator Speech alkalmazás
+# <a name="tutorial-translator-speech-application-in-c"></a>Oktatóanyag: A Translator Speech alkalmazásC#
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 

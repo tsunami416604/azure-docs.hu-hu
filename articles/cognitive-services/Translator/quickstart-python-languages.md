@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Támogatott nyelvek lekérése, Python – Translator Text API'
+title: 'Gyors útmutató: Első Python - támogatott nyelvek listáját a Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API és a Python használatával.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 8b78ec4e358f654342140df1491e19d3fc62fee7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c99dbdb95c4dd7a6e078fd6e9ee15a590c8c40c9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992397"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458295"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Rövid útmutató: A Translator Text API használata a támogatott nyelvek listájának lekéréséhez a Pythonnal
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Gyors útmutató: A Python használatával támogatott nyelvek listáját a Translator Text API használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a támogatott nyelvek listáját egy GET kérelemmel a Python és a Translator Text REST API használatával.
 
@@ -67,7 +67,7 @@ else:
 Jelenleg egy végpont érhető el a Translator Text szolgáltatáshoz, és ez van beállítva `base_url` tulajdonságként. A `path` tulajdonság a `languages` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
 
 >[!NOTE]
-> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információért lásd a [Translator Text API 3.0 által támogatott nyelvek lekérését](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) ismertető témakört.
+> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: Nyelvek](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'

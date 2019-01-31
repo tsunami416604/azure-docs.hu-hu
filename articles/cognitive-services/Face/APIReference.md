@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: dd36147688f4c53383d31db8b4aa860b5bbf39a7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6c5bfb052fc887bb189edb06247642419b14ecf7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214160"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296970"
 ---
 # <a name="api-reference"></a>API-hivatkozás
 
@@ -28,5 +28,6 @@ Az Azure Face API egy olyan felhőalapú API, arcfelismerés és felismerés alg
 - [LargeFaceList felügyeleti API-k](https://docs.microsoft.com/rest/api/cognitiveservices/face/largefacelist): Az egy LargeFaceList kezelésére szolgáló [hasonló](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar).
 - [Személy is lehet PersonGroup felügyeleti API-k](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroupperson): Az arcokat személy is lehet PersonGroup kezelésére szolgáló [azonosító](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify).
 - [Is lehet PersonGroup felügyeleti API-k](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup): Az is lehet PersonGroup adatkészlet kezelésére szolgáló [azonosító](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify).
+- [Pillanatkép-felügyeleti API-k](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot): Több előfizetés között az adatáttelepítés pillanatkép kezelésére szolgál.
 
 <!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->

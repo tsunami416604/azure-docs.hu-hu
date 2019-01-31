@@ -11,13 +11,13 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: b2312534cdd63f5672f6b2294e3aef6b50be229a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: c4776d2c6f8ca2b23ba2df379b2682a6844f9a1b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600046"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461593"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Manuális hangolás az Azure SQL Database lekérdezési teljesítmény
 
@@ -235,18 +235,18 @@ Ha egy számítási feladat ismétlődő lekérdezések készletével rendelkezi
 
 ### <a name="cross-database-sharding"></a>Adatbázisközi horizontális skálázás
 
-Mivel az Azure SQL Database a hagyományos hardvereken fut, egy önálló adatbázis kapacitáskorlátjai alacsonyabb, mint a hagyományos helyszíni SQL Server telepítésekor. Egyes ügyfeleink a horizontális skálázás technikák használatával terjednek több adatbázis adatbázis-műveletek, a műveletek nem illő önálló adatbázis az Azure SQL Database keretein belül. A legtöbb ügyfeleink, akik a horizontális skálázás technikák az Azure SQL Database felosztása egy dimenziót az adataikat több adatbázis között. Az ezzel a módszerrel kell megérteni, hogy OLTP alkalmazások gyakran hajtják végre a tranzakciók, amelyek a alkalmazni egyetlen sort vagy sorokat a sémában egy kisebb csoportot.
+Azure SQL Database a hagyományos hardvereken fut, mert az egyes adatbázisok kapacitáskorlátjai alacsonyabbak, mint a hagyományos helyszíni SQL Server telepítésekor. Egyes ügyfeleink a horizontális skálázás technikák használatával terjednek több adatbázis adatbázis-műveletek, a műveletek nem egyeznek meg az Azure SQL Database-ben az egyes adatbázisok keretein belül. A legtöbb ügyfeleink, akik a horizontális skálázás technikák az Azure SQL Database felosztása egy dimenziót az adataikat több adatbázis között. Az ezzel a módszerrel kell megérteni, hogy OLTP alkalmazások gyakran hajtják végre a tranzakciók, amelyek a alkalmazni egyetlen sort vagy sorokat a sémában egy kisebb csoportot.
 
 > [!NOTE]
 > Az SQL Database mostantól lehetőséget nyújt, amelyek segítik a horizontális skálázás könyvtárba. További információkért lásd: [Elastic Database-ügyfélkódtár áttekintése](sql-database-elastic-database-client-library.md).
 
-Például ha egy adatbázis ügyfél neve, sorrend és rendelés részletei (például a hagyományos példa Northwind adatbázist részét képező SQL Server), akkor tehet fel ezeket az adatokat több adatbázis-okat a kapcsolódó rendelési és a rendelések részleteit ügyfél információk. Garantálhatja, hogy az ügyfél adatainak egyetlen adatbázisban marad. Az alkalmazás különböző ügyfelektől lenne elosztja a adatbázisok gyakorlatilag a terhelés elosztható a több adatbázis között. Horizontális skálázási ügyfelek nem csupán elkerülheti a maximális méretkorlátot, de Azure SQL Database is képes feldolgozni, amelyek jelentősen nagyobb, mint a különböző számítási méretekre korlátozásait, mindaddig, amíg minden egyes adatbázis illik bele a dtu-k számítási feladatokhoz.
+Például ha egy adatbázis ügyfél neve, sorrend és rendelés részletei (például a hagyományos példa Northwind adatbázist részét képező SQL Server), akkor tehet fel ezeket az adatokat több adatbázis-okat a kapcsolódó rendelési és a rendelések részleteit ügyfél információk. Garantálhatja, hogy a vásárlói adatokat az egyes adatbázisok marad. Az alkalmazás különböző ügyfelektől lenne elosztja a adatbázisok gyakorlatilag a terhelés elosztható a több adatbázis között. Horizontális skálázási ügyfelek nem csupán elkerülheti a maximális méretkorlátot, de Azure SQL Database is képes feldolgozni, amelyek jelentősen nagyobb, mint a különböző számítási méretekre korlátozásait, mindaddig, amíg minden egyes adatbázis illik bele a dtu-k számítási feladatokhoz.
 
 Bár az adatbázis horizontális skálázási megoldás összesített erőforrás-kapacitása nem csökkenthető, több adatbázis futó nagyon nagy méretű megoldások támogatása rendkívül hatékony. Minden adatbázis a különböző számítási méret támogatása nagyon nagy méretű, magas erőforrás-igényű adatbázisok "érvényes" futtathatja.
 
 ### <a name="functional-partitioning"></a>Funkcionális particionálás
 
-SQL Server-felhasználók gyakran kombinálásával egyetlen adatbázisban számos függvénye. Például ha egy alkalmazás logikai kezelheti a készletet egy tároló, a, hogy az adatbázis előfordulhat Készletkövetés vásárlási megrendelést, a tárolt eljárások és a hónap vége jelentéskészítés kezelése az indexelt vagy tényleges táblán alapuló nézetek társított logikát. Ez a technika megkönnyíti a különböző műveletek, mint például a biztonsági mentés felügyeletéhez, de azt is szükséges, hogy a hardvert, hogy a maximális terhelés kezeléséhez minden functions-alkalmazások közötti méretre.
+SQL Server-felhasználók gyakran össze az egyes adatbázisok számos függvényei. Például ha egy alkalmazás logikai kezelheti a készletet egy tároló, a, hogy az adatbázis előfordulhat Készletkövetés vásárlási megrendelést, a tárolt eljárások és a hónap vége jelentéskészítés kezelése az indexelt vagy tényleges táblán alapuló nézetek társított logikát. Ez a technika megkönnyíti a különböző műveletek, mint például a biztonsági mentés felügyeletéhez, de azt is szükséges, hogy a hardvert, hogy a maximális terhelés kezeléséhez minden functions-alkalmazások közötti méretre.
 
 Ha egy Azure SQL Database-ben kibővített architektúrát használ, érdemes felosztani a különböző funkciók különböző adatbázisok egy alkalmazás Ez a módszer használata esetén mindegyik alkalmazás egymástól függetlenül méretezhető. Egy alkalmazás elfoglaltabb válik (és az adatbázison a terhelés növekszik), a rendszergazdák kiválaszthatják független számítási méretei minden függvény az alkalmazásban. Címen a határt, ebben az architektúrában az alkalmazás lehet nagyobb, mint egy hagyományos egyetlen gép képes kezelni, mert a terhelés több gép között megoszlik.
 

@@ -1,6 +1,6 @@
 ---
-Cím: Manage Machine Learning Studio web services using API Management titleSuffix: Azure Machine Learning Studio description: Az API Management használatával AzureML webszolgáltatások kezelése bemutató útmutató. A REST API-végpontokon kezelheti a felhasználói hozzáférés-szabályozás és figyelési irányítópult definiálásával.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Manage Machine Learning Studio web services using API Management titleSuffix: Azure Machine Learning Studio description: Az API Management használatával AzureML webszolgáltatások kezelése bemutató útmutató. A REST API-végpontokon kezelheti a felhasználói hozzáférés-szabályozás és figyelési irányítópult definiálásával.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/03/2017
 ---

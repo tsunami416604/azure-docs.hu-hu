@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 53a801a367e6948c3070224b7ff36a013a1faab3
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 47be738a4e5dcec144d482c28e39cbe950bba3e7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300850"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460386"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse számítások kezelése
 Ismerje meg az Azure SQL Data Warehouse a számítási erőforrások kezelése. Az adattárház szüneteltetésével a költségek csökkentése, vagy méretezheti a data warehouse-adattárházat teljesítményigények kielégítése. 

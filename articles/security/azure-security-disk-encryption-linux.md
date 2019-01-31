@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/17/2018
 ms.custom: seodec18
-ms.openlocfilehash: 27204710cb6a94efaebc0b8f075b0a8f50b45a6c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 608cc7a9e7c3b09c4b033397cbae6ac68e0a503a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079834"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478440"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Linux rendszerű IaaS virtuális gépekhez az Azure Disk Encryption engedélyezése 
 
@@ -24,7 +24,7 @@ Igénybe vehet egy [pillanatkép](../virtual-machines/windows/snapshot-copy-mana
 >[!WARNING]
 > - Ha korábban már használt [az Azure Disk Encryption az Azure AD-alkalmazás](azure-security-disk-encryption-prerequisites-aad.md) Ez a virtuális gép titkosítására, kell továbbra is használja ezt a beállítást a virtuális gép titkosítására. Nem használhat [az Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) a titkosított virtuális gépen, ez nem támogatott forgatókönyv, azaz a átváltani AAD-alkalmazás számára a titkosított virtuális gép nem támogatott még.
  > - Az Azure Disk Encryption van szüksége a Key Vault és a virtuális gépek közös elhelyezése ugyanabban a régióban. Létrehozhat és használhat egy Key Vaultot, amely ugyanabban a régióban, mint a virtuális gép titkosítását.
-> - Linux operációs rendszer kötet titkosításakor az a folyamat néhány órát is igénybe vehet. Előfordulhat, hogy tovább tart, mint az adatkötetek titkosításához Linux operációsrendszer-kötetek. 
+> - Linux operációs rendszer kötet titkosításakor a virtuális gép nem lesz elérhető, és az SSH le lesz tiltva. Folyamatban van, ellenőrizze a [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) vagy [vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) parancsok is használhatók. Ez a folyamat várhatóan 30 GB-os operációsrendszer-kötet több óráig, valamint az adatkötetek titkosításához további időt igénybe vehet. Adatok kötet titkosítási időtartam méretével arányos lesz, és keretbe foglalt adatmennyiség, kivéve, ha a titkosítás formázni az összes beállítás szolgál. 
 > - Linux rendszerű virtuális gépek titkosításának letiltása csak az adatkötetek esetében támogatott. Nem támogatott a adatok vagy operációsrendszer-kötettel, ha az operációsrendszer-kötet titkosított.  
 
 

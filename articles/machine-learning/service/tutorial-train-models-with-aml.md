@@ -9,18 +9,18 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed5e506e5bb38e6c11c3d8ecd52c85d4f21cf1f2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6811888b5113a2cf5a06811f0e1b1bcee57d864b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242926"
+ms.locfileid: "55298058"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Oktatóanyag: Betanításához egy kép osztályozási modell Azure Machine Learning szolgáltatással
 
-Az oktatóanyag során egy gépi tanulási modellt fog betanítani helyi és távoli számítási erőforrások használatával. Python Jupyter notebook az Azure Machine Learning szolgáltatás a képzés és az üzembe helyezést megvalósító munkafolyamat használja. Ezután a notebookot sablonként használhatja a saját gépi tanulási modelljének saját adatokkal való betanításához. Ez az oktatóanyag **egy kétrészes sorozat első része**.  
+Ebben az oktatóanyagban egy gépi tanulási modellt a távoli számítási erőforrások betanításához. Az Azure Machine Learning szolgáltatás (előzetes verzió) betanítási és üzembehelyezési munkafolyamatát fogja használni egy Python Jupyter-notebookban.  Ezután a notebookot sablonként használhatja a saját gépi tanulási modelljének saját adatokkal való betanításához. Ez az oktatóanyag **egy kétrészes sorozat első része**.  
 
 Ebben az oktatóanyagban egy egyszerű logisztikai regressziós betanítja használatával a [MNIST](http://yann.lecun.com/exdb/mnist/) adatkészlet és [scikit-további](https://scikit-learn.org) Azure Machine Learning szolgáltatással. Az MNIST egy 70 000 szürkeárnyalatos képből álló, népszerű adathalmaz. Minden egyes képe 28 x 28 képpont, egy számot jelölő nine nulláról kézírásos számjegy. A cél, azonosíthatja a számokat a megadott lemezkép multiclass besorolás létrehozása jelöli. 
 
@@ -38,16 +38,40 @@ Megtudhatja, hogyan modell kiválasztása és hogyan telepítheti a [második r�
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
 
 >[!NOTE]
-> Ebben a cikkben kód az Azure Machine Learning SDK-val 1.0.2-es verzióját lett tesztelve.
+> Ebben a cikkben kód az Azure Machine Learning SDK verziója 1.0.8 lett tesztelve.
 
-## <a name="get-the-notebook"></a>A notebook beszerzése
+## <a name="prerequisites"></a>Előfeltételek
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb) is elérhető. Futtassa a `tutorials/img-classification-part1-training.ipynb` notebook vagy [Azure notebookok](https://notebooks.azure.com/) vagy a saját Jupyter notebook server.
+Ugrás a [a fejlesztési környezet beállítása](#start) olvassa végig a notebook lépéseket, vagy használja az alábbi utasításokat a notebook beszerzése és az Azure notebookok vagy a saját notebook server futtatásához.  A jegyzetfüzet futtatásához szüksége lesz:
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+* Egy Python 3.6-os notebook kiszolgálót a következőkkel:
+    * Az Azure Machine Learning SDK a Pythonhoz
+    * `matplotlib` és `scikit-learn`
+* Az oktatóanyag notebook és a fájl utils.py
+* A machine learning-munkaterület 
+* A konfigurációs fájl ugyanabban a könyvtárban, a notebookot a munkaterület számára 
+
+Ezekről az előfeltételekről le az alábbi szakaszok egyikét.
+ 
+* Használat [Azure notebookok](#azure) 
+* Használat [saját notebook server](#server)
+
+### <a name="azure"></a>Az Azure notebookok használata: Ingyenes Jupyter notebookok a felhőben
+
+Nem kell mást Azure notebookok használatának megkezdéséhez. A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) már telepítve és konfigurálva van az Ön számára [Azure notebookok](https://notebooks.azure.com/). A telepítés és a jövőbeli frissítések automatikusan felügyelt Azure-szolgáltatások használatával.
+
+Miután elvégezte az alábbi lépéseket, futtassa a **oktatóanyagok/img – osztályozás – 1-training.ipynb** a notebook a **első lépések** projekt.
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
 
-## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
+### <a name="server"></a>A saját Jupyter notebook server használata
+
+Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/img – osztályozás – 1-training.ipynb** notebookot.
+
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
+
+## <a name="start"></a>A fejlesztési környezet beállítása
 
 Egy Python-notebookban a fejlesztési munka összes beállítása megadható. A telepítő az alábbi műveleteket tartalmazza:
 
@@ -63,11 +87,10 @@ Importálja azokat a Python-csomagokat, amelyekre ebben a munkamenetben szüksé
 ```python
 %matplotlib inline
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 
-import azureml
-from azureml.core import Workspace, Run
+import azureml.core
+from azureml.core import Workspace
 
 # check core SDK version number
 print("Azure ML SDK Version: ", azureml.core.VERSION)
@@ -94,11 +117,11 @@ from azureml.core import Experiment
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-amlcompute"></a>Hozzon létre vagy csatlakoztasson egy már létező AMlCompute
+### <a name="create-or-attach-an-existing-compute-resource"></a>Hozzon létre vagy egy meglévő számítási erőforrás csatolása
 
-Az Azure Machine Learning Compute (AmlCompute), egy felügyelt szolgáltatás, az adatszakértők betaníthatja machine learning-modellek Azure-beli virtuális gépek fürtjein. Ilyenek például a virtuális gépek a GPU-támogatással. Ebben az oktatóanyagban létrehoz AmlCompute a képzési környezet. Ez a kód létrehozza az Ön számára a számítási fürtök, ha azok még nem léteznek a munkaterületén.
+Az Azure Machine Learning COMPUTE számítási, egy felügyelt szolgáltatás, az adatszakértők betaníthatja machine learning-modellek Azure-beli virtuális gépek fürtjein. Ilyenek például a virtuális gépek a GPU-támogatással. Ebben az oktatóanyagban hoz létre az Azure Machine Learning Compute a képzési környezet. Az alábbi kódot az Ön hozza létre a számítási fürtök, ha azok még nem léteznek a munkaterületén.
 
- **A számítási létrehozása nagyjából öt percet vesz igénybe.** Ha a számítási már a munkaterületen, ez a kód használja ezt a szolgáltatást, és kihagyja a létrehozási folyamat:
+ **A számítási létrehozása nagyjából öt percet vesz igénybe.** Ha a számítási már a munkaterületen, a kódot használja ezt a szolgáltatást, és kihagyja a létrehozási folyamat.
 
 
 ```python
@@ -132,8 +155,8 @@ else:
     # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-     # For a more detailed view of current AmlCompute status, use the 'status' property    
-    print(compute_target.status.serialize())
+     # For a more detailed view of current AmlCompute status, use get_status()
+    print(compute_target.get_status().serialize())
 ```
 
 Most már rendelkezésre állnak a modell felhőben történő betanításához szükséges csomagok és számítási erőforrások. 
@@ -155,13 +178,15 @@ Töltse le az MNIST-adathalmazt, és mentse a fájlokat egy helyi `data` könyvt
 import os
 import urllib.request
 
-os.makedirs('./data', exist_ok = True)
+data_path = os.path.join(os.getcwd(), 'data')
+os.makedirs(data_path, exist_ok = True)
 
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename='./data/train-images.gz')
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename='./data/train-labels.gz')
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename='./data/test-images.gz')
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename='./data/test-labels.gz')
 ```
+Ehhez hasonló kimenetet fog látni: ```('./data/test-labels.gz', <http.client.HTTPMessage at 0x7f40864c77b8>)```
 
 ### <a name="display-some-sample-images"></a>Mintaképek megjelenítése
 
@@ -210,60 +235,32 @@ A MNIST fájlok feltöltése egy könyvtárba nevű `mnist` az adattár gyökér
 ds = ws.get_default_datastore()
 print(ds.datastore_type, ds.account_name, ds.container_name)
 
-ds.upload(src_dir='./data', target_path='mnist', overwrite=True, show_progress=True)
+ds.upload(src_dir=data_path, target_path='mnist', overwrite=True, show_progress=True)
 ```
 Most már a modell betanításának megkezdéséhez szükséges összes előfeltétellel rendelkezik. 
 
-## <a name="train-a-local-model"></a>Egy helyi modell betanítása
-
-Egy egyszerű logisztikai regressziós modell betanításához scikit használatával – ismerje meg, helyileg.
-
-**Képzési helyileg is igénybe vehet, egy-két perc** a számítógép-konfigurációtól függően:
-
-```python
-%%time
-from sklearn.linear_model import LogisticRegression
-
-clf = LogisticRegression()
-clf.fit(X_train, y_train)
-```
-
-Ezután előrejelzéseket a teszt set használatával, és pontossága kiszámítása: 
-
-```python
-y_hat = clf.predict(X_test)
-print(np.average(y_hat == y_test))
-```
-
-Megjelenik a helyi modell pontossága:
-
-`0.9202`
-
-Mindössze néhány sornyi kóddal rendelkezik 92 százalékos pontosságát.
 
 ## <a name="train-on-a-remote-cluster"></a>Betanítás távoli fürtön
 
-Most kiterjesztheti ezt az egyszerű modellt egy más regularizációs arányú modell létrehozásával. Ennek során, a távoli erőforrásokhoz a modell betanítását.  
-
-E gyakorlat céljából küldje el a feladatot a korábban beállított távoli betanítási fürtnek. Olyan feladatot küld el, tegye a következőket:
-* Hozzon létre egy könyvtárat.
-* Hozzon létre egy tanítási szkriptet.
-* Hozzon létre egy estimator objektumot.
-* A feladat elküldéséhez.
+E gyakorlat céljából küldje el a feladatot a korábban beállított távoli betanítási fürtnek.  A feladat elküldésének menete:
+* Könyvtár létrehozása
+* Betanító szkript létrehozása
+* Hozzon létre egy estimator objektumot
+* Feladat küldése 
 
 ### <a name="create-a-directory"></a>Könyvtár létrehozása
 
-Hozzon létre egy könyvtárat a számítógépen a szükséges kódot továbbítására a távoli erőforrás:
+Hozzon létre egy kódtárat, amellyel eljuttathatja a szükséges kódot a számítógépéről a távoli erőforrásra.
 
 ```python
 import os
-script_folder = './sklearn-mnist'
+script_folder  = os.path.join(os.getcwd(), "sklearn-mnist")
 os.makedirs(script_folder, exist_ok=True)
 ```
 
 ### <a name="create-a-training-script"></a>Betanító szkript létrehozása
 
-A feladatnak a fürtre való elküldéséhez először hozzon létre egy betanító szkriptet. Futtassa a következő kódot a tanítási szkriptet nevű létrehozása `train.py` hozott létre a címtárban. Ez a képzés ad hozzá a regularizációs arány az algoritmus betanítása. Ezért küld egy némileg eltérő modellt, mint a helyi verziója:
+A feladatnak a fürtre való elküldéséhez először hozzon létre egy betanító szkriptet. A `train.py` nevű betanító szkript imént létrehozott könyvtárban történő létrehozásához futtassa a következő kódot.
 
 ```python
 %%writefile $script_folder/train.py
@@ -406,6 +403,8 @@ Ez továbbra is a pillanatkép el a betanítási végén látható widget:
 
 ![notebook widget](./media/tutorial-train-models-with-aml/widget.png)
 
+Ha a Futtatás megszakítása van szüksége, kövesse [ezek az utasítások](https://aka.ms/aml-docs-cancel-run).
+
 ### <a name="get-log-results-upon-completion"></a>Naplóeredmények lekérése a befejezéskor
 
 A modell betanítása és monitorozása a háttérben zajlik. Várjon, amíg a modell betanítási befejeződött, további kód futtatása előtt. Használat `wait_for_completion` megjelenítéséhez, miután befejezte a modell betanítása: 
@@ -422,7 +421,7 @@ Most már rendelkezik egy távoli fürtön betanított modellel. Kérje le a mod
 ```python
 print(run.get_metrics())
 ```
-A kimenet mutatja, hogy a távoli modellnek valamivel nagyobb, mint a helyi modell pontossága miatt a regularizációs arány betanítás során is:  
+A kimenet mutatja, hogy a távoli modellnek 0.9204 pontosságát:
 
 `{'regularization rate': 0.8, 'accuracy': 0.9204}`
 
@@ -465,8 +464,7 @@ Az Azure Machine Learning szolgáltatás oktatóanyagban használt Python a köv
 > [!div class="checklist"]
 > * A fejlesztési környezet beállítása.
 > * Az adatok vizsgálatát, és hozzáférést.
-> * Egy egyszerű logisztikai regressziós betanításához helyileg a népszerű scikit használatával – ismerje meg, gépi tanulási kódtár.
-> * Egy távoli fürtön több modelleket taníthat be.
+> * Egy távoli fürtön a népszerű scikit használatával több modelleket taníthat be – ismerje meg, gépi tanulási kódtár
 > * Képzési adatokat, és regisztrálja a legjobb modellt.
 
 Készen áll a regisztrált modell üzembe helyezése az oktatóanyag-sorozat következő részére, utasításait használatával:

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: overview
 ms.date: 07/19/2018
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: ef2930f30bf700ce81a2763a5a96a5d154bda1b5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.subservice: files
+ms.openlocfilehash: 647b1723136edd23f3e58f1c225c9226714d4d97
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008487"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466890"
 ---
 # <a name="what-is-azure-files"></a>Mi az Azure Files?
 Az Azure Files teljes körűen felügyelt felhőbeli fájlmegosztást nyújt, amely az iparági szabványos [Server Message Block (SMB) protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) keresztül érhető el. Az Azure-fájlmegosztások párhuzamosan több felhőalapú vagy helyszíni Windows, Linux vagy macOS rendszerű üzemelő példány által is csatlakoztathatóak. Emellett az Azure-fájlmegosztások gyorsítótárazhatók Windows Servereken az Azure File Sync használatával az adatok felhasználási helyéhez közeli gyors elérés érdekében.
@@ -33,7 +33,7 @@ Az Azure-fájlmegosztások az alábbiakra használhatók:
     Az Azure Files segítségével könnyedén „átemelhetők” azok az alkalmazások a felhőbe, amelyekhez fájlmegosztás szükséges a fájlalkalmazások és a felhasználók adatainak tárolásához. Az Azure Files az alkalmazást és az adatokat egyaránt az Azure-ba áthelyező „klasszikus”, és az adatokat az Azure Filesba áthelyező és az alkalmazást továbbra is a helyszíni környezetben futtató „hibrid” átemelési forgatókönyvet is támogatja. 
 
 * **A felhőalapú fejlesztés egyszerűsítése**:  
-    Az Azure Files emellett számos különféle módon segítheti az új felhőalapú fejlesztési projektek egyszerűbbé tételét. Például:
+    Az Azure Files emellett számos különféle módon segítheti az új felhőalapú fejlesztési projektek egyszerűbbé tételét. Példa:
     * **Megosztott alkalmazásbeállítások**:  
         Az elosztott alkalmazások egyik jellegzetessége, hogy egy központi helyen található a konfigurációs fájljuk, ahol számos alkalmazáspéldány hozzáférhet. Az alkalmazáspéldányok a konfigurációjukat a Fájl REST API-val tudják betölteni, és a felhasználók az SMB-megosztások helyi csatlakoztatásával érhetik el őket igény szerint.
 

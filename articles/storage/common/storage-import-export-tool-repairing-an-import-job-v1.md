@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: e2eb580df0a90e07e79c7f080ba31e5418fc5956
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: fda1d3d626c91ba984f08b96c79ab6a2fd2ec74b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523784"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471735"
 ---
 # <a name="repairing-an-import-job"></a>Importálási feladat javítása
 A Microsoft Azure Import/Export szolgáltatás néhány a fájlok és a egy fájl részeit átmásolása a Windows Azure Blob szolgáltatás sikertelen lehet. Bizonyos hibák okai a következők:  
@@ -35,12 +35,12 @@ A következő paraméterek adható **RepairImport**:
 |**r:**< RepairFile\>|**Szükséges.** A javítási fájlt, amely nyomon követi a folyamatot a javítás, és lehetővé teszi, hogy folytatni az megszakított javítását elérési útja. Minden olyan meghajtó csak egy javítási fájlnak kell lennie. Amikor egy adott meghajtó javítás, adja meg az elérési út egy javítási fájlt, amely még nem létezik. Az megszakított javítását folytatásához be egy meglévő helyreállítási fájl nevét kell átadnia. A javítási fájlt a cél meghajtó megfelelő mindig meg kell adni.|  
 |**/ logdir:**< LogDirectory\>|**Nem kötelező.** A naplózási könyvtár. Ez a könyvtár részletes naplófájlok kerüljenek. Ha nincs naplókönyvtár van megadva, a naplózási könyvtár az aktuális könyvtárban lesz.|  
 |**/ d:**< TargetDirectories\>|**Szükséges.** Egy vagy több pontosvesszővel tagolt könyvtárak, amelyek tartalmazzák az eredeti fájlokat a korábban importált. Az importálás meghajtó is használható, de nem kötelező, ha a másodlagos hely eredeti fájlok érhető el.|  
-|**/BK:**< BitLockerKey\>|**Nem kötelező.** A BitLocker-kulcsot kell megadnia, ha azt szeretné, hogy az eszköz zárolásának feloldásához egy titkosított meghajtó, ahol az eredeti fájl áll rendelkezésre.|  
-|**/sn:**< StorageAccountName\>|**Szükséges.** Az importálási feladatot a tárfiók neve.|  
-|**/SK:**< StorageAccountKey\>|**Szükséges** csak, ha nincs megadva egy SAS-tárolót. A storage-fiókját az importálási feladat fiókkulcs.|  
-|**/csas:**< ContainerSas\>|**Szükséges** csak, ha nincs megadva a tárfiók-kulcsot. A tároló SAS a blobok, az importálási feladathoz hozzárendelt eléréséhez.|  
-|**/ CopyLogFile:**< DriveCopyLogFile\>|**Szükséges.** Naplófájl elérési útja a meghajtó másolása (vagy részletes naplózás vagy a hiba naplója). A fájlt a Windows Azure Import/Export szolgáltatás által létrehozott, és a feladathoz hozzárendelt blob storage-ból letölthető. A log fájl másolása sikertelen blobok vagy fájlokat, amelyek javításra szorul kapcsolatos információkat tartalmazza.|  
-|**/ PathMapFile:**< DrivePathMapFile\>|**Nem kötelező.** Elérési út egy szövegfájlba feloldani a kétértelműséget, ha több fájlt, amely ugyanazt a feladatot importálna ugyanazzal a névvel rendelkezik használható. Az eszköz fut, először azt fel lehet tölteni a fájlt az összes, a nem egyértelmű nevek. Az eszköz későbbi futtatások a kétértelműséget feloldani ezt a fájlt használja.|  
+|**/bk:**<BitLockerKey\>|**Nem kötelező.** A BitLocker-kulcsot kell megadnia, ha azt szeretné, hogy az eszköz zárolásának feloldásához egy titkosított meghajtó, ahol az eredeti fájl áll rendelkezésre.|  
+|**/sn:**<StorageAccountName\>|**Szükséges.** Az importálási feladatot a tárfiók neve.|  
+|**/sk:**<StorageAccountKey\>|**Szükséges** csak, ha nincs megadva egy SAS-tárolót. A storage-fiókját az importálási feladat fiókkulcs.|  
+|**/csas:**<ContainerSas\>|**Szükséges** csak, ha nincs megadva a tárfiók-kulcsot. A tároló SAS a blobok, az importálási feladathoz hozzárendelt eléréséhez.|  
+|**/CopyLogFile:**<DriveCopyLogFile\>|**Szükséges.** Naplófájl elérési útja a meghajtó másolása (vagy részletes naplózás vagy a hiba naplója). A fájlt a Windows Azure Import/Export szolgáltatás által létrehozott, és a feladathoz hozzárendelt blob storage-ból letölthető. A log fájl másolása sikertelen blobok vagy fájlokat, amelyek javításra szorul kapcsolatos információkat tartalmazza.|  
+|**/PathMapFile:**<DrivePathMapFile\>|**Nem kötelező.** Elérési út egy szövegfájlba feloldani a kétértelműséget, ha több fájlt, amely ugyanazt a feladatot importálna ugyanazzal a névvel rendelkezik használható. Az eszköz fut, először azt fel lehet tölteni a fájlt az összes, a nem egyértelmű nevek. Az eszköz későbbi futtatások a kétértelműséget feloldani ezt a fájlt használja.|  
   
 ## <a name="using-the-repairimport-command"></a>A RepairImport paranccsal  
 Adatok importálása a hálózaton keresztül a streamadatok helyreállításához, meg kell adnia a importálna, használja az eredeti fájlokat tartalmazó könyvtárakat a `/d` paraméter. A log fájl másolása a tárfiókból letöltött is meg kell. Egy tipikus parancssori részleges hibákkal rendelkező importálási feladat javítása hasonlóan néz ki:  

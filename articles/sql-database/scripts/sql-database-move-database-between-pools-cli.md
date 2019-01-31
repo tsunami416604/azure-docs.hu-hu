@@ -11,17 +11,17 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 0d532f976304e164732be5184ff132421e13c6b4
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: a70af29c07c532b43fdf25d0517ae880bfd3cff8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53649889"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476332"
 ---
 # <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Azure SQL Database-adatbázis áthelyezése egy rugalmas SQL-készletben a CLI használatával
 
-Ez az Azure CLI-példaszkript két rugalmas készletet hoz létre, áthelyez egy Azure SQL Database-adatbázist az egyik rugalmas SQL-készletből a másikba, majd átviszi az adatbázist a rugalmas készletből egy egyetlen Azure-adatbázishoz tartozó számítási méretre. 
+Az Azure CLI-példaszkript két rugalmas készletet hoz létre egy Azure SQL database áthelyez az egyik rugalmas SQL-készlet egy másik rugalmas SQL-készlet, és majd átviszi az adatbázist a rugalmas készletből egy egyetlen adatbázishoz számítási mérete. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,9 +48,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Olyan logikai kiszolgálót hoz létre, amely egy adatbázist vagy rugalmas készletet üzemeltet. |
-| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Létrehoz egy rugalmas készletet a logikai kiszolgálón. |
-| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Létrehoz egy adatbázist egy logikai kiszolgálón egyetlen vagy készletezett adatbázisként. |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy SQL Database-kiszolgálót, amelyen az önálló adatbázisok és rugalmas készleteket. |
+| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Egy rugalmas készletet hoz létre. |
+| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Rugalmas készlet egyetlen, vagy egy adatbázist hoz létre. |
 | [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | Frissíti az adatbázis tulajdonságait vagy az adatbázist egy rugalmas készletbe, egy rugalmas készletből vagy rugalmas készletek között helyezi át. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 

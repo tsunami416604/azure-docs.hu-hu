@@ -1,6 +1,6 @@
 ---
 title: A gyorsított adatbázis-helyreállítás – Azure SQL Database |} A Microsoft Docs
-description: Az Azure SQL Database új funkció gyors és következetes adatbázis helyreállítását, azonnali tranzakció visszaállítása és agresszív rendszernapló csonkolása biztosít az önálló adatbázisok, rugalmas készletek és az Azure SQL Data Warehouse rendelkezik.
+description: Az Azure SQL Database új funkció gyors és következetes adatbázis helyreállítását, azonnali tranzakció visszaállítása és agresszív rendszernapló csonkolása biztosít az önálló adatbázisok és a készletezett adatbázisok Azure SQL Database-ben, és az adatbázisok az Azure SQL Data rendelkezik Az adatraktár.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: ''
@@ -10,17 +10,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/11/2018
-ms.openlocfilehash: deaf5c9180841f8c5b2d21a820f2ab2362dc2453
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 6d962a40fe0e1a7658c0d5ac30c7fd04bfb7fb0f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600716"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475448"
 ---
 # <a name="accelerated-database-recovery-preview"></a>Gyorsított adatbázis-helyreállítás (előzetes verzió)
 
-**A gyorsított adatbázis-helyreállítás (ADR)** egy új SQL database engine szolgáltatás, amely jelentősen csökkenti az adatbázis-elérhetőségi, különösen hosszú folytonosságát fut-e, tranzakciók, az SQL database engine helyreállítást újratervezése. Automatikus központi telepítési szabály már érhető el az önálló adatbázisok, rugalmas készletek és Azure SQL Data warehouse-bA. Az automatikus központi telepítési szabály elsődleges előnyei a következők:
+**A gyorsított adatbázis-helyreállítás (ADR)** egy új SQL database engine szolgáltatás, amely jelentősen csökkenti az adatbázis-elérhetőségi, különösen hosszú folytonosságát fut-e, tranzakciók, az SQL database engine helyreállítást újratervezése. Automatikus központi telepítési szabály már érhető el az önálló adatbázisok és a készletezett adatbázisok Azure SQL Database-ben, és az Azure SQL Data Warehouse-adatbázisok. Az automatikus központi telepítési szabály elsődleges előnyei a következők:
 
 - **Gyors és következetes adatbázis-helyreállítás**
 
@@ -127,4 +127,4 @@ A következő típusú ügyfelek fontolja meg automatikus központi telepítési
 
 ## <a name="to-enable-adr-during-this-preview-period"></a>Automatikus központi telepítési szabály engedélyezése az előzetes verzió időszaka során
 
-E-mail küldése a szolgáltatás az előzetes verzió ideje alatt [ adr@microsoft.com ](mailto:adr@microsoft.com) további, és próbálja ki a gyorsított adatbázis helyreállítási (automatikus központi telepítési szabály). Az e-mailben a logikai kiszolgáló neve (az önálló adatbázisok, rugalmas készletek és az Azure Data Warehouse) is. Mivel ez egy előzetes verziójú funkció, a tesztelési kiszolgáló lehet egy nem éles üzemi kiszolgáló.
+E-mail küldése a szolgáltatás az előzetes verzió ideje alatt [ adr@microsoft.com ](mailto:adr@microsoft.com) további, és próbálja ki a gyorsított adatbázis helyreállítási (automatikus központi telepítési szabály). Az e-mailben az SQL Database-kiszolgáló neve (az önálló adatbázisok és a készletezett adatbázisok SQL Database-ben és az adatbázisok az Azure Data Warehouse) is. Mivel ez egy előzetes verziójú funkció, a tesztelési kiszolgáló lehet egy nem éles üzemi kiszolgáló.

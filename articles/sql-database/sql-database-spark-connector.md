@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/23/2018
-ms.openlocfilehash: 09035b19ee48602fde70736ab918fccae71108a5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 864cf49634e4f9452829a30ce4b260179bdeb8db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166250"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476213"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Gyorsítsa fel a valós idejű big data analytics és a Spark-összekötő az Azure SQL Database és SQL Server
 
@@ -161,7 +161,7 @@ collection.show()
 #### <a name="setup-requirement"></a>A telepítő követelmény
 Ha a hozzáférési jogkivonat-alapú hitelesítési módot használja, le kell töltenie [azure-activedirectory-erőforrástár-az-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) és annak függőségeit, és ezeket a Java build elérési útja.
 
-Lásd: [használata az Azure Active Directory-hitelesítéssel hitelesítés az SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) megtudhatja, hogyan lehet beszerezni a hozzáférési jogkivonatot az Azure SQL Database-adatbázishoz.
+Lásd: [használata az Azure Active Directory-hitelesítéssel hitelesítés az SQL Database](sql-database-aad-authentication.md) megtudhatja, hogyan lehet beszerezni a hozzáférési jogkivonatot az Azure SQL Database-adatbázishoz.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config

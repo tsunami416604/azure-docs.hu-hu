@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: c3aef8c0c05c8f018a3218e15fd102163b89084f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 693d66c6b56fd759086236ae0252d2c6f1b5693e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214742"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301254"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések listáját. Ha a Log Analytics szolgáltatásról további kérdése van, lépjen a [fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -49,9 +49,9 @@ V: Egyéni mezők kinyerése a hagyományos jelenleg támogatott naplók tapaszt
 
 V: Lista nézet nem érhető el az új naplók. Az egyes rekordok az eredmények táblázatában balra nyíl van. Kattintson a nyílra kattintva nyissa meg a egy adott rekord részleteit. 
 
-### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>K. A lekérdezés futtatása után javasolt szűrők listája megjelenik-e, de nem tartalmazza az összes szűrő. Hogyan tekinthetem meg a többi? 
+### <a name="q-after-running-a-query-a-list-of-suggested-filters-are-available-how-can-i-see-filters"></a>K. A lekérdezés futtatása után javasolt szűrők listájának érhetők el. Hogyan tekinthetem meg szűrők? 
 
-V: Jelenleg látható előzetes verziója új szűrőket végrehajtására. Ez most már folyamatban van a felhasználói felület legfeljebb 10 000 rekordot korlátozza helyett a teljes eredményhalmaz alapul. Ez a funkció jelenleg a legnépszerűbb szűrőket és az egyes szűrők a 10 leggyakrabban használt értékek listáját. 
+V: "Szűrők" kattintson a bal oldali pan, megjelenik egy előnézet új szűrőket megvalósítása. Ez most már folyamatban van a felhasználói felület legfeljebb 10 000 rekordot korlátozza helyett a teljes eredményhalmaz alapul. Ez a funkció jelenleg a legnépszerűbb szűrőket és az egyes szűrők a 10 leggyakrabban használt értékek listáját. 
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>K. Miért jelenik meg a hiba: "Erőforrás-szolgáltató" a Microsoft.Insights regisztrálása"ehhez az előfizetéshez ahhoz, hogy ez a lekérdezés" naplókat, a virtuális gépről a részletező elemzés után? 
 

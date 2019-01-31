@@ -1,6 +1,6 @@
 ---
-Cím: Másolja a mások data science példák titleSuffix: Azure Machine Learning Studio description: "Titokról adatelemzési módszer: Első másokat, hogy Ön helyett ezt a munkát. Machine learning példák az Azure AI katalógus. "
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Másolja a mások data science példák titleSuffix: Azure Machine Learning Studio description: "Titokról adatelemzési módszer: Első másokat, hogy Ön helyett ezt a munkát. Machine learning példák az Azure AI katalógus. "
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 Szerző: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/05/2018
 ---

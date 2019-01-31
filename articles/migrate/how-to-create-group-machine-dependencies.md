@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: a345b410dcf256e8cd07e7708906f5582b5f1828
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: e62a792e7503e65ebe008a52430f86f1f3a00006
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077387"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456017"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Gépek csoportosítása a gépek függőségi leképezés használatával
 
@@ -73,6 +73,11 @@ Az ügynök telepítése Linux rendszerű gépen:
 
 [További](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) kapcsolatos Linux operációs rendszerek támogatása az MMA által listája.
 
+#### <a name="install-the-agent-on-a-machine-monitored-by-scom"></a>Az ügynök telepítése az SCOM által figyelt gépen
+
+A gépek figyeli a System Center Operations Manager 2012 R2 vagy újabb nem az MMA-ügynök telepítése nem szükséges. A Service Map rendelkezik, amely az SCOM MMA információkat gyűjthet a szükséges függőséget az SCOM-integráció. Az útmutató segítségével az integráció engedélyezheti [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Vegye figyelembe azonban, hogy a függőségi ügynököt ezeken a gépeken telepíteni kell.
+
+
 ### <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
 1. A függőségi ügynök telepítése a Windows-gépen, kattintson duplán a telepítőfájlra, és kövesse a varázsló utasításait.
 2. A függőségi ügynök telepítése Linux rendszerű gépen telepítse a következő parancsot rendszergazdaként:
@@ -82,6 +87,7 @@ Az ügynök telepítése Linux rendszerű gépen:
 További információ a függőségi ügynök támogatása a [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) és [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) operációs rendszereket.
 
 [További](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) hogyan használja a szkriptek a függőségi ügynököt.
+
 
 ## <a name="create-a-group"></a>Csoport létrehozása
 
@@ -115,7 +121,7 @@ A csoport létrehozása után ajánlott ügynökök telepítése a csoport össz
 
 ## <a name="query-dependency-data-from-log-analytics"></a>A Log Analytics függőségi adatok lekérdezése
 
-Rögzíti a Service Map a függőségi adatokat a Log Analytics lekérdezéséhez érhető el. [További](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) kapcsolatban a Service Map adattáblák a Log Analytics-lekérdezést. 
+A Service Map által rögzített függőségi adatokat érhető el a lekérdezés a Log Analytics-munkaterülethez társítva az Azure Migrate-projekt. [További](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) kapcsolatban a Service Map adattáblák a Log Analytics-lekérdezést. 
 
 A Log Analytics-lekérdezések futtatása:
 

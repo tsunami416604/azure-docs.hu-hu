@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 1ba98598a88973c5d5ae09cffda931a54d521b74
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.date: 01/25/2019
+ms.openlocfilehash: d02e552ede4480ee0c4977dc32bbe347ca7db393
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259137"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459485"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Az Azure SQL Database-adatbázisok és a készletek a több-bérlős SaaS-alkalmazás teljesítményének figyelése és kezelése
 
 Ebben az oktatóanyagban használt SaaS-alkalmazásokban több fő felügyeleti forgatókönyvek teljesítménykezelési. Használja a terhelésgenerátor tevékenység szimulálása az összes bérlői adatbázison, a beépített figyelési és riasztási funkcióit az SQL Database és a rugalmas készletek találja meg.
 
-A Wingtip Tickets SaaS adatbázis Per bérlői alkalmazás egy egybérlős adatmodellt, használ, ahol minden egyes helyszín (bérlő) saját adatbázissal rendelkezik. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. Ezen tipikus adatbázis-felhasználási minta előnyei úgy használhatók ki, hogy a bérlői adatbázisokat rugalmas adatbáziskészletekben helyezik üzembe. A rugalmas készletek optimalizálják a megoldások költségeit azáltal, hogy számos adatbázis között osztják meg az erőforrásokat. Ennél a típusú mintánál fontos az adatbázis és a készleterőforrások felhasználásának figyelése annak biztosítása érdekében, hogy a terhelések egyenletesen oszoljanak meg a készletek közt. Emellett azt is biztosítani kell, hogy az egyes adatbázisok elengedő mennyiségű erőforrással rendelkezzenek, és hogy a készletek ne érjék el a maximális [eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model)-korlátot. Ez az oktatóanyag különböző módszereket ismertet az adatbázisok és készletek figyelésére és kezelésére, valamint a számítási feladatok változásaira adott korrekciós műveletek elvégzésére.
+A Wingtip Tickets SaaS adatbázis Per bérlői alkalmazás egy egybérlős adatmodellt, használ, ahol minden egyes helyszín (bérlő) saját adatbázissal rendelkezik. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. Ezen tipikus adatbázis-felhasználási minta kihasználásához a bérlői adatbázisok rugalmas készletekbe helyezik üzembe. A rugalmas készletek optimalizálják a megoldások költségeit azáltal, hogy számos adatbázis között osztják meg az erőforrásokat. Ennél a típusú mintánál fontos az adatbázis és a készleterőforrások felhasználásának figyelése annak biztosítása érdekében, hogy a terhelések egyenletesen oszoljanak meg a készletek közt. Emellett azt is biztosítani kell, hogy az egyes adatbázisok elengedő mennyiségű erőforrással rendelkezzenek, és hogy a készletek ne érjék el a maximális [eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model)-korlátot. Ez az oktatóanyag különböző módszereket ismertet az adatbázisok és készletek figyelésére és kezelésére, valamint a számítási feladatok változásaira adott korrekciós műveletek elvégzésére.
 
 Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
@@ -42,7 +42,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>Teljesítménykezelési minták SaaS bemutatása
 
-Az adatbázisteljesítmény-kezelés a teljesítményadatok fordításából és elemzéséből, majd az adatokra való reagálásból áll. Ez tulajdonképpen a paraméterek módosítását jelenti, miáltal az alkalmazás válaszideje elfogadható szinten marad. Több bérlő üzemeltetésekor a rugalmas adatbáziskészletekkel költséghatékonyan oldható meg a kiszámíthatatlan számítási feladatokkal szembesülő adatbáziscsoportok erőforrásainak biztosítása és kezelése. Bizonyos számításifeladat-mintáknál már akár két S3-adatbázist is előnyös lehet készletben kezelni.
+Az adatbázisteljesítmény-kezelés a teljesítményadatok fordításából és elemzéséből, majd az adatokra való reagálásból áll. Ez tulajdonképpen a paraméterek módosítását jelenti, miáltal az alkalmazás válaszideje elfogadható szinten marad. Több bérlő tárolásához, a rugalmas készletek egy költséghatékony megoldás, és kiszámíthatatlan számítási feladatokkal adatbáziscsoportok erőforrásainak kezelése. Bizonyos számításifeladat-mintáknál már akár két S3-adatbázist is előnyös lehet készletben kezelni.
 
 ![Alkalmazásdiagram](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
 
@@ -169,7 +169,7 @@ A készlet felskálázása mellett másik lehetőségként létrehozhat egy más
 
 1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a **tenants1-dpt -&lt;felhasználói&gt;**  kiszolgáló.
 1. Kattintson a **+ új készlet** -készlet létrehozása az aktuális kiszolgálón.
-1. Az a **rugalmas adatbáziskészlet** sablon:
+1. Az a **rugalmas készlet** sablon:
 
     1. Állítsa be **neve** való *Pool2*.
     1. A tarifacsomagnál hagyja meg a **Standard készlet** beállítást.
@@ -189,9 +189,9 @@ Keresse meg a **Pool2** (a a *tenants1-dpt -\<felhasználói\>*  kiszolgáló), 
 
 A most látható, hogy az erőforrás-használat *Pool1* csökkent, és hogy *Pool2* hasonlóan most betöltve.
 
-## <a name="manage-performance-of-a-single-database"></a>Önálló adatbázis teljesítményének kezelése
+## <a name="manage-performance-of-an-individual-database"></a>Az egyes adatbázisok teljesítményének kezelése
 
-Ha a készletben egy önálló adatbázist tartósan magas terhelés ér, akkor a készlet beállításaitól függően előfordulhat, hogy uralni fogja a készlet erőforrásainak használatát, ami hatással lehet a többi adatbázisra. Ha a tevékenység várhatóan huzamosabb ideig, az adatbázis ideiglenesen kivehető a készlet. Ez lehetővé teszi az adatbázis számára a további erőforrások van szüksége, és elszigetelődjön tőlük a más adatbázisok.
+Ha a készletben egy önálló adatbázis tartósan magas terhelés, a készlet beállításaitól függően, akkor előfordulhat, hogy általában uralja a készletben lévő erőforrásokat, és befolyásolja a többi adatbázis. Ha a tevékenység várhatóan huzamosabb ideig, az adatbázis ideiglenesen kivehető a készlet. Ez lehetővé teszi az adatbázis számára a további erőforrások van szüksége, és elszigetelődjön tőlük a más adatbázisok.
 
 Ez a gyakorlat a Contoso Concert Hall magas terhelésének a hatását szimulálja, amikor megkezdődik a jegyek árusítása egy népszerű koncertre.
 
@@ -203,7 +203,7 @@ Ez a gyakorlat a Contoso Concert Hall magas terhelésének a hatását szimulál
 
 1. Az a [az Azure portal](https://portal.azure.com), keresse meg az adatbázisok listája a *tenants1-dpt -\<felhasználói\>*  kiszolgáló. 
 1. Kattintson a **contosoconcerthall** adatbázis.
-1. Kattintson a készlet, amely **contosoconcerthall** szerepel. Keresse meg a készlet az a **rugalmas adatbáziskészlet** szakaszban.
+1. Kattintson a készlet, amely **contosoconcerthall** szerepel. Keresse meg a készlet az a **rugalmas készlet** szakaszban.
 
 1. Vizsgálja meg a **rugalmas készlet figyelése** diagram, és keresse meg a készlet megnövekedett eDTU kihasználtsága. Egy-két perc után jelentkezik a magas terhelés, aminek következtében a készlet eléri a 100%-os kihasználtságot.
 2. Vizsgálja meg a **rugalmas adatbázis figyelése** megjeleníteni, amelyek az elmúlt órában legtöbbet használt adatbázisokat jeleníti meg. A *contosoconcerthall* adatbázis hamarosan megjelenik az 5 legtöbbet használt adatbázisokat egyikét.

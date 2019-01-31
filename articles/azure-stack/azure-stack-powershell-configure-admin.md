@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: cf7fe050d2c0521a84bd7f108b2a6d67bfbe09da
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 47d6b336a031f4233bebb7af0b0c57dd8f643dac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241627"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452482"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Csatlakozás Azure Stack PowerShell-kezelőként
 
@@ -73,7 +73,7 @@ Csatlakozás az Azure Stack-üzemeltető környezet, a PowerShell-lel az Azure A
   ```
 
 > [!Note]  
-> Az AD FS csak támogatja az interaktív hitelesítéshez a felhasználói identitásokat. Ha egy hitelesítőadat-objektumnak szükség, egy szolgáltatásnév (SPN) kell használnia. Az identitáskezelő szolgáltatást nyújt egy egyszerű szolgáltatást az Azure Stack és az AS FS beállítását további információkért lásd: [kezelés egyszerű szolgáltatást az AD FS](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
+> Az AD FS csak támogatja az interaktív hitelesítéshez a felhasználói identitásokat. Ha egy hitelesítőadat-objektumnak szükség, egy szolgáltatásnév (SPN) kell használnia. Egy egyszerű szolgáltatást az Azure Stack és az AD FS, az identity management-szolgáltatás beállításának további információkért lásd: [kezelés egyszerű szolgáltatást az AD FS](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
 
 ## <a name="test-the-connectivity"></a>A kapcsolat tesztelése
 

@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: c25dd911b5648cdf4b64053ef26a7b70c9156074
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 18b024efdc4300daca2c5cee933b136dbc99d433
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599756"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468903"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Aktív georeplikáció konfigurálása az Azure SQL Database az Azure portal és a feladatátvétel kezdeményezése
 
-Ez a cikk bemutatja, hogyan [aktív georeplikáció konfigurálása egyetlen vagy készletezett adatbázisok] az SQL Database-ben egy logikai server(sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) használatával a [Az azure portal](http://portal.azure.com) és, hogy feladatátvételt kezdeményezzen.
+Ez a cikk bemutatja, hogyan konfigurálhatja [aktív georeplikáció egyetlen vagy készletezett adatbázisok](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) az Azure SQL Database-adatbázishoz a [az Azure portal](http://portal.azure.com) és, hogy feladatátvételt kezdeményezzen.
 
 Egyetlen vagy készletezett adatbázisok automatikus feladatátvételi csoportok kapcsolatos információkért lásd: [ajánlott eljárások a feladatátvételi csoportok használatával egyetlen vagy készletezett adatbázisok](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Felügyelt példány (előzetes verzió) az automatikus feladatátvételi csoportok kapcsolatos információkért lásd: [ajánlott eljárások a feladatátvételi csoportok használatával egyetlen vagy készletezett adatbázisok](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
@@ -40,7 +40,7 @@ Az alábbi lépéseket egy új másodlagos adatbázis georeplikációs partners�
 
 Szeretne hozzáadni egy másodlagos adatbázist, az előfizetés tulajdonosa vagy társtulajdonosa kell lennie.
 
-A másodlagos adatbázis neve megegyezik az elsődleges adatbázissal rendelkezik, és alapértelmezés szerint azt a csomagot, és a számítási méret ugyanazt a szolgáltatást. A másodlagos adatbázis egy önálló adatbázis és a egy adatbázist a rugalmas készlet is lehetnek. További információkért lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
+A másodlagos adatbázis neve megegyezik az elsődleges adatbázissal rendelkezik, és alapértelmezés szerint azt a csomagot, és a számítási méret ugyanazt a szolgáltatást. A másodlagos adatbázis egy önálló adatbázis és a egy készletezett adatbázis is lehetnek. További információkért lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 Miután létrehozott és áttöltésekor a másodlagos, elindul az adatok az új másodlagos adatbázis replikálása az elsődleges adatbázisból.
 
 > [!NOTE]

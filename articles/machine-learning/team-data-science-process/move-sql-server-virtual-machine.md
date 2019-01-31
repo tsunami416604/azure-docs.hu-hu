@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fbc23d53687b908245ffe25bdd418cbe64af080b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7c87a0f478b6efbe7ae9ff07def8b4d0d730b111
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136188"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478491"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
 
@@ -26,7 +26,7 @@ Ez a témakör ismerteti az adatok áthelyezése az Azure SQL Database, Machine 
 
 A következő táblázat összefoglalja a lehetőség az SQL Server-beli virtuális gépen.
 
-| <b>FORRÁS</b> | <b>CÉL: SQL Server Azure virtuális gépen</b> |
+| <b>FORRÁS</b> | <b>CÉL: Az SQL Server Azure virtuális gépen</b> |
 | --- | --- |
 | <b>Egybesimított fájl</b> |1. <a href="#insert-tables-bcp">Parancssori tömeges másolás eszköz (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">Tömeges beszúrás SQL-lekérdezés </a><br> 3. <a href="#sql-builtin-utilities">Az SQL Server grafikus beépített segédprogramok</a> |
 | <b>A helyszíni SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">SQL Server-adatbázis üzembe helyezése a Microsoft Azure virtuális gép varázsló</a><br> 2. <a href="#export-flat-file">Egybesimított fájl exportálása </a><br> 3. <a href="#sql-migration">Az SQL Database áttelepítése varázsló </a> <br> 4. <a href="#sql-backup">Adatbázis biztonsági mentése és visszaállítása </a><br> |
@@ -64,20 +64,23 @@ BCP parancssori segédprogram az SQL Server telepítve, és egyik adatok áthely
 
 1. Győződjön meg arról, hogy az adatbázis és a táblázatok jönnek létre a cél SQL Server-adatbázist. Íme egy példa, hogy az módjáról a `Create Database` és `Create Table` parancsokat:
 
-        CREATE DATABASE <database_name>
+```sql
+CREATE DATABASE <database_name>
 
-        CREATE TABLE <tablename>
-        (
-            <columnname1> <datatype> <constraint>,
-            <columnname2> <datatype> <constraint>,
-            <columnname3> <datatype> <constraint>
-        )
+CREATE TABLE <tablename>
+(
+    <columnname1> <datatype> <constraint>,
+    <columnname2> <datatype> <constraint>,
+    <columnname3> <datatype> <constraint>
+)
+```
+
 2. Hozza létre a formátumú fájlt, amely ismerteti a tábla sémája a következő parancsot a parancssorból a gép amelyen telepítve van a BCP használatával.
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
 3. Az adatok beszúrása az adatbázisba, ha a bcp-parancs használatával az alábbiak szerint. Ez használható a parancssorból feltételezve, hogy az SQL Server ugyanezen a gépen telepítve van:
 
-    `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attemp -t \t -r \n`
+    `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
 > **Szúrja be a BCP optimalizálása** tekintse meg a következő cikkben ["Tömeges importálás optimalizálása irányelvek"](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx) ilyen Beszúrások optimalizálása érdekében.
 >
@@ -87,46 +90,47 @@ BCP parancssori segédprogram az SQL Server telepítve, és egyik adatok áthely
 Ha az adatokat helyez át nagy, felgyorsíthatja dolgot egyszerre több BCP bevezetett parancsok végrehajtásával egy PowerShell-parancsfájl párhuzamosan.
 
 > [!NOTE]
-> **A big data-feldolgozó** nagy és nagyon nagy adatkészletekhez Adatbetöltési optimalizálása érdekében particionálja a logikai és fizikai adatbázistáblák több fájlcsoportok és partíciós táblák használatával. Létrehozásával és az adatok betöltése a táblák partíció kapcsolatos további információkért lásd: [párhuzamos betöltés SQL partíciós táblák](parallel-load-sql-partitioned-tables.md).
+> **A big data-feldolgozó** nagy és nagyon nagy adatkészletekhez Adatbetöltési optimalizálása érdekében particionálja a logikai és fizikai adatbázistáblák több fájl csoportok használatával, és a Táblák particionálása. Létrehozásával és az adatok betöltése a táblák partíció kapcsolatos további információkért lásd: [párhuzamos betöltés SQL partíciós táblák](parallel-load-sql-partitioned-tables.md).
 >
 >
 
-A minta PowerShell-parancsfájlt az alábbi párhuzamos Beszúrás a bcp használatával mutatja be:
+A következő PowerShell-parancsfájlt mutat be a párhuzamos Beszúrás a bcp használatával:
 
-    $NO_OF_PARALLEL_JOBS=2
+```powershell
+$NO_OF_PARALLEL_JOBS=2
 
-     Set-ExecutionPolicy RemoteSigned #set execution policy for the script to execute
-     # Define what each job does
-       $ScriptBlock = {
-           param($partitionnumber)
+Set-ExecutionPolicy RemoteSigned #set execution policy for the script to execute
+# Define what each job does
+$ScriptBlock = {
+    param($partitionnumber)
 
-           #Explictly using SQL username password
-           bcp database..tablename in datafile_path.csv -F 2 -f format_file_path.xml -U username@servername -S tcp:servername -P password -b block_size_to_move_in_single_attempt -t "," -r \n -o path_to_outputfile.$partitionnumber.txt
+    #Explicitly using SQL username password
+    bcp database..tablename in datafile_path.csv -F 2 -f format_file_path.xml -U username@servername -S tcp:servername -P password -b block_size_to_move_in_single_attempt -t "," -r \n -o path_to_outputfile.$partitionnumber.txt
 
-            #Trusted connection w.o username password (if you are using windows auth and are signed in with that credentials)
-            #bcp database..tablename in datafile_path.csv -o path_to_outputfile.$partitionnumber.txt -h "TABLOCK" -F 2 -f format_file_path.xml  -T -b block_size_to_move_in_single_attempt -t "," -r \n
-      }
-
-
-    # Background processing of all partitions
-    for ($i=1; $i -le $NO_OF_PARALLEL_JOBS; $i++)
-    {
-      Write-Debug "Submit loading partition # $i"
-      Start-Job $ScriptBlock -Arg $i      
-    }
+    #Trusted connection w.o username password (if you are using windows auth and are signed in with that credentials)
+    #bcp database..tablename in datafile_path.csv -o path_to_outputfile.$partitionnumber.txt -h "TABLOCK" -F 2 -f format_file_path.xml  -T -b block_size_to_move_in_single_attempt -t "," -r \n
+}
 
 
-    # Wait for it all to complete
-    While (Get-Job -State "Running")
-    {
-      Start-Sleep 10
-      Get-Job
-    }
+# Background processing of all partitions
+for ($i=1; $i -le $NO_OF_PARALLEL_JOBS; $i++)
+{
+    Write-Debug "Submit loading partition # $i"
+    Start-Job $ScriptBlock -Arg $i      
+}
 
-    # Getting the information back from the jobs
-    Get-Job | Receive-Job
-    Set-ExecutionPolicy Restricted #reset the execution policy
 
+# Wait for it all to complete
+While (Get-Job -State "Running")
+{
+    Start-Sleep 10
+    Get-Job
+}
+
+# Getting the information back from the jobs
+Get-Job | Receive-Job
+Set-ExecutionPolicy Restricted #reset the execution policy
+```
 
 ### <a name="insert-tables-bulkquery"></a>Tömeges beszúrás SQL-lekérdezés
 [Tömeges beszúrás SQL-lekérdezés](https://msdn.microsoft.com/library/ms188365) adatok importálása az adatbázisban a sorhoz/oszlophoz alapú fájlok segítségével (ismerkedhet meg a támogatott típusok a[előkészítése adatok tömeges exportálása és importálása (SQL Server)](https://msdn.microsoft.com/library/ms188609)) témakör.
@@ -135,18 +139,22 @@ Az alábbiakban néhány Példaparancsok a tömeges beszúrás vannak, az alább
 
 1. Az adatok elemzéséhez, és állítsa be az egyéni beállításokat, győződjön meg arról, hogy az SQL Server-adatbázis feltételezi, hogy ugyanazt a formátumot semmilyen különleges mezők, például a dátumok az importálás előtt. A következő példa bemutatja, hogyan állítsa be a dátumformátum, év, hónap-nap (ha az adatok év, hónap-nap formátumban):
 
-        SET DATEFORMAT ymd;    
+```sql
+SET DATEFORMAT ymd;
+```
 2. Adatok importálása használatával tömeges importálási utasításokat:
 
-        BULK INSERT <tablename>
-        FROM    
-        '<datafilename>'
-        WITH
-        (
-        FirstRow=2,
-        FIELDTERMINATOR =',', --this should be column separator in your data
-        ROWTERMINATOR ='\n'   --this should be the row separator in your data
-        )
+```sql
+BULK INSERT <tablename>
+FROM
+'<datafilename>'
+WITH
+(
+    FirstRow = 2,
+    FIELDTERMINATOR = ',', --this should be column separator in your data
+    ROWTERMINATOR = '\n'   --this should be the row separator in your data
+)
+```
 
 ### <a name="sql-builtin-utilities"></a>Az SQL Server beépített segédprogramok
 Az SQL Server Integrációk Services (SSIS) segítségével az adatok importálása az Azure-ban egy egybesimított fájlból az SQL Server rendszerű virtuális gép.

@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/30/2018
+ms.date: 01/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 5166e154e1a67cea777933b6bf8757661a9c3ad5
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: bbf1eb623232332ed025fa0806e942e638c39974
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242959"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456051"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Adatok áttelepítése az a StorSimple 5000-7000-es sorozat beállításai 
 
@@ -41,15 +41,17 @@ A StorSimple 5000-7000-es sorozat használó ügyfelek az alábbi lehetőségei 
 
     Adatok áttelepítése az Azure File Sync további információkért látogasson el [át adatokat a StorSimple 5000-7000-es sorozat az Azure File Sync](https://aka.ms/StorSimpleMigrationAFS).
 
-- **Harmadik féltől származó beállítások**:
+- **Külső beállítások**:
 
     - **Panzura szabadon NAS át** – a StorSimple 5000-7000-es ügyfelek kiválaszthatják a Panzura szabadon NAS tárolni az adatokat az Azure-ban való áttelepítéséhez. Panzura szabadon megoldás egy NAS-megoldás, adatközpontok, iroda, nyilvános és magánfelhőkben is biztosít. A megoldás lehetővé teszi a helyi, hibrid és a felhőbeli adatok munkafolyamatok NFS, SMB és mobilos ügyfeleket. Ez az áttelepítés Panzura által támogatott és Kezdésként igénylésével az áttelepítés támogatása a [Panzura webhely](https://panzura.com/storsimple-migration/).
+
+    - **A Cohesity áttelepítése** -Cohesity lehetővé teszi, hogy a jelenlegi storsimple 5000 – 7000-es adatokat át a Cohesity Data Platform az Azure-ban. A Cohesity Adatplatform, amely egyesíti a fájlokat, a biztonsági mentések, a objektumok és a virtuális gépek egyetlen natív felhőalapú megoldás alakzatot szoftveresen definiált webes méretű megoldás is. A Data platform az áttelepítés után kezelése, védelme és kiépítése az adatokhoz és alkalmazásokhoz a felhőből egy egyetlen tekinthesse keresztül maghoz. Indítsa el a Cohesity, mindössze három csomóponttal. További információ a [áttelepítés, a Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
 
 ## <a name="migration---frequently-asked-questions"></a>Migrálás – gyakori kérdések
 
 ### <a name="q-when-do-the-storsimple-5000-and-7000-series-devices-reach-end-of-service"></a>K. Ha nem a StorSimple 5000 és 7000 sorozatú eszköz éri el a szolgáltatás teljes? 
 
-A. A StorSimple 5000-7000-es sorozat elérni [szolgáltatás végén](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) a július 2019. Szolgáltatás végén, az azt jelenti, hogy a Microsoft már nem tudja támogatást nyújt a hardver és szoftver ezen eszköz július 2019 után. Kifejezetten javasoljuk, hogy először, át az adatokat az eszközök most már terv kidolgozásában.
+A. A StorSimple 5000-7000-es sorozat elérni [szolgáltatás végén](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) a július 2019. Szolgáltatás végén, az azt jelenti, hogy a Microsoft már nem tudja támogatást nyújt a hardver és szoftver ezen eszközök július 2019 után. Kifejezetten javasoljuk, hogy először, át az adatokat az eszközök most már terv kidolgozásában.
 
 ### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>K. Mi történik, az I az Azure-ban tárolt adatokat?  
 
@@ -68,8 +70,8 @@ A. A szolgáltatások esetleg tovább használhatók, amíg a Microsoft már nem
 
 A. A forgatókönyvtől függően a StorSimple 5000-7000-es sorozat felhasználók rendelkeznek az alábbi áttelepítési lehetőségek. 
 
- - **Frissítés a 8000-es sorozat**: használja ezt a beállítást, ha folytatja a StorSimple-platformon. 
- - **Az Azure File Sync át**: használja ezt a beállítást, ha azt szeretné, váltson át az Azure natív formátumban. Az Azure File Sync fájlmegosztások központi kezelésére használható. 
+ - **Frissítés a 8000-es sorozat**: Használja ezt a beállítást, ha folytatja a StorSimple-platformon. 
+ - **Az Azure File Sync áttelepítése**: Használja ezt a beállítást, ha azt szeretné, váltson át az Azure natív formátumban. Az Azure File Sync fájlmegosztások központi kezelésére használható. 
 
 Áttelepítési beállítások nem szerepel itt vitatni Support forduljon.
 

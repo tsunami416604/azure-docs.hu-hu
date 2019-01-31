@@ -3,7 +3,7 @@ title: Batch-fiók létrehozása az Azure Portalon | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az Azure Portalon nagyméretű párhuzamos számítási feladatok futtatásához a felhőben
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/18/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e526c5f2f446a1ae8134a3e2ca72fcc42024d904
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 89e41dc8e27cf39d9d0e6168dc7352267c321623
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724094"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460522"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
@@ -42,19 +42,19 @@ További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók 
 
     ![Batch-fiók létrehozása][account_portal]
 
-    a. **Fióknév**: A választott névnek egyedinek kell lennie abban az Azure-régióban, amelyben az új fiókot létrehozza (lásd alább a **Hely** beállítást). A fiók neve csak kisbetűket vagy számokat tartalmazhat, és 3–24 karakter hosszúnak kell lennie.
+    a. **Fiók neve**: A választott név, a fiók létrehozása az Azure-régió egyedinek kell lennie (lásd: **hely** alább). A fiók neve csak kisbetűket vagy számokat tartalmazhat, és 3–24 karakter hosszúnak kell lennie.
 
-    b. **Előfizetés**: A Batch-fiók létrehozására szolgáló előfizetés. Ha csak egy előfizetéssel rendelkezik, ez alapértelmezés szerint be van jelölve.
+    b. **Előfizetés**: Az előfizetés, amelyben a Batch-fiók létrehozásához. Ha csak egy előfizetéssel rendelkezik, ez alapértelmezés szerint be van jelölve.
 
-    c. **Erőforráscsoport**: Kiválaszthat egy meglévő erőforráscsoportot az új Batch-fiókhoz, vagy újat is létrehozhat.
+    c. **Erőforráscsoport**: Válasszon ki egy meglévő erőforráscsoportot az új Batch-fiók, vagy újat is létrehozhat egy újat.
 
-    d. **Hely**: Az az Azure-régió, amelyben a Batch-fiókot létrehozza. Csak az előfizetése és az erőforráscsoportja által támogatott régiók jelennek meg lehetőségként.
+    d. **Hely**: Az Azure-régió, amelyben a Batch-fiók létrehozásához. Csak az előfizetése és az erőforráscsoportja által támogatott régiók jelennek meg lehetőségként.
 
-    e. **Tárfiók** (nem kötelező): Egy Azure Storage-fiók, amelyet a Batch-fiókhoz társít. A legtöbb Batch-fiókhoz ajánlott a használata. A Batch szolgáltatásban elérhető tárfiók-lehetőségekről további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md#azure-storage-account) talál. A portálon válasszon ki egy már létező tárfiókot, vagy hozzon létre egy újat.
+    e. **Storage-fiók** (nem kötelező): Egy Azure Storage-fiók, amelyet a Batch-fiókhoz társít. A legtöbb Batch-fiókhoz ajánlott a használata. A Batch szolgáltatásban elérhető tárfiók-lehetőségekről további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md#azure-storage-account) talál. A portálon válasszon ki egy már létező tárfiókot, vagy hozzon létre egy újat.
 
       ![Tárfiók létrehozása][storage_account]
 
-    f. **Készletlefoglalási mód**: A legtöbb forgatókönyvnél fogadja el az alapértelmezett **Batch szolgáltatást**.
+    f. **Készletlefoglalási mód**: A legtöbb esetben az alapértelmezett érték elfogadásához **a Batch szolgáltatás**.
 
 1. A fiók létrehozásához kattintson a **Létrehozás** gombra.
 
@@ -65,7 +65,7 @@ A fiók létrehozása után jelölje ki azt a beállításai és tulajdonságai 
 
 ![A Batch-fiók lap az Azure Portalon][account_blade]
 
-* **Batch-fiók neve, URL-címe és kulcsai**: Amikor egy alkalmazást fejleszt a [Batch API-kkal](batch-apis-tools.md#azure-accounts-for-batch-development), szüksége lesz a fiók URL-címére és kulcsára a Batch-erőforrások eléréséhez. (A Batch az Azure Active Directory-hitelesítés használatát is támogatja.)
+* **Batch-fiók neve, URL-cím és kulcsok**: Amikor egy alkalmazást fejleszt a [Batch API-k](batch-apis-tools.md#azure-accounts-for-batch-development), egy fiók URL-címe és a kulcs a Batch-erőforrások eléréséhez szükséges. (A Batch az Azure Active Directory-hitelesítés használatát is támogatja.)
 
     A Batch-fiók hozzáférési információnak megtekintéséhez kattintson a **Kulcsok** lehetőségre.
 

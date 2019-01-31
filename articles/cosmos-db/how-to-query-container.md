@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 647c4dfd6038a04d4d55516ab816bf7701542075
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 08d9978134ce214a468691ec367fb1797f6e86fc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040421"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457751"
 ---
-# <a name="query-containers-in-azure-cosmos-db"></a>Tárolók lekérdezése az Azure Cosmos DB-ben
+# <a name="query-an-azure-cosmos-container"></a>A lekérdezés egy Azure Cosmos-tárolóhoz
 
 Ez a cikk ismerteti, hogyan kérdezhet le egy (gyűjtemény, gráf vagy táblázat típusú) tárolót az Azure Cosmos DB-ben.
 
@@ -57,7 +57,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 
 A lekérdezések párhuzamos végrehajtását az alábbi paraméterek beállításával kezelheti:
 
-- **Maxanalyticsunits**: A tároló partíciók állítja be egyidejű hálózati kapcsolatok maximális számát. Ha ennek a tulajdonságnak az értéke -1, a párhuzamosság szintjét az SDK felügyeli. Ha a MaxDegreeOfParallelism érték nincs megadva, vagy az értéke 0 (ez az alapértelmezett érték), akkor csak egy hálózati kapcsolat jön létre a tároló partícióihoz.
+- **MaxDegreeOfParallelism**: A tároló partíciók állítja be egyidejű hálózati kapcsolatok maximális számát. Ha ennek a tulajdonságnak az értéke -1, a párhuzamosság szintjét az SDK felügyeli. Ha a MaxDegreeOfParallelism érték nincs megadva, vagy az értéke 0 (ez az alapértelmezett érték), akkor csak egy hálózati kapcsolat jön létre a tároló partícióihoz.
 
 - **MaxBufferedItemCount**: Ügyletek ügyféloldali memóriahasználat és a késés lekérdezése. Ha kihagyja ezt a beállítást, vagy -1 értéket ad meg, akkor a párhuzamos lekérdezés-végrehajtás során pufferelt elemek számát az SDK felügyeli.
 

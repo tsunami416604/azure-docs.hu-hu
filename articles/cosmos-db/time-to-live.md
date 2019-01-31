@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fbbaefc62adedc2374c47fd0736368d3dec3e6a4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9b5054da56bdc6a88642ea7860702b280a76dbb1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043430"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461168"
 ---
-# <a name="time-to-live-for-azure-cosmos-db-data"></a>Az Azure Cosmos DB-adatai élő ideje
+# <a name="time-to-live-in-azure-cosmos-db"></a>Az Azure Cosmos DB élettartama 
 
 A "Time to Live" vagy a TTL a Azure Cosmos DB lehetővé teszi elemek törlése automatikusan végre egy bizonyos idő elteltével. Alapértelmezés szerint be lehet állítani a tároló szintjén live és a konfigurációelem alapon érték felülírása idejét. Miután beállította az élettartam egy tároló vagy egy elem szinten, Azure Cosmos DB automatikusan eltávolítja ezeket az elemeket az adott időszakban, utolsó módosításának időpontja után. Élettartam másodpercek alatt van konfigurálva. Élettartam konfigurálásakor a rendszer automatikusan törli a lejárt elemek az élettartam értéke ellentétben kifejezetten az ügyfélalkalmazás által kiadott egy törlési művelet alapján.
 

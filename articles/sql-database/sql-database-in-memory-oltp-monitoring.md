@@ -11,20 +11,22 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: c41420e46a0bd4afbaed96da0e2fb9775d49c6fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 7542e9fa04eb838baca37dbe13f7cdacdfaf041b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606537"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470263"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>A figyelő In-Memory OLTP-tár
+
 Használata esetén [In-Memory OLTP](sql-database-in-memory.md), a memóriaoptimalizált táblák és Táblaváltozók adatok találhatók az In-Memory OLTP storage-ban. Minden prémium és üzletileg kritikus szolgáltatási szint In-Memory OLTP storage mérete tartalmaz. Lásd: [DTU-alapú erőforráskorlátok – önálló adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforráskorlátok – rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[Virtuálismag-alapú erőforráskorlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Ha meghaladja a korlátot, beszúrási és frissítési műveletek kezdheti el hiba 41823 az önálló adatbázisok és rugalmas készletekhez 41840 hiba miatt sikertelenül működő. Ekkor vagy törölni szeretne felszabadítani a memória, vagy frissítse a szolgáltatási rétegben, vagy az adatbázis méretét a számítási adatokat.
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Határozza meg, hogy adat megfelel-e a memórián belüli online Tranzakciófeldolgozási Tárhelykorlát
+
 A tárolási korlátokat a különböző szolgáltatásszintek határozza meg. Lásd: [DTU-alapú erőforráskorlátok – önálló adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforráskorlátok – rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[Virtuálismag-alapú erőforráskorlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Memóriakövetelményei egy memóriaoptimalizált tábla működik, mert az SQL Server ugyanúgy Azure SQL Database nem szükséges. Várjon néhány percet, ellenőrizze, hogy a cikk a [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
@@ -40,10 +42,12 @@ A számítási méret a memórián belüli tárhely kihasználtsága a Tárhelyk
 
 Vagy használja a következő lekérdezést a memórián belüli tárterület kihasználtsága megjelenítéséhez:
 
+```sql
     SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
-
+```
 
 ## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Megfelelő out-az-In-Memory OLTP storage helyzetekben - hibák 41823 és 41840
+
 Szerezze meg a memórián belüli online Tranzakciófeldolgozási Tárhelykorlát a Beszúrás adatbázis eredményezi, frissítés, az ALTER és -LÉTREHOZÁSI műveletek hibaüzenet 41823 (az önálló adatbázisok), vagy (a rugalmas készletek) 41840 hiba miatt sikertelenül működő. Mindkét hibák miatt megszakítja az aktív tranzakció.
 
 Hibaüzenetek 41823 és 41840 azt jelzik, hogy a memóriaoptimalizált táblák és az adatbázis vagy készlet Táblaváltozók elérte a maximális In-Memory OLTP-tároló mérete.

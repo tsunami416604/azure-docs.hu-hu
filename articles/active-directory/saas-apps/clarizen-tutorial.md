@@ -4,132 +4,128 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/10/2017
+ms.topic: tutorial
+ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a7280111856f9cb2a20ebb7b52be04818c4b43c9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f4c7efdb0a43c352450056a9f6f79e3e189c820c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195273"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458312"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Clarizen
 
-Ebben az oktatóanyagban megismerheti, hogyan integrálható az Azure Active Directory (Azure AD) rendelkező Clarizen. Ez az integráció a következő előnyöket biztosítja:
+Ebben az oktatóanyagban elsajátíthatja, hogyan Clarizen integrálása az Azure Active Directory (Azure AD).
+Clarizen integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, ki férhet hozzá Clarizen Azure AD-ben.
-- Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be Clarizen (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen, az Azure Portalon kezelheti.
+* Szabályozhatja, ki férhet hozzá Clarizen Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Clarizen (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ebben az oktatóanyagban a forgatókönyv két fő feladat áll:
-
-1. Clarizen hozzáadása a katalógusból.
-1. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása.
-
-Ha az Azure ad-vel szoftverként (saas biztosított) alkalmazás integrációja szoftverrel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Clarizen az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy Clarizen előfizetést, amelyen engedélyezve van az egyszeri bejelentkezés
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Clarizen egyszeri bejelentkezés engedélyezve van az előfizetés
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a javaslatokat:
+## <a name="scenario-description"></a>Forgatókönyv leírása
 
-- Az Azure AD egyszeri bejelentkezés teszteléséhez tesztkörnyezetben. Az éles környezetben ne használjon, kivéve, ha erre szükség.
-- Ha nem rendelkezik egy Azure AD-tesztelési környezetet, akkor az [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-## <a name="add-clarizen-from-the-gallery"></a>Clarizen hozzáadása a katalógusból
-Clarizen integrálása az Azure AD beállításához adja hozzá a katalógus Clarizen a felügyelt SaaS-alkalmazások listájában.
+* Támogatja a Clarizen **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali ablaktáblán kattintson a **Azure Active Directory** ikonra.
+## <a name="adding-clarizen-from-the-gallery"></a>Clarizen hozzáadása a katalógusból
 
-    ![Az Azure Active Directory ikonra][1]
+Az Azure AD integrálása a Clarizen konfigurálásához hozzá kell Clarizen a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-1. Kattintson a **vállalati alkalmazások**. Kattintson a **minden alkalmazás**.
+**Clarizen hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-    ![Kattintson a "Nagyvállalati alkalmazások" és "Összes alkalmazás"][2]
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-1. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-    ![A "Hozzáadás" gombra.][3]
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-1. A Keresés mezőbe írja be a **Clarizen**.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![A keresőmezőbe írja be a "Clarizen"](./media/clarizen-tutorial/tutorial_clarizen_000.png)
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. Az eredménypanelen jelölje ki a **Clarizen**, és kattintson a **Hozzáadás** , vegye fel az alkalmazást.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az eredmények ablaktábláján Clarizen kiválasztása](./media/clarizen-tutorial/tutorial_clarizen_0001.png)
+4. A Keresés mezőbe írja be a **Clarizen**válassza **Clarizen** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+
+     ![Az eredmények listájában Clarizen](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
-A következő szakaszokban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Clarizen a tesztfelhasználó számára Britta Simon alapján.
 
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Clarizen mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Clarizen hivatkozás kapcsolata kell létrehozni. A hivatkozás kapcsolatot hozhat létre, rendelhet a értékét **felhasználónév** értékeként az Azure AD-ben **felhasználónév** Clarizen a.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Clarizen nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Clarizen hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezés az Clarizen tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD egyszeri bejelentkezés az Clarizen tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy Clarizen tesztfelhasználót](#create-a-clarizen-test-user)**  van egy megfelelője a Britta Simon Clarizen, amely kapcsolódik az Azure ad-ben ábrázolása számára.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Clarizen egyszeri bejelentkezés konfigurálása](#configure-clarizen-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Clarizen tesztfelhasználót](#create-clarizen-test-user)**  – egy megfelelője a Britta Simon Clarizen, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-Az Azure AD egyszeri bejelentkezés az Azure Portalon engedélyezze és konfigurálja az egyszeri bejelentkezés Clarizen alkalmazásában.
 
-1. Az Azure Portalon az a **Clarizen** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-    !["Egyszeri" parancsra][4]
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Clarizen, hajtsa végre az alábbi lépéseket:
 
-1. Az a **egyszeri bejelentkezési** párbeszédpanelen a **mód**, jelölje be **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **Clarizen** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    !["Az SAML-alapú bejelentkezés" kiválasztása](./media/clarizen-tutorial/tutorial_clarizen_01.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **Clarizen tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-    ![Mezők azonosítóját, valamint a válasz URL-címe](./media/clarizen-tutorial/tutorial_clarizen_02.png)
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    a. Az a **azonosító** mezőbe írja be az értéket: **Clarizen**
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    b. Az a **válasz URL-cím** mezőbe írja be egy URL-cím használatával a következő mintának: **https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx**
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+
+4. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a következő lépésekkel:
+
+    ![Clarizen tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+
+    a. Az a **azonosító** szövegmezőbe írjon be egy értéket: `Clarizen`
+
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx`
 
     > [!NOTE]
     > Ezek eltérnek a valós értékeket. Akkor tényleges azonosítóját használja, és a válasz URL-címe. Itt javasoljuk, hogy használja-e a karakterlánc egyedi értékét azonosítóként. A tényleges értékek beszerzéséhez forduljon a [Clarizen támogatási csapatának](https://success.clarizen.com/hc/en-us/requests/new).
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **új tanúsítvány létrehozása**.
+4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-    ![Kattintson az "Új tanúsítvány létrehozása"](./media/clarizen-tutorial/tutorial_clarizen_03.png)    
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-1. Az a **új tanúsítvány létrehozása** párbeszédpanel párbeszédpanel, kattintson a naptár ikonra, és válassza ki a lejárati dátum. Ezután kattintson a **Save** (Mentés) gombra.
+6. Az a **Clarizen beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
-    ![Jelölje ki, és a lejárati dátum mentése](./media/clarizen-tutorial/tutorial_general_300.png)
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-1. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **új tanúsítvány aktívvá**, és kattintson a **mentése**.
+    a. Bejelentkezési URL
 
-    ![Jelölje be a jelölőnégyzetet, hogy az új tanúsítvány aktív](./media/clarizen-tutorial/tutorial_clarizen_04.png)
+    b. Azure Ad Identifier
 
-1. Az a **helyettesítő tanúsítvány** párbeszédpanelen kattintson a **OK**.
+    c. Kijelentkezési URL
 
-    ![Annak ellenőrzéséhez, hogy szeretné-e a tanúsítvány aktívvá tétele az "OK" gombra kattintva](./media/clarizen-tutorial/tutorial_general_400.png)
-
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
-
-    ![Kattintson a "Tanúsítvány (Base64)" letöltésének megkezdéséhez](./media/clarizen-tutorial/tutorial_clarizen_05.png)
-
-1. Az a **Clarizen konfigurációs** területén kattintson **konfigurálása Clarizen** megnyitásához a **bejelentkezés konfigurálása** ablak.
-
-    ![Kattintson a "Clarizen konfigurálása"](./media/clarizen-tutorial/tutorial_clarizen_06.png)
-
-    !["Bejelentkezés konfigurálása" ablakban, beleértve a fájlok és az URL-címek](./media/clarizen-tutorial/tutorial_clarizen_07.png)
+### <a name="configure-clarizen-single-sign-on"></a>Clarizen egyszeri bejelentkezés konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a Clarizen vállalati hely rendszergazdaként.
 
@@ -149,44 +145,66 @@ Az Azure AD egyszeri bejelentkezés az Azure Portalon engedélyezze és konfigur
 
     b. Kattintson a **feltöltése** a letöltött tanúsítvány feltöltéséhez.
 
-    c. Az a **bejelentkezési URL** mezőbe írja be az értékét **SAML egyszeri bejelentkezési szolgáltatás URL-cím** az Azure AD alkalmazás-konfigurációs ablakából.
+    c. Az a **bejelentkezési URL** mezőbe írja be az értékét **bejelentkezési URL-cím** az Azure AD alkalmazás-konfigurációs ablakából.
 
-    d. Az a **kijelentkezéses URL-cím** mezőbe írja be az értékét **kijelentkezéses URL-cím** az Azure AD alkalmazás-konfigurációs ablakából.
+    d. Az a **kijelentkezéses URL-cím** mezőbe írja be az értékét **kijelentkezési URL-címe** az Azure AD alkalmazás-konfigurációs ablakából.
 
     e. Válassza ki **használja a POST**.
 
     f. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
-Az Azure Portalon hozzon létre egy tesztfelhasználót Britta Simon nevű.
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
-![Az Azure ad-ben tesztfelhasználó és az e-mail-címe][100]
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** ikonra.
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-    ![Az Azure Active Directory ikonra](./media/clarizen-tutorial/create_aaduser_01.png)
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Kattintson a **felhasználók és csoportok**, és kattintson a **minden felhasználó** felhasználók listájának megjelenítéséhez.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Kattintson a "Felhasználók és csoportok" és "Minden felhasználó"](./media/clarizen-tutorial/create_aaduser_02.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel bezárásához.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "Hozzáadás" gombra.](./media/clarizen-tutorial/create_aaduser_03.png)
-
-1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![Kitölti a rendszer "User" párbeszédpanel, amelyben a nevét, e-mail-cím és jelszó](./media/clarizen-tutorial/create_aaduser_04.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a Britta Simon fiók e-mail-címét.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét **jelszó**.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="create-a-clarizen-test-user"></a>Clarizen tesztfelhasználó létrehozása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Clarizen Azure egyszeri bejelentkezés használatára.
+
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Clarizen**.
+
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+
+2. Az alkalmazások listájában jelölje ki a **Clarizen**.
+
+    ![Az alkalmazások listáját a Clarizen hivatkozásra](common/all-applications.png)
+
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
+
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+
+### <a name="create-clarizen-test-user"></a>Clarizen tesztfelhasználó létrehozása
 
 Ez a szakasz célja Clarizen Britta Simon nevű felhasználó létrehozásához.
 
@@ -215,53 +233,17 @@ Ahhoz, hogy jelentkezzen be a Clarizen az Azure AD-felhasználók, felhasználó
     > [!NOTE]
     > Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozásra kattintva a fiók megerősítéséhez, mielőtt aktívvá válik.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-Britta Simon számára a hozzáférés biztosításával a Clarizen Azure egyszeri bejelentkezés használata lehetővé.
 
-![Hozzárendelt tesztfelhasználó számára][200]
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-1. Az Azure portál, nyissa meg az alkalmazások megtekintéséhez tallózással keresse meg a könyvtár nézetben, a kattintson **vállalati alkalmazások**, és kattintson a **minden alkalmazás**.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-    ![Kattintson a "Nagyvállalati alkalmazások" és "Összes alkalmazás"][201]
-
-1. Az alkalmazások listájában jelölje ki a **Clarizen**.
-
-    ![Clarizen listából történő kiválasztásakor](./media/clarizen-tutorial/tutorial_clarizen_50.png)
-
-1. A bal oldali ablaktáblán kattintson a **felhasználók és csoportok**.
-
-    ![Kattintson a "Felhasználók és csoportok"][202]
-
-1. Kattintson a **Hozzáadás** gombra. Ezt követően a a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **felhasználók és csoportok**.
-
-    ![A "Hozzáadás" gombra, és a "Hozzárendelés hozzáadása" párbeszédpanel][203]
-
-1. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** felhasználók listájában.
-
-1. Az a **felhasználók és csoportok** párbeszédpanelen kattintson a **kiválasztása** gombra.
-
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
-Az Azure AD egyszeri bejelentkezés beállításainak ellenőrzéséhez a hozzáférési panelen.
-
-Ha a hozzáférési panelen a Clarizen csempére kattint, akkor kell lehet automatikusan bejelentkezett Clarizen alkalmazását.
+Ha a hozzáférési panelen a Clarizen csempére kattint, meg kell lehet automatikusan bejelentkezett a Clarizen, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/clarizen-tutorial/tutorial_general_01.png
-[2]: ./media/clarizen-tutorial/tutorial_general_02.png
-[3]: ./media/clarizen-tutorial/tutorial_general_03.png
-[4]: ./media/clarizen-tutorial/tutorial_general_04.png
-
-[100]: ./media/clarizen-tutorial/tutorial_general_100.png
-
-[200]: ./media/clarizen-tutorial/tutorial_general_200.png
-[201]: ./media/clarizen-tutorial/tutorial_general_201.png
-[202]: ./media/clarizen-tutorial/tutorial_general_202.png
-[203]: ./media/clarizen-tutorial/tutorial_general_203.png
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

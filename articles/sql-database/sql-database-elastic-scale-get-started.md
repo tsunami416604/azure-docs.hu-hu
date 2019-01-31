@@ -11,24 +11,28 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 manager: craigg
-ms.date: 08/27/2018
-ms.openlocfilehash: b3bdcc81776067f279c1f95458a0a79a8824f51c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: dbc3b7e2e013dc53a1e2524c44bd2229a6a1b18d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603049"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462970"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés az Elastic Database-eszközökkel
+
 Ez a dokumentum bemutatja a fejlesztői felületet a [elastic database-ügyfélkódtár](sql-database-elastic-database-client-library.md) segít egy mintaalkalmazás futtatásához. A mintaalkalmazás egy egyszerű szilánkokra osztott alkalmazás létrehozása, és bemutatja az Azure SQL Database rugalmas Adatbáziseszközöket funkcióját rejlő lehetőségeket. Használati eset foglalkozik [szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md), [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md), és [több szegmensre vonatkozó lekérdezésekkel](sql-database-elastic-scale-multishard-querying.md). Az ügyféloldali kódtára a .NET, Java érhető el. 
 
 ## <a name="elastic-database-tools-for-java"></a>A Javához készült elastic Database-eszközökkel
+
 ### <a name="prerequisites"></a>Előfeltételek
+
 * Egy Java fejlesztői készlet (JDK), 1.8-as vagy újabb verzió
 * [Maven 3](http://maven.apache.org/download.cgi)
-* Egy logikai kiszolgálót az Azure-ban vagy egy helyi SQL Server-példány
+* Egy SQL Database-kiszolgáló Azure-ban vagy egy helyi SQL Server-példány
 
 ### <a name="download-and-run-the-sample-app"></a>Töltse le és futtassa a mintaalkalmazást
+
 A JAR-fájlok létrehozása, és első lépések a mintaprojektet, tegye a következőket: 
 1. Klónozás a [GitHub-adattár](https://github.com/Microsoft/elastic-db-tools-for-java) az ügyféloldali kódtár és mintaalkalmazás tartalmazó. 
 
@@ -65,12 +69,15 @@ Az ügyféloldali kódtár hozzáadása a saját Maven-projektet, adja hozzá a 
 </dependency> 
 ```
 
-## <a name="elastic-database-tools-for-net"></a>.NET-hez készült elastic Database-eszközökkel 
+## <a name="elastic-database-tools-for-net"></a>.NET-hez készült elastic Database-eszközökkel
+
 ### <a name="prerequisites"></a>Előfeltételek
+
 * Visual Studio 2012 vagy újabb a C# használatával. Töltse le az olyan díjmentes verziója, [Visual Studio letölti](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 * NuGet 2.7-es vagy újabb verziója. A legújabb verzió beszerzéséhez tekintse meg a [NuGet telepítése](http://docs.nuget.org/docs/start-here/installing-nuget).
 
 ### <a name="download-and-run-the-sample-app"></a>Töltse le és futtassa a mintaalkalmazást
+
 Telepítse a könyvtárban, lépjen a [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). A könyvtár a következő szakaszban ismertetett mintaalkalmazás telepítve van.
 
 Töltse le és futtassa a mintát, kövesse az alábbi lépéseket: 
@@ -91,10 +98,9 @@ Gratulálunk! Sikeresen létrehozott és az első szilánkokra osztott alkalmaz�
 
 > [!IMPORTANT]
 > Azt javasoljuk, hogy mindig használja a Management Studio legújabb verzióját, hogy az Azure és az SQL Database frissítései által marad. [Az SQL Server Management Studio frissítése](https://msdn.microsoft.com/library/mt238290.aspx).
-> 
-> 
 
 ## <a name="key-pieces-of-the-code-sample"></a>A kódminta kulcsfontosságú adatokra
+
 * **Leképezések szegmensek és a szilánkleképezés kezelése**: A kód azt ábrázolja, hogyan-szegmens, tartományok és -hozzárendeléseket a *ShardManagementUtils.cs* fájlt. További információkért lásd: [horizontális felskálázás a szilánkleképezés-kezelővel rendelkező adatbázisok](https://go.microsoft.com/?linkid=9862595).  
 
 * **Adatfüggő útválasztás**: A megfelelő szegmensre tranzakciók útválasztás látható a *DataDependentRoutingSample.cs* fájlt. További információkért lásd: [Adatfüggő útválasztásnak](https://go.microsoft.com/?linkid=9862596). 
@@ -104,11 +110,13 @@ Gratulálunk! Sikeresen létrehozott és az első szilánkokra osztott alkalmaz�
 * **Üres szegmensek hozzáadásával**: Új üres szegmensek iteratív hozzáadása végzi a kódot a *CreateShardSample.cs* fájlt. További információkért lásd: [horizontális felskálázás a szilánkleképezés-kezelővel rendelkező adatbázisok](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Egyéb rugalmas méretezési műveletek
+
 * **Egy meglévő szegmens felosztás**: A funkció szegmensek felosztása a felosztó / egyesítő eszköz biztosítják. További információkért lásd: [adatok mozgatása kiterjesztett felhőalapú adatbázisok között](sql-database-elastic-scale-overview-split-and-merge.md).
 
 * **Meglévő szegmensek egyesítése**: Szilánkleképezés összevonása is a felosztási-egyesítési eszközének használatával hajtja végre. További információkért lásd: [adatok mozgatása kiterjesztett felhőalapú adatbázisok között](sql-database-elastic-scale-overview-split-and-merge.md).   
 
 ## <a name="cost"></a>Költségek
+
 A rugalmas Adatbáziseszközök kódtár használata ingyenes. Elastic Database-eszközök használata esetén nem vonatkozik külön díj az Azure-használat költségeinek túli díjak. 
 
 Ha például a mintaalkalmazás hoz létre új adatbázisokat. Ez a funkció a költsége attól függ, az SQL Database-kiadás választja, és az alkalmazás Azure-használatát.
@@ -116,6 +124,7 @@ Ha például a mintaalkalmazás hoz létre új adatbázisokat. Ez a funkció a k
 Díjszabási információkért tekintse meg a [SQL Database szolgáltatás díjszabásával](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ## <a name="next-steps"></a>További lépések
+
 Elastic Database-eszközökkel kapcsolatos további információkért lásd a következő cikkeket:
 
 * Kódminták: 

@@ -9,13 +9,13 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: cbrooksmsft
-ms.component: queues
-ms.openlocfilehash: 36fa2e5bc7eda7c47017713008aec2a245213462
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: queues
+ms.openlocfilehash: 1f2f52fc08ab4da4a7525f3018b7a9aea2f7c576
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521567"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457361"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>A c++ segítségével a Queue Storage használata
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -41,7 +41,7 @@ Ehhez telepítenie kell az Azure Storage C++ programnyelvhez készült ügyfélo
 
 Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az alábbi módszerekkel telepítheti:
 
-* **Linux:** kövesse az utasításokat adott a [Azure Storage ügyféloldali kódtára a C++ információs](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) lapot.
+* **Linux:** Kövesse az utasításokat adott a [Azure Storage ügyféloldali kódtára a C++ információs](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) lapot.
 * **Windows:** A Visual Studióban válassza a **Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Package Manager Console (Csomagkezelő konzol)** elemet. Írja be a következő parancsot a [NuGet Package Manager console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) nyomja le az ENTER **ENTER**.
 
 ```  
@@ -83,7 +83,7 @@ Használhatja a **cloud_storage_account** osztály, amely a Storage-fiók adatai
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-## <a name="how-to-create-a-queue"></a>Hogyan: üzenetsor létrehozása
+## <a name="how-to-create-a-queue"></a>Útmutató: Üzenetsor létrehozása
 A **cloud_queue_client** objektum lehetővé teszi a várólisták hivatkozási objektumok beolvasása. Az alábbi kód létrehoz egy **cloud_queue_client** objektum.
 
 ```cpp
@@ -104,7 +104,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
  queue.create_if_not_exists();  
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Hogyan: üzenet beszúrása egy üzenetsorba
+## <a name="how-to-insert-a-message-into-a-queue"></a>Útmutató: Üzenet beszúrása egy üzenetsorba
 Üzenet beszúrása egy létező üzenetsorba, először hozzon létre egy új **cloud_queue_message**. Ezután hívja a **add_message** metódust. A **cloud_queue_message** hozható létre vagy egy karakterlánc vagy egy **bájt** tömb. Az alábbi kód létrehoz egy üzenetsort (ha még nem létezik), és beszúrja a „Hello, World” üzenetet:
 
 ```cpp
@@ -125,7 +125,7 @@ azure::storage::cloud_queue_message message1(U("Hello, World"));
 queue.add_message(message1);  
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Útmutató: a következő üzenet betekintés
+## <a name="how-to-peek-at-the-next-message"></a>Útmutató: Betekintés a következő üzenetbe
 Anélkül, hogy eltávolítaná az üzenetsorból meghívásával is bepillanthat egy üzenetsorban található üzenet a **peek_message** metódust.
 
 ```cpp
@@ -145,7 +145,7 @@ azure::storage::cloud_queue_message peeked_message = queue.peek_message();
 std::wcout << U("Peeked message content: ") << peeked_message.content_as_string() << std::endl;
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: egy üzenetsorban található üzenet tartalmának módosítása
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: Üzenetsorban található üzenet tartalmának módosítása
 Egy üzenetet tartalmát helyben, az üzenetsorban módosíthatja. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. Az alábbi kód frissíti az üzenetsorban található üzenetet az új tartalommal, és a láthatósági időkorlátot további 60 másodperccel bővíti. Elmenti az üzenethez társított feladat állapotát, és az ügyfél számára további egy percet biztosít az üzenet használatának folytatására. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. Általában nyilvántartja az újrapróbálkozások számát is, és az üzenetet a rendszer több mint n-szer, ha meg szeretné törlése. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
 
 ```cpp
@@ -171,7 +171,7 @@ queue.update_message(changed_message, std::chrono::seconds(60), true);
 std::wcout << U("Changed message content: ") << changed_message.content_as_string() << std::endl;  
 ```
 
-## <a name="how-to-de-queue-the-next-message"></a>Útmutató: a következő üzenet kivétele az üzenetsorból
+## <a name="how-to-de-queue-the-next-message"></a>Útmutató: A következő üzenet kivétele az üzenetsorból
 A kód két lépésben távolít el egy üzenetet az üzenetsorból. Meghívásakor **get_message**, a következő üzenetet kap egy üzenetsorban. Lekért üzenet **get_message** válik az adott üzenetsorban üzeneteket olvasó többi kód számára. Befejeződik, az üzenet eltávolítása az üzenetsorból, meg kell is meghívhat **delete_message**. Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A kód meghívja **delete_message** jobb gombbal az üzenet feldolgozása után.
 
 ```cpp
@@ -192,7 +192,7 @@ std::wcout << U("Dequeued message: ") << dequeued_message.content_as_string() <<
 queue.delete_message(dequeued_message);
 ```
 
-## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Hogyan: egyéb lehetőségek az üzenetek üzenetsorból
+## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Útmutató: Egyéb lehetőségek az üzenetek eltávolításához az üzenetsorból
 Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból. Az első lehetőség az üzenetkötegek (legfeljebb 32) lekérése. A második lehetőség az, hogy beállít egy hosszabb vagy rövidebb láthatatlansági időkorlátot, így a kódnak lehetősége van hosszabb vagy rövidebb idő alatt teljesen feldolgozni az egyes üzeneteket. Az alábbi példakód a **get_messages** metódus lekéréséhez 20 üzenetet egyetlen hívásával. Ezután minden üzenetet használatával feldolgozza a **a** ciklus. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az 5 perc minden elindul, egy időben, ezért után 5 perccel átadott hívása **get_messages**, nem törölt üzenetek újra láthatóvá válnak.
 
 ```cpp
@@ -220,7 +220,7 @@ for (auto it = messages.cbegin(); it != messages.cend(); ++it)
 }
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Útmutató: az üzenetsor hosszának lekérése
+## <a name="how-to-get-the-queue-length"></a>Útmutató: Az üzenetsor hosszának lekérése
 Megbecsülheti egy üzenetsorban található üzenetek számát. A **download_attributes** módszert kéri a Queue szolgáltatás lekérdezni az attribútumokat, az üzenetek száma. A **approximate_message_count** metódus lekéri az üzenetek hozzávetőleges száma az üzenetsorban.
 
 ```cpp
@@ -243,7 +243,7 @@ int cachedMessageCount = queue.approximate_message_count();
 std::wcout << U("Number of messages in queue: ") << cachedMessageCount << std::endl;  
 ```
 
-## <a name="how-to-delete-a-queue"></a>Hogyan: üzenetsor törlése
+## <a name="how-to-delete-a-queue"></a>Útmutató: Üzenetsor törlése
 Egy üzenetsor és a benne tárolt összes üzenet törléséhez hívja a **delete_queue_if_exists** metódust a várólista-objektum.
 
 ```cpp

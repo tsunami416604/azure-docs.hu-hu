@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: e6f13994d404d58082b953fc98ac6028eea2e43e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 97f11523c0418caaee66930c87a7de64570097d6
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216195"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296902"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -40,11 +40,7 @@ A LUIS-tároló futtatásához az alábbiakkal kell rendelkeznie:
 
 ### <a name="the-host-computer"></a>A számítógép
 
-A **gazdagép** van a számítógépen, amelyen a docker-tárolót. A helyszíni vagy a docker-üzemeltetési szolgáltatás az Azure például egy számítógép lehet:
-
-* [Azure Kubernetes Service](../../aks/index.yml)
-* [Azure Container Instances](../../container-instances/index.yml)
-* [Kubernetes](https://kubernetes.io/) fürtben telepített [Azure Stack](../../azure-stack/index.yml). További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
 
@@ -52,9 +48,11 @@ Ez a tároló minimális és ajánlott értékek a beállításokat támogatja:
 
 |Beállítás| Minimális | Ajánlott |
 |-----------|---------|-------------|
-|Processzormagok<BR>`--cpus`|1 mag<BR>legalább 2.6-os gigahertz (GHz) vagy gyorsabb|1 mag|
+|Processzormagok<BR>`--cpus`|1 mag|1 mag|
 |Memory (Memória)<BR>`--memory`|2 GB|4 GB|
 |Másodpercenkénti tranzakciók<BR>(TPS)|20 TPS|40 TPS|
+
+Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
 
 A `--cpus` és `--memory` részeként beállításokat használják a `docker run` parancsot.
 
@@ -66,17 +64,12 @@ Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandl
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
+Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal letöltheti egy tárolórendszerképet.
+
 Rendelkezésre álló címkék teljes leírását például `latest` megtekintéséhez használja az előző parancsban, [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204) a Docker hubon.
 
-> [!TIP]
-> Használhatja a [docker-rendszerképek](https://docs.docker.com/engine/reference/commandline/images/) paranccsal listát készíthet a letöltött tárolólemezképek. Például a következő parancs megjeleníti az azonosítója, a tárházat, és a címke az egyes letöltött tárolórendszerképet, és táblázatként vannak formázva:
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->
->  IMAGE ID            REPOSITORY                                                                TAG
->  ebbee78a6baa        mcr.microsoft.com/azure-cognitive-services/luis                           latest
->  ``` 
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
 
 ## <a name="how-to-use-the-container"></a>A tároló használata
 
@@ -169,7 +162,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
 |{APPLICATION_ID} | A közzétett a LUIS-alkalmazás azonosítója. |
 |{APPLICATION_ENVIRONMENT} | A környezet a közzétett LUIS-alkalmazás. Használja a következő értékek egyikét:<br/>```PRODUCTION```<br/>```STAGING``` |
@@ -197,7 +190,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
 |{APPLICATION_ID} | A betanított LUIS-alkalmazás Alkalmazásazonosítója. |
 |{APPLICATION_VERSION} | Az alkalmazás verziója a betanított LUIS-alkalmazás. |
@@ -219,7 +212,7 @@ Sikeres művelet esetén a válasz a LUIS alkalmazáscsomag-fájl. Mentse a fáj
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancsot a tároló futtatásához. A parancs paraméterei a következők:
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
 |{ENDPOINT_KEY} | Ez a kulcs segítségével a tárolót. Ne használja a kezdő szintű kulcs. |
 |{BILLING_ENDPOINT} | A számlázási végpont értékét az Azure Portalon Language Understanding áttekintése oldalon érhető el.|
@@ -325,14 +318,7 @@ A kimenet futtatásakor a tároló [csatlakoztatási](luis-container-configurati
 
 ## <a name="containers-api-documentation"></a>Tároló API-dokumentáció
 
-A tároló a végpontok dokumentáció teljes készletét nyújtja, valamint egy `Try it now` funkció. Ez a funkció lehetővé teszi, hogy a beállítások megadása HTML webes űrlapon, és győződjön meg arról, a lekérdezés, kód írása nélkül. Ha a lekérdezés visszatér, például a CURL-parancs megadott bemutatják a HTTP-fejlécek és törzs szükséges formátumban. 
-
-> [!TIP]
-> Olvassa el a [OpenAPI-specifikáció](https://swagger.io/docs/specification/about/), a tároló által támogatott API-műveleteket leíró a `/swagger` relatív URI. Példa:
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Számlázás
 
@@ -346,7 +332,7 @@ A `docker run` számlázási argumentumai:
 |--------|-------------|
 | `ApiKey` | Az API-kulcsot a _Language Understanding_ erőforrás számlázási adatok nyomon követésére szolgál.<br/>Ez a beállítás értékét állítsa a kiépített LUIS Azure erőforrás a megadott API-kulcs `Billing`. |
 | `Billing` | Az a végpont a _Language Understanding_ erőforrás számlázási adatok nyomon követésére szolgál.<br/>Ez a beállítás értékét állítsa a végpontot egy üzembe helyezett LUIS Azure erőforrás URI-ját.|
-| `Eula` | Azt jelzi, hogy Ön már elfogadta a licencet, a tároló.<br/>Ez a beállítás értékét állítsa `accept`. |
+| `Eula` | Azt jelzi, hogy Ön már elfogadta a tároló licencét.<br/>Ez a beállítás értékét állítsa `accept`. |
 
 > [!IMPORTANT]
 > Mindhárom meg kell adni az érvényes értékek, vagy a tároló nem indul el.
@@ -371,7 +357,7 @@ Alkalmazás nem támogatott konfigurációk|Részletek|
 
 Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és Language Understanding (LUIS) tárolók futó munkafolyamatokat. Összegezve:
 
-* Language Understanding (LUIS) biztosít egy Linux-tárolók Docker biztosító végpont lekérdezési javaslatok a kimondott szöveg.
+* Language Understanding (LUIS) egy Linux-tárolót biztosít a Docker biztosító végpont lekérdezés előrejelzések kimondott szöveg.
 * Tárolórendszerképek a rendszer letölti a Microsoft Container Registry (MCR).
 * Tárolórendszerképek futtatása a Docker.
 * REST API használatával lekérdezheti a tárolói végpontok adja meg a gazdagép a tároló URI-t.

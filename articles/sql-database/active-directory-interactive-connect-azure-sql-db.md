@@ -10,23 +10,20 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.date: 04/06/2018
+ms.date: 01/25/2019
 manager: craigg
-ms.openlocfilehash: 0b8b83651fb5466f5d9a2f703667d7645b498e89
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a05c6b4fac031482d77827a817ef56920a0c314
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958817"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464551"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Csatlakozás az Azure SQL Database ActiveDirectoryInteractive mód használatával
 
 Ez a cikk ismerteti egy futtatható C# kód példa, amely csatlakozik a Microsoft Azure SQL Database. A C#-program használ hitelesítést, amely támogatja az Azure ad-ben a multi-factor authentication (MFA) az interaktív mód. Például a kapcsolódási kísérlet a mobiltelefonjára küldött ellenőrző kódot tartalmazhatnak.
 
 Többtényezős hitelesítés támogatása az SQL-eszközökkel kapcsolatos további információkért lásd: [Azure Active Directory-támogatás az SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
-
-
-
 
 ## <a name="sqlauthenticationmethod-activedirectoryinteractive-enum-value"></a>SqlAuthenticationMethod. ActiveDirectoryInteractive Felsorolásérték
 
@@ -54,11 +51,9 @@ A párbeszédpanelek pillanatképeiért lásd: [többtényezős hitelesítés be
 >
 > [https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)
 
-
 ## <a name="preparations-for-c-by-using-the-azure-portal"></a>Felkészülés a C#, az Azure portal használatával
 
 Feltételezzük, hogy már rendelkezik egy [létrehozott Azure SQL Database-kiszolgáló](sql-database-get-started-portal.md) és elérhető.
-
 
 ### <a name="a-create-an-app-registration"></a>A. Hozzon létre egy alkalmazásregisztráció
 
@@ -87,7 +82,7 @@ Az Azure AD-hitelesítés használatára, a C# ügyfélprogram, egy GUID Azonos�
 
 ### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B. Az SQL Database-kiszolgálóhoz az Azure AD-rendszergazda beállítása
 
-Minden Azure SQL Database-kiszolgáló a saját SQL logikai kiszolgáló, az Azure AD rendelkezik. C# esetünkben be kell az Azure AD-rendszergazda az Azure SQL Serverhez.
+Minden egyes egyetlen Azure SQL-adatbázis és rugalmas készlet rendelkezik a saját SQL Database-kiszolgálóhoz az Azure ad-ben. C# esetünkben be kell az Azure AD-rendszergazda az Azure SQL Serverhez.
 
 1. **Az SQL Server** &gt; **Active Directory-rendszergazda** &gt; **rendszergazda beállítása**
 
@@ -124,13 +119,13 @@ A névtér támaszkodik a C#-program **Microsoft.IdentityModel.Clients.ActiveDir
 
 C#-példában támaszkodik egy névtér van **System.Data.SqlClient**. Érdeklik az enum **SqlAuthenticationMethod**. Ez az enumerálás rendelkezik a következő értékeket:
 
-- **SqlAuthenticationMethod.ActiveDirectory * interaktív x:&nbsp; használja ezt az egy Azure AD-felhasználó nevét, a multi-factor authentication, MFA eléréséhez.
+- **SqlAuthenticationMethod.ActiveDirectory * interaktív x:&nbsp;  Ezzel az Azure AD-felhasználó nevét, a multi-factor authentication, MFA eléréséhez.
     - Ez az érték a fókusz a jelen cikk. A felhasználó jelszavát, majd a többtényezős hitelesítés érvényesítés párbeszédpanelek megjelenítésével, ha a többtényezős hitelesítés a felhasználó a várakozásnak küld egy interaktív élmény.
     - Ezt az értéket a .NET-keretrendszer verziója 4.7.2 kezdődően elérhető.
 
-- **SqlAuthenticationMethod.ActiveDirectory * integrált x:&nbsp; használata esetén ez egy *összevont* fiókot. Összevont fiókok a felhasználó nevét ismert, hogy a Windows-tartományhoz. Ez a módszer nem támogatja a többtényezős hitelesítés.
+- **SqlAuthenticationMethod.ActiveDirectory * integrált x:&nbsp;  Ezen a egy *összevont* fiókot. Összevont fiókok a felhasználó nevét ismert, hogy a Windows-tartományhoz. Ez a módszer nem támogatja a többtényezős hitelesítés.
 
-- **SqlAuthenticationMethod.ActiveDirectory * jelszó x:&nbsp; használja a hitelesítéshez, amely egy Azure AD-felhasználót és a felhasználó jelszót igényel. Az Azure SQL Database végrehajtja a hitelesítést. Ez a módszer nem támogatja a többtényezős hitelesítés.
+- **SqlAuthenticationMethod.ActiveDirectory * jelszó x:&nbsp;  Ezzel a hitelesítéshez, amely egy Azure AD-felhasználót és a felhasználó jelszót igényel. Az Azure SQL Database végrehajtja a hitelesítést. Ez a módszer nem támogatja a többtényezős hitelesítés.
 
 
 
@@ -142,7 +137,7 @@ A C#-program sikeres futtatás, a hozzá kell rendelnie a megfelelő értékeket
 
 | Statikus mező neve | Látszólag érték | Ha az Azure Portalon |
 | :---------------- | :------------ | :-------------------- |
-| Az_SQLDB_svrName | "my-kedvenc-sqldb-svr.database.windows.net" | **SQL Server-kiszolgálók** &gt; **Szűrés név alapján** |
+| Az_SQLDB_svrName | "my-favorite-sqldb-svr.database.windows.net" | **SQL Server-kiszolgálók** &gt; **Szűrés név alapján** |
 | AzureAD_UserID | „user9@abc.onmicrosoft.com” | **Az Azure Active Directory** &gt; **felhasználói** &gt; **új vendégfelhasználó** |
 | Initial_DatabaseName | "master" | **SQL Server-kiszolgálók** &gt; **SQL-adatbázisok** |
 | ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Az Azure Active Directory** &gt; **alkalmazásregisztrációk**<br /> &nbsp; &nbsp; &gt; **Keresés név alapján** &gt; **alkalmazás azonosítója** |
@@ -181,13 +176,13 @@ Ebben a példában a C# fordítása, hozzá kell adnia egy hivatkozást a DLL-sz
 
 #### <a name="reference-documentation"></a>Segédanyagok
 
-- **System.Data.SqlClient** névtér:
+- **System.Data.SqlClient** namespace:
     - Keresés:&nbsp; [https://docs.microsoft.com/dotnet/api/?term=System.Data.SqlClient](https://docs.microsoft.com/dotnet/api/?term=System.Data.SqlClient)
     - Közvetlen:&nbsp; [System.Data.Client](https://docs.microsoft.com/dotnet/api/system.data.sqlclient)
 
 - **Microsoft.IdentityModel.Clients.ActiveDirectory** névtér:
     - Keresés:&nbsp; [https://docs.microsoft.com/dotnet/api/?term=Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/?term=Microsoft.IdentityModel.Clients.ActiveDirectory)
-    - Közvetlen:&nbsp; [Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory)
+    - Közvetlen:&nbsp; Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory)
 
 
 #### <a name="c-source-code-in-two-parts"></a>C#-forráskódot, két részből áll

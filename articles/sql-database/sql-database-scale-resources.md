@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 1c83ebd0153e7a28365317b02d3debbe43d976f9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 49743130966589cceedb7756540c723a6f3276ff
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601576"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471667"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dinamikusan méretezheti az adatbázis-erőforrások minimális állásidővel
 
@@ -54,9 +54,9 @@ Módosíthatja [DTU szolgáltatásszintek](sql-database-service-tiers-dtu.md) va
 
 Az Azure SQL Database összes három változatban érhetők el ajánlat dinamikusan méretezheti az adatbázisok néhány képessége:
 
-- A [önálló Azure SQL adatbázist](sql-database-single-database-scale.md), használhat [DTU](sql-database-dtu-resource-limits-single-databases.md) vagy [virtuális mag](sql-database-vcore-resource-limits-single-databases.md) modellek meghatározásához rendeli hozzá az egyes adatbázisok erőforrások maximális mennyiségét.
-- [Az Azure SQL felügyelt példánya](sql-database-managed-instance.md) használ [virtuális magok](sql-database-managed-instance.md#vcore-based-purchasing-model) módban, és lehetővé teszi, hogy meghatározza a maximális CPU-magok és a példányhoz lefoglalt tárterület maximális. A példány belüli összes adatbázist fog ugyanazokat az a példányhoz lefoglalt erőforrásokat.
-- [Az Azure rugalmas SQL-készletek](sql-database-elastic-pool-scale.md) engedélyezése, hogy a készlet maximális erőforrás felső határ az egyes adatbázisok csoport definiálja.
+- Az egy [önálló adatbázis](sql-database-single-database-scale.md), használhat [DTU](sql-database-dtu-resource-limits-single-databases.md) vagy [virtuális mag](sql-database-vcore-resource-limits-single-databases.md) modellek meghatározásához rendeli hozzá az egyes adatbázisok erőforrások maximális mennyiségét.
+- A [felügyelt példány](sql-database-managed-instance.md) használ [virtuális magok](sql-database-managed-instance.md#vcore-based-purchasing-model) módban, és lehetővé teszi, hogy meghatározza a maximális CPU-magok és a példányhoz lefoglalt tárterület maximális. A példány belüli összes adatbázist fog ugyanazokat az a példányhoz lefoglalt erőforrásokat.
+- [Rugalmas készletek](sql-database-elastic-pool-scale.md) engedélyezése, hogy a készlet maximális erőforrás felső határ az egyes adatbázisok csoport definiálja.
 
 ## <a name="alternative-scale-methods"></a>Alternatív méretezési módszer
 

@@ -1,6 +1,6 @@
 ---
-Cím: "3. lépés: Hozzon létre egy új Machine Learning Studio-kísérletet "titleSuffix: Azure Machine Learning Studio description: "A Develop egy prediktív megoldás bemutatója 3. lépés: Az Azure Machine Learning Studióban hozzon létre egy új betanítási kísérlet. "
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: "3. lépés: Hozzon létre egy új Machine Learning Studio-kísérletet "titleSuffix: Azure Machine Learning Studio description: "A Develop egy prediktív megoldás bemutatója 3. lépés: Az Azure Machine Learning Studióban hozzon létre egy új betanítási kísérlet. "
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/23/2017
 ---

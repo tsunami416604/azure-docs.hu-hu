@@ -12,19 +12,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 4339782304f1bc175f1066954f1050bc00f25005
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5b6bef8194123ed6c83a48dd5e819085d4bc5424
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434240"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453467"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure-SSIS integrációs modul létrehozása az Azure Data Factoryban
 Ez a cikk lépéseit a kiépítési Azure-SSIS integrációs modul (IR) az Azure Data Factory (ADF). Ezt követően használhatja az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) üzembe helyezéséhez és futtatásához az SQL Server Integration Services (SSIS) csomagokat a ezt az integrációs modult az Azure-ban. 
 
 A [oktatóanyag: SSIS csomagok üzembe helyezése az Azure-bA](tutorial-create-azure-ssis-runtime-portal.md) bemutatja, hogyan hozhat létre Azure-SSIS integrációs modul gazdagép SSIS-katalógusadatbázist (SSISDB) az Azure SQL Database-kiszolgáló használatával. Ez a cikk az oktatóanyagon alapul, és bemutatja, hogyan tegye a következőket: 
 
-- Igény szerint használhatja az Azure SQL Database-kiszolgáló virtuális hálózati szolgáltatás végpontok/Managed Instance SSISDB-gazdagépre. Gazdagépre SSISDB adatbázis-kiszolgáló típusú megválasztásához útmutatásért lásd: [hasonlítsa össze az Azure SQL Database-kiszolgáló és a felügyelt példány](create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). Előfeltételként kell az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózat és a virtuális hálózat engedélyeinek/beállításainak konfigurálásához szükség szerint. Lásd: [egy virtuális hálózathoz csatlakozzon Azure-SSIS integrációs](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). 
+- Igény szerint használhatja az Azure SQL Database-kiszolgáló virtuális hálózati szolgáltatás végpontok/Managed Instance SSISDB-gazdagépre. Gazdagépre SSISDB adatbázis-kiszolgáló típusú megválasztásához útmutatásért lásd: [hasonlítsa össze az Azure SQL Database önálló adatbázisok és rugalmas készletek és a felügyelt példány](create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). Előfeltételként kell az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózat és a virtuális hálózat engedélyeinek/beállításainak konfigurálásához szükség szerint. Lásd: [egy virtuális hálózathoz csatlakozzon Azure-SSIS integrációs](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). 
 
 - Igény szerint használata az Azure Active Directory (AAD) hitelesítés a felügyelt identitást az ADF az adatbázis-kiszolgálóhoz való csatlakozáshoz. Előfeltételként kell hozzáadni a felügyelt identitás számára az ADF tartalmazottadatbázis-felhasználó hozhat létre az SSISDB a az Azure SQL Database server/Managed Instance, lásd: [Azure-SSIS integrációs modul engedélyezése AAD-hitelesítését](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
 
@@ -55,11 +55,11 @@ Amikor üzembe helyezi az Azure-SSIS integrációs modul, a az Azure Feature Pac
 ### <a name="region-support"></a>Régió támogatása
 Az Azure-régióban, amelyben az ADF és Azure-SSIS integrációs modul jelenleg érhető el, lásd: [ADF + SSIS integrációs modul rendelkezésre állása régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
 
-### <a name="compare-sql-database-logical-server-and-sql-database-managed-instance"></a>Hasonlítsa össze az SQL Database logikai kiszolgáló és az SQL Database felügyelt példánya
+### <a name="compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance"></a>Hasonlítsa össze az SQL Database egy adatbázis és rugalmas készlet és az SQL Database felügyelt példánya
 
 A következő táblázat összehasonlítja a bizonyos funkciók az Azure SQL Database-kiszolgáló és a felügyelt példányt az Azure-SSIR integrációs modul valamelyikéhez kapcsolódnak:
 
-| Szolgáltatás | Azure SQL Database-kiszolgáló| Felügyelt példány |
+| Szolgáltatás | önálló adatbázis és rugalmas készlet| Felügyelt példány |
 |---------|--------------|------------------|
 | **Ütemezés** | SQL Server-ügynök nem érhető el.<br/><br/>Lásd: [ADF folyamat egy csomag végrehajtásának ütemezése](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Felügyelt példány az ügynök nem érhető el. |
 | **Hitelesítés** | SSISDB egy tartalmazottadatbázis-felhasználó jelölő az ADF azokat a felügyelt identitáshoz bármely AAD csoport tagjaként hozhatja létre a **db_owner** szerepkör.<br/><br/>Lásd: [SSISDB létrehozása az Azure SQL Database-kiszolgálóhoz történő hitelesítés engedélyezése az Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Az ADF-felügyelt identitásnak jelölő tartalmazottadatbázis-felhasználó az SSISDB hozhat létre. <br/><br/>Lásd: [SSISDB létrehozása az Azure SQL Database felügyelt példányába történő hitelesítés engedélyezése az Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
@@ -69,9 +69,11 @@ A következő táblázat összehasonlítja a bizonyos funkciók az Azure SQL Dat
 | | | |
 
 ## <a name="azure-portal"></a>Azure Portal
+
 Ebben a szakaszban használhatja az Azure portal, kifejezetten ADF felhasználói felületének (UI) / alkalmazás létrehozása az Azure-SSIS integrációs modult. 
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása 
+
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott. 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
 1. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 

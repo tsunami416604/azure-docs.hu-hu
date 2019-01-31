@@ -1,5 +1,5 @@
 ---
-Cím: A Machine Learning Studio-munkaterület titleSuffix kezelése: Azure Machine Learning Studio description: Az Azure Machine Learning-munkaterületek való hozzáférés kezelése és üzembe helyezése és Machine Learning API szolgáltatás webszolgáltatások kezelése: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: A Machine Learning Studio-munkaterület titleSuffix kezelése: Azure Machine Learning Studio description: Az Azure Machine Learning-munkaterületek való hozzáférés kezelése és üzembe helyezése és Machine Learning API szolgáltatás webszolgáltatások kezelése: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 02/27/2017
 ---

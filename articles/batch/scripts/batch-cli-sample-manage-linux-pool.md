@@ -3,7 +3,7 @@ title: Azure CLI-példaszkript – Linux-készletek a Batch szolgáltatásban | 
 description: Azure CLI-példaszkript – Linux-készletek létrehozása és kezelése a Batch szolgáltatásban
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
-ms.author: danlep
-ms.openlocfilehash: e365987878190b9f8a5ad1fd0f10015544b85947
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: lahugh
+ms.openlocfilehash: 0ebda53db852a613c2ad6f0e223c25b3946b7116
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975547"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474275"
 ---
-# <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI-példa: Linux-készlet létrehozása és kezelése az Azure Batch szolgáltatásban
+# <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI-példa: Az Azure Batch egy Linux-készlet létrehozása és kezelése
 
 A szkript bemutat az Azure CLI elérhető parancsai közül néhányat, amelyekkel létrehozható és kezelhető egy Linux-készlet az Azure Batch szolgáltatásban.
 

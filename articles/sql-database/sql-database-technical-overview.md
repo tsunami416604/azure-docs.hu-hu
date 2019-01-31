@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: e0a3f5239e9d0f16312894dee598c0fc490f1e73
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 6b4bc5a75f49287ad0425a7fe94f099204b73e44
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270008"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469549"
 ---
 # <a name="the-azure-sql-database-service"></a>Az Azure SQL Database szolgáltatásban
 
@@ -26,8 +26,8 @@ Az SQL Database általános célú, felügyelt relációsadatbázis-szolgáltat�
 
 Az Azure SQL Database az alábbi lehetőségeket kínálja az Azure SQL-adatbázisok üzembe helyezésére:
 
-- Egy logikai kiszolgáló által felügyelt önálló, saját erőforráskészlettel rendelkező adatbázisként
-- Készletezett adatbázisként egy [rugalmas készletben](sql-database-elastic-pool.md) egy logikai kiszolgálón keresztül felügyelt közös erőforráskészlettel
+- A saját erőforráskészlettel felügyelt SQL Database-kiszolgálón keresztül az önálló adatbázisként
+- A készletezett adatbázisként egy [rugalmas készlet](sql-database-elastic-pool.md) közös erőforráskészlettel felügyelt SQL Database-kiszolgálón keresztül
 - Más néven adatbázis-egy gyűjtemény része egy [felügyelt példány](sql-database-managed-instance.md) , amely tartalmazza a rendszer és a felhasználói adatbázisok és erőforrások olyan készletét megosztása
 
 Az alábbi ábra ezt a három üzembehelyezési modellt mutatja be:
@@ -68,7 +68,7 @@ Hozza létre első alkalmazását egy egyedülálló, kisméretű adatbázison a
 > [!IMPORTANT]
 > A [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md) jelenleg nyilvános előzetes verzióban érhető el. Nem ajánlott semmilyen éles számítási feladatok futtatása a nagy kapacitású adatbázisokban még. Nagy kapacitású adatbázis egyéb szolgáltatási csomagokra nem frissíthető. Tesztelési célra ajánlott másolatot készít az aktuális adatbázisban, és frissíti a példányt nagy kapacitású szolgáltatásszinthez.
 
-A dinamikus méretezhetőség különbözik az automatikus skálázástól. Automatikus skálázás esetén a szolgáltatás adott feltételek alapján, automatikusan méretez, míg a dinamikus méretezhetőség lehetővé teszi a manuális méretezést, amely nem jár állásidővel. Az önálló Azure SQL Database a manuális dinamikus méretezhetőséget támogatja, de az automatikus skálázást nem. Ha *automatikus* megoldást keres, érdemes megfontolni a rugalmas készletek használatát, amely lehetővé teszi, hogy az adatbázisok osztozzanak egy készlet erőforrásain az egyes adatbázisok egyedi igényei alapján. Vannak azonban olyan parancsfájlok, amelyek segítségével automatizálhatja a méretezhetőség egyetlen Azure SQL-adatbázishoz. Erre az [Egyetlen SQL-adatbázis monitorozása és skálázása a PowerShell használatával](scripts/sql-database-monitor-and-scale-database-powershell.md) című témakörben láthat példát.
+A dinamikus méretezhetőség különbözik az automatikus skálázástól. Automatikus skálázás esetén a szolgáltatás adott feltételek alapján, automatikusan méretez, míg a dinamikus méretezhetőség lehetővé teszi a manuális méretezést, amely nem jár állásidővel. Önálló adatbázis támogatja a manuális a dinamikus méretezhetőség, de nem automatikus. Ha *automatikus* megoldást keres, érdemes megfontolni a rugalmas készletek használatát, amely lehetővé teszi, hogy az adatbázisok osztozzanak egy készlet erőforrásain az egyes adatbázisok egyedi igényei alapján. Vannak azonban parancsfájlok, amelyek segítségével automatizálhatja az önálló adatbázis méretezhetősége. Egy vonatkozó példáért lásd: [PowerShell-lel történő egy önálló adatbázis monitorozása és skálázása](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Rugalmas készletek az erőforrások kihasználtságának maximalizálásához
 
@@ -94,7 +94,7 @@ Hogyan hasonlítható össze az önálló adatbázisok és a rugalmas készletek
 Az SQL Database emellett [metrikák és diagnosztikai naplók kibocsátásával](sql-database-metrics-diag-logging.md) is képes megkönnyíteni a felügyeletet. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
 
 - **Az Azure Storage**: Alacsony költségű archiválására telemetriai adatok hatalmas mennyiségű
-- **Az Azure Event Hub**: Az SQL Database telemetriai adatainak integrálása saját egyedi monitorozási megoldásokkal vagy élő adatfolyamatokkal
+- **Azure Event Hub**: Az SQL Database telemetriai adatainak integrálása saját egyedi monitorozási megoldásokkal vagy élő adatfolyamatokkal
 - **Az Azure Log Analytics**: A beépített monitorozási megoldás jelentéskészítő, riasztó és enyhítő funkciókkal.
 
     ![architektúra](./media/sql-database-metrics-diag-logging/architecture.png)
@@ -148,7 +148,7 @@ Az SQl Database számos [beépített biztonsági és megfelelőségi szolgáltat
 
 ### <a name="advance-threat-protection"></a>Fejlett fenyegetésvédelem
 
-Az SQL Advanced Threat Protection fejlett SQL-biztonsági funkciókat tartalmazó egyesített biztonsági csomag. Lehetőséget nyújt a bizalmas adatok felderítésére és titkossá minősítésére, az adatbázis biztonsági réseinek kezelésére, továbbá az adatbázisra nézve fenyegetést jelentő rendellenes tevékenységek észlelésére. Segítségével egyetlen helyen engedélyezhetők és kezelhetők ezek a képességek.
+Az SQL Data biztonságú egységes csomag egy speciális SQL biztonsági funkciók. Lehetőséget nyújt a bizalmas adatok felderítésére és titkossá minősítésére, az adatbázis biztonsági réseinek kezelésére, továbbá az adatbázisra nézve fenyegetést jelentő rendellenes tevékenységek észlelésére. Segítségével egyetlen helyen engedélyezhetők és kezelhetők ezek a képességek.
 
 - [Adatfelderítés és besorolás](sql-database-data-discovery-and-classification.md):
 
@@ -189,7 +189,7 @@ Az SQL Database egyszerűbbé és hatékonyabbá teszi az alkalmazások létreho
 - **[Az SQL Server Data Tools a Visual Studióban](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)**:
 
   Egy ingyenes, letölthető ügyféloldali alkalmazás SQL Server relációs adatbázisok, Azure SQL Database-adatbázisok, Integration Services-csomagok, Analysis Services adatmodellek és Reporting Services-jelentések fejlesztéséhez.
-- **[A Visual Studio Code](https://code.visualstudio.com/docs)**:
+- **[Visual Studio Code](https://code.visualstudio.com/docs)**:
 
   Egy ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, macOS és Linux rendszerekre, amely támogatja a bővítményeket, beleértve a [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez.
 

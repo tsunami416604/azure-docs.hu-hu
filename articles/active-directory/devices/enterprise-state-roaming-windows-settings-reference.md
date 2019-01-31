@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/30/2019
 ms.author: markvi
-ms.openlocfilehash: 6698aa7e16b351190f9a5cdde62766cf5d7e1809
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ff607ed44f19e915b6ba94c1d217367d1012f062
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095991"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300234"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
 Forrásul vagy a biztonsági másolat a Windows 10-es beállítások teljes listáját a következő: 
@@ -50,15 +50,15 @@ A következő beállítások csoportok szinkronizálását a Windows 10-es eszk�
 * Egyéb Windows-beállítások: tekintse meg a Windows-beállítások részletei
 * A Microsoft Edge böngésző beállításai: A Microsoft Edge-beli Kedvencek, olvassa és egyéb beállítások
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
+![Beállítások szinkronizálása](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 A Microsoft Edge-böngészőbeállítások (Kedvencek, olvassa) csoportszinkronizálását is engedélyezhető vagy letiltható a végfelhasználók számára – Microsoft Edge böngésző beállításainak menüpont.
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
+![Fiók](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
 A Windows 10-es verzió 1803 vagy újabb, az Internet Explorer beállítási csoport (Kedvencek, beírt URL-címek) szinkronizálása is engedélyezhető vagy letiltható a végfelhasználók számára az Internet Explorer beállításainak menüelem keresztül. 
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
+![Beállítások](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Windows-beállítások részletei
 Az alábbi táblázatban más bejegyzéseket a csoport oszlop hivatkozik beállításokat, amelyeket le lehet tiltani a beállítások > fiókok > Beállítások szinkronizálása > Other Windows-beállításait. 

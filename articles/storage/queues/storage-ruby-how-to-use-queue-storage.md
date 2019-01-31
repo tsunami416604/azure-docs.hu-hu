@@ -9,13 +9,13 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 67a5dc0eddb6deb51ec69c68c48d5edf308cf43e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: queues
+ms.openlocfilehash: 7ebb4326a8ec8a3382a5488ce3b966526bef446a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231566"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456272"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>How to use Queue storage from Ruby (A Queue Storage használata Rubyval)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -63,7 +63,7 @@ Ezeket az értékeket a következőképp kérheti le egy klasszikus vagy Resourc
 4. A megjelenő Hozzáférési kulcsok panelen láthatja az 1. és a 2. hozzáférési kulcsot. Ezek bármelyikét használhatja. 
 5. Kattintson a másolás gombra, hogy a kulcsot a vágólapra másolja. 
 
-## <a name="how-to-create-a-queue"></a>Útmutató: A várólista létrehozása
+## <a name="how-to-create-a-queue"></a>kézikönyv: Várólista létrehozása
 Az alábbi kód létrehoz egy **Azure::QueueService** objektum, amely lehetővé teszi, hogy az üzenetsorok.
 
 ```ruby
@@ -80,14 +80,14 @@ rescue
 end
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Útmutató: Üzenet beszúrása egy üzenetsorba
+## <a name="how-to-insert-a-message-into-a-queue"></a>kézikönyv: Üzenet beszúrása egy üzenetsorba
 Üzenet beszúrása egy üzenetsorba, használja a **create_message()** metódust hozzon létre egy új üzenetet, és adja hozzá az üzenetsorhoz.
 
 ```ruby
 azure_queue_service.create_message("test-queue", "test message")
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Útmutató: A következő üzenet betekintés
+## <a name="how-to-peek-at-the-next-message"></a>kézikönyv: Betekintés a következő üzenet
 Anélkül, hogy eltávolítaná az üzenetsorból meghívásával is bepillanthat egy üzenetsorban található üzenet a **betekintési\_messages()** metódust. Alapértelmezés szerint **betekintési\_messages()** lekéri egy adott üzenet. Belepillantás kívánt üzenetek számának is megadhatja.
 
 ```ruby
@@ -95,7 +95,7 @@ result = azure_queue_service.peek_messages("test-queue",
   {:number_of_messages => 10})
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Útmutató: A következő üzenet eltávolítása a sorból
+## <a name="how-to-dequeue-the-next-message"></a>kézikönyv: A következő üzenet eltávolítása a sorból
 Eltávolíthatja az üzenetet egy üzenetsorból két lépésben.
 
 1. Meghívásakor **lista\_messages()**, a következő üzenetet kap egy üzenetsorban lévő alapértelmezés szerint. Azt is megadhatja, hogy hány üzenetet szeretne kapni. A kapott üzeneteket **lista\_messages()** válik az adott üzenetsorban üzeneteket olvasó többi kód számára. A láthatósági időkorlátot másodpercben paraméterként adja át.
@@ -109,7 +109,7 @@ azure_queue_service.delete_message("test-queue",
   messages[0].id, messages[0].pop_receipt)
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: Az üzenetsorban található üzenet tartalmának módosítása
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>kézikönyv: Üzenetsorban található üzenet tartalmának módosítása
 Egy üzenetet tartalmát helyben, az üzenetsorban módosíthatja. Az alábbi kódot a **update_message()** metódus üzenet frissítéséhez. A metódus adja vissza egy rekord, amely tartalmazza az üzenetsorban található üzenet és a egy UTC dátum idő értéke jelöli, az üzenet az üzenetsorban látható lesz a pop fogadását.
 
 ```ruby
@@ -119,7 +119,7 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
   30)
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Útmutató: További beállítások üzenetmozgatót üzenetek
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>kézikönyv: További beállítások üzenetmozgatót üzenetek
 Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból.
 
 1. A kötegelt üzenet kérheti le.
@@ -135,7 +135,7 @@ azure_queue_service.list_messages("test-queue", 300
 end
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Útmutató: Az üzenetsor hosszának lekérése
+## <a name="how-to-get-the-queue-length"></a>kézikönyv: Az üzenetsor hosszának lekérése
 A várólistában lévő üzenetek számának becslése kérheti le. A **első\_várólista\_metadata()** módszert kéri a queue szolgáltatásból az üzenetek hozzávetőleges száma és a várólista metaadatait adja vissza.
 
 ```ruby
@@ -143,7 +143,7 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
   "test-queue")
 ```
 
-## <a name="how-to-delete-a-queue"></a>Útmutató: Üzenetsor törlése
+## <a name="how-to-delete-a-queue"></a>kézikönyv: Üzenetsor törlése
 Egy üzenetsor és a benne tárolt összes üzenet törléséhez hívja a **törlése\_queue()** metódust a várólista-objektum.
 
 ```ruby

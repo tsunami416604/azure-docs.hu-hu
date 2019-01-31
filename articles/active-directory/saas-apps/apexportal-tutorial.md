@@ -4,250 +4,232 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Ape
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: db204a46-6460-4ace-bdbb-4353846723ad
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/07/2017
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 0f5eef2916cd4f0eff12ada4f885e06cfc9077b8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 72db34202a0502dac5c6d494bfa0ef9dc897a42e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176267"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471130"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Oktatóanyag: Az Azure Active Directory-integráció Apex-portállal
 
 Ebben az oktatóanyagban megismerheti, hogyan Apex-portál integrálható az Azure Active Directory (Azure AD).
-
 Apex-portál integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, ki férhet hozzá rekordnevet Portal Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Apex-portálhoz (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja, ki férhet hozzá rekordnevet Portal Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezett Apex-portálhoz (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Apex-portálon az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- A rekordnevet portál egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Apex portál egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Apex-portál hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* Apex-portál támogatja **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* Apex-portál támogatja **igény szerinti** felhasználók átadása
 
 ## <a name="adding-apex-portal-from-the-gallery"></a>Apex-portál hozzáadása a katalógusból
+
 Azure ad-ben található rekordokra portál integráció konfigurálásához, hozzá kell Apex-portál a galériából a felügyelt SaaS-alkalmazások listájára.
 
 **Apex-portál hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen][2]
-    
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az új alkalmazás gomb][3]
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
 4. A Keresés mezőbe írja be a **Apex-portál**, jelölje be **Apex-portál** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredmények listájában Apex-portál](./media/apexportal-tutorial/tutorial_apexonline_addfromgallery.png)
+     ![Az eredmények listájában Apex-portál](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Apex-portál a teszt "Britta Simon" nevű felhasználó.
-
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner felhasználó Apex-portálon mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Apex-portálon hivatkozás kapcsolatát kell létrehozni.
-
-Apex-portálon a hozzárendelése értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés nevű tesztfelhasználó alapján Apex-portállal **Britta Simon**.
+Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó Apex-portálon hivatkozás kapcsolata kell hozható létre.
 
 Az Azure AD egyszeri bejelentkezés Apex-portállal tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Apex-portál tesztfelhasználót](#create-an-apex-online-test-user)**  - a-megfelelője a Britta Simon rendelkezik, amely kapcsolódik az Azure AD felhasználói ábrázolása Apex-portálon.
+2. **[Apex portál egyszeri bejelentkezés konfigurálása](#configure-apex-portal-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+5. **[Hozzon létre Apex-portál tesztfelhasználót](#create-apex-portal-test-user)**  - a-megfelelője a Britta Simon rendelkezik, amely kapcsolódik az Azure AD felhasználói ábrázolása Apex-portálon.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyszeri bejelentkezést az Apex-portál alkalmazás konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Az Azure AD egyszeri bejelentkezés konfigurálása Apex-portállal, hajtsa végre az alábbi lépéseket:**
+Az Azure AD egyszeri bejelentkezés konfigurálása Apex-portállal, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **Apex-portál** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **Apex-portál** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/apexportal-tutorial/tutorial_apexonline_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-3. Az a **Apex-portál tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Apex-portál tartomány és URL-címek egyszeri bejelentkezési adatait](./media/apexportal-tutorial/tutorial_apexonline_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
+4. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a következő lépésekkel:
 
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Apex-portál támogatási csapatának](mailto:support@apexanalytix.com) beolvasni ezeket az értékeket.
- 
-4. Az Apex-portál alkalmazást a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. 
+    ![Apex-portál tartomány és URL-címek egyszeri bejelentkezési adatait](common/idp-intiated.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/apexportal-tutorial/attribute.png)
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
 
-5. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az előző képen látható módon, és hajtsa végre az alábbi lépéseket:
-    
-    | Attribútum neve | Attribútum értéke |
-    | ------------------- | -------------------- |    
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
+
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Apex-portál ügyfél-támogatási csapatának](mailto:support@apexanalytix.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+
+5. Apex-portál alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+
+    ![image](common/edit-attribute.png)
+
+6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+
+    | Name (Név) | Adatforrás-attribútum|
+    | ------------------- | -------------------- |
     | KERESZTNÉV | user.givenname |
     | VEZETÉKNÉV | user.surname |
-    | LEVELEK | user.mail |    
+    | LEVELEK | user.mail |
+    | | |
 
-    a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/apexportal-tutorial/tutorial_attribute_04.png)
+    ![image](common/new-save-attribute.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/apexportal-tutorial/tutorial_attribute_05.png)
+    ![image](common/new-attribute-details.png)
 
     b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
-    c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
-    
-    d. Kattintson az **OK** gombra.
+    c. Hagyja a **Namespace** üres.
 
-6. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+    d. Válassza ki a forrás, **attribútum**.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/apexportal-tutorial/tutorial_apexonline_certificate.png) 
+    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
 
-7. Kattintson a **mentése** gombra.
+    f. Kattintson a **Ok**
 
-    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/apexportal-tutorial/tutorial_general_400.png)
+    g. Kattintson a **Save** (Mentés) gombra.
 
-8. Az egyszeri bejelentkezés konfigurálása **Apex-portál** oldalon kell küldenie a letöltött **metaadatainak XML** való [Apex-portál támogatási csapatának](mailto:support@apexanalytix.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+
+8. Az a **Apex-portál beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure Ad Identifier
+
+    c. Kijelentkezési URL
+
+### <a name="configure-apex-portal-single-sign-on"></a>Apex portál egyszeri bejelentkezés konfigurálása
+
+Az egyszeri bejelentkezés konfigurálása **Apex-portál** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Apex-portál támogatási csapatának](mailto:support@apexanalytix.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure Active Directory gomb](./media/apexportal-tutorial/create_aaduser_01.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/apexportal-tutorial/create_aaduser_02.png)
-
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
-
-    ![A Hozzáadás gombra.](./media/apexportal-tutorial/create_aaduser_03.png)
-
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/apexportal-tutorial/create_aaduser_04.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
-
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
-  
-### <a name="create-an-apex-portal-test-user"></a>Hozzon létre egy Apex-portál tesztfelhasználót.
-
-Ez a szakasz célja egy Apex-portálon Britta Simon nevű felhasználó létrehozásához. Apex portál támogatja just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó Apex-portál eléréséhez, ha még nem létezik tett kísérlet során jön létre.
- 
-> [!NOTE]
-> Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Apex-portál támogatási csapatának](mailto:support@apexanalytix.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejelentkezést a hozzáférés biztosításával Apex-portálra.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Apex-portál**.
 
-**Britta Simon rendel Apex-portál, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201] 
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 2. Az alkalmazások listájában jelölje ki a **Apex-portál**.
 
-    ![A rekordnevet portál hivatkozásra az alkalmazások listáját](./media/apexportal-tutorial/tutorial_apexonline_app.png)  
+    ![A rekordnevet portál hivatkozásra az alkalmazások listáját](common/all-applications.png)
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panel][203]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+
+### <a name="create-apex-portal-test-user"></a>Apex-portál tesztfelhasználó létrehozása
+
+Ebben a szakaszban egy Britta Simon nevű felhasználó Apex-portálon jön létre. Apex-portál támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik az Apex-portálon, a hitelesítés után egy új jön létre.
+
+> [!NOTE]
+> Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Apex-portál támogatási csapatának](mailto:support@apexanalytix.com).
+
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Apex-portál csempére kattint, akkor kell lekérése automatikusan bejelentkezett az Apex-portál alkalmazás.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Apex-portál csempére kattint, akkor kell is automatikusan megtörténik a a Apex-portálra, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/apexportal-tutorial/tutorial_general_01.png
-[2]: ./media/apexportal-tutorial/tutorial_general_02.png
-[3]: ./media/apexportal-tutorial/tutorial_general_03.png
-[4]: ./media/apexportal-tutorial/tutorial_general_04.png
-
-[100]: ./media/apexportal-tutorial/tutorial_general_100.png
-
-[200]: ./media/apexportal-tutorial/tutorial_general_200.png
-[201]: ./media/apexportal-tutorial/tutorial_general_201.png
-[202]: ./media/apexportal-tutorial/tutorial_general_202.png
-[203]: ./media/apexportal-tutorial/tutorial_general_203.png
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az első Azure SQL Database-adatbázis megtervezése az SSMS használatával | Microsoft Docs'
+title: 'Oktatóanyag: Az első önálló adatbázis az SSMS használatával Azure SQL Database megtervezése |} A Microsoft Docs'
 description: Ismerje meg, hogyan tervezheti meg első Azure SQL-adatbázisát az SQL Server Management Studióval.
 services: sql-database
 ms.service: sql-database
@@ -9,15 +9,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 9fa36b9b87a8e9591b0c863826cd2278a29ba28e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/25/2019
+ms.openlocfilehash: e7229a0816cf74fed08397a68dd34e305bf8c0ea
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956057"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459536"
 ---
-# <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Oktatóanyag: Az első Azure SQL Database-adatbázis megtervezése az SSMS használatával
+# <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Oktatóanyag: Az első Azure SQL-adatbázis megtervezése SSMS használatával
 
 Az Azure SQL database egy relációs adatbázis-a-szolgáltatás (DBaaS) a Microsoft cloud (Azure). Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket az Azure Portal és az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) használatával:
 
@@ -38,7 +38,7 @@ Ha a nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot]
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette:
 
-- [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (legújabb verzió)
+- [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (latest version)
 - [BCP és SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433) (legújabb verzió)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
@@ -47,7 +47,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database"></a>Hozzon létre egy üres adatbázist
 
-Az Azure SQL-adatbázis [számítási és tárolási erőforrások](sql-database-service-tiers-dtu.md) egy meghatározott készletével együtt jön létre. Az adatbázis létrejön egy [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) és a egy [Azure SQL database logikai kiszolgáló](sql-database-features.md).
+Az Azure SQL-adatbázis [számítási és tárolási erőforrások](sql-database-service-tiers-dtu.md) egy meghatározott készletével együtt jön létre. Az adatbázis létrejön egy [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) és a egy [Azure SQL Database-kiszolgáló](sql-database-features.md).
 
 Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
 
@@ -82,7 +82,7 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
    1. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Előfordulhat, hogy fedezze fel a lehetőségeket a dtu-k/virtuális magok és a storage, amely az egyes szolgáltatásszinteken elérhető. Alapértelmezés szerint a **Standard** [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) van kijelölve, de lehetősége van kiválasztása a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 
       > [!IMPORTANT]
-      > Több mint 1 TB prémium szintű storage jelenleg érhető el az alábbiakat kivéve minden régióban: Egyesült Királyság északi régiója, USA nyugati középső Régiója, Egyesült Királyság South2, kelet-Kína, központi USDoDCentral, Németország, USDoDEast, USA-beli államigazgatás – délnyugati, US Gov déli középső régiója, Északkelet-Németország, Kína Északi régiója, USA-beli államigazgatás – keleti régiója. Más régiókban a Prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).
+      > Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve a következő: Egyesült Királyság északi régiója, USA nyugati középső RÉGIÓJA, Egyesült Királyság South2, kelet-Kína, közép-USDoDCentral, Németország, USDoDEast, USA-beli államigazgatás – délnyugati, US Gov USA déli középső régiója, Északkelet-Németország, Észak-Kína, USA-beli államigazgatás – kelet. Más régiókban a Prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).
 
       A szolgáltatási rétegben, a Dtu-szám és a tárterületméret kiválasztása után kattintson az **alkalmaz**.
 
@@ -96,7 +96,7 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
 
 ## <a name="create-a-firewall-rule"></a>Tűzfalszabály létrehozása
 
-Az SQL database szolgáltatás a kiszolgáló szintjén hoz létre tűzfalat. A tűzfal megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz. Ahhoz, hogy a külső kapcsolatokat az adatbázisba, először hozzá kell adnia egy szabályt az IP-címhez a tűzfalhoz. Kövesse az alábbi lépéseket követve létrehozhat egy [SQL database kiszolgálószintű tűzfalszabályt](sql-database-firewall-configure.md).
+Az SQL database szolgáltatás a kiszolgáló szintjén hoz létre tűzfalat. A tűzfal megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz. Ahhoz, hogy a külső kapcsolatokat az adatbázisba, először hozzá kell adnia egy szabályt az IP-címhez a tűzfalhoz. Kövesse az alábbi lépéseket követve létrehozhat egy [SQL Database kiszolgálószintű tűzfalszabályt](sql-database-firewall-configure.md).
 
 > [!NOTE]
 > Az SQL database 1433-as porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem lehet csatlakoztatni az Azure SQL Database-kiszolgálóhoz, ha a rendszergazda megnyitja az 1433-as porton.
@@ -107,24 +107,24 @@ Az SQL database szolgáltatás a kiszolgáló szintjén hoz létre tűzfalat. A 
 
    ![kiszolgáló neve](./media/sql-database-design-first-database/server-name.png)
 
-1. Kattintson a **Kiszolgálótűzfal beállítása** lehetőségre az eszköztáron. A **tűzfalbeállítások** megnyílik az SQL database-kiszolgálót.
+1. Kattintson a **Kiszolgálótűzfal beállítása** lehetőségre az eszköztáron. Megnyílik az SQL Database kiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
 
    ![kiszolgálói tűzfalszabály](./media/sql-database-design-first-database/server-firewall-rule.png)
 
    1. Az eszköztár **Ügyfél IP-címének hozzáadása** elemére kattintva vegye fel aktuális IP-címét egy új tűzfalszabályba. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
 
-   1. Kattintson a **Save** (Mentés) gombra. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
+   1. Kattintson a **Save** (Mentés) gombra. Egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, az SQL Database-kiszolgálóhoz az 1433-as port megnyitása jön létre.
 
    1. Kattintson az **OK** gombra, majd zárja be a **Tűzfalbeállítások** lapot.
 
-Az IP-cím már továbbíthatja a tűzfalon keresztül. Mostantól csatlakozhat az SQL database-kiszolgáló és az adatbázisokhoz, SQL Server Management Studio vagy más választott eszköz használatával. Ügyeljen arra, használja a korábban létrehozott kiszolgálói rendszergazdai fiókkal.
+Az IP-cím már továbbíthatja a tűzfalon keresztül. Mostantól csatlakozhat az SQL Database-kiszolgálóhoz és annak adatbázisaihoz SQL Server Management Studio vagy más választott eszközzel. Ügyeljen arra, használja a korábban létrehozott kiszolgálói rendszergazdai fiókkal.
 
 > [!IMPORTANT]
 > Alapértelmezés szerint az SQL database-tűzfalon keresztül érhető el az Azure-szolgáltatásokhoz. Kattintson a **KI** gombra ezen az oldalon az összes Azure-szolgáltatás hozzáférésének letiltásához.
 
 ## <a name="connect-to-the-database"></a>Csatlakozzon az adatbázishoz
 
-Használat [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) az Azure SQL database-kiszolgálóhoz csatlakozni.
+Az [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) segítségével hozzon létre kapcsolatot az Azure SQL Database-kiszolgálóval.
 
 1. Nyissa meg az SQL Server Management Studiót.
 

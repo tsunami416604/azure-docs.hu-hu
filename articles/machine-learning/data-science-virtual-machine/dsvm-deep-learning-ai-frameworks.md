@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: d266ee48a4248584ae22a9ba678d516fe28cd712
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 610b140fd6049842b993c17fd53bebf799f83f5c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259715"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453144"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Mély tanulás és mesterségesintelligencia-keretrendszerek
 A [adatelemző virtuális gép](https://aka.ms/dsvm) (DSVM) és a [Deep Learning virtuális gép](https://aka.ms/dsvm/deeplearning) segítségével prediktív elemzéssel mesterséges intelligencia (AI) alkalmazásokat hozhat létre deep learning-keretrendszerek számos támogat, és kognitív képességeket, például kép és a language understanding.
@@ -195,7 +195,7 @@ A szolgáltatás indítása körülbelül egy percig tart. Indítson el egy webb
 | Támogatott DSVM-kiadások      | Ubuntu     |
 | Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Theano telepítve van a Python 2.7-es (_legfelső szintű_), valamint a Python 3.5-ös (_py35_) környezetben.   |
 | A dsvm-hez kapcsolódó eszközök      | Keras      |
-| Hogyan futtathatja / használata?    | * A terminálon a Python-verzió (legfelső szintű vagy py35) kívánja, futtassa a python, majd importálja a theano aktiválása. <br/> * A Jupyter válassza ki a Python 2.7-es vagy a 3.5-ös kernel, majd importálása theano.  <br/>Egy közelmúltbeli MKL hiba elkerüléséhez először állítsa a réteg threading MKL kell:<br/><br/>_Exportálás MKL_THREADING_LAYER = GNU_|
+| Hogyan futtathatja / használata?    | * A terminálon a Python-verzió (legfelső szintű vagy py35) kívánja, futtassa a python, majd importálja a theano aktiválása. <br/> * A Jupyter válassza ki a Python 2.7-es vagy a 3.5-ös kernel, majd importálása theano.  <br/>Egy közelmúltbeli MKL hiba elkerüléséhez először állítsa a réteg threading MKL kell:<br/><br/>_export MKL_THREADING_LAYER=GNU_|
 
 
 

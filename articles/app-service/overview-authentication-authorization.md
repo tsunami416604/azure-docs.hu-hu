@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7fbf86a24ca6b2ba55ca33b20e67dea6a6e0c994
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b66b293e5d6e422c994e2b7cef13fd4100144cbf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731410"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297004"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
@@ -64,7 +64,7 @@ Az App Service biztosítja egy beépített jogkivonat-tároló, amely a jogkivon
 - Közzététel a Facebook-idővonalon a hitelesített felhasználó
 - a felhasználó vállalati adatokat olvasni az Azure Active Directory Graph API vagy akár a Microsoft Graph
 
-Általában kell írnia a kódot gyűjtése, tárolása és frissítése az alkalmazásban ezek a jogkivonatok. A jogkivonat-tároló az imént [a jogkivonatok](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) amikor szüksége van rájuk, és [állapítható meg, hogy frissíteni őket az App Service](app-service-authentication-how-to.md#refresh-access-tokens) mikor válik érvénytelen. 
+Általában kell írnia a kódot gyűjtése, tárolása és frissítése az alkalmazásban ezek a jogkivonatok. A jogkivonat-tároló az imént [a jogkivonatok](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) amikor szüksége van rájuk, és [állapítható meg, hogy frissíteni őket az App Service](app-service-authentication-how-to.md#refresh-identity-provider-tokens) mikor válik érvénytelen. 
 
 Az azonosító-jogkivonatokat, hozzáférési jogkivonatok és frissítési biztonsági jogkivonat a gyorsítótárban a hitelesített munkamenet, és csak az a felhasználó által elérhető számukra.  
 
@@ -151,7 +151,7 @@ Szolgáltatóspecifikus útmutatókat:
 * [Az alkalmazások a Google-bejelentkezés konfigurálása][Google]
 * [Az alkalmazások a Microsoft Account login konfigurálása][MSA]
 * [Az alkalmazások a Twitter-bejelentkezés konfigurálása][Twitter]
-* [kézikönyv: Az alkalmazás egyéni hitelesítés használata][custom-auth]
+* [Útmutató: Az alkalmazás egyéni hitelesítés használata][custom-auth]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md

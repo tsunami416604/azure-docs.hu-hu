@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: 57058e9a86a338738315a08f218978e20fae95e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9491550aae8f88621d947572741f492adcf9cdd0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127856"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463225"
 ---
-# <a name="translator-text-api-v20"></a>Translator Text API 2.0-s verzió
+# <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
 > [!IMPORTANT]
 > A Translator Text API ezen verziója elavult. [A Translator Text API v3-as dokumentációban megtekintheti](v3-0-reference.md).
@@ -57,14 +57,14 @@ Amikor a címkéket például HTML-tartalom fordításával (`contentType=text/h
 <div>This will be translated. </div>
 ```
 
-## <a name="get-translate"></a>GET / fordítása
+## <a name="get-translate"></a>GET /Translate
 
 ### <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 Egy szöveges karakterlánc egyik nyelvről a másikra fordítja le.
 
 A kérelem URI azonosítója `https://api.microsofttranslator.com/V2/Http.svc/Translate`.
 
-**Vrácená hodnota:** egy karakterlánc, amely a fordítást.
+**A visszatérési érték:** Egy karakterlánc, amely a fordítást.
 
 Ha korábban már használt `AddTranslation` vagy `AddTranslationArray` , adja meg az 5-ös vagy újabb forrás egy mondatban, egy minősítéssel rendelkező fordítását `Translate` csak az első számú választása, amely érhető el a rendszer adja vissza. "Egy forrás mondatban" azt jelenti, hogy pontosan megegyezik (100 %-os egyeztetéséhez), kis-és nagybetűk, a térközt, a címkeértékeket és a egy mondatnál végén absztrakt. Ha nincs minősítés tárolja és 5 vagy újabb minősítést a visszaadott eredmény az automatikus fordítás a Microsoft Translator által lesz.
 
@@ -84,7 +84,7 @@ A válasz tartalomtípusa: application/xml
 |erre:|(üres) |Kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.|lekérdezés|sztring|
 |contentType|(üres)    |Választható. Folyamatban van a lefordított szöveg formátuma. A támogatott formátumok a következők: text/plain (alapértelmezett) és a text/html. HTML kell lennie egy megfelelően formázott, teljes elemhez.|lekérdezés|sztring|
 |category|(üres)   |Választható. A kategória (tartomány), a fordítás tartalmazó karakterlánc. Az alapértelmezett "általános".|lekérdezés|sztring|
-|Engedélyezés|(üres)  |Szükséges, ha az alkalmazásazonosító mezőben, vagy Ocp-Apim-Subscription-Key fejléc nincs megadva. Engedélyezési token: "Tulajdonos" + "" + "access_token".|header|sztring|
+|Engedélyezés|(üres)  |Szükséges, ha az alkalmazásazonosító mezőben, vagy Ocp-Apim-Subscription-Key fejléc nincs megadva. Engedélyezési jogkivonat:  "Tulajdonos" + "" + "access_token".|header|sztring|
 |OCP-Apim-Subscription-Key|(üres)  |Szükséges, ha az alkalmazásazonosító mezőben vagy engedélyeztetési fejléc nincs megadva.|header|sztring|
 
 
@@ -97,7 +97,7 @@ A válasz tartalomtípusa: application/xml
 |500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, ossza meg velünk. Adja meg a hozzávetőleges dátum és idő, a kérelem és a kérés azonosítója, az X-MS-Trans-Info fejlécet tartalmazza.|
 |503    |A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, ha a probléma továbbra is fennáll-e.|
 
-## <a name="post-translatearray"></a>/TranslateArray közzététele
+## <a name="post-translatearray"></a>POST /TranslateArray
 
 ### <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 Használja a `TranslateArray` metódusának segítéségével lekérheti a fordítások több forrás szövegekhez.
@@ -129,29 +129,29 @@ A kérelem törzsének formátuma a következő legyen:
 Elemek a `TranslateArrayRequest` vannak:
 
 
-* `appid`: Megadása kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.
-* `from`: Nem kötelező. Egy karakterlánc, amely a lefordítandó szöveget nyelvi kódot. Ha üresen a válasz tartalmazza a nyelvi automatikus észlelés eredménye.
-* `options`: Nem kötelező. Egy `Options` az alább felsorolt értékeket tartalmazó objektum. Minden nem kötelező, és alapértelmezés szerint a leggyakrabban használt beállításait. A megadott elemek betűrendbe szerepelnie kell.
-    - `Category`: Egy a kategória (tartomány), a fordítás tartalmazó karakterlánc. Alapértelmezés szerint a `general`.
-    - `ContentType`: A formátum a szöveg áll fordítás alatt. A támogatott formátumok a következők `text/plain` (alapértelmezett), `text/xml` és `text/html`. HTML kell lennie egy megfelelően formázott, teljes elemhez.
+* `appid`: Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.
+* `from`: Választható. Egy karakterlánc, amely a lefordítandó szöveget nyelvi kódot. Ha üresen a válasz tartalmazza a nyelvi automatikus észlelés eredménye.
+* `options`: Választható. Egy `Options` az alább felsorolt értékeket tartalmazó objektum. Minden nem kötelező, és alapértelmezés szerint a leggyakrabban használt beállításait. A megadott elemek betűrendbe szerepelnie kell.
+    - `Category`: A kategória (tartomány), a fordítás tartalmazó karakterlánc. Alapértelmezés szerint a `general`.
+    - `ContentType`: Folyamatban van a lefordított szöveg formátuma. A támogatott formátumok a következők `text/plain` (alapértelmezett), `text/xml` és `text/html`. HTML kell lennie egy megfelelően formázott, teljes elemhez.
     - `ProfanityAction`: Itt adhatja meg, hogyan kezelje profanities amint azt fent kifejtettük. Engedélyezett értékei `ProfanityAction` vannak `NoAction` (alapértelmezett), `Marked` és `Deleted`.
-    - `State`: A felhasználói állapot összevetését kérések és válaszok érdekében. Ugyanaz a tartalma visszatér a válaszban.
+    - `State`: Felhasználói állapot összevetését kérések és válaszok érdekében. Ugyanaz a tartalma visszatér a válaszban.
     - `Uri`: Ez az URI által eredmények szűréséhez. Alapértelmezett: `all`.
     - `User`: Ez a felhasználó eredmények szűréséhez. Alapértelmezett: `all`.
-* `texts`: Megadása kötelező. A fordítási szövegeket tartalmazó tömb. Az összes karakterláncok ugyanannak a nyelvnek kell lennie. Az összes mind a fordítandó szöveg kell legfeljebb 10000 karakterből állhat. A tömb elemek maximális számát: 2000.
-* `to`: Megadása kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.
+* `texts`: Kötelező. A fordítási szövegeket tartalmazó tömb. Az összes karakterláncok ugyanannak a nyelvnek kell lennie. Az összes mind a fordítandó szöveg kell legfeljebb 10000 karakterből állhat. A tömb elemek maximális számát: 2000.
+* `to`: Kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.
 
 Nem kötelező elemek elhagyható. Elemek, amelyek közvetlen gyermekeinek TranslateArrayRequest betűrendben szerepelnie kell.
 
 TranslateArray metódus fogad el paraméterként `application/xml` vagy `text/xml` a `Content-Type`.
 
-**Vrácená hodnota:** A `TranslateArrayResponse` tömb. Minden egyes `TranslateArrayResponse` a következő elemekből áll:
+**A visszatérési érték:** A `TranslateArrayResponse` tömb. Minden egyes `TranslateArrayResponse` a következő elemekből áll:
 
-* `Error`: Azt jelzi, hogy hiba történt egy Ha. Nem lehet null értékű.
+* `Error`: Jelzi a hiba, ha az egyik történt. Nem lehet null értékű.
 * `OriginalSentenceLengths`: Minden egyes mondatról az eredeti forrás szöveg hosszát jelző egész számok tömbje. A hossz a tömb mondatokat számát jelzi.
-* `TranslatedText`: A fordítást.
-* `TranslatedSentenceLengths`: Minden mondat a lefordított szöveg hosszát jelző egész számok tömbje. A hossz a tömb mondatokat számát jelzi.
-* `State`: A felhasználói állapot összevetését kérések és válaszok érdekében. Ugyanazon a tartalmon, mint a kérelem adja vissza.
+* `TranslatedText`: A lefordított szöveg.
+* `TranslatedSentenceLengths`: Minden egyes mondatról a lefordított szöveg hosszát jelző egész számok tömbje. A hossz a tömb mondatokat számát jelzi.
+* `State`: Felhasználói állapot összevetését kérések és válaszok érdekében. Ugyanazon a tartalmon, mint a kérelem adja vissza.
 
 A válasz törzse formátuma a következő.
 
@@ -183,7 +183,7 @@ A válasz tartalomtípusa: application/xml
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|Engedélyezés|(üres)) |Szükséges, ha az alkalmazásazonosító mezőben, vagy Ocp-Apim-Subscription-Key fejléc nincs megadva. Engedélyezési token: "Tulajdonos" + "" + "access_token".|header|sztring|
+|Engedélyezés|(üres)) |Szükséges, ha az alkalmazásazonosító mezőben, vagy Ocp-Apim-Subscription-Key fejléc nincs megadva. Engedélyezési jogkivonat:  "Tulajdonos" + "" + "access_token".|header|sztring|
 |OCP-Apim-Subscription-Key|(üres)|Szükséges, ha az alkalmazásazonosító mezőben vagy engedélyeztetési fejléc nincs megadva.|header|sztring|
 
 ### <a name="response-messages"></a>Parancsválasz-üzeneteket
@@ -211,7 +211,7 @@ A kérés törzse tartalmazza az ISO 639-1 nyelvkódokról rövid nevének leké
 </ArrayOfstring>
 ```
 
-**Vrácená hodnota:** támogatja a fordító szolgáltatás, a kért nyelvre honosított nyelvek nevét tartalmazó karakterlánc-tömbben.
+**A visszatérési érték:** A Translator szolgáltatásban, a kért nyelvre honosított által támogatott nyelvek nevét tartalmazó karakterlánc-tömbben.
 
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
 A Translator szolgáltatásban, a kért nyelvre honosított által támogatott nyelvek nevét tartalmazó karakterlánc-tömbben.
@@ -225,7 +225,7 @@ A válasz tartalomtípusa: application/xml
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
 |alkalmazásazonosító|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|lekérdezés|sztring|
-|Területi beállítás|(üres) |Kötelező. Egy karakterlánc, amely egy ISO 639 kétbetűs kisbetűs kulturális környezet társított nyelvet és a egy ISO 3166 kétbetűs nagybetűssé szubkultúrákhoz kód megkeresni a nyelv nevét vagy a egy ISO 639 kisbetűs kulturális környezet kombinációja önmagában.|lekérdezés|sztring|
+|területi beállítás|(üres) |Kötelező. Egy karakterlánc, amely egy ISO 639 kétbetűs kisbetűs kulturális környezet társított nyelvet és a egy ISO 3166 kétbetűs nagybetűssé szubkultúrákhoz kód megkeresni a nyelv nevét vagy a egy ISO 639 kisbetűs kulturális környezet kombinációja önmagában.|lekérdezés|sztring|
 |Engedélyezés|(üres)  |Kötelező, ha az alkalmazásazonosító mezőben, vagy `Ocp-Apim-Subscription-Key` fejléc nincs megadva. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"`.|header|sztring|
 |OCP-Apim-Subscription-Key|(üres)  |Kötelező, ha az alkalmazásazonosító mezőben, vagy `Authorization` fejléc nincs megadva.|header|sztring|
 
@@ -238,14 +238,14 @@ A válasz tartalomtípusa: application/xml
 |500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, ossza meg velünk. Adja meg a hozzávetőleges dátum és idő, a kérelem és a kérés azonosítója, az X-MS-Trans-Info fejlécet tartalmazza.|
 |503    |A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, ha a probléma továbbra is fennáll-e.|
 
-## <a name="get-getlanguagesfortranslate"></a>/GetLanguagesForTranslate beolvasása
+## <a name="get-getlanguagesfortranslate"></a>GET /GetLanguagesForTranslate
 
 ### <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 Szerezze be a nyelvkódokról jelölő a fordítási szolgáltatás által támogatott nyelvek listáját.  `Translate` és `TranslateArray` lefordítja bármely két nyelvek között.
 
 A kérelem URI azonosítója `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForTranslate`.
 
-**Vrácená hodnota:** a Translator szolgáltatás által támogatott nyelvkódok tartalmazó karakterlánc-tömbben.
+**A visszatérési érték:** A Translator szolgáltatás által támogatott nyelvkódok tartalmazó karakterlánc-tömbben.
 
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
 A Translator szolgáltatás által támogatott nyelvkódok tartalmazó karakterlánc-tömbben.
@@ -271,14 +271,14 @@ A válasz tartalomtípusa: application/xml
 |500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, ossza meg velünk. Adja meg a hozzávetőleges dátum és idő, a kérelem és a kérés azonosítója, az X-MS-Trans-Info fejlécet tartalmazza.|
 |503|A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, ha a probléma továbbra is fennáll-e.|
 
-## <a name="get-getlanguagesforspeak"></a>/GetLanguagesForSpeak beolvasása
+## <a name="get-getlanguagesforspeak"></a>GET /GetLanguagesForSpeak
 
 ### <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 A beszédszintézishez elérhető nyelvek beolvasása.
 
 A kérelem URI azonosítója `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForSpeak`.
 
-**Vrácená hodnota:** beszédszintézishez a Translator szolgáltatás által támogatott nyelvkódok tartalmazó karakterlánc-tömbben.
+**A visszatérési érték:** A beszédszintézishez a Translator szolgáltatás által támogatott nyelvkódok tartalmazó karakterlánc-tömbben.
 
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
 A beszédszintézishez a Translator szolgáltatás által támogatott nyelvkódok tartalmazó karakterlánc-tömbben.
@@ -304,14 +304,14 @@ A válasz tartalomtípusa: application/xml
 |500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, ossza meg velünk. Adja meg az hozzávetőleges dátumot és időt a kérés és a kérés azonosítója szerepel a válaszfejléc `X-MS-Trans-Info`.|
 |503    |A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, ha a probléma továbbra is fennáll-e.|
 
-## <a name="get-speak"></a>GET / beszélnek
+## <a name="get-speak"></a>GET /Speak
 
 ### <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 A beszélt folyamatban van a kívánt nyelvet az átadott a szöveg wave vagy az mp3 adatfolyamot adja vissza.
 
 A kérelem URI azonosítója `https://api.microsofttranslator.com/V2/Http.svc/Speak`.
 
-**Vrácená hodnota:** wave vagy az mp3 adatfolyam a beszélt folyamatban van a kívánt nyelvet az átadott a szöveg.
+**A visszatérési érték:** A beszélt folyamatban van a kívánt nyelvet az átadott a szöveg wave vagy az mp3 adatfolyam.
 
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
 
@@ -325,7 +325,7 @@ A válasz tartalomtípusa: application/xml
 |:--|:--|:--|:--|:--|
 |alkalmazásazonosító|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|lekérdezés|sztring|
 |szöveg|(üres)   |Kötelező. Egy mondatban vagy a megadott lehet a wave Stream beszélt nyelv mondatokat tartalmazó karakterlánc. A mérnökeinkkel szöveg mérete nem haladhatja meg a 2000 karakternél hosszabb.|lekérdezés|sztring|
-|Nyelv|(üres)   |Kötelező. Egy karakterlánc, amely az a szöveg felolvasása a támogatott nyelvi kódot. A kód szerepelnie kell a metódus visszatérési kódok listája `GetLanguagesForSpeak`.|lekérdezés|sztring|
+|language|(üres)   |Kötelező. Egy karakterlánc, amely az a szöveg felolvasása a támogatott nyelvi kódot. A kód szerepelnie kell a metódus visszatérési kódok listája `GetLanguagesForSpeak`.|lekérdezés|sztring|
 |Formátum|(üres)|Választható. Egy olyan karakterláncot kell a tartalomtípus-azonosítót. Jelenleg `audio/wav` és `audio/mp3` érhetők el. Az alapértelmezett érték `audio/wav`.|lekérdezés|sztring|
 |beállítások|(üres)    |<ul><li>Választható. A karakterlánc a szintetizált tulajdonságainak megadása:<li>`MaxQuality` és `MinSize` érhetők el a hang jelekkel erősségének megadása. A `MaxQuality`, beszerezheti a legjobb minőségű, valamint a beszédhangot `MinSize`, beszerezheti a beszédhangot a legkisebb méretű. Alapértelmezett érték a `MinSize`.</li><li>`female` és `male` érhetők el, adja meg a hangalapú kívánt tartalmazzák. Az alapértelmezett szint a `female`. Használja a függőleges vonal:|` to include multiple options. For example  `MaxQuality|Férfi ".</li></li></ul> |lekérdezés|sztring|
 |Engedélyezés|(üres)|Kötelező, ha a `appid` mező vagy `Ocp-Apim-Subscription-Key` fejléc nincs megadva. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"`.|header|sztring|
@@ -340,14 +340,14 @@ A válasz tartalomtípusa: application/xml
 |500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, ossza meg velünk. Adja meg az hozzávetőleges dátumot és időt a kérés és a kérés azonosítója szerepel a válaszfejléc `X-MS-Trans-Info`.|
 |503    |A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, ha a probléma továbbra is fennáll-e.|
 
-## <a name="get-detect"></a>GET / észlelése
+## <a name="get-detect"></a>GET /Detect
 
 ### <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 Használja a `Detect` azonosítására a kiválasztott adott szöveg nyelvét.
 
 A kérelem URI azonosítója `https://api.microsofttranslator.com/V2/Http.svc/Detect`.
 
-**Vrácená hodnota:** egy-két karakter az adott szöveg nyelvi kód tartalmazó karakterlánc. .
+**A visszatérési érték:** A megadott szöveg két karakter nyelvi kódot tartalmazó karakterlánc. .
 
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
 
@@ -392,7 +392,7 @@ A kérelem törzsének formátuma a következőképpen kell lennie.
 
 A szöveg mérete nem haladhatja meg a 10000 karakternél.
 
-**Vrácená hodnota:** a bemeneti tömb minden egyes sorára kódjai A nyelv kétkarakteres tartalmazó karakterlánc-tömbben.
+**A visszatérési érték:** A bemeneti tömb minden egyes sorához egy két karakter nyelvkódokról tartalmazó karakterlánc-tömbben.
 
 A válasz törzse formátuma a következő.
 
@@ -427,12 +427,12 @@ A válasz tartalomtípusa: application/xml
 |500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, ossza meg velünk. Adja meg a hozzávetőleges dátum és idő, a kérelem és a kérés azonosítója, az X-MS-Trans-Info fejlécet tartalmazza.|
 |503    |A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, ha a probléma továbbra is fennáll-e.|
 
-## <a name="get-addtranslation"></a>/AddTranslation beolvasása
+## <a name="get-addtranslation"></a>GET /AddTranslation
 
 ### <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 
 > [!IMPORTANT]
-> **Elavulással kapcsolatos megjegyzés:** 2018. január 31. után ez a módszer nem fogad új mondat jelentkezés, és a egy hibaüzenetet fog kapni. Tekintse meg ezt a hirdetményt, az együttműködésen alapuló fordítási funkciók érintő változásokról.
+> **ELAVULÁSSAL KAPCSOLATOS MEGJEGYZÉS:** 2018. január 31. után ez a módszer nem fogadja el az új mondat jelentkezés, és a egy hibaüzenetet fog kapni. Tekintse meg ezt a hirdetményt, az együttműködésen alapuló fordítási funkciók érintő változásokról.
 
 A fordítási memória ad hozzá a fordítást.
 
@@ -449,8 +449,8 @@ A válasz tartalomtípusa: alkalmazás: xml
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus   |
 |:--|:--|:--|:--|:--|
 |alkalmazásazonosító|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|lekérdezés|sztring|
-|OriginalText|(üres)|Kötelező. A lefordítandó szöveget tartalmazó karakterlánc. A karakterlánc maximális hossza legfeljebb 1000 karakter lehet.|lekérdezés|sztring|
-|TranslatedText|(üres) |Kötelező. Karakterlánc, amely tartalmazza a lefordított szöveg a célként megadott nyelven. A karakterlánc maximális hossza a 2000 karakternél hosszabb.|lekérdezés|sztring|
+|originalText|(üres)|Kötelező. A lefordítandó szöveget tartalmazó karakterlánc. A karakterlánc maximális hossza legfeljebb 1000 karakter lehet.|lekérdezés|sztring|
+|translatedText|(üres) |Kötelező. Karakterlánc, amely tartalmazza a lefordított szöveg a célként megadott nyelven. A karakterlánc maximális hossza a 2000 karakternél hosszabb.|lekérdezés|sztring|
 |forrás:|(üres)   |Kötelező. Egy karakterlánc, amely a fordítandó szöveg nyelvkódja. en = angol nyelven, de = német stb...|lekérdezés|sztring|
 |erre:|(üres)|Kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.|lekérdezés|sztring|
 |rating|(üres) |Választható. Ez a karakterlánc a minőségi besorolását jelző egész szám. -10- és 10 közötti értéket. Alapértelmezett értéke 1.|lekérdezés|egész szám|
@@ -471,12 +471,12 @@ A válasz tartalomtípusa: alkalmazás: xml
 |500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, ossza meg velünk. Adja meg a hozzávetőleges dátum és idő, a kérelem és a kérés azonosítója, az X-MS-Trans-Info fejlécet tartalmazza.|
 |503    |A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, ha a probléma továbbra is fennáll-e.|
 
-## <a name="post-addtranslationarray"></a>/AddTranslationArray közzététele
+## <a name="post-addtranslationarray"></a>POST /AddTranslationArray
 
 ### <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 
 > [!IMPORTANT]
-> **Elavulással kapcsolatos megjegyzés:** 2018. január 31. után ez a módszer nem fogad új mondat jelentkezés, és a egy hibaüzenetet fog kapni. Tekintse meg ezt a hirdetményt, az együttműködésen alapuló fordítási funkciók érintő változásokról.
+> **ELAVULÁSSAL KAPCSOLATOS MEGJEGYZÉS:** 2018. január 31. után ez a módszer nem fogadja el az új mondat jelentkezés, és a egy hibaüzenetet fog kapni. Tekintse meg ezt a hirdetményt, az együttműködésen alapuló fordítási funkciók érintő változásokról.
 
 Hozzáadja a fordítások fordítási memóriáját tömbjét. Egy tömb verziója `AddTranslation`.
 
@@ -508,11 +508,11 @@ A kérelem törzsének formátuma a következő.
 
 Az AddtranslationsRequest elemben található elemek a következők:
 
-* `AppId`: Megadása kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.
-* `From`: Megadása kötelező. A Forrásnyelv nyelvkódja tartalmazó karakterlánc. A nyelv által visszaadott egyikének kell lennie a `GetLanguagesForTranslate` metódust.
-* `To`: Megadása kötelező. A Célnyelv nyelvkódja tartalmazó karakterlánc. A nyelv által visszaadott egyikének kell lennie a `GetLanguagesForTranslate` metódust.
-* `Translations`: Megadása kötelező. Fordítások fordítási memória hozzáadása tömbje. Minden egyes fordítási tartalmaznia kell: originalText, translatedText és minősítés. Minden egyes originalText és translatedText mérete legfeljebb 1000 karakter. Az összes a originalText(s) és translatedText(s) kell legfeljebb 10000 karakterből állhat. A tömb elemeinek maximális száma pedig a 100.
-* `Options`: Megadása kötelező. Lehetőségeket, ideértve a kategória, ContentType, Uri és felhasználói csoportja. Felhasználó megadása kötelező. Kategória, ContentType és Uri megadása nem kötelező. A megadott elemek betűrendbe szerepelnie kell.
+* `AppId`: Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.
+* `From`: Kötelező. A Forrásnyelv nyelvkódja tartalmazó karakterlánc. A nyelv által visszaadott egyikének kell lennie a `GetLanguagesForTranslate` metódust.
+* `To`: Kötelező. A Célnyelv nyelvkódja tartalmazó karakterlánc. A nyelv által visszaadott egyikének kell lennie a `GetLanguagesForTranslate` metódust.
+* `Translations`: Kötelező. Fordítások fordítási memória hozzáadása tömbje. Minden egyes fordítási tartalmaznia kell: originalText, translatedText és minősítés. Minden egyes originalText és translatedText mérete legfeljebb 1000 karakter. Az összes a originalText(s) és translatedText(s) kell legfeljebb 10000 karakterből állhat. A tömb elemeinek maximális száma pedig a 100.
+* `Options`: Kötelező. Lehetőségeket, ideértve a kategória, ContentType, Uri és felhasználói csoportja. Felhasználó megadása kötelező. Kategória, ContentType és Uri megadása nem kötelező. A megadott elemek betűrendbe szerepelnie kell.
 
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
 AddTranslationArray metódus sikeres volt. 2018. január 31. után mondat módosítások nem lesznek elfogadva. A szolgáltatás válaszol, és 410-es hibakód.
@@ -525,7 +525,7 @@ A válasz tartalomtípusa: application/xml
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|Engedélyezés|(üres)|Szükséges, ha az alkalmazásazonosító mezőben, vagy Ocp-Apim-Subscription-Key fejléc nincs megadva. Engedélyezési token: "Tulajdonos" + "" + "access_token".|header|sztring|
+|Engedélyezés|(üres)|Szükséges, ha az alkalmazásazonosító mezőben, vagy Ocp-Apim-Subscription-Key fejléc nincs megadva. Engedélyezési jogkivonat:  "Tulajdonos" + "" + "access_token".|header|sztring|
 |OCP-Apim-Subscription-Key|(üres)|Szükséges, ha az alkalmazásazonosító mezőben vagy engedélyeztetési fejléc nincs megadva.|header|sztring|
 
 ### <a name="response-messages"></a>Parancsválasz-üzeneteket
@@ -538,14 +538,14 @@ A válasz tartalomtípusa: application/xml
 |500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, ossza meg velünk. Adja meg az hozzávetőleges dátumot és időt a kérés és a kérés azonosítója szerepel a válaszfejléc `X-MS-Trans-Info`.|
 |503|A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, ha a probléma továbbra is fennáll-e.|
 
-## <a name="get-breaksentences"></a>/BreakSentences beolvasása
+## <a name="get-breaksentences"></a>GET /BreakSentences
 
 ### <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 Egy adott szöveg bontja a mondatok és a hossza az egyes mondatban tartalmazó tömböt ad vissza.
 
 A kérelem URI azonosítója `https://api.microsofttranslator.com/V2/Http.svc/BreakSentences`.
 
-**Vrácená hodnota:** a mondatok hosszának jelölő egész számok tömbje. A hossz a tömb mondatok számát, és az értékek a következők minden mondat hosszát.
+**A visszatérési érték:** A mondatok hosszának jelölő egész számok tömbje. A hossz a tömb mondatok számát, és az értékek a következők minden mondat hosszát.
 
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
 A mondatok hosszának jelölő egész számok tömbje. A hossz a tömb mondatok számát, és az értékek a következők minden mondat hosszát.
@@ -560,8 +560,8 @@ A válasz tartalomtípusa: application/xml
 |:--|:--|:--|:--|:--|
 |alkalmazásazonosító|(üres)  |Kötelező. Az engedélyezési vagy Ocp-Apim-Subscription-Key fejléc használata esetén hagyja üresen a appid mezőt más tartalmaznak egy karakterlánc, amely tartalmazza a "Tulajdonos" + "" + "access_token".|lekérdezés| sztring|
 |szöveg|(üres)   |Kötelező. Szöveg felosztása a mondatok képviselő karakterláncot. A szöveg mérete nem haladhatja meg a 10000 karakternél.|lekérdezés|sztring|
-|Nyelv   |(üres)    |Kötelező. Egy karakterlánc, amely a bemeneti szöveg nyelvkódja.|lekérdezés|sztring|
-|Engedélyezés|(üres)|Szükséges, ha az alkalmazásazonosító mezőben, vagy Ocp-Apim-Subscription-Key fejléc nincs megadva. Engedélyezési token: "Tulajdonos" + "" + "access_token".    |header|sztring|
+|language   |(üres)    |Kötelező. Egy karakterlánc, amely a bemeneti szöveg nyelvkódja.|lekérdezés|sztring|
+|Engedélyezés|(üres)|Szükséges, ha az alkalmazásazonosító mezőben, vagy Ocp-Apim-Subscription-Key fejléc nincs megadva. Engedélyezési jogkivonat:  "Tulajdonos" + "" + "access_token".    |header|sztring|
 |OCP-Apim-Subscription-Key|(üres)|Szükséges, ha az alkalmazásazonosító mezőben vagy engedélyeztetési fejléc nincs megadva.|header|sztring|
 
 ### <a name="response-messages"></a>Parancsválasz-üzeneteket
@@ -595,19 +595,19 @@ A kérelem törzse tartalmazza a választható TranslationOptions objektum, amel
 
 A `TranslateOptions` objektum tartalmazza az alább felsorolt értékeket. Minden nem kötelező, és alapértelmezés szerint a leggyakrabban használt beállításait. A megadott elemek betűrendbe szerepelnie kell.
 
-* `Category`: Egy a kategória (tartomány), a fordítás tartalmazó karakterlánc. Az alapértelmezett "általános".
+* `Category`: A kategória (tartomány), a fordítás tartalmazó karakterlánc. Az alapértelmezett "általános".
 * `ContentType`: Az egyetlen támogatott, és az alapértelmezett beállítás "text/plain".
 * `IncludeMultipleMTAlternatives`: határozza meg, hogy egynél több alternatívák vissza kell a fő Célkiszolgáló motor logikai kapcsolóval. Érvényes értékek: true és false (kis-és nagybetűket). Alapértelmezés a False (hamis), és csak 1 alternatív tartalmazza. A jelző IGAZ lehetővé teszi a mesterséges alternatív megoldások létrehozása a fordítás, teljes mértékben integráltuk az együttműködésen alapuló fordítások framework (CTF). A funkció lehetővé teszi, hogy visszaadó alternatíva a mondatokat, amelyek nem alternatívák CTF, a mesterséges alternatív megoldások hozzáadásával a dekóder legjobb n listájából.
-    - Minősítés az értékelések alkalmazza az alábbiak szerint: 1) a legjobb automatikus fordítás, 5 besorolású. (2) a alternatíva a CTF tükrözik a felülvizsgáló, a -10 + 10 felügyelete. (3) az automatikusan generált (n-a legjobb) fordítási lehetőségeket 0 minősítést, és egy 100 egyezés mértékét rendelkeznek.
+    - A besorolások a minősítések alkalmazza az alábbiak szerint: 1.) a legjobb automatikus fordítás, 5 besorolású. (2) a alternatíva a CTF tükrözik a felülvizsgáló, a -10 + 10 felügyelete. (3) az automatikusan generált (n-a legjobb) fordítási lehetőségeket 0 minősítést, és egy 100 egyezés mértékét rendelkeznek.
     - Alternatívák a visszaadott alternatív megoldások száma legfeljebb maxTranslations, de kevesebb is lehet száma.
     - Nyelvi párok Ez a funkció nem érhető el a fordítások közötti egyszerűsített és hagyományos kínai, mindkét irányban. Minden más támogatott Microsoft Translator nyelvi párok érhető el.
-* `State`: A felhasználói állapot összevetését kérések és válaszok érdekében. Ugyanaz a tartalma visszatér a válaszban.
+* `State`: Felhasználói állapot összevetését kérések és válaszok érdekében. Ugyanaz a tartalma visszatér a válaszban.
 * `Uri`: Ez az URI által eredmények szűréséhez. Ha nincs érték van beállítva, az alapértelmezett érték az összes.
 * `User`: Ez a felhasználó eredmények szűréséhez. Ha nincs érték van beállítva, az alapértelmezett érték az összes.
 
 Kérelem `Content-Type` lehet `text/xml`.
 
-**Vrácená hodnota:** a válasz formátuma a következő.
+**A visszatérési érték:** A válasz formátuma a következő.
 
 ```
 <GetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2"
@@ -628,18 +628,18 @@ Kérelem `Content-Type` lehet `text/xml`.
 
 Ez magában foglalja egy `GetTranslationsResponse` elem, amely tartalmazza a következő értékeket:
 
-* `Translations`: Egy tömbjét található, a tárolt TranslationMatch (lásd alább) objektumok illeszkedik. A fordítások enyhe változatának az eredeti szöveg (intelligens egyező) tartalmazhat. A fordítások rendezése: 100 %-os először intelligens megfelel az alábbi megegyezik.
+* `Translations`: Az egyezések tömb található, TranslationMatch (lásd alább) objektumok tárolja. A fordítások enyhe változatának az eredeti szöveg (intelligens egyező) tartalmazhat. A fordítások rendezése: 100 %-os intelligens megfelel az alábbi először illeszkedik.
 * `From`: Ha a metódus nem adta meg egy From nyelvet, ez lesz az automatikus nyelvfelismerést eredményét. Ellenkező esetben lesz az adott nyelv.
-* `State`: A felhasználói állapot összevetését kérések és válaszok érdekében. A TranslateOptions paraméterben megadott ugyanazt az értéket tartalmazza.
+* `State`: Felhasználói állapot összevetését kérések és válaszok érdekében. A TranslateOptions paraméterben megadott ugyanazt az értéket tartalmazza.
 
 TranslationMatch objektum a következőkből áll:
 
-* `Error`: Ha hiba történt egy adott bemeneti karakterlánchoz, hibakód: tárolja. Ellenkező esetben a mező üres lesz.
+* `Error`: Hiba történt egy adott a bemeneti karakterláncot keres, ha a hiba kódja tárolódik. Ellenkező esetben a mező üres lesz.
 * `MatchDegree`: A rendszer megfelel a tárolóban, többek között a pontatlan egyezések bemeneti mondatokat.  MatchDegree azt jelzi, különös figyelmet fordítanak a bemeneti szöveg megfelel-e az eredeti szöveg található a tárban. 100 által visszaadott érték címtartományok 0 és 100, ahol 0 a nincs hasonlóság és kis-és nagybetűket pontosan egyezik.
 MatchedOriginalText: Eredeti szöveg, amely ezt az eredményt a megfelelést. Csak adott vissza, ha az egyeztetett eredeti szöveg volt eltér a bemeneti szöveg. Használja az intelligens egyeztetésű forrás szöveget adja vissza. A Microsoft Translator eredmény nem adott vissza.
-* `Rating`: Azt jelzi, a szolgáltató minőségi megugró személy. Gépi fordítás eredmények 5 minősítést kap. Névtelenül megadott fordítások általában a minősítés 1-4 fog rendelkezni, miközben mérvadó megadott fordítások általában fog rendelkezni a 6 – 10 minősítést.
-* `Count`: A száma a fordítás a minősítéssel rendelkező lett kiválasztva. Az érték 0 a automatikusan lefordított válasz lesz.
-* `TranslatedText`: A fordítást.
+* `Rating`: Azt jelzi, hogy a szolgáltató minőségi megugró személy. Gépi fordítás eredmények 5 minősítést kap. Névtelenül megadott fordítások általában a minősítés 1-4 fog rendelkezni, miközben mérvadó megadott fordítások általában fog rendelkezni a 6 – 10 minősítést.
+* `Count`: Hányszor az ilyen minősítést kapott fordítását lett kiválasztva. Az érték 0 a automatikusan lefordított válasz lesz.
+* `TranslatedText`: A lefordított szöveg.
 
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
 A `GetTranslationsResponse` objektum a fent ismertetett formátumban.
@@ -669,7 +669,7 @@ A válasz tartalomtípusa: application/xml
 |500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, ossza meg velünk. Adja meg az hozzávetőleges dátumot és időt a kérés és a kérés azonosítója szerepel a válaszfejléc `X-MS-Trans-Info`.|
 |503|A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, ha a probléma továbbra is fennáll-e.|
 
-## <a name="post-gettranslationsarray"></a>/GetTranslationsArray közzététele
+## <a name="post-gettranslationsarray"></a>POST /GetTranslationsArray
 
 ### <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 Használja a `GetTranslationsArray` metódussal lehet bekérni több forrás szövegek több fordítási a deduplikációra.
@@ -700,27 +700,27 @@ A kérelem törzsének formátuma a következő.
 
 `GetTranslationsArrayRequest` az alábbi elemeket tartalmazza:
 
-* `AppId`: Megadása kötelező. Engedélyeztetési fejléc használata esetén a appid mezőt üresen hagyja más tartalmazza a karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.
-* `From`: Megadása kötelező. Egy karakterlánc, amely a fordítandó szöveg nyelvkódja.
-* `MaxTranslations`: Megadása kötelező. Egy egész számot a fordítások maximális számát jelölő való visszatéréshez.
-* `Options`: Nem kötelező. Az alább felsorolt értékeket tartalmazó beállítások objektum. Minden nem kötelező, és alapértelmezés szerint a leggyakrabban használt beállításait. A megadott elemek betűrendbe szerepelnie kell.
-    - Kategória ": a kategória (tartomány), a fordítás tartalmazó karakterlánc. Az alapértelmezett általános.
+* `AppId`: Kötelező. Engedélyeztetési fejléc használata esetén a appid mezőt üresen hagyja más tartalmazza a karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.
+* `From`: Kötelező. Egy karakterlánc, amely a fordítandó szöveg nyelvkódja.
+* `MaxTranslations`: Kötelező. Egy egész számot a fordítások maximális számát jelölő való visszatéréshez.
+* `Options`: Választható. Az alább felsorolt értékeket tartalmazó beállítások objektum. Minden nem kötelező, és alapértelmezés szerint a leggyakrabban használt beállításait. A megadott elemek betűrendbe szerepelnie kell.
+    - Kategória ": A kategória (tartomány), a fordítás tartalmazó karakterlánc. Az alapértelmezett általános.
     - `ContentType`: Az egyetlen támogatott, és az alapértelmezett beállítás egyszerű szöveg.
     - `IncludeMultipleMTAlternatives`: határozza meg, hogy egynél több alternatívák vissza kell a fő Célkiszolgáló motor logikai kapcsolóval. Érvényes értékek: true és false (kis-és nagybetűket). Alapértelmezés a False (hamis), és csak 1 alternatív tartalmazza. A jelző IGAZ lehetővé teszi a mesterséges alternatív megoldások létrehozása a fordítás, teljes mértékben integráltuk az együttműködésen alapuló fordítások framework (CTF). A funkció lehetővé teszi, hogy visszaadó alternatíva a mondatokat, amelyek nem alternatívák CTF, a mesterséges alternatív megoldások hozzáadásával a dekóder legjobb n listájából.
-        - Minősítés az értékelések alkalmazza az alábbiak szerint: 1) a legjobb automatikus fordítás, 5 besorolású. (2) a alternatíva a CTF tükrözik a felülvizsgáló, a -10 + 10 felügyelete. (3) az automatikusan generált (n-a legjobb) fordítási lehetőségeket 0 minősítést, és egy 100 egyezés mértékét rendelkeznek.
+        - A besorolások a minősítések alkalmazza az alábbiak szerint: 1.) a legjobb automatikus fordítás, 5 besorolású. (2) a alternatíva a CTF tükrözik a felülvizsgáló, a -10 + 10 felügyelete. (3) az automatikusan generált (n-a legjobb) fordítási lehetőségeket 0 minősítést, és egy 100 egyezés mértékét rendelkeznek.
         - Alternatívák a visszaadott alternatív megoldások száma legfeljebb maxTranslations, de kevesebb is lehet száma.
         - Nyelvi párok Ez a funkció nem érhető el a fordítások közötti egyszerűsített és hagyományos kínai, mindkét irányban. Minden más támogatott Microsoft Translator nyelvi párok érhető el.
-* `State`: A felhasználói állapot összevetését kérések és válaszok érdekében. Ugyanaz a tartalma visszatér a válaszban.
+* `State`: Felhasználói állapot összevetését kérések és válaszok érdekében. Ugyanaz a tartalma visszatér a válaszban.
 * `Uri`: Ez az URI által eredmények szűréséhez. Ha nincs érték van beállítva, az alapértelmezett érték az összes.
 * `User`: Ez a felhasználó eredmények szűréséhez. Ha nincs érték van beállítva, az alapértelmezett érték az összes.
-* `Texts`: Megadása kötelező. A fordítási szövegeket tartalmazó tömb. Az összes karakterláncok ugyanannak a nyelvnek kell lennie. Az összes mind a fordítandó szöveg kell legfeljebb 10000 karakterből állhat. A tömb elemeinek maximális száma 10.
-* `To`: Megadása kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.
+* `Texts`: Kötelező. A fordítási szövegeket tartalmazó tömb. Az összes karakterláncok ugyanannak a nyelvnek kell lennie. Az összes mind a fordítandó szöveg kell legfeljebb 10000 karakterből állhat. A tömb elemeinek maximális száma 10.
+* `To`: Kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.
 
 Nem kötelező elemek elhagyható. Elemek, amelyek közvetlen gyermekeinek `GetTranslationsArrayRequest` betűrendben szerepelnie kell.
 
 Kérelem `Content-Type` lehet `text/xml`.
 
-**Vrácená hodnota:** a válasz formátuma a következő.
+**A visszatérési érték:** A válasz formátuma a következő.
 
 ```
 <ArrayOfGetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
@@ -749,17 +749,17 @@ Kérelem `Content-Type` lehet `text/xml`.
 
 Minden egyes `GetTranslationsResponse` elem tartalmazza a következő értékeket:
 
-* `Translations`: Az egyezések egy tömböt található, a tárolt `TranslationMatch` objektumok (lásd alább). A fordítások enyhe változatának az eredeti szöveg (intelligens egyező) tartalmazhat. A fordítások rendezése: 100 %-os először intelligens megfelel az alábbi megegyezik.
+* `Translations`: Egyezések tömbjét található, a tárolt `TranslationMatch` objektumok (lásd alább). A fordítások enyhe változatának az eredeti szöveg (intelligens egyező) tartalmazhat. A fordítások rendezése: 100 %-os intelligens megfelel az alábbi először illeszkedik.
 * `From`: Ha nem adta meg a metódus egy `From` nyelv, ez lesz az automatikus nyelvfelismerést eredményét. Ellenkező esetben lesz az adott nyelv.
-* `State`: A felhasználói állapot összevetését kérések és válaszok érdekében. A ugyanazt az értéket tartalmazza a `TranslateOptions` paraméter.
+* `State`: Felhasználói állapot összevetését kérések és válaszok érdekében. A ugyanazt az értéket tartalmazza a `TranslateOptions` paraméter.
 
 `TranslationMatch` objektum a következőkből áll:
-* `Error`: Ha hiba történt egy adott bemeneti karakterlánchoz, hibakód: tárolja. Ellenkező esetben a mező üres lesz.
+* `Error`: Hiba történt egy adott a bemeneti karakterláncot keres, ha a hiba kódja tárolódik. Ellenkező esetben a mező üres lesz.
 * `MatchDegree`: A rendszer megfelel a tárolóban, többek között a pontatlan egyezések bemeneti mondatokat.  `MatchDegree` azt jelzi, különös figyelmet fordítanak a bemeneti szöveg megfelel-e az eredeti szöveg található a tárban. 100 által visszaadott érték címtartományok 0 és 100, ahol 0 a nincs hasonlóság és kis-és nagybetűket pontosan egyezik.
-* `MatchedOriginalText`: Az eredeti szöveg, amely ezt az eredményt a megfelelést. Csak adott vissza, ha az egyeztetett eredeti szöveg volt eltér a bemeneti szöveg. Használja az intelligens egyeztetésű forrás szöveget adja vissza. A Microsoft Translator eredmény nem adott vissza.
-* `Rating`: Azt jelzi, a szolgáltató minőségi megugró személy. Gépi fordítás eredmények 5 minősítést kap. Névtelenül megadott fordítások általában a minősítés 1-4 fog rendelkezni, miközben mérvadó megadott fordítások általában fog rendelkezni a 6 – 10 minősítést.
-* `Count`: A száma a fordítás a minősítéssel rendelkező lett kiválasztva. Az érték 0 a automatikusan lefordított válasz lesz.
-* `TranslatedText`: A fordítást.
+* `MatchedOriginalText`: Eredeti szöveg, amely ezt az eredményt a megfelelést. Csak adott vissza, ha az egyeztetett eredeti szöveg volt eltér a bemeneti szöveg. Használja az intelligens egyeztetésű forrás szöveget adja vissza. A Microsoft Translator eredmény nem adott vissza.
+* `Rating`: Azt jelzi, hogy a szolgáltató minőségi megugró személy. Gépi fordítás eredmények 5 minősítést kap. Névtelenül megadott fordítások általában a minősítés 1-4 fog rendelkezni, miközben mérvadó megadott fordítások általában fog rendelkezni a 6 – 10 minősítést.
+* `Count`: Hányszor az ilyen minősítést kapott fordítását lett kiválasztva. Az érték 0 a automatikusan lefordított válasz lesz.
+* `TranslatedText`: A lefordított szöveg.
 
 
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)

@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: c4523b5028aae5de565e517fea61c62e29a4e7a3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 75aecd166d03b751f778221632fad68d279f63a3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044076"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468869"
 ---
-# <a name="choose-the-right-consistency-level-for-your-application"></a>Az alkalmazás a megfelelő konzisztenciaszint kiválasztása
+# <a name="choose-the-right-consistency-level"></a>Válassza ki a megfelelő konzisztenciaszint 
 
 Elosztott adatbázisok hagyatkoznia a magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt, replikációs győződjön és a rendelkezésre állási, teljesítmény és késés az olvasás következetes alapvető magával. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázisok kérje meg a fejlesztők számára, hogy a két szélsőséges konzisztencia modell közül választhat: erős konzisztencia és a végleges konzisztencia. Az Azure Cosmos DB lehetővé teszi a fejlesztők számára, hogy az öt jól definiált konzisztenciamodellekkel közül választhat: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. Egyes ezek konzisztenciamodellt kínál jól definiált és könnyen kezelhető és bizonyos valós forgatókönyvek esetén is használható. Az öt konzisztenciamodell mindegyike biztosítanak [rendelkezésre állás és teljesítmény kompromisszumot kínál a](consistency-levels-tradeoffs.md) és átfogó SLA-k élvezik. Az alábbi egyszerű szempontok segítségével számos gyakori szituációhoz kínál végezze el a megfelelő választás.
 

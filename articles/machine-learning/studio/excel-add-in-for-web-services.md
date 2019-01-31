@@ -1,6 +1,6 @@
 ---
-Cím: Excel-bővítmény a web services titleSuffix: Azure Machine Learning Studio description: Hogyan használható az Azure Machine Learning Web services közvetlenül az Excelben kód írása nélkül.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Excel-bővítmény a web services titleSuffix: Azure Machine Learning Studio description: Hogyan használható az Azure Machine Learning Web services közvetlenül az Excelben kód írása nélkül.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/01/2018
 ---

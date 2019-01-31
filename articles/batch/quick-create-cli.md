@@ -2,22 +2,22 @@
 title: Azure rövid útmutató – Batch-feladat futtatása – CLI
 description: Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladatokat az Azure CLI-vel.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 75703b4b10bbf3864076952990df2e6c2a9ab28d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 10f84a758bdb2e01793aee06cba59a29b5639775
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969648"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470960"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure CLI használatával
+# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Gyors útmutató: Az első Batch-feladat futtatása az Azure CLI-vel
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató ismerteti, hogyan lehet létrehozni az Azure CLI-vel Batch-fiókot, számítási csomópontok (virtuális gépek) *készletét*, valamint egy olyan *feladatot*, amely alapszintű *tevékenységeket* futtat a készleten. Minden egyes mintatevékenység egy alapvető parancsot futtat a készlet egyik csomópontján. A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
 
@@ -170,7 +170,7 @@ az batch task file download \
     --destination ./stdout.txt
 ```
 
-A `stdout.txt` fájl tartalmát egy szövegszerkesztőben tekintheti meg. A tartalom a csomóponton beállított Azure Batch környezeti változókat jeleníti meg. Saját Batch-feladatok létrehozása során hivatkozhat ezekre a környezeti változókra a tevékenységek parancssorában, illetve a parancssorok által futtatott alkalmazásokban és szkriptekben. Például:
+A `stdout.txt` fájl tartalmát egy szövegszerkesztőben tekintheti meg. A tartalom a csomóponton beállított Azure Batch környezeti változókat jeleníti meg. Saját Batch-feladatok létrehozása során hivatkozhat ezekre a környezeti változókra a tevékenységek parancssorában, illetve a parancssorok által futtatott alkalmazásokban és szkriptekben. Példa:
 
 ```
 AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1

@@ -4,24 +4,24 @@ description: Hogyan Avere fürt kezelése – adjon hozzá vagy távolíthat el 
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: a47b18972e945e495e5a5d3dd90e383390612865
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0eb5941bfecc023429556434a45460c8727056ec
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189609"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300183"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt felügyelete
 
 A fürt létrehozása után szükség lehet a fürtcsomópontok hozzáadása vagy leállítani, vagy indítsa újra a fürtöt. És amikor befejeződött a projekt leállítása és a fürt eltávolításához véglegesen ismernie kell. 
 
-A fürt felügyeleti feladat függően előfordulhat, hogy kell Avere Vezérlőpultján, a vfxt.py fürt létrehozási parancsprogrammal vagy az Azure portal használatával teheti meg. 
+A fürt felügyeleti feladat függően előfordulhat, hogy kell Avere Vezérlőpultján, a vfxt.py parancssori fürt létrehozási parancsprogrammal vagy az Azure portal használatával teheti meg. 
 
 Ez a táblázat áttekintést nyújt, amelyek az egyes feladatokhoz használható eszközök. 
 
-| Műveletek | Avere Vezérlőpult | vfxt.PY  | Azure Portal |
+| Műveletek | Avere Vezérlőpult | vfxt.py  | Azure Portal |
 | --- | --- | --- | --- |
 | Fürtcsomópontok hozzáadása | nem | igen | nem |
 | Fürtcsomópontok eltávolítása | igen | nem | nem |
@@ -71,7 +71,11 @@ A **rendszer karbantartása** beállítások lapon a parancsok a fürt szolgált
 
 Ha egy fürtöt leállítás fázisában van, az állapotjelző üzenetek tesznek közzé a **irányítópult** első lapján. Néhány pillanat múlva a Vezérlőpult Avere munkamenet nem válaszol, ami azt jelenti, hogy a fürt le lett állítva.
 
-## <a name="manage-the-cluster-with-vfxtpy"></a>A fürtöt a következővel vfxt.py kezelése 
+## <a name="manage-the-cluster-with-vfxtpy"></a>A fürtöt a következővel vfxt.py kezelése
+
+vfxt.PY egy olyan parancssori eszköz a fürt létrehozása és kezelése. 
+
+vfxt.PY előre telepítve van a virtuális gép fürt vezérlőn. Ha szeretné telepíteni azt egy másik rendszerre, tekintse meg a dokumentációban a <https://github.com/Azure/AvereSDK>.
 
 A vfxt.py parancsfájlt a fürt felügyeleti feladatokhoz használható:
 
@@ -80,8 +84,6 @@ A vfxt.py parancsfájlt a fürt felügyeleti feladatokhoz használható:
 * Egy fürt megszüntetése
 
 Például Avere Vezérlőpulton vfxt.py operations próbálja meg ellenőrizze, hogy a módosított adatokat a háttér-tároló leáll, vagy a fürt vagy a csomópont megsemmisítése előtt véglegesen tárolja. Így a biztonságosabb megoldás, mint a Avere portálon.
-
-vfxt.PY előre telepítve van a virtuális gép fürt vezérlőn. <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
 Egy teljes vfxt.py használati útmutató a Githubon érhető el: [Fürt felhőfelügyeletet vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)
 

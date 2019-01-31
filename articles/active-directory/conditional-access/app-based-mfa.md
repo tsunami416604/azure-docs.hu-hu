@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b474c0fdabbe5c2a2bb9731fbeb24c1715f7c859
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 6276231f8d63840dcf46f7456d584880315533bf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080720"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299911"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Gyors útmutató: Többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés konkrét alkalmazások esetén 
 
@@ -43,6 +43,9 @@ Ebben a rövid útmutatóban a forgatókönyv végrehajtásához szükséges:
 - **Hozzáférés az Azure AD Premium Edition** – Azure AD feltételes hozzáférés egy Azure AD Premium-funkció. 
 
 - **Tesztfiók nevű Isabella Simonsen** – Ha nem tudja, hogyan hozzon létre egy olyan fiókot, lásd: [adja hozzá a felhőalapú felhasználók](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+
+
+Ebben a rövid útmutatóban a forgatókönyvhöz szükséges, hogy felhasználónkénti MFA nincs engedélyezve a tesztfiók. További információkért lásd: [igénylése a kétlépéses ellenőrzés egy felhasználó](../authentication/howto-mfa-userstates.md).
 
 
 ## <a name="test-your-sign-in"></a>A bejelentkezés tesztelése

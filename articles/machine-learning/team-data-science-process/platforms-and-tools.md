@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8a37c200e52e1d2786690a8a0e669af57312294d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f733b2c9bcd8dc8ad8c068c465e1beda00b45d28
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139173"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471011"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformok és eszközök a adatelemzési projektek
 
@@ -59,7 +59,7 @@ Az Apache Spark egy nyílt forráskódú párhuzamos adatfeldolgozási keretrend
 
 Amikor Spark-fürtöt hoz létre a HDInsightban, olyan Azure számítási erőforrásokat is létrehoz, amelyeken a Spark telepítve és konfigurálva van. A HDInsight Spark-fürt létrehozása nagyjából 10 percet tart. Store az adatok Azure Blob storage-ban a feldolgozásra. Az Azure Blob Storage használata a fürt további információkért lásd: [használja a HDFS-kompatibilis Azure Blob storage a HDInsight Hadoop-keretrendszerrel](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-TDSP-csapat a Microsoft közzétette az adatelemzési megoldások, Azure HDInsight Spark-fürtök használatával két végpontok közötti forgatókönyvek közül egy a Python és az egyéb Scala. További információ az Azure HDInsight **Spark-fürtök**, lásd: [áttekintés: Apache Spark on HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Megtudhatja, hogyan hozhat létre egy data science megoldás használatával **Python** az Azure HDInsight Spark-fürt látható [áttekintése az adatelemzés az Azure HDInsight Spark használatával](spark-overview.md). Megtudhatja, hogyan hozhat létre egy data science megoldás használatával **Scala** az Azure HDInsight Spark-fürt látható [Scala és Spark használata az Azure Data Science](scala-walkthrough.md). 
+TDSP-csapat a Microsoft közzétette az adatelemzési megoldások, Azure HDInsight Spark-fürtök használatával két végpontok közötti forgatókönyvek közül egy a Python és az egyéb Scala. További információ az Azure HDInsight **Spark-fürtök**, lásd: [áttekintése: Az Apache Spark on HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Megtudhatja, hogyan hozhat létre egy data science megoldás használatával **Python** az Azure HDInsight Spark-fürt látható [áttekintése az adatelemzés az Azure HDInsight Spark használatával](spark-overview.md). Megtudhatja, hogyan hozhat létre egy data science megoldás használatával **Scala** az Azure HDInsight Spark-fürt látható [Scala és Spark használata az Azure Data Science](scala-walkthrough.md). 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
@@ -73,7 +73,7 @@ Az Azure SQL Data Warehouse további információkért lásd: a [SQL Data Wareho
 
 Az Azure data lake van, mint egy vállalati szintű adattár, bármilyen típusú adat egyetlen helyen, bármely bevonja vagy a séma éppen bevezetett előtt gyűjteni. Ez rugalmasságot lehetővé teszi, hogy bármilyen típusú adat a data lake, függetlenül a méret vagy struktúra, vagy milyen gyors adatbetöltés sebességétől kell tartani. Szervezetek használhatják majd a Hadoop, vagy keresse meg a speciális analitikai ezeket az adatokat Lake mintáit. Data Lake tárolók segédanyagként is használható vagy a alacsonyabb költségű adatelőkészítés előtt a felfedezhetőséget az adatokat, és áthelyezi a data warehouse-bA.
 
-További információ az Azure Data Lake: [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Ismerje meg, hogyan hozhat létre egy méretezhető teljes körű adatelemzési megoldással az Azure Data Lake, lásd: [méretezhető adatelemzés az Azure Data Lake: egy végpontok közötti forgatókönyv](data-lake-walkthrough.md)
+További információ az Azure Data Lake: [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Ismerje meg, hogyan hozhat létre egy méretezhető teljes körű adatelemzési megoldással az Azure Data Lake, lásd: [méretezhető adatelemzés az Azure Data Lake: Egy végpontok közötti forgatókönyv](data-lake-walkthrough.md)
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Az Azure HDInsight Hive (Hadoop) fürtön

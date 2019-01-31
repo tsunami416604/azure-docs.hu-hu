@@ -11,31 +11,36 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 50c5071ce672e3a2aba130817628ad0d26f656e5
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: f51b31903953f9a1d4959f78d570d3de92478f50
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653484"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455303"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Adatok betöltése CSV-fájlból az Azure SQL Database-be (egybesimított fájlok)
+
 A bcp parancssori segédprogram használatával adatokat importálhat egy CSV-fájlból az Azure SQL Database-be.
 
 ## <a name="before-you-begin"></a>Előkészületek
+
 ### <a name="prerequisites"></a>Előfeltételek
+
 A jelen cikkben ismertetett lépések végrehajtásához szüksége:
 
-* Egy Azure SQL Database logikai kiszolgáló és adatbázis
+* Egy Azure SQL Database-kiszolgáló és adatbázis
 * Telepített bcp parancssori segédprogram
 * Telepített sqlcmd parancssori segédprogram
 
 A bcp és az sqlcmd parancssori segédprogramot a [Microsoft letöltőközpontból][Microsoft Download Center] töltheti le.
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Adatok ASCII vagy UTF-16 formátumban
+
 Ha a saját adataival próbálja használni ezt az oktatóanyagot, az adatoknak ASCII vagy UTF-16 kódolást kell használniuk, mert a bcp nem támogatja az UTF-8 formátumot. 
 
 ## <a name="1-create-a-destination-table"></a>1. Céltábla létrehozása
+
 Adjon meg egy táblát az SQL Database-ben céltáblaként. A tábla oszlopainak meg kell felelnie az adatfájl egyes soraiban szereplő adatoknak.
 
 Tábla létrehozásához nyisson meg egy parancssort, és az sqlcmd.exe segítségével futtassa a következő parancsot:
@@ -54,6 +59,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 
 ## <a name="2-create-a-source-data-file"></a>2. Forrásadatfájlok létrehozása
+
 Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöveges fájlba, majd mentse ezt a fájlt a helyi ideiglenes könyvtárba (C:\Temp\DimDate2.txt). Ezek az adatok ASCII formátumban vannak.
 
 ```
@@ -78,6 +84,7 @@ bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName
 ```
 
 ## <a name="3-load-the-data"></a>3. Az adatok betöltése
+
 Az adatok betöltéséhez nyisson meg egy parancssort, és futtassa az alábbi, a kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a jelszót a saját értékeire lecserélő parancsot.
 
 ```bcp
@@ -108,6 +115,7 @@ Az eredménynek így kell kinéznie:
 | 20151201 |4 |2 |
 
 ## <a name="next-steps"></a>További lépések
+
 Az SQL Server-adatbázisok áttelepítésével kapcsolatban tekintse meg az [SQL Server-adatbázisok áttelepítésével](sql-database-cloud-migrate.md) foglalkozó cikket.
 
 <!--MSDN references-->

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: fd56d8e0500b80bcce743a8865b6ca90ca8658a6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 4080fe07f6624c96f6385492268042f6401f3694
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080548"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472677"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>A hiperkonvergens regisztráció önkiszolgáló jelszó-visszaállítás és az Azure multi-factor Authentication (nyilvános előzetes verzió)
 
@@ -74,8 +74,6 @@ Ezen az oldalon a felhasználók látják a korábban regisztrált hitelesítés
 Az új felületet tartozó auditnaplók az auditnapló hitelesítési módszerek kategóriában található.  
 
 ## <a name="known-issues"></a>Ismert problémák
-
-Azonosítottuk a hibát a konvergens, ahol B2B vendégfelhasználók számára engedélyezettek a konvergens regisztrációs kihasználására nem képes a multi-factor Authentication regisztrálása regisztrációs. Amikor a rendszer átirányítja a regisztrációs oldalhoz, a lap hibákat ki. Fejlesztők ismeri a problémát és megoldást nyújtanak a dolgozik. Most a javaslatot, hogy hozzon létre egy csoportot, és bármely B2B-felhasználók kizárása a csoportból.
 
 **Alapértelmezett MFA módszer telefonhívás van beállítva, amikor egy felhasználó regisztrálja magát a telefonon, szöveges üzenet használatával**
 

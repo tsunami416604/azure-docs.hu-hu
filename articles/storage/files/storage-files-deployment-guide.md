@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: b9a98cea8ee19846afc30b322c3fdacb21f2bf44
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: files
+ms.openlocfilehash: d17389af1129c63d2c0eadfac04c034669200620
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242455"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462732"
 ---
 # <a name="how-to-deploy-azure-files"></a>Az Azure Files üzembe helyezése
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabvány SMB protokollon keresztül érhető el a felhőben. Ebből a cikkből megtudhatja, hogyan gyakorlatilag Azure Files üzembe helyezése a szervezeten belül.

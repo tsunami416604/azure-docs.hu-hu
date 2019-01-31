@@ -3,7 +3,7 @@ title: Egy egyéni NuGet használata az Azure fejlesztési tárolóhelyek hírcs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: johnsta
 ms.author: johnsta
 ms.date: 05/11/2018
@@ -11,12 +11,12 @@ ms.topic: article
 description: Egy egyéni NuGet, hogy eléri és használja a NuGet-csomagok egy Azure-fejlesztési területen hírcsatorna használja.
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Container Service, tárolók
 manager: ghogen
-ms.openlocfilehash: 04b89f6d12c58e2f4915a84d3e0a7988d0e3192f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 21a70100fe186e176dfe8eb7c247d83a5d4705bd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579212"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466404"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Egyéni nugettel hírcsatornaelemet egy Azure-fejlesztési terület
 
@@ -36,7 +36,7 @@ A hírcsatorna NuGet beállításához:
    ```
 
 2. Hozzon létre egy [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) fájlt a projektmappa fájllistájának.
-     * Használja a `packageSources` való hivatkozáshoz a NuGet-hírcsatorna helye szakaszban. Fontos: A NuGet-hírcsatorna nyilvánosan hozzáférhetőnek kell lennie.
+     * Használja a `packageSources` való hivatkozáshoz a NuGet-hírcsatorna helye szakaszban. Fontos: A NuGet-hírcsatorna nyilvánosan elérhetőnek kell lennie.
      * Használja a `packageSourceCredentials` szakaszban beállíthatja a felhasználónév és jelszó hitelesítő adatokat. 
 
    ```xml

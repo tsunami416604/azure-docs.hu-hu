@@ -1,5 +1,5 @@
 ---
-Cím: Több modell létrehozása egy Studio kísérlet titleSuffix: Azure Machine Learning Studio description: A powershellel hozhat létre több Machine Learning-modellek és webszolgáltatás Szolgáltatásvégpontok ugyanazt az algoritmust, de a különböző képzési adathalmazok alapján.
+Cím: Több modell létrehozása egy Studio kísérlet titleSuffix: Azure Machine Learning Studio description: A powershellel hozhat létre több Machine Learning-modellek és webszolgáltatás Szolgáltatásvégpontok ugyanazt az algoritmust, de a különböző képzési adathalmazok alapján.
 szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/04/2017

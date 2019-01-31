@@ -13,13 +13,13 @@ ms.workload: identity
 ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: sumitp
-ms.custom: seo-update-jan
-ms.openlocfilehash: 49756f516a2e8132d4c3829b07a30f631380cad1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 3d2c15d3658ed93348c5ec23198d2cc97a94e0aa
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182187"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297871"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Termékek neveit és szolgáltatási csomag azonosítók licencelése
 
@@ -27,7 +27,7 @@ Ha-licencek kezelése [az Azure Portalon](https://portal.azure.com/#blade/Micros
 
 - **Terméknév**: A felügyeleti portálokat használt
 - **Karakterlánc-azonosító**: 1.0-s verzió PowerShell-parancsmagokat használják, amikor műveleteket hajt végre a licenceket
-- **GUID-azonosítója**: Azure AD Graph és Microsoft Graph által használt GUID
+- **GUID**: Azure AD Graph és Microsoft Graph által használt GUID
 - **Szolgáltatási csomagok foglalt**: Szolgáltatáscsomagok a termék, amely megegyezik a karakterlánc-azonosító és a GUID listája
 
 >[!NOTE]

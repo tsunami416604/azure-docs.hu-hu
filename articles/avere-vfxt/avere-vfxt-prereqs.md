@@ -4,14 +4,14 @@ description: Az Azure-ban Avere vFXT előfeltételei
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: d32c664049b7e7c1231e78c552e7c61d016fbe84
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 9c3301ba16bfaeb7014658a380e287a36a505be8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286758"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299205"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
@@ -33,22 +33,20 @@ Először hozzon létre egy új Azure-előfizetést. Használjon különálló e
 Az előfizetés tulajdonosi engedélyekkel rendelkező felhasználók a vFXT fürtöt hozzon létre. Előfizetés tulajdonosi engedélyekkel van szükség az ezeket a műveleteket, többek között:
 
 * Fogadja el a feltételeket a Avere vFXT szoftver
-* A fürt csomópont hozzáférés szerepkör létrehozása
-* Lehetővé teszi a vezérlő csomópontot erőforráscsoportok és virtuális hálózatok kezelése 
-* A fürt létrehozása és módosítása a fürtcsomópontok vezérlő engedélyezése 
+* A fürt csomópont hozzáférés szerepkör létrehozása 
 
 Ha nem szeretné tulajdonosi hozzáférés biztosítása a felhasználók számára a vFXT létrehozása, van két lehetséges megoldások:
 
 * Egy erőforráscsoport-tulajdonosnak hozhat létre egy fürtöt, ha ezek a feltételek teljesülnek:
 
-  * Egy előfizetés tulajdonosának kell [fogadja el a Avere vFXT szoftverlicenc](#accept-software-terms-in-advance) és [hozza létre a fürt csomópont hozzáférés szerepkört](avere-vfxt-deploy.md#create-the-cluster-node-access-role).
+  * Egy előfizetés tulajdonosának kell [fogadja el a Avere vFXT szoftverlicenc](#accept-software-terms) és [hozza létre a fürt csomópont hozzáférés szerepkört](#create-the-cluster-node-access-role). 
   * Minden Avere vFXT erőforrásokat kell üzembe helyezni az erőforráscsoportban, többek között:
     * Fürt-vezérlő
     * Fürtcsomópontok
     * Blob Storage
     * A hálózati elemek
  
-* Nincsenek tulajdonosi jogosultságokkal rendelkező felhasználók vFXT fürtöket hozhat létre, ha egy extra hozzáférést szerepkör létrehozása és hozzárendelése a felhasználónak előre. Ez a szerepkör azonban jelentős engedélyt ad ezekre a felhasználókra. [Ez a cikk](avere-vfxt-non-owner.md) azt ismerteti, hogyan nem tulajdonosok-fürtök létrehozásának engedélyezéséhez.
+* Nincsenek tulajdonosi jogosultságokkal rendelkező felhasználók vFXT fürtök hozhatók szerepköralapú hozzáférés-vezérlés (RBAC) előre a jogosultságok hozzárendelése a felhasználóhoz. Ez a módszer jelentős engedélyt ad a felhasználóknak. [Ez a cikk](avere-vfxt-non-owner.md) nem tulajdonosok-fürtök létrehozásának engedélyezése egy hozzáférési szerepkör létrehozásának módját ismerteti.
 
 ## <a name="quota-for-the-vfxt-cluster"></a>A vFXT fürt kvóta
 
@@ -64,12 +62,12 @@ Kvóta elegendő, a következő Azure-összetevőket kell rendelkeznie. Ha szük
 |Tárfiók (nem kötelező) |v2|
 |Háttérbeli adattárolás (nem kötelező) |Egy új LRS Blob-tároló |
 
-## <a name="accept-software-terms-in-advance"></a>Szoftver előre a feltételek elfogadása
+## <a name="accept-software-terms"></a>Szoftverfrissítési feltételek elfogadása
 
 > [!NOTE] 
 > Ebben a lépésben nincs szükség, ha az előfizetés tulajdonosa a Avere vFXT fürtöt hoz létre.
 
-A fürt létrehozása előtt el kell fogadnia a Avere vFXT szoftver szolgáltatás használati feltételeit. Ha nem egy előfizetés tulajdonosa, lehet az elfogadására időben előfizetés tulajdonosa. Ezt a lépést csak egyszer kell megtennie előfizetésenként van szüksége.
+Fürt létrehozása során el kell fogadnia a Avere vFXT szoftver szolgáltatás használati feltételeit. Ha nem egy előfizetés tulajdonosa, lehet az elfogadására időben előfizetés tulajdonosa. Ezt a lépést csak egyszer kell megtennie előfizetésenként van szüksége.
 
 A szoftverek előzetes feltételek elfogadásának: 
 
@@ -86,6 +84,74 @@ A szoftverek előzetes feltételek elfogadásának:
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
    ```
 
-## <a name="next-step-create-the-vfxt-cluster"></a>Következő lépés: a vFXT fürt létrehozása
+## <a name="create-access-roles"></a>Access-szerepkörök létrehozása 
+
+[Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) révén a vFXT fürt vezérlő és a fürt csomópontjai engedély szükséges feladatok végrehajtásához.
+
+* A fürt vezérlő létrehozásához és módosításához a virtuális gépek a fürt létrehozásához engedélyre van szüksége. 
+
+* Az egyes vFXT elvégzésére van szükség, olvassa el az Azure erőforrás-tulajdonságok, tárhely kezelése és más csomópontok hálózatiadapter-beállítások felügyelete normál fürt művelet részeként.
+
+A Avere vFXT fürt létrehozása előtt meg kell határoznia egy egyéni szerepkört a fürt csomópontjai használata. 
+
+A fürt vezérlő elfogadhatja az alapértelmezett szerepkör a sablonból. Az alapértelmezett biztosítja a fürt vezérlő erőforrás tulajdonosi jogosultságokkal rendelkeznek. Ha inkább hozzon létre egy egyéni szerepkört, a vezérlő, [testre szabott hozzáférés szerepkört](avere-vfxt-controller-role.md).
+
+> [!NOTE] 
+> Csak egy előfizetés tulajdonosa vagy a tulajdonos vagy a felhasználói hozzáférés adminisztrátora szerepkörrel rendelkező felhasználók szerepköröket hozhat létre. A szerepkörök időben hozhatók létre.  
+
+### <a name="create-the-cluster-node-access-role"></a>A fürt csomópont hozzáférés szerepkör létrehozása
+
+<!-- caution - this header is linked to in the template so don't change it unless you can change that -->
+
+Az Azure-fürtön a Avere vFXT létrehozása előtt létre kell hoznia a fürtszerepkör csomópont.
+
+> [!TIP] 
+> A Microsoft belső felhasználók "Avere fürt-futtatókörnyezet operátor" nevű kísérlet helyett a meglévő szerepkör segítségével hozzon létre egyet. 
+
+1. Másolja ezt a fájlt. Adja hozzá az előfizetés-Azonosítóját az AssignableScopes sorban.
+
+   (Ez a fájl jelenlegi verziója, a github.com/Azure/Avere tárházban tárolt [AvereOperator.txt](https://github.com/Azure/Avere/blob/master/src/vfxt/src/roles/AvereOperator.txt).)  
+
+   ```json
+   {
+      "AssignableScopes": [
+          "/subscriptions/PUT_YOUR_SUBSCRIPTION_ID_HERE"
+      ],
+      "Name": "Avere Operator",
+      "IsCustom": "true",
+      "Description": "Used by the Avere vFXT cluster to manage the cluster",
+      "NotActions": [],
+      "Actions": [
+          "Microsoft.Compute/virtualMachines/read",
+          "Microsoft.Network/networkInterfaces/read",
+          "Microsoft.Network/networkInterfaces/write",
+          "Microsoft.Network/virtualNetworks/subnets/read",
+          "Microsoft.Network/virtualNetworks/subnets/join/action",
+          "Microsoft.Network/networkSecurityGroups/join/action",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Storage/storageAccounts/blobServices/containers/delete",
+          "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+          "Microsoft.Storage/storageAccounts/blobServices/containers/write"
+      ],
+      "DataActions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+      ]
+   }
+   ```
+
+1. Mentse a fájlt az ``avere-operator.json`` vagy egy hasonló könnyen megjegyezhető nevét. 
+
+
+1. Nyisson meg egy Azure Cloud shellt, és jelentkezzen be az előfizetés-azonosító (leírt [a jelen dokumentum korábbi](#accept-software-terms)). Ez a parancs használatával hozza létre a szerepkört:
+
+   ```bash
+   az role definition create --role-definition /avere-operator.json
+   ```
+
+A szerepkör neve szolgál a fürt létrehozásakor. Ebben a példában a neve a következő ``avere-operator``.
+
+## <a name="next-step-create-the-vfxt-cluster"></a>Következő lépés: A vFXT fürt létrehozása
 
 Miután befejezte az Előfeltételek, a fürt, másrészt létrehozásának is ugorhat. Olvasási [vFXT-fürt üzembe helyezése](avere-vfxt-deploy.md) útmutatást.

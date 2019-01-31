@@ -1,21 +1,21 @@
 ---
-title: 'Oktatóanyag: Tölti be az Azure Data Lake Storage Gen1 az Azure SQL Data Warehouse |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Data Lake Storage Gen1 terhelés az Azure SQL Data Warehouse |} A Microsoft Docs'
 description: Adatok betöltése az Azure Data Lake Storage Gen1 az Azure SQL Data Warehouse a PolyBase külső táblák használatával.
 services: sql-data-warehouse
 author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: c3902061264b75ba177ba150176d784ad5384a9f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 32ac5b0841365acfc0a52e343eafc4f3760dffaa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297196"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472227"
 ---
 # <a name="load-data-from-azure-data-lake-storage-gen1-to-sql-data-warehouse"></a>Adatok betöltése az Azure Data Lake Storage Gen1 az SQL Data warehouse-bA
 Adatok betöltése az Azure Data Lake Storage Gen1 az Azure SQL Data Warehouse a PolyBase külső táblák használatával. Bár a Data Lake Storage Gen1-ban tárolt adatokkal kapcsolatos ad hoc ad hoc lekérdezéseket is futtathat, javasoljuk, hogy az adatok importálása a legjobb teljesítmény érdekében az SQL Data Warehouse-bA.
@@ -143,7 +143,7 @@ WITH
 
 ```
 
-## <a name="external-table-considerations"></a>Külső tábla kapcsolatos szempontok
+## <a name="external-table-considerations"></a>External Table Considerations
 Egy külső tábla létrehozása egyszerű, de van néhány kell vitatni részleteiről.
 
 Külső táblák vannak listaobjektum. Ez azt jelenti, hogy az adatok betöltése folyamatban minden egyes sorára meg kell felelniük a tábla sémadefiníciója.

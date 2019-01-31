@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 1f7921093bc97aa6dc776213be4dbdf9537b7fe2
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 007f7fe95be77a2b1661cd6c82118eb875401f24
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075703"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472575"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Eszközcsoport-leképezés függőségi csoport pontosítása
 
@@ -73,6 +73,10 @@ Az ügynök telepítése Linux rendszerű gépen:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
+#### <a name="install-the-agent-on-a-machine-monitored-by-system-center-operations-manager"></a>Az ügynök telepítése a System Center Operations Manager által figyelt gépen
+
+A gépek figyelt az Operations Manager 2012 R2 vagy újabb nem az MMA-ügynök telepítése nem szükséges. A Service Map rendelkezik, amely az Operations Manager MMA a szükséges függőséget adatgyűjtés az Operations Manager-integráció. Az útmutató segítségével az integráció engedélyezheti [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Vegye figyelembe azonban, hogy a függőségi ügynököt kell telepíteni, ezek a gépek.
+
 ### <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
 1. A függőségi ügynök telepítése a Windows-gépen, kattintson duplán a telepítőfájlra, és kövesse a varázsló utasításait.
 2. A függőségi ügynök telepítése Linux rendszerű gépen telepítse a következő parancsot rendszergazdaként:
@@ -115,7 +119,7 @@ Ha le szeretne ellenőrizni egy adott géphez, amely a csoport függőségi tér
 
 ## <a name="query-dependency-data-from-log-analytics"></a>A Log Analytics függőségi adatok lekérdezése
 
-Rögzíti a Service Map a függőségi adatokat a Log Analytics lekérdezéséhez érhető el. [További](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) kapcsolatban a Service Map adattáblák a Log Analytics-lekérdezést. 
+A Service Map által rögzített függőségi adatokat érhető el a lekérdezés a a Log Analytics workspare társítva az Azure Migrate-projekt. [További](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) kapcsolatban a Service Map adattáblák a Log Analytics-lekérdezést. 
 
 A Log Analytics-lekérdezések futtatása:
 

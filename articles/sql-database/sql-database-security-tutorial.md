@@ -1,6 +1,6 @@
 ---
-title: Egy Azure SQL Database-adatbázis védelme |} A Microsoft Docs
-description: Ismerje meg a módszerek és szolgáltatások egy Azure SQL Database-adatbázis védelmét.
+title: Önálló vagy készletezett Azure SQL Database-adatbázis védelme |} A Microsoft Docs
+description: Ismerje meg a módszerek és szolgáltatások biztonságos önálló vagy készletezett Azure SQL Database-adatbázishoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,17 +9,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/18/2019
-ms.openlocfilehash: 05d1f69a5a8bc38c63a842a92266dd15e010d694
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 01/30/2019
+ms.openlocfilehash: 1fe92f5632544f21506bd19a52a59ed75cabe3b3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227267"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461202"
 ---
-# <a name="tutorial-single-database-security-in-azure-sql-database"></a>Oktatóanyag: Az Azure SQL Database egy adatbázis-biztonság
+# <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Oktatóanyag: Önálló vagy készletezett adatbázis biztonságossá tétele
 
-Az Azure SQL Database egy SQL-adatbázis adatait azáltal, hogy védelemmel látja el:
+Az Azure SQL Database önálló vagy készletezett adatbázis adatait azáltal, hogy védelemmel látja el:
 
 - Hozzáférés korlátozása tűzfalszabályok használatával
 - Identitást igénylő hitelesítési mechanizmusok használata
@@ -35,7 +35,7 @@ Mindössze néhány lépés végrehajtásával az adatbázis-biztonság javítá
 > - Kiszolgálószintű és adatbázisszintű tűzfalszabályok létrehozása
 > - Az Azure Active Directory (AD) rendszergazda konfigurálása
 > - Felhasználói hozzáférés felügyelete az SQL-hitelesítés, az Azure AD-hitelesítés és a biztonságos kapcsolati karakterláncok
-> - Biztonsági funkciói, például veszélyforrások elleni védelem, naplózás, adatmaszkolás és titkosítás engedélyezése
+> - Biztonsági funkciók, például a speciális biztonsági, naplózási adatmaszkolási, és a titkosítás engedélyezése
 
 További tudnivalókért tekintse meg a [Azure SQL Database biztonsági áttekintése](/azure/sql-database/sql-database-security-index) és [képességek](sql-database-security-overview.md) cikkeket.
 
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzéséhez, ellenőrizze, hogy a következő előfeltétele
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Egy Azure SQL server és adatbázis
-    - Hozza létre azokat az [az Azure portal](sql-database-get-started-portal.md), [CLI](sql-database-cli-samples.md), vagy [PowerShell](sql-database-powershell-samples.md)
+  - Hozza létre azokat az [az Azure portal](sql-database-get-started-portal.md), [CLI](sql-database-cli-samples.md), vagy [PowerShell](sql-database-powershell-samples.md)
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -62,9 +62,9 @@ Az Azure-ban tűzfallal védett SQL-adatbázisok. Alapértelmezés szerint a kis
 > [!NOTE]
 > Az SQL Database az 1433-as porton kommunikál. Csatlakozás a vállalati hálózaton belülről próbál, ha a hálózati tűzfal előfordulhat, hogy nem engedélyezett a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem lehet csatlakoztatni az Azure SQL Database-kiszolgálóhoz, ha a rendszergazda megnyitja az 1433-as porton.
 
-### <a name="set-up-server-level-firewall-rules"></a>Kiszolgálószintű tűzfalszabályok beállítása
+### <a name="set-up-sql-database-server-firewall-rules"></a>Állítsa be az SQL Database-kiszolgáló tűzfalszabályait
 
-Kiszolgálószintű tűzfalszabályok alkalmazni az egyazon logikai kiszolgálón található összes adatbázishoz.
+Kiszolgálószintű tűzfalszabályok alkalmazni az egyazon SQL Database-kiszolgálón található összes adatbázishoz.
 
 A kiszolgálószintű tűzfalszabályok beállítása:
 
@@ -88,7 +88,7 @@ Mostantól a kiszolgáló bármelyik adatbázisához csatlakozhat a megadott IP-
 > [!IMPORTANT]
 > Alapértelmezés szerint az SQL Database-tűzfalon keresztül érhető el az Azure-szolgáltatásokhoz, a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése**. Válasszon **OFF** letiltja a hozzáférést az Azure-szolgáltatásokhoz.
 
-### <a name="setup-database-level-firewall-rules"></a>Adatbázisszintű tűzfalszabályok beállítása
+### <a name="setup-database-firewall-rules"></a>Tűzfalszabályok beállítása
 
 Adatbázisszintű tűzfalszabályok kizárólag az egyes adatbázisok érvényesek. Ezek a szabályok hordozható és az adatbázis követi a kiszolgáló a feladatátvétel alatt. Adatbázisszintű tűzfalszabályok a Transact-SQL (T-SQL-) utasításokkal csak konfigurálható, és csak azután konfigurálta egy kiszolgálószintű tűzfalszabályt.
 
@@ -231,30 +231,30 @@ Biztonságos kapcsolati karakterlánc másolása:
 
 ## <a name="enable-security-features"></a>Biztonsági szolgáltatások engedélyezése
 
-Az Azure SQL Database biztonsági szolgáltatásaival, amelyekhez hozzáférnek az Azure portal használatával. Ezek a funkciók érhetők el az adatbázis és a kiszolgáló, kivéve az adatmaszkolás, amely csak érhető el az adatbázisban. További tudnivalókért lásd: [Fenyegetésészlelés](sql-advanced-threat-protection.md), [naplózási](sql-database-auditing.md), [dinamikus adatmaszkolás](sql-database-dynamic-data-masking-get-started.md), és [transzparens adattitkosítás](transparent-data-encryption-azure-sql.md).
+Az Azure SQL Database biztonsági szolgáltatásaival, amelyekhez hozzáférnek az Azure portal használatával. Ezek a funkciók érhetők el az adatbázis és a kiszolgáló, kivéve az adatmaszkolás, amely csak érhető el az adatbázisban. További tudnivalókért lásd: [adatbiztonság speciális](sql-advanced-threat-protection.md), [naplózási](sql-database-auditing.md), [dinamikus adatmaszkolás](sql-database-dynamic-data-masking-get-started.md), és [transzparens adattitkosítás](transparent-data-encryption-azure-sql.md).
 
-### <a name="advanced-threat-protection"></a>Komplex veszélyforrások elleni védelem
+### <a name="advanced-data-security"></a>Advanced Data Security
 
-A komplex veszélyforrások elleni védelmi funkciója észleli a potenciális fenyegetések fordulhat elő, és a biztonsági riasztásokat biztosít a rendellenes tevékenységekre adott. A felhasználók a gyanús eseményeket, a naplózási szolgáltatás segítségével ismerje meg, és határozza meg, ha az esemény történt, illetéktelen behatolás vagy biztonsági rés kiaknázása elleni az adatbázisban található adatok. Felhasználók is biztosítja a biztonsági áttekintéshez, amely tartalmazza a biztonságirés-felmérés és az észlelés és osztályozás eszközzel.
+A speciális biztonsági szolgáltatás fordulhat elő, és a biztonsági riasztásokat biztosít a rendellenes tevékenységekre adott észlelte a potenciális fenyegetéseket. A felhasználók a gyanús eseményeket, a naplózási szolgáltatás segítségével ismerje meg, és határozza meg, ha az esemény történt, illetéktelen behatolás vagy biztonsági rés kiaknázása elleni az adatbázisban található adatok. Felhasználók is biztosítja a biztonsági áttekintéshez, amely tartalmazza a biztonságirés-felmérés és az észlelés és osztályozás eszközzel.
 
 > [!NOTE]
 > Egy példa fenyegetés SQL-injektálás, a folyamat, ahol a támadók rosszindulatú SQL helyezhet el alkalmazás bemenetei között meg. Egy alkalmazás tudtukon ezután a rosszindulatú SQL-utasítás végrehajtása és illetéktelen behatolás vagy módosítása az adatbázisban található adatok elérését teszik lehetővé a támadóknak.
 
-Veszélyforrások elleni védelem engedélyezése:
+Speciális biztonsági engedélyezése:
 
 1. Az Azure Portalon, válassza ki a **SQL-adatbázisok** elemet a bal oldali menüben válassza ki az adatbázist a a **SQL-adatbázisok** lap.
 
 1. Az a **áttekintése** lapon válassza ki a **kiszolgálónév** hivatkozásra. Megnyílik az adatbázis-kiszolgáló oldalára.
 
-1. Az a **az SQL server** lapon, keresse meg a **biztonsági** szakaszt, és válassza **komplex veszélyforrások elleni védelem**.
+1. Az a **az SQL server** lapon, keresse meg a **biztonsági** szakaszt, és válassza **adatok biztonságú**.
 
-    1. Válassza ki **ON** alatt **komplex veszélyforrások elleni védelem** a funkció engedélyezéséhez. Ezután válassza a **Save** (Mentés) lehetőséget.
+    1. Válassza ki **ON** alatt **adatok biztonságú** a funkció engedélyezéséhez. Válasszon egy tárfiókot a sebezhetőségi felmérés eredmények mentése. Ezután válassza a **Save** (Mentés) lehetőséget.
 
     ![Navigációs ablaktábla](./media/sql-database-security-tutorial/threat-settings.png)
 
     Beállíthatja, hogy a biztonsági riasztások, és a tárolási adatok és a fenyegetéstípusok észlelési e-maileket.
 
-1. Lépjen vissza a **SQL-adatbázisok** az adatbázisról, és válassza a lap **komplex veszélyforrások elleni védelem** alatt a **biztonsági** szakaszban. Itt találja a különböző biztonsági mutatók érhető el az adatbázis.
+1. Lépjen vissza a **SQL-adatbázisok** az adatbázisról, és válassza a lap **adatok biztonságú** alatt a **biztonsági** szakaszban. Itt találja a különböző biztonsági mutatók érhető el az adatbázis.
 
     ![Fenyegetés állapota](./media/sql-database-security-tutorial/threat-status.png)
 
@@ -344,7 +344,7 @@ Ebben az oktatóanyagban bemutattuk, mindössze néhány lépés végrehajtásá
 > - Kiszolgálószintű és adatbázisszintű tűzfalszabályok létrehozása
 > - Az Azure Active Directory (AD) rendszergazda konfigurálása
 > - Felhasználói hozzáférés felügyelete az SQL-hitelesítés, az Azure AD-hitelesítés és a biztonságos kapcsolati karakterláncok
-> - Biztonsági funkciói, például veszélyforrások elleni védelem, naplózás, adatmaszkolás és titkosítás engedélyezése
+> - Biztonsági funkciók, például a speciális biztonsági, naplózási adatmaszkolási, és a titkosítás engedélyezése
 
 Folytassa a következő oktatóanyaggal, megtudhatja, hogyan valósíthat meg a földrajzi elosztás.
 

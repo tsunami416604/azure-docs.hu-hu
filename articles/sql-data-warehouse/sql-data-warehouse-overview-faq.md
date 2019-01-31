@@ -6,16 +6,16 @@ author: acomet
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
+ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 35252b4d262833daef330a89f1874cc0835c480a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d55c9db9af2eea9a56afe34c7a8689947a689bac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306740"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462545"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse gyakori kérdések
 
@@ -82,19 +82,19 @@ K. Milyen ügyfél illesztőprogramokat támogatja?
 
 A. Illesztőprogram-támogatás a DW találhatók a [Kapcsolati sztringek] lap
 
-Kérdés: milyen fájlformátumok az SQL Data Warehouse a PolyBase által támogatott?
+KÉRDÉS: Milyen fájlformátumok az SQL Data Warehouse a PolyBase által támogatott?
 
 V: Orc, RC, Parquet és egybesimított karakterrel elválasztott szöveg
 
-K: milyen I kapcsolódhat a PolyBase az SQL DW? 
+KÉRDÉS: Milyen I kapcsolódhat a PolyBase az SQL DW? 
 
 V: [Azure Data Lake Store] és [Azure Storage Blobs]
 
-K: van számítási legördülő lista lehetséges, amikor csatlakozik az Azure Storage Blobból vagy az ADLS? 
+KÉRDÉS: Számítási legördülő lista akkor lehetséges, ha az Azure Storage Blobsba vagy ADLS csatlakozik? 
 
-V: nem, az SQL DW PolyBase csak a tároló-összetevők kommunikál. 
+V: Az SQL DW PolyBase nem, csak a tároló-összetevők végez műveleteket. 
 
-K: Csatlakozhatok HDI?
+KÉRDÉS: Csatlakozhatok HDI?
 
 V: HDI ADLS vagy WASB használhat a HDFS-összetevővel. Ha pedig a HDFS-réteget, majd betöltheti az adatokat az SQL DW-be. Azonban nem hozható létre legördülő lista számítási a HDI-példányhoz. 
 

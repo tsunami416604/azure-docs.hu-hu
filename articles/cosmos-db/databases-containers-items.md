@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d5714e43c9ba58cdec33ca5fd1eae31eb6a88f51
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 85d8b531f19ac35f091f54c2627f7fe6d3a62a42
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107735"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468138"
 ---
-# <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Az Azure Cosmos-adatbázisok, tárolók és elemek használata
+# <a name="work-with-databases-containers-and-items"></a>Adatbázisok, tárolók és elemek használata
 
 Miután létrehozott egy [Azure Cosmos DB-fiók](account-overview.md) az Azure-előfizetéshez adatai is kezelhetők a fiókban lévő adatbázisok, tárolók és elemek létrehozásával. Ez a cikk ismerteti ezeket az entitásokat: adatbázisok, tárolók és elemek. Az alábbi képen látható a különböző entitások hierarchiája egy Azure Cosmos-fiók:
 
@@ -113,7 +113,7 @@ Minden Azure-Cosmos-elem a következő definiált rendszertulajdonsággal rendel
 
 |**Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó állítható be**| **Cél** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|_azonosítója | A rendszer által létrehozott | Elem egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
+|_id | A rendszer által létrehozott | Elem egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
 |_etag | A rendszer által létrehozott | Az optimista egyidejűség-vezérlési entitáscímkéje | Igen | Nem | Nem | Nem | Nem |
 |_ts | A rendszer által létrehozott | A cikk utolsó frissítés időbélyege | Igen | Nem | Nem | Nem | Nem |
 |_self | A rendszer által létrehozott | Az elemek címezhető URI azonosítója | Igen | Nem | Nem | Nem | Nem |

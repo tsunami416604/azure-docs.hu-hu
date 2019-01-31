@@ -1,6 +1,6 @@
 ---
 Cím: Adatelemzés kezdőknek titleSuffix: Azure Machine Learning Studio description: Adatelemzés kezdőknek van megtanítja 5 rövid videót, az alapvető fogalmait kezdve az 5 kérdések adatelemzés választ ad. Az Azure Machine Learning.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 Szerző: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---

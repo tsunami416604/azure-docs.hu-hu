@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 712eed36f3a68ee02668849207835e3c8bdb8238
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5588d2bd6cf2098d8744479c2bf2d308c9bf8f0d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232154"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460438"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>Az SQL Data Warehouse javaslatok
 
@@ -48,7 +48,7 @@ Az Advisor replikált tábla javaslatok, észleli a tábla jelöltek a következ
 - Replikált tábla mérete
 - Oszlopok száma
 - Tábla terjesztési típusa
-- A partíciók száma
+- Partíciók száma
 
 Az Advisor folyamatosan kihasználja az heurisztika terhelésen alapuló tábla hozzáférés gyakorisága, például a visszaadott sorok átlagosan és küszöbértékek adatok adatraktár-méretét és magas színvonalú javaslatok jönnek létre, hogy a tevékenység. 
 

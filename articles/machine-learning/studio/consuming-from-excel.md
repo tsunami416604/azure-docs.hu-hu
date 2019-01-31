@@ -1,5 +1,5 @@
 ---
-Cím: Az Excel titleSuffix webszolgáltatás felhasználása: Azure Machine Learning Studio description: Az Azure Machine Learning Studio megkönnyíti a webszolgáltatások meghívása közvetlenül az Excelből, kód írása nélkül.
+Cím: Az Excel titleSuffix webszolgáltatás felhasználása: Azure Machine Learning Studio description: Az Azure Machine Learning Studio megkönnyíti a webszolgáltatások meghívása közvetlenül az Excelből, kód írása nélkül.
 szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/01/2018

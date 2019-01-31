@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
 ms.reviewer: sngun
-ms.openlocfilehash: 35577f103979bf5f767e3b9d42548ed488e365c8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 64763ebc145685e4dc7a4559eac6db9923d31dc5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041900"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455558"
 ---
-# <a name="using-the-azure-cosmos-db-change-feed-processor-library"></a>Használatával az Azure Cosmos DB-módosítási hírcsatorna feldolgozói kódtára
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>Az Azure Cosmos DB processzor csatorna módosítása 
 
 A [Azure Cosmos DB-módosítási hírcsatorna feldolgozói kódtára](sql-api-sdk-dotnet-changefeed.md) segít eseményfeldolgozás elosztása több ügyfél között. Ebben a könyvtárban olvasási módosítások egyszerűbbé teszi a partíciók és több szál párhuzamos használata.
 

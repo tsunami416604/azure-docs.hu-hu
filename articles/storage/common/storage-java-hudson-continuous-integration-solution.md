@@ -8,13 +8,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: a62af881efd4f6f3422db19850a0ce9987c6ae7b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 431a4ef4e84c88467dc7e36bb12d406309f9a8b7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245120"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467832"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Az Azure Storage szolgáltatás használata Hudson folyamatos integrációs megoldással
 ## <a name="overview"></a>Áttekintés
@@ -144,9 +144,9 @@ Miután lefuttatta a build, ellenőrizze a korábbi konzol kimenete, vagy tekint
 ## <a name="components-used-by-the-blob-service"></a>A Blob szolgáltatás által használt összetevők
 A következő a Blob szolgáltatás-összetevők áttekintést nyújt.
 
-* **Storage-fiók**: minden, az Azure Storage-hozzáférés tárfiókon keresztül történik. Ez az a névtér a blobok elérése a legmagasabb szintű. Egy fiók korlátlan számú tárolók, tartalmazhat, mindaddig, amíg azok teljes mérete 100 TB-os alatt.
-* **Tároló**: tároló blobokat áll csoportosítását biztosítja. Az összes blobnak tárolóban kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat. Egy tároló korlátlan számú blob tárolására használható.
-* **BLOB**: bármilyen típusú és méretű fájl. A blobok Azure Storage-ban tárolt két típusa van: blokkblobok és lapblobok. Fájlok a legtöbb esetben blokkblobok. Egyetlen blokkblob akár 200 GB méretű lehet. Ebben az oktatóanyagban a blokkblobok használatát támogatják. Lapblobok és a egy másik blob típusú tárfiók, akár 1 TB-ig a mérete, és kiváló hatékonyabb lehet, ha egy fájlban bájtos címtartományok gyakran módosítják. Blobok kapcsolatos további információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](https://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **Storage-fiók**: Minden, az Azure Storage-hozzáférés tárfiókon keresztül történik. Ez az a névtér a blobok elérése a legmagasabb szintű. Egy fiók korlátlan számú tárolók, tartalmazhat, mindaddig, amíg azok teljes mérete 100 TB-os alatt.
+* **tároló**: Egy tároló blobokat áll csoportosítását biztosítja. Az összes blobnak tárolóban kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat. Egy tároló korlátlan számú blob tárolására használható.
+* **Blob**: Bármilyen típusú és méretű fájl. A blobok Azure Storage-ban tárolt két típusa van: blokkblobok és lapblobok. Fájlok a legtöbb esetben blokkblobok. Egyetlen blokkblob akár 200 GB méretű lehet. Ebben az oktatóanyagban a blokkblobok használatát támogatják. Lapblobok és a egy másik blob típusú tárfiók, akár 1 TB-ig a mérete, és kiváló hatékonyabb lehet, ha egy fájlban bájtos címtartományok gyakran módosítják. Blobok kapcsolatos további információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](https://msdn.microsoft.com/library/azure/ee691964.aspx).
 * **URL-formátum**: Blobok legyenek a következő URL-formátummal:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`

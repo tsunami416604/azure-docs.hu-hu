@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 8d108df187e7d1fe549f284cffe3c5cbe4d56f7c
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 26445017553435454e929d9852dfd9fc173c3b2e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389937"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460097"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Az Azure SQL Database felügyelt példányain a felügyelt API-referencia
 
@@ -27,9 +27,9 @@ Hozzon létre, és kezelheti az Azure SQL Database felügyelt példányain a az 
 
 A rövid útmutató bemutatja, hogyan hozzon létre egy Azure SQL Database felügyelt példányába, lásd: [a rövid útmutató: Hozzon létre egy Azure SQL Database felügyelt példány](sql-database-managed-instance-get-started.md).
 
-## <a name="powershell-create-and-manage-a-managed-instance"></a>PowerShell: Hozzon létre és kezelheti a felügyelt példány
+## <a name="powershell-create-and-manage-managed-instances"></a>PowerShell: Felügyelt példányok létrehozása és kezelése
 
-Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az Azure PowerShell használatával, a következő PowerShell-parancsmagokat használja. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps).
+Hozhat létre és kezelheti a felügyelt példányok az Azure PowerShell-lel, használja a következő PowerShell-parancsmagokat. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps).
 
 > [!TIP]
 > PowerShell-példa szkriptek, lásd: [gyors üzembe helyezési parancsfájlt: Az Azure SQL felügyelt példány használatával a PowerShell-könyvtár létrehozása](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/).
@@ -45,9 +45,9 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az A
 |[Remove-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Egy felügyelt Azure SQL Database példány adatbázis eltávolítása|
 |[Restore-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Visszaállít egy Azure SQL Database Felügyeltpéldány-adatbázist|
 
-## <a name="azure-cli-manage-logical-servers-and-databases"></a>Azure CLI: Logikai kiszolgálóiról és adatbázisairól kezelése
+## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure CLI: Felügyelt példányok létrehozása és kezelése
 
-Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az [Azure CLI-vel](/cli/azure), használja a következő [Azure CLI SQL felügyelt példánya](/cli/azure/sql/mi) parancsokat. A [Cloud Shell-lel](/azure/cloud-shell/overview) futtassa a parancssori felületet a böngészőben, vagy [telepítse](/cli/azure/install-azure-cli) macOS, Linux, illetve Windows rendszeren.
+Hozhat létre és kezelhet a felügyelt példányok [Azure CLI-vel](/cli/azure), használja a következő [Azure CLI SQL felügyelt példánya](/cli/azure/sql/mi) parancsokat. A [Cloud Shell-lel](/azure/cloud-shell/overview) futtassa a parancssori felületet a böngészőben, vagy [telepítse](/cli/azure/install-azure-cli) macOS, Linux, illetve Windows rendszeren.
 
 > [!TIP]
 > Az Azure CLI-vel a rövid útmutatóban talál [SQL felügyelt példányt az Azure CLI-vel](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
@@ -64,9 +64,9 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az [
 |[az sql KÖZÉP2 visszaállítása](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Felügyelt adatbázis visszaállítása|
 |[az sql midb delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Eltávolít egy felügyelt adatbázis|
 
-## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL: Logikai kiszolgálóiról és adatbázisairól kezelése
+## <a name="transact-sql-create-and-manage-instance-databases"></a>Transact-SQL: Példány adatbázisok létrehozása és kezelése
 
-Létrehozása és kezelése az Azure SQL Database felügyelt példányába adatbázis, a felügyelt példány létrehozása után használja a következő T-SQL-parancsokat. Ezek a parancsok az Azure portal használatával adhat ki [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is). [A Visual Studio Code](https://code.visualstudio.com/docs), vagy bármely más programot, amely egy Azure SQL Database-kiszolgálóhoz csatlakozni és adja át a Transact-SQL-parancsokat.
+Hozzon létre és példány adatbázis kezelése a felügyelt példány létrehozása után használja a következő T-SQL-parancsokat. Ezek a parancsok az Azure portal használatával adhat ki [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is). [A Visual Studio Code](https://code.visualstudio.com/docs), vagy bármely más programot, amely egy Azure SQL Database-kiszolgálóhoz csatlakozni és adja át a Transact-SQL-parancsokat.
 
 > [!TIP]
 > További kell konfigurálni, és csatlakozhat egy SQL Server Management Studio használatával a Microsoft Windows, a felügyelt példányhoz bemutató útmutatók: [a rövid útmutató: Konfigurálja az Azure-beli virtuális gép csatlakozni egy Azure SQL Database felügyelt példányába](sql-database-managed-instance-configure-vm.md) és [a rövid útmutató: Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányába való helyszíni](sql-database-managed-instance-configure-p2s.md).
@@ -78,9 +78,9 @@ Létrehozása és kezelése az Azure SQL Database felügyelt példányába adatb
 |[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Új adatbázist hoz létre felügyelt példányt. Új adatbázis létrehozásához a master adatbázishoz internetkapcsolatra.|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Módosítja egy Azure SQL felügyelt példánya adatbázis.|
 
-## <a name="rest-api-manage-logical-servers-and-databases"></a>REST API: Logikai kiszolgálóiról és adatbázisairól kezelése
+## <a name="rest-api-create-and-manage-managed-instances"></a>REST API: Felügyelt példányok létrehozása és kezelése
 
-Hozhat létre és kezelheti az Azure SQL Database felügyelt példányába, használja ezeket a REST API-kéréseket.
+Hozhat létre és kezelheti a felügyelt példányok, használja ezeket a REST API-kéréseket.
 
 | Parancs | Leírás |
 | --- | --- |

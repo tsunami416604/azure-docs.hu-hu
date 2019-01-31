@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a0f4e4dd5cea9c3ea7b682e6372d2ffa8726e6ef
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: ea409a4295cb07800e3f48ab408135071d0faea6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646473"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464816"
 ---
 # <a name="how-to-return-n-best-translations"></a>Legjobb N fordítások visszaállítása
 
@@ -45,8 +45,8 @@ Az aláírás az:
 | beállítások | **Nem kötelező** TranslateOptions egy objektum, amely tartalmazza az alább felsorolt értékeket. Minden nem kötelező, és alapértelmezés szerint a leggyakrabban használt beállításait.
 
 * Kategória: Az egyetlen támogatott, és az alapértelmezett beállítás "általános".
-* A ContentType: Az egyetlen támogatott, és az alapértelmezett beállítás "text/plain".
-* Állapota: Összevetését kérelem és válasz a felhasználói állapot. Ugyanaz a tartalma visszatér a válaszban.
+* ContentType: Az egyetlen támogatott, és az alapértelmezett beállítás "text/plain".
+* Állapot: Felhasználói állapot összevetését kérések és válaszok érdekében. Ugyanaz a tartalma visszatér a válaszban.
 * IncludeMultipleMTAlternatives: Ez a jelző azt határozza meg, hogy az MT motortól alternatívák egynél több visszaadása. Alapértelmezés a False (hamis), és csak 1 alternatív tartalmazza.
 
 ## <a name="ratings"></a>Minősítések

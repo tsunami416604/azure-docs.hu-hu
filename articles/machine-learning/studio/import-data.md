@@ -1,6 +1,6 @@
 ---
-Cím: Import data into Machine Learning Studio titleSuffix: Azure Machine Learning Studio description: Adatok importálása az Azure Machine Learning Studióba különböző adatforrásokból származó adatokat hogyan. Ismerje meg, milyen típusú adatokat és adatformátumok a célnyelven támogatottak.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Import data into Machine Learning Studio titleSuffix: Azure Machine Learning Studio description: Adatok importálása az Azure Machine Learning Studióba különböző adatforrásokból származó adatokat hogyan. Ismerje meg, milyen típusú adatokat és adatformátumok a célnyelven támogatottak.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 11/29/2017
 ---
@@ -53,12 +53,12 @@ Explicit módon adja meg vagy módosítsa a fejlécek és adattípusok használa
 
 A következő **adattípusok** felismeri a Machine Learning Studio:
 
-* Karakterlánc
+* String
 * Egész szám
-* Dupla
+* Double
 * Logikai
 * DateTime
-* Időtartam
+* TimeSpan
 
 A Machine Learning Studio nevű belső adattípust használ ***adattábla*** adatok átadására a modulok között. Adattábla formátum használatával az explicit módon átalakíthatja az adatokat a [adatkészlet átalakítása] [ convert-to-dataset] modul.
 

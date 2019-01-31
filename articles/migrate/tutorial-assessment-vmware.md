@@ -4,15 +4,15 @@ description: Ismerteti, hogyan derítheti fel és értékelheti ki a helyszíni 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 01/11/2019
+ms.date: 01/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e922e9e7741eb3338503e02cd0ca78387e32b1f6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 58a4f60a5ef01f8f2757aeb04c2dd7165d68179a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824099"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298721"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **VMware**: A virtuális gépek áttelepítését tervezi verziójú vCenter Servernek egy 5.5-ös, 6.0-s vagy 6.5-ös kell felügyelnie. Emellett egy 5.0-s vagy újabb verziójú ESXi gazdagépre is szükség van a gyűjtő virtuális gép üzembe helyezéséhez.
+- **VMware**: A virtuális gépek áttelepítését tervezi verziójú vCenter Servernek egy 5.5-ös, 6.0-s vagy 6.5-ös kell felügyelnie. Emellett szükség egy ESXi gazdagépet verziójú 5.5-ös vagy újabb, a gyűjtő virtuális gép üzembe helyezéséhez.
 - **vCenter Server-fiók**: A vCenter Server eléréséhez egy csak olvasható fiókra van szükség. Az Azure Migrate ezt a fiókot használja a helyszíni virtuális gépek felderítéséhez.
 - **Engedélyek**: A vCenter-kiszolgáló, a virtuális gép létrehozása a fájl importálásával engedélyre van szükségük. OVA formátumot.
 
@@ -102,6 +102,14 @@ A telepítése előtt ellenőrizze, hogy az .OVA-fájl biztonságos-e.
 3. A létrehozott kivonatnak egyeznie kell ezekkel a beállításokkal.
 
 #### <a name="continuous-discovery"></a>Folyamatos felderítés
+
+  Az OVA verziója 1.0.10.11
+
+  **Algoritmus** | **Kivonat értéke**
+    --- | ---
+    MD5 | 5f6b199d8272428ccfa23543b0b5f600
+    SHA1 | daa530de6e8674a66a728885a7feb3b0a2e8ccb0
+    SHA256 | 85da50a21a7a6ca684418a87ccc1dd4f8aab30152c438a17b216ec401ebb3a21
 
   Az OVA verziója 1.0.10.9
 

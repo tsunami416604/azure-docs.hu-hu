@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ee8e3e3ef33a8b09b92d4dfc262fce26dd60abb3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: adf713fc3f875168f99b302b0a9affef88e8414f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134403"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457683"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Hatékony adatelemzési projektek fejlesztését
 
@@ -38,20 +38,20 @@ Az alábbi ábra egy tipikus sprint megtervezése, kódolási és source-control
 
 ##  1. <a name='Terminology-1'></a>Terminológia 
 
-A TDSP a tervezési keretrendszer sprint, négy gyakran használt típusú **munkaelemek**: **funkció**, **felhasználói történetet blokkol**, **feladat**, és **Bug**. Minden projekt fenntart egy egyetlen mappájában várakozó fájlok számát az összes munkaelem. Git-tárház szintjén egy projekt keretében nincs várakoztatás van. Az alábbiakban a definíciójukat:
+A TDSP a tervezési keretrendszer sprint, négy gyakran használt típusú **munkaelemek**: **A szolgáltatás**, **felhasználói történetet blokkol**, **feladat**, és **Bug**. Minden projekt fenntart egy egyetlen mappájában várakozó fájlok számát az összes munkaelem. Git-tárház szintjén egy projekt keretében nincs várakoztatás van. Az alábbiakban a definíciójukat:
 
-- **A szolgáltatás**: a projekt engagement felel meg egyik funkciója. Az ügyfél másik marketingmódszerek minősülnek különböző funkcióit. Hasonlóképpen érdemes másik lehetőségként fontolja meg egy projektet az egyes fázisokat futtatni az ügyfél. Ha úgy dönt, a séma például ***ClientName-EngagementName*** , nevezze el a szolgáltatásokat, majd könnyen felismerheti a projekt/engagement magukat a paraméterkészletben kontextusában.
-- **Történetet**: történetek, melyek szükségesek ahhoz, hogy végezze el a szolgáltatást (projekt)-végpontok különböző munkaelemek. Történetek közé:
+- **A szolgáltatás**: Egy projekt engagement felel meg egyik funkciója. Az ügyfél másik marketingmódszerek minősülnek különböző funkcióit. Hasonlóképpen érdemes másik lehetőségként fontolja meg egy projektet az egyes fázisokat futtatni az ügyfél. Ha úgy dönt, a séma például ***ClientName-EngagementName*** , nevezze el a szolgáltatásokat, majd könnyen felismerheti a projekt/engagement magukat a paraméterkészletben kontextusában.
+- **Történetet**: Történetek, melyek szükségesek ahhoz, hogy végezze el a szolgáltatást (projekt)-végpontok különböző munkaelemek. Történetek közé:
     - Adatok beolvasása 
     - Adatok feltárása 
     - Funkciók létrehozása
     - Modellek létrehozása
     - Modellek modellezést 
     - Megőrzési modellek
-- **A feladat**: feladatok olyan rendelhető hozzá a kódot, vagy a dokumentum munkaelemeket és egyéb tevékenységeket, amelyek egy adott történetet elvégzéséhez szükséges. Például a történetet feladatainak *adatok beolvasása* lehet:
+- **A feladat**: Feladatok a következők: rendelhető hozzá a kódot, vagy dokumentum munkaelemek vagy egyéb tevékenységeket, amelyek egy adott történetet elvégzéséhez szükséges. Például a történetet feladatainak *adatok beolvasása* lehet:
     -  Bevezetés az SQL Server hitelesítő adatok 
     -  Az SQL Data warehouse-ba való feltöltéséhez. 
-- **Programhiba**: hibák általában javításcsomagot tartalmaz, amely szükséges ahhoz, hogy egy meglévő kódot vagy a dokumentum, amely minden kész, amikor egy tevékenység befejezése hivatkoznak. Ha a hibát okozta szakaszában vagy feladatok rendre hiányzik, a is eszkalálása egy történetet vagy a feladat indításához. 
+- **Programhiba**: Hibák általában javításcsomagot tartalmaz, amely szükséges ahhoz, hogy egy meglévő kódot vagy a dokumentum, amely minden kész, amikor egy tevékenység befejezése hivatkoznak. Ha a hibát okozta szakaszában vagy feladatok rendre hiányzik, a is eszkalálása egy történetet vagy a feladat indításához. 
 
 > [!NOTE]
 > Fogalmak funkciók, történetek, feladatok és-hibák szoftver kód forráskezelési (SCM) használhatók az adatelemzés a hitelt. Ezek némileg eltér a hagyományos SCM definíciójukat.

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
-ms.component: common
-ms.openlocfilehash: e451fd2c2dad5c411d0a8faa8e9c044648759001
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.subservice: common
+ms.openlocfilehash: 6b40741545ff286bc1b8e696d28c61b197605247
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121735"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474003"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -469,14 +469,14 @@ Ha az ügyfélalkalmazás HTTP 403 (tiltott) hibák szűrész, ennek valószín�
 | Forrás | Részletesség | Részletesség | Ügyfélkérelem azonosítója | A művelet szöveg |
 | --- | --- | --- | --- | --- |
 | Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab-… |Hely elsődleges hely módban PrimaryOnly kiindulási műveletet. |
-| Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab -… |A szinkron kérések kezdési https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp; sr = c&amp;si = mypolicy&amp;sig OFnd4Rd7z01fIvh % 2BmcR6zbudIH2F5Ikm % 2FyhNYZEmJNQ % = 3D&amp;api-version = 2014. 02. 14. |
+| Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab -… |Starting synchronous request to https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14. |
 | Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab -… |Várakozás a válaszra. |
-| Microsoft.WindowsAzure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel lépett fel a várakozás során: A távoli kiszolgáló hibát adott vissza: (403) tiltott. |
+| Microsoft.WindowsAzure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel lépett fel a várakozás során: A távoli kiszolgáló hibát adott vissza: (403) Tiltott. |
 | Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab -… |A válasz érkezett. Állapotkód = 403-as, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, az ETag =. |
 | Microsoft.WindowsAzure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel lépett fel a művelet során: A távoli kiszolgáló hibát adott vissza: (403) tiltott... |
 | Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab -… |Annak ellenőrzése, ha a műveletet meg kell ismételni. Ismétlések száma = 0, HTTP-állapotkód: 403-as, Exception = = a távoli kiszolgáló hibát adott vissza: (403) tiltott... |
 | Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab -… |A következő helyre elsődleges, a hely módja alapján van beállítva. |
-| Microsoft.WindowsAzure.Storage |Hiba |1 |85d077ab -… |Újrapróbálkozási szabályzat nem engedélyezte az újrapróbálkozást. Sikertelen a távoli kiszolgálóval hibát adott vissza: (403) tiltott. |
+| Microsoft.WindowsAzure.Storage |Hiba |1 |85d077ab -… |Újrapróbálkozási szabályzat nem engedélyezte az újrapróbálkozást. Sikertelen a távoli kiszolgálóval hibát adott vissza: (403) Tiltott. |
 
 Ebben az esetben kell vizsgálni, miért lejár az SAS-token előtt az ügyfél elküldi a kiszolgálón:
 

@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 08/29/2018
 ms.author: kevinvngo
 ms.reviewer: igorstan
-ms.openlocfilehash: 5cb3b3b261bcb762187b165e297225080b0fee81
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 8c04e0409faa3b63a8a2957284ac7aa96740ae03
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306058"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468376"
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Tervezési döntéseket és a kódolási módszereket az SQL Data warehouse-hoz
 Figyelje a fejlesztéssel kapcsolatos cikket jobb megértése érdekében hozott kulcsfontosságú, a javaslatokat és a kódolási módszereket az SQL Data Warehouse segítségével.
@@ -37,7 +37,7 @@ A következő cikkek jelölje ki a fogalmakat és a egy elosztott data warehouse
 Ezek a cikkek jelöljön ki adott programozási technikákat, tippeket és javaslatokat az SQL Data Warehouse fejlesztéséhez:
 
 * [Tárolt eljárások][stored procedures]
-* [címkék][labels]
+* [labels][labels]
 * [Nézetek][views]
 * [Az ideiglenes táblák][temporary tables]
 * [dynamic SQL][dynamic SQL]

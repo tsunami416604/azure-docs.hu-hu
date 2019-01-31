@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a2a4a8c895bddb03271014c50f57b666faa0c2cc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 40d1af6e6258b5026853532f7963a76d4fc389db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135950"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469227"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusa
 
@@ -44,8 +44,8 @@ A TDSP életciklus iterálni lépéseit, amelyek útmutatást nyújtanak a predi
 Az egyes fázisokat kínálunk az alábbi adatokat:
 
    * **Célok**: A konkrét célokat.
-   * **Megtudhatja, hogyan teheti**: vázlatát, az adott feladatok és hogyan végezze el őket.
-   * **Összetevők**: A termékek és a támogatási szolgáltatások azt.
+   * **Megtudhatja, hogyan teheti**: Az adott feladatok, és hogyan elvégezni ezeket röviden ismerteti.
+   * **Összetevők**: A termékek és a támogatás előállításához őket.
 
 ## <a name="next-steps"></a>További lépések
 

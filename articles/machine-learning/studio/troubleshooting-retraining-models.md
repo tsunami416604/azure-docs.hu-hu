@@ -1,6 +1,6 @@
 ---
-Cím: A Machine Learning Studio klasszikus web service titleSuffix átképezési problémáinak hibaelhárítása Azure Machine Learning Studio description: Azonosítsa és javítsa ki, amelyek a az Azure Machine Learning Studio webszolgáltatás-modell átképezési során jelentkező gyakori hibák.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: A Machine Learning Studio klasszikus web service titleSuffix átképezési problémáinak hibaelhárítása Azure Machine Learning Studio description: Azonosítsa és javítsa ki, amelyek a az Azure Machine Learning Studio webszolgáltatás-modell átképezési során jelentkező gyakori hibák.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 11/01/2017
 ---

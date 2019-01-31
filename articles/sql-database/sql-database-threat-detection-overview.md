@@ -12,12 +12,12 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 01/29/2019
-ms.openlocfilehash: 2f52cbaf5d50eca13a87ff8e745b0f8baefbe23e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 4c9700344ca5b973b8dad9fd1505d15f58c06126
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210369"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451716"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Az Azure SQL Database Threat Detection
 
@@ -27,7 +27,6 @@ Része a Fenyegetésészlelés az [SQL speciális adatbiztonság](sql-advanced-t
 
 > [!NOTE]
 > Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
-
 
 ## <a name="what-is-threat-detection"></a>Mi az a Fenyegetésészlelés
 
@@ -78,7 +77,7 @@ Kattintson a **fenyegetés-észlelési riasztás** , indítsa el az Azure Securi
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [egy adatbázis Fenyegetésészlelési](sql-database-threat-detection.md).
+- Tudjon meg többet [Fenyegetésészlelés különálló és készletezett adatbázisok](sql-database-threat-detection.md).
 - Tudjon meg többet [a felügyelt példány Fenyegetésészlelési](sql-database-managed-instance-threat-detection.md).
 - Tudjon meg többet [SQL biztonságú adatok](sql-advanced-threat-protection.md).
 - Tudjon meg többet [Azure SQL Database naplózási szolgáltatásával](sql-database-auditing.md)

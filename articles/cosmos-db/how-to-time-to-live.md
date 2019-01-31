@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/14/2018
 ms.author: mjbrown
-ms.openlocfilehash: 681878d43422e86df3db1050da24be88881d4b2e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a9f6676f1b2fdf812ec87595083ba6317a11873c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036290"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462154"
 ---
-# <a name="how-to-configure-time-to-live-in-azure-cosmos-db"></a>Az Azure Cosmos DB élettartam konfigurálása
+# <a name="configure-time-to-live-in-azure-cosmos-db"></a>Az Azure Cosmos DB élettartam konfigurálása
 
 Az Azure Cosmos DB élettartamot (TTL) konfigurálása a tároló szintjén is választja, vagy felülírhatja, az elemek szintjén a tároló beállítását követően. Élettartam egy tárolót az Azure portal vagy a megfelelő nyelvfüggő SDK-k használatával konfigurálható. Elem szintű TTL felülbírálások az SDK-k használatával konfigurálható.
 

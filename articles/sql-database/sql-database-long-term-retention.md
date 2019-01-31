@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 10/24/2018
-ms.openlocfilehash: b1ef03b97f9fe95286d427effc40e69ae07b6b3c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 3d6010df64c4e3c75bd05e2eb9828c07cf3fb342
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601491"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471385"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Az Azure SQL Database biztonsági mentéseinek Store akár 10 évig
 
 Számos alkalmazás rendelkezik szabályozási, megfelelőségi vagy egyéb üzleti célra használja, amely esetében megtarthatja az adatbázisok biztonsági mentése az Azure SQL Database által biztosított 7 – 35 napon túl [automatikus biztonsági mentések](sql-database-automated-backups.md). A hosszú távú megőrzés (LTR) szolgáltatással tárolhatja a megadott SQL adatbázis teljes biztonsági mentés a [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) a blob storage akár 10 évig. Biztonsági másolat új adatbázisként visszaállíthatja.
 
 > [!NOTE]
-> Az Azure SQL Database logikai kiszolgálók üzemeltetett adatbázisok LTR is engedélyezhetők. Ez még nem felügyelt példányok lévő üzemeltetett adatbázisokhoz. Használhatja az SQL Agent-feladatok ütemezése [csak másolatot adatbázis biztonsági másolatait](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) alternatívájaként LTR 35 napos időszak letelte után.
+> Az LTR is engedélyezve van az önálló és készletezett adatbázisok. Még nem érhető el például adatbázisok, a felügyelt példány van. Használhatja az SQL Agent-feladatok ütemezése [csak másolatot adatbázis biztonsági másolatait](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) alternatívájaként LTR 35 napos időszak letelte után.
 > 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL-adatbázis hosszú távú megőrzés működése
@@ -34,7 +34,7 @@ Minden egyes SQL Database LTR szabályzat konfigurálása, és adja meg, milyen 
 
 Példák:
 
--  W = 0, WeekOfYear M = 0, Y = 5, = 3
+-  W=0, M=0, Y=5, WeekOfYear=3
 
    A 3. teljes biztonsági mentés minden évben 5 éves marad.
 - W=0, M=3, Y=0
@@ -45,7 +45,7 @@ Példák:
 
    A heti teljes biztonsági 12 hetes marad.
 
-- W = 6, M = 12, Y = 10, WeekOfYear = 16
+- W=6, M=12, Y=10, WeekOfYear=16
 
    A heti teljes biztonsági 6 hétig fog tartani. Minden hónap első teljes biztonsági, kivéve, amely folyamatosan 12 hónapig. Kivételével a teljes készült biztonsági másolatok 16 év hete, amely folyamatosan 10 évig. 
 

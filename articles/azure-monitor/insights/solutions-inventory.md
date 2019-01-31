@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 14f373b5459aaa7a9e51ba284f6a30094c4e7617
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 48f1789d4909a1c3af9e9ca01d0b9d0a8e6e09f8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194181"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299640"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Adatok gyűjtése részletei felügyeleti megoldások az Azure-ban
 Ez a cikk tartalma [felügyeleti megoldások](solutions.md) elérhető a Microsoft mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A módszer és a Log analyticsbe adatok gyűjtésének gyakorisága információkat is biztosít.  Használhatja az információkat ebben a cikkben, azonosíthatja a különféle elérhető megoldások és más felügyeleti megoldásokkal data flow és a kapcsolat követelményeinek megismeréséhez. 
@@ -48,7 +48,7 @@ Magyarázat az oszlopok a következők:
 | [Riasztás felügyeleti](../../azure-monitor/platform/alert-management-solution.md) (Zabbix) |Linux |&#8226; | | | | |1 perc |
 | [Riasztás felügyeleti](../../azure-monitor/platform/alert-management-solution.md) (az Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 perc |
 | [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | n/a |
-| [Application Insights-összekötő (előzetes verzió)](../../azure-monitor/platform/app-insights-connector.md) | Azure | | | |  |  | az értesítés |
+| [(Elavult az) Application Insights-összekötő](../../azure-monitor/platform/app-insights-connector.md) | Azure | | | |  |  | az értesítés |
 | [Automation hibrid feldolgozó](../../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | n/a |
 | [Az Azure Application Gateway Analytics](../../azure-monitor/insights/azure-networking-analytics.md) | Azure |  |  |  |  |  | az értesítés |
 | **Felügyeleti megoldások** | **Platform** | **A Microsoft-figyelőügynököt** | **Operations Manager-ügynök** | **Azure Storage** | **Az Operations Manager szükséges?** | **A felügyeleti csoport Operations Manager-ügynök adatok küldött** | **Gyűjtés gyakorisága** |

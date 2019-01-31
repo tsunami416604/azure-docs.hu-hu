@@ -3,7 +3,7 @@ title: Automatikusan méretezni a számítási csomópontok az Azure Batch-kész
 description: Engedélyezze az automatikus skálázást egy felhőalapú készlet dinamikusan állítsa be a készletben lévő számítási csomópontok számát.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab41211fb0b0b6360bdbc255e367d0492c2438ed
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: fa5588ae31e63ae54e654ef26563c7570fe4cd13
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330886"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459842"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Hozzon létre egy automatikus méretezési képlet egy Batch-készletben lévő számítási csomópontok méretezése
 
@@ -134,7 +134,7 @@ Ezek a típusok támogatottak a képletet:
   * nap (1-31)
   * hét napja (szám; formátumban például hétfő 1)
   * óra (24 órás számformátumú; például 13 azt jelenti, hogy 1 óra)
-  * perc (00-59)
+  * minute (00-59)
   * a másodpercenként (00-59)
 * TimeInterval
 
@@ -164,7 +164,7 @@ Ezek a műveletek az előző szakaszban felsorolt típusok engedélyezettek.
 | időbélyeg *operátor* timeinterval |+ |időbélyeg |
 | időbélyeg *operátor* időbélyeg |- |TimeInterval |
 | *operátor*dupla |-, ! |double |
-| *operátor*timeinterval |- |TimeInterval |
+| *operator*timeinterval |- |TimeInterval |
 | dupla *operátor* dupla |<, <=, ==, >=, >, != |double |
 | karakterlánc *operátor* karakterlánc |<, <=, ==, >=, >, != |double |
 | időbélyeg *operátor* időbélyeg |<, <=, ==, >=, >, != |double |
@@ -181,7 +181,7 @@ Ezek előre meghatározott **funkciók** elérhető definiálása az automatikus
 | avg(doubleVecList) |double |A doubleVecList átlagértékét összes értékét adja vissza. |
 | len(doubleVecList) |double |A vektor, amely jön létre a doubleVecList hosszát adja vissza. |
 | LG(Double) |double |A napló alap 2. a kettős adja vissza. |
-| LG(doubleVecList) |doubleVec |A component-wise napló alap 2. a doubleVecList adja vissza. Egy vec(double) explicit módon kell átadni a paraméterhez. Ellenkező esetben a dupla lg(double) verziója veszi alapul. |
+| lg(doubleVecList) |doubleVec |A component-wise napló alap 2. a doubleVecList adja vissza. Egy vec(double) explicit módon kell átadni a paraméterhez. Ellenkező esetben a dupla lg(double) verziója veszi alapul. |
 | ln(Double) |double |A kettős, természetes logaritmusát adja vissza. |
 | ln(doubleVecList) |doubleVec |A component-wise napló alap 2. a doubleVecList adja vissza. Egy vec(double) explicit módon kell átadni a paraméterhez. Ellenkező esetben a dupla lg(double) verziója veszi alapul. |
 | log(Double) |double |A napló a kettős 10 alapszintű adja vissza. |
@@ -193,9 +193,9 @@ Ezek előre meghatározott **funkciók** elérhető definiálása az automatikus
 | rand() |double |0,0 és 1,0 közötti véletlenszerű értéket ad vissza. |
 | range(doubleVecList) |double |A minimális és maximális értékek közötti különbség a doubleVecList adja vissza. |
 | std(doubleVecList) |double |A doubleVecList értékek minta szórásának visszaadása. |
-| Stop() | |Leállítja az automatikus méretezés kifejezés kiértékelése. |
+| stop() | |Leállítja az automatikus méretezés kifejezés kiértékelése. |
 | Sum(doubleVecList) |double |A doubleVecList összetevőit összegét adja vissza. |
-| idő (dátum/idő karakterlánc = "") |időbélyeg |Ha átadva adja vissza az aktuális idő, ha nincsenek átadott paraméterek időbélyegzőjét, vagy a dátum/idő karakterlánc időbélyegzőjét. Támogatott dátum és idő formátumok a következők: W3C-DTF és RFC 1123. |
+| time(string dateTime="") |időbélyeg |Ha átadva adja vissza az aktuális idő, ha nincsenek átadott paraméterek időbélyegzőjét, vagy a dátum/idő karakterlánc időbélyegzőjét. Támogatott dátum és idő formátumok a következők: W3C-DTF és RFC 1123. |
 | érték (doubleVec v, dupla i) |double |Az elem helyén i vektor v, a nulla kiindulási indexszel rendelkező értékét adja vissza. |
 
 A függvények az előző táblázatban ismertetett elfogadhatja a lista argumentumként. A vesszővel tagolt lista tetszőleges kombinációját *dupla* és *doubleVec*. Példa:
@@ -222,7 +222,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Minták, mintául szolgáló százalékos aránya, és a *GetSample()* metódus
 Az automatikus skálázás képletét alapvető működéséhez, hogy szerezze be a tevékenység- és metrikaadatokat, majd módosítsa a készlet mérete az adatok alapján. Ezért fontos egyértelművé, hogyan kommunikáljanak az automatikus skálázási képletet mérőszámadatokat (minták).
 
-**Minták**
+**Példák**
 
 A Batch szolgáltatás rendszeres időközönként tevékenység- és erőforrás-metrikák mintát vesz igénybe, és elérhetővé teszi azokat az automatikus méretezési képletek. Ezek a minták a Batch szolgáltatás 30 másodpercenként rögzíti. Van azonban általában a késleltetés között, ha ezek a minták rögzítve, és mikor érhetők el (és által olvasható) az automatikus skálázási képletet. Ezenkívül számos tényezőtől, például hálózati vagy egyéb infrastrukturális problémára, a minták előfordulhat, hogy nem rögzíti az egy adott időszakban.
 
@@ -592,7 +592,7 @@ $isWorkingWeekdayHour = $workHours && $isWeekday;
 $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 ```
 
-### <a name="example-2-task-based-adjustment"></a>2. példa: A feladat-alapú beállítása
+### <a name="example-2-task-based-adjustment"></a>2. példa Feladatalapú beállítása
 Ebben a példában a készlet méretét módosul az üzenetsorban szereplő feladatok száma alapján. Megjegyzések és a sortöréseket a képlet karakterláncok elfogadhatók.
 
 ```csharp
@@ -611,7 +611,7 @@ $TargetDedicatedNodes = max(0, min($targetVMs, 20));
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-3-accounting-for-parallel-tasks"></a>3. példa: Nyilvántartási párhuzamos feladatok
+### <a name="example-3-accounting-for-parallel-tasks"></a>3. példa: Számlázási párhuzamos feladatok
 Ebben a példában a készlet méretét, a feladatok száma alapján állítja be. Ez a képlet is figyelembe veszi a [MaxTasksPerComputeNode] [ net_maxtasks] a készlethez beállított értéket. Ez a megközelítés olyan esetekben hasznos, ahol [párhuzamos feladat a végrehajtás](batch-parallel-node-tasks.md) engedélyezve van a készleten.
 
 ```csharp
@@ -632,7 +632,7 @@ $TargetDedicatedNodes = max(0,min($targetVMs,3));
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-4-setting-an-initial-pool-size"></a>4. példa: Egy kezdeti készlet méretének beállítása
+### <a name="example-4-setting-an-initial-pool-size"></a>4. példa: Egy készlet kezdeti méret
 Ez a példa bemutatja egy C# kódrészlet az egy automatikus skálázási képletet, amely beállítja a készlet méretét a megadott számú csomópontra egy kezdeti adott időszakban. Ezután azt állítja be a készlet méretét futó számát és az aktív feladatok a kezdeti időszak eltelte után.
 
 A képlet megjelenik a következő kódrészletet:

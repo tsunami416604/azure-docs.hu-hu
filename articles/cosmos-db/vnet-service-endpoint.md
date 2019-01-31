@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 25a05df42029fe444b8d5ceddb2972f779f1b232
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 199e1dda3e4629c0298d4aae1cb5d09e20e4b3b8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358728"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452040"
 ---
-# <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Azure Cosmos DB-erőforrások eléréséhez a virtuális hálózatok
+# <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Hozzáférés az Azure Cosmos DB a virtuális hálózatok (VNet)
 
-Beállíthatja, hogy engedélyezze a hozzáférést csak a megadott alhálózat virtuális hálózat (VNET) az Azure Cosmos fiókot. Engedélyezésével [szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) elérni az Azure Cosmos DB az alhálózat egy virtuális hálózaton belül, az adott alhálózatról származó forgalmat el kell küldeni Azure Cosmos DB és az alhálózat és virtuális hálózat azonosítóját. Az Azure Cosmos DB-szolgáltatásvégpont engedélyezése után az Azure Cosmos-fiók hozzáadásával korlátozhatja az alhálózathoz való hozzáférés.
+Beállíthatja, hogy engedélyezze a hozzáférést csak a megadott alhálózat virtuális hálózat (VNet) az Azure Cosmos fiókot. Engedélyezésével [szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) elérni az Azure Cosmos DB az alhálózat egy virtuális hálózaton belül, az adott alhálózatról származó forgalmat el kell küldeni Azure Cosmos DB és az alhálózat és virtuális hálózat azonosítóját. Az Azure Cosmos DB-szolgáltatásvégpont engedélyezése után az Azure Cosmos-fiók hozzáadásával korlátozhatja az alhálózathoz való hozzáférés.
 
 Alapértelmezés szerint az Azure Cosmos-fiók érhető el bármilyen forrásból származó ha érvényes engedélyezési jogkivonat a kérelemben. Amikor hozzáad egy vagy több Vnetek alhálózatainak, csak érkező kérések ezekhez az alhálózatokhoz érvényes választ fog kapni. Bármilyen más forrásból érkező kérelmek esetén kapnak a 403-as (tiltott) választ. 
 

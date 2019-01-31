@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 63a7602deee402bed056937c8465fd87c8256cd8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d442d09c8c8ded3aa50faf74e28c8d95ded24a5e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962846"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300200"
 ---
-# <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Gyors lépések: létrehozása és használata az SSH nyilvános-titkos kulcspárt Linux rendszerű virtuális gépekhez az Azure-ban
+# <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Gyors lépések: Hozzon létre, és használja az SSH nyilvános-titkos kulcspárt Linux rendszerű virtuális gépekhez az Azure-ban
 
-Egy SSH-kulcspárral létrehozhat olyan virtuális gépeket az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez, így nincs szükség jelszavakra a bejelentkezéshez. Ez a cikk bemutatja, hogyan hozhat létre gyorsan és használhatja az SSH nyilvános-titkos kulcspárt Linux rendszerű virtuális gépekhez. Ezeket a lépéseket az Azure Cloud Shellt, macOS vagy Linux gazdagép, a Linux Windows alrendszere és egyéb eszközöket, amelyek támogatják az OpenSSH hajthatja végre. 
+Egy secure shell-(SSH) kulcspárt létrehozhat virtuális gépeket (VM) az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez, aminek köszönhetően nincs szükség jelszavakra a bejelentkezéshez. Ez a cikk bemutatja, hogyan hozhat létre gyorsan és használhatja az SSH nyilvános-titkos kulcspárt Linux rendszerű virtuális gépekhez. Ezeket a lépéseket az Azure Cloud Shellt, macOS vagy Linux gazdagép, a Linux Windows alrendszere és egyéb eszközöket, amelyek támogatják az OpenSSH hajthatja végre. 
 
 > [!NOTE]
 > SSH-kulcsokkal létrehozott virtuális gépek alapértelmezés szerint vannak konfigurálva a jelszavak le van tiltva, így nagymértékben növeli a nehézsége kitehetők találgatásos támadások. 
@@ -65,7 +65,7 @@ Ha még nem ismeri a nyilvános SSH-kulcs formátumát, megjelenítheti a nyilv�
 cat ~/.ssh/id_rsa.pub
 ```
 
-Egy tipikus nyilvános kulcs értékét a következőhöz hasonló:
+Egy tipikus nyilvános kulcs értékét a példához hasonlóan néz ki:
 
 ```
 ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
@@ -88,6 +88,8 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
 Ha kulcspár létrehozása során megadott egy hozzáférési kódot, adja meg a jelszót, amikor a rendszer kéri, a bejelentkezés során. A virtuális gép bekerül a ~/.ssh/known_hosts fájlt, és a rendszer nem kéri újra amíg vagy a nyilvános kulcs az Azure virtuális gépek változásainak csatlakozni, vagy a kiszolgáló neve pedig kikerül a ~/.ssh/known_hosts.
+
+Ha a virtuális gép nem használja a just-in-time-hozzáférési házirend, hozzáférés kérése, mielőtt az csatlakozna a virtuális géphez szeretne. A just-in-time házirenddel kapcsolatos további információkért lásd: [kezelése virtuálisgép-hozzáférés az igény szerinti szabályzat](../../security-center/security-center-just-in-time.md).
 
 ## <a name="next-steps"></a>További lépések
 

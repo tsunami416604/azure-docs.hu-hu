@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 05c237eb071b48f2373ecfd78eeab6f7bceb8c5c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 01/25/2019
+ms.openlocfilehash: 4c8e93948532da02c64eb9eb1277abb425abc250
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584160"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455747"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Fizessen elő az SQL-adatbázis számítási erőforrásokat, hogy az Azure SQL Database szolgáltatás számára fenntartott kapacitás
 
@@ -34,9 +34,9 @@ A részleteket, hogyan vállalati ügyfelek és a használatalapú fizetéses ü
 
 ## <a name="determine-the-right-sql-size-before-purchase"></a>Határozza meg a megfelelő SQL-méretet vásárlás előtt
 
-Foglalási mérete alapján kell a meglévő vagy hamarosan –--telepíteni az SQL által használt számítási teljes mennyisége önálló adatbázisok és/vagy egy adott régión belül a rugalmas készletek és a teljesítmény szint és a hardver-generation használatával. 
+Foglalási mérete a meglévő vagy hamarosan –--telepíteni egy által használt számítási teljes mennyisége alapján kell adatbázis és/vagy rugalmas készletek belül egy adott régióban és a teljesítmény szint és a hardver-generation használatával. 
 
-Például tegyük fel, hogy futtatja egy általános célú, Gen5 – 16 virtuális mag rugalmas készletet, és két üzletileg kritikus, Gen5 – 4 virtuális mag önálló adatbázisok. További nézzük lehet, hogy szeretné-e a következő hónap belüli üzembe helyezett egy további általános célú, a Gen5 – 16 virtuális mag rugalmas készletet, és a egy üzletileg kritikus, Gen5 – 32 virtuális mag a rugalmas készlet. Ezenkívül tegyük fel, hogy ismeri, hogy ezeket az erőforrásokat kell legalább 1 évig. Ebben az esetben meg kell vásárolnia egy 32 mag (2 x 16), SQL Database egyetlen/rugalmas készletbeli általános célú - Compute, Gen5 és a egy 40 (2 x 4 + 32) 1 év foglalás az SQL Database egyetlen/rugalmas készletbeli üzletileg kritikus - Compute, Gen5 virtuális mag 1 év foglalás.
+Például tegyük fel, hogy futtatja egy általános célú, Gen5 – 16 virtuális mag rugalmas készletet, és két üzletileg kritikus, Gen5 – 4 virtuális mag önálló adatbázisok. További nézzük lehet, hogy szeretné-e a következő hónap belüli üzembe helyezett egy további általános célú, a Gen5 – 16 virtuális mag rugalmas készletet, és a egy üzletileg kritikus, Gen5 – 32 virtuális mag a rugalmas készlet. Ezenkívül tegyük fel, hogy ismeri, hogy ezeket az erőforrásokat kell legalább 1 évig. Ebben az esetben meg kell vásárolnia egy 32 mag (2 x 16), 1 év foglalás SQL Database önálló és rugalmas készlet általános célú - Compute, Gen5 és a egy 40 (2 x 4 + 32) az SQL Database önálló és rugalmas virtuális mag 1 év foglalás tárolókészlet üzletileg kritikus fontosságú - Compute, Gen5.
 
 ## <a name="buy-sql-database-reserved-capacity"></a>Az SQL Database szolgáltatás számára fenntartott kapacitás vásárlása
 
@@ -50,7 +50,7 @@ Például tegyük fel, hogy futtatja egy általános célú, Gen5 – 16 virtuá
     | Mező      | Leírás|
     |:------------|:--------------|
     |Name (Név)        |A Foglalás neve.| 
-    |Előfizetés|Az SQL Database szolgáltatás számára fenntartott kapacitás foglalási díjfizetéséhez használt előfizetés. A fizetési módot, az előfizetés fel van töltve az SQL Database szolgáltatás számára fenntartott kapacitás foglalás az előzetes költségek. Az előfizetés típusa kétféle lehet: nagyvállalati szerződés (ajánlatszám: MS-AZR-0017P) vagy használatalapú fizetéses (ajánlatszám: MS-AZR-0003P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|    
+    |Előfizetés|Az SQL Database szolgáltatás számára fenntartott kapacitás foglalási díjfizetéséhez használt előfizetés. A fizetési módot, az előfizetés fel van töltve az SQL Database szolgáltatás számára fenntartott kapacitás foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (csomag száma: MS-AZR-0017P) vagy a használatalapú fizetés (csomag száma: MS-AZR-0003P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|    
     |Hatókör       |A virtuális mag foglalás hatóköre egy előfizetés vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>Egyetlen előfizetés – a virtuális mag foglalási kedvezményt alkalmazza a rendszer SQL Database-példány ebben az előfizetésben. </li><li>Közös – a virtuális mag van alkalmazza a foglalási kedvezményt olyan előfizetéseket, a számlázási környezetben futó SQL Database-példányok. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és előfizetéseken belül a regisztráció (kivéve a fejlesztési és tesztelési előfizetések) magában foglalja. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.</li></ul>|
     |Régió      |Az Azure-régióban, az SQL Database által fenntartott kapacitás foglalás.|    
     |Központi telepítés típusa|Az SQL erőforrás típusa, amely szeretné megvásárolni a foglalást.|

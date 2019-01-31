@@ -1,19 +1,19 @@
 ---
 title: 'Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával'
-description: Ebből az oktatóanyagból megtudhatja, hogyan helyezheti üzembe és konfigurálhatja az Azure Firewallt az Azure Portalon.
+description: Ebben az oktatóanyagban megismerheti, hogyan telepítheti és konfigurálhatja az Azure PowerShell-lel az Azure-tűzfalon.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 12/14/2018
+ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 511fb425c6b31d204c88094ec5b1a49316495a0a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 29af70988cf77b9fad47e5c2478e5c86529fe9cf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431520"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458223"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -61,6 +61,8 @@ Az útvonalak létrehozásával kapcsolatos információkért lásd az oktatóan
 
 >[!NOTE]
 >Közvetlenül társviszonyban lévő virtuális hálózatok közötti adatforgalmat közvetlenül akkor is, ha egy udr-t az alapértelmezett átjáróként Azure tűzfal mutat. Ebben a forgatókönyvben a tűzfalon az alhálózat alhálózati forgalom küldésére, egy UDR a cél alhálózat hálózati előtagot mindkét alhálózat a explicit módon kell tartalmaznia.
+
+Tekintse át a kapcsolódó Azure PowerShell-referenciáinak dokumentációja, lásd: [Azure PowerShell-referencia](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

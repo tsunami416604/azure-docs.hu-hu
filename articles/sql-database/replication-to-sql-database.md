@@ -11,17 +11,17 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 11/09/2018
-ms.openlocfilehash: 6fbfaaa82095fbf093560e65076b40a392356da8
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/25/2019
+ms.openlocfilehash: 78858ba888986b75a1da77caaec1ef02ffcdf307
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330160"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467696"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Egyetlen vagy készletezett adatbázisok SQL-adatbázis-replikáció
 
-SQL Server-replikáció beállítható úgy, hogy egyetlen vagy készletezett adatbázisok az olyan [logikai kiszolgáló](sql-database-logical-servers.md) Azure SQL Database-ben.  
+SQL Server-replikáció beállítható úgy, hogy egyetlen vagy készletezett adatbázisok az olyan [SQL Database-kiszolgáló](sql-database-servers.md) Azure SQL Database-ben.  
 
 ## <a name="supported-configurations"></a>**Támogatott konfigurációk:**
   
@@ -65,7 +65,7 @@ SQL Server-replikáció beállítható úgy, hogy egyetlen vagy készletezett ad
 
 1. Hozzon létre egy tranzakciós replikáció kiadvány egy helyszíni SQL Server-adatbázisból.  
 2. A helyszíni SQL Server használata a **új előfizetés varázsló** , vagy hozzon létre egy leküldéses előfizetés az Azure SQL Database Transact-SQL utasításokkal.  
-3. Egyetlen vagy készletezett adatbázisok az Azure SQL Database a kezdeti adatok, egy pillanatképet a pillanatkép-kezelő ügynök által létrehozott és az elosztott és a terjesztési ügynök által alkalmazott. Az Azure SQL Database felügyelt példányába használhatja egy adatbázis biztonsági másolatának használatával ültet be az előfizetői adatbázisban.
+3. Egyetlen vagy készletezett adatbázisok az Azure SQL Database a kezdeti adatok, egy pillanatképet a pillanatkép-kezelő ügynök által létrehozott és az elosztott és a terjesztési ügynök által alkalmazott. A felügyelt példány adatbázis-kezelő is használhatja egy adatbázis biztonsági másolatának használatával ültet be az előfizetői adatbázisban.
 
 ### <a name="data-migration-scenario"></a>Adatok áttelepítési forgatókönyv  
 
@@ -107,7 +107,7 @@ A következő beállítások nem támogatottak az Azure SQL Database-előfizeté
 Hozzon létre egy kiadvány és a egy leküldéses előfizetés. További információkért lásd:
   
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Hozzon létre egy leküldéses előfizetés](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) előfizetőként a Azure SQL database logikai kiszolgáló neve használatával (például **N'azuresqldbdns.database.windows.net "**) és az Azure SQL-adatbázis neve, mint a cél-adatbázis ( például **AdventureWorks**).  
+- [Hozzon létre egy leküldéses előfizetés](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) az előfizetők az Azure SQL Database-kiszolgáló neve használatával (például **N'azuresqldbdns.database.windows.net "**) és az Azure SQL-adatbázis nevét (a cél-adatbázisként Példa **AdventureWorks**).  
 
 ## <a name="see-also"></a>Lásd még:  
 

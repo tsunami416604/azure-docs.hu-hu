@@ -3,21 +3,21 @@ title: Az Azure SQL Database DTU-alapú erőforrás korlátozza az önálló ada
 description: Ezen a lapon azt ismerteti, hogy néhány gyakori DTU-alapú erőforráskorlátok az Azure SQL Database önálló adatbázisok számára.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: sachinpMSFT
-ms.author: sachinp
-ms.reviewer: carlrab
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: ''
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: 5ddcacbf805ae9d2ce093058b21d53189457ffb9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/25/2019
+ms.openlocfilehash: e73bb2f1908abd049ea6e2406c0d1db02381695f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233769"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455541"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>A DTU-alapú vásárlási modell segítségével az önálló adatbázisok számára erőforráskorlátok
 
@@ -28,9 +28,9 @@ DTU-alapú vásárlási modell erőforráskorlátok a rugalmas készletek, lásd
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
-## <a name="single-database-storage-sizes-and-compute-sizes"></a>Önálló adatbázis: tárterületet és számítási méretek
+## <a name="single-database-storage-sizes-and-compute-sizes"></a>Önálló adatbázis: Tárterületet és számítási méretek
 
-Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatbázis rendelkezésre álló erőforrások megjelenítése az egyes szolgáltatásszinteken, és számítási mérete. A szolgáltatási rétegben, a számítási méretét és a egy önálló adatbázis a tárolókapacitás is megadhatja a [az Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), a [Azure CLI-vel](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), vagy a [ REST API-val](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
+Az alábbi táblázatok az önálló adatbázis rendelkezésre álló erőforrások megjelenítése az egyes szolgáltatásszinteken, és a számítási méret. A szolgáltatási rétegben, a számítási méretét és a egy önálló adatbázis a tárolókapacitás is megadhatja a [az Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), a [ Az Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases), vagy a [REST API-val](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases).
 
 ### <a name="basic-service-tier"></a>Alapszintű szolgáltatásszint
 
@@ -81,17 +81,17 @@ Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatb�
 |||||||
 
 > [!IMPORTANT]
-> A következő kivételével minden régióban több mint 1 TB prémium szintű storage jelenleg érhető el: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, Egyesült Királyság északi régiója, Egyesült Királyság déli régiója, USA védelmi Minisztériuma – középső régiója, USA védelmi Minisztériuma – keleti régiója, USA kormányzati középső régiója és USA nyugati középső Régiója.  Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve a következő: Kelet-Kína, Észak-Kína, közép-India, Németország északkelet-Németország, Egyesült Királyság északi régiója, Egyesült Királyság déli régiója, USA védelmi Minisztériuma – középső régiója, USA védelmi Minisztériuma – keleti régiója, USA kormányzati középső régiója és USA nyugati középső RÉGIÓJA.  Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
-## <a name="single-database-change-storage-size"></a>Önálló adatbázis: tároló méretének módosítása
+## <a name="single-database-change-storage-size"></a>Önálló adatbázis: Tároló méretének módosítása
 
-- Önálló adatbázis dtu-k díjszabása tartalmaz egy bizonyos mennyiségű tárolási további költségek nélkül. A csomagban foglalt adatmennyiségen felüli extra tárterület legfeljebb 250 GB-os fel 1 TB-os egységekben, majd, 256 GB 1 TB-os léptékben maximális méretkorlátot díjfizetés mellett bővítheti. Belefoglalt tárterület összegek és a maximális méret korlátok [egyetlen adatbázishoz: tárterületet és számítási méretek](#single-database-storage-sizes-and-compute-sizes).
-- Extra tárterülettel önálló adatbázis kiépítése a maximális méret használatával növelje a [az Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [Azure Parancssori felület](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API-val](https://docs.microsoft.com/rest/api/sql/databases/update).
+- Önálló adatbázis dtu-k díjszabása tartalmaz egy bizonyos mennyiségű tárolási további költségek nélkül. A csomagban foglalt adatmennyiségen felüli extra tárterület legfeljebb 250 GB-os fel 1 TB-os egységekben, majd, 256 GB 1 TB-os léptékben maximális méretkorlátot díjfizetés mellett bővítheti. Belefoglalt tárterület összegek és a maximális méret korlátok [egyetlen adatbázishoz: Tárterületet és számítási méretek](#single-database-storage-sizes-and-compute-sizes).
+- Extra tárterülettel önálló adatbázis kiépítése a maximális méret használatával növelje a [az Azure portal](sql-database-single-database-scale.md#dtu-based-purchasing-model-change-storage-size), [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [Azure Parancssori felület](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API-val](https://docs.microsoft.com/rest/api/sql/databases/update).
 - Az extra tárterülettel önálló adatbázis szolgáltatás díja az extra tárterület egységára a szolgáltatási rétegben megszorozza extra tárterület keletkezett. Az extra tárterület ára a részletekért lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="single-database-change-dtus"></a>Önálló adatbázist: módosítási dtu-k
+## <a name="single-database-change-dtus"></a>Önálló adatbázis: Módosítsa a dtu-k
 
-Miután kiválasztotta a egy szolgáltatási rétegben, számítási mérete és mennyisége, méretezhetők egy önálló adatbázis felfelé vagy lefelé dinamikusan használatával a tényleges tapasztalatok alapján a [az Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [ PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [az Azure CLI](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API-val](https://docs.microsoft.com/rest/api/sql/databases/update).
+Miután kiválasztotta a egy szolgáltatási rétegben, számítási mérete és mennyisége, méretezhetők egy önálló adatbázis felfelé vagy lefelé dinamikusan használatával a tényleges tapasztalatok alapján a [az Azure portal](sql-database-single-database-scale.md#dtu-based-purchasing-model-change-compute-resources-dtus), [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [ PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [az Azure CLI](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API-val](https://docs.microsoft.com/rest/api/sql/databases/update).
 
 Dinamikusan módosítása a szolgáltatás a következő videó bemutatja a csomagot, és számítási méret növelése elérhető dtu-k egy önálló adatbázis.
 
@@ -103,8 +103,8 @@ A szolgáltatás rétegbeli és/vagy számítási egy adatbázist hoz létre az 
 A teljes felskálázási folyamat időtartama az adatbázis a módosítás előtti és utáni méretétől és szolgáltatásszintjétől függ. Ha például egy 250 GB-os adatbázis, amely megváltoztatja a, a vagy a Standard szolgáltatásszinten belül hat órán belüli be kell fejeződnie. A vertikális felskálázás három órán belül, amely számítási méretű prémium szolgáltatási szinten belül módosul az azonos méretű adatbázis esetén be kell fejeződnie.
 
 > [!TIP]
-> A folyamatban lévő műveletek figyeléséről lásd:: [SQL REST API használatával műveleteinek kezelésére](https://docs.microsoft.com/rest/api/sql/databaseoperations/listbydatabase
-), [kezelése CLI használatával az operations](/cli/azure/sql/db/op), [T-SQL használatával végzett műveletek monitorozására](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) , és ez a két PowerShell-parancsok: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) és [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
+> A folyamatban lévő műveletek monitorozására, tekintse meg: [SQL REST API használatával műveleteinek kezelésére](https://docs.microsoft.com/rest/api/sql/databaseoperations/listbydatabase
+), [kezelése CLI használatával az operations](/cli/azure/sql/db/op), [T-SQL használatával végzett műveletek monitorozására](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) és a következő két PowerShell-parancsokat: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) and [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
 
 - Ha egy magasabb szolgáltatási szintre frissít, vagy méretű számítási, az adatbázis maximális méretét nem növekszik, hacsak Ön kifejezetten megad egy nagyobb méretű (maxsize).
 - Alacsonyabb szolgáltatásszintre váltásához egy adatbázist, a használt adatbázis-terület kisebb, mint a megengedett maximális a cél szolgáltatásszint és számítási mérete kell lennie.
@@ -114,7 +114,7 @@ A teljes felskálázási folyamat időtartama az adatbázis a módosítás előt
 - A visszaállítási szolgáltatásajánlatok eltérőek a különböző szolgáltatásszintek esetében. Ha alacsonyabb szolgáltatásszintre a **alapszintű** szinten, és van egy alacsonyabb biztonsági másolatainak megőrzési ideje. Lásd: [az Azure SQL Database biztonsági másolatainak](sql-database-automated-backups.md).
 - Az adatbázis új tulajdonságai csak akkor lesznek alkalmazva, ha a módosítások befejeződtek.
 
-## <a name="single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>Önálló adatbázis: P11 és p15-ös, amikor a maximális méret 1 TB-nál nagyobb korlátozásai
+## <a name="single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>Önálló adatbázis: A P11 és p15-ös, amikor a maximális méret 1 TB-nál nagyobb korlátozások
 
 Nagyobb, mint 1 TB-os maximális mérettel P11 és P15 adatbázisokat az alábbi szempontok és korlátozások vonatkoznak:
 
@@ -125,13 +125,13 @@ Nagyobb, mint 1 TB-os maximális mérettel P11 és P15 adatbázisokat az alábbi
 - Ha egy adatbázis maximális mérete értéke nagyobb, mint 1 TB-ot, majd azt nem lehet módosítani 1 TB-os akkor is, ha a használt tényleges tárterület 1 TB-os alatt. Ebből kifolyólag nem elő-vagy Visszaléptetés a P11-es vagy P15 nagyobb, mint 1 TB-os P11-es vagy 1 TB-os P15 1 TB-os maximális mérettel és csökkentse a méretét, P1 – P6 például számítási). Ez a korlátozás is vonatkozik a visszaállítás és másolási forgatókönyvek esetén az időpontban, beleértve a geo-visszaállítás, hosszú-távú – backup-megőrzés és -adatbázis másolatát. Ha egy adatbázis nagyobb, mint 1 TB-os maximális mérettel van konfigurálva, az adatbázis minden visszaállítási művelet nagyobb, mint 1 TB-os maximális mérettel be a P11 és p15-ös kell futnia.
 - Aktív georeplikáció forgatókönyvek esetén:
   - Georeplikáció kapcsolat beállítása: Ha az elsődleges adatbázis P11 és p15-ös, az secondary(ies) is kell lennie a P11 és P15; Csökkentse számítási méretek másodlagos példány hozható létre, a rendszer elutasítja, mivel azok nem képes a több mint 1 TB.
-  - Frissítése az elsődleges adatbázis georeplikációs kapcsolatban: az elsődleges adatbázison több mint 1 TB-os maximális méretének módosítása elindítja ezt a változtatást a másodlagos adatbázison. Mindkét frissítése sikeres a módosítás érvénybe léptetéséhez az elsődleges kell lennie. A több mint 1 TB-os lehetőség régió korlátozások érvényesek. Ha a másodlagos régióban, amely nem támogatja a több mint 1 TB-ot, az elsődleges nem frissül.
+  - Frissítése az elsődleges adatbázis georeplikációs kapcsolatban: Az elsődleges adatbázison több mint 1 TB-os maximális méretének módosítása elindítja ezt a változtatást a másodlagos adatbázison. Mindkét frissítése sikeres a módosítás érvénybe léptetéséhez az elsődleges kell lennie. A több mint 1 TB-os lehetőség régió korlátozások érvényesek. Ha a másodlagos régióban, amely nem támogatja a több mint 1 TB-ot, az elsődleges nem frissül.
 - A P11 és P15 adatbázisok esetén több mint 1 TB betöltése az Import/Export szolgáltatás használata nem támogatott. Az SqlPackage.exe használata [importálása](sql-database-import.md) és [exportálása](sql-database-export.md) adatokat.
 
 ## <a name="next-steps"></a>További lépések
 
 - Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyakori kérdésekre adott válaszokat.
-- Lásd: [erőforrás áttekintése korlátozza egy logikai kiszolgálón](sql-database-resource-limits-logical-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.
+- Lásd: [erőforrás áttekintése korlátozza az SQL Database-kiszolgálón](sql-database-resource-limits-database-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.
 - Azure – általános korlátozások kapcsolatos információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
 - További információ a dtu-król és edtu-k: [dtu-król és edtu-k](sql-database-service-tiers.md#dtu-based-purchasing-model).
 - A tempdb méretbeli korlátokat kapcsolatos információkért lásd: [SQL-adatbázis a tempdb korlátok](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

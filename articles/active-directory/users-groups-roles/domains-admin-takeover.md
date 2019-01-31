@@ -13,13 +13,13 @@ ms.workload: identity
 ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.custom: it-pro;seo-update-jan
-ms.openlocfilehash: ec1f36bee1a764f98473d7a6d1a6d7359dde9ea7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 9cef490d22a013b952d6692d0ac0e932a35c9ba3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156156"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297633"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele
 Ez a cikk ismerteti egy DNS-tartománynevet az Azure Active Directoryban (Azure AD) egy nem felügyelt könyvtár átvétele kétféle módon. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló vagy "vírusos" a szolgáltatás regisztrációs kapcsolatos további információkért lásd: [Mi az Azure Active Directory önkiszolgáló regisztráció?](directory-self-service-signup.md)

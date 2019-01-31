@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 01/04/2019
-ms.openlocfilehash: 05793afc5de8b6c8285c1f700929e4f110bdfc8d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.date: 01/28/2019
+ms.openlocfilehash: a48e9a21c97ecb881798b0f944e91cfcf81f0a72
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912555"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295763"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
 
@@ -35,7 +35,7 @@ Az Azure Blob Storage egy robusztus, általános célú tárolómegoldás, amely
 | Általános célú V1   | Blob               | Standard                    | –                    |
 | Blob Storage         | Blob               | Standard                    | Gyakori és ritka elérésű, archív *    |
 
-Az alapértelmezett blobtárolóban nem ajánlott üzleti adatokat tárolni. Az alapértelmezett blobtárolót ajánlatos törölni minden egyes használat után. Fontos, hogy az alapértelmezett tároló alkalmazás- és rendszernaplókat is tartalmaz. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
+Az alapértelmezett blobtárolóban nem ajánlott üzleti adatokat tárolni. Az alapértelmezett blobtárolót ajánlatos törölni minden egyes használat után. Az alapértelmezett tároló tartalmazza, az alkalmazás- és naplókat. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
 
 Egy blobtároló alapértelmezett fájlrendszerként való, több fürt közötti megosztása nem támogatott.
  
@@ -63,8 +63,7 @@ Az alábbiakban néhány szempont olvasható Azure Storage-fiók és HDInsight-f
   
   > [!NOTE]  
   > A nyilvános tárolók esetén a tárolóban elérhető összes blob listáját és a tároló metaadatait is lekérheti. A nyilvános blobok esetén csak akkor érheti el a blobokat, ha ismeri a pontos URL-t. További információkért lásd: <a href="https://docs.microsoft.com/azure/storage/blobs/storage-manage-access-to-resources">tárolókhoz és blobokhoz való hozzáférés kezelése</a>.
-  > 
-  > 
+
 * **A storage-fiókok fürthöz nem csatlakozó személyes tárolók:** Nem férhet hozzá a tárolókban lévő blobokat, kivéve, ha a WebHCat-feladatok elküldésekor határozza meg a tárfiókot. Ennek a magyarázatát a cikk későbbi részében találja.
 
 A létrehozási folyamat során meghatározott tárfiókok és a kulcsaik a %HADOOP_HOME%/conf/core-site.xml fájlban találhatók a fürtcsomópontokon. A HDInsight alapértelmezett viselkedése a core-site.xml fájlban meghatározott tárfiókok használata. Ez módosítható használatának beállítása [Apache Ambari](./hdinsight-hadoop-manage-ambari.md).
@@ -102,7 +101,7 @@ Az alapértelmezett Blob-tároló a fürtre jellemző információkat, például
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 Amikor HDInsight-fürtöt hoz létre a portálról, megadhatja a tárfiók részleteit (az alábbiakban látható módon). Megadhatja azt is kívánja-e egy tárfiókot a fürthöz társított, és ha igen, válassza ki a Data Lake Storage vagy egy másik Azure Storage-blobot a kiegészítő tárolóként.
 
-![HDInsight hadoop létrehozási adatforrás](./media/hdinsight-hadoop-use-blob-storage/hdinsight.provision.data.source.png)
+![HDInsight hadoop létrehozási adatforrás](./media/hdinsight-hadoop-use-blob-storage/storage.png)
 
 > [!WARNING]  
 > A rendszer nem támogatja további tárfiókok használatát a HDInsight-fürtön kívül eső helyeken.
@@ -184,7 +183,7 @@ wasb:///example/jars/hadoop-mapreduce-examples.jar
 > [!NOTE]  
 > A fájlnév a <i>hadoop-examples.jar</i> a HDInsight 2.1-es és 1.6-s verziójú fürtökben.
 
-Az &lt;elérési út&gt; a fájl vagy könyvtár HDFS elérési útja neve. Mivel az Azure Blob Storage tárolóban lévő tárolók egyszerűen kulcs-érték tárolók, nincs valós hierarchikus fájlrendszer. A blob kulcson belüli perjel karaktert ( / ) a rendszer könyvtárelválasztóként értelmezi. A *hadoop-mapreduce-examples.jar* blobneve például a következő:
+Az &lt;elérési út&gt; a fájl vagy könyvtár HDFS elérési útja neve. Mivel az Azure BLOB storage tárolók kulcs-érték tárolók, nincs valós hierarchikus fájlrendszer. A blob kulcson belüli perjel karaktert ( / ) a rendszer könyvtárelválasztóként értelmezi. A *hadoop-mapreduce-examples.jar* blobneve például a következő:
 
 ```bash
 example/jars/hadoop-mapreduce-examples.jar
@@ -348,7 +347,7 @@ További információkért lásd:
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
 [hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
 
-[blob-storage-restAPI]: https://msdn.microsoft.com/library/windowsazure/dd135733.aspx
+[blob-storage-restAPI]: https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API
 [azure-storage-create]:../storage/common/storage-create-storage-account.md
 
 [img-hdi-powershell-blobcommands]: ./media/hdinsight-hadoop-use-blob-storage/HDI.PowerShell.BlobCommands.png

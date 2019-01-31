@@ -2,19 +2,19 @@
 title: Docker-rendszerkép leküldése a privát Azure container registrybe
 description: Docker-rendszerképek leküldése és lekérése egy Azure-beli privát tároló beállításjegyzékébe és -jegyzékéből a Docker parancssori felületével
 services: container-registry
-author: stevelas
+author: dlepow
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/29/2017
-ms.author: stevelas
+ms.date: 01/23/2019
+ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 3cbc9f30f180913fefa79f24612e50db75f5c9cd
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e4963ebae73bdd81246433fe43206139caa1661c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260582"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295780"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 
@@ -25,7 +25,7 @@ A következő lépésekben egy hivatalos letöltési [Nginx rendszerképet](http
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure Container Registry** – Létrehozhat egy tároló-beállításjegyzéket Azure-előfizetésében. Például a [az Azure portal](container-registry-get-started-portal.md) vagy a [Azure CLI-vel](container-registry-get-started-azure-cli.md).
-* **Docker CLI** – a helyi számítógépét Docker-gazdagépként beállítani és elérni a Docker parancssori felületének parancsait, telepítse [Docker](https://docs.docker.com/engine/installation/).
+* **Docker CLI** – Docker helyi telepítése is szükséges. Docker csomagokat biztosít, a Docker egyszerűen konfigurálható bármely [macOS] [docker-mac], [Windows] [docker-windows] vagy [Linux] [docker-linux] rendszerhez.
 
 ## <a name="log-in-to-a-registry"></a>Bejelentkezés beállításjegyzékbe
 
@@ -35,13 +35,13 @@ Nincsenek [többféleképpen hitelesítéséhez](container-registry-authenticati
 az acr login --name myregistry
 ```
 
-Is bejelentkezhet a következővel [docker login](https://docs.docker.com/engine/reference/commandline/login/). Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Előfordulhat például, hogy [hozzárendelt egy egyszerű szolgáltatást](container-registry-authentication.md#service-principal) a beállításjegyzékhez egy automatizálási forgatókönyvhöz.
+Is bejelentkezhet a következővel [docker login](https://docs.docker.com/engine/reference/commandline/login/). Előfordulhat például, hogy [hozzárendelt egy egyszerű szolgáltatást](container-registry-authentication.md#service-principal) a beállításjegyzékhez egy automatizálási forgatókönyvhöz. A következő parancs futtatásakor adja meg a szolgáltatás egyszerű appID (felhasználónév) és a jelszót, amikor a rendszer kéri. Az ajánlott eljárásokat, és bejelentkezési hitelesítő adatok kezelése, tekintse meg a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) referencia parancsot:
 
-```Bash
-docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
+```Docker
+docker login myregistry.azurecr.io
 ```
 
-Mindkét parancsot vissza `Login Succeeded` Ha befejeződött. Ha `docker login`, is előfordulhat, hogy megjelenik egy biztonsági figyelmeztetés használatát javasolja a `--password-stdin` paraméter. Bár a paraméter használatát a cikk nem tárgyalja, javasoljuk, kövesse ezt az ajánlott eljárást. További információkért lásd: a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) referencia parancsot.
+Mindkét parancsot vissza `Login Succeeded` Ha befejeződött.
 
 > [!TIP]
 > Mindig adja meg a teljes tartománynév (csak kisbetűkkel) használatakor `docker login` és mikor, címkézhet meg képeket a tárházat a tárolójegyzékbe. A példákban Ez a cikk a teljes tartománynévvel van *myregistry.azurecr.io*.
@@ -50,7 +50,7 @@ Mindkét parancsot vissza `Login Succeeded` Ha befejeződött. Ha `docker login`
 
 Először kérje le a nyilvános Nginx-rendszerképet a helyi számítógépen.
 
-```Bash
+```Docker
 docker pull nginx
 ```
 
@@ -58,7 +58,7 @@ docker pull nginx
 
 Hajtsa végre következő [futtatása docker](https://docs.docker.com/engine/reference/run/) parancsot egy helyi példányát az Nginx-tároló interaktívan (`-it`) a 8080-as porton. A `--rm` argumentum meghatározza, hogy a tároló el kell távolítani, leállításakor.
 
-```Bash
+```Docker
 docker run -it --rm -p 8080:80 nginx
 ```
 
@@ -74,7 +74,7 @@ Mivel elindítottuk a tárolóhoz, az interaktív módon `-it`, láthatja, hogy 
 
 Használat [docker címke](https://docs.docker.com/engine/reference/commandline/tag/) hozhat létre egy aliast a rendszerképről a teljes elérési útja a tárolójegyzékbe. A példa a(z) `samples` névteret határozza meg, hogy ne legyen zsúfolt a beállításjegyzék gyökere.
 
-```Bash
+```Docker
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
@@ -84,7 +84,7 @@ Címkézés a névterek kapcsolatos további információkért lásd: a [adattá
 
 Most, hogy miután ellátta azt, hogy a kép a teljes elérési útja és a privát regisztrációs adatbázisba, leküldheti a tárolójegyzékbe [docker leküldéses](https://docs.docker.com/engine/reference/commandline/push/):
 
-```Bash
+```Docker
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
@@ -92,7 +92,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 Használja a [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) parancsot a rendszerkép lekérése a beállításjegyzékből:
 
-```Bash
+```Docker
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
@@ -100,7 +100,7 @@ docker pull myregistry.azurecr.io/samples/nginx
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/run/) parancs futtatása a lemezképet, már a regisztrációs adatbázisból beolvasott:
 
-```Bash
+```Docker
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
@@ -112,7 +112,7 @@ Keresse meg a [ http://localhost:8080 ](http://localhost:8080) a futó tároló 
 
 Ha már nincs szüksége az Nginx rendszerképet, törölheti a helyben a [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) parancsot.
 
-```Bash
+```Docker
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
@@ -124,7 +124,7 @@ az acr repository delete --name myregistry --repository samples/nginx --tag late
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy elsajátította az alapokat, készen áll a beállításjegyzéke használatára! A tárolólemezképeket a beállításjegyzékből, üzembe helyezése:
+Most, hogy elsajátította az alapokat, készen áll a beállításjegyzéke használatára! Például helyezhet üzembe rendszerképeket, a regisztrációs adatbázisból:
 
 * [Az Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
 * [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)

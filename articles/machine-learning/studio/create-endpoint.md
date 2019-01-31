@@ -1,5 +1,5 @@
 ---
-Cím: Hozza létre a Web service végpontok titleSuffix: Azure Machine Learning Studio description: Az Azure Machine Learning webszolgáltatás-végpontok létrehozása A Web service-ben minden végpont egymástól függetlenül foglalkozik, szabályozva, és felügyelt.
+Cím: Hozza létre a Web service végpontok titleSuffix: Azure Machine Learning Studio description: Az Azure Machine Learning webszolgáltatás-végpontok létrehozása A Web service-ben minden végpont egymástól függetlenül foglalkozik, szabályozva, és felügyelt.
 szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 10/04/2016

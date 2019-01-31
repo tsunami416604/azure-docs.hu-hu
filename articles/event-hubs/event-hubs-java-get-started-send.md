@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 80c413c874ca3e1bf46bfa4e5becb184223c5eeb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4da89e0f99832c429091e0a028fafd8943df811a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091287"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300115"
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Események küldése az Azure Event Hubs Java használatával
 
@@ -35,19 +35,19 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
 Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md).
 
-Az eseményközpont hozzáférési kulcs értékének lekérése kövesse a cikkben szereplő: [kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot a kód írása az oktatóanyag későbbi részében fogja használni. Az alapértelmezett kulcs neve: **RootManageSharedAccessKey**.
+Az eseményközpont hozzáférési kulcs értékének lekéréséhez kövesse a cikkben szereplő: [Kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot a kód írása az oktatóanyag későbbi részében fogja használni. Az alapértelmezett nevet, majd: **RootManageSharedAccessKey**.
 
 Most folytassa a következő lépéseket ebben az oktatóanyagban.
 
 ## <a name="add-reference-to-azure-event-hubs-library"></a>Az Azure Event Hubs-erőforrástárhoz hivatkozás hozzáadása
 
-A Java ügyféloldali kódtár, az Event Hubs szolgáltatás a Maven-projektekhez érhető el a [Maven központi tárházból](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Ebben a könyvtárban, a Maven-projektfájlból belül a következő függőségi nyilatkozat használatával hivatkozhat. A jelenlegi verzió: 1.0.2-es:    
+A Java ügyféloldali kódtár, az Event Hubs szolgáltatás a Maven-projektekhez érhető el a [Maven központi tárházból](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Ebben a könyvtárban a következő függőségi nyilatkozat használata a Maven-projektfájlból belül lehet hivatkozni:
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>1.0.2</version>
+    <version>2.2.0</version>
 </dependency>
 ```
 
@@ -57,11 +57,9 @@ Egy egyszerű esemény-közzétevő importálja a *com.microsoft.azure.eventhubs
 
 ## <a name="write-code-to-send-messages-to-the-event-hub"></a>Kód írása az üzenetek eseményközpontba való küldésére
 
-A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Az osztály neve `SimpleSend`:     
+A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Adjon hozzá egy osztályt `SimpleSend`, és adja hozzá a következő kódot az osztály:
 
 ```java
-package com.microsoft.azure.eventhubs.samples.send;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.microsoft.azure.eventhubs.ConnectionStringBuilder;
@@ -74,7 +72,7 @@ import java.nio.charset.Charset;
 import java.time.Instant;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class SimpleSend {
 
@@ -91,11 +89,11 @@ public class SimpleSend {
 A ConnectionStringBuilder osztály használatával hozhat létre egy kapcsolati karakterlánc értékét az Event Hubs-ügyfél példány számára. A helyőrzőket cserélje le a névtér és az eseményközpont létrehozásakor beszerzett:
 
 ```java
-final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
-        .setNamespaceName("Your Event Hubs namespace name")
-        .setEventHubName("Your event hub")
-        .setSasKeyName("Your policy name")
-        .setSasKey("Your primary SAS key");
+        final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
+                .setNamespaceName("speventhubns") 
+                .setEventHubName("speventhub")
+                .setSasKeyName("RootManageSharedAccessKey")
+                .setSasKey("2+WMsyyy1XmUtEnRsfOmTTyGasfJgsVjGAOIN20J1Y8=");
 ```
 
 ### <a name="send-events"></a>Események küldése
@@ -103,15 +101,40 @@ final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
 Hozzon létre egy egyes számú esemény átalakításával keletkező egy karakterlánc, az UTF-8 bájtos kódolást. Ezután hozzon létre új Event Hubs-ügyfél példány a kapcsolati karakterláncból, és az üzenet elküldéséhez:   
 
 ```java 
-String payload = "Message " + Integer.toString(i);
-byte[] payloadBytes = gson.toJson(payload).getBytes(Charset.defaultCharset());
-EventData sendEvent = EventData.create(payloadBytes);
+        final Gson gson = new GsonBuilder().create();
 
-final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
-ehClient.sendSync(sendEvent);
-    
-// close the client at the end of your program
-ehClient.closeSync();
+        // The Executor handles all asynchronous tasks and this is passed to the EventHubClient instance.
+        // This enables the user to segregate their thread pool based on the work load.
+        // This pool can then be shared across multiple EventHubClient instances.
+        // The following sample uses a single thread executor, as there is only one EventHubClient instance,
+        // handling different flavors of ingestion to Event Hubs here.
+        final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
+
+        // Each EventHubClient instance spins up a new TCP/SSL connection, which is expensive.
+        // It is always a best practice to reuse these instances. The following sample shows this.
+        final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
+
+
+        try {
+            for (int i = 0; i < 10; i++) {
+
+                String payload = "Message " + Integer.toString(i);
+                byte[] payloadBytes = gson.toJson(payload).getBytes(Charset.defaultCharset());
+                EventData sendEvent = EventData.create(payloadBytes);
+
+                // Send - not tied to any partition
+                // Event Hubs service will round-robin the events across all Event Hubs partitions.
+                // This is the recommended & most reliable way to send to Event Hubs.
+                ehClient.sendSync(sendEvent);
+            }
+
+            System.out.println(Instant.now() + ": Send Complete...");
+            System.out.println("Press Enter to stop.");
+            System.in.read();
+        } finally {
+            ehClient.closeSync();
+            executorService.shutdown();
+        }
 
 ``` 
 
@@ -119,7 +142,7 @@ Hozhat létre és futtassa a programot, és győződjön meg arról, hogy nincse
 
 Gratulálunk! Üzeneteket küldött egy eseményközpontba.
 
-### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>A függelék: Hogyan üzenetek legyenek átirányítva az EventHub-partíciók
+### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>A függelék: Hogyan legyenek átirányítva az üzeneteket az EventHub-partíciók
 
 Üzenetek fogyasztó megkaptuk, mielőtt közzétenni a partíciók először a kiadók által rendelkeznek. Üzeneteket az eseményközpontba szinkron módon történik a metódussal sendSync() a com.microsoft.azure.eventhubs.EventHubClient objektum közzétételét követően sikerült-e az összes rendelkezésre álló partíciókra Ciklikus időszeleteléses módon elosztott vagy egy adott partícióra küldött üzenet attól függően, hogy a partíciós kulcs van megadva, vagy nem.
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 2bb3665f0d0ab15f212741a6ce032fcd7ac2620d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7cc8e46c841b6e385d1a3b442fdb63d465486af8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358113"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477726"
 ---
-# <a name="ip-firewall-for-azure-cosmos-accounts"></a>IP-tűzfal az Azure Cosmos-fiókok
+# <a name="ip-firewall-in-azure-cosmos-db"></a>Az Azure Cosmos DB IP-tűzfal
 
 A fiókban tárolt adatok védelmében, az Azure Cosmos DB támogatja, amelyek már használja egy erős kivonat-alapú üzenethitelesítési kód (HMAC) titkos alapú engedélyezési modell. Továbbá a Azure Cosmos DB támogatja IP-alapú hozzáférés-vezérlést a tűzfaltámogatás bejövő. Ez a modell a tűzfalszabályok a hagyományos adatbázisok rendszer hasonló, és egy további szintű fiókjába biztonságot nyújt. Tűzfal konfigurálhatja az Azure Cosmos fiók elérésére csak egy jóváhagyott gépekre és/vagy felhőszolgáltatásokra. Az ezen jóváhagyott készletek gépek és szolgáltatások az Azure Cosmos-adatbázisban tárolt adatokhoz való hozzáférés továbbra is szükséges a hívót annak érvényes engedélyezési jogkivonat található.
 

@@ -8,13 +8,13 @@ ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.component: disks
-ms.openlocfilehash: eec7b64836819f840702bb715f4fcc0573a94b00
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: disks
+ms.openlocfilehash: 07d26590799f169e8e252557287b5c7e0003ea87
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251849"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469413"
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>Az Azure Linux virtuális gépek disks storage-ról
 Minden olyan számítógépre, mint az Azure-beli virtuális gépek lemezeket használnak egy olyan hely operációs rendszert, alkalmazásokat és adatokat szeretne tárolni. Az összes Azure-beli virtuális gépek legalább két lemezt – egy Linux operációsrendszer-lemez és a egy ideiglenes lemezzel rendelkezik. Az operációsrendszer-lemez jön létre egy rendszerképből, és az operációsrendszer-lemez és a kép is tárolt virtuális merevlemezek (VHD) egy Azure storage-fiókban. Virtuális gépek is rendelkezhet egy vagy több adatlemezt, is tárolt VHD-ként.

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 8c5e56baacc6f17fcd88bbc9b95e3634839e2ad8
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d497f3c5e3d64e13b0c6ad4d3021ad2e451f3ae5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884844"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296707"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Adatkezelés az Azure Cosmos DB SQL API-fiók (a SDK verziója 3 előzetes verzió) egy .NET-Konzolalkalmazás létrehozása
 
@@ -318,20 +318,20 @@ Egy tároló használatával hozható létre a [ **CreateContainerIfNotExistsAsy
         //ADD THIS PART TO YOUR CODE
         await this.CreateContainer();
     }
-    ´´´
-Select **F5** to run your application.
+    ```
+Válassza ki **F5** az alkalmazás futtatásához.
 
-Congratulations! You have successfully created an Azure Cosmos DB container.  
+Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-tárolót.  
 
-## <a id="CreateDoc"></a>Step 6: Add items to the container
-An item can be created by using the [**CreateItemAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmositems) function of the **CosmosItems** class. When using the SQL API, items are projected as documents, which are user-defined (arbitrary) JSON content. You can now insert an item into your Azure Cosmos DB container.
+## <a id="CreateDoc"></a>6. lépés: Elemek hozzáadása a tárolóhoz
+Egy elem használatával hozható létre a [ **CreateItemAsync** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmositems) funkcióját a **CosmosItems** osztály. Az SQL API használatával az elemek dokumentumokként vannak kivetítve, amelyek felhasználói (tetszőleges) JSON-tartalmak. Most már beszúrhat egy elemet az Azure Cosmos DB-tárolóba.
 
-First, we need to create a **Family** class that will represent objects stored within Azure Cosmos DB in this sample. We will also create **Parent**, **Child**, **Pet**, **Address** subclasses that are used within **Family**. Note that documents must have an **Id** property serialized as **id** in JSON. 
-1. Select **Ctrl+Shift+A** to open the **Add New Item** dialog. Add a new class **Family.cs** to your project. 
+Először létre kell hozni egy **Család** osztályt, amely ebben a mintában az Azure Cosmos DB-ben tárolt objektumokat képviseli. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Ne feledje, hogy a dokumentumoknak rendelkezniük kell egy **Azonosító** tulajdonsággal, amely a JSON-fájlban **id**-ként van szerializálva. 
+1. Válassza ki **Ctrl + Shift + A** megnyitásához a **új elem hozzáadása** párbeszédpanel. Adjon hozzá egy új osztályt **Family.cs** a projekthez. 
 
-    ![Screen shot of adding a new Family.cs class into the project](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
+    ![Képernyőfelvétel a projektbe a Finderből új Family.cs osztály hozzáadása](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
 
-1. Copy and paste the **Family**, **Parent**, **Child**, **Pet**, and **Address** class into **Family.cs**. 
+1. Másolja és illessze be a **termékcsalád**, **szülő**, **gyermek**, **Kisállat**, és **cím** be osztály**Family.cs**. 
     ```csharp
     using Newtonsoft.Json;
 
@@ -596,15 +596,15 @@ Most frissíteni fogjuk az Azure Cosmos DB egy elemet.
         //ADD THIS PART TO YOUR CODE
         await this.ReplaceFamilyItem();
     }
-    ´´´
-Select **F5** to run your application.
+    ```
+Válassza ki **F5** az alkalmazás futtatásához.
 
-Congratulations! You have successfully replaced an Azure Cosmos DB item.
+Gratulálunk! Sikeresen lecserélt egy Azure Cosmos DB-elemet.
 
-## <a id="DeleteDocument"></a>Step 9: Delete item
-Now, we will delete an item in Azure Cosmos DB.
+## <a id="DeleteDocument"></a>9. lépés: Elem törlése
+Most töröljük a az Azure Cosmos DB egy elemet.
 
-1. Copy and paste the **DeleteFamilyItem** method below your **ReplaceFamilyItem** method.
+1. Másolja és illessze be a **DeleteFamilyItem** az alábbi metódust a **ReplaceFamilyItem** metódust.
     ```csharp
     /*
     Delete an item in the container

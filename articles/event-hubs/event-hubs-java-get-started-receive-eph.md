@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e29cf43f490bf5e8bac5e5c36b16476f93d80bfa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0fc9b8b6a8bcd62aafda7c04697ab8b9c096b17e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081960"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296579"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Események fogadása az Azure Event Hubs Java használatával
 
@@ -55,18 +55,18 @@ Az EventProcessorHost használatához rendelkeznie kell egy [Azure Storage-fiók
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Java-projekt létrehozása az EventProcessor Hosttal
 
-A Java ügyféloldali kódtár, az Event Hubs szolgáltatás a Maven-projektekhez érhető el a [Maven központi tárházból][Maven Package], és lehet rá hivatkozni a következő függőségi nyilatkozat belül a Maven használatával soubor projektu. A jelenlegi verzió az azure-eventhubs-eph összetevő 2.0.1 és az azure-eventhubs összetevő jelenlegi verzió: 1.0.2-es:    
+A Java ügyféloldali kódtár, az Event Hubs szolgáltatás a Maven-projektekhez érhető el a [Maven központi tárházból][Maven Package], és lehet rá hivatkozni a következő függőségi nyilatkozat belül a Maven használatával soubor projektu: 
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>1.0.2</version>
+    <version>2.2.0</version>
 </dependency>
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs-eph</artifactId>
-    <version>2.0.1</version>
+    <version>2.4.0</version>
 </dependency>
 ```
 

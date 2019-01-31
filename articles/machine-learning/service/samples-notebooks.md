@@ -11,86 +11,49 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 096b72e8abf43d803a5e6c4aa016f904e795366c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5ba555ad31545e1ae1aa822ec58b0bd22ef486ac
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250943"
+ms.locfileid: "55295151"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>A Jupyter notebookok használata az Azure Machine Learning szolgáltatás megismeréséhez
-
 
 Az Ön kényelme érdekében kialakította Jupyter Python notebookok segítségével ismerje meg az Azure Machine Learning szolgáltatás egy sorozatát. 
 
 Ismerje meg, hogyan lehet a szolgáltatás az a dokumentáció ezen a helyen, majd ezeket a notebookokat segítségével testre szabhatja őket az adott helyzethez. 
 
-## <a name="prerequisite"></a>Előfeltétel
+Az alábbi elérési utak egyik használhatja ezeket a notebookokat minta egy notebook server futtatásához.  Ha a kiszolgáló már fut, keresse meg az oktatóanyag-notebookjait **oktatóanyagok** mappát, vagy böngészhet a különböző szolgáltatásai **útmutatóval-to-használat – azureml** mappát.
 
-Végezze el a [Azure Machine Learning Python rövid](quickstart-get-started.md) hozzon létre egy munkaterületet, majd indítsa el az Azure-jegyzetfüzeteket.
 
 ## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>Próbálja ki az Azure notebookok: Ingyenes Jupyter notebookok a felhőben
 
 Nem kell mást Azure notebookok használatának megkezdéséhez. A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) már telepítve és konfigurálva van az Ön számára [Azure notebookok](https://notebooks.azure.com/). A telepítés és a jövőbeli frissítések automatikusan felügyelt Azure-szolgáltatások használatával.
   
-+ Futtatásához a **oktatóanyag notebookok alapvető**:
-  1. Lépjen a [Azure notebookok](https://notebooks.azure.com/).
-    
-  1. Keresse meg a **oktatóanyagok** mappájában a **bevezetés** az előfeltételként szükséges rövid útmutató során létrehozott könyvtár.
-    
-  1. Nyissa meg a notebook szeretné futtatni.
-    
-+ Futtatásához **más notebookok**:
-
-  1. [Importálja a mintafüzetek](https://aka.ms/aml-clone-azure-notebooks) be Azure-jegyzetfüzeteket.
-
-  1. Munkaterület konfigurációs fájl felvétele a könyvtárba, az alábbi módszerek egyikével:
-     + Másolás a **config.json** fájlt a **bevezetés** kódtár az új klónozott könyvtár.
-
-     + Hozzon létre egy új munkaterületet, a kód használatával a [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb).
-    
-  1. Nyissa meg a notebook szeretné futtatni.     
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
 
 ## <a name="use-a-data-science-virtual-machine-dsvm"></a>A Data Science virtuális gép (DSVM) használata
 
-A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) és notebook server már telepítve és konfigurálva, a dsvm-hez. Kövesse az alábbi lépéseket a jegyzetfüzetek futtatása.
+A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) és notebook server már telepítve és konfigurálva, a dsvm-hez. 
 
-1. [Hozzon létre egy DSVM](how-to-configure-environment.md#dsvm).
+Miután [hozzon létre egy DSVM](how-to-configure-environment.md#dsvm), ezeket a lépéseket használhatja a dsvm-hez a jegyzetfüzet futtatásához.
 
-1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
+[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
 
-1. Munkaterület konfigurációs fájl felvétele a könyvtárba, az alábbi módszerek egyikével:
-    * Másolás a **aml_config\config.json** a klónozott könyvtárba az előfeltételként szükséges rövid útmutató segítségével létrehozott fájlt.
-
-    * Hozzon létre egy új munkaterületet, a kód használatával a [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb).
-
-1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
 
 ## <a name="use-your-own-jupyter-notebook-server"></a>A saját Jupyter notebook server használata
 
 Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.
 
-1. Győződjön meg arról, sikeresen befejezte az előfeltételként szükséges gyorsútmutatót, melyen telepítette az Azure Machine Learning SDK-k.
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
+<a name="automated-ml-setup"></a>
 
-1. Munkaterület konfigurációs fájl felvétele a könyvtárba, az alábbi módszerek egyikével:
-    * Másolás a **aml_config\config.json** a klónozott könyvtárba az előfeltételként szükséges rövid útmutató segítségével létrehozott fájlt.
-    
-    * Hozzon létre egy új munkaterületet, a kód használatával a [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb).
+## <a name="automated-machine-learning-setup"></a>Automatizált machine learning-telepítő 
 
-1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
-
-1. Nyissa meg a notebook tartalmazó mappa.
-
-1. Nyissa meg a notebookot.
-
-<a name="auto"></a>
-
-## <a name="automated-ml-setup"></a>Automatizált ML-telepítő 
-
-**Csak a notebookok a alkalmazni ezeket a lépéseket a `automated-machine-learning` mappát.**
+_Csak a notebookok a alkalmazni ezeket a lépéseket a **how-to-use-azureml/automated-machine-learning** mappát._
 
 A fenti lehetőségek bármelyikét használhatja, amíg is a környezet telepítése és az alábbi utasítások egyszerre hozzon létre egy munkaterületet. 
 
@@ -106,7 +69,7 @@ A fenti lehetőségek bármelyikét használhatja, amíg is a környezet telepí
    
    1. Keresse meg a fájlokat, amelybe kibontotta a helyi gépen.
    
-   1. Nyissa meg a `automated-machine-learning` mappát.
+   1. Nyissa meg a **automatikus gépi tanuláson** mappát.
    
    1. Hajtsa végre `automl_setup.cmd` a Windows, a conda-parancssorban vagy a `.sh` fájlt az operációs rendszer. Végrehajtása körülbelül 10 percet is igénybe vehet.
 
@@ -123,7 +86,7 @@ A fenti lehetőségek bármelyikét használhatja, amíg is a környezet telepí
 
 1. Keresse meg az elérési utat, ahová mentette a notebookok. 
 
-1. Nyissa meg az automatikus gépi tanuláson mappát, majd nyissa meg a `configuration.ipynb` notebookot. 
+1. Nyissa meg az automatikus gépi tanuláson mappát, majd nyissa meg a **configuration.ipynb** notebookot. 
 
 1. A cellák hajtsa végre a jegyzetfüzetet Machine Learning Services erőforrás-szolgáltató regisztrálása és a egy munkaterület létrehozása.
 

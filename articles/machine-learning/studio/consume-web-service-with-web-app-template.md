@@ -1,8 +1,21 @@
 ---
-Cím: Consume Studio web service with web app template titleSuffix: Azure Machine Learning Studio description: Az Azure Marketplace-en webalkalmazás-sablonok segítségével az Azure Machine Learning prediktív webszolgáltatás felhasználása.
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
+title: Studio-webszolgáltatás a webalkalmazás-sablon használata
+titleSuffix: Azure Machine Learning Studio
+description: Az Azure Marketplace-en webalkalmazás-sablonok segítségével az Azure Machine Learning prediktív webszolgáltatás felhasználása.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 03/20/2017
+ms.openlocfilehash: 164aae7c6a4df18b8a28e1ff152e9c61c60f06b9
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299061"
 ---
 # <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>Az Azure Machine Learning Studio webszolgáltatás felhasználhatják a webalkalmazás-sablonok használatával
 

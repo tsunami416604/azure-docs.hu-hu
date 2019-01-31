@@ -2,18 +2,18 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 11/25/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: a2ee8705be3f34b6df113c68d88e375411f84bf2
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440194"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302342"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Sablon üzembe helyezése a Cloud Shellből
 
-A sablon üzembe helyezéséhez a [Cloud Shell](../articles/cloud-shell/overview.md) is használható. Azonban, először be kell töltenie a sablont a storage-fiókra a Cloud Shell. Ha még nem használta a Cloud Shellt, a telepítésével kapcsolatban lásd [Az Azure Cloud Shell áttekintése](../articles/cloud-shell/overview.md) című cikket.
+A sablon üzembe helyezéséhez a [Cloud Shell](../articles/cloud-shell/overview.md) is használható. Egy külső sablon üzembe helyezéséhez adja meg az URI-ját a sablon pontosan ugyanúgy bármilyen külső üzembe helyezéshez. Egy helyi sablon üzembe helyezéséhez, először be kell töltenie a sablont a storage-fiókra a Cloud Shell. Ez a szakasz ismerteti, hogyan betölteni a sablont a cloud shell fiókjába, és helyezze üzembe, helyi fájl. Ha még nem használta a Cloud Shellt, [áttekintése az Azure Cloud Shell](../articles/cloud-shell/overview.md) , beállításával kapcsolatos információkat.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -55,7 +55,7 @@ A sablon üzembe helyezéséhez a [Cloud Shell](../articles/cloud-shell/overview
 
 1. Másolja az URL-címet.
 
-   ![URL-Címének másolása](./media/resource-manager-cloud-shell-deploy/copy-url.png)
+   ![URL másolása](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Nyissa meg a parancssort.
 

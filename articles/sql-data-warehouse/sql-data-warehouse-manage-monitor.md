@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fe989a1693d73dbbea7ed0e3e91ed7aaf6fc37c4
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fdb51bf249990a10b8476a55be1103cb05c5821b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301082"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466982"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 Ez a cikk ismerteti, hogyan lehet a számítási feladat monitorozása dinamikus felügyeleti nézetekkel (DMV-kkel) segítségével. Ez magában foglalja, vizsgálja meg a lekérdezés végrehajtása az Azure SQL Data warehouse-bA.
@@ -45,7 +45,7 @@ Az SQL Data warehouse-bA végrehajtott összes lekérdezés a rendszer naplózza
 
 Az alábbiakban a lekérdezések végrehajtási tervét, és többször egy adott lekérdezésre vonatkozó utasításokat.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>1. lépés: A vizsgálni kívánt lekérdezés azonosítása
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>1. LÉPÉS: A vizsgálni kívánt lekérdezés azonosítása
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -80,7 +80,7 @@ OPTION (LABEL = 'My Query')
 ;
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>2. lépés: A lekérdezésterv vizsgálata
+### <a name="step-2-investigate-the-query-plan"></a>2. LÉPÉS: A lekérdezésterv vizsgálata
 A kérés Azonosítóját használatával lekérheti az elosztott SQL (DSQL) csomagot a lekérdezés az [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
@@ -99,7 +99,7 @@ A további vizsgálat érdekében egy lépésben részleteit a *operation_type* 
 * A lépés 3a folytatásához **SQL-műveletek**: OnOperation, RemoteOperation, ReturnOperation.
 * Folytassa a 3/b. lépés **adatáthelyezési műveletek**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>3a. lépés: elosztott adatbázisok SQL vizsgálata
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>3a. lépés: Az elosztott adatbázisok SQL vizsgálata
 A kérés Azonosítóját és a Lépésindex használatával lekérheti adatait [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], amelyek végrehajtási információkat tartalmaz a lekérdezési lépés az összes elosztott adatbázisok.
 
 ```sql
@@ -119,7 +119,7 @@ A lekérdezés lépés futtatásakor [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHO
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>3/b. lépés: adatok áthelyezése az elosztott adatbázisok vizsgálata
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>3/b. lépés: Adatok áthelyezése az elosztott adatbázisok vizsgálata
 A kérés Azonosítóját és a Lépésindex használatával lekérheti az adatok mozgását lépés fut az egyes terjesztési információ [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
 
 ```sql

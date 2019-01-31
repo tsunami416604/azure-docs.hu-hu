@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/12/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 074276e4550b9b2e347e5cd30c597a1d09f6cb2f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8e82e352ebea4634b1b99864245adcf606352657
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440234"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469336"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-version---100101060"></a>What's new in Azure SQL Data Warehouse verzió - 10.0.10106.0?
 Az Azure SQL Data Warehouse (az SQL DW) folyamatos javítása. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek az SQL DW 10.0.10106.0 verzió.

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 03/15/2017
+ms.date: 01/30/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 1580171c0e363da9407c2f5f5bf4da7736119a39
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 4ec9a891777cc8d33b1256a8eb68ea814563b8cc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074986"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471096"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>A B2B-együttműködés és az Azure Active Directory B2C összehasonlítása
 
@@ -32,7 +32,7 @@ B2B együttműködési lehetőségek |     Azure AD B2C önálló ajánlat
 -------- | --------
 Célközönsége: Az szervezeteknek, amelyek szeretnék a, függetlenül az identitásszolgáltató egy fiókpartner-szervezet felhasználóinak hitelesítéséhez. | Célközönsége: Ügyfeleink a mobil és webes alkalmazások, e figyelmét személyeket, intézményi vagy a szervezeti felhasználók az Azure AD-be.
 Támogatott identitások: Az alkalmazottak munkahelyi vagy iskolai fiókokhoz, a munkahelyi vagy iskolai fiókkal rendelkező partnerek vagy bármilyen e-mail-címmel. Hamarosan támogatni fogja a közvetlen összevonást.  | Támogatott identitások: Helyi alkalmazás fiókok (bármilyen e-mail-cím vagy a felhasználó neve), vagy bármely identitásrendszerében a felhasználók közvetlen összevonással közösségi identitás támogatott.
-Melyik címtárban a partner felhasználók szerepelnek: Partner szervezet felhasználóitól származó a külső felügyelt alkalmazottak ugyanabban a címtárban, de kifejezetten feliratozva. Ugyanúgy kezelhetők, mint az alkalmazottak, hozzáadhatók ugyanahhoz a csoporthoz és így tovább  | Melyik felhasználó ügyfélentitás található: Az alkalmazás könyvtárában. Elkülönítve a szervezet alkalmazottaitól és partner címtárától (ha van).
+A külső felhasználók felügyelt alkalmazottak ugyanabban a címtárban, de kifejezetten feliratozva. Kezelhető legyen ugyanúgy, mint az alkalmazottak, felveheti ugyanazokhoz a csoportokhoz, és így tovább  | A külső felhasználók kezelése történik az alkalmazás könyvtárában. Már külön felügyelettel történik a szervezet alkalmazotti és partneri címtár (ha van).
 Egyszeri bejelentkezés (SSO) támogatása az összes Azure AD-hez csatlakozó alkalmazásra. Hozzáférést adhat például az Office 365-höz, vagy a helyszíni alkalmazásokhoz és egyéb SaaS-alkalmazásokhoz, amilyen például a Salesforce vagy a Workday.  |  Támogatja az Azure AD B2C bérlőkön belül az ügyfél tulajdonú alkalmazásokra az SSO-t. Egyszeri bejelentkezés az Office 365-höz és más Microsoft- és nem Microsoft SaaS – alkalmazásokhoz nem támogatott.
 Partner életciklus: A gazdagép/meghívása felügyeli szervezet.  | Ügyféléletciklus: Önkiszolgáló és az alkalmazás által felügyelt.
 Biztonsági házirend és megfelelőség: A gazdagép/meghívása felügyeli szervezet (például [feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)).  | Biztonsági házirend és megfelelőség: Az alkalmazás által kezelt.

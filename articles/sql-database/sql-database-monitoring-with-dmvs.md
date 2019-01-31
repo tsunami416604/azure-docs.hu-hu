@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: a87f3861a74bbc7a482423d5f2a2f1b859f83a10
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1f3aaf34283f4e7c81f97b8e2ec4987749f3935c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604429"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465282"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Azure SQL Database teljesítményének figyelése dinamikus felügyeleti nézetek használatával
 
@@ -131,8 +131,8 @@ ORDER BY end_time DESC;
 
 Ha a rendszer elérte az i/o-korlát, két lehetősége van:
 
-- 1. lehetőség: A számítási méret frissítése vagy a szolgáltatásszintet
-- 2. lehetőség: Azonosítsa, és a legtöbb i/o felhasználása a Lekérdezések finomhangolása.
+- Option 1: A számítási méret frissítése vagy a szolgáltatásszintet
+- Option 2: Azonosítsa, és a legtöbb i/o felhasználása a Lekérdezések finomhangolása.
 
 #### <a name="view-buffer-related-io-using-the-query-store"></a>A Query Store segítségével nézet puffer kapcsolatos IO
 
@@ -549,7 +549,7 @@ Többi alkalmazástípus esetében előfordulhat, hogy ugyanazon a grafikonon m�
 Az Azure SQL Database közzéteszi felhasznált minden aktív adatbázis az erőforrás adatait a **sys.resource_stats** nézete a **fő** adatbázis az egyes kiszolgálókon. A tábla összesített értéket jelenít meg az 5 perces időközönként. Az alapszintű, Standard és prémium szolgáltatási szinteken, az adatok több mint 5 percig is eltarthat, a táblázatban jelennek meg, így ezek az adatok közel valós idejű elemzési helyett előzményadataik elemzésére hasznosabb. Lekérdezés a **sys.resource_stats** adatbázis legutóbbi előzményeinek megtekintéséhez megtekintése és ellenőrzése-i azt szeretné, hogy szükség esetén a teljesítmény akár a Foglalás választotta.
 
 > [!NOTE]
-> Akkor kapcsolódnia kell a **fő** adatbázis a logikai SQL adatbázis-kiszolgáló lekérdezéséhez **sys.resource_stats** a következő példákban.
+> Akkor kapcsolódnia kell a **fő** adatbázisának az SQL Database-kiszolgáló lekérdezéséhez **sys.resource_stats** a következő példákban.
 
 Ez a példa bemutatja, hogyan érhető el ebben a nézetben az adatokat:
 

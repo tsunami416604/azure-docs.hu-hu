@@ -1,6 +1,6 @@
 ---
-Cím: Hajtsa végre a Python gépi tanulási parancsfájlok titleSuffix: Azure Machine Learning Studio description: A körvonal tervezési elvek, az alapul szolgáló Python-szkriptek az Azure Machine Learning Studio és az alapvető használati forgatókönyvek, képességekre és korlátozásokra támogatása.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Hajtsa végre a Python gépi tanulási parancsfájlok titleSuffix: Azure Machine Learning Studio description: A körvonal tervezési elvek, az alapul szolgáló Python-szkriptek az Azure Machine Learning Studio és az alapvető használati forgatókönyvek, képességekre és korlátozásokra támogatása.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 11/29/2017
 ---

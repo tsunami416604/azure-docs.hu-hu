@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 920f350ab5ba1e9e1703ffcc32dc8c7153624c0b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 831286f1c98a2fc3d26277f4006283c3de64f900
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525154"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463242"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Az Azure Import/Export szolgáltatásjegyzékének fájlformátuma
 A meghajtó jegyzékfájl közötti az Azure Blob storage-blobok és a egy importálási vagy exportálási feladatot tartalmazó meghajtón lévő fájlok hozzárendelését ismerteti. Az importálási művelet az Alkalmazásjegyzék-fájl jön létre a meghajtó előkészítési folyamat részeként, és az eszközön tárolt, a meghajtó az Azure-adatközpontban való elküldése előtt. Az exportálási művelet során a jegyzékfájl létrehozása és az Azure Import/Export szolgáltatás által az eszközön tárolt.  
@@ -37,9 +37,9 @@ A következőkben egy meghajtó jegyzékfájl általános formátumát:
         Hash="md5-hash">global-properties-file-path</PropertiesPath>]  
   
       <!-- First Blob -->  
-      <Blob>  
-        <BlobPath>blob-path-relative-to-account</BlobPath>  
-        <FilePath>file-path-relative-to-transfer-disk</FilePath>  
+      <Blob>  
+        <BlobPath>blob-path-relative-to-account</BlobPath>  
+        <FilePath>file-path-relative-to-transfer-disk</FilePath>  
         [<ClientData>client-data</ClientData>]  
         [<Snapshot>snapshot</Snapshot>]  
         <Length>content-length</Length>  
@@ -47,7 +47,7 @@ A következőkben egy meghajtó jegyzékfájl általános formátumát:
         page-range-list-or-block-list          
         [<MetadataPath Hash="md5-hash">metadata-file-path</MetadataPath>]  
         [<PropertiesPath Hash="md5-hash">properties-file-path</PropertiesPath>]  
-      </Blob>  
+      </Blob>  
   
       <!-- Second Blob -->  
       <Blob>  
@@ -72,7 +72,7 @@ page-range-list ::=
     <PageRangeList>  
       [<PageRange Offset="page-range-offset" Length="page-range-length"   
        Hash="md5-hash"/>]  
-      [<PageRange Offset="page-range-offset" Length="page-range-length"   
+      [<PageRange Offset="page-range-offset" Length="page-range-length"   
        Hash="md5-hash"/>]  
     </PageRangeList>  
   
@@ -80,7 +80,7 @@ block-list ::=
     <BlockList>  
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]  
        Hash="md5-hash"/>]  
-      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
+      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        Hash="md5-hash"/>]  
     </BlockList>  
 
@@ -90,27 +90,27 @@ block-list ::=
 
 Az adatok elemek és attribútumok a meghajtó jegyzékfájl XML formátum a következő táblázatban vannak megadva.  
   
-|XML-elem|Típus|Leírás|  
+|XML-elem|Typo|Leírás|  
 |-----------------|----------|-----------------|  
 |`DriveManifest`|Legfelső szintű elem|A jegyzékfájl gyökérelem. A fájlban minden más elemeket is, ez az elem alatt.|  
 |`Version`|Attribútum, karakterlánc|Az Alkalmazásjegyzék-fájl verzióját.|  
 |`Drive`|Beágyazott XML-elem|A jegyzékfájl minden meghajtó tartalmazza.|  
-|`DriveId`|Sztring|A meghajtó meghajtó egyedi azonosítója. A meghajtó azonosítóját megtalálható a meghajtón, a hozzá tartozó sorozatszámok lekérdezésével. Meghajtó sorozatszáma általában a meghajtó, valamint a külső van nyomtatva. A `DriveID` elemének szerepelnie kell minden `BlobList` elem a jegyzékfájlban.|  
-|`StorageAccountKey`|Sztring|Importálási feladat, ha, és csak akkor szükséges `ContainerSas` nincs megadva. A feladathoz hozzárendelt a az Azure storage-fiók kulcsát.<br /><br /> Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  
-|`ContainerSas`|Sztring|Importálási feladat, ha, és csak akkor szükséges `StorageAccountKey` nincs megadva. A tároló SAS a blobokat a feladathoz hozzárendelt eléréséhez. Lásd: [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) annak formátum. Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  
-|`ClientCreator`|Sztring|Adja meg az ügyfél, amely létrejön az XML-fájlt. Ez az érték nem értelmezi az Import/Export szolgáltatás által.|  
+|`DriveId`|String|A meghajtó meghajtó egyedi azonosítója. A meghajtó azonosítóját megtalálható a meghajtón, a hozzá tartozó sorozatszámok lekérdezésével. Meghajtó sorozatszáma általában a meghajtó, valamint a külső van nyomtatva. A `DriveID` elemének szerepelnie kell minden `BlobList` elem a jegyzékfájlban.|  
+|`StorageAccountKey`|String|Importálási feladat, ha, és csak akkor szükséges `ContainerSas` nincs megadva. A feladathoz hozzárendelt a az Azure storage-fiók kulcsát.<br /><br /> Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  
+|`ContainerSas`|String|Importálási feladat, ha, és csak akkor szükséges `StorageAccountKey` nincs megadva. A tároló SAS a blobokat a feladathoz hozzárendelt eléréséhez. Lásd: [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) annak formátum. Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  
+|`ClientCreator`|String|Adja meg az ügyfél, amely létrejön az XML-fájlt. Ez az érték nem értelmezi az Import/Export szolgáltatás által.|  
 |`BlobList`|Beágyazott XML-elem|Része az importálási vagy exportálási feladatot blobok listáját tartalmazza. Blob lista minden egyes blob metaadatait és a Tulajdonságok fájlmegosztások.|  
-|`BlobList/MetadataPath`|Sztring|Választható. Itt adhatja meg a lemezen, amelyek a blobok a blob lista az importálási művelet lesz beállítva alapértelmezett metaadatait tartalmazó fájl relatív elérési útját. Ezeket a metaadatokat a blob-blob alapon igény szerint felülbírálható.<br /><br /> Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  
+|`BlobList/MetadataPath`|String|Választható. Itt adhatja meg a lemezen, amelyek a blobok a blob lista az importálási művelet lesz beállítva alapértelmezett metaadatait tartalmazó fájl relatív elérési útját. Ezeket a metaadatokat a blob-blob alapon igény szerint felülbírálható.<br /><br /> Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  
 |`BlobList/MetadataPath/@Hash`|Attribútum, karakterlánc|A metaadatfájl Base16-kódolású MD5 kivonatoló értékét adja meg.|  
-|`BlobList/PropertiesPath`|Sztring|Választható. Itt adhatja meg a relatív elérési út egy fájlt a lemezre, amely tartalmazza az alapértelmezett tulajdonságokat, amelyek a blobok a blob lista az importálási művelet lesz beállítva. Ezek a tulajdonságok a blob-blob alapon igény szerint felülbírálható.<br /><br /> Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  
+|`BlobList/PropertiesPath`|String|Választható. Itt adhatja meg a relatív elérési út egy fájlt a lemezre, amely tartalmazza az alapértelmezett tulajdonságokat, amelyek a blobok a blob lista az importálási művelet lesz beállítva. Ezek a tulajdonságok a blob-blob alapon igény szerint felülbírálható.<br /><br /> Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  
 |`BlobList/PropertiesPath/@Hash`|Attribútum, karakterlánc|A tulajdonságok fájl Base16-kódolású MD5 kivonatoló értékét adja meg.|  
 |`Blob`|Beágyazott XML-elem|Minden blob lista minden egyes blob kapcsolatos információt tartalmazza.|  
-|`Blob/BlobPath`|Sztring|A relatív URI-t a blob verziótól kezdve a tároló nevét. Ha a blob gyökérszintű tárolóban, kell kezdődnie `$root`.|  
-|`Blob/FilePath`|Sztring|Relatív elérési útját adja meg a fájlt a meghajtón található. Export-feladatok a blob elérési út lesz használható lehetőség szerint; a fájl elérési útja *például*, `pictures/bob/wild/desert.jpg` exportálja az `\pictures\bob\wild\desert.jpg`. Az NTFS-nevek-korlátozások miatt azonban egy blobot egy fájlba az alábbihoz hasonló a blob elérési útja nem elérési exportálható.|  
-|`Blob/ClientData`|Sztring|Választható. Az ügyfél megjegyzéseket tartalmaz. Ez az érték nem értelmezi az Import/Export szolgáltatás által.|  
+|`Blob/BlobPath`|String|A relatív URI-t a blob verziótól kezdve a tároló nevét. Ha a blob gyökérszintű tárolóban, kell kezdődnie `$root`.|  
+|`Blob/FilePath`|String|Relatív elérési útját adja meg a fájlt a meghajtón található. Export-feladatok a blob elérési út lesz használható lehetőség szerint; a fájl elérési útja *például*, `pictures/bob/wild/desert.jpg` exportálja az `\pictures\bob\wild\desert.jpg`. Az NTFS-nevek-korlátozások miatt azonban egy blobot egy fájlba az alábbihoz hasonló a blob elérési útja nem elérési exportálható.|  
+|`Blob/ClientData`|String|Választható. Az ügyfél megjegyzéseket tartalmaz. Ez az érték nem értelmezi az Import/Export szolgáltatás által.|  
 |`Blob/Snapshot`|DateTime|Export-feladatok nem kötelező. Megadja az exportált blob-pillanatkép pillanatkép azonosítóját.|  
 |`Blob/Length`|Egész szám|Adja meg a blob teljes hossza (bájt). Az érték lehet egy blokkblobhoz akár 200 GB-os és a egy lapblobra akár 1 TB. Egy lapblobra ezt az értéket az 512 többszörösének kell lennie.|  
-|`Blob/ImportDisposition`|Sztring|Nem kötelező az importálási feladatokhoz, export-feladatok nincs megadva. Ez adja meg, hogyan az Import/Export szolgáltatás kezelje az importálási feladatokhoz eset, egy blobot, ugyanazzal a névvel már létezik. Ez az érték a import-jegyzékfájlból elhagyása esetén az alapérték `rename`.<br /><br /> Ehhez az elemhez az értékek a következők:<br /><br /> -   `no-overwrite`: Ha egy cél blob már létezik azonos nevű, kihagyja az importálási művelet importálja ezt a fájlt.<br />-   `overwrite`: Minden olyan meglévő forrásblobot teljesen felülírja az újonnan importált fájl.<br />-   `rename`: Az új blob egy módosított névvel fog feltölteni.<br /><br /> Az átnevezési szabály a következőképpen történik:<br /><br /> – Ha a blob neve nem tartalmaz egy pont követ, más néven jön létre hozzáfűzésével `(2)` eredeti nevéhez; Ha az új nevet is ütközik egy meglévő blob nevét, majd `(3)` helyére a rendszer hozzáfűzi `(2)`; és így tovább.<br />– Ha a blob neve tartalmaz egy pont követ, a legutóbbi pont a következő rész számít a bővítmény nevét. A fenti eljárással hasonló `(2)` kerül beillesztésre oda, mielőtt megpróbál létrehozni egy új nevet; Ha az új név továbbra is ütközik egy meglévő blob nevét, majd a szolgáltatás utolsó pont `(3)`, `(4)`, és így tovább, amíg nem található egy nem ütköző név.<br /><br /> Néhány példa:<br /><br /> A blob `BlobNameWithoutDot` neve lesz:<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> A blob `Seattle.jpg` neve lesz:<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
+|`Blob/ImportDisposition`|String|Nem kötelező az importálási feladatokhoz, export-feladatok nincs megadva. Ez adja meg, hogyan az Import/Export szolgáltatás kezelje az importálási feladatokhoz eset, egy blobot, ugyanazzal a névvel már létezik. Ez az érték a import-jegyzékfájlból elhagyása esetén az alapérték `rename`.<br /><br /> Ehhez az elemhez az értékek a következők:<br /><br /> -   `no-overwrite`: Ha egy cél blob már létezik azonos nevű, kihagyja az importálási művelet importálja ezt a fájlt.<br />-   `overwrite`: Minden olyan meglévő forrásblobot teljesen felülírja az újonnan importált fájl.<br />-   `rename`: Az új blob egy módosított névvel fog feltölteni.<br /><br /> Az átnevezési szabály a következőképpen történik:<br /><br /> – Ha a blob neve nem tartalmaz egy pont követ, más néven jön létre hozzáfűzésével `(2)` eredeti nevéhez; Ha az új nevet is ütközik egy meglévő blob nevét, majd `(3)` helyére a rendszer hozzáfűzi `(2)`; és így tovább.<br />– Ha a blob neve tartalmaz egy pont követ, a legutóbbi pont a következő rész számít a bővítmény nevét. A fenti eljárással hasonló `(2)` kerül beillesztésre oda, mielőtt megpróbál létrehozni egy új nevet; Ha az új név továbbra is ütközik egy meglévő blob nevét, majd a szolgáltatás utolsó pont `(3)`, `(4)`, és így tovább, amíg nem található egy nem ütköző név.<br /><br /> Néhány példa:<br /><br /> A blob `BlobNameWithoutDot` neve lesz:<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> A blob `Seattle.jpg` neve lesz:<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
 |`PageRangeList`|Beágyazott XML-elem|Lapblob szükséges.<br /><br /> Az importálási művelet, a bájttartományok listája az importálandó fájl határoz meg. Minden egyes laptartomány-eltolási és a forrásfájl, amely leírja az oldal, és a egy MD5-kivonat a régió írja le. A `Hash` attribútum lap tartományának megadása kötelező. A szolgáltatás ellenőrzi, hogy a blobban lévő adatok kivonata megegyezik-e az oldal a tartományból számított MD5-kivonat. Tetszőleges számú laptartomány használható egy importálandó fájl írja le, és a teljes mérete legfeljebb 1 TB. Minden laptartomány eltolás által kell következniük, és nincs átfedés engedélyezett.<br /><br /> Az exportáláshoz a művelet, bájttartományok a blob, a meghajtó exportálja egy halmazát határozza meg.<br /><br /> A tartományokat együtt csak egy blob vagy az alárendelt tartományokat is vonatkozhat.  A fájl nem hatálya alá eső összes fennmaradó részét várt, és a tartalom nem definiált.|  
 |`PageRange`|XML-elem|Tartományt jelöli.|  
 |`PageRange/@Offset`|Attribútum, egész szám|Az eltolás az átvitel fájlban és a blob, ahol a megadott tartományban kezdődik. Ez az érték az 512 többszörösének kell lennie.|  
@@ -122,9 +122,9 @@ Az adatok elemek és attribútumok a meghajtó jegyzékfájl XML formátum a kö
 |`Block/@Length`|Attribútum, egész szám|A bájtok számát adja meg a blokkban; Ez az érték legfeljebb 4 MB-ot kell lennie.|  
 |`Block/@Id`|Attribútum, karakterlánc|Megadja egy karakterlánc, amely a Blokkazonosítót az adatblokk számára.|  
 |`Block/@Hash`|Attribútum, karakterlánc|Megadja a blokk Base16-kódolású MD5-kivonat.|  
-|`Blob/MetadataPath`|Sztring|Választható. A metaadatfájl relatív elérési útját megadja. Az importálás során a metaadatokat a cél blob van beállítva. A blob metaadatainak az exportálási művelet során a meghajtón a metaadatfájl tárolódik.|  
+|`Blob/MetadataPath`|String|Választható. A metaadatfájl relatív elérési útját megadja. Az importálás során a metaadatokat a cél blob van beállítva. A blob metaadatainak az exportálási művelet során a meghajtón a metaadatfájl tárolódik.|  
 |`Blob/MetadataPath/@Hash`|Attribútum, karakterlánc|Itt adhatja meg a blob metaadatait tartalmazó fájl Base16-kódolású MD5-kivonat.|  
-|`Blob/PropertiesPath`|Sztring|Választható. Itt adhatja meg a tulajdonságok fájl relatív elérési útját. Az importálás során a tulajdonságok a cél BLOB vannak beállítva. Az exportálási művelet során a blobtulajdonságok a Tulajdonságok fájlt azon a meghajtón vannak tárolva.|  
+|`Blob/PropertiesPath`|String|Választható. Itt adhatja meg a tulajdonságok fájl relatív elérési útját. Az importálás során a tulajdonságok a cél BLOB vannak beállítva. Az exportálási művelet során a blobtulajdonságok a Tulajdonságok fájlt azon a meghajtón vannak tárolva.|  
 |`Blob/PropertiesPath/@Hash`|Attribútum, karakterlánc|Itt adhatja meg a blob tulajdonságai fájl Base16-kódolású MD5-kivonat.|  
   
 ## <a name="next-steps"></a>További lépések

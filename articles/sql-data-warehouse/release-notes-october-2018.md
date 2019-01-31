@@ -6,21 +6,21 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 9160a5f4e3a452682787ff500199e43e7fad0c77
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 81096eeb1edcd6681bdc887d267ee477d78a8578
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213689"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472082"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Mi az új Azure SQL Data warehouse? 2018. október
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek 2018. október.
 
-## <a name="devops-for-data-warehousing"></a>DevOps-Adattárházak
+## <a name="devops-for-data-warehousing"></a>DevOps for Data Warehousing
 A magas kért funkció az SQL Data warehouse-hoz (az SQL DW) már az SQL Server Data eszköz (SSDT) a Visual Studióban támogatása előzetes verzióban érhető el! Fejlesztői csapatok egy egyetlen, a verzió által szabályozott kódbázis keresztül most megosszanak és a gyors üzembe helyezése a módosításokat a világ tetszőleges példányra. Csatlakozás szeretne? Ez a funkció érhető el előzetes verzióra még ma! Funkcionáló regisztrálhatja a [SQL adatok adatraktár Visual Studio SQL Server Data Tools (SSDT) - előzetes regisztrációs űrlap](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4-brmKy3TZOjoktwuHd7S1UODkwQ1lVMEw1NDBGRjNLRDNWOFlQRUpIRi4u). Adja meg a nagy kereslet, hogy kezelt ügyfeleink számára a legjobb élmény biztosítása az előzetes verzió elfogadását. A regisztrációt követően az a célunk az az állapot megerősítéséhez hét munkanapon belül.
 
 ## <a name="row-level-security-generally-available"></a>Sorszintű biztonság általánosan elérhető
@@ -57,7 +57,7 @@ Az Azure SQL Data Warehouse (az SQL DW) natív integráció az Azure Data Lake S
 
 ## <a name="bug-fixes"></a>Hibajavítások
 
-| Beosztás | Leírás |
+| Cím | Leírás |
 |:---|:---|
 | **CETAS DW2000 és a Data warehouse-adattárházak kis erőforrásosztályok a parquet vagy egyéb hibák** | A javítás megfelelően azonosítja a Parquet kódelérési út a létrehozása külső táblát, a NULL értékű hivatkozás. |
 |**Azonosító oszlop értékét előfordulhat, hogy elvesznek a CTAS egy másik művelet** | Az identitás oszlop értéke lehet, hogy nem megőrzi a CTASed egy másik táblába. Jelentett blog: [ https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/ ](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/). |

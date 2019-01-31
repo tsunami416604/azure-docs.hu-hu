@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: 5a4523405f7a9182bb5123ebacaebc9a9e5ae9a9
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 32e69be95226d06f55d79ff5e245c76c3087efd9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038663"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461288"
 ---
-# <a name="regional-presence-of-azure-cosmos-db"></a>Az Azure Cosmos DB regionális jelenlét
+# <a name="regional-presence-with-azure-cosmos-db"></a>Az Azure Cosmos DB regionális jelenlét
 
 Az Azure jelenleg elérhető [54 régiók](https://azure.microsoft.com/global-infrastructure/regions/) világszerte. Az Azure Cosmos DB egy alapvető szolgáltatás az Azure-ban, és minden régióban, ahol az Azure már érhető el.
 

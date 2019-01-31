@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7a00f18a8ae51d5118275e904e2ca76fc167d987
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 91d645e6120040870c7c1696c7bfd8f68509cb35
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132618"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451903"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Felhasználói elfogadás szakasza a csoportos adatelemzési folyamat életciklusa
 
@@ -40,7 +40,7 @@ A TDSP életciklus ábrázolása a következő:
 Nincsenek az ebben a szakaszban tárgyalt két fő feladat:
 
    * **Rendszer érvényesítése**: Győződjön meg arról, hogy az üzembe helyezett modell és a folyamat megfelelnek-e az ügyfelek igényeinek.
-   * **Az aktuális ki a projekt**: a projekt kiosztják tartalmazó éles környezetben futtatni kívánja a rendszer.
+   * **Az aktuális ki a projekt**: A projekt kiosztják tartalmazó éles környezetben futtatni kívánja a rendszer.
 
 Az ügyfél ellenőrizni kell, hogy a rendszer megfelel-e a saját üzleti igényeinek megfelelően, és a kérdések megválaszolja az elfogadható pontosságú üzembe helyezéséhez a rendszer az ügyfélalkalmazás által az éles környezetben való használatra. Teljes dokumentáció fejeződik be, és tekintse át. A projekt a gyorsítási értéknek, átadná-off műveletekért felelős az entitáshoz. Ehhez az entitáshoz lehet például az informatikai vagy ügyfél-adatelemzési csapatával, vagy az ügyfél felelős a rendszer az éles üzemben futó ügynök. 
 

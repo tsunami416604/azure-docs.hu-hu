@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: bf13ca603927c85784e446157a79cd96fb70ca05
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 77edf892c3c2ca1434331fb5560f0db8ca16e306
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956981"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470875"
 ---
-# <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: fordítása
+# <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
 Szöveg lefordítása.
 
@@ -61,7 +61,7 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
     <td>*Nem kötelező paraméter*.<br/>Itt adhatja meg, hogyan kell kezelni profanities fordításokat. Lehetséges értékek a következők: `NoAction` (alapértelmezett), `Marked` vagy `Deleted`. Módon kezelni a vulgáris ismertetése: [Cenzúrázása kezelési](#handle-profanity).</td>
   </tr>
   <tr>
-    <td>ProfanityMarker</td>
+    <td>profanityMarker</td>
     <td>*Nem kötelező paraméter*.<br/>Itt adhatja meg, hogyan profanities kell megjelölni a fordításokat. Lehetséges értékek a következők: `Asterisk` (alapértelmezés) vagy `Tag`. Módon kezelni a vulgáris ismertetése: [Cenzúrázása kezelési](#handle-profanity).</td>
   </tr>
   <tr>
@@ -97,7 +97,7 @@ Kérelemfejlécek a következők:
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>_Egy engedélyezési_<br/>_Fejléc_</td>
+    <td>_Egy engedélyezési_<br/>_header_</td>
     <td>*Szükséges kérelem fejléce*.<br/>Lásd: [elérhető lehetőségek a hitelesítéshez](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -137,35 +137,35 @@ A sikeres válasz egy JSON-tömböt az egyes sztringek a bemeneti számtömbből
 
       * `language`: Egy karakterlánc, amely a felismert nyelv kódja.
 
-      * `score`: Egy jelző a bizalom, az eredmény a lebegőpontos értéket. A pontszám, nulla és a egy között, és a egy alacsony pontszámmal azt jelzi, hogy egy alacsony megbízhatósági.
+      * `score`: Az eredmény magabiztosan jelző float érték. A pontszám, nulla és a egy között, és a egy alacsony pontszámmal azt jelzi, hogy egy alacsony megbízhatósági.
 
     A `detectedLanguage` tulajdonság csak akkor szerepel az eredményobjektum, nyelvi automatikus észlelés igénylésekor.
 
-  * `translations`: Fordítási eredmény egy tömbje. A tömb mérete megadva a cél nyelvek száma megegyezik a `to` lekérdezési paraméter. A tömb egyes elemei a következőket tartalmazza:
+  * `translations`: Fordítási eredmények tömbje. A tömb mérete megadva a cél nyelvek száma megegyezik a `to` lekérdezési paraméter. A tömb egyes elemei a következőket tartalmazza:
 
-    * `to`: Egy karakterlánc, amely a célként megadott nyelv nyelvi kódját.
+    * `to`: A Célnyelv nyelvkódja képviselő karakterláncot.
 
-    * `text`: Egy karakterlánc, így a fordítást.
+    * `text`: Egy karakterlánc, így a lefordított szöveg.
 
-    * `transliteration`: A parancsfájl által megadott jogosultságot ad a lefordított szöveg egy objektum a `toScript` paraméter.
+    * `transliteration`: Jogosultságot ad a lefordított szöveg a parancsfájl által meghatározott objektum a `toScript` paraméter.
 
-      * `script`: Egy karakterlánc, a cél-szkript megadása.   
+      * `script`: A célként megadott parancsfájl megadó karakterlánc.   
 
-      * `text`: A célként megadott parancsfájl jogosultságot ad a lefordított szöveg egy karakterlánc.
+      * `text`: A cél-szkriptben a lefordított szöveg így karakterlánc.
 
     A `transliteration` objektum lehetőség nem része, ha átbetűzésű nem kerül sor.
 
-    * `alignment`: Egy objektum nevű egyetlen karakterlánc tulajdonsággal rendelkező `proj`, amely adjon meg szöveget a lefordított szöveg. Az igazítás csak információ Ha a kérés paramétereihez `includeAlignment` van `true`. Igazítás, karakterlánc-érték a következő formátumban adja vissza: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  A kettőspont elválasztja a kezdő és záró index, a dash elkülöníti a nyelveket, és terület a szavakat osztja szét. Több szóból előfordulhat, hogy összhangba nulla, egy vagy több szóból más nyelven, és lehet, hogy a igazított szavak nem összefüggő. Zarovnání információ nem érhető el, ha az igazítási elem üres lesz. Lásd: [igazítás megszerzése](#obtain-alignment-information) például és korlátozások.
+    * `alignment`: Egy nevű egyetlen karakterlánc tulajdonsággal rendelkező objektumot `proj`, amely adjon meg szöveget a lefordított szöveg. Az igazítás csak információ Ha a kérés paramétereihez `includeAlignment` van `true`. Igazítás, karakterlánc-érték a következő formátumban adja vissza: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  A kettőspont elválasztja a kezdő és záró index, a dash elkülöníti a nyelveket, és terület a szavakat osztja szét. Több szóból előfordulhat, hogy összhangba nulla, egy vagy több szóból más nyelven, és lehet, hogy a igazított szavak nem összefüggő. Zarovnání információ nem érhető el, ha az igazítási elem üres lesz. Lásd: [igazítás megszerzése](#obtain-alignment-information) például és korlátozások.
 
-    * `sentLen`: Egy objektum mondat határok visszaadása a bemeneti és kimeneti szövegét.
+    * `sentLen`: Mondat határok visszaadása a bemeneti és kimeneti szövegét az objektum.
 
-      * `srcSentLen`: Egy a mondatok a bemeneti szöveg hosszának jelölő egész számok tömbje. A hossz a tömb mondatok számát, és az értékek a következők minden mondat hosszát.
+      * `srcSentLen`: A bemeneti szövegben a mondatok hosszának jelölő egész számok tömbje. A hossz a tömb mondatok számát, és az értékek a következők minden mondat hosszát.
 
-      * `transSentLen`: Egy a mondatok a lefordított szöveg hosszának jelölő egész számok tömbje. A hossz a tömb mondatok számát, és az értékek a következők minden mondat hosszát.
+      * `transSentLen`:  A mondatok a lefordított szöveg hosszának jelölő egész számok tömbje. A hossz a tömb mondatok számát, és az értékek a következők minden mondat hosszát.
 
     Határok mondat csak tartalmazza, ha a kérés paramétereihez `includeSentenceLength` van `true`.
 
-  * `sourceText`: Egy objektum nevű egyetlen karakterlánc tulajdonsággal rendelkező `text`, a forrás nyelv alapértelmezett szkriptben révén a bemeneti szöveg. `sourceText` a tulajdonság jelenik meg, csak akkor, ha a bemenet egy parancsfájlt, amely nem a szokásos parancsfájl nyelvének van kifejezve. Például, ha a bemeneti adatok lettek Latin parancsfájlokat, majd írt arab `sourceText.text` volna az azonos arab szöveg alakítva Arab parancsfájlt.
+  * `sourceText`: Egy nevű egyetlen karakterlánc tulajdonsággal rendelkező objektumot `text`, a forrás nyelv alapértelmezett szkriptben révén a bemeneti szöveg. `sourceText` a tulajdonság jelenik meg, csak akkor, ha a bemenet egy parancsfájlt, amely nem a szokásos parancsfájl nyelvének van kifejezve. Például, ha a bemeneti adatok lettek Latin parancsfájlokat, majd írt arab `sourceText.text` volna az azonos arab szöveg alakítva Arab parancsfájlt.
 
 Példa a JSON-válaszok szerepelnek a [példák](#examples) szakaszban.
 
@@ -175,11 +175,11 @@ Példa a JSON-válaszok szerepelnek a [példák](#examples) szakaszban.
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
     <tr>
-    <td>X-RequestId:</td>
+    <td>X-RequestId</td>
     <td>A kérelem azonosíthatja a szolgáltatás által létrehozott értéket. Hibaelhárítási célokra szolgál.</td>
   </tr>
   <tr>
-    <td>X-MT-rendszer</td>
+    <td>X-MT-System</td>
     <td>Meghatározza a rendszer minden kért fordításhoz "to" nyelv fordítását használt. Az érték karakterláncok vesszővel tagolt listája. Mindegyik sztring egy típusát jelzi:<br/><ul><li>Egyéni - kérés tartalmaz egy egyéni rendszert, és legalább egy egyéni rendszer fordítási során lett megadva.</li><li>Csapat – minden más kérelemhez</li></td>
   </tr>
 </table> 
@@ -231,7 +231,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
 
 Ez a példa bemutatja, hogyan kell az angol, egyszerűsített kínai egyetlen mondatok fordítása.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -257,7 +257,7 @@ A `translations` tömböt tartalmaz egy elemet, amely biztosítja a legegyszerű
 
 Ez a példa bemutatja, hogyan kell az angol, egyszerűsített kínai egyetlen mondatok fordítása. A kérelem nem határoz meg a beviteli nyelv. Automatikus észlelését, a forrás nyelvet használja.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -283,7 +283,7 @@ A válasz a hasonló az előző példában a választ. Mivel a kért nyelv autom
 
 Az előző példában meghosszabbíthatja átbetűzésű hozzáadása. A következő kérelmet az egy kínai fordítás Latin betűs nyelven írt kéri.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -314,7 +314,7 @@ A fordítási eredménye most már tartalmaz egy `transliteration` tulajdonság,
 
 A kérelem törzsében szereplő karakterláncok a lekérésükhöz több karakterlánc egyszerre fordítása.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
@@ -343,7 +343,7 @@ A válasz törzse a következő:
 
 Ez a példa bemutatja, hogyan lefordítani a ugyanazon bemeneti egyetlen kérelem több nyelven.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -377,14 +377,14 @@ Ha el szeretné kerülni, a fordítás, függetlenül a forrás szövegben cenz�
     <td>`NoAction`</td>
     <td>Ez az az alapértelmezett viselkedést. Káromkodás cél forrásból fogja továbbítani.<br/><br/>
     **Példa forrás (japán)**: 彼はジャッカスです。<br/>
-    **Példa fordítási (angol nyelven)**: egy Pápaszemes.
+    **Példa fordítási (angol nyelven)**: Egy Pápaszemes áll.
     </td>
   </tr>
   <tr>
     <td>`Deleted`</td>
     <td>Profán szavakat a kimenet nélküli helyettesítő törlődni fog.<br/><br/>
     **Példa forrás (japán)**: 彼はジャッカスです。<br/>
-    **Példa fordítási (angol nyelven)**:, ő egy.
+    **Példa fordítási (angol nyelven)**: Ő egy.
     </td>
   </tr>
   <tr>
@@ -392,16 +392,16 @@ Ha el szeretné kerülni, a fordítás, függetlenül a forrás szövegben cenz�
     <td>Profán helyébe egy jelölő a kimenetben. A jelölő függ a `ProfanityMarker` paraméter.<br/><br/>
 A `ProfanityMarker=Asterisk`, profán szavak helyén `***`:<br/>
     **Példa forrás (japán)**: 彼はジャッカスです。<br/>
-    **Példa fordítási (angol nyelven)**:, ő egy \* \* \*.<br/><br/>
+    **Példa fordítási (angol nyelven)**: Ő egy \* \* \*.<br/><br/>
 A `ProfanityMarker=Tag`, profán szavak XML-címkék veszi körül &lt;cenzúrázása&gt; és &lt;/profanity&gt;:<br/>
     **Példa forrás (japán)**: 彼はジャッカスです。<br/>
-    **Példa fordítási (angol nyelven)**:, ő egy &lt;cenzúrázása&gt;Pápaszemes&lt;/profanity&gt;.
+    **Példa fordítási (angol nyelven)**: Ő egy &lt;cenzúrázása&gt;Pápaszemes&lt;/profanity&gt;.
   </tr>
 </table> 
 
 Példa:
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -423,7 +423,7 @@ Ez adja vissza:
 
 Összehasonlítás:
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -454,7 +454,7 @@ Szokás lefordítja a tartalmat, például egy HTML-oldalt a tartalom jelölőny
 
 Íme egy mintakérelmet mutatja be.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
@@ -478,7 +478,7 @@ A válasz a következő:
 
 Zarovnání információk fogadását, adja meg a `includeAlignment=true` a lekérdezési karakterláncot.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
@@ -516,7 +516,7 @@ Vegye figyelembe a következő korlátozásokkal:
 
 Mondat hossza információt kap a forrás szöveg és a fordítást, adja meg a `includeSentenceLength=true` a lekérdezési karakterláncot.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"

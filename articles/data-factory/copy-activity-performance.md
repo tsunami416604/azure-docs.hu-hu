@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a8a229beab03dd8cb26d9cfb9c3b945059d6f70
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 835ba407fb72a8cb512425e59cf56ba1a1cc8a4b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164945"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301271"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolási tevékenységek teljesítményéhez és finomhangolási útmutató
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -243,11 +243,15 @@ Javasoljuk, hogy ezen lépések a Data Factory szolgáltatás másolási tevéke
 
 2. **Diagnosztika és a teljesítmény optimalizálása**. Ha a teljesítmény megfigyelte nem felel meg az elvárásainak, azonosíthatja a szűk keresztmetszeteket szeretné. Távolítsa el, vagy a szűk keresztmetszetek elkerülése érdekében a teljesítmény optimalizálásával majd. 
 
-    Bizonyos esetekben is megjelenik egy "**teljesítmény-finomhangolási tippek**" a szakasz a [másolási tevékenység lap figyelés](copy-activity-overview.md#monitor-visually), amely közli, hogy a szűk keresztmetszetet azonosított, és végigvezeti Önt a másolási növelése érdekében hogyan Másolás esetben átviteli sebességet.
+    Bizonyos esetekben az ADF, a másolási tevékenység végrehajtásakor közvetlenül megjelenik "**teljesítmény-finomhangolási tippek**" a a [másolási tevékenység lap figyelés](copy-activity-overview.md#monitor-visually) az alábbi példában látható módon. Az nem csak arra kéri, a szűk keresztmetszetet a megadott példány Futtatás azonosított, hanem is végigvezeti Önt a Mi a másolási átviteli sebesség növelése érdekében módosítsa. A teljesítmény-finomhangolási tippek jelenleg meg javaslatok, például a PolyBase használatával példatípust az adatok Azure SQL Data Warehouse-bA növelhető az Azure Cosmos DB-RU, vagy az Azure SQL DB DTU, ha az erőforrást, az adatok tárolása ügyféloldali a szűk keresztmetszetet, eltávolítja a felesleges előkészítése példány, stb. A teljesítmény-finomhangolási szabályok fog bővített fokozatosan is lehet.
 
-    **Példa: másolja az Azure SQL DB-be a teljesítmény-finomhangolási tippek** ![másolja a figyelés a teljesítmény-finomhangolási tippek](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+    **Példa: példány az Azure SQL DB-be a teljesítmény-finomhangolási tippek**
 
-    Teljesítmény diagnosztikai teljes leírását ez a cikk nem foglalkozik, de Íme néhány gyakori szempontok:
+    Ebben a példában másolási futtatja, az ADF figyelje meg, a fogadó Azure SQL DB eléri a magas DTU-használata, ami lelassítja az írási műveletek során ily módon a javaslat, hogy növelje az Azure SQL DB szintre négyszeres DTU. 
+
+    ![Másolja a figyelés a teljesítmény-finomhangolási tippek](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+    Emellett az alábbiakban néhány gyakori szempontok. Teljes leírását a teljesítmény diagnosztikai van ez a cikk nem foglalkozik.
 
    * Teljesítménnyel kapcsolatos szolgáltatások:
      * [Párhuzamos másolása](#parallel-copy)

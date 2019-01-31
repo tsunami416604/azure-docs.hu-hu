@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: b4c873e319dd611221c81deb948db3a64062631e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1bf65883ecf23f726aefd2cd889a2bcb08e9b6a6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032601"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457649"
 ---
-# <a name="optimize-the-cost-for-multi-region-deployments-in-azure-cosmos-db"></a>Többrégiós üzemelő példányokhoz, az Azure Cosmos DB a költségek optimalizálása
+# <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB többrégiós költségek optimalizálása
 
 Adja hozzá, és bármikor eltávolíthatja a régiók az Azure Cosmos-fiókjába. Az átviteli sebességet, a különböző Azure-Cosmos-adatbázis és a tárolók a fiókjához társított minden egyes régióban van fenntartva. Ha az átviteli sebességet, óránként, ez az összeg RU/s konfigurált összes adatbázisok és tárolók az Azure Cosmos-fiók `T` és az adatbázis-fiókhoz társított Azure-régiók száma `N`, majd az összes Cosmos-fiókja, egy adott órán keresztül kiosztott átviteli sebesség megegyezik:
 
@@ -35,8 +35,8 @@ Fontolja meg egy tárolót az USA nyugati RÉGIÓJA van 10 ezer Kérelemegység/
 |----|----|----|----|
 |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (több írási régió) lévő tároló esetén |10 ezer Kérelemegység/s * 24 * 31. |0.016 $ / 100 Kérelemegység/másodperc óránként |$1,190.40 |
 |Átviteli sebességre vonatkozó számla 3 további régió – USA keleti RÉGIÓJA, Észak-Európa és Kelet-Ázsia (több írási régió) esetén |(3 + 1) * 10 ezer Kérelemegység/s * 24 * 31. |0.016 $ / 100 Kérelemegység/másodperc óránként |$4,761.60 |
-|Adattárolásra vonatkozó számla az USA nyugati régiójában lévő tároló esetén |100 GB |$ 0,25/GB |25 USD |
-|Adattárolásra vonatozó számla 3 további régió esetén – az USA keleti régiója, Észak-Európa, Kelet-Ázsia |3 * 1 TB |$ 0,25/GB |75 $ |
+|Adattárolásra vonatkozó számla az USA nyugati régiójában lévő tároló esetén |100 GB |$ 0,25/GB |$25 |
+|Adattárolásra vonatozó számla 3 további régió esetén – az USA keleti régiója, Észak-Európa, Kelet-Ázsia |3 * 1 TB |$ 0,25/GB |$75 |
 |**Összesen**|||**$6,052** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Átvitel kihasználtsága javíthatja a egy régió-alapon történik

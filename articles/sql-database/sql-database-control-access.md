@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 49da7704c3b1c3c119528201f34f1352b0afbba4
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 01/25/2019
+ms.openlocfilehash: 6153fbdb6e085d1c817fac5db5eddb5e2c6ae7fa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362126"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465440"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Az Azure SQL Database és az SQL Data Warehouse hozzáférés-vezérlés
 
@@ -40,7 +40,7 @@ Az SQL Database két hitelesítési típust támogat:
 
 - **SQL-hitelesítés**:
 
-  Ezt a hitelesítési módszert használ, egy felhasználónevet és jelszót. Az adatbázis logikai kiszolgálójának létrehozásakor megadta a „kiszolgálói rendszergazda” bejelentkezés felhasználónevét és jelszavát. Ezen hitelesítő adatokkal hitelesítheti magát a kiszolgáló minden adatbázisában az adatbázis tulajdonosaként („dbo”). 
+  Ezt a hitelesítési módszert használ, egy felhasználónevet és jelszót. Az SQL Database-kiszolgáló az adatbázis létrehozásakor a "kiszolgálói rendszergazda" bejelentkezés megadott felhasználónévvel és jelszóval. Ezen hitelesítő adatokkal hitelesítheti magát a kiszolgáló minden adatbázisában az adatbázis tulajdonosaként („dbo”). 
 - **Az Azure Active Directory-hitelesítés**:
 
   Ez a hitelesítési módszer az Azure Active Directory által felügyelt identitásokat használ, és a felügyelt és integrált tartományok támogatott. [Amikor csak lehet](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode), használja az Active Directory-hitelesítést (beépített biztonság). Ha Azure Active Directory-alapú hitelesítést kíván használni, létre kell hoznia egy másik kiszolgálói rendszergazdát „Azure AD admin” névvel, amely engedélyekkel rendelkezik az Azure AD-felhasználók és -csoportok felügyeletéhez. Ez a rendszergazda a normál kiszolgálói rendszergazdák által elvégezhető összes műveletet is végrehajthatja. A [Csatlakozás az SQL Database-hez Azure Active Directory-alapú hitelesítéssel](sql-database-aad-authentication.md) című cikk bemutatja, hogyan hozhat létre Azure AD-rendszergazdát az Azure Active Directory-alapú hitelesítés engedélyezéséhez.

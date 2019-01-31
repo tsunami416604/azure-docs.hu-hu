@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: 995b54d8eb53efc6001e29366e22e09b246f0bff
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 9a96f80c609f446dcc1fea2a87925dec3dadfedd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522016"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471895"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>A Microsoft Azure Storage Java-Client-Side Encryption és az Azure Key Vaulttal
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -171,7 +171,7 @@ ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 blob.download(outputStream, null, options, null);
 ```
 
-### <a name="queue-service-encryption"></a>Queue szolgáltatás titkosítási
+### <a name="queue-service-encryption"></a>Queue service encryption
 Hozzon létre egy **QueueEncryptionPolicy** objektumra, és állítsa be a lehetőségek (API-t, vagy az ügyfél szinten **DefaultRequestOptions**). Minden más kezelik az ügyféloldali kódtár által belsőleg.
 
 ```java

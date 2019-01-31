@@ -12,16 +12,16 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b8eb6d483b9e7a92b50a269e5efbc8ca55946931
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 77deed43c106a451d3de768989233c749e1280e1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104218"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468172"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Ismerkedés az Azure SQL Database felügyelt példánya
 
-[Az Azure SQL Database felügyelt példányain](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) teljes körűen felügyelt PaaS-verzióját az SQL Server Azure-felhőben lévő üzemeltetett, és a saját privát IP-címmel rendelkező virtuális hálózatban helyez. Ebben a szakaszban megtudhatja, gyorsan konfigurálása és a felügyelt példány létrehozása és az adatbázisokat.
+[Az Azure SQL Database felügyelt példányain](sql-database-managed-instance-index.yml) teljes körűen felügyelt PaaS-verzióját az SQL Server Azure-felhőben lévő üzemeltetett, és a saját privát IP-címmel rendelkező virtuális hálózatban helyez. Ebben a szakaszban megtudhatja, gyorsan konfigurálása és a felügyelt példány létrehozása és az adatbázisokat.
 
 ## <a name="quickstart-overview"></a>A rövid útmutató – áttekintés
 
@@ -30,6 +30,7 @@ Ebben a szakaszban láthatja a cikkek, amelyek segítségével a felügyelt pél
 Ha a saját hálózatot, amelyet használni szeretne, vagy testre szabhatja a hálózat esetén lásd: hogyan [konfigurálja a hálózati környezet](#configure-network-environment) felügyelt példány számára.
 
 A felügyelt példány létrehozásakor meg kell kapcsolódjon a példányhoz a következő módszerek egyikével:
+
 * Hozzon létre [Azure virtuális gép](sql-database-managed-instance-configure-vm.md) telepítve van az SQL Server Management Studio és más alkalmazásokhoz, amelyek a felügyelt példány alhálózatán, ahol a felügyelt példány kerül ugyanazon a Vneten belül eléréséhez használható. A felügyelt példányok ugyanazon az alhálózaton lévő virtuális gép nem lehet.
 * Állítsa be a [pont – hely kapcsolat](sql-database-managed-instance-configure-p2s.md) a számítógépen, amely lehetővé teszi, hogy a számítógép csatlakozik a virtuális hálózathoz, ahol a felügyelt példány kerül, és a felügyelt példány és minden más SQL Server, a hálózaton.
 

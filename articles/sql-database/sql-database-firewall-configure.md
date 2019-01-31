@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: e4079a4dcaadab8e9cea0cc1b30a609a091e5937
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: 0579746bc4dc554fd7e082f6258f2c13ce22f69b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035270"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477675"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Az Azure SQL Database és az SQL Data Warehouse tűzfalszabályok
 
@@ -47,11 +47,11 @@ Az internetről és az Azure-ból érkező kapcsolódási kísérleteknek elősz
 
 - **Kiszolgálószintű tűzfalszabályok:**
 
-  Ezek a szabályok hozzáférést biztosítanak ügyfelek számára a teljes Azure SQL Serverhez, azaz lévő összes adatbázis az egyazon logikai kiszolgálón. Ezek a szabályok a **fő** adatbázisban vannak tárolva. A kiszolgálószintű tűzfalszabályok a portálon vagy Transact-SQL utasításokkal konfigurálhatók. Az Azure Portal vagy a PowerShell használatával csak az előfizetés tulajdonosa vagy az előfizetés közreműködői hozhatnak létre kiszolgálószintű tűzfalszabályokat. Ha kiszolgálószintű tűzfalszabályt kíván létrehozni a Transact-SQL használatával, akkor kiszolgálószintű fő bejelentkezőként vagy az Azure Active Directory rendszergazdájaként kell csatlakoznia az SQL Database-példányhoz (ez egyben azt is jelenti, hogy először kiszolgálószintű tűzfalszabályt kell létrehoznia egy Azure-szintű engedélyekkel rendelkező felhasználóval).
+  Ezek a szabályok hozzáférést biztosítanak ügyfelek számára a teljes Azure SQL Serverhez, azaz lévő összes adatbázis SQL-adatbázis ugyanazon a kiszolgálón. Ezek a szabályok a **fő** adatbázisban vannak tárolva. A kiszolgálószintű tűzfalszabályok a portálon vagy Transact-SQL utasításokkal konfigurálhatók. Az Azure Portal vagy a PowerShell használatával csak az előfizetés tulajdonosa vagy az előfizetés közreműködői hozhatnak létre kiszolgálószintű tűzfalszabályokat. Ha kiszolgálószintű tűzfalszabályt kíván létrehozni a Transact-SQL használatával, akkor kiszolgálószintű fő bejelentkezőként vagy az Azure Active Directory rendszergazdájaként kell csatlakoznia az SQL Database-példányhoz (ez egyben azt is jelenti, hogy először kiszolgálószintű tűzfalszabályt kell létrehoznia egy Azure-szintű engedélyekkel rendelkező felhasználóval).
 
 - **Adatbázisszintű tűzfalszabályok:**
 
-  Ezek a szabályok hozzáférést biztosítanak ügyfelek számára az egyazon logikai kiszolgálón található bizonyos (biztonságos) adatbázisokhoz. Ezek a szabályok az egyes adatbázisok hozhat létre (beleértve a **fő** adatbázis) és az egyes adatbázisokban tárolódnak. Adatbázisszintű tűzfalszabályok a master és a felhasználói adatbázisok csak is létrehozhatók és kezelhetők a Transact-SQL-utasítások használatával, és csak az első kiszolgálószintű tűzfalszabály konfigurálása után. Ha egy olyan IP-címtartományt ad meg az adatbázisszintű tűzfalszabályban, amely kívül esik a kiszolgálószintű tűzfalszabályban megadott tartományon, akkor csak az adatbázisszinten megadott tartományba eső IP-címekkel rendelkező ügyfelek érhetik el az adatbázist. Egy adatbázishoz legfeljebb 128 adatbázisszintű tűzfalszabály adható meg. Adatbázisszintű tűzfalszabályok konfigurálásáról további információkért tekintse meg később a jelen példában című cikket, és tekintse meg [sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx).
+  Ezek a szabályok hozzáférést biztosítanak ügyfelek számára az egyazon SQL Database-kiszolgálón található bizonyos (biztonságos) adatbázisokhoz. Ezek a szabályok az egyes adatbázisok hozhat létre (beleértve a **fő** adatbázis) és az egyes adatbázisokban tárolódnak. Adatbázisszintű tűzfalszabályok a master és a felhasználói adatbázisok csak is létrehozhatók és kezelhetők a Transact-SQL-utasítások használatával, és csak az első kiszolgálószintű tűzfalszabály konfigurálása után. Ha egy olyan IP-címtartományt ad meg az adatbázisszintű tűzfalszabályban, amely kívül esik a kiszolgálószintű tűzfalszabályban megadott tartományon, akkor csak az adatbázisszinten megadott tartományba eső IP-címekkel rendelkező ügyfelek érhetik el az adatbázist. Egy adatbázishoz legfeljebb 128 adatbázisszintű tűzfalszabály adható meg. Adatbázisszintű tűzfalszabályok konfigurálásáról további információkért tekintse meg később a jelen példában című cikket, és tekintse meg [sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx).
 
 ### <a name="recommendation"></a>Ajánlás
 
@@ -94,7 +94,7 @@ A teljesítmény javítása érdekében a kiszolgálószintű tűzfalszabályoka
 
 ## <a name="manage-firewall-rules-using-the-azure-portal"></a>Tűzfalszabályok kezelése az Azure portal használatával
 
-A kiszolgálószintű tűzfalszabályok beállítása az Azure Portalon, vagy megnyithatja az Áttekintés oldal az Azure SQL database vagy az Áttekintés oldal az Azure Database logikai kiszolgáló.
+A kiszolgálószintű tűzfalszabályok beállítása az Azure Portalon, vagy megnyithatja az Áttekintés oldal az Azure SQL database vagy az Áttekintés oldal az SQL Database-kiszolgáló.
 
 > [!TIP]
 > Foglalkozó oktatóanyagért lásd: [létrehozása az Azure portal használatával adatbázis](sql-database-get-started-portal.md).
@@ -165,7 +165,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ```
 
 > [!TIP]
-> PowerShell példák a környezetében, a rövid útmutató: [DB létrehozása – PowerShell](sql-database-powershell-samples.md) és [egy önálló adatbázis létrehozása és a egy PowerShell-lel tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md)
+> PowerShell példák a környezetében, a rövid útmutató: [DB létrehozása – PowerShell](sql-database-powershell-samples.md) és [egy önálló adatbázis létrehozása és a egy PowerShell-lel az SQL Database-tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md)
 
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Tűzfalszabályok kezelése az Azure CLI használatával
 
@@ -185,7 +185,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 ```
 
 > [!TIP]
-> Azure CLI-vel a környezetében, a gyors üzembe helyezési, találhat példát [DB létrehozása – Azure CLI-vel](sql-database-cli-samples.md) és [egy önálló adatbázis létrehozása, és konfiguráljon egy tűzfalszabályt az Azure CLI használatával](scripts/sql-database-create-and-configure-database-cli.md)
+> Azure CLI-vel a környezetében, a gyors üzembe helyezési, találhat példát [DB létrehozása – Azure CLI-vel](sql-database-cli-samples.md) és [egy önálló adatbázis létrehozása és konfigurálása egy SQL Database-tűzfalszabályt az Azure CLI használatával](scripts/sql-database-create-and-configure-database-cli.md)
 
 ## <a name="manage-firewall-rules-using-rest-api"></a>Tűzfalszabályok kezelése REST API használatával
 

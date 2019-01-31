@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/07/2019
+ms.date: 01/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 738cc5b4e90d9572b65f122076973e2d9f1b264f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 34e7a578fb04b617221376f5d1065997b12d2613
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450490"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302121"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Az Azure Data Box átjáró előzetes verzió kibocsátási megjegyzései
 
@@ -50,7 +50,9 @@ Az alábbi táblázat összefoglalja az ismert problémákról a Data Box Gatewa
 | **5.** |Fájltípusok | A következő Linux fájltípusok nem támogatottak: fájlokat, blokk-fájlok, sockets, pipe-ok, a szimbolikus hivatkozások karakter.  |Ossza meg ezeket a fájlokat az NFS első létrehozott 0 hosszúságú fájlokat eredményez. Ezeket a fájlokat a is jelenti, és továbbra is a hibás állapotú *error.xml*. |
 | **6.** |Törlés | Ebben a kiadásban egy hiba miatt az NFS-megosztások törlésekor, majd a megosztás nem törölhetők. A megosztás állapot *törlése*.  |Ez akkor történik, csak ha a megosztás egy nem támogatott fájl nevét. |
 | **7.** |Frissítés | Engedélyek és hozzáférés-vezérlési listák (ACL) nem maradnak a frissítési művelet között.  | |
-| **8.** |Online súgó |Az Azure portal súgó hivatkozásai nem csatolhatja dokumentációját.|A súgó hivatkozásai az általánosan elérhető kiadások fog működni. |
+| **8.** |Másolás | Adatok másolása hibával meghiúsul:  A kért művelet nem sikerült a fájlrendszer egy korlátozása miatt.  |Ez akkor fordul elő, ha a másik Data Stream (ADS) a fájlhoz tartozó meghaladja 128 KB-os (maximális száma a refs fájlrendszer).  |
+| **9.** |Szimbolikus hivatkozások |Szimbolikus hivatkozások nem támogatottak.  |Szimbolikus hivatkozások címtárakhoz soha nem offline kezdeti megjelölve könyvtárak eredményez. Ennek eredményeképpen, előfordulhat, hogy nem jelenik meg a szürke keresztszűrés a könyvtárak, amely azt jelzi, hogy a könyvtárakat offline üzemmódban van, a kapcsolódó tartalmat teljesen töltött fel az Azure-bA. |
+| **10.** |Online súgó |Az Azure portal súgó hivatkozásai nem csatolhatja dokumentációját.|A súgó hivatkozásai az általánosan elérhető kiadások fog működni. |
 
 
 

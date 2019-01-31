@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: a43db3eba5bec9bef0aacc51d246414d54d222bf
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: dc36e66e9dae62fdfede3a82146cd218ca5eb489
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813441"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458176"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Acadia
 
@@ -71,10 +71,10 @@ Az Azure AD integrálása a Acadia konfigurálásához hozzá kell Acadia a kata
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az [alkalmazásnév] nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó [alkalmazásnév] a hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Acadia nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Acadia hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés az Acadia tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Acadia egyszeri bejelentkezés konfigurálása](#configure-acadia-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
@@ -87,7 +87,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] tesztelése és konfigu
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához hajtsa végre az alábbi lépéseket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Acadia, hajtsa végre az alábbi lépéseket:
 
 1. Az a [az Azure portal](https://portal.azure.com/), az a **Acadia** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
@@ -116,7 +116,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/Login`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [Acadia ügyfél-támogatási csapatának](https://www.systemsalliance.com/contact-us/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > 4. és 5 értékeit biztosítjuk a metaadatfájl kattintva importálhatók a Acadia csapat **metaadatfájl feltöltése** a a **alapszintű SAML-konfigurációja** szakaszban. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszában, győződjön meg arról, hogy helyesek-e a metaadatértékeket az Azure Portalon. Kapcsolattartó [Acadia ügyfél-támogatási csapatának](mailto:support@systemsalliance.com) Ha a megadott érték helytelen.
 
 6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -134,7 +134,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
 ### <a name="configure-acadia-single-sign-on"></a>Acadia egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Acadia** oldalon kell küldenie a letöltött **metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Acadia támogatási csapatának](https://www.systemsalliance.com/contact-us/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálásához a **Acadia** oldalon kell küldenie a letöltött **metaadatainak XML**, a **alkalmazás összevonási metaadatainak URL-címe**, és a megfelelő másolt URL-címei Az Azure Portalon [Acadia támogatási csapatának](mailto:support@systemsalliance.com). Ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon konfigurálja azokat.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 

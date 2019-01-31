@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 08/27/2018
-ms.openlocfilehash: ce39b431adfd333db1e771913ed28881a193b327
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/28/2019
+ms.openlocfilehash: 0878fc4b069f7c1ca34f8954320af6e69ceea717
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790840"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299864"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Az Apache Hadoop, az Apache Spark, az Apache Kafka és több HDInsight-fürtök beállítása
 
@@ -27,7 +27,6 @@ Hadoop-fürt több virtuális gépek (csomópontok), elosztott feldolgozási fel
 
 > [!IMPORTANT]  
 > A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban. Ismerje meg, hogyan [fürt törlése.](hdinsight-delete-cluster.md)
->
 
 ## <a name="cluster-setup-methods"></a>Fürt telepítési módszer
 Az alábbi táblázat a különböző módszerek használatával egy HDInsight-fürt beállítása.
@@ -67,8 +66,6 @@ Az Azure HDInsight jelenleg a következő fürttípusokat, rendelkező összetev
 
 > [!IMPORTANT]  
 > HDInsight-fürtök különböző típusainak használatát, minden egyes egyetlen számítási feladat vagy technológia érhető el. Nincs támogatott módszer, amely ötvözi az több típus, például a Storm és a egy fürtön a HBase-fürt létrehozásához. Ha a megoldáshoz szükséges technológiákról, amelyeket több HDInsight-fürttípusok, vannak elosztva egy [az Azure virtual network](https://docs.microsoft.com/azure/virtual-network) csatlakozni tud a szükséges típusokat. 
->
->
 
 | Fürttípus | Funkció |
 | --- | --- |
@@ -84,20 +81,12 @@ Az Azure HDInsight jelenleg a következő fürttípusokat, rendelkező összetev
 ### <a name="hdinsight-version"></a>HDInsight-verzió
 Válassza ki a HDInsight fürt verzióját. További információkért lásd: [HDInsight támogatott verziók](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
-### <a name="enterprise-security-package"></a>Vállalati biztonsági csomag
 
-Hadoop, Spark- és interaktív lekérdezési fürt esetében lehet váltani, engedélyezze a **vállalati biztonsági csomag**. Ez a csomag biztosít a biztonságosabb a fürttelepítés Apache Ranger segítségével, illetve integrálása az Azure Active Directoryval opciót. További információkért lásd: [az Azure HDInsight vállalati biztonsági csomag](./domain-joined/apache-domain-joined-introduction.md).
-
-![hdinsight létrehozása a beállítások vállalati biztonsági csomag kiválasztása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-enterprise-security-package.png)
-
-További információ a tartományhoz csatlakoztatott HDInsight létrehozása a fürt, lásd: [létrehozás tartományhoz csatlakoztatott HDInsight próbakörnyezetben](./domain-joined/apache-domain-joined-configure.md).
-
-
-## <a name="cluster-login-and-ssh-user-name"></a>Fürt bejelentkezési adatai és SSH-felhasználónév
+## <a name="cluster-login-and-ssh-username"></a>Fürt bejelentkezési adatai és SSH-felhasználónév
 A HDInsight-fürtökkel a fürt létrehozásakor két felhasználói fiókot konfigurálhat:
 
-* A HTTP-felhasználó: Az alapértelmezett felhasználónév *rendszergazdai*. Az alapkonfiguráció használ az Azure Portalon. Más néven "Fürt a felhasználó."
-* SSH-felhasználó (Linux-fürtök): Csatlakozhat a fürthöz ssh-n keresztül. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+* A HTTP-felhasználó: Az alapértelmezett felhasználónév az *admin*. Az alapkonfiguráció használ az Azure Portalon. Más néven "Fürt a felhasználó."
+* SSH-felhasználót: Csatlakozhat a fürthöz ssh-n keresztül. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 A vállalati biztonsági csomag lehetővé teszi, hogy a HDInsight integrálható az Active Directory és az Apache Ranger. Több felhasználó is létrehozható, a vállalati biztonsági csomag használatával.
 
@@ -143,10 +132,19 @@ Az Oozie használata a teljesítmény növelése érdekében használja az egyé
 
 ## <a name="custom-cluster-setup"></a>Egyéni fürt beállítása
 Egyéni fürterőforrás telepítő buildelési a gyors üzembe beállítások létrehozása, és hozzáadja a következő beállításokat:
+- [Vállalati biztonsági csomag](#enterprise-security-package)
 - [HDInsight-alkalmazások](#install-hdinsight-applications-on-clusters)
 - [Fürt mérete](#configure-cluster-size)
 - [A Parancsfájlműveletek](#advanced-settings-script-actions)
 - [Virtuális hálózat](#advanced-settings-extend-clusters-with-a-virtual-network)
+ 
+## <a name="enterprise-security-package"></a>Vállalati biztonsági csomag
+
+Hadoop, Spark, HBase, a Kafka és interaktív lekérdezési fürt esetében lehet váltani, engedélyezze a **vállalati biztonsági csomag**. Ez a csomag biztosít a biztonságosabb a fürttelepítés Apache Ranger segítségével, illetve integrálása az Azure Active Directoryval opciót. További információkért lásd: [az Azure HDInsight vállalati biztonsági csomag](./domain-joined/apache-domain-joined-introduction.md).
+
+![hdinsight létrehozása a beállítások vállalati biztonsági csomag kiválasztása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-enterprise-security-package.png)
+
+További információ a tartományhoz csatlakoztatott HDInsight létrehozása a fürt, lásd: [létrehozás tartományhoz csatlakoztatott HDInsight próbakörnyezetben](./domain-joined/apache-domain-joined-configure.md). 
 
 ## <a name="install-hdinsight-applications-on-clusters"></a>HDInsight-alkalmazások telepítése fürtökön
 
@@ -161,7 +159,7 @@ Mindaddig, amíg a fürt létezik számlázása a csomópont használatra. A sz�
 ### <a name="number-of-nodes-for-each-cluster-type"></a>Mindegyik fürttípus csomópontok száma
 Mindegyik fürttípus rendelkezik a saját csomópontok, a csomópontok és a virtuális gépek alapértelmezett mérete terminológiája száma. Az alábbi táblázatban az egyes csomóponttípusok csomópontok számát zárójelek között van.
 
-| Típus | Csomópontok | Ábra |
+| Typo | Csomópontok | Ábra |
 | --- | --- | --- |
 | Hadoop |A fő csomópont (2), adatcsomópont (1 +) |![HDInsight Hadoop-fürt csomópontjain](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |A fő kiszolgáló (2), régióbeli kiszolgálók (1 +), mester/ZooKeeper-csomópont (3) |![HDInsight HBase-fürt csomópontjain](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
@@ -221,17 +219,17 @@ Néhány natív Java-összetevők, például az Apache Mahout és kaszkádolás,
 Egyes esetekben szeretné a létrehozási folyamat során a következő konfigurációs fájlok konfigurálása:
 
 * clusterIdentity.xml
-* Core-site.xml
-* Gateway.XML
+* core-site.xml
+* gateway.xml
 * hbase-env.xml
 * hbase-site.xml
 * hdfs-site.xml
-* Hive-env.xml
-* Hive-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred-hely
-* az oozie-site.xml
-* az oozie-env.xml
-* a Storm-site.xml
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
 * tez-site.xml
 * webhcat-site.xml
 * yarn-site.xml
@@ -245,9 +243,6 @@ Az Azure-beli virtuális hálózathoz használata a HDInsight további informác
 
 Az Azure virtuális hálózatban két fürttípusok használatának példájáért lásd [használata Apache Spark strukturált Stream az Apache kafka platformmal](hdinsight-apache-kafka-spark-structured-streaming.md). HDInsight használatával egy virtuális hálózathoz, beleértve a virtuális hálózathoz megadott konfigurációs követelményekkel kapcsolatos további információk: [HDInsight kiterjesztése képességek az Azure Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md).
 
-## <a name="troubleshoot-access-control-issues"></a>Hozzáférés-vezérlés hibáinak elhárítása
-
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>További lépések
 

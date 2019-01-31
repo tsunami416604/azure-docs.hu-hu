@@ -1,6 +1,6 @@
 ---
-Cím: "Hibaelhárítása: Hozzon létre, csatlakozás egy Machine Learning Studio-munkaterülethez "titleSuffix: Azure Machine Learning Studio description: Ez az útmutató egyes megoldások gyakran közben kihívásokat állítja be az Azure Machine Learning Studio-munkaterületek.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: "Hibaelhárítása: Hozzon létre, csatlakozás egy Machine Learning Studio-munkaterülethez "titleSuffix: Azure Machine Learning Studio description: Ez az útmutató egyes megoldások gyakran közben kihívásokat állítja be az Azure Machine Learning Studio-munkaterületek.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/08/2019
-ms.openlocfilehash: 6b5ff7294735048347c500d64b411f16bda5422f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.date: 01/25/2019
+ms.openlocfilehash: 0d55b5d4c8d42a89a51fa5342d1ed747659a441b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212935"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465095"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Benefit és migrálása
 
@@ -42,7 +42,7 @@ Az alábbi táblázat segítséget nyújt a három réteg közötti különbség
 |A következőkre alkalmas|A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott és skálázható számítási és tárolási lehetőségek.|Magas I/O-igényű üzleti alkalmazások. Több elkülönített replika használatával ez biztosítja a legmagasabb hibatűrést.|A legtöbb üzleti célú a rugalmasan skálázható a tárolás és olvasási szintű követelmények|
 |Compute|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|
 |Memory (Memória)|Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag | Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag |Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag|
-|Storage|Használja a [távoli prémium szintű storage](../virtual-machines/windows/premium-storage.md):<br/>Önálló adatbázis: 5 GB – 4 TB-IG<br/>Felügyelt példány: 32 GB – 8 TB |Helyi SSD-alapú tárolást használ:<br/>Önálló adatbázis: 5 GB – 4 TB-IG<br/>Felügyelt példány: 32 GB – 4 TB-IG |Az automatikus növekedési rugalmas, igény szerint tárhelyet. Támogatja az akár 100 TB tárterület és más alkalmazásokhoz. Helyi SSD-tárhely a helyi puffer készlet cache és a helyi adatok tárolását. Az Azure távoli tárhely végső hosszú távú adatok tárolását. |
+|Storage|Használja a [távoli prémium szintű storage](../virtual-machines/windows/premium-storage.md):<br/>Önálló adatbázis: 5 GB – 4 TB-IG<br/>Felügyelt példány: 32 GB - 8 TB |Helyi SSD-alapú tárolást használ:<br/>Önálló adatbázis: 5 GB – 4 TB-IG<br/>Felügyelt példány: 32 GB - 4 TB |Az automatikus növekedési rugalmas, igény szerint tárhelyet. Támogatja az akár 100 TB tárterület és más alkalmazásokhoz. Helyi SSD-tárhely a helyi puffer készlet cache és a helyi adatok tárolását. Az Azure távoli tárhely végső hosszú távú adatok tárolását. |
 |IO-átviteli sebesség (becsült)|Önálló adatbázis: A 7000-es maximális IOPS / virtuális mag 500 IOPS</br>Felügyelt példány: Attól függ, [fájl méretét](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|A maximális iops-érték 200 000 magonként 5000 IOPS|TBD|
 |Rendelkezésre állás|1 replika, nincs olvasási szintű|3 replika, 1 [olvasási szintű replika](sql-database-read-scale-out.md),<br/>zóna redundáns magas rendelkezésre ÁLLÁS|?|
 |Biztonsági másolatok|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|pillanatkép-alapú biztonsági mentés az Azure távoli tároló és a helyreállításokat ezeket a pillanatképeket használni a gyors helyreállítás. A biztonsági mentéseket azonnali, és nincs hatással a számítási i/o-teljesítményét. Visszaállítás nagyon gyors és nem egy adatművelet (véve a perc helyett órák vagy napok) méretét.|
@@ -71,9 +71,9 @@ Az Azure Hybrid benefittel lehet váltani, csak az alapul szolgáló Azure infra
 
 - Állítsa be, vagy frissítse a PowerShell-lel licenc típusa:
 
-  - [Új AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
+  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
   - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql)
-  - [Új AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
+  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
   - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql)
 
 - Állítsa be, vagy frissítse az Azure CLI-vel licenc típusa:

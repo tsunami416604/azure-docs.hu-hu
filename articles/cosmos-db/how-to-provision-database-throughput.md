@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 7c253141e0e6e76f845d08e68a1d79949fe811e8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c648522e689c64de8e7e09b85ca3b6eb26b6945b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034233"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477199"
 ---
-# <a name="provision-throughput-for-a-database-in-azure-cosmos-db"></a>Átviteli sebesség kiosztása adatbázisokhoz az Azure Cosmos DB-ben
+# <a name="provision-throughput-on-an-azure-cosmos-database"></a>Egy Azure Cosmos-adatbázis kiépítése átviteli sebességet
 
 Ez a cikk azt ismerteti, hogy hogyan oszthatja ki az átviteli sebességet egy adatbázishoz az Azure Cosmos DB-ben. Az átviteli sebességet kioszthatja egyetlen [tárolóhoz](how-to-provision-container-throughput.md), vagy kioszthatja egy adatbázishoz, majd megoszthatja a benne található tárolók között. Az átviteli sebességet az Azure Portal vagy a Cosmos DB SDK használatával oszthatja ki adatbázisszinten.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: d20ba372a23d2d4865bd9d6c5c004f955c896201
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 74061eb081fcc7c2c84707f2414a2edfbfde3289
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55199083"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299537"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business warehouse-hoz az Azure Data Factory használatával nyissa meg központon keresztül
 
@@ -37,14 +37,14 @@ SAP Business Warehouse nyílt központon keresztül érkező adatokat másolhatj
 
 Pontosabban az SAP Business Warehouse nyílt Hub összekötő támogatja:
 
-- SAP Business Warehouse **7.30 verzió vagy újabb SAPK-73013INPIBASIS támogatást a telepített csomag**.
+- SAP Business Warehouse **7.30 vagy újabb verzió (a legutóbbi SAP támogatási csomag veremben lévő a 2015 évi. után kiadott)**.
 - Adatmásolás keresztül nyitva Hub cél helyi táblában, amely alá lehet DSO, InfoCube, MultiProvider, adatforrás, stb.
 - Alapszintű hitelesítés használata az adatok másolását.
 - Csatlakozás az alkalmazáskiszolgáló.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az SAP Business Warehouse-összekötő használatához meg kell:
+Az SAP Business Warehouse nyílt Hub összekötő használatához meg kell:
 
 - Állítsa be egy helyi Integration Runtime 3.13 verziójú vagy újabb. Lásd: [helyi Integration Runtime](create-self-hosted-integration-runtime.md) részleteivel.
 
@@ -57,17 +57,17 @@ Az SAP Business Warehouse-összekötő használatához meg kell:
     - RFC és az SAP BW engedélyezését. 
     - A "Végrehajtása" tevékenység engedélyezési objektum "S_SDSAUTH" engedéllyel.
 
-- Craete SAP nyílt Hub cél típusként **adatbázistábla** "Műszaki Key" beállítás be van jelölve.  Emellett javasoljuk, hogy a törlés adatok tábla nincs bejelölve, bár ez nem szükséges. Hajtsa végre az adatok betöltése a DTP az adatforrás-objektum (például a kocka) nyissa meg a hub céltábla választotta.
+- Hozzon létre az SAP nyílt Hub cél típusú, mint **adatbázistábla** "Műszaki Key" beállítás be van jelölve.  Emellett javasoljuk, hogy a törlés adatok tábla nincs bejelölve, bár ez nem szükséges. Használja ki a DTP (közvetlenül hajtsa végre vagy integrálható a meglévő folyamat lánc) adatok kerül az adatforrás-objektum (például a kocka) nyissa meg a hub céltábla választotta.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások SAP Business Warehouse-összekötő-tulajdonságokkal kapcsolatos részletekért.
+Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások SAP Business Warehouse nyílt Hub összekötő-tulajdonságokkal kapcsolatos részletekért.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-SAP Business Warehouse (BW) társított szolgáltatás a következő tulajdonságok támogatottak:
+SAP Business Warehouse nyissa meg Hub társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -75,6 +75,7 @@ SAP Business Warehouse (BW) társított szolgáltatás a következő tulajdonsá
 | kiszolgáló | A kiszolgálóra, amelyen az SAP BW-példány neve. | Igen |
 | systemNumber | Az SAP BW-rendszer rendszer száma.<br/>Érték engedélyezett: kétjegyű tizedes tört egy karakterláncból. | Igen |
 | clientId | Az SAP W rendszerben az ügyfél ügyfél-azonosítója.<br/>Érték engedélyezett: háromjegyű tizedes tört egy karakterláncból. | Igen |
+| language | Az SAP-rendszer által használt nyelv. | Nem (alapértelmezett érték **EN**)|
 | Felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó nevét. | Igen |
 | jelszó | A felhasználó jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Egy helyi Integration Runtime szükség, az említett [Előfeltételek](#prerequisites). |Igen |
@@ -128,7 +129,7 @@ Adatok másolása a, és az SAP BW Open Hub, állítsa be a type tulajdonság, a
     "properties": {
         "type": "SapOpenHubTable",
         "linkedServiceName": {
-            "referenceName": "<SAP BW linked service name>",
+            "referenceName": "<SAP BW Open Hub linked service name>",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {
@@ -140,7 +141,7 @@ Adatok másolása a, és az SAP BW Open Hub, állítsa be a type tulajdonság, a
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz az SAP BW forrás által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz az SAP BW Open Hub forrás által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="sap-bw-open-hub-as-source"></a>Az SAP BW Open Hub forrásként
 
@@ -179,18 +180,18 @@ Adatok másolása az SAP BW Open Hub, állítsa be a forrás típusaként a más
 
 ## <a name="data-type-mapping-for-sap-bw-open-hub"></a>SAP BW Open hub adattípus-leképezés
 
-Ha az adatok másolása az SAP BW, a következő hozzárendeléseket a rendszer az SAP BW-adattípusok Azure Data Factory közbenső adattípusok használja. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
+Az adatok másolása az SAP BW Open hubhoz, ha a következő hozzárendeléseket használják az SAP BW-adattípusok Azure Data Factory-közbenső adattípusok. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
 
 | SAP ABAP Type | Data factory közbenső adattípus |
 |:--- |:--- |
-| C (karakterlánc) | Karakterlánc |
+| C (karakterlánc) | String |
 | I (egész szám) | Int32 |
-| F (Float) | Dupla |
-| D (dátum) | Karakterlánc |
-| T (idő) | Karakterlánc |
-| P (BCD csomagolt, pénznem, Decimal, mennyiség) | Tizedes tört |
-| N (Numc) | Karakterlánc |
-| X-(bináris és nyers) | Karakterlánc |
+| F (Float) | Double |
+| D (dátum) | String |
+| T (idő) | String |
+| P (BCD csomagolt, pénznem, Decimal, mennyiség) | Decimal |
+| N (Numc) | String |
+| X-(bináris és nyers) | String |
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

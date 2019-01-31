@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 30ee4f1f56a3c8df44e7a14a131371acfebc6c9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 01/25/2019
+ms.openlocfilehash: 78879947ae0e702604b56f1cb9c914acc4d4d592
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052717"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478474"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database adatbázis
 
@@ -83,7 +83,7 @@ Nincsenek [két hitelesítési módszerek](sql-database-control-access.md#authen
 - [Az Azure Active Directory-hitelesítés](sql-database-aad-authentication.md)
 - SQL-hitelesítés
 
-A hagyományos windows-hitelesítés nem támogatott. Az Azure Active Directory (AD) egy olyan központi identitás- és hozzáférés a felügyeleti szolgáltatás. Ez nagyon kényelmesen megadhat egy egyszeri bejelentkezéses hozzáférést (SSO), a személyzet összes a szervezetben. Ez azt jelenti, hogy a hitelesítő adatok meg vannak osztva az összes Azure-szolgáltatások egyszerűbb hitelesítéshez. Támogatja az AAD [többtényezős hitelesítés (többtényezős hitelesítést)](sql-database-ssms-mfa-authentication.md) és a egy [néhány kattintással](../active-directory/hybrid/how-to-connect-install-express.md) AAD integrálható a Windows Server Active Directoryval. SQL-hitelesítés már használja egy, az elmúlt ugyanúgy működik. Felhasználónevet/jelszót ad meg, és hitelesítheti a felhasználókat egy adott logikai kiszolgáló bármely olyan adatbázisába. Ez lehetővé teszi az SQL Database és az SQL Data Warehouse kínálta a multi-factor authentication és a Vendég felhasználói fiókok Azure AD-tartomány belül. Ha már rendelkezik egy Active Directory a helyszíni, meg is összevonható a címtár az Azure Active Directoryval, a címtár kiterjesztése az Azure-bA.
+A hagyományos windows-hitelesítés nem támogatott. Az Azure Active Directory (AD) egy olyan központi identitás- és hozzáférés a felügyeleti szolgáltatás. Ez nagyon kényelmesen megadhat egy egyszeri bejelentkezéses hozzáférést (SSO), a személyzet összes a szervezetben. Ez azt jelenti, hogy a hitelesítő adatok meg vannak osztva az összes Azure-szolgáltatások egyszerűbb hitelesítéshez. Támogatja az AAD [többtényezős hitelesítés (többtényezős hitelesítést)](sql-database-ssms-mfa-authentication.md) és a egy [néhány kattintással](../active-directory/hybrid/how-to-connect-install-express.md) AAD integrálható a Windows Server Active Directoryval. SQL-hitelesítés már használja egy, az elmúlt ugyanúgy működik. Felhasználónevet/jelszót ad meg, és hitelesítheti a felhasználókat egy adott SQL Database-kiszolgáló bármely olyan adatbázisába. Ez lehetővé teszi az SQL Database és az SQL Data Warehouse kínálta a multi-factor authentication és a Vendég felhasználói fiókok Azure AD-tartomány belül. Ha már rendelkezik egy Active Directory a helyszíni, meg is összevonható a címtár az Azure Active Directoryval, a címtár kiterjesztése az Azure-bA.
 
 |**Ha Ön...**|**Az SQL Database / SQL Data Warehouse**|
 |---|---|
@@ -106,7 +106,7 @@ Nincsenek több technikák a rendelkezésére, amelyek rosszabb csatlakozási sz
 
 #### <a name="firewall"></a>Tűzfal
 
-A tűzfal megakadályozza, hogy hozzáférést a kiszolgálóhoz egy külső entitás azáltal, hogy csak adott entitásokhoz a hozzáférést a logikai kiszolgáló. Alapértelmezés szerint az összes kapcsolat és a logikai kiszolgálón található adatbázisok nem engedélyezettek, más Azure-szolgáltatásoktól érkező kapcsolatokat kivéve. A tűzfalszabály nyissa meg hozzáférés csak az entitások (például a fejlesztői gépen), amelyek azáltal, hogy a számítógép IP-cím a tűzfalon keresztül, jóváhagyása a kiszolgálóhoz. Azt is lehetővé teszi, hogy adjon meg egy IP-címtartományt, amely annak a logikai kiszolgálóhoz való hozzáférés engedélyezése. Például a szervezet fejlesztői gép IP-címek is hozzáadhatók egyszerre egy tartományt a tűzfalbeállítások oldal megadásával.
+A tűzfal megakadályozza, hogy hozzáférés a kiszolgálóhoz egy külső entitás azáltal, hogy csak adott entitásokhoz a hozzáférést az SQL Database-kiszolgálóhoz. Alapértelmezés szerint az összes kapcsolat és az SQL Database-kiszolgáló belüli adatbázisok nem engedélyezettek, más Azure-szolgáltatásoktól érkező kapcsolatokat kivéve. A tűzfalszabály nyissa meg hozzáférés csak az entitások (például a fejlesztői gépen), amelyek azáltal, hogy a számítógép IP-cím a tűzfalon keresztül, jóváhagyása a kiszolgálóhoz. Azt is lehetővé teszi, hogy adjon meg egy IP-címtartományt, annak az SQL Database-kiszolgálóhoz való hozzáférés engedélyezése. Például a szervezet fejlesztői gép IP-címek is hozzáadhatók egyszerre egy tartományt a tűzfalbeállítások oldal megadásával.
 
 A kiszolgálószintű vagy adatbázisszintű tűzfalszabályok létrehozhat. Kiszolgálói szintű tűzfalszabályokat vagy az Azure portal vagy az ssms használatával hozható létre. További információk a kiszolgáló- és adatbázis-szintű tűzfalszabályt beállítása, lásd: [Tűzfalszabályok létrehozása az SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
 
@@ -124,15 +124,15 @@ Egy másik lehetőség az, hogy kiépítése [fenntartott IP-címek](../virtual-
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>Melyik porton létesíthetek kapcsolatot az SQL Database-be
 
-1433-as porton. Az SQL Database ezen a porton keresztül kommunikál. Csatlakozhat a vállalati hálózaton belülről, fel kell vennie az kimenő szabályt a szervezet tűzfalbeállításainál. Iránymutatásként kerülje a 1433-as port közvetlenül az Azure határain kívülre. SSMS az Azure-ban futtatható [Azure RemoteApp](https://www.microsoft.com/cloud-platform/azure-remoteapp-client-apps). Nem igényel, hogy nyissa meg a 1433-as port a kimenő kapcsolatokat, az IP-cím statikus, ezért lehet, hogy az adatbázis csak a RemoteApp megnyitása és Multi Factor Authentication (MFA) támogatja.
+Port 1433. Az SQL Database ezen a porton keresztül kommunikál. Csatlakozhat a vállalati hálózaton belülről, fel kell vennie az kimenő szabályt a szervezet tűzfalbeállításainál. Iránymutatásként kerülje a 1433-as port közvetlenül az Azure határain kívülre. SSMS az Azure-ban futtatható [Azure RemoteApp](https://www.microsoft.com/cloud-platform/azure-remoteapp-client-apps). Nem igényel, hogy nyissa meg a 1433-as port a kimenő kapcsolatokat, az IP-cím statikus, ezért lehet, hogy az adatbázis csak a RemoteApp megnyitása és Multi Factor Authentication (MFA) támogatja.
 
 ### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>Hogyan monitorozhatom és szabályozzák a tevékenység a saját kiszolgáló és az SQL Database-adatbázis
 
-#### <a name="sql-database-auditing"></a>Az SQL Database naplózási szolgáltatásával
+#### <a name="sql-database-auditing"></a>SQL Database Auditing
 
 Az SQL Database bekapcsolhatja a naplózást az adatbázissal kapcsolatos események nyomon követéséhez. [Az SQL Database naplózási szolgáltatásával](sql-database-auditing.md) rögzíti az adatbázisok eseményeit, és az Azure Storage-fiók egy naplózási naplófájlba írja őket. Naplózás funkció különösen akkor hasznos, ha azt tervezi, hogy betekintést nyerhet a potenciális biztonsági és a szabályzat megsértése miatt, szabályozásoknak való megfelelőség stb. Lehetővé teszi, hogy meghatározása és konfigurálása az egyes kategóriák eseményeket, amelyek úgy gondolja, hogy kell a naplózást és az alapján, hogy előre konfigurált jelentéseket és a egy irányítópultot, hogy az adatbázisban előforduló eseményeket áttekintést kaphat. Ezek a kiszolgálószintű vagy adatbázisszintű naplózási házirendek is alkalmazhat. A server/database Auditing szolgáltatása bekapcsolása útmutató, lásd: [Engedélyezze az SQL Database naplózási](sql-database-security-tutorial.md#enable-security-features).
 
-#### <a name="threat-detection"></a>Fenyegetésészlelés
+#### <a name="threat-detection"></a>Fenyegetések észlelése
 
 A [fenyegetésészlelés](sql-database-threat-detection.md), lehetővé teszi számára, hogy nagyon egyszerűen naplózás által észlelt biztonsági vagy házirend megsértésének kap. Nem kell lenniük egy biztonsági szakértői, a rendszer potenciális fenyegetések vagy szabálysértések megoldása érdekében. A fenyegetésészlelés is rendelkezik néhány beépített képességek, mint az SQL-injektálás felderítése. SQL-injektálás alter vagy veszélyeztetheti az adatokat és a egy adatbázis-alkalmazás intézményt általában elég általános módja. Az SQL Database Threat Detection algoritmusokban, ami észleli a potenciális biztonsági réseket és SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról (például hozzáférés szokatlan helyről vagy résztvevő részéről) több példányban fut. Biztonsági tisztviselők, vagy más kijelölt rendszergazdák e-mailben értesítést kapni, fenyegetés észlelésekor az adatbázison. Minden értesítést a gyanús tevékenységeket és ajánlások részleteit tartalmazza a vonatkozó további vizsgálata és a fenyegetés. Ismerje meg, hogyan kapcsolja be a fenyegetésészlelés, tekintse meg: [Engedélyezze az SQL Database Threat Detection](sql-database-security-tutorial.md#enable-security-features).
 
@@ -148,7 +148,7 @@ Az átvitel alatt bizalmas adatok védelmére és a tárolt SQL Database által 
 
 |**Jellemzők**|**Always Encrypted**|**Transzparens adattitkosítás**|
 |---|---|---|
-|**Titkosítás az időtartományt**|Végpontok közötti|Inaktív adatok|
+|**Titkosítás az időtartományt**|End-to-end|Inaktív adatok|
 |**Adatbázis-kiszolgáló hozzáférhet bizalmas adatokhoz**|Nem|Igen, mivel az inaktív adatok titkosítása|
 |**Engedélyezett a T-SQL-műveletek**|Közötti egyenlőségi összehasonlítás|Az összes T-SQL-támadási érhető el|
 |**A szolgáltatás használatához szükséges alkalmazás módosításai**|Minimális|Minimális|
@@ -240,7 +240,7 @@ SQL Database-ben kihasználhatja az intelligens elemzéseket a platform teljesí
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Az Azure Portalon egy önálló adatbázis kihasználtságát az adatbázis kiválasztásával, és kattintson a diagram az Áttekintés panelen látható. Módosíthatja a diagram megjelenítése több metrikát, többek között a Processzorhasználat (%), DTU százalékos értéke, adat IO, munkamenetek százaléka, és adatbázis mérete (%).
+Az Azure Portalon az adatbázis kiválasztásával és a diagram az Áttekintés panelen kattintson az adatbázis-kihasználtsági jeleníti meg. Módosíthatja a diagram megjelenítése több metrikát, többek között a Processzorhasználat (%), DTU százalékos értéke, adat IO, munkamenetek százaléka, és adatbázis mérete (%).
 
 ![Figyelés diagramra](./media/sql-database-manage-after-migration/monitoring-chart.png)
 

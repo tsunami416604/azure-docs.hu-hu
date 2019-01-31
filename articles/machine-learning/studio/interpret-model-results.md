@@ -1,6 +1,6 @@
 ---
-Cím: A Machine Learning Studio titleSuffix modell eredményeinek értelmezése: Azure Machine Learning Studio description: Hogyan választható ki a optimális paraméter használatával, és a vizualizáláshoz pontszám modell kimeneti algoritmus beállítása.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: A Machine Learning Studio titleSuffix modell eredményeinek értelmezése: Azure Machine Learning Studio description: Hogyan választható ki a optimális paraméter használatával, és a vizualizáláshoz pontszám modell kimeneti algoritmus beállítása.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 11/29/2017
 ---

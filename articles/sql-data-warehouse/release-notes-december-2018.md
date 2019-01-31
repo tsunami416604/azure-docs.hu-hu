@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/12/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: b897b50edf4d5a7eeabacc6da1505e165f2bb21a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f5060ab054d5b55b4b31ff01b00e30a34e6ebdce
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431741"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463429"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-december-2018"></a>Mi az új Azure SQL Data warehouse? 2018. december
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek 2018. December.

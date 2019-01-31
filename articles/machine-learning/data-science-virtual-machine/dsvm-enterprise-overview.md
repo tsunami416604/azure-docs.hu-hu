@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 84dfef65c341ca8023b741a98c26081da36e9ff7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fca4b7cc59bf191094400892a37addf1023e2f85
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085127"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472949"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Adatok tudományos virtuálisgép-alapú csapat elemzési és AI-környezet 
 A [adatelemző virtuális gép](overview.md) (DSVM) az Azure platformon, a mesterséges intelligencia (AI) és a data analytics előre összeállított szoftver gazdag környezetet biztosít. 

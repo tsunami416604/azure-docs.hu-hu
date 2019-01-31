@@ -11,21 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: a36c5cfc977920f43b7f73e3e7cf9176de7c1f8a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/25/2019
+ms.openlocfilehash: 9f61748a489987bf6c3f38e8ebfdab660198e10a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867086"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463021"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)
 Könnyedén horizontális felskálázása az Azure SQL-adatbázisok használatával a **Elastic Database** eszközök. Az eszközök és a szolgáltatások lehetővé teszik az adatbázis-erőforrások használata **Azure SQL Database** megoldásokat a tranzakciós munkaterhelések kezelésére, és különösen a szoftverek, mint a szoftverszolgáltatások (SaaS) alkalmazások. Rugalmas adatbázis-szolgáltatások alkotják a:
 
-* [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md): az ügyféloldali kódtár funkciója lehetővé teszi, szilánkokra osztott adatbázisok létrehozásához és kezeléséhez.  Lásd: [Ismerkedés az Elastic Database-eszközök](sql-database-elastic-scale-get-started.md).
+* [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md): Az ügyféloldali kódtár funkciója, amely lehetővé teszi, szilánkokra osztott adatbázisok létrehozásához és kezeléséhez.  Lásd: [Ismerkedés az Elastic Database-eszközök](sql-database-elastic-scale-get-started.md).
 * [Elastic Database felosztási-egyesítési eszközének](sql-database-elastic-scale-overview-split-and-merge.md): szilánkokra osztott adatbázisok között helyez át adatokat. Ez az eszköz számára, amely adatokat helyez át egy több-bérlős adatbázis egy egybérlős adatbázis (vagy fordítva) hasznos. Lásd: [Elastic database felosztási-egyesítési eszközzel oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-* [Elastic Database-feladatok](sql-database-elastic-jobs-overview.md) (előzetes verzió): feladatok használata kezelheti az Azure SQL Database-adatbázisok nagy számú. Könnyen elvégezhet olyan adminisztratív műveleteket, például sémamódosításokat, hitelesítő adatok kezelése, referenciaadatok frissítése, teljesítményadat-gyűjtés vagy bérlő (ügyfél) eszköztelemetria-gyűjtést feladatok használatával.
-* [Elastic Database-lekérdezés](sql-database-elastic-query-overview.md) (előzetes verzió): lehetővé teszi a több adatbázisra kiterjedő Transact-SQL-lekérdezés futtatásához. Ez lehetővé teszi a jelentéskészítő eszközökkel, például az Excel, a Power BI, Tableau kapcsolatot.
+* [Elastic Database-feladatok](sql-database-elastic-jobs-overview.md) (előzetes verzió): Feladatok használata kezelheti az Azure SQL Database-adatbázisok nagy számú. Könnyen elvégezhet olyan adminisztratív műveleteket, például sémamódosításokat, hitelesítő adatok kezelése, referenciaadatok frissítése, teljesítményadat-gyűjtés vagy bérlő (ügyfél) eszköztelemetria-gyűjtést feladatok használatával.
+* [Elastic Database-lekérdezés](sql-database-elastic-query-overview.md) (előzetes verzió): Lehetővé teszi a több adatbázisra kiterjedő Transact-SQL-lekérdezés futtatásához. Ez lehetővé teszi a jelentéskészítő eszközökkel, például az Excel, a Power BI, Tableau kapcsolatot.
 * [Rugalmas tranzakciók](sql-database-elastic-transactions-overview.md): Ez a funkció lehetővé teszi a tranzakciók, amelyek az Azure SQL Database adatbázisok futtatását. Rugalmas adatbázis-tranzakciók forrásoszlopokat használó .NET-alkalmazások érhetők el, valamint integrálhatja a szolgáltatást a megszokott programozási felület használatával a [System.Transaction osztályok](https://msdn.microsoft.com/library/system.transactions.aspx).
 
 A következő ábrán látható egy olyan architektúra, amely tartalmazza a **rugalmas adatbázis-funkciók** egy adatbázis-gyűjtemény viszonyítva.
@@ -67,8 +67,8 @@ A legtöbb felhőalapú adatbázis-alkalmazások ezen két stratégia szerint ko
 ## <a name="sharding"></a>Sharding
 *A horizontális skálázás* technika, azonos módon strukturált adatok nagy mennyiségű szét egy önálló adatbázisok száma. Általában különösen a fejlesztők számára hoz létre szoftverek, a szolgáltatás (SAAS-) ajánlatok kisvállalkozások vagy a végfelhasználók számára. Ezek a végfelhasználókat gyakran "bérlőkkel" nevezik. A horizontális skálázás szükséges bármely számos oka lehet:  
 
-* Adatok teljes mennyisége túl nagy ahhoz, hogy egy önálló adatbázis megkötései belül
-* A teljes számítási feladatnak tranzakciós átviteli kapacitást meghaladja az önálló adatbázis képességeit
+* Adatok teljes mennyisége túl nagy ahhoz, hogy az egyes adatbázisok megkötései belül
+* A teljes számítási feladatnak tranzakciós átviteli kapacitást meghaladja az egyes adatbázisok képességeiről
 * Bérlők lehet szükség a fizikai elkülönítését egymástól, így külön adatbázis szükséges ahhoz, hogy minden bérlő
 * Adatbázis különböző szakaszaiban található különböző földrajzi megfelelőség, a teljesítmény vagy a geopolitikai okokból szükségessé.
 

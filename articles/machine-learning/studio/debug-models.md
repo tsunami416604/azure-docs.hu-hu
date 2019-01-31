@@ -1,6 +1,6 @@
 ---
-Cím: A modell titleSuffix Debug: Azure Machine Learning Studio description: Hibák hibakeresése tanítási és pontszám modell által előállított modulok az Azure Machine Learning Studióban.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: A modell titleSuffix Debug: Azure Machine Learning Studio description: Hibák hibakeresése tanítási és pontszám modell által előállított modulok az Azure Machine Learning Studióban.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2017
 ---

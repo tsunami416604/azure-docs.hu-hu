@@ -11,22 +11,24 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 9d566c0f95325635c5ce5030f4d3b22dba7ceb08
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/25/2019
+ms.openlocfilehash: 719e8c605dfc91b1d9c358158aa3dca248173f90
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726031"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472014"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Az Azure SQL Database vásárlási modellek
 
 Az Azure SQL Database lehetővé teszi, hogy teljes körűen felügyelt PaaS adatbázismotor, válassza ki a teljesítménnyel és költségekkel igényeinek megfelelő könnyű vásárlás. Az Azure SQL Database üzembe helyezési modelltől, függően válassza ki a vásárlási modell, amely a legjobban az igényeinek:
+
 - [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) (ajánlott), amely lehetővé teszi, hogy válassza ki a tárolási kapacitás pontos mennyisége és a számítási, hogy a számítási feladathoz szükséges.
 - [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) elosztott terhelésű gyakori munkaterhelés például a számítás és tárolás csomagok adja meg a csomagokban.
 
 Az Azure SQL Database üzemi modellekben található különböző vásárlási modell érhetők el:
-- [Logikai kiszolgálók](sql-database-logical-servers.md) a [Azure SQL Database](sql-database-technical-overview.md) is kínálnak [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). A beszerzési modell választhat [önálló adatbázisok](sql-database-single-databases-manage.md) vagy [rugalmas készletek](sql-database-elastic-pool.md).
+
+- [Önálló adatbázisok](sql-database-single-databases-manage.md) és [rugalmas készletek](sql-database-elastic-pool.md) a [Azure SQL Database](sql-database-technical-overview.md) is kínálnak [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). 
 - [Felügyelt példányok](sql-database-managed-instance.md) az egyetlen Azure SQL Database-ajánlatok a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 
 > [!IMPORTANT]
@@ -64,7 +66,7 @@ Az adatbázis tranzakciós egység (DTU) a CPU összesített mérésén jelöli,
 
 ### <a name="database-transaction-units-dtus"></a>Adatbázis-tranzakciós egységek (Dtu)
 
-Egyetlen Azure SQL-adatbázishoz egy adott számítási méret belül egy [szolgáltatásszint](sql-database-single-database-scale.md), így előre jelezhető garantálja a Microsoft bizonyos fokú erőforrásokat az adatbázishoz (amely független az Azure-felhőben más adatbázisok), teljesítmény szintjét. Erőforrás-mennyiséget egy adatbázis-tranzakciós egységek vagy a dtu-k számát számítjuk, és a egy csomagolt számítási, tárolási és i/o-erőforrások mértékegysége. E három erőforrás aránya eredetileg által meghatározott egy [OLTP-számításifeladat módszertanával](sql-database-benchmark-overview.md), tervezett, amely valós OLTP számítási feladatok. Ha a számítási feladat a következő erőforrások mennyisége meghaladja, az átviteli sebesség, szabályozott – a lassabb teljesítménye és időtúllépések eredményül kapott. A számítási feladatok által használt erőforrások nem érinti a többi SQL-adatbázisok Azure-felhőszolgáltatás számára elérhető erőforrások és egyéb számítási feladatok által használt erőforrások nem érinti az SQL-adatbázis számára elérhető erőforrások.
+Egy önálló adatbázis egy adott számítási méret belül egy [szolgáltatásszint](sql-database-single-database-scale.md), a Microsoft garantálja bizonyos fokú erőforrásokat az adatbázishoz (amely független az Azure-felhőben más adatbázisok), így kiszámítható szintű teljesítmény. Erőforrás-mennyiséget egy adatbázis-tranzakciós egységek vagy a dtu-k számát számítjuk, és a egy csomagolt számítási, tárolási és i/o-erőforrások mértékegysége. E három erőforrás aránya eredetileg által meghatározott egy [OLTP-számításifeladat módszertanával](sql-database-benchmark-overview.md), tervezett, amely valós OLTP számítási feladatok. Ha a számítási feladat a következő erőforrások mennyisége meghaladja, az átviteli sebesség, szabályozott – a lassabb teljesítménye és időtúllépések eredményül kapott. A számítási feladatok által használt erőforrások nem érinti a többi SQL-adatbázisok Azure-felhőszolgáltatás számára elérhető erőforrások és egyéb számítási feladatok által használt erőforrások nem érinti az SQL-adatbázis számára elérhető erőforrások.
 
 ![határolókeret](./media/sql-database-what-is-a-dtu/bounding-box.png)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4b6e6cf3fb030f5f9706ded19f85575baed69b39
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471820"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467441"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
@@ -108,7 +108,7 @@ A leggyakrabban használt standard csomagokhoz fókusz pótlása **S1-S3** egy h
 
 |  | S1 | S2 | S3 |  |  |  |  |
 |--|----|----|----|--|--|--|--|
-| Partíció mérete|  25 GB | 100 GB | 250 GB |  |  |  |  |
+| Partíció mérete|  25 GB | 100 GB | 200 GB |  |  |  |  |
 | index és indexelő korlátok| 50 | 200 | 200 |  |  |  |  |
 
 **S1** közös döntés, amikor dedikált erőforrásokat, és több partíciót megtagadná válnak. Legfeljebb 12 partícióra partícióval 25 GB-ot, a szolgáltatási korlátja **S1** 300 GB-os teljes van Ha maximalizálja a partíciók replikáit keresztül (lásd: [lefoglalni a partíciókat és -replikákat](search-capacity-planning.md#chart) esetében több elosztott terhelésű összetételű.)

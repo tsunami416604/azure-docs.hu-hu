@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 01/22/2019
-ms.openlocfilehash: 63a6daa7c409aeb77b07e98cc0108b727f263d4c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/25/2019
+ms.openlocfilehash: 1fd524e858b20c75aef4101ad98ac54c4f485d1e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453262"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457207"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Adatbázis-feladatok használata a felügyeleti feladatok automatizálása
 
@@ -26,6 +26,7 @@ Megadhatja a céladatbázis vagy -csoportok az Azure SQL Database-adatbázisok, 
 Egy feladat a feladat történő céladatbázis kezeli. Ön is definiálása, karbantartása és Transact-SQL szkriptek hajtható végre, egy Azure SQL Database-adatbázisok csoport közötti megőrzése.
 
 Nincsenek számos forgatókönyv feladat automation használhatja:
+
 - Felügyeleti feladatok automatizálása és ütemezése majd minden hétköznap futtatása után óránként, stb.
   - Üzembe helyezhet sémamódosításokat, kezelheti a hitelesítő adatokat, teljesítményadatokat vagy bérlői (ügyfél-) telemetriát gyűjthet.
   - (Minden adatbázis közös információk) referenciaadatok frissítése, adatok betöltése az Azure Blob storage-ból.
@@ -39,14 +40,15 @@ Nincsenek számos forgatókönyv feladat automation használhatja:
  - Feladatok létrehozására, amelyek vagy az adatbázisokat, SQL Server Integration Services (SSIS) használatával az adatok betöltéséhez.
 
 A következő feladat ütemezési technológiákat az Azure SQL Database-ben érhetők el:
-- **SQL-ügynök feladatait** vannak a klasszikus és az élesben tesztelt SQL Server-feladatok ütemezését összetevő, amely a felügyelt példány érhető el. SQL-ügynök feladatait az egyedülálló adatbázisok nem érhetők el.
+
+- **SQL-ügynök feladatait** vannak a klasszikus és az élesben tesztelt SQL Server-feladatok ütemezését összetevő, amely a felügyelt példány érhető el. SQL-ügynök feladatait az önálló adatbázisok nem érhetők el.
 - **Elastic Database-feladatok** feladatütemezés szolgáltatása, amely végrehajtja a egyéni feladatokat egy vagy több Azure SQL-adatbázis.
 
-Fontos megjegyezni, hogy az SQL Agent közötti különbségek néhány (elérhető a helyszíni és SQL Database felügyelt példányain részeként), és az adatbázis feladatügynök (egyszeres SQL Database és az SQL Data Warehouse érhető el).
+Fontos megjegyezni, hogy az SQL Agent közötti különbségek néhány (elérhető a helyszíni és SQL Database felügyelt példányain részeként), és az adatbázis feladatügynök (az önálló adatbázisok az Azure SQL database és az SQL Data Warehouse-adatbázisok számára érhető el).
 
 |  |Rugalmas feladatok  |SQL Agent |
 |---------|---------|---------|
-|Hatókör     |  Tetszőleges számú Azure SQL-adatbázis és/vagy Data Warehouse egy Azure-felhőben, amely feladatügynökként működik. A célok lehetnek különböző logikai kiszolgálókon, előfizetésekben és/vagy régiókban. <br><br>A célcsoportok állhatnak egyedi adatbázisokból vagy adattárházakból, illetve egy kiszolgáló, készlet vagy szegmenstérkép összes adatbázisából (a feladat futásidejében dinamikusan számba véve). | Bármely önálló adatbázis az SQL-ügynökével azonos SQL Server-példányban. |
+|Hatókör     |  Tetszőleges számú Azure SQL-adatbázis és/vagy Data Warehouse egy Azure-felhőben, amely feladatügynökként működik. Tárolók különböző SQL Database kiszolgálók, az előfizetések, illetve régiókban is lehetnek. <br><br>A célcsoportok állhatnak egyedi adatbázisokból vagy adattárházakból, illetve egy kiszolgáló, készlet vagy szegmenstérkép összes adatbázisából (a feladat futásidejében dinamikusan számba véve). | Minden egyes adatbázis az SQL agent, ugyanazon SQL Server-példányon. |
 |Támogatott API-k és eszközök     |  Portál, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
 
 ## <a name="sql-agent-jobs"></a>SQL-ügynök feladatait
@@ -54,6 +56,7 @@ Fontos megjegyezni, hogy az SQL Agent közötti különbségek néhány (elérhe
 SQL-ügynök feladatait megadott sorozata, a T-SQL szkripteket az adatbázison. Feladatok segítségével meghatározhatja egy felügyeleti feladat futtatása egy vagy több alkalommal és figyelemmel kísérni a sikeres vagy sikertelen lehet.
 Egy feladat több távoli kiszolgálón vagy egy helyi kiszolgálón futtatható. Az SQL Agent-feladat egy belső adatbázis-kezelő összetevő, amely a felügyelt példány szolgáltatáson belül hajtja végre.
 SQL-ügynök feladatait számos fő fogalmak szerepelnek:
+
 - **Feladat lépései** egy vagy több olyan lépéseket, amelyek a feladat belül kell végrehajtani. A feladat lépéseinek meghatározhatja az újrapróbálkozási stratégiát és az eseményekből eredő műveleteket történjen, ha a feladat lépésének sikeres vagy sikertelen.
 - **Ütemezések** határozza meg, a feladat végrehajtása esetén.
 - **Értesítések** lehetővé teszi olyan szabályok, amelyek értesítése e-mailek keresztül operátorok, a feladat befejezése után a rendszer.
@@ -64,11 +67,13 @@ Az SQL Agent-feladat lépésekre, amelyek az SQL Agent végrehajtható művelete
 Az SQL Agent lehetővé teszi, hogy a feladat lépései a Transact-SQL feladatlépést, amely végrehajt egy Transact-SQL kötegben az adatbázison, vagy az operációs rendszer parancs/PowerShell lépéseket, amelyekkel végrehajtható egyéni operációsrendszer-parancsfájl például különböző típusainak létrehozásáról, az SSIS feladat lépésekkel engedélyezheti, hogy az adatok betöltése SSIS modullal, vagy [replikációs](sql-database-managed-instance-transactional-replication.md) lépéseket, amelyek a változásokat az adatbázisból, más adatbázisokkal teheti közzé.
 
 [Tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) adatbázismotor-funkció, amely lehetővé teszi, hogy egy adott adatbázis egy vagy több táblát a módosítások közzététele, közzététel és kioszthatja az előfizetői adatbázis. A módosítások közzététele a következő SQL-ügynök feladatot lépés típusú használatával lett megvalósítva:
+
 - Replikálásitranzakciónapló-olvasó.
 - Snapshot.
 - A terjesztőn.
 
 Feladat lépései más típusú jelenleg nem támogatottak, többek között:
+
 - Egyesítéses replikálási feladat lépésének nem támogatott.
 - Üzenetsor-olvasó nem támogatott.
 - Analysis Services nem támogatottak.
@@ -77,6 +82,7 @@ Feladat lépései más típusú jelenleg nem támogatottak, többek között:
 
 Ütemezés szerint meghatározza, hogy a feladat futtatásakor. Több feladat is az azonos ütemezés szerint fut, és ugyanazt a feladatot több ütemezés is vonatkoznak.
 Ütemezés szerint határozhatja meg az az idő, amikor a feladat fut, az alábbi feltételek:
+
 - Minden alkalommal, amikor Instance újraindul (vagy SQL Server-ügynök indulásakor). Feladat minden feladatátvétel után aktiválódik.
 - Egyszer, egy adott dátummal és időponttal, amely hasznos a késleltetett végrehajtását néhány feladatot.
 - Ismétlődő ütemezés szerint.
@@ -215,7 +221,7 @@ Feladatügynök létrehozásakor a séma, a táblák és a *jobs_reader* nevű s
 
 A *célcsoport* határozza meg az azokat az adatbázisokat, amelyeket az adott feladatlépés végre lesz hajtva. A célcsoport tetszőleges számban és kombinációban tartalmazhatja a következőket:
 
-- **Azure SQL Server** – Ha meg van adva egy kiszolgáló, a feladat végrehajtásának időpontjában a kiszolgálón található összes adatbázis a csoport része lesz. A master adatbázis hitelesítő adatait meg kell adni ahhoz, hogy a csoportot a rendszer a feladat végrehajtása előtt számba vegye és frissítse.
+- **SQL Database-kiszolgáló** -van adva egy kiszolgáló, a kiszolgáló a feladat végrehajtásának időpontjában meglévő összes adatbázis-e a csoport része. A master adatbázis hitelesítő adatait meg kell adni ahhoz, hogy a csoportot a rendszer a feladat végrehajtása előtt számba vegye és frissítse.
 - **Rugalmas készlet** – Ha meg van adva egy rugalmas készlet, a feladat végrehajtásának időpontjában a rugalmas készletben található összes adatbázis a csoport tagja lesz. Kiszolgáló esetén a master adatbázis hitelesítő adatait meg kell adni ahhoz, hogy a csoport a feladat futtatása előtt frissíthető legyen.
 - **Önálló adatbázis** – adjon meg egy vagy több egyedi adatbázist, amelyet a csoport részévé kíván tenni.
 - **Szegmenstérkép** – egy szegmenstérkép adatbázisai.
@@ -258,6 +264,7 @@ A feladatok lépéseinek eredménye részletesen rögzítve lesz az egyes adatb�
 #### <a name="job-history"></a>Feladatelőzmények
 
 A feladatok futtatásának előzményeit a rendszer a *feladat-adatbázisban* tárolja. A rendszertisztítási feladat törli a 45 napnál régebbi végrehajtási előzményeket. A 45 napnál nem régebbi előzmények törléséhez hívja meg az **sp_purge_history** tárolt eljárást a *feladat-adatbázisban*.
+
 ### <a name="agent-performance-capacity-and-limitations"></a>Az ügynök teljesítménye, kapacitása és korlátai
 
 A rugalmas feladatok minimális számítási erőforrást használnak, amíg a hosszan futó feladatok befejezésére várakoznak.

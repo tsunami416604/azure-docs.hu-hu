@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: SQL Database-tűzfalszabály létrehozása | Microsoft Docs'
+title: 'Az Azure Portalon: Hozzon létre egy SQL Database tűfzal szabályt |} A Microsoft Docs'
 description: SQL Database kiszolgáló szintű tűzfalszabály létrehozása
 services: sql-database
 ms.service: sql-database
@@ -11,15 +11,15 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 12/01/2018
-ms.openlocfilehash: cab92539b5019d4807ddefb2b84279c844f53016
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/25/2019
+ms.openlocfilehash: 589d3fa8c0ee8c8f374cd4f34f17401caa46d265
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721901"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462256"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-for-your-sql-database-using-the-azure-portal"></a>Rövid útmutató: Kiszolgálószintű tűzfalszabály létrehozása az SQL-adatbázishoz az Azure Portalon
+# <a name="quickstart-create-a-server-level-firewall-rule-for-your-sql-database-using-the-azure-portal"></a>Gyors útmutató: SQL Database kiszolgáló szintű tűzfalszabály létrehozása az Azure Portal használatával
 
 Ez a rövid útmutató végigvezeti egy olyan, Azure SQL-adatbázishoz készült kiszolgálószintű tűzfalszabály létrehozásának lépésein, amely engedélyezi, hogy egy helyszíni erőforrásból csatlakozzon az adatbázishoz.
 
@@ -57,7 +57,7 @@ Hajtsa végre a következő lépésekkel hozzon létre egy kiszolgálószintű t
    > Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Válasszon **OFF** ezen az oldalon letiltása az Azure-szolgáltatásokhoz.
    >
 
-5. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
+5. Kattintson a **Mentés** gombra. Egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, az SQL Database-kiszolgálóhoz az 1433-as port megnyitása jön létre.
 
 6. Zárja be a **tűzfalbeállítások** lapot.
 
@@ -66,7 +66,6 @@ SQL Server Management Studio vagy más választott eszköz használatával, most
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) szeretne lépni, és meg szeretné tudni, hogyan milyen módokon csatlakozhat az adatbázishoz és végezhet róla lekérdezéseket. Ha azonban törölni szeretné az ebben a rövid útmutatóban létrehozott erőforrásokat, használja az alábbi lépéseket.
-
 
 1. A bal oldali menüben az Azure Portalon, válassza ki a **erőforráscsoportok** majd **myResourceGroup**.
 2. Az erőforráscsoport lapján, válassza ki a **törlése**, típus **myResourceGroup** a szövegmezőbe, és válassza ki a **törlése**.

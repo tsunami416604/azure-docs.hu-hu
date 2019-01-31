@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 78ac8f83bceef88e89edefa0eececb058e8efe2b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9d606dd4faf324d68e4365eae0802de2384471ab
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230233"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295357"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Az Oracle Database-összekötő használatának első lépései
 
@@ -95,27 +95,27 @@ Ez a cikk bemutatja, hogyan használhatja az Oracle Database-összekötő a logi
 
 ## <a name="common-errors"></a>Gyakori hibák
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Hiba**: az átjáró nem érhető el.
+#### <a name="error-cannot-reach-the-gateway"></a>**Hiba**: Az átjáró nem érhető el.
 
-**OK**: A helyszíni adatátjáró nem sikerül csatlakozni a felhőhöz. 
+**Ok**: A helyszíni adatátjáró nem sikerül csatlakozni a felhőhöz. 
 
 **Kockázatcsökkentési**: Győződjön meg arról, hogy az átjáró fut-e a helyszíni gépen, amelyen telepítette azt, és hogy képes csatlakozni az internethez.  Azt javasoljuk, hogy az átjáró nem telepítése egy számítógépre, amely ki van kapcsolva vagy alvó állapotba lépni. A helyszíni adatátjáró szolgáltatás (PBIEgwService) is újraindíthatja.
 
 #### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Hiba**: A használt szolgáltató elavult: "System.Data.OracleClient szükséges verziójú Oracle ügyfélszoftvert 8.1.7-es vagy újabb.". Lásd: [ https://go.microsoft.com/fwlink/p/?LinkID=272376 ](https://go.microsoft.com/fwlink/p/?LinkID=272376) a hivatalos szolgáltató telepítéséhez.
 
-**OK**: SDK nincs telepítve a számítógépen, ahol a helyszíni adatátjáró fut. az Oracle-ügyfél.  
+**Ok**: Az Oracle ügyfél-SDK nincs telepítve a számítógépen, ahol a helyszíni adatátjáró fut.  
 
-**Feloldási**: Töltse le és telepítse az Oracle-ügyfél SDK-t a helyszíni adatátjáró ugyanazon a számítógépen.
+**Megoldás**: Töltse le, és az Oracle ügyfél-SDK telepítése a helyszíni adatátjáró ugyanazon a számítógépen.
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Hiba**: "[táblanév] tábla nem definiál kulcsoszlopot
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Hiba**: A(z) [táblanév] tábla nem definiál kulcsoszlopot
 
-**OK**: A táblának nincs elsődleges kulcs.  
+**Ok**: A tábla nem rendelkezik minden olyan elsődleges kulcsot.  
 
-**Feloldási**: az Oracle Database-összekötő számára szükséges, hogy egy elsődlegeskulcs-oszlopot tartalmazó táblát használja.
+**Megoldás**: Az Oracle Database-összekötő szükséges, hogy egy elsődlegeskulcs-oszlopot tartalmazó táblát használja.
 
 #### <a name="currently-not-supported"></a>Jelenleg nem támogatott
 
-* Nézetek és tárolt eljárások 
+* Nézetek 
 * Minden olyan összetett kulcsokat tartalmazó tábla
 * Beágyazott objektumtípusok táblákban
  
