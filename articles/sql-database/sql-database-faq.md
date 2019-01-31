@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 77cb60c1a459d7c3f98d902d82e5fef86e8c34f4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/25/2019
+ms.openlocfilehash: a7ebf246300fdafe69f45aca0237964c8e669d5c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541616"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463956"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>Az SQL Database – gyakori kérdések (GYIK)
 
@@ -35,7 +35,7 @@ Nem. A javítás hatását az általában nem észrevehető Ha Ön [újrapróbá
 
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Mi az az új vCore-alapú vásárlási modell az Azure SQL Database
 
-Az új vásárlási modell mellett továbbra is használható a már meglévő DTU-alapú modell. A Virtuálismag-alapú modell úgy tervezték, hogy ügyfelei rugalmasan, átláthatóság, vezérlőelem, és a közvetlen módon lefordítani a helyszíni tevékenységprofil követelményeinek a felhőben. Azt is lehetővé teszi, hogy ügyfelek számára, hogy azok számítási és tárolási erőforrást, a munkaterhelés igényei alapján. Önálló adatbázis és rugalmas készlet beállításai a Virtuálismag-modell használatával jogosultak is fel, a 30 %-os megtakarítást a [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/#services). Lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) további információt.
+Az új vásárlási modell mellett továbbra is használható a már meglévő DTU-alapú modell. A Virtuálismag-alapú modell úgy tervezték, hogy ügyfelei rugalmasan, átláthatóság, vezérlőelem, és a közvetlen módon lefordítani a helyszíni tevékenységprofil követelményeinek a felhőben. Azt is lehetővé teszi, hogy ügyfelek számára, hogy azok számítási és tárolási erőforrások, a munkaterhelés igényei alapján. Önálló adatbázis és rugalmas készlet beállításai a Virtuálismag-modell használatával jogosultak is fel, a 30 %-os megtakarítást a [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/#services). Lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) további információt.
 
 ## <a name="what-is-a-vcore"></a>Mi az a virtuális mag
 
@@ -73,7 +73,7 @@ Az Azure Hybrid Benefittel az SQL Server eltér a licenchordozhatósági program
 
 Az SQL Database ügyfelei az Azure Hybrid benefittel az SQL Server társított alábbi jogosultságokkal fog rendelkezni:
 
-|Licenc üzembe helyezésének előkészítése|Az SQL Server beolvasása, mire Azure Hybrid Benefit?|
+|License Footprint|Az SQL Server beolvasása, mire Azure Hybrid Benefit?|
 |---|---|
 |Az SQL Server Enterprise Edition core ügyfeleit, SA|<li>Általános célú vagy üzletileg kritikus fontosságú Termékváltozatoknál alapegysége is kell fizetnie.</li><br><li>helyszíni 1 mag = 4 mag, általános célú termékváltozatban</li><br><li>helyszíni 1 mag = 1 mag az üzletileg kritikus fontosságú Termékváltozatoknál</li>|
 |SQL Server Standard Edition core ügyfeleit, SA|<li>Fizethet a szolgáltatásért alapegysége/az általános célú Termékváltozatban csak</li><br><li>helyszíni 1 mag = 1 mag, általános célú termékváltozatban</li>|
@@ -141,9 +141,9 @@ Olyan gyakran a kívánt. Lásd: [rugalmas készletek kezelése](sql-database-el
 
 ## <a name="how-long-does-it-take-to-change-the-service-tier-or-compute-size-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Mennyi ideig tart módosíthatja a szolgáltatásszintet, vagy egy önálló adatbázis mérete számítási vagy adatbázis elhelyezhetők a rugalmas készlet
 
-Módosítása az adatbázis és a egy készlet áramló szükséges háttér műveletként platformon kell másolni az adatbázist. A szolgáltatási szint is igénybe vehet pár percet vagy az adatbázis méretétől függően több órát. Mindkét esetben az adatbázisokat továbbra is online és elérhető az áthelyezés során. Önálló adatbázisok módosításával kapcsolatos részletekért lásd: [adatbázis szolgáltatási szintjének módosítása](sql-database-service-tiers-dtu.md).
+Módosítása az adatbázis és a egy készlet áramló szükséges háttér műveletként platformon kell másolni az adatbázist. A szolgáltatási szint is igénybe vehet pár percet vagy az adatbázis méretétől függően több órát. Mindkét esetben az adatbázisokat továbbra is online és elérhető az áthelyezés során. Önálló adatbázisok módosításával kapcsolatos részletekért lásd: [adatbázis szolgáltatási szintjének módosítása](sql-database-single-database-scale.md).
 
-## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Mikor célszerű használni egy önálló adatbázis és rugalmas adatbázisok
+## <a name="when-should-i-use-a-single-database-vs-elastic-pools"></a>Mikor célszerű használni a rugalmas készletek és a egy önálló adatbázis
 
 Általánosságban véve a rugalmas készletek tervezett tipikus [szoftver--szolgáltatásként (SaaS) alkalmazásminta](sql-database-design-patterns-multi-tenancy-saas-applications.md), ahol az ügyfél vagy a bérlő egy adatbázist. Önálló adatbázisok vásárlásával és a változó, valamint minden adatbázisra vonatkozó túlzott kiosztása ez sokszor nem költséghatékony megoldás. A készletek kezelheti a készlet közös teljesítményéért teljesítményét, és az adatbázisok automatikusan skálázható felfelé és lefelé. Intelligens motor az Azure a készletben az adatbázisok használatát javasolja, amikor a használati minta szükségessé teszi. További információkért lásd: [rugalmas készlet útmutatást](sql-database-elastic-pool.md).
 

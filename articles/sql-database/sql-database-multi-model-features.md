@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 0c46ba3d2fcd59f43df2383c3e0471fa36217536
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d833d6ea695c05f80f7823f391142fee28872c40
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551532"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300251"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Az Azure SQL Database többmodelles képességek
 
@@ -50,7 +50,7 @@ A graph-kapcsolatok graph-lekérdezési képességek integrálva vannak a Transa
 
 Nincs semmi gráfadatbázis érheti el, amelyek nem tudják elérni a relációs adatbázis. Azonban egy gráfadatbázist megkönnyítheti bizonyos lekérdezéseket Express. A választhat közülük a döntést a következő tényezőket:
 
-- Ha egy csomópont van több szülőkkel, így HieararchyId nem használható hierarchikus adatok modellezése
+- Ahol egy csomópont lehet több szülőkkel, így nem használható a HierarchyId hierarchikus adatok modellezése
 - Modell van az alkalmazás összetett több-a-többhöz kapcsolatok; rendelkezik módon alakul ki az alkalmazást, új kapcsolatokat a rendszer hozzáadja.
 - Összekapcsolt adatok és kapcsolatok elemezni kell.
 
@@ -96,7 +96,7 @@ Az Azure SQL Database emellett speciális [a térbeli indexek](https://docs.micr
 Az SQL Server hatékony platformot biztosít, részben strukturált adatok kezelésére gazdag alkalmazások fejlesztéséhez. Támogatja az XML integrálva van az SQL Server összes összetevőt, és a következőket tartalmazza:
 
 - Az xml adattípust. XML-értékeket egy xml adattípusú oszlop XML-sémák gyűjteménye megfelelően írta be, vagy balra típus nélküli natív módon is tárolhatók. Az XML-oszlop indexelésére használhatja.
-- Az XQuery-lekérdezést és változókat az xml-típusú oszlopokban tárolt XML-adatok megadásának lehetőségét. XQUery funkciókat is használható adatmodellek, amelyek használatával az adatbázis eléréséhez a Transact-SQL lekérdezések.
+- Az XQuery-lekérdezést és változókat az xml-típusú oszlopokban tárolt XML-adatok megadásának lehetőségét. XQuery funkciókat is használható adatmodellek, amelyek használatával az adatbázis eléréséhez a Transact-SQL lekérdezések.
 - XML-dokumentumok szereplő összes elem automatikus indexelése [elsődleges XML-index](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#primary-xml-index) , vagy adja meg a pontos elérési utakat kell indexelni használatával [másodlagos XML-index](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#secondary-xml-indexes).
 - Az OPENROWSET, amely lehetővé teszi, hogy az XML-adatok tömeges betöltése.
 - Relációs adatok XML-formátumba alakítsa át.

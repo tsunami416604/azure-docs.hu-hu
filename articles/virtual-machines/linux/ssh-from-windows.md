@@ -3,7 +3,7 @@ title: SSH-kulcsok használata a Windows és Linux rendszerű virtuális gépekh
 description: Ismerje meg, hogyan hozhat létre, illetve egy Windows-számítógép SSH-kulcsok használatával csatlakozhat az Azure-ban Linux rendszerű virtuális gép.
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: danlep
-ms.openlocfilehash: abb0ba6eace2e837ea2f74a0d919097f8801101e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 247d09e58ded2de12fb7cc6b5a036b695e715077
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407416"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298653"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Az SSH-kulcsok használata a Windows Azure-ban
 
@@ -38,7 +38,7 @@ Windows-számítógépek nem mindig rendelkezik telepített összehasonlítható
 Egyéb gyakori Windows SSH ügyfelek helyben is telepítheti a következő csomagokat tartalmazza:
 
 * [Putty-kapcsolaton keresztül](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
-* [Git Pro Windows](https://git-for-windows.github.io/)
+* [Git For Windows](https://git-for-windows.github.io/)
 * [MobaXterm](http://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
@@ -72,7 +72,7 @@ A PuTTYgen hozzon létre egy SSH-RSA-kulcspárt:
 
 4. Az üres területen adja meg a kulcs a véletlenszerűségre azért mozgassa az egeret.
 
-5. Miután a nyilvános kulcs akkor jön létre, igény szerint adja meg, és egy jelszó megerősítése. Bekéri a jelszót a titkos SSH-kulcsot a hitelesítéshez a virtuális géphez. Anélkül, hogy egy hozzáférési kódot Ha valaki megszerzi a titkos kulcsot, azokat is bejelentkezhetnek bármely virtuális gép vagy szolgáltatás, amely ezt a kulcsot használja. Javasoljuk, hogy hozzon létre egy hozzáférési kódot. Ha azonban elfelejti a hozzáférési kódját, nincs lehetőség a helyreállításra.
+5. Miután a nyilvános kulcs akkor jön létre, igény szerint adja meg, és egy jelszó megerősítése. Bekéri a jelszót a titkos SSH-kulcsot a hitelesítéshez a virtuális géphez. Anélkül, hogy egy hozzáférési kódot Ha valaki megszerzi a titkos kulcs felhasználóknak a bejelentkezéshez bármely virtuális gép vagy szolgáltatás, amely ezt a kulcsot használja. Javasoljuk, hogy hozzon létre egy hozzáférési kódot. Ha azonban elfelejti a hozzáférési kódját, nincs lehetőség a helyreállításra.
 
 6. A nyilvános kulcsot az ablak tetején jelenik meg. Másolja ki a teljes nyilvános kulcsot, és ezután illessze be az Azure portal vagy Azure Resource Manager-sablon egy Linux rendszerű virtuális gép létrehozásakor. Lehetőség kiválasztásával **mentés nyilvános kulcs** , mentse a számítógépére:
 
@@ -93,7 +93,7 @@ Az alábbi példa bemutatja, hogyan, akkor másolja és illessze be az Azure Por
    ![Használja a nyilvános kulcsot, ha egy virtuális Gépet hoz létre az Azure Portalon](./media/ssh-from-windows/use-public-key-azure-portal.png)
 
 
-## <a name="connect-to-your-vm"></a>Csatlakozzon a virtuális Géphez
+## <a name="connect-to-your-vm"></a>Csatlakozás a virtuális géphez
 
 Egyik módja, hogy a Windows a Linux rendszerű virtuális gépre SSH-kapcsolatot az SSH-ügyfelet használja. Ez az előnyben részesített módszere, ha egy SSH-ügyfél a Windows rendszeren telepítve van, vagy ha az SSH az eszközöket használhatja az Azure Cloud Shell bashben. Ha inkább a GUI-alapú eszköz, csatlakoztathatja a putty-kapcsolaton keresztül.  
 
@@ -104,13 +104,15 @@ A nyilvános kulcsot az Azure virtuális gépen telepített, és a titkos kulcso
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-Ha kulcspár létrehozása során konfigurált egy hozzáférési kódot, adja meg a jelszót, amikor a rendszer kéri, a bejelentkezés során.
+Ha kulcspár létrehozása során konfigurált egy hozzáférési kódot, adja meg a jelszót, amikor a rendszer kéri a bejelentkezési folyamat során.
+
+Ha a virtuális gép nem használja a just-in-time-hozzáférési házirend, hozzáférés kérése, mielőtt az csatlakozna a virtuális géphez szeretne. A just-in-time házirenddel kapcsolatos további információkért lásd: [kezelése virtuálisgép-hozzáférés az igény szerinti szabályzat](../../security-center/security-center-just-in-time.md).
 
 ### <a name="connect-with-putty"></a>Csatlakozzon a putty használatával
 
 Ha telepítette a [PuTTY letöltőcsomag](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) és a egy PuTTY titkos kulcs (.ppk) fájlt, korábban létrehozott egy Linux rendszerű virtuális gép a putty használatával csatlakozhat.
 
-1. Indítsa el a putty-kapcsolaton keresztül.
+1. Start PuTTy.
 
 2. Töltse ki a gazdagép neve vagy IP-címet a virtuális gép az Azure Portalról:
 

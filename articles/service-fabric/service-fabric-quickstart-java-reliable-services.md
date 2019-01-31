@@ -12,15 +12,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/23/2017
+ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 43a059e13945be3e39f65995e18ccd552727b874
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ad14e552bd685c42289e7007002f5ddf039f8925
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312578"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297956"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Gyors útmutató: Egy Java Service fabric reliable services-alkalmazás üzembe helyezése
 
@@ -34,7 +34,6 @@ Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
 * Az Eclipse használata a Service Fabricben üzemeltetett Java-alkalmazásokhoz
 * Az alkalmazás központi telepítése a helyi fürtre
-* Az alkalmazás központi telepítése egy fürtre az Azure-ban
 * Az alkalmazás horizontális felskálázása több csomópontra
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -82,99 +81,15 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 Most hozzáadhat szavazási lehetőségeket az alkalmazáshoz, és megkezdheti a szavazatok gyűjtését. Az alkalmazás különálló adatbázis nélkül futtatja és tárolja az összes adatot a Service Fabric-fürtben.
 
-## <a name="deploy-the-application-to-azure"></a>Az alkalmazás központi telepítése az Azure-ban
-
-### <a name="set-up-your-azure-service-fabric-cluster"></a>Azure Service Fabric-fürt beállítása
-
-Az alkalmazás Azure-fürtön történő üzembe helyezéséhez hozzon létre egy saját fürtöt.
-
-A nyilvános fürtök ingyenes, korlátozott időtartamú, Azure-ban üzemeltetett Service Fabric-fürtök, amelyek futtatását a Service Fabric csapata végzi. A nyilvános fürtökkel alkalmazásokat helyezhet üzembe, és megismerkedhet a platform használatával. A fürt egy önaláírt tanúsítványt használ a csomópontok közötti, valamint az ügyfél és a csomópont közötti biztonsághoz.
-
-Jelentkezzen be, és csatlakozzon egy [Linux-fürthöz](https://aka.ms/tryservicefabric). A **PFX** hivatkozásra kattintva töltse le a PFX-tanúsítványt a számítógépre. Kattintson a **ReadMe** hivatkozásra a tanúsítvány jelszavának és a különböző környezetek a tanúsítvány használatára konfigurálása lépéseinek megismeréséhez. Hagyja megnyitva a **kezdőlapot** és a **ReadMe** oldalt, az itt található utasításokat a következő lépések során fogja használni.
-
-> [!Note]
-> Óránként korlátozott számú nyilvános fürt érhető el. Ha a nyilvános fürtre való regisztráláskor hiba lép fel, várjon egy kis ideig, majd próbálkozzon újra, vagy kövesse a [Service Fabric-fürt az Azure-ban való létrehozását ismertető](service-fabric-tutorial-create-vnet-and-linux-cluster.md) oktatóanyagban szereplő lépéseket, amelyekkel létrehozhat egy fürtöt az előfizetésben.
->
-> A Spring Boot szolgáltatás a konfigurációja szerint a 8080-as porton figyeli a bejövő forgalmat. Győződjön meg róla, hogy a port nyitva van a fürtön. Ha a nyilvános fürtöt használja, ez a port nyitva van.
->
-
-A Service Fabric számos eszközt nyújt, amelyekkel kezelheti a fürtöket és azok alkalmazásait:
-
-* A Service Fabric Explorert, amely egy böngészőalapú eszköz.
-* A Service Fabric parancssori felületet (CLI-t), amely az Azure CLI-n fut.
-* PowerShell-parancsokat.
-
-Ebben a rövid útmutatóban a Service Fabric parancssori felületet és a Service Fabric Explorert használja.
-
-A parancssori felület használatához létre kell hoznia egy PEM-fájlt a letöltött PFX-fájl alapján. A fájl konvertálásához használja az alábbi parancsot. (Nyilvános fürtök esetén a PFX-fájlra vonatkozó parancsot másolhat a **ReadMe** oldal utasításai közül.)
-
-    ```bash
-    openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
-    ```
-
-A Service Fabric Explorer használatához importálnia kell a tanúsítvány PFX-fájlját, amelyet a nyilvános fürt webhelyéről a tanúsítványtárolóba (Windows vagy Mac) vagy magába a böngészőbe (Ubuntu) töltött le. Szüksége van a PFX titkos kulcs jelszavára, amelyet a **ReadMe** oldalról szerezhet be.
-
-Tetszőleges módszerrel importálhatja a tanúsítványt a rendszerre. Példa:
-
-* Windows rendszeren: Kattintson duplán a PFX-fájlt, és kövesse az utasításokat követve telepítse a tanúsítványt a személyes tárban `Certificates - Current User\Personal\Certificates`. Másik lehetőségként használhatja a **ReadMe** utasításokban lévő PowerShell-parancsot is.
-* Mac gépen: Kattintson duplán a PFX-fájlt, és kövesse az utasításokat a tanúsítvány a kulcskarikában telepítéséhez.
-* az ubuntu rendszeren: Mozilla Firefox az alapértelmezett böngésző az Ubuntu 16.04. A tanúsítvány a Firefoxba importálásához kattintson a böngésző jobb felső sarkában lévő menügombra, majd a **Beállítások** gombra. A **Beállítások** oldalon a keresőmezővel keressen rá a „tanúsítványok” kifejezésre. Kattintson a **Tanúsítványkezelő** gombra, válassza a **Saját tanúsítványok** fület, kattintson az **Importálás** lehetőségre, és kövesse az utasításokat a tanúsítvány importálásához.
-
-   ![Tanúsítvány telepítése Firefoxon](./media/service-fabric-quickstart-java/install-cert-firefox.png)
-
-### <a name="add-certificate-information-to-your-application"></a>Tanúsítványadatok hozzáadása az alkalmazáshoz
-
-A tanúsítvány ujjlenyomatát hozzá kell adnia az alkalmazáshoz, mert a Service Fabric programozási modelleket használ.
-
-1. A tanúsítvány `Voting/VotingApplication/ApplicationManifest.xml` fájlban tárolt ujjlenyomatára lesz szükség, amikor biztonságos fürtön futtatja az alkalmazást. Futtassa a következő parancsot a tanúsítvány ujjlenyomatának kibontásához.
-
-    ```bash
-    openssl x509 -in [CERTIFICATE_PEM_FILE] -fingerprint -noout
-    ```
-
-2. A `Voting/VotingApplication/ApplicationManifest.xml` fájlban adja a következő kódrészletet az **ApplicationManifest** címke alá. Az **X509FindValue** elemnek az előző lépésből származó ujjlenyomatnak kell lennie (pontosvessző nélkül).
-
-    ```xml
-    <Certificates>
-        <SecretsCertificate X509FindType="FindByThumbprint" X509FindValue="0A00AA0AAAA0AAA00A000000A0AA00A0AAAA00" />
-    </Certificates>
-    ```
-
-### <a name="deploy-the-application-using-eclipse"></a>Az alkalmazás üzembe helyezése az Eclipse használatával
-
-Az alkalmazást és a fürtjét a létrehozása után közvetlenül az Eclipse-ből telepítheti egy fürtre.
-
-1. Nyissa meg a **PublishProfiles** könyvtárban található **Cloud.json** fájlt, és töltse ki megfelelően a `ConnectionIPOrURL` és a `ConnectionPort` mezőket. Például:
-
-    ```bash
-    {
-         "ClusterConnectionParameters":
-         {
-            "ConnectionIPOrURL": "lnxxug0tlqm5.westus.cloudapp.azure.com",
-            "ConnectionPort": "19080",
-            "ClientKey": "[path_to_your_pem_file_on_local_machine]",
-            "ClientCert": "[path_to_your_pem_file_on_local_machine]"
-         }
-    }
-    ```
-
-2. Kattintson a jobb gombbal a projektre, és a válassza a **Publish Application...** (Alkalmazás közzététele) lehetőséget a **Service Fabric** legördülő menüből. Célprofilnak (Target Profile) válassza a **PublishProfiles/Cloud.json** lehetőséget, majd kattintson a Publish (Közzététel) gombra.
-
-    ![A felhő közzétételi párbeszédablaka](./media/service-fabric-quickstart-java/cloudjson.png)
-
-3. Nyissa meg a webböngészőjét, és nyissa meg az alkalmazást a **http://\<ConnectionIPOrURL>:8080** címen.
-
-    ![Felhőalkalmazás kezelőfelülete](./media/service-fabric-quickstart-java/runningcloud.png)
-
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Alkalmazások és szolgáltatások méretezése a fürtökben
 
 A szolgáltatások skálázhatók egy adott fürtben, hogy kövessék a szolgáltatások terhelésének változásait. A szolgáltatások méretezése a fürtben futó példányok számának módosításával történik. A szolgáltatásokat többféleképpen is skálázhatja, használhat például szkripteket, vagy a Service Fabric parancssori felület (sfctl) parancsait. A következő lépések során a Service Fabric Explorert használjuk.
 
-A Service Fabric Explorer az összes Service Fabric-fürtben fut. Az eléréséhez egy böngészőben navigáljon az adott fürt HTTP-kezelési portjára (19080), például: `http://lnxxug0tlqm5.westus.cloudapp.azure.com:19080`.
+A Service Fabric Explorer az összes Service Fabric-fürtben fut. Az eléréséhez egy böngészőben navigáljon az adott fürt HTTP-kezelési portjára (19080), például: `http://localhost:19080`.
 
 A webes előtér-szolgáltatás skálázásához tegye a következőket:
 
-1. Nyissa meg a Service Fabric Explorert a fürtben – például: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080`.
+1. Nyissa meg a Service Fabric Explorert a fürtben – például: `https://localhost:19080`.
 2. Kattintson a három pontra a fanézetben a **fabric:/Voting/VotingWeb** csomópont mellett, és válassza a **Scale Service** (Szolgáltatás méretezése) lehetőséget.
 
     ![A Service Fabric Explorer méretezési szolgáltatása](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)
@@ -196,7 +111,6 @@ Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 
 * Az Eclipse használata a Service Fabricben üzemeltetett Java-alkalmazásokhoz
 * Java-alkalmazások központi telepítése a helyi fürtre
-* Java-alkalmazások központi telepítése egy fürtre az Azure-ban
 * Az alkalmazás horizontális felskálázása több csomópontra
 
 Ha bővebb információra van szüksége a Java-alkalmazások Service Fabricben való használatával kapcsolatban, lépjen tovább a Java-alkalmazásokról szóló oktatóanyagra.

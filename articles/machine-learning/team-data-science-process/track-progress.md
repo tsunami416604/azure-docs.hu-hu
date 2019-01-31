@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9616a4f80a3105118b82ce3f4106a65fdd9ddfe
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7745a53084f4477f7b736ea9d130ffd3eed771f4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134302"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451988"
 ---
 # <a name="tracking-the-progress-of-data-science-projects"></a>Adatelemzési projektek előrehaladását nyomon követése
 
@@ -39,7 +39,7 @@ További információ a létrehozása és testreszabása az Azure DevOps widgete
 
 A fennmaradó panelek a összegző flow diagram (CFD), a projektek burndown és a projekt burnup megjelenítése:
 
-- **Bal alsó sarokban található**: egy adott állapotban munka mennyisége CFD megjelenítő jóváhagyott szürke, látható kék és zöld színnel történik.
+- **Bal alsó sarokban található**:  Egy adott állapotban munka mennyisége CFD megjelenítő jóváhagyott szürke, látható kék és zöld színnel történik.
 - **Jobb oldalán**: burndown diagram a munka elvégzéséhez és a hátralévő idő maradt).
 - **Alul a jobb oldalon**: burnup diagram munkát, és a munkahelyi teljes mennyisége befejeződött.
 

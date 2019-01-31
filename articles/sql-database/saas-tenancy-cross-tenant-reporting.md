@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e23b679d6c81d1a4103f010a9d13c35e80d4d2af
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 01/25/2019
+ms.openlocfilehash: ccf6ff75cb041c7d9998f67d579d1b392f83cee9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240988"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476247"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Bérlők közötti jelentéskészítés használatával az elosztott lekérdezések
 
@@ -128,7 +128,7 @@ Ebben a gyakorlatban séma (a külső adatforrás és a külső tábla definíci
 
     ![külső adatforrás létrehozása](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
-   A globális nézetek hivatkozó külső táblák az előző szakaszban leírt, és meghatározott **TERJESZTÉSI = SHARDED(VenueId)**. Mivel minden egyes *VenueId* maps egyetlen adatbázishoz, ez növeli a teljesítményt számos forgatókönyv a következő szakaszban látható módon.
+   A globális nézetek hivatkozó külső táblák az előző szakaszban leírt, és meghatározott **TERJESZTÉSI = SHARDED(VenueId)**. Mivel minden egyes *VenueId* van hozzárendelve az egyes adatbázisok, ez növeli a teljesítményt számos forgatókönyv a következő szakaszban látható módon.
 
     ![külső táblák létrehozása](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 
@@ -148,7 +148,7 @@ Most, hogy a *adhocreporting* adatbázis állított be, lépjen tovább, és egy
 
 A végrehajtási terv vizsgálatával, amikor a kurzort a csomag ikonokat részleteiről. 
 
-Fontos megjegyezni, akkor ez a beállítás **TERJESZTÉSI = SHARDED(VenueId)** mikor van definiálva a külső adatforrás javítja a teljesítményt, számos forgatókönyv esetében. Mivel minden egyes *VenueId* maps egyetlen adatbázishoz, szűrés könnyedén elvégezhető távolról, csak a szükséges adatokat ad vissza.
+Fontos megjegyezni, akkor ez a beállítás **TERJESZTÉSI = SHARDED(VenueId)** mikor van definiálva a külső adatforrás javítja a teljesítményt, számos forgatókönyv esetében. Mivel minden egyes *VenueId* egy önálló adatbázis leképezések, szűrés könnyedén elvégezhető távolról, csak a szükséges adatokat ad vissza.
 
 1. Nyissa meg... \\Tanulási modulok\\működési elemzések\\ad hoc ad hoc jelentéskészítés\\*Demo-AdhocReportingQueries.sql* az ssms-ben.
 2. Győződjön meg arról, hogy csatlakozik az **adhocreporting** adatbázis.

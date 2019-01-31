@@ -4,26 +4,26 @@ description: Avere vFXT telepítése az Azure áttekintése
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: aa5737d67ea2c9cb8cc7c7098764ae67fc91137d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 1be11fff7139b250e85fe15cec9082a2c85cf857
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634153"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298534"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT az Azure-ban – üzembe helyezés – áttekintés
 
 Ez a cikk áttekintést be Azure-fürtön, és fut egy Avere vFXT lekéréséhez szükséges lépéseket.
 
-Az Avere vFXT rendszer telepítése az első alkalommal azt tapasztalhatja, hogy, mint a legtöbb más Azure-eszközök üzembe helyezése több lépésből áll. A start-Befejezés folyamat törlése bizonyos értelemben kellene segít a hatókör részéről az erőfeszítés szükséges. Miután a rendszer működik és elérhető, gyorsíthatja fel a felhőalapú számítási feladatok a power teszi megéri.
+Több feladat előtt, és az Azure Marketplace-ről a vFXT fürt létrehozása után van szükség. A start-Befejezés folyamat törlése bizonyos értelemben kellene segít a hatókör részéről az erőfeszítés szükséges. 
 
 ## <a name="deployment-steps"></a>A központi telepítés lépései
 
 Miután [tervezési a rendszer](avere-vfxt-deploy-plan.md), elkezdheti a Avere vFXT fürt létrehozásához. 
 
-Első lépésként hozza létre a fürt tartományvezérlő virtuális Gépet, a vFXT fürt létrehozásához használt.
+Az Azure Resource Manager-sablonok, az Azure Marketplace-en a szükséges információkat gyűjt, és automatikusan üzembe helyezi a teljes fürtöt. 
 
 A vFXT fürt működik és elérhető, miután érdemes tudni, hogyan kell az ügyfelek csatlakozni, és ha szükséges, az adatok áthelyezése az új Blob storage-tárolóba.  
 
@@ -33,25 +33,30 @@ Itt látható az összes lépést áttekintése.
 
    Virtuális gép létrehozása előtt hozzon létre egy új előfizetést a Avere vFXT projekt, konfigurálja az előfizetés tulajdonjogának, vegye kvóták és növelésére, ha szükséges, és fogadja el a Avere vFXT szoftver használatára vonatkozó feltételeket. Olvasási [a Avere vFXT létrehozásának előkészítéséhez](avere-vfxt-prereqs.md) részletes útmutatást.
 
-1. A fürt vezérlő létrehozása
+1. A fürtcsomópontok hozzáférés szerepkör létrehozása
 
-   A *fürt vezérlő* egy egyszerű virtuális gép, amely a Avere vFXT fürt ugyanazon a virtuális hálózaton található. A vezérlő létrehozza a vFXT és űrlapok a fürtöt, és a fürt kezelésére és teljes élettartama alatt olyan parancssori felületet is biztosít.
+   Azure az [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) történő hitelesítéséhez, a fürtcsomópont virtuális gépein bizonyos feladatokat. Például a fürtcsomópontok kell tudni hozzárendelése vagy egyéb fürtcsomópontok IP-cím ismételt hozzárendelése. A fürt létrehozása előtt meg kell határoznia egy szerepkört biztosít a számukra megfelelő engedélyekkel.
 
-   Ha a tartományvezérlő egy nyilvános IP-címmel konfigurálja, is szolgálhasson jump-gazdagépként a fürt a virtuális hálózaton kívülről való csatlakozáshoz.
+   Olvasási [hozza létre a fürt csomópont hozzáférés szerepkört](avere-vfxt-prereqs.md#create-the-cluster-node-access-role) útmutatást.
 
-   Az összes szükséges a vFXT fürt létrehozása és kezelése a csomópontokat a szoftver telepítve van a fürt vezérlőn.
-
-   Olvasási [a fürt vezérlő virtuális gép létrehozása](avere-vfxt-deploy.md#create-the-cluster-controller-vm) részleteiről.
-
-1. A fürtcsomópontok modul szerepkör létrehozása 
-
-   Azure az [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) történő hitelesítéséhez, a fürtcsomópont virtuális gépein bizonyos feladatokat. Például a fürtcsomópontok kell tudni hozzárendelése vagy egyéb fürtcsomópontok IP-cím ismételt hozzárendelése. A fürt létrehozása előtt meg kell határoznia egy szerepkört biztosít a számukra megfelelő engedélyekkel.
-
-   A fürt vezérlő előre telepített szoftvereket testre szabhatja prototípus szerepkört tartalmaz. Olvasási [hozza létre a fürt csomópont hozzáférés szerepkört](avere-vfxt-deploy.md#create-the-cluster-node-access-role) útmutatást.
+   A fürt vezérlő is használ egy hozzáférés-szerepkör, de elfogadhatja az alapértelmezett szerepkör, a tulajdonos, ahelyett, hogy létrehozná a saját. Ha azt szeretné, a fürt vezérlő egyéni szerepkör létrehozása, olvasása [testre szabott hozzáférés szerepkört](avere-vfxt-controller-role.md). 
 
 1. A Avere vFXT fürt létrehozása 
 
-   A tartományvezérlőre szerkessze a megfelelő fürt létrehozási parancsprogrammal, és hajtsa végre, hogy a fürt létrehozásához. [Az üzembe helyezési parancsfájl szerkesztése](avere-vfxt-deploy.md#edit-the-deployment-script) tartalmaz részletes útmutatást. 
+   Az Azure-fürtön a Avere vFXT létrehozásához használja az Azure piactéren. Sablon a szükséges adatokat gyűjt, és végrehajtja a parancsfájlokat a végső termék létrehozásához.
+
+   A fürtlétrehozás ezt a lépést, hogy az összes végezzék el a marketplace-sablon foglalja magában: 
+
+   * Új hálózati infrastruktúra és az erőforrás csoportok létrehozása, ha szükséges
+   * Létrehozás egy *fürt vezérlő*  
+
+     A fürt vezérlő egy egyszerű virtuális Gépet, amely a Avere vFXT fürt ugyanazon a virtuális hálózaton található, és az egyéni szoftver szükséges a fürt létrehozása és kezelése. A vezérlő létrehozza a vFXT és űrlapok a fürtöt, és a fürt kezelésére és teljes élettartama alatt olyan parancssori felületet is biztosít.
+
+     Ha a tartományvezérlő egy nyilvános IP-címmel konfigurálja, is szolgálhasson jump-gazdagépként a fürt a virtuális hálózaton kívülről való csatlakozáshoz.
+
+   * A fürt csomópont virtuális gépek létrehozása
+   * A fürtcsomóponti virtuális gépek a fürt konfigurálása
+   * Igény szerint egy új Blob-tároló létrehozása és konfigurálása, a fürt háttér-tárolóként
 
 1. A fürt konfigurálása 
 

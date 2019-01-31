@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 38da370e8e3cd81e209d0fd592d6b2afa8c82e44
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.subservice: queues
+ms.openlocfilehash: 295ca353530fb438d0bd77a9144813543102b997
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138513"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472711"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>How to use Queue storage from Node.js (A Queue Storage használata Node.js-sel)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -64,7 +64,7 @@ var azure = require('azure-storage');
 ## <a name="setup-an-azure-storage-connection"></a>Az Azure Storage-kapcsolat beállítása
 Az azure-modul fogja beolvasni a környezeti változókat az AZURE\_tárolási\_fiók és az AZURE\_tárolási\_hozzáférés\_kulcs, vagy az AZURE\_tárolási\_kapcsolat\_ KARAKTERLÁNC, az Azure storage-fiókjába való kapcsolódáshoz szükséges információkat. Ha nincsenek beállítva ezek a környezeti változók, meg kell adnia a fiókadatok hívásakor **createQueueService**.
 
-## <a name="how-to-create-a-queue"></a>Útmutató: A várólista létrehozása
+## <a name="how-to-create-a-queue"></a>kézikönyv: Várólista létrehozása
 Az alábbi kód létrehoz egy **QueueService** objektum, amely lehetővé teszi, hogy az üzenetsorok.
 
 ```javascript
@@ -105,7 +105,7 @@ var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var queueSvc = azure.createQueueService().withFilter(retryOperations);
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Útmutató: Üzenet beszúrása egy üzenetsorba
+## <a name="how-to-insert-a-message-into-a-queue"></a>kézikönyv: Üzenet beszúrása egy üzenetsorba
 Üzenet beszúrása egy üzenetsorba, használja a **createMessage** metódust hozzon létre egy új üzenetet, és adja hozzá az üzenetsorhoz.
 
 ```javascript
@@ -116,7 +116,7 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, results, respo
 });
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Útmutató: A következő üzenet betekintés
+## <a name="how-to-peek-at-the-next-message"></a>kézikönyv: Betekintés a következő üzenet
 Anélkül, hogy eltávolítaná az üzenetsorból meghívásával is bepillanthat egy üzenetsorban található üzenet a **peekMessages** metódust. Alapértelmezés szerint **peekMessages** betekintés egy üzenet.
 
 ```javascript
@@ -134,7 +134,7 @@ A `result` tartalmazza az üzenetet.
 > 
 > 
 
-## <a name="how-to-dequeue-the-next-message"></a>Útmutató: A következő üzenet eltávolítása a sorból
+## <a name="how-to-dequeue-the-next-message"></a>kézikönyv: A következő üzenet eltávolítása a sorból
 Egy üzenet feldolgozása két szakaszból álló folyamat során a rendszer:
 
 1. Az üzenet eltávolítása a sorból.
@@ -164,7 +164,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 > 
 > 
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: Az üzenetsorban található üzenet tartalmának módosítása
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>kézikönyv: Üzenetsorban található üzenet tartalmának módosítása
 Módosíthatja a tartalmát egy üzenet helyben, az üzenetsor használatával **updateMessage**. Az alábbi példa frissíti az üzenet szövege:
 
 ```javascript
@@ -181,7 +181,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 });
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Útmutató: További beállítások üzenetmozgatót üzenetek
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>kézikönyv: További beállítások üzenetmozgatót üzenetek
 Testre szabhatja az üzenetek lekérését egy üzenetsorból két módja van:
 
 * `options.numOfMessages` -Lekéréséhez üzenetkötegek (legfeljebb 32.)
@@ -206,7 +206,7 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 });
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Útmutató: Az üzenetsor hosszának lekérése
+## <a name="how-to-get-the-queue-length"></a>kézikönyv: Az üzenetsor hosszának lekérése
 A **getQueueMetadata** az üzenetsorban, beleértve a várakozási sorban üzenetek hozzávetőleges száma metaadatait adja vissza.
 
 ```javascript
@@ -217,7 +217,7 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 });
 ```
 
-## <a name="how-to-list-queues"></a>Útmutató: Lista üzenetsorok
+## <a name="how-to-list-queues"></a>kézikönyv: Üzenetsorok listázása
 Üzenetsorok listájának lekéréséhez használja **listQueuesSegmented**. Egy adott előtag alapján szűrt listájának lekéréséhez használja **listQueuesSegmentedWithPrefix**.
 
 ```javascript
@@ -230,7 +230,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 
 Valamennyi üzenetsorok nem téríthetők vissza, ha `result.continuationToken` az első paraméterként használhatók **listQueuesSegmented** vagy a második paraméter **listQueuesSegmentedWithPrefix** további eredmények lekéréséhez.
 
-## <a name="how-to-delete-a-queue"></a>Útmutató: Üzenetsor törlése
+## <a name="how-to-delete-a-queue"></a>kézikönyv: Üzenetsor törlése
 Egy üzenetsor és a benne tárolt összes üzenet törléséhez hívja a **deleteQueue** metódust a várólista-objektum.
 
 ```javascript
@@ -243,7 +243,7 @@ queueSvc.deleteQueue(queueName, function(error, response){
 
 Törölje az összes üzenetet egy üzenetsorból annak törlése nélkül, használjon **clearMessages**.
 
-## <a name="how-to-work-with-shared-access-signatures"></a>How to: közös hozzáférésű Jogosultságkódok használata
+## <a name="how-to-work-with-shared-access-signatures"></a>Útmutató: Közös hozzáférésű jogosultságkódok használata
 A közös hozzáférésű Jogosultságkódok (SAS) egy biztonságos módon a várólisták részletes hozzáférés biztosítására a storage-fiók neve vagy a kulcsok megadása nélkül. SAS gyakran használják a várólisták, például engedélyezheti a mobilalkalmazás üzenetek elküldéséhez korlátozott hozzáférést biztosít.
 
 A megbízható alkalmazások, például egy felhőalapú szolgáltatás létrehoz egy SAS használatával a **generateSharedAccessSignature** , a **QueueService**, és a egy nem megbízható vagy félig megbízható alkalmazás. Ha például egy mobilalkalmazást. A rendszer egy szabályzat segítségével hozza létre az SAS-eket, amely meghatározza az SAS érvényességének kezdő és befejező dátumát, valamint az SAS tulajdonosának biztosított hozzáférési szintet.

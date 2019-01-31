@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 39a938d45c8f15c21b44bb5b04b1429fb4733b5a
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: common
+ms.openlocfilehash: c9d949b32fb298c22142a35b939860bae240c803
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323268"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454810"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Mi a teendő az Azure Storage leállása esetén?
 A Microsoft dolgozunk, hogy a szolgáltatásaink mindig elérhetők. Egyes esetekben kényszeríti a vezérlő hatás túli velünk a kapcsolatot, hogy a szolgáltatás nem tervezett leállások miatt egy vagy több régióban. Könnyebben kezelni ezeket ritkán fordul elő, az Azure Storage szolgáltatás a következő magas szintű útmutatást biztosítunk.
@@ -34,10 +34,10 @@ Az Azure-szolgáltatás állapotának meghatározása ajánlott módja a Felirat
 ## <a name="what-to-do-if-a-storage-outage-occurs"></a>Mi a teendő, ha a Társzolgáltatás kimaradása történik
 Ha egy vagy több tárolószolgáltatások átmenetileg nem érhető el egy vagy több régióban, két lehetőség van, érdemes figyelembe venni. Ha az adatok közvetlen hozzáférést kívánnak, fontolja meg a 2. lehetőség.
 
-### <a name="option-1-wait-for-recovery"></a>1. lehetőség: Várjon, amíg a helyreállítási
+### <a name="option-1-wait-for-recovery"></a>Option 1: Várjon, amíg a helyreállítási
 Ebben az esetben az Ön részéről semmit nem kell. Jelenleg is dolgozunk térségekre való kiterjesztésén az Azure-szolgáltatás rendelkezésre állásának visszaállítása érdekében. A szolgáltatás állapotát a figyelemmel kísérheti a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/).
 
-### <a name="option-2-copy-data-from-secondary"></a>2. lehetőség: Adatok másolása a másodlagos
+### <a name="option-2-copy-data-from-secondary"></a>Option 2: Adatok másolása a másodlagos
 Ha úgy döntött [írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (ajánlott) a storage-fiókok, olvasási hozzáférést kap az adatokhoz a másodlagos régióból. Eszközöket használhatja például [AzCopy](storage-use-azcopy.md), [Azure PowerShell-lel](storage-powershell-guide-full.md), és a [Azure Adatáthelyezés könyvtár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) adatokat másol a másodlagos régióban lévő egy másik tárfiókba történő egy unimpacted régióban, és ezután mutasson az alkalmazásokat, hogy a tárolási fiók is írási és olvasási.
 
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Mire számítson, ha a tárolási feladatátvétel történik

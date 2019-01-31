@@ -11,19 +11,19 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: e44ac8dca3b27a21e1a7564bbee31c156f80e929
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.date: 01/25/2019
+ms.openlocfilehash: 40dd963a4aad7ffdd092d6835e8444cf0789e129
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102189"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462800"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
 Az Azure SQL Database, a rugalmas készletek, a felügyelt példány és az adatbázisok a felügyelt példány is könnyebben alkalmazásteljesítmény-figyelés a metrikák és diagnosztikai naplók streamelése. Az adatbázis erőforrás-használat, a dolgozók és a munkamenetek és a egy, a következő Azure-erőforrások kapcsolat továbbítására konfigurálhatja:
 
-- **Az Azure SQL Analytics**: az Azure-adatbázisok, amely tartalmazza az teljesítményjelentések készítésére, riasztások és javaslatok kockázatcsökkentési intelligens monitorozást beolvasásához.
+- **Az Azure SQL Analytics**: intelligens monitorozást az Azure SQL Database-adatbázisok, amely tartalmazza az teljesítményjelentések készítésére, riasztások és javaslatok kockázatcsökkentési beolvasásához.
 - **Az Azure Event Hubs**: SQL Database telemetriai adatainak integrálása saját egyedi monitorozási megoldásokkal vagy élő adatfolyamatokkal.
 - **Az Azure Storage**: archiválására hatalmas mennyiségű telemetriai árának töredékéért.
 

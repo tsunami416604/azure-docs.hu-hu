@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 20e5c96110f07d8eaec218ed167c87a48fd65782
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 73d4ba0c82f26a6249528f2dbef1fd30f99ccedb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037378"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475873"
 ---
-# <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB-ben egyedi kulcsaival
+# <a name="unique-key-constraints-in-azure-cosmos-db"></a>Az Azure Cosmos DB egyedi kulcsokra vonatkozó korlátozások
 
 Egyedi kulcsok lehetővé teszi, hogy egy Cosmos-tárolóhoz egy adatintegritási réteget biztosít. Egyedi hoz létre, amikor egy Cosmos-tároló létrehozása. Egyedi kulccsal rendelkező logikai partíción belül egy vagy több értéket egyediségének biztosítása (kiszolgálónként egyedisége garantálhatja [partíciókulcs](partition-data.md)). Miután létrehozott egy tároló egyedi, ez megakadályozza, hogy egy logikai partíciót, azokat az egyedi megkötés belül bármely új (vagy frissített) ismétlődő elemeket hozza létre. A partíciókulcs a hatókörön belüli elem a tároló egyedi kulcs garanciák egyediségének együtt.
 
@@ -26,8 +26,8 @@ Ha szeretne biztosítani a felhasználók létrehozása több elem is ugyanazt a
 |---|---|---|---|
 |Contoso|Gaby|Duperre|gaby@contoso.com |
 |Contoso|Gaby|Duperre|gaby@fabrikam.com|
-|A Fabrikam|Gaby|Duperre|gaby@fabrikam.com|
-|A Fabrikam|Ivan|Duperre|gaby@fabrikam.com|
+|Fabrikam|Gaby|Duperre|gaby@fabrikam.com|
+|Fabrikam|Ivan|Duperre|gaby@fabrikam.com|
 |Fabrkam|   |Duperre|gaby@fabraikam.com|
 |Fabrkam|   |   |gaby@fabraikam.com|
 

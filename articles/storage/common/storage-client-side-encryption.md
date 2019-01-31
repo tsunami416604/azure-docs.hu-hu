@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 857ab3ad9870407b91b0fdc9c552a89fd1f4ccd4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.subservice: common
+ms.openlocfilehash: 2f646df3cab0320b574023cd543015921c640cab
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140519"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478321"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>A Microsoft Azure Storage ügyféloldali titkosítása és az Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -60,7 +60,7 @@ Titkosítás során az ügyféloldali kódtár hozzon létre egy "véletlenszer�
 > 
 > 
 
-Egy titkosított blob letöltése magában foglalja a használatával a teljes blob tartalmának beolvasása a **DownloadTo** / **BlobReadStream**\* egyszerűsített metódusok. A burkolt CEK kicsomagolják, és együtt a IV (tárolt blob metaadatai, ebben az esetben) segítségével a felhasználók számára a visszafejtett adatokat adja vissza.
+Egy titkosított blob letöltése magában foglalja a használatával a teljes blob tartalmának beolvasása a **DownloadTo x /** BlobReadStream ** egyszerűsített metódusok. A burkolt CEK kicsomagolják, és együtt a IV (tárolt blob metaadatai, ebben az esetben) segítségével a felhasználók számára a visszafejtett adatokat adja vissza.
 
 Egy tetszőleges címtartományt letöltése (**DownloadRange*** módszerek) a titkosított BLOB magában foglalja a kisebb mennyiségű használható sikerült visszafejteni a kért további adatok lekérése érdekében a felhasználók által biztosított tartomány beállítása tartomány.
 
@@ -172,7 +172,7 @@ Hozzon létre egy **BlobEncryptionPolicy** objektumra, és állítsa be a lehet�
  blob.DownloadToStream(outputStream, null, options, null);
 ```
 
-### <a name="queue-service-encryption"></a>Queue szolgáltatás titkosítási
+### <a name="queue-service-encryption"></a>Queue service encryption
 Hozzon létre egy **QueueEncryptionPolicy** objektumra, és állítsa be a lehetőségek (API-t, vagy az ügyfél szinten **DefaultRequestOptions**). Minden más kezelik az ügyféloldali kódtár által belsőleg.
 
 ```csharp
@@ -241,7 +241,7 @@ Ahogy említettük, ha az entitás TableEntity valósítja meg, majd a tulajdons
 Vegye figyelembe, hogy a titkosított további teljesítménybeli terhelést okoz a tárolás eredményezi. A tartalomkulcs és IV kell létrejönnie, maga a tartalom titkosítva kell lennie, és további metaadatokkal kell formázni és feltöltött. Ez a terhelés hozzáadódik a titkosított adatok mennyisége függően változhat. Azt javasoljuk, hogy az ügyfelek mindig vizsgálati alkalmazásaikat a teljesítmény a fejlesztés során.
 
 ## <a name="next-steps"></a>További lépések
-* [Oktatóanyag: Blobok titkosítása és visszafejtése az Azure Key Vault használatával a Microsoft Azure Storage-ban](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
+* [Oktatóanyag: Az Azure Key Vault használatával a Microsoft Azure Storage blobok titkosítása és visszafejtése](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * Töltse le a [Azure Storage ügyféloldali kódtára a .NET NuGet-csomag](https://www.nuget.org/packages/WindowsAzure.Storage)
 * Töltse le az Azure Key Vault NuGet [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [ügyfél](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/), és [bővítmények](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) csomagok  
 * Látogasson el a [az Azure Key Vault-dokumentáció](../../key-vault/key-vault-whatis.md)

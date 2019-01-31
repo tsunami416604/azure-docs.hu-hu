@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 93b7fb0cd303f34d4afadf461f8886aaac52e4c3
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 38f0d9cc6f507aa7d521aba0ff737f7bbaf2b211
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388580"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468121"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készletek létrehozása és kezelése
 
@@ -39,7 +39,7 @@ Itt választhat bármilyen kombinációja a következő módosításokat, és me
 
 ## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell: Rugalmas készletek és a készletezett adatbázisok kezelése
 
-Hozzon létre és kezeli az SQL Database rugalmas készletek és a készletezett adatbázisok az Azure PowerShell-lel, használja a következő PowerShell-parancsmagok. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps). Hozhat létre, és a logikai kiszolgálók, rugalmas készletek kezelése, tekintse meg a [logikai kiszolgáló létrehozása és a felügyelt](sql-database-logical-servers.md). Hozzon létre és tűzfalszabályok kezelése: [létrehozása és a tűzfalszabályok kezelése PowerShell használatával](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
+Hozzon létre és kezeli az SQL Database rugalmas készletek és a készletezett adatbázisok az Azure PowerShell-lel, használja a következő PowerShell-parancsmagok. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps). Hozhat létre, és az SQL Database-kiszolgálók, rugalmas készletek kezelése, tekintse meg a [létrehozása és kezelése az SQL Database-kiszolgálók](sql-database-servers.md). Hozzon létre és tűzfalszabályok kezelése: [létrehozása és a tűzfalszabályok kezelése PowerShell használatával](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
 
 > [!TIP]
 > PowerShell-példa szkriptek, lásd: [rugalmas készletek létrehozása és adatbázisok áthelyezése a készletek között, és a egy PowerShell-lel készletből](scripts/sql-database-move-database-between-pools-powershell.md) és [a PowerShell szolgáltatás használatával az Azure SQL DatabaseegySQLrugalmaskészletmonitorozásaésskálázása](scripts/sql-database-monitor-and-scale-pool-powershell.md).
@@ -47,11 +47,11 @@ Hozzon létre és kezeli az SQL Database rugalmas készletek és a készletezett
 
 | Parancsmag | Leírás |
 | --- | --- |
-|[New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool)|Rugalmas adatbáziskészlet hoz logikai SQL Server-kiszolgálón.|
-|[Get-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/get-azurermsqlelasticpool)|Lekérdezi a rugalmas készletek és a tulajdonságértékek logikai SQL Server-kiszolgálón.|
-|[Set-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/set-azurermsqlelasticpool)|Egy rugalmas adatbáziskészletet a logikai SQL-kiszolgáló tulajdonságainak módosítása. Például a **StorageMB** tulajdonság az egy rugalmas készlet adatbázisonkénti maximális tárolási módosításához.|
-|[Remove-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/remove-azurermsqlelasticpool)|Törli a rugalmas adatbáziskészlet logikai SQL Server-kiszolgálón.|
-|[Get-AzureRmSqlElasticPoolActivity](/powershell/module/azurerm.sql/get-azurermsqlelasticpoolactivity)|Műveletek a rugalmas készlet a logikai SQL-kiszolgáló állapotát olvassa be.|
+|[New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool)|Egy rugalmas készletet hoz létre.|
+|[Get-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/get-azurermsqlelasticpool)|Lekérdezi a rugalmas készletek és azok tulajdonság értéke.|
+|[Set-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/set-azurermsqlelasticpool)|Például egy rugalmas készlet tulajdonságainak módosítása a **StorageMB** tulajdonság az egy rugalmas készlet adatbázisonkénti maximális tárolási módosításához.|
+|[Remove-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/remove-azurermsqlelasticpool)|Rugalmas készlet törlése.|
+|[Get-AzureRmSqlElasticPoolActivity](/powershell/module/azurerm.sql/get-azurermsqlelasticpoolactivity)|Rugalmas készlet műveletek állapotának beolvasása|
 |[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|Létrehoz egy új adatbázist egy meglévő készlet vagy önálló adatbázisként. |
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Egy vagy több adatbázist kér le.|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Beállítja egy adatbázis tulajdonságait, vagy be, összesen: vagy rugalmas készletek között helyezi át a létező adatbázis.|
@@ -90,7 +90,7 @@ Hozhat létre és adatbázisok áthelyezése a meglévő rugalmas készletekben,
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Létrehoz egy új adatbázist egy meglévő készlet vagy önálló adatbázisként. Új adatbázis létrehozásához a master adatbázishoz internetkapcsolatra.|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Vagy helyez át egy adatbázisban, összesen:, rugalmas készletek között.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Töröl egy adatbázist.|
-|[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Egy logikai kiszolgáló erőforrás-használati statisztikáit minden rugalmas adatbáziskészletek adja vissza. Az egyes rugalmas adatbáziskészletet, egy sor van jelentéskészítési (négy sorok száma percenként) ablakban 15 másodpercenként. A készletben található összes adatbázis által Ebbe beletartoznak CPU, i/o, Log, tárhelyhasználat és egyidejű kérelem/munkamenet kihasználtságát.|
+|[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Erőforrás-használati statisztikáit a rugalmas készletek adja vissza egy SQL Database-kiszolgálóhoz. Minden egyes rugalmas készlet esetében egy sor van jelentéskészítési (négy sorok száma percenként) ablakban 15 másodpercenként. A készletben található összes adatbázis által Ebbe beletartoznak CPU, i/o, Log, tárhelyhasználat és egyidejű kérelem/munkamenet kihasználtságát.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Adja vissza az edition (szolgáltatási réteg), a szolgáltatási cél (tarifacsomag) és a rugalmas készlet nevét, egy Azure SQL database vagy az Azure SQL Data Warehouse esetében. Ha be van jelentkezve a master adatbázishoz az Azure SQL Database kiszolgáló, információkat az összes adatbázis adja vissza. Az Azure SQL Data Warehouse akkor kapcsolódnia kell a master adatbázisban.|
 
 ## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>REST API: Rugalmas készletek és a készletezett adatbázisok kezelése
@@ -102,7 +102,7 @@ Hozhat létre és kezelheti az SQL Database rugalmas készletek és a készletez
 |[Rugalmas készletek – létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|Új rugalmas készlet létrehozása vagy meglévő rugalmas készlet frissítése.|
 |[Rugalmas készletek – törlés](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|A rugalmas készlet törlése.|
 |[Rugalmas készletek – Get](https://docs.microsoft.com/rest/api/sql/elasticpools/get)|Rugalmas készlet beolvasása.|
-|[Rugalmas készletek – a lista a kiszolgálón](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|Rugalmas készletek listáját adja vissza a kiszolgálón.|
+|[Rugalmas készletek – kiszolgáló listája](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|Rugalmas készletek listáját adja vissza a kiszolgálón.|
 |[Rugalmas készletek – frissítés](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|Frissíti egy meglévő rugalmas készlet.|
 |[Rugalmas készlet, tevékenységek](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|Rugalmas készlet, tevékenységek adja vissza.|
 |[Rugalmas készlet adatbázis-tevékenységek](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|Az adatbázisok rugalmas készlet belül adja vissza a tevékenység.|

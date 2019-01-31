@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97ef7b02690110f571e87960add34b45f683b615
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2e71cf90c6e894946a2f3a1c8bfce2179f214a29
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141407"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453651"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A csoportos adatelemzési folyamat működés közben: az SQL Server használata
 Ebben az oktatóanyagban vezeti végig a folyamat létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Server és a egy nyilvánosan elérhető adatkészlet használatával – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szokásos adatelemzési munkafolyamathoz: fogadni, és Fedezze fel az adatokat, Funkciók tervezése, tanulás egyszerűbbé tételével majd hozhat létre és helyezhet üzembe modelleket.
@@ -46,15 +46,15 @@ Utazás csatlakozni egyedi kulcsa\_adatokat és utazás\_diszkont tevődik össz
 ## <a name="mltasks"></a>Példák az előrejelzés
 Hogy fogalmaz meg három előrejelzési problémák alapján a *tipp\_összeg*, nevezetesen:
 
-1. Bináris osztályozás: előrejelzése e tipp fizették útnak, azaz egy *tipp\_összeg* nagyobb több, mint 0 USD pozitív példa, miközben egy *tipp\_összeg* 0 USD, de egy a példában negatív.
-2. Többosztályos osztályozási: előre fizetett az utazás a tip tartományán. Hogy osztani a *tipp\_összeg* öt bins vagy osztályok:
+1. Bináris osztályozás: E tipp fizették útnak, azaz előrejelzése egy *tipp\_összeg* nagyobb több, mint 0 USD pozitív példa, miközben egy *tipp\_összeg* negatív példa az 0 USD.
+2. Többosztályos osztályozási: Tipp számos előre fizetett az utazás. Hogy osztani a *tipp\_összeg* öt bins vagy osztályok:
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. Regresszió. feladat: előre fizetett belépőt a tip mennyisége.  
+3. Regresszió. feladat: Előre fizetett belépőt a tip mennyisége.  
 
 ## <a name="setup"></a>Olyan adatelemezési környezetet beállítás mentése az Azure fejlett elemzésekhez
 Amint láthatja, hogy az a [a környezet megtervezése](plan-your-environment.md) útmutató, többféle módon való használata az Azure-ban a NYC Taxi lelassítja adatkészlet:
@@ -79,7 +79,7 @@ Az Azure Data Science környezet beállításához:
    > 
    > 
 
-Az adatkészlet méretét, adatforrás helye és a célként kiválasztott Azure-környezet alapján, ez a forgatókönyv hasonlít a [forgatókönyv \#5: nagy méretű adathalmazt a helyi fájlok a cél SQL Server Azure-beli virtuális gépen](plan-sample-scenarios.md#largelocaltodb).
+Az adatkészlet méretét, adatforrás helye és a célként kiválasztott Azure-környezet alapján, ez a forgatókönyv hasonlít a [forgatókönyv \#5: Nagy méretű adathalmazt a helyi fájlok a cél SQL Server Azure-beli virtuális gépen](plan-sample-scenarios.md#largelocaltodb).
 
 ## <a name="getdata"></a>Beolvassa az adatokat nyilvános forráskódú
 Az első a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet a nyilvános helyéről, előfordulhat, hogy használja ismertetett módszerek valamelyikét [áthelyezése adat- és az Azure Blob Storage-ból](move-azure-blob.md) az adatok másolása az új virtuális gépet.
@@ -87,7 +87,7 @@ Az első a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatké
 Az AzCopy használatával adatok másolása:
 
 1. Jelentkezzen be a virtuális gép (VM)
-2. Hozzon létre egy új könyvtárat a Virtuálisgép-adatlemez (Megjegyzés: ne használja az ideiglenes lemez, amely a virtuális gép adatlemezként).
+2. Hozzon létre egy új könyvtárat a Virtuálisgép-adatlemez (Megjegyzés: Ne használja az ideiglenes lemez, amely a virtuális gép adatlemezként).
 3. Egy parancssori ablakban futtassa a következő Azcopy parancssort, és cserélje le az adatokat (2) létrehozott mappa < path_to_data_folder >:
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -137,7 +137,7 @@ Betöltés/átvitele a nagy mennyiségű adat az SQL database és a lekérdezés
 12. A NYC Taxi lelassítja adatok betöltése két külön táblázatban. Összekapcsolási műveletek javítása érdekében javasoljuk a tábla indexelése. A minta parancsfájl **létrehozása\_particionált\_index.sql** particionált indexeket az összetett illesztési kulcsot hoz létre **medallion céltudatos\_licenc és a felvétel\_ dátum és idő**.
 
 ## <a name="dbexplore"></a>Az adatok feltárása és az SQL Server Funkciófejlesztési feladatok
-Ebben a szakaszban végezzük el adatok feltárása és a szolgáltatás generálása SQL-lekérdezéseket közvetlenül futtatásával a **SQL Server Management Studio** korábban létrehozott SQL Server-adatbázis használatával. Egy mintaszkriptet nevű **minta\_queries.sql** megtalálható a **Mintaszkriptek** mappát. Módosítsa a parancsfájlt úgy, hogy módosítsa az adatbázis nevét, ha az alapértelmezettől eltérő: **TaxiNYC**.
+Ebben a szakaszban végezzük el adatok feltárása és a szolgáltatás generálása SQL-lekérdezéseket közvetlenül futtatásával a **SQL Server Management Studio** korábban létrehozott SQL Server-adatbázis használatával. Egy mintaszkriptet nevű **minta\_queries.sql** megtalálható a **Mintaszkriptek** mappát. Módosítsa a parancsfájlt, módosíthatja az adatbázis nevét, ha az alapértelmezettől eltérő: **TaxiNYC**.
 
 Ebben a gyakorlatban a következő történik:
 
@@ -179,7 +179,7 @@ Ebben a példában a medallion (-i taxik számokat) azonosít, több mint 100 le
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Adatok vizsgálatának: Helytelen hosszúsági és/vagy szélességi rekordok ellenőrzésére
+#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Minőségi értékelési adatokat: Ellenőrizze a rekordokat és/vagy a helytelen hosszúság szélesség
 Ebben a példában folytat, ha a hosszúsági és/vagy szélességi mezők vagy érvénytelen értéket tartalmazza (radián fok – 90 és 90 között kell lennie), vagy rendelkezik (0, 0) koordinátáit.
 
     SELECT COUNT(*) FROM nyctaxi_trip
@@ -200,7 +200,7 @@ Ebben a példában találja, hogy voltak Formabontó és időszak (vagy ha a tel
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-#### <a name="exploration-tip-classrange-distribution"></a>Feltárás: Osztály és címtartomány terjesztési tipp
+#### <a name="exploration-tip-classrange-distribution"></a>Feltárás: Az osztály és címtartomány terjesztési tipp
 Ebben a példában kiszámítja a terjesztési tipp címtartományok egy adott időtartamon (vagy a teljes adatkészlethez, ha a teljes évre vonatkozó). Ez a később fogja használni a modellezési többosztályos osztályozási címke osztályok eloszlása.
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
@@ -215,7 +215,7 @@ Ebben a példában kiszámítja a terjesztési tipp címtartományok egy adott i
     WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tip_class
 
-#### <a name="exploration-compute-and-compare-trip-distance"></a>Feltárás: Számítás, és hasonlítsa össze a Trip távolság
+#### <a name="exploration-compute-and-compare-trip-distance"></a>Feltárás: Számítás és Trip távolság összehasonlítása
 Ebben a példában a begyűjtés és dropoff hosszúsági alakítja át, és SQL földrajzi szélesség mutat, kiszámítja az SQL a földrajzi pontokat különbség használatával trip távolság és egy véletlenszerűen vett minta az eredmények az összehasonlításhoz adja vissza. A példában az eredményeket, és csak a a minőségi értékelés lekérdezési korábban tartozó érvényes koordináták korlátozza.
 
     SELECT
@@ -344,7 +344,7 @@ Ezután megnézzük a Dobozdiagram a megjelenítéséhez a quantiles trip távol
 
 ![#2 ábrázolása][2]
 
-#### <a name="visualization-bar-and-line-plots"></a>Vizualizáció: Sáv- és sor grafikon
+#### <a name="visualization-bar-and-line-plots"></a>Vizualizáció: Az eszköztáron és a sor-grafikon
 Ebben a példában azt az öt bins trip távolság bin és a dobozolási eredményeinek képi megjelenítése.
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
@@ -407,7 +407,7 @@ Ebben a szakaszban azt csatlakozzon a táblák **nyctaxi\_út** és **nyctaxi\_d
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>IPython Notebook az SQL-lekérdezések használata az adatok feltárása
 Ebben a szakaszban a rendszer megőrzi a fentiekben létrehozott új tábla mintavételezés 1 % adatokat használó adatok disztribúciók tárgyaljuk. Vegye figyelembe, hogy hasonló explorations használatával végezheti el az eredeti táblázatnak, igény szerint használatával **TABLESAMPLE** mintát vagy, ha korlátozza az eredményeket, és a egy adott időszak többön feltárás korlátozni a **begyűjtés\_dátum és idő** particionálja, ahogyan a [Adatáttekintés és az SQL Server mérnöki funkció](#dbexplore) szakasz.
 
-#### <a name="exploration-daily-distribution-of-trips"></a>Feltárás: Napi terjesztési utak
+#### <a name="exploration-daily-distribution-of-trips"></a>Feltárás: Az utak napi terjesztési
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM nyctaxi_one_percent
@@ -416,7 +416,7 @@ Ebben a szakaszban a rendszer megőrzi a fentiekben létrehozott új tábla mint
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>Feltárás: Kivételre medallion megoszlása
+#### <a name="exploration-trip-distribution-per-medallion"></a>Feltárás: Medallion trip megoszlása
     query = '''
         SELECT medallion,count(*) AS c
         FROM nyctaxi_one_percent
@@ -428,7 +428,7 @@ Ebben a szakaszban a rendszer megőrzi a fentiekben létrehozott új tábla mint
 ### <a name="feature-generation-using-sql-queries-in-ipython-notebook"></a>SQL-lekérdezések használata az IPython Notebook szolgáltatás létrehozása
 Ez a szakasz az új címkéket fog létrehozni, és a szolgáltatások közvetlenül az SQL-lekérdezések használatával, működő minta 1 % tábla létrehozott az előző szakaszban.
 
-#### <a name="label-generation-generate-class-labels"></a>Címke létrehozása: Osztály címkék létrehozása
+#### <a name="label-generation-generate-class-labels"></a>Címke létrehozása: Osztály-címkék létrehozása
 A következő példában az általunk létrehozott két készlet a modellezési használandó címkék:
 
 1. Bináris osztály címkék **Formabontó** (ha tipp kapnak előrejelzésére)
@@ -456,7 +456,7 @@ A következő példában az általunk létrehozott két készlet a modellezési 
         cursor.execute(nyctaxi_one_percent_update_col)
         cursor.commit()
 
-#### <a name="feature-engineering-count-features-for-categorical-columns"></a>Funkciófejlesztési: Kategorikus oszlopok száma funkciói
+#### <a name="feature-engineering-count-features-for-categorical-columns"></a>A szolgáltatás műszaki: A Kategorikus oszlopok száma funkciók
 Ebben a példában alakítja át egy kategorikus mezőt egy numerikus mezőben kategóriákhoz cserélje le az adatok az előfordulások száma.
 
     nyctaxi_one_percent_insert_col = '''
@@ -486,7 +486,7 @@ Ebben a példában alakítja át egy kategorikus mezőt egy numerikus mezőben k
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-bin-features-for-numerical-columns"></a>Funkciófejlesztési: A numerikus oszlopok Bin funkciók
+#### <a name="feature-engineering-bin-features-for-numerical-columns"></a>A szolgáltatás műszaki: A numerikus oszlopok bin funkciók
 Ebben a példában egy folyamatos numerikus mező alakítja előre beállított kategória-tartományok, azaz a átalakító numerikus mezőt egy kategorikus mezőt.
 
     nyctaxi_one_percent_insert_col = '''
@@ -514,7 +514,7 @@ Ebben a példában egy folyamatos numerikus mező alakítja előre beállított 
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Funkciófejlesztési: Hely jellemzők kinyerése decimális szélességi és hosszúsági koordinátákkal
+#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>A szolgáltatás műszaki: Hely jellemzők kinyerése decimális szélességi és hosszúsági koordinátákkal
 Ebben a példában felszámolja szélességi és/vagy hosszúság mező decimális ábrázolása több régióban mezőibe eltérő a granularitási, mint például ország, város, város, letiltása, stb. Vegye figyelembe, hogy az új földrajzi mezők nincsenek leképezve a tényleges helyekre. A leképezés geocode helyeken további információkért lásd: [a Bing Maps REST szolgáltatások](https://msdn.microsoft.com/library/ff701710.aspx).
 
     nyctaxi_one_percent_insert_col = '''
@@ -546,9 +546,9 @@ Ebben a példában felszámolja szélességi és/vagy hosszúság mező decimál
 
 Mi most már készen áll a folytatásra modell létrehozásának és a modell üzembe helyezése [Azure Machine Learning](https://studio.azureml.net). Az adatokat, nevezetesen korábban azonosított problémák előrejelzési bármelyike:
 
-1. Bináris osztályozás: előre e tipp fizették útnak.
-2. Többosztályos osztályozási: előre fizetett, a korábban definiált osztályok megfelelően tipp tartományán.
-3. Regresszió. feladat: előre fizetett belépőt a tip mennyisége.  
+1. Bináris osztályozás: Előrejelzési e tipp fizették útnak.
+2. Többosztályos osztályozási: Tipp számos előre fizetett, a korábban meghatározott osztály alapján.
+3. Regresszió. feladat: Előre fizetett belépőt a tip mennyisége.  
 
 ## <a name="mlmodel"></a>Az Azure Machine Learning modellek létrehozása
 A modellezés gyakorlat megkezdéséhez jelentkezzen be az Azure Machine Learning-munkaterületet. Ha még nem hozott machine learning-munkaterület, [hozzon létre egy Azure Machine Learning-munkaterület](../studio/create-workspace.md).

@@ -2,18 +2,18 @@
 title: Az Azure Stack virtuális gépeiről fájlok biztonsági mentése
 description: Az Azure Backup használatával biztonsági mentése és helyreállítása az Azure Stack-fájlok és alkalmazások számára az Azure Stack környezettel.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: acbd1bb98fd9a3eb24b7b3262c3fe9fe47200385
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 67d79f2aa41bab8a14d693098538d22ffeb05a4e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579200"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301475"
 ---
 # <a name="back-up-files-on-azure-stack"></a>Az Azure Stacken fájlok biztonsági mentése
 Az Azure Backup segítségével védelme (vagy felhatolásra) fájlok és alkalmazások az Azure Stack. Fájlok és alkalmazások biztonsági mentése, telepítse a Microsoft Azure Backup Server az Azure Stacken futó virtuális gépként. Bármely Azure Stack-kiszolgálón az azonos virtuális hálózatba a fájlok védelmét. Miután telepítette az Azure Backup Server, a rövid távú biztonsági mentési adatok érhető el helyi tárhely bővítése érdekében az Azure lemezeket ad hozzá. Az Azure Backup Server az Azure storage hosszú távú megőrzésének használ.
@@ -51,13 +51,13 @@ Az Azure Backup Server számára a fájlok védelméhez az Azure Stack virtuáli
 
     A Microsoft azt javasolja, és a egy alkalmazásvédelmi szabályzatot, fog osztani egy védelmi csoport összes adatot. Hamarosan tervezésével és telepítésével a védelmi csoportok, tekintse meg a System Center DPM cikket, teljes körű tájékoztatásért [védelmi csoportok üzembe helyezése](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
 
-4. Az a **adatvédelmi módszer kiválasztása** írja be a védelmi csoport nevét. Jelölje be a **használatával rövid távú védelmet szeretnék:** és **online védelmet szeretnék**. Kattintson a **Tovább** gombra.
+4. Az a **adatvédelmi módszer kiválasztása** írja be a védelmi csoport nevét. Jelölje be a **használatával rövid távú védelmet szeretnék:** és **online védelmet szeretnék**. Kattintson a **tovább**.
 
     ![Új védelmi csoport varázsló megnyitása](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Válassza ki a **online védelmet szeretnék**, először ki kell választania **használatával rövid távú védelmet szeretnék:** lemez. Az Azure Backup Server nem a szalagra történő védelme, hogy a lemez rövid távú védelem esetén az egyetlen lehetősége.
+    Válassza ki a **online védelmet szeretnék**, először ki kell választania **szeretném, hogy rövid távú védelem használatával:** A lemez. Az Azure Backup Server nem a szalagra történő védelme, hogy a lemez rövid távú védelem esetén az egyetlen lehetősége.
 
-5. Az a **rövid távú célok megadása** képernyőn, mennyi ideig kívánja őrizni a helyreállítási pontokat, lemez és a növekményes biztonsági mentés a mentett. Kattintson a **Tovább** gombra.
+5. Az a **rövid távú célok megadása** képernyőn, mennyi ideig kívánja őrizni a helyreállítási pontokat, lemez és a növekményes biztonsági mentés a mentett. Kattintson a **tovább**.
 
     > [!IMPORTANT]
     > Érdemes **nem** megőrzése üzemképességet (biztonsági mentés) az Azure Backup Server-csatolású lemezeket öt napnál hosszabb.

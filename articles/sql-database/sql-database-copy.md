@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: fa76762fc9a2eb178e2edce2de254894bde1934c
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: 6066ca586ce9923158026fbeaa405de16681de9b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651418"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461339"
 ---
 # <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>Egy tranzakciós szempontból konzisztens másolatot készít egy Azure SQL database másolása
 
@@ -32,11 +32,11 @@ Adatbázis-másolat a Másolás kérés időpontjában a forrásadatbázis pilla
 
 ## <a name="logins-in-the-database-copy"></a>Az adatbázis-másolat a bejelentkezések
 
-Az egyazon logikai kiszolgálón az adatbázis másolása esetén az azonos bejelentkezések használható mindkét adatbázison. A rendszerbiztonsági tag használatával másolja át az adatbázist az új adatbázis az adatbázis tulajdonosa lesz. Minden adatbázis-felhasználó, az engedélyeit és a biztonsági azonosítók (SID) az adatbázis-másolat lesz másolva.  
+Egy adatbázis az SQL Database ugyanarra a kiszolgálóra való másolásakor a azonos bejelentkezések használható mindkét adatbázison. A rendszerbiztonsági tag használatával másolja át az adatbázist az új adatbázis az adatbázis tulajdonosa lesz. Minden adatbázis-felhasználó, az engedélyeit és a biztonsági azonosítók (SID) az adatbázis-másolat lesz másolva.  
 
-Adatbázis másolása egy másik logikai kiszolgáló, amikor a rendszerbiztonsági tag az új kiszolgálón válik az új adatbázis az adatbázis tulajdonosaként. Ha [tartalmazott adatbázis felhasználóit](sql-database-manage-logins.md) adatelérés, győződjön meg arról, hogy az elsődleges és másodlagos adatbázisok mindig rendelkezzenek-e az azonos felhasználói hitelesítő adatok, úgy, hogy a másolás után azonnal hozzáférhet a azonos hitelesítő adatokkal . 
+Ha egy adatbázist egy másik SQL-adatbázis-kiszolgálóra másolja, a rendszerbiztonsági tag az új kiszolgálón válik az új adatbázis az adatbázis tulajdonosa. Ha [tartalmazott adatbázis felhasználóit](sql-database-manage-logins.md) adatelérés, győződjön meg arról, hogy az elsődleges és másodlagos adatbázisok mindig rendelkezzenek-e az azonos felhasználói hitelesítő adatok, úgy, hogy a másolás után azonnal hozzáférhet a azonos hitelesítő adatokkal . 
 
-Ha [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), teljesen többé nem kell hitelesítő adatokat, a Másolás kezeléséhez. Azonban az adatbázis másolása új kiszolgálóra esetén a bejelentkezés-alapú hozzáférés nem működik, mert a bejelentkezések nem léteznek az új kiszolgálón. Bejelentkezések kezelése, ha az adatbázis másolása egy másik logikai kiszolgáló kapcsolatos további információkért lásd: [kezelése az Azure SQL database biztonsági után vész-helyreállítási](sql-database-geo-replication-security-config.md). 
+Ha [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), teljesen többé nem kell hitelesítő adatokat, a Másolás kezeléséhez. Azonban az adatbázis másolása új kiszolgálóra esetén a bejelentkezés-alapú hozzáférés nem működik, mert a bejelentkezések nem léteznek az új kiszolgálón. Bejelentkezések kezelése, ha az adatbázis másolása egy másik SQL-adatbáziskiszolgáló kapcsolatos további információkért lásd: [kezelése az Azure SQL database biztonsági után vész-helyreállítási](sql-database-geo-replication-security-config.md). 
 
 Sikeres másolását követően, és mielőtt más felhasználók újra vannak társítva, csak a bejelentkezés által kezdeményezett, a másolás, az adatbázis tulajdonosa, bejelentkezhet az új adatbázisba. A másolási művelet befejezése után a bejelentkezések elhárításához lásd: [bejelentkezések megoldásához](#resolve-logins).
 
@@ -78,7 +78,7 @@ Ezzel a paranccsal egy új adatbázist 2. adatbázis ugyanazon a kiszolgálón A
 
 ### <a name="copy-a-sql-database-to-a-different-server"></a>SQL-adatbázis másolása egy másik kiszolgálóra
 
-Jelentkezzen be a célkiszolgáló, ahol az új adatbázis hozható létre az SQL-adatbáziskiszolgáló a master adatbázisban. Használja ugyanazt a nevet és jelszót a forrásadatbázis a forrás SQL-kiszolgálón az adatbázis tulajdonosaként rendelkező bejelentkezési adatokat. A bejelentkezés a célkiszolgálón csak is a dbmanager szerepkör és a kiszolgálószintű fő bejelentkezéssel.
+Jelentkezzen be a célkiszolgáló, ahol az új adatbázis hozható létre az SQL Database-kiszolgáló a master adatbázisban. Használja ugyanazt a nevet és jelszót a forrásadatbázis a forrás SQL Database-kiszolgálón az adatbázis tulajdonosaként rendelkező bejelentkezési adatokat. A bejelentkezés a célkiszolgálón csak is a dbmanager szerepkör és a kiszolgálószintű fő bejelentkezéssel.
 
 Ezzel a paranccsal az 1. kiszolgálón Adatbázis1 egy új adatbázisra, 2. adatbázis neve a 2. kiszolgálón másolja. Az adatbázis méretétől függően a másolási művelet eltarthat egy ideig.
 
@@ -104,7 +104,7 @@ Miután az új adatbázis online, a célkiszolgálón, használja a [ALTER felha
 
 Az új adatbázisban található összes felhasználó őrzik meg az engedélyeket, a forrás-adatbázis volt. Az adatbázis-másolat kezdeményező felhasználó lesz az új adatbázis adatbázis tulajdonosa, és hozzá van rendelve egy új biztonsági azonosítóval (SID). Sikeres másolását követően, és mielőtt más felhasználók újra vannak társítva, csak a bejelentkezés által kezdeményezett, a másolás, az adatbázis tulajdonosa, bejelentkezhet az új adatbázisba.
 
-Felhasználók és bejelentkezések kezelése, ha az adatbázis másolása egy másik logikai kiszolgáló kapcsolatos további információkért lásd: [kezelése az Azure SQL database biztonsági után vész-helyreállítási](sql-database-geo-replication-security-config.md).
+Felhasználók és bejelentkezések kezelése, ha az adatbázis másolása egy másik SQL-adatbáziskiszolgáló kapcsolatos további információkért lásd: [kezelése az Azure SQL database biztonsági után vész-helyreállítási](sql-database-geo-replication-security-config.md).
 
 ## <a name="next-steps"></a>További lépések
 

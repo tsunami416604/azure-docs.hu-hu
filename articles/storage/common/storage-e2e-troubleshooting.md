@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 80a2ed779fa65c669be81fdf8212b7d018325ee5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: ce884b95daf8c02e51c79068c360ffe4a4fe0d07
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634507"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473204"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Teljes körű hibaelhárítás az Azure Storage-mérőszámok és a naplózás, az AzCopy és a Message Analyzer használatával
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -345,19 +345,19 @@ Most, hogy ismeri az Üzenetelemző használatával a naplóadatok elemzéséhez
 | --- | --- | --- |
 | Nem várt késedelmeket egy üzenetsorban található üzenetek |AzureStorageClientDotNetV4.Description tartalmaz "Újrapróbálkozás sikertelen műveletet." |Ügyfél |
 | HTTP növekedése percentthrottlingerror értéket mutatnak |HTTP.Response.StatusCode   == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |Network (Hálózat) |
-| Növeli a percenttimeouterror értéket mutatnak |HTTP. Response.StatusCode == 500 |Network (Hálózat) |
+| Növeli a percenttimeouterror értéket mutatnak |HTTP.Response.StatusCode   == 500 |Network (Hálózat) |
 | Növelje az (all) percenttimeouterror értéket mutatnak |* StatusCode == 500 |Összes |
 | Növeli a percentnetworkerror értéket mutatnak |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Ügyfél |
 | A HTTP 403 (tiltott) üzenetek |HTTP. Response.StatusCode 403-as == |Network (Hálózat) |
-| A HTTP 404 (nem található) üzenetek |HTTP. Response.StatusCode 404-es == |Network (Hálózat) |
+| A HTTP 404 (nem található) üzenetek |HTTP.Response.StatusCode   == 404 |Network (Hálózat) |
 | 404 (all) |* StatusCode 404-es == |Összes |
-| Közös hozzáférésű Jogosultságkód (SAS) hitelesítési probléma |AzureStorageLog.RequestStatus == "SASAuthorizationError" |Network (Hálózat) |
-| HTTP 409 (Ütközés) üzenetek |HTTP. Response.StatusCode == 409 |Network (Hálózat) |
+| Közös hozzáférésű Jogosultságkód (SAS) hitelesítési probléma |AzureStorageLog.RequestStatus ==  "SASAuthorizationError" |Network (Hálózat) |
+| HTTP 409 (Ütközés) üzenetek |HTTP.Response.StatusCode   == 409 |Network (Hálózat) |
 | 409 (mind) |* StatusCode == 409 |Összes |
 | Alacsony PercentSuccess vagy analytics naplóbejegyzések rendelkezik ClientOtherErrors állapotú tranzakciós műveletek |AzureStorageLog.RequestStatus == "ClientOtherError" |Kiszolgáló |
 | Nagle figyelmeztetés |((AzureStorageLog.EndToEndLatencyMS-AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5-ös)) és (AzureStorageLog.RequestPacketSize < 1460) és (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS > = 200) |Kiszolgáló |
 | A kiszolgáló és a hálózati naplókban időtartományt |#Timestamp > = 2014-10-20T16:36:38 és #Timestamp < = 2014-10-20T16:36:39 |Kiszolgáló, hálózati |
-| A kiszolgálónaplók időtartományt |AzureStorageLog.Timestamp > = 2014-10-20T16:36:38 és AzureStorageLog.Timestamp < = 2014-10-20T16:36:39 |Kiszolgáló |
+| A kiszolgálónaplók időtartományt |AzureStorageLog.Timestamp   >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <=   2014-10-20T16:36:39 |Kiszolgáló |
 
 ## <a name="next-steps"></a>További lépések
 Az Azure Storage-hibaelhárítási teljes körű forgatókönyvekkel kapcsolatos további információkért tekintse meg ezeket az erőforrásokat:

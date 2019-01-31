@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: dbb8417975d051b4a13d6f94fca76fd3bf321a35
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 6c340cde488ee37d2454468356f1ceee03f74844
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074243"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302104"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
@@ -151,7 +151,7 @@ A bővítmény telepítéséről automatikusan Chrome böngészők, hozzon létr
 |--- | ---|
 |Útvonal | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 |Name (Név) | 1 |
-|Típus | REG_SZ (String) |
+|Typo | REG_SZ (String) |
 |Adatok | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx
 
 Támogatja a Chrome **7 és Windows 8.1**, hozza létre a következő beállításkulcsot:
@@ -160,7 +160,7 @@ Támogatja a Chrome **7 és Windows 8.1**, hozza létre a következő beállít�
 |--- | ---|
 |Útvonal | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 |Name (Név) | 1 |
-|Típus | REG_SZ (String) |
+|Typo | REG_SZ (String) |
 |Adatok | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 A böngészők eszközhitelesítés lehetővé teszi az eszköz azonosítani és egy házirend kialakításnak támogatja. Az eszköz-ellenőrzés sikertelen lesz, ha a böngészőt privát üzemmódban fut-e. 
@@ -244,7 +244,7 @@ Ez a beállítás a következő ügyfél-alkalmazásokra vonatkozik:
 
 - A **jóváhagyott ügyfélalkalmazás megkövetelése** követelmény:
 
-    - Csak támogatja az iOS és Android for [eszköz platform feltétel](#device-platforms-condition).
+    - Csak támogatja az iOS és Android for [eszköz platform feltétel](#device-platform-condition).
 
 
 ## <a name="next-steps"></a>További lépések

@@ -3,7 +3,7 @@ title: Azure CLI-példaszkript – Batch-feladat futtatása | Microsoft Docs
 description: Azure CLI-példaszkript – Feladat futtatása a Batch szolgáltatással
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: tysonn
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
-ms.author: danlep
-ms.openlocfilehash: e82c794845bb3c196c81f9d4f83392a1c86525c2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: lahugh
+ms.openlocfilehash: 4ddcc2541bd31c887c17e549209270c60d735351
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947380"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472286"
 ---
-# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Parancssori felületi példa: Feladatok és tevékenységek futtatása az Azure Batch segítségével
+# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI-példa: Az Azure Batch a feladatok és tevékenységek futtatása
 
 Ez a szkript létrehoz egy Batch-feladatot, amelyhez tevékenységeket ad hozzá. Emellett bemutatja a feladat és a hozzá tartozó tevékenységek monitorozásának menetét. 
 

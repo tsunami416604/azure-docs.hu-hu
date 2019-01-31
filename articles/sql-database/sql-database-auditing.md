@@ -12,12 +12,12 @@ ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 598d2b86e7aeeac9525f37b1ab9422d854e75392
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 0c79554d2db4c1dc17cfbdeed052c1ae16cd68c2
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034029"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297684"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -154,7 +154,7 @@ Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon 
 
     4. Az egyesített fájl megnyílik az ssms-ben, ahol meg is megtekintése és elemezhetők a, valamint exportálja az xel-fájlt vagy CSV-fájl, illetve egy táblázat.
 
-- A Power BI használata. Megtekintheti és elemezheti a naplózási adatokat a Power bi-ban. További információ és a egy letölthető sablon eléréséhez tekintse meg a [Analyzie naplózási adatokat a Power bi-ban](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
+- A Power BI használata. Megtekintheti és elemezheti a naplózási adatokat a Power bi-ban. További információ és a egy letölthető sablon eléréséhez tekintse meg a [elemzés naplózási adatokat a Power bi-ban](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 - Letölti a naplófájlokat a portálon keresztül, vagy egy eszköz használatával az Azure Storage blob-tárolóból [Azure Storage Explorer](http://storageexplorer.com/).
   - Miután letöltötte helyileg egy naplófájl, kattintson duplán a fájlra nyissa meg a, megtekintheti és elemezheti a naplókat az ssms-ben.
   - Azure Storage Explorer használatával egyszerre több fájl is letölthető. Ehhez kattintson a jobb gombbal egy adott almappát, és válassza ki **Mentés másként** egy helyi mappába menti.
@@ -224,10 +224,10 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
 
 **PowerShell-parancsmagok (beleértve a WHERE záradék támogatási további szűréshez)**:
 
-- [Létrehozás vagy frissítés adatbázis Blob naplórend (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [Létrehozni vagy frissíteni Server Blob naplórend (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
-- [Adatbázis naplózási házirend lekérése (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [Kiszolgáló Blob naplózási házirend lekérése (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
+- [Create or Update Database Blob Auditing Policy (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [Create or Update Server Blob Auditing Policy (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [Get Database Auditing Policy (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [Get Server Blob Auditing Policy (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 A parancsfájl példa: [PowerShell-lel, naplózás és fenyegetésészlelés konfigurálása](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 

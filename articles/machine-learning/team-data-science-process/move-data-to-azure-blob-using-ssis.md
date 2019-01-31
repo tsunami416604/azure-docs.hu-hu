@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8cd7fc5b69fd3ef124a96f00466a0d9a8c4e2240
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d8cb0829698b13e2193850c29f98492df6c48d4f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134352"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468512"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Adatok áthelyezése vagy onnan máshová SSIS-összekötők használatával az Azure Blob Storage
 A [SQL Server Integration Services funkciócsomag Azure](https://msdn.microsoft.com/library/mt146770.aspx) szeretne csatlakozni az Azure-összetevők közötti Azure-ban és a helyszíni adatforrások, és dolgozza fel az adatokat az Azure-ban tárolt adatok átvitele biztosít.
@@ -42,8 +42,8 @@ Ebben a cikkben ismertetett feladatok végrehajtásához Azure-előfizetéssel, 
 
 Használatához a **SSIS-összekötők**, le kell töltenie:
 
-* **Az SQL Server 2014 vagy 2016 Standard (vagy újabb)**: telepítés tartalmazza az SQL Server Integration Services.
-* **A Microsoft SQL Server 2014 vagy 2016 Integration Services Feature Pack for Azure**: ezek letölthető, az a [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) és [SQL Server 2016 Integration Szolgáltatások](https://www.microsoft.com/download/details.aspx?id=49492) oldalakat.
+* **Az SQL Server 2014 vagy 2016 Standard (vagy újabb)**: Install SQL Server Integration Services tartalmazza.
+* **A Microsoft SQL Server 2014 vagy 2016 Integration Services, Azure Feature Pack**: Ezek letölthető, az a [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) és [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) oldalakat.
 
 > [!NOTE]
 > SSIS az SQL Server telepítve van, de nem szerepel az Express verzió. Milyen alkalmazások szerepelnek-e az SQL Server különböző kiadásainak kapcsolatos információkért lásd: [SQL Server-verziók](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
@@ -52,7 +52,7 @@ Használatához a **SSIS-összekötők**, le kell töltenie:
 
 Lásd az SSIS oktatási anyagok [kéz a betanítási SSIS-hez](https://www.microsoft.com/sql-server/training-certification)
 
-Információk beszerzése a felfelé és a futó használatával hozhat létre egyszerű kinyerési, átalakítási és betöltési (ETL) csomagok, lásd: SISS [SSIS-oktatóanyag: egy egyszerű ETL-csomag létrehozása](https://msdn.microsoft.com/library/ms169917.aspx).
+Információk beszerzése a felfelé és a futó használatával hozhat létre egyszerű kinyerési, átalakítási és betöltési (ETL) csomagok, lásd: SISS [SSIS-oktatóanyag: Egy egyszerű ETL-csomag létrehozása](https://msdn.microsoft.com/library/ms169917.aspx).
 
 ## <a name="download-nyc-taxi-dataset"></a>Töltse le a NYC Taxi adatkészlet
 A bemutatott példában a nyilvánosan elérhető adatkészlet – ide használata a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az adatkészlet készül 173 millió i taxik fel a következőt: az év 2013 áll. Az adatok két típusa van: trip adatokat és diszkont adatok részleteit. Mivel minden hónapban egy fájlt, az összes, amelyeken, hogy megközelítőleg 2GB tömörítetlen 24 fájlok van.

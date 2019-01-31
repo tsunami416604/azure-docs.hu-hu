@@ -2,19 +2,18 @@
 title: Adatmodell az Azure Backup
 description: Ez a cikk ismerteti a Power BI adatok modell részletei az Azure Backup-jelentésekhez.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 573b7e9c5c44c7162b4020f1ef54b8986003c0b5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877133"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299418"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Adatmodell az Azure Backup-jelentésekhez
 Ez a cikk ismerteti a Power BI adatmodell az Azure Backup-jelentések készítéséhez. A data modellel meglévő jelentések kapcsolódó mezők alapján szűrheti, és további táblákat és mezőket a modellben is fontosabb, létrehozhatja saját jelentéseit. 
@@ -31,8 +30,8 @@ Ez a táblázat alapszintű mezők és az aggregációhoz különböző riasztá
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | #AlertsCreatedInPeriod |Egész szám |A kijelölt időszakban létrehozott riasztások számát |
-| A(z) % ActiveAlertsCreatedInPeriod |Százalék |Aktív riasztások a kiválasztott időszakban százaléka |
-| A(z) % CriticalAlertsCreatedInPeriod |Százalék |Kritikus riasztások a kiválasztott időszakban százaléka |
+| %ActiveAlertsCreatedInPeriod |Százalék |Aktív riasztások a kiválasztott időszakban százaléka |
+| %CriticalAlertsCreatedInPeriod |Százalék |Kritikus riasztások a kiválasztott időszakban százaléka |
 | AlertOccurrenceDate |Dátum |A riasztás létrehozásának dátuma |
 | AlertSeverity |Szöveg |A példában a kritikus riasztás súlyossága |
 | AlertStatus |Szöveg |A riasztás, ha például aktív állapot |
@@ -83,7 +82,7 @@ Ez a táblázat alapszintű mezők és az aggregációhoz feladatokkal kapcsolat
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | #JobsCreatedInPeriod |Egész szám |A kijelölt időszakban létrehozott feladatok száma |
-| A(z) % FailuresForJobsCreatedInPeriod |Százalék |Százalék a kiválasztott időszakban a teljes feladat-hibák |
+| %FailuresForJobsCreatedInPeriod |Százalék |Százalék a kiválasztott időszakban a teljes feladat-hibák |
 | 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Tizedes tört szám |MB-ban, az átvitt adatok 80 %-os érték **biztonsági mentési** a kiválasztott időszakban létrehozott feladatok |
 | AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítésének ideje |
 | AvgBackupDurationInMinsForJobsCreatedInPeriod |Tizedes tört szám |Átlagos időtartam percben **befejezett backup** a kiválasztott időszakban létrehozott feladatok |
@@ -142,7 +141,7 @@ Ez a táblázat alapszintű mezők és az aggregációhoz-kiszolgálóval kapcso
 | AzureBackupAgentOSVersion |Szöveg |Az Azure Backup szolgáltatás ügynökének operációsrendszer-verziója |
 | AzureBackupAgentUpdateDate |Szöveg |Az ügynök Backup-ügynök frissítésének dátuma |
 | AzureBackupAgentVersion |Szöveg |Biztonsági másolat verzióját az ügynök verziószáma |
-| A backupmanagementtype típusra vonatkozó |Szöveg |A biztonsági mentés például IaaSVM fájlmappa szolgáltató típusa |
+| BackupManagementType |Szöveg |A biztonsági mentés például IaaSVM fájlmappa szolgáltató típusa |
 | EntityState |Szöveg |Aktív, a törölt például a védett kiszolgáló objektum aktuális állapotát |
 | ProtectedServerFriendlyName |Szöveg |Védett kiszolgáló rövid neve |
 | ProtectedServerName |Szöveg |Védett kiszolgáló neve |

@@ -12,32 +12,32 @@ ms.author: srbozovi
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/14/2018
-ms.openlocfilehash: 40d07827cbd856fe3be3d797dde793b1a7f50207
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: f75ea7bd728b16c91122119c3e14da2a1e123d45
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653238"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452311"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Gyors útmutató: Adatbázis visszaállítása felügyelt példányra 
 
-Ez a rövid útmutatóban fogja használni az SQL Server Management Studio (SSMS) (a Wide World Importers – Standard biztonságimásolat-fájl) adatbázis visszaállítása az Azure blob storage-ból egy Azure SQL Database-be [felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance). 
+Ez a rövid útmutatóban fogja használni az SQL Server Management Studio (SSMS) (a Wide World Importers – Standard biztonságimásolat-fájl) adatbázis visszaállítása az Azure blob storage-ból egy Azure SQL Database-be [felügyelt példány](sql-database-managed-instance.md). 
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> * Az Azure Database Migration Service (DMS) végzett áttelepítésének további információkért lásd: [DMS használatával felügyelt példány migrálása](../dms/tutorial-sql-server-to-managed-instance.md). 
-> * Különféle migrálási módszerekről további információkért lásd: [SQL Server-példány migrálása az Azure SQL Database felügyelt példányába történő](sql-database-managed-instance-migrate.md).
+> - Az Azure Database Migration Service (DMS) végzett áttelepítésének további információkért lásd: [DMS használatával felügyelt példány migrálása](../dms/tutorial-sql-server-to-managed-instance.md). 
+> - Különféle migrálási módszerekről további információkért lásd: [SQL Server-példány migrálása az Azure SQL Database felügyelt példányába történő](sql-database-managed-instance-migrate.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a rövid útmutató:
+
 - Az erőforrást használ, a [létrehoz egy felügyelt példányt](sql-database-managed-instance-get-started.md) rövid.
 - Rendelkeznie kell a számítógép a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) telepítve.
 - SSMS használata a felügyelt példányhoz való kapcsolódáshoz szükséges. Tekintse meg az alábbi gyorsútmutatókkal való csatlakozásról:
-  * [Csatlakozás Azure SQL Database felügyelt példányhoz egy Azure virtuális gépről](sql-database-managed-instance-configure-vm.md)
-  * [Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányába való helyszíni](sql-database-managed-instance-configure-p2s.md).
-
+  - [Csatlakozás Azure SQL Database felügyelt példányhoz egy Azure virtuális gépről](sql-database-managed-instance-configure-vm.md)
+  - [Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányába való helyszíni](sql-database-managed-instance-configure-p2s.md).
 
 > [!NOTE]
 > További információ a biztonsági mentése és visszaállítása egy SQL Server-adatbázis az Azure blob storage-dzsal és a egy [közös hozzáférésű Jogosultságkód (SAS) kulcs](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), lásd: [URL-címét az SQL Server biztonsági másolat](sql-database-managed-instance-get-started-restore.md).
@@ -47,9 +47,7 @@ Ez a rövid útmutató:
 Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis visszaállítása a felügyelt példányhoz. Az adatbázis biztonsági másolatát egy előre konfigurált Azure blob storage-fiók van tárolva.
 
 1. Nyissa meg az SMSS, és csatlakozhat a felügyelt példányhoz.
-
 2. A bal oldali menüben kattintson a jobb gombbal a felügyelt példány, és válassza ki **új lekérdezés** egy új lekérdezési ablak megnyitásához.
-
 3. Futtassa a következő SQL-parancsfájlt, amely egy előre konfigurált tárfiókot és SAS-kulcsot használ [hitelesítő adatok létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql?view=sql-server-2017) a felügyelt példány található.
 
    ```sql
@@ -60,8 +58,7 @@ Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis vi
 
     ![hitelesítő adat létrehozása](./media/sql-database-managed-instance-get-started-restore/credential.png)
 
-  
-3. A hitelesítő adatok ellenőrzéséhez futtassa a következő parancsfájlt, amely használja egy [tároló](https://azure.microsoft.com/services/container-instances/) listáját a biztonságimásolat-fájl URL-CÍMÉT.
+4. A hitelesítő adatok ellenőrzéséhez futtassa a következő parancsfájlt, amely használja egy [tároló](https://azure.microsoft.com/services/container-instances/) listáját a biztonságimásolat-fájl URL-CÍMÉT.
 
    ```sql
    RESTORE FILELISTONLY FROM URL = 
@@ -70,7 +67,7 @@ Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis vi
 
     ![fájlok listája](./media/sql-database-managed-instance-get-started-restore/file-list.png)
 
-4. Futtassa a következő szkriptet a Wide World Importers-adatbázis visszaállítása.
+5. Futtassa a következő szkriptet a Wide World Importers-adatbázis visszaállítása.
 
    ```sql
    RESTORE DATABASE [Wide World Importers] FROM URL =
@@ -79,7 +76,7 @@ Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis vi
 
     ![visszaállítás](./media/sql-database-managed-instance-get-started-restore/restore.png)
 
-5. Futtassa a következő szkriptet a visszaállítás állapotának nyomon követéséhez.
+6. Futtassa a következő szkriptet a visszaállítás állapotának nyomon követéséhez.
 
    ```sql
    SELECT session_id as SPID, command, a.text AS Query, start_time, percent_complete
@@ -89,7 +86,7 @@ Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis vi
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-6. Ha a visszaállítás elkészült, tekintse meg az Object Explorerben. 
+7. Ha a visszaállítás elkészült, tekintse meg az Object Explorerben. 
 
 ## <a name="next-steps"></a>További lépések
 

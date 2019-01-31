@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 95a9f3d553bb3d8ca07ed90578861f6267058532
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3186261b935d48343eab2fd818cd8ed936f41f3f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463745"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472781"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -228,7 +228,7 @@ Engedélyezve van az SQL Server nem dokumentált DBCC-utasítások nem támogato
 
 ### <a name="distributed-transactions"></a>Elosztott tranzakciók
 
-Sem az MSDTC sem [rugalmas tranzakciók](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-transactions-overview) a felügyelt példány jelenleg támogatott.
+Sem az MSDTC sem [rugalmas tranzakciók](sql-database-elastic-transactions-overview.md) a felügyelt példány jelenleg támogatott.
 
 ### <a name="extended-events"></a>Bővített események
 
@@ -279,8 +279,8 @@ Műveletek
 - Létrehozott SQL-bejelentkezésekben `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, és `FROM SID` támogatottak. Lásd: [létrehozás bejelentkezési](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
 - A létrehozott Azure Active Directory (AAD) bejelentkezések [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) szintaxis vagy a [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) szintaxis használata támogatott (**nyilvános előzetes verzióban**).
 - A létrehozott Windows-bejelentkezések `CREATE LOGIN ... FROM WINDOWS` szintaxis használata nem támogatott. Használja az Azure Active Directory-bejelentkezések és felhasználók.
-- A példányt hozott létre az Azure Active Directory (Azure AD) felhasználó [rendszergazdai jogosultságokat unrestricted](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#unrestricted-administrative-accounts).
-- Nem rendszergazdai Azure Active Directory (Azure AD) adatbázisszintű felhasználók hozható létre `CREATE USER ... FROM EXTERNAL PROVIDER` szintaxist. Lásd: [felhasználó létrehozása... A KÜLSŐ SZOLGÁLTATÓ](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)
+- A példányt hozott létre az Azure Active Directory (Azure AD) felhasználó [rendszergazdai jogosultságokat unrestricted](sql-database-manage-logins.md#unrestricted-administrative-accounts).
+- Nem rendszergazdai Azure Active Directory (Azure AD) adatbázisszintű felhasználók hozható létre `CREATE USER ... FROM EXTERNAL PROVIDER` szintaxist. Lásd: [felhasználó létrehozása... A KÜLSŐ SZOLGÁLTATÓ](sql-database-manage-logins.md#non-administrator-users)
 
 ### <a name="polybase"></a>PolyBase
 

@@ -1,6 +1,6 @@
 ---
-Cím: Az Azure Batch szolgáltatást a Machine Learning Studio feladatok titleSuffix: Azure Machine Learning Studio description: Machine Learning-feladatok Azure Batch szolgáltatás áttekintése. Batch-készlet feldolgozási lehetővé teszi, hogy hozhat létre készleteket, amelyre elküldheti a batch-feladatok.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Az Azure Batch szolgáltatást a Machine Learning Studio feladatok titleSuffix: Azure Machine Learning Studio description: Machine Learning-feladatok Azure Batch szolgáltatás áttekintése. Batch-készlet feldolgozási lehetővé teszi, hogy hozhat létre készleteket, amelyre elküldheti a batch-feladatok.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 Szerző: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, előző title = "dedikált kapacitás a kötegelt végrehajtási szolgáltatás feladatok – az Azure Machine Learning Studióban |} A Microsoft Docs ms.date: 04/19/2017
 ---

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 72d1676613de699abda2136a7743a974b2b17c01
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 30c03d52e31f70448eef07b4567083061605d8dd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162860"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300472"
 ---
 # <a name="access-the-vfxt-cluster"></a>Hozzáférés a vFXT fürt
 
@@ -25,13 +25,13 @@ A vFXT fürt egy privát virtuális hálózaton belül helyezkedik el, mert az S
 > [!NOTE] 
 > Ez a cikk feltételezi, hogy meg van egy nyilvános IP-címet a fürt vezérlő vagy a fürt virtuális hálózaton belül egy másik virtuális Géphez. Ez a cikk ismerteti, hogyan használható a virtuális gép gazdagépként, aki a fürtöt. Ha a VPN-t vagy az ExpressRoute virtuális hálózati hozzáféréshez használ, akkor ugorjon a [Connect Avere Vezérlőpult](#connect-to-the-avere-control-panel-in-a-browser).
 
-Mielőtt csatlakozna, győződjön meg arról, hogy az SSH nyilvános/titkos kulcspár, amelyet a fürt vezérlő létrehozásakor használt telepítve van-e a helyi gépen. Olvassa el az SSH kulcsok dokumentációját [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Ha segítségre van szüksége.  
+Mielőtt csatlakozna, győződjön meg arról, hogy az SSH nyilvános/titkos kulcspár, amelyet a fürt vezérlő létrehozásakor használt telepítve van-e a helyi gépen. Olvassa el az SSH kulcsok dokumentációját [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Ha segítségre van szüksége. (A jelszó helyett a nyilvános kulcs használatakor kéri, adja meg, ha csatlakozik.) 
 
 ## <a name="ssh-tunnel-with-a-linux-host"></a>SSH-alagutat egy Linux-gazdagépre
 
 Ha Linux-alapú ügyfelet használ, használja az SSH-alagútkezelési az űrlap-parancsot: 
 
-ssh -L *local_port*:*cluster_mgmt_ip*: 443-as *controller_username*@*controller_public_IP*
+ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*@*controller_public_IP*
 
 Ezzel a paranccsal összekapcsolja a fürt felügyeleti IP-címre a fürt vezérlő IP-címen keresztül.
 
@@ -41,7 +41,7 @@ Példa:
 ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 ```
 
-Hitelesítés automatikusan végbemegy, ha a fürt létrehozásához használt nyilvános SSH-kulcsot, és a megfelelő kulcs telepítve van az ügyfélrendszeren.
+Hitelesítés automatikusan végbemegy, ha a fürt létrehozásához használt nyilvános SSH-kulcsot, és a megfelelő kulcs telepítve van az ügyfélrendszeren. Ha jelszót használt, a rendszer kérni fogja annak megadására.
 
 ## <a name="ssh-tunnel-with-a-windows-host"></a>Windows állomással való SSH-alagút
 
@@ -63,7 +63,7 @@ Az a **konfigurációs** panelen:
 
 ![Képernyőkép a Putty alkalmazást helyéről a alagút hozzáadásához kattintson](media/avere-vfxt-ptty-numbered.png)
 
-Hitelesítés automatikusan végbemegy, ha a fürt létrehozásához használt nyilvános SSH-kulcsot, és a megfelelő kulcs telepítve van az ügyfélrendszeren.
+Hitelesítés automatikusan végbemegy, ha a fürt létrehozásához használt nyilvános SSH-kulcsot, és a megfelelő kulcs telepítve van az ügyfélrendszeren. Ha jelszót használt, a rendszer kérni fogja annak megadására.
 
 ## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>Csatlakozás a Avere Vezérlőpult böngészőben
 
@@ -77,7 +77,7 @@ Ebben a lépésben egy webböngészőben a konfigurációs eszközt, a vFXT für
 
 A böngésző típusától függően előfordulhat, hogy kell kattintson **speciális** , és ellenőrizze, hogy biztonságosan oldalára.
 
-Adja meg a felhasználónevét `admin` és a fürt létrehozása a megadott jelszót.
+Adja meg a felhasználónevét `admin` és a fürt létrehozásakor megadott rendszergazdai jelszót.
 
 ![Képernyőkép a Avere jelentkezzen be a lapon a rendszergazda felhasználónév és jelszó használatával](media/avere-vfxt-gui-login.png)
 

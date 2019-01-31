@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 861b3302e065689a4ea9c0df0879f9c0df12e619
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 185e243838d2ccdc920fa5b5714995801567a24f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526946"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454674"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Merevlemezek előkészítése importálási feladatokhoz
 Egy vagy több merevlemezek előkészítése importálási feladatokhoz, kövesse az alábbi lépéseket:
@@ -104,13 +104,13 @@ Egy vagy több merevlemezek előkészítése importálási feladatokhoz, kövess
 
 |Parancssori paraméter|Leírás|
 |-----------------------------|-----------------|
-|**/SK:**< StorageAccountKey\>|`Optional.` A tárfiók kulcsát, amelyhez a rendszer importálja az adatokat a tárfiók. Meg kell adni vagy **/sk:**< StorageAccountKey\> vagy **/csas:**< ContainerSas\> parancsban.|
-|**/csas:**< ContainerSas\>|`Optional`. A tároló SAS használatával importálja az adatokat a tárfiók. Meg kell adni vagy **/sk:**< StorageAccountKey\> vagy **/csas:**< ContainerSas\> parancsban.<br /><br /> Ez a paraméter értéke a tároló nevét, egy kérdőjelet (?) és a SAS-jogkivonatot kell kezdődnie. Példa:<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> Az engedélyeket, akár az URL-cím vagy egy tárolt hozzáférési házirendben megadott, tartalmaznia kell olvasási, írási és törlési az importálási feladatokhoz, és olvasási, írási és a lista az export-feladatok.<br /><br /> Ha ez a paraméter meg van adva, az importált vagy exportált összes blobot a tárolóban, a közös hozzáférésű jogosultságkód található a megadott kell lennie.|
-|**/ t:**< TargetDriveLetter\>|`Required.` A cél merevlemez-meghajtó a jelenlegi példány munkamenet a záró kettőspont nélkül meghajtóbetűjelet.|
+|**/sk:**<StorageAccountKey\>|`Optional.` A tárfiók kulcsát, amelyhez a rendszer importálja az adatokat a tárfiók. Meg kell adni vagy **/sk:**< StorageAccountKey\> vagy **/csas:**< ContainerSas\> parancsban.|
+|**/csas:**<ContainerSas\>|`Optional`. A tároló SAS használatával importálja az adatokat a tárfiók. Meg kell adni vagy **/sk:**< StorageAccountKey\> vagy **/csas:**< ContainerSas\> parancsban.<br /><br /> Ez a paraméter értéke a tároló nevét, egy kérdőjelet (?) és a SAS-jogkivonatot kell kezdődnie. Példa:<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> Az engedélyeket, akár az URL-cím vagy egy tárolt hozzáférési házirendben megadott, tartalmaznia kell olvasási, írási és törlési az importálási feladatokhoz, és olvasási, írási és a lista az export-feladatok.<br /><br /> Ha ez a paraméter meg van adva, az importált vagy exportált összes blobot a tárolóban, a közös hozzáférésű jogosultságkód található a megadott kell lennie.|
+|**/t:**<TargetDriveLetter\>|`Required.` A cél merevlemez-meghajtó a jelenlegi példány munkamenet a záró kettőspont nélkül meghajtóbetűjelet.|
 |**Format**|`Optional.` Adja meg ezt a paramétert, ha a meghajtó kell formázni; Ellenkező esetben hagyja azt. Az eszköz formázza a meghajtón, mielőtt a rendszer kér megerősítést konzolról. A jóváhagyás le, adja meg a /silentmode paramétert.|
 |**/silentmode**|`Optional.` Adja meg ezt a paramétert a megerősítést a targert meghajtón le.|
 |**/encrypt**|`Optional.` Amikor a meghajtót a BitLocker még nem titkosítva, és titkosítani kell az eszköz a megadott ezt a paramétert. Ha a meghajtó már a Bitlockerrel titkosított, majd hagyja ki ezt a paramétert, és adja meg a `/bk` paramétert, a meglévő BitLocker-kulcs megadása.<br /><br /> Ha megad a `/format` paramétert, akkor is meg kell adnia a `/encrypt` paraméter.|
-|**/BK:**< BitLockerKey\>|`Optional.` Ha `/encrypt` van adva, hagyja ki ezt a paramétert. Ha `/encrypt` van megadva, rendelkeznie kell már titkosította a meghajtó bitlockerrel van. Ez a paraméter használatával adja meg a BitLocker-kulcsot. BitLocker-titkosítást az összes merevlemezek importálási feladatokhoz szükség.|
+|**/bk:**<BitLockerKey\>|`Optional.` Ha `/encrypt` van adva, hagyja ki ezt a paramétert. Ha `/encrypt` van megadva, rendelkeznie kell már titkosította a meghajtó bitlockerrel van. Ez a paraméter használatával adja meg a BitLocker-kulcsot. BitLocker-titkosítást az összes merevlemezek importálási feladatokhoz szükség.|
 |**/ logdir:**< LogDirectory\>|`Optional.` A naplózási könyvtár részletes naplók, valamint az ideiglenes fájlok tárolására szolgáló könyvtár megadása Ha nincs megadva, a naplózási könyvtár az aktuális könyvtárban lesz.|
 
 ### <a name="parameters-required-for-all-copy-sessions"></a>Összes másolat munkamenetet szükséges paramétereket
@@ -119,8 +119,8 @@ Egy vagy több merevlemezek előkészítése importálási feladatokhoz, kövess
 |||
 |-|-|
 |Parancssori paramétert|Leírás|
-|**/j:**< JournalFile\>|`Required.` A naplófájl elérési útja. Minden olyan meghajtó pontosan egy journal-fájlt kell rendelkeznie. Vegye figyelembe, hogy a naplófájl nem kell lennie a cél-meghajtón. A napló fájlkiterjesztés `.jrn`.|
-|**/ ID:**< munkamenet-azonosító\>|`Required.` A munkamenet-azonosító egy másolási munkamenet azonosítja. Győződjön meg, hogy egy megszakított másolási munkamenet pontos helyreállítási szolgál. Másolás munkamenetben másolt fájlok esetében a munkamenet-Azonosítót a célmeghajtó után nevű könyvtárat vannak tárolva.|
+|**/j:**<JournalFile\>|`Required.` A naplófájl elérési útja. Minden olyan meghajtó pontosan egy journal-fájlt kell rendelkeznie. Vegye figyelembe, hogy a naplófájl nem kell lennie a cél-meghajtón. A napló fájlkiterjesztés `.jrn`.|
+|**/id:**<SessionId\>|`Required.` A munkamenet-azonosító egy másolási munkamenet azonosítja. Győződjön meg, hogy egy megszakított másolási munkamenet pontos helyreállítási szolgál. Másolás munkamenetben másolt fájlok esetében a munkamenet-Azonosítót a célmeghajtó után nevű könyvtárat vannak tárolva.|
 
 ### <a name="parameters-for-copying-a-single-directory"></a>A másolási egyetlen címtárban paraméterek
  Ha egyetlen címtárban másol, az alábbi szükséges és választható paramétereket a alkalmazni:
@@ -128,10 +128,10 @@ Egy vagy több merevlemezek előkészítése importálási feladatokhoz, kövess
 |Parancssori paramétert|Leírás|
 |----------------------------|-----------------|
 |**/srcdir:**< SourceDirectory\>|`Required.` A forráskönyvtár a célmeghajtó kell másolni a fájlokat tartalmazó. A könyvtár elérési útjának abszolút elérési útnak (nem relatív elérési utat) kell lennie.|
-|**/dstdir:**< DestinationBlobVirtualDirectory\>|`Required.` A Windows Azure storage-fiókban a cél virtuális könyvtár elérési útja. Előfordulhat, hogy a virtuális könyvtár, vagy már nem létezik.<br /><br /> Megadhat egy tárolót, vagy egy blob előtagot, például `music/70s/`. A célkönyvtárban duplikátum a tároló neve, amelyet által előre dőlő perjellel kell kezdődnie. a "/", és szükség esetén belefoglalhatja a előfordulhat, hogy a blob virtuális könyvtár nem végződik "/".<br /><br /> Ha a cél tároló a legfelső szintű tárolót, pontosan meg kell adni a legfelső szintű tárolót, többek között a perjelet, mint `$root/`. Mivel a gyökérszintű tárolóban található blobok nem szerepelhet "/" a nevében szerepel a forráskönyvtárban alkönyvtáraiban nem lesznek másolva a célkönyvtárban duplikátum esetén a gyökérszintű tárolóban.<br /><br /> Ügyeljen arra, érvényes a tároló nevének megadása a cél virtuális könyvtárak és blobok esetén. Ne feledje, hogy a tároló neve csak kisbetűket tartalmazhatnak. Tároló elnevezési szabályait, lásd: [elnevezése és a hivatkozó tárolók, Blobok és metaadatok](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).|
-|**/ Törlése:**< átnevezése&#124;nem írja felül&#124;felülírása >|`Optional.` Meghatározza a viselkedését, amikor egy blob a megadott címmel már létezik. Ez a paraméter érvényes értékei a következők: `rename`, `no-overwrite` és `overwrite`. Vegye figyelembe, hogy ezek az értékek kis-és nagybetűket. Ha nem ad meg értéket, az alapértelmezett érték `rename`.<br /><br /> Ez a paraméter által megadott könyvtárban lévő összes fájlt érint számára megadott érték a `/srcdir` paraméter.|
-|**/ BlobType:**< BlockBlob&#124;PageBlob >|`Optional.` A cél blobok blob típusát határozza meg. Érvényes értékek a következők: `BlockBlob` és `PageBlob`. Vegye figyelembe, hogy ezek az értékek kis-és nagybetűket. Ha nem ad meg értéket, az alapértelmezett érték `BlockBlob`.<br /><br /> A legtöbb esetben `BlockBlob` ajánlott. Ha megad `PageBlob`, minden fájl a könyvtárban hossza 512, a lapblobok oldal méretét többszöröse kell legyen.|
-|**/ PropertyFile:**< PropertyFile\>|`Optional.` A fájl elérési útját a tulajdonság a cél blobok számára. Lásd: [Import/Export szolgáltatás metaadat és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információt.|
+|**/dstdir:**<DestinationBlobVirtualDirectory\>|`Required.` A Windows Azure storage-fiókban a cél virtuális könyvtár elérési útja. Előfordulhat, hogy a virtuális könyvtár, vagy már nem létezik.<br /><br /> Megadhat egy tárolót, vagy egy blob előtagot, például `music/70s/`. A célkönyvtárban duplikátum a tároló neve, amelyet által előre dőlő perjellel kell kezdődnie. a "/", és szükség esetén belefoglalhatja a előfordulhat, hogy a blob virtuális könyvtár nem végződik "/".<br /><br /> Ha a cél tároló a legfelső szintű tárolót, pontosan meg kell adni a legfelső szintű tárolót, többek között a perjelet, mint `$root/`. Mivel a gyökérszintű tárolóban található blobok nem szerepelhet "/" a nevében szerepel a forráskönyvtárban alkönyvtáraiban nem lesznek másolva a célkönyvtárban duplikátum esetén a gyökérszintű tárolóban.<br /><br /> Ügyeljen arra, érvényes a tároló nevének megadása a cél virtuális könyvtárak és blobok esetén. Ne feledje, hogy a tároló neve csak kisbetűket tartalmazhatnak. Tároló elnevezési szabályait, lásd: [elnevezése és a hivatkozó tárolók, Blobok és metaadatok](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).|
+|**/Disposition:**<rename&#124;no-overwrite&#124;overwrite>|`Optional.` Meghatározza a viselkedését, amikor egy blob a megadott címmel már létezik. Ez a paraméter érvényes értékei a következők: `rename`, `no-overwrite` és `overwrite`. Vegye figyelembe, hogy ezek az értékek kis-és nagybetűket. Ha nem ad meg értéket, az alapértelmezett érték `rename`.<br /><br /> Ez a paraméter által megadott könyvtárban lévő összes fájlt érint számára megadott érték a `/srcdir` paraméter.|
+|**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` A cél blobok blob típusát határozza meg. Érvényes értékek a következők: `BlockBlob` és `PageBlob`. Vegye figyelembe, hogy ezek az értékek kis-és nagybetűket. Ha nem ad meg értéket, az alapértelmezett érték `BlockBlob`.<br /><br /> A legtöbb esetben `BlockBlob` ajánlott. Ha megad `PageBlob`, minden fájl a könyvtárban hossza 512, a lapblobok oldal méretét többszöröse kell legyen.|
+|**/PropertyFile:**<PropertyFile\>|`Optional.` A fájl elérési útját a tulajdonság a cél blobok számára. Lásd: [Import/Export szolgáltatás metaadat és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információt.|
 |**/ Metaadatfájl:**< metaadatfájl\>|`Optional.` Az a cél blobok metaadatait tartalmazó fájl elérési útja. Lásd: [Import/Export szolgáltatás metaadat és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információt.|
 
 ### <a name="parameters-for-copying-a-single-file"></a>Egyetlen fájl másolása paraméterei
@@ -139,11 +139,11 @@ Egy vagy több merevlemezek előkészítése importálási feladatokhoz, kövess
 
 |Parancssori paramétert|Leírás|
 |----------------------------|-----------------|
-|**/srcfile:**< SourceFile\>|`Required.` A másolandó fájl teljes elérési útja. A könyvtár elérési útjának abszolút elérési útnak (nem relatív elérési utat) kell lennie.|
-|**/dstblob:**< DestinationBlobPath\>|`Required.` A Windows Azure storage-fiókban a cél-blob elérési útja. Előfordulhat, hogy a blob, vagy már nem létezik.<br /><br /> Adja meg a blob neve elején a tároló nevét. A blob neve nem kezdődhet "/" vagy a tárfiók nevét. Blob elnevezési szabályait, lásd: [elnevezése és a hivatkozó tárolók, Blobok és metaadatok](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).<br /><br /> Ha a cél tároló a legfelső szintű tárolót, explicit módon meg kell `$root` a tárolót, mint például a `$root/sample.txt`. Vegye figyelembe, hogy a gyökérszintű tárolóban található blobok nem szerepelhet "/" nevükben.|
-|**/ Törlése:**< átnevezése&#124;nem írja felül&#124;felülírása >|`Optional.` Meghatározza a viselkedését, amikor egy blob a megadott címmel már létezik. Ez a paraméter érvényes értékei a következők: `rename`, `no-overwrite` és `overwrite`. Vegye figyelembe, hogy ezek az értékek kis-és nagybetűket. Ha nem ad meg értéket, az alapértelmezett érték `rename`.|
-|**/ BlobType:**< BlockBlob&#124;PageBlob >|`Optional.` A cél blobok blob típusát határozza meg. Érvényes értékek a következők: `BlockBlob` és `PageBlob`. Vegye figyelembe, hogy ezek az értékek kis-és nagybetűket. Ha nem ad meg értéket, az alapértelmezett érték `BlockBlob`.<br /><br /> A legtöbb esetben `BlockBlob` ajánlott. Ha megad `PageBlob`, minden fájl a könyvtárban hossza 512, a lapblobok oldal méretét többszöröse kell legyen.|
-|**/ PropertyFile:**< PropertyFile\>|`Optional.` A fájl elérési útját a tulajdonság a cél blobok számára. Lásd: [Import/Export szolgáltatás metaadat és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információt.|
+|**/srcfile:**<SourceFile\>|`Required.` A másolandó fájl teljes elérési útja. A könyvtár elérési útjának abszolút elérési útnak (nem relatív elérési utat) kell lennie.|
+|**/dstblob:**<DestinationBlobPath\>|`Required.` A Windows Azure storage-fiókban a cél-blob elérési útja. Előfordulhat, hogy a blob, vagy már nem létezik.<br /><br /> Adja meg a blob neve elején a tároló nevét. A blob neve nem kezdődhet "/" vagy a tárfiók nevét. Blob elnevezési szabályait, lásd: [elnevezése és a hivatkozó tárolók, Blobok és metaadatok](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).<br /><br /> Ha a cél tároló a legfelső szintű tárolót, explicit módon meg kell `$root` a tárolót, mint például a `$root/sample.txt`. Vegye figyelembe, hogy a gyökérszintű tárolóban található blobok nem szerepelhet "/" nevükben.|
+|**/Disposition:**<rename&#124;no-overwrite&#124;overwrite>|`Optional.` Meghatározza a viselkedését, amikor egy blob a megadott címmel már létezik. Ez a paraméter érvényes értékei a következők: `rename`, `no-overwrite` és `overwrite`. Vegye figyelembe, hogy ezek az értékek kis-és nagybetűket. Ha nem ad meg értéket, az alapértelmezett érték `rename`.|
+|**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` A cél blobok blob típusát határozza meg. Érvényes értékek a következők: `BlockBlob` és `PageBlob`. Vegye figyelembe, hogy ezek az értékek kis-és nagybetűket. Ha nem ad meg értéket, az alapértelmezett érték `BlockBlob`.<br /><br /> A legtöbb esetben `BlockBlob` ajánlott. Ha megad `PageBlob`, minden fájl a könyvtárban hossza 512, a lapblobok oldal méretét többszöröse kell legyen.|
+|**/PropertyFile:**<PropertyFile\>|`Optional.` A fájl elérési útját a tulajdonság a cél blobok számára. Lásd: [Import/Export szolgáltatás metaadat és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információt.|
 |**/ Metaadatfájl:**< metaadatfájl\>|`Optional.` Az a cél blobok metaadatait tartalmazó fájl elérési útja. Lásd: [Import/Export szolgáltatás metaadat és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információt.|
 
 ### <a name="resuming-an-interrupted-copy-session"></a>A megszakított másolási munkamenet folytatása
@@ -172,7 +172,7 @@ WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AbortSession
 * [Az Azure Import/Export eszköz telepítése](storage-import-export-tool-setup-v1.md)
 * [Tulajdonságok és metaadatok beállítása az importálási folyamat során](storage-import-export-tool-setting-properties-metadata-import-v1.md)
 * [Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
-* [Használt gyakori parancsok gyors áttekintése](storage-import-export-tool-quick-reference-v1.md) 
+* [Használt gyakori parancsok gyors áttekintése](storage-import-export-tool-quick-reference-v1.md) 
 * [Feladatok állapotának áttekintése a másolási naplófájlok segítségével](storage-import-export-tool-reviewing-job-status-v1.md)
 * [Importálási feladat javítása](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [Exportálási feladat javítása](storage-import-export-tool-repairing-an-export-job-v1.md)

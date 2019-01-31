@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 78e2620ba6e5e29a1f1ac9719b709d5a2f468122
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 08a86e1b2808a0778734edecc9385f4d61779b25
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530887"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476196"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Az Azure Storage REST API használata
 
@@ -58,15 +58,15 @@ A mintaalkalmazás a tárfiókban lévő tárolók listája. Miután megismerte,
 
 Ha megtekinti a [Blob Service REST API](/rest/api/storageservices/Blob-Service-REST-API), tekintse meg a blob Storage-hajthat végre műveleteket. A storage ügyféloldali függvénytárak is burkolókat körül a REST API-k – megkönnyítik az Ön számára tároló elérése érdekében anélkül, hogy közvetlenül a REST API-k használatával. De a fentieknek megfelelően néha használni kívánt REST API a storage ügyféloldali kódtár helyett.
 
-## <a name="rest-api-reference-list-containers-api"></a>REST API-referencia: Lista tárolók API
+## <a name="rest-api-reference-list-containers-api"></a>REST API-leírások: API-tárolót
 
 Nézzük meg a lapot a REST API-referencia a [ListContainers](/rest/api/storageservices/List-Containers2) így ismernie az egyes mezőit forrását a kérés- és a kód a következő szakaszban a művelet.
 
-**Kérelem metódusa**: beolvasása. Ez a művelet a HTTP-metódus, mindenképp adja meg a kérelem objektum olyan osztályát. Ehhez a művelethez tartozó többi értéket tartalmazza, HEAD, PUT és DELETE, attól függően, az API-t hívja meg.
+**Kérelem metódusa**: GET. Ez a művelet a HTTP-metódus, mindenképp adja meg a kérelem objektum olyan osztályát. Ehhez a művelethez tartozó többi értéket tartalmazza, HEAD, PUT és DELETE, attól függően, az API-t hívja meg.
 
-**Kérés URI-ja**: https://myaccount.blob.core.windows.net/?comp=list ez jön létre a blob storage-fiók végpontját `http://myaccount.blob.core.windows.net` és az erőforrás-karakterlánc `/?comp=list`.
+**Kérés URI-ja**: https://myaccount.blob.core.windows.net/?comp=list  Ez a blob storage-végpont jön `http://myaccount.blob.core.windows.net` és az erőforrás-karakterlánc `/?comp=list`.
 
-[URI-paramétereinek](/rest/api/storageservices/List-Containers2#uri-parameters): nincsenek további lekérdezési paraméterek ListContainers hívásakor használható. Ezeket a paramétereket néhány vannak *időtúllépési* a hívás (másodpercben), és *előtag*, szűréshez használt.
+[URI-paramétereinek](/rest/api/storageservices/List-Containers2#uri-parameters): Nincsenek további lekérdezési paraméterek ListContainers hívásakor használható. Ezeket a paramétereket néhány vannak *időtúllépési* a hívás (másodpercben), és *előtag*, szűréshez használt.
 
 Egy másik hasznos paraméter *maxresults:* több tároló ennél az értéknél érhetők el, ha a válasz törzse fogja tartalmazni a *NextMarker* elem, amely azt jelzi, hogy a következő vissza a következő tároló a kérést. Ez a funkció használatához adja meg a *NextMarker* érték a *jelölő* paraméter a következő kérelmet győződjön meg arról, ha az URI-ban. Ha ezzel a funkcióval, az eredmények átlapozva hasonló. 
 
@@ -78,13 +78,13 @@ További paraméterek használatához fűzzön hozzá őket az érték, példáu
 
 [Kérelem fejlécei](/rest/api/storageservices/List-Containers2#request-headers)**:** Ez a szakasz felsorolja a szükséges és választható kérelemfejlécek. A fejlécek három szükség: egy *engedélyezési* fejléc *x-ms-date* (tartalmazza a kérelem az Egyezményes világidő), és *x-ms-version* (határozza meg a többi verzióját API-t használja). Többek között *x-ms-client-request-id* a fejlécek nem kötelező – és bármit Ez a mező értéke megadható; írás a storage analytics naplók Ha naplózása engedélyezve van.
 
-[Kérelem törzse](/rest/api/storageservices/List-Containers2#request-body)**:** nincs kérelemtörzs ListContainers van. Kérelem törzse az összes PUT művelet szolgál, blobok, valamint SetContainerAccessPolicy, amely lehetővé teszi, hogy a alkalmazni a tárolt hozzáférési szabályzatok egy XML-lista küldése feltöltésekor. A cikkben említett tárolt hozzáférési szabályzatok [használata közös hozzáférésű Jogosultságkódok (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+[Kérelem törzse](/rest/api/storageservices/List-Containers2#request-body)**:** Nincs nem ListContainers kérelemtörzs. Kérelem törzse az összes PUT művelet szolgál, blobok, valamint SetContainerAccessPolicy, amely lehetővé teszi, hogy a alkalmazni a tárolt hozzáférési szabályzatok egy XML-lista küldése feltöltésekor. A cikkben említett tárolt hozzáférési szabályzatok [használata közös hozzáférésű Jogosultságkódok (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
-[Válasz állapotkódja](/rest/api/storageservices/List-Containers2#status-code)**:** Tells bármely állapotkódok, ismernie kell. Ebben a példában egy HTTP-állapotkód: 200-as rendben. HTTP-állapotkódok teljes listáját, tekintse meg [állapotkód-definíciókat](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). A Storage REST API-k az adott hibakódok, olvassa el [REST API-val gyakori hibakódok](/rest/api/storageservices/common-rest-api-error-codes)
+[Válasz állapotkódja](/rest/api/storageservices/List-Containers2#status-code)**:** Arra utasítja a bármely állapotkódok, ismernie kell. Ebben a példában egy HTTP-állapotkód: 200-as rendben. HTTP-állapotkódok teljes listáját, tekintse meg [állapotkód-definíciókat](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). A Storage REST API-k az adott hibakódok, olvassa el [REST API-val gyakori hibakódok](/rest/api/storageservices/common-rest-api-error-codes)
 
-[Válaszfejlécek](/rest/api/storageservices/List-Containers2#response-headers)**:** ezek közé tartozik a *tartalomtípus*; *x-ms-request-id* (a kérés azonosítója, átadott, ha van ilyen); *x-ms-version* (azt jelzi, hogy a használt Blob szolgáltatás), és a *dátum* (UTC-t, arra utasítja a kérés érkezett eldöntve).
+[Válaszfejlécek](/rest/api/storageservices/List-Containers2#response-headers)**:** Ezek közé tartozik a *tartalomtípus*; *x-ms-request-id* (a kérés azonosítója, átadott, ha van ilyen); *x-ms-version* (azt jelzi, hogy a használt Blob szolgáltatás), és a *dátum* (UTC-t, arra utasítja a kérés érkezett eldöntve).
 
-[Választörzs](/rest/api/storageservices/List-Containers2#response-body): ezt a mezőt egy XML-struktúra a kért adatok megadása kötelező. Ebben a példában a válasz az tárolók és a hozzájuk tartozó tulajdonságok listája.
+[Választörzs](/rest/api/storageservices/List-Containers2#response-body): Ezt a mezőt egy XML-struktúra a kért adatok megadása kötelező. Ebben a példában a válasz az tárolók és a hozzájuk tartozó tulajdonságok listája.
 
 ## <a name="creating-the-rest-request"></a>A REST-kérés létrehozása
 
@@ -204,7 +204,7 @@ Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
 
-**Válasz törzsében (XML):** a ListContainers, a tárolók és a hozzájuk tartozó tulajdonságok listáját tartalmazza.
+**Válasz törzsében (XML):** A ListContainers a tárolók és a hozzájuk tartozó tulajdonságok listáját jeleníti meg.
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -283,24 +283,24 @@ Ez a kódrészlet azt mutatja be, a megosztott kulcsos aláírás karakterlánc 
 
 ```csharp  
 StringToSign = VERB + "\n" +  
-               Content-Encoding + "\n" +  
-               Content-Language + "\n" +  
-               Content-Length + "\n" +  
-               Content-MD5 + "\n" +  
-               Content-Type + "\n" +  
-               Date + "\n" +  
-               If-Modified-Since + "\n" +  
-               If-Match + "\n" +  
-               If-None-Match + "\n" +  
-               If-Unmodified-Since + "\n" +  
-               Range + "\n" +  
-               CanonicalizedHeaders +  
-               CanonicalizedResource;  
+               Content-Encoding + "\n" +  
+               Content-Language + "\n" +  
+               Content-Length + "\n" +  
+               Content-MD5 + "\n" +  
+               Content-Type + "\n" +  
+               Date + "\n" +  
+               If-Modified-Since + "\n" +  
+               If-Match + "\n" +  
+               If-None-Match + "\n" +  
+               If-Unmodified-Since + "\n" +  
+               Range + "\n" +  
+               CanonicalizedHeaders +  
+               CanonicalizedResource;  
 ```
 
 Ezek a mezők a legtöbb ritkán használják. A Blob Storage adja meg művelet, az MD5-tel, a tartalom hossza, a Kanonikussá fejlécek és a Kanonikussá erőforrás. Üresen hagyhatja, a többi (de a put a `\n` így az tudni fogja üresek).
 
-Mik azok CanonicalizedHeaders és CanonicalizedResource? Jó kérdést. Sőt mire kanonikussá mean? A Microsoft Word nem is ismeri fel a szó. Mi [Wikipedia szerint a kanonikussá tétele kapcsolatos](http://en.wikipedia.org/wiki/Canonicalization): *számítógép-tudományi kanonikussá tétele (néha szabványügyi szervezet vagy normalizálási) folyamat során a rendszer olyan adatok, amelyek egynél több lehetséges alakítása. egy "standard", "normál", illetve canonical űrlapra ábrázolása.* A normál beszél, ez azt jelenti, hogy számára (például fejlécek Kanonikussá fejlécek esetében) elemek listáját és a kötelező formátum szabványosíthatja őket. Alapvetően úgy döntött, formátumban a Microsoft, és azt egyeznie kell.
+Mik azok CanonicalizedHeaders és CanonicalizedResource? Jó kérdést. Sőt mire kanonikussá mean? A Microsoft Word nem is ismeri fel a szó. Mi [Wikipedia szerint a kanonikussá tétele kapcsolatos](http://en.wikipedia.org/wiki/Canonicalization): *Számítógép-tudományi kanonikussá tétele (néha szabványügyi szervezet vagy normalizálási) egy folyamatot, amely rendelkezik egy "standard", "normál", illetve canonical űrlapra egynél több lehetséges reprezentáció adatok alakításával.* A normál beszél, ez azt jelenti, hogy számára (például fejlécek Kanonikussá fejlécek esetében) elemek listáját és a kötelező formátum szabványosíthatja őket. Alapvetően úgy döntött, formátumban a Microsoft, és azt egyeznie kell.
 
 Kezdjük két szabványosított mezők, mert az engedélyezési fejléc létrehozásához szüksége van rájuk.
 
@@ -512,7 +512,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Válasz törzsében (XML):** ez XML-válasz a blobok és a hozzájuk tartozó tulajdonságok listáját jeleníti meg. 
+**Válasz törzsében (XML):** Az XML-válasz a blobok és a hozzájuk tartozó tulajdonságok listáját jeleníti meg. 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

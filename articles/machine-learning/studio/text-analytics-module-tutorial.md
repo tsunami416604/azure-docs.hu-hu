@@ -1,5 +1,5 @@
 ---
-Cím: Hozzon létre egy sentiment analysis modell titleSuffix: Azure Machine Learning Studio description: Szövegelemzési modellek létrehozása az Azure Machine Learning Studióban modulok használata az előfeldolgozási, N-gramokat szöveg vagy kivonatoló szolgáltatások funkció: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Hozzon létre egy sentiment analysis modell titleSuffix: Azure Machine Learning Studio description: Szövegelemzési modellek létrehozása az Azure Machine Learning Studióban modulok használata az előfeldolgozási, N-gramokat szöveg vagy kivonatoló szolgáltatások funkció: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2018
 ---

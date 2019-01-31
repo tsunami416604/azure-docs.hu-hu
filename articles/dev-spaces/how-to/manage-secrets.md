@@ -3,7 +3,7 @@ title: Titkos kulcsok kezelése, egy Azure-fejlesztési területtel rendelkező 
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 05/11/2018
@@ -11,12 +11,12 @@ ms.topic: article
 ms.technology: azds-kubernetes
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Container Service, tárolók
-ms.openlocfilehash: e155b4151a3b974e9ccc56a88028a89c35896522
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7081412172b617632073cad4e76d7c8fc4e81519
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014001"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466557"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Titkos kulcsok kezelése, az egy Azure-fejlesztési terület használatakor
 
@@ -67,7 +67,7 @@ Az Azure fejlesztési tárolóhelyek biztosít két ajánlott, hogy a titkos kul
 7. Győződjön meg arról, hogy hozzáadhat _values.dev.yaml_ , a _.gitignore_ fájl verziókövetési rendszerben titkos kódok véglegesítését elkerülése érdekében.
  
  
-## <a name="method-2-inline-directly-in-azdsyaml"></a>2. módszer: A beágyazott közvetlenül a azds.yaml
+## <a name="method-2-inline-directly-in-azdsyaml"></a>2. módszer: Közvetlenül a azds.yaml beágyazott
 1.  A _azds.yaml_, állítsa be a titkos kulcsokat a yaml szakasz konfigurációk/fejlesztés/telepítés alatt. Bár erre elméletileg titkos kulcs értékeket közvetlenül, ez nem ajánlott, mert _azds.yaml_ forrásvezérlőben be van jelölve. Ehelyett adja hozzá a helyőrzőket a "$PLACEHOLDER" szintaxis használatával.
 
     ```yaml

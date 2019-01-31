@@ -1,6 +1,6 @@
 ---
-Cím: Kísérletismétlések kezelése a Machine Learning Studio titleSuffix: Azure Machine Learning Studio description: Hogyan kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban. A kísérletek az előző futtatásokat annak érdekében, hogy az ellenőrző kérdés, nyissa meg újra, és végső soron erősítse meg vagy finomíthatja a korábbi feltételezések bármikor tekintheti meg.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Kísérletismétlések kezelése a Machine Learning Studio titleSuffix: Azure Machine Learning Studio description: Hogyan kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban. A kísérletek az előző futtatásokat annak érdekében, hogy az ellenőrző kérdés, nyissa meg újra, és végső soron erősítse meg vagy finomíthatja a korábbi feltételezések bármikor tekintheti meg.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
 ---

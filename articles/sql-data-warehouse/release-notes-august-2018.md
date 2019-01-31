@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 11125fb1c78852a048787e99d78bf4cb941184fa
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 492bdd30a656a37196cf4d27a2510dbc3a79807d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320361"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463565"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Mi az új Azure SQL Data warehouse? 2018. augusztus
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 augusztus.
@@ -30,9 +30,9 @@ Tekintse meg az adott riasztásra vonatkozó javaslatok láthatók legördülőm
 
 ## <a name="bug-fixes"></a>Hibajavítások
 
-| Beosztás | Leírás |
+| Cím | Leírás |
 |:---|:---|
-| **A felosztás száma meghaladja a maximális korlátot lehetséges lekérdezés-hibák** |A felső határa 1 millió fájl-felosztás korlát túllépésekor nem kezelt kivételt okozott az SQL-kezelő kiírása, és az összes lekérdezés nem sikerült. A javítás címmel a probléma a kivétel megfelelően kezeli, és anélkül, hogy ez a lekérdezések hibát adnak vissza. |
+| **A felosztás száma meghaladja a maximális korlátot lehetséges lekérdezés-hibák** |A felső határa 1 millió fájl-felosztás korlát túllépésekor nem kezelt kivételt okozott az SQL-kezelő kiírása, és az összes lekérdezés nem sikerült. Javítás a probléma processzorsebezhetőségről megfelelően kezeli a kivételt, és anélkül, hogy ez a lekérdezések hibát adnak vissza. |
 | **ExternalMoveReadersPerNode alapértelmezett hasznosításával betöltési teljesítmény javítása érdekében** |A probléma a ExternalMoveReadersPerNode tulajdonság beállítása folyamatban van a szinkronizált beállítása service fabric okozta. A regresszió miatt egy csökkentett teljesítményű Gen2 betöltési teljesítmény. A javítás Gen2 betöltési teljesítmény optimalizált tervezési paraméterek belül újra elérhetővé teszi.|
 
 

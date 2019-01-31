@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0ade4ac054f345084cf0bc0a6dc7885329eb8b9c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: be95a75e7cdcaa11ef3e90093ef52c5615608eac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141883"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458023"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Funkciók létrehozása az adatokhoz a Hive-lekérdezések segítségével Hadoop-fürt
 Ez a dokumentum bemutatja, hogyan funkciók létrehozása az Azure HDInsight Hadoop-fürtben Hive-lekérdezések segítségével tárolt adatokat. A Hive-lekérdezések használata beágyazott Hive User-Defined funkciókat (UDF), a parancsfájlok, amelynek biztosított.
@@ -136,26 +136,26 @@ A két GPS-koordinátáit közötti távolság számító matematikai egyenletek
 
 Beágyazott UDF-EK található Hive teljes listáját a **beépített függvények** szakaszában a <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>).  
 
-## <a name="tuning"></a> Speciális témakörök: paramétereket beállítandó Hive lekérdezés sebességének növelése
+## <a name="tuning"></a> Haladó témakörök: Hallgassa meg paramétereket Hive lekérdezés sebességének növelése
 A Hive-fürt alapértelmezett paraméterbeállítások nem alkalmas a Hive-lekérdezések és a lekérdezések-e feldolgozni az adatokat. Ez a szakasz bemutatja néhány paraméter, amely a felhasználók hangolhassa a Hive-lekérdezések teljesítményének javítása érdekében. Felhasználók kell hozzáadnia a paramétert, a lekérdezések, az adatfeldolgozás előtt a Lekérdezések finomhangolása.
 
-1. **Java halommemória terület**: illesztése a nagyméretű adathalmazok, vagy hosszú rekordjának lekérdezések **elegendő szabad terület halommemória** a gyakori hibák egyike. Ez a hiba elkerülhető az paraméterek beállításával a *mapreduce.map.java.opts* és *mapreduce.task.io.sort.mb* a kívánt értékeket. Például:
+1. **Java halommemória terület**: Lekérdezések illesztése a nagyméretű adathalmazok, vagy hosszú rekordjának **elegendő szabad terület halommemória** a gyakori hibák egyike. Ez a hiba elkerülhető az paraméterek beállításával a *mapreduce.map.java.opts* és *mapreduce.task.io.sort.mb* a kívánt értékeket. Például:
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
     Ez a paraméter 4GB memória, a Java halommemória helyet foglal le, és is használatával a rendezés hatékonyabb hozzá, illetve több memória. Érdemes tesztelni a megoldást, ha minden olyan feladat sikertelen hibák halommemória terület kapcsolódó.
 
-1. **Az elosztott Fájlrendszerbeli blokkméret**: Ez a paraméter beállítja a legkisebb egység, amely a fájlrendszer tárolja az adatokat. Például ha az elosztott Fájlrendszerbeli blokkméret a 128 MB, majd bármilyen típusú és méretű kisebb, mint és legfeljebb 128 MB tárolódik egyetlen blokkot. 128 MB-nál nagyobb méretű adatok extra blokkok engedélyezett. 
+1. **Az elosztott Fájlrendszerbeli blokkméret**: Ez a paraméter beállítása a legkisebb egység, amely a fájlrendszer tárolja az adatokat. Például ha az elosztott Fájlrendszerbeli blokkméret a 128 MB, majd bármilyen típusú és méretű kisebb, mint és legfeljebb 128 MB tárolódik egyetlen blokkot. 128 MB-nál nagyobb méretű adatok extra blokkok engedélyezett. 
 2. Egy kis blokkméretet kiválasztása hatására nagy terhek Hadoop, mert a név csomópont található a releváns blokkot a fájlhoz tartozó számos további kérelmeket feldolgozni. A javasolt beállítás foglalkozó gigabájt (vagy nagyobb) adatok:
 
         set dfs.block.size=128m;
 
-2. **Hive join művelet optimalizálása**: a map/reduce-keretrendszer összekapcsolási műveletek általában kerül sor a csökkentse fázisban vannak, amíg óriási nyereséget biztosíthatja illesztések ütemezése a térkép fázisban (más néven "mapjoins"). A közvetlen Hive ehhez, amikor csak lehetséges, állítsa be:
+2. **Hive join művelet optimalizálása**: A map/reduce-keretrendszer összekapcsolási műveletek általában kerül sor a csökkentse fázisban vannak, amíg óriási nyereséget illesztések ütemezésével a térkép fázisban (más néven "mapjoins") érhető el. A közvetlen Hive ehhez, amikor csak lehetséges, állítsa be:
    
        set hive.auto.convert.join=true;
 
-3. **A Hive-leképező számát**: közben Hadoop lehetővé teszi, hogy a felhasználó csökkentő számának beállítása, a száma leképező általában a felhasználó nem állítható. Egy trükköt, amely lehetővé teszi bizonyos fokú felügyeletet ezen a számon, hogy válassza ki a Hadoop változók *mapred.min.split.size* és *mapred.max.split.size* minden leképezés méretének tevékenység határozza meg:
+3. **A Hive-leképező számát**: Hadoop lehetővé teszi, hogy a felhasználó csökkentő száma, amíg a leképező száma általában van-e a felhasználó nem állítható be. Egy trükköt, amely lehetővé teszi bizonyos fokú felügyeletet ezen a számon, hogy válassza ki a Hadoop változók *mapred.min.split.size* és *mapred.max.split.size* minden leképezés méretének tevékenység határozza meg:
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    

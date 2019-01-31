@@ -11,19 +11,19 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 04fcb84b22e84060652b4a3743cb73e4543ee573
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/25/2019
+ms.openlocfilehash: 310d662782ff7d9713007b59f0d9b75620a03f5f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868446"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455099"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készlet erőforrások skálázása
 
 Ez a cikk ismerteti az Azure SQL Database rugalmas készletek és a készletezett adatbázisok rendelkezésre álló számítási és tárolási erőforrások méretezése.
 
-## <a name="vcore-based-purchasing-model-change-elastic-pool-storage-size"></a>Virtuálismag-alapú vásárlási modell: a rugalmas készlet tárolási méretének módosítása
+## <a name="vcore-based-purchasing-model-change-elastic-pool-storage-size"></a>Virtuálismag-alapú vásárlási modell: Rugalmas készlet tárolási méretének módosítása
 
 - A maximális méretkorlát legfeljebb tárolók kiépítésével:
 
@@ -35,7 +35,7 @@ Ez a cikk ismerteti az Azure SQL Database rugalmas készletek és a készletezet
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
-## <a name="vcore-based-purchasing-model-change-elastic-pool-compute-resources-vcores"></a>Virtuálismag-alapú vásárlási modell: módosítsa a rugalmas készlet számítási erőforrásokat (virtuális mag)
+## <a name="vcore-based-purchasing-model-change-elastic-pool-compute-resources-vcores"></a>Virtuálismag-alapú vásárlási modell: Módosítsa a rugalmas készlet számítási erőforrásokat (virtuális mag)
 
 Növelheti vagy csökkentheti a számítási méret egy rugalmas készlet igények kielégítéséhez használt erőforrás alapján a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), a [Azure CLI-vel](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), vagy a [ REST API-val](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 
@@ -44,7 +44,7 @@ Növelheti vagy csökkentheti a számítási méret egy rugalmas készlet igény
 - Módosíthatja a min virtuális magok adatbázisonkénti vagy maximális virtuális magok száma az időtartam általában öt perc vagy annál kisebb.
 - Amikor downsizing készlet virtuális maggal, használt készlet mérete kisebb, mint a megengedett maximális mérete a cél szolgáltatási szint és a készlet virtuális magok kell lennie.
 
-## <a name="dtu-based-purchasing-model-change-elastic-pool-storage-size"></a>DTU-alapú vásárlási modell: a rugalmas készlet tárolási méretének módosítása
+## <a name="dtu-based-purchasing-model-change-elastic-pool-storage-size"></a>DTU-alapú vásárlási modell: Rugalmas készlet tárolási méretének módosítása
 
 - Rugalmas készlet edtu-k díjszabása tartalmaz egy bizonyos mennyiségű tárolási további költségek nélkül. A csomagban foglalt adatmennyiségen felüli extra tárterület legfeljebb 250 GB-os fel 1 TB-os egységekben, majd, 256 GB 1 TB-os léptékben maximális méretkorlátot díjfizetés mellett bővítheti. Belefoglalt tárterület összegek és a maximális méret korlátok [rugalmas készlet: tárterületet és számítási méretek](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
 - Extra tárterület rugalmas készletek bővítheti a maximális méret használatával növelje a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), a [Azure CLI-vel](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), vagy a [REST API-val ](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
@@ -53,7 +53,7 @@ Növelheti vagy csökkentheti a számítási méret egy rugalmas készlet igény
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
-## <a name="dtu-based-purchasing-model-change-elastic-pool-compute-resources-edtus"></a>DTU-alapú vásárlási modell: módosítsa a rugalmas készlet számítási erőforrásokat (edtu-k)
+## <a name="dtu-based-purchasing-model-change-elastic-pool-compute-resources-edtus"></a>DTU-alapú vásárlási modell: Módosítsa a rugalmas készlet számítási erőforrásokat (edtu-k)
 
 Növelheti vagy csökkentheti a igények kielégítéséhez használt erőforrás alapján rugalmas készletek számára elérhető erőforrások a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), a [Azure CLI-vel](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), vagy a [ REST API-val](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 

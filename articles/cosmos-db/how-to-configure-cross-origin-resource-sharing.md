@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2018
 ms.author: dech
-ms.openlocfilehash: 08cd8b332a34075d8e2f939aa9015aa1b0a33a07
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 689b0bb08e300efc7c5e93dbf346040b82a7c52d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036154"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468478"
 ---
-# <a name="cross-origin-resource-sharing-cors-in-azure-cosmos-db"></a>Eltérő eredetű erőforrások megosztása (CORS) az Azure Cosmos DB 
+# <a name="configure-cross-origin-resource-sharing-cors"></a>Eltérő eredetű erőforrások megosztása (CORS) konfigurálása 
 
 Eltérő eredetű erőforrások megosztása (CORS) egy HTTP-funkció, amely lehetővé teszi egy adott tartományban futó webes alkalmazás egy másik tartományban lévő erőforrások eléréséhez. Webböngészők azonoseredet-, amely megakadályozza az API-k egy másik tartományban származó weblap néven ismert biztonsági korlátozással akadályozzák meg. Azonban a CORS biztonságos megoldást nyújt, hogy a forrástartomány API-k hívásához egy másik tartományban található. Fő SQL API-t az Azure Cosmos DB mostantól támogatja az eltérő eredetű erőforrások megosztása (CORS) a "allowedOrigins" fejléc használatával. Miután engedélyezte a CORS-támogatás az Azure Cosmos-fiókja, csak a hitelesített kérelmeket meghatározni, hogy azok a megadott szabályok szerint engedélyezettek értékeli ki.
 

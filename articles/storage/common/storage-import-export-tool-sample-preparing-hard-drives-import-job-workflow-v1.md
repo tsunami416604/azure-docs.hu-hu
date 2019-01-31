@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: ae792df428d897277e15df9db3ff6f99a5b8859e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: e183ed5ecda3053ed052952f4db5adfb016bfa68
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527288"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459045"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére
 Ez a témakör végigvezeti a meghajtók előkészítése importálási feladatokhoz teljes folyamatán.  
@@ -24,7 +24,7 @@ Ebben a példában a következő adatokat importál nevű ablak Azure storage-fi
 |--------------|-----------------|  
 |H:\Video|Gyűjteménye, videók, a teljes 5 TB.|  
 |H:\Photo|Egy gyűjtemény fényképek, összesen 30 GB.|  
-|K:\Temp\FavoriteMovie.ISO|A Blu-ray™ lemezképét, 25 GB.|  
+|K:\Temp\FavoriteMovie.ISO|A Blu-Ray™ disk image, 25 GB.|  
 |\\\bigshare\john\music|Letilthatja a zenei fájlok egy hálózati megosztáson, összesen 10 GB-os gyűjteménye.|  
   
 Az importálási feladat ezeket az adatokat importál a storage-fiókban a következő helyre:  
@@ -88,7 +88,7 @@ Az egyes tulajdonságok is beállíthat a `FavoriteMovie.ISO` blob:
   
 -   **Content-Type:** application/octet-stream  
   
--   **Tartalom-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ ==  
+-   **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ==  
   
 -   **A Cache-Control:** no-cache  
   
@@ -169,4 +169,4 @@ Miután elvégezte a másolási munkamenetek, a másolási számítógép bontsa
 ## <a name="next-steps"></a>További lépések
 
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [Használt gyakori parancsok gyors áttekintése](../storage-import-export-tool-quick-reference-v1.md) 
+* [Használt gyakori parancsok gyors áttekintése](../storage-import-export-tool-quick-reference-v1.md) 

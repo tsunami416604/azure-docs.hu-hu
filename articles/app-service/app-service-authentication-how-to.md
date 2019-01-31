@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f3e30309b230ec44ddf39648b943f3f76dc7805d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 34902016578d92847bd83a7dede8ef73bb640b3e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722651"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301577"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service speciális használata
 
@@ -176,15 +176,15 @@ Az Ügyfélkód (például egy mobilalkalmazás vagy a böngészőben JavaScript
 > [!NOTE]
 > Hozzáférési jogkivonatok olyan eléréséhez a felhőszolgáltatók erőforrásainak, így ezek meg adva, csak akkor, ha a egy ügyfélkulcsot a szolgáltató konfigurálhat. Frissítési biztonsági jogkivonat beszerzése megtekintéséhez lásd: [hozzáférési jogkivonatok Frissítésérőt](#refresh-access-tokens).
 
-## <a name="refresh-access-tokens"></a>Hozzáférési jogkivonatok frissítése
+## <a name="refresh-identity-provider-tokens"></a>Identitásból szolgáltató frissítése
 
-Amikor a szolgáltató hozzáférési jogkivonat lejár, hitelesítse magát újra a felhasználónak kell. Elkerülheti a jogkivonat lejárati azáltal, hogy egy `GET` hívása a `/.auth/refresh` végpont az alkalmazás. Meghívni, az App Service automatikusan frissül a jogkivonat-tároló a hitelesített felhasználó számára a hozzáférési jogkivonatokat. A kód által jogkivonatokat későbbi kérelmeket tokenekhez frissülnek. Azonban a jogkivonat-frissítések esetében működik, a jogkivonat-tároló tartalmaznia kell [frissítési jogkivonatok](https://auth0.com/learn/refresh-tokens/) a szolgáltató. A frissítési tokenekhez módszer egyes szolgáltatók szerint van dokumentálva, de az alábbi lista röviden összefoglalva:
+Amikor a szolgáltató hozzáférési jogkivonat (nem a [tokenu relace](#extend-session-token-expiration-grace-period)) lejár, a felhasználó hitelesítse magát újra, mielőtt újra használni ezt a jogkivonatot kell. Elkerülheti a jogkivonat lejárati azáltal, hogy egy `GET` hívása a `/.auth/refresh` végpont az alkalmazás. Meghívni, az App Service automatikusan frissül a jogkivonat-tároló a hitelesített felhasználó számára a hozzáférési jogkivonatokat. A kód által jogkivonatokat későbbi kérelmeket tokenekhez frissülnek. Azonban a jogkivonat-frissítések esetében működik, a jogkivonat-tároló tartalmaznia kell [frissítési jogkivonatok](https://auth0.com/learn/refresh-tokens/) a szolgáltató. A frissítési tokenekhez módszer egyes szolgáltatók szerint van dokumentálva, de az alábbi lista röviden összefoglalva:
 
 - **Google**: Hozzáfűzése egy `access_type=offline` lekérdezési karakterlánc paraméter, a `/.auth/login/google` API-hívás. A Mobile Apps SDK használata esetén is hozzáadhat a paraméter az egyik a `LogicAsync` túlterheléssel (lásd: [Google frissítési jogkivonatok](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: Frissítési biztonsági jogkivonat nem biztosít. Hosszú élettartamú jogkivonatok 60 nap múlva megszűnik (lásd: [Facebook lejárati és hozzáférési jogkivonatok bővítmény](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter-**: Hozzáférési jogkivonatok nem jár le (lásd: [OAuth – gyakori kérdések Twitter](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
+- **Twitter**: Hozzáférési jogkivonatok nem jár le (lásd: [OAuth – gyakori kérdések Twitter](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
 - **Microsoft-fiók**: Amikor [konfigurálása a Microsoft-fiók hitelesítési beállításai](configure-authentication-provider-microsoft.md), jelölje be a `wl.offline_access` hatókör.
-- **Az Azure Active Directory**: A [ https://resources.azure.com ](https://resources.azure.com), tegye a következőket:
+- **Azure Active Directory**: A [ https://resources.azure.com ](https://resources.azure.com), tegye a következőket:
     1. A lap tetején válassza **olvasási/írási**.
     2. A bal oldali böngészőben navigáljon **előfizetések** > **_\<előfizetés\_neve_**   >  **resourceGroups** > _**\<erőforrás\_csoport\_neve >**_   >  **szolgáltatók** > **Microsoft.Web** > **helyek** > _**\<alkalmazás \_neve >**_ > **config** > **authsettings**. 
     3. Kattintson a **Szerkesztés** gombra.
@@ -213,9 +213,9 @@ function refreshTokens() {
 
 Ha a felhasználó visszavonja az alkalmazáshoz, a hívás jogosultságaitól `/.auth/me` sikertelen lehet a `403 Forbidden` választ. Diagnosztizálhatja a hibákat, ellenőrizze a részleteket az alkalmazásnaplókat.
 
-## <a name="extend-session-expiration-grace-period"></a>Kiterjesztheti a munkamenet lejárata türelmi időszak
+## <a name="extend-session-token-expiration-grace-period"></a>Munkamenet-jogkivonat lejárati türelmi időszak kiterjesztése
 
-Egy hitelesített munkamenet lejárata után nincs 72 órás türelmi időszak alapértelmezés szerint. A türelmi időszakon belül akkor jogosult-e a munkamenetcookie-t vagy az App Service-szel tokenu relace frissítése anélkül, hogy a felhasználó ismételt hitelesítése. Csak hívása `/.auth/refresh` amikor a munkamenetcookie-t vagy a munkamenet-jogkivonat érvénytelenné válik, és nem kell saját kezűleg jogkivonat lejárati nyomon követéséhez. Le nem telik a 72 órás türelmi időszak után a felhasználó jelentkezzen be újra egy érvényes munkamenetcookie-t vagy a munkamenet-jogkivonat beszerzése.
+A hitelesített munkamenet 8 óra múlva lejár. Egy hitelesített munkamenet lejárata után nincs 72 órás türelmi időszak alapértelmezés szerint. A türelmi időszakon belül akkor jogosult-e az App Service munkamenet-jogkivonat frissítésére anélkül, hogy a felhasználó ismételt hitelesítése. Csak hívása `/.auth/refresh` amikor a munkamenet-jogkivonat érvénytelenné válik, és nem kell saját kezűleg jogkivonat lejárati nyomon követéséhez. Le nem telik a 72 órás türelmi időszak után a felhasználó jelentkezzen be újra egy érvényes munkamenet-jogkivonat beszerzése.
 
 72 óra nem elegendő időt, ha a lejárati időszak bővítheti. Kiterjeszti a hosszabb időn keresztül a lejárati lehet (például amikor egy hitelesítési tokent kiszivárgott vagy ellopják) jelentős biztonsági szempontokat. Ezért érdemes meghagyhatja az alapértelmezett, 72 óra vagy a legkisebb érték a kiterjesztés idő beállítása.
 

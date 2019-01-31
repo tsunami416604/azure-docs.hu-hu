@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be257b49e5ad5acc47a6daeec203e8513995e52e
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: be953621dbadee74361b2170c2a532cfec6ef77a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390944"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477854"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage-ból
 
@@ -25,12 +25,12 @@ Ez a cikk bemutatja az általános Hive-lekérdezések, amelyek Hive táblákat 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk feltételezi, hogy rendelkezik:
 
-* Létrehozott egy Azure storage-fiókot. Ha utasításokat van szüksége, tekintse meg [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
-* A HDInsight szolgáltatással egyéni Hadoop-fürt kiépítése.  Ha utasításokat van szüksége, tekintse meg [testreszabása az Azure HDInsight Hadoop-fürtök fejlett analitikai](customize-hadoop-cluster.md).
-* A fürthöz engedélyezett távelérési jelentkezett be, és a Hadoop parancssori konzolt megnyitva. Ha utasításokat van szüksége, tekintse meg [a fő csomópont, Hadoop-fürt eléréséhez](customize-hadoop-cluster.md).
+* Létrehozott egy Azure storage-fiókot. Ha utasításokat van szüksége, tekintse meg [tudnivalók az Azure storage-fiókok](../../storage/common/storage-introduction.md).
+* A HDInsight szolgáltatással egyéni Hadoop-fürt kiépítése.  Ha utasításokat van szüksége, tekintse meg [telepítő HDInsight-fürtök](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
+* A fürthöz engedélyezett távelérési jelentkezett be, és a Hadoop parancssori konzolt megnyitva. Ha utasításokat van szüksége, tekintse meg [kezelése az Apache Hadoop-fürtök](../../hdinsight/hdinsight-administer-use-portal-linux.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Adatfeltöltés az Azure blob storage-bA
-Ha létrehozott egy Azure virtuális gépen található utasításokat követve [állítsa be az Azure virtuális gép fejlett analitikai](../data-science-virtual-machine/setup-virtual-machine.md), a parancsfájl kell letöltötte a *C:\\felhasználók \\ \<felhasználónév\>\\dokumentumok\\Data Science parancsfájlok* könyvtárban a virtuális gépen. A Hive-lekérdezések csak akkor van szükség, hogy csatlakoztassa a saját adatok séma és az Azure blob storage konfigurációs beküldésre kell a megfelelő mezőkbe.
+Ha létrehozott egy Azure virtuális gépen található utasításokat követve [állítsa be az Azure virtuális gép fejlett analitikai](../../machine-learning/data-science-virtual-machine/overview.md), a parancsfájl kell letöltötte a *C:\\felhasználók \\ \<felhasználónév\>\\dokumentumok\\Data Science parancsfájlok* könyvtárban a virtuális gépen. A Hive-lekérdezések csak akkor van szükség, hogy csatlakoztassa a saját adatok séma és az Azure blob storage konfigurációs beküldésre kell a megfelelő mezőkbe.
 
 Feltételezzük, hogy az adatokat a Hive-táblákat szerepel egy **tömörítetlen** táblázatos formátumú, és az, hogy az adatokat fel lett töltve az alapértelmezett (vagy egy további) a tárfiók a Hadoop-fürt által használt tároló.
 
@@ -38,7 +38,7 @@ Ha meg szeretné gyakorlat a **NYC Taxi Útadatok**, kell tennie:
 
 * **Töltse le** az 24 [NYC Taxi Útadatok](http://www.andresmh.com/nyctaxitrips) (12 Útadatokat tartalmazó fájlt, és 12 diszkont fájlok),
 * **Csomagolja ki** tartalmazó .csv fájlt, az összes fájlt, majd
-* **Töltse fel** őket az Azure storage-fiók leírt eljárást által létrehozott alapértelmezett (vagy megfelelő tárolót) a [testreszabása az Azure HDInsight Hadoop-fürtök fejlett analitikai folyamat és technológia](customize-hadoop-cluster.md)témakör. A folyamat a .csv-fájlok feltöltése az alapértelmezett tároló a tárfiókban található ezen [oldal](hive-walkthrough.md#upload).
+* **Töltse fel** őket az alapértelmezett (vagy megfelelő tárolót) az Azure Storage-fiók; ilyen fiókja jelenik meg a vonatkozó beállítások [az Azure storage, Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-blob-storage.md) témakör. A folyamat a .csv-fájlok feltöltése az alapértelmezett tároló a tárfiókban található ezen [oldal](hive-walkthrough.md#upload).
 
 ## <a name="submit"></a>Hogyan lehet elküldeni a Hive-lekérdezések
 Hive-lekérdezések használatával küldheti:

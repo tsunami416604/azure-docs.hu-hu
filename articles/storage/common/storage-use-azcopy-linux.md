@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 79aa9cd3e634238702419d01650c7ef29c4dbb95
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 1059dec80dcca80380b58aa8057162679496adc6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242025"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467373"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Adatok áthelyezése az Azcopyval Linux rendszeren
 
@@ -92,7 +92,7 @@ azcopy --source <source> --destination <destination> [Options]
 
 Az alábbi példák bemutatják az adatok másolása a és a Microsoft Azure-Blobok és fájlok a különböző forgatókönyvekben. Tekintse meg a `azcopy --help` menü egyes mintában használt paraméterek részletes leírását.
 
-## <a name="blob-download"></a>BLOB: letöltése
+## <a name="blob-download"></a>Blob: Letöltés
 ### <a name="download-single-blob"></a>Letölt egy blobot
 
 ```azcopy
@@ -211,7 +211,7 @@ azcopy \
     --exclude-older
 ```
 
-## <a name="blob-upload"></a>BLOB: feltöltése
+## <a name="blob-upload"></a>Blob: Feltöltés
 ### <a name="upload-single-file"></a>Egyetlen fájl feltöltése
 
 ```azcopy
@@ -346,7 +346,7 @@ azcopy \
 ### <a name="customizing-the-mime-content-type-mapping"></a>A MIME-tartalom típusa leképezés testreszabása
 Az AzCopy egy fájl kiterjesztése tartalomtípushoz térképét tartalmazó konfigurációs fájlt használ. Testre szabhatja ezt a hozzárendelést, és adjon hozzá új párokat. A leképezés a következő helyen található:  ```/usr/lib/azcopy/AzCopyConfig.json```
 
-## <a name="blob-copy"></a>BLOB: másolása
+## <a name="blob-copy"></a>Blob: Másolás
 ### <a name="copy-single-blob-within-storage-account"></a>Egyetlen a tárfiókban található blobba másolja.
 
 ```azcopy
@@ -420,7 +420,7 @@ azcopy \
 
 `--sync-copy` További kimenő forgalmi költségek képest aszinkron példányt hozhat létre. Az ajánlott módszer, hogy ez a beállítás az Azure virtuális Gépen, és a forrás tárfiókban kimenő forgalmi költségek elkerülése érdekében ugyanabban a régióban található.
 
-## <a name="file-download"></a>Fájl: letöltése
+## <a name="file-download"></a>Fájl: Letöltés
 ### <a name="download-single-file"></a>Egyetlen fájl letöltése
 
 ```azcopy
@@ -444,7 +444,7 @@ azcopy \
 
 Vegye figyelembe, hogy a rendszer nem tölti le minden olyan üres mappát.
 
-## <a name="file-upload"></a>Fájl: feltöltése
+## <a name="file-upload"></a>Fájl: Feltöltés
 ### <a name="upload-single-file"></a>Egyetlen fájl feltöltése
 
 ```azcopy
@@ -477,7 +477,7 @@ azcopy \
     --recursive
 ```
 
-## <a name="file-copy"></a>Fájl: másolása
+## <a name="file-copy"></a>Fájl: Másolás
 ### <a name="copy-across-file-shares"></a>Másolja a fájlmegosztások között
 
 ```azcopy
@@ -715,10 +715,10 @@ További, az Azure Storage szolgáltatással és az AzCopyval kapcsolatos adatok
 ### <a name="azure-storage-blog-posts"></a>Az Azure Storage-blogbejegyzések:
 * [Az AzCopy a Linuxos előzetes bejelentése](https://azure.microsoft.com/blog/announcing-azcopy-on-linux-preview/)
 * [Introducing Azure Storage adatátviteli könyvtár Adatelőnézet](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [Az AzCopy: Bemutatkozik a szinkron másolása és testre szabott tartalom típusa](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [Az AzCopy: Általános rendelkezésre állás az AzCopy 3.0 és az előzetes kiadásban az AzCopy 4.0 támogatásával, tábla és fájl bejelentése](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [AzCopy: Bemutatkozik a szinkron másolása és testre szabott tartalom típusa](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
+* [AzCopy: Általános rendelkezésre állás az AzCopy 3.0 bejelentése, valamint előzetes támogatásával, tábla és fájl AzCopy 4.0-s verziója](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
 * [AzCopy: Nagyméretű példány esetekre optimalizált](https://go.microsoft.com/fwlink/?LinkId=507682)
 * [AzCopy: Írásvédett georedundáns tárolás támogatása](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [Az AzCopy: Adatátvitel újraindítható üzemmódban és SAS-jogkivonat](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [Az AzCopy: Kereszt-fiók másolás Blob használatával](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [Az AzCopy: Azure-Blobok feltöltése/letöltése fájlok](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+* [AzCopy: Adatok áthelyezése az újraindítható üzemmódban és SAS-jogkivonat](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [AzCopy: A Blob másolásához cross-fiók használatával](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [AzCopy: Fájlok feltöltése/letöltése az Azure-Blobok](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

@@ -1,6 +1,6 @@
 ---
-Cím: Modell teljesítmény titleSuffix kiértékelése: Azure Machine Learning Studio description: Ez a cikk bemutatja, hogyan lehet egy modellt az Azure Machine Learning Studióban teljesítményét értékeli, és amely röviden elmagyarázza, a metrikák elérhető ez a feladat biztosít.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Modell teljesítmény titleSuffix kiértékelése: Azure Machine Learning Studio description: Ez a cikk bemutatja, hogyan lehet egy modellt az Azure Machine Learning Studióban teljesítményét értékeli, és amely röviden elmagyarázza, a metrikák elérhető ez a feladat biztosít.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---

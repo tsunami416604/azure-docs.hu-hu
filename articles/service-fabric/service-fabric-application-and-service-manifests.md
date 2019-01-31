@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: fa3c94854f8f67da9caa2955f5c62581843e39c8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9e8ca50970ff4a845174d7061b60a88a8f5ce578
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156105"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465623"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-alkalmazás- és szolgáltatásjegyzékek
 Ez a cikk bemutatja, hogyan történik a Service Fabric-alkalmazásokat és szolgáltatásokat, hogy meghatározott és verziószámmal ApplicationManifest.xml és ServiceManifest.xml fájlokat használja.  További részletes példák: [alkalmazás és a service manifest példák](service-fabric-manifest-examples.md).  Ezek a jegyzékfájlok XML-séma leírása itt található [ServiceFabricServiceModel.xsd séma dokumentáció](service-fabric-service-model-schema.md).
@@ -96,7 +96,7 @@ A SetupEntryPoint konfigurálásáról további információkért lásd: [a ház
 </Settings>
 ```
 
-**Erőforrások**, például a végpontok, amelyekkel a szolgáltatás által deklarált vagy módosítani kell a lefordított kód módosítása nélkül.  A szolgáltatásjegyzék megadott erőforrásokhoz való hozzáférés szabályozható a **SecurityGroup** az alkalmazásjegyzékben.  Ha egy **végpont** erőforrás van definiálva a szolgáltatásjegyzékben, Service Fabric rendeli hozzá a portokat a fenntartott tartománya, ha a port nincs megadva explicit módon.  Tudjon meg többet [megadásával vagy a végpont erőforrások felülírása](service-fabric-service-manifest-resources.md).
+A Service Fabric-szolgáltatás **végpont** egy Service Fabric-erőforrás; példa A Service Fabric erőforrás lehet deklarált vagy módosítani a lefordított kód módosítása nélkül. A Service Fabric-erőforrások a szolgáltatásjegyzékben megadott hozzáférést szabályozható a **SecurityGroup** az alkalmazásjegyzékben. A szolgáltatásjegyzék-végponti erőforrás van definiálva, amikor a Service Fabric rendeli hozzá a portokat a fenntartott tartománya, ha a port nincs megadva explicit módon. Tudjon meg többet [megadásával vagy a végpont erőforrások felülírása](service-fabric-service-manifest-resources.md).
 
 
 <!--

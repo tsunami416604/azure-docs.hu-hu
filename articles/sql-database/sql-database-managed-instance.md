@@ -1,6 +1,6 @@
 ---
 title: Az Azure SQL Database felügyelt példány – áttekintés |} A Microsoft Docs
-description: Ez a témakör ismerteti az Azure SQL Database felügyelt példányába, és azt ismerteti, hogyan működik, és hogyan eltér az Azure SQL Database egy adatbázis.
+description: Ez a témakör ismerteti az Azure SQL Database felügyelt példányába, és bemutatja, hogyan működik, és hogyan eltér az Azure SQL Database önálló vagy készletezett adatbázis.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 2807e989436aa80fa812b337340db8cb534b2b28
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/25/2019
+ms.openlocfilehash: ac9a7c081515b35348d10a2968b10647af29ef61
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994759"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465707"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Használja az SQL Database felügyelt példánya, közel 100 %-os kompatibilitással és a virtuális hálózatokkal
 
@@ -34,7 +34,7 @@ Az Azure SQL Database felügyelt példánya a szeretne áttelepítést végezni 
 
 Általános rendelkezésre állás a felügyelt példány célja, hogy közel 100 %-os támadási kompatibilitási legújabb verziójával a helyszíni SQL Server egy előkészített kiadási csomag kézbesítése.
 
-Dönthet arról, hogy az Azure SQL Database önálló adatbázisok, Azure SQL Database felügyelt példánya és a tárolt virtuális gép lásd az SQL Server IaaS között [hogyan választható ki a megfelelő verziót az SQL Server Azure-felhőben](sql-database-paas-vs-sql-server-iaas.md).
+Annak eldöntéséhez, Azure SQL Database önálló adatbázisok, készletezett adatbázis, a felügyelt példány és a virtuális gépen futó SQL Server között, lásd: [hogyan választható ki a megfelelő verziót az SQL Server Azure-felhőben](sql-database-paas-vs-sql-server-iaas.md).
 
 ## <a name="key-features-and-capabilities"></a>Legfontosabb funkciói és képességei
 
@@ -65,7 +65,7 @@ Felügyelt példány legfontosabb funkcióit az alábbi táblázatban láthatók
 | Portal-támogatás | Igen|
 | Beépített integrációs szolgáltatás (SSIS) | Nem – SSIS része [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Beépített Analysis Service (SSAS) | Nem – SSAS elkülönül [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
-| Beépített jelentéskészítési szolgáltatás (SSRS) | Nem – a Power bi-ban vagy az SSRS IaaS használata |
+| Built-in Reporting Service (SSRS) | Nem – a Power bi-ban vagy az SSRS IaaS használata |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
@@ -185,7 +185,7 @@ A migrálási megközelítés használ az SQL biztonsági másolatokat az Azure 
 - URL-címről visszaállítási kapcsolatos információkért lásd: [natív VISSZAÁLLÍTÁSA URL-címről](sql-database-managed-instance-migrate.md#native-restore-from-url).
 
 > [!IMPORTANT]
-> Felügyelt példány biztonsági mentések csak állítható vissza egy másik, a felügyelt példányhoz. Ezek nem állítható vissza egy helyszíni SQL Server vagy egy Azure SQL Database logikai kiszolgálón egyetlen vagy készletezett adatbázis.
+> Felügyelt példány biztonsági mentések csak állítható vissza egy másik, a felügyelt példányhoz. Ezek nem állítható vissza egy helyszíni SQL Server- vagy egy önálló adatbázis és rugalmas készlethez.
 
 ### <a name="data-migration-service"></a>Data Migration Service
 
@@ -210,7 +210,7 @@ Felügyelt példány előnyei nem mindig felfelé-elejétől számított a felh�
 - Felügyelt példány nem engedélyezi a teljes fizikai elérési út megadásával, így az összes megfelelő forgatókönyv kell másképp támogatja: Adatbázis VISSZAÁLLÍTÁSA nem támogatja a WITH MOVE DB létrehozása nem, itt engedélyezheti, fizikai elérési útját, az Azure Blobszolgáltatása révén a TÖMEGES Beszúrás works csak stb.
 - Felügyelt példány által támogatott [Azure AD-hitelesítés](sql-database-aad-authentication.md) felhőalapú alternatív Windows-hitelesítés.
 - Felügyelt példány automatikusan kezeli a XTP fájlcsoport és fájlok In-Memory OLTP objektumokat tartalmazó adatbázisok
-- Felügyelt példány támogatja-e az SQL Server Integration Services (SSIS) és a gazdagép SSIS-katalógus (SSISDB), amely tárolja az SSIS-csomagokat is, de ezeket a rendszer végrehajtja a egy felügyelt Azure-SSIS integrációs modul (IR) az Azure Data Factory (ADF), lásd: [létrehozása Az Azure-SSIS integrációs modul az ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Hasonlítsa össze az SSIS-funkciók az SQL Database felügyelt példány, lásd: [hasonlítsa össze az SQL Database logikai kiszolgáló és a felügyelt példány](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance).
+- Felügyelt példány támogatja-e az SQL Server Integration Services (SSIS) és a gazdagép SSIS-katalógus (SSISDB), amely tárolja az SSIS-csomagokat is, de ezeket a rendszer végrehajtja a egy felügyelt Azure-SSIS integrációs modul (IR) az Azure Data Factory (ADF), lásd: [létrehozása Az Azure-SSIS integrációs modul az ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Hasonlítsa össze az SSIS-funkciók az SQL Database felügyelt példány, lásd: [hasonlítsa össze az Azure SQL Database önálló adatbázisok és rugalmas készletek és a felügyelt példány](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance).
 
 ### <a name="managed-instance-administration-features"></a>Felügyelt példány felügyeleti funkciók
 
@@ -225,10 +225,10 @@ Az alábbi táblázat Transact SQL-n keresztül elérhető számos tulajdonság,
 
 |Tulajdonság|Érték|Megjegyzés|
 |---|---|---|
-|`@@VERSION`|A Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ez ugyanaz, mint az SQL Database értéke.|
+|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ez ugyanaz, mint az SQL Database értéke.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Ez ugyanaz, mint az SQL Database értéke.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték a felügyelt példány egyedileg azonosítja.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Példány teljes DNS-név a következő formátumban:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, ahol `<instanceName>` az ügyfél által megadott név közben `<dnsPrefix>` a neve, ami garantálja az globális DNS neve egyedi-e automatikusan létrehozott része ("wcus17662feb9ce98", például)|Példa: saját-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Példány teljes DNS-név a következő formátumban:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, ahol `<instanceName>` az ügyfél által megadott név közben `<dnsPrefix>` a neve, ami garantálja az globális DNS neve egyedi-e automatikusan létrehozott része ("wcus17662feb9ce98", például)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>További lépések
 

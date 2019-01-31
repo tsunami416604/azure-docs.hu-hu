@@ -1,6 +1,6 @@
 ---
 title: Csatlakozás Windows Server-rendszerű virtuális géphez | Microsoft Docs
-description: Megtudhatja, hogyan csatlakozhat és jelentkezhet be egy Windows virtuális gépre az Azure Portal és a Resource Manager-alapú üzemi modell használatával.
+description: Ismerje meg, hogyan csatlakozhat, és jelentkezzen be Windows virtuális gép az Azure portal és a Resource Manager üzemi modell használatával.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: fdd0c82f64b55c801ef04f1d533ed91683a07f9a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4bfb17a7c50e97ae71908f052f7f38110cf376df
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867069"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296885"
 ---
-# <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Csatlakozás és bejelentkezés Windows rendszert futtató Azure virtuális gépre
-Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) munkamenet elindításához egy Windows asztali rendszerről. Először csatlakozzon a virtuális gépet, és jelentkezzen be.
+# <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Hogyan csatlakozhat, és jelentkezzen be az Azure Windows rendszerű virtuális gép
+Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) munkamenet elindításához egy Windows asztali rendszerről. Először csatlakozzon a virtuális gépet, és jelentkezzen.
 
 Egy Windows virtuális Géphez való csatlakozáshoz Mac rendszeren, akkor telepítenie kell egy RDP-ügyfelet Mac például [Microsoft távoli asztal](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417).
 
@@ -32,9 +32,9 @@ Egy Windows virtuális Géphez való csatlakozáshoz Mac rendszeren, akkor telep
 2. A bal oldali menüben válassza ki a **virtuális gépek**.
 3. Válassza ki a virtuális gépet a listából.
 4. A virtuális gép az oldal felső részén válassza ki a **Connect**.
-2. Az a **csatlakozhat a virtuális gép** lapon válassza ki a megfelelő beállításokat, és válassza **töltse le az RDP-fájl**.
+2. Az a **csatlakozhat a virtuális gép** lapon, válassza ki a megfelelő IP-címet és portot. A legtöbb esetben az alapértelmezett IP-címet és portot kell használni. Válassza ki **töltse le az RDP-fájl**töltse le az RDP-fájl **. Ha a virtuális gépen egy just-in-time-szabályzat beállítása, először válassza ki a **hozzáférés kérése** gombra kattintva kérhet hozzáférést az RDP-fájljának letöltése előtt. A just-in-time házirenddel kapcsolatos további információkért lásd: [kezelése virtuálisgép-hozzáférés az igény szerinti szabályzat](../../security-center/security-center-just-in-time.md).
 2. Nyissa meg a letöltött RDP-fájlt, és válassza ki **Connect** amikor a rendszer kéri. 
-2. Megjelenik egy figyelmeztetés, amely az .rdp fájl közzétevője ismeretlen. Ez a várható eredmény. Az a **távoli asztali kapcsolat** ablakban válassza **Connect** folytatásához.
+2. Egy figyelmeztetés fog megjelenni, amely a `.rdp` fájl közzétevője ismeretlen. Ez a várható eredmény. Az a **távoli asztali kapcsolat** ablakban válassza **Connect** folytatásához.
    
     ![Képernyőkép az ismeretlen közzétevőre vonatkozó figyelmeztetésről.](./media/connect-logon/rdp-warn.png)
 3. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Adja meg a hitelesítő adatokat egy fiók a virtuális gépen, majd **OK**.
@@ -43,7 +43,7 @@ Egy Windows virtuális Géphez való csatlakozáshoz Mac rendszeren, akkor telep
    
     **Tartományhoz csatlakoztatott virtuális gép**: Ha a virtuális Gépet egy tartományhoz tartozik, adja meg a felhasználónevet a következő formátumban *tartomány*&#92;*felhasználónév*. A fióknak szerepelnie kell a Rendszergazdák csoportban, vagy távoli hozzáférési jogosultságokkal kell rendelkeznie a virtuális géphez.
    
-    **Tartományvezérlő**: Ha a virtuális gép egy tartományvezérlő, írja be a felhasználónevet és a egy tartományi rendszergazdai fiók jelszavát ahhoz a tartományhoz.
+    **Tartományvezérlő**: Ha a virtuális gép egy tartományvezérlő, adja meg a felhasználónevet és a egy tartományi rendszergazdai fiók jelszavát ahhoz a tartományhoz.
 4. Válassza ki **Igen** a virtuális gép identitásának ellenőrzéséhez és a bejelentkezés befejezéséhez.
    
    ![Képernyőkép a virtuális gép identitásának ellenőrzésére vonatkozó üzenetről.](./media/connect-logon/cert-warning.png)

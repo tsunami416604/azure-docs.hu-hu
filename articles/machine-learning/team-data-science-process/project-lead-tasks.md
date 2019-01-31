@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 39e8c5b8dab33ba95b34c4edb9d0a994bc8ec6dc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d574f62a51b8aed7acbd1ba7f8b427395add854a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135164"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454130"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>A projekthez tartozó feladatok vezethet a a csoportos adatelemzési folyamat
 
@@ -84,15 +84,15 @@ Az előfeltételek teljesülnek, a hozzárendelve a csoport kezelőjének ismert
 
 ## <a name="2-seed-the-dsproject1-project-repository"></a>2. A DSProject1 kezdőérték projektadattárat
 
-Az itt feladata a Kezdőérték a **DSProject1** projektadattárat (R5) a projekt sablon adattárból (R3). A kiindulási eljárás a könyvtárak D3 és D5 használja a helyi dsvm-hez a köztes átmeneti tárolási helyként. Összefoglalva, a kiindulási elérési út: R3 -> D3 -> D5 R5 ->.
+Az itt feladata a Kezdőérték a **DSProject1** projektadattárat (R5) a projekt sablon adattárból (R3). A kiindulási eljárás a könyvtárak D3 és D5 használja a helyi dsvm-hez a köztes átmeneti tárolási helyként. Összefoglalva a kiindulási elérési út: R3 -> D3 -> D5 -> R5.
 
 Ha testre kell szabnia a **DSProject1** projektadattárat megfelelni egy adott projekt igények kielégítéséhez, így tesz, a következő eljárás az utolsó előtti lépésben. Itt található egy összefoglaló az tartalmának kezdőszámát használt lépéseket a **DSProject1** projektadattárat. Az egyes lépések a struktúrát a kiindulási eljárásban felelnek meg:
 
 - Klónozás projekt sablontár helyi könyvtárba: csapat R3 - -> helyi D3 klónozni.
 - Klónozás DSProject1 tárház egy helyi könyvtárba: csapat R5 - -> helyi D5 klónozni.
-- Másolja a klónozott projekt sablon tartalmat a DSProject1 adattár helyi klónjával: D3 - tartalom -> D5 másolva.
+- Másolja a klónozott projekt tartalmának ellenőrzése DSProject1 adattár helyi klónjával:  D3 - tartalom -> D5 másolva.
 - (Nem kötelező) Testreszabás helyi D5.
-- Helyi DSProject1 tartalom leküldése csapat tárházakba: D5 - csapat R5 -> hozzáadása tartalmát.
+- Küldje le a helyi DSProject1 tartalom csapata tárházak: D5 - tartalmak hozzáadása csapat R5 ->.
 
 
 ### <a name="clone-your-project-template-repository-r3-to-a-directory-d3-on-your-local-machine"></a>Klónozza a projekt sablontár (R3) a helyi számítógép könyvtárba (D3).

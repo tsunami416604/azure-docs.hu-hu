@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5c952370908919deb6531e0b175063dc2657ae98
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4d1c33480e408f892517cde6d42e103b34218f26
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870402"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459071"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API 3.0-s verzió
 
@@ -43,10 +43,10 @@ Kényszeríti a kérelem egy adott adatközpont kell kezelnie, módosítsa a kí
 
 |Leírás|Régió|Alap URL-cím|
 |:--|:--|:--|
-|Azure|Globális|  API.cognitive.microsofttranslator.com|
-|Azure|Észak-Amerika|   API-nam.cognitive.microsofttranslator.com|
-|Azure|Európa|  API-eur.cognitive.microsofttranslator.com|
-|Azure|Ázsia és a Csendes-óceáni térség|    API-apc.cognitive.microsofttranslator.com|
+|Azure|Globális|  api.cognitive.microsofttranslator.com|
+|Azure|Észak-Amerika|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Európa|  api-eur.cognitive.microsofttranslator.com|
+|Azure|Ázsia és a Csendes-óceáni térség|    api-apc.cognitive.microsofttranslator.com|
 
 
 ## <a name="authentication"></a>Hitelesítés
@@ -59,7 +59,7 @@ Három fejlécek előfizetését hitelesítés használatával. A táblázat az 
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Cognitive Services-előfizetés használata, a titkos kulcs átadásakor*.<br/>A Translator Text API-előfizetéséhez tartozó Azure titkos kulcs értéke.|
 |Engedélyezés|*Cognitive Services-előfizetés használata egy hitelesítési tokent átadásakor.*<br/>A tulajdonosi jogkivonat értéke: `Bearer <token>`.|
-|OCP-Apim-előfizetés-régió|*Használat a Cognitive Services teljes körű előfizetéssel egy teljes körű titkos kulcs átadásakor.*<br/>A régió, a teljes körű előfizetés értéke. Ezt az értéket nem kötelező, ha nem használ egy teljes körű előfizetéssel.|
+|Ocp-Apim-Subscription-Region|*Használat a Cognitive Services teljes körű előfizetéssel egy teljes körű titkos kulcs átadásakor.*<br/>A régió, a teljes körű előfizetés értéke. Ezt az értéket nem kötelező, ha nem használ egy teljes körű előfizetéssel.|
 
 ###  <a name="secret-key"></a>Titkos kulcs
 Az első lehetőség az, hogy hitelesítést végezni a `Ocp-Apim-Subscription-Key` fejléc. Egyszerűen adja meg a `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` fejlécet a kérelemhez.
@@ -109,7 +109,7 @@ Régió szükség a teljes körű Text API-előfizetésre.
 
 Standard hiba választ a név-érték pár nevű JSON-objektum `error`. Az érték akkor is egy JSON-tulajdonságokkal rendelkező objektum:
 
-  * `code`: A kiszolgáló által meghatározott hibakód.
+  * `code`: Kiszolgáló által meghatározott hibakód.
 
   * `message`: Egy karakterlánc, így a hiba emberek számára olvasható reprezentációját.
 
@@ -161,6 +161,6 @@ A hibakód egy 6 jegyű számot csoportba foglalása 3 számjegyből HTTP-állap
 | 408001| A kért egyéni fordítási rendszer még nem érhető el. Próbálkozzon újra néhány perc múlva.|
 | 415000| A Content-Type fejléc nem található vagy érvénytelen.|
 | 429000, 429001, 429002| A kiszolgáló elutasította a kérelmet, mert az ügyfél túl sok kérelmet küld. Kérelmek szabályozása elkerülése érdekében gyakoriságának csökkentése.|
-| 500 000 összeget| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse be a dátum/idő hiba, kérjen azonosító X-RequestId: válaszfejléc, és a kérelem fejlécében X-ClientTraceId ügyfél-azonosítója.|
+| 500000| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse be a dátum/idő hiba, kérjen azonosító X-RequestId: válaszfejléc, és a kérelem fejlécében X-ClientTraceId ügyfél-azonosítója.|
 | 503000| Szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra. Ha a hiba továbbra is fennáll, jelentse be a dátum/idő hiba, kérjen azonosító X-RequestId: válaszfejléc, és a kérelem fejlécében X-ClientTraceId ügyfél-azonosítója.|
 

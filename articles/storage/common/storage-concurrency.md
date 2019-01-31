@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
-ms.component: common
-ms.openlocfilehash: 25de4f28d7516f5c7830b24e4c999ceb855a7759
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: b9524f7aff7ae9de37835985787b5d4d9c3cf9b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242976"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478236"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>A párhuzamosság kezelése a Microsoft Azure Storage szolgáltatásban
 ## <a name="overview"></a>Áttekintés
@@ -45,7 +45,7 @@ Ez a folyamat röviden ismerteti a következőképpen történik:
 4. Ha a jelenlegi ETag-érték a BLOB nem található ETag címkével eltérő verzióval a **If-Match** feltételes fejléc a kérelemben, a szolgáltatás egy 412 hibát ad vissza az ügyfélnek. Ez azt jelzi, hogy az ügyfél számára, hogy egy másik folyamat frissítette a blob, mivel az ügyfél a lekérdezés.
 5. Ha a jelenlegi ETag-érték a BLOB nem található ETag címkével verzióval azonos verziójúnak a **If-Match** feltételes fejléc a kérelemben, a szolgáltatás elvégzi a kért műveletet, és frissíti az aktuális, megjelenítéséhez a rendszer létrehozta a BLOB ETag-érték egy új verziója.  
 
-Az alábbi C# (a Storage Ügyfélkódtár használatával 4.2.0) látható egy egyszerű példa bemutatja, hogyan hozhat létre egy **If-Match AccessCondition** , amely egy blobot, amely korábban vagy tulajdonságait szeretné elérni, az ETag-érték alapján beolvasott vagy beszúrni. Ezután a **AccessCondition** objektumot, amikor frissíti a blob: a **AccessCondition** objektumot ad hozzá a **If-Match** fejlécet a kérelemhez. Egy másik folyamat frissítette a blobot, ha a blobszolgáltatás egy HTTP 412 (előfeltétel nem teljesült) állapotüzenetet adja vissza. Letöltheti a teljes minta: [az Azure Storage felügyelete egyidejűségi](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
+Az alábbi C# (a Storage Ügyfélkódtár használatával 4.2.0) látható egy egyszerű példa bemutatja, hogyan hozhat létre egy **If-Match AccessCondition** , amely egy blobot, amely korábban vagy tulajdonságait szeretné elérni, az ETag-érték alapján beolvasott vagy beszúrni. Ezután a **AccessCondition** objektumot, amikor frissíti a blob: a **AccessCondition** objektumot ad hozzá a **If-Match** fejlécet a kérelemhez. Egy másik folyamat frissítette a blobot, ha a blobszolgáltatás egy HTTP 412 (előfeltétel nem teljesült) állapotüzenetet adja vissza. A teljes mintát Itt töltheti le: [Az Azure Storage használata az egyidejűség kezelése](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -89,9 +89,9 @@ A következő táblázat összefoglalja a tárolóművelet, mint például a fel
 | Tároló létrehozása |Igen |Nem |
 | A tároló tulajdonságainak beolvasása |Igen |Nem |
 | Tároló metaadatainak beolvasása |Igen |Nem |
-| Állítsa be a tároló metaadatai |Igen |Igen |
+| Set Container Metadata |Igen |Igen |
 | Tároló ACL lekérése |Igen |Nem |
-| ACL tároló beállítása |Igen |Igen (*) |
+| Set Container ACL |Igen |Igen (*) |
 | Tároló törlése |Nem |Igen |
 | Címbérlet-tárolók |Igen |Igen |
 | Blobok listázása |Nem |Nem |
@@ -111,7 +111,7 @@ A következő táblázat összefoglalja a blob-műveletek, például feltételes
 | A Blobbérlet (*) |Igen |Igen |
 | Snapshot Blob |Igen |Igen |
 | Blob másolása |Igen |Igen (a forrás- és blob) |
-| A Blob másolásához megszakítása |Nem |Nem |
+| Abort Copy Blob |Nem |Nem |
 | Delete Blob |Nem |Igen |
 | PUT letiltása |Nem |Nem |
 | PUT tiltólista |Igen |Igen |
@@ -126,7 +126,7 @@ Kizárólagos használatra blob zárolásához, szerezzen be egy [bérleti](http
 
 A bérletek engedélyezése különböző szinkronizálási stratégiák is támogatja, beleértve az exkluzív írási / olvasási, exkluzív írási megosztott / kizárólagos olvasási és írási megosztott / kizárólagos olvasási. Ahol a bérlet létezik a storage szolgáltatás érvényesíti exkluzív írási műveletek (put, beállítása és törlési műveletek) azonban biztosító kizárólagosságot az olvasási műveletek igényel a fejlesztő győződjön meg arról, hogy minden ügyfél alkalmazást használja a bérlet Azonosítóját, és egyszerre csak egy ügyfél rendelkezik egy érvényes a bérlet azonosítóját. Olvassa el, ne foglalja bele a bérlet azonosítója eredmény megosztott olvasási műveleteket.  
 
-Az alábbi C#-kódrészlet egy kizárólagos bérlet beszerzése egy BLOB 30 másodpercig, a blob tartalmának frissítése és majd a bérlet feloldása egy példát mutat be. Már van egy érvényes bérletet a blob új bérletet meg, ha a blobszolgáltatás egy "HTTP (409) ütközés" állapot eredményt adja vissza. A következő kódrészlet egy **AccessCondition** objektum magába foglalja a címbérleti információkat, amikor azt egy kérelmet a blob, a storage szolgáltatás frissítéséhez.  Letöltheti a teljes minta: [az Azure Storage felügyelete egyidejűségi](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Az alábbi C#-kódrészlet egy kizárólagos bérlet beszerzése egy BLOB 30 másodpercig, a blob tartalmának frissítése és majd a bérlet feloldása egy példát mutat be. Már van egy érvényes bérletet a blob új bérletet meg, ha a blobszolgáltatás egy "HTTP (409) ütközés" állapot eredményt adja vissza. A következő kódrészlet egy **AccessCondition** objektum magába foglalja a címbérleti információkat, amikor azt egy kérelmet a blob, a storage szolgáltatás frissítéséhez.  A teljes mintát Itt töltheti le: [Az Azure Storage használata az egyidejűség kezelése](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -184,9 +184,9 @@ A következő tárolóművelet bérletek használatával pesszimista egyidejűs�
 * Tároló törlése
 * A tároló tulajdonságainak beolvasása
 * Tároló metaadatainak beolvasása
-* Állítsa be a tároló metaadatai
+* Set Container Metadata
 * Tároló ACL lekérése
-* ACL tároló beállítása
+* Set Container ACL
 * Címbérlet-tárolók  
 
 További információkért lásd:  
@@ -208,7 +208,7 @@ Használjon optimista egyidejűséget, és ellenőrizze, hogy egy másik folyama
 
 Vegye figyelembe, hogy a blob szolgáltatás eltérően a table service igényel tartalmazza az ügyfél egy **If-Match** fejléc a következő frissítési kérelmet. Azonban lehetséges kényszerítése egy feltétel (legutolsó író wins stratégia) frissíti, és az egyidejűség-ellenőrzés megkerülését, ha beállítja az ügyfél a **If-Match** fejlécet a helyettesítő karakter (*) a kérésben.  
 
-Az alábbi C# látható egy ügyfélentitást vagy korábban létrehozott vagy frissített e-mail-címükkel kellene beolvasni. A kezdeti beszúrása vagy művelet tárolja az ügyfél objektum ETag-érték lekéréséhez, és a mintát használja ugyanazt az objektumpéldányt, a Csere műveletet végrehajtása során, mert azt automatikusan elküldi az ETag-érték vissza a table service, a szolgáltatás engedélyezése Ellenőrizze, hogy egyidejűségi megsértése. Ha egy másik folyamat frissítette az entitást a táblatárolóba, a szolgáltatás egy HTTP 412 (előfeltétel nem teljesült) állapotüzenetet adja vissza.  Letöltheti a teljes minta: [az Azure Storage felügyelete egyidejűségi](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Az alábbi C# látható egy ügyfélentitást vagy korábban létrehozott vagy frissített e-mail-címükkel kellene beolvasni. A kezdeti beszúrása vagy művelet tárolja az ügyfél objektum ETag-érték lekéréséhez, és a mintát használja ugyanazt az objektumpéldányt, a Csere műveletet végrehajtása során, mert azt automatikusan elküldi az ETag-érték vissza a table service, a szolgáltatás engedélyezése Ellenőrizze, hogy egyidejűségi megsértése. Ha egy másik folyamat frissítette az entitást a táblatárolóba, a szolgáltatás egy HTTP 412 (előfeltétel nem teljesült) állapotüzenetet adja vissza.  A teljes mintát Itt töltheti le: [Az Azure Storage használata az egyidejűség kezelése](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 try
@@ -284,5 +284,5 @@ További információ az Azure Storage lásd:
 * [A Microsoft Azure Storage kezdőlapja](https://azure.microsoft.com/services/storage/)
 * [A Microsoft Azure Storage bemutatása](storage-introduction.md)
 * Bevezetés a Storage [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [tábla](../../cosmos-db/table-storage-how-to-use-dotnet.md), [üzenetsorok](../storage-dotnet-how-to-use-queues.md), és [fájlok](../storage-dotnet-how-to-use-files.md)
-* Tároló-architektúra – [az Azure Storage: egy magas rendelkezésre állású felhőalapú tárolási szolgáltatás az erős konzisztencia](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* Tároló-architektúra – [az Azure Storage: Magas rendelkezésre állású Felhőbeli Tárolószolgáltatásba erős konzisztencia](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

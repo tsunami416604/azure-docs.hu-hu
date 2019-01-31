@@ -1,5 +1,5 @@
 ---
-Cím: Az Excel analytics áttelepíteni az Azure Machine Learning Studio titleSuffix: Azure Machine Learning Studio description: Az Excel és a szolgáltatások az Azure Machine Learning Studio lineáris regressziós modellek összehasonlítása: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Az Excel analytics áttelepíteni az Azure Machine Learning Studio titleSuffix: Azure Machine Learning Studio description: Az Excel és a szolgáltatások az Azure Machine Learning Studio lineáris regressziós modellek összehasonlítása: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---

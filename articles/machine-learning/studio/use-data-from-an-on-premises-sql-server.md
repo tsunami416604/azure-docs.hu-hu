@@ -1,6 +1,6 @@
 ---
-Cím: A helyszíni SQL Server titleSuffix: Azure Machine Learning Studio description: Az Azure Machine Learning Studio fejlett elemzéseket végezzenek egy helyszíni SQL Server-adatbázis adatait használják.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: A helyszíni SQL Server titleSuffix: Azure Machine Learning Studio description: Az Azure Machine Learning Studio fejlett elemzéseket végezzenek egy helyszíni SQL Server-adatbázis adatait használják.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/13/2017
 ---

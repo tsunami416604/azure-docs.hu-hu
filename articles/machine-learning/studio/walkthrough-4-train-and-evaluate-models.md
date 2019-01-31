@@ -1,6 +1,6 @@
 ---
-Cím: "4. lépés: A titleSuffix prediktív elemzési modellek betanítása: Azure Machine Learning Studio description: "A Develop egy prediktív megoldás bemutatója 4. lépés: Pontszám, modellek betanítása és kiértékelése több Azure Machine Learning studióban. "
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: "4. lépés: A titleSuffix prediktív elemzési modellek betanítása: Azure Machine Learning Studio description: "A Develop egy prediktív megoldás bemutatója 4. lépés: Pontszám, modellek betanítása és kiértékelése több Azure Machine Learning studióban. "
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/23/2017
 ---

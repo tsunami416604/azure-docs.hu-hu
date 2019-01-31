@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b2ea63ec13e1e0b79a87b7bfa5bae4a6cf409331
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0118c17045b86c88d8d92048787a20bd7d309c0b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253238"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298347"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Az Azure-beli privát Docker-tárolójegyzékek bemutatása
 
@@ -38,7 +38,7 @@ Konfigurálja úgy az [ACR Tasks](#azure-container-registry-build) szolgáltatá
 
 * **Beállításjegyzék** – Létrehozhat egy vagy több tároló-beállításjegyzéket Azure-előfizetésében. Beállításjegyzékek három termékváltozatban érhetők el: [Alapszintű, Standard és prémium szintű](container-registry-skus.md), minden egyes, amely támogatja a webhook-integrációt, az Azure Active Directoryval, beállításjegyzék-hitelesítést és a törlési funkciót. Hozzon létre egy beállításjegyzéket az üzemelő példányaival megegyező Azure-beli helyen, hogy kiaknázhassa tárolórendszerképei helyi, hálózatközeli tárolásának előnyeit. Haladó szintű replikációs és tárolórendszerkép-elosztási forgatókönyvekhez használja a Prémium szintű beállításjegyzékek [georeplikációs](container-registry-geo-replication.md) funkcióját. A teljes tartománynév `myregistry.azurecr.io` formában van.
 
-  A tároló-beállításjegyzékhez való [hozzáférés szabályozása](container-registry-authentication.md) egy, az Azure Active Directory által támogatott [egyszerű szolgáltatással](../active-directory/develop/app-objects-and-service-principals.md) vagy a rendszergazdai fiókkal lehetséges. A beállításjegyzéken való hitelesítéshez futtassa a szabványos `docker login` parancsokat.
+  Ön [hozzáférésének](container-registry-authentication.md) továbbíthat egy tárolóregisztrációs adatbázisba, egy Azure-identitás, az Azure Active Directory-alapú használatával [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md), vagy rendszergazdai fiókkal. Jelentkezzen be a beállításjegyzék használatával az Azure parancssori felület vagy a standard szintű `docker login` parancsot.
 
 * **Tárház** -beállításjegyzék tartalmaz egy vagy több tárat, amelyek tárolórendszerképek csoportjai tárolja. Az Azure Container Registry támogatja a többszintű adattárnévtereket. A többszintű névterekkel csoportba rendezheti egy adott alkalmazáshoz vagy alkalmazások gyűjteményéhez kapcsolódó rendszerképek gyűjteményeit az egyes fejlesztői és üzemeltetői csoportok számára. Példa:
 

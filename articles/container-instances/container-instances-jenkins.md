@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: 41c9302d280d6027e12f2516bca26a98d224f301
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 85b67fb4fa474bb00b5b7ca66580273671081cdf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354189"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478190"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>A Jenkins használata Azure Container Instances szolgáltatásban az ügynök létrehozása
 
@@ -26,28 +26,28 @@ További információ az Azure Container Instances: [kapcsolatos Azure Container
 
 2. Adja meg az alábbi adatokat a **alapjai** alkotnak, és válassza ki **OK**.
 
-   - **Név**: Adjon meg egy nevet a Jenkins-telepítéshez.
+   - **Név**: Adjon meg egy nevet a Jenkins telepítésének.
    - **Felhasználónév**: Adja meg a rendszergazdai felhasználót a Jenkins virtuális gép nevét.
-   - **Hitelesítési típus**: azt javasoljuk, hogy a nyilvános SSH-kulcsot a hitelesítéshez. Ha ezt a lehetőséget választja, illessze be a nyilvános SSH-kulccsal jelentkezik be a Jenkins virtuális gép használható.
-   - **Előfizetés**: válasszon ki egy Azure-előfizetést.
+   - **Hitelesítési típus**: Azt javasoljuk, hogy a nyilvános SSH-kulcsot a hitelesítéshez. Ha ezt a lehetőséget választja, illessze be a nyilvános SSH-kulccsal jelentkezik be a Jenkins virtuális gép használható.
+   - **Előfizetés**: Válasszon ki egy Azure-előfizetést.
    - **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy meglévőt.
-   - **Hely**: válassza ki a Jenkins-kiszolgáló helyét.
+   - **Hely**: Válassza ki a Jenkins-kiszolgáló helyét.
 
    ![A Jenkins portálon keresztüli üzembe helyezési alapbeállítások](./media/container-instances-jenkins/jenkins-portal-01.png)
 
 3. Az a **további beállítás** alkotnak, hajtsa végre a következő elemek:
 
-   - **Méret**: válassza ki a megfelelő méretezési lehetőséget a Jenkins virtuális gép.
+   - **Méret**: Válassza a megfelelő méretezés a Jenkins virtuális gép.
    - **Virtuális merevlemez típusa**: Adja meg **HDD** (merevlemez-meghajtó) vagy **SSD** (SSD-meghajtóra) a Jenkins-kiszolgáló számára.
-   - **Virtuális hálózat**: a nyílra, ha azt szeretné, módosíthatja az alapértelmezett beállításokat.
-   - **Alhálózatok**: a nyílra, ellenőrizze az adatokat, és válassza ki **OK**.
-   - **Nyilvános IP-cím**: a nyílra kattintva nevezze el a nyilvános IP-cím egy egyéni, konfigurálja a Termékváltozat és hozzárendelési módszert állítja be.
+   - **Virtuális hálózat**: Válassza ki a nyílra, ha azt szeretné, módosíthatja az alapértelmezett beállításokat.
+   - **Alhálózatok**: A nyílra, ellenőrizze az adatokat, és válassza ki **OK**.
+   - **Nyilvános IP-cím**: A nyílra a nyilvános IP-cím egy egyéni nevet adjon, konfigurálja a Termékváltozat és hozzárendelési módszert állítja be.
    - **Tartománynévcímke**: Adjon meg egy értéket egy abszolút URL-címet a Jenkins virtuális gép létrehozásához.
-   - **A Jenkins kiadási típusa**: válassza ki a kívánt kiadási típusát a lehetőségek közül: **LTS**, **hetente hozhat létre**, vagy **Azure ellenőrzött**.
+   - **A Jenkins kiadási típusa**: Válassza ki a kívánt kiadási típusát a lehetőségek közül: **LTS**, **hetente build**, vagy **Azure ellenőrzött**.
 
    ![A Jenkins portálon keresztüli üzembe helyezési további beállításai](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. A szolgáltatás egyszerű integráció, válassza ki a **Auto(MSI)** [felügyelt identitások az Azure-erőforrások] [felügyelt-identitások – azure-erőforrások] automatikusan hozzon létre egy hitelesítési identitást a Jenkins-példány. Válassza ki **manuális** saját szolgáltatásnév hitelesítő adatainak megadását.
+4. Szolgáltatás egyszerű integráció, válassza ki a **Auto(MSI)** rendelkeznie [felügyelt identitások az Azure-erőforrások] [ managed-identities-azure-resources] automatikusan létrehoz egy hitelesítési identitás az Jenkins-példány. Válassza ki **manuális** saját szolgáltatásnév hitelesítő adatainak megadását.
 
 5. Felhő-ügynökök konfigurálása egy felhőalapú platform, Jenkins felépítési feladatok. Válassza ki az ebben a cikkben **ACI**. Az ACI felhőalapú ügynököt minden egyes Jenkins létrehozási feladatot futtatja egy tárolópéldányt.
 
@@ -138,4 +138,4 @@ Az Azure-ban a Jenkins kapcsolatos további információkért lásd: [Azure és 
 <!-- LINKS - internal -->
 [about-aci]: ./container-instances-overview.md
 [jenkins-azure]: ../jenkins/overview.md
-[managed-service-identity]: ../active-directory/managed-service-identity/overview.md
+[managed-identities-azure-resources]: ../active-directory/managed-identities-azure-resources/overview.md

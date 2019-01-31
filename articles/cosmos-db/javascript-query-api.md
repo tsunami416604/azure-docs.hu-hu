@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1fff32896ef794a26f223cae4ae491a2995d9acf
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 101b5382eaa01ed87f05d83c82002fa1b93144b7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191139"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463939"
 ---
-# <a name="working-with-javascript-language-integrated-query-api-with-azure-cosmos-db"></a>A JavaScript nyelvintegrált lekérdezések az Azure Cosmos DB API használata
+# <a name="javascript-query-api-in-azure-cosmos-db"></a>Az Azure Cosmos DB API a JavaScript-lekérdezés
 
 Mellett dokumentumkeresési lekérdezések az Azure Cosmos DB SQL API használatával a [Cosmos DB kiszolgálóoldali SDK](https://azure.github.io/azure-cosmosdb-js-server/) optimalizált lekérdezések egy JavaScript-felület használatával végezhető el. Vegye figyelembe az SQL-nyelv, a JavaScript-felület használatához nem kell. A JavaScript-lekérdezés API lehetővé teszi a programozott módon hozhat létre a predikátum függvény függvény feladatütemezési történő átadásával lekérdezések meghívja a ECMAScript5 a tömb built-ins és a népszerű JavaScript-kódtárak Lodash hasonló szintaxissal. Lekérdezések a JavaScript futásidejű rendszer elemzi, és hatékonyan az Azure Cosmos DB-indexek használatával végrehajtott.
 
@@ -55,9 +55,9 @@ Az alábbi táblázat bemutatja a különböző SQL-lekérdezések és a kapcsol
 |---|---|---|
 |VÁLASSZA KI *<br>DOKUMENTÁCIÓ| __.map(function(doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;doc; vissza<br>});|Az összes dokumentum (többoldalas a folytatási token), az eredményeket.|
 |SELECT <br>&nbsp;&nbsp;&nbsp;docs.ID,<br>&nbsp;&nbsp;&nbsp;docs.Message msg, mint<br>&nbsp;&nbsp;&nbsp;docs.Actions <br>DOKUMENTÁCIÓ|__.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;{visszaadása<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projektek, a azonosítója, az üzenet (aliassal való msg) és a művelet az összes dokumentumot.|
-|VÁLASSZA KI *<br>DOKUMENTÁCIÓ<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.ID="X998_Y998"|__.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;vissza a doc.id === "X998_Y998";<br>});|A predikátum a dokumentumok lekérdezések: azonosító = "X998_Y998".|
+|VÁLASSZA KI *<br>DOKUMENTÁCIÓ<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;vissza a doc.id === "X998_Y998";<br>});|A predikátum a dokumentumok lekérdezések: azonosító = "X998_Y998".|
 |VÁLASSZA KI *<br>DOKUMENTÁCIÓ<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (docs. Címkék, 123)|__.filter(function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;vissza a x.Tags & & x.Tags.indexOf(123) > -1;<br>});|Lekérdezések, amelyek a Tags tulajdonságnak és címkék dokumentumok je Pole obsahující a az 123 érték.|
-|SELECT<br>&nbsp;&nbsp;&nbsp;docs.ID,<br>&nbsp;&nbsp;&nbsp;docs.Message, msg<br>DOKUMENTÁCIÓ<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.ID="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vissza a doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{visszaadása<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.value();|A dokumentumok, amelyek egy predikátum lekérdezések id = "X998_Y998", és ezután-projektek, az azonosítót és az üzenet (aliassal való msg).|
+|SELECT<br>&nbsp;&nbsp;&nbsp;docs.ID,<br>&nbsp;&nbsp;&nbsp;docs.Message, msg<br>DOKUMENTÁCIÓ<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vissza a doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{visszaadása<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.value();|A dokumentumok, amelyek egy predikátum lekérdezések id = "X998_Y998", és ezután-projektek, az azonosítót és az üzenet (aliassal való msg).|
 |SELECT VALUE címke<br>DOKUMENTÁCIÓ<br>CSATLAKOZZON a docs címke. A címkék<br>Az ORDER BY docs._ts|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vissza a dokumentumot. A címkék & & Array.isArray (doc. A címkék);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc._ts; vissza<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.value()|Vlastnost typu Pole, címkék, rendelkeznie dokumentumoknál szűri és az eredményül kapott dokumentumokat a _ts időbélyeg rendszertulajdonság, majd a projektek + simítja egybe a címkék tömb.|
 
 ## <a name="next-steps"></a>További lépések
@@ -68,4 +68,4 @@ További fogalmakat és útmutató írási és tárolt eljárások, eseményind�
 - [Azure Cosmos DB-vel működő tárolt eljárások, eseményindítók és felhasználó által definiált függvények](stored-procedures-triggers-udfs.md)
 - [Az Azure Cosmos DB-ben tárolt eljárások, eseményindítók, felhasználó által definiált függvények használata](how-to-use-stored-procedures-triggers-udfs.md)
 - [Az Azure Cosmos DB a JavaScript kiszolgálóoldali API-referencia](https://azure.github.io/azure-cosmosdb-js-server)
-- [A JavaScript ES6 (ECMA 2015)](https://www.ecma-international.org/ecma-262/6.0/)
+- [JavaScript ES6 (ECMA 2015)](https://www.ecma-international.org/ecma-262/6.0/)

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e8a849fdc6674a0c6ab801bd8f26a01f89fb8857
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7939de5cf45535dc911c25ae8fa8c914a214fa3c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969583"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458057"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Szilánkokra osztott adatbázisok közötti felosztási-egyesítési szolgáltatás üzembe helyezése
 
@@ -204,7 +204,7 @@ A parancsfájl-fájlt is tartalmaz a következők:
    
 ## <a name="use-powershell-to-verify-your-deployment"></a>A telepítés ellenőrzése a PowerShell használatával
 1. Nyisson meg egy új PowerShell-ablakot, és lépjen abba a könyvtárba, amelybe letöltötte a szétválasztás és egyesítés csomagot, és navigáljon a "powershell" könyvtárba.
-2. Hozzon létre egy Azure SQL database-kiszolgálót (vagy válassza ki a meglévő kiszolgáló), a szilánkleképezés-kezelővel és a szegmensek jön létre.
+2. Hozzon létre egy Azure SQL Database-kiszolgáló (vagy válassza ki a meglévő kiszolgáló), a szilánkleképezés-kezelővel és a szegmensek jön létre.
    
    > [!NOTE]
    > A SetupSampleSplitMergeEnvironment.ps1 parancsfájl hoz létre, a parancsfájl egyszerű tartani alapértelmezés szerint ezek az adatbázisok ugyanazon a kiszolgálón. Ez a korlátozás nem kötelező a felosztási-egyesítési szolgáltatás magát.

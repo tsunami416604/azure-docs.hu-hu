@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 8dfcee6e7f0e2fd21c35ed2507b572c6e8cffc42
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 01/29/2019
+ms.openlocfilehash: 57c08fc8e3b7c655bcb59affcde5e37510f98920
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217237"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466592"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
 
@@ -123,7 +123,7 @@ Miután az összes bérlőre vonatkozó házirend lett meghatározva, továbbra 
 
 ## <a id="subheading-3"></a>Bizalmas adatokhoz történő hozzáférés naplózása
 
-Fontos szempont az information protection paradigmát a rendszer azon képessége, bizalmas adatokhoz való hozzáférés figyelésére. [Az Azure SQL Database naplózási](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) v auditovacím protokolu nevű új mező tartalmazza a továbbfejlesztett *data_sensitivity_information*, amelyek az érzékenységi besorolások (címkék), a tényleges adatok által visszaadott naplók a lekérdezés.
+Fontos szempont az information protection paradigmát a rendszer azon képessége, bizalmas adatokhoz való hozzáférés figyelésére. [Az Azure SQL Database naplózási](sql-database-auditing.md) v auditovacím protokolu nevű új mező tartalmazza a továbbfejlesztett *data_sensitivity_information*, amelyek az érzékenységi besorolások (címkék), a tényleges adatok által visszaadott naplók a lekérdezés.
 
 ![Napló](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
@@ -148,7 +148,7 @@ REST API-k használatával programozott módon kezelheti a besorolásokat. A kö
 ## <a id="subheading-5"></a>Következő lépések
 
 - Tudjon meg többet [SQL biztonságú adatok](sql-advanced-threat-protection.md).
-- Érdemes úgy konfigurálni [Azure SQL Database naplózási szolgáltatásával](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) a figyelés és naplózás, a minősített bizalmas adatokhoz való hozzáférést.
+- Érdemes úgy konfigurálni [Azure SQL Database naplózási szolgáltatásával](sql-database-auditing.md) a figyelés és naplózás, a minősített bizalmas adatokhoz való hozzáférést.
 
 <!--Anchors-->
 [SQL Data Discovery & Classification overview]: #subheading-1

@@ -1,6 +1,6 @@
 ---
-Cím: Előrejelzésére regressziós modellek titleSuffix a választ: Azure Machine Learning Studio description: Hogyan lehet létrehozni egy egyszerű regressziós modell előre jelezni az adatelemzés kezdőknek videó 4 áron. Tartalmaz egy lineáris regressziós cél adatokkal.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Előrejelzésére regressziós modellek titleSuffix a választ: Azure Machine Learning Studio description: Hogyan lehet létrehozni egy egyszerű regressziós modell előre jelezni az adatelemzés kezdőknek videó 4 áron. Tartalmaz egy lineáris regressziós cél adatokkal.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 Szerző: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---

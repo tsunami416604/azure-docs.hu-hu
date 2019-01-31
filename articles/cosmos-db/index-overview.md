@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: adddbc03b5ec61944e95a2e0fff8767c41d96b0e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9e1ae9faecea67e1abb2a1b08d5641bc25c9f38a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033757"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469090"
 ---
-# <a name="indexing-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelése
+# <a name="indexing-in-azure-cosmos-db---overview"></a>Az Azure Cosmos DB - indexelő áttekintése
 
 Az Azure Cosmos DB egy sémafüggetlen adatbázis, és lehetővé teszi, hogy az alkalmazás gyorsan iterálása anélkül, hogy sémákkal vagy indexkezeléssel bajlódnia. Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli az összes elem a tárolóban anélkül, hogy a séma vagy másodlagos indexek fejlesztőktől.
 

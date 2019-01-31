@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: ee5cc1f185640c9ea22ceb80b1fabb20df245fe2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 824c7c70cf3e79df3aa04bbe86674ed9486b79f2
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823080"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300438"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 
@@ -20,7 +20,7 @@ Beállította egy helyszíni konfigurációs kiszolgálót használatakor a [Azu
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A táblázat összefoglalja az előfeltételeket a helyszíni konfigurációs kiszolgáló gép üzembe helyezéséhez.
+A táblázat összefoglalja a helyszíni konfigurációs kiszolgáló gép telepítésének előfeltételeit.
 
 | **Összetevő** | **Követelmény** |
 | --- |---|
@@ -106,7 +106,7 @@ Futtassa a telepítőfájlt az alábbiak szerint:
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter neve| Típus | Leírás| Értékek|
+|Paraméter neve| Typo | Leírás| Értékek|
 |-|-|-|-|
 | /ServerMode|Szükséges|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
 |/InstallLocation|Szükséges|Az összetevők telepítési mappája| A számítógép bármely mappája|
@@ -128,7 +128,7 @@ Futtassa a telepítőfájlt az alábbiak szerint:
 ### <a name="create-file-input-for-mysqlcredsfilepath"></a>Create file input for MYSQLCredsFilePath
 
 A MySQLCredsFilePath paraméter egy fájl fogadja bemeneti adatként. Hozza létre a fájlt a következő formátumban, és adja át azt MySQLCredsFilePath bemeneti paraméterként.
-```
+```ini
 [MySQLCredentials]
 MySQLRootPassword = "Password>"
 MySQLUserPassword = "Password"
@@ -136,7 +136,7 @@ MySQLUserPassword = "Password"
 ### <a name="create-file-input-for-proxysettingsfilepath"></a>Hozzon létre a ProxySettingsFilePath bemeneti fájllal
 ProxySettingsFilePath paraméter egy fájl fogadja bemeneti adatként. Hozza létre a fájlt a következő formátumban, és adja át azt ProxySettingsFilePath bemeneti paraméterként.
 
-```
+```ini
 [ProxySettings]
 ProxyAuthentication = "Yes/No"
 Proxy IP = "IP Address"
@@ -157,7 +157,7 @@ A konfigurációs kiszolgáló gép proxybeállításainak következőképpen m�
 5. Adja meg az új proxy adatait, majd kattintson a **regisztrálása** gombra.
 6. Nyisson meg egy rendszergazdai PowerShell-parancsablakot.
 7. Futtassa az alábbi parancsot:
-  ```
+  ```powershell
   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
   net stop obengine
@@ -177,7 +177,7 @@ A konfigurációs kiszolgáló gép proxybeállításainak következőképpen m�
   6. Nyisson meg egy rendszergazdai PowerShell-parancsablakot.
   7. A következő parancs futtatásával
 
-      ```
+      ```powershell
       $pwd = ConvertTo-SecureString -String MyProxyUserPassword
       Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
       net stop obengine
@@ -205,7 +205,7 @@ A konfigurációs kiszolgáló gép proxybeállításainak következőképpen m�
 6. Adja meg a proxykiszolgáló adatait, majd kattintson a **regisztrálása** gombra.  
 7. Nyisson meg egy rendszergazdai PowerShell-parancsablakot.
 8. A következő parancs futtatásával
-    ```
+    ```powershell
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
     Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
     net stop obengine
@@ -273,7 +273,7 @@ A kiszolgáló frissítése a következőképpen:
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
 3.  Most már a tárolási környezet beállítása
     
-    ```
+    ```powershell
     $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
     Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
     ```

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 28c9e342aec3eb3ba61b46f4f80c7d097b0653b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 211051254e08d69c06afd4242599c909048e7e17
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258714"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464840"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Az Azure Storage az Azure klasszikus parancssori felület használatával
 
@@ -35,7 +35,7 @@ Ez az útmutató feltételezi, hogy ismeri az Azure Storage az alapvető fogalma
 ## <a name="get-started-with-azure-storage-and-the-azure-classic-cli-in-5-minutes"></a>Ismerkedés az Azure Storage és az Azure klasszikus parancssori felület kipróbálása
 Ez az útmutató Ubuntu használja példák, de más platformokon, az operációs rendszer hasonlóképpen végre kell hajtania.
 
-**Új Azure-bA:** egy Microsoft Azure-előfizetés és a egy adott előfizetéshez hozzárendelt Microsoft-fiókot. Az Azure vásárlási lehetőségeket ismertető további információkért lásd: [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/), [beszerzési lehetőségek](https://azure.microsoft.com/pricing/purchase-options/), és [ajánlatok tagoknak](https://azure.microsoft.com/pricing/member-offers/) (MSDN, Microsoft Partner Network és BizSpark,-tagok számára, és egyéb Microsoft programok).
+**Új Azure-bA:** A Microsoft Azure-előfizetés és a egy adott előfizetéshez társított Microsoft-fiók beolvasása. Az Azure vásárlási lehetőségeket ismertető további információkért lásd: [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/), [beszerzési lehetőségek](https://azure.microsoft.com/pricing/purchase-options/), és [ajánlatok tagoknak](https://azure.microsoft.com/pricing/member-offers/) (MSDN, Microsoft Partner Network és BizSpark,-tagok számára, és egyéb Microsoft programok).
 
 Lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) további információ az Azure-előfizetések.
 
@@ -78,7 +78,7 @@ Lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory 
 5. A helyi számítógépen nyissa meg az előnyben részesített szövegszerkesztőben (például vim). Írja be a fenti szkript a szövegszerkesztőbe.
 6. Most akkor frissítenie kell a parancsfájl-változókat a konfigurációs beállítások alapján.
 
-   * **< Tárfiók_neve >** használata a parancsfájl a megadott névvel, vagy adjon meg egy új nevet a tárfiók számára. **Fontos:** a tárfiók nevét az Azure-ban egyedinek kell lennie. Ez csak kisbetűket, túl!
+   * **< Tárfiók_neve >** használata a parancsfájl a megadott névvel, vagy adjon meg egy új nevet a tárfiók számára. **Fontos:** A tárfiók nevét az Azure-ban egyedinek kell lennie. Ez csak kisbetűket, túl!
    * **< Storage_account_key >** a tárfiók hozzáférési kulcsára.
    * **< Container_name >** használata a parancsfájl a megadott névvel, vagy adjon meg egy új nevet a tároló számára.
    * **< Image_to_upload >** egy elérési útját adja meg egy képet a helyi számítógépen, mint például: "~ / images/HelloWorld.png".
@@ -132,7 +132,7 @@ azure storage container create mycontainer
 ```
 
 > [!NOTE]
-> A névtelen olvasási hozzáférés három szinten: **ki**, **Blob**, és **tároló**. Hogy a névtelen hozzáférés a blobokhoz, állítsa a engedély paramétert **ki**. Alapértelmezés szerint az új tároló privát, és csak a fiók tulajdonosa úgy érhető el. A névtelen felhasználók engedélyezése nyilvános olvasási hozzáférés blob erőforrásokhoz, de nem tároló metaadatait vagy a tárolóban lévő blobok listáját az engedély paraméter értéke **Blob**. Ahhoz, hogy a teljes nyilvános olvasási hozzáférés a blob-erőforrások, a tároló metaadatait és a tárolóban lévő blobok listáját, az engedély paraméter értéke **tároló**. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../blobs/storage-manage-access-to-resources.md) foglalkozó témakört.
+> A névtelen olvasási hozzáférés három szintre sorolhatók: **Ki**, **Blob**, és **tároló**. Hogy a névtelen hozzáférés a blobokhoz, állítsa a engedély paramétert **ki**. Alapértelmezés szerint az új tároló privát, és csak a fiók tulajdonosa úgy érhető el. A névtelen felhasználók engedélyezése nyilvános olvasási hozzáférés blob erőforrásokhoz, de nem tároló metaadatait vagy a tárolóban lévő blobok listáját az engedély paraméter értéke **Blob**. Ahhoz, hogy a teljes nyilvános olvasási hozzáférés a blob-erőforrások, a tároló metaadatait és a tárolóban lévő blobok listáját, az engedély paraméter értéke **tároló**. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../blobs/storage-manage-access-to-resources.md) foglalkozó témakört.
 >
 >
 

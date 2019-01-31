@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/24/2019
-ms.openlocfilehash: 3a567bd3656ad31157d51bedcd866290b232af2c
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.date: 01/25/2019
+ms.openlocfilehash: ae57605b0fb2cba8cdb0c2f9ecfbab8eef7a5197
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884622"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468274"
 ---
 # <a name="create-readable-secondary-databases-using-active-geo-replication"></a>Aktív georeplikáció használatával olvasható másodlagos adatbázis létrehozása
 
-Aktív georeplikáció az Azure SQL Database szolgáltatás, amely lehetővé teszi, hogy az egyes adatbázisok olvasható másodlagos adatbázis létrehozása az azonos vagy eltérő adatközpontban (régió) egy logikai kiszolgálón.
+Aktív georeplikáció az Azure SQL Database szolgáltatás, amely lehetővé teszi, hogy az egyes adatbázisok olvasható másodlagos adatbázis létrehozása az azonos vagy eltérő adatközpontban (régió) az SQL Database-kiszolgálón.
 
 > [!NOTE]
 > Aktív georeplikáció által a felügyelt példány nem támogatott. A földrajzi feladatátvétel felügyelt példányok esetén használja [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md).
@@ -122,7 +122,7 @@ A nagy kiterjedésű hálózaton magas késést, mert a folyamatos másolás has
 
 Korábban említett aktív georeplikáció is kezelhetők programozott módon az Azure PowerShell és a REST API használatával. Az alábbi táblázatok ismertetik az elérhető parancsok. Aktív georeplikáció tartalmaz egy, az Azure Resource Manager API-k Management, beleértve a [Azure SQL Database REST API-t](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview). Ezekkel az API-erőforráscsoportok használatát, és támogatja a szerepköralapú biztonság (RBAC). Szerepkörök hozzáférést megvalósításával további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
 
-### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Egyetlen vagy készletezett adatbázisok feladatátvételét kezelése
+### <a name="t-sql-manage-failover-of-standalone-and-pooled-databases"></a>T-SQL: Önálló és a készletezett adatbázisok feladatátvételét kezelése
 
 > [!IMPORTANT]
 > Ezeket a Transact-SQL-parancsokat csak aktív georeplikáció vonatkoznak, és nem vonatkoznak a feladatátvételi csoportok. Emiatt a is nem vonatkoznak a felügyelt példányok csak támogatják a feladatátvételi csoportok szerint.
@@ -132,13 +132,13 @@ Korábban említett aktív georeplikáció is kezelhetők programozott módon az
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |MÁSODLAGOS ON-kiszolgáló hozzáadása argumentum használatával egy meglévő adatbázist, és elindítja az adatreplikációt egy másodlagos adatbázis létrehozása |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |A FELADATÁTVÉTELI vagy FORCE_FAILOVER_ALLOW_DATA_LOSS használatával válthat egy másodlagos adatbázist elsődlegessé, hogy feladatátvételt kezdeményezzen |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Használja másodlagos ON SERVER eltávolítása egy SQL-adatbázis és a megadott másodlagos adatbázis közötti adatreplikáció leáll. |
-| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Az egyes adatbázisok az összes meglévő replikációs hivatkozások adatait adja vissza az Azure SQL Database logikai kiszolgálón. |
+| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Az Azure SQL Database-kiszolgálón az összes meglévő replikációs hivatkozások az egyes adatbázisok kapcsolatos információkat ad vissza. |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Lekéri egy adott SQL-adatbázis a legutóbbi replikációs utolsó replikációs késés és egyéb információ a replikációs hivatkozást. |
 | [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Az összes adatbázis-műveletek, beleértve a replikációs hivatkozások állapotát állapotát jeleníti meg. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |hatására végrehajtott tranzakciók lapblobokban replikálja, és arra vonatkozik, az aktív másodlagos adatbázis várnia, hogy az alkalmazás. |
 |  | |
 
-### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell: Egyetlen vagy készletezett adatbázisok feladatátvételét kezelése
+### <a name="powershell-manage-failover-of-standalone-and-pooled-databases"></a>PowerShell: Önálló és a készletezett adatbázisok feladatátvételét kezelése
 
 | Parancsmag | Leírás |
 | --- | --- |
@@ -152,7 +152,7 @@ Korábban említett aktív georeplikáció is kezelhetők programozott módon az
 > [!IMPORTANT]
 > Mintaszkriptek, lásd: [konfigurálása és a egy önálló adatbázis aktív georeplikációs feladatátvételi](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) és [konfigurálása és a egy készletezett adatbázis aktív georeplikációt használ feladatátvételi](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md).
 
-### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: Egyetlen vagy készletezett adatbázisok feladatátvételét kezelése
+### <a name="rest-api-manage-failover-of-standalone-and-pooled-databases"></a>REST API: Önálló és a készletezett adatbázisok feladatátvételét kezelése
 
 | API | Leírás |
 | --- | --- |

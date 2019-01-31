@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: d209e1f6924e5c7d6bba7512606504b7165f0ed3
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 308d4527c9ea56a408ddaf05532f5a0b36136262
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359425"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451767"
 ---
-# <a name="configure-an-ip-firewall-for-your-azure-cosmos-db-account"></a>Az Azure Cosmos DB-fiók egy IP-tűzfal konfigurálása
+# <a name="configure-ip-firewall-in-azure-cosmos-db"></a>IP-tűzfal konfigurálása az Azure Cosmos DB-ben
 
 Az IP-tűzfalakban használatával az Azure Cosmos DB-fiókban tárolt adatok biztonságát. Az Azure Cosmos DB támogatja az IP-alapú hozzáférés-vezérlést a tűzfaltámogatás bejövő. Adhatók meg az IP-tűzfal az Azure Cosmos DB-fiókot a következő módszerek egyikével:
 

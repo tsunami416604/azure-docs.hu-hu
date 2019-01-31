@@ -3,7 +3,7 @@ title: A File Conventions-könyvtárral az Azure Storage-feladatok és tevékeny
 description: Ismerje meg, hogyan használhatja az Azure Batch File Conventions .NET-kódtára kötegelt feladat és a feladat kimenetének az Azure Storage megőrzése, és a megőrzött kimenet megtekintéséhez az Azure Portalon.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f6ac523d7944f80da1b75993bfd05d617eb8f85
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 970cab2c782e71defbda828a42273f317dee80e4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706602"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472983"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>A Batch File Conventions-könyvtárral az Azure Storage-feladatok és tevékenységek adatok megőrzése a .NET-hez
 
@@ -115,7 +115,7 @@ A `kind` paraméterében a [TaskOutputStorage](https://msdn.microsoft.com/librar
 Ezek a típusok kimeneti adja meg, milyen típusú listázásához, előfordulhat, hogy később a Batch a megőrzött egy adott feladat kimenetének a kimenetek teszi lehetővé. Más szóval amikor a tevékenység kimeneti listázza, szűrheti listájában a kimeneti típus egyikét. Például ", adja meg a *előzetes* tevékenység kimeneti *109*." További információ az ajánlati és kimenetek beolvasása megjelenik [beolvasni a kimeneti](#retrieve-output) a cikkben.
 
 > [!TIP]
-> A kimenet típusa is meghatározza, hogy az Azure Portalon egy adott fájl helyére: *TaskOutput*-kategorizált fájlok meg fog jelenni **tevékenység kimeneti fájlok**, és *TaskLog* fájlok meg fog jelenni **naplók feladat**.
+> A kimenet típusa is határozza meg, ahol az Azure Portalon egy adott fájl így jelenik meg: *TaskOutput*-kategorizált fájlok meg fog jelenni **tevékenység kimeneti fájlok**, és *TaskLog* fájlok meg fog jelenni **naplók feladat**.
 
 ### <a name="store-job-outputs"></a>Feladatkimenetek Store
 

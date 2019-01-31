@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: 9e79aa2315118bcd9ce4328e74d51d7a22ea6247
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 01/25/2019
+ms.openlocfilehash: c1b6c55475c1600c89c1ac1cae9dee0068b92070
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744563"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478219"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Gyors útmutató: Az új Azure SQL-adatbázis BACPAC-fájl importálása
 
@@ -33,7 +33,7 @@ Ez a szakasz bemutatja, hogyan, a a [az Azure portal](https://portal.azure.com),
 > [!NOTE]
 > [Az Azure SQL Database felügyelt példányain](sql-database-managed-instance.md) támogatja az ebben a cikkben az egyéb módszerek használatával BACPAC-fájlból való importálása, de jelenleg nem támogatja az Azure Portalon való migrálás.
 
-Importálását az Azure Portalon, nyissa meg a logikai kiszolgálót, amely fogja üzemeltetni az importálás, válassza az eszköztár lapját **adatbázis importálása**.  
+Importálását az Azure Portalon, nyissa meg a lapot fog üzemeltetni az importálás és az eszköztáron válassza az SQL Database-kiszolgáló **adatbázis importálása**.  
 
    ![adatbázis importálása](./media/sql-database-import/import.png)
 
@@ -41,7 +41,7 @@ Válassza ki a tárfiókot, a tároló és a BACPAC-fájlba importálni kívánj
 
 ### <a name="monitor-imports-progress"></a>Az importálási folyamat figyelése
 
-Az importálás folyamat állapotának monitorozásához, nyissa meg az importált adatbázis logikai kiszolgáló lapot, majd a **beállítások**válassza **importálási/exportálási előzmények**. Ha sikeres, az importálás rendelkezik egy **befejezve** állapotát.
+Az importálási folyamat állapotának monitorozásához, nyissa meg az importált adatbázis-kiszolgáló lapon, majd a **beállítások**válassza **importálási/exportálási előzmények**. Ha sikeres, az importálás rendelkezik egy **befejezve** állapotát.
 
 Annak ellenőrzéséhez, hogy az adatbázist a kiszolgálón az élő, válassza ki a **SQL-adatbázisok** és ellenőrizze, hogy az új adatbázis **Online**.
 
@@ -51,14 +51,14 @@ Importálása egy SQL database-adatbázishoz a [SqlPackage](https://docs.microso
 
 Méretezés és teljesítmény javasoljuk a legtöbb éles környezetben az SqlPackage használatával. További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-A következő SqlPackage parancs importálja a **AdventureWorks2008R2** adatbázist az Azure SQL Database logikai kiszolgáló nevű a helyi tárolóból **mynewserver20170403**. Létrehoz egy új adatbázist nevű **myMigratedDatabase** az egy **prémium szintű** szolgáltatási szint és a egy **P6** szolgáltatási célt. Válasszon a környezetének megfelelő értékeket módosíthatja.
+A következő SqlPackage parancs importálja a **AdventureWorks2008R2** adatbázis a helyi tárolóból egy Azure SQL Database-kiszolgálóhoz nevű **mynewserver20170403**. Létrehoz egy új adatbázist nevű **myMigratedDatabase** az egy **prémium szintű** szolgáltatási szint és a egy **P6** szolgáltatási célt. Válasszon a környezetének megfelelő értékeket módosíthatja.
 
 ```cmd
 SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.net;Initial Catalog=myMigratedDatabase;User Id=<your_server_admin_account_user_id>;Password=<your_server_admin_account_password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
 ```
 
 > [!IMPORTANT]
-> Egy Azure SQL Database logikai kiszolgáló figyel az 1433-as porton. A céges tűzfal mögül logikai kiszolgálóhoz csatlakozik, a tűzfal nyissa meg ezt a portot kell rendelkeznie.
+> Egy SQL Database server a 1433-as portot figyeli. A céges tűzfal mögül egy SQL Database-kiszolgálóhoz csatlakozni, a tűzfal nyissa meg ezt a portot kell rendelkeznie.
 >
 
 Ez a példa bemutatja, hogyan importálását az Active Directory univerzális hitelesítéssel az SqlPackage használatával.
@@ -107,7 +107,7 @@ Egy másik példa parancsfájl: [adatbázis importálása BACPAC-fájlból](scri
 
 ## <a name="limitations"></a>Korlátozások
 
-Egy adatbázis rugalmas adatbáziskészletben való importálása nem támogatott. Adatok importálása egy önálló adatbázis, és folytassa az adatbázis egy készletbe.
+Egy adatbázis rugalmas adatbáziskészletben való importálása nem támogatott. Adatok importálása egy önálló adatbázis, és ezután helyezze át az adatbázist egy rugalmas készlet.
 
 ## <a name="import-using-wizards"></a>Importálja a varázslók használatával
 
@@ -118,7 +118,7 @@ Ezek a varázslók is használhatja.
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan csatlakozhat, és az importált SQL Database-adatbázis lekérdezéséhez, lásd: [a rövid útmutató: Az Azure SQL Database: SQL Server Management Studio használatával csatlakozhat, és adatokat kérdezhet le](sql-database-connect-query-ssms.md).
+- Megtudhatja, hogyan csatlakozhat, és az importált SQL Database-adatbázis lekérdezéséhez, lásd: [a rövid útmutató: Azure SQL Database: SQL Server Management Studio használatával csatlakozhat, és adatokat kérdezhet le](sql-database-connect-query-ssms.md).
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 - A teljes SQL Server adatbázis áttelepítési folyamat, beleértve a teljesítménnyel kapcsolatos javaslatok, lásd: [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
 - Megtudhatja, hogyan kezelésére és megosztására tárkulcsok és közös hozzáférésű jogosultságkódok biztonságosan, lásd: [Azure Storage biztonsági útmutatóját](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

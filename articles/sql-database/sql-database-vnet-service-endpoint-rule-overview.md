@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 0a0a5a046bd1afefe3f4c72e713a0dafe0c856e4
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: ccc97adadef43390d2b82e206adb60962d6e1fb2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390397"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453927"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Az Azure SQL virtuális hálózati Szolgáltatásvégpontok és szabályok használata
 
@@ -162,7 +162,7 @@ Jelenleg két módja van az SQL Database naplózás engedélyezéséhez. Táblan
 
 ### <a name="impact-on-data-sync"></a>Impact on Data Sync
 
-Az Azure SQL Database a Data Sync szolgáltatást, amely csatlakozik az Azure IP-címek használatával adatbázisok rendelkezik. A Szolgáltatásvégpontok használatakor az valószínű, hogy Ön ki fog kapcsolni **engedélyezése Azure-szolgáltatások kiszolgálói hozzáférésének** a logikai kiszolgálóhoz való hozzáférést. Ez megszakítja a Data Sync szolgáltatást.
+Az Azure SQL Database a Data Sync szolgáltatást, amely csatlakozik az Azure IP-címek használatával adatbázisok rendelkezik. A Szolgáltatásvégpontok használatakor az valószínű, hogy Ön ki fog kapcsolni **engedélyezése Azure-szolgáltatások kiszolgálói hozzáférésének** az SQL Database-kiszolgálóhoz való hozzáférést. Ez megszakítja a Data Sync szolgáltatást.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Virtuális hálózati Szolgáltatásvégpontok használatával és az Azure storage hatása
 
@@ -173,17 +173,18 @@ Az Azure Storage ugyanazokat a funkciókat, amely lehetővé teszi, hogy korlát
 PolyBase az adatok betöltése az Azure SQL Data Warehouse-bA az Azure Storage-fiókok gyakran használatos. Ha az Azure Storage-fiókot, amely adatokat tölt be korlátozza a hozzáférést csak a VNet-alhálózatok halmaza, kapcsolat és a fiók a PolyBase megszakadnak. Mindkét PolyBase engedélyezéséhez importálása és exportálása a forgatókönyvek az Azure SQL Data Warehouse legyen védett virtuális hálózat az Azure-tárolóhoz való kapcsolódás, kövesse az alábbi lépéseket:
 
 #### <a name="prerequisites"></a>Előfeltételek
+
 1.  Ez az Azure PowerShell telepítése [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Ha rendelkezik egy általános célú v1- vagy blob storage-fiókot, először frissítenie kell, általános célú v2 ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Rendelkeznie kell **engedélyezése megbízható Microsoft-szolgáltatások a tárfiók** kapcsolva az Azure Storage-fiók **tűzfalak és virtuális hálózatok** beállítások menüjében. Ebben [útmutató](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) további információt.
  
 #### <a name="steps"></a>Lépések
-1.  A PowerShellben **a logikai SQL-kiszolgáló regisztrálása** az Azure Active Directory (AAD):
+1.  A PowerShellben **az SQL Database-kiszolgáló regisztrálása** az Azure Active Directory (AAD):
 
     ```powershell
     Add-AzureRmAccount
     Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-logical-server-resourceGroup -ServerName your-logical-servername -AssignIdentity
+    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
     ```
     
  1. Hozzon létre egy **általános célú v2-Tárfiók** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
@@ -192,7 +193,7 @@ PolyBase az adatok betöltése az Azure SQL Data Warehouse-bA az Azure Storage-f
     > - Ha rendelkezik egy általános célú v1- vagy blob storage-fiók, meg kell **először frissítse a v2** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
     > - Az Azure Data Lake Storage Gen2 kapcsolatos ismert problémákat, tekintse meg ezt [útmutató](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1.  Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)**, és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője (előzetes verzió)** RBAC szerepkör a logikai SQL-kiszolgálóhoz.
+1.  Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)**, és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője (előzetes verzió)** RBAC szerepkör az SQL Database-kiszolgálóhoz.
 
     > [!NOTE] 
     > Csak a tulajdonosa a jogosultsággal rendelkező tagok ebben a lépésben hajthat végre. A különféle beépített szerepkörök az Azure-erőforrásokhoz, tekintse meg a [útmutató](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).

@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 10/29/2018
-ms.openlocfilehash: 6a5ee991ca21e60e6c2b14d5e3be560183eae4fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/25/2019
+ms.openlocfilehash: 957652a63768d25e6b180feb826551ec340b9bf0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232902"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453671"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Üzembe helyezése és megismerése a több-bérlős SaaS-alkalmazás a bérlőnkénti adatbázis mintát használ, az SQL Database szolgáltatással
 
@@ -63,9 +63,9 @@ Most válassza ki a nevét, és írja le.
     > [!IMPORTANT]
     > Bizonyos hitelesítési és kiszolgálói tűzfalak szándékosan nem biztonságos, bemutatási céllal. Azt javasoljuk, hogy létrehozott egy új erőforráscsoportot. Ne használjon létező erőforráscsoportokat, kiszolgálókat és készletek. Ne használja ezt az alkalmazást, parancsprogramok vagy bármely üzembe helyezett erőforrásokról éles üzemi környezetek részei. Ez az erőforráscsoport törlése, ha elkészült, az alkalmazáshoz kapcsolódó számlázások leállításához.
 
-    - **Erőforráscsoport**: válasszon **új létrehozása**, és az erőforráscsoport korábban adja meg a választott egyedi név.
+    - **Erőforráscsoport**: Válassza ki **új létrehozása**, és az erőforráscsoport korábban adja meg a választott egyedi név.
     - **Hely**: Válasszon egy helyet a legördülő listából.
-    - **Felhasználói**: használja a korábban kiválasztott felhasználói név-érték.
+    - **Felhasználói**: Használja a korábban kiválasztott felhasználói név-érték.
 
 1. Telepítse az alkalmazást.
 
@@ -113,7 +113,7 @@ Egy központi **Eseményközpont** lap mutató hivatkozásokat biztosít a bérl
 
 1. Az URL-cím segítségével a böngészőben nyissa meg az Eseményközpontot: http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net. A helyettesítő &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel.
 
-    ![Eseményközpont](media/saas-dbpertenant-get-started-deploy/events-hub.png)
+    ![Events Hub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
 2. Válassza ki **Fabrikam Jazz Club** a az Eseményközpontot.
 
@@ -123,14 +123,14 @@ Egy központi **Eseményközpont** lap mutató hivatkozásokat biztosít a bérl
 
 A Wingtip alkalmazás használ [*Azure Traffic Manager* ](../traffic-manager/traffic-manager-overview.md) bejövő kérelmek elosztását. Az URL-cím és a egy adott bérlő az események lapot a következő formátumot használja:
 
-- http://events.wingtip-dpt.&lt; felhasználó&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
     A fenti formátum részeit mutatjuk be az alábbi táblázat.
 
     | URL-cím része        | Leírás       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | A Wingtip alkalmazás események részeit.<br /><br /> *-dpt* megkülönbözteti a *bérlőnkénti adatbázis* más esetében a Wingtip Tickets megvalósítását. Példa a *önálló* alkalmazás bérlőnkénti (*-sa*) vagy *több-bérlős adatbázis* (*- mt*) hitelesítés megvalósításához. |
-    | .  *&lt;felhasználó&gt;* | *af1* példában. |
+    | http://events.wingtip-dpt | A Wingtip alkalmazás események részeit.<br /><br /> *-dpt* megkülönbözteti a *bérlőnkénti adatbázis* más esetében a Wingtip Tickets megvalósítását. Példa a *egyetlen* alkalmazás bérlőnkénti (*-sa*) vagy *több-bérlős adatbázis* (*- mt*) hitelesítés megvalósításához. |
+    | .*&lt;user&gt;* | *af1* példában. |
     | .trafficmanager.net/ | A TRAFFIC Manager, a kiinduló URL-címe. |
     | fabrikamjazzclub | Azonosítja a Fabrikam Jazz Club nevű bérlőben. |
     | &nbsp; | &nbsp; |
@@ -167,7 +167,7 @@ Ha azt szeretné, vezérlése és figyelése a háttérben futó feladatok, hasz
 - `Receive-Job`
 - `Stop-Job`
 
-### <a name="demo-loadgeneratorps1-actions"></a>Bemutató – LoadGenerator.ps1 műveletek
+### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator.ps1 actions
 
 *Bemutató – LoadGenerator.ps1* utánozza egy aktív számítási feladatok felhasználói tranzakciókat. Az alábbi lépések bemutatják a műveletek sorrendjét, amely *Demo-LoadGenerator.ps1* kezdeményezi:
 
@@ -248,7 +248,7 @@ Tallózással keresse meg a kiszolgáló **tenants1-dpt -&lt;felhasználói&gt;*
 - Az első diagram, címkéjű **erőforrás-használat**, mutat be a készlet eDTU kihasználtsága.
 - A második diagram az öt legaktívabb adatbázisok eDTU-kihasználtság a készlet jeleníti meg.
 
-A két diagram mutatja be, hogy a rugalmas készletek és az SQL Database kiválóan alkalmas a kiszámíthatatlan SaaS-alkalmazások és szolgáltatások. A diagramok megjelenítése, hogy négy adatbázis egyes tartalékkapacitás akár 40 edtu, és még az összes adatbázis kényelmesen támogatottak az 50-eDTU-készlet. Az 50-edtu-s készlet még nagyobb számítási feladatok támogatására képes. Ha az adatbázisokat önálló adatbázisként van, egyenként kell lennie egy S2 (50 DTU) a szolgáltatás támogatására. Négy különálló S2 adatbázis költsége a készlet árát szinte háromszor. A való életből vett helyzetekben az SQL Database ügyfelei akár 500 adatbázist is 200 eDTU méretű készletekben egyszerre futtatni. További információkért lásd: a [teljesítményfigyelési oktatóanyag](saas-dbpertenant-performance-monitoring.md).
+A két diagram mutatja be, hogy a rugalmas készletek és az SQL Database kiválóan alkalmas a kiszámíthatatlan SaaS-alkalmazások és szolgáltatások. A diagramok megjelenítése, hogy négy adatbázis egyes tartalékkapacitás akár 40 edtu, és még az összes adatbázis kényelmesen támogatottak az 50-eDTU-készlet. Az 50-edtu-s készlet még nagyobb számítási feladatok támogatására képes. Ha az adatbázisokat önálló adatbázisként van, egyenként kell lennie egy S2 (50 DTU) a szolgáltatás támogatására. Négy egyetlen S2 adatbázis költsége a készlet árát szinte háromszor. A való életből vett helyzetekben az SQL Database ügyfelei akár 500 adatbázist is 200 eDTU méretű készletekben egyszerre futtatni. További információkért lásd: a [teljesítményfigyelési oktatóanyag](saas-dbpertenant-performance-monitoring.md).
 
 ## <a name="additional-resources"></a>További források
 

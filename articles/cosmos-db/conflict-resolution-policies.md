@@ -1,5 +1,5 @@
 ---
-title: Ütközés feloldása típusok és a megoldási házirendek az Azure Cosmos DB
+title: Ütközés feloldása típusok és több megoldás szabályzatok írási régiók az Azure Cosmos DB-ben
 description: Ez a cikk ismerteti az ütközés kategóriákat és ütközés feloldása házirendek az Azure Cosmos DB-ben.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4af3f4c60f186c34d0f5522461ba70c68b59d1ab
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 31e6fa596bb053ee8cd19f641349f02ee169b6eb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033893"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472337"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Ütközéstípusok és -feloldási szabályzatok
 

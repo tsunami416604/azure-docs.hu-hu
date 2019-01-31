@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 05e5c0a37d2de78393048728b73d9bcf6e56c491
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.subservice: files
+ms.openlocfilehash: 277c570079e8c3f051916452492ff62758688e03
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159166"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454861"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabvány SMB protokollon keresztül érhető el a felhőben. Ez a cikk ismerteti a méretezhetőségi és teljesítménycéljai Azure Files és az Azure File Sync.
@@ -59,7 +59,7 @@ Segítséget az egyes szakaszok üzembe helyezésének megtervezése, az alábbi
 |-|-|
 | Objektumok száma | 10 millió objektumok | 
 | Adatkészlet mérete| ~ 4 Tib-ra |
-| Átlagos mérete | Körülbelül 500 KiB (legnagyobb fájlt: 100 GB) |
+| Átlagos mérete | ~500 KiB (Largest File: 100 GiB) |
 | Töltse fel az átviteli sebesség | másodpercenként 20 objektumok |
 | Namespace letöltési átviteli * | másodpercenként 400 objektumok |
  

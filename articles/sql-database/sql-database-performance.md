@@ -10,15 +10,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 3629215dc1f6dfcb28194c487358adb058af3e8e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: adbccd5f9cfd5ddd1912e304f800f3ebe04912c7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602919"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453008"
 ---
 # <a name="monitor-and-improve-performance"></a>Figyelheti és javíthatja a teljesítményt
+
 Az Azure SQL Database azonosítja a lehetséges problémákat az adatbázisban, és teendőket javasol, amely növelheti a számítási feladat teljesítményét azáltal, hogy intelligens hangolási műveletek és javaslatok.
 
 Tekintse át az adatbázis teljesítményét, használja a **teljesítmény** csempét – Áttekintés lapon, vagy navigáljon "Támogatás + hibaelhárítás" szakaszban:
@@ -34,6 +35,7 @@ Az a "Támogatás + hibaelhárítás" szakaszban a következő lapokon is haszn�
 4. [Az automatikus hangolás](#automatic-tuning) ahhoz, hogy az Azure SQL Database automatikusan optimalizálja adatbázisát.
 
 ## <a name="performance-overview"></a>Teljesítmény áttekintése
+
 Ebben a nézetben áttekintést kaphat az adatbázis teljesítményét, és segítséget nyújt a teljesítmény finomhangolásához és a hibaelhárítás. 
 
 ![Teljesítmény](./media/sql-database-performance/performance.png)
@@ -44,6 +46,7 @@ Ebben a nézetben áttekintést kaphat az adatbázis teljesítményét, és seg�
 * A **adatbázis-lekérdezések** csempe a lekérdezési teljesítmény az adatbázis (teljes dtu-k használatát és a felső erőforrásigényes lekérdezések) összegzését jeleníti meg. Az erre a csempére kattintva megnyílik  **[lekérdezési Terheléselemző](#query-performance-insight)**.
 
 ## <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
+
 Ez az oldal nyújt intelligens [finomhangolási javaslatai](sql-database-advisor.md) , javíthatja az adatbázis teljesítményét. A következő típusú ajánlások ezen a lapon láthatók:
 
 * Melyik indexek létrehozása, vagy dobja el a javaslatokat.
@@ -57,9 +60,11 @@ Hangolási műveletek korábban alkalmazott teljes előzményeit is megtalálhat
 Ismerje meg, hogyan keresse meg az alkalmazás a teljesítménnyel kapcsolatos javaslatok [keresse meg és teljesítménnyel kapcsolatos javaslatok alkalmazása](sql-database-advisor-portal.md) cikk.
 
 ## <a name="automatic-tuning"></a>Automatikus hangolás
+
 Az Azure SQL Database automatikusan hangolhassa adatbázis teljesítményének alkalmazásával [teljesítménnyel kapcsolatos javaslatok](sql-database-advisor.md). További tudnivalókért olvassa el a [automatikus finomhangolási cikk](sql-database-automatic-tuning.md). Az engedélyezéshez, olvassa el a [az automatikus hangolás engedélyezése](sql-database-automatic-tuning-enable.md).
 
 ## <a name="query-performance-insight"></a>Lekérdezési terheléselemző
+
 [Lekérdezési Terheléselemző](sql-database-query-performance.md) lehetővé teszi, hogy kevesebb időt azáltal, hogy adatbázis-teljesítmény hibaelhárítása:
 
 * Mélyebb betekintést az adatbázisok (DTU) erőforrás-felhasználásáról. 
@@ -71,6 +76,7 @@ Az Azure SQL Database automatikusan hangolhassa adatbázis teljesítményének a
 Erre a lapra vonatkozó további információkat tekinthet meg a cikk  **[lekérdezési Terheléselemző használata](sql-database-query-performance.md)**.
 
 ## <a name="additional-resources"></a>További források
+
 * [Útmutató az önálló adatbázisok az Azure SQL Database teljesítményének növeléséhez](sql-database-performance-guidance.md)
 * [Mikor ajánlott a rugalmas készlet használata?](sql-database-elastic-pool-guidance.md)
 

@@ -2,26 +2,25 @@
 title: Az Azure Backup-jelentések konfigurálása
 description: Power BI-jelentések az Azure Backup konfigurálása a Recovery Services-tároló használatával.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 01/30/2019
 ms.author: adigan
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 493a8881975e6b7568a7823bfc86fc97b4389378
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e93c51365adfc867082e180d8e4db804d02003ca
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418279"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297724"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk bemutatja a lépést kell végrehajtania a jelentések az Azure Backup konfigurálása a Recovery Services-tároló használatával. Azt is bemutatja, hogyan lehet hozzáférni a jelentésekhez a Power BI használatával. Miután elvégezte ezeket a lépéseket, megnyithatja közvetlenül a Power BI segítségével megtekintheti, testreszabása és jelentéseket hozhat létre.
 
 > [!IMPORTANT]
-> Az 1. November, 2018 egyes ügyfelek jelenhetnek problémák egy részét a Power bi-ban, amely arról tájékoztat, "felesleges karaktereket észleltünk a JSON-bevitel végén az Azure Backup alkalmazásban az adatok betöltése. A kivétel lett kiváltva az IDataReader felület okozta."
-Ez az a következő formátumban, ahol-adatok betöltése a tárfiókba megváltozása miatt.
+> Az 1. November, 2018 egyes ügyfelek jelenhetnek problémák egy részét a Power bi-ban, amely arról tájékoztat, "felesleges karaktereket észleltünk a JSON-bevitel végén az Azure Backup alkalmazásban az adatok betöltése. A kivételt az IDataReader-felület jelezte.”
+A problémát az adatok a tárfiókba való betöltéséhez használt formátum változása okozza.
 Töltse le a legújabb alkalmazást (1.8-as) a probléma elkerülése érdekében.
 >
 >

@@ -3,7 +3,7 @@ title: Feladat-függőségek használatára más feladatok – Azure Batch megva
 description: Egyéb feladatok MapReduce stílus és hasonló big Data típusú adatok feldolgozásához megvalósításának függő feladatok létrehozása az Azure Batch számítási feladatokat.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40e925fff9d87d8590ea3a83be9e7d93a84d6e26
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 5fe8cbbaa16e4a3de0744f98ff9394d198805cca
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266654"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475601"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Hozzon létre a tevékenységfüggőségek, amely más tevékenységektől függő feladatok
 

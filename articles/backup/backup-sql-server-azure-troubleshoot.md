@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 89344b6e06dbc62fe56c0aebc30a049aebf5c097
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339518"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296121"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Az Azure SQL Server biztonsági mentése – hibaelhárítás
 
@@ -37,6 +37,15 @@ Az SQL Server-adatbázis védelme nem konfigurálható a virtuális gépen a **A
 ## <a name="troubleshooting-errors"></a>Hibák elhárítása
 
 Az alábbi táblázatokban szereplő információk segítségével hibaelhárítása az Azure SQL Server kiszolgálók védelme közben fellépő problémákat és hibákat.
+
+## <a name="alerts"></a>Riasztások
+
+### <a name="backup-type-unsupported"></a>Biztonsági mentés típusa nem támogatott
+
+| Severity | Leírás | A lehetséges okok | Javasolt művelet |
+|---|---|---|---|
+| Figyelmeztetés | Ez az adatbázis jelenlegi beállításai nem támogatják bizonyos típusú biztonsági mentési típusok szerepelnek a tartozó házirend. | <li>**A master DB**: Csak a teljes adatbázis biztonsági mentési művelet hajtható végre a főadatbázisban; sem **különbözeti** biztonsági mentési, sem tranzakciós **naplók** biztonsági mentés is előfordulhatnak. </li> <li>Bármilyen adatbázishoz **egyszerű helyreállítási modellt** nem engedélyezi a tranzakció **naplók** kell venni a biztonsági mentés.</li> | Módosítsa az adatbázis beállításait, úgy, hogy a házirend az összes biztonsági mentési típusok támogatottak. Azt is megteheti módosítsa az aktuális házirend csak a támogatott biztonsági mentési típusok tartalmazza. Ellenkező esetben a nem támogatott biztonsági mentési típusok kihagyja az ütemezett biztonsági mentés során, vagy ad hoc biztonsági másolat a biztonsági mentési feladat sikertelen lesz.
+
 
 ## <a name="backup-failures"></a>Biztonsági mentési hibák
 

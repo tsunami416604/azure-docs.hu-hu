@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e1a001a60151136be6bde9de38f971807cf0c288
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 92c2d59ffe8c144bea6e7f8676880c866e234885
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188402"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299044"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Services
 
@@ -23,17 +23,20 @@ Az adatforrások és összekötők jelennek meg adatok lekérése vagy a Visual 
 
 |Adatforrás  |Memóriabeli  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database     |   Igen      |    Igen      |
+|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Igen      |    Igen      |
 |Azure SQL Data Warehouse     |   Igen      |   Igen       |
-|Azure Blob Storage*     |   Igen       |    Nem      |
-|Azure Table Storage*    |   Igen       |    Nem      |
-|Azure Cosmos DB*     |  Igen        |  Nem        |
-|Azure Data Lake Store*     |   Igen       |    Nem      |
-|Azure HDInsight HDFS*     |     Igen     |   Nem       |
-|Az Azure HDInsight Spark *     |   Igen       |   Nem       |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Igen       |    Nem      |
+|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Igen       |    Nem      |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Igen        |  Nem        |
+|Az Azure Data Lake Store<sup>[1](#tab1400a)</sup>     |   Igen       |    Nem      |
+|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     Igen     |   Nem       |
+|Az Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup> [3](#databricks)</sup>     |   Igen       |   Nem       |
 ||||
 
-\* Tabular 1400-modellekkel csak.
+<a name="tab1400a">1</a> táblázatos 1400-as és újabb modellek csak.   
+<a name="azsqlmanaged">2</a> támogatott az azure SQL Database felügyelt példányain. Mivel a felügyelt példány az Azure virtuális hálózaton belüli magánhálózati IP-címmel, egy helyszíni Adatátjáróra szükség.   
+<a name="databricks">3</a> azure Databricks a Spark-összekötő használata jelenleg nem támogatott.
+
 
 **Szolgáltató**   
 A memóriában, és csatlakozik az Azure-adatforrás DirectQuery-modellekben használata a .NET-keretrendszer adatszolgáltatója az SQL Server.
@@ -57,31 +60,31 @@ Csatlakozás helyszíni erőforrásait és Azure-AS-kiszolgálóhoz szükséges 
 |Adatforrás  |  
 |---------|---------|
 |Access-adatbázis     |  
-|Active Directory*     |  
+|Az Active Directory<sup>[1](#tab1400b)</sup>     |  
 |Analysis Services     |  
 |Analytics Platform System     |  
-|Dynamics CRM *     |  
+|A Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
 |Excel-munkafüzet     |  
-|Exchange*     |  
-|Mappa *     |
-|IBM Informix * (bétaverzió) |
-|JSON-dokumentum *     |  
-|A bináris * sorok     | 
+|Exchange<sup>[1](#tab1400b)</sup>     |  
+|Folder<sup>[1](#tab1400b)</sup>     |
+|IBM Informix<sup>[1](#tab1400b) </sup> (bétaverzió) |
+|JSON-dokumentumok<sup>[1](#tab1400b)</sup>     |  
+|A bináris sorok<sup>[1](#tab1400b)</sup>     | 
 |MySQL-adatbázis     | 
-|OData-adatcsatorna *     |  
+|OData-csatorna<sup>[1](#tab1400b)</sup>     |  
 |ODBC-lekérdezés     | 
 |OLE DB     |   
-|Postgre SQL Database *    | 
-|Salesforce-objektumok * |  
-|Salesforce-jelentések * |
-|AZ SAP HANA *    |  
-|SAP Business Warehouse *    |  
-|SharePoint*     |   
+|Postgre SQL-adatbázis<sup>[1](#tab1400b)</sup>    | 
+|Salesforce-objektumok<sup>[1](#tab1400b)</sup> |  
+|Salesforce-jelentések<sup>[1](#tab1400b)</sup> |
+|AZ SAP HANA<sup>[1](#tab1400b)</sup>    |  
+|SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
+|SharePoint<sup>[1](#tab1400b)</sup>     |   
 |Sybase-adatbázis     |  
-|XML-tábla *    |  
+|XML-táblázatok<sup>[1](#tab1400b)</sup>    |  
 |||
  
-\* Tabular 1400-modellekkel csak.
+<a name="tab1400b">1</a> táblázatos 1400-as és újabb modellek csak.
 
 ## <a name="specifying-a-different-provider"></a>Adjon meg egy másik szolgáltató
 

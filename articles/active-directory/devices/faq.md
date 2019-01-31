@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2010
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 02a961f799ebd8d290385e6be9a3081695453f5d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 513b1d7468700076ae4d3fd46284ef88d5f28c51
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093579"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296169"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
@@ -176,7 +176,7 @@ Ez a viselkedés nem vonatkozik semmilyen más felhasználó, aki az adott eszk�
 
 **K: Miért látok a *Hoppá... hiba történt!* párbeszédpanel jelenik meg az Azure AD join számítógépre?**
 
-**VÁLASZ:** Ez a hiba akkor fordul elő, ha beállította az Azure Active Directory-regisztráció az Intune-nal. Győződjön meg arról, hogy a felhasználó, aki az Azure AD-csatlakozás próbál rendelkezik-e a megfelelő Intune-licenccel. További információkért lásd: [Windows-eszközök regisztrációjának beállítása](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
+**VÁLASZ:** Ez a hiba akkor fordul elő, ha beállította az Azure Active Directory-regisztráció az Intune-nal. Győződjön meg arról, hogy a felhasználó, aki az Azure AD-csatlakozás próbál rendelkezik-e a megfelelő Intune-licenccel. További információkért lásd: [Windows-eszközök regisztrációjának beállítása](https://docs.microsoft.com/intune/windows-enroll#azure-active-directory-enrollment).  
 
 ---
 

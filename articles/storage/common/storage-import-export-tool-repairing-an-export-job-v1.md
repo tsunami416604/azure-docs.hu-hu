@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: ef5a5f81c5eb3994f62469139c6e835bd802eaa9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 395ff654bcacf1a4f70a9032492deb2a9d5202f3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522723"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454759"
 ---
 # <a name="repairing-an-export-job"></a>Exportálási feladat javítása
 Exportálási feladat befejezését követően a Microsoft Azure Import/Export eszköz a helyszíni futtathatja:  
@@ -35,11 +35,11 @@ A következő paraméterek adható **RepairExport**:
 |**r: < RepairFile\>**|Kötelező. A javítási fájlt, amely nyomon követi a folyamatot a javítás, és lehetővé teszi, hogy folytatni az megszakított javítását elérési útja. Minden olyan meghajtó csak egy javítási fájlnak kell lennie. Amikor egy adott meghajtó javítás, fog adja át az elérési út egy javítási fájlba, amely még nem létezik. Az megszakított javítását folytatásához be egy meglévő helyreállítási fájl nevét kell átadnia. A javítási fájlt a cél meghajtó megfelelő mindig meg kell adni.|  
 |**/ logdir: < LogDirectory\>**|Választható. A naplózási könyvtár. Ez a könyvtár részletes naplófájlok lesz írva. Ha nincs naplókönyvtár van megadva, a naplózási könyvtár az aktuális könyvtárban lesz.|  
 |**/ d: < TargetDirectory\>**|Kötelező. A könyvtár ellenőrzése és javítása. Ez általában a az export-meghajtó gyökérkönyvtárát, de sikerült is kell egy hálózati fájlmegosztásra tartalmazó egy másolatot az exportált fájlokat.|  
-|**/BK: < BitLockerKey\>**|Választható. A BitLocker-kulcsot kell megadnia, ha azt szeretné, hogy az eszköz zárolásának feloldásához egy titkosított az exportált fájlok tárolására.|  
-|**/sn: < StorageAccountName\>**|Kötelező. A storage-fiók neve az exportálási feladatot.|  
-|**/SK: < StorageAccountKey\>**|**Szükséges** csak, ha nincs megadva egy SAS-tárolót. A fiókkulcs a storage-fiókját az exportálási feladatot.|  
-|**/csas: < ContainerSas\>**|**Szükséges** csak, ha nincs megadva a tárfiók-kulcsot. A tároló SAS a blobok az exportálási feladatot társított eléréséhez.|  
-|**/ CopyLogFile: < DriveCopyLogFile\>**|Kötelező. A meghajtó másolása naplófájl elérési útja. A fájlt a Windows Azure Import/Export szolgáltatás által létrehozott, és a feladathoz hozzárendelt blob storage-ból letölthető. A log fájl másolása sikertelen blobok vagy fájlokat, amelyek javításra szorul kapcsolatos információkat tartalmazza.|  
+|**/bk:<BitLockerKey\>**|Választható. A BitLocker-kulcsot kell megadnia, ha azt szeretné, hogy az eszköz zárolásának feloldásához egy titkosított az exportált fájlok tárolására.|  
+|**/sn:<StorageAccountName\>**|Kötelező. A storage-fiók neve az exportálási feladatot.|  
+|**/sk:<StorageAccountKey\>**|**Szükséges** csak, ha nincs megadva egy SAS-tárolót. A fiókkulcs a storage-fiókját az exportálási feladatot.|  
+|**/csas:<ContainerSas\>**|**Szükséges** csak, ha nincs megadva a tárfiók-kulcsot. A tároló SAS a blobok az exportálási feladatot társított eléréséhez.|  
+|**/CopyLogFile:<DriveCopyLogFile\>**|Kötelező. A meghajtó másolása naplófájl elérési útja. A fájlt a Windows Azure Import/Export szolgáltatás által létrehozott, és a feladathoz hozzárendelt blob storage-ból letölthető. A log fájl másolása sikertelen blobok vagy fájlokat, amelyek javításra szorul kapcsolatos információkat tartalmazza.|  
 |**/ ManifestFile: < DriveManifestFile\>**|Választható. Az exportálási meghajtó Alkalmazásjegyzék-fájl elérési útja. Ezt a fájlt a Windows Azure Import/Export szolgáltatás által létrehozott és tárolt, az Exportálás meghajtón és opcionálisan a feladathoz társított storage-fiókban található blob.<br /><br /> Az MD5-kivonatát a fájlban található a rendszer ellenőrzi a exportálási meghajtón található fájlok tartalmát. Azokat a fájlokat, valószínűleg sérült határozza meg a rendszer letölti és a cél könyvtárak átírása.|  
   
 ## <a name="using-repairexport-mode-to-correct-failed-exports"></a>Javítsa ki a hibás exportálások RepairExport mód használata  

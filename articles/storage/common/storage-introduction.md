@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 01/02/2019
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: dc7932f197931a0fbf1dde924eb70ca18f6f9748
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.subservice: common
+ms.openlocfilehash: a82ea1e7f584cd9cab794d147c3f19f04e23732b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065545"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474802"
 ---
 # <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -31,7 +31,7 @@ Az Azure Storage ezeket az adatszolgáltatásokat tartalmazza:
 
 - [Azure-Blobok](../blobs/storage-blobs-introduction.md): Nagymértékben skálázható objektumtároló a szöveges és bináris adatokat.
 - [Az Azure Files](../files/storage-files-introduction.md): Felügyelt fájlmegosztások felhőalapú vagy helyszíni üzemelő példányok.
-- [Az Azure-üzenetsorok](../queues/storage-queues-introduction.md): Alkalmazás-összetevők közötti megbízható üzenetküldést üzenetküldési tárolóban. 
+- [Azure Queues](../queues/storage-queues-introduction.md): Alkalmazás-összetevők közötti megbízható üzenetküldést üzenetküldési tárolóban. 
 - [Azure-táblák](../tables/table-storage-overview.md): NoSQL-alapú tárolót a strukturált adatok séma nélküli tárolására.
 
 Mindegyik szolgáltatás tárfiókon keresztül érhető el. Első lépésként lásd: [Tárfiók létrehozása](storage-quickstart-create-account.md).

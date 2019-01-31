@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 01/29/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: 85c990d6bfd90c93dea764383453d7f3cc53efde
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 12c8b80b76c721962ca6180e531578b037997553
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152331"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294165"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Az Azure Active Directoryban egyéni tartománynevek kezelése
 
@@ -112,5 +112,4 @@ A tartománynevek az Azure Active Directoryban a legtöbb kezelési feladatot a 
 
 * [Egyéni tartománynevek hozzáadása](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Távolítsa el az Exchange levelezési címmel rendelkező biztonsági csoportok az Exchange felügyeleti központban az egyéni tartománynév az Azure ad-ben](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [Az Azure ad-ben az alkalmazások hivatkozás egy másik tartomány frissítése](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad#updating-an-application)
 * [Egyéni tartománynév ForceDelete Microsoft Graph API-val](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete)

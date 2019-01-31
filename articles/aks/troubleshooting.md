@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: fd3d1c464c6f2d4cbecd715db0689581ca141769
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 17f6971cfa2dcd8c8988edc063c89859abec5367
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654070"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468835"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -66,28 +66,3 @@ Győződjön meg arról, hogy az alapértelmezett hálózati biztonsági csoport
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-problem"></a>I frissítésével, vagy méretezheti a tapasztalataimat és érkeznek meg hozzám a "üzenet: Hiba a "ImageReference" tulajdonság módosítása nem engedélyezett".  Hogyan lehet kijavítani a hibát a probléma?
 
 Előfordulhat, hogy lehet első ezt a hibát, mert az ügynökcsomópontok az AKS-fürtben lévő címkéket módosította. Módosítása és törlése a címkék és egyéb tulajdonságait a MC_ * erőforráscsoportban lévő erőforrásokat váratlan eredményekhez vezethet. Az AKS MC_ * tartozó az erőforrások módosítását a fürt a szolgáltatásiszint-célkitűzés (SLO) működésképtelenné válik.
-
-## <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>Hogyan újíthatom meg a szolgáltatás egyszerű titka a egy AKS-fürtben?
-
-Alapértelmezés szerint az AKS-fürtök jönnek létre, amely egy éves lejárati ideje szolgáltatásnévvel. Az Ön közelében a lejárati dátum alaphelyzetbe állíthatja a bővítése az egyszerű szolgáltatás egy további időszakban a hitelesítő adatokat.
-
-Az alábbi példa végrehajtja ezeket a lépéseket:
-
-1. Lekérdezi a szolgáltatásnév-Azonosítót a fürt használatával a [az aks show](/cli/azure/aks#az-aks-show) parancsot.
-1. Megjeleníti a szolgáltatás titkos ügyfélkódja segítségével a [az ad sp hitelesítő adatok listája](/cli/azure/ad/sp/credential#az-ad-sp-credential-list).
-1. Az egyszerű szolgáltatás használatával egy másik egyéves terjeszti ki a [az ad sp hitelesítő adat-visszaállítás](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) parancsot. A szolgáltatás titkos ügyfélkódja megfelelő működéséhez az AKS-fürtöt a azonosnak kell maradnia.
-
-```azurecli
-# Get the service principal ID of your AKS cluster.
-sp_id=$(az aks show -g myResourceGroup -n myAKSCluster \
-    --query servicePrincipalProfile.clientId -o tsv)
-
-# Get the existing service principal client secret.
-key_secret=$(az ad sp credential list --id $sp_id --query [].keyId -o tsv)
-
-# Reset the credentials for your AKS service principal and extend for one year.
-az ad sp credential reset \
-    --name $sp_id \
-    --password $key_secret \
-    --years 1
-```

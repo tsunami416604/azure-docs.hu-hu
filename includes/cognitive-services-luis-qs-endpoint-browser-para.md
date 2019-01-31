@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: e507a7c45e286473abe9b9e4365e80fb29eba2a4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 1b70c5e71c585524579171782dfdeda308592b30
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47044020"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478698"
 ---
 Ha szeretné látni, mit ad vissza egy LUIS előrejelzési végpont, tekintsen meg egy előrejelzési eredményt egy webböngészőben. Nyilvános alkalmazás lekérdezéséhez a saját kulcsára és az alkalmazásazonosítóra is szükség van. A nyilvános IoT-alkalmazás azonosítója, a `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, az első lépésben az URL-cím részeként van megadva.
 

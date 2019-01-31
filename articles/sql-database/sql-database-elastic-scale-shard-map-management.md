@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 77ef1fed7bbdb53898a688f14944b9b6b16773c7
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 01/25/2019
+ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200972"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476791"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontális felskálázás a szilánkleképezés-kezelővel rendelkező adatbázisok
 
@@ -40,11 +40,11 @@ Hozzon létre egy egybérlős modellbe a **list-hozzárendelési** horizontális
 
 ![Lista leképezés][1]
 
-A több-bérlős modell egy önálló adatbázis rendel hozzá a több bérlő (és a bérlők csoportok juttathatja el több adatbázis között). Ezt a modellt használja, ha várhatóan minden bérlő, kis méretű adatokat kell rendelkeznie. Ebben a modellben bérlők számos hozzárendelése egy adatbázis használatával **tartomány hozzárendelési**.
+A több-bérlős modell több bérlő rendel az egyes adatbázisok (és a bérlők csoportok juttathatja el több adatbázis között). Ezt a modellt használja, ha várhatóan minden bérlő, kis méretű adatokat kell rendelkeznie. Ebben a modellben bérlők számos hozzárendelése egy adatbázis használatával **tartomány hozzárendelési**.
 
 ![Tartomány leképezése][2]
 
-Megvalósíthat egy több-bérlős adatbázis modellt használja, vagy egy *lista leképezés* több bérlő hozzárendelése egy önálló adatbázis. Ha például DB1 bérlői azonosító 1 és 5 kapcsolatos információk tárolására szolgál, és DB2 7 bérlői és bérlői 10 adatait tárolja.
+Megvalósíthat egy több-bérlős adatbázis modellt használja, vagy egy *lista leképezés* több bérlő hozzárendelése az egyes adatbázisok. Ha például DB1 bérlői azonosító 1 és 5 kapcsolatos információk tárolására szolgál, és DB2 7 bérlői és bérlői 10 adatait tárolja.
 
 ![Több bérlő egyetlen DB][3]
 
@@ -57,7 +57,7 @@ Rugalmas méretezés a következő típusú horizontális skálázási kulcsokk�
 | egész szám |egész szám |
 | hosszú |hosszú |
 | GUID azonosítója |uuid |
-| byte]  |byte] |
+| byte[]  |byte[] |
 | dátum/idő | időbélyeg |
 | Időtartam | időtartam|
 | Datetimeoffset |offsetdatetime |

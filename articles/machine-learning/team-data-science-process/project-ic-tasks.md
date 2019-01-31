@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6684cc9a0166df9c6d230f6b2a8c05acec5f91b3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6a52907fa6c0e2483479031fbb3d1ad68a121d95
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136761"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475558"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>A csoportos adatelemzési folyamat a egy egyedi közreműködői feladatok
 
@@ -37,10 +37,10 @@ Hogyan hajtható végre a TDSP adatelemzési projektjéhez kapcsolatos utasítá
 
 Ebben az oktatóanyagban rövidített adattárak és a könyvtárakat. Ezeket a neveket könnyebben hajtsa végre a műveleteket az adattárak és a címtárak között. Ezen jelölés (**R** a Git-tárházak és **D** a dsvm-hez a helyi címtárak) szerepel a következő szakaszokban:
 
-- **R2**: A GroupUtilities tárházat a Git, a csoport kezelőjének úgy van beállítva, az Azure DevOps-csoport kiszolgálón.
-- **R4**: A TeamUtilities tárházat a Git, a Csapatvezető úgy állította be.
-- **R5**: A projektadattárat a Git, amely be lett állítva a projektvezető által.
-- **D2**: A helyi könyvtárban klónozott R2-ről.
+- **R2**: A Git, a csoport kezelőjének úgy van beállítva, az Azure DevOps-csoport kiszolgálón GroupUtilities tárház.
+- **R4**: A Git, a csapat vezető TeamUtilities tárházából állított be.
+- **R5**: A projekt tárházat, a Git, amely be lett állítva a projektvezető által.
+- **D2**: A helyi könyvtárban klónozása R2-ről.
 - **D4**: A helyi könyvtárban klónozható R4 a.
 - **D5**: A helyi könyvtárban klónozható R5 a.
 
@@ -60,7 +60,7 @@ A második **TeamUtilities** előfeltétel-adattárban nem kötelező, attól f�
 - Ha használ **Linuxos DSVM**, egy nyilvános SSH-kulcs létrehozása a dsvm-hez, és adja hozzá a csoport az Azure DevOps-szolgáltatásokkal. SSH kapcsolatos további információkért lásd: a **hozzon létre SSH nyilvános kulcs** című rész a [platformok és eszközök függelék](platforms-and-tools.md#appendix). 
 - Ha a csoport és/vagy érdeklődő néhány, a dsvm-hez csatlakoztatni kell az Azure file storage hozott létre, szerezheti be a az Azure file storage információkat belőlük. 
 
-## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>1 – 3. lépés: klónozza a csoportot, a csapat és a projekt tárház helyi számítógépre
+## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>1 – 3. lépés: Klónozott csoportba, a csapat és a projekt tárház helyi számítógépre
 
 Ez a szakasz útmutatást első három projektben egyes munkatársak feladatainak elvégzését: 
 
@@ -96,7 +96,7 @@ Győződjön meg arról, hogy megjelenik-e a három mappát a projekt könyvtár
 
 ![5](./media/project-ic-tasks/project-ic-5-three-repo-cloned-to-ic-linux.png)
 
-## <a name="step-4-5-mount-azure-file-storage-to-your-dsvm-optional"></a>4 – 5. lépés: az Azure file storage csatlakoztatása t a dsvm-hez (nem kötelező)
+## <a name="step-4-5-mount-azure-file-storage-to-your-dsvm-optional"></a>4 – 5. lépés: Az Azure file storage csatlakoztatása t a dsvm-hez (nem kötelező)
 
 Az Azure file storage csatlakoztatása t a dsvm-hez, lásd 4. szakasz utasításait a [csapat vezető feladatok egy adatelemzési csapatával](team-lead-tasks.md)
 

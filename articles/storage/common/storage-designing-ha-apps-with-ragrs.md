@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 718a8fb82c3d85baf94e2e9c316f40b964749912
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231363"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454943"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre álló alkalmazások tervezése
 
@@ -24,12 +24,12 @@ Felhőalapú infrastruktúrák, mint például az Azure Storage közös funkció
 
 Ez a cikk a GRS és RA-GRS összpontosít. A grs Tárolással az adatokat három példányban őrzi meg az elsődleges régióban a storage-fiók beállítása során kiválasztott. Három további másolatot készít egy Azure által megadott másodlagos régióban aszinkron módon karbantartása. RA-GRS, olvasási hozzáférés a másodlagos példány georedundáns tárolást kínál.
 
-Információ arról, hogy mely elsődleges régió párban mely másodlagos régióban lásd: [üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure párosított régiói](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Információ arról, hogy mely elsődleges régió párban mely másodlagos régióban lásd: [üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure – párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 Nincsenek kódrészletek szerepelni fog ebben a cikkben és a egy teljes példa, amely letölthető és futtatható végén mutató hivatkozást.
 
 > [!NOTE]
-> Az Azure Storage mostantól támogatja a zónaredundáns tárolás (ZRS), magas rendelkezésre állású alkalmazások létrehozásához. A ZRS redundancia igényeinek megfelelően számos alkalmazás egyszerű megoldást kínál. A ZRS védelmet nyújt az hardveres hibák esetén, vagy egyetlen adatközponton érintő súlyos vészhelyzetek esetére. További információkért lásd: [zónaredundáns tárolás (ZRS): az Azure Storage magas rendelkezésre állású alkalmazások](storage-redundancy-zrs.md).
+> Az Azure Storage mostantól támogatja a zónaredundáns tárolás (ZRS), magas rendelkezésre állású alkalmazások létrehozásához. A ZRS redundancia igényeinek megfelelően számos alkalmazás egyszerű megoldást kínál. A ZRS védelmet nyújt az hardveres hibák esetén, vagy egyetlen adatközponton érintő súlyos vészhelyzetek esetére. További információkért lásd: [zónaredundáns tárolás (ZRS): Azure Storage magas rendelkezésre állású alkalmazások](storage-redundancy-zrs.md).
 
 ## <a name="key-features-of-ra-grs"></a>RA-GRS főbb funkciói
 
@@ -204,8 +204,8 @@ Az alábbi táblázat egy példát, hogy mi történne, ha tagként számára eg
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Tranzakció válasz: <br> Alkalmazott beszúrása <br> az elsődleges entitás |                                   |                    | Elsődleges – beszúrni egy tranzakció<br> még nem replikált. |
 | T1       |                                                            | A tranzakció <br> replikálja a<br> másodlagos | T1 | Tranzakciós A másodlagos replikálja. <br>Utolsó szinkronizálás időpontja frissítve.    |
-| T2.       | "B" tranzakció<br>Frissítés<br> Alkalmazott entitás<br> az elsődleges  |                                | T1                 | Tranzakció írt elsődleges, a B<br> még nem replikált.  |
-| T3       | C: tranzakció<br> Frissítés <br>Rendszergazda<br>a szerepkör-entitás<br>elsődleges |                    | T1                 | Tranzakció írt elsődleges, C<br> még nem replikált.  |
+| T2       | "B" tranzakció<br>Frissítés<br> Alkalmazott entitás<br> az elsődleges  |                                | T1                 | Tranzakció írt elsődleges, a B<br> még nem replikált.  |
+| T3       | Transaction C:<br> Frissítés <br>Rendszergazda<br>a szerepkör-entitás<br>elsődleges |                    | T1                 | Tranzakció írt elsődleges, C<br> még nem replikált.  |
 | *T4*     |                                                       | Tranzakció C <br>replikálja a<br> másodlagos | T1         | Tranzakció replikálja a másodlagos C.<br>Nincs frissítve, mert LastSyncTime <br>tranzakció B még nem replikálódott.|
 | *T5*     | Entitások olvasása <br>a másodlagos                           |                                  | T1                 | A régi értéket alkalmazott <br> entitás, mert a tranzakció B nem <br> még replikált. Az új értéket kap<br> rendszergazdai szerepkör entitás mert C<br> replikálja. Utolsó szinkronizálás időpontja még nem.<br> lett frissítve, mert a tranzakció B<br> még nem replikálódnak. Azt is megadhatja, hogy a<br>rendszergazdai szerepkör entitás nem konzisztens <br>mivel az entitás dátum/idő után <br>a legutóbbi szinkronizálás időpontja. |
 | *T6*     |                                                      | B tranzakció<br> replikálja a<br> másodlagos | T6                 | *T6* – C keresztül minden tranzakciónak kell <br>lettek replikálva, a legutóbbi szinkronizálás időpontja<br> frissül. |

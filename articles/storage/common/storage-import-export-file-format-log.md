@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 2ae44edf0d9356000f64ab72fd609f1921cf095c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: cd3ae85e88151e234d42a29ad871a18c7829b05c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316588"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454844"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Az Azure Import/Export szolgáltatás naplófájljainak formátuma
 Ha a Microsoft Azure Import/Export szolgáltatás végrehajt egy műveletet az importálási feladat vagy exportálási feladat részeként egy meghajtón, naplók írja a blokkblobok az adott feladathoz társított storage-fiókban.  
@@ -35,8 +35,8 @@ Az alábbi táblázat a lehetséges beállítások:
 |---------------------------|----------------------------------------------|---------------------------|  
 |Tárfiók kulcsa|Alapértelmezett érték|Nevű tárolóban `waimportexport`, azaz az alapértelmezett tároló. Példa:<br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
 |Tárfiók kulcsa|Felhasználó által megadott értéket|A felhasználó által nevű tárolóban. Példa:<br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
-|Tároló SAS|Alapértelmezett érték|Nevű virtuális könyvtár `waimportexport`, amely az alapértelmezett nevet, a tároló SAS megadott alatt.<br /><br /> Például, ha a megadott SAS a feladat van `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, akkor válassza a napló helye `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
-|Tároló SAS|Felhasználó által megadott értéket|A felhasználó, a tároló SAS megadott alatt nevű virtuális könyvtárat.<br /><br /> Például, ha a megadott SAS a feladat van `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, és a megadott virtuális könyvtár neve `mylogblobs`, majd a napló helye lesz `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
+|Container SAS|Alapértelmezett érték|Nevű virtuális könyvtár `waimportexport`, amely az alapértelmezett nevet, a tároló SAS megadott alatt.<br /><br /> Például, ha a megadott SAS a feladat van `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, akkor válassza a napló helye `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
+|Container SAS|Felhasználó által megadott értéket|A felhasználó, a tároló SAS megadott alatt nevű virtuális könyvtárat.<br /><br /> Például, ha a megadott SAS a feladat van `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, és a megadott virtuális könyvtár neve `mylogblobs`, majd a napló helye lesz `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
   
 Meghívásával kérheti le a hibát, és a részletes naplók URL-CÍMÉT a [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet. A naplók a meghajtó feldolgozás befejeződése után érhetők el.  
   
@@ -101,19 +101,19 @@ properties-status ::=
 
 A következő táblázat ismerteti az elemek a naplófájl.  
   
-|XML-elem|Típus|Leírás|  
+|XML-elem|Typo|Leírás|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML-elem|Meghajtó a napló jelöli.|  
 |`Version`|Attribútum, karakterlánc|A napló formátuma verziója.|  
-|`DriveId`|Karakterlánc|A meghajtó hardver sorozatszáma.|  
-|`Status`|Karakterlánc|A meghajtó feldolgozási állapotát. Tekintse meg a `Drive Status Codes` tábla alatt további információt.|  
+|`DriveId`|String|A meghajtó hardver sorozatszáma.|  
+|`Status`|String|A meghajtó feldolgozási állapotát. Tekintse meg a `Drive Status Codes` tábla alatt további információt.|  
 |`Blob`|Beágyazott XML-elem|Egy blob jelöli.|  
-|`Blob/BlobPath`|Karakterlánc|A blob URI azonosítója.|  
-|`Blob/FilePath`|Karakterlánc|A meghajtón található a fájl relatív elérési útja.|  
+|`Blob/BlobPath`|String|A blob URI azonosítója.|  
+|`Blob/FilePath`|String|A meghajtón található a fájl relatív elérési útja.|  
 |`Blob/Snapshot`|DateTime|A blob, csak exportálási feladatokhoz pillanatfelvétel-verzió.|  
 |`Blob/Length`|Egész szám|A teljes hossza (bájt) a blob.|  
 |`Blob/LastModified`|DateTime|A dátum/idő, amelyet a blob, csak exportálási feladatokhoz.|  
-|`Blob/ImportDisposition`|Karakterlánc|Importálás rendezése, a blob csak importálási feladatokhoz.|  
+|`Blob/ImportDisposition`|String|Importálás rendezése, a blob csak importálási feladatokhoz.|  
 |`Blob/ImportDisposition/@Status`|Attribútum, karakterlánc|Az importálás disposition állapota.|  
 |`PageRangeList`|Beágyazott XML-elem|Egy lapblobra laptartomány listáját jelöli.|  
 |`PageRange`|XML-elem|Tartományt jelöli.|  
@@ -130,17 +130,17 @@ A következő táblázat ismerteti az elemek a naplófájl.
 |`Block/@Status`|Attribútum, karakterlánc|A blokk feldolgozási állapotát.|  
 |`Metadata`|Beágyazott XML-elem|A blob metaadatait jelöli.|  
 |`Metadata/@Status`|Attribútum, karakterlánc|A blob metaadatainak feldolgozási állapotát.|  
-|`Metadata/GlobalPath`|Karakterlánc|A globális metaadatait tartalmazó fájl relatív elérési útja.|  
+|`Metadata/GlobalPath`|String|A globális metaadatait tartalmazó fájl relatív elérési útja.|  
 |`Metadata/GlobalPath/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a globális metaadatait tartalmazó fájl.|  
-|`Metadata/Path`|Karakterlánc|A metaadatok fájl relatív elérési útja.|  
+|`Metadata/Path`|String|A metaadatok fájl relatív elérési útja.|  
 |`Metadata/Path/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a metaadatait tartalmazó fájl.|  
 |`Properties`|Beágyazott XML-elem|A blob tulajdonságai jelöli.|  
 |`Properties/@Status`|Attribútum, karakterlánc|Állapotát, például a fájl nem található, a blobtulajdonságok feldolgozása befejeződött.|  
-|`Properties/GlobalPath`|Karakterlánc|A globális tulajdonságok fájl relatív elérési útját.|  
+|`Properties/GlobalPath`|String|A globális tulajdonságok fájl relatív elérési útját.|  
 |`Properties/GlobalPath/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a globális tulajdonságok fájl.|  
-|`Properties/Path`|Karakterlánc|A tulajdonságok fájl relatív elérési útját.|  
+|`Properties/Path`|String|A tulajdonságok fájl relatív elérési útját.|  
 |`Properties/Path/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a tulajdonságok fájl.|  
-|`Blob/Status`|Karakterlánc|A blob feldolgozási állapotát.|  
+|`Blob/Status`|String|A blob feldolgozási állapotát.|  
   
 ## <a name="drive-status-codes"></a>Meghajtó állapotkódok  
 A következő táblázat felsorolja a meghajtó feldolgozása állapotkódjai.  

@@ -6,16 +6,16 @@ author: hirokib
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: d861e1d4cd891e1f1e1be3209ae4dfdbf4420165
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4a45d00559a84c178ab760acf8616f97ce7bb57c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718298"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466285"
 ---
 # <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Ajánlott eljárások az Azure SQL Database rugalmas lekérdezése a adatok elérését az Azure SQL Data Warehouse
 Ismerje meg, ajánlott eljárások a rugalmas lekérdezés adatok elérését az Azure SQL Data Warehouse, Azure SQL Database-ből. 
@@ -61,7 +61,7 @@ Ajánlott eljárások segítségével hatékonyan elastic query használata.
 ### <a name="general"></a>Általános kérdések
 
 - Távoli lekérdezés végrehajtása használata esetén győződjön meg arról, Ön csak szükséges oszlopok kiválasztásával, és a megfelelő szűrők alkalmazása. Nem csak nem ezzel a növekedéssel szükséges számítási, de azt is méretét is megnöveli az eredményhalmaz, ezért az adatok mennyisége kell helyezhetők át a két példánnyal.
-- A fürtözött oszlopcentrikus analytiIcal teljesítmény adatok elemzési célokból az SQL Data Warehouse és az SQL Database karbantartása.
+- A fürtözött oszlopcentrikus az elemzési teljesítmény adatok elemzési célokból az SQL Data Warehouse és az SQL Database karbantartása.
 - Győződjön meg arról, hogy a forrástábla a lekérdezés- és adatátviteli vannak particionálva.
 - Győződjön meg arról, az SQL database-példányok gyorsítótárként használt vannak particionálva, engedélyezheti a részletesebb frissítések és könnyebb kezelhetőség. 
 - Ideális esetben használja a PremiumRS-adatbázisok, mert fürtözött oszlopcentrikus indexelés és a hangsúly ezúttal az i/o-igényes számítási feladatokhoz a prémium adatbázisok kedvezményes áron analitikai előnyeinek tartalmaznak.
@@ -125,29 +125,29 @@ Használja az Azure SQL adatbázis-mikor:
 
 ## <a name="faq"></a>GYIK
 
-K: használhatok adatbázisokat rugalmas lekérdezés a rugalmas készletben lévő?
+KÉRDÉS: Használható az Elastic Query rugalmas készletben lévő adatbázisok?
 
 V: Igen. SQL-adatbázisok, rugalmas készletben lévő rugalmas lekérdezés használhatja. 
 
-K: van egy rugalmas lekérdezés használható hány adatbázist tartozó napi korlát?
+KÉRDÉS: A rugalmas lekérdezés használható hány adatbázist tartozó napi korlát van?
 
-V: nincs nem rögzített cap hány adatbázist a rugalmas lekérdezés is használható. Azonban minden egyes Elastic Query (lekérdezés, nyomja le az SQL Data Warehouse) beleszámít normál egyidejűségi korlátját.
+V: Nincs rögzített nyílt hány adatbázist a rugalmas lekérdezés is használható. Azonban minden egyes Elastic Query (lekérdezés, nyomja le az SQL Data Warehouse) beleszámít normál egyidejűségi korlátját.
 
-K: az Elastic Query érintett DTU korlátozva van?
+KÉRDÉS: Dtu-k korlátozva van szó rugalmas lekérdezés?
 
 V: DTU-korlátokon nincsenek bármely eltérően az Elastic Query szinttel. A normál házirend van, úgy, hogy a logikai kiszolgálók DTU korlátokkal rendelkeznek megelőzni a véletlen túlköltekezés körülményeket. Ha engedélyezi a rugalmas lekérdezés mellett egy SQL Data Warehouse-példányokhoz több adatbázist, váratlanul előfordulhat, hogy eléri a korlátot. Ha ez történik, a logikai kiszolgáló dtu-k korlátjának növelését, kérelmet kell benyújtania. Növelheti a kvóta által [támogatási jegy létrehozása](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) és kiválasztásával *kvóta* a kérelem típusaként
 
-K: használhatok sor szintű biztonsági/dinamikus adatok maszkolása a rugalmas lekérdezés?
+KÉRDÉS: Használható a sor szintű biztonsági/dinamikus adatok maszkolása a rugalmas lekérdezés?
 
-V: ügyfelek, akik szeretne használni a speciális biztonsági funkciók az SQL Database teheti első áthelyezésével és az adatok tárolása az SQL Database-ben. A külső táblák használatával lekérdezett adatok jelenleg sorszintű biztonság vagy DDM nem vonatkozik. 
+V: Speciális biztonsági funkciók használata az SQL Database kívánó ügyfelek teheti első áthelyezésével és az adatok tárolása az SQL Database-ben. A külső táblák használatával lekérdezett adatok jelenleg sorszintű biztonság vagy DDM nem vonatkozik. 
 
-K: I írhat saját SQL database-példány a data warehouse-példányhoz?
+KÉRDÉS: E írhat saját SQL database-példány a data warehouse-példányhoz?
 
-V: jelenleg ez a funkció nem támogatott. Látogasson el a [Visszajelzésküldő oldala] [ Feedback page] , hozzon létre vagy szavazzon ezt a funkciót, ha ez a funkció, a jövőbeli szeretné. 
+V: Ez a funkció jelenleg nem támogatott. Látogasson el a [Visszajelzésküldő oldala] [ Feedback page] , hozzon létre vagy szavazzon ezt a funkciót, ha ez a funkció, a jövőbeli szeretné. 
 
-K: használhatok térbeli típusok, pl. geometry és geography?
+KÉRDÉS: Használható a térbeli típusok, pl. geometry és geography?
 
-V: tárolhatók térbeli az SQL Data Warehouse, a varbinary(max) értéket. Amikor ezeket az oszlopokat rugalmas lekérdezés használatával lekérdezheti, átválthat őket a megfelelő típusú futásidőben.
+V: Az SQL Data Warehouse térbeli típusok varbinary(max) értékekként tárolhatja. Amikor ezeket az oszlopokat rugalmas lekérdezés használatával lekérdezheti, átválthat őket a megfelelő típusú futásidőben.
 
 ![Térbeli típusok](./media/sql-data-warehouse-elastic-query-with-sql-database/geometry-types.png)
 

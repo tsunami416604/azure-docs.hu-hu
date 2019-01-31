@@ -1,6 +1,6 @@
 ---
-Cím: "1. lépés: Hozzon létre egy munkaterületet "titleSuffix: Azure Machine Learning Studio description: "A Develop egy prediktív megoldás a forgatókönyv 1. lépés: Ismerje meg, hogyan állítható be egy új Azure Machine Learning Studio-munkaterület. "
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: "1. lépés: Hozzon létre egy munkaterületet "titleSuffix: Azure Machine Learning Studio description: "A Develop egy prediktív megoldás a forgatókönyv 1. lépés: Ismerje meg, hogyan állítható be egy új Azure Machine Learning Studio-munkaterület. "
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 Szerző: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/23/2017
 ---

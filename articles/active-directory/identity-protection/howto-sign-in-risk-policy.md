@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 81796e30ea9f1277f9265e86a712fbefea5adee3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ff346f9c842672b426a75eadaa278ca91de5d9c6
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160394"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297490"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>kézikönyv: A bejelentkezési kockázati szabályzat konfigurálása
 
@@ -77,7 +77,7 @@ Azonban biztonsági okokból a beállítás csak akkor működik, amely a multi-
 
 Ha azt szeretné, a többtényezős hitelesítés megkövetelése a kockázatos bejelentkezések, a következőket kell elvégeznie:
 
-1. Engedélyezze a [többtényezős hitelesítési regisztrációs házirend](#multi-factor-authentication-registration-policy) az érintett felhasználók számára.
+1. Engedélyezze a [többtényezős hitelesítési regisztrációs házirend](howto-mfa-policy.md) az érintett felhasználók számára.
 
 2. Az érintett felhasználókat, hogy jelentkezzen be a kockázatos munkamenet az MFA-regisztráció végrehajtásához szükséges.
 

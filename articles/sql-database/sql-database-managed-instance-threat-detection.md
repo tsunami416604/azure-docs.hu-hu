@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/06/2018
-ms.openlocfilehash: f87b7093a732639db8a53ebec68fcae8f29735f3
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.date: 01/25/2019
+ms.openlocfilehash: 59a3b4a4e1b08a9a9985836a9f9be44d1eff9c71
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158669"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472065"
 ---
 # <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példány Fenyegetésészlelési funkciójának (előzetes verzió) konfigurálása
 
@@ -25,7 +25,7 @@ Az Azure SQL [Fenyegetésészlelés](sql-database-threat-detection-overview.md) 
 
 Is fogadhatja az értesítéseket keresztül észlelt fenyegetésről [e-mail-értesítések](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) vagy [Azure Portalon](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)
 
-[Veszélyforrások Detektálása](sql-database-threat-detection-overview.md) része a [SQL komplex veszélyforrások elleni védelem](sql-advanced-threat-protection.md) (ATP) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. A Fenyegetésészlelés érheti el és a központi SQL ATP portálján felügyelt. Fenyegetés-észlelési szolgáltatás 15 USD/hó / felügyelt példány díjának 30 napig ingyenesen.
+[Veszélyforrások Detektálása](sql-database-threat-detection-overview.md) része a [SQL speciális adatbiztonság](sql-advanced-threat-protection.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. A Fenyegetésészlelés érheti el és a központi SQL ADS portálon keresztül kezelhetők. Fenyegetés-észlelési szolgáltatás 15 USD/hó / felügyelt példány díjának 30 napig ingyenesen.
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Az Azure Portalon a felügyelt példány Fenyegetésészlelési beállítása
 
@@ -43,6 +43,6 @@ Is fogadhatja az értesítéseket keresztül észlelt fenyegetésről [e-mail-é
 
 - Tudjon meg többet [Fenyegetésészlelés](sql-database-threat-detection-overview.md).
 - Felügyelt példánnyal kapcsolatos további tudnivalókat a [mit jelent a felügyelt példány](sql-database-managed-instance.md).
-- Tudjon meg többet [önálló adatbázis Fenyegetésészlelési](sql-database-threat-detection.md).
+- Tudjon meg többet [Fenyegetésészlelés önálló adatbázis](sql-database-threat-detection.md).
 - Tudjon meg többet [felügyelt példány naplózás](https://go.microsoft.com/fwlink/?linkid=869430).
 - Tudjon meg többet [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro).

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 9819b2bf3c5e5a07d788dc7f51b674a07e6c41ef
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: common
+ms.openlocfilehash: 2c8f27c9b5b9c13cd6cb722bafb23dd19b944d27
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972337"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474683"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Annak eldöntése, mikor érdemes használni az Azure-Blobok, az Azure Files és az Azure-lemezek
 
@@ -29,7 +29,7 @@ Az alábbi táblázat összehasonlítja a fájlok, Blobok és lemezek, és minde
 | **Azure Blobs** | Ügyfélkódtárak biztosít és a egy [REST-felület](/rest/api/storageservices/blob-service-rest-api) , amely lehetővé teszi a strukturálatlan adatok tárolása és elérése a blokkblobok nagy méretű.<br/><br/>Emellett támogatja [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) vállalati big Data típusú adatok elemzési megoldásokat. | Szeretné, hogy az alkalmazás támogatja a streamelési és a véletlenszerű adathozzáférési forgatókönyvek esetében.<br/><br/>Szeretné tudni alkalmazásadatok bárhonnan elérheti.<br/><br/>Szeretné hozhat létre egy vállalati a data lake az Azure-ban, és hajtsa végre a big data-elemzés. |
 | **Azure-lemezek** | Ügyfélkódtárak biztosít és a egy [REST-felület](/rest/api/compute/manageddisks/disks/disks-rest-api) , amely lehetővé teszi az adatok állandó tárolása és elérése a csatlakoztatott virtuális merevlemezről. | Olvasási és írási adatok állandó lemezt natív fájlrendszer API-kat használó alkalmazások átemelése szeretné.<br/><br/>Ez nem szükséges a virtuális gép, amelyhez a lemez csatlakozik kívülről adatokat tárolni szeretné. |
 
-## <a name="comparison-files-and-blobs"></a>Összehasonlítás: Blobok és fájlok
+## <a name="comparison-files-and-blobs"></a>Összehasonlítás: Fájl és BLOB
 
 Az alábbi táblázat hasonlítja össze az Azure Files az Azure Blobszolgáltatása révén.  
   
@@ -63,7 +63,7 @@ Az alábbi táblázat hasonlítja össze az Azure Files Azure-lemezek.
 |Hitelesítés|Beépített|Net use beállítása|  
 |Felesleges tartalmak törlése|Automatikus|Manuális|  
 |Adatelérési REST használatával|A virtuális merevlemez található fájl nem érhető el|Olyan megosztáson tárolt fájlok elérhetők|  
-|Max. mérete|4 TiB-lemez|5 TiB fájlmegosztás és a megosztáson belüli 1 TiB-fájl|  
+|Max. méret|4 TiB-lemez|5 TiB fájlmegosztás és a megosztáson belüli 1 TiB-fájl|  
 |Maximális iops-érték|500 IOps|1000 IOps|  
 |Teljesítmény|Akár 60 MiB/s lemezenként|Cél értéke 60 MiB/s fájlmegosztásonként (beszerezheti a nagyobb, magasabb i/o-méretek esetében)|  
 

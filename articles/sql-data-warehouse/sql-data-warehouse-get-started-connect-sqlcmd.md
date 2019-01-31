@@ -2,20 +2,20 @@
 title: Csatlakozás az Azure SQL Data Warehouse-hoz az sqlcmd használatával | Microsoft Docs
 description: Sqlcmd parancssori segédprogram használatával csatlakozhat, és az Azure SQL Data Warehouse lekérdezéséhez.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2534d668132db4c66b5e54c33849b76a8f93c348
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e0e423ef0503bc4d23fddf4e1b9ff985636d2ec2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976409"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463514"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Csatlakozás az SQL Data Warehouse-hoz az sqlcmd használatával
 > [!div class="op_single_selector"]
@@ -32,13 +32,13 @@ Az [sqlcmd][sqlcmd] parancssori segédprogramot az Azure SQL Data Warehouse lek�
 ## <a name="1-connect"></a>1. Kapcsolódás
 Az [sqlcmd][sqlcmd] használatának megkezdéséhez nyissa meg a parancssort, és írja be az **sqlcmd** kifejezést, majd a saját SQL Data Warehouse-adatbázisának kapcsolati sztringjét. A kapcsolati sztringben a következő paraméterekre van szükség:
 
-* **Kiszolgáló (-S):** Az űrlap-kiszolgáló `<`kiszolgálónév`>`. database.windows.net
-* **Adatbázis (-d):** Az adatbázis neve.
+* **Server (-S):** Az űrlap-kiszolgáló `<`kiszolgálónév`>`. database.windows.net
+* **Database (-d):** Az adatbázis neve.
 * **Enable Quoted azonosítók (-I):** Egy SQL Data Warehouse-példányhoz való csatlakozáshoz engedélyezni kell a határolójeles azonosítókat.
 
 Az SQL Server-hitelesítés használatához meg kell adnia a felhasználónév/jelszó paramétereit:
 
-* **Felhasználó (-U):** Az űrlap a kiszolgálói felhasználó `<`felhasználó`>`
+* **User (-U):** Az űrlap a kiszolgálói felhasználó `<`felhasználó`>`
 * **Jelszó (-P):** A felhasználóhoz tartozó jelszót.
 
 A kapcsolati sztring például a következőképpen nézhet ki:

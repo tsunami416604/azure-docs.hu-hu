@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0ed7d868f0e46e16224e15caaefd2d819c923f29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: d15e229595ded0f814ebc4048d428f044b59e16d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200751"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295729"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Az Azure Time Series Insights-környezet referenciaadatok kezelése a C# használatával
 
 Ez a cikk ismerteti egy példa C#-projektben a referencia-adatok az Azure Time Series Insights-környezet kezelése állíthat össze.
 
-## <a name="prerequistes"></a>Előfeltételeket
+## <a name="prerequisites"></a>Előfeltételek
 Fordítsa le és futtassa a mintakód előtt, kövesse az alábbi lépéseket:
 1. [Hozzon létre egy referencia-adatkészlet](time-series-insights-add-reference-data-set.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Felhasználók – az Azure Active Directory-csoportokkal terméklicencek közötti migrálása |} A Microsoft Docs
-description: Azt ismerteti, hogyan javasolt a felhasználók (Office 365 nagyvállalati E1 csomag és E3) különböző terméklicencek közötti migrálása Csoportalapú licenceléssel
+title: Felhasználók terméklicencek – Azure Active Directory-csoportokkal migrálása |} A Microsoft Docs
+description: Azt ismerteti, hogyan ajánlott a csoportban lévő felhasználók migrálása másik terméklicencek (Office 365 nagyvállalati E1 csomag és E3) használatával a Csoportalapú licencelés
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
@@ -13,13 +13,13 @@ ms.workload: identity
 ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: sumitp
-ms.custom: seo-update-jan
-ms.openlocfilehash: 847801b56fcafc3f1c349cf96690cdf09709b4ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: ea6159f487b35192e0e2137662a664a2796843c0
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198299"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294573"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Biztonságosan a felhasználók a Csoportalapú licencelés terméklicencek közötti migrálása
 

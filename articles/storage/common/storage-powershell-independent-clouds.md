@@ -7,19 +7,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: f7d5fcf1905200bc214a3ff42db9b7b511768dd0
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.subservice: common
+ms.openlocfilehash: 6a3fe8c7235a0cf475f188a3379e372cd777ce8c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214895"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477641"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Az Azure-PowerShell-lel független felhőkben tárolás kezelése
 
 A legtöbb ember használata az Azure nyilvános felhő a globális Azure üzemelő példányhoz. Vannak bizonyos független üzembe helyezések, a Microsoft Azure az adatszuverenitási miatt és így tovább. Ezek független üzembe helyezések nevezik "környezetekben." Az alábbi lista részletesen felsorolja az aktuálisan elérhető független felhőkben.
 
-* [Az Azure Government Cloud](https://azure.microsoft.com/features/gov/)
+* [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
 * [Kínában a 21Vianet által üzemeltetett Azure China Cloud](http://www.windowsazure.cn/)
 * [Az Azure német felhőben](../../germany/germany-welcome.md)
 
@@ -86,7 +86,7 @@ Ez a parancs az alábbi eredményeket adja vissza.
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
 | AzureGermanCloud | core.cloudapi.de|
-| AzureUSGovernment | Core.usgovcloudapi.NET |
+| AzureUSGovernment | core.usgovcloudapi.net |
 
 Összes tulajdonság a megadott környezet lekéréséhez hívja **Get-AzEnvironment** és adja meg a felhő nevét. Ez a kódrészlet tulajdonságok; listáját adja vissza. Keressen **StorageEndpointSuffix** a listában. Az alábbi példa a német felhőben van.
 

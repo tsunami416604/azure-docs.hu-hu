@@ -6,19 +6,19 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e6adbe5a0e5ce88db12637889e201b5a15a0556f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 57f20a6b3a8d2845b0459f05e7b9d9ccd8d44424
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139622"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463293"
 ---
-# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: használata Azure HDInsight Hadoop-fürtök
+# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: Az Azure HDInsight Hadoop-fürtök használata
 Ez az útmutató használjuk a [csoportos adatelemzési folyamat (TDSP)](overview.md) egy teljes körű forgatókönyvben. Használjuk egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolását, ismerje meg, és a nyilvánosan elérhető a szolgáltatás-mérnök adatainak [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet, és való az adatokat. Bináris és többosztályos besorolási és regressziós prediktív feladatok kezelésére, hogy ki, hogy az adatok az Azure Machine Learning modellek. 
 
 Ez az útmutató bemutatja, hogyan legyen kezelve a nagyobb adatkészletet, lásd: [csoportos adatelemzési folyamat – az Azure HDInsight Hadoop-fürtök az 1 TB-os adatkészlet](hive-criteo-walkthrough.md).
@@ -50,18 +50,18 @@ Utazás csatlakozni egyedi kulcsa\_adatokat és utazás\_diszkont tevődik össz
 ## <a name="mltasks"></a>Példák az előrejelzés
 Határozza meg, és az előrejelzések azt szeretné, hogy milyen adatok elemzése alapján. Ez segít tisztázni a feladatokat, meg kell adni a folyamat. Az alábbiakban három előrejelzési problémákat, hogy oldja meg a forgatókönyv példája. Ezek alapján a *tipp\_összeg*:
 
-- **Bináris osztályozás**: e tipp útnak fizették előrejelzésére. Azt jelenti egy *tipp\_összeg* nagyobb több, mint 0 USD pozitív példa, miközben egy *tipp\_összeg* negatív példa az 0 USD.
+- **Bináris osztályozás**: Előrejelezheti e tipp fizették útnak. Azt jelenti egy *tipp\_összeg* nagyobb több, mint 0 USD pozitív példa, miközben egy *tipp\_összeg* negatív példa az 0 USD.
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
-- **Többosztályos osztályozási**: tipp összegeket fizetnek az utazás számos előre jelezni. Hogy osztani a *tipp\_összeg* öt osztályokba:
+- **Többosztályos osztályozási**: Előre fizetett az utazás a tip összegek tartományán. Hogy osztani a *tipp\_összeg* öt osztályokba:
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0 and tip_amount <= $5
         Class 2: tip_amount > $5 and tip_amount <= $10
         Class 3: tip_amount > $10 and tip_amount <= $20
         Class 4: tip_amount > $20
-- **Regresszió feladat**: előre jelezni a tipp egy utazást fizetett mennyisége.  
+- **Regresszió feladat**: Előrejelezheti a tipp egy utazást fizetett mennyisége.  
 
 ## <a name="setup"></a>Fejlett analitikai egy HDInsight Hadoop-fürt beállítása
 > [!NOTE]
@@ -71,12 +71,12 @@ Határozza meg, és az előrejelzések azt szeretné, hogy milyen adatok elemzé
 
 Beállíthatja a speciális elemzésekhez, amely egy HDInsight-fürtöt három lépésben alkalmaz az Azure-környezet:
 
-1. [Hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md): ezt a tárfiókot az Azure Blob storage-adatok tárolására szolgál. A HDInsight-fürtök használt adatokat is itt található.
+1. [Hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md): Ezt a tárfiókot az Azure Blob storage-adatok tárolására szolgál. A HDInsight-fürtök használt adatokat is itt található.
 2. [Az Azure HDInsight Hadoop-fürtök testreszabása a fejlett analitikai folyamat és technológia](customize-hadoop-cluster.md). Ebben a lépésben létrehoz egy HDInsight Hadoop-fürt összes csomópontjára telepítse a 64 bites Anaconda Python 2.7. Ne feledje, a HDInsight-fürt testreszabása során két fontos lépésből áll.
    
    * Ne feledje, a storage-fiók létrehozásakor, a HDInsight-fürt az 1. lépésben létrehozott. Ehhez a tárfiókhoz fér hozzá a fürtön belül feldolgozott adatok.
    * Miután a fürt létrehozása távoli hozzáférés engedélyezése a fürt fő csomópontjának. Keresse meg a **konfigurációs** lapot, majd **távoli engedélyezése**. Ebben a lépésben meghatározza a távoli bejelentkezéshez használt felhasználói hitelesítő adatokat.
-3. [Hozzon létre egy Azure Machine Learning-munkaterület](../studio/create-workspace.md): gépi tanulási modelleket hozhat létre a munkaterületet használja. Ez a feladat egy kezdeti adatfeltárás befejezése és lefelé-mintavétel után képes kezelni a HDInsight-fürt használatával.
+3. [Az Azure Machine Learning-munkaterület létrehozása](../studio/create-workspace.md): Ez a munkaterület használatával hozhat létre a machine learning-modellek. Ez a feladat egy kezdeti adatfeltárás befejezése és lefelé-mintavétel után képes kezelni a HDInsight-fürt használatával.
 
 ## <a name="getdata"></a>Beolvassa az adatokat nyilvános forráskódú
 > [!NOTE]
@@ -286,7 +286,7 @@ Hive-lekérdezések segítségével adatáttekintés és a Hive-táblákat betö
 * Hozzon létre bináris és többosztályos osztályozási címkék tipp alapul.
 * Hozzon létre a szolgáltatások úgy számítástechnika a közvetlen trip távolságot.
 
-### <a name="exploration-view-the-top-10-records-in-table-trip"></a>Feltárás: Tábla, utazás az első 10 rekordok megtekintése
+### <a name="exploration-view-the-top-10-records-in-table-trip"></a>Feltárás: A tábla, utazás az első 10 rekordok megtekintése
 > [!NOTE]
 > Ez általában az adatok adatszakértő feladat.
 > 
@@ -306,7 +306,7 @@ A rekordok egy kényelmes összetevőjeként fájlt mentheti. Az előző lekérd
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
-### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>Feltárás: Rekordok száma megtekintheti az egyes partíciók 12
+### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>Feltárás: A nézet az egyes 12 partícióra rekordok száma
 > [!NOTE]
 > Ez általában az adatok adatszakértő feladat.
 > 
@@ -435,7 +435,7 @@ A Hive-könyvtár használatával futtassa:
 
 A lekérdezés eredményeit egy helyi fájlba íródnak **C:\temp\queryoutput.tsv**.
 
-### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>Feltárás: Adatminőség érvénytelen hosszúsági és szélességi rekordok ellenőrzésével felméréséhez.
+### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>Feltárás: Érvénytelen hosszúsági és szélességi rekordok ellenőrzésével adatminőség felmérése
 > [!NOTE]
 > Ez általában az adatok adatszakértő feladat.
 > 
@@ -508,7 +508,7 @@ Futtassa a következő parancsot a Hadoop parancssori konzolból:
 
     hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
 
-### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>Feltárás: Számítási közvetlen hosszúság-szélesség végre két hely közötti távolság
+### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>Feltárás: COMPUTE közvetlen hosszúság-szélesség végre két hely közötti távolság
 > [!NOTE]
 > Ez általában az adatok adatszakértő feladat.
 > 
@@ -723,13 +723,13 @@ Az alábbiakban néhány részletek kapcsolatban a [adatok importálása] [ impo
 
 **HCatalog kiszolgáló URI**: Ha a fürt neve **abc123**, ez egyszerűen a: https://abc123.azurehdinsight.net.
 
-**Hadoop-felhasználói fiók nevét**: A felhasználó nevét, a fürt (nem a távelérési felhasználónév) választott.
+**Hadoop-felhasználói fiók nevét**: A felhasználónév, a fürt (nem a távelérési felhasználónév) választott.
 
-**Hadoop ser fiók jelszava**: a fürt (nem a távelérési jelszó) választott jelszó.
+**Hadoop ser fiók jelszava**: A fürt (nem a távelérési jelszó) választott jelszó.
 
-**Kimeneti adatok helyének**: Ez Azure kell van kiválasztva.
+**Kimeneti adatok helyének**: Ezt akkor kell kiválasztani, Azure lennie.
 
-**Az Azure storage-fiók neve**: a fürthöz társított az alapértelmezett tárfiók nevére.
+**Az Azure storage-fiók neve**: A fürthöz társított alapértelmezett tárfiók neve.
 
 **Az Azure container name**: Ez a fürt alapértelmezett tároló neve, és általában ugyanaz, mint a fürt nevét. Fürt nevű **abc123**, ez az abc123.
 
@@ -757,9 +757,9 @@ Az adatkészlet a kiindulási pontként most már használható a Machine Learni
 ### <a name="mlmodel"></a>A Machine Learning modellek készítése
 Most már folytathatja a modell létrehozásának és a modell üzembe helyezése [Machine Learning](https://studio.azureml.net). Az adatokat, ahhoz, hogy a korábban azonosított előrejelzési problémák megoldásához használja:
 
-- **Bináris osztályozás**: előre e tipp fizették útnak.
+- **Bináris osztályozás**: Előrejelzési e tipp fizették útnak.
 
-  **Használt learner:** két osztályú logisztikai regresszió
+  **Learner használt:** Kétosztályos logisztikai regresszió
 
   a. A probléma, a cél (vagy osztály) címke van **Formabontó**. Az eredeti lefelé mintavételezés adatkészlet tartalmaz néhány olyan oszlopot, amelyek ehhez a kísérlethez besorolási cél adatszivárgás. Különösen **tipp\_osztály**, **tipp\_összeg**, és **teljes\_összeg** fedik fel információkat a célként megadott címkével nem áll rendelkezésre a tesztelési idő. Hogy eltávolítása ezeket az oszlopokat veszi figyelembe a [Select Columns in Dataset] [ select-columns] modul.
 
@@ -777,13 +777,13 @@ Most már folytathatja a modell létrehozásának és a modell üzembe helyezés
 
   ![Diagram AUC érték](./media/hive-walkthrough/8JDT0F8.png)
 
-- **Többosztályos osztályozási**: tipp összegeket fizetnek az utazás a korábban definiált osztályokkal számos előre jelezni.
+- **Többosztályos osztályozási**: Tipp összegek számos előre fizetett az utazás a korábban definiált osztályok használatával.
 
-  **Használt learner:** Multiclass logisztikai regresszió
+  **Learner használt:** Multiclass logisztikai regresszió
 
   a. A probléma, a cél (vagy osztály) címke van **tipp\_osztály**, tarthat (0,1,2,3,4) öt érték valamelyikét. Bináris osztályozás gazdabuszadaptereken van néhány olyan oszlopot, amelyek a cél adatszivárgás ehhez a kísérlethez. Különösen **Formabontó**, **tipp\_összeg**, és **teljes\_összeg** a cél-címke, amely nem érhető el információ felfedése tesztelési idő. Ezekben az oszlopokban használatával eltávolítjuk a [Select Columns in Dataset] [ select-columns] modul.
 
-  Az alábbi ábrán látható a kísérlet előre jelezni, melyik van tipp valószínű, hogy tartoznak. A bins vannak: osztály 0: tipp = 0, 1. osztályú: > $0 és tipp tipp < = $5, 2. osztályú: > $5 és tipp tipp < = 10 $ osztály 3: > $ 10-es és tipp tipp < $20 és osztály 4 =: > $20 tipp.
+  Az alábbi ábrán látható a kísérlet előre jelezni, melyik van tipp valószínű, hogy tartoznak. A bins a következők: 0. osztály: tipp = 0, 1. osztályú: > $0 és tipp tipp < = $5, 2. osztályú: > $5 és tipp tipp < = 10 $ osztály 3: > $ 10-es és tipp tipp < $20 és osztály 4 =: > $20 tipp.
 
   ![Tipp a bin előrejelzésére kísérlet diagram](./media/hive-walkthrough/5ztv0n0.png)
 
@@ -797,9 +797,9 @@ Most már folytathatja a modell létrehozásának és a modell üzembe helyezés
 
   Vegye figyelembe, hogy elég jó a osztály pontosságú az elterjedt osztályokat, amelyek a modell nem végzik jó "tanulás" az egyes osztályokra.
 
-- **Regresszió feladat**: előre fizetett belépőt a tip mennyisége.
+- **Regresszió feladat**: Előre fizetett belépőt a tip mennyisége.
 
-  **Használt learner:** Boosted döntési fa
+  **Learner használt:** gyorsított döntési fa
 
   a. A probléma, a cél (vagy osztály) címke van **tipp\_összeg**. Ebben az esetben vannak a cél adatszivárgás: **Formabontó**, **tipp\_osztály**, és **teljes\_összeg**. Ezek a változók tipp mennyiség általában nem érhető el, a tesztelési idő a kapcsolatos információk felfedése. Ezekben az oszlopokban használatával eltávolítjuk a [Select Columns in Dataset] [ select-columns] modul.
 

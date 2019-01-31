@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/04/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3c2ea1e28ebbc6859db135b743d579d3c632133
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901139"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301441"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -62,7 +62,7 @@ Változások követése a kezdéshez, engedélyeznie kell a Change Tracking and 
 
 ## <a name="configuring-change-tracking-and-inventory"></a>A Change Tracking és Inventory konfigurálása
 
-Megtudhatja, hogyan számítógépek felvétele a megoldást, keresse fel: [Előkészítés Automation-megoldások](automation-onboard-solutions-from-automation-account.md). A Change Tracking and Inventory megoldással egy gép bevezetése után konfigurálhat az elemek nyomon követése. Ha engedélyezi az új fájlok vagy beállításkulcs nyomon követésére, a Change Tracking and Inventory engedélyezve van.
+Megtudhatja, hogyan számítógépek felvétele a megoldást, keresse fel: [Előkészítés Automation-megoldások](automation-onboard-solutions-from-automation-account.md). Ha egy gép előkészítése a Change Tracking and Inventory megoldással rendelkezik, konfigurálhatja a szükséges elemek nyomon követése. Ha engedélyezi az új fájlok vagy beállításkulcs nyomon követésére, a Change Tracking and Inventory engedélyezve van.
 
 A Windows és Linux rendszereken egyaránt fájlokban változásainak követése, MD5-kivonatát a fájlok használhatók. Következő kivonatok szolgálnak majd észleli, ha a legutóbbi leltározás óta a változás nem lett végrehajtva.
 
@@ -108,7 +108,7 @@ A következő lépéseket követve konfigurálja a fájlok nyomon követése a W
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>Helyettesítő karakteres, rekurzió és környezeti beállítások
 
-A rekurzió lehetővé teszi, hogy adja meg a helyettesítő karakterek egyszerűsítése érdekében a könyvtárak és a környezeti változókat, hogy nyomon követheti a fájlok között környezetekben, ahol több nyomkövetési vagy dinamikus meghajtó nevét. A következő az általános információkat, tudnia kell a rekurzió konfigurálásakor listája:
+A rekurzió lehetővé teszi, hogy adja meg a helyettesítő karakterek egyszerűsítése érdekében a könyvtárak és a környezeti változókat, hogy nyomon követheti a fájlok között környezetekben, ahol több nyomkövetési vagy dinamikus meghajtó nevét. Az alábbi lista Ha tisztában van a rekurzió konfigurálásakor általános információkat jelenít meg:
 
 * A helyettesítő karakterek szükség több fájlok nyomon követése
 * Ha helyettesítő karaktereket használ, akkor egy elérési út utolsó szegmense csak használható. (például C:\folder\\**fájl** vagy /etc/*.conf)
@@ -154,7 +154,7 @@ Egyéb korlátozások is érvényesek:
 
 A Change Tracking megoldás jelenleg a következő hibásan:
 
-* A gyorsjavítás-frissítések a Windows 10 alkotói frissítés és a Windows Server 2016 Core RS3 gépek kivételével.
+* A gyorsjavítás-frissítések a Windows Server 2016 Core RS3 gépeken kivételével.
 
 ## <a name="change-tracking-data-collection-details"></a>Követési adatok gyűjtemény adatainak módosítása
 
@@ -183,11 +183,11 @@ Az alábbi táblázat bemutatja a gépek nyomon követett elemek vonatkozó korl
 
 ### <a name="windows-service-tracking"></a>Windows-szolgáltatás nyomon követése
 
-Windows-szolgáltatások az alapértelmezett gyűjtés gyakorisága érték 30 perc. Konfigurálhatja a gyakoriság Ugrás **Change Tracking**. Alatt **beállításainak szerkesztése** a a **Windows szolgáltatások** lapra, és van egy csúszka, amely lehetővé teszi, hogy a gyűjtemény gyakoriságának módosítása a Windows services for leggyorsabban 10 másodperc, amíg az 30 perc. A csúszkát a kívánt gyakoriságot, és azt automatikusan menti.
+Windows-szolgáltatások az alapértelmezett gyűjtés gyakorisága érték 30 perc. Adja meg a gyakoriságot, lépjen a **Change Tracking**. Alatt **beállításainak szerkesztése** a a **Windows szolgáltatások** lapra, és van egy csúszka, amely lehetővé teszi, hogy a gyűjtemény gyakoriságának módosítása a Windows services for leggyorsabban 10 másodperc, amíg az 30 perc. A csúszkát a kívánt gyakoriságot, és azt automatikusan menti.
 
 ![Windows-szolgáltatások csúszka](./media/automation-change-tracking/windowservices.png)
 
-Az ügynök csak nyomon követi a módosításokat, ez optimalizálja az ügynök teljesítménye. Túl magas küszöbértéket definiál beállításával módosítások előfordulhat, hogy nem észlelnének. Ha a szolgáltatás az eredeti állapotba állítja vissza a rendszer. A gyakoriság beállítás értéke kisebb, lehetővé teszi, hogy a tényleges módosítások, amelyek egyébként nem észlelnének.
+Az ügynök csak nyomon követi a módosításokat, ez optimalizálja az ügynök teljesítménye. Magas küszöbérték beállítása előfordulhat, hogy hagyja módosításokat, ha a szolgáltatás az eredeti állapotba állítja vissza a rendszer. A gyakoriság beállítás értéke kisebb, lehetővé teszi, hogy a tényleges módosítások, amelyek egyébként nem észlelnének.
 
 > [!NOTE]
 > Amíg az ügynök is egy 10 második intervallum változások nyomon követése, az adatok továbbra is megjelenik a portálon néhány percet vesz igénybe. Módosítások megjelennek a portálon az idő alatt továbbra is nyomon követi és naplózza.
@@ -269,6 +269,41 @@ Az alábbi táblázatban kapcsolatos naplókeresési mintákat a megoldás álta
 |---------|---------|
 |ConfigurationData<br>&#124;ahol ConfigDataType == "WindowsServices" és a SvcStartupType == "Auto"<br>&#124;ahol SvcState == "Leállított"<br>&#124;Összegzés arg_max(TimeGenerated, *) SoftwareName, számítógép szerint         | Megjeleníti a legutóbbi Hardverleltár-rekordok automatikus értékre van beállítva, de lett jelentve le Windows-szolgáltatásokhoz<br>A program csak a legújabb bejegyzést, hogy szoftvernév és számítógép      |
 |ConfigurationChange<br>&#124;ahol ConfigChangeType == "Szoftver" és a ChangeCategory == "Eltávolítva"<br>&#124;a TimeGenerated desc ORDER|A módosítási rekordok eltávolított szoftverek megjelenítése|
+
+## <a name="alert-on-changes"></a>Riasztás a módosításokat
+
+A Change Tracking and Inventory képesség kulcsfontosságú rendszer azon képessége, a konfiguráció állapota és a hibrid környezet konfigurációs állapotának változásait riasztást.  
+
+A következő példában a képernyőképen látható, hogy a fájl `C:\windows\system32\drivers\etc\hosts` módosítva lett a gépre. Ez a fájl fontos, mert a Hosts fájlt a Windows feloldására szolgál állomásnevek IP-címek, elsőbbséget élvez még akkor is, DNS, a kapcsolódási problémák vagy az átirányítási forgalom kártevő vagy egyéb veszélyes webhelyekre járhat.
+
+![Egy táblázat a hosts fájl módosítása](./media/automation-change-tracking/changes.png)
+
+Ez a változás további elemzéséhez, Ugrás a naplóbeli keresés számítva **Log Analytics**. Egyszer a naplókeresésben, keresse meg a tartalmi változások lekérdezése a Hosts fájl `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Ez a lekérdezés, amely tartalmazza a fájlokat, amelynek az abszolút elérési útját tartalmazza a "hosts" szót a fájl tartalmának módosítását módosításokat keres. Is feltehet egy adott fájlra vonatkozó elérési út részével módosításával, a teljes képernyőn (például `FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"`).
+
+Miután a lekérdezés a kívánt eredményeket ad vissza, kattintson a **Új riasztási szabály** a napló keresési funkciót, nyissa meg a riasztás létrehozása gombra. Sikerült is elérheti a felhasználói élmény keresztül **Azure Monitor** az Azure Portalon. A riasztás létrehozása a felhasználói felületen ellenőrizze újra a lekérdezést, és módosítsa a riasztási logika. Ebben az esetben érdemes a riasztás aktiválódik, ha van még egy rendszer változást észlelt a környezet összes gépein.
+
+![A módosítás lekérdezés nyomon követésére egy kép módosítja az állomásleíró fájlhoz](./media/automation-change-tracking/change-query.png)
+
+A feltételes logika beállítása után rendelje hozzá a Műveletcsoportok a riasztás aktiválása válaszul műveletek végrehajtásához. Ebben az esetben I állított be elküldendő e-mailek és a egy ITSM-jegy hozhatók létre.  Számos egyéb hasznos műveletek is alkalmazhat egy Azure-függvény, az Automation-runbookot, Webhookot, vagy a logikai alkalmazás, például kell venni.
+
+![A módosítás a műveletcsoport riasztás konfigurálása kép](./media/automation-change-tracking/action-groups.png)
+
+A paraméterek és logikai beállítása után azt a környezetet a riasztás alkalmazhatja.
+
+### <a name="alert-suggestions"></a>Riasztási javaslatok
+
+Bár a módosításokat az Állomásleíró fájlhoz a riasztás egy jó alkalmazás a Change Tracking vagy szoftverleltár adatokat kapcsolódó riasztások, nincsenek riasztások, többek között az esetek definiált együtt a lenti példában lekérdezéseit számos más forgatókönyvekben.
+
+|Lekérdezés  |Leírás  |
+|---------|---------|
+|ConfigurationChange <br>&#124;ahol ConfigChangeType == "Fájlok" és a FileSystemPath tartalmaz "c:\\windows\\system32\\illesztőprogramok\\"|Hasznos, ha kritikus rendszerfájlok változásainak követése|
+|ConfigurationChange <br>&#124;Ha FieldsChanged tartalmazza: "FileContentChecksum" és a FileSystemPath == "c:\\windows\\system32\\illesztőprogramok\\stb\\gazdagépek"|Fő konfigurációs fájlok módosításai követésére használható|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|Hasznos, ha a rendszer kritikus szolgáltatások változásainak követése|
+|ConfigurationChange <br>&#124;ahol ConfigChangeType == "Démonok" és "ssh" és SvcState SvcName tartalmaz! = "Fut"|Hasznos, ha a rendszer kritikus szolgáltatások változásainak követése|
+|ConfigurationChange <br>&#124;ahol ConfigChangeType == "Szoftver" és a ChangeCategory == "Hozzáadott"|Szoftverkonfigurációjáról környezetek esetén hasznos ennek az igényét zárolva|
+|ConfigurationData <br>&#124;Ha SoftwareName tartalmazza: "Monitoring Agent" és a CurrentVersion! = "8.0.11081.0"|Jól használható jelent meg, amely gépek elavult vagy nem megfelelő szoftverfrissítési verziója telepítve van. Az utolsó jelentett konfigurációs állapotát, a módosítások nem jelentést készít.|
+|ConfigurationChange <br>&#124;ahol RegistryKey == "HKEY_LOCAL_MACHINE\\szoftver\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Hasznos, ha víruskereső létfontosságú kulcsok változásainak követése|
+|ConfigurationChange <br>&#124;Ha RegistryKey tartalmaz "HKEY_LOCAL_MACHINE\\rendszer\\CurrentControlSet\\szolgáltatások\\SharedAccess\\paraméterek\\FirewallPolicy"| Hasznos, ha tűzfal beállításainak változásainak követése|
 
 ## <a name="next-steps"></a>További lépések
 

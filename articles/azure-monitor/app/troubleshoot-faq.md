@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: a8c371d9d221ac6232c9293f6ca3192f163dfacb
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 115be0ad1b7dec44f036f6d50c2ac30ceba37ba7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156289"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457088"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakori kérdések
 
@@ -69,7 +69,7 @@ A részletek projekt típusától függ. Egy webes alkalmazáshoz:
 * Ezeket a fájlokat ad hozzá a projekthez:
 
   * ApplicationInsights.config.
-  * AI.js
+  * ai.js
 * A NuGet-csomagok telepíti:
 
   * *Application Insights API* – a core API
@@ -245,42 +245,51 @@ Azt javasoljuk, hogy az SDK-kat használja, és használja a [SDK API](../../azu
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Képes megfigyelni az intranetes webkiszolgáló?
 
-Az alábbiakban a két módszer:
+Igen, de a tűzfalkivételek vagy a proxy átirányítások szolgáltatásaink forgalom engedélyezésére kell.
+- QuickPulse `rt.services.visualstudio.com:443` 
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
-### <a name="firewall-door"></a>Tűzfal ajtó
 
-Lehetővé teszi a webkiszolgáló, hogy küldjön telemetriát a végpontok https://dc.services.visualstudio.com:443 és https://rt.services.visualstudio.com:443. 
+Tekintse át a listában, szolgáltatások és IP-címek [Itt](../../azure-monitor/app/ip-addresses.md).
 
-### <a name="proxy"></a>Proxy
+### <a name="firewall-exception"></a>Tűzfal-kivétel
 
-Forgalom irányítása a kiszolgálóról az intraneten, ezeket a beállításokat az ApplicationInsights.config példában felülírásával egy átjárót. A "Végpont" tulajdonságok nem szerepelnek a config, ezeket az osztályokat rendszer használata esetén az alapértelmezett értékeket, az alábbi példában látható.
+A webkiszolgáló, hogy küldjön telemetriát a végpontok engedélyezése. 
 
-#### <a name="example-applicationinsightsconfig"></a>Példa ApplicationInsights.config:
+### <a name="proxy-redirect"></a>Proxy-átirányítás
+
+Forgalom irányítása a kiszolgálóról, a konfiguráció végpontok felülírásával intraneten átjáró.
+Ha a "Végpont" tulajdonságok nem szerepelnek a config, ezeket az osztályokat az alább látható az ApplicationInsights.config példában alapértelmezett értékeket fogja használni. 
+
+Az átjáró kell irányítani a végpont základní adresa. Az alapértelmezett értékeket cserélje le a konfigurációs `http://<your.gateway.address>/<relative path>`.
+
+
+#### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Az alapértelmezett végpontok ApplicationInsights.config példa:
 ```xml
 <ApplicationInsights>
+  ...
+  <TelemetryModules>
+    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector"/>
+      <QuickPulseServiceEndpoint>https://rt.services.visualstudio.com/QuickPulseService.svc</QuickPulseServiceEndpoint>
+    </Add>
+  </TelemetryModules>
     ...
-    <TelemetryChannel>
-         <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
-    </TelemetryChannel>
-    ...
-    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
-        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
-    </ApplicationIdProvider>
-    ...
+  <TelemetryChannel>
+     <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
+  </TelemetryChannel>
+  ...
+  <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+    <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+  </ApplicationIdProvider>
+  ...
 </ApplicationInsights>
 ```
 
 _Megjegyzés ApplicationIdProvider érhető el a v2.6.0 indítása_
 
-Az átjáró kell irányítani a forgalmat https://dc.services.visualstudio.com:443
 
-Cserélje le a fenti értékek: `http://<your.gateway.address>/<relative path>`
  
-Példa: 
-```
-http://<your.gateway.endpoint>/v2/track 
-http://<your.gateway.endpoint>/api/profiles/{0}/apiId
-```
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Rendelkezésre állási webes tesztek futtathatok egy intranetes kiszolgálóra?
 

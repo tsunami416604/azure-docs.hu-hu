@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: f865768e6ebfd9e01de1bd7e69c1224b66f2ea5e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: d627fa1ca52356c43c9a771f612ae6d043299678
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231788"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460828"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája
 ## <a name="overview"></a>Áttekintés
@@ -40,9 +40,9 @@ Ez a cikk a bevált eljárásokat az alábbi csoportokba rendezik. Bevált gyako
 | &nbsp; | All Services (Minden szolgáltatás) |A közvetlen ügyfelek hozzáférése |[Használatával és a CORS engedélyezése helyett proxy tárhely eléréséhez közvetlen hozzáférést?](#subheading6) |
 | &nbsp; | All Services (Minden szolgáltatás) |Gyorsítótárazás |[Az alkalmazás ismételten használt gyorsítótárazási adatokat és módosítások ritkán van?](#subheading7) |
 | &nbsp; | All Services (Minden szolgáltatás) |Gyorsítótárazás |[Van az alkalmazás (ügyféloldali gyorsítótárazás őket, és ezután töltse fel a nagyobb készleteket) kötegelésére?](#subheading8) |
-| &nbsp; | All Services (Minden szolgáltatás) |.NET-konfiguráció |[Konfigurálta az ügyfél számára elegendő az egyidejű kapcsolatok használatát?](#subheading9) |
-| &nbsp; | All Services (Minden szolgáltatás) |.NET-konfiguráció |[Konfigurálta már a .NET használata szálak elegendő számú?](#subheading10) |
-| &nbsp; | All Services (Minden szolgáltatás) |.NET-konfiguráció |[Használ .NET 4.5-ös vagy újabb, amely javult a szemétgyűjtés?](#subheading11) |
+| &nbsp; | All Services (Minden szolgáltatás) |.NET Configuration |[Konfigurálta az ügyfél számára elegendő az egyidejű kapcsolatok használatát?](#subheading9) |
+| &nbsp; | All Services (Minden szolgáltatás) |.NET Configuration |[Konfigurálta már a .NET használata szálak elegendő számú?](#subheading10) |
+| &nbsp; | All Services (Minden szolgáltatás) |.NET Configuration |[Használ .NET 4.5-ös vagy újabb, amely javult a szemétgyűjtés?](#subheading11) |
 | &nbsp; | All Services (Minden szolgáltatás) |Párhuzamosság |[Ön gondoskodott róla, hogy párhuzamosságot korlátozódik megfelelően, hogy ne túlterhelni, vagy a képességei, vagy a skálázási célértékei?](#subheading12) |
 | &nbsp; | All Services (Minden szolgáltatás) |Eszközök |[Vannak a Microsoft legújabb verzióját használja a megadott ügyfél-könyvtárak és eszközök?](#subheading13) |
 | &nbsp; | All Services (Minden szolgáltatás) |Újrapróbálkozások |[Azok az Ön egy exponenciális visszatartással ismételje meg a szabályzat szabályozási hibákat és időtúllépéseket?](#subheading14) |
@@ -79,7 +79,7 @@ Ez a cikk a bevált eljárásokat az alábbi csoportokba rendezik. Bevált gyako
 | &nbsp; | Üzenetsorok |Üzenet frissítése |[Használ UpdateMessage tárolja a folyamat az üzenetek feldolgozásának elkerülése, nem kell újból feldolgozza a teljes üzenetet, ha hiba történik?](#subheading44) |
 | &nbsp; | Üzenetsorok |Architektúra |[Használ a teljes alkalmazás jobban skálázható hosszú ideig futó számítási feladatokat a kritikus útvonalat kívül tartja, és független méretezését, majd üzenetsorok?](#subheading45) |
 
-## <a name="allservices"></a>Az összes szolgáltatás
+## <a name="allservices"></a>All Services
 Ez a szakasz ismerteti az ajánlott eljárások az Azure Storage szolgáltatás (blobok, táblák, üzenetsorok vagy fájlok) bármelyikének a használatára érvényesek.  
 
 ### <a name="subheading1"></a>Skálázási célértékei
@@ -147,7 +147,7 @@ Normál esetben egy böngészőben nem engedélyezi a JavaScript által egy webh
 Mindkét technológiát segítségével elkerülhető a felesleges terhelést (és a szűk keresztmetszeteket) a webalkalmazásában.  
 
 #### <a name="useful-resources"></a>Hasznos segédanyagok
-További információ a SAS: [közös hozzáférési aláírások, 1. rész: a SAS-modell ismertetése](../storage-dotnet-shared-access-signature-part-1.md).  
+További információ a SAS: [közös hozzáférési aláírások, 1. rész: A SAS-modell ismertetése](../storage-dotnet-shared-access-signature-part-1.md).  
 
 A CORS kapcsolatos további információkért lásd: [eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatásainak](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
@@ -164,7 +164,7 @@ A blob tulajdonságai felderíteni a .NET használatával utolsó módosítási 
 #### <a name="subheading8"></a>Adatok kötegelt feltöltése
 Bizonyos esetekben az összesített adatok helyben, és majd rendszeres időközönként töltse fel egy kötegben minden adat feltöltése azonnal helyett. Például egy webalkalmazás előfordulhat, hogy tartsa a tevékenységek naplófájlt: az alkalmazás vagy feltölthet minden tevékenység részleteinek (amelyhez szükséges számos tárolási műveletek) tábla egységként történik, vagy egy helyi naplófájlba tevékenység részletei menthető, majd rendszeres időközönként tagolt fájl egy blobba, töltse fel minden tevékenység részletei. Ha minden naplóbejegyzés 1KB méretű, feltöltheti a több ezer egyetlen "Put Blob" tranzakció (akkor is feltölt egy blobot egy tranzakción belül mérete legfeljebb 64 MB). Természetesen Ha a helyi gépen a feltöltés előtt összeomlik, esetleg néhány log adatok elvesznek: az alkalmazás fejlesztőjének kell az ügyféleszközön lehetőségét tervezése vagy feltöltési hibák.  Ha az a tevékenység adatokat le kell tölteni a mérföldkövei (nem csak egyetlen tevékenység), majd blobok használata akkor javasolt táblák keresztül.
 
-### <a name="net-configuration"></a>.NET-konfiguráció
+### <a name="net-configuration"></a>.NET Configuration
 A .NET-keretrendszer használata esetén ez a szakasz felsorolja a több gyors konfigurációs beállítások segítségével győződjön meg arról, teljesítményének jelentős növelése.  Ha más nyelven használja, ellenőrizze, hogy ha hasonló fogalmak érvényesek-e a választott nyelven.  
 
 #### <a name="subheading9"></a>Alapértelmezett korlát növeléséhez
@@ -178,7 +178,7 @@ A kapcsolathoz megadott korlátot, minden olyan kapcsolat megnyitása előtt be 
 
 Más programozási nyelven dokumentációjában adott nyelvhez, hogyan lehet beállítani a kapcsolathoz megadott korlátot.  
 
-További információkért lásd: a következő blogbejegyzésben: [webszolgáltatások: az egyidejű kapcsolatok](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
+További információkért lásd: a következő blogbejegyzésben: [webszolgáltatások: Egyidejű kapcsolatok](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
 
 #### <a name="subheading10"></a>Növelje a szálkészlet minimális szálak, ha az aszinkron feladatokat szinkron kód használatával
 Ez a kód növeli a hozzászóláslánc készlet minimális szálak:  
@@ -201,7 +201,7 @@ Párhuzamosság kiváló teljesítmény lehetnek, legyen óvatos a korlátlan st
 A legújabb Microsoft által biztosított ügyfél-könyvtárak és eszközök mindig használja. Írása idején nincsenek klienskódtárak .NET, Windows Phone, Windows Runtime, Java és C++ érhető el, valamint más nyelven előzetes könyvtárak. Ezenkívül a Microsoft közzétette PowerShell-parancsmagok és az Azure Storage használatát az Azure CLI-parancsokat. A Microsoft aktívan alakul ki ezeket az eszközöket és teljesítményt szem előtt tartja naprakészen a legújabb verziót és biztosítja belső azok kezelni bizonyított teljesítményével kapcsolatos eljárásokat.  
 
 ### <a name="retries"></a>Újrapróbálkozások
-#### <a name="subheading14"></a>Szabályozás/ServerBusy
+#### <a name="subheading14"></a>Throttling/ServerBusy
 Bizonyos esetekben a storage szolgáltatás lehet szabályozni az alkalmazás, vagy előfordulhat, hogy egyszerűen nem tud teljesíteni a kérést néhány átmeneti állapot miatt, és egy "503-as kiszolgáló foglalt" üzenet vagy "500 időtúllépés" adnak vissza.  Ez akkor fordulhat elő, ha az alkalmazás már majdnem elérte a skálázhatósági célokat bármelyikét, vagy ha a rendszer a újraegyensúlyozása a particionált adatok lehetővé teszik a nagyobb sebesség érdekében.  Az ügyfélalkalmazás általában érdemes újrapróbálkoznia a művelettel, az ilyen hibát okozó: a kérésben később kísérlet sikeres. Ha a társzolgáltatás az alkalmazás szabályozza mert teljesítménycélokat meghaladja, vagy akkor is, ha a szolgáltatás nem tudott teljesíteni a kérést valamilyen más okból, az agresszív újrapróbálkozások általában ellenőrizze a probléma még rosszabb. Ezért az exponenciális visszatartási (az ügyfél könyvtárak alapértelmezett ezt a viselkedést) kell használnia. Például az alkalmazás lehetséges, hogy 2 másodpercig 4 másodperc, majd 10 másodpercet, majd a 30 másodperc után próbálkozzon újra, és majd teljes egészében feladja. Ezt a viselkedést az alkalmazás jelentősen csökkenti annak a szolgáltatás terhelése helyett súlyosbodott problémákat eredményez.  
 
 Vegye figyelembe, hogy kapcsolódási hibák újra meg lehet próbálni azonnal, mivel nem szabályozás eredményét, és várhatóan átmenetiek.  
@@ -229,7 +229,7 @@ Olvassa el, vagy írni egy blobot, legfeljebb 60 MB/másodperc (Ez a körülbel�
 Cél átviteli blobok kapcsolatos további információkért lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md).  
 
 ### <a name="copying-and-moving-blobs"></a>Másolásának és áthelyezésének Blobok
-#### <a name="subheading17"></a>Blob másolása
+#### <a name="subheading17"></a>Copy Blob
 A storage REST API-JÁNAK 2012-02-12-es verzió bevezetett hasznos lehetővé teszi különböző fiókok blobok másolása: egy ügyfélalkalmazás kérje meg a storage szolgáltatás egy blob másolása (valószínűleg egy másik tárfiók) a más forrásból származó, és ezután lehetővé a szolgáltatás végrehajtása a másolási aszinkron módon történik. Ez jelentősen csökkenti a sávszélesség, az alkalmazás számára szükséges adatok telepít át más tárfiókokban, mert nem kell letölteni, és töltse fel az adatokat.  
 
 Egyik ilyen megfontolandó, azonban nem, hogy másolása tárfiókok között, ha nincs ideje garancia arra, amikor a másolási befejezi a. Ha az alkalmazásnak kell egy blob másolása az irányítása alatt gyorsan befejeződik, érdemes lehet a blob másolása töltse le a virtuális géphez, és ezután feltölti a célhelyre.  Ebben a helyzetben teljes tervezhetőségét győződjön meg arról, hogy a másolat egy azonos Azure-régióban futó virtuális gép végzi, vagy más hálózati körülmények előfordulhat, hogy (és valószínűleg fog) befolyásolja a másolási teljesítmény.  Emellett programozott módon figyelheti egy aszinkron másolás előrehaladását.  
@@ -255,9 +255,9 @@ Az első kérdést megválaszolni a blobfeltöltéshez gyors,:, hogy feltöltés
 #### <a name="subheading21"></a>Egy nagy méretű blob gyorsan feltöltése
 Gyorsan egyetlen nagy méretű blobot feltölteni, az ügyfélalkalmazás a blokkok vagy lapok (folyamatban van az egyes blobok és a tárfiók teljes skálázási célértékei szem előtt tartva) párhuzamos kell tölteni.  Vegye figyelembe, hogy a hivatalos Microsoft által biztosított RTM tároló ügyfélkódtárai (.NET, Java) lehetővé teszi ezt.  Az egyes könyvtárak, használja az alább megadott objektum/tulajdonság a párhuzamosság szintjét beállításához:  
 
-* .NET: Set ParallelOperationThreadCount BlobRequestOptions-objektum használható.
+* .NET: Használandó BlobRequestOptions objektum ParallelOperationThreadCount állíthatók be.
 * Java/Android: Use BlobRequestOptions.setConcurrentRequestCount()
-* NODE.js: ParallelOperationThreadCount használja, vagy a lehetőségek, illetve a blob szolgáltatás.
+* Node.js: ParallelOperationThreadCount használja, vagy a lehetőségek, illetve a blob szolgáltatás.
 * C++: Blob_request_options::set_parallelism_factor módszert használja.
 
 #### <a name="subheading22"></a>Számos blobok gyorsan feltöltése
@@ -286,7 +286,7 @@ Ez a szakasz felsorolja a több gyors konfigurációs beállítások segítség�
 #### <a name="subheading25"></a>Használjon JSON
 2013-08-15 storage szolgáltatás verzióval kezdve a table service támogatja a JSON az XML-alapú AtomPub formátum helyett tábla adatátvitelre. Ez hasznos adat mérete kevesebb mint 75 %-kal csökkentheti, és jelentősen javíthatja az alkalmazás teljesítményét.
 
-További információkért tekintse meg a bejegyzését [a Microsoft Azure-beli táblák: JSON ismertetésében](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) és [adattartalom formátuma a Table Service műveletek](https://msdn.microsoft.com/library/azure/dn535600.aspx).
+További információkért tekintse meg a bejegyzését [a Microsoft Azure-beli táblák: A JSON ismertetése](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) és [adattartalom formátuma a Table Service műveletek](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
 #### <a name="subheading26"></a>Nagle kikapcsolása
 A Nagle algoritmus széles körben van megvalósítva TCP/IP-hálózatokon keresztül való hálózati teljesítmény javításához. Azonban akkor sem optimális minden körülmények között (például az interaktív környezetekben). Az Azure Storage esetében Nagle a algoritmus negatív hatással van a tábla és üzenetsor szolgáltatásokra irányuló kérések teljesítményét, és tiltsa le, ha lehetséges.  
@@ -303,8 +303,8 @@ Hogyan felel meg, és lekérdezheti az adatokat az a legnagyobb egyetlen szolgá
 #### <a name="subheading27"></a>Táblák és partíciók
 Táblák partíciók oszthatók. Minden entitás, a partíción tárolja oszt meg ugyanazt a partíciókulcsot, és a egy egyedi sorral kulcs azonosításához, hogy a partíción belül. A partíciók előnyt nyújtanak, de is használ a skálázási korlátaival.  
 
-* Előnyök: Entitásokat is frissítheti egyetlen, atomi, kötegelt tranzakcióban, amely tartalmazza a legfeljebb 100 külön tárolási műveletek (legfeljebb 4 MB-os teljes mérete) ugyanazon a partíción. A lekérdezni kívánt entitások azonos számú feltételezve, lekérdezheti, adatok egyetlen partíción belül (azonban olvassa el a további javaslatokat a táblaadatok) partíciók kiterjedő adatok hatékonyabban.
-* Skálázhatósági korlátja: ugyanazon a partíción tárolt entitások elérése nem lehet elosztott terhelésű, mert a partíció támogatja a atomi kötegelt tranzakciókat. Ebből kifolyólag a skálázhatósági célok, az egyes táblákat partíciók kisebb, mint a table service az egész.  
+* Előnyök: Egyetlen, atomi, kötegelt tranzakcióban, amely tartalmazza a legfeljebb 100 külön tárolási műveletek (legfeljebb 4 MB-os teljes mérete) ugyanazon a partíción entitásokat is frissítheti. A lekérdezni kívánt entitások azonos számú feltételezve, lekérdezheti, adatok egyetlen partíción belül (azonban olvassa el a további javaslatokat a táblaadatok) partíciók kiterjedő adatok hatékonyabban.
+* Skálázhatósági korlátja: Ugyanazon a partíción tárolt entitások elérése nem lehet elosztott terhelésű, mert a partíció támogatja a atomi kötegelt tranzakciókat. Ebből kifolyólag a skálázhatósági célok, az egyes táblákat partíciók kisebb, mint a table service az egész.  
 
 Táblák és partíciók ezek jellemzői miatt el kell fogadnia az alábbi tervezési elvek:  
 
@@ -359,8 +359,8 @@ Kötegelt tranzakciókat ismertek, entitás csoport tranzakciók (ETG) az Azure 
 ##### <a name="subheading36"></a>Upsert
 Táblázatból **Upsert** műveletek, amikor lehetséges. Két típusa van **Upsert**, mindkettő hatékonyabb lehet több, mint a hagyományos **beszúrása** és **frissítés** műveletek:  
 
-* **InsertOrMerge**: használja ezt, ha az entitás tulajdonságok egy részének feltölteni kívánt, de nem tudja, hogy az entitás már létezik. Az entitás létezik, ha a hívás szerepel tulajdonságainak frissítése. a **Upsert** műveletet, és hagyja az összes meglévő tulajdonság azok, ha az entitás nem létezik, az új entitás illeszt be. Ez hasonlít leképezése segítségével egy lekérdezésben, hogy csak fel kell töltenie a tulajdonságokat, amelyeket változnak.
-* **InsertOrReplace**: használja ezt szeretne feltölteni egy teljesen új entitás, de nem tudja, hogy már megtalálható-e. Csak akkor ajánlott ez, ha biztos benne, hogy az újonnan feltöltött entity teljesen helyesen szerepel-e, mert a régi entity teljesen felülírja. Ha például az entitást, amely tárolja a felhasználó aktuális helye függetlenül-e az alkalmazás korábban tárolta; felhasználó számára a helyadatok frissíteni kívánt az új hely entitás elkészült, és nem kell minden előző entitás származó adatot.
+* **InsertOrMerge**: Ezzel az entitás tulajdonságok egy részének feltöltendő, de nem tudja, hogy az entitás már létezik. Az entitás létezik, ha a hívás szerepel tulajdonságainak frissítése. a **Upsert** műveletet, és hagyja az összes meglévő tulajdonság azok, ha az entitás nem létezik, az új entitás illeszt be. Ez hasonlít leképezése segítségével egy lekérdezésben, hogy csak fel kell töltenie a tulajdonságokat, amelyeket változnak.
+* **InsertOrReplace**: Akkor használja, ha szeretne feltölteni egy teljesen új entitás, de nem tudja, hogy már megtalálható-e. Csak akkor ajánlott ez, ha biztos benne, hogy az újonnan feltöltött entity teljesen helyesen szerepel-e, mert a régi entity teljesen felülírja. Ha például az entitást, amely tárolja a felhasználó aktuális helye függetlenül-e az alkalmazás korábban tárolta; felhasználó számára a helyadatok frissíteni kívánt az új hely entitás elkészült, és nem kell minden előző entitás származó adatot.
 
 ##### <a name="subheading37"></a>Adatsorozat tárolja egyetlen entitás
 Egyes esetekben egy alkalmazás tárolja-e egy sorozat, amelyek gyakran kell egyszerre: például egy alkalmazás előfordulhat, hogy nyomon CPU-használat idővel annak érdekében, hogy az adatok az elmúlt 24 órában a működés közbeni diagram megrajzolásához. Egyik lehetőség, hogy minden entitás egy adott óra jelölő és tárolása a CPU-használat az adott órában az óránkénti, egy tábla entitást. Ezeket az adatokat jeleníti meg, hogy az alkalmazásnak kell lekérni az adatokat a legutóbbi 24 órán belül entitásokat.  
@@ -395,7 +395,7 @@ Naprakész költség információkért lásd: [Azure Storage szolgáltatás díj
 ### <a name="subheading44"></a>UpdateMessage
 Használhat **UpdateMessage** növelheti az láthatatlansági időkorlátot, vagy a állapotadatokat, egy üzenet frissítéséhez. Amíg ez a hatékony, ne feledje, hogy minden egyes **UpdateMessage** művelettel counts a skálázhatósági célok felé. Azonban ez lehet egy sokkal hatékonyabb megközelítést, mint ha egy munkafolyamatot, amely egy feladat a következő egy olyan sort adja át a feladat egyes lépéseinek befejezettként. Használatával a **UpdateMessage** művelet lehetővé teszi, hogy az alkalmazása az üzenetre a feladat állapot mentése és folytathatják a munkát, az üzenet a következő lépés a feladat újbóli queuing, minden alkalommal, amikor egy lépés befejezése helyett.  
 
-További információkért tekintse meg a cikket [hogyan: egy üzenetsorban található üzenet tartalmának módosítása](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
+További információkért tekintse meg a cikket [hogyan: Üzenetsorban található üzenet tartalmának módosítása](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
 
 ### <a name="subheading45"></a>Alkalmazásarchitektúra
 Üzenetsorok kell használnia, hogy az alkalmazásarchitektúra méretezhető. Az alábbi listában néhány üzenetsorok segítségével győződjön meg arról, az alkalmazás jobban skálázható módon:  

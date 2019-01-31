@@ -6,22 +6,22 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 51f15bd9c75f24be0d477d10de55c93a51cfbf3f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 7489c4298abe91755a2bf9edd8335061ed42d6d2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129641"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470926"
 ---
-# <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: nyelv
+# <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
 A készlet más műveletek, a Translator Text API által jelenleg támogatott nyelvek beolvasása. 
 
-## <a name="request-url"></a>Lekérdezés URL-címe
+## <a name="request-url"></a>Kérés URL-címe
 
 Küldjön egy `GET` kérelmet:
 ```HTTP
@@ -51,8 +51,8 @@ Kérelemfejlécek a következők:
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>Fogadja el nyelv</td>
-    <td>*Nem kötelező fejléc*.<br/>A felhasználói felület karakterláncokat használni kívánt nyelvet. A mezők a válaszban szereplő néhány nyelvek nevei vagy a régiók neveit. Használja ezt a paramétert, amelyben a rendszer ezeket a neveket adott vissza a nyelvet határozza meg. A nyelv azáltal, hogy megfelelően formázott BCP-47 nyelvi címke van megadva. Például használja az értéket `fr` kérése nevek francia nyelvű, vagy használja az értéket `zh-Hant` hagyományos kínai kérelem nevek.<br/>Nevek angol nyelven szerepelnek, ha nincs megadva a cél nyelvet, vagy ha a honosítás nem érhető el.
+    <td>Accept-Language</td>
+    <td>*Nem kötelező fejléc*.<br/>A felhasználói felület sztringjeihez használni kívánt nyelv. A mezők a válaszban szereplő néhány nyelvek nevei vagy a régiók neveit. Használja ezt a paramétert, amelyben a rendszer ezeket a neveket adott vissza a nyelvet határozza meg. A nyelv azáltal, hogy megfelelően formázott BCP-47 nyelvi címke van megadva. Például használja az értéket `fr` kérése nevek francia nyelvű, vagy használja az értéket `zh-Hant` hagyományos kínai kérelem nevek.<br/>Nevek angol nyelven szerepelnek, ha nincs megadva a cél nyelvet, vagy ha a honosítás nem érhető el.
     </td>
   </tr>
   <tr>
@@ -97,9 +97,9 @@ Minden egyes tulajdonság értéke a következőképpen.
 
   Értékét a `translation` tulajdonság értéke egy szótár (kulcs, érték) párok. Minden egyes kulcs a BCP-47 nyelvi címke. A kulcs azonosítja, amelynek szöveget a lefordított vagy a lefordított nyelvet. A kulcshoz tartozó érték leíró nyelv tulajdonságokkal rendelkező JSON-objektum:
 
-  * `name`: A területi beállításai szerint keresztül kért nyelv megjelenített név `Accept-Language` fejléc.
+  * `name`: Megjelenített nevét, a nyelvet a területi beállításai szerint keresztül kért `Accept-Language` fejléc.
 
-  * `nativeName`: A nyelv nevének megjelenítése a natív ezt a nyelvet a területi beállításai szerint.
+  * `nativeName`: Megjelenített neve a nyelvet a területi natív a nyelvhez.
 
   * `dir`: Írásmód, amely `rtl` jobbról balra író nyelvek vagy `ltr` jobbról balra író nyelvek.
 
@@ -123,17 +123,17 @@ Minden egyes tulajdonság értéke a következőképpen.
 
   Értékét a `transliteration` tulajdonság értéke egy szótár (kulcs, érték) párok. Minden egyes kulcs a BCP-47 nyelvi címke. A kulcs azonosítja, amelynek szöveget lehet alakítani egy parancsfájlból származó egy másik parancsprogramra nyelvet. A kulcshoz tartozó érték a nyelv és a támogatott szkriptek leíró tulajdonságokkal rendelkező JSON-objektum:
 
-  * `name`: A területi beállításai szerint keresztül kért nyelv megjelenített név `Accept-Language` fejléc.
+  * `name`: Megjelenített nevét, a nyelvet a területi beállításai szerint keresztül kért `Accept-Language` fejléc.
 
-  * `nativeName`: A nyelv nevének megjelenítése a natív ezt a nyelvet a területi beállításai szerint.
+  * `nativeName`: Megjelenített neve a nyelvet a területi natív a nyelvhez.
 
   * `scripts`: A próbaverzióról parancsfájlok listája. Egyes elemeinek a `scripts` lista tulajdonságokkal rendelkezik:
 
     * `code`: A szkriptet azonosító kód.
 
-    * `name`: A parancsfájl-n keresztül kérte a területi megjelenített név `Accept-Language` fejléc.
+    * `name`: Megjelenített nevét, a parancsfájl-n keresztül kérte a területi `Accept-Language` fejléc.
 
-    * `nativeName`: A nyelv nevének megjelenítése nyelv natív területi.
+    * `nativeName`: Megjelenített neve a nyelvet a területi beállításai szerint a nyelv natív.
 
     * `dir`: Írásmód, amely `rtl` jobbról balra író nyelvek vagy `ltr` jobbról balra író nyelvek.
 
@@ -190,19 +190,19 @@ Minden egyes tulajdonság értéke a következőképpen.
 
   * `name`: A Forrásnyelv keresztül kérte a területi megjelenítendő nevét `Accept-Language` fejléc.
 
-  * `nativeName`: A nyelv nevének megjelenítése a natív ezt a nyelvet a területi beállításai szerint.
+  * `nativeName`: Megjelenített neve a nyelvet a területi natív a nyelvhez.
 
   * `dir`: Írásmód, amely `rtl` jobbról balra író nyelvek vagy `ltr` jobbról balra író nyelvek.
 
-  * `translations`: Az alternatív fordítások és példák a lekérdezés a Forrásnyelv kifejezett nyelvek listáját. Egyes elemeinek a `translations` lista tulajdonságokkal rendelkezik:
+  * `translations`: Alternatív fordítások és a lekérdezés a Forrásnyelv kifejezett példákat és nyelvek listája. Egyes elemeinek a `translations` lista tulajdonságokkal rendelkezik:
 
     * `name`: A Célnyelv keresztül kérte a területi megjelenítendő nevét `Accept-Language` fejléc.
 
-    * `nativeName`: Natív a célként megadott nyelvhez tartozó területi a célként megadott nyelv nevének megjelenítése.
+    * `nativeName`: Megjelenített neve a Célnyelv natív a célként megadott nyelvhez tartozó területi beállításai szerint.
 
     * `dir`: Írásmód, amely `rtl` jobbról balra író nyelvek vagy `ltr` jobbról balra író nyelvek.
     
-    * `code`: A Célnyelv azonosítása nyelv kódja.
+    * `code`: A Célnyelv azonosítása nyelvkód.
 
   A következő egy példa:
 
@@ -237,7 +237,7 @@ A támogatott nyelvek listája nem változik gyakran. Spórolhat a sávszéless�
     </td>
   </tr>
   <tr>
-    <td>X-RequestId:</td>
+    <td>X-RequestId</td>
     <td>A kérelem azonosíthatja a szolgáltatás által létrehozott értéket. Hibaelhárítási célokra szolgál.</td>
   </tr>
 </table> 
@@ -279,7 +279,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
 
 Az alábbi példa bemutatja, hogyan szövegfordítás támogatott nyelvek beolvasása.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

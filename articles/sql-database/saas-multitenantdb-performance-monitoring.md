@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 7681e3fabe9eb216da81d9f09dc584097bcbaf84
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 01/25/2019
+ms.openlocfilehash: 4257baf437ec6c77ccf9fe4a7f0e6195ddd933be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830005"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458125"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Szilánkokra osztott több-bérlős egy több-bérlős SaaS-alkalmazás az Azure SQL adatbázis teljesítményének figyelése és kezelése
 
@@ -161,7 +161,7 @@ Ha már kiépített egy új bérlőt a saját adatbázis, a következő néhány
 
 A parancsfájl egy önálló adatbázisban az új bérlő kiépítéséhez, az adatbázis és a bérlő regisztrálásához a katalógusban, és nyissa meg a bérlő események lapot a böngészőben. Frissítse az Eseményközpontot oldalt, és látni fogja a hozzáadott "Fűzfa milyen" egy helyszín.
 
-## <a name="manage-performance-of-a-single-database"></a>Önálló adatbázis teljesítményének kezelése
+## <a name="manage-performance-of-an-individual-database"></a>Az egyes adatbázisok teljesítményének kezelése
 
 Ha egy több-bérlős adatbázison belül egyetlen bérlő tartósan magas terhelés, akkor előfordulhat, hogy általában uralja az adatbázis-erőforrások és befolyásolja a többi bérlő ugyanabban az adatbázisban. A tevékenység várhatóan huzamosabb ideig, a bérlő ideiglenesen áthelyezhető-e saját egybérlős adatbázis és az adatbázisból. Ez lehetővé teszi a bérlő számára a további erőforrások van szüksége, és teljes mértékben elkülöníti a többi bérlőtől.
 

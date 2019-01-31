@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 1de0f9b77bd1248d77f182a2e32e490c2814f42b
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/25/2019
+ms.openlocfilehash: 5b3a77a28945b597fe4fdd57aadfc3e05196a353
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382785"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478253"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Lekérdezések figyelése és a számítási feladatok teljesítményének javítása automatikus hangolás engedélyezése
 
@@ -26,9 +26,11 @@ Azure SQL Database egy olyan automatikusan felügyelt szolgáltatás, amely foly
 Az automatikus hangolás a kiszolgáló vagy az adatbázis szintjén keresztül engedélyezhető a [az Azure portal](sql-database-automatic-tuning-enable.md#azure-portal), [REST API-val](sql-database-automatic-tuning-enable.md#rest-api) hívások és [T-SQL](sql-database-automatic-tuning-enable.md#t-sql) parancsokat.
 
 ## <a name="enable-automatic-tuning-on-server"></a>A kiszolgáló automatikus hangolás engedélyezése
+
 A kiszolgáló szintjén örökli az automatikus hangolás konfigurációját az "Azure alapértelmezett értéke" vagy a konfiguráció nem öröklésére választhat. Azure alapértelmezett FORCE_LAST_GOOD_PLAN engedélyezve van, engedélyezve van a CREATE_INDEX és DROP_INDEX le van tiltva.
 
 ### <a name="azure-portal"></a>Azure Portal
+
 Ahhoz, hogy az automatikus hangolás az Azure SQL Database logikai **kiszolgáló**, keresse meg a kiszolgálót az Azure Portalon, majd **az automatikus hangolás** menüjében.
 
 ![Kiszolgáló](./media/sql-database-automatic-tuning-enable/server.png)
@@ -44,7 +46,6 @@ Automatikus hangolási beállításokat a kiszolgálón a kiszolgáló összes a
 ### <a name="rest-api"></a>REST API
 
 Tudjon meg többet a REST API használatával engedélyezze az automatikus hangolás egy kiszolgálón, olvassa el [SQL Server automatikus finomhangolási frissítés és a GET HTTP metódust](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
-
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Az egyes adatbázisok az automatikus hangolás engedélyezése
 
@@ -74,27 +75,28 @@ Tudjon meg többet a REST API-t használó önálló adatbázis az automatikus h
 
 Engedélyezze az automatikus hangolás az egy egyetlen T-SQL-adatbázis, csatlakozzon az adatbázishoz, és hajtsa végre a következő lekérdezést:
 
-   ```T-SQL
-   ALTER DATABASE current SET AUTOMATIC_TUNING = AUTO | INHERIT | CUSTOM
-   ```
-   
+```SQL
+ALTER DATABASE current SET AUTOMATIC_TUNING = AUTO | INHERIT | CUSTOM
+```
+
 Automatikus automatikus hangolási beállítás alkalmazása az Azure alapértelmezés szerint. ÖRÖKLÉSI beállítást az automatikus hangolás konfigurációját öröklik a szülő-kiszolgáló. EGYÉNI kiválasztása, kell manuálisan konfigurálnia az automatikus hangolás.
 
 Konfigurálja a T-SQL használatával az egyes automatikus hangolási lehetőségeket, csatlakozzon az adatbázishoz, és hajtsa végre a lekérdezést, például a:
 
-   ```T-SQL
-   ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
-   ```
-   
+```SQL
+ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
+```
+
 A beállítási lehetőségek állítja be, örökölt adatbázis-beállítások felülbírálása, valamint engedélyezi a hangolási beállítást. OFF értékre, is hatálytalanítja örökölt adatbázis-beállítások és a hangolási beállítás letiltása. Automatikus hangolási beállítás, amelynek alapértelmezett van megadva, a konfiguráció örökli az automatikus hangolási beállítás adatbázisszintű.  
 
 > [!IMPORTANT]
 > Az [aktív georeplikáció](sql-database-auto-failover-group.md), az automatikus hangolás csak az elsődleges adatbázis konfigurálni kell. Automatikusan alkalmazza a hangolási műveletek, például olyan példa index létrehozása vagy törlése a csak olvasható másodlagos automatikusan replikálja. Automatikus hangolás engedélyezése a T-SQL-n keresztül a csak olvasható másodlagos próbál azt eredményezi, hogy egy hiba, hogy egy másik hangolás konfigurációját a csak olvasható másodlagos nem támogatott.
 >
 
-Keresés szélesebb eredményez a T-SQL-beállítások konfigurálása az automatikus hangolás, lásd: [az ALTER DATABASE beállítások megadása (Transact-SQL) az SQL Database logikai kiszolgáló](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
+Keresés szélesebb eredményez a T-SQL-beállítások konfigurálása az automatikus hangolás, lásd: [az ALTER DATABASE beállítások megadása (Transact-SQL) az SQL Database-kiszolgáló](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
 
 ## <a name="disabled-by-the-system"></a>A rendszer által letiltva
+
 Az automatikus hangolás által figyelt vesz igénybe az adatbázis összes műveletet, és bizonyos esetekben képes meghatározni, hogy az automatikus hangolás nem megfelelően működik az adatbázison. Ebben a helyzetben hangolási beállítás letiltja a rendszer. A legtöbb esetben ennek oka az, a Query Store nincs engedélyezve, vagy egy adott adatbázis csak olvasható állapotban van.
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Automatikus hangolási e-mail-értesítések konfigurálása
@@ -102,6 +104,7 @@ Az automatikus hangolás által figyelt vesz igénybe az adatbázis összes műv
 Lásd: [automatikus hangolási e-mail-értesítések](sql-database-automatic-tuning-email-notifications.md) útmutató.
 
 ## <a name="next-steps"></a>További lépések
+
 * Olvassa el a [automatikus finomhangolási cikk](sql-database-automatic-tuning.md) további információ az automatikus hangolás, és hogyan tekintheti meg a teljesítmény javítása.
 * Lásd: [teljesítménnyel kapcsolatos javaslatok](sql-database-advisor.md) áttekintheti az Azure SQL Database teljesítménnyel kapcsolatos javaslatok.
 * Lásd: [lekérdezési teljesítmény Elemzéseihez](sql-database-query-performance.md) , a teljesítményre gyakorolt hatás, a lekérdezések megtekintésének megismerése.

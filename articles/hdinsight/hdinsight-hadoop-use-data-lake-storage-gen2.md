@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: howto
 ms.date: 01/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9a1d0775c12d424c35e9e9d366f69e07ec9b1468
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a44e53d7a32ab151fa951d1bc89b741390a70dfb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096976"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464789"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök
 
@@ -27,6 +27,8 @@ Az Azure Data Lake Storage Gen2 alapértelmezett és a egy tárfiókot, szinte a
 > Miután kiválasztotta a Data Lake Storage Gen2, mint a **elsődleges tárolási típusok**, nem választhatja ki a Data Lake Storage Gen1 fiók kiegészítő tárolóként.
 
 ## <a name="creating-an-hdinsight-cluster-with-data-lake-storage-gen2"></a>Egy HDInsight-fürt létrehozása a Data Lake Storage Gen2
+
+## <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
 Hozzon létre egy HDInsight-fürtöt, Data Lake Storage Gen2 használ a tároláshoz, amely a következő lépések segítségével hozzon létre egy Data Lake Storage Gen2-fiókot, hogy megfelelően van konfigurálva.
 
@@ -62,6 +64,48 @@ Hozzon létre egy HDInsight-fürtöt, Data Lake Storage Gen2 használ a tárolá
         * A **identitás** válassza ki a megfelelő előfizetést, és az újonnan létrehozott felhasználó által hozzárendelt felügyelt identitás.
         
             ![A Data Lake Storage Gen2 használata Azure HDInsight identitás](./media/hdinsight-hadoop-data-lake-storage-gen2/managed-identity-cluster-creation.png)
+
+### <a name="using-a-resource-manager-template-deployed-with-azure-cli"></a>Az Azure CLI használatával üzembe helyezett erőforrás-kezelő sablon használatával
+
+Letöltheti a mintát [sablonfájl Itt](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) és a egy [példa fájlt itt](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). A sablon használatához cserélje le tényleges Azure-előfizetése Azonosítóját a karakterlánc `<SUBSCRIPTION_ID>`. Ezenkívül helyettesítse be a karakterláncot a választott jelszó `<PASSWORD>` beállítása mindkét a bejelentkezési jelszót használni kívánt jelentkezzen be a fürthöz, valamint az SSH-jelszó.
+
+Az alábbi kódrészlet elvégzi a kezdeti lépések:
+
+1. Jelentkezzen be az Azure-fiókjába.
+1. Állítsa be az aktív előfizetést, ahol kell végrehajtani a create-műveletek.
+1. Hozzon létre egy új erőforráscsoportot, az új központi telepítési tevékenységek `hdinsight-deployment-rg`.
+1. Hozzon létre egy felhasználót Felügyeltszolgáltatás-identitás (MSI) `test-hdinsight-msi`.
+1. Azure CLI használata a szolgáltatások a Data Lake Storage Gen2-bővítmény hozzáadása.
+1. Hozzon létre egy új Data Lake Storage Gen2 fiókot `hdinsightadlsgen2`, használatával a `--hierarchical-namespace true` jelzőt.
+
+```azurecli
+az login
+az account set --subscription <subscription_id>
+
+#create resource group
+az group create --name hdinsight-deployment-rg --location eastus
+
+# Create managed identity
+az identity create -g hdinsight-deployment-rg -n test-hdinsight-msi
+
+az extension add --name storage-preview
+
+az storage account create --name hdinsightadlsgen2 \
+    --resource-group hdinsight-deployment-rg \
+    --location eastus --sku Standard_LRS \
+    --kind StorageV2 --hierarchical-namespace true
+```
+
+Ezután jelentkezzen be a portálra, és adja hozzá az új MSI a **Storage-Blobadatok Közreműködője (előzetes verzió)** szerepkör a tárfiókban, a fenti 3. lépésben leírtak szerint [az Azure portal használatával](hdinsight-hadoop-use-data-lake-storage-gen2.md#using-the-azure-portal).
+
+Miután befejezte a portálon az MSI szerepkör-hozzárendelés, folytassa az alábbi kódrészlet használatával a sablon üzembe helyezéséhez.
+
+```azurecli
+az group deployment create --name HDInsightADLSGen2Deployment \
+    --resource-group hdinsight-deployment-rg \
+    --template-file hdinsight-adls-gen2-template.json \
+    --parameters parameters.json
+```
 
 ## <a name="access-control-for-data-lake-storage-gen2-in-hdinsight"></a>Hozzáférés-vezérlés a Data Lake Storage Gen2 a HDInsight
 

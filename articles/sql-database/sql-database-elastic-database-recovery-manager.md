@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: d5bb914de1cded7c70516bfb4bfdaa93c83fe0e4
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: c4eeb73e3b0abfe2558fc387953023254952a515
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188674"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296868"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Horizontális skálázási térképek javítása a RecoveryManager osztállyal
 
@@ -45,14 +45,14 @@ Az Azure SQL Database Elastic Database-eszközök, a georeplikáció és a vissz
 
 * [Áttekintés: A felhő üzleti folytonossági és az adatbázis vész-helyreállítási az SQL Database szolgáltatással](sql-database-business-continuity.md)
 * [Ismerkedés az elastic database-eszközökkel](sql-database-elastic-scale-get-started.md)  
-* [ShardMap kezelése](sql-database-elastic-scale-shard-map-management.md)
+* [ShardMap Management](sql-database-elastic-scale-shard-map-management.md)
 
 ## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Egy ShardMapManager RecoveryManager lekérése
 
 Az első lépéseként RecoveryManager példányt hoz létre. A [GetRecoveryManager metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) adja vissza a helyreállítás-kezelő a jelenlegi [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) példány. Oldja meg a szegmenstérkép mindennemű inkonzisztenciáját, először le kell kérnie a RecoveryManager az adott horizontális skálázási térképet.
 
    ```java
-    ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString,  
+    ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnectionString,  
              ShardMapManagerLoadPolicy.Lazy);
              RecoveryManager rm = smm.GetRecoveryManager();
    ```

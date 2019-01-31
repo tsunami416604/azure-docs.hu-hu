@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 574391fd64d0525d3d77b80bb488bea8109729af
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0103225803ca98cb9d8e27eb57f150e0660cd7ab
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187332"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299127"
 ---
 # <a name="management-solutions-in-azure-monitor"></a>Felügyeleti megoldások az Azure monitorban
 Felügyeleti megoldások használhatja a szolgáltatásokat nyújt további betekintést a művelet egy adott alkalmazás vagy szolgáltatás Azure-ban. Ez a cikk az Azure és a részletek megoldások rövid áttekintést nyújt a használatáról, és telepíteni kell őket.
@@ -60,7 +60,7 @@ Kattintson az összefoglalás lapon nyissa meg a megoldás nevére. Ezen a lapon
 ## <a name="install-a-management-solution"></a>Egy megoldás telepítése
 A Microsoft és partnerei felügyeleti megoldások érhetők el a [Azure Marketplace-en](https://azuremarketplace.microsoft.com). Keresés az elérhető megoldások, és telepítse őket a következő eljárás használatával. Amikor telepít egy megoldást, ki kell választania egy [Log Analytics-munkaterület](../platform/manage-access.md) , a megoldás telepítve lesz, és az adatok hova legyenek összegyűjtve.
 
-1. Az a [az előfizetés-megoldások listája](#list-installed-monitoring-solutions), kattintson a **Hozzáadás**. 
+1. Az a [az előfizetés-megoldások listája](#list-installed-management-solutions), kattintson a **Hozzáadás**. 
 1. Jobb oldalán **felügyeleti megoldások**, kattintson a **további**. 
 1. Keresse meg a felügyeleti megoldást szeretne, majd olvassa el a leírását.
 1. Kattintson a **létrehozás** a telepítési folyamat elindításához.

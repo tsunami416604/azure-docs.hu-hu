@@ -1,6 +1,6 @@
 ---
-Cím: Teljesített kapcsolat-újraépítési Machine Learning Studio modellek titleSuffix: Azure Machine Learning Studio description: Ismerje meg, hogyan programozott újratanítás PowerShell-modell használatával C# és a Machine Learning Batch Execution service.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Teljesített kapcsolat-újraépítési Machine Learning Studio modellek titleSuffix: Azure Machine Learning Studio description: Ismerje meg, hogyan programozott újratanítás PowerShell-modell használatával C# és a Machine Learning Batch Execution service.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---

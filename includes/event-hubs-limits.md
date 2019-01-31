@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a49ce4e997a21e0db707c851f5ea46817bcb642e
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 84a51f65ef46c390f84308ab17cf83859a16c3b8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960303"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55428508"
 ---
 A következő táblázat felsorolja a kvóták, és korlátozza az adott [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). További információ az Event Hubs-díjszabás: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -24,7 +24,7 @@ A következő táblázat felsorolja a kvóták, és korlátozza az adott [Azure 
 | A partíciók száma az eseményközpont száma |Entitás |- |32 |
 | Egy eseményközpont fogyasztói csoportok száma |Entitás |- |20 |
 | Az AMQP-kapcsolatok száma névterenként száma |Névtér |További kapcsolatok későbbi kérelmeket a rendszer elutasítja, és a egy kivételt a hívó kód által fogadott. |5000 |
-| Az Event Hubs esemény maximális mérete|Entitás |- |256 KB |
+| Az Event Hubs esemény maximális mérete|Entitás |- |1 MB |
 | Maximális mérete egy eseményközpont neve |Entitás |- |50 karakter hosszú lehet |
 | Fogyasztói csoportok szerinti nem alapidőpont fogadók száma |Entitás |- |5 |
 | Az esemény adatok maximális megőrzési időtartam |Entitás |- |1 – 7 nap |

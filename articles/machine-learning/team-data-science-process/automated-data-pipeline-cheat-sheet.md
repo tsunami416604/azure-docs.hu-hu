@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: 627729ef4f2b6a8df96d9e3b794a1ba24143b4d7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 1245255e65412f9bbcba3c8d9caa76b9ffd2dcc3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132669"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453042"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Gyorsreferencia az Azure Machine Learning-előrejelzések automatikus folyamatához
 A **Microsoft Azure Machine Learning automatikus adatok folyamat – adatlap** segít, lépjen a technológia segítségével az adatok a Machine Learning webszolgáltatás, azt is pontozandó által a prediktív elemzés modell.
@@ -27,7 +27,7 @@ Cikkek, amelyek segítségével a megoldás fejlesztéséhez mutató hivatkozás
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>A Machine Learning automatizált adatfeldolgozási folyamat – Adatlap letöltése
 Miután letöltötte a Adatlap, nyomtathatja tabloid méretben (11 x 17).
 
-A Adatlap letöltése:  **[Microsoft Azure Machine Learning automatikus adatok folyamat – Adatlap](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+A Adatlap letöltése: **[A Microsoft Azure Machine Learning automatikus adatok folyamat – Adatlap](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
 ![Microsoft Azure Machine Learning Studio képességek áttekintése][op-cheat-sheet]
 

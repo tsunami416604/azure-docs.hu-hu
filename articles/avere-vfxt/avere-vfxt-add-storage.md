@@ -4,29 +4,23 @@ description: A Avere vFXT egy háttér-tárolórendszer hozzáadása az Azure-ho
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: procedural
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 8cd9bece53cd7fb961c5d81ae0c709dc89300ab9
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190846"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299452"
 ---
 # <a name="configure-storage"></a>A tárolás konfigurálása
 
-Ebben a lépésben beállítja a háttérrendszer tárolórendszer vFXT-fürthöz tartozó.
+Ebben a lépésben állít be egy háttér-tárolórendszer a vFXT fürt számára.
 
 > [!TIP]
-> Ha használta a `create-cloudbacked-cluster` prototípus-szkript hozzon létre egy új blobtárolót a Avere vFXT fürttel, a tároló már be van állítva használatra, és nem kell hozzáadnia a storage együtt.
->
-> Azonban ha az új blobtárolót alapértelmezett titkosítási kulccsal titkosított, vagy töltse le a kulcs-helyreállítási fájlt a fürt vagy kell adatok tárolása előtt cserélje le az alapértelmezett kulcs egy új kulcsot. Az alapértelmezett kulcs menti a rendszer csak a fürtöt, és nem lehet beolvasni, ha a fürt elveszik, vagy nem érhető el.
->
-> Miután csatlakozott a Avere Vezérlőpult, kattintson a **beállítások** lapra, majd kattintson a **Core Filer** > **Felhőbeállítások titkosítási**. Az a **helyi kulcs Store** válassza az alábbi lehetőségek egyikét: 
-> * Használja a **megjavít helyreállítási fájl** gombra kattintva a meglévő kulcs helyreállítás-fájljának beolvasása. A helyreállítási fájl és a fürt rendszergazdai jelszóval titkosított. Győződjön meg arról, hogy mentse a fájlt egy megbízható helyen. 
-> * Kövesse az utasításokat a **hozzon létre egy új fő kulcsot** hozhat létre egy új titkosítási kulcs, hogy az oldal szakaszában. Ez a beállítás lehetővé teszi, hogy adjon meg egy egyedi jelszót, és töltse fel, és töltse le újra a helyreállítási fájl ellenőrzése a jelszófájlt pár van szükség.
+> Ha létrehozott egy új Azure Blob-tárolót a Avere vFXT fürttel, a tároló már be van állítva használatra, és nem kell hozzáadnia a storage együtt.
 
-Kövesse ezeket az utasításokat, ha használta a `create-minimal-cluster` prototípus-parancsfájl a fürthöz, vagy ha szeretne hozzáadni egy kiegészítő hardvert vagy a felhőalapú tárolási rendszer.
+Kövesse ezeket az utasításokat, ha nem hozott létre egy új blobtárolót a fürthöz, vagy ha szeretne hozzáadni egy kiegészítő hardvert vagy a felhőalapú tárolási rendszer.
 
 Nincsenek két fő feladatok:
 
@@ -43,12 +37,11 @@ Ezek a lépések a Avere Vezérlőpult használják. Olvasási [a vFXT fürt el�
 Egy mag filer hozzáadásához válassza ki a core kiemelik két fő objektumtípusok egyike:
 
   * [NAS alapvető filer](#nas-core-filer) – egy NAS core filer hozzáadása 
-  * [Az Azure Storage fiók cloud alapvető filer](#azure-storage-account-cloud-core-filer) – ismerteti az Azure Storage-fiók hozzáadása a felhő alapvető filer
+  * [Az Azure Storage felhőalapú core filer](#azure-storage-cloud-core-filer) – ismerteti az Azure Storage-fiók hozzáadása a felhő alapvető filer
 
 ### <a name="nas-core-filer"></a>NAS core filer
 
-A NAS-core filer lehet egy helyszíni NetApp vagy Isilon, vagy egy NAS-végpontot a felhőben.  
-A tárolórendszer rendelkeznie kell a Avere vFXT fürtben – például egy 1 GB/s ExpressRoute-kapcsolat (nem egy VPN-) – egy megbízható nagy sebességű kapcsolatot, és azt a fürt legfelső szintű hozzáférést kell adnia a NAS-export használt.
+A NAS-core filer lehet egy helyszíni NetApp vagy Isilon, vagy egy NAS-végpontot a felhőben. A tárolórendszer rendelkeznie kell a Avere vFXT fürtben – például egy 1 GB/s ExpressRoute-kapcsolat (nem egy VPN-) – egy megbízható nagy sebességű kapcsolatot, és azt a fürt legfelső szintű hozzáférést kell adnia a NAS-export használt.
 
 Az alábbi lépéseket egy NAS core filer hozzáadása:
 
@@ -79,7 +72,7 @@ Ezután folytassa [hozzon létre egy elágazás](#create-a-junction).
 Azure Blob storage-t a vFXT fürt háttérrendszer tárolóként használhassa, egy üres tárolót, amelyet egy alapvető filer kell.
 
 > [!TIP] 
-> A ``create-cloudbacked-cluster`` példaszkript létrehoz egy storage-tárolóba, határozza meg azt a core filer, és hoz létre a névteret a csatlakozási vFXT fürt létrehozásának részeként. A ``create-minimal-cluster`` minta parancsfájl nem hoz létre egy Azure storage-tárolóba. Ne kelljen létrehozni és konfigurálni egy Azure Storage-core filer a fürt létrehozása után, használja a ``create-cloudbacked-cluster`` parancsfájlt a vFXT fürt üzembe helyezéséhez.
+> Hozzon létre egy blobtárolót a Avere vFXT fürtöt hoz létre egy időben kíván, ha a központi telepítési sablont vagy parancsfájl hoz létre egy storage-tárolóba, határozza meg azt a core filer, és létrehozza a névtér csatlakozási vFXT fürt létrehozásának részeként. 
 
 Ezek a feladatok hozzáadása a fürthöz a Blob storage van szükség:
 
@@ -131,7 +124,7 @@ A fürt létrehozását követően a Blob storage hozzáadásához kövesse az a
    | Szolgáltatás típusa | (válassza ki az Azure Storage elérési kulcs) |
    | Bérlő | Tárfiók neve |
    | Előfizetés | előfizetés-azonosító |
-   | Tárelérési kulcs | Az Azure storage-fiókkulcs (az előző lépésben másolt) | 
+   | Storage Access Key | Az Azure storage-fiókkulcs (az előző lépésben másolt) | 
 
    Kattintson a **Submit** (Küldés) gombra.
 

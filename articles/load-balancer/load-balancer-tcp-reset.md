@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/03/2018
+ms.date: 01/29/2019
 ms.author: kumud
-ms.openlocfilehash: 0b3e8fc72eb22a67c0672be19f60d4956d3377b7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 18e4a7ae5010730054dd110828c63e8418b93f39
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257293"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296919"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer a TCP üresjárati (nyilvános előzetes verzió) alaphelyzetbe állítása
 
-Használhat [Standard Load Balancer](load-balancer-standard-overview.md) hozhat létre egy kiszámíthatóbb alkalmazások viselkedése a kétirányú TCP (TCP ÜZE csomagot) alaphelyzetbe állítja a használati eseteihez minden állítható be üresjárati időkorlát.  Load Balancer alapértelmezett viselkedését, hogy csendes dobja el a flow, ha eléri a folyamat az üresjárati időkorlátot.
+Használhat [Standard Load Balancer](load-balancer-standard-overview.md) hozhat létre egy kiszámíthatóbb alkalmazások viselkedése a használati eseteihez egy adott szabály engedélyezése a TCP üresjárati a alaphelyzetbe állítása. Load Balancer alapértelmezett viselkedését, hogy csendes dobja el a flow, ha eléri a folyamat az üresjárati időkorlátot.  A funkció engedélyezése Load Balancer küldjön a kétirányú TCP (TCP ÜZE csomagot) alaphelyzetbe állítja az üresjárati időkorlát miatt.  Ez tájékoztatja a végpontjainak, hogy a kapcsolat túllépte az időkorlátot, és már nem használható.  Végpontok azonnal is létrehozhat egy új kapcsolatot, szükség esetén.
 
 ![Load Balancer TCP alaphelyzetbe állítása](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
@@ -69,31 +69,10 @@ Gondosan vizsgálja meg a teljes végpontok közötti forgatókönyv eldönteni,
 
 ## <a name="regions"></a> Régiónkénti elérhetőség
 
-Ezt a paramétert a következő régiók jelenleg hatékony.  A régióban nem szerepel itt a paraméter nem befolyásolja.
-
-| Régió |
-|---|
-| Délkelet-Ázsia |
-| Dél-Brazília |
-| Közép-Kanada |
-| Nyugat-Európa |
-| Közép-India |
-| Nyugat-India |
-| Nyugat-Japán |
-| Korea középső régiója |
-| Korea déli régiója |
-| Egyesült Királyság északi régiója |
-| Egyesült Királyság 2. déli régiója |
-| USA keleti régiója |
-| USA 2. keleti régiója |
-| USA északi régiója |
-| USA nyugati régiója |
-
-Ez a táblázat frissíti, az Előnézet ki van bontva, régióiban.  
+Minden régióban elérhető.
 
 ## <a name="limitations"></a>Korlátozások
 
-- Korlátozott [régiók rendelkezésre állása](#regions).
 - Portál konfigurálása, illetve megtekintheti a TCP alaphelyzetbe állítása nem használható.  Ehelyett használja a sablonok, REST API-t, Az CLI 2.0-val vagy PowerShell.
 
 ## <a name="next-steps"></a>További lépések

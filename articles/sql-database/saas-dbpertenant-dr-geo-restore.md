@@ -12,16 +12,16 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: acc1b9e9561b9468a4638c7073a066e4cb34d911
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d430a9f1ddec785d236f2501178bd3c7d493f716
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264750"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470594"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Adatbázisok biztonsági mentése egy több-bérlős SaaS-alkalmazás helyreállítása geo-visszaállítás használatával
 
-Ez az oktatóanyag bemutatja egy több-bérlős SaaS-alkalmazás az egyes bérlői modellek az adatbázis valósítja meg a teljes vész-helyreállítási helyzetekre. Használhat [geo-visszaállítás](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups) automatikusan karbantartott georedundáns biztonsági másolatból az alkalmazáskatalógus és a bérlői adatbázisok helyreállítani egy másodlagos helyreállítási régióba. A szolgáltatáskiesés megszüntetése után nem oldódik meg, miután [georeplikációs](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) , azok eredeti régióba módosított adatbázisok települni.
+Ez az oktatóanyag bemutatja egy több-bérlős SaaS-alkalmazás az egyes bérlői modellek az adatbázis valósítja meg a teljes vész-helyreállítási helyzetekre. Használhat [geo-visszaállítás](sql-database-recovery-using-backups.md) automatikusan karbantartott georedundáns biztonsági másolatból az alkalmazáskatalógus és a bérlői adatbázisok helyreállítani egy másodlagos helyreállítási régióba. A szolgáltatáskiesés megszüntetése után nem oldódik meg, miután [georeplikációs](sql-database-geo-replication-overview.md) , azok eredeti régióba módosított adatbázisok települni.
 
 ![GEO-visszaállítás-architektúra](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
@@ -63,12 +63,12 @@ A vészhelyreállítás (DR) sok alkalmazás esetén fontos szempont a megfelel�
 Ebben az oktatóanyagban az Azure SQL Database és az Azure platform szolgáltatásait használja ezek a kihívások megoldása érdekében:
 
 * [Az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), az összes szükséges kapacitás, a lehető leggyorsabban fenntartására. Az Azure Resource Manager-sablonok segítségével üzembe helyezése egy tükrözött lemezképét az eredeti kiszolgálók és a rugalmas készletek a helyreállítási régióban. Egy önálló kiszolgáló és a készlet is hoz létre az új bérlők kiépítésének folyamatát.
-* [Elastic Database-Ügyfélkódtár](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) (EDCL), a bérlői adatbázis katalógus létrehozásához és kezeléséhez. A kiterjesztett catalog rendszeres időközönként frissülnek készlet és az adatbázis-konfigurációs adatokat tartalmaz.
-* [Szilánkleképezés helyreállítási funkciókat](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager) , az EDCL, helyreállítási és hazatelepítési során adatbázis helye bejegyzéseket a katalógus fenntartásához.  
-* [A GEO-visszaállítás](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery), automatikusan karbantartott georedundáns biztonsági másolatból az alkalmazáskatalógus és a bérlői adatbázisok helyreállítani. 
+* [Elastic Database-Ügyfélkódtár](sql-database-elastic-database-client-library.md) (EDCL), a bérlői adatbázis katalógus létrehozásához és kezeléséhez. A kiterjesztett catalog rendszeres időközönként frissülnek készlet és az adatbázis-konfigurációs adatokat tartalmaz.
+* [Szilánkleképezés helyreállítási funkciókat](sql-database-elastic-database-recovery-manager.md) , az EDCL, helyreállítási és hazatelepítési során adatbázis helye bejegyzéseket a katalógus fenntartásához.  
+* [A GEO-visszaállítás](sql-database-disaster-recovery.md), automatikusan karbantartott georedundáns biztonsági másolatból az alkalmazáskatalógus és a bérlői adatbázisok helyreállítani. 
 * [Aszinkron visszaállítási műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations), bérlő-prioritási sorrendben küldött, a rendszer minden egyes készlethez helyezi várólistára és feldolgozott kötegekben, így a készlet nem túlterhelt. Ezek a műveletek előtt, vagy ha szükséges, a végrehajtás során szakadhatnak meg.   
-* [Georeplikáció](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview), hogy az eredeti régióba adatbázisok települni a szolgáltatáskiesés megszüntetése után. Nem érkezik nincs adatvesztés és a lehető legkisebb hatással legyen a bérlő Ha georeplikációt használ.
-* [SQL-kiszolgáló DNS-aliasokat](https://docs.microsoft.com/azure/sql-database/dns-alias-overview), hogy a katalógus szinkronizálási folyamat során, függetlenül az, hogy az aktív katalógusban való kapcsolódáshoz.  
+* [Georeplikáció](sql-database-geo-replication-overview.md), hogy az eredeti régióba adatbázisok települni a szolgáltatáskiesés megszüntetése után. Nem érkezik nincs adatvesztés és a lehető legkisebb hatással legyen a bérlő Ha georeplikációt használ.
+* [SQL-kiszolgáló DNS-aliasokat](dns-alias-overview.md), hogy a katalógus szinkronizálási folyamat során, függetlenül az, hogy az aktív katalógusban való kapcsolódáshoz.  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>A vészhelyreállítási szkripteket beolvasása
 
@@ -378,4 +378,4 @@ Próbálja ki a [egy több-bérlős SaaS-alkalmazás, adatbázis-replikációval
 
 ## <a name="additional-resources"></a>További források
 
-[A Wingtip SaaS-alkalmazás épülő további oktatóanyagok](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+[A Wingtip SaaS-alkalmazás épülő további oktatóanyagok](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

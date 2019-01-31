@@ -1,6 +1,6 @@
 ---
-Cím: Gyors üzembe helyezési oktatóanyag az R nyelv titleSuffix: Azure Machine Learning Studio description: Az R programozási oktatóanyag segítségével gyorsan az R nyelv-használatának az Azure Machine Learning Studio-előrejelzési megoldás létrehozásához.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Gyors üzembe helyezési oktatóanyag az R nyelv titleSuffix: Azure Machine Learning Studio description: Az R programozási oktatóanyag segítségével gyorsan az R nyelv-használatának az Azure Machine Learning Studio-előrejelzési megoldás létrehozásához.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/06/2017
 ---

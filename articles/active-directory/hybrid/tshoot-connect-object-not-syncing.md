@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d10b8760409d5deb0828d15e8c0daf50853a9624
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7b43b0e0676cc31938bf64cf84f9e6799c2dd3dd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158264"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296597"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Az Azure ad-val nem szinkronizálódó objektumok hibaelhárítása
 
@@ -28,6 +28,34 @@ Ha egy objektum nem szinkronizálja az Azure AD a várt módon, majd azok miatt 
 
 >[!IMPORTANT]
 >Az Azure Active Directory (AAD) központi telepítés csatlakozzon 1.1.749.0 verzióját, vagy újabb verziója szükséges, használja a [hibaelhárítási feladat](tshoot-connect-objectsync.md) objektumok szinkronizálási problémáinak hibaelhárítása a varázslóban. 
+
+## <a name="synchronization-process"></a>Szinkronizálási folyamat
+
+Mielőtt szinkronizálási problémák kivizsgálása, tekintsük át, a **az Azure AD Connect** szinkronizálási folyamat:
+
+  ![Az Azure AD Connect szinkronizálási folyamat](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
+
+### <a name="terminology"></a>**Terminológia**
+
+* **CS:** Összekötő-térben database egyik táblájába.
+* **MV:** Metaverzum, database egyik táblájába.
+* **AD:** Active Directory
+* **AAD:** Azure Active Directory
+
+### <a name="synchronization-steps"></a>**Szinkronizálásának lépései**
+A szinkronizálási folyamat magában foglalja a következő lépéseket:
+
+1. **Importálás az AD-ből:** **Az Active Directory** objektumok behozott **AD CS**.
+
+2. **Importálás az aad-ből:** **Az Azure Active Directory** objektumok behozott **AAD CS**.
+
+3. **Szinkronizálás:** **Bejövő szinkronizálási szabályok** és **kimenő szinkronizálási szabály** futnak sorrendjében prioritása kisebb, magasabb. Tekintse meg a szinkronizálási szabályokat, nyissa meg a **szinkronizálási Szabályszerkesztővel** az asztali alkalmazásokétól. A **bejövő szinkronizálási szabályok** adatok biztosítható a CS MV az. A **kimenő szinkronizálási szabály** helyez át adatokat MV CS.
+
+4. **Exportálása az ad-hez:** Után futtatnia kell a szinkronizálást, objektumok exportálása az AD CS **Active Directory**.
+
+5. **Exportálás az aad-be:** Az AAD-CS programból exportált objektumokat után futtatnia kell a szinkronizálást, **Azure Active Directory**.
+
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 A hibák megkereséséhez fog tekintse meg több különböző helyen, a következő sorrendben:
 
@@ -123,7 +151,28 @@ A **Synchronization Service Managert**, kattintson a **keresés a Metaverzumban*
 
 Az a **keresési eredmények** ablakában kattintson az objektumra.
 
-Ha nem látja az objektumot, majd azt nem még érte el a metaverzumba. Keresse meg az objektumot az Active Directory továbbra is [összekötőterében](#connector-space-object-properties). Lehetséges, hogy szinkronizálást, amely blokkolja az objektumot a metaverzumba jelenik meg a hiba, vagy előfordulhat, hogy egy szűrőt alkalmazza.
+Ha nem látja az objektumot, majd azt nem még érte el a metaverzumba. Keresse meg az objektumot a továbbra is a **Active Directory** [összekötőterében](#connector-space-object-properties). Ha az objektum a **Active Directory** összekötőtérben, majd lehetséges, hogy szinkronizálást, amely blokkolja az objektumot a metaverzumba jelenik meg a hiba, vagy előfordulhat, hogy a hatókör-beállítási szűrője alkalmazott szinkronizálási szabály.
+
+### <a name="object-not-found-in-the-mv"></a>Az objektum nem található az a MV
+Ha az objektum a **Active Directory** CS, azonban nem szerepel a MV majd Hatókörszűrő van alkalmazva. 
+
+* Tekintse meg a Hatókörszűrő lépjen az asztali alkalmazás menüre, és kattintson a **szinkronizálási Szabályszerkesztővel**. Az alábbi szűrő módosításával szűrheti az objektum a vonatkozó szabályok.
+
+  ![Bejövő szinkronizálási szabályok keresése](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
+
+* Minden szabály megtekintéséhez a fenti listában, és ellenőrizze a **Scoping szűrő**. Az az alábbi Hatókörszűrő, ha a **isCriticalSystemObject** értéke null vagy a False (hamis), vagy üres, akkor a hatókörben.
+
+  ![Bejövő szinkronizálási szabályok keresése](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
+
+* Nyissa meg a [CS importálás](#cs-import) lista, és ellenőrizze, melyik szűrő blokkolja az objektum áthelyezése a MV attribútum. Egymástól, hogy a **Összekötőterében** attribútumlista csak nem null értékű, és nem üres attribútumok jelennek meg. Például ha **isCriticalSystemObject** nem jelenik meg a listában, akkor ez azt jelenti, hogy ez az attribútum értéke null vagy üres.
+
+### <a name="object-not-found-in-the-aad-cs"></a>Nem található az AAD-CS objektum
+Ha az objektum azonban nem szerepel a **Összekötőterében** , **Azure Active Directory**. Azonban a MV szerepel, a Scoping szűrőt, majd tekintse meg a **kimenő** szabályai alapján a megfelelő **Összekötőterében** , és ellenőrizze, hogy ha az objektum miatt kiszűrte a [MV attribútumok](#mv-attributes) nem felel meg a feltételeket.
+
+* Tekintse meg a kimenő Hatókörszűrő, jelölje be az objektum a megfelelő szabályok az alábbi szűrő módosításával. Megtekintheti az egyes szabályokat, és tekintse meg a megfelelő [MV attribútum](#mv-attributes) értéket.
+
+  ![Kimenő Synchroniztion szabályok keresése](./media/tshoot-connect-object-not-syncing/outboundfilter.png)
+
 
 ### <a name="mv-attributes"></a>MV-attribútumok
 Az attribútumok lapon láthatja, hogy az értékeket, és mely összekötő viszonyított azt.  

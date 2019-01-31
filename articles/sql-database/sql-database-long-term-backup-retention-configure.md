@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: 6be0603c8332a6d1bd6c965a167b14f5a22362e6
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 44797227c0bff745575318fcb5c19cb187862ac0
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064219"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299401"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL-adatbázis hosszú távú megőrzésének kezelése
 
@@ -77,7 +77,7 @@ A következő szakaszok bemutatják, hogyan konfigurálhatja a hosszú távú ad
 
 > [!IMPORTANT]
 > Az alábbi PowerShell-verziók támogatott LTR V2 API:
-- [Azurerm.SQL-hez – 4.5.0](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0) vagy újabb
+- [AzureRM.Sql-4.5.0](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0) or newer
 - [AzureRM-6.1.0](https://www.powershellgallery.com/packages/AzureRM/6.1.0) vagy újabb
 > 
 
@@ -117,7 +117,7 @@ $server = Get-AzureRmSqlServer -ServerName $serverName -ResourceGroupName $resou
 # create LTR policy with WeeklyRetention = 12 weeks. MonthlyRetention and YearlyRetention = 0 by default.
 Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W 
 
-# create LTR policy with WeeklyRetention = 12 weeks, YearlyRetetion = 5 years and WeekOfYear = 16 (week of April 15). MonthlyRetention = 0 by default.
+# create LTR policy with WeeklyRetention = 12 weeks, YearlyRetention = 5 years and WeekOfYear = 16 (week of April 15). MonthlyRetention = 0 by default.
 Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W -YearlyRetention P5Y -WeekOfYear 16
 ```
 

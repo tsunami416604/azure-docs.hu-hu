@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 8b4ae066edc1c62c25762b5c6feebce1ecfff5a2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: 97373f6f0138d3ed8028ed4327b7e6cf90ad76a7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521540"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470739"
 ---
 # <a name="design-for-querying"></a>Tervezés lekérdezéshez
 TABLE service megoldások nagy igényű, nagy írási vagy a kettő kombinációját olvashatók. Ez a cikk a Table szolgáltatás hatékonyan támogatja az olvasási műveletek tervezésekor figyelembe kell vennie a következő szempontokat összpontosít. Arról, hogy támogatja az olvasási műveletek hatékony terv általában is az írási műveletek hatékony. Előfordulhatnak azonban olyan szempontokat is figyelembe kell vennie, amikor támogatásához tervezése írási művelet, a cikkben tárgyalt [adatmódosítás kialakítása](table-storage-design-for-modification.md).
@@ -37,12 +37,12 @@ Az alábbi példák azt feltételezik, hogy a table service az alábbi struktúr
 
 | *Oszlop neve* | *Adattípus* |
 | --- | --- |
-| **PartitionKey** (részleg neve) |Sztring |
-| **RowKey** (alkalmazott azonosítója) |Sztring |
-| **Keresztnév** |Sztring |
-| **Vezetéknév** |Sztring |
+| **PartitionKey** (részleg neve) |Karakterlánc |
+| **RowKey** (alkalmazott azonosítója) |Karakterlánc |
+| **Keresztnév** |Karakterlánc |
+| **Vezetéknév** |Karakterlánc |
 | **Kor** |Egész szám |
-| **E-mail cím** |Sztring |
+| **E-mail cím** |String |
 
 A cikk [Azure Table storage áttekintése](table-storage-overview.md) néhány, az Azure Table service legfontosabb funkcióit, hogy közvetlenül befolyásolják a lekérdezés tervezéséhez. Ezek a következő általános irányelveket a Table service Lekérdezéstervezés eredményez. Vegye figyelembe, hogy a szűrési szintaxist használja az alábbi példák a Table service REST API-t a további tudnivalókat lásd a [Entitáslekérdezés](https://docs.microsoft.com/rest/api/storageservices/Query-Entities).  
 

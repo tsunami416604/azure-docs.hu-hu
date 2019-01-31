@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: d26ae755b658ce39df04788b7edeee6da7e20a47
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 0ffb9b9105ee455d35d080bb45063c158cadce1e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288092"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463395"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Mi az új Azure SQL Data warehouse? 2018. május 
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 május. 
@@ -26,7 +26,7 @@ Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti 
 Tekintse meg a [Turbocharge felhőalapú analytics az Azure SQL Data Warehouse](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) blogbejegyzésben Rohan Kumar, vállalati alelnöke, az Azure-adatokból.
 
 ## <a name="auto-statistics"></a>Az automatikus statisztikák
-A statisztikákat a kritikus fontosságú moderl költségalapú optimalizálókkal, például az SQL Data Warehouse a motor a lekérdezésterv létrehozása optimalizálása érdekében. Az összes lekérdezés előzetes ismert meghatározása a statisztikák objektumokat kell létrehozni egy elérhető feladatütemezés. Azonban, amikor a rendszer ad hoc és véletlenszerű kérdez le, amely jellemző az adatraktározási feladatoknál, a terhet, a rendszergazdák előfordulhat, hogy kihívást jelent a statisztikák kell létrehozni és potenciálisan optimálisnál lekérdezés végrehajtási tervét előrejelzése és lekérdezés hosszabb válaszidőket. Egyik módja a probléma mérséklése érdekében, hogy előre létre statisztika objektumok a tábla oszlopait. Azonban a folyamat tartalmaz olyan módon statisztika objektumok során tábla betöltése folyamatban, ami hosszabb betöltési időt karban kell tartani.
+A statisztikákat a kritikus fontosságú optimalizálhatja a lekérdezésterv a modern költségalapú optimalizálókkal, például a motor az SQL Data Warehouse létrehozása. Az összes lekérdezés előzetes ismert meghatározása a statisztikák objektumokat kell létrehozni egy elérhető feladatütemezés. Azonban, amikor a rendszer ad hoc és véletlenszerű kérdez le, amely jellemző az adatraktározási feladatoknál, a terhet, a rendszergazdák előfordulhat, hogy kihívást jelent a statisztikák kell létrehozni és potenciálisan optimálisnál lekérdezés végrehajtási tervét előrejelzése és lekérdezés hosszabb válaszidőket. Egyik módja a probléma mérséklése érdekében, hogy előre létre statisztika objektumok a tábla oszlopait. Azonban a folyamat tartalmaz olyan módon statisztika objektumok során tábla betöltése folyamatban, ami hosszabb betöltési időt karban kell tartani.
 
 Az SQL Data Warehouse mostantól támogatja a statisztikák objektumok nagyobb rugalmasságot, hatékonyságot és a könnyű használatra biztosítása a rendszergazdák és a fejlesztők számára, miközben a rendszer továbbra is minőségi végrehajtási terv és leginkább automatikus létrehozása Válaszidők.
 

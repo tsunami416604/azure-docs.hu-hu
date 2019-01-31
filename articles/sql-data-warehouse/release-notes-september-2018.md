@@ -6,22 +6,22 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: f8073fd746bc02c23efab914c45c61830942a677
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 00d29ac1938a1abb63fca50afe3d66253a1e29bf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577981"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460726"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Mi az új Azure SQL Data warehouse? 2018. szeptember
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 szeptember.
 
 ## <a name="new-lower-entry-point-for-sql-data-warehouse-gen2"></a>Az SQL Data Warehouse Gen2 új alsó belépési pont
-A 2018 április [Microsoft annouced](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Azure SQL Data Warehouse Gen2, amely a teljesítmény x 5, 5 x a számítási méret, 4 x Az egyidejűség és a korlátlan tárolási biztosít. Leírtaknak megfelelően a [Data Warehouse a felhőben a teljesítményteszt](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) által Gigaom, az SQL Data Warehouse Gen2 **Amazon Redshift outperforms 42 %-kal**.
+A 2018 április [Microsoft bejelentette](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Azure SQL Data Warehouse Gen2, amely a teljesítmény x 5, 5 x a számítási méret, 4 x Az egyidejűség és a korlátlan tárolási biztosít. Leírtaknak megfelelően a [Data Warehouse a felhőben a teljesítményteszt](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) által Gigaom, az SQL Data Warehouse Gen2 **Amazon Redshift outperforms 42 %-kal**.
 
 Gen2 már általánosan elérhető, egy alacsonyabb belépési pont a DWU500c így nyugodtan egy kisebb méretű adatok adatraktár-fejlesztési-tesztelési környezetre szeretné használni az összes szolgáltatás legújabb fejlesztései. Az új belépési pont megőrzi a Gen2 a funkciókat, beleértve a [adaptív gyorsítótárazást](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/), [világítás gyors adatok újbóli felosztás](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/), és támogatja a [valós idejű adatraktár](https://azure.microsoft.com/blog/enabling-real-time-data-warehousing-with-azure-sql-data-warehouse/).
 
@@ -59,7 +59,7 @@ WHERE
     RTRIM(value) <> '';
 ```
 
-### <a name="compressdecompress-functions"></a>COMPRESS/DECOMPRESS funkciók
+### <a name="compressdecompress-functions"></a>COMPRESS/DECOMPRESS Functions
 A [TÖMÖRÍTÉSE](https://docs.microsoft.com/sql/t-sql/functions/compress-transact-sql) / [DECOMPRESS](https://docs.microsoft.com/sql/t-sql/functions/decompress-transact-sql) funkciója lehetővé teszi, hogy tömörítése és kibontása egy karakterláncot adjon meg a GZIP algoritmus használatával.
 
 #### <a name="example"></a>Példa
@@ -96,7 +96,7 @@ Végül javítása csökkenti az utasításokat, amelyek a széles táblák - t�
 
 ## <a name="bug-fixes"></a>Hibajavítások
 
-| Beosztás | Leírás |
+| Cím | Leírás |
 |:---|:---|
 | **Javítsa ki az egyedi korlátozások disztribúciókon statisztika létrehozásakor** | Ez a javítás címek felhasználók előforduló futó UPDATE STATISTICS csak a tábla megadása esetén ha a tábla volt-e definiálva egyedi korlátozás hiba. |
 | **Javítsa ki a külső táblákon végrehajtott lekérdezések összeállítása során** | A javítás, amely fordítási idő lekérdezések külső táblák használata esetén az érintett hibának címeket.|

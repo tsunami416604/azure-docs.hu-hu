@@ -1,6 +1,6 @@
 ---
-Cím: Az Azure AI-katalógusban titleSuffix: Azure Machine Learning Studio description: Fedezzen fel és analytics-erőforrásokat, és további, az Azure AI-katalógusban. Tanulhat a Közösségtől, és a saját cikkein a Közösséggel.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Az Azure AI-katalógusban titleSuffix: Azure Machine Learning Studio description: Fedezzen fel és analytics-erőforrásokat, és további, az Azure AI-katalógusban. Tanulhat a Közösségtől, és a saját cikkein a Közösséggel.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/11/2019
 ---

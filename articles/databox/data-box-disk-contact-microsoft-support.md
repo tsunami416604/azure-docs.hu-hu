@@ -4,17 +4,16 @@ description: Ismerje meg, hogyan naplótámogatási kérelem a Data Box vagy a D
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: disk
+ms.subservice: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.component: ''
-ms.openlocfilehash: 86d89f50a6d137d0c3ebf9148478ac6cec9951f6
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 763dfbc3813a63ffbc91180de1d5b518cef2a46d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092490"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470161"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Nyisson egy támogatási jegyet az Azure Data Box 
 
@@ -37,7 +36,7 @@ A következő lépésekkel hozzon létre egy támogatási kérést:
     2. Válassza ki az **Előfizetést**.
     3. A **szolgáltatás**, ellenőrizze **minden szolgáltatás**. A legördülő listából válassza ki a **Data Box - előzetes verzió**. 
     4. Adja meg a **támogatási csomag**.
-    5. Kattintson a **Tovább** gombra.
+    5. Kattintson a **tovább**.
 
         ![Alapvető beállítások](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
@@ -50,7 +49,7 @@ A következő lépésekkel hozzon létre egy támogatási kérést:
     5. Adja meg a kezdő dátum és idő a probléma.
     6. Az a **fájlfeltöltés**, kattintson a mappa ikonra, keresse meg az egyéb fájlokat szeretne feltölteni.
     7. Ellenőrizze **diagnosztika adatok megosztása**.
-    8. Kattintson a **Tovább** gombra.
+    8. Kattintson a **tovább**.
 
        ![Probléma](./media/data-box-disk-contact-microsoft-support/data-box-disk-support2.png)
 

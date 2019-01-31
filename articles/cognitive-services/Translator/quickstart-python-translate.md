@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveg lefordítása, Python – Translator Text API'
+title: 'Gyors útmutató: Szöveg-, Python – Translator Text API fordítása'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fordíthat le egy nyelvről egy másikra a Translator Text API és a Python használatával, kevesebb mint 10 perc alatt.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: erhopf
-ms.openlocfilehash: db2328d09f9e06ccabdc2408327a342fe94fefe0
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b5307db01cc7242ba73876409f18d511c2516091
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999585"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458159"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Rövid útmutató: Sztring lefordítása a Translator Text API és a Python használatával
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Gyors útmutató: A Translator Text API segítségével lefordítani karakterláncnak a Python használatával
 
 Ebben a rövid útmutatóban megtudhatja, hogyan fordíthat le egy szöveges sztringet angolról olaszra és németre a Python és a Translator Text REST API használatával.
 
@@ -69,7 +69,7 @@ Jelenleg egy végpont érhető el a Translator Text szolgáltatáshoz, és ez va
 A `params` tulajdonsággal állíthatók be a kimeneti nyelvek. Ebben a mintában angolról olaszra és németre fordítunk: `it` és `de`.
 
 >[!NOTE]
-> A végpontokkal, az útvonalakkal és a kérelemparaméterekkel kapcsolatos további információért lásd: [Translator Text API 3.0: Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
+> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: Fordítása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'

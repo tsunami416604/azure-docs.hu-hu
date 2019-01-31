@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 4ce84e9714b580bcc243285dc1da5ae24a27e8e5
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 9025eccabcbf7052131fee741a1e1f6a2139366b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248093"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476757"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse a számítási feladatok elemzése
 A lekérdezés rangsorolási az Azure SQL Data Warehouse a számítási feladatok elemzése technikákat.
@@ -144,10 +144,10 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 
 Az SQL Data Warehouse a következő típusok várjon rendelkezik:
 
-* **LocalQueriesConcurrencyResourceType**: lekérdezések egyidejűségi tárolóhely keretein kívül található. DMV-lekérdezések és a rendszer függvények, mint például `SELECT @@VERSION` példa a helyi lekérdezéseket.
-* **UserConcurrencyResourceType**: lekérdezések egyidejűségi tárolóhely keretein belül található. A végfelhasználói táblákra mutató lekérdezések példa, amelyek az erőforrástípushoz használna képviseli.
-* **DmsConcurrencyResourceType**: vár, az adatátviteli műveletek keletkezett.
-* **BackupConcurrencyResourceType**: A várakozás azt jelzi, hogy egy adatbázis biztonsági mentésének folyamatban van. Az erőforrástípus maximális értéke 1. Ha több biztonsági mentése egy időben, a többi kért várólista.
+* **LocalQueriesConcurrencyResourceType**: Egyidejűségi tárolóhely keretein kívül található lekérdezések. DMV-lekérdezések és a rendszer függvények, mint például `SELECT @@VERSION` példa a helyi lekérdezéseket.
+* **UserConcurrencyResourceType**: Egyidejűségi tárolóhely keretein belül található lekérdezések. A végfelhasználói táblákra mutató lekérdezések példa, amelyek az erőforrástípushoz használna képviseli.
+* **DmsConcurrencyResourceType**: Az adatátviteli műveletek eredő vár.
+* **BackupConcurrencyResourceType**: A Várakozás azt jelzi, hogy egy adatbázis biztonsági mentésének folyamatban van. Az erőforrástípus maximális értéke 1. Ha több biztonsági mentése egy időben, a többi kért várólista.
 
 A `sys.dm_pdw_waits` DMV Lekérdezéséhez használható kérést arra vár, hogy milyen erőforrásokat.
 

@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: c5120cdb743e031c081f727c947752419db3a9d7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0e5db2c08749a59a03e384c6048e67f7570f6750
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081109"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211432"
 ---
 # <a name="r-developers-guide-to-azure"></a>R – fejlesztői útmutató az Azure-bA
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -114,7 +114,7 @@ Egy harmadik lehetőség a [Azure elosztott adatok mérnöki eszközkészlet](ht
 
 [Az Azure notebookok](https://notebooks.azure.com) van egy kis költségigényű, alacsony terhelésű metódus R notebookok való munkavégzés előnyben részesítő fejlesztőknek saját kód használata az Azure-bA.  Egy ingyenes szolgáltatás mindenki számára a fejleszthet és futtathat kódot a böngésző használatával [Jupyter](https://jupyter.org/), amely egy nyílt forráskódú projekt, amely lehetővé teszi a markdown prose weboldalak százmilliárdjainak biztosítják a, a végrehajtható kódok és a egy egyetlen vászonra grafikus.
 
-Azure notebookok ingyenes szolgáltatási szintjét beállítás kivitelezhető semmibe projektek esetén, minden egyes notebook folyamat 4 GB memória- és 1 GB-TAL adathalmazok korlátozza. Ha ezek a korlátozások túli számítási és az adatok power, azonban futtathatja notebookok adatelemző virtuális gép-példányban. További információkért lásd: [kezelése és konfigurálása az Azure-jegyzetfüzetek projektek - számítási kapacitás](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Azure notebookok ingyenes szolgáltatási szintjét beállítás kivitelezhető semmibe projektek esetén, minden egyes notebook folyamat 4 GB memória- és 1 GB-TAL adathalmazok korlátozza. Ha ezek a korlátozások túli számítási és az adatok power, azonban futtathatja notebookok adatelemző virtuális gép-példányban. További információkért lásd: [kezelése és konfigurálása az Azure-jegyzetfüzetek projektek - számítási kapacitás](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 [Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/) a Microsoft intelligens, teljes körűen felügyelt relációs adatbázis-szolgáltatás.  Ez lehetővé teszi, hogy használja a teljes SQL Server nem kell minden olyan infrastruktúra nélkül.  Ez magában foglalja [Machine Learning-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-2017), egyike a a legújabb SQL Service kiegészítéseit.

@@ -6,23 +6,23 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf4e65b95211fc03ea4a319fd4e503396b893522
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 3109c4e6190cd8e485ae9b28117c4688836dfc26
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135147"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470314"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Adatelemzés a Scala és a Spark használatával az Azure rendszerben
 Ez a cikk bemutatja, hogyan Scala használata a Spark méretezhető MLlib és a Spark ML-csomagokat az Azure HDInsight Spark-fürtön a felügyelt gépi tanulási feladatok. Emellett végigvezeti a feladatok alkotó a [adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): adatbetöltés és feltárása, képi megjelenítés, funkciófejlesztési, modellezés és használatalapú modellt. A cikk a modellek között logisztikai és lineáris regresszió, véletlenszerű erdők és színátmenet súlyozott fákat (GBTs), két általános felügyelt gépi tanulási feladatok mellett:
 
-* Regressziós problémaként: előrejelzés taxi útnak tipp összeg ($)
-* Bináris osztályozás: előrejelzés tipp vagy taxi útnak nincs tip (1/0)
+* Regressziós probléma: Előrejelzési taxi útnak tipp összeg ($)
+* Bináris osztályozás: Előrejelzési tipp vagy taxi útnak nincs tip (1/0)
 
 A modellezési folyamat szükséges betanítása és kiértékelése egy teszt adatkészlet, és pontossága vonatkozó metrikákat. Ebből a cikkből tudhat meg ezek a modellek tárolása az Azure Blob storage-ban és a pontszám, és a prediktív teljesítmény kiértékelése. Ez a cikk emellett ismerteti, hogyan optimalizálható a modellek kereszt-ellenőrzési és a hyper-paraméter kezdik használatával összetettebb témákra. Az adatok, használja a 2013 NYC taxi utazást és diszkont adatkészlet a Githubon elérhető mintát.
 
@@ -41,7 +41,7 @@ A beállítási lépéseket, és ebben a cikkben kód kapacitások Azure HDInsig
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Rendelkeznie kell egy Azure-előfizetéssel. Ha Ön még nem rendelkezik ilyennel, [az Azure ingyenes próbaverziójára első](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Szüksége lesz egy Azure HDInsight 3.4-es Spark 1.6-os-fürtön az alábbi eljárások. Létrehozhat egy fürtöt, tekintse meg a található [első lépések: Apache Spark létrehozása az Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Adja meg a fürt típusa és verziója a a **fürt típusának kiválasztása** menü.
+* Szüksége lesz egy Azure HDInsight 3.4-es Spark 1.6-os-fürtön az alábbi eljárások. Létrehozhat egy fürtöt, tekintse meg a található [első lépések: Hozzon létre az Apache Spark az Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Adja meg a fürt típusa és verziója a a **fürt típusának kiválasztása** menü.
 
 ![HDInsight fürt konfigurálása](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -66,7 +66,7 @@ A Jupyter Notebook server közvetlenül a githubból a notebook tölthet fel a S
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Telepítő: Spark-kódtárak, előre a Spark és a Hive-környezetek és a Spark magics
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>A telepítő: Előre beállított Spark- és Hive-környezetek, a Spark magics és a Spark-kódtárak
 ### <a name="preset-spark-and-hive-contexts"></a>Előre beállított Spark- és Hive-környezetek
     # SET THE START TIME
     import java.util.Calendar
@@ -226,7 +226,7 @@ Az alábbi kódmintában szeretné menteni fogja a modellt kell olvasni a bemene
 
 **A kimenetre:**
 
-A cella futási idejét: 8 másodperc.
+A cella futtatásának időpontja: 8 másodperc.
 
 ### <a name="query-the-table-and-import-results-in-a-data-frame"></a>Lekérdezése a tábla és a egy adatkeretben eredmények importálása
 Ezután lekérdezése a tábla diszkont, az utasok és a tipp adatokat; sérült és lakatlan adatai; szűrése és nyomtathatják ki több sort.
@@ -411,7 +411,7 @@ Indexelő, használja a `StringIndexer()`, és a egy gyakori kódolási használ
 
 **A kimenetre:**
 
-A cella futási idejét: 4 másodperc.
+A cella futtatásának időpontja: 4 másodperc.
 
 ### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>A minta és felosztása tanítási és tesztelési percenkénti egységeinek törtrészeként az adatkészlet
 Ez a kód létrehoz egy véletlenszerű mintavétel az adatok (ebben a példában a 25 %). Bár mintavételi nem szükséges ehhez a példához az adatkészlet méretének miatt, a cikk bemutatja, hogyan, hogy tudja, hogyan használhatja a saját problémákat, amikor szükség mintát is. Ha nagy a mintákat, ez jelentős időt takaríthat közben-modellek betanításához. Ezután ossza fel a minta-képzés (ebben a példában a 75 %) és egy tesztelési részét (ebben a példában a 25 %) besorolási és regressziós modellezéshez.
@@ -450,7 +450,7 @@ Minden egyes sorban (a "rand" oszlop), amelyek segítségével válassza ki a ke
 
 **A kimenetre:**
 
-A cella futási idejét: 2 másodperc.
+A cella futtatásának időpontja: 2 másodperc.
 
 ### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>Képzési változót és a szolgáltatásokat, és hozza létre indexelt vagy egy gyakori kódolású betanítására és tesztelésére bemeneti pont rdd-k vagy adatok keretek címkével
 Ez a szakasz tartalmazza a kódot, amely bemutatja, hogyan címkézett pont adattípusú értékként kategorikus szöveges adatok indexelése és kódolása, így azt használhatja taníthat vagy tesztelhet MLlib logisztikai regressziós és más képbesorolási modellek. Címkézett pont objektumok úgy, hogy a bemeneti adatként van szükség a gépi tanulási algoritmusok MLlib a többsége által formázott rdd-kként. A [pont feliratú](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) sűrű vagy ritka, a helyi vektor társítva van egy címke/válasz.
@@ -493,7 +493,7 @@ Ezt a kódot kell megadni a cél (függő) változót és a funkciók használat
 
 **A kimenetre:**
 
-A cella futási idejét: 4 másodperc.
+A cella futtatásának időpontja: 4 másodperc.
 
 ### <a name="automatically-categorize-and-vectorize-features-and-targets-to-use-as-inputs-for-machine-learning-models"></a>Automatikusan kategorizálása és a funkciók és a gépi tanulási modelleket bemenetként használandó célok vectorize
 A Spark ML használatával kategorizálása a cél és a szolgáltatásokat a fa-alapú modellezési funkciók használatára. A kód két feladatokat hajtja végre:
@@ -532,7 +532,7 @@ Ez a kód a két feladatokhoz.
 
 
 
-## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Bináris osztályozási modell: előre jelezni, hogy tipp ki kell fizetni.
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Bináris osztályozási modell: Előre jelezni, hogy tipp ki kell fizetni.
 Ebben a szakaszban három típusú bináris osztályozási modell előrejelzési e tipp kell fizetni hoz létre:
 
 * A **logisztikai regressziós modell** a Spark ML használatával `LogisticRegression()` függvény
@@ -723,9 +723,9 @@ Ezután hozzon létre egy GBT osztályozási modell a MLlib segítségével `Gra
 
 **A kimenetre:**
 
-ROC-görbe alatti terület: 0.9846895479241554
+Terület ROC-görbe alatt: 0.9846895479241554
 
-## <a name="regression-model-predict-tip-amount"></a>Regressziós modell: tipp összeg előrejelzése
+## <a name="regression-model-predict-tip-amount"></a>Regressziós modell: Tipp összeg előrejelzése
 Ebben a szakaszban két típusú tipp összeg előrejelzésére regressziós modelleket hoz létre:
 
 * A **rendeződik lineáris regressziós modell** a Spark ML használatával `LinearRegression()` függvény. A modell mentése fog, és a teszt adatai a modell kiértékelésére.
@@ -775,7 +775,7 @@ Ebben a szakaszban két típusú tipp összeg előrejelzésére regressziós mod
 
 **A kimenetre:**
 
-A cella futási idejét: 13 másodperc.
+A cella futtatásának időpontja: 13 másodperc.
 
     # LOAD A SAVED LINEAR REGRESSION MODEL FROM BLOB STORAGE AND SCORE A TEST DATA SET
 
@@ -848,7 +848,7 @@ Grafikon létrehozása Python matplotlib használatával.
 
 **A kimenetre:**
 
-![Összeg tipp: tényleges és becsült](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
+![Tipp összeg: Tényleges és becsült](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>GBT regressziós modell létrehozása
 Egy GBT regressziós modell létrehozásához a Spark ML használatával `GBTRegressor()` függvényt, és értékelje ki a modell a tesztadatokat.
@@ -982,7 +982,7 @@ Ez a szakasz bemutatja, hogyan kereszt-ellenőrzési és a hyper-paraméter kezd
 
 **A kimenetre:**
 
-A cella futási idejét: 33 másodperc.
+A cella futtatásának időpontja: 33 másodperc.
 
 ### <a name="optimize-the-linear-regression-model-by-using-custom-cross-validation-and-parameter-sweeping-code"></a>Egyéni kereszt-ellenőrzési és a paraméter-kezdik kód használatával a lineáris regressziós modell optimalizálása
 Ezután a modell optimalizálása egyéni kód használatával, és a legjobb modellt paraméterek azonosításához a legnagyobb pontosságú feltétel használatával. Ezután hozzon létre a kész modell, a Tesztadatok a modell kiértékelésére, és mentse a Blob storage-ban. Végül a modell betöltése, tesztadatok pontszám és értékeléséhez pontosságát.
@@ -1097,7 +1097,7 @@ Ezután a modell optimalizálása egyéni kód használatával, és a legjobb mo
 
 **A kimenetre:**
 
-A cella futási idejét: 61 másodperc.
+A cella futtatásának időpontja: 61 másodperc.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>A Spark használatával összeállított gépi tanulási modelleket automatikusan Scala felhasználása
 Témakörök, amelyek végigvezetik a feladatokat az Azure-ban az adatelemzési folyamat alkotó áttekintését lásd: [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

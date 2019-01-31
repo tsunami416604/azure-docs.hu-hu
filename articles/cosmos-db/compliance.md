@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: f623411c3e8b13aeacc08a6c47053931742a2e82
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f1be314db7bfc4cbdfcc809eb3b1d985583739a4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034182"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470144"
 ---
-# <a name="azure-cosmos-db-compliance"></a>Az Azure Cosmos DB-megfelelőség
+# <a name="compliance-in-azure-cosmos-db"></a>Az Azure Cosmos DB megfelelőség 
 
 Az Azure Cosmos DB az összes Azure-régióban érhető el. A Microsoft elérhetővé öt különböző Azure-felhőbeli környezetek az ügyfelek számára:
 
@@ -36,7 +36,7 @@ Az Azure Cosmos DB folyamatosan bővíti a minősítési támogatását. Jelenle
 
 | **Globálisan érvényes** | **USA-beli államigazgatás** | **Adott iparági** | **Régió vagy adott ország** |
 | --- | --- | --- | --- | --- |
-| CSA STAR-minősítés<br/><br/>CSA STAR-igazolás<br/><br/>ISO 20000-1:2011<br/><br/>ISO 22301:2012<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3| Védelmi Minisztérium SRG 2. szint<br/><br/>FedRAMP mérsékelt<br/><br/>GxP (FDA 21 CFR Part 11)<br/><br/>| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Ausztrál IRAP nem besorolt<br/><br/>A Németországi C5 csomag<br/><br/>Szingapúri MTCS a 3. szintre<br/><br/>Spanyolország ENS magas|
+| CSA STAR-minősítés<br/><br/>CSA STAR-igazolás<br/><br/>ISO 20000-1:2011<br/><br/>ISO 22301:2012<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3| DoD SRG Level 2<br/><br/>FedRAMP mérsékelt<br/><br/>GxP (FDA 21 CFR Part 11)<br/><br/>| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Ausztrál IRAP nem besorolt<br/><br/>A Németországi C5 csomag<br/><br/>Szingapúri MTCS a 3. szintre<br/><br/>Spanyolország ENS magas|
 
 Minden egyes ezek megfelelőségi ajánlattal, és hogyan azok előnyeit kapcsolatos további információkért lásd: [áttekintése a Microsoft Azure-megfelelőségi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) lapot.
 
@@ -44,7 +44,7 @@ Az alábbi táblázat a tanúsítvánnyal, ezáltal az Azure Cosmos DB az Azure 
 
 | **Globálisan érvényes** | **USA-beli államigazgatás** | **Adott iparági** | **Régió vagy adott ország** |
 | --- | --- | --- | --- |
-| CSA STAR-minősítés<br/><br/>CSA STAR-igazolás<br/><br/>ISO 20000-1:2011<br/><br/>ISO 9001:2015<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3 | Védelmi Minisztérium SRG 2. szint<br/><br/>Védelmi Minisztérium SRG 5. szint<br/><br/>CJIS<br/><br/>FedRAMP magas<br/><br/>IRS 1075<br/><br/>NIST CSF<br/><br/>NIST SP 800-171| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Ausztrál IRAP nem besorolt<br/><br/>A Németországi C5 csomag<br/><br/>Szingapúri MTCS a 3. szintre<br/><br/>Spanyolország ENS magas|
+| CSA STAR-minősítés<br/><br/>CSA STAR-igazolás<br/><br/>ISO 20000-1:2011<br/><br/>ISO 9001:2015<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3 | DoD SRG Level 2<br/><br/>DoD SRG Level 5<br/><br/>CJIS<br/><br/>FedRAMP magas<br/><br/>IRS 1075<br/><br/>NIST CSF<br/><br/>NIST SP 800-171| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Ausztrál IRAP nem besorolt<br/><br/>A Németországi C5 csomag<br/><br/>Szingapúri MTCS a 3. szintre<br/><br/>Spanyolország ENS magas|
 
 ## <a name="next-steps"></a>További lépések
 

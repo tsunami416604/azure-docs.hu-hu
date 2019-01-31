@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 801266ed13aa993ad04ed8a3b21d6a6b3e1d6603
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54841423"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302359"
 ---
 Fontos a futtatott alkalmazások biztonságát a virtuális gép (VM). A virtuális gépek védelme is tartalmazhat, egy vagy több Azure-szolgáltatásokat és funkciókat, mind a biztonságos hozzáférés a virtuális gépek és az adatok biztonságos tárolását. Ez a cikk nyújt információt, amely lehetővé teszi a virtuális gép és az alkalmazások biztonságának megőrzéséhez.
 
@@ -20,6 +20,8 @@ A modern fenyegetések világának felhőalapú környezetek dinamikus növelés
 ## <a name="azure-security-center"></a>Azure Security Center
 
 [Az Azure Security Center](../articles/security-center/security-center-intro.md) megelőzését, észlelését és háríthatja el a fenyegetéseket a virtuális gépek segítségével. Security Center integrált biztonsági monitorozást és felügyeletet biztosít az Azure-előfizetésekre, megkönnyíti a nehezen észlelhető fenyegetések azonosítását szabályzatkezelést, és a biztonsági megoldások széles ökoszisztémájával képes együttműködni.
+
+A Security Center – igény hozzáférés való zárolását, így a bejövő forgalom az Azure virtuális gépekre, csökkentve a támadásokkal szembeni sérülékenységet ugyanakkor könnyű hozzáférést biztosít arra, hogy szükség esetén a virtuális gépekhez csatlakozhat a virtuális gép üzembe helyezésének egyaránt alkalmazhatók. Just-in-time engedélyezve van, és a egy felhasználó egy virtuális Géphez való hozzáférést igényel, ha a Security Center ellenőrzi, milyen engedélyekkel a felhasználó rendelkezik a virtuális gép. Ha a megfelelő engedélyekkel rendelkeznek, a kérés jóváhagyást, és a Security Center automatikusan konfigurálja a hálózati biztonsági csoportok (NSG) lehetővé teszi a kijelölt port bejövő forgalmát egy korlátozott ideig. Az időszak lejárta után a Security Center visszaállítja az NSG-k korábbi állapotába. 
 
 ## <a name="encryption"></a>Titkosítás
 

@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 03e1974a91a8c3cceacab777e28e8e4a01ccb313
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/25/2019
+ms.openlocfilehash: 8449462f144590e4fe7048366a21090c95a303cb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251593"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455592"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Horizontális felskálázás meglévő adatbázisok migrálása
 Könnyedén kezelheti a meglévő horizontálisan skálázott horizontálisan felskálázott adatbázisok Azure SQL Database-adatbázis eszközök segítségével (mint például a [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md)). Egy meglévő készlethez adatbázisok használatához először konvertálja a [szilánkleképezés-kezelővel](sql-database-elastic-scale-shard-map-management.md). 
@@ -69,11 +69,11 @@ Hozzon létre egy egybérlős modellbe a **lista leképezés** horizontális sk�
 
 ![Lista leképezés][1]
 
-A több-bérlős modell egy önálló adatbázis rendel hozzá a több bérlő (és a bérlők csoportok juttathatja el több adatbázis között). Ezt a modellt használja, ha várhatóan minden bérlő, kis méretű adatokat kell rendelkeznie. Ebben a modellben bérlők számos hozzárendelése egy adatbázis használatával **tartomány hozzárendelési**. 
+A több-bérlős modell több bérlő rendel az egyes adatbázisok (és a bérlők csoportok juttathatja el több adatbázis között). Ezt a modellt használja, ha várhatóan minden bérlő, kis méretű adatokat kell rendelkeznie. Ebben a modellben bérlők számos hozzárendelése egy adatbázis használatával **tartomány hozzárendelési**. 
 
 ![Tartomány leképezése][2]
 
-Megvalósíthat egy több-bérlős adatbázis modellt használja, vagy egy *lista leképezés* több bérlő hozzárendelése egy önálló adatbázis. Ha például DB1 bérlői azonosító 1 és 5 kapcsolatos információk tárolására szolgál, és DB2 7 bérlői és bérlői 10 adatait tárolja. 
+Megvalósíthat egy több-bérlős adatbázis modellt használja, vagy egy *lista leképezés* több bérlő hozzárendelése az egyes adatbázisok. Ha például DB1 bérlői azonosító 1 és 5 kapcsolatos információk tárolására szolgál, és DB2 7 bérlői és bérlői 10 adatait tárolja. 
 
 ![Több bérlő egyetlen DB][3] 
 
@@ -98,10 +98,10 @@ Ezt a hozzárendelést mintát használja, a bérlői azonosító értéket kell
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-a-single-database"></a>3. lehetőség: Lista leképezése egy önálló adatbázis
+### <a name="option-3-list-mappings-on-an-individual-database"></a>3. lehetőség: Az egyes adatbázisok listája leképezése
 Ezt a mintát beállítása van szükség egy lista térkép létrehozása is, ahogyan a 2. lépéshez, 1. lehetőség.
 
-## <a name="step-3-prepare-individual-shards"></a>3. lépés: Készítse elő az egyes szegmensek
+## <a name="step-3-prepare-individual-shards"></a>3. lépés: Az egyes szegmensek előkészítése
 Adja hozzá a szilánkleképezés-kezelő mindegyik szegmens (adatbázis). Ez előkészíti az egyes adatbázisok leképezés információk tárolására. Ez a módszer minden egyes szegmens hajtható végre.
 
     Add-Shard 
@@ -111,7 +111,7 @@ Adja hozzá a szilánkleképezés-kezelő mindegyik szegmens (adatbázis). Ez el
     # The $ShardMap is the shard map created in step 2.
 
 
-## <a name="step-4-add-mappings"></a>4. lépés: A leképezések hozzáadása
+## <a name="step-4-add-mappings"></a>4. lépés: Leképezések hozzáadása
 Leképezések hozzáadása létrehozott szegmenstérkép típusától függ. Ha létrehozott egy lista térképet, lista leképezések adja hozzá. Ha tartományt térképén hozta létre, tartomány leképezések ad hozzá.
 
 ### <a name="option-1-map-the-data-for-a-list-mapping"></a>1. lehetőség: az adatok egy lista a leképezés leképezése
@@ -138,7 +138,7 @@ Adja hozzá a tartomány leképezések minden bérlői azonosító tartomány - 
     -SqlDatabaseName '<shard_database_name>' 
 
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>4. lépés: 3. lehetőség: az adatok leképezése egy önálló adatbázisban több bérlő számára
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>4. lépés: 3. lehetőség: az egyes adatbázisok több bérlő számára az adatok leképezése
 Minden egyes bérlőhöz futtassa az Add-ListMapping (1. lehetőség). 
 
 ## <a name="checking-the-mappings"></a>A leképezések ellenőrzése
@@ -154,7 +154,7 @@ A telepítés befejezése után elkezdheti használni az Elastic Database ügyf�
 ## <a name="next-steps"></a>További lépések
 A PowerShell-parancsprogramok, az első [Azure SQL DB-Elastic Database-eszközök parancsfájlok](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
-Az eszközök emellett a Githubon érhetők el: [Azure/rugalmas-db-tools-](https://github.com/Azure/elastic-db-tools).
+Az eszközök emellett a Githubon érhetők el: [Az Azure/rugalmas-db-tools-](https://github.com/Azure/elastic-db-tools).
 
 A felosztási-egyesítési eszközének használatával adatok áthelyezése, illetve a több-bérlős modell egy egybérlős modellbe. Lásd: [felosztási-egyesítési eszközének](sql-database-elastic-scale-get-started.md).
 

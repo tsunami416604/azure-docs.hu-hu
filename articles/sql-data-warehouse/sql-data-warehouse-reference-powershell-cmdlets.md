@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f38c9e3bed93a77cd9b35c6d23983ee5785a34a7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 412c2faead0102d3995e3df9db31b81c4dd4aa22
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714468"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452005"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>PowerShell-parancsmagok és a REST API-k, az SQL Data warehouse-hoz
 Az SQL Data Warehouse számos feladat az Azure PowerShell-parancsmagok vagy a REST API-k használatával kezelhetők.  Az alábbiakban néhány példa bemutatja, hogyan automatizálhatja a gyakori feladatokat az SQL Data Warehouse a PowerShell-parancsok használatával.  Néhány hasznos REST példák: a cikk [kezelése a REST-tel méretezhetőség][Manage scalability with REST].
@@ -71,16 +71,16 @@ $resultDatabase = $database | Resume-AzureRmSqlDatabase
 ## <a name="other-supported-powershell-cmdlets"></a>Egyéb támogatott PowerShell-parancsmagok
 Ezek a PowerShell-parancsmagok az Azure SQL Data Warehouse használata támogatott.
 
-* [Get-azurermsqldatabase parancsmaghoz][Get-AzureRmSqlDatabase]
+* [Get-AzureRmSqlDatabase][Get-AzureRmSqlDatabase]
 * [Get-AzureRmSqlDeletedDatabaseBackup][Get-AzureRmSqlDeletedDatabaseBackup]
 * [Get-AzureRmSqlDatabaseRestorePoints][Get-AzureRmSqlDatabaseRestorePoints]
-* [Új-azurermsqldatabase parancsmaghoz][New-AzureRmSqlDatabase]
-* [Remove-azurermsqldatabase parancsmaghoz][Remove-AzureRmSqlDatabase]
+* [New-AzureRmSqlDatabase][New-AzureRmSqlDatabase]
+* [Remove-AzureRmSqlDatabase][Remove-AzureRmSqlDatabase]
 * [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase]
-* [RESUME-azurermsqldatabase parancsmaghoz][Resume-AzureRmSqlDatabase]
-* [SELECT-AzureRmSubscription][Select-AzureRmSubscription]
-* [Set-azurermsqldatabase parancsmaghoz][Set-AzureRmSqlDatabase]
-* [Suspend-azurermsqldatabase parancsmaghoz][Suspend-AzureRmSqlDatabase]
+* [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase]
+* [Select-AzureRmSubscription][Select-AzureRmSubscription]
+* [Set-AzureRmSqlDatabase][Set-AzureRmSqlDatabase]
+* [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]
 
 ## <a name="next-steps"></a>További lépések
 PowerShell kapcsolatos további példákért lásd:

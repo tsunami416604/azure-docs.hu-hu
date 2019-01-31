@@ -1,6 +1,6 @@
 ---
-Cím: Adatokat importálhat Machine Learning studióba egy másik kísérlet titleSuffix: Azure Machine Learning Studio description: Útmutató az Azure Machine Learning Studióban betanítási adatok mentéséhez és vele egy másik kísérlet során.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Adatokat importálhat Machine Learning studióba egy másik kísérlet titleSuffix: Azure Machine Learning Studio description: Útmutató az Azure Machine Learning Studióban betanítási adatok mentéséhez és vele egy másik kísérlet során.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=deguhath, previous-author=deguhath ms.date: 03/20/2017
 ---

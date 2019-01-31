@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 01df34025c0389a4ea8bcd5eceaa29f0351df5f7
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 556ec0b55ea2e62975661eb5f668b4d3acda7c30
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329704"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466353"
 documentType: LandingData
 title: Felügyelt Azure SQL Database-példány
 metadata:
@@ -55,7 +55,7 @@ sections:
       html: <p>Telepítse át egy járműflotta adatbázisok minimális állásidővel Database Migration Service segítségével.</p>
     - title: Díjszabás
       href: https://azure.microsoft.com/pricing/hybrid-benefit/
-      html: <p>Akár 40 %-os az Azure Hybrid Benefit (AHB) mentse a meglévő helyszíni engedélyek.</p>
+      html: <p>Akár 40 %-os az Azure Hybrid Benefit (AHB) mentse a meglévő helyszíni licenceit.</p>
     - title: PaaS-megoldásaink
       href: /azure/sql-database/sql-database-paas
       html: <p>Azure PaaS lehetővé teszi, hogy 99,99 %-os elérhető példányhoz, minimális kezelési használjon.</p>
@@ -78,7 +78,7 @@ sections:
     - html: <a href="https://aka.ms/managed-instance-configurable-backup-retention">A biztonsági másolatok konfigurálása mentése 35 napon belül</a> időponthoz visszaállításhoz. Vegye figyelembe, hogy hosszú távú megőrzésének (legfeljebb 10 évre) még nincs engedélyezve, így használhatja <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">csak másolatot biztonsági mentések</a> alternatívájaként.
     - html: (Előzetes verzió) Használat <a href="https://aka.ms/managed-instance-failover-groups">földrajzilag elosztott feladatátvételi csoportok</a> adatpéldányok példány egy másik régióban, és győződjön meg arról, hogy az adatai akkor lesznek érhető el, még akkor is, a regionális vészhelyreállítási forgatókönyv.
     - html: (Előzetes verzió) <a href="https://aka.ms/managed-instance-tde-byok">Saját titkosítási kulcsok használata</a> Bár a migrálás a helyszíni adatbázisok, amelyek már rendelkeznek engedélyezve van a transzparens adattitkosítás (TDE).
-    - html: Felügyelt példányok védett <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-management-endpoint-verify-built-in-firewall">beépített tűzfal</a>.
+    - html: Felügyelt példányok védett <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">beépített tűzfal</a>.
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -134,7 +134,7 @@ sections:
     - html: <a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurálása</a> Azure virtuális hálózat, ahol a felügyelt példány üzembe helyezve.
     - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Érvényesítése</a> , hogy a meglévő Azure virtuális hálózat a felügyelt példányok üzembe helyezéséhez használható.
     - html: Csatlakozzon a példány <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure virtuális gép</a> vagy <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">pont – hely kapcsolat</a>, vagy <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">alkalmazások</a>.
-    - html: Győződjön meg arról, hogy az adatbázis áttelepíthető-e használatával <a href="https://www.microsoft.com/download/details.aspx?id=53595">adatok áttelepítési Asisstant</a> vagy <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">adatbázis Kísérletezési Segéd</a>.
+    - html: Győződjön meg arról, hogy az adatbázis áttelepíthető-e használatával <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistant</a> vagy <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">adatbázis Kísérletezési Segéd</a>.
     - html: Felügyelt példány használatával az adatbázisok életre <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natív visszaállítási</a> vagy <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Data Migration Service</a>.
     - html: Helyezze át az SSIS-csomagokat a <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, SSAS táblázatos modellek <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a>, és a jelentéseket az SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power bi Premium</a>.
     - html: Alkalmazása <a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">tárolási teljesítmény ajánlott eljárást és szempontot, általános célú szolgáltatási szinten</a>.

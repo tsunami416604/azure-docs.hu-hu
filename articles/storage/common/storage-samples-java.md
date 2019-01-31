@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 83080d1e73ddb06de9b454f106517ef230c4b25a
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.subservice: common
+ms.openlocfilehash: 7cc051697f3928e360ec0b3c6647a3a718315c18
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984264"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477260"
 ---
 # <a name="azure-storage-samples-using-java"></a>Java használatával Azure Storage-minták
 
@@ -25,7 +25,7 @@ Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett for
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Végpont</th><th style="font-size:110%">Forgatókönyv</th><th style="font-size:110%">Mintakód</th></tr></thead><tbody> 
 <tr> 
 <td rowspan="16"><b>Blob</b></td>
-<td>Hozzáfűző Blob</td> 
+<td>Blob hozzáfűzése</td> 
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob Service-szel Javával</a></td> 
 </tr> 
 <tr> 
@@ -57,7 +57,7 @@ Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett for
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
-<td>Tároló ACL/metaadatok/tulajdonságai</td>
+<td>Container ACL/Metadata/Properties</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
@@ -126,7 +126,7 @@ Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett for
 <td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Ismerkedés az Azure File Service-szel Javával</a></td> 
 </tr>
 <tr> 
-<td rowspan="8"><b>várólista</b></td>
+<td rowspan="8"><b>Queue</b></td>
 <td>Üzenet hozzáadása</td> 
 <td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/queue/gettingstarted/QueueBasics.java">Storage Java ügyfél erőforrástár-minták</a></td> 
 </tr> 
@@ -139,7 +139,7 @@ Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett for
 <td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Ismerkedés az Azure Queue szolgáltatás Java-környezetben</a></td> 
 </tr> 
 <tr> 
-<td>Üzenet-várólista törlése</td> 
+<td>Delete Message/Queue</td> 
 <td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Ismerkedés az Azure Queue szolgáltatás Java-környezetben</a></td> 
 </tr> 
 <tr> 
@@ -147,7 +147,7 @@ Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett for
 <td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Ismerkedés az Azure Queue szolgáltatás Java-környezetben</a></td> 
 </tr> 
 <tr> 
-<td>ACL/metaadatok/Stats várólista</td> 
+<td>Queue ACL/Metadata/Stats</td> 
 <td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Ismerkedés az Azure Queue szolgáltatás Java-környezetben</a></td> 
 </tr> 
 <tr> 
@@ -210,5 +210,5 @@ Tekintse meg a következő útmutatókat, ha arra kíváncsi, hogyan kell telep�
 
 Más nyelven minták tájékoztatást:
 
-* .NET: [.NET használatával az azure Storage-minták](storage-samples-dotnet.md)
-* Minden más nyelven: [Azure Storage-minták](storage-samples.md)
+* .NET: [.NET-keretrendszert használó Azure Storage-minták](storage-samples-dotnet.md)
+* Minden más nyelv: [Az Azure Storage-minták](storage-samples.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database - egyszeres konfigurálása |} A Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja és kezelheti az Azure SQL Database – önálló adatbázist.
+title: Az Azure SQL Database – önálló konfigurálása |} A Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja és kezelheti az Azure SQL Database – önálló adatbázis
 services: sql-database
 ms.service: sql-database
 ms.subservice: ''
@@ -11,21 +11,21 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 12/14/2018
-ms.openlocfilehash: d34853220e423e73c6ca8cf7c76ba616b815b8bd
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 01/25/2019
+ms.openlocfilehash: bf126caa378eafe569b83f211d9d2bbfd37e18f9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440652"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477794"
 ---
-# <a name="how-to-use-single-database"></a>Önálló adatbázis használata
+# <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Önálló adatbázis használata Azure SQL Database-ben
 
-Ebben a szakaszban található különböző útmutatók, parancsfájlok és leírásokkal, amelyek segítségével kezelheti és konfigurálhatja az Azure SQL Database - adatbázis egyetlen.
+Ebben a szakaszban található különböző útmutatók, parancsfájlok és leírásokkal, amelyek segítségével kezelheti és konfigurálhatja az önálló adatbázis az Azure SQL Database-ben
 
 ## <a name="migrate"></a>Migrate (Áttelepítés)
 
-- [Az SQL Database áttelepítése](sql-database-cloud-migrate.md) – további információ a javasolt áttelepítési folyamat és az eszközök felügyelt példányokra való áttelepítéshez.
+- [Az SQL Database áttelepítése](sql-database-cloud-migrate.md) – további információ a javasolt áttelepítési folyamat és az eszközök a migrálás felügyelt példányra.
 - Ismerje meg, hogyan [SQL database kezelése a migrálás után](sql-database-manage-after-migration.md).
 
 ## <a name="configure-features"></a>Funkciók konfigurálása
@@ -66,7 +66,7 @@ Ebben a szakaszban található különböző útmutatók, parancsfájlok és le�
 - Futtatás [több horizontális partíciós lekérdezések](sql-database-elastic-scale-multishard-querying.md).
 - [Szilánkokra osztott adatok áthelyezése](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
 - [Biztonság konfigurálása](sql-database-elastic-scale-split-merge-security-configuration.md) az adatbázis-szilánkból.
-- [Szilánk hozzáadása](sql-database-elastic-scale-add-a-shard.md) az aktuális beállítása od adatbázis-szilánkból.
+- [Szilánk hozzáadása](sql-database-elastic-scale-add-a-shard.md) szeretné az aktuális adatbázis-szilánkból.
 - [Szilánkleképezési problémák javítása](sql-database-elastic-database-recovery-manager.md).
 - [Szilánkokra osztott adatbázis migrálása](sql-database-elastic-convert-to-use-elastic-tools.md).
 - [Számlálók létrehozása](sql-database-elastic-database-perf-counters.md).

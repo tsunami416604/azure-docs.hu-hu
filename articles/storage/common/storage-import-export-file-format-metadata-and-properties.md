@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 5a886244b43ad006a95e9be0350d9c69fd987ad9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 2066d4a2ed6db97285d92d15e14dbd21629dbdfa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526232"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457003"
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Az Azure Import/Export szolgáltatás metaadat- és tulajdonságfájljainak formátuma
 Metaadatok és a egy vagy több blobot tulajdonságait is adja meg az importálási feladat vagy exportálási feladat részeként. Metaadatok és az importálási feladat részeként létrehozott blobok tulajdonságainak beállításához adja meg a metaadatok vagy tulajdonságok fájlt importálni kívánt adatokat tartalmazó merevlemez. Exportálási feladatokhoz metaadat- és tulajdonságfájljainak írt metaadatok vagy tulajdonságok fájlba, amely tartalmazza a merevlemezen, vissza.  
@@ -30,10 +30,10 @@ A metaadatfájl formátuma a következő:
 </Metadata>  
 ```
   
-|XML-elem|Típus|Leírás|  
+|XML-elem|Typo|Leírás|  
 |-----------------|----------|-----------------|  
 |`Metadata`|Legfelső szintű elem|A metaadatfájl gyökérelem.|  
-|`metadata-name`|Sztring|Választható. Az XML-elem metaadatait a BLOB nevét adja meg, és az érték határozza meg, a metaadatok beállítás értékét.|  
+|`metadata-name`|String|Választható. Az XML-elem metaadatait a BLOB nevét adja meg, és az érték határozza meg, a metaadatok beállítás értékét.|  
   
 ## <a name="properties-file-format"></a>Tulajdonságok fájlformátum  
 Egy tulajdonságfájljainak formátuma a következő:  
@@ -52,17 +52,17 @@ Egy tulajdonságfájljainak formátuma a következő:
 </Properties>  
 ```
   
-|XML-elem|Típus|Leírás|  
+|XML-elem|Typo|Leírás|  
 |-----------------|----------|-----------------|  
 |`Properties`|Legfelső szintű elem|A tulajdonságok fájl gyökérelem.|  
-|`Last-Modified`|Sztring|Választható. Utolsó módosítás időpontja a BLOB. Csak export-feladatok.|  
-|`Etag`|Sztring|Választható. A blob ETag-érték. Csak export-feladatok.|  
-|`Content-Length`|Sztring|Választható. A blob (bájt) mérete. Csak export-feladatok.|  
-|`Content-Type`|Sztring|Választható. A blob tartalmának típusa.|  
-|`Content-MD5`|Sztring|Választható. A blob MD5-kivonat.|  
-|`Content-Encoding`|Sztring|Választható. A blob tartalma kódolást.|  
-|`Content-Language`|Sztring|Választható. A blob tartalom nyelve.|  
-|`Cache-Control`|Sztring|Választható. A blob vezérlő cache-karakterlánc.|  
+|`Last-Modified`|String|Választható. Utolsó módosítás időpontja a BLOB. Csak export-feladatok.|  
+|`Etag`|String|Választható. A blob ETag-érték. Csak export-feladatok.|  
+|`Content-Length`|String|Választható. A blob (bájt) mérete. Csak export-feladatok.|  
+|`Content-Type`|String|Választható. A blob tartalmának típusa.|  
+|`Content-MD5`|String|Választható. A blob MD5-kivonat.|  
+|`Content-Encoding`|String|Választható. A blob tartalma kódolást.|  
+|`Content-Language`|String|Választható. A blob tartalom nyelve.|  
+|`Cache-Control`|String|Választható. A blob vezérlő cache-karakterlánc.|  
 
 ## <a name="next-steps"></a>További lépések
 

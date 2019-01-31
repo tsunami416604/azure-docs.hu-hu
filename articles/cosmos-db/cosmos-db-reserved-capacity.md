@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: b4f36abb2136223be8d4eec67935317041a41b93
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b37aa2eb24fe79d322839b4fb5c3c3a8b1296033
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044280"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454097"
 ---
-# <a name="optimize-cost-of-azure-cosmos-db-resources-with-reserved-capacity"></a>Lefoglalt kapacitás optimalizálása az Azure Cosmos DB-erőforrások költségeit
+# <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimalizálhatja költségeit az Azure Cosmos DB-ben lefoglalt kapacitás
 
 Az Azure Cosmos DB kapacitás révén pénzt takaríthat meg előre kellene fizetnie, az Azure Cosmos DB-erőforrásokat akár egy vagy három év fenntartva. Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás a Cosmos DB-erőforrásokat a létesített átviteli sebesség a kérheti le a kedvezményeket is. Erőforrásokat például az adatbázisok és a tárolók (táblák, gyűjtemények és grafikonok).
 

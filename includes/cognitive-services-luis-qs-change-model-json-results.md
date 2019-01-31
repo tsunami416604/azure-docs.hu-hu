@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: ec178827a2f27a4566f509fe76b58e451329efd4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 131e34a500fe891a707be308e1ae3cf4a60a7b3f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47044153"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478735"
 ---
 A kimondott példaszövegek hozzáadására szolgáló `response` tömb a `hasError` tulajdonsággal jelzi, hogy a művelet a kimondott példaszövegek esetében sikeres vagy sikertelen volt. A következő JSON-válasz azt mutatja, hogy mindkét kimondott szöveg hozzáadása sikeres volt. 
 

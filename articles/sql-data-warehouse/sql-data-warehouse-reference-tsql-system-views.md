@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 06/13/2018
 ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: c4663c71bb3aee3547174345cfe9fb1d06c4015e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6e68fe624a92d0a2d5a8accd3f34b1c5c10f2868
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256204"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472167"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse támogatott rendszernézetek
 Az Azure SQL Data Warehouse támogatott T-SQL-utasítások dokumentációját mutató hivatkozásokat tartalmaz.
@@ -85,7 +85,7 @@ A következő DMV-vel az SQL Data Warehouse alkalmazható, de való csatlakozás
 * [sys.database_permissions](https://msdn.microsoft.com/library/ms188367.aspx)
 * [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx)
 * [sys.database_role_members](https://msdn.microsoft.com/library/ms189780.aspx)
-* [sys.Databases](https://msdn.microsoft.com/library/ms178534.aspx)
+* [sys.databases](https://msdn.microsoft.com/library/ms178534.aspx)
 * [sys.default_constraints](https://msdn.microsoft.com/library/ms173758.aspx)
 * [sys.external_data_sources](https://msdn.microsoft.com/library/dn935019.aspx)
 * [sys.external_file_formats](https://msdn.microsoft.com/library/dn935025.aspx)
@@ -99,7 +99,7 @@ A következő DMV-vel az SQL Data Warehouse alkalmazható, de való csatlakozás
 * [sys.key_constraints](https://msdn.microsoft.com/library/ms174321.aspx)
 * [sys.numbered_procedures](https://msdn.microsoft.com/library/ms179865.aspx)
 * [sys.objects](https://msdn.microsoft.com/library/ms190324.aspx)
-* [sys.Parameters](https://msdn.microsoft.com/library/ms176074.aspx)
+* [sys.parameters](https://msdn.microsoft.com/library/ms176074.aspx)
 * [sys.partition_functions](https://msdn.microsoft.com/library/ms187381.aspx)
 * [sys.partition_parameters](https://msdn.microsoft.com/library/ms175054.aspx)
 * [sys.partition_range_values](https://msdn.microsoft.com/library/ms187780.aspx)
@@ -219,11 +219,11 @@ A következő DMV-vel az SQL Data Warehouse alkalmazható, de való csatlakozás
 * [sys.dm_exec_external_operations](https://msdn.microsoft.com/library/mt146391.aspx)
 * [sys.dm_exec_external_work](https://msdn.microsoft.com/library/mt146375.aspx)
 
-## <a name="sql-server-informationschema-views"></a>Az SQL Server INFORMATION_SCHEMA nézetek
+## <a name="sql-server-informationschema-views"></a>SQL Server INFORMATION_SCHEMA views
 * [CHECK_CONSTRAINTS](https://msdn.microsoft.com/library/ms189772.aspx)
-* [OSZLOPOK](https://msdn.microsoft.com/library/ms188348.aspx)
+* [COLUMNS](https://msdn.microsoft.com/library/ms188348.aspx)
 * [PARAMÉTEREK](https://msdn.microsoft.com/library/ms173796.aspx)
-* [RUTINOK](https://msdn.microsoft.com/library/ms188757.aspx)
+* [ROUTINES](https://msdn.microsoft.com/library/ms188757.aspx)
 * [SCHEMATA](https://msdn.microsoft.com/library/ms182642.aspx)
 * [TABLES](https://msdn.microsoft.com/library/ms186224.aspx)
 * [VIEW_COLUMN_USAGE](https://msdn.microsoft.com/library/ms190492.aspx)

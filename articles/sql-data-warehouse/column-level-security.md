@@ -6,16 +6,16 @@ author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 06/15/2018
 ms.author: kavithaj
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: 1765c92ad10fa35af98e7c7314eb44c3a119f422
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 323879fff90fa478797f85415faae9ae02ea5bcd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301055"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461508"
 ---
 # <a name="column-level-security"></a>Oszlop-biztonság 
 Oszlopszintű biztonsági (CLS) lehetővé teszi, hogy az ügyfelek számára, hogy ki férhet hozzá a felhasználó a végrehajtási környezet vagy a csoporttagságuk alapuló tábla oszlopokat.  
@@ -76,7 +76,7 @@ Msg 230, Level 14, State 1, Line 12
 The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'. 
 ``` 
 
-## <a name="use-cases"></a>Használati esetek
+## <a name="use-cases"></a>Használati példák
 Néhány példa, hogyan CLS használják még ma: 
 - A pénzügyi szolgáltatások vállalkozás áttekinthető egyetlen fiók rendelkezik hozzáféréssel az ügyfél társadalombiztosítási szám (SSN), a telefonszámokat, és az egyéb személyes azonosításra alkalmas adatokat (PII).
 - Egészségügyi szolgáltató lehetővé teszi, hogy csak orvosok és nővérek hozzáférjenek a bizalmas orvosi a számlázási részleg tagjai nem téve az adatok megtekintésére.

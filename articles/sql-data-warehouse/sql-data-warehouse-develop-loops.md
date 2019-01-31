@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: b7c21566916c9728900e69dc6480098fadae7622
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5aa26aeb27d962e6e6289a754ef57b49158b68db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301208"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456289"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Az SQL Data Warehouse a T-SQL-hurkok használatával
 Tippek a T-SQL-hurkok használatával, és cserélje le az Azure SQL Data Warehouse a kurzorok használható megoldások fejlesztéséhez.
@@ -25,7 +25,7 @@ Tippek a T-SQL-hurkok használatával, és cserélje le az Azure SQL Data Wareho
 SQL Data Warehouse támogat a [közben](/sql/t-sql/language-elements/while-transact-sql) hurok ismételten a blokkok utasítás végrehajtása. Ez KICSIT ciklus addig a, ha a megadott feltétel igaz, vagy amíg a kód kifejezetten megszakítja a hurok BREAK kulcsszó használatával. Hurkok hasznosak a kurzorok meghatározott SQL-kód cseréje. Szerencsére az SQL-kódot írt, szinte az összes kurzorok a gyors előre, csak olvasható fajta vannak. Ezért [BÁR] ciklusok egy remek alternatívát kínál a kurzorok cseréje.
 
 ## <a name="replacing-cursors-in-sql-data-warehouse"></a>Az SQL Data Warehouse a kurzorok cseréje
-Azonban mielőtt belevágna a fő először meg kell tegye fel magának a következő kérdést: "sikerült a kurzor kell írni, használja a set-alapú operations?." Sok esetben a válasz Igen és gyakran a legjobb módszer. A set-alapú művelet gyakran gyorsabb, mint egy iteratív, soronként megközelítéssel hajt végre.
+Azonban mielőtt belevágna a fő először meg kell tegye fel magának a következő kérdést: "Sikerült a kurzor kell írni, használja a set-alapú operations?." Sok esetben a válasz Igen és gyakran a legjobb módszer. A set-alapú művelet gyakran gyorsabb, mint egy iteratív, soronként megközelítéssel hajt végre.
 
 Gyors előre csak olvasható kurzorok uvozuje konstruktor cyklu egyszerűen lehet cserélni. Az alábbiakban egy egyszerű példa látható. Ez a Kódpélda frissíti az adatbázis minden táblájához statisztikai adatait. Által léptetés keresztül a hurok található táblák, minden egyes parancsot végrehajtja a sorrendben.
 

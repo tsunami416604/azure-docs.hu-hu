@@ -1,5 +1,5 @@
 ---
-Cím: Helyezze üzembe az Azure Resource Manager titleSuffix Studio-munkaterület: Azure Machine Learning Studio description: Az Azure Machine Learning használatával az Azure Resource Manager-sablon szolgáltatások üzembe helyezése a munkaterület: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Helyezze üzembe az Azure Resource Manager titleSuffix Studio-munkaterület: Azure Machine Learning Studio description: Az Azure Machine Learning használatával az Azure Resource Manager-sablon szolgáltatások üzembe helyezése a munkaterület: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/05/2018
 ---

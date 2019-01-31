@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: fe73d5a2aa63cf127f5df835484cfcc75ef702aa
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: ac0513e2298877c63bb25c26de32834c07a55474
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514961"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294148"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Csatlakoztassa az alkalmazását az Azure SQL Database felügyelt példányához
 
@@ -92,7 +92,7 @@ Ebben a forgatókönyvben a következő ábra mutatja be:
 
 Csatlakozási problémák elhárítása, tekintse át a következőket:
 - Ha Ön nem lehet csatlakozni egy Azure virtuális gépen belül a ugyanazon a Vneten, de különböző alhálózati felügyelt példányra, ellenőrizze, hogy van-e állítva a Virtuálisgép-alhálózatot, amelyek esetleg blokkolják a hozzáférést a hálózati biztonsági csoport. Továbbá vegye figyelembe, hogy meg kell nyitnia az 1433-as port SQL, valamint a portokat a kimenő kapcsolatot 11000-12000 tartományban, mivel azok szükségesek, például az Azure határain belül létesít átirányítás használatával csatlakozik. 
-- Győződjön meg arról, hogy a BGP-propagálási értéke **engedélyezve** a Vnethez társított útvonaltáblához.
+- Győződjön meg arról, hogy a BGP-Útvonalpropagálás értékre van állítva **engedélyezve** a Vnethez társított útvonaltáblához.
 - Ha a P2S típusú VPN-kapcsolattal, ellenőrizze a konfigurációt, ha láthatja, hogy az Azure Portalon **bejövő/kimenő forgalom** számokat. Nem nulla értékű számok azt jelzi, hogy az Azure és-tárolókról a helyszíni irányítaná a forgalmat.
 
    ![bejövő/kimenő forgalom számok](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
@@ -140,7 +140,7 @@ Az alábbi minimális verziók az eszközökkel és illesztőprogramokkal haszn�
 |.NET-keretrendszer | 4.6.1 (vagy a .NET Core) | 
 |ODBC-illesztő    | v17 |
 |PHP-illesztőprogram | 5.2.0 |
-|JDBC-illesztőprogram    | 6.4.0 |
+|JDBC driver    | 6.4.0 |
 |NODE.js-illesztőprogram | 2.1.1 |
 |OLEDB illesztőprogram   | 18.0.2.0 |
 |SSMS   | 17.8.1 vagy [magasabb](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |

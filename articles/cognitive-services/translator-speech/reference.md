@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: dea32146c1e00869de43b50823e81853e6543411
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e1796b2cb3efee6ff610f9dade7a10b2c2637bba
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259426"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466183"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 
@@ -71,17 +71,17 @@ Hangbemenet hullám hang formátumban van (HULLÁM, vagy több gyakran nevezik W
 
 |Eltolás|Érték|
 |:---|:---|
-|0 – 3|"RIFF"|
-|4 – 7|0|
-|8 – 11|"SZAKASZ"|
-|12 – 15|"fmt"|
+|0 - 3|"RIFF"|
+|4 - 7|0|
+|8 - 11|"WAVE"|
+|12 - 15|"fmt"|
 |16 - 19|16|
 |20 - 21|1|
 |22 - 23|1|
 |24 - 27|16000|
-|28 – 31.|32000|
+|28 - 31|32000|
 |32 - 33|2|
-|34 – 35|16|
+|34 - 35|16|
 |36 - 39|"adatok"|
 |40 - 43|0|
 
@@ -180,7 +180,7 @@ Amikor egy ügyfélalkalmazás hang streamelés befejeződött, és az utolsó v
 |access_token|(üres)   |Alternatív módja átadni egy érvényes OAuth-jogkivonatot. A tulajdonosi jogkivonatot általában biztosított fejléccel `Authorization`. Websocket könyvtárak Ügyfélkód fejlécek beállítása nem teszik lehetővé. Ebben az esetben az ügyfél használhatja a `access_token` lekérdezési paraméter érvényes token át. Ha a hozzáférési token használatával hitelesíteni, ha `Authorization` fejléc nincs beállítva, majd `access_token` be kell állítani. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja. Az ügyfelek csak egy módszert használja a jogkivonat.|lekérdezés|sztring|
 |Előfizetés-kulcs|(üres)   |Az előfizetői át másik módszere. Websocket könyvtárak Ügyfélkód fejlécek beállítása nem teszik lehetővé. Ebben az esetben az ügyfél használhatja a `subscription-key` lekérdezési paraméter, át kell adnia egy érvényes előfizetési kulcsot. Ha egy előfizetési kulcsot használja a hitelesítéshez, ha `Ocp-Apim-Subscription-Key` fejléc nincs beállítva, akkor az előfizetői be kell állítani. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja. Az ügyfelek csak használja a több módszert adja át a `subscription key`.|lekérdezés|sztring|
 |X-ClientTraceId    |(üres)    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megfelelő hibaelhárítási problémák, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-ClientTraceId`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
-|X-korrelációs azonosító|(üres)    |Egy ügyfél által generált azonosítójának korrelációját, ha több csatornán beszélgetés során használt. Beszéd fordítási több munkamenet engedélyezése a felhasználók közötti beszélgetések hozható létre. Ilyen esetben az összes speech fordítási munkamenetek segítségével az azonos korrelációs Azonosítót a csatornák összekapcsolása. Ez elősegíti a nyomkövetés és diagnosztika. Az azonosítót meg kell felelnie: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-CorrelationId`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
+|X-CorrelationId|(üres)    |Egy ügyfél által generált azonosítójának korrelációját, ha több csatornán beszélgetés során használt. Beszéd fordítási több munkamenet engedélyezése a felhasználók közötti beszélgetések hozható létre. Ilyen esetben az összes speech fordítási munkamenetek segítségével az azonos korrelációs Azonosítót a csatornák összekapcsolása. Ez elősegíti a nyomkövetés és diagnosztika. Az azonosítót meg kell felelnie: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-CorrelationId`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
 |X-ClientVersion|(üres)    |Az ügyfélalkalmazás verzióját azonosítja. Példa: "2.1.0.123".<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-ClientVersion`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
 |X-OsPlatform|(üres)   |A nevét és az ügyfélalkalmazás fut, az operációs rendszer verzióját azonosítja. Példák: "Android 5.0-s", "iOs 8.1.3", "a Windows 8.1".<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-OsPlatform`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
 
@@ -188,7 +188,7 @@ Amikor egy ügyfélalkalmazás hang streamelés befejeződött, és az utolsó v
 
 |HTTP-állapotkód|Ok|Válaszmodellje|Fejlécek|
 |:--|:--|:--|:--|
-|101    |WebSocket-frissítés.|Modell Példaérték <br/> Objektum {}|X-RequestId:<br/>Hibaelhárítás céljából a kérelem azonosító érték.<br/>sztring|
+|101    |WebSocket-frissítés.|Modell Példaérték <br/> Objektum {}|X-RequestId<br/>Hibaelhárítás céljából a kérelem azonosító érték.<br/>sztring|
 |400    |Hibás kérés. Ellenőrizze, hogy biztosítsa azok érvényes bemeneti paramétereket. A válasz objektum tartalmazza a hiba részletes leírását.|||
 |401    |Nem engedélyezett. Győződjön meg arról, hogy hitelesítő adatok vannak beállítva, akkor érvényesek, és, hogy van-e az Azure Data piaci előfizetés egy elérhető egyenlegű jó minősítésének.|||
 |500    |Hiba történt. Ha a hiba továbbra is fennáll, jelentse az ügyfél nyomkövetési azonosító (X-ClientTraceId), vagy kérelemazonosító (X-kérelemazonosító).|||

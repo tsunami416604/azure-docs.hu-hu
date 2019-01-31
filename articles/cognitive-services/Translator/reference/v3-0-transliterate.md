@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 841982a4ecbfa5241d826beaaae81921b2859596
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a37b069d533dc51067aba4f9d9bd87608b116ae6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967333"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466455"
 ---
-# <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: átírás
+# <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
 
 Egy nyelvű szöveget egy parancsfájlból származó alakítja egy másik szkriptet.
 
@@ -60,7 +60,7 @@ Kérelemfejlécek a következők:
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>_Egy engedélyezési_<br/>_Fejléc_</td>
+    <td>_Egy engedélyezési_<br/>_header_</td>
     <td>*Szükséges kérelem fejléce*.<br/>Lásd: [elérhető lehetőségek a hitelesítéshez](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -100,7 +100,7 @@ A sikeres válasz egy JSON-tömb egyes elemei a bemeneti számtömbből egy ered
 
   * `text`: Egy karakterlánc, amely a bemeneti karakterlánc átalakításával a kimeneti parancsfájlt.
   
-  * `script`: Egy karakterlánc, a kimenetben használt parancsfájl megadása.
+  * `script`: A parancsfájl kimenetében használt megadó karakterlánc.
 
 A következő egy példa JSON-választ:
 
@@ -117,7 +117,7 @@ A következő egy példa JSON-választ:
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>X-RequestId:</td>
+    <td>X-RequestId</td>
     <td>A kérelem azonosíthatja a szolgáltatás által létrehozott értéket. Hibaelhárítási célokra szolgál.</td>
   </tr>
 </table> 
@@ -163,7 +163,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
 
 Az alábbi példa bemutatja, hogyan alakíthatja japán Romanized két japán karakterlánc.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 A JSON-adattartalom-ebben a példában a kérelmet:
 

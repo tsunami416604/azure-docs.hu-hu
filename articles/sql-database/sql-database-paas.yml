@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 89aad876eb087817c8514b4268a18fa20925f810
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 0d52d2aa5e218007aed4510f537fb061ef8d1fbe
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52167025"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301560"
 documentType: LandingData
 title: Az Azure SQL Database - szolgáltatásként nyújtott platformon
 metadata:
@@ -54,7 +54,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/sql-database/sql-database-security-index">Speciális biztonsági</a> észleli a fenyegetéseket és vunerabilities az adatbázisokban, és lehetővé teszi az adatok védelme.
+    - html: <a href="/azure/sql-database/sql-database-security-index">Speciális biztonsági</a> fenyegetések és biztonsági rések észleli az adatbázisokban, és lehetővé teszi az adatok védelme.
     - html: <a href="/azure/sql-database/sql-database-automatic-tuning">Az automatikus hangolás</a> elemzi a számítási feladatok és a javaslatok, amelyek az alkalmazások teljesítményének optimalizálhatja indexek hozzáadása, a fel nem használt index eltávolításával és a lekérdezési terv problémák kijavítása automatikusan biztosít.
     - html: <a href="/azure/log-analytics/log-analytics-azure-sql">Beépített figyelési képességek</a> lehetővé teszi az elemzéseket kaphat az adatbázisok és a számítási feladatok teljesítményét, és a teljesítménnyel kapcsolatos problémáinak elhárítása.
     - html: <a href="/azure/sql-database/sql-database-intelligent-insights">Beépített intelligenciával</a> automatikusan azonosítja a potenciális problémák egy részét a számítási feladatok és a javaslatok, amelyek segíthetnek a problémák elhárításához nyújt.

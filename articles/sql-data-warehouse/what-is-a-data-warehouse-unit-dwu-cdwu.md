@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 6fc3aa3810fa79e0995fd94708d03310cc5cef53
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 76db38a59d2239de79ebcdcfd454ac60a8f514be
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244980"
+ms.locfileid: "55299881"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Az Adattárházegységek (Dwu) és számítási Adattárházegység (cDWUs)
 Javaslatok az adattárházegységek (dwu-k, cDWUs) ár és a teljesítmény-, és módosítása az egységek számát az ideális számot kiválasztása. 
@@ -62,7 +62,7 @@ WITH
 Mindegyik teljesítményszint egy némileg eltérő mértékegysége az adattárházegységek használ. Ez a különbség is megjelenik a számlán a skálázási egység közvetlen számlázás fog vonatkozni fordítja le.
 
 - Az Adattárházegységek (Dwu) Gen1 data warehouse-adattárházak mérése történik.
-- Az Adattárházegységek (cDWUs) számítási Gen2 adatok warehousesr mérése történik. 
+- Gen2 data warehouse-adattárházak mérése történik, a számítási az Adattárházegységek (cDWUs). 
 
 A dwu-k és a cDWUs támogatja méretezésű számítások felfelé és lefelé, és nem kell használnia az adattárház felfüggesztése számítási. Ezeket a műveleteket a rendszer az összes igény szerinti. Gen2 egy helyi lemez alapú gyorsítótárat használ a számítási csomópontokon teljesítmény javítása érdekében. Méretezhető vagy szüneteltetheti a rendszer, a gyorsítótár érvénytelenné válik, és így gyorsítótár előkészítése időszak előtt el kell végezni optimális teljesítmény akkor érhető el.  
 

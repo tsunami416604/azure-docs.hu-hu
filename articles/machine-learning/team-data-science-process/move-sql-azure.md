@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 680a47dae057b68957c58bbaab1ec35407d67952
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 291872ca25b8674528b47e695c0d5135296e3451
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268633"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472745"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Adatok áthelyezése egy Azure SQL-adatbázisba az Azure Machine Learning számára
 
@@ -26,7 +26,7 @@ Ez a témakör ismerteti az adatok áthelyezése egy helyszíni SQL Server Machi
 
 A következő táblázat összefoglalja az adatok áthelyezése az Azure SQL Database, a beállításokat.
 
-| <b>FORRÁS</b> | <b>CÉL: Az Azure SQL Database</b> |
+| <b>FORRÁS</b> | <b>CÉL: Azure SQL Database</b> |
 | --- | --- |
 | <b>Egybesimított fájl (CSV- vagy formázott TSV)</b> |[Tömeges beszúrás SQL-lekérdezés](#bulk-insert-sql-query) |
 | <b>A helyszíni SQL Server</b> |1.[Egybesimított fájl exportálása](#export-flat-file)<br> 2. [Az SQL Database áttelepítése varázsló](#insert-tables-bcp)<br> 3. [Adatbázis biztonsági mentése és visszaállítása](#db-migration)<br> 4. [Azure Data Factory](#adf) |

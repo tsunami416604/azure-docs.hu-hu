@@ -1,5 +1,5 @@
 ---
-title: Mérőszámok az Azure Monitor (előzetes verzió) – az Azure Event Hubs |} A Microsoft Docs
+title: Az Azure Monitor - metrikák az Azure Event Hubs |} A Microsoft Docs
 description: Ez a cikk információt nyújt az Azure Monitoring segítségével figyelheti az Azure Event Hubs
 services: event-hubs
 documentationcenter: .NET
@@ -15,14 +15,14 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 148071d71030638ddec4095ef2e33482327f3db3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 31aaa24dd6020cb8203e4ab1bfec8ce3e0ffd2b8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537920"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299690"
 ---
-# <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Az Azure Event Hubs-metrikák az Azure Monitor (előzetes verzió)
+# <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Az Azure Event Hubs-metrikák az Azure monitorban
 
 Event Hubs-mérőszámok az Azure-előfizetésében az Event Hubs-erőforrások állapotának biztosítja. Metrikai adatok széles skáláját felmérheti az event hubs szolgáltatás nem csak a névterek szintjén, hanem az entitások szintjén általános állapotát. A statisztikai lehet fontos, mert ezek segítségével figyelheti az event hubs szolgáltatás állapotát. Metrikák is segít kiváltó problémák elhárítása anélkül, hogy forduljon az Azure ügyfélszolgálatához.
 
@@ -40,7 +40,7 @@ Az idő függvényében segítségével figyelheti a mérőszámokat a [az Azure
 
 ![A sikeres metrikáinak megtekintése][1]
 
-Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák (Peview)**. Az event hubs hatókörének szűrt metrikák megjelenítéséhez válassza ki az event hubs, és kattintson a **metrikák (előnézet)**.
+Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a ** metrikák **. Az event hubs hatókörének szűrt metrikák megjelenítéséhez válassza ki az event hubs, és kattintson a **metrikák**.
 
 Dimenziók támogató metrikákhoz a kívánt dimenzió értékű a következő példában látható módon kell szűrése:
 
@@ -48,7 +48,7 @@ Dimenziók támogató metrikákhoz a kívánt dimenzió értékű a következő 
 
 ## <a name="billing"></a>Számlázás
 
-Az Azure monitorban mérőszámok segítségével a jelenleg előzetes verzióban ingyenes. Azonban használ további megoldásokat, amelyek fogadni a mérőszámadatokat, akkor előfordulhat, hogy után kell díjat ezek a megoldások által. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. Emellett a számlázás az Azure speciális elemzésekre szolgáló Log Analytics-metrikák adatok streamelése az, ha.
+Metrikák az Azure Monitor használata jelenleg ingyenes. Azonban használ további megoldásokat, amelyek fogadni a mérőszámadatokat, akkor előfordulhat, hogy után kell díjat ezek a megoldások által. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. Emellett a számlázás az Azure speciális elemzésekre szolgáló Log Analytics-metrikák adatok streamelése az, ha.
 
 Az alábbi mérőszámok segítségével a szolgáltatás állapotának áttekintése. 
 
@@ -63,34 +63,34 @@ Számít az adatok és a felügyeleti műveletek kérések száma.
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| A bejövő kérések (előnézet) | Az Azure Event Hubs szolgáltatás egy megadott időszakban végrehajtott kérelmek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName |
-| Sikeres kérések (előnézet)   | Az Azure Event Hubs szolgáltatás egy megadott időszakban végrehajtott sikeres kérelmek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName |
-| Kiszolgálóhibák (előzetes verzió) | Az Azure Event Hubs szolgáltatás hibája miatt a meghatározott időtartamon belül nem feldolgozott kérelmek száma. <br/><br/>Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName |
-|Felhasználói hibák (előzetes verzió)|Egy meghatározott időtartamon belül a felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Kvóta túllépve hibák (előzetes verzió)|A kérelmek száma túllépte a rendelkezésre álló kvótát. Lásd: [Ez a cikk](event-hubs-quotas.md) Event Hubs-kvótákról további információt.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
+| A bejövő kérések (előnézet) | Az Azure Event Hubs szolgáltatás egy megadott időszakban végrehajtott kérelmek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName |
+| Sikeres kérések (előnézet)   | Az Azure Event Hubs szolgáltatás egy megadott időszakban végrehajtott sikeres kérelmek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName |
+| Kiszolgálóhibák (előzetes verzió) | Az Azure Event Hubs szolgáltatás hibája miatt a meghatározott időtartamon belül nem feldolgozott kérelmek száma. <br/><br/>Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName |
+|Felhasználói hibák (előzetes verzió)|Egy meghatározott időtartamon belül a felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Kvóta túllépve hibák (előzetes verzió)|A kérelmek száma túllépte a rendelkezésre álló kvótát. Lásd: [Ez a cikk](event-hubs-quotas.md) Event Hubs-kvótákról további információt.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 
 ## <a name="throughput-metrics"></a>Átviteli sebességre vonatkozó mérőszámok
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Szabályozott kérelmeinek száma (előzetes verzió)|Voltak szabályozva, mert túllépte az átviteli egységek használati kérelmek száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
+|Szabályozott kérelmeinek száma (előzetes verzió)|Voltak szabályozva, mert túllépte az átviteli egységek használati kérelmek száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 
 ## <a name="message-metrics"></a>Üzenet-metrikák
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Bejövő üzenetek (előzetes verzió)|Események vagy adott időszakon belül az Event hubs szolgáltatásba küldött üzenetek számát.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Kimenő üzenetek (előzetes verzió)|Események vagy üzenetek száma egy meghatározott időtartamon belül beolvasni az Event hubs Eseményközpontokból.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Bejövő bájtok száma (előzetes verzió)|Az Azure Event Hubs szolgáltatás egy meghatározott időtartamon belül küldött bájtok száma.<br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Kimenő bájtok (előzetes verzió)|Az Azure Event Hubs szolgáltatás egy meghatározott időtartamon belül veszi bájtok száma.<br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
+|Bejövő üzenetek (előzetes verzió)|Események vagy adott időszakon belül az Event hubs szolgáltatásba küldött üzenetek számát.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Kimenő üzenetek (előzetes verzió)|Események vagy üzenetek száma egy meghatározott időtartamon belül beolvasni az Event hubs Eseményközpontokból.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Bejövő bájtok száma (előzetes verzió)|Az Azure Event Hubs szolgáltatás egy meghatározott időtartamon belül küldött bájtok száma.<br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Kimenő bájtok (előzetes verzió)|Az Azure Event Hubs szolgáltatás egy meghatározott időtartamon belül veszi bájtok száma.<br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 
 ## <a name="connection-metrics"></a>Kapcsolati metrika
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Aktív kapcsolatai (előzetes verzió)|A névtér, valamint egy entitására aktív kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Kapcsolatok megnyitott (előzetes verzió)|Megnyitott kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Kapcsolat lezárva (előzetes verzió)|Lezárt kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
+|Aktív kapcsolatai (előzetes verzió)|A névtér, valamint egy entitására aktív kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Kapcsolatok megnyitott (előzetes verzió)|Megnyitott kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Kapcsolat lezárva (előzetes verzió)|Lezárt kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 
 ## <a name="event-hubs-capture-metrics"></a>Event Hubs Capture metrikák
 
@@ -98,9 +98,9 @@ Az Event Hubs Capture metrikák figyelheti az event hubs rögzítési funkciója
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Rögzítése (előzetes verzió)|Amely során a kiválasztott cél még el bájtok száma.<br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Rögzített üzenetek (előzetes verzió)|Az üzenetek vagy a kiválasztott cél egy megadott időszakban rögzített események száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Rögzített bájtok száma (előzetes verzió)|A kiválasztott cél egy megadott időszakban rögzített bájtok száma.<br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
+|Rögzítése (előzetes verzió)|Amely során a kiválasztott cél még el bájtok száma.<br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Rögzített üzenetek (előzetes verzió)|Az üzenetek vagy a kiválasztott cél egy megadott időszakban rögzített események száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Rögzített bájtok száma (előzetes verzió)|A kiválasztott cél egy megadott időszakban rögzített bájtok száma.<br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 
 ## <a name="metrics-dimensions"></a>Metrikák dimenziók
 

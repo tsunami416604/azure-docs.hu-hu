@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7c0a48c22e6fe1d1904771915aef401ffa58d588
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cf38b2096e958a7484e5161277a608ec2cb88224
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152537"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470485"
 ---
 # <a name="design-process-overview"></a>Tervezési folyamat áttekintése
 Az összes három szakaszban a projekt Akusztika munkafolyamat-Tervező tervez fejezhető: előre os jelenet telepítése, a megbízható forrás elhelyezési és utáni bake Tervező. A folyamat kevesebb jelölőnyelvi társított visszhang kötetek elhelyezése Tervező szabályozhatja, hogyan álló jelenet renderelése; hangok megőrzése szükséges.
@@ -64,21 +64,27 @@ A hanganyag DSP által biztosított a **Microsoft Acoustics** Unity spatializer 
 Akusztika számítási lehetőségek eltérése a lejátszó helyre "szimuláció régió" mezőben hajt végre. Ha egy megbízható forrásból a szimuláció régión kívül található, a lejátszó távolságban belül a mezőbe csak geometriai hatással lesz a hang propagálás (például hangelnyelés okozó), amely viszonylag jól működik, ha occluders vannak-e a Windows Media player közelében. Azonban azokban az esetekben, amikor a Windows Media player nyissa meg a helyet, de a occluders buildjénél a távoli eredményes forrás a hangot is válnak irreálisan disoccluded. A javasolt megoldás, hogy ebben az esetben ellenőrizze, hogy a hangfájl gyengülés kapcsol körülbelül 45 m, a lejátszó az Edge-ben a mező alapértelmezett vízszintes távolság 0.
 
 ### <a name="tuning-scene-parameters"></a>Jelenetparaméterek hangolása
-Minden forrás paramétereinek beállításához kattintson a csatorna sáv a Unity a **hang Mixer**, és módosítsa úgy a paramétereket a a **Akusztika Mixer** érvénybe.
+Minden forrás paramétereinek beállításához kattintson a csatorna sáv a Unity a **hang Mixer**, és módosítsa úgy a paramétereket a a **projekt Akusztika Mixer** érvénybe.
 
 ![Mixer testreszabása](media/MixerParameters.png)
+
+* **Wetness igazítás** – beállítja a visszhang energiagazdálkodási, DB, a forrás-figyelő távolság alapján jelenet minden forrás. Pozitív értékek győződjön meg arról, hang több reverberant, amíg a negatív értékek hangjelzést több száraz.
+* **RT60 méretezési** – tényezőt skaláris visszhang alkalommal.
+* **Használja a Pásztázó** -vezérlők audio-e kimeneti binaural (0) vagy a többcsatornás pásztázásához (1). Bármilyen érték 1 mellett azt jelzi, hogy binaural. Binaural kimeneti a HRTFs spatialized fejhallgatót való használatra, és a többcsatornás kimeneti a VBAP spatialized többcsatornás legyen speaker rendszerekkel lehet használni. Használja a többcsatornás panner, ügyeljen arra, hogy a hangszóró –, amely megfelel az eszköz beállításainál válassza, ha található **Projektbeállítások** > **hang**.
+
+![SpeakerMode](media/SpeakerMode.png)
 
 ### <a name="tuning-source-parameters"></a>Forrás paraméterek hangolása
 Csatolja a **AcousticsAdjust** forráshoz parancsfájl lehetővé teszi, hogy a hangolási paraméterek ahhoz az adatforráshoz. Csatlakoztassa a parancsfájlt, kattintson a **összetevő felvétele** alján a **vizsgáló** panelen, és keresse meg a **parancsfájlok > Akusztika beállítása**. A szkript hat vezérlők rendelkezik:
 
 ![AcousticsAdjust](media/AcousticsAdjust.png)
 
-* **Engedélyezze a Akusztika** – azt szabályozza, hogy Akusztika alkalmazott ebből a forrásból. Ha nincs bejelölve, a forrás lesz kell spatialized HRTFs, de Akusztika, azaz akadály hangelnyelés és dinamikus reverberation paraméterek – például szintjét és decay nélkül nélkül. Egy rögzített szint és a késleltetési idő reverberation továbbra is érvényesül.
+* **Engedélyezze a Akusztika** – azt szabályozza, hogy Akusztika alkalmazott ebből a forrásból. Ha nincs bejelölve, a forrás lesz spatialized, HRTFs vagy pásztázásához, de nem lesznek nincs Akusztika. Ez azt jelenti, hogy nincs akadály hangelnyelés és dinamikus reverberation paraméterek – például szintjét és decay. Egy rögzített szint és a késleltetési idő reverberation továbbra is érvényesül.
 * **Hangelnyelés** -alkalmazása egy szorzóval a Akusztika rendszer által számított hangelnyelés dB szintre. Ha ez szorzó 1-nél nagyobb, hangelnyelés fog kell exaggerated közben értékek 1-nél kisebb ne hangelnyelés hatása több változás is, és a 0 érték letiltja a hangelnyelés.
 * **Átviteli (adatbázis)** – állítsa be a gyengülés (az adatbázis) keresztül geometriai átvitel okozta. Állítsa a csúszkát a legalacsonyabb átviteli letiltása. Akusztika körül jelenet geometriai (portaling) érkező, a kezdeti száraz hang spatializes. Átviteli biztosít egy további száraz gyűjtőbe, amely a sor-az-üzemel irányba spatialized van. Vegye figyelembe, hogy a forrás gyengülés távolság görbe is érvényesek.
-* **Wetness (adatbázis)** – beállítja a visszhang energiagazdálkodási, dB, a forrás közötti távolságot megfelelően. Pozitív értékek győződjön meg arról, hang több reverberant, amíg a negatív értékek hangjelzést több száraz. Kattintson a görbe szerkesztő megjelenítéséhez a görbe vezérlő (zöld sor). A görbe pontok hozzáadása kattint, és húzza a kívánt kialakításához, a függvény ezen pontok módosítása Az x tengely forrás közötti távolságot, és az y tengely visszhang korrekciós dB-ben. Ez [Unity manuális](https://docs.unity3d.com/Manual/EditingCurves.html) görbék szerkesztéséről további részletekért. Alaphelyzetbe állítja a görbe vissza az alapértelmezett, kattintson a jobb gombbal **Wetness** válassza **alaphelyzetbe**.
+* **Wetness (adatbázis)** – beállítja a visszhang energiagazdálkodási, dB, a forrás közötti távolságot megfelelően. Pozitív értékek győződjön meg arról, hang több reverberant, amíg a negatív értékek hangjelzést több száraz. Kattintson a görbe szerkesztő megjelenítéséhez a görbe vezérlő (zöld sor). A görbe pontok hozzáadása kattint, és húzza a kívánt kialakításához, a függvény ezen pontok módosítása Az x tengely forrás közötti távolságot, és az y tengely visszhang korrekciós dB-ben. Szerkesztési görbék további információkért lásd: Ez [Unity manuális](https://docs.unity3d.com/Manual/EditingCurves.html). Alaphelyzetbe állítja a görbe vissza az alapértelmezett, kattintson a jobb gombbal **Wetness** válassza **alaphelyzetbe**.
 * **Decay időskálára** – Itt adható meg egy szorzóval vonatkozó a késleltetési idő. Például ha az bake eredményt adja meg egy késleltetési idő ezredmásodpercben 750, de ez az érték 1.5 van beállítva, a késleltetési idő a alkalmazni a forrás-, a 1,125 ezredmásodperc.
-* **Outdoorness** -additív módosításának a becslés az Akusztika rendszer hogyan "szabadban" hang kell-e a reverberation egy forrás. Ezt a beállítást 1 készítsen egy forrás mindig eredményes teljesen szabadban, a beállítás során,-1 lesz győződjön forrás eredményes szobában.
+* **Outdoorness** -additív módosításának a becslés az Akusztika rendszer hogyan "szabadban" hang kell-e a reverberation egy forrás. Az érték 1 fogja elérhetővé tenni egy adatforrás mindig eredményes teljesen szabadban, -1 értékre állítaná készítsen egy forrás eredményes szobában közben.
 
 Különböző forrásokból bizonyos esztétikai vagy játékélményt hatás eléréséhez különböző beállításokat lehet szükség. Párbeszédpanelen egy lehetséges példa. Az emberi sszes törlése reverberation beszéd, a több attuned van, amíg párbeszédpanel gyakran kell lennie a játékélményt érthető. Anélkül, hogy a párbeszédpanelen nem-diegetic helyezi a fiókot is a **Wetness** lefelé, módosításával a **technológiáira távolság Warp** alább leírt paraméter hozzáadásával néhány  **Átviteli** az egyes száraz hang boost propagálása falak használatával, illetve csökkenti a **hangelnyelés** portálokon keresztül érkezzen további megbízható 1-ről.
 
@@ -86,5 +92,5 @@ Csatolja a **AcousticsAdjustExperimental** forráshoz parancsfájl lehetővé te
 
 ![AcousticsAdjustExperimental](media/AcousticsAdjustExperimental.png)
 
-* **Technológiáira távolság Warp** – exponenciális hajlítása száraz – Nyugat-európai arányának kiszámításához használt távolság a alkalmazni. A Akusztika rendszer kiszámítja a terület teljes nedves szinteket, amelyek zökkenőmentesen távolság számától függ, és adja meg a technológiáira távolság jelek. Több mint 1 exaggerate a hatás szerint távolság kapcsolatos reverberation szintjei értékek hajlítása, és az eredményes "távoli", míg hajlítása értékek 1-nél kisebb ügyeljen a távolság-alapú reverberation módosítása több változás is, így a hangot több "jelent-e".
+* **Technológiáira távolság Warp** – exponenciális hajlítása száraz – Nyugat-európai arányának kiszámításához használt távolság a alkalmazni. A Akusztika rendszer kiszámítja a terület teljes nedves szinteket, amelyek zökkenőmentesen távolság számától függ, és adja meg a technológiáira távolság jelek. Hajlítási 1-nél nagyobb értékek a hatás exaggerate távolság kapcsolatos reverberation szintek, így a "távoli" hang növelésével. Hajlítása értékek 1-nél kisebb ügyeljen a távolság-alapú reverberation módosítása több változás is, és, hogy az eredményes további "e".
 

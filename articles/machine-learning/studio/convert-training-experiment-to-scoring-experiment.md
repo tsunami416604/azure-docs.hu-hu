@@ -1,5 +1,5 @@
 ---
-Cím: Készítse elő a modell a központi telepítési titleSuffix: Azure Machine Learning Studio description: Hogyan készíti elő a betanított modellt webszolgáltatásként üzembe helyezés a Machine Learning Studio betanítási kísérlet átalakítása prediktív kísérletté.
+Cím: Készítse elő a modell a központi telepítési titleSuffix: Azure Machine Learning Studio description: Hogyan készíti elő a betanított modellt webszolgáltatásként üzembe helyezés a Machine Learning Studio betanítási kísérlet átalakítása prediktív kísérletté.
 szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.date: 03/28/2017

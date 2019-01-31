@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 06/13/2018
 ms.author: mausher
 ms.reviewer: igorstan
-ms.openlocfilehash: d40861650f479f8ef840c5150b2153f461871331
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d88d1390f590a86c83273f2170f3854a7972a24b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307757"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466223"
 ---
 # <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse támogatott T-SQL nyelvi elemei
 A dokumentáció az Azure SQL Data warehouse támogatott T-SQL nyelvi elemei mutató hivatkozásokat tartalmaz.
@@ -33,7 +33,7 @@ A dokumentáció az Azure SQL Data warehouse támogatott T-SQL nyelvi elemei mut
 * [KILL](https://msdn.microsoft.com/library/ms173730.aspx)
 * [IDENTITÁS tulajdonság megkerülő megoldás](https://msdn.microsoft.com/library/ms186775.aspx)
 * [PRINT](https://msdn.microsoft.com/library/ms176047.aspx)
-* [HASZNÁLAT](https://msdn.microsoft.com/library/ms188366.aspx)
+* [USE](https://msdn.microsoft.com/library/ms188366.aspx)
 
 ## <a name="batches-control-of-flow-and-variables"></a>Kötegek, a vezérlésfolyam és a változók
 * [MEGKEZDÉSE... VÉGE](https://msdn.microsoft.com/library/ms190487.aspx)
@@ -95,7 +95,7 @@ A dokumentáció az Azure SQL Data warehouse támogatott T-SQL nyelvi elemei mut
 * [ATAN](https://msdn.microsoft.com/library/ms181746.aspx)
 * [ATN2](https://msdn.microsoft.com/library/ms173854.aspx)
 * [BINARY_CHECKSUM](https://msdn.microsoft.com/library/ms173784.aspx)
-* [ESET](https://msdn.microsoft.com/library/ms181765.aspx)
+* [CASE](https://msdn.microsoft.com/library/ms181765.aspx)
 * [A CAST és CONVERT](https://msdn.microsoft.com/library/ms187928.aspx)
 * [FELSŐ HATÁR](https://msdn.microsoft.com/library/ms189818.aspx)
 * [CHAR](https://msdn.microsoft.com/library/ms187323.aspx)
@@ -122,7 +122,7 @@ A dokumentáció az Azure SQL Data warehouse támogatott T-SQL nyelvi elemei mut
 * [DATETIME2FROMPARTS](https://msdn.microsoft.com/library/hh213312.aspx)
 * [DATETIMEFROMPARTS](https://msdn.microsoft.com/library/hh213233.aspx)
 * [DATETIMEOFFSETFROMPARTS](https://msdn.microsoft.com/library/hh231077.aspx)
-* [NAP](https://msdn.microsoft.com/library/ms176052.aspx)
+* [DAY](https://msdn.microsoft.com/library/ms176052.aspx)
 * [DB_ID](https://msdn.microsoft.com/library/ms186274.aspx)
 * [DB_NAME](https://msdn.microsoft.com/library/ms189753.aspx)
 * [DEGREES](https://msdn.microsoft.com/library/ms178566.aspx)
@@ -159,7 +159,7 @@ A dokumentáció az Azure SQL Data warehouse támogatott T-SQL nyelvi elemei mut
 * [HÓNAP](https://msdn.microsoft.com/library/ms187813.aspx)
 * [NCHAR](https://msdn.microsoft.com/library/ms182673.aspx)
 * [NTILE](https://msdn.microsoft.com/library/ms175126.aspx)
-* [A NULLIF](https://msdn.microsoft.com/library/ms177562.aspx)
+* [NULLIF](https://msdn.microsoft.com/library/ms177562.aspx)
 * [OBJECT_ID](https://msdn.microsoft.com/library/ms190328.aspx)
 * [OBJECT_NAME](https://msdn.microsoft.com/library/ms186301.aspx)
 * [OBJECTPROPERTY](https://msdn.microsoft.com/library/ms176105.aspx)
@@ -182,7 +182,7 @@ A dokumentáció az Azure SQL Data warehouse támogatott T-SQL nyelvi elemei mut
 * [FORDÍTOTT](https://msdn.microsoft.com/library/ms180040.aspx)
 * [RIGHT](https://msdn.microsoft.com/library/ms177532.aspx)
 * [KEREKÍTÉS](https://msdn.microsoft.com/library/ms175003.aspx)
-* [OSZLOPSZÁM ALAPJÁN](https://msdn.microsoft.com/library/ms186734.aspx)
+* [ROW_NUMBER](https://msdn.microsoft.com/library/ms186734.aspx)
 * [RTRIM](https://msdn.microsoft.com/library/ms178660.aspx)
 * [SCHEMA_ID](https://msdn.microsoft.com/library/ms188797.aspx)
 * [SCHEMA_NAME](https://msdn.microsoft.com/library/ms175068.aspx)
@@ -192,7 +192,7 @@ A dokumentáció az Azure SQL Data warehouse támogatott T-SQL nyelvi elemei mut
 * [SIN](https://msdn.microsoft.com/library/ms188377.aspx)
 * [SMALLDATETIMEFROMPARTS](https://msdn.microsoft.com/library/hh213396.aspx)
 * [SOUNDEX](https://msdn.microsoft.com/library/ms187384.aspx)
-* [LEMEZTERÜLET](https://msdn.microsoft.com/library/ms187950.aspx)
+* [SPACE](https://msdn.microsoft.com/library/ms187950.aspx)
 * [SQL_VARIANT_PROPERTY](https://msdn.microsoft.com/library/ms178550.aspx)
 * [SQRT](https://msdn.microsoft.com/library/ms176108.aspx)
 * [NÉGYSZÖG](https://msdn.microsoft.com/library/ms173569.aspx)
@@ -265,7 +265,7 @@ A dokumentáció az Azure SQL Data warehouse támogatott T-SQL nyelvi elemei mut
 * [SET ARITHIGNORE](https://msdn.microsoft.com/library/ms184341.aspx)
 * [A CONCAT_NULL_YIELDS_NULL BEÁLLÍTÁSA](https://msdn.microsoft.com/library/ms176056.aspx)
 * [SET DATEFIRST](https://msdn.microsoft.com/library/ms181598.aspx)
-* [SET MEGADVA DATEFORMAT](https://msdn.microsoft.com/library/ms189491.aspx)
+* [SET DATEFORMAT](https://msdn.microsoft.com/library/ms189491.aspx)
 * [SET UTASÍTÁS FMTONLY](https://msdn.microsoft.com/library/ms173839.aspx)
 * [SET IMPLICIT_TRANSACITONS](https://msdn.microsoft.com/library/ms187807.aspx)
 * [SET LOCK_TIMEOUT](https://msdn.microsoft.com/library/ms189470.aspx)

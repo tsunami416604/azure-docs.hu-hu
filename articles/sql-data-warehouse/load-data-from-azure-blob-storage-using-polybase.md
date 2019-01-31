@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Load New York-i taxik adatait az Azure SQL Data Warehouse |} A Microsoft Docs'
+title: 'Oktatóanyag: New York-i taxik adatok betöltése az Azure SQL Data Warehouse |} A Microsoft Docs'
 description: Oktatóanyag az Azure portal és az SQL Server Management Studio New York-i taxik adatainak betöltésére egy nyilvános Azure-blobból Azure SQL Data warehouse-bA.
 services: sql-data-warehouse
 author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 09/12/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: b9c42f5b0fc6fb9468d8fd0a1c34270d1734391a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 979488009f7afa2ccae3993d756e92e1ae15d5a0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579917"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466526"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Load New York-i taxik adatait az Azure SQL Data Warehouse
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: New York-i taxik adatait az Azure SQL Data Warehouse betöltése
 
 A PolyBase, New York-i taxik adatainak betöltésére nyilvános oktatóanyag használ Azure blobból Azure SQL Data Warehouse. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
 

@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: bd766dfb712921a57dd23c4fdecc25dd623eb833
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: f63a42afd9dc629bd87dfb23e07e14737ea42a2f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393264"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299843"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>A kinyert adatoknak - egybérlős alkalmazást több-bérlős analytics használatával
  
-Ebben az oktatóanyagban vezeti végig egy teljes körű elemzési forgatókönyve egy egybérlős implementatoin is. A forgatókönyv azt mutatja be, hogyan engedélyezheti a analytics a cégek számára az intelligens döntések. Minden bérlői adatbázis kinyert adatok segítségével, használhatja analytics betekintést bérlő viselkedése, beleértve azok a Wingtip Tickets SaaS-mintaalkalmazás használatát. Ebben a forgatókönyvben három lépésből áll: 
+Ebben az oktatóanyagban vezeti végig egy teljes körű elemzési forgatókönyv egyetlen új bérlő megvalósításának is. A forgatókönyv azt mutatja be, hogyan engedélyezheti a analytics a cégek számára az intelligens döntések. Minden bérlői adatbázis kinyert adatok segítségével, használhatja analytics betekintést bérlő viselkedése, beleértve azok a Wingtip Tickets SaaS-mintaalkalmazás használatát. Ebben a forgatókönyvben három lépésből áll: 
 
 1.  **Csomagolja ki** minden bérlői adatbázis adatait és **terhelés** -analytics store-bA.
 2.  **A kibontott adatok átalakítása** analytics feldolgozás céljából.
@@ -153,7 +153,7 @@ A következő lépés, hogy zúzására szolgálnak a kinyert nyers adatokat az 
 Az oktatóanyag jelen szakaszában határozza meg, majd futtassa egy feladatot, amely egyesíti a csillagséma-táblázatokban lévő adatok a kinyert nyers adatokat. A merge feladat befejezése után a nyers adatok törlődnek, készen áll a következő bérlői adatok feltölthető a táblákat és csomagolja ki a feladat.
 
 1. Csatlakozás az ssms-ben, a **jobaccount** katalógus-adatbázis – dpt -&lt;felhasználói&gt;.
-2. Nyissa meg az ssms-ben, *...\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*.
+2. In SSMS, open *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*.
 3. Nyomja meg **F5** futtassa a parancsfájlt egy feladatot, amely meghívja a sp_ShredRawExtractedData meghatározásához tárolt eljárást az analytics-tárolóban.
 4. Hagyjon elegendő időt a feladat sikeresen lefutott.
     - Ellenőrizze a **életciklus** jobs.jobs_execution táblázat a feladat állapotát. Ellenőrizze, hogy a feladat **sikeres** a folytatás előtt. Sikeres futtatás a következő diagram hasonló adatokat jelenít meg:

@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan Azure Policy segítségével Vendég konfigurá
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0a571084819c5dfed3f8d6891b59032ef2eecdd6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 77d99c90e65647a1f4a4efb07ff5520596fa54cf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856400"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295168"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
@@ -63,6 +63,16 @@ Az alábbi táblázat az egyes támogatott operációs rendszeren használja a h
 |Windows|[A Microsoft Desired State Configuration](/powershell/dsc) v2| |
 |Linux|[A Chef InSpec](https://www.chef.io/inspec/)| Ruby és Python telepíti a Vendég Configuration bővítményt. |
 
+### <a name="validation-frequency"></a>Ellenőrzés gyakorisága
+
+Új tartalom 5 percenként ellenőrzi a Vendég konfigurációs ügyfél.
+Miután egy Vendég-hozzárendelés érkezik, a beállításokat egy 15 perces időközönként ellenőrzi.
+Eredmények küldése a Vendég-konfigurációs erőforrás-szolgáltató, amint az ellenőrzés befejeződött.
+Ha egy szabályzat [értékelési eseményindító](../how-to/get-compliance-data.md#evaluation-triggers) történik, a számítógép állapotának írása a Vendég-konfigurációs erőforrás-szolgáltató.
+Ennek hatására az Azure Policy az Azure Resource Manager-tulajdonságok kiértékelése.
+Egy igény szerinti szabályzat-kiértékelés átveszi a Vendég-konfigurációs erőforrás-szolgáltató a legújabb értékeket.
+Azonban ez nem következik be egy új naplózási a konfiguráció a virtuális gépen.
+
 ### <a name="supported-client-types"></a>Támogatott ügyfél típusú
 
 Az alábbi táblázat az Azure-rendszerképek támogatott operációs rendszerek listája látható:
@@ -90,7 +100,7 @@ Az alábbi táblázat a nem támogatott operációs rendszerek:
 
 ## <a name="guest-configuration-definition-requirements"></a>Vendég konfigurációkra definíciója
 
-Minden egyes naplózási Vendég konfiguráció futtatása szükséges két szabályzatdefiníció egy **DeployIfNotExists** és **AuditIfNotExists**. **DeployIfNotExists** a virtuális gép előkészítése a Vendég konfigurációs ügynök és a más összetevőkkel támogatására szolgál a [érvényesítési eszközök](#validation-tools).
+Minden egyes naplózási Vendég konfiguráció futtatása szükséges két szabályzatdefiníció egy **DeployIfNotExists** és **naplózási**. **DeployIfNotExists** a virtuális gép előkészítése a Vendég konfigurációs ügynök és a más összetevőkkel támogatására szolgál a [érvényesítési eszközök](#validation-tools).
 
 A **DeployIfNotExists** szabályzatdefiníció ellenőrzi és javítja a következő elemek:
 
@@ -99,14 +109,14 @@ A **DeployIfNotExists** szabályzatdefiníció ellenőrzi és javítja a követk
   - A legújabb verziójának telepítése a **Microsoft.GuestConfiguration** bővítmény
   - Telepítés [érvényesítési eszközök](#validation-tools) és függőségei, szükség esetén
 
-Egyszer a **DeployIfNotExists** megfelelő, akkor a **AuditIfNotExists** szabályzat-definíció a helyi érvényesítés eszközök segítségével határozza meg, a hozzárendelt konfigurációs hozzárendelés megfelelő-e, vagy Nem megfelelő. A fürtérvényesítési eszköz biztosít a Vendég konfigurációs ügyfél az eredményeket. Az ügyfél a Vendég a bővítmény elérhetővé teszi azokat a Vendég-konfigurációs erőforrás-szolgáltatón keresztül továbbítja az eredményeket.
+Egyszer a **DeployIfNotExists** megfelelő, akkor a **naplózási** szabályzat-definíció a helyi érvényesítés eszközöket használ annak megállapításához, hogy a hozzárendelt konfigurációs hozzárendelés megfelelő vagy nem megfelelő. A fürtérvényesítési eszköz biztosít a Vendég konfigurációs ügyfél az eredményeket. Az ügyfél a Vendég a bővítmény elérhetővé teszi azokat a Vendég-konfigurációs erőforrás-szolgáltatón keresztül továbbítja az eredményeket.
 
 Az Azure Policy használja a Vendég-konfigurációs erőforrás-szolgáltatók **complianceStatus** való megfelelőség jelentéséhez a tulajdonság a **megfelelőségi** csomópont. További információkért lásd: [megfelelőségi adatok](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Minden egyes vendég konfigurációs definíciós mind a **DeployIfNotExists** és **AuditIfNotExists** szabályzatdefiníciók léteznie kell.
+> Minden egyes vendég konfigurációs definíciós mind a **DeployIfNotExists** és **naplózási** szabályzatdefiníciók léteznie kell.
 
-Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A beépített kezdeményezés nevű *[előzetes verzió]: Naplózási jelszó biztonsági beállítások a Linux és Windows virtuális gépeken belül* 18 szabályzatokat tartalmaz. Hat **DeployIfNotExists** és **AuditIfNotExists** Windows és Linux-három pár párokat. Minden esetben a logika belül a definíció érvényesíti csak a cél operációs rendszer alapján értékeli ki a [felügyeletiházirend-szabálya](definition-structure.md#policy-rule) definíciója.
+Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A beépített kezdeményezés nevű *[előzetes verzió]: Naplózási jelszó biztonsági beállítások a Linux és Windows virtuális gépeken belül* 18 szabályzatokat tartalmaz. Hat **DeployIfNotExists** és **naplózási** Windows és Linux-három pár párokat. Minden esetben a logika belül a definíció érvényesíti csak a cél operációs rendszer alapján értékeli ki a [felügyeletiházirend-szabálya](definition-structure.md#policy-rule) definíciója.
 
 ## <a name="next-steps"></a>További lépések
 

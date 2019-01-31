@@ -1,6 +1,6 @@
 ---
-Cím: Adatok importálása online adatok források titleSuffix a Machine Learning studióba: Azure Machine Learning Studio description: Ez a cikk bemutatja a támogatási online adatok importálása különböző forrásokból, és kísérletezzen az Azure Machine Learning studióba ezen forrásokból származó adatok áthelyezéséhez szükséges információkat.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Adatok importálása online adatok források titleSuffix a Machine Learning studióba: Azure Machine Learning Studio description: Ez a cikk bemutatja a támogatási online adatok importálása különböző forrásokból, és kísérletezzen az Azure Machine Learning studióba ezen forrásokból származó adatok áthelyezéséhez szükséges információkat.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/29/2017
 ---

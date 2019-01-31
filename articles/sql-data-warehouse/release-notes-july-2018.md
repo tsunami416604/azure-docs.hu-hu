@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: e63dd0a6feaedf95bb4845a3c5eded89e6585e36
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318843"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463497"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Mi az új Azure SQL Data warehouse? 2018. július
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és a július 2018-ban bevezetett módosításokat.
@@ -24,11 +24,11 @@ Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti 
 [Az Azure SQL Data Warehouse](https://aka.ms/sqldw) állítja be, amely javítja a shuffle operations azonnali adatelérési bevezetésével új teljesítményteszteket. Azonnali adatelérési az adatátviteli műveletek csökkenti az SQL Server műveletekhez natív közvetlen SQL Server használatával. A SQL Server-motorral, közvetlenül az adatok áthelyezése az integráció azt jelenti, hogy az SQL Data Warehouse mostantól **67 %-kal gyorsabb, mint az Amazon Redshift** számítási feladatok használata a jól ismert iparági szabványnak számító származó [TPC H (TPC-H) benchmark™](http://www.tpc.org/tpch/).
 
 ![Az Azure SQL Data Warehouse a gyorsabb és olcsóbb, mint az Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/eb3b908a-464d-4847-b384-9f296083a737.png)
-<sub>forrás: [Gigaom kutatási elemzői jelentés: a Felhőbeli teljesítményteszt Data warehouse-bA](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+<sub>forrás: [Gigaom kutatási elemzői jelentés: A felhő teljesítményteszt Data warehouse-bA](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 Modul teljesítményének, túl a [Gigaom kutatási](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) jelentést is mérni a USD költséget adott számítási feladatok számlálása ár-teljesítmény aránya. Az SQL Data Warehouse volt **legalább 23 %-kal olcsóbb** , mint a Redshift 30 TB számítási feladatokhoz. Rugalmasan méretezheti a számítási erőforrásokat, valamint szüneteltetése és folytatása a számítási feladatok SQL Data Warehouse lehetővé teszi, az ügyfeleknek kell fizetniük csak akkor, ha van használatban, további csökkenő költségeiket.
 ![Az Azure SQL Data Warehouse a gyorsabb és olcsóbb, mint az Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
-<sub>forrás: [Gigaom kutatási elemzői jelentés: a Felhőbeli teljesítményteszt Data warehouse-bA](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+<sub>forrás: [Gigaom kutatási elemzői jelentés: A felhő teljesítményteszt Data warehouse-bA](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 ### <a name="query-concurrency"></a>Lekérdezés egyidejűség
 Az SQL Data warehouse-ba is biztosítja, hogy adatok elérhetők a szervezetek között. A Microsoft támogató 128 lekérdezést, hogy több felhasználó lekérdezheti az adatbázist, és nem küldött egyéb kérések által blokkolt továbbfejlesztett. Ezzel szemben az Amazon Redshift korlátozza a maximális párhuzamos lekérdezések 50, korlátozza az adatok elérését a szervezeten belül.
@@ -53,7 +53,7 @@ Most módosíthatja a teljesítményszint (dwu Használatát), az Azure Portalon
 
 ![Egyéni helyreállítás konfigurálása – az Azure SQL Data warehouse-bA](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/f4c410c7-8515-409c-a983-0976792b8628.png)
 
-## <a name="spdescribeundeclaredparameters"></a>AZ SP_DESCRIBE_UNDECLARED_PARAMETERS
+## <a name="spdescribeundeclaredparameters"></a>SP_DESCRIBE_UNDECLARED_PARAMETERS
 A [sp_describe_undeclared_parameters](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql) tárolt eljárás gyakran eszközök beszerzésére használatos Transact-SQL kötegben szereplő paraméterek metaadatait. Az eljárást minden paraméter egy sort a batch-a ítélte típussal kapcsolatos információk arra a paraméterre vonatkozóan adja vissza. 
 
 ```sql

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: dineshmurthy
-ms.component: common
-ms.openlocfilehash: 55fa63e75768662a0f909cef0e3cc04b9c2dae41
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: c45c70055817eeeed19f9c8a832a76b10beceaa6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526198"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467033"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage-ügyféleszközök
 Az Azure Storage felhasználói gyakran szeretné tudni megtekintése/felhasználhatja azok adatait egy Azure Storage ügyféloldali eszközzel. Az alábbi táblázatokban látható számos olyan eszközt, amely lehetővé teszi ezt. Az "X" elhelyezni a minden egyes Ha, lehetővé teszi a számba venni, illetve az adatok absztrakciós eléréséhez. A táblázatban is látható, ha az eszközök ingyenes-e vagy sem. "Próbaverzió" jelzi, hogy van egy ingyenes próbaverzióra, de a teljes termékkiadásban használata nem ingyenes. "Y/N", az azt jelzi, hogy egy verzió érhető el ingyenes, amíg egy másik verzió elérhető és megvásárolható kiadása.
@@ -27,7 +27,7 @@ Csak az elérhető Azure Storage-ügyféleszközök pillanatképét mellékelt. 
     <th rowspan="2">Az Azure Storage-ügyféleszköz</th>
     <th rowspan="2">Blokkblob</th>
     <th rowspan="2">Lapblob</th>
-    <th rowspan="2">Hozzáfűző Blob</th>
+    <th rowspan="2">Blob hozzáfűzése</th>
     <th rowspan="2">Táblák</th>
     <th rowspan="2">Üzenetsorok</th>
     <th rowspan="2">Fájlok</th>
@@ -41,7 +41,7 @@ Csak az elérhető Azure Storage-ügyféleszközök pillanatképét mellékelt. 
     <td>Linux</td>
   </tr>
   <tr>
-    <td><a href="https://azure.microsoft.com/features/azure-portal/">Microsoft Azure-portálon</a></td>
+    <td><a href="https://azure.microsoft.com/features/azure-portal/">Microsoft Azure Portal</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -69,7 +69,7 @@ Csak az elérhető Azure Storage-ügyféleszközök pillanatképét mellékelt. 
     <td>X</td>
   </tr>
   <tr>
-    <td><a href="https://www.visualstudio.com/features/azure-tools-vs.aspx">A Microsoft Visual Studio Server Explorerben</a></td>
+    <td><a href="https://www.visualstudio.com/features/azure-tools-vs.aspx">Microsoft Visual Studio Server Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -93,7 +93,7 @@ A Microsoft nem ellenőrizte a funkció vagy engedte, hogy a következő külső
     <th rowspan="2">Az Azure Storage-ügyféleszköz</th>
     <th rowspan="2">Blokkblob</th>
     <th rowspan="2">Lapblob</th>
-    <th rowspan="2">Hozzáfűző Blob</th>
+    <th rowspan="2">Blob hozzáfűzése</th>
     <th rowspan="2">Táblák</th>
     <th rowspan="2">Üzenetsorok</th>
     <th rowspan="2">Fájlok</th>
@@ -107,7 +107,7 @@ A Microsoft nem ellenőrizte a funkció vagy engedte, hogy a következő külső
     <td>Linux</td>
   </tr>
   <tr>
-    <td><a href="http://www.cerebrata.com/products/azure-management-studio/introduction">Cerabrata: Az Azure Management Studio</a></td>
+    <td><a href="http://www.cerebrata.com/products/azure-management-studio/introduction">Cerabrata: Azure Management Studio</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -121,7 +121,7 @@ A Microsoft nem ellenőrizte a funkció vagy engedte, hogy a következő külső
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate-et: Az Azure Explorer</a></td>
+    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate: Azure Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -135,7 +135,7 @@ A Microsoft nem ellenőrizte a funkció vagy engedte, hogy a következő külső
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/sebagomez/azurestorageexplorer">A webalkalmazás az Azure Storage Explorer</a></td>
+    <td><a href="https://github.com/sebagomez/azurestorageexplorer">Azure Web Storage Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -191,7 +191,7 @@ A Microsoft nem ellenőrizte a funkció vagy engedte, hogy a következő külső
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://www.gladinet.com/Azure-Storage/index.htm">Gladinet felhő</a></td>
+    <td><a href="http://www.gladinet.com/Azure-Storage/index.htm">Gladinet Cloud</a></td>
     <td>X</td>
     <td></td>
     <td></td>

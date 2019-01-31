@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4b24ba4b4d83ac3f0c8291308debb6317efa4a55
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b12b9d56f42911da606e3bdcfedbe3f789d2c4e8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967997"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466933"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Szótár példák
+# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Szótár – példák
 
 Példákat talál, amelyek megmutatják, hogyan feltételeket a szótár környezetben használják. Ezzel a művelettel területtel együtt [szótár keresési](./v3-0-dictionary-lookup.md).
 
@@ -56,7 +56,7 @@ Kérelemfejlécek a következők:
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>_Egy engedélyezési_<br/>_Fejléc_</td>
+    <td>_Egy engedélyezési_<br/>_header_</td>
     <td>*Szükséges kérelem fejléce*.<br/>Lásd: [elérhető lehetőségek a hitelesítéshez](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -77,9 +77,9 @@ Kérelemfejlécek a következők:
 
 A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken egy JSON-objektum a következő tulajdonságokkal:
 
-  * `Text`: Egy karakterlánc, a keresési kifejezést adja meg. Ez az érték legyen egy `normalizedText` vissza a korábbi fordítások a mezőt [szótár keresési](./v3-0-dictionary-lookup.md) kérelmet. Az érték lehet is a `normalizedSource` mező.
+  * `Text`: Egy olyan karakterláncot kell a keresési kifejezést. Ez az érték legyen egy `normalizedText` vissza a korábbi fordítások a mezőt [szótár keresési](./v3-0-dictionary-lookup.md) kérelmet. Az érték lehet is a `normalizedSource` mező.
 
-  * `Translation`: A lefordított szöveg által korábban visszaadott egy olyan karakterláncot a [szótár keresési](./v3-0-dictionary-lookup.md) műveletet. Ez legyen az értékét a `normalizedTarget` mezőbe a `translations` listája a [szótár keresési](./v3-0-dictionary-lookup.md) választ. A szolgáltatás visszaadja a megadott forrás-cél word-pár példákat.
+  * `Translation`: A lefordított szöveg által korábban visszaadott megadó karakterlánc a [szótár keresési](./v3-0-dictionary-lookup.md) műveletet. Ez legyen az értékét a `normalizedTarget` mezőbe a `translations` listája a [szótár keresési](./v3-0-dictionary-lookup.md) választ. A szolgáltatás visszaadja a megadott forrás-cél word-pár példákat.
 
 A következő egy példa:
 
@@ -100,9 +100,9 @@ A sikeres válasz egy JSON-tömböt az egyes sztringek a bemeneti számtömbből
 
   * `normalizedSource`: Egy karakterlánc, így a forrás kifejezés normalizált formájában. Általában ez az érték azonos legyen a `Text` mezőt a kérelem törzsében a megfelelő listában indexnél.
     
-  * `normalizedTarget`: Egy karakterlánc, így a célként megadott kifejezés normalizált formájában. Általában ez az érték azonos legyen a `Translation` mezőt a kérelem törzsében a megfelelő listában indexnél.
+  * `normalizedTarget`: Jogosultságot ad a célként megadott kifejezés normalizált formájában karakterlánc. Általában ez az érték azonos legyen a `Translation` mezőt a kérelem törzsében a megfelelő listában indexnél.
   
-  * `examples`: (Adatforrás kifejezés, célként megadott kifejezés) kapcsolatos példák egy listája pár. A lista minden eleme egy olyan objektum, a következő tulajdonságokkal:
+  * `examples`: Példák a (forrás időszakra, célként megadott kifejezés) pár. A lista minden eleme egy olyan objektum, a következő tulajdonságokkal:
 
     * `sourcePrefix`: A karakterlánc összefűzésére _előtt_ értékét `sourceTerm` kialakításához arra az egy teljes példát. Ne adjon hozzá egy szóköz karakter, mert már létezik amikor kell lennie. Ez az érték lehet üres karakterlánc.
 
@@ -123,7 +123,7 @@ A sikeres válasz egy JSON-tömböt az egyes sztringek a bemeneti számtömbből
 
 Ez a példa bemutatja, hogyan példák a pár áll az angol nyelvű kifejezést talált `fly` és a spanyol fordítás `volar`.
 
-# <a name="curltabcurl"></a>[A curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"

@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
-ms.component: disks
-ms.openlocfilehash: 6bc51fa26ad65143dd4919ea547e4657fb3882e3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: 08f98775360b8c0a82f68f322053cb71f0e79af3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467553"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457327"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>LVM konfigurálása az Azure-beli Linuxos virtuális gépre
 Ez a dokumentum bemutatja, hogyan lehet logikai kötet-kezelő (LVM) konfigurálása az Azure-beli virtuális gépen. LVM az operációsrendszer-lemez vagy az adatlemezeket az Azure-beli virtuális gépeken is használható, azonban alapértelmezés szerint a legtöbb felhő-rendszerképek nem fog LVM az operációsrendszer-lemez konfigurálva. Az alábbi lépéseket az LVM konfigurálása az adatlemezek összpontosít.

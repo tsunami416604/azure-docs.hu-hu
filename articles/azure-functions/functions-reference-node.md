@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 17e0cf170197b99037e2892d1b74a699a3a9eef5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a91778f1646807a092a3c8cda66bd3bd104ff8b5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275329"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301883"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -272,7 +272,7 @@ A nyomkövetési szint függvény streamnaplókba vizsgálatát teszi lehetővé
 | Módszer                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
 | **Hiba (_üzenet_)**   | Naplózás, vagy alacsonyabb hibaszintet ír.   |
-| **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szint naplózás vagy alacsonyabb ír. |
+| **warn(_message_)**    | Figyelmeztetési szint naplózás vagy alacsonyabb ír. |
 | **info(_message_)**    | Írási és naplózás, vagy alacsonyabb információ szintet.    |
 | **verbose(_message_)** | Részletes webhelyszintű naplózás ír.           |
 
@@ -326,7 +326,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>A nyomkövetési szintet konzol naplózásának konfigurálása
 
-Functions lehetővé teszi a küszöbérték nyomkövetési szintet a konzol, amely megkönnyíti a szabályozhatja a módon nyomkövetések a konzoljára írt a függvényből történő meghatározásához. Összes nyomkövetési konzolon küszöbértéke beállításához használja a `tracing.consoleLevel` tulajdonság a host.json fájlban. Ez a beállítás minden függvény a függvényalkalmazásban vonatkozik. Az alábbi példa állítja be a részletes naplózás engedélyezése a nyomkövetési küszöbértéket:
+Funkciók 1.x Itt adhatja meg a küszöbérték nyomkövetési szintet írása a konzolt, amely megkönnyíti a nyomkövetések a konzoljára írt a függvényből szabályozhatja. Összes nyomkövetési konzolon küszöbértéke beállításához használja a `tracing.consoleLevel` tulajdonság a host.json fájlban. Ez a beállítás minden függvény a függvényalkalmazásban vonatkozik. Az alábbi példa állítja be a részletes naplózás engedélyezése a nyomkövetési küszöbértéket:
 
 ```json
 {
@@ -336,7 +336,7 @@ Functions lehetővé teszi a küszöbérték nyomkövetési szintet a konzol, am
 }  
 ```
 
-Az értékek **consoleLevel** nevei megegyeznek a `context.log` módszereket. A konzol összes nyomkövetési naplózás letiltásához állítsa **consoleLevel** való _ki_. További információkért lásd: [host.json referencia](functions-host-json.md).
+Az értékek **consoleLevel** nevei megegyeznek a `context.log` módszereket. A konzol összes nyomkövetési naplózás letiltásához állítsa **consoleLevel** való _ki_. További információkért lásd: [host.json referencia](functions-host-json-v1.md).
 
 ## <a name="http-triggers-and-bindings"></a>HTTP-eseményindítók és kötések
 
@@ -348,8 +348,8 @@ A `context.req` (kérelem) objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság      | Leírás                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _Törzs_        | Egy objektum, amely tartalmazza a kérelem törzsében.               |
-| _A fejlécek_     | Egy objektum, amely tartalmazza a kérelem fejlécében.                   |
+| _body_        | Egy objektum, amely tartalmazza a kérelem törzsében.               |
+| _headers_     | Egy objektum, amely tartalmazza a kérelem fejlécében.                   |
 | _Metódus_      | A kérelem HTTP-metódus.                                |
 | _originalUrl_ | A kérelem URL-címe                                        |
 | _params_      | Egy objektum, amely tartalmazza a kérés útválasztási paramétereit. |
@@ -363,8 +363,8 @@ A `context.res` (válasz) objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság  | Leírás                                               |
 | --------- | --------------------------------------------------------- |
-| _Törzs_    | Egy objektum, amely a válasz törzse tartalmazza.         |
-| _A fejlécek_ | A válaszfejlécek tartalmazó objektum.             |
+| _body_    | Egy objektum, amely a válasz törzse tartalmazza.         |
+| _headers_ | A válaszfejlécek tartalmazó objektum.             |
 | _isRaw_   | Azt jelzi, hogy a válasz formázás kihagyva.    |
 | _Állapot_  | A válasz HTTP-állapotkódot.                     |
 

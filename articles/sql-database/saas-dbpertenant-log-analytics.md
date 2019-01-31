@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 58a354950e303eda8158ca072870bfecbf33a89f
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.date: 01/25/2019
+ms.openlocfilehash: 7a5245a9c97748e7b46132eaaa91f6bbc8311266
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890211"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475142"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Állítsa be, és a Log Analytics használatához egy több-bérlős SQL Database SaaS-alkalmazással
 
@@ -104,7 +104,7 @@ Ebben a gyakorlatban az Azure Portalon, és tekintse meg az adatbázisokhoz és 
 
     ![Időszűrő](media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
-1. Válasszon egy önálló adatbázist, a lekérdezések használata és az adatbázishoz tartozó mérőszámok megismeréséhez.
+1. Válassza ki az egyes adatbázisok megismerése a lekérdezések használata és az adatbázishoz tartozó mérőszámokat.
 
     ![Adatbázis-elemzés](media/saas-dbpertenant-log-analytics/log-analytics-database.png)
 
