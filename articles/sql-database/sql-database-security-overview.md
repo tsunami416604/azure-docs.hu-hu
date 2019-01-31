@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: d1225cb90d0eecddb5ec7eca56437b020be50c71
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.date: 01/29/2019
+ms.openlocfilehash: 7eb3b115c1d16c2a5c380178d316a60b854e80df
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080827"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462018"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database biztonsági lehetőségeinek áttekintése
 
@@ -45,7 +45,7 @@ IP-tűzfalszabályainak minden kérés eredeti IP-címe alapján adatbázisokhoz
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
 > [!IMPORTANT]
-> Az adatbázisok és logikai kiszolgálók az Azure-ban való kezelését a portál felhasználói fiókjának szerepkör-hozzárendelése szabályozza. Ez a cikk további információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon](../role-based-access-control/overview.md).
+> Adatbázisok és az Azure database-kiszolgálók kezelése a portál felhasználói fiókjának szerepkör-hozzárendelések vezérlik majd. Ez a cikk további információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon](../role-based-access-control/overview.md).
 
 ### <a name="authentication"></a>Hitelesítés
 
@@ -53,7 +53,7 @@ Hitelesítés az a folyamat, amely igazolja, a felhasználó, akinek lennie. Az 
 
 - **SQL-hitelesítés**:
 
-    SQL database hitelesítése hivatkozik felhasználói hitelesítéssel való kapcsolódáskor [Azure SQL Database](sql-database-technical-overview.md) felhasználónévvel és jelszóval. A logikai kiszolgáló létrehozása során az adatbázis meg kell adni a "Kiszolgálói rendszergazda" bejelentkezés felhasználónévvel és jelszóval. Ezeket a hitelesítő adatokat használ, a "kiszolgálói rendszergazda" is minden adatbázisában hitelesítheti az adott logikai kiszolgálón az adatbázis tulajdonosaként. Ezt követően további SQL-bejelentkezések és felhasználók hozható létre a kiszolgáló rendszergazdája, amelyek lehetővé teszik a felhasználónév és jelszó használatával.
+    SQL database hitelesítése hivatkozik felhasználói hitelesítéssel való kapcsolódáskor [Azure SQL Database](sql-database-technical-overview.md) felhasználónévvel és jelszóval. Az adatbázis az adatbázis kiszolgáló létrehozása során meg kell adni a "Kiszolgálói rendszergazda" bejelentkezés felhasználónévvel és jelszóval. Ezeket a hitelesítő adatokat használ, a "kiszolgálói rendszergazda" is minden adatbázisában hitelesítheti az adott kiszolgálón az adatbázis tulajdonosaként. Ezt követően további SQL-bejelentkezések és felhasználók hozható létre a kiszolgáló rendszergazdája, amelyek lehetővé teszik a felhasználónév és jelszó használatával.
 
 - **Az Azure Active Directory-hitelesítés**:
 
@@ -63,7 +63,8 @@ Hitelesítés az a folyamat, amely igazolja, a felhasználó, akinek lennie. Az 
 
     További elérhető az Azure AD-hitelesítési lehetőségek a következők [Active Directory univerzális hitelesítéssel az SQL Server Management Studio](sql-database-ssms-mfa-authentication.md) többek között kapcsolatok [multi-factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) és [ Feltételes hozzáférés](sql-database-conditional-access.md).
 
-### <a name="authorization"></a>Engedélyezés
+> [!IMPORTANT]
+> A portál felhasználói fiókjának szerepkör-hozzárendelések kezeléséhez az adatbázisok és kiszolgálók Azure-ban vezérli. Ez a cikk további információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon](../role-based-access-control/overview.md). Hozzáférés-tűzfalszabályokkal does *nem* a alkalmazni **Azure SQL Database felügyelt példányába**. További információt a következő [, a felügyelt példányhoz kapcsolódva](sql-database-managed-instance-connect-app.md) bővebben a hálózati konfiguráció szükséges.
 
 Engedélyezési hivatkozik az Azure SQL Database a felhasználóhoz rendelt engedélyeket, és meghatározza, hogy mi a felhasználó számára engedélyezett. Engedélyek hozzáadása a felhasználói fiókok által vezérelt [adatbázis-szerepkörök](/sql/relational-databases/security/authentication-access/database-level-roles) adatbázisszintű engedélyeket, vagy a bizonyos felhasználói definiáló [objektumszintű engedélyei](/sql/relational-databases/security/permissions-database-engine). További információkért lásd: [bejelentkezések és felhasználók](sql-database-manage-logins.md)
 
@@ -75,7 +76,7 @@ Sorszintű biztonság lehetővé teszi, hogy az ügyfelek számára, hogy szabá
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
-### <a name="permissions"></a>Engedélyek
+  Ezt a hitelesítési módszert használ, egy felhasználónevet és jelszót. 
 
 Az Azure SQL Database engedélyekkel áttekintését lásd: [bejelentkezések és felhasználók](sql-database-manage-logins.md#permissions)
 
@@ -138,7 +139,7 @@ Az SQL Database dinamikus adatmaszkolása korlátozza a bizalmas adatok adatmasz
 
 ### <a name="sql-vulnerability-assessment"></a>SQL-sebezhetőségi felmérés
 
-[SQL-sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen beállítható a szolgáltatás, amely a felderítése, nyomon követheti, és megoldhatja a cél proaktív módon a teljes adatbázis-biztonság növelése érdekében az adatbázis biztonsági réseinek. Sebezhetőségi felmérés (VA) az SQL a speciális veszélyforrások elleni védelem (ATP) ajánlat, amely egy SQL-biztonság speciális képességek egységes csomag részét képezi. A biztonságirés-értékelési érheti el és a központi SQL ATP portálján felügyelt.
+[SQL-sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen beállítható a szolgáltatás, amely a felderítése, nyomon követheti, és megoldhatja a cél proaktív módon a teljes adatbázis-biztonság növelése érdekében az adatbázis biztonsági réseinek. Sebezhetőségi felmérés (VA) az SQL speciális adatok biztonsági (ADS) ajánlat, amely egy SQL-biztonság speciális képességek egységes csomag részét képezi. A biztonságirés-értékelési érheti el és a központi SQL ADS portálon keresztül kezelhetők.
 
 ### <a name="data-discovery--classification"></a>Adatfelderítés és besorolás
 
