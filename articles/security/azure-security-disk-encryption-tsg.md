@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b486831118ace7d2112acf1562f5df4a64d1e1b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 70cf6c65592eef94ce657c9aaef7dc78de4ffa11
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092098"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468393"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 
@@ -87,7 +87,7 @@ Kapcsolat korlátozza egy tűzfal, proxy követelmény vagy hálózati biztonsá
 Hálózati biztonsági csoport beállításai alkalmazott továbbra is engedélyeznie kell a végpontot, hogy megfeleljen a dokumentált hálózati konfiguráció [Előfeltételek](azure-security-disk-encryption-prerequisites.md#bkmk_GPO) lemeztitkosításra.
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Az Azure Key Vault tűzfal mögött
-A virtuális gép részére egy kulcstartó eléréséhez képesnek kell lennie. Tekintse meg a hozzáférést a key vault tűzfal mögül útmutatást, amely a [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) csapat kezeli. 
+Ha titkosítás alatt álló engedélyezve van a [Azure AD hitelesítő adatait](azure-security-disk-encryption-prerequisites-aad.md), a cél virtuális Gépen az Azure AD hitelesítési végpontjait, valamint a Key Vault-végpontok hozzáférést kell biztosítani.  Ezen folyamatról további információkért tekintse meg elérése tűzfal mögül a key vault útmutatást, amely a [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) csapat kezeli. 
 
 ### <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás 
 A virtuális gép eléréséhez képesnek kell lennie a [Azure Instance Metadata szolgáltatás](../virtual-machines/windows/instance-metadata-service.md) végpontot, amely jól ismert nem átirányítható IP-címet használ (`169.254.169.254`), amelyek elérhetők csak a virtuális gépen.

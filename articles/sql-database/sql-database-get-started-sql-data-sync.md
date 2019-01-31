@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 01/08/2018
-ms.openlocfilehash: eb788c07ed9424ae6d5beed5be11c71a11c62265
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 01/25/2018
+ms.openlocfilehash: 03ea4a7db27e32b370be89adf308ded9a22f9e37
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304278"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478423"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: A helyszíni Azure SQL Database és SQL Server között az SQL Data Sync beállítása
 
@@ -71,17 +71,17 @@ Az a **központi adatbázis** területén adja meg a meglévő hitelesítő adat
 
 ### <a name="to-add-an-azure-sql-database"></a>Az Azure SQL Database hozzáadása
 
-Az a **Tagadatbázis** című igény szerint adja hozzá az Azure SQL Database a szinkronizálási csoport kiválasztásával **hozzáadása egy Azure Database**. A **konfigurálása Azure-adatbázis** lap megnyitásakor.
+Az a **Tagadatbázis** című igény szerint adja hozzá az Azure SQL Database a szinkronizálási csoport kiválasztásával **hozzáadása az Azure SQL Database**. A **konfigurálása az Azure SQL Database** lap megnyitásakor.
 
   ![2. lépés: az adatbázis konfigurálása](media/sql-database-get-started-sql-data-sync/steptwo-configure.png)
 
-  Az a **konfigurálása Azure-adatbázis** lapon, a következő beállításokat módosíthatja:
+  Az a **konfigurálása az Azure SQL Database** lapon, a következő beállításokat módosíthatja:
 
   | Beállítás                       | Leírás |
   | ----------------------------- | ------------------------------------------------- |
   | **Szinkronizálási tag neve** | Adjon meg egy nevet az új szinkronizálási tag. Ez a név nem azonos azzal a az adatbázis nevét, magát. |
   | **Előfizetés** | Válassza ki a társított Azure-előfizetés számlázási célból. |
-  | **Azure SQL Server** | Válassza ki a meglévő SQL database-kiszolgálót. |
+  | **Azure SQL Server** | Válassza ki a meglévő SQL Database-kiszolgálóhoz. |
   | **Azure SQL Database** | Válassza ki a meglévő SQL-adatbázis. |
   | **Szinkronizálási irányok** | Válassza ki **kétirányú szinkronizálás**, **a hub**, vagy **a hubról**. |
   | **Felhasználónév** és **jelszó** | Adja meg a meglévő hitelesítő adatokat az SQL Database-kiszolgálóhoz, amelyen a tag adatbázis is található. Ne adjon meg *új* ebben a szakaszban a hitelesítő adatokat. |

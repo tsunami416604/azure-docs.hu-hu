@@ -3,7 +3,7 @@ title: Többpéldányos tevékenységek használata Azure Batch - MPI-alkalmazá
 description: Ismerje meg, hogyan hajtható végre a Message Passing Interface (MPI) alkalmazásokhoz az Azure Batchben a többpéldányos feladattípus használatával.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.date: 06/12/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a443dd7ed4f95b3e283603fa8938a08c2c177827
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: f2c7d6f75b9f2d6932ae3c8de863ad277fea8ffe
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174422"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460539"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Többpéldányos tevékenységek használata Message Passing Interface (MPI) applications futtatása a Batchben
 
@@ -286,7 +286,7 @@ A [MultiInstanceTasks] [ github_mpi] kód minta a Githubon bemutatja, hogyan fut
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. Adja meg a Batch- és tárolási fiók hitelesítő adatait a `AccountSettings.settings` a a **Microsoft.Azure.Batch.Samples.Common** projekt.
 4. **Létrehozhatja és futtathatja** MultiInstanceTasks megoldás hajtsa végre a MPI mintaalkalmazás a Batch-készlet számítási csomópontjain.
-5. *Nem kötelező*: használja a [az Azure portal] [ portal] vagy [Batch Explorer] [ batch_labs] a minta-készlet, feladatok és tevékenységek vizsgálata (" MultiInstanceSamplePool","MultiInstanceSampleJob","MultiInstanceSampleTask") az erőforrások törlése előtt.
+5. *Nem kötelező*: Használja a [az Azure portal] [ portal] vagy [Batch Explorer] [ batch_labs] a minta-készlet, feladatok és tevékenységek vizsgálata ("MultiInstanceSamplePool"," MultiInstanceSampleJob","MultiInstanceSampleTask") az erőforrások törlése előtt.
 
 > [!TIP]
 > Letöltheti a [Visual Studio Community] [ visual_studio] ingyenesen, ha nem rendelkezik a Visual Studio.

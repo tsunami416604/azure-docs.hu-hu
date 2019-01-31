@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f45d8a83c323689272313314d0f9ac9b79edecd7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 3e897a3fbc76a75e526e4d0706a2678cd29dfc2e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141662"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477454"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Az üzleti ismertetése szakaszban a csoportos adatelemzési folyamat életciklusa
 
@@ -40,8 +40,8 @@ A TDSP életciklus ábrázolása a következő:
 ## <a name="how-to-do-it"></a>Megtudhatja, hogyan teheti
 Nincsenek az ebben a szakaszban tárgyalt két fő feladat: 
 
-   * **Célok meghatározása**: az ügyfél és más érdekelt felek és az üzleti problémák azonosításához. Állítson össze, amelyek meghatározzák az üzleti célokat, a data science technikák célzó kérdéseket.
-   * **Adatforrások azonosítása**: keresse meg a vonatkozó adatokat, amely segítséget nyújt a kérdésekre, amelyek meghatározzák a projekt céljainak.
+   * **Célok meghatározása**: Működik az ügyfelek és más érdekelt felek és az üzleti problémák azonosításához. Állítson össze, amelyek meghatározzák az üzleti célokat, a data science technikák célzó kérdéseket.
+   * **Adatforrások azonosítása**: Keresse meg a vonatkozó adatokat, amely segítséget nyújt a válaszoljon a kérdésekre, amelyek meghatározzák a projekt céljainak.
 
 ### <a name="define-objectives"></a>Célok meghatározása
 1. Egy központi Ez a lépés célja, hogy azonosítsa a fő üzleti változókat, amelyek előre jelezni kell az elemzés. Ezeket a változókat, nevezzük a *célok modell*, és a hozzájuk társított metrikák használatával határozza meg a projekt sikerét. Az ilyen tárolók két példák értékesítési előrejelzések vagy egy folyamatban a csalárd jellegű megrendelés valószínűségét.
@@ -77,8 +77,8 @@ Előfordulhat például, hogy a meglévő rendszerek kell összegyűjtése és o
 ## <a name="artifacts"></a>Összetevők
 Ebben a szakaszban az alábbiakban a le:
 
-   * [Bérleti dokumentum](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): standard sablon megtalálható a TDSP projekt struktúrameghatározást. Bérleti Ez egy élő dokumentumot. Frissítse a projekt során a sablon, új felderítések győződjön meg arról, és üzleti követelmények változnak. A kulcs a újrafuttathatja esetén ez a dokumentum részletesen, hozzáadás, a felderítési folyamat során. Tartsa meg az ügyfél, és más érdekelt felek részt vesz a változtatásokat, és világosan a okok miatt a módosítások.  
-   * [Adatforrások](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): A **nyers adatforrások** szakaszában a **adatok definíciók** jelentést, amely megtalálható a TDSP projekt **jelentés** mappa tartalmazza az adatok források. Ez a szakasz meghatározza a nyers adatok az eredeti, illetve a célhelyeket. A későbbi szakaszokra, töltse ki például a szkripteket az adatok áthelyezése az elemzési környezet további részleteket.  
+   * [Bérleti dokumentum](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): Standard sablon megtalálható a TDSP projekt struktúrameghatározást. Bérleti Ez egy élő dokumentumot. Frissítse a projekt során a sablon, új felderítések győződjön meg arról, és üzleti követelmények változnak. A kulcs a újrafuttathatja esetén ez a dokumentum részletesen, hozzáadás, a felderítési folyamat során. Tartsa meg az ügyfél, és más érdekelt felek részt vesz a változtatásokat, és világosan a okok miatt a módosítások.  
+   * [Adatforrások](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): A **nyers adatforrások** szakaszában a **adatok definíciók** jelentést, amely megtalálható a TDSP projekt **jelentés** mappa tartalmazza azokat az adatforrásokat. Ez a szakasz meghatározza a nyers adatok az eredeti, illetve a célhelyeket. A későbbi szakaszokra, töltse ki például a szkripteket az adatok áthelyezése az elemzési környezet további részleteket.  
    * [Adatok szótárak](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Ez a dokumentum ismerteti az adatok, az ügyfél által biztosított. Ezeket a leírásokat a séma (az adattípusokat és az információkat az ellenőrzési szabályok, ha van ilyen) és az entitás-kapcsolat ábrák információkat tartalmaznak, ha elérhető.
 
 ## <a name="next-steps"></a>További lépések

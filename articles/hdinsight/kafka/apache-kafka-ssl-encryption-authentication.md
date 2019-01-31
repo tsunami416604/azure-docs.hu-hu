@@ -9,80 +9,82 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 665b439fb1ca0b907ea7385369f64d255e8e42e6
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: decaf892d40de75638d05dc16e999a673dce21e5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355656"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477029"
 ---
 # <a name="setup-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Secure Sockets Layer (SSL)-titkosítás és az Azure HDInsight-beli Apache kafka hitelesítés beállítása
 
-Ez a cikk azt ismerteti, hogyan állíthatja be az Apache Kafka-ügyfelektől érkező SSL-titkosítást az Apache Kafka-közvetítőkhöz közötti, valamint az Apache Kafka-közvetítőkhöz. Állítsa be a hitelesítést (más néven kétirányú SSL) ügyfelek szükséges lépéseket is biztosít.
+Ez a cikk bemutatja, hogyan állíthatja be az Apache Kafka-ügyfelek és az Apache Kafka-közvetítőkhöz közötti SSL-titkosítást. Állítsa be a hitelesítést (más néven kétirányú SSL) ügyfelek szükséges lépéseket is biztosít.
 
 ## <a name="server-setup"></a>Kiszolgáló beállítása
 
-Az első lépéseként a kulcstárhoz és a Kafka-közvetítőkhöz a truststore, majd a hitelesítésszolgáltató (CA) és a közvetítő tanúsítványok importálása ezekkel az áruházakkal.
+Az első lépéseként készítse el keystore és truststore mindegyik Kafka-közvetítő. Miután jön létre, a hitelesítésszolgáltató (CA) és a közvetítő tanúsítványok importálása ezekkel az áruházakkal.
 
 > [!Note] 
 > Ez az útmutató fogja használni önaláírt tanúsítványokat, de a legbiztonságosabb megoldás, ha megbízható hitelesítésszolgáltatók által kibocsátott tanúsítványokat használ.
 
+Tegye a következőket a kiszolgáló telepítés befejezéséhez:
+
 1. Hozzon létre egy ssl nevű mappát, és exportálja a kiszolgáló jelszava környezeti változóban. A jelen útmutató fennmaradó részében, csere `<server_password>` a kiszolgáló tényleges rendszergazdai jelszóval.
+1. Ezután hozzon létre egy java keystore (kafka.server.keystore.jks) és a egy Hitelesítésszolgáltatói tanúsítvány.
+1. Ezután hozzon létre a tanúsítvány a hitelesítésszolgáltató által aláírt az előző lépésben létrehozott aláírási kérelmet.
+1. Most az aláírási kérést küldhet a hitelesítésszolgáltató, és az aláírt tanúsítvány beszerzése. Mert önaláírt tanúsítványt használ, hogy aláírja a tanúsítványt a hitelesítésszolgáltató használatával a `openssl` parancsot.
+1. Hozzon létre egy megbízhatósági tároló, és importálja a tanúsítványt a CA.
+1. A kulcstár nyilvános hitelesítésszolgáltató tanúsítvány importálása.
+1. A kulcstár az aláírt tanúsítvány importálása.
 
-    ```bash
-    $export SRVPASS=<server_password>
-    $mkdir ssl
-    $cd ssl
-    ```
+A parancsok a lépések elvégzéséhez a következő kódrészlet látható.
 
-2. Ezután hozzon létre egy java keystore (kafka.server.keystore.jks) és a egy Hitelesítésszolgáltatói tanúsítvány.
+```bash
+export SRVPASS=<server_password>
+mkdir ssl
+cd ssl
 
-    ```bash
-    $keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass $SRVPASS -keypass $SRVPASS -dname "CN=wn0-umakaf.xvbseke35rbuddm4fyvhm2vz2h.cx.internal.cloudapp.net" -storetype pkcs12
-    ```
+# Create a java keystore (kafka.server.keystore.jks) and a CA certificate.
 
-3. Ezután hozzon létre a tanúsítvány a hitelesítésszolgáltató által aláírt az előző lépésben létrehozott aláírási kérelmet.
+keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass $SRVPASS -keypass $SRVPASS -dname "CN=wn0-umakaf.xvbseke35rbuddm4fyvhm2vz2h.cx.internal.cloudapp.net" -storetype pkcs12
 
-    ```bash
-    $keytool -keystore kafka.server.keystore.jks -certreq -file cert-file -storepass $SRVPASS -keypass $SRVPASS
-    ```
+# Create a signing request to get the certificate created in the previous step signed by the CA.
 
-4. Most az aláírási kérést küldhet a hitelesítésszolgáltató, és az aláírt tanúsítvány beszerzése. Mert önaláírt tanúsítványt használ, hogy aláírja a tanúsítványt a hitelesítésszolgáltató használatával a `openssl` parancsot.
+keytool -keystore kafka.server.keystore.jks -certreq -file cert-file -storepass $SRVPASS -keypass $SRVPASS
 
-    ```bash
-    $openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days 365 -CAcreateserial -passin pass:$SRVPASS
-    ```
+# Send the signing request to the CA and get this certificate signed.
 
-5. Hozzon létre egy megbízhatósági tároló, és importálja a tanúsítványt a CA.
+openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days 365 -CAcreateserial -passin pass:$SRVPASS
 
-    ```bash
-    $keytool -keystore kafka.server.truststore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
-    ```
+# Create a trust store and import the certificate of the CA.
 
-6. A kulcstár nyilvános hitelesítésszolgáltató tanúsítvány importálása.
+keytool -keystore kafka.server.truststore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
 
-    ```bash
-    $keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
-    ```
+# Import the public CA certificate into the keystore.
 
-7. A kulcstár az aláírt tanúsítvány importálása.
+keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
 
-    ```bash
-    $keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt//output is "Certificate reply was added to keystore"
-    ```
+# Import the signed certificate into the keystore.
+
+keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
+
+# The output should say "Certificate reply was added to keystore"
+```
 
 Az aláírt tanúsítvány importálása a kulcstár az utolsó lépés egy Kafka-közvetítő truststore és keystore konfigurálása szükséges.
 
-## <a name="update-configuration-to-use-ssl-and-restart-brokers"></a>Az SSL használatát, és indítsa újra a közvetítők konfigurációjának frissítése
+## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>Az SSL használatát, és indítsa újra a közvetítők Kafka-konfiguráció frissítése
 
-A telepítő minden egyes Kafka keystore és truststore közvetítse, és importálja a megfelelő tanúsítványok van.  Ezután az Ambari kapcsolódó Kafka konfiguráció tulajdonságainak módosítása, és indítsa újra a Kafka-közvetítőkhöz.
+Most telepítő minden egyes Kafka keystore és truststore közvetítse, és a megfelelő tanúsítványok importálva van.  Ezután az Ambari kapcsolódó Kafka konfiguráció tulajdonságainak módosítása, és indítsa újra a Kafka-közvetítőkhöz. 
+
+A konfigurációs módosítás végrehajtásához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az Azure Portalon, és válassza ki az Azure HDInsight az Apache Kafka-fürt.
 1. Nyissa meg az Ambari felhasználói felületén kattintva **otthoni Ambari** alatt **fürt irányítópultjai**.
 1. A **Kafka-közvetítő** állítsa be a **figyelői** tulajdonság `PLAINTEXT://localhost:9092,SSL://localhost:9093`
 1. A **kafka-közvetítő speciális** állítsa be a **security.inter.broker.protocol** tulajdonság `SSL`
 
-    ![A kafka ssl konfiguráció tulajdonságainak az Ambari szerkesztése](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
+    ![A Kafka ssl konfiguráció tulajdonságainak az Ambari szerkesztése](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
 1. A **egyéni kafka-közvetítő** állítsa be a **ssl.client.auth** tulajdonságot `required`. Ez a lépés csak akkor szükséges, ha állítja be a hitelesítést, valamint a titkosítást.
 
@@ -120,90 +122,89 @@ A telepítő minden egyes Kafka keystore és truststore közvetítse, és import
 > [!Note]
 > A következő lépések szükségesek, csak akkor, ha mindkét SSL-titkosítást beállításakor **és** hitelesítést. Ha csak titkosítás beállítása, folytassa [hitelesítés nélküli ügyfél telepítése](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)
 
+Kövesse az alábbi lépéseket az ügyfél a telepítés végrehajtásához:
+
+1. Jelentkezzen be az ügyfélszámítógép (hn1).
 1. Az ügyfél jelszó exportálása. Cserélje le `<client_password>` a tényleges rendszergazdai jelszóval, a Kafka-ügyfélszámítógépen.
-
-    ```bash
-    $export CLIPASS=<client_password>
-    $cd ssl
-    ```
-
 1. Hozzon létre egy java keystore, és egy aláírt tanúsítvány beszerzése a közvetítő. Ezután másolja a tanúsítványt a virtuális gép, amelyen a hitelesítésszolgáltató fut-e.
-
-    ```bash
-    $keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass $CLIPASS -keypass $CLIPASS -dname "CN=mylaptop1" -alias my-local-pc1 -storetype pkcs12
-
-    $keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -alias my-local-pc1 -storepass $CLIPASS -keypass $CLIPASS
-
-    $scp client-cert-sign-request3 sshuser@wn0-umakaf:~/tmp1/client-cert-sign-request
-    ```
-
 1. Váltson a hitelesítésszolgáltató számítógép (wn0) aláírásához az ügyféltanúsítvány.
-
-    ```bash
-    $cd ssl
-    $openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:<server_password>
-    ```
-
 1. Nyissa meg az ügyfélszámítógép (hn1), és keresse meg a `~/ssl` mappát. Ügyfélszámítógép az aláírt tanúsítvány másolja.
 
-    ```bash
-    #copy signed cert to client machine
-    $scp -i ~/kafka-security.pem sshuser@wn0-umakaf:/tmp1/client-cert-signed
+```bash
+export CLIPASS=<client_password>
+cd ssl
 
-    #copy signed cert to client machine
-    $scp -i ~/kafka-security.pem sshuser@wn0-umakaf:/home/sshuser/ssl/ca-cert
+# Create a java keystore and get a signed certificate for the broker. Then copy the certificate to the VM where the CA is running.
 
-    #Import CA cert to trust store 
-    $keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass $CLIPASS -keypass $CLIPASS -dname "CN=mylaptop1" -alias my-local-pc1 -storetype pkcs12
 
-    #Import CA cert to key store
-    $keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -alias my-local-pc1 -storepass $CLIPASS -keypass $CLIPASS
 
-    #Import signed client (cert client-cert-signed1) to keystore
-    $keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass $CLIPASS -keypass $CLIPASS -noprompt
-    ```
+# Copy the cert to the vm where the CA is
+scp client-cert-sign-request3 sshuser@wn0-umakaf:~/tmp1/client-cert-sign-request
 
-1. A fájl megtekintéséhez `client-ssl-auth.properties` paranccsal `$cat client-ssl-auth.properties`. A következő sorokat kell rendelkeznie:
+# Switch to the CA machine (wn0) to sign the client certificate.
+cd ssl
+openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:<server_password>
 
-    ```bash
-    security.protocol=SSL
-    ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
-    ssl.truststore.password=<client_password>
-    ssl.keystore.location=/home/sshuser/ssl/kafka.client.keystore.jks
-    ssl.keystore.password=<client_password>
-    ssl.key.password=<client_password>
-    ```
+# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert to client machine
+scp -i ~/kafka-security.pem sshuser@wn0-umakaf:/tmp1/client-cert-signed
+
+# Import CA cert to trust store
+keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+
+# Import CA cert to key store
+keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+
+# Import signed client (cert client-cert-signed1) to keystore
+keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass $CLIPASS -keypass $CLIPASS -noprompt
+```
+
+Végül tekintse meg a fájl `client-ssl-auth.properties` paranccsal `cat client-ssl-auth.properties`. A következő sorokat kell rendelkeznie:
+
+```bash
+security.protocol=SSL
+ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
+ssl.truststore.password=<client_password>
+ssl.keystore.location=/home/sshuser/ssl/kafka.client.keystore.jks
+ssl.keystore.password=<client_password>
+ssl.key.password=<client_password>
+```
 
 ## <a name="client-setup-without-authentication"></a>Ügyfél beállítása (hitelesítés nélkül)
 
+Ha már nincs szüksége a hitelesítés, a lépések csak az SSL-titkosítás beállítása a következők:
+
+1. Jelentkezzen be az ügyfélszámítógép (hn1), és keresse meg a `~/ssl` mappa
 1. Az ügyfél jelszó exportálása. Cserélje le `<client_password>` a tényleges rendszergazdai jelszóval, a Kafka-ügyfélszámítógépen.
+1. Ügyfélszámítógép az aláírt tanúsítvány másolja a hitelesítésszolgáltató számítógépen (wn0).
+1. A Hitelesítésszolgáltatói tanúsítvány importálása a truststore
+1. A kulcstár a Hitelesítésszolgáltatói tanúsítvány importálása
 
-    ```bash
-    $export CLIPASS=<client_password>
-    $cd ssl
-    ```
+Ezeket a lépéseket a következő kódrészlet látható.
 
-1. Nyissa meg az ügyfélszámítógép (hn1), és keresse meg a `~/ssl` mappát. Ügyfélszámítógép az aláírt tanúsítvány másolja.
+```bash
+export CLIPASS=<client_password>
+cd ssl
 
-    ```bash
-    #copy signed cert to client machine
-    $scp -i ~/kafka-security.pem sshuser@wn0-umakaf:/home/sshuser/ssl/ca-cert .
+# Copy signed cert to client machine
+scp -i ~/kafka-security.pem sshuser@wn0-umakaf:/home/sshuser/ssl/ca-cert .
 
-    #NOW IMPORT CA cert to trust store
-    $keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+# Import CA cert to truststore
+keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
 
-    #Import CA cert to key store
-    $keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
-    ```
+# Import CA cert to keystore
+keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+```
 
-1. A fájl megtekintéséhez `client-ssl-auth.properties` paranccsal `$cat client-ssl-auth.properties`. A következő sorokat kell rendelkeznie:
+Végül tekintse meg a fájl `client-ssl-auth.properties` paranccsal `cat client-ssl-auth.properties`. A következő sorokat kell rendelkeznie:
 
-    ```bash
-    security.protocol=SSL
-    ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
-    ssl.truststore.password=<client_password>
-    ```
+```bash
+security.protocol=SSL
+ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
+ssl.truststore.password=<client_password>
+```
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mi az Apache Kafka on HDInsight?](/../azure/hdinsight/kafka/apache-kafka-introduction)
+* [Mi az Apache Kafka on HDInsight?](apache-kafka-introduction.md)

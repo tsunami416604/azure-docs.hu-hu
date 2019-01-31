@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveg lefordítása, Ruby – Translator Text API'
+title: 'Gyors útmutató: Translate text, Ruby - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API és Ruby segítségével.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: a36f873c08fee57ddb73f94b4a77dc4514422cb1
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: ae177e2e139fea87cd5d7b4ff92a60357f07bb62
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645609"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461253"
 ---
-# <a name="quickstart-translate-text-with-the-translator-text-rest-api-ruby"></a>Rövid útmutató: Szöveg lefordítása a Translator Text REST API használatával (Ruby)
+# <a name="quickstart-translate-text-with-the-translator-text-rest-api-ruby"></a>Gyors útmutató: A Translator Text REST API (Ruby) szöveg lefordítása
 
 Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API segítségével.
 

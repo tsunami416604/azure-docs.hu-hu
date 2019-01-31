@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: jeffpatt
-ms.component: files
-ms.openlocfilehash: fe712648cf3e76f4161f9f3a7b97b7990bc692a1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.subservice: files
+ms.openlocfilehash: 228927630540ed0277ca73a978382439f57b77d2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214466"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471402"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -852,6 +852,9 @@ A víruskereső, a backup és az egyéb alkalmazásokhoz, amelyek nagy mennyisé
 Érdeklődjön a szoftverszállítónál, hogy megtudja, hogyan konfigurálhatja a megoldást az offline fájlok olvasásának kihagyására.
 
 Nem kívánt visszahívások is fordulhat elő, az egyéb forgatókönyvek, például fájlokat a Fájlkezelőben böngészésekor. Ha a kiszolgálón található Fájlkezelőben felhőalapú rétegzett fájlokat tartalmazó mappákat nyit meg, az nem kívánt visszahívásokat eredményezhet. Ez még gyakrabban előfordul, ha engedélyezve van egy víruskereső megoldás a kiszolgálón.
+
+> [!NOTE]
+>A telemetriai adatok eseménynaplójában Event ID 9059 segítségével meghatározhatja, mely alkalmazását vagy alkalmazásait visszahívások okozza. Ez az esemény alkalmazás visszaírási terjesztési a kiszolgálói végpont biztosít, és óránként egyszer naplózza.
 
 ## <a name="general-troubleshooting"></a>Általános hibaelhárítási tippek
 Ha egy kiszolgálón az Azure File Sync problémák merülnek fel, indítsa el az alábbi lépések végrehajtásával:

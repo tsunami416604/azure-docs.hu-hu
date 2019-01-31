@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/22/2018
-ms.openlocfilehash: d8af5e3919b731677b40726c37462832adc06677
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ee9e9389962cd454f9861e561dd76c96d019a1f0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449095"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469335"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Létrehozása, konfigurálása és kezelése rugalmas feladatokkal
 
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, létrehozása, konfigurálása és kezelése ruga
 
 1. Hozzon létre egy hitelesítő adatot a feladat végrehajtásához a *feladat-adatbázisban* a [PowerShell](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets) vagy a [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) használatával.
 2. Határozza meg a célcsoportot (az adatbázisokat, amelyeken a feladatot futtatni szeretné) a [PowerShell](elastic-jobs-powershell.md#define-the-target-databases-you-want-to-run-the-job-against) vagy a [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) használatával.
-3. Hozzon létre feladatügynök-hitelesítő adatokat minden adatbázisban, ahol a feladat futni fog [(adja hozzá a felhasználót (vagy a szerepkört) a csoport minden adatbázisához)](https://docs.microsoft.com/azure/sql-database/sql-database-control-access). Példaként tekintse meg a [PowerShell-oktatóanyagot](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets).
+3. Hozzon létre feladatügynök-hitelesítő adatokat minden adatbázisban, ahol a feladat futni fog [(adja hozzá a felhasználót (vagy a szerepkört) a csoport minden adatbázisához)](sql-database-control-access.md). Példaként tekintse meg a [PowerShell-oktatóanyagot](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets).
 4. Hozzon létre egy feladatot a [PowerShell](elastic-jobs-powershell.md#create-a-job) vagy a [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) használatával.
 5. Adjon hozzá feladatlépéseket a [PowerShell](elastic-jobs-powershell.md#create-a-job-step) vagy a [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) használatával.
 6. Futtasson egy feladatot a [PowerShell](elastic-jobs-powershell.md#run-the-job) vagy a [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job) használatával.
