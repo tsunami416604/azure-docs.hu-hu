@@ -75,10 +75,10 @@ Az alábbi táblázatokban a rendelkezésre álló különböző tartalék-típu
 | ConnectionIsMarkedDisconnected | A kapcsolat "leválasztott" van megjelölve. |Nem|
 | ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatás nem rendelkezik konfigurált kapcsolat. | Igen |
 | ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti van megjelölve.| Igen|
-| Hitelesítés | Előmegosztott kulcsa eltérő | Igen|
+| Authentication | Előmegosztott kulcsa eltérő | Igen|
 | PeerReachability | A társ-átjáró nem érhető el. | Igen|
 | IkePolicyMismatch | A társ-átjáró IKE-szabályzatok, amelyek nem támogatottak az Azure rendelkezik. | Igen|
-| WfpParse hiba | Hiba történt a Windows Fájlvédelem napló elemzése. |Igen|
+| WfpParse Error | Hiba történt a Windows Fájlvédelem napló elemzése. |Igen|
 
 ## <a name="supported-gateway-types"></a>Támogatott átjárótípusok
 
