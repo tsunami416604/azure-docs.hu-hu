@@ -254,14 +254,6 @@ items:
       items:
       - name: Lekérdezési teljesítmény hangolása
         href: sql-api-query-metrics.md
-      - name: Kiszolgálóoldali programozás
-        items:
-        - name: Tárolt eljárások, triggerek és felhasználói függvények írása
-          href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: Tárolt eljárások és triggerek írása a JavaScript lekérdezési API-val
-          href: how-to-write-javascript-query-api.md
-        - name: Tárolt eljárások, triggerek és felhasználói függvények használata
-          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: Adattípusok
         items:
         - name: DateTime
@@ -337,7 +329,7 @@ items:
         - name: A Node.js és a React alkalmazás
           href: tutorial-develop-mongodb-react.md
       - name: 2 – Adatok migrálása
-        href: mongodb-migrate.md
+        href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
       - name: 3 – Adatok lekérdezése
         href: tutorial-query-mongodb.md
       - name: 4 – Adatok globális elosztása
@@ -497,6 +489,14 @@ items:
       items:
       - name: Indexelés kezelése
         href: how-to-manage-indexing-policy.md
+  - name: Kiszolgálóoldali programozás
+    items:
+    - name: Tárolt eljárások, triggerek és felhasználói függvények írása
+      href: how-to-write-stored-procedures-triggers-udfs.md
+    - name: Tárolt eljárások és triggerek írása a JavaScript lekérdezési API-val
+      href: how-to-write-javascript-query-api.md
+    - name: Tárolt eljárások, triggerek és felhasználói függvények használata
+      href: how-to-use-stored-procedures-triggers-udfs.md
   - name: Biztonság
     items:
     - name: IP-tűzfal konfigurálása
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: Közösségimédia-alkalmazások
       href: social-media-apps.md
-ms.openlocfilehash: 93d8abe428305ce62fb95afabc6ab71dfc8f67b4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2fdf08837bc239ba10da85fad7b81c819b9f26fc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464874"
+ms.locfileid: "55511921"
