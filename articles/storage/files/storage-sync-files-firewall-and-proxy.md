@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 6c8a0a0db419546a49670b1f34e58ead7cebeaa1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c0a1d2bf1d7a103ad473cadb1528bd9b9a4c90de
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459502"
+ms.locfileid: "55488016"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Az Azure File Sync kapcsolódik a helyszíni kiszolgálók az Azure Files többhelyes szinkronizálás és a felhőbeli rétegezés szolgáltatások engedélyezése. Ezért egy helyszíni kiszolgálón kapcsolódnia kell az internethez. Egy rendszergazdának kell döntenie, hogy a legjobb útvonalat a közvetítőn keresztül az Azure cloud services-kiszolgáló.
@@ -111,7 +111,7 @@ Az üzletmenet-folytonossági és vészhelyreállítási (BCDR) helyreállítás
 
 | Régió | Elsődleges végpont URL-címe | Párosított régió | Felderítési URL-cím |
 |--------|---------------------------------------|--------|---------------------------------------|
-| Kelet-Ausztrália | https://kailani-aue.one.microsoft.com | Ausztrália Souteast | https://kailani-aue.one.microsoft.com |
+| Kelet-Ausztrália | https://kailani-aue.one.microsoft.com | Délkelet-Ausztrália | https://kailani-aue.one.microsoft.com |
 | Délkelet-Ausztrália | https://kailani-aus.one.microsoft.com | Kelet-Ausztrália | https://tm-kailani-aus.one.microsoft.com |
 | Közép-Kanada | https://kailani-cac.one.microsoft.com | Kelet-Kanada | https://tm-kailani-cac.one.microsoft.com |
 | Kelet-Kanada | https://kailani-cae.one.microsoft.com | Közép-Kanada | https://tm-kailani.cae.one.microsoft.com |

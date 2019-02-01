@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 138c5ee54d175c4bd5f727acc3375405850f86a0
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 3b41f975b484083dab79f16984e84018b2e830a1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301594"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497298"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -186,7 +186,7 @@ Adatlemez - standard storage-fiók | Támogatott |
 Adatlemez - premium storage-fiók | Támogatott | Ha a virtuális gép lemezei prémium és standard szintű tárfiókok helyezkednek el, kiválaszthatja az egyes lemezek, ellenőrizze, hogy azonos tárolási konfigurációval a célrégióban egy másik céloldali tárfiókkal.
 Felügyelt lemez – standard | Támogatott az Azure-régióban, amelyben az Azure Site Recovery támogatott. |
 Felügyelt lemez – prémium szintű | Támogatott az Azure-régióban, amelyben az Azure Site Recovery támogatott. |
-Standard SSD | Nem támogatott |
+Standard SSD | Támogatott |
 Redundancia | Az LRS és a GRS támogatottak.<br/><br/> A ZRS nem támogatott.
 Ritkán használt adatok és a gyakori elérésű tárolási | Nem támogatott | Virtuálisgép-lemezek nem támogatják a ritka és gyakori elérésű tárolási
 A tárolóhelyek | Támogatott |
@@ -195,8 +195,8 @@ Az Azure Disk Encryption (ADE) a Windows operációs rendszer | Engedélyezve va
 Az Azure Disk Encryption (ADE) a Linux operációs rendszer | Nem támogatott |
 Gyakori elérésű hozzáadása/eltávolítása lemez | Nem támogatott | Ha ad hozzá, vagy távolítsa el az adatlemezt a virtuális gépen, tiltsa le a replikációt, és engedélyezze újra a virtuális gép replikációját szüksége.
 Lemez kizárása | Nem támogatott|   Ideiglenes lemez alapértelmezés szerint ki van zárva.
-Közvetlen tárolóhelyek  | Nem támogatott|
-Kibővített fájlkiszolgáló  | Nem támogatott|
+Közvetlen tárolóhelyek  | Összeomlás-konzisztens helyreállítási pontok esetében támogatott. Alkalmazás-konzisztens helyreállítási pontok nem támogatottak. |
+Kibővített fájlkiszolgáló  | Összeomlás-konzisztens helyreállítási pontok esetében támogatott. Alkalmazás-konzisztens helyreállítási pontok nem támogatottak. |
 LRS | Támogatott |
 GRS | Támogatott |
 RA-GRS | Támogatott |

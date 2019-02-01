@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55d35237adc384ca8344e6ff69abc4a93d540ec6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 6126a9d56059435be32299bcd1f03050f031f81b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099900"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507817"
 ---
 # <a name="time-series-model"></a>Time Series-modell
 
@@ -152,9 +152,11 @@ Az előző példában ID1 és ID4 jeleníti meg az Azure Time Series Insights Ex
 
 Az idősor magukat a példányai. A legtöbb esetben a *deviceId* vagy *assetId* a környezetben az eszköz egyedi azonosítója. A példányok rendelkeznek leíró információkat a hozzájuk társított példány tulajdonságainak neve. Minimális példány tulajdonságai közé tartozik a hierarchiára vonatkozó információk. Akkor hasznos, leíró adatok, például a gyártó, operátor vagy a legutóbbi szolgáltatás dátuma is tartalmazhatnak.
 
-Példányok által meghatározott *timeSeriesId*, *typeId*, *hierarchyId*, és *instanceFields*. Csak egy rendeli minden példány *típus*, és a egy vagy több hierarchiák. Hierarchiák, és további példányok öröklik az összes tulajdonság *instanceFields* adhat hozzá további példányt erőforrástulajdonság-definíciót.
+Példányok által meghatározott *typeId*, *timeSeriesId*, *neve*, *leírás*, *hierarchyIds* , és *instanceFields*. Csak egy rendeli minden példány *típus*, és a egy vagy több hierarchiák. Hierarchiák, és további példányok öröklik az összes tulajdonság *instanceFields* adhat hozzá további példányt erőforrástulajdonság-definíciót.
 
 *instanceFields* példányát és a statikus adatokat, amely meghatározza egy példányt, tulajdonság. Miközben is támogatja a keresési műveletek végrehajtása az indexelés meghatározzák a hierarchiában, vagy nem hierarchia tulajdonságának értékét.
+
+A *neve* tulajdonság nem kötelező, és a kis-és nagybetűket. Ha *neve* van nem érhető el, hogy alapértelmezés szerint a Time Series azonosítóját. Ha egy *neve* nincs megadva, a Time Series azonosító továbbra is elérhető lesz a jól (a rácson a diagramok a Explorer alatt). 
 
 ## <a name="time-series-model-instance-json-example"></a>Time Series modell példány példa JSON
 
@@ -164,6 +166,7 @@ Minta:
 {
     "typeId": "1be09af9-f089-4d6b-9f0b-48018b5f7393",
     "timeSeriesId": ["sampleTimeSeriesId"],
+    "name": "sampleName",
     "description": "Sample Instance",
     "hierarchyIds": [
         "1643004c-0a84-48a5-80e5-7688c5ae9295"

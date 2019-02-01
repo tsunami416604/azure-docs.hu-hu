@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5a0774c69c074698383e9c6f7f7cf9331e8939f2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5068692d5f12b5b6c8b0476a789123ef9fd1dc75
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164435"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508810"
 ---
-# <a name="claimsproviders"></a>ClaimsProviders 
+# <a name="claimsproviders"></a>ClaimsProviders
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -35,14 +35,13 @@ Jogcím-szolgáltatóktól tartalmaz [technikai profilok](technicalprofiles.md).
         ...
     </TechnicalProfiles>
   </ClaimsProvider>
-</ClaimsProvider>
   ...
 </ClaimsProviders>
 ```
 
 A **ClaimsProviders** elem tartalmazza a következő elemet:
 
-| Elem | Előfordulások | Leírás |
+| Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1:n | Egy akkreditált jogcímszolgáltatótól, amely a különböző felhasználói utak is javítható. |
 
@@ -50,13 +49,13 @@ A **ClaimsProviders** elem tartalmazza a következő elemet:
 
 A **ClaimsProvider** elem tartalmazza gyermekeleme a következők közül:
 
-| Elem | Előfordulások | Leírás |
+| Elem | Ismétlődések | Leírás |
 | ------- | ---------- | ----------- |
 | Domain | 0:1 | A jogcím-szolgáltató a tartomány nevét tartalmazó karakterlánc. Például ha a jogcím-szolgáltatói is tartalmaz, a Facebook technikai profilban, a tartománynév Facebook.com weboldalt. Ez a tartománynév a jogcímszolgáltató bírálni a technikai profil által meghatározott összes technikai profil szolgál. A tartomány nevét is lehet hivatkozni egy **domain_hint**. További információkért lásd: a **bejelentkezési átirányítása egy közösségi szolgáltató** szakaszában [állítsa be a közvetlen bejelentkezés az Azure Active Directory B2C használatával](direct-signin.md). |
 | Megjelenítendő név | 0:1 | A jogcímszolgáltatótól, a felhasználók számára megjelenített nevét tartalmazó karakterlánc. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | Az igényt szolgáltatója által támogatott technikai profilok |
 
-**ClaimsProvider** rendszerezi a technikai profilok a jogcímszolgáltató vonatkoznak. Az alábbi példa bemutatja az Azure Active Directory jogcímszolgáltató és az Azure Active Directory technikai profilok: 
+**ClaimsProvider** rendszerezi a technikai profilok a jogcímszolgáltató vonatkoznak. Az alábbi példa bemutatja az Azure Active Directory jogcímszolgáltató és az Azure Active Directory technikai profilok:
 
 ```XML
 <ClaimsProvider>
@@ -82,7 +81,7 @@ A **ClaimsProvider** elem tartalmazza gyermekeleme a következők közül:
       ...
     </TechnicalProfile>
     <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
-      ...    
+      ...
     </TechnicalProfile>
     <TechnicalProfile Id="AAD-UserReadUsingObjectId">
       ...
@@ -109,4 +108,3 @@ Az alábbi példa bemutatja a Facebook jogcímszolgáltatótól, az a **Facebook
   </TechnicalProfiles>
 </ClaimsProvider>
 ```
- 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 248624cc31fab0138eb8a45b5479cc8d2da6ef53
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f7a645669d273e0ca0017e28ef539c2143151d25
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467645"
+ms.locfileid: "55509683"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -401,6 +401,10 @@ A metrikák támogató dimenziók esetében adja meg a megfelelő mérőszámok 
 Az Azure Monitor felügyelt metrikákkal párhuzamos örökölt metrikák érhetők el. A támogatási azonos tárolja, amíg Azure Storage-be a szolgáltatást a régi metrikák is.
 
 ## <a name="faq"></a>GYIK
+
+**Új mérőszámok támogatja a klasszikus tárfiókot?**
+
+Nem, az új mérőszámok az Azure Monitor csak támogatása az Azure Resource Manager tárfiókok. Ha azt szeretné, a metrikák használata a Storage-fiókok, szüksége migrálása az Azure Resource Manager-tárfiókba. Lásd: [áttelepítése az Azure Resource Manager-](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview).
 
 **Azure Storage támogatja a mérőszámok a Managed Disks vagy nem felügyelt lemezek?**
 

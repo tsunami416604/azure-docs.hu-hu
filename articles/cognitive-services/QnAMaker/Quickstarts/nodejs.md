@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 01/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1bc70e5c8243c50506cea871220412a4941cbe35
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7e7e362a2536f7adf2a7d68b096ab76d73f15a61
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213106"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496227"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>A QnA Maker REST API használata a node.js használatával 
 <a name="HOLTop"></a>
@@ -57,7 +57,7 @@ A következő kód egy új tudásbázist hoz létre a [Create](https://westus.de
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -253,7 +253,7 @@ A következő kód egy meglévő tudásbázist frissít az [Update](https://west
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -454,7 +454,7 @@ A következő kód egy meglévő tudásbázist tesz közzé a [Publish](https://
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -566,7 +566,7 @@ A következő kód cseréli a megadott tudásbázis tartalmát a [Replace](https
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -699,7 +699,7 @@ A következő kód letölti a megadott tudásbázis tartalmát a [Download knowl
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -832,7 +832,7 @@ A következő kód választ kér egy kérdésre a megadott tudásbázisból a **
 1. A `kb` értéket cserélje le a válaszadáshoz lekérdezni kívánt tudásbázis azonosítójára. A tudásbázisnak már közzétettnek kell lennie a [Publish](#Publish) metódus használatával.
 1. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -961,7 +961,7 @@ A következő kód információkat kér le a megadott tudásbázissal kapcsolatb
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1076,7 +1076,7 @@ A következő kód információkat kér le egy megadott felhasználó összes tu
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1204,7 +1204,7 @@ A következő kód törli a megadott tudásbázist a [Delete knowledge base](htt
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1316,7 +1316,7 @@ A következő kód lekéri a jelenlegi végponti kulcsokat a [Get endpoint keys]
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1417,7 +1417,7 @@ A következő kód újra létrehozza a jelenlegi végponti kulcsokat a [Refresh 
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1543,7 +1543,7 @@ A következő kód lekéri a jelenlegi szóváltozatokat a [Download alterations
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1650,7 +1650,7 @@ A következő kód lecseréli a jelenlegi szóváltozatokat a [Replace alteratio
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');

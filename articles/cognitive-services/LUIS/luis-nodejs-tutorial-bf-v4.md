@@ -9,14 +9,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 292bcf5974f8c51f99a676786c66316e9cde0748
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8a24ffa4717244d8ce2ef507183cff06cbea5797
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215904"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492232"
 ---
 # <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Oktatóanyag: A LUIS-robot Node.js-ben a Bot keretrendszer 4.x-es és az Azure Web app bot
 A Node.js használatával létrehozhat egy integrált nyelvfelismerési (LUIS) képességekkel rendelkező csevegőrobotot. Ez a robot a HomeAutomation app használatával valósítja meg a robotmegoldást. A robot összeállításához a [Bot Framework 4-es verzióját](https://github.com/Microsoft/botbuilder-js) és az Azure [webalkalmazás-robotot](https://docs.microsoft.com/azure/bot-service/) használja.
@@ -114,7 +114,7 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
 
 6. Nyissa meg a bot.js fájlt, és keresse meg a `const results = await this.luisRecognizer.recognize(context);` kifejezést. A rendszer ezen a ponton küldi a robotban megadott felhasználói kimondott szöveget a LUIS-hoz.
 
-    ```nodejs
+   ```javascript
     /**
      * Driver code that does one of the following:
      * 1. Display a welcome card upon startup
@@ -247,7 +247,7 @@ A `bot.js` fájlban adja hozzá az új szándékok kezeléséhez szükséges kó
 
 1. A fájl tetején keresse meg a **Támogatott LUIS-szándékok** szakaszt, és adja hozzá a HomeAutomation-szándékokhoz tartozó állandókat:
 
-    ```nodejs
+   ```javascript
     // Supported LUIS Intents
     const GREETING_INTENT = 'Greeting';
     const CANCEL_INTENT = 'Cancel';
@@ -261,7 +261,7 @@ A `bot.js` fájlban adja hozzá az új szándékok kezeléséhez szükséges kó
 
 2. Keresse meg az **isTurnInterrupted** kifejezést, amely a kimondott szöveg LUIS-előrejelzését fogadja, és adjon hozzá egy sort az eredmény konzolon való kiíratásához.
 
-    ```nodejs
+   ```javascript
     /**
      * Look at the LUIS results and determine if we need to handle
      * an interruptions due to a Help or Cancel intent
@@ -309,7 +309,7 @@ A `bot.js` fájlban adja hozzá az új szándékok kezeléséhez szükséges kó
 
 3. Adja hozzá a szándékokat az onTurn metódus switch utasításához a `DialogTurnStatus.empty` esetben:
 
-    ```nodejs
+   ```javascript
     switch (topIntent) {
         case GREETING_INTENT:
             await dc.begin(GREETING_DIALOG);

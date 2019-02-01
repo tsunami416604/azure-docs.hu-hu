@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 074184d1465236fadebb5afa229a5b7f8689bbc9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b1098622ad96ccdcd1941466c6e32255b4415820
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251656"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508004"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Hozzon létre, és a egy machine learning-folyamat futtatása az Azure Machine Learning-SDK használatával
 
@@ -103,6 +103,9 @@ output_data1 = PipelineData(
 ## <a name="set-up-compute-target"></a>Állítsa be a számítási célnak
 
 Az Azure Machine Learning az előfizetési időszak __számítási__ (vagy __számítási célt__) a gépek vagy fürtök, amelyek a machine learning folyamatban, a számítási lépésekkel vonatkozik.   Lásd: [számítási céljainak modell betanítása](how-to-set-up-training-targets.md) számítási célnak, és hogyan hozhat létre, és csatolja őket a munkaterület teljes listáját.  A létrehozásához, és vagy egy számítási célnak csatolása ugyanúgy történik, függetlenül attól, hogy a modell tanítása vagy egy folyamat lépés futtatása. Miután hoz létre, és csatolja a számítási célnak, a `ComputeTarget` objektumának a [folyamat lépés](#steps).
+
+> [!IMPORTANT]
+> A számítási célokhoz felügyeleti műveleteket nem támogatott a távoli feladatokban. Mivel a machine learning-folyamatokat, távoli feladatokat az elküldésüket ne használja a műveletek a számítási célokhoz, a folyamat belül.
 
 Az alábbiakban példákat létrehozása és csatlakoztatása a számítási célokhoz:
 

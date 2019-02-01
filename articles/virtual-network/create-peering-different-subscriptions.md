@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: f06f0b5392ebb60cd852d3c2eb201478b31ae167
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3b929c3f85bab4319fe2fef1b5c0575f0d1d972a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014966"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511676"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Egy virtuális hálózati társviszony-létesítés létrehozása – Resource Manager, a különböző előfizetések
 
@@ -72,7 +72,7 @@ Az alábbi lépéseket az egyes előfizetésekhez más fiókokat kell használni
     - **Hely**: *USA keleti RÉGIÓJA*
 
 13. Az a **erőforrások keresése** mezőbe írja be a portál tetején lévő *myVnetB*. Válassza ki **myVnetB** amikor megjelenik a keresési eredmények között.
-14. Alatt **myVnetB**válassza **tulajdonságok** a bal oldali beállítások függőleges listájából. Másolás a **erőforrás-azonosító**, amely egy későbbi lépésben szolgál. Az erőforrás-azonosítója a következő példához hasonlít: /subscriptions/<Susbscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
+14. Alatt **myVnetB**válassza **tulajdonságok** a bal oldali beállítások függőleges listájából. Másolás a **erőforrás-azonosító**, amely egy későbbi lépésben szolgál. Az erőforrás-azonosítója a következő példához hasonlít: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
 15. Válassza ki **hozzáférés-vezérlés (IAM)** alatt **myVnetB**, majd hajtsa végre az 5 – 10. lépéseket myVnetB, írja be a **Felhasználóa** 8. lépés.
 16. Jelentkezzen ki a Felhasználób portált, és jelentkezzen be a Felhasználóa felhasználóként.
 17. Az a **erőforrások keresése** mezőbe írja be a portál tetején lévő *myVnetA*. Válassza ki **myVnetA** amikor megjelenik a keresési eredmények között.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: e29b94f270b295725400103f288f3d3bd0c2a2eb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 7f031bf6fed57857f38d989fb72f99dd93f04de5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381006"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489223"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Biztonsággal kapcsolatos fogalmait, alkalmazások és-fürtök az Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja az alapfogalmakat, amelyek az aks-ben az alkalmazások bizto
 
 ## <a name="master-security"></a>Fő biztonsági
 
-Az aks-ben a fő Kubernetes-összetevőket a saját Microsoft nyújtott felügyelt szolgáltatás részét képezik. Minden egyes AKS-fürtöt tartalmaz a saját single-bérlős, dedikált Kubernetes fő biztosít az API-kiszolgálóhoz, a Feladatütemező, stb. A master, felügyelt és a Microsoft által karbantartott
+Az aks-ben a fő Kubernetes-összetevők a Microsoft által felügyelt szolgáltatás részét képezik. Minden egyes AKS-fürtöt tartalmaz a saját single-bérlős, dedikált Kubernetes fő biztosít az API-kiszolgálóhoz, a Feladatütemező, stb. A master, felügyelt és a Microsoft által karbantartott
 
 Alapértelmezés szerint a Kubernetes API-kiszolgáló nyilvános IP-címet használ, és a teljes tartománynév (FQDN) nevet. Szabályozhatja, hogy a Kubernetes szerepköralapú hozzáférés-vezérlés és az Azure Active Directory API-kiszolgálóhoz való hozzáférést. További információkért lásd: [az aks-sel az Azure AD-integrációs][aks-aad].
 
@@ -41,6 +41,8 @@ Az Azure platform automatikusan alkalmazza az éjszakai történik a csomóponto
 Csomópontok nem hozzárendelt nyilvános IP-címeket a rendszer üzembe helyezi egy privát virtuális hálózat alhálózatához. Hibaelhárítás és kezelése céljából az SSH alapértelmezés szerint engedélyezve van. Az SSH-hozzáférés csak akkor használható a belső IP-cím használatával. Azure-beli hálózati biztonsági csoport szabályai segítségével további IP-címtartomány elérésének korlátozása az AKS-csomópontok. Az alapértelmezett hálózati biztonsági csoport SSH szabály törlése folyamatban van, és az SSH-szolgáltatást a csomópontokon letiltása megakadályozza, hogy az Azure platform karbantartási feladatok elvégzése.
 
 A tárolást, a csomópontok az Azure Managed Disks használata. A legtöbb Virtuálisgép-csomópontok méretét ezek a prémium szintű lemez nagy teljesítményű SSD-k által támogatott. A felügyelt lemezeken tárolt adatok automatikus titkosítása az Azure platformon. Javíthatja a redundancia, ezeket a lemezeket is biztonságosan replikálódnak az Azure-adatközpont.
+
+Kubernetes-környezetekből AKS vagy máshol, jelenleg nem teljesen biztonságos megerősítve a rosszindulatú több-bérlős alkalmazásokhoz. További biztonsági szolgáltatások, például a *Pod biztonsági házirendek* vagy további részletes szerepköralapú hozzáférés-vezérlést (RBAC) csomópontok megnehezítik a biztonsági rések kiaknázását. Igaz biztonsági megerősítve a rosszindulatú több-bérlős-alapú számítási feladatait, azonban a hipervizort, hogy bízzon meg biztonsági csak szintjét. A Kubernetes esetében a biztonsági tartományához lesz a teljes fürtöt, nem az egyes csomópontok. Az ilyen típusú megerősítve a rosszindulatú több-bérlős számítási feladatokhoz fizikailag elkülönített fürtök kell használnia. Számítási feladatok elkülönítésére módjairól további információkért lásd: [ajánlott eljárásai az aks-ben a fürt elkülönítési][cluster-isolation],
 
 ## <a name="cluster-upgrades"></a>Fürt frissítése
 
@@ -96,3 +98,4 @@ Ismerkedés az AKS-fürtök védelme, lásd: [AKS-fürt frissítése][aks-upgrad
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[cluster-isolation]: operator-best-practices-cluster-isolation.md

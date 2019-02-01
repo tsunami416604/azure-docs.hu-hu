@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.workload: infrastructure-services
-ms.date: 11/6/2018
+ms.date: 1/29/2019
 ms.author: victorh
-ms.openlocfilehash: 6ea72c2caebeeb46b0973ba700d40670340204d7
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 24cb5d7ddb1bfbb64796d871aa79109dfdfa94be
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353192"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492929"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Webes alkalmazás tűzfal kérelem méretbeli korlátokat és kizárási listák
 
@@ -45,7 +45,7 @@ Kizárási listák is hozzáadhatók a következő attribútumokat:
    * XML
    * JSON
 
-Akkor is, cookie-k vagy a lekérdezési karakterláncot attribútumot egyezik, adja meg a pontos kérelemfejlécből törzs vagy is megadhatja a részleges egyezéseket.
+Adjon meg egy pontos kérelem fejléce, a szervezet, a cookie-t, vagy a lekérdezési karakterláncot attribútumot egyezést.  Másik lehetőségként megadhat részleges egyezéseket. A kizárás, mindig egy fejléc mezőben soha nem a hozzá tartozó érték. Kizárási szabály globális hatókör, és az összes és az összes szabály vonatkozik.
 
 A támogatott egyezés feltételek operátorok a következők:
 

@@ -1,6 +1,6 @@
 ---
 title: Az Azure IoT Hub üzenet-útválasztása lekérdezés |} A Microsoft Docs
-description: Fejlesztői útmutató – az Azure IoT hub üzenet-útválasztása lekérdezés synxtax.
+description: Fejlesztői útmutató – az Azure IoT Hub üzenet-útválasztása a lekérdezés szintaxisa.
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 3967a1e2317bac76785d534ba04a93de552c1a40
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: da95bd3832ee647c371c7beabb55b974dcb97740
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018536"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496567"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Az IoT Hub üzenet-útválasztás lekérdezési szintaxis
 
@@ -25,7 +25,7 @@ ms.locfileid: "48018536"
 
 ## <a name="message-routing-query-based-on-message-properties"></a>Állapotüzenet-útválasztási lekérdezés alapján üzenet tulajdonságai 
 
-Az IoT Hub meghatározása egy [gyakran alkalmazott formátum](iot-hub-devguide-messages-construct.md) protokollok között interoperatbility az üzenetkezelés összes eszköz-felhő. Az IoT Hub üzenet feltételezi, hogy az üzenet a következő JSON-reprezentációval. Rendszertulajdonságok hozzáadja az összes felhasználó számára, és azonosítására az üzenet tartalma. Felhasználók külön-külön tulajdonságokat adhat hozzá alkalmazás az üzenetet. Azt javasoljuk, hogy egyedi tulajdonságneveket használatával, mert az IoT Hub eszköz – felhő üzenetek nem kis-és nagybetűket. Például ha ugyanazzal a névvel több tulajdonsággal rendelkezik, az IoT Hub csak küld egyik tulajdonsága.  
+Az IoT Hub meghatározása egy [gyakran alkalmazott formátum](iot-hub-devguide-messages-construct.md) az összes eszköz – felhő üzenetküldéshez együttműködés protokollok között. Az IoT Hub üzenet feltételezi, hogy az üzenet a következő JSON-reprezentációval. Rendszertulajdonságok hozzáadja az összes felhasználó számára, és azonosítására az üzenet tartalma. Felhasználók külön-külön tulajdonságokat adhat hozzá alkalmazás az üzenetet. Azt javasoljuk, hogy egyedi tulajdonságneveket használatával, mert az IoT Hub eszköz – felhő üzenetek nem kis-és nagybetűket. Például ha ugyanazzal a névvel több tulajdonsággal rendelkezik, az IoT Hub csak küld egyik tulajdonsága.  
 
 ```json
 { 
@@ -55,7 +55,7 @@ Rendszertulajdonságok tartalmát, és az üzenetek forrás azonosíthatók.
 | -------- | ---- | ----------- |
 | contentType | sztring | A felhasználó adja meg az üzenet tartalomtípusa. Ahhoz, hogy a lekérdezés az üzenet törzsében, ezt az értéket meg kell application/JSON. |
 | contentEncoding | sztring | A felhasználó adja meg az üzenet kódolási típusának. Megengedett értékek: UTF-8, az UTF-16, az UTF-32, ha a contentType application/JSON értékre van állítva. |
-| ConnectionDeviceId | sztring | Ez az érték az IoT Hub által van beállítva, és azonosítja az üzenetek forrását. Ez lehet eszköz telemetriai üzeneteket, device twin változási értesítéseket vagy eszköz-életciklussal kapcsolatos események. Ez nem lehet lekérdezni. |
+| connectionDeviceId | sztring | Ez az érték az IoT Hub által van beállítva, és azonosítja az üzenetek forrását. Ez lehet eszköz telemetriai üzeneteket, device twin változási értesítéseket vagy eszköz-életciklussal kapcsolatos események. Ez nem lehet lekérdezni. |
 | iothub-enqueuedtime | sztring | Ezt az értéket az IoT Hub által van beállítva, és a tényleges idő (UTC), az üzenet sorba, jelöli. Lekérdezés, használja a `enqueuedTime`. |
 
 Leírtak szerint a [IoT Hub-üzenetek](iot-hub-devguide-messages-construct.md), üzenet további rendszer tulajdonságai szerepelnek. Mellett **contentType**, **contentEncoding**, és **enqueuedTime**, a **connectionDeviceId** és  **connectionModuleId** is lekérdezhetők.

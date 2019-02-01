@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/30/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 6b470bfbb97cb14ccb1f63b34218575b64e686de
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: cd8bb2bf83d71fb874b3912e98bf3790acc9d915
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812590"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493660"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -61,7 +61,7 @@ Válaszok a virtual machine scale sets – gyakori kérdések az Azure-ban.
 
 **K.** Ha több bővítményt használok egy méretezési csoportban, van lehetőség végrehajtási sorrend kényszerítésére?
 
-**V.** Közvetlenül nem, bár a customScript bővítmény esetében a szkript megvárhatja egy másik bővítmény futtatásának befejezését. A végrehajtási sorrendről az [Azure-alapú virtuálisgép-méretezési csoportok végrehajtási sorrendjének beállítását](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) ismertető blogbejegyzésben talál további információt.
+**V.** Igen, használhatja a méretezési csoport [sorrendről](virtual-machine-scale-sets-extension-sequencing.md).
 
 **K.** Használhatok virtuálisgép-méretezési csoportokat Azure rendelkezésre állási csoportokkal?
 
@@ -230,6 +230,7 @@ Egyszerű szöveges nyilvános SSH-kulcsokat a Linux rendszerű virtuális gép 
             }
         ]
     }
+}
 ```
 
 linuxConfiguration elem neve | Szükséges | Típus | Leírás
@@ -392,13 +393,13 @@ Módosíthatja a jelszót a virtuális gépek méretezési két fő módja van.
 - Alaphelyzetbe a jelszót a hozzáférést a Virtuálisgép-bővítmények használatával.
 
     Használja a következő PowerShell-példát:
-    
+
     ```powershell
     $vmssName = "myvmss"
     $vmssResourceGroup = "myvmssrg"
     $publicConfig = @{"UserName" = "newuser"}
     $privateConfig = @{"Password" = "********"}
-    
+
     $extName = "VMAccessAgent"
     $publisher = "Microsoft.Compute"
     $vmss = Get-AzureRmVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
@@ -630,7 +631,9 @@ Bizonyos fokú szabadsága van a hogyan kezeli a megadott küszöbértékek kapc
                     }
                 ]
             }
-        ],
+        ]
+    }
+}
 ```
 
 Ebben a példában egy riasztás kerül Pagerduty.com a küszöbérték elérésekor.

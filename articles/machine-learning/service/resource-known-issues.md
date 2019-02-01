@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c327d973170a4556471663c3bea9dcae9b5794fb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 706d8986eb25d2d67e3099ae5b0bfc6e55f94ad3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238611"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507368"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
 
@@ -27,6 +27,7 @@ Ez a cikk segít keresse meg és javítsa ki a hibákat vagy hibákat észlelt, 
 **Hibaüzenet: Nem lehet eltávolítani a "PyYAML"**
 
 Az Azure Machine Learning SDK Pythonhoz készült: PyYAML érhető el distutils telepített. Ezért azt nem tudja pontosan meghatározni mely fájlok tartoznak, egy részleges eltávolítás esetén. Az SDK telepítése során a rendszer figyelmen kívül hagyja ezt a hibát a folytatáshoz használja:
+
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
@@ -41,7 +42,7 @@ Kép készítése hiba a webszolgáltatás üzembe helyezésekor. Megkerülő me
 
 ## <a name="deployment-failure"></a>Központi telepítési problémái
 
-Ha az erőforrásigények "DaskOnBatch:context_managers. DaskOnBatch', "setup.py"] "a megszűnt < Signals.SIGKILL: 9 >-módosítsa a Termékváltozat a központi telepítést, az nagyobb memória megjelennek a használt virtuális gépek számára.
+Ha az erőforrásigények `'DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, a Termékváltozat módosítása a virtuális gépek, hogy a rendszer több memória áll rendelkezésre a központi telepítésben használja.
 
 ## <a name="fpgas"></a>FPGA-k
 Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és az FPGA kvóta jóvá lett hagyva. Hozzáférés kérése, töltse ki az űrlap kvóta: https://aka.ms/aml-real-time-ai
@@ -50,7 +51,7 @@ Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és a
 
 Databricks és az Azure Machine Learning problémákat.
 
-1. AML SDK databricksen telepítési hiba, amikor további csomagok telepítése.
+1. Az Azure Machine Learning SDK telepítésével a Databricks további csomagok telepítése során.
 
    Egyes csomagokat, mint például `psutil`, ütközéseket okozhat. Telepítési hibák elkerülése érdekében fagyasztási lib verzió csomagok telepítéséhez. Ez a probléma kapcsolatos Databricks és az Azure Machine Learning szolgáltatás SDK - fellépő, a többi libs túl. Példa:
    ```python
@@ -60,7 +61,7 @@ Databricks és az Azure Machine Learning problémákat.
 
 2. Automatikus Machine Learning használata a Databricks, ha azt szeretné, egy Futtatás megszakítása, és futtatni egy új kísérlet indításához, indítsa újra az Azure Databricks-fürt.
 
-3. Az alkalmazások automatikus ml-beállítások, ha > 10 ismétlések állítsa be az show_output hamis értéket, a Futtatás elküldésekor.
+3. Automatikus ml beállításait, ha több mint 10 ismétlések, állítsa be `show_output` való `False` amikor közzétételre küld be a Futtatás.
 
 
 ## <a name="azure-portal"></a>Azure Portal
@@ -73,6 +74,20 @@ Itt látható, ahol a naplófájlok élő:
 ## <a name="resource-quotas"></a>Erőforráskvóták
 
 További információ a [erőforráskvóták](how-to-manage-quotas.md) az Azure Machine Learning használata során találkozhat.
+
+## <a name="authentication-errors"></a>Hitelesítési hibák
+
+Ha egy felügyeleti műveletet egy számítási célnak a távoli feladatokat hajt végre, kapni fog a hibák a következők egyikét:
+
+```json
+{"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
+```
+
+```json
+{"error":{"code":"AuthenticationFailed","message":"Authentication failed."}}
+```
+
+Például egy hibaüzenetet fog kapni, ha megpróbálja hozzon létre vagy csatlakoztasson egy számítási célnak, egy gépi Tanulási folyamatot, amely a távoli végrehajtás céljából elküldésekor.
 
 ## <a name="get-more-support"></a>További támogatás
 

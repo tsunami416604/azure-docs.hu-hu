@@ -1,8 +1,21 @@
 ---
-Cím: "2. lépés: Adatok feltöltése egy Machine Learning Studio-kísérletet "titleSuffix: Azure Machine Learning Studio description: "A Develop egy prediktív elemzési megoldást az útmutató 2. lépés: Feltöltés nyilvános adatok tárolása az Azure Machine Learning studióba. "
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/23/2017
+title: '2. lépés: Adatok feltöltése egy Machine Learning Studio-kísérletet'
+titleSuffix: Azure Machine Learning Studio
+description: 'Az a Develop egy prediktív megoldás bemutatója. 2. lépés: Töltse fel a nyilvános tárolt adatok Azure Machine Learning studióba.'
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/23/2017
+ms.openlocfilehash: 4b23286a5a86b8d2731a34f39755b4fd18bbd78d
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507570"
 ---
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-studio-experiment"></a>Az útmutató 2. lépés: Meglévő adatok feltöltése egy Azure Machine Learning Studio-kísérlet
 Ez az útmutató második lépése a [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)

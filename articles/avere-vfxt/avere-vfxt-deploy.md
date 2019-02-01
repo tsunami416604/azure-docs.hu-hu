@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: da329b5c50fe7c39d9773743b40c2f990e298963
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f6d847e9042341f47a06fde0f9aa4a70f2549a07
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296375"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512152"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
@@ -39,11 +39,11 @@ Fürt telepítés lépéseit, valamint a tervezési kapcsolatos további inform�
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>Az Azure a Avere vFXT létrehozása
 
-Hozzáférés a létrehozás sablon Avere keresése, és válassza a "Avere vFXT az Azure-beli" az Azure Portalon. <!-- xxx update if that name changes xxx --> 
+A létrehozás sablon az Azure Portal eléréséhez Avere keresése és kiválasztása "Avere vFXT ARM üzembe helyezési". 
 
-<!-- **[XXX need production image of template deploy in search and/or entry page of template deploy XXX]** -->
+![Az Azure portal a kiemelt kenyér megjelenítő böngészőablakban morzsalékok "Új > Marketplace > minden". A lapon a minden, a keresőmezőbe a "avere" és a második eredmény rendelkezik "Avere vFXT ARM üzembe helyezési" szemlélteti az jelöljön ki red.](media/avere-vfxt-template-choose.png)
 
-Kattintson a **létrehozás** megkezdéséhez. 
+Kattintson a részletek a Avere vFXT ARM üzembe helyezési oldalon elolvasásával **létrehozás** megkezdéséhez. 
 
 ![A központi telepítési sablon bemutató első oldalán az Azure Marketplace-en](media/avere-vfxt-deploy-first.png)
 
@@ -123,9 +123,11 @@ A második oldalán a központi telepítési sablont a fürt mérete, a csomópo
 
 * **Alhálózat** – válasszon egy alhálózatot a meglévő virtuális hálózatból, vagy hozzon létre egy újat. 
 
-* **Blob storage használata** -e hozzon létre egy új Azure-blobtárolót és azt konfigurálja az új Avere vFXT fürthöz háttér-tároló kiválasztása. Ha egy új tárolót, meg kell adnia a tárfiók a tároló. Ha nem kíván az hozzon létre egy új blobtárolót a fürt létrehozása után kell csatolnia storage (olvasása [tárolás konfigurálása](avere-vfxt-add-storage.md) útmutatást). Adja meg a mezőben **hamis** Ha nem szeretné, hogy hozzon létre egy új tárolót.
+* **Blob storage használata** -válassza **igaz** hozzon létre egy új Azure Blob-tárolót, és konfigurálja az új Avere vFXT fürthöz háttér-tárolóként. Ez a beállítás is ugyanazt az erőforráscsoportot, a fürtön belül egy új tárfiókot hoz létre. 
 
-* **Storage-fiók** – Ha egy új Azure Blob-tároló létrehozásához adja meg a tárfiók nevét. A storage-fiók általános jogú általános célú V2 fiók helyileg redundáns tárolás és a gyakori elérésű hozzáférési szint konfigurálva kell lennie. A [konfigurálta a tárterületet](avere-vfxt-add-storage.md#azure-storage-cloud-core-filer) a cikk részletesen ismerteti a storage-fiókra vonatkozó követelmények.
+  Adja meg a mezőben **hamis** Ha nem szeretné, hogy hozzon létre egy új tárolót. Ebben az esetben kell csatolni, és a fürt létrehozását követően a tároló konfigurálása. Olvasási [konfigurálta a tárterületet](avere-vfxt-add-storage.md) útmutatást. 
+
+* **Storage-fiók** – Ha egy új Azure Blob-tároló létrehozása, adjon meg egy nevet az új tárfiókot. 
 
 ## <a name="validation-and-purchase"></a>Érvényesítési és megvásárlása
 
@@ -161,7 +163,7 @@ Ezek az információk megkereséséhez kövesse ezt az eljárást:
 
 ## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>Hozzon létre egy storage-végponthoz (Ha használja az Azure Blob)
 
-Ha a a háttér-adatokat tároló Azure Blob storage használ, létre kell hoznia egy tárolási végpontot a virtuális hálózaton. Ez [szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) tartja azt az interneten keresztüli útválasztást helyett helyi Azure Blob-forgalmat.
+Ha a a háttér-adatokat tároló Azure Blob storage használ, létre kell hoznia egy tárolási végpontot a virtuális hálózaton. Ez [szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) helyett átirányítására a virtuális hálózaton kívül helyi tartja az Azure Blob-forgalmat.
 
 1. A portálon kattintson **virtuális hálózatok** a bal oldalon.
 1. Válassza ki a vezérlőhöz tartozó virtuális hálózat. 

@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1e2746ef55f5c50ce9452b7a9d1ab060c69830db
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cd14f2bdc394cb0887d318457dcf9295e216eb7b
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244270"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489495"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Automatizált gépi tanulás a regressziós modell létrehozása
 
@@ -43,18 +43,64 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot meg
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-> * [Futtassa az adat-előkészítési oktatóanyagot](tutorial-data-prep.md).
-> * Egy automatizált gépi tanulási konfigurálva a környezetben. Példa [Azure notebookok](https://notebooks.azure.com/), helyi Python-környezetben, vagy egy adatelemző virtuális gép. [Állítsa be az automatikus gépi tanulási](samples-notebooks.md).
+Ugrás a [a fejlesztési környezet beállítása](#start) olvassa végig a notebook lépéseket, vagy használja az alábbi utasításokat a notebook beszerzése és az Azure notebookok vagy a saját notebook server futtatásához. A jegyzetfüzet futtatásához szüksége lesz:
 
-## <a name="get-the-notebook"></a>A notebook beszerzése
+* [Futtassa az adat-előkészítési oktatóanyagot](tutorial-data-prep.md).
+* Egy Python 3.6-os notebook kiszolgálót a következőkkel:
+    * Az Azure Machine Learning SDK a Pythonhoz készült `automl` és `notebooks` kiegészítő funkciók
+    * `matplotlib`
+* Az oktatóanyag notebook
+* A machine learning-munkaterület
+* A konfigurációs fájl ugyanabban a könyvtárban, a notebookot a munkaterület számára
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb) is elérhető. Futtassa a `regression-part2-automated-ml.ipynb` notebook vagy [Azure notebookok](https://notebooks.azure.com/) vagy a saját Jupyter Notebook server.
+Ezekről az előfeltételekről le az alábbi szakaszok egyikét.
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+* Használat [Azure notebookok](#azure)
+* Használat [saját notebook server](#server)
 
-## <a name="import-packages"></a>Csomagok importálása
+### <a name="azure"></a>Az Azure notebookok használata: Ingyenes Jupyter notebookok a felhőben
+
+Nem kell mást Azure notebookok használatának megkezdéséhez. A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) már telepítve és konfigurálva van az Ön számára [Azure notebookok](https://notebooks.azure.com/). A telepítés és a jövőbeli frissítések automatikusan felügyelt Azure-szolgáltatások használatával.
+
+Után kövesse az alábbi lépéseket, futtassa a **oktatóanyagok/regressziós-part2-automated-ml.ipynb** jegyzetfüzetet a **bevezetés** projekt.
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+### <a name="server"></a>A saját Jupyter notebook server használata
+
+Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/regressziós-part2-automated-ml.ipynb** notebookot.
+
+1. Végezze el a [Azure Machine Learning Python rövid](quickstart-create-workspace-with-python.md) Miniconda környezetet, és hozzon létre egy munkaterületet.
+1. Telepítse a `automl` és `notebooks` kiegészítő funkciók a környezet használatával `pip install azureml-sdk[automl,notebooks]`.
+1. Telepítés `maplotlib` használatával `pip install maplotlib`.
+1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
+
+    ```
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+
+1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
+
+    ```shell
+    jupyter notebook
+
+## <a name="start"></a>Set up your development environment
+
+All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+
+* Install the SDK
+* Import Python packages
+* Configure your workspace
+
+### Install and import packages
+
+If you are following the tutorial in your own Python environment, use the following to install necessary packages.
+
+```shell
+pip install azureml-sdk[automl,notebooks] matplotlib
+```
+
 Ebben az oktatóanyagban szüksége a Python-csomagok importálása:
-
 
 ```python
 import azureml.core
@@ -66,13 +112,7 @@ import logging
 import os
 ```
 
-Ha az oktatóanyag a saját Python-környezetben, használja a következő szükséges csomagok telepítéséhez.
-
-```shell
-pip install azureml-sdk[automl,notebooks] azureml-dataprep pandas scikit-learn matplotlib
-```
-
-## <a name="configure-workspace"></a>Munkaterület konfigurálása
+### <a name="configure-workspace"></a>Munkaterület konfigurálása
 
 Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. A `Workspace` egy osztály, amely fogadja a az Azure-előfizetésben és erőforráscsoportban információkat. Is létrehoz egy felhőalapú erőforrás figyeléséhez és nyomon követéséhez a modell futtatások.
 
