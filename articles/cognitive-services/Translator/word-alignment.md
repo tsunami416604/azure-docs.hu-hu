@@ -6,17 +6,17 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: v-jansko
 ms.custom: seodec18
-ms.openlocfilehash: 74e26d4bb9b9c901524a85248dbf7f9d6ead5e95
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0a373a61a26411c204cedccec8fbf0beac73e02e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091475"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461831"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>Word igazítás információk fogadása
 
@@ -28,7 +28,7 @@ Igazítás, egy karakterlánc értékét a forrás minden szót a következő fo
 
 [[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
-Példa igazítás karakterlánc: "0:0-7:10 1:2-11:20 3:4 – 0:3 3:4-4:6 5:5 – 21:21".
+Példa igazítás karakterlánc: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
 
 Más szóval a kettőspont elválasztja a kezdő és záró index, a dash elkülöníti a nyelveket, és terület a szavakat osztja szét. Több szóból előfordulhat, hogy összhangba nulla, egy vagy több szóból más nyelven, és lehet, hogy a igazított szavak nem összefüggő. Zarovnání információ nem érhető el, ha az igazítási elem üres lesz. A metódus nincs hiba ebben az esetben adja vissza.
 

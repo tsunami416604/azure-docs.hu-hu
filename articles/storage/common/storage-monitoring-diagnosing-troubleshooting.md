@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: 6b40741545ff286bc1b8e696d28c61b197605247
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 25ec52b44f8d5a36868cc609c42b6db5ab939fa4
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474003"
+ms.locfileid: "55490252"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -637,7 +637,7 @@ A kód az ügyfélalkalmazásban töröl, és azonnal újból létrehozza a blob
 Az ügyfélalkalmazás használjon egyedi a tároló nevének minden alkalommal, amikor új tárolók hoz létre, ha a törlés/hozza létre újra a minta akkor közös.
 
 ### <a name="metrics-show-low-percent-success"></a>Metrikák megjelenítése alacsony PercentSuccess vagy analytics naplóbejegyzések rendelkezik ClientOtherErrors állapotú tranzakciós műveletek
-A **PercentSuccess** metrika a százalékos aránya, amelyek sikerrel járt-e a HTTP-állapotkód: alapján műveleteket rögzíti. A 2XX állapotkódok műveletek száma sikeres, mivel a műveletek a állapotkódok 3XX, 4XX és 5XX tartományok számítanak, sikertelen és alacsonyabb a **PercentSucess** Átjárómetrika értékeként. A kiszolgálóoldali tárolási naplófájlokban ezeket a műveleteket rögzíti állapotú tranzakciós **ClientOtherErrors**.
+A **PercentSuccess** metrika a százalékos aránya, amelyek sikerrel járt-e a HTTP-állapotkód: alapján műveleteket rögzíti. A 2XX állapotkódok műveletek száma sikeres, mivel a műveletek a állapotkódok 3XX, 4XX és 5XX tartományok számítanak, sikertelen és alacsonyabb a **PercentSuccess** Átjárómetrika értékeként. A kiszolgálóoldali tárolási naplófájlokban ezeket a műveleteket rögzíti állapotú tranzakciós **ClientOtherErrors**.
 
 Fontos megjegyezni, hogy ezek a műveletek sikeresen befejeződtek, és ezért nincs hatással a többi mérőszámokat, például a rendelkezésre állási. Néhány művelet, amely sikeresen végrehajtható legyen, de a sikertelen HTTP-állapotkódok eredményezhet, amely többek között:
 

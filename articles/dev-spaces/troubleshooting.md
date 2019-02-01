@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 37ee9fec8940231a01b0014b020ca3f0dffb53bf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5be6f99067f1209fcd131dfc33c46995b2a537f8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467101"
+ms.locfileid: "55498301"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -23,19 +23,19 @@ Ez az útmutató az Azure fejlesztési tárolóhelyek használata esetén előfo
 
 ## <a name="enabling-detailed-logging"></a>Részletes naplózás engedélyezése
 
-Annak érdekében, hogy a problémák hatékonyabb elhárításához, segíthet, tekintse át a részletes naplók létrehozása.
+Problémák hatékonyabb elhárításához, segíthet, tekintse át a részletes naplók létrehozása.
 
-A Visual Studio-bővítmény beállítása a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` környezeti változót az 1. Ügyeljen arra, hogy a Visual Studio for a környezeti változó érvénybe léptetéséhez indítsa újra. Az engedélyezés után a részletes naplók lesz írva a `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` könyvtár.
+A Visual Studio-bővítmény beállítása a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` környezeti változót az 1. Ügyeljen arra, hogy a Visual Studio for a környezeti változó érvénybe léptetéséhez indítsa újra. Az engedélyezés után a részletes naplók írt a `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` könyvtár.
 
 A parancssori felületen, a további információk a parancs végrehajtása során küldhetnek kimenetet a `--verbose` váltani. A részletes naplókat is megkeresheti `%TEMP%\Azure Dev Spaces`. Egy Mac gépen a TEMP könyvtárában található futtatásával `echo $TMPDIR` egy terminálablakból. Egy Linux-számítógépek esetében a TEMP könyvtárában nem általában `/tmp`.
 
 ## <a name="debugging-services-with-multiple-instances"></a>Több példányával szolgáltatások hibakeresésekor
 
-Jelenleg az Azure fejlesztési tárolóhelyek működik optimálisan, ha egyetlen példányát (pod) hibakeresés. A azds.yaml fájl egy beállítás replicaCount, amely azt jelzi, amely a szolgáltatás podjainak számát tartalmazza. Ha megváltoztatja az alkalmazás futtatásához az adott szolgáltatás több podok konfigurálása a replicaCount, a hibakereső csatolása az első pod (ha ábécérendbe) lesz. A pod bármilyen okból újraindul, a hibakereső fog csatol egy másik pod valószínűleg nem várt viselkedést eredményez.
+Jelenleg az Azure fejlesztői, szóközök works hibakeresése egyetlen példány esetén ajánlott, vagy a pod. A azds.yaml fájl tartalmaz egy beállítást *replicaCount*, amely azt jelzi, hogy a Kubernetes a szolgáltatás futtató podok számát. Ha módosítja a replicaCount az alkalmazás futtatásához az adott szolgáltatás több podok konfigurálása, a hibakereső csatolja az első pod, amikor ábécérendbe. A hibakereső csatolja egy másik pod amikor újraindul az eredeti pod, valószínűleg nem várt viselkedést eredményez.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>"Nem sikerült létrehozni az Azure fejlesztési tárolóhelyek vezérlő" hiba
 
-Előfordulhat, hogy ezt a hibaüzenetet, ha probléma merül fel a vezérlő létrehozása. Ha ez egy átmeneti hiba, törlését és újbóli létrehozását a vezérlő kijavítja azt.
+Előfordulhat, hogy ezt a hibaüzenetet, ha probléma merül fel a vezérlő létrehozása. Ha ez egy átmeneti hiba, törölje és hozza létre újra a tartományvezérlőt a javítást.
 
 ### <a name="try"></a>Próbálja ki:
 
@@ -76,10 +76,10 @@ A Visual Studióban:
     ![Képernyőkép a beállítások panel](media/common/VerbositySetting.PNG)
     
 ### <a name="multi-stage-dockerfiles"></a>Többlépcsős docker-fájlok:
-Ez a hiba jelenhet meg használatakor egy többlépcsős docker-fájlban. A részletes kimenet a következőképpen jelenik meg:
+Kap egy *szolgáltatás nem indítható* hiba többlépcsős docker-fájl használata esetén. Ebben a helyzetben a részletes kimenet tartalmazza a következő szöveget:
 
 ```cmd
-$ azds up
+$ azds up -v
 Using dev space 'default' with target 'AksClusterName'
 Synchronizing files...6s
 Installing Helm chart...2s
@@ -91,10 +91,10 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-Ennek az oka egy régebbi verziója, amely nem támogatja a többlépcsős Docker futtatása AKS-csomópontok épít. A docker-fájlban többlépcsős buildek elkerülése érdekében újraírási kell.
+Ez a hiba akkor fordul elő, mivel egy régebbi verziója, amely nem támogatja a többlépcsős Docker futtatása AKS-csomópontok. Többlépcsős buildek elkerülése érdekében írja újra a docker-fájlban.
 
-### <a name="re-running-a-service-after-controller-re-creation"></a>Ismételt futtatásával vezérlő újbóli létrehozása után egy szolgáltatás
-Ez a hiba jelenhet meg, majd újra létrehozza a fürthöz társított Azure-fejlesztési tárolóhelyek vezérlő és eltávolítása után futtassa újra a szolgáltatás megkísérlése során. A részletes kimenet a következőképpen jelenik meg:
+### <a name="rerunning-a-service-after-controller-re-creation"></a>A szolgáltatás ismételt vezérlő újbóli létrehozása után
+Kap egy *szolgáltatás nem indítható* hiba, majd újra létrehozza a fürthöz társított Azure-fejlesztési tárolóhelyek vezérlő és eltávolítása után futtassa újból a szolgáltatás megkísérlésekor. Ebben a helyzetben a részletes kimenet tartalmazza a következő szöveget:
 
 ```cmd
 Installing Helm chart...
@@ -104,13 +104,13 @@ Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" do
 Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
 ```
 
-Ennek oka az, a fejlesztői, szóközök eltávolítására nem távolítja el, hogy a tartományvezérlő által korábban telepített szolgáltatások. A vezérlő újbóli létrehozását, és ezután megpróbálja futtatni a szolgáltatásokat az új vezérlőt használó meghiúsul, mert a régi szolgáltatások helyükön vannak.
+Ez a hiba oka, hogy a fejlesztői, szóközök eltávolítására nem távolítja el, hogy a tartományvezérlő által korábban telepített szolgáltatások. A vezérlő újbóli létrehozását, és ezután megpróbálja futtatni a szolgáltatásokat az új vezérlőt használó meghiúsul, mert a régi szolgáltatások helyükön vannak.
 
-Ennek használatához a `kubectl delete` parancs használatával manuálisan a régi szolgáltatások eltávolítása a fürtből, majd futtassa újra a fejlesztési szóközöket a új szolgáltatások telepítése.
+A probléma megoldása érdekében használja a `kubectl delete` parancs használatával manuálisan a régi szolgáltatások eltávolítása a fürtből, majd futtassa újra a fejlesztési szóközöket a új szolgáltatások telepítése.
 
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>DNS-névfeloldás nem sikerül, egy fejlesztői tárolóhelyek szolgáltatással társított nyilvános URL-cím
 
-Ha a DNS-névfeloldás nem sikerül, megjelenhet egy "A lap nem jeleníthető meg." vagy "ezen a helyen nem érhető el" hiba a böngészőben, amikor egy fejlesztési tárolóhelyek szolgáltatás próbál csatlakozni a nyilvános URL-címhez társított.
+Konfigurálhatja egy nyilvános URL-végpontot a szolgáltatáshoz adja meg a `--public` váltson át a `azds prep` parancsot, vagy a válassza a `Publicly Accessible` jelölőnégyzetet a Visual Studióban. A nyilvános DNS-név automatikusan regisztrálva van, a szolgáltatás a fejlesztési tárolóhelyek futtatásakor. Ha a DNS-neve nincs regisztrálva, megjelenik egy *lap nem jeleníthető meg* vagy *hely nem érhető el* hiba a böngészőben, amikor csatlakozik a nyilvános URL-CÍMÉT.
 
 ### <a name="try"></a>Próbálja ki:
 
@@ -122,7 +122,7 @@ azds list-uris
 
 Ha egy URL-cím a *függőben lévő* állapot, amely azt jelenti, hogy fejlesztői, szóközök még mindig várakozik DNS-regisztráció végrehajtásához. Egyes esetekben regisztráció befejezése néhány percet vesz igénybe. Fejlesztői szóközöket is megnyílik a localhost alagút minden egyes szolgáltatás, amellyel DNS-regisztráció történő várakozás során.
 
-Ha egy URL-cím marad a *függőben lévő* több mint 5 perc, a külső DNS-pod, amely a nyilvános végpontot hoz létre és/vagy nginx bejövő tartományvezérlő-pod szerez be a nyilvános végponthoz problémájára utalhat. állapotát. A következő parancsokat használhatja ezeket a podok törlése. Ezek létrejönnek, automatikusan.
+Ha egy URL-cím marad a *függőben lévő* 5 percnél hosszabb ideig állapot azt jelezheti, hogy a probléma a külső DNS-pod, amely a nyilvános végpontot hoz létre vagy nginx bejövő tartományvezérlő-pod szerez be a nyilvános végponthoz. A következő parancsokat használhatja ezeket a podok törlése. Az AKS automatikusan létrehozza a törölt podokat.
 
 ```cmd
 kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
@@ -140,7 +140,7 @@ Indítsa el a VS Code a parancssorból, ahol a PATH környezeti változóhoz hel
 
 ## <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>Hiba történt "fejlesztése és hibakeresése"projectname"szükséges eszközök elavultak."
 
-Ez a hiba, a Visual Studio Code látni fogja, ha az Azure fejlesztési tárolóhelyek, de az Azure fejlesztési tárolóhelyek CLI egy régebbi verzióját a VS Code-bővítmény egy újabb verziója.
+Ezt a hibaüzenetet a Visual Studio Code Ha rendelkezik egy újabb verziója a VS Code-bővítmény az Azure fejlesztési tárolóhelyek, de az Azure fejlesztési tárolóhelyek CLI egy régebbi verzióját.
 
 ### <a name="try"></a>Kipróbálás
 
@@ -166,10 +166,10 @@ Ez a hiba megjelenhet, ha azds.exe nincs telepítve vagy megfelelően konfigurá
 ## <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Figyelmeztetés: a docker-fájl nem hozható létre, miatt nem támogatott nyelvet"
 Az Azure fejlesztési tárolóhelyek C# és Node.js natív támogatást biztosít. Futtatásakor *azds előkészítő* egy ezeken a nyelveken írt kódot tartalmazó könyvtárban, Azure fejlesztési tárolóhelyek automatikusan létrehoz egy megfelelő docker-fájl az Ön számára.
 
-Továbbra is használhatja az Azure fejlesztési tárolóhelyek más nyelven írt kóddal, de hozza létre a docker-fájl futtatása előtt kell *mentése azds* először.
+Továbbra is használhatja az Azure fejlesztési tárolóhelyek más nyelven írt kóddal, de azt manuálisan kell létrehozni a docker-fájl futtatása előtt *mentése azds* először.
 
 ### <a name="try"></a>Próbálja ki:
-Ha az alkalmazás, hogy az Azure fejlesztési tárolóhelyek nem támogatja natív módon nyelven íródott, adjon meg egy megfelelő docker-fájlban, állítson össze egy tárolórendszerképet a kódja fut. szüksége. Docker biztosít egy [ajánlott eljárások a docker-fájlok írása listája](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) , valamint egy [Dockerfile referencia](https://docs.docker.com/engine/reference/builder/) , amellyel az igényeinek megfelelő, docker-fájlt írni.
+Ha az alkalmazás, hogy az Azure fejlesztési tárolóhelyek nem támogatja natív módon nyelven íródott, meg kell adnia a megfelelő docker-fájlban, állítson össze egy tárolórendszerképet a kódja fut. Docker biztosít egy [ajánlott eljárások a docker-fájlok írása listája](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) és a egy [Dockerfile referencia](https://docs.docker.com/engine/reference/builder/) , amellyel az igényeinek megfelelő, docker-fájlt írni.
 
 Miután már működik a megfelelő docker-fájlban, folytathatja, futtató *mentése azds* az alkalmazás futtatásához az Azure fejlesztési szóközöket.
 
@@ -183,7 +183,7 @@ A tároló port nem érhető el. Ez a hiba akkor fordulhat elő, mert:
 
 ### <a name="try"></a>Próbálja ki:
 1. Ha a tároló folyamatban létrehozott és üzembe helyezése folyamatban van, várjon 2-3 másodpercet, és próbálkozzon újra a szolgáltatás elérésével. 
-1. Ellenőrizze a port konfigurációját. A megadott portszámot kell **azonos** az összes, az az alábbi eszközöket:
+1. Ellenőrizze a port konfigurációját. A megadott portszámot kell **azonos** az összes az alábbi eszközöket:
     * **Docker-fájlban:** Azokat a `EXPOSE` utasítást.
     * **[Helm-diagram](https://docs.helm.sh):** Azokat a `externalPort` és `internalPort` értékek szolgáltatáshoz (gyakran található egy `values.yml` fájl),
     * Az alkalmazás kódjában, például a node.js-ben az éppen megnyitott portokat: `var server = app.listen(80, function () {...}`
@@ -247,7 +247,7 @@ Mit kell tenni:
 Talál példát: https://github.com/sgreenmsft/buildcontextsample
 
 ## <a name="microsoftdevspacesregisteraction-authorization-error"></a>"Microsoft.DevSpaces/register/action" engedélyezési hiba
-A következő hiba jelenhet meg, kezeli az Azure-fejlesztési terület, és az Azure-előfizetéssel, amelyhez nem rendelkezik tulajdonosi vagy közreműködői hozzáférés dolgozik.
+Szükséges *tulajdonosa* vagy *közreműködői* hozzáférés az Azure fejlesztési tárolóhelyek kezeléséhez az Azure-előfizetés. Előfordulhat, hogy ezt a hibaüzenetet, ha szeretne fejlesztői tárolóhelyek kezeléséhez, és nem rendelkezik *tulajdonosa* vagy *közreműködői* a kapcsolódó Azure-előfizetéshez való hozzáférés.
 `The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.`
 
 ### <a name="reason"></a>Ok
@@ -260,6 +260,28 @@ Az Azure-előfizetés-tulajdonosi vagy közreműködői hozzáféréssel rendelk
 az provider register --namespace Microsoft.DevSpaces
 ```
 
+## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>A fejlesztői, szóközök túllépi az időkorlátot *Várakozás a tároló-rendszerkép összeállítását...*  az AKS-csomópontok virtuális lépés
+
+### <a name="reason"></a>Ok
+Ez akkor fordul elő, amikor megpróbálja futtatni egy szolgáltatás, amely konfigurálva van Futtatás fejlesztési tárolóhelyek használata egy [AKS virtuális csomópont](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Fejlesztői, szóközök jelenleg nem támogatja az létrehozásához, vagy a virtuális csomópontok szolgáltatások hibakeresésében.
+
+Ha `azds up` az a `--verbose` kapcsoló vagy engedélyezése részletes naplózás a Visual Studióban, további részletek megtekintéséhez:
+
+```cmd
+Installed chart in 2s
+Waiting for container image build...
+pods/mywebapi-76cf5f69bb-lgprv: Scheduled: Successfully assigned default/mywebapi-76cf5f69bb-lgprv to virtual-node-aci-linux
+Streaming build container logs for service 'mywebapi' failed with: Timed out after 601.3037572 seconds trying to start build logs streaming operation. 10m 1s
+Container image build failed
+```
+
+Ez jelzi, hogy a szolgáltatás pod hozzá lett rendelve *virtuális-csomópont-aci-linux*, amely egy virtuális csomópont.
+
+### <a name="try"></a>Próbálja ki:
+A Helm-diagramot, távolítsa el a szolgáltatás frissítése *nodeSelector* és/vagy *tolerations* értékek, amelyek lehetővé teszik a szolgáltatást egy virtuális csomópont futtathatók. Ezeket az értékeket a diagram általában meghatározott `values.yaml` fájlt.
+
+AKS-fürt, amely rendelkezik a virtuális csomópontok szolgáltatás engedélyezve van, ha a fejlesztői, szóközök keresztül szeretné build/debug szolgáltatás fut a virtuális gép csomópont továbbra is használhatja. Ez az alapértelmezett beállítás.
+
 ## <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>"Hiba: nem található készen áll a tiller valóban podot" fejlesztői, szóközök indításakor
 
 ### <a name="reason"></a>Ok
@@ -271,20 +293,18 @@ Az ügynökcsomópontok általában a fürtben lévő újraindítás megszüntet
 ## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Az Azure fejlesztői, szóközök proxy zavaró más fejlesztői szóközzel futtató podok
 
 ### <a name="reason"></a>Ok
-Az AKS-fürt az egy névtérhez engedélyezi fejlesztési szóközt, egy kiegészítő tároló hívják _mindaro-proxy_ telepítve van a podok névtéren belül futó minden. Ez a tároló elfogja a pod, amely integrált fejlesztési tárolóhelyek csapat a fejlesztési funkciók szolgáltatásban.
-
-Sajnos rendszertevékenységét bizonyos ezeket a podok futó szolgáltatásokat. Pontosabban hogy zavarja a podok Azure Cache Redis fut, a csatlakozási hibát okoz az elsődleges és tartalék kiszolgálók közötti kommunikáció.
+Az AKS-fürt az egy névtérhez engedélyezi fejlesztési szóközt, egy kiegészítő tároló hívják _mindaro-proxy_ telepítve van a podok névtéren belül futó minden. Ez a tároló elfogja a pod, amely integrált fejlesztési tárolóhelyek csapat a fejlesztési funkciók; szolgáltatásban rendszertevékenységét azonban bizonyos ezeket a podok futó szolgáltatásokat. Azure Cache Redis fut, a csatlakozási hibát okoz az elsődleges és tartalék kiszolgálók közötti kommunikáció podok zavarja ismert.
 
 ### <a name="try"></a>Próbálja ki:
-Egy névtér, amely a fürtön belül viheti át az érintett pod(s) _nem_ engedélyezve van, miközben továbbra is futtassa az alkalmazást egy fejlesztési szóközt engedélyezni névtéren belül a rest fejlesztési szóközt. Fejlesztői, szóközök nem telepíti a _mindaro-proxy_ tároló nem fejlesztési tárolóhelyek belül engedélyezett névterek.
+Egy névtér, amely a fürtön belül viheti át az érintett podok _nem_ fejlesztési tárolóhelyek engedélyezve van. Az alkalmazás többi továbbra is egy fejlesztési tárolóhelyek-kompatibilis névterek futtatható. Fejlesztői, szóközök nem telepíti a _mindaro-proxy_ tároló nem fejlesztési tárolóhelyek belül engedélyezett névterek.
 
-## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Az Azure fejlesztési szóközt nem a Microsoft saját meglévő docker-fájl használatával hozhat létre egy tárolót 
+## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Az Azure fejlesztési szóközt nem a Microsoft saját meglévő docker-fájl használatával hozhat létre egy tárolót
 
 ### <a name="reason"></a>Ok
-Az Azure fejlesztési tárolóhelyek beállítható úgy, hogy egy adott pontjára _Dockerfile_ a projektben. Ha úgy tűnik, az Azure fejlesztési szóközt nem használ a _Dockerfile_ várt hozhat létre a tárolókat, előfordulhat, hogy ossza meg Azure fejlesztési tárolóhelyek, ahol a szolgáltatás explicit módon kell. 
+Az Azure fejlesztési tárolóhelyek beállítható úgy, hogy egy adott pontjára _Dockerfile_ a projektben. Ha úgy tűnik, az Azure fejlesztési szóközt nem használ a _Dockerfile_ várhatóan a tárolókat hozhat létre, szüksége lehet, hogy melyik docker-fájlban használni explicit módon az Azure fejlesztési tárolóhelyek. 
 
 ### <a name="try"></a>Próbálja ki:
-Nyissa meg a _azds.yaml_ fájlt, amely az Azure fejlesztési tárolóhelyek jött létre a projektben. Használja a `configurations->develop->build->dockerfile` irányelv átirányítása a docker-fájlban használni kívánt:
+Nyissa meg a _azds.yaml_ fájlt, hogy az Azure fejlesztési szóközöket a projekt jön létre. Használja a *konfigurációk -> Fejlesztés -> build dockerfile ->* irányelv átirányítása a docker-fájlban használni kívánt:
 
 ```
 ...

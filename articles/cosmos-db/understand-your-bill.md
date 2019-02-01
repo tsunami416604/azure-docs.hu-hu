@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 5df11eb4e1b759d66200c09cabc8752532d0873c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5c3da9a69204d7229ddcbbf39ec389684258e389
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042155"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470688"
 ---
-# <a name="understanding-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB-elszámolások ismertetése
+# <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB-elszámolások ismertetése
 
 Teljes körűen felügyelt felhőbeli natív adatbázis-szolgáltatás az Azure Cosmos DB leegyszerűsíti a számlázás, csak a kiosztott átviteli sebesség díjszabási, és a felhasznált tárolási. Nincsenek további díjat, hardver, segédprogram költségek, vagy létesítmény költségek a helyszíni képest vagy IaaS által üzemeltetett alternatívákat. Meghatározásakor a több régióban képességek az Azure Cosmos DB, az adatbázis-szolgáltatást biztosít a költségek a meglévő helyszíni vagy IaaS-megoldások képest jelentős csökkentését.
 
@@ -180,19 +180,19 @@ A teljes havi számla fog kell (feltéve, hogy 30 nap/720 órában az adott hón
 
 |**Óra**  |**RU/s** |**Elem** |**Használat (óránként)** |**Költségek** |
 |---------|---------|---------|-------|-------|
-|[0 – 100] |D1:10K <br/>D2:30K <br/>C1:20K |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |960 $  |
+|[0-100] |D1:10K <br/>D2:30K <br/>C1:20K |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Átviteli sebességre vonatkozó számla 2 további régiók: USA keleti RÉGIÓJA, Észak-Európa (az összes régióban is írható)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2,880  |
-|[101-200] |D1:50K <br/>D2:70K <br/>C1:-- |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` |$1920  |
+|[101-200] |D1:50K <br/>D2:70K <br/>C1: -- |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` |$1920  |
 | | |Átviteli sebességre vonatkozó számla 2 további régiók: USA keleti RÉGIÓJA, Észak-Európa (az összes régióban is írható)  |`(2 + 1) * (120 K RU/sec /100 * $0.016) * 100 hours = $5,760`  |$5,760  |
-|[201-es – 300]  |D1:50K <br/>D2:70K <br/>C1:20K |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` <br/>"C1 CSOMAG: RU/mp/100 ezer 20 * 0.016 * 100 óra = $320 |2,240 $'  |
+|[201-300]  |D1:50K <br/>D2:70K <br/>C1:20K |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` <br/>`C1: RU/mp/100 ezer 20 * 0.016 * 100 óra = $320 |$2,240`  |
 | | |Átviteli sebességre vonatkozó számla 2 további régiók: USA keleti RÉGIÓJA, Észak-Európa (az összes régióban is írható)  |`(2 + 1) * (140 K RU/sec /100 * $0.016-) * 100 hours = $6,720` |$6,720 |
-|[301-400] |D1:10K <br/>D2:80K <br/>C1:-- |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 80 K RU/sec/100 * $0.016 * 100 hours = $1,280`  |$1440   |
+|[301-400] |D1:10K <br/>D2:80K <br/>C1: -- |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 80 K RU/sec/100 * $0.016 * 100 hours = $1,280`  |$1,440   |
 | | |Átviteli sebességre vonatkozó számla 2 további régiók: USA keleti RÉGIÓJA, Észak-Európa (az összes régióban is írható)  |`(1 + 1) * (90 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2,880  |
-|[401-500] |D1:10K <br>D2:10K <br>C1:20K |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`D2: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |640 $  |
+|[401-500] |D1:10K <br>D2:10K <br>C1:20K |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`D2: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$640  |
 | | |Átviteli sebességre vonatkozó számla 2 további régiók: USA keleti RÉGIÓJA, Észak-Európa (az összes régióban is írható)  |`(1 + 1) * (40 K RU/sec /100 * $0.016) * 100 hours = $1,280`  |$1,280  |
-|[501-700] |D1:20K <br>D2:100K <br>C1:-- |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 20 K RU/sec/100 * $0.016 * 200 hours = $640` <br>`D2: 100 K RU/sec/100 * $0.016 * 200 hours = $3,200` |$3,840  |
-| | |Átviteli sebességre vonatkozó számla 2 további régiók: USA keleti RÉGIÓJA, Észak-Európa (az összes régióban is írható)  |`(1 + 1) * (120 K RU/sec /100 * $0.016) * 200 hours = $1,280`  |7 680 $  |
-|[701-720] |D1:20K <br/>D2:50K <br/>C1:-- |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 20 K RU/sec/100 *$0.016 * 20 hours = $64` <br/>`D2: 50 K RU/sec/100 *$0.016 * 20 hours = $160` |$224  |
+|[501-700] |D1:20K <br>D2:100K <br>C1: -- |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 20 K RU/sec/100 * $0.016 * 200 hours = $640` <br>`D2: 100 K RU/sec/100 * $0.016 * 200 hours = $3,200` |$3,840  |
+| | |Átviteli sebességre vonatkozó számla 2 további régiók: USA keleti RÉGIÓJA, Észak-Európa (az összes régióban is írható)  |`(1 + 1) * (120 K RU/sec /100 * $0.016) * 200 hours = $1,280`  |$7,680  |
+|[701-720] |D1:20K <br/>D2:50K <br/>C1: -- |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 20 K RU/sec/100 *$0.016 * 20 hours = $64` <br/>`D2: 50 K RU/sec/100 *$0.016 * 20 hours = $160` |$224  |
 | | |Átviteli sebességre vonatkozó számla 2 további régiók: USA keleti RÉGIÓJA, Észak-Európa (az összes régióban is írható)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
 || |**Teljes havi költség**  | |**$38,688**   |
 
@@ -203,16 +203,16 @@ Vegyünk például egy másik példa, ahol szeretné a proaktív módon megbecs�
 |**Tárolási költségek** | |
 |----|----|
 |Rekord átlagos mérete (KB) |1 |
-|Rekordok száma  |100 000 000  |
+|Rekordok száma  |100,000,000  |
 |Teljes tárterület (GB)  |100 |
-|GB-onkénti havi költség  |$0,25  |
-|A Storage várható havi költség   |25,00  |
+|GB-onkénti havi költség  |$0.25  |
+|A Storage várható havi költség   |$25.00  |
 
 <br>
 
 |**Átviteli sebesség költség** | | | |
 |----|----|----|----|
-|Művelettípus| Kérelmek/másodperc| Átl. RU/kérelem| Kérelemegység szükséges|
+|Művelettípus| Requests/sec| Átl. RU/kérelem| Kérelemegység szükséges|
 |Írás| 100 | 5 | 500|
 |Olvasás| 400| 1| 400|
 
@@ -237,7 +237,7 @@ A teljes számlája (fenntartott kapacitás) nélküli lenne (feltételezve 30 n
 |**Régió**| **Az óradíjas ár / 100 RU/s**|**Egységek (RU/s)**|**Számlázott összeg (óránként)**| **Számlázott összeg (havonta)**|
 |----|----|----|----|----|
 |USA keleti régiója|$0.008 |50 K|$4|$2,880 |
-|Kelet-Japán|$0.009 |50 K| $4,50 |$3,240 |
+|Kelet-Japán|$0.009 |50 K| $4.50 |$3,240 |
 |Összes|||$8.50|$6,120 |
 
 Vegyünk például, hogy, hogy inkább is tartalékkapacitást vásárolt. Fenntartott kapacitás 100-K RU/s (20 %-os kedvezménnyel) egy évig 56,064 $ vagy 6.40 $ / óra díjért vásárolhat. Lefoglalt kapacitás a díjszabási a [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/cosmos-db/)).  
@@ -251,10 +251,10 @@ Milyen hatékonyan vásárolt $ 8 óránként, 100 ezer RU/s használatával a L
 |**Régió**| **Az óradíjas ár / 100 RU/s**|**Egységek (RU/s)**| **Számlázott összeg (óránként)**| **Számlázott összeg (havonta)**|
 |----|----|----|----|----|
 |USA keleti régiója|$0.008 |50 K|$4|$2,880 |
-|Kelet-Japán|$0.009 |50 K| $4,50 |$3,240 |
-|||Utólagos, használatalapú fizetés|$8.50|6120 $|
-|Vásárolt fenntartott kapacitás|$0.0064 (20 %-os) |100 RU/s, vagy előre megvásárolt 8 dollár kapacitás |– 8 dollár|– $5,760 |
-|Nettó számla|||0,50 dollár |360 $ |
+|Kelet-Japán|$0.009 |50 K| $4.50 |$3,240 |
+|||Utólagos, használatalapú fizetés|$8.50|$6120|
+|Vásárolt fenntartott kapacitás|$0.0064 (20 %-os) |100 RU/s, vagy előre megvásárolt 8 dollár kapacitás |-$8|-$5,760 |
+|Nettó számla|||$0.50 |$360 |
 
 ## <a name="next-steps"></a>További lépések
 

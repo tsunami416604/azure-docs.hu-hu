@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54022288"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok másolása az SAP Business warehouse-hoz az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-sap-business-warehouse-connector.md)
 > * [Aktuális verzió](connector-sap-business-warehouse.md)
 
@@ -176,7 +176,7 @@ Ha az adatok másolása az SAP BW, a következő hozzárendeléseket a rendszer 
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| LANG | String |
+| NYELV | String |
 | LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
@@ -184,7 +184,7 @@ Ha az adatok másolása az SAP BW, a következő hozzárendeléseket a rendszer 
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
 | STRING | String |
-| UNIT | String |
+| EGYSÉG | String |
 | DATS | String |
 | NUMC | String |
 | TIMS | String |
