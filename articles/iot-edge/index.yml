@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 39ff5ba2ae6a9d4cf48499d4e73974e531a492a3
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 82ba644f844c59b59f449e137c64b767d5dffbff
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564867"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464024"
 documentType: LandingData
 title: Azure IoT Edge
 metadata:
@@ -15,7 +15,7 @@ metadata:
   ms.service: iot-edge
   services: iot-edge
   ms.topic: landing-page
-  ms.date: 06/21/2018
+  ms.date: 01/30/2019
   ms.author: kgremban
 abstract:
   description: Az Azure IoT Edge egy eszközök internetes hálózata (IoT) típusú szolgáltatás, amely az IoT Hubra épül. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön szeretnék elemezni az adatokat, vagyis „a peremhálózaton”, nem a felhőben. A számítási feladat egy részének a peremhálózatra helyezése révén az eszközök kevesebb időt töltenek a felhőbe történő üzenetküldéssel, és gyorsabban reagálhatnak az állapotváltozásokra.
@@ -47,15 +47,17 @@ sections:
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: Megtudhatja, hogyan telepítheti és konfigurálhatja az IoT Edge-et, hogyan helyezhet üzembe modulokat, valamint hogyan használhatja a Stream Analyticset és hasonló Azure-szolgáltatásokat a peremhálózaton.
+    text: Megtudhatja, hogyan telepítheti és konfigurálhatja az IoT Edge-et, hogyan helyezhet üzembe modulokat, valamint hogyan használhatja a Stream Analyticset, a Custom Visiont és hasonló Azure-szolgáltatásokat a peremhálózaton.
   - type: list
-    style: ordered
+    style: unordered
     items:
     - html: <a href="/azure/iot-edge/tutorial-deploy-function">Üzenetek szűrése az Azure Functions segítségével</a>
     - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Átlagértékek keresése a modulként használt Azure Stream Analytics segítségével</a>
     - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">Adatok pontozása a modulként használt Azure Machine Learninggel</a>
+    - html: <a href="/azure/iot-edge/tutorial-deploy-custom-vision">Képek besorolása a modulként használt Custom Vision Service-szel</a>
     - html: <a href="/azure/iot-edge/tutorial-csharp-module">Adatok szűrése egy C#-modullal</a>
     - html: <a href="/azure/iot-edge/tutorial-python-module">Adatok szűrése egy Python-modullal</a>
     - html: <a href="/azure/iot-edge/tutorial-node-module">Adatok szűrése egy Node.js-modullal</a>
+    - html: <a href="/azure/iot-edge/tutorial-java-module">Adatok szűrése Java-modullal</a>
     - html: <a href="/azure/iot-edge/tutorial-c-module">Adatok szűrése C-modullal</a>
     - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">Adatok tárolása a peremhálózaton az SQL Serverrel</a>

@@ -80,13 +80,13 @@ items:
       href: consistency-levels.md
     - name: A megfelelő konzisztenciaszint kiválasztása
       href: consistency-levels-choosing.md
-    - name: Konzisztenciaszintek és Cosmos DB API-k
+    - name: Konzisztenciaszintek és Azure Cosmos DB API-k
       href: consistency-levels-across-apis.md
     - name: Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között
       href: consistency-levels-tradeoffs.md
     - name: Magas rendelkezésre állás
       href: high-availability.md
-    - name: Kiosztott átviteli sebesség globális méretezése
+    - name: Kiosztott átviteli sebesség globális skálázása
       href: scaling-throughput.md
     - name: Ütközéstípusok és -feloldási szabályzatok
       href: conflict-resolution-policies.md
@@ -98,7 +98,7 @@ items:
     items:
     - name: Áttekintés
       href: partitioning-overview.md
-    - name: Logikai partíciók
+    - name: Particionálás és horizontális skálázás
       href: partition-data.md
     - name: Szintetikus partíciókulcs létrehozása
       href: synthetic-partition-keys.md
@@ -122,7 +122,7 @@ items:
       items:
       - name: Áttekintés
         href: index-overview.md
-      - name: Indexelési szabályzat
+      - name: Indexszabályzat
         href: index-policy.md
       - name: Indextípusok
         href: index-types.md
@@ -136,17 +136,17 @@ items:
         href: read-change-feed.md
       - name: Változáscsatorna feldolgozója
         href: change-feed-processor.md
-      - name: Változáscsatorna az Azure Functions szolgáltatással
+      - name: Az Azure Functions aktiválása
         href: change-feed-functions.md
     - name: Élettartam
       href: time-to-live.md
     - name: Egyedi kulcskorlátozások
       href: unique-keys.md
-    - name: Tranzakciók és optimista párhuzamosság
+    - name: Tranzakciók és optimista egyidejűség vezérlése
       href: database-transactions-optimistic-concurrency.md
   - name: Kiszolgálóoldali programozás
     items:
-    - name: Tárolt eljárások, triggerek és felhasználói függvények
+    - name: Tárolt eljárások, eseményindítók és felhasználói függvények
       href: stored-procedures-triggers-udfs.md
     - name: JavaScript lekérdezési API
       href: javascript-query-api.md
@@ -168,9 +168,9 @@ items:
       href: optimize-cost-reads-writes.md
     - name: A több régióban való üzemeltetés költségeinek optimalizálása
       href: optimize-cost-regions.md
-    - name: A fejlesztési és tesztelési számítási feladatok optimalizálása
+    - name: Fejlesztési/tesztelési költségek optimalizálása
       href: optimize-dev-test.md
-    - name: Optimalizálás lefoglalt kapacitással
+    - name: Költségek optimalizálása lefoglalt kapacitással
       href: cosmos-db-reserved-capacity.md
   - name: Biztonság
     items:
@@ -186,7 +186,7 @@ items:
       href: vnet-service-endpoint.md
   - name: Alkalmasság vállalati használatra
     items:
-    - name: Online biztonsági mentés és helyreállítás
+    - name: Online biztonsági mentés és igény szerinti helyreállítás
       href: online-backup-and-restore.md
     - name: Megfelelőség
       href: compliance.md
@@ -467,19 +467,19 @@ items:
   expanded: true
 - name: Útmutatók
   items:
-  - name: Adatbázisfiók kezelése
+  - name: Azure Cosmos-fiók kezelése
     href: how-to-manage-database-account.md
   - name: Globális terjesztés
     items:
-    - name: Konzisztencia kezelése
+    - name: Konzisztenciaszintek kezelése
       href: how-to-manage-consistency.md
-    - name: Ütközések kezelése
+    - name: Ütközésfeloldási szabályzatok konfigurálása
       href: how-to-manage-conflicts.md
   - name: Kiosztott átviteli sebesség
     items:
-    - name: A tároló átviteli sebességének kiosztása
+    - name: Átviteli sebesség kiosztása tárolók számára
       href: how-to-provision-container-throughput.md
-    - name: Az adatbázis átviteli sebességének kiosztása
+    - name: Átviteli sebesség kiosztása adatbázisok számára
       href: how-to-provision-database-throughput.md
   - name: A tárolók és elemek használata
     items:
@@ -489,9 +489,13 @@ items:
       href: how-to-query-container.md
     - name: Élettartam konfigurálása
       href: how-to-time-to-live.md
+    - name: Adatok kezelése az Azure Storage Explorerrel
+      href: storage-explorer.md
+    - name: Adatok kezelése az Azure Cosmos Explorerrel
+      href: data-explorer.md
     - name: Indexelés
       items:
-      - name: Indexelés konfigurálása
+      - name: Indexelés kezelése
         href: how-to-manage-indexing-policy.md
   - name: Biztonság
     items:
@@ -501,22 +505,18 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: Eltérő eredetű erőforrások megosztásának (CORS) konfigurálása
       href: how-to-configure-cross-origin-resource-sharing.md
-    - name: Védelem a Key Vaulttal
+    - name: Azure Cosmos-kulcsok védelme a Key Vaulttal
       href: access-secrets-from-keyvault.md
   - name: Alkalmasság vállalati használatra
     items:
     - name: Adatok visszaállítása biztonsági mentésből
       href: how-to-backup-and-restore.md
-  - name: Kezelés
+  - name: Azure Cosmos DB-erőforrások kezelése
     items:
     - name: Kezelés a PowerShell-lel
       href: manage-account-with-powershell.md
     - name: Kezelés az Azure CLI használatával
       href: manage-with-cli.md
-    - name: Kezelés a Storage Explorer használatával
-      href: storage-explorer.md
-    - name: Kezelés adatkezelő használatával
-      href: data-explorer.md
   - name: Naplózás
     items:
     - name: Diagnosztikai naplózás
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: Közösségimédia-alkalmazások
       href: social-media-apps.md
-ms.openlocfilehash: 72d6169090749f81025dabed2b919e6c0a1dc70f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 93d8abe428305ce62fb95afabc6ab71dfc8f67b4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094478"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464874"

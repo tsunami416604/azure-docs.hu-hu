@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8b591cacd1c468f46dcdb5809cdc6ff0adf09ccb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9c337f147eaebc376c7953e7f585b5b9f6a10f94
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247680"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471684"
 documentType: LandingData
 title: Az Azure Machine Learning szolgáltatás dokumentációja
 metadata:
-  title: Dokumentáció – Azure Machine Learning service – oktatóanyagok és API-referencia | Microsoft Docs
-  description: Megtudhatja, hogyan építhet be intelligens algoritmusokat alkalmazásokba és webhelyekre. Scikit-learn, TensorFlow, Pytorch és egyéb Python-alapú keretrendszerek használata egy gépi tanulási modell létrehozásához és helyileg vagy a felhőben történő betanításához. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
+  title: Az Azure Machine Learning szolgáltatás dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  description: Az Azure Machine Learning szolgáltatás egy felhőalapú környezet gépi tanulási modellek fejlesztésére, betanítására, üzembe helyezésére, kezelésére és nyomon követésére. Az Azure Machine Learning service teljes körűen támogatja az olyan nyílt forráskódú technológiákat, mint a Scikit-learn, a Tensorflow, a Pytorch vagy bármely egyéb Python-alapú keretrendszer. Rövid útmutatóinkból és oktatóanyagainkból megtudhatja, hogyan használhatja az Azure Machine Learning service-t a gépi tanulási munkafolyamatokhoz.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -17,22 +17,17 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 12/04/2018
+  ms.date: 1/30/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Megtudhatja, hogyan építhet be intelligens algoritmusokat alkalmazásokba és webhelyekre. Scikit-learn, TensorFlow, Pytorch és egyéb Python-alapú keretrendszerek használata egy gépi tanulási modell létrehozásához és helyileg vagy a felhőben történő betanításához. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
+  description: Az Azure Machine Learning szolgáltatás egy felhőalapú környezet gépi tanulási modellek fejlesztésére, betanítására, üzembe helyezésére, kezelésére és nyomon követésére. Ez a szolgáltatás teljes körűen támogatja az olyan nyílt forráskódú technológiákat, mint a Scikit-learn, a Tensorflow, a Pytorch vagy bármely egyéb Python-alapú keretrendszer. Rövid útmutatóinkból és oktatóanyagainkból megtudhatja, hogyan használhatja ezt a szolgáltatást a gépi tanulási munkafolyamatokhoz.
 sections:
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: 'A rövid útmutatók segítségével megismerheti, hogyan állíthatja be a munkaterületet és az erőforrásokat az Azure Machine Learning szolgáltatáshoz:'
-  - type: list
-    style: unordered
-    items:
-    - html: Bevezetés az <a href="quickstart-get-started">Azure Portal</a> használatába.
-    - html: Bevezetés a <a href="quickstart-create-workspace-with-python">Python</a> használatába.
+    text: Első lépésként hozzon létre egy szolgáltatás-munkaterületet és erőforrásokat <a href="quickstart-get-started">az Azure Portalon</a> vagy <a href="quickstart-create-workspace-with-python">a Pythonban</a>.
 - title: Részletes útmutatók
   items:
   - type: paragraph
@@ -40,18 +35,20 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-train-models-with-aml">Képbesorolási modellek betanítása és üzembe helyezése</a> (<b>kétrészes sorozat</b>).
-    - html: <a href="tutorial-data-prep">Adatok előkészítése és automatizált gépi tanulás használata</a> regressziós modellek betanításához és hangolásához (<b>kétrészes sorozat</b>).<br>&nbsp;
+    - html: Képbesorolási modellek <a href="tutorial-train-models-with-aml">betanítása</a> és <a href="tutorial-deploy-models-with-aml">üzembe helyezése</a> (<b>kétrészes sorozat</b>).<br>&nbsp;
+    - html: <a href="tutorial-data-prep">Adatok előkészítése</a> és <a href="tutorial-auto-train-models">automatizált gépi tanulás használata</a> regressziós modellek betanításához és hangolásához (<b>kétrészes sorozat</b>).
+- title: Példák
+  items:
   - type: paragraph
-    text: '<b>Minták</b>: Ismerkedjen meg a szolgáltatással ezekkel a <a href="https://aka.ms/aml-notebooks">Jupyter-notebookokkal</a> a GitHubon.'
+    text: Keressen <a href="samples-notebooks">Jupyter-notebookokat</a>, amelyekkel megismerkedhet a szolgáltatással a GitHubon.
 - title: Referencia
   items:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://aka.ms/data-prep-sdk">Azure Machine Learning adat-előkészítési SDK</a>
-    - html: <a href="https://aka.ms/aml-sdk">Pythonhoz készült Azure Machine Learning SDK (fő SDK)</a>
-    - html: <a href="https://aka.ms/aml-monitoring-sdk">Azure Machine Learning Monitoring SDK</a>
+    - html: <a href="https://aka.ms/aml-sdk">Fő SDK (Python)</a>
+    - html: <a href="https://aka.ms/data-prep-sdk">Adat-előkészítési SDK (Python)</a>
+    - html: <a href="https://aka.ms/aml-monitoring-sdk">Monitorozási SDK (Python)</a>
 - title: Egyéb Azure Machine Learning-technológiák
   items:
   - type: list

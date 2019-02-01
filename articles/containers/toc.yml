@@ -1,82 +1,87 @@
+items:
 - name: Azure tárolókhoz
   href: index.yml
   items:
-    - name: Kubernetes Service (AKS)
-      href: 'https://docs.microsoft.com/azure/aks/'
-      expanded: true
+  - name: Kubernetes Service (AKS)
+    href: https://docs.microsoft.com/azure/aks/
+    items:
+    - name: Az AKS bemutatása
+      href: ../aks/intro-kubernetes.md
+    - name: Rövid útmutató – AKS-fürt üzembe helyezése
+      href: ../aks/kubernetes-walkthrough.md
+    expanded: true
+  - name: Container Instances (ACI)
+    href: https://docs.microsoft.com/azure/container-instances/
+    items:
+    - name: Gyors útmutató – Tárolópéldány létrehozása
+      href: https://docs.microsoft.com/azure/container-instances/container-instances-quickstart
+    - name: Oktatóanyag – Tároló létrehozása és üzembe helyezése
       items:
-        - name: Az AKS bemutatása
-          href: ../aks/intro-kubernetes.md
-        - name: AKS-fürt üzembe helyezése
-          href: ../aks/kubernetes-walkthrough.md
-    - name: Container Instances (ACI)
-      href: 'https://docs.microsoft.com/azure/container-instances/'
+      - name: 1 – Tárolórendszerkép létrehozása
+        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app
+      - name: 2 – Tárolóregisztrációs adatbázis létrehozása
+        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr
+      - name: 3 – Alkalmazás üzembe helyezése
+        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-deploy-app
+  - name: Container Registry (ACR)
+    href: https://docs.microsoft.com/azure/container-registry/
+    items:
+    - name: Rövid útmutató – Beállításjegyzék létrehozása
+      href: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
+    - name: Oktatóanyag – Tárolórendszerképek összeállítása
       items:
-        - name: Gyors útmutató – Tárolópéldány létrehozása
-          href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
-        - name: Oktatóanyag – Tároló létrehozása és üzembe helyezése
-          items:
-            - name: 1 – Tárolórendszerkép létrehozása
-              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app'
-            - name: 2 – Tárolóregisztrációs adatbázis létrehozása
-              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr'
-            - name: 3 – Alkalmazás üzembe helyezése
-              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-deploy-app'
-    - name: Container Registry (ACR)
-      href: 'https://docs.microsoft.com/azure/container-registry/'
+      - name: 1 – Rendszerképek létrehozása az Azure-ban
+        href: ../container-registry/container-registry-tutorial-quick-task.md
+      - name: 2 – Rendszerképek létrehozásának automatizálása
+        href: ../container-registry/container-registry-tutorial-build-task.md
+      - name: 3 – Rendszerkép alapszintű frissítésének létrehozása
+        href: ../container-registry/container-registry-tutorial-base-image-update.md
+  - name: Tárolókhoz készült Web App
+    href: https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro
+    items:
+    - name: Egyéni Docker-rendszerkép használata az Azure Web App for Containers alkalmazáshoz
+      href: https://docs.microsoft.com/azure/app-service/containers/tutorial-custom-docker-image
+    - name: Oktatóanyag – Többtárolós alkalmazás
+      href: https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app
+  - name: Service Fabric
+    href: https://docs.microsoft.com/azure/service-fabric/
+    items:
+    - name: Áttekintés – A Service Fabric és a tárolók
+      href: https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview
+    - name: Útmutató
       items:
-        - name: Beállításjegyzék létrehozása – parancssori felület
-          href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
-        - name: Útmutató
-          items:
-            - name: Rendszerképek küldése és lekérése
-              href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli'
-            - name: Az adattárak megtekintése
-              href: 'https://docs.microsoft.com/azure/container-registry/container-registry-repositories'
-            - name: Egyszerű szolgáltatás létrehozása
-              href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal?toc=%2fazure%2fcontainer-registry%2ftoc.json'
-            - name: Hitelesítés beállításjegyzékkel
-              href: 'https://docs.microsoft.com/azure/container-registry/container-registry-authentication'
-            - name: ACR-webhookok használata
-              href: 'https://docs.microsoft.com/azure/container-registry/container-registry-webhook'
-    - name: Tárolókhoz készült Web App
-      href: 'https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro'
-      items:
-        - name: Egyéni Docker-rendszerkép használata az Azure Web App for Containers alkalmazáshoz
-          href: 'https://docs.microsoft.com/azure/app-service/containers/tutorial-custom-docker-image'
-    - name: Service Fabric
-      href: 'https://docs.microsoft.com/azure/service-fabric/'
-      items:
-        - name: Áttekintés – A Service Fabric és a tárolók
-          href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview'
-        - name: Útmutató
-          items:
-            - name: Tárolóalkalmazás létrehozása Windowson
-              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers'
-            - name: Tárolóalkalmazás létrehozása Linuxon
-              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers-linux'
-            - name: Meglévő .NET-alkalmazás tárolóba helyezése
-              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-host-app-in-a-container'
-    - name: Windows-tárolók
-      href: 'https://docs.microsoft.com/azure/virtual-machines/windows/overview'
-      items:
-        - name: Gyors útmutató – Windows-tárolók a Windows Serveren
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
-        - name: A Windows-tárolók
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/about/index'
-    - name: Referencia
-      items:
-        - name: Azure Container Instances (az container)
-          href: 'https://docs.microsoft.com/cli/azure/container'
-        - name: Azure Container Service (az acs)
-          href: 'https://docs.microsoft.com/cli/azure/acs'
-        - name: Azure Container Registry (az acr)
-          href: 'https://docs.microsoft.com/cli/azure/acr'
-        - name: Tárolóhoz készült Web App (az appservice)
-          href: 'https://docs.microsoft.com/cli/azure/appservice'
-        - name: Azure App Service Web App (az webapp)
-          href: 'https://docs.microsoft.com/cli/azure/webapp'
-        - name: Azure Service Fabric (az sf)
-          href: 'https://docs.microsoft.com/cli/azure/sf'
-        - name: Azure Virtual Machines (az vm)
-          href: 'https://docs.microsoft.com/cli/azure/vm'
+      - name: Tárolóalkalmazás létrehozása Windowson
+        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers
+      - name: Tárolóalkalmazás létrehozása Linuxon
+        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers-linux
+      - name: Meglévő .NET-alkalmazás tárolóba helyezése
+        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-host-app-in-a-container
+  - name: Windows-tárolók
+    href: https://docs.microsoft.com/azure/virtual-machines/windows/overview
+    items:
+    - name: Gyors útmutató – Windows-tárolók a Windows Serveren
+      href: https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server
+    - name: A Windows-tárolók
+      href: https://docs.microsoft.com/virtualization/windowscontainers/about/index
+  - name: Referencia
+    items:
+    - name: Azure Container Instances (az container)
+      href: https://docs.microsoft.com/cli/azure/container
+    - name: Azure Container Service (az acs)
+      href: https://docs.microsoft.com/cli/azure/acs
+    - name: Azure Container Registry (az acr)
+      href: https://docs.microsoft.com/cli/azure/acr
+    - name: Web App for Containers (az appservice)
+      href: https://docs.microsoft.com/cli/azure/appservice
+    - name: Azure App Service Web App (az webapp)
+      href: https://docs.microsoft.com/cli/azure/webapp
+    - name: Azure Service Fabric (az sf)
+      href: https://docs.microsoft.com/cli/azure/sf
+    - name: Azure Virtual Machines (az vm)
+      href: https://docs.microsoft.com/cli/azure/vm
+ms.openlocfilehash: 9ee48a00784c0ca9fa00507e2956e34e7e6792d5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486231"
