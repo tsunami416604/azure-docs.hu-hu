@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9f60775bd057f0ad114bd7d7d0d42514a83186c5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1cebd5d049475a5962a87abede449bd6d53f3ee2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186841"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492453"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció módosításának ajánlott eljárásai
 Ez a témakör az a célja, hogy támogatott és nem támogatott az Azure AD Connect szinkronizálási módosításait ismertetik.

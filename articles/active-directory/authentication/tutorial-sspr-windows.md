@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 12/05/2018
+ms.date: 01/30/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 3446548a89c33e6eb8026e41fbea01ee651b2c88
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474870"
+ms.locfileid: "55488067"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 
@@ -33,6 +33,7 @@ Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérje
    * [Hibrid Azure AD-hez csatlakoztatott](../device-management-hybrid-azuread-joined-devices-setup.md), a hálózati kapcsolat egy tartományvezérlőhöz.
 * Engedélyeznie kell az Azure AD önkiszolgáló jelszó-visszaállítás.
 * Ha a Windows 10 rendszerű eszközök proxykiszolgálót vagy tűzfal mögé, hozzá kell adnia az URL-címeket, `passwordreset.microsoftonline.com` és `ajax.aspnetcdn.com` a HTTPS-forgalom (a 443-as port) engedélyezett URL-címek listájához.
+* Tekintse át az alábbi korlátozások előtt ezt a környezetben.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával
 
@@ -116,7 +117,9 @@ Ez a funkció a távoli asztal vagy egy virtuális gép bővített munkamenet te
 
 * A Távoli asztalokról jelenleg nem támogatott a jelszó-visszaállítás.
 
-Ha a szabályzat a Ctrl+Alt+Del billentyűparancs használatát követeli meg, vagy a zárolási képernyő értesítései ki vannak kapcsolva, a **Jelszó visszaállítása** nem fog működni.
+Ha a Ctrl + Alt + Del 1809, mielőtt a házirend a Windows 10-es verziói által igényelt **jelszó alaphelyzetbe állítása** nem fog működni.
+
+Ha a zárolási képernyő értesítések be vannak kapcsolva, **jelszó alaphelyzetbe állítása** nem fog működni.
 
 A következő házirend-beállításokat ismert zavarják a jelszavak alaphelyzetbe állítása
 
@@ -128,7 +131,7 @@ A következő házirend-beállításokat ismert zavarják a jelszavak alaphelyze
 
 Ez a funkció nem működik a hálózatok üzembe helyezett 802.1 x hálózati hitelesítést és az "Azonnali végrehajtás a felhasználó bejelentkezése előtt végezze el" lehetőséget. 802.1 x hálózati hitelesítéssel üzembe helyezett hálózatok ajánlott számítógép-hitelesítés használatával engedélyezze ezt a funkciót.
 
-Tartományhoz hibrid forgatókönyvek esetén ez a forgatókönyv létezik, ahol végezze el az SSPR munkafolyamat anélkül, hogy egy Active Directory-tartományvezérlőhöz. Kapcsolat egy tartományvezérlőhöz először az új jelszó használata szükséges.
+Csatlakoztatott hibrid forgatókönyvek esetén az SSPR-munkafolyamat sikeresen befejezi anélkül, hogy egy Active Directory-tartományvezérlőhöz. Ha egy felhasználó a jelszó-visszaállítási folyamat befejeződött, ha egy Active Directory-tartományvezérlőhöz való kommunikáció nem érhető el, például amikor távolról dolgozó, a felhasználó nem fogja tudni jelentkezzen be az eszközt addig, amíg az eszköz és a tartományvezérlő közötti kommunikációhoz és a a gyorsítótárazott hitelesítő adat frissítése. **Kapcsolat egy tartományvezérlővel kell használnia az új jelszó először**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

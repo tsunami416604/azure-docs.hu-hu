@@ -1,5 +1,5 @@
 ---
-title: Legalacsonyabb jogosultsági szintű szerepkörök delegálása az Azure Active Directoryban feladat |} A Microsoft Docs
+title: Rendszergazdai tevékenység – Azure Active Directory által legalacsonyabb jogosultsági szintű szerepkörök delegálása |} A Microsoft Docs
 description: Szerepkörök az Azure Active Directory identitáskezelési feladatok delegálása
 services: active-directory
 documentationcenter: ''
@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 3b6c5b08fa3f915c541837abe5f52c7ec3d9b87e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6307fe4875d9fd5f55db8078ab9440f989fb58f3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185207"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508215"
 ---
-# <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök az Azure Active Directory identity feladat
+# <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök az Azure Active Directory felügyeleti feladat
 
 Ebben a cikkben találja a felhasználó rendszergazdai jogosultságok korlátozása a legalacsonyabb jogosultsági szintű szerepkörök hozzárendelése az Azure Active Directory (Azure AD) által szükséges információkat. Tapasztalni fogja rendszergazdai feladatok területeket, valamint az egyes feladatok mellett további nem globális rendszergazda szerepkör által végrehajtható a tevékenység elvégzéséhez szükséges legalacsonyabb jogosultsági szintű szerepkör szerint vannak rendezve.
 

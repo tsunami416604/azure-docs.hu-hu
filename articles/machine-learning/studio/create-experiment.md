@@ -1,10 +1,22 @@
 ---
-Cím: Egyszerű kísérlet titleSuffix: Azure Machine Learning Studio description: Ez a Machine Learning-oktatóanyag egy egyszerű adatelemezési kísérletet mutat be. Egy regressziós algoritmus használatával fogjuk előre megbecsülni egy autó árát.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: az oktatóanyag
-
-Szerző: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/20/2017
+title: Egyszerű kísérlet
+titleSuffix: Azure Machine Learning Studio
+description: Ez a Machine Learning-oktatóanyag egy egyszerű adatelemezési kísérletet mutat be. Egy regressziós algoritmus használatával fogjuk előre megbecsülni egy autó árát.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: tutorial
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 03/20/2017
+ms.openlocfilehash: be52f5fbe6c7d282a50e53c4326478b937ea8081
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488379"
 ---
-
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Oktatóanyag: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
 
 Ha korábban még soha nem használta az **Azure Machine Learning Studiót**, ez az oktatóanyag Önnek szól.

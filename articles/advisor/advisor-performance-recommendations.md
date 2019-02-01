@@ -1,26 +1,21 @@
 ---
-title: Az Azure Advisor-teljesítményajánlások |} A Microsoft Docs
+title: Az Azure-alkalmazások az Azure Advisor szolgáltatással a teljesítmény javítása |} A Microsoft Docs
 description: Az Advisor használatával az Azure-környezetek teljesítményének optimalizálásához.
 services: advisor
 documentationcenter: NA
 author: kasparks
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 3caf838fec3a5c0ab847ded85b269df7a66859e0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f3c6e39203fb0d864ecf952e0468959d66931e1f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266745"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491579"
 ---
-# <a name="advisor-performance-recommendations"></a>Advisor-teljesítményajánlások
+# <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Az Azure Advisorral az Azure-alkalmazások teljesítményének növelése
 
 Az Azure Advisor-teljesítményajánlások sebesség és az üzleti szempontból kritikus fontosságú alkalmazások válaszképességét javítása érdekében. Advisor javaslatainak teljesítménnyel kapcsolatos javaslatok is kap a **teljesítmény** az Advisor irányítópult lapon.
 
@@ -49,7 +44,7 @@ App Services javaslatok kapcsolatos további információkért lásd: [ajánlott
 
 ## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Felügyelt lemezek használata a lemez i/o szabályozásának megelőzése érdekében
 
-Az Advisor azonosítja, amely eléri-e méretezhetőségi célértékét tárfiókhoz tartozó virtuális gépek. Így ki vannak téve az i/o-szabályozásra. Az Advisor javasolni fogja, hogy ezek a virtuális gépek felügyelt lemezeket használni teljesítményromlás megelőzése érdekében.
+Az Advisor azonosítja, amely eléri-e méretezhetőségi célértékét tárfiókhoz tartozó virtuális gépek. Ez a feltétel teszi azokat, virtuális gépek ki vannak téve az i/o-szabályozásra. Az Advisor javasolni fogja a felügyelt lemezeket használnak teljesítményromlás megelőzése érdekében.
 
 ## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>A teljesítmény és a virtuálisgép-lemezek megbízhatóságának javítása a Premium Storage segítségével
 
@@ -63,11 +58,11 @@ Adatok torzulása szükségtelen adatok mozgását vagy az erőforrás szűk ker
 
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Az SQL data warehouse-tábla lekérdezési teljesítmény érdekében az elavult tábla statisztikák létrehozása vagy frissítése
 
-Az Advisor azonosítja, amelyek nem rendelkeznek naprakész táblák [táblastatisztikák](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) és táblastatisztikák javasolja létrehozása vagy frissítése. Az SQL data warehouse-optimalizáló naprakész ukazatelé segítségével megbecsülheti a számosság vagy a lekérdezés eredményét, amely lehetővé teszi a lekérdezésoptimalizáló hozhat létre kiváló minőségű lekérdezésterv a leggyorsabb teljesítmény sorainak lekérdezés.
+Az Advisor azonosítja, amelyek nem rendelkeznek naprakész táblák [táblastatisztikák](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) és táblastatisztikák javasolja létrehozása vagy frissítése. Az SQL data warehouse-optimalizáló naprakész ukazatelé segítségével megbecsülheti a számosság vagy a lekérdezés eredményét, amely lehetővé teszi a lekérdezésoptimalizáló hozhat létre a leggyorsabb teljesítmény magas színvonalú lekérdezésterv sorainak lekérdezés.
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Vertikális felskálázás a lekérdezési teljesítmény érdekében az SQL Data Warehouse tábláiba gyorsítótár a kihasználtság optimalizálása
 
-Az Azure Advisor észleli az SQL Data Warehouse-e magas gyorsítótár használt százalékos aránya, és a egy alacsony találati százalékot. Ez azt jelzi, hogy magas gyorsítótár kiürítési, ami hatással lehet az SQL Data Warehouse teljesítményét. Az Advisor javasolja, hogy az SQL Data Warehouse biztosításához lefoglalni elegendő gyorsítótár kapacitás a számítási feladatok vertikális.
+Az Azure Advisor észleli az SQL Data Warehouse-e magas gyorsítótár használt százalékos aránya, és a egy alacsony találati százalékot. Ez az állapot azt jelzi, hogy magas gyorsítótár-kiürítés, ami hatással lehet az SQL Data Warehouse teljesítményét. Az Advisor javasolja, hogy az SQL Data Warehouse biztosításához lefoglalni elegendő gyorsítótár kapacitás a számítási feladatok vertikális.
 
 ## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>Replikált táblák lekérdezési teljesítmény érdekében az SQL Data Warehouse-táblákat átalakítása
 
@@ -75,10 +70,10 @@ Az Advisor táblákat, amelyek nem szerepelnek a replikált táblák, de kiakná
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>A Tárfiók migrálása az Azure Resource Managerhez való csatlakoztatásával minden, a legújabb Azure-funkciók
 
-Telepítse át a Storage-fiók üzembe helyezési modellben az Azure Resource Manager (ARM) sablon-üzembehelyezések, a további biztonsági beállításokat és a lehet majd frissíteni GPv2-fiókra kihasználtságát az Azure Storage a legújabb funkciók előnyeinek kihasználása érdekében. Az Advisor összes önálló tárfiókot a klasszikus üzemi modellt használó azonosítja, és javasolja, hogy az ARM-alapú üzemi modellbe való migrálás.
+Áttelepítése a Storage-fiók üzembehelyezési modellje Azure Resource Manager-(Resource Manager) sablon-üzembehelyezések, a további biztonsági beállításokat és a lehet majd frissíteni GPv2-fiókra kihasználtságát az Azure Storage a legújabb funkciók előnyeinek kihasználása érdekében. Az Advisor összes önálló tárfiókot a klasszikus üzemi modellt használó azonosítja, és javasolja a Resource Manager-alapú üzemi modellbe való migrálás.
 
 > [!NOTE]
-> Klasszikus riasztások az Azure monitorban kivonja a június 2019 bejelentéséig, javasoljuk, hogy frissítsen a klasszikus tárfiók ARM riasztási funkciók és az új platform megőrzéséhez. További információkért lásd: [klasszikus riasztások használatból való kivonást egyaránt](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+> Klasszikus riasztások az Azure monitorban ütemezett kivonása a június 2019. Azt javasoljuk, hogy a riasztási funkciók és az új platform megőrzése a Resource Manager használatával a klasszikus tárfiók frissítése. További információkért lásd: [klasszikus riasztások használatból való kivonást egyaránt](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Az Advisor teljesítményajánlásainak elérése
 

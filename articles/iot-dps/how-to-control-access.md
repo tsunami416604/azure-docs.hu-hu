@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: e476ca498e4dc1b36d18927beddc812d6d803120
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 0258a37b0614ca7505a90f88afaaaee1a6d5c04e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818510"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496963"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Hozzáférés vezérlése az Azure IoT Hub Device Provisioning Service
 
@@ -34,7 +34,7 @@ Biztosítani [engedélyek](#device-provisioning-service-permissions) a következ
 
 * **Megosztott hozzáférés engedélyezési házirendek**. Megosztott elérési házirendeket is biztosítson tetszőleges kombinációját [engedélyek](#device-provisioning-service-permissions). A szabályzatokat definiálhat a [az Azure portal][lnk-management-portal], vagy programozott módon használatával a [Device Provisioning Service REST API-k][lnk-resource-provider-apis]. Újonnan létrehozott eszközkiépítési szolgáltatás az alábbi alapértelmezett házirend van:
 
-* **provisioningserviceowner**: a házirend az összes engedélyt.
+* **provisioningserviceowner**: A házirend az összes engedélyt.
 
 > [!NOTE]
 > Lásd: [engedélyek](#device-provisioning-service-permissions) részletes információkat.
@@ -82,11 +82,11 @@ Az alábbiakban a várt értékek:
 | {URL-encoded-resourceURI} | Lower használatieset-URL-Címének kódolása a kisbetűs erőforrás URI-t. URI-előtag (szegmens) szerint a végpontot, amely az ezzel a tokennel, az IoT Device Provisioning Service (nincs protocol) állomásneve kezdve érhető el. Például: `mydps.azure-devices-provisioning.net`. |
 | {policyName} |Ez a token által hivatkozott megosztott elérési házirend neve. |
 
-**Megjegyzés: az előtag**: az URI-előtag karakteres szegmens és nem számítja ki. Például `/a/b` az előtagja `/a/b/c` esetében nem `/a/bc`.
+**Megjegyzés: az előtag**: Az URI-előtag karakteres szegmens és nem számítja ki. Például `/a/b` az előtagja `/a/b/c` esetében nem `/a/bc`.
 
 Az alábbi Node.js látható a hívott függvény **generateSasToken** , amely kiszámítja a jogkivonatot a bemeneti adatok `resourceUri, signingKey, policyName, expiresInMins`. A következő szakaszok bemutatják, hogyan lehet inicializálni a különböző adatbevitelek esetében különböző token használati eseteit.
 
-```nodejs
+```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
     resourceUri = encodeURIComponent(resourceUri);
 
@@ -157,7 +157,7 @@ Például, egy szolgáltatást, egy előre létrehozott használatával létreho
 
 ![A Device Provisioning service-példány megosztott hozzáférési szabályzat létrehozása a portálon][img-add-shared-access-policy]
 
-```nodejs
+```javascript
 var endpoint ="mydps.azure-devices-provisioning.net";
 var policyName = 'enrollmentread'; 
 var policyKey = '...';

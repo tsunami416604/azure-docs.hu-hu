@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 8552a22db1518fe41be78d67f91d74f0370abd93
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d880615d0d132403c935fe39e8478d7b3fc48dbe
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479305"
+ms.locfileid: "55490073"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Frissítés vagy a hitelesítő adatok forgatása egyszerű szolgáltatások Azure Kubernetes Service (AKS)
 
@@ -44,7 +44,7 @@ SP_ID=$(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalP
 A változó beállítása, amely tartalmazza a szolgáltatásnév-Azonosítót, állítsa alaphelyzetbe a hitelesítő adatok használatával [az ad sp hitelesítő adatok alaphelyzetbe állítása][az-ad-sp-credential-reset]. Az alábbi példa az Azure-biztonságos új titkos kód létrehozása a szolgáltatásnévhez tartozó platform lehetővé teszi. Az új biztonságos titkos kulcsot is egy változóban van tárolva.
 
 ```azurecli-interactive
-SP_SECRET=$(az ad sp credential reset --name $AKS_SP --query password -o tsv)
+SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
 Most már továbbléphet a következőre [AKS-fürt frissítése új hitelesítő adatokkal](#update-aks-cluster-with-new-credentials).

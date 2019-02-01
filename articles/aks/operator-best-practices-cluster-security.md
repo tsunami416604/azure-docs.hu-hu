@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 0c12136fb0c866ceebf83f6352a33b7e2791ad0f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d9ce2661fbdca0a28f917e27e27a3e3f954a9999
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717211"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488382"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások Fürtbiztonság és frissítése az Azure Kubernetes Service (AKS)
 
@@ -51,6 +51,9 @@ Az Azure AD-integrációs és RBAC kapcsolatos további információkért lásd:
 Ugyanolyan módon, hogy adja meg az felhasználókat és csoportokat a legalacsonyabb jogosultságok száma szükséges tárolókat is kell korlátozni, csak a műveletek és a szükséges folyamatokat. A támadás veszélyét minimalizálása érdekében ne konfiguráljon alkalmazásokat és tárolókat, amelyek eszkalált jogosultságokat igénylő, vagy a legfelső szintű hozzáférést. Ha például `allowPrivilegeEscalation: false` a pod-jegyzékfájlban. Ezek *pod biztonsági környezetben* beépített Kubernetes és a segítségével meghatározhatja, például a felhasználó vagy csoport futtathat, további engedélyeket, vagy milyen Linux funkciók elérhetővé. További információ az ajánlott eljárásokról,: [erőforrásokhoz való hozzáférés biztonságos pod][pod-security-contexts].
 
 Részletesebb vezérléshez tároló műveleteket, használhatja a beépített Linux biztonsági funkciók például *AppArmor* és *seccompot*. Ezeket a funkciókat a csomópont szintjén megadott, és ezután a pod jegyzékfájl keresztül megvalósított.
+
+> [!NOTE]
+> Kubernetes-környezetekből AKS vagy máshol, nem teljesen biztonságos megerősítve a rosszindulatú több-bérlős alkalmazásokhoz. További biztonsági szolgáltatások, például a *AppArmor*, *seccompot*, *Pod biztonsági házirendek*, vagy további részletes szerepköralapú hozzáférés-vezérlést (RBAC) csomópontok azokat kihasználó támadások ellen sokkal nehezebb. Igaz biztonsági megerősítve a rosszindulatú több-bérlős-alapú számítási feladatait, azonban a hipervizort, hogy bízzon meg biztonsági csak szintjét. A Kubernetes esetében a biztonsági tartományához lesz a teljes fürtöt, nem az egyes csomópontok. Az ilyen típusú megerősítve a rosszindulatú több-bérlős számítási feladatokhoz fizikailag elkülönített fürtök kell használnia.
 
 ### <a name="app-armor"></a>Alkalmazás-motor
 

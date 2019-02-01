@@ -9,20 +9,18 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66f9c41e2551dffc32932f1cfa53fa444251b303
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 2c1a03d164462da0bc9143399dbcb1e76302433b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301050"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507892"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Hitelesítés a egy privát Docker regisztrációs adatbázist
 
 Többféleképpen is lehet egy Azure container registryt, amelyek mindegyike esetében alkalmazható egy vagy több beállításjegyzék használati forgatókönyvek a hitelesítéshez.
 
 Egy beállításjegyzék-on keresztül bejelentkezhet [egyéni bejelentkezési](#individual-login-with-azure-ad), vagy az alkalmazások és tárolóvezénylőt hajthat végre felügyelet nélküli vagy "távfelügyelt" hitelesítés Azure Active Directory (Azure AD) használatával [ egyszerű szolgáltatás](#service-principal).
-
-Az Azure Container Registry támogatja a Docker-műveletek nem hitelesített vagy névtelen hozzáférés. A nyilvános lemezképeket használhatja [Docker Hub](https://docs.docker.com/docker-hub/).
 
 ## <a name="individual-login-with-azure-ad"></a>Egyéni bejelentkezési az Azure ad-vel
 

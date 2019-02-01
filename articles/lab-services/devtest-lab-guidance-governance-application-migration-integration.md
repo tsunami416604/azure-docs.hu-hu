@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 8a661c94ecc660e0ebd0e9818acef81b8a7b819b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 4bab3413b3e3cfcf1972b6cf721120d95851f7cd
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978615"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498199"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Az Azure DevTest Labs-infrastruktúra - alkalmazás áttelepítését és integrálását cégirányítási
 A fejlesztési/tesztelési hálózati környezet létrehozása után kell gondolja át az alábbi kérdésekre:
@@ -58,13 +58,13 @@ Egy további figyelembe vegye figyelembe azonban, a gyakori változásai a szoft
 Hogyan állítható be egy egyszerű, megismételhető folyamattal ahhoz, hogy saját egyéni szervezeti lemezképek DevTest Labs-környezetben?
 
 ### <a name="answer"></a>Válasz
-Lásd: [ezt a videót a Immage gyári minta](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Ebben a forgatókönyvben a speciális helyzetben, és a megadott szkriptek mintaszkriptek csak. Ha módosítások szükségesek, kezelésére és karbantartására a környezetében használt parancsfájlokra szüksége.
+Lásd: [ezt a videót a lemezkép gyári minta](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Ebben a forgatókönyvben a speciális helyzetben, és a megadott szkriptek mintaszkriptek csak. Ha módosítások szükségesek, kezelésére és karbantartására a környezetében használt parancsfájlokra szüksége.
 
 DevTest Labs használatával hozhat létre egy egyéni rendszerkép folyamatot az Azure-folyamatok:
 
-- [Bevezetés: Felkészülés a virtuális gépek percek alatt beállításával egy kép factoryt az Azure DevTest Labs szolgáltatásban](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
+- [Bemutatása: Felkészülés a virtuális gépeket percek alatt beállításával egy kép factoryt az Azure DevTest Labs szolgáltatásban](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
 - [Kép gyári – 2. rész! Hozhat létre virtuális gépeket Azure folyamatok és gyári tesztkörnyezet beállítása](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [Kép gyári – 3. rész: Save egyéni rendszerképek használata és terjesztése a több Tesztkörnyezetekhez](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
+- [Kép gyári – 3. rész: Egyéni rendszerképek mentéséhez és a több Tesztkörnyezetekhez terjesztése](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
 - [Videó: Egyéni rendszerkép Factory az Azure DevTest Labs használatával](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>Állítsa be a hálózati konfigurációs minták
@@ -103,7 +103,7 @@ Mikor célszerű használni a magánhálózati IP-és nyilvános IP-cím és meg
 Ha egy helyek közötti VPN vagy Express Route használja, fontolja meg magánhálózati IP-címek, a gépek a belső hálózaton elérhetők, és nem érhető el legyenek a nyilvános interneten keresztül.
 
 > [!NOTE]
-> Labortulajdonosok módosíthatja a alhálózat házirend annak érdekében, hogy senki véletlenül hozzon létre nyilvános IP-címek a virtuális gépek számára. Az előfizetés tulajdonosa hozzon létre egy előfizetési szabályzat meggátolja, hogy a nyilvános IP-címek létrehozása folyamatban.
+> Labortulajdonosok módosíthatja a alhálózat házirend, győződjön meg arról, hogy senki véletlenül létrehozza a nyilvános IP-címek a virtuális gépek számára. Az előfizetés tulajdonosa hozzon létre egy előfizetési szabályzat meggátolja, hogy a nyilvános IP-címek létrehozása folyamatban.
 
 Megosztott nyilvános IP-címek használata esetén a virtuális gépek tesztkörnyezetben megosztása a nyilvános IP-cím. Ez a megközelítés akkor lehet hasznos, amikor szüksége van egy adott előfizetéshez tartozó nyilvános IP-címek korlátait megszegéséhez elkerülése érdekében.
 

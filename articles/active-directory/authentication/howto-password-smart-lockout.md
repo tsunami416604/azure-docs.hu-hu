@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 101070dab80c69ea1d24dd11fe5e067947505d19
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 8364d09aa2d068e347199d104c069047aa24d7a4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077964"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511904"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Az Azure Active Directory intelligens zárolás
 
@@ -23,7 +23,7 @@ Intelligens zárolás segíti a kártékony elemek számára kitalálni a felhas
 
 Alapértelmezés szerint az intelligens zárolási zárolja a fiókot a bejelentkezési kísérletek 10 sikertelen bejelentkezési kísérletek után egy percig. A fiók zárolása minden ezt követő sikertelen bejelentkezési kísérlet az első és az ezt követő kísérletek hosszabb egy perc múlva ismét.
 
-Intelligens zárolás nyomon követi az utolsó három rossz jelszavak kivonatait a fiókzárolási számláló reincrementing elkerülése érdekében. Ha valaki több alkalommal belép a rossz jelszót, ez a viselkedés nem okoz a fiók zárolása.
+Intelligens zárolás nyomon követi az utolsó három hibás jelszókivonatokat elkerülése érdekében ugyanazt a jelszót a fiókzárolási számláló növekszik. Ha valaki több alkalommal belép a rossz jelszót, ez a viselkedés nem okoz a fiók zárolása.
 
  > [!NOTE]
  > Nyomon követéséhez kivonat nem áll rendelkezésre az ügyfelek az átmenő hitelesítés engedélyezett, mint a hitelesítés történik, a felhőben nem helyszíni.

@@ -11,12 +11,12 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c199a403e65bd084428fd45e8dc67cca214f5f9f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 994b1eb3f0a39d56d02ff9ed034d7e348a00b86d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251282"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491841"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
 
@@ -33,26 +33,63 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Adatok átalakítása intelligens átalakítások használatával hozhat létre új funkciókat.
 > * Mentse az adatfolyamot objektumot a regressziós modellek használata.
 
-A Python-adatok segítségével előkészítheti a [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk).
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="get-the-notebook"></a>A notebook beszerzése
+Ugrás a [a fejlesztési környezet beállítása](#start) olvassa végig a notebook lépéseket, vagy használja az alábbi utasításokat a notebook beszerzése és az Azure notebookok vagy a saját notebook server futtatásához. A jegyzetfüzet futtatásához szüksége lesz:
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) is elérhető. Futtassa a **regressziós-1-adatok – prep.ipynb** notebook vagy [Azure notebookok](https://notebooks.azure.com/) vagy a saját Jupyter notebook server.
+* Egy Python 3.6-os notebook kiszolgálót a következőkkel:
+    * Az Azure Machine Learning Python SDK Adatelőkészítéshez
+* Az oktatóanyag notebook
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+Ezekről az előfeltételekről le az alábbi szakaszok egyikét.
 
-## <a name="import-packages"></a>Csomagok importálása
+* Használat [Azure notebookok](#azure)
+* Használat [saját notebook server](#server)
 
-Az SDK importálásával megkezdése.
+### <a name="azure"></a>Az Azure notebookok használata: Ingyenes Jupyter notebookok a felhőben
 
-```python
-import azureml.dataprep as dprep
-```
+Nem kell mást Azure notebookok használatának megkezdéséhez. A [az Azure Machine Learning Data Prep SDK Pythonhoz készült](https://aka.ms/data-prep-sdk) már telepítve és konfigurálva van az Ön számára [Azure notebookok](https://notebooks.azure.com/). A telepítés és a jövőbeli frissítések automatikusan felügyelt Azure-szolgáltatások használatával.
 
-Ha az oktatóanyag a saját Python-környezetben, használja a következő szükséges csomagok telepítéséhez.
+Után kövesse az alábbi lépéseket, futtassa a **oktatóanyagok/regressziós-1-adatok – prep.ipynb** jegyzetfüzetet a **bevezetés** projekt.
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+### <a name="server"></a>A saját Jupyter notebook server használata
+
+Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/regressziós-1-adatok – prep.ipynb** notebookot.
+
+1. Végezze el a [Azure Machine Learning Python rövid](quickstart-create-workspace-with-python.md) Miniconda környezet kialakításához.  Nyugodtan hagyja ki a **hozzon létre egy munkaterületet** szakaszt, ha kívánja, de szükség lesz rá a [2. rész](tutorial-auto-train-models.md) az oktatóanyag-sorozat.
+1. Az adatok előkészítő SDK telepítése az a környezet használatával `pip install azureml-dataprep`.
+1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
+
+    ```
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+
+1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
+
+    ```shell
+    jupyter notebook
+
+## <a name="start"></a>Set up your development environment
+
+All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+
+* Install the SDK
+* Import Python packages
+
+### Install and import packages
+
+Use the following to install necessary packages if you don't already have them.
 
 ```shell
 pip install azureml-dataprep
+```
+
+Importálja az SDK-t.
+
+```python
+import azureml.dataprep as dprep
 ```
 
 ## <a name="load-data"></a>Adatok betöltése

@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 493dc834319d8f5842a7f9f5c4ca568742264df9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ed32cbabe5f80e131f467a87378eda8912b9a65e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180466"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496254"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció ismertetése
 Ez a cikk ismerteti az out-of-box konfigurációs szabályok. Dokumentumok, és ezek a szabályok milyen hatással van a konfigurációs szabályok. Ez azt is bemutatja az Azure AD Connect-szinkronizálással használható alapértelmezett konfigurációt. A célja, hogy az olvasó felismeri a deklaratív kiépítés nevű konfigurációs modell egy való életből vett példában működéséről. Ez a cikk azt feltételezi, hogy már telepítette, és a telepítővarázsló használata az Azure AD Connect-szinkronizálás beállítása.

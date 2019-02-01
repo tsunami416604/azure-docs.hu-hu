@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.openlocfilehash: f688c0e277f807ff27731c103ca407807052c9d3
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199748"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508317"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Azure natív tanúsítványalapú hitelesítésének használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: PowerShell
 
@@ -45,7 +45,7 @@ A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a seg
   * **Alhálózati címtartomány: 192.168.1.0/24**
 * **Alhálózat neve: Háttér**
   * **Alhálózati címtartomány: 10.254.1.0/24**
-* **Alhálózat neve: Átjáró-alhálózat**<br>Ennek az alhálózatnak kötelező a *GatewaySubnet* nevet adni, ellenkező esetben nem működik a VPN-átjáró.
+* **Alhálózat neve: GatewaySubnet**<br>Ennek az alhálózatnak kötelező a *GatewaySubnet* nevet adni, ellenkező esetben nem működik a VPN-átjáró.
   * **Átjáróalhálózat címtartománya: 192.168.200.0/24** 
 * **VPN-ügyfélcímkészlet: 172.16.201.0/24**<br>Azok a VPN-ügyfelek, amelyek ezzel a pont–hely kapcsolattal csatlakoznak a virtuális hálózathoz, a VPN-ügyfél címkészletből kapnak IP-címet.
 * **Előfizetés:** Ha több előfizetéssel rendelkezik, győződjön meg arról, hogy a megfelelőt használja-e.
@@ -54,7 +54,7 @@ A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a seg
 * **DNS-kiszolgáló: IP-cím** a névfeloldáshoz használni kívánt DNS-kiszolgáló. (nem kötelező)
 * **Átjáró neve: Vnet1GW**
 * **Nyilvános IP-név: VNet1GWPIP**
-* **VPN típusa: Útvonalalapú** 
+* **VpnType: Útvonalalapú** 
 
 ## <a name="declare"></a>1. Jelentkezzen be, és a változók beállítása
 

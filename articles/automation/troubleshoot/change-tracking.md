@@ -6,25 +6,25 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/24/2018
+ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 63dc7148904089a31ff95764898a8dac72c37049
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2a6610b5cb3f01fc70b1737fc4492e09d9a7637b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421336"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507334"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>A Change Tracking és Inventory hibaelhárítása
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>Forgatókönyv: Változáskövetési rekordok nem jelennek meg az Azure Portalon
+### <a name="records-not-showing-windows"></a>Forgatókönyv: Változáskövetési rekordok nem jelennek meg a Windows-gépeken
 
 #### <a name="issue"></a>Probléma
 
-Gépek, amelyek előkészíteni a Change Tracking megoldásba készlet vagy a Change Tracking eredményt nem jelenik meg.
+Windows-gépek, amelyek előkészíteni a Change Tracking megoldásba készlet vagy a Change Tracking eredményt nem jelenik meg.
 
 #### <a name="cause"></a>Ok
 
@@ -38,12 +38,13 @@ Ez a hiba oka lehet a következő okok miatt:
 #### <a name="resolution"></a>Megoldás:
 
 1. Ellenőrizze a **Microsoft Monitoring Agent** (HealthService.exe) fut a gépen.
-2. Látogasson el, [hálózattervezés](../automation-hybrid-runbook-worker.md#network-planning) további információt arról, hogy mely címeket és portokat engedélyezni kell, a Change Tracking megoldásba működjön.
-3. Győződjön meg arról, hogy a Change Tracking and Inventory felügyeleti csomagokat létezik helyileg:
+1. Ellenőrizze **Eseménynapló** a gépre, és keresse a más eseményeket, amelyek szó szerepel `changetracking` bennük.
+1. Látogasson el, [hálózattervezés](../automation-hybrid-runbook-worker.md#network-planning) további információt arról, hogy mely címeket és portokat engedélyezni kell, a Change Tracking megoldásba működjön.
+1. Győződjön meg arról, hogy a Change Tracking and Inventory felügyeleti csomagokat létezik helyileg:
     * Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
     * Microsoft.IntelligencePacks.InventoryChangeTracking.*
     * Microsoft.IntelligencePacks.SingletonInventoryCollection.*
-4. Ha egy klónozott lemezképét, a sysprep lemezkép használatával először, és a Microsoft Monitoring Agent ügynök telepítése után az a tény.
+1. Ha egy klónozott lemezképét, a sysprep lemezkép használatával először, és a Microsoft Monitoring Agent ügynök telepítése után az a tény.
 
 Ha ezek a megoldások nem sikerül megoldani a problémát, és kapcsolatba lép a támogatással, futtathatja az alábbi parancsokat a diagnosztikai gyűjtése az ügynökön
 

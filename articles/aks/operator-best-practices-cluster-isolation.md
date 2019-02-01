@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3a4b62fb16745a3b226bda6c0574812278a34456
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428731"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495003"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürt elkülönítés az Azure Kubernetes Service (AKS)
 
@@ -43,6 +43,8 @@ Logikai elkülönítés egy AKS-fürt több számítási feladatokhoz, csapatok 
 ![Logikai elkülönítéssel egy Kubernetes-fürt az aks-ben](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
 Fürtök logikai elkülönítése általában a fizikailag elkülönített fürtök, mint a magasabb pod sűrűségű nyújt. Nincs a fürtben üresjárati kevesebb számítási kapacitás, amely helyezkedik el. A Kubernetes-fürt méretező kombinálva, a csomópontok számát a felfelé vagy lefelé találkozik a növekvő igények szerint skálázhatja. Az ajánlott eljárásokat írják le az automatikus skálázás lehetővé teszi a Futtatás csak a szükséges csomópontok számát, és minimálisra csökkenti a költségeket.
+
+Kubernetes-környezetekből AKS vagy máshol, nem teljesen biztonságos megerősítve a rosszindulatú több-bérlős alkalmazásokhoz. További biztonsági szolgáltatások, például a *Pod biztonsági házirend* és további részletes szerepköralapú hozzáférés-vezérlést (RBAC) csomópontok megnehezítik a biztonsági rések kiaknázását. Igaz biztonsági megerősítve a rosszindulatú több-bérlős-alapú számítási feladatait, azonban a hipervizort, hogy bízzon meg biztonsági csak szintjét. A Kubernetes esetében a biztonsági tartományához lesz a teljes fürtöt, nem az egyes csomópontok. Az ilyen típusú megerősítve a rosszindulatú több-bérlős számítási feladatokhoz fizikailag elkülönített fürtök kell használnia.
 
 ## <a name="physically-isolate-clusters"></a>Fizikailag a fürtök elkülönítése
 

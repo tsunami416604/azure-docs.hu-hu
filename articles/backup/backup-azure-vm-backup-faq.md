@@ -2,18 +2,18 @@
 title: Az Azure VM Backup – gyakori kérdések
 description: 'Válaszok a következő gyakori kérdésekre: hogyan működik az Azure-beli virtuális gépek biztonsági mentése, mik a korlátozások, és mi történik, ha módosítások történnek a szabályzatban'
 services: backup
-author: trinadhk
-manager: shreeshd
+author: sogup
+manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
-ms.author: trinadhk
-ms.openlocfilehash: 31a708f3a0da76ab13e789b099f312cca1f86e08
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.author: sogup
+ms.openlocfilehash: 55fbc997f6aaf4cf99bfb8492a2e4ac608c72af8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332251"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494901"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Gyakori kérdések – Azure Backup
 

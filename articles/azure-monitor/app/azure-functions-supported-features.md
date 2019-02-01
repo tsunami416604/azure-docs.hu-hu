@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 06feece050835b2b9188eb702210770b44a6b49c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: dd28bc3925b0f07a441c46a26498ef1a14c3e650
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185811"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510323"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights az Azure Functions támogatott szolgáltatások
 
@@ -32,6 +32,7 @@ Azure Functions-ajánlatok [beépített integráció](https://docs.microsoft.com
 | **Automatikus gyűjteménye**        |                 |                   |               
 | &bull; Kérelmek                     | Igen             | Igen               | 
 | &bull; Kivételek                   | Igen             | Igen               | 
+| &bull; Teljesítményszámlálók         | Igen             |                   |
 | &bull; Függőségek                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Igen               | 
 | &nbsp;&nbsp;&nbsp;&mdash; Szolgáltatásbusz|                 | Igen               | 
@@ -50,6 +51,11 @@ Azure Functions-ajánlatok [beépített integráció](https://docs.microsoft.com
 | | | | 
 | **Konfigurálható**                      |                   |                   |           
 | &bull;Teljes mértékben konfigurálhatók.<br/>Lásd: [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) útmutatást.<br/>Lásd: [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) összes beállításának.               |                   | Igen                   | 
+
+
+## <a name="performance-counters"></a>Teljesítményszámlálók
+
+A teljesítményszámlálók automatikus gyűjtését csak a Windows-gépek működik.
 
 
 ## <a name="live-metrics--secure-control-channel"></a>Élő metrikák és biztonságos vezérlőcsatorna

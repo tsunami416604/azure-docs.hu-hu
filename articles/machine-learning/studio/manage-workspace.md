@@ -1,7 +1,21 @@
 ---
-Cím: A Machine Learning Studio-munkaterület titleSuffix kezelése: Azure Machine Learning Studio description: Az Azure Machine Learning-munkaterületek való hozzáférés kezelése és üzembe helyezése és Machine Learning API szolgáltatás webszolgáltatások kezelése: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 02/27/2017
+title: A Machine Learning Studio-munkaterület kezelése
+titleSuffix: Azure Machine Learning Studio
+description: Az Azure Machine Learning-munkaterületek, való hozzáférés kezelése és üzembe helyezése és gépi Tanulási API-webszolgáltatások kezelése
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 02/27/2017
+ms.openlocfilehash: f1904552b6c43cadd611659ed544b9f4bafcb465
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487275"
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>Az Azure Machine Learning Studio-munkaterület kezelése
 

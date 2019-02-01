@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1671a068611d9f5842c2cb09f3b83b18dd483921
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d61b39eb0a7b6a35330e0cde2142029b8eb7ce03
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820682"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512210"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizálhatja az erőforrások az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó
 
@@ -51,13 +51,13 @@ Tekintse át a [információk a hálózat tervezése](#network-planning) egy hib
 Egy vagy több hibrid forgatókönyv-feldolgozók eltávolíthatja a csoportból, vagy eltávolíthatja a csoport a követelményektől függően. A helyi számítógépről egy hibrid Runbook-feldolgozó eltávolításához használja az alábbi lépéseket:
 
 1. Az Azure Portalon nyissa meg az Automation-fiók.
-2. Alatt **beállítások**, jelölje be **kulcsok** , és jegyezze fel a tartozó értékeket **URL-cím** és **elsődleges elérési kulcs**. Ezt az információt a következő lépésre van szükség.
+2. Alatt **Fiókbeállítások**, jelölje be **kulcsok** , és jegyezze fel a tartozó értékeket **URL-cím** és **elsődleges elérési kulcs**. Ezt az információt a következő lépésre van szükség.
 
 ### <a name="windows"></a>Windows
 
 Nyisson meg egy PowerShell-munkamenetet rendszergazdai módban, és futtassa a következő parancsot. Használja a **-Verbose** váltani, az eltávolítási folyamat részletes naplók.
 
-```powershell
+```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 ```
 
@@ -68,6 +68,8 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <Comp
 ```
 
 ### <a name="linux"></a>Linux
+
+A parancs használata `ls /var/opt/microsoft/omsagent` beolvasni a munkaterület azonosítója a hibrid Runbook-feldolgozón. Van egy mappát a könyvtárat, amelyben a mappa neve, a munkaterület azonosítóját.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
@@ -81,11 +83,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 Eltávolítja a csoportot, akkor először távolítsa el a hibrid Runbook-feldolgozó minden olyan számítógépről, amely tagja a csoportnak a korábban bemutatott eljárás használatával. Ezután a következő lépések segítségével távolítsa el a csoportot:
 
 1. Nyissa meg az Automation-fiókot az Azure Portalon.
-1. A **Folyamatautomatizálás**válassza **hibrid feldolgozócsoportok**. Válassza ki a törölni kívánt csoportot. A csoport tulajdonságok lapján jelenik meg.
+2. A **Folyamatautomatizálás**válassza **hibrid feldolgozócsoportok**. Válassza ki a törölni kívánt csoportot. A csoport tulajdonságok lapján jelenik meg.
 
    ![Tulajdonságok lap](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-1. A kiválasztott csoport tulajdonságai lapon válassza ki a **törlése**. A rendszer megkérdezi, hogy erősítse meg a műveletet. Válassza ki **Igen** Ha biztos abban, hogy szeretné-e továbbra is.
+3. A kiválasztott csoport tulajdonságai lapon válassza ki a **törlése**. A rendszer megkérdezi, hogy erősítse meg a műveletet. Válassza ki **Igen** Ha biztos abban, hogy szeretné-e továbbra is.
 
    ![Megerősítő üzenet](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 

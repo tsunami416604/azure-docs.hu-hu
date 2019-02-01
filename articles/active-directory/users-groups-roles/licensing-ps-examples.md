@@ -1,24 +1,24 @@
 ---
-title: Az Azure AD-ben Csoportalapú licencelés PowerShell és a Microsoft Graph példák |} A Microsoft Docs
+title: PowerShell és a Graph példák a Csoportalapú licencelés – Azure Active Directory |} A Microsoft Docs
 description: Az Azure Active Directory Csoportalapú licencelés PowerShell-forgatókönyvek
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 10/29/2018
+ms.date: 01/31/2019
 ms.author: curtand
-ms.openlocfilehash: 635bfd2a28c8ccd7f6e0b64d862141c73c5308db
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.reviewer: sumitp
+ms.openlocfilehash: 4d84ff6a07c6536215a43a83cb614e0662c8cfb3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193199"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508267"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure ad-ben
 

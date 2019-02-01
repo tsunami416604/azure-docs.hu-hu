@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/30/2019
+ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: bbf1eb623232332ed025fa0806e942e638c39974
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e3412e31ae976efc8164076b30ad61360a030db4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456051"
+ms.locfileid: "55511938"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Adatok áttelepítése az a StorSimple 5000-7000-es sorozat beállításai 
 
@@ -29,23 +29,31 @@ A StorSimple 5000-7000-es sorozat eléri-e [támogatásuk](https://support.micro
 
 ## <a name="migration-options"></a>Áttelepítési beállítások
 
-A StorSimple 5000-7000-es sorozat használó ügyfelek az alábbi lehetőségei vannak:
+A StorSimple használatával az ügyfelek 5000 – 7000 sorozatú Azure-ban vagy külső beállítások rendelkezik.
 
-- **Azure-lehetőségeket**:
+### <a name="azure-options"></a>Azure-lehetőségek
 
-    - **Frissítés a StorSimple 8000 sorozat** – frissítsen a StorSimple 8000-es sorozat, és így továbbra is a StorSimple-platformon.  Ezeket a frissítési lépéseket igényel az ügyfelek számára, hogy az 5000 – 7000 sorozatú eszközöket cserélje le a 8000-es sorozat. Az adatok áttelepítése az 5000 – 7000 sorozatú eszközről az áttelepítési eszköz használatával. Az áttelepítés sikeres végrehajtása után a StorSimple 8000 sorozatú eszközök továbbra is az Azure Blob Storage-szintű adatforgalom. 
+#### <a name="upgrade-to-storsimple-8000-series"></a>Frissítés a StorSimple 8000 sorozat
 
-    A StorSimple 8000 sorozat használata az adatok migrálása további információkért látogasson el [át adatokat a StorSimple 5000-7000-es sorozat a 8000-es sorozatú eszköz](storsimple-8000-migrate-from-5000-7000.md).
+A StorSimple 8000 sorozat váltson, és így továbbra is a StorSimple-platformon.  Ezeket a frissítési lépéseket igényel az ügyfelek számára, hogy az 5000 – 7000 sorozatú eszközöket cserélje le a 8000-es sorozat. Az adatok áttelepítése az 5000 – 7000 sorozatú eszközről az áttelepítési eszköz használatával. Az áttelepítés sikeres végrehajtása után a StorSimple 8000 sorozatú eszközök továbbra is az Azure Blob Storage-szintű adatforgalom. 
 
-    - **Az Azure File Sync át** – Ez teljesen új áttelepítési beállítás lehetővé teszi az ügyfelek számára, hogy a cég fájlmegosztások tárolása az Azure Files. Ezek a fájlmegosztások az Azure File Sync (AFS) használatával a helyszíni hozzáférés majd központi üzemelnek. AFS is telepíthető a Windows Server-gazdagépen. Az adatok tényleges áttelepítése akkor hajt végre gazdagépként példányát, vagy az áttelepítési eszköz használata.
+A StorSimple 8000 sorozat használata az adatok migrálása további információkért látogasson el [át adatokat a StorSimple 5000-7000-es sorozat a 8000-es sorozatú eszköz](storsimple-8000-migrate-from-5000-7000.md).
 
-    Adatok áttelepítése az Azure File Sync további információkért látogasson el [át adatokat a StorSimple 5000-7000-es sorozat az Azure File Sync](https://aka.ms/StorSimpleMigrationAFS).
+#### <a name="migrate-to-azure-file-sync"></a>Az Azure File Sync áttelepítése
 
-- **Külső beállítások**:
+A teljesen új áttelepítési beállítás lehetővé teszi, hogy az ügyfelek számára a szervezeti fájlmegosztások tárolása az Azure Files. Ezek a fájlmegosztások az Azure File Sync (AFS) használatával a helyszíni hozzáférés majd központi üzemelnek. AFS is telepíthető a Windows Server-gazdagépen. Az adatok tényleges áttelepítése akkor hajt végre gazdagépként példányát, vagy az áttelepítési eszköz használata.
 
-    - **Panzura szabadon NAS át** – a StorSimple 5000-7000-es ügyfelek kiválaszthatják a Panzura szabadon NAS tárolni az adatokat az Azure-ban való áttelepítéséhez. Panzura szabadon megoldás egy NAS-megoldás, adatközpontok, iroda, nyilvános és magánfelhőkben is biztosít. A megoldás lehetővé teszi a helyi, hibrid és a felhőbeli adatok munkafolyamatok NFS, SMB és mobilos ügyfeleket. Ez az áttelepítés Panzura által támogatott és Kezdésként igénylésével az áttelepítés támogatása a [Panzura webhely](https://panzura.com/storsimple-migration/).
+Adatok áttelepítése az Azure File Sync további információkért látogasson el [át adatokat a StorSimple 5000-7000-es sorozat az Azure File Sync](https://aka.ms/StorSimpleMigrationAFS).
 
-    - **A Cohesity áttelepítése** -Cohesity lehetővé teszi, hogy a jelenlegi storsimple 5000 – 7000-es adatokat át a Cohesity Data Platform az Azure-ban. A Cohesity Adatplatform, amely egyesíti a fájlokat, a biztonsági mentések, a objektumok és a virtuális gépek egyetlen natív felhőalapú megoldás alakzatot szoftveresen definiált webes méretű megoldás is. A Data platform az áttelepítés után kezelése, védelme és kiépítése az adatokhoz és alkalmazásokhoz a felhőből egy egyetlen tekinthesse keresztül maghoz. Indítsa el a Cohesity, mindössze három csomóponttal. További információ a [áttelepítés, a Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
+### <a name="third-party-options"></a>Külső beállításai
+
+#### <a name="migrate-to-panzura-freedom-nas"></a>Panzura szabadon NAS áttelepítése
+
+A StorSimple 5000-7000-es ügyfelek kiválaszthatják a Panzura szabadon NAS tárolni az adatokat az Azure-ban való áttelepítéséhez. Panzura szabadon megoldás egy NAS-megoldás, adatközpontok, iroda, nyilvános és magánfelhőkben is biztosít. A megoldás lehetővé teszi a helyi, hibrid és a felhőbeli adatok munkafolyamatok NFS, SMB és mobilos ügyfeleket. Ez az áttelepítés Panzura által támogatott és Kezdésként igénylésével az áttelepítés támogatása a [Panzura webhely](https://panzura.com/storsimple-migration/).
+
+#### <a name="migrate-to-cohesity"></a>A Cohesity áttelepítése
+
+Cohesity lehetővé teszi, hogy a jelenlegi storsimple 5000 – 7000-es adatok áttelepítését a Cohesity Data Platform az Azure-ban. A Cohesity Adatplatform, amely egyesíti a fájlokat, a biztonsági mentések, a objektumok és a virtuális gépek egyetlen natív felhőalapú megoldás alakzatot szoftveresen definiált webes méretű megoldás is. A Data platform az áttelepítés után kezelése, védelme és kiépítése az adatokhoz és alkalmazásokhoz a felhőből egy egyetlen tekinthesse keresztül maghoz. Indítsa el a Cohesity, mindössze három csomóponttal. További információ a [áttelepítés, a Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
 
 ## <a name="migration---frequently-asked-questions"></a>Migrálás – gyakori kérdések
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 6356d930b5bf909f1b209272e7367f5e2dcd5a13
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: da195f414da032b5274a9dc1a184b66094f245f2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444615"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493441"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrálása belső vnet-en az API Management az Application Gateway segítségével
 
@@ -61,11 +61,11 @@ Az első telepítő minden API-felügyelt csak a virtuális hálózaton belül. 
 
 * **Háttér-kiszolgálókészlet:** Ez az API Management szolgáltatás belső virtuális IP-címe.
 * **Háttér-kiszolgálókészlet beállításai:** Minden készletnek vannak beállításai, például port, protokoll vagy cookie-alapú affinitás. Ezek a beállítások a készlet minden kiszolgálójára érvényesek.
-* **Előtérbeli port:** Ez az, hogy az application gateway-en megnyitott nyilvános port. Szerezze meg a, forgalom átirányítja a háttér-kiszolgálók valamelyikével.
-* **Figyelő:** A figyelő egy előtérbeli porttal, egy protokollal (Http vagy Https, a kis- és a nagybetűk megkülönböztetésével) és SSL tanúsítványnévvel rendelkezik (SSL-kiszervezés konfigurálásakor).
-* **Szabály:** a szabály köti a figyelőt egy háttér-kiszolgálókészlethez.
-* **Egyéni állapotadat-mintavétel:** Application Gateway alapértelmezés szerint segítségével IP-cím alapú mintavételek döntse el, hogy mely kiszolgálók a értékre aktívak. Az API Management szolgáltatás csak válaszol a megfelelő állomásfejléc-kérelmek, ezért az alapértelmezett mintavételek sikertelen. Egyéni állapotmintát kell definiálni, határozza meg, hogy a szolgáltatás működik-e, és továbbítsa a kérelmek az application gateway segítségével.
-* **Egyéni tartomány tanúsítványok:** szeretne hozzáférni az API Management az internetről, hozzon létre egy CNAME-leképezés az Application Gateway előtér DNS-nevével a hostname kell. Ez biztosítja, hogy a hostname fejléc és az Application Gateway és az API Management továbbított küldött tanúsítvány egy APIM felismerje, érvényes. Ebben a példában két tanúsítványok – használjuk a háttérrendszer és a fejlesztői portál.  
+* **Előtérbeli port:** Ez az application gateway-en megnyitott nyilvános port. Szerezze meg a, forgalom átirányítja a háttér-kiszolgálók valamelyikével.
+* **Figyelő:** A figyelő rendelkezik egy előtérbeli porttal, egy protokollal (Http vagy Https, ezek az értékek olyan kis-és nagybetűket), és az SSL-tanúsítvány neve (-kiszervezés konfigurálásakor SSL).
+* **Szabály:** A szabály köti a figyelőt egy háttér-kiszolgálókészlethez.
+* **Egyéni állapotadat-mintavétel:** Application Gateway alapértelmezés szerint használatával IP-cím alapú mintavételek döntse el, hogy mely kiszolgálók a értékre aktívak. Az API Management szolgáltatás csak válaszol a megfelelő állomásfejléc-kérelmek, ezért az alapértelmezett mintavételek sikertelen. Egyéni állapotmintát kell definiálni, határozza meg, hogy a szolgáltatás működik-e, és továbbítsa a kérelmek az application gateway segítségével.
+* **Egyéni tartomány tanúsítványok:** Szeretne hozzáférni az API Management az internetről, szeretne létrehozni egy CNAME-leképezés, az állomásnév az Application Gateway előtér DNS-nevével. Ez biztosítja, hogy a hostname fejléc és az Application Gateway és az API Management továbbított küldött tanúsítvány egy APIM felismerje, érvényes. Ebben a példában két tanúsítványok – használjuk a háttérrendszer és a fejlesztői portál.  
 
 ## <a name="overview-steps"> </a> Az API Management és az Application Gateway való integrálásához szükséges lépéseket
 
@@ -82,7 +82,7 @@ Az első telepítő minden API-felügyelt csak a virtuális hálózaton belül. 
 Ebben az útmutatóban fog is elérhetővé tesszük a **fejlesztői portál** a külső célközönség az Application Gatewayen keresztül. Fejlesztői portál figyelőt, mintavételi, beállítások és szabályok létrehozásához további lépések szükségesek. Az összes részletei is szerepelnek a megfelelő lépéseket.
 
 > [!WARNING]
-> Az itt ismertetett beállítások a fejlesztői portál Application Gatewayen keresztül elért az AAD és a harmadik féltől származó hitelesítési problémákat tapasztalhat.
+> Ha az Azure AD használata, illetve harmadik fél hitelesítési, engedélyezze [cookie-alapú munkamenet-affinitás](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) az Application Gateway szolgáltatást.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Erőforráscsoport létrehozása a Resource Managerhez
 

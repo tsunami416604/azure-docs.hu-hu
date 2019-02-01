@@ -6,16 +6,16 @@ author: diberry
 manager: cgronlun
 ms.custom: include file
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.date: 10/08/2018
 ms.author: diberry
-ms.openlocfilehash: 11d0461e8d7c2711445856ecd255619a92dd6cb5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1e4571080a126a771b644f19fc298d26c10a436f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53107283"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480667"
 ---
 A **Manage** (Kezelés) szakaszban (jobb felső menü), a **Keys and endpoints** (Kulcsok és végpontok) lapon (bal oldali menü) kattintson a lap alján található **végpont** URL-címére. Ez a művelet megnyit egy másik böngészőfület, amelynek címsorában a végpont URL-címe látható. 
 

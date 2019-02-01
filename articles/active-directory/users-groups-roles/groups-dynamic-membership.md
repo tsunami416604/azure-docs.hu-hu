@@ -1,25 +1,24 @@
 ---
-title: Dinamikus automatikus tagsági szabályok hivatkoznak az Azure Active Directoryban |} A Microsoft Docs
+title: Dinamikus automatikus tagsági szabályok – Azure Active Directory |} A Microsoft Docs
 description: Hogyan lehet automatikusan feltölti a csoportokat és a egy odkaz nA pravidlo tagsági szabályok létrehozásához.
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 98638c2fbd3f60ec0db009b52507eadcadd87ab4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 309e686d563798c34d2ab40af0ac1a6e6368b4e7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172323"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509116"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -40,7 +39,7 @@ A tagsági szabály, amely automatikusan feltölti a felhasználók vagy eszköz
 
 * Tulajdonság
 * Művelet
-* Value
+* Érték
 
 A kifejezés a kijelzők sorrendje fontosak szintaktikai hibák elkerülése érdekében.
 
@@ -61,7 +60,7 @@ Zárójelek egyetlen kifejezés nem kötelezően megadandó jellegűek. A tagsá
 Három feltételtípus tulajdonságok, a tagsági szabály létrehozására használható.
 
 * Logikai
-* Karakterlánc
+* String
 * Karakterlánc-gyűjtemény
 
 Az alábbiakban a felhasználói tulajdonságok, amelyek segítségével hozzon létre egy egyetlen kifejezés.

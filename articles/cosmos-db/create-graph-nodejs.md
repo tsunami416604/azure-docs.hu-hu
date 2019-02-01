@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 11eec492501f7ead639aa928fe0ddaafb2f1d1bc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 400784fbc34a877b91ad0bdc2203b1992a537555
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033672"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509966"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Az Azure Cosmos DB: Node.js-alkalmazás létrehozása a Gremlin API-val
 
@@ -78,7 +78,7 @@ Az alábbi kódrészletek mind az app.js fájlból származnak.
 
 * Létrejön a Gremlin-ügyfél.
 
-    ```nodejs
+    ```javascript
     const client = Gremlin.createClient(
         443, 
         config.endpoint, 
@@ -94,7 +94,7 @@ Az alábbi kódrészletek mind az app.js fájlból származnak.
 
 * A rendszer függvények sorozatát definiálja a különböző Gremlin-műveletek végrehajtásához. Ez az egyik közülük:
 
-    ```nodejs
+    ```javascript
     function addVertex1(callback)
     {
         console.log('Running Add Vertex1'); 
@@ -108,7 +108,7 @@ Az alábbi kódrészletek mind az app.js fájlból származnak.
 
 * Mindegyik függvény végrehajt egy `client.execute` metódust egy Gremlin lekérdezési sztring paraméterrel. Itt egy példa a `g.V().count()` végrehajtására:
 
-    ```nodejs
+    ```javascript
     console.log('Running Count'); 
     client.execute("g.V().count()", { }, (err, results) => {
         if (err) return console.error(err);
@@ -119,7 +119,7 @@ Az alábbi kódrészletek mind az app.js fájlból származnak.
 
 * A fájl végén a rendszer minden metódust meghív az `async.waterfall()` metódus használatával. Így egymás után lesznek végrehajtva:
 
-    ```nodejs
+    ```javascript
     try{
         async.waterfall([
             dropGraph,
@@ -158,7 +158,7 @@ Az alábbi kódrészletek mind az app.js fájlból származnak.
 
 Az elkészült config.js fájl olyan lesz, ahogy az alábbi példában látható:
 
-```nodejs
+```javascript
 var config = {}
 
 // Note that this must not have HTTPS or the port number

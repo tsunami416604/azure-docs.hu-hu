@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: a82ea1e7f584cd9cab794d147c3f19f04e23732b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 953615a9c6b716db1db0c7bfb993f3d47aefd7a9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474802"
+ms.locfileid: "55507773"
 ---
 # <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -130,13 +130,13 @@ A Storage ügyfélkódtárai tartalmaznak olyan metódusokat, amelyek meghívás
 
 Az ügyféloldali titkosítással kapcsolatos további információkért látogasson el ide: [Ügyféloldali titkosítás a .NET for Microsoft Azure Storage szolgáltatással](storage-client-side-encryption.md).
 
-## <a name="replication"></a>Replikáció
+## <a name="redundancy"></a>Redundancia
 
-Az adatok tartósságának biztosítása érdekében az Azure Storage több példányban replikálja az adatokat. A Storage-fiók üzembe helyezésekor meg kell választania a replikáció típusát. A legtöbb esetben ez a beállítás a tárfiók létrehozása után módosítható. 
+Az adatok tartósságának biztosítása érdekében az Azure Storage több példányban replikálja az adatokat. A tárfiók beállításakor válassza a redundanciát. 
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-A vészhelyreállítással kapcsolatos információk: [What to do if an Azure Storage outage occurs](storage-disaster-recovery-guidance.md) (Mi a teendő az Azure Storage leállása esetén?).
+Vész-helyreállítási kapcsolatos további információkért lásd: [katasztrófa utáni helyreállítás és a tárolási fiók feladatátvételi (előzetes verzió) az Azure Storage-ban](storage-disaster-recovery-guidance.md).
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Adatok áthelyezése az Azure Storage-ba és az Azure Storage-ból
 

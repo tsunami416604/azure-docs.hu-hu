@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: b32fd36c5fd546f7d2138cb2b48ee2854667f948
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 58022ca4f605b4672cd9b6e22993fca8ff6dc591
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044263"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510949"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -56,34 +56,34 @@ Az Azure Storage vagy Azure Cosmos DB használatához szükség van az Azure Sto
 ### <a name="import-the-package"></a>A csomag importálása
 Adja hozzá a következő kódot a **server.js** fájl elejéhez az alkalmazásban:
 
-```nodejs
+```javascript
 var azure = require('azure-storage');
 ```
 
 ## <a name="add-an-azure-storage-connection"></a>Azure Storage-kapcsolat hozzáadása
 Az Azure-modul az AZURE_STORAGE_ACCOUNT és AZURE_STORAGE_ACCESS_KEY, illetve az AZURE_STORAGE_CONNECTION_STRING környezeti változókat olvassa be az Azure Storage-fiókhoz való csatlakozáshoz szükséges információkért. Ha ezek a környezeti változók nincsenek beállítva, meg kell adnia a fiókadatokat a **TableService** hívásakor. A következő kóddal például létrehozhat egy **TableService** objektumot:
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB-kapcsolat hozzáadása
 Azure Cosmos DB-kapcsolat hozzáadásához hozzon létre egy **TableService** objektumot, és adja meg fiókjának nevét, elsődleges kulcsát és végpontját. A Cosmos DB-fiók ezen értékeit az Azure Portal **Beállítások** > **Kapcsolati sztring** területéről másolhatja ki. Példa:
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
 ```  
 
 ## <a name="create-a-table"></a>Tábla létrehozása
 Az alábbi kód egy **TableService** objektumot hoz létre, amelyet egy új tábla létrehozásához használ. 
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService();
 ```
 
 A **createTableIfNotExists** meghívásával létrehozhat egy új táblát a megadott névvel, amennyiben még nem létezik. Az alábbi példában létrehozunk egy új, „mytable” nevű táblát, ha még nem létezik ilyen:
 
-```nodejs
+```javascript
 tableSvc.createTableIfNotExists('mytable', function(error, result, response){
   if(!error){
     // Table exists or created
@@ -96,13 +96,13 @@ A `result.created` értéke `true`, amennyiben új táblát hoz létre, és `fal
 ### <a name="filters"></a>Szűrők
 A **TableService** objektummal opcionális szűrőket alkalmazhat a végrehajtott műveleteken. A szűrési műveletek közé tartozhat a naplózás, az automatikus újrapróbálkozás stb. A szűrők olyan objektumok, amelyek metódusokat implementálnak az alábbi aláírással:
 
-```nodejs
+```javascript
 function handle (requestOptions, next)
 ```
 
 A kérésbeállítások előfeldolgozása után a metódusnak hívnia kell a **next** értéket, és továbbítania kell egy visszahívást a következő aláírással:
 
-```nodejs
+```javascript
 function (returnObject, finalCallback, next)
 ```
 
@@ -110,7 +110,7 @@ A visszahívás során – a **returnObject** (a kiszolgálóra küldött kéré
 
 Az Azure SDK for Node.js tartalmaz két szűrőt (**ExponentialRetryPolicyFilter** és **LinearRetryPolicyFilter**), amelyek újrapróbálkozási logikát implementálnak. Az alábbi példában létrehozunk egy **TableService** objektumot, amely az **ExponentialRetryPolicyFilter** szűrőt használja:
 
-```nodejs
+```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var tableSvc = azure.createTableService().withFilter(retryOperations);
 ```
@@ -125,7 +125,7 @@ A **PartitionKey** és a **RowKey** értéknek is sztringértéknek kell lennie.
 
 Az alábbi egy entitás meghatározására szolgál példaként. Vegye figyelembe, hogy a **dueDate** az **Edm.DateTime** egy típusaként van meghatározva. A típus meghatározása nem kötelező, és a rendszer kikövetkezteti a nem meghatározott típusokat.
 
-```nodejs
+```javascript
 var task = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'},
@@ -141,7 +141,7 @@ var task = {
 
 Emellett az **entityGenerator** is használható entitások létrehozásához. A következő példa ugyanezt a feladatentitást hozza létre az **entityGenerator** használatával.
 
-```nodejs
+```javascript
 var entGen = azure.TableUtilities.entityGenerator;
 var task = {
   PartitionKey: entGen.String('hometasks'),
@@ -153,7 +153,7 @@ var task = {
 
 Ha entitást kíván hozzáadni a táblához, továbbítsa az entitásobjektumot az **insertEntity** metódusnak.
 
-```nodejs
+```javascript
 tableSvc.insertEntity('mytable',task, function (error, result, response) {
   if(!error){
     // Entity inserted
@@ -165,7 +165,7 @@ Ha a művelet sikeres, a `result` tartalmazza a beszúrt rekord [ETag](https://e
 
 Példaválasz:
 
-```nodejs
+```javascript
 { '.metadata': { etag: 'W/"datetime\'2015-02-25T01%3A22%3A22.5Z\'"' } }
 ```
 
@@ -186,7 +186,7 @@ Több metódus is rendelkezésre áll a meglévő entitások frissítéséhez:
 
 Az alábbi példa azt mutatja be, hogyan frissítheti az entitásokat a **replaceEntity** használatával:
 
-```nodejs
+```javascript
 tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response){
   if(!error) {
     // Entity updated
@@ -214,7 +214,7 @@ Annak biztosításához, hogy a kiszolgáló elvégezze a kérés elemi feldolgo
 
  Az alábbi példa két entitás egy kötegben való elküldését mutatja be:
 
-```nodejs
+```javascript
 var task1 = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'},
@@ -254,7 +254,7 @@ Az `operations` tulajdonság áttekintésével megvizsgálhatja a köteghez adot
 ## <a name="retrieve-an-entity-by-key"></a>Entitás lekérése kulcs alapján
 Ha egy adott entitást kíván visszaadni a **PartitionKey** és a **RowKey** alapján, használja a **retrieveEntity** metódust.
 
-```nodejs
+```javascript
 tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
   if(!error){
     // result contains the entity
@@ -276,7 +276,7 @@ Tábla lekérdezéséhez használja a **TableQuery** objektumot, amellyel össze
 
 A következő példa összeállít egy lekérdezést, amely az öt első „hometasks” PartitionKey-értékkel rendelkező elemet adja vissza.
 
-```nodejs
+```javascript
 var query = new azure.TableQuery()
   .top(5)
   .where('PartitionKey eq ?', 'hometasks');
@@ -284,7 +284,7 @@ var query = new azure.TableQuery()
 
 Mivel a **select** nincs használatban, a rendszer minden mezőt visszaad. Ha egy táblán szeretne végrehajtani lekérdezést, a **queryEntities** lekérdezést használja. Az alábbi példa ezt használja a „mytable” tábla entitásainak visszaadásához.
 
-```nodejs
+```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
   if(!error) {
     // query was successful
@@ -298,7 +298,7 @@ Ha a lekérdezés sikeres, a `result.entries` a lekérdezési feltételekkel egy
 Egy táblalekérdezéssel egy entitásnak csak bizonyos mezőit is lekérdezheti.
 Ez csökkenti a sávszélesség felhasználását, és javíthatja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Használja a **select** záradékot, és adja át a visszaadni kívánt mezők nevét. A következő lekérdezés például csak a **description** és **dueDate** mezőket adja vissza.
 
-```nodejs
+```javascript
 var query = new azure.TableQuery()
   .select(['description', 'dueDate'])
   .top(5)
@@ -308,7 +308,7 @@ var query = new azure.TableQuery()
 ## <a name="delete-an-entity"></a>Entitás törlése
 Entitásokat a partíció- és a sorkulcsokkal törölhet. Ebben a példában a **task1** objektum tartalmazza a törölni kívánt entitás **RowKey** és **PartitionKey** értékeit. Ezután a rendszer a **deleteEntity** metódusba továbbítja az objektumot.
 
-```nodejs
+```javascript
 var task = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'}
@@ -329,7 +329,7 @@ tableSvc.deleteEntity('mytable', task, function(error, response){
 ## <a name="delete-a-table"></a>Tábla törlése
 Az alábbi kóddal törölhető egy tábla egy tárfiókból.
 
-```nodejs
+```javascript
 tableSvc.deleteTable('mytable', function(error, response){
     if(!error){
         // Table deleted
@@ -346,7 +346,7 @@ Ha jelen van ilyen token, az entitások lekérdezésekor visszaadott **results**
 
 Lekérdezés végrehajtásakor megadhat egy `continuationToken` paramétert a lekérdezésiobjektum-példány és a visszahívási függvény között:
 
-```nodejs
+```javascript
 var nextContinuationToken = null;
 dc.table.queryEntities(tableName,
     query,
@@ -372,7 +372,7 @@ A megbízható alkalmazások, például a felhőalapú szolgáltatások SAS-eket
 
 Az alábbi példa egy új megosztott elérési házirendet hoz létre, amellyel az SAS tulajdonosa lekérdezheti ('r’) a táblát, és amely a létrehozástól számított 100 perc elteltével lejár.
 
-```nodejs
+```javascript
 var startDate = new Date();
 var expiryDate = new Date(startDate);
 expiryDate.setMinutes(startDate.getMinutes() + 100);
@@ -394,7 +394,7 @@ Vegye figyelembe, hogy a gazdagép adatait is meg kell adnia, mivel szükség va
 
 Ezután az ügyfélalkalmazás az SAS-t használja a **TableServiceWithSAS** metódussal, hogy műveleteket hajtson végre a táblán. A következő példa csatlakozik a táblához, és végrehajt egy lekérdezést. Lásd: [használatával a közös hozzáférésű jogosultságkódot](../storage/common/storage-dotnet-shared-access-signature-part-1.md#examples-of-sas-uris) tableSAS formátumban ismertető cikket. 
 
-```nodejs
+```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
 
 var sharedTableService = azure.createTableServiceWithSas(host, tableSAS);
@@ -415,7 +415,7 @@ Hozzáférés-vezérlési listát (Access Control List, ACL) is használhat az S
 
 A rendszer ACL-eket implementál egy hozzáférésiszabályzat-tömbbel, és minden szabályzathoz azonosító van társítva. Az alábbi példa két szabályzatot határoz meg, egyet „user1”, egy másikat pedig „user2” részére:
 
-```nodejs
+```javascript
 var sharedAccessPolicy = {
   user1: {
     Permissions: azure.TableUtilities.SharedAccessPermissions.QUERY,
@@ -432,7 +432,7 @@ var sharedAccessPolicy = {
 
 Az alábbi példa lekéri a **hometasks** tábla aktuális ACL-jét, majd hozzáadja az új szabályzatokat a **setTableAcl** használatával. Ez a megközelítés lehetővé teszi, hogy:
 
-```nodejs
+```javascript
 var extend = require('extend');
 tableSvc.getTableAcl('hometasks', function(error, result, response) {
 if(!error){
@@ -448,7 +448,7 @@ if(!error){
 
 Miután beállította az ACL-t, létrehozzon egy SAS-t egy szabályzat azonosítója alapján. Az alábbi példa egy új SAS-t hoz létre „user2” számára:
 
-```nodejs
+```javascript
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 

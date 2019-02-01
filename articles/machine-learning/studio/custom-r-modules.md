@@ -1,7 +1,21 @@
 ---
-Cím: Adja meg az egyéni R-modulok titleSuffix: Azure Machine Learning Studio description: Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R modult az Azure Machine Learning üzembe helyezése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk. szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/29/2017
+title: Adja meg az egyéni R-modulok
+titleSuffix: Azure Machine Learning Studio
+description: Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R modult az Azure Machine Learning üzembe helyezése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 11/29/2017
+ms.openlocfilehash: 0da5456845b940ef88ac40ffed1f53e84fe54080
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488305"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Adja meg az egyéni R-modulok az Azure Machine Learning Studióban
 

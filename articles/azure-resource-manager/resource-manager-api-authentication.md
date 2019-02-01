@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: d7beab66bdaed312f32adef74ceb4b2944e6853e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103891"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498250"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Erőforrás-kezelő használata hitelesítési API az előfizetések hozzáféréséhez
-## <a name="introduction"></a>Bevezetés
+
 Ha Ön egy szoftverfejlesztő, aki létre kell hoznia egy alkalmazást, amely felügyeli az ügyfél Azure-erőforrások, a Ez a cikk bemutatja, hogyan hitelesítéséhez az Azure Resource Manager API-khoz, és más előfizetésekben erőforrásokhoz férhetnek hozzá.
 
 Az alkalmazás hozzáférhessen a Resource Manager API-k több módon:
@@ -32,7 +32,10 @@ Az alkalmazás hozzáférhessen a Resource Manager API-k több módon:
 
 Ez a cikk részletes utasításokat követve hozzon létre egy alkalmazást, amely a két hitelesítési módszert alkalmaz. Ez bemutatja, hogyan szeretné végrehajtani a műveletet a REST API vagy a C#. A teljes ASP.NET MVC alkalmazás mindig elérhető legyen [ https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense ](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="what-the-web-app-does"></a>A webes alkalmazás leírása
+
 A webalkalmazás:
 
 1. Jelentkezik be egy Azure-felhasználó.
@@ -74,7 +77,7 @@ Mivel az alkalmazás más előfizetésben hozzáfér, mint egy több-bérlős al
 Az alábbi példa bemutatja, hogyan regisztrálja az alkalmazás az Azure PowerShell-lel. A parancs működéséhez az Azure PowerShell legújabb (2016. augusztus) verzióját kell telepítenie.
 
 ```azurepowershell-interactive
-$app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
+$app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
 ```
 
 Jelentkezzen be az AD-alkalmazást, szüksége van az alkalmazás Azonosítóját és jelszavát. Az Alkalmazásazonosítót az előző parancs által visszaadott használja:
@@ -303,7 +306,7 @@ A gyakran használt beépített szerepkör-azonosítók a következők:
 
 | Szerepkör | GUID |
 | --- | --- |
-| Olvasó |acdd72a7-3385-48EF-bd42-f606fba81ae7 |
+| Olvasó |acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 | Közreműködő |b24988ac-6180-42a0-ab88-20f7382dd24c |
 | Virtuális gépek közreműködője |d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 | Virtuális hálózati közreműködő |b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
@@ -330,11 +333,11 @@ Egy kérelem (példa) RBAC szerepkör hozzárendelése az alkalmazáshoz:
 
 A kérelem a következő értékeket használjuk:
 
-| GUID | Leírás |
+| Guid | Leírás |
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |az előfizetés azonosítója |
 | c3097b31-7309-4c59-b4e3-770f8406bad2 |az alkalmazás a szolgáltatásnév Objektumazonosítóját |
-| acdd72a7-3385-48EF-bd42-f606fba81ae7 |az Olvasó szerepkör azonosítója |
+| acdd72a7-3385-48ef-bd42-f606fba81ae7 |az Olvasó szerepkör azonosítója |
 | 4f87261d-2816-465d-8311-70a27558df4c |az új szerepkör-hozzárendelés létrehozása új guid |
 
 A válasz a következő formátumban kell megadni:

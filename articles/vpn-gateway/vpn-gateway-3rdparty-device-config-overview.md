@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
 ms.openlocfilehash: 901de2ac3d80b3ee529d89a22afae7e823437b9b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685208"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506872"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Partner VPN-eszközök konfigurációjának áttekintése
 Ez a cikk az Azure VPN Gateway átjárókhoz csatlakozik a helyszíni VPN-eszközök konfigurálásának áttekintése. A példa az Azure virtual network, és VPN-átjáró telepítőjének megmutatjuk, hogyan lehet csatlakozni másik helyszíni VPN-eszközök konfigurációjának azonos paraméterekkel használja.
@@ -125,7 +125,7 @@ Ha a VPN-eszközök nem támogatják a – bármely forgalomválasztóinak útv�
 
 
 A példaszkript egy IPsec/IKE-házirendet hoz létre a következő algoritmusokat és paramétereket:
-* Az IKEv2: AES256, SHA384, DHGroup24
+* IKEv2: AES256, SHA384, DHGroup24
 * IPsec: AES256, SHA1, PFS24, SA élettartama 7,200 másodperc és 20,480,000 KB (20 GB)
 
 A parancsfájl az IPsec/IKE-szabályzat vonatkozik, és lehetővé teszi, hogy a **UsePolicyBasedTrafficSelectors** beállítást a kapcsolat.

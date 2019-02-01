@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: tamram
-ms.openlocfilehash: 8085f3855d58bc1ddb7b4529ac4799b8292cea53
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 796e104dd0b3b2cfdef2ee3515625cba0a9fdc1e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401775"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497123"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Az Azure Active Directory-hitelesítés engedélyezése az SMB-n keresztül az Azure Files (előzetes verzió)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -135,7 +135,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --f
 Azure AD hitelesítő adatait az Azure Files-erőforrások eléréséhez az identitás (felhasználó, csoport vagy szolgáltatásnév) a megosztás szintjén kell rendelkeznie a szükséges engedélyekkel. Ebben a szakaszban található útmutatást bemutatja, hogyan rendelje hozzá az olvasási, írási, vagy egy fájlmegosztás-identitásra vonatkozó engedélyeinek törlése.
 
 > [!IMPORTANT]
-> Egy fájlmegosztást, beleértve a szerepkör hozzárendelése a identitást, teljes körű felügyeletet igényel, a tárfiók-kulcsot használ. Az Azure AD hitelesítő adatait a felügyeleti vezérlő nem támogatott. 
+> Egy fájlmegosztást, beleértve a szerepkör hozzárendelése a identitást, teljes körű felügyeletet igényel, a tárfiók-kulcsot használ. Rendszergazdai vezérlés az Azure AD-beli hitelesítő nem támogatott. 
 
 ### <a name="define-a-custom-role"></a>Egyéni szerepkör definiálása
 

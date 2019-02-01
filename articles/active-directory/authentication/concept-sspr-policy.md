@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 45cd9188b420f9c6db3f1adaa4244b30cce0ccc6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 735bc2569436b99d3366d1ce5ff01f40ab7f587a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081891"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510459"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -86,7 +86,7 @@ A következő táblázat ismerteti a rendelkezésre álló jelszó szabályzatbe
 | Jelszó lejárata |<ul><li>Alapértelmezett érték: **hamis** nap (azt jelzi, hogy a jelszó lejárati engedélyezve van).</li><li>Az érték használatával konfigurálhatók az egyes felhasználói fiókok esetében a `Set-MsolUser` parancsmagot.</li></ul> |
 | Jelszó-változások nyomon követése |A legutóbbi jel *nem* újra használni, amikor a felhasználó megváltoztatja a jelszót. |
 | Jelszó-visszaállítási előzmények | A legutóbbi jel *is* újra használni, amikor a felhasználó elfelejtett jelszó alaphelyzetbe állítása. |
-| Fiókzárolás |10 sikertelen bejelentkezési kísérlet után a helytelen jelszóval a felhasználó a rendszer zárolja egy percet. További helytelen bejelentkezési kísérletek növelése az idő időtartamok zár ki a felhasználót. |
+| Fiókzárolás |10 sikertelen bejelentkezési kísérlet után a helytelen jelszóval a felhasználó a rendszer zárolja egy percet. További helytelen bejelentkezési kísérletek növelése az idő időtartamok zár ki a felhasználót. [Intelligens zárolás](howto-password-smart-lockout.md) nyomon követi az utolsó három hibás jelszókivonatokat elkerülése érdekében ugyanazt a jelszót a fiókzárolási számláló növekszik. Ha valaki több alkalommal belép a rossz jelszót, ez a viselkedés nem okoz a fiók zárolása. |
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Jelszóelévülési házirendek beállítása az Azure ad-ben
 

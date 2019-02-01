@@ -9,14 +9,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: e5aadfc8319ff67e471123d457fddf468af4842a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b41054420f381ed4d39d35af82a464cf555cb13
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225771"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490889"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Oktatóanyag: Gyakori minta sablon utterance (kifejezés) formátumok hozzáadása
 
@@ -230,7 +230,7 @@ Ebben az oktatóanyagban a következő két szándékot adja hozzá: `OrgChart-M
 
 Miután a LUIS visszaad egy előrejelzést az ügyfélalkalmazásnak, a szándék neve függvénynévként használható az ügyfélalkalmazásban, az Employee entitás pedig ennek a függvénynek a paramétereként használható.
 
-```nodejs
+```javascript
 OrgChartManager(employee){
     ///
 }

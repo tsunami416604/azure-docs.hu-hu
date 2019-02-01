@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: d515363e1413634d8222e043fff0b91aa464002c
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337535"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509321"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Különböző üzemi modellekből származó virtuális hálózatok összekapcsolása a PowerShell-lel
 
@@ -56,11 +56,11 @@ GatewayType = DynamicRouting
 
 Virtuális hálózat neve = RMVNet <br>
 Erőforráscsoport = RG1 <br>
-Virtuális hálózati IP-címterek = 192.168.0.0/16 <br>
+Virtual Network IP Address Spaces = 192.168.0.0/16 <br>
 Subnet-1 = 192.168.1.0/24 <br>
 Átjáró-alhálózat = 192.168.0.0/26 <br>
 Hely = USA keleti RÉGIÓJA <br>
-Átjáró nyilvános IP-név = gwpip <br>
+Gateway public IP name = gwpip <br>
 Helyi hálózati átjáró = ClassicVNetLocal <br>
 Virtuális hálózati átjáró neve = RMGateway <br>
 Átjáró IP-címkonfigurációjának = gwipconfig

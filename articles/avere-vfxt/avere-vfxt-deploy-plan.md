@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: e60c92c22382112558307062afdeb87e08075765
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c0304e290d18e6569e3fcc2efbab8af15727b80c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298925"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508157"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Az Avere vFXT rendszer megtervezése
 
@@ -83,7 +83,7 @@ Győződjön meg arról, hogy előfizetése rendelkezik-e futtatni a Avere vFXT 
 
 ## <a name="back-end-data-storage"></a>Háttér-adattárolás
 
-Ahol a Avere vFXT fürt tárolja az adatokat Ha az nem a gyorsítótárban? Döntse el, akár a munkakészletének tárolódik hosszú távú egy új Blob-tárolóba vagy egy meglévő felhő vagy hardver tárolórendszer. 
+Ahol a Avere vFXT fürt tárolja az adatokat Ha az nem a gyorsítótárban? Döntse el, hogy a munkakészletének lesz hosszú távon tárolt, egy új Blob-tárolóba vagy egy meglévő felhő vagy hardver tárolórendszer. 
 
 Ha szeretné az Azure Blob storage használata a háttér, létre kell hoznia egy új tárolót a vFXT fürt létrehozásának részeként. Ez a beállítás hoz létre, és konfigurálja az új tárolót, hogy, amint a fürt készen áll használatra kész legyen. 
 
@@ -109,7 +109,7 @@ Adathozzáférési beállítások a következők:
 
 * Virtuális magánhálózati (VPN) – a magánhálózaton, pont – hely és a site-to-site VPN konfigurálása.
 
-* Az Azure ExpressRoute - konfigurálása egy privát kapcsolaton keresztül, és az ExpressRoute-partner. 
+* Az Azure ExpressRoute - konfigurálása egy privát kapcsolaton keresztül egy ExpressRoute-partner. 
 
 Ezek a beállítások kapcsolatos tudnivalókért olvassa el a [Azure Virtual Network dokumentációjában az internetes kommunikáció](../virtual-network/virtual-networks-overview.md#communicate-with-the-internet).
 
@@ -117,7 +117,7 @@ Ezek a beállítások kapcsolatos tudnivalókért olvassa el a [Azure Virtual Ne
 
 Ha a fürt vezérlő állít be egy nyilvános IP-címet, használhatja azt jump-gazdagépként a Avere vFXT fürtöt a saját alhálózatán kívülről kapcsolódni. Azonban a vezérlő fürtcsomópontok módosíthatja a hozzáférési jogosultságokkal rendelkezik, mert ez létrehoz egy kisebb biztonsági kockázatot jelent.  
 
-A nyilvános IP-címmel megnövelt biztonság érdekében a hálózati biztonsági csoport használatával bejövő hozzáférés engedélyezése csak a 22-es porton keresztül.
+A nyilvános IP-címmel megnövelt biztonság érdekében a hálózati biztonsági csoport használatával bejövő hozzáférés engedélyezése csak a 22-es porton keresztül. Szükség esetén további védelmet biztosíthat a rendszer zárolja a forrás az IP-címek – való hozzáférés, kapcsolatok engedélyezése csak a fürt hozzáféréshez használni kívánt gépeket.
 
 A fürt létrehozásakor kiválaszthatja-e egy nyilvános IP-cím létrehozása a fürt vezérlőn. 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
 ms.author: adpick
-ms.openlocfilehash: 86e457cf553c84386937c35bab1ab0fd20518bed
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 3577edff19788ed9f0925876e3de737eb749b90e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369057"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490923"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Hozzáférés engedélyezése az Azure Enterprise-előfizetések (előzetes verzió) létrehozása
 
@@ -42,6 +42,7 @@ PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
   }
 }
 ```
+
 A tulajdonosi szerepkör hozzárendelése sikeres volt a regisztrációs fiók hatókörben, amikor Azure fűzi hozzá a szerepkör-hozzárendelés információkat:
 
 ```json
@@ -63,10 +64,10 @@ A tulajdonosi szerepkör hozzárendelése sikeres volt a regisztrációs fiók h
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Használja a [New-AzureRmRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) biztosíthat egy másik felhasználó tulajdonosi hozzáféréssel a regisztrációs fiókhoz.
+Használja a [New-AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) biztosíthat egy másik felhasználó tulajdonosi hozzáféréssel a regisztrációs fiókhoz.
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -85,7 +86,7 @@ Miután egy felhasználó a regisztrációs fiókhoz tartozó RBAC tulajdonosa v
 
 Az API-n keresztül létrehozott előfizetések nyomon követéséhez használhatja a [bérlői tevékenység Log API](/rest/api/monitor/tenantactivitylogs). Ez jelenleg nem lehetséges a PowerShell, CLI vagy az Azure portal segítségével nyomon követheti az előfizetés létrehozása.
 
-1. Bérlői rendszergazdaként az Azure AD-bérlő [jogosultságszintjének emelése](../active-directory/role-based-access-control-tenant-admin-access.md) majd olvasó szerepkör hozzárendelése a naplózási felhasználó a hatókörben `/providers/microsoft.insights/eventtypes/management`.
+1. Az Azure AD-bérlő bérlői rendszergazdájaként [emelheti a jogosultságszintet](../active-directory/role-based-access-control-tenant-admin-access.md), majd Olvasó szerepkört rendelhet a naplózást végző felhasználóhoz a `/providers/microsoft.insights/eventtypes/management` hatókörben.
 1. A naplózási felhasználóként hívja a [bérlői tevékenység Log API](/rest/api/monitor/tenantactivitylogs) előfizetés létrehozása tevékenységek megtekintéséhez. Példa:
 
 ```
@@ -93,7 +94,7 @@ GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015
 ```
 
 > [!NOTE]
-> Az API meghívásához kényelmes számlázását a parancssorból, próbálja meg [ARMClient](https://github.com/projectkudu/ARMClient).
+> Az API-t kényelmesen meghívhatja a parancssorból az [ARMClient](https://github.com/projectkudu/ARMClient) segítségével.
 
 ## <a name="next-steps"></a>További lépések
 

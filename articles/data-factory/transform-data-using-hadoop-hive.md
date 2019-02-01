@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: d9a649e3b49c71a24d06656e0667765ef9cc5508
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e77b8c89954064fb143f04f0f901d1512d4fc50d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321334"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491008"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop Hive-tevékenység használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory b
         "defines": {
             "param1": "param1Value"
         }
-    }   
+    }
 }
 ```
 ## <a name="syntax-details"></a>Szintaxis részletei
@@ -67,7 +67,7 @@ Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory b
 | getDebugInfo        | Itt adhatja meg, amikor a naplófájlok másolja az Azure Storage HDInsight-fürt által használt (vagy) scriptlinkedservice szolgáltatás által megadott. Megengedett értékek: Nincs, mindig, vagy sikertelen. Alapértelmezett érték: Nincs. | Nem       |
 | argumentumok           | Argumenty Pro Hadoop-feladatok egy tömbjét adja meg. Az argumentumok adhatók be a parancssori argumentumok minden egyes tevékenységhez. | Nem       |
 | határozza meg             | Kulcs/érték párokként paraméterek megadása a Hive-parancsfájl belül hivatkozik. | Nem       |
-| queryTimeout        | Lekérdezés időkorlátot (percben).  Akkor alkalmazható, ha a HDInsight-fürtön vállalati biztonsági csomaggal engedélyezve van. | Nem       |
+| queryTimeout        | Lekérdezés időkorlátot (percben). Akkor alkalmazható, ha a HDInsight-fürtön vállalati biztonsági csomaggal engedélyezve van. | Nem       |
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikkek, amelyek bemutatják, hogyan alakíthat át adatokat, egyéb módon: 
@@ -80,4 +80,3 @@ Tekintse meg a következő cikkek, amelyek bemutatják, hogyan alakíthat át ad
 * [.NET egyéni tevékenység](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md)
 * [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)
-

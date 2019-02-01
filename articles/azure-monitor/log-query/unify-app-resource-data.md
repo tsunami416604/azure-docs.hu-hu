@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e3b118306b5a139ba31029bc6191368690b36666
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e0f305d8200a6b78eb138d5a3c6d9cd99a095dbe
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265209"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486521"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Használja őket egységes előtérrendszerként több Azure Monitor az Application Insights-erőforrást 
 Ez a cikk bemutatja, hogyan lekérdezéséhez és az összes Application Insights alkalmazás log adatok megtekintése az egyik helyen, akkor is, ha azokat az Azure-előfizetések, az Application Insights-összekötő elavulása helyettesítője.  
@@ -51,7 +51,20 @@ app('Contoso-app5').requests
 >
 >Az elemzési operátor használata nem kötelező ebben a példában, SourceApp tulajdonságból bontja ki az alkalmazás nevét. 
 
-Most már készen áll az erőforrások közötti lekérdezésben applicationsScoping függvény használatát. A függvény aliasa, a kérelmek unióját adja vissza a meghatározott alkalmazások. A lekérdezés és a sikertelen kérelmek szűrése elérhetővé, és a trendek alkalmazás. ![Példa a kereszt-lekérdezés eredményei](media/unify-app-resource-data/app-insights-query-results.png)
+Most már készen áll az erőforrások közötti lekérdezési applicationsScoping függvénnyel:  
+
+```
+applicationsScoping 
+| where timestamp > ago(12h)
+| where success == 'False'
+| parse SourceApp with * '(' applicationName ')' * 
+| summarize count() by applicationName, bin(timestamp, 1h) 
+| render timechart
+```
+
+A függvény aliasa, a kérelmek unióját adja vissza a meghatározott alkalmazások. A lekérdezés és a sikertelen kérelmek szűrése elérhetővé, és a trendek alkalmazás.
+
+![Példa a kereszt-lekérdezés eredményei](media/unify-app-resource-data/app-insights-query-results.png)
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Application Insights-erőforrások és a munkaterület adatainak lekérdezése 
 Amikor leállítja az összekötő, és meg kell keresztül, amely által az Application Insights-adatok megőrzése (90 nap) volt vágott időtartomány-lekérdezések végrehajtásához, kell elvégeznie [erőforrások közötti lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md) a munkaterület és Application Insights erőforrások egy köztes időszakban. Ez nem lesz, amíg a fent említett új Application Insights-adatmegőrzés / gyűlnek az alkalmazások adatokat. A lekérdezés néhány feldolgozás van szükség, mivel a sémák az Application Insights és a munkaterület különböző. Lásd a jelen szakasz későbbi kiemelése a séma különbségek a táblát. 

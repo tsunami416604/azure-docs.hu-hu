@@ -4,15 +4,15 @@ description: Ismerteti, hogyan derítheti fel és értékelheti ki a helyszíni 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 58a4f60a5ef01f8f2757aeb04c2dd7165d68179a
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 61eca35bb03ba62bbc10105819e12a8c0ebb41ca
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298721"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487907"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -78,7 +78,7 @@ Az Azure Migrate létrehoz egy gyűjtőberendezésnek nevezett helyszíni virtu�
     > [!NOTE]
     > A felderítés egyszeri felderítés berendezés elavulttá vált, ez a módszer támaszkodtak a vCenter Server statisztikai beállításait teljesítmény adatok pont rendelkezésre állását és virtuális gépek áttelepítése az Azure-ba való korrigáljuk méretezésének eredményezett átlagos teljesítményszámlálók gyűjtése.
 
-    **Azonnali változtatásait:** A folyamatos felderítési berendezéssel után a felderítés befejezéséhez (veszi fel néhány óra múlva, virtuális gépek számától függően), itt azonnal létrehozhat értékeléseket. Mivel a teljesítményadat-gyűjtés akkor kezdődik, amikor Ön indíthat felderítési, ha azonnali változtatásait keres, válassza a méretezési feltétel teljesítményalapú az értékelésben, *helyszíni*. Teljesítmény-alapú értékelések javasolt a legalább egy napot várni megbízható méretezési javaslatokat kaphat a felderítés megkezdése után.
+    **Gyors értékelést:** A folyamatos felderítési berendezéssel után a felderítés befejezéséhez (veszi fel néhány óra múlva, virtuális gépek számától függően), itt azonnal létrehozhat értékeléseket. A teljesítményadat-gyűjtés akkor kezdődik, amikor Ön indíthat felderítési, ha a gyors értékelések, mivel az értékelésben, mint a méretezési feltétel teljesítményalapú kiválasztani *helyszíni*. Teljesítmény-alapú értékelések javasolt a legalább egy napot várni megbízható méretezési javaslatokat kaphat a felderítés megkezdése után.
 
     A berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben, (, virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
 

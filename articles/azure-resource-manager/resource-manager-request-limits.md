@@ -13,14 +13,15 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 0ba4a1a4119db515e10c0b704b0a10501fe79682
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0a4be349bfd8ce546ee2a27c206a7bd86306c27a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136889"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493558"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager-kérelmek szabályozása
+
 Minden Azure-előfizetés és bérlő erőforrás-kezelő lehetővé teszi, hogy legfeljebb 12 000 olvasási kérelmek száma óránként és 1200 írási kérelmek száma óránként. Ezek a korlátok a kérelmet benyújtó résztvevő-Azonosítót és az előfizetés-azonosító hatóköre, vagy a bérlői azonosító. Ha a kérések érkeznek, az egynél több résztvevő-azonosító, a korlátot, az előfizetés vagy a bérlő között nagyobb, mint 12 000 és 1200 óránként.
 
 Az előfizetés vagy a bérlő kérelmek lépnek. Feliratkozási kérelmeket azok az előfizetés átadása a involve ID, például az erőforráscsoportok az előfizetésében beolvasása. Bérlő kérelmek nem tartalmaznak, például lekér érvényes Azure-helyen az előfizetés-Azonosítóját.
@@ -30,6 +31,8 @@ Ezek a korlátok vonatkoznak minden Azure Resource Manager-példány. Több pél
 Ha az alkalmazást vagy parancsfájlt eléri az ezeket a korlátokat, akkor a kérelmek szabályozása. Ez a cikk bemutatja, miként állapítható meg, a fennmaradó kérelmek korlátjának elérése előtt, és hogyan reagáljon, amikor elérte a határértéket.
 
 Ha eléri a korlátot, kap-e a HTTP-állapotkódot **429 túl sok kérelem**.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="remaining-requests"></a>Fennmaradó kérelmek
 Megadhatja, hogy a fennmaradó kérések száma válaszfejlécek megvizsgálásával. Minden kérelmet fennmaradó olvasási és írási kérések száma értékeket tartalmaz. A következő táblázat ismerteti a válaszfejlécek ezekhez az értékekhez ellenőrizheti:
@@ -66,7 +69,7 @@ Teljes PowerShell-példa: [Resource Manager korlátok ellenőrzése egy előfize
 Ha meg szeretné tekinteni a hibakereséshez a fennmaradó kérelmeket, megadhatja a **-Debug** paraméterrel a **PowerShell** parancsmagot.
 
 ```powershell
-Get-AzureRmResourceGroup -Debug
+Get-AzResourceGroup -Debug
 ```
 
 Több értékhez, többek között a következő választ értéket ad vissza:
@@ -85,7 +88,7 @@ x-ms-ratelimit-remaining-subscription-reads: 14999
 Írási korlátok lekéréséhez használja az írási művelet: 
 
 ```powershell
-New-AzureRmResourceGroup -Name myresourcegroup -Location westus -Debug
+New-AzResourceGroup -Name myresourcegroup -Location westus -Debug
 ```
 
 Több értékhez, többek között a következő értékeket ad vissza:

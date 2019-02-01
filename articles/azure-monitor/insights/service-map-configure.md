@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 808fe41928a99ffc797c96a02305d81765318780
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: dde618de12bf23e754d2516f3b8ef27b3df5bc4e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381655"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495683"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -387,7 +387,7 @@ Ha a függőségi ügynök telepítése sikeres volt, de a kiszolgáló a Servic
 
 * A kiszolgáló küldő napló- és teljesítményadatok van a Log Analytics? Lépjen a naplók keresése, és a számítógép a következő lekérdezés futtatásával: 
 
-    Használati |} Ha számítógép == "admdemo-appsvr" |} Összegzés sum(Quantity), any(QuantityUnit) adattípus szerint
+    Használati |} Ha számítógép == "példaszámítógép neve" |} Összegzés sum(Quantity), any(QuantityUnit) adattípus szerint
 
 Jutott el a különféle eseményekre az eredmények között? Az adatok legutóbbi? Ha igen, a Log Analytics-ügynök megfelelően működik és a Log Analytics használatával való kommunikációhoz. Ha nem, ellenőrizze az ügynököt a kiszolgálón: [Log Analytics-ügynököket Windows hibaelhárítási](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) vagy [Log Analytics-ügynök Linux hibaelhárítási](../../azure-monitor/platform/agent-linux-troubleshoot.md).
 

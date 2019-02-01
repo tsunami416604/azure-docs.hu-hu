@@ -1,6 +1,6 @@
 ---
-title: Az Azure Resource Manager sablonfüggvényei - numerikus |} Microsoft Docs
-description: Az Azure Resource Manager-sablonok segítségével számok dolgozni funkcióit ismerteti.
+title: Az Azure Resource Manager-sablonfüggvények - numerikus |} A Microsoft Docs
+description: Ismerteti a függvények számok használata az Azure Resource Manager-sablon használatával.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,49 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 4fc17b997c44560199e65edb01d20c6a24e49877
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360002"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496703"
 ---
-# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz numerikus funkciók
+# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok numerikus függvények
 
-Erőforrás-kezelő a következő funkciókat nyújt egész számok használata:
+A Resource Manager az alábbi funkciókat biztosít az egész számok használata:
 
-* [Hozzáadása](#add)
+* [add](#add)
 * [copyIndex](#copyindex)
 * [div](#div)
 * [float](#float)
 * [int](#int)
 * [max](#max)
-* [Perc](#min)
-* [MOD](#mod)
+* [min](#min)
+* [mod](#mod)
 * [MUL számú](#mul)
 * [sub](#sub)
 
 <a id="add" />
 
-## <a name="add"></a>hozzáadás
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="add"></a>add
 `add(operand1, operand2)`
 
-A két megadott egész számok összegét adja vissza.
+A két megadott egész számoknak az összegét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- | 
-|operand1 |Igen |int |Első számú hozzáadásához. |
+|operand1 |Igen |int |Adja hozzá az első szám. |
 |operand2 |Igen |int |Adja hozzá a második szám. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Egész szám, amely tartalmazza a paraméterek számának összege.
+Egész szám, amely tartalmazza a paraméterek összege.
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) két paramétereket ad.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) hozzáadja a két paramétert.
 
 ```json
 {
@@ -89,22 +91,22 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
 ```
 
 <a id="copyindex" />
@@ -118,22 +120,22 @@ Egy iteráció hurok indexét adja vissza.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| loopName | Nem | karakterlánc | Neve a ciklus ismétléseinek beolvasásakor. |
-| offset |Nem |int |Az a szám, a nulla alapú ismétlési érték hozzáadása. |
+| loopName | Nem | sztring | Neve a ciklus ismétléseinek beolvasása. |
+| offset |Nem |int |A szám a nulláról induló iteráció értékhez hozzá kíván adni. |
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ez a funkció mindig használatos a **másolási** objektum. Ha nincs érték megadva, a **eltolás**, az aktuális iterációs értéket adja vissza. Az ismétlési érték nulla kezdődik. Iteráció hurkokat is használhatja, vagy az erőforrások, vagy a változók meghatározásakor.
+Ez a függvény mindig használatos a **másolási** objektum. Ha a nem érték van megadva a **eltolás**, az aktuális iteráció értéket adja vissza. Az ismétlés érték nullánál kezdődik. Iteráció hurkokat is használhat, erőforrások és a változók meghatározásakor.
 
-A **loopName** tulajdonság lehetővé teszi adja meg, hogy copyIndex erőforrás iterációs vagy tulajdonság iterációs hivatkozik. Ha nincs érték megadva, a **loopName**, az aktuális erőforrás-típus iteráció szolgál. Adjon meg egy értéket a **loopName** amikor léptetés tulajdonság alapján. 
+A **loopName** tulajdonság lehetővé teszi, hogy adja meg, hogy copyIndex hivatkozik egy erőforrás iterációhoz vagy tulajdonság iteráció. Ha a nem érték van megadva a **loopName**, az aktuális erőforrás típusa iteráció szolgál. Adjon meg egy értéket a **loopName** amikor léptetés tulajdonság alapján. 
  
-Teljes leírását az használatának **copyIndex**, lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
+Teljes leírását az Ön általi használatáról **copyIndex**, lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
 
-Segítségével például **copyIndex** vonatkozó változó definiálása látható [változók](resource-group-authoring-templates.md#variables).
+Példa használatával **copyIndex** változó definiálása, ha [változók](resource-group-authoring-templates.md#variables).
 
 ### <a name="example"></a>Példa
 
-A következő példa bemutatja a másolási ciklust és az értéket a neve tartalmazza. 
+Az alábbi példa bemutatja egy másolási ciklust, és az értéket a neve tartalmazza. 
 
 ```json
 "resources": [ 
@@ -149,31 +151,31 @@ A következő példa bemutatja a másolási ciklust és az értéket a neve tart
 ]
 ```
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Jelző egész számot az iteráció aktuális indexét.
+Az aktuális index az ismétlés jelölő egész szám.
 
 <a id="div" />
 
 ## <a name="div"></a>DIV
 `div(operand1, operand2)`
 
-A két megadott egész számok egész szám hányadosának adja vissza.
+A két megadott egész szám hányadosának egész számot adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Igen |int |Az a szám felosztják. |
-| operand2 |Igen |int |Az a szám, amellyel osztani. Nem lehet 0. |
+| operand1 |Igen |int |A száma, osztva folyamatban van. |
+| operand2 |Igen |int |A szám, amellyel osztani. Nem lehet 0. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 Egy osztás jelző egész számot.
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) osztja a másik paraméterrel egy paramétert.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) osztja fel egy másik paraméterben az egyik paramétert.
 
 ```json
 {
@@ -206,22 +208,22 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
 ```
 
 <a id="float" />
@@ -229,20 +231,20 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="float"></a>lebegőpontos
 `float(arg1)`
 
-Konvertálja az értéket lebegőpontos számnak. Ez a függvény csak ha egyéni paraméterek átadása egy alkalmazást, például a logikai alkalmazás használja.
+Konvertálja az értéket egy lebegőpontos szám. Ez a függvény csak amikor egyéni paraméterek átadása egy alkalmazást, például a logikai alkalmazás használja.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |karakterlánc- vagy int |Az érték átalakítása lebegőpontos számnak. |
+| arg1 |Igen |karakterlánc- vagy int |Az érték átalakítása lebegőpontos szám. |
 
-### <a name="return-value"></a>Visszatérési érték
-Lebegőpontos szám.
+### <a name="return-value"></a>Vrácená hodnota
+Egy lebegőpontos szám.
 
 ### <a name="example"></a>Példa
 
-A következő példa bemutatja, hogyan lebegőpontos használandó paraméterek átadása egy logikai alkalmazást:
+Az alábbi példa bemutatja, hogyan lebegőpontos át a paramétereket a logikai alkalmazáshoz használandó:
 
 ```json
 {
@@ -269,15 +271,15 @@ A megadott érték konvertálása egy egész számot.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Igen |karakterlánc- vagy int |Az érték egész számra konvertálni. |
+| valueToConvert |Igen |karakterlánc- vagy int |Az érték egy egész típusra konvertál. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 Az átalakított érték egész szám.
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) alakítja át a felhasználó által megadott paraméter értékének egész számra.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) alakítja át a felhasználó által megadott paraméter értéke egész szám.
 
 ```json
 {
@@ -300,22 +302,22 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| intEredmeny | Int | 4 |
+| intResult | Int | 4 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
 <a id="max" />
@@ -323,21 +325,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="max"></a>max.
 `max (arg1)`
 
-A maximális érték egész számok tömb vagy egészek vesszővel elválasztott listáját adja vissza.
+A maximális érték egész számok tömbje vagy egészek vesszővel elválasztott listáját adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |a tömb egész szám vagy egészek vesszővel elválasztott felsorolása |A gyűjteményt, amelyben a legnagyobb érték beolvasása. |
+| arg1 |Igen |egész számoknak vagy olyan vesszővel elválasztott listája egész számok tömbje |A gyűjtemény a maximális értéket. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Jelző egész számot a maximális érték a gyűjteményből.
+A gyűjtemény a maximális értéket jelölő egész szám.
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) max. használata egy tömb és az egész számok listáját jeleníti meg:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) max. használata egy tömböt és az egész számok listáját jeleníti meg:
 
 ```json
 {
@@ -363,23 +365,23 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
 <a id="min" />
@@ -387,21 +389,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="min"></a>perc
 `min (arg1)`
 
-Egy számokból álló tömb vagy egészek vesszővel elválasztott listáját a minimális értékét adja vissza.
+A minimális érték egész számok tömbje vagy egészek vesszővel elválasztott listáját adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |a tömb egész szám vagy egészek vesszővel elválasztott felsorolása |A gyűjteményt, amelyben a minimális érték beolvasása. |
+| arg1 |Igen |egész számoknak vagy olyan vesszővel elválasztott listája egész számok tömbje |A gyűjtemény a minimális érték beolvasása. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Jelző egész számot minimális érték a gyűjteményből.
+A gyűjtemény minimális értéket jelölő egész szám.
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) min használata egy tömb és az egész számok listáját jeleníti meg:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) minimális használata egy tömböt és az egész számok listáját jeleníti meg:
 
 ```json
 {
@@ -427,23 +429,23 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
 <a id="mod" />
@@ -451,21 +453,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="mod"></a>MOD
 `mod(operand1, operand2)`
 
-Használja a két megadott egész szám hányadosának egész a maradékot adja vissza.
+Az egész osztály használatával, a két megadott egész szám a maradékot adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Igen |int |Az a szám felosztják. |
+| operand1 |Igen |int |A száma, osztva folyamatban van. |
 | operand2 |Igen |int |A szám, amellyel osztani, nem lehet 0. |
 
-### <a name="return-value"></a>Visszatérési érték
-Egy további jelző egész számot.
+### <a name="return-value"></a>Vrácená hodnota
+A fennmaradó jelölő egész szám.
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) egy másik paraméterrel egy paraméter felosztása a maradékot adja vissza.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) felosztása egy másik paraméterrel egy paramétert a maradékot adja vissza.
 
 ```json
 {
@@ -498,22 +500,22 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | modResult | Int | 1 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
 ```
 
 <a id="mul" />
@@ -521,22 +523,22 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="mul"></a>MUL számú
 `mul(operand1, operand2)`
 
-A két megadott egész számok szorzás adja vissza.
+A két megadott egész szám, a szorzás adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Igen |int |A szorzási első szám. |
-| operand2 |Igen |int |A szorzási második szám. |
+| operand1 |Igen |int |Első szám szorzása. |
+| operand2 |Igen |int |Második szám szorzása. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A szorzás jelölő egész.
+A szorzás jelölő egész szám.
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) szorozza meg egy másik paraméterrel egy paramétert.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) szorozza meg egy másik paraméterben az egyik paramétert.
 
 ```json
 {
@@ -569,22 +571,22 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | mulResult | Int | 15 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
 ```
 
 <a id="sub" />
@@ -592,21 +594,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="sub"></a>Sub
 `sub(operand1, operand2)`
 
-A kivonás a két megadott egész számokat adja vissza.
+A két megadott egész szám a a kivonási adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Igen |int |A szám, amelyet a program levonja az. |
-| operand2 |Igen |int |A szám, amelyet a program levonja. |
+| operand1 |Igen |int |A szám, ki kell vonni. |
+| operand2 |Igen |int |A szám, a rendszer levonja. |
 
-### <a name="return-value"></a>Visszatérési érték
-Egy a kivonásnak jelző egész számot.
+### <a name="return-value"></a>Vrácená hodnota
+-A kivonási jelző egész számot.
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) kivonja a másik paraméter egy paramétert.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) kivonja a másik paraméter egy paramétert.
 
 ```json
 {
@@ -639,27 +641,27 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | subResult | Int | 4 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
 ## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
-* Megadott számú alkalommal felépítésének egy adott típusú erőforrás létrehozása esetén lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
-* A sablon létrehozott központi telepítéséről, olvassa el [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy.md).
+* A megadott számú alkalommal újrafuttathatja egy adott típusú erőforrás létrehozásakor, lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
+* Ellenőrizze, hogyan helyezheti üzembe a létrehozott sablont, tekintse meg a [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md).
 

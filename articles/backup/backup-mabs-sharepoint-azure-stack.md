@@ -2,18 +2,18 @@
 title: A SharePoint-farmok biztonsági mentéséhez az Azure Stackben
 description: Az Azure Backup Server használatával biztonsági mentése és visszaállítása a SharePoint-adatok az Azure Stacken. Ez a cikk az információkat a SharePoint-farm konfigurálásához, hogy a kívánt adatokat tárolhatja az Azure-ban. Visszaállíthatja a védett SharePoint-adatok a lemezről, vagy az Azure-ból.
 services: backup
-author: pvrk
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: pullabhk
-ms.openlocfilehash: acb675d750eb54bdbdde8873f6994255a07eb229
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.author: adigan
+ms.openlocfilehash: 84b3808e56ad318165eeec973a622c2e8747c633
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605912"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488332"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>A SharePoint-farmok biztonsági mentéséhez az Azure Stackben
 Biztonsági mentést a SharePoint-farmok Azure Stack a Microsoft Azure-ba, hogy készítsen biztonsági mentést más adatforrásokhoz ugyanolyan módon a Microsoft Azure Backup Server (MABS) használatával. Az Azure Backup rugalmasan hozhat létre naponta a biztonsági mentési ütemezés, heti, havi vagy éves biztonsági mentési mutat, és különböző biztonsági mentési pontok megőrzése házirend lehetőséget kínál fel. Azt is lehetővé teszi a helyi lemez másolatot pedig gyors helyreállítási idő célkitűzései (RTO) tárolására, és tárolja a másolatokat az Azure-bA gazdaságos, hosszú távú megőrzésének.
@@ -23,7 +23,7 @@ A MABS az Azure Backup a következő eseteket támogatja:
 
 | Számítási feladat | Verzió | A SharePoint-környezet | Védelem és helyreállítás |
 | --- | --- | --- | --- |
-| SharePoint |A SharePoint 2016, a SharePoint 2013-hoz, a SharePoint 2010 |Azure Stack virtuális gépként üzembe helyezett SharePoint <br> -------------- <br> Az SQL AlwaysOn | Helyreállítási beállítások SharePoint-Farm védelme: helyreállítási farm, adatbázis és a fájl vagy listaelem, lemez-helyreállítási pontokból.  Helyreállítási farm, adatbázis és az Azure helyreállítási pontokból. |
+| SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010 |Azure Stack virtuális gépként üzembe helyezett SharePoint <br> -------------- <br> SQL AlwaysOn | Helyreállítási beállítások SharePoint-Farm védelme: Helyreállítási farm, adatbázis és a lemez-helyreállítási pontokból fájl vagy listaelem.  Helyreállítási farm, adatbázis és az Azure helyreállítási pontokból. |
 
 ## <a name="before-you-start"></a>Előkészületek
 Néhány dolgot meg kell erősítenie előtt készítsen biztonsági másolatot a SharePoint-farmok Azure-bA.
@@ -80,7 +80,7 @@ Miután konfigurálta a MABS és a korábbiakban leírtak a SharePoint-farm, Sha
    > A védelmi ügynök telepítve a varázsló a kiszolgáló látható. MABS mutatja a struktúráját is. Futtatta a ConfigureSharePoint.exe, mert a MABS kommunikál a SharePoint VSS-író szolgáltatás és a megfelelő SQL Server-adatbázisok és, és a SharePoint-farm struktúráját, a kapcsolódó tartalom-adatbázisokhoz és megfelelő elemeket.
    >
    >
-4. Az a **adatvédelmi módszer kiválasztása** lap, adja meg a nevét a **védelmi csoport**, és válassza ki a kívánt *védelmi módszerek*. Kattintson a **Tovább** gombra.
+4. Az a **adatvédelmi módszer kiválasztása** lap, adja meg a nevét a **védelmi csoport**, és válassza ki a kívánt *védelmi módszerek*. Kattintson a **tovább**.
 
     ![Adatvédelmi módszer kiválasztása](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
@@ -151,7 +151,7 @@ A következő példában a *helyreállítás SharePoint-elem* véletlenül tör�
 5. Böngészhet a különböző helyreállítási pontok is, és válasszon ki egy adatbázist vagy elemek helyreállítása. Válassza ki **dátum > helyreállítási idő**, és válassza ki a megfelelő **adatbázis > SharePoint-farm > helyreállítási pont > elem**.
 
     ![MABS SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Kattintson jobb gombbal az elemre, és válassza **helyreállítása** megnyitásához a **helyreállítási varázsló**. Kattintson a **Tovább** gombra.
+6. Kattintson jobb gombbal az elemre, és válassza **helyreállítása** megnyitásához a **helyreállítási varázsló**. Kattintson a **tovább**.
 
     ![Helyreállítási beállítások áttekintése](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. Válasszon végrehajtani, és kattintson a kívánt helyreállítási **tovább**.
@@ -175,7 +175,7 @@ A következő példában a *helyreállítás SharePoint-elem* véletlenül tör�
     MABS csatolja a tartalom-adatbázist, amelyen a SharePoint-elem az ideiglenes SQL Server-példányra. A tartalom-adatbázist, az azt állítja helyre az elemet, és helyezi az átmeneti tárolási helye a MABS. A helyreállított elem, amely az átmeneti helyen mostantól exportálható a SharePoint-farm átmeneti tárolási helye van szüksége.
 
     ![Átmeneti Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. Válassza ki **helyreállítási beállítások megadása**, és a alkalmazni a SharePoint-farm biztonsági beállításokat, vagy a helyreállítási pont biztonsági beállításainak alkalmazása. Kattintson a **Tovább** gombra.
+10. Válassza ki **helyreállítási beállítások megadása**, és a alkalmazni a SharePoint-farm biztonsági beállításokat, vagy a helyreállítási pont biztonsági beállításainak alkalmazása. Kattintson a **tovább**.
 
     ![Helyreállítási beállítások](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -222,11 +222,11 @@ A következő példában a *helyreállítás SharePoint-elem* véletlenül tör�
 5. Ezen a ponton kövesse a [helyreállítási lépéseket a cikk korábbi részeiben](#restore-a-sharepoint-item-from-disk-using-dpm) lemezről való helyreállításhoz egy SharePoint tartalom-adatbázist.
 
 ## <a name="faqs"></a>Gyakori kérdések
-K: helyreállíthatók a SharePoint-elem, az eredeti helyre, ha a SharePoint SQL AlwaysOn (a védelem a lemezen) használatával van konfigurálva?<br>
+KÉRDÉS: Tudok helyreállítani egy SharePoint-elem az eredeti helyre, ha a SharePoint SQL AlwaysOn (a védelem a lemezen) használatával van konfigurálva?<br>
 V: Igen, az elem visszaállíthatja az eredeti SharePoint-webhelyre.
 
-K: tudok helyreállítani egy SharePoint-adatbázis az eredeti helyre, ha a SharePoint SQL AlwaysOn használatára van konfigurálva?<br>
-V:, mert az SQL AlwaysOn konfigurálása a SharePoint-adatbázisok, nem lehet módosítani, ha a rendszer eltávolítja a rendelkezésre állási csoportot. Ennek eredményeképpen az MABS nem állítható vissza az adatbázis az eredeti helyre. SQL Server-adatbázis egy másik SQL Server-példányra helyreállítható.
+KÉRDÉS: Tudok helyreállítani egy SharePoint-adatbázis az eredeti helyre, ha a SharePoint SQL AlwaysOn használatára van konfigurálva?<br>
+V: A SharePoint-adatbázisok az SQL AlwaysOn vannak konfigurálva, mivel azok nem lehet módosítani, ha a rendszer eltávolítja a rendelkezésre állási csoport. Ennek eredményeképpen az MABS nem állítható vissza az adatbázis az eredeti helyre. SQL Server-adatbázis egy másik SQL Server-példányra helyreállítható.
 
 ## <a name="next-steps"></a>További lépések
 

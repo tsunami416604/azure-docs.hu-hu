@@ -4,17 +4,17 @@ description: Az Azure házirend értékelések és hatások határozza meg a meg
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cc5d59d523f87cac6ec8533d6af1342c58ba45f7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7925bc8a9f7cb65d0e92c943aa0a54d48611e286
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853629"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508987"
 ---
 # <a name="getting-compliance-data"></a>A megfelelőségi adatok beszerzése
 
@@ -45,6 +45,8 @@ Hozzárendelt házirendeket és kezdeményezések értékelések történt kül�
 - Egy erőforrás üzembe van helyezve, az erőforrás-kezelő, REST, Azure CLI-vel vagy az Azure PowerShell-hozzárendelés egy hatókörhöz. Ebben a forgatókönyvben a hatás esemény (hozzáfűzés, naplózása, megtagadása, üzembe helyezése) és a megfelelő állapotát az egyes erőforrások számára elérhetővé válik, a portálon és az SDK-k körülbelül 15 perc múlva. Ez az esemény nem okozhat más erőforrások értékelése.
 
 - Standard szintű megfelelőségi kiértékelési ciklusa. Miután 24 óránként automatikusan újraértékeli a hozzárendeléseket. Egy nagy szabályzatot vagy kezdeményezést, számos erőforrás időt vehet igénybe, így nem előre definiált elvárás, ha az értékelési ciklusát fog befejeződni. Ha kész, a portálon és az SDK-k frissített megfelelőségi eredmények érhetők el.
+
+- A [Vendég konfigurációs](../concepts/guest-configuration.md) erőforrás-szolgáltató által kezelt erőforráscsoport megfelelőségi adatokkal frissül.
 
 - Igény szerinti vizsgálat
 

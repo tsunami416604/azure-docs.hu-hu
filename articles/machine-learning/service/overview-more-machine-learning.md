@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 1/30/2019
-ms.openlocfilehash: 4d4d7c587dcc34b12ed757b7da54f5ad0b04e8cc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cd156a10faf396778b76687b3666887a6a60876c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451869"
+ms.locfileid: "55505699"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Mik azok a machine learning-termékek, a Microsoft?
 
@@ -27,7 +27,7 @@ Az alábbi lehetőségek érhetők el a machine learning az Azure-felhőben.
 
 | Felhőalapú&nbsp;beállításai | Mi ez? | Mik a lehetőségei |
 |-|-|-|
-| [Azure Machine Learning szolgáltatás](#azure-machine-learning-services) | Felügyelt felhőszolgáltatás Machine Learninghez  | Modellek betanítása, üzembe helyezése és kezelése Python és CLI használatával |
+| [Azure Machine Learning szolgáltatás](#azure-machine-learning-service) | Felügyelt felhőszolgáltatás Machine Learninghez  | Modellek betanítása, üzembe helyezése és kezelése Python és CLI használatával |
 | [Az Azure Machine Learning Studióban](#azure-machine-learning-studio) | A csomóponthúzási&ndash;és&ndash;dobja el a vizuális felhasználói felületet, a gépi tanulás | Hozhat létre, kísérletezzen és -előre konfigurált algoritmusokkal (Python- és R-) modellek üzembe helyezése|
 | [Azure Databricks](#azure-databricks) | Spark-alapú elemzési platform | Modellek és adat-munkafolyamatok létrehozása és üzembe helyezése |
 | [Azure Cognitive Services](#azure-cognitive-services) | Azure szolgáltatás előre összeállított, mesterséges intelligencián és gépi tanuláson alapuló modellekkel | Intelligens funkciók egyszerű hozzáadása alkalmazásokhoz |

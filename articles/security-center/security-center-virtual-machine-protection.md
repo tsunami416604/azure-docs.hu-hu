@@ -3,7 +3,7 @@ title: A gépek és az alkalmazások az Azure Security Center védelme |} A Micr
 description: Ez a dokumentum a Security Center javaslatait, segítő tárgyalja a virtuális gépek és számítógépek és a webalkalmazások és App Service Environment-környezetek védelmét.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2c8f91c6915b23193129ed9e82688ad5967eb6ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 1/27/2019
+ms.author: monhaber
+ms.openlocfilehash: 411fc025f5a25e961f69f5e6f66a9f6d115689a7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181469"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487743"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
@@ -42,7 +42,7 @@ A **számítás és alkalmazások**, a következő lap található:
 - **Áttekintés**: Monitorozás és a Security Center által azonosított javaslatok.
 - **Virtuális gépek és számítógépek**: a virtuális gépek és számítógépek listája, valamint mindegyikre az aktuális biztonsági állapota.
 - **Felhőszolgáltatások**: a Security Center által figyelt összes webes és feldolgozói szerepkör listája.
-- **App services (előzetes verzió)**: az App service Environment-környezetek és az egyes aktuális biztonsági állapotának listája.
+- **App services**: az App service Environment-környezetek és az egyes aktuális biztonsági állapotának listája.
 - **Tárolók (előzetes verzió)**: az IaaS Linuxos gépeken és a biztonsági konfigurációk értékelése a saját Docker üzemeltetett tárolók listájában.
 - **Számítási erőforrások (előzetes verzió)**: a számítási erőforrások, például a Service Fabric-fürtök és az Event hubs a javaslatok listája.
 
@@ -124,12 +124,11 @@ Ha előírásszerűbb magyarázatot kíván megtekinteni erről a javaslatról, 
 
 ![Operációs rendszer verziójának frissítése](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
-### <a name="app-services-preview"></a>App Services (előzetes verzió)
+### <a name="app-services"></a>App Services
+Kívánja engedélyezni az App Service az előfizetésében, annak érdekében, hogy az App Service-információk megtekintése. Ez a funkció engedélyezésével kapcsolatos útmutatásért lásd: [védelme App Service-ben az Azure Security Center](security-center-app-services.md).
+[!NOTE]
+> Monitoring App Service-ben van, és csak a Standard szintű Security Centerben elérhető előzetes verzióban érhető el.
 
-> [!NOTE]
-> Monitoring App Service-ben van, és csak a Standard szintű Security Centerben elérhető előzetes verzióban érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
->
->
 
 A **App services**, az App service Environment-környezetek listáját látja, és a Security Center kockázatértékelés alapján állapotösszegzése elvégzett.
 
@@ -171,19 +170,9 @@ A listában szereplő ikon három típusa van:
 |App Service|10|Távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz|Kapcsolja ki a hibakeresési webes alkalmazásokhoz, ha már nincs rá szüksége. Távoli hibakeresés használatához meg kell nyitni a Függvényalkalmazás bejövő portokat.|
 |App Service-ben|10|Távoli hibakeresést ki kell kapcsolni a Függvényalkalmazást|Ha már nincs szüksége rá a függvényalkalmazás hibakeresés kikapcsolását. Távoli hibakeresés használatához meg kell nyitni a Függvényalkalmazás bejövő portokat.|
 |App Service-ben|10|Webes alkalmazás IP-korlátozások konfigurálása|Az alkalmazás-hozzáférést IP-címek listájának meghatározását. Az IP-korlátozások használatát megvédheti webalkalmazását a gyakori támadásoktól.|
-|App Service-ben|10|Függvényalkalmazás IP-korlátozások konfigurálása| Az alkalmazás-hozzáférést IP-címek listájának meghatározását. Az IP-korlátozások használata gyakori támadások ellen védi a függvényalkalmazást.|
 |App Service-ben|10|Ne engedélyezze az összes ("*") erőforrások hozzáférhetnek az alkalmazáshoz| Ne engedélyezze a WEBSITE_LOAD_CERTIFICATES paraméter beállítása "". A paraméter beállítása "azt jelenti, hogy minden tanúsítvány töltődnek be a webes alkalmazások személyes tanúsítványtárolójába. A minimális jogosultság elvével való visszaéléshez ez is vezethet, mert nem valószínű, hogy a hely összes tanúsítvány futásidőben hozzá kell férnie.|
-|App Service-ben|5|Webes szoftvercsatornák le kell tiltani a webes alkalmazás|Tekintse át a Web Sockets websocket webalkalmazásokban használatát. A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket.|
-|App Service-ben|5|Webes szoftvercsatornák le kell tiltani a Függvényalkalmazás|Tekintse át a Web Sockets funkciót alkalmazásokon belüli használatát. A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket.|
-|App Service-ben|5|Egyéni tartományok használata az zabalení Webové Aplikace|Egyéni tartományok használatával védi a webalkalmazást a közös adathalász támadások és más DNS-sel támadásoktól.|
-|App Service-ben|5|Egyéni tartományok használata az Függvényalkalmazás|Egyéni tartományok használatával védi a függvényalkalmazás a közös adathalász támadások és más DNS-sel támadásoktól.|
 |App Service|20|A CORS nem teszi lehetővé minden erőforrás eléréséhez a webes alkalmazások|Együttműködhet a webalkalmazás csak a szükséges tartományok engedélyezése. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a webalkalmazáshoz való hozzáférés.|
 |App Service-ben|20|A CORS nem teszi lehetővé a Függvényalkalmazás eléréséhez minden erőforrás| Lehetővé teszi a funkció alkalmazását interakcióba csak a szükséges tartományok. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a függvény-alkalmazás elérésére.|
-|App Service|10|A legújabb támogatott .NET-keretrendszer-webalkalmazás|Használja a .NET-keretrendszer legújabb verzióját a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
-|App Service-ben|10|A Java legújabb támogatott verzióját használja a webalkalmazáshoz|Használja a legújabb Java verzióját a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
-|App Service-ben|10|A PHP legújabb támogatott verzióját használja a webalkalmazáshoz|Használja a legújabb PHP verzióját a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
-|App Service-ben|10|A legújabb támogatott Node.js verzió használata a webalkalmazáshoz|Használja a Node.js legújabb verzióját a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
-|App Service-ben|10|Használja a Python legújabb támogatott verzióját a webalkalmazáshoz|A legújabb Python-verzió használata a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
 |Számítási erőforrások (kötegelt)|1|Batch-fiókot a metrikaalapú riasztási szabályok konfigurálása|Metrikaalapú riasztási szabályok konfigurálása a Batch-fiók és a készlet törlése kész események és a készlet törlése Start események típusú metrikák engedélyezése|
 |Számítási erőforrások (a service fabric)|10|Azure Active Directory használata az ügyfél-hitelesítéshez, a Service Fabricben|Hajtsa végre a Service Fabric ügyfél-hitelesítés csak az Azure Active Directory segítségével.|
 |Számítási erőforrások (automation-fiók)|5| Automation-fiók titkosításának engedélyezése|Automation-fiók változó adategységek titkosítást bizalmas adatok tárolásakor.|

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.openlocfilehash: c84b814ddc06c583fc2f07288c7aa5cd65cc70a0
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 70cc6210a0c047867980de67ac24701df29ce8bf
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232124"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485177"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Az Azure Stream Analytics előzetes verziójú funkciók
 
@@ -45,7 +45,7 @@ Az Azure Stream Analytics Visual Studio-eszközök javíthatja a helyi tesztelé
 
 ## <a name="private-previews"></a>Privát előzetes verziók
 
-A következő funkciók private preview verzióban van. Ezen előzetes kiadások eléréséhez látogasson el az Azure Stream Analytics privát előzetes verzió [regisztráció](https://aka.ms/ASApreview1) lapot.
+A következő funkciók private preview verzióban van.
 
 ### <a name="anomaly-detection"></a>Anomáliadetektálás
 
@@ -59,7 +59,7 @@ A fejlesztők mostantól implementálhatók az egyéni deserializers deszerializ
 
 Már lehetséges az Azure Stream Analytics kimeneti Blob Storage bármely másik oszlopot a lekérdezés alapján particionálásához.
 
-### <a name="managed-identities-for-azure-resources-authentication-to-azure-data-lake-storage"></a>Felügyelt identitások Azure-erőforrások felé történő hitelesítéshez az Azure Data Lake Storage
+### <a name="managed-identities-for-azure-resource-authentication-to-azure-data-lake-storage"></a>Felügyelt identitások Azure-erőforrás felé történő hitelesítéshez az Azure Data Lake Storage
 
 Mostantól üzembe helyezheti a valós idejű folyamatok, az Azure-alapú erőforrások hitelesítéshez az Azure Data Lake Storage Gen1 írása közben a felügyelt identitásokból lehetővé teszi, hogy a feladatok programozott módon hozhatók létre. További információért látogasson el [identitások felügyelt használata az Azure-erőforrásokhoz való hitelesítéséhez az Azure Stream Analytics-feladatok az Azure Data Lake Storage Gen1 kimeneti](stream-analytics-managed-identities-adls.md).
 
@@ -67,4 +67,4 @@ Mostantól üzembe helyezheti a valós idejű folyamatok, az Azure-alapú erőfo
 
 * [Nyolc új funkciók az Azure Stream Analytics szolgáltatásban](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/)
 
-* [4 új funkciók már elérhető az Azure Stream Analytics szolgáltatásban](https://azure.microsoft.com/blog/4-new-features-now-available-in-azure-stream-analytics/)
+* [Négy új funkciók már elérhető az Azure Stream Analytics szolgáltatásban](https://azure.microsoft.com/blog/4-new-features-now-available-in-azure-stream-analytics/)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 110b909106f5b9eae639639adf418647e3e8bea9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c5bd40741ec0fe047f98b4b4431819d90e188385
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022342"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491467"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Központi telepítési funkciók az Azure Resource Manager-sablonok 
 
@@ -30,6 +30,8 @@ Erőforrás-kezelő az alábbi funkciókat biztosít értékek lekérése a sabl
 Erőforrások, erőforráscsoportok vagy előfizetések lekérjük az értékeket, lásd: [erőforrásfüggvények](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment"></a>üzembe helyezés
 `deployment()`
@@ -149,10 +151,10 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
 ```
 
-Egy előfizetés-szintű sablont, amely a központi telepítési függvényt használja, lásd: [előfizetés üzembe helyezési funkció](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). A következők egyikével telepítették `az deployment create` vagy `New-AzureRmDeployment` parancsokat.
+Egy előfizetés-szintű sablont, amely a központi telepítési függvényt használja, lásd: [előfizetés üzembe helyezési funkció](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). A következők egyikével telepítették `az deployment create` vagy `New-AzDeployment` parancsokat.
 
 <a id="parameters" />
 
@@ -252,11 +254,11 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| stringOutput | Karakterlánc | 1. lehetőséget |
+| stringOutput | String | 1. lehetőséget |
 | intOutput | Int | 1 |
 | objectOutput | Objektum | {"egy": "a", "2": "b"} |
 | arrayOutput | Tömb | [1, 2, 3] |
-| crossOutput | Karakterlánc | 1. lehetőséget |
+| crossOutput | String | 1. lehetőséget |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -267,7 +269,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
 ```
 
 <a id="variables" />
@@ -281,7 +283,7 @@ A változó értékét adja vissza. A megadott változónév a sablon a változ�
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| variableName |Igen |Karakterlánc |A visszaadandó változó neve. |
+| variableName |Igen |String |A visszaadandó változó neve. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -355,9 +357,9 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| exampleOutput1 | Karakterlánc | myVariable |
+| exampleOutput1 | String | myVariable |
 | exampleOutput2 | Tömb | [1, 2, 3, 4] |
-| exampleOutput3 | Karakterlánc | myVariable |
+| exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Objektum | {"Tulajdonság1": "érték1", "Tulajdonság2": "érték2"} |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
@@ -369,7 +371,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
 ```
 
 ## <a name="next-steps"></a>További lépések

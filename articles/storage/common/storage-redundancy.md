@@ -1,29 +1,29 @@
 ---
-title: Adatok replikálása az Azure Storage-ban |} A Microsoft Docs
-description: A Microsoft Azure Storage-fiókban lévő adatok a rendszer replikálja a tartósság és magas rendelkezésre állás. Helyileg redundáns tárolás (LRS), a zónaredundáns tárolás (ZRS), a georedundáns tárolás (GRS) és az írásvédett georedundáns tárolás (RA-GRS) replikációs lehetőségek.
+title: Az Azure Storage-ban adatredundancia |} A Microsoft Docs
+description: A Microsoft Azure Storage-fiókban lévő adatok a rendszer replikálja a tartósság és magas rendelkezésre állás. Adatredundanciával kapcsolatos lehetőségek közé tartozik a helyileg redundáns tárolás (LRS), a zónaredundáns tárolás (ZRS), a georedundáns tárolás (GRS) és az írásvédett georedundáns tárolás (RA-GRS).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3fb3860cbda2e1d46505711d7a175e5d42ec7018
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0ba36042d02d0b4101f1e80c63af232717bcf4ca
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455507"
+ms.locfileid: "55506787"
 ---
-# <a name="azure-storage-replication"></a>Azure Storage replication (Azure Storage replikáció)
+# <a name="azure-storage-redundancy"></a>Az Azure Storage-redundancia
 
-A Microsoft Azure tárfiók tartalmát mindig replikáljuk, így biztosítva az adatok tartósságát és magas rendelkezésre állását. Azure Storage-bA készít másolatot az adatokról, így védve vannak a tervezett és nem tervezett események és a átmeneti hardverhibák, hálózati vagy áramkimaradások, nagy természeti katasztrófák és így tovább. Egyazon adatközponton belül az adatok replikálásához zónaszintű adatközpontokon ugyanazon a régión belül, és -régiók között is választhat.
+A Microsoft Azure tárfiók tartalmát mindig replikáljuk, így biztosítva az adatok tartósságát és magas rendelkezésre állását. Az Azure Storage készít másolatot az adatokról, így a tervezett és nem tervezett események, például átmeneti hardverhibák, hálózati vagy áramkimaradások és hatalmas természeti katasztrófák védve van. Ha szeretné, ugyanabban az adatközpontban, az adatok replikálása a zónaszintű adatközpontokon ugyanazon a régión belül, vagy földrajzilag különálló régiók között elosztva.
 
 A replikáció biztosítja, hogy a tárfiók még hibák esetén is teljesíti a [Storage szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) feltételeit. Tekintse át az Azure Storage tartóssági és rendelkezésre állási garanciáit a szolgáltatói szerződésben .
 
-## <a name="choosing-a-replication-option"></a>Replikációs beállítás kiválasztása
+## <a name="choosing-a-redundancy-option"></a>Egy adatredundáns tárolási mód kiválasztása
 
-Tárfiók létrehozásakor választhat a következő replikációs lehetőségek közül:
+Amikor létrehoz egy tárfiókot, a következő adatredundanciával kapcsolatos lehetőségek közül választhat:
 
 * [Helyileg redundáns tárolás (LRS)](storage-redundancy-lrs.md)
 * [Zónaredundáns tárolás (ZRS)](storage-redundancy-zrs.md)

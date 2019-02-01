@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: e3b0773da49499e2eaa8c9b9f59ced4ed26276ba
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4361ec72f5f9cff924900ddd712aa1aa029c5ef4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465163"
+ms.locfileid: "55509020"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -45,7 +45,7 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 
 * **Tárfiók kulcsa**: Azure-fájlmegosztások csatlakoztatásához szüksége lesz az elsődleges (vagy másodlagos) tárkulcsra. Az SAS-kulcsokkal való csatlakoztatás jelenleg nem támogatott.
 
-* **Győződjön meg, hogy a 445-ös port nyitva**: Az SMB protokollt igényel a TCP 445-ös megnyitni; kapcsolatok sikertelen lesz, ha a 445-ös port le van tiltva. Ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös portot a `Test-NetConnection` parancsmaggal. A következő PowerShell-kód feltételezi, hogy az AzureRM PowerShell-modul telepítve van, további információért tekintse meg az [Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. Ne felejtse el kicserélni a `<your-storage-account-name>` és a `<your-resoure-group-name>` elemet a tárfiók vonatkozó neveivel.
+* **Győződjön meg, hogy a 445-ös port nyitva**: Az SMB protokollt igényel a TCP 445-ös megnyitni; kapcsolatok sikertelen lesz, ha a 445-ös port le van tiltva. Ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös portot a `Test-NetConnection` parancsmaggal. A következő PowerShell-kód feltételezi, hogy az AzureRM PowerShell-modul telepítve van, további információért tekintse meg az [Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. Ne felejtse el kicserélni a `<your-storage-account-name>` és a `<your-resource-group-name>` elemet a tárfiók vonatkozó neveivel.
 
     ```PowerShell
     $resourceGroupName = "<your-resource-group-name>"
@@ -83,7 +83,7 @@ Ellentétben más, például a Windows Serveren, Linux Samba Serveren vagy NAS-e
 Az SMB-fájlmegosztást váró üzletági (LOB) alkalmazások Azure-ba való áthelyezése esetén gyakori megoldás az Azure-fájlmegosztások használata a dedikált Windows-fájlkiszolgálók Azure-beli virtuális gépeken történő futtatása helyett. Az üzletági alkalmazások egy Azure-fájlmegosztás használatára való sikeres migrálása érdekében fontos figyelembe venni, hogy számos üzletági alkalmazás, egy korlátozott rendszerengedélyekkel rendelkező dedikált szolgáltatásfiók környezetében fut a virtuális gép rendszergazdai fiókja helyett. Ezért győződjön meg róla, hogy az Azure-fájlmegosztáshoz szükséges hitelesítő adatokat a szolgáltatásfiók helyett a rendszergazdai fiókon keresztül csatlakoztatja/menti.
 
 ### <a name="persisting-azure-file-share-credentials-in-windows"></a>Az Azure-fájlmegosztások hitelesítő adatainak megőrzése Windowson  
-A [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) segédprogram lehetővé teszi a tárfiókok hitelesítő adatainak tárolását Windowson. Ez azt jelenti, hogy nem szükséges megadnia a hitelesítő adatokat az Azure-fájlmegosztások csatlakoztatáskor vagy UNC-útvonalon keresztül történő elérésekor. A tárfiók hitelesítő adatainak mentéséhez futtassa a következő PowerShell-parancsokat, és cserélje le értelemszerűen a `<your-storage-account-name>` és `<your-resoure-group-name>` elemeket.
+A [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) segédprogram lehetővé teszi a tárfiókok hitelesítő adatainak tárolását Windowson. Ez azt jelenti, hogy nem szükséges megadnia a hitelesítő adatokat az Azure-fájlmegosztások csatlakoztatáskor vagy UNC-útvonalon keresztül történő elérésekor. A tárfiók hitelesítő adatainak mentéséhez futtassa a következő PowerShell-parancsokat, és cserélje le értelemszerűen a `<your-storage-account-name>` és `<your-resource-group-name>` elemeket.
 
 ```PowerShell
 $resourceGroupName = "<your-resource-group-name>"

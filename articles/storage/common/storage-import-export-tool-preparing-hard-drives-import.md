@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: cdcb7dbe726582e525b401bfa765ccc423928610
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7645694e9f2b90bfbe26ac3d0747791570f32d1b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454402"
+ms.locfileid: "55510136"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Merevlemezek előkészítése importálási feladatokhoz
 
@@ -81,7 +81,7 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 | BasePath | **[Kötelező]**<br/>Ez a paraméter értékét a forrás, ahol megtalálható az importálandó adatokat jelöli. Az eszköz fog rekurzív módon másolási az elérési út alatt található összes adatot.<br><br/>**Megengedett értékek**: Ez kell lennie a helyi számítógépen érvényes elérési utat vagy egy érvényes elérési utat, és a felhasználó által elérhetőnek kell lennie. A könyvtár elérési útjának abszolút elérési útnak (nem relatív elérési utat) kell lennie. Ha az elérési út végződik "\\", azt a könyvtárat, más egy elérési út nélküli záró "\\" egy fájlt jelöl.<br/>Ez a mező nincs reguláris kifejezés használata engedélyezett. Ha az elérési út szóközöket tartalmaz, helyezze "".<br><br/>**Példa**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
 | DstBlobPathOrPrefix | **[Kötelező]**<br/> A Windows Azure storage-fiókban a cél virtuális könyvtár elérési útja. Előfordulhat, hogy a virtuális könyvtár, vagy már nem létezik. Ha még nem létezik, Import/Export szolgáltatás létrehoz egyet.<br/><br/>Ügyeljen arra, érvényes a tároló nevének megadása a cél virtuális könyvtárak és blobok esetén. Ne feledje, hogy a tároló neve csak kisbetűket tartalmazhatnak. Tároló elnevezési szabályait, lásd: [elnevezése és a hivatkozó tárolók, Blobok és metaadatok](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata). Ha csak a legfelső szintű meg van adva, a rendszer replikálja a könyvtárstruktúra, a forrás-cél blob-tárolóban. Ha egy másik könyvtárstruktúrát van szükség, mint a forrás, leképezés CSV-ben több sort<br/><br/>Megadhat egy tárolót, vagy egy hasonló music/70s blob előtagot /. A célkönyvtárban duplikátum a tároló neve, amelyet által előre dőlő perjellel kell kezdődnie. a "/", és szükség esetén belefoglalhatja a előfordulhat, hogy a blob virtuális könyvtár nem végződik "/".<br/><br/>Ha a cél tároló a legfelső szintű tárolót, meg kell adnia a legfelső szintű tárolót, mint $root a perjelet is beleértve /. Mivel a gyökérszintű tárolóban található blobok nem szerepelhet "/" a nevében szerepel a forráskönyvtárban alkönyvtáraiban nem lesznek másolva a célkönyvtárban duplikátum esetén a gyökérszintű tárolóban.<br/><br/>**Példa**<br/>Ha a célblob elérési https://mystorageaccount.blob.core.windows.net/video, lehet, hogy ez a mező értékének videó /  |
 | BlobType | **[Opcionális]**  blokk &#124; lap<br/>Import/Export szolgáltatás jelenleg támogatja a Blobok 2 típusú. Blobok és a blokk BlobsBy alapértelmezett összes fájlt importálja blokkblobként lapon. És \*.vhd és \*.vhdx importálja, a lap BlobsThere a blokkblob és lapblobok engedélyezett mérete korlátozva. Lásd: [Storage skálázhatósági célértékét](storage-scalability-targets.md) további információt.  |
-| Törlése | **[Opcionális]**  átnevezése &#124; nem írja felül &#124; felülírása <br/> Ebben a mezőben adja meg a másolási viselkedés azaz importálás során Amikor adatokat töltenek fel a tárfiók a lemezről. Elérhető lehetőségek: átnevezése&#124;felülírja&#124;nem írja felül. Alapértelmezés szerint a "átnevezése", ha nincs megadva érték. <br/><br/>**Nevezze át**: Ugyanazzal a névvel rendelkező objektum jelen, ha létrehoz egy másolatot a célhelyen.<br/>Felülírása: újabb fájl felülírja a fájlt. A fájl utolsó módosításának WINS.<br/>**Nem írja felül**: Ugrás a fájl írása, ha már jelent-e.|
+| Törlése | **[Opcionális]**  átnevezése &#124; nem írja felül &#124; felülírása <br/> Ebben a mezőben adja meg a másolási viselkedés azaz importálás során Amikor adatokat töltenek fel a tárfiók a lemezről. Elérhető lehetőségek: átnevezése&#124;felülírása&#124;nem írja felül. Alapértelmezés szerint a "átnevezése", ha nincs megadva érték. <br/><br/>**Nevezze át**: Ugyanazzal a névvel rendelkező objektum jelen, ha létrehoz egy másolatot a célhelyen.<br/>Felülírása: újabb fájl felülírja a fájlt. A fájl utolsó módosításának WINS.<br/>**Nem írja felül**: Ugrás a fájl írása, ha már jelent-e.|
 | MetadataFile | **[Opcionális]** <br/>Ez a mező értéke a metaadatok fájlt, amely képes biztosítani, ha azt meg kell őrizni az objektumok metaadatait, vagy adjon meg egyéni metaadatok. Az a cél blobok metaadatait tartalmazó fájl elérési útja. Lásd: [Import/Export szolgáltatás metaadat és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információ |
 | PropertiesFile | **[Opcionális]** <br/>A fájl elérési útját a tulajdonság a cél blobok számára. Lásd: [Import/Export szolgáltatás metaadat és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információt. |
 
@@ -319,7 +319,7 @@ Azonban ugyanazon másolási munkamenet adatok importálása különböző stora
 
 Ha a munkamenet-példány a név nem azonos az eszközt, a naplófájl több futtatás során (/ logdir) és a tárfiók-kulcsot (/ sk) is várt azonosnak kell lennie.
 
-Munkamenet-azonosító tartalmazhat betűket, 0 ~ 9, understore (\_), kötőjelet (-) vagy az ujjlenyomat (#), és a hosszának 3 meg kell ~ 30.
+Munkamenet-azonosító tartalmazhat betűket, 0 ~ 9, aláhúzásjel (\_), kötőjelet (-) vagy az ujjlenyomat (#), és a hosszának 3 meg kell ~ 30.
 
 például a munkamenet-1 vagy a munkamenet 1 vagy a munkamenet\_1
 
@@ -388,7 +388,7 @@ Bár a lemezek között oszlanak meg adatokat, az adatok a storage-fiókban val�
 
 #### <a name="how-many-of-the-input-disks-will-have-active-io-in-parallel-when-copy-is-in-progress"></a>Lemezek számát a bemeneti lesz aktív i/o párhuzamosan, ha folyamatban van a Másolás?
 
-Az eszközt elosztja az adatokat a bemeneti lemezeken, a bemeneti fájlok mérete alapján. Mindemellett a bemeneti adatok jellegétől teljesen delends egyidejűleg aktív lemezek számát. A bemeneti adatkészlet az egyes fájlok méretétől függően egy vagy több lemez aktív IO jelenhetnek meg a párhuzamos. Tekintse meg a következő kérdésben talál további részleteket.
+Az eszközt elosztja az adatokat a bemeneti lemezeken, a bemeneti fájlok mérete alapján. Mindemellett egyidejűleg aktív lemezek száma teljesen a bemeneti adatok jellegétől függ. A bemeneti adatkészlet az egyes fájlok méretétől függően egy vagy több lemez aktív IO jelenhetnek meg a párhuzamos. Tekintse meg a következő kérdésben talál további részleteket.
 
 #### <a name="how-does-the-tool-distribute-the-files-across-the-disks"></a>Hogyan nem terjesztheti az eszközt a fájlok a lemezek között?
 

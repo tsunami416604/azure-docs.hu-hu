@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: fafc16bdf00f947d4ba8ffe56d7cf2ae3e0bc489
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 109c740ee92e82b6d18879da6839ce6341353cba
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344943"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495513"
 ---
 # <a name="resource-providers-and-types"></a>Erőforrás-szolgáltatók és típusaik
 
@@ -34,12 +34,14 @@ Erőforrások üzembe helyezésekor, gyakran kell az erőforrás-szolgáltatóka
 
 Ezen lépéseket a portálon, a PowerShell vagy az Azure CLI használatával végezheti el.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="powershell"></a>PowerShell
 
 Az Azure és a regisztrációs állapot az előfizetéshez tartozó összes erőforrás-szolgáltatót használja:
 
 ```azurepowershell-interactive
-Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
 ```
 
 Amely hasonló eredményeket ad vissza:
@@ -57,7 +59,7 @@ Microsoft.CognitiveServices      Registered
 Az előfizetés használata az erőforrás-szolgáltató erőforrás-szolgáltató regisztrálása konfigurálja. Regisztráció a hatókör, mindig az előfizetést. Sok erőforrás-szolgáltató alapértelmezés szerint automatikusan regisztrálva. Azonban szükség lehet néhány erőforrás-szolgáltatókat manuálisan regisztrálni. Erőforrás-szolgáltató regisztrálásához végrehajtásához engedéllyel kell rendelkeznie a `/register/action` műveletet az erőforrás-szolgáltató számára. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
+Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
 Amely hasonló eredményeket ad vissza:
@@ -74,7 +76,7 @@ Erőforrás-szolgáltató regisztrációja nem törölhető, ha továbbra is ren
 Egy adott erőforrás-szolgáltató adatait használja:
 
 ```azurepowershell-interactive
-Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
+Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
 Amely hasonló eredményeket ad vissza:
@@ -91,7 +93,7 @@ Locations         : {West Europe, East US, East US 2, West US...}
 Az erőforrás-szolgáltató erőforrástípusainak megtekintéséhez, használja:
 
 ```azurepowershell-interactive
-(Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes.ResourceTypeName
+(Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes.ResourceTypeName
 ```
 
 Amely értéket ad vissza:
@@ -108,7 +110,7 @@ Az API-verzió megfelel egy REST API-műveleteket az erőforrás-szolgáltató �
 Az elérhető API-verziók az erőforrástípushoz használja:
 
 ```azurepowershell-interactive
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).ApiVersions
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).ApiVersions
 ```
 
 Amely értéket ad vissza:
@@ -126,7 +128,7 @@ Resource Manager az összes régióban támogatott, de előfordulhat, hogy az er
 A támogatott helyek, az erőforrástípushoz használja.
 
 ```azurepowershell-interactive
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).Locations
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
 Amely értéket ad vissza:

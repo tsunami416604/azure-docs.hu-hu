@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 2b9702dbae0414ba597b6e1f6080d9de86f624fc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 439b68edf1d50d5d5292542640793b8b526b5891
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077076"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485772"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Oktatóanyag: A javaslatok a költségek optimalizálása
 
@@ -53,7 +53,7 @@ A **hatás** kategória, és a **lehetséges éves megtakarítások**, úgy terv
 
 Az Azure Advisor 14 nap a virtuális gép használatát figyeli, és azonosítja azokat az alacsony kihasználtságú virtuális gépeket. Virtuális gépek, amelynek CPU-kihasználtság öt százalékban kifejezett vagy annál kisebb, és a hálózati használati hét MB vagy belül a négy vagy több napot számítanak a kis-kihasználtság virtuális gépeket.
 
-A 5 % vagy kevesebb CPU-kihasználtsági beállítás az alapértelmezett érték, de módosíthatja a beállításokat. A beállítás módosításával kapcsolatos további információkért lásd: a [a átlagos CPU-kihasználtság szabály konfigurálása](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation) cikk [az alacsony kihasználtságú virtuális gépre vonatkozó javaslatok a](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation).
+A 5 % vagy kevesebb CPU-kihasználtsági beállítás az alapértelmezett érték, de módosíthatja a beállításokat. A beállítás módosításával kapcsolatos további információkért lásd: a [konfigurálja a átlagos CPU-kihasználtság szabály vagy az alacsony kihasználtságú virtuális gépre vonatkozó javaslatok](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
 
 Bár bizonyos forgatókönyvek elvárt eredményezhetnek alacsony kihasználtságot, gyakran pénzt takaríthat kevésbé költséges, méret, a virtuális gépek méretének módosításával. A tényleges megtakarításai eltérőek lehetnek, ha úgy dönt, hogy egy átméretezési művelet. Nézzük meg a virtuális gép átméretezése egy példát.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 769dcd3be33ec5dfecf0607ab3e45a11486c48d4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: eba703e454e02e5b83efae2de01003a2efc1f764
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412869"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493243"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -230,7 +230,7 @@ Igen. További információ:
 Virtuális hálózatok közötti társviszony-létesítés (vagy virtuális hálózatok közötti társviszony) lehetővé teszi, hogy a virtuális hálózatok összekapcsolása. Virtuális hálózatok közötti társviszony-létesítés virtuális hálózatok közötti kapcsolat lehetővé teszi őket közvetlenül a Microsoftnak IPv4-címeken keresztül közötti forgalom irányítására. A virtuális Társhálózatokba tartozó virtuális gépek kommunikálhatnak egymással, mintha ugyanazon a hálózaton belül vannak. Ezek a virtuális hálózatok ugyanabban a régióban vagy eltérő régiókban (más néven globális virtuális társhálózatok létesítésének) lehet. Azure-előfizetések virtuális Társhálózat-kapcsolatot is létrehozhatók.
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Egy másik régióban is létrehozhatok egy virtuális hálózatok közötti társviszony-létesítési kapcsolat?
-Igen. Globális virtuális társhálózatok létesítése lehetővé teszi a különböző régiókban található virtuális hálózatok társviszonyba állítása. Globális virtuális társhálózatok létesítésének érhető el minden nyilvános Azure-régióban. Ön nem globális társviszonyt a nyilvános Azure-régióban országos felhőkhöz. Globális társviszony-létesítés jelenleg nem áll rendelkezésre a nemzeti felhőkben.
+Igen. Globális virtuális társhálózatok létesítése lehetővé teszi a különböző régiókban található virtuális hálózatok társviszonyba állítása. Globális virtuális társhálózatok létesítésének érhető el minden nyilvános Azure-régióban és China cloud régiókban. Ön nem globálisan társviszonyt a nyilvános Azure-régióban országos felhőbeli régióban. Globális társviszony-létesítés jelenleg nem áll rendelkezésre a kormányzati felhő.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Lehet engedélyezni a virtuális hálózatok közötti Társviszonyt, ha a virtuális hálózatok különböző Azure Active Directory-bérlőn belül előfizetések tartoznak?
 Igen. Emellett akkor lehet megállapítani a virtuális hálózatok közötti társviszony-létesítés (akár helyi, akár globális), ha az előfizetés másik Azure Active Directory-bérlő tartozik. Ezt megteheti a PowerShell vagy parancssori felület használatával. Portál még nem támogatott.

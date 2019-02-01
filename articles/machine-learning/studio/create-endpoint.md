@@ -1,8 +1,21 @@
 ---
-Cím: Hozza létre a Web service végpontok titleSuffix: Azure Machine Learning Studio description: Az Azure Machine Learning webszolgáltatás-végpontok létrehozása A Web service-ben minden végpont egymástól függetlenül foglalkozik, szabályozva, és felügyelt.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 10/04/2016
+title: Webszolgáltatás-végpontok létrehozása
+titleSuffix: Azure Machine Learning Studio
+description: Az Azure Machine Learning webszolgáltatás-végpontok létrehozása A Web service-ben minden végpont egymástól függetlenül foglalkozik, szabályozva, és felügyelt.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 10/04/2016
+ms.openlocfilehash: fc3a92aaf13f13682cfc56333618436ffe3d65ef
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493371"
 ---
 # <a name="creating-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>A telepített Azure Machine Learning Studio-webszolgáltatásokhoz végpontok létrehozása
 > [!NOTE]

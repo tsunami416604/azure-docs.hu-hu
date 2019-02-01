@@ -13,15 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9a46d813f2e50831240303ba47380da39e2cb6af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 29181b19498b6735651869b6499c4a1cda5a4c3a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725810"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488846"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonokban kimeneti szakasz
+
 A kimeneti szakaszban adjon meg értékeket, amelyek a központi telepítés rendszer adja vissza. Visszaadhatja például az URI-t üzembe helyezett erőforrások eléréséhez.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="define-and-use-output-values"></a>Definiálja és kimeneti értékeket
 
@@ -39,7 +42,7 @@ Az alábbi példa bemutatja, hogyan állítható vissza a nyilvános IP-cím er�
 Az üzembe helyezés után az érték-parancsfájllal kérheti le. PowerShell esetén használja az alábbi parancsot:
 
 ```powershell
-(Get-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -Name <deployment-name>).Outputs.resourceID.value
+(Get-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -Name <deployment-name>).Outputs.resourceID.value
 ```
 
 Azure CLI esetén használja az alábbi parancsot:

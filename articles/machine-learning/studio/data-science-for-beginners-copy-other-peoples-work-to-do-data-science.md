@@ -1,8 +1,21 @@
 ---
-Cím: Másolja a mások data science példák titleSuffix: Azure Machine Learning Studio description: "Titokról adatelemzési módszer: Első másokat, hogy Ön helyett ezt a munkát. Machine learning példák az Azure AI katalógus. "
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-Szerző: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/05/2018
+title: Mások data science példák másolása
+titleSuffix: Azure Machine Learning Studio
+description: 'Üzleti titokra adatelemzési módszer: Első másokat, hogy Ön helyett ezt a munkát. Machine learning példák le az Azure AI-katalógusban.'
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 01/05/2018
+ms.openlocfilehash: 69d3e02ca8d3f020a50b81785c58a3f5a42ce4b0
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492997"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Más emberek munkájának lemásolása az adatelemzéshez
 ## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Adatelemzés kezdőknek sorozat

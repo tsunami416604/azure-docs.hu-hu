@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8c6fe9952beb8daeb9b96cf9244cccf85d9c2203
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ebc32f59539e4e4e94f7f68d5d164cf2b04cc4c2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165455"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488526"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: Módosítsa az alapértelmezett konfiguráció
 Ez a cikk az a célja, hogy végigvezetik az Azure Active Directory (Azure AD) Connect-szinkronizálás az alapértelmezett konfiguráció módosításához. Néhány gyakori helyzet biztosítja a lépéseket. A Tudásbázis a képes egyszerű módosítja a saját konfigurációjával, a saját üzleti szabályok alapján kell lennie.
@@ -265,7 +265,7 @@ A bejövő szinkronizálási szabály lehetővé teszi a áramlanak a forrásatt
 3. Kattintson a **új szabály hozzáadása** gombra egy új bejövő szabály létrehozásához.
 4. Alatt a **leírás** lapra, adja meg a következő konfigurációt:
 
-    | Attribútum | Value | Részletek |
+    | Attribútum | Érték | Részletek |
     | --- | --- | --- |
     | Name (Név) | *Adjon meg egy nevet* | Ha például *a az AD-ből – felhasználói UserType* |
     | Leírás | *Adjon meg egy leírást* |  |
@@ -277,7 +277,7 @@ A bejövő szinkronizálási szabály lehetővé teszi a áramlanak a forrásatt
 
 5. Nyissa meg a **Scoping szűrő** lapra, és adjon hozzá egy **egyetlen hatókörkezelési Szűrőcsoport** az alábbi záradékkal:
 
-    | Attribútum | Művelet | Value |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Felhasználó\_ |
 
@@ -307,7 +307,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 3. Kattintson a **új szabály hozzáadása** gombra.
 4. Alatt a **leírás** lapra, adja meg a következő konfigurációt:
 
-    | Attribútum | Value | Részletek |
+    | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
     | Name (Név) | *Adjon meg egy nevet* | Ha például *vette az aad-ben – a felhasználó a UserType* |
     | Leírás | *Adjon meg egy leírást* ||
@@ -319,7 +319,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
 5. Nyissa meg a **Scoping szűrő** lapra, és adjon hozzá egy **egyetlen hatókörkezelési Szűrőcsoport** két záradékai:
 
-    | Attribútum | Művelet | Value |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |

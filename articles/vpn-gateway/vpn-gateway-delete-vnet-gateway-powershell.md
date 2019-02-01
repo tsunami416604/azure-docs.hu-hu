@@ -1,6 +1,6 @@
 ---
-title: 'A virtuális hálózati átjáró törlése: PowerShell: Azure Resource Manager |} Microsoft Docs'
-description: A PowerShell használatával a Resource Manager üzembe helyezési modellel virtuális hálózati átjáró törlése.
+title: 'Virtuális hálózati átjáró törlése: PowerShell: Az Azure Resource Manager |} A Microsoft Docs'
+description: Törölje a virtuális hálózati átjáró PowerShell használatával a Resource Manager-alapú üzemi modellben.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: cherylmc
-ms.openlocfilehash: a23a969f1381e3a10c81a903793bad2870b436f6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a0fc21c469658da637f15c820c105ec3ff31a04e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603640"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507926"
 ---
-# <a name="delete-a-virtual-network-gateway-using-powershell"></a>A PowerShell használatával virtuális hálózati átjáró törlése
+# <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell-lel virtuális hálózati átjáró törlése
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
@@ -30,17 +30,17 @@ ms.locfileid: "31603640"
 >
 >
 
-Többféle különböző megközelítés közül választhat, ha törli a virtuális hálózati átjáró VPN gateway-konfigurációt.
+Van néhány, különböző megközelítési módot használ, akkor is igénybe vehet, ha meg szeretné a VPN-átjáró konfigurálása a virtuális hálózati átjáró törlése.
 
-- Ha teljes tartalmának törlése, és kezdje újra a folyamatot, ahogy a gyorsítás esetében is egy tesztkörnyezetben, törölheti az erőforráscsoportot. Ha töröl egy erőforráscsoport, a csoportban lévő összes erőforrást törli. Ez a módszer csak akkor javasolt, ha nem szeretné megtartani az erőforrások az erőforráscsoportban. Ezzel a megközelítéssel csak néhány erőforrásokat külön-külön nem törölhető.
+- Ha azt szeretné, törölnie kell minden, és kezdje újra a folyamatot, hasonlóan a tesztkörnyezetben, törölheti az erőforráscsoportot. Amikor töröl egy erőforráscsoportot, a csoportban lévő összes erőforrást törli. Ez a módszer csak akkor javasolt, ha nem szeretné megőrizni a az erőforrások az erőforráscsoportban. Ez a megközelítés csak néhány erőforrásokat külön-külön nem törölhető.
 
-- Ha meg szeretné tartani a erőforrások az erőforráscsoportban, a virtuális hálózati átjáró törlése válik kicsit bonyolultabb. A virtuális hálózati átjáró törlése előtt először törölnie kell az átjáró függő erőforrásokat. A szükséges lépések attól függ, a létrehozott kapcsolatok és a tőle függő erőforrások, minden egyes kapcsolathoz.
+- Ha azt szeretné, hogy egyes erőforrások az erőforráscsoportban, némileg összetettebb egy virtuális hálózati átjáró törlése folyamatban válik. A virtuális hálózati átjáró törlése előtt törölnie kell a olyan erőforrások, amelyek az átjáró függ. A lépéseket követheti az Ön által létrehozott kapcsolatok típusát, és minden kapcsolat esetén a tőle függő erőforrások függenek.
 
 ## <a name="before-beginning"></a>Mielőtt hozzálát
 
-### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. Töltse le a legújabb Azure Resource Manager PowerShell-parancsmagokkal.
+### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. Töltse le a legújabb Azure Resource Manager PowerShell-parancsmagokat.
 
-Töltse le és telepítse a legújabb verziót az Azure Resource Manager PowerShell-parancsmagokat. Letölti és telepíti a PowerShell-parancsmagokkal kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview).
+Töltse le és telepítse az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióját. Letöltése és telepítése a PowerShell-parancsmagokkal kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
 ### <a name="2-connect-to-your-azure-account"></a>2. Csatlakozás az Azure-fiókjával.
 
@@ -56,38 +56,38 @@ Keresse meg a fiókot az előfizetésekben.
 Get-AzureRmSubscription
 ```
 
-Ha egynél több előfizetéssel rendelkezik, adja meg a használni kívánt előfizetést.
+Ha több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést.
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="S2S"></a>Telephelyek közötti VPN-átjáró törlése
+## <a name="S2S"></a>Site-to-Site VPN gateway törlése
 
-Törölje a virtuális hálózati átjáró S2S-konfigurációt, először törölnie kell az egyes erőforrások, amelyek a virtuális hálózati átjáró vonatkozik. Erőforrások miatt függőségek meghatározott sorrendben kell törölni. Az alábbi néhány példa az használatakor az értékeket meg kell adni, miközben más értékek egy kimeneti eredmények. A következő megadott értékek a példákban, bemutatási célokra használjuk:
+S2S-konfigurációnak a virtuális hálózati átjáró törléséhez először törölnie kell az egyes virtuális hálózati átjáróhoz tartozó erőforrások. Erőforrások függőségek miatt bizonyos sorrendben kell törölni. Az egyes alábbi példák használatakor az értékeket meg kell adni, míg más értékek a következők egy kimeneti eredmény. A következő egyedi értékeket a példákban, bemutatási célokra használjuk:
 
-VNet-name: VNet1<br>
+Virtuális hálózat neve: VNet1<br>
 Erőforráscsoport neve: RG1<br>
-Virtuális hálózati átjárójához megadott név: GW1<br>
+Virtuális hálózati átjáró neve: GW1<br>
 
-Az alábbi lépéseket a Resource Manager üzembe helyezési modellel vonatkozik.
+Az alábbi lépéseket a Resource Manager-alapú üzemi modellre vonatkoznak.
 
-### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. A virtuális hálózati átjáró, amely a törölni kívánt beolvasása.
+### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. A virtuális hálózati átjárót, amelyet törölni szeretne kaphat.
 
 ```powershell
 $GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Ellenőrizze, hogy a virtuális hálózati átjáró rendelkezik-e a kapcsolatokat.
+### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Ellenőrizze, hogy ha a virtuális hálózati átjáró van-e a kapcsolatokat.
 
 ```powershell
 get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 $Conns=get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
 
-### <a name="3-delete-all-connections"></a>3. Törölje az összes kapcsolat.
+### <a name="3-delete-all-connections"></a>3. Összes kapcsolatot törli.
 
-A kapcsolatok mindegyikének a törlés megerősítéséhez kérheti.
+A rendszer felkérheti az egyes kapcsolatok a törlés jóváhagyásához.
 
 ```powershell
 $Conns | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
@@ -95,30 +95,30 @@ $Conns | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.
 
 ### <a name="4-delete-the-virtual-network-gateway"></a>4. A virtuális hálózati átjáró törlése.
 
-Az átjáró a törlés megerősítéséhez kérheti. Ha egy P2S-konfigurációt a vneten mellett S2S-konfigurációjáról, a virtuális hálózati átjáró törlése folyamatban lesz automatikusan ügyfelek leválasztása a összes P2S figyelmeztetés nélkül.
+A rendszer felkérheti az átjáró törlésének megerősítéséhez. Ha egy virtuális hálózaton P2S konfiguráció mellett az S2S-konfigurációnak, a virtuális hálózati átjáró törlése folyamatban automatikusan leválasztja az összes figyelmeztetés nélkül P2S-ügyfelekhez.
 
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-Ezen a ponton a virtuális hálózati átjáró törölve lett. A következő lépések segítségével törölje minden olyan erőforrásnál, amely már nincsenek használatban.
+Ezen a ponton a virtuális hálózati átjáró törölve lett. A következő lépések segítségével inaktiválja azokat az erőforrásokat, amelyek már nem használ.
 
-### <a name="5-delete-the-local-network-gateways"></a>5 helyi hálózati átjáró törlése.
+### <a name="5-delete-the-local-network-gateways"></a>5 a helyi hálózati átjárók törlése.
 
-A megfelelő helyi hálózati átjáró listájának lekérdezése.
+A megfelelő helyi hálózati átjárók listájának beolvasása.
 
 ```powershell
 $LNG=Get-AzureRmLocalNetworkGateway -ResourceGroupName "RG1" | where-object {$_.Id -In $Conns.LocalNetworkGateway2.Id}
 ```
 
-Helyi hálózati átjáró törlése. Előfordulhat, hogy kérni fogja a helyi hálózati átjáró mindegyikének a törlés jóváhagyásához.
+A helyi hálózati átjárók törlése. A rendszer felkérheti az egyes helyi hálózati átjáró a törlés jóváhagyásához.
 
 ```powershell
 $LNG | ForEach-Object {Remove-AzureRmLocalNetworkGateway -Name $_.Name -ResourceGroupName $_.ResourceGroupName}
 ```
 
-### <a name="6-delete-the-public-ip-address-resources"></a>6. A nyilvános IP-cím erőforrás törlése.
+### <a name="6-delete-the-public-ip-address-resources"></a>6. A nyilvános IP-cím erőforrások törlése.
 
 A virtuális hálózati átjáró IP-konfigurációk beolvasása.
 
@@ -126,70 +126,70 @@ A virtuális hálózati átjáró IP-konfigurációk beolvasása.
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-A nyilvános IP-cím erőforrások ehhez a virtuális hálózati átjáróhoz használt listájának lekérdezése. Ha a virtuális hálózati átjáró aktív-aktív volt, két nyilvános IP-cím jelenik meg.
+Nyilvános IP-cím erőforrások a virtuális hálózati átjáróhoz használt listájának beolvasása. Ha a virtuális hálózati átjáró aktív-aktív volt, látni fogja a két nyilvános IP-címet.
 
 ```powershell
 $PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
-A nyilvános IP-erőforrások törlése.
+Törli a nyilvános IP-cím-erőforrást.
 
 ```powershell
 $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "RG1"}
 ```
 
-### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Az átjáró-alhálózat törléséhez és a konfiguráció.
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Az átjáró-alhálózat törlése, és állítsa be a konfigurációt.
 
 ```powershell
 $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
 Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="v2v"></a>VNet – VNet VPN-átjáró törlése
+## <a name="v2v"></a>A virtuális hálózatok közötti VPN gateway törlése
 
-V2V konfiguráció esetén a virtuális hálózati átjáró törléséhez először törölnie kell az egyes erőforrások, amelyek a virtuális hálózati átjáró vonatkozik. Erőforrások miatt függőségek meghatározott sorrendben kell törölni. Az alábbi néhány példa az használatakor az értékeket meg kell adni, miközben más értékek egy kimeneti eredmények. A következő megadott értékek a példákban, bemutatási célokra használjuk:
+Virtuális hálózati átjáró V2V konfiguráció törléséhez először törölnie kell az egyes virtuális hálózati átjáróhoz tartozó erőforrások. Erőforrások függőségek miatt bizonyos sorrendben kell törölni. Az egyes alábbi példák használatakor az értékeket meg kell adni, míg más értékek a következők egy kimeneti eredmény. A következő egyedi értékeket a példákban, bemutatási célokra használjuk:
 
-VNet-name: VNet1<br>
+Virtuális hálózat neve: VNet1<br>
 Erőforráscsoport neve: RG1<br>
-Virtuális hálózati átjárójához megadott név: GW1<br>
+Virtuális hálózati átjáró neve: GW1<br>
 
-Az alábbi lépéseket a Resource Manager üzembe helyezési modellel vonatkozik.
+Az alábbi lépéseket a Resource Manager-alapú üzemi modellre vonatkoznak.
 
-### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. A virtuális hálózati átjáró, amely a törölni kívánt beolvasása.
+### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. A virtuális hálózati átjárót, amelyet törölni szeretne kaphat.
 
 ```powershell
 $GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Ellenőrizze, hogy a virtuális hálózati átjáró rendelkezik-e a kapcsolatokat.
+### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Ellenőrizze, hogy ha a virtuális hálózati átjáró van-e a kapcsolatokat.
 
 ```powershell
 get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
  
-Előfordulhat, hogy a virtuális hálózati átjáró egyéb kapcsolatokat, amelyek egy másik erőforráscsoportban. Ellenőrizze, hogy minden további erőforráscsoportban további kapcsolatokat. Ebben a példában keresése RG2 érkező kapcsolatok. Futtassa ezt minden erőforráscsoportban, hogy rendelkezik, amely lehet kapcsolódni a virtuális hálózati átjáró.
+Előfordulhat, hogy a virtuális hálózati átjáró egyéb kapcsolatokat, amelyek részei egy másik erőforráscsoportban található. Ellenőrizze, hogy az egyes további erőforráscsoportokban további kapcsolatokat. Ebben a példában a rendszer ellenőrzi a RG2 érkező kapcsolatokat. Futtassa ezt az egyes erőforráscsoportokban, hogy rendelkezik, amely előfordulhat, hogy rendelkezik egy kapcsolatot a virtuális hálózati átjárót.
 
 ```powershell
 get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
 ```
 
-### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. A kapcsolatok listájának lekérdezése mindkét irányban.
+### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. A kapcsolatok listájának beolvasása mindkét irányban.
 
-Mivel ez egy VNet – VNet konfigurációs, kell mindkét irányban kapcsolatok listáját.
+Mivel ez egy VNet – VNet-konfiguráció, kell mindkét irányban a kapcsolatok listájának megtekintéséhez.
 
 ```powershell
 $ConnsL=get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
  
-Ebben a példában keresése RG2 érkező kapcsolatok. Futtassa ezt minden erőforráscsoportban, hogy rendelkezik, amely lehet kapcsolódni a virtuális hálózati átjáró.
+Ebben a példában a rendszer ellenőrzi a RG2 érkező kapcsolatokat. Futtassa ezt az egyes erőforráscsoportokban, hogy rendelkezik, amely előfordulhat, hogy rendelkezik egy kapcsolatot a virtuális hálózati átjárót.
 
 ```powershell
  $ConnsR=get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "<NameOfResourceGroup2>" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
  ```
 
-### <a name="4-delete-all-connections"></a>4. Törölje az összes kapcsolat.
+### <a name="4-delete-all-connections"></a>4. Összes kapcsolatot törli.
 
-A kapcsolatok mindegyikének a törlés megerősítéséhez kérheti.
+A rendszer felkérheti az egyes kapcsolatok a törlés jóváhagyásához.
 
 ```powershell
 $ConnsL | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
@@ -198,15 +198,15 @@ $ConnsR | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_
 
 ### <a name="5-delete-the-virtual-network-gateway"></a>5. A virtuális hálózati átjáró törlése.
 
-A virtuális hálózati átjáró törlésének megerősítéséhez kérheti. A Vnetek P2S konfigurációk kell a V2V konfigurációjában, ha a virtuális hálózati átjáró törlése lesz automatikusan ügyfelek leválasztása a összes P2S figyelmeztetés nélkül.
+A rendszer felkérheti a virtuális hálózati átjáró a törlés jóváhagyásához. P2S konfiguráció a virtuális hálózatok kell a V2V konfiguráció mellett, ha a virtuális hálózati átjárók törlése automatikusan leválasztja az összes figyelmeztetés nélkül P2S-ügyfelekhez.
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-Ezen a ponton a virtuális hálózati átjáró törölve lett. A következő lépések segítségével törölje minden olyan erőforrásnál, amely már nincsenek használatban.
+Ezen a ponton a virtuális hálózati átjáró törölve lett. A következő lépések segítségével inaktiválja azokat az erőforrásokat, amelyek már nem használ.
 
-### <a name="6-delete-the-public-ip-address-resources"></a>6. A nyilvános IP-cím erőforrás törlése
+### <a name="6-delete-the-public-ip-address-resources"></a>6. A nyilvános IP-cím erőforrások törlése
 
 A virtuális hálózati átjáró IP-konfigurációk beolvasása.
 
@@ -214,42 +214,42 @@ A virtuális hálózati átjáró IP-konfigurációk beolvasása.
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-A nyilvános IP-cím erőforrások ehhez a virtuális hálózati átjáróhoz használt listájának lekérdezése. Ha a virtuális hálózati átjáró aktív-aktív volt, két nyilvános IP-cím jelenik meg.
+Nyilvános IP-cím erőforrások a virtuális hálózati átjáróhoz használt listájának beolvasása. Ha a virtuális hálózati átjáró aktív-aktív volt, látni fogja a két nyilvános IP-címet.
 
 ```powershell
 $PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
-A nyilvános IP-erőforrások törlése. A nyilvános IP-cím törlésének megerősítéséhez kérheti.
+Törli a nyilvános IP-cím-erőforrást. A rendszer felkérheti a nyilvános IP-cím a törlés jóváhagyásához.
 
 ```powershell
 $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Az átjáró-alhálózat törléséhez és a konfiguráció.
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Az átjáró-alhálózat törlése, és állítsa be a konfigurációt.
 
 ```powershell
 $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
 Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="deletep2s"></a>Egy pont – hely típusú VPN-átjáró törlése
+## <a name="deletep2s"></a>Pont – hely VPN gateway törlése
 
-Törölje a virtuális hálózati átjáró P2S-konfigurációt, először törölnie kell az egyes erőforrások, amelyek a virtuális hálózati átjáró vonatkozik. Erőforrások miatt függőségek meghatározott sorrendben kell törölni. Az alábbi néhány példa az használatakor az értékeket meg kell adni, miközben más értékek egy kimeneti eredmények. A következő megadott értékek a példákban, bemutatási célokra használjuk:
+Virtuális hálózati átjáró P2S konfiguráció törléséhez először törölnie kell az egyes erőforrások a virtuális hálózati átjáróhoz tartozó. Erőforrások függőségek miatt bizonyos sorrendben kell törölni. Az egyes alábbi példák használatakor az értékeket meg kell adni, míg más értékek a következők egy kimeneti eredmény. A következő egyedi értékeket a példákban, bemutatási célokra használjuk:
 
-VNet-name: VNet1<br>
+Virtuális hálózat neve: VNet1<br>
 Erőforráscsoport neve: RG1<br>
-Virtuális hálózati átjárójához megadott név: GW1<br>
+Virtuális hálózati átjáró neve: GW1<br>
 
-Az alábbi lépéseket a Resource Manager üzembe helyezési modellel vonatkozik.
+Az alábbi lépéseket a Resource Manager-alapú üzemi modellre vonatkoznak.
 
 
 >[!NOTE]
-> Ha törli a VPN-átjárót, az összes kapcsolódó ügyfelek a VNet figyelmeztetés nélkül megszakad.
+> Ha törli a VPN-átjárót, az összes csatlakoztatott ügyfelek figyelmeztetés nélkül a virtuális hálózat le lesz választva.
 >
 >
 
-### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. A virtuális hálózati átjáró, amely a törölni kívánt beolvasása.
+### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. A virtuális hálózati átjárót, amelyet törölni szeretne kaphat.
 
 ```powershell
 $GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
@@ -257,15 +257,15 @@ $GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 
 ### <a name="2-delete-the-virtual-network-gateway"></a>2. A virtuális hálózati átjáró törlése.
 
-A virtuális hálózati átjáró törlésének megerősítéséhez kérheti.
+A rendszer felkérheti a virtuális hálózati átjáró a törlés jóváhagyásához.
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-Ezen a ponton a virtuális hálózati átjáró törölve lett. A következő lépések segítségével törölje minden olyan erőforrásnál, amely már nincsenek használatban.
+Ezen a ponton a virtuális hálózati átjáró törölve lett. A következő lépések segítségével inaktiválja azokat az erőforrásokat, amelyek már nem használ.
 
-### <a name="3-delete-the-public-ip-address-resources"></a>3. A nyilvános IP-cím erőforrás törlése
+### <a name="3-delete-the-public-ip-address-resources"></a>3. A nyilvános IP-cím erőforrások törlése
 
 A virtuális hálózati átjáró IP-konfigurációk beolvasása.
 
@@ -273,28 +273,28 @@ A virtuális hálózati átjáró IP-konfigurációk beolvasása.
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-Használja a virtuális hálózati átjáró nyilvános IP-címek listájának. Ha a virtuális hálózati átjáró aktív-aktív volt, két nyilvános IP-cím jelenik meg.
+A virtuális hálózati átjáróhoz használt nyilvános IP-címek listájának beolvasása. Ha a virtuális hálózati átjáró aktív-aktív volt, látni fogja a két nyilvános IP-címet.
 
 ```powershell
 $PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
-A nyilvános IP-cím törlése. A nyilvános IP-cím törlésének megerősítéséhez kérheti.
+Törölje a nyilvános IP-címek. A rendszer felkérheti a nyilvános IP-cím a törlés jóváhagyásához.
 
 ```powershell
 $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="4-delete-the-gateway-subnet-and-set-the-configuration"></a>4. Az átjáró-alhálózat törléséhez és a konfiguráció.
+### <a name="4-delete-the-gateway-subnet-and-set-the-configuration"></a>4. Az átjáró-alhálózat törlése, és állítsa be a konfigurációt.
 
 ```powershell
 $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
 Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="delete"></a>Az erőforráscsoport törlésével VPN-átjáró törlése
+## <a name="delete"></a>Az erőforráscsoport törlésével a VPN gateway törlése
 
-Ha nem aggódik megőrzi az erőforrásokat az erőforráscsoport található, és szeretné elölről, törölheti a teljes erőforráscsoport. Ez az gyorsan távolítson el minden. Az alábbi lépéseket csak a Resource Manager üzembe helyezési modellel vonatkoznak.
+Ha csak át szeretné újrakezdeni, amelyek nem azok tartja az erőforrásokat az erőforráscsoport, egy egész erőforráscsoportot törölheti. Ez az, hogy gyorsan távolítson el minden. Az alábbi lépéseket csak a Resource Manager-alapú üzemi modellre vonatkoznak.
 
 ### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. Az erőforráscsoportok listájának lekérése az előfizetéséhez.
 
@@ -304,7 +304,7 @@ Get-AzureRmResourceGroup
 
 ### <a name="2-locate-the-resource-group-that-you-want-to-delete"></a>2. Keresse meg a törölni kívánt erőforráscsoportot.
 
-Keresse meg az erőforráscsoport, amelyet szeretne törölni, és az erőforráscsoport erőforrások listájának megtekintése. A példában az erőforráscsoport neve nem RG1. Módosítsa a példa az erőforrások listájának beolvasása.
+Keresse meg az erőforráscsoportot, amelyet szeretne törölni, és az adott erőforráscsoportba tartozó erőforrások listájának megtekintése. A példában az erőforráscsoport neve RG1. Módosítsa úgy a példát lekérni az összes erőforrás listáját.
 
 ```powershell
 Find-AzureRmResource -ResourceGroupNameContains RG1
@@ -312,11 +312,11 @@ Find-AzureRmResource -ResourceGroupNameContains RG1
 
 ### <a name="3-verify-the-resources-in-the-list"></a>3. Ellenőrizze az erőforrások listájában.
 
-Ha a listát ad vissza, át, és győződjön meg arról, hogy valóban törli az erőforráscsoportot, valamint az erőforráscsoportot, maga az összes erőforrást. Ha meg szeretné tartani a erőforrások az erőforráscsoportban, a lépések segítségével a cikk korábbi szakaszaiban ismertetett törölje az átjárót.
+Ha a listát ad vissza, át, és győződjön meg arról, hogy szeretné-e törölheti az erőforráscsoportot, valamint magát az erőforráscsoportot az összes erőforrást. Ha azt szeretné, hogy egyes erőforrások az erőforráscsoportban, kövesse a lépéseket a korábbi szakaszokban, ez a cikk az átjárót.
 
-### <a name="4-delete-the-resource-group-and-resources"></a>4. Az erőforráscsoport és erőforrások törlése.
+### <a name="4-delete-the-resource-group-and-resources"></a>4. Törölje az erőforráscsoportot és az erőforrásokat.
 
-Az erőforráscsoport és az erőforrás-csoportban lévő összes erőforrás törlése, módosítása a példa, és futtassa.
+Az erőforráscsoport és az erőforráscsoportban lévő összes erőforrás törléséhez módosítsa úgy a példát, és futtassa.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name RG1
@@ -324,13 +324,13 @@ Remove-AzureRmResourceGroup -Name RG1
 
 ### <a name="5-check-the-status"></a>5. Ellenőrizze az állapotát.
 
-Az Azure-erőforrások törlése némi időt vesz igénybe. Ez a parancsmag használatával ellenőrizheti az erőforráscsoport állapota.
+Összes erőforrást törli az Azure némi időt vesz igénybe. Ez a parancsmag használatával ellenőrizheti az erőforráscsoport állapota.
 
 ```powershell
 Get-AzureRmResourceGroup -ResourceGroupName RG1
 ```
 
-A visszaadott eredmény jeleníti meg a "Sikeres".
+A visszaadott eredmény látható a "Sikeres".
 
 ```
 ResourceGroupName : RG1

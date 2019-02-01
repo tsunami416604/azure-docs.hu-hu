@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: b2b5d62c54fbfdef8a5e448a089800eedcb66d07
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f9f4d544a407a75231302b0eb53c27904585250f
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827499"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510680"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Ajánlott eljárások biztonságossá tétele és a számítási feladatok kezelése az Azure-bA migrálása
 
@@ -400,8 +400,7 @@ Az Azure virtuális gépek és az Azure Storage szolgáltatásban tárolódnak.
 - [Ismerje meg, hogyan](https://docs.microsoft.com/azure/storage/blobs/storage-blob-snapshots) blob-pillanatkép létrehozása.
 - [Tekintse át a mintaforgatókönyv](https://azure.microsoft.com/blog/microsoft-azure-block-blob-storage-backup) a blob storage biztonsági mentéshez.
 - [További információ](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) helyreállítható törlés.
-- [Felülvizsgálat](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) Mi a teendő az Azure Storage leállása esetén?
-
+- [Vészhelyreállítás és a kényszerített feladatátvétel (előzetes verzió) az Azure Storage-ban](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 #### <a name="third-party-backup"></a>Külső biztonsági mentése
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 9ee01885d9c292a7f9513ebc1f5121ca8c010f68
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 9c0255382e2cfe09683931408d25ffb3f60419d1
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095821"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508895"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js-Konzolalkalmazás létrehozása az Azure Cosmos DB SQL API-adatok kezelése a JavaScript SDK-val
 
@@ -85,7 +85,7 @@ Most, hogy az alkalmazás már létezik, győződjön meg arról, hogy kommunik�
 
    ![Kulcsok lekérése az Azure Portalról képernyőkép][keys]
 
-   ```nodejs
+   ```javascript
    // ADD THIS PART TO YOUR CODE
    var config = {}
 
@@ -95,7 +95,7 @@ Most, hogy az alkalmazás már létezik, győződjön meg arról, hogy kommunik�
 
 1. Másolja és illessze be a ```database```, ```container``` és ```items``` adatokat az alábbi ```config```-objektumba oda, ahol megadta a ```config.endpoint``` és ```config.primaryKey``` tulajdonságot. Ha már rendelkezik adat, amelyet szeretne az adatbázisban tárolni, használhatja a meghatározásához, itt az adatok helyett az Azure Cosmos DB az adatok áttelepítési eszköz.
 
-   ```nodejs
+   ```javascript
    var config = {}
 
    config.endpoint = "~your Azure Cosmos DB account endpoint uri here~";
@@ -171,7 +171,7 @@ Most, hogy az alkalmazás már létezik, győződjön meg arról, hogy kommunik�
 
 1. Végül exportálja a ```config```-objektumot, hogy hivatkozhasson rá az ```app.js``` fájlban.
 
-   ```nodejs
+   ```javascript
         },
         "isRegistered": false
        }
@@ -185,7 +185,7 @@ Most, hogy az alkalmazás már létezik, győződjön meg arról, hogy kommunik�
 
 1. Nyissa meg az üres ```app.js``` fájlt a szövegszerkesztőben. Másolja és illessze be az alábbi kódot a ```@azure/cosmos```, valamint az újonnan létrehozott ```config``` modul importálásához.
 
-   ```nodejs
+   ```javascript
    // ADD THIS PART TO YOUR CODE
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
@@ -195,7 +195,7 @@ Most, hogy az alkalmazás már létezik, győződjön meg arról, hogy kommunik�
 
 1. Másolja és illessze be a kódot, ha az előzőleg mentett ```config.endpoint``` és ```config.primaryKey``` használatával szeretne létrehozni egy új CosmosClient-ügyfelet.
 
-   ```nodejs
+   ```javascript
    const url = require('url');
 
    // ADD THIS PART TO YOUR CODE
@@ -220,7 +220,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
 
 1. Másolja és illessze be az alábbi kód megadásával beállíthatja az adatbázis-azonosító és a tároló azonosítója. Azonosítóit a részletekben, hogyan az Azure Cosmos DB-ügyfél megtalálja a megfelelő adatbázist és a tároló.
 
-   ```nodejs
+   ```javascript
    const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
 
    // ADD THIS PART TO YOUR CODE
@@ -234,7 +234,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
 
 2. Másolja és illessze be a **createDatabase** és a **readDatabase** metódusokat a ```databaseId``` és a ```containerId``` definíciója alá az app.js fájlban. Ha még nem létezne, a **createDatabase** függvény létrehoz egy új adatbázist a ```FamilyDatabase``` azonosítóval, amelyet a ```config``` objektum határoz meg. A **readDatabase** függvény beolvassa az adatbázis definícióját, hogy ellenőrizze, hogy az adatbázis létezik-e.
 
-   ```nodejs
+   ```javascript
    /**
     * Create the database if it does not exist
     */
@@ -254,7 +254,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
 
 3. Másolja és illessze be az alábbi kódot oda, ahol megadta a **createDatabase** és **readDatabase** függvényeket. Ezzel hozzáadhatja az **exit** (kilépés) segédfüggvényt, amely megjeleníti a kilépési üzenetet. 
 
-   ```nodejs
+   ```javascript
    // ADD THIS PART TO YOUR CODE
    function exit(message) {
       console.log(message);
@@ -267,7 +267,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
 
 4. Másolja és illessze be az alábbi kódot oda, ahol megadta az **exit** függvényt a **createDatabase** és a **readDatabase** függvények meghívására.
 
-   ```nodejs
+   ```javascript
    createDatabase()
      .then(() => readDatabase())
      .then(() => { exit(`Completed successfully`); })
@@ -276,7 +276,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
 
    Ekkor az ```app.js``` fájlban a kódnak úgy kell kinéznie, mint az alábbi kód:
 
-   ```nodejs
+   ```javascript
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
@@ -343,7 +343,7 @@ Egy tároló használatával hozható létre a `createIfNotExists` , vagy hozzon
 
 1. Másolja és illessze be a **createContainer** és a **readContainer** függvényt a **readDatabase** függvény alá az app.js fájlban. Ha még nem létezne, a **createContainer** függvény létrehoz egy új tárolót a ```containerId``` azonosítóval, amelyet a ```config``` objektum határoz meg. A **readContainer** függvény beolvassa a tároló definícióját, hogy ellenőrizze, hogy a tároló létezik-e.
 
-   ```nodejs
+   ```javascript
    /**
    * Create the container if it does not exist
    */
@@ -363,7 +363,7 @@ Egy tároló használatával hozható létre a `createIfNotExists` , vagy hozzon
 
 1. Másolja és illessze be az alábbi kódot a **readDatabase** alá a **createContainer** és a **readContainer** függvény végrehajtásához.
 
-   ```nodejs
+   ```javascript
    createDatabase()
      .then(() => readDatabase())
 
@@ -378,7 +378,7 @@ Egy tároló használatával hozható létre a `createIfNotExists` , vagy hozzon
 
    Ekkor az ```app.js``` fájlban a kódnak így kell kinéznie:
 
-   ```nodejs
+   ```javascript
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
@@ -458,7 +458,7 @@ Egy elem a létrehozás funkciójának használatával hozható létre a **eleme
 
 1. Másolja és illessze be a **createFamilyItem** függvényt a **readContainer** függvény alá. A **createFamilyItem** függvény hozza létre a ```config``` objektumban mentett JSON-adatokat tartalmazó elemeket. Az egyes elemek létrehozása előtt a rendszer ellenőrzi, hogy létezik-e már elem ugyanazzal az azonosítóval.
 
-   ```nodejs
+   ```javascript
    /**
    * Create family item if it does not exist
    */
@@ -482,7 +482,7 @@ Egy elem a létrehozás funkciójának használatával hozható létre a **eleme
 
 1. Másolja és illessze be az alábbi kódot a **readContainer** függvény meghívása alá a **createFamilyItem** függvény végrehajtásához.
 
-   ```nodejs
+   ```javascript
    createDatabase()
      .then(() => readDatabase())
      .then(() => createContainer())
@@ -509,7 +509,7 @@ Az Azure Cosmos DB támogatja az egyes tárolókban tárolt JSON-dokumentumokon 
 
 1. Másolja és illessze be a **queryContainer** függvényt a **createFamilyItem** függvény alá az app.js fájlban. Az Azure Cosmos DB támogatja az SQL-szerű lekérdezéseket, ahogyan azt az alábbi példa is mutatja.
 
-   ```nodejs
+   ```javascript
    /**
    * Query the container using SQL
     */
@@ -537,7 +537,7 @@ Az Azure Cosmos DB támogatja az egyes tárolókban tárolt JSON-dokumentumokon 
 
 1. Másolja és illessze be az alábbi kódot a **createFamilyItem** függvény meghívásai alá a **queryContainer** függvény végrehajtásához.
 
-   ```nodejs
+   ```javascript
    createDatabase()
      .then(() => readDatabase())
      .then(() => createContainer())
@@ -565,7 +565,7 @@ Az Azure Cosmos DB támogatja az elemek tartalmának cseréjét.
 
 1. Másolja és illessze be a **replaceFamilyItem** függvényt a **queryContainer** függvény alá az app.js fájlban. Vegye figyelembe, hogy a gyermekek „szint” tulajdonságát 6-os értékre módosítottuk a korábbi 5-ös értékről.
 
-   ```nodejs
+   ```javascript
    // ADD THIS PART TO YOUR CODE
    /**
    * Replace the item by ID.
@@ -580,7 +580,7 @@ Az Azure Cosmos DB támogatja az elemek tartalmának cseréjét.
 
 1. Másolja és illessze be az alábbi kódot a **queryContainer** függvény meghívása alá a **replaceFamilyItem** függvény végrehajtásához. Továbbá adja hozzá a **queryContainer** függvényt meghívó kódot annak megerősítése érdekében, hogy az elem módosítása sikeres volt.
 
-   ```nodejs
+   ```javascript
    createDatabase()
      .then(() => readDatabase())
      .then(() => createContainer())
@@ -611,7 +611,7 @@ Az Azure Cosmos DB támogatja a JSON-elemek törlését.
 
 1. Másolja és illessze be a **deleteFamilyItem** függvényt a **replaceFamilyItem** függvény alá.
 
-   ```nodejs
+   ```javascript
   /**
   * Delete the item by ID.
   */
@@ -623,7 +623,7 @@ Az Azure Cosmos DB támogatja a JSON-elemek törlését.
 
 1. Másolja és illessze be az alábbi kódot a második **queryContainer** függvény meghívása alá a **deleteFamilyItem** függvény végrehajtásához.
 
-   ```nodejs
+   ```javascript
    createDatabase()
       .then(() => readDatabase())
       .then(() => createContainer())
@@ -656,7 +656,7 @@ A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerő
 
 1. Másolja és illessze be a **cleanup** függvényt a **deleteFamilyItem** függvény alá az adatbázis, valamint annak minden gyermekerőforrása törléséhez.
 
-   ```nodejs
+   ```javascript
    /**
    * Cleanup the database and container on completion
    */
@@ -667,7 +667,7 @@ A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerő
 
 1. Másolja és illessze be az alábbi kódot a **deleteFamilyItem** függvény meghívása alá a **cleanup** függvény végrehajtásához.
 
-   ```nodejs
+   ```javascript
    createDatabase()
       .then(() => readDatabase())
       .then(() => createContainer())
@@ -691,7 +691,7 @@ A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerő
 
 Összességében a kódnak így kell kinéznie:
 
-```nodejs
+```javascript
 const CosmosClient = require('@azure/cosmos').CosmosClient;
 
 const config = require('./config');

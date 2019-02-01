@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: b702b6de5c9f33058e9b486547530d071969bd97
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 70f6f8a7837b9e87b2720a866f14983356d23691
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855384"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487676"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Tevékenységnaplók megtekintése az erőforrásokon végzett műveletek naplózásához
 
@@ -35,7 +35,10 @@ A Tevékenységnaplók 90 napig őrzi meg. Lekérdezheti, ha bármely dátumtart
 
 Információ a vizsgálati naplók a portálon keresztül, PowerShell, az Azure CLI-vel, az Insights REST API-t lehet lekérdezni vagy [Insights .NET-kódtár](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
-## <a name="portal"></a>Portál
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="the-azure-portal"></a>Az Azure Portal
 
 1. A portálon keresztül a vizsgálati naplók megtekintéséhez jelölje ki **figyelő**.
 
@@ -71,52 +74,52 @@ Információ a vizsgálati naplók a portálon keresztül, PowerShell, az Azure 
 
 ## <a name="powershell"></a>PowerShell
 
-* Naplóbejegyzés lekéréséhez futtassa a **Get-AzureRmLog** parancsot. Azt adja meg a további paramétereket bejegyzések listájának szűrése. Ha nem ad meg egy kezdő és záró idő, a rendszer az elmúlt hét nap bejegyzéseinek adja vissza.
+* Naplóbejegyzés lekéréséhez futtassa a **Get-AzLog** parancsot. Azt adja meg a további paramétereket bejegyzések listájának szűrése. Ha nem ad meg egy kezdő és záró idő, a rendszer az elmúlt hét nap bejegyzéseinek adja vissza.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup
+  Get-AzLog -ResourceGroup ExampleGroup
   ```
 
     Az alábbi példa bemutatja, hogyan használhatja egy adott időszakban végrehajtott kutatási műveletek a tevékenységnaplóban. A kezdő és záró dátuma meg van adva a dátumformátum.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2019-01-09T06:00 -EndTime 2019-01-15T06:00
+  Get-AzLog -ResourceGroup ExampleGroup -StartTime 2019-01-09T06:00 -EndTime 2019-01-15T06:00
   ```
 
     Másik lehetőségként dátumfüggvények segítségével megadhatja a dátumtartományt, például az elmúlt 14 napban.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
+  Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
   ```
 
 * Egy adott, még egy erőforráscsoportot, amely már nem létezik a felhasználó által végrehajtott műveletek kereshet.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
+  Get-AzLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
   ```
 
 * A sikertelen műveleteket végezhet.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
+  Get-AzLog -ResourceGroup ExampleGroup -Status Failed
   ```
 
 * Egy hiba történt az állapotüzenet tartalmazza az adott bejegyzés megnézzük összpontosíthat.
 
   ```azurepowershell-interactive
-  ((Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed).Properties[0].Content.statusMessage | ConvertFrom-Json).error
+  ((Get-AzLog -ResourceGroup ExampleGroup -Status Failed).Properties[0].Content.statusMessage | ConvertFrom-Json).error
   ```
 
 * Visszaadott adatok a konkrét értékekre is választhat.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
+  Get-AzLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
   ```
 
 * A megadott kezdési időpont, attól függően az előző parancsokkal az erőforráscsoporthoz tartozó műveletek számos régóta adhat vissza. Az eredmények mit keresett keresési feltételek megadásával szűrheti. Például szűrhet a művelet típusát.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
+  Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
   ```
 
 ## <a name="azure-cli"></a>Azure CLI

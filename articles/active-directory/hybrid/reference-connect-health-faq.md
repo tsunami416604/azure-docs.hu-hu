@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 67523641ff9650a5b35a142147a2f69adcfb3b1c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 744344c9427604f46c3f428d8dfcd279d8f2ffba
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077301"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486334"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk az Azure Active Directory (Azure AD) Connect Health szolgáltatással kapcsolatos gyakori kérdések (GYIK) rájuk adott válaszokat tartalmazza. Ezek a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatáról terjed ki.

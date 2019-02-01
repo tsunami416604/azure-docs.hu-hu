@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: c749a9dedef3970002c4f0672ffcc67aeaea422a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2718c5f06bb64ccd99844e402ac69237f30c310a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457428"
+ms.locfileid: "55497791"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Felhasználó által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption
 
@@ -40,7 +40,7 @@ Először hozzon létre egy storage-fiókot, ha még nincs ilyen. További infor
 
 ### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>2. lépés: A Blobok és fájlok tárolási engedélyezéséről
 
-Ahhoz, hogy az ügyfél által felügyelt kulcsokkal SSE, két Kulcsvédelmi szolgáltatás: a helyreállítható törlés és nem kiürítése, is engedélyezni kell az Azure Key Vaultban. Ezek a beállítások biztosítása érdekében a kulcsok nem lehet véletlenül vagy szándékosan törölve. A kulcsok a megőrzési időszak 90 nap, a felhasználók rosszindulatú vagy zsarolóprogram-támadások elleni védelem van beállítva.
+Ahhoz, hogy az ügyfél által felügyelt kulcsokkal SSE, két Kulcsvédelmi szolgáltatás: a helyreállítható törlés és nem kiürítése, is engedélyezni kell az Azure Key Vaultban. Ezek a beállítások biztosítása érdekében a kulcsok nem véletlenül vagy szándékosan törölhető. A kulcsok a megőrzési időszak 90 nap, a felhasználók rosszindulatú vagy zsarolóprogram-támadások elleni védelem van beállítva.
 
 Ha programozott módon engedélyezzük a felhasználó által kezelt kulcsokkal SSE szeretné, használhatja a [Azure Storage erőforrás-szolgáltató REST API](https://docs.microsoft.com/rest/api/storagerp), a [Storage Resource Provider ügyféloldali kódtára a .NET](https://docs.microsoft.com/dotnet/api), [ Az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), vagy a [az Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli).
 
@@ -174,7 +174,7 @@ Az SSE engedélyezve van az összes storage-fiókok és az Azure Blob storage, A
 Egy Azure Resource Manager-tárfiókot is ez? Az ügyfél által felügyelt kulcsokat a klasszikus tárfiókok nem támogatottak. Ügyfél által felügyelt kulcsokkal SSE csak a Resource Manager-tárfiókokra is engedélyezhető.
 
 **Mi a helyreállítható törlés és hajtsa végre végleges törlés? Van szükségem ahhoz, hogy ezzel a beállítással SSE használata az ügyfél által felügyelt kulcsokat?**  
-Helyreállítható törlés, és tegye nem végleges törlés engedélyezni kell a felhasználó által kezelt kulcsok használata a SSE. Ezek a beállítások győződjön meg arról, hogy a kulcs nem véletlenül vagy szándékosan törölve. A kulcsok a megőrzési időszak 90 nap, a felhasználók rosszindulatú és zsarolóprogram-támadások elleni védelem van beállítva. Ez a beállítás nem lehet letiltani.
+Helyreállítható törlés, és tegye nem végleges törlés engedélyezni kell a felhasználó által kezelt kulcsok használata a SSE. Ezek a beállítások győződjön meg arról, hogy a kulcs nem véletlenül vagy szándékosan törlődik. A kulcsok a megőrzési időszak 90 nap, a felhasználók rosszindulatú és zsarolóprogram-támadások elleni védelem van beállítva. Ez a beállítás nem lehet letiltani.
 
 **Az SSE ügyfél által felügyelt kulcsokkal csak akkor engedélyezett, az adott régióban?**  
 Ügyfél által felügyelt kulcsokkal SSE minden régióban az Azure Blob storage és az Azure Fileshoz érhető el.

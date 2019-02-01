@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 41a5f2eab78d68bdb1f51b423955cfefa5a541b8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 366a38951363d52df3d52d3a670943dc41211c8a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538590"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494000"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Memóriakép és visszaállítás használatával a PostgreSQL-adatbázis migrálása
 Használhatja [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) be memóriakép-fájl egy PostgreSQL-adatbázis kibontásához és [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) pg_dump által létrehozott archív fájl visszaállítása a PostgreSQL-adatbázishoz.
@@ -69,7 +69,9 @@ A meglévő PostgreSQL-adatbázis migrálása az Azure Database for PostgreSQL s
 
 ### <a name="for-the-restore"></a>A visszaállításhoz
 - Javasoljuk, hogy a biztonságimásolat-fájl áthelyezése egy Azure virtuális Gépen az Azure Database for PostgreSQL-kiszolgáló végzi az áttelepítést, és hajtsa végre a pg_restore a hálózati késés csökkentése érdekében a virtuális Gépeket ugyanabban a régióban. Azt javasoljuk, hogy a virtuális gép létrejött-e a [gyorsított hálózatkezelést](../virtual-network/create-vm-accelerated-networking-powershell.md) engedélyezve van.
+
 - Alapértelmezés szerint már végezhető, de a memóriakép-fájl, és ellenőrizze, hogy a create index utasításokat az adatok a Beszúrás után nyissa meg. Ha nem, akkor a helyzet, a create index utasításokat áthelyezése után az adatok.
+
 - Állítsa vissza a kapcsolók a -Fc és -j *#* való párhuzamosíthatja a visszaállítást. *#* van a célkiszolgálón magok számát. Az is megpróbálhatja *#* kétszer a célkiszolgáló magok számát értékre van állítva,-azonosítókra gyakorolt hatást. Példa:
 
     ```
@@ -77,6 +79,13 @@ A meglévő PostgreSQL-adatbázis migrálása az Azure Database for PostgreSQL s
     ```
 
 - A parancs hozzáadásával a memóriakép-fájl is szerkesztheti *: synchronous_commit állítsa le; =* elején és a parancs *beállítása: synchronous_commit = on;* végén. Nem bekapcsolását, a végén az alkalmazásokat módosítani az adatokat, mielőtt az adatok későbbi adatvesztést eredményezhet.
+
+- A cél Azure Database for PostgreSQL-kiszolgáló vegye figyelembe az alábbiakat, mielőtt a visszaállítás során:
+    - Kapcsolja ki a lekérdezési teljesítmény nyomon követése, mivel ezek a statisztikák nem szükségesek a migrálás során. Ez pg_stat_statements.track pg_qs.query_capture_mode és pgms_wait_sampling.query_capture_mode NONE értékre állításával teheti meg.
+
+    - Termékváltozat magas számítási és memória, például az optimalizált memóriájú, 32 virtuális mag használatával felgyorsíthatja az áttelepítés. Azt is könnyen pedig vissza az előnyben részesített termékváltozat a visszaállítás befejezése után. Minél nagyobb a termékváltozat, a további paralellism érhet el a megfelelő növelésével `-j` paramétert a pg_restore parancsba. 
+
+    - A célkiszolgálón több IOPS javíthatja a visszaállítási teljesítménye. A kiszolgáló tárolómérete növelésével további IOPS építhető ki. Ez a beállítás nem vonható vissza, de vegye figyelembe, hogy egy magasabb iops-t a jövőben kiaknázhatják a valós számítási feladat.
 
 Ne felejtse el tesztelés és ellenőrzés ezeket a parancsokat egy tesztkörnyezetben, mielőtt éles környezetben használni.
 

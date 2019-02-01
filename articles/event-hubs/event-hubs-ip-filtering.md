@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 707290d7bf453ca71dd3c5cf8b39c917b3a1c479
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268274"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507535"
 ---
 # <a name="use-firewall-rules"></a>Tűzfalszabályok
 
@@ -24,7 +24,7 @@ A forgatókönyvek, amelyben az Azure Event Hubs elérhetőnek kell lenniük csa
 
 ## <a name="when-to-use"></a>A következő esetekben használja
 
-Az Event Hubs-névtér beállítása szeretne minden más elutasítás és csak a megadott IP-címtartományt a forgalom úgy, hogy azt kell kapnia, akkor használhatja egy *tűzfalszabály* blokkolja az Event Hub-végpontok más IP-címek. Az Event Hubs használata esetén például [Azure Express Route] [ express-route] a helyszíni infrastruktúra magánkapcsolatokat hozhat létre.
+Az Event Hubs-névtér beállítása szeretne minden más elutasítás és csak a megadott IP-címtartományt a forgalom úgy, hogy azt kell kapnia, akkor használhatja egy *tűzfalszabály* blokkolja az Event Hub-végpontok más IP-címek. Például, ha az Event Hubs [Azure Express Route][express-route], létrehozhat egy *tűzfalszabály* a forgalom korlátozására a helyszíni infrastruktúra IP-címről címek.
 
 ## <a name="how-filter-rules-are-applied"></a>Szűrési szabályok alkalmazása
 
@@ -49,8 +49,8 @@ IP-szűrési szabályok a rendszer sorrendben alkalmazza, és az első szabály,
 > - Azure Monitor
 > - Azure Stream Analytics
 > - Az Azure Event Grid-integráció
-> - Az Azure IoT Hub-útvonalak
-> - Az Azure IoT Device Explorer
+> - Azure IoT Hub Routes
+> - Azure IoT Device Explorer
 > - Azure Data Explorer
 >
 > Az alábbi Microsoft szolgáltatásokra van szükség a virtuális hálózaton

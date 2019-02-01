@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3671f6a3e3832a384e968fbf38128aff6bfb2252
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ae57fc5366e1ed99febcd9a9d08e7f95f3bbf196
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247673"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487353"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -56,14 +56,14 @@ Egy eszköz csatlakozik az IoT-központ SAS használatával egyszerűen, mindös
 
     *   **C nyelv:** Ha C használ, kövesse az [a minta C ügyfél](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) egy minta-eszközt. A minta használja a következő beállításokat.   
 
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
          prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
         ```
 
-    *   **NODE.js:**  Ha szeretné használni a Node.js [részletes utasításokat itt használhassa](tutorial-add-device.md#prepare-the-client-code), indítsa el a szakaszban leírt **előkészítése az Ügyfélkód**.
+    *   **Node.js:**  Ha szeretné használni a Node.js [részletes utasításokat itt használhassa](tutorial-add-device.md#prepare-the-client-code), indítsa el a szakaszban leírt **előkészítése az Ügyfélkód**.
 
 
 
@@ -118,13 +118,13 @@ Ha használja a **MxChip** való kapcsolódáshoz kövesse az eszköz [részlete
 Az alábbiakban a hivatkozások más nyelven, akkor érdemes használni.
 
    *   **C nyelv:** Ha használ C kövesse [a minta C ügyfél](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) egy minta-eszközt. A minta használja a következő beállításokat.   
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
          prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
         ```
-    * **NODE.js:**  Ha szeretné használni a Node.js [részletes utasításokat itt használhassa](tutorial-add-device.md#prepare-the-client-code), indítsa el a szakaszban leírt **előkészítése az Ügyfélkód**.
+    * **Node.js:**  Ha szeretné használni a Node.js [részletes utasításokat itt használhassa](tutorial-add-device.md#prepare-the-client-code), indítsa el a szakaszban leírt **előkészítése az Ügyfélkód**.
 
 
 ## <a name="connect-devices-using-x509-certificates"></a>Csatlakoztatásához X509 használatával tanúsítványok
@@ -163,7 +163,7 @@ Csatlakoztatni az eszközöket az IoT-X509 használatával központi tanúsítv�
 
     A program az eszközt a kiépítési szolgáltatás információkat lehetővé teszi a lekérése a kapcsolat adatait, és az IoT-központ alkalmazás-hozzárendelés, ha be van kapcsolva.    
 
-    **További referene** 
+    **További referencia** 
     *   A minta megvalósítása [RaspberryPi.](https://aka.ms/iotcentral-docs-Raspi-releases)  
 
     *   [Eszközügyfél minta c-hez](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
@@ -211,12 +211,12 @@ Kövesse a lépéseket, az Ön által választott eszköz hitelesítési sémát
 
 1. **Eszköz csatlakoztatása az IoT-központ:** Ha be van kapcsolva az eszközök csatlakoznak a DPS/IoT Central a regisztrációhoz.
 
-1. **Eszköz társítása a sablonhoz:** A csatlakoztatott eszközre alatt jelennek meg **társítatlan eszközök** a **Device Explorer**. Az eszköz kiépítési állapot **regisztrált**. **Társítsa** az eszköz számára a megfelelő eszköz sablont, és hagyja jóvá az eszköz csatlakoztatása az IoT Central alkalmazáshoz. Az eszköz lekérdezi a megadott kapcsolatot információk az IoT-központ, kapcsolódik, és elindítja az adatok küldése. Eszköz provioning befejeződött, és a *előkészítési állapotát* kerül, **kiépített**.
+1. **Eszköz társítása a sablonhoz:** A csatlakoztatott eszközre alatt jelennek meg **társítatlan eszközök** a **Device Explorer**. Az eszköz kiépítési állapot **regisztrált**. **Társítsa** az eszköz számára a megfelelő eszköz sablont, és hagyja jóvá az eszköz csatlakoztatása az IoT Central alkalmazáshoz. Az eszközt az IoT Central alkalmazáshoz tartozó kapcsolat részleteinek beolvasása, és azt csatlakoztatja, és elindítja az adatok küldésének. Eszköz kiépítése befejeződött, és a *előkészítési állapotát* kerül, **kiépített**.
 
 ## <a name="device-provisioning-status"></a>Eszköz kiépítési állapota
 Replikálásában van lépések sorozatát valós eszköz csatlakozik az Azure IoT Central 
 1. **Regisztrált**: Az eszköz az első **regisztrált**, ami azt jelenti, az eszköz jön létre az IoT-központ és az eszköz azonosítója, az eszköz rendelkezik.
-Eszköz Registeretd során  
+Eszköz regisztrálása során  
     *   Új valós eszköz bekerül a **Explorer**
     *   Eszközök készlete segítségével hozzáadott **importálás** a **Explorer**
     *   Egy eszköz, amely nincs regisztrálva, de érvényes hitelesítő adatokkal kapcsolódik, és alatt látható **nem kapcsolódó** eszközök. 
@@ -233,7 +233,7 @@ Iot hub eszköz kapcsolati karakterláncát az Azure IoT Hub használatával lek
 
     ![Kapcsolat adatai](media/concepts-connectivity/device-connect.PNG)
 
-1. Az alábbi parancs parancssori eszköz használatával, az eszköz kapcsolati karakterláncának beolvasása.
+1. Az alábbi parancssori eszközzel, az eszköz kapcsolati karakterláncának beolvasása.
     Használja az alábbi utasításokat követve az eszköz kapcsolati karakterláncának lekérése  
 
     ```cmd/sh
@@ -252,7 +252,7 @@ Iot hub eszköz kapcsolati karakterláncát az Azure IoT Hub használatával lek
 Az Azure eszközoldali SDK-k ajánlat legegyszerűbb módja az Ön számára a kódot, amely az Azure IoT Central alkalmazáshoz kapcsolódik az eszközök hajtja végre. A következő eszközoldali SDK-k érhetők el:
 
 - [A c nyelvhez készült Azure IoT-SDK](https://github.com/azure/azure-iot-sdk-c)
-- [Pythonhoz készült Azure IoT-SDK](https://github.com/azure/azure-iot-sdk-python)
+- [Azure IoT SDK for Python](https://github.com/azure/azure-iot-sdk-python)
 - [Az Azure IoT SDK for node.js használatával](https://github.com/azure/azure-iot-sdk-node)
 - [A Javához készült Azure IoT-SDK](https://github.com/azure/azure-iot-sdk-java)
 - [Az Azure IoT SDK for .NET csomaggal](https://github.com/azure/azure-iot-sdk-csharp)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1ba1f11029e98f6bf324466627c465507829dc4d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 0a364724c72a7bd6dd75dd9720e2e966d07ff297
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229846"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496343"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -59,7 +59,7 @@ ExpressRoute-figyelő érhető el a támogatott régiók listáját a [dokument�
 
 ### <a name="install-and-configure-agents"></a>Ügynökök telepítése és konfigurálása 
 
-Az alapszintű folyamatok használatával, ügynökök telepítése [Azure Log Analyticshez való csatlakozáshoz Windows számítógépek](../../azure-monitor/platform/om-agents.md) és [Operations Manager csatlakoztatása a Log Analytics](../../azure-monitor/platform/om-agents.md).
+Az alapszintű folyamatok használatával, ügynökök telepítése [Azure Log Analyticshez való csatlakozáshoz Windows számítógépek](../../azure-monitor/platform/agent-windows.md) és [Operations Manager csatlakoztatása a Log Analytics](../../azure-monitor/platform/om-agents.md).
 
 ### <a name="where-to-install-the-agents"></a>Az ügynökök telepítési helyét 
 
@@ -159,7 +159,7 @@ Adja meg a kívánt képességek:
 
 - [A Teljesítményfigyelő](network-performance-monitor-performance-monitor.md#configuration)
 - [Szolgáltatásvégpont-figyelő](network-performance-monitor-performance-monitor.md#configuration)
-- [ExpressRoute-figyelő](network-performance-monitor-expressroute.md#configuration)
+- [ExpressRoute Monitor](network-performance-monitor-expressroute.md#configuration)
 
  
 

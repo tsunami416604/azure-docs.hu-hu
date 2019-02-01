@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: b3329f591d8478499b8270eb8a211d311465b020
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 273039ec271d5d81329ab475ffd2eda82dca7b58
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457020"
+ms.locfileid: "55511004"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -104,7 +104,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 
 * <a id="afs-storage-redundancy"></a>
 **Georedundáns tárolás az Azure File Sync támogatott?**  
-    Igen, az Azure Files támogatja mind a helyileg redundáns tárolás (LRS), és a georedundáns tárolás (GRS). Ha GRS párosított régiók közötti feladatátvétel esetén javasoljuk az új régióban gyökérkönyvtárral csak az adatok biztonsági másolata. Az Azure File Sync nem kezdődik automatikusan az új elsődleges régióba való szinkronizálását. 
+    Igen, az Azure Files támogatja mind a helyileg redundáns tárolás (LRS), és a georedundáns tárolás (GRS). Ha egy Georedundáns tároláshoz konfigurált fiók a párosított régiók közötti tárolási fiók feladatátvételt kezdeményez, a Microsoft azt javasolja, az új régióban gyökérkönyvtárral csak az adatok biztonsági másolata. Az Azure File Sync nem kezdődik automatikusan az új elsődleges régióba való szinkronizálását. 
 
 * <a id="sizeondisk-versus-size"></a>
 **Miért nem a *lemezterület* fájl egyezést tulajdonsága a *mérete* tulajdonság használata az Azure File Sync után?**  
@@ -116,7 +116,6 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 
 * <a id="afs-recall-file"></a>**A használni kívánt fájl tartozik lett rétegzett. Hogyan lehet visszahívása vele helyi lemezre a fájlt?**  
  Lásd: [ismertetése, Felhőbeli Rétegezés](storage-sync-cloud-tiering.md#afs-recall-file).
-
 
 * <a id="afs-force-tiering"></a>
 **Hogyan kényszeríthetem egy fájl vagy címtár helyezhető el?**  
@@ -149,7 +148,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
 **Miért léteznek a rétegzett fájlok kívül a kiszolgálói végpont névtér?**  
-    Azure File Sync ügynök 3-as verziójú, mielőtt az Azure File Sync blokkolja a rétegzett fájlok a kiszolgálói végpont kívüli, de a kiszolgálói végpont ugyanazon a köteten az áthelyezés. Másolási műveletek – a rétegzett fájlok áthelyezése és áthelyezi a rétegzett más köteteket is nem érinti. Ez a jelenség oka implicit feltételezve, hogy a Fájlkezelőben és a többi Windows API-k, hogy ugyanazon a köteten műveletekre (majdnem) instanenous műveletek átnevezése volt. Ez azt jelenti, a kurzor elvégzi a Fájlkezelőben, vagy más áthelyezési módszerek (mint például a parancssor vagy PowerShell) jelennek meg nem válaszol, amíg az Azure File Sync visszahívja az adatok a felhőből. Kezdve [Azure File Sync ügynök verziója 3.0.12.0](storage-files-release-notes.md#supported-versions), az Azure File Sync lehetővé teszi a áthelyezése egy rétegzett fájlt a kiszolgálói végpont kívül. A korábban említett engedélyezi a rétegzett fájl létezik és a egy rétegzett fájlt a kiszolgálói végpont kívül, és ezután – a háttérben a fájl lehívása negatív hatások elkerülése azt. Ez azt jelenti, hogy áthelyezi az ugyanazon kötet instaneous, és visszaírni a lemezre a fájlt, az Áthelyezés befejezése után a munkát végzünk. 
+    Azure File Sync ügynök 3-as verziójú, mielőtt az Azure File Sync blokkolja a rétegzett fájlok a kiszolgálói végpont kívüli, de a kiszolgálói végpont ugyanazon a köteten az áthelyezés. Másolási műveletek – a rétegzett fájlok áthelyezése és áthelyezi a rétegzett más köteteket is nem érinti. Ez a jelenség oka volt implicit feltételezzük, hogy a fájlkezelő és egyéb Windows API-k rendelkezik, hogy az áthelyezési műveleteket ugyanazon a köteten (majdnem) azonnali műveletek átnevezése. Ez azt jelenti, a kurzor elvégzi a Fájlkezelőben, vagy más áthelyezési módszerek (mint például a parancssor vagy PowerShell) jelennek meg nem válaszol, amíg az Azure File Sync visszahívja az adatok a felhőből. Kezdve [Azure File Sync ügynök verziója 3.0.12.0](storage-files-release-notes.md#supported-versions), az Azure File Sync lehetővé teszi a áthelyezése egy rétegzett fájlt a kiszolgálói végpont kívül. A korábban említett engedélyezi a rétegzett fájl létezik és a egy rétegzett fájlt a kiszolgálói végpont kívül, és ezután – a háttérben a fájl lehívása negatív hatások elkerülése azt. Ez azt jelenti, hogy áthelyezi ugyanazon kötet azonnali, és visszaírni a lemezre a fájlt, az Áthelyezés befejezése után a munkát végzünk. 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
 **Problémát tapasztalok egy probléma az Azure File Sync használatával a my server (szinkronizálási szolgáltatás cloud rétegezési, stb). E távolítsa el, majd hozza létre újra a kiszolgálói végpontot?**  
@@ -202,7 +201,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 * <a id="ad-vm-subscription"></a>
 **Az Azure AD hitelesítő adatait egy virtuális gépről egy másik előfizetésben elérhető számomra az Azure Files?**
 
-    Ha az előfizetés, amely alatt a fájlmegosztás üzembe lesz helyezve az Azure AD-bérlőhöz, a virtuális gép tartomány részeként csatlakoztatva, majd az Azure Files Azure AD hitelesítő adatokkal érheti el az Azure AD tartományi szolgáltatások deploymnet társítva. A korlátozás nem az előfizetés a várakozásnak, de a társított Azure ad-bérlőben.    
+    Ha az előfizetés, amely alatt a fájlmegosztás üzembe lesz helyezve az Azure AD tartományi szolgáltatások üzemelő példánnyal, amelyhez a virtuális gép tartomány részeként csatlakoztatva, majd az Azure Files Azure AD hitelesítő adatokkal érheti el az azonos Azure AD-bérlő társítva. A korlátozás nem az előfizetés a várakozásnak, de a társított Azure ad-bérlőben.    
     
 * <a id="ad-support-subscription"></a>
 **Lehet engedélyezni az Azure AD-hitelesítés SMB-n keresztül az Azure Files számára az Azure AD-bérlő, amely különbözik az elsődleges bérlőt, amelyhez társítva a fájlmegosztás?**

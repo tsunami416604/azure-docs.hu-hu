@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 8424fa721d87467de70b4365578d196b3145b4b0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: cabfe4381f7f941f2a5e049eed73be546902f6ae
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024273"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485347"
 ---
 # <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Üzenet-útválasztása használatával eszköz – felhő üzeneteket küldhet a különböző végpontok
 
@@ -21,13 +21,13 @@ ms.locfileid: "50024273"
 
 Üzenet-útválasztása lehetővé teszi az eszközökről, a felhőalapú szolgáltatások automatizált, méretezhető és megbízható módon küldhet üzeneteket. Üzenet-útválasztása használható: 
 
-* **Eszköz telemetriai messsages, valamint eseményeket küld** nevezetesen, eszköz-életciklussal kapcsolatos események, és módosítsa a beépített végpont, és egyéni végpontok események ikereszköz. Ismerje meg [útválasztási végpontok](#routing-endpoints).
+* **Eszköz telemetriai üzeneteket, valamint eseményeket küld** nevezetesen, eszköz-életciklussal kapcsolatos események, és módosítsa a beépített végpont, és egyéni végpontok események ikereszköz. Ismerje meg [útválasztási végpontok](#routing-endpoints).
 
 * **Előtt érdemes átirányítására a különböző végpontok** részletes lekérdezéseket alkalmazásával. Üzenet-útválasztása lehetővé teszi az üzenet tulajdonságai és üzenet szövegét, valamint device twin címkék és eszköz-ikertulajdonságok lekérdezést. További információ [lekérdezések az üzenet-útválasztása](iot-hub-devguide-routing-query-syntax.md).
 
 Az IoT Hub szolgáltatás a végpontokkal való írási hozzáférés van szüksége üzenet-útválasztása működjön. Ha a konfigurálja a végpontokat az Azure Portalon keresztül, a szükséges engedélyekkel meg lesz hozzáadva. Ellenőrizze, hogy konfigurálja a szolgáltatások, a várt teljesítményről támogatásához. Amikor először konfigurálja az IoT-megoldás, szükség lehet a további végpontok monitorozása és a tényleges betöltést a szükséges módosításokat.
 
-Az IoT Hub meghatározása egy [gyakran alkalmazott formátum](iot-hub-devguide-messages-construct.md) protokollok között interoperatbility az üzenetkezelés összes eszköz-felhő. Ha egy üzenet, amelyek egyazon végpont több útvonal megfelel, az IoT Hub továbbítja az üzenet, hogy a végpont csak egyszer. Ezért nem szükséges konfigurálni a deduplikáció a Service Bus-üzenetsor vagy témakör. A particionált üzenetsorok a partíció affinitás üzenetrendezés garantálja. Ez az oktatóanyag segítségével megtudhatja, hogyan [üzenet útválasztás konfigurálása](tutorial-routing.md).
+Az IoT Hub meghatározása egy [gyakran alkalmazott formátum](iot-hub-devguide-messages-construct.md) az összes eszköz – felhő üzenetküldéshez együttműködés protokollok között. Ha egy üzenet, amelyek egyazon végpont több útvonal megfelel, az IoT Hub továbbítja az üzenet, hogy a végpont csak egyszer. Ezért nem szükséges konfigurálni a deduplikáció a Service Bus-üzenetsor vagy témakör. A particionált üzenetsorok a partíció affinitás üzenetrendezés garantálja. Ez az oktatóanyag segítségével megtudhatja, hogyan [üzenet útválasztás konfigurálása](tutorial-routing.md).
 
 ## <a name="routing-endpoints"></a>Útválasztási végpontok
 

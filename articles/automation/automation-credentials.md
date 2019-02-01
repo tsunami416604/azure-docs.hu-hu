@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9884138127d62e2dc524dc1b6d9e827d1ee0fac8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0454bc211d2ae8497babc808f9794fae4d22c47e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439187"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498165"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Hitelesítő eszközök az Azure Automationben
 
@@ -73,10 +73,9 @@ A függvény a következő táblázatban található a Python2-forgatókönyvem 
 
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>Új hitelesítő objektum létrehozása az Azure portal használatával
 
-1. Az automation-fiókjából, kattintson a **eszközök** való nyissa meg a **eszközök** panelen.
-2. Kattintson a **hitelesítő adatok** való nyissa meg a **hitelesítő adatok** panelen.
-3. Kattintson a **hitelesítő adatainak hozzáadása** a panel tetején.
-4. Töltse ki az űrlapot, és kattintson a **létrehozás** új hitelesítő adatok mentéséhez.
+1. Válassza ki az automation-fiók **hitelesítő adatok** alatt **megosztott erőforrások**.
+1. Kattintson a **+ hitelesítő adatainak hozzáadása**.
+1. Töltse ki az űrlapot, és kattintson a **létrehozás** új hitelesítő adatok mentéséhez.
 
 > [!NOTE]
 > Használható az Azure Automationben a multi-factor Authentication felhasználói fiókok nem támogatottak.

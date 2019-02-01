@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: yushwang
 ms.openlocfilehash: 4996fa23e28b4ba840cc8c97e167484be08a0573
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199460"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509286"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Csatlakozás az Azure VPN-átjárók több helyszíni házirendalapú VPN-eszköz PowerShell-lel
 
@@ -147,7 +147,7 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location
 > Egy IPsec/IKE-házirendet, és engedélyezze a "UsePolicyBasedTrafficSelectors" beállítás a kapcsolat létrehozásához szükséges.
 
 Az alábbi példában egy IPsec/IKE-házirendet hoz létre ezeket az algoritmusokat és paramétereket:
-* Az IKEv2: AES256, SHA384, DHGroup24
+* IKEv2: AES256, SHA384, DHGroup24
 * IPsec: AES256, SHA256, PFS24, 2048KB & SA-élettartam 3600 másodperc
 
 ```azurepowershell-interactive
@@ -201,7 +201,7 @@ $connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -
 Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $True
 ```
 
-#### <a name="to-disable-usepolicybasedtrafficselectors"></a>UsePolicyBasedTrafficSelectors letiltása
+#### <a name="to-disable-usepolicybasedtrafficselectors"></a>To Disable UsePolicyBasedTrafficSelectors
 A következő példa letiltja a csoportházirend-alapú forgalom választók lehetőséget, de az IPsec/IKE szabályzat változatlanul hagyja:
 
 ```azurepowershell-interactive

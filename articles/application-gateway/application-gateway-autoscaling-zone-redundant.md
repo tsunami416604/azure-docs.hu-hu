@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 1/31/2019
 ms.author: victorh
-ms.openlocfilehash: 0c8a600342e0240d435999b1b5ddabc0234c142f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d680634231b90e5d1cc036f43b96e05d66899e34
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461440"
+ms.locfileid: "55487047"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatikus skálázás és zónaredundáns az Application Gateway (nyilvános előzetes verzió)
 
@@ -34,7 +34,7 @@ Az Application Gateway és a webalkalmazási tűzfal (WAF) egy új v2 szintű Te
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Az alábbi régiókban érhető el az automatikus skálázás Termékváltozat: eastus2, westus2, westeurope, southeastasia, centralus, francecentral, USA keleti régiója, japaneast, northeurope, southcentralus, ukwest, northcentralus, westus, USA keleti régiója (BL), centralus (DM), japanwest (operációs rendszer ).
+Az alábbi régiókban érhető el az automatikus skálázás Termékváltozat: eastus2, westus2, westeurope, southeastasia, centralus, francecentral, USA keleti régiója, japaneast, northeurope, southcentralus, ukwest, northcentralus, westus, USA keleti régiója, centralus, japanwest.
 
 ## <a name="pricing"></a>Díjszabás
 

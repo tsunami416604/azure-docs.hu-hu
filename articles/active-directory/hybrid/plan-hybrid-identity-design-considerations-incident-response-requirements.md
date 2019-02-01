@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: a3d2a459-599b-4b67-8e51-7369ee25082d
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e8ac6b7bef06eae16224f9db8e216f13c21f13a1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2b10dc9fd96a1e4c06fbd153a2f1dc4e92e58906
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161392"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491859"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Hibrid identitáskezelési megoldás incidensválasz-követelmények meghatározása
 Nagy- vagy közepes szervezetek nagy valószínűséggel fog rendelkezni a [biztonsági incidensek megoldási](https://technet.microsoft.com/library/cc700825.aspx) segítségével történő informatikai műveleteket ennek megfelelően az incidens szintjét. Az identitáskezelési rendszerekkel az incidensmegoldási folyamat során fontos összetevője azért használható ki végzett egy adott művelet a célon azonosítása érdekében. A hibrid identitáskezelési megoldás, amely jól használható a figyelési és jelentéskészítési képességeket biztosít képesnek kell lennie az informatikai műveletek azonosításához és elhárításához szükséges potenciális fenyegetést. Egy tipikus incidensmegoldási terv a csomag részeként a következő fázisok fog rendelkezni:
@@ -51,7 +51,7 @@ Az identitáskezelési rendszerekkel kell segítséget nyújt a rendszergazdákn
 * A vállalatának van szüksége a felhasználó hozzáférési és művelet naplózását?
 * Vállalatának meg kell ismernie, amikor egy felhasználó a jelszó alaphelyzetbe állítása?
 
-## <a name="policy-enforcement"></a>A házirend betartatása
+## <a name="policy-enforcement"></a>Szabályzat érvénybe léptetése
 Kárelhárítási és a kockázat csökkentésének-fázis során fontos gyorsan csökkentheti a támadás tényleges és lehetséges hatásait. Vesz igénybe, a művelet ezen a ponton végezhet egy kisebb és nagyobb egy közötti különbség. A pontos válasz a szervezet és a szolgálatára áll, amely a támadás természetének függ. Ha a kezdeti felmérést kötni, hogy egy fiókot feltörték, szüksége lesz a szabályzatban, ez a fiók blokkolása. Ez csupán egy példa, ahol az identitáskezelési rendszerekkel jól használható. Segítséget nyújtanak a hibrid identitáskezelési megoldás tervezése során figyelembe véve, hogyan házirendek érvénybe reagálni a folyamatban lévő incidens használja az alábbi kérdésekre:
 
 * A vállalat rendelkezik házirendek felhasználók számára a hozzáférés a hálózati szükség esetén?

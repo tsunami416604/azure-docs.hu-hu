@@ -1,8 +1,21 @@
 ---
-Cím: Használja az Azure Machine Learning Studio-webszolgáltatások portál titleSuffix: Azure Machine Learning Studio description: A Machine Learning új és a klasszikus webszolgáltatások a Microsoft Azure Machine Learning Web Services portál használata kezelheti. A klasszikus webszolgáltatások és új Web services különböző mögöttes technológiák alapján, mivel mindegyikhez rendelkezik némileg eltérő felügyeleti képességeket.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 02/28/2017
+title: Az Azure Machine Learning Studio Web Services portál használata
+titleSuffix: Azure Machine Learning Studio
+description: A Machine Learning új és a klasszikus webszolgáltatások a Microsoft Azure Machine Learning Web Services portál használata kezelheti. A klasszikus webszolgáltatások és új Web services különböző mögöttes technológiák alapján, mivel mindegyikhez rendelkezik némileg eltérő felügyeleti képességeket.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 02/28/2017
+ms.openlocfilehash: c682bca1f3d4f0e2659ed107a2b15e4e4e28b0d9
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492487"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Az Azure Machine Learning Studio webszolgáltatás-portál használatával webszolgáltatás kezelése
 A Machine Learning új és a klasszikus webszolgáltatások a Microsoft Azure Machine Learning Web Services portál használata kezelheti. A klasszikus webszolgáltatások és új Web services különböző mögöttes technológiák alapján, mivel mindegyikhez rendelkezik némileg eltérő felügyeleti képességeket.

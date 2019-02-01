@@ -1,5 +1,5 @@
 ---
-title: Elévülési szabályzat rövid útmutatója az Azure Active Directoryban lévő Office 365-csoportokhoz | Microsoft Docs
+title: Elévülési szabályzat a rövid útmutató az Office 365-csoportok – Azure Active Directory |} A Microsoft Docs
 description: Az Office 365-csoportok elévülési ideje – Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 08/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 6d2b5201c41ba9d5c849976f0227e9abadea7658
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 926d2dba7656781b7a6994341f0354db6835b26f
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165234"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507351"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Gyors útmutató: Állítsa be az Office 365-csoportok az Azure Active Directoryban lejár
 

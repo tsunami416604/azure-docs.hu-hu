@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c672264952622fca47bf602f93ad49595293e206
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e0e4331b245edcfcbe1529354e605e7505b81268
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169455"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494969"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Ha már rendelkezik meglévő bérlővel
 A témakörök használata az Azure AD Connect a legtöbb feltételezi, hogy először a egy új Azure AD-bérlővel, és hogy egyik felhasználó sem, vagy nincs más objektumokat. Ha már elindította az Azure AD-bérlővel, de fel kell töltenie azt a felhasználók és más objektumok, és most szeretné használni a csatlakozás, majd ez a témakör Önnek szól.

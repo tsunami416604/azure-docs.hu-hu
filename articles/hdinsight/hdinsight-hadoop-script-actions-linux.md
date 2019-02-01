@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9dafe7df3c488dbc6d0c2f27a6265e86eebad41c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b0eae86a4927f716c974086411e1098f2e9a190d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718928"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498029"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájlművelet-alapú fejlesztés a HDInsight
 
@@ -72,10 +72,10 @@ Az operációsrendszer-verzió használatával ellenőrizheti `lsb_release`. A k
 ```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
     HUE_TARFILE=hue-binaries-14-04.tgz
 elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
     HUE_TARFILE=hue-binaries-16-04.tgz
 fi
 ...
@@ -299,10 +299,10 @@ Az operációs rendszer verziójának ellenőrzéséhez használja a `lsb_releas
 ```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
     HUE_TARFILE=hue-binaries-14-04.tgz
 elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
     HUE_TARFILE=hue-binaries-16-04.tgz
 fi
 ```
@@ -342,11 +342,11 @@ Kialakítása a parancsfájlok használata során felmerülő hibák a következ
 
 **Hiba**: `$'\r': command not found`. Néha követ `syntax error: unexpected end of file`.
 
-*OK*: Ezt a hibát az okozza, ha a sorokat egy parancsfájlban CRLF végződhet. UNIX rendszerek várhatóan csak LF, a sor vége.
+*Ok*: Ezt a hibát az okozza, ha a sorokat egy parancsfájlban CRLF végződhet. UNIX rendszerek várhatóan csak LF, a sor vége.
 
 Ez a probléma leggyakrabban esetén a szkript egy Windows-környezetben létrehozott egy közös sor számára a Windows számos szövegszerkesztő befejezési CRLF-jébe.
 
-*Feloldási*: Ha a szövegszerkesztőben lehetőség, a sor vége válassza ki Unix formátumban vagy LF Karakterrel. Módosítsa a CRLF-LF UNIX operációs rendszeren is felhasználhatja a következő parancsokat:
+*Megoldás*: Ha a szövegszerkesztőben lehetőség, a sor vége válassza ki Unix formátumban vagy LF Karakterrel. Módosítsa a CRLF-LF UNIX operációs rendszeren is felhasználhatja a következő parancsokat:
 
 > [!NOTE]  
 > A következő parancsok pedig nagyjából, annak, hogy azok a CRLF sorvégződések kell módosítani a LF Karakterrel. Válasszon ki egy, a rendszer a segédprogramok alapján.
@@ -360,9 +360,9 @@ Ez a probléma leggyakrabban esetén a szkript egy Windows-környezetben létreh
 
 **Hiba**: `line 1: #!/usr/bin/env: No such file or directory`.
 
-*OK*: Ez a hiba akkor fordul elő, ha a parancsfájl az UTF-8 és a egy bájt rendelés Mark (AJ) néven lett mentve.
+*Ok*: Ez a hiba akkor fordul elő, ha a parancsfájl az UTF-8 és a egy bájt rendelés Mark (AJ) néven lett mentve.
 
-*Feloldási*: Mentse a fájlt, mint ASCII vagy UTF-8 AJ nélkül. Hozzon létre egy fájlt az Anyagjegyzék nélkül a Linux és Unix rendszeren is felhasználhatja a következő parancsot:
+*Megoldás*: Mentse a fájlt, mint ASCII vagy UTF-8 AJ nélkül. Hozzon létre egy fájlt az Anyagjegyzék nélkül a Linux és Unix rendszeren is felhasználhatja a következő parancsot:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 

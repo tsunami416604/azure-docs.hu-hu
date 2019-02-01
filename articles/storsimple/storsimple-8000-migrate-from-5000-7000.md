@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a638487fb0a622f899095989ca5341013299e181
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234408"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495853"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Telepítse át az adatokat a StorSimple 5000-7000-es sorozat 8000-es sorozatú eszköz
 
@@ -26,7 +26,7 @@ ms.locfileid: "51234408"
 > - A 2019. július 31-ig. a StorSimple 5000/7000 sorozat megszűnik a támogatás (EOS) állapotát. Azt javasoljuk, hogy a StorSimple 5000/7000 sorozat ügyfelek áttelepítése a a dokumentumban ismertetett alternatív megoldások egyikét.
 > - Migrálás jelenleg egy támogatott művelet. Ha azt tervezi, telepítheti át adatait a StorSimple 5000-7000-es sorozatú eszközt 8000-es sorozatú eszközre, kell a Microsoft Support áttelepítési ütemezése. Microsoft Support majd engedélyezi az előfizetés az áttelepítéshez. További információkért lásd: hogyan [hozzon létre egy támogatási jegyet](storsimple-8000-contact-microsoft-support.md).
 > - A szolgáltatáskérés fájlban után is igénybe vehet néhány héten belül hajtsa végre a migrálási tervet, és ténylegesen megkezdi az áttelepítést.
-> - Forduljon a Microsoft Support, mielőtt lehet arra, hogy áttekintése és teljes körű a [áttelepítési Előfeltételek](#migration-prerequisites) szerepelnek a cikkben.
+> - Előtt forduljon a Microsoft Support, mindenképpen tekintse át és fejezze be a [áttelepítési Előfeltételek](#migration-prerequisites) szerepelnek a cikkben.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -109,7 +109,7 @@ A StorSimple eszköz olyan Felhasználóifelület-alapú eszköz, amely lehetőv
 A számítógép rendelkezik internetkapcsolattal, és:
 
 * A következő operációs rendszer fut.
-    * Windows 10-es.
+    * Windows 10.
     * A Windows Server 2012 R2 (vagy újabb) a StorSimple eszköz telepítéséhez.
 * A .NET 4.5.2-es verziója telepítve van.
 * Legalább 5 GB szabad hely telepítését és használatát az eszköz rendelkezik.
@@ -125,7 +125,7 @@ A következő lépésekkel a StorSimple eszköz telepítése a számítógépre.
 
     Nyissa meg az eszköz konfigurációs fájlt _StorSimple8000SeriesMigrationTool.exe.config_ mappában. Ez a kódrészlet a fájl.
     
-    ```
+    ```xml
         <add key="UserName" value="username@xyz.com" />
         <add key="SubscriptionName" value="YourSubscriptionName" />
         <add key="SubscriptionId" value="YourSubscriptionId" />

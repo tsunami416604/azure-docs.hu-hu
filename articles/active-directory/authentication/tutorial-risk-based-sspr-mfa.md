@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 504e314151409732cba23af97224683eb35a7c81
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: df3344efadbc915bba0c863979cae8b8fdff99b0
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075482"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512125"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Oktatóanyag: Kockázati események eseményindító multi-factor Authentication és a jelszó módosítására használata
 
@@ -51,7 +51,7 @@ A kockázatalapú szabályzatok engedélyezése egyszerű. Az alábbi lépések 
 
 ### <a name="enable-users-to-register-for-multi-factor-authentication"></a>Többtényezős hitelesítésre való regisztrálás engedélyezése a felhasználók számára
 
-Az Azure AD Identity Protection biztosította alapértelmezett szabályzat segítségével a felhasználók egyszerűen regisztrálhatnak a többtényezős hitelesítésre, és könnyen áttekintheti a regisztráció aktuális állapotát. A szabályzat az engedélyezése esetén nem követeli meg a felhasználóktól a többtényezős hitelesítést, de felkéri őket az előzetes regisztrációra.
+Az Azure AD Identity Protection tartalmaz egy alapértelmezett szabályzatot, amelyek segítségével a felhasználók a multi-factor Authentication regisztrált, és könnyen azonosíthatja azokat az aktuális regisztrációs állapot. A szabályzat az engedélyezése esetén nem követeli meg a felhasználóktól a többtényezős hitelesítést, de felkéri őket az előzetes regisztrációra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az **Azure AD Identity Protection** szolgáltatást.

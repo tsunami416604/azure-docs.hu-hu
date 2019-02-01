@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 44533ea4430bb7cd3bc7e0b6451892cc68bacc19
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 251161fbb5213c765463835e4537f1b443699670
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450217"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491739"
 ---
 # <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory? 
 Az Azure Active Directory (Azure AD) a Microsoft felhőalapú identitás- és hozzáférés felügyeleti szolgáltatása. Az Azure AD segítségével az alkalmazottak bejelentkezhet és elérheti az erőforrásokat:
@@ -72,7 +72,7 @@ Jobb megértése érdekében az Azure AD és a hozzá tartozó dokumentáció, t
 |Globális Azure AD-rendszergazda|A rendszergazdai szerepkör van automatikusan hozzárendelt, akinél létrehozni az Azure AD-bérlővel. Globális rendszergazdák hajthatják végre, minden, a felügyeleti funkciók az Azure ad-hez, és vonhat össze az Azure AD, például az Exchange Online, SharePoint Online és Skype vállalati online szolgáltatásokat. Több globális rendszergazda is használhat, de csak a globális rendszergazdák (beleértve a más globális rendszergazdákat hozzárendelése) rendszergazdai szerepkörök hozzárendelése a felhasználókhoz.<br><br>**Megjegyzés**<br>A rendszergazda szerepkör nevezzük a globális rendszergazda az Azure Portalon, de nevezzük **vállalati rendszergazda** a Microsoft Graph API, Azure AD Graph API és az Azure AD PowerShell.<br><br>Különböző rendszergazdai szerepkörökkel kapcsolatos további információkért lásd: [rendszergazdája szerepkör engedélyei az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md).|
 |Microsoft-fiók (más néven, MSA)|Személyes fiók, amely biztosít hozzáférést a végfelhasználóra irányuló Microsoft termékekhez, és a felhőalapú szolgáltatások, például az Outlook, OneDrive, Xbox LIVE- vagy Office 365-höz. A Microsoft-fiók létrehozása és a Microsoft fogyasztói identitás-fiókrendszer a Microsoft által futtatott tárolja.|
 
-## <a name="what-features-work-in-azure-ad"></a>Milyen szolgáltatások akkor működnek az Azure ad-ben?
+## <a name="which-features-work-in-azure-ad"></a>Melyik szolgáltatások akkor működnek az Azure ad-ben?
 Miután kiválasztotta az Azure AD-licencre, vagy azok egy részét a következő szolgáltatások elérését jelenik meg a szervezet számára:
 
 |Kategória|Leírás|

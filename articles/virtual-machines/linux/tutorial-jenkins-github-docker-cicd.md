@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 694448f6e3c788c0c9d336e75d5df579b90137df
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fb47654a3eb6ea45d2aebab956b555e720faef4c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189867"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487115"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Egy Linux rendszerű virtuális gépen az Azure-ban a Jenkins, GitHub és Docker-fejlesztési infrastruktúra létrehozása
 
@@ -160,7 +160,7 @@ A GitHub és a Jenkins integrációjának teszteléséhez véglegesítsen egy v�
 
 Lépjen vissza a GitHub webes kezelőfelületére, válassza ki az elágaztatott adattárat, majd válassza ki az **index.js** fájlt. A ceruza ikonra kattintva szerkessze a fájlt. A hatodik sor legyen a következő:
 
-```nodejs
+```javascript
 response.end("Hello World!");
 ```
 

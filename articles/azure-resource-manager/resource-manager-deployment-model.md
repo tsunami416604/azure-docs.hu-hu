@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 97dffa4952354864f90f75ffb909228eb4202e77
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: cb888367e3204d6750c533eb8952c80947f90c11
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382797"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486809"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager és klasszikus üzembe helyezési: Üzembe helyezési modellek és az erőforrások állapotának ismertetése
 
@@ -30,6 +30,8 @@ Ebben a cikkben az Azure Resource Manager-alapú és a klasszikus üzemi modelle
 Az erőforrások egyszerűbb üzembe helyezése és felügyelete érdekében a Microsoft a Resource Manager használatát javasolja az összes új erőforráshoz. Amennyiben lehetséges, a Microsoft javasolja, hogy a meglévő erőforrásokat is helyezze újra üzembe a Resource Manager használatával.
 
 Ha még csak most ismerkedik a Resource Managerrel, először érdemes lehet áttekintenie a fogalmakat az [Azure Resource Managert bemutató](resource-group-overview.md) cikkben.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="history-of-the-deployment-models"></a>Az üzemi modellek története
 Az Azure-ban eredetileg csak a klasszikus üzemi modell volt elérhető. Ebben a modellben az erőforrások egymástól függetlenül léteztek, a kapcsolódó erőforrásokat nem lehetett csoportosítani. Manuálisan kellett nyomon követni, hogy az egyes megoldások és alkalmazások melyik erőforrásokból épültek fel, és gondot kellett fordítani azok összehangolt kezelésére. A megoldások üzembe helyezéséhez vagy létre kellett hozni egyenként az egyes erőforrásokat a portálon, vagy írni kellett egy olyan szkriptet, amely a megfelelő sorrendben helyezte üzembe az erőforrásokat. A megoldások törléséhez külön-külön kellett törölni az egyes erőforrásokat. A kapcsolódó erőforrások hozzáférés-vezérlési szabályzatait nem volt egyszerű alkalmazni és frissíteni. Végül pedig címkéket sem lehetett az erőforrásokra alkalmazni, hogy segítsenek azok monitorozásában és a számlázás kezelésében.
@@ -57,7 +59,7 @@ A virtuális gépek, a tárfiókok és a virtuális hálózatok esetében, ha az
 Bizonyos esetekben egyes Resource Manager-alapú parancsokkal lekérhetők a klasszikus üzemi modellben létrehozott erőforrásokra vonatkozó adatok, vagy végrehajthatók adminisztratív feladatok, például egy klasszikus erőforrás áthelyezése egy másik erőforráscsoportba. Azonban ezekből az esetekből nem szabad azt a következtetést levonni, hogy a típus támogatja a Resource Manager-alapú műveleteket. Tegyük fel például, hogy egy erőforráscsoportban egy olyan virtuális géppel rendelkezünk, amely a klasszikus üzemi modellben lett létrehozva. Ha futtatjuk az alábbi Resource Manager PowerShell-parancsot:
 
 ```powershell
-Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
+Get-AzResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 ```
 
 A következő virtuális gépet adja vissza:
@@ -72,10 +74,10 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-Azonban a **Get-AzureRmVM** Resource Manager-parancsmag kizárólag a Resource Manager használatával üzembe helyezett virtuális gépeket adja vissza. A következő parancs nem adja vissza a klasszikus modellben üzembe helyezett virtuális gépet.
+Azonban a Resource Manager parancsmag **Get-azvm parancsmag** csak a Resource Managerrel üzembe helyezett virtuális gépeket adja vissza. A következő parancs nem adja vissza a klasszikus modellben üzembe helyezett virtuális gépet.
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName ExampleGroup
+Get-AzVM -ResourceGroupName ExampleGroup
 ```
 
 Csak a Resource Manager-alapú modellben létrehozott erőforrások támogatják a címkéket. A klasszikus erőforrásokra nem lehet címkéket alkalmazni.

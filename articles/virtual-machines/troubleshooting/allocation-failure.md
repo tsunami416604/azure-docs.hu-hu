@@ -6,18 +6,18 @@ documentationcenter: ''
 author: JiangChen79
 manager: felixwu
 editor: ''
-tags: top-support-issue,azure-resourece-manager,azure-service-management
+tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: d8c0afa159bb8f932c42077868d5134e6486e8c3
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 10c5dc5614731b247b917b68307f6a2d11663461
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413827"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510476"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Amikor létrehozása, újraindítása vagy átméretezése az Azure-beli virtuális gépek foglalási hibáinak elhárítása
 
@@ -25,7 +25,7 @@ Hozzon létre egy virtuális gépet (VM), indítsa újra a leállított (felszab
 
 **Hibakód:**: AllocationFailed vagy ZonalAllocationFailed
 
-**Chybová zpráva**: "a lefoglalás sikertelen. Ebben a régióban nincs elegendő kapacitás a kért Virtuálisgép-méretet. További információ: sikeres javítása http://aka.ms/allocation-guidance"
+**Chybová zpráva**: "A lefoglalás sikertelen. Ebben a régióban nincs elegendő kapacitás a kért Virtuálisgép-méretet. További információ: sikeres javítása http://aka.ms/allocation-guidance"
 
 Ez a cikk ismerteti a gyakori hibák némelyike okait, és lehetséges megoldása javasol.
 
@@ -36,7 +36,7 @@ Mindaddig, amíg az elsődleges virtuális gép típusát az elsődleges régió
 Azonosítsa a forgatókönyvet, amely a legjobban illik az Ön esetében, és ismételje meg a foglalási kérelemben sikeres valószínűségének növelése a megfelelő javasolt megoldás használatával. Azt is megteheti mindig újra később. Ennek oka az, elegendő erőforrással előfordulhat, hogy rendelkezik felszabadult a fürt, régió vagy zóna kérelme befogadásához. 
 
 
-## <a name="resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>Virtuális gép átméretezése, vagy a virtuális gépeket ad hozzá egy meglévő rendelkezésre állási csoport
+## <a name="resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>Virtuális gép átméretezése vagy virtuális gépek hozzáadása egy létező rendelkezésreállási csoporthoz
 
 ### <a name="cause"></a>Ok
 
@@ -47,7 +47,7 @@ Azonosítsa a forgatókönyvet, amely a legjobban illik az Ön esetében, és is
 Ha a virtuális gép egy másik rendelkezésre állási csoport részeként is szerepelhetnek, hozzon létre egy virtuális Gépet egy másik rendelkezésre állási csoportot (ugyanabban a régióban). Az új virtuális gép ezután lehet hozzáadni ugyanahhoz a virtuális hálózathoz.
 
 Állítsa le (szabadítsa fel) minden virtuális gép egyazon rendelkezésre állási állítsa be, majd indítsa újra a mindegyikhez.
-Leállítása: kattintson az erőforráscsoportok > [az erőforráscsoport] > erőforrások > [a rendelkezésre állási csoport] > virtuális gépek > [a virtuális gép] > leállítása.
+Megszüntetése: Kattintson az erőforráscsoportok > [az erőforráscsoport] > erőforrások > [a rendelkezésre állási csoport] > virtuális gépek > [a virtuális gép] > leállítása.
 Miután az összes virtuális gép leállításához válassza ki az első virtuális gép, és válassza az Indítás parancsot.
 Ez a lépés biztosítja, hogy, hogy fut-e egy új foglalási kísérlet és, hogy egy új fürtöt választható ki, amelynek elegendő a kapacitása.
 
@@ -60,11 +60,11 @@ Részleges felszabadítási azt jelenti, hogy Ön leállítva (felszabadított) 
 ### <a name="workaround"></a>Áthidaló megoldás
 
 Állítsa le (szabadítsa fel) minden virtuális gép egyazon rendelkezésre állási állítsa be, majd indítsa újra a mindegyikhez.
-Leállítása: kattintson az erőforráscsoportok > [az erőforráscsoport] > erőforrások > [a rendelkezésre állási csoport] > virtuális gépek > [a virtuális gép] > leállítása.
+Megszüntetése: Kattintson az erőforráscsoportok > [az erőforráscsoport] > erőforrások > [a rendelkezésre állási csoport] > virtuális gépek > [a virtuális gép] > leállítása.
 Miután az összes virtuális gép leállításához válassza ki az első virtuális gép, és válassza az Indítás parancsot.
 Ezzel biztosíthatja, hogy fut-e egy új foglalási kísérlet és, hogy egy új fürtöt választható ki, amelynek elegendő a kapacitása.
 
-## <a name="restart-fully-stopped-deallocated-vms"></a>Teljes körűen leállított (felszabadított) virtuális gépek újraindítása
+## <a name="restart-fully-stopped-deallocated-vms"></a>Teljesen leállított (felszabadított) virtuális gépek újraindítása
 
 ### <a name="cause"></a>Ok
 
@@ -81,7 +81,7 @@ Ha a foglalási kérelemben túl nagy (500-nál több mag), tekintse meg a kére
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Foglalási hibák régebbi Virtuálisgép-méretek (Av1 Dv1, DSv1, D15v2, DS15v2, stb.)
 
-Azure-infrastruktúra bővítésekor üzembe új generációs tervezték, hogy a virtuális gépek legújabb típusainak támogatására. A régebbi sorozatú virtuális gépek némelyike nem futtathatók a új generációs infrastruktúrán. Ezért esetenként tapasztalt hibák ezen régebbi termékváltozatok esetében. Ez a probléma elkerülése érdekében azt javasoljuk, érdemes megfontolni az egyenértékű újabb virtuális gépek száma az alábbi javaslatok a régi sorozatú virtuális gépek használó ügyfeleink: ezekre a virtuális gépekre a legújabb hardverekre vannak optimalizálva, és lehetővé teszi, hogy jobban kihasználhatja díjszabás és teljesítmény. 
+Azure-infrastruktúra bővítésekor üzembe új generációs tervezték, hogy a virtuális gépek legújabb típusainak támogatására. A régebbi sorozatú virtuális gépek némelyike nem futtathatók a új generációs infrastruktúrán. Ezért esetenként tapasztalt hibák ezen régebbi termékváltozatok esetében. Ez a probléma elkerülése érdekében javasoljuk ügyfeleinknek, hogy használó örökölt sorozatú virtuális gépekhez, fontolja meg a megfelelő újabb virtuális gépek száma az alábbi javaslatokat: Ezek a virtuális gépek a legújabb hardverekre vannak optimalizálva, és lehetővé teszi, hogy jobban díjszabás és a teljesítmény előnyeit. 
 
 |Virtuálisgép-sorozat vagy méretének örökölt|Javasolt Virtuálisgép-sorozat vagy méretének újabb|További információ|
 |----------------------|----------------------------|--------------------|

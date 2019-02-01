@@ -1,6 +1,6 @@
 ---
-title: Eszközök életciklusának felügyelete az Azure AD-ben | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan lehet az eszközfelügyelettel szabályozni a környezetben található erőforrásokhoz hozzáférő eszközöket.
+title: Elavult eszközök kezelése az Azure ad-ben |} A Microsoft Docs
+description: Elveszett, ellopott, nem működő eszközök vagy az operációs rendszer reinstallations miatt általában rendelkezik elavult eszközöket a környezetben. Ismerje meg, hogyan elavult eszközök törlése az adatbázisból az Azure Active Directoryban (Azure AD) regisztrált eszközök.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 20bfa4cf02c86922836a70f8885f910814eafb22
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d6d0ee1c9a77006df2239f4e0e0457c0c0aa2c28
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092156"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493313"
 ---
-# <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>kézikönyv: Az elavult eszközöket kezelheti az Azure ad-ben
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>kézikönyv: Elavult eszközök kezelése az Azure ad-ben
 
 Ideális esetben az életciklus végén törlik a regisztrált, de már nem használt eszközök regisztrációját. Azonban például az eszközök elvesztése, ellopása vagy sérülése, illetve az operációs rendszerek újratelepítése miatt a legtöbb környezetben előfordulnak elavult eszközök. Rendszergazdaként minden bizonnyal örülne egy olyan módszernek, amellyel eltávolíthatók az elavult eszközök, hogy az erőforrásokat a tényleges felügyeletet igénylő eszközökre összpontosíthassa.
 

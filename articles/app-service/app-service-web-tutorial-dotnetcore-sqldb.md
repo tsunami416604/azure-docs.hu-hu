@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/11/2018
+ms.date: 01/31/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0b4549323b64b0f6210a228ea6cb5ca301839ec8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d62e74c5d81cdf3331bde349a9ec5dfe3071e7f8
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721852"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510697"
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-app-in-azure-app-service"></a>Oktatóanyag: Az Azure App Service-ben a .NET Core és SQL Database alkalmazás készítése
 
@@ -366,6 +366,37 @@ Miután a `git push` befejeződött, nyissa meg az App Service-alkalmazást, és
 ![Az Azure app Code First Migrálás után](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 
 A meglévő teendők továbbra is megjelennek. Ha ismét közzéteszi a .NET Core-alkalmazást, az SQL Database-ben meglévő adatok nem vesznek el. Emellett az Entity Framework Core Migrations csak az adatsémát módosítja, a meglévő adatokat érintetlenül hagyja.
+
+## <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
+
+Bár az ASP.NET Core-alkalmazást futtat az Azure App Service, a Cloud Shellben, a konzolnaplófájlokat megkaphatja. Így ugyanazokat a diagnosztikai üzeneteket kaphatja meg az alkalmazáshibák elhárításához.
+
+A mintaprojekt már követi az útmutatóban talál: [ASP.NET Core naplózás az Azure-ban](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure) két konfigurációs módosítás:
+
+- Tartalmaz egy hivatkozást a `Microsoft.Extensions.Logging.AzureAppServices` a *DotNetCoreSqlDb.csproj*.
+- Hívások `loggerFactory.AddAzureWebAppDiagnostics()` a *Startup.cs*.
+
+Beállítása az ASP.NET Core [naplózási szintjének](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) App Service-ben `Information` az alapértelmezett szint `Warning`, használja a [ `az webapp log config` ](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) parancsot a Cloud Shellben.
+
+```azurecli-interactive
+az webapp log config --name <app_name> --resource-group myResourceGroup --application-logging true --level information
+```
+
+> [!NOTE]
+> A projekt naplózási szint már be van állítva `Information` a *appsettings.json*.
+> 
+
+A naplóstreamelés indításához használja az [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) parancsot a Cloud Shellben.
+
+```azurecli-interactive
+az webapp log tail --name <app_name> --resource-group myResourceGroup
+```
+
+A naplóstreamelés megkezdése után frissítse az Azure-alkalmazást a böngészőben némi webes forgalom. Ekkor láthatja, hogy a rendszer átadja a konzolnaplófájlokat a terminálnak. Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másodperc múlva.
+
+A naplóstreamelés leállításához írja be a `Ctrl`+`C` billentyűparancsot.
+
+Az ASP.NET Core-naplók testreszabásáról további információkért lásd: [az ASP.NET Core-naplózás](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
 
 ## <a name="manage-your-azure-app"></a>Az Azure-alkalmazás kezelése
 

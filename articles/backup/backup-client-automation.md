@@ -2,18 +2,18 @@
 title: Windows Server biztonsági mentése az Azure PowerShell használatával
 description: Ismerje meg, hogyan helyezheti üzembe és felügyelheti az Azure Backup PowerShell-lel
 services: backup
-author: saurabhsensharma
+author: pvrk
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
-ms.author: saurse
-ms.openlocfilehash: 154d4fbb265a6abb57bc25b4e364983ffe7e399b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: pvrk
+ms.openlocfilehash: d430f6252157c5d34aa236ef88f8490b4ad6a184
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237757"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497944"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 Ez a cikk bemutatja, hogyan használható a PowerShell beállítása az Azure Backup a Windows Server vagy a Windows ügyfél és a biztonsági mentés és helyreállítás felügyelete.
@@ -27,7 +27,7 @@ A 2015. október Azure PowerShell 1.0-s verziójában jelent meg. Ebben a kiadá
 
 Ha a parancsfájlok a 0.9.8-as írt használni kívánt környezet, 1.0-s vagy újabb a környezetben, érdemes alaposan frissítése, és a parancsfájlok egy üzem előtti környezetben váratlan hatás elkerülése érdekében az éles használat előtt.
 
-[Töltse le a legújabb PowerShell-kiadás](https://github.com/Azure/azure-powershell/releases) (szükséges minimális verziója: 1.0.0)
+[Töltse le a legújabb PowerShell-kiadás](https://github.com/Azure/azure-powershell/releases) (minimálisan szükséges verzió a következő: 1.0.0)
 
 [!INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
@@ -121,9 +121,9 @@ Az elérhető lehetőségek a következők:
 | /m |Jóváhagyja a Microsoft Update |- |
 | /nu |Nem keres frissítéseket telepítésének befejezése után |- |
 | /nap |A Microsoft Azure Recovery Services Agent eltávolítása |- |
-| /pH |Gazdagép proxycím |- |
+| /pH |Proxy Host Address |- |
 | /po |Gazdagép proxyport száma |- |
-| /Pu |Proxy állomás felhasználónév |- |
+| /pu |Proxy állomás felhasználónév |- |
 | /pW |Proxy jelszava |- |
 
 ## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>A Windows Server vagy a Windows ügyfélszámítógépen a Recovery Services-tárolóra regisztrálása

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 01/30/2019
 ms.author: jdial
-ms.openlocfilehash: f4af899be489dab2fc73bb33943882d4dc81576f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5472878542078e2a2dbb900965b59844d6e3b4b3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054758"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488093"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
 
@@ -61,22 +61,23 @@ A nyilvános IP-címek a következő termékváltozatok valamelyikével jönnek 
 A termékváltozatok bevezetése előtt létrehozott minden nyilvános IP-cím alapszintű termékváltozatú nyilvános IP-cím. A termékváltozatok bevezetésének köszönhetően mostantól megadhatja, hogy milyen termékváltozatú legyen a nyilvános IP-cím. Az alapszintű termékváltozatú címek jellemzői:
 
 - A statikus vagy a dinamikus kiosztási módszerrel oszthatók ki.
+- Rendelkezik egy üresjárati időkorlátja 4. 30 percet, az alapértelmezett érték 4 perc, és 4 perces üresjárati időkorlátot rögzített kimenő származó folyamat állítható bejövő származó folyamat.
 - Alapértelmezés szerint nyitva vannak.  A hálózati biztonsági csoportok használata ajánlott, de nem kötelező a bejövő és kimenő forgalom korlátozásához.
 - Kioszthatók bármely Azure-erőforrás számára, amelynek kiosztható nyilvános IP-cím, például hálózati adapterek, VPN-átjárók, alkalmazásátjárók és internetkapcsolattal rendelkező terheléselosztók számára.
-- Hozzárendelhetők egy adott zónához.
-- Nem zónaredundánsak. A rendelkezésre állási zónákkal kapcsolatos további információkért tekintse meg [a rendelkezésre állási zónák áttekintését](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Nem támogatja a rendelkezésre állási zónák – forgatókönyvek.  Standard Termékváltozat nyilvános IP-cím rendelkezésre állási zónák – forgatókönyvek használni kell. További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 #### <a name="standard"></a>Standard
 
 A standard termékváltozatú nyilvános IP-címek jellemzői:
 
-- Csak a statikus kiosztási módszerrel oszthatók ki.
+- Mindig használjon statikus kiosztási módszerrel oszthatók ki.
+- Állítható bejövő származó és a kimenő országrész folyamat üresjárati időkorlátot 4 66 perc, az alapértelmezett érték 4 perces rendelkezik.
 - Alapértelmezés szerint biztonságosak és zártak a bejövő forgalommal szemben. Az engedélyezett bejövő forgalmat kifejezetten engedélyeznie kell egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups).
-- Hozzárendelt hálózati adapterek, nyilvános standard load Balancer terheléselosztók, az Application Gateway átjárók vagy VPN-átjárókkal. További információ az Azure standard terheléselosztókról: [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Alapértelmezés szerint zónaredundánsak. Létrehozhatóak zónásan, és garantálhatóak adott rendelkezésre állási zónákban. További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Hálózati adapterek, nyilvános standard szintű terheléselosztóhoz, Application Gateway átjárók vagy VPN-átjárók rendelve. A Standard Load Balancer kapcsolatos további információkért lásd: [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Zóna alapértelmezés szerint georedundáns és igény szerint zónaszintű (hozható létre zónásan, és egy adott rendelkezésre állási zónában). További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> A standard SKU-erőforrásokkal történő kommunikáció meghiúsul, amíg nem hoz létre és rendel hozzá egy [hálózati biztonsági csoportot](security-overview.md#network-security-groups), és kifejezetten nem engedélyezi a kívánt bejövő forgalmat.
+> A Standard Termékváltozatú erőforrás bejövő kommunikáció meghiúsul, amíg nem hoz létre, és társíthatja egy [hálózati biztonsági csoport](security-overview.md#network-security-groups) és explicit módon engedélyezi a kívánt bejövő forgalmat.
 
 ### <a name="allocation-method"></a>Lefoglalási módszer
 

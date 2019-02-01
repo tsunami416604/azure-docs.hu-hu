@@ -1,9 +1,22 @@
 ---
-Cím: Helyezze üzembe az Azure Resource Manager titleSuffix Studio-munkaterület: Azure Machine Learning Studio description: Az Azure Machine Learning használatával az Azure Resource Manager-sablon szolgáltatások üzembe helyezése a munkaterület: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/05/2018
+title: Studio-munkaterület az Azure Resource Manager üzembe helyezése
+titleSuffix: Azure Machine Learning Studio
+description: Hogyan helyezhet üzembe egy munkaterületet az Azure Machine Learning az Azure Resource Manager-sablon használatával
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 02/05/2018
+ms.openlocfilehash: c7f75b2553ada469f4963531fc33f6e5105084b1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487796"
 ---
-
 # <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>Az Azure Machine Learning Studio-munkaterület használata az Azure Resource Manager üzembe helyezése
 
 Az egy Azure Resource Manager központi telepítési sablont, így Ön egy skálázható módon, hogy Ön időt takarít az érvényesítést összekapcsolt összetevők üzembe helyezése és újrapróbálkozási mechanizmus. Az Azure Machine Learning-munkaterületek beállításával kapcsolatban például szeretne konfigurálja egy Azure storage-fiókot, majd üzembe helyezése a munkaterületen. Tegyük fel, így manuálisan munkaterületek több száz. Egyszerűbb a másik lehetőség az Azure Resource Manager-sablon segítségével üzembe helyezése az Azure Machine Learning-munkaterület és minden függőségét. Ez a cikk végigvezeti a részletes folyamat. Az Azure Resource Manager, nagyszerű áttekintése: [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: b77e814f9f339dff4539a04ab8b492e9777abe0d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 32ca3fc87c91deba26e63a5938536d488e7dc5a8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537647"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488740"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>Az Azure Security Center erőforrás kapcsolatos javaslatok megértése
 
@@ -43,27 +43,27 @@ Használja az alábbi táblázatokban referenciaként segítenek megérteni a re
 | [A sebezhetőségi felmérés nincs telepítve](security-center-vulnerability-assessment-recommendations.md) |Javasolja, hogy telepítsen egy biztonsági rések felmérése szolgáló megoldást a virtuális gépére. |
 | [Sebezhetőségek javítása](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Lehetővé teszi a virtuális gépre telepített sebezhetőségfelmérő megoldás által észlelt rendszer- és alkalmazássebezhetőségek megtekintését. |
 
-### <a name="app-services"></a>App Services
+### Alkalmazásszolgáltatások <a name="app-services"></a>
 | Ajánlás | Leírás |
 | --- | --- |
 | App Service-ben csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül | Javasolja, hogy korlátozza az App Service hozzáférését a HTTPS-kapcsolaton keresztül csak. |
-| Webes szoftvercsatornák le kell tiltani a webes alkalmazás| Keresse fel a Web Sockets websocket webalkalmazásokban használatát javasolja.  A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket. |
+| A WebSocketet ki kell kapcsolni a webalkalmazásban| Keresse fel a Web Sockets websocket webalkalmazásokban használatát javasolja.  A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket. |
 | Egyéni tartományok használata az zabalení Webové Aplikace | Egyéni tartományok közös adathalász támadások és más DNS-sel támadások elleni webalkalmazás használatát javasolja. |
-| Webes alkalmazás IP-korlátozások konfigurálása | Javasolja, hogy az alkalmazás-hozzáférést IP-címek listájának meghatározását.  Az IP-korlátozások használatát megvédheti webalkalmazását a gyakori támadásoktól. |
+| Az IP-korlátozások konfigurálása a webalkalmazásban | Javasolja, hogy az alkalmazás-hozzáférést IP-címek listájának meghatározását.  Az IP-korlátozások használatát megvédheti webalkalmazását a gyakori támadásoktól. |
 | Ne engedélyezze az összes ("*") erőforrások hozzáférhetnek az alkalmazáshoz | Javasolja, hogy nem WEBSITE_LOAD_CERTIFICATES paraméter értéke "*". A paraméter beállítása "*" azt jelenti, hogy minden tanúsítvány betöltődik a webes alkalmazások személyes tanúsítványtárolójába.  A minimális jogosultság elvével való visszaéléshez ez is vezethet, mert nem valószínű, hogy a hely összes tanúsítvány futásidőben hozzá kell férnie. |
 | A CORS nem teszi lehetővé az alkalmazás eléréséhez annak minden erőforrás | Javasolja, hogy lehetővé tegye a kommunikál a webes alkalmazások csak a szükséges tartományok. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a webalkalmazáshoz való hozzáférés. |
-| A legújabb támogatott .NET-keretrendszer-webalkalmazás | A .NET-keretrendszer legújabb verzióját a legújabb biztonsági osztályok használatát javasolja. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
-| A Java legújabb támogatott verzióját használja a webalkalmazáshoz | Javasolja, hogy a legújabb Java-verzió esetében a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
-| A PHP legújabb támogatott verzióját használja a webalkalmazáshoz | A PHP legújabb verzióját a legújabb biztonsági osztályok használatát javasolja. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
+| A legújabb támogatott .NET-keretrendszer használata a webalkalmazásban | A .NET-keretrendszer legújabb verzióját a legújabb biztonsági osztályok használatát javasolja. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
+| A legújabb támogatott Java-verzió használata a webalkalmazásban | Javasolja, hogy a legújabb Java-verzió esetében a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
+| A legújabb támogatott PHP-verzió használata a webalkalmazásban | A PHP legújabb verzióját a legújabb biztonsági osztályok használatát javasolja. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
 | [Webalkalmazási tűzfal hozzáadása](security-center-add-web-application-firewall.md) |Javasolja, hogy telepít egy webalkalmazási tűzfal (WAF) webes végpontok. A WAF ajánlás bármely nyilvános IP-Címmel (példány szintű IP vagy Load elosztott terhelésű IP), amely rendelkezik egy társított hálózati biztonsági csoport nyílt bejövő webes porttal (80,443) jelennek meg.</br></br>A Security Center javasolja, hogy a WAF elleni támadásokat a webalkalmazások virtuális gépeken, és az App Service Environment célcsoportkezelés segítségével telepítsen. Van egy App Service Environment (ASE) egy [prémium](https://azure.microsoft.com/pricing/details/app-service/) szolgáltatás, amely az Azure App Service-alkalmazások biztonságos futtatása teljesen elkülönített és dedikált környezetet biztosít az Azure App Service csomag lehetőséget. ASE kapcsolatos további információkért tekintse meg a [App Service Environment dokumentációja](../app-service/environment/intro.md).</br></br>A Security Center több webalkalmazás védheti meg ezeket az alkalmazásokat a meglévő WAF-példányok hozzáadásával. |
 | [Alkalmazásvédelem véglegesítése](security-center-add-web-application-firewall.md#finalize-application-protection) |A WAF konfigurációjának befejezéséhez forgalmat a WAF berendezésre át irányítva. Ez a javaslat a következő befejezi a szükséges telepítőfájlokat módosításokat. |
-| A legújabb támogatott Node.js verzió használata a webalkalmazáshoz | Javasolja, hogy a legfrissebb Node.js-verzió esetében a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
-| A CORS nem teszi lehetővé a Függvényalkalmazás eléréséhez minden erőforrás | Javasolja, hogy lehetővé tegye a kommunikál a webes alkalmazások csak a szükséges tartományok. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a függvény-alkalmazás elérésére. |
-| Egyéni tartományok használata az Függvényalkalmazás | Egyéni tartományok közös adathalász támadások és más DNS-sel támadások elleni függvényalkalmazás használatát javasolja. |
-| Függvényalkalmazás IP-korlátozások konfigurálása | Javasolja, hogy az alkalmazás-hozzáférést IP-címek listájának meghatározását. Az IP-korlátozások használata gyakori támadások ellen védi a függvényalkalmazást. |
-| Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül | Hozzáférés korlátozásáról függvényalkalmazások HTTPS-kapcsolaton keresztül csak javasolni a felhasználóknak. |
-| Távoli hibakeresést ki kell kapcsolni a Függvényalkalmazás | Javasolja, kapcsolja ki a hibakeresési függvényalkalmazás, ha már nincs rá szüksége. Távoli hibakeresés használatához meg kell nyitni a Függvényalkalmazás bejövő portokat. |
-| Webes szoftvercsatornák le kell tiltani a Függvényalkalmazás | Javasolja, hogy alaposan tekintse át a Web Sockets funkciót alkalmazásokon belüli használata. A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket. |
+| A legújabb támogatott Node.js-verzió használata a webalkalmazásban | Javasolja, hogy a legfrissebb Node.js-verzió esetében a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
+| A CORS nem teheti lehetővé minden erőforrásnak a függvényalkalmazáshoz való hozzáférést | Javasolja, hogy lehetővé tegye a kommunikál a webes alkalmazások csak a szükséges tartományok. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a függvény-alkalmazás elérésére. |
+| Egyéni tartományok használata a függvényalkalmazásban | Egyéni tartományok közös adathalász támadások és más DNS-sel támadások elleni függvényalkalmazás használatát javasolja. |
+| IP-korlátozások konfigurálása a függvényalkalmazásban | Javasolja, hogy az alkalmazás-hozzáférést IP-címek listájának meghatározását. Az IP-korlátozások használata gyakori támadások ellen védi a függvényalkalmazást. |
+| A függvényalkalmazás elérése csak HTTPS protokollon keresztül történhet | Hozzáférés korlátozásáról függvényalkalmazások HTTPS-kapcsolaton keresztül csak javasolni a felhasználóknak. |
+| A távoli hibakeresést ki kell kapcsolni a függvényalkalmazásban | Javasolja, kapcsolja ki a hibakeresési függvényalkalmazás, ha már nincs rá szüksége. Távoli hibakeresés használatához meg kell nyitni a Függvényalkalmazás bejövő portokat. |
+| A WebSocketet ki kell kapcsolni a függvényalkalmazásban | Javasolja, hogy alaposan tekintse át a Web Sockets funkciót alkalmazásokon belüli használata. A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket. |
 
 
 ## <a name="next-steps"></a>További lépések

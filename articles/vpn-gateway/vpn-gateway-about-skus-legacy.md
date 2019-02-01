@@ -1,6 +1,6 @@
 ---
-title: A hagyományos Azure virtuális hálózat VPN gateway SKU-n |} Microsoft Docs
-description: A régi virtuális hálózati átjáró termékváltozatok; használata Basic, Standard és a HighPerformance.
+title: Örökölt az Azure virtual network VPN gateway Termékváltozatoktól |} A Microsoft Docs
+description: A régi virtuális hálózati átjárók Termékváltozatainak; használata Alapszintű, Standard és HighPerformance.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,53 +15,53 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4feecb9c1e91e1bc6c66a610c092e7bf894886e5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: efce8379ecafe6e8e044b654a3c5b392ca8e9cea
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30190228"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506362"
 ---
-# <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Virtuális hálózati átjáró termékváltozatok (örökölt SKU) használata
+# <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Virtuális hálózati átjáró Termékváltozatai (örökölt termékváltozatok) használata
 
-Ez a cikk az örökölt (régi) virtuális hálózati átjáró termékváltozatok információkat tartalmaz. Az örökölt termékváltozatok továbbra is működni a két üzembe helyezési modell, amely már létre van hozva VPN-átjárók. Hagyományos VPN-átjárók továbbra is a hagyományos termékváltozatok meglévő átjáró, valamint az új átjáró. Új erőforrás-kezelő VPN átjáró létrehozása esetén az új átjáró termékváltozatok használatához. Az új termékváltozatok kapcsolatos információkért lásd: [VPN-átjáró](vpn-gateway-about-vpngateways.md).
+Ez a cikk az örökölt (régi) virtuális hálózati átjáró-Termékváltozatokkal kapcsolatos információkat tartalmaz. Az örökölt termékváltozatok továbbra is működni a már létrehozott VPN-átjárók mindkét üzemi modellben. Klasszikus VPN-átjárók továbbra is a meglévő átjárók, és új átjárók örökölt termékváltozatok használata. Amikor hoz létre új Resource Manager VPN-átjárók, használja az új átjáró SKU-k. Az új termékváltozatokra vonatkozó információkért lásd: [információk a VPN Gateway](vpn-gateway-about-vpngateways.md).
 
 ## <a name="gwsku"></a>Átjáró-termékváltozatok
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-## <a name="agg"></a>A Termékváltozat becsült összesített átviteli sebesség
+## <a name="agg"></a>Becsült összesített átviteli sebessége Termékváltozat
 
 [!INCLUDE [Aggregated throughput by legacy SKU](../../includes/vpn-gateway-table-gwtype-legacy-aggtput-include.md)]
 
-## <a name="config"></a>Termékváltozat- és VPN-típus által támogatott konfigurációk
+## <a name="config"></a>Írja be a Termékváltozat és a VPN által támogatott konfigurációk
 
 [!INCLUDE [Table requirements for old SKUs](../../includes/vpn-gateway-table-requirements-legacy-sku-include.md)]
 
-## <a name="resize"></a>Átjáró méretezése
+## <a name="resize"></a>Az átjáró átméretezése
 
-Az átjáró egy Gateway SKU belül az azonos SKU-család is átméretezhetők. Például ha egy Standard Termékváltozat, átméretezheti a HighPerformance másikra. Azonban nem tudja átméretezni a régi termékváltozatok és az új SKU-családok közötti VPN-átjárót. Például nem léphet a szabványos Termékváltozatáról egy VpnGw2 SKU, vagy egy alapszintű Termékváltozat VpnGw1.
+Az átjárók Termékváltozatainak belül az azonos Termékváltozat-család átjáró méretezheti. Például ha a Standard Termékváltozat, átméretezheti, a HighPerformance termékváltozatra. Azonban nem tudják átméretezni a régi termékváltozatokról az új Termékváltozat-családokra közötti VPN-átjárót. Ha például már nem válthat a Standard Termékváltozat VpnGw2 Termékváltozat vagy alapszintű Termékváltozat a VpnGw1.
 
-A klasszikus üzembe helyezési modell átjáró átméretezéséhez használja a következő parancsot:
+Méretezze át a klasszikus üzemi modell esetében egy átjárót, használja a következő parancsot:
 
 ```powershell
 Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 ```
 
-A Resource Manager üzembe helyezési modellel PowerShell használatával az átjáró átméretezéséhez használja a következő parancsot:
+Méretezze át a Resource Manager üzemi modell PowerShell használatával egy átjárót, használja a következő parancsot:
 
 ```powershell
 $gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
-Az Azure portálon átjáró is méretezheti.
+Az Azure Portalon egy átjárót is méretezheti.
 
-## <a name="change"></a>Az új átjáróra termékváltozatok módosítása
+## <a name="change"></a>Módosítsa az új átjáró SKU-k
 
 [!INCLUDE [Change to the new SKUs](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Az új átjáró-termékváltozat kapcsolatos további információkért lásd: [Gateway SKU-n](vpn-gateway-about-vpngateways.md#gwsku).
+Az új átjáró-termékváltozatok kapcsolatos további információkért lásd: [átjáró-termékváltozatok](vpn-gateway-about-vpngateways.md#gwsku).
 
-Konfigurációs beállításaival kapcsolatos további információkért lásd: [VPN-átjáró konfigurációs beállítások](vpn-gateway-about-vpn-gateway-settings.md).
+Konfigurációs beállításaival kapcsolatos további információkért lásd: [információk a VPN Gateway konfigurációs beállításairól](vpn-gateway-about-vpn-gateway-settings.md).

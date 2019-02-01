@@ -1,5 +1,5 @@
 ---
-title: 'A BGP konfigurálása Azure VPN Gateway átjárókról: erőforrás-kezelő: PowerShell |} A Microsoft Docs'
+title: 'A BGP konfigurálása Azure VPN Gateway átjárókról: Erőforrás-kezelő: PowerShell |} A Microsoft Docs'
 description: Ez a cikk végigvezeti a BGP konfigurálása Azure VPN Gateway Azure Resource Manager és a PowerShell használatával.
 services: vpn-gateway
 documentationcenter: na
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
 ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632585"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508402"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>BGP konfigurálása Azure VPN Gateway PowerShell-lel
 Ez a cikk végigvezeti a BGP engedélyezéséhez a létesítmények közötti Site-to-Site (S2S) VPN-kapcsolat és VNet – VNet kapcsolat a Resource Manager üzemi modell és a PowerShell használatával.
@@ -174,7 +174,7 @@ Mielőtt folytatja, győződjön meg arról, hogy továbbra is csatlakozik az 1.
 
 #### <a name="2-create-the-local-network-gateway-for-site5"></a>2. A helyi hálózati átjáró létrehozása Site5
 
-Győződjön meg arról, az erőforráscsoport létrehozása, ha nem jön létre, a helyi hálózati átjáró létrehozása előtt. Figyelje meg, hogy a helyi hálózati átjáró két további paraméterek: ASN-t és BgpPeerAddress.
+Győződjön meg arról, az erőforráscsoport létrehozása, ha nem jön létre, a helyi hálózati átjáró létrehozása előtt. Figyelje meg, hogy a helyi hálózati átjáró két további paraméterek: Az ASN és BgpPeerAddress.
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG5 -Location $Location5

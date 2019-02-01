@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 7951044f850d93659ca458d3bcc46376e7e6b34a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2720d239c31a0cbfab215c7e297627c9f0d8c781
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077355"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510238"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -171,6 +171,8 @@ Egyszer megfelelően formázott CSV-fájl, a rendszergazda ezután jelentkezzen 
 A CSV-fájl méretétől függően eltarthat néhány perc alatt dolgozza fel. Kattintson a **frissítése** gombra az aktuális állapotát. Ha hiba történik a fájlban, akkor ajánlati feloldhatja az esetleges hibákat a CSV-fájl letöltése lehetőséget.
 
 Hibák elhárítása után a rendszergazda ezután aktiválhatja minden kulcs kattintva **aktiválás** a token aktiválását és belépés az egyszeri Jelszavas jelenik meg a jogkivonatot.
+
+Előfordulhat, hogy a felhasználók legfeljebb 5 hardver OATH-tokenek vagy authenticator alkalmazásokhoz, mint a Microsoft Authenticator alkalmazás bármikor használatra konfigurált kombinációját.
 
 ## <a name="mobile-phone"></a>Mobiltelefon
 

@@ -3,7 +3,7 @@ title: Azure Security Center oktatóanyag – Erőforrások védelme az Azure Se
 description: Ez az oktatóanyag bemutatja, hogyan konfigurálhat igény szerinti virtuálisgép-hozzáférési szabályzatot és alkalmazásvezérlési szabályzatot.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -14,16 +14,16 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: 19b5f6d6cb8e0e17dba9944e8b72c6938f168c70
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: monhaber
+ms.openlocfilehash: df9e804e8b8f3a9b40a18873f61ec96edee1503d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839347"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490257"
 ---
-# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Oktatóanyag: Erőforrások védelme az Azure Security Centerrel
-A Security Center korlátozza a fenyegetéseknek való kitettségét azzal, hogy hozzáférés- és alkalmazásvezérlőket használ a kártékony tevékenységek blokkolására. Az igény szerinti virtuálisgép-hozzáférés lehetővé teszi, hogy megtagadja a virtuális gépekhez való állandó hozzáférést, így kevésbé fogják veszélyeztetni a támadások. Az állandó hozzáférés helyett szabályozott és naplózott hozzáférést biztosít a virtuális gépekhez – csak akkor, ha szükség van rá. Az adaptív alkalmazásvezérlők segítenek felvértezni a virtuális gépeket a kártevők ellen azáltal, hogy szabályozzák, mely alkalmazások futhatnak rajtuk. A Security Center gépi tanulási módszerekkel elemzi a virtuális gépen futó folyamatokat, és az így szerzett információk alapján segít az engedélyezési szabályok alkalmazásában.
+# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Oktatóanyag: Erőforrások védelme az Azure Security Centerben
+A Security Center korlátozza a fenyegetéseknek való kitettségét azzal, hogy hozzáférés- és alkalmazásvezérlőket használ a kártékony tevékenységek blokkolására. – Igény szerinti (JIT) virtuális gép (VM) hozzáférés engedélyezésével, hogy a virtuális gépek állandó hozzáférés letiltása csökkenti a támadásoknak való kitettség csökkentése. Az állandó hozzáférés helyett szabályozott és naplózott hozzáférést biztosít a virtuális gépekhez – csak akkor, ha szükség van rá. Az adaptív alkalmazásvezérlők segítenek felvértezni a virtuális gépeket a kártevők ellen azáltal, hogy szabályozzák, mely alkalmazások futhatnak rajtuk. A Security Center gépi tanulási módszerekkel elemzi a virtuális gépen futó folyamatokat, és az így szerzett információk alapján segít az engedélyezési szabályok alkalmazásában.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -37,15 +37,15 @@ Ha nem rendelkezik Azure-előfizetéssel, a kezdés előtt létrehozhat egy [ing
 Az oktatóanyagban ismertetett funkciók végrehajtásához a Security Center Standard tarifacsomagjával kell rendelkeznie. Megpróbálhatja Security Center Standard költségek nélkül. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
 
 ## <a name="manage-vm-access"></a>Virtuális gépekhez való hozzáférés kezelése
-A virtuális gépek igény szerinti elérésével zárolhatja az Azure-beli virtuális gépek bejövő forgalmát. Ezzel csökkenti a támadásoknak való kitettséget, ugyanakkor könnyű hozzáférést biztosít arra az esetre, amikor csatlakozni kell a virtuális gépekhez.
+Virtuális gépek igény szerinti hozzáférés segítségével zárolását, így az Azure virtuális gépekre, csökkentve a támadásokkal szembeni sérülékenységet ugyanakkor könnyű hozzáférést biztosít arra, hogy szükség esetén a virtuális gépekhez csatlakozhat a bejövő forgalmat.
 
 A felügyeleti portoknak nem kell mindig nyitva lenniük. Csak addig kell nyitva lenniük, amíg Ön csatlakozik a virtuális géphez, például azért, hogy felügyeleti vagy karbantartási feladatokat végezzen. Ha az igény szerinti hozzáférés engedélyezve van, a Security Center hálózati biztonsági csoporton (NSG) alapuló szabályokat alkalmaz, amelyek korlátozzák a felügyeleti portokhoz való hozzáférést, hogy a támadók ne tudják célba venni azokat.
 
-1. A Security Center főmenüjének **SPECIÁLIS FELHŐVÉDELEM** területén válassza a **Virtuális gépek igény szerinti elérése** lehetőséget.
+1. A Security Center főmenüjében válassza **Just in Time VM eléréséhez** alatt **speciális FELHŐVÉDELEM**.
 
   ![Igény szerinti hozzáférés a virtuális gépekhez][1]
 
-  A **Just in time VM access** (Igény szerinti hozzáférés a virtuális gépekhez) információt nyújt a virtuális gépek állapotáról:
+  **Just-in-Time VM access** információt nyújt a virtuális gépek állapotát:
 
   - **Configured** (Konfigurált) – Olyan virtuális gépek, amelyeket úgy vannak konfigurálva, hogy támogassák a virtuális gépek igény szerinti elérését.
   - **Recommended** (Ajánlott) – Olyan virtuális gépek, amelyek támogatni tudják a virtuális gépek igény szerinti elérését, de nem lettek erre konfigurálva.
@@ -81,9 +81,9 @@ Ez a funkció csak Windows rendszerű gépeken használható.
 
   A **Resource groups** (Erőforráscsoportok) szakaszban három lap található:
 
-  - **Configured** (Konfigurált): Azon erőforráscsoportok listája, amelyeken már konfigurálva van az alkalmazásvezérlés.
-  - **Recommended** (Ajánlott): Azon erőforráscsoportok listája, amelyek esetében javasolt az alkalmazásvezérlés használata.
-  - **No recommendation** (Nincs javaslat): Azon erőforráscsoportok listája, amelyek olyan virtuális gépeket tartalmaznak, amelyekhez nem tartoznak alkalmazásvezérlési javaslatok. például olyanokat, amelyeken az alkalmazások folyamatosan változnak, és még nem értek el egy stabil állapotot.
+  - **Konfigurált**: Azon erőforráscsoportok listája, amelyeken már konfigurálva van az Alkalmazásvezérlés.
+  - **Ajánlott**: Az erőforrás-csoportok, amelyek vezérlés ajánlott listája.
+  - **Nincs javaslat**: Erőforráscsoportok, virtuális gépeket tartalmazó nélkül Alkalmazásvezérlési javaslatok listája. például olyanokat, amelyeken az alkalmazások folyamatosan változnak, és még nem értek el egy stabil állapotot.
 
 2. Válassza ki a **Recommended** (Ajánlott) lapot azon erőforráscsoportok listájáért, amelyeken javasolt bevezetni az alkalmazásvezérlést.
 
@@ -91,10 +91,10 @@ Ez a funkció csak Windows rendszerű gépeken használható.
 
 3. Jelölje ki az egyik erőforráscsoportot a **Create application control rules** (Alkalmazásvezérlési szabályok létrehozása) lehetőség megnyitásához. A **Select VMs** (Virtuális gépek kiválasztása) felületen tekintse át a javasolt virtuális gépek listáját, és törölje a jelölést azok mellől, amelyeket nem szeretne bevonni az alkalmazásvezérlés hatókörébe. **Az engedélyezési szabályokhoz tartozó folyamatok kiválasztása** felületen tekintse át a javasolt alkalmazások listáját, és törölje a jelölést azok mellől, amelyeket nem szeretne alkalmazni. A lista a következőket tartalmazza:
 
-  - **NAME** (Név): Az alkalmazás teljes elérési útja.
-  - **PROCESSES** (Folyamatok): Az egyes elérési utakon található alkalmazások száma.
-  - **COMMON** (Gyakori): Az „Igen” érték azt jelzi, hogy az adott folyamat az erőforráscsoport virtuális gépeinek többségén futtatva volt.
-  - **EXPLOITABLE** (Kihasználható): Egy figyelmeztető ikon jelzi, ha az alkalmazás használatával az esetleges támadók megkerülhetik az alkalmazásengedélyezési rendszert. Érdemes áttekinteni ezeket az alkalmazásokat az engedélyezésük előtt.
+  - **NÉV**: Az alkalmazás teljes elérési útja
+  - **PROCESSES**: Minden elérési út található alkalmazások
+  - **KÖZÖS**: "Yes" azt jelzi, hogy ezeket a folyamatokat az erőforráscsoport virtuális gépeinek többségén
+  - **EXPLOITABLE**: Egy figyelmeztető ikon azt jelzi, ha az alkalmazások által használható támadók megkerülhetik az alkalmazásengedélyezési. Érdemes áttekinteni ezeket az alkalmazásokat az engedélyezésük előtt.
 
 4. Ha végzett a kiválasztással, válassza a **Create** (Létrehozás) lehetőséget.
 

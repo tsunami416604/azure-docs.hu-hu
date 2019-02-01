@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory felügyeleti egységek kezelése előzetes verzió
+title: Adminisztratív egységek kezelése (előzetes verzió) – az Azure Active Directory |} A Microsoft Docs
 description: Felügyeleti egységek használatával az Azure Active Directoryban engedélyek részletesebb delegáláshoz
 services: active-directory
 documentationcenter: ''
@@ -10,19 +10,20 @@ ms.service: active-directory
 ms.topic: article
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 08/17/2017
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: fe3f41e95cc3aa4f22ff2cdea24388f7e9974755
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 52b71e557ade54cdefd349b8981100210833185a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181197"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508453"
 ---
-# <a name="administrative-units-management-in-azure-ad---public-preview"></a>Adminisztrációs egységek felügyelete az Azure AD – nyilvános előzetes verzió
-Ez a cikk azt ismerteti, felügyeleti egységek formájában – erőforrásokat, amelyeket a rendszergazdai engedélyek delegálása felhasználók és a szabályzatok alkalmazása felhasználóinak egy alhalmazára részhalmazainak keresztül használhatja egy új Azure Active Directory-tárolót. Az Azure Active Directory felügyeleti egységek engedélyezése központi rendszergazdák regionális rendszergazdák engedélyeket delegálhatnak vagy részletes szabályzat beállítása.
+# <a name="administrative-units-management-in-azure-active-directory-public-preview"></a>Adminisztratív egységek kezelése az Azure Active Directoryban (nyilvános előzetes verzió)
+
+Ez a cikk ismerteti felügyeleti egységek formájában – egy új Azure Active Directory (Azure AD) tartalmazó tároló rendszergazdai engedélyek delegálása felhasználók alkészletek keresztül, és házirendek alkalmazása a felhasználók egy alhalmazára használható erőforrásokat. Az Azure Active Directory felügyeleti egységek engedélyezése központi rendszergazdák regionális rendszergazdák engedélyeket delegálhatnak vagy részletes szabályzat beállítása.
 
 Ez akkor hasznos, független részlegek, például nagy egyetemen, amely számos autonóm iskolák (iskolai üzleti, mérnöki iskolai és így tovább) egymástól független áll a szervezetben. Az ilyen osztályok rendelkezik a saját informatikai rendszergazdák számára a hozzáférést, felhasználók kezelése és a kifejezetten az osztály a szabályzatok beállítását. Központi rendszergazdák tudják szeretne megadni a részlegszintű keresztül az adott részlegek számára a rendszergazdák engedélyeket. Pontosabban, ebben a példában használja, egy központi rendszergazdák, például egy adott iskolai (üzleti iskola) a felügyeleti egység létrehozása, és csak az üzleti felhasználók iskolai való feltöltéséhez. Egy központi felügyeleti adhat hozzá az üzleti iskolai informatikai személyzetet tart fenn a hatókörrel rendelkező szerepkörhöz, más szóval, adja meg az informatikai munkatársak üzleti school felügyeleti engedélyekre csak az iskolai rendszergazda részleg keresztül.
 

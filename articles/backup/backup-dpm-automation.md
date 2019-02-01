@@ -2,18 +2,18 @@
 title: Az Azure Backup – a DPM számítási feladatainak biztonsági mentéséhez használja a Powershellt
 description: Ismerje meg, hogyan helyezheti üzembe és felügyelheti az Azure Backup a Data Protection Manager (DPM) PowerShell-lel
 services: backup
-author: NKolli1
-manager: shreeshd
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/23/2017
 ms.author: adigan
-ms.openlocfilehash: d8241385cde61647222f85c29f45bdaabd621610
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ef9d61e880d3252eae2d8ef924ff39a5d2f6acf
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242925"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497910"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
 Ez a cikk bemutatja, hogyan PowerShell használatával a DPM-kiszolgáló Azure Backup telepítőjét, és kezelheti a biztonsági mentés és helyreállítás.
@@ -133,9 +133,9 @@ Az elérhető lehetőségek a következők:
 | /m |Jóváhagyja a Microsoft Update |- |
 | /nu |Nem keres frissítéseket telepítésének befejezése után |- |
 | /nap |A Microsoft Azure Recovery Services Agent eltávolítása |- |
-| /pH |Gazdagép proxycím |- |
+| /pH |Proxy Host Address |- |
 | /po |Gazdagép proxyport száma |- |
-| /Pu |Proxy állomás felhasználónév |- |
+| /pu |Proxy állomás felhasználónév |- |
 | /pW |Proxy jelszava |- |
 
 ## <a name="registering-dpm-to-a-recovery-services-vault"></a>Regisztrálása a DPM egy Recovery Services-tároló
@@ -318,7 +318,7 @@ Amikor egy adatforrást először, a DPM igények biztonsági mentésével hoz l
 PS C:\> Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 ```
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>A DPM-replika és a helyreállításipont-kötet méretének módosítása
-Módosíthatja a méretét a DPM-replikakötet és árnyékmásolat-kötet használatával is [Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) parancsmag az alábbi példában látható módon: Get-DatasourceDiskAllocation - Datasource $DS Set-datasourcediskallocation segédprogram - Adatforrás $DS - ProtectionGroup $MPG-manuális - ReplicaArea (2 gb) – ShadowCopyArea (2 gb)
+Módosíthatja a méretét a DPM-replikakötet és árnyékmásolat-kötet használatával is [Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) parancsmag az alábbi példában látható módon: Get-DatasourceDiskAllocation -Datasource $DS Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>A változtatások véglegesítése a védelmi csoport
 Végül a módosításokat kell a DPM az új védelmi csoport konfigurációja szerint a biztonsági mentés megkezdése előtt is véglegessé válhatnak. Ez tehető a [Set-DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) parancsmagot.

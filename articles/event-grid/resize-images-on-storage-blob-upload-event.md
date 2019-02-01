@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: e19d8b1b6eb06f78908238969a4f6e90e42bb564
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 6015d226bce578661816bd0f934f7818746b4c3b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301458"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507756"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: Feltöltött képek átméretezésének automatizálása az Event Grid használatával
 
@@ -184,8 +184,12 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
     | **Eseménytípusok** | Létrehozott blob | Törölje a jelölést az összes típus mellől a **Létrehozott blob** kivételével. A rendszer csak a `Microsoft.Storage.BlobCreated` eseménytípusokat adja át a függvénynek.| 
     | **Előfizető típusa** |  automatikusan létrehozott |  Előre meg van határozva webhookként. |
     | **Előfizető végpontja** | automatikusan létrehozott | Használja a rendszer által létrehozott végpont URL-címét. | 
-4. *Nem kötelező:* Abban az esetben további tárolók létrehozása az ugyanezen a blobtárolón belül más célra a jövőben van szüksége, használhat **szűrése tulajdonos** funkcióit **szűrők** részletesebb hajthatja végre a BLOB lap annak biztosítása érdekében a függvényalkalmazás események neve csak akkor, ha a blobok vesznek **lemezképek** tároló kifejezetten. 
-5. Kattintson a **Létrehozás** gombra az esemény-előfizetés hozzáadásához. Ez létrehoz egy esemény-előfizetést, amely `Thumbnail` működni, amikor egy blob bekerül a *lemezképek* tároló. A függvény átméretezi a képeket, és hozzáadja őket a *miniatűrök* tárolóhoz.
+4. Váltson a **szűrő** lapra, és hajtsa végre a következőket:     
+    1. Válassza ki **szűrésének engedélyezése tulajdonos** lehetőséget.
+    2. A **tulajdonos kezdődik**, írja be a következő értéket: **/blobServices/alapértelmezett/tárolók/képek/BLOB/**.
+
+        ![Adja meg az esemény-előfizetés szűrő](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
+2. Válassza ki **létrehozás** az esemény-előfizetés hozzáadásához. Ez létrehoz egy esemény-előfizetést, amely `Thumbnail` működni, amikor egy blob bekerül a `images` tároló. A függvény átméretezi a képeket, és hozzáadja őket a `thumbnails` tároló.
 
 Most, hogy konfigurálta a háttérszolgáltatásokat, tesztelni fogja a képátméretezési funkciót a minta-webalkalmazásban. 
 

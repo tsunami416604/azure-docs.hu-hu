@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1ea3f0bccfe18f026926f6fabe37d6976ba6269a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b95fa5b5336db62bdf64ebd0dc254160d1a9282d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203725"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490600"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory Sync és Azure Active Directory Sync frissítése
 Az Azure AD Connect a legjobb megoldás, ha a helyszíni címtárat az Azure AD-hez és az Office 365-höz szeretné csatlakoztatni. Ez az ideje, mivel ezek elavultak, és 2017. április 13, már nem támogatott a Windows Azure Active Directory Sync (DirSync) vagy Azure AD Sync szolgáltatásról az Azure AD Connect frissítése.

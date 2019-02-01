@@ -1,5 +1,5 @@
 ---
-title: Azure Storage Analytics naplók és mérőszámok adatok összegyűjtéséhez használja |} A Microsoft Docs
+title: Azure Storage analytics naplók és mérőszámok adatok összegyűjtéséhez használja |} A Microsoft Docs
 description: A Storage Analytics lehetővé teszi, hogy nyomon követheti a metrikák adatait a storage-szolgáltatások, és a Blob, Queue és Table storage naplóinak összegyűjtése.
 services: storage
 author: roygara
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 233a0685bffba1192193f97b8d98dabd7c65d3c9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9cd4845bcf107941f969255eb223567d4341ea41
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239774"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508504"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -28,7 +28,7 @@ A Storage Analytics esetében a 20 TB-ig, amely független a tárfiók teljes ma
 
 A Storage Analytics és más eszközök használatával azonosítsa, diagnosztizálása és hibaelhárítása az Azure Storage szolgáltatással kapcsolatos problémák a részletes útmutatót lásd: [figyelése, diagnosztizálása és hibaelhárítása a Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 
-## <a name="about-storage-analytics-logging"></a>A Storage Analytics naplózásával kapcsolatos
+## <a name="about-storage-analytics-logging"></a>Storage analytics naplózásával kapcsolatos
 A Storage Analytics naplók sikeres és sikertelen kérések kapcsolatos részletes információk egy tárolási szolgáltatásba. Ezt az információt a figyelheti az egyes kérések és a egy storage szolgáltatással kapcsolatos problémák diagnosztizálásához használható. Kérelmek van bejelentkezve a képességeinkhez mérten biztosítjuk.
 
 Csak akkor, ha a storage szolgáltatás tevékenység naplóbejegyzések jönnek létre. Például ha egy tárfiókot a Blob service-ben, de nem a tábla vagy üzenetsor szolgáltatásaiból, csak a Blob szolgáltatáshoz tartozó naplók létrejön.
@@ -43,7 +43,7 @@ A következő típusú hitelesített kérelmeket naplózza:
 * A kérelmek egy közös hozzáférésű Jogosultságkód (SAS), beleértve a sikeres és sikertelen kérelmek használatával.
 * Elemzési adatok kérelmeket.
 
-Kérést hoz létre a Storage Analytics, például a napló a létrehozás vagy törlés, a program nem naplózza. A naplózott adatok teljes listáját leírása itt található a [Storage Analytics naplózott műveletek és az állapotüzenetek](https://msdn.microsoft.com/library/hh343260.aspx) és [Storage Analytics naplóformátum](https://msdn.microsoft.com/library/hh343259.aspx) témaköröket.
+Kérést hoz létre a Storage Analytics, például a napló a létrehozás vagy törlés, a program nem naplózza. A naplózott adatok teljes listáját leírása itt található a [Storage Analytics naplózott műveletek és az állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) és [Storage Analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format.md) témaköröket.
 
 ### <a name="logging-anonymous-requests"></a>Névtelen kérések naplózása
 A következő típusú névtelen kérésekkel jelentkezett:
@@ -53,7 +53,7 @@ A következő típusú névtelen kérésekkel jelentkezett:
 * Az ügyfél- és kiszolgálói időtúllépést.
 * Sikertelen GET kérelmek hibakód 304 (nem módosított).
 
-Az összes többi sikertelen névtelen kérelmek nem jelentkezett. A naplózott adatok teljes listáját leírása itt található a [Storage Analytics naplózott műveletek és az állapotüzenetek](https://msdn.microsoft.com/library/hh343260.aspx) és [Storage Analytics naplóformátum](https://msdn.microsoft.com/library/hh343259.aspx) témaköröket.
+Az összes többi sikertelen névtelen kérelmek nem jelentkezett. A naplózott adatok teljes listáját leírása itt található a [Storage Analytics naplózott műveletek és az állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) és [Storage Analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format.md) témaköröket.
 
 ### <a name="how-logs-are-stored"></a>Naplók tárolási módját
 Az összes napló blokkblobok $logs, amely automatikusan létrejön, amikor a storage-fiók engedélyezve van a Storage Analytics nevű tárolóban vannak tárolva. A $logs tárolóban található a tárfiók blob névtér például: `http://<accountname>.blob.core.windows.net/$logs`. Ez a tároló nem lehet törölni a Storage Analytics engedélyezése után tartalmának törlése, ha.
@@ -61,8 +61,8 @@ Az összes napló blokkblobok $logs, amely automatikusan létrejön, amikor a st
 > [!NOTE]
 > Amikor egy tároló listázása művelet hajtja végre, mint például a $logs tároló nem jelenik meg a [ListContainers](https://msdn.microsoft.com/library/azure/dd179352.aspx) metódust. Azt kell elérni közvetlenül. Használhatja például a [ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx) metódus eléréséhez a blobok a `$logs` tároló.
 > Kérés naplózásra kerül, mint a Storage Analytics köztes eredményeket fogja feltöltése blokkolja. Rendszeres időközönként a Storage Analytics ezeket adatblokkokat véglegesítése és elérhetővé teheti őket blobként.
-> 
-> 
+>
+>
 
 Ismétlődő rekordok léteznek előfordulhat, hogy az adott órán létrehozott naplók. Segítségével meghatározhatja, hogy ha egy rekord ellenőrzésével többször szerepel a **kérelemazonosító** és **művelet** számát.
 
@@ -129,9 +129,9 @@ Tranzakció-mérőszámot rögzíti a felhasználói kérések és a kérést ho
 
 ### <a name="capacity-metrics"></a>A kapacitás-metrikák
 > [!NOTE]
-> Kapacitási jelenleg csak a Blob szolgáltatás érhető el. A Table service és a Queue szolgáltatás kapacitási mérőszámokat a Storage Analytics jövőbeli verzióiban elérhető lesz.
-> 
-> 
+> Kapacitási jelenleg csak a Blob szolgáltatás érhető el.
+>
+>
 
 Kapacitás adatokat a rendszer naponta rögzíti a tárfiók Blob service, és két táblaentitások készültek. Egy entitás statisztika biztosít a felhasználói adatok és statisztikák kapcsolatban nyújt a másik a `$logs` Storage Analytics által használt blob-tárolóba. A `$MetricsCapacityBlob` táblázat foglalja össze a következő adatokat:
 
@@ -139,7 +139,7 @@ Kapacitás adatokat a rendszer naponta rögzíti a tárfiók Blob service, és k
 * **ContainerCount**: A tárfiók Blob service-ben a blobtárolók száma.
 * **ObjectCount**: A tárfiók Blob service-ben vállalt és a nem véglegesített blokk vagy lap blobok száma.
 
-A kapacitási mérőszámot kapcsolatos további információkért lásd: [Storage Analytics mérőszámainak Táblasémáját](https://msdn.microsoft.com/library/hh343264.aspx).
+A kapacitási mérőszámot kapcsolatos további információkért lásd: [Storage Analytics mérőszámainak Táblasémáját](/rest/api/storageservices/storage-analytics-metrics-table-schema.md).
 
 ### <a name="how-metrics-are-stored"></a>Metrikák módjára
 Fenntartva, hogy a szolgáltatás három táblában tárolt összes metrikák adatait a tárolási szolgáltatások mindegyike esetében: tranzakció adatainak egy táblát, egy tábla a percenkénti tranzakciós adatokat és kapacitás egy másik táblázatból. Tranzakció, és a perc tranzakcióinformációi áll kérelmek és válaszok adatait, és kapacitási adatainak a storage használati adatok áll. Óra típusú metrikák, a perc típusú metrikák és a tárfiók Blob szolgáltatásának kapacitás, amely az alábbi táblázatban leírtak szerint nevesített táblákat is elérhetők.
@@ -163,7 +163,7 @@ A tárfiók szolgáltatások összes mérőszámadatokat írja. Ennek eredménye
 
 A következő műveleteket végzi a Storage Analytics számlázhatók:
 
-* Kérés létrehozása a blobok a naplózáshoz. 
+* Kérés létrehozása a blobok a naplózáshoz.
 * Kérés létrehozása metrikákhoz táblaentitások.
 
 Ha az adatmegőrzési házirend van beállítva, nem díjkötelesek törlési tranzakció során a Storage Analytics törli a régi naplózás és mérőszámok adatait. Azonban a törlési tranzakció egy ügyfél olyan számlázható. Adatmegőrzési házirendek kapcsolatos további információkért lásd: [Storage Analytics adatmegőrzési házirend beállítása](https://msdn.microsoft.com/library/azure/hh343263.aspx).
@@ -171,20 +171,9 @@ Ha az adatmegőrzési házirend van beállítva, nem díjkötelesek törlési tr
 ### <a name="understanding-billable-requests"></a>Számlázható kérelmének ismertetése
 Minden fiók storage szolgáltatás felé irányuló kérések, a számlázható, vagy a nem számlázható. A Storage Analytics naplók egy szolgáltatáshoz, köztük egy állapotüzenetet, amely azt jelzi, hogy a kérelem kezelése történt meg minden egyes kérelem. Ehhez hasonlóan a Storage Analytics tárolja a metrikákat egy szolgáltatás és a szolgáltatáshoz, beleértve a százalékok és bizonyos állapotüzenetek száma az API műveleteit. Együtt ezek a funkciók segítségével elemezheti a számlázható kérések, az alkalmazás továbbfejlesztése és diagnosztizálhatja problémáit a szolgáltatásokra irányuló kérések. Számlázással kapcsolatos további információkért lásd: [ismertetése az Azure Storage Billing – sávszélesség, tranzakciók és a kapacitás](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
-Ha megnézzük a Storage Analytics-adatait, használhatja a táblák a [Storage Analytics naplózott műveletek és az állapotüzenetek](https://msdn.microsoft.com/library/azure/hh343260.aspx) témakör annak meghatározására, hogy mely kérelmek számlázható. Ezután összehasonlíthatja a naplókat és az állapotüzenetek megtekintéséhez, ha meg lett díj felszámítva az egy adott kérés. Használhatja a táblák az előző témakörben tárolási szolgáltatás vagy egyéni API-művelet rendelkezésre állási vizsgálatára.
+Ha megnézzük a Storage Analytics-adatait, használhatja a táblák a [Storage Analytics naplózott műveletek és az állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) témakör annak meghatározására, hogy mely kérelmek számlázható. Ezután összehasonlíthatja a naplókat és az állapotüzenetek megtekintéséhez, ha meg lett díj felszámítva az egy adott kérés. Használhatja a táblák az előző témakörben tárolási szolgáltatás vagy egyéni API-művelet rendelkezésre állási vizsgálatára.
 
 ## <a name="next-steps"></a>További lépések
-### <a name="setting-up-storage-analytics"></a>A Storage Analytics beállítása
 * [Az Azure Portal tárfiók figyelése](storage-monitor-storage-account.md)
-* [Engedélyezése és a Storage Analytics konfigurálása](https://msdn.microsoft.com/library/hh360996.aspx)
-
-### <a name="storage-analytics-logging"></a>A Storage Analytics naplózási
-* [Storage Analytics naplózásával kapcsolatos](https://msdn.microsoft.com/library/hh343262.aspx)
-* [Storage Analytics naplóformátum](https://msdn.microsoft.com/library/hh343259.aspx)
-* [A Storage Analytics naplózott műveletek és a hibaállapot-üzenetek](https://msdn.microsoft.com/library/hh343260.aspx)
-
-### <a name="storage-analytics-metrics"></a>Storage Analytics mérőszámainak áttekintését
-* [Tudnivalók a Storage Analytics Metrics](https://msdn.microsoft.com/library/hh343258.aspx)
-* [Storage Analytics mérőszámainak Táblasémáját](https://msdn.microsoft.com/library/hh343264.aspx)
-* [A Storage Analytics naplózott műveletek és a hibaállapot-üzenetek](https://msdn.microsoft.com/library/hh343260.aspx)  
-
+* [A Storage Analytics naplózási](https://msdn.microsoft.com/library/hh343262.aspx)
+* [Storage Analytics Metrics](https://msdn.microsoft.com/library/hh343258.aspx)

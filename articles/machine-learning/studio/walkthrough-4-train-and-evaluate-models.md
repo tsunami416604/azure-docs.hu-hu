@@ -1,8 +1,21 @@
 ---
-Cím: "4. lépés: A titleSuffix prediktív elemzési modellek betanítása: Azure Machine Learning Studio description: "A Develop egy prediktív megoldás bemutatója 4. lépés: Pontszám, modellek betanítása és kiértékelése több Azure Machine Learning studióban. "
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/23/2017
+title: '4. lépés: Prediktív elemzési modellek betanítása'
+titleSuffix: Azure Machine Learning Studio
+description: 'Az a Develop egy prediktív megoldás bemutatója. 4. lépés: Pontszám, modellek betanítása és kiértékelése több Azure Machine Learning studióban.'
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/23/2017
+ms.openlocfilehash: 50b0a6276d34567651da2cb3e76f0686e8b10fea
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511564"
 ---
 # <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models-in-machine-learning-studio"></a>Az útmutató 4. lépés: A Machine Learning Studio prediktív elemzési modellek betanítása és kiértékelése
 Ez a témakör ismerteti a forgatókönyv negyedik lépésében [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)

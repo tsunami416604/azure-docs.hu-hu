@@ -1,22 +1,22 @@
 ---
-title: Azure írásvédett Georedundáns tárolás (RA-GRS) használatával magas rendelkezésre álló alkalmazások tervezése |} A Microsoft Docs
+title: Írásvédett georedundáns tárolás (RA-GRS) használatával magas rendelkezésre állású Aaplications kialakítása |} A Microsoft Docs
 description: Hogyan tervezhet rugalmas, így szolgáltatáskimaradások kezeléséhez magas rendelkezésre állású alkalmazások Azure-RA-GRS tároló használatával.
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 47ca2febeffe395ba2482165f04ee29aa0193c63
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454943"
+ms.locfileid: "55512244"
 ---
-# <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre álló alkalmazások tervezése
+# <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre állású alkalmazások tervezése
 
 Felhőalapú infrastruktúrák, mint például az Azure Storage közös funkciója, a magas rendelkezésre állású platform biztosítanak az alkalmazások üzemeltetéséhez. A felhőalapú alkalmazások kell alaposan fontolja meg, hogyan használhatja a platform révén magas rendelkezésre állású alkalmazások a felhasználók számára. Ez a cikk a fejlesztők miképpen használhatják írásvédett Georedundáns tárolás (RA-GRS) annak érdekében, az Azure Storage-alkalmazásaikat magas rendelkezésre állású összpontosít.
 
@@ -43,9 +43,7 @@ Ne feledje alábbi alapvető szempontokat tervezésekor az alkalmazás az RA-GRS
 
 * A Storage ügyféloldali kódtára segítségével használni tudják az adatokat az elsődleges vagy másodlagos régióban. Is irányíthatja olvasási kérelmek automatikusan a másodlagos régióban, ha az elsődleges régió felé az olvasási kérelem időkorlátja lejár.
 
-* Ha van egy súlyos hiba, ez hatással lenne a kisegítő lehetőségek az adatok az elsődleges régióban, az Azure-csapat indíthat földrajzi feladatátvételt, ekkor az elsődleges régió felé mutató DNS-bejegyzéseket fogja módosítani, mutasson a másodlagos régióba.
-
-* Földrajzi feladatátvételt akkor fordul elő, ha az Azure lesz egy új másodlagos hely kiválasztása replikálja az adatokat az adott helyre, majd a másodlagos DNS-bejegyzések mutasson. A másodlagos végpont nem érhető el, amíg a tárfiók nem fejeződött be replikáló. További információkért tekintse meg [Mi a teendő az Azure Storage leállása esetén](https://docs.microsoft.com/azure/storage/storage-disaster-recovery-guidance).
+* Ha az elsődleges régió elérhetetlenné válik, egy fiók feladatátvételt kezdeményezhet. Amikor feladatátvételt a másodlagos régióba, a DNS-bejegyzések az elsődleges régió felé mutat módosult, mutasson a másodlagos régióba. A feladatátvétel befejezése után írási hozzáférés helyreállítva GRS és RA-GRS fiókok esetében. További információkért lásd: [katasztrófa utáni helyreállítás és a tárolási fiók feladatátvételi (előzetes verzió) az Azure Storage-ban](storage-disaster-recovery-guidance.md).
 
 ## <a name="application-design-considerations-when-using-ra-grs"></a>Alkalmazások tervezési szempontjait, ha az RA-GRS használatával
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 59562d0571486a4bcbc96be4cb7dcddb4dfb0a44
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 39f23cd0b0b6081d8e54524a0eedc9cce1fd4571
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095719"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493430"
 ---
 # <a name="api-management-access-restriction-policies"></a>Az API Management hozzáférés-korlátozási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -512,7 +512,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |header-name|A HTTP-fejlécet a tokent tároló neve.|Akár `header-name` vagy `query-parameter-name` megadott; de nem is kell lennie.|–|  
 |id|A `id` az attribútum a `key` elem lehetővé teszi, hogy adja meg a sztringet, amelyet a rendszer összeveti `kid` jogcímet a token (ha van ilyen) ismerje meg, hogy a megfelelő kulcsot az aláírás-ellenőrzés céljából.|Nem|–|  
 |egyezés|A `match` az attribútum a `claim` elem azt határozza meg, hogy a szabályzat minden jogcím értéke a jogkivonat az érvényesítés sikeres jelen kell lennie. Lehetséges értékek:<br /><br /> -                          `all` – a szabályzat minden jogcím értéke sikeres ellenőrzés céljából a jogkivonatban jelen kell lennie.<br /><br /> -                          `any` -legalább egy jogcím értéke sikeres ellenőrzés céljából a jogkivonatban jelen kell lennie.|Nem|összes|  
-|query-paremeter-name|A lekérdezési paraméter, a tokent tároló neve.|Akár `header-name` vagy `query-paremeter-name` megadott; de nem is kell lennie.|–|  
+|query-parameter-name|A lekérdezési paraméter, a tokent tároló neve.|Akár `header-name` vagy `query-parameter-name` megadott; de nem is kell lennie.|–|  
 |require-expiration-time|Logikai érték. Megadja, hogy szükséges-e a jogkivonat lejárati jogcím.|Nem|true|
 |szükséges rendszer|A token neve séma, például: "Tulajdonos". Ez az attribútum beállításra kerül, ha a házirend biztosítja, hogy a megadott séma szerepel az engedélyezési fejléc értéke.|Nem|–|
 |igényelnek-aláírt-jogkivonatok|Logikai érték. Megadja, hogy a jogkivonat szükséges alá legyen írva.|Nem|true|  

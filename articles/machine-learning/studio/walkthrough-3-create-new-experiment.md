@@ -1,8 +1,21 @@
 ---
-Cím: "3. lépés: Hozzon létre egy új Machine Learning Studio-kísérletet "titleSuffix: Azure Machine Learning Studio description: "A Develop egy prediktív megoldás bemutatója 3. lépés: Az Azure Machine Learning Studióban hozzon létre egy új betanítási kísérlet. "
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/23/2017
+title: '3. lépés: Egy új Machine Learning Studio-kísérlet létrehozása'
+titleSuffix: Azure Machine Learning Studio
+description: 'Az a Develop egy prediktív megoldás bemutatója. 3. lépés: Hozzon létre egy új betanítási kísérlet Azure Machine Learning Studióban.'
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/23/2017
+ms.openlocfilehash: aee0370b4d1ea1bffe8e6723c14e6248ebbd808a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506396"
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Az útmutató 3. lépés: Egy új Azure Machine Learning Studio-kísérlet létrehozása
 Ez a forgatókönyv harmadik lépésében a [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)

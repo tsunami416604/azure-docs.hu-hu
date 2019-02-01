@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Backup: Fájlok és mappák helyreállítása az Azure virtuális gép biztonsági mentése'
+title: 'Azure Backup: Fájlok és mappák helyreállítása az Azure virtuális gép biztonsági másolatából'
 description: Fájlok helyreállítása az Azure virtuális gép helyreállítási pontot
 services: backup
 author: pvrk
@@ -8,13 +8,13 @@ keywords: elemszintű helyreállítás; az Azure virtuális gép biztonsági men
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
-ms.author: pullabhk
-ms.openlocfilehash: d38da87bae07dadb10894593dd41ded22f5f162d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.author: pvrk
+ms.openlocfilehash: c267b3a8289d87402647a399376161cf18716112
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638307"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488492"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gépek biztonsági mentése
 
@@ -120,7 +120,7 @@ A Windows tárolóhelyek egy Windows-technológia, amely lehetővé teszi, hogy 
 
 A védett Azure VM a Windows tárolóhelyek szolgáltatást használja, ha a végrehajtható parancsfájlt az azonos virtuális gépen nem futtatható. Ehelyett futtassa a végrehajtható parancsfájlt bármely más gép kompatibilis operációs rendszerrel.
 
-### <a name="lvmraid-arrays"></a>LVM/RAID-tömbök
+### <a name="lvmraid-arrays"></a>LVM/RAID Arrays
 
 A Linux Logikaikötet-kezelő (LVM) és/vagy szoftver RAID-tömbök használhatók logikai kötetek kezelése több lemez keresztül. Ha a védett Linuxos virtuális gép LVM és/vagy RAID-tömbök használ, az azonos virtuális gépen a parancsfájl nem futtatható. Ehelyett futtassa a szkriptet egy kompatibilis operációs bármelyik olyan gépen, és amely támogatja a fájlrendszer, a védett virtuális gép.
 
@@ -214,10 +214,10 @@ Ha problémába ütközik a virtuális gépekről származó fájlok helyreáll�
 
 | Chybová Zpráva / forgatókönyv | Lehetséges ok | Javasolt művelet |
 | ------------------------ | -------------- | ------------------ |
-| Exe-fájl kimeneti: *csatlakozik a cél kivétel* |Parancsfájl nem sikerül a helyreállítási pont eléréséhez    | Ellenőrizze, hogy a gép megfelel-e a fenti hozzáférési követelmények. |  
-| Exe-fájl kimeneti: *a cél már bejelentkezett iSCSI-munkamenet-n keresztül.* | A szkript már végre lett hajtva ugyanarra a gépre, és a meghajtók rendelkeznek-e csatlakoztatva | A kötetek a helyreállítási pont már csatlakoztatva van. Előfordulhat, hogy nem kell csatlakoztatni a ugyanolyan meghajtóbetűjellel rendelkező meghajtót az eredeti virtuális gép. Böngésszen az elérhető kötetek a Fájlkezelőben, a fájl |
-| Exe-fájl kimeneti: *Ez a szkript érvénytelen, mert a lemezek korlát portal/túllépte a 12-hr-n keresztül is le lett választva. Töltsön le egy új parancsfájlt a portálról.* |    A lemezek rendelkezik le lett választva, a portálról vagy a 12-hr túllépte a korlátot | Az adott exe nem érvényes, és nem futtatható. Ha azt szeretné, hogy a helyreállítási pont kötött fájljainak eléréséhez, látogasson el a portál egy új exe-fájl|
-| A gépen, amelyen az exe fut: az új kötetek nem leválasztása, miután a Leválasztás gombra kattint | Az iSCSI-kezdeményező a számítógépen nem válaszol vagy frissíteni a kapcsolatot a cél- és a gyorsítótár karbantartása. |  Kattintás után **leválasztani**, várjon néhány percet. Ha az új kötetek nem le vannak választva, böngésszen összes kötetet. Böngészés az összes kötet kényszeríti a kezdeményező frissíteni a kapcsolatot, és a kötet le van választva, egy hibaüzenet, hogy a lemez nem érhető el.|
-| Exe-fájl kimeneti: szkript sikeres futtatása, de az "Új kötetek csatlakoztatva" nem jelenik meg a parancsprogram kimenete |    Ez az átmeneti hiba    | Szeretné a kötetek már lett csatolva. Tallózással nyissa meg. Ha a parancsfájlok futtatásához minden alkalommal ugyanazt a gépet használ, fontolja meg a gép újraindítását, és az ezt követő exe fut megjelennie a listában. |
-| Linux-specifikus: nem sikerült a kívánt kötetek megtekintése | A gép, ahol a parancsfájl futtatása az operációs rendszer nem ismeri fel az alapul szolgáló fájlrendszer, a védett virtuális gép | Ellenőrizze, hogy a helyreállítási pont összeomlás-konzisztens vagy fájlkonzisztens. Ha a fájl egységes, futtassa a szkriptet egy másik gép amelynek operációs rendszer felismeri a védett virtuális gép fájlrendszer |
-| Windows-specifikus: nem sikerült a kívánt kötetek megtekintése | A lemezek csatolt, de a kötetek nem lettek konfigurálva. | A lemez felügyeleti képernyőről azonosítsa a további lemezek a helyreállítási ponttal kapcsolatos. Ha bármelyik ezeket a lemezeket a kapcsolat nélküli állapot próbálja ki, így azok online kattintson a jobb gombbal a lemezen, és kattintson az "Online"|
+| Exe-kimenetre: *Csatlakozás a cél kivétel* |Parancsfájl nem sikerül a helyreállítási pont eléréséhez    | Ellenőrizze, hogy a gép megfelel-e a fenti hozzáférési követelmények. |  
+| Exe-kimenetre: *A cél már naplózva lett iSCSI-munkamenet-n keresztül.* | A szkript már végre lett hajtva ugyanarra a gépre, és a meghajtók rendelkeznek-e csatlakoztatva | A kötetek a helyreállítási pont már csatlakoztatva van. Előfordulhat, hogy nem kell csatlakoztatni a ugyanolyan meghajtóbetűjellel rendelkező meghajtót az eredeti virtuális gép. Böngésszen az elérhető kötetek a Fájlkezelőben, a fájl |
+| Exe-kimenetre: *Ez a szkript érvénytelen, mert a lemezek korlát portal/túllépte a 12-hr-n keresztül is le lett választva. Töltsön le egy új parancsfájlt a portálról.* |    A lemezek rendelkezik le lett választva, a portálról vagy a 12-hr túllépte a korlátot | Az adott exe nem érvényes, és nem futtatható. Ha azt szeretné, hogy a helyreállítási pont kötött fájljainak eléréséhez, látogasson el a portál egy új exe-fájl|
+| A gépen, amelyen az exe fut: Az új kötetek nem leválasztása, miután a Leválasztás gombra kattint | Az iSCSI-kezdeményező a számítógépen nem válaszol vagy frissíteni a kapcsolatot a cél- és a gyorsítótár karbantartása. |  Kattintás után **leválasztani**, várjon néhány percet. Ha az új kötetek nem le vannak választva, böngésszen összes kötetet. Böngészés az összes kötet kényszeríti a kezdeményező frissíteni a kapcsolatot, és a kötet le van választva, egy hibaüzenet, hogy a lemez nem érhető el.|
+| Exe-kimenetre: Szkript sikeres futtatása, de az "Új kötetek csatlakoztatva" nem jelenik meg a parancsprogram kimenete |    Ez az átmeneti hiba    | Szeretné a kötetek már lett csatolva. Tallózással nyissa meg. Ha a parancsfájlok futtatásához minden alkalommal ugyanazt a gépet használ, fontolja meg a gép újraindítását, és az ezt követő exe fut megjelennie a listában. |
+| A Linux adott: Nem sikerült a kívánt kötetek megtekintése | A gép, ahol a parancsfájl futtatása az operációs rendszer nem ismeri fel az alapul szolgáló fájlrendszer, a védett virtuális gép | Ellenőrizze, hogy a helyreállítási pont összeomlás-konzisztens vagy fájlkonzisztens. Ha a fájl egységes, futtassa a szkriptet egy másik gép amelynek operációs rendszer felismeri a védett virtuális gép fájlrendszer |
+| A Windows adott: Nem sikerült a kívánt kötetek megtekintése | A lemezek csatolt, de a kötetek nem lettek konfigurálva. | A lemez felügyeleti képernyőről azonosítsa a további lemezek a helyreállítási ponttal kapcsolatos. Ha bármelyik ezeket a lemezeket a kapcsolat nélküli állapot próbálja ki, így azok online kattintson a jobb gombbal a lemezen, és kattintson az "Online"|

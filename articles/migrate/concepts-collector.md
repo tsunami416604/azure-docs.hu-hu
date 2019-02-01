@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 01/31/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: b9387814b8bdab56117dec27de1e3d5b44ce39b4
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 9890f68ff61d822f505c4403eb2f1f61e396fd01
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262608"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488711"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -32,7 +32,7 @@ A gyűjtőberendezés folyamatosan csatlakozik az Azure Migrate-projektben, és 
 - Ez a modell nem függ a vCenter Server statisztikai beállításait teljesítményadatok gyűjtéséhez.
 - Folyamatos profilkészítés címen bármikor a gyűjtő is leállíthatja.
 
-**Azonnali változtatásait:** A folyamatos felderítési berendezéssel, a felderítés befejeződése után (tart néhány óra múlva, virtuális gépek számától függően), itt azonnal létrehozhat értékeléseket. Mivel a teljesítményadat-gyűjtés akkor kezdődik, amikor Ön indíthat felderítési, ha azonnali változtatásait keres, válassza a méretezési feltétel teljesítményalapú az értékelésben, *helyszíni*. Teljesítmény-alapú értékelések javasolt a legalább egy napot várni megbízható méretezési javaslatokat kaphat a felderítés megkezdése után.
+**Gyors értékelést:** A folyamatos felderítési berendezéssel, a felderítés befejeződése után (tart néhány óra múlva, virtuális gépek számától függően), itt azonnal létrehozhat értékeléseket. A teljesítményadat-gyűjtés akkor kezdődik, amikor Ön indíthat felderítési, ha a gyors értékelések, mivel az értékelésben, mint a méretezési feltétel teljesítményalapú kiválasztani *helyszíni*. Teljesítmény-alapú értékelések javasolt a legalább egy napot várni megbízható méretezési javaslatokat kaphat a felderítés megkezdése után.
 
 A berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
 

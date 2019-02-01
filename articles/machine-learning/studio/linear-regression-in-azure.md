@@ -1,7 +1,21 @@
 ---
-Cím: Az Excel analytics áttelepíteni az Azure Machine Learning Studio titleSuffix: Azure Machine Learning Studio description: Az Excel és a szolgáltatások az Azure Machine Learning Studio lineáris regressziós modellek összehasonlítása: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
+title: Az Excel analytics áttelepíteni az Azure Machine Learning Studióban
+titleSuffix: Azure Machine Learning Studio
+description: Az Excel és az Azure Machine Learning Studióban lineáris regressziós modellek összehasonlítása
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/20/2017
+ms.openlocfilehash: 12c82d440613078e9f0593ddb9fb6c7fe7b8c362
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488356"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Az Excel analytics áttelepíteni az Azure Machine Learning Studióban
 

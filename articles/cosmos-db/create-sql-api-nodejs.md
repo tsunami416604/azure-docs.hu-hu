@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: f0c342eb673902f0855ba1ceb482aed10dc01a56
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9f730b1981eed5efff091d2666339ec7d94102e4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034913"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509082"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Az Azure Cosmos DB: Azure Cosmos DB SQL API-adatok kezelése a JavaScript SDK segítségével a Node.js-alkalmazás létrehozása
 
@@ -87,31 +87,31 @@ Az alábbi kódrészletek mind az **app.js** fájlból származnak.
 
 * A `CosmosClient` inicializálva van.
 
-    ```nodejs
+    ```javascript
     const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
     ```
 
 * A rendszer létrehozza az új adatbázist.
 
-    ```nodejs
+    ```javascript
     const { database } = await client.databases.createIfNotExists({ id: databaseId });
     ```
 
 * A rendszer létrehozza az új tárolót (gyűjteményt).
 
-    ```nodejs
+    ```javascript
     const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId });
     ```
 
 * A rendszer létrehoz egy új elemet (dokumentumot).
 
-    ```nodejs
+    ```javascript
     const { item } = await client.database(databaseId).container(containerId).items.create(itemBody);
     ```
 
 * A egy SQL-lekérdezést hajt végre a JSON-on.
 
-    ```nodejs
+    ```javascript
     const querySpec = {
         query: "SELECT VALUE r.children FROM root r WHERE r.lastName = @lastName",
         parameters: [

@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2a2e835f074ac2f5d1eede9f68e77774938da6af
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 28c0ddbb735de041497b6705759d03c881b7e87e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181741"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494357"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect és összevonás
 Az Azure Active Directory (Azure AD) Connect konfigurálását teszi lehetővé, összevonás a helyszíni Active Directory összevonási szolgáltatások (AD FS) és az Azure ad-ben. Az összevonási jelentkezzen be engedélyezheti a felhasználók jelentkezhetnek be, az Azure AD-alapú szolgáltatásokat a helyszíni jelszavak –, és a vállalati hálózaton, írja be újra a jelszavukat anélkül. Az összevonási beállítás és az AD FS használatával telepíthet egy új AD FS telepítése, vagy megadhat egy meglévő telepítését egy Windows Server 2012 R2-farmban.
@@ -30,7 +30,7 @@ Ez a témakör az otthoni funkciók összevonási kapcsolatos információk az A
 ## <a name="azure-ad-connect-federation-topics"></a>Az Azure AD Connect: összevonási kapcsolatos témakörök
 | Témakör | Azt ismerteti, és mikor érdemes elolvasni |
 |:--- |:--- |
-| **Az Azure AD Connect felhasználói bejelentkezési lehetőségek** | |
+| **A felhasználói bejelentkezés lehetőségei az Azure AD Connectben** | |
 | [Felhasználói bejelentkezési lehetőségek ismertetése](plan-connect-user-signin.md) |Ismerje meg a különböző felhasználói bejelentkezés lehetőségei és azok az Azure bejelentkezési felhasználói élményt. |
 | **Az AD FS telepítése az Azure AD Connect használatával** | |
 | [Előfeltételek](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Tekintse meg az AD FS az Azure AD Connect használatával a sikeres telepítés előfeltételeit. |

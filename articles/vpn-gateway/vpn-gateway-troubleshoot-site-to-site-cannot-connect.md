@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 18900c4a1dbc25526a3f60c7410ad87e7dd9a9fa
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967844"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507299"
 ---
-# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Hibaelhárítás: Az Azure site-to-site VPN-kapcsolat nem lehet kapcsolódni, és leáll
+# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Hibaelhárítás: Az Azure site-to-site VPN-kapcsolat nem lehet csatlakozni, és nem működik
 
 Miután konfigurálta a site-to-site VPN-kapcsolatot egy helyszíni hálózat és a egy Azure virtuális hálózat között, a VPN-kapcsolat hirtelen leáll, és nem lehet újra csatlakozni. Ez a cikk segítséget nyújt a probléma megoldásához hibaelhárítási lépéseket. 
 
@@ -100,7 +100,7 @@ Keressen, és távolítsa el a felhasználó által meghatározott útválasztá
 2. Kattintson végig a tanúsítványfigyelmeztetésre.
 3. Ha választ kap, a VPN-átjáró megfelelő számít. Ha nem kap választ, az átjáró nem feltétlenül működik megfelelően, vagy az átjáró-alhálózatot a hálózati biztonsági csoportok okozza a problémát. A következő szöveg egy mintaválasz:
 
-    &lt;? XML-verzió = "1.0"? > <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">elsődleges példány: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6 < / string&gt;
+    &lt;?xml version="1.0"?>  <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primary Instance: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6 < / string&gt;
 
 ### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>8. lépés Ellenőrizze, hogy a helyszíni VPN-eszköz rendelkezik-e a titkosságvédelem szolgáltatás engedélyezve van
 

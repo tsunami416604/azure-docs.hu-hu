@@ -1,8 +1,21 @@
 ---
-Cím: Modell teljesítmény titleSuffix kiértékelése: Azure Machine Learning Studio description: Ez a cikk bemutatja, hogyan lehet egy modellt az Azure Machine Learning Studióban teljesítményét értékeli, és amely röviden elmagyarázza, a metrikák elérhető ez a feladat biztosít.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
+title: Modellek teljesítményének elemzése
+titleSuffix: Azure Machine Learning Studio
+description: Ez a cikk bemutatja, hogyan lehet egy modellt az Azure Machine Learning Studióban teljesítményét értékeli, és amely röviden elmagyarázza, a metrikák elérhető ez a feladat biztosít.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/20/2017
+ms.openlocfilehash: b663177a07446b888bc7bf9e919bf180458d36bc
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487008"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Hogyan modellek teljesítményének kiértékelése az Azure Machine Learning Studióban
 

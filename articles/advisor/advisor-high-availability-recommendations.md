@@ -1,26 +1,21 @@
 ---
-title: Az Azure Advisor magas rendelkezésre állás – javaslatok |} A Microsoft Docs
+title: Az Azure Advisorral az alkalmazás rendelkezésre állásának javítása |} A Microsoft Docs
 description: Az Azure Advisor használata az Azure-környezetek, magas rendelkezésre állás javítása érdekében.
 services: advisor
 documentationcenter: NA
 author: kasparks
-manager: carmonm
-editor: ''
-ms.assetid: ''
+ms.author: kasparks
 ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 11/16/2016
-ms.author: kasparks
-ms.openlocfilehash: 928fb5421297fedbffabc45db35a89a74026477e
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 01/29/2019
+ms.openlocfilehash: 6ffe051c019184d5ce1a32af50dbf3e7faa06675
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305071"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490311"
 ---
-# <a name="advisor-high-availability-recommendations"></a>Az Advisor magas rendelkezésre állás – javaslatok
+# <a name="improve-availability-of-your-application-with-azure-advisor"></a>Az Azure Advisorral az alkalmazás rendelkezésre állásának javítása
 
 Az Azure Advisor segítségével győződjön meg arról, és javíthatja az üzleti szempontból kritikus fontosságú alkalmazások folytonosságát. Megjelenik a magas rendelkezésre állás – javaslatok az Advisor által a **magas rendelkezésre állású** az Advisor irányítópult lapon.
 
@@ -31,16 +26,17 @@ Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a v
 > [!NOTE]
 > Ha egy rendelkezésre állási csoport létrehozása, hozzá kell adnia legalább egy virtuális gépet bele. Azt javasoljuk, hogy szolgáltatáskimaradások alkalmával, csoport, győződjön meg arról, hogy legalább egy gép beállítása két vagy több virtuális gépet egy rendelkezésre állási érhető el.
 
-## <a name="ensure-availability-set-fault-tolerance"></a>Győződjön meg, hogy a rendelkezésre állási csoport hibatűrése 
+## <a name="ensure-availability-set-fault-tolerance"></a>Győződjön meg, hogy a rendelkezésre állási csoport hibatűrése
 
 Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Az Advisor egy egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportok azonosítja, és javasolja, hogy egy vagy több virtuális gép hozzáadása. Ez a konfiguráció biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető, és megfelel-e az Azure-beli virtuálisgép-SLA. Kiválaszthatja a virtuális gép létrehozása vagy meglévő virtuális gép hozzáadása a rendelkezésre állási csoporthoz.  
 
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>Felügyelt lemezek használata az adatok megbízhatóságának javítása érdekében
+
 A rendelkezésre állási csoport tárfiókokat vagy tárolási skálázási egységeket használó lemezekkel rendelkező virtuális gépek esetén nem hibatűrőek az egyetlen skálázási egységek hibáival leállások idején. Az Advisor azonosítja azokat a ezeket a rendelkezésre állási csoportok és javasoljuk, hogy az Azure Managed Disks-ba való migrálás. Ez biztosítja, hogy a rendelkezésre állási csoportban a különböző virtuális gépek lemezei hibapontok elkerülése érdekében a hibaérzékeny pont. 
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Application gateway hibatűrő képesség biztosítása
 
-Az az üzletmenet folytonosságának biztosítása az alapvető fontosságú alkalmazások, amelyek az application Gateway átjárók által, az Advisor azonosítja az application gateway-példány hibatűrése nem konfigurált, és azt sugallja, hogy elvégezhető javítási műveleteket. Az Advisor azonosítja a közepes vagy nagy egy példányban – az application Gateway átjárók, és legalább egy további példányok hozzáadása javasolja. Egyetlen vagy több instance kis application Gateway átjárókon azonosítja és a közepes vagy nagy SKU-ba való migrálás javasolja. Ezeket a műveleteket, ellenőrizze, hogy az application gateway-példány megfelelnek a jelenlegi SLA ezekhez az erőforrásokhoz javasol.
+Ez a javaslat az alapvető fontosságú alkalmazások, amelyek az application Gateway átjárók által az üzletmenet folytonossága biztosítja. Az Advisor azonosítja az application gateway-példány hibatűrése nem konfigurált, és azt sugallja, hogy elvégezhető javítási műveleteket. Az Advisor azonosítja a közepes vagy nagy egy példányban – az application Gateway átjárók, és legalább egy további példányok hozzáadása javasolja. Egyetlen vagy több instance kis application Gateway átjárókon azonosítja és a közepes vagy nagy SKU-ba való migrálás javasolja. Ezeket a műveleteket, ellenőrizze, hogy az application gateway-példány megfelelnek a jelenlegi SLA ezekhez az erőforrásokhoz javasol.
 
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>A virtuális gép adatainak véletlen törlés elleni védelem
 
@@ -58,13 +54,13 @@ Azt javasoljuk, hogy az Azure Service Health-riasztások beállítása értesít
 
 Több végpont a TRAFFIC Manager-profilok élmény magasabb rendelkezésre állás, ha bármely megadott végpont nem sikerül. További különböző régiókban lévő végpontok elhelyezése javítja a szolgáltatás megbízhatóságát. Az Advisor azonosítja a Traffic Manager-profilok, ahol csak egy végpont van és javasolni a felhasználóknak legalább egy további végpont hozzáadása egy másik régióban.
 
-Ha minden végpont a Traffic Manager-profil, amely konfigurálva van a közelségi útválasztás ugyanabban a régióban, a felhasználók el más régiókból tapasztalhatnak csatlakozási késések fordulhatnak elő. Hozzáadásával vagy a végpont áthelyezése egy másik régióba teljesítményjavítás általános, és adja meg a jobb rendelkezésre állás, ha egy adott régióban szereplő összes végpont sikertelen. Az Advisor azonosítja a Traffic Manager-profilok közelségi útválasztás, ahol az összes végpont ugyanabban a régióban vannak konfigurálva, és javasolja a hozzáadásával vagy a végpont áthelyezése egy másik Azure-régióban.
+Ha minden végpont a Traffic Manager-profil, amely konfigurálva van a közelségi útválasztás ugyanabban a régióban, a felhasználók el más régiókból tapasztalhatnak csatlakozási késések fordulhatnak elő. Hozzáadásával vagy a végpont áthelyezése egy másik régióba teljesítményjavítás általános, és adja meg a jobb rendelkezésre állás, ha egy adott régióban szereplő összes végpont sikertelen. Az Advisor azonosítja a Traffic Manager-profilok közelségi útválasztás, ahol az összes végpont ugyanabban a régióban vannak konfigurálva. Azt javasolja, hozzáadásával vagy a végpont áthelyezése egy másik Azure-régióban.
 
-Ha a Traffic Manager-profil földrajzi útválasztásra van konfigurálva, majd adatforgalmat végpontokra alapján meghatározott régióban. Ha meghibásodik egy régióban, nem nincs előre definiált feladatátvétel. Kellene egy végpontot, ahol van konfigurálva a regionális csoportosítás "Az összes (globális)" eldobott forgalom elkerülése érdekében, és szolgáltatás rendelkezésre állásának javítása. Az Advisor azonosítja a Traffic Manager-profilok konfigurált földrajzi útválasztásának, ahol nincs úgy konfigurálva, hogy a regionális csoportosítás rendelkezik, mint az "Összes (globális)" végpont, és javasolja, hogy a konfigurációs módosítás elvégzése.
+Ha a Traffic Manager-profil földrajzi útválasztásra van konfigurálva, majd adatforgalmat végpontokra alapján meghatározott régióban. Ha meghibásodik egy régióban, nem nincs előre definiált feladatátvétel. Kellene egy végpontot, ahol van konfigurálva a regionális csoportosítás "Az összes (globális)" eldobott forgalom elkerülése érdekében, és szolgáltatás rendelkezésre állásának javítása. Az Advisor azonosítja a Traffic Manager-profilok földrajzi útválasztásának konfigurált ahol nincs úgy konfigurálva, hogy a regionális csoportosítás rendelkezik, mint az "Összes (globális)" végpontja van. Azt javasolja, hogy a végpont "az összes (globális) a konfiguráció módosítása.
 
-## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-in-the-event-of-accidental-overwrite-or-deletion"></a>Használjon helyreállítható törlési a mentéséhez és helyreállításához véletlen felülírása vagy törlése esetén az Azure Storage-fiók
+## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Helyreállítható törlés használata az Azure Storage-fiók mentéséhez és helyreállításához véletlen felülírása vagy a törlés után
 
-Engedélyezése [helyreállítható törlési](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) a tárfiókon, hogy a blobok átmenet helyreállíthatóan törölt állapotból helyett folyamatban véglegesen törölve törölve. Amikor a rendszer felülírja azok adatait egy helyreállíthatóan törölt pillanatkép menteni az állapotot a felülírt adatok jön létre. Ez lehetővé teszi, hogy a véletlen törlés esetén helyre, vagy felülírja. Az Advisor azonosítja az Azure Storage-fiókok, amelyek nem rendelkeznek engedélyezhető a helyreállítható törlés, és javasolja azt engedélyezni.
+Engedélyezése [helyreállítható törlési](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) a tárfiókon, hogy a blobok átmenet helyreállíthatóan törölt állapotból helyett folyamatban véglegesen törölve törölve. Amikor a rendszer felülírja azok adatait egy helyreállíthatóan törölt pillanatkép menteni az állapotot a felülírt adatok jön létre. A helyreállítható törlés használata lehetővé teszi, hogy van-e véletlen törlések helyreállítása, vagy felülírja. Az Advisor azonosítja az Azure Storage-fiókok, amelyek nem rendelkeznek engedélyezhető a helyreállítható törlés, és engedélyezi azt javasolja.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurálja a VPN-átjáró aktív-aktív, a kapcsolat rugalmassága
 

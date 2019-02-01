@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 249356644772ae75b12f5c940ff5f9ed49b2c795
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 877fb6807cb8a2aafe634b53630eaa30c6d7697a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994994"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495530"
 ---
-# <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Oktatóanyag: SQL BACPAC-fájlok importálása Azure Resource Manager-sablonokkal
+# <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Oktatóanyag: Az Azure Resource Manager-sablonok SQL BACPAC-fájlok importálása
 
-Ismerje meg, hogyan BACPAC-fájl, az Azure Resource Manager-sablonok importálása az Azure SQL Database-bővítmények segítségével. Üzembe helyezési összetevők olyan fájlok, a fő sablonfájl egy központi telepítés befejezéséhez szükséges mellett. A BACPAC-fájlba az összetevőt. Ebben az oktatóanyagban-sablon üzembe helyezése egy Azure SQL Server, SQL-adatbázis létrehozása és a egy BACPAC-fájl importálása. További információ az Azure-beli virtuális gépi bővítmények üzembe helyezéséről Azure Resource Manager-sablonok használatával: [# Oktatóanyag: Virtuális gépi bővítmények üzembe helyezése Azure Resource Manager-sablonokkal](./resource-manager-tutorial-deploy-vm-extensions.md).
+Ismerje meg, hogyan BACPAC-fájl, az Azure Resource Manager-sablonok importálása az Azure SQL Database-bővítmények segítségével. Üzembe helyezési összetevők olyan fájlok, a fő sablonfájl egy központi telepítés befejezéséhez szükséges mellett. A BACPAC-fájlba az összetevőt. Ebben az oktatóanyagban-sablon üzembe helyezése egy Azure SQL Server, SQL-adatbázis létrehozása és a egy BACPAC-fájl importálása. Az Azure Resource Manager-sablonok használata az Azure virtuálisgép-bővítmények központi telepítésével kapcsolatos információkért lásd: [# oktatóanyag: Üzembe helyezése Azure Resource Manager-sablonokkal a virtuális gépi bővítmények](./resource-manager-tutorial-deploy-vm-extensions.md).
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -35,6 +35,8 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
@@ -45,7 +47,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információkért lásd [Oktatóanyag: Az Azure Key Vault integrálása a Resource Manager-sablon üzembehelyezési folyamatába](./resource-manager-tutorial-use-key-vault.md). Javasoljuk továbbá, hogy a jelszót három havonta frissítse.
+    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információkért lásd: [oktatóanyag: Integrálhatja az Azure Key Vault Resource Manager-sablon üzembe helyezési](./resource-manager-tutorial-use-key-vault.md). Javasoljuk továbbá, hogy a jelszót három havonta frissítse.
 
 ## <a name="prepare-a-bacpac-file"></a>A BACPAC-fájl előkészítése
 
@@ -127,10 +129,10 @@ Adjon hozzá két további erőforrásokat a sablonhoz.
 
     További információ az erőforrás-definícióról: [SQL Database-bővítmény referenciája](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). A következők a fontosabb elemek:
 
-    * **dependsOn**: A bővítményerőforrást az SQL Database létrehozása után kell létrehozni.
-    * **storageKeyType**: A használni kívánt tárkulcs típusa. Az értéke `StorageAccessKey` vagy `SharedAccessKey` lehet. Mivel a mellékelt BACPAC-fájl egy nyilvános hozzáférésű Azure Storage-fiókban van megosztva, a SharedAccessKey értéket kell használni.
-    * **storageKey**: A használni kívánt tárkulcs. Ha SharedAccessKey típusú tárkulcsot használ, szerepelnie kell előtte egy „?” karakternek.
-    * **storageUri**: A használni kívánt tárolási uri. Ha nem a mellékelt BACPAC-fájlt kívánja használni, frissítenie kell az értékeket.
+    * **dependsOn**: Az SQL-adatbázis létrehozása után a bővítmény erőforrást kell létrehozni.
+    * **storageKeyType**: A tárkulcs típusa. Az értéke `StorageAccessKey` vagy `SharedAccessKey` lehet. Mivel a mellékelt BACPAC-fájl egy nyilvános hozzáférésű Azure Storage-fiókban van megosztva, a SharedAccessKey értéket kell használni.
+    * **StorageKey tulajdonságát**: A tárkulcs. Ha SharedAccessKey típusú tárkulcsot használ, szerepelnie kell előtte egy „?” karakternek.
+    * **storageUri**: A tároló URI-t használja. Ha nem a mellékelt BACPAC-fájlt kívánja használni, frissítenie kell az értékeket.
     * **administratorLoginPassword**: Az SQL-rendszergazda jelszava. Használni létrehozott jelszót. Lásd: [Előfeltételek](#prerequisites).
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
@@ -144,8 +146,8 @@ $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 $adminUsername = Read-Host -Prompt "Enter the SQL admin username"
 $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-New-AzureRmResourceGroupDeployment -Name $deploymentName `
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -Name $deploymentName `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `

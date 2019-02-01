@@ -1,8 +1,21 @@
 ---
-Cím: Újratanítás PowerShell egy klasszikus web service titleSuffix: Azure Machine Learning Studio description: Ismerje meg, hogyan programozott módon modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 04/19/2017
+title: Klasszikus webszolgáltatás újratanítása
+titleSuffix: Azure Machine Learning Studio
+description: Ismerje meg, hogyan programozott módon modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 04/19/2017
+ms.openlocfilehash: 04dac55feaa6826e1b8b591df61e8ad413f24dad
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509405"
 ---
 # <a name="retrain-a-classic-azure-machine-learning-studio-web-service"></a>A klasszikus Azure Machine Learning Studio webszolgáltatás újratanítása
 A prediktív webszolgáltatás üzembe helyezte az alapértelmezett érték pontozási végpontjához. Alapértelmezett végpontok szinkronban vannak az eredeti tanítási és pontozási kísérletek őrzi meg, és ezért a betanított modell esetében az alapértelmezett végpont nem lehet lecserélni. A webszolgáltatás újratanítása, hozzá kell adnia egy új végpont a webszolgáltatást.

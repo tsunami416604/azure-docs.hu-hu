@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/07/2019
+ms.date: 01/31/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: cb07ce71162a766add5ca251c97a11d353ee8084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5f15a7d7a49724fda56cecd36e92cb40ced59b81
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077657"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510493"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyors útmutató: Vizsgálata és elemzése a költségeket a költségelemzés
 
@@ -47,7 +47,7 @@ A Költségelemzés az összes [Nagyvállalati Szerződéssel](https://azure.mic
 
 ## <a name="review-costs-in-cost-analysis"></a>Költségek áttekintése a Költségelemzés használatával
 
-A költségek költségelemzés használatával való megtekintéséhez az Azure Portalon lépjen a **Költségkezelés + Számlázás**&gt;**Költségkezelés**&gt;**Hatókör megváltoztatása** területre, majd válassza ki a hatókört, és kattintson a **Kiválasztás** lehetőségre.
+Tekintse át a költségeket, a költségek elemzése az Azure Portalon lépjen **Költségkezelés + számlázás** &gt; **költségelemzés**. Válassza ki **hatókör: _ScopeName_** hatókört válassza, majd kattintson a **kiválasztása**.
 
 A választott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a Költségkezelés során. A hatókörök használata során nem lehet egyszerre több hatókört is kiválasztani. Ehelyett válassza ki, amely akár mások állítja, és majd, szűrő válassza ki, hogy milyen nagyobb hatókör. Ez azért fontos tudni, mert vannak, akik annak egy szülőhatóköréhez gyermek hatókörök akár összegző nem rendelkezik hozzáféréssel.
 
@@ -94,7 +94,8 @@ A legtöbb [Azure-erőforrások támogatja a címkézést](../azure-resource-man
 
 ![Csoportosított napi halmozott nézet-példa az Azure szolgáltatási költségei teszik a múlt hónapban](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Kimutatásdiagramok a fő diagram megjelenítése különböző csoportosítások, amelyek egy szélesebb körű képet az általános költségek a kijelölt időszak és a szűrők alapján. Válasszon egy tulajdonságot vagy címke minden dimenzió összesített költségeit megtekintésére. Teljes nézet adatok teljes készlete áll a képernyő alján kibontásával a **adatok** navigációs menüben, vagy válassza **exportálása > CSV letöltése** a képernyő tetején. Íme egy példa az erőforráscsoportokra vonatkozó adatok fiókot.
+Kimutatásdiagramok a fő diagram megjelenítése különböző csoportosítások, amelyek egy szélesebb körű képet az általános költségek a kijelölt időszak és a szűrők alapján. Válasszon egy tulajdonságot vagy címke minden dimenzió összesített költségeit megtekintésére.
+
 
 ![Összes adat megjelenítése az erőforrás csoportnevek aktuális nézet](./media/quick-acm-cost-analysis/full-data-set.png)
 
@@ -103,6 +104,10 @@ Az előző képen az erőforráscsoportok nevei olvashatóak. Címke megtekinté
 Ha a költségeket egy adott attribútum szerint csoportosítja, csökkenő sorrendben megjelenik a tíz legfontosabb költségelem. Ha több mint tíz csoportok, a felső kilenc közreműködőkkel jelennek meg. Van is látható, mint egy **mások** csoport, amely magában foglalja az összes többi csoport együtt. Csoportosítás címkék szerint, amikor is megjelenhetnek egy **Untagged** csoport tagjai, amelyek nem rendelkeznek a alkalmazni címkekulcs költségeket. **Címkézetlen** mindig utolsó, akkor is, ha nincsenek további címkézetlen költségek, mint a címkézett költségek. Ha tíz vagy több címke értékek, a címkézetlen költségek része lesz **mások**.
 
 *Klasszikus* (az Azure Service Management vagy ASM) virtuális gép, hálózati és tárolási erőforrások nem adjuk ki a részletes számlázási adatok. Ezek van egyesítve **klasszikus szolgáltatások** Ha csoportosítási költségeket.
+
+A teljes adatkészlet minden nézet megtekintéséhez. Bármelyik beállításokat vagy a alkalmazni szűrők hatással a megjelenített adatokhoz. A teljes adatkészlet megtekintéséhez kattintson a **diagramtípus** listából, majd kattintson **tábla** megtekintése.
+
+![Aktuális nézet egy tábla adatainak megtekintése](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
 
 ## <a name="download-cost-analysis-data"></a>Költségelemzési adatok letöltése

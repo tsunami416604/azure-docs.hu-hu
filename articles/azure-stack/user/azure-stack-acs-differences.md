@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/03/2018
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 947886a96ab31150cf81ebea0a3cdd69e0273b01
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: 11736b978242416bcfb95d3025975028e4148e98
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305754"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486538"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Az Azure Stack-tár: Különbségek és szempontok
 
@@ -67,16 +67,8 @@ Az Azure Storage szolgáltatási API-kkal:
 
 1811 frissítés vagy újabb verzió:
 
- - [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
- - [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
- - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
- - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
- - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
- - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
- - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
-
-az 1802 frissítés 1809 Update:
-
+- [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
 - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
@@ -85,35 +77,34 @@ az 1802 frissítés 1809 Update:
 
 Korábbi verziók:
 
+- [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
+- [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
+- [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
+- [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
 - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Az Azure Storage felügyeleti API-k szolgáltatásaihoz:
 
-- [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
-- [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+1811 frissítés vagy újabb verzió:
+
+- [2017-10-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2017-06-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2016-12-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2016-05-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
 Korábbi verziók:
 
- - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
- - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
- - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
- 
-## <a name="sdk-versions"></a>SDK-verziókra
+- [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
-Az Azure Stack storage a következő ügyfélkódtárak támogatja:
-
-| Ügyfélkódtár | Az Azure Stack támogatott verziója | Hivatkozás                                                                                                                                                                                                                                                                                                                                     | Végpont-specifikáció       |
-|----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| .NET           | A 6.2.0 8.7.0 való.          | NuGet-csomagot:<br>https://www.nuget.org/packages/WindowsAzure.Storage/<br> <br>GitHub-verzió:<br>https://github.com/Azure/azure-storage-net/releases                                                                                                                                                                                    | app.config file              |
-| Java           | A 4.1.0-s 6.1.0           | Maven-csomag:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage<br> <br>GitHub-verzió:<br>https://github.com/Azure/azure-storage-java/releases                                                                                                                                                                    | Kapcsolati karakterlánc beállítása      |
-| Node.js        | Az 1.1.0-s 2.7.0           | Az NPM-hivatkozás:<br>https://www.npmjs.com/package/azure-storage<br>(Például: futtatása "npm telepítése azure-storage@2.7.0")<br> <br>GitHub-verzió:<br>https://github.com/Azure/azure-storage-node/releases                                                                                                                                         | Szolgáltatás deklarációjában |
-| C++            | A 2.4.0 3.1.0           | NuGet-csomagot:<br>https://www.nuget.org/packages/wastorage.v140/<br> <br>GitHub-verzió:<br>https://github.com/Azure/azure-storage-cpp/releases                                                                                                                                                                                          | Kapcsolati karakterlánc beállítása      |
-| PHP            | Az az 1.0.0-s 0.15.0          | GitHub-verzió:<br>https://github.com/Azure/azure-storage-php/releases<br> <br>Composer keresztül (lásd lejjebb)                                                                                                                                                                                                                  | Kapcsolati karakterlánc beállítása      |
-| Python         | Az az 1.0.0-s 0.30.0          | GitHub-verzió:<br>https://github.com/Azure/azure-storage-python/releases                                                                                                                                                                                                                                                                | Szolgáltatás deklarációjában |
-| Ruby           | A 0.12.1 1.0.1          | RubyGems csomag:<br>Közös:<br>https://rubygems.org/gems/azure-storage-common/<br>Blob: https://rubygems.org/gems/azure-storage-blob/<br>Várólista: https://rubygems.org/gems/azure-storage-queue/<br>Tábla: https://rubygems.org/gems/azure-storage-table/<br> <br>GitHub-verzió:<br>https://github.com/Azure/azure-storage-ruby/releases | Kapcsolati karakterlánc beállítása      |
+Támogatott az Azure Stack-tároló ügyfélkódtárai kapcsolatos további információkért lásd: [Ismerkedés az Azure Stack tárolásfejlesztési eszközök](azure-stack-storage-dev.md).
 
 ## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés az Azure Stack tárolásfejlesztési eszközök](azure-stack-storage-dev.md)
+* [Adatok átvitele tools for Azure Stack-tároló használata](azure-stack-storage-transfer.md)
 * [Az Azure Stack Storage bemutatása](azure-stack-storage-overview.md)

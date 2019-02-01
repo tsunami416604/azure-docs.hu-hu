@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 095c592e53f44cb674994c440258bcca1bfa760c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 77963377d322a1c70226ceb772273127bec380de
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467169"
+ms.locfileid: "55506805"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Az Azure-tárterület-áttelepítés – gyakran ismételt kérdések
 
@@ -272,7 +272,7 @@ A más hozzáférést biztosít a tárolási erőforrások:
 
 **A replikált storage-fiókok (például a zónaredundáns tárolás, georedundáns tárolás vagy írásvédett georedundáns tárolás) hogyan férhetek hozzá a másodlagos régió tárolt adatokat?**
 
--   Zónaredundáns tárolás vagy georedundáns tárolást használ, ha nem érhetők el adatok a másodlagos régióból, kivéve, ha feladatátvétel történik. A feladatátvételi folyamattal kapcsolatos további információkért lásd: [mire számítson, ha a tárolási feladatátvétel](storage-disaster-recovery-guidance.md#what-to-expect-if-a-storage-failover-occurs).
+-   Zónaredundáns tárolás vagy georedundáns tárolást használ, ha nem érhetők el adatok a másodlagos régióból, kivéve, ha egy adott régióban feladatátvételt kezdeményez. A feladatátvételi folyamattal kapcsolatos további információkért lásd: [katasztrófa utáni helyreállítás és a tárolási fiók feladatátvételi (előzetes verzió) az Azure Storage-ban](storage-disaster-recovery-guidance.md).
 
 -   Ha írásvédett georedundáns tárolás használata esetén férhet hozzá adataihoz a másodlagos régióból bármikor. Az alábbi módszerek valamelyikével:  
       

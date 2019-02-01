@@ -1,5 +1,5 @@
 ---
-title: Elnevezési szabályzat hozzáadása Office 365-csoportokhoz az Azure Active Directoryban | Microsoft Docs
+title: Adja hozzá a kiosztási szabályzat a rövid útmutató az Office 365-csoportok – Azure Active Directory |} A Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan vehet fel új felhasználókat, vagy hogyan törölhet meglévő felhasználókat az Azure Active Directoryban
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/08/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 4c607558c721b38bd63a8094f433bfe9499013af
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 43ce034f2960f31d614636c77e8f30f05e8aa41e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102209"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507104"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Gyors útmutató: Az Azure Active Directory elnevezési szabályzat
 

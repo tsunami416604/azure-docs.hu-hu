@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 8626dcb5b5c8eb7e83123eaeadb601e65d52f2c8
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 23fab567fc2fdd5c5c8f3c5d173a5201d3322f81
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081228"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512550"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 [Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
@@ -149,8 +149,8 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **Műveletek** |  |
 > | * | Bármilyen típusú erőforrások létrehozása és felügyelete |
 > | **notActions** |  |
-> | Microsoft.Authorization/*/Delete | Nem lehet törölni a szerepkörök és szerepkör-hozzárendelések |
-> | Microsoft.Authorization/*/Write | Szerepkörök és szerepkör-hozzárendelések nem hozható létre |
+> | Microsoft.Authorization/*/Delete | Szerepkörök és szerepkör-hozzárendelések törlése |
+> | Microsoft.Authorization/*/Write | Szerepkörök és szerepkör-hozzárendelések létrehozása |
 > | Microsoft.Authorization/elevateAccess/Action | Felhasználói hozzáférés rendszergazdai szerepkörének megadása a hívónak a bérlői hatókörben |
 > | Microsoft.Blueprint/blueprintAssignments/write | Tetszőleges tervelemek létrehozása vagy frissítése |
 > | Microsoft.Blueprint/blueprintAssignments/delete | Tetszőleges tervelemek törlése |
@@ -1600,15 +1600,15 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **notActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | Naplózási házirend nem szerkeszthető. |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | Naplózási beállítások nem szerkeszthetők. |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | Naplózási házirend szerkesztése |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | Naplózási beállítások szerkesztése |
 > | Microsoft.Sql/servers/databases/auditRecords/read | A blob naplózási rekordok beolvasása |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | Kapcsolat házirendek nem szerkeszthető. |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Adatmaszkolás házirendek nem szerkeszthető. |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | Kapcsolat-házirend szerkesztése |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Adatmaszkolás házirendek szerkesztése |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Biztonsági riasztás házirendek nem szerkeszthető. |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | A biztonság mértékét nem szerkeszthető. |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Biztonsági riasztás szabályzatok szerkesztése |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | A biztonság mértékét szerkesztése |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
@@ -1676,23 +1676,23 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **notActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/auditingPolicies/* | Az SQL server naplózási házirendek nem szerkeszthető. |
-> | Microsoft.Sql/servers/auditingSettings/* | SQL-kiszolgáló naplózási beállításait nem szerkeszthető. |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | Az SQL server-adatbázis naplózási házirendek nem szerkeszthető. |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | Az SQL server-adatbázis naplózási beállításait nem szerkeszthető. |
-> | Microsoft.Sql/servers/databases/auditRecords/read | A naplórekordok nem olvasható. |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | Az SQL server adatbázis kapcsolati házirendek nem szerkeszthető. |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Az SQL server adatbázis adatmaszkolási házirendek nem szerkeszthető. |
+> | Microsoft.Sql/servers/auditingPolicies/* | Az SQL server naplózási házirendek szerkesztése |
+> | Microsoft.Sql/servers/auditingSettings/* | SQL-kiszolgáló naplózási beállításainak szerkesztése |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | Az SQL server-adatbázis naplózási házirendek szerkesztése |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | SQL server-adatbázis naplózási beállításainak szerkesztése |
+> | Microsoft.Sql/servers/databases/auditRecords/read | Olvassa el a naplórekordok |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | Az SQL server adatbázis kapcsolati házirendek szerkesztése |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Az SQL server adatbázis adatmaszkolási házirendek szerkesztése |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Az SQL server adatbázis biztonsági riasztási házirendek nem szerkeszthető. |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | Nem lehet szerkeszteni az SQL server-adatbázis biztonsági metrikák |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Az SQL server adatbázis biztonsági riasztási házirendek szerkesztése |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | SQL server-adatbázis biztonsági metrikák szerkesztése |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/extendedAuditingSettings/* |  |
-> | Microsoft.Sql/servers/securityAlertPolicies/* | Az SQL server biztonsági riasztás házirendek nem szerkeszthető. |
+> | Microsoft.Sql/servers/securityAlertPolicies/* | Az SQL server biztonsági riasztás szabályzatok szerkesztése |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 
 ## <a name="storage-account-contributor"></a>Tárfiók-közreműködő

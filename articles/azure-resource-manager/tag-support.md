@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 1/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: fc085a94e2412ff21b09755102f79636a0b0d3b5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d9892b158eae1a83ab1f8eed6c14224e1d4bca15
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884945"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509912"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkék támogatása
 Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource-group-using-tags.md).
@@ -666,6 +666,7 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource
 | logDefinitions | Nem | 
 | logprofiles | Nem | 
 | naplók | Nem | 
+| metricAlerts | Igen |
 | migrateToNewPricingModel | Nem | 
 | myWorkbooks | Nem | 
 | lekérdezés | Nem | 
@@ -1108,7 +1109,7 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | managedInstances | Igen |
-| managedInstances/databases | Igen |
+| managedInstances/databases | Igen (lásd az alábbi megjegyzést) |
 | managedInstances/databases/backupShortTermRetentionPolicies | Nem |
 | managedInstances/databases/schemas/tables/columns/sensitivityLabels | Nem |
 | managedInstances/databases/vulnerabilityAssessments | Nem |
@@ -1120,12 +1121,16 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource
 | kiszolgáló | Igen | 
 | kiszolgálók és a rendszergazdák | Nem | 
 | servers/communicationLinks | Nem | 
-| kiszolgálók és adatbázisok | Igen | 
+| kiszolgálók és adatbázisok | Igen (lásd az alábbi megjegyzést) | 
 | servers/encryptionProtector | Nem | 
 | kiszolgálók és kulcs | Nem | 
 | servers/restorableDroppedDatabases | Nem | 
 | kiszolgálók/serviceobjectives | Nem | 
 | servers/tdeCertificates | Nem | 
+
+> [!NOTE]
+> A Master adatbázis nem támogatja a címkék, de más adatbázis támogatja a címkék.
+
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | Erőforrás típusa | Támogatja a címkék |
@@ -1163,8 +1168,11 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| streamingjobs | Igen | 
+| streamingjobs | Igen (lásd az alábbi megjegyzést) | 
 | streamingjobs/diagnosticSettings | Nem | 
+
+> [!NOTE]
+> Nem adhat meg egy címkét, streamingjobs futtatásakor. Címke hozzáadásához az erőforrás leállítása.
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 | Erőforrás típusa | Támogatja a címkék |

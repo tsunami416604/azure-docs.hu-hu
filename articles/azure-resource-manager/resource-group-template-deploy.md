@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: a816542860a96a8b0dbbeaa63202b6cba4d24acc
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: ff67474566737ca75206cd1237c89f873cb173a8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55294978"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489852"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel
 
@@ -26,6 +26,9 @@ Ez a cikk ismerteti az Azure PowerShell használata a Resource Manager-sablonok,
 A Resource Manager-sablon telepít egy helyi fájlt a gépén vagy egy külső amilyen a GitHub-tárházban található fájl lehet. A sablon üzembe helyezi az ebben a cikkben érhető el, [GitHub storage-fiók sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
 
 Ha szükséges, telepítse az Azure PowerShell-modult az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd futtassa a `Connect-AzAccount` parancsot az Azure-hoz való csatlakozáshoz.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 <a id="deploy-local-template" />
 

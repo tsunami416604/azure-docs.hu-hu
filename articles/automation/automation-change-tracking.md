@@ -10,12 +10,12 @@ ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: e40cc3ac0fe17cd030717253f6093bbf8d63a5a2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301441"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487234"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -111,7 +111,7 @@ A következő lépéseket követve konfigurálja a fájlok nyomon követése a W
 A rekurzió lehetővé teszi, hogy adja meg a helyettesítő karakterek egyszerűsítése érdekében a könyvtárak és a környezeti változókat, hogy nyomon követheti a fájlok között környezetekben, ahol több nyomkövetési vagy dinamikus meghajtó nevét. Az alábbi lista Ha tisztában van a rekurzió konfigurálásakor általános információkat jelenít meg:
 
 * A helyettesítő karakterek szükség több fájlok nyomon követése
-* Ha helyettesítő karaktereket használ, akkor egy elérési út utolsó szegmense csak használható. (például C:\folder\\**fájl** vagy /etc/*.conf)
+* Ha helyettesítő karaktereket használ, akkor egy elérési út utolsó szegmense csak használható. (például `c:\folder\*file*` vagy `/etc/*.conf`)
 * Ha egy környezeti változó egy érvénytelen elérési út, érvényesítés sikeres lesz, de az elérési út sikertelen lesz, ha szoftverleltár fut le.
 * Például elkerülése érdekében az általános elérési utak `c:\*.*` történő beállításakor az elérési út, ez túl sok mappák áthaladhat eredményezne.
 
@@ -132,9 +132,9 @@ A következő lépések segítségével Windows-számítógépeket a beállítá
 |Tulajdonság  |Leírás  |
 |---------|---------|
 |Engedélyezve     | Azt határozza meg, ha a beállítás vonatkozik.        |
-|Elem neve     | A követendő fájl felhasználóbarát neve.        |
-|Csoport     | Fájlok logikai csoportosítására szolgáló csoportnév.        |
-|Windows-beállításkulcs   | A fájl elérési útja. Példa: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj Folders\Common indítási"      |
+|Elem neve     | A beállításkulcs követendő rövid neve.        |
+|Csoport     | Beállításkulcsok logikai csoportosítására szolgáló csoportnév.        |
+|Windows-beállításkulcs   | Ellenőrizze a beállításkulcs elérési útja. Példa: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj Folders\Common indítási"      |
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -278,13 +278,13 @@ A következő példában a képernyőképen látható, hogy a fájl `C:\windows\
 
 ![Egy táblázat a hosts fájl módosítása](./media/automation-change-tracking/changes.png)
 
-Ez a változás további elemzéséhez, Ugrás a naplóbeli keresés számítva **Log Analytics**. Egyszer a naplókeresésben, keresse meg a tartalmi változások lekérdezése a Hosts fájl `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Ez a lekérdezés, amely tartalmazza a fájlokat, amelynek az abszolút elérési útját tartalmazza a "hosts" szót a fájl tartalmának módosítását módosításokat keres. Is feltehet egy adott fájlra vonatkozó elérési út részével módosításával, a teljes képernyőn (például `FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"`).
+Ez a változás további elemzéséhez, Ugrás a naplóbeli keresés számítva **Log Analytics**. Egyszer a naplókeresésben, keresse meg a tartalmi változások lekérdezése a Hosts fájl `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Ez a lekérdezés, amely tartalmazza a fájlokat, amelynek az abszolút elérési útját tartalmazza a "hosts" szót a fájl tartalmának módosítását módosításokat keres. Is feltehet egy adott fájlra vonatkozó elérési út részével módosításával, a teljes képernyőn (például `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
 
 Miután a lekérdezés a kívánt eredményeket ad vissza, kattintson a **Új riasztási szabály** a napló keresési funkciót, nyissa meg a riasztás létrehozása gombra. Sikerült is elérheti a felhasználói élmény keresztül **Azure Monitor** az Azure Portalon. A riasztás létrehozása a felhasználói felületen ellenőrizze újra a lekérdezést, és módosítsa a riasztási logika. Ebben az esetben érdemes a riasztás aktiválódik, ha van még egy rendszer változást észlelt a környezet összes gépein.
 
 ![A módosítás lekérdezés nyomon követésére egy kép módosítja az állomásleíró fájlhoz](./media/automation-change-tracking/change-query.png)
 
-A feltételes logika beállítása után rendelje hozzá a Műveletcsoportok a riasztás aktiválása válaszul műveletek végrehajtásához. Ebben az esetben I állított be elküldendő e-mailek és a egy ITSM-jegy hozhatók létre.  Számos egyéb hasznos műveletek is alkalmazhat egy Azure-függvény, az Automation-runbookot, Webhookot, vagy a logikai alkalmazás, például kell venni.
+A feltételes logika beállítása után rendelje hozzá a Műveletcsoportok a riasztás aktiválása válaszul műveletek végrehajtásához. Ebben az esetben I állított be elküldendő e-mailek és a egy ITSM-jegy hozhatók létre.  Számos egyéb hasznos műveletek is alkalmazhat egy Azure-függvény, a Automation runbook, a webhook vagy a logikai alkalmazás, például kell venni.
 
 ![A módosítás a műveletcsoport riasztás konfigurálása kép](./media/automation-change-tracking/action-groups.png)
 

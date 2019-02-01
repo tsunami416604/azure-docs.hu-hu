@@ -1,5 +1,5 @@
 ---
-title: 'Hozzon létre és telepítse a VPN-ügyfél konfigurációs fájljainak a P2S RADIUS-kapcsolatok: PowerShell: Azure |} A Microsoft Docs'
+title: 'Hozzon létre és telepítse a VPN-ügyfél konfigurációs fájljainak a P2S RADIUS-kapcsolatok: PowerShell: Azure | Microsoft Docs'
 description: Windows, Mac OS X és Linux-VPN-ügyfél konfigurációs fájlok létrehozásához a RADIUS-hitelesítést használó kapcsolatok.
 services: vpn-gateway
 documentationcenter: na
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
 ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "51252006"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510153"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Hozzon létre és telepítse a VPN-ügyfél konfigurációs fájljainak a P2S RADIUS-hitelesítés
 
@@ -160,7 +160,7 @@ Az alábbi utasítások alapján létrehozott strongSwan 5.5.1 Ubuntu 17.0.4 ren
    ![A kapcsolat típusának kiválasztása](./media/point-to-site-vpn-client-configuration-radius/AddIKEv2.png)
 5. Nyissa meg a **VpnSettings.xml** fájlt a **általános** a letöltött ügyfél konfigurációs fájljainak mappájába. Keresse meg a címke neve `VpnServer` , és másolja a nevét, kezdve `azuregateway` tagig terjedően `.cloudapp.net`.
 
-   ![A VpnSettings.xml fájl tartalma](./media/point-to-site-vpn-client-configuration-radius/VpnSettings.png)
+   ![Contents of the VpnSettings.xml file](./media/point-to-site-vpn-client-configuration-radius/VpnSettings.png)
 6. Illessze be a nevét a **cím** mezőt az új VPN-kapcsolat a **átjáró** szakaszban. Ezután válassza a mappa ikont a végén a **tanúsítvány** mezőben keresse meg a **általános** mappában, és válassza a **VpnServerRoot** fájlt.
 7. Az a **ügyfél** szakaszában a kapcsolathoz, válassza ki **EAP** a **hitelesítési**, és írja be a felhasználónevét és jelszavát. Előfordulhat, hogy válassza ki a lakat ikonra a jobb oldali menteni ezeket az információkat. Ezt követően válassza a **Mentés** lehetőséget.
 

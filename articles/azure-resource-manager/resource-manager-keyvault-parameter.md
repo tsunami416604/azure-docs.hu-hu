@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6e9ad6f74970b6c72b96ae142f02bee6b07fb558
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cd45384bfd548cb73c10306dfee942cbcf7c8ca1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455473"
+ms.locfileid: "55491909"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Az Azure Key Vault segítségével biztonságos paraméter értéke továbbítása üzembe helyezés során
 
 Helyett írja a biztonságos értéket (például a jelszó) közvetlenül az alkalmazásparaméter-fájlt, az értéket lekérheti egy [Azure Key Vault](../key-vault/key-vault-whatis.md) egy üzembe helyezés során. A key vaulttal és a titkos kulcsot az alkalmazásparaméter-fájlt a hivatkozó kérje le az értéket. Az érték sosem hagyja el, mert csak hivatkozhat a key vault azonosítója. A key vault egy másik előfizetésben, mint az erőforráscsoport telepíti, akkor is szerepel.
 
-Go-oktatóanyagot, tekintse meg [oktatóanyag: Integrálhatja az Azure Key Vault Resource Manager-sablon üzembe helyezési](./resource-manager-tutorial-use-key-vault.md#prepare-a-key-vault).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="deploy-key-vaults-and-secrets"></a>Key vault-Kulcstartók és titkos kódok üzembe helyezése
+## <a name="deploy-key-vaults-and-secrets"></a>Kulcstartó és a titkos kódok üzembe helyezése
 
 Key vault-Kulcstartók létrehozása, és adja hozzá a titkos kulcsokat, lásd:
 

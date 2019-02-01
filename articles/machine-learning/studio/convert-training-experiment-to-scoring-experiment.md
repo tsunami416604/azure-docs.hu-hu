@@ -1,8 +1,20 @@
 ---
-Cím: Készítse elő a modell a központi telepítési titleSuffix: Azure Machine Learning Studio description: Hogyan készíti elő a betanított modellt webszolgáltatásként üzembe helyezés a Machine Learning Studio betanítási kísérlet átalakítása prediktív kísérletté.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: ericlicoding ms.author: amlstudiodocs ms.date: 03/28/2017
+title: Modell telepítésének előkészítése
+titleSuffix: Azure Machine Learning Studio
+description: Hogyan készíti elő a betanított modellt webszolgáltatásként üzembe helyezés a Machine Learning Studio betanítási kísérlet átalakítása prediktív kísérletté.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.date: 03/28/2017
+ms.openlocfilehash: fe7d3956c1a5ead55acd8605086668e20e85e1d2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496074"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Hogyan készülhet fel a modell üzembe helyezése az Azure Machine Learning Studióban
 

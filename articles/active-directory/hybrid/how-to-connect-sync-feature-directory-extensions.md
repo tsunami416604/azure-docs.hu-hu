@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/05/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 04ae99064723b1dba35dfe53721c185229f96252
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2b8892873541b4f792caa3538bfc51fff6c2d15b
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174618"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495617"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Az Azure AD Connect szinkronizálása: Címtárbővítmények
 Címtárbővítmények segítségével az Azure Active Directoryban (Azure AD) a séma kiterjesztése a saját helyszíni Active Directoryból származó attribútumok. Ez a funkció lehetővé teszi felhasználása az attribútumokat, amelyek továbbra is kezelheti a helyszíni LOB-alkalmazások készítését. Ezek az attribútumok felhasználhatók keresztül [Azure AD Graph API címtárbővítmények](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) vagy [Microsoft Graph](https://developer.microsoft.com/graph/). Megjelenik a rendelkezésre álló attribútumok használatával [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) és [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer), illetve.

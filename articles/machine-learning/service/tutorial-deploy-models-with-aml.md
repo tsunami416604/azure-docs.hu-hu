@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 09/24/2018
+ms.date: 01/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 887be89060a6d02eea74cd127cfbc93e48c0b3ff
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 167cc390fb9cc28f4249d168e452825b37902723
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240862"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510425"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Oktatóanyag: Egy rendszerkép besorolási modell az Azure Container Instances szolgáltatásban üzembe helyezése
 
@@ -33,23 +33,18 @@ Az oktatóanyag ezen részében használja az Azure Machine Learning szolgáltat
 > * A modell üzembe helyezése a Container Instances szolgáltatásban.
 > * Az üzembe helyezett modell teszteléséhez.
 
-Container Instances szolgáltatásban nem éles környezetekben üzemelő példányok ideális, de ez ideális megoldás a teszteléshez és a munkafolyamat ismertetése. Méretezhető éles környezetekben üzemelő példányok fontolja meg az Azure Kubernetes Service. További információkért lásd: [üzembe helyezése és hol](how-to-deploy-and-where.md).
-
-## <a name="get-the-notebook"></a>A notebook beszerzése
-
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb) is elérhető. Futtassa a *oktatóanyagok/img – osztályozás – part2-deploy.ipynb* notebook vagy [Azure notebookok](https://notebooks.azure.com/) vagy a saját Jupyter notebook server.
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+Container Instances kiválóan teszteléshez és a munkafolyamat ismertetése. Méretezhető éles környezetekben üzemelő példányok fontolja meg az Azure Kubernetes Service. További információkért lásd: [üzembe helyezése és hol](how-to-deploy-and-where.md).
 
 >[!NOTE]
-> Ebben a cikkben kód az Azure Machine Learning SDK-val 1.0.2-es verzióját lett tesztelve.
+> Ebben a cikkben kód az Azure Machine Learning SDK verziója 1.0.8 lett tesztelve.
 
 ## <a name="prerequisites"></a>Előfeltételek
+Ugrás a [a fejlesztési környezet beállítása](#start) , olvassa el a notebook lépéseket.  
 
-Hajtsa végre a következő jegyzetfüzet a modell betanítása: [Oktatóanyag: (1. rész): Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).  
+A jegyzetfüzet futtatásához először fejezze be a modell betanítása a [oktatóanyag (1. rész): Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).   Ezután futtassa a **oktatóanyagok/img – osztályozás – part2-deploy.ipynb** notebook használatával notebook ugyanazon a kiszolgálón.
 
 
-## <a name="set-up-the-environment"></a>A környezet beállítása
+## <a name="start"></a>A környezet beállítása
 
 Első lépésként állítsa be a tesztelési környezetet.
 
@@ -78,13 +73,16 @@ Az előző oktatóanyagban regisztrált egy modellt a munkaterületen. Most már
 ```python
 from azureml.core import Workspace
 from azureml.core.model import Model
-
+import os 
 ws = Workspace.from_config()
 model=Model(ws, 'sklearn_mnist')
-model.download(target_dir = '.')
-import os 
+
+model.download(target_dir=os.getcwd(), exist_ok=True)
+
 # verify the downloaded model file
-os.stat('./sklearn_mnist_model.pkl')
+file_path = os.path.join(os.getcwd(), "sklearn_mnist_model.pkl")
+
+os.stat(file_path)
 ```
 
 ## <a name="test-the-model-locally"></a>A modell helyi tesztelése
@@ -102,10 +100,8 @@ A teszt adatokat letölteni a **. /data/** az oktatóprogram során létrehozott
 from utils import load_data
 
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the neural network converge faster
-
 X_test = load_data('./data/test-images.gz', False) / 255.0
 y_test = load_data('./data/test-labels.gz', True).reshape(-1)
-
 ```
 
 ### <a name="predict-test-data"></a>A tesztadatok előrejelzése
@@ -214,7 +210,8 @@ def run(raw_data):
     data = np.array(json.loads(raw_data)['data'])
     # make prediction
     y_hat = model.predict(data)
-    return json.dumps(y_hat.tolist())
+    # you can return any data type as long as it is JSON-serializable
+    return y_hat.tolist()
 ```
 
 <a name="make-myenv"></a>
@@ -314,10 +311,10 @@ n = 30
 sample_indices = np.random.permutation(X_test.shape[0])[0:n]
 
 test_samples = json.dumps({"data": X_test[sample_indices].tolist()})
-test_samples = bytes(test_samples, encoding = 'utf8')
+test_samples = bytes(test_samples, encoding='utf8')
 
 # predict using the deployed model
-result = json.loads(service.run(input_data=test_samples))
+result = service.run(input_data=test_samples)
 
 # compare actual value vs. the predicted values:
 i = 0
@@ -347,7 +344,6 @@ Ezenkívül elküldheti a nyers HTTP-kérést a webszolgáltatás teszteléséhe
 
 ```python
 import requests
-import json
 
 # send a random row from the test set to score
 random_index = np.random.randint(0, len(X_test)-1)
@@ -380,6 +376,8 @@ service.delete()
 
 ## <a name="next-steps"></a>További lépések
 
-+ További információ az összes, a [központi telepítési beállítások az Azure Machine Learning szolgáltatás](how-to-deploy-and-where.md). Options include Azure Container Instances, Azure Kubernetes Service, FPGAs, and Azure IoT Edge.
-
-+ Tekintse meg, hogyan lehet az Azure Machine Learning szolgáltatás a automatikus kiválasztás és a legjobb algoritmus a modell finomhangolása. Emellett a hoz létre ehhez a modellhez. Próbálja ki a [automatikus algoritmus kiválasztása](tutorial-auto-train-models.md) oktatóanyag. 
++ További információ az összes, a [központi telepítési beállítások az Azure Machine Learning szolgáltatás](how-to-deploy-and-where.md).
++ Ismerje meg, hogyan [hozzon létre a webszolgáltatás ügyfelek](how-to-consume-web-service.md).
++  [A nagy mennyiségű adatot előrejelzéseket](how-to-run-batch-predictions.md) aszinkron módon történik.
++ Az Azure Machine Learning-modellek a figyelése [Application Insights](how-to-enable-app-insights.md).
++ Próbálja ki a [automatikus algoritmus kiválasztása](tutorial-auto-train-models.md) oktatóanyag. 

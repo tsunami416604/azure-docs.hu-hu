@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/30/2019
+ms.date: 01/31/2019
 ms.author: magoedte
-ms.openlocfilehash: 58da86140b97c5292d390b6f91502b7f0622986a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 90cd6f640188408771b3a64a31aadf89cfefcaae
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476842"
+ms.locfileid: "55487863"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) és az Azure Monitor az Azure virtuális gépek állapotának ismertetése
 Az Azure több szolgáltatást tartalmaz, amelyek külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés területen, de biztosít az Azure-beli virtuális gépeken futó operációs rendszer egy részletes állapota szempontjából nem volt elérhető.  A Log Analytics vagy az Azure Monitor használatával különböző feltételek esetén felügyelheti, amíg nem tervezték őket modellezheti, és az alapvető összetevők állapotát vagy a virtuális gép általános állapotát.  Az Azure virtuális gépek Állapotfigyelő szolgáltatás figyelője proaktív módon figyeli a rendelkezésre állás és a Windows vagy Linux-alapú vendég operációs rendszer, amelyek a legfontosabb összetevők és a kapcsolatok, feltételek, amely meghatározza, hogy miként állapotát, a modell teljesítményét összetevők, és riasztást küld, ha a nem kifogástalan állapot észlelésekor.  
@@ -30,11 +30,11 @@ Ez a cikk segítséget nyújt a megtudhatja, hogyan mérheti fel gyorsan, kivizs
 A virtuális gépek az Azure Monitor konfigurálásával kapcsolatos további információkért lásd: [engedélyezése az Azure Monitor-beli virtuális gépek](vminsights-onboard.md).
 
 >[!NOTE]
->Kezdési 2019. február 15., megkezdjük, az aktuális állapotközpontú modellről az Azure monitorban a virtuális gépek állapotfigyelő szolgáltatást, amely akkor látható, ha használja-e az állapot diagnosztikai élmény még ma, egy új verziójára a állapotmodell-ről. A frissítés javítja a állapotának összesítése feldolgozása, és a egy diagnosztikai állapot nézetében megjelenő finomított állapotmodell tartalmazza. 
+>2019. február 11 indítása megkezdjük, az aktuális állapotközpontú modellről az Azure monitorban a virtuális gépek állapotfigyelő szolgáltatást, amely akkor látható, ha használja-e az állapot diagnosztikai élmény még ma, egy új verziójára a állapotmodell-ről. A frissítés javítja a állapotának összesítése feldolgozása, és a egy diagnosztikai állapot nézetében megjelenő finomított állapotmodell tartalmazza. 
 >
 >Az új modell állapotának összesítését, szülőentitás/szintű állapotára vonatkozó feltételek, alárendelt állapotára vonatkozó feltételek lesz gyorsabban, és ennek eredményeképpen a kívánt vagy célzott állapot kisebb késést biztosítanak a szülő-frissítések állapotát. A állapotára vonatkozó feltételek alapján is szűrheti a **teljesítmény** és **rendelkezésre állási** ellentétben az előző lapon-alapú metódus jelölje ki a nézetben vagy kategória kategóriák.
 >
->Az új állapotfigyelő diagnosztikai élményt további részletekért tekintse meg a Health diagnosztikai [szakasz](#health-diagnostics) ebben a cikkben. 
+>Egészségügyi diagnosztikai funkciókkal kapcsolatos további részletekért tekintse meg a Health diagnosztikai [szakasz](#health-diagnostics) ebben a cikkben. 
 >
 >Ez a frissítés javulni fog a következőket: 
 >
@@ -106,14 +106,16 @@ Egy Azure virtuális gép állapotának megtekintéséhez válassza **Insights (
 
 ![A virtuális gépek állapotának áttekintése a kiválasztott Azure virtuális gép az Azure Monitor](./media/vminsights-health/vminsights-directvm-health.png)
 
-Az a **egészségügyi** lapon, a szakasz a **Vendég virtuális gép állapota**, a táblázat bemutatja a virtuális gép aktuális állapotát, és a egy nem megfelelő állapotú összetevőre váltotta ki a virtuális gép állapota riasztások számát. Tekintse meg [riasztások kezelése és a egy riasztáskezelés](#alerting-and-alert-management) további részletekért.  
+Az a **egészségügyi** lapon, a szakasz a **Vendég virtuális gép állapota**, a táblázat bemutatja a virtuális gép aktuális állapotát, és a egy nem megfelelő állapotú összetevőre váltotta ki a virtuális gép állapota riasztások számát. Tekintse meg [riasztások](#alerting-and-alert-management) riasztási funkciókkal kapcsolatos további részletekért.  
 
-A megadott virtuális gép állapota állapotok a következők: 
+A virtuális gép meghatározott állapotokat az alábbi táblázat ismerteti: 
 
-* **Kifogástalan állapotú** – nem problémát észlelt a virtuális gép, és szükség szerint működik-e.  
-* **Kritikus fontosságú** – egy vagy több kritikus problémák észlelhetők, amely kell oldani annak érdekében, hogy a normál működés visszaállítása a várt módon. 
-* **Figyelmeztetés** – egy vagy több problémák észlelhetők, amelyeket meg kell oldani, vagy az egészségügyi feltétel kritikus válhat.  
-* **Ismeretlen** – Ha a szolgáltatás nem tudott egy kapcsolatot a virtuális géppel, az állapot módosul, állapota ismeretlen.  
+|Ikon |Állapot |Jelentés |
+|-----|-------------|------------|
+| |Kifogástalan |Állapot állapota kifogástalan, ha meghatározott egészségügyi feltételek, a virtuális gép észlelt problémákat nem jelző belül, és szükség szerint működik-e. Egy szülő összesítő figyelő esetén a health tekercsben felfelé és a legkedvezőbb vagy legrosszabb állapota a gyermek tükrözi.|
+| |Kritikus |Állapot, kritikus fontosságú, ha nem található a meghatározott egészségügyi feltételt, amely azt jelzi, hogy legalább egy kritikus fontosságú problémák, amelyek kell oldani annak érdekében, hogy a normál működés visszaállítása. Egy szülő összesítő figyelő esetén a health tekercsben felfelé és a legkedvezőbb vagy legrosszabb állapota a gyermek tükrözi.|
+| |Figyelmeztetés |Állapota figyelmet igényel, hogy meghatározott egészségügyi feltétel, ahol egy azt jelzi, hogy két küszöbérték közötti egy *figyelmeztetés* állapota és a egy másik jelzi egy *kritikus* (három állapot állapot küszöbértékeket is állapota konfigurálható), vagy ha egy nem kritikus problémát észlel, amelyek kritikus fontosságú problémákat okozhat, ha nem szűnik meg. Esetén a fölérendelt összegző figyelő esetén, ha egy vagy több gyermek figyelmeztetési állapotba kerül, akkor jelenik meg a szülő *figyelmeztetés* állapota. Ha van, amely a gyermek egy *kritikus* és a egy másik alárendelt egy *figyelmeztetés* állapot, a fölérendelt összegző megjelenik egy állapotát *kritikus*.|
+| |Ismeretlen |Állapot szerepel egy *ismeretlen* állapot, amikor az objektum állapota nem számítható ki több okból, például nem tudja majd gyűjteni az adatokat, a szolgáltatás nem inicializált, stb. A health állapota nem konfigurálható.| 
 
 Kiválasztásával **diagnosztikai állapot megtekintése** kattint, megnyílik egy oldal, a virtuális gép, kapcsolódó állapotára vonatkozó feltételek, állapotváltozások és más jelentős problémák, a virtuális géphez kapcsolódó összetevők-figyelési szolgáltatás által észlelt összes összetevőjét bemutató. További információkért lásd: [egészségügyi diagnosztikai](#health-diagnostics). 
 
@@ -191,16 +193,7 @@ Diagnosztikai állapot az állapotinformációkat a következő kategóriákba s
  
 Például a logikai lemez, a Processzor és a egy adott összetevőre definiált állapotára vonatkozó feltételek stb. Kategóriát adta meg a figyelő a mellette látható továbbá a **állapotára vonatkozó feltételek** oszlop.  
 
-Egy állapotára vonatkozó feltételek állapotát határozza meg a négy állapota – *kritikus*, *figyelmeztetés*, *kifogástalan*, és *ismeretlen*. Az első három is konfigurálható, ami azt jelenti, módosíthatja a küszöbértékeket a figyelő használatával a [számítási feladatok a figyelő API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). *Ismeretlen* még nem konfigurálható, és a fenntartott, bizonyos forgatókönyvek esetén az alábbi táblázatban leírtak szerint.  
-
-Az alábbi táblázat részletesen az állapotokat az egészségügyi Diagnostics jelöli.
-
-|Ikon |Állapot |Jelentés |
-|-----|-------------|------------|
-| |Kifogástalan |Egészségügyi állapota megfelelő, ha meghatározott egészségügyi feltételek, a virtuális gép azt észlelte, hogy szükség szerint működik-e problémákat nem jelző belül. Egy szülő összesítő figyelő esetén a health tekercsben felfelé és a legkedvezőbb vagy legrosszabb állapota a gyermek tükrözi.|
-| |Kritikus |Állapot, kritikus fontosságú, ha nem található a meghatározott egészségügyi feltételt, amely azt jelzi, hogy legalább egy kritikus fontosságú problémák, amelyek kell oldani annak érdekében, hogy a normál működés visszaállítása. Egy szülő összesítő figyelő esetén a health tekercsben felfelé és a legkedvezőbb vagy legrosszabb állapota a gyermek tükrözi.|
-| |Figyelmeztetés |Állapota figyelmet igényel, hogy meghatározott egészségügyi feltétel, ahol egy azt jelzi, hogy két küszöbérték közötti egy *figyelmeztetés* állapot, a másik pedig azt jelzi, egy *kritikus* (három ellenőrzött felhasználói állapot a következő állapota lehetséges), vagy ha egy nem kritikus problémát észlel, amelyek kritikus fontosságú problémákat okozhat, ha nem szűnik meg. Esetén a fölérendelt összegző figyelő esetén, ha egy vagy több gyermek figyelmeztetési állapotba kerül, akkor jelenik meg a szülő *figyelmeztetés* állapota. Ha van, amely a gyermek egy *kritikus* és a egy másik alárendelt egy *figyelmeztetés* állapot, a fölérendelt összegző megjelenik egy állapotát *kritikus*.|
-| |Ismeretlen |Állapot szerepel egy *ismeretlen* állapot, amikor az objektum állapota nem számítható ki több okból, például nem tud adatokat gyűjteni, a szolgáltatás nem inicializált stb. Ez nem egy felhasználó által szabályozott állapotban.| 
+Egy állapotára vonatkozó feltételek állapotát határozza meg a négy állapota – *kritikus*, *figyelmeztetés*, *kifogástalan*, és *ismeretlen*. Az első három is konfigurálható, ami azt jelenti, módosíthatja a küszöbértékeket a figyelő használatával a [számítási feladatok a figyelő API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). *Ismeretlen* még nem konfigurálható, és a fenntartott bizonyos forgatókönyvek esetén.  
 
 Diagnosztikai állapotlap három fő részből áll:
 
@@ -230,10 +223,10 @@ A cél általános állapotát annak állapotára vonatkozó feltételek az áll
 
 ![A health feltételek példa konfigurálása](./media/vminsights-health/health-diagnostics-vm-example-02.png)
 
-A konfiguráció panelen a kiválasztott egészségügyi feltételeinek, példa használatával **átlagos másodpercek száma az írási**, a küszöbérték egy másik numerikus érték konfigurálható. Kétállapotú figyelő, ami azt jelenti, csak történt változások kifogástalanról figyelmeztetési. Előfordulhat, hogy más állapotfigyelő feltétel három állapot, ahol konfigurálhatja a figyelmeztetési és a kritikus állapot állapotküszöb értéke.  
+A konfiguráció panelen a kiválasztott egészségügyi feltételeinek, példa használatával **átlagos másodpercek száma az írási**, a küszöbérték egy másik numerikus érték konfigurálható. Kétállapotú figyelő, ami azt jelenti, csak történt változások kifogástalanról figyelmeztetési. Előfordulhat, hogy más állapotfigyelő feltétel Háromállapotú, ahol konfigurálhatja a figyelmeztetési és a kritikus állapot állapotküszöb értéke.  
 
 >[!NOTE]
->Egészségügyi feltételek konfigurációs módosítások alkalmazása az egyik példányhoz alkalmazza a rendszer az összes figyelt példányokat.  Például, ha kiválasztja **fizikailemez -1 D:** és módosíthatja a **átlagos másodpercek száma az írási** küszöbértéket, csak annak a példánynak nem vonatkozik, de az összes többi lemez példány felderített, és a figyelt a virtuális Gépet.
+>Egészségügyi feltételek konfigurációs módosítások alkalmazása az egyik példányhoz alkalmazza a rendszer az összes figyelt példányokat.  Például, ha kiválasztja **lemez-1 D:** és módosíthatja a **átlagos másodpercek száma az írási** küszöbértéket, csak annak a példánynak nem vonatkozik, de az összes többi lemez példány felderített, és figyeli a virtuális gépen.
 >
 
 ![. Egy egység figyelő például egy állapotára vonatkozó feltételek konfigurálása](./media/vminsights-health/health-diagnostics-criteria-config-01.png)
@@ -252,9 +245,9 @@ A össze az a három oszlop van kapcsolva egymással egymással. Amikor kiválas
 
 ![Felügyelt példány és az eredmények kiválasztása – példa](./media/vminsights-health/health-diagnostics-vm-example-01.png)
 
-A fenti példában, kiválasztásakor **fizikailemez - 1 D:**, a állapotára vonatkozó feltételek fa a szűrt **fizikailemez - 1 D:**. A **Állapotváltozási** az oszlopban látható az állapotváltozás körülményeiről rendelkezésre állásának alapján **fizikailemez - 1 D:**. 
+A fenti példában, kiválasztásakor **lemez – 1 D:**, a állapotára vonatkozó feltételek fa a szűrt **lemez – 1 D:**. A **Állapotváltozási** az oszlopban látható az állapotváltozás körülményeiről rendelkezésre állásának alapján **lemez – 1 D:**. 
 
-Egy frissített állapot megtekintéséhez kattintson is frissítheti a Health diagnosztika lapot a **frissítése** hivatkozásra.  Alapján előre definiált lekérdezési időközét az egészségügyi feltétel állapot frissítése esetén ez a feladat lehetővé teszi a várakozás elkerülése érdekében, és tükrözi a legfrissebb állapot.  A **feltételek állapota** szűrő engedélyezi-e a kiválasztott állapota – a eredményeket hatókörét *kifogástalan*, *figyelmeztetés*, *kritikus*, *Ismeretlen*, és *összes*.  A **utolsó frissített** jobb felső sarokban az idő az utolsó időpont, amikor a rendszerállapot-diagnosztika lapot frissítésének jelöli.  
+Egy frissített állapot megtekintéséhez kattintson is frissítheti a Health diagnosztika lapot a **frissítése** hivatkozásra.  Alapján előre definiált lekérdezési időközét az egészségügyi feltétel állapot frissítése esetén ez a feladat lehetővé teszi a várakozás elkerülése érdekében, és tükrözi a legfrissebb állapot.  A **feltételek állapota** szűrő engedélyezi-e a kiválasztott állapota – a eredményeket hatókörét *kifogástalan*, *figyelmeztetés*, *kritikus*, *Ismeretlen*, és *összes*.  A **utolsó frissített** jobb felső sarokban lévő idő az utolsó időpont, amikor a rendszerállapot-diagnosztika lapot frissítésének jelöli.  
 
 ## <a name="alerts"></a>Riasztások
 Virtuális gépek Állapotfigyelő szolgáltatás az Azure Monitor integrálható [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) és riasztást jelenít meg, ha az előre meghatározott állapotára vonatkozó feltételek módosítása a kifogástalan állapotú sérült állapotba kerül a feltétel észlelése esetén. Riasztások súlyosság – Sev 0-tól 4, a Sev 0 jelölő a legmagasabb súlyossági szint szerint kategorizálhatók.  

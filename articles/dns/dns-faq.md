@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/16/2019
 ms.author: victorh
-ms.openlocfilehash: 1d4182f491dae9597add4b688b89faa9dd291429
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a83ded660b56028ea311992ba6161e8a8e43f65d
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352925"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511972"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS FAQ
 
@@ -34,7 +34,7 @@ További információkért lásd: a [Azure DNS díjszabási oldalán](https://az
 
 ### <a name="what-is-the-sla-for-azure-dns"></a>Mi az Azure DNS garantált szolgáltatási szintje?
 
-Az Azure garantálja, hogy DNS-lekérdezésekre érvényes válasz érkezik legalább egy Azure DNS-névkiszolgálótól legalább 99,99 %-ában.
+Az Azure garantálja, hogy DNS-lekérdezésekre érvényes válasz érkezik legalább egy Azure DNS-névkiszolgálótól 100 %-ában.
 
 További információkért lásd: a [Azure DNS SZOLGÁLTATÁSSZINT-szerződésünk](https://azure.microsoft.com/support/legal/sla/dns).
 

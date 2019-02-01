@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Site-to-Site-kapcsolatok kényszerített bújtatás konfigurálása: Resource Manager |} A Microsoft Docs'
+title: 'Az Azure Site-to-Site-kapcsolatok kényszerített bújtatás konfigurálása: Erőforrás-kezelő |} A Microsoft Docs'
 description: Hogyan lehet irányítani, vagy "kényszerítéséhez" internetre irányuló összes forgalmat a helyszíni helyre.
 services: vpn-gateway
 documentationcenter: na
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: 00330f49d4acc9bd2d720a60b743b78c86b08f86
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 21004c29f1baf0346cd83d8483ff1862a98fc845
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308152"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506464"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Kényszerített bújtatás konfigurálása az Azure Resource Manager-alapú üzemi modellel
 
 Kényszerített bújtatás lehetővé teszi az átirányítási vagy "kényszerített" internetre irányuló összes forgalmat a helyszíni helyre biztonsági és vizsgálati és naplózási Site-to-Site VPN-alagúton keresztül. Ez a legtöbb vállalati informatikai kritikus fontosságú biztonsági követelményeket a szabályzatokat. Nem kényszerített bújtatás, internetre irányuló forgalmat a virtuális gépekről az Azure-ban mindig csatlakozik az internethez, ezáltal lehetővé teszi a forgalmat, vagy vizsgálja meg a beállítás nélkül az Azure hálózati infrastruktúráról közvetlenül meg traverses. Jogosulatlan Internet-hozzáférés potenciálisan vezethet információfelfedés vagy más biztonsági résekkel szemben.
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
 
 Ez a cikk konfigurálásán vezeti végig kényszerített bújtatás a Resource Manager-alapú üzemi modellel létrehozott virtuális hálózatok esetében. Kényszerített bújtatás PowerShell-lel, nem a portálon keresztül konfigurálható. Ha azt szeretné, a klasszikus üzemi modell esetében a kényszerített bújtatás konfigurálása, az alábbi legördülő listából válassza a klasszikus cikk:
 
@@ -52,16 +52,16 @@ Kényszerített bújtatás az Azure-beli virtuális hálózati felhasználó ál
 
 * Minden egyes virtuális hálózat alhálózatához rendelkezik egy beépített, rendszer-útválasztási táblázatához. A rendszer útválasztási tábla az útvonalak a következő három csoport rendelkezik:
   
-  * **Helyi VNet-útvonal:** közvetlenül és a cél virtuális gépek ugyanazon a virtuális hálózaton.
-  * **A helyszíni útvonalakat:** , az Azure VPN-átjáró.
-  * **Alapértelmezett útvonal:** közvetlenül az internethez való. Nem fedi le az előző két útvonalak privát IP-címekre irányuló csomagokat a rendszer elveti.
+  * **Helyi VNet-útvonal:** Közvetlenül az a cél virtuális gépek ugyanazon a virtuális hálózaton.
+  * **A helyszíni útvonalakat:** Az Azure VPN gatewayhez.
+  * **Alapértelmezett útvonal:** Közvetlenül a az interneten. Nem fedi le az előző két útvonalak privát IP-címekre irányuló csomagokat a rendszer elveti.
 * Ezzel az eljárással hozzon létre egy útválasztási táblázatot, adjon hozzá egy alapértelmezett útvonalat, és társíthatja az útválasztási táblázatban, felhasználó által megadott útvonalak (UDR) használatával a virtuális hálózat alhálózat(ok) ezekhez az alhálózatokhoz a kényszerített bújtatás engedélyezése.
 * Kényszerített bújtatás kell rendelni egy virtuális hálózattal, amely rendelkezik egy útvonalalapú VPN-átjárót. Meg kell állítania egy "alapértelmezett webhely" a létesítmények közötti helyek között a virtuális hálózathoz csatlakozik. Emellett a helyszíni VPN-eszköznek kell konfigurálni forgalomválasztóinak 0.0.0.0/0 használatával. 
 * Kényszerített bújtatás ExpressRoute nincs konfigurálva ez a mechanizmus keresztül, de ehelyett szerint engedélyezve van a társviszony-létesítési ExpressRoute BGP-munkamenetek használatával egy alapértelmezett útvonalat hirdet. További információkért lásd: a [az ExpressRoute dokumentációja](https://azure.microsoft.com/documentation/services/expressroute/).
 
 ## <a name="configuration-overview"></a>Konfiguráció áttekintése
 
-Az alábbi eljárás segítségével hozhat létre egy erőforráscsoportot és a egy virtuális hálózathoz. Ezután hozzon létre egy VPN-átjáró és a kényszerített bújtatás konfigurálása. Ebben az eljárásban a virtuális hálózat MultiTier – VNet három alhálózatot tartalmaz: "Előtér", "Midtier" és "Háttér", a negyedik létesítmények közötti kapcsolatok: "DefaultSiteHQ", és három ágat.
+Az alábbi eljárás segítségével hozhat létre egy erőforráscsoportot és a egy virtuális hálózathoz. Ezután hozzon létre egy VPN-átjáró és a kényszerített bújtatás konfigurálása. Ebben az eljárásban a virtuális hálózat MultiTier – VNet rendelkezik három alhálózatot: "Előtér", "Midtier" és "Háttér", a negyedik létesítmények közötti kapcsolatok: "DefaultSiteHQ", és három ágak.
 
 Az eljárás lépéseit kényszerített bújtatás a hely alapértelmezett kapcsolat, a "DefaultSiteHQ", és a "Midtier' állítja be, és a"Háttér"alhálózatok használata kényszerített bújtatás.
 

@@ -1,5 +1,5 @@
 ---
-title: PowerShell-lel az Azure Active Directory-beállítások konfigurálása |} A Microsoft Docs
+title: PowerShell – Azure Active Directory használatával csoport beállításainak konfigurálása |} A Microsoft Docs
 description: Hogyan felügyelheti a csoportok az Azure Active Directory-parancsmagok használatával
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 29c46c3987a6adff4ef2492a60b4e6a4b022e3e8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e838af0ac8e9cfd1d42b768fa68ec7d9f46386c6
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168839"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512227"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 Ez a cikk útmutatást az Azure Active Directory (Azure AD) PowerShell-parancsmagok használatával hozhat létre, és a csoportokat. Ez a tartalom csak az Office 365-csoportok (más néven egyesített csoportok) vonatkozik. 
@@ -95,19 +95,19 @@ Az alábbiakban a Group.Unified SettingsTemplate megadott beállítások. Hiány
 | **Beállítás** | **Leírás** |
 | --- | --- |
 |  <ul><li>EnableGroupCreation<li>Típus: Logikai<li>Alapértelmezett: True (Igaz) |A jelzőt, amely azt jelzi, hogy az Office 365-csoport létrehozása engedélyezett-e a címtárban nem rendszergazdai felhasználók által. Ezt a beállítást nem szükséges egy Azure Active Directory Premium P1-licencet.|
-|  <ul><li>GroupCreationAllowedGroupId<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |A biztonsági csoport, amelynek a tagjai hozhatnak létre az Office 365-csoportok GUID akkor is, ha EnableGroupCreation == false. |
-|  <ul><li>UsageGuidelinesUrl<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |A Csoporthasználati mutató hivatkozást. |
-|  <ul><li>ClassificationDescriptions<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Besorolási leírások vesszővel tagolt listája. ClassificationDescriptions értéke csak érvényes a következő formátumban:
+|  <ul><li>GroupCreationAllowedGroupId<li>Típus: String<li>Alapértelmezett érték: "" |A biztonsági csoport, amelynek a tagjai hozhatnak létre az Office 365-csoportok GUID akkor is, ha EnableGroupCreation == false. |
+|  <ul><li>UsageGuidelinesUrl<li>Típus: String<li>Alapértelmezett érték: "" |A Csoporthasználati mutató hivatkozást. |
+|  <ul><li>ClassificationDescriptions<li>Típus: String<li>Alapértelmezett érték: "" | Besorolási leírások vesszővel tagolt listája. ClassificationDescriptions értéke csak érvényes a következő formátumban:
   $setting ["ClassificationDescriptions"] = "Besorolást: leírás, besorolási: Description", ahol a besorolás megegyezik a ClassificationList a karakterláncokat.|
-|  <ul><li>DefaultClassification<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | A besorolás, amely használható az alapértelmezett besorolást egy csoportot, ha nem.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Egy legfeljebb 64 karakter hosszúságú, amely meghatározza az Office 365-csoportok konfigurált elnevezési karakterlánc. További információkért lásd: [Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Vesszővel tagolt karakterláncot, amely a felhasználók csoport a nevek és aliasok használata nem fog tudni kifejezések közül. További információkért lásd: [Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md). |
+|  <ul><li>DefaultClassification<li>Típus: String<li>Alapértelmezett érték: "" | A besorolás, amely használható az alapértelmezett besorolást egy csoportot, ha nem.|
+|  <ul><li>PrefixSuffixNamingRequirement<li>Típus: String<li>Alapértelmezett érték: "" | Egy legfeljebb 64 karakter hosszúságú, amely meghatározza az Office 365-csoportok konfigurált elnevezési karakterlánc. További információkért lásd: [Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Típus: String<li>Alapértelmezett érték: "" | Vesszővel tagolt karakterláncot, amely a felhasználók csoport a nevek és aliasok használata nem fog tudni kifejezések közül. További információkért lásd: [Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md). |
 | <ul><li>EnableMSStandardBlockedWords<li>Típus: Logikai<li>Alapértelmezett: "False" | Ne használja
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Típus: Logikai<li>Alapértelmezett: False (Hamis) | Logikai érték-e a vendégfelhasználó lehet-e a csoport tulajdonosa jelzi. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Típus: Logikai<li>Alapértelmezett: True (Igaz) | Jelző logikai érték beolvasása e vendég felhasználók még az Office 365-csoportok tartalomhoz való hozzáférését.  Ezt a beállítást nem szükséges egy Azure Active Directory Premium P1-licencet.|
-|  <ul><li>GuestUsageGuidelinesUrl<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | A Vendég használati útmutató mutató URL-címe |
+|  <ul><li>GuestUsageGuidelinesUrl<li>Típus: String<li>Alapértelmezett érték: "" | A Vendég használati útmutató mutató URL-címe |
 |  <ul><li>AllowToAddGuests<li>Típus: Logikai<li>Alapértelmezett: True (Igaz) | Egy logikai jelző Vendégek hozzáadása a címtárhoz engedélyezett-e.|
-|  <ul><li>ClassificationList<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |Az Office 365-csoportokra alkalmazható érvényes osztályozási értékeket vesszővel tagolt listája. |
+|  <ul><li>ClassificationList<li>Típus: String<li>Alapértelmezett érték: "" |Az Office 365-csoportokra alkalmazható érvényes osztályozási értékeket vesszővel tagolt listája. |
 
 ## <a name="read-settings-at-the-directory-level"></a>A könyvtár szintjén beállítások beolvasása
 Ezeket a lépéseket olvassa el a könyvtár szintjén beállításokat, amelyeket a alkalmazni az összes Office-csoportok a címtárban.

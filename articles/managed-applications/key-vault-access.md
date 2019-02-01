@@ -3,23 +3,24 @@ title: Az Azure Key Vault használata a felügyelt alkalmazások |} A Microsoft 
 description: Bemutatja, hogyan használja az Azure Key Vaultban titkos hozzáférési kódjainak, ha a felügyelt alkalmazások üzembe helyezése
 services: managed-applications
 author: tfitzmac
-manager: timlt
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcfbb7f3b1d110d4c1fdf22863d795c85152ec35
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 55410250ccd4dfceac8ac9ae5b81d4736de0d91a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725012"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492674"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Access Key Vault titkos kulcsából, Azure által felügyelt alkalmazások telepítésekor
 
-Továbbítása (például a jelszó) biztonságos értéket paraméterként, üzembe helyezés során szüksége, amikor az értéket lekérheti egy [Azure Key Vault](../key-vault/key-vault-whatis.md). A Key Vault hozzáférhet a felügyelt alkalmazások üzembe helyezéséhez, hozzáférést kell biztosítania a **készülék erőforrás-szolgáltató** egyszerű szolgáltatást. Ez a cikk ismerteti, hogyan konfigurálhatja a felügyelt alkalmazások használata a Key Vault.
+Továbbítása (például a jelszó) biztonságos értéket paraméterként, üzembe helyezés során szüksége, amikor az értéket lekérheti egy [Azure Key Vault](../key-vault/key-vault-whatis.md). A Key Vault hozzáférhet a felügyelt alkalmazások üzembe helyezéséhez, hozzáférést kell biztosítania a **készülék erőforrás-szolgáltató** egyszerű szolgáltatást. A felügyelt alkalmazások szolgáltatás műveletek futtatásához ezt az identitást használja. Sikeresen lekérése egy értéket a Key Vault üzembe helyezése során, az egyszerű szolgáltatás a Key Vault elérése érdekében képesnek kell lennie.
+
+Ez a cikk ismerteti, hogyan konfigurálhatja a felügyelt alkalmazások használata a Key Vault.
 
 ## <a name="enable-template-deployment"></a>Sablon üzembe helyezés engedélyezése
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: f8827f3013ee83d8f4846e7e15d34ea7c6553f24
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331809"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493592"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -141,6 +141,9 @@ Az alábbiakban az integrációsmodul-csomópontot integrációs közötti kommu
 - Tulajdonos alternatív nevére (SAN) tanúsítványok nem ajánlott, mert az csak az utolsó SAN elem fogja használni, és minden más figyelmen kívül hagyja az aktuális korlátozásai miatt. Például, ha SAN-tanúsítvány rendelkezik azon San lesznek **node1.domain.contoso.com** és **node2.domain.contoso.com**, használhatja ezt a tanúsítványt csak egy gép, amelynek a teljes tartománynév  **node2.domain.contoso.com**.
 - A tanúsítvány támogatja az SSL-tanúsítványokra vonatkozó Windows Server 2012 R2 által támogatott bármely kulcsának mérete.
 - CNG-kulccsal használó tanúsítványok nem támogatottak.  
+
+> [!NOTE]
+> Ez a tanúsítvány használható titkosításához a saját üzemeltetésű integrációs modul csomóponton használt portok **csomópontok közötti kommunikáció** (a szinkronizálási állapot), és miközben **PowerShell-lel társított szolgáltatáshoz parancsmag hitelesítőadat-beállítás**a helyi hálózaton belül. Javasoljuk, hogy ezt a tanúsítványt használja, ha a magánhálózati környezetben nem biztonságos, vagy ha szeretné, valamint a magánhálózaton lévő csomópontok közötti kommunikáció védelméhez. Adatok áthelyezése a saját üzemeltetésű integrációs modul átvitel pedig más adattárakban mindig bekövetkezik, titkosított csatornán, attól függetlenül, ezt a tanúsítványt, vagy nincs beállítva. 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>A saját üzemeltetésű integrációs modul osztanak meg több adat-előállítók
 

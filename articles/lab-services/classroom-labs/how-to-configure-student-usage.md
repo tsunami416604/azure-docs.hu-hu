@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 371751f2eb643c3699e5462fe44380d7792243ef
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 946a2a05cee0cf8f3b91eef58442fbb2e26935c4
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388308"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490447"
 ---
 # <a name="configure-usage-settings-and-policies"></a>És használati beállítások és szabályzatok konfigurálása
 Ez a cikk ismerteti a felhasználók hozzáadása a tesztkörnyezethez, azok regisztrálva a labor, szabályozhatja a virtuális Gépet, és további használatához órák száma. 
@@ -71,6 +71,9 @@ Felhasználónként kvóták az alábbi lépéseket követve állíthatja be:
 5. Láthatja azon órák számát az eszköztáron most: **Felhasználói kvóta: &lt;órák száma&gt;**. 
 
     ![Kvóta felhasználó szerint](../media/how-to-configure-student-usage/quota-per-user.png)
+
+> [!IMPORTANT]
+> A [ütemezett futtatási idő a virtuális gépek](how-to-create-schedules.md) nem számítanak bele a kvóta növeléséhez, a felhasználó számára engedélyezett. A kvóta pedig egy diák foglalkozik a virtuális gépek idő ütemezése kívül alkalommal. 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Felhasználók hozzáadása egy CSV-fájl feltöltésével
 A felhasználók e-mail-címét tartalmazó CSV-fájl feltöltésével is hozzáadhat felhasználókat.

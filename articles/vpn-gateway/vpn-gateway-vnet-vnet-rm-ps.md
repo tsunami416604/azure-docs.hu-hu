@@ -1,5 +1,5 @@
 ---
-title: 'Azure-alapú virtuális hálózat csatlakoztatása másik virtuális hálózathoz virtuális hálózatok közötti kapcsolattal: PowerShell | Microsoft Docs'
+title: 'Az Azure virtuális hálózat csatlakoztatása másik virtuális hálózathoz, virtuális hálózatok közötti kapcsolat használatával: PowerShell |} A Microsoft Docs'
 description: Egymáshoz csatlakoztathatja a virtuális hálózatokat a virtuális hálózatok közötti kapcsolat és a PowerShell használatával.
 services: vpn-gateway
 documentationcenter: na
@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: d890aabd6b0acad324ef4b632daaed1db6452ac5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686959"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510555"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
@@ -68,11 +68,11 @@ A kettő között az egyik legfőbb különbség az, hogy az eltérő előfizet�
 
 Ebben a gyakorlatban igény szerint kombinálhatja a konfigurációkat, vagy csak kiválaszthat egyet, amelyet használni kíván. Az összes konfiguráció a virtuális hálózatok közötti kapcsolattípust használja. A hálózati adatforgalom a közvetlenül egymáshoz csatlakoztatott virtuális hálózatok között zajlik. Ebben a gyakorlatban a TestVNet4 forgalma nem a TestVNet5 felé irányul.
 
-* [Azonos előfizetésben található virtuális hálózatok](#samesub): a konfiguráció lépései a TestVNet1 és TestVNet4 hálózatot használják.
+* [Azonos előfizetésben található virtuális hálózatok](#samesub): A konfiguráció lépései a TestVNet1 és TestVNet4 hálózatot használják.
 
   ![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [Eltérő előfizetésben található virtuális hálózatok](#difsub): a konfiguráció lépései a TestVNet1 és TestVNet5 hálózatot használják.
+* [Különböző előfizetésben található virtuális hálózatok](#difsub): Ez a konfiguráció lépései a TestVNet1 és testvnet5 hálózatot használják.
 
   ![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
@@ -90,34 +90,34 @@ A példákban a következő értékeket használjuk:
 
 **Értékek a TestVNet1-hez:**
 
-* Virtuális hálózat neve: TestVNet1
+* Virtuális hálózat neve: A TestVNet1
 * Erőforráscsoport: TestRG1
-* Hely: East US
-* TestVNet1: 10.11.0.0/16 és 10.12.0.0/16
-* Előtér: 10.11.0.0/24
+* Hely: USA keleti régiója
+* A TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
+* Előtérbeli: 10.11.0.0/24
 * Háttér: 10.12.0.0/24
-* Átjáróalhálózat: 10.12.255.0/27
+* Átjáró-alhálózat: 10.12.255.0/27
 * Átjáró neve: VNet1GW
-* Nyilvános IP-cím: VNet1GWIP
-* VPN típusa: RouteBased
-* Kapcsolat (1–4): VNet1toVNet4
-* Kapcsolat (1–5): VNet1toVNet5 (virtuális hálózatokhoz eltérő előfizetésekben)
-* Kapcsolat típusa: VNet2VNet
+* Nyilvános IP-címe: VNet1GWIP
+* VPNType: Útvonalalapú
+* Connection(1to4): VNet1toVNet4
+* Connection(1to5): VNet1toVNet5 (virtuális hálózatok különböző előfizetésekben)
+* ConnectionType: VNet2VNet
 
 **Értékek a TestVNet4-hez:**
 
-* Virtuális hálózat neve: TestVNet4
-* TestVNet2: 10.41.0.0/16 és 10.42.0.0/16
-* Előtér: 10.41.0.0/24
+* Virtuális hálózat neve: A TestVNet4
+* TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
+* Előtérbeli: 10.41.0.0/24
 * Háttér: 10.42.0.0/24
-* Átjáróalhálózat: 10.42.255.0/27
+* Átjáró-alhálózat: 10.42.255.0/27
 * Erőforráscsoport: TestRG4
-* Hely: West US
+* Hely: USA nyugati régiója
 * Átjáró neve: VNet4GW
-* Nyilvános IP-cím: VNet4GWIP
-* VPN típusa: RouteBased
+* Nyilvános IP-címe: VNet4GWIP
+* VPNType: Útvonalalapú
 * Kapcsolat: VNet4toVNet1
-* Kapcsolat típusa: VNet2VNet
+* ConnectionType: VNet2VNet
 
 
 ### <a name="Step2"></a>2. lépés – A TestVNet1 létrehozása és konfigurálása
@@ -305,16 +305,16 @@ Fontos ügyelni arra, hogy az új virtuális hálózat (TestVNet5) IP-címtere n
 
 * Virtuális hálózat neve: TestVNet5
 * Erőforráscsoport: TestRG5
-* Hely: Japan East
-* TestVNet5: 10.51.0.0/16 és 10.52.0.0/16
-* Előtér: 10.51.0.0/24
+* Hely: Kelet-Japán
+* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
+* Előtérbeli: 10.51.0.0/24
 * Háttér: 10.52.0.0/24
-* Átjáróalhálózat: 10.52.255.0.0/27
+* Átjáró-alhálózat: 10.52.255.0.0/27
 * Átjáró neve: VNet5GW
-* Nyilvános IP-cím: VNet5GWIP
-* VPN típusa: RouteBased
+* Nyilvános IP-címe: VNet5GWIP
+* VPNType: Útvonalalapú
 * Kapcsolat: VNet5toVNet1
-* Kapcsolat típusa: VNet2VNet
+* ConnectionType: VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>7. lépés – A TestVNet5 létrehozása és konfigurálása
 

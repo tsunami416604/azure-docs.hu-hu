@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 02d48768-ea9e-4bfe-ae54-b54c4bd0a789
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ab11783d48756796beae7485d65da73e58d0b71e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d4e1b78a302919df60b9a4b134314024a110a178
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161315"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494850"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Az Azure Active Directory hibrid identitás tervezési szempontok – következő lépések
 Most, hogy végrehajtotta a követelmények meghatározását és megvizsgálta az összes lehetséges a mobileszköz-felügyeleti megoldás, készen áll a következő lépésekkel jobbra, és a szervezet a támogató infrastruktúra üzembe helyezéséhez.

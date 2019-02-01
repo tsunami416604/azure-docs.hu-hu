@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 11/15/2018
+ms.date: 01/29/2019
 ms.author: stbaron
-ms.openlocfilehash: 3abf0268a7a6f84e5c26efc5643d048216fc2215
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d88eb0ee5e8ec4c14efeb47a144ec7080ac6eee3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163038"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508793"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések a az Azure resource health segítségével elérhető
 Alább az erőforrástípusok szerint resource health segítségével végrehajtott összes ellenőrzés teljes listája.
@@ -115,6 +115,11 @@ Alább az erőforrástípusok szerint resource health segítségével végrehajt
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Diagnosztikai műveletek végrehajtható a fürtön?</li></ul>|
+
+## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Ügyfelek felhasználó által a Service Bus hibákat tapasztal?</li><li>Az átmeneti hibák egy Service Bus-névtér frissítése miatt növelését tapasztalt felhasználók?</li></ul>|
 
 ## <a name="microsoftsqlserverdatabase"></a>Microsoft.SQL/Server/database
 |Végrehajtott ellenőrzések|

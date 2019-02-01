@@ -3,7 +3,7 @@ title: Oktatóanyag – LEMP üzembe helyezése Linux rendszerű virtuális gép
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan telepíthet LEMP stacket az Azure-ban üzemeltetett linuxos virtuális gépre
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/27/2017
-ms.author: danlep
-ms.openlocfilehash: c4926760162baa5687242f4372377c64c7e24b19
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.date: 01/30/2019
+ms.author: cynthn
+ms.openlocfilehash: 0a9d63f4064952adbfedfc3f9656370ef7c4a1cc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999358"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511277"
 ---
-# <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: LEMP-webkiszolgáló telepítése Linux rendszerű virtuális gépre az Azure-ban
+# <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: LEMP-webkiszolgáló telepítése Azure-beli Linux rendszerű virtuális gépen
 
 Ez a cikk ismerteti, hogyan helyezhet üzembe NGINX-webkiszolgálót, MySQL-t és PHP-t (a LEMP-vermet) Ubuntu rendszerű virtuális gépen az Azure-ban. A LEMP-verem a népszerű [LAMP-verem](tutorial-lamp-stack.md) alternatívája, amelyet az Azure-ban is telepíthet. Ha szeretné működés közben megtekinteni a LEMP-kiszolgálót, telepíthet és konfigurálhat egy WordPress-webhelyet. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -46,17 +46,15 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 Futtassa az alábbi parancsot az Ubuntu-csomag forrásainak frissítéséhez és az NGINX, a MySQL és a PHP telepítéséhez. 
 
 ```bash
-sudo apt update && sudo apt install nginx mysql-server php-mysql php php-fpm
+sudo apt update && sudo apt install nginx && sudo apt install mysql-server php-mysql php-fpm
 ```
 
-A rendszer felszólítja a csomagok és más függőségek telepítésére. Amikor a rendszer arra kéri, állítson be egy rendszergazdai jelszót a MySQL-hez, majd nyomja le az [Enter] billentyűt a folytatáshoz. Kövesse a lépéseket. Ezzel a folyamat telepíti a PHP MySQL-lel való használatához minimálisan szükséges PHP-bővítményeket. 
-
-![A MySQL rendszergazdai jelszavának oldala][1]
+A rendszer felszólítja a csomagok és más függőségek telepítésére. Ezzel a folyamat telepíti a PHP MySQL-lel való használatához minimálisan szükséges PHP-bővítményeket.  
 
 ## <a name="verify-installation-and-configuration"></a>A telepítés és a konfigurálás ellenőrzése
 
 
-### <a name="nginx"></a>NGINX
+### <a name="verify-nginx"></a>Ellenőrizze az nginx-et
 
 Ellenőrizze az NGINX verzióját a következő paranccsal:
 ```bash
@@ -68,7 +66,7 @@ Most, hogy az NGINX telepítve van, és a 80-as port meg van nyitva a virtuális
 ![Az NGINX alapértelmezett oldala][3]
 
 
-### <a name="mysql"></a>MySQL
+### <a name="verify-and-secure-mysql"></a>Győződjön meg arról, és biztonságos MySQL
 
 Ellenőrizze a MySQL verzióját a következő paranccsal (ügyeljen a nagybetűs `V` paraméterre):
 
@@ -76,24 +74,24 @@ Ellenőrizze a MySQL verzióját a következő paranccsal (ügyeljen a nagybetű
 mysql -V
 ```
 
-A MySQL telepítésének biztosításához futtassa a `mysql_secure_installation` szkriptet. Ha csak egy ideiglenes kiszolgálót állít be, kihagyhatja ezt a lépést. 
+A gyökér szintű jelszó beállításával együtt, MySQL telepítésének biztosításához futtassa a `mysql_secure_installation` parancsfájlt. 
 
 ```bash
-mysql_secure_installation
+sudo mysql_secure_installation
 ```
 
-Adjon meg egy rendszergazdai jelszót a MySQL számára, és konfigurálja a környezet biztonsági beállításait.
+Igény szerint beállíthatja a érvényesítése jelszó beépülő modult (ajánlott). Ezután állítson be jelszót a MySQL-gyökér szintű felhasználó számára, és konfigurálja a környezet többi biztonsági beállításait. Azt javasoljuk, hogy "Y" (Igen) válaszoljon minden kérdésre.
 
 Ha ki szeretné próbálni a MySQL funkcióit (MySQL-adatbázis létrehozása, felhasználók hozzáadása vagy a konfigurációs beállítások módosítása), jelentkezzen be a MySQL-be. Ez a lépés nem kötelező az oktatóanyag elvégzéséhez. 
 
 
 ```bash
-mysql -u root -p
+sudo mysql -u root -p
 ```
 
 Amikor végzett, a `\q` parancs beírásával lépjen ki a mysql parancssorból.
 
-### <a name="php"></a>PHP
+### <a name="verify-php"></a>Ellenőrizze a PHP
 
 Ellenőrizze a PHP verzióját a következő paranccsal:
 
@@ -109,7 +107,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-A szerkesztőben cserélje le az `/etc/nginx/sites-available/default` tartalmát az alábbira. A megjegyzésekben találja a beállítások magyarázatát. Helyettesítse be a virtuális gép nyilvános IP-címét a *yourPublicIPAddress* elem helyére, és hagyja változatlanul a többi beállítást. Ezután mentse a fájlt.
+A szerkesztőben cserélje le az `/etc/nginx/sites-available/default` tartalmát az alábbira. A megjegyzésekben találja a beállítások magyarázatát. Helyettesítse be a virtuális gép nyilvános IP-cím *yourPublicIPAddress*, erősítse meg a PHP verzióját `fastcgi_pass`, és a többi beállításnál hagyja meg. Ezután mentse a fájlt.
 
 ```
 server {
@@ -129,7 +127,7 @@ server {
     # Include FastCGI configuration for NGINX
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
     }
 }
 ```
@@ -177,6 +175,5 @@ Folytassa a következő oktatóanyaggal, amelyből megismerheti, hogyan tehetők
 > [!div class="nextstepaction"]
 > [Webkiszolgáló biztonságossá tétele SSL használatával](tutorial-secure-web-server.md)
 
-[1]: ./media/tutorial-lemp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lemp-stack/nginx.png

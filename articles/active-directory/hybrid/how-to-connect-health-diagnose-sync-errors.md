@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 8841a4d216160af4ed731570b40754307ffbb5a4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7f367049cda76eea2dfb3040f714a7050a26520e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996048"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495904"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnosztizálásához és elhárításához a duplikált attribútummal szinkronizálási hibák
 
@@ -52,7 +52,7 @@ A diagnosztizálás funkció támogatja a felhasználói objektumok, a következ
 | ------------------ | -----------------|
 | UserPrincipalName | QuarantinedAttributeValueMustBeUnique vagy AttributeValueMustBeUnique | 
 | ProxyAddresses | QuarantinedAttributeValueMustBeUnique vagy AttributeValueMustBeUnique | 
-| sipProxyAddress | AttributeValueMustBeUnique | 
+| SipProxyAddress | AttributeValueMustBeUnique | 
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
@@ -67,7 +67,7 @@ Az Azure Portalról lépéseket néhány meghatározott kezelhető helyzetek azo
 1.  Ellenőrizze a **állapotának diagnosztizálása** oszlop. Az állapot mutatja, hogy van-e egy lehetséges megoldást az egy szinkronizálási hiba közvetlenül az Azure Active Directoryból. Más szóval a hibaelhárítási folyamat, amely létezik is a hibaesetét szűkítéséhez és potenciálisan javítást.
 | status | Mit jelent? |
 | ------------------ | -----------------|
-| Nem indult el | A diagnosztikai folyamat még nem járt. A diagnosztikai eredményei függően egy lehetséges megoldást az közvetlenül a portálról a szinkronizálási hiba van. |
+| Nincs elindítva | A diagnosztikai folyamat még nem járt. A diagnosztikai eredményei függően egy lehetséges megoldást az közvetlenül a portálról a szinkronizálási hiba van. |
 | Manuális javítás szükséges | A hiba nem fér el a feltételeket a portálon elérhető javításokat. Mindkét ütköző típusú objektumokat nem a felhasználók, vagy már a diagnosztikai lépések végrehajtása, és a javítás megoldás nem érhető el a portálról. Az utóbbi esetben a javítás, ahonnan a helyszíni még mindig megoldás egyikét. [Tudjon meg többet a helyszíni javításokat](https://support.microsoft.com/help/2647098). | 
 | Folyamatban lévő szinkronizálás | Egy javítást alkalmaztak. A portál vár, hogy törölje a hiba a következő szinkronizálási ciklus. |
   >[!IMPORTANT]

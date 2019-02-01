@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3ba1f9afda1b4f7f227c996615cc17a8c604d5fb
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 33f96c67e7179104d1895cf62f834d3b592bee04
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138225"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487625"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>PowerShell-szkriptek futtatása a Windows virtuális gép futtatása paranccsal
 
@@ -65,14 +65,14 @@ Ez a táblázat Windows virtuális gépek esetében elérhető parancsok listáj
 |**RunPowerShellScript**|Egy PowerShell-parancsprogram végrehajtása|
 |**EnableRemotePS**|Konfigurálja a számítógépet, hogy engedélyezze a távoli PowerShell.|
 |**EnableAdminAccount**|Ha a helyi rendszergazdai fiók le van tiltva, és ha igen lehetővé teszi, hogy ellenőrzi.|
-|**IP-konfiguráció**| Részletes információk megjelenítése az IP-cím, alhálózati maszk és az alapértelmezett átjáró mindegyik adapterhez kötve a TCP/IP.|
+|**IPConfig**| Részletes információk megjelenítése az IP-cím, alhálózati maszk és az alapértelmezett átjáró mindegyik adapterhez kötve a TCP/IP.|
 |**RDPSettings**|Beállításjegyzék-beállítások és házirend beállításainak ellenőrzi. Házirend műveleteket javasol, ha a gép része egy tartománynak, vagy módosítja a beállításokat az alapértelmezett értékekre.|
 |**ResetRDPCert**|Eltávolítja az RDP-figyelő kötött SSL-tanúsítványt, és az RDP-listerner biztonsági visszaállítja az alapértelmezett. Akkor használja ezt a parancsfájlt, ha bármilyen problémát észlel, a tanúsítvány.|
 |**SetRDPPort**|Beállítja az alapértelmezett vagy felhasználó megadott portszám távoli asztali kapcsolatok. Lehetővé teszi, hogy a port hozzáférése bejövő tűzfalszabályt.|
 
 ## <a name="powershell"></a>PowerShell
 
-Az alábbiakban egy példa a használatával a [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) parancsmag-beli virtuális gépen egy PowerShell-szkript futtatásához.
+Az alábbiakban egy példa a használatával a [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) parancsmag egy PowerShell-parancsprogram futtatásához az Azure-beli virtuális gépen. A parancsmagnak a hivatkozott parancsprogram a `ScriptPath` változó elhelyezkednie, ahol folyamatban van, a parancsmag futtatása.
 
 ```azurepowershell-interactive
 Invoke-AzureRmVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}

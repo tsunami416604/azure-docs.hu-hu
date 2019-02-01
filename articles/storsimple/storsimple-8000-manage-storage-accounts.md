@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: afaa4c090508ee5a2306c2be1515076e6bd4f100
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 53aa442b86f5c82ded2f212a64f43852e6b3d2c5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225725"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486826"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a tárfiók hitelesítő adatainak kezelése
 
@@ -54,7 +54,7 @@ A végrehajtható storage-fiókokhoz kapcsolódó leggyakoribb feladatok a köve
 
 A tárfiókok a StorSimple-eszközre használható három típusa van.
 
-* **Automatikusan létrehozott tárfiókok** – javasol a neve, ahogy ez a tárfióktípus automatikusan jön létre a szolgáltatás első létrehozásakor. Ez a tárfiók létrehozását kapcsolatos további információkért lásd: [1. lépés: hozzon létre egy új szolgáltatást](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) a [a helyszíni StorSimple eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md). 
+* **Automatikusan létrehozott tárfiókok** – javasol a neve, ahogy ez a tárfióktípus automatikusan jön létre a szolgáltatás első létrehozásakor. Ez a tárfiók létrehozását kapcsolatos további információkért lásd: [1. lépés: Hozzon létre egy új szolgáltatást](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) a [a helyszíni StorSimple eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md). 
 * **A szolgáltatási előfizetés tárfiókjai** – ezek olyan, a szolgáltatás, amely ugyanahhoz az előfizetéshez társított Azure storage-fiókok. Ha többet szeretne megtudni arról, hogy ezen storage fiókokat hoznak létre, tekintse meg a [kapcsolatos Azure-Tárfiókok](../storage/common/storage-create-storage-account.md). 
 * **Storage-fiókok a szolgáltatási előfizetés kívül** – ezek azok az Azure storage-fiókok nem a szolgáltatáshoz rendelt és valószínűleg már létezett a szolgáltatás létrehozása előtt.
 
@@ -165,7 +165,7 @@ Tájékoztatja a változás a StorSimple-Eszközkezelő szolgáltatás, meg fog 
       
       ![kulcsok szinkronizálása](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
-Miután a kulcs sikeresen sycnhronized figyelmeztetésekhez.
+Ön értesítést kap, ha a kulcs szinkronizálása sikerült.
 
 #### <a name="to-synchronize-keys-for-storage-accounts-outside-of-the-service-subscription"></a>A szolgáltatási előfizetés kívül tárfiókok hívóbetűinek szinkronizálása
 1. Az a **szolgáltatások** lap, kattintson a **konfigurálása** fülre.

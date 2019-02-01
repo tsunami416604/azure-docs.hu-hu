@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7156042243b1ba28cea712dc3722600b9fc46c42
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 298c9fabca9d1994e0b952fdf8b48b70370c3ec2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360219"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490669"
 ---
 # <a name="what-is-azure-backup"></a>Mi az az Azure Backup?
 
@@ -47,8 +47,8 @@ Az Azure Backup és az Azure Site Recovery services egy üzletmenet-folytonossá
 
 Mindkét szolgáltatás különböző, de egymást kiegészítő funkciót kínál.
 
-- **Az Azure Site Recovery**: Site Recovery egy vész-helyreállítási megoldást biztosít, a helyszíni gépek és az Azure virtuális gépek. Replikálhat gépeket az elsődleges helyről egy másodlagos. Vészhelyreállítási feladatokat, amikor a szervezeti egység gépek átadja a feladatokat a másodlagos helyen, és ahonnan érheti el őket. Ha minden rendben működő általában újra, hogy sikertelen gépek biztonsági helyreállítási azokat az elsődleges helyen.
-- **Az Azure Backup**: Az Azure Backup szolgáltatás a helyszíni gépek és Azure-beli virtuális lemezein lévő adatokat. Adatok biztonsági mentése, illetve hogy olyan részletességgel, többek között a biztonsági mentést, fájlok, mappák, gép rendszerállapot és alkalmazás-felismerésre képes az adatok biztonsági mentése. Az Azure Backup az adatokat, mint a Site Recovery egy részletesebb szinten kezeli. Például ha laptopon lévő bemutató megsérült, használhatja az Azure Backup állíthatja vissza a bemutatót. Ha meg szeretné tartani a virtuális gép konfigurációs és adatok, biztonságos és elérhető-e, a Site Recovery használhatja.  
+- **Az Azure Site Recovery**: Site Recovery egy vész-helyreállítási megoldást biztosít, a helyszíni gépek és az Azure virtuális gépek. Replikálhat gépeket az elsődleges helyről egy másodlagos. Ha katasztrófa utáni feladatokat, gépek átadja a feladatokat a másodlagos helyen, és ahonnan érheti el őket. Ha minden rendben működő általában újra, hogy sikertelen gépek vissza az elsődleges helyen helyreállítani őket.
+- **Az Azure Backup**: Az Azure Backup szolgáltatás a helyszíni gépek és Azure-beli virtuális lemezein lévő adatokat. Adatok biztonsági mentése, illetve hogy olyan részletességgel, beleértve a fájlok, mappák, a gép rendszerállapot biztonsági mentése és alkalmazás-felismerésre képes az adatok biztonsági mentése. Az Azure Backup az adatokat, mint a Site Recovery egy részletesebb szinten kezeli. Például ha laptopon lévő bemutató megsérült, használhatja az Azure Backup állíthatja vissza a bemutatót. Ha meg szeretné tartani a virtuális gép konfigurációs és adatok, biztonságos és elérhető-e, a Site Recovery használhatja.  
 
 A tábla pontok használatával segít azonosítani a BCDR-igényeinek. 
 

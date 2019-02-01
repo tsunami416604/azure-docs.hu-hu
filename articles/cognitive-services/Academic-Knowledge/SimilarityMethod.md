@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 7484b570784f5f058ebd23b1e3c225c5d858a274
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0e42d5e05268d4a572376f2bdf25d0ce6f8f4be7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183339"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490124"
 ---
 # <a name="similarity-method"></a>Hasonlósági metódus
 
@@ -30,9 +30,9 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ## <a name="request-parameters"></a>A kérés paraméterei
 Paraméter        |Adattípus      |Szükséges | Leírás
 ----------|----------|----------|------------
-**s1**        |Karakterlánc   |Igen  |Összehasonlítandó karakterlánc *
-**s2**        |Karakterlánc   |Igen  |Összehasonlítandó karakterlánc *
-<sub> * Karakterláncok összehasonlítására van egy 1MB maximális hosszát. </sub>
+**s1**        |String   |Igen  |Összehasonlítandó karakterlánc *
+**s2**        |String   |Igen  |Összehasonlítandó karakterlánc *
+<sub> * Karakterláncok összehasonlítására rendelkezik egy legfeljebb 1MB. </sub>
 <br>
 ## <a name="response"></a>Válasz
 Name (Név) | Leírás

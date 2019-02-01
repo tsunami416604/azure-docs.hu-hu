@@ -1,8 +1,21 @@
 ---
-Cím: Adatokat importálhat fájl titleSuffix: Azure Machine Learning Studio description: Útmutató a betanítási adatok fájlok feltöltéséhez a merevlemez-meghajtóról az Azure Machine Learning Studióban. Ez létrehoz egy adatkészlet-modul a munkaterületen.
-szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.subservice: studio ms.topic: cikk
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
+title: Adatok importálása fájlból
+titleSuffix: Azure Machine Learning Studio
+description: Útmutató a betanítási adatok fájlok feltöltéséhez a merevlemez-meghajtóról az Azure Machine Learning Studióban. Ez létrehoz egy adatkészlet-modul a munkaterületen.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 03/20/2017
+ms.openlocfilehash: fe09eabe399af2d3ddc776843f39742774e6ea3c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495887"
 ---
 # <a name="import-training-data-from-a-file-on-your-hard-drive-into-azure-machine-learning-studio"></a>Betanítási adatok importálása egy fájlból a merevlemezen, az Azure Machine Learning studióba
 

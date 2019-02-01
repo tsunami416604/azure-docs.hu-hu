@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 727cf523f2a505729377f36738657fc5489134a7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 18fceca51ed67f5beca344160a73ae3f3d1a4b62
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025990"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491654"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a StorSimple-eszköz konfigurációjának módosítása
 
@@ -65,7 +65,7 @@ Az eszköz szinkronizálnia kell az időt ahhoz, hogy a tárolási szolgáltató
 
  A legördülő listából válassza ki az időzónát. Legfeljebb két Network Time Protocol (NTP) kiszolgálók is megadhatja:
 
- - **Elsődleges NTP-kiszolgáló** – a konfigurációs szükség, és van megadva a Windows PowerShell storsimple-höz készült használhatja az eszköz konfigurálása. Megadhatja, hogy a Windows Server alapértelmezett **time.windows.com** az NTP-kiszolgálóval. Az elsődleges NTP-kiszolgálókonfiguráció az Azure Portalon is megtekintheti, de a Windows PowerShell felületét a módosításhoz kell használnia. Használja a `Set-HcsNTPClientServerAddress` parancsmag használatával módosíthatja az eszköz elsődleges NTP-kiszolgálót. További információkért nyissa meg a synxtax [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmagot.
+ - **Elsődleges NTP-kiszolgáló** – a konfigurációs szükség, és van megadva a Windows PowerShell storsimple-höz készült használhatja az eszköz konfigurálása. Megadhatja, hogy a Windows Server alapértelmezett **time.windows.com** az NTP-kiszolgálóval. Az elsődleges NTP-kiszolgálókonfiguráció az Azure Portalon is megtekintheti, de a Windows PowerShell felületét a módosításhoz kell használnia. Használja a `Set-HcsNTPClientServerAddress` parancsmag használatával módosíthatja az eszköz elsődleges NTP-kiszolgálót. További információkért nyissa meg a szintaxis [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmagot.
 
 - **Másodlagos NTP-kiszolgáló** – a konfigurálása nem kötelező. A portál használatával egy másodlagos NTP-kiszolgálót konfigurálja.
 
@@ -85,7 +85,7 @@ Az eszköz próbál meg kommunikálni a tárolási szolgáltató használt DNS-k
 
 A magas rendelkezésre állás érdekében szükségesek az elsődleges, mind a másodlagos DNS-kiszolgálók konfigurálása a kezdeti üzembe helyezése során.
 
-**Elsődleges DNS-kiszolgáló** – a storsimple-höz készült Windows PowerShell segítségével először adja meg a elsődleges DNS-kiszolgáló a kezdeti beállítás során. Az elsődleges DNS-kiszolgáló csak a Windows PowerShell felületéről újra létrehozhatja. Használja a `Set-HcsDNSClientServerAddress` parancsmag használatával módosíthatja az eszköz elsődleges DNS-kiszolgálót. További információkért nyissa meg a synxtax [Set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmagot.
+**Elsődleges DNS-kiszolgáló** – a storsimple-höz készült Windows PowerShell segítségével először adja meg a elsődleges DNS-kiszolgáló a kezdeti beállítás során. Az elsődleges DNS-kiszolgáló csak a Windows PowerShell felületéről újra létrehozhatja. Használja a `Set-HcsDNSClientServerAddress` parancsmag használatával módosíthatja az eszköz elsődleges DNS-kiszolgálót. További információkért nyissa meg a szintaxis [Set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmagot.
 
 **Másodlagos DNS-kiszolgáló** – az a másodlagos DNS-kiszolgáló módosítani, használja a `Set-HcsDNSClientServerAddress` parancsmagot az eszköz a Windows PowerShell felületén, vagy **hálózati beállítások** panel az Azure Portalon a StorSimple-eszköz.
 
@@ -95,7 +95,7 @@ A másodlagos DNS-kiszolgáló Azure Portalon módosíthatja, hajtsa végre az a
 
 2. Az a **beállítások** panelen lépjen a **eszközbeállítások > hálózati**. Megnyílik a **hálózati beállítások** panelen. Kattintson a **DNS-beállítások** csempére. Módosítsa a másodlagos DNS IP-címét.
 
-    ![Másodlagos DNS-kiszolgáló IP adderss módosítása](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
+    ![Másodlagos DNS-kiszolgáló IP-cím módosítása](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
 
 4. A parancssávon kattintson **mentése** és amikor a rendszer megerősítést kér, kattintson a **OK**.
 

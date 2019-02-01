@@ -11,18 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: d86a1591c81c6343ec376c080945b4bf1f97638a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 064cef04ac609b0e6db5f55d9973e3974af8e0cc
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471776"
+ms.locfileid: "55494884"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén
 
 Általában Azure-erőforrások számára telepít egy erőforráscsoportot az Azure-előfizetésében. Azonban Ön is Azure-erőforráscsoportok létrehozása, és az Azure-erőforrások létrehozása az előfizetés szintjén. Az előfizetés szintjén sablonok üzembe helyezése, Azure CLI-vel és az Azure PowerShell használatához. Az Azure portal nem támogatja a központi telepítés az előfizetési csomagnak.
 
 Hozzon létre egy erőforráscsoportot az Azure Resource Manager-sablon, adjon meg egy [ **Microsoft.Resources/resourceGroups** ](/azure/templates/microsoft.resources/allversions.md) erőforrás nevét és az erőforráscsoport helyét. Hozzon létre egy erőforráscsoportot, és az adott erőforráscsoporton ugyanazt a sablont az erőforrások üzembe helyezése. Az erőforrások az előfizetési szinten üzembe helyezhető a következők: [Házirendek](../azure-policy/azure-policy-introduction.md), és [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 

@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50210ebeed30bdb58698d0e878667b92dcc73609
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f03fc201c1bce3187fdbd25c1de3567170478d30
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167087"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488438"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Az Azure Active Directory Connect szinkronizálási szolgáltatás: Konfigurálja az Office 365-erőforrások adatainak előnyben részesített helye
 Ez a témakör az a célja, hogy végigvezetik az attribútum a adatainak előnyben részesített helye konfigurálása az Azure Active Directory (Azure AD) Connect-szinkronizálás. Amikor valaki használ Multi-földrajzi funkciókat az Office 365-ben, ez az attribútum használatával a földrajzi helymeghatározás, a felhasználó Office 365-adatokat jelöl ki. (A használati *régió* és *földrajzi* azonos értelemben használják.)
@@ -123,7 +123,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
 3. Egy új bejövő szabály létrehozásához válassza **új szabály hozzáadása**.
 4. Alatt a **leírás** lapra, adja meg a következő konfigurációt:
 
-    | Attribútum | Value | Részletek |
+    | Attribútum | Érték | Részletek |
     | --- | --- | --- |
     | Name (Név) | *Adjon meg egy nevet* | Például "az ad-felhasználó preferredDataLocation" |
     | Leírás | *Adjon meg egy egyéni leírást* |  |
@@ -152,7 +152,7 @@ A kimenő szinkronizálási szabály lehetővé teszi a metaverzumba, hogy a flo
 3. Válassza ki **új szabály hozzáadása**.
 4. Alatt a **leírás** lapra, adja meg a következő konfigurációt:
 
-    | Attribútum | Value | Részletek |
+    | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
     | Name (Név) | *Adjon meg egy nevet* | Például "ki az Azure AD-felhasználó preferredDataLocation" |
     | Leírás | *Adjon meg egy leírást* ||
@@ -164,7 +164,7 @@ A kimenő szinkronizálási szabály lehetővé teszi a metaverzumba, hogy a flo
 
 5. Nyissa meg a **Scoping szűrő** lapra, és két záradékai egy egyetlen hatókörkezelési Szűrőcsoport hozzáadása:
 
-    | Attribútum | Művelet | Value |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |

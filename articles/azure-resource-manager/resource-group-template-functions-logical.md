@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8745519f1a0fdda7a5feb6ffb3f61e5250bb260a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8850ef68c665efcf9e66315af20b7d1e8492fc5f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164787"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493762"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok logikai függvények
 
@@ -31,6 +31,8 @@ Resource Manager összehasonlítások végzett a sablonok számos funkciót bizt
 * [not](#not)
 * [vagy](#or)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="and"></a>és
 `and(arg1, arg2)`
 
@@ -41,7 +43,7 @@ Ellenőrzi, hogy mindkét paraméter értéket Igaz.
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |logikai |Ellenőrizze, hogy az első értéket e igaz. |
-| Arg2 |Igen |logikai |A második érték, ellenőrizze, hogy igaz. |
+| arg2 |Igen |logikai |A második érték, ellenőrizze, hogy igaz. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -77,9 +79,9 @@ Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Logikai | False (Hamis) |
-| orExampleOutput | Logikai | True (Igaz) |
-| notExampleOutput | Logikai | False (Hamis) |
+| andExampleOutput | Bool | False (Hamis) |
+| orExampleOutput | Bool | True (Igaz) |
+| notExampleOutput | Bool | False (Hamis) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -90,7 +92,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 ## <a name="bool"></a>Logikai
@@ -141,10 +143,10 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| trueString | Logikai | True (Igaz) |
-| falseString | Logikai | False (Hamis) |
-| trueInt | Logikai | True (Igaz) |
-| falseInt | Logikai | False (Hamis) |
+| trueString | Bool | True (Igaz) |
+| falseString | Bool | False (Hamis) |
+| trueInt | Bool | True (Igaz) |
+| falseInt | Bool | False (Hamis) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -155,7 +157,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
 ```
 
 ## <a name="if"></a>Ha
@@ -252,8 +254,8 @@ Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| yesOutput | Sztring | igen |
-| noOutput | Sztring | nem |
+| yesOutput | String | igen |
+| noOutput | String | nem |
 | objectOutput | Objektum | {"teszt": "érték1"} |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
@@ -265,7 +267,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
 ```
 
 ## <a name="not"></a>nem
@@ -313,9 +315,9 @@ Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Logikai | False (Hamis) |
-| orExampleOutput | Logikai | True (Igaz) |
-| notExampleOutput | Logikai | False (Hamis) |
+| andExampleOutput | Bool | False (Hamis) |
+| orExampleOutput | Bool | True (Igaz) |
+| notExampleOutput | Bool | False (Hamis) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -326,7 +328,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) használ **nem** a [egyenlő](resource-group-template-functions-comparison.md#equals).
@@ -349,7 +351,7 @@ Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| checkNotEquals | Logikai | True (Igaz) |
+| checkNotEquals | Bool | True (Igaz) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -360,7 +362,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
 ```
 
 ## <a name="or"></a>vagy
@@ -373,7 +375,7 @@ Ellenőrzi, hogy mindkét paraméter értéke igaz.
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |logikai |Ellenőrizze, hogy az első értéket e igaz. |
-| Arg2 |Igen |logikai |A második érték, ellenőrizze, hogy igaz. |
+| arg2 |Igen |logikai |A második érték, ellenőrizze, hogy igaz. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -409,9 +411,9 @@ Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Logikai | False (Hamis) |
-| orExampleOutput | Logikai | True (Igaz) |
-| notExampleOutput | Logikai | False (Hamis) |
+| andExampleOutput | Bool | False (Hamis) |
+| orExampleOutput | Bool | True (Igaz) |
+| notExampleOutput | Bool | False (Hamis) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -422,7 +424,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 ## <a name="next-steps"></a>További lépések

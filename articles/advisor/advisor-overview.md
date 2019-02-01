@@ -4,20 +4,18 @@ description: Az Azure Advisor használata az Azure-környezetek optimalizálás�
 services: advisor
 documentationcenter: NA
 author: kasparks
-manager: ''
-ms.assetid: ''
 ms.service: advisor
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: 747ce8dc4a4e4c8ac1e26e5b051a431176096d71
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015976"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494545"
 ---
 # <a name="introduction-to-azure-advisor"></a>Bevezetés az Azure Advisor
 
@@ -36,9 +34,9 @@ Az Advisor keresztül érheti el a [az Azure portal](https://aka.ms/azureadvisor
 Az Advisor irányítópult személyre szabott ajánlatokat az összes előfizetés jeleníti meg.  Az adott előfizetésekre és -erőforrástípusok javaslatok megjelenítése szűrőket is alkalmazhat.  A javaslatok négy kategóriába oszthatók: 
 
 * **Magas rendelkezésre állású**: Győződjön meg arról, és javíthatja az üzleti szempontból kritikus fontosságú alkalmazások folytonosságát. További információkért lásd: [Advisor magas rendelkezésre állás – javaslatok](advisor-high-availability-recommendations.md).
-* **Biztonsági**: fenyegetések és biztonsági rések vezethet biztonsági rések észlelése. További információkért lásd: [Advisor biztonsági javaslatok](advisor-security-recommendations.md).
-* **Teljesítmény**: az alkalmazások a sebesség javítása érdekében. További információkért lásd: [Advisor teljesítményajánlásainak](advisor-performance-recommendations.md).
-* **Költség**: optimalizálása, és csökkentheti a teljes Azure költségeit. További információkért lásd: [Advisor díjakkal kapcsolatos ajánlások](advisor-cost-recommendations.md).
+* **Biztonsági**: Fenyegetések és biztonsági rések vezethet biztonsági rések észlelése. További információkért lásd: [Advisor biztonsági javaslatok](advisor-security-recommendations.md).
+* **Teljesítmény**: Az alkalmazások a sebesség javításához. További információkért lásd: [Advisor teljesítményajánlásainak](advisor-performance-recommendations.md).
+* **Költség**: Optimalizálása, és csökkentheti a teljes Azure költségeit. További információkért lásd: [Advisor díjakkal kapcsolatos ajánlások](advisor-cost-recommendations.md).
 
   ![Advisor-ajánlást típusok](./media/advisor-overview/advisor-dashboard.png)
 

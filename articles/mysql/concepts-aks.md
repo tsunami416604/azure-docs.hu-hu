@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.openlocfilehash: 624689fd6b9d8f364b0caf7e96b79b2773ce6171
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538174"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485449"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Csatlakozás az Azure Kubernetes Service és az Azure Database for MySQL-hez
 
@@ -32,6 +32,14 @@ Ellenőrizheti, hogy az AKS-fürt rendelkezik gyorsított hálózatkezelést:
 6. Nyissa meg a virtuális gép **hálózatkezelés** fülre.
 7. Győződjön meg róla hogy **gyorsított hálózatkezelés** "Engedélyezve van."
 
+Vagy az Azure CLI-n keresztül az alábbi két parancs használatával:
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
+```
+A kimenet a létrehozott erőforráscsoportot, hogy az AKS hoz létre, amely tartalmazza a hálózati adapter lesz. "NodeResourceGroup" nevét, és a következő parancsot használhatja. **EnableAcceleratedNetworking** vagy lesz true vagy FALSE (hamis):
+```azurecli
+az network nic list --resource-group nodeResourceGroup -o table
+```
 
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
 [Nyissa meg a Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) lehetővé teszi a közvetlenül a Kubernetes vagy a Cloud Foundry Azure-szolgáltatások kiépítése. Ez egy [Open Service Broker API](https://www.openservicebrokerapi.org/) megvalósítása az Azure-hoz.

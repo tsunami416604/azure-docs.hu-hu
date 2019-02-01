@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/23/2019
-ms.openlocfilehash: eca67cb70756dd1184bd3a66c2582743c8baa8fd
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 1/30/2019
+ms.openlocfilehash: 03e0db822e38cc6823fc32aa915dc9283fa46cbe
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903757"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493048"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvassa el a replikákat az Azure Database for MySQL-hez
 
@@ -20,7 +20,7 @@ ms.locfileid: "54903757"
 
 Az olvasási replika funkció lehetővé teszi, hogy replikálja az adatokat egy Azure Database for MySQL-kiszolgáló (master) legfeljebb öt csak olvasható kiszolgálók (replikák) azonos Azure-régióban. Csak olvasható replika aszinkron módon frissíti a MySQL-motor natív bináris napló (binlog) fájl elhelyezése-alapú replikációs technológiával. Binlog replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL binlog replikálációs szolgáltatása-áttekintés](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
-Az Azure Database for MySQL szolgáltatáshoz készült replika új kiszolgálókat, amelyek normál vagy önálló MySQL-kiszolgálók azonos módon kezelhetők. Minden egyes olvasható replika számlázzuk ki a virtuális magok kiépített számítási és a felhasznált tárterület GB/hó. 
+Az Azure Database for MySQL szolgáltatáshoz készült replika új kiszolgálókat, amelyek normál vagy önálló MySQL-kiszolgálók azonos módon kezelhetők. A díj minden olvasási replika esetén a virtuális magok kiépített számítási feladatain és a GB/hó alapon megszabott tárhelyen alapul. 
 
 
 MySQL replikációs szolgáltatásai és problémákkal kapcsolatos további információkért tekintse meg a [MySQL replikációs dokumentáció](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
@@ -86,6 +86,7 @@ A fölérendelt kiszolgáló a felhasználók a olvasható replikák replikáló
 - A replika egy replika létrehozása nem támogatott.
 - Előfordulhat, hogy a táblák replikák szinkronizálva lesz. Ez az egyik korlátozása a MySQL replikációs technológiával. További információ: a [MySQL dokumentációja](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) további információt.
 - Hangolási a [ `innodb_file_per_table` ](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) paraméter egy fő kiszolgálón után lesz szinkronizálva a replika egy adatbázisreplika-kiszolgáló létrehozása okozhat. Az adatbázisreplika-kiszolgáló még nem ismeri, a másik táblahelyeket.
+- Győződjön meg arról, a fölérendelt kiszolgáló táblák elsődleges kulcsot tartalmaznak. Elsődleges kulcsok hiánya a master és a replikák közötti replikációs késés eredményezhet.
 - Tekintse át a MySQL replikációs korlátozások a teljes listáját a [MySQL dokumentációja](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)
 
 

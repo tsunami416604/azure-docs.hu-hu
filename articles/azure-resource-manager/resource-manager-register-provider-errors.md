@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 704aa488d40a18d7be0b64c9fc9a1bd33f8a3d96
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e87ff83470ac8d375b4eee3b69f8793e3e11c0f5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184542"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497417"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Javítsa ki a hibákat az erőforrás-szolgáltatói regisztrációt
 
 Ez a cikk ismerteti a hibák jelentkezhetnek, ha korábban még nem használta az előfizetés erőforrás-szolgáltató használatával.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Jelenség
 
@@ -53,28 +55,28 @@ Ezek a hibák három okok egyike jelenhet meg:
 
 ## <a name="solution-1---powershell"></a>Megoldás 1 – PowerShell
 
-A PowerShell esetében használja **Get-AzureRmResourceProvider** a regisztrációs állapot megtekintéséhez.
+A PowerShell esetében használja **Get-AzResourceProvider** a regisztrációs állapot megtekintéséhez.
 
 ```powershell
-Get-AzureRmResourceProvider -ListAvailable
+Get-AzResourceProvider -ListAvailable
 ```
 
-Regisztrálja a szolgáltatót, használja a **Register-AzureRmResourceProvider** , és adja meg a regisztrálni kívánt erőforrás-szolgáltató nevét.
+Regisztrálja a szolgáltatót, használja a **Register-AzResourceProvider** , és adja meg a regisztrálni kívánt erőforrás-szolgáltató nevét.
 
 ```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
+Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
 A támogatott helyek egy adott típusú erőforrás használja:
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
 A támogatott API-verziók egy adott típusú erőforrás használja:
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
 ## <a name="solution-2---azure-cli"></a>2 – Azure CLI megoldás

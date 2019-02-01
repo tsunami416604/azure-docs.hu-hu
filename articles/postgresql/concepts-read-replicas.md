@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 9270c3290bd7be0bbb79d30aff8becc04dcfc603
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 017abd72b3aa1547844f977c3efda69e59901a6f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903995"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487948"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL olvasható replika
 
@@ -20,7 +20,7 @@ ms.locfileid: "54903995"
 
 Az olvasási replika funkció teszi, hogy az adatok replikálása az Azure Database for PostgreSQL-kiszolgáló (master) legfeljebb öt csak olvasható kiszolgálók (olvassa el a replikákat) azonos Azure-régióban. Olvasható replika aszinkron módon frissíti a PostgreSQL-motor natív replikációs technológiával.
 
-Replikák olyan új, normál önálló Azure Database for PostgreSQL-kiszolgálók hasonló módon kezelhetők. Minden egyes olvasható replika számlázzuk ki a virtuális magok kiépített számítási és a felhasznált tárterület GB/hó.
+Replikák olyan új, normál önálló Azure Database for PostgreSQL-kiszolgálók hasonló módon kezelhetők. A díj minden olvasási replika esetén a virtuális magok kiépített számítási feladatain és a GB/hó alapon megszabott tárhelyen alapul.
 
 ## <a name="when-to-use-read-replicas"></a>Mikor érdemes használni az olvasási replikák
 Az olvasási replika funkció célja javítsák a teljesítményét és skálázhatóságát olvasásigényű munkaterhelésekhez. Például az olvasási számítási feladatok lehet a replikákra, elkülönített közben a master írási számítási feladatok lehet irányítani.
@@ -101,7 +101,7 @@ Is [megtudhatja, hogyan állítsa le az Útmutató dokumentáció replika](howto
 **Azure.replication_support** be kell állítani a REPLIKA a fölérendelt kiszolgáló replika létrehozása előtt. Ez a paraméter módosítása érvénybe léptetéséhez kiszolgáló újraindítását igényli. Ez a paraméter csak az általános célú és memóriahasználatra optimalizált csomagokra vonatkozik.
 
 ### <a name="stopped-replicas"></a>Leállított replikák
-Állítsa le a master és a replika közötti replikációt választja, a replika újraindul a alkalmazni ezeket a módosításokat. Ezt követően azt nem hajtható végre egy replika be újra.
+Ha leállítja a master és a replika közötti replikációt, a replika újraindul a alkalmazni ezt a módosítást. A replika majd lesz egy olvasási és írási kiszolgálón. Ezt követően azt nem hajtható végre egy replika be újra.
 
 ### <a name="replicas-are-new-servers"></a>Replika új kiszolgálók
 Replikák jönnek létre, új, Azure Database for PostgreSQL-kiszolgálót. Meglévő kiszolgálók nem hajtható végre, a replikákat.

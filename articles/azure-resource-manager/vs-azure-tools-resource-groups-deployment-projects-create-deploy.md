@@ -13,19 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6ff49b3a08977b28ae6fa0971e5c7d72af158a46
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0b00bff2b32ac9dd16d4d38ee35be006c0247bb8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081211"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493438"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
+
 A Visual Studio alkalmazással olyan projekteket hozhat létre, amelyekkel telepíthető az infrastruktúra és kód az Azure rendszerébe. Meghatározhatja például az alkalmazás webállomását, webhelyét és adatbázisát, továbbá telepítheti az infrastruktúrát a kóddal együtt. A Visual Studio számos különböző kezdősablont kínál a gyakori forgatókönyvek telepítéséhez. Ebben a cikkben egy webapp és egy SQL Database üzembe helyezésének módját ismerheti meg.  
 
 Ez a cikk bemutatja, hogyan használhatja a [Visual Studio 2017-et az Azure-fejlesztéssel és telepített ASP.NET számítási feladatokkal](/dotnet/azure/dotnet-tools). Amennyiben a Visual Studio 2015 2. frissítését és a Microsoft Azure SDK for .NET 2.9-et használja vagy a Visual Studio 2013-as verzióját Azure SDK 2.9-cel, a tapasztalt működés nagyjából azonos lesz.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="create-azure-resource-group-project"></a>Azure erőforráscsoport-projekt létrehozása
+
 Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **Webes alkalmazás + SQL** sablonból.
 
 1. A Visual Studióban válassza a **Fájl**, **Új projekt**, majd a **C#** vagy a **Visual Basic** lehetőséget (az, hogy melyik nyelvet választja, nincs hatással a későbbi szakaszokra, mert ezekben a projektekben csak JSON- és PowerShell-tartalom van). Ezután válassza a **Felhő** lehetőséget, majd az **Azure erőforráscsoport** projektet.
