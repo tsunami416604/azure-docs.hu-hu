@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 12/23/2018
 ms.author: zhshang
-ms.openlocfilehash: 45ceebef85254ff030d237f1af13f0750aaafeba
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 6b3ddf7d8069e689231b9dcb6f0f074e84052511
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811857"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663264"
 ---
 # <a name="azure-signalr-service-faq"></a>Az Azure SignalR Service – gyakori kérdések
 
@@ -20,7 +20,7 @@ ms.locfileid: "53811857"
 Igen.
 Az általános elérhetőség közleményt, lásd: [már általánosan elérhető az Azure SignalR Service](https://azure.microsoft.com/en-us/blog/azure-signalr-service-now-generally-available/). 
 
-[Az ASP.NET Core SignalR](https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction) teljes mértékben támogatott.
+[Az ASP.NET Core SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction) teljes mértékben támogatott.
 
 Az ASP.NET SignalR támogatása továbbra is van a *nyilvános előzetes verzióban*. Íme egy [példakód](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom).
 
@@ -37,7 +37,7 @@ Ha az alkalmazáskiszolgálókat, ez a hibaüzenet azt jelenti, hogy nincs alkal
 A lehetséges okok a következők:
 - Nincs alkalmazás kiszolgáló csatlakoztatva van a SignalR Service. Ellenőrizze a kiszolgáló alkalmazásnaplókat a lehetséges csatlakozási hibákat. Ebben az esetben a rendszer egynél több alkalmazás-kiszolgálók magas rendelkezésre állású Setting ritka.
 - Nincsenek kapcsolódási problémák SignalR Service példányaival. Ez a probléma átmeneti, és automatikusan helyre.
-Ha nem szűnik meg, a több mint egy óráig [nyisson egy problémát a Githubon](https://github.com/Azure/azure-signalr/issues/new) vagy [hozzon létre egy támogatási kérést az Azure-ban](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request).
+Ha nem szűnik meg, a több mint egy óráig [nyisson egy problémát a Githubon](https://github.com/Azure/azure-signalr/issues/new) vagy [hozzon létre egy támogatási kérést az Azure-ban](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Ha több, ügyfél-üzenetek érkeznek minden kiszolgáló, vagy csak az egyik?
 
@@ -67,4 +67,4 @@ Nem.
 
 Az Azure SignalR Service minden három szállítások, amely alapértelmezés szerint támogatja az ASP.NET Core SignalR biztosít. Érték nem módosítható. SignalR Service és az összes ügyfél-kapcsolatok átvitel fogja kezelni.
 
-Ügyféloldali átvitelek dokumentált módon konfigurálható [Itt](https://docs.microsoft.com/en-us/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports).
+Ügyféloldali átvitelek dokumentált módon konfigurálható [Itt](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports).

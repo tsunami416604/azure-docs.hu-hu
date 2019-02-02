@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 08e144022c79182a63fd99dbce48a5e505aba3f2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c1bc4265c44f007e794b873d732a06d1e30f324f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477998"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661938"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Más szolgáltatások integrálása az SQL Data warehouse-bA
 A fő funkciói mellett az SQL Data Warehouse lehetővé teszi a felhasználók számos, az Azure-ban a más szolgáltatások integrálása. Ezek a szolgáltatások a következők:
@@ -41,7 +41,7 @@ Az Azure Data Factory egy felügyelt platform összetett kinyerési létrehozás
 * **Tárolt eljárások**: Koordinálhatja az SQL Data Warehouse a tárolt eljárások végrehajtását.
 * **Másolás**: Az ADF használata adatok áthelyezéséhez az SQL Data Warehouse-bA. Ez a művelet az ADF standard szintű adatátviteli mechanizmus vagy a PolyBase a háttérben. 
 
-További információkért lásd: [integrálás az Azure Data Factoryvel](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json).
+További információkért lásd: [integrálás az Azure Data Factoryvel](https://docs.microsoft.com/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json).
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 Az Azure Machine Learning egy teljes körűen felügyelt elemzési szolgáltatás, amely lehetővé teszi, hogy bonyolult modellek prediktív eszközök használatával hozzon létre egy. Az SQL Data Warehouse a forrás- és a cél ezen modellek is támogatott, a következő funkciók:

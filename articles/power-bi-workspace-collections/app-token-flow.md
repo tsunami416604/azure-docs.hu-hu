@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: a51664144d0dba8eeb82999b212beaf79b4503b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 125c3a925bf6eff04035bb755a07f19367d1abd2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236930"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661088"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Hitelesítés és engedélyezés a Power BI munkaterületi gyűjteményekkel
 
@@ -41,12 +41,12 @@ Az alkalmazás-jogkivonatára tartalmazza a következő jogcímek:
 | Jogcím | Leírás |    
 | --- | --- |
 | **ver** |Az alkalmazás-jogkivonatára verziója. 0.2.0 van a jelenlegi verziót. |
-| **AUD** |A jogkivonat az illetékes címzett. A Power BI-Munkaterületcsoportok használatával: *https:\//analysis.windows.net/powerbi/api*. |
+| **aud** |A jogkivonat az illetékes címzett. A Power BI-Munkaterületcsoportok használatával: *https:\//analysis.windows.net/powerbi/api*. |
 | **iss** |Egy karakterlánc, amely az alkalmazás, amely kiállította a jogkivonatot. |
 | **type** |A létrehozott alkalmazás-jogkivonatára típusa. Aktuális az egyetlen támogatott típus: **beágyazási**. |
 | **Windows azonnali csatlakozás** |A munkaterületi gyűjtemény nevének a jogkivonat kiállítása az folyamatban van. |
-| **WID-topológiával** |Munkaterület-Azonosítót a jogkivonat kiállítása az folyamatban van. |
-| **a relatív azonosítók** |A jogkivonat Jelentésazonosító küldése történik. |
+| **wid** |Munkaterület-Azonosítót a jogkivonat kiállítása az folyamatban van. |
+| **rid** |A jogkivonat Jelentésazonosító küldése történik. |
 | **felhasználónév** (nem kötelező) |Az rls-t használja, felhasználónév egy karakterláncérték, amely segítségével azonosítható a felhasználó az RLS-szabályok alkalmazásakor. |
 | **szerepkörök** (nem kötelező) |A sorszintű biztonsági szabályok alkalmazásakor kiválasztható szerepköröket tartalmazó karakterlánc. Több szerepkör átadásakor kell azokat átadni, egy karakterlánc-tömbben. |
 | **Szolgáltatáskapcsolódási pont** (nem kötelező) |Az engedélyek hatókörök tartalmazó karakterlánc. Több szerepkör átadásakor kell azokat átadni, egy karakterlánc-tömbben. |
@@ -84,7 +84,7 @@ Body
 
 ```
 
-Nincsenek elérhető belül az SDK-k, hogy az alkalmazás-jogkivonatokról létrehozása egyszerűbben módszereket. Ha például a .NET-hez tekintse meg a [Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) osztály és a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) módszereket.
+Nincsenek elérhető belül az SDK-k, hogy az alkalmazás-jogkivonatokról létrehozása egyszerűbben módszereket. Ha például a .NET-hez tekintse meg a [Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) osztály és a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) módszereket.
 
 A .NET SDK-ban, olvassa el [hatókörök](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.scopes).
 
@@ -176,10 +176,10 @@ Miután **Power BI-Munkaterületcsoportok** küld a felhasználónak, a felhaszn
 
 ## <a name="see-also"></a>Lásd még:
 
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Ismerkedés a Microsoft Power BI-Munkaterületcsoportok minta](get-started-sample.md)  
 [A Microsoft Power BI-Munkaterületcsoportok gyakori helyzetek](scenarios.md)  
 [Ismerkedés a Microsoft Power BI munkaterületi gyűjteményekkel](get-started.md)  
-[A Power bi-CSharp Git-adattár](https://github.com/Microsoft/PowerBI-CSharp)
+[PowerBI-CSharp Git Repo](https://github.com/Microsoft/PowerBI-CSharp)
 
 További kérdései vannak? [Tegye próbára a Power BI közösségét](http://community.powerbi.com/)

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 35c5731d260fb63dece3d2b8ae4f4a4522fb91b8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d36abb669490b3d3f6818c018b3844a82ecd0617
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153404"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564789"
 ---
 # <a name="date-claims-transformations"></a>Dátum jogcím-átalakítás
 
@@ -23,7 +23,7 @@ ms.locfileid: "55153404"
 
 Ez a cikk példákat ad az identitás-kezelőfelületi keretrendszer séma Dátumátalakítások jogcímek használata az Azure Active Directory (Azure AD) B2C-ben. További információkért lásd: [ClaimsTransformations](claimstransformations.md).
 
-## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan 
+## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan
 
 Ellenőrzi, hogy egy dátum és idő jogcím (karakterlánc) adattípusa későbbi, mint a második dátum és idő jogcím (karakterlánc adattípusú), és kivételt jelez.
 
@@ -85,7 +85,6 @@ Az önellenőrzött technikai profilban meghívja az érvényesítés **bejelent
     - **rightOperand**: 2018-10-01T14:00:00.0000000Z
 - Eredmény: Hiba lépett fel
 
-
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
 Konvertálja a **dátum** takar, egy **DateTime** takar. A jogcímek átalakítását a időformátumra alakítja át, és 12:00:00-kor hozzáadja a dátumhoz.
@@ -98,7 +97,7 @@ Konvertálja a **dátum** takar, egy **DateTime** takar. A jogcímek átalakít�
 A következő példa bemutatja a jogcím átalakítása `dateOfBirth` (dátum adattípusú) egy másik jogcímek `dateOfBirthWithTime` (dátum/idő adattípussal).
 
 ```XML
-<ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
+  <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="dateOfBirth" TransformationClaimType="inputClaim" />
     </InputClaims>
@@ -163,7 +162,7 @@ Futtassa a jogcím-átalakítást, szüksége lesz az aktuális dátum és idő 
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isLastTOSAcceptedGreaterThanNow" TransformationClaimType="result" />
-  </OutputClaims>      
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -175,6 +174,5 @@ Futtassa a jogcím-átalakítást, szüksége lesz az aktuális dátum és idő 
 - Bemeneti paraméterek:
     - **operátor**: későbbi, mint
     - **timeSpanInSeconds**: 7776000 (90 nap)
-- Kimeneti jogcímek: 
+- Kimeneti jogcímek:
     - **eredmény**: igaz
-

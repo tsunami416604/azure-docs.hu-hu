@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7dffa1480be73f1dbf5e99d11fd8d33eb2ab9038
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 816d25473bfe5f9dc61d6d6f2e50d6cd82ace50c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196412"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562189"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata az Azure Active Directory B2C egy egyéni házirend használatával konfigurálja
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C-vel az erőforrás tulajdonosának jelszavas hitelesítő adatainak (ROPC) folyamata egy OAuth standard hitelesítési folyamatát. Ezt a folyamatot, az alkalmazás, más néven a függő entitás cseréje jogkivonatokat érvényes hitelesítő adatokat. A hitelesítő adatok közé tartozik a felhasználói Azonosítót és jelszót. A visszaadott jogkivonatok egy azonosító jogkivonat, a hozzáférési jogkivonatot és a egy frissítési jogkivonatot. 
+Az Azure Active Directory (Azure AD) B2C-vel az erőforrás tulajdonosának jelszavas hitelesítő adatainak (ROPC) folyamata egy OAuth standard hitelesítési folyamatát. Ezt a folyamatot, az alkalmazás, más néven a függő entitás cseréje jogkivonatokat érvényes hitelesítő adatokat. A hitelesítő adatok közé tartozik a felhasználói Azonosítót és jelszót. A visszaadott jogkivonatok egy azonosító jogkivonat, a hozzáférési jogkivonatot és a egy frissítési jogkivonatot.
 
 A következő beállítások támogatottak a ROPC folyamatban:
 
 - **Natív ügyfél** -felhasználói beavatkozás során a hitelesítés során történik, ha a felhasználó ügyféloldali eszközön fut kódja.
 - **Nyilvános client flow** – csak a felhasználó hitelesítő adatait, amely gyűjti az adatokat az alkalmazások által az API-hívás küldi el. A hitelesítő adatokat, az alkalmazás nem küld.
-- **Új jogcímeket adhatnak hozzá** – új jogcímeket adhatnak hozzá az azonosító jogkivonat tartalma módosítható. 
+- **Új jogcímeket adhatnak hozzá** – új jogcímeket adhatnak hozzá az azonosító jogkivonat tartalma módosítható.
 
 A következő folyamatok nem támogatottak:
 
@@ -43,7 +43,7 @@ Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – els
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
-3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**. 
+3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
 4. Válassza ki **alkalmazások**, majd válassza ki **Hozzáadás**.
 5. Adja meg egy nevet az alkalmazásnak, például *ROPC_Auth_app*.
 6. Válassza ki **nem** a **Web App/Web API**, majd válassza ki **Igen** a **natív ügyfél**.
@@ -193,7 +193,7 @@ Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – els
           </Metadata>
         </TechnicalProfile>
       </TechnicalProfiles>
-    </ClaimsProvider>    
+    </ClaimsProvider>
     ```
 
 6. Adjon hozzá egy **UserJourneys** elem és az alárendelt elemei, a **TrustFrameworkPolicy** elem:
@@ -201,7 +201,7 @@ Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – els
     ```XML
     <UserJourney Id="ResourceOwnerPasswordCredentials">
       <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
-        <OrchestrationSteps>
+      <OrchestrationSteps>
         <OrchestrationStep Order="1" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="ResourceOwnerFlow" TechnicalProfileReferenceId="ResourceOwnerPasswordCredentials-OAUTH2" />
@@ -267,7 +267,7 @@ A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan AP
 - Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével.
 - Cserélje le `B2C_1A_ROPC_Auth` az erőforrás tulajdonosa hitelesítő adatok jelszóházirend teljes nevét.
 
-| Kulcs | Value |
+| Kulcs | Érték |
 | --- | ----- |
 | felhasználónév | `user-account` |
 | jelszó | `password1` |
@@ -278,7 +278,7 @@ A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan AP
 
 - Cserélje le `user-account` egy felhasználói fiók a bérlő nevével.
 - Cserélje le `password1` a felhasználói fiókhoz jelszót.
-- Cserélje le `application-id` az alkalmazás azonosítójával, a *ROPC_Auth_app* regisztráció. 
+- Cserélje le `application-id` az alkalmazás azonosítójával, a *ROPC_Auth_app* regisztráció.
 - *Offline_access* nem kötelező, ha szeretne kapni a frissítési jogkivonatot.
 
 A tényleges POST-kérés a következő példához hasonlóan néz ki:
@@ -291,17 +291,16 @@ Content-Type: application/x-www-form-urlencoded
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
 ```
 
-
 Offline hozzáférés a sikeres válasz az alábbi példához hasonlóan néz ki:
 
 ```JSON
-{ 
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...", 
-    "token_type": "Bearer", 
-    "expires_in": "3600", 
-    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6Ij...", 
-    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki..." 
-} 
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...",
+    "token_type": "Bearer",
+    "expires_in": "3600",
+    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6Ij...",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki..."
+}
 ```
 
 ## <a name="redeem-a-refresh-token"></a>A frissítési jogkivonat beváltása
@@ -313,7 +312,7 @@ Itt látható egy hasonló a POST híváson hozhatnak létre. Az adatokat haszn�
 - Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével.
 - Cserélje le `B2C_1A_ROPC_Auth` az erőforrás tulajdonosa hitelesítő adatok jelszóházirend teljes nevét.
 
-| Kulcs | Value |
+| Kulcs | Érték |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -322,7 +321,7 @@ Itt látható egy hasonló a POST híváson hozhatnak létre. Az adatokat haszn�
 | refresh_token | `refresh-token` |
 
 - Cserélje le `application-id` az alkalmazás azonosítójával, a *ROPC_Auth_app* regisztráció.
-- Cserélje le `refresh-token` együtt a **refresh_token** , amely az előző válaszban küldték. 
+- Cserélje le `refresh-token` együtt a **refresh_token** , amely az előző válaszban küldték.
 
 A sikeres válasz az alábbi példához hasonlóan néz ki:
 
@@ -350,5 +349,3 @@ Az Azure AD B2C megfelel-e nyilvános ügyfél erőforrás tulajdonosának jelsz
 
 - Az ebben a forgatókönyvben egy teljes példa a [egyéni házirendet kezdőcsomag az Azure Active Directory B2C](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
 - További információ az Azure Active Directory B2C a által használt jogkivonatokat a [jogkivonat-referencia](active-directory-b2c-reference-tokens.md).
-
-

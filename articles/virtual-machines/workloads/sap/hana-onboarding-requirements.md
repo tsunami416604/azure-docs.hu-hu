@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 01/31/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a445e5a7d230195472c2202d3f40458a23883e9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8cfcf9c2f008abb571347e32f2be190dc51901e3
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477851"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563830"
 ---
 # <a name="onboarding-requirements"></a>Bevezetési követelmények
 
@@ -33,7 +33,7 @@ Ebben a listában több, a SAP HANA futtatásához az Azure-ban (nagyobb példá
 
 **Hálózati kapcsolat**
 
-- Az Azure-bA helyszíni között ExpressRoute: Csatlakozás a helyi adatközpontban az Azure-ba, ügyeljen arra, hogy az internetszolgáltató által biztosított legalább 1-GB/s kapcsolat order. Nagyméretű HANA-példány egységek és Azure közötti kapcsolatot, valamint az ExpressRoute-technológiát használ. Ez a nagyméretű HANA-példány egységek és az Azure között ExpressRoute-kapcsolat a HANA nagyméretű példányok egységek a díja tartalmazza. Ezért ügyfélként nem vehető észre további költség mellett a helyszíni és az Azure között ExpressRoute hivatkozásra.
+- Az Azure-bA helyszíni között ExpressRoute: Csatlakozás a helyi adatközpontban az Azure-ba, ügyeljen arra, hogy az internetszolgáltató által biztosított legalább 1-GB/s kapcsolat order. Nagyméretű HANA-példány egységek és Azure közötti kapcsolatot, valamint az ExpressRoute-technológiát használ. Ez a nagyméretű HANA-példány egységek és az Azure között ExpressRoute-kapcsolat a HANA nagyméretű példányok egységek, az összes adat bejövő és kimenő vonatkozó díjakat az adott ExpressRoute-kapcsolatcsoport a díja tartalmazza. Ezért ügyfélként nem vehető észre további költség mellett a helyszíni és az Azure között ExpressRoute hivatkozásra.
 
 **Operációs rendszer**
 

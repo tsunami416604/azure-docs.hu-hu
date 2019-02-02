@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e37bc5f46a1a56357e3dff9d1f67de7dcc2537b0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 09/24/2018
+ms.openlocfilehash: fd420e29387aedd3f04fdf7437a3ef27c5589fc8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055305"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562895"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Egy több-bérlős Azure SQL-szilánkokra osztott adatbázis használó SaaS-alkalmazás az új bérlők kiépítése és katalógusba
 
@@ -28,7 +28,7 @@ Ez a cikk két fő részből áll:
 - [Általános vitafórum](#goto_2_conceptual) a kiépítés és katalogizálás új bérlők.
 
 - [Az oktatóanyag](#goto_1_tutorial) , amely kiemeli a PowerShell-szkriptkódot, hogy a kiépítés és katalogizálás műveleteket hajtja végre.
-    - Az oktatóanyag a Wingtip Tickets SaaS-alkalmazást, igazított, a több-bérlős, szilánkokra osztott adatbázis minta használja.
+  - Az oktatóanyag a Wingtip Tickets SaaS-alkalmazást, igazított, a több-bérlős, szilánkokra osztott adatbázis minta használja.
 
 <a name="goto_2_conceptual"/>
 
@@ -143,10 +143,10 @@ Ebben a szakaszban a főbb műveletek üzembe helyezés a PowerShell-szkriptek �
 
 Lépkedjen végig a kiépítési munkafolyamat fő elemei a következők:
 
-- **Az új bérlőkulcs kiszámítása**: kivonatoló függvényt használja a bérlői kulcs létrehozásához a bérlő nevéből.
+- **Az új bérlőkulcs kiszámítása**: A bérlőkulcsot egy kivonatoló algoritmus hozza létre a bérlő nevéből.
 - **Ellenőrizze, hogy a bérlői kulcs már**: A katalógus be van jelölve, a kulcs nem már regisztrált biztosításához.
-- **Az alapértelmezett bérlői adatbázis bérlői inicializálása**: A bérlői adatbázis úgy frissül, és vegye fel az új bérlő adatait.  
-- **A katalógus-bérlő regisztrálásához**: az új bérlőkulcs és a meglévő tenants1-adatbázis közötti bekerül a katalógusba. 
+- **Az alapértelmezett bérlői adatbázis bérlői inicializálása**: A bérlői adatbázis frissül, vegye fel az új bérlő adatait.  
+- **A katalógus-bérlő regisztrálásához**: Az új bérlőkulcs és a meglévő tenants1-adatbázis közötti hozzáadódik a katalógusban. 
 - **A bérlő nevét hozzá egy katalógus bővítmény táblához**: A helyszín neve bekerül a bérlők tábla a katalógusban.  A Hozzáadás bemutatja, hogyan a katalógus-adatbázis támogatására, további alkalmazásspecifikus adatait is kiterjeszthető.
 - **Nyissa meg az új bérlő eseményeket felsoroló weblapunkon**: A *Bushwillow Blues* események lap megnyitása a böngészőben.
 
@@ -161,7 +161,7 @@ Szeretné megtudni, hogyan a Wingtip alkalmazás valósít meg olyan megosztott 
    - **$VenueType** = **blues**, az előre beállított helyszíntípusok egyike: blues, tánc, tánc, jazz, dzsúdó, motorsport, többcélú, opera, rockzene, futball (kisbetűk, szóközök nélkül).
    - **$DemoScenario** = **1**, hogy más bérlők felhasználóival megosztott adatbázist az új bérlő kiépítéséhez.
 
-2. Adjon hozzá egy töréspontot ehhez vigye a kurzort bárhol a arról, hogy a sor 38, sor: *New-Tenant "*, és nyomja le az **F9**.
+2. Adjon hozzá egy töréspontot ehhez vigye a kurzort bárhol a arról, hogy a sor 38, sor: *Új bérlő "*, és nyomja le az **F9**.
 
    ![töréspont](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
@@ -181,12 +181,12 @@ Hibakeresés a PowerShell-parancsfájlokkal kapcsolatos további információké
 
 A munkafolyamat a parancsfájl nyomkövetése során végighaladhat fő elemei a következők:
 
-- **Az új bérlőkulcs kiszámítása**: kivonatoló függvényt használja a bérlői kulcs létrehozásához a bérlő nevéből.
+- **Az új bérlőkulcs kiszámítása**: A bérlőkulcsot egy kivonatoló algoritmus hozza létre a bérlő nevéből.
 - **Ellenőrizze, hogy a bérlői kulcs már**: A katalógus be van jelölve, a kulcs nem már regisztrált biztosításához.
-- **Hozzon létre egy új bérlői adatbázist**: az adatbázis másolásával létrehozása a *basetenantdb* adatbázis egy Resource Manager-sablon használatával.  Az új adatbázis neve a bérlő neve alapján.
-- **Adatbázis-katalógushoz hozzáadott**: az új bérlői adatbázis regisztrálása a katalógusban szereplő szegmensek szerint.
-- **Az alapértelmezett bérlői adatbázis bérlői inicializálása**: A bérlői adatbázis úgy frissül, és vegye fel az új bérlő adatait.  
-- **A katalógus-bérlő regisztrálásához**: az új bérlőkulcs közötti leképezést, és a *sequoiasoccer* adatbázis bekerül a katalógusba.
+- **Hozzon létre egy új bérlői adatbázist**: Az adatbázis másolásával létrehozása a *basetenantdb* adatbázis egy Resource Manager-sablon használatával.  Az új adatbázis neve a bérlő neve alapján.
+- **Adatbázis-katalógushoz hozzáadott**: Az új bérlői adatbázis regisztrálása a katalógusban szereplő szegmensek szerint.
+- **Az alapértelmezett bérlői adatbázis bérlői inicializálása**: A bérlői adatbázis frissül, vegye fel az új bérlő adatait.  
+- **A katalógus-bérlő regisztrálásához**: Az új bérlőkulcs közötti leképezést, és a *sequoiasoccer* adatbázis bekerül a katalógusba.
 - **Bérlő neve bekerül a katalógusba**: A helyszín neve bekerül a bérlők bővítmény tábla a katalógusban.
 - **Nyissa meg az új bérlő eseményeket felsoroló weblapunkon**: A *Sequoia foci* események lap megnyitása a böngészőben.
 

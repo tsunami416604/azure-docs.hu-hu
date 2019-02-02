@@ -11,34 +11,35 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 75da9fd6dbd6218e46925eb2fc6cbec4969d5925
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 446203b45744a95c32cd41d9ded26fd960ac8a22
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867800"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561433"
 ---
 # <a name="elastic-database-tools-glossary"></a>Rugalmas adatbáziseszközökkel kapcsolatos
+
 Az alábbi feltételek vannak definiálva a [rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md), az Azure SQL Database szolgáltatás. Az eszközök kezelésére használhatók [szilánkleképezések](sql-database-elastic-scale-shard-map-management.md), és tartalmazzák a [ügyféloldali kódtár](sql-database-elastic-database-client-library.md), a [felosztási-egyesítési eszközének](sql-database-elastic-scale-overview-split-and-merge.md), [rugalmas készletek](sql-database-elastic-pool.md), és [lekérdezések](sql-database-elastic-query-overview.md). 
 
 Ezek a fogalmak szerepelnek [hozzáadása a rugalmas Adatbáziseszközök használatáról szegmensek](sql-database-elastic-scale-add-a-shard.md) és [szilánkleképezési problémák javítása a RecoveryManager osztállyal](sql-database-elastic-database-recovery-manager.md).
 
 ![Rugalmas méretezés feltételek][1]
 
-**Adatbázis**: egy Azure SQL-adatbázist. 
+**Adatbázis**: Azure SQL Database-adatbázis. 
 
-**Adatfüggő útválasztás**: A funkciót, amely lehetővé teszi az alkalmazás egy adott horizontális skálázási kulcs megadott szilánk csatlakozni. Lásd: [Adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md). Második összehasonlítandó  **[Többszegmenses lekérdezés](sql-database-elastic-scale-multishard-querying.md)**.
+**Adatfüggő útválasztás**: A funkció, amely lehetővé teszi az alkalmazás egy adott horizontális skálázási kulcs megadott szilánk csatlakozni. Lásd: [Adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md). Második összehasonlítandó  **[Többszegmenses lekérdezés](sql-database-elastic-scale-multishard-querying.md)**.
 
-**Globális szegmenstérkép**: A térképen a horizontális skálázás kulcsok és a megfelelő szegmens belül között egy **szegmens set**. A globális szegmenstérkép tárolja a **szilánkleképezés-kezelővel**. Második összehasonlítandó **helyi szegmenstérkép**.
+**Globális szegmenstérkép**: A térkép a horizontális skálázás kulcsok és a megfelelő szegmens belül között egy **szegmens set**. A globális szegmenstérkép tárolja a **szilánkleképezés-kezelővel**. Második összehasonlítandó **helyi szegmenstérkép**.
 
-**Listás szegmenstérkép**: horizontálispartíció-térkép, mely a horizontális skálázás a kulcsok külön-külön vannak leképezve. Második összehasonlítandó **tartomány-Szegmenstérkép**.   
+**Listás szegmenstérkép**: Horizontális skálázási térképet, mely a horizontális skálázás a kulcsok külön-külön vannak leképezve. Második összehasonlítandó **tartomány-Szegmenstérkép**.   
 
-**Helyi szegmenstérkép**: egy szegmens tárolja, a helyi szegmenstérkép a szegmensben lévő shardlet adatain leképezéseit tartalmazza.
+**Helyi szegmenstérkép**: Egy szegmens tárolja, a helyi szegmenstérkép a szegmensben lévő shardlet adatain leképezéseit tartalmazza.
 
-**Többszegmenses lekérdezés**: lehetővé teszi ki egy lekérdezést több szegmens; eredmények csoportok UNION ALL szemantika (más néven "lekérdezés logikájával") adott vissza. Második összehasonlítandó **Adatfüggő útválasztás**.
+**Többszegmenses lekérdezés**: Lehetővé teszi egy lekérdezést több szegmens; kiadása eredmények csoportok használatával a UNION ALL szemantika (más néven "lekérdezés logikájával") adja vissza. Második összehasonlítandó **Adatfüggő útválasztás**.
 
-**Több-bérlős** és **egybérlős**: Ez egy egybérlős adatbázis és a egy több-bérlős adatbázis jeleníti meg:
+**Több-bérlős** és **egybérlős**: Ez jeleníti meg, egy egybérlős adatbázis és a egy több-bérlős adatbázis:
 
 ![Egy vagy több-bérlős adatbázisok](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
 
@@ -46,42 +47,42 @@ Ezek a fogalmak szerepelnek [hozzáadása a rugalmas Adatbáziseszközök haszn�
 
 ![Egy vagy több-bérlős adatbázisok](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
 
-**Tartomány-szegmenstérkép**: horizontálispartíció-térkép, amelyben a szegmensek terjesztési stratégia több tartomány folytonos értékek alapján. 
+**Tartomány-szegmenstérkép**: Horizontálispartíció-térkép, amelyben a szegmensek terjesztési stratégia több tartomány folytonos értékek alapján. 
 
-**Táblák hivatkozhat**: táblákat, amelyek nem horizontálisan skálázott, de replikálódnak a szegmensek között. Például az irányítószámok hivatkozási táblában is tárolhatók. 
+**Táblák hivatkozhat**: Táblákhoz nem horizontálisan skálázott, de replikálódnak a szegmensek között. Például az irányítószámok hivatkozási táblában is tárolhatók. 
 
-**Szilánkleképezés**: egy Azure SQL database tárolja az adatokat egy horizontálisan skálázott adatok készletből. 
+**Szilánkleképezés**: Szilánkokra osztott adatok bizonyos adatokat tároló Azure SQL-adatbázist. 
 
-**A horizontális partíciók rugalmassága**: hajthatnak végre mindkét **horizontális skálázást** és **vertikális skálázás**.
+**A horizontális partíciók rugalmassága**: Mindkettő lehetővé **horizontális skálázást** és **vertikális skálázás**.
 
-**Horizontálisan particionált táblák**: táblákat, amelyek horizontálisan skálázott, azaz, amelynek az adatait a horizontális skálázási kulcs értéke alapján szegmensek között elosztott. 
+**Horizontálisan particionált táblák**: A táblázatok, amelyek horizontálisan skálázott, azaz, amelynek az adatait a horizontális skálázási kulcs értéke alapján szegmensek között elosztott. 
 
-**Horizontális skálázási kulcs**: egy oszlop értékét, amely meghatározza, hogyan szegmensek között elosztott adatokat. Az érték típusa a következők egyike lehet: **int**, **bigint**, **varbinary**, vagy **uniqueidentifier**. 
+**Horizontális skálázási kulcs**: Egy oszlop értéke, amely meghatározza, hogyan szegmensek között elosztott adatokat. Az érték típusa a következők egyike lehet: **int**, **bigint**, **varbinary**, vagy **uniqueidentifier**. 
 
-**Szilánkleképezés-készlet**: A gyűjtemény, amely ugyanahhoz a szegmenstérképhez a szilánkleképezés-kezelővel a rendelnek a szegmens.  
+**Szilánkleképezés-készlet**: A szegmensek, amelyek ugyanahhoz a szegmenstérképhez a szilánkleképezés-kezelővel a rendelnek a gyűjteménye.  
 
-**Shardlet**: az összes olyan szegmenskulcsot a szegmensek egyetlen érték társított adatokat. Egy shardlet adatáthelyezés lehető legkisebb egység esetén verziójának terjesztése a horizontálisan particionált táblák. 
+**Shardlet**: A szegmensek horizontális skálázási kulcs egyetlen értéket társított összes adatot. Egy shardlet adatáthelyezés lehető legkisebb egység esetén verziójának terjesztése a horizontálisan particionált táblák. 
 
-**Horizontális skálázási térképet**: horizontális skálázási kulcsok és a megfelelő szegmensek közötti leképezések halmaza.
+**Horizontális skálázási térképet**: A horizontális skálázás kulcsokat és a megfelelő szegmensek közötti leképezések halmaza.
 
-**Szilánkleképezés-kezelővel**: egy felügyeleti-objektum és az adattárhoz, amely tartalmazza a szegmens map(s), a szegmens helyek és a egy vagy több szegmensben készletek leképezését.
+**Szilánkleképezés-kezelővel**: A felügyeleti objektum és az adattárhoz, amely tartalmazza a szegmens map(s), a szegmens helyek és a egy vagy több szegmensben készletek leképezését.
 
 ![Leképezések][2]
 
 ## <a name="verbs"></a>Műveletek
-**Horizontális skálázás**: a méretezés ki (vagy a) a törvény szegmensek hozzáadásával vagy eltávolításával horizontálispartíció-térkép szilánkok, ahogy az alábbi gyűjteményét.
+**Horizontális skálázás**: A méretezés ki (vagy a) a törvény szegmensek hozzáadásával vagy eltávolításával horizontálispartíció-térkép szilánkok, ahogy az alábbi gyűjteményét.
 
 ![Vízszintes és függőleges skálázás][3]
 
-**Egyesítse**: shardlet áthelyezése két szegmensből egyik adatszilánkba író, és ennek megfelelően frissíti a horizontális skálázási térképet.
+**Egyesítse**: A törvény shardlet áthelyezése két szegmensből egyik adatszilánkba író, és ennek megfelelően frissíti a horizontális skálázási térképet.
 
-**Shardlet áthelyezési**: A művelet, egy egyetlen shardlet áthelyezése a másik adatszilánkba író. 
+**Shardlet áthelyezési**: A törvény egyetlen shardlet másik adatszilánkba író való áttérés. 
 
-**Szilánkleképezés**: a strukturált adatok horizontális particionálása azonos módon történő horizontális skálázási kulcs alapján több adatbázis között.
+**Szilánkleképezés**: A vízszintes particionálás azonos módon törvény strukturált adatok horizontális skálázási kulcs alapján több adatbázis között.
 
-**Split**: A művelet, egy szegmens több shardlet áthelyezését egy másik (általában új) szegmensben. Olyan szegmenskulcsot split pontot a felhasználó által megadott.
+**Split**: Az act az egyik szegmens több shardlet áthelyezését egy másik (általában új) szegmensben. Olyan szegmenskulcsot split pontot a felhasználó által megadott.
 
-**Függőleges méretezés**: A művelet méretezéssel (), a számítási méret az egyes szegmensek. Például módosítása szegmensek standardról prémium szintre (amely több számítási erőforrást eredményezi). 
+**Vertikális skálázás**: A művelet méretezéssel (), a számítási méret az egyes szegmensek. Például módosítása szegmensek standardról prémium szintre (amely több számítási erőforrást eredményezi). 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

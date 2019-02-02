@@ -11,22 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/02/2019
-ms.openlocfilehash: 496a6c45c9f8930f77b3a3dab2f81db1b24c1801
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: fab7ead59ce8d7e12d145095c64cedf4234e6233
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247204"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656719"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Az Azure Stack PKI-tanúsítványok előkészítése az üzembe helyezési vagy elforgatás használható
+
 A tanúsítványfájlokat [választott a hitelesítésszolgáltatótól kapott](azure-stack-get-pki-certs.md) kell exportálható és importálható az Azure Stack szemben támasztott követelményeknek megfelelő tulajdonságokkal.
 
-
 ## <a name="prepare-certificates-for-deployment"></a>Tanúsítványok telepítésének előkészítése
+
 Ezeket a lépéseket segítségével készítheti elő, és ellenőrizze az Azure Stack PKI-tanúsítványokat, amely egy új Azure Stack-környezet üzembe helyezéséhez, vagy a titkos kulcsokat egy meglévő Azure Stack-környezet a rotált használható: 
 
 ### <a name="import-the-certificate"></a>Importálja a tanúsítványt
@@ -83,7 +84,9 @@ Nyissa meg a tanúsítványkezelőben MMC-konzolt, és csatlakozzon a helyi szá
     
     ![Tanúsítvány exportálása varázslóban a kiválasztott beállítások](./media/prepare-pki-certs\azure-stack-save-cert.png)
 
-1. Válassza ki **jelszó** , és adjon meg egy jelszót a tanúsítványokat. Ne felejtse el ezt a jelszót, mivel üzembehelyezési paraméterként szolgál. Kattintson a **Tovább** gombra.
+1. Válassza ki **jelszó** , és adjon meg egy jelszót a tanúsítványokat. Hozzon létre egy jelszót, amely megfelel a következő jelszó összetettségi követelményeknek. A minimális hossza nyolc karakternél. A jelszó tartalmazza a következők közül legalább háromból: nagybetűs levél, kisbetű, számok, a 0-9, különleges karakterek nem nagybetűssé vagy kisbetűssé nagybetű. Jegyezze meg ezt a jelszót. Üzembehelyezési paraméterként alkalmaznak.
+
+1. Kattintson a **Tovább** gombra.
 
 1. Válassza ki a fájl nevét és helyét, a pfx-fájljának exportálása. Kattintson a **Tovább** gombra.
 

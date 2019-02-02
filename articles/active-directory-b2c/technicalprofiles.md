@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c197ead3a7b0f61b9dd5f1e3ea0bd197c23a2778
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 86f2a8fa11becdf24c0a10c0325893946a033c3d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180766"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568175"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -97,7 +97,7 @@ A **TechnicalProfile** a következő elemeket tartalmazza:
 | OutputClaimsTransformations | 0:1 | Egy korábban meghatározott hivatkozik, amely után a jogcímeket a jogcímszolgáltatótól érkeznek végrehajtja a jogcímek átalakítása listája. |
 | ValidationTechnicalProfiles | 0:n | Egyéb technikai profilok, amely a technikai profil használja, ellenőrzési célból mutató hivatkozások listája. További információkért lásd: [ellenőrzési technikai profil](validation-technical-profile.md)|
 | SubjectNamingInfo | 0:1 | Az éles környezetben a jogkivonatokban, amelyben a tulajdonos neve van megadva külön-külön jogcímek a tulajdonos neve vezérli. Például OAuth vagy SAML.  |
-| IncludeClaimsFromTechnicalProfile | 0:1 | A technikai profil, ahonnan minden, a bemeneti és kimeneti jogcímek adni a technikai profil azonosítója. A hivatkozott technikai profil házirend ugyanebben a fájlban definiálni kell. | 
+| IncludeClaimsFromTechnicalProfile | 0:1 | A technikai profil, ahonnan minden, a bemeneti és kimeneti jogcímek adni a technikai profil azonosítója. A hivatkozott technikai profil házirend ugyanebben a fájlban definiálni kell. |
 | IncludeTechnicalProfile |0:1 | Egy, ahonnan a technikai profil hozzáadni kívánt összes adat technikai profil azonosítója. A hivatkozott technikai profil léteznie kell a ugyanazon házirend-fájlt. |
 | UseTechnicalProfileForSessionManagement | 0:1 | Munkamenet-kezelés használható különböző technikai profil. |
 |EnabledForUserJourneys| 0:1 |Ha a technikai profil a felhasználói út szabályozza.  |
@@ -168,7 +168,7 @@ A **InputClaims** elem tartalmazza a következő elemet:
 | ------- | ----------- | ----------- |
 | Bemeneti jogcím | 1:n | Egy várt bemeneti jogcím típusa. |
 
-#### <a name="inputclaim"></a>Bemeneti jogcím 
+#### <a name="inputclaim"></a>Bemeneti jogcím
 
 A **bemeneti jogcím** elem tartalmazza a következő attribútumokat:
 
@@ -186,7 +186,7 @@ A **PersistedClaims** elem a következő elemeket tartalmazza:
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1:n | A jogcímtípus is tartalmaz. |
 
-#### <a name="persistedclaim"></a>PersistedClaim 
+#### <a name="persistedclaim"></a>PersistedClaim
 
 A **PersistedClaim** elem tartalmazza a következő attribútumokat:
 
@@ -204,7 +204,7 @@ A **OutputClaims** elem tartalmazza a következő elemet:
 | ------- | ----------- | ----------- |
 | OutputClaim | 1:n | Várt kimenet jogcím típusa. |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>OutputClaim
 
 A **kimeneti jogcím** elem tartalmazza a következő attribútumokat:
 
@@ -275,9 +275,9 @@ A **UseTechnicalProfileForSessionManagement** elem tartalmazza a következő att
 A **ClaimsProviderSelections** egy felhasználói interakciósorozat határozza meg a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját. Az a **EnabledForUserJourneys** elem szűrése, mely jogcím-szolgáltatói érhető el a felhasználó számára. A **EnabledForUserJourneys** elem a következő értékek egyikét tartalmazza:
 
 - **Mindig**, hajtsa végre a technikai profil.
-- **Soha ne**, hagyja ki a technikai profil. 
-- **OnClaimsExistence** hajtható végre, csak akkor, ha egy bizonyos jogcím, a technikai profilban megadott létezik. 
-- **OnItemExistenceInStringCollectionClaim**, hajtsa végre, csak ha az elem már létezik egy karakterlánc-gyűjtemény jogcímet. 
+- **Soha ne**, hagyja ki a technikai profil.
+- **OnClaimsExistence** hajtható végre, csak akkor, ha egy bizonyos jogcím, a technikai profilban megadott létezik.
+- **OnItemExistenceInStringCollectionClaim**, hajtsa végre, csak ha az elem már létezik egy karakterlánc-gyűjtemény jogcímet.
 - **OnItemAbsenceInStringCollectionClaim** hajtható végre, csak ha egy elem nem létezik a gyűjtemény jogcím karakterlánc.
 
 Használatával **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** vagy **OnItemAbsenceInStringCollectionClaim**, meg kell adnia a következő metaadatok: **ClaimTypeOnWhichToEnable** Megadja, hogy ki kell értékelni a jogcím típusa **ClaimValueOnWhichToEnable** adja meg az összehasonlítandó értéket.
@@ -289,22 +289,10 @@ A következő technikai profil hajtja végre, ha csak a **identityProviders** ka
   <DisplayName>Unlink Facebook</DisplayName>
 ...
     <Metadata>
-        <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
-        <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
-    </Metadata>        
+      <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
+      <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
+    </Metadata>
 ...
   <EnabledForUserJourneys>OnItemExistenceInStringCollectionClaim</EnabledForUserJourneys>
-</TechnicalProfile>  
+</TechnicalProfile>
 ```
-
-
-
-
-
-
-
-
-
-
-
-

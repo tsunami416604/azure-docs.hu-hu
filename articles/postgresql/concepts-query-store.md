@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 86b6c4284cccb183ac9f19911abd4b6cb1d308e5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/01/2019
+ms.openlocfilehash: a6b31933f7170006046846c458e21efd8c54034c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546912"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660727"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>A Query Store teljesítmény figyelése
 
@@ -83,16 +83,16 @@ Ha engedélyezve van a Query Store a 15 perces összesítési windows rendszerbe
 A következő beállítások konfigurálásához a Query Store paraméterek érhetők el.
 | **A paraméter** | **Leírás** | **Alapértelmezett** | **Címtartomány**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Megadja, hogy melyik utasításokat követi. | felső | nincs, az első, az összes |
+| pg_qs.query_capture_mode | Megadja, hogy melyik utasításokat követi. | nincs | nincs, az első, az összes |
 | pg_qs.max_query_text_length | A lekérdezés maximális hossza, melyekbe menthetők a állítja be. Hosszabb lekérdezések csonkolva lesz. | 6000 | 100 - 10 EZER |
-| pg_qs.retention_period_in_days | A megőrzési időszak beállítása. | 7 | 1 – 30 |
+| pg_qs.retention_period_in_days | A megőrzési időszak beállítása. | 7 | 1 - 30 |
 | pg_qs.track_utility | Megadja, hogy segédprogram parancsokat a rendszer nyomon követi-e | be | bekapcsolt kikapcsolt |
 
 A következő beállítások kifejezetten statisztika várjon vonatkoznak.
 | **A paraméter** | **Leírás** | **Alapértelmezett** | **Címtartomány**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | Utasítások nyomon követi a csoportok várjon statisztikák. | nincs | nincs, az összes|
-| Pgms_wait_sampling.history_period | Állítsa a gyakoriságot, ezredmásodpercben, mely várakozási esemény történik az adatgyűjtés. | 100 | 1 – 600000 |
+| Pgms_wait_sampling.history_period | Állítsa a gyakoriságot, ezredmásodpercben, mely várakozási esemény történik az adatgyűjtés. | 100 | 1-600000 |
 
 > [!NOTE] 
 > **pg_qs.query_capture_mode** felülír **pgms_wait_sampling.query_capture_mode**. Ha pg_qs.query_capture_mode nem sem, akkor a pgms_wait_sampling.query_capture_mode beállítás nem befolyásolja.
@@ -111,8 +111,8 @@ Ez a nézet az összes adat Query Store adja vissza. Az egyes különálló adat
 |**Name (Név)**   |**Típus** | **Hivatkozások**  | **Leírás**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | A runtime_stats_entries tábla azonosítója|
-|a USER_ID paraméter értékét    |objektumazonosító    |pg_authid.OID  |Az utasítás végrehajtása felhasználó Objektumazonosítója|
-|db_id  |objektumazonosító    |pg_database.OID    |OID-adatbázis, amelyben a rendszer az utasítást hajtott végre|
+|user_id    |objektumazonosító    |pg_authid.oid  |Az utasítás végrehajtása felhasználó Objektumazonosítója|
+|db_id  |objektumazonosító    |pg_database.oid    |OID-adatbázis, amelyben a rendszer az utasítást hajtott végre|
 |query_id   |bigint  || A belső kivonatkód, az utasítás elemzési fa erősségével|
 |query_sql_text |Varchar(10000)  || Egy tipikus utasítás szövege. Ugyanazzal a struktúrával különböző lekérdezéseket fürtözöttek együtt; Ez a szöveg az a szöveg az első a lekérdezések a fürt számára.|
 |plan_id    |bigint |   |Ez a lekérdezés nem érhető el megfelelő még a csomag azonosítója|
@@ -151,8 +151,8 @@ Ez a nézet értéket ad vissza a Query Store eseményadatai várjon. Az egyes k
 
 |**Name (Név)**|  **Típus**|   **Hivatkozások**| **Leírás**|
 |---|---|---|---|
-|a USER_ID paraméter értékét    |objektumazonosító    |pg_authid.OID  |Az utasítás végrehajtása felhasználó Objektumazonosítója|
-|db_id  |objektumazonosító    |pg_database.OID    |OID-adatbázis, amelyben a rendszer az utasítást hajtott végre|
+|user_id    |objektumazonosító    |pg_authid.oid  |Az utasítás végrehajtása felhasználó Objektumazonosítója|
+|db_id  |objektumazonosító    |pg_database.oid    |OID-adatbázis, amelyben a rendszer az utasítást hajtott végre|
 |query_id   |bigint     ||A belső kivonatkód, az utasítás elemzési fa erősségével|
 |event_type |szöveg       ||Az esemény, amelynek a háttérrendszer arra vár, hogy típusát|
 |esemény  |szöveg       ||A várakozási esemény neve, ha a háttérrendszer jelenleg vár|
@@ -164,7 +164,7 @@ Query_store.qs_reset() void adja vissza
 
 `qs_reset` az összes statisztika Query Store által eddig összegyűjtött elveti. Ez a funkció csak a kiszolgálói rendszergazdai szerepkör által hajtható végre.
 
-Query_store.staging_data_reset() void adja vissza
+Query_store.staging_data_reset() returns void
 
 `staging_data_reset` a memória a Query Store (azaz az adatokat a memóriában, amely nem kiürítése megtörtént, de az adatbázishoz) által gyűjtött összes statisztikai elveti. Ez a funkció csak a kiszolgálói rendszergazdai szerepkör által hajtható végre.
 

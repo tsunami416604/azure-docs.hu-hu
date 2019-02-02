@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 938aadaa1d17135808cbeb34adac5139bd61f833
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2ebba9a66e55cf82f42773276e36a952264eeee2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545022"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656311"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurálja és kiszolgálói naplók elérése az Azure CLI-vel
 A PostgreSQL-kiszolgáló hibanaplói a parancssori felület (Azure CLI) használatával töltheti le. Azonban a tranzakciós naplókhoz való hozzáférés nem támogatott. 
@@ -38,7 +38,7 @@ A naplófájlokban található kiszolgáló listázhatja **mydemoserver.postgres
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-locally-from-the-server"></a>Naplók helyi letöltése a kiszolgálóról
-Az a [az postgres server-naplók letöltése](/cli/azure/postgres/server-logs#az_postgres_server_logs_download) parancsot, az egyes naplófájlok töltheti le a kiszolgáló számára. 
+Az a [az postgres server-naplók letöltése](/cli/azure/postgres/server-logs) parancsot, az egyes naplófájlok töltheti le a kiszolgáló számára. 
 
 Az alábbi példát követve töltse le a kiszolgáló a megadott naplófájlt **mydemoserver.postgres.database.azure.com** az erőforráscsoportba tartozó **myresourcegroup** a helyi környezetben.
 ```azurecli-interactive

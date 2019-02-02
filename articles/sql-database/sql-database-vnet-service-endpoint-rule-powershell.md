@@ -11,15 +11,15 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: b841f985c758cb1e354d3c3537c532a253e81d92
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 10/23/2018
+ms.openlocfilehash: ae29fcfe39b5844ab948eb55ca314ae51dcae174
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945926"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566177"
 ---
-# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Hozzon létre egy virtuális szolgáltatás végpontját és a VNet szabály SQL
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Az SQL virtuális szolgáltatásvégpont és VNet szabály létrehozása
 
 Mindkét Azure [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) virtuális Szolgáltatásvégpontok támogatja.
 
@@ -31,7 +31,7 @@ Ez a cikk biztosít, és elmagyarázza, egy PowerShell-parancsprogram, amely a k
 1. Létrehoz egy Microsoft Azure *virtuális szolgáltatásvégpont* az alhálózaton található.
 2. A végpont ad hozzá a tűzfalat az Azure SQL Database-kiszolgáló létrehozásához egy *virtuális hálózati szabályt*.
 
-A szabályok létrehozásához motivációit mutatjuk be: [virtuális Szolgáltatásvégpontok Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
+A szabályok létrehozásához motivációit mutatjuk be: [Az Azure SQL Database virtuális Szolgáltatásvégpontok][sql-db-vnet-service-endpoint-rule-overview-735r].
 
 > [!TIP]
 > Ha szüksége, mérje fel, vagy adja hozzá a virtuális szolgáltatásvégpont *típusnév* az SQL Database, az alhálózatra, áttérhet a szélesebb [PowerShell-parancsprogram közvetlen](#a-verify-subnet-is-endpoint-ps-100).
@@ -42,11 +42,11 @@ Ez a cikk emeli ki a **új New-AzureRmSqlServerVirtualNetworkRule** parancsmag, 
 
 Az alábbi lista tartalmazza a sorozat egyéb *fő* parancsmagok, amelyek futtatnia kell a hívás előkészítése **új New-AzureRmSqlServerVirtualNetworkRule**. Ez a cikk ezeket a hívásokat fordulnak elő [parancsfájl 3 "virtuális hálózati szabály"](#a-script-30):
 
-1. [Új AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig): egy alhálózat objektumot hoz létre.
-2. [Új-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork): a virtuális hálózatot hoz létre az alhálózat számára.
-3. [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig): az alhálózat egy virtuális végpontot rendel.
-4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): továbbra is fennáll a frissítések a virtuális hálózat.
-5. [Új AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): Miután az alhálózat egy végpontot, hozzáadja az alhálózat egy virtuális hálózati szabály, az ACL-t az Azure SQL Database-kiszolgáló.
+1. [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig): Egy alhálózat objektumot hoz létre.
+2. [New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork): Jogosultságot ad az alhálózat a virtuális hálózatot hoz létre.
+3. [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig): Az alhálózat egy virtuális végpontot rendel.
+4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): Továbbra is fennáll, a virtuális hálózaton végzett frissítések.
+5. [New-AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): Miután az alhálózat egy végpontot, hozzáadja az alhálózat egy virtuális hálózati szabály, az ACL-t az Azure SQL Database-kiszolgáló.
    - Ez a parancsmag kínál a paraméter **- IgnoreMissingVNetServiceEndpoint**, már akár az Azure RM PowerShell-modul 5.1.1-es verzió.
 
 ## <a name="prerequisites-for-running-powershell"></a>Futtatja a Powershellt előfeltételei
@@ -63,7 +63,7 @@ A PowerShell-parancsprogram bemutató kisebb parancsfájlok sorozatát oszlik. A
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>Parancsfájl-1: változók
+### <a name="script-1-variables"></a>1. parancsfájl: Változók
 
 Az első PowerShell-parancsprogram értékeket rendel a változókat. Az ezt követő parancsfájlok attól függ, hogy ezeket a változókat.
 
@@ -112,7 +112,7 @@ Write-Host 'Completed script 1, the "Variables".';
 
 <a name="a-script-20" />
 
-### <a name="script-2-prerequisites"></a>Parancsfájl-2: Előfeltételek
+### <a name="script-2-prerequisites"></a>2. parancsfájlt: Előfeltételek
 
 Ez a parancsfájl előkészíti a következő szkriptet, ahol a végpont beavatkozásra. Ez a szkript létrehoz az Ön számára a következő elemek, de csak listában, ha azok nem léteznek. Szkript 2 kihagyhatja, ha biztos benne, hogy ezek az elemek már létezik:
 
@@ -203,7 +203,7 @@ Write-Host 'Completed script 2, the "Prerequisites".';
 
 <a name="a-script-30" />
 
-## <a name="script-3-create-an-endpoint-and-a-rule"></a>Parancsfájl 3: A végpont és a egy szabály létrehozása
+## <a name="script-3-create-an-endpoint-and-a-rule"></a>3. parancsfájlt: A végpont és a egy szabály létrehozása
 
 Ez a szkript létrehoz egy virtuális hálózat alhálózatához. Ezután a parancsfájl hozzárendeli a **Microsoft.Sql** típusú végpont az alhálózathoz. Végül pedig a parancsfájl az SQL Database-kiszolgálóhoz, és ezáltal a szabály létrehozása a hozzáférés-vezérlési lista (ACL) ad hozzá az alhálózat.
 
@@ -289,7 +289,7 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 
 <a name="a-script-40" />
 
-## <a name="script-4-clean-up"></a>Szkript 4: Karbantartás
+## <a name="script-4-clean-up"></a>4. parancsfájlt: Karbantartás
 
 A végső parancsfájl törli a bemutató a korábbi parancsfájlok létrehozott erőforrásokat. Azonban a parancsprogram kéri a jóváhagyás előtt törli a következő:
 

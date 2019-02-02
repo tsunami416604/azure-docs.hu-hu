@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 2523db3d817b4281b6435374ef0cca4e1d2da695
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 432f2495dd1b4c8aeb761d12904adf26f3c24c0b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005857"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660697"
 ---
 # <a name="available-event-hubs-apis"></a>Elérhető Event Hubs API-k
 
@@ -31,7 +31,7 @@ Az alábbi szakasz az összes jelenleg elérhető az Azure Event Hubs futásidej
 
 Minden egyes futásidejű kódtár az aktuális állapotával kapcsolatos további információkért lásd: [további információkat](#additional-information).
 
-| Nyelv és Platform | Ügyfélcsomag | EventProcessorHost csomag | Tárház |
+| Nyelv és Platform | Ügyfélcsomag | EventProcessorHost csomag | Adattár |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHubon](https://github.com/azure/azure-event-hubs-dotnet) |
 | .NET-keretrendszer | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | – |
@@ -43,7 +43,7 @@ Minden egyes futásidejű kódtár az aktuális állapotával kapcsolatos továb
 
 #### <a name="net"></a>.NET
 
-A .NET-ökoszisztéma több modulok rendelkezik, így több, az Event Hubs .NET-kódtárakra. A .NET Standard kódtár is futtatható a .NET Core vagy a .NET-keretrendszer használatával, míg a .NET-keretrendszer könyvtár csak a .NET-keretrendszer környezetben futtatható. .NET-keretrendszer-verziókkal kapcsolatos további információkért lásd: [keretrendszer-verziókat](https://docs.microsoft.com/dotnet/articles/standard/frameworks#framework-versions).
+A .NET-ökoszisztéma több modulok rendelkezik, így több, az Event Hubs .NET-kódtárakra. A .NET Standard kódtár is futtatható a .NET Core vagy a .NET-keretrendszer használatával, míg a .NET-keretrendszer könyvtár csak a .NET-keretrendszer környezetben futtatható. .NET-keretrendszer-verziókkal kapcsolatos további információkért lásd: [keretrendszer-verziókat](https://docs.microsoft.com/dotnet/articles/standard/frameworks).
 
 #### <a name="node"></a>Csomópont
 
@@ -53,7 +53,7 @@ A [Node.js kódtár](https://github.com/Azure/azure-event-hubs-node) jelenleg el
 
 A következő táblázat felsorolja az összes jelenleg elérhető felügyeleti-specifikus szalagtár. Ezek a kódtárak egyike futásidejű műveletek tartalmaz, és az azzal a céllal, az Event Hubs entitáskezelésről.
 
-| Nyelv és Platform | Felügyeleti csomag | Tárház |
+| Nyelv és Platform | Felügyeleti csomag | Adattár |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
 

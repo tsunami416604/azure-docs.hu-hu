@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 1ac7b5f41c0c941db08a63c516febabaf9f07b3e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 34f1b023b2ea2451f3308666d156278e92afb4aa
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491382"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565972"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Bővítményt a virtuálisgép-méretezési csoportokat használ alkalmazásállapot
 Az alkalmazás állapotának monitorozása egy fontos jel, kezeléséhez és az üzemelő példány frissítése. Azure-beli virtuálisgép-méretezési csoportok biztosít támogatást [a működés közbeni frissítés](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) beleértve [automatikus operációsrendszer-lemezkép frissítéseinek](virtual-machine-scale-sets-automatic-upgrade.md), amely támaszkodjon szolgáltatásállapot-figyelést az egyes példányainak az üzemelő példány frissítése .
 
 Ez a cikk bemutatja, hogyan használhatja az alkalmazás állapotának bővítmény állapotát, a virtual machine scale sets szolgáltatásban üzembe helyezett alkalmazások figyelésére.
 
-## <a name="pre-requisites"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk azt feltételezi, hogy Ön ismeri a:
 -   Az Azure virtuális gép [bővítmények](../virtual-machines/extensions/overview.md)
 -   [Módosítása](virtual-machine-scale-sets-upgrade-scale-set.md) a virtual machine scale sets

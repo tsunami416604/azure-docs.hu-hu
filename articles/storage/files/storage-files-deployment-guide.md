@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: d17389af1129c63d2c0eadfac04c034669200620
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1b62bb6b00e1add93ee4215507d1b110dcf51424
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462732"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566967"
 ---
 # <a name="how-to-deploy-azure-files"></a>Az Azure Files üzembe helyezése
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabvány SMB protokollon keresztül érhető el a felhőben. Ebből a cikkből megtudhatja, hogyan gyakorlatilag Azure Files üzembe helyezése a szervezeten belül.
@@ -77,7 +77,7 @@ Az alábbi lépéseket fogja adatokat importálhat a helyszíni helyről az Azur
     
     Lásd: [driveset CSV-fájl előkészítése](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-initialdriveset-or-additionaldriveset-csv-file) további információt.
 
-6. Használja a [WAImportExport eszköz](https://www.microsoft.com/en-us/download/details.aspx?id=55280) az adatok másolása egy vagy több merevlemez-meghajtókat.
+6. Használja a [WAImportExport eszköz](https://www.microsoft.com/download/details.aspx?id=55280) az adatok másolása egy vagy több merevlemez-meghajtókat.
 
     ```
     WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>

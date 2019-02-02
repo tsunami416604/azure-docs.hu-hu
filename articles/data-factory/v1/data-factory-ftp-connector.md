@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 52c89804c87348843bb7a4006ab38e4d417740ba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: adca66b46fad1220b49af327797cc4f91d216091
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025436"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564663"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Adatok áthelyezése egy FTP-kiszolgálóról az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan használható a másolási tevékenység az Azure Da
 Másolhat adatokat egy FTP-kiszolgáló bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. A Data Factory jelenleg csak helyez át adatokat egy FTP-kiszolgáló pedig más adattárakban támogatja, de nem az adatok áthelyezését egyéb adatok tárolja az FTP-kiszolgálóhoz. Támogatja mind a helyszíni és felhőbeli FTP-kiszolgálókat.
 
 > [!NOTE]
-> A másolási tevékenység nem törli a forrásfájl, miután sikerült a célhelyre másolja. Ha a forrásfájl törlése után a sikeres másolási van szüksége, hozzon létre egy egyéni tevékenységet a fájl törléséhez, és használja a tevékenységet a folyamat. 
+> A másolási tevékenység nem törli a forrásfájl, miután sikerült a célhelyre másolja. Ha a forrásfájl törlése után a sikeres másolási van szüksége, hozzon létre egy egyéni tevékenységet a fájl törléséhez, és használja a tevékenységet a folyamat.
 
 ## <a name="enable-connectivity"></a>Kapcsolat engedélyezése
 Az adatok áthelyezéséhez az **helyszíni** egy felhőbeli adatok (például az Azure Blob storage) tárolására, telepítése és az adatkezelési átjáró használata az FTP-kiszolgáló. Az adatkezelési átjáró egy ügyfélügynök, amely a helyszíni gépen telepítve van, és lehetővé teszi a cloud services egy helyszíni erőforráshoz való kapcsolódáshoz. További információkért lásd: [adatkezelési átjáró](data-factory-data-management-gateway.md). A beállítás lépésenként az átjáró beállítása, és használja, lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md). Az átjáró FTP-kiszolgálóhoz való kapcsolódáshoz használja, akkor is, ha a kiszolgáló az Azure infrastruktúra-szolgáltatás (IaaS) virtuális gépként (VM).
@@ -86,7 +86,7 @@ A következő táblázat ismerteti a JSON-elemeket egy társított FTP-szolgált
     "name": "FTPLinkedService",
     "properties": {
         "type": "FtpServer",
-        "typeProperties": {        
+        "typeProperties": {
             "authenticationType": "Anonymous",
               "host": "myftpserver.com"
         }
@@ -99,7 +99,7 @@ A következő táblázat ismerteti a JSON-elemeket egy társított FTP-szolgált
 ```JSON
 {
     "name": "FTPLinkedService",
-      "properties": {
+    "properties": {
     "type": "FtpServer",
         "typeProperties": {
             "host": "myftpserver.com",
@@ -107,11 +107,11 @@ A következő táblázat ismerteti a JSON-elemeket egy társított FTP-szolgált
             "username": "Admin",
             "password": "123456"
         }
-      }
+    }
 }
 ```
 
-### <a name="use-port-enablessl-enableservercertificatevalidation"></a>Port, enableSsl, enableServerCertificateValidation használata
+### <a name="use-port-enablessl-enableservercertificatevalidation"></a>Use port, enableSsl, enableServerCertificateValidation
 
 ```JSON
 {
@@ -120,7 +120,7 @@ A következő táblázat ismerteti a JSON-elemeket egy társított FTP-szolgált
         "type": "FtpServer",
         "typeProperties": {
             "host": "myftpserver.com",
-            "authenticationType": "Basic",    
+            "authenticationType": "Basic",
             "username": "Admin",
             "password": "123456",
             "port": "21",
@@ -144,7 +144,7 @@ A következő táblázat ismerteti a JSON-elemeket egy társított FTP-szolgált
             "encryptedCredential": "xxxxxxxxxxxxxxxxx",
             "gatewayName": "mygateway"
         }
-      }
+    }
 }
 ```
 
@@ -156,7 +156,7 @@ A **typeProperties** szakasz eltér az egyes adatkészlet. Az adatkészlet-típu
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | folderPath |Adatútvonalának a mappához. Használja az escape-karaktert "\" a karakterláncban szereplő speciális karakterek. Lásd: [minta társított szolgáltatás és az adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) példákat.<br/><br/>Ennek a tulajdonságnak kombinálhatja **partitionBy** rendelkezik a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
-| fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg semmilyen értéket ehhez a tulajdonsághoz, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet esetén a létrehozott fájl neve a következő formátumban van: <br/><br/>Adatok. <Guid>.txt (Példa: Data.0a405f8a-93ff-4c6f-B3BE-f69616f1df7a.txt) |Nem |
+| fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg semmilyen értéket ehhez a tulajdonsághoz, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet esetén a létrehozott fájl neve a következő formátumban van: <br/><br/>Adatok. <Guid>.txt (Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nem |
 | fileFilter |Adja meg a fájlok egy adott sorkészletét jelölik ki használandó szűrő a **folderPath**, ahelyett, hogy minden fájl.<br/><br/>Engedélyezett értékek a következők: `*` (több karakter) és `?` (egyetlen karakter).<br/><br/>1. példa: `"fileFilter": "*.log"`<br/>2. példa: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** a fájlmegosztás a bemeneti adatkészletek vonatkozik. Ez a tulajdonság nem támogatott a Hadoop elosztott fájlrendszer (HDFS). |Nem |
 | partitionedBy |Adjon meg egy dinamikus használt **folderPath** és **fileName** az idősorozat-adatok. Meghatározhatja például, hogy egy **folderPath** , amely paraméteres van az adatok minden óra. |Nem |
 | Formátum | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha másolja a fájlokat, mivel ezek közötti fájlalapú tárolók (bináris másolat) szeretné használni, hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
@@ -188,7 +188,7 @@ Ebben a példában {szelet} helyére a Data Factory rendszerváltozó SliceStart
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
@@ -209,7 +209,7 @@ A másolási tevékenység, ha a forrás típusa **FileSystemSource**, a követk
 | a rekurzív |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákat, vagy csak a megadott mappába. |TRUE, False (alapértelmezett) |Nem |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON-példa: Adatok másolása az FTP-kiszolgálóhoz az Azure Blob
-Ez a példa bemutatja, hogyan másolhat adatokat egy FTP-kiszolgálóról az Azure Blob storage. Azonban az adatok közvetlenül a megadott fogadóként bármelyikét a átmásolhatók a [támogatott adattárak és formátumok](data-factory-data-movement-activities.md#supported-data-stores-and-formats), a másolási tevékenység használatával a Data Factoryban.  
+Ez a példa bemutatja, hogyan másolhat adatokat egy FTP-kiszolgálóról az Azure Blob storage. Azonban az adatok közvetlenül a megadott fogadóként bármelyikét a átmásolhatók a [támogatott adattárak és formátumok](data-factory-data-movement-activities.md#supported-data-stores-and-formats), a másolási tevékenység használatával a Data Factoryban.
 
 Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md):
 
@@ -227,7 +227,7 @@ Ebben a példában alapszintű hitelesítés, a felhasználónevet és jelszót 
 
 * A névtelen hitelesítés
 * Alapszintű hitelesítés, a titkosított hitelesítő adatokat
-* FTP-keresztüli SSL/TLS (FTPS)
+* FTP over SSL/TLS (FTPS)
 
 Tekintse meg a [FTP társított szolgáltatás](#linked-service-properties) használható hitelesítési típust a következő szakaszban.
 
@@ -235,14 +235,14 @@ Tekintse meg a [FTP társított szolgáltatás](#linked-service-properties) hasz
 {
     "name": "FTPLinkedService",
     "properties": {
-    "type": "FtpServer",
-    "typeProperties": {
-        "host": "myftpserver.com",           
-        "authenticationType": "Basic",
-        "username": "Admin",
-        "password": "123456"
+        "type": "FtpServer",
+        "typeProperties": {
+            "host": "myftpserver.com",
+            "authenticationType": "Basic",
+            "username": "Admin",
+            "password": "123456"
+        }
     }
-  }
 }
 ```
 ### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
@@ -286,7 +286,7 @@ Beállítás **külső** való **igaz** a Data Factory szolgáltatás tájékozt
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob kimeneti adatkészlet
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját a BLOB dinamikusan kiértékeli, a feldolgozás alatt álló szelet kezdő időpontja alapján. A mappa elérési útját használja, az év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB dinamikusan kiértékeli, a feldolgozás alatt álló szelet kezdő időpontja alapján. A mappa elérési útját használja, az év, hónap, nap és óra részei a kezdési időpontot.
 
 ```JSON
 {

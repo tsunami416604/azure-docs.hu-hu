@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: d3b039c30557499233eec72d7c560ad4bf49a776
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 65de1279c47f5992dd82e9f4634b3de52925769c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157207"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568379"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatokkal és üzenet-útválasztása
 
@@ -207,7 +207,7 @@ A lekérdezési funkciókat tesz elérhetővé a [node.js-hez készült Azure Io
 
 Íme egy példa egy egyszerű lekérdezést:
 
-```nodejs
+```javascript
 var query = registry.createQuery('SELECT * FROM devices', 100);
 var onResults = function(err, results) {
     if (err) {
@@ -465,11 +465,11 @@ Az útvonalak feltételek a következő matematikai függvények támogatottak:
 | ABS(x) | A megadott numerikus kifejezés (pozitív) abszolút értékét adja vissza. |
 | EXP(x) | Az exponenciális a megadott numerikus kifejezés értékét adja eredményül (e ^ x). |
 | Power(x,y) | A megadott kifejezés értékét adja vissza a megadott hatványra (x ^ y).|
-| Square(x) | A megadott számérték négyzetét adja vissza. |
+| SQUARE(x) | A megadott számérték négyzetét adja vissza. |
 | CEILING(x) | A legkisebb egész értéket ad vissza, nagyobb vagy egyenlő a megadott numerikus kifejezés. |
 | FLOOR(x) | Visszaadja a legnagyobb egész szám kisebb vagy egyenlő a megadott numerikus kifejezés. |
 | SIGN(x) | A pozitív (+ 1), a nulla (0) vagy a megadott numerikus kifejezés mínuszjel (-1) adja vissza.|
-| Sqrt(x) | A megadott numerikus érték négyzetgyökét adja vissza. |
+| SQRT(x) | A megadott numerikus érték négyzetgyökét adja vissza. |
 
 Az útvonalak feltételek a következő típus ellenőrzése és a döntő függvény támogatottak:
 

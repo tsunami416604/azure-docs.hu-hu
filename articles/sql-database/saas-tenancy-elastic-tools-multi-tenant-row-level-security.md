@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 5a9f168a0abc28b1decc6f327a62f5eaa4163e6f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: 24375ca3fec50c1a9e194918ac4f824ab6fa81be
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601525"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568260"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Az elastic database-eszközökkel és a sorszintű biztonság több-bérlős alkalmazások
 
@@ -145,7 +145,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 }); 
 ```
 
-### <a name="adonet-sqlclient"></a>Az ADO.NET SqlClient
+### <a name="adonet-sqlclient"></a>ADO.NET SqlClient
 
 ADO.NET SqlClient használó alkalmazásokhoz hozzon létre egy burkoló funkció ShardMap.OpenConnectionForKey metódus körül. Az automatikusan a munkamenetben beállított TenantId burkoló rendelkezik\_az aktuális TenantId kapcsolat visszaküldése előtt környezetben. Annak érdekében, hogy a munkamenet\_környezetben mindig be van-e állítva, ez a burkoló funkció segítségével kapcsolatok csak nyisson meg.
 

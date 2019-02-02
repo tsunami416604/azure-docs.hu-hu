@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7e0064495cfb3d82c349a23d914195c5f211dc19
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7c17b873daf3cf77760f934b6c8a591f232b0c7b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187079"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658198"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Egyéni szabályzatok használatával konfigurálja a felhasználói felület dinamikus tartalom
 
@@ -155,7 +155,7 @@ Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_backgro
     A **létrehozása App Service** ablak nyílik meg. Ez a megkezdéséhez az összes szükséges Azure-erőforrások létrehozása az ASP.NET-webalkalmazás futtatása az Azure-ban.
 
     > [!NOTE]
-    > Közzétételre vonatkozó további információkért lásd: [ASP.NET-webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
+    > Közzétételre vonatkozó további információkért lásd: [ASP.NET-webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
 
 3. Az a **webalkalmazás neve** mezőbe írja be egy egyedi névre (érvényes karakterek: a – z, A-Z, 0 – 9 és a kötőjel (-). A webalkalmazás URL-címe `http://<app_name>.azurewebsites.NET`, amelyben a `<app_name>` a webalkalmazás neve. Elfogadhatja az automatikusan létrehozott nevet is, amely már egyedi.
 

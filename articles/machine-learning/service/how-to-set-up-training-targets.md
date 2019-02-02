@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7b71b2bae540f4ef6b1e9c637c601d6f7b303ae
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 75caad2c183ba2d3c5442a3620705c6af8070755
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250707"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659592"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
 
@@ -159,7 +159,7 @@ Egy rendszer által fejlesztett conda-környezetben, egy már meglévő Python-k
 
 Az Azure adatelemzési virtuális gép (DSVM) az Azure virtuális gépként választott használata ebben a forgatókönyvben. Ez a virtuális gép egy előre konfigurált adatelemzés és a mesterséges Intelligencia fejlesztési környezetet az Azure-ban. A virtuális gép egy válogatott választott eszközök és a teljes-életciklus machine learning-fejlesztési keretrendszerek kínál. A dsvm-hez az Azure Machine Learning használatával további információkért lásd: [a fejlesztési környezet konfigurálása](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm).
 
-1. **Hozzon létre**: Hozzon létre egy adatelemző virtuális GÉPET és a modell betanításához. Ez az erőforrás létrehozásához lásd: [az adatelemző virtuális gép kiépítése Linux (Ubuntu)](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+1. **Hozzon létre**: Hozzon létre egy adatelemző virtuális GÉPET és a modell betanításához. Ez az erőforrás létrehozásához lásd: [az adatelemző virtuális gép kiépítése Linux (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
 
     > [!WARNING]
     > Az Azure Machine Learning csak az Ubuntu rendszerű virtuális gépeket támogatja. Hozzon létre egy virtuális Gépet, vagy válasszon egy meglévő virtuális Gépet, ki kell választania egy Ubuntu használó virtuális gép.
@@ -384,5 +384,5 @@ Tekintse meg ezeket a notebookokat-betanítás a különböző számítási cél
 
 * [Oktatóanyag: A modell betanítását](tutorial-train-models-with-aml.md) felügyelt számítási célt használja egy modell betanításához.
 * Miután a betanított modell, további [hogyan és hol helyezhet üzembe modelleket](how-to-deploy-and-where.md).
-* Nézet a [RunConfiguration osztály](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK-leírás.
+* Nézet a [RunConfiguration osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK-leírás.
 * [Az Azure Machine Learning szolgáltatás használata az Azure Virtual Network szolgáltatással](how-to-enable-virtual-network.md)

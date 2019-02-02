@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 65531b5507f9e3af3a9666074d9dcd9b7ee20271
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: df9dc7d25ff0304effadbf27751042e9961c75c0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231185"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562028"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Rövid útmutató a Powershellhez az Azure Cloud Shellben
 
@@ -27,6 +27,8 @@ Ez a dokumentum részletesen bemutatja a PowerShell használatával a Cloud shel
 
 > [!NOTE]
 > A [az Azure Cloud Shell Bash](quickstart.md) a rövid útmutató esetében is elérhető.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="start-cloud-shell"></a>A Cloud Shell indítása
 
@@ -48,7 +50,7 @@ PS Azure:\> Get-Date
 # Expected Output
 Friday, July 27, 2018 7:08:48 AM
 
-PS Azure:\> Get-AzureRmVM -Status
+PS Azure:\> Get-AzVM -Status
 
 # Expected Output
 ResourceGroupName       Name       Location                VmSize   OsType     ProvisioningState  PowerState
@@ -238,7 +240,7 @@ mywebapp2       Running  MyResourceGroup2   {mywebapp2.azurewebsites.net...   We
 mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   South Central US
 
 # You can use Azure cmdlets to Start/Stop your web apps
-PS Azure:\MySubscriptionName\WebApps> Start-AzureRmWebApp -Name mywebapp1 -ResourceGroupName MyResourceGroup1
+PS Azure:\MySubscriptionName\WebApps> Start-AzWebApp -Name mywebapp1 -ResourceGroupName MyResourceGroup1
 
 Name           State    ResourceGroup        EnabledHostNames                   Location
 ----           -----    -------------        ----------------                   --------
@@ -266,7 +268,7 @@ A hitelesítést a kiszolgálók vagy virtuális gépek SSH-val, a Cloud Shellbe
 ### <a name="using-ssh"></a>SSH-val
 
 Kövesse az utasításokat [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) hozhat létre egy új Virtuálisgép-konfigurációt AzureRM-parancsmagok használatával.
-Mielőtt hívása `New-AzureRmVM` felhőplatformos termékeiért az üzembe helyezés, adja hozzá az SSH nyilvános kulcs a virtuális gép konfigurációjához.
+Mielőtt hívása `New-AzVM` felhőplatformos termékeiért az üzembe helyezés, adja hozzá az SSH nyilvános kulcs a virtuális gép konfigurációjához.
 Az újonnan létrehozott virtuális gép a nyilvános kulcsot fogja tartalmazni a `~\.ssh\authorized_keys` helyét, ezáltal a hitelesítőadat-mentes SSH-munkamenetből a virtuális géphez.
 
 ```azurepowershell-interactive
@@ -277,10 +279,10 @@ ssh-keygen -t rsa -b 2048 -f $HOME\.ssh\id_rsa
 
 # Ensure VM config is updated with SSH keys
 $sshPublicKey = Get-Content "$HOME\.ssh\id_rsa.pub"
-Add-AzureRmVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
+Add-AzVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 # Create a virtual machine
-New-AzureRmVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
+New-AzVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
 
 # SSH to the VM
 ssh azureuser@MyVM.Domain.Com
@@ -288,7 +290,7 @@ ssh azureuser@MyVM.Domain.Com
 
 ## <a name="list-available-commands"></a>Elérhető parancsok listája
 
-A `Azure` meghajtó, írja be a `Get-AzureRmCommand` környezetfüggő Azure-parancsok beolvasásához.
+A `Azure` meghajtó, írja be a `Get-AzCommand` környezetfüggő Azure-parancsok beolvasásához.
 
 Azt is megteheti, bármikor használhat `Get-Command *azurerm* -Module AzureRM.*` megtudhatja az elérhető Azure-parancsok.
 
@@ -307,7 +309,7 @@ Get-Help
 Egy adott parancs továbbra is teheti `Get-Help` parancsmag követ.
 
 ```azurepowershell-interactive
-Get-Help Get-AzureRmVM
+Get-Help Get-AzVM
 ```
 
 ## <a name="use-azure-files-to-store-your-data"></a>Az Azure Files használatával tárolja az adatait

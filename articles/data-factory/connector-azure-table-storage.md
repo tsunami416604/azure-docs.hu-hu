@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: b1f4ad523f84616391d4121dbf7eaabb2dfde060
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 32fc3f1c93261f6fb19c084f51dea4942310ac47
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018619"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664148"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure Table storage szolgáltatásba vagy onnan az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-azure-table-connector.md)
 > * [Aktuális verzió](connector-azure-table-storage.md)
 
@@ -47,7 +47,7 @@ Az Azure Storage társított szolgáltatása a fiókkulcs használatával hozhat
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot állítsa **AzureTableStorage**. |Igen |
-| kapcsolati Sztringje | Adja meg a connectionString tulajdonság tárolási való csatlakozáshoz szükséges információk. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| kapcsolati Sztringje | Adja meg a connectionString tulajdonság tárolási való csatlakozáshoz szükséges információk. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Fiókkulcs is helyezheti az Azure Key Vaultban, és lehúzhassa a `accountKey` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. |Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 >[!NOTE]
@@ -57,13 +57,42 @@ Az Azure Storage társított szolgáltatása a fiókkulcs használatával hozhat
 
 ```json
 {
-    "name": "AzureStorageLinkedService",
+    "name": "AzureTableStorageLinkedService",
     "properties": {
         "type": "AzureTableStorage",
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
                 "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Példa: fiókkulcs tárolhatja az Azure Key Vaultban**
+
+```json
+{
+    "name": "AzureTableStorageLinkedService",
+    "properties": {
+        "type": "AzureTableStorage",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;"
+            },
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -93,7 +122,7 @@ Közös hozzáférésű jogosultságkódos hitelesítés használatához a köve
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot állítsa **AzureTableStorage**. |Igen |
-| sasUri | Adja meg a közös hozzáférésű jogosultságkód URI-t, a tárolási erőforrások, például blob, tárolót vagy tábla. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| sasUri | Adja meg a közös hozzáférésű jogosultságkód URI-t a táblához SAS URI-t. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. SAS-jogkivonat helyezni az Azure Key Vaultban való leverate Automatikus elforgatás is, és távolítsa el a jogkivonat részét. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 >[!NOTE]
@@ -103,13 +132,42 @@ Közös hozzáférésű jogosultságkódos hitelesítés használatához a köve
 
 ```json
 {
-    "name": "AzureStorageLinkedService",
+    "name": "AzureTableStorageLinkedService",
     "properties": {
         "type": "AzureTableStorage",
         "typeProperties": {
             "sasUri": {
                 "type": "SecureString",
-                "value": "<SAS URI of the Azure Storage resource>"
+                "value": "<SAS URI of the Azure Storage resource e.g. https://<account>.table.core.windows.net/<table>?sv=<storage version>&amp;st=<start time>&amp;se=<expire time>&amp;sr=<resource>&amp;sp=<permissions>&amp;sip=<ip range>&amp;spr=<protocol>&amp;sig=<signature>>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Példa: fiókkulcs tárolhatja az Azure Key Vaultban**
+
+```json
+{
+    "name": "AzureTableStorageLinkedService",
+    "properties": {
+        "type": "AzureTableStorage",
+        "typeProperties": {
+            "sasUri": {
+                "type": "SecureString",
+                "value": "<SAS URI of the Azure Storage resource without token e.g. https://<account>.table.core.windows.net/<table>>"
+            },
+            "sasToken": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -179,7 +237,7 @@ Adatok másolása az Azure Table, állítsa be a forrás típusaként a másolá
 | azureTableSourceQuery |A Table storage egyéni lekérdezés segítségével olvassa el az adatokat. A következő szakaszban található példák. |Nem |
 | azureTableSourceIgnoreTableNotFound |Azt jelzi, hogy a kivételt a tábla nem létezik az engedélyezi-e.<br/>Engedélyezett értékek a következők **igaz** és **hamis** (alapértelmezett). |Nem |
 
-### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery példák
+### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery examples
 
 Ha az Azure Table oszlop a dátum/idő típus:
 
@@ -272,14 +330,14 @@ Ha Ön adatok importálására és az Azure-tábla, a következő [leképezések
 
 | Az Azure tábla adattípus | Data Factory közbenső adattípus | Részletek |
 |:--- |:--- |:--- |
-| Edm.Binary |byte] |Bájttömb legfeljebb 64 KB-os. |
+| Edm.Binary |byte[] |Bájttömb legfeljebb 64 KB-os. |
 | Edm.Boolean |Logikai |Logikai érték. |
 | Edm.DateTime |DateTime |Egy 64 bites érték, egyezményes világidő (UTC) szerint kifejezett. A támogatott dátum és idő tartomány kezdete éjfél. január 1, 1601. éjjel (C.E.,) (UTC). A tartomány véget ér. December 31-9999. |
 | Edm.Double |double |Egy 64 bites lebegőpontos értéket. |
-| Edm.Guid |GUID |A 128 bites globálisan egyedi azonosítóját. |
+| Edm.Guid |Guid |A 128 bites globálisan egyedi azonosítóját. |
 | Edm.Int32 |Int32 |Egy 32 bites egész számot. |
 | Edm.Int64 |Int64 |Egy 64 bites egész számot. |
-| Edm.String |Karakterlánc |UTF-16 kódolású érték. Karakterlánc-értékek legfeljebb 64 KB lehet. |
+| Edm.String |String |UTF-16 kódolású érték. Karakterlánc-értékek legfeljebb 64 KB lehet. |
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

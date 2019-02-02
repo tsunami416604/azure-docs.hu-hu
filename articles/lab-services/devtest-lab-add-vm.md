@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 05e68e13ab5aa526362e71413c105340ad07426f
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: e88f3c53479b9cb599474d627d28174516eb672c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082078"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664090"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Virtuális gép hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
 Ha már rendelkezik [az első virtuális gép létrehozása](devtest-lab-create-first-vm.md), akkor valószínűleg sor került az előre betöltött [Piactéri lemezképhez](devtest-lab-configure-marketplace-images.md). Most, ha a labor további virtuális gépeket ad hozzá, azt is beállíthatja egy *alap* , amely vagy egy [egyéni rendszerkép](devtest-lab-create-template.md) vagy egy [képlet](devtest-lab-manage-formulas.md). Ez az oktatóanyag végigvezeti az Azure portal használatával egy virtuális gép hozzáadása a DevTest Labs szolgáltatásban létrehozott tesztkörnyezet.
@@ -41,6 +41,8 @@ Ez a cikk emellett bemutatja, hogyan kezelheti az összetevők a labor virtuáli
     2. Adjon meg egy **felhasználónév** kap, amely rendszergazdai jogosultságokkal a virtuális gépen. A **felhasználónév** a gép van előre kitöltött egyedi automatikusan létrehozott névvel. A név felel meg az e-mail-címét a felhasználói nevet. Ez a funkció menti az idő dönthet arról, hogy a felhasználónév minden alkalommal, amikor létrehoz egy új gépet. Felülbírálhatja ismét ezt automatikusan kitölti a mezőt egy tetszőleges felhasználónevet, ha szeretné. Felhasználónév automatikusan kitöltött értékének felülbírálásához adjon meg egy értéket a **felhasználónév** szövegmezőben. Ez a felhasználó számára biztosított **rendszergazda** jogosultságokkal a virtuális gépen.
     3. Ha az első virtuális gép létrehozása a lab-ben esetén adja meg egy **jelszó** a felhasználó számára. Mentse ezt a jelszót a labor társított Azure key vaultban lévő alapértelmezett jelszóként, jelölje be a **alapértelmezett jelszó mentése**. Az alapértelmezett jelszó mentése a key vaulttal és a neve: **VmPassword**. Amikor további virtuális gépek létrehozása a lab-ben próbál **VmPassword** automatikusan ki van jelölve az a **jelszó**. Bírálja felül az értéket, törölje a jelet a **mentett titkos kulcs használata** jelölőnégyzetet, majd adjon meg egy jelszót. 
 
+        ![Alap kiválasztása](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+
         Is mentheti a titkos kulcsok a key vaultban először, és majd használata közben a virtuális gép létrehozása a lab-ben. További információkért lásd: [Store titkos kulcsok a key vault](devtest-lab-store-secrets-in-key-vault.md). A key vaultban tárolt jelszó használatához válassza **mentett titkos kulcs használata**, és adja meg a kulcs értékét, amely megfelel a titkos kód (jelszó).
     4. Az a **további beállítások** szakaszban jelölje be **méretének módosítása**. Válassza ki, amelyek a Processzormagok, memória mérete és a merevlemez mérete, a virtuális gép létrehozása az előre meghatározott lehetőségek közül.
     5. Válassza ki **hozzáadása vagy eltávolítása összetevők**. Válassza ki, és konfigurálja az alaprendszerképet hozzáadni kívánt összetevők.
@@ -52,9 +54,13 @@ Ez a cikk emellett bemutatja, hogyan kezelheti az összetevők a labor virtuáli
     4. A virtuális gép automatikusan törléséhez adja meg a **lejárati dátumát és időpontját**. 
     5. Válassza ki, hogy a virtuális gép igényelhető a lab-felhasználó, **Igen** a **győződjön meg arról, a gép igényelhető** lehetőséget. 
     6. Adja meg a **Virtuálisgép-példányok** , hogy szeretné-e a labor számára elérhetővé tenni. 
-3. Válassza ki **létrehozás** a megadott virtuális gép hozzáadása a tesztkörnyezetben.
+
+        ![Alap kiválasztása](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
+1. Válassza ki **létrehozás** a megadott virtuális gép hozzáadása a tesztkörnyezetben.
 
    A lab lap állapotát jeleníti meg a virtuális gép létrehozása – először mint **létrehozása**, majd, mint **futó** a virtuális gép elindítása után.
+
+    ![Virtuális gép létrehozásának állapota](./media/tutorial-create-custom-lab/vm-creation-status.png)
 
 ## <a name="add-an-existing-artifact-to-a-vm"></a>Egy meglévő összetevő hozzáadása egy virtuális géphez
 Virtuális gép létrehozásakor a meglévő összetevőket is hozzáadhat. Minden labor összetevők a nyilvános DevTest Labs Összetevőtárban, valamint a már létrehozott és a saját Összetevőtárban hozzá összetevőket tartalmazza.

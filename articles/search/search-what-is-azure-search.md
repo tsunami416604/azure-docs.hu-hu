@@ -1,20 +1,20 @@
 ---
 title: Mi az Azure Search szolgáltatás – Azure Search
-description: Az Azure Search egy teljes körűen felügyelt felhőalapú keresőszolgáltatás. Tekintse át a szolgáltatások leírása, a fejlesztési munkafolyamat, hogyan hasonlítja össze az Azure Search más keresési termékkel, és hogyan kezdheti el.
+description: Az Azure Search egy teljes körűen felügyelt felhőalapú keresési szolgáltatás a Microsoft egy. Tekintse át a szolgáltatások leírása, a fejlesztési munkafolyamat, hogyan hasonlítja össze Azure Search keresési más Microsoft-terméket, és hogyan kezdheti el.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 11/09/2018
+ms.date: 02/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 884a726dbc7d7f2812f4de2228ca5adaf9b223ea
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 36d65e1ffab79c8f0866d60f4a133798d25e9dea
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630401"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562793"
 ---
 # <a name="what-is-azure-search"></a>Mi az az Azure Search?
 Az Azure Search egy felhőalapú keresőszolgáltatás, amely olyan API-kat és eszközöket nyújt a fejlesztőknek, amelyek segítségével fejlett keresési funkciókat adhatnak hozzá a privát, heterogén tartalmak keresése érdekében a webes, mobilos és vállalati alkalmazásokhoz. A lekérdezések végrehajtása felhasználó által meghatározott indexen keresztül történik.
@@ -92,7 +92,7 @@ A legfőbb előnyök közé tartoznak az alábbiak:
 
 Az ügyfeleink közül számos az Azure Search-képességek legszélesebb körét kihasználja például online katalógusokkal, üzletági alkalmazásokkal és dokumentumfeltárási alkalmazásokkal.
 
-## <a name="rest-api--net-sdk"></a>REST API-VAL |} .NET SDK-VAL
+## <a name="rest-api--net-sdk"></a>REST API | .NET SDK
 
 Jóllehet sok feladat elvégezhető a portálon keresztül, az Azure Search szolgáltatást elsősorban olyan fejlesztőknek terveztük, akik a keresési funkcionalitást a meglévő alkalmazásaikba szeretnék integrálni. Ehhez az alábbi programozási felületek vehetők igénybe.
 

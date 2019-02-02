@@ -1,6 +1,6 @@
 ---
 title: A feltételes hozzáférés az Azure Active Directory (Azure AD) az örökölt hitelesítési blokkolása |} A Microsoft Docs
-description: Ismerje meg, a feltételes hozzáférési szabályzat konfigurálása az Azure Active Directory (Azure AD) hozzáférési kísérleteket a nem megbízható hálózatokon.
+description: Ismerje meg, hogyan javíthatja biztonsági helyzetét blokkolja az örökölt hitelesítés használata az Azure AD feltételes hozzáférés.
 services: active-directory
 keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
 documentationcenter: ''
@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 02/01/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 164ff12eeec057855476d3808d3d1d44ef3179fe
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 5ff4861c288b82d6ce90d85c38ef3f92eb299ea4
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076843"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562980"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: Örökölt hitelesítés letiltása az Azure AD feltételes hozzáférés   
 
 A felhasználók egyszerűen hozzáférhetnek számára a felhőalapú alkalmazások, Azure Active Directory (Azure AD) széles hitelesítési protokollok, beleértve az örökölt hitelesítési támogatja. Azonban régebbi protokollokra nem támogatják a többtényezős hitelesítés (MFA). MFA sok környezetben a közös követelmény, hogy a cím adatokkal való visszaélés. 
+
 
 A környezet örökölt hitelesítés letiltása a bérlő védelmi javítása érdekében készen áll, a feltételes hozzáférés a cél végezheti el. Ez a cikk azt ismerteti, hogy hogyan konfigurálhat feltételes hozzáférési szabályzatok letiltása örökölt hitelesítés a bérlő számára.
 
@@ -119,8 +120,7 @@ A házirend érvénybe lép, akár 24 órát is igénybe vehet.
 
 Kiválaszthatja a feltételhez más ügyfelek; az összes rendelkezésre álló engedély azonban a végfelhasználói mindig azonos, - hozzáférés blokkolva.
 
-Beállíthatja, hogy az ügyfelek feltétel mellett egyéb feltételeket.
-Például ha csak szeretné mobileszközökhöz az örökölt hitelesítés letiltása, állítsa be a **eszközplatformok** kiválasztásával feltétel:
+Ha letiltja az örökölt hitelesítési ügyfelek vonatkozó feltétellel, az eszköz platform és hely feltételt is beállíthat. Például ha csak szeretné mobileszközökhöz az örökölt hitelesítés letiltása, állítsa be a **eszközplatformok** kiválasztásával feltétel:
 
 - Android
 

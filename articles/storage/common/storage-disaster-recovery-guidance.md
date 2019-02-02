@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b203acefb962d5b3a782ba0ce1e667b6f18b7951
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: bc79379d1b893beffc085e79b7643fcb6e1dc26f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508929"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657314"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Katasztrófa utáni helyreállítás és a tárolási fiók feladatátvételi (előzetes verzió) az Azure Storage-ban
 
@@ -104,7 +104,7 @@ Után a tárfiók a georedundancia átkonfigurálása, akkor lehet, hogy az új 
 
 Súlyos adatvesztés elkerülése érdekében ellenőrizze a értékét a **utolsó szinkronizálás időpontja** tulajdonság visszavétel előtt. Hasonlítsa össze a legutóbb időpontokban az adatokat a legutóbbi szinkronizálás időpontja várt adatok elvesztése kiértékelheti, hogy az új elsődleges lett írva. 
 
-## <a name="initiate-an-account-failover"></a>Egy fiók feladatátvétel
+## <a name="initiate-an-account-failover"></a>Fiók feladatátvételének indítása
 
 Az Azure portal, PowerShell, Azure CLI-vel vagy az Azure Storage erőforrás-szolgáltató API-t egy fiók feladatátvételt kezdeményezhet. Feladatátvétel módjáról további információkért lásd: [egy fiók feladatátvétel (előzetes verzió)](storage-initiate-account-failover.md).
 
@@ -152,6 +152,7 @@ Nem felügyelt lemezek és az Azure Storage szolgáltatásban tárolódnak. Ha e
 4. Várja meg, amíg a **utolsó szinkronizálás időpontja** frissítve van, és a későbbi, mint az idő, amikor a virtuális gép törlése. Ebben a lépésben fontos, mert ha a másodlagos végpontra nem lett teljesen frissítve a VHD-fájlokat tartalmazó a feladatátvétel esetén, majd a virtuális gép nem működnek megfelelően az új elsődleges régióban.
 5. A fiók feladatátvételt kezdeményezzen.
 6. Várjon, amíg a fiók feladatátvétel befejeződött, és a másodlagos régióban az új elsődleges régió elérhetetlenné válik.
+6. Storage-fiók létrehozása az új elsődleges régióban, és másolja azt a nem felügyelt lemezt.
 7. Virtuális gép létrehozása az új elsődleges régióban, és csatlakoztassa újból a virtuális merevlemezeket.
 8. Indítsa el az új virtuális Gépet.
 

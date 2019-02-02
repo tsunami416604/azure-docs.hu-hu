@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fb35f72d45cbdf1690329b0bf146fce4d47d0bd6
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5219241de9b18008032a3eb78c6aab25a2713370
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490107"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660408"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Oktatóanyag:  Beállítása nál biztonsági az AD FS az Azure AD Connectben
 
@@ -43,7 +43,7 @@ Tegye a következőket:
 10. Ennyi az egész!  Elkészült.  A Jelszókivonat-szinkronizálás most történik, és biztonsági is használható, ha az AD FS nem érhető el.
 
 ## <a name="switch-to-password-hash-synchronization"></a>Váltson a Jelszókivonat-szinkronizálás
-Most hogy bemutatja, hogyan vált át a Jelszókivonat-szinkronizálás Ha kell.  Tegye a következőket:
+Most hogy bemutatja, hogyan vált át a Jelszókivonat-szinkronizálás. Mielőtt elkezdené, gondolja át, milyen feltételek mellett, győződjön meg a kapcsoló. Ne ideiglenes okokból, mint például a hálózati leállások, kisebb az AD FS hiba vagy probléma, amely a felhasználók egy részhalmazát érinti a kapcsolót. Ha úgy dönt, hogy a kapcsoló, mivel a probléma elhárítása túl sokáig tart, tegye a következőket:
 
 1. Az Azure AD Connect ikonra az asztalon létrehozott
 2.  Kattintson a **Configure** (Konfigurálás) elemre.

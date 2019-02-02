@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 3a8b3a22eb4bdaed0142f8afc6f92128be32eca3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4b9c57785b9b3176def495af6bc5956d70fa5c35
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971120"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657909"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?
 
@@ -31,7 +31,7 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 > [!NOTE]  
 > A HDInsight szolgáltatás az alapértelmezett verziójának előzetes értesítés nélkül változhatnak. Ha egy függőségi, adja meg a HDInsight-verzió a .NET SDK használatával az Azure PowerShell és a klasszikus Azure CLI-fürtök létrehozásakor.
 
-| Összetevő | HDInsight 4.0-s (előzetes verzió) | A HDInsight 3.6-os (alapértelmezett) | HDInsight 3.5-ös verzióját. | HDInsight 3.4 | HDInsight 3.3. | HDInsight 3.2-es verzióját | HDInsight 3.1. | HDInsight 3.0-s |
+| Összetevő | HDInsight 4.0-s (előzetes verzió) | A HDInsight 3.6-os (alapértelmezett) | HDInsight 3.5-ös verzióját. | HDInsight 3.4 | HDInsight 3.3. | HDInsight 3.2-es verzióját | HDInsight 3.1 | HDInsight 3.0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |--- |
 | Hortonworks Data Platform |3.0 |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
 | Az Apache Hadoop és YARN |3.1.1 |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
@@ -39,19 +39,19 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 | Apache Pig |0.16.0 |0.16.0 |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 |
 | Az Apache Hive és HCatalog |-|1.2.1 |1.2.1 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 |
 | Apache Hive |3.1.0 | 2.1.0 |-|-|-|-|-|-|
-| Az Apache Tez Hive2 |-| 0.8.4 |-|-|-|-|-|-|
+| Apache Tez Hive2 |-| 0.8.4 |-|-|-|-|-|-|
 | Apache Ranger |1.1.0 |0.7.0 |0.6.0 |-|-|-|-|-|
 | Apache HBase |2.0.1 |1.1.2 |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 |-|
-| Az Apache sqoop használatával |1.4.7 |1.4.6 |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
-| Az Apache Oozie |4.3.1. |4.2.0 |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
+| Apache Sqoop |1.4.7 |1.4.6 |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
+| Az Apache Oozie |4.3.1 |4.2.0 |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
 | Az Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 |
 | Apache Storm |1.2.1 |1.1.0 |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
 | Az Apache mahout használatával |-|0.9.0+ |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
-| Apache Spark |2.3.1 |2.3.0-át, 2.2.0, 2.1.0 |1.6.2-es verzióján, 2.0-s |1.6.0-s |1.5.2 |1.3.1 (csak Windows) |-|-|
-| Az Apache Livy |0,5 |0.4 |0,3 |0,3 |0.2 |-|-|-|
-| Apache Kafka | 1.1 |1.1-es, 1.0-s, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
-| Az Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
+| Apache Spark |2.3.1 |2.3.0, 2.2.0, 2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1 (csak Windows) |-|-|
+| Apache Livy |0,5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
+| Apache Kafka | 1.1 |1.1, 1.0, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
 | Az Apache csúszka |-| 0.92.0 |-|-|-|-|-|-|
@@ -77,8 +77,8 @@ Az alábbi táblázat az Azure Portalon, valamint egyéb telepítési módszerek
 | HDInsight-verzió | HDP verzió | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Visszavonás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás az Azure Portalon | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 <br> (Előzetes verzió) |HDP 3.0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
-| HDInsight 3.6-os |2.6 HDP |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
-| HDInsight 3.5-ös verzióját. <br> (Spark) * |2.6 HDP |Ubuntu 16.0.4 LTS |2016. szeptember 30. |2019. márciusi 13. |2019. márciusi 13. |Igen |Igen |
+| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
+| HDInsight 3.5-ös verzióját. <br> (Spark) * |HDP 2.6 |Ubuntu 16.0.4 LTS |2016. szeptember 30. |2019. márciusi 13. |2019. márciusi 13. |Igen |Igen |
 
 *&ast; HDInsight 3.5-ös támogatási ki lett terjesztve, csak a Spark-fürt típusa*
 
@@ -92,15 +92,15 @@ A következő táblázat felsorolja a verziókat HDInsight **nem** elérhető az
 
 | HDInsight-verzió | HDP verzió | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Visszavonás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás az Azure Portalon | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.5-ös verzióját. <br> (Nem Spark) |HDP 2,5 |Ubuntu 16.0.4 LTS |2016. szeptember 30. |2017. szeptember 5. |2018. június 28. |Igen |Nem |
+| HDInsight 3.5-ös verzióját. <br> (Nem Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |2016. szeptember 30. |2017. szeptember 5. |2018. június 28. |Igen |Nem |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016. március 29-én |2016. december 29-én |2018. január 9. |Igen |Nem |
 | HDInsight 3.3. |HDP 2.3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31. |Igen |Nem |
 | HDInsight 3.3. |HDP 2.3 |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31-ig. |Igen |Nem |
 | HDInsight 3.2-es verzióját |2.2-ES HDP |Ubuntu 12.04 LTS, vagy a Windows Server 2012 R2 rendszerben |2015. február 18. |2016. március 1-én |2017. április 1. |Igen |Nem |
-| HDInsight 3.1. |HDP 2.1-ES VERZIÓJA |Windows Server 2012 R2 |2014. június 24-én |2015. május 18. |2016. június 30. |Igen |Nem |
-| HDInsight 3.0-s |HDP 2.0 |Windows Server 2012 R2 |2014. február 11. |2014. szeptember 17-én |2015. június 30. |Igen |Nem |
-| HDInsight 2.1-es verziója |1.3 HDP |Windows Server 2012 R2 |2013. október 28. |2014. május 12. |2015. május 31-ig. |Igen |Nem |
-| HDInsight 1.6-os |1.1 HDP | |2013. október 28. |2014. április 26. |2015. május 31-ig. |Nem |Nem |
+| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |2014. június 24-én |2015. május 18. |2016. június 30. |Igen |Nem |
+| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |2014. február 11. |2014. szeptember 17-én |2015. június 30. |Igen |Nem |
+| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |2013. október 28. |2014. május 12. |2015. május 31-ig. |Igen |Nem |
+| HDInsight 1.6-os |HDP 1.1 | |2013. október 28. |2014. április 26. |2015. május 31-ig. |Nem |Nem |
 
 > [!NOTE]  
 > Két fő csomópont a magas rendelkezésre állású fürtök HDInsight verzió a 2.1-es és újabb verziók esetében alapértelmezés szerint települnek. Ezek nem érhető el a HDInsight-fürtökben 1.6-os.
@@ -162,7 +162,7 @@ A Windows HDInsight kivonják a forgalomból, miután nem HDInsight Windows-für
 ### <a name="which-versions-of-hdinsight-on-windows-are-affected"></a>HDInsight a Windows mely verziói vannak hatással?
 Az Azure HDInsight 3.3-as verziója az HDInsight a Windows előző verziója. A Windows HDInsight kivonják a forgalomból, mielőtt az összes Windows HDInsight fürtök 3.3-as verziójának vagy korábbi verzióját a HDInsight 3.5-ös vagy újabb verzió Linux rendszeren kell áttelepíteni. HDInsight Linux rendszeren, a fürtök áttelepítése lehetővé teszi új fürtök létrehozása vagy meglévő fürtök méretezése megőrzése. 
 
-### <a name="what-do-i-need-to-do"></a>Mit kell tennem?
+### <a name="what-do-i-need-to-do"></a>Mi a teendőm?
 Egy támogatott HDInsight Linux-fürt a HDInsight Windows-fürtök áttelepítése előtt 2018. július 31-ig. További információ: a [HDInsight dokumentu migrace](hdinsight-migrate-from-windows-to-linux.md). Az Azure HDInsight-verziókkal kapcsolatos részletekért lásd: listájának [támogatott verziók](hdinsight-component-versioning.md#supported-hdinsight-versions). 
 
 ### <a name="where-do-i-find-the-cluster-os-type"></a>Hol találom meg a fürt operációs rendszer típusa?
@@ -228,26 +228,56 @@ Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapért
 
 * Az összes támogatott, kivéve Dél-Brazíliát és Nyugat-japán régióban:
 
-  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark  | Machine Learning-kiszolgáló |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | A fő: virtuális gépek alapértelmezett mérete |D12 v2 |D12 v2 | D13 v2 |A3 |D12 v2 |D12 v2 |
-  | A fő: javasolt Virtuálisgép-méretek |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2 |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2  | D13,<br/> D14 |A4 v2-ben<br/> A8 v2-ben<br/> A2m v2 |D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |
-  | Feldolgozó: virtuális gépek alapértelmezett mérete |D4 v2 |D4 v2| D14 v2|D3 v2 |D13 v2 | D4 v2 |
-  | Feldolgozó: javasolt Virtuálisgép-méretek |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2 |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2  | D13,<br/> D14 |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2 |D4 v2-ben<br/> D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |D4 v2-ben<br/> D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |
-  | ZooKeeper: virtuális gépek alapértelmezett mérete | |A4 v2 |A4 v2 |A4 v2 | | A2 v2|
-  | ZooKeeper: javasolt Virtuálisgép-méretek | |A4 v2-ben<br/> A8 v2-ben<br/> A2m v2 | | A2 v2-ben<br/> A4 v2-ben<br/> A8 v2 | | |
-  | Edge: virtuális gépek alapértelmezett mérete | | | | | |D4 v2 |
-  | Edge: Virtuálisgép-méretet ajánlott | | | | | |D4 v2-ben<br/> D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |
+<html><body><table width="100%">
+<tr align="left"><th>Fürttípus</th><th>Hadoop</th><th>A HBase&nbsp;&nbsp;</th><th>Interaktív lekérdezés</th><th>A Storm&nbsp;&nbsp;</th><th>A Spark&nbsp;&nbsp;</th><th>Machine Learning-kiszolgáló&nbsp;</th><th>Kafka&nbsp;</th></tr>
+
+<tr><td>A fő: virtuális gépek alapértelmezett mérete</td><td>D12 v2</td><td>D12 v2</td><td>D13 v2</td><td>A3</td><td>D12 v2</td><td>D12 v2</td><td>D3v2</td></tr>
+
+<tr><td rowspan="4" valign="top">A fő: javasolt Virtuálisgép-méretek</td><td>D3 v2</td><td>D3 v2</td><td>D13</td><td>A4 v2</td><td>D12 v2</td><td>D12 v2</td><td>A2M v2</td></tr>
+<tr><td>D4 v2</td><td>D4 v2</td><td>D14</td><td>A8 v2</td><td>D13 v2</td><td>D13 v2</td><td>D3 v2</td></tr>
+<tr><td>D12 v2</td><td>D12 v2</td><td>E16 v3</td><td>A2m v2</td><td>D14 v2</td><td>D14 v2</td><td>D4 v2</td></tr>
+<tr><td>E4 v3</td><td>E4 v3</td><td>E32 v3</td><td>E4 v3</td><td>E4 v3</td><td>E4 v3</td><td>D12 v2</td></tr>
+
+<tr><td>Feldolgozó: virtuális gépek alapértelmezett mérete</td><td>D4 v2</td><td>D4 v2</td><td>D14 v2</td><td>D3 v2</td><td>D13 v2</td><td>D4 v2</td><td>4 D12v2 közvetítőnként 2 S30 lemezek</td></tr>
+
+<tr><td rowspan="8" valign="top">Feldolgozó: javasolt Virtuálisgép-méretek</td><td>D3 v2</td><td>D3 v2</td><td>D13</td><td>D3 v2</td><td>D4 v2</td><td>D4 v2</td><td>D13 v2</td></tr>
+<tr><td>D4 v2</td><td>D4 v2</td><td>D14</td><td>D4 v2</td><td>D12 v2</td><td>D12 v2</td><td>DS12 v2</td></tr>
+<tr><td>D12 v2</td><td>D12 v2</td><td>E16 v3</td><td>D12 v2</td><td>D13 v2</td><td>D13 v2</td><td>DS13 v2</td></tr>
+<tr><td>E4 v3</td><td>E4 v3</td><td>E20 v3</td><td>E4 v3</td><td>D14 v2</td><td>D14 v2</td><td>E4 v3</td></tr>
+<tr><td></td><td></td><td>E32 v3</td><td></td><td>E16 v3</td><td>E16 v3</td><td>ES4 v3</td></tr>
+<tr><td></td><td></td><td>E64 v3</td><td></td><td>E20 v3</td><td>E20 v3</td><td>E8 v3</td></tr>
+<tr><td></td><td></td><td></td><td></td><td>E32 v3</td><td>E32 v3</td><td>ES8 v3</td></tr>
+<tr><td></td><td></td><td></td><td></td><td>E64 v3</td><td>E64 v3</td><td></td></tr>
+
+<tr><td>ZooKeeper: virtuális gépek alapértelmezett mérete</td><td></td><td>A4 v2</td><td>A4 v2</td><td>A4 v2</td><td></td><td>A2 v2</td><td>D3v2</td></tr>
+
+<tr><td rowspan="3" valign="top">ZooKeeper: javasolt Virtuálisgép-méretek</td><td></td><td>A4 v2</td><td></td><td>A2 v2</td><td></td><td></td><td>A2M v2</td></tr>
+<tr><td></td><td>A8 v2</td><td></td><td>A4 v2</td><td></td><td></td><td>D3 v2</td></tr>
+<tr><td></td><td>A2m v2</td><td></td><td>A8 v2</td><td></td><td></td><td>E8 v3</td></tr>
+
+<tr align="left"><td>Edge: virtuális gépek alapértelmezett mérete</td><td></td><td></td><td></td><td></td><td></td><td>D4 v2</td><td></td></tr>
+
+<tr><td rowspan="8" valign="top">Edge: Virtuálisgép-méretet ajánlott</td><td></td><td></td><td></td><td></td><td></td><td>D4 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D12 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D13 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D14 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E16 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E20 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E32 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E64 v3</td><td></td></tr>
+
+</table></body></html>
+
 * Dél-Brazíliát és Nyugat-Japánban csak (nincs v2 méretű):
 
   | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | ML-szolgáltatások |
   | --- | --- | --- | --- | --- | --- | --- |
   | A fő: virtuális gépek alapértelmezett mérete |D12 |D12  | D13 |A3 |D12 |D12 |
-  | A fő: javasolt Virtuálisgép-méretek |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3<br/> A4.<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
+  | A fő: javasolt Virtuálisgép-méretek |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3,<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
   | Feldolgozó: virtuális gépek alapértelmezett mérete |D4 |D4  |  D14 |D3 |D13 |D4 |
   | Feldolgozó: javasolt Virtuálisgép-méretek |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
   | ZooKeeper: virtuális gépek alapértelmezett mérete | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
-  | ZooKeeper: javasolt Virtuálisgép-méretek | |A2-ES<br/> A3<br/> A4 | |A2-ES<br/> A3<br/> A4 | | |
+  | ZooKeeper: javasolt Virtuálisgép-méretek | |A2,<br/> A3,<br/> A4 | |A2,<br/> A3,<br/> A4 | | |
   | Edge: alapértelmezett Virtuálisgép-méretek | | | | | |D4 |
   | Edge: javasolt Virtuálisgép-méretek | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
 

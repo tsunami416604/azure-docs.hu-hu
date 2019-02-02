@@ -11,18 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 1525b33b99bb4bdc4586ad3e8af00a0588293b9c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 10/23/2018
+ms.openlocfilehash: 66d963ff833b27899c82b1e0399195321a1f0732
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954589"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563592"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Code-ból SQL-adatbázis eléréséhez alkalmazás hitelesítéséhez szükséges értékek beolvasása
+
 Létrehozásához és kezeléséhez az SQL Database-kódból regisztrálnia kell az alkalmazását az Azure Active Directory (AAD) tartományban az előfizetésben, az Azure-erőforrások létrejöttek.
 
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az alkalmazásból
+
 Szüksége lesz a legújabb [Azure PowerShell-lel](https://msdn.microsoft.com/library/mt619274.aspx) telepíteni és futtatni. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
 
 A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alkalmazást, és a C#-alkalmazás hitelesítéséhez szükséges egyszerű szolgáltatást. A parancsfájl kimenetének értékeire szükség lesz az előbb említett C#-mintához. Részletes információk: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md).

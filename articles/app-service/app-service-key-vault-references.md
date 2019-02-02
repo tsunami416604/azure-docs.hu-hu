@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: c47de9fbe1b9923ff8ce1c38a9a9695af4311858
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 662260c3cf37f8f8a675c522f3d3dea41153e485
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723144"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663564"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>A Key Vault hivatkozások használata az App Service és az Azure Functions (előzetes verzió)
 
@@ -37,7 +37,7 @@ Olvassa el a titkos kulcsok a Key Vaultból, kell rendelkeznie egy létrehozott 
    > [!NOTE] 
    > A Key Vault jelenleg csak a támogatási rendszer hozzárendelt felügyelt identitások hivatkozik. Felhasználó által hozzárendelt identitások nem használható.
 
-1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott identita aplikace. Engedélyezze ezt a házirendet a "Get" titkos engedélyt.
+1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott identita aplikace. Engedélyezze ezt a házirendet a "Get" titkos engedélyt. Ne konfigurálja a "engedélyezett alkalmazás" vagy `appliationId` beállításai, mivel ezt, nem kompatibilis egy felügyelt identitás.
 
 ## <a name="reference-syntax"></a>Hivatkozási szintaxisa
 
@@ -46,8 +46,8 @@ Egy Key Vault-hivatkozást a rendszer az űrlap `@Microsoft.KeyVault({referenceS
 > [!div class="mx-tdBreakAll"]
 > | Hivatkozási karakterlánc                                                            | Leírás                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_secretUri_                                                       | A **SecretUri** az adatsík URI-ját egy titkos kulcsot a Key Vaultban, többek között például egy verziót kell lennie. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName =_vaultName_; SecretName =_secretName_; SecretVersion =_secretVersion_ | A **VaultName** kell a Key Vault-erőforrás nevét. A **SecretName** a céloldali titkos kód nevét kell megadni. A **SecretVersion** a használandó titkoskulcs-verziót kell lennie. |
+> | SecretUri=_secretUri_                                                       | A **SecretUri** az adatsík URI-ját egy titkos kulcsot a Key Vaultban, többek között például egy verziót kell lennie. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | A **VaultName** kell a Key Vault-erőforrás nevét. A **SecretName** a céloldali titkos kód nevét kell megadni. A **SecretVersion** a használandó titkoskulcs-verziót kell lennie. |
 
 > [!NOTE] 
 > Az aktuális előzetes verziója is szükséges. Elforgatás titkos kulcsokat, ha az alkalmazás konfigurációjában a verzióra frissíteni kell.

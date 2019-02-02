@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 59eebc8389238af7180b94cb094f9528a21d26d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3a7cc7703a6b33eef4c7a10f927b4747bc1d417c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091346"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562190"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Az Azure Event Hubs - Geo-vészhelyreállítás 
 
@@ -41,13 +41,13 @@ A vész-helyreállítási szolgáltatás metaadatainak vész-helyreállítási v
 
 Ez a cikk a következő kifejezéseket használjuk:
 
--  *Alias*: az Ön által beállított vészhelyreállítási konfiguráció nevét. Az alias egyetlen stabil teljes tartománynévként (FQDN) kapcsolati karakterláncban biztosít. Alkalmazások ez alias a kapcsolati karakterlánc használatával csatlakozni a névtérhez. 
+-  *Alias*: Az Ön által beállított vészhelyreállítási konfiguráció neve. Az alias egyetlen stabil teljes tartománynévként (FQDN) kapcsolati karakterláncban biztosít. Alkalmazások ez alias a kapcsolati karakterlánc használatával csatlakozni a névtérhez. 
 
 -  *Elsődleges és másodlagos névtér*: A névterek, amelyek megfelelnek a címre. Az elsődleges névtér "aktív", és fogadja az üzeneteket (Ez lehet egy meglévő vagy új névtér). A másodlagos névtérre "passzív", és nem fogadhat üzeneteket. A metaadatok között is szinkronizálva, így mindkettő is zökkenőmentesen fogadja az üzeneteket alkalmazás kódja vagy kapcsolati karakterlánc módosítása nélkül. Győződjön meg arról, hogy csak az aktív névteret fogadja az üzeneteket, az aliast kell használnia. 
 
--  *Metaadatok*: például az event hubs és a fogyasztói csoportok; és azok tulajdonságait a szolgáltatás a névtérhez társított entitásokat. Vegye figyelembe, hogy csak az entitások és a beállításaik automatikusan replikálja. Üzenetek és események nem lesznek replikálva. 
+-  *metaadatok*: Entitások, például az event hubs és a fogyasztói csoportok; és azok tulajdonságait a névtérhez társított szolgáltatás. Vegye figyelembe, hogy csak az entitások és a beállításaik automatikusan replikálja. Üzenetek és események nem lesznek replikálva. 
 
--  *Feladatátvétel*: A folyamatát a másodlagos névtér.
+-  *Feladatátvétel*: Folyamat aktiválása a másodlagos névtér.
 
 ## <a name="setup-and-failover-flow"></a>A telepítő és a feladatátvételi folyamat
 
@@ -102,12 +102,12 @@ Vegye figyelembe az alábbi szempontokat figyelembe kell venni ebben a kiadásba
 
 4. Entitások szinkronizálása körülbelül 50-100 entitást percenkénti némi időt is igénybe vehet.
 
-## <a name="availability-zones-preview"></a>A rendelkezésre állási zónák (előzetes verzió)
+## <a name="availability-zones"></a>Rendelkezésre állási zónák 
 
-Az Event Hubs Standard Termékváltozat emellett támogatja [rendelkezésre állási zónák](../availability-zones/az-overview.md), így az Azure-régión belüli, meghibásodásoktól elszigetelt helyek. 
+Az Event Hubs Standard Termékváltozat támogatja [rendelkezésre állási zónák](../availability-zones/az-overview.md), így az Azure-régión belüli, meghibásodásoktól elszigetelt helyek. 
 
 > [!NOTE]
-> A rendelkezésre állási zónák előzetes verziója csak a támogatott a **USA középső RÉGIÓJA**, **USA keleti RÉGIÓJA 2**, és **közép-Franciaország** régióban.
+> Az Azure Event Hubs Standard rendelkezésre állási zónák támogatása csak akkor érhető el a [Azure-régiók](../availability-zones/az-overview.md#regions-that-support-availability-zones) ahol jelen-e rendelkezésre állási zónák.
 
 Engedélyezheti a rendelkezésre állási zónák a csak az új névterek az Azure portal használatával. Az Event Hubs nem támogatja a meglévő névterek áttelepítésének. Miután engedélyezte a a névtérben nem tiltható le a zone redudancy.
 

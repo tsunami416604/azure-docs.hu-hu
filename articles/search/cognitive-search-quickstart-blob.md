@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 50b2973f2b245cfb42ed7212e443fec1c66217cf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 191cff21cdaa6a4e94358ed0b9c63cd942f71a6e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015272"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564561"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Gyors útmutató: Folyamat létrehozása a kognitív keresés használatával képességeit, és mintaadatok
 
@@ -147,15 +147,19 @@ A varázsló általában tudja kikövetkeztetni egy alapértelmezett indexet. Eb
 
 Ebben a rövid útmutatóban a varázsló észszerű alapértelmezett beállításokat határoz meg: 
 
-+ Alapértelmezés szerint ez *azureblob-index*.
++ Alapértelmezés szerint ez *azureblob-index* az adatforrás típusa alapján. 
+
++ Alapértelmezett mezők az eredeti forrás adatmező alapulnak (`content`), továbbá a táblakimeneti mezők (`people`, `organizations`, és `locations`) a cognitive folyamat által létrehozott. Alapértelmezett adattípusok vannak következtetni a metaadatokat és az adat-mintavételezés.
+
 + Alapértelmezett kulcs *metadata_storage_path* (ezt a mezőt tartalmaz egyedi értékeket).
-+ Alapértelmezett adattípusokkal és attribútumokkal a teljes szöveges keresési forgatókönyvek esetén érvényesek.
 
-Fontolja meg az elszámolási **lekérhető** származó a `content` mező. Blobok ezt a mezőt, sorok ezer futtathat. Hogyan nehéz lenne megtekintéséhez a tartalom-(nagy erőforrásigényű) fájlok, például a Word-dokumentumok vagy PowerPoint pakli JSON-fájlként a keresési eredmények listájában is tekinthető. 
-
-Mivel megadott egy képességek alkalmazási lehetőségét, a varázsló feltételezi, hogy az eredeti forrás adatmező, valamint a kognitív folyamat által létrehozott kimeneti mezők. Ezért a portál indexmezőket ad a `content`, `people`, `organizations` és `locations` mezőhöz. Figyelje meg, hogy a varázsló automatikusan engedélyezi a **lekérhető** és **kereshető** ezekben a mezőkben. **Kereshető** azt jelzi, hogy a mező kereshető. **Lekérhető** azt jelenti, hogy az eredmények adhatók vissza azt. 
++ Alapértelmezett attribútumok **lekérhető** és **kereshető** ezekben a mezőkben. **Kereshető** azt jelzi, hogy a mező kereshető. **Lekérhető** azt jelenti, hogy az eredmények adhatók vissza azt. A varázsló feltételezi, hogy azt szeretné, hogy ezek a mezők lekérhetőként és kereshetőként lennie, mert egy indexmezők létrehozta őket.
 
   ![Indexmezők](media/cognitive-search-quickstart-blob/index-fields.png)
+
+Nézze meg a strikethrough és kérdőjel a a **lekérhető** attribútum által a `content` mező. A szöveges adatokat használó blob dokumentumok a `content` mező tartalmazza a potenciálisan futó több ezer sorok, a fájlok tömeges. Ha a fájl tartalmának átadni az Ügyfélkód van szüksége, ellenőrizze, hogy **lekérhető** kiválasztott marad. Ellenkező esetben fontolja meg ennek az attribútumnak törlésével a `content` Ha kivont elemek (`people`, `organizations`, és `locations`) elegendőek a célokra.
+
+Egy mező jelölés **lekérhető** nem jelenti azt, hogy a mező *kell* a keresési eredmények között szerepelnie. A keresési eredmények összeállítás pontosan szabályozhatja a **$select** lekérdezési paraméter megadása a szerepeltetendő mezőket. A szöveges adatokat használó mezők, például `content`, a **$select** paraméter értéke a megoldás számára biztosít az alkalmazás, ügyfél-kódot, hogy Mindeközben az emberi felhasználók kezelhető keresési eredmények hozzáfér minden olyan információt kell -n keresztül a **lekérhető** attribútum.
   
 Folytassa a következő lapra.
 

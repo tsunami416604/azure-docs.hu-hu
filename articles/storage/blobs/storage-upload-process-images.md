@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 882a43a75fa720b13d931740818e5ee6e893bcab
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: c1a279f85ef4e959869e0a3faa86b9ca7d3e05f7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753336"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657671"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: Képadatok feltöltése a felhőbe az Azure Storage segítségével
 
@@ -48,7 +48,7 @@ Helyi telepítése és használata a parancssori felület, ebben az oktatóanyag
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot 
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  
 
 A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot.
 
@@ -75,7 +75,7 @@ az storage account create --name <blob_storage_account> \
 
 Az alkalmazás két tárolót használ a Blob Storage-fiókban. A tárolók hasonlók a mappákhoz, és a blobok tárolására. A *képek* tároló az a hely, ahová az alkalmazás feltölti a teljes felbontású képeket. A sorozat egy későbbi részében egy Azure-függvényalkalmazás tölt fel átméretezett képminiatűröket a *thumbnails* tárolóba.
 
-Szerezze be a tárfiókkulcsot az [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) parancs segítségével. Ezután használja ezt a kulcsot a két tárolót hozhat létre a [az a tároló létrehozása](/cli/azure/storage/container#az_storage_container_create) parancsot.  
+Szerezze be a tárfiókkulcsot az [az storage account keys list](/cli/azure/storage/account/keys) parancs segítségével. Ezután használja ezt a kulcsot a két tárolót hozhat létre a [az a tároló létrehozása](/cli/azure/storage/container#az_storage_container_create) parancsot.  
 
 Ebben az esetben `<blob_storage_account>` a létrehozott Blob Storage-fiók neve. A *lemezképek* tároló nyilvános hozzáférése erre van beállítva `off`. A *miniatűrök* tároló nyilvános hozzáférése erre van beállítva `container`. A `container` nyilvános hozzáférési beállítás lehetővé teszi a felhasználók, akik a weblapon, a miniatűrök megtekintéséhez.
 

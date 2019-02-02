@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 7edd6acc090e4a41939811497a21886d91631fdf
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 26d61c1b263a8fa7ff4f0ff5b2888f1d900e772e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229251"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567842"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager működése
 
@@ -47,7 +47,7 @@ Ez a konfiguráció eléréséhez, kövesse az alábbi lépéseket:
 ![A TRAFFIC Manager DNS-konfiguráció][1]
 
 > [!NOTE]
-> Egy személyes tartomány az Azure Traffic Manager használata esetén a személyes tartománynév átirányítása a Traffic Manager szolgáltatásbeli tartománynévre egy olyan CNAME REKORDOT kell használnia. DNS-szabványok nem teszik lehetővé, hogy hozzon létre egy CNAME rekord, egy tartományhoz "rekordnevet" (vagy főtanúsítvány). Így nem hozható létre egy CNAME REKORDOT a "contoso.com" (más néven "csupasz" tartományhoz). Csak a "contoso.com", például "www.contoso.com" tartomány egy olyan CNAME REKORDOT hozhat létre. A probléma megoldásához, javasoljuk hogy egy egyszerű HTTP-átirányítás küldött közvetlen kérelmeket, egy alternatív nevet, például "www.contoso.com" a "contoso.com".
+> Egy személyes tartomány az Azure Traffic Manager használata esetén a személyes tartománynév átirányítása a Traffic Manager szolgáltatásbeli tartománynévre egy olyan CNAME REKORDOT kell használnia. DNS-szabványok nem teszik lehetővé, hogy hozzon létre egy CNAME rekord, egy tartományhoz "rekordnevet" (vagy főtanúsítvány). Így nem hozható létre egy CNAME REKORDOT a "contoso.com" (más néven "csupasz" tartományhoz). Csak a "contoso.com", például "www.contoso.com" tartomány egy olyan CNAME REKORDOT hozhat létre. A probléma megoldásához, javasoljuk, hogy a DNS-tartomány üzemeltetésének a [Azure DNS](../dns/dns-overview.md) és [Alias rekordok](../dns/tutorial-alias-tm.md) átirányítása a traffic manager-profilt. Másik megoldásként használhatja egy egyszerű HTTP-átirányítás küldött közvetlen kérelmeket, egy alternatív nevet, például "www.contoso.com" a "contoso.com".
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Hogy az ügyfelek hogyan kapcsolódnak a Traffic Manager használatával
 

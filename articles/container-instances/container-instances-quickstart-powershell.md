@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 87cf0f09cbeeee90492e070b25b713546c6631e5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e8efcbe080cc33cb6153d97d4435bcb477587980
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438864"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565853"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>Gyors útmutató: Egy tároló-alkalmazás futtatása az Azure Container Instances szolgáltatásban az Azure PowerShell használatával
 
@@ -39,7 +39,9 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Ahhoz, hogy tárolópéldányt hozzon létre az Azure PowerShell-lel, meg kell adnia az erőforráscsoport és a tárolópéldány nevét, valamint a Docker-tároló rendszerképét a [New-AzureRmContainerGroup][New-AzureRmContainerGroup] parancsmagnak. Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy olyan DNS-névcímkével ellátott tárolót fog üzembe helyezni, amely egy Nano Serveren futó Internet Information Servicest (IIS) üzemeltet.
+Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Ahhoz, hogy tárolópéldányt hozzon létre az Azure PowerShell-lel, meg kell adnia az erőforráscsoport és a tárolópéldány nevét, valamint a Docker-tároló rendszerképét a [New-AzureRmContainerGroup][New-AzureRmContainerGroup] parancsmagnak. Ez a rövid a `microsoft/iis:nanoserver` Windows-lemezkép a nyilvános Docker Hub-beállításjegyzékből. Ez a rendszerkép csomagok Internet Information Services (IIS) a Nano Server futtatásához.
+
+A tárolóit közzéteheti az interneten. Ehhez adjon meg egy vagy több megnyitni kívánt portot, egy DNS-névcímkét vagy mindkettőt. Ebben a rövid útmutatóban üzembe helyezi egy-egy DNS-névcímke tárolóban úgy, hogy az IIS nyilvánosan elérhető.
 
 A tárolópéldány indításához futtassa az alábbi parancsot. A `-DnsNameLabel` értéknek egyedinek kell lennie abban az Azure-régióban, ahol a példányt létrehozza. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 

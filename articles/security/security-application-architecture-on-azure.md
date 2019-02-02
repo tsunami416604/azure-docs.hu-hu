@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 4945978fdc27a298daf4de0604b894c53ba51dbe
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 78746324c240e0a1bfab81ca1e45f231909328c0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321415"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661190"
 ---
 # <a name="application-architecture-on-azure"></a>Alkalmazásarchitektúra az Azure-on
 Védelme érdekében a felhőalapú megoldások, Microsoft Azure-ban egy erős architekturális foundation, kritikus fontosságú. Tervezők, tervezők és a végrehajtók összes kihasználhatják a alkalmazások és szolgáltatások architektúra erős ismerete. Ezen alapvető ismeretek segítségével megismerheti a felhőalapú megoldások összetevőit, és megkönnyíti a biztonsági integrálhatók a tervezési és megvalósítási minden aspektusát.
@@ -42,10 +42,10 @@ Minden egyes tervezet v: tartalmaz
 [A Visio és szimbólumok képzési videók megtekintése](https://aka.ms/CnESymbolsVideo) , majd [töltse le a felhőalapú és nagyvállalati szimbólum állítsa](https://aka.ms/CnESymbols) műszaki anyagok, amelyek bemutatják az Azure, a Windows Server, SQL Server és több létrehozása érdekében. Architektúra-diagramok, oktatóanyagok, bemutatók, adatlapok, infografikák, tanulmányok és még a harmadik féltől származó könyvek szereplő szimbólumok jelentései is használhatja, ha a könyv betanítja a Microsoft-termékek használhatnak. Azonban nem jogosultak a felhasználói felületek használatos.
 
 ## <a name="3d-blueprint-visio-template"></a>Tervrajz 3D Visio-sablon
-A 3D verziói a [Microsoft architektúrát szemléltető ábrák](https://aka.ms/azblueprints) egy nem Microsoft eszköz kezdetben létrejöttek. Részeként 2015. augusztus 5-én új Visio 2013 (vagy újabb verzió) sablont le szállítani egy [Microsoft Architecture minősítési tanfolyam EDX.ORG elosztott](https://docs.microsoft.com/azure/architecture/#microsoft-architecture-certification-course).
+A 3D verziói a [Microsoft architektúrát szemléltető ábrák](https://aka.ms/azblueprints) egy nem Microsoft eszköz kezdetben létrejöttek. Részeként 2015. augusztus 5-én új Visio 2013 (vagy újabb verzió) sablont le szállítani egy [Microsoft Architecture minősítési tanfolyam EDX.ORG elosztott](https://docs.microsoft.com/azure/architecture/).
 
 A sablon a tanfolyam kívül is érhető el.
 
 * [Megtekintheti az oktatóvideót](https://aka.ms/3dBlueprintTemplateVideo) első, hogy tudja, mi mindent
 * Töltse le a [Microsoft tervezet 3d Visio-sablon](https://aka.ms/3DBlueprintTemplate)
-* Töltse le a [felhőalapú és nagyvállalati szimbólumok](https://docs.microsoft.com/azure/architecture/#drawing-symbol-and-icon-sets) a 3D-sablon használata
+* Töltse le a [felhőalapú és nagyvállalati szimbólumok](https://docs.microsoft.com/azure/architecture/) a 3D-sablon használata

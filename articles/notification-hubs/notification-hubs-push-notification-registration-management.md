@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 01/23/2019
-ms.openlocfilehash: 1ace7ecd42ac36be1c38e52dcef6663439b7db4c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d87cd174e3fca7ce2088ad270a74b08de4ac7cb5
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817823"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566153"
 ---
 # <a name="registration-management"></a>Regisztrációkezelés
 
@@ -33,7 +33,7 @@ Eszközregisztráció az egy értesítési központ használatával valósíthat
 
 ### <a name="registrations"></a>Regisztrációk
 
-Egy regisztrációs a Platformértesítési szolgáltatás (PNS) leíró eszközhöz társítja, címkék, és esetleg egy sablont. A PNS-leíró egy amiatt, eszköztoken vagy GCM regisztrációs azonosító lehet. Címkék segítségével értesítések átirányítása az eszközleírók megfelelő készletét. További információkért lásd: [az Útválasztás és címke kifejezések](notification-hubs-tags-segment-push-message.md). Sablonok regisztrációs átalakítás végrehajtásához használnak. További információért lásd a [Sablonok](notification-hubs-templates-cross-platform-push-messages.md) szakaszt.
+Egy regisztrációs a Platformértesítési szolgáltatás (PNS) leíró eszközhöz társítja, címkék, és esetleg egy sablont. A PNS-leíró egy amiatt, eszköztoken vagy FCM-regisztrációs azonosító lehet. Címkék segítségével értesítések átirányítása az eszközleírók megfelelő készletét. További információkért lásd: [az Útválasztás és címke kifejezések](notification-hubs-tags-segment-push-message.md). Sablonok regisztrációs átalakítás végrehajtásához használnak. További információért lásd a [Sablonok](notification-hubs-templates-cross-platform-push-messages.md) szakaszt.
 
 > [!NOTE]
 > Az Azure Notification Hubs regisztrációs / 60 címkék legfeljebb támogat.
@@ -295,8 +295,8 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
         case "apns":
             installation.Platform = NotificationPlatform.Apns;
             break;
-        case "gcm":
-            installation.Platform = NotificationPlatform.Gcm;
+        case "fcm":
+            installation.Platform = NotificationPlatform.Fcm;
             break;
         default:
             throw new HttpResponseException(HttpStatusCode.BadRequest);

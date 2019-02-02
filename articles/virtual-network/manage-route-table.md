@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 3381bf32bfd3df538641b11b35a64b53fda6744f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ddf789dc6a1bf6c76643e9b5478ede75f865f4eb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466873"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563014"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Létrehozása, módosítása vagy egy útvonaltábla törlése
 
@@ -62,7 +62,7 @@ Létrehozhat egy Azure-helyen és az előfizetés hány útvonaltábláihoz korl
 2. Válassza ki az útvonaltáblában a listában a részleteinek megtekintéséhez. A **beállítások**, megtekintheti a **útvonalak** az útvonaltáblában lévő és a **alhálózatok** az útvonaltábla társítva.
 3. Gyakori Azure beállításaival kapcsolatos további tudnivalókért tekintse meg a következő információkat:
     *   [Tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md)
-    *   [Hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [Hozzáférés-vezérlés (IAM)](../role-based-access-control/overview.md)
     *   [Címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zárolások](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automation-szkript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)

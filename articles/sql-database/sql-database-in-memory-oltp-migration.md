@@ -11,15 +11,16 @@ author: jodebrui
 ms.author: jodebrui
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 4455e0c0f31c9026526820b50214efb83720da0d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: fbe05186b317d3c24dca55197c2989155b5543bd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228045"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565921"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Az SQL Database az alkalmazás teljesítményének javításához használja In-Memory OLTP
+
 [In-Memory OLTP](sql-database-in-memory.md) is használható a tranzakció-feldolgozás, adatbetöltés és átmeneti adatforgatókönyvek teljesítményének javítása érdekében [prémium és üzletileg kritikus szintű](sql-database-service-tiers-vcore.md) adatbázisok a tarifacsomag növelése nélkül. 
 
 > [!NOTE] 
@@ -29,6 +30,7 @@ ms.locfileid: "51228045"
 Kövesse az alábbi lépéseket a meglévő adatbázisban In-Memory OLTP elfogadására.
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>1. lépés: Győződjön meg arról, a prémium és üzletileg kritikus szintű adatbázist használ
+
 A memóriában tárolt OLTP-k csak a prémium és üzletileg kritikus szintű adatbázisok használata támogatott. A memóriában támogatott, ha a visszaadott eredmény: 1 (0):
 
 ```
@@ -39,7 +41,7 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2. lépés: Az In-Memory OLTP áttelepítendő objektumok azonosítása
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2. lépés: Az In-Memory OLTP áttelepítendő objektumok azonosítása
 SSMS tartalmaz egy **tranzakciós teljesítmény Hibaelemzés áttekintése** jelentést, amely egy adatbázis egy aktív számítási feladatok vonatkozóan futtathat le. A jelentés azonosítja, táblák és tárolt eljárások, amelyek a deduplikációra kijelölt In-Memory OLTP való migráláshoz.
 
 Az ssms-ben, a jelentés létrehozásához:
@@ -49,7 +51,7 @@ Az ssms-ben, a jelentés létrehozásához:
 
 További információkért lásd: [táblázat vagy tárolt eljárás kell használatát. A memóriában tárolt OLTP-k meghatározása](https://msdn.microsoft.com/library/dn205133.aspx).
 
-## <a name="step-3-create-a-comparable-test-database"></a>3. lépés: Hozzon létre egy hasonló teszt adatbázist
+## <a name="step-3-create-a-comparable-test-database"></a>3. lépés: Egy hasonló teszt adatbázis létrehozása
 Tegyük fel, hogy a jelentés azt jelzi, hogy az adatbázis rendelkezik, melyekhez hasznos lenne alakít át egy memóriaoptimalizált tábla. Azt javasoljuk, hogy először tesztelje a jelzés tesztelésével megerősítéséhez.
 
 Az éles adatbázis egy tesztelési másolatot van szüksége. A test-adatbázis ugyanazon a szinten szolgáltatási szint, az éles adatbázis kell lennie.
@@ -65,7 +67,7 @@ Tesztelés megkönnyítése a Teljesítménybeállítások az adatbázis tesztel
         MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
    ```
 
-## <a name="step-4-migrate-tables"></a>4. lépés: Tábla áttelepítése
+## <a name="step-4-migrate-tables"></a>4. lépés: Táblák áttelepítése
 Kell létrehozni, és töltse ki a vizsgálni kívánt tábla memóriaoptimalizált másolatát. Létrehozhat használatával:
 
 * A hasznos memória optimalizálási varázsló az ssms-ben.
@@ -85,7 +87,7 @@ A migrálási beállítás használata:
    * [Memóriabeli OLTP-ba való migrálás](https://msdn.microsoft.com/library/dn247639.aspx).
 4. Ha a tábla nem támogatott szolgáltatások, az advisor hajthat végre a tényleges séma és adatok áttelepítése az Ön számára.
 
-#### <a name="manual-t-sql"></a>Manuális a T-SQL
+#### <a name="manual-t-sql"></a>Manual T-SQL
 A migrálási beállítás használata:
 
 1. Csatlakozzon a teszt adatbázishoz ssms-ben (vagy egy hasonló eszköz) használatával.
@@ -105,7 +107,7 @@ INSERT INTO <new_memory_optimized_table>
 ```
 
 
-## <a name="step-5-optional-migrate-stored-procedures"></a>(Nem kötelező) 5. lépés: tárolt eljárások áttelepítése
+## <a name="step-5-optional-migrate-stored-procedures"></a>(Nem kötelező) 5. lépés: Tárolt eljárások áttelepítése
 A memórián belüli funkció jobb teljesítmény tárolt eljárás is módosíthatja.
 
 ### <a name="considerations-with-natively-compiled-stored-procedures"></a>Natív módon lefordított tárolt eljárásokkal kapcsolatos szempontok
@@ -161,7 +163,7 @@ Testre szabni, és a tesztelési számítási feladatok futtatásához, fontolja
 
 Hálózati késés minimalizálása érdekében futtassa a tesztet az azonos Azure földrajzi régióban, ahol az adatbázis található.
 
-## <a name="step-7-post-implementation-monitoring"></a>7. lépés: Utólagos ellenőrzés
+## <a name="step-7-post-implementation-monitoring"></a>7. lépés: Megvalósítás utáni figyelése
 Vegye figyelembe, hogy az éles környezetben a memórián belüli megvalósításokban teljesítmény hatásainak figyelése:
 
 * [Memóriabeli tárolás monitorozása](sql-database-in-memory-oltp-monitoring.md).

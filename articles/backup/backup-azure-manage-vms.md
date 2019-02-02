@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
 ms.author: sogup
-ms.openlocfilehash: b51cf5611bf00c133378a7d90d1693e50b27f7b0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0ed7260f35c483d17eb97e625ef72c310a3fcfdb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491570"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564136"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése
 
@@ -137,10 +137,12 @@ Egy igény szerinti biztonsági mentés a virtuális gép elindítása:
 ## <a name="stop-protecting-virtual-machines"></a>Virtuális gépek védelmének megszüntetése
 Ha egy virtuális gép leállítása, megkérdezi, hogy szeretné-e őrizni a helyreállítási pontokat. Virtuális gépek védelmének leállítani két módja van:
 
-* Állítsa le az összes jövőbeli biztonsági mentési feladatot, és törölje az összes helyreállítási pontot, vagy
-* Állítsa le az összes jövőbeli biztonsági mentési feladatot, de hagyja meg a helyreállítási pontok
+* állítsa le az összes jövőbeli biztonsági mentési feladatot és törölje az összes helyreállítási pontot, vagy
+* állítsa le az összes jövőbeli biztonsági mentési feladatot, de hagyja meg a helyreállítási pontokat.
 
 Nincs társított storage-ban a helyreállítási pontok meghagyásának költsége. A helyreállítási pontok meghagyásának előnye az, viszont visszaállíthatja a virtuális gép később, ha szükséges. A helyreállítási pontok megőrzésének költségével kapcsolatos információkat, tekintse meg a [díjszabás](https://azure.microsoft.com/pricing/details/backup/). Ha törli az összes helyreállítási pontot választja, a virtuális gép nem állítható vissza.
+
+Minden alkalommal, amikor leállítja a biztonsági mentési adatok megőrzése mellett, helyreállítási pontok érvényessége lejár a adatmegőrzési szabályzatának megfelelően, de Azure Backup mindig biztosítják egy legutóbbi helyreállítási pont amíg explicit módon biztonsági mentési adatok törlése. Ha töröl egy adatforrást végrehajtása a biztonsági mentés leállítása nélkül, új biztonsági mentései fog kezdenek, és megfelelően adatmegőrzési, de egy legutóbbi helyreállítási pont minden esetben megmaradnak, amíg a biztonsági másolatot állítsa le a régi helyreállítási pontok érvényessége lejár hasonló módon törli az adatokat.
 
 Virtuális gép védelmének megszüntetése:
 

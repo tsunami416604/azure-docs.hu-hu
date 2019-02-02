@@ -13,18 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: bf0e672ea6f1d62442233993bd778c82a8a16037
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 19e842fc3674536972327c3bc6d31641560e38db
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187211"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659184"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>A Service Map System Center Operations Manager-integráció
-  > [!NOTE]
-  > Ez a funkció nyilvános előzetes verzióban érhető el.
-  > 
-  
+
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map használatával a kiszolgálók az Ön gondol rájuk, rendszerekként, amelyek kritikus fontosságú szolgáltatásokat módon teszi lehetővé. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok minden olyan TCP-kapcsolattal összekötött architektúrában, nem szükséges az ügynök telepítése mellett konfiguráció között. További információkért lásd: a [Szolgáltatástérkép dokumentációja]( service-map.md).
 
 Ez az integráció a Service Map és a System Center Operations Manager között a dinamikus függőségi térképek, a Service Map alapuló az Operations Manager elosztottalkalmazás-diagramok automatikusan létrehozhat.
@@ -38,12 +35,12 @@ Ez az integráció a Service Map és a System Center Operations Manager között
 ## <a name="install-the-service-map-management-pack"></a>A Service Map felügyeleti csomag telepítése
 Az Operations Manager és a Service Map integrációjával engedélyezi a Microsoft.SystemCenter.ServiceMap felügyeleticsomag-köteg (Microsoft.SystemCenter.ServiceMap.mpb) importálásával. A felügyeleticsomag-köteg a letöltheti a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=55763). A csomagot a következő felügyeleti csomagokat tartalmazza:
 * Microsoft Service Map Alkalmazásnézetek
-* A Microsoft System Center Service Map belső
+* Microsoft System Center Service Map Internal
 * A Microsoft System Center Service Map felülbírálások
-* A Microsoft System Center Service Map
+* Microsoft System Center Service Map
 
 ## <a name="configure-the-service-map-integration"></a>A Service Map-integráció konfigurálása
-Miután telepítette a Service Map felügyeleti csomagot, egy új csomópont **Service Map**, alatt jelenik meg **Operations Management Suite** a a **felügyeleti** ablaktáblán. 
+Miután telepítette a Service Map felügyeleti csomagot, egy új csomópont **Service Map**, alatt jelenik meg **Operations Management Suite** a a **felügyeleti** ablaktáblán.
 
 >[!NOTE]
 >[Operations Management Suite szolgáltatások gyűjteménye nem](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) , amely tartalmazza a Log Analytics részét képező, [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
@@ -63,11 +60,11 @@ A Service Map integráció konfigurálásához tegye a következőket:
     ![Az Operations Manager konfigurációs munkaterület](media/service-map-scom/scom-config-workspace.png)
 
 4. Az a **gép Csoportválasztás** melyik Service Map gépcsoportok szeretné szinkronizálni az Operations Manager választja az ablakban. Kattintson a **gépcsoportok hozzáadása/eltávolítása**, listájából válassza ki a csoportokat **rendelkezésre álló gépcsoportok**, és kattintson a **Hozzáadás**.  Ha befejezte a csoportok kiválasztásával, kattintson a **Ok** befejezéséhez.
-    
+
     ![Az Operations Manager konfigurációs gépcsoportok](media/service-map-scom/scom-config-machine-groups.png)
-    
+
 5. Az a **kiszolgáló kiválasztása** ablakban konfigurálja a Service Map kiszolgálók csoport az Operations Manager és a Service Map közötti szinkronizálni kívánt kiszolgálón. Kattintson a **kiszolgálók hozzáadása/eltávolítása**.   
-    
+
     A kiszolgáló egy elosztottalkalmazás-diagram létrehozása az integráció a kiszolgálónak kell lennie:
 
     * Operations Manager által felügyelt
@@ -91,7 +88,7 @@ Miután a Log Analytics-munkaterülethez van csatlakoztatva, egy új mappát, a 
 ![Az Operations Manager figyelés ablaktáblán](media/service-map-scom/scom-monitoring.png)
 
 A Service Map mappa négy csomóponttal rendelkezik:
-* **Aktív riasztások**: Az Operations Manager és a Service Map közötti kommunikáció kapcsolatos összes aktív riasztás listája.  Vegye figyelembe, hogy ezek a riasztások nem a Log Analytics-riasztások szinkronizálódik az Operations Manager. 
+* **Aktív riasztások**: Az Operations Manager és a Service Map közötti kommunikáció kapcsolatos összes aktív riasztás listája.  Vegye figyelembe, hogy ezek a riasztások nem a Log Analytics-riasztások szinkronizálódik az Operations Manager.
 
 * **Kiszolgálók**: Megjeleníti a figyelt kiszolgálók konfigurált való szinkronizálása a Service Map.
 
@@ -120,9 +117,9 @@ Egy szabály _Microsoft.SystemCenter.ServiceMapImport.Rule_, rendszeres időköz
 
 ![Az Operations Manager felülbírálások tulajdonságok ablak](media/service-map-scom/scom-overrides.png)
 
-* **Engedélyezett**: Engedélyezi vagy letiltja az automatikus frissítések. 
+* **Engedélyezett**: Engedélyezi vagy letiltja az automatikus frissítések.
 * **IntervalMinutes**: Állítsa vissza a frissítések közötti idő. Az alapértelmezett érték egy óra. Kiszolgáló maps gyakrabban szinkronizálni szeretné, ha az értéke módosíthatja.
-* **TimeoutSeconds**: Állítsa alaphelyzetbe a mennyi ideig, mielőtt a kérés túllépi az időkorlátot. 
+* **TimeoutSeconds**: Állítsa alaphelyzetbe a mennyi ideig, mielőtt a kérés túllépi az időkorlátot.
 * **TimeWindowMinutes**: Adatok lekérdezése időtartományából alaphelyzetbe. Alapértelmezett érték 60 perces ablak. A Service Map által engedélyezett maximális értéke 60 perc.
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások

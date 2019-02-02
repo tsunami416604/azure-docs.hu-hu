@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/22/2017
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 60dd0bdd529b4ee8fc8377093d49b8a27fb9b3f1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ff070adbda2a36261ca24eb0cc993ca22eada1c7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016648"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661241"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok Store az Azure Key Vaultban
 
@@ -27,9 +27,6 @@ Egyéni tevékenység kivételével minden tevékenység típus jelenleg ez a fu
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a funkció a data factory-szolgáltatásidentitás támaszkodik. Megtudhatja, hogyan használható a [Data factory-szolgáltatásidentitás](data-factory-service-identity.md) , és győződjön meg, hogy az adat-előállítóhoz társított egy.
-
->[!TIP]
->Az Azure Key Vaultban, amikor létrehoz egy titkos kulcsot **(pl. kapcsolati karakterlánc-jelszóváltozás-szolgáltatás egyszerű kulcs/stb.) kéri, hogy az ADF társított szolgáltatás titkos tulajdonság teljes értékét put**. Például az Azure Storage társított szolgáltatás helyezze `DefaultEndpointsProtocol=http;AccountName=myAccount;AccountKey=myKey;` AKV titkos kulcsot, akkor a hivatkozás "connectionString" mezőben ADF; Dynamics társított szolgáltatáshoz, mint a put `myPassword` AKV-titokként, majd hivatkozzon ADF "password" mezőt. Tekintse meg minden összekötő/számítási szóló támogatott tulajdonságainak részleteit.
 
 ## <a name="steps"></a>Lépések
 
@@ -46,8 +43,8 @@ Társított Azure Key Vault szolgáltatás a következő tulajdonságok támogat
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Azurekeyvault értékre van**. | Igen |
-| BaseUrl | Adja meg az Azure Key Vault URL-címet. | Igen |
+| type | A type tulajdonságot kell beállítani: **AzureKeyVault**. | Igen |
+| baseUrl | Adja meg az Azure Key Vault URL-címet. | Igen |
 
 **Használatával a szerzői műveletek a felhasználói felület:**
 

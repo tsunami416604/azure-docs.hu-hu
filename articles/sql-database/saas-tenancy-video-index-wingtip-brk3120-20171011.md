@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
-ms.date: 05/14/2018
-ms.openlocfilehash: ad1ae537038c84aac7bebe40a1db124521933f3d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: bbe220780a3c21e7bfb15d0568904af4ed47f765
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608902"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567553"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>A videó indexelt, és jegyzetelve lettek volna, több-bérlős SaaS-alkalmazás az Azure SQL Database használatával
 
@@ -46,8 +46,8 @@ Az alábbi címek a cikk későbbi részében megfelelő megjegyzésekkel ellát
 
 - [1. **(Indítás)**  Üdvözlő diába 0:00:03](#anchor-image-wtip-min00001)
 - [2. Munkamenet-célkitűzések 0:03:11](#anchor-image-wtip-min00311)
-- [3. Napirend, 0:04:17](#anchor-image-wtip-min00417)
-- [4. Több-bérlős web app alkalmazásban 0:05:05](#anchor-image-wtip-min00505)
+- [3. Agenda, 0:04:17](#anchor-image-wtip-min00417)
+- [4. Multi-tenant web app, 0:05:05](#anchor-image-wtip-min00505)
 - [5. Alkalmazás webes űrlap művelet, 0:05:55](#anchor-image-wtip-min00555)
 - [6. Bérlőnkénti költség (skálázást, elkülönített helyreállítási), 0:09:31](#anchor-image-wtip-min00931)
 - [7. Adatbázis-modellek a több-bérlős: és hátrányai, 0:11:59](#anchor-image-wtip-min01159)
@@ -77,7 +77,7 @@ Az alábbi címek a cikk későbbi részében megfelelő megjegyzésekkel ellát
 - [31. Nagy mennyiségű, 1:10:33 séma kezelése](#anchor-image-wtip-min11033)
 - [32. Elosztott lekérdezés több bérlős adatbázisban, 1:12:21](#anchor-image-wtip-min11221)
 - [33. A jegy létrehozásakor, 1:12:32 bemutató](#anchor-image-wtip-min11232)
-- [34. SSMS alkalmi elemzések, 1:12:46](#anchor-image-wtip-min11246)
+- [34. SSMS adhoc analytics, 1:12:46](#anchor-image-wtip-min11246)
 - [35. Az SQL dw-vel, 1:16:32 bérlői adatok kibontása](#anchor-image-wtip-min11632)
 - [36. Napi értékesítés terjesztési, 1:16:48-grafikon](#anchor-image-wtip-min11648)
 - [37. Belefoglalni, és hívja meg a műveletet, 1:19:52](#anchor-image-wtip-min11952)
@@ -101,7 +101,7 @@ Bármilyen képernyőkép képre kattintva megnyílik a pontos idő helyre a vid
 - Cím: A MYOB tanulás: Tervezési minták az Azure SQL Database SaaS-alkalmazásokhoz
 - Bill.Gibson@microsoft.com
 - Fő Programmenedzsere, az Azure SQL Database
-- A Microsoft Ignite munkamenet BRK3120, Orlandóban, FL USA, 2017. október/11.
+- Microsoft Ignite session BRK3120, Orlando, FL USA, October/11 2017
 
 
 &nbsp; <a name="anchor-image-wtip-min00311"/>
@@ -115,12 +115,12 @@ Bármilyen képernyőkép képre kattintva megnyílik a pontos idő helyre a vid
 
 
 &nbsp; <a name="anchor-image-wtip-min00417"/>
-#### <a name="3-agenda-00409"></a>3. Napirend, 0:04:09
+#### <a name="3-agenda-00409"></a>3. Agenda, 0:04:09
 [![Agenda][image-wtip-min00417-agenda]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=249)
 
 
 &nbsp; <a name="anchor-image-wtip-min00505"/>
-#### <a name="4-multi-tenant-web-app-00500"></a>4. Több-bérlős web app alkalmazásban 0:05:00
+#### <a name="4-multi-tenant-web-app-00500"></a>4. Multi-tenant web app, 0:05:00
 [![A Wingtip SaaS-alkalmazás: Több-bérlős webalkalmazások][image-wtip-min00505-web-app]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=300)
 
 
@@ -204,7 +204,7 @@ Bármilyen képernyőkép képre kattintva megnyílik a pontos idő helyre a vid
 
 
 &nbsp; <a name="anchor-image-wtip-min05038"/>
-#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21. GitHub-adattárat a Microsoft/WingtipSaaS, 0:50:32
+#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21. GitHub repo Microsoft/WingtipSaaS, 0:50:32
 [![GitHub-adattárat a Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
 
 
@@ -269,7 +269,7 @@ Bármilyen képernyőkép képre kattintva megnyílik a pontos idő helyre a vid
 
 
 &nbsp; <a name="anchor-image-wtip-min11246"/>
-#### <a name="34-ssms-adhoc-analytics-11235"></a>34. SSMS alkalmi elemzések, 1:12:35
+#### <a name="34-ssms-adhoc-analytics-11235"></a>34. SSMS adhoc analytics, 1:12:35
 [![SSMS alkalmi elemzések][image-wtip-min11246-ssms-adhoc-analytics]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=4355)
 
 

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: b9ea87b3a56c4759a0d96b7d01e33087c64ccd91
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 631642f487986e3315c1988f8b591f6e6b43d760
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037555"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561371"
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Az Azure Cosmos DB: Az SQL API-alkalmazás, a Python és az Azure Portalon
 
@@ -75,7 +75,27 @@ Most pedig klónozzon egy SQL API-alkalmazást a GitHubról, állítsa be a kapc
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-python-getting-started.git
     ```  
-    
+
+## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
+
+Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
+
+1. Az [Azure Portalon](https://portal.azure.com/), az Azure Cosmos DB-fiók bal oldali navigációs sávján kattintson a **Kulcsok** elemre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az **URI** és az **Elsődleges kulcs** értékét a `CosmosGetStarted.py` fájlba.
+
+    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-sql-api-dotnet/keys.png)
+
+2. Nyissa meg a `CosmosGetStarted.py` fájlt a C:\git-samples\azure-cosmos-db-python-getting-started elérési úton a Visual Studio Code-ban.
+
+3. A másolási gomb használatával másolja ki az **URI** érteket a Portalról, és azt adja meg a **végpont** kulcs értékeként a ``CosmosGetStarted.py`` fájlban. 
+
+    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
+
+4. Másolja az **ELSŐDLEGES KULCS** értékét a Portalról, és azt adja meg a **config.PRIMARYKEY** értékeként a ``CosmosGetStarted.py`` fájlban. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
+
+    `'PRIMARYKEY': 'FILLME',`
+
+5. Mentse a ``CosmosGetStarted.py`` fájlt.
+
 ## <a name="review-the-code"></a>A kód áttekintése
 
 Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. 
@@ -84,7 +104,7 @@ Megjegyzés: Ha már ismeri a Python SDK korábbi verzióját, ismerősek lehetn
 
 Az alábbi kódrészletek mind a `CosmosGetStarted.py` fájlból származnak.
 
-* A CosmosClient inicializálva van.
+* A CosmosClient inicializálva van. Ne feledje frissíteni a "Végpont" és "master key" értékek leírtak szerint a [a kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszban. 
 
     ```python
     # Initialize the Cosmos client
@@ -146,27 +166,7 @@ Az alábbi kódrészletek mind a `CosmosGetStarted.py` fájlból származnak.
     for item in iter(result_iterable):
         print(item['message'])
     ```
-
-## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
-
-Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
-
-1. Az [Azure Portalon](https://portal.azure.com/), az Azure Cosmos DB-fiók bal oldali navigációs sávján kattintson a **Kulcsok** elemre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az **URI** és az **Elsődleges kulcs** értékét a `CosmosGetStarted.py` fájlba.
-
-    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-sql-api-dotnet/keys.png)
-
-2. Nyissa meg a `CosmosGetStarted.py` fájlt a C:\git-samples\azure-cosmos-db-python-getting-started elérési úton a Visual Studio Code-ban.
-
-3. A másolási gomb használatával másolja ki az **URI** érteket a Portalról, és azt adja meg a **végpont** kulcs értékeként a ``CosmosGetStarted.py`` fájlban. 
-
-    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
-
-4. Másolja az **ELSŐDLEGES KULCS** értékét a Portalról, és azt adja meg a **config.PRIMARYKEY** értékeként a ``CosmosGetStarted.py`` fájlban. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
-
-    `'PRIMARYKEY': 'FILLME',`
-
-5. Mentse a ``CosmosGetStarted.py`` fájlt.
-    
+   
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
 1. Válassza a Visual Studio Code-ban a **Nézet**>**Parancskatalógus** lehetőséget. 

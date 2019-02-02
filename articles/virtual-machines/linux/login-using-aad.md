@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: c242d8dd64dc58b0c20b6fb15747f201f85cc482
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 8a54ab9e45838a81a2ea4e2e425114e19a65ba76
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320937"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563847"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -105,7 +105,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) házirend határozza m
 > [!NOTE]
 > Lehetővé teszi, hogy jelentkezzen be a virtuális Gépre ssh-n keresztül, hozzá kell rendelnie vagy a *virtuális gépre való rendszergazdai bejelentkezés* vagy *virtuális gépre való felhasználói bejelentkezés* szerepkör. Az Azure-felhasználó a *tulajdonosa* vagy *közreműködői* egy virtuális géphez hozzárendelt szerepkörök automatikusan nem rendelkezik jogosultságokkal jelentkezzen be a virtuális gép ssh-n keresztül.
 
-Az alábbi példában [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) hozzárendelése a *virtuális gépre való rendszergazdai bejelentkezés* a virtuális gép az aktuális Azure felhasználói szerepkört. Az aktív Azure-fiók felhasználóneve beszerzett [az fiók show](/cli/azure/account#az-account-show), és a *hatókör* van állítva az előző lépésben létrehozott virtuális géphez [az vm show](/cli/azure/vm#az-vm-show). A hatókört is hozzárendelhetők egy erőforrás csoportba vagy előfizetésbe szintjén, és a normál öröklési RBAC-engedélyek vonatkoznak. További információkért lásd: [szerepköralapú hozzáférés-vezérlés](../../azure-resource-manager/resource-group-overview.md#access-control)
+Az alábbi példában [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) hozzárendelése a *virtuális gépre való rendszergazdai bejelentkezés* a virtuális gép az aktuális Azure felhasználói szerepkört. Az aktív Azure-fiók felhasználóneve beszerzett [az fiók show](/cli/azure/account#az-account-show), és a *hatókör* van állítva az előző lépésben létrehozott virtuális géphez [az vm show](/cli/azure/vm#az-vm-show). A hatókört is hozzárendelhetők egy erőforrás csoportba vagy előfizetésbe szintjén, és a normál öröklési RBAC-engedélyek vonatkoznak. További információkért lásd: [szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)

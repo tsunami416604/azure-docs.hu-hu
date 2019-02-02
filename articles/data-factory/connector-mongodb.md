@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e0d6fe79d23f3d3d0679445f5120a3ec17ddd67
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ca6040bb74839f30a2f1b13297f6037f05240c67
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013774"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562218"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MongoDB
 
@@ -88,7 +88,7 @@ Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját l�
 
 ```json
 {
-     "name":  "MongoDbDataset",
+    "name": "MongoDbDataset",
     "properties": {
         "type": "MongoDbV2Collection",
         "linkedServiceName": {
@@ -116,7 +116,7 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
 | szűrő | Meghatározza a kijelölési szűrő lekérdezés operátorok használata. A gyűjteményben található dokumentumokat adja vissza, hagyja ki ezt a paramétert, vagy adja át egy üres dokumentumot ({}). | Nem |
 | cursorMethods.project | Itt adhatja meg a dokumentumokat a leképezés a mezők. Minden mező az egyező dokumentumok visszaadandó, hagyja ki ezt a paramétert. | Nem |
 | cursorMethods.sort | Meghatározza azt a sorrendet, amelyben a lekérdezés visszaadja az egyező dokumentumok. Tekintse meg [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nem |
-| cursorMethods.limit | Meghatározza a kiszolgáló visszaadja dokumentumok maximális számát. Tekintse meg [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nem | 
+| cursorMethods.limit | Meghatározza a kiszolgáló visszaadja dokumentumok maximális számát. Tekintse meg [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nem |
 | cursorMethods.skip | Megadja a számát, hagyja ki a dokumentumok és, ahol a MongoDB eredmények kezdődik. Tekintse meg [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nem |
 | batchSize | Megadja a választ kapott a MongoDB-példányban minden kötegben visszaadandó dokumentumok számát. A legtöbb esetben a köteg méretének módosítása nem érinti a felhasználó vagy az alkalmazás. A cosmos DB-korlátok minden egyes köteg nem lehet hosszabb 40MB-nál, amely egyezik meg a dokumentumokat mérete batchSize számát, így csökkenti az értéket, ha a dokumentumok méretétől, nagy folyamatban. | Nem<br/>(az alapértelmezett érték **100**) |
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: bcb2291059a6d6da2065f6f0987d173fd6509a31
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5a7edf22be769b9f00d83d6b620691e2329925a5
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852371"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659813"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Application gateway létrehozása a HTTP – HTTPS átirányításról, az Azure CLI használatával
 
@@ -64,7 +64,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
 
-Hozza létre a *myVNet* nevű virtuális hálózatot és a *myAGSubnet* nevű alhálózatot az [az network vnet create](/cli/azure/network/vnet#az-net) paranccsal. Ezután hozzáadhatja a háttérkiszolgálók számára szükséges *myBackendSubnet* nevű alhálózatot az [az network vnet subnet create](/cli/azure/network/vnet/subnet) paranccsal. Hozza létre a *myAGPublicIPAddress* elnevezésű nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) paranccsal.
+Hozza létre a *myVNet* nevű virtuális hálózatot és a *myAGSubnet* nevű alhálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. Ezután hozzáadhatja a háttérkiszolgálók számára szükséges *myBackendSubnet* nevű alhálózatot az [az network vnet subnet create](/cli/azure/network/vnet/subnet) paranccsal. Hozza létre a *myAGPublicIPAddress* elnevezésű nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal.
 
 ```azurecli-interactive
 az network vnet create \
@@ -86,7 +86,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway#az-network_application_gateway_create) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. 
+Az [az network application-gateway create](/cli/azure/network/application-gatewaywork_application_gateway_create) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. 
 
 Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. Ebben a példában társítja a létrehozott tanúsítványt és annak jelszavát az alkalmazásátjáró létrehozásakor. 
 
@@ -121,7 +121,7 @@ az network application-gateway create \
 
 ### <a name="add-the-http-port"></a>Adja hozzá a HTTP-port
 
-Használhat [az network application-gateway frontend-port létrehozása](/cli/azure/network/application-gateway/frontend-port#az-network_application_gateway_frontend_port_create) HTTP-port hozzáadása az application gateway.
+Használhat [az network application-gateway frontend-port létrehozása](/cli/azure/network/application-gateway/frontend-portwork_application_gateway_frontend_port_create) HTTP-port hozzáadása az application gateway.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -133,7 +133,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-the-http-listener"></a>Adja hozzá a HTTP-figyelő
 
-Használhat [az network application-gateway http-listener létrehozása](/cli/azure/network/application-gateway/http-listener#az-network_application_gateway_http_listener_create) hozzáadása a nevű figyelő *myListener* az application gatewayhez.
+Használhat [az network application-gateway http-listener létrehozása](/cli/azure/network/application-gateway/http-listenerwork_application_gateway_http_listener_create) hozzáadása a nevű figyelő *myListener* az application gatewayhez.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Az átirányítási konfiguráció hozzáadása
 
-Adja hozzá a HTTP a HTTPS átirányítás konfigurálása az application gateway-t a [az network application-gateway átirányítási konfiguráció létrehozása](/cli/azure/network/application-gateway/redirect-config#az-network_application_gateway_redirect_config_create).
+Adja hozzá a HTTP a HTTPS átirányítás konfigurálása az application gateway-t a [az network application-gateway átirányítási konfiguráció létrehozása](/cli/azure/network/application-gateway/redirect-configwork_application_gateway_redirect_config_create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -161,7 +161,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>Az útválasztási szabály hozzáadása
 
-Adja hozzá a nevű útválasztási szabályt *felhasználóval a rule2* az application gateway-t az átirányítási konfigurációval [az network application-gateway-szabály létrehozása](/cli/azure/network/application-gateway/rule#az-network_application_gateway_rule_create).
+Adja hozzá a nevű útválasztási szabályt *felhasználóval a rule2* az application gateway-t az átirányítási konfigurációval [az network application-gateway-szabály létrehozása](/cli/azure/network/application-gateway/rulework_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \

@@ -1,28 +1,66 @@
 ---
-title: A helyszíni Azure AD jelszó védelmi ügynök verziókiadásai
+title: A helyszíni Azure AD jelszó-védelmi ügynök verziókiadásai
 description: Dokumentumok verzió kiadását és viselkedésének módosítási előzmények
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: ccfe62e0002e3420303130840f1a0d393efb3420
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: bcf5176728b520cae5d31750384f316efe244b7e
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078763"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663621"
 ---
-# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Előzetes verzió:  Az Azure AD jelszó védelmi ügynök korábbi verziók
+# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Előzetes verzió:  Az Azure AD jelszóvédelem ügynök verzióelőzményei
 
 |     |
 | --- |
 | Az Azure AD jelszóvédelem az Azure Active Directory nyilvános előzetes verziójú funkció. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
+
+## <a name="12650"></a>1.2.65.0
+
+Kiadás dátuma: 2/1/2019
+
+Változások:
+
+* DC-ügynök és a proxy szolgáltatás mostantól támogatottak Server Core-on. Minimális Verziójára vonatkozó követelményeknek mielőtt megismerttel: A Windows Server 2012 tartományvezérlő ügynökök és a Windows Server 2012 R2 a proxyk számára.
+* A Register-AzureADPasswordProtectionProxy és a Register-AzureADPasswordProtectionForest parancsmagok mostantól támogatják az eszköz-kód-alapú Azure hitelesítési módot.
+* A Get-AzureADPasswordProtectionDCAgent parancsmag összekeveredett és/vagy érvénytelen szolgáltatáscsatlakozási pontokat figyelmen kívül hagyja. Ez javítja a bejelentett hiba ahol tartományvezérlők néha jelennek meg többször a kimenetben.
+* A Get-AzureADPasswordProtectionSummaryReport parancsmag összekeveredett és/vagy érvénytelen szolgáltatáscsatlakozási pontokat figyelmen kívül hagyja. Ez javítja a bejelentett hiba ahol tartományvezérlők néha jelennek meg többször a kimenetben.
+* A Proxy powershell-modul % ProgramFiles%\WindowsPowerShell\Modules most már regisztrálva van. A gép PSModulePath környezeti változó már nem lehet módosítani.
+* Új Get-AzureADPasswordProtectionProxy parancsmag bővült, ezzel elősegítve az egy erdőben vagy tartományban regisztrált proxyk felderítése.
+* A tartományvezérlő-ügynök egy új mappát a sysvol-megosztás replikálásához jelszóházirendek és egyéb fájlokat használja.
+
+   Régi mappájának helye:
+
+   `\\<domain>\sysvol\<domain fqdn>\Policies\{4A9AB66B-4365-4C2A-996C-58ED9927332D}`
+
+   Új mappa helye:
+
+   `\\<domain>\sysvol\<domain fqdn>\AzureADPasswordProtection`
+
+   (A módosítás elkerülése érdekében a hamis pozitív "árva csoportházirend-objektum" figyelmeztetés.)
+
+   > [!NOTE]
+   > Nincs áttelepítésével vagy az adatok megosztását a régi és az új mappát között történik. DC-ügynök korábbi verzióival továbbra is a régi helyet, amíg nem frissítik őket, ez a verzió vagy újabb. Miután az összes tartományvezérlő ügynökök 1.2.65.0 verziót futtat, vagy később, a régi sysvol mappa előfordulhat, hogy kézzel kell törölni.
+
+* A DC ügynök és a proxy szolgáltatás mostantól észleli és törli a megfelelő szolgáltatási csatlakozási pontok összekeveredett példányait.
+* Minden tartományvezérlő ügynök rendszeres időközönként törli összekeveredett és elavult szolgáltatáskapcsolódási pontjait a tartományban, a mindkét DC-ügynök és a proxy szolgáltatáskapcsolati pontját. Mindkét DC-ügynök és a proxy szolgáltatáskapcsolódási pontjait minősülnek elavulttá, ha a szívverés időbélyeg: 7 napnál régebbi.
+* A tartományvezérlő ügynök most fogja a erdő tanúsítvány megújításához, igény szerint.
+* A Proxy szolgáltatást most fogja a proxy tanúsítvány megújítása, igény szerint.
+* Jelszó-ellenőrzési algoritmus frissítései: a globális letiltott jelszavak és (Ha be van állítva) ügyfél-specifikus letiltott jelszavak listában mostantól jelszó ellenőrzés előtt. Előfordulhat, hogy most már elutasítja a megadott jelszó (sikertelen vagy csak naplózási) Ha a globális és ügyfél-specifikus listában tokeneket tartalmaz. Az Eseménynapló dokumentáció; ennek megfelelően frissítve lett Lásd: [figyelő Azure AD jelszóvédelem](howto-password-ban-bad-on-premises-monitor.md).
+* Teljesítmény- és háttértárat javításai
+* A továbbfejlesztett naplózás
+
+> [!WARNING]
+> Időben korlátozott funkciók: a tartományvezérlő-ügynökszolgáltatás ebben a kiadásban (1.2.65.0) le fog állni. szeptember 1-től a 2019-tól jelszó ellenőrzési kérések feldolgozásáért.  DC-ügynök szolgáltatást a korábbi verziókban feldolgozása. július 1-től a 2019-től (lásd alább) leáll. A tartományvezérlő vendégügynök-szolgáltatását az összes verzió naplózza az 10021 eseményeket a rendszergazda eseménynaplójába a fenti határidők vezető két hónapon belülre. Az összes határidőn korlátozást megszüntet a soron következő kiadásban általánosan elérhető. A Proxy agent szolgáltatás nem időkorlátos bármelyik verziója, de továbbra is kell frissíteni a legújabb verziót az összes későbbi hibajavításokat tartalmaz, és az egyéb fejlesztések kihasználása érdekében.
 
 ## <a name="12250"></a>1.2.25.0
 
@@ -39,6 +77,7 @@ Javításokat tartalmaz:
 Változások:
 
 * A minimálisan szükséges operációs rendszer szintjén a Proxy szolgáltatás most már a Windows Server 2012 R2. A tartományvezérlő-ügynök szolgáltatás minimálisan szükséges operációs rendszer szintjén, a Windows Server 2012 marad.
+* A Proxy szolgáltatás mostantól csak a .NET 4.6.2-es verziójára.
 * A jelszó adatérvényesítési algoritmust egy kibontott karakter normalizálási táblát használja. Emiatt előfordulhat, hogy a korábbi verziók elfogadott el lettek utasítva, jelszavakat.
 
 ## <a name="12100"></a>1.2.10.0
@@ -73,4 +112,4 @@ Kezdeti nyilvános előzetes kiadás
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure AD jelszóvédelem üzembe helyezése](howto-password-ban-bad-on-premises-deploy.md)
+[Üzembe helyezése az Azure AD jelszóvédelem](howto-password-ban-bad-on-premises-deploy.md)

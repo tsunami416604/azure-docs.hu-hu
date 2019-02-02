@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 9e06e53f83dd05d53b76a2a07e465133f052dba8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8216eb9c076111bfa70633b24f36ac97b0ee319a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157703"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664029"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 Egyszeri bejelentkezés (SSO) ad hozzá biztonsági és kényelmet, amikor a felhasználók bejelentkezés az Azure Active Directoryban (Azure AD-) alkalmazások. Ez a cikk az egyszeri bejelentkezési módszereket írja le, és segítséget nyújt az alkalmazások konfigurálásakor, válassza ki a legmegfelelőbb egyszeri bejelentkezési módszert.
@@ -49,9 +49,7 @@ Az alábbi táblázat foglalja össze az egyszeri bejelentkezési módszereket, 
 | [Fejlécalapú](#header-based-sso) | csak helyszíni | Használja fejléc-alapú egyszeri bejelentkezés, ha az alkalmazás fejléceket használja a hitelesítéshez. Fejléc-alapú egyszeri bejelentkezés szükséges a PingAccess Azure AD-hez. Az alkalmazásproxy az Azure AD segítségével hitelesíti a felhasználót, és ezután továbbítja a forgalmat az összekötő szolgáltatást.  | 
 
 ## <a name="openid-connect-and-oauth"></a>OpenID Connect és az OAuth révén
-Az OpenID Connect és OAuth engedélyezi a egyszeri bejelentkezés használatát, amely egyszerűbbé teszi a vállalati alkalmazásokhoz az Azure ad-hez való hozzáadásának lépéseit. Egyszeri bejelentkezés konfigurálása az alkalmazás-rendszergazda nem szükséges. Ehelyett az Azure ad-ben hozzáadja az alkalmazás amikor a rendszergazda [biztosít felhasználói beleegyezés](configure-user-consent.md). 
-
-A [SDK-k](../develop/reference-v2-libraries.md) az OpenID Connect és az OAuth révén könnyen fogad el, és az alkalmazás az MS Graph használatra kész lesz. 
+Új alkalmazások fejlesztésekor a modern protokollok, mint például az OpenID Connect és az OAuth használatával érhet el a legjobb egyszeri bejelentkezést az alkalmazáshoz több eszköz platformon. OAuth lehetővé teszi a felhasználók vagy rendszergazdák [hozzájárulását](configure-user-consent.md) a védett erőforrások, például a [az MS Graph](/graph/overview). Kínálunk egyszerű bevezetéséhez [SDK-k](../develop/reference-v2-libraries.md) az alkalmazáshoz, és emellett az alkalmazás használatra kész lesz [az MS Graph](/graph/overview).
 
 További információkért lásd:
 

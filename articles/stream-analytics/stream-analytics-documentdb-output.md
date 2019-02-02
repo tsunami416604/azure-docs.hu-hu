@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1f142d7551859396b789ee0594880f077e4a7f9f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4be3de8de4332e8ffb0e88e612a3041829ccd606
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267130"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658572"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Az Azure Cosmos DB Azure Stream Analytics-kimenet  
 Stream Analytics célként [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) JSON-kimenet, az adatok archiválás és kis késleltetésű lekérdezéseket a strukturálatlan JSON-adatok engedélyezése. Ez a dokumentum áttekint néhány ajánlott eljárást a konfiguráció implementálása a.
@@ -29,7 +29,7 @@ Azok számára, aki ismeri az, Cosmos DB, vessen egy pillantást [képzési terv
 A Stream Analytics az Azure Cosmos DB kimeneti adatfolyam-feldolgozási eredményeket, JSON-kimenet a Cosmos DB próbaidőszakában való írása lehetővé teszi. Stream Analytics nem hoz létre gyűjteményeket az adatbázisban, ehelyett határozhat meg kell előre létrehoznia őket. Ez az, hogy az Ön által vezérelt Cosmos DB-gyűjtemények a számlázási költségeket, és úgy, hogy a teljesítmény, a konzisztencia és a kapacitás a gyűjtemények közvetlenül hangolhassa a [Cosmos DB API-k](https://msdn.microsoft.com/library/azure/dn781481.aspx).
 
 > [!Note]
-> Hozzá kell adnia 0.0.0.0 az engedélyezett IP-címek listáját, az Azure Cosmos DB tűzfal.
+> Hozzá kell adnia 0.0.0.0 az engedélyezett IP-címek listáját az Azure Cosmos DB-tűzfalon.
 
 A Cosmos DB adatgyűjtési beállítások némelyike lásd lent.
 
@@ -49,7 +49,7 @@ Ha a bejövő JSON-dokumentum egy meglévő azonosító mezőben, hogy a mező a
 Ha menteni szeretné <i>összes</i> duplikált azonosítójú, azokat is beleértve dokumentumok nevezze át a mezőt a a lekérdezés (AS kulcsszóval), és lehetővé teszik a Cosmos DB létrehozása az azonosító mezőben, vagy egy másik oszlop értékét cserélje le a azonosítója (AS kulcsszó használatával vagy a "Dokumentumazonosító" beállítás használatával).
 
 ## <a name="data-partitioning-in-cosmos-db"></a>Adatparticionálás Cosmos DB-ben
-Az Azure Cosmos DB [korlátlan](../cosmos-db/partition-data.md) van az ajánlott módszer az adatok particionálása, az Azure Cosmos DB automatikusan méretezi a számítási feladatok alapján. Korlátlan tárolók írásakor Stream Analytics tetszőleges számú párhuzamos írók előző lekérdezési lépés vagy a particionálási séma bemeneti használ.
+Az Azure Cosmos DB [korlátlan](../cosmos-db/partition-data.md) tárolók az ajánlott módszer számára az adatok particionálása, az Azure Cosmos DB automatikusan méretezi a számítási feladatok alapján. Korlátlan tárolók írásakor a Stream Analytics tetszőleges számú párhuzamos írók előző lekérdezési lépés vagy bemeneti particionálási sémát használ.
 > [!Note]
 > Jelenleg az Azure Stream Analytics csak támogatja a korlátlan tárolók partíciókulcsok a legfelső szinten. Ha például `/region` használata támogatott. A beágyazott partíciókulcsok (pl. `/region/name`) használata nem támogatott. 
 

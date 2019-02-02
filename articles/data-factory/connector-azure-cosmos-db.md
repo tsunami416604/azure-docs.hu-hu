@@ -10,14 +10,14 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 6dd7707c489bbbad7a97a0ec0a76e7c631bd1465
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: b969743c13e541c491b56066061464f40a6d2d9e
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359255"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657110"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Cosmos DB (az SQL API-t) az Azure Data Factory használatával
 
@@ -28,7 +28,7 @@ ms.locfileid: "54359255"
 Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban másolhat adatokat, és az Azure Cosmos DB (az SQL API-t). A cikk számos tekintetben [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md), amely megadja, hogy a másolási tevékenység általános áttekintést.
 
 >[!NOTE]
->Az összekötő podporují másolja az adatokat és a Cosmos DB SQL API. A mongodb-hez, tekintse meg [Azure Cosmos DB MongoDB API-összekötő](connector-azure-cosmos-db-mongodb-api.md). Más API-típusok most már nem támogatottak.
+>Az összekötő podporují másolja az adatokat és a Cosmos DB SQL API. MongoDB API-t, tekintse meg a [Azure Cosmos DB MongoDB API-összekötő](connector-azure-cosmos-db-mongodb-api.md). Más API-típusok most már nem támogatottak.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -58,7 +58,7 @@ Az Azure Cosmos DB (az SQL API-t) a társított szolgáltatás a következő tul
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** tulajdonságot állítsa **CosmosDb**. | Igen |
-| kapcsolati Sztringje |Adja meg az Azure Cosmos DB-adatbázishoz való csatlakozáshoz szükséges információk.<br /><br />**Megjegyzés**: Adatbázis-információ a kapcsolati karakterlánc az alábbi példákban szemléltetett módon meg kell adnia. Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| kapcsolati Sztringje |Adja meg az Azure Cosmos DB-adatbázishoz való csatlakozáshoz szükséges információk.<br />**Megjegyzés**: Adatbázis-információ a kapcsolati karakterlánc az alábbi példákban szemléltetett módon meg kell adnia. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Fiókkulcs is helyezheti az Azure Key Vaultban, és lehúzhassa a `accountKey` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. |Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. Használhatja az Azure integrációs modul és a egy saját üzemeltetésű integrációs modul (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
@@ -72,6 +72,35 @@ Az Azure Cosmos DB (az SQL API-t) a társított szolgáltatás a következő tul
             "connectionString": {
                 "type": "SecureString",
                 "value": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Példa: fiókkulcs tárolhatja az Azure Key Vaultban**
+
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "AccountEndpoint=<EndpointUrl>;Database=<Database>"
+            },
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

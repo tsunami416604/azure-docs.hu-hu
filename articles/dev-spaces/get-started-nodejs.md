@@ -10,14 +10,14 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 91c4bc76a7753c7d51310fbe9b807f0969ca900c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 942d9a7b4160189d14ecdd85b21b2537d1a2a8d3
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467288"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656362"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Bevezetés az Azure Dev Spaces Node.js segítségével történő használatába
+# <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Bevezetés az Azure fejlesztési szóközöket a node.js használatával
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
@@ -101,7 +101,7 @@ Ebben a szakaszban egy Node.js-alapú webalkalmazást hozunk létre, és futtatj
 ### <a name="create-a-nodejs-web-app"></a>Node.js-alapú webes alkalmazás létrehozása
 A kód a GitHubról való letöltéséhez lépjen a https://github.com/Azure/dev-spaces helyre, és válassza a **Klónozás vagy letöltés** lehetőséget a GitHub-adattár a helyi környezetbe való letöltéséhez. A jelen útmutatóban használt kód a következő helyen található: `samples/nodejs/getting-started/webfrontend`.
 
-## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Kód előkészítése Docker- vagy Kubernetes-fejlesztéshez
+## <a name="prepare-code-for-docker-and-kubernetes-development"></a>Kód a Docker és a Kubernetes-fejlesztés előkészítése
 Már rendelkezik egy helyileg futó alapszintű webalkalmazással. Most olyan objektumok létrehozásával egy tárolóba fogja helyezni, amelyek meghatározzák az alkalmazás tárolóját, és a Kubernetesben történő üzembe helyezésének módját. Ez a feladat az Azure Dev Spaces segítségével egyszerűen elvégezhető: 
 
 1. Indítsa el a VS Code-ot, majd nyissa meg a `webfrontend` mappát. (Figyelmen kívül hagyhat minden olyan alapértelmezett kérést, amely az objektumok hibakeresésére vagy a projekt visszaállítására vonatkozik.)
@@ -278,5 +278,5 @@ Ebben a konfigurációban a tároló úgy van beállítva, hogy elindítsa a *no
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A csapatban végzett fejlesztés bemutatása](team-development-nodejs.md)
+> [További tudnivalók több szolgáltatást fejlesztési](multi-service-nodejs.md)
 

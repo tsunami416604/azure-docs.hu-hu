@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: aa6ba07168e86b2163324c62f8bb32ca330551f3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55501381"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564000"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Feladatütemezési bővítmény kiépítése a virtuálisgép-méretezési csoportok
 Azure virtuálisgép-bővítmények például az üzembe helyezés utáni konfigurációs és felügyeleti, figyelés, biztonság és további funkciókat biztosítanak. Éles környezetekben üzemelő példányok több bővítményt a Virtuálisgép-példányokon konfigurált kombinációját általában használni kívánt eredmények elérése érdekében.
@@ -29,7 +29,7 @@ Ha több bővítményt használok egy virtuális gépen, fontos győződjön meg
 
 Ez a cikk ismerteti, hogyan kell konfigurálni a Virtuálisgép-példányok a virtuálisgép-méretezési csoportok bővítményei is feladatütemezési.
 
-## <a name="pre-requisites"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk azt feltételezi, hogy ismeri a:
 -   Az Azure virtuális gép [bővítmények](../virtual-machines/extensions/overview.md)
 -   [Módosítása](virtual-machine-scale-sets-upgrade-scale-set.md) a virtual machine scale sets

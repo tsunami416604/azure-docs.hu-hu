@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c8d34ecb46721a8dd8dc1b1ad9f73c9f2ca2b3a2
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 2289fc143abfde0aaaf2bcb079a6d24b74d57975
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507399"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564442"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files-problémák hibaelhárítása
 
@@ -265,11 +265,11 @@ Például beállíthatja azt a 0x100000, és tekintse meg, ha a teljesítmény j
 
 ### <a name="cause"></a>Ok
 
-AadDsTenantNotFound hiba akkor fordul elő, amikor megpróbálja [engedélyezése az Azure Active Directory (AAD) hitelesítés az Azure Files számára](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-enable) a storage-fiók ahol [AAD tartományi Service(AAD DS)](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview) nem jön létre az aad-ben a társított előfizetés bérlő.  
+AadDsTenantNotFound hiba akkor fordul elő, amikor megpróbálja [engedélyezése az Azure Active Directory (AAD) hitelesítés az Azure Files számára](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) a storage-fiók ahol [AAD tartományi Service(AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nem jön létre az aad-ben a társított előfizetés bérlő.  
 
 ### <a name="solution"></a>Megoldás
 
-AAD tartományi szolgáltatások engedélyezése az AAD-bérlő az előfizetés üzembe helyezett storage-fiókjában található. Az AAD-bérlő létrehozása egy felügyelt tartomány rendszergazdai jogosultságok szükségesek. Ha nem az Azure AD-bérlő rendszergazdája, forduljon a rendszergazdához, és kövesse a részletes útmutatónkat [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started).
+AAD tartományi szolgáltatások engedélyezése az AAD-bérlő az előfizetés üzembe helyezett storage-fiókjában található. Az AAD-bérlő létrehozása egy felügyelt tartomány rendszergazdai jogosultságok szükségesek. Ha nem az Azure AD-bérlő rendszergazdája, forduljon a rendszergazdához, és kövesse a részletes útmutatónkat [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) beolvasni a probléma gyors megoldása érdekében.

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: dbff728c888e9e2f83d9a82ca9819bf9dd0b89e9
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 252337c0d2bc162d418d20ca4641673d1564daa6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267965"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660426"
 ---
-# <a name="tutorial-improve-your-regulatory-compliance"></a>Oktatóanyag: A jogszabályoknak való megfelelőség javítása
+# <a name="tutorial-improve-your-regulatory-compliance"></a>Oktatóanyag: Előírásoknak való megfelelés javítása
 ---
 
 Az Azure Security Center leegyszerűsíti a folyamatot jogszabályi követelményeknek, az előírásoknak való megfelelés irányítópulttal. Az irányítópulton a Security Center a megfelelőségi állapotáról, folyamatos értékelésekkel, az Azure-környezet alapján betekintést biztosít. A Security Center által végzett értékelések kockázati tényezők alapján, a hibrid felhőalapú környezetben ajánlott biztonsági eljárások megfelelően elemezheti. Ezek az értékelések szabványok támogatott bizonyos megfelelőségi vezérlők vannak leképezve. A szabályozásoknak való megfelelőséget irányítópultján láthassa az összes értékelés állapotát egy adott standard vagy a rendelet a környezetében a környezeten belül van. Az ajánlásoknak és kockázati tényezők alapján csökkentse a környezetben, megtekintheti a megfelelőségi állapotáról, javíthatja.
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ebben az oktatóanyagban tárgyalt funkciók elvégezhető, rendelkeznie kell a Security Center Standard tarifacsomagot. Megpróbálhatja Security Center Standard költségek nélkül.
-További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](https://docs.microsoft.com/en-us/azure/security-center/security-center-get-started) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
+További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](https://docs.microsoft.com/azure/security-center/security-center-get-started) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
 
 ##  <a name="assess-your-regulatory-compliance"></a>A szabályozásoknak való megfelelés
 

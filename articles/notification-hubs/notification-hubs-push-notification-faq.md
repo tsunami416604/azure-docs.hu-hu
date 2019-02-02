@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: jowargo
-ms.openlocfilehash: 7e31f4f229e722d51f5de6b133e70dfb1c013533
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 7f1a1bd22ecd0b0a7ab64e639683ae316742c5f0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888158"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563983"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Az Azure Notification Hubs leküldéses értesítések: Gyakori kérdések
 
@@ -80,7 +80,7 @@ Server SDK-k érhetők el .NET, Java, Node.js, PHP és Python. Notification Hubs
 
 ### <a name="which-client-platforms-do-you-support"></a>Milyen ügyfélplatformokat támogatja?
 
-Leküldéses értesítések támogatását [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-gcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) és [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)), [Chrome-alkalmazások](notification-hubs-chrome-push-notifications-get-started.md), és [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). További információkért látogasson el a [A Notification Hubs bevezetés kapcsolatos oktatóanyagok] lapot.
+Leküldéses értesítések támogatását [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) és az Android, [Chrome-alkalmazások](notification-hubs-chrome-push-notifications-get-started.md), és [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). További információkért látogasson el a [A Notification Hubs bevezetés kapcsolatos oktatóanyagok] lapot.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Támogatják a szöveges üzenet, e-mailben vagy webes értesítések?
 
@@ -144,7 +144,7 @@ Mobilalkalmazás-platform fejlesztői portál (például az Apple vagy a Google)
 
 #### <a name="geo-distribution"></a>A földrajzi elosztás
 
-A földrajzi elosztás nincs mindig kritikus fontosságú a leküldéses értesítési forgatókönyvek. Különböző PNSes (például a APNS vagy a GCM), amely a leküldéses értesítések kézbesíthetők eszközökre nem egyenletesen oszlik el.
+A földrajzi elosztás nincs mindig kritikus fontosságú a leküldéses értesítési forgatókönyvek. Különböző PNSes (például a APNS vagy a FCM), amely a leküldéses értesítések kézbesíthetők eszközökre nem egyenletesen oszlik el.
 
 Ha egy alkalmazás, amelynek globálisan, létrehozhat hubs különböző névterekben az Notification Hubs szolgáltatás segítségével különböző Azure-régiókban világszerte.
 
@@ -207,7 +207,7 @@ Az Azure Notification Hubs számos funkciót biztosít, különösen számára a
 Telemetriai adatok megtekintése az Azure Notification hubs szolgáltatás segítségével a [Azure Portal]. A metrikák adatait a érhetők el a [Notification Hubs-metrikák] lap.
 
 > [!NOTE]
-> Sikeres értesítések, leküldéses értesítések lesz küldve a külső pns-sel (például az Apple APNS) vagy a Google GCM egyszerűen jelenti. A feladata az, hogy az értesítések céleszközökre a PNS. Általában a PNS nem fedi fel kézbesítési metrikák át harmadik félnek.  
+> Sikeres értesítések, leküldéses értesítések lesz küldve a külső pns-sel (például az Apple APNS) vagy a Google FCM egyszerűen jelenti. A feladata az, hogy az értesítések céleszközökre a PNS. Általában a PNS nem fedi fel kézbesítési metrikák át harmadik félnek.  
 
 Is biztosítunk a funkció a telemetriai adatok programozott módon (a Standard szinten) exportálása. További információkért lásd: a [Notification Hubs metrikák minta].
 

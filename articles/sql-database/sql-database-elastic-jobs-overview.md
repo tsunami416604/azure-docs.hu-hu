@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 9647522f4b3990d065f292f05934b8d19c691454
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 396e8a487feb2f7a7cb45f3713e641b5ebc6abcd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865522"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565241"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Horizontálisan felskálázott felhőalapú adatbázisok kezelése
 
@@ -81,8 +81,8 @@ Meghatározhatja Azure SQL Database-adatbázisok egyéni csoportjait, valamint a
 2. A PowerShell API-k használatával hozzáférhetnek további funkciókat, például a egyénileg definiált adatbázis-gyűjtemények, ütemezés hozzáadása és/vagy összegyűjtéséhez eredmények csoportok létrehozása. A portál használata egyszerű telepítése és a futtatást a korlátozott feladatok létrehozása/megfigyelés egy **rugalmas készlet**.
 3. Feladat-végrehajtással kapcsolatos titkosított hitelesítő adatok létrehozása és [a felhasználó (vagy szerepkör) hozzáadása a csoportban lévő minden egyes adatbázishoz](sql-database-security-overview.md).
 4. Hozzon létre egy, a csoport minden adatbázison futtatható T-SQL-szkript idempotens.
-5. Feladatok létrehozása az Azure portal használatával a következő lépésekkel: [létrehozása és kezelése a rugalmas adatbázis-feladatok](sql-database-elastic-jobs-create-and-manage.md).
-6. Vagy a PowerShell-parancsfájlok használata: [létrehozása és a egy SQL Database rugalmas adatbázis-feladatok PowerShell (előzetes verzió) használata kezelheti](sql-database-elastic-jobs-powershell.md).
+5. Kövesse az alábbi lépéseket a feladatok létrehozása az Azure portal használatával: [Elastic Database-feladatok létrehozását és kezelését](sql-database-elastic-jobs-create-and-manage.md).
+6. Vagy a PowerShell-parancsfájlok használata: [Hozzon létre, és a egy SQL Database rugalmas adatbázis-feladatok PowerShell (előzetes verzió) használata kezelheti](sql-database-elastic-jobs-powershell.md).
 
 ## <a name="idempotent-scripts"></a>Idempotens szkriptek
 
@@ -116,7 +116,7 @@ Egyéni csoportok, másrészt mereven határozzák meg. Meg kell explicit módon
 
 A következő összetevők közösen hoz létre egy Azure-felhőszolgáltatáshoz, amely lehetővé teszi az alkalmi felügyeleti feladatok végrehajtását. Az összetevők telepítése és konfigurálása automatikusan az előfizetés a telepítés során. A szolgáltatások összes rendelkeznek az automatikusan létrehozott névvel azonosíthatók. A név egyedi, és az előtag "edj" 21 véletlenszerűen generált karakter követ áll.
 
-- Azure Cloud Service
+- Azure-felhőszolgáltatás
 
   Rugalmas adatbázis-feladatok (előzetes verzió) végrehajtani a kért feladat végrehajtásának ügyfél által üzemeltetett Azure felhőalapú szolgáltatás kézbesíti a rendszer. A portálról a szolgáltatás telepítése és a Microsoft Azure-előfizetésében lévő üzemeltetett. Az alapértelmezett szolgáltatásának futtatásakor a szolgáltatás magas rendelkezésre állás érdekében két feldolgozói szerepkörrel minimális üzembe helyezve. Az alapértelmezett méret az egyes feldolgozói szerepkörök (ElasticDatabaseJobWorker) A0 példányát futtatja. A díjszabással kapcsolatban lásd: [Cloud services-díjszabás](https://azure.microsoft.com/pricing/details/cloud-services/).
 
@@ -156,7 +156,7 @@ Feladatok végrehajtásának végrehajtott feladatok több típusa is van:
 - ScriptExecution
 
   Egy megadott hitelesítő adatok használatával egy adott adatbázis-szkriptek végrehajtása
-- Adatrétegbeli alkalmazáscsomag
+- Dacpac
 
   Egy adatrétegbeli ALKALMAZÁSCSOMAGOT vonatkozik egy adott adatbázishoz adott hitelesítő adatokkal
 

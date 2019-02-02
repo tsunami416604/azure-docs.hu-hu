@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 135496e17ae884db580922aa31f6824b2e7fd934
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 1f2c218ed9ba2f5f9285c60b8d4c11704825c0f5
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855984"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563881"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Az Azure Cloud Shell korlátozásai
 
@@ -77,7 +77,7 @@ PowerShell-parancsmagok használatával felhasználókat nem lehet létrehozni a
 
 ### <a name="gui-applications-are-not-supported"></a>Grafikus felhasználói Felülettel alkalmazások nem támogatottak.
 
-Ha egy felhasználó futtat egy parancsot kell létrehoznia egy Windows párbeszédablak, mint például `Connect-AzureAD` vagy `Connect-AzureRmAccount`, például kap egy hibaüzenetet: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+Ha egy felhasználó futtat egy parancsot kell létrehoznia egy Windows párbeszédablak, mint például `Connect-AzureAD`, `Connect-AzureRmAccount`, vagy `Connect-AzAccount` például kap egy hibaüzenetet: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
 ### <a name="tab-completion-crashes-psreadline"></a>Kiegészítés PSReadline összeomlik
 

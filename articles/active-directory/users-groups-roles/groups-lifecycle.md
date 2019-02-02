@@ -14,12 +14,12 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 98ed7ce3eb58aa870a3cb06864631cd108410195
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 12b23b8a062859da111a067b2655425a611b6c20
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508742"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658249"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok-elévülési szabályzatának konfigurálása
 
@@ -53,15 +53,16 @@ Engedélyek visszaállítani egy törölt csoport további információkért lá
   
   ![Lejárati panel](./media/groups-lifecycle/expiration-settings.png)
 
-4. Az a **lejárati** panelen is:
+3. Az a **lejárati** panelen is:
 
   * Állítsa be a csoport élettartama napban. Kiválaszthatja az előre megadott értékeket, vagy egy egyéni értéket (kell lennie, vagy több 31 napon belül). 
   * Adjon meg egy e-mail címet, ahol a megújítási és a lejárati értesítést küldni Ha egy csoportnak nincs tulajdonosa. 
   * Válassza ki, mely Office 365-csoportok lejár. Engedélyezheti a lejárat **összes** Office 365-csoportokat, ha szeretné, csak engedélyezi **kijelölt** Office 365-csoportokat, vagy válassza ki a **nincs**  letiltása az összes csoport lejárati.
   * Ha elkészült, válassza a beállítások mentéséhez **mentése**.
 
+## <a name="email-notifications"></a>E-mail-értesítések
 
-E-mail-értesítések, például a érkeznek az Office 365-csoportok tulajdonosainak 30 nap, 15 napon keresztül, és a csoport lejárata előtt 1 nap.
+E-mail-értesítések, például a érkeznek az Office 365-csoportok tulajdonosainak 30 nap, 15 napon keresztül, és a csoport lejárata előtt 1 nap. Az e-mail nyelvét csoportok tulajdonosának előnyben részesített nyelvi vagy bérlői nyelvet határozza meg. Ha a csoport tulajdonosának előnyben részesített nyelvi definiálva van, vagy több tulajdonosoknak kell ugyanazt a kívánt nyelvet, az adott nyelvhez használja. Minden egyéb esetben a bérlő nyelvet használja.
 
 ![Lejárati értesítés e-mailben](./media/groups-lifecycle/expiration-notification.png)
 

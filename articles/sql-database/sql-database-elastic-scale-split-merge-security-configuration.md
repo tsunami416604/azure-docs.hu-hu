@@ -11,33 +11,38 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: de758d38626107f28211f79a4772c3e887085776
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: a3ba80ce7b5abcb2f112880c4fef5ed3f067f691
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599832"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563218"
 ---
 # <a name="split-merge-security-configuration"></a>Biztonság szétválasztás és egyesítés konfiguráció
+
 A felosztás/egyesítés szolgáltatás használatához a megfelelő biztonsági kell konfigurálnia. A szolgáltatás része a Microsoft Azure SQL Database rugalmas méretezési funkció. További információkért lásd: [rugalmas méretezési felosztása és egyesítése Service-oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
 
 ## <a name="configuring-certificates"></a>Tanúsítványok beállítása
+
 Tanúsítványokat kétféleképpen lehet konfigurálni. 
 
 1. [Az SSL-tanúsítvány konfigurálása](#to-configure-the-ssl-certificate)
 2. [Ügyfél-tanúsítványok konfigurálása](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>Tanúsítványok beszerzése
+
 Tanúsítványokat nyilvános hitelesítésszolgáltatótól (CA), vagy a szerezhető a [Windows tanúsítványszolgáltatást](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Ezek azok az előnyben részesített módszert szerezzenek be tanúsítványokat.
 
 Ha ezek a lehetőségek nem érhetők el, létrehozhat **önaláírt tanúsítványokat**.
 
 ## <a name="tools-to-generate-certificates"></a>Eszközök tanúsítványainak létrehozásához szükséges
+
 * [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
 * [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Az eszközök futtatása
+
 * Az a fejlesztői parancssort. Ehhez a vizuális Studios lásd [Visual Studio parancssorból](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     Ha telepítve van, folytassa a:
@@ -46,9 +51,11 @@ Ha ezek a lehetőségek nem érhetők el, létrehozhat **önaláírt tanúsítv�
 * A WDK az első [Windows 8.1: Készletek és eszközök letöltése](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Az SSL-tanúsítvány konfigurálása
+
 SSL-tanúsítvány szükséges a kommunikáció titkosításához, és a kiszolgáló hitelesítésére. Válassza ki a legmegfelelőbb az alábbi három forgatókönyv, és hajtsa végre az összes lépését:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Hozzon létre egy új önaláírt tanúsítványt
+
 1. [Önaláírt tanúsítvány létrehozása](#create-a-self-signed-certificate)
 2. [Az önaláírt SSL-tanúsítvány PFX-fájl létrehozása](#create-pfx-file-for-self-signed-ssl-certificate)
 3. [Felhőszolgáltatás SSL-tanúsítvány feltöltése](#upload-ssl-certificate-to-cloud-service)

@@ -1,5 +1,5 @@
 ---
-title: Az Azure SQL Database felügyelt példány egyéni DNS |} A Microsoft Docs
+title: Azure SQL Database Managed Instance Custom DNS | Microsoft Docs
 description: Ez a témakör ismerteti egy egyéni DNS-ben az Azure SQL Database felügyelt példánya a konfigurációs beállításait.
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 09/23/2018
-ms.openlocfilehash: 7ad3b81b792b37d2c3667dd554d41319a5727045
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 12/13/2018
+ms.openlocfilehash: 353df930b5769a585d7372716f33fe724a2a7594
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336413"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562147"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Egy egyéni DNS konfigurálása az Azure SQL Database felügyelt példánya
 

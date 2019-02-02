@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ce884b95daf8c02e51c79068c360ffe4a4fe0d07
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 73073d5240f29906ade5f9b92cf81fec2f99a3d4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473204"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661972"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Teljes körű hibaelhárítás az Azure Storage-mérőszámok és a naplózás, az AzCopy és a Message Analyzer használatával
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -98,10 +98,10 @@ Első lépésként azt konfigurálnia kell az Azure Storage-naplózás és mér�
 
 Az Azure PowerShell használatának első lépései, lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
-1. Használja a [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0) parancsmagot, hogy az Azure felhasználói fiók hozzáadása a PowerShell-ablakban:
+1. Használja a [Add-AzAccount](/powershell/module/az.account/add-azaccount) parancsmagot, hogy az Azure felhasználói fiók hozzáadása a PowerShell-ablakban:
    
     ```powershell
-    Add-AzureAccount
+    Add-AzAccount
     ```
 
 2. Az a **jelentkezzen be a Microsoft Azure** ablakban írja be az e-mail címet és a fiókjához tartozó jelszót. Az Azure hitelesíti és menti a hitelesítő adatokat, majd bezárja az ablakot.
@@ -110,7 +110,7 @@ Az Azure PowerShell használatának első lépései, lásd: [telepítése és ko
     ```powershell
     $SubscriptionName = 'Your subscription name'
     $StorageAccountName = 'yourstorageaccount'
-    Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
+    Set-AzSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
     ```
 
 4. Storage a Blob szolgáltatás naplózásának engedélyezéséről:

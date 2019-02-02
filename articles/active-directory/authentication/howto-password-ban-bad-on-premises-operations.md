@@ -1,23 +1,23 @@
 ---
-title: Az Azure AD jelszó védelmi előzetes műveleteket és jelentéskészítés
-description: Az Azure AD jelszó védelmi előzetes üzembe helyezés utáni műveleteket, és jelentéskészítés
+title: Az Azure AD jelszóvédelem előzetes műveletei és jelentéskészítés
+description: Az Azure AD jelszóvédelem előzetes üzembe helyezés utáni műveleteket, és jelentéskészítés
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 8d7002a014fc6cfab1888a6bc97c0f864de1d99d
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: a77a6dd8b408fd8151cb12b7d0269b8890ef929b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080871"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662414"
 ---
-# <a name="preview-azure-ad-password-protection-operational-procedures"></a>Előzetes verzió: Az Azure AD jelszó védelmi eljárások
+# <a name="preview-azure-ad-password-protection-operational-procedures"></a>Előzetes verzió: Az Azure AD jelszóvédelem eljárások
 
 |     |
 | --- |
@@ -38,7 +38,7 @@ Kövesse a cikk útmutatást [konfigurálása a letiltott jelszavak egyéni list
    * Ha elégedett a szolgáltatással, válthat a **mód** való **kényszerített**
 1. Kattintson a **Mentés** gombra.
 
-![Az Azure Portalon az Azure AD jelszó-védelem összetevői engedélyezése](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
+![Az Azure Portalon az Azure AD jelszóvédelem összetevők engedélyezése](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
 
 ## <a name="audit-mode"></a>Vizsgálati üzemmód
 
@@ -51,7 +51,7 @@ Vizsgálati üzemmód célja arra, hogy a szoftver egy "Mi történik, ha" módb
 
 Kényszerítése módban a végső konfiguráció jelent. Vizsgálati üzemmód újabb, mint minden tartományvezérlő ügynökszolgáltatás bejövő jelszavak a jelenleg aktív szabályzat alapján értékeli ki. Ha kényszerítési módban, ha engedélyezve van, a rendszer elutasítja számít, hogy a házirend szerint nem biztonságos jelszót.
 
-Jelszó az Azure AD jelszóvédelem DC ügynök elutasította a kényszerítési módban, amikor a végfelhasználó által látott látható hatást megegyezik a mi lenne láthatják Ha jelszavát a hagyományos helyszíni jelszó összetettségi kényszerítése elutasította. Például egy felhasználó lehet, hogy tekintse meg az alábbi hagyományos hibaüzenet jelenik meg a Windows logon\change jelszóképernyő:
+Jelszó az Azure AD-jelszó DC védelmi ügynök elutasította a kényszerítési módban, amikor a végfelhasználó által látott látható hatást megegyezik a mi lenne láthatják Ha jelszavát a hagyományos helyszíni jelszó összetettségi kényszerítése elutasította. Például egy felhasználó lehet, hogy tekintse meg az alábbi hagyományos hibaüzenet jelenik meg a Windows logon\change jelszóképernyő:
 
 `Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.`
 
@@ -61,49 +61,8 @@ Ez az üzenet csak egy példa a több lehetséges kimenetek. Az adott hibaüzene
 
 ## <a name="enable-mode"></a>Mód engedélyezése
 
-Ez a beállítás általában alapértelmezett engedélyezve (Igen) állapotban kell hagyni. Ez a beállítás le van tiltva (nem) konfigurálása miatt összes üzembe helyezett Azure AD-jelszavamat DC védelmi ügynököket, ahol az összes jelszavak ügyfélként fogad el egy videokártyának üzemmódba-van, ezért nem egyetlen ellenőrzési tevékenység fog végrehajtott ajánlattevőről (mert például még a naplózási események fog bocsátja ki).
-
-## <a name="usage-reporting"></a>Használati jelentések készítése
-
-A `Get-AzureADPasswordProtectionSummaryReport` parancsmag is használható előállításához tevékenység összegzését. Egy példa a parancsmag kimenete a következőképpen történik:
-
-```PowerShell
-Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
-DomainController                : bplrootdc2
-PasswordChangesValidated        : 6677
-PasswordSetsValidated           : 9
-PasswordChangesRejected         : 10868
-PasswordSetsRejected            : 34
-PasswordChangeAuditOnlyFailures : 213
-PasswordSetAuditOnlyFailures    : 3
-PasswordChangeErrors            : 0
-PasswordSetErrors               : 1
-```
-
-A parancsmag reporting hatóköre egy befolyásolhatja a – erdő, - tartomány vagy -DomainController paraméterek. Nem a paraméterek megadása azt jelenti, – erdőben.
-
-> [!NOTE]
-> Ez a parancsmag minden olyan tartományvezérlőre, amely egy PowerShell-munkamenet megnyitásával működik. Annak érdekében, hogy sikeres legyen, PowerShell távoli munkamenet-támogatás minden tartományvezérlőn engedélyezni kell, és az ügyfél megfelelő jogosultságokkal kell rendelkeznie. PowerShell távoli munkamenet követelményeiről további információkért futtassa a "Get-Help about_Remote_Troubleshooting" PowerShell-ablakban.
-
-> [!NOTE]
-> Ez a parancsmag minden tartományvezérlő ügynökszolgáltatás rendszergazdai Eseménynapló távolról lekérdezésével működik. Ha az eseménynaplókban események nagy számú, a parancsmag végrehajtásához hosszú időt vehet igénybe. Emellett tömeges hálózati lekérdezések célja nagyméretű adathalmazok hatással lehet a tartományvezérlő teljesítményét. Ezért ez a parancsmag használandó gondosan az éles környezetben.
-
-## <a name="dc-agent-discovery"></a>DC-ügynök felderítése
-
-A `Get-AzureADPasswordProtectionDCAgent` parancsmag is használható a különböző DC ügynökök futtatása a tartomány vagy erdő alapvető információit jeleníti meg. Ez az információ veszi át a serviceConnectionPoint objektumok a futó tartományvezérlő ügynök szolgáltatás(ok) által regisztrált. Egy példa a parancsmag kimenete a következőképpen történik:
-
-```PowerShell
-Get-AzureADPasswordProtectionDCAgent
-ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
-Domain                : bplchild.bplRootDomain.com
-Forest                : bplRootDomain.com
-Heartbeat             : 2/16/2018 8:35:01 AM
-```
-
-Minden egyes tartományvezérlő ügynökszolgáltatás hozzávetőleges számítónk különböző tulajdonságait frissíti. Az adatok a továbbra is az Active Directory replikáció késése.
-
-A parancsmag lekérdezés hatókörét használatával befolyásolhatja a – erdőben vagy -Domain paraméterek.
+Ez a beállítás általában alapértelmezett engedélyezve (Igen) állapotban kell hagyni. Letiltva (nem), a beállítás konfigurálásával okoz az összes üzembe helyezett Azure AD-jelszó DC védelmi ügynökök, ahol az összes jelszavak ügyfélként fogad el egy videokártyának üzemmódba-van, ezért nem egyetlen ellenőrzési tevékenység fog végrehajtott ajánlattevőről (mert például még a naplózási események fog bocsátja ki).
 
 ## <a name="next-steps"></a>További lépések
 
-[Hibaelhárítási és figyelési az Azure AD jelszóvédelem](howto-password-ban-bad-on-premises-troubleshoot.md)
+[Az Azure AD jelszóvédelem figyelése](howto-password-ban-bad-on-premises-monitor.md)

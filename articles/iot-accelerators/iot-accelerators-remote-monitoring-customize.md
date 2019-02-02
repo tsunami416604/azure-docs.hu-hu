@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0609a653327640c542457822e41143b9b39dd6d4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: dc2b38f8e8065b8d8763365bf0cbad56ae00cd4b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462199"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565428"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító testreszabása
 
@@ -84,7 +84,7 @@ A panelek saját elrendezés és a méretezés kezelése, mivel könnyen módos�
 * Felcserélés igazítja a térkép és a telemetria panelt.
 * A térkép és elemzés paneleken relatív szélességének módosítása
 
-```nodejs
+```javascript
 <PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
@@ -156,7 +156,7 @@ A panelek saját elrendezés és a méretezés kezelése, mivel könnyen módos�
 
 Azt is megteheti az azonos panel több példányát, vagy több verzió Ha Ön [ismétlődő és a egy panel testreszabása](#duplicate-and-customize-an-existing-control). Az alábbi példa bemutatja, hogyan adhat hozzá a telemetriai adatok panel két példánya. A módosítások végrehajtásához szerkesztheti az `src/components/pages/dashboard/dashboard.js` fájlt:
 
-```nodejs
+```javascript
 <PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
@@ -247,19 +247,19 @@ Az egyes lépései egy meglévő panel ismétlődő, módosítsa, és ezután a 
 
 1. Az a **alertsPanel.js** fájlt a **cust_alerts** mappában kell az osztály neve szerkesztése **CustAlertsPanel**:
 
-    ```nodejs
+    ```javascript
     export class CustAlertsPanel extends Component {
     ```
 
 1. Adja hozzá a következő sort a `src/components/pages/dashboard/panels/index.js` fájlt:
 
-    ```nodejs
+    ```javascript
     export * from './cust_alerts';
     ```
 
 1. Cserélje le `alertsPanel` a `CustAlertsPanel` a a `src/components/pages/dashboard/dashboard.js` fájlt:
 
-    ```nodejs
+    ```javascript
     import {
       OverviewPanel,
       CustAlertsPanel,
@@ -287,7 +287,7 @@ Most már lecserélte az eredeti **riasztások** panel egy másolatot nevű **Cu
 
 1. Módosítsa a magyarázat, az alábbi kódrészletben látható módon:
 
-    ```nodejs
+    ```javascript
     this.columnDefs = [
       rulesColumnDefs.severity,
       {
@@ -312,7 +312,7 @@ A fájlokat a `src/components/pages/dashboard/panels/telemtry` mappát adja meg 
 
 1. Az a `src/services/telemetryService.js` fájlt, keresse meg a hívott függvény **getTelemetryByDeviceIdP15M**. Ez a függvény egy példányának, és módosítsa a példányt a következőképpen:
 
-    ```nodejs
+    ```javascript
     static getTelemetryByDeviceIdP5M(devices = []) {
       return TelemetryService.getTelemetryByMessages({
         from: 'NOW-PT5M',
@@ -325,7 +325,7 @@ A fájlokat a `src/components/pages/dashboard/panels/telemtry` mappát adja meg 
 
 1. Ez a függvény használatával töltse fel a telemetriai adatok diagram, nyissa meg a `src/components/pages/dashboard/dashboard.js` fájlt. Keresse meg azt a sort, inicializálja a telemetria-adatfolyam, és módosítsa a következőképpen:
 
-    ```node.js
+    ```javascript
     const getTelemetryStream = ({ deviceIds = [] }) => TelemetryService.getTelemetryByDeviceIdP5M(deviceIds)
     ```
 
@@ -339,7 +339,7 @@ A **irányítópult** oldalon megjelennek a KPI-k a **Analytics** panel. Ezen KP
 
 1. Nyissa meg az `src/components/pages/dashboard/dashboard.js` fájlt. Módosítsa a **initialState** objektum tartalmazza a **warningAlertsChange** tulajdonság az alábbiak szerint:
 
-    ```nodejs
+    ```javascript
     const initialState = {
       ...
 
@@ -359,7 +359,7 @@ A **irányítópult** oldalon megjelennek a KPI-k a **Analytics** panel. Ezen KP
 
 1. Módosítsa a **currentAlertsStats** objektum tartalmazza **totalWarningCount** tulajdonságként:
 
-    ```nodejs
+    ```javascript
     return {
       openWarningCount: (acc.openWarningCount || 0) + (isWarning && isOpen ? 1 : 0),
       openCriticalCount: (acc.openCriticalCount || 0) + (isCritical && isOpen ? 1 : 0),
@@ -371,7 +371,7 @@ A **irányítópult** oldalon megjelennek a KPI-k a **Analytics** panel. Ezen KP
 
 1. Az új KPI kiszámítása. Keresse meg a kritikus riasztások száma kiszámítása. Ismétlődő a kódot, és módosítsa a példányt a következőképpen:
 
-    ```nodejs
+    ```javascript
     // ================== Warning Alerts Count - START
     const currentWarningAlerts = currentAlertsStats.totalWarningCount;
     const previousWarningAlerts = previousAlerts.reduce(
@@ -384,7 +384,7 @@ A **irányítópult** oldalon megjelennek a KPI-k a **Analytics** panel. Ezen KP
 
 1. Tartalmazza az új **warningAlertsChange** a KPI-Stream KPI:
 
-    ```nodejs
+    ```javascript
     return ({
       analyticsIsPending: false,
       analyticsVersion: this.state.analyticsVersion + 1,
@@ -402,7 +402,7 @@ A **irányítópult** oldalon megjelennek a KPI-k a **Analytics** panel. Ezen KP
 
 1. Tartalmazza az új **warningAlertsChange** KPI állapot adatainak megjelenítése a felhasználói felület:
 
-    ```nodejs
+    ```javascript
     const {
       ...
 
@@ -421,7 +421,7 @@ A **irányítópult** oldalon megjelennek a KPI-k a **Analytics** panel. Ezen KP
 
 1. A KPI-k panel átadott adatok frissítése:
 
-    ```node.js
+    ```javascript
     <AnalyticsPanel
       timeSeriesExplorerUrl={timeSeriesParamUrl}
       topAlerts={topAlertsWithName}
@@ -439,13 +439,13 @@ A módosítások a már végzett a `src/components/pages/dashboard/dashboard.js`
 
 1. Módosítsa a következő kódsort az új KPI-értékre a következő lekéréséhez:
 
-    ```nodejs
+    ```javascript
     const { t, isPending, criticalAlertsChange, warningAlertsChange, alertsPerDeviceId, topAlerts, timeSeriesExplorerUrl, error } = this.props;
     ```
 
 1. Módosítsa a jelölőnyelvi az új KPI-értékre a következő megjelenítése:
 
-    ```nodejs
+    ```javascript
     <div className="analytics-cell">
       <div className="analytics-header">{t('dashboard.panels.analytics.criticalAlerts')}</div>
       <div className="critical-alerts">

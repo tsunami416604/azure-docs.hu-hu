@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 0aef8c5e055eb43576ea0ecc7ef8bf09d22d6ed3
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 1ed1790d9fe1cdaa8d00b45e0684531984906c7f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412903"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661819"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Az Azure IoT Central alkalmazásban egy új eszköztípus definiálása
 
@@ -42,6 +42,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Beállítások és tulajdonságok használata
 > * Parancsok használata
 > * A szimulált eszköz megtekintése az irányítópulton
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -405,7 +407,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás      | Érték       |
     | ------------ | ----------- |
-    | Beosztás        | Hőmérséklet |
+    | Cím        | Hőmérséklet |
     | Időtartomány   | Az elmúlt 30 perc |
     | Mértékek     | hőmérséklet (válassza a **hőmérséklet** melletti **Láthatóság** lehetőséget) |
 
@@ -417,7 +419,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás      | Érték       |
     | ------------ | ----------- |
-    | Beosztás        | Események |
+    | Cím        | Események |
     | Időtartomány   | Az elmúlt 30 perc |
     | Mértékek     | Ventilátormotor-hiba (válassza a **Ventilátormotor-hiba** melletti **Láthatóság** lehetőséget) |
 
@@ -429,7 +431,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás      | Érték       |
     | ------------ | ----------- |
-    | Beosztás        | Ventilátor mód |
+    | Cím        | Ventilátor mód |
     | Időtartomány   | Az elmúlt 30 perc |
     | Mértékek | Ventilátor mód (válassza a **Ventilátor mód** melletti **Láthatóság** lehetőséget) |
 
@@ -445,7 +447,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás                 | Érték         |
     | ----------------------- | ------------- |
-    | Beosztás                   | Megadott célhőmérséklet |
+    | Cím                   | Megadott célhőmérséklet |
     | Beállítások és tulajdonságok | Megadott hőmérséklet |
 
     A korábban a Beállítások és tulajdonságok oldalain meghatározott beállítások és tulajdonságok az Elérhető oszlopok területen jelennek meg. 
@@ -462,7 +464,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás                 | Érték         |
     | ----------------------- | ------------- |
-    | Beosztás                   | Sorozatszám |
+    | Cím                   | Sorozatszám |
     | Beállítások és tulajdonságok | Sorozatszám |
 
     ![Sorozatszám tulajdonság beállításai](./media/tutorial-define-device-type/propertysettings5.png)
@@ -477,7 +479,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás                 | Érték            |
     | ----------------------- | ---------------- |
-    | Beosztás                   | Belső vezérlőprogram verziója |
+    | Cím                   | Belső vezérlőprogram verziója |
     | Beállítások és tulajdonságok | Belső vezérlőprogram verziója |
 
     ![Sorozatszám tulajdonság beállításai](./media/tutorial-define-device-type/propertysettings6.png)

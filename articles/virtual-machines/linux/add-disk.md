@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: aa38fe3da118515b20d9b743a9a22b54e338051a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fcd8f4f8408c7c51265802fde057146e6cdbb090
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463707"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657620"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 Ez a cikk bemutatja, hogyan való állandó lemez csatolása a virtuális gép így megőrizheti az adatait – még akkor is, ha a virtuális gép a karbantartás vagy átméretezése miatt van kiépíteni. 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan való állandó lemez csatolása a virtuális gép �
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>Új lemez csatolása virtuális géphez
 
-Ha szeretne hozzáadni egy új, üres adatlemezt a virtuális Gépen, használja a [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) parancsot a `--new` paraméter. Ha a virtuális gép egy rendelkezésre állási zónában, a lemez automatikusan létrejön ugyanabban a zónában, a virtuális géppel. További információkért lásd: [a rendelkezésre állási zónákat áttekintő](../../availability-zones/az-overview.md). A következő példában létrehozunk egy nevű lemez *myDataDisk* , amely 50 Gb méretű:
+Ha szeretne hozzáadni egy új, üres adatlemezt a virtuális Gépen, használja a [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) parancsot a `--new` paraméter. Ha a virtuális gép egy rendelkezésre állási zónában, a lemez automatikusan létrejön ugyanabban a zónában, a virtuális géppel. További információkért lásd: [a rendelkezésre állási zónákat áttekintő](../../availability-zones/az-overview.md). A következő példában létrehozunk egy nevű lemez *myDataDisk* , amely 50 Gb méretű:
 
 ```azurecli
 az vm disk attach \
@@ -42,7 +42,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>Meglévő lemez csatlakoztatása 
 
-Meglévő lemez csatlakoztatása, keresse meg a lemez Azonosítóját, és adja át az Azonosítót, a [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) parancsot. A következő példalekérdezés nevű lemez *myDataDisk* a *myResourceGroup*, majd csatolja azt a virtuális gép nevű *myVM*:
+Meglévő lemez csatlakoztatása, keresse meg a lemez Azonosítóját, és adja át az Azonosítót, a [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) parancsot. A következő példalekérdezés nevű lemez *myDataDisk* a *myResourceGroup*, majd csatolja azt a virtuális gép nevű *myVM*:
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)

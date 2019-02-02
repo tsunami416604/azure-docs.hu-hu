@@ -11,15 +11,16 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 594d181a5452317267157415bdaf68f572f0f0af
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: b6fbb71a827c90abd1fac58d7975ab2f7b2a5674
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260023"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560889"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Az ADO.NET 4.5 szoftverrel 1433-ason túli
+
 Ez a témakör ismerteti az Azure SQL Database-kapcsolatok viselkedését az ADO.NET 4.5 vagy újabb verzióját használó ügyfelek számára. 
 
 > [!IMPORTANT]
@@ -27,12 +28,15 @@ Ez a témakör ismerteti az Azure SQL Database-kapcsolatok viselkedését az ADO
 >
 
 ## <a name="outside-vs-inside"></a>Kívül és belül
+
 Az Azure SQL Database-kapcsolatok esetén kell először megkérjük fut-e az ügyfélprogram *kívül* vagy *belül* az Azure-felhő határain. Az alszakaszok két gyakori forgatókönyv tárgyalják.
 
-#### <a name="outside-client-runs-on-your-desktop-computer"></a>*Külső:* ügyfél futtatja az asztali számítógépen
+#### <a name="outside-client-runs-on-your-desktop-computer"></a>*Azon kívül:* Ügyfél az asztali számítógépen fut
+
 1433-as porton csak a portot kell megnyitni az asztali számítógépen, amelyen az SQL Database-ügyfélalkalmazást.
 
-#### <a name="inside-client-runs-on-azure"></a>*Belső:* ügyfél futtatja az Azure-ban
+#### <a name="inside-client-runs-on-azure"></a>*Belül:* Ügyfél futtatja az Azure-ban
+
 Amikor az ügyfél az Azure-felhő határain belül fut, akkor használja, mi meghívhatjuk egy *közvetlen útvonal* kommunikál az SQL Database-kiszolgálóhoz. A kapcsolat létrejötte után további az ügyfél és az adatbázis közötti kapcsolat nem Azure SQL Database átjárója között.
 
 A feladatütemezés a következőképpen történik:
@@ -76,6 +80,6 @@ Ez a szakasz a termékváltozatokra hivatkozó monikerek értelmezi. Emellett eg
 * [TDS protokollverziók listája](http://www.freetds.org/userguide/tdshistory.htm)
 * [Az SQL Database fejlesztési áttekintése](sql-database-develop-overview.md)
 * [Az Azure SQL Database-tűzfal](sql-database-firewall-configure.md)
-* [Útmutató: az SQL Database tűzfalbeállításainak konfigurálása](sql-database-configure-firewall-settings.md)
+* [Útmutató: A tűzfal beállításainak konfigurálása az SQL Database szolgáltatásban](sql-database-configure-firewall-settings.md)
 
 

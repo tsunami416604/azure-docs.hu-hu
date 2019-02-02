@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0f834c88a22aca52a861309681ea0da204b2a552
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 0a9c5b5f0fd47f2fcf0c9df02789abae5f07f023
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507997"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564986"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Hozzon létre és telepítse a VPN-ügyfélkonfigurációs fájlok az Azure natív Tanúsítványalapú hitelesítés P2S konfiguráció
 
@@ -79,7 +79,7 @@ A következő lépések használatával konfigurálja a natív Windows VPN-ügyf
 
 Használja az alábbi lépéseket Mac natív VPN-ügyfél konfigurálása a tanúsítvány hitelesítéséhez. Minden Azure-ra csatlakozó Mac gépen a lépések elvégzéséhez rendelkezésére:
 
-1. Importálás a **VpnServerRoot** Mac legfelső szintű tanúsítványok Ezt megteheti a fájl keresztül másolja a Mac és a dupla kattintással.  
+1. Importálás a **VpnServerRoot** Mac legfelső szintű tanúsítványok Ezt megteheti a fájl keresztül másolja a Mac és a dupla kattintással.
 Kattintson a **Hozzáadás** importálásához.
 
   ![tanúsítvány hozzáadása](./media/point-to-site-vpn-client-configuration-azure-cert/addcert.png)
@@ -113,10 +113,13 @@ Kattintson a **Hozzáadás** importálásához.
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)
 
-### <a name="extract-the-key-and-certificate"></a>Bontsa ki a kulcsot, és a tanúsítvány
+### <a name="1-generate-the-key-and-certificate"></a>1: Hozzon létre és a egy tanúsítványt
 
 StrongSwan szeretne csomagolja ki a kulcsot, és a tanúsítvány az ügyfél-tanúsítvány (.pfx-fájl), és mentse azokat az egyes .pem fájlt.
-Kövesse az alábbi lépéseket:
+
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
+
+### <a name="2-extract-the-key"></a>2: Bontsa ki a kulcsot
 
 1. Töltse le és telepítse az OpenSSL [OpenSSL](https://www.openssl.org/source/).
 2. Nyisson meg egy parancssori ablakot, és váltson arra a könyvtárra, amelyen OpenSSL, például "c:\OpenSLL-Win64\bin\'.
@@ -125,13 +128,13 @@ Kövesse az alábbi lépéseket:
   ```
   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nocerts -out privatekey.pem -nodes
   ```
-4.  Most futtassa a következő parancsot a nyilvános tanúsítvány kibontása, és mentse azt egy új fájlt:
-
+4.  Bontsa ki a nyilvános tanúsítvány, és mentse azt egy új fájlt a következő parancsot futtassa:
+ 
   ```
   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nokeys -out publiccert.pem -nodes
   ```
 
-### <a name="install"></a>Telepítése és konfigurálása
+### <a name="install"></a>3: Telepítés és konfigurálás
 
 Az alábbi utasítások alapján létrehozott strongSwan 5.5.1 Ubuntu 17.0.4 rendszeren keresztül. Ubuntu 16.0.10 strongSwan grafikus felhasználói felület nem támogatja. Ha azt szeretné, Ubuntu 16.0.10 használandó, kell használni a [parancssori](#linuxinstallcli). Az alábbi példák nem feltétlenül egyeznek a képernyőn megjelenő látja, Linux- és strongSwan verziójától függően.
 
@@ -160,14 +163,13 @@ Az alábbi utasítások alapján létrehozott strongSwan 5.5.1 Ubuntu 17.0.4 ren
 
 ## <a name="linuxinstallcli"></a>Linux (strongSwan CLI)
 
-### <a name="install-strongswan"></a>StrongSwan telepítése
+### <a name="1-generate-the-key-and-certificate"></a>1: Hozzon létre és a egy tanúsítványt
 
 A következő CLI-parancsokat használhatja, vagy strongSwan szereplő lépések segítségével a [grafikus felhasználói Felülettel](#install) strongSwan telepítéséhez.
 
-1. `apt-get install strongswan-ikev2 strongswan-plugin-eap-tls`
-2. `apt-get install libstrongswan-standard-plugins`
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 
-### <a name="install-and-configure"></a>Telepítés és konfigurálás
+### <a name="2-install-and-configure"></a>2: Telepítés és konfigurálás
 
 1. A VPN-ügyfele csomag letöltése az Azure Portalról.
 2. Bontsa ki a fájlt.

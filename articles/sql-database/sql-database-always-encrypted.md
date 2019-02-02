@@ -1,5 +1,5 @@
 ---
-title: 'Always Encrypted: Azure SQL Database – Windows-tanúsítványtároló |} A Microsoft Docs'
+title: 'Always Encrypted: Az Azure SQL Database - Windows-tanúsítványtároló |} A Microsoft Docs'
 description: Ez a cikk bemutatja, hogyan az adatbázis-titkosítást az SQL-adatbázisban tárolt bizalmas adatok védelme az Always Encrypted varázsló az SQL Server Management Studio (SSMS) használatával. Bemutatja azt is, hogyan lehet a Windows-tanúsítványtároló tárolja a titkosítási kulcsokat.
 keywords: Always Encrypted adatok, sql-titkosítás, az adatbázis-titkosítás, bizalmas adatok titkosítása
 services: sql-database
@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 13e87ef0150924380c18c66c0362974ef599d4bf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: de8bb0adf45a7cdaf9cc0d9a451af203e01e87da
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231719"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564874"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: Bizalmas adatok védelme és a titkosítási kulcsok tárolása a Windows-tanúsítványtároló
 
@@ -98,14 +98,14 @@ SSMS egy varázslón könnyen konfigurálhatja az Always Encrypted által az Ön
    
     ![Oszlopok titkosítása](./media/sql-database-always-encrypted/encrypt-columns.png)
 
-Az Always Encrypted varázsló az alábbi szakaszokat tartalmazza: **Oszlopválasztás**, **főkulcs konfigurációs** (CMK), **érvényesítési**, és **összegzése** .
+Az Always Encrypted varázsló az alábbi szakaszokat tartalmazza: **Oszlopválasztás**, **főkulcs konfigurációs** (CMK), **érvényesítési**, és **összefoglalás**.
 
 ### <a name="column-selection"></a>Oszlop kiválasztása
 Kattintson a **tovább** a a **bemutatása** megnyitásához a **Oszlopválasztás** lapot. Ezen a lapon kiválaszthatja titkosítására, mely oszlopok [titkosítás, típusa és milyen oszloptitkosítási kulcs (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) használatára.
 
 Titkosítása **SSN** és **születési** egyes betegek adatait. A **SSN** oszlop determinisztikus titkosítás, mely támogatja a egyenlőség kereséseket, illesztés és csoportosítás fogja használni. A **születési** oszlop véletlenszerű titkosítás, amely nem támogatja a műveletek fogja használni.
 
-Állítsa be a **titkosítási típus** számára a **SSN** oszlop **Deterministic** és a **születési** oszlop **Randomized** . Kattintson a **Tovább** gombra.
+Állítsa be a **titkosítási típus** számára a **SSN** oszlop **Deterministic** és a **születési** oszlop **Randomized** . Kattintson a **tovább**.
 
 ![Oszlopok titkosítása](./media/sql-database-always-encrypted/column-selection.png)
 

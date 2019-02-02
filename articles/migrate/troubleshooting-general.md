@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: ebd374cc8792545d1db57f624a5831dc9ded272f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 12c71086509b0c7017b8326c46ed4a31270ef261
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102122"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657382"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -117,7 +117,7 @@ Ha bármely URL-alapú tűzfalproxyt a kimenő kapcsolat szabályozásához, üg
 
 **A gyűjtő nem tud kapcsolódni az internetre egy tanúsítvány érvényesítési hiba miatt**
 
-Ez akkor fordulhat elő, ha egy lehallgató proxy segítségével csatlakozzon az internethez, és nem importálta a gyűjtő virtuális gép be a proxy tanúsítvány. A proxy tanúsítvány részletes lépésekkel importálhatja [Itt](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity).
+Ez akkor fordulhat elő, ha egy lehallgató proxy segítségével csatlakozzon az internethez, és nem importálta a gyűjtő virtuális gép be a proxy tanúsítvány. A proxy tanúsítvány részletes lépésekkel importálhatja [Itt](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
 **A gyűjtő nem tud kapcsolódni a projekt használatával a projekt Azonosítóját és a kulcs másolt a portálról.**
 

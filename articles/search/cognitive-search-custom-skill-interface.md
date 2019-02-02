@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 01/29/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: deb72bcc41e20057b6e7b214c6a8c93655894a12
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: fe575a79fe2f47729e7c7fe039989b2c08af1282
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628272"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657824"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Egy egyéni ismeretek hozzáadása a cognitive search folyamat
 
@@ -27,7 +27,14 @@ Egy egyéni ismeretek létrehozása lehetőséget nyújt a átalakítások egyed
 
 ## <a name="web-api-custom-skill-interface"></a>Webes API-k egyéni ismeretek felület
 
-Egyéni WebAPI szakértelem végpontok 5 perces időtartamon belül választ kell visszaadnia. Az indexelési folyamat szinkron és indexelő állítja elő időtúllépési hiba, ha a válasz nem érkezik meg ezt az ablakot."
+Alapértelmezett időtúllépési értéket, ha azok nem adott vissza 30 második időtartamon belül választ egyéni WebAPI szakértelem végpontokat. Az indexelési folyamat szinkron és indexelő állítja elő időtúllépési hiba, ha a válasz nem érkezik meg ezt az ablakot.  Akár 90 másodperc alatt kell időtúllépési paramétert a-időtúllépést állítsa lehetőség:
+
+```json
+        "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+        "description": "This skill has a 90 second timeout",
+        "uri": "https://[your custom skill uri goes here]",
+        "timeout": "PT90S",
+```
 
 Az egyéni ismeretek folytatott interakcióra szolgáló csak mechanizmus jelenleg egy webes API-felületen keresztül. A webes API van szüksége az ebben a szakaszban leírt követelményeknek kell megfelelnie.
 

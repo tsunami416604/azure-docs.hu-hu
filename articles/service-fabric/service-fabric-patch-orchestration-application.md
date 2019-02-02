@@ -3,7 +3,7 @@ title: Az Azure Service Fabric patch orchestration application |} A Microsoft Do
 description: Az alkalmazás egy Service Fabric-fürtöt operációs rendszer javításának automatizálása.
 services: service-fabric
 documentationcenter: .net
-author: novino
+author: khandelwalbrijeshiitr
 manager: timlt
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/22/2018
-ms.author: nachandr
-ms.openlocfilehash: 43133a1666dc3551e0f935ceb2af4cf1297d44a7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 2/01/2019
+ms.author: brkhande
+ms.openlocfilehash: 646a64435ba02877d2588b8debbb3920a32a5cf1
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155306"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563082"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
 
@@ -413,3 +413,6 @@ A rendszergazdák beavatkozhat kell, és határozza meg, miért érdemes az alka
 - Ahol POA 1.3.0 nem fog működni a Windows Server 2012 R2 vagy alacsonyabb, mert hiba történt az automatikus frissítések letiltása a rögzítési regressziós. 
 - Hiba kijavítása, ahol InstallWindowsOSOnlyUpdates konfigurációs mindig ki van TRUE.
 - Változó alapértelmezett értéke InstallWindowsOSOnlyUpdates FALSE.
+
+### <a name="version-132"></a>1.3.2 verzió
+- Egy probléma, amely befolyásolja a javítási lifecyle egy csomóponton, abban az esetben, ha az aktuális csomópont nevét részhalmaza nevű csomópont kijavítása. Az ilyen csomópontokon, lehetséges, a javítás hiányzik, vagy újraindítás függőben. 

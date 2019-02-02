@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 273039ec271d5d81329ab475ffd2eda82dca7b58
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 2a3c26c6a815cf934724fba4e8e0f9637803a4ce
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511004"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562385"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -241,7 +241,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 * <a id="data-compliance-policies"></a>
 **Milyen adatok megfelelőségi szabályzatok támogatja az Azure Files?**  
 
-   Az Azure Files fut. a más tárolási szolgáltatásokra az Azure Storage-ban használt azonos tárolási architektúrával. Az Azure Files az azonos megfelelőségi szabályzatok az egyéb Azure storage-szolgáltatások által használt vonatkozik. Az Azure Storage-adatok megfelelőségi kapcsolatos további információkért olvassa el [Azure Storage-megfelelőségi ajánlatok](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings), és nyissa meg a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
+   Az Azure Files fut. a más tárolási szolgáltatásokra az Azure Storage-ban használt azonos tárolási architektúrával. Az Azure Files az azonos megfelelőségi szabályzatok az egyéb Azure storage-szolgáltatások által használt vonatkozik. Az Azure Storage-adatok megfelelőségi kapcsolatos további információkért olvassa el [Azure Storage-megfelelőségi ajánlatok](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings), és nyissa meg a [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Helyszíni hozzáférés
 * <a id="expressroute-not-required"></a>

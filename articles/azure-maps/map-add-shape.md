@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 583223ccfd30468c047fc77c3b6598ce7b0a1973
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 3023d5d4010108d46424bba284029b58f5fd279c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214606"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658742"
 ---
 # <a name="add-a-shape-to-a-map"></a>Alakzat hozzáadása a térkép
 
@@ -108,7 +108,7 @@ A fenti kód első kódblokkot egy térkép-objektumot hoz létre. Látható [t�
 
 A pont egy [funkció](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) , [pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) az osztály. A második kódblokkot inicializálja a csúszka HTML-elem radius értékét, és hoz majd létre, és egy pont objektum burkolja egy [alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) osztályobjektumban.
 
-A harmadik kódblokk létrehoz egy függvényt, amely a HTML-tartomány csúszka elem értéket veszi fel, és módosítja a radius-értékét az alakzat osztály használatával [addProperty](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest#addproperty) metódust.
+A harmadik kódblokk létrehoz egy függvényt, amely a HTML-tartomány csúszka elem értéket veszi fel, és módosítja a radius-értékét az alakzat osztály használatával [addProperty](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) metódust.
 
 A negyedik kódblokkot, egy adatforrás-objektum létrejött, használja a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) osztály. A pont adatforráshoz kerül.
 

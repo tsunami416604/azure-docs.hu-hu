@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: 23e1de98fff891d199d1f33fcb714b2b284e8edb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 1761dafd04a4b8d27a16af4a5e1b0034b90c51a0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382919"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656872"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -29,7 +29,7 @@ Webhookok az események fogadása az Azure Event Grid számos módon tartoznak. 
 
 Event Grid számos más szolgáltatásokhoz hasonlóan webhookokat támogató van szükség, hogy a Webhook-végpontot tulajdonjogának igazolásához események azáltal, hogy a végpont megkezdése előtt. Ez a követelmény megakadályozza, hogy egy rosszindulatú felhasználó események a végpont-elárasztás. Ha használja az alábbi három Azure-szolgáltatások bármelyikét, az Azure-infrastruktúra automatikusan kezeli az ellenőrzés:
 
-* Az Azure Logic Apps [Event Grid-összekötő](https://docs.microsoft.com/en-us/connectors/azureeventgrid/)
+* Az Azure Logic Apps [Event Grid-összekötő](https://docs.microsoft.com/connectors/azureeventgrid/)
 * Az Azure Automation-n keresztül [webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
 * Az Azure Functions [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md)
 

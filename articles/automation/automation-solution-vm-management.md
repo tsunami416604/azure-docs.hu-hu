@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 1/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5cacd2d0e4308e15b562169f72efb0f98ce45289
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476396"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658386"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -136,7 +136,7 @@ A több, elosztott számítási feladatok támogatása virtuális gépen kettő 
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>Az indítási és leállítási művelet a célzott Virtuálisgép-lista
 
-1. Adjon hozzá egy **sequencestart** és a egy **sequencestop** virtuális gépekhez való hozzáadását tervezi egy pozitív egész számot tartalmazó címke a **VMList** változó. 
+1. Adjon hozzá egy **sequencestart** és a egy **sequencestop** virtuális gépekhez való hozzáadását tervezi egy pozitív egész számot tartalmazó címke a **VMList** paraméter.
 1. Futtassa a **SequencedStartStop_Parent** beállítása művelet paraméterrel runbook **start**, vesszővel tagolt listája, a virtuális gépek a *VMList* paramétert, majd állítsa be a WHATIF paraméter **igaz**. A módosítások előnézetét.
 1. Konfigurálja a **External_ExcludeVMNames** paramétert a virtuális gépek (VM1, VM2, VM3) vesszővel elválasztott listáját.
 1. Ebben a forgatókönyvben nem fogadja el a **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupnames** változókat. Ebben az esetben szüksége saját Automation ütemezés létrehozásához. További információkért lásd: [runbook ütemezése az Azure Automation](../automation/automation-schedules.md).
@@ -285,8 +285,8 @@ A következő táblázat a megoldás által összegyűjtött feladatrekordokkal 
 
 |Lekérdezés | Leírás|
 |----------|----------|
-|Runbook ScheduledStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | "" kategóriában keresse == "JobLogs." | ahol (RunbookName_s == "ScheduledStartStop_Parent") | ahol (ResultType == "Kész")  | Összegzés |AggregatedValue = count() by ResultType, a bin (TimeGenerated, 1 óra) | Rendezés szempontja: TimeGenerated desc ""|
-|Runbook SequencedStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | "" kategóriában keresse == "JobLogs." | ahol (RunbookName_s == "SequencedStartStop_Parent") | ahol (ResultType == "Kész") | Összegzés |AggregatedValue = count() by ResultType, a bin (TimeGenerated, 1 óra) | Rendezés szempontja: TimeGenerated desc ""|
+|Runbook ScheduledStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|Runbook SequencedStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
 
 ## <a name="viewing-the-solution"></a>A megoldás megtekintése
 
@@ -319,13 +319,29 @@ Az alábbiakban látható egy például szolgáló e-mail érkezik, amikor a meg
 
 ![Automation Update Management megoldás lapja](media/automation-solution-vm-management/email.png)
 
+## <a name="add-exclude-vms"></a>Virtuális gépek hozzáadása vagy kizárása
+
+A megoldás lehetővé teszi, hogy a megoldás által célzott, vagy kifejezetten zárja ki a gépeket a megoldást a virtuális gépek biztosítja.
+
+### <a name="add-a-vm"></a>Virtuális gép hozzáadása
+
+Néhány módon segítségével győződjön meg arról, hogy egy virtuális gép szerepel a indítása és leállítása megoldás futtatásakor.
+
+* A szülő mindegyike [runbookok](#runbooks) rendelkezik a megoldás egy **VMList** paraméter. Virtuális gép nevének vesszővel elválasztott listáját adhat át ehhez a paraméterhez, ha az adott helyzethez és ezek a virtuális gépek a megfelelő szülő runbook ütemezése tartalmazni fogja a megoldás futtatása.
+
+* Válassza ki a több virtuális gép, állítsa be a **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupNames** a erőforrás-csoport nevekkel, amelyek tartalmazzák a virtuális gépek indítása vagy leállítása szeretné. És ez az érték is megadható `*`, hogy a megoldás futtatásához az előfizetés összes erőforráscsoportjában.
+
+### <a name="exclude-a-vm"></a>Virtuális gép kizárása
+
+Virtuális gép kizárása a megoldást, adhat hozzá, hogy a **External_ExcludeVMNames** változó. Ezt a változót az adott virtuális gépek kizárása a indítása és leállítása a megoldás a vesszővel tagolt listája.
+
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Az indítási és leállítási ütemezés módosítása
 
-Ebben a megoldásban az indítási és leállítási ütemezés felügyelete lépéseket követi, ahogyan [runbook ütemezése az Azure Automation](automation-schedules.md).
+Ebben a megoldásban az indítási és leállítási ütemezés felügyelete lépéseket követi, ahogyan [runbook ütemezése az Azure Automation](automation-schedules.md). Szükség van egy külön elindítani és leállítani a virtuális gépek ütemezés.
 
-A megoldás csak leállítja a virtuális gépek egy adott időpontra való konfigurálásáról használata támogatott. Ehhez a következőket kell tennie:
+A megoldás csak leállítja a virtuális gépek egy adott időpontra való konfigurálásáról használata támogatott. Ebben a forgatókönyvben csak létrehozni egy **leállítása** ütemezés és a nem megfelelő **Start** ütemezett. Ehhez a következőket kell tennie:
 
-1. Az erőforráscsoportok, hogy állítsa le a virtuális gépek hozzá a **External_Start_ResourceGroupNames** változó.
+1. Az erőforráscsoportok, hogy állítsa le a virtuális gépek hozzá a **External_Stop_ResourceGroupNames** változó.
 2. A saját az idő, állítsa le a virtuális gépeket szeretne ütemezést létrehozni.
 3. Keresse meg a **ScheduledStartStop_Parent** runbook kattintson **ütemezés**. Ez lehetővé teszi, hogy válassza ki az előző lépésben létrehozott ütemezést.
 4. Válassza ki **paraméterek és futtatási beállítások** és állítsa be a "Stop" művelet paramétert.

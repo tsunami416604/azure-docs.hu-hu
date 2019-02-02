@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: efb8887085ad1f6f47667b1305191e514de74330
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a04c4d41d9682389347009446c590fc4e27400b1
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468182"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659541"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Töltse fel, és a egy Linux virtuális gép létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -54,7 +54,7 @@ Az a tárfiók hozzáférési kulcsainak listázása [az tárolási fióklista k
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
 ```
 
-Hozzon létre egy tárolót a tárfiókban a tárfiók hívóbetűjét használja a beszerzett [az a tároló létrehozása](/cli/azure/storage/container#az_storage_container_create). Az alábbi példa létrehoz egy tárolót `mydisks` használata a storage kulcs értékét `key1`:
+Hozzon létre egy tárolót a tárfiókban a tárfiók hívóbetűjét használja a beszerzett [az a tároló létrehozása](/cli/azure/storage/container). Az alábbi példa létrehoz egy tárolót `mydisks` használata a storage kulcs értékét `key1`:
 
 ```azurecli
 az storage container create --account-name mystorageaccount \
@@ -164,7 +164,7 @@ info:    storage account keys list command OK
 Jegyezze fel a `key1` ugyanis kommunikál a storage-fiókjába a következő lépésben fogja használni.
 
 ## <a name="create-a-storage-container"></a>Storage-tároló létrehozása
-Ugyanúgy, mint hoz létre, hogy logikusan rendszerezhesse az a helyi fájlrendszerben eltérő címtárak tárolók, a lemezek rendszerezéséhez a tárfiókon belül hoz létre. Egy tárfiók tetszőleges számú tárolót tartalmazhat. Hozzon létre egy tárolót az [az a tároló létrehozása](/cli/azure/storage/container#az_storage_container_create).
+Ugyanúgy, mint hoz létre, hogy logikusan rendszerezhesse az a helyi fájlrendszerben eltérő címtárak tárolók, a lemezek rendszerezéséhez a tárfiókon belül hoz létre. Egy tárfiók tetszőleges számú tárolót tartalmazhat. Hozzon létre egy tárolót az [az a tároló létrehozása](/cli/azure/storage/container).
 
 Az alábbi példa létrehoz egy tárolót `mydisks`:
 

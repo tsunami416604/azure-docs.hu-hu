@@ -11,21 +11,24 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 08/07/2017
-ms.openlocfilehash: 6675a68222e09be9a092ad21ee318a53a0a39ca5
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.date: 10/12/2018
+ms.openlocfilehash: 8ffda7fd1b987e34dc0e8157b535ccef65571247
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311303"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567893"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Távolítsa el a transzparens adattitkosítás (TDE) védőelem a PowerShell használatával
+
 ## <a name="prerequisites"></a>Előfeltételek
+
 - Azure-előfizetés és a lehet az előfizetés-rendszergazda
 - Rendelkeznie kell Azure PowerShell 4.2.0-s verzió vagy újabb telepítése és futtatása. 
 - Ez az útmutató feltételezi, hogy már használja egy kulcs Azure Key vault a TDE-védőhöz, egy Azure SQL Database vagy Data warehouse-bA. Lásd: [transzparens adattitkosítás BYOK-támogatással](transparent-data-encryption-byok-azure-sql.md) további.
 
 ## <a name="overview"></a>Áttekintés
+
 Ez az útmutató azt ismerteti, hogyan reagáljon a potenciálisan veszélyeztetett TDE-védőhöz egy Azure SQL Database vagy az adattárház, amely a TDE támogatással Bring Your Own Key (BYOK) használ. TDE BYOK-támogatással kapcsolatos további információkért tekintse meg a [áttekintőlapján](transparent-data-encryption-byok-azure-sql.md). 
 
 Az alábbi eljárások csak szélsőséges esetben vagy tesztelési környezetben kell végrehajtani. Tekintse át alaposan útmutatója, mint aktívan használt TDE törlése az Azure Key Vault protectors eredményezhet **adatvesztés**. 
@@ -35,10 +38,12 @@ Ha egy kulcsot minden eddiginél gyanús legyen feltörni, úgy, hogy egy szolg�
 Ne feledje, hogy egyszer a TDE-védőhöz törlődik a Key vaultban **titkosított adatbázis a kiszolgáló felé irányuló összes kapcsolatot le vannak tiltva, és ezeknek az adatbázisoknak kapcsolat nélküli üzemmódban vannak, és 24 órán belül első eldobott**. A feltört kulccsal titkosított régi biztonsági másolatok már nem érhetőek el.
 
 Ez az útmutató két módszer attól függően, a kívánt eredményt keresztül haladnak, az incidensek megoldásához után:
+
 - Az Azure SQL adatbázisokat / Data Warehouses **érhető el**
 - Hogy az Azure SQL-adatbázisok / Data Warehouses **nem érhető el**
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Elérhető-e tartani a titkosított erőforrások
+
 1. Hozzon létre egy [új kulcsot a Key Vaultban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey?view=azurermps-4.1.0). Ellenőrizze, hogy ez az új kulcs a potenciálisan veszélyeztetett TDE-védőhöz, a különálló a kulcstartóban található jön létre, mivel hozzáférés-vezérlés a tároló szinten van kiépítve. 
 2. Adja meg az új kulcsot a kiszolgálóra történő a [Add-AzureRmSqlServerKeyVaultKey](/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) és [Set-azurermsqlservertransparentdataencryptionprotector parancsmag](/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) parancsmagok és a kiszolgáló új TDE-védőhöz szerint módosítsa azt.
 
@@ -48,7 +53,7 @@ Ez az útmutató két módszer attól függően, a kívánt eredményt keresztü
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -ServerName <LogicalServerName> `
    -KeyId <KeyVaultKeyId>
-   
+
    # Set the key as the TDE protector for all resources under the server
    Set-AzureRmSqlServerTransparentDataEncryptionProtector `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
@@ -60,7 +65,6 @@ Ez az útmutató két módszer attól függően, a kívánt eredményt keresztü
 
    >[!NOTE]
    > Eltarthat néhány percig, az új TDE-védőhöz, adatbázisok és a másodlagos adatbázisokat a kiszolgálóhoz való propagálása.
-   >
 
    ```powershell
    Get-AzureRmSqlServerTransparentDataEncryptionProtector `
@@ -78,7 +82,7 @@ Ez az útmutató két módszer attól függően, a kívánt eredményt keresztü
    -Name <KeyVaultKeyName> `
    -OutputFile <DesiredBackupFilePath>
    ```
- 
+
 5. A feltört kulcs törlése a Key Vault használatával a [Remove-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey) parancsmagot. 
 
    ```powershell
@@ -86,22 +90,23 @@ Ez az útmutató két módszer attól függően, a kívánt eredményt keresztü
    -VaultName <KeyVaultName> `
    -Name <KeyVaultKeyName>
    ```
- 
+
 6. Kulcs visszaállítása a Key Vault használatával a jövőben a [Restore-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey) parancsmagot:
    ```powershell
    Restore-AzureKeyVaultKey `
    -VaultName <KeyVaultName> `
    -InputFile <BackupFilePath>
    ```
- 
+
 ## <a name="to-make-the-encrypted-resources-inaccessible"></a>Hogy a titkosított erőforrások nem érhető el
+
 1. Dobja el az adatbázisok által a vélhetően feltört kulcs titkosított.
-Az adatbázis és naplófájlok fájlok automatikusan biztonsági másolat készül, így időponthoz visszaállítás, az adatbázisban végezhető bármikor (feltéve, akkor adja meg a kulcsot). Kell egy aktív TDE-védőhöz, akár 10 percet a legutóbbi tranzakciók esetleges adatvesztés elkerülése érdekében a törlés előtt dobja el az adatbázisok. 
+
+   Az adatbázis és naplófájlok fájlok automatikusan biztonsági másolat készül, így időponthoz visszaállítás, az adatbázisban végezhető bármikor (feltéve, akkor adja meg a kulcsot). Kell egy aktív TDE-védőhöz, akár 10 percet a legutóbbi tranzakciók esetleges adatvesztés elkerülése érdekében a törlés előtt dobja el az adatbázisok. 
 2. Készítsen biztonsági másolatot a TDE-védőhöz, a Key Vault-kulcs adatai.
 3. Távolítsa el a potenciálisan veszélyeztetett kulcsot a Key Vaultból
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, a TDE-védőhöz, egy kiszolgáló biztonsági követelmények ahhoz, hogy rotálása: [elforgatása a transzparens adattitkosítási védelmi modulra vonatkozó PowerShell használatával](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-
-- Ismerkedés a Bring Your Own Key TDE támogatása: [kapcsolja be a TDE Key vault PowerShell-lel a saját kulcs használata](transparent-data-encryption-byok-azure-sql-configure.md)
+- Ismerje meg, hogy a TDE-védőhöz, egy kiszolgáló biztonsági követelmények ahhoz, hogy rotálása: [A transzparens adattitkosítási védelmi modulra vonatkozó PowerShell használatával elforgatása](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- Első lépések a Bring Your Own Key TDE támogatása: [Kapcsolja be a TDE Key vault PowerShell-lel a saját kulcs használata](transparent-data-encryption-byok-azure-sql-configure.md)

@@ -10,22 +10,22 @@ ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 01/29/2019
 ms.author: mbullwin
-ms.openlocfilehash: 17d8eff39eabb2f7b4968bf74d2482b980fe8060
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: bde73e9ee87ab9165c1d2dd720377d2f9c8771cb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116619"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565955"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
-Az a [az Azure Portal](https://portal.azure.com) beállíthat alkalmazásteljesítmény-figyelés a web apps, mobile háttérrendszerek és API-alkalmazások a [Azure App Service](../../app-service/overview.md). Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) úgy alakítja ki az alkalmazást, hogy telemetriát küldjön tevékenységeiről az Application Insights szolgáltatásnak, amely tárolja és elemzi azokat. Itt metrikus diagramok és keresőeszközök segítségével diagnosztizálhat problémákat, javíthatja a teljesítményt, és felmérheti a használatot.
+Az a [az Azure portal](https://portal.azure.com) beállíthat alkalmazásteljesítmény-figyelés a web apps, mobile háttérrendszerek és API-alkalmazások a [Azure App Service](../../app-service/overview.md). Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) úgy alakítja ki az alkalmazást, hogy telemetriát küldjön tevékenységeiről az Application Insights szolgáltatásnak, amely tárolja és elemzi azokat. Itt metrikus diagramok és keresőeszközök segítségével diagnosztizálhat problémákat, javíthatja a teljesítményt, és felmérheti a használatot.
 
 ## <a name="run-time-or-build-time"></a>Futási idő vagy felépítési idő
 A figyelés konfigurálásához kétféle módon alakíthatja ki az alkalmazást:
 
-* **Futási idő** -kiválaszthat egy teljesítményfigyelési bővítményt, ha már élő az app service. Nem szükséges újraépíteni vagy újratelepíteni az alkalmazást. Olyan standard csomagkészletet kap, amely figyeli a válaszidőt, a sikerességi arányokat, a kivételeket, a függőségeket stb. 
+* **Futási idő** -kiválaszthat egy teljesítményfigyelési bővítményt, ha már élő az app service. Nem szükséges újraépíteni vagy telepítse újra az alkalmazást. Olyan standard csomagkészletet kap, amely figyeli a válaszidőt, a sikerességi arányokat, a kivételeket, a függőségeket stb. 
 * **Felépítési idő** – Telepíthet egy csomagot fejlesztés alatt álló alkalmazásába. Ez a lehetőség jóval sokoldalúbb. A standard csomagkészlet mellett kódolással testreszabhatja a telemetriát, vagy elküldheti saját telemetriáját. Naplózhat konkrét tevékenységeket vagy rögzíthet eseményeket alkalmazástartománya szemantikájának megfelelően. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Futási idő kialakítása az Application Insights segítségével
@@ -42,14 +42,27 @@ Melyeket már használ egy app Service-ben az Azure-ban, ha már kap bizonyos fi
 
     ![Webapp kialakítása](./media/azure-web-apps/create-resource.png)
 
-2. Adjon meg, melyik erőforrást kell használnia, kiválaszthatja, hogyan szeretné az application insights a platformonként az alkalmazás adatainak gyűjtéséről.
+2. Adjon meg, melyik erőforrást kell használnia, kiválaszthatja, hogyan szeretné az application insights a platformonként az alkalmazás adatainak gyűjtéséről. (Az alapértelmezés szerinti ASP.NET-alkalmazások monitorozása a gyűjtemény két különböző szintű.)
 
-    ![Válassza a beállítások platformonként](./media/azure-web-apps/choose-options.png)
+    ![Válassza a beállítások platformonként](./media/azure-web-apps/choose-options-new.png)
+
+    * .NET **alapszintű gyűjtemény** szint alapvető egypéldányos APM funkciókat kínál.
+    
+    * .NET **gyűjtemény ajánlott** szintje:
+        * Hozzáadja a Processzor, memória és i/o-használati trendeket.
+        * Mikroszolgáltatások hátterében a kérelem/függőségi határokon.
+        * Gyűjti a használati trendeket, és lehetővé teszi, hogy a tranzakciók rendelkezésre állási eredmények korrelációs.
+        * A gazdagép által nem kezelt kivételek gyűjti.
+        * Mintavétel használatakor, javítja a APM metrikák pontosságot terhelés alatt.
+    
+    .NET core kínál **gyűjtemény ajánlott** vagy le van tiltva, a .NET Core 2.0 és a 2.1-es verzióját.
 
 3. **Alakítsa ki az app service** Application Insights telepítése után.
 
-   **Engedélyezze az ügyféloldali figyelést** a lapmegtekintések és a felhasználók telemetriai adatainak gyűjtéséhez.
+   **Az ügyféloldali figyelés engedélyezése** az oldal és a felhasználók telemetriai adatokat.
 
+    (A .NET Core-alkalmazások alapértelmezés szerint engedélyezve van ez **gyűjtemény ajánlott**, függetlenül attól, hogy jelen-e az alkalmazás 'APPINSIGHTS_JAVASCRIPT_ENABLED' állítja. A részletes Felhasználóifelület-alapú támogatás letiltása az ügyféloldali figyelés jelenleg nem áll rendelkezésre a .NET Core.)
+    
    * Válassza a Beállítások > Alkalmazásbeállítások lehetőséget.
    * Az alkalmazásbeállításoknál adjon meg egy új kulcs-érték párt:
 
@@ -57,6 +70,7 @@ Melyeket már használ egy app Service-ben az Azure-ban, ha már kap bizonyos fi
 
     Érték: `true`
    * **Mentse** a beállításokat, és **indítsa újra** az alkalmazást.
+
 4. Az alkalmazás figyelési adatok megismerése kattintva **beállítások** > **Application Insights** > **megtekintése további az Application Insights**.
 
 Később igény szerint felépítheti az alkalmazást az Application Insights segítségével.
@@ -78,23 +92,19 @@ Ha telepít egy SDK-t alkalmazásába, az Application Insights részletesebb tel
 
     A műveletnek két hatása van:
 
-   1. Létrehoz az Azure-ban egy Application Insights-erőforrást, ahol tárolja, elemzi és megjeleníti a telemetriát.
+   1. Létrehoz egy Application Insights-erőforrást az Azure-ban, ahol a telemetriai tárolja, elemzi és jelenik meg.
    2. Hozzáadja a kódhoz (ha korábban még nem szerepelt benne) az Application Insights NuGet-csomagot, és konfigurálja, hogy az telemetriát küldjön az Azure-erőforrásnak.
 2. **Tesztelje a telemetriát** az alkalmazás a fejlesztői gépén való futtatásával (F5).
 3. **Tegye közzé az alkalmazást** az Azure-ban a megszokott módon. 
 
 *Hogyan válthatok más Application Insights-erőforrásnak való küldésre?*
 
-* Kattintson a jobb gombbal a projektre a Visual Studióban, válassza az **Application Insights konfigurálása** lehetőséget, majd válassza ki a kívánt erőforrást. Megjelenik az új erőforrás létrehozásának lehetősége. Építse újra, és ismételten helyezze üzembe.
+* A Visual Studióban kattintson a jobb gombbal a projektre, válassza a **Application Insights konfigurálása**, és válassza ki a kívánt erőforrást. Megjelenik az új erőforrás létrehozásának lehetősége. Építse újra, és ismételten helyezze üzembe.
 
 ## <a name="more-telemetry"></a>További telemetria
 
 * [Weblapbetöltési adatok](../../azure-monitor/app/javascript.md)
 * [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md)
-
-## <a name="video"></a>Videó
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -102,10 +112,19 @@ Ha telepít egy SDK-t alkalmazásába, az Application Insights részletesebb tel
 
 App Services Javascript engedélyezése okozhat a html-válaszok csonkolva.
 
-- 1. megkerülő megoldás: APPINSIGHTS_JAVASCRIPT_ENABLED Alkalmazásbeállítás "false" értékűre, vagy távolítsa el teljesen, és indítsa újra a
-- 2. megkerülő megoldás: hozzáadhatja az sdk-kód-n keresztül, és távolítsa el a bővítményt (Ez a konfiguráció nem Profiler és a pillanatkép-hibakereső)
+* 1. megkerülő megoldás: APPINSIGHTS_JAVASCRIPT_ENABLED Alkalmazásbeállítás "false" értékűre, vagy távolítsa el teljesen, és indítsa újra a
+* 2. megkerülő megoldás: hozzáadhatja az sdk-kód-n keresztül, és távolítsa el a bővítményt (Ez a konfiguráció nem Profiler és a pillanatkép-hibakereső)
 
 Mi a probléma nyomon követ [Itt](https://github.com/Microsoft/ApplicationInsights-Home/issues/277)
+
+A .NET Core az alábbi jelenleg **nem támogatott**:
+
+* Önálló telepítés.
+* Az alkalmazások .NET-keretrendszerre.
+* .NET Core 2.2 applications.
+
+> [!NOTE]
+> .NET core 2.0 és a .NET Core 2.1-es verziója támogatott. .NET Core 2.2 támogatási hozzáadásakor, ez a cikk fog frissülni.
 
 ## <a name="next-steps"></a>További lépések
 * [Futtassa a profilkészítőt a működő alkalmazásán.](../../azure-monitor/app/profiler.md)

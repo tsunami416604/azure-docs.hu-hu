@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 2fbc155afc3fd5280f2baf4eccabb895c158b89f
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 534d1785336c68a771722f0f464eae278551ffc0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913571"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660238"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Az IoT hubhoz az MQTT protokoll használatával kommunikálnak.
 
@@ -60,17 +60,17 @@ Ha így tesz, ügyeljen arra, hogy ellenőrizze a következőket:
 * AMQP számos feltételek által jelzett hibákat ad vissza, miközben MQTT lezárja a kapcsolatot. Ennek eredményeképpen a kivételkezelő logikai bizonyos változásokat igényelhet.
 * MQTT nem támogatja a *elutasítása* műveletek fogadásakor [felhőből az eszközre irányuló üzenetek][lnk-messaging]. Ha a háttéralkalmazás válasz érkezik az eszközalkalmazás van szüksége, fontolja meg [közvetlen metódusok][lnk-methods].
 
-## <a name="using-the-mqtt-protocol-directly"></a>Közvetlenül az MQTT protokoll használatával
+## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Az MQTT protokoll használatával közvetlenül (eszköz) szerint
 
 Ha egy eszköz nem tudja használni az eszközoldali SDK-k, továbbra is csatlakozhat a nyilvános eszköz végpontok 8883 porton az MQTT protokoll használatával. Az a **CONNECT** csomagot az eszközt kell használnia a következő értékeket:
 
 * Az a **ClientId** mezőhöz, használja a **deviceId**.
 
-* Az a **felhasználónév** mezőben `{iothubhostname}/{device_id}/api-version=2018-06-30`, ahol `{iothubhostname}` van a teljes CName az IoT hub.
+* Az a **felhasználónév** mezőben `{iothubhostname}/{device_id}/?api-version=2018-06-30`, ahol `{iothubhostname}` van a teljes CName az IoT hub.
 
     Például, ha a neve, az IoT hub **contoso.azure-devices.net** , és ha az eszköz nevét, **MyDevice01**, a teljes **felhasználónév** mezőnek tartalmaznia kell:
 
-    `contoso.azure-devices.net/MyDevice01/api-version=2018-06-30`
+    `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
 * Az a **jelszó** mezőhöz, használja a SAS-jogkivonatát. A SAS-jogkivonat formátuma azonos a HTTPS és az AMQP protokoll:
 
@@ -108,6 +108,16 @@ A Device Explorer:
 MQTT csatlakoztatása és leválasztása a csomagok, az IoT Hub kiad egy eseményt a a **Működésfigyelés** csatorna. Ez az esemény rendelkezik, amelyek segítségével a kapcsolati hibák elhárításához további információt.
 
 Az eszköz-alkalmazás megadhat egy **fog** jelenik meg az a **CONNECT** csomagot. Az eszköz alkalmazást kell használnia `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` , a **fog** témakör neve meghatározásához **fog** telemetriai üzenetnek számít továbbított üzenetek. Ebben az esetben, ha a hálózati kapcsolat megszakad, de egy **DISCONNECT** csomag korábban nem érkezett az eszközről, majd az IoT Hub küldi a **fog** megadott üzenetet a **CONNECT** csomagot a telemetria-csatornára. A telemetriai adatok csatorna lehet vagy az alapértelmezett **események** végpontot, illetve egy útválasztási IoT Hub által definiált egyéni végpont. Az üzenet a **iothub-MessageType** tulajdonság értéke az **fog** rendelve.
+
+## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Az MQTT protokoll használatával közvetlenül (modulként)
+
+Az IoT hubnak egy modul identitással MQTT keresztül történő összekapcsolása nagyon hasonlít az eszköz (leírt [fent](#using-the-mqtt-protocol-directly-as-a-device)), de szeretné használni a következőket:
+* Állítsa be az ügyfél-azonosítót `{device_id}/{module_id}`.
+* Ha felhasználónevet és jelszót, amely a hitelesítéshez felhasználónév `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` és jelszóként modul identitáshoz tartozó SAS-tokennel.
+* Használat `devices/{device_id}/modules/{module_id}/messages/events/` , telemetriai adatok közzététele a témakört.
+* Használat `devices/{device_id}/modules/{module_id}/messages/events/` , majd a témakör.
+* Az ikereszköz GET és a javítás témakörök megegyeznek a modulokat és eszközöket.
+* Az ikereszköz állapot témakör megegyezik a modulokat és eszközöket.
 
 ### <a name="tlsssl-configuration"></a>A TLS/SSL-konfigurációja
 

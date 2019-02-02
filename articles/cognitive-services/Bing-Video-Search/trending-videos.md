@@ -1,27 +1,31 @@
 ---
-title: Felkapott videók – a Bing Video Search keresése a weben
+title: A felkapott videókat a Bing Video Search API webes keresés
 titlesuffix: Azure Cognitive Services
-description: Bemutatja, hogyan felkapott videók keresése a weben a Bing Videókeresési API használatával.
+description: Ismerje meg, hogyan felkapott videók keresése a weben a Bing Videókeresési API használatával.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 71dd888199e9e630835c4916d35f6308431bab62
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 55f29a31a9574c7c32e6708565e961950520593f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203555"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566075"
 ---
-# <a name="get-trending-videos"></a>Népszerű videók lekérése  
+# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Felkapott videókat a Bing Video Search API az első 
 
-A mai felkapott videók lekéréséhez a következő GET kérelmet küldeni:  
+A Bing Videókeresési API lehetővé teszi a weben, vagy különböző kategóriákban keresse meg a mai felkapott videók a. 
+
+## <a name="get-request"></a>Kérelem beolvasása
+
+A mai felkapott videókat a Bing Video Search API a lekéréséhez a következő GET kérelmet küldeni:  
   
-```
+```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)  
@@ -30,6 +34,8 @@ X-Search-Location: lat:47.60357;long:-122.3295;re:100
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
 ```
+
+## <a name="market-support"></a>Piaci támogatás
 
 A következő piacok felkapott videók támogatja.  
  
@@ -47,10 +53,11 @@ A következő piacok felkapott videók támogatja.
 -   en-ZA (angol nyelven, Dél-Afrika)  
 -   zh-CN (kínai, Kína)
 
-  
-Az alábbi példa bemutatja egy választ, amely tartalmazza a felkapott videók.  
+## <a name="example-json-response"></a>Példa JSON-válasz  
 
-```  
+Az alábbi példa bemutatja egy API-válasz, amely tartalmazza a felkapott videók, amelyek kategória és alkategória szerint vannak felsorolva. A válasz is tartalmaz a szalagcím videók, amelyek a legnépszerűbb felkapott videók, és a egy vagy több kategóriához is biztosítja.  
+
+```json
 {  
     "_type" : "TrendingVideos",  
     "bannerTiles" : [
@@ -112,8 +119,9 @@ Az alábbi példa bemutatja egy választ, amely tartalmazza a felkapott videók.
     ]  
 }  
   
-```  
-A válasz tartalmazza a videók kategória és alkategória szerint. Például ha a kategóriák listájában szereplő zene videók kategóriát, és egyik alkategóriája felső volt, létrehozhat egy felső zene videók kategóriát a felhasználói élmény. Ezután használhatja a `thumbnailUrl`, `displayText`, és `webSearchUrl` mezők minden kategóriában (például felső zene videók) kattintható tartalmazó csempe létrehozása. Amikor a felhasználó a csempére kattint, akkor átkerül Bing video böngésző, a videó lejátszás.
+```
 
-A válasz a szalagcím videók, amelyek a legnépszerűbb felkapott videókat is tartalmaz. A szalagcím videók származhatnak a kategóriák közül legalább egyet.  
-  
+## <a name="next-steps"></a>További lépések
+
+> [!div class="nextstepaction"]
+[Videó elemzések lekérése](video-insights.md)

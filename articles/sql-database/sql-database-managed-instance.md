@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab
+ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ac9a7c081515b35348d10a2968b10647af29ef61
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/01/2019
+ms.openlocfilehash: 2582f7eff052968c4a08eefd0027f9785451a564
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465707"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562810"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Használja az SQL Database felügyelt példánya, közel 100 %-os kompatibilitással és a virtuális hálózatokkal
 
@@ -75,7 +75,7 @@ A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md
 A Virtuálismag-modell választhat hardver generációja.
 
 - **4. generációs** logikai processzorok alapuló Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzor, a csatlakoztatott SSD fizikai mag, 7 GB RAM-MAL / core és a számítási méret közötti 24, és 8 virtuális maggal.
-- **Velikost haldy 5** logikai processzorok alapuló Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorokkal, SSD, logikai core többszálú eNVM gyors, és 8 és 80 magok közötti méretek számítási.
+- **Velikost haldy 5** logikai processzorok alapuló Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorokkal, NVMe SSD, a hyper-threaded logikai mag, gyors, és 8 és 80 magok közötti méretek számítási.
 
 További információ a különbség a hardvergenerációk [felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 
@@ -158,7 +158,7 @@ AAD-bejelentkezéseket hozhasson létre bevezetett egy új szintaxis (**nyilván
 
 Felügyelt példány pedig lehetővé teszi, hogy az adatbázis-felhasználók és a más Microsoft-szolgáltatások identitásainak központi kezelését [Azure Active Directory-integráció](sql-database-aad-authentication.md). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. Az Azure Active Directory a [többtényezős hitelesítés](sql-database-ssms-mfa-authentication-configure.md) (MFA) támogatásával javítja az adatok és alkalmazások biztonságát, miközben támogatja az egyszeri bejelentkezést.
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 A felügyelt példány hitelesítés azt jelenti, hogy felhasználók személyazonossága az adatbázishoz való csatlakozáskor. Az SQL Database két hitelesítési típust támogat:  
 

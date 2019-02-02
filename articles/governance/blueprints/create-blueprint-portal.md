@@ -4,17 +4,17 @@ description: Összetevők létrehozása, definiálása és üzembe helyezése az
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0eebf1a2d1c173e2e37d24ff083e5d7ae011a900
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c6c498920d407dbbac2449d1da0d76237db0c63d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315298"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566312"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definiálása és hozzárendelése egy Azure tervezet a portálon
 
@@ -42,10 +42,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    ![Terv létrehozása](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. A **Terv neve** tulajdonságban adja meg például a „MyBlueprint” nevet a tervnek (betűkből és számokból, legfeljebb 48 karakterből állhat, szóközt és különleges karaktert nem tartalmazhat), a **Terv leírása** viszont egyelőre maradjon üresen.  A **Definíció helye** mezőben kattintson a jobb oldalon található három pontra, válassza ki azt a [felügyeleti csoportot](../management-groups/overview.md), amelybe menteni szeretné a tervet, majd kattintson a **Kiválasztás** elemre.
-
-   > [!NOTE]
-   > Tervdefiníciók csak felügyeleti csoportokba menthetők. Első felügyeleti csoportját az [alábbi lépések](../management-groups/create.md) alapján hozhatja létre.
+1. A **Terv neve** tulajdonságban adja meg például a „MyBlueprint” nevet a tervnek (betűkből és számokból, legfeljebb 48 karakterből állhat, szóközt és különleges karaktert nem tartalmazhat), a **Terv leírása** viszont egyelőre maradjon üresen.  Az a **definíció helye** kattintson a jobb oldalon a három pontra, válassza ki a [felügyeleti csoport](../management-groups/overview.md) vagy ahol a tervezet mentse, és kattintson a kívánt előfizetés **kiválasztása**.
 
 1. Ellenőrizze a helyes-e az adatokat (a **Tervrajznév** és **definíció helye** mezők később már nem módosítható), és kattintson a **tovább: Összetevők** a lap alján, vagy a **összetevők** fülre az oldal tetején.
 
@@ -154,7 +151,7 @@ A közzététellel a terv szabadon hozzárendelhető lesz az előfizetésekhez.
 
 ## <a name="assign-a-blueprint"></a>Terv hozzárendelése
 
-Miután közzétett egy tervet, az hozzárendelhető az előfizetésekhez. A létrehozott tervet a felügyeleti csoport hierarchiájában rendelheti hozzá az egyik előfizetéshez.
+Miután közzétett egy tervet, az hozzárendelhető az előfizetésekhez. A létrehozott tervet a felügyeleti csoport hierarchiájában rendelheti hozzá az egyik előfizetéshez. Ha egy előfizetést a tervezet menti, csak rendelhető előfizetéshez.
 
 1. A lap bal oldalán válassza a **Tervdefiníciók** lehetőséget.
 

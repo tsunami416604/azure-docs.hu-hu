@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 64aa936dc1dbb1d2a700a31253cf7a3caee6b66f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4fae4486e6cf47892ba2133885ec864969f66001
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436774"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663604"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hozzáadása, módosítása vagy törlése az Azure-beli hálózati adapter IP-címek
 
@@ -52,7 +52,7 @@ Hozzáadhat több [privát](#private) és [nyilvános](#public) [IPv4](#ipv4) sz
     |Beállítás|Kötelező?|Részletek|
     |---|---|---|
     |Name (Név)|Igen|A hálózati adapter egyedinek kell lennie|
-    |Típus|Igen|Mivel ha ad hozzá egy IP-konfigurációt egy meglévő hálózati adaptert, és mindegyik hálózati interfész rendelkeznie kell egy [elsődleges](#primary) IP-konfiguráció egyetlen lehetősége van **másodlagos**.|
+    |Typo|Igen|Mivel ha ad hozzá egy IP-konfigurációt egy meglévő hálózati adaptert, és mindegyik hálózati interfész rendelkeznie kell egy [elsődleges](#primary) IP-konfiguráció egyetlen lehetősége van **másodlagos**.|
     |Magánhálózati IP-cím-hozzárendelési módszer|Igen|[**A dinamikus**](#dynamic): Az Azure hozzárendeli az a hálózati adapter van üzembe helyezve az alhálózat címtartományának következő elérhető címe. [**Statikus**](#static): Hozzárendelhet egy nem használt cím az alhálózat címtartományának a hálózati adapter van üzembe helyezve.|
     |Nyilvános IP-cím|Nem|**Letiltva:** Nincs nyilvános IP-cím erőforrás nem jelenleg társított IP-konfigurációhoz. **Engedélyezve:** Válasszon ki egy meglévő nyilvános IPv4 IP-címet, vagy hozzon létre egy újat. Ismerje meg, hogyan hozhat létre egy nyilvános IP-címet, olvassa el a [nyilvános IP-címek](virtual-network-public-ip-address.md#create-a-public-ip-address) cikk.|
 6. Manuálisan adja hozzá másodlagos magánhálózati IP-címek a virtuális gép operációs rendszerének; Ehhez hajtsa végre a következő témakör utasításait a [több IP-cím hozzárendelése a virtuális gép operációs rendszerek](virtual-network-multiple-ip-addresses-portal.md#os-config) cikk. Lásd: [privát](#private) IP-címek előtt manuálisan ad hozzá egy virtuális gép operációs rendszerének IP-címek különleges szempontjait. Nem adható hozzá bármilyen nyilvános IP-címek a virtuális gép operációs rendszerének.
@@ -61,7 +61,7 @@ Hozzáadhat több [privát](#private) és [nyilvános](#public) [IPv4](#ipv4) sz
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic ip-config create](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create)|
+|parancssori felület|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>IP-cím beállításainak módosítása
@@ -82,7 +82,7 @@ Előfordulhat, hogy kell az IPv4-cím, a hozzárendelési módszer módosítás�
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|parancssori felület|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Távolítsa el az IP-címek
@@ -98,7 +98,7 @@ Eltávolíthatja [privát](#private) és [nyilvános](#public) IP-címek a hál�
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic ip-config delete](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_delete)|
+|parancssori felület|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>IP-konfigurációk
@@ -144,7 +144,7 @@ Nincsenek olyan forgatókönyvekben, ahol azt a virtuális gép operációs rend
 4. Virtuális gép elindítása.
 5. [Manuálisan konfigurálnia a](virtual-network-multiple-ip-addresses-portal.md#os-config) a másodlagos IP-címeket az operációs rendszer (és belül is az elsődleges IP-cím Windows belül) egyeznie beállítása Azure-ban.
 
-Az előző lépések, Azure-ban, és a egy virtuális gép operációs rendszerében a hálózati adapterhez rendelt magánhálózati IP-cím szerint változatlan marad. Nyomon követéséhez az előfizetésben, amely a manuálisan beállított IP-címek egy operációs rendszerből a virtuális gépek, fontolja meg a Azure-beli hozzáadását [címke](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags) a virtuális gépekhez. Használhatja a "IP-cím hozzárendelése: Statikus", például. Így megtalálhatja a virtuális gépek az előfizetésben, amely a manuálisan beállított IP-címét az operációs rendszeren belül.
+Az előző lépések, Azure-ban, és a egy virtuális gép operációs rendszerében a hálózati adapterhez rendelt magánhálózati IP-cím szerint változatlan marad. Nyomon követéséhez az előfizetésben, amely a manuálisan beállított IP-címek egy operációs rendszerből a virtuális gépek, fontolja meg a Azure-beli hozzáadását [címke](../azure-resource-manager/resource-group-using-tags.md) a virtuális gépekhez. Használhatja a "IP-cím hozzárendelése: Statikus", például. Így megtalálhatja a virtuális gépek az előfizetésben, amely a manuálisan beállított IP-címét az operációs rendszeren belül.
 
 Az azonos vagy csatlakoztatott virtuális hálózatokon belül más erőforrásokkal kommunikálni a virtuális gép egyrészt magánhálózati IP-cím is lehetővé teszi, hogy egy virtuális gép kimenő kommunikációját az internethez az. Kimenő kapcsolatok a forrás hálózati cím Azure fordíthatók le az előre nem látható nyilvános IP-címekhez. Az Azure kimenő internetkapcsolattal kapcsolatos további információkért olvassa el a [az Azure kimenő internetkapcsolattal](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) cikk. Nem lehet kommunikálni a bejövő, a virtuális gép magánhálózati IP-címet az internetről. Ha a kimenő kapcsolatokat igényelnek kiszámítható nyilvános IP-címet, társítson egy nyilvános IP-cím erőforrás egy hálózati adapterhez.
 

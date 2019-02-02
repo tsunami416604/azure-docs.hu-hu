@@ -4,17 +4,17 @@ description: Ismerje meg a életciklussal, amely végighalad a tervezet és az e
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309806"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563711"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Egy Azure tervezet életciklusának ismertetése
 
@@ -33,8 +33,7 @@ Teljes mértékben megérteni a tervezet és a szakaszok, egy szokásos életcik
 
 ## <a name="creating-and-editing-a-blueprint"></a>Létrehozása és tervrajz szerkesztése
 
-Tervrajz létrehozásakor adjon hozzá összetevőket, a felügyeleti csoport mentse, és a megadott egyedi nevét és a egy egyedi verziót. A tervezet már az egy **Draft** mód és még nem lehet hozzárendelni.
-A során a **Draft** módot, az továbbra is frissíthető és módosítható.
+Amikor hozzáadja a tervrajz létrehozása összetevők, a felügyeleti csoportba vagy előfizetésbe mentse, és egyedi nevét és a egy egyedi verziót a megadott. A tervezet már az egy **Draft** mód és még nem lehet hozzárendelni. A során a **Draft** módot, az továbbra is frissíthető és módosítható.
 
 A soha nem közzétett a tervezet **Draft** mód a különböző ikont jelenít meg a **Tervezetdefiníciók** lap, amelyet voltak, mint **közzétett**. A **legújabb verzió** így is megjelenítve **Draft** a ezek soha nem közzétett tervrajzokat.
 

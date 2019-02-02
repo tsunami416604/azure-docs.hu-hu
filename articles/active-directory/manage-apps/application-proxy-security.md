@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 0937ad12ad74209e84ee1316a090af8a6469a044
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f74dc441016a0064aca388ce4881eeae9e7bc6d0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151617"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657858"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Távolról az Azure AD-alkalmazásproxy-alkalmazások eléréséhez szükséges biztonsági szempontok
 
@@ -48,7 +48,7 @@ A hálózati kapcsolatot létesít alkalmaznia gazdagabb szabályzati vezérlők
 
 A [feltételes hozzáférési](../conditional-access/overview.md), korlátozásokat definiálhat a forgalmat a háttér-alkalmazások hozzáférhetnek. Amelyek korlátozzák a bejelentkezések hely, a hitelesítés és felhasználói kockázatú profil erőssége alapján szabályzatokat hozhat létre.
 
-Feltételes hozzáférés használatával újabb biztonsági réteget ad hozzá a felhasználói hitelesítések multi-factor Authentication hitelesítési házirendek konfigurálása. Ezenkívül az alkalmazások is továbbíthatók a Microsoft Cloud App Security keresztül az Azure AD feltételes hozzáférés használatával valós idejű figyelés és a vezérlők keresztül [hozzáférés](https://docs.microsoft.com/en-us/cloud-app-security/access-policy-aad) és [munkamenet](https://docs.microsoft.com/en-us/cloud-app-security/session-policy-aad) házirendek
+Feltételes hozzáférés használatával újabb biztonsági réteget ad hozzá a felhasználói hitelesítések multi-factor Authentication hitelesítési házirendek konfigurálása. Ezenkívül az alkalmazások is továbbíthatók a Microsoft Cloud App Security keresztül az Azure AD feltételes hozzáférés használatával valós idejű figyelés és a vezérlők keresztül [hozzáférés](https://docs.microsoft.com/cloud-app-security/access-policy-aad) és [munkamenet](https://docs.microsoft.com/cloud-app-security/session-policy-aad) házirendek
 
 ### <a name="traffic-termination"></a>Forgalom megszüntetése
 

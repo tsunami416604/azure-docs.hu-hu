@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 42fd1c19a9cda0aa3d5d62bd265467327250a784
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: af0e642a1f8ec34e654295ae7dcf2960c8664d91
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606027"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565564"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>A Wingtip Tickets használatának általános útmutatást minta SaaS-alkalmazások
 
@@ -33,7 +33,7 @@ Végrehajtható tartalom (szkriptek, DLL-ek) Windows előfordulhat, hogy blokkol
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. Kattintson a **Klónozás vagy letöltés**.
 3. Kattintson a **zip letöltése** és mentse a fájlt.
-4. Kattintson a jobb gombbal a zip-fájlt, és válassza ki **tulajdonságok**. A zip-fájl neve a tárház nevének felel meg. (például. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
+4. Kattintson a jobb gombbal a zip-fájlt, és válassza ki **tulajdonságok**. A zip-fájl neve a tárház nevének felel meg. (ex. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. Az a **általános** lapon jelölje be **feloldása**.
 6. Kattintson az **OK** gombra.
 7. Bontsa ki a fájlokat.
@@ -87,7 +87,7 @@ Ahhoz, hogy egy sikeres bemutató kapcsolat, minden kiszolgáló rendelkezik egy
 
 
 1. Nyissa meg *SSMS* és a bérlők kapcsolódni. A kiszolgáló nevét a database bérlős minta (lásd lent bírálattal) kiválasztott függ:
-    - **Önálló alkalmazás:** kiszolgálók (például az egyes bérlők *contosoconcerthall -&lt;felhasználói&gt;. database.windows.net*) 
+    - **Önálló alkalmazás:** kiszolgálók (például az egyes bérlők *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
     - **Bérlőnkénti adatbázis:** *tenants1-dpt -&lt;felhasználói&gt;. database.windows.net*
     - **Több-bérlős adatbázis:** *tenants1-mt -&lt;felhasználói&gt;. database.windows.net* 
 2. Kattintson a **Kapcsolódás** > **Adatbázismotor...** :

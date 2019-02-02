@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: b99c1b99fe87c755d6092876ccd598d926289192
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 816c459ca6edd7204ccdcdf9d402f2d4499d9116
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077830"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662523"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Előzetes verzió: Az Azure AD jelszóvédelem a Windows Server Active Directory kényszerítése
 
@@ -29,7 +29,7 @@ Az Azure AD jelszóvédelem működteti az Azure Active Directory (Azure AD) has
 Nincsenek Azure AD jelszóvédelem alkotó három szoftverösszetevőket:
 
 * Az Azure AD jelszó védelme proxy szolgáltatás minden olyan tartományhoz csatlakoztatott gép az aktuális Active Directory-erdő futtat. Ez a továbbítja a kéréseket a tartományvezérlőktől az Azure ad-hez, és visszaküldi a választ az Azure ad-ből a tartományvezérlő.
-* Az Azure AD jelszó DC védelmi ügynök szolgáltatás jelszó érvényesítése kéréseket fogad a tartományvezérlő ügynök jelszó szűrő dll, helyileg elérhető jelszóházirend használatával dolgozza fel, és visszaadja az eredményt (pass\fail). Ez a szolgáltatás felelős az időnként (óránként egyszer) az Azure AD jelszó védelmi beolvasni a jelszóházirend új verzióinak proxy szolgáltatás hívása. Kommunikáció a hívásokat, és az Azure AD jelszó védelme proxy szolgáltatás a TCP-n keresztül (távoli eljáráshívási) RPC-n keresztül történik. Lekéréséhez, hogy új szabályzatok a sysvol mappa, ahol azok más tartományvezérlők replikálhatja vannak tárolva. A tartományvezérlő-ügynökszolgáltatás is figyeli a sysvol mappában a változásokat, abban az esetben, ha más tartományvezérlők írásos engedélye van az új jelszóházirendek, ha megfelelően legutóbbi házirend már elérhető a az Azure AD jelszó védelme proxy szolgáltatás-ellenőrzés kimarad.
+* Az Azure AD jelszó DC védelmi ügynök szolgáltatás jelszó érvényesítése kéréseket fogad a tartományvezérlő ügynök jelszó szűrő dll, helyileg elérhető jelszóházirend használatával dolgozza fel, és visszaadja az eredményt (pass\fail). Ez a szolgáltatás felelős az időnként (óránként egyszer) az Azure AD jelszó védelmi beolvasni a jelszóházirend új verzióinak proxy szolgáltatás hívása. Az Azure AD jelszó DC védelmi ügynök szolgáltatás és az Azure AD jelszó védelme proxy szolgáltatás közötti kommunikációhoz használ (távoli eljáráshívási) RPC TCP-n keresztül kezeli. Lekéréséhez, hogy új szabályzatok a sysvol mappa, ahol azok más tartományvezérlők replikálhatja vannak tárolva. A tartományvezérlő-ügynökszolgáltatás is figyeli a sysvol mappában a változásokat, abban az esetben, ha más tartományvezérlők új jelszóházirendek; írásos engedélye szükséges. Ha megfelelően legutóbbi házirend már rendelkezésre áll majd új szabályzat letöltési kérelmek kimarad.
 * A tartományvezérlő ügynök jelszó szűrő dll jelszó érvényesítése kéréseket fogad az operációs rendszer, majd továbbítja azokat az Azure AD jelszó DC védelmi ügynök szolgáltatás helyben fut a tartományvezérlő.
 
 ![Hogyan működnek együtt az Azure AD jelszó-védelem összetevői](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
@@ -57,7 +57,7 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
 * Esetében nem minimális Active Directory-tartomány vagy erdő működési szint (DFL\FFL) követelmény.
 * A szoftver hozzon létre vagy nem szükséges minden olyan fiókok, az általa védett munkaterhelésekkel Active Directory-tartománynak.
 * Növekményes üzembe helyezést támogatott azzal a kompromisszummal jár, hogy jelszót házirend csak van érvényben, a domain controller ügynök telepítve van.
-* Javasoljuk, hogy a tartományvezérlő ügynököt telepíteni az összes tartományvezérlőből jelszó kényszerítése-védelem biztosítása érdekében. 
+* Javasoljuk, hogy a tartományvezérlő ügynököt telepíteni az összes tartományvezérlőből jelszó kényszerítése-védelem biztosítása érdekében.
 * Az Azure AD jelszóvédelem nem egy valós idejű alkalmazás házirendmotor. A szabályzat konfigurációs jelszómódosítás és az idő eléri a, és a rendszer kényszeríti az összes tartományvezérlő közötti idő késés lehet.
 
 ## <a name="next-steps"></a>További lépések

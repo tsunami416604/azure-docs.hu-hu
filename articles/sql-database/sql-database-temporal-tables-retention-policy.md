@@ -11,15 +11,16 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: a6fc5f353eceab5ac02895e110aec6e11ddc5d0c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.date: 09/25/2018
+ms.openlocfilehash: 62e88d912c55015f87cc00f21527010ad01ee00c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101901"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560855"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>A régebbi adatok az időbeli Verziózású táblák adatmegőrzési házirend kezelése
+
 Historikus táblák növelheti több adatbázis mérete, mint normál táblákat, különösen akkor, ha a korábbi adatok alapján egy hosszabb ideig megőrzi. Ezért a előzményadatok adatmegőrzési fontos szempont a megtervezéséhez és kezeléséhez minden historikus tábla életciklusának. Az Azure SQL Database időbeli verziózású táblák könnyen használható megőrzési mechanizmus, amely segít a feladatok kapható.
 
 Historikus megőrzési lehet egyes táblákat szintjén állítható be, amely lehetővé teszi a felhasználóknak rugalmas elévülési szabályzatok. Egyszerű historikus megőrzési alkalmazása: be kell állítania tábla létrehozása vagy a séma módosítása csak az egyik paraméter szükséges.
@@ -32,7 +33,8 @@ ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 
 Az előző példában azt feltételezi, hogy **ValidTo** SYSTEM_TIME időszak végének oszlop felel meg.
 
-## <a name="how-to-configure-retention-policy"></a>Hogyan konfigurálható adatmegőrzési házirend?
+## <a name="how-to-configure-retention-policy"></a>Adatmegőrzési házirend konfigurálása
+
 Mielőtt egy historikus tábla adatmegőrzési állít be, először ellenőrizze engedélyezve van-e korábbi historikus megőrzési *az adatbázis szintjén*.
 
 ```
@@ -42,19 +44,17 @@ FROM sys.databases
 
 Adatbázis-jelző **is_temporal_history_retention_enabled** alapértelmezés szerint be van állítva, de a felhasználók módosíthatják az ALTER DATABASE utasítással. Azt is automatikusan beállítása után OFF [időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md) műveletet. Ahhoz, hogy az adatbázis historikus megőrzési tisztítását, hajtsa végre a következő utasítást:
 
-```
+```sql
 ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
 ```
 
 > [!IMPORTANT]
 > Konfigurálhatja az időbeli verziózású táblák még akkor is, ha a megőrzési **is_temporal_history_retention_enabled** ki van KAPCSOLVA, de az automatikus tisztítás elavult sorok nem aktiválódik, ebben az esetben.
-> 
-> 
 
 A infinite paraméter megadásával tábla létrehozása során van konfigurálva adatmegőrzési:
 
-```
+```sql
 CREATE TABLE dbo.WebsiteUserInfo
 (  
     [UserID] int NOT NULL PRIMARY KEY CLUSTERED
@@ -78,19 +78,17 @@ Az Azure SQL Database lehetővé teszi különböző mértékegységét használ
 
 Bizonyos esetekben érdemes lehet megőrzés konfigurálása után a tábla létrehozásához, vagy módosíthatja a korábban beállított értékét. Ebben az esetben használja az ALTER TABLE utasítást:
 
-```
+```sql
 ALTER TABLE dbo.WebsiteUserInfo
 SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ```
 
 > [!IMPORTANT]
 > A system_versioning OFF *nem őrzi meg a* megőrzési időszak értéke. A system_versioning ON értékre állítása nélkül infinite megadott explicit módon eredményez a végtelen adatmegőrzési idővel.
-> 
-> 
 
 Tekintse át a megtartási házirend aktuális állapotát, használja a következő lekérdezést, amely csatlakoztatja az adatbázis szintjén az egyes táblák adatmegőrzési időtartamairól historikus megőrzési engedélyezésre jelző:
 
-```
+```sql
 SELECT DB.is_temporal_history_retention_enabled,
 SCHEMA_NAME(T1.schema_id) AS TemporalTableSchema,
 T1.name as TemporalTableName,  SCHEMA_NAME(T2.schema_id) AS HistoryTableSchema,
@@ -104,7 +102,8 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 ```
 
 
-## <a name="how-sql-database-deletes-aged-rows"></a>Hogyan SQL-adatbázis törli az elavult sorok?
+## <a name="how-sql-database-deletes-aged-rows"></a>Hogyan SQL Database elavult sorok törlése
+
 A karbantartási művelet függ a előzménytábla index elrendezését. Fontos, hogy figyelje meg, hogy *csak egy fürtözött index, (B-fára vagy oszlopcentrikus) előzmények táblák konfigurált véges megőrzési házirend*. A véges megőrzési időszak összes historikus tábla telepítésével kapcsolatos elavult adatokat fölösleges háttérfeladat kell létrehozni.
 Karbantartása logikai sortárindex (B-fa) fürtözött index számára törli az elavult sor kisebb adattömbökben (legfeljebb 10 ezer) minimálisra csökkentik az adatbázis naplója és i/o-alrendszer nyomás. Bár a tisztítás logika szükséges B-fa indexet, a régebbi, mint a megőrzési időtartam nem garantálható nyitóbeszélgetést sorok törlések sorrendje használja. Ezért *nem lépnek minden olyan függőséget az alkalmazások karbantartása ahhoz a*.
 
@@ -115,6 +114,7 @@ A karbantartási feladat számára a fürtözött oszlopcentrikus eltávolítja 
 Kiváló az adattömörítés és a hatékony megőrzési karbantartása teszi fürtözött oszlopcentrikus index forgatókönyvekhez tökéletes választás, ha a gyors munkaterhelése nagy mennyiségű korábbi adatok alapján. A minta akkor jellemző, nagy igényű [tranzakciós feldolgozást számítási feladatokat, amelyek használják az időbeli verziózású táblák](https://msdn.microsoft.com/library/mt631669.aspx) a change tracking és naplózás, trendelemzés vagy IoT-adatok betöltése céljából.
 
 ## <a name="index-considerations"></a>Index kapcsolatos szempontok
+
 A karbantartási feladat sortárindex fürtözött indexszel rendelkező táblák többmezős indexelésre van szükség a kezdéshez a SYSTEM_TIME időszak végének megfelelő oszlopban. Ha ilyen index nem létezik, nem konfigurálhatja a véges megőrzési időszak:
 
 *Msg 13765, szint 16, az állapot 1 <br> </br> véges megőrzési időszak beállítása sikertelen a rendszerverzióval ellátott historikus táblán "temporalstagetestdb.dbo.WebsiteUserInfo", mert a előzménytábla " temporalstagetestdb.dbo.WebsiteUserInfoHistory "nem tartalmazza a szükséges fürtözött indexet. Érdemes lehet létrehozni a fürtözött oszlopcentrikus vagy B-fa indexet kezdve az oszlopot, amely végének megfelelő SYSTEM_TIME időszak, az előzménytáblán.*
@@ -127,7 +127,7 @@ A karbantartást a fürtözött oszlopcentrikus indexet az optimális működik,
 
 Kerülje a az előzménytáblában a véges megőrzési időszak a fürtözött oszloptárindex újraépítését, mivel előfordulhat, hogy módosítani, a sorcsoportok természetesen a rendszerverzió művelet okozta a rendezése. Építse újra az előzménytábla fürtözött oszlopcentrikus indexe van szüksége, ha ehhez hozza létre újra megfelelő B-fa indexet, megőrzi az adatok rendszeres karbantartása szükséges naplóbájtot rendezése felett. Ugyanezzel a módszerrel kell tenni, ha meglévő előzménytábla fürtözött oszlopindex garantált rendelés nélkül hoz létre historikus tábla:
 
-```
+```sql
 /*Create B-tree ordered by the end of period column*/
 CREATE CLUSTERED INDEX IX_WebsiteUserInfoHistory ON WebsiteUserInfoHistory (ValidTo)
 WITH (DROP_EXISTING = ON);
@@ -139,7 +139,7 @@ WITH (DROP_EXISTING = ON);
 
 Az előzménytábla a fürtözött oszlopcentrikus indexszel rendelkező véges megőrzési időszak van konfigurálva, amikor az adott táblához nem hozható létre a további nem fürtözött B-fa indexek:
 
-```
+```sql
 CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 ```
 
@@ -148,11 +148,12 @@ A fenti utasítás végrehajtása sikertelen a következő hibával:
 *Msg 13772, szint 16, az állapot 1 <br> </br> nem hozható létre nem fürtözött index historikus előzménytábla "WebsiteUserInfoHistory" mivel a véges megőrzési időszak és a fürtözött oszlopcentrikus indexszel rendelkezik.*
 
 ## <a name="querying-tables-with-retention-policy"></a>Adatmegőrzési házirend rendelkező táblák lekérdezése
+
 A historikus tábla összes lekérdezés automatikusan szűrje ki a megfelelő elkerülése érdekében előre nem látható, az inkonzisztens eredmény elavult sorok törölhető a karbantartási feladat, mivel a véges megőrzési házirend korábbi sorok *időben és a tetszőleges bármikor rendelés*.
 
 Az alábbi képen látható a lekérdezésterv egy egyszerű lekérdezés:
 
-```
+```sql
 SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 ```
 
@@ -167,21 +168,22 @@ Ha előzménytábla közvetlenül lekérdezni, láthatja, amelyen régebbi, mint
 Ne támaszkodjon kizárólag az üzleti logikára olvasása előzménytábla megőrzési időtartamon túl, inkonzisztens vagy váratlan eredményeket kaphat. Azt javasoljuk, hogy használhatja historikus lekérdezések FOR SYSTEM_TIME záradék historikus táblák az adatelemzés számára.
 
 ## <a name="point-in-time-restore-considerations"></a>Időponthoz idő visszaállítási kapcsolatos szempontok
+
 Amikor szerint új adatbázist hoz létre [meglévő adatbázis visszaállítása adott időpontra való időben](sql-database-recovery-using-backups.md), historikus megőrzési le van tiltva, az adatbázis szintjén van. (**is_temporal_history_retention_enabled** jelző OFF értékre állítva). Ez a funkció lehetővé teszi vizsgálja meg az összes korábbi sor változónevét, nem kell, hogy a rendszer eltávolítja az elavult sort a lekérdezhetők megismerése előtt. Használhatja azt, hogy *vizsgálja meg a konfigurált megőrzési időszakot meghaladóan előzményadatok*.
 
 Tegyük fel, hogy egy historikus tábla rendelkezik-e a megadott időszak egy hónapban megőrzési. Ha az adatbázis készült prémium szintű szolgáltatási rétegben, lenne az adatbázis állapotát az adatbázis-másolat létrehozása másolatot vissza az elmúlt 35 napon belül. Amely hatékonyan lehetővé teszi korábbi sorokat, amelyek akár 65 napnál régebbi a előzménytábla közvetlen lekérdezésével elemzése.
 
 Ha szeretné aktiválni a historikus megőrzési tisztítását, futtassa a pont után a következő Transact-SQL utasítást időponthoz kötött visszaállítás:
 
-```
+```sql
 ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 Historikus táblák használata az alkalmazások a tudnivalókért tekintse meg [első lépései az Azure SQL Database időbeli Verziózású táblák](sql-database-temporal-tables.md).
 
 Látogasson el a Channel 9 felvesszük Önnel egy [valódi ügyfelek historikus megvalósítási sikertörténete](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) , és tekintse meg a [historikus bemutató élő](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
 
 Historikus táblák kapcsolatos részletes információkért tekintse át a [MSDN-dokumentáció](https://msdn.microsoft.com/library/dn935015.aspx).
-

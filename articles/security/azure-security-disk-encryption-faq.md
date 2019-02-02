@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80510b4f3f07b96b9084108fcb89c75e108cbc65
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: fda7d6d3fddf2f4529a983ce2d4991797a5c8448
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096844"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661836"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -59,11 +59,9 @@ Az Azure Disk Encryption támogatott a következő kiszolgáló Linux-disztribú
 | CentOS | 6.7 | Adatlemez |
 | CentOS | 6.6 | Adatlemez |
 | CentOS | 6.5 | Adatlemez |
-| openSUSE | SUSE:openSUSE-Leap:42.3:latest | Adatlemez |
-| SLES | SUSE:SLES-Priority:12-SP4:latest | Adatlemez |
-| SLES | SUSE:SLES-HPC:12-SP3:latest | Adatlemez |
-| SLES | SUSE:SLES-Priority:12-SP3:latest | Adatlemez |
-
+| openSUSE | 42.3 | Adatlemez |
+| SLES | 12-SP4 | Adatlemez |
+| SLES | 12-SP3 | Adatlemez |
 
 *__Új ADE végrehajtása RHEL-OS és adatlemez RHEL7 használatalapú lemezképekhez támogatott. ADE a RHEL Bring-Your-saját-előfizetés (saját) lemezképek jelenleg nem támogatott. Emellett tekintse meg a [Linuxhoz készült Azure Disk Encryption](azure-security-disk-encryption-linux.md) cikkben további információt.__
 

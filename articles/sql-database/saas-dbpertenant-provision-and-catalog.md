@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 1f2539ed7ea407e2a1931ab2eb5951e61e4c7b03
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 09/24/2018
+ms.openlocfilehash: aa884f2df76c20d3119022069179b08ba2f2a6b7
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056267"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565213"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Ismerje meg, hogyan új bérlők kiépítése és regisztrálása a katalógusban
 
@@ -34,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
 * A Wingtip Tickets SaaS bérlőnkénti adatbázis alkalmazás telepítve van. Tekintse meg az üzembe helyezés kevesebb mint öt perc alatt [üzembe helyezés és Fedezze fel a Wingtip Tickets SaaS bérlőnkénti adatbázis alkalmazás](saas-dbpertenant-get-started-deploy.md).
-* Az Azure PowerShell telepítve van. További információkért lásd: [Azure PowerShell használatának első lépései](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Az Azure PowerShell telepítve van. További információért lásd [az Azure PowerShell használatának első lépéseit](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ## <a name="introduction-to-the-saas-catalog-pattern"></a>SaaS-katalógusmintában bemutatása
 
@@ -155,9 +155,9 @@ A szkript üzembe helyezi a további bérlők kötegét. Használja az [Azure Re
 
 Ebben az oktatóanyagban nem szereplő egyéb kiépítési minták:
 
-**Az adatbázisokat előzetesen kiépíti**: az előzetesen kiépített mintája kihasználja a tény, hogy a rugalmas készletben található adatbázisok hozzáadása nem kapcsolódik további költség. A számlázás a rugalmas készlet, nem az adatbázisokra van. A tétlen adatbázisoknak nincs erőforrás. Előzetesen kiépített adatbázisokat a készlet és lefoglalása őket, amikor szükséges csökkentheti az időt adja hozzá a bérlők számára. Tartsa a várható kiépítési aránynak megfelelő puffer igény szerint módosítani lehet az előzetesen kiépített adatbázisok száma.
+**Az adatbázisokat előzetesen kiépíti**: Az előzetesen kiépített mintája kihasználja a tény, hogy a rugalmas készletben található adatbázisok hozzáadása nem kapcsolódik további költség. A számlázás a rugalmas készlet, nem az adatbázisokra van. A tétlen adatbázisoknak nincs erőforrás. Előzetesen kiépített adatbázisokat a készlet és lefoglalása őket, amikor szükséges csökkentheti az időt adja hozzá a bérlők számára. Tartsa a várható kiépítési aránynak megfelelő puffer igény szerint módosítani lehet az előzetesen kiépített adatbázisok száma.
 
-**Automatikus kiépítés**: az automatikus kiépítési mintában az eszközkiépítési szolgáltatás kiosztja az kiszolgálók, készletek és adatbázisok automatikusan, szükség szerint. Ha azt szeretné, megadhatja a rugalmas készletekben található adatbázisok előzetes kiépítése. Adatbázisok szerelni és törlése, ha a rugalmas készletekben is ki kell tölteni a kiépítési szolgáltatás által. Ilyen szolgáltatás lehet egyszerű vagy összetett, például egyszerre több földrajzi és vész-helyreállítási georeplikáció beállításához. 
+**Automatikus kiépítés**: Az automatikus kiépítési mintában az eszközkiépítési szolgáltatás kiosztja az kiszolgálók, készletek és adatbázisok automatikusan, szükség szerint. Ha azt szeretné, megadhatja a rugalmas készletekben található adatbázisok előzetes kiépítése. Adatbázisok szerelni és törlése, ha a rugalmas készletekben is ki kell tölteni a kiépítési szolgáltatás által. Ilyen szolgáltatás lehet egyszerű vagy összetett, például egyszerre több földrajzi és vész-helyreállítási georeplikáció beállításához. 
 
 Az automatikus kiépítési mintában egy ügyfélalkalmazás vagy szkript elküld egy kiépítési kérést egy üzenetsorba a kiépítési szolgáltatás általi feldolgozásának. Ezután a szolgáltatás elvégzésével kérdezi le. Előzetes kiépítését használata esetén kéréseket gyorsan kezeli. A szolgáltatás látja el a háttérben egy helyettesítő adatbázist.
 

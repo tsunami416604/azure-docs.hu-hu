@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dc241612149de5c4ea5c1d2e698741e77d429fc7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b882c31f40f177b81fc84eb7071f396bddeaa0dd
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004883"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658114"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Eszközök kezelése az Azure IoT Central alkalmazáshoz a
 
@@ -23,6 +23,8 @@ Ez a cikk azt ismerteti, hogyan kezelőként Eszközkezelés az Azure IoT Centra
 - Az eszköz naprakész készletnyilvántartás.
 - Az eszköz metaadatait az eszköztulajdonságok tárolt értékek módosításával tartsa naprakészen a.
 - Az eszközök viselkedését vezérlő egy beállítást egy adott eszköz frissítésével a **beállítások** lapot.
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="view-your-devices"></a>Eszközök megtekintése
 
@@ -116,7 +118,7 @@ Tömeges exportálása eszközök az alkalmazásból:
 
     [![Sikeres exportálása](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 
-1. Az exportált CSV-fájlt a következő oszlopok adatokat fog rendelkezni: **eszköz azonosítója, eszköz, eszköz Priamry és másodlagos kulcsok és az elsődleges és másodlagos tanúsítvány thumbrpints**
+1. Az exportált CSV-fájlt a következő oszlopok adatokat fog rendelkezni: **Eszköz azonosítója, eszköz, eszköz Priamry és másodlagos kulcsok és az elsődleges és másodlagos tanúsítvány thumbrpints**
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY

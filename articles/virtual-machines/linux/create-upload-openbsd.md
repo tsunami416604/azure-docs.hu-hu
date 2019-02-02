@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: de5d3fcd7eff0042e912e164050f917a0070b2c3
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b31425849eacc0b1f88e8dbd623804cefff9112f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164665"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662754"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Hozzon létre és OpenBSD lemez Rendszerkép feltöltése az Azure-bA
 Ez a cikk bemutatja, hogyan hozhat létre és töltse fel a virtuális merevlemez (VHD), amely tartalmazza az OpenBSD operációs rendszert. Miután feltölti azt, segítségével azt a saját rendszerkép hozzon létre egy virtuális gépet (VM) az Azure-ban az Azure CLI-n keresztül.
@@ -127,7 +127,7 @@ STORAGE_KEY=$(az storage account keys list \
     --query "[?keyName=='key1']  | [0].value" -o tsv)
 ```
 
-Logikai szétválasztására a feltöltött virtuális merevlemezeket, hozzon létre egy tárolót, a tárfiókban található [az a tároló létrehozása](/cli/azure/storage/container#az_storage_container_create):
+Logikai szétválasztására a feltöltött virtuális merevlemezeket, hozzon létre egy tárolót, a tárfiókban található [az a tároló létrehozása](/cli/azure/storage/container):
 
 ```azurecli
 az storage container create \

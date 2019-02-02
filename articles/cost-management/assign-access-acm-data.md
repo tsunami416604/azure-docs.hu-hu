@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 50f048dc36b0248cdbbd85d91c00b7947f9ddc1f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: a64a1e35811b8bcdf721425580fe66641cb8ebe2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052138"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661003"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management adataihoz való hozzáférés hozzárendelése
 
@@ -43,6 +43,10 @@ Költségadatok megtekintése, a felhasználó kell rendelkeznie legalább olvas
 A következő ábra szemlélteti a Cost Management hatókörök szerepkörökkel és a nagyvállalati szerződéssel rendelkező portálbeállítások közötti kapcsolat.
 
 ![Cost Management hatókörök szerepkörökkel és a Nagyvállalati portál beállításai között bemutató diagram](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
+
+Amikor **DA költségek megtekintése** le vannak tiltva az EA-portálon megjelenik egy üzenet, amelyen *költségek le van tiltva, a szervezet* amikor próbálja költségek szervezeti egységek és a fiókok megtekintéséhez.
+
+Hasonlóképpen, ha **AO költségek megtekintése** le vannak tiltva az EA-portálon megjelenik egy üzenet, amelyen *költségek le van tiltva, a szervezet* regisztrációs fiókok, a felügyeleti csoportok, a költségek megtekintése közben Előfizetések és erőforráscsoportok.
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>A nagyvállalati szerződések portáljának költségek hozzáférésének engedélyezése
 

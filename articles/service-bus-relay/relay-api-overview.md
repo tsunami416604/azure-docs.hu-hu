@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: spelluru
-ms.openlocfilehash: 2c7aec700a1077bc1a1b56afb5d8d07f47f4c6e8
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700372"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663094"
 ---
 # <a name="available-relay-apis"></a>Rendelkezésre álló Relay API-k
 
@@ -29,7 +29,7 @@ Az alábbi táblázat a jelenleg elérhető Relay futásidejű ügyfelek.
 
 A [további információkat](#additional-information) szakasz egyes futtatókörnyezeti kódtárának állapotával kapcsolatos további információkat tartalmaz.
 
-| Nyelv és Platform | Elérhető a szolgáltatásban | Ügyfélcsomag | Tárház |
+| Nyelv és Platform | Elérhető a szolgáltatásban | Ügyfélcsomag | Adattár |
 | --- | --- | --- | --- |
 | .NET Standard | Hibrid kapcsolatok | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHubon](https://github.com/azure/azure-relay-dotnet) |
 | .NET-keretrendszer | WCF-továbbító | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | – |
@@ -39,7 +39,7 @@ A [további információkat](#additional-information) szakasz egyes futtatókör
 
 #### <a name="net"></a>.NET
 
-A .NET-ökoszisztéma több modulok rendelkezik, így nincsenek a Relay több .NET-kódtárakra. A .NET Standard kódtár is futtatható a .NET Core vagy a .NET-keretrendszer használatával, míg a .NET-keretrendszer könyvtár csak a .NET-keretrendszer környezetben futtatható. További információ a .NET-keretrendszert: [keretrendszer-verziókat](/dotnet/articles/standard/frameworks#framework-versions).
+A .NET-ökoszisztéma több modulok rendelkezik, így nincsenek a Relay több .NET-kódtárakra. A .NET Standard kódtár is futtatható a .NET Core vagy a .NET-keretrendszer használatával, míg a .NET-keretrendszer könyvtár csak a .NET-keretrendszer környezetben futtatható. További információ a .NET-keretrendszert: [keretrendszer-verziókat](/dotnet/articles/standard/frameworks).
 
 A .NET-keretrendszer könyvtár csak a WCF programozási modellt támogatja, és a szellemi tulajdont képező bináris protokoll alapján a WCF támaszkodik `net.tcp` átviteli. A protokoll és a könyvtár változatlan marad visszamenőleges kompatibilitási együtt a meglévő alkalmazásokkal.
 

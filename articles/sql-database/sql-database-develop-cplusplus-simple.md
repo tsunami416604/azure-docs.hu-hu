@@ -11,18 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: f1aa037afd0fa1cbe37add24a354e4dc62c13b9a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.date: 12/12/2018
+ms.openlocfilehash: 6ebef74cee6f919fe6b8cf666db06e0ab22cec73
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310130"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566924"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Csatlakozás SQL Database adatbázishoz C és C++ használatával
+
 Ebben a bejegyzésben szeretne csatlakozni az Azure SQL DB C és C++ fejlesztői célozza meg. Azt az szakaszból így leginkább az érdeklődését rögzíti szakasz is ugorhat.
 
 ## <a name="prerequisites-for-the-cc-tutorial"></a>A C/C++ oktatóanyag előfeltételei
+
 Győződjön meg róla, hogy rendelkezik az alábbi elemekkel:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, regisztrálhat az [Azure ingyenes próbaverziójára](https://azure.microsoft.com/pricing/free-trial/).
@@ -71,7 +73,7 @@ Indítsa el a építheti fel az alkalmazást. A sikeres kapcsolat ellenőrzése 
 
 Azt is megteheti sikerült létrehozni a varázslóval elindul, amikor nincs parancs argumentumait DSN fájlba. Azt javasoljuk, hogy megpróbálja ezt a beállítást. Automation és a hitelesítési beállítások védelme a DSN-fájlt is használhat:
 
-![DSN-fájl létrehozása](./media/sql-database-develop-cplusplus-simple/datasource.png)
+![Create DSN File](./media/sql-database-develop-cplusplus-simple/datasource.png)
 
 Gratulálunk! Most már sikeresen csatlakoztatta az Azure SQL, C++ és az ODBC segítségével a Windows. Az előbbiek Linux rendszeren, valamint az olvasási továbbra is.
 

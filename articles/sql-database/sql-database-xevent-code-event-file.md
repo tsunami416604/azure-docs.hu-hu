@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: fdf426d9f4c8744570d0b9c6cc30bea63b06dd6c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/19/2018
+ms.openlocfilehash: 035d2731a78ad6216f56255fb87e32444366ea97
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600683"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563491"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Eseményfájl célkódja az SQL Database bővített események
 
@@ -239,7 +239,7 @@ A szkript után, egy korábbi lehet futtatni, rerunnable karbantartása parancso
 
 A PowerShell-szkript néhány névvel ellátott értékek nyomtatva, véget ért. Szerkesztenie kell a Transact-SQL parancsfájlt használja ezeket az értékeket. Keresés **TODO** keresse meg a csomópontok szerkesztése a Transact-SQL parancsfájl.
 
-1. Nyissa meg az SQL Server Management Studio (ssms.exe).
+1. Open SQL Server Management Studio (ssms.exe).
 2. Az Azure SQL Database-adatbázishoz csatlakozhat.
 3. Kattintson ide egy új lekérdezési ablak megnyitásához.
 4. Illessze be a következő Transact-SQL parancsfájl a lekérdezési ablaktáblába.
@@ -251,7 +251,7 @@ A PowerShell-szkript néhány névvel ellátott értékek nyomtatva, véget ért
 > A SAS-kulcs értéke az előző PowerShell-parancsfájl által előállított kezdődhet a "?" (kérdőjel). Ha a következő T-SQL parancsfájl az SAS-kulcsot használ, akkor meg kell *távolítsa el a vezető "?"* . Ellenkező esetben a munkája alapján a security érdemes lehet blokkolni.
 
 
-### <a name="transact-sql-code"></a>A Transact-SQL-kódot
+### <a name="transact-sql-code"></a>Transact-SQL code
 
 ```sql
 ---- TODO: First, run the earlier PowerShell portion of this two-part code sample.

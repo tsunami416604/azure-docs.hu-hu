@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: cdda4b0951edd0d1471113c48a4082dfa7407211
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f2fe9efd7d75c95d6cd13cb65e196723c9953716
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719082"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658827"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
 
@@ -77,7 +77,7 @@ Ha a Linux-webalkalmazás Git-telepítés nem sikerül, válassza ki az alkalmaz
 
 - A folyamatos Készregyártás (előzetes verzió) szolgáltatással: Az alkalmazás forráskódjának tárolhatja az Azure DevOps Git-tárház vagy az Azure folyamatos készregyártással GitHub-adattárat. További információkért lásd: [a folyamatos teljesítés konfigurálása Linux-webalkalmazás](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
-- Használja a [ZIP API üzembe helyezése](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Ez az API használatára [SSH-t a webalkalmazás](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) , és keresse meg a mappát, ahol szeretné telepíteni a kódot. Futtassa a következő kódot:
+- Használja a [ZIP API üzembe helyezése](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Ez az API használatára [SSH-t a webalkalmazás](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) , és keresse meg a mappát, ahol szeretné telepíteni a kódot. Futtassa a következő kódot:
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy

@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/04/2018
-ms.openlocfilehash: 1464b2685e0ae084de3679e8a8fea36a3cf19c4b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/19/2018
+ms.openlocfilehash: a2b4f85ac9c62c93e06f73090b6b144ff79319d1
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599144"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561875"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Az Intelligent Insights az Azure SQL Database teljesítményét diagnosztikai napló használata
 
@@ -82,12 +82,12 @@ Attól függően, a teljesítménybeli problémát észlel, a részletek a diagn
 | Számítási feladatok növekedése | <li>Amelyek végrehajtása nőtt-lekérdezések száma</li><li>Lekérdezés kivonatai a legnagyobb mértékben a számítási feladatok növekedése lekérdezéseket.</li> |
 | Rendelkezésre álló memória mennyisége | <li>Memóriakezelőt</li> |
 | Zárolás | <li>Érintett lekérdezés kivonatok</li><li>Lekérdezés kivonatok blokkolása</li> |
-| Nagyobb MAXDOP | <li>Lekérdezés kivonatok</li><li>CXP várakozási időt</li><li>Várakozási idő</li> |
+| Increased MAXDOP | <li>Lekérdezés kivonatok</li><li>CXP várakozási időt</li><li>Várakozási idő</li> |
 | Pagelatch versengés | <li>A versengés okozó lekérdezések kivonatok lekérdezése</li> |
 | Hiányzó Index | <li>Lekérdezés kivonatok</li> |
 | Új lekérdezés | <li>Az új lekérdezések lekérdezés kivonata</li> |
 | Szokatlan várakozási statisztika | <li>Szokatlan várakozási típusok</li><li>Lekérdezés kivonatok</li><li>Lekérdezés várakozási időt</li> |
-| A TempDB versengés | <li>A versengés okozó lekérdezések kivonatok lekérdezése</li><li>Lekérdezés megnevezése, az általános adatbázis pagelatch versengés várakozási idő: [%]</li> |
+| TempDB Contention | <li>A versengés okozó lekérdezések kivonatok lekérdezése</li><li>Lekérdezés megnevezése, az általános adatbázis pagelatch versengés várakozási idő: [%]</li> |
 | Rugalmas készlet dtu-k hiánya | <li>Rugalmas készlet</li><li>Felső DTU-igényes adatbázis</li><li>A felső fogyasztók által használt DTU készlet százaléka</li> |
 | Regresszió megtervezése | <li>Lekérdezés kivonatok</li><li>Jó terv azonosítók</li><li>Hibás terv azonosítók</li> |
 | Adatbázis-specifikus konfigurációs érték módosítása | <li>Az alapértelmezett értékeket képest adatbázishoz kötődő konfigurációs módosítások</li> |

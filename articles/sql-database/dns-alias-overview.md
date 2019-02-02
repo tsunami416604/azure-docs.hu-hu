@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi,ayolubek, jrasnick
 manager: craigg
-ms.date: 02/05/2018
-ms.openlocfilehash: 96627d96acee76516c9dc3db1b58d6e4b7b6ff15
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/19/2018
+ms.openlocfilehash: 17bdd362a3dad4e10acc8ab16eee5b335593e311
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601039"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562861"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Az Azure SQL Database DNS-alias
 
@@ -95,10 +95,10 @@ Kódrészlet például a DNS-aliasok kezeléséhez használt PowerShell-parancsm
 
 A példakódban alkalmazott parancsmagok a következők:
 
-- [Új-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Létrehoz egy új DNS-alias az Azure SQL Database szolgáltatás rendszerben. Az alias az Azure SQL Database-kiszolgáló 1 hivatkozik.
-- [A GET-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): GET, és az SQL DB kiszolgáló 1 rendelt összes DNS-aliasokat listázása.
-- [A Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Módosítja a kiszolgáló nevét az alias konfigurált kiszolgálóról 1, 2. az SQL DB kiszolgáló hivatkoznak.
-- [A Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): SQL DB kiszolgáló 2, a DNS-alias eltávolítása az alias nevének megadásával.
+- [New-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Létrehoz egy új DNS-alias az Azure SQL Database szolgáltatás rendszerben. Az alias az Azure SQL Database-kiszolgáló 1 hivatkozik.
+- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): GET, és az SQL DB kiszolgáló 1 rendelt összes DNS-aliasokat listázása.
+- [Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Módosítja a kiszolgáló nevét az alias konfigurált kiszolgálóról 1, 2. az SQL DB kiszolgáló hivatkoznak.
+- [Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): SQL DB kiszolgáló 2, a DNS-alias eltávolítása az alias nevének megadásával.
 
 A fenti parancsmagok lettek hozzáadva a **azurerm.SQL-hez** modul 5.1.1-es modul verziótól kezdve.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 315a51f847920d4751d100f147bb5218676015c6
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c1ac1a0fccc2ac9a428a04a1b15030c489968a3f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495666"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563694"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -251,8 +251,8 @@ Ezek a hibák megtekintéséhez futtassa a **FileSyncErrorsReport.ps1** (az Azur
 | 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | A fájl vagy könyvtár neve érvénytelen. | Nevezze át a fájl vagy könyvtár az adott. Lásd: [kezelése nem támogatott karaktereket](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) további információt. |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. Az Azure File Sync naponta egyszer létrehoz egy ideiglenes VSS-pillanatkép megnyitott kezelőkkel rendelkező fájlok szinkronizálása a kiszolgálón. |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Egy fájl módosult, de a módosítás nem még észlelt szinkronizálás által. Szinkronizálás után ez a változás észlelésekor állítja helyre. | Nincs szükség felhasználói műveletre. |
-| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | A fájl nem szinkronizálható, mert az Azure-beli fájlmegosztás korlátot. | A probléma megoldásához tekintse meg [a megosztás Azure fájltárolási korlátot elérte](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) a hibaelhárítási útmutató szakaszát. |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | Ez a hiba akkor fordulhat elő, ha a fájl titkosítva van egy nem támogatott megoldás (például NTFS EFS) által, vagy a fájl rendelkezik törlési a függő állapotú. | A fájl titkosítva van egy nem támogatott megoldás, ha a fájl visszafejtése, és a támogatott titkosítási megoldással. Támogatási megoldások listáját lásd: [titkosítási megoldások](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#encryption-solutions) az útmutató a tervezési szakaszban. Ha a fájl a függő állapotú törlés, a fájl törlődik, az összes megnyitott fájlleírók bezárásakor. |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | A fájl nem szinkronizálható, mert az Azure-beli fájlmegosztás korlátot. | A probléma megoldásához tekintse meg [a megosztás Azure fájltárolási korlátot elérte](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) a hibaelhárítási útmutató szakaszát. |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | Ez a hiba akkor fordulhat elő, ha a fájl titkosítva van egy nem támogatott megoldás (például NTFS EFS) által, vagy a fájl rendelkezik törlési a függő állapotú. | A fájl titkosítva van egy nem támogatott megoldás, ha a fájl visszafejtése, és a támogatott titkosítási megoldással. Támogatási megoldások listáját lásd: [titkosítási megoldások](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) az útmutató a tervezési szakaszban. Ha a fájl a függő állapotú törlés, a fájl törlődik, az összes megnyitott fájlleírók bezárásakor. |
 | 0x20 | 32 | ÚJRA | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Egy fájl módosult a szinkronizálás közben, ezért a fájlt újra kell szinkronizálni. | Nincs szükség felhasználói műveletre. |
 

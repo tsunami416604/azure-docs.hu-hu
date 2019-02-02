@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: e6fb14fc901b5ae5ad11d94c1e71453c2852239c
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 93370b927f825752b8ce2b5e9d4ca94b3a4e0536
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306250"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664182"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-naplózás
 
@@ -194,7 +194,7 @@ A Storage Analytics naplók a következő típusú hitelesített és névtelen k
 
 A hálózati naplózás és figyelés az Azure-ban átfogó, és két tág kategóriába ismerteti:
 
-* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): Forgatókönyv-alapú hálózatfigyelési biztosítunk a Network Watcher funkciókat. A szolgáltatás része, csomagrögzítés, következő ugrási, IP-folyamat ellenőrzése, a biztonsági csoport nézet NSG-Folyamatnaplók. Forgatókönyv szintű monitorozása biztosítja a teljes körű képet szakembereket egyes hálózati erőforrások monitorozása a hálózati erőforrásokhoz.
+* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Forgatókönyv-alapú hálózatfigyelési biztosítunk a Network Watcher funkciókat. A szolgáltatás része, csomagrögzítés, következő ugrási, IP-folyamat ellenőrzése, a biztonsági csoport nézet NSG-Folyamatnaplók. Forgatókönyv szintű monitorozása biztosítja a teljes körű képet szakembereket egyes hálózati erőforrások monitorozása a hálózati erőforrásokhoz.
 
 * [Erőforrások monitorozása](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): Erőforrás-szolgáltatói figyelése magában foglalja a négy funkciók, diagnosztikai naplók, metrikák, hibaelhárítási és a resource health. Ezek a szolgáltatások beépített a hálózati erőforrás szintjén.
 
@@ -336,7 +336,7 @@ Többféleképpen négy [gyűjtése a naplók és mérőszámok az Azure-szolgá
 |Cognitive Services|    Microsoft.CognitiveServices/<br>fiókok|       Diagnosztika|||
 |Azure Data Lake Analytics| Microsoft.DataLakeAnalytics/<br>fiókok|   Diagnosztika|||
 |Azure Data Lake Store| Microsoft.DataLakeStore/<br>fiókok|   Diagnosztika|||
-|Azure Event Hub namespace| Microsoft.EventHub/<br>Névterek|  Diagnosztika|    Diagnosztika||
+|Azure Event Hub namespace| Microsoft.EventHub/<br>névterek|  Diagnosztika|    Diagnosztika||
 |Azure IoT Hub| Microsoft.Devices/<br>IotHubs||     Diagnosztika||
 |Azure Key Vault|   Microsoft.KeyVault/<br>tárolók|  Diagnosztika  || [Key Vault-elemzés](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
 |Azure Load Balancer|   Microsoft.Network/<br>loadBalancers|    Diagnosztika|||
@@ -345,7 +345,7 @@ Többféleképpen négy [gyűjtése a naplók és mérőszámok az Azure-szolgá
 |Network Security Groups (Hálózati biztonsági csoportok)|   Microsoft.Network/<br>networksecuritygroups|Diagnosztika||   [Azure-beli hálózati biztonsági csoport analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
 |Helyreállítási tárak|   Microsoft.RecoveryServices/<br>tárolók|||[Az Azure Recovery Services-Analytics (előzetes verzió)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 |Szolgáltatások keresése|   Microsoft.Search/<br>searchServices|    Diagnosztika|    Diagnosztika||
-|Service Bus-névtér| Microsoft.ServiceBus/<br>Névterek|    Diagnosztika|Diagnosztika|    [Service Bus-elemzés (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
+|Service Bus-névtér| Microsoft.ServiceBus/<br>névterek|    Diagnosztika|Diagnosztika|    [Service Bus-elemzés (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 |Service Fabric||       Storage||    [Service Fabric-elemzés (előzetes verzió)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
 |SQL (v12)| Microsoft.Sql/<br>kiszolgálók /<br>adatbázisok||       Diagnosztika||
 ||Microsoft.Sql/<br>kiszolgálók /<br>elasticPools||||

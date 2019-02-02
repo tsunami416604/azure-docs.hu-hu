@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 61bc9da45ac420e5683be1ea3ad253eae9c0ba5a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: fc18262326a8474cac417b67a37df35d91d75439
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158941"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657739"
 ---
 # <a name="set-up-a-device-template"></a>Eszközsablon beállítása
 
@@ -39,6 +39,8 @@ Eszköz sablonból, az operátornak hozhat létre és valódi ventilátor eszkö
 
 > [!NOTE]
 > Csak a kapcsolat építői és a rendszergazdák létrehozása, szerkesztése és törlése eszköz sablonok. Minden felhasználó létrehozhat eszközök a a **Device Explorer** meglévő eszközsablonok lapot.
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="create-a-device-template"></a>Egy eszköz-sablon létrehozása
 
@@ -84,7 +86,7 @@ Miután kiválasztotta **kész**, a **hőmérséklet** mérték megjelenik a lis
 ### <a name="create-an-event-measurement"></a>Egy esemény-mérték létrehozása
 Egy új esemény mérési hozzáadásához válassza **sablon szerkesztése**, majd kattintson a **+ új mérték** gombra. Válassza ki **esemény** a mérték, írja be, és adja meg, hogy a **esemény létrehozása** űrlap.
 
-Adja meg a **megjelenítendő név**, **mezőnév**, és **súlyossági** az esemény részleteit. Súlyosság három szintjei közül választhat: **hiba**, **figyelmeztetés**, és **információk**.  
+Adja meg a **megjelenítendő név**, **mezőnév**, és **súlyossági** az esemény részleteit. Súlyosság három szintjei közül választhat: **Hiba**, **figyelmeztetés**, és **információk**.  
 
 Például hozzáadhat egy új **ventilátor Motor hiba** esemény.
 
@@ -134,11 +136,11 @@ Beállítások egy eszköz vezérlésére. Adja meg a bemeneti adatok az eszköz
 
 Három állapota lehet. Az eszköz ezeket az állapotokat az jelenti.
 
-- **Szinkronizált**: az eszközt, hogy a beállítás értéke megváltozott.
+- **Synced**: Az eszközt, hogy a beállítás értéke megváltozott.
 
-- **Függőben lévő**: az eszköz jelenleg módosul, a beállítás értéke.
+- **Függőben lévő**: Az eszköz jelenleg módosul, a beállítás értéke.
 
-- **Hiba**: az eszköz hibát adott vissza.
+- **Hiba**: Az eszköz hibát adott vissza.
 
 Például hozzáadhat egy új ventilátor sebesség beállítás kiválasztásával **sablon szerkesztése** , és adjon meg az új **szám** beállítást:
 
@@ -165,7 +167,7 @@ Két tulajdonságkategória érhető el:
 
 Például hozzáadhatja az eszközök helyére egy új **szöveg** tulajdonság (egy alkalmazás-tulajdonság) kiválasztásával **sablon szerkesztése** és az új tulajdonság megadásával:
 
-| Megjelenítendő név  | Mezőnév | Trim szóközöket  | Trim szóközöket  | Kis-és nagybetűk| Minimális hossz | Maximális hossz |
+| Megjelenítendő név  | Mezőnév | Kezdő szóközök levágása  | Záró szóközök levágása  | Kis-és nagybetűk| Minimális hossz | Maximális hossz |
 | --------------| -----------|---------| ---------|---- |----|----|
 | Hely      | hely        | Ki     |  Ki     | Vegyes  | 0 | 100|
 
@@ -196,7 +198,7 @@ Egy alkalmazás tulajdonságként a location tulajdonsághoz hozhat létre az Io
 
     | Megjelenítendő név  | Mezőnév | Kezdeti érték |
     | --------------| -----------|---------| 
-    | Telepítési címe | insta_address | A Microsoft 1 Microsoft Way, Redmond, WA 98052   |
+    | Telepítési címe | insta_address | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
 
    !["A hely konfigurálása" űrlapján hely részletei](./media/howto-set-up-template/locationcloudproperty2.png)
 
@@ -236,7 +238,7 @@ Miben különbözik egy parancs egy beállítást?
 
 * **Beállítás**: A beállítás nem egy-egy eszköz a alkalmazni kívánt konfigurációját, és azt szeretné, hogy az eszköz számára, hogy a konfigurációs maradnak, amíg nem módosítja azt. Például a hőmérsékletet, a feldolgozó beállítja, és azt szeretné, hogy a beállítást, akkor is, ha a feldolgozó újraindítja. 
 
-* **A parancs**: parancsok használatával azonnal parancsot az eszközön távolról futtatni az IoT-központ. Ha egy eszköz nem kapcsolódik, a parancs túllépi az időkorlátot, és nem sikerül. Ha például szeretné eszköz újraindítása.  
+* **A parancs**: Parancsok használatával azonnal parancsot az eszközön távolról futtatni az IoT-központ. Ha egy eszköz nem kapcsolódik, a parancs túllépi az időkorlátot, és nem sikerül. Ha például szeretné eszköz újraindítása.  
 
 
 Például hozzáadhat egy új **Echo** parancsot választva **sablon szerkesztése**, majd kattintson **+ új parancs**, és beírja az új parancsot:

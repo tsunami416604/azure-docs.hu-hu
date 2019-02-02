@@ -11,18 +11,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/21/2018
-ms.openlocfilehash: ce489bae3a59da47ad6f3677ef493618d01fd6b6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 09/25/2018
+ms.openlocfilehash: 49491c5283ba16c5379c1115fae597bd7fd6ea19
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196650"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567128"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Bevezetés az Azure SQL Database időbeli Verziózású táblák használatába
+
 Historikus táblák, amely lehetővé teszi, hogy nyomon követheti és elemezheti a teljes előzménylistáját, amikor az adatok saját kódolási munka nélkül módosítása az Azure SQL Database új programozhatóság szolgáltatásban érhetőek el. Historikus táblák megőrizni adatokat szorosan kapcsolódik a helyi idő, hogy a tárolt tények értelmezhetők, érvényes csak az adott időszakon belül. Ez a tulajdonság a Historikus táblák időalapú hatékony elemzési és származó adatok fejlődést szem előtt tartva teszi lehetővé.
 
 ## <a name="temporal-scenario"></a>A historikus forgatókönyv
+
 Ez a cikk azt mutatja be, a lépések egy forgatókönyvet az időbeli Verziózású táblák használatához. Tegyük fel, hogy szeretné-e a felhasználói tevékenységek követése létre új webhely, amely még fejlesztés alatt teljesen új vagy egy meglévő webhely, amely a felhasználói tevékenység analytics bővítéséhez. Egyszerűsített példában feltételezzük, hogy megtekintett weblapok bizonyos idő alatt áll, amely a rögzített és a webhely adatbázisban, amely az Azure SQL Database felügyelt kell azt. A felhasználói tevékenység előzményadatok elemzése célja, hogy újra kell terveznie a webhelyet, és jobb felhasználói élményt nyújt a látogatók bemeneti adatok lekérése.
 
 Ebben a forgatókönyvben az adatbázis-modell nagyon egyszerű – felhasználói tevékenység metrika egy egész szám adható mezővel jelölt **PageVisited**, és a felhasználói profil alapszintű információk mellett van rögzítve. Ezenkívül időalapú elemzéshez nyilvántartja minden felhasználónak, sorok sorozatát ahol minden egyes sora egy adott felhasználó egy adott időn belül meglátogatott oldalak számát jelöli.

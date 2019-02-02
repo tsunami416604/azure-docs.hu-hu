@@ -1,5 +1,5 @@
 ---
-title: Kubernetes-alapú Dev Spaces-tér létrehozása a felhőben a Java és a VS Code használatával | Microsoft Docs
+title: Hozzon létre egy Kubernetes fejlesztői terület a felhőben, a Java és a VS Code használatával |} A Microsoft Docs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,14 +11,14 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: mmontwil
-ms.openlocfilehash: 9dc219078377d8b8da5d1700fb2a93133649d924
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d1840a451fc9354b32950283b335455d67ccbf43
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475774"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657246"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-java"></a>Bevezetés az Azure Dev Spaces Java segítségével történő használatába
+# <a name="get-started-on-azure-dev-spaces-with-java"></a>Azure fejlesztői szóközöket a Java használatának első lépései
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
@@ -226,4 +226,4 @@ Frissítse a webalkalmazást a böngészőben. Az egyedi üzenetnek meg kell jel
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A csapatban végzett fejlesztés bemutatása](team-development-java.md)
+> [További tudnivalók több szolgáltatást fejlesztési](multi-service-java.md)

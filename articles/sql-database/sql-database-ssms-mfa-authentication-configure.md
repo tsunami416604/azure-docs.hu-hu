@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 06/13/2018
-ms.openlocfilehash: 1761c7040becf0bfe63caf12d8f5ea7b15e9b88b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/25/2018
+ms.openlocfilehash: 98d48659225d89f476ca1e3cc437245bc9e9f753
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162933"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564816"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Az SQL Server Management Studio és az Azure AD multi-factor authentication konfigurálása
 
@@ -63,8 +63,8 @@ Ellenőrzési befejeződése után az SSMS kapcsolódik, általában feltéve, h
 ## <a name="next-steps"></a>További lépések
 
 - Azure SQL Database a multi-factor authentication szolgáltatás áttekintését lásd: univerzális hitelesítéssel rendelkező [SQL Database és az SQL Data warehouse-ba (többtényezős hitelesítés támogatása SSMS)](sql-database-ssms-mfa-authentication.md).  
-- Az adatbázishoz való hozzáférés biztosítása más: [SQL Database hitelesítése és engedélyezése: hozzáférés biztosítása](sql-database-manage-logins.md)  
-- Ellenőrizze, hogy mások csatlakozhatnak a tűzfalon: [konfigurálni egy Azure SQL Database kiszolgálószintű tűzfalszabályt az Azure portal használatával](sql-database-configure-firewall-settings.md)  
+- Az adatbázishoz való hozzáférés biztosítása más: [Az SQL Database hitelesítése és engedélyezése: Hozzáférés biztosítása](sql-database-manage-logins.md)  
+- Győződjön meg arról, hogy mások csatlakozhatnak a tűzfalon keresztül: [Konfigurálhatja egy Azure SQL Database kiszolgálószintű tűzfalszabályt az Azure portal használatával](sql-database-configure-firewall-settings.md)  
 - Használata esetén **Active Directory - univerzális az MFA** hitelesítés ADAL nyomkövetés kiadásától kezdve érhetőek el [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ki alapértelmezés szerint bekapcsolása ADAL nyomkövetésének használatával az **eszközök**, **beállítások** menü alatt **Azure-szolgáltatások**, **Azure felhő**,  **Nyomkövetési szint ADAL kimeneti ablak**, amely lehetővé teszi majd **kimeneti** a a **nézet** menü. A nyomkövetések érhetők el a kimeneti ablakban kiválasztásakor **Azure Active Directoryval opciót**.   
 
 

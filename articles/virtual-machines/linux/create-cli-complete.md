@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: ec520e7d06f6c5a560af56e6616eeed8481520fe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 75853d0fa35d1cb5fe593ad92a88d054d2ed77f6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180364"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662285"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes Linux rendszerű virtuális gép létrehozása az Azure CLI-vel
 Gyorsan létrehozhat egy virtuális gépet (VM) az Azure-ban, használhatja egy egyetlen Azure CLI-paranccsal, amely minden szükséges támogató erőforrások létrehozása az alapértelmezett értékeket használja. Erőforrások, például egy virtuális hálózat, nyilvános IP-cím és hálózati biztonsági csoport szabályait a rendszer automatikusan létrehozza. Az éles környezet még nagyobb mértékben használja, előfordulhat, hogy a kívánt időben az erőforrások létrehozásához, és hozzáadhatja őket a virtuális gépek. Ez a cikk végigvezeti egy virtuális Gépet, és a támogató erőforrások egyenként mindegyike létrehozása.
@@ -51,7 +51,7 @@ Alapértelmezés szerint az Azure CLI-parancsok kimenete JSON (JavaScript Object
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
-Tovább az Azure és a egy alhálózatot a virtuális hálózatot hoz létre, amelyhez a virtuális gépeket hozhat létre. Használat [az network vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create) nevű virtuális hálózat létrehozása *myVnet* az a *192.168.0.0/16* cím előtagja. Nevű alhálózatot is hozzáadhat *mySubnet* a cím előtagja *192.168.1.0/24*:
+Tovább az Azure és a egy alhálózatot a virtuális hálózatot hoz létre, amelyhez a virtuális gépeket hozhat létre. Használat [az network vnet létrehozása](/cli/azure/network/vnet) nevű virtuális hálózat létrehozása *myVnet* az a *192.168.0.0/16* cím előtagja. Nevű alhálózatot is hozzáadhat *mySubnet* a cím előtagja *192.168.1.0/24*:
 
 ```azurecli
 az network vnet create \

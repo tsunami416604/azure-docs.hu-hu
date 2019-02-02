@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 7505715641462f4a07d999ea419632bd91e925fb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 28b73a70ef9ffd4e73117d599448434823747eca
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438915"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567400"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Létrehozása, módosítása vagy egy hálózati biztonsági csoport törlése
 
@@ -66,7 +66,7 @@ Hány hálózati biztonsági csoportokat is létrehozhat egy Azure-helyen és az
 2. Válassza ki a hálózati biztonsági csoportot a listában a részleteinek megtekintéséhez. A **beállítások** megtekintheti a **bejövő biztonsági szabályok** és **kimenő biztonsági szabályok**, a **hálózati adapterek** és  **Alhálózatok** a hálózati biztonsági csoport társítva. Emellett engedélyezheti vagy letilthatja **diagnosztikai naplók** és nézet **érvényben lévő biztonsági szabályokat**. További tudnivalókért lásd: [diagnosztikai naplók](virtual-network-nsg-manage-log.md) és [érvényes biztonsági szabályok megtekintése](diagnose-network-traffic-filter-problem.md).
 3. A felsorolt gyakori Azure beállításaival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
     *   [Tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md)
-    *   [Hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [Hozzáférés-vezérlés (IAM)](../role-based-access-control/overview.md)
     *   [Címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zárolások](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automation-szkript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)

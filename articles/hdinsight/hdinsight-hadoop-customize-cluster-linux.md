@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 20894a74bf0cc3911272385721da74871df95ade
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: ea83d061f7160db04c847be66e79da60da78634d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913222"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662907"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Linux-alapú HDInsight-fürtök testreszabása szkriptműveletek használatával
 
@@ -224,7 +224,7 @@ További információ a sablon üzembe helyezése:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Használjon szkriptműveletet az Azure PowerShell a fürt létrehozásakor
 
-Ebben a szakaszban használhatja a [Add-AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) parancsmag segítségével szabhatja testre a fürthöz-szkriptek meghívása. Mielőtt elkezdené, győződjön meg arról, telepítése és konfigurálása az Azure PowerShell-lel. Egy munkaállomás HDInsight PowerShell-parancsmagok futtatásához konfigurálásával kapcsolatos további információkért lásd: [áttekintése az Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+Ebben a szakaszban használhatja a [Add-AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) parancsmag segítségével szabhatja testre a fürthöz-szkriptek meghívása. Mielőtt elkezdené, győződjön meg arról, telepítése és konfigurálása az Azure PowerShell-lel. Egy munkaállomás HDInsight PowerShell-parancsmagok futtatásához konfigurálásával kapcsolatos további információkért lásd: [áttekintése az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
 
 Az alábbi parancsfájl bemutatja, hogyan szkriptműveletet alkalmazni, amikor a fürt létrehozása a PowerShell használatával:
 
@@ -276,7 +276,7 @@ Nyissa meg a [az Azure portal](https://portal.azure.com):
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Egy futó fürt szkriptműveletet alkalmazni az Azure PowerShell-lel
 
-Mielőtt elkezdené, győződjön meg arról, telepítése és konfigurálása az Azure PowerShell-lel. Egy munkaállomás HDInsight PowerShell-parancsmagok futtatásához konfigurálásával kapcsolatos további információkért lásd: [áttekintése az Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+Mielőtt elkezdené, győződjön meg arról, telepítése és konfigurálása az Azure PowerShell-lel. Egy munkaállomás HDInsight PowerShell-parancsmagok futtatásához konfigurálásával kapcsolatos további információkért lásd: [áttekintése az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
 
 Az alábbi példa bemutatja, hogyan szkriptműveletet alkalmazandó futó fürt:
 

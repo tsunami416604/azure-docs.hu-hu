@@ -1,23 +1,23 @@
 ---
-title: A helyszíni Azure AD jelszóvédelem – gyakori kérdések
-description: A helyszíni Azure AD jelszóvédelem – gyakori kérdések
+title: A helyszíni Azure AD-jelszó Protection – gyakori kérdések
+description: A helyszíni Azure AD-jelszó Protection – gyakori kérdések
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: f690625fda07bdbff671567f0292cc8e1cabeda1
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 62bda3a1c9cb9d53578c2d471b9e63d1f0873234
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078695"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663298"
 ---
-# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Előzetes verzió: Azure AD jelszó védelmi helyszíni – gyakori kérdések
+# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Előzetes verzió: Az Azure AD jelszóvédelem helyszíni – gyakori kérdések
 
 |     |
 | --- |
@@ -28,23 +28,23 @@ ms.locfileid: "55078695"
 
 **K: Amikor eléri az Azure AD jelszóvédelem általánosan elérhető (GA)?**
 
-Bejelentettünk egy GA dátuma még nem.
+Általánosan elérhető (előtt március 2019 vége) Q1 CY2019 tervezünk. Köszönjük, hogy mindenki számára, aki a szolgáltatást, hogy a dátum - visszajelzés mellékelt Köszönjük azt!
 
-**K: Az a helyszíni Azure AD jelszóvédelem nem nyilvános felhőkben támogatott?**
+**K: Az a helyszíni Azure AD-jelszó védelmet támogatja a nem nyilvános felhők?**
 
-A helyszíni Azure AD jelszóvédelem nincs – csak a nyilvános felhőben támogatott.
+A helyszíni Azure AD jelszóvédelem nem – csak akkor támogatott a nyilvános felhőben.
 
-**K: Hogyan használhatom az Azure AD jelszó a hálózatvédelem előnyei a helyszíni felhasználók egy alhalmazára?**
+**K: Hogyan használhatom az Azure AD jelszóvédelem előnyeit a helyszíni felhasználók egy alhalmazára?**
 
 Nem támogatott. Miután üzembe helyezte, és engedélyezve van, nem tesz különbséget az Azure AD jelszóvédelem – az összes felhasználó megkapja egyenlő biztonsági funkcióit.
 
-**K: Támogatja az Azure AD jelszóvédelem tartalomcsomagjai egyéb jelszó-szűrő-alapú termékek telepítése?**
+**K: Támogatja az Azure AD-jelszó Protection tartalomcsomagjai egyéb jelszó-szűrő-alapú termékek telepítése?**
 
 Igen. Több regisztrált jelszó szűrő DLL-ek egy olyan alapvető Windows szolgáltatás támogatása és a nem kifejezetten az Azure AD jelszóvédelem. Az összes regisztrált jelszó szűrő DLL-ek jelszó el kell fogadnia.
 
 **K: Elosztott fájlrendszer-replikációs miért van szükség a sysvol replikáció?**
 
-A fájlreplikációs szolgáltatás (az elosztott fájlrendszer-replikációs megelőző technológia) számos ismert problémák merülnek fel, és nem teljes mértékben támogatott a Windows Server Active Directory újabb verzióiban. A fájlreplikációs szolgáltatás használatára konfigurált tartományok nulla tesztelését, az Azure AD jelszóvédelem történik.
+A fájlreplikációs szolgáltatás (az elosztott fájlrendszer-replikációs megelőző technológia) számos ismert problémák merülnek fel, és nem teljes mértékben támogatott a Windows Server Active Directory újabb verzióiban. A fájlreplikációs szolgáltatás használatára konfigurált tartományok nulla tesztelése az Azure AD jelszóvédelem történik.
 
 További információkért tekintse meg a következő cikkeket:
 
@@ -62,6 +62,6 @@ Nem.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha kérdése van egy helyszíni Azure AD jelszó védelmet, amely itt nem válaszolt, küldje el az alábbi – Köszönjük, hogy egy visszajelzéshez!
+Ha kérdése van egy helyszíni Azure AD jelszóvédelem, amely itt nem válaszolt, küldje el az alábbi – Köszönjük, hogy egy visszajelzéshez!
 
 [Azure AD jelszóvédelem üzembe helyezése](howto-password-ban-bad-on-premises-deploy.md)

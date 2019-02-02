@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8f547977e544854e281e1c6be442607d55149e5e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d6a1d442eca0cf5e433a82fb52ed54b09b56c779
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190288"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566095"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>Gyors útmutató: Egy tároló-alkalmazás futtatása az Azure Container Instances szolgáltatásban az Azure Portalon
 
@@ -41,7 +41,7 @@ Válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Instanc
 
 ![Új tárolópéldány alapbeállításainak konfigurálása az Azure Portalon][aci-portal-03]
 
-Windows- és Linux-tárolókat is létrehozhat az Azure Container Instances használatával. Ebben a rövid útmutatóban hagyja meg a **Linux** alapértelmezett beállítást a Linux-alapú `microsoft/aci-helloworld` rendszerkép üzembe helyezéséhez.
+Ebben a rövid útmutatóban ne módosítsa az alapértelmezett beállítás a **nyilvános** üzembe helyezéséhez a `microsoft/aci-helloworld` rendszerkép a nyilvános Docker Hub-beállításjegyzékből. Ez a rendszerkép csomagok a node.js-ben, amely egy statikus HTML-oldalt szolgál egy kisméretű webalkalmazást.
 
 A **Konfiguráció** területen adjon meg egy **DNS-névcímkét** a tárolónak. A névnek egyedinek kell lennie abban az Azure-régióban, ahol a tárolópéldányt létrehozza. A tároló nyilvánosan elérhető az alábbi helyen: `<dns-name-label>.<region>.azurecontainer.io`.
 

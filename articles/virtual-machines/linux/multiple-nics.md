@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: aaeec216e2a89cfd230208d0c674e15153224b5a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 02b70909e701dbeffaec0aa6bdc39e449bdfad08
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157499"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660357"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Hogyan hozhat létre Linux rendszerű virtuális gép az Azure-ban több hálózati kártyák
 
@@ -37,7 +37,7 @@ Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre a virtuális hálózatba a [az network vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create). A következő példában létrehozunk egy nevű virtuális hálózatot *myVnet* és nevű alhálózatot *mySubnetFrontEnd*:
+Hozzon létre a virtuális hálózatba a [az network vnet létrehozása](/cli/azure/network/vnet). A következő példában létrehozunk egy nevű virtuális hálózatot *myVnet* és nevű alhálózatot *mySubnetFrontEnd*:
 
 ```azurecli
 az network vnet create \
@@ -87,7 +87,7 @@ az network nic create \
 ## <a name="create-a-vm-and-attach-the-nics"></a>Hozzon létre egy virtuális Gépet, és a hálózati adapter csatolása
 A virtuális gép létrehozásakor adja meg a hálózati adapterek segítségével létrehozott `--nics`. Is kell körültekintően járjon el a virtuális gép méretének kiválasztásakor. A hálózati adapterrel is hozzáadhat egy virtuális gép teljes száma korlátozva van. Tudjon meg többet [Linux Virtuálisgép-méretek](sizes.md).
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre:
 
 ```azurecli
 az vm create \

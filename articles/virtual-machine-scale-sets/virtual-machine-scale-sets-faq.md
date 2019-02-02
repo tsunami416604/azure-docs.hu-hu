@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: cd8bb2bf83d71fb874b3912e98bf3790acc9d915
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 85b05e50dd989ef8db737df0a43f29b20aefb596
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493660"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657756"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -176,7 +176,7 @@ az sf cluster create -h
 
 Tekintse át a legújabb támogatott API-tanúsítvány-műveletek az Azure-ban keyvaults dokumentációját.
 
-Önaláírt tanúsítványokat egy hitelesítésszolgáltató által megadott elosztott megbízhatósági kapcsolatban nem használható, és nem használható a minden gazdagép vállalati éles megoldásokat; szánt Service Fabric-fürt Service Fabric biztonsága kapcsolatos további információkért tekintse át a [Azure Service Fabric bevált biztonsági gyakorlatok](https://docs.microsoft.com/en-us/azure/security/azure-service-fabric-security-best-practices) és [Service Fabric-fürtök biztonsági forgatókönyveit](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
+Önaláírt tanúsítványokat egy hitelesítésszolgáltató által megadott elosztott megbízhatósági kapcsolatban nem használható, és nem használható a minden gazdagép vállalati éles megoldásokat; szánt Service Fabric-fürt Service Fabric biztonsága kapcsolatos további információkért tekintse át a [Azure Service Fabric bevált biztonsági gyakorlatok](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) és [Service Fabric-fürtök biztonsági forgatókönyveit](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Meghatározható, hogy ssh-kulcs az SSH-hitelesítés használata a Resource Manager-sablon egy Linux virtuális gép méretezési?
 

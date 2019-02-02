@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 8f3cdf366830549c3ebb9c5680ecf36d1053d1d9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: df6330827a4fb8bb8e80af89855c3ea104584295
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075294"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662288"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Biztonságosan a webalkalmazás titkos alkalmazás beállításainak mentése
 
@@ -32,7 +32,7 @@ Ahhoz, hogy a fejlesztési folyamatban a biztonságos, azokat az eszközöket é
 ## <a name="aspnet-and-net-core-applications"></a>Az ASP.NET és a .NET core-alkalmazások
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Felhasználói titkos kulcs tárolójában, amely kívül esik a vezérlő forrásmappa titkos beállítások mentése
-Ha egy gyors prototípust végez, vagy nem rendelkezik internet-hozzáféréssel, kezdje a vezérlő forrásmappa kívül a titkos beállítások áthelyezése a felhasználói titkos tároló. Felhasználói Titkoskód-tárolót egy olyan fájl, mentett felhasználói profiler mappában, így a titkos kulcsok nincs bejelentkezve a forráskezelőhöz. Az alábbi diagram bemutatja, hogyan [felhasználói titkos](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) működik.
+Ha egy gyors prototípust végez, vagy nem rendelkezik internet-hozzáféréssel, kezdje a vezérlő forrásmappa kívül a titkos beállítások áthelyezése a felhasználói titkos tároló. Felhasználói Titkoskód-tárolót egy olyan fájl, mentett felhasználói profiler mappában, így a titkos kulcsok nincs bejelentkezve a forráskezelőhöz. Az alábbi diagram bemutatja, hogyan [felhasználói titkos](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) működik.
 
 ![Felhasználói titkos tartja a verziókövetés kívül titkos beállításai](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
@@ -89,7 +89,7 @@ Ha fejleszt egy projektet, és biztonságosan megosztani a forráskódot, haszn�
 
 8. Hibakeresés a projektben. Sikeresen fusson.
 
-## <a name="aspnet-and-net-applications"></a>Az ASP.NET és a .NET-alkalmazások
+## <a name="aspnet-and-net-applications"></a>ASP.NET and .NET applications
 
 .NET 4.7.1 támogatja a Key Vaultot és a titkos kulcs konfigurációs sikerei, amely biztosítja, hogy a titkos kulcsokat is áthelyezhetők kívül forrásmappa ellenőrző kódot sem kell módosítani.
 A folytatáshoz [töltse le a .NET 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115) és áttelepítheti a alkalmazást, ha a .NET-keretrendszer régebbi verzióját használja.

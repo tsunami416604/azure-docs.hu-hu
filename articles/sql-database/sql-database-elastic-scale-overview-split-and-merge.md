@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 0f5dc5cc7d981eb162ba101671b1e967ddf4bfff
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 1d350cae379c5ec790413775138225b60b9c5e32
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868463"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564935"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
 
@@ -83,7 +83,7 @@ A felosztási-egyesítési eszközének egy Azure-webalkalmazások szolgáltatá
 
   A felosztási-egyesítési szolgáltatás adatbázist használ, annak állapotát és a kérelem feldolgozása során naplók tárolása céljából. A felhasználó hoz létre ehhez az adatbázishoz előfizetésüket, és biztosít a kapcsolati karakterláncot, a szolgáltatás központi telepítés konfigurációs fájlban. A felhasználó szervezete rendszergazdákat is csatlakozhat az adatbázis kérelem előrehaladását, és vizsgálja meg a lehetséges hibák kapcsolatos részletes információkat.
 
-- **A horizontális skálázás-figyelése**
+- **Sharding-awareness**
 
   A felosztási-egyesítési szolgáltatás (1) horizontálisan particionált táblák, (2) referencia táblák és (3) a normál táblázatokhoz állapottípust. Felosztás/egyesítés/áthelyezési művelet szemantikáját használja a tábla típusa határozza meg, és meghatározása a következő:
 
@@ -190,7 +190,7 @@ A felosztási-egyesítési szolgáltatás biztosítja a **RequestStatus** a meta
 
   Az idő és dátum, amikor a kérelem meg lett elindítva.
 
-- **Műveletazonosító:**
+- **OperationId**
 
   Egy GUID Azonosítót, amely egyedileg azonosítja a kérelmet. A kérelem is használható, szakítsa meg a műveletet, amíg még mindig folyamatban.
 
@@ -212,7 +212,7 @@ A felosztási-egyesítési szolgáltatás biztosítja a **RequestStatus** a meta
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-A felosztási-egyesítési szolgáltatás használja az Azure Diagnostics monitorozást és diagnosztikát az Azure SDK 2.5-ös alapján. A diagnosztikai konfigurációja szabályozhatja az itt leírtak: [Diagnosztikának az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). A letöltött csomag tartalmazza a két diagnosztikai konfiguráció – egy, a webes szerepkör és egy, a feldolgozói szerepkör esetében. Naplófájl teljesítményszámlálók, az IIS-naplók, Windows-eseménynaplók és felosztási-egyesítési alkalmazás eseménynaplóit kapcsolatos definíciókat tartalmazza.
+A felosztási-egyesítési szolgáltatás használja az Azure Diagnostics monitorozást és diagnosztikát az Azure SDK 2.5-ös alapján. Itt leírtak szabályozhatja a diagnosztikai konfigurációja: [Diagnosztika engedélyezése az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). A letöltött csomag tartalmazza a két diagnosztikai konfiguráció – egy, a webes szerepkör és egy, a feldolgozói szerepkör esetében. Naplófájl teljesítményszámlálók, az IIS-naplók, Windows-eseménynaplók és felosztási-egyesítési alkalmazás eseménynaplóit kapcsolatos definíciókat tartalmazza.
 
 ## <a name="deploy-diagnostics"></a>Diagnosztikai üzembe helyezése
 
@@ -230,7 +230,7 @@ Figyelési és diagnosztikai konfiguráció használatával a webes és feldolgo
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-Hogyan ide a diagnosztika beállításokat konfigurálhat és telepíthet további tájékoztatást talál: [Diagnosztikának az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
+Annak konfigurálása és üzembe helyezése a diagnosztikai beállítások itt olvashat: [Diagnosztika engedélyezése az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## <a name="retrieve-diagnostics"></a>Diagnosztikai beolvasása
 

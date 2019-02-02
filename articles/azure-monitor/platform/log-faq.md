@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 693d66c6b56fd759086236ae0252d2c6f1b5693e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0edb3441083a6eb6f95b3ca3ade2bf0b1582858d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301254"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564952"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések listáját. Ha a Log Analytics szolgáltatásról további kérdése van, lépjen a [fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -55,7 +55,7 @@ V: "Szűrők" kattintson a bal oldali pan, megjelenik egy előnézet új szűrő
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>K. Miért jelenik meg a hiba: "Erőforrás-szolgáltató" a Microsoft.Insights regisztrálása"ehhez az előfizetéshez ahhoz, hogy ez a lekérdezés" naplókat, a virtuális gépről a részletező elemzés után? 
 
-V: Alapértelmezés szerint automatikusan regisztrált sok erőforrás-szolgáltató, azonban előfordulhat, hogy néhány erőforrás-szolgáltatókat manuálisan regisztrálni kell. Ez konfigurálja a-előfizetés használata az erőforrás-szolgáltató. Regisztráció a hatókör, mindig az előfizetést. További információ: [Erőforrás-szolgáltatók és típusaik](../../azure-resource-manager/resource-manager-supported-services.md#portal).
+V: Alapértelmezés szerint automatikusan regisztrált sok erőforrás-szolgáltató, azonban előfordulhat, hogy néhány erőforrás-szolgáltatókat manuálisan regisztrálni kell. Ez konfigurálja a-előfizetés használata az erőforrás-szolgáltató. Regisztráció a hatókör, mindig az előfizetést. További információ: [Erőforrás-szolgáltatók és típusaik](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
 ### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>K. Miért érkeznek meg hozzám a nincs hozzáférés hibaüzenet egy virtuális gép oldaláról naplók elérésekor? 
 

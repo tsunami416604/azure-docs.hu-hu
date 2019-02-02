@@ -12,16 +12,20 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 01/31/2019
-ms.openlocfilehash: 80da1058f17b69d82d851bb38482afa0b31daac1
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 3fa0977a8239a3d0db1aea99d39a2079945b724a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508861"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567723"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
-Az Azure SQL Database felügyelt példánya a nagy mértékben kompatibilis a helyszíni SQL Server Database Engine, biztosít. Felügyelt példány az SQL Server adatbázismotor-szolgáltatások többsége támogatottak. Különbségek is vannak a továbbra is a szintaxist és a viselkedés, mivel ez a cikk összefoglalja, és ismerteti a különbségeket. <a name="Differences"></a>
+Az Azure SQL Database felügyelt példánya a nagy mértékben kompatibilis a helyszíni SQL Server Database Engine, biztosít. Felügyelt példány az SQL Server adatbázismotor-szolgáltatások többsége támogatottak.
+
+![Áttelepítés](./media/sql-database-managed-instance/migration.png)
+
+Különbségek is vannak a továbbra is a szintaxist és a viselkedés, mivel ez a cikk összefoglalja, és ismerteti a különbségeket. <a name="Differences"></a>
 - [Rendelkezésre állási](#availability) többek között a különbségek [Always-On](#always-on-availability) és [biztonsági mentések](#backup),
 - [Biztonsági](#security) többek között a különbségek [naplózási](#auditing), [tanúsítványok](#certificates), [hitelesítő adatok](#credentials), [kriptográfiai szolgáltatókat](#cryptographic-providers), [Bejelentkezések és felhasználók](#logins--users), [szolgáltatás kulcs és a szolgáltatás főkulcsát](#service-key-and-service-master-key),
 - [Konfigurációs](#configuration) többek között a különbségek [kiterjesztés puffer](#buffer-pool-extension), [rendezést](#collation), [kompatibilitási szinteken](#compatibility-levels),[adatbázis tükrözés](#database-mirroring), [adatbázis-beállítások](#database-options), [SQL Server Agent](#sql-server-agent), [lehetőségek tábla](#tables),

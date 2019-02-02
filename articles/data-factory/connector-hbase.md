@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9c574d5e5cecaa4618bbd44fae8a2200930ab2e3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 09f0416e5a03527613e7c353961d81de39c4fe0e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019452"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566839"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HBase 
 
@@ -42,7 +42,7 @@ HBase-beli társított szolgáltatás a következő tulajdonságok támogatottak
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **HBase** | Igen |
-| gazdagép | Az IP-cím vagy a gazdagép a HBase kiszolgáló neve. (pl.)  `[clustername].azurehdinsight.net`, "192.168.222.160·)  | Igen |
+| gazdagép | Az IP-cím vagy a gazdagép a HBase kiszolgáló neve. (pl.)  `[clustername].azurehdinsight.net`, "192.168.222.160·)  | igen |
 | port | A HBase-példány az ügyfélkapcsolatok figyeléséhez használt TCP portra. Az alapértelmezett érték 9090. Ha csatlakozik az Azure Hdinsight, meg a 443-as portot. | Nem |
 | httpPath | Példa: a HBase-kiszolgáló megfelelő részleges URL-cím `/hbaserest0` Hdinsight-fürt használata esetén. | Nem |
 | authenticationType | A HBase-kiszolgálóhoz való csatlakozáshoz használandó hitelesítési mechanizmusa. <br/>Engedélyezett értékek a következők: **Névtelen**, **alapszintű** | Igen |
@@ -71,8 +71,8 @@ HBase-beli társított szolgáltatás a következő tulajdonságok támogatottak
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             },
             "enableSsl" : true
         },
@@ -98,8 +98,8 @@ HBase-beli társított szolgáltatás a következő tulajdonságok támogatottak
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             },
             "enableSsl" : true,
             "trustedCertPath" : "<trustedCertPath>",

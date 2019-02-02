@@ -4,17 +4,17 @@ description: Azure szabályzat-definíció rendelkezik, amelyek meghatározzák,
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/24/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 68abb5fd95823941bdb5d87d7ebc6675b0760850
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: cf30d5dd8648a2b1da3f4a40399376182bf342c4
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912509"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562300"
 ---
 # <a name="understand-policy-effects"></a>A szabályzat hatásainak megismerése
 
@@ -50,7 +50,7 @@ Hozzáfűzés további mezőket hozzáadni a kért erőforrás létrehozása vag
 
 ### <a name="append-evaluation"></a>Értékelés hozzáfűzése
 
-Hozzáfűzés kiértékeli, mielőtt a kérést egy erőforrás-szolgáltató feldolgozza a létrehozása vagy egy adott erőforrás frissítése során. Fűzze hozzá mezőket ad hozzá az erőforrás során a **Ha** a szabály a feltétel teljesül. Ha Hozzáfűzés hatása lenne bírálja felül az eredeti kérelmet egy másik érték egy értéket, egy megtagadási hatást funkcionál, és elutasítja a kérelmet.
+Hozzáfűzés kiértékeli, mielőtt a kérést egy erőforrás-szolgáltató feldolgozza a létrehozása vagy egy adott erőforrás frissítése során. Fűzze hozzá mezőket ad hozzá az erőforrás során a **Ha** a szabály a feltétel teljesül. Ha Hozzáfűzés hatása lenne bírálja felül az eredeti kérelmet egy másik érték egy értéket, egy megtagadási hatást funkcionál, és elutasítja a kérelmet. Új érték hozzáfűzése egy meglévő tömb, használja a **[\*]** alias verzióját.
 
 Ha egy szabályzatdefiníciót a Hozzáfűzés hatással egy kiértékelési ciklusa részeként fut, azt nem módosítások már meglévő erőforrásokat. Ehelyett jelöli meg minden olyan erőforrást, amely megfelel a **Ha** feltétel nem megfelelő.
 
@@ -89,7 +89,8 @@ Csak akkor Hozzáfűzés hatással van egy **részletek** tömb, amely szükség
 }
 ```
 
-3. példa: Egyetlen **mező/érték** használatával párosítsa az [alias](definition-structure.md#aliases) -tömbbel rendelkező **érték** IP-szabályok beállítása a storage-fiók.
+3. példa: Egyetlen **mező/érték** párosítsa a használatával egy nem -**[\*]**
+[alias](definition-structure.md#aliases) -tömbbel rendelkező **érték** segítségével az IP-szabályokat állíthat be egy Storage-fiók. Ha a nem -**[\*]** alias van egy tömb, a hatás hozzáfűzi a **érték** a teljes tömb. Ha a tömb már létezik, a Megtagadás esemény következik be, az ütköző.
 
 ```json
 "then": {
@@ -100,6 +101,21 @@ Csak akkor Hozzáfűzés hatással van egy **részletek** tömb, amely szükség
             "action": "Allow",
             "value": "134.5.0.0/21"
         }]
+    }]
+}
+```
+
+4. példa: Egyetlen **mező/érték** használatával párosítsa az **[\*]** [alias](definition-structure.md#aliases) -tömbbel rendelkező **érték** IP-szabályok beállítása a storage-fiók. Használatával a **[\*]** alias, a hatás hozzáfűzi a **érték** esetlegesen már meglévő tömbbe. Ha a tömb nem még létezik, jön létre.
+
+```json
+"then": {
+    "effect": "append",
+    "details": [{
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "value": {
+            "value": "40.40.40.40",
+            "action": "Allow"
+        }
     }]
 }
 ```
@@ -259,7 +275,7 @@ A **részletek** a DeployIfNotExists hatást tulajdonsága egyezik a kapcsolód�
   - Ez a tulajdonság karakterláncok, amelyek megfelelnek a szerepköralapú hozzáférés-vezérlési szerepkör azonosítója elérhető-e az előfizetés-tartalmaznia kell. További információkért lásd: [szervizelési – konfigurálja a szabályzat-definíció](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (nem kötelező)
   - Engedélyezett értékek a következők _előfizetés_ és _ResourceGroup_.
-  - Beállítja a végrehajtandó telepítési típusát. _Előfizetés_ azt jelzi, hogy egy [előfizetési szinten üzembe helyezési](../../../azure-resource-manager/deploy-to-subscription.md), _ResourceGroup_ azt jelzi, hogy egy egy erőforráscsoportba irányuló üzembe helyezés.
+  - Beállítja a aktiválását központi telepítési típus. _Előfizetés_ azt jelzi, hogy egy [előfizetési szinten üzembe helyezési](../../../azure-resource-manager/deploy-to-subscription.md), _ResourceGroup_ azt jelzi, hogy egy egy erőforráscsoportba irányuló üzembe helyezés.
   - A _hely_ tulajdonságot meg kell adni a _üzembe helyezési_ használata előfizetési szintű telepítések esetén.
   - Alapértelmezett érték a _ResourceGroup_.
 - **Üzembe helyezés** [kötelező]

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: 017abd72b3aa1547844f977c3efda69e59901a6f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/01/2019
+ms.openlocfilehash: 270231b2ad7d94789595cfa4e681cf6c2b0f0541
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487948"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657875"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL olvasható replika
 
@@ -21,6 +21,8 @@ ms.locfileid: "55487948"
 Az olvasási replika funkció teszi, hogy az adatok replikálása az Azure Database for PostgreSQL-kiszolgáló (master) legfeljebb öt csak olvasható kiszolgálók (olvassa el a replikákat) azonos Azure-régióban. Olvasható replika aszinkron módon frissíti a PostgreSQL-motor natív replikációs technológiával.
 
 Replikák olyan új, normál önálló Azure Database for PostgreSQL-kiszolgálók hasonló módon kezelhetők. A díj minden olvasási replika esetén a virtuális magok kiépített számítási feladatain és a GB/hó alapon megszabott tárhelyen alapul.
+
+Látogasson el a [útmutató oldalon megtudhatja, hogyan hozhat létre és kezelhet a replikák](howto-read-replicas-portal.md).
 
 ## <a name="when-to-use-read-replicas"></a>Mikor érdemes használni az olvasási replikák
 Az olvasási replika funkció célja javítsák a teljesítményét és skálázhatóságát olvasásigényű munkaterhelésekhez. Például az olvasási számítási feladatok lehet a replikákra, elkülönített közben a master írási számítási feladatok lehet irányítani.
@@ -56,7 +58,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 és a parancssorba írja be a jelszót a felhasználói fiókhoz.
 
 ## <a name="monitoring-replication"></a>Replikáció figyelése
-Van egy **replikák közötti maximális késésnek** elérhető az Azure monitorban metrika. Ez a metrika csak a fő kiszolgálón érhető el. A metrika a master és a legtöbb elmaradt replika közötti késés időpontot jeleníti meg. 
+Van egy **replikák közötti maximális késésnek** elérhető az Azure monitorban metrika. Ez a metrika csak a fő kiszolgálón érhető el. A metrika a késés a master és a legtöbb elmaradt replika közötti jeleníti meg. 
 
 Is biztosítunk egy **replika Lag** metrika az Azure monitorban. Ez a metrika csak a replikák számára érhető el. 
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.subservice: files
-ms.openlocfilehash: ee56f77ef6ed3c759573a5a96d854c54f297b2ac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 77b7e6aef4d0d38fa3ea9f9b9a740ffc25aff7f9
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462358"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660017"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure File storage csatlakoztatása az SMB-, Linux rendszerű virtuális gépeken
 
@@ -58,7 +58,7 @@ STORAGEACCT=$(az storage account create \
 
 Amikor létrehoz egy tárfiókot, a fiókkulcsok címpárral jönnek létre, hogy a szolgáltatás megszakítás nélkül forgatható el. Amikor a párok a második kulcsot, hozzon létre egy új kulcspárt. Új tárfiókkulcsok mindig létrehozása párok, így mindig kell legalább egy nem használt tárfiókkulcs készen áll a váltás.
 
-A tárfiók kulcsaihoz használatával megtekintheti [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys#list). Ebben a példában a kulcs 1 értékét tárolja a **StorageKey TULAJDONSÁGÁT** változó.
+A tárfiók kulcsaihoz használatával megtekintheti [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys). Ebben a példában a kulcs 1 értékét tárolja a **StorageKey TULAJDONSÁGÁT** változó.
 
 ```bash
 STORAGEKEY=$(az storage account keys list \

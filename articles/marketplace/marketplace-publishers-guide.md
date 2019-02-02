@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 43badaada3de352ec7bafeb422965a047261a1e4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753965"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656834"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Az Azure Marketplace és AppSource közzétételi útmutató
 
 A Piactéri közzétételi útmutató célja új és meglévő közzétevők megtudhatja, hogyan használhatja a kirakattípus a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [Microsoft AppSource](https://appsource.microsoft.com) partnerségben üzleti növekedésért alkalmazások és szolgáltatások listázásával a Microsofttal.
 
 >[!Note]
->Itt a piactéren az Azure Marketplace és appsource-ban is hivatkozik.  Lásd: [egy Marketplace-en két kirakattípus](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace) további információt.
+>Itt a piactéren az Azure Marketplace és appsource-ban is hivatkozik.  Lásd: [egy Marketplace-en két kirakattípus](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) további információt.
 
 Ez az útmutató ismerteti a következő témaköröket: 
 *   Mi a Marketplace-en az eszközmegfelelőségről és működéséről 

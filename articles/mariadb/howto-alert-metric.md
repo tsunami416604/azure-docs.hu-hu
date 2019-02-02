@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 0cf301b98e5fa530b234dbd5953746241c0021ee
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 15f280b16e362a4b39cb9fc0e4baaf67d0e31942
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244239"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661700"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Riasztásokat állíthat be mérőszámok az Azure Database for MariaDB az Azure portal használatával
 
@@ -27,7 +27,7 @@ A következő műveleteket hajthatja végre, amikor elindítja riasztásokat leh
 Konfigurálhatja és riasztási szabályok használatával kapcsolatos információk lekérése:
 * [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Az Azure Monitor REST API-val](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts)
+* [Az Azure Monitor REST API-val](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>Egy riasztási szabályt létrehozni egy metrika
 1. Az a [az Azure portal](https://portal.azure.com/), válassza ki az Azure Database for MariaDB kiszolgáló figyelni szeretné.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 6d84c83efa194543ed10aaed82362021b7053476
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 1960cac28b74980d17f37b4e06e79604e156381e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576204"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566237"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Az IaaS-erőforrások klasszikusból Azure Resource Manager az áttelepítés tervezése
 Azure Resource Manager számos nagyszerű funkciókat biztosít, rendkívül fontos tervezze meg, hogy zökkenőmentességét sure dolgot a migrálási folyamat elkezdésekor. Tervezési idő kiadások biztosítja, hogy nem problémák merülnek fel migrálási tevékenységek végrehajtása közben.
@@ -88,7 +88,7 @@ Sikeres ügyfelek tervek, ahol a fenti kérdések tárgyalt, dokumentált és sz
 
 A következő számos, a nagyobb áttelepítések a felmerült problémák voltak. Ez nem egy kimerítően teljes lista, és hivatkozzon a [nem támogatott funkciókat és konfigurációk](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations) további részleteket talál.  Előfordulhat, hogy, vagy nem jelentkezhet be ezeket a műszaki problémákat, de ha mégis megoldására ezeket a migrálás megkezdése előtt biztosítja az egyenletesebb élmény.
 
-- **Hajtsa végre egy ellenőrzése és előkészítése/megszakítási tesztfuttatás** – ez talán az a legfontosabb lépés annak biztosítása érdekében a klasszikus Azure Resource Manager-áttelepítés sikeres. A migrálási API három fő lépésből áll: érvényesítéséhez, előkészítése és véglegesítéséhez. Rendszer érvényesítése olvassa el a klasszikus környezet állapotáról és kapcsolatos összes problémát a eredményét adja vissza. Azonban bizonyos problémák az Azure Resource Manager veremben előfordulhat, hogy létezik, mert ellenőrzése nem képes mindent. Az áttelepítési folyamat következő lépése, előkészítése segítségével teszi közzé a ezeket a hibákat. Fogja előkészíteni a metaadatok áthelyezése klasszikusból Azure Resource Manager, de nem véglegesíteni az áthelyezés és fog nem távolítsa el vagy a klasszikus oldalon bármin változtatni. A tesztfuttatás magában foglalja a migrálás előkészítése, majd megszakítása (**nem véglegesítése**) az áttelepítés előkészítése. A tesztfuttatás ellenőrzése és előkészítése/megszakítási célja, hogy megjelenik az összes a metaadatokat az Azure Resource Manager veremben, vizsgálja meg, hogy (*programozás útján vagy a portálon*), és győződjön meg arról, hogy minden megfelelően áttelepíti, és haladjon végig a műszaki probléma.  Azt is ad érteni migrálás időtartama, így megtervezheti az állásidő ennek megfelelően.  Egy ellenőrzése és előkészítése/abort nem okoz felhasználói állásidő; Ezért fontos zavart nem okozó való az alkalmazás használatának.
+- **Hajtsa végre egy ellenőrzése és előkészítése/megszakítási tesztfuttatás** – ez talán az a legfontosabb lépés annak biztosítása érdekében a klasszikus Azure Resource Manager-áttelepítés sikeres. A migrálási API három fő lépésből áll: Ellenőrizze, előkészítése, és hajtsa végre. Rendszer érvényesítése olvassa el a klasszikus környezet állapotáról és kapcsolatos összes problémát a eredményét adja vissza. Azonban bizonyos problémák az Azure Resource Manager veremben előfordulhat, hogy létezik, mert ellenőrzése nem képes mindent. Az áttelepítési folyamat következő lépése, előkészítése segítségével teszi közzé a ezeket a hibákat. Fogja előkészíteni a metaadatok áthelyezése klasszikusból Azure Resource Manager, de nem véglegesíteni az áthelyezés és fog nem távolítsa el vagy a klasszikus oldalon bármin változtatni. A tesztfuttatás magában foglalja a migrálás előkészítése, majd megszakítása (**nem véglegesítése**) az áttelepítés előkészítése. A tesztfuttatás ellenőrzése és előkészítése/megszakítási célja, hogy megjelenik az összes a metaadatokat az Azure Resource Manager veremben, vizsgálja meg, hogy (*programozás útján vagy a portálon*), és győződjön meg arról, hogy minden megfelelően áttelepíti, és haladjon végig a műszaki probléma.  Azt is ad érteni migrálás időtartama, így megtervezheti az állásidő ennek megfelelően.  Egy ellenőrzése és előkészítése/abort nem okoz felhasználói állásidő; Ezért fontos zavart nem okozó való az alkalmazás használatának.
   - Az alábbi elemek kell a tesztfuttatás előtt kell megoldani, de egy tesztfuttatás teszt kiüríti előkészítő lépések ki is biztonságosan azokat a, elmaradt. Vállalati az áttelepítés során azt tapasztaltuk a tesztfuttatás, biztonságos és felbecsülhetetlen értékű mód annak biztosítása érdekében az áttelepítésre való készenlét biztosítására.
   - Amikor előkészítése fut, a vezérlési sík (az Azure felügyeleti műveletek) zárolva lesz a teljes virtuális hálózathoz, így nem is kell módosítás a virtuális gépek metaadatait ellenőrzése és előkészítése vagy megszakítás alatt.  De egyébként bármely alkalmazás függvény (távoli asztali Munkamenetgazda, a virtuális gép használat, stb.) Ez nem érinti.  A virtuális gépek felhasználók addig nem szerez tudomást, hogy a tesztfuttatás folyamatban van.
 
@@ -201,7 +201,7 @@ Dolgot figyelembe venni:
 
 Lehet, mely szolgáltatásokat szeretné engedélyezni az Azure Resource Managerben a szándékos.  Számos ügyfél az alábbi vonzó az Azure-környezetek esetében:
 
-- [Szerepköralapú hozzáférés-vezérlés](../../azure-resource-manager/resource-group-overview.md#access-control).
+- [Szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md).
 - [Egyszerűbb és több ellenőrzött üzembe Azure Resource Manager-sablonok](../../azure-resource-manager/resource-group-overview.md#template-deployment).
 - [A címkék](../../azure-resource-manager/resource-group-using-tags.md).
 - [Vezérlési tevékenység](../../azure-resource-manager/resource-group-audit.md)

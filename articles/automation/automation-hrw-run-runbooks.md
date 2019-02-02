@@ -6,21 +6,21 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 07/17/2018
+ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0d622f6f03f9d132f3c57910d8a60c5731ad7c94
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f1700e124d1f572d0bf0ca76ea7c465f1ecf96c1
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425781"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657416"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
 Nincs struktúráját, amely az Azure Automation runbookok és a egy hibrid Runbook-feldolgozó futó runbookok nincs különbség. Az egyes használt Runbookok valószínűleg jelentősen eltérnek. Ez a különbség az oka, hogy általában egy hibrid Runbook-feldolgozó célzó runbookok magát a helyi számítógépet vagy a helyi környezetben, ahol központilag telepítették az erőforrásokon-erőforrások kezeléséhez. Az Azure Automation Runbookjai általában kezelheti az erőforrásokat az Azure-felhőben.
 
-Runbookok futtatása hibrid Runbook-feldolgozón hoz létre, amikor szerkesztése, és tesztelje a runbookokat a gépen, amelyen a hibrid feldolgozó. A gazdagép rendelkezik az összes PowerShell-modulok és hálózati hozzáférés kezelése és a helyi erőforrások eléréséhez szükséges. Ha egy runbook tesztelése a hibrid feldolgozói gépen, majd feltöltheti az Azure Automation környezet, amelyben ez a hibrid feldolgozói futtatható. Fontos tudni, hogy a feladatok Windows és a egy speciális felhasználói fiók a helyi rendszerfiókból futtató **nxautomation** Linux rendszeren. Ez a viselkedés megjelentetni finom eltérések a hibrid Runbook-feldolgozók runbookok létrehozásakor. Ezeket a módosításokat át kell tekinteni, amikor a runbookok írása.
+Runbookok futtatása hibrid Runbook-feldolgozón hoz létre, amikor szerkesztése, és tesztelje a runbookokat a gépen, amelyen a hibrid feldolgozó. A gazdagép rendelkezik az összes PowerShell-modulok és hálózati hozzáférés kezelése és a helyi erőforrások eléréséhez szükséges. Miután a hibrid feldolgozói gépen tesztelnek egy runbookot, majd feltöltheti az Azure Automation környezet, amelyben ez a hibrid feldolgozói futtatható. Fontos tudni, hogy a feladatok Windows és a egy speciális felhasználói fiók a helyi rendszerfiókból futtató **nxautomation** Linux rendszeren. Ez a viselkedés megjelentetni finom eltérések a hibrid Runbook-feldolgozók runbookok létrehozásakor. Ezeket a módosításokat át kell tekinteni, amikor a runbookok írása.
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Runbook indítása a hibrid Runbook-feldolgozón
 
@@ -55,7 +55,7 @@ $Computer = Get-AutomationVariable -Name "ComputerName"
 Restart-Computer -ComputerName $Computer -Credential $Cred
 ```
 
-Is [InlineScript](automation-powershell-workflow.md#inlinescript), amely lehetővé teszi, hogy a hitelesítő adatokat határozza meg, amely egy másik számítógépen fusson a kódblokkok a [PSCredential általános paraméterével](/powershell/module/psworkflow/about/about_workflowcommonparameters).
+Is [InlineScript](automation-powershell-workflow.md#inlinescript), amely lehetővé teszi, hogy hitelesítő adatokkal, amelyek határozza meg egy másik számítógépen fusson a kódblokkok a [PSCredential általános paraméterével](/powershell/module/psworkflow/about/about_workflowcommonparameters).
 
 ### <a name="runas-account"></a>Futtató fiók
 
@@ -181,7 +181,7 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 > [!IMPORTANT]
 > **Add-AzureRmAccount** alias már **Connect-AzureRMAccount**. Ha a Keresés a szalagtár elemmel, ha nem látja, akkor **Connect-AzureRMAccount**, használhat **Add-AzureRmAccount**, vagy frissítheti az a modulokat az Automation-fiókban.
 
-Mentse a *Export-RunAsCertificateToHybridWorker* runbookot, hogy a számítógép egy `.ps1` bővítmény. Importálja az Automation-fiók és szerkeszteni a runbookot, a változó értékének megmódosítása `$Password` egy saját jelszót. Közzététele, és futtassa a runbookot. A céloznia fog futtatni, és a futtató fiók használatával runbookok hitelesítése hibrid feldolgozói csoport. A feladatstream helyre importálhatja a tanúsítványt a helyi számítógép tárolójába való jelentéseket, és több sort a követi. Ez a viselkedés attól függ, hány, Automation-fiókok határoz meg az előfizetésében, és ha sikeres hitelesítés után.
+Mentse a *Export-RunAsCertificateToHybridWorker* runbookot, hogy a számítógép egy `.ps1` bővítmény. Importálja az Automation-fiók és szerkeszteni a runbookot, a változó értékének megmódosítása `$Password` egy saját jelszót. Közzététele, és futtassa a runbookot. A céloznia fogja futtatni, és a futtató fiók használatával runbookok hitelesítése hibrid feldolgozói csoport. A feladatstream helyre importálhatja a tanúsítványt a helyi számítógép tárolójába való jelentéseket, és több sort a követi. Ez a viselkedés attól függ, hány, Automation-fiókok határoz meg az előfizetésében, és ha sikeres hitelesítés után.
 
 ## <a name="job-behavior"></a>Feladat viselkedés
 
@@ -189,12 +189,14 @@ Feladatok kezelése kissé eltérő a hibrid Runbook-feldolgozók lehet számukr
 
 ## <a name="run-only-signed-runbooks"></a>Csak aláírt Runbookok futtatása
 
-Hibrid Runbook-feldolgozók beállítható úgy, hogy csak aláírt runbookok futtatása a konfigurálást. A következő szakasz azt ismerteti, hogyan állítható be a hibrid Runbook-feldolgozók aláírt runbookok futtatására, és arról, hogyan jelentkezhet a runbookok.
+Hibrid Runbook-feldolgozók beállítható úgy, hogy csak aláírt runbookok futtatása a konfigurálást. A következő szakasz ismerteti, hogyan állíthatja be a hibrid Runbook-feldolgozók futtatásához aláírt [Windows hibrid Runbook-feldolgozó](#windows-hybrid-runbook-worker) és [hibrid Runbook-feldolgozója Linuxra](#linux-hybrid-runbook-worker)
 
 > [!NOTE]
 > Miután konfigurálta a csak aláírt runbookok futtatása hibrid Runbook-feldolgozók, runbookok, amely rendelkezik **nem** lett lesz aláírva a feldolgozón végrehajtása sikertelen.
 
-### <a name="create-signing-certificate"></a>Aláíró tanúsítvány létrehozása
+### <a name="windows-hybrid-runbook-worker"></a>Windows hibrid Runbook-feldolgozó
+
+#### <a name="create-signing-certificate"></a>Aláíró tanúsítvány létrehozása
 
 Az alábbi példa létrehoz egy önaláírt tanúsítványt, a runbookok az aláíráshoz használható. A minta létrehozza a tanúsítványt, és exportálja azt. A tanúsítványt később importálja az a hibrid Runbook-feldolgozók. Az ujjlenyomat adja vissza, ezt az értéket később használja a használatával hivatkozik a tanúsítványra.
 
@@ -220,7 +222,7 @@ Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLoca
 $SigningCert.Thumbprint
 ```
 
-### <a name="configure-the-hybrid-runbook-workers"></a>A hibrid Runbook-feldolgozók konfigurálása
+#### <a name="configure-the-hybrid-runbook-workers"></a>A hibrid Runbook-feldolgozók konfigurálása
 
 Másolja ki a létrehozott csoport minden egyes hibrid Runbook-feldolgozó tanúsítványt. Futtassa a következő szkriptet, importálja a tanúsítványt, és a hibrid feldolgozó használnak aláírás-ellenőrzést a runbookok konfigurálása.
 
@@ -236,7 +238,7 @@ Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLoca
 Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocation "Cert:\LocalMachine\AutomationHybridStore"
 ```
 
-### <a name="sign-your-runbooks-using-the-certificate"></a>A Runbookok a tanúsítvány aláírása
+#### <a name="sign-your-runbooks-using-the-certificate"></a>A Runbookok a tanúsítvány aláírása
 
 A hibrid Runbook-feldolgozók használatára konfigurált csak aláírt runbookok, be kell jelentkeznie a runbookokat, amelyek a hibrid Runbook-feldolgozón használni fog. Az alábbi minta PowerShell használatával a runbookok aláírásához.
 
@@ -246,6 +248,64 @@ Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
 A runbook aláírt azt kell importálja az Automation-fiók, és közzéteheti az aláírásblokkot. Runbookok importálása kapcsolatban lásd: [runbook importálása egy fájlból az Azure Automationbe](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
+
+### <a name="linux-hybrid-runbook-worker"></a>A hibrid Runbook-feldolgozója Linuxra
+
+Írja alá a hibrid Runbook-feldolgozója Linuxra a runbookok, a hibrid Runbook-feldolgozó rendelkeznie kell a [GPG](https://gnupg.org/index.html) végrehajtható fájl jelen van a gépen.
+
+#### <a name="create-a-gpg-keyring-and-keypair"></a>GPG-kulcstárba és kulcspár létrehozása
+
+Kulcstár és a hibrid Runbook-feldolgozó fiók használatára kell kulcspár létrehozásához `nxautomation`.
+
+Használat `sudo` , jelentkezzen be a `nxautomation` fiókot.
+
+```bash
+sudo su – nxautomation
+```
+
+Egyszer használja a `nxautomation` fiók, a gpg-kulcspár létrehozásához.
+
+```bash
+sudo gpg --generate-key
+```
+
+GPG végigvezeti Önt a kulcspár létrehozásához szükséges lépéseket. Adjon meg egy nevet, egy e-mail címet, lejárati ideje, jelszót és elegendő vysokou várja meg, létrejön a kulcs a gépen kell.
+
+A GPG-könyvtár sudo lett létrehozva, mert a tulajdonos átállítása nxautomation szüksége. 
+
+A következő paranccsal módosíthatja a tulajdonost.
+
+```bash
+sudo chown -R nxautomation ~/.gnupg
+```
+
+#### <a name="make-the-keyring-available-the-hybrid-runbook-worker"></a>A kulcstár elérhetővé tenni a hibrid Runbook-feldolgozó
+
+A kulcstár létrehozása után kell a hibrid Runbook-feldolgozó számára elérhető legyen. Módosítsa a beállításokat fájlt `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf` a szakaszában az alábbi példa tartalmazza `[worker-optional]`
+
+```bash
+gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
+```
+
+#### <a name="verify-signature-validation-is-on"></a>Aláírás-ellenőrzése-e a
+
+Aláírás-ellenőrzése a számítógépen le van tiltva, ha szüksége bekapcsolásához. Futtassa a következő parancsot az aláírás-ellenőrzés engedélyezése. Lecserélve `<LogAnalyticsworkspaceId>` a munkaterület azonosítóját.
+
+```bash
+sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>
+```
+
+#### <a name="sign-a-runbook"></a>Egy runbook aláírása
+
+Aláírás-ellenőrzése van konfigurálva, ha a következő parancsot használhatja egy runbook aláírásához:
+
+```bash
+gpg –clear-sign <runbook name>
+```
+
+Az aláírt runbook neve lesz `<runbook name>.asc`.
+
+Az aláírt runbook most feltölthetők az Azure Automationt, és rendszeres runbook például hajthatók végre.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 

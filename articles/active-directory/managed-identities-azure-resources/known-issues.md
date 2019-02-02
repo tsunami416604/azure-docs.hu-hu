@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
-ms.openlocfilehash: 45bf76696269e1224250b834b67acb2a68c10d7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cbe6d04dfcf9174b15cde71f7becbb371eaee4b2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189459"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662468"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Gyakori kérdések és ismert problémái az Azure-erőforrások felügyelt identitásokból
 
@@ -154,8 +154,8 @@ Felügyelt identitások nem módosul, ha egy előfizetés áthelyezték vagy át
 
 ## <a name="known-issues-with-user-assigned-managed-identities"></a>Felügyelt identitások felhasználó által hozzárendelt ismert problémái
 
-- Egy felhasználó által hozzárendelt felügyelt identitás létrehozása a különleges karakterek (például aláhúzásjelet lehet) a neve, nem támogatott.
-- Felhasználó által hozzárendelt identitás nevek korlátozódnak 24 karakter hosszúságú lehet. Ha a név legfeljebb 24 karakter hosszúságú, az identitás sikertelen lesz-e hozzá kell rendelni egy erőforrást (pl. virtuális gép.)
+- Felhasználó által hozzárendelt identitás nevek korlátozva, egy legalább 3 karakter és legfeljebb 128 karakter hosszú lehet. Ha a név legfeljebb 128 karakter hosszúságú, az identitás sikertelen lesz-e hozzá kell rendelni egy erőforrást (pl. virtuális gép.)
+- Felhasználó által hozzárendelt identitás nevek a következő karaktereket tartalmazhatja: a – z, A - Z,-, \_, 0 – 9. Ez a név karakterkészletet (azaz csillag) kívül eső karaktereket a felhasználó által hozzárendelt felügyelt identitás készít, nem támogatott.
 - (Elavult. január 2019 a tervezett) felügyelt identitás virtuálisgép-bővítmény használata esetén a támogatott határértéke 32, felhasználó által hozzárendelt felügyelt identitások. Nem felügyelt identitás virtuálisgép-bővítmény a támogatott határértéke 512.  
 - Egy felhasználó által hozzárendelt felügyelt identitás áthelyezése egy másik erőforráscsoportban található az identitás érvényteleníteni miatt. Ennek eredményeképpen nem képes az identitáshoz tartozó jogkivonatok kérelmezésére. 
 - Előfizetés átadása egy másik címtárban megszakítja a meglévő felhasználó által hozzárendelt felügyelt identitást. 

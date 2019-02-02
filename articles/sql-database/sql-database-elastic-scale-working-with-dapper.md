@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 14eb92141a9d27d9f8978abb6d5c9a738c821ead
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 8de155eb0c53a07c88d996e2545be9da3159653f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866304"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565581"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Elastic database-ügyfélkódtár használata a dapperrel
 Alkalmazásokat hozhat létre Dapper támaszkodik, de is szeretné kihasználni a fejlesztők számára van ez a dokumentum [elastic database tooling](sql-database-elastic-scale-introduction.md) , alkalmazzon horizontális skálázási horizontális felskálázási méretezhetik alkalmazások létrehozásához.  Ez a dokumentum a Dapper-alapú alkalmazások integrálása az elastic database-eszközökkel való szükséges változásokat mutatja be. A fókusz a rugalmas adatbázis szilánkkezelési és Adatfüggő útválasztásnak dapperrel összeállítása be van kapcsolva. 
@@ -49,9 +49,9 @@ A hagyományos módon Dapper-kapcsolatok létrehozása helyett kell használnia 
 ### <a name="requirements-for-dapper-integration"></a>Dapper integrációs követelményei
 A rugalmas adatbázis-klienskódtár és a Dapper API-k is működik, ha meg szeretné őrizni az alábbi tulajdonságokat:
 
-* **Horizontális felskálázás**: hozzáadása, illetve eltávolíthat adatbázisokat a szilánkos alkalmazás kapacitásigény szükséges az alkalmazás adatrétegének szeretnénk. 
-* **Konzisztencia**: mivel az alkalmazás horizontális skálázási használatával horizontálisan, kell elvégeznie a Adatfüggő útválasztásnak. Ehhez a tár Adatfüggő útválasztás képességeit használva szeretnénk. Különösen meg szeretné őrizni az érvényesítés, és a konzisztenciára vonatkozó garanciákat sérülés vagy hibás lekérdezési eredmények elkerülése érdekében a szilánkleképezés-kezelővel keresztül vannak közvetítőalapú kapcsolatok által biztosított. Ez biztosítja, hogy a kapcsolatok egy adott shardlet el lett utasítva vagy leállt, ha (például) a shardlet jelenleg helyezik át egy másik adatszilánkba író felosztó/egyesítő API-k használatával.
-* **Az objektumok leképezése**: megőrzi a kényelem érdekében a Dapper az osztályok, az alkalmazás és az alapul szolgáló adatbázis struktúrák közötti átalakításra által biztosított megfeleltetéseket szeretnénk. 
+* **Horizontális felskálázás**: Adja hozzá, illetve eltávolíthat adatbázisokat a szilánkos alkalmazás kapacitásigény szükséges az alkalmazás adatrétegének szeretnénk. 
+* **Konzisztencia**: Az alkalmazás horizontális skálázási használatával horizontálisan, mivel Adatfüggő útválasztásnak végrehajtásához kell. Ehhez a tár Adatfüggő útválasztás képességeit használva szeretnénk. Különösen meg szeretné őrizni az érvényesítés, és a konzisztenciára vonatkozó garanciákat sérülés vagy hibás lekérdezési eredmények elkerülése érdekében a szilánkleképezés-kezelővel keresztül vannak közvetítőalapú kapcsolatok által biztosított. Ez biztosítja, hogy a kapcsolatok egy adott shardlet el lett utasítva vagy leállt, ha (például) a shardlet jelenleg helyezik át egy másik adatszilánkba író felosztó/egyesítő API-k használatával.
+* **Objektum leképezése**: A kényelem érdekében a Dapper az osztályok, az alkalmazás és az alapul szolgáló adatbázis struktúrák közötti átalakításra által biztosított megfeleltetéseket megőrzése szeretnénk. 
 
 A következő szakaszban ezek a követelmények alapján alkalmazások útmutatást nyújt **Dapper** és **DapperExtensions**.
 
@@ -137,7 +137,7 @@ Ez pedig a kódminta található, a lekérdezés:
     }
 
 ### <a name="handling-transient-faults"></a>Átmeneti hibák kezeléséhez
-A Microsoft Patterns és gyakorlatokkal foglalkozó csoportja közzé a [átmeneti-kezelési Alkalmazásblokk](https://msdn.microsoft.com/library/hh680934.aspx) alkalmazásfejlesztők észlelt, amikor a felhőben futó gyakori átmeneti hibák feltételek csökkentése érdekében. További információkért lásd: [Perseverance, minden Triumphs titkos kulcs: az átmeneti-kezelési Alkalmazásblokk használatával](https://msdn.microsoft.com/library/dn440719.aspx).
+A Microsoft Patterns és gyakorlatokkal foglalkozó csoportja közzé a [átmeneti-kezelési Alkalmazásblokk](https://msdn.microsoft.com/library/hh680934.aspx) alkalmazásfejlesztők észlelt, amikor a felhőben futó gyakori átmeneti hibák feltételek csökkentése érdekében. További információkért lásd: [Perseverance, minden Triumphs titkos kulcs: Az átmeneti hibakezelési Alkalmazásblokk használatával](https://msdn.microsoft.com/library/dn440719.aspx).
 
 A kódminta átmeneti hibák elleni védelem érdekében az átmeneti hibák könyvtár támaszkodik. 
 

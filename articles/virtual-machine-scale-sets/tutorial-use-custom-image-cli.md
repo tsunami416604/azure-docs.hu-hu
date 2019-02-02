@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 119a53949b6184389c0e36e56732f0486c24ca5c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8f1556f67948ec2474d713385c291efe3353c723
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193488"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663009"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Oktatóanyag: Rendszerkép létrehozása és használata egy egyéni virtuálisgép-méretezési csoportokhoz az Azure CLI-vel
 Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a virtuálisgép-példányok üzembe helyezésekor. Egyéni virtuálisgép-rendszerkép használatával csökkentheti a feladatok számát a virtuálisgép-példányok üzembe helyezése után. Ez az egyéni virtuálisgép-rendszerkép tartalmaz minden szükséges alkalmazástelepítést és -konfigurációt. A méretezési csoportban létrehozott összes virtuálisgép-példány az egyéni virtuálisgép-rendszerképet használja, és készen állnak az alkalmazás forgalmának kiszolgálására. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -87,7 +87,7 @@ exit
 ## <a name="create-a-custom-vm-image-from-the-source-vm"></a>Egyéni virtuálisgép-rendszerkép létrehozása a forrás virtuális gépről
 A forrás virtuális gép most már testre van szabva, és az NGINX-webkiszolgáló is telepítve van. Hozzuk létre a méretezési csoporthoz használni kívánt egyéni virtuálisgép-rendszerképet.
 
-Rendszerkép létrehozásához fel kell szabadítani a virtuális gépet. Szabadítsa fel a virtuális gépet az [az vm deallocate](/cli//azure/vm#az_vm_deallocate) paranccsal. Ezután állítsa a virtuális gép állapotát általánosított értékre az [az vm generalize](/cli//azure/vm#az_vm_generalize) paranccsal. Így az Azure platform felismeri, hogy a virtuális gép készen áll egy egyéni rendszerkép használatára. Rendszerképet csak általánosított virtuális gépből hozhat létre:
+Rendszerkép létrehozásához fel kell szabadítani a virtuális gépet. Szabadítsa fel a virtuális gépet az [az vm deallocate](/cli//azure/vm) paranccsal. Ezután állítsa a virtuális gép állapotát általánosított értékre az [az vm generalize](/cli//azure/vm#az_vm_generalize) paranccsal. Így az Azure platform felismeri, hogy a virtuális gép készen áll egy egyéni rendszerkép használatára. Rendszerképet csak általánosított virtuális gépből hozhat létre:
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroup --name myVM

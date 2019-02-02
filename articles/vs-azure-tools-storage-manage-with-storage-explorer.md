@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: a540e6c585210f7b1dc36a89eaae7a4b4bf8fc70
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: cdfb1e11a2eb468e390546d69617ff4cadd17a7e
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422728"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658876"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer használatának első lépései
 
@@ -63,7 +63,7 @@ Az Azure Storage Explorer a többi disztribúciókon is működhet, azonban csak
 
 Az alábbi függőségeket és kódtárak futtatható az Azure Storage Explorer linuxon is kell rendelkeznie:
 
-* [A .NET core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
 * libsecret (Megjegyzés: libsecret-1.so.0 kell lennie a gépen elérhető. Ha libsecret telepítve van egy másik verziója, megpróbálhatja a .so fájl helyreállítható összekapcsolása libsecret-1.so.0)
 * libgconf-2-4
 * Naprakész GCC
@@ -84,12 +84,12 @@ A Storage Explorer számos különféle módot kínál a tárfiókokhoz való cs
 
 Emellett használhatja a tárfiókokat a globális és az országos Azure-ban:
 
-* [Csatlakozás Azure-előfizetéshez](#connect-to-an-azure-subscription): Az Azure-előfizetéséhez tartozó tárolási erőforrások kezelése.
+* [Csatlakozás az Azure-előfizetéshez](#connect-to-an-azure-subscription): Az Azure-előfizetéséhez tartozó tárolási erőforrások kezelése.
 * [Munkavégzés helyi fejlesztési tárterülettel](#work-with-local-development-storage): Helyi tárterület kezelése az Azure Storage Emulator használatával.
-* [Külső tárterület csatolása](#attach-or-detach-an-external-storage-account): Más Azure-előfizetések vagy az országos Azure-felhők alá tartozó tárolási erőforrások kezelése a tárfiók fióknevének, kulcsának és végpontjainak használatával.
-* [Tárfiók csatolása SAS használatával](#attach-storage-account-using-sas): Más Azure-előfizetések alá tartozó tárolási erőforrások kezelése közös hozzáférésű jogosultságkód (SAS) használatával.
-* [Szolgáltatás csatolása SAS használatával](#attach-service-using-sas): Más Azure-előfizetések alá tartozó adott tárolási szolgáltatás (blob tároló, üzenetsor vagy tábla) kezelése SAS használatával.
-* [Csatlakozás az Azure Cosmos DB-fiók egy kapcsolati karakterlánc használatával](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): kezelése Cosmos DB-fiók kapcsolati karakterlánc használatával.
+* [Külső tárterület csatolása](#attach-or-detach-an-external-storage-account): Tárolási erőforrások egy másik Azure-előfizetéshez tartozó vagy az országos Azure-felhők a storage-fiók neve, kulcsának és végpontjainak használatával kezelheti.
+* [Tárfiók csatolása SAS használatával](): Közös hozzáférésű jogosultságkód (SAS) használatával egy másik Azure-előfizetéséhez tartozó tárolási erőforrások kezelése.
+* [Szolgáltatás csatolása SAS használatával](#attach-service-using-sas): Kezelheti egy adott tárolási szolgáltatás (blob tároló, üzenetsor vagy tábla), amely a SAS használatával egy másik Azure-előfizetéshez tartozik.
+* [Csatlakozás az Azure Cosmos DB-fiók egy kapcsolati karakterlánc használatával](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Kapcsolati karakterlánc használatával felügyelheti a Cosmos DB-fiókot.
 
 ## <a name="connect-to-an-azure-subscription"></a>Csatlakozás Azure-előfizetéshez
 

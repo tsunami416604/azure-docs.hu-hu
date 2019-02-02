@@ -7,17 +7,17 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 9a12ca5deeadfb7272532f404cc9cf7c030fb6c0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 596b7eb53d82f8eee7da439314994fd0951c7e64
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994351"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661717"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik azok a Microsoft Azure klasszikus riasztások?
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan hozhat létre a régebbi klasszikus metrikariasztásokat. Az Azure Monitor most már támogatja a [újabb közel valós idejű metrikákhoz kapcsolódó riasztások és a egy riasztások új kezelőfelülete](../../azure-monitor/platform/alerts-overview.md). Klasszikus riasztások [án megszűnik](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement).  
+> Ez a cikk ismerteti, hogyan hozhat létre a régebbi klasszikus metrikariasztásokat. Az Azure Monitor most már támogatja a [újabb közel valós idejű metrikákhoz kapcsolódó riasztások és a egy riasztások új kezelőfelülete](../../azure-monitor/platform/alerts-overview.md). Klasszikus riasztások [án megszűnik](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).  
 >
 
 Riasztások lehetővé teszik a feltételek konfigurálása adatokon, és értesüljön róla, ha a feltétel egyezik a legújabb figyelési adatok.
@@ -82,7 +82,7 @@ Azonban a régebbi metrikákhoz kapcsolódó riasztások nem Műveletcsoportok h
 Webhookok lehetővé teszi, hogy automation és a szervizeléshez, például használatával:
     - Azure Automation-runbook
     - Azure-függvény
-    - Az Azure Logic App
+    - Azure Logic App
     - Egy külső szolgáltatás
 
 ## <a name="next-steps"></a>További lépések

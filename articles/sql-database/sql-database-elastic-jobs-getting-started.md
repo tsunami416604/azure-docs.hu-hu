@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 0269a8ea460667d44b6173e4504a9ccb5695d722
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: ff7e15579bfb0edfe9229238c6a4d5672700d0ef
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863533"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567009"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Ismerkedés a rugalmas adatbázis-feladatok
 
@@ -258,21 +258,21 @@ Elastic Database-feladatok feladatok indításakor alkalmazható egyéni végreh
 
 Végrehajtási házirendek definiálása jelenleg engedélyezése:
 
-* Neve: A végrehajtási házirend azonosítója.
-* Feladat időtúllépése: Teljes idő előtt Elastic Database-feladatok által megszakított feladatok.
-* Kezdeti újrapróbálkozási időköz: Intervallum várjon első újrapróbálkozás előtt.
-* Maximális újrapróbálkozási időköz: Korlát az újrapróbálkozási időközök használatára.
-* Újrapróbálkozási időköz leállítási együttható: Együttható alapján számítja ki a következő esedékes újrapróbálkozások között.  Az alábbi képlet használható: (kezdeti csolódási újrapróbálkozási időköz) * Math.pow ((intervallum leállítási együttható) (próbálkozások száma) – 2).
+* Név: A végrehajtási házirend azonosítója.
+* Feladat időtúllépése: Teljes idő, mielőtt az Elastic Database-feladatok által megszakított feladatok.
+* Kezdeti újrapróbálkozási időköz: Első újrapróbálkozás előtti várakozási időt.
+* Maximális újrapróbálkozási időköz: Az újrapróbálkozási időközök használandó korlátot.
+* Újrapróbálkozási időköz leállítási együttható: Újrapróbálkozások között a következő esedékes kiszámításához használt együttható.  Használja a következő képletre: (A kezdeti újrapróbálkozási időköz) * Math.pow ((intervallum leállítási együttható) (újrapróbálkozások száma) – 2).
 * Kísérletek maximális száma: A maximális újrapróbálkozási kísérletek száma a feladatokon belül végrehajtani.
 
 Az alapértelmezett végrehajtási házirendet a következő értékeket használja:
 
 * Név: Alapértelmezett végrehajtási házirend
 * Feladat időtúllépése: 1 hét
-* Kezdeti újrapróbálkozási időköz: 100 ezredmásodpercben
+* Kezdeti újrapróbálkozási időköz:  100 ideje ezredmásodpercben
 * Maximális újrapróbálkozási időköz: 30 perc
-* Ismételje meg a időköz együttható: 2
-* Kísérletek maximális száma: 2 147 483 647
+* Újrapróbálkozási időköz együttható: 2
+* Kísérletek maximális száma: 2,147,483,647
 
 A kívánt végrehajtási házirend létrehozása:
 
@@ -307,8 +307,8 @@ Elastic Database-feladatok feladatok megszakítási kérések támogatja.  Elast
 
 Elastic Database-feladatok is hajtsa végre a megszakítási két különböző módja van:
 
-1. Megszakítása jelenleg végrehajtás alatt álló feladatokat: lemondás észlel, amíg egy tevékenység fut, ha a lemondás kísérlet történik a feladat jelenleg végrehajtás alatt aspektusa belül.  Példa: Ha jelenleg lemondás megkísérelt végrehajtani egy hosszan futó lekérdezést, van-e a lekérdezés ismételt megkísérléséhez.
-2. Megszakítás alatt álló tevékenység-újrapróbálások: Lemondás végrehajtási feladat konfigurálása előtt a vezérlő szál észlelése esetén a vezérlőelem szál elkerülhető, hogy a feladat elindítása és deklarálja a kérelmet, mert meg lett szakítva.
+1. Megszakítása jelenleg végrehajtás alatt álló feladatokat: Lemondás észlel, amíg egy tevékenység fut, ha a lemondás kísérlet történik, a feladat jelenleg végrehajtás alatt aspektusa belül.  Példa: Ha nincs hosszan futó lekérdezést jelenleg lemondás megkísérelt végrehajtani, nincs megszakítja a lekérdezés ismételt megkísérléséhez.
+2. Újrapróbálkozások megszakítása. feladat: Lemondás végrehajtási feladat konfigurálása előtt a vezérlő szál észlelése esetén a vezérlőelem szál elkerülhető, hogy a feladat futtatására, és deklarálja a kérelmet, mert meg lett szakítva.
 
 Ha egy feladat törlése a szülőfeladat van szükség, a szülő feladat és az összes hozzá tartozó gyermekfeladatok a megszakítási kérelemre váró figyelembe véve.
 

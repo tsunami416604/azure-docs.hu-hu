@@ -1,5 +1,5 @@
 ---
-title: Kubernetes-alapú Dev Spaces-tér létrehozása a felhőben a .NET Core és a VS Code használatával | Microsoft Docs
+title: Hozzon létre egy Kubernetes-fejlesztési tárolóhelyet a .NET Core és a VS Code használatával felhőbeli |} A Microsoft Docs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -10,14 +10,14 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: b51bf83d2e44239ebd6bc17e25efaa2fe94250f3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f053f2f70b266a53684f72ceb9d997a718c66444
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467135"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663910"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Bevezetés az Azure Dev Spaces .NET Core segítségével történő használatába
+# <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Bevezetés az Azure fejlesztési tárolóhelyek .NET Core használatával
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
@@ -245,4 +245,4 @@ Frissítse a webalkalmazást a böngészőben, és lépjen az Információ oldal
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A csapatban végzett fejlesztés bemutatása](team-development-netcore.md)
+> [További tudnivalók több szolgáltatást fejlesztési](multi-service-netcore.md)

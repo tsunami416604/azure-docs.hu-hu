@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8548fe53288b2f9c486c9ccdc42afa08f40b4ae1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 664dc101232ed092b76e2642ec94c6e7aa5e7a88
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181594"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660565"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Hozzon létre, és a Linux rendszerű virtuális gépek az Azure CLI-vel az Azure virtuális hálózatok kezelése
 
@@ -68,7 +68,7 @@ az group create --name myRGNetwork --location eastus
 
 ### <a name="create-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) paranccsal. Ebben a példában a hálózat neve *mvVNet*, és egy *10.0.0.0/16* címelőtagot kap. Létrejön egy alhálózat is *myFrontendSubnet* néven, *10.0.1.0/24* előtaggal. Az oktatóanyag későbbi részében ehhez az alhálózathoz egy előtérbeli virtuális gép csatlakozik. 
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. Ebben a példában a hálózat neve *mvVNet*, és egy *10.0.0.0/16* címelőtagot kap. Létrejön egy alhálózat is *myFrontendSubnet* néven, *10.0.1.0/24* előtaggal. Az oktatóanyag későbbi részében ehhez az alhálózathoz egy előtérbeli virtuális gép csatlakozik. 
 
 ```azurecli-interactive 
 az network vnet create \

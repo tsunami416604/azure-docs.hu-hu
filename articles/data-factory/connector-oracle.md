@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/21/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 35c0d9190a11ad76ef44b43ef5160d2b39bee1fc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 64f348880bf8872c61a1d1c90930c25ce9551bbf
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016910"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658029"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az és Oracle az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-onprem-oracle-connector.md)
 > * [Aktuális verzió](connector-oracle.md)
 
@@ -58,7 +58,7 @@ Az Oracle-beli társított szolgáltatás a következő tulajdonságok támogato
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot állítsa **Oracle**. | Igen |
-| kapcsolati Sztringje | Itt adható meg az Oracle Database-példányhoz való kapcsolódáshoz szükséges információkat. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md).<br><br>**Kapcsolat típusa támogatott**: Használhat **Oracle biztonsági azonosító** vagy **Oracle-szolgáltatás neve** az adatbázis azonosításához:<br>-Ha biztonsági azonosító: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás a nevet használja: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Igen |
+| kapcsolati Sztringje | Itt adható meg az Oracle Database-példányhoz való kapcsolódáshoz szükséges információkat. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó az Azure Key Vault és lekéréses is helyezheti a `password` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. <br><br>**Kapcsolat típusa támogatott**: Használhat **Oracle biztonsági azonosító** vagy **Oracle-szolgáltatás neve** az adatbázis azonosításához:<br>-Ha biztonsági azonosító: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás a nevet használja: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 >[!TIP]
@@ -126,6 +126,34 @@ Az Oracle-beli társított szolgáltatás a következő tulajdonságok támogato
 }
 ```
 
+**Példa: a jelszó tárolásához az Azure Key Vaultban**
+
+```json
+{
+    "name": "OracleLinkedService",
+    "properties": {
+        "type": "Oracle",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;"
+            },
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz az Oracle-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
@@ -251,27 +279,27 @@ Oracle és a másolt adatok, Data Factory-közbenső adattípusok a következő 
 
 | Oracle-adattípus | Data Factory közbenső adattípus |
 |:--- |:--- |
-| BFILE |Byte] |
-| BLOB |Byte]<br/>(csak támogatott Oracle 10g vagy újabb) |
-| CHAR |Karakterlánc |
-| CLOB |Karakterlánc |
+| BFILE |Byte[] |
+| BLOB |Byte[]<br/>(csak támogatott Oracle 10g vagy újabb) |
+| CHAR |String |
+| CLOB |String |
 | DATE |DateTime |
 | LEBEGŐPONTOS |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| EGÉSZ SZÁM |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| HOSSZÚ |Karakterlánc |
-| MENNYI IDEIG NYERS |Byte] |
-| NCHAR |Karakterlánc |
-| NCLOB |Karakterlánc |
+| INTEGER |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
+| HOSSZÚ |String |
+| MENNYI IDEIG NYERS |Byte[] |
+| NCHAR |String |
+| NCLOB |String |
 | SZÁM |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| NVARCHAR2 |Karakterlánc |
-| RAW |Byte] |
-| }, ROWID |Karakterlánc |
+| NVARCHAR2 |String |
+| RAW |Byte[] |
+| }, ROWID |String |
 | IDŐBÉLYEG |DateTime |
-| A HELYI IDŐZÓNA IDŐBÉLYEG |Karakterlánc |
-| AZ IDŐZÓNA IDŐBÉLYEG |Karakterlánc |
+| A HELYI IDŐZÓNA IDŐBÉLYEG |String |
+| AZ IDŐZÓNA IDŐBÉLYEG |String |
 | ELŐJEL NÉLKÜLI EGÉSZ SZÁM |Szám |
-| VARCHAR2 |Karakterlánc |
-| XML |Karakterlánc |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > Az adattípusok IDŐKÖZ év TO hónap és nap TO IDŐKÖZ második nem támogatottak.

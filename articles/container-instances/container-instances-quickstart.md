@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 70d1bc9003d98f0154b9f38738f1b8e82b0c506d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 93a41610035d91774256410cea6af1d06b085d30
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189608"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562062"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-with-the-azure-cli"></a>Gyors útmutató: Egy tároló-alkalmazás futtatása az Azure Container Instances szolgáltatásban az Azure CLI-vel
 
@@ -39,7 +39,9 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Egy tárolópéldány Azure CLI-vel való létrehozásához adjon meg egy erőforráscsoport-nevet, egy tárolópéldánynevet és egy Docker-tárolórendszerképet az [az container create][az-container-create] parancsban. A tárolóit közzéteheti az interneten. Ehhez adjon meg egy vagy több megnyitni kívánt portot, egy DNS-névcímkét vagy mindkettőt. Ebben az útmutatóban egy tárolót fog üzembe helyezni egy olyan DNS-névcímkével, amely egy, a Node.js használatával létrehozott kisméretű webalkalmazást üzemeltet.
+Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Egy tárolópéldány Azure CLI-vel való létrehozásához adjon meg egy erőforráscsoport-nevet, egy tárolópéldánynevet és egy Docker-tárolórendszerképet az [az container create][az-container-create] parancsban. Ez a rövid a `microsoft/aci-helloworld` rendszerkép a nyilvános Docker Hub-beállításjegyzékből. Ez a rendszerkép csomagok a node.js-ben, amely egy statikus HTML-oldalt szolgál egy kisméretű webalkalmazást.
+
+A tárolóit közzéteheti az interneten. Ehhez adjon meg egy vagy több megnyitni kívánt portot, egy DNS-névcímkét vagy mindkettőt. Ebben a rövid útmutatóban üzembe helyezi egy-egy DNS-névcímke tárolóban úgy, hogy a webalkalmazás nyilvánosan elérhető.
 
 A tárolópéldány indításához futtassa az alábbi parancsot. A `--dns-name-label` értéknek egyedinek kell lennie abban az Azure-régióban, ahol a példányt létrehozza. Ha „A DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
@@ -92,7 +94,7 @@ listening on port 80
 
 A naplók megtekintése mellett helyi standard kimeneti és hibastreameket csatolhat a tárolóhoz.
 
-Először csatolja a helyi konzol a tároló kimeneti steamjeihez az [az container attach][az-container-attach] paranccsal:
+Először futtassa a következőt a [az container attach] [ az-container-attach] parancsot a helyi konzol csatlakoztatása a tároló kimeneti steamjeihez:
 
 ```azurecli-interactive
 az container attach --resource-group myResourceGroup -n mycontainer
@@ -145,7 +147,7 @@ Ebben a rövid útmutatóban létrehozott egy tárolópéldányt egy, a nyilván
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga](./container-instances-tutorial-prepare-app.md)
 
-Ha ki szeretné próbálni a tárolók futtatásának különböző lehetőségeit egy Azure-beli előkészítési rendszerben, tekintse meg a [Service Fabric][service-fabric] vagy az [Azure Kubernetes Service (AKS)][container-service] rövid útmutatóit.
+Próbálja ki az Azure-ban futó tárolók egy tárolószervező rendszer lehetőségei, tekintse meg a [Azure Kubernetes Service (AKS)] [ container-service] rövid útmutatók.
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
@@ -166,4 +168,3 @@ Ha ki szeretné próbálni a tárolók futtatásának különböző lehetősége
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-service]: ../aks/kubernetes-walkthrough.md
-[service-fabric]: ../service-fabric/service-fabric-quickstart-containers.md

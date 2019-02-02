@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/31/2019
 ms.author: juliako
-ms.openlocfilehash: 205a4f2089ec5f415932f98eefe2f3d5f614f0ba
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 84f2b4d68bf95d18a63401f796e2ffca682c808f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402047"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567274"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -102,6 +102,10 @@ A video- és tartalom nyilvános, mint saját adatvédelmi beállítással rende
 
 Egy a [Azure Online szolgáltatások használati feltételeit](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST), a saját teljesen a tartalmat, és a Microsoft csak akkor fér hozzá a tartalom és a metaadatokat és, amelyek a Video Indexer kinyeri az OST és a Microsoft szerint a tartalomból Adatvédelmi nyilatkozatot.
 
+### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Érhetők el az egyéni modellek, hogy a Video Indexer-fiókot a más fiókokhoz?
+
+ Az egyéni modellek a fiókban létrehozott nem, minden más fiókhoz nem érhetők el. A video Indexer jelenleg lehetővé teszi, hogy hozhat létre egyéni [márkái](customize-brands-model-overview.md), [nyelvi](customize-language-model-overview.md), és [személy](customize-person-model-overview.md) modellek a fiókjában. Ezek a modellek csak a fiók, amelyben létrehozta a modellek érhető el.
+  
 ### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Azure-régióban, használom a Video Indexer tartani a Video Indexer által indexelt a tartalmat?
 
 Igen, a tartalom és az elemzések tartományán belül maradjanak az Azure-régióban, kivéve, ha manuális konfigurációs van az Azure-előfizetés által használt több Azure-régióban. 

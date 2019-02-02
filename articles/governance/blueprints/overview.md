@@ -4,17 +4,17 @@ description: Az Azure Blueprints az Azure egy szolgáltatása, amelynek használ
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/05/2018
+ms.date: 02/01/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bea01e8f017622f1407bbac993e50112140cc472
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7803ed99a61a9b4ad819da882daf38cbfd6fffe9
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246245"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563371"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -56,17 +56,14 @@ A tervek _tervelemekből_ állnak. A tervek jelenleg a következő erőforrások
 
 |Erőforrás  | Hierarchialehetőségek| Leírás  |
 |---------|---------|---------|
-|Erőforráscsoportok     | Előfizetés | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezekkel a helyőrző erőforráscsoportokkal az erőforrások a kívánt módon rendezhetők el, és kijelölhetők a tervbe foglalt szabályzat- és szerepkör-hozzárendelési tervelemek, valamint az Azure Resource Manager-sablonok hatókörkorlátai.         |
-|Azure Resource Manager-sablon      | Előfizetés, erőforráscsoport | A sablonokkal összetett környezetek állíthatók össze. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
-|Szabályzat-hozzárendelés     | Előfizetés, erőforráscsoport | Lehetővé teszi egy szabályzat vagy kezdeményezés hozzárendelését ahhoz az előfizetéshez, amelyhez a terv hozzá van rendelve. A szabályzatnak vagy kezdeményezésnek a terv hatókörén belül kell lennie (a terv felügyeleti csoportjában vagy az alatt). Ha a szabályzat vagy kezdeményezés paraméterekkel rendelkezik, ezeket a paramétereket a terv létrehozásakor vagy hozzárendelésekor lehet hozzárendelni.       |
-|Szerepkör-hozzárendelés   | Előfizetés, erőforráscsoport | Egy meglévő felhasználót vagy csoportot hozzáadhat egy beépített szerepkörhöz, és ezzel biztosíthatja, hogy a megfelelő személyek mindig a megfelelő hozzáféréssel rendelkezzenek az erőforrásokhoz. A szerepkör-hozzárendelések meghatározhatók az egész előfizetésre, vagy leszűkíthetők egy bizonyos erőforráscsoportra, amely a tervben található. |
+|Erőforráscsoportok | Előfizetés | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezekkel a helyőrző erőforráscsoportokkal az erőforrások a kívánt módon rendezhetők el, és kijelölhetők a tervbe foglalt szabályzat- és szerepkör-hozzárendelési tervelemek, valamint az Azure Resource Manager-sablonok hatókörkorlátai. |
+|Azure Resource Manager-sablon | Előfizetés, erőforráscsoport | A sablonokkal összetett környezetek állíthatók össze. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
+|Szabályzat-hozzárendelés | Előfizetés, erőforráscsoport | Lehetővé teszi egy szabályzat vagy kezdeményezés hozzárendelését ahhoz az előfizetéshez, amelyhez a terv hozzá van rendelve. A szabályzatot vagy kezdeményezést a tervrajz-definíció helye hatókörén belül kell lennie. Ha a szabályzat vagy kezdeményezés paraméterekkel rendelkezik, ezeket a paramétereket a terv létrehozásakor vagy hozzárendelésekor lehet hozzárendelni. |
+|Szerepkör-hozzárendelés | Előfizetés, erőforráscsoport | Egy meglévő felhasználót vagy csoportot hozzáadhat egy beépített szerepkörhöz, és ezzel biztosíthatja, hogy a megfelelő személyek mindig a megfelelő hozzáféréssel rendelkezzenek az erőforrásokhoz. A szerepkör-hozzárendelések meghatározhatók az egész előfizetésre, vagy leszűkíthetők egy bizonyos erőforráscsoportra, amely a tervben található. |
 
-### <a name="blueprints-and-management-groups"></a>Tervek és felügyeleti csoportok
+### <a name="blueprint-definition-locations"></a>Tervrajz-definíció helyek
 
-Tervdefiníció létrehozásakor meg kell határozni a terv mentési helyét. Jelenleg a tervek csak olyan [felügyeleti csoportokba](../management-groups/overview.md) menthetők, amelyekhez a felhasználó **Közreműködői** hozzáféréssel rendelkezik. A terv az adott felügyeleti csoport bármely gyermek előfizetéséhez hozzárendelhető.
-
-> [!IMPORTANT]
-> Ha nem rendelkezik hozzáféréssel egyetlen felügyeleti csoporthoz sem, vagy egyetlen felügyeleti csoport sincs konfigurálva, akkor a tervdefiníciók listájának betöltésekor egyetlen definíció sem lesz elérhető, és a **Hatókör** elemre kattintva megjelenik egy figyelmeztető ablak a felügyeleti csoportok lekéréséről. A probléma megoldásához biztosítsa, hogy az előfizetés, amelyhez megfelelő hozzáféréssel rendelkezik, egy [felügyeleti csoport](../management-groups/overview.md) része legyen.
+Tervdefiníció létrehozásakor meg kell határozni a terv mentési helyét. Tervezetek, melyekbe menthetők a [felügyeleti csoport](../management-groups/overview.md) vagy előfizetést, amely rendelkezik **közreműködői** való hozzáférést. Ha a hely egy felügyeleti csoportot, minden gyermek előfizetésre, az adott felügyeleti csoport hozzárendelése a tervezet érhető el.
 
 ### <a name="blueprint-parameters"></a>Tervparaméterek
 
@@ -101,7 +98,7 @@ Tervek törléséhez a fióknak a következő engedélyekkel kell rendelkeznie:
 - `Microsoft.Blueprint/blueprints/versions/delete`
 
 > [!NOTE]
-> Mivel a tervdefiníciók létrehozása egy felügyeleti csoportban történik, a tervdefiníciós engedélyeket ennek a felügyeleti csoportnak a hatókörében kell biztosítani, vagy örökléssel kell biztosítani a felügyeleti csoport hatókörében.
+> A tervezet definition engedélyekkel kell kapnak, vagy a felügyeleti csoportba vagy előfizetésbe hatókör szeretné menteni az örökölt.
 
 Tervek hozzárendeléséhez vagy a hozzárendelés megszüntetéséhez a fióknak a következő engedélyekkel kell rendelkeznie:
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/31/2019
+ms.date: 02/01/2019
 ms.author: magoedte
-ms.openlocfilehash: 90cd6f640188408771b3a64a31aadf89cfefcaae
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f61f420b6a738a410deed2d68acc06862600104f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487863"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563337"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) és az Azure Monitor az Azure virtuális gépek állapotának ismertetése
 Az Azure több szolgáltatást tartalmaz, amelyek külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés területen, de biztosít az Azure-beli virtuális gépeken futó operációs rendszer egy részletes állapota szempontjából nem volt elérhető.  A Log Analytics vagy az Azure Monitor használatával különböző feltételek esetén felügyelheti, amíg nem tervezték őket modellezheti, és az alapvető összetevők állapotát vagy a virtuális gép általános állapotát.  Az Azure virtuális gépek Állapotfigyelő szolgáltatás figyelője proaktív módon figyeli a rendelkezésre állás és a Windows vagy Linux-alapú vendég operációs rendszer, amelyek a legfontosabb összetevők és a kapcsolatok, feltételek, amely meghatározza, hogy miként állapotát, a modell teljesítményét összetevők, és riasztást küld, ha a nem kifogástalan állapot észlelésekor.  
@@ -142,13 +142,6 @@ Itt gyorsan azonosíthatja a proaktív figyelése a virtuális gép állapotára
 A **operációs rendszer által a virtuális gép terjesztési** lista mutatja azokat a Windows-kiadás vagy a Linux-disztribúció, és azok verziószáma szereplő virtuális gépek. Az egyes operációs rendszert, a virtuális gépek bontásban további a virtuális gép alapján. 
 
 ![Virtuális gép Insights virtuális gép terjesztési perspektíva](./media/vminsights-health/vminsights-vmdistribution-by-os.png)
-
-A megadott virtuális gép állapota állapotok a következők: 
-
-* **Kifogástalan állapotú** – nem problémát észlelt a virtuális gép, és szükség szerint működik-e.  
-* **Kritikus fontosságú** – egy vagy több kritikus problémák észlelhetők, amely kell oldani annak érdekében, hogy a normál működés visszaállítása a várt módon. 
-* **Figyelmeztetés** – egy vagy több problémák észlelhetők, amelyeket meg kell oldani, vagy az egészségügyi feltétel kritikus válhat.  
-* **Ismeretlen** – Ha a szolgáltatás nem tudott egy kapcsolatot a virtuális géppel, az állapot módosul, állapota ismeretlen.  
 
 Kattintson bármely oszlop elem – a **virtuális gépek száma**, **kritikus**, **figyelmeztetés**, **kifogástalan** vagy **ismeretlen** , részletesebb a **virtuális gépek** lapon kiválasztott oszlop megfelelő szűrt eredmények listájának megtekintéséhez. Például, ha azt át szeretné tekinteni a futó összes virtuális gép **Red Hat Enterprise Linux kiadásban 7.5**, kattintson a a **virtuális gépek száma** értéke, hogy az operációs rendszer, és megnyílik a következő oldalon a megfelelő virtuális gépek listája a szűrő és azok ismert állapotát.  
 

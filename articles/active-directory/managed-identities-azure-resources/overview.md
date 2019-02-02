@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: priyamo
-ms.openlocfilehash: 7cd599ff75827ca8b0c6f7683cae01210a8fc8ab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 34f6a03fc091fb4d86739af9d56993943ce44956
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183407"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662108"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Mit kell tudni az Azure-erőforrások felügyelt identitásairól?
 
@@ -102,6 +102,9 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Hogyan használhatom az Azure-erőforrások felügyelt identitásait?
 
 A különféle Azure-erőforrások felügyelt identitással való elérésének megismeréséért tekintse át az alábbi oktatóanyagokat.
+
+> [!NOTE]
+> Tekintse meg a [végrehajtási felügyelt identitásainak a Microsoft Azure-erőforrások](https://www.pluralsight.com/courses/microsoft-azure-resources-managed-identities-implementing) további információ a felügyelt identitásokból, beleértve a videó forgatókönyvek a több támogatott forgatókönyvek részletes tanfolyam.
 
 Útmutató a felügyelt identitások használatához Windows rendszerű virtuális gépeken:
 

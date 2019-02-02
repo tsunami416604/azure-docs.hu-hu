@@ -4,7 +4,7 @@ description: Hozza létre első saját, Windows-alapú tárolóalkalmazását az
 services: service-fabric
 documentationcenter: .net
 author: TylerMSFT
-manager: timlt
+manager: jpconnock
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,26 +12,28 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/18/2018
+ms.date: 01/25/2019
 ms.author: twhitney
-ms.openlocfilehash: 38979d80e25e0430082b7819d506b653c35697e6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e1024fadf6a68307e42b57ee3c383977b7b4fb9b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172953"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562504"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
+
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk ismerteti a Python [Flask](http://flask.pocoo.org/)-webalkalmazást tartalmazó Docker-rendszerképek létrehozását, illetve egy Service Fabric-fürtön való üzembe helyezését. Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](/azure/container-registry/) használatával. A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
+A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk végigkalauzolja egy Docker-rendszerképet, amely tartalmazza a Python [Flask](http://flask.pocoo.org/) webes alkalmazás és a helyi gépen futó Service Fabric-fürtön való üzembe helyezése. Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](/azure/container-registry/) használatával. A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
 > Ez a cikk egy Windows fejlesztési környezetre vonatkozik.  A Service Fabric-fürt futtatókörnyezetének és a Docker-futtatókörnyezet az ugyanazon operációs rendszeren kell futnia.  Windows-tárolók a Linux-fürt nem futtatható.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 * Egy fejlesztői számítógép, amelyen a következők futnak:
   * Visual Studio 2015 vagy Visual Studio 2017.
   * [Service Fabric SDK és -eszközök](service-fabric-get-started.md).
@@ -41,10 +43,10 @@ A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban
 
   Ebben a cikkben a tárolók a fürtcsomópontokon futó Windows Server verziója (build) meg kell egyeznie a fejlesztői gépen. Ennek az az oka a fejlesztői gépen a docker-rendszerképet hoz létre, és nincsenek kompatibilitási megkötések között a tároló az operációs rendszer verziója és a gazdagép operációs Rendszeréhez, amelyre telepítve van. További információkért lásd: [Windows Server-tárolót az operációs rendszer és a gazdagép operációsrendszer-kompatibilitás](#windows-server-container-os-and-host-os-compatibility). 
   
-  A fürt szükséges tárolókkal rendelkező Windows Server verziójának megállapításához futtassa a `ver` parancsot a Windows parancssorból a fejlesztői gépen:
+A fürt szükséges tárolókkal rendelkező Windows Server verziójának megállapításához futtassa a `ver` parancsot a Windows parancssorból a fejlesztői gépen:
 
-  * Ha a verzió tartalmaz *x.x.14323.x*, majd *WindowsServer 2016-Datacenter-az-tárolók* az operációs rendszer amikor [fürtöt hoz létre](service-fabric-cluster-creation-via-portal.md). Emellett [Service Fabric ingyenes kipróbálása](https://aka.ms/tryservicefabric) egy nyilvános fürttel.
-  * Ha a verzió tartalmaz *x.x.16299.x*, majd *WindowsServerSemiAnnual adatközpont-Core-1709-az-tárolók* az operációs rendszer amikor [fürtöthozlétre](service-fabric-cluster-creation-via-portal.md). Nyilvános fürt azonban nem használható.
+* Ha a verzió tartalmaz *x.x.14323.x*, majd *WindowsServer 2016-Datacenter-az-tárolók* az operációs rendszer amikor [fürtöt hoz létre](service-fabric-cluster-creation-via-portal.md).
+  * Ha a verzió tartalmaz *x.x.16299.x*, majd *WindowsServerSemiAnnual adatközpont-Core-1709-az-tárolók* az operációs rendszer amikor [fürtöthozlétre](service-fabric-cluster-creation-via-portal.md).
 
 * Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében.
 
@@ -57,6 +59,7 @@ A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban
 > 
 
 ## <a name="define-the-docker-container"></a>A Docker-tároló definiálása
+
 Állítson össze egy rendszerképet a Docker Hubban található [Python-rendszerkép](https://hub.docker.com/_/python/) alapján.
 
 Adja meg a Docker-tárolót egy Docker-fájlban. A Docker-fájl a környezet tárolón belüli beállítására, a futtatni kívánt alkalmazás betöltésére és a portok hozzárendelésére vonatkozó utasításokat tartalmazza. A Docker-fájl a `docker build` parancs bemenete, amely a rendszerképet létrehozza.
@@ -166,6 +169,7 @@ docker rm my-web-site
 
 <a id="Push-Containers"></a>
 ## <a name="push-the-image-to-the-container-registry"></a>A rendszerkép leküldése a tároló-beállításjegyzékbe
+
 Miután ellenőrizte, hogy a tároló fut-e a fejlesztői gépen, küldje le a rendszerképet a beállításjegyzékébe az Azure Container Registryben.
 
 Futtassa a(z) ``docker login`` parancsot a tároló-beállításjegyzékbe való bejelentkezéshez a [beállításjegyzékhez tartozó hitelesítő adataival](../container-registry/container-registry-authentication.md).
@@ -257,6 +261,7 @@ Konfiguráljon egy gazdagépportot a tárolóval való kommunikációhoz. A port
 > A szolgáltatás további PortBindings további PortBinding elemek és a alkalmazni tulajdonságértékek deklarálásával is hozzáadhatók.
 
 ## <a name="configure-container-registry-authentication"></a>Tárolóregisztrációs adatbázis hitelesítésének konfigurálása
+
 A tárolóregisztrációs adatbázis hitelesítésének konfigurálásához adja a hozzá a `RepositoryCredentials` elemet az ApplicationManifest.xml fájl `ContainerHostPolicies` eleméhez. Adja meg a myregistry.azurecr.io tárolóregisztrációs adatbázis fiókját és jelszavát, hogy a szolgáltatás le tudja tölteni a tároló rendszerképét az adattárból.
 
 ```xml
@@ -448,7 +453,8 @@ Az alkalmazás készen áll, amikor ```Ready``` állapota: ![Készen áll][2]
 Nyisson meg egy böngészőt, majd lépjen a következő helyre: http://containercluster.westus2.cloudapp.azure.com:8081. A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
-A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](service-fabric-cluster-delete.md). A [nyilvános fürtök](https://try.servicefabric.azure.com/) néhány óra múlva automatikusan törlődnek.
+
+A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](service-fabric-cluster-delete.md).
 
 Miután leküldte a rendszerképet a tárolóregisztrációs adatbázisba, törölheti a helyi rendszerképet a fejlesztői számítógépről:
 

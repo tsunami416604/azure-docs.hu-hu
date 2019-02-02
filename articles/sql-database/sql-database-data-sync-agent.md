@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 11/12/2018
-ms.openlocfilehash: b5916b781c636752ada6898cfa0c03bc02891501
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/20/2018
+ms.openlocfilehash: 78d85239e1e82c290b210d33d3ca7000d6a05a1f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715018"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567910"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Az Azure SQL Data Sync adatok szinkronizációs ügynök
 
@@ -191,7 +191,7 @@ Miután hoz létre, vagy hozza létre a kulcsot egy ügynöknek, küldje el a ku
 
   1. A Fájlkezelőben nyissa meg az ügynöktelepítési könyvtár. Az alapértelmezett telepítési könyvtárra a C:\\Program Files (x86)\\Microsoft SQL Data Sync szolgáltatással.
   1. Kattintson duplán a bin alkönyvtárat.
-  1. Nyissa meg a SqlAzureDataSyncAgent alkalmazást.
+  1. Open the SqlAzureDataSyncAgent application.
   1. Válassza ki **Ügynökkulcs elküldése**.
   1. A rendelkezésre álló illessze be a vágólapra másolt kulcsot.
   1. Kattintson az **OK** gombra.

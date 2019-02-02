@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 9837316cab503e6ade623e91a41176e6f4bfc84a
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/08/2018
+ms.openlocfilehash: 1f26fb101c9940a51ffb4fb7e1b48a51b943599a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867664"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663740"
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Univerzális hitelesítéssel az SQL Database és az SQL Data Warehouse (többtényezős hitelesítés támogatása ssms-ben)
 Az Azure SQL Database és Azure SQL Data Warehouse támogatja az SQL Server Management Studio (SSMS) használatával érkező kapcsolatokat *Active Directory univerzális hitelesítéssel*. 
-**Az ssms legújabb verziójának letöltése** – az ügyfélszámítógép az SSMS, legfrissebb verziójának letöltését [töltse le az SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). Ez a cikk az összes a funkciójához használja legalább 17.2 verziója 2017. július.  A legutóbbi kapcsolat párbeszédpanel néz ki: ![1mfa-universal-csatlakozás](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "befejezi a felhasználónév mezőben.")  
+**Az ssms legújabb verziójának letöltése** – az ügyfélszámítógép az SSMS, legfrissebb verziójának letöltését [töltse le az SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). Ez a cikk az összes a funkciójához használja legalább 17.2 verziója 2017. július.  A legutóbbi kapcsolat párbeszédpanel, így néz ki: ![1mfa-universal-csatlakozás](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "befejezi a felhasználónév mezőben.")  
 
 ## <a name="the-five-authentication-options"></a>Az öt hitelesítési beállítások  
 - Active Directory univerzális hitelesítéssel támogatja a nem interaktív hitelesítés kétféleképpen (`Active Directory - Password` hitelesítési és `Active Directory - Integrated` hitelesítést). A nem interaktív `Active Directory - Password` és `Active Directory - Integrated` hitelesítési módszerek (ADO.NET, JDBC, ODBC, stb.) számos más alkalmazásban is használható. Két módszer közül a felugró párbeszédpanel soha nem eredményez.
@@ -52,8 +52,8 @@ Azure AD-felhasználók Azure AD B2B-forgatókönyvekhez vendégként támogatot
 ## <a name="next-steps"></a>További lépések
 
 - A konfigurálás lépéseinek végrehajtásához tekintse meg a [konfigurálása az Azure SQL Database többtényezős hitelesítés az SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).
-- Az adatbázishoz való hozzáférés biztosítása más: [SQL Database hitelesítése és engedélyezése: hozzáférés biztosítása](sql-database-manage-logins.md)  
-- Ellenőrizze, hogy mások csatlakozhatnak a tűzfalon: [konfigurálni egy Azure SQL Database kiszolgálószintű tűzfalszabályt az Azure portal használatával](sql-database-configure-firewall-settings.md)  
+- Az adatbázishoz való hozzáférés biztosítása más: [Az SQL Database hitelesítése és engedélyezése: Hozzáférés biztosítása](sql-database-manage-logins.md)  
+- Győződjön meg arról, hogy mások csatlakozhatnak a tűzfalon keresztül: [Konfigurálhatja egy Azure SQL Database kiszolgálószintű tűzfalszabályt az Azure portal használatával](sql-database-configure-firewall-settings.md)  
 - [Azure Active Directory-hitelesítés konfigurálása és kezelése az SQL Database vagy az SQL Data Warehouse használatával](sql-database-aad-authentication-configure.md)  
 - [A Microsoft SQL Server Adatrétegbeli alkalmazási keretrendszer (17.0.0 a végleges verzió)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)  

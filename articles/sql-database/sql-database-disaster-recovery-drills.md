@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: cffafa68d155273de3b747c0399ce435f609b9fb
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: 5d754ae558d485036a9a55f573a3f40162ed9f84
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602205"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561127"
 ---
 # <a name="performing-disaster-recovery-drill"></a>Vészhelyreállítási próba végrehajtása
 
@@ -26,7 +26,7 @@ Javasoljuk, hogy az alkalmazás készenléti állapota helyreállítási munkafo
 Vészhelyreállítási próba végrehajtása áll:
 
 * Szimuláló üzemkimaradások esetére szint
-* Helyreállítása
+* Helyreállítás alatt
 * Alkalmazás-integritás utáni helyreállítás ellenőrzése
 
 Attól függően, hogy miként, [megtervezni az alkalmazás az üzletmenet folytonosságának](sql-database-business-continuity.md), a munkafolyamat végrehajtása a részletezés eltérőek lehetnek. Ez a cikk egy vészhelyreállítási próbát az Azure SQL Database környezetében végző ajánlott eljárásokat ismertetjük.

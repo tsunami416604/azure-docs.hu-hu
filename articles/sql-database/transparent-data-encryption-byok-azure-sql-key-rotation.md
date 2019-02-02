@@ -11,15 +11,15 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: jhubbard
-ms.date: 08/07/2017
-ms.openlocfilehash: 02f97b318be975f4ff24b4e72276776ebc30535c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.date: 12/06/2018
+ms.openlocfilehash: 14a39d283d9ec4f8d5267e6a6628609ac79879ee
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52991971"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567502"
 ---
-# <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>A PowerShell-lel transzparens adattitkosítási (TDE) védő elforgatása 
+# <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>A PowerShell-lel transzparens adattitkosítási (TDE) védő elforgatása
 
 Ez a cikk bemutatja egy Azure SQL Server használata az Azure Key vault a TDE-védőhöz kulcsrotálás. Elforgatás egy Azure SQL server TDE védőt eszközökkel vált egy új aszimmetrikus kulcs, amely védelmet nyújt a kiszolgálón lévő adatbázisokhoz. Kulcsrotálás egy online művelet, és néhány másodperc alatt befejezni, mert ez csak visszafejti, majd újból titkosítja az adatbázis szolgáltatásadat-titkosítási kulcs, nem a teljes adatbázist csak vesz igénybe.
 
@@ -39,7 +39,7 @@ Ez az útmutató bemutatja a kiszolgálón a TDE-védőhöz elforgatása két al
 - Rendelkeznie kell Azure PowerShell-lel 3.7.0 verzió vagy újabb telepítve és fut. 
 - [Opcionális de javasolt] Hozzon létre egy hardveres biztonsági modul (HSM) esetében a TDE-védőhöz megosztottkulcs-anyag vagy helyi kulcs első tárolja, és a megosztottkulcs-anyag importálja az Azure Key Vaultba. Kövesse a [egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](https://docs.microsoft.com/azure/key-vault/key-vault-get-started) további.
 
-## <a name="option-1-auto-rotation"></a>1. lehetőség: Automatikus rotációja
+## <a name="option-1-auto-rotation"></a>Option 1: Automatikus rotációja
 
 Hozzon létre a meglévő TDE-védőhöz kulcs új verziója a Key Vaultban, azonos nevű és a key vault alatt. Az Azure SQL-szolgáltatás elindul, 24 órán belül az új verzió használatával. 
 
@@ -52,7 +52,7 @@ Hozzon létre egy új verziója a TDE védőt használ, a [Add-AzureKeyVaultKey]
    -Destination <HardwareOrSoftware>
    ```
 
-## <a name="option-2-manual-rotation"></a>2. lehetőség: Manuális rotációja
+## <a name="option-2-manual-rotation"></a>Option 2: Manuális rotációja
 
 A beállítást használja a [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey), [Add-AzureRmSqlServerKeyVaultKey](/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey), és [Set-azurermsqlservertransparentdataencryptionprotector parancsmag](/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) parancsmagok hozzáadása egy teljesen új kulcsot, amely egy új kulcsnév vagy akár egy másik a key vault lehet. 
 
@@ -105,6 +105,6 @@ A beállítást használja a [Add-AzureKeyVaultKey](/powershell/module/azurerm.k
 
 ## <a name="next-steps"></a>További lépések
 
-- Esetén a biztonsági kockázatot jelent, megtudhatja, hogyan távolítsa el a potenciálisan veszélyeztetett TDE-védőhöz: [egy esetleg feltört kulcs eltávolítása](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
+- Esetén a biztonsági kockázatot jelent megtudhatja, hogyan távolítsa el a potenciálisan veszélyeztetett TDE-védőhöz: [Egy esetleg feltört kulcs eltávolítása](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
 
-- Ismerkedés a Bring Your Own Key TDE támogatása: [kapcsolja be a TDE Key vault PowerShell-lel a saját kulcs használata](transparent-data-encryption-byok-azure-sql-configure.md)
+- Első lépések a Bring Your Own Key TDE támogatása: [Kapcsolja be a TDE Key vault PowerShell-lel a saját kulcs használata](transparent-data-encryption-byok-azure-sql-configure.md)

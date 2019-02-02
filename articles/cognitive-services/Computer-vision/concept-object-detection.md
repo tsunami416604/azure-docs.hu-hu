@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3468f9341e0a8406733877a05798e427dd454fff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 93ce86a438fca47100a34da2524515b46bcad574
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167563"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567162"
 ---
 # <a name="object-detection"></a>Objektumészlelés
 
@@ -87,6 +87,15 @@ A következő JSON-választ mutatja be, milyen számítógépes Látástechnoló
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="limitations"></a>Korlátozások
 
-Fogalmak ismertetése [lemezképek kategorizálásához](concept-categorizing-images.md) és [lemezképek leíró](concept-describing-images.md).
+Fontos megjegyzés: az észlelési szolgáltatás korlátozásai, így elkerülheti, vagy téves negatív (kihagyott objektumok) és a korlátozott részletes enyhítésén.
+* Objektumok általában rendszer nem észleli, ha azok nagyon kicsi (kevesebb mint 5 %-a képen).
+* Objektumok észlelése általában nem, ha azok szorosan együtt vannak elrendezve (például a lemezek stack).
+* Objektumok nem különbözteti meg a márkáról vagy termék neve (szénsavas store tároló, például a különböző típusú). Azonban információkat szerezhet a márka lemezkép használatával a [saját arculat észlelési](concept-brand-detection.md) funkció.
+
+## <a name="use-the-api"></a>Az API-val
+Az észlelési szolgáltatás részét képezi a [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-t. Ez az API REST-hívások vagy a natív SDK keresztül hívása. A teljes JSON-választ kap, ha egyszerűen tartalmát a karakterláncot elemezni a `"objects"` szakaszban.
+
+* [Rövid útmutató: Kép (.NET SDK-t) elemzése](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [Rövid útmutató: Kép (REST API) elemzése](./quickstarts/csharp-analyze.md)

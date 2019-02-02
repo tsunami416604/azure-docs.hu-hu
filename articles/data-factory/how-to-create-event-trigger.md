@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 3fb9f98e94191c019b78c5666d2ff5336cc895eb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: fdbae70718ad62f96dda85e2d9574c7ec2d5ef23
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021866"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561093"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Hozzon létre egy eseményindítót, amely futtatja a folyamatot az adott esemény
 
@@ -30,7 +30,7 @@ Egy 10 perces bevezető és a funkció bemutatójáért tekintse meg a következ
 
 
 > [!NOTE]
-> Az ebben a cikkben leírt integráció függ [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Győződjön meg arról, hogy az előfizetése regisztrálva van-e az Event Grid erőforrás-szolgáltatónál. További információ: [erőforrás-szolgáltatókat és típusaikat](../azure-resource-manager/resource-manager-supported-services.md#portal).
+> Az ebben a cikkben leírt integráció függ [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Győződjön meg arról, hogy az előfizetése regisztrálva van-e az Event Grid erőforrás-szolgáltatónál. További információ: [erőforrás-szolgáltatókat és típusaikat](../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete
 
@@ -69,10 +69,10 @@ Az alábbi táblázat áttekintést az eseményalapú eseményindítókat kapcso
 
 | **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Kötelező** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **Hatókör** | Az Azure Resource Manager erőforrás-azonosító a Storage-fiók. | Sztring | Az Azure Resource Manager-Azonosítót | Igen |
+| **Hatókör** | Az Azure Resource Manager erőforrás-azonosító a Storage-fiók. | String | Az Azure Resource Manager-Azonosítót | Igen |
 | **események** | Ez az eseményindító aktiválódik a kiváltó esemény típusa. | Tömb    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Igen, ezekre az értékekre tetszőleges kombinációját. |
-| **blobPathBeginsWith** | A blob elérési útja a üzenetszám-trigger megadott mintának kell kezdődnie. Például `/records/blobs/december/` csak akkor következik be, az eseményindító lévő blobok esetében a `december` mappát a `records` tároló. | Sztring   | | Meg kell adnia egy értéket legalább egy ezeket a tulajdonságokat: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
-| **blobPathEndsWith** | A blob elérési útja a üzenetszám-trigger megadott mintának kell végződnie. Ha például `december/boxes.csv` csak blobok nevű triggert `boxes` a egy `december` mappát. | Sztring   | | Meg kell adnia egy értéket legalább egy ezeket a tulajdonságokat: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
+| **blobPathBeginsWith** | A blob elérési útja a üzenetszám-trigger megadott mintának kell kezdődnie. Például `/records/blobs/december/` csak akkor következik be, az eseményindító lévő blobok esetében a `december` mappát a `records` tároló. | String   | | Meg kell adnia egy értéket legalább egy ezeket a tulajdonságokat: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
+| **blobPathEndsWith** | A blob elérési útja a üzenetszám-trigger megadott mintának kell végződnie. Ha például `december/boxes.csv` csak blobok nevű triggert `boxes` a egy `december` mappát. | String   | | Meg kell adnia egy értéket legalább egy ezeket a tulajdonságokat: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
 
 ## <a name="examples-of-event-based-triggers"></a>Eseményalapú eseményindítókat példái
 

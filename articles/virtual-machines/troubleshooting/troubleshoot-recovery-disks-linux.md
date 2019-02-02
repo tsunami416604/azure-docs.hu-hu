@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: e6d6c47726b21a241b379366bd1fde6c6b90e223
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9e3177b9df41a1612435dddadafd5c7e291e0e35
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462012"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663587"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure CLI-vel való csatlakoztatásával Linuxos virtuális gépek hibaelhárítása
 Ha a Linux rendszerű virtuális gép (VM) indítási vagy hiba fordul, szükség lehet a hibaelhárítási lépések végrehajtásához a virtuális merevlemezen magát. Ilyenek például a bejegyzés érvénytelen lenne `/etc/fstab` , amely megakadályozza, hogy a virtuális gép képes arra, hogy sikeresen. Ez a cikk részletesen bemutatja a virtuális merevlemez egy másik Linux rendszerű virtuális géphez, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép csatlakoztatása az Azure CLI használatával. 
@@ -43,7 +43,7 @@ A következő példákban cserélje le a saját értékeire paraméterek nevei. 
 ## <a name="determine-boot-issues"></a>Rendszerindítási problémák meghatározása
 Vizsgálja meg a soros kimenetet határozza meg, miért érdemes a virtuális gép nem áll lehetségesnek megfelelően. Ilyenek például egy érvénytelen bejegyzés `/etc/fstab`, vagy az alapjául szolgáló virtuális merevlemez folyamatban törölték vagy áthelyezték.
 
-A rendszerindítási naplók lekérése [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log). Az alábbi példa lekéri a soros kimeneti nevű virtuális gépről `myVM` az erőforráscsoport neve `myResourceGroup`:
+A rendszerindítási naplók lekérése [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics). Az alábbi példa lekéri a soros kimeneti nevű virtuális gépről `myVM` az erőforráscsoport neve `myResourceGroup`:
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM

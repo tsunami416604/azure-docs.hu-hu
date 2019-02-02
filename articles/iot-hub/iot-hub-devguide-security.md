@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: ecde1c19a56a7f99284fe738a19eac07322c2dae
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f347c9ca3d56bedcc838d72ca15793bd13ee19ad
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826173"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563932"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -57,7 +57,7 @@ Ha például a tipikus IoT-megoldások:
 > [!NOTE]
 > Lásd: [engedélyek](#iot-hub-permissions) részletes információkat.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Az Azure IoT Hub végpontok hozzáférést biztosít egy jogkivonatot a megosztott elérési házirendeket és az identitás beállításjegyzék biztonsági hitelesítő adatok szemben ellenőrzésével.
 
@@ -146,7 +146,7 @@ Az alábbiakban a várt értékek:
 
 Az alábbi Node.js látható a hívott függvény **generateSasToken** , amely kiszámítja a jogkivonatot a bemeneti adatok `resourceUri, signingKey, policyName, expiresInMins`. A következő szakaszok bemutatják, hogyan lehet inicializálni a különböző adatbevitelek esetében különböző token használati eseteit.
 
-```nodejs
+```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
     resourceUri = encodeURIComponent(resourceUri);
 
@@ -260,7 +260,7 @@ Például egy jogkivonatot létrehozott összes eszköz funkcióinak eléréséh
 
 Egy példa az előző Node.js-függvény használatával a következő lesz:
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
 var deviceKey ="...";
 
@@ -294,7 +294,7 @@ Például, egy jogkivonat-szolgáltatás használatával az előre létrehozott 
 
 Egy példa az előző Node.js-függvény használatával a következő lesz:
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
 var policyName = 'device';
 var policyKey = '...';
@@ -328,7 +328,7 @@ Tegyük fel, a megosztott hozzáférési házirend nevű szolgáltatás létreho
 * házirend neve: `registryRead`,
 * minden olyan lejárati időt.
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices";
 var policyName = 'registryRead';
 var policyKey = '...';

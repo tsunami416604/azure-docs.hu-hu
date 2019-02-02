@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 87f3b9de2ff86016f11a0996cbe448651ee6844f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/20/2018
+ms.openlocfilehash: d9e1eee9ab45e9f3a74f296e555c8f91802f36ab
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723892"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563184"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása
 
@@ -60,16 +60,16 @@ Az alábbi feltételek bármelyike azt eredményezheti, hogy a szinkronizálási
 
 - **OK**. Az ügyfélügynök offline állapotban.
 
-- **Feloldási**. Ellenőrizze, hogy az ügyfél ügynökéhez online-e, és próbálkozzon újra.
+- **Feloldási**. Győződjön meg arról, hogy az ügyfélügynök online állapotban van, és próbálkozzon újra.
 
-- **OK**. Az ügyfélügynök telepítve, vagy hiányzik.
+- **OK**. Az ügyfélügynök el lett távolítva vagy hiányzik.
 
-- **Feloldási**. Ha az ügyfél ügynöke telepítve vagy egyéb hiányzó:
+- **Feloldási**. Ha az ügyfélügynök el lett távolítva vagy más okból hiányzik:
 
-    1. Ha a fájl létezik, távolítsa el az ügynök XML-fájlt az SQL Data Sync telepítési mappájából.
-    1. Telepítse az ügynököt a helyi számítógépen. (Ez ugyanaz vagy egy másik számítógépen is lehet). Ezután küldje el a rendszer által létrehozott a portálon az ügynök offline állapotúként jelenik ügynökkulcs.
+    1. Távolítsa el az ügynök XML-fájlját az SQL Data Sync telepítési mappájából, ha létezik ez a fájl.
+    1. Telepítse az ügynököt a helyszíni számítógépen (ez ugyanaz vagy egy másik számítógép is lehet). Ezután küldje el a portálon létrehozott ügynökkulcsot az offline állapotúként megjelenő ügynöknek.
 
-- **OK**. Az SQL Data Sync szolgáltatás le van állítva.
+- **OK**. Az SQL Data Sync szolgáltatás leállt.
 
 - **Feloldási**. Indítsa újra az SQL Data Sync szolgáltatást.
 
@@ -148,15 +148,15 @@ Az ügyfélügynök-problémák hibaelhárítása: [Data Sync-ügynök hibaelhá
 
 A szinkronizálási csoport törlése sikertelen. Az alábbi esetekben azt eredményezheti, hogy a szinkronizálási csoport törlése sikertelen:
 
-- **OK**. Az ügyfélügynök offline állapotban.
+- **OK**. Az ügyfélügynök offline állapotú.
 
 - **Feloldási**. Győződjön meg arról, hogy az ügyfél ügynökéhez online állapotban, és próbálkozzon újra.
 
-- **OK**. Az ügyfélügynök telepítve, vagy hiányzik.
+- **OK**. Az ügyfélügynök el lett távolítva vagy hiányzik.
 
-- **Feloldási**. Ha az ügyfél ügynöke telepítve vagy egyéb hiányzó:  
-    a. Ha a fájl létezik, távolítsa el az ügynök XML-fájlt az SQL Data Sync telepítési mappájából.  
-    b. Telepítse az ügynököt a helyi számítógépen. (Ez ugyanaz vagy egy másik számítógépen is lehet). Ezután küldje el a rendszer által létrehozott a portálon az ügynök offline állapotúként jelenik ügynökkulcs.
+- **Feloldási**. Ha az ügyfélügynök el lett távolítva vagy más okból hiányzik:  
+    a. Távolítsa el az ügynök XML-fájlját az SQL Data Sync telepítési mappájából, ha létezik ez a fájl.  
+    b. Telepítse az ügynököt a helyszíni számítógépen (ez ugyanaz vagy egy másik számítógép is lehet). Ezután küldje el a portálon létrehozott ügynökkulcsot az offline állapotúként megjelenő ügynöknek.
 
 - **OK**. Egy adatbázis offline állapotban.
 
@@ -231,8 +231,8 @@ Három eltávolítása vagy leállítása folyamatban van az SQL Data Sync társ
   1. Távolítsa el a szinkronizálási csoport, amíg a kapcsolódó szinkronizálási ügynököket online (javasolt).
   1. Ha az ügynök offline állapotban, de van telepítve, is online állapotba kerüljön a helyi számítógépen. Várjon, amíg jelennek meg az ügynök állapotát **Online** az SQL Data Sync portálon. Ezt követően távolítsa el a szinkronizálási csoport.
   1. Ha az ügynök offline állapotban, mert el lett távolítva:  
-    a.  Ha a fájl létezik, távolítsa el az ügynök XML-fájlt az SQL Data Sync telepítési mappájából.  
-    b.  Telepítse az ügynököt a helyi számítógépen. (Ez ugyanaz vagy egy másik számítógépen is lehet). Ezután küldje el a rendszer által létrehozott a portálon az ügynök offline állapotúként jelenik ügynökkulcs.  
+    a.  Távolítsa el az ügynök XML-fájlját az SQL Data Sync telepítési mappájából, ha létezik ez a fájl.  
+    b.  Telepítse az ügynököt a helyszíni számítógépen (ez ugyanaz vagy egy másik számítógép is lehet). Ezután küldje el a portálon létrehozott ügynökkulcsot az offline állapotúként megjelenő ügynöknek.  
     c. Próbálja ki a szinkronizálási csoport törlése.
 
 ### <a name="setup-restore"></a> Mi történik, ha vissza tudok állítani egy elveszett vagy sérült adatbázis?

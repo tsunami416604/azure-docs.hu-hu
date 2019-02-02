@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: 93b1b0c8288fb408e4af6aba2eb2267ce650208c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 56a324aba3c5d8f550e5b51ff49b5ee0e74a3415
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247119"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658334"
 ---
 # <a name="marketplace-faqs"></a>Piactér – gyakori kérdések
 
@@ -358,7 +358,7 @@ A kiadók, akik közzétett Transact listaelem típusok: Virtuális gép, Azure-
 
 **Mik azok az érdeklődők és miért fontosak, nekem közzétevőként a Marketplace-en?**
 
-Érdeklődők olyan ügyfelek, akik a termékekre a Marketplace-ről végzi. Hogy a termék szerepel-e a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) vagy [AppSource](https://appsource.microsoft.com), ügyfelek, akik a termékek iránt érdeklődők fogadni tudja.  Érdeklődő cél állíthat be az ajánlat. További tudnivalókért lásd: [válnak a Felhőbeli piactér kiadói](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher).
+Érdeklődők olyan ügyfelek, akik a termékekre a Marketplace-ről végzi. Hogy a termék szerepel-e a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) vagy [AppSource](https://appsource.microsoft.com), ügyfelek, akik a termékek iránt érdeklődők fogadni tudja.  Érdeklődő cél állíthat be az ajánlat. További tudnivalókért lásd: [válnak a Felhőbeli piactér kiadói](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
 **Honnan szerezhetem be az érdeklődő cél beállításához segítséget?**
 

@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5361b93d24c66ef6ccb2f117e6e3a68de4c5f459
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e0d5e466da8804e89ffecd38dd2db6e37a3cb334
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195595"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663638"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Az Azure AD Connect szinkronizálása: UserCertificate attribútum által okozott LargeObject hibák kezelése
 
@@ -33,7 +33,7 @@ A LargeObject hiba okozhatja más AD-attribútumok. Győződjön meg róla, val�
 
 Az objektumok listájában, a bérlőben LargeObject-hibák beszerzéséhez használja a következő módszerek egyikét:
 
- * Ha a bérlő Azure AD Connect Health szinkronizálási szolgáltatás engedélyezve van, olvassa el a [szinkronizálási hibajelentés](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync#object-level-synchronization-error-report-preview) megadott.
+ * Ha a bérlő Azure AD Connect Health szinkronizálási szolgáltatás engedélyezve van, olvassa el a [szinkronizálási hibajelentés](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync) megadott.
  
  * Az egyes szinkronizálási ciklus végén küldött értesítő e-mail a címtár-szinkronizálási hibák az objektumok LargeObject-hibák listája szerepel. 
  * A [szinkronizálási szolgáltatáskezelő műveleti lapon](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) kattintva legújabb Exportálás az Azure ad-ben a művelet a LargeObject-hibák objektumok listáját jeleníti meg.
@@ -89,7 +89,7 @@ Meglévő szinkronizálási szabály, amely engedélyezve és konfigurálva user
 
 2. Adja meg a keresési szűrőket a következő értékeket:
 
-    | Attribútum | Value |
+    | Attribútum | Érték |
     | --- | --- |
     | Irány |**Kimenő** |
     | MV-objektum típusa |**Személy** |
@@ -104,7 +104,7 @@ Meglévő szinkronizálási szabály, amely engedélyezve és konfigurálva user
 7. A szerkesztési képernyőn válassza ki a **Scoping szűrő** fülre.
 8. Jegyezze fel a hatókörének meghatározásához a szűrők beállítását. Ha az OOB-szinkronizálási szabály használ, pontosan kell **két záradékot tartalmazó egy igényfelmérési Szűrőcsoport**, többek között:
 
-    | Attribútum | Művelet | Value |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |
@@ -114,7 +114,7 @@ Az új szinkronizálási szabályt kell rendelkeznie, ugyanez **Hatókörszűrő
 1. A szinkronizálási Szabályszerkesztővel, kattintson a **új szabály hozzáadása** gombra.
 2. Alatt a **leírása lap**, adja meg a következő konfigurációt:
 
-    | Attribútum | Value | Részletek |
+    | Attribútum | Érték | Részletek |
     | --- | --- | --- |
     | Name (Név) | *Adjon meg egy nevet* | Például *"Ki az aad-be – egyéni felülbírálás a userCertificate"* |
     | Leírás | *Adjon meg egy leírást* | Például *"UserCertificate attribútummal rendelkezik, több mint 15 értéket, ha exportálása null értékű."* |
@@ -128,7 +128,7 @@ Az új szinkronizálási szabályt kell rendelkeznie, ugyanez **Hatókörszűrő
 4. Hagyja ki a **szabályok csatlakozzon** fülre.
 5. Nyissa meg a **átalakítások** fülre kattintva vegyen fel egy új átalakítás konfiguráció a következő használatával:
 
-    | Attribútum | Value |
+    | Attribútum | Érték |
     | --- | --- |
     | Folyamat típusát |**Expression** |
     | Célattribútum |**userCertificate** |

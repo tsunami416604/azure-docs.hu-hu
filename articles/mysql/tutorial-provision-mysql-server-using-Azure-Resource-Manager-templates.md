@@ -8,18 +8,18 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 3c89c5cc0b299852f85836dd416b5bb270757719
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: fa8091011575822907915b67cf48bffaf5e7e728
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54061040"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657076"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Oktatóanyag: Üzembe helyezése egy Azure Database for MySQL-kiszolgálóhoz az Azure Resource Manager-sablon használatával
 
-A [, Azure Database for MySQL REST API-val](https://docs.microsoft.com/en-us/rest/api/mysql/) lehetővé teszi, hogy a fejlesztő és üzemeltető mérnököknek automatizálása és integrálása a kiépítés, konfigurációs és műveletek felügyelt MySQL-kiszolgálók és adatbázisok az Azure-ban.  Az API lehetővé teszi a létrehozási, enumerálás, felügyeleti és MySQL-kiszolgálók és adatbázisok törlése az Azure Database for MySQL-szolgáltatás.
+A [, Azure Database for MySQL REST API-val](https://docs.microsoft.com/rest/api/mysql/) lehetővé teszi, hogy a fejlesztő és üzemeltető mérnököknek automatizálása és integrálása a kiépítés, konfigurációs és műveletek felügyelt MySQL-kiszolgálók és adatbázisok az Azure-ban.  Az API lehetővé teszi a létrehozási, enumerálás, felügyeleti és MySQL-kiszolgálók és adatbázisok törlése az Azure Database for MySQL-szolgáltatás.
 
-Az Azure Resource Manager használhatja az alapul szolgáló REST API-t deklarálja és az Azure-erőforrások az infrastruktúra mint kód fogalma igazodó méretű központi telepítéséhez szükséges programot. A sablon az Azure-erőforrás nevét, SKU, hálózati, tűzfal-konfiguráció felparaméterezi és beállítások, lehetővé téve, hogy hozható létre egy időben, és több alkalommal használva.  Az Azure Resource Manager-sablonok egyszerűen hozható létre [az Azure portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) vagy [Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI). A használatukkal az alkalmazások csomagolása, szabványügyi szervezet és üzembe helyezési automatizálást, amely integrálható a fejlesztési és üzemeltetési CI/CD-folyamat.  Például ha szeretne gyorsan üzembe helyezhet egy webalkalmazást az Azure Database for MySQL háttér, is végezhet a teljes körű üzembe helyezési ez [gyorsindítási sablon](https://azure.microsoft.com/en-us/resources/templates/101-webapp-managed-mysql/) a GitHub-katalógusból.
+Az Azure Resource Manager használhatja az alapul szolgáló REST API-t deklarálja és az Azure-erőforrások az infrastruktúra mint kód fogalma igazodó méretű központi telepítéséhez szükséges programot. A sablon az Azure-erőforrás nevét, SKU, hálózati, tűzfal-konfiguráció felparaméterezi és beállítások, lehetővé téve, hogy hozható létre egy időben, és több alkalommal használva.  Az Azure Resource Manager-sablonok egyszerűen hozható létre [az Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) vagy [Visual Studio Code](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI). A használatukkal az alkalmazások csomagolása, szabványügyi szervezet és üzembe helyezési automatizálást, amely integrálható a fejlesztési és üzemeltetési CI/CD-folyamat.  Például ha szeretne gyorsan üzembe helyezhet egy webalkalmazást az Azure Database for MySQL háttér, is végezhet a teljes körű üzembe helyezési ez [gyorsindítási sablon](https://azure.microsoft.com/en-us/resources/templates/101-webapp-managed-mysql/) a GitHub-katalógusból.
 
 Ebben az oktatóanyagban használja az Azure Resource Manager-sablon és más segédprogramok megtudhatja, hogyan lehet:
 

@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 9d542f7c2cdeb20806a2db98005ffc03cf72144c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c96fdbfb56fe5274de941c0f9ab1a12cbcc241b6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238016"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658419"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Az Azure Stack üzembe helyezése Kubernetes
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!Note]  
-> Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban.
+> Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban. Az Azure Stack kapcsolat nélküli forgatókönyv jelenleg nem érhető el az előzetes verzió.
 
 Ebben a cikkben üzembe helyezéséhez és a Kubernetes esetében egyetlen, koordinált műveletben állítsa be az erőforrásokat a lépésekkel. A lépések egy Azure Resource Manager-megoldássablon használják. Ön lesz kell az Azure Stack-telepítés, a szükséges információkat gyűjthet a hozza létre a sablont, és majd üzembe helyezése a felhőben. Az Azure Stack-sablon nem használ felügyelt AKS szolgáltatásának ugyanazt a globális Azure-ban érhető el.
 

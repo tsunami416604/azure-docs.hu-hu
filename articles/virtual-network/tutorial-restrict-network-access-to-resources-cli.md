@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 80ca9df064239e9c7beb9d45acfabe963c532e4a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 87fcfd98065bcf1f0fea3a06029853f69d67842d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150548"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663808"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása a virtuális hálózati Szolgáltatásvégpontok az Azure CLI használatával
 
@@ -43,7 +43,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Előtt egy virtuális hálózatot hoz létre, akkor hozzon létre egy erőforráscsoportot a virtuális hálózatot és más ebben a cikkben létrehozott összes erőforrást. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+Előtt egy virtuális hálózatot hoz létre, akkor hozzon létre egy erőforráscsoportot a virtuális hálózatot és más ebben a cikkben létrehozott összes erőforrást. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive
 az group create \
@@ -322,7 +322,7 @@ A hozzáférés megtagadva, és a egy `mount error(13): Permission denied` hiba 
 
 Az SSH-munkamenetből történő kilépéshez a *myVmPublic* virtuális Gépet.
 
-A számítógépről kísérlet megtekintéséhez a megosztásokat a tárfiókban található [az tárolási megosztási listán](/cli/azure/storage/share?view=azure-cli-latest#az_storage_share_list). Cserélje le `<account-name>` és `<account-key>` a tárfiók nevét és kulcsát, [hozzon létre egy tárfiókot](#create-a-storage-account):
+A számítógépről kísérlet megtekintéséhez a megosztásokat a tárfiókban található [az tárolási megosztási listán](/cli/azure/storage/share?view=azure-cli-latest). Cserélje le `<account-name>` és `<account-key>` a tárfiók nevét és kulcsát, [hozzon létre egy tárfiókot](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \

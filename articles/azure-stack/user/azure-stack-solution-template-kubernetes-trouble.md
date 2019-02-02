@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 9a65ef9acf7a1a133b3f479fe75921191949eeb8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 41383a31955b8f9507ec681650cf73df23b2a895
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55237851"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663414"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>A Kubernetes üzembe helyezés az Azure Stack hibaelhárítása
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!Note]  
-> Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban.
+> Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban. Az Azure Stack kapcsolat nélküli forgatókönyv jelenleg nem érhető el az előzetes verzió.
 
 A következő cikket úgy tűnik, a Kubernetes-fürt hibaelhárítása. Tekintse át a központi telepítési riasztás, és a telepítéshez szükséges elemek által a központi telepítés állapotának áttekintése. Szüksége lehet a telepítési naplók gyűjtése az Azure Stack vagy a Linux rendszerű virtuális gépek, amelyeken Kubernetes. Emellett szüksége lehet az Azure Stack rendszergazdai naplók lekérése egy felügyeleti végpont használata.
 

@@ -1,21 +1,18 @@
 ---
-ms.assetid: ''
 title: Az Azure Key Vault - helyreállítható törlés használata a PowerShell-lel
 description: Kis példák a helyreállítható törlés funkciójának használata PowerShell-kódrészletek
-services: key-vault
 author: bryanla
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: conceptual
-ms.workload: identity
-ms.date: 10/16/2018
+ms.date: 02/01/2018
 ms.author: bryanla
-ms.openlocfilehash: 99f81e14ca631eccee154a5658bf717cbe07b3da
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: c979d6eccd5c185d89252302b40fdd674e3c5916
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364370"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657501"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés használata a PowerShell-lel
 
@@ -80,7 +77,7 @@ Győződjön meg arról, hogy a key vault helyreállítható törlés engedélye
 Get-AzureRmKeyVault -VaultName "ContosoVault"
 ```
 
-## <a name="deleting-a-key-vault-protected-by-soft-delete"></a>Key vault helyreállítható törlés által védett törlése
+## <a name="deleting-a-soft-delete-protected-key-vault"></a>A key vault helyreállítható törlés törlése védett.
 
 A parancs törli a viselkedése attól függően, hogy a helyreállítható törlés funkciójának engedélyezve van-e a key vault változásai.
 
@@ -97,7 +94,7 @@ Helyreállítható törlési engedélyezve:
 
 - Egy törölt kulcstartó távolítva az erőforráscsoport és a helyet, ahol létrehozták társított fenntartott névtérben helyezi. 
 - Törölt objektumok, például a kulcsok, titkos kódok és tanúsítványok, elérhetetlenné válnak, amennyiben azok tartalmazó kulcstartó a törölt állapotban van. 
-- A DNS-név, a törölt kulcstartó van fenntartva, meggátolja, hogy egy azonos nevű új kulcstartó létrehozása folyamatban.  
+- A DNS-név, a törölt kulcstartó van fenntartva, meggátolja, hogy egy azonos nevű új kulcstartó létrehozása folyamatban.  
 
 Előfordulhat, hogy megtekintheti az állapot törölt kulcstartók, az Ön előfizetéséhez rendelve az alábbi paranccsal:
 
@@ -119,7 +116,7 @@ Undo-AzureRmKeyVaultRemoval -VaultName ContosoVault -ResourceGroupName ContosoRG
 
 Amikor a key vault helyreállítása után egy új erőforrás jön létre a key vault az eredeti erőforrás azonosítóval. Ha eltávolít az eredeti erőforráscsoportot, egy kell létrehozni ugyanazzal a névvel rendelkező helyreállítási megkísérlése előtt.
 
-## <a name="key-vault-objects-and-soft-delete"></a>A Key Vault-objektumok és a helyreállítható törlés
+## <a name="deleting-and-purging-key-vault-objects"></a>Key vault-objektumokon törléshez és törlése
 
 A következő parancs törli a "ContosoFirstKey" kulcsot, a key vault neve "ContosoVault", ami helyreállítható törlés engedélyezve van:
 
@@ -201,17 +198,22 @@ Undo-AzureKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
   Remove-AzureKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
 
-## <a name="purging-and-key-vaults"></a>Tárolók kiürítési és kulcs
+## <a name="purging-a-soft-delete-protected-key-vault"></a>A key vault helyreállítható törlés kiürítése védett
 
-### <a name="key-vault-objects"></a>Key vault-objektumokon
+> [!IMPORTANT]
+> Key vault vagy a benne tárolt objektum-ürítést, véglegesen törli, ami azt jelenti, nem lesz helyreállítható!
 
-Végleges törlés kiürítése egy kulcsot, a titkos kulcsot vagy a tanúsítvány, okoz, és nem lesz helyreállítható. A key vaultban, amelyek a törölt objektum azonban érintetlen marad, a key vaultban lévő összes többi objektum lesz. 
+A végleges törlés amelyeket át véglegesen törli a kulcstartó-objektum vagy egy teljes key vault, amely lett korábban helyreállíthatóan törölt szolgál. Ahogyan az az előző szakaszban, a helyreállítható törlési funkció engedélyezve van, az a key vaultban tárolt objektumok végigveheti több állapota:
 
-### <a name="key-vaults-as-containers"></a>A kulcstartók tárolók
-Amikor a key vault törölve van, a teljes tartalmát véglegesen törlődnek, beleértve a kulcsok, titkos kódok és tanúsítványok. Kulcstartó végleges törlése, használja a `Remove-AzureRmKeyVault` parancsot a lehetőséggel `-InRemovedState` , és adja meg a törölt kulcstartó helye a `-Location location` argumentum. A parancs egy törölt tároló helyét annak `Get-AzureRmKeyVault -InRemovedState`.
+- **Aktív**: törlés előtt.
+- **Helyreállíthatóan törölt**: törlés, a felsorolt és aktív állapotba helyreállítása után.
+- **Véglegesen törli**: után végleges törlése nem sikerült helyreállítani.
 
->[!IMPORTANT]
->Kulcstartó végleges törlése véglegesen törli azt, ami azt jelenti, nem lesz helyreállítható!
+Ugyanez igaz a kulcstartó. Annak érdekében, hogy véglegesen törli a helyreállíthatóan törölt kulcstartó és annak tartalmát, véglegesen törli magát a kulcstartót.
+
+### <a name="purging-a-key-vault"></a>Kulcstartó végleges törlése
+
+Amikor a key vault törölve van, a teljes tartalmát véglegesen törlődnek, beleértve a kulcsok, titkos kódok és tanúsítványok. Helyreállíthatóan törölt kulcstartó végleges törlése, használja a `Remove-AzureRmKeyVault` parancsot a lehetőséggel `-InRemovedState` , és adja meg a törölt kulcstartó helye a `-Location location` argumentum. A parancs egy törölt tároló helyét annak `Get-AzureRmKeyVault -InRemovedState`.
 
 ```powershell
 Remove-AzureRmKeyVault -VaultName ContosoVault -InRemovedState -Location westus

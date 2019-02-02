@@ -11,13 +11,13 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 4b2c9f17bc9c6e9bbc280116d074bd0f1e3d3e38
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: 7d4748ced196abdb4f3f0bcb70ad6fe254b24bf7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606044"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657582"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Az Azure SQL Database, az SQL Data Warehouse, a Data Factory és a Power BI SaaS-analytics megismerése
 
@@ -193,11 +193,11 @@ Csatlakozás a Power bi-ba, illetve importálhatja a korábban létrehozott néz
 3. Az a **adatok lekérése** ablakban válassza **Azure SQL Database**.
 4. Az adatbázis bejelentkezési ablakban írja be a kiszolgáló nevét (**katalógus-dpt -&lt;felhasználói&gt;. database.windows.net**). Válassza ki **importálás** a **adatkapcsolati mód**, és kattintson a **OK**. 
 
-    ![bejelentkezési-az-a-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
+    ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
 5. Válassza ki **adatbázis** a bal oldali panelen, majd adjon meg felhasználónevet = *fejlesztői*, és adja meg a jelszó = *P@ssword1*. Kattintson a **Connect** (Csatlakozás) gombra.  
 
-    ![adatbázis-be](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
+    ![database-sign-in](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
 6. Az a **kezelő** az analitikai adatbázis oldali ablaktábla, válassza ki a csillagséma-táblákat: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** és **dim_Dates**. Válassza ki **terhelés**. 
 

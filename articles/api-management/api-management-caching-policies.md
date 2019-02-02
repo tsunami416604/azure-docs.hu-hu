@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 204f69ad37a7e38337c87e2053a10c96dadf380d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ec9551b92702c3c9050e60c7550b89e99b99b6b6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812658"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661683"
 ---
 # <a name="api-management-caching-policies"></a>Az API Management gyorsítótárazási házirendek
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -115,7 +115,7 @@ További információkért lásd: [házirend-kifejezések](api-management-policy
 | gyorsítótár-beállítás               | Az attribútum a következő értékek közül választhat:<br />- `internal` a beépített API Management-gyorsítótár használata<br />- `external` az ismertetett módon kihasználhassák a külső gyorsítótár [használni egy külső Azure Cache Redis az Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Ellenkező esetben használja a belső vagy külső gyorsítótár, ha konfigurálva. | Nem       | `prefer-external` |
 | alsóbb rétegbeli gyorsítótárazási típus        | Ez az attribútum a következő értékek egyikére kell beállítani.<br /><br /> – Nincs – alsóbb rétegbeli gyorsítótárazás nem engedélyezett.<br />-privát – alsóbb rétegbeli privát gyorsítótárazás használata engedélyezett.<br />– nyilvános - titkos és megosztott alsóbb rétegbeli engedélyezve van a gyorsítótárazás.                                                                                                          | Nem       | nincs              |
 | kell-revalidate                | Ha az alsóbb rétegbeli gyorsítótárazás engedélyezve van ez az attribútum be- vagy kikapcsolja a `must-revalidate` gyorsítótár vezérlő irányelv az átjáró válaszokat.                                                                                                                                                                                                                      | Nem       | true              |
-| változó-által-fejlesztő              | Állítsa be `true` a gyorsítótár-válaszok száma [előfizetési kulcs](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions).                                                                                                                                                                                                                                                                                                         | Igen      |         False (Hamis)          |
+| változó-által-fejlesztő              | Állítsa be `true` a gyorsítótár-válaszok száma [előfizetési kulcs](https://docs.microsoft.com/azure/api-management/api-management-subscriptions).                                                                                                                                                                                                                                                                                                         | Igen      |         False (Hamis)          |
 | változó-által-developer-csoportok       | Állítsa be `true` a gyorsítótár-válaszok száma [felhasználói csoport](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Igen      |       False (Hamis)            |
 
 ### <a name="usage"></a>Használat

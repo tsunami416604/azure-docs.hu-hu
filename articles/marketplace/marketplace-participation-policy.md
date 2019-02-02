@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 1/2/2019
 ms.author: ellacroi
-ms.openlocfilehash: ef7b4377da541068cef7cdd2de5a98d33c3b80ec
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 88ffa70f7ac21a2c28af994f1e2ed3b6939f6ad9
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55199036"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567417"
 ---
 # <a name="azure-marketplace-participation-policies"></a>Az Azure Piactér részvételi szabályzata
 
@@ -35,7 +35,7 @@ A Microsoft Azure Piactér részvételi szabályzata általánosan érvényes az
 
 1. A kiadónak az Azure Piactér által támogatott értékesítői országban kell működnie. Az Azure Piactér jelenleg a következő értékesítő országokat támogatja:  Afganisztán, Albánia, Algéria, Angola, Antigua és Barbuda, Argentína, Ausztrália, Ausztria, Azerbajdzsán, Bahrain, Banglades, Belarusz, Belgium, Benin, Bolívia, Bosznia-Hercegovina, Botswana, Brazília, Bulgária, Burkina Faso, Burundi, Chile, Ciprus, Comore-szigetek, Costa Rica, Côte d’Ivoire, Csád, Cseh Köztársaság, Dánia, Dél-Afrika, Dominika, Dominikai Köztársaság, Ecuador, Egyesült Államok, Egyesült Arab Emírségek, Egyesült Királyság, Egyiptom, El Salvador, Eritrea, Észtország, Etiópia, Fidzsi, Finnország, Franciaország, Fülöp-szigetek, Ghána, Görögország, Grúzia, Guatemala, Guinea, Haiti, Hollandia, Honduras, Hongkong (KKT), Horvátország, India, Indonézia, Irak, Írország, Izland, Izrael, Jamaica, Japán, Jordánia, Kambodzsa, Kamerun, Kanada, Katar, Kazahsztán, Kenya, Kolumbia, Kongó (KDK), Kongói Köztársaság, Korea, Közép-afrikai Köztársaság, Kuvait, Laosz, Lengyelország, Lettország, Libanon, Libéria, Liechtenstein, Litvánia, Luxemburg, Madagaszkár, Magyarország, Malajzia, Malawi, Mali, Málta, Marokkó, Mauritius, Mexikó, Monaco, Mongólia, Montenegró, Mozambik, Németország, Nepál, Nicaragua, Niger, Nigéria, Norvégia, Olaszország, Omán, Oroszország, Örményország, Pakisztán, Panama, Paraguay, Peru, Portugália, Románia, Ruanda, Sierra Leone, Spanyolország, Srí Lanka, Svájc, Svédország, Szaúd-Arábia, Szenegál, Szerbia, Szingapúr, Szlovákia, Szlovénia, Szomália, Tádzsikisztán, Tanzánia, Thaiföld, Timor-Leste, Togo, Tonga, Törökország, Trinidad és Tobago, Tunézia, Türkmenisztán, Uganda, Új-Zéland, Ukrajna, Uruguay, Üzbegisztán, Venezuela, Vietnam, Zambia, Zimbabwe.
 
-1. A kiadónak legalább egy Azure Piactér által támogatott vevői országban elérhetővé kell tennie ajánlatát. Az Azure Piactér jelenleg a következő vevői országokat támogatja:  Algéria, Argentína, Ausztrália, Ausztria, Bahrein, Belarusz, Belgium, Brazília, Bulgária, Chile, Ciprus, Costa Rica, Cseh Köztársaság, Dánia, Dél-Afrika, Dél-Korea, Dominikai Köztársaság, Ecuador, Egyesült Arab Emírségek, Egyesült Államok, Egyesült Királyság, Egyiptom, Észtország, Finnország, Franciaország, Fülöp-szigetek, Görögország, Guatemala, Hollandia, Hongkong (KKT), Horvátország, India, Indonézia, Írország, Izland, Izrael, Japán, Jordánia, Kanada, Katar, Kazahsztán, Kenya, Kolumbia, Kuvait, Lengyelország, Lettország, Liechtenstein, Litvánia, Luxemburg, Macedónia V.J.K., Magyarország, Malajzia, Málta, Marokkó, Mexikó, Montenegró, Németország, Nigéria, Norvégia, Olaszország, Omán, Oroszország, Pakisztán, Panama, Paraguay, Peru, Portugália, Puerto Rico, Románia,·Salvador, Spanyolország, Srí Lanka, Svájc, Svédország, Szaúd-Arábia, Szerbia, Szingapúr, Szlovákia, Szlovénia, Tajvan, Thaiföld, Törökország, Trinidad és Tobago, Tunézia, Új-Zéland, Ukrajna, Uruguay és Venezuela. 
+1. A kiadónak legalább egy Azure Piactér által támogatott vevői országban elérhetővé kell tennie ajánlatát. Az Azure Piactér jelenleg a következő vevői országokat támogatja: Algéria, Argentína, Ausztrália, Ausztria, Bahrein, Belarusz, Belgium, Brazília, Bulgária, Chile, Ciprus, Costa Rica, Cseh Köztársaság, Dánia, Dél-Afrika, Dél-Korea, Dominikai Köztársaság, Ecuador, Egyesült Arab Emírségek, Egyesült Államok, Egyesült Királyság, Egyiptom, Észtország, Finnország, Franciaország, Fülöp-szigetek, Görögország, Guatemala, Hollandia, Hongkong (KKT), Horvátország, India, Indonézia, Írország, Izland, Izrael, Japán, Jordánia, Kanada, Katar, Kazahsztán, Kenya, Kolumbia, Kuvait, Lengyelország, Lettország, Liechtenstein, Litvánia, Luxemburg, Macedónia V.J.K., Magyarország, Malajzia, Málta, Marokkó, Mexikó, Montenegró, Németország, Nigéria, Norvégia, Olaszország, Omán, Oroszország, Pakisztán, Panama, Paraguay, Peru, Portugália, Puerto Rico, Románia,·Salvador, Spanyolország, Srí Lanka, Svájc, Svédország, Szaúd-Arábia, Szerbia, Szingapúr, Szlovákia, Szlovénia, Tajvan, Thaiföld, Törökország, Trinidad és Tobago, Tunézia, Új-Zéland, Ukrajna, Uruguay és Venezuela.
 
 1. A kiadónak biztos pénzügyi háttérrel kell rendelkeznie.
 
@@ -47,7 +47,7 @@ A Microsoft Azure Piactér részvételi szabályzata általánosan érvényes az
 
 1. Köteles bejelenteni az Azure piactéren nyilvános webhelyén, az ajánlat, és hivatkoznia kell feltüntetniük az ajánlat termékismertető lapjain található, [ https://azuremarketplace.microsoft.com/marketplace/ ](https://azuremarketplace.microsoft.com/marketplace/).
 
-1. A kiadók minden egyes ajánlathoz egy besorolási osztályozásnak Microsoft, beleértve a kategóriákat, 4. szakasz ebben a dokumentumban ismertetett által biztosított alapján kell besorolni. A Microsoft úgy véli, hogy a kiadó általi besorolás pontatlan lehet, ha azt fenntartja a jogot bármely ajánlat tárolókészletre.
+1. A kiadók minden egyes ajánlathoz egy besorolási osztályozásnak többek között a kategóriák szerint, a Microsoft által biztosított alapján kell besorolni a **ajánlat definíciói** szakasz ebben a dokumentumban. A Microsoft úgy véli, hogy a kiadó általi besorolás pontatlan lehet, ha azt fenntartja a jogot bármely ajánlat tárolókészletre.
 
 1. Ha a kiadó ajánlatát a Microsoft Azure Certified minősítéssel rendelkezik, és elsősorban a Microsoft Azure nem fut, a közzétevő kell tennie egy fizetős az ajánlat elérhető a piactéren ingyenes közzétételi számított 90 napon belül vagy BYOL-verzióra az ajánlat.
 
@@ -122,7 +122,7 @@ Szolgáltatásajánlat közzététele a piactéren, után a közzétevők saját
     * Az ajánlathoz huzamosabb ideig sok támogatási jegy érkezik; vagy
     * a kiadó nem tesz eleget a Microsoft Marketplace Kiadói szerződés, a Piactéri közzétételi irányelvek vagy a jelen dokumentum feltételeinek.
 
-1. Előfordulhat, hogy valamilyen ok miatt ajánlatát el szeretné távolítani a Piactérről. Az ajánlat eltávolítása azt jelenti, hogy az ügyfelek nem tudják többé megvásárolni és üzembe helyezni az ajánlatot, ez azonban nem érinti a már meglévő ügyfeleket. Az ajánlat megszüntetése a szolgáltatás és/vagy az Ön és ügyfelei közötti licencszerződés megszüntetését jelenti. Az ajánlatok eltávolítását és megszüntetését érintő útmutatások és szabályzatok a Microsoft Marketplace Kiadói szerződésében találhatóak (lásd 7. szakasz). Eltávolítást vagy megszüntetést támogatási jegy elküldésével kezdeményezhet.
+1. Előfordulhat, hogy valamilyen ok miatt ajánlatát el szeretné távolítani a Piactérről. Az ajánlat eltávolítása azt jelenti, hogy az ügyfelek nem tudják többé megvásárolni és üzembe helyezni az ajánlatot, ez azonban nem érinti a már meglévő ügyfeleket. Az ajánlat megszüntetése a szolgáltatás és/vagy az Ön és ügyfelei közötti licencszerződés megszüntetését jelenti. Útmutatás és ajánlatok eltávolítását és megszüntetését házirendek vonatkoznak rájuk a Microsoft Marketplace kiadói szerződés ("Fizetési feltételek" című). Eltávolítást vagy megszüntetést támogatási jegy elküldésével kezdeményezhet.
 
 ## <a name="payment-terms"></a>Fizetési feltételek
 
@@ -138,19 +138,35 @@ A Microsoft a következő Microsoft szoftvertermékek elhelyezését engedélyez
 
 ## <a name="taxes"></a>Adók
 
-1. **Microsoft-Adóbefizetéses országnak.**
+1. **Feladata a teljes ügyfél terhelő adók.**
 
-    1. Az alábbi országokban Microsoft tekintetében Adóbefizetéses országnak, a Microsoft Marketplace kiadói szerződésében meghatározott módon: Európai Unió, Kanada, India, Írország, Liechtenstein, Monaco, Új-Zélandon, Norvégia, Puerto Rico, Dél-Korea, Svájc, Egyesült Államok. Ausztrália, Szaúd-Arábia, Tajvan és Egyesült Arab Emírségek az csak a Web Direct-értékesítések Microsoft Remittance országok körébe tartoznak.
+    1. Általában a Microsoft és a kiadó felelőssége teljes ügyfél terhelő adók mindegyike függ az ország és a vásárlási forgatókönyvet, amelyben ajánlatok vásárolhatók meg.
 
-    1. Írország területén a Microsoft ír áfát számol fel minden ír ügyfélnek (kivéve, ha az ügyfél egy 56B jelű érvényes áfaigazolást mutat be). Az Írországon kívül, az Európai Unióban és Norvégiában található ügyfeleknek a Microsoft nulla százalékos áfát számol fel, ha érvényes közösségi adószámot mutatnak be. Érvényes közösség adószám hiányában az ügyfeleknek az ügyfél országában/joghatóságában hatályos mértékű áfát kell megfizetniük.
+    1. Egyes országokban (**a Microsoft által felügyelt országok**) Microsoft felelősséget kezelése záró ügyfél adózási, többek között előfordulhat, hogy ügyfelei üzleti állapotának ellenőrzése megszerzésével regisztrációs számokat, vagy adómentességi igazolások, ügyfelek és kiszámítása, összegyűjtése és/vagy adók átutalásában mélyebb felügyelt kapcsolat.  Azokban az esetekben, ahol értékesítési partnerei által végzett a Microsoft feltételezi, hogy minden partner cégeknek és megfelelően vannak lezáró adó kötelezettségeik.  További információ található a [– gyakori kérdések](https://automaticbillingspec.blob.core.windows.net/spec/FAQ%20for%20ISV%20Azure%20Marketplace%20Updates%20March%202019.pdf).
 
-    1. A Microsoft minden ügyfél számára a Svájcban vagy Liechtensteinben svájci Áfakulcsot költséget.
+    1. Minden ország, amely nem a Microsoft által felügyelt országok számára (**felügyelt országok az ISV**), közzétevők tudomásul veszi és elfogadja, hogy a közzétevők rendelkezik kizárólagos felelőssége, hogy határozza meg, és kezelheti a végfelhasználók ügyfél adózási, például a regisztráció, adózási számítási, gyűjtemény és adóbefizetéses és ügyfeleink üzleti állapotát és minden ilyen közzétevők tegye elérhetővé a felügyelt országok az ISV-ajánlat adószámlát az ügyfelek számára, helyezhet üzembe érvényesítése.  A kiadók tudomásul veszi, hogy megállapodást értékesítése ISV által felügyelt országban, a Microsoft jelenleg nem lehet tud biztosítani.
 
-1. **A Szoftverszállítói Adóbefizetéses országok.**
+    1. Végfelhasználókat előfordulhat, hogy vételi ajánlatok közvetlenül, a Microsoft vagy a Microsoft-partnereknek, akik közzétevő licencek, a termék.  Emellett nincsenek több különböző licencelési program.  Bizonyos esetekben a Microsoft által felügyelt országok az ISV által felügyelt országok és fordítva válhat (szakaszban **a Microsoft által felügyelt országok**, az alábbi). Vevői beszerzési forgatókönyvek vonatkozó információ található [Azure piactér – gyakori kérdések](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide).
 
-    1. A Szoftverszállítói Adóbefizetéses országok közé tartozik minden olyan vevői ország az 1. szakasz (3) a szabályzat, amely nem a Microsoft tekintetében Adóbefizetéses országok. Emellett a vállalati csatornán keresztül Ausztrália, Szaúd-Arábia, Tajvan és Egyesült Arab Emírségek értékesítéseit Szoftverszállítói Adóbefizetéses értékesítésnek kell kezelni. Azonban a kiadók Tajvanban, érdemes a Microsoft nem győződjön meg arról, hogy minden ilyen tajvani közzétevők gyűjtése és átutalásában adót.
+1. **A Microsoft által felügyelt országok.**
 
-    1. A kiadók dönt, hogy ajánlatokat tesz elérhetővé egy Szoftverszállítói Adóbefizetéses országban, ilyen közzétevők van-e kizárólagos felelőssége, hogy megállapítani a független Szoftverszállítói Adóbefizetéses országban, ha van ilyen.  Tudomásul kell, hogy a Microsoft jelenleg előfordulhat nem adja meg a kiadó adószámlát biztosít az ügyfeleknek szükséges tranzakciós adatait.
+    1. Az alábbi országokban értékesítési összes vevői beszerzési különböző alkalmazási helyzetekben az a Microsoft által felügyelt országok körébe tartoznak: Örményország, Belarusz, Európai Unió, Kanada, India, Írország, Liechtenstein, Monaco, Új-Zélandon, Norvégia, Puerto Rico, Oroszország, Szaúd-Arábia, Szerbia, Dél-Korea, Svájc, Tajvan, Törökország, Egyesült Arab Emírségek és az Egyesült Államokban. 
+
+    1. Ausztrália egy Microsoft által felügyelt ország értékesítési keresztül a nagyvállalati szerződés vevői beszerzési forgatókönyv kivételével az összes ügyfél beszerzési forgatókönyv esetében.
+
+    1. A Microsoft kezeli a teljes ügyfél adózási közzétevő kényelme és, hogy a leggyakoribb forgatókönyvek meghatározására szolgál az országok és teljes ügyfél adózási kezelésével kapcsolatos olyan stratégiák.
+
+    1. A Microsoft nem vállal semmilyen kifejezett, hogy a Microsoft műveletek teljesen felel meg a közzétevők kötelezettségeket a Microsoft által felügyelt országban.  A Microsoft kezeli az összes országra vonatkozó a Microsoft azt javasolja a kiadók saját adó tanácsadók annak megállapításához, hogy a Microsoft Managed adóátutalási elég címek a közzétevők megfelelőségi követelmények dolgozhat.  Ez különösen fontos a bármely Microsoft által felügyelt országok, amelyről a kiadók termékeiket.  Például meghatározott közzétevő, és lehetővé teszi az Szaúd-Arábia értékesítése határozhatja meg, hogy támaszkodva adó kezelése a Microsoft nem minden esetben a közzétevő megfelelőségi igények kielégítéséhez.
+
+1. **ISV által felügyelt országok.**
+
+    1. ISV által felügyelt országok Ausztrália, közé tartozik, az összes értékesítés keresztül a nagyvállalati szerződéssel beszerzésére forgatókönyvben, és minden ország nem hivatkozik a szakasz a **a Microsoft által felügyelt országok**.
+
+1. **Bizonyos esetekben.**
+
+    1. *Brazília*.  Értékesítési Brazíliában keresztül az összes ügyfél a beszerzési forgatókönyvek, kivéve a CSP, Brazília is jelen egy Microsoft által felügyelt ország és a Microsoft úgy működik, mint egy viszonteladótól, nem pedig közzétevők ügynök.  Az értékesítési Brazíliában keresztül a CSP-ügyfél beszerzési forgatókönyv, a közzétevők ügynök és a egy Brazília entitásból, brazíliai CSP-k, amelyek megfelelő adó feltételezi a Microsoft által forgalmazott Microsoft viselkedik. 
+
+    1. *Mexikó*.  Az értékesítés mexikói keresztül a nagyvállalati szerződés vevői beszerzési forgatókönyv Mexikó egy Microsoft által felügyelt ország, és a Microsoft úgy működik, mint egy viszonteladótól, nem pedig közzétevők ügynök.  Az összes vevői beszerzési forgatókönyv kivéve a nagyvállalati szerződés keretében mexikói értékesítés, Mexikó egy ISV felügyelt ország, és Microsoft közzétevők ügynök funkcionál.
 
 ## <a name="security-events"></a>Biztonsági események
 

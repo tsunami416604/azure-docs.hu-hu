@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: be1e7ab953c55581645a9702fc4759cb603e7ecc
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: c0ec8b98ff711f8e5746d6d4731266ed4b09cc8f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54357861"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658844"
 ---
 # <a name="using-chef-with-azure"></a>A Chef az Azure-ral
 [Chef](http://www.chef.io) egy hatékony automatizálási platform, amely Azure-beli virtuális gép infrastruktúra alakítja a kódot. Chef automatizálja hogyan infrastruktúra van konfigurálva, telepítheti és kezelheti a hálózatba, függetlenül attól, hogy annak méretét.
@@ -21,7 +21,7 @@ ms.locfileid: "54357861"
 Ez a cikk ismerteti a Chef segítségével kezelheti az Azure előnyeit.
 
 ## <a name="chef-extension-on-azure"></a>Chef kiterjesztése az Azure-ban
-A Chef-ügyfél a háttérben szolgáltatásként futó virtuális gép kiépítése a [Chef bővítmény](https://docs.microsoft.com/en-us/azure/chef/chef-extension-portal) az Azure Portal webhelyen. Miután kiépített, ezek a virtuális gépek készen áll a Chef-kiszolgáló által kezelt.
+A Chef-ügyfél a háttérben szolgáltatásként futó virtuális gép kiépítése a [Chef bővítmény](https://docs.microsoft.com/azure/chef/chef-extension-portal) az Azure Portal webhelyen. Miután kiépített, ezek a virtuális gépek készen áll a Chef-kiszolgáló által kezelt.
 
 ## <a name="chef-cloud-shell"></a>Chef Cloud Shell
 Közvetlenül az Azure Cloud Shellben munkaállomás használata Chef! Futtassa a Chef segédprogramok és az InSpec megfelelő Cloud Shellben. A Chef parancsokat használhat:

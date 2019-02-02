@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b032dea67bba6f78b8172e772ab2f8fe492f39f9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fa95915615efdd8832a983d03a600beec23d1247
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250435"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658946"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Az Active Directory összevont szolgáltatásokat az Azure Stack üzembe helyezése Kubernetes
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!Note]  
-> Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban.
+> Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban. Az Azure Stack kapcsolat nélküli forgatókönyv jelenleg nem érhető el az előzetes verzió.
 
 A regisztrálással kapcsolatban, telepítse és állítsa be az erőforrásokat a Kubernetes esetében ez a cikk. Az Active Directory összevonási szolgáltatásokban (AD FS) az identity management-szolgáltatás az alábbi lépéseket követve.
 
@@ -66,7 +66,7 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
 
     - Az alábbi adatokra lesz szüksége:
 
-        | Value | Leírás |
+        | Érték | Leírás |
         | ---   | ---         |
         | Az Azure Resource Manager-végpont | A Microsoft Azure Resource Manager-keretrendszert, amely lehetővé teszi a rendszergazdák üzembe helyezése, kezelése és monitorozása az Azure-erőforrások számára. Az Azure Resource Manager képes kezelni ezeket a feladatokat, csoportként, nem pedig külön-külön, egyetlen művelettel.<br>A végpont az Azure Stack Development Kit (ASDK) a következő: `https://management.local.azurestack.external/`<br>A végpont az integrált rendszerekről van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | Az előfizetés-azonosító | A [előfizetés-azonosító](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) van, hogy miként férhetnek hozzá az ajánlatok az Azure Stackben. |
@@ -107,7 +107,7 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
 
     - Az alábbi adatokra lesz szüksége:
 
-        | Value | Leírás |
+        | Érték | Leírás |
         | ---   | ---         |
         | Tanúsítvány elérési útja | A teljes tartománynév vagy a fájl elérési útja a tanúsítványt. |
         | Tanúsítványjelszó | A tanúsítvány jelszavát. |

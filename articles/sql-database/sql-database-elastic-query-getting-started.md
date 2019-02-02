@@ -11,15 +11,16 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: da876152b55ee626025b6192a5004648a29545dc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: a73938c98ebaea310875f0db8b665d0f1aed55e8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604184"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561994"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Jelentéskészítés több kiterjesztett felhőalapú adatbázisok (előzetes verzió)
+
 Jelentéseket hozhat létre egy egyetlen kapcsolódási pont használatával több Azure SQL-adatbázis egy [rugalmas lekérdezés](sql-database-elastic-query-overview.md). Az adatbázisok horizontális kell particionálni a (más néven "horizontálisan skálázott").
 
 Ha rendelkezik egy meglévő adatbázist, lásd: [horizontálisan felskálázott adatbázisok áttelepítése meglévő adatbázisok](sql-database-elastic-convert-to-use-elastic-tools.md).
@@ -27,6 +28,7 @@ Ha rendelkezik egy meglévő adatbázist, lásd: [horizontálisan felskálázott
 A lekérdezéséhez szükséges SQL objektumok ismertetése: [horizontálisan particionált adatbázisok közötti lekérdezési](sql-database-elastic-query-horizontal-partitioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Töltse le és futtassa a [Ismerkedés az Elastic Database-eszközök minta](sql-database-elastic-scale-get-started.md).
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Hozzon létre egy szegmens a mintaalkalmazással kezelő

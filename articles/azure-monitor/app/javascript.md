@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 952dd97a06718d0c29f9c6f5abc79da592e6f3ae
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 55cbca97d369bea80ea9caece14754e81b5738a1
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117810"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661513"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](../../azure-monitor/app/app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
@@ -206,7 +206,7 @@ Válassza ki valamelyik eseményt további részletek megtekintéséhez. A rész
 > 
 > 
 
-Használhatja a nagy teljesítményű [Log Analytics lekérdezési nyelvet](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) is a lapmegtekintések kereséséhez.
+Használhatja a nagy teljesítményű [Log Analytics lekérdezési nyelvet](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour) is a lapmegtekintések kereséséhez.
 
 ### <a name="page-view-properties"></a>Lapmegtekintési tulajdonságok
 * **Lapmegtekintés időtartama** 

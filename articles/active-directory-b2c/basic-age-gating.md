@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e3e60a7ee435cb23bd6a7f78d409691c94d6c49e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f8309424b8e1eed97d66fbd168444418cc1f98fd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153266"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562436"
 ---
-# <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C korhatáralapú hozzáférés engedélyezése
+# <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C Korhatáralapú hozzáférés engedélyezése
 
 >[!IMPORTANT]
 >Ez a funkció nyilvános előzetes verzióban érhető el. Az éles környezetben ne használja a funkciót. 
@@ -103,7 +103,7 @@ Miután a bérlő beállított használati korhatáralapú, felhasználhatja enn
 1. Hozzon létre egy felhasználói folyamat, amely rendelkezik a korhatáralapú engedélyezve van.
 2. Miután a felhasználói folyamatot hoz létre, válassza ki **tulajdonságok** menüjében.
 3. Az a **korhatáralapú** szakaszban jelölje be **engedélyezve**.
-4. Ezután döntse el, hogyan szeretné kezelni a felhasználókat, amelyek kiskorúak azonosításához. A **regisztrálási vagy bejelentkezési**, választja `Allow minors to access your application` vagy `Block minors from accessing your application`. Ha blokkolja a kiskorúak van kiválasztva, válassza `Send a JSON bcak to the application` vagy `Show an error message`. 
+4. Ezután döntse el, hogyan szeretné kezelni a felhasználókat, amelyek kiskorúak azonosításához. A **regisztrálási vagy bejelentkezési**, választja `Allow minors to access your application` vagy `Block minors from accessing your application`. Ha blokkolja a kiskorúak van kiválasztva, válassza `Send a JSON back to the application` vagy `Show an error message`. 
 
 
 

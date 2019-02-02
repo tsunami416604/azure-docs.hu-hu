@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: 97bb7ac79dc96d7f66ae330f5d6a603ca600f648
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/04/2019
+ms.openlocfilehash: 12b0690c7653b03c8099253bee509a79a2ae2600
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043376"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561858"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Határozza meg a virtuális hálózat alhálózat méretét az Azure SQL Database felügyelt példánya
 
@@ -40,7 +40,7 @@ Ha azt tervezi, az alhálózaton belül több felügyelt példány üzembe helye
 - Egyes általános célú példányok van szüksége a két cím
 - Egyes üzletileg kritikus példányok kell négy címét
 
-**Példa**: Azt tervezi, hogy három általános célú és a két üzleti az kritikus fontosságú felügyelt példányok. Hogy azt jelenti, hogy 5 + 3 * 2 + 2 * 4 = 19 kell IP-címek. IP-címtartományok 2 hatványa határozzák meg, mint az IP-címtartományt 32 kell (2 ^ 5) IP-címeket. Ezért kell lefoglalni az alhálózat/27-eset a alhálózati maszkkal.
+**Példa**: Azt tervezi, hogy három általános célú és a két üzleti az kritikus fontosságú felügyelt példányok. That means you need 5 + 3 * 2 + 2 * 4 = 19 IP addresses. IP-címtartományok 2 hatványa határozzák meg, mint az IP-címtartományt 32 kell (2 ^ 5) IP-címeket. Ezért kell lefoglalni az alhálózat/27-eset a alhálózati maszkkal.
 
 > [!IMPORTANT]
 > További fejlesztések fog elavulnak számítási fent látható.

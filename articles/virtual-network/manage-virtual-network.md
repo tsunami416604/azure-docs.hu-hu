@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: 00d5cb48053fe3f34152f29fb20fec8c4a20166f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 10717ccbfa05f204e60eb6d8cde5a83e9714b197
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426165"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562606"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Létrehozása, módosítása vagy egy virtuális hálózat törlése
 
@@ -87,7 +87,7 @@ Ez a cikk bármely szakaszban ismertetett lépések elvégzése előtt hajtsa v�
     - **Diagram**: A diagram az összes olyan eszköz, a virtuális hálózathoz csatlakozó vizuálisan biztosít. Az ábrán néhány fő eszközökre vonatkozó adatokat tartalmaz. Ebben a nézetben, a diagram az eszköz felügyelete válassza ki az eszközt.
     - **Gyakori Azure beállításai**: Gyakori Azure beállításaival kapcsolatos további tudnivalókért tekintse meg a következő információkat:
         *   [Tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md)
-        *   [Hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+        *   [Hozzáférés-vezérlés (IAM)](../role-based-access-control/overview.md)
         *   [Címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Zárolások](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Automation-szkript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)

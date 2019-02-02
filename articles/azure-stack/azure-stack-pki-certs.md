@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/02/2019
-ms.openlocfilehash: 93e6345ba50bab21e03fb7a30148ea51c52a10f2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: 51ab999880dd3bfd453b0e6c2d20d8d6f9a0e093
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244249"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660119"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure Stack nyilvános kulcsokra épülő infrastruktúra tanúsítványkövetelmények
 
@@ -49,7 +49,7 @@ Az alábbi lista ismerteti a tanúsítványokra vonatkozó követelményeket, me
 - A tanúsítvány pfx-fájlok a "Kibővített kulcshasználat" mezőben kell rendelkeznie az "Kiszolgálói hitelesítés (1.3.6.1.5.5.7.3.1)" és "Ügyfél-hitelesítés (1.3.6.1.5.5.7.3.2)" értéket.
 - A tanúsítvány "kiadott:" mező nem lehet ugyanaz, mint a "kiállító:" mező.
 - A jelszavakat, hogy az összes tanúsítvány pfx-fájlok azonosnak kell lennie, a telepítéshez
-- A tanúsítvány PFX-fájlba a jelszó nem lehet egy összetett jelszót.
+- A tanúsítvány PFX-fájlba a jelszó nem lehet egy összetett jelszót. Hozzon létre egy jelszót, amely megfelel a következő jelszó összetettségi követelményeknek. A minimális hossza nyolc karakternél. A jelszó tartalmazza a következők közül legalább háromból: nagybetűs levél, kisbetű, számok, a 0-9, különleges karakterek nem nagybetűssé vagy kisbetűssé nagybetű. Jegyezze meg ezt a jelszót. Üzembehelyezési paraméterként alkalmaznak.
 - Ellenőrizze, hogy a neveket és alternatív tulajdonosneveket a tulajdonos alternatív neve (x509v3_config) bővítmény egyezés található. A tulajdonos alternatív neve mezőben adja meg a további állomásnevek (webhelyek, IP-címek, köznapi nevek) egy SSL-tanúsítvány által védendő teszi lehetővé.
 
 > [!NOTE]  

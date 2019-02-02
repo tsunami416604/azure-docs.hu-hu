@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 0d6879c6b9be06af4bb289761cc8f26b7e56d18e
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ca4979188830fcb53732750a3eaadfc2009c4f9a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355671"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658708"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Az Azure és az appsource-ban Marketplace-ajánlat
 
@@ -47,6 +47,7 @@ A következő táblázat felsorolja az aktuális az ajánlat által támogatott 
 | [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Egy csomagot, amely kibővíti az ügyfelek erőforrás-kezelő (CRM) rendszer a sales, a szolgáltatás, a project service és a mező szolgáltatás modulok.  |
 | [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Egy csomagot, amely kiterjeszti a vállalatierőforrás-tervezési (ERP) szolgáltatást, hogy támogatja a speciális pénzügyi, műveletek, gyártási és ellátásilánc-kezelés. |
 | [IoT Edge-modul](./iot-edge-module/cpp-offer-process-parts.md) | Azure | A Docker-kompatibilis tároló, amely IoT Edge-eszköz futtat.  Az egyéni kódot, más Azure-szolgáltatások és a 3. fél szolgáltatások kombinációját használó, kis számítási modulokat tartalmaz. |
+| [Power BI App](./power-bi/cpp-power-bi-offer.md) | AppSource | Jelentések és irányítópultok csatlakozhat adatokhoz a közös adattárolás adatfolyamok használó csomag. |
 | [SaaS-alkalmazás](./saas-app/cpp-saas-offer.md) | Azure | Megoldás, a szoftver--szolgáltatásként előfizetés, a közzétevő, hogy mely felhasználók jelentkezzen be, amely az Azure Active Directoryt használja testre szabott felületen keresztül kezeli. |
 | [Virtuális gép](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Megoldás az ügyfél-előfizetés keretében üzembe egy virtuális gépen belül található.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6220bdaa40dc2c70bcb330681180a1d082d0132a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e52d5f3b30490227541e99e067c096a7df6dd911
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454540"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566188"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Az Azure Import/Export szolgáltatás: gyakori kérdések 
 Az alábbiakban a kérdések és válaszok, amelyek az adatok átviteléhez az Azure storage-bA az Azure Import/Export szolgáltatás használatakor előfordulhat, hogy rendelkezik. A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosítottuk:
@@ -138,7 +138,7 @@ Az Azure Import/Export szolgáltatás alapértelmezés szerint AES-128 bitlocker
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
     ```
-- Ha használ [WAImportExport V2](https://www.microsoft.com/en-us/download/details.aspx?id=55280) "AlreadyEncrypted" adja meg, és adja meg a fürt megosztott kötetei szolgáltatás driveset a kulcsot.
+- Ha használ [WAImportExport V2](https://www.microsoft.com/download/details.aspx?id=55280) "AlreadyEncrypted" adja meg, és adja meg a fürt megosztott kötetei szolgáltatás driveset a kulcsot.
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
     G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |

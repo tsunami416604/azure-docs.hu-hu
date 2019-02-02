@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: c88df7ba1a9a60ffcda9a5235197037088abca4e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5b128306389a87c432b869b4756a6d232dc903c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249268"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566040"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizált vész-helyreállítási megoldás StorSimple található fájlmegosztások az Azure Site Recovery használatával
 ## <a name="overview"></a>Áttekintés
@@ -58,10 +58,10 @@ Egyes összetevői által a helyszíni környezetben kell lenniük ahhoz, hogy t
 ### <a name="set-up-active-directory-and-dns-replication-optional"></a>Az Active Directory és DNS-replikálás beállítása (nem kötelező)
 Ha meg szeretné védeni a gépek Active Directory és DNS futnak, így elérhetők a DR-helyen, kell explicit módon védeni őket (úgy, hogy a fájlkiszolgálók érhetők el a hitelesítést a feladatátvételt követően). Az ügyfél a helyszíni környezet összetettsége alapján két ajánlott lehetőség van.
 
-#### <a name="option-1"></a>1. lehetőséget
+#### <a name="option-1"></a>1. lehetőség
 Ha az ügyfél rendelkezik egy kis számú alkalmazást, a teljes egyetlen tartományvezérlő a helyszíni hely és lesz majd a domain controller gép replikálása egy másodlagos Azure Site Recovery replikációs használatát javasoljuk a teljes helyre feladatátvétele a webhely (Ez a megfelelő hely – hely és a hely – Azure).
 
-#### <a name="option-2"></a>2. lehetőséget
+#### <a name="option-2"></a>2. lehetőség
 Ha az ügyfél nagy számú az alkalmazások, Active Directory-erdő fut, és néhány alkalmazások egyszerre lesz sikertelen, akkor azt javasoljuk, hogy a DR webhelyen további tartományvezérlő beállításának (vagy egy másodlagos helyre vagy az Azure-ban).
 
 Tekintse meg [automatizált Vészhelyreállítási megoldást az Active Directory és DNS az Azure Site Recovery](../site-recovery/site-recovery-active-directory.md) utasításokat, ha egy tartományvezérlőt a DR webhelyen elérhetővé. Ez a dokumentum a többi feltételezzük egy tartományvezérlő nem érhető el a DR-helyen.
@@ -88,7 +88,7 @@ Ebben a lépésben elő kell készíteni a helyszíni fájl-kiszolgálói körny
          > [!NOTE]
          > A fájlnév verziójától függően változhatnak.
       
-1. Kattintson a **Tovább** gombra.
+1. Kattintson a **tovább**.
 1. Fogadja el a **feltételeket a szerződés** majd **tovább**.
 1. Kattintson a **Befejezés** gombra.
 1. Elfogyott a tárterület StorSimple faragottnak köteteket használó fájlmegosztásokat hozhat létre. További információkért lásd: [kötetek kezelése a StorSimple Manager szolgáltatás használatával](storsimple-manage-volumes.md).
@@ -157,7 +157,7 @@ A helyreállítási terv hozhat létre fájlmegosztást a feladatátvételi foly
    - Feladatátvétel a StorSimple-kötettároló
    - Kötetek a StorSimple-eszköz csatlakoztatása a feladatátvétel után
    - Távolítsa el az egyéni szkriptek futtatására szolgáló bővítmény az Azure virtuális Gépen
-   - Indítsa el a StorSimple virtuális készülék
+   - Start StorSimple Virtual Appliance
    
       ![Tallózás a katalógusban](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
    
@@ -167,17 +167,17 @@ A helyreállítási terv hozhat létre fájlmegosztást a feladatátvételi foly
    
 1. Az automation-fiókban kattintson **változók** &gt; **változó hozzáadása** , és adja hozzá a következő változókat. Kiválaszthatja, hogy ezek az eszközök titkosításához. Ezeket a változókat a helyreállítási terv megadott. Ha a helyreállítási terv, amely a következő lépésben létrehozza név TestPlan, majd a változók kell TestPlan StorSimRegKey, TestPlan-AzureSubscriptionName, és így tovább.
 
-   - **BaseUrl**: Resource Manager URL-címét az Azure-felhőben. Első használatával **Get-AzureRmEnvironment |} Select-Object Name, ResourceManagerUrl** parancsmagot.
-   - *RecoveryPlanName* **- ResourceGroupName**: Resource Manager-csoport, amely a StorSimple-erőforrás.
-   - *RecoveryPlanName* **- ManagerName**: A StorSimple-erőforrás, amely a StorSimple-eszköz rendelkezik.
-   - *RecoveryPlanName* **- eszköznév**: A StorSimple-eszköz feladatátvételt kell végrehajtani.
-   - *RecoveryPlanName* **- DeviceIpAddress**: az eszköz IP-cím (Ez található a **eszközök** lapon a StorSimple-Eszközkezelő szakasz &gt; **beállításai** &gt; **Hálózati** &gt; **DNS-beállítások** csoport).
-   - *RecoveryPlanName* **- VolumeContainers**: egy vesszővel tagolt karakterláncot kíván végrehajtani, több mint; például az eszköz kötettárolóinak: volcon1, volcon2, volcon3.
-   - *RecoveryPlanName* **- TargetDeviceName**: A StorSimple felhőalapú készülék, amelyre a tárolók vannak feladatátvételt kell végrehajtani.
-   - *RecoveryPlanName* **- TargetDeviceIpAddress**: az eszköznek az IP-címét (Ez található a **virtuális gép** szakasz &gt; **beállítások** csoport &gt; **hálózatkezelés** lap).
-   - *RecoveryPlanName* **- StorageAccountName**: A tárfiók nevét, amely a parancsfájl (melynek futtathatók a feladatátvételen átesett virtuális gép) tárolhatja. Ez lehet bármely storage-fiók, amely ideiglenesen tárolja a parancsfájl lemezterületet rendelkezik.
-   - *RecoveryPlanName* **- StorageAccountKey**: a fenti tárfiók hozzáférési kulcsára.
-   - *RecoveryPlanName* **- VMGUIDS**: esetén a virtuális gép védelmét, az Azure Site Recovery rendel minden virtuális gép egy egyedi azonosítója, amely részletezi a feladatátvételen átesett virtuális gép. A VMGUID beszerzéséhez válassza ki a **Recovery Services** fülre, és **védett elem** &gt; **védelmi csoportok** &gt;  **Gépek** &gt; **tulajdonságok**. Ha több virtuális gépet, majd a GUID hozzáadása vesszővel elválasztva karakterláncként.
+   - **BaseUrl**: Az Azure-felhő erőforrás-kezelő URL-címét. Első használatával **Get-AzureRmEnvironment |} Select-Object Name, ResourceManagerUrl** parancsmagot.
+   - *RecoveryPlanName***-ResourceGroupName**: A Resource Manager-csoport, amely a StorSimple-erőforrás.
+   - * RecoveryPlanName ***- ManagerName**: A StorSimple-erőforrás, amely a StorSimple-eszköz rendelkezik.
+   - * RecoveryPlanName ***- eszköznév**: A StorSimple-eszköz, amelyen feladatátvételt kell végrehajtani.
+   - *RecoveryPlanName***-DeviceIpAddress**: Az eszköz IP-címét (Ez található a **eszközök** lapon a StorSimple-Eszközkezelő szakasz &gt; **beállítások** &gt; **hálózati** &gt; **DNS-beállítások** csoport).
+   - *RecoveryPlanName***-VolumeContainers**: Az eszköz, amelyet kell végrehajtani a feladatátvételt; kötettárolók egy vesszővel tagolt karakterlánc például: volcon1, volcon2, volcon3.
+   - *RecoveryPlanName***-TargetDeviceName**: A StorSimple felhőalapú készülék, amelyre a tárolók vannak feladatátvételt kell végrehajtani.
+   - *RecoveryPlanName***-TargetDeviceIpAddress**: Az eszköznek az IP-címét (Ez található a **virtuális gép** szakasz &gt; **beállítások** csoport &gt; **hálózatkezelés** lap).
+   - * RecoveryPlanName ***- StorageAccountName**: A storage-fióknevet, amely a parancsfájl (melynek futtathatók a feladatátvételen átesett virtuális gép) tárolhatja. Ez lehet bármely storage-fiók, amely ideiglenesen tárolja a parancsfájl lemezterületet rendelkezik.
+   - *RecoveryPlanName***-StorageAccountKey**: A fenti tárfiók hozzáférési kulcsára.
+   - * RecoveryPlanName ***- VMGUIDS**: Esetén a virtuális gép védelmét, az Azure Site Recovery egy egyedi azonosítója, amely részletezi a feladatátvételen átesett virtuális gép rendel minden virtuális gép. A VMGUID beszerzéséhez válassza ki a **Recovery Services** fülre, és **védett elem** &gt; **védelmi csoportok** &gt;  **Gépek** &gt; **tulajdonságok**. Ha több virtuális gépet, majd a GUID hozzáadása vesszővel elválasztva karakterláncként.
 
     Például, ha a helyreállítási terv neve nem fileServerpredayRP majd a **változók**, **kapcsolatok** és **tanúsítványok** lapon meg kell jelennie a következő hozzáadása után az eszközök.
 
@@ -208,7 +208,7 @@ A helyreállítási terv hozhat létre fájlmegosztást a feladatátvételi foly
       
    1. Hozzon létre egy Azure Automation-Runbook modul a StorSimple 8000 sorozat felügyelethez. Használja az alábbi parancsokat egy automatizálási a modul zip-fájl létrehozásához.
          
-      ```
+      ```powershell
             # set path variables
             $downloadDir = "C:\scripts\StorSimpleSDKTools"
             $moduleDir = "$downloadDir\AutomationModule\Microsoft.Azure.Management.StorSimple8000Series"
@@ -250,23 +250,23 @@ A helyreállítási terv hozhat létre fájlmegosztást a feladatátvételi foly
    
    - Megnyitja Insert művelet panel, adjon meg egy nevet, válassza ki **elsődleges oldal** hol beállítás futtatni, válassza ki Automation-fiók (amely hozzáadta a runbookok), majd válassza ki a beállítás a **feladatátvétel – a StorSimple-Kötettároló**  runbook.
    
-   - Kattintson a jobb gombbal **csoport 1: Start** kattintson **adja hozzá a védett elemek** lehetőséget, majd válassza ki a helyreállítási tervet, majd kattintson a védendő virtuális gépeit **Ok** gombra. Nem kötelező, ha már van kijelölve a virtuális gépeket.
+   - Kattintson a jobb gombbal **1. csoport: Indítsa el** kattintson **adja hozzá a védett elemek** lehetőséget, majd válassza ki a helyreállítási tervet, majd kattintson a védendő virtuális gépeit **Ok** gombra. Nem kötelező, ha már van kijelölve a virtuális gépeket.
    
-   - Kattintson a jobb gombbal **csoport 1: Start** kattintson **művelet közzététele** lehetőséget, majd adja hozzá az alábbi parancsfájlok:  
+   - Kattintson a jobb gombbal **1. csoport: Indítsa el** kattintson **művelet közzététele** lehetőséget, majd adja hozzá az alábbi parancsfájlok:  
       
-      - Runbook indítása – a StorSimple-virtuális-készülék  
+      - Start-StorSimple-Virtual-Appliance runbook  
       - Több mint – a StorSimple-kötettároló runbook sikertelen  
-      - Runbook csatlakoztatási kötetek-után – feladatátvétel  
-      - Eltávolítás –--szkriptbővítmény runbook  
+      - Mount-volumes-after-failover runbook  
+      - Uninstall-custom-script-extension runbook  
         
-   - Manuális művelet után a fenti 4 szkriptek hozzáadása az egyazon **1. csoport: utólagos lépések** szakaszban. Ez a művelet nem a pont, ahol ellenőrizheti, hogy minden helyesen működik. Ez a művelet csak feladatátvételi teszt részeként hozzá kell adnia (tehát csak a kiválasztott a **feladatátvételi teszt** jelölőnégyzet).
+   - Manuális művelet után a fenti 4 szkriptek hozzáadása az egyazon **1. csoport: Utólagos lépések** szakaszban. Ez a művelet nem a pont, ahol ellenőrizheti, hogy minden helyesen működik. Ez a művelet csak feladatátvételi teszt részeként hozzá kell adnia (tehát csak a kiválasztott a **feladatátvételi teszt** jelölőnégyzet).
     
    - A manuális műveletet után adja hozzá a **karbantartása** használja ugyanazt az eljárást, a más runbookokat is használ. **Mentés** a helyreállítási tervben.
     
    > [!NOTE]
    > Feladatátvételi teszt futtatásakor Ellenőrizze minden, a manuális műveletet lépéseknél, mert a StorSimple-köteteket, amelyek korábban lett klónozta a céleszközön törlődik a karbantartás részeként a manuális művelet befejeződése után.
        
-      ![Recoery terv](./media/storsimple-disaster-recovery-using-azure-site-recovery/image7.png)
+      ![Helyreállítási terv](./media/storsimple-disaster-recovery-using-azure-site-recovery/image7.png)
 
 ## <a name="perform-a-test-failover"></a>Feladatátvételi teszt végrehajtása
 Tekintse meg a [Active Directory-DR-megoldásként](../site-recovery/site-recovery-active-directory.md) útmutatója szempontok adott Active Directory feladatátvételi teszt során. A helyszíni telepítés ne zavarják minden, a teszt feladatátvétel esetén. A StorSimple-köteteket, amelyek a helyszíni virtuális Géphez csatolt voltak a StorSimple felhőalapú készülék az Azure-ban, a rendszer klónozza. Egy virtuális Gépet tesztelési célokra van kerülnek sorra az Azure-ban, és a klónozott kötetek vannak csatolva a virtuális Gépet.
@@ -341,13 +341,13 @@ Kapacitástervezés épül fel, ha legalább két fontos folyamatok:
    - A feladatátvétel után Ha Ön nem láthatja a köteteket, nyissa meg a virtuális gépek, nyissa meg a Lemezkezelést, ellenőrizze újra a lemezeket, és majd kapcsolásuk.
    - Bizonyos esetekben a meghajtó betűjelei a DR-helyen, mint a betűk helyszíni eltérő lehet. Ha ez történik, szüksége lesz a feladatátvétel befejezése után manuálisan hárítsa el a problémát.
    - Feladatátvételi feladat időtúllépése: A StorSimple-parancsfájl időtúllépést okoz, ha a kötettároló feladatátvétele parancsfájl (jelenleg 120 perc) az Azure Site Recovery előállítónként több időt vesz igénybe.
-   - Biztonsági mentési feladat időtúllépése: A StorSimple-parancsfájl időtúllépés történik, ha a kötetek biztonsági mentése szkript (jelenleg 120 perc) az Azure Site Recovery előállítónként több időt vesz igénybe.
+   - Biztonsági mentési feladat időtúllépése: A StorSimple-parancsfájl időkorlátja, ha a kötetek biztonsági mentése szkript (jelenleg 120 perc) az Azure Site Recovery előállítónként több időt vesz igénybe.
    
    > [!IMPORTANT]
    > A biztonsági mentés manuális futtatása az Azure Portalról, és futtassa újra a helyreállítási tervben.
    
-   - Klónozza a feladat időtúllépése: A StorSimple-parancsfájl időtúllépés történik, ha a kötetek klónozása időigényesebb, mint az Azure Site Recovery korlát / script (jelenleg 120 perc).
-   - Szinkronizálási hiba ideje: A StorSimple-szkriptek hibák meg arról, hogy a biztonsági mentés sikertelen volt-e annak ellenére, hogy a biztonsági mentés sikeres, a portálon. Ennek egyik lehetséges oka lehet, hogy a StorSimple-készülék időt szinkronizálva az időzóna szerint az aktuális időt tartalmazó lehet.
+   - Klónozza a feladat időtúllépése: A StorSimple-parancsfájl időkorlátja, ha a kötetek klónozása időigényesebb, mint az Azure Site Recovery korlát / script (jelenleg 120 perc).
+   - Szinkronizálási hiba ideje: A StorSimple parancsfájlok hibák meg arról, hogy a biztonsági mentés sikertelen volt-e annak ellenére, hogy a biztonsági mentés sikeres, a portálon. Ennek egyik lehetséges oka lehet, hogy a StorSimple-készülék időt szinkronizálva az időzóna szerint az aktuális időt tartalmazó lehet.
    
    > [!IMPORTANT]
    > Az aktuális idejét az időzóna készülék idő szinkronizálása.

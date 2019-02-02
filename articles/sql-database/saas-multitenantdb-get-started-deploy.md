@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
-ms.date: 04/02/2018
-ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/16/2018
+ms.openlocfilehash: cb64b96f179bd71c3f885a54b17decb794b40c1a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352211"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567383"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Üzembe helyezése és megismerése a horizontálisan skálázott több-bérlős alkalmazás
 
@@ -137,14 +137,14 @@ Egy központi **Eseményközpont** weblapra mutató hivatkozásokat biztosít az
 
 Bejövő kérelmek elosztását, a Wingtip alkalmazás által használt [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Az események lapról, az egyes bérlők számára az URL-CÍMÉT a bérlő nevét tartalmazza. Minden egyes URL-cím tartalmazza az adott felhasználó értékét is. Minden egyes URL-cím obeys a megjelenített formátum a következő lépésekkel:
 
-- http://events.wingtip-mt.&lt; felhasználó&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Az események alkalmazás kielemzi a az URL-címből. A bérlő neve *fabrikamjazzclub* az előző példában URL-címben.
 2. Az alkalmazás ezután kivonatolja a bérlőneve, hozzon létre egy kulcsot egy katalógus használatával eléréséhez [szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md).
 3. Az alkalmazás megkeresi a kulcsot a katalógusban, és kéri le a bérlői adatbázis megfelelő helyét.
 4. Az alkalmazás használ az adatok keresése és a egy adatbázis, amely tartalmazza az összes adatot a bérlő eléréséhez.
 
-### <a name="events-hub"></a>Eseményközpont
+### <a name="events-hub"></a>Events Hub
 
 1. A **Eseményközpont** a bérlőket a katalógusban, és a helyszínek regisztrált sorolja fel.
 2. A **Eseményközpont** bővebb metaadatokat használ a katalógus lekérni a bérlő nevét társított minden egyes hozhatnak létre az URL-címek hozzárendelését.
