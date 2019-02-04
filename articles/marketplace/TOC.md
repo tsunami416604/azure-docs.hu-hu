@@ -67,7 +67,7 @@
 
 ### [Ajánlatok kezelése](./cloud-partner-portal/manage-offers/cpp-manage-offers.md)
 #### [Ajánlat létrehozása](./cloud-partner-portal/manage-offers/cpp-create-offer.md)
-<!-- #### [Publish offer](./cloud-partner-portal/manage-offers/cpp-publish-offer.md)   -->
+#### [Ajánlat közzététele](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) 
 #### [Ajánlat állapotának megtekintése](./cloud-partner-portal/manage-offers/cpp-view-status-offer.md)
 #### [Ajánlat frissítése](./cloud-partner-portal/manage-offers/cpp-update-offer.md)
 #### [Ajánlat törlése](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
@@ -140,6 +140,17 @@
 #### [IoT Edge-modulok technikai eszközeinek létrehozása](./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md)
 #### [IoT Edge-modulajánlat közzététele](./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md)
 #### [Létező ajánlat frissítése](./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md)
+
+### [Power BI-alkalmazásajánlat](./cloud-partner-portal/power-bi/cpp-power-bi-offer.md)
+#### [Előfeltételek](./cloud-partner-portal/power-bi/cpp-prerequisites.md)
+#### [Power BI-alkalmazásajánlat létrehozása](./cloud-partner-portal/power-bi/cpp-create-offer.md)
+##### [Ajánlatbeállítási lap](./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md)
+##### [Technikai információs lap](./cloud-partner-portal/power-bi/cpp-technical-info-tab.md)
+##### [Áruház részletei lap](./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md)
+##### [Névjegyek lap](./cloud-partner-portal/power-bi/cpp-contacts-tab.md)
+#### [Power BI-alkalmazás technikai eszközeinek létrehozása](./cloud-partner-portal/power-bi/cpp-create-technical-assets.md)
+#### [Power BI-alkalmazásajánlat közzététele](./cloud-partner-portal/power-bi/cpp-publish-offer.md)
+#### [Létező ajánlat frissítése](./cloud-partner-portal/power-bi/cpp-update-existing-offer.md)
 
 ### [SaaS-alkalmazásajánlat](./cloud-partner-portal/saas-app/cpp-saas-offer.md)
 #### [Előfeltételek](./cloud-partner-portal/saas-app/cpp-prerequisites.md)

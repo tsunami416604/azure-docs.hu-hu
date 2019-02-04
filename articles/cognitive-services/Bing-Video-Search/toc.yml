@@ -1,48 +1,45 @@
 items:
-- name: A Bing Video Search dokumentációja
+- name: A Bing Video Search API dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi a Bing Video Search?
-    href: search-the-web.md
+  - name: Mi az a Bing Video Search API?
+    href: overview.md
   - name: Bing Search API-k összehasonlítása
     href: ../Bing-Web-Search/bing-api-comparison.md
     maintainContext: true
+  expanded: true
 - name: REST API – rövid útmutatók
   items:
-  - name: Bevezetés
-    href: quick-start.md
-  - name: C#
-    href: csharp.md
-  - name: Java
-    href: java.md
-  - name: Node.js
-    href: nodejs.md
-  - name: PHP
-    href: php.md
-  - name: Python
-    href: python.md
-  - name: Ruby
-    href: ruby.md
+  - name: REST API
+    items:
+    - name: A C# használata
+      href: quickstarts/csharp.md
+    - name: A Java használata
+      href: quickstarts/java.md
+    - name: A Node.js használata
+      href: quickstarts/nodejs.md
+    - name: A PHP használata
+      href: quickstarts/php.md
+    - name: A Python használata
+      href: quickstarts/python.md
+    - name: A Ruby használata
+      href: quickstarts/ruby.md
+  - name: SDK
+    items:
+    - name: A C# használata
+      href: quickstarts/sdk-csharp-quickstart.md
+    - name: A Node.js használata
+      href: quickstarts/sdk-node-quickstart.md
+    - name: A Python használata
+      href: quickstarts/sdk-python-quickstart.md
+    - name: A Java használata
+      href: quickstarts/sdk-java-quickstart.md
   expanded: true
-- name: SDK – rövid útmutatók
-  items:
-  - name: SDK-minták áttekintése
-    href: sdk.md
-  - name: Video Search SDK C# – rövid útmutató
-    href: video-search-sdk-quickstart.md
-  - name: Video Search SDK Node – rövid útmutató
-    href: video-search-sdk-node-quickstart.md
-  - name: Video Search SDK Python – rövid útmutató
-    href: video-sdk-python-quickstart.md
-  - name: Video Search SDK Java – rövid útmutató
-    href: video-sdk-java-quickstart.md
 - name: Oktatóanyagok
   items:
-  - name: Egyoldalas webalkalmazás
+  - name: Egyoldalas webalkalmazás készítése
     href: tutorial-bing-video-search-single-page-app.md
-  - name: Egyoldalas webalkalmazás (forráskód)
-    href: tutorial-bing-video-search-single-page-app-source.md
 - name: Példák
   items:
   - name: Kódminták
@@ -59,6 +56,12 @@ items:
     href: resize-and-crop-thumbnails.md
   - name: Frissítés 5-ös verzióról 7-es verzióra
     href: bing-video-upgrade-guide-v5-to-v7.md
+- name: Alapelvek
+  items:
+  - name: Videók lekérése a webről
+    href: concepts/get-videos.md
+  - name: Keresési kérések küldése
+    href: concepts/sending-requests.md
 - name: Referencia
   items:
   - name: Bing Video Search API 7-es verzió
@@ -98,13 +101,11 @@ items:
     href: https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api
   - name: Próbálja ki!
     href: https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8
-  - name: Bing Video Search-végpontok
-    href: video-search-endpoints.md
   - name: Bing Video Search API – elemzés
     href: bing-video-stats.md
-ms.openlocfilehash: e8f0e84b405232ff7145f0a8fed4ab42d03a4c63
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9192f6aaa94d2aff310e8d12a66ac8ab75f772e2
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509700"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568035"
