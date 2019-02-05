@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: 9fc6bd6e7196d442f46e364a9d5816c5056f34f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f0f4d160b9e9d5e556813115aa39c60ea8f4edb2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184376"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733331"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jelszavas egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálása
 
@@ -23,7 +23,7 @@ Mellett a lehetőségek, az Azure AD Alkalmazáskatalógusában belül találhat
 
 Miután hozzáadta a katalógusban nem szereplő alkalmazást, majd konfigurálhatja az egyszeri bejelentkezési módszer kiválasztásával használja ezt az alkalmazást a **egyszeri bejelentkezés** navigációs elem a vállalati alkalmazások a [azAzureportal](https://portal.azure.com/).
 
-Egyszeri bejelentkezés módszer érhető el, hogy a rendszer a [jelszóalapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) lehetőséget. Az a **vegye fel a katalógusban nem szereplő alkalmazást** élmény, bármilyen alkalmazás, amely egy HTML-alapú felhasználónév rendereli integrálható, és a jelszót a mezőben adjon meg akkor is, ha nem szerepel az előre integrált alkalmazások készlete.
+Egyszeri bejelentkezés módszer érhető el, hogy a rendszer a [jelszóalapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) lehetőséget. Az a **vegye fel a katalógusban nem szereplő alkalmazást** élmény, bármilyen alkalmazás, amely egy HTML-alapú felhasználónév rendereli integrálható, és a jelszót a mezőben adjon meg akkor is, ha nem szerepel az előre integrált alkalmazások készlete.
 
 Az is működik mindez úgy, hogy egy oldalt automatizované získávání dat technológia, amely része a hozzáférési Panel bővítményt, amely lehetővé teszi számunkra, hogy a felhasználónév és jelszó bemeneti mezők automatikusan észlelni, az adott alkalmazáspéldány esetében biztonságosan tárolja őket. Ezután biztonságos visszajátszani felhasználóneveket és jelszavakat ezekhez a mezőkhöz amikor a felhasználók csak az adott alkalmazást, az alkalmazás-hozzáférési panelen.
 
@@ -47,7 +47,7 @@ Ez ideális megoldás a kezdéshez bármilyen típusú alkalmazásban gyorsan in
 
 -   Lehetővé teszi egy **rendszergazda** adja meg a megosztott felhasználónév vagy jelszó a frissítési hitelesítő adatok használatával egy csoport tagjainak által használt funkciót [csoport hozzárendelése egy alkalmazáshoz](#assign-an-application-to-a-group-directly)
 
-Az alábbi szakasz ismerteti, hogyan engedélyezheti [jelszóalapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) bármely alkalmazás használatával adja hozzá a **vegye fel a katalógusban nem szereplő alkalmazást** élményt.
+Az alábbi szakasz ismerteti, hogyan engedélyezheti [jelszóalapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) bármely alkalmazás használatával adja hozzá a **vegye fel a katalógusban nem szereplő alkalmazást** élményt.
 
 ## <a name="overview-of-steps-required"></a>Szükséges lépések áttekintése
 

@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6cf308ae65e7fe85a89ac76b17a4bd1b3a4ada1b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 76d83397f27509b09b04753bce62b5a329da8d71
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176998"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733705"
 ---
 # <a name="news-search-api-upgrade-guide"></a>A verziófrissítési útmutató News Search API
 
@@ -76,7 +76,7 @@ Letiltva|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 
-- Termékek hozzáadva, amely adhatja meg a lehetséges értéke a [kategória](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) lekérdezési paramétert. Lásd: [piacok szerint kategóriák](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#categories-by-market).
+- Termékek hozzáadva, amely adhatja meg a lehetséges értéke a [kategória](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) lekérdezési paramétert. Lásd: [piacok szerint kategóriák](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).
 
 - Hozzáadja a [rendezési szempontjainak helyi](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) lekérdezési paraméter, amely népszerű témakörök a legutóbbi van legelöl a dátum szerint rendezve adja vissza.
 

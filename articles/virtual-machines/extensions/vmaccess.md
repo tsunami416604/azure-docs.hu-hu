@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 20d806540b0aa814c88ef4ff69834283ba4a7722
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 71aecc1748e70e2119b1f54c21a0f705afc5d5d0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413838"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731308"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Kezelheti a rendszergazda felhasználókat, az SSH és az ellenőrzés, vagy javítsa ki a VMAccess bővítmény használata az Azure CLI-vel Linux rendszerű virtuális gépek lemezeinek
 ## <a name="overview"></a>Áttekintés
@@ -110,7 +110,7 @@ az vm user delete \
 ```
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>JSON-fájlok és a VMAccess bővítmény használata
-Az alábbi példák a nyers JSON-fájlokat használja. Használat [az virtuálisgép-bővítmény csoportot](/cli/azure/vm/extension#az_vm_extension_set) , majd hívja meg a JSON-fájlokat. Ezek a JSON-fájlok is meghívhat az Azure-sablonok. 
+Az alábbi példák a nyers JSON-fájlokat használja. Használat [az virtuálisgép-bővítmény csoportot](/cli/azure/vm/extension) , majd hívja meg a JSON-fájlokat. Ezek a JSON-fájlok is meghívhat az Azure-sablonok. 
 
 ### <a name="reset-user-access"></a>Felhasználói hozzáférés alaphelyzetbe állítása
 Ha a legfelső szintű hozzáférés elvesztette a Linux rendszerű virtuális gépen, indíthatja el a vmaccess bővítmény parancsfájl frissíteni egy felhasználó SSH-kulcs vagy jelszó.

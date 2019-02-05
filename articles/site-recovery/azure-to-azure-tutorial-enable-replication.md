@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2af1ad35ee5f7548352180026f1d613d27b6af46
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0e73c0f94e0aa240349aec45b4a146ba5eb37dab
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103516"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700774"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása
 
@@ -29,7 +29,7 @@ Az oktatóanyag bemutatja, hogyan állíthat be vészhelyreállítást egy máso
 > * Virtuális gép replikálásának engedélyezése
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan telepíthető a legegyszerűbben beállításokkal vész-helyreállítási. Ha szeretné testre szabott beállítások ismertetése, tekintse át a cikkek alapján a [útmutató szakaszban](azure-to-azure-how-to-enable-replication.md). O
+> Ez a cikk ismerteti, hogyan telepíthető a legegyszerűbben beállításokkal vész-helyreállítási. Ha szeretné testre szabott beállítások ismertetése, tekintse át a cikkek alapján a [útmutató szakaszban](azure-to-azure-how-to-enable-replication.md). o
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -170,7 +170,7 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
     - **Alkalmazáskonzisztens pillanatkép gyakorisága**: Alapértelmezés szerint a Site Recovery 4 óránként vesz igénybe egy alkalmazáskonzisztens pillanatképet. 1 és 12 óra közötti értéket konfigurálhat. Az alkalmazáskonzisztens pillanatkép a virtuális gépen található alkalmazásadatok időponthoz kötött pillanatképe. A kötet árnyékmásolata szolgáltatás (VSS) biztosítja, hogy a virtuális gépen található alkalmazás konzisztens állapotban legyen a pillanatkép készítésekor.
     - **Replikációs csoport**: Ha az alkalmazásnak több virtuális gépre kiterjedő konzisztencia virtuális gépen, létrehozhat egy replikációs csoportot a virtuális gépeken. Alapértelmezés szerint a kijelölt virtuális gépek nem részei semmilyen replikációs csoportnak sem.
 
-5. A **Testreszabás**válassza **Igen** a virtuális gépre kiterjedő konzisztencia, ha azt szeretné, hogy virtuális gépeket ad hozzá egy új vagy meglévő replikációs csoporthoz. hogy a virtuális gépek egy replikációs csoport része. Ezután kattintson az **OK** gombra.
+5. A **Testreszabás**válassza **Igen** a virtuális gépre kiterjedő konzisztencia, ha azt szeretné, hogy virtuális gépeket ad hozzá egy új vagy meglévő replikációs csoporthoz. Ezután kattintson az **OK** gombra.
 
     - A feladatátvételkor a replikációs csoportba tartozó összes gép megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokkal rendelkezik majd. Több virtuális gépre kiterjedő konzisztencia engedélyezése hatással lehet a számítási feladatok teljesítményére (a CPU-igényes szó), és csak akkor, ha a gépek ugyanazt a számítási feladatot futtat, és több gép közötti konzisztenciára van szükség.
     - Kiválaszthatja, hogy legfeljebb 16 virtuális gépek egy replikációs csoportban.

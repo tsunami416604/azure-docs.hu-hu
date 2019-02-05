@@ -16,12 +16,12 @@ ms.date: 01/31/2017
 ms.author: mathoma
 ms.reviewer: jroth
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 558606b6993aff2053dfbbf6adfd864cd827bbb1
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 51694ca085e131150217ffb3fbac9830980108cb
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54328980"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733518"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Csatlakozás Azure-beli SQL Server-alapú virtuális géphez (hagyományos üzembe helyezési modell)
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Az ügyfél csatlakozik a virtuális gépen futó SQL Server módja az ügyfél 
 > 
 
 ### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>Csatlakozhat az SQL Server ugyanazon a felhőszolgáltatáson
-Több virtuális gép is létrehozható az ugyanazon felhőszolgáltatásban. A virtuális gépek forgatókönyv ismertetése: [virtuális gépek csatlakoztatása virtuális hálózattal vagy felhőszolgáltatással szolgáltatással](../classic/connect-vms-classic.md#connect-vms-in-a-standalone-cloud-service). Ebben a forgatókönyvben egy virtuális gépen ügyfél megkísérli ugyanazon a felhőszolgáltatáson egy másik virtuális gépen futó SQL-kiszolgálóhoz való csatlakozáshoz.
+Több virtuális gép is létrehozható az ugyanazon felhőszolgáltatásban. A virtuális gépek forgatókönyv ismertetése: [virtuális gépek csatlakoztatása virtuális hálózattal vagy felhőszolgáltatással szolgáltatással](/previous-versions/azure/virtual-machines/windows/classic/connect-vms-classic#connect-vms-in-a-standalone-cloud-service). Ebben a forgatókönyvben egy virtuális gépen ügyfél megkísérli ugyanazon a felhőszolgáltatáson egy másik virtuális gépen futó SQL-kiszolgálóhoz való csatlakozáshoz.
 
 Ebben a forgatókönyvben csatlakoztathatja a virtuális gép **neve** (is látható **számítógépnév** vagy **állomásnév** a portálon). Ez a virtuális gép létrehozása során megadott. Például, ha az SQL virtuális gép elnevezett **mysqlvm**, ugyanazon a felhőszolgáltatáson az ügyfél virtuális gép a következő kapcsolati karakterlánc használatával csatlakozzon:
 
@@ -64,7 +64,7 @@ Vegyük példaként egy klasszikus virtuális gép nevű **mysqlvm** a DNS-név 
 
     "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
-Ez a kapcsolati karakterlánc engedélyezi a kapcsolatot az ügyfelek az interneten keresztül, bár ez nem jelenti azt, hogy bárki csatlakozhat az SQL Server. Kívüli ügyfelek számára a helyes felhasználónévvel és jelszóval rendelkezik. A fokozott biztonság érdekében ne használja a jól ismert 1433-as portot a nyilvános virtuálisgép-végpont. Ha lehetséges, fontolja meg a ACL hozzáadását, és csak az ügyfelek korlátozzák a forgalmat szeretné engedélyezni. A hozzáférés-vezérlési listák használata a végpontok útmutatásért lásd: [kezelése az ACL-végponton](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint).
+Ez a kapcsolati karakterlánc engedélyezi a kapcsolatot az ügyfelek az interneten keresztül, bár ez nem jelenti azt, hogy bárki csatlakozhat az SQL Server. Kívüli ügyfelek számára a helyes felhasználónévvel és jelszóval rendelkezik. A fokozott biztonság érdekében ne használja a jól ismert 1433-as portot a nyilvános virtuálisgép-végpont. Ha lehetséges, fontolja meg a ACL hozzáadását, és csak az ügyfelek korlátozzák a forgalmat szeretné engedélyezni. A hozzáférés-vezérlési listák használata a végpontok útmutatásért lásd: [kezelése az ACL-végponton](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
 
 > [!NOTE]
 > Ezzel a technikával az SQL Serverrel való kommunikáció használatakor az Azure-adatközpontba a kimenő adatok teljes normál vonatkoznak van [kimenő adatátvitelek díjszabását](https://azure.microsoft.com/pricing/details/data-transfers/).

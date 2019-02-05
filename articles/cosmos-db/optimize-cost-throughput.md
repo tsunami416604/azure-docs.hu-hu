@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 443bf5694515720b1b865c310e70ca9c45add262
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 32c0ee4764c7c2b541428c63857286a45a09a634
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465588"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733121"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB kiosztott átviteli sebesség költségek optimalizálása
 
@@ -79,7 +79,7 @@ A natív SDK-k (.NET/.NET Core, Java, Node.js és Python) implicit módon ezt a 
 
 Ha egynél több ügyfél felett a kérések mennyisége következetesen összesítve működő, az alapértelmezett újrapróbálkozások jelenleg, amely a jelenleg beállított 9 nem minden esetben. Ebben az esetben az ügyfél jelez egy `DocumentClientException` állapotú code 429-es az alkalmazáshoz. Az alapértelmezett újrapróbálkozások beállításával módosítható a `RetryOptions` ConnectionPolicy-példányon. Alapértelmezés szerint a 429-es állapotkód DocumentClientException adja vissza egy halmozódó várakozási idő pedig 30 másodperc után, ha a kérés továbbra is működőképes fent a kérések aránya. Ez akkor fordul elő, még ha az aktuális újrapróbálkozások nem éri el az újrapróbálkozások maximális számát, legyen az alapértelmezett 9 vagy egy felhasználó által definiált értéket. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryAtte) értéke 3, így ebben az esetben, ha egy kérés művelet meghaladja a fenntartott átviteli sebesség ahhoz a gyűjteményhez, korlátozza a sebességét a kért művelet újrapróbálkozik háromszor kivétel előtt a Kivétel történt az alkalmazáshoz.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 értékre van állítva, tehát ebben az esetben, ha az összesített újrapróbálkozási ideig várakozik az első óta eltelt másodpercek alatt kérelem meghaladja a 60 másodperc, a kivétel történt.
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) értéke 3, így ebben az esetben, ha egy kérés művelet meghaladja a fenntartott átviteli sebesség ahhoz a gyűjteményhez, korlátozza a sebességét a kért művelet újrapróbálkozik háromszor kivétel előtt a Kivétel történt az alkalmazáshoz.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 értékre van állítva, tehát ebben az esetben, ha az összesített újrapróbálkozási ideig várakozik az első óta eltelt másodpercek alatt kérelem meghaladja a 60 másodperc, a kivétel történt.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 

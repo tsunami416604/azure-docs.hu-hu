@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 631fc4e613311df9386084408ead625f6d018151
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 2c14cdf963d1d6c792e6101d8a2179a560dcf096
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911890"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731257"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>Az első Python-függvény létrehozása az Azure-ban (előzetes verzió)
 
@@ -179,7 +179,7 @@ Most már készen áll, hozzon létre egy Függvényalkalmazást és a többi sz
 
 ## <a name="create-a-linux-function-app-in-azure"></a>Linux-függvényalkalmazás létrehozása az Azure-ban
 
-A függvényalkalmazás szolgáltat környezetet a függvénykód végrehajtása. Lehetővé teszi, hogy egyszerűbb felügyelete, üzembe helyezéséhez és erőforrás-megosztás logikai egységbe csoportosítsa a függvényeket. Hozzon létre egy **Linux rendszeren futó Python függvényalkalmazásnak** használatával a [az functionapp létrehozása](/cli/azure/functionapp#az_functionapp_create) parancsot.
+A függvényalkalmazás szolgáltat környezetet a függvénykód végrehajtása. Lehetővé teszi, hogy egyszerűbb felügyelete, üzembe helyezéséhez és erőforrás-megosztás logikai egységbe csoportosítsa a függvényeket. Hozzon létre egy **Linux rendszeren futó Python függvényalkalmazásnak** használatával a [az functionapp létrehozása](/cli/azure/functionapp) parancsot.
 
 Futtassa a következő parancsot egy egyedi függvényalkalmazás-nevet helyén használatával a `<app_name>` helyőrző és a tárfiók nevét `<storage_name>`. Az `<app_name>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, ezért az Azure összes alkalmazásában csak egyszer használhatja.
 

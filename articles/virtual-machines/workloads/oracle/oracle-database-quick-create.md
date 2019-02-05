@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 9f6e5dab5059086efc1e00c78b85296ff2b7a48c
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 490ac613adac968cc323c2d8351b59aece181b68
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139148"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734385"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Egy Azure virtuális gépen futó Oracle-adatbázis létrehozása
 
@@ -34,7 +34,7 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyors�
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet (VM), használja a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. 
+Hozzon létre egy virtuális gépet (VM), használja a [az virtuális gép létrehozása](/cli/azure/vm) parancsot. 
 
 Az alábbi példa egy `myVM` nevű virtuális gépet hoz létre. SSH-kulcsokat, azt is hoz létre, ha azok még nem léteznek a kulcsok alapértelmezett helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
 
@@ -145,7 +145,7 @@ Az Oracle-szoftver már telepítve van a Piactéri lemezképet. Hozzon létre eg
 
 3. Oracle-változók beállítása
 
-Csatlakozás előtt be kell állítani a két környezeti változó: *ORACLE_HOME* és *ORACLE_SID*.
+Csatlakozás előtt kell két környezeti változókat: *ORACLE_HOME* és *ORACLE_SID*.
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
@@ -271,7 +271,7 @@ Az Oracle-adatbázis alapértelmezés szerint automatikusan a virtuális gép ú
 
 A végső feladat, hogy néhány külső végpontok konfigurálása. Az Azure hálózati biztonsági csoport, amely védelmet nyújt a virtuális gép beállításához, lépjen ki az SSH-munkamenet a virtuális gépen (kell rendelkezik lett problémaelhárító SSH ki, amikor a rendszer újraindítása az előző lépésben). 
 
-1.  Nyissa meg a végpont, amelyekkel távolról az Oracle-adatbázis eléréséhez, hozzon létre egy hálózati biztonsági csoport szabályt az [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) módon: 
+1.  Nyissa meg a végpont, amelyekkel távolról az Oracle-adatbázis eléréséhez, hozzon létre egy hálózati biztonsági csoport szabályt az [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule) módon: 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -283,7 +283,7 @@ A végső feladat, hogy néhány külső végpontok konfigurálása. Az Azure h�
         --destination-port-range 1521
     ```
 
-2.  Nyissa meg a végpont, amely Oracle-EM Express távolról elérésére használja, hozzon létre egy hálózati biztonsági csoport szabályt az [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) módon:
+2.  Nyissa meg a végpont, amely Oracle-EM Express távolról elérésére használja, hozzon létre egy hálózati biztonsági csoport szabályt az [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule) módon:
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -295,7 +295,7 @@ A végső feladat, hogy néhány külső végpontok konfigurálása. Az Azure h�
         --destination-port-range 5502
     ```
 
-3. Szükség esetén kérje le újra a virtuális gép nyilvános IP-cím [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) módon:
+3. Szükség esetén kérje le újra a virtuális gép nyilvános IP-cím [az network public-ip show](/cli/azure/network/public-ip) módon:
 
     ```azurecli-interactive
     az network public-ip show \
@@ -317,7 +317,7 @@ Használatával bejelentkezhet a **SYS** fiókra, és ellenőrizze a **SYSDBA cs
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Miután végzett az első Oracle-adatbázis felfedezése az Azure-ban és a virtuális gép már nem szükséges, használja a [az csoport törlése](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
+Miután végzett az első Oracle-adatbázis felfedezése az Azure-ban és a virtuális gép már nem szükséges, használja a [az csoport törlése](/cli/azure/group) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

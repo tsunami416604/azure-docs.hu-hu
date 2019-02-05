@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: aaeebb200197ba6ef15fbcfe02f262a3840197b5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 0364304a203e03faf69868174a45cb41850ce112
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856112"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733314"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>A Service Bus kézbesíthetetlen levelek sorai áttekintése
 
@@ -60,13 +60,13 @@ Ez a viselkedés nem tiltható le, de beállíthatja [MaxDeliveryCount](/dotnet/
 
 ## <a name="exceeding-timetolive"></a>Exceeding TimeToLive
 
-Ha a [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) vagy [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) tulajdonsága **Igaz** (az alapértelmezett érték **hamis**), minden lejáró üzenetek kerülnek a DLQ megadása a `TTLExpiredException` okkód.
+Ha a [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) vagy [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) tulajdonsága **Igaz** (az alapértelmezett érték **hamis**), minden lejáró üzenetek kerülnek a DLQ megadása a `TTLExpiredException` okkód.
 
 Vegye figyelembe, hogy lejárt üzenetek csak üríti ki és átkerül a DLQ, ha legalább egy aktív fogadót, a fő üzenetsor vagy előfizetés; lehetőség van Ezt a viselkedést a rendszer kialakításából fakad.
 
 ## <a name="errors-while-processing-subscription-rules"></a>Hiba történt az előfizetési szabályok feldolgozása
 
-Ha a [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnFilterEvaluationExceptions) tulajdonság engedélyezve van egy előfizetést, az előfizetéshez tartozó SQL-szűrési szabály végrehajtása közben jelentkező hibák a DLQ mentén rögzíti a rendszer a hibás üzenettel.
+Ha a [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) tulajdonság engedélyezve van egy előfizetést, az előfizetéshez tartozó SQL-szűrési szabály végrehajtása közben jelentkező hibák a DLQ mentén rögzíti a rendszer a hibás üzenettel.
 
 ## <a name="application-level-dead-lettering"></a>Alkalmazásszintű kézbesítetlen levelek kezelése
 
@@ -84,7 +84,7 @@ Ezek az üzenetek kézbesíthetetlen levelek lettered lekéréséhez a fogadó h
 
 ## <a name="example"></a>Példa
 
-Az alábbi kódrészlet létrehoz egy üzenetet fogadó. A fő üzenetsor receive hurokba került a kód lekéri az üzenet [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_Receive_System_TimeSpan_), amely rákérdez, hogy a közvetítő azonnal vissza üzeneteié könnyen hozzáférhető, vagy nincs eredményt adja vissza. A kódot egy üzenetet kap, ha, közvetlenül felad azt, milyen lépésekben a `DeliveryCount`. Miután a rendszer áthelyezi az üzenetet a DLQ, a fő üzenetsor üres, és a hurok kilépjen-e, mint [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_ReceiveAsync_System_TimeSpan_) adja vissza **null**.
+Az alábbi kódrészlet létrehoz egy üzenetet fogadó. A fő üzenetsor receive hurokba került a kód lekéri az üzenet [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver), amely rákérdez, hogy a közvetítő azonnal vissza üzeneteié könnyen hozzáférhető, vagy nincs eredményt adja vissza. A kódot egy üzenetet kap, ha, közvetlenül felad azt, milyen lépésekben a `DeliveryCount`. Miután a rendszer áthelyezi az üzenetet a DLQ, a fő üzenetsor üres, és a hurok kilépjen-e, mint [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) adja vissza **null**.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);

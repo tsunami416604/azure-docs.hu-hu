@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/18
 ms.author: cynthn
-ms.openlocfilehash: 04c59cac8cd55acad0504337c57767c938835021
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b42c32936d6973468ace58572ee61eaad66053c2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884894"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733178"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Gyors útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure CLI használatával
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hozunk létre, és üzembe helyezünk egy mintaalkalmazást az Azure CLI használatával.
@@ -40,7 +40,7 @@ Mielőtt létrehozhatna egy méretezési csoportot, létre kell hoznia egy erőf
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss#az_vmss_create) paranccsal. A következő példa egy *myScaleSet* nevű méretezési csoportot hoz létre, amely automatikusan frissül a módosítások alkalmazásakor, valamint SSH-kulcsokat hoz létre, amennyiben azok még nem léteznének a *~/.ssh/id_rsa* helyen. Ezek az SSH-kulcsok akkor használhatók, ha be kell jelentkeznie a virtuálisgép-példányokra. Az SSH-kulcsok meglévő készletének használata helyett használja az `--ssh-key-value` paramétert, és adja meg a kulcsok helyét.
+Most hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss) paranccsal. A következő példa egy *myScaleSet* nevű méretezési csoportot hoz létre, amely automatikusan frissül a módosítások alkalmazásakor, valamint SSH-kulcsokat hoz létre, amennyiben azok még nem léteznének a *~/.ssh/id_rsa* helyen. Ezek az SSH-kulcsok akkor használhatók, ha be kell jelentkeznie a virtuálisgép-példányokra. Az SSH-kulcsok meglévő készletének használata helyett használja az `--ssh-key-value` paramétert, és adja meg a kulcsok helyét.
 
 ```azurecli-interactive
 az vmss create \
@@ -58,7 +58,7 @@ A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása �
 ## <a name="deploy-sample-application"></a>Mintaalkalmazás üzembe helyezése
 A méretezési csoport teszteléséhez telepítsen egy alapszintű webalkalmazást. Az egyéni Azure-szkriptbővítmények használatával egy olyan szkript tölthető le és futtatható, amely egy alkalmazást telepít a virtuálisgép-példányokon. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/linux/extensions-customscript.md).
 
-Telepítsen egy alapszintű NGINX-webkiszolgálót az egyéni szkriptbővítménnyel. Alkalmazza az NGINX-et telepítő egyéni szkriptbővítményt az [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) paranccsal következő módon:
+Telepítsen egy alapszintű NGINX-webkiszolgálót az egyéni szkriptbővítménnyel. Alkalmazza az NGINX-et telepítő egyéni szkriptbővítményt az [az vmss extension set](/cli/azure/vmss/extension) paranccsal következő módon:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -72,7 +72,7 @@ az vmss extension set \
 
 
 ## <a name="allow-traffic-to-application"></a>Forgalom engedélyezése az alkalmazáshoz
-A méretezési csoport létrehozásakor a rendszer automatikusan üzembe helyezett egy Azure Load Balancert. A terheléselosztó elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Annak érdekében, hogy a forgalom elérhesse a mintául szolgáló webalkalmazást, hozzon létre egy terheléselosztó-szabályt az [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) paranccsal. Az alábbi példa egy *myLoadBalancerRuleWeb* nevű szabályt hoz létre:
+A méretezési csoport létrehozásakor a rendszer automatikusan üzembe helyezett egy Azure Load Balancert. A terheléselosztó elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Annak érdekében, hogy a forgalom elérhesse a mintául szolgáló webalkalmazást, hozzon létre egy terheléselosztó-szabályt az [az network lb rule create](/cli/azure/network/lb/rule) paranccsal. Az alábbi példa egy *myLoadBalancerRuleWeb* nevű szabályt hoz létre:
 
 ```azurecli-interactive
 az network lb rule create \
@@ -104,7 +104,7 @@ Adja meg a terheléselosztó nyilvános IP-címét egy webböngészőben. A terh
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rájuk szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport, a méretezési csoport és az összes kapcsolódó erőforrás. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
+Ha már nincs rájuk szükség, az [az group delete](/cli/azure/group) paranccsal eltávolítható az erőforráscsoport, a méretezési csoport és az összes kapcsolódó erőforrás. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

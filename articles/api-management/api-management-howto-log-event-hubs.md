@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: a8cda04ccc39e53962ec8c4b57d24df539f38825
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 77ada606412506e3d3d23189d8a5267e1f58a8f7
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233898"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733076"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Eseménynaplózás az Azure Event Hubs az Azure API Management hogyan
 Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs úgy működik, mint a "bejárati ajtajának" egy eseményfolyamat számára, és az összegyűjtött adatokat egy eseményközpontba, átalakíthatók, és bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével tárolják. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.
@@ -33,7 +33,7 @@ Létrehoz egy eseményközpontot, és lekérése, és az Eseményközpontból é
 ## <a name="create-an-api-management-logger"></a>Az API Management-naplózó létrehozása
 Most, hogy egy Eseményközpontba,-e a következő lépéssel konfigurálhatja a [naplózó](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) az az API Management szolgáltatás úgy, hogy az Event hubs események naplóba.
 
-Az API Management másolása használatával konfigurálhatók a [API Management REST API](https://aka.ms/smapi). Mielőtt először a REST API használatával, tekintse át a [Előfeltételek](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#Prerequisites) , és gondoskodjon arról, hogy [engedélyezve van a REST API-hozzáférés](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI).
+Az API Management másolása használatával konfigurálhatók a [API Management REST API](https://aka.ms/smapi). Mielőtt először a REST API használatával, tekintse át a [Előfeltételek](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest) , és gondoskodjon arról, hogy [engedélyezve van a REST API-hozzáférés](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI).
 
 Hozzon létre egy naplózó, győződjön meg arról, egy HTTP PUT kérelem a következő URL-cím sablon használatával:
 
@@ -44,7 +44,7 @@ Hozzon létre egy naplózó, győződjön meg arról, egy HTTP PUT kérelem a k�
 
 Adja hozzá a következő fejléceket a kérelmet:
 
-* Content-Type: application/json
+* Content-Type : application/json
 * Hitelesítés: SharedAccessSignature 58...
   * Útmutató generálása a `SharedAccessSignature` lásd [Azure API Management REST API-hitelesítés](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-authentication).
 

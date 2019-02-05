@@ -1,5 +1,5 @@
 ---
-title: Fenyegetések észlelése – konfigurálása az Azure SQL Database felügyelt példány |} A Microsoft Docs
+title: Konfigurálja a fenyegetések észlelése – Azure SQL Database felügyelt példány |} A Microsoft Docs
 description: Fenyegetésészlelés észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések a felügyelt példány az adatbázishoz.
 services: sql-database
 ms.service: sql-database
@@ -11,26 +11,26 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 59a3b4a4e1b08a9a9985836a9f9be44d1eff9c71
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: d8522967154a69b8473475932f2074bc98b4f24d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472065"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731223"
 ---
-# <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példány Fenyegetésészlelési funkciójának (előzetes verzió) konfigurálása
+# <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példány fenyegetésészlelési funkciójának (előzetes verzió) konfigurálása
 
-Az Azure SQL [Fenyegetésészlelés](sql-database-threat-detection-overview.md) a [SQL Database felügyelt példányain](sql-database-managed-instance-index.yml) észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek. A Fenyegetésészlelés azonosíthatja **lehetséges SQL-injektálás**, **hozzáférés szokatlan helyről vagy a data Center**, **ismeretlen egyszerű vagy potenciálisan káros alkalmazástvalóhozzáférés**, és **találgatásos SQL hitelesítő adatok** – további részletek az [Fenyegetésészlelési riasztásokat](sql-database-threat-detection-overview.md#azure-sql-database-threat-detection-alerts).
+[Veszélyforrások detektálása](sql-database-threat-detection-overview.md) számára egy [felügyelt példány](sql-database-managed-instance-index.yml) észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek. A fenyegetésészlelés azonosíthatja **lehetséges SQL-injektálás**, **hozzáférés szokatlan helyről vagy a data Center**, **ismeretlen egyszerű vagy potenciálisan káros alkalmazástvalóhozzáférés**, és **találgatásos SQL hitelesítő adatok** – további részletek az [fenyegetés-észlelési riasztás](sql-database-threat-detection-overview.md#threat-detection-alerts).
 
 Is fogadhatja az értesítéseket keresztül észlelt fenyegetésről [e-mail-értesítések](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) vagy [Azure Portalon](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)
 
-[Veszélyforrások Detektálása](sql-database-threat-detection-overview.md) része a [SQL speciális adatbiztonság](sql-advanced-threat-protection.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. A Fenyegetésészlelés érheti el és a központi SQL ADS portálon keresztül kezelhetők. Fenyegetés-észlelési szolgáltatás 15 USD/hó / felügyelt példány díjának 30 napig ingyenesen.
+[Veszélyforrások detektálása](sql-database-threat-detection-overview.md) része a [adatbiztonság speciális](sql-database-advanced-data-security.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. A fenyegetésészlelés érheti el és a központi SQL ADS portálon keresztül kezelhetők. Fenyegetés-észlelési szolgáltatás 15 USD/hó / felügyelt példány díjának 30 napig ingyenesen.
 
-## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Az Azure Portalon a felügyelt példány Fenyegetésészlelési beállítása
+## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Az Azure Portalon a felügyelt példány fenyegetésészlelési beállítása
 
 1. Indítsa el az Azure Portalra a [ https://portal.azure.com ](https://portal.azure.com).
-2. Keresse meg a felügyelt példány számára védelmet kíván konfiguráció lapján. Az a **beállítások** lapon jelölje be **Fenyegetésészlelés**.
+2. Keresse meg a következő felügyelt példányt védeni kívánt konfiguráció lapján. Az a **beállítások** lapon jelölje be **Fenyegetésészlelés**.
 3. A Fenyegetésészlelés konfigurációs lapja
    - Kapcsolja be **ON** fenyegetések észlelése.
    - Konfigurálja a **e-mailek listájának** a rendellenes adatbázis-tevékenységek észlelésekor biztonsági riasztást küld.
@@ -41,8 +41,8 @@ Is fogadhatja az értesítéseket keresztül észlelt fenyegetésről [e-mail-é
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [Fenyegetésészlelés](sql-database-threat-detection-overview.md).
-- Felügyelt példánnyal kapcsolatos további tudnivalókat a [mit jelent a felügyelt példány](sql-database-managed-instance.md).
-- Tudjon meg többet [Fenyegetésészlelés önálló adatbázis](sql-database-threat-detection.md).
+- Tudjon meg többet [fenyegetésészlelés](sql-database-threat-detection-overview.md).
+- További tudnivalók a felügyelt példányok, lásd: [Mi az a felügyelt példány](sql-database-managed-instance.md).
+- Tudjon meg többet [fenyegetésészlelés önálló adatbázis](sql-database-threat-detection.md).
 - Tudjon meg többet [felügyelt példány naplózás](https://go.microsoft.com/fwlink/?linkid=869430).
-- Tudjon meg többet [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro).
+- Tudjon meg többet [az Azure security center](https://docs.microsoft.com/azure/security-center/security-center-intro).

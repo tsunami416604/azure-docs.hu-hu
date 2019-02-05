@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: d3dda3bb5fd39b844f50044c1262008e3610e301
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0ba818ef3c24d0e88e662adf87b22cc938fe5fab
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871404"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697806"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Tudnivalók az Azure rendelkezésre állási zónákban a zónaredundáns virtuális hálózati átjárók
 
@@ -26,7 +26,7 @@ A virtuális hálózati átjárók a rendelkezésre állási zónák között au
 <br>
 <br>
 
-![zóna-redunant átjárók ábrája](./media/create-zone-redundant-vnet-gateway/zonered.png)
+![átjárók zónaredundáns ábrája](./media/create-zone-redundant-vnet-gateway/zonered.png)
 
 ### <a name="zgw"></a>A zónaszintű átjárók
 

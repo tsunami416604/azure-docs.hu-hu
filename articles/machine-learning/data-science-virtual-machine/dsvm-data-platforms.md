@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 744c8d6488b9b0688126d305426f90647a89d4be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 27e0deae9c35ad8fa00659e3e3e505cace6e9014
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478083"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733433"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen támogatott adatplatform
 
@@ -105,5 +105,5 @@ A Spark környezet a Microsoft R Server Ubuntu Linux-DSVM Edition rendszeren fut
 |Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
-Az alkalmazandó kódtárak el az adatokat az Azure Blob- vagy Azure Data Lake storage (ADLS) és a Microsoft MMLSpark machine learning kódtárak használatával $SPARK_HOME/jegyzékfájlok vannak telepítve. Spark indulásakor a rendszer automatikusan betölti a JAR-fájlok kivételével. Alapértelmezés szerint a Spark használja a helyi lemezen lévő adatokat. Ahhoz, hogy a Spark-példányt az Azure blob vagy ADLS tárolt adatok elérését a DSVM létrehozni és konfigurálni kell a `core-site.xml` fájl található $SPARK_HOME/conf/core-site.xml.template a sablon alapján (Ha a Blob és ADLS helyőrzők konfigurációk) az Azure blob és az Azure Data Lake Storage megfelelő hitelesítő adatokkal. Látja, hogy az ADLS szolgáltatás hitelesítő adatainak létrehozásakor lépéseket részletes [Itt](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory#create-an-active-directory-application). Miután megadta a hitelesítő adatokat az Azure blob vagy ADLS a core-site.xml fájlban, az URI-előtag a wasb forrásokra tárolt adatokat is lehet hivatkozni: / / vagy az adl: / /. 
+Az alkalmazandó kódtárak el az adatokat az Azure Blob- vagy Azure Data Lake storage (ADLS) és a Microsoft MMLSpark machine learning kódtárak használatával $SPARK_HOME/jegyzékfájlok vannak telepítve. Spark indulásakor a rendszer automatikusan betölti a JAR-fájlok kivételével. Alapértelmezés szerint a Spark használja a helyi lemezen lévő adatokat. Ahhoz, hogy a Spark-példányt az Azure blob vagy ADLS tárolt adatok elérését a DSVM létrehozni és konfigurálni kell a `core-site.xml` fájl található $SPARK_HOME/conf/core-site.xml.template a sablon alapján (Ha a Blob és ADLS helyőrzők konfigurációk) az Azure blob és az Azure Data Lake Storage megfelelő hitelesítő adatokkal. Látja, hogy az ADLS szolgáltatás hitelesítő adatainak létrehozásakor lépéseket részletes [Itt](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory). Miután megadta a hitelesítő adatokat az Azure blob vagy ADLS a core-site.xml fájlban, az URI-előtag a wasb forrásokra tárolt adatokat is lehet hivatkozni: / / vagy az adl: / /. 
 

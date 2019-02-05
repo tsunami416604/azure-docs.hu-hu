@@ -10,18 +10,21 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 923ce9b5840ec8d99234b9a3b869005ff59848e3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 55961895dde7cb2770f2180911a78f1e31c741e3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494615"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697500"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Az Azure Batch szolgáltatás az Azure Machine Learning Studio-feladatok
 
 Machine Learning Batch-készlet feldolgozási ügyfél által felügyelt méretezési biztosít az Azure Machine Learning kötegelt végrehajtási szolgáltatás. Klasszikus kötegelt feldolgozása, egy több-bérlős környezet, amely korlátozza az egyidejűleg futó feladatainak számát a sor kerül a machine learning küldhet, és a feladatok sorba állva várják első-az-érkezési idősorrendben történik. Ez a bizonytalanság azt jelenti, hogy Ön nem előre pontosan mikor fog futni a feladat.
 
 Batch-készlet feldolgozási lehetővé teszi, hogy hozhat létre készleteket, amelyre elküldheti a batch-feladatok. Ön szabályozhatja, hogy a készlet méretét, és mely készlethez a feladat elküldésekor. A BES-feladat futtatása a saját feldolgozási területen biztosít, kiszámítható feldolgozási teljesítmény, és lehetővé teszi, amelyek megfelelnek a feldolgozási terhelés számához erőforráskészletek létrehozását.
+
+> [!NOTE]
+> Rendelkeznie kell egy új Resource Manager-készlet létrehozása a Machine Learning webszolgáltatás-alapú. Létrehozása után futtathatja bármely BES webszolgáltatás, mindkét új Resource Manager alapú és klasszikus, a készleten.
 
 ## <a name="how-to-use-batch-pool-processing"></a>Feldolgozás Batch-készlet használata
 
@@ -36,7 +39,7 @@ Miután létrehozta a fiókot, a készlet szolgáltatás URL-CÍMÉT és a hitel
 
 ![Batch-készlet szolgáltatás architektúrája.](./media/dedicated-capacity-for-bes-jobs/pool-architecture.png)
 
-A készlet szolgáltatás URL-CÍMÉT, amely az Ön számára biztosított CSS-készlet létrehozása művelet meghívásával létrehozott készletek. Egy készlet létrehozásakor meg kell adnia, a virtuális gépek számát és az URL-címét a swagger.json egy új Resource Manager-alapú Machine Learning webszolgáltatás. A webszolgáltatás létrehozására, a számlázási társítás biztosítunk. A Batch-készlet szolgáltatás a megfelelő swagger.json rendelje hozzá a készlethez egy számlázási csomagot használja. Futtatható bármely BES webszolgáltatás, mindkét új Resource Manager-alapú és klasszikus, választja a készleten.
+A készlet szolgáltatás URL-CÍMÉT, amely az Ön számára biztosított CSS-készlet létrehozása művelet meghívásával létrehozott készletek. Egy készlet létrehozásakor meg kell adnia, a virtuális gépek számát és az URL-címét a swagger.json egy új Resource Manager-alapú Machine Learning webszolgáltatás. A webszolgáltatás létrehozására, a számlázási társítás biztosítunk. A Batch-készlet szolgáltatás a megfelelő swagger.json rendelje hozzá a készlethez egy számlázási csomagot használja. Futtatható bármely BES webszolgáltatás, mindkét új Resource Manager alapú és klasszikus, a készlet.
 
 Olyan új Resource Manager-alapú webes szolgáltatást használ, de vegye figyelembe, hogy az a feladatok díjszabása a szolgáltatáshoz tartozó számlázási csomag vannak terhelve. Érdemes egy webszolgáltatás és az új számlázási csomag kifejezetten a futó feladatok Batch-készlet létrehozásához.
 

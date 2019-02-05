@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 2448d941db7f27a87fbb5e2267847165f84ede3d
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 4b977a2fe9dadfe42e02063fa4fa291b9be484ac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881698"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733139"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>A virtual machine scale sets az alkalmazás üzembe helyezése
 Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Ez a cikk bemutatja a módon hozhat létre egyéni Virtuálisgép-rendszerképet a méretezési csoportban lévő példányok állítsa be, vagy már meglévő Virtuálisgép-példányok automatikus futtatásra telepítési szkriptek. Azt is megtudhatja, hogyan kezelhetők alkalmazás vagy az operációs rendszer frissítése egy méretezési csoportot.
@@ -97,7 +97,7 @@ A cloud-init különböző disztribúciókon is működik. Például nem kell az
 
 További információkat, többek között például *cloud-init.txt* fájlt [cloud-init használata Azure virtuális gépek testreszabása](../virtual-machines/linux/using-cloud-init.md).
 
-Hozzon létre egy méretezési csoportot, és a egy cloud-init-fájlt használ, adja hozzá a `--custom-data` paramétert a [az vmss létrehozásához](/cli/azure/vmss#az_vmss_create) parancsot, majd adja meg a cloud-init fájl nevét. A következő példában létrehozunk egy méretezési csoportot elnevezett *myScaleSet* a *myResourceGroup* konfigurálja a Virtuálisgép-példányok nevű fájlt, és *cloud-init.txt*. Adja meg a saját nevek a következők szerint:
+Hozzon létre egy méretezési csoportot, és a egy cloud-init-fájlt használ, adja hozzá a `--custom-data` paramétert a [az vmss létrehozásához](/cli/azure/vmss) parancsot, majd adja meg a cloud-init fájl nevét. A következő példában létrehozunk egy méretezési csoportot elnevezett *myScaleSet* a *myResourceGroup* konfigurálja a Virtuálisgép-példányok nevű fájlt, és *cloud-init.txt*. Adja meg a saját nevek a következők szerint:
 
 ```azurecli
 az vmss create \

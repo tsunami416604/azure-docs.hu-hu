@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5076c662390c9a28682930e8c5f06cfc79f7134b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 443020bd6ca024cb5a04b2a8be5b7cbe7122efac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169688"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734139"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Az Azure CLI-vel az Azure Marketplace-rendszerképek keresése a Linux rendszerű virtuális gép
 
@@ -35,7 +35,7 @@ Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI-vel](/cli/az
 
 ## <a name="list-popular-images"></a>Népszerű lemezképek listája
 
-Futtassa a [az virtuálisgép-lemezkép lista](/cli/azure/vm/image#az_vm_image_list) nélkül parancsot a `--all` beállítást, az Azure Marketplace-en népszerű VM-rendszerképek listájának megtekintéséhez. Például futtassa a következő parancs táblázatos formában jeleníti meg a népszerű-rendszerképek gyorsítótárazott listáját:
+Futtassa a [az virtuálisgép-lemezkép lista](/cli/azure/vm/image) nélkül parancsot a `--all` beállítást, az Azure Marketplace-en népszerű VM-rendszerképek listájának megtekintéséhez. Például futtassa a következő parancs táblázatos formában jeleníti meg a népszerű-rendszerképek gyorsítótárazott listáját:
 
 ```azurecli
 az vm image list --output table
@@ -152,7 +152,7 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201901221        
 
 ## <a name="navigate-the-images"></a>Keresse meg a képek
  
-Egy másik helyen megkeresni a rendszerképet módja futtatásához a [az virtuális gép rendszerkép közzétevők listázása](/cli/azure/vm/image#az_vm_image_list_publishers), [az vm list-rendszerképajánlatok](/cli/azure/vm/image), és [az virtuális gép rendszerkép list-skus](/cli/azure/vm/image#az_vm_image_list_skus) parancsok sorrendben. A következő parancsokkal határozza meg ezeket az értékeket:
+Egy másik helyen megkeresni a rendszerképet módja futtatásához a [az virtuális gép rendszerkép közzétevők listázása](/cli/azure/vm/image), [az vm list-rendszerképajánlatok](/cli/azure/vm/image), és [az virtuális gép rendszerkép list-skus](/cli/azure/vm/image) parancsok sorrendben. A következő parancsokkal határozza meg ezeket az értékeket:
 
 1. Listázza a rendszerkép-közzétevőket.
 2. Listázza egy adott közzétevő ajánlatait.
@@ -278,7 +278,7 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 ...
 ```
 
-Most már lehetősége van adott URN értéket tovább használni kívánt rendszerképet. Ezt az értéket adja át a `--image` paraméterrel rendelkező virtuális gép létrehozásakor a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. Ne feledje, hogy igény szerint lecserélheti a verziószámot a URN "legutóbbi". Ez a verzió, mindig a rendszerkép legújabb verzióját. 
+Most már lehetősége van adott URN értéket tovább használni kívánt rendszerképet. Ezt az értéket adja át a `--image` paraméterrel rendelkező virtuális gép létrehozásakor a [az virtuális gép létrehozása](/cli/azure/vm) parancsot. Ne feledje, hogy igény szerint lecserélheti a verziószámot a URN "legutóbbi". Ez a verzió, mindig a rendszerkép legújabb verzióját. 
 
 Ha telepít egy virtuális Gépet a Resource Manager-sablonnal, egyenként a állítsa be a rendszerkép-paraméterek a `imageReference` tulajdonságait. Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.compute/virtualmachines).
 
@@ -337,7 +337,7 @@ Kimenet:
 
 ### <a name="accept-the-terms"></a>Feltételek elfogadása
 
-Megtekintheti, és fogadja el a licencfeltételeket, használja a [az virtuális gép kép fogadja el – feltételek](/cli/azure/vm/image?#az_vm_image_accept_terms) parancsot. Ha elfogadja a feltételeket, programozott üzembe helyezés engedélyezése az előfizetésében. Csak egyszer előfizetésenként elfogadására a lemezképhez kell. Példa:
+Megtekintheti, és fogadja el a licencfeltételeket, használja a [az virtuális gép kép fogadja el – feltételek](/cli/azure/vm/image?) parancsot. Ha elfogadja a feltételeket, programozott üzembe helyezés engedélyezése az előfizetésében. Csak egyszer előfizetésenként elfogadására a lemezképhez kell. Példa:
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest

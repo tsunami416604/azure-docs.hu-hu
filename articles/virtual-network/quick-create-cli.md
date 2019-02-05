@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
-ms.openlocfilehash: 8e46058432743febd70a017ee5131081a052364b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1b3dde1b2d638f6dd6c19ce173c7f9f071868d23
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195392"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734215"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Gyors útmutató: Hozzon létre egy virtuális hálózatot az Azure CLI használatával
 
@@ -32,7 +32,7 @@ Ha úgy dönt, telepítése és használata az Azure CLI helyileg, ez a rövid �
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Hozzon létre egy erőforráscsoportot és a egy virtuális hálózatot
 
-Mielőtt létrehozhatna egy virtuális hálózatot, akkor hozzon létre egy erőforráscsoportot a virtuális hálózat üzemeltetéséhez. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Ez a példa létrehoz egy erőforráscsoportot, nevű *myResourceGroup* a a *eastus* helye:
+Mielőtt létrehozhatna egy virtuális hálózatot, akkor hozzon létre egy erőforráscsoportot a virtuális hálózat üzemeltetéséhez. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ez a példa létrehoz egy erőforráscsoportot, nevű *myResourceGroup* a a *eastus* helye:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -53,7 +53,7 @@ Hozzon létre két virtuális gépet a virtuális hálózaton.
 
 ### <a name="create-the-first-vm"></a>Az első virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. Az `--no-wait` kapcsoló a háttérben hozza létre a virtuális gépet, így Ön eközben folytathatja a következő lépéssel. Ez a példa létrehoz egy virtuális gép nevű *myVm1*:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. Az `--no-wait` kapcsoló a háttérben hozza létre a virtuális gépet, így Ön eközben folytathatja a következő lépéssel. Ez a példa létrehoz egy virtuális gép nevű *myVm1*:
 
 ```azurecli-interactive
 az vm create \

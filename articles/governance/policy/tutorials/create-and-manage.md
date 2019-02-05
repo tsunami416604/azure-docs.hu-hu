@@ -4,17 +4,17 @@ description: Az Azure Policy szabványok kikényszerítésére, előírt megfele
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ecebeef509f1f23e34ade6a79b8ffe39d4cbb0a5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: cb6f033c784832efab23c747057b1c0ef1b317fa
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845622"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730271"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából
 
@@ -322,7 +322,7 @@ Visszaadja az összes elérhető szabályzatdefiníciót, köztük a beépített
 
 ## <a name="create-and-assign-an-initiative-definition"></a>Kezdeményezési definíció létrehozása és hozzárendelése
 
-A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat egy átfogó cél eléréséhez. Létrehozhat egy kezdeményezési definíciót annak ellenőrzése, hogy az erőforrások a definíció tartózkodás felelnek meg a szabályzat-definíciókat a kezdeményezési definíciót alkotó hatókörén belül. További információt a kezdeményezési definíciókról az [Azure Policy – áttekintés](../overview.md) című részben talál.
+A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat egy átfogó cél eléréséhez. -Kezdeményezéshez kiértékeli az erőforrásokat az alkalmazás hozzárendelését a csomagban foglalt szabályzatokra vonatkozó megfelelőséget hatókörén belül. További információt a kezdeményezési definíciókról az [Azure Policy – áttekintés](../overview.md) című részben talál.
 
 ### <a name="create-an-initiative-definition"></a>Kezdeményezési definíció létrehozása
 

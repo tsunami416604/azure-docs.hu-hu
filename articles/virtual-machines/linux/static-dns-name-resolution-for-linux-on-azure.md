@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: 862d239227c277a92cbf80e54b010a4b184da016
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5e893d597c2193676cb350fc80d7baa694ad6fd1
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466091"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734122"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Virtuális hálózati adapterek létrehozása és a belső DNS használata Azure-beli virtuális gépek névfeloldásához
 
@@ -32,12 +32,12 @@ Követelmények:
 * [SSH nyilvános- és titkoskulcs-fájlok](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>Gyors parancsok
-Ha szeretne gyorsan elvégezni a feladatot, a következő szakasz ismerteti a szükséges parancsokat. Részletes információkat és a környezet a dokumentum többi részén találja lépéseinek [itt indítása](#detailed-walkthrough). Ezeket a lépéseket a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+Ha szeretne gyorsan elvégezni a feladatot, a következő szakasz ismerteti a szükséges parancsokat. Részletes információkat és a környezet a dokumentum többi részén találja lépéseinek [itt indítása](#detailed-walkthrough). Ezeket a lépéseket a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index).
 
 Előfeltételek: A bejövő erőforráscsoportot, virtuális hálózatot és alhálózatot, a hálózati biztonsági csoport az ssh-val.
 
 ### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>Hozzon létre egy virtuális hálózati adaptert statikus belső DNS-név
-Az a virtuális hálózati adapter létrehozása [az network nic létrehozása](/cli/azure/network/nic#az_network_nic_create). A `--internal-dns-name` Parancssorifelület-jelző van a DNS-címke, amely biztosítja a virtuális hálózati kártya (vNic) statikus DNS-nevét állítja. Az alábbi példa létrehoz egy virtuális hálózati adapter nevű `myNic`, csatlakoztatja a a `myVnet` a virtuális hálózathoz, és létrehoz egy belső DNS-név rekord nevű `jenkins`:
+Az a virtuális hálózati adapter létrehozása [az network nic létrehozása](/cli/azure/network/nic). A `--internal-dns-name` Parancssorifelület-jelző van a DNS-címke, amely biztosítja a virtuális hálózati kártya (vNic) statikus DNS-nevét állítja. Az alábbi példa létrehoz egy virtuális hálózati adapter nevű `myNic`, csatlakoztatja a a `myVnet` a virtuális hálózathoz, és létrehoz egy belső DNS-név rekord nevű `jenkins`:
 
 ```azurecli
 az network nic create \
@@ -70,7 +70,7 @@ Belső DNS-nevük, csak egy Azure virtuális hálózaton belül feloldható. Miv
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők `myResourceGroup`, `myNic`, és `myVM`.
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
-Először hozza létre az erőforráscsoportot [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen:
+Először hozza létre az erőforráscsoportot [az csoport létrehozása](/cli/azure/group). A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -94,7 +94,7 @@ az network vnet create \
 ## <a name="create-the-network-security-group"></a>A hálózati biztonsági csoport létrehozása
 Az Azure hálózati biztonsági csoportok a hálózati rétegen tűzfal egyenértékűek. Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [NSG-k létrehozása az Azure CLI-ben](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-A hálózati biztonsági csoport létrehozása [az network nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). A következő példában létrehozunk egy hálózati biztonsági csoport nevű `myNetworkSecurityGroup`:
+A hálózati biztonsági csoport létrehozása [az network nsg létrehozása](/cli/azure/network/nsg). A következő példában létrehozunk egy hálózati biztonsági csoport nevű `myNetworkSecurityGroup`:
 
 ```azurecli
 az network nsg create \
@@ -121,7 +121,7 @@ az network nsg rule create \
 ```
 
 ## <a name="associate-the-subnet-with-the-network-security-group"></a>Az alhálózat társítása a hálózati biztonsági csoport
-Az alhálózat társítása a hálózati biztonsági csoport, használja a [az hálózati virtuális hálózat alhálózati frissítés](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update). Az alábbi példa hozzárendeli az alhálózat neve `mySubnet` nevű hálózati biztonsági csoporttal `myNetworkSecurityGroup`:
+Az alhálózat társítása a hálózati biztonsági csoport, használja a [az hálózati virtuális hálózat alhálózati frissítés](/cli/azure/network/vnet/subnet). Az alábbi példa hozzárendeli az alhálózat neve `mySubnet` nevű hálózati biztonsági csoporttal `myNetworkSecurityGroup`:
 
 ```azurecli
 az network vnet subnet update \
@@ -135,7 +135,7 @@ az network vnet subnet update \
 ## <a name="create-the-virtual-network-interface-card-and-static-dns-names"></a>Hozza létre a virtuális hálózati kártya és a statikus DNS-nevek
 Az Azure rendkívül rugalmas, de szeretné használni a virtuális gép névfeloldásához DNS-neveit, virtuális hálózati adapterrel (Vnic), amely tartalmazza a DNS-címke létrehozásához szüksége. Vnic olyan fontos, mert a kihasználásával a különböző virtuális gépek infrastruktúra életciklusa felhasználhatja őket. Ez a megközelítés biztosítja, hogy a virtuális hálózati adapter statikus erőforrásként közben a virtuális gépek ideiglenes lehet. A virtuális hálózati adapter a címkézés DNS használatával tudjuk más virtuális gépek által a virtuális hálózat egyszerű névfeloldás engedélyezése. Feloldható nevek használata lehetővé teszi, hogy az automation-kiszolgáló eléréséhez a DNS-név szerint más virtuális gépek `Jenkins` vagy a Git-kiszolgálón, a `gitrepo`.  
 
-Az a virtuális hálózati adapter létrehozása [az network nic létrehozása](/cli/azure/network/nic#az_network_nic_create). Az alábbi példa létrehoz egy virtuális hálózati adapter nevű `myNic`, csatlakozik, hogy a `myVnet` nevű virtuális hálózatot `myVnet`, és létrehoz egy belső DNS-név rekord nevű `jenkins`:
+Az a virtuális hálózati adapter létrehozása [az network nic létrehozása](/cli/azure/network/nic). Az alábbi példa létrehoz egy virtuális hálózati adapter nevű `myNic`, csatlakozik, hogy a `myVnet` nevű virtuális hálózatot `myVnet`, és létrehoz egy belső DNS-név rekord nevű `jenkins`:
 
 ```azurecli
 az network nic create \

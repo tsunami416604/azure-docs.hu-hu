@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 0b3b3cd1c9c0410c4cc0ffda8887b40123c1ac7a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718497"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700978"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure biztonsági és megfelelőségi terv: Egyesült Királyság hivatalos számítási feladatokhoz üzemeltető PaaS webes alkalmazás
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure biztonsági és megfelelőségi terv: PaaS Web Application Hosting for UK OFFICIAL Workloads
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Azure biztonsági és megfelelőségi tervek
 
@@ -73,7 +73,7 @@ A következő szakaszt az üzembe helyezés és a megvalósítás elemek részle
 
 #### <a name="identity-and-authentication"></a>Identitás és hitelesítés
 
-Ez a megoldás biztosítja, hogy erőforrásokhoz való hozzáférés védelme – címtár- és identitáskezelési szolgáltatásokat. Ez az architektúra lehetővé teszi a teljes mértékben [identitása, mint a biztonsági határt](https://docs.microsoft.com/azure/security/security-paas-deployments#identity-as-the-primary-security-perimeter). 
+Ez a megoldás biztosítja, hogy erőforrásokhoz való hozzáférés védelme – címtár- és identitáskezelési szolgáltatásokat. Ez az architektúra lehetővé teszi a teljes mértékben [identitása, mint a biztonsági határt](https://docs.microsoft.com/azure/security/security-paas-deployments). 
 
 A következő technológiákat biztosítja identitás az eszközkezelési funkciókat az Azure-környezetben:
 
@@ -240,7 +240,7 @@ Három módszer adtak meg a központi telepítése; Egy egyszerű "express" [Azu
 
 [Az Azure API Management](https://azure.microsoft.com/services/api-management/) biztonság, szabályozás és vezérlők történő közzétételére, proxy és API-k védelme további réteget biztosít az API App Service elé használható.
 
-### <a name="azure-b2c"></a>Az Azure B2C-vel
+### <a name="azure-b2c"></a>Azure B2C
 
 [Az Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) előfordulhat, hogy a felhasználók regisztrálása, hozzon létre egy azonosítót, és engedélyezze az engedélyezési és hozzáférés-vezérlés a nyilvános webes alkalmazás vezérlőként kell végrehajtani.
 

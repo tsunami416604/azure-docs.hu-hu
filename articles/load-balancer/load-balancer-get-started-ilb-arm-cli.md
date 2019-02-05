@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: 746d0f51a876f24afc731486412eca0277b76d22
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: da8433e6c03aec5c5b2ff5d290065804816ac724
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659796"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732090"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Belső terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
@@ -128,7 +128,7 @@ Ebben a példában két virtuális gépet hoz létre, amelyeket a terheléselosz
 
 ### <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
 
-Hozzon létre egy rendelkezésre állási csoportot az [az vm availabilityset create](/cli/azure/network/nic#az-network-availabilityset-create) paranccsal.
+Hozzon létre egy rendelkezésre állási csoportot az [az vm availabilityset create](/cli/azure/network/nic) paranccsal.
 
  ```azurecli-interactive
   az vm availability-set create \
@@ -215,7 +215,7 @@ A terheléselosztó teszteléséhez hozzon létre egy *myVMTest* nevű virtuáli
 
 A terheléselosztó teszteléséhez először be kell szereznie a terheléselosztó magánhálózati IP-címét. Ezután jelentkezzen be a myVMTest nevű virtuális gépre, és írja be a magánhálózati IP-címet a webböngésző címsorába.
 
-A terheléselosztó magánhálózati IP-címének lekéréséhez használja az [az network lb show](/cli/azure/network/public-ip##az-network-lb-show) parancsot. Másolja a magánhálózati IP-címet, majd illessze be azt a *myVMTest* nevű virtuális gép egy webböngészőjének címsorába.
+A terheléselosztó magánhálózati IP-címének lekéréséhez használja az [az network lb show](/cli/azure/network/public-ip) parancsot. Másolja a magánhálózati IP-címet, majd illessze be azt a *myVMTest* nevű virtuális gép egy webböngészőjének címsorába.
 
 ```azurecli-interactive
   az network lb show \

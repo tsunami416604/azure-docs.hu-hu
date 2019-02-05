@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: anzaman
-ms.openlocfilehash: f970f535f83bc3b3c2a850ec126a7afff2af739f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b6c6f2890cf9bd3c8cb412b3fa2f28d8ea3b6f72
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827584"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734317"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>A Video Indexer API márkái modell testreszabása
 
@@ -26,17 +26,17 @@ A Video Indexer API-k segítségével létrehozását, használatát és egyéni
 
 ## <a name="create-a-brand"></a>Hozzon létre egy adott Márkához
 
-Ez létrehoz egy új egyéni márka, és hozzáadja azt a megadott fiók egyéni márkái modelljére. 
+Ez létrehoz egy új egyéni márka, és hozzáadja azt a megadott fiók egyéni márkái modelljére.
 
 ### <a name="request-url"></a>Kérés URL-címe
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand).
 
-### <a name="request-parameters"></a>A kérés paraméterei 
+### <a name="request-parameters"></a>A kérés paraméterei
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
@@ -95,7 +95,7 @@ Egy adott márkához eltávolítja a megadott fiók egyéni márkái modellből.
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?).
 
 ### <a name="request-parameters"></a>A kérés paraméterei
@@ -117,17 +117,17 @@ Nincs visszaadott tartalom van, amikor a márka törlése sikerült.
 
 ## <a name="get-a-specific-brand"></a>Egy adott márkájú beolvasása
 
-Ez lehetővé teszi, keresse meg az egyéni márkái modell a megadott fiók használatával a márkaazonosító fórummárka részleteit. 
+Ez lehetővé teszi, keresse meg az egyéni márkái modell a megadott fiók használatával a márkaazonosító fórummárka részleteit.
 
 ### <a name="request-url"></a>Kérés URL-címe
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?).
 
-### <a name="request-parameters"></a>A kérés paraméterei 
+### <a name="request-parameters"></a>A kérés paraméterei
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
@@ -167,14 +167,14 @@ A válasz a márka (használatával Márkaazonosító) keres tájékoztatást ny
 
 ## <a name="update-a-specific-brand"></a>Egy adott márkájú frissítése
 
-Ez lehetővé teszi, keresse meg a megadott fiók azonosítójával a márka egyéni márkái modellben egy adott márkához részletei 
+Ez lehetővé teszi, keresse meg a megadott fiók azonosítójával a márka egyéni márkái modellben egy adott márkához részletei
 
 ### <a name="request-url"></a>Kérés URL-címe
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?).
 
 ### <a name="request-parameters"></a>A kérés paraméterei
@@ -237,7 +237,7 @@ Ez ad vissza, a márka mindegyikét az egyéni márkái modell, függetlenül at
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?).
 
 ### <a name="request-parameters"></a>A kérés paraméterei
@@ -270,7 +270,7 @@ A válasz a márka, a fiókban lévő összes és azok adatai az alábbi példa 
         "description": "This is an example",
         "tags": ["Tag1", "Tag2"]
     },
-        {
+    {
         "ReferenceUrl": null,
         "id": 97975,
         "name": "Example2",
@@ -297,7 +297,7 @@ Ez a megadott fiókot a márka modelljének beállításait adja vissza. A model
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands).
 
 ### <a name="request-parameters"></a>A kérés paraméterei
@@ -330,14 +330,14 @@ A válaszból kiderül, hogy a Bing márkái engedélyezve lettek-e az alábbi p
 
 Ez frissíti a megadott fiók márkái modell beállításait. A modellbeállítások a márka jelölik, a Bing márkái adatbázisból észlelés engedélyezve van-e. A Bing márkái nincs engedélyezve, ha a Video Indexer csak észleli márka egyéni márkái modellből a megadott fiók.
 
-### <a name="request-url"></a>Kérelem URL-címe: 
+### <a name="request-url"></a>Kérelem URL-címe:
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/BrandsModelSettings?accessToken={accessToken}
 ```
- 
+
 [Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?).
 
-### <a name="request-parameters"></a>A kérés paraméterei 
+### <a name="request-parameters"></a>A kérés paraméterei
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|

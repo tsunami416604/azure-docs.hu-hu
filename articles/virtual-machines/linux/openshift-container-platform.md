@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 21eebb6c27a83b939f321d38026da7d4c39b7071
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 82dd448bb408e7c4bb3576feee17aef66ee6d01d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085886"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730713"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Az OpenShift Container Platform az Azure-beli üzembe helyezése
 
@@ -264,15 +264,15 @@ Ha nem szeretné a parancssorból, Várakozás a telepítés befejeződik, adja 
 
 Ez a legegyszerűbb lehetőség, de azt is korlátozott testreszabási lehetőségeket. A Piactéri ajánlat az alábbi konfigurációs lehetőségeket tartalmazza:
 
-- **Fő csomópontok**: három (3) fő csomópontok konfigurálható a példány típusa.
-- **Infra csomópontok**: három (3) infrastruktúra-csomópont konfigurálható példánytípust.
-- **Csomópontok**: csomópontok száma nem konfigurálható (között a 2. és 9) és a példánytípust.
-- **Lemez típusa**: felügyelt lemezeket használ.
-- **Hálózatkezelés**: új vagy meglévő hálózati, valamint az egyéni CIDR-tartomány támogatása.
+- **Fő csomópontok**: Írja be a három (3) fő csomópontok konfigurálható példánnyal.
+- **Infrastruktúra csomópontok**: Írja be a három (3) infrastruktúra csomópontok konfigurálható példánnyal.
+- **Csomópontok**: Csomópontok száma nem konfigurálható (között a 2. és 9) és a példánytípust.
+- **Lemez típusa**: Felügyelt lemezeket használnak.
+- **Hálózatkezelés**: Új vagy meglévő hálózati, valamint az egyéni CIDR-tartomány támogatása.
 - **CNS**: CNS engedélyezhető.
-- **Metrikák**: metrikákat is engedélyezhető.
-- **Naplózás**: naplózás is engedélyezhető.
-- **Az Azure Felhőszolgáltató**: engedélyezhető.
+- **Metrikák**: Metrikák engedélyezhető.
+- **Naplózás**: Naplózás is engedélyezhető.
+- **Az Azure Felhőszolgáltató**: Engedélyezhető.
 
 ## <a name="connect-to-the-openshift-cluster"></a>Csatlakozzon az OpenShift-fürthöz
 
@@ -284,7 +284,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Használja a [az csoport törlése](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport, az OpenShift fürt, és az összes kapcsolódó erőforrást, amikor azok már nincs szükség van.
+Használja a [az csoport törlése](/cli/azure/group) paranccsal eltávolítható az erőforráscsoport, az OpenShift fürt, és az összes kapcsolódó erőforrást, amikor azok már nincs szükség van.
 
 ```azurecli 
 az group delete --name openshiftrg

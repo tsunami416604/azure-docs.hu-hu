@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 6b74c81f44ee747cdd80a1106b669d89c8c7fbc3
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 89b18d71e864c198b7efafcff09777da21930b6c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297140"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733637"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -22,7 +22,7 @@ Az Azure Migrate rendelkezik a maximális hossza 1500 gépet projektenként, ez 
 - **VMware**: Az áttelepíteni kívánt virtuális gépeket egy 5.5-ös, 6.0-s, 6.5-ös vagy 6.7 verziójú vCenter Servernek kell felügyelnie. Emellett szükség egy ESXi gazdagépet verziójú 5.5-ös vagy újabb, a gyűjtő virtuális gép üzembe helyezéséhez.
 - **vCenter-fióknak**: VCenter Server eléréséhez egy csak olvasható fiók szükséges. Az Azure Migrate ezt a fiókot használja a helyszíni virtuális gépek felderítéséhez.
 - **Engedélyek**: A vCenter Server virtuális gép létrehozása az OVA formátumú fájl importálásával engedélyre van szükségük.
-- **Statisztikai beállítások**: Ez a követelmény nem csak a alkalmazni a [felderítés egyszeri felderítés modell](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods) most már elavult. Felderítés egyszeri felderítés modell a vCenter Server statisztikai beállításait meg kell a 3. szintre történő telepítés megkezdése előtt. A statisztikai szint, hogy a nap, heti és havi adatgyűjtés minden állítható be a 3. Ha bármely három az adatgyűjtés szintje alacsonyabb, mint 3, a kiértékelés működni fog, de a tárolási és hálózati teljesítményadatok nem gyűjthetők. A javaslatok a méretekkel kapcsolatban alapjául a Processzor- és teljesítményadatokat, és a lemez és a hálózati adapterek konfigurációs adatait.
+- **Statisztikai beállítások**: Ez a követelmény nem csak a alkalmazni a [felderítés egyszeri felderítés modell](https://docs.microsoft.com/azure/migrate/concepts-collector) most már elavult. Felderítés egyszeri felderítés modell a vCenter Server statisztikai beállításait meg kell a 3. szintre történő telepítés megkezdése előtt. A statisztikai szint, hogy a nap, heti és havi adatgyűjtés minden állítható be a 3. Ha bármely három az adatgyűjtés szintje alacsonyabb, mint 3, a kiértékelés működni fog, de a tárolási és hálózati teljesítményadatok nem gyűjthetők. A javaslatok a méretekkel kapcsolatban alapjául a Processzor- és teljesítményadatokat, és a lemez és a hálózati adapterek konfigurációs adatait.
 
 > [!NOTE]
 > A felderítés egyszeri felderítés berendezés elavulttá vált, ez a módszer támaszkodtak a vCenter Server statisztikai beállításait teljesítmény adatok pont rendelkezésre állását és virtuális gépek áttelepítése az Azure-ba való korrigáljuk méretezésének eredményezett átlagos teljesítményszámlálók gyűjtése.

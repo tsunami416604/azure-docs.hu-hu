@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: dac7e458339e24e0bb6663f4ff0d5e98bc814aad
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 02c25490ba19521715b48dc7ec92861078332a48
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658640"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731784"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Jelszó egyszeri bejelentkezés az Azure AD katalógusából származó alkalmazás konfigurálása
 
 Az alkalmazás a hozzáadásakor a [az Azure AD Alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis), választhat, hogy, hogyan szeretné a felhasználók számára, amelyek bejelentkezni. Konfigurálhatja ezt a beállítást bármikor kiválasztásával a **egyszeri bejelentkezés** navigációs elem a vállalati alkalmazások a [az Azure portal](https://portal.azure.com/).
 
-Az egyszeri bejelentkezési módszerek elérhető egyik a [jelszóalapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) lehetőséget. Alkalmazások integrálása az Azure AD-be gyorsan Ismerkedés nagyszerű mód, és lehetővé teszi, hogy:
+Az egyszeri bejelentkezési módszerek elérhető egyik a [jelszóalapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) lehetőséget. Alkalmazások integrálása az Azure AD-be gyorsan Ismerkedés nagyszerű mód, és lehetővé teszi, hogy:
 
 -   Engedélyezése **egyszeri bejelentkezést a felhasználók** való biztonságos tárolása és felhasználónevek és jelszavak az alkalmazás visszajátszásával integrált már az Azure ad-vel
 
@@ -41,7 +41,7 @@ Az egyszeri bejelentkezési módszerek elérhető egyik a [jelszóalapú egyszer
 
 -   Lehetővé teszi egy **rendszergazda** adja meg a megosztott felhasználónév vagy jelszó a frissítési hitelesítő adatok használatával egy csoport tagjainak által használt funkciót [csoport hozzárendelése egy alkalmazáshoz](#assign-an-application-to-a-group-directly)
 
-Az alábbi szakasz ismerteti, hogyan engedélyezheti [jelszóalapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) egy alkalmazás, amely már része a [az Azure AD Alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Az alábbi szakasz ismerteti, hogyan engedélyezheti [jelszóalapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) egy alkalmazás, amely már része a [az Azure AD Alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="overview-of-steps-required"></a>Szükséges lépések áttekintése
 Az Azure AD katalógusából származó kell az alkalmazás konfigurálása:

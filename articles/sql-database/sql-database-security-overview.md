@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 7eb3b115c1d16c2a5c380178d316a60b854e80df
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: a3f47726b1776b260ff8cc5eac766c23053d4fd0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462018"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728402"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database biztonsági lehetőségeinek áttekintése
 
@@ -37,17 +37,17 @@ IP-tűzfalszabályainak minden kérés eredeti IP-címe alapján adatbázisokhoz
 
 [Virtuális hálózati Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md) a virtuális hálózati kapcsolatot kiterjesztheti az Azure gerinchálózatán keresztül, és azonosíthatja a virtuális hálózat alhálózatához, amely a forgalom származik az Azure SQL Database engedélyezéséhez. Ahhoz, hogy a forgalom elérhesse az Azure SQL Database, az SQL használata [szolgáltatáscímkéket](../virtual-network/security-overview.md) hálózati biztonsági csoportokon keresztül kimenő adatforgalom engedélyezéséhez.
 
-[Virtuális hálózati szabályok](sql-database-vnet-service-endpoint-rule-overview.md) engedélyezése az Azure SQL Database csak a kijelölt alhálózatot a virtuális hálózatokon belüli érkező-kommunikáció fogadására.
+[A virtuális hálózati szabályok](sql-database-vnet-service-endpoint-rule-overview.md) engedélyezése az Azure SQL Database csak a kijelölt alhálózatot a virtuális hálózatokon belüli érkező-kommunikáció fogadására.
 
 > [!NOTE]
-> Hozzáférés-tűzfalszabályokkal does *nem* a alkalmazni **Azure SQL Database felügyelt példányába**. További információ a hálózati konfiguráció szükséges, lásd: [csatlakozik a felügyelt példány](sql-database-managed-instance-connect-app.md)
+> Hozzáférés-tűzfalszabályokkal does *nem* a alkalmazni **felügyelt példány**. További információ a hálózati konfiguráció szükséges, lásd: [csatlakozik a felügyelt példány](sql-database-managed-instance-connect-app.md)
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
 > [!IMPORTANT]
 > Adatbázisok és az Azure database-kiszolgálók kezelése a portál felhasználói fiókjának szerepkör-hozzárendelések vezérlik majd. Ez a cikk további információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon](../role-based-access-control/overview.md).
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 Hitelesítés az a folyamat, amely igazolja, a felhasználó, akinek lennie. Az Azure SQL Database két hitelesítési típust támogat:
 
@@ -64,7 +64,7 @@ Hitelesítés az a folyamat, amely igazolja, a felhasználó, akinek lennie. Az 
     További elérhető az Azure AD-hitelesítési lehetőségek a következők [Active Directory univerzális hitelesítéssel az SQL Server Management Studio](sql-database-ssms-mfa-authentication.md) többek között kapcsolatok [multi-factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) és [ Feltételes hozzáférés](sql-database-conditional-access.md).
 
 > [!IMPORTANT]
-> A portál felhasználói fiókjának szerepkör-hozzárendelések kezeléséhez az adatbázisok és kiszolgálók Azure-ban vezérli. Ez a cikk további információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon](../role-based-access-control/overview.md). Hozzáférés-tűzfalszabályokkal does *nem* a alkalmazni **Azure SQL Database felügyelt példányába**. További információt a következő [, a felügyelt példányhoz kapcsolódva](sql-database-managed-instance-connect-app.md) bővebben a hálózati konfiguráció szükséges.
+> A portál felhasználói fiókjának szerepkör-hozzárendelések kezeléséhez az adatbázisok és kiszolgálók Azure-ban vezérli. Ez a cikk további információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon](../role-based-access-control/overview.md). Hozzáférés-tűzfalszabályokkal does *nem* a alkalmazni **felügyelt példány**. További információt a következő [csatlakozik a felügyelt példány](sql-database-managed-instance-connect-app.md) bővebben a hálózati konfiguráció szükséges.
 
 Engedélyezési hivatkozik az Azure SQL Database a felhasználóhoz rendelt engedélyeket, és meghatározza, hogy mi a felhasználó számára engedélyezett. Engedélyek hozzáadása a felhasználói fiókok által vezérelt [adatbázis-szerepkörök](/sql/relational-databases/security/authentication-access/database-level-roles) adatbázisszintű engedélyeket, vagy a bizonyos felhasználói definiáló [objektumszintű engedélyei](/sql/relational-databases/security/permissions-database-engine). További információkért lásd: [bejelentkezések és felhasználók](sql-database-manage-logins.md)
 
@@ -86,11 +86,11 @@ Az SQL Database naplózási és fenyegetésészlelési képességek biztosítás
 
 ### <a name="sql-auditing-in-log-analytics-and-event-hubs"></a>SQL-naplózás a Log Analytics és az Event Hubs
 
-SQL Database naplózási szolgáltatása nyomon követi az adatbázis-tevékenységekről, és segít fenntartani a biztonsági szabványoknak való megfelelőség rögzíti az adatbázissal kapcsolatos események egy naplófájlba, jelentkezzen be egy ügyfél saját Azure Storage-fiókot. Naplózás lehetővé teszi, hogy a felhasználók számára az adatbázisban folyamatban lévő tevékenységeket, figyelése, valamint elemezheti és kivizsgálhatja a azonosíthatja a potenciális fenyegetések vagy gyanús visszaélések és szabálysértések. További információ: Ismerkedés az [SQL Database naplózási szolgáltatásával](sql-database-auditing.md).  
+Az SQL Database naplózási szolgáltatása nyomon követi az adatbázis-tevékenységekről, és segít fenntartani a biztonsági szabványoknak való megfelelőség rögzíti az adatbázissal kapcsolatos események egy naplófájlba, jelentkezzen be egy ügyfél saját Azure storage-fiók. Naplózás lehetővé teszi, hogy a felhasználók számára az adatbázisban folyamatban lévő tevékenységeket, figyelése, valamint elemezheti és kivizsgálhatja a azonosíthatja a potenciális fenyegetések vagy gyanús visszaélések és szabálysértések. További információ: Ismerkedés az [SQL Database naplózási szolgáltatásával](sql-database-auditing.md).  
 
-### <a name="sql-threat-detection"></a>Az SQL Fenyegetésészlelés
+### <a name="threat-detection"></a>Fenyegetések észlelése
 
-Fenyegetés-észlelési fokozza a naplózási szokatlan jelenség a vizsgálati naplók elemzésével és vélhetően kárt okozó az adatbázisokat elérni vagy kiaknázni próbál. Riasztások jönnek létre a gyanús tevékenységeket és rendellenes hozzáférési mintákat, például az SQL-injektálási támadások, potenciális adatok beszivárgás és találgatásos jelszó támadásokkal szemben. A Fenyegetésészlelés riasztásai tekinthetők meg a [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amelyben a gyanús tevékenységek részletes információkat, és javaslatokat további műveletek mellett a fenyegetés megadott vizsgálatra. A fenyegetésészlelés $15/kiszolgálói/hó. Fontos ingyenes az első 60 nap. További információk: [Ismerkedés az SQL Database fenyegetések észlelése szolgáltatásával](sql-database-threat-detection.md).
+Fenyegetés-észlelési fokozza a naplózási szokatlan jelenség a vizsgálati naplók elemzésével és vélhetően kárt okozó az adatbázisokat elérni vagy kiaknázni próbál. Riasztások jönnek létre a gyanús tevékenységeket és rendellenes hozzáférési mintákat, például az SQL-injektálási támadások, potenciális adatok beszivárgás és találgatásos jelszó támadásokkal szemben. A fenyegetésészlelés riasztásai tekinthetők meg a [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amelyben a gyanús tevékenységek részletes információkat, és javaslatokat további műveletek mellett a fenyegetés megadott vizsgálatra. A fenyegetésészlelés $15/kiszolgálói/hó. Fontos ingyenes az első 60 nap. További információkért lásd: [Ismerkedés az SQL Database Threat detection](sql-database-threat-detection.md).
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
@@ -137,9 +137,9 @@ Az SQL Database dinamikus adatmaszkolása korlátozza a bizalmas adatok adatmasz
 
 ## <a name="security-management"></a>Biztonság kezelése
 
-### <a name="sql-vulnerability-assessment"></a>SQL-sebezhetőségi felmérés
+### <a name="vulnerability-assessment"></a>Sebezhetőségi felmérés
 
-[SQL-sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen beállítható a szolgáltatás, amely a felderítése, nyomon követheti, és megoldhatja a cél proaktív módon a teljes adatbázis-biztonság növelése érdekében az adatbázis biztonsági réseinek. Sebezhetőségi felmérés (VA) az SQL speciális adatok biztonsági (ADS) ajánlat, amely egy SQL-biztonság speciális képességek egységes csomag részét képezi. A biztonságirés-értékelési érheti el és a központi SQL ADS portálon keresztül kezelhetők.
+[A biztonságirés-értékelési](sql-vulnerability-assessment.md) egy könnyen beállítható a szolgáltatás, amely a felderítése, nyomon követheti, és megoldhatja a cél proaktív módon a teljes adatbázis-biztonság növelése érdekében az adatbázis biztonsági réseinek. Biztonságirés-felmérés (VA) a speciális biztonsági (ADS) ajánlat, amely egy SQL-biztonság speciális képességek egységes csomag részét képezi. A biztonságirés-értékelési érheti el és a központi SQL ADS portálon keresztül kezelhetők.
 
 ### <a name="data-discovery--classification"></a>Adatfelderítés és besorolás
 
@@ -149,7 +149,7 @@ Adatfelderítés és besorolás (jelenleg előzetes verzióban érhető el) bizt
 - Való hozzáférés szabályozásának és korlátozására, biztonságát a szigorúan bizalmas adatokat tartalmazó adatbázisok.
 - Lehetővé teszi, hogy megfeleljen az adatok adatvédelmi szabványok és az előírt megfelelőségi követelmények teljesítését.
 
-További információkért lásd: [Ismerkedés az SQL DB Adatfelderítés és besorolás](sql-database-data-discovery-and-classification.md).
+További információkért lásd: [Ismerkedés az adatfelderítés és besorolás](sql-database-data-discovery-and-classification.md).
 
 ### <a name="compliance"></a>Megfelelőség
 

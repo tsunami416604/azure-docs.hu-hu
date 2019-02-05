@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 61cfc458ed965fd4f1446ff8cfb5e9a6e244f246
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 69b6bd07699d179fc87ac6c5364a7a34b23d14eb
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332387"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731716"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjai
 
@@ -54,7 +54,7 @@ A portál a kiválasztott beállításokkal bejövő biztonsági szabályok hasz
 
 NSG-szabályokat a hálózati forgalom korlátozására, mellett is használhatja a Windows tűzfal a virtuális gépen.
 
-Ha végpontokat használ a klasszikus üzemi modellel, távolítsa el olyan végpontok, a virtuális gépen, ha nem használja. A hozzáférés-vezérlési listák használata a végpontok útmutatásért lásd: [kezelése az ACL-végponton](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint). Ez nem szükséges a Resource Manager használó virtuális gépek esetében.
+Ha végpontokat használ a klasszikus üzemi modellel, távolítsa el olyan végpontok, a virtuális gépen, ha nem használja. A hozzáférés-vezérlési listák használata a végpontok útmutatásért lásd: [kezelése az ACL-végponton](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). Ez nem szükséges a Resource Manager használó virtuális gépek esetében.
 
 Végül érdemes megfontolni az Azure-beli virtuális gépen az SQL Server adatbázismotor-példány titkosított kapcsolatokat. SQL server-példány beállítása egy aláírt tanúsítvánnyal rendelkező. További információkért lásd: [titkosított kapcsolatokat engedélyezi az adatbázismotor](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) és [kapcsolati karakterlánc szintaxisát](https://msdn.microsoft.com/library/ms254500.aspx).
 

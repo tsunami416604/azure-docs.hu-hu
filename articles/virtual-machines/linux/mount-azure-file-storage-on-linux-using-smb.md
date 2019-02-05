@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.subservice: files
-ms.openlocfilehash: 77b7e6aef4d0d38fa3ea9f9b9a740ffc25aff7f9
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 0aa291c3334af35ec90648cfbcbb7de7015deb99
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660017"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731444"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure File storage csatlakoztatása az SMB-, Linux rendszerű virtuális gépeken
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy új storage-fiókot az erőforráscsoportban létrehozott, [az tárfiók létrehozása](/cli/azure/storage/account#create). Ez a példa létrehoz egy tárfiókot, nevű *mySTORAGEACCT<random number>*  és a tárfiók nevét a változóban **STORAGEACCT**. Tárfiókok nevének egyedinek kell lennie, használatával `$RANDOM` egy számot fűz a végfelhasználók egyedi legyen.
+Hozzon létre egy új storage-fiókot az erőforráscsoportban létrehozott, [az tárfiók létrehozása](/cli/azure/storage/account). Ez a példa létrehoz egy tárfiókot, nevű *mySTORAGEACCT<random number>*  és a tárfiók nevét a változóban **STORAGEACCT**. Tárfiókok nevének egyedinek kell lennie, használatával `$RANDOM` egy számot fűz a végfelhasználók egyedi legyen.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -69,7 +69,7 @@ STORAGEKEY=$(az storage account keys list \
 
 ## <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
 
-Hozzon létre a File storage használatával [az tárolási fájlmegosztás létrehozása](/cli/azure/storage/share#create). 
+Hozzon létre a File storage használatával [az tárolási fájlmegosztás létrehozása](/cli/azure/storage/share). 
 
 Megosztás nevének kell lennie az összes kisbetűket, számokat és kötőjeleket, de nem kezdődhet kötőjellel. A fájlmegosztások és fájlok elnevezésére vonatkozó információkért lásd: [Naming and Referencing Shares, Directories, Files, and Metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) (Megosztások, könyvtárak, fájlok és metaadatok elnevezése és hivatkozása).
 

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 1/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0aa15c34e6fd6c7952a457d36e072bc91d4d5dab
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c3c4556d22aae4328883436f7323840fd3c60c18
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102172"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729302"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Gyors útmutató: Egy token beszerzéséhez és a Microsoft Graph API hívása egy konzolalkalmazás használatával az alkalmazás-identitást
 
@@ -203,7 +203,7 @@ var app = new ConfidentialClientApplication(
 > | `userTokenCache`  | A felhasználói jogkivonat a gyorsítótárban példánya. Ebben az esetben mivel ez az alkalmazás az alkalmazás, és nem a felhasználó környezetében fut, ez az érték null értékű|
 > | `appTokenCache`  | Az alkalmazás jogkivonat a gyorsítótárban példánya|
 
-További információkért tekintse meg a [referenciadokumentációjára `ConfidentialClientApplication`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.-ctor?view=azure-dotnet#Microsoft_Identity_Client_ConfidentialClientApplication__ctor_System_String_System_String_System_String_Microsoft_Identity_Client_ClientCredential_Microsoft_Identity_Client_TokenCache_Microsoft_Identity_Client_TokenCache)
+További információkért tekintse meg a [referenciadokumentációjára `ConfidentialClientApplication`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.-ctor?view=azure-dotnet)
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 

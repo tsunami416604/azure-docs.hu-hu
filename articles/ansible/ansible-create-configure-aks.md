@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/23/2018
-ms.openlocfilehash: c4f78d8bb43b26814dc3a4b94109dfd8719cb48f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: df1efc1506fbbe51ba5afb03f147c51a57d9bbdb
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258832"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727058"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Azure Kubernetes Service-fürtök létrehozása és konfigurálása az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible-lel felügyelheti az Azure Kubernetes Service-t (AKS-t). Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat Azure Kubernetes Service-fürtöket az Ansible használatával.
@@ -25,13 +25,13 @@ Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfi
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.6-os verziója szükséges. 
+> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.6-os verziója szükséges.
 
 ## <a name="create-a-managed-aks-cluster"></a>Felügyelt AKS-fürt létrehozása
 Ebben a szakaszban a kódot mutatja be egy minta az Ansible-forgatókönyvek hozhat létre egy erőforráscsoportot és a egy AKS-fürtöt az erőforráscsoportban található.
 
 > [!Tip]
-> Az a `your_ssh_key` helyőrző, adja meg a nyilvános RSA-kulcsot az egysoros formátumban – "ssh-rsa" kezdetű (idézőjelek nélkül). 
+> Az a `your_ssh_key` helyőrző, adja meg a nyilvános RSA-kulcsot az egysoros formátumban – "ssh-rsa" kezdetű (idézőjelek nélkül).
 
   ```yaml
   - name: Create Azure Kubernetes Service
@@ -71,8 +71,8 @@ Ebben a szakaszban a kódot mutatja be egy minta az Ansible-forgatókönyvek hoz
   ```
 
 Az alábbiak segítenek az előző Ansible-forgatókönyvkód megértésében:
-- A **tasks** első szakasza egy **myResourceGroup** nevű erőforráscsoportot definiál az **eastus** helyen. 
-- A **tasks** második szakasza egy **myAKSCluster** nevű AKS-fürtöt definiál a **myResourceGroup** erőforráscsoportban. 
+- A **tasks** első szakasza egy **myResourceGroup** nevű erőforráscsoportot definiál az **eastus** helyen.
+- A **tasks** második szakasza egy **myAKSCluster** nevű AKS-fürtöt definiál a **myResourceGroup** erőforráscsoportban.
 
 Az AKS-fürt Ansible-lel való létrehozásához mentse az előző mintaforgatókönyvet `azure_create_aks.yml` néven, majd futtassa azt a következő paranccsal:
 
@@ -100,10 +100,10 @@ Az **ansible-playbook* parancs kimenete a következőhöz hasonló, és azt muta
 
 ## <a name="scale-aks-nodes"></a>AKS-csomópontok skálázása
 
-Az előző szakaszban lévő mintaforgatókönyv két csomópontot definiál. Ha ennél több vagy kevesebb tárolókhoz kapcsolódó számítási feladatra van szükség a fürtön, a csomópontok számát könnyedén módosíthatja. Az ebben a szakaszban szereplő mintaforgatókönyv kettőről háromra növeli a csomópontok számát. A csomópontok számának módosításához módosítsa a **count** értéket az **agent_pool_profiles** blokkban. 
+Az előző szakaszban lévő mintaforgatókönyv két csomópontot definiál. Ha ennél több vagy kevesebb tárolókhoz kapcsolódó számítási feladatra van szükség a fürtön, a csomópontok számát könnyedén módosíthatja. Az ebben a szakaszban szereplő mintaforgatókönyv kettőről háromra növeli a csomópontok számát. A csomópontok számának módosításához módosítsa a **count** értéket az **agent_pool_profiles** blokkban.
 
 > [!Tip]
-> Az a `your_ssh_key` helyőrző, adja meg a nyilvános RSA-kulcsot az egysoros formátumban – "ssh-rsa" kezdetű (idézőjelek nélkül). 
+> Az a `your_ssh_key` helyőrző, adja meg a nyilvános RSA-kulcsot az egysoros formátumban – "ssh-rsa" kezdetű (idézőjelek nélkül).
 
 ```yaml
 - name: Scale AKS cluster
@@ -120,10 +120,10 @@ Az előző szakaszban lévő mintaforgatókönyv két csomópontot definiál. Ha
   tasks:
   - name: Scaling an existed AKS cluster
     azure_rm_aks:
-        name: "{{ aks_name }}"    
+        name: "{{ aks_name }}"
         location: "{{ location }}"
-        resource_group: "{{ resource_group }}" 
-        dns_prefix: "{{ aks_name }}" 
+        resource_group: "{{ resource_group }}"
+        dns_prefix: "{{ aks_name }}"
         linux_profile:
           admin_username: "{{ username }}"
           ssh_key: "{{ ssh_key }}"
@@ -168,7 +168,7 @@ A következő Ansible-mintaforgatókönyv részlet az AKS-fürtök törlését m
       resource_group: myResourceGroup
       aks_name: myAKSCluster
     tasks:
-    - name: 
+    - name:
       azure_rm_aks:
         name: "{{ aks_name }}"
         resource_group: "{{ resource_group }}"
@@ -193,7 +193,7 @@ TASK [azure_rm_aks] ************************************************************
 PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=1    unreachable=0    failed=0
   ```
-  
+
 ## <a name="next-steps"></a>További lépések
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-scale)

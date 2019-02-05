@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Backup: REST API használatával a Recovery Services-tárolók létrehozására.'
+title: 'Azure Backup: Hozzon létre a Recovery Services-tárolót a REST API használatával'
 description: biztonsági mentés kezelése és a visszaállítási műveleteket az Azure VM Backup – REST API használatával
 services: backup
 author: pvrk
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 7d1a4e6b1093344d1217e8577a56f34cd3c1f52c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289700"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734334"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Hozzon létre az Azure Recovery Services-tárolót a REST API használatával
 
@@ -29,7 +29,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>Kérés létrehozása
 
-Hozhat létre a *PUT* kérelem, a `{subscription-id}` paraméter megadása kötelező. Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions). Megadhat egy `{resourceGroupName}` és `{vaultName}` az erőforrások és a `api-version` paraméter. Ez a cikk `api-version=2016-06-01`.
+Hozhat létre a *PUT* kérelem, a `{subscription-id}` paraméter megadása kötelező. Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). Megadhat egy `{resourceGroupName}` és `{vaultName}` az erőforrások és a `api-version` paraméter. Ez a cikk `api-version=2016-06-01`.
 
 A következő fejléceket szükség:
 
@@ -46,8 +46,8 @@ A következő gyakori definíciókat hozhat létre a kéréstörzs használható
 
 |Name (Név)  |Szükséges  |Típus  |Leírás  |
 |---------|---------|---------|---------|
-|az eTag     |         |   Karakterlánc      |  Az eTag nem kötelező       |
-|location     |  true       |Karakterlánc         |   Erőforrás helye      |
+|az eTag     |         |   String      |  Az eTag nem kötelező       |
+|location     |  true       |String         |   Erőforrás helye      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tároló tulajdonságai       |
 |termékváltozat     |         |  [Termékváltozat](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Azonosítja az egyes Azure-erőforrások egyedi rendszerazonosítója     |
 |tags     |         | Objektum        |     Erőforráscímkék    |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: f7a645669d273e0ca0017e28ef539c2143151d25
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 4b71c5818ee6eade526134ab1b2508ed55f0c400
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509683"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699941"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -391,8 +391,8 @@ Az Azure Storage támogatja a következő dimenziókat a metrikák az Azure moni
 | BlobType | A Blob metrikák csak a blob típusa. A támogatott értékek a következők **BlockBlob** és **PageBlob**. Hozzáfűző Blob egy BlockBlob szerepel. |
 | ResponseType | Tranzakció válasz típusa. Az elérhető értékek a következők: <br/><br/> <li>ServerOtherError: Minden kiszolgálóoldali hiba leírt meglévőket, kivéve </li> <li> ServerBusyError: Hitelesített kéréshez, amely egy HTTP 503-as állapotkódot adott vissza. </li> <li> ServerTimeoutError: Időtúllépés történt, hitelesített kéréshez, amely egy HTTP 500-as állapotkódot adott vissza. Az időtúllépés történt a kiszolgáló hibája miatt. </li> <li> AuthorizationError: Hitelesített kérelmeket, amelyek jogosulatlan hozzáférést vagy engedélyezési hiba miatt nem sikerült. </li> <li> NetworkError: Hitelesített kérelmeket, amelyek hálózati hibák miatt nem sikerült. Leggyakrabban akkor fordul elő egy ügyfél túl korán bezárása után a kapcsolat időkorlát lejárta előtt. </li> <li>    ClientThrottlingError: Ügyféloldali szabályozási hiba. </li> <li> ClientTimeoutError: Időtúllépés történt, hitelesített kéréshez, amely egy HTTP 500-as állapotkódot adott vissza. Ha az ügyfél hálózati időtúllépés vagy az egyes kérelmek időkorlátját, mint a társzolgáltatás által várt alacsonyabb értékre van állítva, egy várt időkorlátja. Ellenkező esetben azt az elvártnak megfelelően egy ServerTimeoutError. </li> <li> ClientOtherError: Összes ügyféloldali hiba kivételével az itt ismertetett azokat. </li> <li> Sikeres művelet: Sikeres kérelem|
 | GeoType | A tranzakció elsődleges vagy másodlagos fürtből. Az elérhető értékek a következők: elsődleges és másodlagos. Érvényes írásvédett Georedundáns redundáns Storage(RA-GRS) másodlagos bérlőtől objektumok olvasásakor. |
-| ApiName | Művelet neve. Példa: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Az összes művelet nevekkel kapcsolatban lásd: [dokumentum](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
-| Hitelesítés | A tranzakciók használt hitelesítés típusa. Az elérhető értékek a következők: <br/> <li>AccountKey: A tranzakció tárfiókkulcs adatokkal van hitelesítve.</li> <li>SAS: A tranzakció közös hozzáférésű jogosultságkódok adatokkal van hitelesítve.</li> <li>OAuth: A tranzakció OAuth hozzáférési tokenek adatokkal van hitelesítve.</li> <li>Névtelen: A tranzakció névtelenül van szükség. Ellenőrzési kérelem nem tartalmazza.</li> <li>AnonymousPreflight: A tranzakció ellenőrzési kérést.</li> |
+| ApiName | Művelet neve. Példa: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Az összes művelet nevekkel kapcsolatban lásd: [dokumentum](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
+| Authentication | A tranzakciók használt hitelesítés típusa. Az elérhető értékek a következők: <br/> <li>AccountKey: A tranzakció tárfiókkulcs adatokkal van hitelesítve.</li> <li>SAS: A tranzakció közös hozzáférésű jogosultságkódok adatokkal van hitelesítve.</li> <li>OAuth: A tranzakció OAuth hozzáférési tokenek adatokkal van hitelesítve.</li> <li>Névtelen: A tranzakció névtelenül van szükség. Ellenőrzési kérelem nem tartalmazza.</li> <li>AnonymousPreflight: A tranzakció ellenőrzési kérést.</li> |
 
 A metrikák támogató dimenziók esetében adja meg a megfelelő mérőszámok értékeit a dimenzió értéket kell. Például, ha megtekinti **tranzakciók** értéket a sikeres válaszok szűrése kell a **ResponseType** dimenzió **sikeres**. Vagy ha megtekinti **BlobCount** érték Blokkblob, meg kell szűrni a **BlobType** dimenzió **BlockBlob**.
 

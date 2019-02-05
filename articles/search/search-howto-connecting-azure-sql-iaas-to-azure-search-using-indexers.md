@@ -6,20 +6,23 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 02/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f04c98e1337c2b65c9e0bc8401dd6045a84021e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2efc0b76c8556894119ed3f6dd216234414cf313
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312026"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732355"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Az SQL Server az Azure Search indexelők a kapcsolat konfigurálása egy Azure-beli virtuális gépen
 Leírtaknak [csatlakoztatása az Azure SQL Database az Azure Search indexelők használatával](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), szemben az indexelők létrehozása **SQL Server Azure virtuális gépeken** (vagy **SQL Azure-beli virtuális gépek** röviden) használata támogatott az Azure Search de van néhány biztonsággal kapcsolatos előfeltételek irányuló első. 
 
-**Tevékenység időtartama:** Körülbelül 30 perc alatt, ha már tanúsítványt telepített a virtuális gépen.
+SQL Server virtuális gépen az Azure Search kapcsolatainak egy nyilvános internetkapcsolat. A biztonsági intézkedéseket, ezek a kapcsolatok általában követnie mindegyikét itt is:
+
++ A tanúsítvány beszerzése egy [hitelesítésszolgáltató szolgáltató](https://en.wikipedia.org/wiki/Certificate_authority#Providers) teljesen minősített tartománynév az Azure virtuális gépek esetében.
++ Telepítse a tanúsítványt a virtuális Gépet, majd engedélyezése és a virtuális Gépet ebben a cikkben szereplő utasítások segítségével a konfigurálása a titkosított kapcsolatokat.
 
 ## <a name="enable-encrypted-connections"></a>Engedélyezze a titkosított kapcsolatokat
 Az Azure Search egy titkosított csatornán szükséges összes indexelő kérelem nyilvános internetkapcsolaton keresztül. Ez a szakasz felsorolja a lépéseket, hogy ezt a munkát.

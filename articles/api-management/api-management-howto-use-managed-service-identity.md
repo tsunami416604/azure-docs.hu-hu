@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: b7208943a27bcd184100ae426721a2fe8f6e1c72
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 54c4d58dc881ffc7c1f5ecc2242b64e5b61fa68f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970484"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730747"
 ---
 # <a name="use-azure-managed-service-identity-in-azure-api-management"></a>Azure Felügyeltszolgáltatás-identitás használata az Azure API Management
 
@@ -38,7 +38,7 @@ A portálon a felügyeltszolgáltatás-identitás beállítása esetén lesz el�
 
 ### <a name="using-the-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon használatával
 
-API Management-példány létrehozhat egy identitással többek között a következő tulajdonság az erőforrás-definícióban: 
+API Management-példány létrehozhat egy identitással többek között a következő tulajdonság az erőforrás-definícióban:
 
 ```json
 "identity" : {
@@ -46,7 +46,7 @@ API Management-példány létrehozhat egy identitással többek között a köve
 }
 ```
 
-Ez jelzi az Azure hozhat létre és kezelhet az identitás, az API Management-példány számára. 
+Ez jelzi az Azure hozhat létre és kezelhet az identitás, az API Management-példány számára.
 
 Ha például egy teljes körű Azure Resource Manager-sablon előfordulhat, hogy a következőhöz hasonló:
 
@@ -70,8 +70,8 @@ Ha például egy teljes körű Azure Resource Manager-sablon előfordulhat, hogy
                 "publisherEmail": "admin@contoso.com",
                 "publisherName": "Contoso"
             },
-            "identity": { 
-                "type": "systemAssigned" 
+            "identity": {
+                "type": "systemAssigned"
             }
         }
     ]
@@ -81,14 +81,14 @@ Ha például egy teljes körű Azure Resource Manager-sablon előfordulhat, hogy
 
 > [!NOTE]
 > Jelenleg a felügyeltszolgáltatás-identitás használható tanúsítványok beszerzése az Azure Key vault az egyéni tartománynevek az API Management. További forgatókönyvek hamarosan támogatott lesz.
-> 
+>
 >
 
 
 ### <a name="obtain-a-certificate-from-azure-key-vault"></a>Tanúsítvány beszerzése az Azure Key vault
 
 #### <a name="prerequisites"></a>Előfeltételek
-1. A Key Vault, a pfx-tanúsítványt tartalmazó Azure-előfizetéshez és az API Management szolgáltatás ugyanabban az erőforráscsoportban kell lennie. Ez a követelmény az Azure Resource Manager-sablon. 
+1. A Key Vault, a pfx-tanúsítványt tartalmazó Azure-előfizetéshez és az API Management szolgáltatás ugyanabban az erőforráscsoportban kell lennie. Ez a követelmény az Azure Resource Manager-sablon.
 2. A titkos kulcs tartalom típusúnak kell lennie *application/x-pkcs12*. A következő parancsfájl használatával töltse fel a tanúsítványt:
 
 ```powershell
@@ -106,7 +106,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 ```
 
 > [!Important]
-> Ha az objektum verziója, a tanúsítvány nincs megadva, az API Management automatikusan beszerzése az újabb verzióra, a tanúsítvány a Key Vault való feltöltésük után. 
+> Ha az objektum verziója, a tanúsítvány nincs megadva, az API Management automatikusan beszerzése az újabb verzióra, a tanúsítvány a Key Vault való feltöltésük után.
 
 Az alábbi példa bemutatja egy Azure Resource Manager-sablon, amely tartalmazza az alábbi lépéseket:
 
@@ -180,7 +180,6 @@ Az alábbi példa bemutatja egy Azure Resource Manager-sablon, amely tartalmazza
         "type": "Microsoft.ApiManagement/service",
         "location": "[resourceGroup().location]",
         "tags": {
-            
         },
         "sku": {
             "name": "[parameters('sku')]",
@@ -197,10 +196,10 @@ Az alábbi példa bemutatja egy Azure Resource Manager-sablon, amely tartalmazza
     {
         "type": "Microsoft.KeyVault/vaults/accessPolicies",
         "name": "[concat(parameters('keyVaultName'), '/add')]",
-        "apiVersion": "2015-06-01",        
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
-      ],
+        "apiVersion": "2015-06-01",
+        "dependsOn": [
+            "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
+        ],
         "properties": {
             "accessPolicies": [{
                 "tenantId": "[reference(variables('apimServiceIdentityResourceId'), '2015-08-31-PREVIEW').tenantId]",
@@ -211,28 +210,28 @@ Az alábbi példa bemutatja egy Azure Resource Manager-sablon, amely tartalmazza
             }]
         }
     },
-    { 
-      "apiVersion": "2017-05-10", 
-      "name": "apimWithKeyVault", 
-      "type": "Microsoft.Resources/deployments",
-      "dependsOn": [
+    {
+        "apiVersion": "2017-05-10",
+        "name": "apimWithKeyVault",
+        "type": "Microsoft.Resources/deployments",
+        "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
-      ],
-      "properties": { 
-        "mode": "incremental", 
-        "templateLink": {
-          "uri": "https://raw.githubusercontent.com/solankisamir/arm-templates/master/basicapim.keyvault.json",
-          "contentVersion": "1.0.0.0"
-        }, 
-        "parameters": {
-            "publisherEmail": { "value": "[parameters('publisherEmail')]"},
-            "publisherName": { "value": "[parameters('publisherName')]"},
-            "sku": { "value": "[parameters('sku')]"},
-            "skuCount": { "value": "[parameters('skuCount')]"},
-            "proxyCustomHostname1": {"value" : "[parameters('proxyCustomHostname1')]"},
-            "keyVaultIdToCertificate": {"value" : "[parameters('keyVaultIdToCertificate')]"}
+        ],
+        "properties": {
+            "mode": "incremental",
+            "templateLink": {
+                "uri": "https://raw.githubusercontent.com/solankisamir/arm-templates/master/basicapim.keyvault.json",
+                "contentVersion": "1.0.0.0"
+            },
+            "parameters": {
+                "publisherEmail": { "value": "[parameters('publisherEmail')]"},
+                "publisherName": { "value": "[parameters('publisherName')]"},
+                "sku": { "value": "[parameters('sku')]"},
+                "skuCount": { "value": "[parameters('skuCount')]"},
+                "proxyCustomHostname1": {"value" : "[parameters('proxyCustomHostname1')]"},
+                "keyVaultIdToCertificate": {"value" : "[parameters('keyVaultIdToCertificate')]"}
+            }
         }
-      } 
     }]
 }
 ```
@@ -243,4 +242,3 @@ További információ az Azure Managed Service Identity:
 
 * [Felügyeltszolgáltatás-identitás az Azure-erőforrásokhoz](../active-directory/msi-overview.md)
 * [Az Azure Resource Manager-sablonok](https://github.com/Azure/azure-quickstart-templates)
-

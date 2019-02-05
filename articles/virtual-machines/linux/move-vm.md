@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: c451377d6274c50f22e3b1d4cd32fb0f3edd9d9e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d2d3f36c9b4ee0557f9e060bec762877a94ea637
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220393"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734181"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Linux rendszerű virtuális gép áthelyezése egy másik előfizetést vagy az erőforrás-csoport
 Ez a cikk végigvezeti egy Linux rendszerű virtuális gép (VM) áthelyezése erőforráscsoportok vagy előfizetések között. Virtuális gép áthelyezése előfizetések között lehet hasznos, ha létrehozott egy virtuális Gépet egy személyes előfizetésben, és most át kívánja helyezni a vállalati előfizetéséhez.
@@ -35,7 +35,7 @@ Ez a cikk végigvezeti egy Linux rendszerű virtuális gép (VM) áthelyezése e
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Virtuális gép áthelyezése az Azure CLI használatával
 
 
-A továbblépés előtt a virtuális gép az Azure CLI-vel, annak biztosításához, hogy a forrás- és az előfizetések ugyanahhoz a bérlőhöz létezniük kell. Ellenőrizze, hogy mindkét előfizetéshez tartozik-e az azonos bérlő azonosítója, használja a [az fiók show](/cli/azure/account#az_account_show).
+A továbblépés előtt a virtuális gép az Azure CLI-vel, annak biztosításához, hogy a forrás- és az előfizetések ugyanahhoz a bérlőhöz létezniük kell. Ellenőrizze, hogy mindkét előfizetéshez tartozik-e az azonos bérlő azonosítója, használja a [az fiók show](/cli/azure/account).
 
 ```azurecli-interactive
 az account show --subscription mySourceSubscription --query tenantId
@@ -43,13 +43,13 @@ az account show --subscription myDestinationSubscription --query tenantId
 ```
 Ha a bérlőazonosítók a forrás- és előfizetés esetében nem ugyanaz, hogy kapcsolatba kell lépnie [támogatja](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) kell helyeznie az erőforrásokat az új bérlőhöz.
 
-Sikerült áthelyezni egy virtuális gép, helyezze át a virtuális gép és a támogató erőforrások kell. Használja a [az erőforrások listájából](/cli/azure/resource#az_resource_list) paranccsal listát készíthet az erőforráscsoportot és a hozzájuk tartozó azonosítóik összes erőforrást. Segít pipe Ez a parancs kimenete egy fájlba, így másolja és illessze be az azonosítók újabb parancsok.
+Sikerült áthelyezni egy virtuális gép, helyezze át a virtuális gép és a támogató erőforrások kell. Használja a [az erőforrások listájából](/cli/azure/resource) paranccsal listát készíthet az erőforráscsoportot és a hozzájuk tartozó azonosítóik összes erőforrást. Segít pipe Ez a parancs kimenete egy fájlba, így másolja és illessze be az azonosítók újabb parancsok.
 
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
 
-Egy virtuális Gépet és erőforrásainak áthelyezése másik erőforráscsoportba, használja a [az erőforrás-áthelyezési](/cli/azure/resource#az_resource_move). Az alábbi példa bemutatja, hogyan kívánja áthelyezni a virtuális gép és a leggyakrabban használt erőforrás-mennyiséggel. Használja a **-azonosítók** paramétert, és adja meg egy vesszővel tagolt (szóközök nélkül) azonosítók listáját az erőforrások áthelyezése.
+Egy virtuális Gépet és erőforrásainak áthelyezése másik erőforráscsoportba, használja a [az erőforrás-áthelyezési](/cli/azure/resource). Az alábbi példa bemutatja, hogyan kívánja áthelyezni a virtuális gép és a leggyakrabban használt erőforrás-mennyiséggel. Használja a **-azonosítók** paramétert, és adja meg egy vesszővel tagolt (szóközök nélkül) azonosítók listáját az erőforrások áthelyezése.
 
 ```azurecli-interactive
 vm=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM

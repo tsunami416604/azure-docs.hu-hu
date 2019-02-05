@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: cbd58c0873a4a46d175c6d7cbdf2d004da304c06
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5677649b8f002490900ec32bee954348b2f444e6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247238"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731546"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
@@ -23,7 +23,7 @@ Ez a cikk az ismert problémák és korlátozások vonatkoznak az Azure Data Lak
 
 A BLOB Storage API-k és az Azure Data Lake Gen2 API-k nem együttműködésre egymással.
 
-Ha szeretne dolgozni a fiókjába feltöltött tartalom mindegyikét a ugyanazon eszközzel, majd nem engedélyezi az hierarchikus névtér a Blob storage-fiókjában mindaddig, amíg ezen API-k válnak együttműködésre egymással. A hierarchikus névtér nélkül-tárfiókok használata azt jelenti, hogy ezután nem rendelkezik hozzáféréssel a Data Lake Storage Gen2 konkrét funkcióra, például a címtár- és a fájlrendszer hozzáférés-vezérlési listák.
+Ha egyéni eszközök, alkalmazások vagy parancsfájlok, amelyek a Blob API-k használatával, és ezek segítségével a fiókjába feltöltött tartalom mindegyikét dolgozni szeretne, majd nem engedélyezi az hierarchikus névtér a Blob storage-fiókjában mindaddig, amíg a Blob API-k együttműködésre legyen. az Azure Data Lake Gen2 API-kkal. A hierarchikus névtér nélkül-tárfiókok használata azt jelenti, hogy ezután nem rendelkezik hozzáféréssel a Data Lake Storage Gen2 konkrét funkcióra, például a címtár- és a fájlrendszer hozzáférés-vezérlési listák.
 
 ## <a name="blob-storage-apis"></a>A BLOB storage API-k
 
@@ -79,16 +79,14 @@ Helyreállítható törlés és a pillanatképek nem az Azure Data Lake Storage 
 
 ## <a name="object-level-storage-tiers"></a>Objektum szintű tárolási rétegek
 
-Objektum szintű tárolási rétegek (gyors Elérésűre, ritka elérésű és archív) még nem érhetők el az Azure Data Lake Storage általános 2 fiókok esetében, de érhetők el a Storage-fiókok, amelyek nem rendelkeznek a hierarchikus tárolóhelyek engedélyezve van.
+Objektum szintű tárolási rétegek (gyors Elérésűre, ritka elérésű és archív) még nem érhetők el az Azure Data Lake Storage általános 2 fiókok esetében, de érhetők el a Storage-fiókok, amelyek nem rendelkeznek a hierarchikus névterek engedélyezettek.
 
 ## <a name="azure-blob-storage-lifecycle-management-preview-policies"></a>Az Azure Blob Storage életciklus-kezelési (előzetes verzió) házirendek
 
 Az Azure Blob Storage életciklus-kezelési (előzetes verzió) házirendek még nem érhetők el az Azure Data Lake Storage Gen2-fiókok esetében.
 
-Ezek a szabályzatok a Storage-fiókok, amelyek nem rendelkeznek a hierarchikus szóközt engedélyezni érhetők el.
+Ezek a szabályzatok, amelyek nem rendelkeznek a hierarchikus névterek engedélyezettek tárfiókokhoz érhetők el.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
 Diagnosztikai naplók nem érhetők el az Azure Data Lake Storage Gen2-fiókok esetében.
-
-Diagnosztikai naplók kérést, forduljon az Azure ügyfélszolgálatához. A fiók neve és az az időtartam, amelynek naplók van szüksége, adja meg azokat.

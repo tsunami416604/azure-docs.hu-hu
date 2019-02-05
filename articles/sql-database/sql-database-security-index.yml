@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 904cd593022006bc16908664fb7d7d0e3f6f24b0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c869d129d901a5c8dee7ed09b907805980e5c573
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455218"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727194"
 documentType: LandingData
 title: Azure SQL Database - Advanced Security
 metadata:
@@ -69,7 +69,7 @@ sections:
       - href: /azure/sql-database/sql-database-threat-detection#set-up-threat-detection-for-your-database-in-the-azure-portal
       - href: 
       - href: /azure/sql-database/scripts/sql-database-auditing-and-threat-detection-powershell
-    - title: A felügyelt példány Fenyegetésészlelési funkciójának beállítása
+    - title: Felügyelt példány fenyegetésészlelési funkciójának beállítása
       values:
       - href: /azure/sql-database/sql-database-managed-instance-threat-detection#set-up-threat-detection-for-your-managed-instance-in-the-azure-portal
       - href: 
@@ -91,9 +91,9 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Veszélyforrások elleni védelem a <a href="/azure/sql-database/sql-database-managed-instance-threat-detection">felügyelt példányok</a> és <a href="/azure/sql-database/sql-database-threat-detection">adatbázisok</a> észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek.
-    - html: A naplózás <a href="/azure/sql-database/sql-database-managed-instance-auditing">felügyelt példányok</a> és <a href="/azure/sql-database/sql-database-auditing">adatbázisok</a> nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókot, OMS-munkaterület vagy az Event Hubs.
+    - html: Veszélyforrások elleni védelem a <a href="/azure/sql-database/sql-database-managed-instance-threat-detection">felügyelt példányai</a> és <a href="/azure/sql-database/sql-database-threat-detection">adatbázisok</a> észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek.
+    - html: A naplózás <a href="/azure/sql-database/sql-database-managed-instance-auditing">felügyelt példányai</a> és <a href="/azure/sql-database/sql-database-auditing">adatbázisok</a> nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókot, OMS-munkaterület vagy az Event Hubs.
     - html: <a href="/azure/sql-database/sql-database-firewall-configure">Adatbázis-kiszolgáló tűzfalszabályainak</a> az önálló adatbázisok engedélyezése szabályozható, milyen IP-címek az adatbázis eléréséhez.
-    - html: <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">VNet-integráció</a> a felügyelt példány lehetővé teszi, hogy az adatbázisok helyezi a saját privát címterét.
+    - html: <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">VNet-integráció</a> a felügyelt példány pedig lehetővé teszi, hogy az adatbázisok helyezi a saját privát címterét.
     - html: <a href="/azure/sql-database/sql-database-always-encrypted">Mindig titkosított</a> védelmet biztosít a kiszolgálón, az inaktív bizalmas adatok ügyfél és kiszolgáló közötti mozgás során, és az adatok használata közben, biztosítva, hogy bizalmas adatok soha nem jelenik meg, mint belül az adatbázis-rendszer egyszerű szövegként.
     - html: <a href="/azure/sql-database/sql-database-dynamic-data-masking-get-started">Dinamikus adatmaszkolás</a> által meghatározhatóvá a bizalmas adatok felfedéséhez az alkalmazásrétegre gyakorolt minimális hatás mellett, így segít megakadályozni az bizalmas adatokhoz való jogosulatlan hozzáférést.

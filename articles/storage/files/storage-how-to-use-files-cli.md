@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 82d1a83dfd96dd6d4c2b37567c745998a6f0cbdb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ddd97ea73ce476e72c0c94a756c749e5527799ae
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473510"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730781"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Gyors útmutató: Létrehozása és kezelése az Azure-fájlmegosztások Azure CLI-vel
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure CLI-vel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
@@ -34,7 +34,7 @@ az login
 ```
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ha még nem rendelkezik Azure-erőforráscsoporttal, létrehozhat egyet az [az group create](/cli/azure/group#create) paranccsal. 
+Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ha még nem rendelkezik Azure-erőforráscsoporttal, létrehozhat egyet az [az group create](/cli/azure/group) paranccsal. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *USA keleti régiója* helyen:
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 A tárfiókok az Azure-fájlmegosztások vagy más tárolási erőforrások, például blobok vagy üzenetsorok üzembe helyezéséhez használható tárolók közös készletei. Egy tárfiók korlátlan számú fájlmegosztást tartalmazhat. Egy megosztás korlátlan számú fájl tárolására használható, egészen a tárfiók kapacitásának korlátjáig.
 
-A következő példa létrehoz egy *mystorageaccount\<random number\>* nevű tárfiókot az [az storage account create](/cli/azure/storage/account#create) paranccsal, majd a tárfiók nevét a `$STORAGEACCT` változóba helyezi. A tárfiókok nevének egyedinek kell lenniük. A `$RANDOM` elem egy számot fűz a tárfiók nevéhez, hogy egyedivé tegye. 
+A következő példa létrehoz egy *mystorageaccount\<random number\>* nevű tárfiókot az [az storage account create](/cli/azure/storage/account) paranccsal, majd a tárfiók nevét a `$STORAGEACCT` változóba helyezi. A tárfiókok nevének egyedinek kell lenniük. A `$RANDOM` elem egy számot fűz a tárfiók nevéhez, hogy egyedivé tegye. 
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \
@@ -67,7 +67,7 @@ STORAGEKEY=$(az storage account keys list \
 ```
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
-Most létrehozhatja az első Azure-fájlmegosztását. Az [az storage share create](/cli/azure/storage/share#create) paranccsal hozhat létre fájlmegosztásokat. Ez a példa egy *myshare* nevű Azure-fájlmegosztást hoz létre: 
+Most létrehozhatja az első Azure-fájlmegosztását. Az [az storage share create](/cli/azure/storage/share) paranccsal hozhat létre fájlmegosztásokat. Ez a példa egy *myshare* nevű Azure-fájlmegosztást hoz létre: 
 
 ```azurecli-interactive
 az storage share create \
@@ -98,7 +98,7 @@ Arra számítunk, hogy a legtöbb Azure Files-felhasználó az SMB protokollon k
 Az alábbi példák bemutatják, hogyan módosíthatja az Azure-fájlmegosztást a fájl REST protokoll az Azure CLI használatával. 
 
 ### <a name="create-a-directory"></a>Könyvtár létrehozása
-Ha egy új, *myDirectory* nevű könyvtárat szeretne létrehozni az Azure-fájlmegosztás gyökérmappájában, használja az [`az storage directory create`](/cli/azure/storage/directory#az_storage_directory_create) parancsot:
+Ha egy új, *myDirectory* nevű könyvtárat szeretne létrehozni az Azure-fájlmegosztás gyökérmappájában, használja az [`az storage directory create`](/cli/azure/storage/directory) parancsot:
 
 ```azurecli-interactive
 az storage directory create \
@@ -109,7 +109,7 @@ az storage directory create \
 ```
 
 ### <a name="upload-a-file"></a>Fájl feltöltése
-A fájlok [`az storage file upload`](/cli/azure/storage/file#az_storage_file_upload) paranccsal való feltöltésének bemutatásához először hozzon létre egy feltölteni kívánt fájlt a Cloud Shell ideiglenes meghajtóján. A következő példában létrehozzuk, majd feltöltjük a fájlt:
+A fájlok [`az storage file upload`](/cli/azure/storage/file) paranccsal való feltöltésének bemutatásához először hozzon létre egy feltölteni kívánt fájlt a Cloud Shell ideiglenes meghajtóján. A következő példában létrehozzuk, majd feltöltjük a fájlt:
 
 ```azurecli-interactive
 date > ~/clouddrive/SampleUpload.txt
@@ -261,7 +261,7 @@ az storage share delete \
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Amikor végzett, az [`az group delete`](/cli/azure/group#delete) paranccsal távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást: 
+Amikor végzett, az [`az group delete`](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást: 
 
 ```azurecli-interactive 
 az group delete --name "myResourceGroup"

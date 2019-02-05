@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 061987105eac976e40a003a8108921ed0008630d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 71a5ca62dc5d21e30a4944f8be57a77040f4f204
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169161"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733688"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Biztonságos RESTful-szolgáltatásokat egyszerű HTTP-hitelesítés használatával
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az egy [kapcsolódó Azure AD B2C-cikk](active-directory-b2c-custom-rest-api-netfw.md), létrehozhat egy RESTful szolgáltatás (webes API-t), amely integrálható az Azure Active Directory B2C (az Azure AD B2C) felhasználói utak hitelesítés nélkül. 
+Az egy [kapcsolódó Azure AD B2C-cikk](active-directory-b2c-custom-rest-api-netfw.md), létrehozhat egy RESTful szolgáltatás (webes API-t), amely integrálható az Azure Active Directory B2C (az Azure AD B2C) felhasználói utak hitelesítés nélkül.
 
-Ebben a cikkben vegyen fel egyszerű HTTP-hitelesítés a RESTful szolgáltatás úgy, hogy csak ellenőrzött felhasználók, beleértve a B2C-vel, hozzáférhet az API-t. Az alapszintű HTTP-hitelesítést állítsa a felhasználói hitelesítő adatokat (Alkalmazásazonosító és titkos Alkalmazáskulcs) az egyéni házirend. 
+Ebben a cikkben vegyen fel egyszerű HTTP-hitelesítés a RESTful szolgáltatás úgy, hogy csak ellenőrzött felhasználók, beleértve a B2C-vel, hozzáférhet az API-t. Az alapszintű HTTP-hitelesítést állítsa a felhasználói hitelesítő adatokat (Alkalmazásazonosító és titkos Alkalmazáskulcs) az egyéni házirend.
 
 További információkért lásd: [az ASP.NET webes API-k egyszerű hitelesítés](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
 
@@ -33,7 +33,7 @@ A lépések elvégzéséhez a [integrálása a REST API-t az Azure AD B2C felhas
 ## <a name="step-1-add-authentication-support"></a>1. lépés: Hitelesítési támogatás hozzáadása
 
 ### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>1.1. lépés: Alkalmazásbeállítások hozzáadása a projekthez web.config fájlban
-1. Nyissa meg a Visual Studio-projektet, amelyet korábban hozott létre. 
+1. Nyissa meg a Visual Studio-projektet, amelyet korábban hozott létre.
 
 2. Adja hozzá a következő alkalmazás beállításokat a web.config fájl mellett a `appSettings` elem:
 
@@ -205,7 +205,7 @@ Adjon hozzá egy OWIN indítási osztályt `Startup.cs` az API-hoz. Ehhez tegye 
         {
             public void Configuration(IAppBuilder app)
             {
-                    app.Use<ClientAuthMiddleware>();
+                app.Use<ClientAuthMiddleware>();
             }
         }
     }
@@ -220,7 +220,7 @@ Nyissa meg a Controllers\IdentityController.cs, és adja hozzá a `[Authorize]` 
 A projekt közzététele a Megoldáskezelőben, kattintson a jobb gombbal a **Contoso.AADB2C.API** projektre, és válassza ki **közzététel**.
 
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>3. lépés: Adja hozzá a RESTful-szolgáltatásokat alkalmazás Azonosítóját és az alkalmazás titkos kulcsát az Azure AD B2C-vel
-Miután az ügyfél-azonosító (felhasználónév) és a titkos kulcs védelme a RESTful szolgáltatás, az Azure AD B2C-bérlőben a hitelesítő adatokat kell tárolnia. Az egyéni házirend hitelesítő adatokat biztosít, ha meghívja a REST-alapú szolgáltatások. 
+Miután az ügyfél-azonosító (felhasználónév) és a titkos kulcs védelme a RESTful szolgáltatás, az Azure AD B2C-bérlőben a hitelesítő adatokat kell tárolnia. Az egyéni házirend hitelesítő adatokat biztosít, ha meghívja a REST-alapú szolgáltatások.
 
 ### <a name="step-31-add-a-restful-services-client-id"></a>3.1. lépés: Adjon hozzá egy RESTful szolgáltatás ügyfél-azonosító
 1. Válassza ki az Azure AD B2C-bérlőben **B2C-beállítások** > **identitás-kezelőfelületi keretrendszer**.
@@ -275,7 +275,7 @@ Miután az ügyfél-azonosító (felhasználónév) és a titkos kulcs védelme 
     <Item Key="AuthenticationType">Basic</Item>
     ```
 
-5. A záró után azonnal `<Metadata>` elemben adja hozzá a következő XML-részletet: 
+5. A záró után azonnal `<Metadata>` elemben adja hozzá a következő XML-részletet:
 
     ```xml
     <CryptographicKeys>

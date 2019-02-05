@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: c3b8f4f8188a6a28cca8b77f169a00657b11dfc5
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 695050a46df4b208205ce394cc79db891803cfa4
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154811"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731529"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -109,9 +109,11 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
 
    A parancssori eszközről [itt tudhat meg többet](https://www.npmjs.com/package/dps-keygen).
 
-1. Töltse le a [GitHubról](https://github.com/Azure/dps-keygen/tree/master/bin) és csomagolja ki (Windows rendszeren) a dps_cstr eszközt
+1. Töltse le és csomagolja ki a (Windows) a dps_cstr eszközt [GitHub])https://github.com/Azure/dps-keygen/archive/master.zip
 
-    Győződjön meg arról, hogy a platformjának megfelelő eszközt választott. Windows rendszeren most például a dps_cstr.exe és a dll-fájloknak kell elérhetőnek lenniük a mappájában. 
+)
+
+    Make sure you choose the one that matches your platform. For example, on Windows the dps_cstr.exe and the dll files should be now available in your folder. 
 
 1. Az alkalmazásban az eszközpéldányok kapcsolati sztringje az IoT Central által megadott eszközinformációkból jön létre.
 

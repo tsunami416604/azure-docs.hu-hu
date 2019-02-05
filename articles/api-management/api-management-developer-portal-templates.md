@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 90084f6c4fb270c34165bf12763109d9be2398aa
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 00d5e3df78e85d19a519786dad1a1b176ad7fa08
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446959"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733059"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>A sablonok használatával az Azure API Management fejlesztői portál testreszabása
 
@@ -45,15 +45,15 @@ A sablonok listájának több kategória kiterjedő a különböző oldalakat a 
 
 ![Fejlesztői portál sablonjainak][api-management-templates-menu]
 
-Egy sablon kattintva megnyílik a fejlesztői portál lap, amely testre szabható a sablon által. Ebben a példában a **termékek listáját** sablon jelenik meg. A **termékek listáját** sablon meghatározza a képernyőn, a vörös téglalap jelzi. 
+Egy sablon kattintva megnyílik a fejlesztői portál lap, amely testre szabható a sablon által. Ebben a példában a **termékek listáját** sablon jelenik meg. A **termékek listáját** sablon meghatározza a képernyőn, a vörös téglalap jelzi.
 
 ![Termékek sablonlista][api-management-developer-portal-templates-overview]
 
-Egyes sablonok, például a **felhasználói profil** sablonok testreszabása a különböző részei ugyanazon az oldalon. 
+Egyes sablonok, például a **felhasználói profil** sablonok testreszabása a különböző részei ugyanazon az oldalon.
 
 ![Felhasználói profil sablonok][api-management-user-profile-templates]
 
-A szerkesztő minden fejlesztői portál sablon két részből áll, az oldal alján jelenik meg. A bal oldalon a szerkesztési panelen a sablon, valamint a jobb oldali jeleníti meg a sablon az adatmodellt. 
+A szerkesztő minden fejlesztői portál sablon két részből áll, az oldal alján jelenik meg. A bal oldalon a szerkesztési panelen a sablon, valamint a jobb oldali jeleníti meg a sablon az adatmodellt.
 
 A sablon ablaktábla Szerkesztés a vezérlő megjelenését és viselkedését a megfelelő lapon, a fejlesztői portálon jelölések tartalmazza. A sablon a jelölés használja a [DotLiquid](http://dotliquidmarkup.org/) szintaxist. Egy népszerű szerkesztője a DotLiquid [tervezők számára DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). A sablon szerkesztése során végrehajtott módosítások megjelennek a valós idejű a böngészőben, de még nem láthatók az ügyfelek számára, amíg [mentése](#to-save-a-template) és [közzététele](#to-publish-a-template) a sablont.
 
@@ -61,7 +61,7 @@ A sablon ablaktábla Szerkesztés a vezérlő megjelenését és viselkedését 
 
 A **sablon adatok** ablaktáblája tartalmaz egy útmutató, amellyel az adatmodellt az entitások, amelyek egy adott sablon használható. Ez az útmutató az élő adatokat, a fejlesztői portál jelenleg megjelenített megjelenítésével biztosít. A sablon ablaktáblán kattintson a jobb felső sarokban lévő téglalapjának bővítheti a **sablon adatok** ablaktáblán.
 
-![Sablon adatmodell][api-management-template-data]
+![Template data model][api-management-template-data]
 
 Az előző példában a fejlesztői portálon jelenik meg, amelyek lekérni a megjelenített adatok a két termék vannak a **sablon adatok** panelen, amint az alábbi példában látható:
 
@@ -118,7 +118,7 @@ Kódjával a **termékek listáját** sablon feldolgozza az adatokat adja meg a 
         <li>
             <h3><a href="/products/{{product.id}}">{{product.title}}</a></h3>
             {{product.description}}
-        </li>    
+        </li>
     {% endfor %}
     </ul>
     <paging-control></paging-control>
@@ -209,10 +209,3 @@ További információ a fejlesztői portál sablonjainak, a karakterlánc-erőfo
 [api-management-reset-template]: ./media/api-management-developer-portal-templates/api-management-reset-template.png
 [api-management-reset-template-confirm]: ./media/api-management-developer-portal-templates/api-management-reset-template-confirm.png
 [api-management-restore-templates]: ./media/api-management-developer-portal-templates/api-management-restore-templates.png
-
-
-
-
-
-
-

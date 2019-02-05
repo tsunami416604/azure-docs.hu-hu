@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 9d0f814428a4d7bc57b4f0a01ff5adc658af1d91
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fc963987b45751aab33035a83b2b477129e9a756
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466985"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730900"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>A Grafana az Azure-szolgáltatások figyelése
 Figyelheti az Azure szolgáltatásainak és alkalmazásainak [Grafana](https://grafana.com/) használatával a [Azure Monitor adatforrás-beépülő modul](https://grafana.com/plugins/grafana-azure-monitor-datasource). A beépülő modul az Azure Monitor, beleértve a különböző naplókat és mérőszámokat által gyűjtött alkalmazásteljesítmény-adatokat gyűjt. Ezután a Grafana irányítópulton jeleníti meg ezeket az adatokat.
@@ -66,7 +66,7 @@ Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás b
 
 3. Egyszerű szolgáltatás létrehozása – a Grafana használ egy Azure Active Directory-szolgáltatásnevet csatlakozhat az Azure Monitor API-k és adatok gyűjtéséhez. Hozzon létre, vagy használjon egy meglévő egyszerű szolgáltatást az Azure-erőforrásokhoz való hozzáférés kezelése.
     * Lásd: [ezek az utasítások](../../azure-resource-manager/resource-group-create-service-principal-portal.md) egy szolgáltatásnév létrehozásához. Másolja és mentse a bérlő azonosítója (címtár-azonosító), az ügyfél-azonosító (Alkalmazásazonosító) és a titkos Ügyfélkód (alkalmazás kulcs-érték).
-    * Lásd: [alkalmazás hozzárendelése szerepkörhöz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) az Olvasó szerepkör hozzárendelése az Azure Active Directory-alkalmazás az előfizetésre, erőforráscsoportra vagy erőforrásra figyelni kívánt. 
+    * Lásd: [alkalmazás hozzárendelése szerepkörhöz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) az Olvasó szerepkör hozzárendelése az Azure Active Directory-alkalmazás az előfizetésre, erőforráscsoportra vagy erőforrásra figyelni kívánt. 
     A Log Analytics API megköveteli a [Log Analytics olvasó szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader), amely tartalmazza az Olvasó szerepkörhöz az engedélyeket, és hozzáadja azt.
 
 4. Adja meg a kapcsolati adatokat szeretné használni az API-k. Az összes vagy egyes azokat is lehet kapcsolódni. 
