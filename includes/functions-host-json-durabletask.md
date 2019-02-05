@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 92eb13165326f44432f09322ea97f3cee5ccec2b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: a3af711503445000d9613feb2eec7967442fe538
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251243"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736084"
 ---
 A konfigurációs beállítások [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
 
@@ -43,7 +43,7 @@ A feladat értesítésiközpont-nevek kell betűvel kezdődhet, és csak betűkb
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|HubName|DurableFunctionsHub|Alternatív [feladat hub](../articles/azure-functions/durable-functions-task-hubs.md) nevek segítségével elkülönítheti egymástól, több Durable Functions-alkalmazás akkor is, ha az azonos tárolási háttéralkalmazások használatával theyre.|
+|HubName|DurableFunctionsHub|Alternatív [feladat hub](../articles/azure-functions/durable-functions-task-hubs.md) nevek segítségével elkülönítheti egymástól, több Durable Functions-alkalmazás akkor is, ha az általuk használt tároló ugyanazzal a háttérrendszerrel.|
 |ControlQueueBatchSize|32|A vezérlő várólista lekéréshez egyszerre üzenetek száma.|
 |PartitionCount |4|A partíciók száma az ellenőrzési várólista. Egy 1 és 16 közötti pozitív egész lehet.|
 |ControlQueueVisibilityTimeout |5 perc|A várólistából kivéve vezérlés üzenetsorbeli üzenetek láthatósági időkorlátot.|

@@ -14,12 +14,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 4f8b978abbcc4ed0f40655730e672fba064701f3
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 486e891ae055bdd6b6c30aeff63744acb3b0ef04
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854921"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734538"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Service Bus-üzenettémák és előfizetések használata a Ruby használatával
  
@@ -162,7 +162,7 @@ azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 Most, hogy megismerte a Service Bus-üzenettémakörök alapjait, kövesse az alábbi hivatkozások további.
 
 * Lásd: [üzenetsorok, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md).
-* Az [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter) API-referenciája.
+* Az [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) API-referenciája.
 * Látogasson el a [Rubyhoz készült Azure SDK-t](https://github.com/Azure/azure-sdk-for-ruby) tárházban a Githubon.
 
 [Azure portal]: https://portal.azure.com

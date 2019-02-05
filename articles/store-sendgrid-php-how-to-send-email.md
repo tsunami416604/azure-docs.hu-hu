@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: ee338e2011a7b86a069bd42a028d65b23a123037
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: db3333aa52782ceb949ef3f46a903b618f6e3f2f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427097"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693024"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Php-ből a SendGrid E-mail szolgáltatás használata
 
@@ -161,7 +161,7 @@ Használható a PHP a [függvény curl] [ curl function] e-mail küldése a Send
 
 SendGrid webes API nagyon hasonlít egy REST API-t, ha az nem igazi RESTful API-t, mivel a legtöbb hívásban mindkét LEKÉRÉSE, és a POST műveletek felcserélhetők.
 
-## <a name="how-to-add-an-attachment"></a>Útmutató: a melléklet hozzáadása
+## <a name="how-to-add-an-attachment"></a>Útmutató: A melléklet hozzáadása
 
 ### <a name="smtp-api"></a>SMTP API
 
@@ -296,7 +296,7 @@ A webes API-val melléklet küldése nagyon hasonlít a webes API-val e-mail kü
  print_r($response);
 ```
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Útmutató: a szűrők segítségével élőlábak, nyomon követés és az Analytics engedélyezése
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Útmutató: A szűrők segítségével élőlábak, nyomon követés és az Analytics engedélyezése
 
 A SendGrid használatával e-mail további funkciókat biztosít *szűrők*. Ezek a beállítások, amelyek e-mailbe ahhoz, hogy bizonyos funkciók, például engedélyezheti a kampányban, a Google analytics, előfizetés nyomon követése és így tovább lehet hozzáadni.
 
@@ -349,7 +349,7 @@ php composer.phar require sendgrid/sendgrid 2.1.1
  // support@yourcompany.com, info@yourcompany.com
  $from = 'someone@example.com';
 
- // If you do not specify a sender list above, you can specifiy the user here. If
+ // If you do not specify a sender list above, you can specify the user here. If
  // a sender list IS specified above, this email address becomes irrelevant.
  $to = 'john@contoso.com';
 

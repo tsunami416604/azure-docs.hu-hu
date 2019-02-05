@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 8be3156aaeb9651b97999b7b06fec8034e902c36
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ee714cd87676c519c1bbfca2c08b62287299114e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663893"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700621"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Linux rendszerű virtuális gép létrehozása egy rendelkezésre állási zónában az Azure CLI-vel
 
@@ -29,13 +29,13 @@ Ez a cikk végigvezeti az Azure CLI használatával egy Linux rendszerű virtuá
 
 Rendelkezésre állási zóna használatához egy [támogatott Azure-régióban](../../availability-zones/az-overview.md#regions-that-support-availability-zones) hozza létre a virtuális gépet.
 
-Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) és hogy bejelentkezett egy Azure-fiókjába való [az bejelentkezési](/cli/azure/reference-index#az_login).
+Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) és hogy bejelentkezett egy Azure-fiókjába való [az bejelentkezési](/cli/azure/reference-index).
 
 
 ## <a name="check-vm-sku-availability"></a>A VM-termékváltozatok rendelkezésre állásának ellenőrzése
 A virtuális gépek méretének vagy termékváltozatainak rendelkezésre állása régiónként és zónánként eltérhet. Ha fel szeretne készülni a rendelkezésre állási zónák használatára, megtekintheti a virtuális gépek termékváltozatainak listáját Azure-régió és zóna szerint. Ezáltal megfelelő virtuálisgép-méretet választhat, valamint biztosíthatja a zónák közötti rugalmasság kívánt szintjét. További információ a virtuális gépek különböző típusairól és méreteiről: [Virtuálisgép-méretek – áttekintés](sizes.md).
 
-Megtekintheti az elérhető virtuális gépek Termékváltozatait a [az vm list-skus](/cli/azure/vm#az_vm_list_skus) parancsot. Az alábbi példa az *eastus2* régióban található virtuális gépek elérhető termékváltozatait listázza:
+Megtekintheti az elérhető virtuális gépek Termékváltozatait a [az vm list-skus](/cli/azure/vm) parancsot. Az alábbi példa az *eastus2* régióban található virtuális gépek elérhető termékváltozatait listázza:
 
 ```azurecli
 az vm list-skus --location eastus2 --output table
@@ -74,7 +74,7 @@ Az erőforráscsoport létrehozása vagy módosítása egy virtuális Gépet, am
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. 
 
 Egy virtuális gép létrehozásakor több lehetőség is rendelkezésre áll, például az operációsrendszer-lemezkép, a lemezméretezés vagy a rendszergazdai hitelesítő adatok. Ebben a példában egy *myVM* nevű virtuális gépet hozunk létre, amelyen az Ubuntu Server fut. A virtuális gép létrehozása rendelkezésre állási zónában *1*. Alapértelmezés szerint a virtuális gép létrehozása a *Standard_DS1_v2* méretét.
 
@@ -102,7 +102,7 @@ A virtuális gép létrehozása eltarthat néhány percig. A virtuális gép lé
 
 Ha a virtuális gép egy rendelkezésre állási zónában, egy felügyelt lemezt a virtuális gép ugyanabban a rendelkezésre állási zónában jön létre. Alapértelmezés szerint egy nyilvános IP-címet is létrejön a zóna. Az alábbi példák ezeket az erőforrásokat adatainak beolvasása.
 
-Győződjön meg arról, hogy a virtuális gép felügyelt lemez a rendelkezésre állási zónában, használja a [az vm show](/cli/azure/vm#az_vm_show) parancsba is, a lemez azonosítóját. Ebben a példában a lemezazonosítót egy változó egy későbbi lépésben használt tárolja. 
+Győződjön meg arról, hogy a virtuális gép felügyelt lemez a rendelkezésre állási zónában, használja a [az vm show](/cli/azure/vm) parancsba is, a lemez azonosítóját. Ebben a példában a lemezazonosítót egy változó egy későbbi lépésben használt tárolja. 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -149,7 +149,7 @@ A kimenetben az látható, hogy a felügyelt lemez és a virtuális gép azonos 
 }
 ```
 
-Használja a [az vm list-ip-addresses](/cli/azure/vm#az_vm_list_ip_addresses) parancsba is, a nyilvános IP-cím erőforrás neve *myVM*. Ebben a példában a neve egy változó egy későbbi lépésben használt tárolja.
+Használja a [az vm list-ip-addresses](/cli/azure/vm) parancsba is, a nyilvános IP-cím erőforrás neve *myVM*. Ebben a példában a neve egy változó egy későbbi lépésben használt tárolja.
 
 ```azurecli
 ipaddressname=$(az vm list-ip-addresses -g myResourceGroupVM -n myVM --query "[].virtualMachine.network.publicIpAddresses[].name" -o tsv)
