@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d13f97ff7ec25fd638b92dc1c057afcaeecc2bf9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6986a5c40b51300b631f3fdce6c3a88b43fb5b11
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434069"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730883"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Események fogadása az Azure Event Hubs Node.js használatával
 
@@ -49,7 +49,7 @@ Töltse le vagy klónozza a [minta](https://github.com/Azure/azure-event-hubs-no
 ## <a name="install-the-eventprocessorhost"></a>Az EventProcessorHost telepítése
 Az EventProcessorHost az Event Hubs-modul telepítése. 
 
-```nodejs
+```shell
 npm install @azure/event-processor-host
 ```
 
@@ -61,20 +61,20 @@ Az SDK-val rendelkeznie klónozta tartalmaz több minták azt mutatják be, hogy
 3. Az eseményközpont kapcsolati karakterláncával, a eseményközpont neve és a storage-végpont konfigurálása. Az eseményközpont a kapcsolati karakterlánc másolhatja **kapcsolati karakterlánc – elsődleges** kulcsot **RootManageSharedAccessKey** az Event Hub oldalon az Azure Portalon. Részletes lépéseiért lásd: [kapcsolati sztring lekérése](event-hubs-create.md#create-an-event-hubs-namespace).
 4. Az Azure CLI-t, navigáljon a **processzor** mappa elérési útja. Csomópont-csomagok telepítéséhez, és állítsa össze a projektet a következő parancsok futtatásával:
 
-    ```nodejs
+    ```shell
     npm i
     npm run build
     ```
 5. Események fogadása az event processzor gazdagéppel a következő parancs futtatásával:
 
-    ```nodejs
+    ```shell
     node dist/examples/singleEph.js
     ```
 
 ## <a name="review-the-sample-code"></a>Tekintse át a mintakódot 
 A következő mintakód segítségével események fogadása az event hubs node.js használatával. Manuálisan hozzon létre egy sampleEph.js fájlt, és futtatni egy eseményközpontba események fogadására. 
 
-  ```nodejs
+  ```javascript
   const { EventProcessorHost, delay } = require("@azure/event-processor-host");
 
   const path = process.env.EVENTHUB_NAME;
@@ -127,7 +127,7 @@ A következő mintakód segítségével események fogadása az event hubs node.
 
 Fontos, hogy állítsa be a környezeti változókat a parancsfájl futtatása előtt. Ez a parancssorban a következő példában látható módon konfigurálhatja, vagy a [dotenv csomag](https://www.npmjs.com/package/dotenv#dotenv). 
 
-```
+```shell
 // For windows
 set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
 set EVENTHUB_NAME="<your-event-hub-name>"

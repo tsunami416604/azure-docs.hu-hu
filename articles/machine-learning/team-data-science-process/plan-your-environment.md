@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0cf9ffddffe7f97008e69c9c4fb7945faeb779da
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8af2398246fac4c8cb1d097e22147bbf695e43a6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469600"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728930"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása
 Milyen erőforrásokat kell azt tervezi, hogy tartalmazzák az ehhez a feldolgozása egy adatkészleten, speciális analitikai környezet beállítása során? Ez a cikk javasol egy sorozatát kérdéseket tehet fel, amelyek segítenek a feladatok és a kapcsolódó erőforrások a szituáció azonosítása. A prediktív elemzési magas szintű lépéseinek sorrendjét szemlélteti az [Mi az a csoportos adatelemzési folyamat (TDSP)?](overview.md). Egyes lépéseket az adott forgatókönyvnek megfelelő feladatokat bizonyos erőforrásokra van szükség. A szituáció azonosítása a legfontosabb kérdések adatlogisztika, jellemzőit, az adatkészleteket és az eszközöket és nyelveket szeretne végezni az elemzés minőségét vonatkoznak.
@@ -71,7 +71,7 @@ Ezek a kérdések kulcsfontosságúak a tárhely tervezésével és feldolgozás
 
 Vegyük például az Azure Machine Learning Studio-környezetben:
 
-* Az adatformátumok és az Azure Machine Learning Studio által támogatott típusok listáját lásd: [adatformátumok és a támogatott adattípusokat](../studio/import-data.md#data-formats-and-data-types-supported) szakaszban.
+* Az adatformátumok és az Azure Machine Learning Studio által támogatott típusok listáját lásd: [adatformátumok és a támogatott adattípusokat](../studio/import-data.md#supported-data-formats-and-data-types) szakaszban.
 
 
 Információk az egyéb Azure-szolgáltatásokat használja az elemzés során vonatkozó korlátozások: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../../azure-subscription-service-limits.md).

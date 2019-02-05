@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf50dad01cf9893209cc861d29d275ec114966c4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6c45ca62c1b734dcbcf854fdea4aa44e603d3908
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186157"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693824"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -34,7 +34,7 @@ ms.locfileid: "53186157"
 [kb4025334]:https://support.microsoft.com/help/4025334/windows-10-update-kb4025334
 
 [dv2-series]:https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dv2-series
-[ds-series]:https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#ds-series
+[ds-series]:https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -252,7 +252,7 @@ Ez az architektúra olyan egyedi a következő módon:
 * SAP central services (a saját fájl struktúra és az üzenet és a sorba folyamatok) elkülönülnek az SAP globális gazdagép fájlokat.
 * Az SAP central services egy SAP ASCS/SCS példányhoz futni.
 * Az SAP ASCS/SCS példányhoz fürtözve van, és segítségével érhetőek el a \<ASCS/SCS virtuális állomásnevet\> virtuális állomás neve.
-* SAP globális fájlok az SMB-fájlmegosztás kerülnek, és használatával elért a \<SAP globális gazdagép\> állomásnév: \\\\&lt;SAP globális gazdagép&gt;\sapmnt\\&lt;SID&gt;\SYS\....
+* SAP globális fájlok az SMB-fájlmegosztás kerülnek, és használatával elért a \<SAP globális gazdagép\> állomásnév: \\\\&lt;SAP global host&gt;\sapmnt\\&lt;SID&gt;\SYS\...
 * Az SAP ASCS/SCS példányhoz egy helyi lemez mindkét fürtcsomóponton telepítve van.
 * A \<ASCS/SCS virtuális állomásnevet\> hálózati neve eltér &lt;SAP globális gazdagép&gt;.
 

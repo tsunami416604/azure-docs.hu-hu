@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 935af10c2ebcdc5273671ed058fdf72099059da3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 33234c03a3e691a95e61f825a0351cf481431294
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475618"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731394"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás exportálási feladat létrehozása
 A Microsoft Azure Import/Export szolgáltatás REST API használatával exportálási feladat létrehozása az alábbi lépésekből áll:
@@ -45,21 +45,21 @@ A Microsoft Azure Import/Export szolgáltatás REST API használatával exportá
 
 -   Exportálhatja a blobok és a pillanatképek a storage-fiókban.
 
- Exportálandó blobok megadásával kapcsolatos további információkért lásd: a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet.
+ Exportálandó blobok megadásával kapcsolatos további információkért lásd: a [Put feladat](/rest/api/storageimportexport/jobs) műveletet.
 
 ## <a name="obtaining-your-shipping-location"></a>A szállítási címhez tartozó hely beszerzése
 Exportálási feladat létrehozása előtt be kell szereznie egy szállítási hely nevét és címét meghívásával a [beolvasása hely](https://portal.azure.com) vagy [lista helyek](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) műveletet. `List Locations` helyek és a levelezési címét listáját adja vissza. Válasszon egy helyet a visszaadott listában, és arra a címre rögzített meghajtók kiszállítása. Is használhatja a `Get Location` művelet egy konkrét hely a szállítási cím közvetlenül beszerzése.
 
 A szállítási címhez tartozó hely beszerzése az alábbi lépésekkel:
 
--   Azonosítsa a helyet a tárfiók nevére. Ez az érték alatt található a **hely** a storage-fiókban található **irányítópult** az Azure portal vagy a service management API művelet használatával lekérdezett [Storage-fiók beszerzése Tulajdonságok](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Azonosítsa a helyet a tárfiók nevére. Ez az érték alatt található a **hely** a storage-fiókban található **irányítópult** az Azure portal vagy a service management API művelet használatával lekérdezett [Storage-fiók beszerzése Tulajdonságok](/rest/api/storagerp/storageaccounts).
 
 -   Elérhető feldolgozni ezt a tárfiókot meghívásával helyének beolvasásához a `Get Location` műveletet.
 
 -   Ha a `AlternateLocations` helye tulajdonsága tartalmaz magát a helyet, akkor már használja ezt a helyet. Ellenkező esetben hívja a `Get Location` a másodlagos helyek újra a műveletet. Az eredeti helyre ideiglenesen megtakarítása karbantartás céljából.
 
 ## <a name="creating-the-export-job"></a>Az exportálási feladat létrehozása
- Az exportálási feladat létrehozásához hívja a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet. Adja meg a következő információkat kell:
+ Az exportálási feladat létrehozásához hívja a [Put feladat](/rest/api/storageimportexport/jobs) műveletet. Adja meg a következő információkat kell:
 
 -   A feladat nevét.
 
@@ -82,10 +82,10 @@ A szállítási címhez tartozó hely beszerzése az alábbi lépésekkel:
 >  Meg kell egy támogatott szolgáltató szolgáltatással, amely a csomag biztosít egy nyomkövetési azonosító szám meghajtók kiszállítása.
 
 ## <a name="updating-the-export-job-with-your-package-information"></a>Az exportálási feladat frissítése a csomaginformációkat használva
- Miután a nyomkövetési azonosító szám, hívja a [feladat tulajdonságainak](/rest/api/storageimportexport/jobs#Jobs_Update) művelet frissíti a szállító nevét és követési szám a feladathoz. Opcionálisan megadhatja a meghajtók, a feladó címe és a szállítási címhez tartozó dátumot is számát.
+ Miután a nyomkövetési azonosító szám, hívja a [feladat tulajdonságainak](/rest/api/storageimportexport/jobs) művelet frissíti a szállító nevét és követési szám a feladathoz. Opcionálisan megadhatja a meghajtók, a feladó címe és a szállítási címhez tartozó dátumot is számát.
 
 ## <a name="receiving-the-package"></a>A csomag fogadása
- Az exportálási feladat feldolgozása után a meghajtók visszatér, a titkosított adatok. Kérheti le a BitLocker-kulcsot a meghajtókhoz meghívásával a [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) műveletet. Ezután fel is oldhatja a meghajtó a kulccsal. A meghajtó jegyzékfájl egyes meghajtókon tartalmazza azokat a fájlokat a meghajtó, valamint az eredeti blob-címet az összes fájl esetében.
+ Az exportálási feladat feldolgozása után a meghajtók visszatér, a titkosított adatok. Kérheti le a BitLocker-kulcsot a meghajtókhoz meghívásával a [Get Job](/rest/api/storageimportexport/jobs) műveletet. Ezután fel is oldhatja a meghajtó a kulccsal. A meghajtó jegyzékfájl egyes meghajtókon tartalmazza azokat a fájlokat a meghajtó, valamint az eredeti blob-címet az összes fájl esetében.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

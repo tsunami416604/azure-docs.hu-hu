@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 4207698c57b907cf60fd860bc409c8f8d5a4c565
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f4da0f992914037f5c95050324af5762e90a2ca4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015287"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696822"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Létrehozása, módosítása vagy törlése egy nyilvános IP-cím előtagja
 
@@ -60,13 +60,13 @@ Nyilvános IP-címelőtagokat díj rendelkezik. További információkért lásd
 |Eszköz|Parancs|
 |---|---|
 |parancssori felület|[az network public-IP-előtag létrehozása](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
-|PowerShell|[Új AzureRmPublicIpPrefix](/powershell/module/azurerm.network/new-azurermpublicipprefix)|
+|PowerShell|[New-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/new-azurermpublicipprefix)|
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Hozzon létre egy statikus nyilvános IP-címet az előtag
 Miután létrehozta az előtag, az előtag a statikus IP-címeket kell létrehoznia. Ehhez kövesse az alábbi lépéseket.
 
 1. A szöveget tartalmazó mezőbe *erőforrások keresése* írja be az Azure portal tetején *nyilvános ip-címelőtag*. Amikor **nyilvános IP-címelőtagokat** jelennek meg a keresési eredmények közül válassza ki azt.
-2. Válassza ki a nyilvános IP-címek a létrehozni kívánt prefx.
+2. Válassza ki a nyilvános IP-címek a létrehozni kívánt előtagot.
 3. Amikor megjelenik a keresési eredmények között, válassza ki, és kattintson a **+ IP-cím hozzáadása** az Áttekintés szakaszban. Abban az esetben ez nem látható, ellenőrizze, hogy előzetes használja a megfelelő hivatkozásra: https://aka.ms/publicipprefixportal
 4. Adja meg vagy válassza ki a következő beállítások alatt értékeket **nyilvános IP-cím létrehozása**. Mivel egy előtagot a Standard Termékváltozat, IPv4, és a statikus, csak adja meg a következő információkat kell:
 
@@ -74,7 +74,7 @@ Miután létrehozta az előtag, az előtag a statikus IP-címeket kell létrehoz
     |---|---|---|
     |Name (Név)|Igen|A nyilvános IP-cím nevére, válassza ki az erőforráscsoporton belül egyedinek kell lennie.|
    |Üresjárat időkorlátja (perc)|Nem|Hány perc a TCP- vagy HTTP-kapcsolat nyitva tartása anélkül, hogy az ügyfelek életben tartási üzenetek küldéséhez. |
-   |DNS-névcímke|Nem|(Között az összes előfizetés és az összes ügyfél) a nevét a hoz létre az Azure-régión belül egyedinek kell lennie. Az Azure automatikusan regisztrálja a nevét és IP-cím a DNS-ben úgy csatlakozhat a nevű erőforrás. Azure hozzáfűz egy alapértelmezett alhálózat például *location.cloudapp.azure.com* (ahol a helye az választja) nevet ad meg, hozhat létre teljesen minősített DNS-neve. További információkért lásd: [használata az Azure DNS az Azure nyilvános IP-címet](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
+   |DNS name label|Nem|(Között az összes előfizetés és az összes ügyfél) a nevét a hoz létre az Azure-régión belül egyedinek kell lennie. Az Azure automatikusan regisztrálja a nevét és IP-cím a DNS-ben úgy csatlakozhat a nevű erőforrás. Azure hozzáfűz egy alapértelmezett alhálózat például *location.cloudapp.azure.com* (ahol a helye az választja) nevet ad meg, hozhat létre teljesen minősített DNS-neve. További információkért lásd: [használata az Azure DNS az Azure nyilvános IP-címet](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
 ## <a name="view-or-delete-a-prefix"></a>Megtekintése és törlése előtag
 

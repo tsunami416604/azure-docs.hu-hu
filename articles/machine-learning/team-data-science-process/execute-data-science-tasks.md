@@ -10,19 +10,19 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 51d76e16e93ccffc1a069e64808563d62f428dbf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9d8ae3a95262b1554e7e97fac8375a44743bf4df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476349"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731461"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Adatelemzési műveletek végrehajtása: feltárás, modellezés és üzembe helyezés
 
 Jellemzően milyen adattudományos feladatokat tartalmazza az adatfeltárás, modellezés és üzembe helyezés. Ez a cikk bemutatja, hogyan használhatja a **interaktív Adatkutatási, elemzési és jelentéskészítési (IDEAR)** és **automatikus modellezési és jelentéskészítési (AMAR)** segédprogramok számos gyakori adatelemzési feladatok végrehajtásához például az interaktív adatkutatási, adatelemzés, jelentés és modell létrehozásához. Azt is ismerteti lehetőségei a különböző eszközökre és az adatok platformok, például a következő ad éles környezetben üzembe helyezéséhez:
 
 - [Azure Machine Learning](../service/index.yml)
-- [SQL-Server ML szolgáltatásokkal](https://docs.microsoft.com/sql/advanced-analytics/r/r-services#in-database-analytics-with-sql-server)
+- [SQL-Server ML szolgáltatásokkal](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 

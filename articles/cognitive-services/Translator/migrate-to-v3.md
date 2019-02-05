@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/27/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 6fa468308bb7187111a6f7f65366d83eaadd9494
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7f5dfd9488e6017acfdf66cdb7d4cee3aedd1ab3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227777"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699924"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
@@ -109,7 +109,7 @@ Globális
 
 A Microsoft Translator V3 Neurális gépi fordítás alapértelmezés szerint használ. Ezért nem használható a Microsoft Translator hubbal. A Translator Hub csak az örökölt statisztikai gépi fordítási támogatja. Neurális fordítással testreszabásának már elérhető az egyéni translatorral. [További tudnivalók a Neurális gépi fordítás testreszabása](custom-translator/overview.md)
 
-API v3-as szöveggel Neurális fordítással nem támogatja a standard szintű kategóriák (SMT, beszédfelismerés, szöveg, generalnn) használatát.
+API v3-as szöveggel Neurális fordítással nem támogatja a standard szintű kategóriák (SMT, beszédfelismerés, technológiai, generalnn) használatát.
 
 | |Végpont|    GDPR-megfelelőség processzor|  Use Translator Hub| Egyéni Translator (előzetes verzió) használata|
 |:-----|:-----|:-----|:-----|:-----|

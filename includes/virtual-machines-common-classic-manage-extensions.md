@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d14cfb82ae74f85425dbd3e8a365e8b99969641d
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227250"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735906"
 ---
 ## <a name="using-vm-extensions"></a>Virtuálisgép-bővítmények használatával
 Az Azure Virtuálisgép-bővítmények megvalósítása viselkedések vagy szolgáltatásokat vagy más Azure-beli virtuális gépeken működik programok (például a **WebDeployForVSDevTest** bővítmény lehetővé teszi, hogy a Visual Studio, a Web Deploy-megoldások az Azure virtuális gép), vagy adja meg a arra, hogy az, hogy a virtuális gép interakcióba néhány egyéb viselkedés támogatásához (például használhatja a Virtuálisgép-hozzáférési extensions, PowerShell, az Azure CLI és REST-ügyfelek visszaállítása vagy távoli hozzáférés értékek módosítása az Azure virtuális gépen).
@@ -22,7 +22,7 @@ Az Azure Virtuálisgép-bővítmények megvalósítása viselkedések vagy szolg
 A leggyakoribb feladatok a következők:
 
 1. Elérhető bővítmények keresése
-2. A betöltött bővítmények frissítése
+2. Updating Loaded Extensions
 3. Bővítmények hozzáadása
 4. Bővítmények eltávolítása
 

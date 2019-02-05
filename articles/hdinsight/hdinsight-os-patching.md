@@ -8,25 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: 402a4d59b57803b8a9c0094799ceee6a92df43f9
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: ef57608d092c05b30be63a54bb41ba87558eabc3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911353"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694618"
 ---
 # <a name="os-patching-for-hdinsight"></a>Operációs rendszer javításai a HDInsight 
 
 > [!IMPORTANT]
-> Ubuntu-rendszerképek válnak elérhetővé az új HDInsight-fürt létrehozása közzétehető 3 hónapon belül. Január a 2019-tól futó fürtök vannak **nem** automatikus tudjon fókuszálni. Ügyfeleink a futó fürt javítására irányuló szkriptműveletek vagy más mechanizmusok kell használnia.
+> Ubuntu-rendszerképek válnak elérhetővé az új HDInsight-fürt létrehozása közzétehető 3 hónapon belül. Január a 2019-tól futó fürtök vannak **nem** automatikus tudjon fókuszálni. Ügyfeleink a futó fürt javítására irányuló szkriptműveletek vagy más mechanizmusok kell használnia. Újonnan létrehozott fürtök mindig a legújabb elérhető frissítések, többek között a legújabb biztonsági javítások tartozik.
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Az operációs rendszer javítási ütemezése a Linux-alapú HDInsight-fürtök konfigurálása
-Egy HDInsight-fürtön lévő virtuális gépek kell alkalmanként indítani, hogy fontos biztonsági javításokat is telepíthető. 2016. augusztus 1. új Linux-alapú HDInsight-fürtök (3.4-es vagy újabb verzió) újraindulásakor az alábbi ütemezés:
-
-1. A fürt egy virtuális gépet is csak indítsa újra a javítások legfeljebb egyszer egy 30 napos időtartamon belül.
-2. Az újraindítás megtörténik induló 12 AM (UTC).
-3. Az újraindítás folyamatban van egyenletesen elosztani a fürtben lévő virtuális gépek között, ezért az újraindítás során a fürt továbbra is elérhető.
-4. Az újonnan létrehozott fürt első újraindítás nem történik meg a fürt létrehozást követően 30 napnál hamarabb.
+Egy HDInsight-fürtön lévő virtuális gépek kell alkalmanként indítani, hogy fontos biztonsági javításokat is telepíthető. 
 
 A jelen cikkben ismertetett szkriptműveletek használatával, módosíthatja az operációs rendszer következő javítási ütemezése:
 1. Engedélyezi vagy letiltja az automatikus újraindítások

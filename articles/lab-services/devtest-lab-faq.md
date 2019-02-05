@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b5ad6321a41c84928cbc6f8c51c4f5fe3567410f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 23066339ffcb0b8b3c7885ad24c6c3d136629ab2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262029"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700028"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Az Azure DevTest Labs kapcsolatos leggyakoribb kérdésekre adott válaszok.
@@ -58,14 +58,14 @@ DevTest Labs szolgáltatás ingyenes. Tesztkörnyezetek létrehozása és konfig
 ## <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Mik azok a különböző biztonsági szintek a DevTest Labs?
 Határozza meg biztonsági hozzáférési [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/built-in-roles.md). Ha szeretné megtudni, hogyan működik a hozzáférés, segít a engedélyt, a szerepkör és egy hatókör közötti különbségekről további RBAC szerint.
 
-* **Engedély**: engedély egy meghatározott hozzáférést egy adott művelet. Például egy engedély az olvasási hozzáférést minden virtuális gép lehet.
+* **Engedély**: Engedély egy meghatározott hozzáférést egy adott művelet. Például egy engedély az olvasási hozzáférést minden virtuális gép lehet.
 * **Szerepkör**: A szerepkör az vannak csoportosítva, és a felhasználóhoz rendelt engedélyek egy készletét. Ha például egy előfizetés-tulajdonosi szerepkörrel rendelkező felhasználó hozzáfér egy előfizetésen belüli összes erőforrás.
-* **Hatókör**: egy hatókör egy Azure-erőforrás a hierarchiában szintet. A hatókör lehet például egy erőforráscsoport, egy egyetlen labor vagy a teljes előfizetés.
+* **Hatókör**: A hatókör egy Azure-erőforrás a hierarchiában egy szint. A hatókör lehet például egy erőforráscsoport, egy egyetlen labor vagy a teljes előfizetés.
 
 DevTest Labs hatókörén belül van, amelyek meghatározzák a felhasználói engedélyek szerepkörök két típusa:
 
-* **Labor tulajdonosa**: A tesztkörnyezet tulajdonosa erőforrásokhoz való teljes hozzáférés a tesztkörnyezetben. Egy tesztlabor tulajdonosa is szabályzatok módosításához, olvasni és írni az olyan virtuális gépek, módosítsa a virtuális hálózat, és így tovább.
-* **Lab-felhasználó**: lab-felhasználó minden labor-erőforrásokat, például a virtuális gépek, a házirendek és a virtuális hálózatok tekintheti meg. De a lab-felhasználó nem módosítható, szabályzatok, vagy bármely más felhasználók által létrehozott virtuális gépek. 
+* **Labor tulajdonosa**: A lab tulajdonosa erőforrásokhoz való teljes hozzáférés a tesztkörnyezetben. Egy tesztlabor tulajdonosa is szabályzatok módosításához, olvasni és írni az olyan virtuális gépek, módosítsa a virtuális hálózat, és így tovább.
+* **Lab-felhasználó**: A lab felhasználói megtekinthetik minden labor-erőforrásokat, például a virtuális gépek, a házirendek és a virtuális hálózatok. De a lab-felhasználó nem módosítható, szabályzatok, vagy bármely más felhasználók által létrehozott virtuális gépek. 
 
 Egyéni szerepkörök a DevTest Labs szolgáltatásban hozhat létre. Egyéni szerepkörök létrehozása a DevTest Labs szolgáltatásban létrehozott kapcsolatban lásd: [felhasználó engedélyeket adott laborszabályzatok](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
@@ -227,7 +227,7 @@ Több lehetősége, hogy a virtuális hálózat neve pontokat tartalmaz. Ha igen
 ## <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Miért kapok egy "Szülőerőforrás nem található" hiba történt, amikor egy virtuális Gépet a PowerShell üzembe helyezhető?
 Ha egy erőforrás egy másik erőforrás szülő, a szülő erőforrás léteznie kell a gyermek-erőforrás létrehozása előtt. Ha a szülő erőforrás nem létezik, akkor tekintse meg a **ParentResourceNotFound** üzenet. Ha nem ad meg egy függőség az erőforráson, a gyermek-erőforrás előfordulhat, hogy a szülő előtt telepíteni.
 
-Virtuális gépek gyermek erőforrásokat egy erőforráscsoportba tartozó labor csoportban. Virtuális gépek üzembe helyezése a PowerShell használatával a Resource Manager-sablonok használatával, ha az a PowerShell-parancsfájl a megadott erőforráscsoport-név a labor létrehozása az erőforráscsoport nevének kell lennie. További információkért lásd: [gyakori Azure üzembehelyezési hibák elhárítása](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound).
+Virtuális gépek gyermek erőforrásokat egy erőforráscsoportba tartozó labor csoportban. Virtuális gépek üzembe helyezése a PowerShell használatával a Resource Manager-sablonok használatával, ha az a PowerShell-parancsfájl a megadott erőforráscsoport-név a labor létrehozása az erőforráscsoport nevének kell lennie. További információkért lásd: [gyakori Azure üzembehelyezési hibák elhárítása](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors).
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Hol találhatok további hibainformációk, ha egy virtuális gép telepítése sikertelen?
 Virtuális gép üzembe helyezési hibák tevékenységeket tartalmazó naplók rögzíti a rendszer. Lab VM tevékenységeket tartalmazó naplók alapján is megtalálhatja **Auditnaplók** vagy **virtuális gép diagnosztikai** az erőforrás menüben a labor virtuális gép panelen (a panel jelenik meg, miután kiválasztotta a virtuális gépről a **saját virtuális gépek** lista).

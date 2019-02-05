@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 5cbe0c5e86a1dfd8cc3cb374f0ae7e1c67ae9d77
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 302445038dc9767bd412e232f62fc5249a1a7f09
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828298"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696947"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Ajánlott eljárásokat, és állítsa be a hálózati, számítási feladatok migrálása az Azure-bA
 
@@ -72,7 +72,7 @@ A következőket ajánljuk figyelmébe:
 **tudj meg többet:**
 
 - [További információ](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) egy küllős topológiában.
-- A futó Azure hálózati javaslatok [Windows](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm#network-recommendations) és [Linux](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/linux-vm#network-recommendations) virtuális gépeket.
+- A futó Azure hálózati javaslatok [Windows](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm) és [Linux](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/linux-vm) virtuális gépeket.
 - [Ismerje meg](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuális hálózatok közötti társviszony-létesítés.
 
 

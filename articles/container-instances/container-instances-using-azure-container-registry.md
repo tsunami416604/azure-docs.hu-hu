@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 33cf6650de757f538dcefc858c94fa71b434ec80
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f577a7dd9f517be6ab7b632a82227e4807862ba5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064644"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727908"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Az Azure Container Instances szolgáltatásban az Azure Container Registry üzembe helyezése
 
@@ -29,7 +29,7 @@ ms.locfileid: "54064644"
 
 A semmilyen éles telepítési forgatókönyvhöz egy Azure container registrybe hozzáférést kell biztosítani a [egyszerű szolgáltatások](../container-registry/container-registry-auth-service-principal.md). Az egyszerű szolgáltatások lehetővé teszik, hogy [szerepköralapú hozzáférés-vezérlés](../container-registry/container-registry-roles.md) , a tárolórendszerképeket. Konfigurálhat például egy olyan szolgáltatásnevet, amely csak lekérés céljából férhet hozzá a regisztrációs adatbázishoz.
 
-Ebben a szakaszban egy Azure key vault és a egy egyszerű szolgáltatás létrehozásához, és a szolgáltatásnév hitelesítő adatainak tárolása a tárolóban.
+A következő szakaszban hozzon létre egy Azure key vault és a egy egyszerű szolgáltatást, és a szolgáltatásnév hitelesítő adatainak tárolása a tárolóban. 
 
 ### <a name="create-key-vault"></a>Kulcstároló létrehozása
 
@@ -134,9 +134,11 @@ További információ az Azure Key Vault titkos kulcsainak Resource Manager-sabl
 
 ## <a name="deploy-with-azure-portal"></a>Üzembe helyezés az Azure portállal
 
-Ha a tárolólemezképeket az Azure Container Registry, az Azure Container Instances szolgáltatásban az Azure portal használatával egyszerűen létrehozhat egy tárolót.
+Ha a tárolólemezképeket az Azure container registry, az Azure Container Instances szolgáltatásban az Azure portal használatával egyszerűen létrehozhat egy tárolót. A portálon történő üzembe helyezéséhez a tárolóregisztrációs adatbázisból használatakor engedélyeznie kell a tárolójegyzék [rendszergazdai fiók](../container-registry/container-registry-authentication.md#admin-account). A rendszergazdai fiók egy egyetlen felhasználó hozzáférni a beállításjegyzékhez, elsősorban a tesztelési célokra tervezték. 
 
 1. Az Azure Portalon lépjen a tárolóregisztrációs adatbázisba.
+
+1. Győződjön meg arról, hogy engedélyezve van-e a rendszergazdai fiók, jelölje be **hozzáférési kulcsok**, majd a **rendszergazdai felhasználó** kiválasztása **engedélyezése**.
 
 1. Válassza ki **Tárházak**, majd válassza ki a tárház üzembe helyezés, a kívánt kattintson a jobb gombbal a tárolórendszerkép üzembe helyezése, és válassza ki a kívánt címkéjének **példány futtatásához**.
 

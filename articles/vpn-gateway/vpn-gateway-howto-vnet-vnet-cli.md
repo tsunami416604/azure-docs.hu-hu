@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: dda4f68046b81d96cfe92d5e8b09eab23df0003b
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: e26ae189b6b0bdcbfdcf225772cb3fd0361abca2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846309"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698989"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása az Azure CLI használatával
 
@@ -140,7 +140,7 @@ A példákban a következő értékeket használjuk:
   ```azurecli
   az network vnet create -n TestVNet1 -g TestRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24
   ```
-3. Hozzon létre egy új címteret a háttérrendszer alhálózatának. Megfigyelheti, hogy ebben a lépésben a korábban létrehozott címteret és a hozzáadni kívánt új címteret is meghatározzuk. Ennek az az oka, hogy az [az network vnet update](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_update) parancs felülírja az előző beállításokat. Győződjön meg róla, hogy a parancs használatakor az összes címelőtagot meghatározza.
+3. Hozzon létre egy új címteret a háttérrendszer alhálózatának. Megfigyelheti, hogy ebben a lépésben a korábban létrehozott címteret és a hozzáadni kívánt új címteret is meghatározzuk. Ennek az az oka, hogy az [az network vnet update](https://docs.microsoft.com/cli/azure/network/vnet) parancs felülírja az előző beállításokat. Győződjön meg róla, hogy a parancs használatakor az összes címelőtagot meghatározza.
 
   ```azurecli
   az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestRG1
@@ -384,5 +384,5 @@ Ez a lépés két CLI-munkamenetre van felosztva, amelyek jelölése **[1. előf
 
 ## <a name="next-steps"></a>További lépések
 
-* Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért tekintse meg a [Virtual Machines-dokumentációt](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+* Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért tekintse meg a [Virtual Machines-dokumentációt](https://docs.microsoft.com/azure/).
 * Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).

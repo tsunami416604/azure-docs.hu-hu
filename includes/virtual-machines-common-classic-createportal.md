@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 127ade3b37380c50461c5b648265b431a2f4467e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227283"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735780"
 ---
 Az *egyéni* virtuális gép egyszerűen egy olyan virtuális gép, amelyet a **Marketplace** egy **kiemelt alkalmazásával** hoz létre, mert elvégzi a munka oroszlánrészét Ön helyett. Emellett továbbra is több konfigurációs lehetőség közül választhat. Ezek többek között a következők:
 

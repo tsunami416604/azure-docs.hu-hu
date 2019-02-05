@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 93370b927f825752b8ce2b5e9d4ca94b3a4e0536
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 574c295c3b44d0c6146c852777f2bef3ad13ecdd
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664182"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697918"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-naplózás
 
@@ -196,7 +196,7 @@ A hálózati naplózás és figyelés az Azure-ban átfogó, és két tág kateg
 
 * [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Forgatókönyv-alapú hálózatfigyelési biztosítunk a Network Watcher funkciókat. A szolgáltatás része, csomagrögzítés, következő ugrási, IP-folyamat ellenőrzése, a biztonsági csoport nézet NSG-Folyamatnaplók. Forgatókönyv szintű monitorozása biztosítja a teljes körű képet szakembereket egyes hálózati erőforrások monitorozása a hálózati erőforrásokhoz.
 
-* [Erőforrások monitorozása](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): Erőforrás-szolgáltatói figyelése magában foglalja a négy funkciók, diagnosztikai naplók, metrikák, hibaelhárítási és a resource health. Ezek a szolgáltatások beépített a hálózati erőforrás szintjén.
+* [Erőforrások monitorozása](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Erőforrás-szolgáltatói figyelése magában foglalja a négy funkciók, diagnosztikai naplók, metrikák, hibaelhárítási és a resource health. Ezek a szolgáltatások beépített a hálózati erőforrás szintjén.
 
 ![Az Azure hálózati naplók](./media/azure-log-audit/azure-log-audit-fig4.png)
 
@@ -238,7 +238,7 @@ A korábban említett naplózási képességek mellett a Network Watcher jelenle
 
 * [Virtuális hálózati átjáró és a kapcsolat hibaelhárítási](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Segít a virtuális hálózati átjárók és kapcsolatok hibaelhárítása.
 
-* [Hálózati előfizetési korlátozásait](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): Lehetővé teszi, hogy a hálózati erőforrás-használati korlátozások megtekintése.
+* [Hálózati előfizetési korlátozásait](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Lehetővé teszi, hogy a hálózati erőforrás-használati korlátozások megtekintése.
 
 ### <a name="application-insights"></a>Application Insights
 

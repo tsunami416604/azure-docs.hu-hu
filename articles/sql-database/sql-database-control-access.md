@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6153fbdb6e085d1c817fac5db5eddb5e2c6ae7fa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: 8cb044397cf439e97f3630b5c1c3f53fbf3f356d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465440"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729923"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Az Azure SQL Database és az SQL Data Warehouse hozzáférés-vezérlés
 
@@ -34,7 +34,7 @@ Az Azure SQL Database szolgáltatás kizárólag a 1433-as TCP-porton keresztül
 
 A kapcsolódási folyamat részeként az Azure virtuális gépektől érkező kapcsolatok az egyes feldolgozói szerepkörök egyedi IP-címeire és portjaira lesznek átirányítva. A portszám a 11000-től 11999-ig terjedő tartományban található. TCP-portokkal kapcsolatos további információkért lásd: [ADO.NET 4.5 és a 2. a SQL adatbázis 1433-Ason túli](sql-database-develop-direct-route-ports-adonet-v12.md).
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Az SQL Database két hitelesítési típust támogat:
 
@@ -69,5 +69,5 @@ A `master` adatbázishoz általában csak a rendszergazdáknak kell hozzáférni
 - Az SQL Database biztonsági szolgáltatásairól [az SQL biztonsági szolgáltatásainak áttekintése](sql-database-security-overview.md) biztosít további információkat.
 - A tűzfalszabályokkal kapcsolatos további tudnivalókért lásd: [tűzfalszabályok](sql-database-firewall-configure.md).
 - Felhasználókkal és bejelentkezésekkel kapcsolatos információk: [Bejelentkezések kezelése](sql-database-manage-logins.md). 
-- A proaktív, lásd: [Database Auditing](sql-database-auditing.md) és [SQL Database Threat Detection](sql-database-threat-detection.md).
+- A proaktív, lásd: [Database Auditing](sql-database-auditing.md) és [SQL Database fenyegetésészlelési](sql-database-threat-detection.md).
 - Foglalkozó oktatóanyagért lásd: [biztonságossá tétele az Azure SQL Database](sql-database-security-tutorial.md).

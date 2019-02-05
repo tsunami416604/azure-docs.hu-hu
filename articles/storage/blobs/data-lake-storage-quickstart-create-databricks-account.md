@@ -8,12 +8,12 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 01/24/2019
-ms.openlocfilehash: cbd17ef81f5bcdf1c5c2f14f11388fd4f23e5da6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e5a1a17e60d73a041bf7850875287c753aeda16f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239919"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694167"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Gyors útmutató: Adatok elemzése az Azure Data Lake Storage Gen2 Azure Databricks használatával
 
@@ -29,15 +29,11 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 <a id="config"/>
 
-## <a name="set-aside-storage-account-configuration"></a>Tárfiók-konfiguráció feljegyzése
-
-Szüksége lesz a tárfiók és a egy rendszer végpont URI nevét.
+## <a name="get-the-name-of-your-storage-account"></a>A tárfiók nevét
 
 A tárfiók nevének lekérése az Azure Portalon, válassza ki a **minden szolgáltatás** és a kifejezést a szűrő *tárolási*. Ezután válassza ki **tárfiókok** , és keresse meg a storage-fiókjában.
 
-A rendszer végpont URI lekéréséhez válassza **tulajdonságok**, és a Tulajdonságok panelen keresse meg az értékét a **ADLS rendszer elsődleges VÉGPONT** mező.
-
-Illessze be mindkettőt ezeket az értékeket egy szövegfájlba. Szüksége lesz rájuk hamarosan.
+Illessze be ezt a nevet egy szövegfájlba. Szüksége lesz rá hamarosan.
 
 <a id="service-principal"/>
 
@@ -45,9 +41,7 @@ Illessze be mindkettőt ezeket az értékeket egy szövegfájlba. Szüksége les
 
 Ebben a témakörben található útmutatást követve hozzon létre egy egyszerű szolgáltatást: [Útmutató: A portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-Van néhány konkrét dolgot, mivel ebben a cikkben hajtsa végre a lépéseket kell.
-
-:heavy_check_mark: A lépések végrehajtásakor a [Azure Active Directory-alkalmazás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) szakasz a cikk, ügyeljen arra, hogy állítsa be a **bejelentkezési URL-** mezőjében a **létrehozás** párbeszédpanel a végpont URI-t, hogy nemrég összegyűjtött.
+Van néhány adott tudnivaló, mivel ebben a cikkben hajtsa végre a lépéseket kell.
 
 :heavy_check_mark: A lépések végrehajtásakor a [alkalmazások szerepkörhöz rendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszt a cikk, ügyeljen arra, hogy az alkalmazás hozzárendelése a **Blob Storage-közreműködői szerepkör**.
 
@@ -136,7 +130,7 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
     > [!NOTE]
     > A kódblokk közvetlenül hozzáfér a Data Lake Gen2 végpont OAuth használatával, de más módon való csatlakozáshoz a Data Lake Storage Gen2-fiókot a Databricks-munkaterület. Például sikerült csatlakoztathatja a fájlrendszert az OAuth használatával, vagy egy közvetlen hozzáférés használata a megosztott kulcsot. <br>Ezek a módszerek példák, olvassa el a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) a cikk az Azure Databricks webhelyén.
 
-5. A kódblokk, cserélje le a `storage-account-name`, `application-id`, `authentication-id`, és `tenant-id` lépéseinek végrehajtását összegyűjtött értékek a kódblokk a helyőrző értékeket a [félretett storage-fiók konfigurációs](#config) és [egyszerű szolgáltatás létrehozása](#service-principal) Ez a cikk szakaszainak.  Állítsa be a `file-system-name` nevét bármilyen, a helyőrző értékét szeretné adni a fájlrendszerben.
+5. A kódblokk, cserélje le a `storage-account-name`, `application-id`, `authentication-id`, és `tenant-id` lépéseinek végrehajtását összegyűjtött értékek a kódblokk a helyőrző értékeket az [a tárfiók nevét ](#config) és [egyszerű szolgáltatás létrehozása](#service-principal) Ez a cikk szakaszainak.  Állítsa be a `file-system-name` nevét bármilyen, a helyőrző értékét szeretné adni a fájlrendszerben.
 
 6. Nyomja le az **SHIFT + ENTER** kulcsok a kód futtatásához a blokk.
 

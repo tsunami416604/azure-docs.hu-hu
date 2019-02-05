@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
-ms.openlocfilehash: 3ad9308f3bc714ee2877627da8fdb328459b9fe4
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351949"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732328"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Az appsource-ban és a Piactér listaelem engedélyezése az Azure Active Directoryval
 
@@ -43,7 +43,7 @@ A különböző [lehetőségeket felsoroló, illetve az típusok](https://docs.m
 |  | Kapcsolatfelvétel | Próbaverzió | Tesztverzió | Tranzakció |
 | Virtuális gép | – | Nem | Nem | Nem |
 | Az Azure Apps (sablon)  | – | N/A | N/A | – |
-| Felügyelt alkalmazások  | – | N/A | – | Nem |
+| Managed Apps  | – | N/A | – | Nem |
 | SaaS  | Nem | Igen | Igen | Igen |
 | Containers  | – | N/A | – | Nem |
 | Tanácsadási szolgáltatások  | Nem | – | N/A | – |
@@ -59,7 +59,7 @@ Technikai SaaS-követelményeivel kapcsolatos további információkért lásd: 
 
 Automatizált ügyfél telepítő növelheti annak esélyét, az átalakítás. Amikor a próbakörnyezet a rendszer átirányítja az ügyfél választja ki a próbaverziós listázása, állíthat be az ügyfél közvetlenül a további bejelentkezési lépések nélkül.
 
-A hitelesítés során az Azure AD küld egy tokent az alkalmazásához vagy ajánlat. A felhasználói adatokat a token által biztosított lehetővé teszi az alkalmazás vagy az ajánlat lévő felhasználói fiók létrehozását. További tudnivalókért lásd: [jogkivonatok minta](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens).
+A hitelesítés során az Azure AD küld egy tokent az alkalmazásához vagy ajánlat. A felhasználói adatokat a token által biztosított lehetővé teszi az alkalmazás vagy az ajánlat lévő felhasználói fiók létrehozását. További tudnivalókért lásd: [jogkivonatok minta](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
 Ha Azure AD használata az alkalmazásban vagy a próbaverziós listázása, egyetlen kattintással hitelesítés engedélyezéséhez meg:
 

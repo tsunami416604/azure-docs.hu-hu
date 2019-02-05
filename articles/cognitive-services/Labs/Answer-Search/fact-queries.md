@@ -10,20 +10,20 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: b8358890658a38133452ba2092ac9b8b78114ff7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8402d0228e062aed60adee1c4622ade31771584d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210947"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700281"
 ---
 # <a name="quickstart-query-for-facts"></a>Gyors útmutató: A tények lekérdezés
 
 Ha a lekérdezés tényekre, például dátumokra vagy azonosítható ismeretanyagokra vonatkozik, a válasz `facts` (tény) válaszokat tartalmazhat. A tény válaszok webes dokumentumokból kivonatolt releváns eredményeket tartalmaznak.  Ezek a lekérdezések weblapokat minden esetben adnak vissza, [tényeket](fact-queries.md) és/vagy [entitásokat](entity-queries.md) pedig a lekérdezéstől függően.
 
-Az olyan lekérdezések, mint a valentin+2016, vagy a mikor+van+ramadán dátumra vonatkozó lekérdezésnek minősülnek. Ha a Bing megállapítja, hogy dátummal kapcsolatos lekérdezésről van szó, a válasz egy `facts` választ is tartalmaz. 
+Az olyan lekérdezések, mint a valentin+2016, vagy a mikor+van+ramadán dátumra vonatkozó lekérdezésnek minősülnek. Ha a Bing megállapítja, hogy dátummal kapcsolatos lekérdezésről van szó, a válasz egy `facts` választ is tartalmaz.
 
-A következő példa egy dátummal kapcsolatos `facts` válasz: 
+A következő példa egy dátummal kapcsolatos `facts` válasz:
 
 **Lekérdezés:**
 ```
@@ -34,28 +34,29 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 **Válasz:** A `subjectName` mező tartalmaz egy verzió megjelenítése a felhasználói lekérdezés, amely lehetővé teszi, az egy címkét a tény megjelenítésekor. Ha a lekérdezési sztring valentin+2016 volt, a Bing módosíthatja a Valentin-nap 2016 kifejezésre. A Leírás mező tartalmazza a tényt.
 
 ```
-{   
-    "_type" : "SearchResponse",   
-    "queryContext" : {   
-        "originalQuery" : "valentines 2016" 
-    },   
-    "facts" : {   
-        "id" : "https:\/\/www.bingapis.com\/api\/v7\/#Facts",   
-        "value" : [{   
-            "description" : "Valentine's Day was on Sunday, February 14, 2016.",   
-            "subjectName" : "Valentine's Day 2016"   
-        }]   
-    },   
-    "rankingResponse" : {   
-        "mainline" : {   
-            "items" : [{   
-                "answerType" : "Facts",   
-                "value" : {   
-                    "id" : "https:\/\/www.bingapis.com\/api\/v7\/knowledge\/#Facts"                   }   
-            }]   
-        }   
-    }   
-}   
+{
+    "_type" : "SearchResponse",
+    "queryContext" : {
+        "originalQuery" : "valentines 2016"
+    },
+    "facts" : {
+        "id" : "https:\/\/www.bingapis.com\/api\/v7\/#Facts",
+        "value" : [{
+            "description" : "Valentine's Day was on Sunday, February 14, 2016.",
+            "subjectName" : "Valentine's Day 2016"
+        }]
+    },
+    "rankingResponse" : {
+        "mainline" : {
+            "items" : [{
+                "answerType" : "Facts",
+                "value" : {
+                    "id" : "https:\/\/www.bingapis.com\/api\/v7\/knowledge\/#Facts"
+                }
+            }]
+        }
+    }
+}
 
 ```
 
@@ -118,7 +119,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 Egyes esetekben a rendszer a tényeket `_type: StructuredValue/TabularData` formájában, azaz strukturált táblázatos adatokként adja vissza. Az alábbi lekérdezésre a rendszer a kávéval és a teával kapcsolatos összehasonlító táblázatos adatokat ad vissza.
 
 ```
-https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
+https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us
 
 ```
 A `facts` találatok táblázata a következő sorokat és cellákat tartalmazza:

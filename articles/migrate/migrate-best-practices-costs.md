@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: b8ff1ae2f4c07dc59bd1ffb631378817493b96b0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 974ea5803b6e31ad8f940265071f41440d5355da
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995048"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700638"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Ajánlott eljárások a költségszámítás és méretezési számítási feladatok migrálása az Azure-bA
 
@@ -154,7 +154,7 @@ Az integrált Microsoft helyszíni/Azure-termék portfóliójának állít elő,
 
 - [Vessen egy pillantást](https://azure.microsoft.com/pricing/hybrid-benefit/) a Hybrid Benefit – megtakarítási Kalkulátor.
 - [További](https://azure.microsoft.com/pricing/hybrid-benefit/) Hybrid Benefit Windows Server kapcsolatban.
-- [Felülvizsgálat](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol) az SQL Server Azure virtuális gépek díjszabási útmutatóját.
+- [Felülvizsgálat](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) az SQL Server Azure virtuális gépek díjszabási útmutatóját.
 
 
 ## <a name="best-practice-use-reserved-vm-instances"></a>Ajánlott eljárás: Fenntartott VM-példányok használata
@@ -174,7 +174,7 @@ Azure Reserved VM instances használatával, akkor fizessen elő az egy vagy há
 **tudj meg többet:**
 - [Ismerje meg](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) Azure foglalásokat.
 - [Olvasási](https://azure.microsoft.com/pricing/reserved-vm-instances/#faq) a fenntartott példányok – gyakori kérdések.
-- [Útmutató díjszabási](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol) SQL Server Azure virtuális gépekhez.
+- [Útmutató díjszabási](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) SQL Server Azure virtuális gépekhez.
 
 
 ## <a name="best-practice-aggregate-cloud-spend-across-subscriptions"></a>Ajánlott eljárás: Összesített felhő költsége előfizetések között

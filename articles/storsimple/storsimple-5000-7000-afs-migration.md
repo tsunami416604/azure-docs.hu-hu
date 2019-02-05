@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: aad5b2d2e451f33a3f4f365fa0702eef5d698e4e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 18853d10c4acf1573772d72a8fb2c347cce545df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729163"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730169"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Az Azure File Sync át adatokat a StorSimple 5000-7000-es sorozat
 
@@ -56,8 +56,8 @@ Itt található az Azure File Sync az örökölt 5000 és 7000 sorozatú eszköz
 - StorSimple-kötetek csatlakoztatva vannak a gazdagépen, és fájlmegosztásokat tartalmaznak.
 - A gazdagép rendelkezik a megfelelő helyi tároló a helyi gyorsítótárban tárolt adatok tárolásához.
 - Tulajdonos szintű hozzáférés az Azure-előfizetést, amely segítségével az Azure File Sync üzembe helyezése. Problémákat tapasztalhat a felhőbeli végpont a szinkronizálási csoport létrehozásakor, ha nem rendelkezik tulajdonosi vagy a rendszergazdai szintű engedélyekkel.
-- A hozzáférést egy [általános célú v2-tárfiók](https://docs.microsoft.com/azure/storage/common/storage-account-overview) egy szinkronizálni kívánt Azure-fájlmegosztást. További információkért lásd: [hozzon létre egy tárfiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
- - Hogyan [hozzon létre egy Azure-fájlmegosztás](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share#create-file-share-through-the-azure-portal).
+- A hozzáférést egy [általános célú v2-tárfiók](https://docs.microsoft.com/azure/storage/common/storage-account-overview) egy szinkronizálni kívánt Azure-fájlmegosztást. További információ: [Tárfiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+ - Hogyan [hozzon létre egy Azure-fájlmegosztás](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 
 ## <a name="migration-process"></a>Áttelepítési folyamat
 
@@ -87,7 +87,7 @@ A következő lépésekkel migrálása az Azure File Sync megosztások a StorSim
     Kihagyhatja ezt a lépést, és folytassa a következő lépés egy másik Windows Server-állomás használata. Az azonos Windows-fájlkiszolgáló AFS használ, ha néhány perc alatt az állásidő most fog tapasztalni. 
     - **A leállás akkor kezdődik** –, amelyet a kiszolgálói végpont törlése *. lépés: 1F*. 
     - Hozzon létre egy új kiszolgálói végpontok az elérési utat, ahol azt szeretné, hogy az adatok tárolási bevezetése előre.
-    - Miután a kiszolgálói végpont állapota kifogástalan (Ez eltarthat néhány percig), látni fogja az adatokat az új helyen. Most konfigurálhatja a Windows Server-gazdagép, az új helyen levő fájlok kiszolgálása érdekében.\ -  **Állásidő vége**.
+    - Miután a kiszolgálói végpont állapota kifogástalan (Ez eltarthat néhány percig), látni fogja az adatokat az új helyen. Most konfigurálhatja a Windows Server-gazdagép, az új helyen levő fájlok kiszolgálása érdekében. -  **Állásidő vége**.
 5.  Ha egy másik Windows-fájlkiszolgáló használ az Azure File Sync, ezután nem fog tapasztalni okoz állásidőt. 
     - Adjon hozzá egy másik kiszolgálói végpont elérési útját a helyi tároló, azaz használata helyett a StorSimple-eszköz gyorsítótárként felkészült. 
     - Néhány perc alatt az új kiszolgálón lévő fájlok látni fogja. Szabadon győződjön meg arról, a Váltás az új helyet a gazdagépen a StorSimple-eszközről, bármikor.

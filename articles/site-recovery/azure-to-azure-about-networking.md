@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: f48283222f5c5d3b18d3dba17c2856801856fb94
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 49b5ef6b0dca32baaf05959cc29bb2a8024b6d04
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992115"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693989"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Hálózatkezelés az Azure-bA replikációs kapcsolatban
 
@@ -99,7 +99,8 @@ Site Recovery IP-címtartományok a következők:
    Korea déli régiója | 52.231.298.185 | 52.231.200.144
    Közép-Franciaország | 52.143.138.106 | 52.143.136.55
    Dél-Franciaország | 52.136.139.227 |52.136.136.62
-
+   Ausztrália középső| 20.36.34.70 | 20.36.46.142
+   Ausztrália 2. középső régiója| 20.36.69.62 | 20.36.74.130
 
 ## <a name="example-nsg-configuration"></a>Az NSG konfigurálása – példa
 
@@ -112,7 +113,7 @@ Ez a példa bemutatja egy virtuális gép replikálása NSG-szabályok konfigur�
 
 1. HTTPS (443) kimenő biztonsági szabály létrehozása "Storage.EastUS" az NSG-t az alábbi képernyőképen látható módon.
 
-      ![Storage-címke](./media/azure-to-azure-about-networking/storage-tag.png)
+      ![storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
 
 2. HTTPS (443) kimenő biztonsági szabály létrehozása "AzureActiveDirectory" az NSG-t az alábbi képernyőképen látható módon.
 
@@ -147,7 +148,7 @@ Létrehozhat egy hálózati végpontot a virtuális hálózat "Tároló" úgy, h
 
 - Válassza ki az Azure virtuális hálózatot, majd kattintson a "szolgáltatásvégpontokkal:
 
-    ![Storage-végpont](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
+    ![storage-endpoint](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
 
 - Kattintson a "Hozzáadás" és "Szolgáltatásvégpontok hozzáadása" lap megnyitása
 - Válassza ki a "Microsoft.Storage" a "Service" és "Alhálózatok" mező mellett a szükséges alhálózatokat, és kattintson a "Hozzáadás" gombra

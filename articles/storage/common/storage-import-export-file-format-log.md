@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: cd3ae85e88151e234d42a29ad871a18c7829b05c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454844"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697832"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Az Azure Import/Export szolgáltatás naplófájljainak formátuma
 Ha a Microsoft Azure Import/Export szolgáltatás végrehajt egy műveletet az importálási feladat vagy exportálási feladat részeként egy meghajtón, naplók írja a blokkblobok az adott feladathoz társított storage-fiókban.  
@@ -22,7 +22,7 @@ Nincsenek két naplók írhatók az importálási/exportálási szolgáltatás:
   
 -   Hiba esetén mindig jön létre a hibanaplót.  
   
--   A részletes napló alapértelmezés szerint nincs engedélyezve, de előfordulhat, hogy legyen engedélyezett, ha a `EnableVerboseLog` tulajdonsága egy [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) vagy [feladat tulajdonságainak](/rest/api/storageimportexport/jobs#Jobs_Update) műveletet.  
+-   A részletes napló alapértelmezés szerint nincs engedélyezve, de előfordulhat, hogy legyen engedélyezett, ha a `EnableVerboseLog` tulajdonsága egy [Put feladat](/rest/api/storageimportexport/jobs) vagy [feladat tulajdonságainak](/rest/api/storageimportexport/jobs) műveletet.  
   
 ## <a name="log-file-location"></a>Naplófájl helye  
 A naplók a tároló vagy a megadott virtuális könyvtár blokkblobok írt a `ImportExportStatesPath` beállítást, amellyel megadhatja azt a `Put Job` műveletet. A hely, amelyhez a naplók írt függ a hitelesítés hogyan van megadva a feladat a megadott együtt `ImportExportStatesPath`. A feladat hitelesítési tárfiókkulcs vagy a tároló SAS (közös hozzáférésű jogosultságkód) lehet megadni.  
@@ -38,7 +38,7 @@ Az alábbi táblázat a lehetséges beállítások:
 |Container SAS|Alapértelmezett érték|Nevű virtuális könyvtár `waimportexport`, amely az alapértelmezett nevet, a tároló SAS megadott alatt.<br /><br /> Például, ha a megadott SAS a feladat van `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, akkor válassza a napló helye `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
 |Container SAS|Felhasználó által megadott értéket|A felhasználó, a tároló SAS megadott alatt nevű virtuális könyvtárat.<br /><br /> Például, ha a megadott SAS a feladat van `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, és a megadott virtuális könyvtár neve `mylogblobs`, majd a napló helye lesz `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
   
-Meghívásával kérheti le a hibát, és a részletes naplók URL-CÍMÉT a [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet. A naplók a meghajtó feldolgozás befejeződése után érhetők el.  
+Meghívásával kérheti le a hibát, és a részletes naplók URL-CÍMÉT a [Get Job](/rest/api/storageimportexport/jobs) műveletet. A naplók a meghajtó feldolgozás befejeződése után érhetők el.  
   
 ## <a name="log-file-format"></a>Naplófájlformátum  
 Mindkét napló formátuma megegyezik: az események között a merevlemez és a felhasználói fiókhoz blobok másolása közben fellépő XML leírását tartalmazó blob.  

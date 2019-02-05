@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 99498646a65865add35ec4a86cb7a25b42dd5523
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 44ac4a5fd14d262fdbd1f6fcd36bb2351d08f754
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162191"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692442"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók az Azure Active Directory B2C-vel egyéni szabályzatok jogcím feloldók
 
@@ -136,7 +136,7 @@ Jogcím feloldók használja, megadhatja a bejelentkezési név vagy közvetlen 
 
 ### <a name="dynamic-ui-customization"></a>Felhasználói felület dinamikus testreszabása
 
-Azure AD B2C lehetővé teszi, hogy adja át a lekérdezési karakterlánc paraméterei a HTML tartalomdefiníció-végpontokra, hogy dinamikusan jelennek meg az oldal tartalmát. Ha például a háttérkép, amelyeket átad a webes vagy mobilalkalmazás egyéni paraméterérték alapján az Azure AD B2C-vel regisztrálási vagy bejelentkezési oldalon módosíthatja. További információkért lásd: [dinamikus konfigurálásához a felhasználói felület az Azure Active Directory B2C-vel egyéni szabályzatok használatával](active-directory-b2c-ui-customization-custom-dynamic.md). A HTML-oldalt, a nyelv paraméter alapján honosítható, vagy módosíthatja a tartalom alapján az ügyfél-azonosítót.
+Az Azure AD B2C lehetővé teszi, hogy adja át a lekérdezési karakterlánc paraméterei a HTML tartalomdefiníció-végpontokra, hogy dinamikusan jelennek meg az oldal tartalmát. Ha például a háttérkép, amelyeket átad a webes vagy mobilalkalmazás egyéni paraméterérték alapján az Azure AD B2C-vel regisztrálási vagy bejelentkezési oldalon módosíthatja. További információkért lásd: [dinamikus konfigurálásához a felhasználói felület az Azure Active Directory B2C-vel egyéni szabályzatok használatával](active-directory-b2c-ui-customization-custom-dynamic.md). A HTML-oldalt, a nyelv paraméter alapján honosítható, vagy módosíthatja a tartalom alapján az ügyfél-azonosítót.
 
 Az alábbi példában a rendszer átadja a lekérdezési karakterlánc nevű paraméter **campaignId** értékkel `hawaii`, amely egy **nyelvi** kódját `en-US`, és **alkalmazás** az ügyfél-Azonosítóját jelölő:
 

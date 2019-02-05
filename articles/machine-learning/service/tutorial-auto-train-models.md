@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: cd14f2bdc394cb0887d318457dcf9295e216eb7b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 419e2cd8444d391c15c55c60c1cf7e086470b848
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489495"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730970"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Automatizált gépi tanulás a regressziós modell létrehozása
 
@@ -34,7 +34,6 @@ Ebben az oktatóanyagban elsajátíthatja a következő feladatokat:
 > * Egy regressziós modell Autotrain.
 > * A modell helyileg futtassa egyéni paraméterekkel.
 > * Ismerje meg az eredményeket.
-> * Regisztrálja a legjobb modellt.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
 
@@ -783,7 +782,6 @@ for run in children:
     metrics = {k: v for k, v in run.get_metrics().items() if isinstance(v, float)}
     metricslist[int(properties['iteration'])] = metrics
 
-import pandas as pd
 rundata = pd.DataFrame(metricslist).sort_index(1)
 rundata
 ```
@@ -1217,6 +1215,5 @@ Az automatikus Machine learning oktatóanyagban tette a következő feladatokat:
 > * Konfigurált egy munkaterületet, és a egy kísérletet az előkészített adatok.
 > * Tanítása egy automatizált regressziós modell helyileg az egyéni paraméterekkel.
 > * Felderített és ellenőrzött képzési eredményeket.
-> * A legjobb modellt regisztrálva.
 
 [A modell üzembe helyezése](tutorial-deploy-models-with-aml.md) az Azure Machine Learning.

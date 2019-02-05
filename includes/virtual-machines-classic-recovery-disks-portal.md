@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 5490bdd3934b438a683ce4271fbec20b3d13735d
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226788"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735507"
 ---
 Ha az Azure-ban valamely virtuális gép (VM) indítási vagy lemezhibát észlel, előfordulhat, hogy magán a virtuális merevlemezen kell elvégeznie a hibaelhárítást. Egy gyakori példa erre, amikor egy sikertelen alkalmazásfrissítés megakadályozza, hogy a virtuális gép sikeresen elinduljon. A cikk leírja, hogyan csatlakoztathatja virtuális merevlemezét egy másik virtuális géphez az Azure Portal használatával a hibák javítása és az eredeti virtuális gép ismételt létrehozása érdekében.
 

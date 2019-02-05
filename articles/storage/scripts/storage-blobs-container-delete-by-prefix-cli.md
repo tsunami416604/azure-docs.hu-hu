@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: 85ee6505adafab9587f3583cd4c7182efcc43c11
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 01187a4dbcd8333f95cf20b5956b7b81559a19a8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853731"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730652"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Tárolók törlése a nevük előtagja alapján
 
@@ -49,10 +49,10 @@ A szkript a következő parancsokat használja a tárolók a nevük előtagja al
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy Azure Storage-fiókot a megadott erőforráscsoportban. |
-| [az storage container create](/cli/azure/storage/container#az_storage_container_create) | Létrehoz egy tárolót az Azure Blob Storage-ban. |
+| [az storage account create](/cli/azure/storage/account) | Létrehoz egy Azure Storage-fiókot a megadott erőforráscsoportban. |
+| [az storage container create](/cli/azure/storage/container) | Létrehoz egy tárolót az Azure Blob Storage-ban. |
 | [az storage container list](/cli/azure/storage/container) | Felsorolja egy Azure Storage-fiók tárolóit. |
-| [az storage container delete](/cli/azure/storage/container#az_storage_container_delete) | Törli egy Azure Storage-fiók tárolóit. |
+| [az storage container delete](/cli/azure/storage/container) | Törli egy Azure Storage-fiók tárolóit. |
 
 ## <a name="next-steps"></a>További lépések
 

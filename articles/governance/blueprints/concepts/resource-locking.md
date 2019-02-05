@@ -4,17 +4,17 @@ description: Ismerje meg az erőforrások védelme a tervezet hozzárendeléseko
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0e272f7137967b545269a408b6e83552de532682
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2e281896d45ada8010f24a1f18265a8cdd523d31
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309433"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696984"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Erőforrás zárolása az Azure-tervek ismertetése
 
@@ -22,28 +22,39 @@ A nagy mennyiségű egységes környezetet létrehozása csak akkor valóban a l
 
 ## <a name="locking-modes-and-states"></a>Zárolási mód és állapotok
 
-Zárolási mód vonatkozik a tervezet-hozzárendelést, és csak két pontot tartalmaz: **Nincs** vagy **összes erőforrás**. A zárolási mód tervezet-hozzárendelés során van konfigurálva, és nem módosítható, miután a hozzárendelés sikerült alkalmazni az előfizetéshez.
+Zárolási mód vonatkozik a tervezet-hozzárendelést, és azt a három pontot tartalmaz: **Ne zárolja**, **csak olvasható**, vagy **ne törölje a**. A zárolási mód összetevő üzembe helyezése során a tervezet-hozzárendelés során van konfigurálva. A tervezet-hozzárendelés frissítése egy másik zárolási mód is beállítható.
+Zárolás módok, azonban nem módosítható tervezetek kívül.
 
-A tervezet-hozzárendelést az összetevők által létrehozott erőforrásokat három állapota van: **Sok mindent megváltoztathat**, **csak olvasható**, vagy **nem Szerkesztés / Törlés**. Minden egyes összetevő lehet a **nincs zárolva** állapota. Van azonban, hogy nem erőforráscsoport összetevők **csak olvasható** és erőforráscsoportok **nem módosítása / törlése** állapotok. Ez a különbség fontos különbség az, hogy hogyan kezeli az ezekhez az erőforrásokhoz.
+A tervezet-hozzárendelést az összetevők által létrehozott erőforrások négy állapota van: **Sok mindent megváltoztathat**, **csak olvasható**, **nem Szerkesztés / Törlés**, vagy **nem lehet törölni**. Minden egyes összetevő típusa lehet a **nincs zárolva** állapota. Erőforrás állapotának megállapítása a következő táblázat használható:
 
-A **csak olvasható** állapota pontosan a meghatározott: az erőforrás nem módosítható bármilyen módon – nem végez módosítást, és nem törölhető. A **nem Szerkesztés / Törlés** erőforráscsoportok "container" jellege miatt több árnyalt. Az erőforrás-csoport objektum csak olvasható, de módosításokat nem zárolt erőforrások az erőforráscsoporton belül lehetséges.
+|Mód|Összetevő erőforrás típusa|Állapot|Leírás|
+|-|-|-|-|
+|Nincs zárolás|*|Nincs zárolva|Tervezetek nem védett erőforrásokat. Ebben az állapotban is szolgál az erőforrások hozzáadott egy **csak olvasható** vagy **ne törölje a** erőforrás csoport összetevő a tervezet-hozzárendelést kívül.|
+|Csak olvasási engedély|Erőforráscsoport|Cannot Edit / Delete|Az erőforráscsoport csak olvasható, és címkéket az erőforráscsoport nem módosítható. **Sok mindent megváltoztathat** erőforrások hozzáadva, áthelyezték, módosítható, vagy ez az erőforráscsoport törölve.|
+|Csak olvasási engedély|Nem-erőforráscsoport|Csak olvasási engedély|Az erőforrás nem módosítható bármilyen módon – nem végez módosítást, és nem törölhető.|
+|Do Not Delete|*|Cannot Delete|Az erőforrások is módosítható, de nem lehet törölni. **Sok mindent megváltoztathat** erőforrások hozzáadva, áthelyezték, módosítható, vagy ez az erőforráscsoport törölve.|
 
 ## <a name="overriding-locking-states"></a>Zárolási állapotok felülbírálása
 
-Általában lehetséges, ha valaki megfelelő [szerepköralapú hozzáférés-vezérlés](../../../role-based-access-control/overview.md) (RBAC) az előfizetésben, például a "Tulajdonos" szerepkört kell lehetővé tenni, hogy megváltoztatni vagy bármely erőforrás törlése. Ez a hozzáférés nem ez a helyzet, ha tervezetek érvényes részeként üzembe helyezett hozzárendelés zárolását. Ha a hozzárendelés állították be az a **zárolási** lehetőséget, még az előfizetés tulajdonosa tudja módosítani a bennefoglalt erőforrások.
+Általában lehetséges, ha valaki megfelelő [szerepköralapú hozzáférés-vezérlés](../../../role-based-access-control/overview.md) (RBAC) az előfizetésben, például a "Tulajdonos" szerepkört kell lehetővé tenni, hogy megváltoztatni vagy bármely erőforrás törlése. Ez a hozzáférés nem ez a helyzet, ha tervezetek érvényes részeként üzembe helyezett hozzárendelés zárolását. Ha a hozzárendelés állították be az a **csak olvasható** vagy **ne törölje** lehetőséget, még az előfizetés tulajdonosa a letiltott művelet hajtható végre, a védett erőforrás.
 
 Ez a biztonsági intézkedés védi a konzisztencia, a megadott tervezet és a környezet létrehozása a véletlen vagy programozott törlés vagy az megváltoztatására úgy lett kialakítva.
 
 ## <a name="removing-locking-states"></a>Zárolási állapotok eltávolítása
 
-Válik, a hozzárendelés által létrehozott erőforrások törléséhez szükséges, ha a törölheti őket módja először távolítsa el a hozzárendelést. A hozzárendelés eltávolítása után a rendszer eltávolítja a tervek szerint létrehozott zárolása. Azonban az erőforrás marad, és normál módon törölni kell.
+Ha módosítja vagy törli a hozzárendelés által védett erőforrás szükségessé válik, két módon ennek a végrehajtására.
+
+- A tervezet-hozzárendelés frissítése a zárolási mód **nem zárolása**
+- A tervezet-hozzárendelés törlése
+
+A hozzárendelés eltávolítása után a rendszer eltávolítja a tervek szerint létrehozott zárolása. Azonban az erőforrás marad, és normál módon törölni kell.
 
 ## <a name="how-blueprint-locks-work"></a>Hogyan tervezet zárolja a munka
 
-Az RBAC szerepkör `denyAssignments` összetevő erőforrások során alkalmazzák a tervezet-hozzárendelést a hozzárendelés kijelölésével a **zárolási** lehetőséget. A szerepkör által kezelt identitását a tervezet-hozzárendelést kerülnek, és csak eltávolíthatók az összetevő-erőforrások által a azonos felügyelt identitás. Ez biztonsági okokból a zárolási mechanizmus kikényszeríti, és megakadályozza, hogy a tervek kívül a tervezet zárolás eltávolítása. A szerepkör és a Zárolás eltávolítása csak akkor lehetséges, a tervezet-hozzárendelést, amely megfelelő jogosultsággal rendelkező egyének csak végezhető eltávolításával.
+Az RBAC [hozzárendelések megtagadása](../../../role-based-access-control/deny-assignments.md) megtagadási művelet során mikor lesz alkalmazva összetevő erőforrások a tervezet-hozzárendelést a hozzárendelés választásakor a **csak olvasható** vagy **ne törölje a** a beállítás. A megtagadási művelet által felügyelt identitását a tervezet-hozzárendelést kerülnek, és csak eltávolíthatók az összetevő-erőforrások által a azonos felügyelt identitás. Ez biztonsági okokból a zárolási mechanizmus kikényszeríti, és megakadályozza, hogy a tervek kívül a tervezet zárolás eltávolítása.
 
 > [!IMPORTANT]
-> Az Azure Resource Manager akár 30 percig gyorsítótárazza a szerepkör-hozzárendelés részletei. Ennek eredményeképpen `denyAssignments` a tervezet erőforrás nem azonnal el teljes körű érvénybe. Ez idő alatt, előfordulhat, hogy lehet törölni a tervezet zárolások fogja védeni kívánt erőforrás.
+> Az Azure Resource Manager akár 30 percig gyorsítótárazza a szerepkör-hozzárendelés részletei. Ennek eredményeképpen a megtagadási hozzárendelések megtagadási művelet a tervezet-erőforrások nem azonnal el teljes körű érvénybe. Ez idő alatt, előfordulhat, hogy lehet törölni a tervezet zárolások fogja védeni kívánt erőforrás.
 
 ## <a name="next-steps"></a>További lépések
 

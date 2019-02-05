@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: dc87079083b8f07ad18f5f871bff64de8d492ebd
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 414bb0183e68cb46e52c379ea3f7aceda5d4170e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285646"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701182"
 ---
 ## <a name="the-parts-of-the-device-model-schema"></a>Az eszközmodell sémájának részei
 
@@ -105,7 +105,7 @@ A `Properties` szakasz a séma meghatározza a megoldás jelentett tulajdonság�
 }
 ```
 
-Amikor a megoldás elindul, lekérdezi a szimulált eszközök listájának létrehozásához `Type` értékeket kell használnia a felhasználói felületen. A megoldás a `Latitiude` és `Longitude` tulajdonságok hozzáadása az eszköz helyét a térképen az irányítópulton.
+Amikor a megoldás elindul, lekérdezi a szimulált eszközök listájának létrehozásához `Type` értékeket kell használnia a felhasználói felületen. A megoldás a `Latitude` és `Longitude` tulajdonságok hozzáadása az eszköz helyét a térképen az irányítópulton.
 
 ## <a name="telemetry"></a>Telemetria
 
@@ -144,7 +144,7 @@ Jelenleg csak használható JSON üzenetsémákat. A séma szereplő mezőket a 
 * Szöveg
 * Logikai
 * Egész szám
-* Dupla
+* Double
 * DateTime
 
 Különböző időközönként telemetriai üzeneteket küldhet a több telemetriatípusok hozzáadása a `Telemetry` tömb. Az alábbi példa hőmérséklettel és páratartalommal kapcsolatos adatokat küld minden 10 másodperc és a világos percenként állapotát:

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: 903f8284327d3d5b9ef386305a436ce44a8a11b2
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cd382c0daff79b487f4ecae01ad852f6e57f3a25
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378102"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734249"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -36,13 +36,13 @@ Bármely IP-címet, amely az IoT hub rejecting IP szabály megegyezik a kapcsol�
 
 Alapértelmezés szerint a **IP-szűrő** rács a portálon az IoT hub, az üres. Ez az alapértelmezett beállítás, az azt jelenti, hogy a központ IP-címeket érkező kapcsolatokat fogad-e. Ez az alapértelmezett beállítás megegyezik egy szabályt, amely elfogadja a 0.0.0.0/0 IP-címtartományt.
 
-![Az IoT Hub alapértelmezett IP-szűrési beállítások](./media/iot-hub-ip-filtering/ip-filter-default.png)
+![IoT Hub default IP filter settings](./media/iot-hub-ip-filtering/ip-filter-default.png)
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>Adja hozzá, vagy egy IP-szűrési szabály szerkesztése
 
 Amikor hozzáad egy IP-szűrési szabály, a rendszer felszólítja a következő értékeket:
 
-* Egy **IP-szűrési szabály nevének** , amely legfeljebb 128 karakter hosszúságú egyedi, kis-és nagybetűket, alfanumerikus karakterláncnak kell lennie. Csak az ASCII 7 bites alfanumerikus karaktereket plusz `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` fogadja.
+* Egy **IP-szűrési szabály nevének** , amely legfeljebb 128 karakter hosszúságú egyedi, kis-és nagybetűket, alfanumerikus karakterláncnak kell lennie. Csak az ASCII 7 bites alfanumerikus karaktereket plusz `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` fogadja.
 
 * Válassza ki a **elutasítása** vagy **fogadja el** , a **művelet** az IP-szűrési szabály.
 
@@ -69,6 +69,84 @@ Meglévő szabály szerkesztéséhez kattintson duplán a szabályt tartalmazó 
 Az IP-szűrési szabály törléséhez válassza ki egy vagy több szabályt a rácson, majd kattintson a **törlése**.
 
 ![Egy IoT-központ IP-szűrési szabály törlése](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
+
+## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Lekérése és frissítése az Azure CLI-vel IP-szűrők
+
+Az IoT Hub IP-szűrők lekérje és frissíteni [Azure CLI-vel](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest). 
+
+Az IoT hub az aktuális IP-szűrők lekéréséhez futtassa:
+
+```azurecli-interactive
+az resource show -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs
+```
+
+Ez visszaad egy JSON-objektumot, ahol a meglévő IP-szűrők vannak felsorolva a `properties.ipFilterRules` kulcs:
+
+```json
+{
+...
+    "properties": {
+        "ipFilterRules": [
+        {
+            "action": "Reject",
+            "filterName": "MaliciousIP",
+            "ipMask": "6.6.6.6/6"
+        },
+        {
+            "action": "Allow",
+            "filterName": "GoodIP",
+            "ipMask": "131.107.160.200"
+        },
+        ...
+        ],
+    },
+...
+}
+```
+
+Az IoT hub egy új IP-szűrő hozzáadásához futtassa:
+
+```azurecli-interactive
+az resource update -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs --add properties.ipFilterRules "{\"action\":\"Reject\",\"filterName\":\"MaliciousIP\",\"ipMask\":\"6.6.6.6/6\"}"
+```
+
+Az IoT hub egy meglévő IP-szűrő eltávolításához futtassa:
+
+```azurecli-interactive
+az resource update -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs --add properties.ipFilterRules <ipFilterIndexToRemove>
+```
+
+Vegye figyelembe, hogy `<ipFilterIndexToRemove>` meg kell felelnie az IP-szűrők az IoT hub rendezése `properties.ipFilterRules`.
+
+
+## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>Lekérése és frissítése az Azure PowerShell-lel IP-szűrők
+
+Az IoT Hub IP-szűrők lekérje és beállítása keresztül [Azure PowerShell-lel](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.2.0). 
+
+```powershell
+# Get your IoT Hub resource using its name and its resource group name
+$iothubResource = Get-AzureRmResource -ResourceGroupName <resourceGroupNmae> -ResourceName <iotHubName> -ExpandProperties
+
+# Access existing IP filter rules
+$iothubResource.Properties.ipFilterRules |% { Write-host $_ }
+
+# Construct a new IP filter
+$filter = @{'filterName'='MaliciousIP'; 'action'='Reject'; 'ipMask'='6.6.6.6/6'}
+
+# Add your new IP filter rule
+$iothubResource.Properties.ipFilterRules += $filter
+
+# Remove an existing IP filter rule using its name, e.g., 'GoodIP'
+$iothubResource.Properties.ipFilterRules = @($iothubResource.Properties.ipFilterRules | Where 'filterName' -ne 'GoodIP')
+
+# Update your IoT Hub resource with your updated IP filters
+$iothubResource | Set-AzureRmResource -Force
+```
+
+## <a name="update-ip-filter-rules-using-rest"></a>Frissítse az IP-szűrési szabályok REST használatával
+
+Előfordulhat, hogy lekérni, és az IoT Hub használata az Azure erőforrás-szolgáltató REST-végpont IP-szűrő módosítása. Lásd: `properties.ipFilterRules` a [createorupdate metódust](https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource/createorupdate).
+
 
 ## <a name="ip-filter-rule-evaluation"></a>IP-szűrési szabály értékelése
 

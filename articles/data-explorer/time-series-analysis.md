@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 53ef96b561ccaa1480125f2c509381e980084b7a
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 63182657e7c5793a2102efecabeb7d51fa1086a9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636688"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729489"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Az Azure Data Explorer idősoros elemzés
 
@@ -103,6 +103,7 @@ Példa `series_fit_line()` és `series_fit_2lines()` függvények a time series 
 ```kusto
 demo_series2
 | extend series_fit_2lines(y), series_fit_line(y)
+| project x, y, series_fit_2lines_y_line_fit, series_fit_line_y_line_fit 
 | render linechart
 ```
 
@@ -196,7 +197,7 @@ demo_many_series1
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | NUM | Min\_t | maximális\_t |
+|   | num | Min\_t | max\_t |
 |   | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
 A mérőszám olvasási 1 óra dobozok az idősor lépésközi létrehozásához (összesen négy nap * 24 óra = 96 pontok), normál minta ingadozása eredményezi:

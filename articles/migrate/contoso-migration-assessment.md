@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: daf75987a49d2ce90a436fdfcff1a85d2fc0ca21
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: e948ee943db646ca83d39510485849b3c9956e90
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300404"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697449"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso áttelepítése: Helyszíni számítási feladatok Azure-ba való migrálásának értékelése
 
@@ -125,7 +125,7 @@ A Contoso és más felhasználók az értékelés a következő előfeltételekn
 - Legalább két helyszíni VMware virtuális gép, amelyek közül az egyik egy SQL Server-adatbázist futtat.
 - Engedélyek az Azure Migrate-ügynökök telepítéséhez minden virtuális gépen.
 - A virtuális gépeknek közvetlen internetkapcsolattal kell rendelkezniük.  
-    - Internet-hozzáférést korlátozhatja a [szükséges URL-címekre](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
+    - Internet-hozzáférést korlátozhatja a [szükséges URL-címekre](https://docs.microsoft.com/azure/migrate/concepts-collector).  
     - Ha a virtuális gépek nem rendelkezik internetkapcsolattal, az Azure [Log Analytics-átjáró](../azure-monitor/platform/gateway.md) telepíteni kell őket, és az ügynök forgalmat rajta keresztül.
 - Az SQL Server-példányt futtató virtuális gép teljes tartományneve az adatbázis-értékeléshez.
 - Az SQL Server virtuális gépen futó Windows tűzfalnak engedélyeznie kell a külső kapcsolatokat a 1433-as (alapértelmezett) TCP-porton. Ez a beállítás lehetővé teszi a Data Migration Assistant való csatlakozáshoz.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 97b94cf54454a83510c5be2cf0d71281dbf5b004
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 222fc5e9083c03ff0d4e31927363c5f517cf32a9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424239"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699364"
 ---
 # <a name="create-a-map"></a>Térkép létrehozása
 
@@ -40,16 +40,16 @@ A fenti kód egy [térkép objektum](https://docs.microsoft.com/javascript/api/a
 <iframe height='500' scrolling='no' title='Keresztül CameraBoundsOptions térkép létrehozása' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>keresztül térkép létrehozásához `CameraBoundsOptions` </a>által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-A fenti kód egy [térkép objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) használatával összeállított `new atlas.Map()`. Térkép tulajdonságai például `CameraBoundsOptions` keresztül lehet definiálni [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) függvény a térkép osztály. Korlátok és kitöltési tulajdonságok vannak beállítva, használatával `setCamera`.
+A fenti kód egy [térkép objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) használatával összeállított `new atlas.Map()`. Térkép tulajdonságai például `CameraBoundsOptions` keresztül lehet definiálni [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) függvény a térkép osztály. Korlátok és kitöltési tulajdonságok vannak beállítva, használatával `setCamera`.
 
 ### <a name="animate-map-view"></a>Térképnézet animálása
 
 <iframe height='500' scrolling='no' title='Térképnézet animálása' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/WayvbO/'>Térképnézet animálása</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Az első kódblokkot hoz létre a fenti kód egy [térkép objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) keresztül `new atlas.Map()`. Térkép tulajdonságai középpont és nagyítás szint például részét képező [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions). `CameraOptions` a térkép a konstruktorban, vagy keresztül határozhatók [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) függvény a térkép osztály. A [stílus leképezése](https://docs.microsoft.com/azure/azure-maps/supported-map-styles) értékre van állítva `road`.
+Az első kódblokkot hoz létre a fenti kód egy [térkép objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) keresztül `new atlas.Map()`. Térkép tulajdonságai középpont és nagyítás szint például részét képező [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions). `CameraOptions` a térkép a konstruktorban, vagy keresztül határozhatók [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) függvény a térkép osztály. A [stílus leképezése](https://docs.microsoft.com/azure/azure-maps/supported-map-styles) értékre van állítva `road`.
 
-A második kódblokk létrehoz egy térkép egyenkénti animálását függvény, amely térképnézet változása animálja definiálásával [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) keresztül [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) függvény. A függvény akkor aktiválódik, a térkép animálása gomb létrehozásához minden kattintás után egy véletlenszerű nagyítási szint szerint.
+A második kódblokk létrehoz egy térkép egyenkénti animálását függvény, amely térképnézet változása animálja definiálásával [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) keresztül [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) függvény. A függvény akkor aktiválódik, a térkép animálása gomb létrehozásához minden kattintás után egy véletlenszerű nagyítási szint szerint.
 
 ## <a name="try-out-the-code"></a>Próbálja ki a kódot
 

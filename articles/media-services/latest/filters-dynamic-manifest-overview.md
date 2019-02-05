@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 139f6283c2b59aee53afa3f0dd52e06e2b0eff4c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912033"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695219"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékek
 
@@ -34,7 +34,7 @@ Szűrők kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek, 
 - Csak a megadott beállításkészletben és/vagy a megadott nyelv nyomon követi az eszköz, amellyel a tartalmat ("megjelenítésszűrés") által támogatott kézbesítéséhez. 
 - Módosítsa a megjelenítési ablakot (DVR) annak érdekében, hogy a Windows Media player ("módosításának bemutató időszak") megadott DVR időszak korlátozott hosszát.
 
-Ez a témakör ismerteti [fogalmak](#concepts) és [látható szűrők definíciók](#definitions). Részletes információk ezután megadja [gyakori helyzetek](#common-scenarios). A cikk végén található hivatkozásokat, amelyek bemutatják, hogyan hozhat létre programozott módon a szűrőket.  
+Ez a témakör ismerteti [fogalmak](#concepts) és [látható szűrők definíciók](#definitions). Ezután megadja gyakori helyzetek részleteit. A cikk végén található hivatkozásokat, amelyek bemutatják, hogyan hozhat létre programozott módon a szűrőket.  
 
 ## <a name="concepts"></a>Alapelvek
 

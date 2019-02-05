@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a778723093b226ee0e681c2a95ce4db597a310e5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c09816d45169ce9bb6c926b8b17b075ea1059ec7
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55199058"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695372"
 ---
 # <a name="saas-sell-through-azure---apis"></a>SaaS-értékesítési Azure - API-k segítségével
 
@@ -176,21 +176,21 @@ A POST művelet oldja meg a végpont lehetővé teszi a felhasználóknak oldja 
 
 *Választörzs*
 
- ``` json       
-    { 
-        “id”: “”, 
-        “subscriptionName”: “”,
-        “offerId”:””, 
-         “planId”:””
-    }     
+``` json
+{
+    "id": "",
+    "subscriptionName": "",
+    "offerId": "",
+    "planId": "",
+}
 ```
 
 | **Paraméter neve** | **Adattípus** | **Leírás**                       |
 |--------------------|---------------|---------------------------------------|
-| id                 | Karakterlánc        | Az SaaS-előfizetés azonosítója.          |
-| subscriptionName| Karakterlánc| Az SaaS-előfizetés beállítása az Azure-ban a felhasználó a SaaS-szolgáltatásra előfizető neve.|
-| Ajánlat azonosítója            | Karakterlánc        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. |
-| planId             | Karakterlánc        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.  |
+| id                 | String        | Az SaaS-előfizetés azonosítója.          |
+| subscriptionName| String| Az SaaS-előfizetés beállítása az Azure-ban a felhasználó a SaaS-szolgáltatásra előfizető neve.|
+| Ajánlat azonosítója            | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. |
+| planId             | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.  |
 |  |  |  |
 
 
@@ -246,9 +246,9 @@ Az előfizetési végpont lehetővé teszi, hogy a felhasználók számára egy 
 *Törzs*
 
 ``` json
-  { 
-      “planId”:””
-   }      
+{
+    "lanId": "",
+}
 ```
 
 | **Elem neve** | **Adattípus** | **Leírás**                      |
@@ -307,15 +307,13 @@ A módosítás végpont lehetővé teszi, hogy a felhasználó az aktuálisan el
 | Engedélyezési           | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                    |
 |  |  |  |
 
-
 *Törzs*
 
-``` json
-                { 
-                    “planId”:””
-                } 
+```json
+{
+    "planId": ""
+}
 ```
-
 
 |  **Elem neve** |  **Adattípus**  | **Leírás**                              |
 |  ---------------- | -------------   | --------------------------------------       |
@@ -370,7 +368,6 @@ Az előfizetési végpont a törlési művelet lehetővé teszi, hogy a felhaszn
 | x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
 | Engedélyezési      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                    |
 |  |  |  |
- 
 
 *Válaszkódok*
 
@@ -413,7 +410,6 @@ Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet 
 | API-verzió         | A művelet ehhez a kérelemhez használt verziója. |
 |  |  |
 
-
 *Fejlécek*
 
 | **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                                                                                                                                                  |
@@ -422,25 +418,24 @@ Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet 
 | x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 | Engedélyezési      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                    |
 |  |  |  | 
-  
 
 *Választörzs*
 
-``` json
-  { 
-      “id”: “”, 
-      “status”:””, 
-       “resourceLocation”:””, 
-      “created”:””, 
-      “lastModified”:”” 
-  } 
+```json
+{
+    "id": "",
+    "status": "",
+    "resourceLocation": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **Paraméter neve** | **Adattípus** | **Leírás**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
-| id                 | Karakterlánc        | A művelet azonosítója.                                                                      |
+| id                 | String        | A művelet azonosítója.                                                                      |
 | status             | Enum          | A művelet állapotát, a következők egyikét: `In Progress`, `Succeeded`, vagy `Failed`.          |
-| resourceLocation   | Karakterlánc        | Az előfizetést, amelyhez a létrehozott vagy módosított mutató hivatkozás. Ez segít az ügyfél megszerezni a frissítve állapotot post műveletet. Ez az érték nincs beállítva `Unsubscribe` műveleteket. |
+| resourceLocation   | String        | Az előfizetést, amelyhez a létrehozott vagy módosított mutató hivatkozás. Ez segít az ügyfél megszerezni a frissítve állapotot post műveletet. Ez az érték nincs beállítva `Unsubscribe` műveleteket. |
 | létrehozva            | DateTime      | A művelet létrehozásának időpontja (UTC).                                                           |
 | módosítás dátuma       | DateTime      | Utolsó frissítése (UTC), a műveletet.                                                      |
 |  |  |  |
@@ -494,23 +489,23 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 
 *Választörzs*
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “” 
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Karakterlánc        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| offerId                | Karakterlánc        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
-| planId                 | Karakterlánc        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
-| saasSubscriptionName   | Karakterlánc        | Az SaaS-előfizetés neve.                |
+| id                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
+| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
+| planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
+| saasSubscriptionName   | String        | Az SaaS-előfizetés neve.                |
 | saasSubscriptionStatus | Enum          | A művelet állapotát.  A következők egyikét:  <br/> - `Subscribed`: Előfizetés az aktív.  <br/> - `Pending`: Felhasználó létrehozása az erőforrás, de nem aktiválódik, a független szoftvergyártó.   <br/> - `Unsubscribed`: Felhasználó leiratkoztatva rendelkezik.   <br/> - `Suspended`: Felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`:  Azure-előfizetés fel van függesztve.  |
 | létrehozva                | DateTime      | Előfizetés létrehozása időbélyeg értékét (UTC). |
 | módosítás dátuma           | DateTime      | Előfizetés módosítása időbélyegző-érték (UTC). |
@@ -539,7 +534,6 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 | az eTag               | Igen          | Hivatkozás az erőforrás műveleti állapotának beolvasása.                                                        |
 |  |  |  |
 
-
 ### <a name="get-subscriptions"></a>Előfizetések beolvasása
 
 A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhasználó összes előfizetés összes ajánlatok lekérése az ISV-k.
@@ -564,27 +558,26 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
 | Engedélyezési      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                    |
 |  |  |  |
 
-
 *Választörzs*
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “”
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Karakterlánc        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| offerId                | Karakterlánc        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
-| planId                 | Karakterlánc        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
-| saasSubscriptionName   | Karakterlánc        | Az SaaS-előfizetés neve.                |
+| id                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
+| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
+| planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
+| saasSubscriptionName   | String        | Az SaaS-előfizetés neve.                |
 | saasSubscriptionStatus | Enum          | A művelet állapotát.  A következők egyikét:  <br/> - `Subscribed`: Előfizetés az aktív.  <br/> - `Pending`: Felhasználó létrehozása az erőforrás, de nem aktiválódik, a független szoftvergyártó.   <br/> - `Unsubscribed`: Felhasználó leiratkoztatva rendelkezik.   <br/> - `Suspended`: Felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`:  Azure-előfizetés fel van függesztve.  |
 | létrehozva                | DateTime      | Előfizetés létrehozása időbélyeg értékét (UTC). |
 | módosítás dátuma           | DateTime      | Előfizetés módosítása időbélyegző-érték (UTC). |
@@ -616,7 +609,6 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
 
 Egy SaaS-webhook proaktív módon a SaaS-szolgáltatás módosításait értesítésére szolgál. A bejegyzés API kell lennie a nem hitelesített, és a Microsoft szolgáltatás fogja meghívni. Az SaaS-szolgáltatás várhatóan az műveletek érvényesítéséhez, és engedélyezze a webhook értesítésre műveletek végrehajtása előtti API meghívása. 
 
-
 *Törzs*
 
 ``` json
@@ -634,12 +626,12 @@ Egy SaaS-webhook proaktív módon a SaaS-szolgáltatás módosításait értesí
 
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id  | Karakterlánc       | A művelet által aktivált egyedi azonosítója.                |
-| Tevékenységazonosító   | Karakterlánc        | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Bármely egyeztetések szolgál.               |
-| subscriptionId                     | Karakterlánc        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| offerId                | Karakterlánc        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. Csak a "Frissítés" művelet megadott.        |
-| publisherId                | Karakterlánc        | Az SaaS-ajánlat a Gyártóazonosítóval         |
-| planId                 | Karakterlánc        | Tervezze meg, hogy a felhasználó előfizetett azonosítója. Csak a "Frissítés" művelet megadott.          |
-| action                 | Karakterlánc        | A művelet, amely ezt az értesítést kezdeményezi. A lehetséges értékek - aktiválása, töröl, a felfüggesztés, visszaállítása, frissítés          |
-| timeStamp                 | Karakterlánc        | Időbélyeg értékét UTC formátumban, amikor az értesítés lett elindítva.          |
+| id  | String       | A művelet által aktivált egyedi azonosítója.                |
+| Tevékenységazonosító   | String        | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Bármely egyeztetések szolgál.               |
+| subscriptionId                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
+| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. Csak a "Frissítés" művelet megadott.        |
+| publisherId                | String        | Az SaaS-ajánlat a Gyártóazonosítóval         |
+| planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója. Csak a "Frissítés" művelet megadott.          |
+| action                 | String        | A művelet, amely ezt az értesítést kezdeményezi. A lehetséges értékek - aktiválása, töröl, a felfüggesztés, visszaállítása, frissítés          |
+| timeStamp                 | String        | Időbélyeg értékét UTC formátumban, amikor az értesítés lett elindítva.          |
 |  |  |  |

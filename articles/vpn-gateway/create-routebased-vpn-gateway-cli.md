@@ -1,5 +1,5 @@
 ---
-title: 'Útválasztó-alapú Azure VPN-átjáró létrehozása: parancssori felület |} A Microsoft Docs'
+title: 'Útválasztó-alapú Azure VPN-átjáró létrehozása: CLI | Microsoft Docs'
 description: Gyorsan megismerheti a CLI-vel VPN-átjáró létrehozása
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: b8ca2d74012418dbd8ca9e878f133a250ebb5991
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465100"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698190"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>CLI-vel az útvonalalapú VPN-átjáró létrehozása
 
@@ -26,7 +26,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforrás csoport a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Hozzon létre egy erőforrás csoport a [az csoport létrehozása](/cli/azure/group) parancsot. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 
 ```azurecli-interactive 
@@ -35,7 +35,7 @@ az group create --name TestRG1 --location eastus
 
 ## <a name="vnet"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot a [az network vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create) parancsot. A következő példában létrehozunk egy nevű virtuális hálózatot **VNet1** a a **EastUS** helye:
+Hozzon létre egy virtuális hálózatot a [az network vnet létrehozása](/cli/azure/network/vnet) parancsot. A következő példában létrehozunk egy nevű virtuális hálózatot **VNet1** a a **EastUS** helye:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -56,7 +56,7 @@ az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
   -g TestRG1 \
-  --address-prefix 10.1.255.0/27 
+  --address-prefix 10.1.255.0/27 
 ```
 
 ## <a name="PublicIP"></a>Nyilvános IP-cím kérése
@@ -67,12 +67,12 @@ VPN-átjáró dinamikusan lefoglalt nyilvános IP-címmel kell rendelkeznie. A n
 az network public-ip create \
   -n VNet1GWIP \
   -g TestRG1 \
-  --allocation-method Dynamic 
+  --allocation-method Dynamic 
 ```
 
 ## <a name="CreateGateway"></a>A VPN-átjáró létrehozása
 
-Hozza létre a VPN Gateway-t az [az network vnet-gateway create](/cli/azure/group#az_network_vnet_gateway_create) paranccsal.
+Hozza létre a VPN Gateway-t az [az network vnet-gateway create](/cli/azure/group) paranccsal.
 
 Ha ez a parancs használatával futtatja a `--no-wait` paramétert, nem jelenik meg semmilyen visszajelzés vagy kimenet. A `--no-wait` paraméter lehetővé teszi, hogy az átjáró a háttérben kell létrehozni. Ez nem jelenti azt, hogy a VPN-átjáró létrehozása azonnal.
 
@@ -172,7 +172,7 @@ Példaválasz:
 ```
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a létrehozott erőforrásokat, [az csoport törlése](/cli/azure/group#az_group_delete) , törölje az erőforráscsoportot. Ez a parancs törli az erőforráscsoportot és a benne lévő összes erőforrást.
+Ha már nincs szüksége a létrehozott erőforrásokat, [az csoport törlése](/cli/azure/group) , törölje az erőforráscsoportot. Ez a parancs törli az erőforráscsoportot és a benne lévő összes erőforrást.
 
 ```azurecli-interactive 
 az group delete --name TestRG1 --yes

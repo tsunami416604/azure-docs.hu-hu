@@ -9,12 +9,12 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 935119f2efe40ee22d2d11005fa79b12c712b7c2
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104573"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694109"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Elosztott nyomkövetések gyűjtéséhez a Góról (előzetes verzió)
 
@@ -24,7 +24,7 @@ Az Application Insights most már támogatja az elosztott nyomkövetést a Go-al
 
 - Rendelkeznie kell Azure-előfizetéssel.
 - Go-nek telepítve kell lennie, ebben a cikkben 1.11-es verzió [Go letöltése](https://golang.org/dl/).
-- Kövesse az utasításokat követve telepítse a [helyi továbbító Windows szolgáltatásként](./opencensus-local-forwarder.md#windows-service).
+- Kövesse az utasításokat követve telepítse a [helyi továbbító Windows szolgáltatásként](./opencensus-local-forwarder.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -57,7 +57,7 @@ Először meg kell létrehoznia az Application Insights-erőforrást egy kialak�
 
    ![Képernyőkép az eszközkulcs](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. Szerkessze a `LocalForwarder.config` fájlt, és adja hozzá a kialakítási kulcsot. Ha követte a lépéseket a következő témakör utasításait a [előfeltételeként](./opencensus-local-forwarder.md#windows-service) a fájl `C:\LF-WindowsServiceHost`
+2. Szerkessze a `LocalForwarder.config` fájlt, és adja hozzá a kialakítási kulcsot. Ha követte a lépéseket a következő témakör utasításait a [előfeltételeként](./opencensus-local-forwarder.md) a fájl `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -186,7 +186,7 @@ Először meg kell létrehoznia az Application Insights-erőforrást egy kialak�
 
 3. Miután az egyszerű alkalmazás fut-e lépjen `http://localhost:50030`. A szöveg "hello world" kifejezéssel span megfelelő adatok bejegyzéseit, amelyek a helyi továbbító átveszi a böngésző minden egyes frissítés hoz létre.
 
-4. Ellenőrizheti, hogy a **helyi továbbító** vesz fel a nyomkövetések ellenőrzés a `LocalForwarder.config` fájlt. Ha követte a lépéseket a [előfeltétel](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service), kell elhelyezni a `C:\LF-WindowsServiceHost`.
+4. Ellenőrizheti, hogy a **helyi továbbító** vesz fel a nyomkövetések ellenőrzés a `LocalForwarder.config` fájlt. Ha követte a lépéseket a [előfeltétel](https://docs.microsoft.com/azure/application-insights/local-forwarder), kell elhelyezni a `C:\LF-WindowsServiceHost`.
 
     Az alábbi ábrán a naplófájl, láthatja, hogy hol hozzáadtunk egy exportáló a második szkript futtatása előtt `OpenCensus input BatchesReceived` 0. Hogy megkezdése a frissített szkript futtatása után `BatchesReceived` azt a megadott értékek száma egyenlő a növekménye:
     

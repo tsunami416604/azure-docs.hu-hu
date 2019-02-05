@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 771aba1d18dc0cf691c338e06278a356caebda96
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b80ee059459d4c1f4d90d14ee62dcead57596571
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886237"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697053"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>A rendelkezésre állási zónák használó virtuális gép méretezési csoport létrehozása
 
@@ -81,7 +81,7 @@ A méretezési és a támogató erőforrások, például az Azure load balancer 
 
 Hozzon létre egy méretezési csoportot, amely egy rendelkezésre állási zónát használ, a folyamat megegyezik a részletes a [első lépések a cikk](quick-create-cli.md). A rendelkezésre állási zónák használatához létre kell hoznia a méretezési csoportban egy támogatott Azure-régióban.
 
-Adja hozzá a `--zones` paramétert a [az vmss létrehozásához](/cli/azure/vmss#az_vmss_create) parancsot, majd adja meg, melyik zónába használata (például a zóna *1*, *2*, vagy *3*). A következő példában létrehozunk egy Egyzónás méretezési elnevezett *myScaleSet* zónában *1*:
+Adja hozzá a `--zones` paramétert a [az vmss létrehozásához](/cli/azure/vmss) parancsot, majd adja meg, melyik zónába használata (például a zóna *1*, *2*, vagy *3*). A következő példában létrehozunk egy Egyzónás méretezési elnevezett *myScaleSet* zónában *1*:
 
 ```azurecli
 az vmss create \

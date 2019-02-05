@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 6963a7d8541897940316d0fdfbea06f265884249
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 18bfdaaf75230cf91ea8f786188b9de9f7a6a5be
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478314"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696733"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Virtuális gép létrehozása virtuális merevlemezzel
 
@@ -53,16 +53,16 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_list) | Felsorolja a tárfiókokat. |
-| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_check_name) | Ellenőrzi a tárfiók nevének érvényességét és azt, hogy valahol már használatban van-e. |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account) | Felsorolja a tárfiókokat. |
+| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account) | Ellenőrzi a tárfiók nevének érvényességét és azt, hogy valahol már használatban van-e. |
 | [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys) | Felsorolja a tárfiókok kulcsait. |
-| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_exists) | Ellenőrzi, hogy a blob létezik-e. |
-| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#az_storage_container_create) | Létrehoz egy tárolót egy tárfiókban. |
-| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | Létrehoz egy blobot a tárolóban a VHD feltöltésével. |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | A `--query` elemmel együtt használva ellenőrzi, hogy a virtuális gép neve már használatban van-e. | 
+| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob) | Ellenőrzi, hogy a blob létezik-e. |
+| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container) | Létrehoz egy tárolót egy tárfiókban. |
+| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob) | Létrehoz egy blobot a tárolóban a VHD feltöltésével. |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm) | A `--query` elemmel együtt használva ellenőrzi, hogy a virtuális gép neve már használatban van-e. | 
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Létrehozza a virtuális gépeket. |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | Lekéri a létrehozott virtuális gép IP-címét. |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm-ip-addresses) | Lekéri a létrehozott virtuális gép IP-címét. |
 
 ## <a name="next-steps"></a>További lépések
 

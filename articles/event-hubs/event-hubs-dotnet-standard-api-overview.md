@@ -9,12 +9,12 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
-ms.openlocfilehash: f8cd167d8de738674939180e0d81fc9282434155
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: b09f39f45936a7c43dbc1ef109780315d62c768f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450454"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728419"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard API – áttekintés
 
@@ -35,7 +35,7 @@ Egy [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) objek
 var eventHubClient = EventHubClient.CreateFromConnectionString("Event Hubs connection string");
 ```
 
-A kapcsolati karakterláncot programozott módon szerkeszteni, használhatja a [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) osztályt, és továbbíthatja azt a kapcsolati karakterlánc paramétereként [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_).
+A kapcsolati karakterláncot programozott módon szerkeszteni, használhatja a [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) osztályt, és továbbíthatja azt a kapcsolati karakterlánc paramétereként [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient).
 
 ```csharp
 var connectionStringBuilder = new EventHubsConnectionStringBuilder("Event Hubs connection string")
@@ -65,7 +65,7 @@ Események fogadása az Event Hubs javasolt módját használja a [Event Process
 
 #### <a name="create-a-receiver"></a>Fogadó létrehozása
 
-Fogadók kötődnek, adott partíciókra, így minden események fogadásához az eseményközpontokban, több példányt kell létrehoznia. Tanácsos a partíciós adatok programozott módon, lekéréséhez fix kódolása a partíció azonosítók helyett. Ehhez használhatja a [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) metódust.
+Fogadók kötődnek, adott partíciókra, így minden események fogadásához az eseményközpontokban, több példányt kell létrehoznia. Tanácsos a partíciós adatok programozott módon, lekéréséhez fix kódolása a partíció azonosítók helyett. Ehhez használhatja a [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) metódust.
 
 ```csharp
 // Create a list to keep track of the receivers

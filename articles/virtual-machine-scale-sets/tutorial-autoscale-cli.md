@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fdc1cb7c4b95a72aa55ccce57b2fa331f7c9615d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2bb0d4161dfd88022321fce2aa50e6ae90cc60b4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170708"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693938"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése az Azure CLI használatával
 
@@ -62,7 +62,7 @@ az vmss create \
 
 ## <a name="define-an-autoscale-profile"></a>Automatikus skálázási profil meghatározása
 
-Az automatikus skálázás méretezési csoportban történő engedélyezéséhez először határozza meg az automatikus skálázási profilt. Ez a profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását. Ezekkel a korlátokkal szabályozhatja a költségeket a virtuálisgép-példányok folyamatos létrehozásának mellőzésével, valamint megtalálhatja az egyensúlyt az elfogadható teljesítményt és a horizontális leskálázási események során fennmaradó példányok minimális száma között. Automatikus skálázási profilt az [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create) paranccsal hozhat létre. A következő példa a virtuálisgép-példányok alapértelmezett és egyben minimális (*2*), valamint a maximális (*10*) értékét állítja be:
+Az automatikus skálázás méretezési csoportban történő engedélyezéséhez először határozza meg az automatikus skálázási profilt. Ez a profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását. Ezek a korlátok lehetővé teszik a költségek Virtuálisgép-példányok nem folyamatosan létrehozásával, és elosztja a elfogadható teljesítményt, mely egy horizontális leskálázási esemény is példányok minimális száma. Automatikus skálázási profilt az [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create) paranccsal hozhat létre. A következő példa a virtuálisgép-példányok alapértelmezett és egyben minimális (*2*), valamint a maximális (*10*) értékét állítja be:
 
 ```azurecli-interactive
 az monitor autoscale create \
@@ -141,7 +141,7 @@ Amikor **stress** hasonló eredményeket jelenít meg *stress: info: [2688] disp
 
 Annak megerősítéséhez, hogy a **stress** segédprogram processzorterhelést hoz létre, vizsgálja meg az aktív rendszerterhelést a **top** segédprogram segítségével:
 
-```azuecli-interactive
+```azurecli-interactive
 top
 ```
 

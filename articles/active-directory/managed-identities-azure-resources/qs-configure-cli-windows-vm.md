@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
 ms.author: priyamo
-ms.openlocfilehash: a2e42b165596d26672ee22813e53d02ca0e3a7e9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4c17128f07475b6aeaef9ae15a13bc4863d7e663
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195664"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699890"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Felügyelt identitások az Azure-erőforrások konfigurálása-beli virtuális gépen az Azure CLI használatával
 
@@ -82,7 +82,7 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás, a virtuális 
    az login
    ```
 
-2. Használat [az virtuális gép identitás hozzárendelése](/cli/azure/vm/identity/#az-vm-identity-assign) az a `identity assign` parancsot a meglévő virtuális géphez a rendszer által hozzárendelt identitás engedélyezése:
+2. Használat [az virtuális gép identitás hozzárendelése](/cli/azure/vm/identity/) az a `identity assign` parancsot a meglévő virtuális géphez a rendszer által hozzárendelt identitás engedélyezése:
 
    ```azurecli-interactive
    az vm identity assign -g myResourceGroup -n myVm
@@ -107,7 +107,7 @@ Ha egy virtuális gépet, amely a rendszer által hozzárendelt identitás már 
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Távolítsa el a felügyelt identitását az Azure-erőforrások Virtuálisgép-bővítmény (tervezett elavult a január 2019 esetében), a felhasználó `-n ManagedIdentityExtensionForWindows` vagy `-n ManagedIdentityExtensionForLinux` kapcsoló (virtuális gép függően) és [vm-bővítmény törlése az](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
+Távolítsa el a felügyelt identitását az Azure-erőforrások Virtuálisgép-bővítmény (tervezett elavult a január 2019 esetében), a felhasználó `-n ManagedIdentityExtensionForWindows` vagy `-n ManagedIdentityExtensionForLinux` kapcsoló (virtuális gép függően) és [vm-bővítmény törlése az](https://docs.microsoft.com/cli/azure/vm/):
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -186,7 +186,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    }
    ```
 
-2. A felhasználó által hozzárendelt identitás hozzárendelése a virtuális gép használatával [az virtuális gép identitás hozzárendelése](/cli/azure/vm#az-vm-identity-assign). Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY NAME>` a felhasználó által hozzárendelt felügyelt identitás erőforrás `name` tulajdonságot, mert az előző lépésben létrehozott:
+2. A felhasználó által hozzárendelt identitás hozzárendelése a virtuális gép használatával [az virtuális gép identitás hozzárendelése](/cli/azure/vm). Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY NAME>` a felhasználó által hozzárendelt felügyelt identitás erőforrás `name` tulajdonságot, mert az előző lépésben létrehozott:
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>

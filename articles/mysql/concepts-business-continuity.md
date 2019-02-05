@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 9b9e2362553eb93cbb111b70cf29a1cc1524e77e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 02/01/2019
+ms.openlocfilehash: a09c1934ecb34518b191a8e730a72efecc85aa2f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554537"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692885"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Az Azure Database for MySQL üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -50,6 +50,6 @@ A másik lehetőség, hogy az Azure Database for MySQL a geo-visszaállítás sz
 
 ## <a name="next-steps"></a>További lépések
 
-- Az automatikus biztonsági másolatok kapcsolatos további információkért lásd: [, Azure Database for MySQL biztonsági másolatok](concepts-backup.md).
-- Visszaállítását egy időpontra az Azure portal használatával, lásd: [database visszaállítása egy időpontra az Azure portal használatával](howto-restore-server-portal.md).
-- Visszaállítását egy időpontra az Azure CLI használatával, lásd: [database visszaállítása egy CLI-vel](howto-restore-server-cli.md).
+- Tudjon meg többet a [automatikus biztonsági másolatokat az Azure Database for MySQL-hez](concepts-backup.md).
+- Ismerje meg, hogyan segítségével történő visszaállításhoz [az Azure Portalon](howto-restore-server-portal.md) vagy [az Azure CLI](howto-restore-server-cli.md).
+- Ismerje meg [olvassa el a replikákat az Azure Database for MySQL-hez](concepts-read-replicas.md).

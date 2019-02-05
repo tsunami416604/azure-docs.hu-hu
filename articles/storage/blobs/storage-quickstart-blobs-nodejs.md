@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 4400bdf9a88c492a08c7eeafb074af89dee8abb1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6af1a7c1cf140ba8ff4710c0cc90559e3df55135
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661768"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734164"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Hogyan feltöltése, letöltése és használata a Node.js SDK v2 blobok listázása
 
@@ -108,7 +108,7 @@ A következő implementációban a *blobService* függvények mindegyike egy *Pr
 
 ### <a name="list-containers"></a>Tárolók listázása
 
-A *listContainers* függvény meghívja a [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listcontainerssegmented) függvényt, amely csoportokba rendezett tárológyűjteményeket ad vissza.
+A *listContainers* függvény meghívja a [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) függvényt, amely csoportokba rendezett tárológyűjteményeket ad vissza.
 
 ```javascript
 const listContainers = async () => {
@@ -150,7 +150,7 @@ A **createContainerIfNotExists** függvény engedélyezi az alkalmazás számár
 
 ### <a name="upload-text"></a>Szöveg feltöltése
 
-Az *uploadString* függvény meghívja a [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext) metódust, hogy írjon (vagy felülírjon) egy tetszőleges sztringet a blobtárolóban.
+Az *uploadString* függvény meghívja a [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) metódust, hogy írjon (vagy felülírjon) egy tetszőleges sztringet a blobtárolóban.
 
 ```javascript
 const uploadString = async (containerName, blobName, text) => {
@@ -184,7 +184,7 @@ const uploadLocalFile = async (containerName, filePath) => {
     });
 };
 ```
-A tartalmak blobokba való feltöltéséhez egyéb megközelítések is elérhetők, például a [text](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext-string--string--string---buffer--errororresult-blobresult--) és a [streams](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--) használata. Ha ellenőrizni szeretné, hogy a fájl feltöltődött-e a blobtárolóba, használhatja az [Azure Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) a fiókban szereplő adatok megtekintéséhez.
+A tartalmak blobokba való feltöltéséhez egyéb megközelítések is elérhetők, például a [text](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest-string--string--string---buffer--errororresult-blobresult--) és a [streams](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--) használata. Ha ellenőrizni szeretné, hogy a fájl feltöltődött-e a blobtárolóba, használhatja az [Azure Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) a fiókban szereplő adatok megtekintéséhez.
 
 ### <a name="list-the-blobs"></a>A blobok listázása
 
@@ -208,7 +208,7 @@ A *listBlobsSegmented* metódus [BlobResult](https://docs.microsoft.com/javascri
 
 ### <a name="download-a-blob"></a>Blob letöltése
 
-A *downloadBlob* függvény a [getBlobToText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtotext) utasítást használja a blob tartalmának letöltéséhez a megadott abszolút fájlelérési útvonalra.
+A *downloadBlob* függvény a [getBlobToText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) utasítást használja a blob tartalmának letöltéséhez a megadott abszolút fájlelérési útvonalra.
 
 ```javascript
 const downloadBlob = async (containerName, blobName) => {
@@ -224,7 +224,7 @@ const downloadBlob = async (containerName, blobName) => {
     });
 };
 ```
-Az itt látható implementáció módosítja a forrást, és a blob tartalmát sztringként adja vissza. Egy blobot továbbá [adatfolyamként](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtostream), illetve közvetlenül egy [helyi fájlba](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) is letölthet.
+Az itt látható implementáció módosítja a forrást, és a blob tartalmát sztringként adja vissza. Egy blobot továbbá [adatfolyamként](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest), illetve közvetlenül egy [helyi fájlba](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) is letölthet.
 
 ### <a name="delete-a-blob"></a>Blob törlése
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: cc0521f1f27ddfc1fc44b9f24212393d11177d70
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c923023cec03e36b1795619bc9da09aee8def629
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660969"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700383"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
@@ -221,6 +221,12 @@ Hibrid Azure AD-csatlakozás az Azure ad-ben regisztrált átadta a feladatait �
 **K: Miért érdemes a felhasználók rendelkeznek problémák a Windows 10-es hibrid Azure AD-csatlakoztatott eszközök Felhasználónevük módosítása után?**
 
 **VÁLASZ:** Jelenleg UPN módosítások nem teljesen támogatottak a hibrid Azure AD-csatlakoztatott eszközök. Felhasználók jelentkezzen be az eszköz és a helyszíni alkalmazások elérését, amíg az Azure AD-hitelesítés nem sikerül, egy UPN módosítását követően. Ennek eredményeképpen felhasználóinak egyszeri Bejelentkezést és feltételes hozzáférési problémák az eszközeiken. Jelenleg az eszköz az Azure ad-ből ("dsregcmd /leave" futtassa megemelt jogosultságokkal) elhagyása kell újra belépni az (automatikusan megtörténik), és a probléma megoldásához. Jelenleg dolgozunk a probléma megoldásához. Bejelentkezés Windows Hello for Business felhasználók azonban nem ütköznek a probléma. 
+
+---
+
+**K: Igényelnek-e a Windows 10-es hibrid Azure AD-csatlakoztatott eszközök üzemel, a tartományvezérlő a felhőbeli erőforrások eléréséhez?**
+
+**VÁLASZ:** Nem. Windows 10-es hibrid Azure AD-csatlakozás ésőbb befejeződött, és a felhasználó legalább egyszer már bejelentkezett, az eszköz nem igényel üzemel, a tartományvezérlő a felhőbeli erőforrások eléréséhez. Windows 10-es is elérhető egyszeri bejelentkezéshez Azure AD-alkalmazások bárhonnan internet-kapcsolattal, kivéve, ha a jelszó módosítása. Ha jelszó megváltozik a vállalati hálózaton kívül (például a Azure AD SSPR használatával), majd a felhasználónak kell üzemel, a tartományvezérlő rendelkezik, mielőtt az eszközön, az új jelszóval jelentkezhet be. Ellenkező esetben akkor is csak jelentkezzen be a régi jelszavát, amely érvénytelenné válik, az Azure AD, és megakadályozza, hogy egyszeri bejelentkezést a. A probléma azonban használatakor Windows Hello for Business nem jelentkezik. Felhasználók, akik jelentkezzen be Windows Hello for Business továbbra is egyetlen jelentkezzen be az Azure AD-alkalmazások után módosítsa a jelszót, még akkor is, ha nincs üzemel a tartományvezérlőre. 
 
 ---
 

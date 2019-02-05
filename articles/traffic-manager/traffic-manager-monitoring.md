@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 923c2aae6d426e736e34c06fc84025ca98fe4f48
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 40852b9457e703334350402489feb68ac92832a0
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199630"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693787"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
 
@@ -135,7 +135,7 @@ A végpont csökkentett teljesítményű állapotba került, amikor már nem vis
 * **Súlyozott**. Véletlenszerűen hozzárendelt súlyukat és az egyéb elérhető végpontok súlyozását alapján van kiválasztani bármely elérhető végpontot.
 * **Teljesítmény**. A felhasználó legközelebb eső végpont adja vissza. Hogy a végpont nem érhető el, ha a Traffic Manager forgalom áthelyezi a végpontok a következő legközelebbi Azure-régióban. Alternatív feladatátvételi tervek teljesítmény forgalom-útválasztási használatával konfigurálható [beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region).
 * **Földrajzi**. A végpont a földrajzi hely alapján a lekérdezési kérelem kiszolgálására leképezett IP adja vissza. Hogy a végpont nem érhető el, ha egy másik végpont nem lesz kiválasztva a feladatátvétel, mivel egy földrajzi helyet is le lehet képezni csak egy végpont-profilban (további részleteket a [– gyakori kérdések](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)). Ajánlott eljárásként, földrajzi útválasztásának használata esetén javasoljuk, hogy az ügyfelek számára több végpont a profil végpontjaiként beágyazott Traffic Manager-profilok használata.
-* **Típushoz** IPv4/IPv6-címek hozzárendelve több végpontok adja vissza. Ehhez a profilhoz fogadásakor egy lekérdezést, kifogástalan állapotú végpontok visszaadott alapján a **válasz maximális rekordszám** Ön által megadott értéket. A válaszok száma alapértelmezett két végpontja.
+* **Típushoz** IPv4/IPv6-címek hozzárendelve több végpontot adja vissza. Ehhez a profilhoz fogadásakor egy lekérdezést, kifogástalan állapotú végpontok visszaadott alapján a **válasz maximális rekordszám** Ön által megadott értéket. A válaszok száma alapértelmezett két végpontja.
 * **Alhálózat** a végpont leképezett IP-címtartományok készletét adja vissza. Egy kérelem érkezett az IP-címet, ha a végpont egy hozzárendelt IP-címet az adott vissza. 
 
 További információkért lásd: [a Traffic Manager forgalom-útválasztási módszerei](traffic-manager-routing-methods.md).

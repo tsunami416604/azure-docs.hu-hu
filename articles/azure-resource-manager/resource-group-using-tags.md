@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: d7f84e188324bcdb9fb1a26d701805978f1fd625
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: ad8a01ecccd7af15686c449b17cd5f014450b015
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489393"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734436"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -29,11 +29,15 @@ Erőforrások címkékkel, a felhasználó adott erőforrástípus írási hozz�
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="policies"></a>Házirendek
+
+Használhat [Azure Policy](../governance/policy/overview.md) címkézési szabályok és konvenciói. Szabályzat létrehozásával a forgatókönyv az erőforrások üzembe helyezéséhez az előfizetéshez, amelyek nem felelnek a szervezet számára a várt címkék elkerülése érdekében. Ahelyett, hogy manuálisan alkalmaz a címkéket, vagy nem megfelelő erőforrások keresése létrehozhat egy szabályzatot, amely automatikusan alkalmazza a szükséges címkék üzembe helyezés során. A következő szakaszban látható példa címkékre vonatkozó szabályzatokat.
+
+[!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
 ## <a name="powershell"></a>PowerShell
 
-A cikkben szereplő példák használatához az Azure PowerShell 6.0-s vagy újabb verziója szükséges. Ha nem rendelkezik 6.0-s vagy újabb, [verzió frissítése](/powershell/azure/install-az-ps).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 *Erőforráscsoportok* meglévő címkéinek megtekintéséhez használja a következőt:
 
@@ -275,5 +279,4 @@ REST API-műveleteket, lásd: [Azure Billing – REST API-referencia](/rest/api/
 ## <a name="next-steps"></a>További lépések
 
 * Nem minden erőforrástípus támogatja a címkék. Ha alkalmazhat egy címkét egy erőforrástípus megállapításához lásd: [címkézése Azure-erőforrások támogatása](tag-support.md).
-* Testreszabott házirendek használatával alkalmazhat korlátozások és konvenciói előfizetését. Egy Ön által meghatározott szabályzat szükség lehet, hogy az összes erőforrásnak rendelkeznie kell egy értéket egy adott címkét. További információkért lásd: [Mi az Azure Policy?](../azure-policy/azure-policy-introduction.md)
 * Bevezetés a portál használatával, lásd: [az Azure-erőforrások kezelése az Azure portal használatával](resource-group-portal.md).  

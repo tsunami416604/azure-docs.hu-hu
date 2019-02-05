@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 64b8ca0412461ae1001eecce335f94d9f2f0825f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6fc85bd96294650eb2bbf9495642851ade7c7868
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659065"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731512"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -39,6 +39,20 @@ A következő rendszergazdai szerepkörök érhetők el:
   <b>Fontos</b>: A szerepkörök képes kezelni az alkalmazás hitelesítő adatait. Ehhez a szerepkörhöz tartozó felhasználók hitelesítő adatok hozzáadása egy alkalmazáshoz, és ezeket a hitelesítő adatokat használja a megszemélyesíteni az alkalmazás azonosítóját. Ha az alkalmazás azonosítóját hozzáférési engedélyt kapott az Azure Active Directoryhoz, például létrehozni vagy frissíteni a felhasználói és más objektumok, majd ehhez a szerepkörhöz hozzárendelt felhasználó sikerült végrehajtani az alkalmazás megszemélyesítése közben ezeket a műveleteket. Ezt a lehetőséget az alkalmazás identitás megszemélyesítése lehet egy megszerzését keresztül a felhasználó mit tehetnek a szerepkör-hozzárendeléseket keresztül az Azure ad-ben. Fontos megérteni, hogy a felhasználó az alkalmazás-rendszergazda szerepkör hozzárendelése biztosít az Alkalmazásidentitás megszemélyesítését.
 
 * **[Alkalmazás fejlesztője](#application-developer)**: A szerepkör felhasználói alkalmazásregisztrációkat hozhat létre. Ha a "Felhasználók regisztrálhatnak alkalmazásokat" beállítás értéke nem. Ez a szerepkör lehetővé teszi a saját nevükben jóváhagyást tagok amikor a "Felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek a céges adatok saját nevükben való" beállítás értéke nem. Ezen szerepkör tagjai tulajdonosként való hozzáadásakor új alkalmazásregisztráció vagy a vállalati alkalmazások létrehozásakor.
+
+* **[Hitelesítési rendszergazda](#authentication-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a jelenlegi hitelesítési módszerre vonatkozó adatok megtekintése és beállíthatja, vagy a jelszó-hitelesítő adatok alaphelyzetbe állítása. Hitelesítés a rendszergazdák kényszerítheti a felhasználókat, regisztrálja újra a meglévő jelszó-hitelesítő adat (pl. MFA, FIDO) ellen, és visszavonhatja a "MFA megjegyzése az eszközön", más felhasználók, akik nem rendszergazdák vagy a tagok a következő bejelentkezéshez a multi-factor Authentication kéri, a csak következő szerepköröket:
+  * Hitelesítési rendszergazda
+  * Directory-olvasók
+  * Vendég meghívója
+  * Üzenetközpont-olvasó
+  * Jelentésolvasó
+  
+  <b>Fontos</b>: Ezzel a szerepkörrel rendelkező felhasználók személyek férhetnek hozzá a bizalmas vagy titkos információk vagy kritikus konfigurációs belüli és kívüli Azure Active Directory hitelesítő adatok módosításához. A felhasználó hitelesítő adatainak módosítása jelentheti azt feltételezik, hogy felhasználói identitás- és engedélyek lehetővé teszi. Példa:
+  * Alkalmazás regisztrálása és a vállalati alkalmazás tulajdonosok, aki kezelheti az alkalmazásokat a saját hitelesítő adatait. Ezeknek az alkalmazásoknak előfordulhat, hogy emelt szintű engedélyek az Azure ad-ben és a hitelesítési rendszergazdák máshol nem kapott. Ez lehet, hogy a hitelesítést rendszergazda az alkalmazás tulajdonosa identitását, és ezután további elérési útján feltételezik, egy emelt szintű alkalmazáshoz a hitelesítő adatokat, az alkalmazás frissítésével.
+  * Azure-előfizetéssel rendelkező, előfordulhat, hogy hozzáféréssel rendelkező bizalmas vagy titkos információk vagy kritikus fontosságú konfigurációját az Azure-ban.
+  * Biztonsági csoport és az Office 365-csoport tulajdonosainak, csoport tagságának kezelésére jogosult. Ezeket a csoportokat a bizalmas vagy titkos információk, vagy a kritikus konfigurálása az Azure ad-ben és a máshol hozzáférést biztosíthat.
+  * A rendszergazdák az Azure AD-en kívül más szolgáltatásokkal, például Exchange online-hoz, Office biztonsági és megfelelőségi központban és emberi erőforrások rendszerek.
+  * A nem rendszergazdák, például a vezetők, a védőt és a személyzeti osztályon dolgozóknak, akik esetleg bizalmas vagy személyes információkhoz való hozzáférés.
 
 * **[Számlázási adminisztrátor](#billing-administrator)**: Vásárol, kezeli az előfizetéseket és a támogatási jegyeket, és figyeli a szolgáltatás állapotát.
 
@@ -274,6 +288,19 @@ Hozhat létre alkalmazást az alkalmazásregisztrációk független a "felhaszn�
 | microsoft.aad.directory/appRoleAssignments/createAsOwner | AppRoleAssignment objektumok létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
 | microsoft.aad.directory/oAuth2PermissionGrants/createAsOwner | Az oAuth2PermissionGrants létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | A servicePrincipals létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
+
+### <a name="authentication-administrator"></a>Hitelesítési rendszergazda
+Megtekintheti, állítsa be, és alaphelyzetbe állítása hitelesítési módszerre vonatkozó adatok bármely nem rendszergazdai felhasználó számára engedélyezett.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.aad.directory/users/invalidateAllRefreshTokens | Az összes felhasználófrissítési jogkivonat érvénytelenítése az Azure Active Directoryban. |
+| microsoft.aad.directory/users/strongAuthentication/update | Az erős hitelesítési tulajdonságok, például az MFA hitelesítő adatainak frissítése. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Az Azure Service Health olvasása és konfigurálása. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Az Azure-beli támogatási jegyek létrehozása és kezelése. |
+| microsoft.office365.webPortal/allEntities/basic/read | A microsoft.office365.webPortal összes erőforrása alapvető terméktulajdonságainak olvasása. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
 ### <a name="billing-administrator"></a>Számlázási adminisztrátor
 Számlázással kapcsolatos általános feladatokat hajthat végre, például frissítheti a fizetési adatokat.

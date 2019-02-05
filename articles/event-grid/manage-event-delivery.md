@@ -7,20 +7,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/06/2019
 ms.author: spelluru
-ms.openlocfilehash: 8660f09c41cf6226f2ffb173508d37c260522b80
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a15797e9b181aa877b6dfa3350e69b210af5885e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474246"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731767"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Kézbesítetlen levelek és újrapróbálkozási szabályzatok
 
 Egy esemény-előfizetés létrehozásakor testre szabható eseménykézbesítés beállításait. Ez a cikk bemutatja, hogyan állítsa be a kézbesítetlen levelek helyét, és az újrapróbálkozási beállítások testreszabása. További információt szeretne ezekről a funkciókról: [Event Grid az üzenetek kézbesítését, és ismételje meg](delivery-and-retry.md).
-
-## <a name="install-preview-feature"></a>Előzetes verziójú funkció telepítése
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="set-dead-letter-location"></a>Kézbesíthetetlen levelek helyének beállítása
 
@@ -29,10 +25,6 @@ Egy esemény-előfizetés létrehozásakor testre szabható eseménykézbesíté
 ### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 containername=testcontainer
 
 topicid=$(az eventgrid topic show --name demoTopic -g gridResourceGroup --query id --output tsv)
@@ -47,13 +39,12 @@ az eventgrid event-subscription create \
 
 Kikapcsolja a kézbesítetlen levelek kezelése, futtassa újra a parancsot az esemény-előfizetés létrehozásához, de nem ad meg értéket `deadletter-endpoint`. Az Eseményelőfizetés törlése nincs szükségünk.
 
+> [!NOTE]
+> Azure CLI-vel használ a helyi gépén, ha használja az Azure CLI verziója 2.0.56 vagy nagyobb. Az Azure CLI legújabb verziójának telepítéséről útmutatásért lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli).
+
 ### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
 $containername = "testcontainer"
 
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
@@ -68,6 +59,9 @@ New-AzureRmEventGridSubscription `
 
 Kikapcsolja a kézbesítetlen levelek kezelése, futtassa újra a parancsot az esemény-előfizetés létrehozásához, de nem ad meg értéket `DeadLetterEndpoint`. Az Eseményelőfizetés törlése nincs szükségünk.
 
+> [!NOTE]
+> Az Azure-bővítményén használja a helyi gépén, ha az Azure PowerShell 1.1.0-s verzió vagy újabb. Töltse le és telepítse az Azure PowerShell legújabb verzióját a [Azure letöltések](https://azure.microsoft.com/downloads/).
+
 ## <a name="set-retry-policy"></a>Újrapróbálkozási szabályzat beállítása
 
 Event Grid-előfizetés létrehozásakor beállíthatja mennyi ideig kell próbálja az Event Grid, hogy az esemény értékeit. Alapértelmezés szerint a Event Grid 24 óra (1440 perc), illetve 30 alkalommal próbálkozik. Ezek az értékek valamelyike beállíthatja az event grid-előfizetés számára. A time-to-live event értékét 1-től 1440 egész szám lehet. Az újrapróbálkozások maximális értékét 30 1 közötti egész számnak kell lennie.
@@ -79,10 +73,6 @@ Nem lehet konfigurálni a [újrapróbálkozási ütemezés](delivery-and-retry.m
 Az esemény time-to-live 1440 perc értéktől létrehozásához használja:
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid event-subscription create \
   -g gridResourceGroup \
   --topic-name <topic_name> \
@@ -109,10 +99,6 @@ Ha mind `event-ttl` és `max-deliver-attempts`, Event Grid használja az első, 
 Az esemény time-to-live 1440 perc értéktől létrehozásához használja:
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
 
 New-AzureRmEventGridSubscription `

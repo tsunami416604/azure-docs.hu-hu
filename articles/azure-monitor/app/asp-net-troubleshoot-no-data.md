@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 690822848fa2c6524f98c9bbd32e6d2890e4a9c4
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e32d3fe30796015c8189eee819a0cc3dd4581e22
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118762"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700910"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -160,7 +160,7 @@ Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el [Java web
 * Ellenőrizze, hogy ténylegesen kimásolt minden Microsoft. A kiszolgálóval együtt Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ApplicationInsights dll-EK
 * A tűzfalat, előfordulhat, hogy kell [nyissa meg az egyes TCP-portok](../../azure-monitor/app/ip-addresses.md).
 * Ha szeretne küldeni a vállalati hálózaton kívül, állítsa be a proxy használatát [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) a Web.config fájlban
-* A Windows Server 2008: Győződjön meg arról, hogy telepítette a következő frissítéseket: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
+* Windows Server 2008: Győződjön meg arról, hogy telepítette a következő frissítéseket: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Használt adatokat, de leállt
 * Ellenőrizze a [állapot blog](https://blogs.msdn.com/b/applicationinsights-status/).
@@ -185,6 +185,52 @@ Az városa, régió és ország dimenziók IP-címek vannak származtatva, és n
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>„A metódus nem található” kivétel az Azure Cloud Servicesben futó rendszeren
 A .NET 4.6-os verziójára készítette el az alkalmazást? Az Azure Cloud Services szerepkörei nem támogatják automatikusan a 4.6-os verziót. [Telepítse a 4.6-os verziót mindegyik szerepkörön](../../cloud-services/cloud-services-dotnet-install-dotnet.md), mielőtt futtatná az alkalmazást.
+
+## <a name="troubleshooting-logs"></a>Hibaelhárítási naplók
+
+Kövesse az alábbi utasításokat a keretrendszer hibaelhárítási naplók rögzítésére.
+
+### <a name="net-framework"></a>.NET-keretrendszer
+
+1. Telepítse a [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) NuGet-csomagot. A verzióhoz meg kell egyeznie a jelenlegi verziója `Microsoft.ApplicationInsighs`
+
+2. Módosítsa az applicationinsights.config fájlt a következők:
+
+   ```xml
+   <TelemetryModules>
+      <Add Type="Microsoft.ApplicationInsights.Extensibility.HostingStartup.FileDiagnosticsTelemetryModule, Microsoft.AspNet.ApplicationInsights.HostingStartup">
+        <Severity>Verbose</Severity>
+        <LogFileName>mylog.txt</LogFileName>
+        <LogFilePath>C:\\SDKLOGS</LogFilePath>
+      </Add>
+   </TelemetryModules>
+   ```
+   Az alkalmazás írási jogosultsággal kell rendelkeznie a konfigurált helyre
+ 
+ 3. Indítsa újra a folyamatot úgy, hogy ezek az új beállítások mértékének növelése SDK
+ 
+ 4. Amikor végzett, visszaállítás ezeket a módosításokat.
+  
+### <a name="net-core"></a>.Net Core
+
+1. Telepítse a [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) NuGet-csomagot. A verzióhoz meg kell egyeznie a jelenlegi verziója `Microsoft.ApplicationInsighs`
+
+2. Módosítsa `ConfigureServices` metódus az a `Startup.cs` osztály.:
+
+    ```csharp
+    services.AddSingleton<ITelemetryModule, FileDiagnosticsTelemetryModule>();
+    services.ConfigureTelemetryModule<FileDiagnosticsTelemetryModule>( (module, options) => {
+        module.LogFilePath = "C:\\SDKLOGS";
+        module.LogFileName = "mylog.txt";
+        module.Severity = "Verbose";
+    } );
+    ```
+   Az alkalmazás írási jogosultsággal kell rendelkeznie a konfigurált helyre
+ 
+ 3. Indítsa újra a folyamatot úgy, hogy ezek az új beállítások mértékének növelése SDK
+ 
+ 4. Amikor végzett, visszaállítás ezeket a módosításokat.
+  
 
 ## <a name="still-not-working"></a>Még mindig nem működik...
 * [Application Insights-fórum](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

@@ -1,6 +1,6 @@
 ---
 title: Az Azure SQL Database felügyelt példány naplózása |} A Microsoft Docs
-description: Ismerje meg, hogyan kezdheti el az Azure SQL Database felügyelt példány naplózási T-SQL használatával
+description: Ismerje meg, hogyan kezdheti el az Azure SQL Database felügyelt példány auditálás T-SQL használatával
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -13,22 +13,22 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/15/2019
-ms.openlocfilehash: 3a445fbc135e0d7dc19907339506fd0c32bffb45
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: f82c96b972baa161658f4a864572bfcb791939ed
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456034"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728997"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés az Azure SQL Database felügyelt példány naplózási szolgáltatásával
 
-[Az Azure SQL Database felügyelt példányain](sql-database-managed-instance.md) naplózási nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókban. A naplózás is:
+[Felügyelt példány](sql-database-managed-instance.md) naplózás nyomon követi az adatbázisok eseményeit, és az Azure storage-fiókjában található auditálási naplóba írja őket. A naplózás is:
 
 - Segít a jogszabályoknak való megfelelőség, adatbázis-tevékenység megértésében, valamint betekintést nyerhet az eltéréseket és rendellenességeket, amelyek üzleti aggályokra vagy biztonsági problémákat.
 - Lehetővé teszi, hogy, és megkönnyíti a megfelelőségi szabványok betartásának, bár ez nem garantálja a megfelelőség. Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://azure.microsoft.com/support/trust-center/compliance/).
 
-## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>A kiszolgáló, az Azure Storage-naplózás beállítása
+## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>A kiszolgáló, az Azure storage-naplózás beállítása
 
 Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurálása.
 
@@ -38,7 +38,7 @@ Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurál�
    1. Keresse meg az Azure Storage, ahol szeretné a naplófájlok.
 
       > [!IMPORTANT]
-      > A felügyelt példány kiszolgáló ugyanabban a régióban a storage-fiók használatával régiók közötti írásának/olvasásának elkerülése érdekében.
+      > Használja a storage-fiók ugyanabban a régióban, mint a felügyelt példány régiók közötti írásának/olvasásának elkerülése érdekében.
 
    1. A storage-fiókban, lépjen a **áttekintése** kattintson **Blobok**.
 
@@ -64,7 +64,7 @@ Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurál�
 
         ![BLOB tároló példány URL-címe](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
-     1. Hozzon létre egy Azure Storage **SAS-Token** a felügyelt példány naplózás hozzáférési jogosultságokat biztosíthat a storage-fiók:
+     1. Hozzon létre egy Azure Storage **SAS-Token** naplózás a tárfiók hozzáférési jogosultsággal a felügyelt példány megadását:
 
         - Keresse meg az Azure Storage-fiók, amelyben az előző lépésben létrehozta a tárolót.
 
@@ -154,7 +154,7 @@ Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurál�
 
 További információ:
 
-- [Naplózás a felügyelt példány, az Azure SQL Database és az SQL Server közötti különbségek](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
+- [Naplózás az Azure SQL Database és SQL Server-adatbázisok önálló adatbázisok, rugalmas készlet, s és a felügyelt példányok közötti különbségek](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
 - [KISZOLGÁLÓ NAPLÓZÁSI LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [AZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -162,7 +162,7 @@ További információ:
 
 A felügyelt példány auditnaplók még Hubs és a Log Analytics az Azure Monitor használatával lehet küldeni. Ez a szakasz ismerteti, hogyan konfigurálhatja ezt:
 
-1. Navigálás a [az Azure Portal](https://portal.azure.com/) az SQL felügyelt példánya.
+1. Navigálás a [az Azure Portal](https://portal.azure.com/) a felügyelt példányhoz.
 
 2. Kattintson a **diagnosztikai beállítások**.
 
@@ -209,9 +209,6 @@ Többféleképpen naplófájlokat blob megtekintéséhez használhatja.
 
 - Auditálási napló felhasználási módszert teljes listájáért tekintse meg a [első lépései az SQL database naplózási szolgáltatásával](sql-database-auditing.md).
 
-  > [!IMPORTANT]
-  > Megtekintése az Azure Portalon ("Naplórekordok" ablaktábla) a naplózási rekordoknak a felügyelt példány jelenleg nem érhetők el.
-
 ### <a name="consume-logs-stored-in-event-hub"></a>Event Hub tárolt naplók használata
 
 Az Event Hubs naplózási adatok felhasználásához, szüksége lesz egy stream események felhasználásához, és a cél beállítása. További információkért tekintse meg az Azure Event Hubs – dokumentáció.
@@ -222,21 +219,21 @@ A Log Analytics naplók írt, ha azok elérhetők a Log Analytics-munkaterülete
 
 A log Analytics azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. További hasznos információkat a Log Analytics keresési nyelv és a parancsok, lásd: [Log Analytics keresési referenciáját bemutató](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
-## <a name="auditing-differences-between-managed-instance-azure-sql-database-and-sql-server"></a>Naplózás a felügyelt példány, az Azure SQL Database és az SQL Server közötti különbségek
+## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Naplózás az Azure SQL Database és az SQL Server adatbázisok közötti különbségek
 
-A felügyelt példány, az Azure SQL Database és az SQL Server helyszíni SQL-naplózási közötti fő különbségeket a következők:
+A naplózás az Azure SQL Database és az adatbázisok az SQL Server-adatbázisok közötti fő különbségeket a következők:
 
-- A felügyelt példány az SQL Audit működik, a kiszolgáló szintjén, és a tárolók `.xel` naplófájlokat az Azure blob storage-fiók.
-- Az Azure SQL Database SQL-naplózás az adatbázis szintjén működik.
-- A helyszíni SQL Server / virtuális gépek, az SQL Audit működik a kiszolgálón szintű, de a tárolók eseményeket fájlok rendszer-, Windows eseménynaplók.
+- Az Azure SQL Database felügyelt példány üzembe helyezési lehetősége, a naplózást a kiszolgáló szintjén, és a tárolók működését `.xel` naplófájlokat az Azure blob storage-fiók.
+- Az önálló adatbázisok és az Azure SQL Database rugalmas készlet üzembe helyezési lehetőséget, a naplózás az adatbázis szintjén működik.
+- A helyszíni SQL Server / virtuális gépek, naplózási működik a kiszolgálón. szintű, de a fájlok rendszer-vagy windows-eseménynaplók az események tárolja.
 
-Az Azure blob storage tárolók XEvent naplózási a felügyelt példányt támogat. Fájl- és windows-naplók **nem támogatott**.
+Az XEvent naplózási a felügyelt példány az Azure blob storage tárolók támogatja. Fájl- és windows-naplók **nem támogatott**.
 
-A kulcs közötti különbségek a `CREATE AUDIT` szintaxist a naplózás az Azure blob storage-vannak:
+A kulcs közötti különbségek a `CREATE AUDIT` vannak a naplózás az Azure blob storage-Szintaxis:
 
 - Egy új szintaxis `TO URL` van megadva, és lehetővé teszi a URL-címét az Azure blob Storage-tárolóba, a `.xel` fájlok kerülnek.
 - Egy új szintaxis `TO EXTERNAL MONITOR` ahhoz, hogy még a hubot és a Log Analytics célok biztosított.
-- A szintaxist `TO FILE` van **nem támogatott** , mert a felügyelt példány nem érhető el Windows-fájlmegosztásokon.
+- A szintaxist `TO FILE` van **nem támogatott** mert SQL-adatbázis nem érhető el Windows-fájlmegosztásokon.
 - Leállítási lehetőség **nem támogatott**.
 - `queue_delay` a 0 van **nem támogatott**.
 

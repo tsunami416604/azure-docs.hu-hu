@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 105ed999fc7122fb1c99e2c380b26a8c4d8d9f62
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 824bedf782d6d227f2fa3adcf52492bb5a3eb478
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659519"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696863"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Előzetes verzió: Üzembe helyezése az Azure AD jelszóvédelem
 
@@ -40,7 +40,7 @@ A funkció elfogadható időn rendszervizsgálati módban futott, miután a kén
 
 ## <a name="deployment-requirements"></a>Központi telepítésére vonatkozó követelmények
 
-* Minden tartományvezérlő, amelyen telepíteni szeretné az Azure AD-jelszó Protection tartományvezérlő ügynökszolgáltatás futnia kell a Windows Server 2012 vagy újabb.
+* Minden tartományvezérlő, amelyen telepíteni szeretné az Azure AD jelszó védelmi DC ügynök szolgáltatás futnia kell a Windows Server 2012 vagy újabb.
 * Minden olyan gép, amelyen telepíteni szeretné az Azure AD-jelszó védelme Proxy szolgáltatás futnia kell a Windows Server 2012 R2 vagy újabb.
 * Minden olyan gép, amelyen telepítve vannak az Azure AD jelszóvédelem összetevők többek között a tartományvezérlők a Universal C futásidejű telepítve kell rendelkeznie.
 Ez lehetőleg azáltal, hogy teljes mértékben kijavítja a gép Windows Update-en keresztül történik. Ellenkező esetben lehet, egy megfelelő operációsrendszer-specifikus frissítési csomag telepítve – lásd: [Universal C-modul a Windows Update](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
@@ -168,17 +168,17 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
 
       A fenti példákban csak akkor lesz sikeres, ha az aktuálisan bejelentkezett felhasználó egyben a legfelső szintű tartomány Active Directory tartományi rendszergazda. Ha nem ez a helyzet, előfordulhat, hogy adja meg a - ForestCredential paraméter alternatív tartományi hitelesítő adatokat.
 
-      > [!NOTE]
-      > Ha a proxykiszolgálók több vannak telepítve a környezetben, nem számít, melyik proxy kiszolgáló az erdő regisztrálásához használja.
+   > [!NOTE]
+   > Ha a proxykiszolgálók több vannak telepítve a környezetben, nem számít, melyik proxy kiszolgáló az erdő regisztrálásához használja.
 
-      > [!TIP]
-      > Előfordulhatnak olyan jelentős késleltetés (sok másodperc) egy adott Azure-bérlő esetében futtassa ezt a parancsmagot, a parancsmag végrehajtásának befejeződése előtt először. Csak akkor jelent hibát, ezt a késést nem tekinthető ijesztő.
+   > [!TIP]
+   > Előfordulhatnak olyan jelentős késleltetés (sok másodperc) egy adott Azure-bérlő esetében futtassa ezt a parancsmagot, a parancsmag végrehajtásának befejeződése előtt először. Csak akkor jelent hibát, ezt a késést nem tekinthető ijesztő.
 
-      > [!NOTE]
-      > Az Active Directory-erdő regisztrációs várhatóan egy egyszeri lépés az erdő élettartama során. A tartományt vezérlő ügynökök erdőben futtató automatikusan végre fogja hajtani a bármely más szükséges maintainenance ettől kezdve. Miután egy adott erdő esetén, további indítások sikeres `Register-AzureADPasswordProtectionForest` továbbra is sikeres legyen, de nem szükségesek.
+   > [!NOTE]
+   > Az Active Directory-erdő regisztrációs várhatóan egy egyszeri lépés az erdő élettartama során. A tartományt vezérlő ügynökök erdőben futtató automatikusan végre fogja hajtani a bármely más szükséges maintainenance ettől kezdve. Miután egy adott erdő esetén, további indítások sikeres `Register-AzureADPasswordProtectionForest` továbbra is sikeres legyen, de nem szükségesek.
 
-      > [!NOTE]
-      > Ahhoz, hogy `Register-AzureADPasswordProtectionForest` legalább egy Windows Server 2012 vagy újabb tartomány sikeres vezérlő elérhetőnek kell lennie a proxykiszolgálót a tartományban. Azonban esetében nem követelmény, hogy a tartományvezérlő ügynök szoftvert telepítenie minden olyan tartományvezérlőn, ez a lépés előtt.
+   > [!NOTE]
+   > Ahhoz, hogy `Register-AzureADPasswordProtectionForest` legalább egy Windows Server 2012 vagy újabb tartomány sikeres vezérlő elérhetőnek kell lennie a proxykiszolgálót a tartományban. Azonban esetében nem követelmény, hogy a tartományvezérlő ügynök szoftvert telepítenie minden olyan tartományvezérlőn, ez a lépés előtt.
 
 6. Az Azure AD-jelszó védelmi Proxy szolgáltatás HTTP-proxyn keresztüli kommunikáció konfigurálása
 

@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: a7b091fa02c7ab6eb56826ebc7487d7ca0691610
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/04/2019
+ms.openlocfilehash: 79a7aad8cd747c3fdadcd0f7eec12d861f31fcc0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510877"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730509"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database adatbázis
 
@@ -134,7 +134,7 @@ Az SQL Database bekapcsolhatja a naplózást az adatbázissal kapcsolatos esemé
 
 #### <a name="threat-detection"></a>Fenyegetések észlelése
 
-A [fenyegetésészlelés](sql-database-threat-detection.md), lehetővé teszi számára, hogy nagyon egyszerűen naplózás által észlelt biztonsági vagy házirend megsértésének kap. Nem kell lenniük egy biztonsági szakértői, a rendszer potenciális fenyegetések vagy szabálysértések megoldása érdekében. A fenyegetésészlelés is rendelkezik néhány beépített képességek, mint az SQL-injektálás felderítése. SQL-injektálás alter vagy veszélyeztetheti az adatokat és a egy adatbázis-alkalmazás intézményt általában elég általános módja. Az SQL Database Threat Detection algoritmusokban, ami észleli a potenciális biztonsági réseket és SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról (például hozzáférés szokatlan helyről vagy résztvevő részéről) több példányban fut. Biztonsági tisztviselők, vagy más kijelölt rendszergazdák e-mailben értesítést kapni, fenyegetés észlelésekor az adatbázison. Minden értesítést a gyanús tevékenységeket és ajánlások részleteit tartalmazza a vonatkozó további vizsgálata és a fenyegetés. Ismerje meg, hogyan kapcsolja be a fenyegetésészlelés, tekintse meg: [Engedélyezze az SQL Database Threat Detection](sql-database-security-tutorial.md#enable-security-features).
+A [fenyegetésészlelés](sql-database-threat-detection.md), lehetővé teszi számára, hogy nagyon egyszerűen naplózás által észlelt biztonsági vagy házirend megsértésének kap. Nem kell lenniük egy biztonsági szakértői, a rendszer potenciális fenyegetések vagy szabálysértések megoldása érdekében. A fenyegetésészlelés is rendelkezik néhány beépített képességek, mint az SQL-injektálás felderítése. SQL-injektálás alter vagy veszélyeztetheti az adatokat és a egy adatbázis-alkalmazás intézményt általában elég általános módja. A fenyegetésészlelés algoritmusokban, ami észleli a potenciális biztonsági réseket és SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról (például hozzáférés szokatlan helyről vagy résztvevő részéről) több példányban fut. Biztonsági tisztviselők, vagy más kijelölt rendszergazdák e-mailben értesítést kapni, fenyegetés észlelésekor az adatbázison. Minden értesítést a gyanús tevékenységeket és ajánlások részleteit tartalmazza a vonatkozó további vizsgálata és a fenyegetés. Ismerje meg, hogyan kapcsolja be a fenyegetésészlelés, tekintse meg: [Fenyegetésészlelés engedélyezése](sql-database-security-tutorial.md#enable-security-features).
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Hogyan védhetem az adatok általában az SQL Database
 
@@ -220,7 +220,7 @@ Lekérdezési teljesítmény elemzésekkel is igénybe személyre szabott ajánl
 
 ### <a name="security-optimization"></a>Biztonsági optimalizálása
 
-Az SQL Database végrehajtható biztonsági ajánlásokat, amellyel biztonságossá teheti az adatok és a Fenyegetésészlelés azonosítása, és vizsgálja meg a gyanús adatbázis-tevékenységekről, amely az adatbázis egy lehetséges szál biztosít. [SQL-sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy adatbázis vizsgálatát, és a jelentéskészítési szolgáltatás, amely lehetővé teszi, hogy nagy mennyiségű az adatbázisok biztonsági állapotának figyelése és a biztonsági kockázatokat és a egy Ön által definiált alapvető biztonsági eltérő. Minden ellenőrzését követően a testreszabott listájának felkínál és szervizelési parancsfájl áll rendelkezésre, valamint az értékelési jelentés használható megfelelőségi követelmények kielégítése érdekében.
+Az SQL Database végrehajtható biztonsági ajánlásokat segítségével biztosíthatja az adatok és a fenyegetésészlelés az azonosítása, és vizsgálja meg a gyanús adatbázis-tevékenységekről, amely az adatbázis egy lehetséges szál biztosít. [A biztonságirés-értékelési](sql-vulnerability-assessment.md) egy adatbázis vizsgálatát, és a jelentéskészítési szolgáltatás, amely lehetővé teszi, hogy nagy mennyiségű az adatbázisok biztonsági állapotának figyelése és a biztonsági kockázatokat és a egy Ön által definiált alapvető biztonsági eltérő. Minden ellenőrzését követően a testreszabott listájának felkínál és szervizelési parancsfájl áll rendelkezésre, valamint az értékelési jelentés használható megfelelőségi követelmények kielégítése érdekében.
 
 Az Azure Security Center azonosíthatja a melyen a biztonsági javaslatok láthatók, és alkalmazza azokat egyetlen kattintással.
 

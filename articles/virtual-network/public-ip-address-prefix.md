@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 5bbe0709f89ca198b0571526291f700c99e9e59f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 95fb889da564d6e40e25dfb9ee64a8665a954652
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966826"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700740"
 ---
 # <a name="public-ip-address-prefix"></a>Nyilvános IP-cím előtagja
 
@@ -31,7 +31,7 @@ Nyilvános IP-címek egy címkészletből minden egyes Azure-régióban vannak r
 Hoz létre egy nyilvános IP-címelőtag egy Azure-régióban és az előfizetés nevét adja meg, és hány cím kívánja felvenni az előtagot. Például ha létrehoz egy nyilvános IP-címelőtag/28-as, Azure foglal le 16 címeket a tartományok közül az Ön számára. Melyik Azure fog hozzárendelni, amíg nem hoz létre a tartomány tartomány nem tudja, de a címek olyan egybefüggő. Nyilvános IP-címelőtagokat díjat kell. További információkért lásd: [nyilvános IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses).
 
 > [!IMPORTANT]
-> Nyilvános IP-előtag van, korlátozott számú régióban egy nyilvános előzetes verzióban érhető el. Is [ismerje meg, hogy mit jelent az előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Nyilvános IP-címelőtag jelenleg érhető el: USA nyugati középső Régiója, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa és Délkelet-Ázsia. Régiók frissített listáját, keresse fel [Azure-frissítések](https://azure.microsoft.com/updates/?product=virtual-network).
+> Nyilvános IP-előtag van, korlátozott számú régióban egy nyilvános előzetes verzióban érhető el. Is [ismerje meg, hogy mit jelent az előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Nyilvános IP-előtag jelenleg érhető el: USA nyugati középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa és Délkelet-Ázsia. Régiók frissített listáját, keresse fel [Azure-frissítések](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="why-create-a-public-ip-address-prefix"></a>Miért érdemes létrehozni egy nyilvános IP-címelőtag?
 
@@ -51,9 +51,9 @@ Az előtag a következő erőforrások társítható egy statikus nyilvános IP-
 
 |Erőforrás|Forgatókönyv|Lépések|
 |---|---|---|
-|Virtuális gépek| Nyilvános IP-címek az előtag az Azure-beli virtuális gépekhez való társítása csökkenti a felügyeleti terhelést, esetén, a tűzfal IP-címek engedélyezési. Egyszerűen csak engedélyezett egy teljes előtagból egyetlen tűzfalszabályt is. Megoldást az Azure-beli virtuális gépek, a költség, idő és munkaterhelést mentése ugyanazon előtaggal IP-címek is hozzárendelhetők.| IP-címek társításához az előtag a virtuális gépre: 1. [Hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) 2. [Hozzon létre egy IP-cím előtag.](manage-public-ip-address-prefix.md) 3. [Az IP-cím a virtuális gép hálózati adapteréhez társítja.](virtual-network-network-interface-addresses.md#add-ip-addresses)
+|Virtuális gépek| Nyilvános IP-címek az előtag az Azure-beli virtuális gépekhez való társítása csökkenti a felügyeleti terhelést, esetén, a tűzfal IP-címek engedélyezési. Egyszerűen csak engedélyezett egy teljes előtagból egyetlen tűzfalszabályt is. Megoldást az Azure-beli virtuális gépek, a költség, idő és munkaterhelést mentése ugyanazon előtaggal IP-címek is hozzárendelhetők.| IP-címek társításához az előtag a virtuális géphez: 1. [Hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) 2. [Hozzon létre egy IP-cím előtag.](manage-public-ip-address-prefix.md) 3. [Az IP-cím a virtuális gép hálózati adapteréhez társítja.](virtual-network-network-interface-addresses.md#add-ip-addresses)
 | Terheléselosztók | Társítja a nyilvános IP-címek az előtag, az előtérbeli IP-konfiguráció vagy a terheléselosztó kimenő szabály biztosítja, hogy az Azure nyilvános IP-címtér egyszerűsítését. A forgatókönyv egyszerűsítheti karcsúsítási kimenő kapcsolatokat lehet egy nyilvános IP-címelőtag által meghatározott folytonos IP-címek tartományának származik. | IP-címek társításához az előtag a terheléselosztóhoz: 1. [Hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) 2. [Hozzon létre egy IP-cím előtag.](manage-public-ip-address-prefix.md) 3. A terheléselosztó létrehozásakor válassza ki, vagy frissítse a IP-címet az előtérbeli IP-címét a terheléselosztó a fenti 2. lépésben létrehozott. |
-| Azure Firewall | Kimenő SNAT az előtag nyilvános IP-cím használható. Ez azt jelenti, hogy az összes kimenő virtuális hálózati forgalom fordítja le a [Azure tűzfal](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nyilvános IP-cím. Mivel az IP egy előre meghatározott előtag származik, célszerű rendkívül könnyen lehet előre tudni az Azure-ban a nyilvános IP-erőforrásigénye fog kinézni. | 1. [Hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) 2. [Hozzon létre egy IP-cím előtag.](manage-public-ip-address-prefix.md) 3. Ha Ön [üzembe helyezése az Azure-tűzfalon](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), ügyeljen arra, hogy válassza ki az Ön previosuly lefoglalt IP előtagot.|
+| Azure Firewall | Kimenő SNAT az előtag nyilvános IP-cím használható. Ez azt jelenti, hogy az összes kimenő virtuális hálózati forgalom fordítja le a [Azure tűzfal](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nyilvános IP-cím. Mivel az IP egy előre meghatározott előtag származik, célszerű rendkívül könnyen lehet előre tudni az Azure-ban a nyilvános IP-erőforrásigénye fog kinézni. | 1. [Hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) 2. [Hozzon létre egy IP-cím előtag.](manage-public-ip-address-prefix.md) 3. Ha Ön [üzembe helyezése az Azure-tűzfalon](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), ügyeljen arra, hogy válassza ki a korábban kiosztott IP-cím előtag.|
 
 ## <a name="constraints"></a>Korlátozások
 

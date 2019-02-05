@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5e080614d4f0001a0bf1b44dd402f37db2463e03
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b8c6ac78447a4e4db79ed75100222eee8d528b58
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206117"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696897"
 ---
 # <a name="manage-access-using-rbac-and-azure-resource-manager-templates"></a>Való hozzáférés RBAC- és Azure Resource Manager-sablonok kezelése
 
@@ -92,16 +92,18 @@ Az alábbiakban látható egy példa egy olvasó szerepkör-hozzárendelést egy
 
 ## <a name="deploy-template-using-azure-powershell"></a>Azure PowerShell-lel sablon üzembe helyezése
 
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
 Az Azure PowerShell-lel előző sablon üzembe helyezéséhez kövesse az alábbi lépéseket.
 
 1. Hozzon létre egy új rbac-rg.json fájlt, és másolja ki az előző sablon.
 
 1. Jelentkezzen be az [Azure PowerShellbe](/powershell/azure/authenticate-azureps).
 
-1. Get-felhasználó, csoport vagy alkalmazás egyedi azonosítója. Használhatja például a [Get-AzureRmADUser](/powershell/module/azurerm.resources/get-azurermaduser) paranccsal listát készíthet az Azure AD-felhasználók.
+1. Get-felhasználó, csoport vagy alkalmazás egyedi azonosítója. Használhatja például a [Get-AzADUser](/powershell/module/az.resources/get-azaduser) paranccsal listát készíthet az Azure AD-felhasználók.
 
     ```azurepowershell
-    Get-AzureRmADUser
+    Get-AzADUser
     ```
 
 1. Egy GUID eszköz segítségével hozza létre, amely jelzi a szerepkör-hozzárendelés egyedi azonosítója. Az azonosító formátuma: `11111111-1111-1111-1111-111111111111`
@@ -109,21 +111,21 @@ Az Azure PowerShell-lel előző sablon üzembe helyezéséhez kövesse az alább
 1. Hozzon létre egy példa erőforráscsoportot.
 
     ```azurepowershell
-    New-AzureRmResourceGroup -Name ExampleGroup -Location "Central US"
+    New-AzResourceGroup -Name ExampleGroup -Location "Central US"
     ```
 
-1. Használja a [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) parancsot az üzembe helyezés elindításához.
+1. Használja a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsot az üzembe helyezés elindításához.
 
     ```azurepowershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     ```
 
     A rendszer felkéri a szükséges paramétereket adja meg. Az alábbiakban látható egy példa a kimenetre.
 
     ```Output
-    PS /home/user> New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    PS /home/user> New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     
-    cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
+    cmdlet New-AzResourceGroupDeployment at command pipeline position 1
     Supply values for the following parameters:
     (Type !? for Help.)
     principalId: 22222222-2222-2222-2222-222222222222
@@ -251,4 +253,4 @@ Az Azure CLI használatával az előző sablon üzembe helyezéséhez kövesse a
 
 - [Létre és helyezhet üzembe az első Azure Resource Manager-sablon](../azure-resource-manager/resource-manager-create-first-template.md)
 - [Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)
-- [Azure-Gyorssablonok](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/?term=rbac)

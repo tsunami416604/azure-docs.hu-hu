@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 02b70909e701dbeffaec0aa6bdc39e449bdfad08
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: b77ed879375cff8d45f7d532283647e70252bdab
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660357"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732838"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Hogyan hozhat létre Linux rendszerű virtuális gép az Azure-ban több hálózati kártyák
 
@@ -27,7 +27,7 @@ ms.locfileid: "55660357"
 Ez a cikk részletesen bemutatja az Azure CLI használatával több hálózati adapterrel rendelkező virtuális gép létrehozásához.
 
 ## <a name="create-supporting-resources"></a>Hozzon létre a támogató erőforrások
-Telepítse a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
+Telepítse a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index).
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa paraméterneveket foglalt *myResourceGroup*, *mystorageaccount*, és *myVM*.
 
@@ -48,7 +48,7 @@ az network vnet create \
     --subnet-prefix 10.0.1.0/24
 ```
 
-Hozzon létre egy alhálózatot a háttér-forgalom [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). A következő példában létrehozunk egy nevű alhálózatot *mySubnetBackEnd*:
+Hozzon létre egy alhálózatot a háttér-forgalom [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet). A következő példában létrehozunk egy nevű alhálózatot *mySubnetBackEnd*:
 
 ```azurecli
 az network vnet subnet create \
@@ -116,14 +116,14 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-A hálózati adapter hozzáadása egy meglévő virtuális Gépet, először szabadítsa fel a virtuális Gépet a [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Az alábbi példa felszabadítja a virtuális gép nevű *myVM*:
+A hálózati adapter hozzáadása egy meglévő virtuális Gépet, először szabadítsa fel a virtuális Gépet a [az vm deallocate](/cli/azure/vm). Az alábbi példa felszabadítja a virtuális gép nevű *myVM*:
 
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Adja hozzá a NIC- [hozzáadása az vm nic](/cli/azure/vm/nic#az_vm_nic_add). A következő példakóddal *myNic3* való *myVM*:
+Adja hozzá a NIC- [hozzáadása az vm nic](/cli/azure/vm/nic). A következő példakóddal *myNic3* való *myVM*:
 
 ```azurecli
 az vm nic add \
@@ -141,13 +141,13 @@ az vm start --resource-group myResourceGroup --name myVM
 Útválasztási táblázatok hozzáadása a vendég operációs rendszer által ismertetett lépéseket követve [a vendég operációs rendszer konfigurálása több hálózati adapterrel](#configure-guest-os-for- multiple-nics).
 
 ## <a name="remove-a-nic-from-a-vm"></a>Távolítsa el a hálózati adapter egy virtuális gépről
-Meglévő virtuális gépről a hálózati adapter eltávolításához először szabadítsa fel a virtuális Gépet a [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Az alábbi példa felszabadítja a virtuális gép nevű *myVM*:
+Meglévő virtuális gépről a hálózati adapter eltávolításához először szabadítsa fel a virtuális Gépet a [az vm deallocate](/cli/azure/vm). Az alábbi példa felszabadítja a virtuális gép nevű *myVM*:
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Távolítsa el a hálózati Adaptert a [eltávolítása az vm nic](/cli/azure/vm/nic#az_vm_nic_remove). A következő példa eltávolítja *myNic3* a *myVM*:
+Távolítsa el a hálózati Adaptert a [eltávolítása az vm nic](/cli/azure/vm/nic). A következő példa eltávolítja *myNic3* a *myVM*:
 
 ```azurecli
 az vm nic remove \

@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a0800a434fdfef0002993fdae797af982391321f
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 20bf851cc9b2965a355286699e1ef255887d7650
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883279"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697088"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>Teljes virtuálisgép-méretezési csoport létrehozása PowerShell segítségével
-Ez a szkript létrehoz egy Windows Server 2016 rendszert futtató virtuálisgép-méretezési csoportot. A rendszer az egyes erőforrásokat konfigurálja és hozza létre ahelyett, hogy a [New-AzureRmVmss elérhető beépített erőforrás-létrehozási lehetőségeit használná](powershell-sample-create-simple-scale-set.md). A szkript futtatása után a virtuálisgép-példányokat RDP-kapcsolaton keresztül érheti el.
+Ez a szkript létrehoz egy Windows Server 2016 rendszert futtató virtuálisgép-méretezési csoportot. Az egyéni erőforrások konfigurált és hozta létre, a használata helyett a [beépített erőforrás-létrehozás lehetőségei elérhető itt a New-AzureRmVmss](powershell-sample-create-simple-scale-set.md). A szkript futtatása után a virtuálisgép-példányokat RDP-kapcsolaton keresztül érheti el.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 4f4c52bd217bf67206fe1208c1d5402216bd8178
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 204898026dc55e7111d3810d4938101ffaddc3f9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879451"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698326"
 ---
-# <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso áttelepítési: egy a helyszíni Linux alkalmazás Újratárolása az Azure virtuális gépek
+# <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso áttelepítése: Egy helyszíni Linux alkalmazás újratárolása az Azure virtuális gépek
 
 Ez a cikk bemutatja, hogyan Contoso van áthelyezését a helyszíni Linux-alapú szolgáltatás desk alkalmazás (**osTicket**), az Azure IaaS virtuális gépeire.
 
@@ -23,20 +23,20 @@ Ez a dokumentum egyike egy sorozat, amely dokumentálja a fiktív Contoso hogyan
 
 **Cikk** | **Részletek** | **Állapot**
 --- | --- | ---
-[1. cikk: áttekintés](contoso-migration-overview.md) | A cikk sorozat, a Contoso-áttelepítési stratégia és az adatsorozathoz használt mintaalkalmazások áttekintése. | Elérhető
+[1. cikk: – Áttekintés](contoso-migration-overview.md) | A cikk sorozat, a Contoso-áttelepítési stratégia és az adatsorozathoz használt mintaalkalmazások áttekintése. | Elérhető
 [2. cikk: Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Contoso előkészíti a helyszíni infrastruktúra és az Azure-infrastruktúra az áttelepítéshez. A sorozat minden migrálásról szóló cikksorozat ugyanazon az infrastruktúrán használható. | Elérhető
 [3. cikk: Mérje fel helyszíni erőforrásait az Azure-ba való migráláshoz](contoso-migration-assessment.md)  | Contoso fut, annak a helyszíni SmartHotel360 app VMware-en futó értékelését. Contoso értékeli az alkalmazás virtuális gépek az Azure Migrate szolgáltatás és a Data Migration Assistant szolgáltatást használó alkalmazás SQL Server-adatbázis használatával. | Elérhető
 [4. cikk: Áthelyezési egy alkalmazást egy Azure virtuális Gépen, és SQL Database felügyelt példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso lift-and-shift az áttelepítés fut az Azure-bA a helyszíni SmartHotel360 alkalmazáshoz. Contoso áttelepíti az alkalmazás előtérbeli virtuális gép használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso az alkalmazás-adatbázis áttelepítése egy Azure SQL Database felügyelt példánya a a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Elérhető   
-[5. cikk: Áthelyezési egy alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-vm.md) | Contoso a SmartHotel360 alkalmazás virtuális gépeit áttelepíti a Site Recovery szolgáltatással az Azure virtuális gépekhez. | Elérhető
-[Cikk 6: Azure virtuális gépeken és a egy SQL Server AlwaysOn rendelkezésre állási csoportban található alkalmazások Újratárolása](contoso-migration-rehost-vm-sql-ag.md) | Contoso áttelepíti a SmartHotel360 alkalmazást. Contoso Site Recovery használatával az alkalmazás virtuális gépek áttelepítéséhez. A Database Migration Service használatával az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt. | Elérhető 
-7. cikk: Áthelyezési egy Linux-alkalmazást az Azure-beli virtuális gépeken | Contoso az Azure virtuális gépek Azure Site Recovery használatával Linux osTicket alkalmazás lift-and-shift áttelepítés befejezése | Ez a cikk
-[A cikk 8: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépek és az Azure MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure-beli virtuális gépek Azure Site Recovery használatával, és az alkalmazás-adatbázis áttelepítése Azure MySQL Server-példány, a MySQL Workbench használatával. | Elérhető
-[9. cikk: Újrabontás egy alkalmazást az Azure Web Apps és az Azure SQL database](contoso-migration-refactor-web-app-sql.md) | A Contoso a SmartHotel360 alkalmazást áttelepíti az Azure Web Apps és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány, a Database Migration Assistant | Elérhető
-[10. cikk: Újrabontás egy Linux-alkalmazás Azure Web Apps és az Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás egy Azure-webalkalmazást az Azure Traffic Managerrel, a folyamatos készregyártás a GitHub integrált több Azure-régióban található. Contoso áttelepíti az alkalmazás-adatbázis egy Azure Database for MySQL-példányt. | Elérhető 
-[11. cikk: Újrabontás a TFS-t az Azure DevOps-szolgáltatásokkal](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi Azure DevOps-szolgáltatásokkal az Azure-ban. | Elérhető
-[A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-bA. Ezután azt rearchitects az alkalmazás webes réteg az Azure Service Fabric és az adatbázis az Azure SQL Database-ban futó Windows tárolójaként. | Elérhető
-[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető
-[Cikk 14: Áttelepítés az Azure-bA méretezése](contoso-migration-scale.md) | Után próbálja ki a migrálás kombinációit, Contoso előkészíti a teljes migrálás az Azure-ba való méretezése. | Elérhető
+[5. cikk: Az Azure virtuális gépein egy alkalmazás újratárolása](contoso-migration-rehost-vm.md) | Contoso a SmartHotel360 alkalmazás virtuális gépeit áttelepíti a Site Recovery szolgáltatással az Azure virtuális gépekhez. | Elérhető
+[6. cikk: Egy Azure virtuális gépeken és a egy SQL Server AlwaysOn rendelkezésre állási csoportban található alkalmazás újratárolása](contoso-migration-rehost-vm-sql-ag.md) | Contoso áttelepíti a SmartHotel360 alkalmazást. Contoso Site Recovery használatával az alkalmazás virtuális gépek áttelepítéséhez. A Database Migration Service használatával az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt. | Elérhető 
+7. cikk: Egy Azure-beli virtuális gépeken Linux alkalmazás újratárolása | Contoso az Azure virtuális gépek Azure Site Recovery használatával Linux osTicket alkalmazás lift-and-shift áttelepítés befejezése | Ez a cikk
+[8. cikk: Egy Azure virtuális gépek és az Azure MySQL Linux alkalmazás újratárolása](contoso-migration-rehost-linux-vm-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure-beli virtuális gépek Azure Site Recovery használatával, és az alkalmazás-adatbázis áttelepítése Azure MySQL Server-példány, a MySQL Workbench használatával. | Elérhető
+[9. cikk: Az Azure Web Apps és az Azure SQL database alkalmazás újrabontása](contoso-migration-refactor-web-app-sql.md) | A Contoso a SmartHotel360 alkalmazást áttelepíti az Azure Web Apps és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány, a Database Migration Assistant | Elérhető
+[10. cikk: Az Azure Web Apps és az Azure MySQL egy Linux-alkalmazás újrabontása](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás egy Azure-webalkalmazást az Azure Traffic Managerrel, a folyamatos készregyártás a GitHub integrált több Azure-régióban található. Contoso áttelepíti az alkalmazás-adatbázis egy Azure Database for MySQL-példányt. | Elérhető 
+[11. cikk: Refaktorovat a TFS-t az Azure DevOps-szolgáltatásokkal](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi Azure DevOps-szolgáltatásokkal az Azure-ban. | Elérhető
+[12. cikk: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-bA. Ezután azt rearchitects az alkalmazás webes réteg az Azure Service Fabric és az adatbázis az Azure SQL Database-ban futó Windows tárolójaként. | Elérhető
+[13. cikk: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető
+[14. cikk: Áttelepítés az Azure-bA méretezése](contoso-migration-scale.md) | Után próbálja ki a migrálás kombinációit, Contoso előkészíti a teljes migrálás az Azure-ba való méretezése. | Elérhető
 
 
 
@@ -47,11 +47,11 @@ Ebben a cikkben a Contoso áttelepíti a kétrétegű **osTicket** alkalmazást,
 Az informatikai vezetőségi szorosan együttműködik üzleti partnerek megértéséhez, amit szeretnének való áttérés eléréséhez:
 
 - **Üzleti növekedés cím**: Contoso nő, és ennek eredményeképpen nincs nyomást a helyszíni rendszerek és infrastruktúra.
-- **Korlátozza a kockázati**: A szolgáltatás desk app fontos a Contoso vállalat. A Contoso biztosítani szeretné nulla kockázattal rendelkező Azure-bA áthelyezni.
-- **Kiterjesztheti**: Contoso nem szeretné az alkalmazást most módosíthatja. Egyszerűen csak szeretné, hogy az alkalmazás stabil.
+- **Korlátozza a kockázati**: A szolgáltatás desk app, kritikus fontosságú a Contoso vállalat. A Contoso biztosítani szeretné nulla kockázattal rendelkező Azure-bA áthelyezni.
+- **Kiterjesztheti**:  Contoso nem szeretné az alkalmazást most módosíthatja. Egyszerűen csak szeretné, hogy az alkalmazás stabil.
 
 
-## <a name="migration-goals"></a>Áttelepítési célok
+## <a name="migration-goals"></a>Migrálási célok
 
 A Contoso felhőalapú csapat rendelkezik rögzített le az áttelepítés, a leginkább megfelelő áttelepítési módszer meghatározásához célok:
 
@@ -87,7 +87,7 @@ Után rögzíthet célokat és követelményeket állapította meg, a Contoso te
 
 Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrányai listáját.
 
-**Szempontok** | **Részletek**
+**Consideration** | **Részletek**
 --- | ---
 **Szakemberek számára** | Az alkalmazás virtuális gépek mindkét átkerül az Azure-bA sem kell módosítani, így egyszerű a migrálás.<br/><br/> Mivel a Contoso lift-and-shift mindkét alkalmazás virtuális gép nem használja, speciális konfigurációs vagy az áttelepítési eszközök nélkül az alkalmazás-adatbázis szükséges.<br/><br/> Contoso teljes hozzáférés az alkalmazás az Azure-beli virtuális gépek megtartja. </br>/br > az alkalmazás virtuális gépek futnak, Ubuntu 16.04-TLS, amely egy támogatott Linux-disztribúció. [További információk](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 **Hátrányai** | A webes és az adatszintű az alkalmazás feladatátvételt egyetlen pont marad. <br/><br/> Contoso kell továbbra is az alkalmazást az Azure virtuális gépeket támogató, nem pedig áthelyezése egy felügyelt szolgáltatás, például az Azure App Service, Azure Database for MySQL-hez.<br/><br/> Contoso tudatában, hogy azáltal dolgot egy lift-and-shift virtuális gépek migrálása az egyszerű, azok még nem teljes mértékben kihasználják által kínált szolgáltatásokkal [, Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview) (beépített magas rendelkezésre állás, kiszámítható teljesítmény, egyszerű méretezés, automatikus biztonsági mentést és a beépített biztonság).
@@ -128,8 +128,8 @@ Itt látható, hogyan Contoso az áttelepítés elvégzéséhez:
 > [!div class="checklist"]
 > * **1. lépés: Készítse elő az Azure Site Recovery**: Contoso hoz létre a replikált adatok tárolásához Azure storage-fiókkal, és létrehoz egy Recovery Services-tárolót.
 > * **2. lépés: A Site Recovery a helyszíni VMware előkészítése**: Contoso előkészíti a virtuális gép felderítés és az ügynök telepítéséhez használandó fiókok, és előkészíti az Azure virtuális géphez való kapcsolódásra a feladatátvételt követően.
-> * **3. lépés: A gépek replikálása**: Contoso állítja be a forrás és cél migrálási környezet, létrehoz egy replikációs szabályzatot és elindítja a virtuális gépek replikálása az Azure storage-bA.
-> * **4. lépés: A Site Recovery a virtuális gépek áttelepítése az**: Contoso, hogy minden működik-e, és majd futtat egy teljes feladatátvételt a virtuális gépek áttelepítése az Azure-ba irányuló feladatátvételi teszt futtatása.
+> * **3. lépés: Virtuális gépek replikálása**: Contoso állítja be a forrás és cél migrálási környezet, létrehoz egy replikációs házirendet, és elindítja a virtuális gépek replikálása az Azure storage-bA.
+> * **4. lépés: A Site Recovery a virtuális gépek áttelepítése**: Contoso, hogy minden működik-e, és majd futtat egy teljes feladatátvételt a virtuális gépek áttelepítése az Azure-ba irányuló feladatátvételi teszt futtatása.
 
 
 ## <a name="step-1-prepare-azure-for-the-site-recovery-service"></a>1. lépés: A Site Recovery szolgáltatással az Azure előkészítése
@@ -157,7 +157,7 @@ Contoso cégnek szüksége van a több Azure-összetevőket a Site Recovery:
 [Ismerje meg](https://docs.microsoft.com/azure/site-recovery/tutorial-prepare-azure) beállítása az Azure Site Recovery.
 
 
-## <a name="step-2-prepare-on-premises-vmware-for-site-recovery"></a>2. lépés: A Site Recovery a helyszíni VMware előkészítése
+## <a name="step-2-prepare-on-premises-vmware-for-site-recovery"></a>2. lépés: A Site Recovery a helyszíni VMware előkészítése
 
 Contoso rendszergazdák készítse elő a helyszíni VMware-infrastruktúra a következő:
 
@@ -194,7 +194,7 @@ A mobilitási szolgáltatás telepítve kell lennie a Linux rendszerű virtuáli
 
 Az Azure-bA a feladatátvételt követően a Contoso biztosítani szeretné az Azure-ban a replikált virtuális gépek csatlakozni tudnak. Ehhez néhány dolgot, amelyeket a Contoso-rendszergazdák megtenni van:
 
-- Az Azure virtuális gépek hozzáférhet az interneten keresztül, lehetővé teszik a helyszíni linuxos virtuális gép SSH áttelepítés előtt.  Ubuntu rendszerre készült ez hajtható végre a következő parancsot: **Sudo apt-get ssh telepítése -y**.
+- Az Azure virtuális gépek hozzáférhet az interneten keresztül, lehetővé teszik a helyszíni linuxos virtuális gép SSH áttelepítés előtt.  Ubuntu rendszerre készült ez segítségével kell végrehajtani a következő parancsot: **Sudo apt-get ssh telepítése -y**.
 - Az áttelepítés (feladatátvétel) futtatása, miután azok ellenőrizheti **rendszerindítási diagnosztika** , a virtuális gép képernyőképének megtekintéséhez.
 - Ha ez sem működik, ellenőrizze, hogy a virtuális gép fut, és tekintse át a kell [hibaelhárítási tippek](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
@@ -275,7 +275,7 @@ A forrás és cél beállítása után, készen áll egy replikációs házirend
 
 1. A **infrastruktúra előkészítése** > **replikációs beállítások** > **replikációs házirend** >  **létrehozás és Társítsa**, akkor hozzon létre egy házirendet **ContosoMigrationPolicy**.
 2. Az alapértelmezett beállítások használata:
-    - **Helyreállítási Időkorlát küszöbértéke**: alapértelmezett 60 perc. Ez az érték határozza meg, hogy milyen gyakran jönnek létre helyreállítási pontok. A rendszer riasztást ad, ha a folyamatos replikáció túllépi ezt a korlátot.
+    - **Helyreállítási Időkorlát küszöbértéke**: Alapértelmezett érték 60 perc. Ez az érték határozza meg, hogy milyen gyakran jönnek létre helyreállítási pontok. A rendszer riasztást ad, ha a folyamatos replikáció túllépi ezt a korlátot.
     - **Helyreállítási pont megőrzése**. Alapértelmezett 24 órányi. Ez az érték határozza meg, mennyi ideig őrzi az egyes helyreállítási pontok. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók.
     - **Alkalmazáskonzisztens pillanatkép gyakorisága**. Alapértelmezés szerint egy óra. Ez az érték, amellyel jönnek létre alkalmazáskonzisztens pillanatképek gyakorisága határozza meg.
  
@@ -374,11 +374,11 @@ Feladatátvételi teszt futtatása gondoskodik arról, hogy minden a várt módo
     ![Helyreállítási terv](./media/contoso-migration-rehost-linux-vm/recovery-plan.png)
 
 2. Miután létrehozta a tervet, akkor válassza ki a testreszabáshoz (**helyreállítási tervek** > **OsTicketMigrationPlan** > **Testreszabás**.
-3.  Azok eltávolítása **OSTICKETWEB** a **csoport 1: Start**.  Ez biztosítja, hogy az első indítási műveletet érinti **OSTICKETMYSQL** csak.
+3.  Eltávolítja azokat **OSTICKETWEB** a **1. csoport: Indítsa el**.  Ez biztosítja, hogy az első indítási műveletet érinti **OSTICKETMYSQL** csak.
 
     ![Helyreállítási csoport](./media/contoso-migration-rehost-linux-vm/recovery-group1.png)
 
-4.  A **+ csoport** > **adja hozzá a védett elemek**, adnak hozzá **OSTICKETWEB** való **csoport 2: Start**.  Ezeket a két különböző csoportokhoz van szükségük.
+4.  A **+ csoport** > **adja hozzá a védett elemek**, adnak hozzá **OSTICKETWEB** való **csoport 2: Indítsa el**.  Ezeket a két különböző csoportokhoz van szükségük.
 
     ![Helyreállítási csoport](./media/contoso-migration-rehost-linux-vm/recovery-group2.png)
 
@@ -465,14 +465,14 @@ A Contoso biztonsági csapat a OSTICKETWEB és OSTICKETMYSQLVMs bármilyen bizto
 - A csapat áttekinti a a hálózati biztonsági csoportok (NSG-k) a virtuális gépek elérésének szabályozására. Az NSG-k segítségével győződjön meg arról, hogy csak az alkalmazás engedélyezett forgalom adhat át.
 - A csapat is figyelembe veszi a Virtuálisgép-lemezek lemeztitkosítás és az Azure KeyVault használata az adatok védelme.
 
-[További információ](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) virtuális gépek biztonsági eljárásairól.
+[További információ](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms) virtuális gépek biztonsági eljárásairól.
 
 ### <a name="bcdr"></a>BCDR
 
 Contoso üzletmenet-folytonosság és vészhelyreállítás, az alábbi műveleteket hajtja végre:
 
 - **Biztonságban tudhatja**: Contoso biztonsági másolatot készít az adatok a virtuális gépeken az Azure Backup szolgáltatással. [További információk](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-- **Bízhatja alkalmazások**: Contoso Site Recovery használatával egy másodlagos régióba replikálja az alkalmazást az Azure-beli virtuális gépek. [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
+- **Bízhatja alkalmazások**: Contoso az alkalmazás az Azure-beli virtuális gépek Site Recovery használatával egy másodlagos régióba replikálja. [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
 
 ### <a name="licensing-and-cost-optimization"></a>Licencelési és a költségek optimalizálása
 

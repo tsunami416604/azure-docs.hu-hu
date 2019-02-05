@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: af605f4ad7c4167936a07f2ae8ffd3d2850cda75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 643ef7f9960b2a91c88b4e13fe318748d175e036
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185208"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692707"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Távoli hozzáférés a helyszíni alkalmazások Azure Active Directory Application Proxy használatával 
 
@@ -28,7 +28,7 @@ Az Azure AD-alkalmazásproxy van:
 
 - **Biztonságos**. A helyszíni alkalmazások az Azure engedélyeztetési vezérlőit és biztonsági elemzési használhatja. A helyszíni alkalmazások használhatja például a feltételes hozzáférés és a kétlépéses ellenőrzést. Application Proxy nem igényel, meg kell nyitni bejövő kapcsolatok a tűzfalon keresztül.
  
-- **Költséghatékony**. A helyszíni megoldások használatához általában szükség van, és demilitarizált zóna (DMV-kkel), biztonsági kiszolgálókat és más bonyolult infrastruktúra karbantartása. Az alkalmazásproxy fut a felhőben, ami lehetővé teszi az egyszerűen használható. Az alkalmazásproxy használatához nem kell módosítani a hálózati infrastruktúrát, vagy telepítse a további berendezésekre a helyszíni környezetben.
+- **Költséghatékony**. A helyszíni megoldások használatához általában szükség van, és demilitarizált zóna (DMZ-ket), biztonsági kiszolgálókat és más bonyolult infrastruktúra karbantartása. Az alkalmazásproxy fut a felhőben, ami lehetővé teszi az egyszerűen használható. Az alkalmazásproxy használatához nem kell módosítani a hálózati infrastruktúrát, vagy telepítse a további berendezésekre a helyszíni környezetben.
 
 ## <a name="what-is-application-proxy"></a>Mi az Application Proxy?
 Az alkalmazásproxy funkciója az Azure ad-ben, amely lehetővé teszi a felhasználók számára hozzáférést a helyszíni webalkalmazások egy távoli ügyfélhez. Alkalmazásproxy tartoznak az alkalmazásproxy-szolgáltatás, amely a felhőben fut, és az alkalmazásproxy-összekötő, amely egy helyszíni kiszolgálón fut. Az Azure AD-ben az alkalmazásproxy-szolgáltatás, és az Application Proxy connector együttműködve biztonságos módon adnak át a felhasználói bejelentkezési jogkivonat Azure AD-ből a webalkalmazás.

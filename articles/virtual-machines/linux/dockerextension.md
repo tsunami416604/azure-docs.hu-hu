@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: cynthn
-ms.openlocfilehash: f30305374b1fcaabfb36533195a098073d33b6c3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1bc250ac70e48a548d393c3bc6025868948dc022
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197602"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699159"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Hozzon létre egy Docker-környezetben az Azure-ban a Docker VM-bővítmény
 
@@ -39,15 +39,15 @@ További információ a különböző központi telepítési módszer, például
 
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Az Azure Docker Virtuálisgép-bővítménnyel-sablon üzembe helyezése
-Egy meglévő gyorsindítási sablon használatával hozzon létre egy Ubuntu virtuális gép, amely használja az Azure Docker VM-bővítmény telepítése és konfigurálása a Docker-gazdagép. A sablon Itt tekintheti meg: [A docker használatával egy Ubuntu virtuális gép üzembe](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). A legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+Egy meglévő gyorsindítási sablon használatával hozzon létre egy Ubuntu virtuális gép, amely használja az Azure Docker VM-bővítmény telepítése és konfigurálása a Docker-gazdagép. A sablon Itt tekintheti meg: [A docker használatával egy Ubuntu virtuális gép üzembe](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). A legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index).
 
-Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután telepítse a virtuális gép [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az_group_deployment_create) , amely tartalmazza az Azure Docker VM-bővítmény [ezen Azure Resource Manager-sablon a Githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Amikor a rendszer kéri, adja meg a saját egyedi értékek *newStorageAccountName*, *adminUsername*, *adminPassword*, és *dnsNameForPublicIP*:
+Ezután telepítse a virtuális gép [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment) , amely tartalmazza az Azure Docker VM-bővítmény [ezen Azure Resource Manager-sablon a Githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Amikor a rendszer kéri, adja meg a saját egyedi értékek *newStorageAccountName*, *adminUsername*, *adminPassword*, és *dnsNameForPublicIP*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \

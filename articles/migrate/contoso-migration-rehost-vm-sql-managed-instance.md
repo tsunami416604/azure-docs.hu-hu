@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6e15d4376fae576f615cac7c094f53dfcc22618e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 76af79cc9ef1ebea30b30a291f451b7b0a4f3ba6
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826615"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694482"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso áttelepítése: Egy Azure virtuális gép és az SQL Database felügyelt példánya a helyszíni alkalmazások újratárolása
 
@@ -173,7 +173,7 @@ Itt látható, hogy a Contoso tervek az üzembe helyezés:
 - Az alhálózat egy felhasználó által meghatározott útválasztás (UDR) útválasztási táblázatot kell rendelkeznie. A hozzárendelt csak útvonal lehet 0.0.0.0/0, következő ugrási internet. 
 - Nem kötelező egyéni DNS: Ha egyéni DNS az Azure-beli virtuális hálózaton van megadva, az Azure rekurzív feloldók IP-címet (például a 168.63.129.16) meg kell adni a listához. Ismerje meg, hogyan [egyéni DNS konfigurálása a felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
 - Az alhálózat nem lehet egy végpontot (storage- vagy SQL) társítva. A Szolgáltatásvégpontok a virtuális hálózat le kell tiltani.
-- Az alhálózatnak legalább 16 IP-címet kell rendelkeznie. Ismerje meg, hogyan [méretezés a felügyelt példány alhálózatára](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#determine-the-size-of-subnet-for-managed-instances).
+- Az alhálózatnak legalább 16 IP-címet kell rendelkeznie. Ismerje meg, hogyan [méretezés a felügyelt példány alhálózatára](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration).
 - A Contoso hibrid környezetben egyéni DNS-beállítások szükségesek. Contoso DNS-beállítások egy vagy több, a vállalat az Azure DNS-kiszolgálók használatára konfigurálja. Tudjon meg többet [DNS testreszabási](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
 
 ### <a name="set-up-a-virtual-network-for-the-managed-instance"></a>A felügyelt példány egy virtuális hálózat beállítása
@@ -207,7 +207,7 @@ Contoso-rendszergazdák a következőképpen állítsa be a virtuális hálózat
 *További segítségre van szüksége?*
 
 - Áttekintheti a [SQL Database felügyelt példányain](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance).
-- Ismerje meg, hogyan [virtuális hálózat létrehozása az SQL Database felügyelt példányain](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#create-a-new-virtual-network-for-managed-instances).
+- Ismerje meg, hogyan [virtuális hálózat létrehozása az SQL Database felügyelt példányain](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration).
 - Ismerje meg, hogyan [társviszony-létesítés beállítása](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering).
 - Ismerje meg, hogyan [Azure Active Directory DNS-beállításainak frissítése](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns).
 
@@ -609,7 +609,7 @@ A Contoso biztonsági csapat áttekinti az Azure virtuális gépek és az SQL Da
 
      ![Felügyelt példány biztonsági - fenyegetések észlelése](./media/contoso-migration-rehost-vm-sql-managed-instance/mi-security.png)  
 
-További információ a biztonsági eljárások a virtuális gépek, lásd: [ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control).
+További információ a biztonsági eljárások a virtuális gépek, lásd: [ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms).
 
 ### <a name="bcdr"></a>BCDR
 

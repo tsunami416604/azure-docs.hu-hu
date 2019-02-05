@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 310963d5593dde0540c95920214a14a4195c346a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6bd61923dafb605e09c6ca6ab86dcd85fe60b37c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242331"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734657"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Automatizált machine learning-példakísérleteket konfigurálása
 
@@ -174,7 +174,7 @@ Ezután határozza meg, hol kell betanítani a modellt. Egy automatizált machin
 
 Tekintse meg a [a GitHub-webhelyről](https://github.com/Azure/MachineLearningNotebooks/tree/master/automl) például a helyi és távoli notebookok számítási céljainak.
 
-<a name='configure-experiment'/>
+<a name='configure-experiment'></a>
 
 ## <a name="configure-your-experiment-settings"></a>A kísérlet beállításainak konfigurálása
 
@@ -207,36 +207,48 @@ Néhány példa:
         n_cross_validations=5)
     ```
 
-Ez a táblázat felsorolja a paraméterek beállításai is futtathatja a kísérletet és alapértelmezett értékeik érhető el.
+Háromféle különböző `task` paraméterértékeket, amelyek meghatározzák a alkalmazni algoritmusok a listában.  Használja a `whitelist` vagy `blacklist` további módosításához az elérhető algoritmusokat vagy kizárja a végrehajtandó iterációk paramétereket.
+* Besorolás
+    * LogisticRegression
+    * SGD
+    * MultinomialNaiveBayes
+    * BernoulliNaiveBayes
+    * SVM
+    * LinearSVM
+    * KNN
+    * DecisionTree
+    * RandomForest
+    * ExtremeRandomTrees
+    * LightGBM
+    * GradientBoosting
+    * TensorFlowDNN
+    * TensorFlowLinearClassifier
+* Regresszió
+    * ElasticNet
+    * GradientBoosting
+    * DecisionTree
+    * KNN
+    * LassoLars
+    * SGD 
+    * RandomForest
+    * ExtremeRandomTree
+    * LightGBM
+    * TensorFlowLinearRegressor
+    * TensorFlowDNN
+* Előrejelzések
+    * ElasticNet
+    * GradientBoosting
+    * DecisionTree
+    * KNN
+    * LassoLars
+    * SGD 
+    * RandomForest
+    * ExtremeRandomTree
+    * LightGBM
+    * TensorFlowLinearRegressor
+    * TensorFlowDNN
 
-Tulajdonság |  Leírás | Alapértelmezett érték
---|--|--
-`task`  |Adja meg a machine learning probléma típusát. Megengedett értékek: <li>Besorolás</li><li>Regresszió</li><li>Előrejelzések</li>    | None |
-`primary_metric` |Ez a metrika szeretné optimalizálni a modell épületben. Például a primary_metric pontossága ad meg, ha automatikus egy modell található a legnagyobb pontosságú gépi tanulási keresi. Csak egy primary_metric kísérletenként adható meg. Megengedett értékek: <br/>**Besorolási**:<br/><li> accuracy  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**Regresszió**: <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score  </li> | Besorolási: pontossága <br/>A regresszió: spearman_correlation <br/> |
-`experiment_exit_score` |   A primary_metric célérték adhatja meg. Miután egy modell található, amely megfelel a primary_metric cél, automatizált gépi tanulási le fog állni, léptetés, és az a kísérlet befejeződik. Ha ez az érték nincs beállítva (alapértelmezett), automatikus machine learning-kísérlet ismétléseinek megadott tevékenységsort futtatásához továbbra is. Egy dupla értéket vesz fel. Ha soha nem eléri a cél, majd automatikus machine learning továbbra is addig ismétlések megadott ismétlések száma.| None
-`iterations` |Az ismétlések maximális számát. Minden egyes ismétléskor megegyezik a betanítási feladat, amely egy folyamat eredményez. Folyamat az adatok előfeldolgozása és a modell. A magas színvonalú modell, amelyet 250 vagy több    | 100
-`max_concurrent_iterations`|    Párhuzamos az ismétlések maximális száma. Ez a beállítás csak távoli számítási működik.|   1
-`max_cores_per_iteration`   | Azt jelzi, hogy hány magunk a számítási célnak a használni kívánt betanításához egy folyamatot. Ha az algoritmus kihasználhatják a több mag, majd ez növeli a Többmagos gépen a teljesítményt. Beállíthatja a gépen elérhető összes mag használandó 1 értéket ad.|  1
-`iteration_timeout_minutes` |   Korlátozza egy adott iterációhoz szükséges idő (perc). Ha egy iterációját meghaladja a megadott mennyiséget, a iteráció beolvasása megszakítva. Ha nincs megadva, a rendszer az iteráció továbbra is fut, amíg befejeződik. |   None
-`n_cross_validations`   |A keresztellenőrzés felosztásainak száma| None
-`validation_size`   |Állítsa be az összes képzési minta százalékában érvényesítési mérete.|  None
-`preprocess` | Igaz/hamis <br/>Igaz lehetővé teszi, hogy a bemeneti adatok az előfeldolgozási végrehajtásához kísérletezhet. Következő része a előfeldolgozása<li>Hiányzó adatok: Biztosítják a hiányzó adatokat-numerikus az átlag, a legtöbb előfordulásával szöveg </li><li>Kategorikus értékek: Adattípus esetén a numerikus és egyedi értékek száma a kevesebb mint 5 %-os, az egyik gyakori kódolási alakíthatók át egymásba </li><li>Stb. Ellenőrizze a teljes listát [a GitHub-adattár](https://aka.ms/aml-notebooks)</li><br/>Megjegyzés: Ha az adatok ritka nem használhat előfeldolgozása = true |  False (Hamis) |
-`enable_cache`  | Igaz/hamis <br/>Tételhez és újbóli összes ismétlésének előre feldolgozott ugyanazok az adatok előfeldolgozása ezt igaz lehetővé teszi, hogy a beállítás kész egyszer. | True (Igaz) |
-`blacklist_models`  | Automatizált machine learning-kísérlet megkísérli számos különböző algoritmus rendelkezik. Konfigurálja az egyes algoritmusok kizárása a kísérlet. Akkor hasznos, ha vegye figyelembe, hogy aránytól nem működnek jól az adatkészlet. Kivéve a algoritmusok is takaríthat meg számítási erőforrásokat és képzési időt.<br/>Besorolási megengedett értékek<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Engedélyezett értékek regresszió<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Megengedett értékek az előrejelzés<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   None
-`whitelist_models`  | Automatizált machine learning-kísérlet megkísérli számos különböző algoritmus rendelkezik. Konfigurálja úgy, hogy bizonyos algoritmust a kísérlethez tartalmazza. Akkor hasznos, ha vegye figyelembe, hogy aránytól esetén működik megfelelően az adatkészlet. <br/>Besorolási megengedett értékek<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Engedélyezett értékek regresszió<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Megengedett értékek az előrejelzés<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  None
-`verbosity` |Folyamatban van a részletes és a kritikus folyamatban információval azt szabályozza, a naplózási szint a legkevésbé. Részletességi szint ugyanazokat az értékeket vesz igénybe, a python-naplózás csomagban meghatározott módon. Engedélyezett értékek a következők:<br/><li>logging.INFO</li><li>a naplózás. FIGYELMEZTETÉS</li><li>a naplózás. HIBA TÖRTÉNT</li><li>a naplózás. KRITIKUS</li>  | logging.INFO</li>
-`X` | Megkezdheti az összes funkció |  None
-`y` |   Megkezdheti az adatok. A besorolás kell lennie az egész számok tömbje.|  None
-`X_valid`|_Nem kötelező_ érvényesítése az összes szolgáltatás. Ha nincs megadva, az X train között van felosztva, és ellenőrzése |   None
-`y_valid`   |_Nem kötelező_ a felirat adatainak ellenőrzése a. Ha nincs megadva, az y train között van felosztva, és ellenőrzése    | None
-`sample_weight` |   _Nem kötelező_ súlyértéket minden mintához. Akkor használja, ha szeretné rendelni az adatpontokhoz különböző súlya |   None
-`sample_weight_valid`   |   _Nem kötelező_ súlyértéket minden érvényesítési mintához. Ha nincs megadva, a sample_weight train között van felosztva, és ellenőrzés   | None
-`run_configuration` |   RunConfiguration objektum.  Távoli Futtatás használja. |None
-`data_script`  |    A get_data metódus tartalmazó fájl elérési útja.  Távoli Futtatás szükséges.   |None
-`model_explainability` | _Nem kötelező_ igaz/hamis <br/>  Igaz lehetővé teszi, hogy minden egyes ismétléskor végrehajtani a funkció fontos kísérletezhet. Használhatja explain_model() módszert is egy adott iteráció engedélyezése funkció fontosságát, igény szerinti, az iteráció kísérlet befejezése után. | False (Hamis)
-`enable_ensembling`|Ez a jelző azt ensembling iteráció engedélyezése az összes többi ismétlésének befejezését követően.| True (Igaz)
-`ensemble_iterations`|Során, ami lehetőséget választjuk, a végső ensemble részét illesztett folyamat ismétlések száma.| 15
-`experiment_timeout_minutes`| Korlátozza a (perc), hogy mennyi ideig tarthat a teljes kísérlet futtatása | None
+Tekintse meg a [AutoMLConfig osztály](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) paraméterek teljes listája.  
 
 ## <a name="data-pre-processing-and-featurization"></a>Üzem előtti adatfeldolgozás és a featurization
 

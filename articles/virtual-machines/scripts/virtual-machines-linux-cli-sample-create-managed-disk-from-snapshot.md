@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 044bd34a5b9e4b9bea61e804aa038daf6129185d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 030f3d9455956c3c728e450aca058b2df10eb3d3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584564"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691184"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>Felügyelt lemez létrehozása pillanatképből a CLI-vel
 
@@ -43,8 +43,8 @@ A szkript a következő parancsokat használja arra, hogy létrehozzon egy felü
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_show) | Lekérdezi egy pillanatkép összes tulajdonságát a pillanatkép neve és erőforráscsoport-tulajdonságai alapján. A felügyelt lemezek létrehozásához a rendszer az „Id” tulajdonságot használja.  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | Létrehoz egy felügyelt lemezt egy felügyelt pillanatkép pillanatkép-azonosítójának használatával. |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | Lekérdezi egy pillanatkép összes tulajdonságát a pillanatkép neve és erőforráscsoport-tulajdonságai alapján. A felügyelt lemezek létrehozásához a rendszer az „Id” tulajdonságot használja.  |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk) | Létrehoz egy felügyelt lemezt egy felügyelt pillanatkép pillanatkép-azonosítójának használatával. |
 
 ## <a name="next-steps"></a>További lépések
 

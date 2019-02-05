@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.technology: database-engine
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4087cd93b7342958717a20a08832daba1123417f
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d6a82414974c00d5fa2a7cfe5c1dd00ceaeb3bfa
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330738"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729469"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Linux rendszerű SQL Server-virtuálisgép létrehozása az Azure Portalon
 
@@ -129,7 +129,7 @@ Ha Windows-ban futtatott, és nem rendelkezik bash, telepítse az SSH-ügyfelet,
 
 1. Válassza ki **nyílt** , és írja be a felhasználónevét és jelszavát, amikor a rendszer kéri.
 
-A Linux rendszerű virtuális gépekhez való csatlakozásról további információt a [Linux rendszerű virtuális gép az Azure-ban a Portal használatával történő létrehozását](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal#ssh-to-the-vm) ismertető cikkben talál.
+A Linux rendszerű virtuális gépekhez való csatlakozásról további információt a [Linux rendszerű virtuális gép az Azure-ban a Portal használatával történő létrehozását](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal) ismertető cikkben talál.
 
 > [!Note]
 > Ha a kiszolgáló-állomás kulcsát a beállításjegyzékben nem gyorsítótárazott információ PuTTY biztonsági riasztást látja, az alábbi lehetőségek közül választhat. Ha ez a gazdagép megbízható, válassza ki a **Igen** adja hozzá a kulcsot a putty-kapcsolaton keresztül a gyorsítótárba, és folytatja a csatlakozás. Ha csak egyszer csatlakozásról lebonyolító, hozzáadása nélkül a kulcs a gyorsítótárhoz, jelölje be **nem**. Ha ez a gazdagép nem megbízható, válassza ki a **Mégse** kénytelen volt megszakítani ezt a kapcsolatot.

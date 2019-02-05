@@ -8,19 +8,19 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 7fdd32f9263b4d1694a0516a98b681ba8744ab6b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: ebe362b89eb6ffcde006ff824fbee40b1a9175d3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394578"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733399"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Mintaadatok betöltése az Azure Data Explorer
 
 Ez a cikk bemutatja, hogyan az Adatkezelőbe az Azure database-be (betöltés) mintaadatok betöltését. Nincsenek [több módot is gyűjthet adatokat](ingest-data-overview.md); Ez a cikk egy alapszintű megközelítés, amely ideális választás tesztelési célokra összpontosít.
 
 > [!NOTE]
-> Ha végrehajtotta már rendelkezik az adatok [a rövid útmutató: az Azure Data Explorer Python-kódtár használata az adatok betöltését](python-ingest-data.md).
+> Ha végrehajtotta már rendelkezik az adatok [a rövid útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltését](python-ingest-data.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -57,6 +57,11 @@ A **StormEvents** mintaadatkészlet a [környezeti adatok nemzeti központjaibó
 
 ## <a name="next-steps"></a>További lépések
 
-[Lekérdezések írása](write-queries.md)
+> [!div class="nextstepaction"]
+> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
 
-[Az Azure Data Explorer adatbetöltés](ingest-data-overview.md)
+> [!div class="nextstepaction"]
+> [Lekérdezések írása](write-queries.md)
+
+> [!div class="nextstepaction"]
+> [Az Azure Data Explorer adatbetöltés](ingest-data-overview.md)

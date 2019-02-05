@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 8309abac2c56e911c471f0d4be92fa5d5b77817e
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: d2f45b6f0db15773615710a4345e85ab09f7d559
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201091"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700434"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors FabricTransport beállításainak konfigurálása
 
@@ -32,7 +32,7 @@ A következő módokon FabricTransport alapértelmezett konfigurációját módo
 
 ## <a name="assembly-attribute"></a>Szerelvény attribútum
 
-A [FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute) attribútum az aktor ügyfél és az aktor service szerelvények a alkalmazni kell.
+A [FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN) attribútum az aktor ügyfél és az aktor service szerelvények a alkalmazni kell.
 
 Az alábbi példa bemutatja, hogyan módosíthatja az alapértelmezett érték FabricTransport így időtúllépés történt a beállítások:
 

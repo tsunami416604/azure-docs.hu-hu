@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa5588ae31e63ae54e654ef26563c7570fe4cd13
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1bd9710edddde04f76c6373a7718519f8ede8a19
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459842"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730007"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Hozzon létre egy automatikus méretezési képlet egy Batch-készletben lévő számítási csomópontok méretezése
 
@@ -551,7 +551,7 @@ A Batch .NET-ben a [CloudPool.AutoScaleRun](https://docs.microsoft.com/dotnet/ap
 * [AutoScaleRun.Results](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.results)
 * [AutoScaleRun.Error](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.error)
 
-A REST API-ban a [készlet adatainak lekérése](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) kérelem a készletet, amely tartalmazza az információk futtatása a legújabb automatikus skálázást kapcsolatos információkat ad vissza a [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool#bk_autrun) tulajdonság.
+A REST API-ban a [készlet adatainak lekérése](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) kérelem a készletet, amely tartalmazza az információk futtatása a legújabb automatikus skálázást kapcsolatos információkat ad vissza a [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) tulajdonság.
 
 Az alábbi C# kódrészletet használja a Batch .NET-kódtár az utolsó automatikus skálázási készlet futtassa kapcsolatos információkat _myPool_:
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 303d794e558a5e85b4dd2bca3d9bbb4c2a1ff5dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 694999048d2f1df92e6b8631953f124c4009d46c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151804"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733960"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Oktatóanyag: Végtelen Campus az Azure Active Directory-integráció
 
@@ -111,7 +111,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](common/editconfigure.png)
 
-5. Az a **alapszintű SAML-konfigurációja** szakaszt, ha rendelkezik **szolgáltató metaadatait tartalmazó fájl** (ugorjon **11.c**), hajtsa végre az alábbi lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** szakaszt, ha rendelkezik egy **szolgáltató metaadatait tartalmazó fájl**, teljes lépések 4.a 4.d keresztül, és folytassa a 11.c lépést. Ha nem rendelkezik a Service Provider metaadatait tartalmazó fájl, ugorjon az 5.
 
     a. Kattintson a **metaadatfájl feltöltése**.
 
@@ -127,10 +127,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     d. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címet (a tartományt üzemeltető modell számától függ) a következő minta használatával: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
-    > [!NOTE]
-    > Megjelenik a **szolgáltató metaadatait tartalmazó fájl** az oktatóanyag későbbi részében ismertetett végtelen Campus SSO szolgáltató konfigurációja oldalon. Ha új SAML-szolgáltató konfigurálása során a végtelen Campus mire az első, ugorjon a **11. lépés** a szolgáltató metaadatfájl az Exportálás befejeződik.
-
-6. Ha nem rendelkezik **szolgáltató metaadatait tartalmazó fájl**, hajtsa végre a következő lépéseket (vegye figyelembe, hogy a tartomány gyártmányától üzemeltetési modell):
+5. Ha nem rendelkezik **szolgáltató metaadatait tartalmazó fájl**, hajtsa végre a következő lépéseket (vegye figyelembe, hogy a tartomány gyártmányától üzemeltetési modell):
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 

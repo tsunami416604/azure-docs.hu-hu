@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e5c81a172c99ea6e2591a25f53705ab9cd30fd83
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 97c7af9eb86b1c2e904e2253933b2b01c9e38cf5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660629"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729336"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Az Event Hubs üzenetküldési kivételei
 
@@ -38,8 +38,8 @@ A következő táblázat felsorolja az üzenetkezelési kivételtípusok, és az
 
 | Kivétel típusa | Leírás/OK és példák | Javasolt művelet | Vegye figyelembe az automatikus azonnali újrapróbálkozás |
 | -------------- | -------------------------- | ---------------- | --------------------------------- |
-| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |A kért művelet, amely szabályozza a meghatározott időn belül nem válaszol a kiszolgáló [így időtúllépés történt](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout). Előfordulhat, hogy a kiszolgáló befejezte a kért művelet. Ez a kivétel hálózati vagy más infrastruktúra késedelem miatt fordulhat elő. |Ellenőrizze a rendszer állapotát, a konzisztencia, és szükség esetén próbálja megismételni.<br /> Lásd: [TimeoutException](#timeoutexception). | Bizonyos esetekben; segíthet újrapróbálkozási újrapróbálkozási logika hozzáadása a kódot. |
-| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |A kért felhasználói művelet nem engedélyezett a kiszolgáló vagy a szolgáltatás belül. Tekintse meg a részleteket a kivétel üzenetét. Például [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) ehhez a kivételhez állít elő, ha az üzenet fogadása megtörtént a [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód. | Ellenőrizze a kód és a dokumentációt. Győződjön meg arról, hogy a kért művelet érvénytelen. | Újrapróbálkozás nem segít. |
+| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |A kért művelet, amely szabályozza a meghatározott időn belül nem válaszol a kiszolgáló [így időtúllépés történt](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings). Előfordulhat, hogy a kiszolgáló befejezte a kért művelet. Ez a kivétel hálózati vagy más infrastruktúra késedelem miatt fordulhat elő. |Ellenőrizze a rendszer állapotát, a konzisztencia, és szükség esetén próbálja megismételni.<br /> Lásd: [TimeoutException](#timeoutexception). | Bizonyos esetekben; segíthet újrapróbálkozási újrapróbálkozási logika hozzáadása a kódot. |
+| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |A kért felhasználói művelet nem engedélyezett a kiszolgáló vagy a szolgáltatás belül. Tekintse meg a részleteket a kivétel üzenetét. Például [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ehhez a kivételhez állít elő, ha az üzenet fogadása megtörtént a [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód. | Ellenőrizze a kód és a dokumentációt. Győződjön meg arról, hogy a kért művelet érvénytelen. | Újrapróbálkozás nem segít. |
 | [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) | Kísérlet történik egy olyan objektum, amely már zárt, megszakadt, vagy eldobva művelet meghívásához. Bizonyos ritkán előforduló esetekben a környezeti tranzakció már eldobva. | Ellenőrizze a kódot, és ellenőrizze, hogy nem lép működésbe műveletek nA smazaném objektu. | Újrapróbálkozás nem segít. |
 | [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) | A [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) objektumot nem sikerült megszerezni a jogkivonatot, a jogkivonat érvénytelen vagy a jogkivonat nem tartalmazza a jogcímeket, a művelet végrehajtásához szükséges. | Győződjön meg arról, hogy a jogkivonat-szolgáltató jön létre a megfelelő értékekkel. Ellenőrizze a konfigurációt, az Access Control Service szolgáltatást. | Bizonyos esetekben; segíthet újrapróbálkozási újrapróbálkozási logika hozzáadása a kódot. |
 | [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[: ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) | A metódushoz megadott egy vagy több argumentumok érvénytelenek. Az URI-t megadott [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy [létrehozás](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) útvonalszegmensben elérési útját tartalmazza. A megadott URI-séma [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy [létrehozás](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) je neplatná. A tulajdonság értéke 32 KB-nál nagyobb. | Ellenőrizze a hívó kód, és ellenőrizze, hogy az argumentumok megfelelőek. | Újrapróbálkozás nem segít. |
@@ -81,7 +81,7 @@ Ez a hiba akkor fordulhat elő, egy vagy két oka:
 
 1. A terhelés nem egyenlően oszlik el az eseményközpont összes partíciójára, és a egy partíciót eléri a helyi átviteli egység korlátozás.
     
-    Megoldás: A partíció terjesztési stratégia indítják, vagy próbálja meg elérni [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) segíthetnek.
+    Megoldás: A partíció terjesztési stratégia indítják, vagy próbálja meg elérni [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) segíthetnek.
 
 2. Az Event Hubs-névtér nem rendelkezik elegendő átviteli egységek (ellenőrizheti a **metrikák** képernyőn az eseménynaplóban a Hubs-névtér ablakában a [az Azure portal](https://portal.azure.com) megerősítéséhez). A portál összesített (1 perces) információkat jelenít meg, de a valós idejű – az átviteli sebességet, hogy csak egy becsült legyen mérjük.
 

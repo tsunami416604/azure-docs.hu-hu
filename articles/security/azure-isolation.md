@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 776771c6d10bc184e1a1a077e2dbfed70a3e0358
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4d9a6b8bf2b6a9a50ee315d5150c15a18f37462d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974709"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696048"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhő
 ##  <a name="introduction"></a>Bevezetés
@@ -27,7 +27,7 @@ ms.locfileid: "53974709"
 Segít a jelenlegi és jövőbeli Azure ügyfelek ismertetése, és felhasználja az elérhető különböző biztonsági funkciókat és körülvevő az Azure platform, Microsoft kifejlesztett egy sorozatát tanulmányok, biztonsági áttekintéseket, ajánlott eljárások és Ellenőrzőlistákat.
 A témakörök tartomány és teljes mértékű tekintetében, és rendszeresen frissül. Ez a dokumentum a sorozat része, a következő absztrakt szakaszban foglaltak szerint.
 
-### <a name="azure-platform"></a>Azure-Platform
+### <a name="azure-platform"></a>Azure Platform
 Az Azure egy nyílt és rugalmas felhőszolgáltatás-platform, amely a platform támogatja az operációs rendszerek, programozási nyelvek, keretrendszerek, eszközök, adatbázisok és eszközök. Megteheti például a következőt:
 - Linux-tárolókat futtathat Docker-integrációval;
 - A JavaScript, Python, .NET, PHP, Java és Node.js-alkalmazások készítéséhez és
@@ -289,13 +289,13 @@ A megoldás nem támogatja a következő forgatókönyvek, szolgáltatások és 
 ## <a name="sql-azure-database-isolation"></a>SQL Azure adatbázis-elkülönítés
 Az SQL Database a Microsoft Cloud egy, a piacvezető Microsoft SQL Server motoron alapuló relációs adatbázis-szolgáltatása, amely képes a kritikus fontosságú számítási feladatok kezelésére. SQL Database által nyújtott előre jelezhető adatok elkülönítése a fiók szintjén a földrajzi régióban és a hálózat alapú / – mindezt szinte Adminisztráció.
 
-### <a name="sql-azure-application-model"></a>SQL Azure alkalmazásmodell
+### <a name="sql-azure-application-model"></a>SQL Azure Application Model
 
 [A Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) adatbázis az SQL Server-technológiákra épülő felhőalapú relációsadatbázis-szolgáltatás. Egy magas rendelkezésre állású, méretezhető, több-bérlős adatbázis-szolgáltatás a felhőben a Microsoft által üzemeltetett biztosít.
 
 Egy alkalmazás perspektíva SQL Azure biztosít a következő hierarchia: Minden egyes szintjét egy-a-többhöz tartalmazottsági szintek az alábbi rendelkezik.
 
-![SQL Azure alkalmazásmodell](./media/azure-isolation/azure-isolation-fig10.png)
+![SQL Azure Application Model](./media/azure-isolation/azure-isolation-fig10.png)
 
 A fiók és -előfizetés a Microsoft Azure platform fogalmak felügyeleti és számlázási társítása.
 
@@ -344,7 +344,7 @@ Azure-beli hálózati elkülönítési több réteget tartalmaz. Az alábbi ábr
 
 **Forgalom elkülönítése:** A [virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) van a forgalomelkülönítési határok az Azure platformon. Virtuális gépek (VM) egy virtuális hálózat nem útján kommunikálnak közvetlenül egy másik virtuális hálózatot, virtuális gépek akkor is, ha az adott ügyfél által létrehozott két virtuális hálózatnak. Elkülönítés kritikus tulajdonság, amely biztosítja az ügyfél virtuális gépei, kommunikációs privát virtuális hálózaton belül marad.
 
-[Alhálózat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets) további, a virtuális hálózati IP-címtartomány alapján az elkülönítési réteget biztosít. IP-címek a virtuális hálózatban, és biztonsági több alhálózatra is eloszthatja egy virtuális hálózatot. Egy VNeten belül az alhálózatokra üzembe helyezett virtuális gépek és a PaaS szerepkörpéldányok (ugyanaz vagy különböző) további konfigurálás nélkül is tudnak egymással kommunikálni. Beállíthatja úgy is [hálózati biztonsági csoport (NSG-k)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) engedélyezéséhez vagy letiltásához a hálózati forgalmat a Virtuálisgép-példányhoz NSG hozzáférés-vezérlési lista (ACL) a konfigurált szabályok alapján. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra.
+[Alhálózat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) további, a virtuális hálózati IP-címtartomány alapján az elkülönítési réteget biztosít. IP-címek a virtuális hálózatban, és biztonsági több alhálózatra is eloszthatja egy virtuális hálózatot. Egy VNeten belül az alhálózatokra üzembe helyezett virtuális gépek és a PaaS szerepkörpéldányok (ugyanaz vagy különböző) további konfigurálás nélkül is tudnak egymással kommunikálni. Beállíthatja úgy is [hálózati biztonsági csoport (NSG-k)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) engedélyezéséhez vagy letiltásához a hálózati forgalmat a Virtuálisgép-példányhoz NSG hozzáférés-vezérlési lista (ACL) a konfigurált szabályok alapján. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra.
 
 ## <a name="next-steps"></a>További lépések
 

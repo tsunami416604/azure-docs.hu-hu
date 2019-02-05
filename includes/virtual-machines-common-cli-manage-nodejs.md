@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 682288338d66f1006e9f1d7f3d6d30f822626425
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 713068b940532331ee4a6c5f5a92816d328e41ec
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226623"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736161"
 ---
 Mielőtt az Azure CLI-t Resource Manager-parancsokkal és -sablonokkal használhatná az Azure-erőforrások és számítási feladatok erőforráscsoportokkal való üzembe helyezéséhez, szüksége lesz egy Azure-fiókra. Ha nem rendelkezik fiókkal, [itt feliratkozhat az ingyenes Azure-próbaidőszakra](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -44,7 +44,7 @@ Ez a cikk ismerteti az alapszintű parancsokat, amelyeket a klasszikus Azure CLI
 | Virtuális gép törlése |`azure vm delete [options] <resource_group> <name>` |
 | Virtuális gép rögzítése |`azure vm capture [options] <resource_group> <name>` |
 | Virtuális gép létrehozása felhasználói rendszerképből |`azure  vm create [options] –q <image-name> <resource-group> <name> <location> <os-type>` |
-| Virtuális gép létrehozása specializált lemezből |`azue  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
+| Virtuális gép létrehozása specializált lemezből |`azure  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
 | Adatlemez hozzáadása egy virtuális géphez |`azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]` |
 | Adatlemez eltávolítása egy virtuális gépből |`azure  vm disk detach [options] <resource-group> <vm-name> <lun>` |
 | Általános bővítmény hozzáadása egy virtuális géphez |`azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>` |

@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan IoT Edge-eszközök és a modulok működhet a 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/20/2018
+ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4c4713bade487ba46f1abdc6d0a76db3e81e38b1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7bf672715b45233807ab848c78aeb1bed2d352e9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096944"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699346"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Megismerheti a kiterjesztett offline funkcióit az IoT Edge-eszközök, a modulok és a gyermek eszközökön (előzetes verzió)
 
@@ -25,7 +25,7 @@ Az Azure IoT Edge az IoT Edge-eszközök bővített offline műveleteket támoga
 
 ## <a name="how-it-works"></a>Működés
 
-IoT Edge-eszköz kapcsolat nélküli módba kerül, ha a három szerepkört az Edge hub vesz igénybe. Első lépésként kerülnek a fölérendelt és menti őket, amíg az eszköz újracsatlakozik üzeneteket tárolja. A második működik nevében IoT hubot, hogy a modulok és a gyermek eszközök hitelesítése, hogy továbbra is megfelelően működjenek. Harmadik lehetővé teszi, hogy normális esetben tenné az IoT Hub gyermek eszközök közötti kommunikációt. 
+IoT Edge-eszköz kapcsolat nélküli módba kerül, amikor az IoT Edge hubot a három szerepkört vesz igénybe. Első lépésként kerülnek a fölérendelt és menti őket, amíg az eszköz újracsatlakozik üzeneteket tárolja. A második működik nevében IoT hubot, hogy a modulok és a gyermek eszközök hitelesítése, hogy továbbra is megfelelően működjenek. Harmadik lehetővé teszi, hogy normális esetben tenné az IoT Hub gyermek eszközök közötti kommunikációt. 
 
 Az alábbi példa bemutatja, hogyan egy IoT Edge-forgatókönyvet a kapcsolat nélküli üzemmódban működik:
 
@@ -39,7 +39,7 @@ Az alábbi példa bemutatja, hogyan egy IoT Edge-forgatókönyvet a kapcsolat n�
 
 3. **Kapcsolat nélküli módba.**
 
-   Az IoT hubról leválasztott gyermekek IoT-eszközökről, az IoT Edge-eszköz és az üzembe helyezett modulok működhet határozatlan időre. Modulok és a gyermek eszköz indítása, és indítsa újra az Edge hub közben történő offline állapotban van. Az IoT Hub felső kötött telemetriai helyben tárolódnak. Kommunikációs modulok vagy gyermek IoT-eszközök között közvetlen metódusok vagy az üzenetek változatlan marad. 
+   Az IoT hubról leválasztott gyermekek IoT-eszközökről, az IoT Edge-eszköz és az üzembe helyezett modulok működhet határozatlan időre. Modulok és a gyermek eszköz indítása, és indítsa újra az IoT Edge hubot közben történő offline állapotban van. Az IoT Hub felső kötött telemetriai helyben tárolódnak. Kommunikációs modulok vagy gyermek IoT-eszközök között közvetlen metódusok vagy az üzenetek változatlan marad. 
 
 4. **Újra és szinkronizálja újra az IoT hubbal.**
 
@@ -55,7 +55,7 @@ Csak az Edge IoT-eszközök gyermek eszközöket adhat hozzá.
 
 IoT Edge-eszközök és a hozzárendelt gyermek eszközeik működhet határozatlan ideig offline állapotban van, az egyszeri, a kezdeti szinkronizálást követően. Üzenetek tárolása azonban az élettartam (TTL) beállítás, és a rendelkezésre álló lemezterület, az üzenetek tárolására szolgáló idő függ. 
 
-## <a name="set-up-an-edge-device"></a>Edge-eszköz beállítása
+## <a name="set-up-an-iot-edge-device"></a>IoT Edge-eszköz beállítása
 
 Az IoT Edge-eszköz gyermek IoT-eszközökön a kiterjesztett offline lehetőségek bővítése céljából kell deklarálni, a szülő-gyermek kapcsolatba az Azure Portalon.
 
@@ -71,7 +71,7 @@ Szülő eszközök több gyermek eszköz rendelkezhet, de egy gyermek eszköz le
 
 Robusztusság javítása érdekében javasoljuk, adja meg a környezetében használt DNS-kiszolgáló címei. Például a Linux, a frissítés **/etc/docker/daemon.json** (szüksége lehet létrehozni a fájlt) a következők:
 
-```
+```json
 {
     "dns": [“1.1.1.1”]
 }
@@ -82,13 +82,13 @@ Ha a helyi DNS-kiszolgálót használ, cserélje le a 1.1.1.1 a helyi DNS-kiszol
 
 ## <a name="optional-offline-settings"></a>Nem kötelező offline beállítások
 
-Ha az eszközök mennyi ideig offline időszakok, amely után az összes üzenetet generált, gyűjteni kívánt felfedeznie a várható konfigurálja az Edge hub úgy, hogy az összes üzenetet képes tárolni. Nincsenek a két változik, hogy akkor is győződjön meg arról, az Edge hub hosszú távú tárolási engedélyezéséhez. Előbb növelnie time to live beállítás, és adja hozzá a további lemezterületet üzenetek tárolására. 
+Ha várhatóan gyűjteni az eszközök mennyi ideig offline időszakokban létrehozott összes üzenetet, konfigurálja az IoT Edge hubot, hogy az összes üzenetet tárolhat. Nincsenek a két változik, hogy végezhet IoT Edge hubot hosszú távú tárolási engedélyezéséhez. Először is növelheti time to live beállítás. Adja hozzá a további lemezterületet üzenetek tárolására. 
 
 ### <a name="time-to-live"></a>Élettartam
 
 Time to live beállítás rendszer mennyi ideig (másodpercben), amely egy üzenetet várhat után járjon le szállítani kell. Az alapértelmezett érték a 7200 másodperc (két óra). 
 
-Ez a beállítás az Edge hub, amely tárolja az ikermodul kívánt tulajdonsága. Segítségével konfigurálhatja az Azure Portalon, az a **speciális Edge-futtatókörnyezet-beállítások konfigurálása** szakaszt, vagy közvetlenül a központi telepítésben lévő jegyzékfájl. 
+Ez a beállítás az IoT Edge hub, amely tárolja az ikermodul kívánt tulajdonságot. Segítségével konfigurálhatja az Azure Portalon, az a **speciális Edge-futtatókörnyezet-beállítások konfigurálása** szakaszt, vagy közvetlenül a központi telepítésben lévő jegyzékfájl. 
 
 ```json
 "$edgeHub": {
@@ -104,16 +104,25 @@ Ez a beállítás az Edge hub, amely tárolja az ikermodul kívánt tulajdonság
 
 ### <a name="additional-offline-storage"></a>További offline tárolás
 
-Alapértelmezés szerint üzeneteket az Edge hub tároló fájlrendszer vannak tárolva. A tárterület mérete nem elegendő az offline igényeinek, ha az IoT Edge-eszközön a helyi tároló használhat. Az Edge hub egy tároló mappát a tárolóban egy környezeti változó létrehozásához szükséges. Ezután használja a létrehozási lehetőségek kötést létrehozni a tároló mappát egy mappát a gazdagépen. 
+Üzenetek az IoT Edge hubot tároló fájlrendszer alapértelmezés szerint tárolják. A tárterület mérete nem elegendő az offline igényeinek, ha az IoT Edge-eszközön a helyi tároló használhat. Hozzon létre egy környezeti változót az IoT Edge hub egy tároló mappát a tárolóban. Ezután használja a létrehozási lehetőségek kötést létrehozni a tároló mappát egy mappát a gazdagépen. 
 
-Az Azure Portalon konfigurálhatja a környezeti változók és az Edge hub modul a létrehozási lehetőségek a **speciális Edge-futtatókörnyezet-beállítások konfigurálása** szakaszban. Vagy beállíthatja, közvetlenül a manifest nasazení. 
+Az Azure Portalon konfigurálhatja a környezeti változók és az IoT Edge hubot modul a létrehozási lehetőségek a **speciális Edge-futtatókörnyezet-beállítások konfigurálása** szakaszban. Vagy beállíthatja, közvetlenül a manifest nasazení. 
 
 ```json
 "edgeHub": {
     "type": "docker",
     "settings": {
         "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"Binds\":[\"<HostStoragePath>:<ModuleStoragePath>\"],\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
+        "createOptions": {
+            "HostConfig": {
+                "Binds": ["<HostStoragePath>:<ModuleStoragePath>"],
+                "PortBindings": {
+                    "8883/tcp": [{"HostPort":"8883"}],
+                    "443/tcp": [{"HostPort":"443"}],
+                    "5671/tcp": [{"HostPort":"5671"}]
+                }
+            }
+        }
     },
     "env": {
         "storageFolder": {
@@ -125,7 +134,11 @@ Az Azure Portalon konfigurálhatja a környezeti változók és az Edge hub modu
 }
 ```
 
-Cserélje le `<HostStoragePath>` és `<ModuleStoragePath>` a gazdagép és a modul tároló elérési útja; gazdagép és a modul. tárolási elérési útja abszolút elérési útnak kell lennie.  Ha például `\"Binds\":[\"/etc/iotedge/storage/:/iotedge/storage/"` azt jelenti, hogy a gazdagép elérési útja `/etc/iotedge/storage` tároló elérési úthoz csatlakoztatott `/iotedge/storage/`.  További információt a createOptions is annak [docker docs](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+Cserélje le `<HostStoragePath>` és `<ModuleStoragePath>` a gazdagép és a modul tároló elérési útja; gazdagép és a modul. tárolási elérési útja abszolút elérési útnak kell lennie. A létrehozás beállítások kötése a gazdagép és a modul tárolási útvonalat együtt. Ezután hozzon létre egy környezeti változó, amely a modul elérési útja.  
+
+Például `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` azt jelenti, hogy a könyvtár **/etc/iotedge/storage** a gazdagépen futó rendszer le van képezve a címtár **/iotedge/storage/** a tárolón. Vagy egy másik példa a Windows rendszerek esetében `"Binds":["C:\\temp:C:\\contemp]"` azt jelenti, hogy a könyvtár **C:\\temp** a gazdagépen futó rendszer le van képezve a címtár **C:\\contemp** a tárolón. 
+
+Ugyanitt találhat további információt a beállítások létrehozása [docker docs](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 
 ## <a name="next-steps"></a>További lépések
 

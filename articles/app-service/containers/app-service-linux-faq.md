@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: f2fe9efd7d75c95d6cd13cb65e196723c9953716
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a12d3708cdb547cc036b249bebf901d2ec5121c3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658827"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729319"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
 
@@ -132,7 +132,7 @@ A Microsoft jelenleg nem támogatja egynél több-es port.
 
 **Hozzáadhatom a saját storage?**
 
-Azt jelenleg nem támogatja saját tárhely történő visszaállítását.
+Igen, [saját tároló használata](https://docs.microsoft.com/azure/app-service/containers/how-to-serve-content-from-azure-storage) előzetes verzióban érhető el.
 
 **Miért nem tud tallózni a saját egyéni tároló file system vagy a futó az SCM helyet a folyamatok?**
 

@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 0238c8f9c7a7e571ab23b3147381d7fa22c4d8d4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: a05874e28c08087b6f82c3aa5a02e83d2629ffe5
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413311"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694686"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás 
 
@@ -184,7 +184,7 @@ Az alábbi ábrák a magas szintű architektúra minden hitelesítési módszert
 |Mik azok a többtényezős hitelesítési beállítások?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[A feltételes hozzáférés * az egyéni vezérlők](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[A feltételes hozzáférés * az egyéni vezérlők](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Az Azure MFA-kiszolgáló](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[Külső MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[A feltételes hozzáférés * az egyéni vezérlők](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|
 |Milyen felhasználói fiók állapotok támogatottak?|Letiltott fiókokat<br>(legfeljebb 30 perces késleltetés)|Letiltott fiókokat<br><br>A fiók zárolva<br><br>A fiók lejárt<br><br>A jelszó lejárt<br><br>Jelentkezzen be óra|Letiltott fiókokat<br><br>A fiók zárolva<br><br>A fiók lejárt<br><br>A jelszó lejárt<br><br>Jelentkezzen be óra|
 |Mik a feltételes hozzáférési beállításokat?|[Az Azure AD feltételes hozzáférés, az Azure AD Premium szolgáltatással](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Az Azure AD feltételes hozzáférés, az Azure AD Premium szolgáltatással](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Az Azure AD feltételes hozzáférés, az Azure AD Premium szolgáltatással](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[Az AD FS-jogcímszabályok](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|Támogatott régebbi protokollokra blokkolja?|[Igen](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Igen](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Igen](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Támogatott régebbi protokollokra blokkolja?|[Igen](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions)|[Igen](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions)|[Igen](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Testreszabhatja a embléma, a lemezkép és a leírás a bejelentkezési oldalakon?|[Igen, az Azure AD Premium szolgáltatással](https://docs.microsoft.com/azure/active-directory/customize-branding)|[Igen, az Azure AD Premium szolgáltatással](https://docs.microsoft.com/azure/active-directory/customize-branding)|[Igen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
 |Milyen speciális forgatókönyvek támogatottak?|[Az intelligens jelszózárolás](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)<br><br>[Kiszivárgott hitelesítő adatok jelentések az Azure AD Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)|[Az intelligens jelszózárolás](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|Többhelyes közel valós idejű hitelesítő rendszerrel<br><br>[Az AD FS extranetes fiókzárolás](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integráció a külső identitáskezelési rendszerek](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
 

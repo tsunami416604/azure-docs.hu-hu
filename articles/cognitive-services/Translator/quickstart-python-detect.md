@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/24/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 23f1aa8e6356c9a0d3ce7e680ae1b0ca7d0b1bc3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 70b73fec4a6955bc1fcc91cb3895b07fd667ebca
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213803"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692738"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>Gyors útmutató: A Translator Text API segítségével észlelheti a szöveg nyelvét Python használatával
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-Jelenleg egy végpont érhető el a Translator Text szolgáltatáshoz, és ez van beállítva `base_url` tulajdonságként. A `path` tulajdonság a `detect` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
+A Translator Text globális végpontja van beállítva, a `base_url`. A `path` tulajdonság a `detect` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
 
 >[!NOTE]
 > Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: Észlelése](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).

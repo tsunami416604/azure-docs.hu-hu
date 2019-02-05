@@ -9,12 +9,12 @@ ms.date: 01/07/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: ba48473b0370c2ee0acbb7b03834eb36922db556
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9d1d9caccac0fcdeb4e1d2dae40e677f36de40ea
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474982"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728045"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Gyors útmutató: Egyéni események átirányítása az Azure Queue Storage-ba az Azure CLI-vel és az Event Griddel
 
@@ -24,9 +24,12 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="install-preview-feature"></a>Előzetes verziójú funkció telepítése
+Ha az Azure CLI-vel vagy az Azure PowerShell Cloud Shell használata az Azure Portal helyett a helyi gépen használ, győződjön meg arról, hogy az Azure CLI-vel és az Azure PowerShell következő verziói. 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
+- Az Azure CLI 2.0.56 verzió vagy újabb. Az Azure CLI legújabb verziójának telepítéséről útmutatásért lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli). 
+- Az Azure PowerShell 1.1.0-s verzió vagy újabb. A Windows-gépre az Azure PowerShell legújabb verzióját töltse [letölti az Azure - parancssori eszközök](https://azure.microsoft.com/downloads/). 
+
+Ez a cikk megtalálható parancsok Azure CLI használatával. 
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -47,10 +50,6 @@ az group create --name gridResourceGroup --location westus2
 Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<topic_name>` elemet cserélje le az egyéni témakör egyedi nevére. Az Event Grid-témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés jelöli.
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 

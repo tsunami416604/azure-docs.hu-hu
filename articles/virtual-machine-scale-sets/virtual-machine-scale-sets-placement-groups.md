@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/9/2017
 ms.author: rajraj
-ms.openlocfilehash: 5280936cdec25f7b5fc4b77c989b31c7a01f7bd6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 2a1c78a4cec595b672604c90e103ae3b9e40273f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958635"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693683"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Nagyméretű virtuálisgép-méretezési csoportok használata
 Mostantól akár 1000 virtuális gép kapacitású Azure [virtuálisgép-méretezési csoportokat](/azure/virtual-machine-scale-sets/) is létrehozhat. Ebben a dokumentumban a _nagyméretű virtuálisgép-méretezési csoport_ egy 100 virtuális gépnél nagyobb skálázásra képes méretezési csoportként van meghatározva. Ezt a képességet a méretezési csoport egyik tulajdonsága adja meg (_singlePlacementGroup=False_). 
@@ -61,7 +61,7 @@ A _vmss create_ parancs alapértelmezett értékeket használ egyes konfiguráci
 az vmss create --help
 ```
 
-Ha egy Azure Resource Manager-sablon összeállításával hoz létre nagyméretű méretezési csoportot, győződjön meg róla, hogy a sablon az Azure Managed Disksen alapuló méretezési csoportot hoz létre. Beállíthatja a _singlePlacementGroup_ tulajdonságot _hamis_ értékre a _Microsoft.Compute/virtualMAchineScaleSets_ erőforrás _tulajdonságok_ szakaszában. Az alábbi JSON-töredék ábrázolja egy méretezési csoport sablon kezdetét, az 1000 virtuálisgép-kapacitást és a _"singlePlacementGroup" : hamis_ beállítást is beleértve:
+Ha egy Azure Resource Manager-sablon összeállításával hoz létre nagyméretű méretezési csoportot, győződjön meg róla, hogy a sablon az Azure Managed Disksen alapuló méretezési csoportot hoz létre. Beállíthatja a _singlePlacementGroup_ tulajdonságot _hamis_ a a _tulajdonságai_ szakaszában a _Microsoft.Compute/virtualMachineScaleSets_ erőforrás. Az alábbi JSON-töredék ábrázolja egy méretezési csoport sablon kezdetét, az 1000 virtuálisgép-kapacitást és a _"singlePlacementGroup" : hamis_ beállítást is beleértve:
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",

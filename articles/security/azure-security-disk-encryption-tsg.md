@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/25/2019
+ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70cf6c65592eef94ce657c9aaef7dc78de4ffa11
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: faea1cc7c45393c10a240de2c92757ff8f2ac5c3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468393"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694089"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 
@@ -87,7 +87,8 @@ Kapcsolat korlátozza egy tűzfal, proxy követelmény vagy hálózati biztonsá
 Hálózati biztonsági csoport beállításai alkalmazott továbbra is engedélyeznie kell a végpontot, hogy megfeleljen a dokumentált hálózati konfiguráció [Előfeltételek](azure-security-disk-encryption-prerequisites.md#bkmk_GPO) lemeztitkosításra.
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Az Azure Key Vault tűzfal mögött
-Ha titkosítás alatt álló engedélyezve van a [Azure AD hitelesítő adatait](azure-security-disk-encryption-prerequisites-aad.md), a cél virtuális Gépen az Azure AD hitelesítési végpontjait, valamint a Key Vault-végpontok hozzáférést kell biztosítani.  Ezen folyamatról további információkért tekintse meg elérése tűzfal mögül a key vault útmutatást, amely a [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) csapat kezeli. 
+
+Ha titkosítás alatt álló engedélyezve van a [Azure AD hitelesítő adatait](azure-security-disk-encryption-prerequisites-aad.md), a cél virtuális Gépen kell engedélyezi a csatlakozást az Azure Active Directory-végpontokhoz és a Key Vault-végpont. Azure Active Directory-hitelesítés aktuális végpontokat karbantartása az 56. és 59 a [Office 365 URL-címei és IP-címtartományok](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációját. A Key Vault utasítások itt találhatók a dokumentációban való [hozzáférés az Azure Key Vault tűzfal mögötti](../key-vault/key-vault-access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás 
 A virtuális gép eléréséhez képesnek kell lennie a [Azure Instance Metadata szolgáltatás](../virtual-machines/windows/instance-metadata-service.md) végpontot, amely jól ismert nem átirányítható IP-címet használ (`169.254.169.254`), amelyek elérhetők csak a virtuális gépen.

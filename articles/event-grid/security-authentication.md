@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: 1761dafd04a4b8d27a16af4a5e1b0034b90c51a0
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ec34b9c5f78b4d0ea59382f616fab88e0e1dedc9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656872"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730934"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -50,7 +50,7 @@ Ha bármilyen más típusú végpont, például egy HTTP-eseményindító-alapú
 * Az esemény törzsét, más Event Grid-események ugyanazzal a sémával rendelkezik.
 * Esemény típusa az esemény tulajdonság `Microsoft.EventGrid.SubscriptionValidationEvent`.
 * Az esemény adat tulajdonság tartalmazza a `validationCode` tulajdonság egy véletlenszerűen létrehozott karakterlánccal. Például "validationCode: acb13 …".
-* API verzió 2018-05-01-preview használja, ha az esemény-adatokat is tartalmaz egy `validationUrl` tulajdonság manuális érvényesítésének az előfizetéshez tartozó URL-címet.
+* Az esemény adatait is magában foglalja egy `validationUrl` tulajdonság manuális érvényesítésének az előfizetéshez tartozó URL-címet.
 * A tömb csak az érvényesítési eseményt tartalmaz. Az eseményeket küld egy külön kérelmet echo vissza az érvényesítési kód után.
 * A EventGrid-Adatsík SDK-k az előfizetés érvényesítése eseményadatok és előfizetés érvényesítési válaszhoz tartozó osztályok rendelkezik.
 

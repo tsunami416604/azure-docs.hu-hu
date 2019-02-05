@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 61eca35bb03ba62bbc10105819e12a8c0ebb41ca
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: dee649c388ee1e9207d1fc0ecb454d03cda304b0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487907"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730764"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -185,7 +185,7 @@ Importálja a letöltött fájlt a vCenter Serverre.
     - Ha a virtuális gép proxykiszolgálón keresztül éri el az internetet, kattintson a **Proxy settings** (Proxybeállítások) gombra, és adja meg a proxykiszolgáló címét és a figyelőportot. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel. [További](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) internet kapcsolat követelményeivel kapcsolatos és a [URL-címek listája](https://docs.microsoft.com/azure/migrate/concepts-collector#connect-to-urls) a gyűjtő fér hozzá.
 
       > [!NOTE]
-      > A proxykiszolgáló címét http://ProxyIPAddress vagy http://ProxyFQDN formátumban kell megadni. Csak a HTTP-proxyk használata támogatott. Ha egy lehallgató proxy, az internetkapcsolat kezdetben meghiúsulhat, ha nem importálta a proxy-tanúsítvány [további](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity-with-intercepting-proxy) meg arról, hogyan oldhatja ezt egy megbízható tanúsítványt a gyűjtő virtuális Gépen, a proxy tanúsítvány importálásával.
+      > A proxykiszolgáló címét http://ProxyIPAddress vagy http://ProxyFQDN formátumban kell megadni. Csak a HTTP-proxyk használata támogatott. Ha egy lehallgató proxy, az internetkapcsolat kezdetben meghiúsulhat, ha nem importálta a proxy-tanúsítvány [további](https://docs.microsoft.com/azure/migrate/concepts-collector) meg arról, hogyan oldhatja ezt egy megbízható tanúsítványt a gyűjtő virtuális Gépen, a proxy tanúsítvány importálásával.
 
     - A gyűjtő ellenőrzi, hogy fut-e a gyűjtőszolgáltatás. A szolgáltatás alapértelmezés szerint telepítve van a gyűjtő virtuális gépen.
     - Töltse le és telepítse a VMware PowerCLI-t.
@@ -196,7 +196,7 @@ Importálja a letöltött fájlt a vCenter Serverre.
     - A **Collection scope** (Gyűjtés hatóköre) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak a megadott hatókörön belül deríti fel a virtuális gépeket. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Nem tartalmazhat 1500-nál több virtuális gépet. [Itt tekinthet meg további információkat](how-to-scale-assessment.md) azzal kapcsolatban, hogyan fedezheti fel a nagyméretű környezeteket.
 
 7. A **Specify migration project** (Migrálási projekt megadása) területen adja meg az Azure Migrate projekt a portálról kimásolt azonosítóját és kulcsát. Ha nem másolta ki őket, nyissa meg az Azure Portalt a gyűjtő virtuális gépről. A projekt **Áttekintés** lapján kattintson a **Gépek felderítése** elemre, és másolja ki az értékeket.  
-8. Az **Adatgyűjtési folyamat megtekintése** részen monitorozhatja a felderítés állapotát. [Itt tekinthet meg további információkat](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) az Azure Migrate-gyűjtő által gyűjtött adatokról.
+8. Az **Adatgyűjtési folyamat megtekintése** részen monitorozhatja a felderítés állapotát. [Itt tekinthet meg további információkat](https://docs.microsoft.com/azure/migrate/concepts-collector) az Azure Migrate-gyűjtő által gyűjtött adatokról.
 
 > [!NOTE]
 > Az adatgyűjtő csak az „Angol (Egyesült Államok)” nyelvet támogatja az operációs rendszer és az adatgyűjtő felület nyelveként.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2a0fc7cc4e76c4a93f6ff71767d3074ea8ac6564
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fc4d09b59e568a693b7f7951e9e716d04a5a2a49
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168209"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729268"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-minták az Azure Active Directory B2C használata
 
@@ -49,7 +49,7 @@ Engedélyezi a parancsfájl végrehajtása hozzáadásával a **ScriptExecution*
 
 Ha testre szabja a felületén az alkalmazás JavaScript használatával, kövesse az alábbi irányelveket:
 
-- Egy kattintással esemény nem kötési `<a>` HTML-elemek. 
+- Egy kattintással esemény nem kötési `<a>` HTML-elemek.
 - Nem kell egy függőség az Azure AD B2C-kód vagy a megjegyzéseket.
 - Ne módosítsa, sorrend, illetve az Azure AD B2C-vel HTML-elemek hierarchiájának. Egy Azure AD B2C-szabályzat segítségével szabályozhatja a felhasználói felületi elemek sorrendjét.
 - E szempontok bármely RESTful szolgáltatás hívása:
@@ -113,9 +113,9 @@ function setupPwdTogglers(){
 setupPwdTogglers();
 ```
 
-### <a name="add-terms-of-use"></a>Használati feltételek hozzáadása 
+### <a name="add-terms-of-use"></a>Használati feltételek hozzáadása
 
-A következő kódot tartalmazza a lapra, ahol fel szeretne venni egy **használati** jelölőnégyzetet. Ezt a jelölőnégyzetet az helyi fiók regisztrációs és a közösségi fiók regisztrációs lapok általában szükség lesz.  
+A következő kódot tartalmazza a lapra, ahol fel szeretne venni egy **használati** jelölőnégyzetet. Ezt a jelölőnégyzetet az helyi fiók regisztrációs és a közösségi fiók regisztrációs lapok általában szükség lesz.
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -124,18 +124,18 @@ function addTermsOfUseLink() {
     if (!termsOfUseLabel) {
         return;
     }
-      
+
     // get the label text
     var termsLabelText = termsOfUseLabel.innerHTML;
-      
-    // create a new <a> element with the same inner text 
+
+    // create a new <a> element with the same inner text
     var termsOfUseUrl = 'https://docs.microsoft.com/legal/termsofuse';
     var termsOfUseLink = document.createElement('a');
     termsOfUseLink.setAttribute('href', termsOfUseUrl);
     termsOfUseLink.setAttribute('target', '_blank');
     termsOfUseLink.appendChild(document.createTextNode(termsLabelText));
 
-    // replace the label text with the new element 
+    // replace the label text with the new element
     termsOfUseLabel.replaceChild(termsOfUseLink, termsOfUseLabel.firstChild);
 }
 ```
@@ -145,4 +145,3 @@ Cserélje le a kód `terms-of-use-url` a használati feltételek a hivatkozást 
 ## <a name="next-steps"></a>További lépések
 
 További információ az alkalmazások felhasználói felületének testreszabását [egyéni szabályzat használata az Azure Active Directory B2C az alkalmazás a felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md).
-

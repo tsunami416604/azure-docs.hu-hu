@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6362b243bff91233c3cd08f26904866dd7be9ebd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9610256ac68b6c1be12ca22220e317752c068b85
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248877"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730833"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Az Azure-beli üzembe helyezése Windows virtuális gép hibáinak elhárítása
 
@@ -87,7 +87,7 @@ Aktiválja havi kreditjét, tekintse meg ezt [cikk](https://azure.microsoft.com/
 
 ## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Hogyan lehet hozzáadni a nagyvállalati fejlesztés és tesztelés, a nagyvállalati szerződés (EA) ablakban ügyféllemezképeket eléréséhez?
 
-Azok a fióktulajdonosok, akiknek ezt egy vállalati rendszergazda engedélyezte a korlátozott arra, hogy hozzon létre előfizetéseket a Enterprise Dev/Test ajánlat alapján. A fiók tulajdonosa fióktulajdonosnak az Azure Fiókportálján létrehozta az előfizetéseket, és hozzá kell adnia az aktív Visual Studio-előfizetőket társadminisztrátorként. Hogy azok kezelhessék és használhassák a fejlesztéshez és teszteléshez szükséges erőforrásokat. További információkért lásd: [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/).
+Csak azok a fióktulajdonosok hozhatnak létre előfizetéseket a „Nagyvállalati Szerződés – Fejlesztés és tesztelés” ajánlat alapján, akiknek ezt egy vállalati rendszergazda engedélyezte. A fiók tulajdonosa fióktulajdonosnak az Azure Fiókportálján létrehozta az előfizetéseket, és hozzá kell adnia az aktív Visual Studio-előfizetőket társadminisztrátorként. Hogy azok kezelhessék és használhassák a fejlesztéshez és teszteléshez szükséges erőforrásokat. További információkért lásd: [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Az illesztőprogramok hiányoznak a Windows N-sorozatú virtuális gép
 
@@ -124,7 +124,7 @@ Válasszon méretet a rendelkezésre állási csoport fürt támogatott. Ajánlo
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Adhatok hozzá egy meglévő klasszikus virtuális gép egy rendelkezésre állási csoportot?
 
-Igen. Egy meglévő klasszikus virtuális gép adhat hozzá egy új vagy meglévő rendelkezésre állási csoportban. További információ: [hozzáadása egy meglévő virtuális gépet egy rendelkezésre állási csoporthoz](../windows/classic/configure-availability-classic.md#addmachine).
+Igen. Egy meglévő klasszikus virtuális gép adhat hozzá egy új vagy meglévő rendelkezésre állási csoportban. További információ: [hozzáadása egy meglévő virtuális gépet egy rendelkezésre állási csoporthoz](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
 ## <a name="next-steps"></a>További lépések

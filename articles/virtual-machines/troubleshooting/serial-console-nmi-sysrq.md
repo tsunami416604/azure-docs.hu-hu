@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 9dcec525adf7676b23c6dec14dff07c6d419c085
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3a9d3364f9e55611c94797b71b058128ce7c6696
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884642"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697927"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Használja a soros konzol SysRq és NMI hívások
 
@@ -63,7 +63,7 @@ A SysRq rendszergazdai útmutató a fenti:
 |``h``  |   Súgó jelenik meg (az itt felsorolt, mint bármilyen más kulcs megjeleníti is segítségre van szüksége, de ``h`` könnyen megjegyezhető :-)
 |``i``  |    Egy SIGKILL küldése az összes folyamat, kivéve az init.
 |``j``  |    Kényszerített "Csak olvasztása," - feladatszinten csatlakoztathatók a FIFREEZE ioctl által görgethesse.
-|``k``  |    Biztonságos hozzáférés kulcs (SAK) az aktuális virtuális konzolon minden program megszakítja. Megjegyzés: Fontos megjegyzések alább SAK szakaszban találja.
+|``k``  |    Biztonságos hozzáférés kulcs (SAK) az aktuális virtuális konzolon minden program megszakítja. MEGJEGYZÉS: Tekintse meg alább SAK szakaszban fontos megjegyzéseket.
 |``l``  |    Minden, aktív CPU-verem backtrace mutatja be.
 |``m``  |    Jelenlegi memória adatait a konzol fog dump.
 |``n``  |    Jó tudni, hogy RT feladatok
@@ -86,7 +86,7 @@ A SysRq rendszergazdai útmutató a fenti:
 Terjesztésipont-specifikus SysRq és lépések Linux konfigurálása egy összeomlási memóriakép létrehozása, amikor kap egy SysRq "Összeomlási" parancsot dokumentációjáért lásd: az alábbi hivatkozásokat:
 
 #### <a name="ubuntu"></a>Ubuntu ####
- - [Kernel összeomlási memóriakép](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+ - [Kernel Crash Dump](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 #### <a name="red-hat"></a>Red Hat ####
 - [Mi a SysRq konstrukció, és hogyan használhatom?](https://access.redhat.com/articles/231663)
@@ -98,7 +98,7 @@ Terjesztésipont-specifikus SysRq és lépések Linux konfigurálása egy össze
 #### <a name="coreos"></a>CoreOS ####
 - [Összeomlás-naplók gyűjtését.](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="non-maskable-interrupt-nmi"></a>Nem maszkolható (NMI) 
+## <a name="non-maskable-interrupt-nmi"></a>Non-Maskable Interrupt (NMI) 
 Egy nem maszkolható (NMI) úgy tervezték, hogy hozzon létre egy olyan jelet, hogy a szoftverek virtuális gépi nem figyelmen kívül hagyja. Hagyományosan NMIs figyelje a hardverekkel kapcsolatos problémák szerepelnek, amelyek adott válaszidők szükséges rendszereken voltak használva.  Ma, programozók és a rendszer a rendszergazdák gyakran használnak NMI mechanizmusként javításához vagy hibaelhárítása a rendszerek, amelyek leáll.
 
 A soros konzol segítségével egy NMI küldeni egy Azure virtuális gépen a billentyűzet ikon használatával az alább látható a parancssávon. Miután a NMI érkezik, a virtuális gép konfigurációja szabályozza hogyan reagál a rendszer.  Linux operációs rendszerek beállítható úgy, hogy az összeomlási, és a memóriakép létrehozása az operációs rendszer egy NMI kap.
@@ -112,10 +112,10 @@ Kernel-paraméterek konfigurálásának sysctl támogató Linux rendszerek eset�
 1. Rendszer újraindítása vagy futtatásával sysctl frissítése <br>
     `sysctl -p`
 
-További információ a Linux kernel beállításokat, beleértve a `unknown_nmi_panic`, `panic_on_io_nmi`, és `panic_on_unrecovered_nmi`, lásd: [dokumentációja a/proc/sys/kernel / *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Terjesztésipont-specifikus NMI és lépések Linux konfigurálása egy összeomlási memóriakép létrehozása, amikor kap egy NMI dokumentációjáért lásd: az alábbi hivatkozásokat:
+További információ a Linux kernel beállításokat, beleértve a `unknown_nmi_panic`, `panic_on_io_nmi`, és `panic_on_unrecovered_nmi`, lásd: [Dokumentáció a/proc/sys/kernel / *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Terjesztésipont-specifikus NMI és lépések Linux konfigurálása egy összeomlási memóriakép létrehozása, amikor kap egy NMI dokumentációjáért lásd: az alábbi hivatkozásokat:
  
 ### <a name="ubuntu"></a>Ubuntu 
- - [Kernel összeomlási memóriakép](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+ - [Kernel Crash Dump](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 ### <a name="red-hat"></a>Red Hat 
  - [Mi az a-NMI, és milyen feladatokat lehet érdemes használni a?](https://access.redhat.com/solutions/4127)

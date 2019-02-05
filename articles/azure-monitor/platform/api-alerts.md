@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.openlocfilehash: 295b03a8d61a7f83605a3badcafc7a4d6b59fdbd
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 61dd4930d7c34b30a4cedb34a4d815aa553d001e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497349"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697649"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Hozzon létre, és a Log Analytics REST API-val riasztási szabályok kezelése
 A Log Analytics Alert REST API lehetővé teszi, hogy hozhat létre, és a Log Analytics-riasztások kezelése.  Ez a cikk részletesen az API-val és néhány példa a különféle műveletek végezhetők.
@@ -219,7 +219,7 @@ A log Analytics-alapú riasztások aktiválódnak, minden alkalommal, amikor kü
 
 Riasztási szabály használatával van megadva a Log Analytics tulajdonságát mellőzése a *sávszélesség-szabályozási* érték és a Tiltási időtartam használatával *DurationInMinutes* értéket.
 
-Következő egy minta válasza egy műveletet, amelyek csak küszöbértéke, súlyosság és elrejtése tulajdonság
+Következő egy minta válasz csak egy küszöbértéket súlyosság, a művelet, és mellőzheti tulajdonság
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -248,7 +248,7 @@ Egy súlyossági műveletet egy ütemezés módosításához használja a Put me
 #### <a name="action-groups"></a>Műveletcsoportok
 Az Azure-ban, az összeset műveletcsoport használja az alapértelmezett mechanizmusként műveletek kezelésére. A műveletcsoport adja meg a műveletet egyszer, és társíthatja a műveletcsoport több riasztás – az Azure-ban. Nem szükséges, ismételten deklarálja és újra ugyanazokat a műveleteket. Műveletcsoportok támogatja a több műveletek – például az e-mailben, SMS, hanghívás, az ITSM-kapcsolatot, Automation-Runbook, Webhook URI. 
 
-A felhasználó számára ki van bővítve a riasztások az Azure-bA – ütemezés most rendelkezik küszöbértéket, riasztást létrehozni a együtt átadott műveletcsoport részletei. E-mail adatai, a Webhook URL-címek, Runbook-automatizálási részleteit és más műveletek, kell lennie; riasztás létrehozása előtt műveletcsoport ügyféloldali meghatározott létrehozhat egy [műveleti csoport az Azure Monitor](../../azure-monitor/platform/action-groups.md) a portálon vagy [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+Felhasználók számára, akik ki van bővítve a riasztások az Azure-bA – ütemezés most rendelkezik küszöbértéket, riasztást létrehozni a együtt átadott műveletcsoport részletei. E-mail adatai, a Webhook URL-címek, Runbook-automatizálási részleteit és más műveletek, kell lennie; riasztás létrehozása előtt műveletcsoport ügyféloldali meghatározott létrehozhat egy [műveleti csoport az Azure Monitor](../../azure-monitor/platform/action-groups.md) a portálon vagy [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Műveletcsoport társítása egy riasztás hozzáadásához adja meg az egyedi Azure Resource Manager-Azonosítót a műveletcsoport, a riasztás definíciójának. A minta ábra lejjebb:
 

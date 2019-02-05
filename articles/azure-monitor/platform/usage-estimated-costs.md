@@ -9,12 +9,12 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: c326c255636bac7e698a64044e9ab65c8c05d01c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e6207c44fbac63163d125a109cbdc1c6f08e9860
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54460719"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734504"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Használat és becsült költségek figyelése
 
@@ -73,7 +73,7 @@ A Log Analytics vagy az Application Insights magasabb költségeket régiókban 
 
 ## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Új díjszabási modell és az Operations Management Suite-előfizetés jogosultságai
 
-Ügyfelek, akik megvásárolták a Microsoft Operations Management Suite E1 és E2 jogosultak a csomópontonkénti adatokat feldolgozó jogosultságok [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) és [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing#the-price-plans). Ezeket a jogosultságokat a Log Analytics-munkaterületek és Application Insights-erőforrások fogadásához egy adott előfizetésben: 
+Ügyfelek, akik megvásárolták a Microsoft Operations Management Suite E1 és E2 jogosultak a csomópontonkénti adatokat feldolgozó jogosultságok [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) és [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Ezeket a jogosultságokat a Log Analytics-munkaterületek és Application Insights-erőforrások fogadásához egy adott előfizetésben: 
 
 - Az előfizetéshez tartozó díjszabási modell a. április előtti 2018-as modell kell maradnia.
 - Log Analytics-munkaterületek a "csomópontonként (OMS)" tarifacsomag kell használnia.

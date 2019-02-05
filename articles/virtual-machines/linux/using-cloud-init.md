@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 0f7660e8534a74eabe32611c4c01ae5587af7cee
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c0a5e8695b712ca95952ea839fa829dab2c48824
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188873"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700094"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>A cloud-init támogatása az Azure virtual machines
 Ez a cikk ismerteti, hogy létezik a támogatási [a cloud-init](https://cloudinit.readthedocs.io) konfigurálása a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok (VMSS) kiépítés ideje az Azure-ban. Ezen a cloud-init parancsfájlok futtatása az első rendszerindításkor az Azure-ban kiépített erőforrások után.  
@@ -39,8 +39,8 @@ A cloud-init különböző disztribúciókon is működik. Például nem kell az
 |Canonical |UbuntuServer |16.04-LTS |legújabb |igen | 
 |Canonical |UbuntuServer |14.04.5-LTS |legújabb |igen |
 |CoreOS |CoreOS |Stable |legújabb |igen |
-|OpenLogic |CentOS |7-CI |legújabb |előzetes verzióban |
-|RedHat |RHEL |7-RAW-CI |legújabb |előzetes verzióban |
+|OpenLogic |CentOS |7-CI |legújabb |előzetes verzió |
+|RedHat |RHEL |7-RAW-CI |legújabb |előzetes verzió |
 
 Jelenleg az Azure Stack nem támogatja az RHEL 7.4 és a cloud-init használata CentOS 7.4 üzembe.
 
@@ -54,7 +54,7 @@ Virtuális gépek WALA konfigurációk idő korlátozott a kiépítés ideje leg
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>Virtuális gép üzembe helyezése a cloud-init engedélyezve van.
 Engedélyezve van a cloud-init virtuális gép üzembe helyezése rendkívül egyszerű, üzembe helyezés során a cloud-init-kompatibilis terjesztési hivatkozik.  Linux terjesztési maintainers kell engedélyezni, és a cloud-init integrálása az Azure alapszintű közzétett képek. Miután meggyőződött számára telepíteni kívánja a lemezképet a cloud-init engedélyezve, a rendszerkép üzembe helyezése az Azure CLI használatával. 
 
-A lemezkép központi telepítése az első lépés az, hogy hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+A lemezkép központi telepítése az első lépés az, hogy hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -71,7 +71,7 @@ packages:
 ```
 Nyomja le az `ctrl-X` lépjen ki a fájlt, írja be a következőt `y` menteni a fájlt, és `enter` , erősítse meg a fájl nevét, a kilépés után.
 
-Az utolsó lépés az, hogy a virtuális gép létrehozása a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. 
+Az utolsó lépés az, hogy a virtuális gép létrehozása a [az virtuális gép létrehozása](/cli/azure/vm) parancsot. 
 
 A következő példában létrehozunk egy nevű virtuális Gépet *centos74* és SSH-kulcsokat hoz létre, ha azok még nem léteznek a kulcsok alapértelmezett helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. A következő példában létrehozunk egy nevű virtuális Gépet *centos74*:
 

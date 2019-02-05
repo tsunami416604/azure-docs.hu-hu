@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: a6a8fee942edf4cec98a6d2f46eb2f63b7595c09
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 309c69862d475a0ef76ab0a24ed804b363ba33c0
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200047"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696796"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager – gyakori kérdések (GYIK)
 
@@ -285,7 +285,7 @@ Igen. Felhőszolgáltatás staging (átmeneti) tárhelyek beállítható a Traff
 
 ### <a name="does-traffic-manager-support-ipv6-endpoints"></a>A Traffic Manager támogatja az IPv6-os végpontjaiig?
 
-A TRAFFIC Manager jelenleg nem biztosít IPv6-addressible névkiszolgálókat. A Traffic Manager továbbra is használható az IPv6-alapú ügyfelek IPv6-végpontokhoz való csatlakozáshoz. Egy ügyfél nem kérést DNS közvetlenül a Traffic Manager. Ehelyett az ügyfél használja egy rekurzív DNS-szolgáltatás. Egy csak IPv6-alapú ügyfél kérelmeket küld a rekurzív DNS szolgáltatás IPv6-n keresztül. Majd a rekurzív szolgáltatás használatával az IPv4 Traffic Manager névkiszolgálóit csatlakoznia kell.
+A TRAFFIC Manager jelenleg nem biztosít IPv6-címmel rendelkező kiszolgálókat. A Traffic Manager továbbra is használható az IPv6-alapú ügyfelek IPv6-végpontokhoz való csatlakozáshoz. Egy ügyfél nem kérést DNS közvetlenül a Traffic Manager. Ehelyett az ügyfél használja egy rekurzív DNS-szolgáltatás. Egy csak IPv6-alapú ügyfél kérelmeket küld a rekurzív DNS szolgáltatás IPv6-n keresztül. Majd a rekurzív szolgáltatás használatával az IPv4 Traffic Manager névkiszolgálóit csatlakoznia kell.
 
 A TRAFFIC Manager válaszol a DNS-nevét vagy a végpont IP-címét. IPv6 végpont támogatásához, két lehetőség van. Hozzáadhat a végpont DNS-névként, amely rendelkezik egy kapcsolódó AAAA típusú rekord és a Traffic Manager állapot-ellenőrzés lesz, a végpont és azt egy CNAME rekordot a lekérdezésekre adott válaszok adja vissza. Azt is megteheti, hogy a végpont, közvetlenül az IPv6-cím és a Traffic Manager használatával adja vissza egy AAAA típusú rekordot a lekérdezésekre adott válaszok. 
 
@@ -349,7 +349,7 @@ A profil elleni fogadásakor egy lekérdezést, a Traffic Manager először megk
 A profilok az eltérő típushoz bármilyen másik útválasztási módszert:
 |A bejövő lekérdezési kérés|    Végpont típusa|  A megadott válasz|
 |--|--|--|
-|BÁRMELY |  A / AAAA / CNAME |  Céloldali végpont| 
+|ANY |  A / AAAA / CNAME |  Céloldali végpont| 
 |A |    A / CNAME | Céloldali végpont|
 |A |    AAAA |  NODATA |
 |AAAA | AAAA / CNAME |  Céloldali végpont|
@@ -361,7 +361,7 @@ Profilok esetén használt útválasztási módszer beállítása típushoz:
 
 |A bejövő lekérdezési kérés|    Végpont típusa | A megadott válasz|
 |--|--|--|
-|BÁRMELY |  A többféle a és AAAA | Cél végpontok|
+|ANY |  A többféle a és AAAA | Cél végpontok|
 |A |    A többféle a és AAAA | Adjon meg egy, csak cél végpontok|
 |AAAA   |A többféle a és AAAA|     Csak az AAAA típusú cél végpontok|
 |CNAME |    A többféle a és AAAA | NODATA |

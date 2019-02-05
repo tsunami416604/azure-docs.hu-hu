@@ -5,19 +5,19 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/02/2018
+ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.lastreviewed: 11/02/2018
-ms.openlocfilehash: 844c81d71734ab17c93f60cb802686c209e04014
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/04/2019
+ms.openlocfilehash: 6c9893aac349b05580f49a445bd088ed5c76044b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239230"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697474"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Az Azure Stack Ethereum blockchain hálózatok üzembe helyezése
 
@@ -25,7 +25,7 @@ Az Ethereum-megoldássablon célja, hogy egyszerűbb és gyorsabb üzembe helyez
 
 Felhasználói adatok és a egy kattintással üzembe helyezést, az Azure Stack-bérlői portál néhány minden tagja a hálózati erőforrás-igényű helyezhet üzembe. Minden tag hálózati erőforrás-igényű tranzakciós kiegyenlített terhelésű csomópontok egy készletét áll rendelkező, amelyeket egy alkalmazás vagy felhasználó használhatja elküldeni a tranzakciók, a tranzakciókat. adatbányászati csomópontok egy készletét és a egy hálózati virtuális készüléket (NVA). A későbbi csatlakozási lépés kapcsolódik az nva-k teljes konfigurációjú többtagú blockchain-hálózat létrehozása.
 
-Beállítására, hogy:
+Beállítása:
 
 - Válasszon egy üzembe helyezési architektúrája
 - Egy önálló, consortium vezető vagy consortium tag hálózati üzembe helyezése
@@ -157,7 +157,7 @@ Tag üzembe helyezés ellenőrzéséhez keresse meg a tag felügyeleti webhely. 
 
 ![Tag központi telepítés összegzése](./media/azure-stack-ethereum/ethereum-node-status-2.png)
 
-Amint a képen is látható, tagok csomópontok állapota **nem fut**. Ennek az az oka a tag és vezető közötti kapcsolat nem jön létre. Tag és vezető közötti kapcsolat egy kétirányú kapcsolat. Tag központi telepítésekor a sablon automatikusan létrehozza a vezető tag a kapcsolatot. A kapcsolat létrehozására vezető és tag, nyissa meg a következő lépéssel.
+Amint a képen is látható, tagok csomópontok állapota **nem fut**. Ez az állapot azért, hogy a tag és vezető közötti kapcsolat nem jön létre. Tag és vezető közötti kapcsolat egy kétirányú kapcsolat. Tag központi telepítésekor a sablon automatikusan létrehozza a vezető tag a kapcsolatot. A kapcsolat létrehozására vezető és tag, nyissa meg a következő lépéssel.
 
 ### <a name="connect-member-and-leader"></a>Csatlakozás a tag és vezető
 

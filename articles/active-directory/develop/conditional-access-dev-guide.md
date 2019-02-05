@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: c5df6d1b3480a93a0667aaec0bcf0e171d4a0fe6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b84d7a6f266ffae062d861c53a229225403e07c5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101753"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727993"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Feltételes hozzáférés az Azure Active Directory fejlesztői útmutatója
 
@@ -77,7 +77,7 @@ A fejlesztők mutatták igénybe és fűzze hozzá egy új kérelmet az Azure AD
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD feltételes hozzáférés lehetővé teszi a [prémium szintű Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-whatis#choose-an-edition). További információ a licencelésről a követelmények a [licenccel nem rendelkező használati jelentés](../active-directory-conditional-access-unlicensed-usage-report.md). A fejlesztők csatlakozhat a [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx), amely tartalmazza a nagyvállalati mobilitási csomag, amely magában foglalja a prémium szintű Azure AD-előfizetés ingyenes.
+Az Azure AD feltételes hozzáférés lehetővé teszi a [prémium szintű Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). További információ a licencelésről a követelmények a [licenccel nem rendelkező használati jelentés](../active-directory-conditional-access-unlicensed-usage-report.md). A fejlesztők csatlakozhat a [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx), amely tartalmazza a nagyvállalati mobilitási csomag, amely magában foglalja a prémium szintű Azure AD-előfizetés ingyenes.
 
 ### <a name="considerations-for-specific-scenarios"></a>Bizonyos forgatókönyvek esetén megfontolandó szempontok
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c7d8ab8beced055d10cebcecf36d957b155c63b7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aafa1acdf6cca58ea0cfbc968f73ce13eb65bf91
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256221"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700502"
 ---
 # <a name="azure-operational-security"></a>Az Azure működési biztonság
 ## <a name="introduction"></a>Bevezetés
@@ -29,7 +29,7 @@ Tudjuk, hogy biztonsági-e a feladatot a felhőben, és hogy mennyire fontos, ho
 
 Segítségével jobban megismerheti, mind az ügyfél a Microsoft Azure-ban végrehajtott biztonsági intézkedés a tömbben, és a Microsoft operational perspektívák, ez a tanulmány, "Az Azure Operational Security", írása, amely ügyfeleknek nyújt átfogó Tekintse meg a működési biztonság érhető el a Windows Azure-ral.
 
-### <a name="azure-platform"></a>Azure-Platform
+### <a name="azure-platform"></a>Azure Platform
 Az Azure egy nyilvános felhőszolgáltatás-platform, amely támogatja az operációs rendszerek, programozási nyelvek, keretrendszerek, eszközök, adatbázisok és eszközök széles skálájából el. Azt is Linux-tárolókat futtathat Docker-integrációval; a JavaScript, Python, .NET, PHP, Java és Node.js-alkalmazások készítéséhez háttérrendszereket készíthet iOS, Android és Windows eszközökhöz. Az Azure Cloud service támogatja a technológiákat a fejlesztők és informatikai szakemberek számára már elnyerték.
 
 Amikor épülnek, vagy át az IT-eszközeivel, nyilvános felhőszolgáltató védelme érdekében az alkalmazások és adatok a szolgáltatások és a vezérlők annak a szervezetnek képességekhez hagyatkoznia nyújtanak kezelheti a felhőalapú eszközeinek biztonságát.
@@ -50,7 +50,7 @@ Ez a tanulmány belül a Microsoft Azure felhőalapú platform a Microsoft Azure
 
 5.  [Az Azure Storage analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
-6.  [Az Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
+6.  [Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
 ## <a name="microsoft-azure-log-analytics"></a>A Microsoft Azure Naplóelemzés
@@ -135,31 +135,31 @@ A Security Center adatokat gyűjt a virtuális gépekről a biztonsági állapot
 
 - Az Azure Security Center az alábbi forrásokból kapott adatok elemzésével biztosítja a biztonsági állapot áttekinthetőségét, azonosítja a biztonsági réseket, javításokat javasolj, valamint észleli az aktív fenyegetéseket:
 
--   Azure Services: az adott erőforrás-szolgáltatóval kommunikálva üzembe helyezett Azure-szolgáltatások konfigurációjával kapcsolatos információkat használja.
+-   Azure Services: Használ, adott erőforrás-szolgáltatóval kommunikálva üzembe helyezett Azure-szolgáltatások konfigurációjával kapcsolatos információkat.
 
-- Hálózati forgalom: a hálózati forgalom metaadataiból vett mintát használja a Microsoft infrastruktúrájából, például a forrás és a cél IP-címét és portját, a csomagméretet és a hálózati protokollt.
+- Hálózati forgalom: Használja a hálózati forgalom metaadataiból a Microsoft, például a forrás és cél IP-portot, a csomagméretet és a hálózati protokoll mintát venni.
 
--   Partnermegoldások: Az integrált partnermegoldásoktól, például tűzfalaktól és kártevőirtó megoldásoktól érkező biztonsági riasztásokat használja.
+-   Partneri megoldások: Integrált partneri megoldások, például tűzfalaktól és kártevőirtó megoldásoktól érkező biztonsági riasztásokat használja.
 
--   Saját virtuális gépek: Konfigurációs és biztonsági eseményekkel kapcsolatos információkat használ (például Windows-esemény- és vizsgálati naplókat, IIS-naplókat, rendszernapló-üzeneteket és a virtuális gépekről származó összeomlási memóriaképeket).
+-   A virtuális gépek: Konfigurációs és biztonsági eseményekkel, például a Windows esemény- és vizsgálati naplókat, IIS-naplók, syslog-üzeneteket és a virtuális gépekről származó összeomlási memóriaképeket kapcsolatos információkat használ.
 
 ### <a name="data-protection"></a>Adatvédelem
 
 Az Azure Security Center biztonsággal kapcsolatos adatokat gyűjt és dolgoz fel (például konfigurációs információkat, metaadatokat, eseménynaplókat, összeomlási memóriaképeket és még sok mást), hogy segítsen az ügyfeleknek a fenyegetések megelőzésében, észlelésében és elhárításában. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig.
 
--   **Az adatok elkülönítése**: az adatok logikailag elkülönítve vannak tárolva a szolgáltatás egyes összetevőiben. Az összes adat szervezet szerint van megcímkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes.
+-   **Az adatok elkülönítése**: Adatok van logikailag elkülönítve vannak tárolva a szolgáltatás egyes összetevőiben. Az összes adat szervezet szerint van megcímkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes.
 
--   **Adatelérési**: biztonsági javaslatok és a lehetséges biztonsági fenyegetések kivizsgálása, a Microsoft ezért felelős munkatársai gyűjtött információk érhetik el vagy Azure-szolgáltatások, beleértve az összeomlási memóriaképeket által elemzett feldolgozni létrehozási események, Virtuálisgép-lemez pillanatképeihez és összetevőihez, amelyek véletlenül tartalmazhatnak ügyféladatokat vagy személyes adatokat a virtuális gépekről. Betartjuk a [Microsoft Online szolgáltatások használati feltételeit és adatvédelmi nyilatkozatát](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), mely állapot, amely a Microsoft nem használja az ügyféladatokat, vagy a nyer információt azokból hirdetési vagy hasonló kereskedelmi célú.
+-   **Adatelérési**: Biztonsági javaslatok és a lehetséges biztonsági fenyegetések kivizsgálása, a Microsoft ezért felelős munkatársai gyűjtött információk érhetik el vagy Azure-szolgáltatások által elemzett összeomlási memóriaképekhez feldolgozni-létrehozási események, Virtuálisgép-lemez pillanatképeihez és összetevőihez, amelyek véletlenül tartalmazhatnak ügyféladatokat vagy személyes adatokat a virtuális gépekről. Betartjuk a [Microsoft Online szolgáltatások használati feltételeit és adatvédelmi nyilatkozatát](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), mely állapot, amely a Microsoft nem használja az ügyféladatokat, vagy a nyer információt azokból hirdetési vagy hasonló kereskedelmi célú.
 
--   **Az adatok felhasználása**: a Microsoft a különböző bérlőknél észlelt mintákat és fenyegetésre vonatkozó intelligenciát használ a megelőzési és észlelési funkcióihoz, és ezt az [adatvédelmi nyilatkozatában](https://www.microsoft.com/en-us/privacystatement/OnlineServices/) ismertetett adatvédelmi kötelezettségeinek megfelelően teszi.
+-   **Adatok használatával**: A Microsoft minták és több bérlő különböző bérlőknél észlelt fenyegetésekkel kapcsolatos Tudásbázis alkalmaz a használatával javíthatja a megelőzési és észlelési funkcióihoz; ismertetett adatvédelmi kötelezettségeinek megfelelően tesszük a [adatvédelmi nyilatkozat](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
 
 ### <a name="data-location"></a>Az adatok helye
 
 Az Azure Security Center ideiglenes másolatokat gyűjt az összeomlási memóriaképek fájljairól, és elemzi ezeket a biztonsági réseket kihasználó támadások és a sikeres feltörések nyomai után kutatva. Az Azure Security Center az elemzéseket ugyanazon a földrajzi helyen végzi el, ahol a munkaterület található, és az elemzés után törli az ideiglenes másolatokat. A gépösszetevők tárolása központilag történik, ugyanabban a régióban, ahol a virtuális gép is található.
 
--   **A Tárfiókok**: tárfiók van megadva minden régióhoz, ahol a virtuális gépek futnak. Ez lehetővé teszi, hogy abban a régióban tárolja az adatait, amelyben az a virtuális gép található, amelyről az adatok gyűjtése történik.
+-   **A Tárfiókok**: Egy tárfiók van megadva minden régióhoz, ahol a virtuális gépek futnak. Ez lehetővé teszi, hogy abban a régióban tárolja az adatait, amelyben az a virtuális gép található, amelyről az adatok gyűjtése történik.
 
--   **Az Azure Security Center tárhelye**: A biztonsági riasztásokkal (beleértve a partnerriasztásokat), javaslatokkal és biztonsági állapottal kapcsolatos információk tárolása jelenleg az Egyesült Államokban, központilag történik. Ez az információ magában foglalhat az Ön virtuális gépeiről összegyűjtött kapcsolódó konfigurációs adatokat és biztonsági eseményeket szükség szerint annak érdekében, hogy megjeleníthessük Önnek a biztonsági riasztásokat, a javaslatokat vagy a biztonsági állapot adatait.
+-   **Azure Security Center Storage**: Biztonsági riasztások, beleértve a partnerriasztásokat, javaslatok és biztonsági állapottal kapcsolatos információk tárolása központilag, jelenleg az Amerikai Egyesült Államokban. Ez az információ magában foglalhat az Ön virtuális gépeiről összegyűjtött kapcsolódó konfigurációs adatokat és biztonsági eseményeket szükség szerint annak érdekében, hogy megjeleníthessük Önnek a biztonsági riasztásokat, a javaslatokat vagy a biztonsági állapot adatait.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -218,7 +218,7 @@ A funkció, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztika
 
 A hálózati biztonsági naplózás létfontosságú a hálózati biztonsági rések és az IT-biztonsági és jogszabályi cégirányítási modell betartásáért. Biztonsági csoport nézet kérheti le a konfigurált hálózati biztonsági csoport és a biztonsági szabályok és az érvényben lévő biztonsági szabályokat. A alkalmazni szabályok listáját, és megadhatja, hogy a portok nyitva, és a hálózati biztonsági rések felmérése.
 
-[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) egy regionális szolgáltatás, amely lehetővé teszi a figyelési és diagnosztizálási tevékenységet végezhet hálózati szinten lévő, a és az Azure-ból. A hálózati diagnosztikai és vizualizációs eszközök a Network Watcherrel elérhető segítenek megérteni, diagnosztizálása és betekintést nyerhet az Azure-ban a hálózati. A szolgáltatás része, csomagrögzítés, következő ugrási, IP-folyamat ellenőrzése, a biztonsági csoport nézet NSG-Folyamatnaplók. Forgatókönyv szintű monitorozása biztosítja a teljes körű képet szakembereket egyes hálózati erőforrások monitorozása a hálózati erőforrásokhoz.
+[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) egy regionális szolgáltatás, amely lehetővé teszi a figyelési és diagnosztizálási tevékenységet végezhet hálózati szinten lévő, a és az Azure-ból. A hálózati diagnosztikai és vizualizációs eszközök a Network Watcherrel elérhető segítenek megérteni, diagnosztizálása és betekintést nyerhet az Azure-ban a hálózati. A szolgáltatás része, csomagrögzítés, következő ugrási, IP-folyamat ellenőrzése, a biztonsági csoport nézet NSG-Folyamatnaplók. Forgatókönyv szintű monitorozása biztosítja a teljes körű képet szakembereket egyes hálózati erőforrások monitorozása a hálózati erőforrásokhoz.
 
 ![Azure Network Watcher](./media/azure-operational-security/azure-operational-security-fig8.png)
 

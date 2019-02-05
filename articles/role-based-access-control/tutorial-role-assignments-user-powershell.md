@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/11/2018
+ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: cac585b36c3b5969a18c941215b623443850cd4c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
-ms.translationtype: HT
+ms.openlocfilehash: 27b48e1d6aabf9cde7152bfb0dbf3e58bc619107
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301728"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696778"
 ---
-# <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>Oktatóanyag: Hozzáférés biztosítása egy felhasználó számára az RBAC és az Azure PowerShell használatával
+# <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>Oktatóanyag: Hozzáférés engedélyezése egy felhasználó RBAC és az Azure PowerShell használatával
 
 A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. Ebben az oktatóanyagban hozzáférést biztosít egy felhasználó számára, hogy mindent megtekinthessen az előfizetésben és mindent kezelhessen egy erőforráscsoportban az Azure PowerShell használatával.
 
@@ -32,6 +32,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Hozzáférés eltávolítása
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -79,10 +81,10 @@ Szerepkör hozzárendeléséhez felhasználóra, csoportra vagy szolgáltatásn�
 
 Egy erőforráscsoport használatával bemutatjuk, hogyan rendelhet hozzá egy szerepkört erőforráscsoporti hatókörben.
 
-1. Kérje le a régiók helyeit a [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) paranccsal.
+1. Használatával régió helyek listáját a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancsot.
 
    ```azurepowershell
-   Get-AzureRmLocation | select Location
+   Get-AzLocation | select Location
    ```
 
 1. Válasszon ki egy Önhöz közeli helyet, és rendelje hozzá egy változóhoz.
@@ -91,10 +93,10 @@ Egy erőforráscsoport használatával bemutatjuk, hogyan rendelhet hozzá egy s
    $location = "westus"
    ```
 
-1. Hozzon létre egy új erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal.
+1. Hozzon létre egy új erőforrás csoport a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot.
 
    ```azurepowershell
-   New-AzureRmResourceGroup -Name "rbac-tutorial-resource-group" -Location $location
+   New-AzResourceGroup -Name "rbac-tutorial-resource-group" -Location $location
    ```
 
    ```Example
@@ -107,12 +109,12 @@ Egy erőforráscsoport használatával bemutatjuk, hogyan rendelhet hozzá egy s
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-A felhasználó hozzáférésének biztosításához használja a [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) parancsot egy szerepkör hozzárendelésére. Meg kell adnia a rendszerbiztonsági tagot, a szerepkör-definíciót és a hatókört.
+A felhasználó számára hozzáférést biztosítani, használja a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) szerepkör hozzárendelése parancsot. Meg kell adnia a rendszerbiztonsági tagot, a szerepkör-definíciót és a hatókört.
 
-1. Kérje le az előfizetése azonosítóját a [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) paranccsal.
+1. Az előfizetés használatával Azonosítójának lekéréséhez a [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription) parancsot.
 
     ```azurepowershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     ```Example
@@ -131,7 +133,7 @@ A felhasználó hozzáférésének biztosításához használja a [New-AzureRmRo
 1. Rendelje hozzá az [Olvasó](built-in-roles.md#reader) szerepkört a felhasználóhoz az előfizetési hatókörben.
 
     ```azurepowershell
-    New-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    New-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Reader" `
       -Scope $subScope
     ```
@@ -151,7 +153,7 @@ A felhasználó hozzáférésének biztosításához használja a [New-AzureRmRo
 1. Rendelje hozzá a [Közreműködő](built-in-roles.md#contributor) szerepkört a felhasználóhoz az erőforráscsoporti hatókörben.
 
     ```azurepowershell
-    New-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    New-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Contributor" `
       -ResourceGroupName "rbac-tutorial-resource-group"
     ```
@@ -170,10 +172,10 @@ A felhasználó hozzáférésének biztosításához használja a [New-AzureRmRo
 
 ## <a name="list-access"></a>Hozzáférések felsorolása
 
-1. Az előfizetéshez való hozzáférés ellenőrzéséhez használja a [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) parancsot a szerepkör-hozzárendelések felsorolásához.
+1. Az előfizetés hozzáférés ellenőrzéséhez használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) paranccsal listát készíthet a szerepkör-hozzárendeléseket.
 
     ```azurepowershell
-    Get-AzureRmRoleAssignment -SignInName rbacuser@example.com -Scope $subScope
+    Get-AzRoleAssignment -SignInName rbacuser@example.com -Scope $subScope
     ```
 
     ```Example
@@ -190,10 +192,10 @@ A felhasználó hozzáférésének biztosításához használja a [New-AzureRmRo
 
     A kimenetben láthatja, hogy az Olvasó szerepkör hozzá lett rendelve az RBAC-oktatóanyagbeli felhasználóhoz az előfizetési hatókörben.
 
-1. Az erőforráscsoporthoz való hozzáférés ellenőrzéséhez használja a [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) parancsot a szerepkör-hozzárendelések felsorolásához.
+1. Az erőforráscsoport a hozzáférés ellenőrzéséhez használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) paranccsal listát készíthet a szerepkör-hozzárendeléseket.
 
     ```azurepowershell
-    Get-AzureRmRoleAssignment -SignInName rbacuser@example.com -ResourceGroupName "rbac-tutorial-resource-group"
+    Get-AzRoleAssignment -SignInName rbacuser@example.com -ResourceGroupName "rbac-tutorial-resource-group"
     ```
 
     ```Example
@@ -232,12 +234,12 @@ A felhasználó hozzáférésének biztosításához használja a [New-AzureRmRo
 
 ## <a name="remove-access"></a>Hozzáférés eltávolítása
 
-Felhasználók, csoportok és alkalmazások hozzáférésének eltávolításához használja, a [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) parancsot a szerepkör-hozzárendelés eltávolításához.
+Hozzáférés a felhasználók, csoportok és alkalmazások eltávolításához használja [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) szerepkör-hozzárendelés eltávolításához.
 
 1. A következő paranccsal távolítsa el a felhasználó Közreműködő szerepkör-hozzárendelését az erőforráscsoporti hatókörben.
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    Remove-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Contributor" `
       -ResourceGroupName "rbac-tutorial-resource-group"
     ```
@@ -245,7 +247,7 @@ Felhasználók, csoportok és alkalmazások hozzáférésének eltávolításáh
 1. A következő paranccsal távolítsa el a felhasználó Olvasó szerepkör-hozzárendelését az előfizetési hatókörben.
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    Remove-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Reader" `
       -Scope $subScope
     ```
@@ -254,10 +256,10 @@ Felhasználók, csoportok és alkalmazások hozzáférésének eltávolításáh
 
 Ha törölni szeretné a jelen oktatóanyag során létrehozott erőforrásokat, törölje az erőforráscsoportot és a felhasználót.
 
-1. Az erőforráscsoport a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölhető.
+1. Az erőforrás csoport használatával törölje a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot.
 
     ```azurepowershell
-    Remove-AzureRmResourceGroup -Name "rbac-tutorial-resource-group"
+    Remove-AzResourceGroup -Name "rbac-tutorial-resource-group"
     ```
 
     ```Example

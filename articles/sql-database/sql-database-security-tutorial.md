@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 1fe92f5632544f21506bd19a52a59ed75cabe3b3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8a0c474ab610d89bd702613bc778ad29523a4192
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461202"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732719"
 ---
 # <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Oktatóanyag: Önálló vagy készletezett adatbázis biztonságossá tétele
 
@@ -231,7 +231,7 @@ Biztonságos kapcsolati karakterlánc másolása:
 
 ## <a name="enable-security-features"></a>Biztonsági szolgáltatások engedélyezése
 
-Az Azure SQL Database biztonsági szolgáltatásaival, amelyekhez hozzáférnek az Azure portal használatával. Ezek a funkciók érhetők el az adatbázis és a kiszolgáló, kivéve az adatmaszkolás, amely csak érhető el az adatbázisban. További tudnivalókért lásd: [adatbiztonság speciális](sql-advanced-threat-protection.md), [naplózási](sql-database-auditing.md), [dinamikus adatmaszkolás](sql-database-dynamic-data-masking-get-started.md), és [transzparens adattitkosítás](transparent-data-encryption-azure-sql.md).
+Az Azure SQL Database biztonsági szolgáltatásaival, amelyekhez hozzáférnek az Azure portal használatával. Ezek a funkciók érhetők el az adatbázis és a kiszolgáló, kivéve az adatmaszkolás, amely csak érhető el az adatbázisban. További tudnivalókért lásd: [adatbiztonság speciális](sql-database-advanced-data-security.md), [naplózási](sql-database-auditing.md), [dinamikus adatmaszkolás](sql-database-dynamic-data-masking-get-started.md), és [transzparens adattitkosítás](transparent-data-encryption-azure-sql.md).
 
 ### <a name="advanced-data-security"></a>Advanced Data Security
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: d9800ff3fc82636c5cae12167738667ec84326ee
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ec7b71c7da19ecefc14696c029e63a074b498ec8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856622"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696736"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan-preview"></a>Egy függvényalkalmazás létrehozása a linuxon futó Azure App Service-csomag (előzetes verzió)
 
@@ -84,7 +84,7 @@ Mivel a `myAppServicePlan` egy Linux-csomag, a rendszer a beépített Docker-ren
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk bemutatja, hogyan üzemeltetett Linux függvényalkalmazás létrehozása az Azure-ban. Mostantól [függvény projekt telepítése](https://docs.microsoft.com/cli/azure/functionapp/deployment/source?view=azure-cli-latest) a függvényalkalmazásban. Használhatja az Azure Functions Core Tools való [-Functions-projekt létrehozása](functions-run-local.md#create-a-local-functions-project) a helyi számítógépen, és telepítse az új Linux-függvényalkalmazást.  
+Ez a cikk bemutatja, hogyan üzemeltetett Linux függvényalkalmazás létrehozása az Azure-ban. Mostantól [függvény projekt telepítése](https://docs.microsoft.com/cli/azure/functionapp/deployment/source?view=azure-cli-latest) a függvényalkalmazásban. Használhatja az Azure Functions Core Tools való [-Functions-projekt létrehozása](functions-run-local.md) a helyi számítógépen, és telepítse az új Linux-függvényalkalmazást.  
 
 > [!div class="nextstepaction"] 
 > [Az Azure Functions helyi kódolása és tesztelése](functions-run-local.md)

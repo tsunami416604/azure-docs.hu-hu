@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: c8c62f6a80cf06e3444c4c3efd9979e723dcf488
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 02/01/2019
+ms.openlocfilehash: b1d566ac571ddd2b2be3aff160f669e277887209
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559042"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698233"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -49,6 +49,6 @@ A másik lehetőség, hogy az Azure Database for PostgreSQL a geo-visszaállít�
 > A GEO-visszaállítás csak akkor lehetséges, a kiszolgáló georedundáns biztonsági mentési tároló üzembe helyezése. Ha szeretné, váltson át egy meglévő kiszolgáló georedundáns biztonsági mentését, a helyileg redundáns, kell igénybe vehet egy memóriakép pg_dump a meglévő kiszolgáló használata és annak visszaállítására egy újonnan létrehozott georedundáns biztonsági mentés konfigurálva.
 
 ## <a name="next-steps"></a>További lépések
-- Az automatikus biztonsági másolatok kapcsolatos további információkért lásd: [, Azure Database for PostgreSQL biztonsági másolatok](concepts-backup.md). 
-- Visszaállítását egy időpontra az Azure portal használatával, lásd: [database visszaállítása egy időpontra az Azure portal használatával](howto-restore-server-portal.md).
-- Visszaállítását egy időpontra az Azure CLI használatával, lásd: [database visszaállítása egy CLI-vel](howto-restore-server-cli.md).
+- Tudjon meg többet a [automatikus biztonsági másolatokat az Azure Database for postgresql-hez](concepts-backup.md). 
+- Ismerje meg, hogyan segítségével történő visszaállításhoz [az Azure Portalon](howto-restore-server-portal.md) vagy [az Azure CLI](howto-restore-server-cli.md).
+- Ismerje meg [olvassa el a replikákat az Azure Database for postgresql-hez](concepts-read-replicas.md).

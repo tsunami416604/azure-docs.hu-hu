@@ -13,18 +13,18 @@ ms.workload: identity
 ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fa17b2bb440f574f63349c5bb51573725aa45876
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 71ede3d6eb35935e3fec32e8fd4bb71d6c698486
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191534"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697058"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
 Ez a cikk a minden Azure Resource Manager erőforrás-szolgáltató elérhető műveleteinek listázása. Ezek a műveletek használható [egyéni szerepkörök](custom-roles.md) biztosít részletes [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) erőforrásokhoz az Azure-ban. A művelet karakterláncok formátuma a következő: `{Company}.{ProviderName}/{resourceType}/{action}`
 
-Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legújabb műveletek beolvasásához használja [Get-azurermprovideroperation Parancsmagból](/powershell/module/azurerm.resources/get-azurermprovideroperation) vagy [az művelet lista](/cli/azure/provider/operation#az-provider-operation-list).
+Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legújabb műveletek beolvasásához használja [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) vagy [az művelet lista](/cli/azure/provider/operation#az-provider-operation-list).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 

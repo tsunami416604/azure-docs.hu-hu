@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: aschhab
-ms.openlocfilehash: 6b03b1eb773c40a81c9efd76ac26b40936dca2cc
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 3158f0255810c66605d28856133112181c2916db
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849362"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733926"
 ---
 # <a name="messages-payloads-and-serialization"></a>Üzenetek, hasznos adatforgalom és szerializáció
 
@@ -28,7 +28,7 @@ A hálózatiobjektum-modellt a hivatalos Service Bus-ügyfél a .NET és a Java,
  
 Service Bus-üzenet tartalmaz egy bináris Hasznosforgalom-szakasszal, amely soha nem kezeli a Service Bus a Szolgáltatásoldali – bármilyen formában és a két készlet tulajdonságai. A *közvetítő tulajdonságait* a rendszer előre. Ezek előre definiált tulajdonságok vagy szabályozza üzenet szintű funkciókat a közvetítő belül, vagy leképezik a gyakori és a szabványos metaadatelem. A *felhasználói tulajdonságok* vannak definiálva, és állítsa be az alkalmazás által kulcs-érték párok gyűjteménye.
  
-Az előre meghatározott közvetítő tulajdonságait az alábbi táblázatban láthatók. A nevek az összes hivatalos ügyfél API-k használhatók, és a a [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Properties_) JSON-objektumát a HTTP protokoll leképezést.
+Az előre meghatározott közvetítő tulajdonságait az alábbi táblázatban láthatók. A nevek az összes hivatalos ügyfél API-k használhatók, és a a [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) JSON-objektumát a HTTP protokoll leképezést.
  
 Az AMQP protokoll szintjén használt egyenértékű nevek fel vannak tüntetve zárójelben. 
 

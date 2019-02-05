@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: 6c8498a43b127fecc02473177ac955ae51a647d6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: ee78227f645cbeded7a5c689750db835faf1055f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854116"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728312"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Az Azure Relay WCF közvetítők használata a .NET használatával
 Ez a cikk ismerteti, hogyan használható az Azure Relay szolgáltatásban. A kódminták C# nyelven íródtak, és a Windows Communication Foundation (WCF) API-t használják a Service Bus-összeállításban található bővítményekkel. Az Azure relay kapcsolatos további információkért lásd: a [Azure Relay áttekintése](relay-what-is-it.md).
@@ -116,7 +116,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-A példában két végpontot fog létrehozni, amelyek ugyanazon a szerződésmegvalósításhoz tartoznak. Helyi és a egy Azure Relay keresztül van kivetítve. A kettő közötti a kötéseik jelentik. [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) számára a helyi és [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding#microsoft_servicebus_nettcprelaybinding) a relay-végpont és a címek. A helyi végpont egy helyi hálózati címmel rendelkezik egy különálló porttal. A relay-végpont rendelkezik végpontcímmel karakterlánc `sb`, a névtér nevével, és az elérési út "solver". Ennek eredményeképpen az URI-t `sb://[serviceNamespace].servicebus.windows.net/solver`, azonosítja a szolgáltatásvégpontot (továbbítóként) a Service Bus TCP-végpontként külső teljesen minősített DNS-név. Ha a kódot a helyőrzők behelyettesítésével elhelyezi a **Szolgáltatás** alkalmazás `Main` függvényében, egy működő szolgáltatást kap. Ha azt szeretné, hogy a szolgáltatás kizárólag a relay, távolítsa el a helyi végpont deklarációját.
+A példában két végpontot fog létrehozni, amelyek ugyanazon a szerződésmegvalósításhoz tartoznak. Helyi és a egy Azure Relay keresztül van kivetítve. A kettő közötti a kötéseik jelentik. [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) számára a helyi és [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) a relay-végpont és a címek. A helyi végpont egy helyi hálózati címmel rendelkezik egy különálló porttal. A relay-végpont rendelkezik végpontcímmel karakterlánc `sb`, a névtér nevével, és az elérési út "solver". Ennek eredményeképpen az URI-t `sb://[serviceNamespace].servicebus.windows.net/solver`, azonosítja a szolgáltatásvégpontot (továbbítóként) a Service Bus TCP-végpontként külső teljesen minősített DNS-név. Ha a kódot a helyőrzők behelyettesítésével elhelyezi a **Szolgáltatás** alkalmazás `Main` függvényében, egy működő szolgáltatást kap. Ha azt szeretné, hogy a szolgáltatás kizárólag a relay, távolítsa el a helyi végpont deklarációját.
 
 ### <a name="configure-a-service-host-in-the-appconfig-file"></a>Szolgáltatásgazda konfigurálása az App.config fájlban
 Az állomást az App.config fájl segítségével is konfigurálhatja. A szolgáltatásüzemeltetési kód ez esetben a következő példában látható.
@@ -161,7 +161,7 @@ A módosítások végrehajtása után a szolgáltatás ugyanúgy elindul, mint k
 
 ### <a name="create-the-client"></a>Az ügyfél létrehozása
 #### <a name="configure-a-client-programmatically"></a>Ügyfél konfigurálása szoftveresen
-A szolgáltatás felhasználásához összeállíthat egy WCF-ügyfelet egy [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) objektum használatával. A Service Bus egy jogkivonat-alapú biztonsági modellt használ, amely a SAS segítségével van megvalósítva. A [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) osztály egy beépített gyári metódusokat tartalmazó biztonságijogkivonat-szolgáltatót képvisel, amelyek néhány jól ismert jogkivonat-szolgáltatót adnak vissza. A következő példa a [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#Microsoft_ServiceBus_TokenProvider_CreateSharedAccessSignatureTokenProvider_System_String_) metódust használja a megfelelő SAS-jogkivonat beszerzésének kezeléséhez. A név és a kulcs az előző szakaszban leírtak szerint a portálról lekért értékek.
+A szolgáltatás felhasználásához összeállíthat egy WCF-ügyfelet egy [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) objektum használatával. A Service Bus egy jogkivonat-alapú biztonsági modellt használ, amely a SAS segítségével van megvalósítva. A [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) osztály egy beépített gyári metódusokat tartalmazó biztonságijogkivonat-szolgáltatót képvisel, amelyek néhány jól ismert jogkivonat-szolgáltatót adnak vissza. A következő példa a [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) metódust használja a megfelelő SAS-jogkivonat beszerzésének kezeléséhez. A név és a kulcs az előző szakaszban leírtak szerint a portálról lekért értékek.
 
 Először hivatkozzon a(z) `IProblemSolver` szerződéskódra, vagy másolja a szolgáltatásból az ügyfélprojektbe.
 

@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 1/31/2019
+ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9cf926dc31f449398f756320aa2cb343ff47144
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: bfd90b3a8fc72bbb261f05e445ce543228d9fb83
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511122"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728162"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>A Windows IaaS virtuális gépek az Azure Disk Encryption engedélyezése
 
@@ -73,10 +73,10 @@ Használja a [Set-azurermvmdiskencryptionextension parancs](/powershell/module/a
      Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName 'MySecureRg' -VMName 'MySecureVM'
      ```
     
-- **Lemeztitkosítás letiltása:** A titkosítás letiltásához használja a [Disable-AzureRmVMDiskEncryption](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) parancsmagot. Lemez adattitkosítás a Windows virtuális gép letiltása, ha mind az operációs rendszer és az adatlemezek titkosítottak nem a várt módon működik. Inkább tiltsa le a titkosítást az összes lemez.
+- **Lemeztitkosítás letiltása:** A titkosítás letiltásához használja a [Disable-AzureRmVMDiskEncryption](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) parancsmagot. Lemez adattitkosítás a Windows virtuális gép letiltása, ha mind az operációs rendszer és az adatlemezek titkosítottak nem a várt módon működik. Minden lemez a - VolumeType "All" paraméter használatával PowerShell titkosításának letiltása, ellenkező esetben a letiltás parancs sikertelen lesz.
 
      ```azurepowershell-interactive
-     Disable-AzureRmVMDiskEncryption -ResourceGroupName 'MySecureRG' -VMName 'MySecureVM'
+      Disable-AzureRmVMDiskEncryption -ResourceGroupName 'MySecureRG' -VMName 'MySecureVM' -VolumeType "all"
      ```
 
 ### <a name="bkmk_RunningWinVMCLI"></a>Engedélyezze a titkosítást a meglévő vagy a virtuális gép futtatása az Azure CLI-vel
@@ -103,10 +103,10 @@ Használja a [az vm encryption engedélyezése](/cli/azure/vm/encryption#az-vm-e
      az vm encryption show --name "MySecureVM" --resource-group "MySecureRg"
      ```
 
-- **Tiltsa le a titkosítást:** Titkosítás letiltásához használja a [letiltása az vm encryption](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. Lemez adattitkosítás a Windows virtuális gép letiltása, ha mind az operációs rendszer és az adatlemezek titkosítottak nem a várt módon működik. Inkább tiltsa le a titkosítást az összes lemez.
+- **Tiltsa le a titkosítást:** Titkosítás letiltásához használja a [letiltása az vm encryption](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. Lemez adattitkosítás a Windows virtuális gép letiltása, ha mind az operációs rendszer és az adatlemezek titkosítottak nem a várt módon működik. Minden lemez használatával titkosításának letiltása – a kötet típusa "All" paraméter CLI, különben a disable-parancs meghiúsul.
 
      ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MySecureRg" --volume-type [ALL, DATA, OS]
+     az vm encryption disable --name "MySecureVM" --resource-group "MySecureRg" --volume-type "ALL"
      ```
  
  > [!NOTE]
@@ -338,7 +338,7 @@ Is [adjon hozzá egy új lemezt egy Windows virtuális Gépet PowerShell-lel](..
 
 
 ## <a name="disable-encryption"></a>Tiltsa le a titkosítást
-Letilthatja a titkosítás az Azure PowerShell, az Azure CLI használatával vagy a Resource Manager-sablonnal. Lemez adattitkosítás a Windows virtuális gép letiltása, ha mind az operációs rendszer és az adatlemezek titkosítottak nem a várt módon működik. Inkább tiltsa le a titkosítást az összes lemez.
+Letilthatja a titkosítás az Azure PowerShell, az Azure CLI használatával vagy a Resource Manager-sablonnal. Lemez adattitkosítás a Windows virtuális gép letiltása, ha mind az operációs rendszer és az adatlemezek titkosítottak nem a várt módon működik. Tiltsa le a titkosítás használatával az összes lemez a - VolumeType "All" paramétert a PowerShell vagy--típusú kötet "All" CLI, különben a disable-parancs meghiúsul. 
 
 - **Tiltsa le a lemeztitkosítást, az Azure PowerShell használatával:** A titkosítás letiltásához használja a [Disable-AzureRmVMDiskEncryption](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) parancsmagot. 
      ```azurepowershell-interactive

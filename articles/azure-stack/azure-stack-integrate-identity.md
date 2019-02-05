@@ -11,12 +11,12 @@ ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/23/19
 keywords: ''
-ms.openlocfilehash: f05d27effecee6a18a1395520b29d8cf1db1eaaa
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 15beebb3ef6fda098c3f540f945fc3d6b836e517
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246247"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697960"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
@@ -306,7 +306,7 @@ Nincsenek számos forgatókönyv, amely egy egyszerű szolgáltatásnevét (SPN)
 > [!Important]  
 > Az AD FS csak az interaktív bejelentkezési munkamenetek támogatja. Ha egy nem interaktív bejelentkezést egy automatizált keresztül van szükség, egy egyszerű Szolgáltatásnevet kell használnia.
 
-Egy egyszerű Szolgáltatásnevet létrehozásával kapcsolatos további információkért lásd: [az AD FS egyszerű szolgáltatás létrehozása](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs).
+Egy egyszerű Szolgáltatásnevet létrehozásával kapcsolatos további információkért lásd: [az AD FS egyszerű szolgáltatás létrehozása](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

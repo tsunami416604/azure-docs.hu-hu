@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 02/05/2019
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 3e4cd8859f376fa4fbb9069b145d893483c3fc14
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0ffde84a39ef2955f14af66a05195e35109d41bb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101260"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692137"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>Gyors útmutató: Fejlesztési környezet beállítása
 
@@ -64,8 +64,11 @@ Ha nincs társítva meglévő bérlő a fiókkal, egy GUID-t lát a fiók neve a
 Ha még nem rendelkezik Azure AD-bérlővel, vagy ha újat szeretne létrehozni, kövesse a [címtár létrehozása élmény](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) utasításait. Az új bérlő létrehozásához az alábbi adatokat kell megadnia:
 
 - **Szervezet neve**
-- **Kezdeti tartomány** – a *.onmicrosoft.com része lesz. A tartományt később testreszabhatja. 
+- **Kezdeti tartomány** – a *.onmicrosoft.com része lesz. A tartományt később testreszabhatja.
 - **Ország vagy régió**
+
+> [!NOTE]
+> A bérlő elnevezésekor alfanumerikus karaktereket használjon. Különleges karakterek nem engedélyezettek. A név nem haladhatja meg a maximális hossz 256 karakter.
 
 ## <a name="social-and-local-accounts"></a>Közösségi és helyi fiókok
 

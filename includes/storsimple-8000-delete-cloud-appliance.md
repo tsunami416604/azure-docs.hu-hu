@@ -4,18 +4,18 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 8de46fee4f93fffa669dc96ec5bb84e36842a055
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: ac708eb2ac79a74b8f4e09a7306a42665b3aca94
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166189"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736144"
 ---
 #### <a name="to-delete-a-cloud-appliance"></a>Felhőalapú készülék törlése
 
 1. Jelentkezzen be az Azure portálra.
 2. Csak olyan inaktív eszközt törölhet, amely nem tartalmaz adatot. Először távolítsa el az eszközön található adatokat, vagy [feladatátvétellel](../articles/storsimple/storsimple-8000-device-failover-cloud-appliance.md) vigye át a kötet tárolójában található adatokat egy másik eszközre. Az adatok törlése után inaktiválhatja az eszközt.
-3. A StorSimple-eszközkezelő szolgáltatás oldalán kattintson az **Eszközök** elemre, majd válassza ki az eszközt. Kattintson a jobb gombbal, és válassza az **Inaktiválás** lehetőséget.
+3. A StorSimple-Eszközkezelő szolgáltatás oldalán kattintson **eszközök** , és válassza ki azt az eszközt. Kattintson a jobb gombbal, és válassza az **Inaktiválás** lehetőséget.
 4. Az eszköz az inaktiválása után kattintson rá a jobb gombbal, és válassza a **Törlés** lehetőséget.
 
     ![Válassza ki az inaktív eszközt, és kattintson a törlés lehetőségre](./media/storsimple-8000-delete-cloud-appliance/delete-cloud-appliance1.png)

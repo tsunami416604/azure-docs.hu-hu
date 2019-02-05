@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 52e1a7bf3e8f8770e4ba4f931c4d7427a7362f2f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2ed9d9fd020bb14db7e1d171a32c25239d7ee802
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226657"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55736145"
 ---
 Egy Microsoft Azure felhőalapú szolgáltatással kapcsolatos problémák diagnosztizálásához szükséges virtuális gépeken a szolgáltatás-naplófájl összegyűjtése, a hibák bekövetkezésekor. A AzureLogCollector bővítmény igény szerinti segítségével hajtsa végre a naplók egyszeri gyűjtemény egy vagy több Felhőbeli szolgáltatás virtuális gépek (a webes és feldolgozói szerepkörök), és az összegyűjtött fájlok átvitele az Azure storage-fiók – bármely távoli bejelentkezés nélkül a virtuális gépek.
 
@@ -31,8 +31,8 @@ Nincsenek függ a gyűjtendő fájlok típusú gyűjtemény két módot.
 
 Mindkét fizetési mód gyűjteménymappához további adatok gyűjteménye, az alábbi struktúra használatával adható meg:
 
-* **Név**: a gyűjteményhez, a neve, a zip-fájl az összegyűjtött fájlok az almappa neve.
-* **Hely**: az a mappa elérési útját a virtuális gépen ahol gyűjtendő fájlok találhatók.
+* **Név**: A gyűjteményhez, a neve, a zip-fájl az összegyűjtött fájlok az almappa neve.
+* **Hely**: A mappa elérési útját a virtuális gépen ahol gyűjtendő fájlok találhatók.
 * **SearchPattern**: A minta a gyűjtendő fájlok nevét. Alapértelmezett érték a "\*"
 * **A rekurzív**: Ha a gyűjtendő fájlok a megadott helyen található rekurzív módon.
 
@@ -175,13 +175,13 @@ param (
 ```
 
 * **Szolgáltatásnév**: A felhőszolgáltatás neve.
-* **Szerepkörök**: szerepköröket, például "WebRole1" vagy "WorkerRole1" listáját.
-* **Példányok**:--vesszővel elválasztva szerepkörpéldányok neveinek listáját használja a helyettesítő karaktereket tartalmazó karakterláncot ("*") az összes szerepkörpéldány.
-* **Tárolóhely**: tárolóhely neve. "Éles" vagy "Átmeneti".
-* **Mód**: gyűjtemény üzemmódja. "Teljes" vagy "Általánosan elérhető".
-* **StorageAccountName**: neve az Azure storage-fiók tárolására szolgáló összegyűjtött adatokat.
-* **StorageAccountKey**: neve az Azure storage-fiók kulcsát.
-* **AdditionalDataLocationList**: az alábbi struktúrával listáját:
+* **szerepkörök**: Szerepkörök, például "WebRole1" vagy "WorkerRole1" listáját.
+* **Példányok**: A nevek szerepkörpéldányt--vesszővel elválasztott listáját használja a helyettesítő karaktereket tartalmazó karakterláncot ("*") az összes szerepkörpéldány.
+* **Tárolóhely**: Tárolóhely neve. "Éles" vagy "Átmeneti".
+* **Mód**: Fizetési mód. "Teljes" vagy "Általánosan elérhető".
+* **StorageAccountName**: Összegyűjtött adatok tárolására szolgáló Azure storage-fiók neve.
+* **StorageAccountKey**: Az Azure storage-fiókkulcs neve.
+* **AdditionalDataLocationList**: Az alábbi struktúrával listáját:
 
   ```powershell
   {
@@ -257,11 +257,11 @@ param (
 ```
 
 * **Szolgáltatásnév**: A felhőszolgáltatás neve.
-* **VMName**: a virtuális gép nevét.
-* **Mód**: gyűjtemény üzemmódja. "Teljes" vagy "Általánosan elérhető".
-* **StorageAccountName**: neve az Azure storage-fiók tárolására szolgáló összegyűjtött adatokat.
-* **StorageAccountKey**: neve az Azure storage-fiók kulcsát.
-* **AdditionalDataLocationList**: az alábbi struktúrával listáját:
+* **VMName**: A virtuális gép nevét.
+* **Mód**: Fizetési mód. "Teljes" vagy "Általánosan elérhető".
+* **StorageAccountName**: Összegyűjtött adatok tárolására szolgáló Azure storage-fiók neve.
+* **StorageAccountKey**: Az Azure storage-fiókkulcs neve.
+* **AdditionalDataLocationList**: Az alábbi struktúrával listáját:
 
   ```
   {
@@ -374,7 +374,7 @@ else
 }
 
 #
-#This is an optional step: generate a sasUri to the container so it can be shared with other people if nened
+#This is an optional step: generate a sasUri to the container so it can be shared with other people if needed.
 #
 $SasExpireTime = [DateTime]::Now.AddMinutes(120).ToString("o")
 $SasUri = New-AzureStorageContainerSASToken -ExpiryTime $ExpiryTime -FullUri -Name $ContainerName -Permission rl -Context $context
@@ -449,7 +449,7 @@ if ($AdditionDataLocationList -ne $null )
 #
 $publicConfigJSON = $publicConfig | ConvertTo-Json
 
-Write-Output "PublicConfigurtion is: \r\n$publicConfigJSON"
+Write-Output "PublicConfiguration is: \r\n$publicConfigJSON"
 
 #
 #we just provide a empty privateConfig object

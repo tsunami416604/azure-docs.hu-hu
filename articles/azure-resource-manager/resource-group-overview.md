@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 647a1c7f62b48438d209e3ffacd075414f2439f1
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: fbfbb4e452032073d92e7c2b93f78669da0ceaf5
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562776"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691557"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 
@@ -37,7 +37,7 @@ Ha új felhasználója az Azure Resource Managernek, találkozhat néhány olyan
 * **erőforráscsoport** – Egy olyan tároló, amely egy Azure-megoldáshoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazza ezeket az erőforrásokat, amelyeket szeretne kezelése csoportként. Eldöntheti, hogyan kell elosztani az erőforrásokat az erőforráscsoportok teszi a szervezet számára a leginkább megfelelő alapján. Lásd: [erőforráscsoportok](#resource-groups).
 * **erőforrás-szolgáltató** -egy szolgáltatás, amely Azure-erőforrások. Ha például egy gyakori erőforrás-szolgáltató van **Microsoft.Compute**, amelyek például a virtuális gép típusú erőforrást. **A Microsoft.Storage** egy másik gyakori erőforrás-szolgáltató. Lásd: [erőforrás-szolgáltatók](#resource-providers).
 * **Resource Manager-sablon** – egy JavaScript Object Notation (JSON) fájl, amely meghatározza egy vagy több erőforrás egy erőforráscsoportba vagy előfizetésbe való üzembe helyezéséhez. A sablon erőforrások konzisztens és ismétlődő telepítésére használandó. Lásd: [sablonalapú telepítés](#template-deployment).
-* **deklaratív szintaxis** – Egy olyan szintaxis, amellyel anélkül határozhatja meg, mit szeretne létrehozni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A Resource Manager-sablon a deklaratív szintaxis egy példája. A fájlban meghatározhatja az Azure-ra telepíteni kívánt infrastruktúra tulajdonságait. 
+* **deklaratív szintaxis** – Egy olyan szintaxis, amellyel anélkül határozhatja meg, mit szeretne létrehozni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A Resource Manager-sablon a deklaratív szintaxis egy példája. A fájlban meghatározhatja az Azure-ra telepíteni kívánt infrastruktúra tulajdonságait.
 
 ## <a name="the-benefits-of-using-resource-manager"></a>A Resource Manager használatának előnyei
 
@@ -49,7 +49,7 @@ A Resource Manager számos előnyt kínál:
 * Meghatározhatja az erőforrások közötti függőségeket, hogy azok a megfelelő sorrendben legyenek telepítve.
 * Hozzáférés-vezérlést alkalmazhat az összes szolgáltatásra az erőforráscsoportban, mivel a szerepköralapú hozzáférés-vezérlés (RBAC) natív módon integrálva van a felügyeleti platformba.
 * Címkékkel láthatja el az erőforrásokat, így logikusan rendszerezhető az előfizetés összes erőforrása.
-* Az azonos címkén osztozó erőforrások csoportjának költségeit megtekintve jól átláthatók a szervezet számlái.  
+* Az azonos címkén osztozó erőforrások csoportjának költségeit megtekintve jól átláthatók a szervezet számlái.
 
 ## <a name="guidance"></a>Útmutatás
 Az alábbi javaslatokat követve teljes mértékben kihasználhatja a Resource Manager előnyeit a megoldásaival végzett munka során.
@@ -88,7 +88,7 @@ Erőforrás-szolgáltatók által kínált a műveletek tekintse meg a [Azure RE
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-A Resource Managerrel egy olyan sablont hozhat létre (JSON formátumban), amely meghatározza az Azure-megoldás infrastruktúráját és konfigurációját. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. 
+A Resource Managerrel egy olyan sablont hozhat létre (JSON formátumban), amely meghatározza az Azure-megoldás infrastruktúráját és konfigurációját. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz.
 
 A sablont, és hogyan formázásával kapcsolatos további információkért lásd: [struktúra és az Azure Resource Manager-sablonok szintaxisát](resource-group-authoring-templates.md). Az erőforrástípusok JSON-szintaxisának megtekintéséért lásd [az Azure Resource Manager-sablonokban az erőforrások meghatározásával kapcsolatos](/azure/templates/) témakört.
 
@@ -123,7 +123,7 @@ REQUEST BODY
   }
   "sku": {
     "name": "Standard_LRS"
-  },   
+  },
   "kind": "Storage"
 }
 ```
@@ -144,9 +144,9 @@ A beágyazott sablonokkal kapcsolatos további információkért lásd: [Kapcsol
 
 Az Azure Resource Manager a függőségek elemzésével biztosítja, hogy az erőforrások a megfelelő sorrendben jöjjenek létre. Ha egy erőforrás egy másik erőforráshoz tartozó értéket használ fel (például egy virtuális gép, amely egy tárfiókot igényel a lemezekhez), akkor beállíthat egy függőséget. További információ: [Függőségek meghatározása az Azure Resource Manager sablonokban](resource-group-define-dependencies.md).
 
-A sablonokat az infrastruktúra frissítésére is használhatja. Hozzáadhat például egy erőforrást a megoldáshoz, valamint hozzáadhat konfigurációs szabályokat a már telepített erőforrásokhoz. Ha a sablon egy erőforrás, amely már létezik, a Resource Manager frissíti a meglévő erőforrást, egy új létrehozása helyett.  
+A sablonokat az infrastruktúra frissítésére is használhatja. Hozzáadhat például egy erőforrást a megoldáshoz, valamint hozzáadhat konfigurációs szabályokat a már telepített erőforrásokhoz. Ha a sablon egy erőforrás, amely már létezik, a Resource Manager frissíti a meglévő erőforrást, egy új létrehozása helyett.
 
-A Resource Manager bővítményeket biztosít olyan forgatókönyvek esetére, amikor további műveletek szükségesek, például egy adott szoftver telepítése, amelyet nem tartalmaz a beállítás. Ha már használ valamilyen konfigurációfelügyeleti szolgáltatást, mint a DSC, Chef vagy Puppet, bővítmények segítségével folytathatja a munkát az adott szolgáltatással. További információ a virtuális gépi bővítményekről: [A virtuális gépi bővítmények és funkcióik áttekintése](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+A Resource Manager bővítményeket biztosít olyan forgatókönyvek esetére, amikor további műveletek szükségesek, például egy adott szoftver telepítése, amelyet nem tartalmaz a beállítás. Ha már használ valamilyen konfigurációfelügyeleti szolgáltatást, mint a DSC, Chef vagy Puppet, bővítmények segítségével folytathatja a munkát az adott szolgáltatással. További információ a virtuális gépi bővítményekről: [A virtuális gépi bővítmények és funkcióik áttekintése](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Amikor létrehoz egy megoldást a portálról, az automatikusan tartalmaz egy telepítési sablont. Nem szükséges teljesen új sablont létrehoznia, mivel kezdetben használhatja a sablont a megoldásához, majd testre szabhatja az adott igényeknek megfelelően. A minta: [a rövid útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával](./resource-manager-quickstart-create-templates-use-the-portal.md). Egy meglévő erőforráscsoport sablonjának lekéréséhez is exportálhatja az erőforráscsoport aktuális állapotát, vagy megtekintheti az adott telepítéshez felhasznált sablont. Az [exportált sablon](resource-manager-export-template.md) megtekintése hasznos információkat nyújt a sablon szintaxisáról.
 

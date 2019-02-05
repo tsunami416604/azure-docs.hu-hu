@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: bwren
-ms.openlocfilehash: 492e7cf466dd8019efe8617b67e9fa6b14f5b3c1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 8457334e00f7c8dfbaee75a12d6bb71b760e60d9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661663"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696993"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -385,7 +385,7 @@ Ha a függőségi ügynök telepítése sikeres volt, de a kiszolgáló a Servic
 **Windows**: Keresse meg a szolgáltatás nevű, "A Microsoft Dependency agent."<br>
 **Linux**: Keresse meg a futó folyamat "a microsoft-függőség-ügynök."
 
-* Az, hogy a [ingyenes tarifacsomag Operations Management Suite/Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? Az ingyenes csomag legfeljebb öt egyedi Service Map kiszolgálók tesz lehetővé. További kiszolgálók nem jelennek meg a Service Map, még akkor is, ha az előzetes öt rendszer már nem küld adatokat.
+* Az, hogy a [ingyenes tarifacsomag Operations Management Suite/Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Az ingyenes csomag legfeljebb öt egyedi Service Map kiszolgálók tesz lehetővé. További kiszolgálók nem jelennek meg a Service Map, még akkor is, ha az előzetes öt rendszer már nem küld adatokat.
 
 * A kiszolgáló küldő napló- és teljesítményadatok van a Log Analytics? Lépjen a naplók keresése, és a számítógép a következő lekérdezés futtatásával: 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6aedfa3f0ef65fdb1b663db8637b648e685e31be
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 0482dfd5b7b09d5e66fb830caae654be3242a916
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321477"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694078"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Pont – hely kapcsolat konfigurálása a Tanúsítványalapú hitelesítés (klasszikus) használatával
 
@@ -290,7 +290,7 @@ A frissítés befejezését követően a tanúsítvány már nem használható c
 
 ## <a name="next-steps"></a>További lépések
 
-- Miután a kapcsolat elkészült, a virtuális hálózatokhoz hozzáadhat virtuális gépeket. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute). 
+- Miután a kapcsolat elkészült, a virtuális hálózatokhoz hozzáadhat virtuális gépeket. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/). 
 
 - Hálózatok és Linux rendszerű virtuális gépek ismertetése: [Azure- és Linux rendszerű virtuális gép hálózati áttekintés](../virtual-machines/linux/network-overview.md).
 

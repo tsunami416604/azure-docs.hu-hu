@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/17/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: b5307db01cc7242ba73876409f18d511c2516091
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f995c727f46957d663cb6a6a32ac1d4313c71e8f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458159"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697146"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Gyors útmutató: A Translator Text API segítségével lefordítani karakterláncnak a Python használatával
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-Jelenleg egy végpont érhető el a Translator Text szolgáltatáshoz, és ez van beállítva `base_url` tulajdonságként. A `path` tulajdonság a `translate` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
+A Translator Text globális végpontja van beállítva, a `base_url`. A `path` tulajdonság a `translate` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
 
 A `params` tulajdonsággal állíthatók be a kimeneti nyelvek. Ebben a mintában angolról olaszra és németre fordítunk: `it` és `de`.
 

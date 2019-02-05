@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c77467efbbc1c33be5bc2aaf3251a5803beee864
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 78e3f6a5f4a55fd4bf1925672205eb490e7c6b24
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317109"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695699"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Azure Maps-térkép stílus kiválasztása
 
@@ -33,7 +33,7 @@ A fenti kódblokk beállítja az előfizetési kulcsot, és a egy térkép-objek
 
 A fenti kódblokk beállítja az előfizetési kulcsot, és előre a stílus beállítása nélkül egy térkép objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
 
-A második kódblokk használja a térkép [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setstyle) metódussal adja a térkép stílus műholdas.
+A második kódblokk használja a térkép [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódussal adja a térkép stílus műholdas.
 
 ## <a name="add-the-style-picker"></a>Adja hozzá a stílus kiválasztása
 
@@ -44,7 +44,7 @@ Az első kódblokkot a fenti kód beállítja az előfizetési kulcsot, és a eg
 
 A második kódblokk hoz létre a atlas használatával stílus selektor [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) konstruktor.
 
-A stílus kiválasztása lehetővé teszi, hogy a térkép stílus kiválasztása. A harmadik kódblokk hozzáadja a stílus kiválasztása a térkép a leképezéssel [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust. A térkép belül van a stílus választó **eseményfigyelő** annak érdekében, hogy betölti után teljes betölti a térképen.
+A stílus kiválasztása lehetővé teszi, hogy a térkép stílus kiválasztása. A harmadik kódblokk hozzáadja a stílus kiválasztása a térkép a leképezéssel [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. A térkép belül van a stílus választó **eseményfigyelő** annak érdekében, hogy betölti után teljes betölti a térképen.
 
 ## <a name="next-steps"></a>További lépések
 

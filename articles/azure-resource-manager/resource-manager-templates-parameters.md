@@ -4,21 +4,19 @@ description: Az Azure Resource Manager-sablonok deklaratív JSON-szintaxist hasz
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: fd6fcff6ac556abe3b2d34c7e8b1b0290208f5b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dc817302ab39d12ccd1d1a20d4dd72f94352c796
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722142"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695642"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Paraméterek szakaszban az Azure Resource Manager-sablonok
 A sablon a Paraméterek szakaszban megadhatja az erőforrások üzembe helyezésekor mely értékeket kell megadni. Ezek a paraméterértékek szabhatja testre az üzembe helyezés értékek, amelyek azáltal, hogy egy adott környezetben (például fejlesztési, tesztelési és éles környezetben). Nem kell adnia a sablonban szereplő paraméterekkel, de paraméterek nélkül a sablon mindig telepít az azonos nevek, helyek és tulajdonságok ugyanazokhoz az erőforrásokhoz.
@@ -89,11 +87,11 @@ Az előző példa bemutatta, csak az egyes tulajdonságok segítségével haszn�
 | type |Igen |A paraméter értékének típusa. Az engedélyezett típusokkal és az értékek **karakterlánc**, **securestring**, **int**, **bool**, **objektum**, **secureObject**, és **tömb**. |
 | DefaultValue érték |Nem |A paramétert, ha a nem érték van megadva a paraméter alapértelmezett értéke. |
 | allowedValues |Nem |Győződjön meg arról, hogy a megfelelő értéket adott-e, hogy a paraméter megengedett értékek tömbje. |
-| a minValue |Nem |Int típusú paraméterekhez minimális értéke, ez az érték, amely naptól. |
+| minValue |Nem |Int típusú paraméterekhez minimális értéke, ez az érték, amely naptól. |
 | maxValue |Nem |A maximális int típusú paraméterekhez, ez az érték értéke is beleértve. |
 | a minLength |Nem |A minimális karakterlánc, a biztonságos karakterláncot és array típusú paraméterekhez, ez az érték hossza között lehet. |
 | maxLength |Nem |A karakterlánc, a biztonságos karakterláncot és array típusú paraméterekhez, ez az érték hossza legfeljebb között lehet. |
-| leírás |Nem |A portálon keresztül a felhasználók számára megjelenő paraméter leírása. |
+| leírás |Nem |A portálon keresztül a felhasználók számára megjelenő paraméter leírása. További információkért lásd: [sablonok megjegyzéseket](resource-group-authoring-templates.md#comments). |
 
 ## <a name="template-functions-with-parameters"></a>A paraméterekkel sablonfüggvények
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 5fc5829744d3740f3484303ae009145106264fec
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e690ae8cd8f6b2ae52c0c8a9dae12c51f8921531
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470715"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694567"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony az Azure CLI használatával
 
@@ -41,7 +41,7 @@ Ha helyi telepítése és használata a parancssori felület, ez a cikk megköve
 
 ## <a name="create-virtual-networks"></a>Virtuális hálózatok létrehozása
 
-Előtt egy virtuális hálózatot hoz létre, akkor hozzon létre egy erőforráscsoportot a virtuális hálózatot és más ebben a cikkben létrehozott összes erőforrást. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+Előtt egy virtuális hálózatot hoz létre, akkor hozzon létre egy erőforráscsoportot a virtuális hálózatot és más ebben a cikkben létrehozott összes erőforrást. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -71,7 +71,7 @@ az network vnet create \
 
 ## <a name="peer-virtual-networks"></a>Virtuális hálózatok közötti társviszony létesítése
 
-Virtuális hálózati azonosítókat, ezért először kérje le az egyes virtuális hálózat azonosítója között jönnek létre társviszony-Létesítéseket [az network vnet show](/cli/azure/network/vnet#az_network_vnet_show) és Azonosítóját tárolja egy változóban.
+Virtuális hálózati azonosítókat, ezért először kérje le az egyes virtuális hálózat azonosítója között jönnek létre társviszony-Létesítéseket [az network vnet show](/cli/azure/network/vnet) és Azonosítóját tárolja egy változóban.
 
 ```azurecli-interactive
 # Get the id for myVirtualNetwork1.
@@ -110,7 +110,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-Vissza az előző parancs végrehajtása után a kimenetben láthatja a **peeringState** van *csatlakoztatva*. Az Azure is módosította a társviszony-létesítés állapota a *myVirtualNetwork1 – myVirtualNetwork2* a társviszony-létesítési *csatlakoztatva*. Ellenőrizze, hogy a társviszony-létesítés állapota a *myVirtualNetwork1 – myVirtualNetwork2* társviszony-létesítés változott *csatlakoztatva* a [az network vnet peering show](/cli/azure/network/vnet/peering#az_network_vnet_peering_show).
+Vissza az előző parancs végrehajtása után a kimenetben láthatja a **peeringState** van *csatlakoztatva*. Az Azure is módosította a társviszony-létesítés állapota a *myVirtualNetwork1 – myVirtualNetwork2* a társviszony-létesítési *csatlakoztatva*. Ellenőrizze, hogy a társviszony-létesítés állapota a *myVirtualNetwork1 – myVirtualNetwork2* társviszony-létesítés változott *csatlakoztatva* a [az network vnet peering show](/cli/azure/network/vnet/peering).
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -128,7 +128,7 @@ Hozzon létre egy virtuális gépet az egyes virtuális hálózatokon, hogy komm
 
 ### <a name="create-the-first-vm"></a>Az első virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. A következő példában létrehozunk egy nevű virtuális Gépet *myVm1* a a *myVirtualNetwork1* virtuális hálózatot. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A `--no-wait` lehetőség a háttérben létrehozza a virtuális Gépet, így a következő lépéssel is.
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. A következő példában létrehozunk egy nevű virtuális Gépet *myVm1* a a *myVirtualNetwork1* virtuális hálózatot. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A `--no-wait` lehetőség a háttérben létrehozza a virtuális Gépet, így a következő lépéssel is.
 
 ```azurecli-interactive
 az vm create \
@@ -192,7 +192,7 @@ Zárja be az SSH-munkamenetet, hogy a *myVm2* virtuális Gépet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, [az csoport törlése](/cli/azure/group#az_group_delete) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
+Ha már nincs rá szükség, [az csoport törlése](/cli/azure/group) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

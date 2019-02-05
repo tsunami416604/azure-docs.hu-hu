@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: efeae877161b2632112938d63b6f6e31cce96ac5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: d5a820da94254fe0da416d9219f7582d3a4241cb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077198"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696166"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Virtuálisgép-fürt létrehozása a Terraformmal a Modul Registryvel
 
@@ -31,7 +31,7 @@ A Terraformról a [Terraform dokumentációjában](https://www.terraform.io/docs
 ## <a name="set-up-authentication-with-azure"></a>Hitelesítés beállítása az Azure-ral
 
 > [!TIP]
-> Ha [Terraform környezeti változókat használ](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables) vagy az [Azure Cloud Shellben](/azure/cloud-shell/overview) futtatja ezt az oktatóanyagot, hagyja ki ezt a lépést.
+> Ha [Terraform környezeti változókat használ](/azure/virtual-machines/linux/terraform-install-configure) vagy az [Azure Cloud Shellben](/azure/cloud-shell/overview) futtatja ezt az oktatóanyagot, hagyja ki ezt a lépést.
 
  Tekintse át a [Terraform telepítésével és az Azure-hoz való hozzáféréssel](/azure/virtual-machines/linux/terraform-install-configure) foglalkozó cikket az Azure-szolgáltatásnév létrehozásához. Használja ezt a szolgáltatásnevet egy új `azureProviderAndCreds.tf` fájl kitöltéséhez egy üres könyvtárban az alábbi kóddal:
 

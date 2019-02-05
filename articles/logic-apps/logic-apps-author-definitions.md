@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 1f2e136810194ad044255f9d129b5c03549221b9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d50f56fe0f4428186d18195f798633baefd6d125
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128660"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732923"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Létrehozásához, szerkesztéséhez vagy JSON kiterjesztése a logikai alkalmazás definícióiról az Azure Logic Appsben
 
@@ -24,7 +24,8 @@ A munkafolyamatok létrehozásakor enterprise integration-megoldások automatiku
 Logikaialkalmazás-definíciók JSON dolgozni, nyissa meg a Kódnézet szerkesztőt, ha az Azure Portalon vagy a Visual Studióban, vagy másolja a definíció bármilyen szerkesztőt, amelyeket szeretne. Ha most ismerkedik a logic apps, tekintse át [az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 > [!NOTE]
-> Azure Logic Apps bizonyos funkciók, például a paraméterek és több eseményindító meghatározása a logikaialkalmazás-definíciók, csak a JSON-ban, nem a Logic Apps Designerben érhetők el. Így a feladatokhoz Kódnézet vagy más szerkesztővel kell működniük.
+> Azure Logic Apps bizonyos funkciók, például a paraméterek és több eseményindító meghatározása a logikaialkalmazás-definíciók, csak a JSON-ban, nem a Logic Apps Designerben érhetők el.
+> Így a feladatokhoz Kódnézet vagy más szerkesztővel kell működniük.
 
 ## <a name="edit-json---azure-portal"></a>Szerkesztés JSON - Azure-portálon
 
@@ -38,7 +39,7 @@ Logikaialkalmazás-definíciók JSON dolgozni, nyissa meg a Kódnézet szerkeszt
 
 ## <a name="edit-json---visual-studio"></a>JSON - szerkesztése a Visual Studio
 
-Előtt is dolgozhatnak a logikai alkalmazás definíciójának a Visual Studióban, győződjön meg arról, hogy [telepítve van a szükséges eszközöket](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites). A logikai alkalmazás létrehozása a Visual Studióval, tekintse át a [a rövid útmutató: feladatok és az Azure Logic Apps – Visual Studio folyamatok automatizálása](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+Előtt is dolgozhatnak a logikai alkalmazás definíciójának a Visual Studióban, győződjön meg arról, hogy [telepítve van a szükséges eszközöket](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites). Logikai alkalmazás létrehozása a Visual Studióval, tekintse át [a rövid útmutató: Automatizálhatja a feladatokat és folyamatokat az Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 A Visual Studióban nyissa meg a logic apps létrehozott és telepített, vagy közvetlenül az Azure Portalról vagy a Visual Studióból az Azure Resource Manager-projektként.
 
@@ -58,7 +59,7 @@ A Visual Studióban nyissa meg a logic apps létrehozott és telepített, vagy k
 
 ## <a name="parameters"></a>Paraméterek
 
-Paramétereket is felhasználhatja a logikai alkalmazás teljes értékeket, és jók, amelyek gyakran változhatnak értékeket cserélje le a. Például ha egy e-mail címet, amelyet több helyen is használja, meg kell határozni e-mail-címmel paraméterként. 
+Paramétereket is felhasználhatja a logikai alkalmazás teljes értékeket, és jók, amelyek gyakran változhatnak értékeket cserélje le a. Például ha egy e-mail címet, amelyet több helyen is használja, meg kell határozni e-mail-címmel paraméterként.
 
 Paramétereket is akkor hasznos, ha a paramétereket a különböző környezetek felülírása, tudjon meg többet kell [üzembe helyezési paraméterek](#deployment-parameters) és a [REST API-t az Azure Logic Apps-dokumentáció](https://docs.microsoft.com/rest/api/logic).
 
@@ -70,13 +71,13 @@ Az a [első példa logikai alkalmazás](../logic-apps/quickstart-create-first-lo
 1. Kódnézet, keresse meg a `parameters : {}` objektumot, és adjon hozzá egy `currentFeedUrl` objektum:
 
    ``` json
-     "currentFeedUrl" : {
+   "currentFeedUrl" : {
       "type" : "string",
-            "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
+      "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
    }
    ```
 
-2. Az a `When_a_feed-item_is_published` művelet, keresse meg a `queries` szakaszt, és cserélje le a lekérdezés értékét `"feedUrl": "#@{parameters('currentFeedUrl')}"`. 
+2. Az a `When_a_feed-item_is_published` művelet, keresse meg a `queries` szakaszt, és cserélje le a lekérdezés értékét `"feedUrl": "#@{parameters('currentFeedUrl')}"`.
 
    **Mielőtt**
    ``` json
@@ -84,7 +85,7 @@ Az a [első példa logikai alkalmazás](../logic-apps/quickstart-create-first-lo
       "queries": {
           "feedUrl": "https://s.ch9.ms/Feeds/RSS"
        }
-   },   
+   },
    ```
 
    **Után**
@@ -93,13 +94,13 @@ Az a [első példa logikai alkalmazás](../logic-apps/quickstart-create-first-lo
       "queries": {
           "feedUrl": "#@{parameters('currentFeedUrl')}"
        }
-   },   
+   },
    ```
 
    Két vagy több karakterláncok csatlakozni is használhatja a `concat` függvény. 
    Ha például `"@concat('#',parameters('currentFeedUrl'))"` ugyanúgy működik, mint az előző példában.
 
-3.  Ha elkészült, kattintson a **Mentés** gombra. 
+3.  Ha elkészült, kattintson a **Mentés** gombra.
 
 Most módosíthatja a webhely RSS-hírcsatorna egy másik URL-címet keresztül adja át a `currentFeedURL` objektum.
 
@@ -107,9 +108,9 @@ Most módosíthatja a webhely RSS-hírcsatorna egy másik URL-címet keresztül 
 
 ## <a name="deployment-parameters-for-different-environments"></a>Különböző környezetek üzembe helyezéshez megadott paraméterek
 
-Általában a központi telepítési életciklusának fejlesztési, átmeneti és éles környezetek rendelkezik. Például előfordulhat, hogy az azonos logic app-definíció használata ezekben a környezetekben, de különböző adatbázist használja. Hasonlóképpen érdemes a különböző régiók között ugyanazon definíció használata magas rendelkezésre állást, de használhatja az adott régióban database minden egyes logikaialkalmazás-példányt szeretné. 
+Általában a központi telepítési életciklusának fejlesztési, átmeneti és éles környezetek rendelkezik. Például előfordulhat, hogy az azonos logic app-definíció használata ezekben a környezetekben, de különböző adatbázist használja. Hasonlóképpen érdemes a különböző régiók között ugyanazon definíció használata magas rendelkezésre állást, de használhatja az adott régióban database minden egyes logikaialkalmazás-példányt szeretné.
 
-> [!NOTE] 
+> [!NOTE]
 > Ebben a forgatókönyvben eltér a paraméterekhez véve *futásidejű* hol kell használnia a `trigger()` inkább működik.
 
 Íme egy alapszintű definíciója:
@@ -157,13 +158,13 @@ A tényleges `PUT` kérhetnek a logic apps esetében megadhatja a paraméterrel 
     },
     "location": "westus"
 }
-``` 
+```
 
 További tudnivalókért tekintse meg a [REST API-t az Azure Logic Apps-dokumentáció](https://docs.microsoft.com/rest/api/logic/).
 
 ## <a name="process-strings-with-functions"></a>A functions folyamat karakterláncok
 
-A Logic Apps rendelkezik a különböző funkciók karakterláncokkal való munka. Tegyük fel, írjon be egy céges nevet egy másik rendszerre szeretne. Azonban nem biztos kapcsolatos forráskarakter-kódolás a megfelelő kezeléséhez. Elvégezni ezt a karakterláncot a base64 kódolást, de az URL-címben Kilépés elkerüléséhez lecserélheti több karaktert helyette. Emellett csak kell egy karakterláncrészletet a vállalat neve, mert az első öt karakterek nem használhatók. 
+A Logic Apps rendelkezik a különböző funkciók karakterláncokkal való munka. Tegyük fel, írjon be egy céges nevet egy másik rendszerre szeretne. Azonban nem biztos kapcsolatos forráskarakter-kódolás a megfelelő kezeléséhez. Elvégezni ezt a karakterláncot a base64 kódolást, de az URL-címben Kilépés elkerüléséhez lecserélheti több karaktert helyette. Emellett csak kell egy karakterláncrészletet a vállalat neve, mert az első öt karakterek nem használhatók.
 
 ``` json
 {
@@ -200,7 +201,7 @@ A Logic Apps rendelkezik a különböző funkciók karakterláncokkal való munk
 
 Ezek a lépések bemutatják, miként dolgozza fel a ebben a példában ez a karakterlánc, a belső dolgozunk azon, hogy a külső:
 
-``` 
+```
 "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
@@ -218,7 +219,7 @@ Ezek a lépések bemutatják, miként dolgozza fel a ebben a példában ez a kar
 
 ## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>Listaelemek leképezése tulajdonságértékek, majd paraméterként térképek használata
 
-Eltérő eredményt ad-alapú egy tulajdonság értéke, hozzon létre egy térképet, amely minden eredményt tulajdonság értéke megegyezik, akkor azt használja paraméterként. 
+Eltérő eredményt ad-alapú egy tulajdonság értéke, hozzon létre egy térképet, amely minden eredményt tulajdonság értéke megegyezik, akkor azt használja paraméterként.
 
 Például a munkafolyamat paramétereket és a egy térképet, amely megfelel egy adott URL-cím ezekben a kategóriákban bizonyos kategóriák határozza meg. A munkafolyamat először cikkek listáját kéri le. Ezt követően a munkafolyamat használja a térkép az URL-egyeztetési az egyes cikkeket a kategóriát.
 
@@ -302,13 +303,13 @@ Adatok beolvasása egy adatforrásból, amely nem natív módon támogatja a *es
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. Az a `order` művelet, kinyerési a `startTime`. 
+1. Az a `order` művelet, kinyerési a `startTime`.
 2. Az aktuális idő az első `utcNow()`.
 3. Egy második kivonása:
 
    [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
 
-   Használhat más időegység, például `minutes` vagy `hours`. 
+   Használhat más időegység, például `minutes` vagy `hours`.
 
 3. Most ezt a két értéket összehasonlíthatja. 
 
@@ -365,7 +366,6 @@ Formázhatja a dátumokat, karakterlánc formázót is használhatja. Ha példá
   "outputs": {}
 }
 ```
-
 
 ## <a name="next-steps"></a>További lépések
 

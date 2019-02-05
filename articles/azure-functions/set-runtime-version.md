@@ -8,16 +8,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: glenga
-ms.openlocfilehash: a0f66f5a1ba64c955fe0669d3ed215ee7c2895c0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6e8142e391dd02e78be42e1f16ae2626b74c41c3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498399"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734470"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Az Azure Functions runtime verziók bemutatásához
 
-Egy függvényalkalmazást az Azure Functions futtatókörnyezete egy adott verzióját futtatja. Két fő verziója: [1.x és a 2.x](functions-versions.md). Alapértelmezés szerint a függvény verzió létrehozott alkalmazásoknál 2.x verziójú futtatókörnyezet. Ez a cikk ismerteti a függvényalkalmazás konfigurálása az Azure-ban való futtatásához a kiválasztott verziótól. Egy adott verziót a helyi fejlesztési környezetet konfigurálásával kapcsolatos további információkért lásd: [kódolás és tesztelés az Azure Functions helyi](functions-run-local.md).
+Egy függvényalkalmazást az Azure Functions futtatókörnyezete egy adott verzióját futtatja. Nincsenek két főbb verziók: [az 1.x és a 2.x](functions-versions.md). Alapértelmezés szerint a függvény verzió létrehozott alkalmazásoknál 2.x verziójú futtatókörnyezet. Ez a cikk ismerteti a függvényalkalmazás konfigurálása az Azure-ban való futtatásához a kiválasztott verziótól. Egy adott verziót a helyi fejlesztési környezetet konfigurálásával kapcsolatos további információkért lásd: [kódolás és tesztelés az Azure Functions helyi](functions-run-local.md).
 
 > [!NOTE]
 > A futtatókörnyezet verziója, amely rendelkezik egy vagy több függvényt függvényalkalmazás nem módosítható. Futtatókörnyezet verziójának módosításához használjon az Azure Portalon.
@@ -49,7 +49,7 @@ Akkor is megtekintheti, és állítsa be a `FUNCTIONS_EXTENSION_VERSION` az Azur
 >[!NOTE]
 >Egyéb beállítások hatással lehet a futtatókörnyezet-verzió, mert akkor kell megváltoztatnia a verzió a portálon. A portál automatikusan futtatókörnyezet-verzió változásakor lehetővé teszi az egyéb szükséges frissítések, például a Node.js verzió és a futtatókörnyezeti verem.  
 
-Az Azure CLI használatával megtekintheti az aktuális futtatókörnyezet verziójának a [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) parancsot.
+Az Azure CLI használatával megtekintheti az aktuális futtatókörnyezet verziójának a [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) parancsot.
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <function_app> \
@@ -83,7 +83,7 @@ Megjelenik a `FUNCTIONS_EXTENSION_VERSION` a következő kimenet, amely csonkolt
 ]
 ```
 
-Frissítheti a `FUNCTIONS_EXTENSION_VERSION` a függvényalkalmazás a beállítás a [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) parancsot.
+Frissítheti a `FUNCTIONS_EXTENSION_VERSION` a függvényalkalmazás a beállítás a [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) parancsot.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \

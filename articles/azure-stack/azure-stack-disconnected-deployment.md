@@ -16,12 +16,12 @@ ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 5447bcb0dc37cb3c923c4e6bbff4d69d987b6df6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 05bf01e2b7c380f7bb79230885e247bd8c834d14
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244368"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691167"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure leválasztott telepítés tervezési megfontolások az Azure Stack integrált rendszerek
 Miután döntött [hogyan fogja integrálja az Azure Stack a hibridfelhő-környezet](azure-stack-connection-models.md), majd az Azure Stack telepítési döntések is véglegesítése.
@@ -47,7 +47,7 @@ Az Azure Stack való csatlakozáskor az Azure-ba, ezért fontos megjegyezni, hog
 |Virtuális gép üzembe helyezése a Docker-parancsok futtatásához Docker-bővítmény|Sérült – Docker keresi a legújabb verziót az internethez, és ez az ellenőrzés sikertelen lesz.|
 |Az Azure Stack portálon dokumentációra mutató hivatkozások|Nem érhető el – hivatkozások mint visszajelzés segítségre van szüksége, a rövid útmutatóban egy internetes URL-cím nem fognak működni használják stb.|
 |Riasztási szervizelési/megoldás, amely hivatkozik egy online szervizelési útmutató|Nem érhető el – bármely riasztás szervizelése hivatkozások használó internetes URL-cím nem fog működni.|
-|Marketplace – válassza ki, és adja hozzá a katalógus-csomagokat közvetlenül az Azure Marketplace-ről|Sérült – Azure Stack (nélkül bármely internetkapcsolat) kapcsolat nélküli üzemmódban történő telepítésekor Piactéri elemek nem lehet letölteni az Azure Stack-portál használatával. Használhatja azonban a [marketplace tartalomtípus-gyűjtési eszköz](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) töltse le a marketplace-elemek olyan gépre, amely rendelkezik internetkapcsolattal, és utána az Azure Stack környezettel.|
+|Marketplace – válassza ki, és adja hozzá a katalógus-csomagokat közvetlenül az Azure Marketplace-ről|Sérült – Azure Stack (nélkül bármely internetkapcsolat) kapcsolat nélküli üzemmódban történő telepítésekor Piactéri elemek nem lehet letölteni az Azure Stack-portál használatával. Használhatja azonban a [marketplace tartalomtípus-gyűjtési eszköz](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) töltse le a marketplace-elemek olyan gépre, amely rendelkezik internetkapcsolattal, és utána az Azure Stack környezettel.|
 |Azure Active Directory összevonási fiókok használata kezelheti az Azure Stack üzemelő példányához|Nem érhető el – ez a funkció kapcsolódnia kell az Azure-bA. Ehelyett az AD FS egy helyi Active Directory-példányt kell használni.|
 |App Services|Sérült - WebApps kérhet Internet-hozzáférés frissített tartalom.|
 |Parancssori felület (CLI)|Sérült – parancssori felület csökkentette a funkciót, hitelesítési és az egyszerű szolgáltatások kiépítését.|

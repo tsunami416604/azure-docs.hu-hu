@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 140391b02dab8ce6b47d5350d6d40a9673b29e11
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e16598a10cbbe4cfa65e6b5394e749bfee99dbdc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161766"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732583"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
 
@@ -120,7 +120,7 @@ A folyamat megkönnyítése, [Kódminták](https://github.com/Azure/AzureAD-BYOA
 ### <a name="getting-started"></a>Első lépések
 A legegyszerűbb módja egy SCIM-végpontot, amely az Azure ad-ből kiépítési kérelmeket fogadhat megvalósításához készíthet és helyezhet üzembe a kódminta, amely a kiépített felhasználók egy vesszővel tagolt (CSV) fájl.
 
-**A minta SCIM-végpont létrehozása:**
+#### <a name="to-create-a-sample-scim-endpoint"></a>A minta SCIM-végpont létrehozása
 
 1. Töltse le a kódcsomag minta: [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
 2. Tömörítse ki a csomagot, és helyezze el a Windows-gépen C:\AzureAD-BYOA-Provisioning-Samples\ például egy helyen.
@@ -142,7 +142,7 @@ A legegyszerűbb módja egy SCIM-végpontot, amely az Azure ad-ből kiépítési
 8. Windows alatt a **Windows-beállítások > hálózat és Internet beállítások**, jelölje be a **Windows tűzfal > Speciális beállítások**, és hozzon létre egy **bejövő szabály** , amely lehetővé teszi, hogy 9000 portot a bejövő hozzáférést.
 9. Ha a Windows-gép útválasztó mögött található, az útválasztó kell úgy, hogy hajtsa végre a hálózati hozzáférés fordítási port 9000, amely közvetlenül csatlakozik az internethez, és a Windows-gépen 9000 port között. Ez a konfiguráció megadása kötelező érhetik el ezt a végpontot a felhőben az Azure AD-hez.
 
-**A minta SCIM végpont regisztrálása az Azure ad-ben:**
+#### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>A minta SCIM végpont regisztrálása az Azure ad-ben
 
 1. Jelentkezzen be a [az Azure Portalon](https://portal.azure.com). 
 2. Keresse meg a **Azure Active Directory > Vállalati alkalmazások**, és válassza ki **új alkalmazás > minden > katalógusban nem szereplő alkalmazás**.

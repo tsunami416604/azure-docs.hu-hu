@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: b31425849eacc0b1f88e8dbd623804cefff9112f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 332382282c2b55b52bb23f278a25868c09360619
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662754"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729353"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Hozzon létre és OpenBSD lemez Rendszerkép feltöltése az Azure-bA
 Ez a cikk bemutatja, hogyan hozhat létre és töltse fel a virtuális merevlemez (VHD), amely tartalmazza az OpenBSD operációs rendszert. Miután feltölti azt, segítségével azt a saját rendszerkép hozzon létre egy virtuális gépet (VM) az Azure-ban az Azure CLI-n keresztül.
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és töltse fel a virtuális merevleme
 Ez a cikk azt feltételezi, hogy rendelkezik-e a következő elemek:
 
 * **Azure-előfizetés** – Ha nincs fiókja, létrehozhat egyet, néhány perc alatt. Ha rendelkezik MSDN-előfizetéssel, lásd: [havi Azure-kredit a Visual Studio-előfizetők](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Ellenkező esetben megtudhatja, hogyan [hozzon létre egy ingyenes próbafiókot](https://azure.microsoft.com/pricing/free-trial/).  
-* **Az Azure CLI** – ellenőrizze, hogy a legújabb [Azure CLI-vel](/cli/azure/install-azure-cli) telepítve, és az Azure-fiókjával bejelentkezett [az bejelentkezési](/cli/azure/reference-index#az_login).
+* **Az Azure CLI** – ellenőrizze, hogy a legújabb [Azure CLI-vel](/cli/azure/install-azure-cli) telepítve, és az Azure-fiókjával bejelentkezett [az bejelentkezési](/cli/azure/reference-index).
 * **OpenBSD operációs rendszer telepítve van egy .vhd fájl** – egy operációs rendszer támogatott OpenBSD ([6.1-es verzió AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.1/amd64/)) virtuális merevlemezt kell telepíteni. Több eszközt található .vhd fájlok létrehozásához. Például használhatja például a Hyper-V virtualizálási megoldás létrehozása a .vhd fájlt, és az operációs rendszer telepítése. Telepítse és használja a Hyper-V kapcsolatos útmutatásért lásd: [Hyper-V telepítése és a egy virtuális gép létrehozása](https://technet.microsoft.com/library/hh846766.aspx).
 
 
@@ -103,13 +103,13 @@ Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 ```
 
 ## <a name="create-storage-resources-and-upload"></a>Tárolási erőforrások létrehozása és feltöltése
-Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Töltse fel a VHD-t, hozzon létre egy tárfiókot [az tárfiók létrehozása](/cli/azure/storage/account#az_storage_account_create). Tárfiókok nevének egyedinek kell lenniük, így adja meg a saját nevét. Az alábbi példa létrehoz egy tárfiókot, nevű *mystorageaccount*:
+Töltse fel a VHD-t, hozzon létre egy tárfiókot [az tárfiók létrehozása](/cli/azure/storage/account). Tárfiókok nevének egyedinek kell lenniük, így adja meg a saját nevét. Az alábbi példa létrehoz egy tárfiókot, nevű *mystorageaccount*:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup \
@@ -118,7 +118,7 @@ az storage account create --resource-group myResourceGroup \
     --sku Premium_LRS
 ```
 
-A tárfiókhoz való hozzáférés szabályozásához, szerezze be a tárfiók hívóbetűjét, a [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys#az_storage_account_keys_list) módon:
+A tárfiókhoz való hozzáférés szabályozásához, szerezze be a tárfiók hívóbetűjét, a [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys) módon:
 
 ```azurecli
 STORAGE_KEY=$(az storage account keys list \
@@ -136,7 +136,7 @@ az storage container create \
     --account-key ${STORAGE_KEY}
 ```
 
-Végezetül töltse fel a VHD-t a [az storage blob feltöltése](/cli/azure/storage/blob#az_storage_blob_upload) módon:
+Végezetül töltse fel a VHD-t a [az storage blob feltöltése](/cli/azure/storage/blob) módon:
 
 ```azurecli
 az storage blob upload \
@@ -149,7 +149,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Virtuális gép létrehozása a virtuális merevlemezről
-Létrehozhat egy virtuális Gépet egy [mintaparancsfájl](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) vagy közvetlenül az [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). A feltöltött OpenBSD VHD megadásához használja a `--image` paramétert a következők szerint:
+Létrehozhat egy virtuális Gépet egy [mintaparancsfájl](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) vagy közvetlenül az [az virtuális gép létrehozása](/cli/azure/vm). A feltöltött OpenBSD VHD megadásához használja a `--image` paramétert a következők szerint:
 
 ```azurecli
 az vm create \
@@ -161,7 +161,7 @@ az vm create \
     --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-Az IP-cím beszerzése a virtuális gép OpenBSD [az vm list-ip-addresses](/cli/azure/vm#list-ip-addresses) módon:
+Az IP-cím beszerzése a virtuális gép OpenBSD [az vm list-ip-addresses](/cli/azure/vm) módon:
 
 ```azurecli
 az vm list-ip-addresses --resource-group myResourceGroup --name myOpenBSD61

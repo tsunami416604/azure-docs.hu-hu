@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f844b460e5fc6548a17b93038d1232fe61483018
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: bdb7b1477725235ca88e9cf527c7f711fd6f6b73
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754067"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732260"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -153,7 +153,7 @@ A részletes követelményekkel és lépésekkel kapcsolatban lásd a [virtuáli
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Tárolótámogatás a virtuálisgép-készletekben
 
-Amikor a Batch API-kkal hoz létre virtuálisgép-konfigurációs készletet, beállíthatja a készletet, hogy Docker-tárolókban futtasson feladatokat. Jelenleg a Docker-tárolókat támogató rendszerképpel kell létrehoznia a készletet. Használja a Windows Server 2016 Datacentert az Azure Marketplace-ről származó tárolói rendszerképpel, vagy adjon meg olyan egyéni virtuálisgép-rendszerképet, amely tartalmazza a Docker Community Edition vagy Enterprise kiadását és az összes szükséges illesztőt. A készlet beállításainak tartalmazniuk kell egy [tárolókonfigurációt](/rest/api/batchservice/pool/add#definitions_containerconfiguration), amely tárolórendszerképeket másol a virtuális gépekre a készlet létrehozásakor. A készleten futó feladatok ezután hivatkozhatnak a tárolórendszerképre és a tároló által futtatott beállításokra.
+Amikor a Batch API-kkal hoz létre virtuálisgép-konfigurációs készletet, beállíthatja a készletet, hogy Docker-tárolókban futtasson feladatokat. Jelenleg a Docker-tárolókat támogató rendszerképpel kell létrehoznia a készletet. Használja a Windows Server 2016 Datacentert az Azure Marketplace-ről származó tárolói rendszerképpel, vagy adjon meg olyan egyéni virtuálisgép-rendszerképet, amely tartalmazza a Docker Community Edition vagy Enterprise kiadását és az összes szükséges illesztőt. A készlet beállításainak tartalmazniuk kell egy [tárolókonfigurációt](/rest/api/batchservice/pool/add), amely tárolórendszerképeket másol a virtuális gépekre a készlet létrehozásakor. A készleten futó feladatok ezután hivatkozhatnak a tárolórendszerképre és a tároló által futtatott beállításokra.
 
 További információt a [Docker-tárolóalkalmazásoknak az Azure Batch-ben történő futtatásával](batch-docker-container-workloads.md) foglalkozó cikkben tekinthet meg.
 

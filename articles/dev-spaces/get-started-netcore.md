@@ -10,12 +10,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: f053f2f70b266a53684f72ceb9d997a718c66444
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 5cecb11494926444249c8061f1ec93622e4d6c78
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663910"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700699"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Bevezetés az Azure fejlesztési tárolóhelyek .NET Core használatával
 
@@ -99,13 +99,7 @@ A VS Code-ot használó .NET Core- és Node.js-felhasználók számára számos 
 Ebben a szakaszban egy ASP.NET Core-alapú webalkalmazást hozhat létre és futtathat egy Kubernetes-tárolóban.
 
 ### <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
-Ha a [.NET Core](https://www.microsoft.com/net) telepítve van, gyorsan létrehozhat egy ASP.NET Core-webalkalmazást a `webfrontend` nevű mappában.
-    
-```cmd
-dotnet new mvc --name webfrontend
-```
-
-Vagy **a mintakód a GitHubról való letöltéséhez** lépjen a https://github.com/Azure/dev-spaces helyre, és válassza a **Klónozás vagy letöltés** lehetőséget a GitHub-adattár a helyi környezetbe való letöltéséhez. A jelen útmutatóban használt kód a következő helyen található: `samples/dotnetcore/getting-started/webfrontend`.
+Klónozás vagy letöltés a [Azure fejlesztési tárolóhelyek mintaalkalmazás](https://github.com/Azure/dev-spaces). Ebben a cikkben található kód az *samples/dotnetcore/első-lépések/webfrontend* könyvtár.
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Kód előkészítése Docker- vagy Kubernetes-fejlesztéshez
 Már rendelkezik egy helyileg futó alapszintű webalkalmazással. Most olyan objektumok létrehozásával egy tárolóba fogja helyezni, amelyek meghatározzák az alkalmazás tárolóját, és a Kubernetesben történő üzembe helyezésének módját. Ez a feladat az Azure Dev Spaces segítségével egyszerűen elvégezhető: 

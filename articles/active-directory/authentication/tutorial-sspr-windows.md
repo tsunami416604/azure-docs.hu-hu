@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 3446548a89c33e6eb8026e41fbea01ee651b2c88
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c84d876828ac96bfb44b84e99b13489d51ae3370
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488067"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694023"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 
@@ -33,7 +33,7 @@ Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérje
    * [Hibrid Azure AD-hez csatlakoztatott](../device-management-hybrid-azuread-joined-devices-setup.md), a hálózati kapcsolat egy tartományvezérlőhöz.
 * Engedélyeznie kell az Azure AD önkiszolgáló jelszó-visszaállítás.
 * Ha a Windows 10 rendszerű eszközök proxykiszolgálót vagy tűzfal mögé, hozzá kell adnia az URL-címeket, `passwordreset.microsoftonline.com` és `ajax.aspnetcdn.com` a HTTPS-forgalom (a 443-as port) engedélyezett URL-címek listájához.
-* Tekintse át az alábbi korlátozások előtt ezt a környezetben.
+* Tekintse át az alábbi korlátozások előtt ez a funkció a környezetben.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával
 
@@ -87,7 +87,7 @@ Ezzel az Intune használatával létrehozott és hozzárendelt egy eszközkonfig
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>Jelszó-visszaállítási hivatkozás konfigurálása a Beállításjegyzék használatával
 
-1. Jelentkezzen be a Windows rendszerű számítógépbe rendszergazdai hitelesítő adatokkal
+1. Jelentkezzen be rendszergazdai hitelesítő adatok használatával a Windows-számítógép
 2. Futtassa a **regedit** parancsot rendszergazdaként
 3. Állítsa be a következő beállításkulcsot
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -99,13 +99,15 @@ Milyen változást tapasztalnak a felhasználók a szabályzat konfigurálása �
 
 ![Bejelentkezési képernyő][LoginScreen]
 
-Amikor a felhasználók megpróbálnak bejelentkezni, a bejelentkezési képernyőn mostantól egy Új jelszó kérése hivatkozást láthatnak, amely megnyitja az önkiszolgáló jelszó-visszaállítási felületet. Ezzel a funkcióval a felhasználók visszaállíthatják a jelszavukat anélkül, hogy egy másik eszközt kellene használniuk egy webböngésző eléréséhez.
+Amikor a felhasználók megpróbálnak bejelentkezni, most már megjelenik egy jelszó-visszaállítási hivatkozás, amely megnyitja az önkiszolgáló jelszó-visszaállítási felületet a bejelentkezési képernyőn. Ezzel a funkcióval a felhasználók visszaállíthatják a jelszavukat anélkül, hogy egy másik eszközt kellene használniuk egy webböngésző eléréséhez.
 
 A felhasználók a funkcióval kapcsolatban a [Munkahelyi vagy iskolai jelszó visszaállítása](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in) témakörben találhatnak útmutatást.
 
 Az Azure AD auditnaplója információkat tartalmaz az IP-címről és az ügyféltípusról, ahol az új jelszó kérése megtörtént.
 
 ![Példa új jelszó kérésére a bejelentkezési képernyőn az Azure AD auditnaplójában](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+Amikor a felhasználók új jelszót kérnek egy Windows 10 rendszerű eszköz, a bejelentkezési képernyőről, egy alacsony jogosultsági szintű "defaultuser1" nevű ideiglenes fiók jön létre. Ez a fiók biztonsága érdekében a jelszó-visszállítási folyamatnak szolgál. A fiókért véletlenszerűen létrehozott jelszót tartalmaz, nem jelenik meg az eszköz be, és automatikusan törlődik, miután a felhasználó visszaállítja a jelszavát. Több "defaultuser" profilok előfordulhat, hogy létezik, de biztonságosan figyelmen kívül hagyható.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -131,7 +133,7 @@ A következő házirend-beállításokat ismert zavarják a jelszavak alaphelyze
 
 Ez a funkció nem működik a hálózatok üzembe helyezett 802.1 x hálózati hitelesítést és az "Azonnali végrehajtás a felhasználó bejelentkezése előtt végezze el" lehetőséget. 802.1 x hálózati hitelesítéssel üzembe helyezett hálózatok ajánlott számítógép-hitelesítés használatával engedélyezze ezt a funkciót.
 
-Csatlakoztatott hibrid forgatókönyvek esetén az SSPR-munkafolyamat sikeresen befejezi anélkül, hogy egy Active Directory-tartományvezérlőhöz. Ha egy felhasználó a jelszó-visszaállítási folyamat befejeződött, ha egy Active Directory-tartományvezérlőhöz való kommunikáció nem érhető el, például amikor távolról dolgozó, a felhasználó nem fogja tudni jelentkezzen be az eszközt addig, amíg az eszköz és a tartományvezérlő közötti kommunikációhoz és a a gyorsítótárazott hitelesítő adat frissítése. **Kapcsolat egy tartományvezérlővel kell használnia az új jelszó először**.
+Csatlakoztatott hibrid forgatókönyvek esetén az SSPR-munkafolyamat sikeresen befejezi anélkül, hogy egy Active Directory-tartományvezérlőhöz. Ha egy felhasználó a jelszó-visszaállítási folyamat befejeződött, ha egy Active Directory-tartományvezérlőhöz való kommunikáció nem érhető el, például amikor távolról dolgozó, a felhasználó nem jelentkezhet be az eszközön addig, amíg az eszköz és a tartományvezérlő közötti kommunikációhoz és a a gyorsítótárazott hitelesítő adat frissítése. **Kapcsolat egy tartományvezérlővel kell használnia az új jelszó először**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

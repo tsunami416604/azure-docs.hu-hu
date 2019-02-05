@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: a1d06919ae0a76647fafeb9c8499476e533bfebf
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7474027368949d5ad2202881ac68096fac2b8bd2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656396"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693904"
 ---
 # <a name="preview-azure-ad-password-protection-troubleshooting"></a>Előzetes verzió: Az Azure AD jelszóvédelem hibáinak elhárítása
 
@@ -26,8 +26,6 @@ ms.locfileid: "55656396"
 
 Az Azure AD jelszóvédelem üzembe helyezés után hibaelhárítási lehet szükség. Ez a cikk részletezik segítenek megérteni néhány gyakori hibaelhárítási lépéseket.
 
-## 
-
 ## <a name="weak-passwords-are-not-getting-rejected-as-expected"></a>A gyenge jelszavakat nem első visszautasítja, várt módon
 
 Ennek több lehetséges oka lehet:
@@ -35,12 +33,16 @@ Ennek több lehetséges oka lehet:
 1. A tartományvezérlő ügynökök rendelkezik még nem töltötte le a szabályzatot. A tünete, ez a tartományvezérlő az ügynök felügyeleti eseménynaplójában 30001 események.
 
     A probléma lehetséges okai a következők:
+
     1. Erdő még nem regisztrált
     2. Proxy még nem regisztrált
     3. Hálózati problémák léptek fel megakadályozza, hogy a Proxy szolgáltatást az Azure-ral (Ellenőrizze a HTTP-Proxy követelmények) való kommunikációhoz
 
-2. A jelszó a házirend-kényszerítési módban továbbra is be van állítva a naplózási. Ez a helyzet, ha egyszerűen újrakonfigurálásának, az Azure AD jelszóvédelem Portallal érvényesítése.
-3. A jelszó adatérvényesítési algoritmust az elvárásoknak megfelelően működik is.  Lásd: [hogyan jelszavak értékeli ki a](concept-password-ban-bad.md#how-are-passwords-evaluated).
+2. A jelszó a házirend-kényszerítési módban továbbra is be van állítva a naplózási. Ez a helyzet, ha újrakonfigurálása az Azure AD jelszóvédelem Portallal érvényesítése. Lásd: [engedélyezze a jelszavas védelem](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+
+3. A jelszóházirend le lett tiltva. Ha ez a helyzet, konfigurálja újra, hogy engedélyezve van, az Azure AD jelszóvédelem portal használatával. Lásd: [engedélyezze a jelszavas védelem](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+
+4. A jelszó adatérvényesítési algoritmust az elvárásoknak megfelelően működik is. Lásd: [hogyan jelszavak értékeli ki a](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
 ## <a name="directory-services-repair-mode"></a>Címtárszolgáltatások helyreállító módjában
 
@@ -50,7 +52,7 @@ Ha a tartományvezérlő a Címtárszolgáltatások helyreállító módjában r
 
 Ha olyan helyzet akkor fordul elő, ha a tartományvezérlő-ügynökszolgáltatás problémákat okoz, a tartományvezérlő-ügynökszolgáltatás előfordulhat, hogy azonnal leáll. A tartományvezérlő ügynök jelszó szűrő dll továbbra is megpróbálja meghívni a nem futó szolgáltatás, és naplózza az figyelmeztetési eseményeket (10012, 10013), de ebben az időszakban minden bejövő jelszót fogad. A tartományvezérlő-ügynökszolgáltatás majd is konfigurálhatók keresztül a Windows szolgáltatásvezérlő indítási típusaként válassza a "Letiltott" igény szerint.
 
-Szervizelési egy új mértéket az Enable-üzemmód beállítása az Azure AD jelszóvédelem portálon nem lehet. A frissített szabályzatot a letöltést követően minden egyes tartományvezérlő ügynökök szolgáltatás egy videokártyának módban, ahol az összes jelszavak ügyfélként fogad el lépnek-van. További információkért lásd: [kényszerítési módban](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
+Szervizelési egy új mértéket az Enable-üzemmód beállítása az Azure AD jelszóvédelem portálon nem lehet. A frissített szabályzatot a letöltést követően minden egyes tartományvezérlő agent szolgáltatást egy videokártyának módban, ahol az összes jelszavak ügyfélként fogad el lépnek-van. További információkért lásd: [kényszerítési módban](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
 
 ## <a name="domain-controller-demotion"></a>Tartományvezérlő lefokozása
 

@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 02/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 9890f68ff61d822f505c4403eb2f1f61e396fd01
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 7a17bed165a5a8ff15a122a1376d1a3a5e17d45f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488711"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700927"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -103,8 +103,6 @@ A gyűjtő át kell adnia néhány előfeltétel-ellenőrzéseket győződjön m
     7. Ellenőrizze, hogy a tanúsítvány importálása várt módon, és ellenőrizze, hogy az internetes kapcsolat az előfeltétel-ellenőrzés működik, a várt.
 
 
-
-
 ### <a name="urls-for-connectivity"></a>URL-címeket a hálózati kapcsolatot
 
 A kapcsolat ellenőrzése az URL-listák való csatlakozással érvényességét.
@@ -150,6 +148,79 @@ A gyűjtő kommunikál a következő ábra és táblázat foglalja össze.
 Azure Migrate szolgáltatás | 443-as TCP | Gyűjtő SSL 443-as porton keresztül kommunikál az Azure Migrate szolgáltatással.
 vCenter Server | 443-as TCP | A gyűjtő képes kommunikálni a vCenter-kiszolgálóhoz kell lennie.<br/><br/> Alapértelmezés szerint csatlakozik a vCenter a 443-as porton.<br/><br/> Ha a vCenter-kiszolgáló egy másik porton figyel, erre a portra érhető el, a gyűjtő kimenő portként kell lennie.
 RDP | TCP 3389 |
+
+## <a name="collected-metadata"></a>Összegyűjtött metaadatok
+
+A gyűjtőberendezés minden virtuális géphez deríti fel a következő konfigurációs metaadatokat. A konfigurációs adatokat a virtuális gépek esetében érhető el egy órán felderítés indítása.
+
+- Virtuális gép megjelenített neve (a vCenter-kiszolgáló)
+- Virtuális gép szoftverleltár elérési útvonala (a gazdagép/mappa a vCenter-kiszolgáló)
+- IP-cím
+- MAC-cím
+- Operációs rendszer
+- Magok, lemezek, hálózati adapterek száma
+- Memória mérete, a lemezméretek
+- Teljesítményszámlálók a virtuális gép, a lemez és a hálózat.
+
+### <a name="performance-counters"></a>Teljesítményszámlálók
+
+ A gyűjtőberendezés gyűjti össze a következő teljesítményszámlálókkal minden virtuális géphez az ESXi-gazdagép 20 másodperces időközönként. Ezek a számlálók vCenter teljesítményszámlálók és a terminológia átlagos feliratú, bár a 20 másodperces minták-e a valós idejű számlálókat. A teljesítményadatokat a virtuális gépek indítása váljon a portálon elérhető, rendelkezik kezdődjön a felderítés után két órával. A legalább egy napot vár az értékelések teljesítményalapú pontos megfelelő javaslatokat beolvasni létrehozása előtt erősen ajánlott. Ha a keresett azonnali menni, elkészítheti a méretezési feltétel, *helyszíni* nem veszi, amely megfelelő a teljesítményadatokat.
+
+**A számláló** |  **Értékelés gyakorolt hatás**
+--- | ---
+cpu.usage.average | Javasolt Virtuálisgép-méretet és költség  
+mem.usage.average | Javasolt Virtuálisgép-méretet és költség  
+virtualDisk.read.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
+virtualDisk.write.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
+virtualDisk.numberReadAveraged.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
+virtualDisk.numberWriteAveraged.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
+NET.Received.average | Kiszámítja a virtuális gép mérete                          
+NET.transmitted.average | Kiszámítja a virtuális gép mérete     
+
+Az Azure Migrate által gyűjtött VMware számlálók teljes listáját a alatt érhető el:
+
+**Kategória** |  **Metadata** | **vCenter datapoint**
+--- | --- | ---
+Gép részletei | VM-azonosító | vm.Config.InstanceUuid
+Gép részletei | a virtuális gép neve | vm.Config.Name
+Gép részletei | vCenter Server ID | VMwareClient.InstanceUuid
+Gép részletei |  Virtuális gép leírása |  vm.Summary.Config.Annotation
+Gép részletei | Licenc termék neve | vm.Client.ServiceContent.About.LicenseProductName
+Gép részletei | Operációs rendszer típusa | vm.Summary.Config.GuestFullName
+Gép részletei | Operációs rendszer verziója | vm.Summary.Config.GuestFullName
+Gép részletei | Rendszerindítás típusa | vm.Config.Firmware
+Gép részletei | Magok száma | vm.Config.Hardware.NumCPU
+Gép részletei | Memória (MB) | vm.Config.Hardware.MemoryMB
+Gép részletei | Lemezek száma | a virtuális gép. Config.Hardware.Device.ToList(). FindAll(x => x is VirtualDisk).count
+Gép részletei | Lemez mérete lista | a virtuális gép. Config.Hardware.Device.ToList(). FindAll (x = > x VirtualDisk az)
+Gép részletei | Hálózati adapterek listáját | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualEthernetCard)
+Gép részletei | Processzorkihasználtság | cpu.usage.average
+Gép részletei | Memóriakihasználtság | mem.usage.average
+Lemez adatai (lemezenként) | Lemez kulcs értéke | a lemez. Kulcs
+Lemez adatai (lemezenként) | Lemezek száma | disk.UnitNumber
+Lemez adatai (lemezenként) | Lemez vezérlő kulcs értéke | disk.ControllerKey.Value
+Lemez adatai (lemezenként) | GB kiosztott | virtualDisk.DeviceInfo.Summary
+Lemez adatai (lemezenként) | Lemez neve | Ez az érték használatával: lemez jön létre. UnitNumber, a lemez. Kulcs és a lemez. ControllerKey.Value
+Lemez adatai (lemezenként) | Olvasási műveletek másodpercenkénti száma | virtualDisk.numberReadAveraged.average
+Lemez adatai (lemezenként) | Írási műveletek másodpercenkénti száma | virtualDisk.numberWriteAveraged.average
+Lemez adatai (lemezenként) | Az olvasás átviteli sebességét megabájt / másodperc | virtualDisk.read.average
+Lemez adatai (lemezenként) | Lemezírás teljesítménye megabájt / másodperc | virtualDisk.write.average
+Hálózati Adapter adatai száma (NIC) | Hálózati adapter neve | hálózati adapteren. Kulcs
+Hálózati Adapter adatai száma (NIC) | MAC-cím | ((VirtualEthernetCard)nic).MacAddress
+Hálózati Adapter adatai száma (NIC) | IPv4-címek | vm.Guest.Net
+Hálózati Adapter adatai száma (NIC) | IPv6-címek | vm.Guest.Net
+Hálózati Adapter adatai száma (NIC) | Az olvasás átviteli sebességét megabájt / másodperc | NET.Received.average
+Hálózati Adapter adatai száma (NIC) | Lemezírás teljesítménye megabájt / másodperc | NET.transmitted.average
+Elérési út Leltáradatait | Name (Név) | container.GetType().Name
+Elérési út Leltáradatait | Írja be az gyermekobjektum | container.ChildType
+Elérési út Leltáradatait | Hivatkozás részletei | a tároló. MoRef
+Elérési út Leltáradatait | A készlet teljes elérési útja | a tároló. Nevezze el a teljes elérési útja
+Elérési út Leltáradatait | Szülő részletei | Container.Parent
+Elérési út Leltáradatait | Mappa adatai az egyes virtuális Gépekhez | ((Folder)container).ChildEntity.Type
+Elérési út Leltáradatait | Minden virtuális gép mappa adatközpont részletei | ((Datacenter)container).VmFolder
+Elérési út Leltáradatait | Minden gazdagép mappa adatközpont részletei | ((Datacenter)container).HostFolder
+Elérési út Leltáradatait | Minden állomás számára a fürt részletes adatai | ((ClusterComputeResource)container).Host)
+Elérési út Leltáradatait | Minden virtuális gép gazdagép részletei | ((HostSystem)container).Vm
 
 
 ## <a name="securing-the-collector-appliance"></a>A gyűjtőberendezés biztonságossá tétele
@@ -200,34 +271,6 @@ Miután a készülék be van állítva, futtassa a felderítést. Itt látható,
 - Virtuális gépeket a felderítésüket, és a metaadatok és a teljesítmény adataikat az Azure-bA küldi el. Ezek a műveletek egy feladat részét képezik.
     - A gyűjtőberendezés kap egy adott Gyűjtőazonosító, amely egy adott gép állandó felderítések között.
     - Egy futó feladat kap egy adott munkamenet-azonosítót. Az azonosító gyűjtemény feladatonként módosítja, és a hibaelhárításhoz használható.
-
-### <a name="collected-metadata"></a>Összegyűjtött metaadatok
-
-A gyűjtőberendezés minden virtuális géphez deríti fel a következő konfigurációs metaadatokat. A konfigurációs adatokat a virtuális gépek esetében érhető el egy órán felderítés indítása.
-
-- Virtuális gép megjelenített neve (a vCenter-kiszolgáló)
-- Virtuális gép szoftverleltár elérési útvonala (a gazdagép/mappa a vCenter-kiszolgáló)
-- IP-cím
-- MAC-cím
-- Operációs rendszer
-- Magok, lemezek, hálózati adapterek száma
-- Memória mérete, a lemezméretek
-- Teljesítményszámlálók a virtuális gép, a lemez és a hálózat.
-
-#### <a name="performance-counters"></a>Teljesítményszámlálók
-
- A gyűjtőberendezés gyűjti össze a következő teljesítményszámlálókkal minden virtuális géphez az ESXi-gazdagép 20 másodperces időközönként. Ezek a számlálók vCenter teljesítményszámlálók és a terminológia átlagos feliratú, bár a 20 másodperces minták-e a valós idejű számlálókat. A teljesítményadatokat a virtuális gépek indítása váljon a portálon elérhető, rendelkezik kezdődjön a felderítés után két órával. A legalább egy napot vár az értékelések teljesítményalapú pontos megfelelő javaslatokat beolvasni létrehozása előtt erősen ajánlott. Ha a keresett azonnali menni, elkészítheti a méretezési feltétel, *helyszíni* nem veszi, amely megfelelő a teljesítményadatokat.
-
-**A számláló** |  **Értékelés gyakorolt hatás**
---- | ---
-cpu.usage.average | Javasolt Virtuálisgép-méretet és költség  
-mem.usage.average | Javasolt Virtuálisgép-méretet és költség  
-virtualDisk.read.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
-virtualDisk.write.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
-virtualDisk.numberReadAveraged.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
-virtualDisk.numberWriteAveraged.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
-NET.Received.average | Kiszámítja a virtuális gép mérete                          
-NET.transmitted.average | Kiszámítja a virtuális gép mérete     
 
 ## <a name="next-steps"></a>További lépések
 

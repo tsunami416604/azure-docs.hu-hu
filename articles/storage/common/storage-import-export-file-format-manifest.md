@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 831286f1c98a2fc3d26277f4006283c3de64f900
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee53cc3a639a79e1b29ac6cd537bfb04e05b1bca
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463242"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692476"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Az Azure Import/Export szolgáltatásjegyzékének fájlformátuma
 A meghajtó jegyzékfájl közötti az Azure Blob storage-blobok és a egy importálási vagy exportálási feladatot tartalmazó meghajtón lévő fájlok hozzárendelését ismerteti. Az importálási művelet az Alkalmazásjegyzék-fájl jön létre a meghajtó előkészítési folyamat részeként, és az eszközön tárolt, a meghajtó az Azure-adatközpontban való elküldése előtt. Az exportálási művelet során a jegyzékfájl létrehozása és az Azure Import/Export szolgáltatás által az eszközön tárolt.  
@@ -97,7 +97,7 @@ Az adatok elemek és attribútumok a meghajtó jegyzékfájl XML formátum a kö
 |`Drive`|Beágyazott XML-elem|A jegyzékfájl minden meghajtó tartalmazza.|  
 |`DriveId`|String|A meghajtó meghajtó egyedi azonosítója. A meghajtó azonosítóját megtalálható a meghajtón, a hozzá tartozó sorozatszámok lekérdezésével. Meghajtó sorozatszáma általában a meghajtó, valamint a külső van nyomtatva. A `DriveID` elemének szerepelnie kell minden `BlobList` elem a jegyzékfájlban.|  
 |`StorageAccountKey`|String|Importálási feladat, ha, és csak akkor szükséges `ContainerSas` nincs megadva. A feladathoz hozzárendelt a az Azure storage-fiók kulcsát.<br /><br /> Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  
-|`ContainerSas`|String|Importálási feladat, ha, és csak akkor szükséges `StorageAccountKey` nincs megadva. A tároló SAS a blobokat a feladathoz hozzárendelt eléréséhez. Lásd: [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) annak formátum. Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  
+|`ContainerSas`|String|Importálási feladat, ha, és csak akkor szükséges `StorageAccountKey` nincs megadva. A tároló SAS a blobokat a feladathoz hozzárendelt eléréséhez. Lásd: [Put feladat](/rest/api/storageimportexport/jobs) annak formátum. Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  
 |`ClientCreator`|String|Adja meg az ügyfél, amely létrejön az XML-fájlt. Ez az érték nem értelmezi az Import/Export szolgáltatás által.|  
 |`BlobList`|Beágyazott XML-elem|Része az importálási vagy exportálási feladatot blobok listáját tartalmazza. Blob lista minden egyes blob metaadatait és a Tulajdonságok fájlmegosztások.|  
 |`BlobList/MetadataPath`|String|Választható. Itt adhatja meg a lemezen, amelyek a blobok a blob lista az importálási művelet lesz beállítva alapértelmezett metaadatait tartalmazó fájl relatív elérési útját. Ezeket a metaadatokat a blob-blob alapon igény szerint felülbírálható.<br /><br /> Ez az elem nem szerepel a jegyzékfájl-exportálási művelet.|  

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: priyamo
-ms.openlocfilehash: 03e22ae9aaa3ab967b55443ccbd933c265510227
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 42b0ab15f43d301629b9fbb3208ba24eae8c227e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180109"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694601"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a virtuális gép méretezési csoportban Azure CLI-vel
 
@@ -113,7 +113,7 @@ Ha már nincs szüksége a felügyelt identitás rendszer által hozzárendelt v
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-A felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény (elavult. január 2019 a tervezett) eltávolításához használja [eltávolítása az vmss-identitási](/cli/azure/vmss/identity/#az-vmss-remove-identity) paranccsal távolítható el, a rendszer által hozzárendelt egy VMSS felügyelt identitás:
+A felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény (elavult. január 2019 a tervezett) eltávolításához használja [eltávolítása az vmss-identitási](/cli/azure/vmss/identity/) paranccsal távolítható el, a rendszer által hozzárendelt egy VMSS felügyelt identitás:
 
 ```azurecli-interactive
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
@@ -190,7 +190,7 @@ A válasz tartalmazza a létrehozott, az alábbihoz hasonló felügyelt felhaszn
    }
    ```
 
-2. A felhasználó által hozzárendelt felügyelt identitás hozzárendelése a VMSS használatával [az vmss-identitási hozzárendelése](/cli/azure/vmss/identity#az-vm-assign-identity). Ne felejtse el a `<RESOURCE GROUP>` és `<VMSS NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY>` a felhasználó által hozzárendelt identitás erőforrás `name` tulajdonságot, mert az előző lépésben létrehozott:
+2. A felhasználó által hozzárendelt felügyelt identitás hozzárendelése a VMSS használatával [az vmss-identitási hozzárendelése](/cli/azure/vmss/identity). Ne felejtse el a `<RESOURCE GROUP>` és `<VMSS NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY>` a felhasználó által hozzárendelt identitás erőforrás `name` tulajdonságot, mert az előző lépésben létrehozott:
 
     ```azurecli-interactive
     az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>

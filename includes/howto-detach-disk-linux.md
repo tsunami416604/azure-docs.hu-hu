@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
 ms.openlocfilehash: 7c9c52c5cda258908ac8463dd06044e244c75ee2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52331073"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735899"
 ---
 Ha már nincs szüksége egy virtuális géphez (VM-hez) csatolt adatlemezre, könnyedén leválaszthatja. Amikor leválaszt egy lemezt a virtuális gépről, a lemezt nem távolítja el a tárolóból. Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ugyanahhoz vagy egy másik virtuális géphez.  
 

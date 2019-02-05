@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c6b4ed787fa9e8881990801bdee77550a1a0bf2f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ce682263663c0547d9e35a4d29037fd125d8bc6c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473629"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699176"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -241,7 +241,7 @@ Minden tárfióknak támogatja a legfeljebb 100 IP hálózati szabályok, amelye
 
 Való hozzáférés biztosítása a helyszíni hálózat egy IP-hálózati szabállyal a tárfiókhoz, meg kell adnia az internetkapcsolattal rendelkező, a hálózat által használt IP-címek. Segítségért forduljon a rendszergazdához.
 
-Használhat [ExpressRoute](/azure/expressroute/expressroute-introduction) , a hálózat csatlakoztatása az Azure-hálózatot. Itt minden kapcsolatnak két nyilvános IP-cím van beállítva. A Microsoft Edge tekinthet meg, és a használata [Azure nyilvános társviszony-létesítés](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) hasonlóan az Azure Storage a Microsoft Serviceshez való csatlakozáshoz. Engedélyezi a kommunikációt az Azure Storage, a nyilvános IP-címét a Kapcsolatcsoportok IP hálózati szabályokat létrehozni. Az ExpressRoute-kapcsolatcsoport nyilvános IP-címek keresése [nyisson egy támogatási jegyet az expressroute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon keresztül.
+Használhat [ExpressRoute](/azure/expressroute/expressroute-introduction) , a hálózat csatlakoztatása az Azure-hálózatot. Itt minden kapcsolatnak két nyilvános IP-cím van beállítva. A Microsoft Edge tekinthet meg, és a használata [Azure nyilvános társviszony-létesítés](/azure/expressroute/expressroute-circuit-peerings) hasonlóan az Azure Storage a Microsoft Serviceshez való csatlakozáshoz. Engedélyezi a kommunikációt az Azure Storage, a nyilvános IP-címét a Kapcsolatcsoportok IP hálózati szabályokat létrehozni. Az ExpressRoute-kapcsolatcsoport nyilvános IP-címek keresése [nyisson egy támogatási jegyet az expressroute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon keresztül.
 
 ### <a name="managing-ip-network-rules"></a>IP-hálózati szabályok kezelése
 
@@ -355,7 +355,7 @@ Ha engedélyezi a **engedélyezése a Microsoft-szolgáltatások megbízható...
 |Azure Event Grid|Microsoft.EventGrid|A Blob Storage esemény-közzététel engedélyezése, és lehetővé teszi az Event Grid tárolási üzenetsorok közzétételére. Ismerje meg [blob storage-események](/azure/event-grid/event-sources) és [várólisták közzétételét](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Az Event Hubs Capture adatok archiválása. [További](/azure/event-hubs/event-hubs-capture-overview).|
 |Azure-hálózatok|Microsoft.Networking|Store és a hálózati forgalom naplóinak elemzése. [További információk](/azure/network-watcher/network-watcher-packet-capture-overview).|
-|Azure Monitor|Microsoft.Insights|Lehetővé teszi, hogy a figyelési adatok biztonságos storage-fiókba írásos [további](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
+|Azure Monitor|Microsoft.Insights|Lehetővé teszi, hogy a figyelési adatok biztonságos storage-fiókba írásos [további](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).|
 |Azure SQL Data Warehouse|Microsoft.Sql|Lehetővé teszi, hogy importálása és exportálása a PolyBase forgatókönyveket. [További információk](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
 
 ### <a name="storage-analytics-data-access"></a>Storage analytics-adatok elérése

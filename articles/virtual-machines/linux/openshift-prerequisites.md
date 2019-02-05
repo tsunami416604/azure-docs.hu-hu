@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: d4b706a088769530e3994d8813b28f99d5a56df5
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 25ec82c923ebe322194d868159332ef145727999
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411968"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692993"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>OpenShift az Azure-beli üzembe helyezésének általános Előfeltételek
 
@@ -53,14 +53,14 @@ Ez az útmutató ismerteti a társított az Előfeltételek összetevőket hozha
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
-Jelentkezzen be az Azure-előfizetésbe a [az bejelentkezési](/cli/azure/reference-index#az_login) paranccsal, és kövesse a képernyőn megjelenő utasításokat, vagy kattintson **kipróbálás** Cloud Shell használatához.
+Jelentkezzen be az Azure-előfizetésbe a [az bejelentkezési](/cli/azure/reference-index) paranccsal, és kövesse a képernyőn megjelenő utasításokat, vagy kattintson **kipróbálás** Cloud Shell használatához.
 
 ```azurecli 
 az login
 ```
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Javasoljuk, hogy egy dedikált erőforráscsoport használata a key vault üzemeltetéséhez. Ez a csoport elkülönül az erőforráscsoportot, amelybe az OpenShift fürt erőforrások üzembe helyezése.
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Javasoljuk, hogy egy dedikált erőforráscsoport használata a key vault üzemeltetéséhez. Ez a csoport elkülönül az erőforráscsoportot, amelybe az OpenShift fürt erőforrások üzembe helyezése.
 
 A következő példában létrehozunk egy erőforráscsoportot, nevű *keyvaultrg* a a *eastus* helye:
 
@@ -69,7 +69,7 @@ az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
-Hozzon létre egy kulcstartót a fürthöz az SSH-kulcsok tárolására a [az keyvault létrehozása](/cli/azure/keyvault#az_keyvault_create) parancsot. A kulcstároló nevének globálisan egyedinek kell lennie.
+Hozzon létre egy kulcstartót a fürthöz az SSH-kulcsok tárolására a [az keyvault létrehozása](/cli/azure/keyvault) parancsot. A kulcstároló nevének globálisan egyedinek kell lennie.
 
 Az alábbi példa létrehoz egy kulcstartót nevű *keyvault* a a *keyvaultrg* erőforráscsoportot:
 

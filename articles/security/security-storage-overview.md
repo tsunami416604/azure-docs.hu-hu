@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 02/01/2019
 ms.author: terrylan
-ms.openlocfilehash: 55686972979c5ac3015802c340cef7dffebdb9bd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8330b63f218108930c5eb66eaa6c8ff6dca67316
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973128"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694268"
 ---
 # <a name="azure-storage-security-overview"></a>Az Azure Storage biztonsági áttekintése
 
@@ -47,7 +47,7 @@ További információ:
 
 ## <a name="delegated-access-to-storage-objects"></a>Tárolási objektumok való delegált hozzáférés
 
-Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. Az SAS, az azt jelenti, hogy Ön is az ügyfeleknek a tárfiókban lévő objektumokra vonatkozó adott ideig, és az engedélyek bizonyos készletét. Ezekkel a korlátozott engedélyekkel biztosíthat a hozzáférési kulcsainak megosztása nélkül. 
+Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. Az SAS, az azt jelenti, hogy Ön is az ügyfeleknek a tárfiókban lévő objektumokra vonatkozó adott ideig, és az engedélyek bizonyos készletét. Ezekkel a korlátozott engedélyekkel biztosíthat a hozzáférési kulcsainak megosztása nélkül.
 
 A SAS URI, amely a lekérdezési paraméterek magában foglalja a tárolási erőforrásokhoz való hitelesített hozzáférés szükséges összes információt az. A SAS-adattároló erőforrások elérésére, az ügyfél csak kell adja meg a megfelelő konstruktor vagy a metódus az SAS.
 
@@ -73,7 +73,7 @@ További információ az ügyféloldali titkosítás:
 
 A legtöbb szervezet számára [adattitkosítás inaktív](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) kötelező lépés az adatok adatvédelmi, megfelelőségi és az adatok elkülönítése felé. Három Azure-funkciókról, aktívan nem használt adatok titkosításának adja meg:
 
-* [A Storage Service Encryption](../storage/common/storage-security-guide.md#encryption-at-rest) lehetővé teszi, hogy a storage szolgáltatás automatikusan adatok titkosítása írásakor, az Azure Storage-kérelem.
+* [A Storage Service Encryption](../storage/common/storage-security-guide.md#encryption-at-rest) mindig engedélyezve van, és írásakor, az Azure Storage automatikusan titkosítja a storage szolgáltatás adatok.
 * [Ügyféloldali titkosítás](../storage/common/storage-security-guide.md#client-side-encryption) az inaktív adatok titkosítását a szolgáltatást is nyújt.
 * [Az Azure Disk Encryption](../storage/common/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) lehetővé teszi az operációsrendszer-lemezek és a egy IaaS virtuális gépen használó adatlemezek titkosítását.
 
@@ -108,15 +108,15 @@ A Data Box Edge és a Data Box Gateway online adatáthelyezésre használható t
 
 További információ:
 
-* [Az Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
-* [Az Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
+* [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
+* [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
 * [Az Azure Data Box-átjáró](..//databox-online/data-box-gateway-overview.md)
 
 ## <a name="advanced-threat-protection"></a>Fejlett fenyegetésvédelem
 
-Az Azure Storage által észlelt szokatlan és vélhetően kárt okozó kísérleteket elérni vagy kiaknázni a storage-fiók biztonsági intelligencia egy további réteget biztosít a komplex veszélyforrások elleni védelem. Komplex veszélyforrások elleni védelem figyelők diagnosztikai naplók az Azure Storage gyanús olvasási, írási vagy törlési kérések a Blob storage. 
+Az Azure Storage által észlelt szokatlan és vélhetően kárt okozó kísérleteket elérni vagy kiaknázni a storage-fiók biztonsági intelligencia egy további réteget biztosít a komplex veszélyforrások elleni védelem. Komplex veszélyforrások elleni védelem figyelők diagnosztikai naplók az Azure Storage gyanús olvasási, írási vagy törlési kérések a Blob storage.
 
-A speciális veszélyforrások elleni védelem riasztások tekinthetők [az Azure Security Center](https://azure.microsoft.com/services/security-center/). Az Azure Security Center biztosít bármely gyanús tevékenység részleteit észlelt, és teendőket javasol problémák kivizsgálásához és elhárításához, a potenciális fenyegetést. 
+A speciális veszélyforrások elleni védelem riasztások tekinthetők [az Azure Security Center](https://azure.microsoft.com/services/security-center/). Az Azure Security Center biztosít bármely gyanús tevékenység részleteit észlelt, és teendőket javasol problémák kivizsgálásához és elhárításához, a potenciális fenyegetést.
 
 További információ:
 

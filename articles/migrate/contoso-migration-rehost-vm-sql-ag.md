@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: c1fdd09023c07808226c95ed82d0c22e09d09ec4
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 84a2ef60c9f6aa4270c3fc4f83327070b298b8b2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267385"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697187"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso áttelepítése: Az Azure virtuális gépeken és az SQL Server AlwaysOn rendelkezésre állási csoport helyi alkalmazás újratárolása
 
@@ -698,7 +698,7 @@ A Contoso biztonsági csapat áttekinti az Azure-beli virtuális gépek WEBVM, S
 - A csapat figyelembe veszi a lemezen, KeyVault és az Azure Disk Encryption használatával az adatok védelme.
 - A csapat kell kiértékelni a transzparens adattitkosítás (TDE), és engedélyez a SmartHotel360 adatbázisban az új SQL-AOG futó. [További információk](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017).
 
-[További információ](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) virtuális gépek biztonsági eljárásairól.
+[További információ](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms) virtuális gépek biztonsági eljárásairól.
 
 
 ## <a name="bcdr"></a>BCDR

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: b83542a11ce2351214ac8f15a6902d1a90f871ee
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4c5cb5a821d9bae6841c3229155c69fd2aa20e13
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242263"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698309"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
@@ -53,7 +53,7 @@ Az üzembe helyezett webszolgáltatások ezen információk lekérése egy háro
     print(service.scoring_uri)
     ```
 
-* Használhat `Webservice.list` kérdezheti le az üzembe helyezett webszolgáltatások munkaterületét modellek esetén. Visszaadott adatok leszűkítése szűrőt is hozzáadhat. További információ arról, hogy mi a szűrhetők, lásd: a [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) referenciák dokumentációiba.
+* Használhat `Webservice.list` kérdezheti le az üzembe helyezett webszolgáltatások munkaterületét modellek esetén. Visszaadott adatok leszűkítése szűrőt is hozzáadhat. További információ arról, hogy mi a szűrhetők, lásd: a [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) referenciák dokumentációiba.
 
     ```python
     services = Webservice.list(ws)

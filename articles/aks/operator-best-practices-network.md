@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 0ad6ab27a51cf082be71262b887a459f6c7cc906
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 15b389e2158cb3a2070cc09b20f79f4274fde5d9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101972"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699125"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Hálózati kapcsolat és az Azure Kubernetes Service (AKS) biztonsági védelmének bevált gyakorlata
 
@@ -21,44 +21,44 @@ Hozzon létre és kezelheti a fürtöket az Azure Kubernetes Service (AKS), adjo
 Ez – gyakorlati tanácsok cikk összpontosít hálózati kapcsolati és biztonsági fürt operátorok számára. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Az aks-ben az alapszintű és speciális hálózati módok összehasonlítása
+> * Hasonlítsa össze a kubenet és Azure CNI hálózati módok az aks-ben
 > * Szükséges IP-címkezelés és a kapcsolatok tervezése
 > * Osztja el a forgalmat, terheléselosztók, bejövő tartományvezérlők vagy a webalkalmazás-tűzfalak (WAF) használatával
 > * Biztonságosan csatlakozhat a fürt csomópontjai
 
 ## <a name="choose-the-appropriate-network-model"></a>Válassza ki a megfelelő hálózati modell
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** - integráció a meglévő virtuális hálózatokat vagy a helyszíni hálózatok, a Speciális beállítások használata hálózatkezelés az aks-ben. A hálózati modell lehetővé teszi az erőforrások és a vezérlők nagyobb elkülönítése vállalati környezetben.
+**Ajánlott eljárásokkal kapcsolatos útmutatás** - integráció a meglévő virtuális hálózatokat vagy a helyszíni hálózatok, az Azure CNI hálózat használatának az aks-ben. A hálózati modell lehetővé teszi az erőforrások és a vezérlők nagyobb elkülönítése vállalati környezetben.
 
 Virtuális hálózatok biztosítják a hálózati kapcsolat az AKS-csomópontok és az ügyfelek számára az alkalmazások. Helyezhet üzembe az AKS-fürtöket virtuális hálózatokra két különböző módja van:
 
-* **Alapszintű hálózatkezelési** – Azure kezeli a virtuális hálózati erőforrásokat, a fürt üzemel, és használja a [kubenet] [ kubenet] Kubernetes beépülő modult.
-* **Speciális hálózatkezelés** – egy meglévő virtuális hálózatban helyez üzembe, és használja a [Azure Container hálózati adapter (CNI)] [ cni-networking] Kubernetes beépülő modult. Podok kapnak egyéni IP-címek, amelyek más hálózati szolgáltatások vagy a helyszíni erőforrásokhoz irányíthatja.
+* **Kubenet hálózatkezelés** – Azure kezeli a virtuális hálózati erőforrásokat, a fürt üzemel, és használja a [kubenet] [ kubenet] Kubernetes beépülő modult.
+* **Az Azure-hálózatok CNI** – egy meglévő virtuális hálózatban helyez üzembe, és használja a [Azure Container hálózati adapter (CNI)] [ cni-networking] Kubernetes beépülő modult. Podok kapnak egyéni IP-címek, amelyek más hálózati szolgáltatások vagy a helyszíni erőforrásokhoz irányíthatja.
 
 A tároló hálózati adapter (CNI) szállító-semleges protokoll, amely lehetővé teszi, hogy a tároló-futtatókörnyezet kéréseket küld egy hálózati szolgáltató. Az Azure CNI podok és csomópontok IP-címeket rendel, és IP-cím címfelügyeleti (IPAM) olyan szolgáltatásokat nyújt a meglévő Azure virtuális hálózatok összekapcsolása. Minden egyes csomópont és a pod erőforrás IP-címet kap az Azure virtuális hálózatban, és nincs további útválasztási kommunikálni más erőforrásokhoz vagy szolgáltatásokhoz szükség van.
 
 ![A hidak egyes egyetlen Azure virtuális hálózathoz csatlakozó két csomópont bemutató ábra.](media/operator-best-practices-network/advanced-networking-diagram.png)
 
-A legtöbb éles környezetekben üzemelő példányok a speciális hálózati kell használnia. A hálózati modell lehetővé teszi, hogy a vezérlőelem elkülönül az erőforrások kezelését. Biztonsági szempontból a gyakran érdemes különböző csapat felügyeletére és védelmére ezeket az erőforrásokat. A speciális hálózati lehetővé teszi a meglévő Azure-erőforrások, a helyszíni erőforrásokhoz vagy más szolgáltatások közvetlenül rendelt egyes pod IP-címek keresztül csatlakozik.
+A legtöbb éles környezetekben üzemelő példányok Azure CNI hálózatkezelés kell használnia. A hálózati modell lehetővé teszi, hogy a vezérlőelem elkülönül az erőforrások kezelését. Biztonsági szempontból a gyakran érdemes különböző csapat felügyeletére és védelmére ezeket az erőforrásokat. Az Azure CNI hálózatkezelés lehetővé teszi a meglévő Azure-erőforrások, a helyszíni erőforrásokhoz vagy más szolgáltatások közvetlenül rendelt egyes pod IP-címek keresztül csatlakozik.
 
-Speciális hálózatkezelés használata esetén a virtuális hálózati erőforrás szerepel egy külön erőforráscsoportot, amelybe az AKS-fürtöt. Az AKS szolgáltatásnévhez elérését és kezelését, ezekhez az erőforrásokhoz tartozó engedélyeket delegálhatnak. Az AKS-fürt által használt egyszerű szolgáltatás rendelkeznie kell legalább [hálózati közreműködő](../role-based-access-control/built-in-roles.md#network-contributor) az alhálózaton belül a virtuális hálózat engedélyeit. Ha meg szeretné egy [egyéni szerepkör](../role-based-access-control/custom-roles.md) helyett használja a hálózati közreműködő szerepkört, a következő engedélyek szükségesek:
+Azure CNI hálózat használata esetén a virtuális hálózati erőforrás szerepel egy külön erőforráscsoportot, amelybe az AKS-fürtöt. Az AKS szolgáltatásnévhez elérését és kezelését, ezekhez az erőforrásokhoz tartozó engedélyeket delegálhatnak. Az AKS-fürt által használt egyszerű szolgáltatás rendelkeznie kell legalább [hálózati közreműködő](../role-based-access-control/built-in-roles.md#network-contributor) az alhálózaton belül a virtuális hálózat engedélyeit. Ha meg szeretné egy [egyéni szerepkör](../role-based-access-control/custom-roles.md) helyett használja a hálózati közreműködő szerepkört, a következő engedélyek szükségesek:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
 Az AKS szolgáltatás egyszerű delegálással kapcsolatos további információkért lásd: [más Azure-erőforrásokhoz való hozzáférés delegálásához][sp-delegation].
 
-Mivel minden egyes csomópont és a pod a saját IP-címet kapnak, tervezze meg az AKS alhálózat címtartományát. Az alhálózat elég nagynak kell lennie minden csomópont, a podok és a hálózati erőforrások, központilag telepített IP-címek számára. Minden egyes AKS-fürtöt a saját alhálózatában kell elhelyezni. Ahhoz, hogy a kapcsolat a helyszíni vagy a társviszonyban lévő hálózatok az Azure-ban, ne használjon egymást átfedő IP-címtartományok a meglévő hálózati erőforrásokhoz. Alapértelmezett korlátozva van, minden egyes csomóponton futó alapvető és speciális hálózati podjainak számát. Vertikális felskálázási események vagy a fürtfrissítések kezelése érdekében is szüksége lesz elérhető további IP-címek használatát a hozzárendelt alhálózat.
+Mivel minden egyes csomópont és a pod a saját IP-címet kapnak, tervezze meg az AKS alhálózat címtartományát. Az alhálózat elég nagynak kell lennie minden csomópont, a podok és a hálózati erőforrások, központilag telepített IP-címek számára. Minden egyes AKS-fürtöt a saját alhálózatában kell elhelyezni. Ahhoz, hogy a kapcsolat a helyszíni vagy a társviszonyban lévő hálózatok az Azure-ban, ne használjon egymást átfedő IP-címtartományok a meglévő hálózati erőforrásokhoz. Minden egyes csomópont kubenet és Azure CNI-hálózatok egyaránt futtató podok számát az alapértelmezett korlátozva van. Vertikális felskálázási események vagy a fürtfrissítések kezelése érdekében is szüksége lesz elérhető további IP-címek használatát a hozzárendelt alhálózat.
 
-Az IP-cím kiszámításához szükséges, lásd: [speciális konfigurálása az aks-ben hálózatkezelés][advanced-networking].
+Az IP-cím kiszámításához szükséges, lásd: [konfigurálása Azure CNI hálózatkezelés az aks-ben][advanced-networking].
 
-### <a name="basic-networking-with-kubenet"></a>Egyszerű hálózatkezelés Kubenet
+### <a name="kubenet-networking"></a>Kubenet hálózatkezelés
 
-Alapszintű hálózatkezelési nincs szükség a virtuális hálózatok beállítását, mielőtt a fürt üzembe lesz helyezve, bár vannak hátrányait:
+Kubenet nincs szükség a virtuális hálózatok beállítását, mielőtt a fürt üzembe lesz helyezve, bár vannak hátrányait:
 
-* Csomópontok és a podok különböző IP-alhálózatok kerülnek. Felhasználó által megadott útválasztás (UDR) és IP-továbbítás segítségével podok és a csomópontok közötti forgalom irányítására. A további útválasztási csökkenti a hálózati teljesítmény.
-* Csatlakozhat a helyszíni hálózatok meglévő, vagy más Azure virtuális hálózatok társviszony túl összetett.
+* Csomópontok és a podok különböző IP-alhálózatok kerülnek. Felhasználó által megadott útválasztás (UDR) és IP-továbbítás segítségével podok és a csomópontok közötti forgalom irányítására. A további útválasztási csökkentheti a hálózati teljesítmény.
+* Csatlakozhat a helyszíni hálózatok meglévő, vagy más Azure virtuális hálózatok társviszony összetett folyamat lehet.
 
-Alapszintű hálózatkezelési nem kell létrehozni a virtuális hálózat és alhálózatok külön-külön az AKS-fürtöt a megegyezik a kisebb fejlesztési-tesztelési feladat ellátására alkalmas. Egyszerű webhelyek alacsony forgalmú vagy lift- and -shift munkaterhelések vannak tárolókba, az AKS-fürtök üzembe helyezett alapszintű hálózati egyszerűség is kihasználhatják. A legtöbb éles környezetekben üzemelő példányok tervezze meg, és speciális hálózattal.
+Kubenet nem alkalmas a kisebb fejlesztési és tesztelési számítási feladatok esetén, mert nem kell létrehozni a virtuális hálózat és alhálózatok külön-külön az AKS-fürtöt a. Egyszerű webhelyek alacsony forgalmú vagy lift- and -shift munkaterhelések vannak tárolókba, előnyeit is kihasználhatják az egyszerűség AKS-fürtök üzembe helyezett kubenet hálózattal. A legtöbb éles környezetekben üzemelő példányok tervezze meg és Azure CNI hálózattal. Emellett [konfigurálása a saját IP-címtartományok és a virtuális hálózatok használatával kubenet][aks-configure-kubenet-networking].
 
 ## <a name="distribute-ingress-traffic"></a>Bejövő forgalom elosztása
 
@@ -99,7 +99,7 @@ spec:
          servicePort: 80
 ```
 
-Bejövőforgalom-vezérlőjéhez egy démon, amely egy AKS-csomóponton fut, és a bejövő kéréseket figyeli. Ezután ossza forgalmat a bejövő forgalom erőforrás megadott szabályok alapján. A leggyakoribb bejövőforgalom-vezérlőjéhez alapján [Nginx-et]. Az AKS nem korlátozza az Ön konkrét vezérlőhöz, így például használhatja más vezérlők [kontúrt][contour], [HAProxy][haproxy], vagy [ Traefik][traefik].
+Bejövőforgalom-vezérlőjéhez egy démon, amely egy AKS-csomóponton fut, és a bejövő kéréseket figyeli. Ezután ossza forgalmat a bejövő forgalom erőforrás megadott szabályok alapján. A leggyakoribb bejövőforgalom-vezérlőjéhez alapján [NGINX]. Az AKS nem korlátozza az Ön konkrét vezérlőhöz, így például használhatja más vezérlők [kontúrt][contour], [HAProxy][haproxy], vagy [ Traefik][traefik].
 
 Nincsenek számos forgatókönyvek a bejövő forgalom, többek között a következő útmutatókat:
 
@@ -138,7 +138,7 @@ Ez a cikk a hálózati kapcsolatot és a biztonsági összpontosít. Hálózati 
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [app-gateway-ingress]: https://github.com/Azure/application-gateway-kubernetes-ingress
-[Nginx-et]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
+[nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
 [contour]: https://github.com/heptio/contour
 [haproxy]: https://www.haproxy.org
 [traefik]: https://github.com/containous/traefik
@@ -155,4 +155,5 @@ Ez a cikk a hálózati kapcsolatot és a biztonsági összpontosít. Hálózati 
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [app-gateway]: ../application-gateway/overview.md
-[advanced-networking]: configure-advanced-networking.md
+[advanced-networking]: configure-azure-cni.md
+[aks-configure-kubenet-networking]: configure-kubenet.md

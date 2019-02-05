@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: f9f4d544a407a75231302b0eb53c27904585250f
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: eaef1c904b5404339c476d86c5b8c2a1740e5a3e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510680"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700077"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Ajánlott eljárások biztonságossá tétele és a számítási feladatok kezelése az Azure-bA migrálása
 
@@ -516,7 +516,7 @@ Regionális üzemkimaradások utáni helyreállításon, és a katasztrofális h
 - [Olvasási](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/) Azure SQL-adatbázisok 101 vész-helyreállítási.
 - [Áttekintés](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) aktív georeplikációs és feladatátvételi csoportok.
 - [Ismerje meg](https://docs.microsoft.com/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery) tervezése vészhelyreállításhoz.
-- [Ajánlott eljárások beolvasása](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview#best-practices-of-using-failover-groups-for-business-continuity) feladatátvételi csoportok számára.
+- [Ajánlott eljárások beolvasása](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) feladatátvételi csoportok számára.
 - [Ajánlott eljárások beolvasása](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-security-config) biztonság geo-visszaállítás vagy a feladatátvétel után.
 - [Ismerje meg](https://docs.microsoft.com/azure/sql-database/sql-database-high-availability#zone-redundant-configuration) redundancia. zóna
 - [Ismerje meg, hogyan](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery-drills) egy vészhelyreállítási próba végrehajtása SQL database-hez.

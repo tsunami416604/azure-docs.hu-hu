@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/21/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 8dcde1231d5e2d73b868411cb22b8420843197be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4ca07416c615984b4eb6c7799ff17d9fbe43fa3b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458265"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691470"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>Gyors útmutató: Szavak keresése a kétnyelvű szótárban Python használatával
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-Jelenleg egy végpont érhető el a Translator Text szolgáltatáshoz, és ez van beállítva `base_url` tulajdonságként. A `path` tulajdonság a `dictionary/lookup` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
+A Translator Text globális végpontja van beállítva, a `base_url`. A `path` tulajdonság a `dictionary/lookup` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
 
 A paraméterekkel (`params`) állítható be a forrás- és a célnyelv. Ebben a példában az angol és a spanyol nyelvet használjuk: `en` és `es`.
 

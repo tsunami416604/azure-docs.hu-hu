@@ -10,12 +10,12 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: be3f8ddaf9788eb9023ffc2caf2e0d6aeb49bdba
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: a13ce85124dc84362ec1ee2aa39a16c2c3f09f88
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712058"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701012"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Az Azure Scheduler-feladatok az ismétlődések és a speciális ütemezések létrehozása
 
@@ -24,13 +24,13 @@ ms.locfileid: "51712058"
 
 Belül egy [Azure Scheduler](../scheduler/scheduler-intro.md) feladat, az ütemezés a következő alapvető fontosságú, amely meghatározza, mikor és hogyan a Scheduler szolgáltatás fut-e a feladatot. A Scheduler állíthat be egy feladat több egyszeri és ismétlődő ütemezéseket. Egyszeri ütemezés futtatása csak egyszer, egy megadott időpontban, és alapvetően ismétlődő ütemezések csak egyszer futtatott. A megadott gyakorisággal ismétlődő ütemezések szerint futtatni. Az ezt a rugalmasságot is használhat Scheduler különböző üzleti forgatókönyvekben, például:
 
-* **Távolítsa el az adatokat rendszeresen**: hozzon létre egy napi feladatot, amely törli a három hónapnál régebbi összes tweeteket.
+* **Távolítsa el az adatokat rendszeresen**: Hozzon létre egy napi feladat, amely törli a három hónapnál régebbi összes tweeteket.
 
-* **Adatok archiválása**: hozzon létre, hogy a leküldés előzményeit, hogy egy biztonsági mentési szolgáltatás számlázása havi feladat.
+* **Adatok archiválása**: Hozzon létre, hogy a leküldés előzményeit, hogy egy biztonsági mentési szolgáltatás számlázása havi feladat.
 
-* **Külső adatok kérése**: hozzon létre egy feladatot, amely 15 percenként fut le, és a NOAA időjárási új jelentés lekéri.
+* **Külső adatok kérése**: Hozzon létre egy feladatot, amely 15 percenként fut le, és a NOAA időjárási új jelentés lekéri.
 
-* **Dolgozhassa**: hozzon létre egy hét napja feladatot, amikor kevesen fut, és a felhő-számítástechnika a tömörítés során a naponta feltöltött képek.
+* **Dolgozhassa**: Hét napja kezdeményezhet, amikor kevesen fut, és a felhő-számítástechnika a tömörítés során a naponta feltöltött képek.
 
 Ez a cikk azt ismerteti, például feladatokat a Scheduler használatával hozhat létre, és a [Azure Scheduler REST API](/rest/api/scheduler), és minden egyes ütemezés JavaScript Object Notation (JSON) definícióját tartalmazza. 
 
@@ -53,9 +53,9 @@ Ez a cikk későbbi ismerteti részletesebben ezeket a forgatókönyveket.
 
 Az alapszintű ütemezés létrehozása a [Azure Scheduler REST API](/rest/api/scheduler), kövesse az alábbi lépéseket:
 
-1. Azure-előfizetés regisztrálása az erőforrás-szolgáltató használatával a [művelet – Resource Manager REST API regisztrálása](https://docs.microsoft.com/rest/api/resources/providers#Providers_Register). A szolgáltató neve, az Azure Scheduler szolgáltatás **Microsoft.Scheduler**. 
+1. Azure-előfizetés regisztrálása az erőforrás-szolgáltató használatával a [művelet – Resource Manager REST API regisztrálása](https://docs.microsoft.com/rest/api/resources/providers). A szolgáltató neve, az Azure Scheduler szolgáltatás **Microsoft.Scheduler**. 
 
-1. Feladatgyűjtemények létrehozása használatával a [létrehozási vagy frissítési műveletben a feladatgyűjtemények](https://docs.microsoft.com/rest/api/scheduler/jobcollections#JobCollections_CreateOrUpdate) a Scheduler REST API-ban. 
+1. Feladatgyűjtemények létrehozása használatával a [létrehozási vagy frissítési műveletben a feladatgyűjtemények](https://docs.microsoft.com/rest/api/scheduler/jobcollections) a Scheduler REST API-ban. 
 
 1. Hozzon létre egy feladatot a használatával a [létrehozási vagy frissítési műveletben feladatok](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate). 
 
@@ -167,7 +167,7 @@ A következő táblázat részletesen ismerteti a schedule elemeit:
 | **monthlyOccurrences** |Meghatározza, hogy a hónap mely napjain a feladat futtatásakor. Csak havi gyakoriság mellett adható meg. |Egy tömbjét **monthlyOccurrences** objektumok:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **nap** a feladat futtatása a hét napja. Ha például *{vasárnap}* a hónap minden vasárnapja. Kötelező.<br /><br />**előfordulás** előfordulása a hónapban a nap. Ha például *{vasárnap, a -1}* a hónap utolsó vasárnapja. Választható. |
 | **monthDays** |A feladat futtatása a hónap napját. Csak havi gyakoriság mellett adható meg. |Egy tömb, a következő értékeket:<br />– Bármilyen érték -1 és -31 között<br />– Bármilyen érték 1 és 31 között|
 
-## <a name="examples-recurrence-schedules"></a>Példák: Ismétlődésütemezések
+## <a name="examples-recurrence-schedules"></a>Példák: Ismétlődési ütemezések
 
 Az alábbi példák bemutatják a különböző ismétlődésütemezésekre. A példák az ütemezési objektumra és annak alelemeire koncentrálhat.
 

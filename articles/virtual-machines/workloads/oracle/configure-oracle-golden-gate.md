@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: cb5ad6f351cdeadb999b1a62c225f23937c5b92e
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 5d7e21661d7ee905ff77a4856544d358924cd9ea
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413821"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700876"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Azure Linux virtuális Gépen futó Oracle Golden kapu megvalósítása 
 
@@ -51,7 +51,7 @@ Az alábbiakban látható a környezet konfigurációjának összefoglalása:
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
-Jelentkezzen be az Azure-előfizetésbe a [az bejelentkezési](/cli/azure/reference-index#az_login) parancsot. Ezután kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetésbe a [az bejelentkezési](/cli/azure/reference-index) parancsot. Ezután kövesse a képernyőn megjelenő utasításokat.
 
 ```azurecli
 az login
@@ -81,7 +81,7 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. 
 
 Az alábbi példa létrehoz két virtuális gépet nevű `myVM1` és `myVM2`. Hozzon létre SSH-kulcsokat, ha azok még nem léteznek a kulcsok alapértelmezett helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
 

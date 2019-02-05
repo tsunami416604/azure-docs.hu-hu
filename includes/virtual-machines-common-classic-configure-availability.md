@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 32f533d06b7db0284459951e65f9c04fe0bb0285
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226746"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735843"
 ---
 Rendelkezésre állási készlet segít például folyamatosan elérhető leállás, a virtuális gépek karbantartás közben. A redundanciát rendelkezésre állását, alkalmazások vagy szolgáltatások a virtuális gépet futtató két vagy több hasonlóan konfigurált virtuális gépek elhelyezése egy rendelkezésre állási csoportot hoz létre. Ez működésével kapcsolatos részletekért lásd: [virtuális gépek rendelkezésre állásának kezelése][Manage the availability of virtual machines].
 
@@ -18,7 +18,7 @@ Ajánlott eljárás segítségével a rendelkezésre állási csoportok és a te
 Klasszikus virtuális gépeket adhat hozzá egy rendelkezésre állási csoport két lehetőség egyikét használva be:
 
 * [1. lehetőség: Hozzon létre egy virtuális gép és a egy rendelkezésre állási csoport egy időben][Option 1: Create a virtual machine and an availability set at the same time]. Ezután új virtuális gépek felvétele a készlet azon virtuális gépek létrehozásakor.
-* [2. lehetőség: Hozzáadása egy meglévő virtuális gépet egy rendelkezésre állási csoporthoz][Option 2: Add an existing virtual machine to an availability set].
+* [2. lehetőség: Adjon hozzá egy meglévő virtuális gépet egy rendelkezésre állási csoporthoz][Option 2: Add an existing virtual machine to an availability set].
 
 > [!NOTE]
 > A klasszikus modellben, hogy el szeretné helyezni az azonos rendelkezésre állási csoportban lévő virtuális gépek ugyanazon a felhőszolgáltatáson kell tartoznia.
@@ -46,7 +46,7 @@ Az Azure portal használata:
 
 Azure PowerShell-parancsok használatával hozzon létre egy Azure virtuális gépen, és adja hozzá egy új vagy meglévő rendelkezésre állási csoportot, lásd: [hozhat létre, és előre konfigurálása a Windows-alapú virtuális gépek Azure PowerShell használata](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-## <a id="addmachine"> </a>2. lehetőség: Hozzáadása egy meglévő virtuális gépet egy rendelkezésre állási csoporthoz
+## <a id="addmachine"> </a>2. lehetőség: Adjon hozzá egy meglévő virtuális gépet egy rendelkezésre állási csoporthoz
 Az Azure Portalon is hozzáadhat meglévő klasszikus virtuális gépek olyan meglévő rendelkezésre állási beállítása, vagy hozzon létre egy újat a számukra. (Vegye figyelembe, hogy az ugyanazon rendelkezésre állási csoportban lévő virtuális gépek ugyanazon a felhőszolgáltatáson kell tartoznia.) A lépések ugyanazok, szinte. Az Azure PowerShell használatával a virtuális gép egy meglévő rendelkezésre állási csoporthoz is hozzáadhat.
 
 1. Ha még nem tette meg, jelentkezzen be a [az Azure portal](https://portal.azure.com).

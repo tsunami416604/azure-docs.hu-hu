@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: daf4a6142c0e30fa7b8534e5598cec39c69079c0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 06b917c956507de3eb3b1536356285d7a954fb8b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184049"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730076"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Rendelés eszköz az Azure Cosmos DB használatával az Azure IoT Hub kapcsolati események
 
@@ -341,7 +341,7 @@ Az esemény-előfizetést akkor is érdemes lehet törölnie, ha megtartja az Io
 
 3. Válassza a **Törlés** elemet. 
 
-Távolítsa el az Azure Cosmos DB-fiókot az Azure Portalon, kattintson a jobb gombbal a fiók nevét, és kattintson a **fiók törlése**. Részletes útmutatást lásd: [törlése az Azure Cosmos DB-fiók](https://docs.microsoft.com/azure/cosmos-db/manage-account#delete).
+Távolítsa el az Azure Cosmos DB-fiókot az Azure Portalon, kattintson a jobb gombbal a fiók nevét, és kattintson a **fiók törlése**. Részletes útmutatást lásd: [törlése az Azure Cosmos DB-fiók](https://docs.microsoft.com/azure/cosmos-db/manage-account).
 
 ## <a name="next-steps"></a>További lépések
 

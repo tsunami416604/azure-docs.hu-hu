@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 5f269f074236beef3e213c888e540bcf18238be1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6d827e1142fa17b29633c98c062fd204f7a49e36
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953701"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729729"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Linux rendszerű VHD letöltése az Azure-ból
 
@@ -42,7 +42,7 @@ A virtuális merevlemez használata képként más virtuális gépek létrehozá
     exit 
     ```
 
-2. Jelentkezzen be az Azure-fiókjába [az bejelentkezési](https://docs.microsoft.com/cli/azure/reference-index#az_login).
+2. Jelentkezzen be az Azure-fiókjába [az bejelentkezési](https://docs.microsoft.com/cli/azure/reference-index).
 3. Leállítja és felszabadítja a virtuális Gépet.
 
     ```azurecli

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7552018c32078295c164023f909a604c6522c32f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d6778e1749493a04a73d0ac210c1557b89343d00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437470"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695580"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Az Azure-előfizetések és a felügyeleti csoportok kezelése hozzáférési szintjének emelése
 
@@ -83,12 +83,14 @@ Kövesse az alábbi lépéseket az Azure portal használatával egy globális re
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
 ### <a name="list-role-assignment-at-the-root-scope-"></a>A gyökérszintű hatókörben (/) szerepkör-hozzárendelés listája
 
-A gyökérszintű hatókörben egy felhasználó a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés felsorolása (`/`), használja a [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) parancsot.
+A gyökérszintű hatókörben egy felhasználó a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés felsorolása (`/`), használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) parancsot.
 
 ```azurepowershell
-Get-AzureRmRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
+Get-AzRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
   -and $_.SignInName -eq "<username@example.com>" -and $_.Scope -eq "/"}
 ```
 
@@ -111,10 +113,10 @@ A gyökérszintű hatókörben egy felhasználó a felhasználói hozzáférés 
 1. Jelentkezzen be, eltávolíthatja az emelt szintű hozzáférés. Ez lehet ugyanaz a felhasználó hozzáférést és a egy másik globális rendszergazda emelt szintű hozzáféréssel a gyökérszintű hatókörben jogosultságszintjének emeléséhez használt.
 
 
-1. Használja a [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) parancsot a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés eltávolítása.
+1. Használja a [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) parancsot a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés eltávolítása.
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
+    Remove-AzRoleAssignment -SignInName <username@example.com> `
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 

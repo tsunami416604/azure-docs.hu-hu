@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: e10784957365df62e64c306c97ea17fb6a5e7c49
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d5ff6b05df74cd73fb374bbd7cf27b8fc7d69493
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55202926"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697975"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Az alkalmazástípus kiválasztása, amikor egy alkalmazás hozzáadása az Azure Active Directoryban
 További információ a négy típusú alkalmazások Azure Active Directory (Azure AD) adhat hozzá. Ha egy alkalmazás az Azure Active Directoryban ad hozzá, a program felszólítja válasszon egyet a négy alkalmazástípus. 
@@ -42,7 +42,7 @@ Az alábbi szolgáltatások az Azure ad-ben szerint az előző négy alkalmazás
 
 -   **Gyors üzembe helyezési** – az alkalmazás gyors induláshoz a következő [egyszerű üzembe helyezés lépései](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started)
 
--   **Általános tulajdonságok felügyeleti** – beolvasása egy [közvetlen mélyhivatkozás](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users) egy alkalmazást, [a márkajelzés testreszabása](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) egy alkalmazás vagy [tiltsa le az alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) az összes felhasználó számára.
+-   **Általános tulajdonságok felügyeleti** – beolvasása egy [közvetlen mélyhivatkozás](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) egy alkalmazást, [a márkajelzés testreszabása](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) egy alkalmazás vagy [tiltsa le az alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) az összes felhasználó számára.
 
 -   **Felhasználók és csoportok kezelése** – [hozzárendelése](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) vagy [eltávolítása](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) felhasználókat és csoportokat egy alkalmazást, és ezek a felhasználók az adott alkalmazás szerepköröket rendelhet, és a csoportok rendelkezik hozzáféréssel
 
@@ -134,7 +134,7 @@ Egy alkalmazás beállítása **egyszeri bejelentkezési** módot, az alábbi l�
 -   **Az Automatikus kiépítés** – válassza ki a [automatikus](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **létesítés** szeretné-e az automatikus API-alapú üzembe helyezés és/vagy megszüntetést felhasználói fiókok ezen alkalmazás engedélyezése 
 
    >[!NOTE]
-   >Ez a beállítás csak alkalmazásokhoz érhető el a **kiemelt** kategóriáját a [az Azure AD Alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#the-new-and-improved-application-gallery).
+   >Ez a beállítás csak alkalmazásokhoz érhető el a **kiemelt** kategóriáját a [az Azure AD Alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal).
    >
    >
 

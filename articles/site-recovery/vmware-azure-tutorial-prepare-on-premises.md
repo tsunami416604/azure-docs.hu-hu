@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 505acdde07c23654ddd3875fa600046a67e04aea
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: bee9d2f823fe46d81550ea5090222f491562d636
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970814"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700111"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 
@@ -107,11 +107,11 @@ Ha a feladatátvételt követően SSH segítségével szeretne kapcsolódni a Li
 
 
 ## <a name="failback-requirements"></a>Feladat-visszavételre vonatkozó követelmények
-A helyszíni rendszerre való feladat-visszavételhez gondoskodnia kell [bizonyos előfeltételek teljesüléséről](vmware-azure-reprotect.md##before-you-begin). Ezek azonban a virtuális gépek **vészhelyreállításának engedélyezéséhez még nem szükségesek**, sőt akár az Azure-ra való feladatátvételt követően is teljesíthetők.
+Ha azt tervezi, a feladat-visszavételhez helyszíni, akkor is kell arról, hogy bizonyos [előfeltételek teljesülése](vmware-azure-reprotect.md##before-you-begin). Ezek azonban a virtuális gépek **vészhelyreállításának engedélyezéséhez még nem szükségesek**, sőt akár az Azure-ra való feladatátvételt követően is teljesíthetők.
 
 ## <a name="useful-links"></a>Hasznos hivatkozások
 
-Ha több virtuális gépet replikál, ennek megkezdése előtt érdemes megterveznie a kapacitást és az üzembe helyezést. [További információk](site-recovery-deployment-planner.md).
+Ha több virtuális gépet replikál, meg kell terveznie kapacitás és a telepítés megkezdése előtt. [További információk](site-recovery-deployment-planner.md).
 
 ## <a name="next-steps"></a>További lépések
 

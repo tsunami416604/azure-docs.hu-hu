@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 13cec39278577a818ef43f1215fd2e6653f15ed2
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 0d5b345936f6c931f4210e6dc50f94544a52f571
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678440"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700570"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Hálózati virtuális berendezés problémák az Azure-ban
 
@@ -40,7 +40,7 @@ Technikai támogatás külső nva-k és azok az Azure platformmal való integrá
 - A virtuális alhálózatokkal, a forgalmat az nva-t az udr-EK
 - Útválasztási táblázatok és szabályok (például az a NIC2 NIC1) az nva-n belül
 - Az NVA hálózati adapterek ellenőrzése és forgalmat fogadó nyomon követése
-- A Standard Termékváltozat és a nyilvános IP-cím használata esetén kell létrehozni egy NSG-t és egy explicit szabály engedélyezi a forgalmat az nva-n lesznek irányítva.
+- A Standard Termékváltozat és a nyilvános IP-címek kell létrehozni egy NSG és a egy explicit szabály engedélyezi a forgalmat át szeretné irányítani az nva-n való használatakor.
 
 ## <a name="basic-troubleshooting-steps"></a>Alapszintű hibaelhárítási lépéseket
 
@@ -78,7 +78,7 @@ A PowerShell használata
           EnableIPForwarding   : True
           NetworkSecurityGroup : null
 
-**Standard Termékváltozat Pubilc IP-cím használata esetén ellenőrizze az NSG** a Standard Termékváltozat és a nyilvános IP-cím használata esetén kell létrehozni egy NSG-t és a egy explicit szabály engedélyezi a forgalmat az nva-n való.
+**Standard Termékváltozat nyilvános IP-cím használata esetén ellenőrizze az NSG** a Standard Termékváltozat és a nyilvános IP-címek kell létrehozni egy NSG-t és a egy explicit szabály engedélyezi a forgalmat az nva-n való használata esetén.
 
 **Ellenőrizze, hogy a forgalom átirányítható az nva-n**
 

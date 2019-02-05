@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: ff70b1f8eda7bd48f0fba25aa66db42c15acab54
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 585fc4f1bbddb08d881414b581120b7bc14232ab
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252132"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729934"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Alkalmazza a frissítéseket az Azure Stackben
 
@@ -37,6 +37,9 @@ Azure Stack egy Microsoft- vagy OEM frissítési csomag nem érhető el, letölt
 - Megfelelő `<PackageName>.bin` fájlokat. Ezeket a fájlokat, adja meg, amelyhez társítva van a tartalom tömörítése a *PackageName*.exe-fájlra.
 
 - A `Metadata.xml` fájlt. Ez a fájl tartalmazza a frissítés, például a közzétevő, név, előfeltételként szükséges szoftvert, mérete és támogatási elérési út URL-CÍMÉT alapvető adatait.
+
+> [!IMPORTANT]  
+> Az Azure Stack 1901 frissítési csomag alkalmazása után a csomagolási formátumot az Azure Stack frissítés pacakges áthelyezi a .exe, .bin(s), és a egy .zip(s) .xml formátumú és .xml formátumú. Stampek csatlakozott az Azure Stack-operátorok nem lesz hatással. Az Azure Stack-operátorok leválasztott egyszerűen importálni fogja az .xml és a .zip fájl az alább leírt eljárást.
 
 ## <a name="import-and-install-updates"></a>Importálhatja és a frissítések telepítése
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 90a14c670a720da6dc38921a892a5fa0323b61ec
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 5aa682af11744389739a539e900924ed93a3bbd6
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55655869"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691150"
 ---
 # <a name="create-a-vm-with-nginx"></a>Virtuális gép létrehozása NGINX-szel
 
@@ -63,11 +63,11 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Létrehozza a virtuális gépet. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
 | [az vm open-port](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Létrehoz egy hálózati biztonsági csoportra vonatkozó szabályt a befelé irányuló forgalom engedélyezésére. Ebben a példában a 80-as portot nyitjuk meg a HTTP-forgalom számára. |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Hozzáad és futtat egy virtuálisgép-bővítményt egy virtuális gépen. Ebben a példában az NGINX telepítésére az egyéni szkriptbővítmény használatával kerül sor.|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Hozzáad és futtat egy virtuálisgép-bővítményt egy virtuális gépen. Ebben a példában az NGINX telepítésére az egyéni szkriptbővítmény használatával kerül sor.|
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
 

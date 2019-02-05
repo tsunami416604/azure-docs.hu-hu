@@ -1,5 +1,5 @@
 ---
-title: 'A helyszíni hálózat csatlakoztatása egy Azure-beli virtuális hálózathoz: Helyek közötti VPN: (klasszikus) portál | Microsoft Docs'
+title: 'A helyszíni hálózat csatlakoztatása az Azure-beli virtuális hálózathoz: Site-to-Site VPN (klasszikus): Portál |} A Microsoft Docs'
 description: Létrehozhat a helyszíni hálózatot a klasszikus Azure-beli virtuális hálózattal a nyilvános interneten keresztül összekötő IPsec-kapcsolatot.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4e9736adfce83fc449b68a7448441ecee481ad2a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: b0fa60d709c2fa6c286e44797d53e8a4a8d47d00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38477896"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695604"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Helyek közötti kapcsolat létrehozása az Azure Portal használatával (klasszikus)
 
@@ -54,16 +54,16 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 A cikkben szereplő példák a következő értékeket használják. Ezekkel az értékekkel létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat.
 
-* **Virtuális hálózat neve:** TestVNet1
+* **Virtuális hálózat neve:** A TestVNet1
 * **Címtér:** 
   * 10.11.0.0/16
   * 10.12.0.0/16 (nem kötelező ehhez a gyakorlathoz)
 * **Alhálózatok:**
-  * Előtér: 10.11.0.0/24
+  * Előtérbeli: 10.11.0.0/24
   * Háttér: 10.12.0.0/24 (nem kötelező ehhez a gyakorlathoz)
-* **Átjáróalhálózat:** 10.11.255.0/27
+* **GatewaySubnet:** 10.11.255.0/27
 * **Erőforráscsoport:** TestRG1
-* **Hely:** az USA keleti régiója
+* **Hely:** USA keleti régiója
 * **DNS-kiszolgáló:** 10.11.0.3 (nem kötelező ehhez a gyakorlathoz)
 * **Helyi hely neve:** Site2
 * **Ügyfélcímtér:** A helyszíni helyen található címtér.
@@ -127,9 +127,9 @@ A helyi hely általában a használat helyszínét jelenti. Tartalmazza azon VPN
   ![Kattintson az átjáró beállításainak konfigurálásához](./media/vpn-gateway-howto-site-to-site-classic-portal/beforegw125.png "Kattintson az átjáró beállításainak konfigurálásához")
 3. Az **Új VPN-kapcsolat** lapon válassza a **Helyek közötti** beállítást.
 4. A **Helyi hely** lap megnyitásához kattintson a **Helyi hely – Kötelező beállítások megadása** elemre. Konfigurálja a beállításokat, majd kattintson az **OK** gombra a beállítások mentéséhez.
-  - **Név**: Adjon olyan nevet a helyi helynek, amely alapján könnyen azonosíthatja.
-  - **VPN-átjáró IP-címe**: Ez a helyszíni hálózaton található VPN-eszköz nyilvános IP-címe. A VPN-eszköznek nyilvános IPv4 IP-címmel kell rendelkeznie. Adjon meg egy érvényes nyilvános IP-címet azon VPN-eszköznek, amelyhez csatlakozni kíván. Ez nem lehet a NAT mögött, és elérhetőnek kell lennie az Azure számára. Ha nem ismeri a VPN-eszköz IP-címét, használhat egy helyőrző értéket (érvényes nyilvános IP-cím formátumban), amelyet később módosíthat.
-  - **Ügyfélcímtér**: A helyszíni hálózatra ezen az átjárón keresztül átirányítani kívánt IP-címtartományok listája. Több címtartományt is felvehet. Ügyeljen arra, hogy az itt megadott tartományok ne legyenek átfedésben olyan egyéb hálózatok tartományaival, amelyekhez a virtuális hálózat csatlakozik, illetve magának a virtuális hálózatnak a címtartományaival.
+  - **név:** Hozzon létre a helyi helynek, könnyen azonosítható nevet.
+  - **VPN-átjáró IP-címe:** Ez az a helyszíni hálózaton található VPN-eszköz nyilvános IP-címét. A VPN-eszköznek nyilvános IPv4 IP-címmel kell rendelkeznie. Adjon meg egy érvényes nyilvános IP-címet azon VPN-eszköznek, amelyhez csatlakozni kíván. Ez nem lehet a NAT mögött, és elérhetőnek kell lennie az Azure számára. Ha nem ismeri a VPN-eszköz IP-címét, használhat egy helyőrző értéket (érvényes nyilvános IP-cím formátumban), amelyet később módosíthat.
+  - **Ügyfélcímtér:** A helyszíni hálózatra ezen az átjárón keresztül átirányítani kívánt IP-címtartományok listája. Több címtartományt is felvehet. Ügyeljen arra, hogy az itt megadott tartományok ne legyenek átfedésben olyan egyéb hálózatok tartományaival, amelyekhez a virtuális hálózat csatlakozik, illetve magának a virtuális hálózatnak a címtartományaival.
 
   ![Helyi hely](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png "Helyi hely konfigurálása")
 
@@ -208,7 +208,7 @@ A PowerShell és a klasszikus üzemi modell használatakor a portálon találhat
   Set-AzureVNetGatewayKey -VNetName 'Group TestRG1 TestVNet1' `
   -LocalNetworkSiteName 'D1BFC9CB_Site2' -SharedKey abc123
   ```
-Amikor létrejött a kapcsolat, az eredmény **Status: Successful** (Állapot: Sikeres) lesz.
+Ha a kapcsolat létrejött, az eredmény lesz: **Állapot: A sikeres**.
 
 ## <a name="verify"></a>9. A kapcsolat ellenőrzése
 
@@ -226,5 +226,5 @@ Az átjárók termékváltozatainak módosításához szükséges lépésekért 
 
 ## <a name="next-steps"></a>További lépések
 
-* Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+* Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/).
 * Információk a kényszerített bújtatásról: [Információk a kényszerített bújtatásról](vpn-gateway-about-forced-tunneling.md).

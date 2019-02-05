@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/07/2018
-ms.openlocfilehash: eef755c01a6703976383ee31b52bde14d32f0110
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/30/2019
+ms.openlocfilehash: a969c026d702c423bee4871651c8b4fa26b3d37a
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604065"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700944"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Oktatóanyag: A Scala Maven-alkalmazást létrehozni az Apache Spark on HDInsight az IntelliJ-vel
 
@@ -28,7 +28,6 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy [Apache Spar
 
 > [!NOTE]  
 > Az alkalmazások létrehozásának és azok Linux rendszerű HDInsight Spark-fürtöknek való elküldésének megkönnyítésére a HDInsight egy IntelliJ IDEA beépülőmodul-eszközt is biztosít. További információkért lásd: [használata HDInsight-eszközei beépülő moduljának létrehozása és elküldése az Apache Spark-alkalmazások az IntelliJ IDEA](apache-spark-intellij-tool-plugin.md).
-> 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -36,93 +35,103 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* Oracle Java fejlesztői készlet. A készletet [innen](https://aka.ms/azure-jdks) telepítheti.
-* Java IDE. Ez a cikk az IntelliJ IDEA 18.1.1-es verzióját használja. A készletet [innen](https://www.jetbrains.com/idea/download/) telepítheti.
+* [Oracle Java Development Kitet](https://www.azul.com/downloads/azure-only/zulu/).  Ez az oktatóanyag Java 8.0.202 verziót használja.
+* Java IDE. Ez a cikk [IntelliJ IDEA közösségi ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
+* IntelliJ-hez készült Azure eszközkészlet.  Lásd: [IntelliJ-hez készült Azure-eszközkészlet telepítése](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable).
+
+## <a name="install-scala-plugin-for-intellij-idea"></a>Scala beépülő modul az IntelliJ IDEA-hoz
+Hajtsa végre a Scala beépülő modul telepítéséhez az alábbi lépéseket:
+
+1. Nyissa meg az IntelliJ IDEA-t.
+
+2. Lépjen az üdvözlőképernyőn **konfigurálása** > **beépülő modulok** megnyitásához a **beépülő modulok** ablak.
+   
+    ![A Scala beépülő modul engedélyezése](./media/apache-spark-create-standalone-application/enable-scala-plugin.png)
+
+3. Válassza ki **telepítése** Scala beépülő modul, amely megjelent az új ablakban.  
+ 
+    ![A Scala beépülő modul telepítése](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
+
+4. A beépülő modul sikeres telepítését követően újra kell indítania az IDE-t.
+
 
 ## <a name="use-intellij-to-create-application"></a>Alkalmazás létrehozása az IntelliJ használatával
 
-1. Indítsa el az IntelliJ IDEA-t, majd hozzon létre egy projektet. A **New Project** (Új projekt) párbeszédablakban hajtsa végre az alábbi lépéseket: 
+1. Indítsa el az IntelliJ IDEA, és válassza ki **új projekt létrehozása** megnyitásához a **új projekt** ablak.
 
-   a. Válassza ki a **HDInsight** > **Spark on HDInsight (Scala)** lehetőséget.
+2. Válassza ki **Azure Spark és HDInsight** a bal oldali ablaktáblán.
 
-   b. A **Build tool** (Létrehozási eszköz) listában válassza ki az alábbiak közül az igényeinek megfelelőt:
+3. Válassza ki **Spark Project (Scala)** a főablakból.
 
-      * **Maven**, a Scala projektlétrehozási varázsló támogatásához
-      * **SBT**, a függőségek kezeléséhez és a Scala-projekt létrehozásához
+4. Az a **buildelőeszköze** legördülő listában válasszon a következők:
+      * **Maven** Scala project-létrehozási varázsló támogatás.
+      * **SBT** kezeléséhez a függőségeket, és a Scala-projekt létrehozásához.
 
    ![A New project (Új projekt) párbeszédablak.](./media/apache-spark-create-standalone-application/create-hdi-scala-app.png)
 
-1. Kattintson a **Tovább** gombra.
+5. Kattintson a **Tovább** gombra.
 
-1. A Scala projektlétrehozási varázsló automatikusan észleli, hogy telepítette-e a Scala beépülő modulját. Válassza az **Install** (Telepítés) lehetőséget.
+6. Az a **új projekt** ablakban adja meg a következő információkat:  
 
-   ![A Scala beépülő moduljának ellenőrzése](./media/apache-spark-create-standalone-application/Scala-Plugin-check-Reminder.PNG) 
-
-1. Az Scala beépülő moduljának letöltéséhez válassza az **OK** elemet. Az IntelliJ újraindításához kövesse az utasításokat. 
-
-   ![A Scala beépülő moduljának telepítési párbeszédablaka](./media/apache-spark-create-standalone-application/Choose-Scala-Plugin.PNG)
-
-1. A **New Project** (Új projekt) ablakban hajtsa végre az alábbi lépéseket:  
+  	|  Tulajdonság   | Leírás   |  
+  	| ----- | ----- |  
+  	|Projektnév| Adjon meg egy nevet.|  
+  	|Projekt&nbsp;helye| Adja meg a kívánt helyre szeretné menteni a projektet.|
+  	|Project SDK| Ez az első használatkor hasznos üres lesz.  Válassza ki **új...**  , és keresse meg a JDK.|
+  	|Spark-verzió|A létrehozása varázsló együttműködik a megfelelő verziójú Spark SDK és a Scala SDK-val. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa **Spark 2.3.0-át (Scala 2.11.8)**.|
 
     ![A Spark SDK kiválasztása](./media/apache-spark-create-standalone-application/hdi-new-project.png)
 
-   a. Adja meg a projekt nevét és helyét.
-
-   b. A **Project SDK** (Projekt SDK) legördülő listából Spark 2.x-fürt esetében válassza a **Java 1.8**, Spark 1.x-fürt esetében pedig a **Java 1.7** lehetőséget.
-
-   c. A **Spark version** (Spark-verzió) legördülő listában a Scala projektlétrehozási varázsló integrálja a Spark SDK-hoz és Scala SDK-hoz megfelelő verziót. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa a következő verziót használja: **Spark 2.0.2 (Scala 2.11.8)**.
-
-1. Válassza a **Finish** (Befejezés) elemet.
-
-## <a name="install-scala-plugin-for-intellij-idea"></a>Scala beépülő modul az IntelliJ IDEA-hoz
-A Scala beépülő modul telepítésének lépesei:
-
-1. Nyissa meg az IntelliJ IDEA-t.
-1. Az üdvözlőképernyőn válassza a **Configure2** (Konfigurálás), majd a **Plugins** (Beépülő modulok) lehetőséget.
-   
-    ![A Scala beépülő modul engedélyezése](./media/apache-spark-create-standalone-application/enable-scala-plugin.png)
-1. Kattintson a képernyő bal alsó sarkában található **Install JetBrains plugin** (JetBrains beépülő modul telepítése) gombra. 
-1. A **Browse JetBrains Plugins** (JetBrains beépülő modulok tallózása) párbeszédpanelen keressen rá a **Scala** kifejezésre, majd válassza az **Install** (Telepítés) lehetőséget.
-   
-    ![A Scala beépülő modul telepítése](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
-1. A beépülő modul sikeres telepítését követően újra kell indítania az IDE-t.
+7. Válassza a **Finish** (Befejezés) elemet.
 
 ## <a name="create-a-standalone-scala-project"></a>Önálló Scala-projekt létrehozása
-1. Nyissa meg az IntelliJ IDEA-t.
-1. Új projekt létrehozásához a **File** (Fájl) menüben válassza a **New > Project** (Új > Projekt) lehetőséget.
-1. Az Új projekt párbeszédpanelen válassza a következő lehetőségeket:
-   
-    ![Maven-projekt létrehozása](./media/apache-spark-create-standalone-application/create-maven-project.png)
-   
-   * A projekt típusaként válassza a **Maven** lehetőséget.
-   * Adjon meg egy **Projekt SDK**-t. Válassza a **NEW** (Új) lehetőséget, majd lépjen a Java telepítési könyvtárába, ami általában a következő: `C:\Program Files\Java\jdk1.8.0_66`.
-   * Válassza a **Create from archetype** (Létrehozás archetype-ból) lehetőséget.
-   * Az archetype-ok listájából válassza ki a következőt: **org.scala-tools.archetypes:scala-archetype-simple**. Ez az archetype létrehozza a megfelelő könyvtárszerkezetet, valamint letölti a Scala-program megírásához szükséges alapértelmezett függőségeket.
-1. Kattintson a **Tovább** gombra.
-1. Adja meg a **GroupId** (Csoportazonosító), az **ArtifactId** (Összetevő-azonosító) és a **Version** (Verzió) mezők értékeit. Ebben az oktatóanyagban a következő értékeket használjuk:
 
-    - Csoportazonosító: com.microsoft.spark.example
-    - ArtifactId: SparkSimpleApp
-1. Kattintson a **Tovább** gombra.
-1. Ellenőrizze a beállításokat, majd válassza a **Next** (Tovább) lehetőséget.
-1. Ellenőrizze a projekt nevét és helyét, majd válassza a **Finish** (Befejezés) lehetőséget.
-1. A bal oldali panelen válassza az **src > test > scala > com > microsoft > spark > example** lehetőségeket, kattintson a jobb gombbal a **MySpec** elemre, majd válassza a **Delete** (Törlés) lehetőséget. Nincs szüksége erre a fájlra az alkalmazáshoz.
+1. Indítsa el az IntelliJ IDEA, és válassza ki **új projekt létrehozása** megnyitásához a **új projekt** ablak.
+
+2. Válassza ki **Maven** a bal oldali ablaktáblán.
+
+3. Adjon meg egy **Projekt SDK**-t. Ha üres, válassza ki a **új...**  , és keresse meg a Java-telepítési könyvtárára.
+
+4. Válassza ki a **archetype létrehozása** jelölőnégyzetet.  
+
+5. Az archetype-ok listájából válassza ki a következőt: **org.scala-tools.archetypes:scala-archetype-simple**. Ez archetype a megfelelő könyvtárstruktúrát hozza létre, és letölti a szükséges alapértelmezett függőségek Scala program írása.
+
+    ![Maven-projekt létrehozása](./media/apache-spark-create-standalone-application/create-maven-project.png)
+
+6. Kattintson a **Tovább** gombra.
+
+7. Adja meg a **GroupId** (Csoportazonosító), az **ArtifactId** (Összetevő-azonosító) és a **Version** (Verzió) mezők értékeit. Ebben az oktatóanyagban a következő értékeket használjuk:
+
+    - **GroupId:** com.microsoft.spark.example
+    - **ArtifactId:** SparkSimpleApp
+
+8. Kattintson a **Tovább** gombra.
+
+9. Ellenőrizze a beállításokat, majd válassza a **Next** (Tovább) lehetőséget.
+
+10. Ellenőrizze a projekt nevét és helyét, majd válassza a **Finish** (Befejezés) lehetőséget.  A projekt importálása néhány percet vesz igénybe.
+
+11. Miután importálta a projektet, a bal oldali ablaktáblában lépjen **SparkSimpleApp** > **src** > **tesztelése**  >  **scala** > **com** > **microsoft** > **spark**  >  **példa**.  Kattintson a jobb gombbal **MySpec**, majd válassza ki **törlése...** . Nincs szüksége erre a fájlra az alkalmazáshoz.  Válassza ki **OK** a párbeszédpanelen.
   
-1. Az ezt követő lépésekben frissíteni fogja a pom.xml fájlt a Spark Scala-alkalmazás függőségeinek meghatározásához. A rendszer által automatikusan letöltött és feloldott függőségek esetében a Mavent ennek megfelelően kell konfigurálnia.
+12. A következő lépésekben, frissítse a **pom.xml** meghatározásához a Spark Scala-alkalmazás függőségeit. A rendszer által automatikusan letöltött és feloldott függőségek esetében a Mavent ennek megfelelően kell konfigurálnia.
+
+13. Az a **fájl** menüjében válassza **beállítások** megnyitásához a **beállítások** ablak.
+
+14. Az a **beállítások** ablakban navigáljon a **hozhat létre, a Futtatás üzembe helyezési** > **Build Tools** > **Maven**  >  **Importálása**.
+
+15. Válassza ki a **Import Maven-projektek automatikus** jelölőnégyzetet.
+
+16. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.  Majd visszatér a projekt ablak.
    
     ![A Maven konfigurálása automatikus letöltésekhez](./media/apache-spark-create-standalone-application/configure-maven.png)
    
-   1. A **File** (Fájl) menüben válassza a **Settings** (Beállítások) lehetőséget.
-   1. A **Settings** (Beállítások) párbeszédpanelen válassza a **Build, Execution, Deployment** > **Build Tools** > **Maven** > **Importing** (Összeállítás, Futtatás, Üzembe helyezés; Összeállítási eszközök; Maven; Importálás) lehetőséget.
-   1. Jelölje be az **Import Maven projects automatically** (Maven-projektek automatikus importálása) beállítást.
-   1. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
-1. A bal oldali panelen válassza az **src > main > scala > com.microsoft.spark.example** lehetőségeket, majd kattintson duplán az **App** (Alkalmazás) elemre az App.scala megnyitásához.
 
-1. Cserélje le a meglévő mintakódot a következő kódra, majd mentse a módosításokat. Ez a kód a (minden HDInsight Spark-fürtön megtalálható) HVAC.csv fájlból olvassa be az adatokat, lekéri azokat a sorokat, amelyek hatodik oszlopában csak egy számjegy szerepel, a kimenetet pedig a fürt alapértelmezett Storage-tárolójának **/HVACOut** mappájába írja.
+17. A bal oldali panelen lépjen **src** > **fő** > **scala** > **com.microsoft.spark.example**, majd kattintson duplán **alkalmazás** App.scala megnyitásához.
+
+18. Cserélje le a meglévő mintakódot a következő kódra, majd mentse a módosításokat. Ez a kód a (minden HDInsight Spark-fürtön megtalálható) HVAC.csv fájlból olvassa be az adatokat, lekéri azokat a sorokat, amelyek hatodik oszlopában csak egy számjegy szerepel, a kimenetet pedig a fürt alapértelmezett Storage-tárolójának **/HVACOut** mappájába írja.
 
         package com.microsoft.spark.example
    
@@ -145,41 +154,49 @@ A Scala beépülő modul telepítésének lépesei:
             rdd1.saveAsTextFile("wasb:///HVACout")
           }
         }
-1. A bal oldali panelen kattintson duplán a **pom.xml** fájlra.
+19. A bal oldali panelen kattintson duplán a **pom.xml** fájlra.  
    
-   1. A `<project>\<properties>` részben adja hozzá a következő szegmenseket:
+20. A `<project>\<properties>` részben adja hozzá a következő szegmenseket:
       
-          <scala.version>2.10.4</scala.version>
-          <scala.compat.version>2.10.4</scala.compat.version>
-          <scala.binary.version>2.10</scala.binary.version>
-   1. A `<project>\<dependencies>` részben adja hozzá a következő szegmenseket:
+          <scala.version>2.11.8</scala.version>
+          <scala.compat.version>2.11.8</scala.compat.version>
+          <scala.binary.version>2.11</scala.binary.version>
+
+21. A `<project>\<dependencies>` részben adja hozzá a következő szegmenseket:
       
            <dependency>
              <groupId>org.apache.spark</groupId>
              <artifactId>spark-core_${scala.binary.version}</artifactId>
-             <version>1.4.1</version>
+             <version>2.3.0</version>
            </dependency>
       
-      Mentse a pom.xml fájl módosításait.
-1. Hozza létre a .jar kiterjesztésű fájlt. Az IntelliJ IDEA lehetővé teszi a JAR-fájlok projektösszetevőként való létrehozását. Hajtsa végre a következő lépéseket.
+    Mentse a pom.xml fájl módosításait.
+
+22. Hozza létre a .jar kiterjesztésű fájlt. Az IntelliJ IDEA lehetővé teszi a JAR-fájlok projektösszetevőként való létrehozását. Hajtsa végre a következő lépéseket.
     
-    1. A **File** (Fájl) menüben válassza a **Project Structure** (Projektstruktúra) lehetőséget.
-    1. A **Project Structure** (Projektstruktúra) párbeszédpanelen válassza az **Artifacts** (Összetevők) elemet, majd kattintson a pluszjelre. Az előugró párbeszédpanelen válassza a **JAR**, majd a **From modules with dependencies** (Függőségekkel rendelkező modulokból) lehetőséget.
+    1. Az a **fájl** menüjében válassza **Projektstruktúra...** .
+
+    2. Az a **Projektstruktúra** ablakában navigáljon a **összetevők** > **a plusz +** > **JAR**  >  **a függőségekkel rendelkező modulok...** .
        
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/create-jar-1.png)
-    1. A **Create JAR from Modules** (JAR-fájl létrehozása modulokból) párbeszédpanelen kattintson a **Main Class** (Main osztály) elem melletti három pont (![…](./media/apache-spark-create-standalone-application/ellipsis.png)) gombra.
-    1. A **Select Main Class** (Main osztály kiválasztása) párbeszédpanelen válassza az alapértelmezettként megjelenő osztályt, majd kattintson az **OK** gombra.
+
+    3. Az a **az modulok létrehozása JAR** ablakban válassza ki a mappa ikont a **Main osztály** szövegmező.
+
+    4. Az a **Main osztály kiválasztása** ablakban válassza ki az osztály, amely alapértelmezés szerint megjelenik majd **OK**.
        
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/create-jar-2.png)
-    1. A **Create JAR from Modules** (JAR-fájl létrehozása modulokból) párbeszédpanelen győződjön meg arról, hogy az **extract to the target JAR** (Kibontás a cél JAR-fájlba) beállítás be van jelölve, majd kattintson az **OK** gombra.  Ez a beállítás egyetlen JAR-fájlt hoz létre az összes függőséggel együtt.
+
+    5. Az a **az modulok létrehozása JAR** ablakban győződjön meg arról a **bontsa ki a cél JAR** kiválasztott, és adja meg a beállítás akkor **OK**.  Ez a beállítás egyetlen JAR-fájlt hoz létre az összes függőséggel együtt.
        
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/create-jar-3.png)
-    1. A Kimeneti elrendezés lapon fel van sorolva az összes olyan JAR-fájl, amelyet a Maven-projekt tartalmaz. Itt kijelölheti és törölheti azokat, amelyek nincsenek közvetlen függőségi viszonyban a Scala-alkalmazással. Az itt létrehozott alkalmazás esetében az utolsó (**SparkSimpleApp compile output**) kivételével az összes fájlt törölheti. Jelölje ki a törölni kívánt JAR-fájlokat, majd kattintson a **Delete** (Törlés) ikonra.
+
+    6. A **kimeneti elrendezés** lap felsorolja az összes a JAR-fájlok kivételével, amelyek tartalmazzák a Maven-projektet. Itt kijelölheti és törölheti azokat, amelyek nincsenek közvetlen függőségi viszonyban a Scala-alkalmazással. Az itt létrehozott alkalmazás esetében az utolsó (**SparkSimpleApp compile output**) kivételével az összes fájlt törölheti. Válassza ki a JAR-fájlok kivételével törli, és jelölje ki a negatív szimbólum **-**.
        
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/delete-output-jars.png)
        
-        Győződjön meg arról, hogy az **Include in project build** (Projektbuild belefoglalása) beállítás be van jelölve, amely azt biztosítja, hogy a projekt összeállításakor vagy frissítésekor minden alkalommal létrejöjjön a JAR-fájl. Kattintson az **Apply** (Alkalmaz), majd az **OK** gombra.
-    1. A JAR-fájl létrehozásához a **Build** menüben válassza a **Build Artifacts** (Buildösszetevők) lehetőséget. A kimeneti JAR-fájl az **\out\artifacts** mappában jön létre.
+        Ellenőrizze, hogy a **közé tartozik a project build** jelölőnégyzet be van jelölve, ami biztosítja, hogy a jar jön létre minden alkalommal, amikor a projekt létrehozott vagy frissített. Válassza ki **alkalmaz** , majd **OK**.
+
+    7. A jar létrehozásához lépjen a **hozhat létre** > **összetevőket hozhat létre** > **hozhat létre**. A projekt lefordítása fog körülbelül 30 másodperc múlva.  A kimeneti JAR-fájl az **\out\artifacts** mappában jön létre.
        
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/output.png)
 
@@ -187,6 +204,7 @@ A Scala beépülő modul telepítésének lépesei:
 Az alkalmazás fürtön történő futtatásához a következő módszereket használhatja:
 
 * **Másolja át az alkalmazás JAR-fájlját abba az Azure Storage-blobba**, amely a fürthöz van társítva. Ehhez az [**AzCopy**](../../storage/common/storage-use-azcopy.md) parancssori segédprogramot használhatja. Az adatok feltöltésére számos egyéb kliens is rendelkezésre áll. További információk a csatlakoztatásukról annak [Upload data for HDInsight az Apache Hadoop-feladatok](../hdinsight-upload-data.md).
+
 * **Az Apache Livy használatával távolról egy alkalmazás feladat elküldése** a Spark-fürthöz. A HDInsight-alapú Spark-fürtök tartalmazzák a Livyt, amely elvégzi a REST-végpontok közzétételét, így lehetővé teszi a Spark-feladatok távoli elküldését. További információkért lásd: [távolról segítségével Apache Livy Spark-fürtök HDInsight az Apache Spark elküldése feladatok](apache-spark-livy-rest-interface.md).
 
 ## <a name="next-step"></a>Következő lépés
@@ -195,4 +213,3 @@ Ebben a cikkben megtanulta, hogyan hozhat létre egy Apache Spark scala-alkalmaz
 
 > [!div class="nextstepaction"]
 >[Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](./apache-spark-livy-rest-interface.md)
-

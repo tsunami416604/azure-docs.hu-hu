@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: db5e833ea8ee265053b650433562690194b88771
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/04/2019
+ms.openlocfilehash: 2711e2ade0e6a7d385f8a3a2adae336e96fbccf3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509065"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729846"
 ---
 # <a name="the-azure-sql-database-service"></a>Az Azure SQL Database szolgáltatásban
 
@@ -53,14 +53,14 @@ SQL Database kiszámítható teljesítményt több erőforrástípusok, a szolg�
 
 Az SQL Database minden egyes adatbázis el különítve a önálló, hordozható, és a saját szolgáltatási szinten belül a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) és a egy garantált a számítási méret. Az SQL Database különböző számítási méretekre biztosít a különféle igényekre szabva, és lehetővé teszi az adatbázisok készletekbe rendezését az erőforrások hatékony és pénzt takaríthat meg.
 
-- A [SQL Database felügyelt példányain](sql-database-managed-instance.md), minden példány el különítve a többi példányok garantált erőforrásokkal. További információért tekintse meg a [felügyelt SQL Database-példányt](sql-database-managed-instance.md) ismertető cikket.
+- A [felügyelt példányai](sql-database-managed-instance.md), minden példány el különítve a többi példányok garantált erőforrásokkal. További információkért lásd: [SQL Database felügyelt példány](sql-database-managed-instance.md).
 - Az a [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md) (előzetes verzió) a vcore magok beszerzési modell, a skálázás 100 TB-ig gyors biztonsági mentés és képességek visszaállítása.
 
 ### <a name="adjust-performance-and-scale-without-downtime"></a>Teljesítmény módosítása és skálázása leállási idő nélkül
 
 Az SQL Database a [DTU-alapú vásárlási modellt](sql-database-service-tiers-dtu.md) vagy a [vCore-alapú vásárlási modellt](sql-database-service-tiers-vcore.md) kínálja.
 
-- A DTU-alapú vásárlási modell számítási, memória és IO-erőforrások kis és nagy terhelést jelentő adatbázisokhoz database három szolgáltatásszintet kínálja: Alapszintű, Standard és prémium. A számítási biztosít különböző többféle, ezeket az erőforrásokat, amelyhez további tárterület-erőforrások adhat hozzá az egyes szinteken belül.
+- A DTU-alapú vásárlási modell számítási, memória és IO-erőforrások kis és nagy terhelést jelentő adatbázisokhoz database három szolgáltatásszintet kínálja: Alapszintű, Standard és Prémium. A számítási biztosít különböző többféle, ezeket az erőforrásokat, amelyhez további tárterület-erőforrások adhat hozzá az egyes szinteken belül.
 - A vCore-alapú vásárlási modell lehetővé teszi a virtuális magok számának, a memória mennyiségének, illetve a tárterület mennyiségének és sebességének a kiválasztását.
 
 Hozza létre első alkalmazását egy egyedülálló, kisméretű adatbázison alacsony áron az általános célú szolgáltatási szinten a havonta, és ezután váltson szolgáltatásszintet manuálisan vagy programon keresztül bármikor, ha a megoldás a kritikus fontosságú üzleti szolgáltatási szintet. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
@@ -81,7 +81,7 @@ A rugalmas készletekkel az erőforrásigények ingadozásakor sem kell a az ada
 A szkriptek segítik a rugalmas készletek megfigyelését és méretezését. Erre a [Rugalmas SQL-készlet monitorozása és skálázása az Azure SQL Database-ben a PowerShell használatával](scripts/sql-database-monitor-and-scale-pool-powershell.md) című témakörben talál példát.
 
 > [!IMPORTANT]
-> A felügyelt SQL Database-példány nem támogatja a rugalmas készleteket.
+> Felügyelt példány nem támogatja a rugalmas készletek. Felügyelt példány, gyűjteménye, amelyek a felügyelt példány erőforrások megosztása a példányok adatbázisai.
 
 ### <a name="blend-single-databases-with-pooled-databases"></a>Önálló adatbázisok beolvasztása a készletezett adatbázisokba
 
@@ -148,7 +148,7 @@ Az SQl Database számos [beépített biztonsági és megfelelőségi szolgáltat
 
 ### <a name="advance-threat-protection"></a>Fejlett fenyegetésvédelem
 
-Az SQL Data biztonságú egységes csomag egy speciális SQL biztonsági funkciók. Lehetőséget nyújt a bizalmas adatok felderítésére és titkossá minősítésére, az adatbázis biztonsági réseinek kezelésére, továbbá az adatbázisra nézve fenyegetést jelentő rendellenes tevékenységek észlelésére. Segítségével egyetlen helyen engedélyezhetők és kezelhetők ezek a képességek.
+Speciális biztonsági egységes csomag egy tapasztalt SQL biztonsági funkciók. Lehetőséget nyújt a bizalmas adatok felderítésére és titkossá minősítésére, az adatbázis biztonsági réseinek kezelésére, továbbá az adatbázisra nézve fenyegetést jelentő rendellenes tevékenységek észlelésére. Segítségével egyetlen helyen engedélyezhetők és kezelhetők ezek a képességek.
 
 - [Adatfelderítés és besorolás](sql-database-data-discovery-and-classification.md):
 
@@ -156,17 +156,17 @@ Az SQL Data biztonságú egységes csomag egy speciális SQL biztonsági funkci�
 - [A biztonságirés-értékelési](sql-vulnerability-assessment.md):
 
   Ez a szolgáltatás képes felderíteni, nyomon követheti, és segítséget nyújt az adatbázis biztonsági réseinek javítása. Áttekinthetővé teszi az adatbázisok biztonsági állapotát, és végrehajtható lépéseket kínál a biztonsági problémák megoldására, valamint az adatbázisok védelmének fejlesztésére.
-- [Veszélyforrások Detektálása](sql-database-threat-detection.md):
+- [Veszélyforrások detektálása](sql-database-threat-detection.md):
 
-  Ez a szolgáltatás észleli a elérni vagy kiaknázni az adatbázis szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. A fenyegetésészlelés által adott riasztások tartalmazzák a gyanús tevékenység részleteit, és javaslatot tesznek a fenyegetés kivizsgálására és mérséklésére tett műveletekre.
+  Ez a szolgáltatás észleli a elérni vagy kiaknázni az adatbázis szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. Fenyegetésészlelési riasztásokat a gyanús tevékenység részleteit, adja meg, és tegyen javaslatot a műveletre vizsgálata, valamint a fenyegetés.
 
 ### <a name="auditing-for-compliance-and-security"></a>Naplózás a megfelelőség és biztonság szolgálatában
 
-Az [SQL Database naplózási szolgáltatása](sql-database-auditing.md) nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, amely a felhasználó Azure Storage-fiókjában található. A naplózás segíthet a jogszabályi megfelelőség fenntartásában és az adatbázison végzett tevékenység megértésében, valamint az esetleg üzleti veszélyeket vagy biztonsági problémákat jelző rendellenességek feltárásában.
+[Naplózás](sql-database-auditing.md) nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókban. A naplózás segíthet a jogszabályi megfelelőség fenntartásában és az adatbázison végzett tevékenység megértésében, valamint az esetleg üzleti veszélyeket vagy biztonsági problémákat jelző rendellenességek feltárásában.
 
 ### <a name="data-encryption"></a>Adattitkosítás
 
-Az SQL Database a mozgásban lévő adatokat a [Transport Layer Security](https://support.microsoft.com/kb/3135244) protokoll, az inaktív adatokat [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), a használatban lévő adatokat pedig az [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) protokoll használatával titkosítja az adatok védelme érdekében.
+SQL Database a mozgásban lévő adatok titkosítását biztosításával védi az adatokat [transport layer security](https://support.microsoft.com/kb/3135244), az inaktív adatok [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), és az adatok használatban van a [ mindig titkosított](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine).
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 

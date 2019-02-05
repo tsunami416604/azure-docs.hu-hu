@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: juliako
-ms.openlocfilehash: d5ec82decbb441c27fd0c5e8f1132caa126edbc1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 04acbb36b34a5e1eb0a0ead28cc7a1d40a50851c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807745"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697620"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>A Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan lehet beágyazni Video Indexer-vezérlőket az a
 > [!NOTE]
 > 1. verzióját 2018. február 1., kezdve a **Cognitive Insights** widget elavulttá válik. A beágyazási URL-cím verzió alapértelmezés szerint `version=2`.
 
-2-es verzióval kezdődően a widget alap URL-cím tartalmazza a accout régió. Például hoz létre egy fiókot az USA nyugati régiójában: `https://wus2.videoindexer.ai/embed/insights/...`.
+2-es verzióval kezdődően a widget alap URL-cím tartalmazza a fiókrégió. Például hoz létre egy fiókot az USA nyugati régiójában: `https://wus2.videoindexer.ai/embed/insights/...`.
 
 ## <a name="widget-types"></a>Vezérlőtípusok
 

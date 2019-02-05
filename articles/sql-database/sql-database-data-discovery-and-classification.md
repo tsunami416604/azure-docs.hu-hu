@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL-adatbázis adatainak felderítés és besorolás |} A Microsoft Docs
-description: Az Azure SQL-adatbázis adatainak felderítése és besorolása
+title: Az Azure SQL Database adatfelderítés és besorolás |} A Microsoft Docs
+description: Az Azure SQL Database adatfelderítés és besorolás
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,15 +11,15 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 57c08fc8e3b7c655bcb59affcde5e37510f98920
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: b85afeb18fdd93afdedbee00df995ba52a66cd5e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466592"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731852"
 ---
-# <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
+# <a name="azure-sql-database-data-discovery--classification"></a>Az Azure SQL Database adatfelderítés és besorolás
 
 Adatfelderítés és besorolás (jelenleg előzetes verzióban érhető el) biztosít az Azure SQL Database-be épített fejlettebb képességek **felderítése**, **Írisz**, **címkézés**  &  **védelme** a bizalmas adatokat az adatbázisban.
 Felderítése és besorolása a leginkább bizalmas adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok (PII), és így tovább.) a szervezeti adatok védelme helyzetében kulcsfontosságú szerepet játszhatnak. Az infrastruktúra szolgálhasson:
@@ -28,14 +28,14 @@ Felderítése és besorolása a leginkább bizalmas adatok (üzleti, pénzügyi,
 - Különféle biztonsági forgatókönyvek, például a (naplózás) figyelési és riasztási a bizalmas adatokhoz való rendellenes hozzáférést.
 - Való hozzáférés szabályozása és a bizalmas adatokat tartalmazó adatbázisok biztonságának megerősítése.
 
-Adatfelderítés és besorolás részét képezi a [SQL speciális adatbiztonság](sql-advanced-threat-protection.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. Adatfelderítés és besorolás érheti el és a központi SQL ADS portálon keresztül kezelhetők.
+Adatfelderítés és besorolás részét képezi a [adatbiztonság speciális](sql-database-advanced-data-security.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. adatfelderítés és besorolás érheti el és a központi SQL ADS portálon keresztül kezelhetők.
 
 > [!NOTE]
 > Ez a dokumentum csak az Azure SQL Database vonatkozik. Az SQL Server (helyszíni), lásd: [SQL Adatfelderítés és besorolás](https://go.microsoft.com/fwlink/?linkid=866999).
 
-## <a id="subheading-1"></a>Mi az Adatfelderítés és besorolás
+## <a id="subheading-1"></a>Mi az adatfelderítés és besorolás
 
-Adatfelderítés és besorolás vezet be a speciális szolgáltatások és funkciók az SQL, egy új SQL Information Protection-összeállítást az adatokat, nem csak az adatbázis védelmét célzó képező:
+Adatfelderítés és besorolás bemutatja a speciális szolgáltatások és az új SQL-képességek, egy új SQL Information Protection-összeállítást az adatokat, nem csak az adatbázis védelmét célzó képező:
 
 - **Felderítési és javaslatok**
 
@@ -64,7 +64,7 @@ A besorolás két metaadat-attribútum tartalmazza:
 
 ## <a name="define-and-customize-your-classification-taxonomy"></a>Meghatározása és testre szabása a besorolási besorolás
 
-Az SQL Adatfelderítés és besorolás tartalmaz egy beépített érzékenységi címkék és a beépített adattípusok és a felderítési logikát. Most már testre szabhatja a besorolás és a egy készlet és a kifejezetten a környezet a besorolási szerkezeteket rangsorolását megadása.
+Az SQL adatfelderítés és besorolás tartalmaz egy beépített érzékenységi címkék és a beépített adattípusok és a felderítési logikát. Most már testre szabhatja a besorolás és a egy készlet és a kifejezetten a környezet a besorolási szerkezeteket rangsorolását megadása.
 
 Meghatározása és testre szabhatja a besorolási besorolás az egész Azure-bérlőhöz egy központi helyen történik. Hogy a hely található a [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), a biztonsági szabályzat részeként. Csak a személy a bérlő legfelső szintű felügyeleti csoport rendszergazdai jogosultságai a feladat végrehajtásához használhatja.
 
@@ -77,7 +77,7 @@ Miután az összes bérlőre vonatkozó házirend lett meghatározva, továbbra 
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
-2. Navigáljon a **adatok biztonságú** az Azure SQL Database panelen biztonsági fejléc alatt. Ide kattintva engedélyezheti az adatok fokozott biztonságú, és kattintson a a **adatfelderítés és besorolás (előzetes verzió)** kártya.
+2. Navigáljon a **adatok biztonságú** az Azure SQL Database panelen biztonsági fejléc alatt. Lehetővé teszi a speciális biztonsági kattintva, és kattintson a a **adatfelderítés és besorolás (előzetes verzió)** kártya.
 
    ![Egy adatbázis beolvasása](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -147,11 +147,11 @@ REST API-k használatával programozott módon kezelheti a besorolásokat. A kö
 
 ## <a id="subheading-5"></a>Következő lépések
 
-- Tudjon meg többet [SQL biztonságú adatok](sql-advanced-threat-protection.md).
+- Tudjon meg többet [adatbiztonság speciális](sql-database-advanced-data-security.md).
 - Érdemes úgy konfigurálni [Azure SQL Database naplózási szolgáltatásával](sql-database-auditing.md) a figyelés és naplózás, a minősített bizalmas adatokhoz való hozzáférést.
 
 <!--Anchors-->
-[SQL Data Discovery & Classification overview]: #subheading-1
+[SQL data discovery & classification overview]: #subheading-1
 [Discovering, classifying & labeling sensitive columns]: #subheading-2
 [Auditing access to sensitive data]: #subheading-3
 [Automated/Programmatic classification]: #subheading-4

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: a53e37cf2ac99dcd755f71e9a2a236f27832fbd7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3458bdc0f010cab622a5ddbb87cb8e1077c404a5
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079204"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693884"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM-védelemmel ellátott és hogyan lehet az Azure Key Vault-kulcsok
 
@@ -105,7 +105,7 @@ Nyissa meg a Microsoft Download Center és [az Azure Key Vault BYOK eszközkész
 - - -
 **Egyesült Államok:**
 
-KeyVault-BYOK-Tools-Egyesült States.zip
+KeyVault-BYOK-Tools-UnitedStates.zip
 
 2E8C00320400430106366A4E8C67B79015524E4EC24A2D3A6DC513CA1823B0D4
 
@@ -261,6 +261,9 @@ Indítson el egy parancssort, és futtassa a Thales új világot létrehozó pro
 
 Ez a program létrehoz egy **Biztonságivilág** fájlban a következő % NFAST_KMDATA%\local\world, amely a C:\ProgramData\nCipher\Key Management Data\local mappának felel meg. A kvórum különböző értékeket is használhat, de ebben a példában, meg kell adnia három üres kártyát és PIN-kód egyes. Ezután bármelyik két kártya teljes hozzáférést biztosít a biztonsági világhoz. Ezek a kártyák lesznek az **rendszergazdai Kártyakészlete** az új biztonsági világ számára.
 
+> [!NOTE]
+> Ha a HSM támogatja az újabb rejtjelzésben suite DLf3072s256mRijndael, lecserélheti ezen--titkosítócsomag DLf1024s160mRijndael = az--titkosítócsomag = DLf3072s256mRijndael
+
 Ezután tegye a következőket:
 
 * Készítsen biztonsági másolatot a világfájlról. Biztonságos és védi a világfájlról, a rendszergazdai kártyák és a PIN-kódok, és győződjön meg arról, hogy egyetlen személy nem rendelkezik-e egynél több kártyához való hozzáférést.
@@ -331,7 +334,7 @@ A letöltött csomag ellenőrzése:
      > A Thales szoftver tartalmaz python %NFAST_HOME%\python\bin címen
      >
      >
-2. Győződjön meg arról, hogy megjelenik-e a következő, az ellenőrzés sikerességét jelző: **Eredmény: SIKERES**
+2. Győződjön meg arról, hogy megjelenik-e a következő, az ellenőrzés sikerességét jelző: **Eredmény: SUCCESS**
 
 A parancsfájl ellenőrzi az aláírói láncot egészen a Thales-gyökérkulcsig. Ennek a gyökérkulcsnak a kivonata be van ágyazva a szkriptbe és a hozzá tartozó értéket kell **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Azt is ellenőrizheti ezt az értéket külön-külön meglátogatják a [Thales webhelyén](http://www.thalesesec.com/).
 

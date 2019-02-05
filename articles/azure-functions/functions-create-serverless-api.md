@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 1a4a5bada779edfe2766338584c05d4fcf3e3ca4
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f6a678e03818f1e1f2182b3b0dfab221d415dc72
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660333"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698241"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Kiszolgáló nélküli API létrehozása az Azure Functions használatával
 
@@ -176,7 +176,7 @@ Most következik az API-utánzat hozzáadása. Cserélje a proxies.json fájlt a
 }
 ```
 
-Ez hozzáad egy új, „GetUserByName” nevű proxyt a backendUri tulajdonság nélkül. Egy másik erőforrás meghívása helyett módosítja a proxyk alapértelmezett válaszát, felülírva azt. A kérések és a válaszfelülírások egy háttér-URL-lel együtt is használhatók. Ez különösen akkor lehet hasznos, amikor egy régi rendszerben használ proxykat, ahol szükség lehet a fejlécek, a lekérdezési paraméterek stb. módosítására. További információk a kérésekről és a válaszfelülírásokról: [Kérések és válaszok módosítása a proxykban](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses).
+Ez hozzáad egy új, „GetUserByName” nevű proxyt a backendUri tulajdonság nélkül. Egy másik erőforrás meghívása helyett módosítja a proxyk alapértelmezett válaszát, felülírva azt. A kérések és a válaszfelülírások egy háttér-URL-lel együtt is használhatók. Ez különösen akkor lehet hasznos, amikor egy régi rendszerben használ proxykat, ahol szükség lehet a fejlécek, a lekérdezési paraméterek stb. módosítására. További információk a kérésekről és a válaszfelülírásokról: [Kérések és válaszok módosítása a proxykban](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
 
 Az API-utánzat teszteléséhez hívja meg a `<YourProxyApp>.azurewebsites.net/api/users/{username}` végpontot a böngésző vagy a választott REST-ügyfél használatával. A _{username}_ értéket cserélje a felhasználónevet képviselő sztringre.
 

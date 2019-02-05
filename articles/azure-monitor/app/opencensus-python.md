@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 885f4da5ec9b360605a3e46ee8be8d338a638ede
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 22e58f31e2f891eb09c3d42a01763c68cdcd11a8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102669"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696183"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Elosztott nyomkövetések gyűjtéséhez a Python (előzetes verzió)
 
@@ -24,7 +24,7 @@ Az Application Insights most már támogatja az elosztott nyomkövetést Python-
 
 - Rendelkeznie kell Azure-előfizetéssel.
 - Python-nek telepítve kell lennie, ez a cikk [Python 3.7.0](https://www.python.org/downloads/), bár a korábbi verzióiban valószínűleg kisebb helyesbítéssel fognak működni.
-- Kövesse az utasításokat követve telepítse a [helyi továbbító Windows szolgáltatásként](./../../azure-monitor/app/opencensus-local-forwarder.md#windows-service)
+- Kövesse az utasításokat követve telepítse a [helyi továbbító Windows szolgáltatásként](./../../azure-monitor/app/opencensus-local-forwarder.md)
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -57,7 +57,7 @@ Először meg kell létrehoznia az Application Insights-erőforrást egy kialak�
 
    ![Képernyőkép az eszközkulcs](./media/opencensus-python/0003-instrumentation-key.png)
 
-2. Szerkessze a `LocalForwarder.config` fájlt, és adja hozzá a kialakítási kulcsot. Ha követte a lépéseket a következő témakör utasításait a [előfeltételeként](./../../azure-monitor/app/opencensus-local-forwarder.md#windows-service) a fájl `C:\LF-WindowsServiceHost`
+2. Szerkessze a `LocalForwarder.config` fájlt, és adja hozzá a kialakítási kulcsot. Ha követte a lépéseket a következő témakör utasításait a [előfeltételeként](./../../azure-monitor/app/opencensus-local-forwarder.md) a fájl `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -158,7 +158,7 @@ Először meg kell létrehoznia az Application Insights-erőforrást egy kialak�
 
 6. Most a Python-szkriptnek a fent futtatásakor, továbbra is a rendszer kéri, adja meg az értékeket, de most csak az értéket a rendszerhéj nyomtatása történik.
 
-7. Ellenőrizheti, hogy a **helyi továbbító** vesz fel a nyomkövetések ellenőrzés a `LocalForwarder.config` fájlt. Ha követte a lépéseket a [előfeltétel](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service), kell elhelyezni a `C:\LF-WindowsServiceHost`.
+7. Ellenőrizheti, hogy a **helyi továbbító** vesz fel a nyomkövetések ellenőrzés a `LocalForwarder.config` fájlt. Ha követte a lépéseket a [előfeltétel](https://docs.microsoft.com/azure/application-insights/local-forwarder), kell elhelyezni a `C:\LF-WindowsServiceHost`.
 
     Az alábbi ábrán a naplófájl, láthatja, hogy hol hozzáadtunk egy exportáló a második szkript futtatása előtt `OpenCensus input BatchesReceived` 0. Hogy megkezdése a frissített szkript futtatása után `BatchesReceived` azt a megadott értékek száma egyenlő a növekménye:
     
@@ -197,7 +197,7 @@ Csak megismerte a háttérszolgáltatást OpenCensus be a Python a helyi tovább
 * [Vételezők](https://opencensus.io/api/python/trace/usage.html#samplers)
 * [Flask-integráció](https://opencensus.io/api/python/trace/usage.html#flask)
 * [Django-integráció](https://opencensus.io/api/python/trace/usage.html#django)
-* [MySQL-integráció](https://opencensus.io/api/python/trace/usage.html#service-integration)
+* [MySQL Integration](https://opencensus.io/api/python/trace/usage.html#service-integration)
 * [PostgreSQL](https://opencensus.io/api/python/trace/usage.html#postgresql)
   
 ## <a name="next-steps"></a>További lépések

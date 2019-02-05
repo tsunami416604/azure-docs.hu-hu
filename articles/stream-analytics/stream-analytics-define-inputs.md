@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 98a4d0ace2113c3936e13d357d0d8b641982d7c4
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 2a366a9030104c885adb1a4f773de04cdc439044
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567944"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694635"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data bemeneti Stream analyticsbe
 
@@ -26,7 +26,7 @@ Stream Analytics bemenetként három típusú erőforrásokat az Azure data-adat
 Ezen a bemeneti források is élő Azure-előfizetéshez, a Stream Analytics-feladat vagy egy másik előfizetésben található.
 
 ### <a name="compression"></a>Tömörítés
-Stream Analytics támogatja a tömörítést minden stream bemeneti adatforrás esetében. Jelenleg támogatott referencia típusok a következők: Nincs, a GZip, és a Deflate tömörítést. A tömörítés támogatása nem érhető el a referenciaadatoknál. Ha a bemeneti formátum az Avro-adatok tömörített, azt transzparens módon történik. Adja meg a tömörítési típus szerializálása az Avro-nincs szükségünk. 
+Stream Analytics támogatja a tömörítést minden stream bemeneti adatforrás esetében. A jelenleg támogatott tömörítési típusok a következők: Nincs, a GZip, és a Deflate tömörítést. A tömörítés támogatása nem érhető el a referenciaadatoknál. Ha a bemeneti formátum az Avro-adatok tömörített, azt transzparens módon történik. Adja meg a tömörítési típus szerializálása az Avro-nincs szükségünk. 
 
 ## <a name="create-edit-or-test-inputs"></a>Létrehozásához, szerkesztéséhez vagy bemenet tesztelése
 Használhatja a [az Azure portal](https://portal.azure.com) való [hozzon létre új bemenetei között meg](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-job-input) és megtekintése vagy szerkesztése a folyamatos átviteli feladat a meglévő bemenetei között. A bemeneti kapcsolatok is tesztelheti és [tesztlekérdezések](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query) a mintaadatokat. Ha egy lekérdezést ír, a FROM záradékban található a bemeneti listázza. Megtekintheti az elérhető bemenetek listája a **lekérdezés** lapot a portálon. Ha több bemenet használni kívánt, `JOIN` őket vagy több írási `SELECT` lekérdezéseket.

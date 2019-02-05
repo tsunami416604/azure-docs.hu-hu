@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: efe7b6722a9cfa24ea86130a13a0599115e89821
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 15ec4f006147cdffb46598d22a937aec429fd8ac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451665"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729404"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás importálási feladat létrehozása
 
@@ -61,14 +61,14 @@ Importálási feladat létrehozása előtt be kell szereznie egy szállítási h
 
  A szállítási címhez tartozó hely beszerzése az alábbi lépésekkel:
 
--   Azonosítsa a helyet a tárfiók nevére. Ez az érték alatt található a **hely** a storage-fiókban található **irányítópult** az Azure portal vagy a service management API művelet használatával lekérdezett [Storage-fiók beszerzése Tulajdonságok](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Azonosítsa a helyet a tárfiók nevére. Ez az érték alatt található a **hely** a storage-fiókban található **irányítópult** az Azure portal vagy a service management API művelet használatával lekérdezett [Storage-fiók beszerzése Tulajdonságok](/rest/api/storagerp/storageaccounts).
 
 -   A hely, amelyhez ez a tárfiók feldolgozni meghívásával lekérése a `Get Location` műveletet.
 
 -   Ha a `AlternateLocations` helye tulajdonsága tartalmaz magát a helyet, akkor már használja ezt a helyet. Ellenkező esetben hívja a `Get Location` a másodlagos helyek újra a műveletet. Az eredeti helyre ideiglenesen megtakarítása karbantartás céljából.
 
 ## <a name="creating-the-import-job"></a>Az importálási feladat létrehozása
-Az importálási feladat létrehozásához hívja a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet. Adja meg a következő információkat kell:
+Az importálási feladat létrehozásához hívja a [Put feladat](/rest/api/storageimportexport/jobs) műveletet. Adja meg a következő információkat kell:
 
 -   A feladat nevét.
 

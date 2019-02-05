@@ -11,20 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 29181b19498b6735651869b6499c4a1cda5a4c3a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: aadc92c232d32d827644caa52b3c362d9c8d4c9b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488846"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691031"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonokban kimeneti szakasz
 
 A kimeneti szakaszban adjon meg értékeket, amelyek a központi telepítés rendszer adja vissza. Visszaadhatja például az URI-t üzembe helyezett erőforrások eléréséhez.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="define-and-use-output-values"></a>Definiálja és kimeneti értékeket
 
@@ -84,6 +82,7 @@ A következő példa egy kimeneti definíciót szerkezetét mutatja:
 | type |Igen |A kimeneti érték típusát. Sablon bemeneti paraméterként azonos kimeneti értékeket támogatásához. |
 | érték |Igen |Sablonnyelv-kifejezés, amely értékeli ki és adja vissza a kimeneti értéket. |
 
+Megjegyzések adásával kapcsolatos információkért lásd: [sablonok megjegyzéseket](resource-group-authoring-templates.md#comments).
 
 ## <a name="example-templates"></a>Példa sablonok
 

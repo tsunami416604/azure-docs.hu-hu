@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: eba703e454e02e5b83efae2de01003a2efc1f764
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 7d8047e569d3506f9ebb798b4f8c31ff94204fa4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493243"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694057"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -329,7 +329,7 @@ Alapértelmezés szerint a virtuális hálózatokhoz biztosított Azure-szolgál
 Biztonságos Azure-szolgáltatások több virtuális hálózaton vagy virtuális hálózaton belüli több alhálózaton, egymástól függetlenül engedélyezze a szolgáltatásvégpontokat az egyes alhálózatok hálózati oldalán, és ezután biztonságos beállításával az Azure-szolgáltatások erőforrásait az alhálózatok megfelelő virtuális hálózati hozzáférés-vezérlési listák Azure-szolgáltatás oldalán.
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Hogyan lehet az Azure-szolgáltatások virtuális hálózatról kimenő forgalom szűrése és továbbra is a Szolgáltatásvégpontok használatára?
-Ha meg szeretné vizsgálni vagy szűrni a virtuális hálózatról egy Azure-szolgáltatás felé irányuló forgalom, a virtuális hálózaton belüli hálózati virtuális készüléken is telepítheti. A Szolgáltatásvégpontok majd alkalmazhat az alhálózatról, ahol a hálózati virtuális berendezés csak az alhálózathoz, virtuális hálózati hozzáférés-vezérlési listák használatával üzembe helyezett és biztonságos Azure-szolgáltatások erőforrásait. Ebben a forgatókönyvben is lehet hasznos, ha korlátozni az Azure-szolgáltatásokhoz a virtuális hálózat hálózati virtuális készülékek szűrésének segítségével bizonyos Azure-erőforrásokra szeretné. További információkért lásd a [kimenő forgalommal és a hálózati virtuális berendezésekkel](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json) foglalkozó témakört.
+Ha meg szeretné vizsgálni vagy szűrni a virtuális hálózatról egy Azure-szolgáltatás felé irányuló forgalom, a virtuális hálózaton belüli hálózati virtuális készüléken is telepítheti. A Szolgáltatásvégpontok majd alkalmazhat az alhálózatról, ahol a hálózati virtuális berendezés csak az alhálózathoz, virtuális hálózati hozzáférés-vezérlési listák használatával üzembe helyezett és biztonságos Azure-szolgáltatások erőforrásait. Ebben a forgatókönyvben is lehet hasznos, ha korlátozni az Azure-szolgáltatásokhoz a virtuális hálózat hálózati virtuális készülékek szűrésének segítségével bizonyos Azure-erőforrásokra szeretné. További információkért lásd a [kimenő forgalommal és a hálózati virtuális berendezésekkel](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha) foglalkozó témakört.
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Mi történik, ha egy Azure-szolgáltatási fiók, amely a virtuális hálózati hozzáférés-vezérlési lista (ACL) a virtuális hálózaton kívülről érkező engedélyezve van?
 A HTTP 403-as vagy a HTTP 404-es hiba adja vissza.

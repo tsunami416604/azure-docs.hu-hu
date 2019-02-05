@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 32cd3b9eb60a6d12c71be047740fa96ffdd56310
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094156"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731937"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Hogyan hozhat létre virtuális gépet vagy virtuális merevlemez képe
 
@@ -58,10 +58,10 @@ A virtuális gép első számítógép-specifikus fájlok és adatok törlése a
 3. Adja meg **y** folytatásához. Hozzáadhat a `-force` paraméter a megerősítési lépés elkerülése érdekében.
 4. A parancs befejeződése után adja meg a **kilépéshez** gombra kattintva zárja be az SSH-ügyfél.
 
-## <a name="step-2-create-vm-image"></a>2. lépés: A virtuális gép rendszerképének létrehozása
+## <a name="step-2-create-vm-image"></a>2. lépés: Virtuális gép rendszerképének létrehozása
 Az Azure CLI segítségével jelölje meg a virtuális gép általánosként és a lemezképének rögzítése. A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők *myResourceGroup*, *myVnet*, és *myVM*.
 
-1. Szabadítsa fel a virtuális Gépet, amely a – figyelmeztetés megszüntetésről [az vm deallocate](/cli/azure/vm#deallocate). Az alábbi példa felszabadítja a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup*.
+1. Szabadítsa fel a virtuális Gépet, amely a – figyelmeztetés megszüntetésről [az vm deallocate](/cli/azure/vm). Az alábbi példa felszabadítja a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup*.
    
     ```azurecli
     az vm deallocate \
@@ -69,7 +69,7 @@ Az Azure CLI segítségével jelölje meg a virtuális gép általánosként és
       --name myVM
     ```
 
-2. Jelölje meg a virtuális gép általánosítottra az [az vm generalize](/cli/azure/vm#generalize). Az alábbi példa jelöli meg a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup* általánosként.
+2. Jelölje meg a virtuális gép általánosítottra az [az vm generalize](/cli/azure/vm). Az alábbi példa jelöli meg a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup* általánosként.
    
     ```azurecli
     az vm generalize \
@@ -90,8 +90,8 @@ Az Azure CLI segítségével jelölje meg a virtuális gép általánosként és
    >
    > Ha szeretné tárolni a rendszerkép zóna rugalmas tárolás, egy régióban, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `--zone-resilient true` paraméter.
 
-## <a name="step-3-create-a-vm-from-the-captured-image"></a>3. lépés: Virtuális gép létrehozása a rögzített lemezképből
-Virtuális gép létrehozása a létrehozott lemezképpel [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). A következő példában létrehozunk egy nevű virtuális Gépet *myVMDeployed* rendszerkép *myImage*.
+## <a name="step-3-create-a-vm-from-the-captured-image"></a>3. lépés: A rögzített lemezképet a virtuális gép létrehozása
+Virtuális gép létrehozása a létrehozott lemezképpel [az virtuális gép létrehozása](/cli/azure/vm). A következő példában létrehozunk egy nevű virtuális Gépet *myVMDeployed* rendszerkép *myImage*.
 
 ```azurecli
 az vm create \
@@ -124,7 +124,7 @@ az vm create \
 ```
 
 
-## <a name="step-4-verify-the-deployment"></a>4. lépés: A telepítés ellenőrzése
+## <a name="step-4-verify-the-deployment"></a>4. lépés: Az üzemelő példány ellenőrzése
 
 SSH-t a virtuális géphez, ellenőrizze a telepítési és elkezdheti az új virtuális Géphez létrehozott. SSH-n keresztül csatlakozni, keresse meg az IP-címét vagy teljes Tartománynevét, a virtuális gép [az vm show](/cli/azure/vm#az-vm-show).
 

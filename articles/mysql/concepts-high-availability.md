@@ -5,13 +5,13 @@ author: jasonwhowell
 ms.author: jasonh
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 70577f32debc526aaccbd79b62dd35e82119e3f9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/01/2019
+ms.openlocfilehash: 3f541357d3d45ada694a821b3a3b1474185b6b00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548392"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691354"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Az Azure Database for MySQL magas rendelkezésre állású fogalmak
 Az Azure Database for MySQL-szolgáltatás garantált magas szintű rendelkezésre állást biztosít. A pénzügyi felelősséggel vállalt garantált szolgáltatási szinttel (SLA) 99,99 %-os általános elérhetővé tételtől. Gyakorlatilag alkalmazások egyike sem állásidő a szolgáltatás használata esetén.
@@ -32,5 +32,5 @@ A magas rendelkezésre ÁLLÁSÚ modell, Azure Database for MySQL-méretezve, fe
 A skálázási művelet során az adatbázis-kapcsolatok romlását történik. Az ügyfélalkalmazások le vannak választva, és nyissa meg a nem véglegesített tranzakciót megszakították. Az ügyfélalkalmazás újrapróbálja a kapcsolódást, vagy egy új kapcsolatot, miután az átjáró irányítja a kapcsolat az újonnan méretű példánnyal. 
 
 ## <a name="next-steps"></a>További lépések
-- A szolgáltatás áttekintését lásd: [, Azure Database for MySQL áttekintése](overview.md)
-- Az újrapróbálkozási logika áttekintéséhez lásd: [átmeneti kapcsolati hibákat kezelése az Azure Database for MySQL-hez](concepts-connectivity.md)
+- Ismerje meg [átmeneti kapcsolati hibák kezelése](concepts-connectivity.md)
+- Ismerje meg, hogyan [olvasható replikákat az adatok replikálása](howto-read-replicas-portal.md)

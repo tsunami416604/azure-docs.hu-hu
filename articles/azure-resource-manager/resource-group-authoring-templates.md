@@ -10,16 +10,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7d6b942ea8b2bf61bee472811648e5089f280354
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 77dda85c920fda90b8379445a79569413b2dd463
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102414"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691505"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
+
 Ez a cikk ismerteti az Azure Resource Manager-sablonok szerkezetének. Egy sablon és az elérhető tulajdonságok köre szakaszt az eltérő szakaszok tükrözze. A sablon JSON-t és kifejezések, amelyek segítségével kialakíthatja az üzemelő példány értékeit áll. Sablonok létrehozásának részletes útmutató: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
 
 ## <a name="template-format"></a>Sablon formátuma
@@ -40,7 +41,7 @@ A legegyszerűbb szerkezetét, a sablon a következő elemekből áll:
 
 | Elem neve | Szükséges | Leírás |
 |:--- |:--- |:--- |
-| $schema |Igen |A JSON-fájl, amely leírja a sablon nyelvének verziója helye.<br><br> Erőforráscsoportok üzemelő példányainak, használja a `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`.<br><br>Előfizetések üzemelő példányai használja a `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
+| $schema |Igen |A JSON-fájl, amely leírja a sablon nyelvének verziója helye.<br><br> Erőforráscsoportok üzemelő példányainak használja: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Előfizetések üzemelő példányai használja: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |Igen |A sablon (például 1.0.0.0) verziója. Bármilyen értéket megadhat ehhez az elemhez. A dokumentum jelentős változásokat ezt az értéket használja a sablonban. A sablon használatával erőforrások üzembe helyezésekor, ezt az értéket segítségével győződjön meg arról, hogy a megfelelő sablon használatban van-e. |
 | paraméterek |Nem |Üzembe helyezés testreszabásához erőforrások üzembe helyezésének végrehajtásakor biztosított értékeket. |
 | Változók |Nem |Egyszerűsítése érdekében a Sablonnyelv-kifejezések, JSON-töredék a sablonban használt értékeket. |
@@ -161,6 +162,7 @@ Minden elem is megadhatja a tulajdonságokkal rendelkezik. Az alábbi példa bem
 Ez a cikk ismerteti a sablon nagyobb részletességgel szakaszait.
 
 ## <a name="syntax"></a>Szintaxis
+
 A sablon szintaxisa alapszintű JSON. Kifejezések és függvények kiterjesztheti a sablonon belül elérhető JSON-értékeit.  A szögletes zárójelek kifejezések JSON-karakterlánc-literálnak belül írt amelynek első és utolsó karakterek: `[` és `]`, illetve. A kifejezés értékét a sablon üzembe helyezésekor lesz kiértékelve. Ír egy szöveges karakterlánc, míg a kifejezés kiértékelésének eredménye lehet egy másik JSON típusú, például egy tömb, vagy az egész szám, attól függően, a tényleges kifejezést.  Kezdje egy zárójelet szövegkonstansnak kell `[`, de nem rendelkezik, azt értelmezni, hogy egy kifejezés, adjon hozzá egy extra szögletes zárójelet, indítsa el a karakterlánc `[[`.
 
 Általában akkor kifejezések használata a functions konfigurálásához az üzembe helyezési műveletek végrehajtásához. Csak, például a JavaScript, függvényhívások formázott `functionName(arg1,arg2,arg3)`. A pont és a [index] operátorok használatával tulajdonságok hivatkozik.
@@ -176,6 +178,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre, amely egy értéket számos f
 A sablonokban használható függvények teljes listájáért lásd: [Azure Resource Manager-sablonfüggvények](resource-group-template-functions.md). 
 
 ## <a name="parameters"></a>Paraméterek
+
 A sablon a Paraméterek szakaszban megadhatja az erőforrások üzembe helyezésekor mely értékeket kell megadni. Ezek a paraméterértékek szabhatja testre az üzembe helyezés értékek, amelyek azáltal, hogy egy adott környezetben (például fejlesztési, tesztelési és éles környezetben). Nem kell adnia a sablonban szereplő paraméterekkel, de paraméterek nélkül a sablon mindig telepít az azonos nevek, helyek és tulajdonságok ugyanazokhoz az erőforrásokhoz.
 
 Az alábbi példa bemutatja egy egyszerű paraméterdefiníció:
@@ -194,6 +197,7 @@ Az alábbi példa bemutatja egy egyszerű paraméterdefiníció:
 További információ a paraméterek megadása: [paraméterek szakaszban az Azure Resource Manager-sablonok](resource-manager-templates-parameters.md).
 
 ## <a name="variables"></a>Változók
+
 A változók szakaszban, a sablon egész értékek, amelyek segítségével hozhatnak létre. Nem kell definiálnia a változókat, de azok összetett kifejezések csökkentésével gyakran egyszerűbb a sablont.
 
 Az alábbi példa bemutatja egy egyszerű változódefinícióra:
@@ -293,6 +297,80 @@ A kimeneti szakaszban adjon meg értékeket, amelyek a központi telepítés ren
 ```
 
 További információkért lásd: [kimenete az Azure Resource Manager-sablonok szakaszában](resource-manager-templates-outputs.md).
+
+## <a name="comments"></a>Megjegyzések
+
+Megjegyzések hozzáadása a sablonhoz, több lehetősége van.
+
+A **paraméterek**, adjon hozzá egy `metadata` rendelkező objektum egy `description` tulajdonság.
+
+```json
+"parameters": {
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "User name for the Virtual Machine."
+      }
+    },
+```
+
+A portálon keresztül a sablon üzembe helyezésekor, a szöveget a leírást meg automatikusan használják tipp: arra a paraméterre vonatkozóan.
+
+![A paraméter tipp megjelenítése](./media/resource-group-authoring-templates/show-parameter-tip.png)
+
+A **erőforrások**, adjon hozzá egy `comments` elemet.
+
+```json
+"resources": [
+    {
+      "comments": "Storage account used to store VM disks",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "apiVersion": "2018-07-01",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[variables('storageAccountType')]"
+      },
+      "kind": "Storage",
+      "properties": {}
+    },
+```
+
+Hozzáadhat egy `metadata` objektum szinte bárhonnan a sablonban. Erőforrás-kezelő figyelmen kívül hagyja az objektum, de a JSON-szerkesztőt is figyelmezteti, hogy a tulajdonság nem érvényes. Az objektum határoz meg a szükséges tulajdonságokat.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "comments": "This template was developed for demonstration purposes.",
+        "author": "Example Name"
+    },
+```
+
+A **kimenete**, a kimeneti érték hozzáadása egy metaadat-objektum.
+
+```json
+"outputs": {
+    "hostname": {
+      "type": "string",
+      "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]",
+      "metadata": {
+        "comments": "Return the fully qualified domain name"
+      }
+    },
+```
+
+Felhasználó által definiált függvények metaadat-objektum nem lehet hozzáadni.
+
+Általános megjegyzéseket használhatja `//` , de ez a szintaxis hibát okoz, ha helyezi üzembe a sablont az Azure CLI használatával.
+
+```json
+"variables": {
+    // Create unique name for the storage account
+    "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
+},
+```
 
 ## <a name="template-limits"></a>Sablon korlátok
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 1902091978233ecaf80f04e3a08c70c20aee42c9
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 861a4d4d64f970a13aba68f831d2148f8a354ef4
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000019"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732158"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Hogyan háríthatók el a "a functions futtatókörnyezete nem érhető el"
 
@@ -71,7 +71,7 @@ Az előző lépésben Ha Ön egy tárfiók kapcsolati sztringje nem rendelkezett
 
 ## <a name="storage-account-credentials-invalid"></a>Tárfiók hitelesítő adatainak érvénytelen
 
-A fenti Tárfiók kapcsolati karakterláncokat kell frissíteni, ha, a tárelérési kulcsok újragenerálása. [További információ a tárolási kulcskezelés Itt](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#manage-your-storage-account)
+A fenti Tárfiók kapcsolati karakterláncokat kell frissíteni, ha, a tárelérési kulcsok újragenerálása. [További információ a tárolási kulcskezelés Itt](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
 
 ## <a name="storage-account-inaccessible"></a>A tárfiók nem érhető el
 

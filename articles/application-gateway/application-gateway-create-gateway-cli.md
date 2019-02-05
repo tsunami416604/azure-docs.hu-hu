@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: victorh
-ms.openlocfilehash: 66a9ea5abcff4609288e9ce7c93912313db6e163
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: cde06aaf149785f464cd354c95c8f39575bad73b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850603"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698229"
 ---
 # <a name="create-an-application-gateway-using-the-azure-cli"></a>Hozzon létre egy application gateway az Azure CLI használatával
 
@@ -133,7 +133,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Hozzon létre egy Application Gatewayt az [az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) paranccsal. Amikor az Azure CLI-vel hoz létre egy Application Gatewayt, meg kell adnia bizonyos konfigurációs adatokat, például a kapacitást, az SKU-t, valamint a HTTP-beállításokat. A hálózati interfészek privát IP-címeit kiszolgálóként adjuk hozzá az Application Gateway háttérkészletéhez.
+Hozzon létre egy Application Gatewayt az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal. Amikor az Azure CLI-vel hoz létre egy Application Gatewayt, meg kell adnia bizonyos konfigurációs adatokat, például a kapacitást, az SKU-t, valamint a HTTP-beállításokat. A hálózati interfészek privát IP-címeit kiszolgálóként adjuk hozzá az Application Gateway háttérkészletéhez.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')

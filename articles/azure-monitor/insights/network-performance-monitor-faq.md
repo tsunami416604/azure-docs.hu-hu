@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 554d837d9fa70c2af581f9b582001c7f32d442e7
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232342"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734555"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -134,7 +134,7 @@ Az NPM figyelheti egy munkaterületről egy üzemeltetett, a világ bármely ré
 Az NPM figyelheti csatlakozási szolgáltatások a világ bármely részén egy munkaterületről egy üzemeltetett a [támogatott régiók](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Mely régiók támogatottak az NPM ExpressRoute-figyelő?
-Az NPM figyelheti az ExpressRoute-Kapcsolatcsoportok bármely Azure-régióban található. Való előkészítésre NPM, szüksége lesz a Log Analytics-munkaterület, amely az egyik kell elhelyezni a [támogatott régiók](/azure/expressroute/how-to-npm#regions)
+Az NPM figyelheti az ExpressRoute-Kapcsolatcsoportok bármely Azure-régióban található. Való előkészítésre NPM, szüksége lesz a Log Analytics-munkaterület, amely az egyik kell elhelyezni a [támogatott régiók](/azure/expressroute/how-to-npm)
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 

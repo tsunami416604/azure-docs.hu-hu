@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: bb22a2545466c72f7dac68f80668b8b530832c21
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094718"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728622"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
 
@@ -51,8 +51,6 @@ Az Azure-függvény (jobb oldali legtöbb ablaktáblán az Azure functions port�
 ## <a name="endpoint-validation"></a>Végpont ellenőrzése
 
 Először is szeretné akkor kezeli `Microsoft.EventGrid.SubscriptionValidationEvent` eseményeket. Minden alkalommal, amikor valaki feliratkozik egy eseményt, Event Grid egy érvényesítési eseményt küld a végpontot egy `validationCode` a hasznos adatforgalmat. A végpont megadása kötelező, a válasz törzse a vissza ebben az echo [igazolja, hogy a végpont nem érvényes, és Ön a tulajdonosuk](security-authentication.md#webhook-event-delivery). Ha használ egy [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md) helyett egy WebHook által aktivált függvény, a végpont ellenőrzése történik-e az Ön számára. Ha egy külső API-szolgáltatás használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), nem fogja tudni programozott módon echo az érvényesítési kódot. Ezeket a szolgáltatásokat a egy érvényesítési URL-címet, amely az előfizetés érvényesítése esemény küldése használatával manuálisan ellenőrizheti az előfizetés. Másolja az URL-CÍMRE a `validationUrl` tulajdonság és a egy GET küldési kérelmek REST-ügyféllel vagy a böngésző felületén keresztül.
-
-Előzetes verzió van manuális érvényesítésre. A használatához telepítenie kell az [Event Grid-bővítményt](/cli/azure/azure-cli-extensions-list) az [Azure CLI](/cli/azure/install-azure-cli)-hez. A telepítést az `az extension add --name eventgrid` paranccsal tudja végrehajtani. Ha a REST API-t használ, ellenőrizze, hogy használ `api-version=2018-05-01-preview`.
 
 A C# a `DeserializeEventGridEvents()` függvény deserializes az Event Grid-események. Az eseményadatok be a megfelelő típus, például StorageBlobCreatedEventData deserializes azt. Használja a `Microsoft.Azure.EventGrid.EventTypes` osztály támogatott eseménytípusok és neveket beolvasásához.
 

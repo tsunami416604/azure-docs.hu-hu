@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 6011defcea54a26aa25877aeace6a1a8a629fdf6
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 93534cf80a007dbb848a515ec4ec165c67e3b456
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567519"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730696"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy egy hálózati adapter törlése
 
@@ -68,7 +68,7 @@ A portál nem biztosít arra, hogy egy hálózati adapter létrehozásakor rende
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
+|parancssori felület|[az network nic create](/cli/azure/network/nic)|
 |PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Hálózatiadapter-beállítások megtekintése
@@ -93,7 +93,7 @@ Ha IPv6-cím van rendelve egy hálózati adaptert, a PowerShell kimenete az a t�
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic list](/cli/azure/network/nic#az_network_nic_list) ; előfizetésben található hálózati adapterek megtekintése [az network nic show](/cli/azure/network/nic#az_network_nic_show) egy hálózati adapter beállításainak megtekintése|
+|parancssori felület|[az network nic list](/cli/azure/network/nic) ; előfizetésben található hálózati adapterek megtekintése [az network nic show](/cli/azure/network/nic) egy hálózati adapter beállításainak megtekintése|
 |PowerShell|[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) hálózati illesztők megtekintése egy hálózati adapter az előfizetés vagy a nézet beállításait|
 
 ## <a name="change-dns-servers"></a>Módosítsa a DNS-kiszolgálók
@@ -153,7 +153,7 @@ Módosíthatja az alhálózaton, de nem a virtuális hálózat, amely egy háló
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|parancssori felület|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Ad hozzá, vagy távolítsa el az alkalmazásbiztonsági csoportok
