@@ -1,36 +1,28 @@
----
-ms.openlocfilehash: 55adc512447160b409af0002a72ec2473409d796
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54489245"
----
-# <a name="contributing-to-microsoft-azure-documentation"></a>Hozzájárul a Microsoft Azure-dokumentáció
+# Contributing to Microsoft Azure Documentation
 
-Köszönjük, hogy a Microsoft Azure-dokumentációban való közreműködéshez.
+Thank you for taking the time to contribute to the Microsoft Azure documentation.
 
-Ez az útmutató néhány általános témakörök köré közreműködői foglalkozik, és ki hivatkozik a [közreműködői útmutató](https://docs.microsoft.com/contribute) részletes magyarázatokat ahol szükséges.
+This guide covers some general topics around contribution and refers out to our [contributors guide](https://docs.microsoft.com/contribute) for more detailed explanations where relevant.
 
-## <a name="code-of-conduct"></a>Magatartási kódex
+## Code of Conduct
 
-A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik.
-További információkért lásd: a [Gyakori](https://opensource.microsoft.com/codeofconduct/faq/), vagy forduljon a [ opencode@microsoft.com ](mailto:opencode@microsoft.com) a további kérdéseit és észrevételeit.
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/), or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## <a name="how-can-i-contribute"></a>Hogyan működhet közre?
+## How can I contribute?
 
-Nincsenek többféle módon járuljon hozzá a dokumentáció, ismerje meg, mely egy, az alábbi szakaszok az Önnek való áttekintése.
+There are a variety of ways to contribute to the documentation, review the sections below to find out which one is right for you.
 
-### <a name="reporting-bugs-and-suggesting-enhancements"></a>Jelentéskészítési hibák, és javasolhat fejlesztései
+### Reporting Bugs and Suggesting Enhancements
 
-Használja a visszajelzés eszközt bármely cikk alján nyújt a hibák és javaslatok.
+Please use the Feedback tool at the bottom of any article to submit bugs and suggestions.
 
-![Visszajelzés eszköz](media/feedback-tool.png)
+![Feedback Tool](media/feedback-tool.png)
 
-### <a name="editing-in-github"></a>Szerkesztés a Githubon
+### Editing in GitHub
 
-Kövesse az útmutatást [gyors szerkeszti a meglévő dokumentumok](https://docs.microsoft.com/contribute/#quick-edits-to-existing-documents) a közreműködői útmutatóban.
+Follow the guidance for [Quick edits to existing documents](https://docs.microsoft.com/contribute/#quick-edits-to-existing-documents) in our contributors guide.
 
-### <a name="pull-request"></a>A lekéréses kérelmek
+### Pull Request
 
-Tekintse át az útmutató a [lekéréses kérelmek](https://docs.microsoft.com/contribute/how-to-write-workflows-major#pull-request-processing) a közreműködői útmutatóban.
+Review the guidance for [Pull Requests](https://docs.microsoft.com/contribute/how-to-write-workflows-major#pull-request-processing) in our contributors guide.
