@@ -11,36 +11,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/22/2019
+ms.date: 2/5/2019
 ms.author: raiye
-ms.openlocfilehash: 0a9b811f3781cd181c17b9ed92b9ca653ee91af0
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4c1b1b376493c77ae0f197d800ee0d00434b19c6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828451"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752109"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
-
->[!NOTE]
->A január vendég operációs rendszer jelenleg tesszük elérhetővé a megtörténik az automatikus frissítések, a Cloud Service virtuális gépeken. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A következő javításokat szerepelnek a január vendég operációs rendszer. Ez a lista a változhat.
 
 ## <a name="january-2019-guest-os"></a>Január 2019 vendég operációs rendszer
 
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
+| Rel 19-01 | [4480116] | A Windows 10 biztonsági | 6.3 | 2019. január 8. |
 | Rel 19-01 | [4480961] | A Windows 10 biztonsági | 5.27 | 2019. január 8. |
 | Rel 19-01 | [4480964] | Windows biztonsági | 4.62 | 2019. január 8. |
 | Rel 19-01 | [4480972] | Windows biztonsági | 3.69 | 2019. január 8. |
 | Rel 19-01 | [4480960] | Windows biztonsági | 2.82 | 2019. január 8. |
+| Rel 19-01 | [4480056] | .NET-biztonság | 6.3 | 2019. január 8. |
 | Rel 19-01 | [4480074] | .NET 4.x biztonsága | 4.62 | 2019. január 8. |
 | Rel 19-01 | [4480075] | .NET 4.x biztonsága | 3.69 | 2019. január 8. |
 | Rel 19-01 | [4480076] | .NET 4.x biztonsága | 2.82 | 2019. január 8. |
 | Rel 19-01 | [4480086] | .NET 3.x biztonsága | 4.62 | 2019. január 8. |
 | Rel 19-01 | [4480083] | .NET 3.x biztonsága | 3.69 | 2019. január 8. |
 | Rel 19-01 | [4480085] | .NET 3.x biztonsága | 2.82 | 2019. január 8. |
-| Rel 19-01 | [4480979] | Flash | 3.69, 4.62, 5.27 | 2019. január 8. |
+| Rel 19-01 | [4480979] | Flash | 3.69, 4.62, 5.27, 6.3 | 2019. január 8. |
 | Rel 19-01 | [4480965] | Internet Explorer | 2.82, 3.69, 4.62 | 2019. január 8. |
 | – | [4471318] | December nem – a biztonság összegzése | 2.82 | 2018. december 11. |
 | – | [4470641] | December nem biztonsági kumulatív .NET 3.x | 2.82 | 2018. december 11. |
@@ -52,10 +51,12 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4470630] | December nem biztonsági kumulatív .NET 3.x | 4.62 | 2018. december 11. |
 | – | [4470622] | December nem biztonsági kumulatív .NET 4.x | 4.62 | 2018. december 11. |
 
+[4480116]: http://support.microsoft.com/kb/4480116
 [4480961]: http://support.microsoft.com/kb/4480961
 [4480964]: http://support.microsoft.com/kb/4480964
 [4480972]: http://support.microsoft.com/kb/4480972
 [4480960]: http://support.microsoft.com/kb/4480960
+[4480056]: http://support.microsoft.com/kb/4480056
 [4480074]: http://support.microsoft.com/kb/4480074
 [4480075]: http://support.microsoft.com/kb/4480075
 [4480076]: http://support.microsoft.com/kb/4480076
