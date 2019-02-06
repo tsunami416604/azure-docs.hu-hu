@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9d58751bc9379d6d9a5a492bee35e349c36087c7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5ad77b0c88c71860db939feecac5a1aecfc4ca40
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497886"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756282"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Az AD DS-összekötő fiók engedélyeinek konfigurálása 
 
 A PowerShell-modul nevű [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) jelent meg a build 1.1.880.0 (2018 augusztus jelent meg), amely segít a megfelelő Active Directory-engedélyek konfigurálása az Azure AD-parancsmagok egy gyűjteményét tartalmazza. Csatlakozás a központi telepítés. 
 
 ## <a name="overview"></a>Áttekintés 
-A következő PowerShell-parancsmagok segítségével az AD DS-összekötő fiók Active Directory-engedélyek beállítása az egyes szolgáltatásokhoz, az Azure AD Connect engedélyezéséhez kiszűrésére. Esetleges problémák megelőzése érdekében meg kell előkészítenie, Active Directory-engedélyek előre, amikor az Azure AD Connect egyéni tartományi fiókkal az erdőhöz való csatlakozáshoz telepíteni kívánja. Ez a modul ADSyncConfig is használható engedélyek konfigurálása az Azure AD Connect telepítése után.
+A következő PowerShell-parancsmagokat az egyes szolgáltatásokhoz, az Azure AD Connectben engedélyezni kívánt Active Directory-engedélyek beállítása az AD DS-összekötő fiók használható. Esetleges problémák megelőzése érdekében meg kell előkészítenie, Active Directory-engedélyek előre, amikor az Azure AD Connect egyéni tartományi fiókkal az erdőhöz való csatlakozáshoz telepíteni kívánja. Ez a modul ADSyncConfig is használható engedélyek konfigurálása az Azure AD Connect telepítése után.
 
 ![](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 

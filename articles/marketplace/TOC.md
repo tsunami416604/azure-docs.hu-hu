@@ -1,7 +1,7 @@
 # [Az Azure Marketplace és az AppSource dokumentációja](index.md)
+## [Az Azure Marketplace és az AppSource ütemterve](./marketplace-roadmap.md)
 
 ## [Azure Marketplace és AppSource – áttekintés és előnyök](./marketplace-publishers-guide.md)  
-
 ### [Hogyan válhat közzétevővé a Marketplace-en](./become-publisher.md)  
 #### [Microsoft-fiók létrehozása](./guidelines.md)
 #### [Regisztrálás a fejlesztői központban](./register-dev-center.md) 

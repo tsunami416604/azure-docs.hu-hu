@@ -74,6 +74,7 @@
 ### Magas rendelkezésre állású architektúra
 #### [Magas rendelkezésre állású architektúra és forgatókönyvek](sap-high-availability-architecture-scenarios.md)
 #### [Magasabb rendelkezésre állású architektúra és forgatókönyvek](sap-higher-availability-architecture-scenarios.md)
+#### [SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással](sap-ha-availability-zones.md)
 #### [Magas rendelkezésre állás Windows rendszeren közös lemezzel (A)SCS példányhoz](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [Magas rendelkezésre állás Windows rendszeren SOFS fájlmegosztással (A)SCS példányhoz](sap-high-availability-guide-wsfc-file-share.md)
 #### [Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz](high-availability-guide-suse.md)

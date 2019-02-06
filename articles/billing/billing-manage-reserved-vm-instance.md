@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 257e9f72f21d523dfa2390814b786d1963dd671c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 36800071d5e0080ef5d1d791eed12587b114df78
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904004"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743633"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Az Azure-erőforrások foglalások kezelése
 
@@ -36,11 +36,11 @@ A Foglalás hatóköre frissítése:
 2. Válassza ki **minden szolgáltatás** > **foglalások**.
 3. Válassza ki a foglalást.
 4. Válassza a **Beállítások** > **Konfiguráció** lehetőséget.
-5. A hatókör módosítása. 
+5. A hatókör módosítása.
 
 Ha módosítja a hatókör számára történő megosztása, ahol Ön a tulajdonosa az előfizetések csak kiválaszthatja. Csak a foglalást végrehajtó számlázási ugyanabban a környezetben található előfizetések jelölhető ki.
 
-A hatókör csak a használatalapú fizetéses ajánlatra MS-AZR - 0003P, MS-AZR - 0017P Enterprise ajánlat vagy CSP előfizetéstípusok vonatkozik. A nagyvállalati szerződések fejlesztési és tesztelési előfizetések nem jogosultak a foglalási kedvezményt beolvasásához.
+A hatókör csak az MS-AZR - 0003P vagy MS-AZR - 0023P, vállalati ajánlat MS-AZR - 0017P, MS-AZR - 0148P vagy használatalapú fizetéses ajánlatra, vagy a CSP előfizetéstípusok vonatkozik.
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>A Foglalás kezelésére jogosult felhasználók hozzáadása és módosítása
 
